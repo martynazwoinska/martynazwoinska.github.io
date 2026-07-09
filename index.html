@@ -157,24 +157,12 @@
     .about p + p { margin-top: 14px; }
 
     /* interests */
-    .interest-grid {
-      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px; margin-top: 24px;
+    .interest-list {
+      columns: 2 260px; column-gap: 42px;
+      padding-left: 1.1rem; margin: 24px 0 0;
+      color: var(--text-soft);
     }
-    .interest-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow);
-    }
-    .interest-card h3 { margin: 0 0 12px; font-size: 1.08rem; }
-    .interest-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-    .interest-list li {
-      position: relative; padding-left: 18px; color: var(--text-soft); font-size: .95rem;
-    }
-    .interest-list li::before {
-      content: ""; position: absolute; left: 0; top: .72em;
-      width: 7px; height: 7px; border-radius: 50%; background: var(--accent); opacity: .75;
-    }
-    @media (max-width: 700px) { .interest-grid { grid-template-columns: 1fr; } }
+    .interest-list li { break-inside: avoid; margin: 0 0 8px; padding-left: 2px; }
 
     /* publications */
     .pub { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--border); }
@@ -205,6 +193,7 @@
     }
 
     /* cards grid (collaborators) */
+    .section-note { color: var(--text-soft); max-width: 68ch; margin: -6px 0 22px; }
     .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
     .card {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
@@ -215,16 +204,9 @@
     .card .cdesc { color: var(--text-faint); font-size: .86rem; }
 
     /* project highlight */
-    .project {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 26px; box-shadow: var(--shadow);
-    }
+    .project { max-width: 72ch; }
     .project h3 { margin: 0 0 10px; font-size: 1.25rem; }
-    .project p { color: var(--text-soft); margin: 0 0 14px; max-width: 66ch; }
-    .axes { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 12px; margin-top: 6px; }
-    .axis { background: var(--surface-2); border-radius: 10px; padding: 12px 14px; }
-    .axis code { color: var(--accent); font-weight: 700; font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: .9rem; }
-    .axis span { display: block; color: var(--text-soft); font-size: .84rem; margin-top: 2px; }
+    .project p { color: var(--text-soft); margin: 0 0 14px; }
 
     /* contact */
     .contact-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
@@ -316,26 +298,16 @@
       and bet-hedging, and features of their biology, such as whether they reproduce by selfing or
       outcrossing, tip the balance between these strategies.
     </p>
-    <div class="interest-grid" aria-label="Research interest areas">
-      <article class="interest-card">
-        <h3>Core themes</h3>
-        <ul class="interest-list">
-          <li>Life-history evolution</li>
-          <li>Ageing &amp; senescence</li>
-          <li>Phenotypic plasticity</li>
-          <li>Parental &amp; transgenerational effects</li>
-        </ul>
-      </article>
-      <article class="interest-card">
-        <h3>Evolutionary mechanisms</h3>
-        <ul class="interest-list">
-          <li>Bet-hedging</li>
-          <li>Sexual selection &amp; conflict</li>
-          <li>Evolutionary genetics &amp; genomics</li>
-          <li>Selfing vs. outcrossing</li>
-        </ul>
-      </article>
-    </div>
+    <ul class="interest-list" aria-label="Research interest areas">
+      <li>Life-history evolution</li>
+      <li>Ageing &amp; senescence</li>
+      <li>Phenotypic plasticity</li>
+      <li>Parental &amp; transgenerational effects</li>
+      <li>Bet-hedging</li>
+      <li>Sexual selection &amp; conflict</li>
+      <li>Evolutionary genetics &amp; genomics</li>
+      <li>Selfing vs. outcrossing</li>
+    </ul>
   </section>
 
   <!-- ============ CURRENT PROJECT ============ -->
@@ -347,22 +319,16 @@
       <p>
         In an ongoing modelling project I ask how reproductive mode, especially selfing versus
         outcrossing, changes the adaptive responses populations evolve when the environment is
-        uncertain. Using individual-based population-genetic simulations, I compare the response
-        strategies available to organisms along several axes:
+        uncertain. Using individual-based population-genetic simulations, I compare genetic
+        tracking, plasticity, parental effects, and bet-hedging without foregrounding the model
+        notation on the public site.
       </p>
-      <div class="axes">
-        <div class="axis"><code>Ga</code><span>Adaptive tracking</span></div>
-        <div class="axis"><code>Gdev</code><span>Developmental plasticity</span></div>
-        <div class="axis"><code>Grev</code><span>Reversible plasticity</span></div>
-        <div class="axis"><code>Gp</code><span>Parental information</span></div>
-        <div class="axis"><code>σ</code><span>Developmental noise / bet-hedging</span></div>
-      </div>
     </div>
   </section>
 
   <!-- ============ PUBLICATIONS ============ -->
   <section id="publications" class="wrap">
-    <div class="kicker">Selected publications</div>
+    <div class="kicker">Publications &amp; preprints</div>
     <h2>Publications</h2>
 
 
@@ -486,6 +452,7 @@
   <section id="collaborators" class="wrap">
     <div class="kicker">People</div>
     <h2>Collaborators</h2>
+    <p class="section-note">A concise list of close collaborators, prioritising people with at least three shared publications or preprints, or a comparable mix of published and preprint work.</p>
     <div class="cards">
       <div class="card">
         <div class="cname">Martin I. Lind</div>
