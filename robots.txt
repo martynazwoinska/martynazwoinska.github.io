@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://martynazwoinska.github.io/sitemap.xml
