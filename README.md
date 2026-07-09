@@ -46,7 +46,7 @@ between the tags. Placeholders I left for you:
 | What | Find this | Do this |
 |------|-----------|---------|
 | **Email** | `mailto:martyna.zwoinska@ebc.uu.se` | Replace if you want a different public email (appears twice) |
-| **Photo** | `photo.jpg` in the repository root | Optional: upload this file in GitHub when binary uploads are supported; until then the site shows the initials fallback |
+| **Photo** | hero image area in `index.html` | The current PR keeps the initials placeholder because this review flow does not support binary image files. Add `photo.jpg` directly on GitHub later if you want the headshot displayed. |
 | **ORCID** | the `ORCID` link | Paste your ORCID URL |
 | **Publications** | the Publications section | Add/remove entries |
 | **Collaborators** | the Collaborators section | Add/remove people |
@@ -57,5 +57,5 @@ Or just tell me what to change and I'll edit it here, commit it, and open a pull
 
 1. A fuller publication list or a preferred subset of selected publications
 2. A short bio in your own words, if you'd like to replace the current draft
-3. A public headshot file named exactly `photo.jpg` once binary uploads are supported by the PR workflow
+3. A `photo.jpg` headshot uploaded directly in GitHub once binary uploads are available
 4. A social-preview image for richer link previews on Bluesky, LinkedIn, and search results
