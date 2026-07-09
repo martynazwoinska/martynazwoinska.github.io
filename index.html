@@ -157,13 +157,18 @@
 
     /* interests */
     .interest-list {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px 36px;
-      padding: 0; margin: 26px 0 0; list-style: none; color: var(--text-soft);
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px;
+      padding: 0; margin: 26px 0 0; list-style: none;
     }
-    .interest-list li { position: relative; padding-left: 18px; }
+    .interest-list li {
+      display: flex; align-items: center; gap: 11px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 16px 18px; box-shadow: var(--shadow);
+      color: var(--text); font-weight: 600; font-size: .95rem;
+    }
     .interest-list li::before {
-      content: ""; position: absolute; left: 0; top: .75em;
-      width: 5px; height: 5px; border-radius: 50%; background: var(--accent); opacity: .7;
+      content: ""; flex: 0 0 auto;
+      width: 7px; height: 7px; border-radius: 50%; background: var(--accent); opacity: .8;
     }
 
     /* publications */
@@ -303,10 +308,8 @@
       <li>Ageing &amp; senescence</li>
       <li>Phenotypic plasticity</li>
       <li>Parental &amp; transgenerational effects</li>
-      <li>Bet-hedging</li>
       <li>Sexual selection &amp; conflict</li>
       <li>Evolutionary genetics &amp; genomics</li>
-      <li>Selfing vs. outcrossing</li>
     </ul>
   </section>
 
