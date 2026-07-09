@@ -78,6 +78,14 @@
     h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; }
 
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    .skip-link {
+      position: absolute; left: 24px; top: 12px; z-index: 100;
+      transform: translateY(-160%); background: var(--surface); color: var(--accent);
+      border: 1px solid var(--accent); border-radius: 999px; padding: 8px 14px;
+      box-shadow: var(--shadow); font-weight: 600; transition: transform .15s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
     /* ----------  Top nav  ---------- */
     header.nav {
       position: sticky; top: 0; z-index: 20;
@@ -142,22 +150,21 @@
 
     /* ----------  Sections  ---------- */
     section { padding: 60px 0; border-top: 1px solid var(--border); }
+    .kicker { text-transform: uppercase; letter-spacing: .12em; font-size: .74rem; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
     section h2 { font-size: 1.7rem; margin: 0 0 24px; }
     .about p { color: var(--text-soft); max-width: 68ch; }
     .about p + p { margin-top: 14px; }
 
-    /* research themes */
-    .theme-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 16px; margin-top: 26px;
+    /* interests */
+    .interest-list {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px 36px;
+      padding: 0; margin: 26px 0 0; list-style: none; color: var(--text-soft);
     }
-    .theme-card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 18px; box-shadow: var(--shadow);
+    .interest-list li { position: relative; padding-left: 18px; }
+    .interest-list li::before {
+      content: ""; position: absolute; left: 0; top: .75em;
+      width: 5px; height: 5px; border-radius: 50%; background: var(--accent); opacity: .7;
     }
-    .theme-card h3 { margin: 0 0 10px; font-size: 1.05rem; }
-    .theme-card ul { margin: 0; padding-left: 1.1rem; color: var(--text-soft); }
-    .theme-card li + li { margin-top: 5px; }
 
     /* publications */
     .pub-list { margin-top: 8px; }
@@ -189,6 +196,7 @@
     }
 
     /* cards grid (collaborators) */
+    .section-note { color: var(--text-soft); max-width: 68ch; margin: -6px 0 22px; }
     .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
     .card {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
@@ -218,6 +226,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <!-- ============ NAV ============ -->
   <header class="nav">
     <div class="wrap nav-inner">
@@ -240,7 +249,7 @@
     <div class="hero-grid">
       <div class="avatar">
         <span class="avatar-mono">MZ</span>
-        <!-- Add photo.jpg later, when binary uploads are available, to replace the initials. -->
+        <!-- Binary images are not included in this PR flow; add photo.jpg later to replace the initials. -->
       </div>
       <div>
         <h1>Martyna Katarzyna Zwoińska</h1>
@@ -289,31 +298,16 @@
       and bet-hedging, and features of their biology, such as whether they reproduce by selfing or
       outcrossing, tip the balance between these strategies.
     </p>
-    <div class="theme-grid" aria-label="Research interest areas">
-      <article class="theme-card">
-        <h3>Life histories &amp; ageing</h3>
-        <ul>
-          <li>Life-history evolution</li>
-          <li>Ageing &amp; senescence</li>
-        </ul>
-      </article>
-      <article class="theme-card">
-        <h3>Plasticity across generations</h3>
-        <ul>
-          <li>Phenotypic plasticity</li>
-          <li>Parental &amp; transgenerational effects</li>
-          <li>Bet-hedging</li>
-        </ul>
-      </article>
-      <article class="theme-card">
-        <h3>Evolutionary mechanisms</h3>
-        <ul>
-          <li>Sexual selection &amp; conflict</li>
-          <li>Evolutionary genetics &amp; genomics</li>
-          <li>Selfing vs. outcrossing</li>
-        </ul>
-      </article>
-    </div>
+    <ul class="interest-list" aria-label="Research interest areas">
+      <li>Life-history evolution</li>
+      <li>Ageing &amp; senescence</li>
+      <li>Phenotypic plasticity</li>
+      <li>Parental &amp; transgenerational effects</li>
+      <li>Bet-hedging</li>
+      <li>Sexual selection &amp; conflict</li>
+      <li>Evolutionary genetics &amp; genomics</li>
+      <li>Selfing vs. outcrossing</li>
+    </ul>
   </section>
 
   <!-- ============ CURRENT PROJECT ============ -->
@@ -333,22 +327,23 @@
 
   <!-- ============ PUBLICATIONS ============ -->
   <section id="publications" class="wrap">
-    <h2>Publications &amp; preprints</h2>
+    <div class="kicker">Publications &amp; preprints</div>
+    <h2>Publications</h2>
 
     <div class="pub-list">
       <div class="pub">
-        <div class="year">2026</div>
-        <div class="body">
-          <a class="title" href="https://www.biorxiv.org/content/10.64898/2026.04.10.717426v1" target="_blank" rel="noopener">Transgenerational inheritance is variable across <em>Caenorhabditis</em> worms</a>
-          <div class="meta"><strong>Zwoińska M. K.</strong>, Widjaja A. N., Lind M. I., Akgül A. D., Altan A. S., Aydın D., Çukurbağlı D., Venkataramani A. G., Renhuldt N. T., Chen H.-y. · <span class="venue">bioRxiv</span> · <span class="status">Preprint</span></div>
-        </div>
+      <div class="year">2026</div>
+      <div class="body">
+        <a class="title" href="https://www.biorxiv.org/content/10.64898/2026.04.10.717426v1" target="_blank" rel="noopener">Transgenerational inheritance is variable across <em>Caenorhabditis</em> worms</a>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Widjaja A. N., Lind M. I., Akgül A. D., Altan A. S., Aydın D., Çukurbağlı D., Venkataramani A. G., Renhuldt N. T., Chen H.-y. · <span class="venue">bioRxiv</span><span class="status">Preprint</span></div>
       </div>
+    </div>
 
     <div class="pub">
       <div class="year">2026</div>
       <div class="body">
         <a class="title" href="https://www.biorxiv.org/content/10.64898/2026.02.04.703537v1" target="_blank" rel="noopener">From constraint to opportunity: Relaxing sexual antagonism reveals adaptive potential maintained by balancing selection</a>
-        <div class="meta"><strong>Zwoińska M. K.</strong>, Wiberg R. A. W., Trabert M., Kaufmann P., Immonen E. · <span class="venue">bioRxiv</span> · <span class="status">Preprint</span></div>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Wiberg R. A. W., Trabert M., Kaufmann P., Immonen E. · <span class="venue">bioRxiv</span><span class="status">Preprint</span></div>
       </div>
     </div>
 
@@ -457,6 +452,7 @@
   <!-- ============ COLLABORATORS ============ -->
   <section id="collaborators" class="wrap">
     <h2>Collaborators</h2>
+    <p class="section-note">A concise list of close collaborators, prioritising people with at least three shared publications or preprints, or a comparable mix of published and preprint work.</p>
     <div class="cards">
       <div class="card">
         <div class="cname">Martin I. Lind</div>
