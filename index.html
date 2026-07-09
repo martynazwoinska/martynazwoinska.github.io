@@ -143,6 +143,19 @@
     .pub .meta { color: var(--text-soft); font-size: .92rem; }
     .pub .venue { font-style: italic; }
 
+    /* career break marker */
+    .pub.leave { align-items: center; }
+    .pub.leave .year { color: var(--accent); font-size: .82rem; letter-spacing: .01em; }
+    .pub.leave .label {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: var(--text-soft); font-style: italic; font-size: .92rem;
+    }
+    .pub.leave .label::before {
+      content: ""; flex: 0 0 auto;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent); opacity: .7;
+    }
+
     /* cards grid (collaborators) */
     .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
     .card {
@@ -316,6 +329,13 @@
       </div>
     </div>
 
+    <div class="pub leave">
+      <div class="year">2020–21</div>
+      <div class="body">
+        <span class="label">Parental leave (full- and part-time)</span>
+      </div>
+    </div>
+
     <div class="pub">
       <div class="year">2020</div>
       <div class="body">
@@ -345,6 +365,13 @@
       <div class="body">
         <a class="title" href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/1365-2435.12840" target="_blank" rel="noopener">Slow development as an evolutionary cost of long life</a>
         <div class="meta">Lind M. I., …, <strong>Zwoińska M. K.</strong>, …, Maklakov A. A. · <span class="venue">Functional Ecology</span> 31(6):1252–1261</div>
+      </div>
+    </div>
+
+    <div class="pub leave">
+      <div class="year">2016–17</div>
+      <div class="body">
+        <span class="label">Parental leave (full- and part-time)</span>
       </div>
     </div>
 
