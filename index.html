@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martyna K. Zwoińska — Evolutionary Biologist, Uppsala University</title>
+  <meta name="description" content="Martyna Katarzyna Zwoińska is an evolutionary biologist at Uppsala University studying life-history evolution, ageing, plasticity, and the evolution of adaptive responses to environmental uncertainty." />
+  <!-- Social preview (optional, edit freely) -->
+  <meta property="og:title" content="Martyna K. Zwoińska — Evolutionary Biologist" />
+  <meta property="og:description" content="Life-history evolution, ageing, plasticity, and adaptive responses to environmental uncertainty. Department of Ecology and Genetics, Uppsala University." />
+  <meta property="og:type" content="website" />
+  <style>
+    /* ----------  Design tokens  ---------- */
+    :root {
+      --bg: #fbfaf7;
+      --surface: #ffffff;
+      --surface-2: #f3f1ea;
+      --text: #1f2328;
+      --text-soft: #55606b;
+      --text-faint: #8a929c;
+      --accent: #1f6f6f;          /* deep teal */
+      --accent-soft: #e2efee;
+      --border: #e7e3d9;
+      --shadow: 0 1px 2px rgba(31,35,40,.06), 0 8px 24px rgba(31,35,40,.06);
+      --radius: 14px;
+      --maxw: 940px;
+      --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Times New Roman', serif;
+      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #14171a;
+        --surface: #1c2024;
+        --surface-2: #23282d;
+        --text: #eceef0;
+        --text-soft: #b3bcc4;
+        --text-faint: #7d8791;
+        --accent: #4fc7be;
+        --accent-soft: #17302f;
+        --border: #2c3238;
+        --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #14171a; --surface: #1c2024; --surface-2: #23282d;
+      --text: #eceef0; --text-soft: #b3bcc4; --text-faint: #7d8791;
+      --accent: #4fc7be; --accent-soft: #17302f; --border: #2c3238;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+    }
+    :root[data-theme="light"] {
+      --bg: #fbfaf7; --surface: #ffffff; --surface-2: #f3f1ea;
+      --text: #1f2328; --text-soft: #55606b; --text-faint: #8a929c;
+      --accent: #1f6f6f; --accent-soft: #e2efee; --border: #e7e3d9;
+      --shadow: 0 1px 2px rgba(31,35,40,.06), 0 8px 24px rgba(31,35,40,.06);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.65;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    /* ----------  Top nav  ---------- */
+    header.nav {
+      position: sticky; top: 0; z-index: 20;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-name { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; letter-spacing: .2px; }
+    .nav-links { display: flex; gap: 22px; align-items: center; }
+    .nav-links a { color: var(--text-soft); font-size: .92rem; }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+    .theme-btn {
+      background: var(--surface-2); border: 1px solid var(--border); color: var(--text-soft);
+      width: 34px; height: 34px; border-radius: 9px; cursor: pointer; font-size: 15px;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+    @media (max-width: 640px) { .nav-links a:not(.theme-wrap) { display: none; } }
+
+    /* ----------  Hero  ---------- */
+    .hero { padding: 64px 0 40px; }
+    .hero-grid { display: grid; grid-template-columns: 150px 1fr; gap: 34px; align-items: center; }
+    @media (max-width: 620px) { .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 22px; } }
+    .avatar {
+      width: 150px; height: 150px; border-radius: 50%;
+      background: linear-gradient(140deg, var(--accent-soft), var(--surface-2));
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 3rem; color: var(--accent);
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    @media (max-width: 620px) { .avatar { margin: 0 auto; } }
+    .hero h1 { font-size: 2.4rem; margin: 0 0 6px; letter-spacing: -.3px; }
+    .hero .role { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 4px; }
+    .hero .affil { color: var(--text-soft); margin-bottom: 18px; }
+    .hero p.lead { color: var(--text-soft); font-size: 1.02rem; max-width: 46ch; margin: 0 auto; }
+    @media (min-width: 621px) { .hero p.lead { margin: 0; } }
+
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    @media (max-width: 620px) { .links { justify-content: center; } }
+    .pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text-soft); padding: 8px 14px; border-radius: 999px;
+      font-size: .9rem; box-shadow: var(--shadow); transition: transform .1s ease;
+    }
+    .pill:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; transform: translateY(-1px); }
+
+    /* ----------  Sections  ---------- */
+    section { padding: 46px 0; border-top: 1px solid var(--border); }
+    .kicker { text-transform: uppercase; letter-spacing: .12em; font-size: .74rem; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
+    section h2 { font-size: 1.7rem; margin: 0 0 20px; }
+    .about p { color: var(--text-soft); max-width: 68ch; }
+    .about p + p { margin-top: 14px; }
+
+    /* interests */
+    .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .tag { background: var(--accent-soft); color: var(--accent); border-radius: 8px; padding: 6px 12px; font-size: .86rem; font-weight: 600; }
+
+    /* publications */
+    .pub { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .pub:last-child { border-bottom: none; }
+    .pub .year { flex: 0 0 52px; font-family: var(--serif); font-weight: 600; color: var(--text-faint); font-size: 1rem; padding-top: 1px; }
+    .pub .body { flex: 1; }
+    .pub .title { font-weight: 600; color: var(--text); display: block; margin-bottom: 3px; }
+    .pub .title:hover { color: var(--accent); }
+    .pub .meta { color: var(--text-soft); font-size: .92rem; }
+    .pub .venue { font-style: italic; }
+
+    /* cards grid (collaborators) */
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 18px; box-shadow: var(--shadow);
+    }
+    .card .cname { font-weight: 600; margin-bottom: 2px; }
+    .card .cinst { color: var(--text-soft); font-size: .9rem; margin-bottom: 8px; }
+    .card .cdesc { color: var(--text-faint); font-size: .86rem; }
+
+    /* project highlight */
+    .project {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 26px; box-shadow: var(--shadow);
+    }
+    .project h3 { margin: 0 0 10px; font-size: 1.25rem; }
+    .project p { color: var(--text-soft); margin: 0 0 14px; max-width: 66ch; }
+    .axes { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 12px; margin-top: 6px; }
+    .axis { background: var(--surface-2); border-radius: 10px; padding: 12px 14px; }
+    .axis code { color: var(--accent); font-weight: 700; font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: .9rem; }
+    .axis span { display: block; color: var(--text-soft); font-size: .84rem; margin-top: 2px; }
+
+    /* contact */
+    .contact-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
+    .contact-box p { color: var(--text-soft); margin: 0 0 14px; }
+
+    footer { padding: 34px 0 48px; border-top: 1px solid var(--border); color: var(--text-faint); font-size: .86rem; text-align: center; }
+
+    .note {
+      background: var(--accent-soft); border: 1px dashed var(--accent);
+      border-radius: 10px; padding: 12px 16px; font-size: .86rem; color: var(--text-soft);
+      margin-top: 22px;
+    }
+    .note strong { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <span class="nav-name">Martyna K. Zwoińska</span>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#collaborators">Collaborators</a>
+        <a href="#contact">Contact</a>
+        <span class="theme-wrap"><button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle light / dark">◐</button></span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <div class="avatar">
+        <!-- To add your photo: put a file called "photo.jpg" in this repo and
+             replace this line with:  <img src="photo.jpg" alt="Martyna K. Zwoińska" /> -->
+        MZ
+      </div>
+      <div>
+        <h1>Martyna Katarzyna Zwoińska</h1>
+        <div class="role">Evolutionary Biologist</div>
+        <div class="affil">Department of Ecology and Genetics, Uppsala University</div>
+        <p class="lead">I study how life histories evolve — ageing, plasticity, and the strategies organisms use to cope with uncertain, changing environments.</p>
+        <div class="links">
+          <a class="pill" href="mailto:CHANGE-ME@ebc.uu.se">✉ Email</a>
+          <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">🎓 Google Scholar</a>
+          <a class="pill" href="https://www.uu.se/en/contact-and-organisation/staff?query=N12-104" target="_blank" rel="noopener">🏛 Uppsala profile</a>
+          <a class="pill" href="https://orcid.org/" target="_blank" rel="noopener">🔗 ORCID</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="wrap about">
+    <div class="kicker">About</div>
+    <h2>Overview</h2>
+    <p>
+      I am an evolutionary biologist in the Animal Ecology group at the Department of Ecology
+      and Genetics, Uppsala University, where I work within the Lind Lab. My research asks how
+      selection shapes life histories over the lifespan — why organisms age the way they do,
+      how they trade current reproduction against survival and future reproduction, and how
+      information about the environment is used, and passed between generations, to guide these
+      decisions.
+    </p>
+    <p>
+      I combine experimental evolution, work in model systems such as <em>Drosophila</em> and the
+      nematode <em>Caenorhabditis elegans</em>, and evolutionary modelling. I earned my PhD from
+      Uppsala University in 2017 with a thesis on age-specific trade-offs in life-history evolution,
+      and my work spans cognitive ageing, sexual selection and conflict, transgenerational effects,
+      and evolutionary genetics.
+    </p>
+  </section>
+
+  <!-- ============ RESEARCH ============ -->
+  <section id="research" class="wrap about">
+    <div class="kicker">Research</div>
+    <h2>Research interests</h2>
+    <p>
+      My central question is how organisms adapt to environments that change over time — through
+      genetic evolution, developmental and reversible plasticity, parental effects, and bet-hedging —
+      and how features of their biology, such as whether they reproduce by selfing or outcrossing,
+      tip the balance between these strategies.
+    </p>
+    <div class="tags">
+      <span class="tag">Life-history evolution</span>
+      <span class="tag">Ageing &amp; senescence</span>
+      <span class="tag">Phenotypic plasticity</span>
+      <span class="tag">Parental &amp; transgenerational effects</span>
+      <span class="tag">Bet-hedging</span>
+      <span class="tag">Sexual selection &amp; conflict</span>
+      <span class="tag">Evolutionary genetics &amp; genomics</span>
+      <span class="tag">Selfing vs. outcrossing</span>
+    </div>
+  </section>
+
+  <!-- ============ CURRENT PROJECT ============ -->
+  <section id="project" class="wrap">
+    <div class="kicker">Current work</div>
+    <h2>Adaptive response modes under environmental uncertainty</h2>
+    <div class="project">
+      <h3>Reproductive mode and the evolution of adaptive responses</h3>
+      <p>
+        In an ongoing modelling project I ask how reproductive mode — especially selfing versus
+        outcrossing — changes the adaptive responses populations evolve when the environment is
+        uncertain. Using individual-based population-genetic simulations, I compare the response
+        strategies available to organisms along several axes:
+      </p>
+      <div class="axes">
+        <div class="axis"><code>Ga</code><span>Adaptive tracking</span></div>
+        <div class="axis"><code>Gdev</code><span>Developmental plasticity</span></div>
+        <div class="axis"><code>Grev</code><span>Reversible plasticity</span></div>
+        <div class="axis"><code>Gp</code><span>Parental information</span></div>
+        <div class="axis"><code>σ</code><span>Developmental noise / bet-hedging</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PUBLICATIONS ============ -->
+  <section id="publications" class="wrap">
+    <div class="kicker">Selected publications</div>
+    <h2>Publications</h2>
+
+    <div class="pub">
+      <div class="year">2026</div>
+      <div class="body">
+        <a class="title" href="https://onlinelibrary.wiley.com/doi/10.1111/brv.70103" target="_blank" rel="noopener">A century of theories of balancing selection</a>
+        <div class="meta">Ruzicka F., <strong>Zwoińska M. K.</strong>, et al. · <span class="venue">Biological Reviews</span></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="year">2025</div>
+      <div class="body">
+        <a class="title" href="https://academic.oup.com/mbe/article/42/8/msaf178/8217438" target="_blank" rel="noopener">Sex-biased gene expression under sexually antagonistic and sex-limited selection</a>
+        <div class="meta"><span class="venue">Molecular Biology and Evolution</span> 42(8):msaf178</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="year">2025</div>
+      <div class="body">
+        <a class="title" href="https://royalsocietypublishing.org/doi/10.1098/rstb.2024.0125" target="_blank" rel="noopener">Nematode mind: exploring the role of the RNA interference pathway in learning, memory and beyond</a>
+        <div class="meta"><span class="venue">Philosophical Transactions of the Royal Society B</span> 380(1929):20240125</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="year">2020</div>
+      <div class="body">
+        <a class="title" href="https://academic.oup.com/evlett/article/4/4/371/6697523" target="_blank" rel="noopener">Environmental variation mediates the evolution of anticipatory parental effects</a>
+        <div class="meta">Lind M. I., <strong>Zwoińska M. K.</strong>, et al. · <span class="venue">Evolution Letters</span> 4(4):371</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="year">2017</div>
+      <div class="body">
+        <a class="title" href="https://onlinelibrary.wiley.com/doi/full/10.1111/evo.13156" target="_blank" rel="noopener">Experimental evolution of slowed cognitive aging in <em>Drosophila melanogaster</em></a>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Maklakov A. A., Kawecki T. J., Hollis B. · <span class="venue">Evolution</span> 71(3):662–670</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="year">2017</div>
+      <div class="body">
+        <a class="title" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">Slow development as an evolutionary cost of long life</a>
+        <div class="meta">Lind M. I., <strong>Zwoińska M. K.</strong>, Maklakov A. A. · <span class="venue">Functional Ecology</span></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="year">2016</div>
+      <div class="body">
+        <a class="title" href="https://academic.oup.com/evolut/article/70/2/342/6852186" target="_blank" rel="noopener">Selection on learning performance results in the correlated evolution of sexual dimorphism in life history</a>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Lind M. I., Maklakov A. A., et al. · <span class="venue">Evolution</span> 70(2):342</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>For Martyna:</strong> this is a hand-picked selection — I can pull your full, up-to-date
+      list straight from Google Scholar or ORCID and add exact author lists, DOIs and any I've missed.
+      Just tell me and I'll fill it in.
+    </div>
+  </section>
+
+  <!-- ============ COLLABORATORS ============ -->
+  <section id="collaborators" class="wrap">
+    <div class="kicker">People</div>
+    <h2>Collaborators</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="cname">Martin I. Lind</div>
+        <div class="cinst">Uppsala University · Halmstad University</div>
+        <div class="cdesc">Lind Lab — ageing, plasticity, and transgenerational effects.</div>
+      </div>
+      <div class="card">
+        <div class="cname">Alexei A. Maklakov</div>
+        <div class="cinst">University of East Anglia</div>
+        <div class="cdesc">Evolutionary biology &amp; biogerontology; ageing and life-history evolution.</div>
+      </div>
+      <div class="card">
+        <div class="cname">Tadeusz J. Kawecki</div>
+        <div class="cinst">University of Lausanne</div>
+        <div class="cdesc">Experimental evolution of learning and life history.</div>
+      </div>
+      <div class="card">
+        <div class="cname">Brian Hollis</div>
+        <div class="cinst">University of South Carolina</div>
+        <div class="cdesc">Experimental evolution and evolutionary genomics.</div>
+      </div>
+      <div class="card">
+        <div class="cname">Elina Immonen</div>
+        <div class="cinst">Uppsala University</div>
+        <div class="cdesc">Immonen Lab — sexual dimorphism and sex-biased gene expression.</div>
+      </div>
+      <div class="card">
+        <div class="cname">Hwei-yen Chen</div>
+        <div class="cinst">Uppsala University</div>
+        <div class="cdesc">Evolutionary genetics, sexual selection, and gene expression.</div>
+      </div>
+      <div class="card">
+        <div class="cname">Filip Ruzicka</div>
+        <div class="cinst">Balancing selection review</div>
+        <div class="cdesc">Population genetics of balancing selection.</div>
+      </div>
+    </div>
+    <div class="note">
+      <strong>For Martyna:</strong> tell me who else to include (and who to drop), and I can add photos,
+      links to their labs, and a one-line description for each.
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="wrap">
+    <div class="kicker">Get in touch</div>
+    <h2>Contact</h2>
+    <div class="contact-box">
+      <p>
+        Department of Ecology and Genetics, Animal Ecology<br />
+        Evolutionary Biology Centre (EBC), Uppsala University<br />
+        Norbyvägen 18D, 752 36 Uppsala, Sweden
+      </p>
+      <div class="links" style="margin-top:4px">
+        <a class="pill" href="mailto:CHANGE-ME@ebc.uu.se">✉ Email</a>
+        <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">🎓 Google Scholar</a>
+        <a class="pill" href="https://www.uu.se/en/contact-and-organisation/staff?query=N12-104" target="_blank" rel="noopener">🏛 Uppsala profile</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      © <span id="year"></span> Martyna Katarzyna Zwoińska · Uppsala University<br />
+      Built with plain HTML &amp; CSS — hosted on GitHub Pages.
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle (remembers choice)
+    var root = document.documentElement;
+    var saved = localStorage.getItem('theme');
+    if (saved) root.setAttribute('data-theme', saved);
+    document.getElementById('themeToggle').addEventListener('click', function () {
+      var isDark = getComputedStyle(root).getPropertyValue('--bg').trim().indexOf('#14') === 0
+                   || root.getAttribute('data-theme') === 'dark';
+      var next = isDark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  </script>
+</body>
+</html>
