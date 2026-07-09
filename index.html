@@ -149,7 +149,9 @@
     .pill:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; transform: translateY(-1px); }
 
     /* ----------  Sections  ---------- */
-    section { padding: 84px 0; border-top: 1px solid var(--border); }
+    section { border-top: 1px solid var(--border); }
+    /* .wrap sets padding:0 24px, so target section.wrap to add vertical rhythm */
+    section.wrap { padding-top: 72px; padding-bottom: 72px; }
     section h2 { font-size: 1.7rem; margin: 0 0 24px; }
     .about p { color: var(--text-soft); max-width: 68ch; }
     .about p + p { margin-top: 14px; }
@@ -467,21 +469,6 @@
         <div class="cname">Hwei-yen Chen</div>
         <div class="cinst">Uppsala University</div>
         <div class="cdesc">RNA interference, transgenerational effects, and ageing.</div>
-      </div>
-      <div class="card">
-        <div class="cname">Elina Immonen</div>
-        <div class="cinst">Uppsala University</div>
-        <div class="cdesc">Sexual antagonism, sex-biased gene expression, and life-history evolution.</div>
-      </div>
-      <div class="card">
-        <div class="cname">R. Axel W. Wiberg</div>
-        <div class="cinst">Uppsala University</div>
-        <div class="cdesc">Evolutionary genetics and genomics of sex-biased gene expression.</div>
-      </div>
-      <div class="card">
-        <div class="cname">Peter Kaufmann</div>
-        <div class="cinst">Uppsala University</div>
-        <div class="cdesc">Sexual selection, sexual antagonism, and adaptation.</div>
       </div>
     </div>
   </section>
