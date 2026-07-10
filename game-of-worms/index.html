@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#143f4a" />
-  <link rel="stylesheet" href="style.css?v=20260710-5" />
+  <link rel="stylesheet" href="style.css?v=20260710-6" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
@@ -182,25 +182,33 @@
 
               <g id="worm-species" class="worm-species">
                 <g id="companion-worm" class="companion-worm" transform="translate(-28 82) scale(.43)" aria-hidden="true">
+                  <ellipse class="worm-ground-shadow" cx="164" cy="274" rx="92" ry="13"></ellipse>
                   <g class="companion-body">
                     <path class="companion-shadow" d="M78 238 C122 290 173 265 181 213 C188 161 225 115 278 123 C330 131 355 92 326 64"></path>
                     <path class="companion-line" d="M78 228 C122 280 173 255 181 203 C188 151 225 105 278 113 C330 121 355 82 326 54"></path>
+                    <path class="companion-highlight" d="M84 220 C124 264 161 243 168 198 C177 143 224 91 282 101 C316 107 338 80 323 60"></path>
                     <path class="male-tail" d="M79 228 L49 210 L64 242 Z"></path>
                     <circle class="worm-cheek" cx="311" cy="70" r="8"></circle>
                     <circle class="worm-eye" cx="323" cy="49" r="5"></circle>
                     <circle class="worm-eye" cx="340" cy="58" r="5"></circle>
+                    <circle class="worm-eye-shine" cx="321.5" cy="47.5" r="1.8"></circle>
+                    <circle class="worm-eye-shine" cx="338.5" cy="56.5" r="1.8"></circle>
                     <path class="worm-smile" d="M320 72 Q331 83 343 69"></path>
                   </g>
                 </g>
 
                 <g id="primary-worm" class="primary-worm">
 
+              <ellipse class="worm-ground-shadow" cx="165" cy="278" rx="96" ry="15"></ellipse>
               <g class="worm-body">
                 <path class="worm-shadow" d="M78 238 C122 290 173 265 181 213 C188 161 225 115 278 123 C330 131 355 92 326 64"></path>
                 <path class="worm-line" d="M78 228 C122 280 173 255 181 203 C188 151 225 105 278 113 C330 121 355 82 326 54"></path>
+                <path class="worm-highlight" d="M84 220 C124 264 161 243 168 198 C177 143 224 91 282 101 C316 107 338 80 323 60"></path>
                 <circle class="worm-cheek" cx="311" cy="70" r="8"></circle>
                 <circle class="worm-eye" cx="323" cy="49" r="5"></circle>
                 <circle class="worm-eye" cx="340" cy="58" r="5"></circle>
+                <circle class="worm-eye-shine" cx="321.5" cy="47.5" r="1.8"></circle>
+                <circle class="worm-eye-shine" cx="338.5" cy="56.5" r="1.8"></circle>
                 <path class="worm-smile" d="M320 72 Q331 83 343 69"></path>
               </g>
 
@@ -266,7 +274,7 @@
               <button type="button" data-accessory="local-charm" aria-pressed="false"><span class="button-icon" aria-hidden="true">🪽</span> <span class="button-label">Fig-wasp wings</span></button>
               <button id="surprise-me" class="surprise-button" type="button"><span aria-hidden="true">✨</span> Surprise me</button>
             </div>
-            <p class="wardrobe-note">Each species has its own place- and habitat-inspired wardrobe.</p>
+            <p class="wardrobe-note">Each species has its own place-inspired wardrobe—and remembers its outfit.</p>
           </div>
         </section>
 
@@ -313,6 +321,6 @@
     <p>Part 1: meet the worms. Fitness, bacteria, and environmental responses can come next.</p>
   </footer>
 
-  <script type="module" src="game.js?v=20260710-5"></script>
+  <script type="module" src="game.js?v=20260710-6"></script>
 </body>
 </html>

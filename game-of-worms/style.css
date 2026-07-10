@@ -309,6 +309,17 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
   overflow: hidden;
   background: color-mix(in srgb, var(--scene-sky) 70%, white);
 }
+.habitat::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(255,255,255,.2), transparent 43%),
+    linear-gradient(to bottom, rgba(255,255,255,.1), transparent 55%, rgba(24,58,54,.09));
+  box-shadow: inset 0 -34px 55px rgba(29,65,57,.08);
+}
 .regional-backdrop { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; opacity: .92; }
 .regional-backdrop > [data-scene] { display: none; }
 .habitat[data-local-style="okinawa"] [data-scene="okinawa"],
@@ -354,7 +365,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
   position: relative;
   z-index: 2;
   width: min(88%, 520px);
-  filter: drop-shadow(0 18px 16px rgba(23,51,61,.18));
+  filter: drop-shadow(0 16px 13px rgba(23,51,61,.16));
   overflow: visible;
 }
 .worm-species { transform: translate(var(--pose-x, 0), var(--pose-y, 0)) rotate(var(--pose-angle, 0deg)) scale(var(--worm-scale)); transform-origin: 210px 170px; transition: transform .28s ease; }
@@ -368,8 +379,12 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
 .worm-shadow { fill: none; stroke: color-mix(in srgb, var(--worm-deep) 35%, transparent); stroke-width: 54; stroke-linecap: round; transform: translateY(7px); }
 .companion-line { fill: none; stroke: var(--worm-color); stroke-width: 42; stroke-linecap: round; stroke-linejoin: round; }
 .companion-shadow { fill: none; stroke: color-mix(in srgb, var(--worm-deep) 35%, transparent); stroke-width: 50; stroke-linecap: round; transform: translateY(7px); }
+.worm-highlight, .companion-highlight { fill: none; stroke: rgba(255,255,255,.26); stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.companion-highlight { stroke-width: 7; }
+.worm-ground-shadow { fill: rgba(35,65,58,.17); filter: blur(7px); }
 .male-tail { fill: var(--worm-color); stroke: var(--worm-deep); stroke-width: 3; stroke-linejoin: round; }
 .worm-eye { fill: var(--ink); }
+.worm-eye-shine { fill: white; opacity: .9; }
 .worm-cheek { fill: color-mix(in srgb, var(--coral) 60%, transparent); }
 .worm-smile { fill: none; stroke: var(--ink); stroke-width: 4; stroke-linecap: round; }
 .worm-body { transform-origin: 210px 170px; animation: worm-bob 3.2s ease-in-out infinite; }
@@ -377,6 +392,8 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
 @keyframes worm-bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-7px) rotate(1deg); } }
 .accessory { transform-origin: center; }
 .accessory[hidden] { display: none; }
+.accessory:not([hidden]) { animation: accessory-pop .24s cubic-bezier(.2,.8,.25,1.25); }
+@keyframes accessory-pop { from { opacity: 0; transform: scale(.82); } to { opacity: 1; transform: scale(1); } }
 .regional-accessory > [data-style] { display: none; }
 .habitat[data-local-style="okinawa"] .regional-accessory > [data-style="okinawa"],
 .habitat[data-local-style="kauai"] .regional-accessory > [data-style="kauai"],
@@ -429,9 +446,16 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
   color: var(--ink);
   cursor: pointer;
   font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: 0 3px 0 rgba(29,70,68,.06);
+  transition: transform .16s ease, border-color .16s ease, background .16s ease, box-shadow .16s ease;
 }
-.dress-buttons button:hover { border-color: var(--teal); transform: translateY(-1px); }
-.dress-buttons button[aria-pressed="true"] { background: var(--teal-dark); color: white; border-color: var(--teal-dark); }
+.dress-buttons button:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(29,70,68,.12); }
+.dress-buttons button[aria-pressed="true"] { background: var(--teal-dark); color: white; border-color: var(--teal-dark); box-shadow: 0 4px 10px rgba(20,75,78,.22); }
+.dress-buttons button[data-accessory][aria-pressed="true"]::after { content: "✓"; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(255,255,255,.19); font-size: .72rem; }
+.dress-buttons .button-icon { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: color-mix(in srgb, var(--yellow) 45%, white); font-size: .92rem; }
 .dress-buttons .surprise-button { background: var(--yellow); border-color: #e8b638; }
 .wardrobe-note { margin: 10px 0 0; color: var(--ink-soft); font-size: .76rem; }
 
