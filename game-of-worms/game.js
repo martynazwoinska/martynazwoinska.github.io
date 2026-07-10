@@ -68,6 +68,27 @@ function locationKit(placeName, fallback, speciesId) {
   };
 }
 
+const speciesGear = {
+  inopinata: { looks: ["fig-leaf visor", "Yaeyama minsā sash", "fig-wasp wings"], icons: ["🍃", "🧵", "🪽"] },
+  elegans: { looks: ["lab goggles", "sample utility belt", "cryo-vial jetpack"], icons: ["🥽", "🧰", "❄️"] },
+  briggsae: { looks: ["heart sunglasses", "sun-cream stripes", "butterfly wings"], icons: ["😎", "🧴", "🦋"] },
+  nigoni: { looks: ["fruit-slice crown", "market-tote belt", "dragonfly wings"], icons: ["🍊", "🧺", "🪽"] },
+  tropicalis: { looks: ["star sunglasses", "tropical bikini", "SPF 50 sun-cream pack"], icons: ["⭐", "👙", "🧴"] },
+  wallacei: { looks: ["cacao-pod helmet", "cacao climbing harness", "leaf-glider wings"], icons: ["🍫", "🧗", "🪽"] }
+};
+
+function funLocationKit(baseKit, item, placeName) {
+  const gear = speciesGear[item.id];
+  const placeTag = (placeName || item.region).split(" ·")[0].split(",")[0];
+  const looks = gear.looks.map(look => `${placeTag} ${look}`);
+  return {
+    ...baseKit,
+    looks,
+    icons: gear.icons,
+    note: `${baseKit.sceneName}: ${looks.join(", ")}. Every observation keeps its own outfit and drawings.`
+  };
+}
+
 const species = [
   {
     id: "inopinata",
@@ -274,8 +295,12 @@ const byId = new Map(species.map(item => [item.id, item]));
 const visited = new Set();
 const accessoryIds = ["local-headwear", "local-wrap", "local-charm"];
 const wardrobes = new Map();
+const drawings = new Map();
 let selectedId = "inopinata";
 let selectedRecordName = null;
+let drawingEnabled = false;
+let drawingColor = "#f36f62";
+let activeDoodle = null;
 let projection;
 let projectedLocations = [];
 
@@ -298,6 +323,7 @@ const els = {
   sceneName: document.getElementById("scene-name"),
   wormNameTag: document.getElementById("worm-name-tag"),
   wormAvatar: document.getElementById("worm-avatar"),
+  doodleLayer: document.getElementById("doodle-layer"),
   placeMotif: document.getElementById("place-motif"),
   headwearSymbol: document.getElementById("headwear-symbol"),
   headwearSymbolMale: document.getElementById("headwear-symbol-male"),
@@ -321,7 +347,10 @@ const els = {
   speciesHabitat: document.getElementById("species-habitat"),
   speciesFact: document.getElementById("species-fact"),
   exploredCount: document.getElementById("explored-count"),
-  surprise: document.getElementById("surprise-me")
+  surprise: document.getElementById("surprise-me"),
+  freestyle: document.getElementById("freestyle-draw"),
+  drawTools: document.getElementById("draw-tools"),
+  clearDrawing: document.getElementById("clear-drawing")
 };
 
 function italicText(element, value) {
@@ -399,7 +428,7 @@ function renderSpecies(item, place) {
   const placeName = typeof place === "string" ? place : place?.name;
   const placeSource = typeof place === "object" ? place?.source : null;
   const styleKey = typeof place === "object" && place?.style ? place.style : item.localStyle;
-  const regionalPack = locationKit(placeName, regionalPacks[styleKey], item.id);
+  const regionalPack = funLocationKit(locationKit(placeName, regionalPacks[styleKey], item.id), item, placeName);
   els.speciesRegion.textContent = placeName || item.region;
   els.speciesNumber.textContent = "sister pair";
   italicText(els.speciesName, item.name);
@@ -430,6 +459,7 @@ function renderSpecies(item, place) {
 
   els.habitat.dataset.habitat = item.habitatKey;
   els.habitat.dataset.localStyle = styleKey;
+  els.habitat.dataset.species = item.id;
   els.habitat.dataset.pose = item.pose;
   els.habitat.style.setProperty("--worm-color", item.worm);
   els.habitat.style.setProperty("--worm-deep", item.wormDeep);
@@ -439,6 +469,7 @@ function renderSpecies(item, place) {
   const placeSeed = [...(placeName || item.id)].reduce((sum, character) => sum + character.codePointAt(0), 0);
   els.habitat.style.setProperty("--place-hue", `${(placeSeed % 19) - 9}deg`);
   syncAccessories();
+  renderDoodles();
 
   els.selectionPlace.textContent = placeSource ? `${placeName} · ${placeSource}` : (placeName || item.region);
   els.selectionSpecies.replaceChildren();
@@ -482,6 +513,90 @@ function activeWardrobe() {
   if (!wardrobes.has(key)) wardrobes.set(key, new Set());
   return wardrobes.get(key);
 }
+
+function activeDrawing() {
+  const key = wardrobeKey();
+  if (!drawings.has(key)) drawings.set(key, []);
+  return drawings.get(key);
+}
+
+function renderDoodles() {
+  els.doodleLayer.replaceChildren();
+  activeDrawing().forEach(stroke => {
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("class", "doodle-stroke");
+    path.setAttribute("d", stroke.d);
+    path.setAttribute("stroke", stroke.color);
+    els.doodleLayer.appendChild(path);
+  });
+}
+
+function doodlePoint(event) {
+  const bounds = els.wormAvatar.getBoundingClientRect();
+  return {
+    x: ((event.clientX - bounds.left) / bounds.width) * 420,
+    y: ((event.clientY - bounds.top) / bounds.height) * 320
+  };
+}
+
+function pathFromPoints(points) {
+  if (points.length < 2) return `M ${points[0].x} ${points[0].y}`;
+  return points.reduce((path, point, index) => `${path}${index ? " L" : "M"} ${point.x.toFixed(1)} ${point.y.toFixed(1)}`, "");
+}
+
+els.freestyle.addEventListener("click", () => {
+  drawingEnabled = !drawingEnabled;
+  els.freestyle.setAttribute("aria-pressed", String(drawingEnabled));
+  els.drawTools.toggleAttribute("hidden", !drawingEnabled);
+  els.wormAvatar.classList.toggle("is-drawing", drawingEnabled);
+});
+
+document.querySelectorAll("[data-draw-color]").forEach(button => {
+  button.addEventListener("click", () => {
+    drawingColor = button.dataset.drawColor;
+    document.querySelectorAll("[data-draw-color]").forEach(candidate => candidate.classList.toggle("is-selected", candidate === button));
+  });
+});
+
+els.clearDrawing.addEventListener("click", () => {
+  drawings.set(wardrobeKey(), []);
+  renderDoodles();
+});
+
+els.wormAvatar.addEventListener("pointerdown", event => {
+  if (!drawingEnabled || event.button !== 0) return;
+  event.preventDefault();
+  els.wormAvatar.setPointerCapture(event.pointerId);
+  const point = doodlePoint(event);
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("class", "doodle-stroke");
+  path.setAttribute("stroke", drawingColor);
+  path.setAttribute("d", pathFromPoints([point]));
+  els.doodleLayer.appendChild(path);
+  activeDoodle = { path, points: [point], color: drawingColor };
+});
+
+els.wormAvatar.addEventListener("pointermove", event => {
+  if (!activeDoodle) return;
+  event.preventDefault();
+  const point = doodlePoint(event);
+  const previous = activeDoodle.points.at(-1);
+  if (Math.hypot(point.x - previous.x, point.y - previous.y) < 1.8) return;
+  activeDoodle.points.push(point);
+  activeDoodle.path.setAttribute("d", pathFromPoints(activeDoodle.points));
+});
+
+function finishDoodle(event) {
+  if (!activeDoodle) return;
+  if (els.wormAvatar.hasPointerCapture(event.pointerId)) els.wormAvatar.releasePointerCapture(event.pointerId);
+  const d = activeDoodle.path.getAttribute("d");
+  if (activeDoodle.points.length > 1) activeDrawing().push({ d, color: activeDoodle.color });
+  else activeDoodle.path.remove();
+  activeDoodle = null;
+}
+
+els.wormAvatar.addEventListener("pointerup", finishDoodle);
+els.wormAvatar.addEventListener("pointercancel", finishDoodle);
 
 function toggleAccessory(id, force) {
   const activeAccessories = activeWardrobe();
