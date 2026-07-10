@@ -12,44 +12,45 @@ const regionalPacks = {
 };
 
 const locationKits = {
-  "Ishigaki, Japan": ["Ishigaki fig grove", "Fig-leaf explorer hat", "Yaeyama minsā field sash", "Fig-wasp flight rig", "🍃", "🧵", "🪽", "🌿"],
-  "Ahmedabad, India · AF16": ["Ahmedabad pol garden", "Banyan-shade field cap", "Gujarat soil satchel", "AF16 archive pack", "🌳", "🎒", "🧬", "🌳", "ahmedabad"],
-  "Taipei, Taiwan · BRC20390": ["Taipei mountain compost", "Elephant Mountain leaf cap", "Taipei compost climbing harness", "BRC20390 vial pack", "🍃", "🧗", "🧪", "⛰️"],
-  "Kerala, India · JU1337": ["Kerala coconut grove", "Coconut-leaf sun visor", "Kerala coconut-grove harness", "JU1337 fruit sampler", "🌴", "🧗", "🧪", "🥥"],
-  "Kauaʻi, Hawaiʻi · QG130": ["Kauaʻi cloud forest", "Mokihana lei crown", "Lauhala sample satchel", "Fern trail glider", "🌿", "🧺", "🪶", "🌿"],
-  "Réunion Island · JU1375": ["Réunion volcanic garden", "Volcanic-island sun cap", "Snail-safe field satchel", "JU1375 trail pack", "🌋", "🐌", "🧪", "🌋"],
-  "Orsay, France · JU2518": ["Orsay apple orchard", "Apple-orchard field cap", "Orsay apple basket", "JU2518 sample pack", "🍎", "🧺", "🧪", "🍎"],
-  "São Paulo region, Brazil · EG5612": ["Brazilian jackfruit garden", "Jackfruit-leaf rain hat", "Jackfruit-grove climbing harness", "EG5612 field pack", "🌿", "🧗", "🔬", "🍈"],
-  "New South Wales, Australia · QG2814": ["New South Wales rainforest", "Rainforest-flower field hat", "NSW canopy harness", "QG2814 sampler", "🌺", "🧗", "🧪", "🌺"],
-  "Bristol N2, England": ["Bristol mushroom compost, 1951", "Mushroom-compost cap", "Bristol 1951 sample bag", "N2 freezer archive", "🍄", "🧺", "❄️", "🍄"],
-  "Santeuil, France": ["Santeuil orchard floor", "French orchard cap", "Santeuil fruit satchel", "Orchard sample vials", "🍏", "🎒", "🧪", "🍏"],
-  "Scotland, Great Britain": ["Scottish wet leaf litter", "Heather rain cap", "Scottish leaf-litter satchel", "Beetle-wing field pack", "🌧️", "🎒", "🪲", "🌿"],
-  "Tenerife, Spain": ["Tenerife volcanic garden", "Canary-pine sun visor", "Tenerife fruit basket", "Volcanic trail pack", "🌲", "🧺", "🌋", "🌋"],
-  "Kauaʻi, Hawaiʻi": ["Kauaʻi cloud forest", "Mokihana lei crown", "Lauhala sample satchel", "Fern trail glider", "🌿", "🧺", "🪶", "🌿"],
-  "elegans::Kauaʻi, Hawaiʻi": ["Kauaʻi C. elegans fruit site", "Mokihana field crown", "Lauhala elegans satchel", "Rare-male fern glider", "🌿", "🧺", "🪶", "🍈"],
-  "tropicalis::Kauaʻi, Hawaiʻi": ["Kauaʻi C. tropicalis garden", "Mokihana sampler crown", "Kauaʻi tropical fruit bag", "Tropicalis fern glider", "🌿", "🧺", "🪶", "🌺"],
-  "Australian Capital Territory": ["Canberra eucalyptus compost", "Eucalyptus field hat", "Canberra compost satchel", "Gum-leaf sample pack", "🌿", "🎒", "🧪", "🦘"],
-  "Auckland, New Zealand": ["Auckland fern garden", "Silver-fern trail cap", "Wet-leaf field satchel", "Fern trail glider", "🌿", "🎒", "🪶", "🌿"],
-  "Araucanía, Chile": ["Araucanía forest floor", "Araucaria-cone cap", "Araucanía litter satchel", "Chilean beetle-wing pack", "🌲", "🎒", "🪲", "🌲"],
-  "Trivandrum, Kerala · JU1325": ["Trivandrum botanical garden", "Botanical-flower rain hat", "Botanical-garden climbing harness", "JU1325 garden kit", "🌺", "🧗", "🧪", "🌺"],
-  "Singapore · ZF1220": ["Singapore starfruit garden", "Starfruit field cap", "Starfruit-grove climbing harness", "ZF1220 vial pack", "⭐", "🧗", "🧪", "⭐"],
-  "Praslin, Seychelles · YR106": ["Praslin island forest", "Coco-de-mer sun visor", "Seychelles fruit bag", "YR106 island kit", "🌴", "🧺", "🧪", "🥥"],
-  "São Tomé · JU2484": ["São Tomé guava grove", "Guava-leaf rain hat", "Guava-grove climbing harness", "JU2484 sample pack", "🍃", "🧗", "🧪", "🍈"],
-  "Mahahual, Mexico · JU2617": ["Mahahual citrus heap", "Orange-peel field cap", "Yucatán citrus harness", "JU2617 fruit vials", "🍊", "🧗", "🧪", "🍊"],
-  "Mauritius · JU2909": ["Mauritius fruit forest", "Mauritius fruit-forager cap", "Island canopy harness", "JU2909 trail kit", "🌿", "🧗", "🧪", "🏝️"],
-  "Ho Chi Minh City · JU4356": ["Ho Chi Minh carambola park", "Carambola field cap", "City-park climbing harness", "JU4356 sample pack", "⭐", "🧗", "🧪", "⭐"],
-  "Lombok, Indonesia · HPT26": ["Lombok fig forest", "Lombok fig-leaf cap", "Fig-forest climbing harness", "HPT26 fig pack", "🍃", "🧗", "🧪", "🌳"],
-  "Sanda, Bali · JU1873": ["Sanda cacao grove", "Cacao-leaf rain hat", "Cacao-grove climbing harness", "JU1873 chocolate bar", "🍃", "🧗", "🍫", "🍫", "bali-cacao"],
-  "Barro Colorado Island, Panama": ["Barro Colorado canopy", "Canopy-leaf rain hat", "BCI canopy harness", "Island research pack", "🌿", "🧗", "🔬", "🌴"],
-  "La Selva, Costa Rica": ["La Selva rainforest station", "Heliconia rain hat", "La Selva canopy harness", "Fruit-sampling trail belt", "🌺", "🧗", "🍌", "🌺"],
-  "Guadeloupe": ["Guadeloupe flower garden", "Clusia flower crown", "Guadeloupe flower basket", "Island sample pack", "🌸", "🧺", "🧪", "🌸"],
-  "Nouragues, French Guiana": ["Nouragues rainforest", "Nouragues drip-leaf hat", "Nouragues canopy harness", "Forest-stem sample belt", "🌿", "🧗", "🧪", "🌧️"],
-  "Manaus region, Brazil": ["Manaus forest floor", "Amazon rain-leaf cap", "Manaus canopy harness", "Rainforest sample pack", "🌿", "🧗", "🧪", "🌳"],
-  "Oʻahu, Hawaiʻi": ["Oʻahu island garden", "ʻIlima lei crown", "Lauhala sample bag", "Island fern glider", "🌼", "🧺", "🪶", "🌼"],
-  "New Taipei City, Taiwan": ["New Taipei mountain garden", "Mountain-leaf field cap", "Taipei mountain harness", "Taiwan flower sampler", "🍃", "🧗", "🌸", "⛰️"],
-  "Pohnpei, Micronesia": ["Pohnpei rain garden", "Breadfruit-leaf visor", "Pohnpei fruit bag", "Island rain kit", "🍃", "🧺", "🌧️", "🌴"],
-  "Queensland, Australia": ["Queensland rainforest", "Fan-palm rain hat", "Queensland canopy harness", "Rainforest flower sampler", "🌴", "🧗", "🧪", "🌺"],
-  "Réunion Island": ["Réunion volcanic garden", "Volcanic-island sun visor", "Réunion fruit basket", "Island flower kit", "🌋", "🧺", "🌸", "🌋"]
+  "Ishigaki, Japan": ["Ishigaki fig grove", "fig-leaf visor", "Yaeyama minsā sash", "fig-wasp wings", "🍃", "🧵", "🪽", "🌿", null, "inopinata"],
+  "Ahmedabad, India · AF16": ["Ahmedabad pol garden", "Uttarayan kite hat", "bandhani scarf", "dandiya sticks", "🪁", "🧣", "✨", "🌳", "ahmedabad", "briggsae"],
+  "Taipei, Taiwan · BRC20390": ["Taipei mountain compost", "Taipei 101 party hat", "night-market tote", "bubble-tea backpack", "🏙️", "🛍️", "🧋", "⛰️"],
+  "Kerala, India · JU1337": ["Kerala coconut grove", "coconut-shell hat", "kasavu-gold sash", "banana-chip backpack", "🥥", "✨", "🍌", "🥥"],
+  "Kauaʻi, Hawaiʻi · QG130": ["Kauaʻi cloud forest", "mokihana lei crown", "lauhala satchel", "fern trail glider", "🌿", "🧺", "🪶", "🌿"],
+  "Réunion Island · JU1375": ["Réunion volcanic garden", "volcano helmet", "snail-shell satchel", "lava-lamp backpack", "🌋", "🐌", "🪔", "🌋"],
+  "Orsay, France · JU2518": ["Orsay apple orchard", "apple beret", "orchard basket", "baguette backpack", "🍎", "🧺", "🥖", "🍎"],
+  "São Paulo region, Brazil · EG5612": ["Brazilian jackfruit garden", "jackfruit helmet", "carnival sash", "microscope backpack", "🍈", "🎉", "🔬", "🍈"],
+  "New South Wales, Australia · QG2814": ["New South Wales rainforest", "waratah crown", "eucalyptus wrap", "kookaburra backpack", "🌺", "🌿", "🐦", "🌺"],
+  "Bristol N2, England": ["Bristol mushroom compost, 1951", "lab goggles", "sample utility belt", "cryo-vial jetpack", "🥽", "🧰", "❄️", "🍄", null, "elegans"],
+  "Santeuil, France": ["Santeuil orchard floor", "apple beret", "gingham picnic sash", "cider basket", "🍏", "🧣", "🧺", "🍏"],
+  "Scotland, Great Britain": ["Scottish wet leaf litter", "tartan tam", "Highland kilt", "bagpipe backpack", "🧢", "🧶", "🎵", "🌿", null, "scotland"],
+  "Tenerife, Spain": ["Tenerife volcanic garden", "Teide volcano visor", "banana-leaf wrap", "lava-rock jetpack", "🌋", "🍌", "🚀", "🌋"],
+  "Kauaʻi, Hawaiʻi": ["Kauaʻi cloud forest", "mokihana crown", "lauhala belt", "fern surfboard", "🌿", "🧺", "🏄", "🌿"],
+  "elegans::Kauaʻi, Hawaiʻi": ["Kauaʻi C. elegans fruit site", "mokihana crown", "lauhala belt", "fern surfboard", "🌿", "🧺", "🏄", "🍈"],
+  "tropicalis::Kauaʻi, Hawaiʻi": ["Kauaʻi C. tropicalis garden", "rainbow lei crown", "lauhala sample belt", "shave-ice backpack", "🌈", "🧺", "🍧", "🌺"],
+  "tropicalis::Oʻahu, Hawaiʻi": ["Oʻahu island garden", "star sunglasses", "tropical bikini", "SPF 50 sun-cream pack", "⭐", "👙", "🧴", "🌼", null, "tropicalis"],
+  "Australian Capital Territory": ["Canberra eucalyptus compost", "eucalyptus cork hat", "kangaroo-pouch belt", "boomerang backpack", "🌿", "🦘", "🪃", "🦘"],
+  "Auckland, New Zealand": ["Auckland fern garden", "silver-fern crown", "raincoat wrap", "kiwi backpack", "🌿", "🧥", "🥝", "🌿"],
+  "Araucanía, Chile": ["Araucanía forest floor", "araucaria-cone crown", "forest-rain wrap", "pudú backpack", "🌲", "🌧️", "🦌", "🌲"],
+  "Trivandrum, Kerala · JU1325": ["Trivandrum botanical garden", "jasmine crown", "banana-leaf sash", "spice-box backpack", "🌺", "🍃", "🧂", "🌺"],
+  "Singapore · ZF1220": ["Singapore starfruit garden", "starfruit crown", "Peranakan-tile sash", "Merlion water pack", "⭐", "🔷", "🦁", "⭐"],
+  "Praslin, Seychelles · YR106": ["Praslin island forest", "coco-de-mer crown", "woven-palm wrap", "tortoise backpack", "🥥", "🌴", "🐢", "🥥"],
+  "São Tomé · JU2484": ["São Tomé guava grove", "guava crown", "island explorer sash", "parrot backpack", "🍈", "🧣", "🦜", "🍈"],
+  "Mahahual, Mexico · JU2617": ["Mahahual citrus heap", "orange-peel sombrero", "coral-reef sash", "citrus cooler", "🍊", "🪸", "🧊", "🍊"],
+  "Mauritius · JU2909": ["Mauritius fruit forest", "dodo hat", "séga-dance sash", "fruit-basket backpack", "🦤", "🪇", "🧺", "🏝️"],
+  "Ho Chi Minh City · JU4356": ["Ho Chi Minh carambola park", "starfruit crown", "lantern sash", "scooter sample box", "⭐", "🏮", "🛵", "⭐"],
+  "Lombok, Indonesia · HPT26": ["Lombok fig forest", "fig-leaf hat", "songket sash", "volcano backpack", "🍃", "🧵", "🌋", "🌳"],
+  "Sanda, Bali · JU1873": ["Sanda cacao grove", "cacao-pod helmet", "cacao climbing harness", "chocolate bar", "🍫", "🧗", "🍫", "🍫", "bali-cacao", "wallacei"],
+  "Barro Colorado Island, Panama": ["Barro Colorado canopy", "leaf rain hat", "sloth satchel", "field-radio backpack", "🍃", "🦥", "📻", "🌴"],
+  "La Selva, Costa Rica": ["La Selva rainforest station", "heliconia crown", "frog-pattern sash", "banana backpack", "🌺", "🐸", "🍌", "🌺"],
+  "Guadeloupe": ["Guadeloupe flower garden", "clusia flower crown", "madras sash", "hummingbird backpack", "🌸", "🧣", "🐦", "🌸"],
+  "Nouragues, French Guiana": ["Nouragues rainforest", "raindrop crown", "canopy-rope belt", "satellite tracker", "🌧️", "🧗", "🛰️", "🌧️"],
+  "Manaus region, Brazil": ["Manaus forest floor", "Brazil-nut hat", "river-wave sash", "toucan backpack", "🌰", "🌊", "🐦", "🌳"],
+  "Oʻahu, Hawaiʻi": ["Oʻahu island garden", "ʻilima lei crown", "aloha-shirt wrap", "pineapple backpack", "🌼", "👕", "🍍", "🌼"],
+  "New Taipei City, Taiwan": ["New Taipei mountain garden", "mountain-leaf crown", "lantern sash", "tea-flask backpack", "🍃", "🏮", "🍵", "⛰️"],
+  "Pohnpei, Micronesia": ["Pohnpei rain garden", "breadfruit hat", "woven-island sash", "rain-cloud backpack", "🍈", "🧵", "🌧️", "🌴"],
+  "Queensland, Australia": ["Queensland rainforest", "fan-palm hat", "reef-pattern sash", "cassowary backpack", "🌴", "🪸", "🐦", "🌺"],
+  "Réunion Island": ["Réunion volcanic garden", "volcano visor", "séga-dance sash", "vanilla-pod backpack", "🌋", "🪇", "🌿", "🌋"]
 };
 
 function locationKit(placeName, fallback, speciesId) {
@@ -60,30 +61,14 @@ function locationKit(placeName, fallback, speciesId) {
   const icons = parts.slice(3, 6);
   const motif = parts[6];
   const sceneKey = parts[7];
+  const visualKey = parts[8];
   return {
     sceneName,
     looks,
     icons,
     motif,
-    sceneKey
-  };
-}
-
-const speciesGear = {
-  inopinata: { looks: ["fig-leaf visor", "Yaeyama minsā sash", "fig-wasp wings"], icons: ["🍃", "🧵", "🪽"] },
-  elegans: { looks: ["lab goggles", "sample utility belt", "cryo-vial jetpack"], icons: ["🥽", "🧰", "❄️"] },
-  briggsae: { looks: ["Uttarayan kite hat", "bandhani scarf", "dandiya sticks"], icons: ["🪁", "🧣", "✨"] },
-  nigoni: { looks: ["fruit-slice crown", "market-tote belt", "dragonfly wings"], icons: ["🍊", "🧺", "🪽"] },
-  tropicalis: { looks: ["star sunglasses", "tropical bikini", "SPF 50 sun-cream pack"], icons: ["⭐", "👙", "🧴"] },
-  wallacei: { looks: ["cacao-pod helmet", "cacao climbing harness", "chocolate bar"], icons: ["🍫", "🧗", "🍫"] }
-};
-
-function funLocationKit(baseKit, item) {
-  const gear = speciesGear[item.id];
-  return {
-    ...baseKit,
-    looks: gear.looks,
-    icons: gear.icons
+    sceneKey,
+    visualKey
   };
 }
 
@@ -423,7 +408,7 @@ function renderSpecies(item, place) {
   const placeName = typeof place === "string" ? place : place?.name;
   const placeSource = typeof place === "object" ? place?.source : null;
   const styleKey = typeof place === "object" && place?.style ? place.style : item.localStyle;
-  const regionalPack = funLocationKit(locationKit(placeName, regionalPacks[styleKey], item.id), item);
+  const regionalPack = locationKit(placeName, regionalPacks[styleKey], item.id);
   els.speciesRegion.textContent = placeName || item.region;
   italicText(els.speciesName, item.name);
   els.speciesNickname.textContent = item.nickname;
@@ -453,6 +438,7 @@ function renderSpecies(item, place) {
   els.habitat.dataset.habitat = item.habitatKey;
   els.habitat.dataset.localStyle = styleKey;
   els.habitat.dataset.placeScene = regionalPack.sceneKey || "";
+  els.habitat.dataset.accessoryVisual = regionalPack.visualKey || "icons";
   els.habitat.dataset.species = item.id;
   els.habitat.dataset.pose = item.pose;
   els.habitat.style.setProperty("--worm-color", item.worm);
