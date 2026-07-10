@@ -255,6 +255,7 @@
       background: #fff; border: 1px solid var(--border); border-radius: 12px;
       box-shadow: var(--shadow); transition: transform .1s ease;
     }
+    .project figure img.figure-padded { padding: 16px 12px; }
     .project figure a:hover img { transform: translateY(-2px); border-color: var(--accent); }
     .project figcaption { color: var(--text-faint); font-size: .82rem; margin-top: 8px; }
     /* themes with no figure keep text readable */
@@ -267,8 +268,21 @@
     }
 
     /* contact */
-    .contact-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
+    .contact-box {
+      position: relative; overflow: hidden; min-height: 210px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 26px 178px 26px 26px; box-shadow: var(--shadow);
+    }
+    .contact-illustration {
+      position: absolute; top: 18px; right: 20px;
+      width: 124px; height: 124px; border-radius: 50%; object-fit: cover;
+      border: 5px solid var(--surface); box-shadow: var(--shadow);
+    }
     .contact-box p { color: var(--text-soft); margin: 0 0 14px; }
+    @media (max-width: 620px) {
+      .contact-box { padding: 160px 22px 24px; }
+      .contact-illustration { left: 22px; right: auto; }
+    }
 
     footer { padding: 34px 0 48px; border-top: 1px solid var(--border); color: var(--text-faint); font-size: .86rem; text-align: center; }
 
@@ -398,7 +412,7 @@
         </p>
       </div>
       <figure>
-        <a href="nematode-learning.png" target="_blank" rel="noopener"><img src="nematode-learning.png" alt="The forms of learning documented in Caenorhabditis nematodes: habituation and sensitization, gustatory, olfactory, thermosensory and maze learning, and imprinting and transgenerational learning" onerror="this.closest('figure').remove()" /></a>
+        <a href="nematode-learning.png" target="_blank" rel="noopener"><img class="figure-padded" src="nematode-learning.png" alt="The forms of learning documented in Caenorhabditis nematodes: habituation and sensitization, gustatory, olfactory, thermosensory and maze learning, and imprinting and transgenerational learning" onerror="this.closest('figure').remove()" /></a>
         <figcaption>The many forms of learning documented in <em>Caenorhabditis</em> nematodes.</figcaption>
       </figure>
     </div>
@@ -632,6 +646,12 @@
   <section id="contact" class="wrap">
     <h2>Contact</h2>
     <div class="contact-box">
+      <!-- CC0 photo: David Castor / Wikimedia Commons, Banner Uppsala Cathedral during fall.jpg -->
+      <img
+        class="contact-illustration"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Banner_Uppsala_Cathedral_during_fall.jpg/960px-Banner_Uppsala_Cathedral_during_fall.jpg"
+        alt="Autumn view of Uppsala Cathedral"
+      />
       <p>
         Department of Ecology and Genetics, Animal Ecology<br />
         Evolutionary Biology Centre (EBC), Uppsala University<br />
