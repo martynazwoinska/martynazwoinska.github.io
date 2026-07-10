@@ -10,11 +10,13 @@ const species = [
     nickname: "The fig giant",
     region: "Okinawa, Japan",
     reproduction: "outcrossing",
-    reproductionLabel: "♂ + ♀ Outcrossing",
+    reproductionLabel: "♀ female + ♂ male",
     cast: ["female", "male"],
-    scale: 1,
+    scale: 1.08,
     localStyle: "okinawa",
-    localLooks: ["Okinawa sun hat", "Fig-pattern scarf"],
+    sceneName: "Okinawa fig garden",
+    localLooks: ["Fig-leaf hat", "Okinawa fig scarf", "Fig-wasp wings"],
+    localIcons: ["🍃", "🧣", "🪽"],
     habitat: "Fresh figs",
     habitatKey: "fig",
     intro: "A surprisingly large close relative of C. elegans that lives in fresh figs and travels with fig wasps.",
@@ -34,11 +36,13 @@ const species = [
     nickname: "The Kauaʻi local",
     region: "Kauaʻi, Hawaiʻi",
     reproduction: "outcrossing",
-    reproductionLabel: "♂ + ♀ Outcrossing",
+    reproductionLabel: "♀ female + ♂ male",
     cast: ["female", "male"],
-    scale: .86,
+    scale: .74,
     localStyle: "kauai",
-    localLooks: ["Kauaʻi garden hat", "Island rain wrap"],
+    sceneName: "Kauaʻi island forest",
+    localLooks: ["Kauaʻi flower wreath", "Island rain cape", "Fern sash"],
+    localIcons: ["🌺", "🌧️", "🌿"],
     habitat: "Island wild sites",
     habitatKey: "island",
     intro: "A Hawaiian species known from Kauaʻi, where it has been found at only a small number of wild sites.",
@@ -58,11 +62,13 @@ const species = [
     nickname: "The world traveller",
     region: "Many regions worldwide",
     reproduction: "selfing",
-    reproductionLabel: "⚭ Mostly selfing",
+    reproductionLabel: "⚥ hermaphrodite + ♂ rare male",
     cast: ["hermaphrodite", "rare male"],
-    scale: .84,
+    scale: .72,
     localStyle: "field",
-    localLooks: ["Field explorer cap", "Forager neckerchief"],
+    sceneName: "Garden compost",
+    localLooks: ["Field explorer cap", "Compost satchel", "Sample-jar pack"],
+    localIcons: ["🧢", "🎒", "🧪"],
     habitat: "Rotting plants & compost",
     habitatKey: "compost",
     intro: "The famous laboratory worm is also a wild explorer of short-lived, bacteria-rich places such as rotting fruit and compost.",
@@ -88,11 +94,13 @@ const species = [
     nickname: "The tropical mixer",
     region: "Tropical regions",
     reproduction: "outcrossing",
-    reproductionLabel: "♂ + ♀ Outcrossing",
+    reproductionLabel: "♀ female + ♂ male",
     cast: ["female", "male"],
-    scale: .88,
+    scale: .78,
     localStyle: "rainforest",
-    localLooks: ["Rainforest shade hat", "Tropical rain cape"],
+    sceneName: "Tropical rainforest",
+    localLooks: ["Rainforest leaf crown", "Monsoon cape", "Fruit necklace"],
+    localIcons: ["🌿", "🌧️", "🍊"],
     habitat: "Tropical rotting fruit",
     habitatKey: "tropical",
     intro: "A warm-climate species found across tropical regions, usually in the busy microbial world of decaying plant material.",
@@ -114,11 +122,13 @@ const species = [
     nickname: "The temperate mixer",
     region: "Europe & North America",
     reproduction: "outcrossing",
-    reproductionLabel: "♂ + ♀ Outcrossing",
+    reproductionLabel: "♀ female + ♂ male",
     cast: ["female", "male"],
-    scale: .86,
+    scale: .76,
     localStyle: "woodland",
-    localLooks: ["Woodland beanie", "Temperate scarf"],
+    sceneName: "Temperate woodland",
+    localLooks: ["Acorn beret", "Woodland scarf", "Oak-leaf badge"],
+    localIcons: ["🌰", "🧣", "🍂"],
     habitat: "Temperate woodlands",
     habitatKey: "woodland",
     intro: "A temperate-zone species often collected from decaying plant material and invertebrate-rich woodland habitats.",
@@ -140,11 +150,13 @@ const species = [
     nickname: "The warm-weather selfer",
     region: "Pantropical records",
     reproduction: "selfing",
-    reproductionLabel: "⚭ Mostly selfing",
+    reproductionLabel: "⚥ hermaphrodite + ♂ rare male",
     cast: ["hermaphrodite", "rare male"],
-    scale: .84,
+    scale: .72,
     localStyle: "ocean",
-    localLooks: ["Island sun hat", "Ocean-blue wrap"],
+    sceneName: "Pantropical coast",
+    localLooks: ["Palm-leaf sun hat", "Ocean wrap", "Tropical flower necklace"],
+    localIcons: ["🌴", "🌊", "🌸"],
     habitat: "Tropical fruit & flowers",
     habitatKey: "flowers",
     intro: "A tropical species in which self-fertile hermaphrodites can start a new population even when they arrive alone.",
@@ -189,13 +201,16 @@ const els = {
   selectionSpecies: document.getElementById("map-selection-species"),
   tabs: document.getElementById("species-tabs"),
   habitat: document.getElementById("habitat"),
+  sceneName: document.getElementById("scene-name"),
   wormNameTag: document.getElementById("worm-name-tag"),
   wormTitle: document.getElementById("worm-avatar-title"),
   wormDesc: document.getElementById("worm-avatar-desc"),
-  primarySex: document.getElementById("primary-sex"),
-  companionSex: document.getElementById("companion-sex"),
+  localHeadwearIcon: document.querySelector('[data-accessory="local-headwear"] .button-icon'),
   localHeadwearLabel: document.querySelector('[data-accessory="local-headwear"] .button-label'),
+  localWrapIcon: document.querySelector('[data-accessory="local-wrap"] .button-icon'),
   localWrapLabel: document.querySelector('[data-accessory="local-wrap"] .button-label'),
+  localCharmIcon: document.querySelector('[data-accessory="local-charm"] .button-icon'),
+  localCharmLabel: document.querySelector('[data-accessory="local-charm"] .button-label'),
   speciesRegion: document.getElementById("species-region"),
   speciesNumber: document.getElementById("species-number"),
   speciesName: document.getElementById("species-name"),
@@ -205,8 +220,7 @@ const els = {
   speciesHabitat: document.getElementById("species-habitat"),
   speciesFact: document.getElementById("species-fact"),
   exploredCount: document.getElementById("explored-count"),
-  surprise: document.getElementById("surprise-me"),
-  reset: document.getElementById("reset-atlas")
+  surprise: document.getElementById("surprise-me")
 };
 
 function italicText(element, value) {
@@ -272,10 +286,13 @@ function renderSpecies(item, place) {
   italicText(els.wormNameTag, item.short);
   els.wormTitle.textContent = `A dressed-up ${item.name} pair`;
   els.wormDesc.textContent = `A friendly illustrated ${item.cast[0]} and ${item.cast[1]}. Use the dress-up buttons to add or remove accessories.`;
-  els.primarySex.textContent = item.cast[0];
-  els.companionSex.textContent = item.cast[1];
+  els.localHeadwearIcon.textContent = item.localIcons[0];
   els.localHeadwearLabel.textContent = item.localLooks[0];
+  els.localWrapIcon.textContent = item.localIcons[1];
   els.localWrapLabel.textContent = item.localLooks[1];
+  els.localCharmIcon.textContent = item.localIcons[2];
+  els.localCharmLabel.textContent = item.localLooks[2];
+  els.sceneName.textContent = item.sceneName;
 
   els.habitat.dataset.habitat = item.habitatKey;
   els.habitat.dataset.localStyle = item.localStyle;
@@ -332,22 +349,11 @@ document.querySelectorAll("[data-accessory]").forEach(button => {
 });
 
 els.surprise.addEventListener("click", () => {
-  const options = ["hat", "glasses", "crown", "flower", "bow", "cape", "local-headwear", "local-wrap"];
+  const options = ["local-headwear", "local-wrap", "local-charm"];
   options.forEach(id => toggleAccessory(id, false));
   const shuffled = options.slice().sort(() => Math.random() - .5);
-  const count = 2 + Math.floor(Math.random() * 2);
+  const count = 1 + Math.floor(Math.random() * 3);
   shuffled.slice(0, count).forEach(id => toggleAccessory(id, true));
-});
-
-els.reset.addEventListener("click", () => {
-  [...activeAccessories].forEach(id => toggleAccessory(id, false));
-  visited.clear();
-  visited.add("inopinata");
-  selectedId = "inopinata";
-  selectedRecordName = null;
-  els.exploredCount.textContent = "1";
-  renderSpecies(byId.get(selectedId));
-  updateSelectedControls();
 });
 
 function createMarker(record) {
