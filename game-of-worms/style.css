@@ -348,13 +348,17 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 }
 .regional-backdrop { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; opacity: .94; filter: hue-rotate(var(--place-hue, 0deg)); transform: scale(1.01); transition: transform .7s ease, filter .5s ease; }
 .habitat:hover .regional-backdrop { transform: scale(1.035); }
-.regional-backdrop > [data-scene] { display: none; }
+.regional-backdrop > [data-scene], .regional-backdrop > [data-place-scene] { display: none; }
 .habitat[data-local-style="okinawa"] [data-scene="okinawa"],
 .habitat[data-local-style="kauai"] [data-scene="kauai"],
 .habitat[data-local-style="field"] [data-scene="field"],
 .habitat[data-local-style="rainforest"] [data-scene="rainforest"],
 .habitat[data-local-style="woodland"] [data-scene="woodland"],
 .habitat[data-local-style="ocean"] [data-scene="ocean"] { display: inline; }
+.habitat[data-place-scene="ahmedabad"] .regional-backdrop > [data-scene],
+.habitat[data-place-scene="bali-cacao"] .regional-backdrop > [data-scene] { display: none; }
+.habitat[data-place-scene="ahmedabad"] [data-place-scene="ahmedabad"],
+.habitat[data-place-scene="bali-cacao"] [data-place-scene="bali-cacao"] { display: inline; }
 .scene-sky { fill: url(#scene-sky-gradient); }
 .scene-sky-top { stop-color: color-mix(in srgb, var(--scene-sky) 55%, white); }
 .scene-sky-bottom { stop-color: var(--scene-sky); }
@@ -388,6 +392,29 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .scene-mokihana circle { fill: #7567b8; stroke: rgba(255,255,255,.7); stroke-width: 2; }
 .scene-mushrooms path:first-of-type { fill: none; stroke: #f5e7ce; stroke-width: 8; stroke-linecap: round; }
 .scene-mushrooms path:nth-of-type(2) { fill: #e77b68; stroke: #9d5449; stroke-width: 2; }
+.ahmedabad-sky { fill: #f8d7ad; }
+.ahmedabad-sun { fill: #f4a75a; opacity: .78; filter: drop-shadow(0 0 18px rgba(230,125,62,.3)); }
+.sabarmati-ribbon { fill: #78b8bd; }
+.pol-wall { fill: #d88c63; stroke: #8e503d; stroke-width: 4; }
+.pol-roof { fill: #8d4f43; stroke: #6d3a35; stroke-width: 4; }
+.pol-window path { fill: #4b6f71; stroke: #f3c28f; stroke-width: 7; }
+.pol-balcony { fill: none; stroke: #734438; stroke-width: 7; stroke-linejoin: round; }
+.pol-door { fill: #6e4339; stroke: #f1bb82; stroke-width: 5; }
+.stepwell path { fill: #c97952; stroke: #8f513d; stroke-width: 3; }
+.stepwell .stepwell-water { fill: #5fa5aa; }
+.banyan-trunk { fill: #79513f; stroke: #5d4035; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.banyan-canopy { fill: #507b55; stroke: #315b43; stroke-width: 3; }
+.banyan-roots { fill: none; stroke: #6b493a; stroke-width: 5; stroke-linecap: round; opacity: .8; }
+.ahmedabad-ground { fill: #bf825a; }
+.cacao-sky { fill: #c6e2ce; }
+.bali-hill.far { fill: #6aa876; }
+.bali-hill.near { fill: #397e5a; }
+.cacao-trunk { fill: #79503d; stroke: #54382f; stroke-width: 5; }
+.cacao-leaves { fill: #32704e; stroke: #24543d; stroke-width: 3; }
+.cacao-pods path:nth-child(-n+2) { fill: #d98439; stroke: #754832; stroke-width: 4; }
+.cacao-pods path:last-child { fill: none; stroke: #f2b75f; stroke-width: 3; stroke-linecap: round; }
+.cacao-ground { fill: #536f43; }
+.cacao-litter { fill: #b17b43; stroke: #6d5235; stroke-width: 2; }
 .scene-mushrooms circle { fill: #fff4d6; }
 .scene-mushrooms.woodland path:nth-of-type(2) { fill: #b66b55; }
 .scene-compost-specks { fill: rgba(65,85,55,.5); }
@@ -581,7 +608,11 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .spf-pack circle { fill: #ff8f6b; stroke: white; stroke-width: 3; }
 .spf-pack text { fill: #713c52; font-size: 14px; font-weight: 900; stroke: none; }
 .sun-ray { fill: none; stroke: #ff8f6b; stroke-width: 3; stroke-linecap: round; }
-.leaf-glider { fill: rgba(119,191,139,.76); stroke: #3f7f5f; stroke-width: 4; }
+.chocolate-strap { fill: none; stroke: #684337; stroke-width: 10; stroke-linecap: round; }
+.chocolate-wrapper { fill: #f3bd54; stroke: #704033; stroke-width: 4; }
+.chocolate-bar { fill: #77402e; stroke: #4b2b25; stroke-width: 3; }
+.chocolate-grid { fill: none; stroke: #b36c46; stroke-width: 3; }
+.wrapper-fold { fill: #e96558; stroke: #704033; stroke-width: 3; }
 .doodle-layer { pointer-events: none; }
 .doodle-stroke { fill: none; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 2px 1px rgba(23,51,61,.2)); }
 .worm-avatar.is-drawing { cursor: crosshair; touch-action: none; outline: 3px dashed rgba(243,111,98,.65); outline-offset: 7px; border-radius: 18px; }

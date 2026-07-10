@@ -13,7 +13,7 @@ const regionalPacks = {
 
 const locationKits = {
   "Ishigaki, Japan": ["Ishigaki fig grove", "Fig-leaf explorer hat", "Yaeyama minsā field sash", "Fig-wasp flight rig", "🍃", "🧵", "🪽", "🌿"],
-  "Ahmedabad, India · AF16": ["Ahmedabad banyan garden", "Banyan-shade field cap", "Gujarat soil satchel", "AF16 archive pack", "🌳", "🎒", "🧬", "🌳"],
+  "Ahmedabad, India · AF16": ["Ahmedabad pol garden", "Banyan-shade field cap", "Gujarat soil satchel", "AF16 archive pack", "🌳", "🎒", "🧬", "🌳", "ahmedabad"],
   "Taipei, Taiwan · BRC20390": ["Taipei mountain compost", "Elephant Mountain leaf cap", "Taipei compost climbing harness", "BRC20390 vial pack", "🍃", "🧗", "🧪", "⛰️"],
   "Kerala, India · JU1337": ["Kerala coconut grove", "Coconut-leaf sun visor", "Kerala coconut-grove harness", "JU1337 fruit sampler", "🌴", "🧗", "🧪", "🥥"],
   "Kauaʻi, Hawaiʻi · QG130": ["Kauaʻi cloud forest", "Mokihana lei crown", "Lauhala sample satchel", "Fern trail glider", "🌿", "🧺", "🪶", "🌿"],
@@ -39,7 +39,7 @@ const locationKits = {
   "Mauritius · JU2909": ["Mauritius fruit forest", "Mauritius fruit-forager cap", "Island canopy harness", "JU2909 trail kit", "🌿", "🧗", "🧪", "🏝️"],
   "Ho Chi Minh City · JU4356": ["Ho Chi Minh carambola park", "Carambola field cap", "City-park climbing harness", "JU4356 sample pack", "⭐", "🧗", "🧪", "⭐"],
   "Lombok, Indonesia · HPT26": ["Lombok fig forest", "Lombok fig-leaf cap", "Fig-forest climbing harness", "HPT26 fig pack", "🍃", "🧗", "🧪", "🌳"],
-  "Sanda, Bali · JU1873": ["Bali cacao grove", "Cacao-leaf rain hat", "Cacao-grove climbing harness", "JU1873 cacao-pod belt", "🍃", "🧗", "🍫", "🍫"],
+  "Sanda, Bali · JU1873": ["Sanda cacao grove", "Cacao-leaf rain hat", "Cacao-grove climbing harness", "JU1873 chocolate bar", "🍃", "🧗", "🍫", "🍫", "bali-cacao"],
   "Barro Colorado Island, Panama": ["Barro Colorado canopy", "Canopy-leaf rain hat", "BCI canopy harness", "Island research pack", "🌿", "🧗", "🔬", "🌴"],
   "La Selva, Costa Rica": ["La Selva rainforest station", "Heliconia rain hat", "La Selva canopy harness", "Fruit-sampling trail belt", "🌺", "🧗", "🍌", "🌺"],
   "Guadeloupe": ["Guadeloupe flower garden", "Clusia flower crown", "Guadeloupe flower basket", "Island sample pack", "🌸", "🧺", "🧪", "🌸"],
@@ -59,11 +59,13 @@ function locationKit(placeName, fallback, speciesId) {
   const looks = parts.slice(0, 3);
   const icons = parts.slice(3, 6);
   const motif = parts[6];
+  const sceneKey = parts[7];
   return {
     sceneName,
     looks,
     icons,
     motif,
+    sceneKey,
     note: `${sceneName} gets its own field kit: ${looks.join(", ")}.`
   };
 }
@@ -74,7 +76,7 @@ const speciesGear = {
   briggsae: { looks: ["heart sunglasses", "sun-cream stripes", "butterfly wings"], icons: ["😎", "🧴", "🦋"] },
   nigoni: { looks: ["fruit-slice crown", "market-tote belt", "dragonfly wings"], icons: ["🍊", "🧺", "🪽"] },
   tropicalis: { looks: ["star sunglasses", "tropical bikini", "SPF 50 sun-cream pack"], icons: ["⭐", "👙", "🧴"] },
-  wallacei: { looks: ["cacao-pod helmet", "cacao climbing harness", "leaf-glider wings"], icons: ["🍫", "🧗", "🪽"] }
+  wallacei: { looks: ["cacao-pod helmet", "cacao climbing harness", "chocolate bar"], icons: ["🍫", "🧗", "🍫"] }
 };
 
 function funLocationKit(baseKit, item, placeName) {
@@ -250,7 +252,7 @@ const species = [
     id: "tropicalis",
     short: "C. tropicalis",
     name: "Caenorhabditis tropicalis",
-    nickname: "The warm-weather selfer",
+    nickname: "The gene-drive dodger",
     region: "Pantropical records",
     reproduction: "selfing",
     reproductionLabel: "⚥ hermaphrodite + ♂ rare male",
@@ -263,7 +265,7 @@ const species = [
     localIcons: ["🌴", "🧺", "🌸"],
     habitat: "Tropical fruit & flowers",
     habitatKey: "flowers",
-    intro: "A tropical species in which self-fertile hermaphrodites can start a new population even when they arrive alone.",
+    intro: "Some C. tropicalis strains carry Medea-like gene drives: a mother’s genes can eliminate offspring that fail to inherit the matching genetic antidote.",
     fact: "Its populations are strongly connected to geography, with especially rich diversity reported from Hawaiʻi and Taiwan.",
     worm: "#7dc9c2",
     wormDeep: "#287c82",
@@ -459,6 +461,7 @@ function renderSpecies(item, place) {
 
   els.habitat.dataset.habitat = item.habitatKey;
   els.habitat.dataset.localStyle = styleKey;
+  els.habitat.dataset.placeScene = regionalPack.sceneKey || "";
   els.habitat.dataset.species = item.id;
   els.habitat.dataset.pose = item.pose;
   els.habitat.style.setProperty("--worm-color", item.worm);
