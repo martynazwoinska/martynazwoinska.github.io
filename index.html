@@ -147,12 +147,12 @@
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-inner { display: flex; align-items: center; gap: 24px; height: 60px; }
     .nav-name {
       font-family: var(--display); font-weight: 700; font-size: 1.18rem;
       line-height: 1; letter-spacing: .3px; color: var(--text);
     }
-    .nav-links { display: flex; gap: 22px; align-items: center; }
+    .nav-links { display: flex; gap: 20px; align-items: center; margin-left: auto; }
     .nav-links a { color: var(--text-soft); font-size: .92rem; }
     .nav-menu-btn {
       display: none; align-items: center; gap: 8px;
@@ -160,13 +160,13 @@
       border-radius: 9px; padding: 8px 12px; cursor: pointer; font: inherit; font-size: .9rem;
     }
     .nav-links a[href="#beyond-research"] {
-      color: #047857; font-weight: 650;
+      color: var(--accent); font-weight: 650;
     }
     .nav-links a:hover { color: var(--accent-berry); text-decoration: none; }
     /* subtle emerald distinction for Beyond Research */
     .nav-links a.nav-beyond { color: var(--accent); }
     .nav-links a.nav-beyond::before { content: "❧ "; opacity: .75; }
-    .nav-links a.nav-beyond:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .nav-links a.nav-beyond:hover { color: var(--accent-berry); text-decoration: underline; text-underline-offset: 3px; }
 
     /* Beyond Research featured project */
     .feature {
@@ -208,7 +208,7 @@
       display: inline-flex; align-items: center; justify-content: center;
     }
     .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
-    @media (max-width: 760px) {
+    @media (max-width: 900px) {
       .nav-inner { height: auto; min-height: 60px; flex-wrap: wrap; gap: 10px; padding-top: 10px; padding-bottom: 10px; }
       .nav-menu-btn { display: inline-flex; margin-left: auto; }
       .nav-links {
