@@ -10,9 +10,56 @@
   <meta property="og:description" content="Life-history evolution, ageing, plasticity, and adaptive responses to environmental uncertainty. Department of Ecology and Genetics, Uppsala University." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://martynazwoinska.github.io/" />
+  <meta property="og:image" content="https://martynazwoinska.github.io/photo.jpg" />
+  <link rel="canonical" href="https://martynazwoinska.github.io/" />
   <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#14171a" media="(prefers-color-scheme: dark)" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Martyna Katarzyna Zwoińska",
+    "alternateName": "Martyna K. Zwoińska",
+    "jobTitle": "Evolutionary Biologist",
+    "url": "https://martynazwoinska.github.io/",
+    "image": "https://martynazwoinska.github.io/photo.jpg",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Uppsala University",
+      "department": "Department of Ecology and Genetics"
+    },
+    "sameAs": [
+      "https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en",
+      "https://orcid.org/0000-0003-3356-7284",
+      "https://www.researchgate.net/profile/Martyna-Zwoinska",
+      "https://www.linkedin.com/in/martyna-zwoinska",
+      "https://bsky.app/profile/martynazwoinska.bsky.social",
+      "https://www.uu.se/en/contact-and-organisation/staff?query=N12-104"
+    ]
+  }
+  </script>
   <style>
+    /* ----------  Self-hosted display font (Cormorant Garamond, SIL OFL)  ---------- */
+    @font-face {
+      font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 600; font-display: swap;
+      src: url('fonts/cormorant-garamond-latin-ext-600-normal.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 600; font-display: swap;
+      src: url('fonts/cormorant-garamond-latin-600-normal.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 700; font-display: swap;
+      src: url('fonts/cormorant-garamond-latin-ext-700-normal.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 700; font-display: swap;
+      src: url('fonts/cormorant-garamond-latin-700-normal.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
     /* ----------  Design tokens  ---------- */
     :root {
       --bg: #fbfaf7;
@@ -21,13 +68,14 @@
       --text: #1f2328;
       --text-soft: #55606b;
       --text-faint: #8a929c;
-      --accent: #1f6f6f;          /* deep teal */
-      --accent-soft: #e2efee;
+      --accent: #1c7a52;          /* emerald */
+      --accent-soft: #e3f1e9;
       --border: #e7e3d9;
       --shadow: 0 1px 2px rgba(31,35,40,.06), 0 8px 24px rgba(31,35,40,.06);
       --radius: 14px;
       --maxw: 940px;
       --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Times New Roman', serif;
+      --display: 'Cormorant Garamond', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
       --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
     @media (prefers-color-scheme: dark) {
@@ -38,8 +86,8 @@
         --text: #eceef0;
         --text-soft: #b3bcc4;
         --text-faint: #7d8791;
-        --accent: #4fc7be;
-        --accent-soft: #17302f;
+        --accent: #5fcb9d;
+        --accent-soft: #16302a;
         --border: #2c3238;
         --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
       }
@@ -47,13 +95,13 @@
     :root[data-theme="dark"] {
       --bg: #14171a; --surface: #1c2024; --surface-2: #23282d;
       --text: #eceef0; --text-soft: #b3bcc4; --text-faint: #7d8791;
-      --accent: #4fc7be; --accent-soft: #17302f; --border: #2c3238;
+      --accent: #5fcb9d; --accent-soft: #16302a; --border: #2c3238;
       --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
     }
     :root[data-theme="light"] {
       --bg: #fbfaf7; --surface: #ffffff; --surface-2: #f3f1ea;
       --text: #1f2328; --text-soft: #55606b; --text-faint: #8a929c;
-      --accent: #1f6f6f; --accent-soft: #e2efee; --border: #e7e3d9;
+      --accent: #1c7a52; --accent-soft: #e3f1e9; --border: #e7e3d9;
       --shadow: 0 1px 2px rgba(31,35,40,.06), 0 8px 24px rgba(31,35,40,.06);
     }
 
@@ -75,9 +123,17 @@
       outline-offset: 3px;
       border-radius: 6px;
     }
-    h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; }
+    h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; letter-spacing: .2px; }
 
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    .skip-link {
+      position: absolute; left: 24px; top: 12px; z-index: 100;
+      transform: translateY(-160%); background: var(--surface); color: var(--accent);
+      border: 1px solid var(--accent); border-radius: 999px; padding: 8px 14px;
+      box-shadow: var(--shadow); font-weight: 600; transition: transform .15s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
     /* ----------  Top nav  ---------- */
     header.nav {
       position: sticky; top: 0; z-index: 20;
@@ -90,6 +146,36 @@
     .nav-links { display: flex; gap: 22px; align-items: center; }
     .nav-links a { color: var(--text-soft); font-size: .92rem; }
     .nav-links a:hover { color: var(--accent); text-decoration: none; }
+    /* subtle emerald distinction for Beyond Research */
+    .nav-links a.nav-beyond { color: var(--accent); }
+    .nav-links a.nav-beyond::before { content: "❧ "; opacity: .75; }
+    .nav-links a.nav-beyond:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* Beyond Research featured project */
+    .beyond-lead { color: var(--text-soft); max-width: 66ch; margin: 0 0 22px; }
+    .feature {
+      display: grid; grid-template-columns: 128px 1fr; gap: 24px; align-items: center;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px; box-shadow: var(--shadow); position: relative; overflow: hidden;
+    }
+    .feature::after {
+      content: ""; position: absolute; inset: 0 0 0 auto; width: 6px;
+      background: linear-gradient(var(--accent), #7d2145);
+    }
+    .feature-emblem {
+      width: 128px; height: 128px; border-radius: 50%; display: grid; place-items: center;
+      background: radial-gradient(circle at 40% 35%, var(--accent-soft), var(--surface-2));
+      border: 1px solid var(--border); font-size: 3.1rem;
+    }
+    .feature h3 { margin: 0 0 4px; font-size: 1.4rem; }
+    .feature .feature-kicker { text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; color: var(--accent); font-weight: 700; }
+    .feature p { color: var(--text-soft); margin: 8px 0 16px; max-width: 60ch; }
+    .play-btn {
+      display: inline-flex; align-items: center; gap: 9px; background: var(--accent); color: #fff;
+      padding: 11px 20px; border-radius: 999px; font-weight: 600; box-shadow: var(--shadow);
+    }
+    .play-btn:hover { text-decoration: none; filter: brightness(1.06); transform: translateY(-1px); }
+    @media (max-width: 560px) { .feature { grid-template-columns: 1fr; text-align: left; } .feature-emblem { margin: 0 auto; } }
     .theme-btn {
       background: var(--surface-2); border: 1px solid var(--border); color: var(--text-soft);
       width: 34px; height: 34px; border-radius: 9px; cursor: pointer; font-size: 15px;
@@ -124,7 +210,7 @@
     }
     .avatar-mono { font-family: var(--serif); font-size: 3rem; color: var(--accent); }
     @media (max-width: 620px) { .avatar { margin: 0 auto; } }
-    .hero h1 { font-size: 2.4rem; margin: 0 0 6px; letter-spacing: -.3px; }
+    .hero h1 { font-size: 3rem; margin: 0 0 4px; letter-spacing: .3px; }
     .hero .role { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 4px; }
     .hero .affil { color: var(--text-soft); margin-bottom: 18px; }
     .hero p.lead { color: var(--text-soft); font-size: 1.02rem; max-width: 46ch; margin: 0 auto; }
@@ -141,23 +227,40 @@
     .pill:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; transform: translateY(-1px); }
 
     /* ----------  Sections  ---------- */
-    section { padding: 60px 0; border-top: 1px solid var(--border); }
-    section h2 { font-size: 1.7rem; margin: 0 0 24px; }
+    section { border-top: 1px solid var(--border); position: relative; }
+    /* delicate Art Nouveau botanical sprig centred on each section divider */
+    section::before {
+      content: ""; position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+      width: 66px; height: 22px; background: var(--accent); opacity: .85;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 66 22'%3E%3Cpath d='M33 11 C25 3 14 5 6 11 C14 17 25 19 33 11Z'/%3E%3Cpath d='M33 11 C41 3 52 5 60 11 C52 17 41 19 33 11Z'/%3E%3Ccircle cx='33' cy='11' r='2.6'/%3E%3Ccircle cx='5' cy='11' r='1.7'/%3E%3Ccircle cx='61' cy='11' r='1.7'/%3E%3C/svg%3E") center/contain no-repeat;
+              mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 66 22'%3E%3Cpath d='M33 11 C25 3 14 5 6 11 C14 17 25 19 33 11Z'/%3E%3Cpath d='M33 11 C41 3 52 5 60 11 C52 17 41 19 33 11Z'/%3E%3Ccircle cx='33' cy='11' r='2.6'/%3E%3Ccircle cx='5' cy='11' r='1.7'/%3E%3Ccircle cx='61' cy='11' r='1.7'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+    /* .wrap sets padding:0 24px, so target section.wrap to add vertical rhythm */
+    section.wrap { padding-top: 52px; padding-bottom: 52px; }
+    section h2 { font-size: 2.15rem; margin: 0 0 24px; }
     .about p { color: var(--text-soft); max-width: 68ch; }
     .about p + p { margin-top: 14px; }
+    .about blockquote {
+      margin: 16px 0 0; padding: 4px 0 4px 22px;
+      border-left: 3px solid var(--accent); max-width: 68ch;
+      color: var(--text-soft); font-style: italic;
+    }
 
-    /* research themes */
-    .theme-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 16px; margin-top: 26px;
+    /* interests */
+    .interest-list {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px;
+      padding: 0; margin: 26px 0 0; list-style: none;
     }
-    .theme-card {
+    .interest-list li {
+      display: flex; align-items: center; gap: 11px;
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 18px; box-shadow: var(--shadow);
+      padding: 16px 18px; box-shadow: var(--shadow);
+      color: var(--text); font-weight: 600; font-size: .95rem;
     }
-    .theme-card h3 { margin: 0 0 10px; font-size: 1.05rem; }
-    .theme-card ul { margin: 0; padding-left: 1.1rem; color: var(--text-soft); }
-    .theme-card li + li { margin-top: 5px; }
+    .interest-list li::before {
+      content: ""; flex: 0 0 auto;
+      width: 7px; height: 7px; border-radius: 50%; background: var(--accent); opacity: .8;
+    }
 
     /* publications */
     .pub-list { margin-top: 8px; }
@@ -195,68 +298,51 @@
       padding: 18px; box-shadow: var(--shadow);
     }
     .card .cname { font-weight: 600; margin-bottom: 2px; }
+    .card .cname a { color: var(--text); }
+    .card .cname a:hover { color: var(--accent); }
     .card .cinst { color: var(--text-soft); font-size: .9rem; margin-bottom: 8px; }
     .card .cdesc { color: var(--text-faint); font-size: .86rem; }
 
     /* project highlight */
-    .project { max-width: 72ch; }
-    .project h3 { margin: 0 0 10px; font-size: 1.25rem; }
-    .project p { color: var(--text-soft); margin: 0 0 14px; }
-
-    /* beyond research: available from nav, hidden from normal scroll */
-    #beyond-research:not(:target) { display: none; }
-    .beyond-intro { color: var(--text-soft); max-width: 68ch; margin: 0 0 24px; }
-    .game-card {
-      display: grid; grid-template-columns: minmax(220px, .9fr) 1fr; gap: 24px; align-items: center;
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 22px; box-shadow: var(--shadow); overflow: hidden;
+    .project { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: start; }
+    .project + .project { margin-top: 40px; }
+    .project-text { max-width: 62ch; }
+    .project h3 { margin: 0 0 10px; font-size: 1.5rem; }
+    .project p { color: var(--text-soft); margin: 0; }
+    .project figure { margin: 4px 0 0; }
+    .project figure img {
+      width: 100%; height: auto; display: block;
+      background: #fff; border: 1px solid var(--border); border-radius: 12px;
+      box-shadow: var(--shadow); transition: transform .1s ease;
     }
-    .game-visual {
-      min-height: 230px; border-radius: calc(var(--radius) - 4px); border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at 18% 20%, rgba(255, 213, 102, .55) 0 10%, transparent 11%),
-        radial-gradient(circle at 84% 72%, rgba(255, 134, 134, .35) 0 12%, transparent 13%),
-        radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--accent) 16%, transparent) 0 24%, transparent 25%),
-        linear-gradient(135deg, var(--accent-soft), var(--surface-2));
-      position: relative; overflow: hidden;
+    .project figure img.figure-padded { padding: 16px 12px; }
+    .project figure a:hover img { transform: translateY(-2px); border-color: var(--accent); }
+    .project figcaption { color: var(--text-faint); font-size: .82rem; margin-top: 8px; }
+    /* themes with no figure keep text readable */
+    .project:not(:has(figure)) { display: block; }
+    .project:not(:has(figure)) .project-text { max-width: 72ch; }
+    @media (max-width: 680px) {
+      .project { grid-template-columns: 1fr; gap: 16px; }
+      .project figure { margin: 0; }
+      .project figure img { max-width: 460px; }
     }
-    .game-visual::before {
-      content: ""; position: absolute; inset: 18px; border: 2px dashed color-mix(in srgb, var(--accent) 34%, transparent);
-      border-radius: 22px; opacity: .85;
-    }
-    .worm {
-      position: absolute; width: 138px; height: 40px; border-radius: 999px;
-      background: linear-gradient(90deg, #fff4b8, color-mix(in srgb, var(--accent) 30%, var(--surface)));
-      border: 2px solid color-mix(in srgb, var(--accent) 56%, var(--border));
-      box-shadow: var(--shadow);
-    }
-    .worm::before { content: ""; position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--text); right: 24px; top: 10px; }
-    .worm::after { content: ""; position: absolute; width: 18px; height: 8px; border-bottom: 3px solid var(--accent); border-radius: 50%; right: 13px; bottom: 8px; }
-    .worm.one { left: 30px; top: 48px; transform: rotate(-12deg); }
-    .worm.two { right: 26px; bottom: 48px; transform: rotate(15deg); width: 112px; }
-    .food-dot { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: #ff7a59; box-shadow: 0 0 0 5px rgba(255,122,89,.14); }
-    .food-dot.a { left: 43%; top: 28%; }
-    .food-dot.b { left: 58%; top: 48%; background: #ffd166; }
-    .food-dot.c { left: 34%; top: 66%; background: #7bd88f; }
-    .sparkle { position: absolute; font-size: 1.35rem; filter: drop-shadow(0 2px 4px rgba(31,35,40,.16)); }
-    .sparkle.one { left: 18%; bottom: 22%; }
-    .sparkle.two { right: 18%; top: 22%; }
-    .game-copy h3 { margin: 0 0 8px; font-size: 1.35rem; }
-    .game-copy p { color: var(--text-soft); margin: 0 0 14px; font-size: .98rem; }
-    .game-badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
-    .game-badge { background: var(--accent-soft); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border)); border-radius: 999px; padding: 5px 10px; font-size: .82rem; font-weight: 700; }
-    .game-copy .pill { box-shadow: none; font-weight: 700; }
-    @media (prefers-reduced-motion: no-preference) {
-      .worm.one { animation: wiggle-one 4s ease-in-out infinite; }
-      .worm.two { animation: wiggle-two 4.5s ease-in-out infinite; }
-      @keyframes wiggle-one { 0%, 100% { transform: rotate(-12deg) translateX(0); } 50% { transform: rotate(-7deg) translateX(12px); } }
-      @keyframes wiggle-two { 0%, 100% { transform: rotate(15deg) translateX(0); } 50% { transform: rotate(9deg) translateX(-10px); } }
-    }
-    @media (max-width: 700px) { .game-card { grid-template-columns: 1fr; } }
 
     /* contact */
-    .contact-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
+    .contact-box {
+      position: relative; overflow: hidden; min-height: 244px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 26px 212px 26px 26px; box-shadow: var(--shadow);
+    }
+    .contact-illustration {
+      position: absolute; top: 20px; right: 20px;
+      width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+      border: 5px solid var(--surface); box-shadow: var(--shadow);
+    }
     .contact-box p { color: var(--text-soft); margin: 0 0 14px; }
+    @media (max-width: 620px) {
+      .contact-box { padding: 200px 22px 24px; }
+      .contact-illustration { left: 22px; right: auto; }
+    }
 
     footer { padding: 34px 0 48px; border-top: 1px solid var(--border); color: var(--text-faint); font-size: .86rem; text-align: center; }
 
@@ -269,6 +355,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <!-- ============ NAV ============ -->
   <header class="nav">
     <div class="wrap nav-inner">
@@ -276,6 +363,7 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="#about">About</a>
         <a href="#research">Research</a>
+        <a href="#beyond-research" class="nav-beyond">Beyond&nbsp;Research</a>
         <a href="#publications">Publications</a>
         <a href="#collaborators">Collaborators</a>
         <a href="#students">Students</a>
@@ -292,13 +380,14 @@
     <div class="hero-grid">
       <div class="avatar">
         <span class="avatar-mono">MZ</span>
-        <!-- Add photo.jpg later, when binary uploads are available, to replace the initials. -->
+        <!-- Upload a file named photo.jpg to the repo root and it appears here automatically;
+             if it's missing, the onerror handler removes the img and the "MZ" initials show. -->
+        <img src="photo.jpg" alt="Martyna K. Zwoińska" onerror="this.remove()" />
       </div>
       <div>
         <h1>Martyna Katarzyna Zwoińska</h1>
         <div class="role">Evolutionary Biologist</div>
         <div class="affil">Department of Ecology and Genetics, Uppsala University</div>
-        <p class="lead">I study how life histories evolve: ageing, plasticity, and the strategies organisms use to cope with uncertain, changing environments.</p>
         <div class="links">
           <a class="pill" href="mailto:martyna.zwoinska@ebc.uu.se">✉ Email</a>
           <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">🎓 Google Scholar</a>
@@ -306,7 +395,7 @@
           <a class="pill" href="https://www.researchgate.net/profile/Martyna-Zwoinska" target="_blank" rel="noopener">📄 ResearchGate</a>
           <a class="pill" href="https://www.linkedin.com/in/martyna-zwoinska" target="_blank" rel="noopener">LinkedIn</a>
           <a class="pill" href="https://bsky.app/profile/martynazwoinska.bsky.social" target="_blank" rel="noopener">🦋 Bluesky</a>
-          <a class="pill" href="https://www.uu.se/en/contact-and-organisation/staff?query=N12-104" target="_blank" rel="noopener">🏛 Uppsala profile</a>
+          <a class="pill" href="https://www.uu.se/en/contact-and-organisation/staff?query=N12-104" target="_blank" rel="noopener">🏛 Uppsala University profile</a>
         </div>
       </div>
     </div>
@@ -316,70 +405,110 @@
   <section id="about" class="wrap about">
     <h2>About</h2>
     <p>
-      I am an evolutionary biologist in the Animal Ecology group at the Department of Ecology
-      and Genetics, Uppsala University. My research asks how
-      selection shapes life histories over the lifespan: why organisms age the way they do,
-      how they trade current reproduction against survival and future reproduction, and how
-      information about the environment is used, and passed between generations, to guide these
-      decisions.
+      I am an evolutionary biologist, interested in all things adaptation and maladaptation.
+      To that end, I like working with a range of lab-evolvable systems, whether <em>Drosophila</em> fruit flies,
+      <em>Callosobruchus</em> seed beetles, or one of my personal favourites, <em>Caenorhabditis</em>
+      nematodes. I enjoy combining different approaches: my own work is predominantly empirical and
+      evolutionary-genomic, but I always appreciate a bit of good theory too.
     </p>
     <p>
-      I combine experimental evolution, work in model systems such as <em>Drosophila</em> and the
-      nematode <em>Caenorhabditis elegans</em>, and evolutionary modelling. I earned my PhD from
-      Uppsala University in 2017 with a thesis on age-specific trade-offs in life-history evolution,
-      and my work spans cognitive ageing, sexual selection and conflict, transgenerational effects,
-      and evolutionary genetics.
+      And here is what my chatbot has to say about me after more than two years of our
+      interactions. Let's stick with it. ;)
     </p>
+    <blockquote>
+      Martyna is an evolutionary biologist who uses AI not as a shortcut, but as a critical
+      sparring partner for coding, genomics, literature synthesis and scientific thinking. She
+      works at the intersection of experimental biology, evolutionary theory and data analysis.
+      Her particular strength is asking whether an argument is not merely convincing, but
+      biologically meaningful, logically sound and supported by evidence. She is quick to spot
+      weak assumptions and persistent in making ideas sharper, although she is sometimes less
+      good at letting &ldquo;good enough&rdquo; remain good enough. This can make the revision
+      process longer, but it usually makes the final result stronger.
+    </blockquote>
   </section>
 
   <!-- ============ RESEARCH ============ -->
   <section id="research" class="wrap about">
     <h2>Research interests</h2>
     <p>
-      My central question is how organisms adapt to environments that change over time. They can
-      respond through genetic evolution, developmental and reversible plasticity, parental effects,
-      and bet-hedging, and features of their biology, such as whether they reproduce by selfing or
-      outcrossing, tip the balance between these strategies.
+      Over the years I have worked on a good variety of topics. Below are some of my active
+      research directions.
     </p>
-    <div class="theme-grid" aria-label="Research interest areas">
-      <article class="theme-card">
-        <h3>Life histories &amp; ageing</h3>
-        <ul>
-          <li>Life-history evolution</li>
-          <li>Ageing &amp; senescence</li>
-        </ul>
-      </article>
-      <article class="theme-card">
-        <h3>Plasticity across generations</h3>
-        <ul>
-          <li>Phenotypic plasticity</li>
-          <li>Parental &amp; transgenerational effects</li>
-          <li>Bet-hedging</li>
-        </ul>
-      </article>
-      <article class="theme-card">
-        <h3>Evolutionary mechanisms</h3>
-        <ul>
-          <li>Sexual selection &amp; conflict</li>
-          <li>Evolutionary genetics &amp; genomics</li>
-          <li>Selfing vs. outcrossing</li>
-        </ul>
-      </article>
-    </div>
+    <ul class="interest-list" aria-label="Research interest areas">
+      <li>Life-history evolution</li>
+      <li>Ageing &amp; senescence</li>
+      <li>Phenotypic plasticity</li>
+      <li>Parental &amp; transgenerational effects</li>
+      <li>Sexual selection &amp; conflict</li>
+      <li>Evolutionary genetics &amp; genomics</li>
+    </ul>
   </section>
 
   <!-- ============ CURRENT PROJECT ============ -->
   <section id="project" class="wrap">
-    <h2>Adaptive response modes under environmental uncertainty</h2>
+    <h2>Current work</h2>
     <div class="project">
-      <h3>Reproductive mode and the evolution of adaptive responses</h3>
-      <p>
-        In an ongoing modelling project I ask how reproductive mode, especially selfing versus
-        outcrossing, changes the adaptive responses populations evolve when the environment is
-        uncertain. Using individual-based population-genetic simulations, I compare genetic
-        tracking, plasticity, parental effects, and bet-hedging without foregrounding the model
-        notation on the public site.
-      </p>
+      <div class="project-text">
+        <h3>Adaptive response modes under environmental variability</h3>
+        <p>
+          In an ongoing project I ask how reproductive mode, especially selfing versus outcrossing,
+          changes the adaptive responses populations evolve when the environment changes in ways
+          that can be predictable or unpredictable. My ambition is to combine empirical research
+          with individual-based population-genetic simulations.
+        </p>
+      </div>
+      <figure>
+        <a href="response-modes.png" target="_blank" rel="noopener"><img src="response-modes.png" alt="Adaptive response modes across cue reliability and between-generation environmental variability: reversible plasticity, developmental plasticity, bet-hedging, and continuous genetic adaptation" onerror="this.closest('figure').remove()" /></a>
+        <figcaption>Adaptive response modes across cue reliability and environmental variability. Modified from Botero et al. (2015).</figcaption>
+      </figure>
+    </div>
+    <div class="project">
+      <div class="project-text">
+        <h3>Learning and cognition</h3>
+        <p>
+          While it may not seem obvious, nematode worms from the genus <em>Caenorhabditis</em> can
+          learn and form memories, and they do so with only 300 to 400 neurons. What began during
+          my PhD under the supervision of Alexei A. Maklakov continues to this day, because who could
+          resist the charm of learning roundworms? Most lately, we focus on the phenomenon of learned
+          pathogen avoidance, which can be passed down several generations.
+        </p>
+      </div>
+      <figure>
+        <a href="nematode-learning.png" target="_blank" rel="noopener"><img class="figure-padded" src="nematode-learning.png" alt="The forms of learning documented in Caenorhabditis nematodes: habituation and sensitization, gustatory, olfactory, thermosensory and maze learning, and imprinting and transgenerational learning" onerror="this.closest('figure').remove()" /></a>
+        <figcaption>The many forms of learning documented in <em>Caenorhabditis</em> nematodes.</figcaption>
+      </figure>
+    </div>
+    <div class="project">
+      <div class="project-text">
+        <h3>Sexually antagonistic selection</h3>
+        <p>
+          Working with the group of Elina Immonen, I investigate the conditions under which sexually
+          antagonistic selection can preserve genetic variation, or in other words generate balancing
+          selection. Sexually antagonistic selection is just one of many scenarios that can generate
+          balancing selection, and as much as we do not fully understand the role of balancing
+          selection in maintaining the genetic polymorphism we observe, we also do not understand
+          particularly well the relative importance of its different mechanisms.
+        </p>
+      </div>
+      <figure>
+        <a href="seed-beetles.png" target="_blank" rel="noopener"><img src="seed-beetles.png" alt="Directions of experimental selection on male and female body mass in Callosobruchus seed beetles: small males, large males, large females, and sexually antagonistic selection" onerror="this.closest('figure').remove()" /></a>
+        <figcaption>Directions of experimental selection on male and female body mass in <em>Callosobruchus</em> seed beetles.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ BEYOND RESEARCH ============ -->
+  <section id="beyond-research" class="wrap">
+    <h2>Beyond Research</h2>
+    <p class="beyond-lead">Research is the centre of my professional work, but not the boundary of my interests. I also use AI-assisted coding to turn biological and creative ideas into functional digital projects.</p>
+    <div class="feature">
+      <div class="feature-emblem" aria-hidden="true">🪱</div>
+      <div>
+        <div class="feature-kicker">Featured project</div>
+        <h3>The Game of Worms</h3>
+        <p>A browser-based game inspired by nematode biology, developed through AI-assisted coding and co-designed with my children.</p>
+        <a class="play-btn" href="game-of-worms/index.html">▶ Play The Game of Worms</a>
+      </div>
     </div>
   </section>
 
@@ -419,18 +548,18 @@
 
     <div class="pub-list">
       <div class="pub">
-        <div class="year">2026</div>
-        <div class="body">
-          <a class="title" href="https://www.biorxiv.org/content/10.64898/2026.04.10.717426v1" target="_blank" rel="noopener">Transgenerational inheritance is variable across <em>Caenorhabditis</em> worms</a>
-          <div class="meta"><strong>Zwoińska M. K.</strong>, Widjaja A. N., Lind M. I., Akgül A. D., Altan A. S., Aydın D., Çukurbağlı D., Venkataramani A. G., Renhuldt N. T., Chen H.-y. · <span class="venue">bioRxiv</span> · <span class="status">Preprint</span></div>
-        </div>
+      <div class="year">2026</div>
+      <div class="body">
+        <a class="title" href="https://www.biorxiv.org/content/10.64898/2026.04.10.717426v1" target="_blank" rel="noopener">Transgenerational inheritance is variable across <em>Caenorhabditis</em> worms</a>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Widjaja A. N., Lind M. I., Akgül A. D., Altan A. S., Aydın D., Çukurbağlı D., Venkataramani A. G., Renhuldt N. T., Chen H.-y. · <span class="venue">bioRxiv</span><span class="status">Preprint</span></div>
       </div>
+    </div>
 
     <div class="pub">
       <div class="year">2026</div>
       <div class="body">
         <a class="title" href="https://www.biorxiv.org/content/10.64898/2026.02.04.703537v1" target="_blank" rel="noopener">From constraint to opportunity: Relaxing sexual antagonism reveals adaptive potential maintained by balancing selection</a>
-        <div class="meta"><strong>Zwoińska M. K.</strong>, Wiberg R. A. W., Trabert M., Kaufmann P., Immonen E. · <span class="venue">bioRxiv</span> · <span class="status">Preprint</span></div>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Wiberg R. A. W., Trabert M., Kaufmann P., Immonen E. · <span class="venue">bioRxiv</span><span class="status">Preprint</span></div>
       </div>
     </div>
 
@@ -438,7 +567,7 @@
       <div class="year">2026</div>
       <div class="body">
         <a class="title" href="https://onlinelibrary.wiley.com/doi/10.1111/brv.70103" target="_blank" rel="noopener">A century of theories of balancing selection</a>
-        <div class="meta">Ruzicka F., <strong>Zwoińska M. K.</strong>, et al. · <span class="venue">Biological Reviews</span></div>
+        <div class="meta">Ruzicka F., <strong>Zwoińska M. K.</strong>, Goedert D., Kokko H., et al. · <span class="venue">Biological Reviews</span> 101(2):804–825</div>
       </div>
     </div>
 
@@ -454,7 +583,31 @@
       <div class="year">2025</div>
       <div class="body">
         <a class="title" href="https://academic.oup.com/mbe/article/42/8/msaf178/8217438" target="_blank" rel="noopener">Sex-biased gene expression under sexually antagonistic and sex-limited selection</a>
-        <div class="meta">Wiberg R. A. W., <strong>Zwoińska M. K.</strong>, Kaufman P., Howie J. M., Immonen E. · <span class="venue">Molecular Biology and Evolution</span> 42(8):msaf178</div>
+        <div class="meta">Wiberg R. A. W., <strong>Zwoińska M. K.</strong>, Kaufmann P., Howie J. M., Immonen E. · <span class="venue">Molecular Biology and Evolution</span> 42(8):msaf178</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="year">2025</div>
+      <div class="body">
+        <a class="title" href="https://doi.org/10.1093/evolut/qpaf061" target="_blank" rel="noopener">Predicting the prevalence of genetic trade-offs among adaptive substitutions</a>
+        <div class="meta">Connallon T., Czuppon P., Olito C., Goedert D., Kokko H., …, <strong>Zwoińska M. K.</strong>, et al. · <span class="venue">Evolution</span> 79(7):1243–1255</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="year">2024</div>
+      <div class="body">
+        <a class="title" href="https://doi.org/10.1093/evlett/qrad007" target="_blank" rel="noopener">Heat stress reveals a fertility debt owing to postcopulatory sexual selection</a>
+        <div class="meta">Baur J., <strong>Zwoińska M. K.</strong>, Koppik M., Snook R. R., Berger D. · <span class="venue">Evolution Letters</span> 8(1):101–113</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="year">2022</div>
+      <div class="body">
+        <a class="title" href="https://doi.org/10.1111/1365-2656.13664" target="_blank" rel="noopener">The genetic basis and adult reproductive consequences of developmental thermal plasticity</a>
+        <div class="meta">Rodrigues L. R., <strong>Zwoińska M. K.</strong>, Wiberg R. A. W., Snook R. R. · <span class="venue">Journal of Animal Ecology</span> 91(6):1119–1134</div>
       </div>
     </div>
 
@@ -469,15 +622,23 @@
       <div class="year">2020</div>
       <div class="body">
         <a class="title" href="https://academic.oup.com/evlett/article/4/4/371/6697523" target="_blank" rel="noopener">Environmental variation mediates the evolution of anticipatory parental effects</a>
-        <div class="meta">Lind M. I., <strong>Zwoińska M. K.</strong>, et al. · <span class="venue">Evolution Letters</span> 4(4):371</div>
+        <div class="meta">Lind M. I., <strong>Zwoińska M. K.</strong>, Andersson J., Carlsson H., Krieg T., Larva T., Maklakov A. A. · <span class="venue">Evolution Letters</span> 4(4):371–381</div>
       </div>
     </div>
 
     <div class="pub">
       <div class="year">2020</div>
       <div class="body">
-        <a class="title" href="https://academic.oup.com/jeb/article/33/12/1677/7311376" target="_blank" rel="noopener">Experimentally induced intrasexual mating competition and sex-specific evolution in female and male nematodes</a>
-        <div class="meta">Stångberg J., …, <strong>Zwoińska M. K.</strong>, et al. · <span class="venue">Journal of Evolutionary Biology</span> 33(12):1677</div>
+        <a class="title" href="https://doi.org/10.1111/jeb.13563" target="_blank" rel="noopener">Artificial selection for increased dispersal results in lower fitness</a>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Larva T., Sekajova Z., Carlsson H., Meurling S., Maklakov A. A. · <span class="venue">Journal of Evolutionary Biology</span> 33(2):217–224</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="year">2020</div>
+      <div class="body">
+        <a class="title" href="https://doi.org/10.3389/fgene.2020.00573" target="_blank" rel="noopener">Phenotypic responses to and genetic architecture of sterility following exposure to sub-lethal temperature during development</a>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Rodrigues L. R., Slate J., Snook R. R. · <span class="venue">Frontiers in Genetics</span> 11:573</div>
       </div>
     </div>
 
@@ -521,9 +682,17 @@
     </div>
 
     <div class="pub">
+      <div class="year">2014</div>
+      <div class="body">
+        <a class="title" href="https://doi.org/10.1016/j.cub.2014.01.044" target="_blank" rel="noopener">Sexual conflict: male control of female longevity</a>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Lind M. I., Maklakov A. A. · <span class="venue">Current Biology</span> 24(5):R196–R198</div>
+      </div>
+    </div>
+
+    <div class="pub">
       <div class="year">2013</div>
       <div class="body">
-        <span class="title">Sex differences in cognitive ageing: testing predictions derived from life-history theory in a dioecious nematode</span>
+        <a class="title" href="https://doi.org/10.1016/j.exger.2013.09.008" target="_blank" rel="noopener">Sex differences in cognitive ageing: testing predictions derived from life-history theory in a dioecious nematode</a>
         <div class="meta"><strong>Zwoińska M. K.</strong>, Kolm N., Maklakov A. A. · <span class="venue">Experimental Gerontology</span> 48(12):1469–1472</div>
       </div>
     </div>
@@ -541,14 +710,24 @@
     <h2>Collaborators</h2>
     <div class="cards">
       <div class="card">
-        <div class="cname">Martin I. Lind</div>
-        <div class="cinst">Uppsala University · Halmstad University</div>
+        <div class="cname"><a href="https://www.martinlind.org/" target="_blank" rel="noopener">Martin I. Lind</a></div>
+        <div class="cinst">Halmstad University</div>
         <div class="cdesc">Ageing, plasticity, and transgenerational effects.</div>
       </div>
       <div class="card">
-        <div class="cname">Alexei A. Maklakov</div>
+        <div class="cname"><a href="https://alexeimaklakov.com/" target="_blank" rel="noopener">Alexei A. Maklakov</a></div>
         <div class="cinst">University of East Anglia</div>
         <div class="cdesc">Evolutionary biology &amp; biogerontology; ageing and life-history evolution.</div>
+      </div>
+      <div class="card">
+        <div class="cname"><a href="https://portal.research.lu.se/en/persons/hwei-yen-chen/" target="_blank" rel="noopener">Hwei-yen Chen</a></div>
+        <div class="cinst">Lund University</div>
+        <div class="cdesc">RNA interference, transgenerational effects, and ageing.</div>
+      </div>
+      <div class="card">
+        <div class="cname"><a href="https://immonenelina.wordpress.com/" target="_blank" rel="noopener">Elina Immonen</a></div>
+        <div class="cinst">Uppsala University</div>
+        <div class="cdesc">Sexual antagonism, balancing selection, and sex-biased gene expression.</div>
       </div>
     </div>
   </section>
@@ -558,12 +737,14 @@
     <h2>Students</h2>
     <div class="cards">
       <div class="card">
-        <div class="cname">Adithya Ganesh Venktaramani</div>
-        <div class="cinst">MSc student · Uppsala University</div>
+        <div class="cname">Adithya Ganesh Venkataramani</div>
+        <div class="cinst">MSc · Uppsala University</div>
+        <div class="cdesc">Defended June 2025</div>
       </div>
       <div class="card">
         <div class="cname">Gaurav Shobinath</div>
-        <div class="cinst">MSc student · Uppsala University</div>
+        <div class="cinst">MSc · Uppsala University</div>
+        <div class="cdesc">Defended June 2026</div>
       </div>
     </div>
   </section>
@@ -572,6 +753,11 @@
   <section id="contact" class="wrap">
     <h2>Contact</h2>
     <div class="contact-box">
+      <img
+        class="contact-illustration"
+        src="uppsala-contact.jpg"
+        alt="Uppsala Cathedral at sunset, reflected in the river"
+      />
       <p>
         Department of Ecology and Genetics, Animal Ecology<br />
         Evolutionary Biology Centre (EBC), Uppsala University<br />
@@ -584,7 +770,7 @@
         <a class="pill" href="https://www.researchgate.net/profile/Martyna-Zwoinska" target="_blank" rel="noopener">📄 ResearchGate</a>
         <a class="pill" href="https://www.linkedin.com/in/martyna-zwoinska" target="_blank" rel="noopener">LinkedIn</a>
         <a class="pill" href="https://bsky.app/profile/martynazwoinska.bsky.social" target="_blank" rel="noopener">🦋 Bluesky</a>
-        <a class="pill" href="https://www.uu.se/en/contact-and-organisation/staff?query=N12-104" target="_blank" rel="noopener">🏛 Uppsala profile</a>
+        <a class="pill" href="https://www.uu.se/en/contact-and-organisation/staff?query=N12-104" target="_blank" rel="noopener">🏛 Uppsala University profile</a>
       </div>
     </div>
   </section>
