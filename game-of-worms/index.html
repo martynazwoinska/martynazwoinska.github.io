@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>The Game of Worms — a C. elegans lineage game</title>
+  <meta name="description" content="A browser game inspired by the natural history of Caenorhabditis elegans: feed, learn, enter dauer, disperse and leave a lineage in an orchard of fallen apples." />
+  <meta name="theme-color" content="#221c26" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip" href="#stage">Skip to the game</a>
+
+  <header class="game-top">
+    <a class="back" href="../index.html#beyond-research">← Back to the site</a>
+    <h1 class="game-title">The Game of Worms</h1>
+    <div class="top-controls">
+      <button id="btn-how" class="ghost" type="button">How to play</button>
+      <button id="btn-pause" class="ghost" type="button">❚❚ Pause</button>
+      <button id="btn-restart" class="ghost" type="button">↺ Restart</button>
+    </div>
+  </header>
+
+  <main class="game-wrap">
+    <!-- persistent HUD: four indicators only -->
+    <div class="hud" role="group" aria-label="Status">
+      <div class="hud-item"><span class="hud-k">Stage</span><span id="hud-stage" class="hud-v">L1</span></div>
+      <div class="hud-item"><span class="hud-k">Reserves</span>
+        <span class="meter" id="hud-energy" style="--v:62%"><i></i></span><span id="hud-energy-text" class="hud-mini">62</span></div>
+      <div class="hud-item"><span class="hud-k">Apple</span>
+        <span class="meter food" id="hud-food" style="--v:100%"><i></i></span><span id="hud-food-label" class="hud-mini">rich</span></div>
+      <div class="hud-item"><span class="hud-k">Lineage</span><span id="hud-lineage" class="hud-v">0 · gen 1/3</span></div>
+    </div>
+
+    <div class="stage-frame">
+      <canvas id="stage" width="900" height="560" aria-label="The orchard apple world. Use arrow keys or the on-screen pad to move your worm."></canvas>
+
+      <!-- START -->
+      <div class="overlay" id="start-screen">
+        <div class="panel">
+          <p class="eyebrow">The Orchard · a first scenario</p>
+          <h2>Begin a lineage</h2>
+          <p>A young hermaphrodite in a fallen apple. Feed, learn which colonies to trust, read the changing air. When the apple turns, <b>reproduce</b> — or seal into <b>dauer</b> and ride to a fresh apple. Success is counted in descendants, not one life.</p>
+          <div class="dispositions">
+            <label>Cue response
+              <select id="trait-cue">
+                <option value="cautious">Cautious — trust cues less, fewer mistakes</option>
+                <option value="bold">Bold — act on cues fast, riskier</option>
+              </select>
+            </label>
+            <label>Offspring
+              <select id="trait-brood">
+                <option value="uniform">Uniform — like the parent, peaks in a stable apple</option>
+                <option value="varied">Varied — bet-hedged, safer if things change</option>
+              </select>
+            </label>
+            <label>Dispersal
+              <select id="trait-disperse">
+                <option value="late">Late — stay and exploit, leave at the last moment</option>
+                <option value="early">Early — quicker to nictate and disperse</option>
+              </select>
+            </label>
+          </div>
+          <p class="tiny">Every disposition has a cost. There is no strictly best choice — that is the point.</p>
+          <button id="btn-play" class="primary" type="button">Enter the apple</button>
+        </div>
+      </div>
+
+      <!-- PAUSE -->
+      <div class="overlay dim" id="pause-screen" hidden><div class="panel small"><h2>Paused</h2><p>Press <b>Esc</b> or Resume to continue.</p></div></div>
+
+      <!-- HOW TO PLAY -->
+      <div class="overlay" id="how-screen" hidden>
+        <div class="panel">
+          <h2>How to play</h2>
+          <ul class="how">
+            <li><b>Move:</b> arrow keys or <b>WASD</b> — or the round pad below on touch. Movement flows like a worm.</li>
+            <li><b>Feed:</b> glide over a glowing colony. Rich colonies grow you; the harmful one costs you and teaches its smell.</li>
+            <li><b>Learn:</b> once burned, a colony shows a dashed warning ring — steer around it.</li>
+            <li><b>Read the air:</b> a sour, reddish haze warns that the apple may crash soon. It is usually — not always — right.</li>
+            <li><b>Dauer:</b> if things turn while you are still young (L1–L2), you may enter <b>L2d</b> and then commit to <b>dauer</b> — sealed, tough, and able to travel.</li>
+            <li><b>Disperse:</b> in dauer, reach a passing carrier (a snail) and <b>nictate</b> to ride to a fresh apple.</li>
+            <li><b>Reproduce:</b> as an adult with reserves, <b>self-fertilize</b>, or <b>outcross</b> if a rare male appears.</li>
+          </ul>
+          <button id="how-close" class="primary" type="button">Got it</button>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div class="overlay" id="result-screen" hidden>
+        <div class="panel">
+          <p class="eyebrow">Scenario complete</p>
+          <h2 id="res-title">The lineage continues</h2>
+          <p id="res-summary" class="lead"></p>
+          <p id="res-best" class="tiny"></p>
+          <div class="res-actions">
+            <button id="res-again" class="primary" type="button">Play again</button>
+            <button id="res-science" class="ghost" type="button">Scientist’s View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCIENTIST'S VIEW -->
+      <div class="overlay" id="science-screen" hidden>
+        <div class="panel wide">
+          <h2>Scientist’s View</h2>
+          <div id="res-table" class="res-table"></div>
+          <h3>What happened, generation by generation</h3>
+          <ul id="res-decisions" class="res-decisions"></ul>
+          <h3>How to read this</h3>
+          <p id="sci-intro" class="tiny"></p>
+          <h3>Where the game simplifies</h3>
+          <ul id="sci-simpl" class="tiny"></ul>
+          <h3>Scientific background</h3>
+          <ul id="sci-sources" class="tiny"></ul>
+          <p class="tiny">Claims are paraphrased from the linked primary research and reviews.</p>
+          <button id="sci-close" class="primary" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- message ticker + contextual actions -->
+    <p id="ticker" class="ticker" role="status" aria-live="polite">Choose a disposition and enter the apple.</p>
+    <div id="actions" class="actions" aria-label="Choices"></div>
+
+    <!-- touch d-pad -->
+    <div class="dpad" aria-hidden="false">
+      <button id="dpad-up" class="dbtn up" aria-label="Move up" type="button">▲</button>
+      <button id="dpad-left" class="dbtn left" aria-label="Move left" type="button">◀</button>
+      <button id="dpad-right" class="dbtn right" aria-label="Move right" type="button">▶</button>
+      <button id="dpad-down" class="dbtn down" aria-label="Move down" type="button">▼</button>
+    </div>
+
+    <p class="footnote">
+      Inspired by the biology of <em>Caenorhabditis elegans</em>. A gentle game — no graphic content.
+      <button id="reset-progress" class="linkbtn" type="button">Reset saved progress</button>
+    </p>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
