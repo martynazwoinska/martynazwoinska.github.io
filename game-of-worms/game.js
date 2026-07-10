@@ -2,6 +2,15 @@ import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 
+const regionalPacks = {
+  okinawa: { sceneName: "Okinawa fig garden", looks: ["Fig-leaf hat", "Okinawa fig scarf", "Fig-wasp flight rig"], icons: ["🍃", "🧣", "🪽"] },
+  kauai: { sceneName: "Kauaʻi island forest", looks: ["Kauaʻi flower wreath", "Island rain cape", "Fern climbing sash"], icons: ["🌺", "🌧️", "🌿"] },
+  field: { sceneName: "Garden compost", looks: ["Field explorer cap", "Compost satchel", "Sample-jar pack"], icons: ["🧢", "🎒", "🧪"] },
+  rainforest: { sceneName: "Tropical rainforest", looks: ["Rainforest leaf crown", "Monsoon flight cape", "Jungle fruit garland"], icons: ["🌿", "🌧️", "🍊"] },
+  woodland: { sceneName: "Temperate woodland", looks: ["Acorn beret", "Woodland trail scarf", "Oak-leaf shield"], icons: ["🌰", "🧣", "🍂"] },
+  ocean: { sceneName: "Pantropical coast", looks: ["Palm-leaf sun hat", "Ocean wave wrap", "Tropical flower garland"], icons: ["🌴", "🌊", "🌸"] }
+};
+
 const species = [
   {
     id: "inopinata",
@@ -26,7 +35,7 @@ const species = [
     habitatOne: "#f8c98b",
     habitatTwo: "#e98f7a",
     locations: [
-      { name: "Ishigaki, Japan", coordinates: [124.16, 24.34] }
+      { name: "Ishigaki, Japan", coordinates: [124.16, 24.34], style: "okinawa" }
     ]
   },
   {
@@ -52,7 +61,7 @@ const species = [
     habitatOne: "#8ed0ad",
     habitatTwo: "#59a6a0",
     locations: [
-      { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.50, 22.08] }
+      { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.50, 22.08], style: "kauai" }
     ]
   },
   {
@@ -78,13 +87,13 @@ const species = [
     habitatOne: "#d7b96d",
     habitatTwo: "#8ba56f",
     locations: [
-      { name: "Santeuil, France", coordinates: [1.951, 49.121], source: "CaeNDR" },
-      { name: "Scotland, Great Britain", coordinates: [-3.19, 55.92], source: "CaeNDR" },
-      { name: "Tenerife, Spain", coordinates: [-16.535, 28.411], source: "CaeNDR" },
-      { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.663, 22.147], source: "CaeNDR" },
-      { name: "Australian Capital Territory", coordinates: [149.115, -35.254], source: "CaeNDR" },
-      { name: "Auckland, New Zealand", coordinates: [174.746, -36.893], source: "CaeNDR" },
-      { name: "Araucanía, Chile", coordinates: [-72.151, -38.938], source: "CaeNDR" }
+      { name: "Santeuil, France", coordinates: [1.951, 49.121], source: "CaeNDR", style: "field" },
+      { name: "Scotland, Great Britain", coordinates: [-3.19, 55.92], source: "CaeNDR", style: "woodland" },
+      { name: "Tenerife, Spain", coordinates: [-16.535, 28.411], source: "CaeNDR", style: "ocean" },
+      { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.663, 22.147], source: "CaeNDR", style: "kauai" },
+      { name: "Australian Capital Territory", coordinates: [149.115, -35.254], source: "CaeNDR", style: "field" },
+      { name: "Auckland, New Zealand", coordinates: [174.746, -36.893], source: "CaeNDR", style: "woodland" },
+      { name: "Araucanía, Chile", coordinates: [-72.151, -38.938], source: "CaeNDR", style: "woodland" }
     ]
   },
   {
@@ -110,9 +119,9 @@ const species = [
     habitatOne: "#f5be68",
     habitatTwo: "#de7055",
     locations: [
-      { name: "Costa Rica", coordinates: [-84.1, 9.9] },
-      { name: "Brazil", coordinates: [-47.9, -15.8] },
-      { name: "Southern India", coordinates: [77.3, 10.2] }
+      { name: "Costa Rica", coordinates: [-84.1, 9.9], style: "rainforest" },
+      { name: "Brazil", coordinates: [-47.9, -15.8], style: "rainforest" },
+      { name: "Southern India", coordinates: [77.3, 10.2], style: "rainforest" }
     ]
   },
   {
@@ -138,9 +147,9 @@ const species = [
     habitatOne: "#a9c796",
     habitatTwo: "#8d79bd",
     locations: [
-      { name: "Germany", coordinates: [10.4, 51.1] },
-      { name: "Ohio, USA", coordinates: [-82.8, 40.3] },
-      { name: "Ontario, Canada", coordinates: [-79.4, 44.4] }
+      { name: "Germany", coordinates: [10.4, 51.1], style: "woodland" },
+      { name: "Ohio, USA", coordinates: [-82.8, 40.3], style: "woodland" },
+      { name: "Ontario, Canada", coordinates: [-79.4, 44.4], style: "woodland" }
     ]
   },
   {
@@ -166,17 +175,17 @@ const species = [
     habitatOne: "#7ad6c0",
     habitatTwo: "#f08a85",
     locations: [
-      { name: "Barro Colorado Island, Panama", coordinates: [-79.840, 9.160], source: "CaeNDR" },
-      { name: "La Selva, Costa Rica", coordinates: [-84.009, 10.426], source: "CaeNDR" },
-      { name: "Guadeloupe", coordinates: [-61.643, 16.044], source: "CaeNDR" },
-      { name: "Nouragues, French Guiana", coordinates: [-52.683, 4.090], source: "CaeNDR" },
-      { name: "Manaus region, Brazil", coordinates: [-59.840, -2.960], source: "CaeNDR" },
-      { name: "Oʻahu, Hawaiʻi", coordinates: [-157.765, 21.356], source: "CaeNDR" },
-      { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.478, 22.194], source: "CaeNDR" },
-      { name: "New Taipei City, Taiwan", coordinates: [121.773, 25.053], source: "CaeNDR" },
-      { name: "Pohnpei, Micronesia", coordinates: [158.182, 6.907], source: "CaeNDR" },
-      { name: "Queensland, Australia", coordinates: [145.446, -16.103], source: "CaeNDR" },
-      { name: "Réunion Island", coordinates: [55.688, -21.047], source: "CaeNDR" }
+      { name: "Barro Colorado Island, Panama", coordinates: [-79.840, 9.160], source: "CaeNDR", style: "rainforest" },
+      { name: "La Selva, Costa Rica", coordinates: [-84.009, 10.426], source: "CaeNDR", style: "rainforest" },
+      { name: "Guadeloupe", coordinates: [-61.643, 16.044], source: "CaeNDR", style: "ocean" },
+      { name: "Nouragues, French Guiana", coordinates: [-52.683, 4.090], source: "CaeNDR", style: "rainforest" },
+      { name: "Manaus region, Brazil", coordinates: [-59.840, -2.960], source: "CaeNDR", style: "rainforest" },
+      { name: "Oʻahu, Hawaiʻi", coordinates: [-157.765, 21.356], source: "CaeNDR", style: "kauai" },
+      { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.478, 22.194], source: "CaeNDR", style: "kauai" },
+      { name: "New Taipei City, Taiwan", coordinates: [121.773, 25.053], source: "CaeNDR", style: "rainforest" },
+      { name: "Pohnpei, Micronesia", coordinates: [158.182, 6.907], source: "CaeNDR", style: "ocean" },
+      { name: "Queensland, Australia", coordinates: [145.446, -16.103], source: "CaeNDR", style: "rainforest" },
+      { name: "Réunion Island", coordinates: [55.688, -21.047], source: "CaeNDR", style: "ocean" }
     ]
   }
 ];
@@ -192,6 +201,10 @@ let projectedLocations = [];
 const els = {
   mapWrap: document.querySelector(".map-wrap"),
   mapMarkers: document.getElementById("map-markers"),
+  mapTooltip: document.getElementById("map-tooltip"),
+  mapTooltipPlace: document.getElementById("map-tooltip-place"),
+  mapTooltipSpecies: document.getElementById("map-tooltip-species"),
+  mapTooltipDetail: document.getElementById("map-tooltip-detail"),
   mapLoading: document.getElementById("map-loading"),
   recordCount: document.getElementById("record-count"),
   countries: document.getElementById("map-countries"),
@@ -274,6 +287,8 @@ function renderSpecies(item, place) {
   const index = species.findIndex(candidate => candidate.id === item.id);
   const placeName = typeof place === "string" ? place : place?.name;
   const placeSource = typeof place === "object" ? place?.source : null;
+  const styleKey = typeof place === "object" && place?.style ? place.style : item.localStyle;
+  const regionalPack = regionalPacks[styleKey];
   els.speciesRegion.textContent = placeName || item.region;
   els.speciesNumber.textContent = `${String(index + 1).padStart(2, "0")} / ${String(species.length).padStart(2, "0")}`;
   italicText(els.speciesName, item.name);
@@ -286,16 +301,16 @@ function renderSpecies(item, place) {
   italicText(els.wormNameTag, item.short);
   els.wormTitle.textContent = `A dressed-up ${item.name} pair`;
   els.wormDesc.textContent = `A friendly illustrated ${item.cast[0]} and ${item.cast[1]}. Use the dress-up buttons to add or remove accessories.`;
-  els.localHeadwearIcon.textContent = item.localIcons[0];
-  els.localHeadwearLabel.textContent = item.localLooks[0];
-  els.localWrapIcon.textContent = item.localIcons[1];
-  els.localWrapLabel.textContent = item.localLooks[1];
-  els.localCharmIcon.textContent = item.localIcons[2];
-  els.localCharmLabel.textContent = item.localLooks[2];
-  els.sceneName.textContent = item.sceneName;
+  els.localHeadwearIcon.textContent = regionalPack.icons[0];
+  els.localHeadwearLabel.textContent = regionalPack.looks[0];
+  els.localWrapIcon.textContent = regionalPack.icons[1];
+  els.localWrapLabel.textContent = regionalPack.looks[1];
+  els.localCharmIcon.textContent = regionalPack.icons[2];
+  els.localCharmLabel.textContent = regionalPack.looks[2];
+  els.sceneName.textContent = regionalPack.sceneName;
 
   els.habitat.dataset.habitat = item.habitatKey;
-  els.habitat.dataset.localStyle = item.localStyle;
+  els.habitat.dataset.localStyle = styleKey;
   els.habitat.style.setProperty("--worm-color", item.worm);
   els.habitat.style.setProperty("--worm-deep", item.wormDeep);
   els.habitat.style.setProperty("--habitat-one", item.habitatOne);
@@ -364,9 +379,33 @@ function createMarker(record) {
   button.dataset.species = item.id;
   button.dataset.place = record.name;
   button.setAttribute("aria-label", `Meet ${item.name} from ${record.name}${record.source ? `, record from ${record.source}` : ""}`);
-  button.addEventListener("click", () => selectSpecies(item.id, record));
+  button.addEventListener("mouseenter", () => showMarkerTooltip(record, item, button));
+  button.addEventListener("mouseleave", hideMarkerTooltip);
+  button.addEventListener("focus", () => showMarkerTooltip(record, item, button));
+  button.addEventListener("blur", hideMarkerTooltip);
+  button.addEventListener("click", () => {
+    hideMarkerTooltip();
+    selectSpecies(item.id, record);
+  });
   els.mapMarkers.appendChild(button);
   record.button = button;
+}
+
+function showMarkerTooltip(record, item, button) {
+  els.mapTooltipPlace.textContent = record.name;
+  els.mapTooltipSpecies.textContent = item.short;
+  els.mapTooltipDetail.textContent = `${item.reproductionLabel}${record.source ? ` · ${record.source}` : ""}`;
+  const markerX = Number.parseFloat(button.style.left);
+  const markerY = Number.parseFloat(button.style.top);
+  const tooltipX = Math.max(118, Math.min(els.mapWrap.clientWidth - 118, markerX));
+  els.mapTooltip.style.left = `${tooltipX}px`;
+  els.mapTooltip.style.top = `${markerY}px`;
+  els.mapTooltip.classList.toggle("below", markerY < 92);
+  els.mapTooltip.hidden = false;
+}
+
+function hideMarkerTooltip() {
+  els.mapTooltip.hidden = true;
 }
 
 function positionMarkers() {

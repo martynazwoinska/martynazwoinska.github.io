@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#143f4a" />
-  <link rel="stylesheet" href="style.css?v=20260710-3" />
+  <link rel="stylesheet" href="style.css?v=20260710-4" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
@@ -47,6 +47,11 @@
           <g id="map-countries" class="map-countries"></g>
         </svg>
         <div id="map-markers" class="map-markers" aria-label="Worm locations"></div>
+        <div id="map-tooltip" class="map-tooltip" role="tooltip" hidden>
+          <span id="map-tooltip-place"></span>
+          <strong><i id="map-tooltip-species">C. inopinata</i></strong>
+          <small id="map-tooltip-detail">♀ female + ♂ male</small>
+        </div>
         <p id="map-loading" class="map-loading">Drawing the world…</p>
         <div class="map-legend" aria-label="Reproduction legend">
           <span><i class="legend-dot selfing"></i>Mostly selfing</span>
@@ -65,7 +70,6 @@
           <span class="eyebrow">Your worm cabinet</span>
           <h2 id="meet-title">Meet the species</h2>
         </div>
-        <p>No quiz. No setup. Just pick one.</p>
       </div>
 
       <div id="species-tabs" class="species-tabs" aria-label="Choose a worm species"></div>
@@ -179,7 +183,7 @@
               <desc id="worm-avatar-desc">A friendly illustrated female and male. Use the dress-up buttons to add or remove accessories.</desc>
 
               <g id="worm-species" class="worm-species">
-                <g id="companion-worm" class="companion-worm" transform="translate(-12 104) scale(.58)" aria-hidden="true">
+                <g id="companion-worm" class="companion-worm" transform="translate(-28 82) scale(.43)" aria-hidden="true">
                   <g class="companion-body">
                     <path class="companion-shadow" d="M78 238 C122 290 173 265 181 213 C188 161 225 115 278 123 C330 131 355 92 326 64"></path>
                     <path class="companion-line" d="M78 228 C122 280 173 255 181 203 C188 151 225 105 278 113 C330 121 355 82 326 54"></path>
@@ -209,6 +213,12 @@
                     <g data-style="rainforest"><path class="regional-primary" d="M303 46 Q286 4 316 9 Q337 27 329 50 Z"></path><path class="regional-secondary" d="M328 45 Q337 -2 359 10 Q370 35 350 53 Z"></path><path class="regional-primary" d="M291 49 Q267 17 289 10 Q315 20 316 49 Z"></path></g>
                     <g data-style="woodland"><ellipse class="regional-primary" cx="329" cy="36" rx="43" ry="21" transform="rotate(8 329 36)"></ellipse><path class="regional-secondary" d="M313 18 Q329 -4 348 18 Q333 29 313 18 Z"></path><path class="regional-stroke" d="M333 8 Q340 0 346 2"></path></g>
                     <g data-style="ocean"><path class="regional-secondary" d="M280 49 Q326 32 375 50 Q358 62 325 61 Q298 59 280 49 Z"></path><path class="regional-primary" d="M318 43 Q298 4 326 9 Q346 25 340 48 Z M338 43 Q355 4 372 19 Q373 43 348 52 Z"></path></g>
+                    <g data-style="okinawa" class="male-accessory"><path class="regional-primary" d="M88 101 Q105 76 130 88 Q119 112 88 101 Z"></path><path class="regional-stroke" d="M93 100 L126 89"></path></g>
+                    <g data-style="kauai" class="male-accessory"><g class="regional-flower" transform="translate(110 96) scale(.7)"><circle cx="0" cy="-9" r="8"></circle><circle cx="9" cy="0" r="8"></circle><circle cx="0" cy="9" r="8"></circle><circle cx="-9" cy="0" r="8"></circle><circle class="regional-accent" r="5"></circle></g></g>
+                    <g data-style="field" class="male-accessory"><path class="regional-primary" d="M94 102 Q99 83 116 84 Q126 89 126 104 Z"></path><path class="regional-secondary" d="M88 102 Q110 97 132 105 Q119 111 100 108 Z"></path></g>
+                    <g data-style="rainforest" class="male-accessory"><path class="regional-primary" d="M103 103 Q94 79 108 83 Q119 92 116 105 Z"></path><path class="regional-secondary" d="M114 104 Q121 78 131 88 Q133 102 122 108 Z"></path></g>
+                    <g data-style="woodland" class="male-accessory"><ellipse class="regional-primary" cx="111" cy="100" rx="24" ry="12" transform="rotate(8 111 100)"></ellipse><path class="regional-stroke" d="M112 89 Q116 81 120 84"></path></g>
+                    <g data-style="ocean" class="male-accessory"><path class="regional-secondary" d="M87 104 Q110 94 134 105 Q122 113 103 111 Z"></path><path class="regional-primary" d="M107 101 Q98 81 111 84 Q122 92 119 105 Z M118 102 Q127 82 135 91 Q134 104 123 108 Z"></path></g>
                   </g>
 
                   <g id="local-wrap" class="accessory regional-accessory" hidden>
@@ -218,15 +228,27 @@
                     <g data-style="rainforest"><path class="regional-primary" d="M114 177 Q82 226 102 283 Q151 307 202 276 Q164 232 191 190 Z"></path><path class="regional-secondary" d="M111 183 Q150 213 191 195 L184 211 Q146 226 105 198 Z"></path></g>
                     <g data-style="woodland"><path class="regional-secondary" d="M255 103 Q278 91 300 109 Q294 130 277 132 Q260 126 255 103 Z"></path><path class="regional-primary" d="M276 126 Q260 168 229 198 L247 209 Q278 180 291 133 Z"></path><path class="regional-stroke" d="M238 193 L247 201 M248 183 L258 191 M258 170 L268 178"></path></g>
                     <g data-style="ocean"><path class="regional-primary" d="M252 104 Q275 90 301 109 Q294 130 276 132 Q259 125 252 104 Z"></path><path class="regional-stroke thick" d="M256 112 Q271 101 286 112 T300 112"></path><path class="regional-secondary" d="M278 128 Q264 162 238 190 L255 201 Q282 178 291 134 Z"></path></g>
+                    <g data-style="okinawa" class="male-accessory"><path class="regional-secondary" d="M78 126 Q92 119 105 130 Q101 142 90 142 Q80 137 78 126 Z"></path><path class="regional-primary" d="M91 140 L75 166 L88 171 L103 143 Z"></path></g>
+                    <g data-style="kauai" class="male-accessory"><path class="regional-primary" d="M53 151 Q39 179 49 203 Q72 213 94 198 Q76 177 89 154 Z"></path></g>
+                    <g data-style="field" class="male-accessory"><path class="regional-stroke thick" d="M91 133 Q75 149 60 174"></path><rect class="regional-primary" x="47" y="166" width="30" height="25" rx="7"></rect></g>
+                    <g data-style="rainforest" class="male-accessory"><path class="regional-primary" d="M53 151 Q36 181 47 207 Q73 219 98 199 Q77 177 90 154 Z"></path><path class="regional-secondary" d="M51 157 Q73 171 92 158 L87 168 Q69 179 47 166 Z"></path></g>
+                    <g data-style="woodland" class="male-accessory"><path class="regional-secondary" d="M77 126 Q91 117 106 131 Q101 144 90 143 Q80 138 77 126 Z"></path><path class="regional-primary" d="M91 141 L75 170 L89 176 L103 145 Z"></path></g>
+                    <g data-style="ocean" class="male-accessory"><path class="regional-primary" d="M77 127 Q92 116 107 131 Q102 144 90 143 Q80 138 77 127 Z"></path><path class="regional-stroke" d="M80 132 Q90 124 100 132 T107 132"></path></g>
                   </g>
 
                   <g id="local-charm" class="accessory regional-accessory" hidden>
-                    <g data-style="okinawa"><ellipse class="regional-wing" cx="211" cy="145" rx="35" ry="18" transform="rotate(-30 211 145)"></ellipse><ellipse class="regional-wing" cx="235" cy="166" rx="35" ry="18" transform="rotate(28 235 166)"></ellipse></g>
+                    <g data-style="okinawa"><path class="wing-harness" d="M205 151 Q219 143 232 157"></path><path class="regional-wing" d="M214 151 Q178 101 153 126 Q161 164 211 164 Z"></path><path class="regional-wing" d="M226 158 Q260 111 286 139 Q273 177 229 171 Z"></path><path class="wing-vein" d="M207 155 L165 130 M232 161 L274 142 M205 158 L173 151 M235 165 L264 163"></path><circle class="regional-accent" cx="220" cy="159" r="8"></circle></g>
                     <g data-style="kauai"><path class="regional-stroke thick" d="M186 194 Q218 163 248 137"></path><ellipse class="regional-primary" cx="205" cy="177" rx="18" ry="7" transform="rotate(-35 205 177)"></ellipse><ellipse class="regional-primary" cx="224" cy="157" rx="18" ry="7" transform="rotate(25 224 157)"></ellipse></g>
                     <g data-style="field"><rect class="regional-primary" x="116" y="190" width="48" height="68" rx="11"></rect><rect class="regional-secondary" x="128" y="179" width="24" height="18" rx="5"></rect><circle class="regional-accent" cx="140" cy="223" r="11"></circle></g>
-                    <g data-style="rainforest"><path class="regional-stroke" d="M254 105 Q275 133 298 116"></path><circle class="regional-primary" cx="262" cy="118" r="9"></circle><circle class="regional-secondary" cx="278" cy="126" r="10"></circle><circle class="regional-primary" cx="295" cy="119" r="9"></circle></g>
+                    <g data-style="rainforest"><path class="regional-stroke thick" d="M250 105 Q276 139 304 112"></path><circle class="fruit-orange" cx="260" cy="119" r="11"></circle><path class="fruit-leaf" d="M256 107 Q262 97 270 105 Q265 113 256 107 Z"></path><path class="fruit-banana" d="M273 122 Q286 111 294 119 Q286 139 271 135 Q267 131 273 122 Z"></path><circle class="fruit-berry" cx="300" cy="117" r="10"></circle><circle class="fruit-shine" cx="297" cy="113" r="3"></circle></g>
                     <g data-style="woodland"><path class="regional-primary" d="M218 155 Q246 126 270 154 Q246 184 218 155 Z"></path><path class="regional-stroke" d="M224 155 L264 153"></path></g>
                     <g data-style="ocean"><path class="regional-stroke" d="M250 106 Q276 137 302 113"></path><g class="regional-flower small" transform="translate(263 119)"><circle cx="0" cy="-7" r="6"></circle><circle cx="7" cy="0" r="6"></circle><circle cx="0" cy="7" r="6"></circle><circle cx="-7" cy="0" r="6"></circle><circle class="regional-accent" r="4"></circle></g><g class="regional-flower small" transform="translate(287 120)"><circle cx="0" cy="-7" r="6"></circle><circle cx="7" cy="0" r="6"></circle><circle cx="0" cy="7" r="6"></circle><circle cx="-7" cy="0" r="6"></circle><circle class="regional-accent" r="4"></circle></g></g>
+                    <g data-style="okinawa" class="male-accessory"><path class="wing-harness" d="M52 158 Q61 152 70 160"></path><path class="regional-wing" d="M58 158 Q39 136 27 148 Q33 168 57 166 Z"></path><path class="regional-wing" d="M66 160 Q84 140 96 153 Q87 171 68 168 Z"></path><path class="wing-vein" d="M55 161 L34 150 M70 162 L90 154"></path></g>
+                    <g data-style="kauai" class="male-accessory"><path class="regional-stroke" d="M48 166 Q65 148 82 139"></path><ellipse class="regional-primary" cx="59" cy="156" rx="10" ry="4" transform="rotate(-30 59 156)"></ellipse><ellipse class="regional-primary" cx="72" cy="146" rx="10" ry="4" transform="rotate(24 72 146)"></ellipse></g>
+                    <g data-style="field" class="male-accessory"><rect class="regional-primary" x="38" y="158" width="27" height="36" rx="7"></rect><rect class="regional-secondary" x="45" y="151" width="13" height="10" rx="3"></rect><circle class="regional-accent" cx="51" cy="177" r="6"></circle></g>
+                    <g data-style="rainforest" class="male-accessory"><path class="regional-stroke" d="M78 128 Q91 145 105 132"></path><circle class="fruit-orange" cx="84" cy="136" r="6"></circle><path class="fruit-banana" d="M91 138 Q99 130 104 136 Q99 147 90 145 Z"></path></g>
+                    <g data-style="woodland" class="male-accessory"><path class="regional-primary" d="M51 166 Q66 149 80 165 Q66 182 51 166 Z"></path><path class="regional-stroke" d="M55 166 L76 165"></path></g>
+                    <g data-style="ocean" class="male-accessory"><g class="regional-flower small" transform="translate(83 137) scale(.7)"><circle cx="0" cy="-7" r="6"></circle><circle cx="7" cy="0" r="6"></circle><circle cx="0" cy="7" r="6"></circle><circle cx="-7" cy="0" r="6"></circle><circle class="regional-accent" r="4"></circle></g></g>
                   </g>
                 </g>
               </g>
@@ -291,6 +313,6 @@
     <p>Part 1: meet the worms. Fitness, bacteria, and environmental responses can come next.</p>
   </footer>
 
-  <script type="module" src="game.js?v=20260710-3"></script>
+  <script type="module" src="game.js?v=20260710-4"></script>
 </body>
 </html>

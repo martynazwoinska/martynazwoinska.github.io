@@ -186,6 +186,26 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
   animation: marker-pulse 1.8s ease-out infinite;
 }
 @keyframes marker-pulse { from { opacity: .8; transform: scale(.65); } to { opacity: 0; transform: scale(1.35); } }
+.map-tooltip {
+  position: absolute;
+  z-index: 8;
+  width: max-content;
+  max-width: 220px;
+  padding: 10px 12px;
+  border: 1px solid rgba(23,51,61,.12);
+  border-radius: 14px;
+  background: rgba(255,255,255,.96);
+  color: var(--ink);
+  box-shadow: 0 10px 25px rgba(23,51,61,.22);
+  pointer-events: none;
+  transform: translate(-50%, calc(-100% - 16px));
+}
+.map-tooltip[hidden] { display: none; }
+.map-tooltip.below { transform: translate(-50%, 20px); }
+.map-tooltip span, .map-tooltip strong, .map-tooltip small { display: block; }
+.map-tooltip span { color: var(--ink-soft); font-size: .68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.map-tooltip strong { margin-top: 2px; font-size: 1rem; }
+.map-tooltip small { margin-top: 3px; color: var(--ink-soft); font-size: .72rem; }
 
 .map-legend {
   position: absolute;
@@ -358,13 +378,22 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
 .habitat[data-local-style="rainforest"] .regional-accessory > [data-style="rainforest"],
 .habitat[data-local-style="woodland"] .regional-accessory > [data-style="woodland"],
 .habitat[data-local-style="ocean"] .regional-accessory > [data-style="ocean"] { display: inline; }
-.regional-primary { fill: var(--local-primary); }
-.regional-secondary { fill: var(--local-secondary); }
+.regional-accessory { filter: drop-shadow(0 5px 4px rgba(23,51,61,.24)); }
+.regional-primary { fill: var(--local-primary); stroke: var(--worm-deep); stroke-width: 2.5; stroke-linejoin: round; }
+.regional-secondary { fill: var(--local-secondary); stroke: var(--worm-deep); stroke-width: 2.5; stroke-linejoin: round; }
 .regional-accent { fill: var(--paper-strong); stroke: var(--worm-deep); stroke-width: 2; }
 .regional-stroke { fill: none; stroke: var(--worm-deep); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 .regional-stroke.thick { stroke-width: 7; }
 .regional-flower circle { fill: var(--local-primary); stroke: var(--worm-deep); stroke-width: 1.5; }
 .regional-wing { fill: rgba(255,255,255,.62); stroke: var(--local-primary); stroke-width: 4; }
+.wing-harness { fill: none; stroke: var(--worm-deep); stroke-width: 9; stroke-linecap: round; }
+.wing-vein { fill: none; stroke: color-mix(in srgb, var(--local-primary) 70%, var(--worm-deep)); stroke-width: 2; stroke-linecap: round; }
+.fruit-orange { fill: #ef8d46; stroke: var(--worm-deep); stroke-width: 2; }
+.fruit-leaf { fill: #58a36d; stroke: var(--worm-deep); stroke-width: 1.5; }
+.fruit-banana { fill: #f4cf52; stroke: var(--worm-deep); stroke-width: 2; }
+.fruit-berry { fill: #bb5273; stroke: var(--worm-deep); stroke-width: 2; }
+.fruit-shine { fill: rgba(255,255,255,.72); }
+.male-accessory { filter: drop-shadow(0 3px 2px rgba(23,51,61,.22)); }
 .habitat[data-local-style="okinawa"] { --local-primary: #e96558; --local-secondary: #f8c64e; --scene-sky: #bfe5e8; --scene-ground: #75a96d; --scene-water: #63b7c5; --scene-highlight: #ffd166; --scene-detail: #315e58; }
 .habitat[data-local-style="kauai"] { --local-primary: #e77ea5; --local-secondary: #73b98d; --scene-sky: #bfe8ef; --scene-ground: #549369; --scene-water: #54b6cc; --scene-highlight: #ffd166; --scene-detail: #315f55; }
 .habitat[data-local-style="field"] { --local-primary: #4f7f72; --local-secondary: #d7b96d; --scene-sky: #d8edf0; --scene-ground: #94b877; --scene-water: #8bc8ce; --scene-highlight: #f7c85b; --scene-detail: #607050; }
