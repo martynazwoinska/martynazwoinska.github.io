@@ -306,7 +306,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   display: grid;
   grid-template-columns: minmax(0, 1.45fr) minmax(300px, .75fr);
   gap: 22px;
-  align-items: stretch;
+  align-items: start;
 }
 .worm-playground, .species-story {
   border: 1px solid var(--line);
@@ -475,13 +475,14 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 @keyframes accessory-pop { from { opacity: 0; transform: translate(var(--accessory-x), var(--accessory-y)) scale(.82); } to { opacity: 1; transform: translate(var(--accessory-x), var(--accessory-y)) scale(1); } }
 .regional-accessory > [data-style] { display: none; }
 .regional-accessory > [data-species-look] { display: none; }
+.regional-accessory > [data-location-look] { display: none; }
 .habitat[data-species] .regional-accessory > [data-style] { display: none !important; }
-.habitat[data-species="inopinata"] [data-species-look="inopinata"],
-.habitat[data-species="elegans"] [data-species-look="elegans"],
-.habitat[data-species="briggsae"] [data-species-look="briggsae"],
-.habitat[data-species="nigoni"] [data-species-look="nigoni"],
-.habitat[data-species="tropicalis"] [data-species-look="tropicalis"],
-.habitat[data-species="wallacei"] [data-species-look="wallacei"] { display: inline; }
+.habitat[data-accessory-visual="inopinata"] [data-species-look="inopinata"],
+.habitat[data-accessory-visual="elegans"] [data-species-look="elegans"],
+.habitat[data-accessory-visual="briggsae"] [data-species-look="briggsae"],
+.habitat[data-accessory-visual="tropicalis"] [data-species-look="tropicalis"],
+.habitat[data-accessory-visual="wallacei"] [data-species-look="wallacei"],
+.habitat[data-accessory-visual="scotland"] [data-location-look="scotland"] { display: inline; }
 .habitat[data-local-style="okinawa"] .regional-accessory > [data-style="okinawa"],
 .habitat[data-local-style="kauai"] .regional-accessory > [data-style="kauai"],
 .habitat[data-local-style="field"] .regional-accessory > [data-style="field"],
@@ -527,19 +528,19 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .beetle-wing.left { fill: #68b6a5; }
 .beetle-wing.right { fill: #7b6dc0; }
 .beetle-line { fill: none; stroke: rgba(255,255,255,.62); stroke-width: 2; stroke-linecap: round; }
-.kit-symbol { display: none; }
-.kit-symbol.male { font-size: 9px; stroke-width: 2px; }
+.kit-symbol { display: none; font-size: 38px; paint-order: stroke; stroke: rgba(255,255,255,.92); stroke-width: 6px; stroke-linejoin: round; filter: drop-shadow(0 4px 3px rgba(23,51,61,.28)); }
+.kit-symbol.male { font-size: 23px; stroke-width: 4px; }
+.habitat[data-accessory-visual="icons"] .kit-symbol { display: inline; }
 .habitat[data-local-style="rainforest"] #local-wrap { --accessory-x: -13px; --accessory-y: 15px; }
 .habitat[data-local-style="rainforest"] #local-charm { --accessory-x: 12px; --accessory-y: 28px; }
-.habitat[data-local-style="rainforest"] .kit-symbol { display: none; }
 .habitat[data-local-style="woodland"] #local-wrap { --accessory-x: -14px; --accessory-y: 18px; }
 .habitat[data-local-style="woodland"] #local-charm { --accessory-x: 15px; --accessory-y: -11px; }
 .habitat[data-local-style="field"] #local-wrap { --accessory-x: -13px; --accessory-y: 12px; }
 .habitat[data-local-style="field"] #local-charm { --accessory-x: 15px; --accessory-y: -8px; }
 .habitat[data-species] #local-wrap, .habitat[data-species] #local-charm { --accessory-x: 0px; --accessory-y: 0px; }
-.habitat[data-species="elegans"] #local-wrap { --accessory-x: -28px; --accessory-y: 24px; }
-.habitat[data-species="elegans"] #local-charm { --accessory-x: 29px; --accessory-y: -16px; }
-.habitat[data-species="tropicalis"] #local-charm { --accessory-x: 32px; --accessory-y: -22px; }
+.habitat[data-accessory-visual="elegans"] #local-wrap { --accessory-x: -28px; --accessory-y: 24px; }
+.habitat[data-accessory-visual="elegans"] #local-charm { --accessory-x: 29px; --accessory-y: -16px; }
+.habitat[data-accessory-visual="tropicalis"] #local-charm { --accessory-x: 32px; --accessory-y: -22px; }
 .place-motif {
   position: absolute;
   right: 22px;
@@ -607,6 +608,16 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .dandiya-stick { fill: none; stroke: #f3b449; stroke-width: 9; stroke-linecap: round; }
 .dandiya-stick.coral { stroke: #e85f62; }
 .dandiya-grip { fill: none; stroke: #fff0ad; stroke-width: 4; stroke-linecap: round; }
+.tam-crown { fill: #274d76; stroke: #162f4e; stroke-width: 3; }
+.tam-band { fill: none; stroke: #e45356; stroke-width: 7; stroke-linecap: round; }
+.tam-pom { fill: #e8b84f; stroke: #67482f; stroke-width: 2; }
+.kilt-wrap { fill: #315b78; stroke: #193a51; stroke-width: 3; }
+.kilt-pleats { fill: none; stroke: #e45356; stroke-width: 5; }
+.kilt-cross { fill: none; stroke: #f1c95a; stroke-width: 4; }
+.bagpipe-strap { fill: none; stroke: #5b3c5c; stroke-width: 9; stroke-linecap: round; }
+.bagpipe-bag { fill: #386b57; stroke: #223d38; stroke-width: 4; }
+.bagpipe-pipe { fill: none; stroke: #79512f; stroke-width: 8; stroke-linecap: round; }
+.bagpipe-drone { fill: none; stroke: #e6bb57; stroke-width: 6; stroke-linecap: round; }
 .spf-pack rect { fill: #f5db75; }
 .spf-pack circle { fill: #ff8f6b; stroke: white; stroke-width: 3; }
 .spf-pack text { fill: #713c52; font-size: 14px; font-weight: 900; stroke: none; }
