@@ -198,7 +198,7 @@ const species = [
 ];
 
 const byId = new Map(species.map(item => [item.id, item]));
-const visited = new Set(["inopinata"]);
+const visited = new Set();
 const accessoryIds = ["local-headwear", "local-wrap", "local-charm"];
 const wardrobes = new Map(species.map(item => [item.id, new Set()]));
 let selectedId = "inopinata";
