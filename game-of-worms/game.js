@@ -22,6 +22,7 @@ const species = [
     reproductionLabel: "♀ female + ♂ male",
     cast: ["female", "male"],
     scale: 1.08,
+    pose: "hero",
     localStyle: "okinawa",
     sceneName: "Okinawa fig garden",
     localLooks: ["Fig-leaf hat", "Okinawa fig scarf", "Fig-wasp wings"],
@@ -48,6 +49,7 @@ const species = [
     reproductionLabel: "♀ female + ♂ male",
     cast: ["female", "male"],
     scale: .74,
+    pose: "island",
     localStyle: "kauai",
     sceneName: "Kauaʻi island forest",
     localLooks: ["Kauaʻi flower wreath", "Island rain cape", "Fern sash"],
@@ -74,6 +76,7 @@ const species = [
     reproductionLabel: "⚥ hermaphrodite + ♂ rare male",
     cast: ["hermaphrodite", "rare male"],
     scale: .72,
+    pose: "forager",
     localStyle: "field",
     sceneName: "Garden compost",
     localLooks: ["Field explorer cap", "Compost satchel", "Sample-jar pack"],
@@ -87,6 +90,7 @@ const species = [
     habitatOne: "#d7b96d",
     habitatTwo: "#8ba56f",
     locations: [
+      { name: "Bristol N2, England", coordinates: [-2.59, 51.45], source: "CaeNDR", style: "field", strain: "N2", history: "N2 was collected from mushroom compost near Bristol in 1951. After years in culture, it reached Sydney Brenner in 1964 and was frozen in 1969—becoming the canonical laboratory reference strain." },
       { name: "Santeuil, France", coordinates: [1.951, 49.121], source: "CaeNDR", style: "field" },
       { name: "Scotland, Great Britain", coordinates: [-3.19, 55.92], source: "CaeNDR", style: "woodland" },
       { name: "Tenerife, Spain", coordinates: [-16.535, 28.411], source: "CaeNDR", style: "ocean" },
@@ -106,6 +110,7 @@ const species = [
     reproductionLabel: "♀ female + ♂ male",
     cast: ["female", "male"],
     scale: .78,
+    pose: "rainforest",
     localStyle: "rainforest",
     sceneName: "Tropical rainforest",
     localLooks: ["Rainforest leaf crown", "Monsoon cape", "Fruit necklace"],
@@ -134,6 +139,7 @@ const species = [
     reproductionLabel: "♀ female + ♂ male",
     cast: ["female", "male"],
     scale: .76,
+    pose: "woodland",
     localStyle: "woodland",
     sceneName: "Temperate woodland",
     localLooks: ["Acorn beret", "Woodland scarf", "Oak-leaf badge"],
@@ -141,7 +147,7 @@ const species = [
     habitat: "Temperate woodlands",
     habitatKey: "woodland",
     intro: "A temperate-zone species often collected from decaying plant material and invertebrate-rich woodland habitats.",
-    fact: "Unlike C. elegans, every new generation normally needs mating between a female and a male.",
+    fact: "At some gene regions, two wild C. remanei worms differed at as many as one in four silent DNA letters—an extraordinary amount of diversity within one species.",
     worm: "#a9a0df",
     wormDeep: "#5f55a5",
     habitatOne: "#a9c796",
@@ -162,6 +168,7 @@ const species = [
     reproductionLabel: "⚥ hermaphrodite + ♂ rare male",
     cast: ["hermaphrodite", "rare male"],
     scale: .72,
+    pose: "coast",
     localStyle: "ocean",
     sceneName: "Pantropical coast",
     localLooks: ["Palm-leaf sun hat", "Ocean wrap", "Tropical flower necklace"],
@@ -216,8 +223,7 @@ const els = {
   habitat: document.getElementById("habitat"),
   sceneName: document.getElementById("scene-name"),
   wormNameTag: document.getElementById("worm-name-tag"),
-  wormTitle: document.getElementById("worm-avatar-title"),
-  wormDesc: document.getElementById("worm-avatar-desc"),
+  wormAvatar: document.getElementById("worm-avatar"),
   localHeadwearIcon: document.querySelector('[data-accessory="local-headwear"] .button-icon'),
   localHeadwearLabel: document.querySelector('[data-accessory="local-headwear"] .button-label'),
   localWrapIcon: document.querySelector('[data-accessory="local-wrap"] .button-icon'),
@@ -297,10 +303,9 @@ function renderSpecies(item, place) {
   els.speciesReproduction.textContent = item.reproductionLabel;
   els.speciesReproduction.className = `fact-pill ${item.reproduction}`;
   els.speciesHabitat.textContent = item.habitat;
-  scientificText(els.speciesFact, item.fact);
+  scientificText(els.speciesFact, typeof place === "object" && place?.history ? place.history : item.fact);
   italicText(els.wormNameTag, item.short);
-  els.wormTitle.textContent = `A dressed-up ${item.name} pair`;
-  els.wormDesc.textContent = `A friendly illustrated ${item.cast[0]} and ${item.cast[1]}. Use the dress-up buttons to add or remove accessories.`;
+  els.wormAvatar.setAttribute("aria-label", `Illustrated ${item.name} ${item.cast[0]} and ${item.cast[1]}`);
   els.localHeadwearIcon.textContent = regionalPack.icons[0];
   els.localHeadwearLabel.textContent = regionalPack.looks[0];
   els.localWrapIcon.textContent = regionalPack.icons[1];
@@ -311,6 +316,7 @@ function renderSpecies(item, place) {
 
   els.habitat.dataset.habitat = item.habitatKey;
   els.habitat.dataset.localStyle = styleKey;
+  els.habitat.dataset.pose = item.pose;
   els.habitat.style.setProperty("--worm-color", item.worm);
   els.habitat.style.setProperty("--worm-deep", item.wormDeep);
   els.habitat.style.setProperty("--habitat-one", item.habitatOne);
@@ -394,7 +400,7 @@ function createMarker(record) {
 function showMarkerTooltip(record, item, button) {
   els.mapTooltipPlace.textContent = record.name;
   els.mapTooltipSpecies.textContent = item.short;
-  els.mapTooltipDetail.textContent = `${item.reproductionLabel}${record.source ? ` · ${record.source}` : ""}`;
+  els.mapTooltipDetail.textContent = `${record.strain ? `${record.strain} · ` : ""}${item.reproductionLabel}${record.source ? ` · ${record.source}` : ""}`;
   const markerX = Number.parseFloat(button.style.left);
   const markerY = Number.parseFloat(button.style.top);
   const tooltipX = Math.max(118, Math.min(els.mapWrap.clientWidth - 118, markerX));
