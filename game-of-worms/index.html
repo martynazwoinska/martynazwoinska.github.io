@@ -3,146 +3,191 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>The Game of Worms — a C. elegans lineage game</title>
-  <meta name="description" content="A browser game inspired by the natural history of Caenorhabditis elegans: feed, learn, enter dauer, disperse and leave a lineage in an orchard of fallen apples." />
+  <title>Worm Atlas — Meet the Caenorhabditis</title>
+  <meta name="description" content="Explore a world map of Caenorhabditis worms, meet species from Hawaii to Japan, dress them up, and discover how they reproduce and live." />
   <link rel="canonical" href="https://martynazwoinska.github.io/game-of-worms/" />
-  <meta property="og:title" content="The Game of Worms — a C. elegans lineage game" />
-  <meta property="og:description" content="Feed, learn, enter dauer, disperse, and leave a lineage in an orchard of fallen apples." />
+  <meta property="og:title" content="Worm Atlas — Meet the Caenorhabditis" />
+  <meta property="og:description" content="Pick a place, meet a worm, dress it up, and learn one surprising fact." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
-  <meta name="theme-color" content="#221c26" />
+  <meta name="theme-color" content="#143f4a" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <a class="skip" href="#stage">Skip to the game</a>
+  <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
 
-  <header class="game-top">
-    <a class="back" href="../index.html#beyond-research">← Back to the site</a>
-    <h1 class="game-title">The Game of Worms</h1>
-    <div class="top-controls">
-      <button id="btn-how" class="ghost" type="button">How to play</button>
-      <button id="btn-pause" class="ghost" type="button">❚❚ Pause</button>
-      <button id="btn-restart" class="ghost" type="button">↺ Restart</button>
+  <header class="topbar">
+    <a class="back-link" href="../index.html#beyond-research">← Martyna's site</a>
+    <div class="brand">
+      <span class="part-label">Part 1</span>
+      <h1>Worm Atlas</h1>
+      <p>Pick a place. Meet a worm. Dress it up.</p>
+    </div>
+    <div class="explored" aria-live="polite">
+      <strong id="explored-count">1</strong><span>of 6 met</span>
     </div>
   </header>
 
-  <main class="game-wrap">
-    <!-- persistent HUD: four indicators only -->
-    <div class="hud" role="group" aria-label="Status">
-      <div class="hud-item"><span class="hud-k">Stage</span><span id="hud-stage" class="hud-v">L1</span></div>
-      <div class="hud-item"><span class="hud-k">Reserves</span>
-        <span class="meter" id="hud-energy" style="--v:62%"><i></i></span><span id="hud-energy-text" class="hud-mini">62</span></div>
-      <div class="hud-item"><span class="hud-k">Apple</span>
-        <span class="meter food" id="hud-food" style="--v:100%"><i></i></span><span id="hud-food-label" class="hud-mini">rich</span></div>
-      <div class="hud-item"><span class="hud-k">Lineage</span><span id="hud-lineage" class="hud-v">0 · gen 1/3</span></div>
-    </div>
+  <main id="atlas">
+    <section class="map-section" aria-labelledby="map-title">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Featured wild records</span>
+          <h2 id="map-title">Where in the world are the worms?</h2>
+        </div>
+        <p>Tap a glowing spot. This is a playful sample, not a complete range map.</p>
+      </div>
 
-    <div class="stage-frame">
-      <canvas id="stage" width="900" height="560" aria-label="The orchard apple world. Use arrow keys or the on-screen pad to move your worm."></canvas>
+      <div class="map-wrap">
+        <svg id="world-map" viewBox="0 0 960 470" role="img" aria-labelledby="world-map-title world-map-desc">
+          <title id="world-map-title">World map with featured Caenorhabditis records</title>
+          <desc id="world-map-desc">Interactive locations for six Caenorhabditis species, including records from Hawaii, Japan, Europe, the Americas, and tropical regions.</desc>
+          <path id="map-sphere" class="map-sphere"></path>
+          <path id="map-graticule" class="map-graticule"></path>
+          <g id="map-countries" class="map-countries"></g>
+        </svg>
+        <div id="map-markers" class="map-markers" aria-label="Worm locations"></div>
+        <p id="map-loading" class="map-loading">Drawing the world…</p>
+        <div class="map-legend" aria-label="Reproduction legend">
+          <span><i class="legend-dot selfing"></i>Mostly selfing</span>
+          <span><i class="legend-dot outcrossing"></i>Outcrossing</span>
+        </div>
+        <div class="map-selection">
+          <span id="map-selection-place">Okinawa, Japan</span>
+          <strong id="map-selection-species"><i>C. inopinata</i> — the fig giant</strong>
+        </div>
+      </div>
+    </section>
 
-      <!-- START -->
-      <div class="overlay" id="start-screen">
-        <div class="panel">
-          <p class="eyebrow">The Orchard · a first scenario</p>
-          <h2>Begin a lineage</h2>
-          <p>A young hermaphrodite in a fallen apple. Feed, learn which colonies to trust, read the changing air. When the apple turns, <b>reproduce</b> — or seal into <b>dauer</b> and ride to a fresh apple. Success is counted in descendants, not one life.</p>
-          <div class="dispositions">
-            <label>Cue response
-              <select id="trait-cue">
-                <option value="cautious">Cautious — trust cues less, fewer mistakes</option>
-                <option value="bold">Bold — act on cues fast, riskier</option>
-              </select>
-            </label>
-            <label>Offspring
-              <select id="trait-brood">
-                <option value="uniform">Uniform — like the parent, peaks in a stable apple</option>
-                <option value="varied">Varied — bet-hedged, safer if things change</option>
-              </select>
-            </label>
-            <label>Dispersal
-              <select id="trait-disperse">
-                <option value="late">Late — stay and exploit, leave at the last moment</option>
-                <option value="early">Early — quicker to nictate and disperse</option>
-              </select>
-            </label>
+    <section class="discovery" aria-labelledby="meet-title">
+      <div class="section-heading compact">
+        <div>
+          <span class="eyebrow">Your worm cabinet</span>
+          <h2 id="meet-title">Meet the species</h2>
+        </div>
+        <p>No quiz. No setup. Just pick one.</p>
+      </div>
+
+      <div id="species-tabs" class="species-tabs" aria-label="Choose a worm species"></div>
+
+      <div class="play-grid">
+        <section class="worm-playground" aria-labelledby="dress-title">
+          <div id="habitat" class="habitat" data-habitat="fig">
+            <span class="habitat-shape shape-one" aria-hidden="true"></span>
+            <span class="habitat-shape shape-two" aria-hidden="true"></span>
+            <span class="habitat-shape shape-three" aria-hidden="true"></span>
+
+            <svg id="worm-avatar" class="worm-avatar" viewBox="0 0 420 320" role="img" aria-labelledby="worm-avatar-title worm-avatar-desc">
+              <title id="worm-avatar-title">A dressed-up Caenorhabditis inopinata worm</title>
+              <desc id="worm-avatar-desc">A friendly illustrated worm. Use the dress-up buttons to add or remove accessories.</desc>
+
+              <g id="cape" class="accessory cape" hidden>
+                <path d="M110 176 C88 215 96 266 154 278 C145 239 166 208 190 190 Z"></path>
+              </g>
+
+              <g class="worm-body">
+                <path class="worm-shadow" d="M78 238 C122 290 173 265 181 213 C188 161 225 115 278 123 C330 131 355 92 326 64"></path>
+                <path class="worm-line" d="M78 228 C122 280 173 255 181 203 C188 151 225 105 278 113 C330 121 355 82 326 54"></path>
+                <circle class="worm-cheek" cx="311" cy="70" r="8"></circle>
+                <circle class="worm-eye" cx="323" cy="49" r="5"></circle>
+                <circle class="worm-eye" cx="340" cy="58" r="5"></circle>
+                <path class="worm-smile" d="M320 72 Q331 83 343 69"></path>
+              </g>
+
+              <g id="hat" class="accessory hat" hidden>
+                <path d="M292 38 H361 V51 H292 Z"></path>
+                <path d="M307 0 H347 V42 H307 Z"></path>
+                <path class="hat-band" d="M307 28 H347 V38 H307 Z"></path>
+              </g>
+
+              <g id="glasses" class="accessory glasses" hidden>
+                <circle cx="322" cy="50" r="14"></circle>
+                <circle cx="344" cy="58" r="14"></circle>
+                <path d="M334 54 L336 55 M308 48 L298 44 M358 59 L366 56"></path>
+              </g>
+
+              <g id="crown" class="accessory crown" hidden>
+                <path d="M298 39 L304 5 L321 25 L335 0 L348 26 L365 8 L361 45 Z"></path>
+                <circle cx="304" cy="6" r="4"></circle>
+                <circle cx="335" cy="2" r="4"></circle>
+                <circle cx="365" cy="9" r="4"></circle>
+              </g>
+
+              <g id="flower" class="accessory flower" hidden>
+                <circle class="petal" cx="292" cy="48" r="11"></circle>
+                <circle class="petal" cx="310" cy="42" r="11"></circle>
+                <circle class="petal" cx="307" cy="60" r="11"></circle>
+                <circle class="petal" cx="290" cy="65" r="11"></circle>
+                <circle class="flower-centre" cx="300" cy="54" r="8"></circle>
+              </g>
+
+              <g id="bow" class="accessory bow" hidden>
+                <path d="M214 150 C190 130 176 140 183 162 C190 179 206 169 217 158 Z"></path>
+                <path d="M222 152 C244 132 260 142 252 163 C245 180 230 170 219 159 Z"></path>
+                <circle cx="218" cy="156" r="9"></circle>
+              </g>
+            </svg>
+
+            <span id="worm-name-tag" class="worm-name-tag"><i>C. inopinata</i></span>
           </div>
-          <p class="tiny">Every disposition has a cost. There is no strictly best choice — that is the point.</p>
-          <button id="btn-play" class="primary" type="button">Enter the apple</button>
-        </div>
-      </div>
 
-      <!-- PAUSE -->
-      <div class="overlay dim" id="pause-screen" hidden><div class="panel small"><h2>Paused</h2><p>Press <b>Esc</b> or Resume to continue.</p></div></div>
-
-      <!-- HOW TO PLAY -->
-      <div class="overlay" id="how-screen" hidden>
-        <div class="panel">
-          <h2>How to play</h2>
-          <ul class="how">
-            <li><b>Move:</b> arrow keys or <b>WASD</b> — or the round pad below on touch. Movement flows like a worm.</li>
-            <li><b>Feed:</b> glide over a glowing colony. Rich colonies grow you; the harmful one costs you and teaches its smell.</li>
-            <li><b>Learn:</b> once burned, a colony shows a dashed warning ring — steer around it.</li>
-            <li><b>Read the air:</b> a sour, reddish haze warns that the apple may crash soon. It is usually — not always — right.</li>
-            <li><b>Dauer:</b> if things turn while you are still young (L1–L2), you may enter <b>L2d</b> and then commit to <b>dauer</b> — sealed, tough, and able to travel.</li>
-            <li><b>Disperse:</b> in dauer, reach a passing carrier (a snail) and <b>nictate</b> to ride to a fresh apple.</li>
-            <li><b>Reproduce:</b> as an adult with reserves, <b>self-fertilize</b>, or <b>outcross</b> if a rare male appears.</li>
-          </ul>
-          <button id="how-close" class="primary" type="button">Got it</button>
-        </div>
-      </div>
-
-      <!-- RESULT -->
-      <div class="overlay" id="result-screen" hidden>
-        <div class="panel">
-          <p class="eyebrow">Scenario complete</p>
-          <h2 id="res-title">The lineage continues</h2>
-          <p id="res-summary" class="lead"></p>
-          <p id="res-best" class="tiny"></p>
-          <div class="res-actions">
-            <button id="res-again" class="primary" type="button">Play again</button>
-            <button id="res-science" class="ghost" type="button">Scientist’s View</button>
+          <div class="dress-bar">
+            <div>
+              <span class="eyebrow">Dress-up drawer</span>
+              <h2 id="dress-title">Make this worm yours</h2>
+            </div>
+            <div class="dress-buttons" aria-label="Worm accessories">
+              <button type="button" data-accessory="hat" aria-pressed="false"><span aria-hidden="true">🎩</span> Hat</button>
+              <button type="button" data-accessory="glasses" aria-pressed="false"><span aria-hidden="true">👓</span> Glasses</button>
+              <button type="button" data-accessory="crown" aria-pressed="false"><span aria-hidden="true">👑</span> Crown</button>
+              <button type="button" data-accessory="flower" aria-pressed="false"><span aria-hidden="true">🌺</span> Flower</button>
+              <button type="button" data-accessory="bow" aria-pressed="false"><span aria-hidden="true">🎀</span> Bow</button>
+              <button type="button" data-accessory="cape" aria-pressed="false"><span aria-hidden="true">🦸</span> Cape</button>
+              <button id="surprise-me" class="surprise-button" type="button"><span aria-hidden="true">✨</span> Surprise me</button>
+            </div>
           </div>
-        </div>
+        </section>
+
+        <article class="species-story" aria-live="polite">
+          <div class="story-topline">
+            <span id="species-region" class="region-label">Okinawa, Japan</span>
+            <span id="species-number" class="species-number">01 / 06</span>
+          </div>
+          <h2 id="species-name"><i>Caenorhabditis inopinata</i></h2>
+          <p id="species-nickname" class="nickname">The fig giant</p>
+          <p id="species-intro" class="species-intro">A surprisingly large close relative of <i>C. elegans</i> that lives in fresh figs and travels with fig wasps.</p>
+
+          <div class="fact-pills">
+            <span id="species-reproduction" class="fact-pill outcrossing">♂ + ♀ Outcrossing</span>
+            <span id="species-habitat" class="fact-pill habitat-pill">Fresh figs</span>
+          </div>
+
+          <div class="wow-fact">
+            <span aria-hidden="true">💡</span>
+            <p><strong>Tiny surprise</strong><span id="species-fact">It was discovered on Ishigaki Island and was so unexpected that its name means “surprising.”</span></p>
+          </div>
+        </article>
       </div>
+    </section>
 
-      <!-- SCIENTIST'S VIEW -->
-      <div class="overlay" id="science-screen" hidden>
-        <div class="panel wide">
-          <h2>Scientist’s View</h2>
-          <div id="res-table" class="res-table"></div>
-          <h3>What happened, generation by generation</h3>
-          <ul id="res-decisions" class="res-decisions"></ul>
-          <h3>How to read this</h3>
-          <p id="sci-intro" class="tiny"></p>
-          <h3>Where the game simplifies</h3>
-          <ul id="sci-simpl" class="tiny"></ul>
-          <h3>Scientific background</h3>
-          <ul id="sci-sources" class="tiny"></ul>
-          <p class="tiny">Claims are paraphrased from the linked primary research and reviews.</p>
-          <button id="sci-close" class="primary" type="button">Close</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- message ticker + contextual actions -->
-    <p id="ticker" class="ticker" role="status" aria-live="polite">Choose a disposition and enter the apple.</p>
-    <div id="actions" class="actions" aria-label="Choices"></div>
-
-    <!-- touch d-pad -->
-    <div class="dpad" aria-hidden="false">
-      <button id="dpad-up" class="dbtn up" aria-label="Move up" type="button">▲</button>
-      <button id="dpad-left" class="dbtn left" aria-label="Move left" type="button">◀</button>
-      <button id="dpad-right" class="dbtn right" aria-label="Move right" type="button">▶</button>
-      <button id="dpad-down" class="dbtn down" aria-label="Move down" type="button">▼</button>
-    </div>
-
-    <p class="footnote">
-      Inspired by the biology of <em>Caenorhabditis elegans</em>. A gentle game — no graphic content.
-      <button id="reset-progress" class="linkbtn" type="button">Reset saved progress</button>
-    </p>
+    <details class="science-notes">
+      <summary>For curious grown-ups: map notes and sources</summary>
+      <p>Markers show selected published collection regions, not complete species ranges. “Mostly selfing” means self-fertile hermaphrodites predominate, although males and occasional outcrossing can occur.</p>
+      <ul>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3277298/" target="_blank" rel="noopener">Kiontke et al. (2011)</a> — Caenorhabditis phylogeny, habitats, and tropical/temperate distributions.</li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3984244/" target="_blank" rel="noopener">Félix et al. (2014)</a> — species diagnoses, including Hawaiian <i>C. kamaaina</i>.</li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6102938/" target="_blank" rel="noopener">Woodruff &amp; Phillips (2018)</a> — <i>C. inopinata</i> in Okinawan figs and fig wasps.</li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7853720/" target="_blank" rel="noopener">Noble et al. (2021)</a> — global diversity and frequent selfing in <i>C. tropicalis</i>.</li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13081884/" target="_blank" rel="noopener">Wang et al. (2026 preprint)</a> — global sampling and geographic diversity in <i>C. tropicalis</i>.</li>
+        <li><a href="https://doi.org/10.1016/j.cub.2005.06.022" target="_blank" rel="noopener">Barrière &amp; Félix (2005)</a> — predominant selfing and rare outcrossing in wild <i>C. elegans</i>.</li>
+      </ul>
+    </details>
   </main>
 
-  <script src="config.js"></script>
-  <script src="game.js"></script>
+  <footer>
+    <p>Part 1: meet the worms. Fitness, bacteria, and environmental responses can come next.</p>
+  </footer>
+
+  <script type="module" src="game.js"></script>
 </body>
 </html>
