@@ -65,8 +65,7 @@ function locationKit(placeName, fallback, speciesId) {
     looks,
     icons,
     motif,
-    sceneKey,
-    note: `${sceneName} gets its own field kit: ${looks.join(", ")}.`
+    sceneKey
   };
 }
 
@@ -86,8 +85,7 @@ function funLocationKit(baseKit, item, placeName) {
   return {
     ...baseKit,
     looks,
-    icons: gear.icons,
-    note: `${baseKit.sceneName}: ${looks.join(", ")}. Every observation keeps its own outfit and drawings.`
+    icons: gear.icons
   };
 }
 
@@ -339,9 +337,7 @@ const els = {
   localWrapLabel: document.querySelector('[data-accessory="local-wrap"] .button-label'),
   localCharmIcon: document.querySelector('[data-accessory="local-charm"] .button-icon'),
   localCharmLabel: document.querySelector('[data-accessory="local-charm"] .button-label'),
-  wardrobeNote: document.getElementById("wardrobe-note"),
   speciesRegion: document.getElementById("species-region"),
-  speciesNumber: document.getElementById("species-number"),
   speciesName: document.getElementById("species-name"),
   speciesNickname: document.getElementById("species-nickname"),
   speciesIntro: document.getElementById("species-intro"),
@@ -432,7 +428,6 @@ function renderSpecies(item, place) {
   const styleKey = typeof place === "object" && place?.style ? place.style : item.localStyle;
   const regionalPack = funLocationKit(locationKit(placeName, regionalPacks[styleKey], item.id), item, placeName);
   els.speciesRegion.textContent = placeName || item.region;
-  els.speciesNumber.textContent = "sister pair";
   italicText(els.speciesName, item.name);
   els.speciesNickname.textContent = item.nickname;
   scientificText(els.speciesIntro, item.intro);
@@ -448,7 +443,6 @@ function renderSpecies(item, place) {
   els.localWrapLabel.textContent = regionalPack.looks[1];
   els.localCharmIcon.textContent = regionalPack.icons[2];
   els.localCharmLabel.textContent = regionalPack.looks[2];
-  els.wardrobeNote.textContent = regionalPack.note;
   els.sceneName.textContent = regionalPack.sceneName;
   const placeSymbols = regionalPack.icons || ["🍃", "🎒", "✨"];
   els.placeMotif.textContent = regionalPack.motif || placeSymbols[0];
