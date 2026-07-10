@@ -9,6 +9,9 @@
   <meta property="og:title" content="Martyna K. Zwoińska, Evolutionary Biologist" />
   <meta property="og:description" content="Life-history evolution, ageing, plasticity, and adaptive responses to environmental uncertainty. Department of Ecology and Genetics, Uppsala University." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://martynazwoinska.github.io/" />
+  <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14171a" media="(prefers-color-scheme: dark)" />
   <style>
     /* ----------  Design tokens  ---------- */
     :root {
@@ -67,10 +70,14 @@
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--accent) 70%, white);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
     h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; }
 
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
-
     /* ----------  Top nav  ---------- */
     header.nav {
       position: sticky; top: 0; z-index: 20;
@@ -82,14 +89,30 @@
     .nav-name { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; letter-spacing: .2px; }
     .nav-links { display: flex; gap: 22px; align-items: center; }
     .nav-links a { color: var(--text-soft); font-size: .92rem; }
+    .nav-links a[href="#beyond-research"] {
+      color: #047857; font-weight: 650;
+    }
     .nav-links a:hover { color: var(--accent); text-decoration: none; }
+    .nav-links a[href="#beyond-research"]:hover { color: #065f46; }
     .theme-btn {
       background: var(--surface-2); border: 1px solid var(--border); color: var(--text-soft);
       width: 34px; height: 34px; border-radius: 9px; cursor: pointer; font-size: 15px;
       display: inline-flex; align-items: center; justify-content: center;
     }
     .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
-    @media (max-width: 640px) { .nav-links a:not(.theme-wrap) { display: none; } }
+    @media (max-width: 760px) {
+      .nav-inner { height: auto; min-height: 60px; align-items: flex-start; gap: 12px; padding-top: 12px; padding-bottom: 10px; }
+      .nav-links { overflow-x: auto; max-width: 100%; gap: 14px; padding-bottom: 4px; scrollbar-width: thin; }
+      .nav-links a, .theme-btn { flex: 0 0 auto; }
+    }
+    @media (max-width: 520px) {
+      .nav-inner { flex-direction: column; }
+      .nav-name { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
 
     /* ----------  Hero  ---------- */
     .hero { padding: 64px 0 40px; }
@@ -97,14 +120,17 @@
     @media (max-width: 620px) { .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 22px; } }
     .avatar {
       position: relative;
-      width: 150px; height: 150px; border-radius: 50%;
+      width: 160px; height: 190px; border-radius: 28px;
       background: linear-gradient(140deg, var(--accent-soft), var(--surface-2));
       border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
       box-shadow: var(--shadow); overflow: hidden;
     }
+    .avatar img {
+      width: 100%; height: 100%; display: block;
+      object-fit: contain; object-position: center center; background: #fff;
+    }
     .avatar-mono { font-family: var(--serif); font-size: 3rem; color: var(--accent); }
-    .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
     @media (max-width: 620px) { .avatar { margin: 0 auto; } }
     .hero h1 { font-size: 2.4rem; margin: 0 0 6px; letter-spacing: -.3px; }
     .hero .role { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 4px; }
@@ -123,18 +149,27 @@
     .pill:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; transform: translateY(-1px); }
 
     /* ----------  Sections  ---------- */
-    section { padding: 46px 0; border-top: 1px solid var(--border); }
-    .kicker { text-transform: uppercase; letter-spacing: .12em; font-size: .74rem; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
-    section h2 { font-size: 1.7rem; margin: 0 0 20px; }
+    section { padding: 60px 0; border-top: 1px solid var(--border); }
+    section h2 { font-size: 1.7rem; margin: 0 0 24px; }
     .about p { color: var(--text-soft); max-width: 68ch; }
     .about p + p { margin-top: 14px; }
 
-    /* interests */
-    .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
-    .tag { background: var(--accent-soft); color: var(--accent); border-radius: 8px; padding: 6px 12px; font-size: .86rem; font-weight: 600; }
+    /* research themes */
+    .theme-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px; margin-top: 26px;
+    }
+    .theme-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 18px; box-shadow: var(--shadow);
+    }
+    .theme-card h3 { margin: 0 0 10px; font-size: 1.05rem; }
+    .theme-card ul { margin: 0; padding-left: 1.1rem; color: var(--text-soft); }
+    .theme-card li + li { margin-top: 5px; }
 
     /* publications */
-    .pub { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .pub-list { margin-top: 8px; }
+    .pub { display: flex; gap: 22px; padding: 22px 0; border-bottom: 1px solid var(--border); }
     .pub:last-child { border-bottom: none; }
     .pub .year { flex: 0 0 52px; font-family: var(--serif); font-weight: 600; color: var(--text-faint); font-size: 1rem; padding-top: 1px; }
     .pub .body { flex: 1; }
@@ -142,6 +177,11 @@
     .pub .title:hover { color: var(--accent); }
     .pub .meta { color: var(--text-soft); font-size: .92rem; }
     .pub .venue { font-style: italic; }
+    .pub .status {
+      display: inline-flex; margin-left: 6px; padding: 1px 7px; border-radius: 999px;
+      background: var(--accent-soft); color: var(--accent); font-size: .76rem;
+      font-style: normal; font-weight: 700; vertical-align: baseline;
+    }
 
     /* career break marker */
     .pub.leave { align-items: center; }
@@ -167,16 +207,61 @@
     .card .cdesc { color: var(--text-faint); font-size: .86rem; }
 
     /* project highlight */
-    .project {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 26px; box-shadow: var(--shadow);
-    }
+    .project { max-width: 72ch; }
     .project h3 { margin: 0 0 10px; font-size: 1.25rem; }
-    .project p { color: var(--text-soft); margin: 0 0 14px; max-width: 66ch; }
-    .axes { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 12px; margin-top: 6px; }
-    .axis { background: var(--surface-2); border-radius: 10px; padding: 12px 14px; }
-    .axis code { color: var(--accent); font-weight: 700; font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: .9rem; }
-    .axis span { display: block; color: var(--text-soft); font-size: .84rem; margin-top: 2px; }
+    .project p { color: var(--text-soft); margin: 0 0 14px; }
+
+    /* beyond research: available from nav, hidden from normal scroll */
+    #beyond-research:not(:target) { display: none; }
+    .beyond-intro { color: var(--text-soft); max-width: 68ch; margin: 0 0 24px; }
+    .game-card {
+      display: grid; grid-template-columns: minmax(220px, .9fr) 1fr; gap: 24px; align-items: center;
+      background: linear-gradient(135deg, color-mix(in srgb, #047857 10%, var(--surface)), var(--surface));
+      border: 1px solid color-mix(in srgb, #047857 35%, var(--border)); border-radius: var(--radius);
+      padding: 22px; box-shadow: var(--shadow); overflow: hidden;
+    }
+    .game-visual {
+      min-height: 230px; border-radius: calc(var(--radius) - 4px); border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at 18% 20%, rgba(255, 213, 102, .55) 0 10%, transparent 11%),
+        radial-gradient(circle at 84% 72%, rgba(255, 134, 134, .35) 0 12%, transparent 13%),
+        radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--accent) 16%, transparent) 0 24%, transparent 25%),
+        linear-gradient(135deg, var(--accent-soft), var(--surface-2));
+      position: relative; overflow: hidden;
+    }
+    .game-visual::before {
+      content: ""; position: absolute; inset: 18px; border: 2px dashed color-mix(in srgb, var(--accent) 34%, transparent);
+      border-radius: 22px; opacity: .85;
+    }
+    .worm {
+      position: absolute; width: 138px; height: 40px; border-radius: 999px;
+      background: linear-gradient(90deg, #fff4b8, color-mix(in srgb, var(--accent) 30%, var(--surface)));
+      border: 2px solid color-mix(in srgb, var(--accent) 56%, var(--border));
+      box-shadow: var(--shadow);
+    }
+    .worm::before { content: ""; position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--text); right: 24px; top: 10px; }
+    .worm::after { content: ""; position: absolute; width: 18px; height: 8px; border-bottom: 3px solid var(--accent); border-radius: 50%; right: 13px; bottom: 8px; }
+    .worm.one { left: 30px; top: 48px; transform: rotate(-12deg); }
+    .worm.two { right: 26px; bottom: 48px; transform: rotate(15deg); width: 112px; }
+    .food-dot { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: #ff7a59; box-shadow: 0 0 0 5px rgba(255,122,89,.14); }
+    .food-dot.a { left: 43%; top: 28%; }
+    .food-dot.b { left: 58%; top: 48%; background: #ffd166; }
+    .food-dot.c { left: 34%; top: 66%; background: #7bd88f; }
+    .sparkle { position: absolute; font-size: 1.35rem; filter: drop-shadow(0 2px 4px rgba(31,35,40,.16)); }
+    .sparkle.one { left: 18%; bottom: 22%; }
+    .sparkle.two { right: 18%; top: 22%; }
+    .game-copy h3 { margin: 0 0 8px; font-size: 1.35rem; }
+    .game-copy p { color: var(--text-soft); margin: 0 0 14px; font-size: .98rem; }
+    .game-badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+    .game-badge { background: var(--accent-soft); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border)); border-radius: 999px; padding: 5px 10px; font-size: .82rem; font-weight: 700; }
+    .game-copy .pill { box-shadow: none; font-weight: 700; }
+    @media (prefers-reduced-motion: no-preference) {
+      .worm.one { animation: wiggle-one 4s ease-in-out infinite; }
+      .worm.two { animation: wiggle-two 4.5s ease-in-out infinite; }
+      @keyframes wiggle-one { 0%, 100% { transform: rotate(-12deg) translateX(0); } 50% { transform: rotate(-7deg) translateX(12px); } }
+      @keyframes wiggle-two { 0%, 100% { transform: rotate(15deg) translateX(0); } 50% { transform: rotate(9deg) translateX(-10px); } }
+    }
+    @media (max-width: 700px) { .game-card { grid-template-columns: 1fr; } }
 
     /* contact */
     .contact-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
@@ -197,25 +282,25 @@
   <header class="nav">
     <div class="wrap nav-inner">
       <span class="nav-name">Martyna K. Zwoińska</span>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary navigation">
         <a href="#about">About</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
         <a href="#collaborators">Collaborators</a>
         <a href="#students">Students</a>
+        <a href="#beyond-research">Beyond Research</a>
         <a href="#contact">Contact</a>
-        <span class="theme-wrap"><button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle light / dark">◐</button></span>
+        <span class="theme-wrap"><button class="theme-btn" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false" title="Switch to dark mode">◐</button></span>
       </nav>
     </div>
   </header>
 
+  <main id="main">
   <!-- ============ HERO ============ -->
   <div class="wrap hero">
     <div class="hero-grid">
       <div class="avatar">
-        <span class="avatar-mono">MZ</span>
-        <!-- Your photo: upload a file named photo.jpg to this repo and it appears here automatically. -->
-        <img src="photo.jpg" alt="Martyna K. Zwoińska" onerror="this.remove()" />
+        <img src="photo.jpg" alt="Martyna K. Zwoińska" />
       </div>
       <div>
         <h1>Martyna Katarzyna Zwoińska</h1>
@@ -227,7 +312,7 @@
           <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">🎓 Google Scholar</a>
           <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">🔗 ORCID</a>
           <a class="pill" href="https://www.researchgate.net/profile/Martyna-Zwoinska" target="_blank" rel="noopener">📄 ResearchGate</a>
-          <a class="pill" href="https://www.linkedin.com/in/martyna-zwoinska" target="_blank" rel="noopener">in LinkedIn</a>
+          <a class="pill" href="https://www.linkedin.com/in/martyna-zwoinska" target="_blank" rel="noopener">LinkedIn</a>
           <a class="pill" href="https://bsky.app/profile/martynazwoinska.bsky.social" target="_blank" rel="noopener">🦋 Bluesky</a>
           <a class="pill" href="https://www.uu.se/en/contact-and-organisation/staff?query=N12-104" target="_blank" rel="noopener">🏛 Uppsala profile</a>
         </div>
@@ -237,8 +322,7 @@
 
   <!-- ============ ABOUT ============ -->
   <section id="about" class="wrap about">
-    <div class="kicker">About</div>
-    <h2>Overview</h2>
+    <h2>About</h2>
     <p>
       I am an evolutionary biologist in the Animal Ecology group at the Department of Ecology
       and Genetics, Uppsala University. My research asks how
@@ -258,7 +342,6 @@
 
   <!-- ============ RESEARCH ============ -->
   <section id="research" class="wrap about">
-    <div class="kicker">Research</div>
     <h2>Research interests</h2>
     <p>
       My central question is how organisms adapt to environments that change over time. They can
@@ -266,44 +349,68 @@
       and bet-hedging, and features of their biology, such as whether they reproduce by selfing or
       outcrossing, tip the balance between these strategies.
     </p>
-    <div class="tags">
-      <span class="tag">Life-history evolution</span>
-      <span class="tag">Ageing &amp; senescence</span>
-      <span class="tag">Phenotypic plasticity</span>
-      <span class="tag">Parental &amp; transgenerational effects</span>
-      <span class="tag">Bet-hedging</span>
-      <span class="tag">Sexual selection &amp; conflict</span>
-      <span class="tag">Evolutionary genetics &amp; genomics</span>
-      <span class="tag">Selfing vs. outcrossing</span>
+    <div class="theme-grid" aria-label="Research interest areas">
+      <article class="theme-card">
+        <h3>Life histories &amp; ageing</h3>
+        <ul>
+          <li>Life-history evolution</li>
+          <li>Ageing &amp; senescence</li>
+        </ul>
+      </article>
+      <article class="theme-card">
+        <h3>Plasticity across generations</h3>
+        <ul>
+          <li>Phenotypic plasticity</li>
+          <li>Parental &amp; transgenerational effects</li>
+          <li>Bet-hedging</li>
+        </ul>
+      </article>
+      <article class="theme-card">
+        <h3>Evolutionary mechanisms</h3>
+        <ul>
+          <li>Sexual selection &amp; conflict</li>
+          <li>Evolutionary genetics &amp; genomics</li>
+          <li>Selfing vs. outcrossing</li>
+        </ul>
+      </article>
     </div>
   </section>
 
   <!-- ============ CURRENT PROJECT ============ -->
   <section id="project" class="wrap">
-    <div class="kicker">Current work</div>
     <h2>Adaptive response modes under environmental uncertainty</h2>
     <div class="project">
       <h3>Reproductive mode and the evolution of adaptive responses</h3>
       <p>
         In an ongoing modelling project I ask how reproductive mode, especially selfing versus
         outcrossing, changes the adaptive responses populations evolve when the environment is
-        uncertain. Using individual-based population-genetic simulations, I compare the response
-        strategies available to organisms along several axes:
+        uncertain. Using individual-based population-genetic simulations, I compare genetic
+        tracking, plasticity, parental effects, and bet-hedging without foregrounding the model
+        notation on the public site.
       </p>
-      <div class="axes">
-        <div class="axis"><code>Ga</code><span>Adaptive tracking</span></div>
-        <div class="axis"><code>Gdev</code><span>Developmental plasticity</span></div>
-        <div class="axis"><code>Grev</code><span>Reversible plasticity</span></div>
-        <div class="axis"><code>Gp</code><span>Parental information</span></div>
-        <div class="axis"><code>σ</code><span>Developmental noise / bet-hedging</span></div>
-      </div>
     </div>
   </section>
 
   <!-- ============ PUBLICATIONS ============ -->
   <section id="publications" class="wrap">
-    <div class="kicker">Selected publications</div>
-    <h2>Publications</h2>
+    <h2>Publications &amp; preprints</h2>
+
+    <div class="pub-list">
+      <div class="pub">
+        <div class="year">2026</div>
+        <div class="body">
+          <a class="title" href="https://www.biorxiv.org/content/10.64898/2026.04.10.717426v1" target="_blank" rel="noopener">Transgenerational inheritance is variable across <em>Caenorhabditis</em> worms</a>
+          <div class="meta"><strong>Zwoińska M. K.</strong>, Widjaja A. N., Lind M. I., Akgül A. D., Altan A. S., Aydın D., Çukurbağlı D., Venkataramani A. G., Renhuldt N. T., Chen H.-y. · <span class="venue">bioRxiv</span> · <span class="status">Preprint</span></div>
+        </div>
+      </div>
+
+    <div class="pub">
+      <div class="year">2026</div>
+      <div class="body">
+        <a class="title" href="https://www.biorxiv.org/content/10.64898/2026.02.04.703537v1" target="_blank" rel="noopener">From constraint to opportunity: Relaxing sexual antagonism reveals adaptive potential maintained by balancing selection</a>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Wiberg R. A. W., Trabert M., Kaufmann P., Immonen E. · <span class="venue">bioRxiv</span> · <span class="status">Preprint</span></div>
+      </div>
+    </div>
 
     <div class="pub">
       <div class="year">2026</div>
@@ -325,7 +432,7 @@
       <div class="year">2025</div>
       <div class="body">
         <a class="title" href="https://academic.oup.com/mbe/article/42/8/msaf178/8217438" target="_blank" rel="noopener">Sex-biased gene expression under sexually antagonistic and sex-limited selection</a>
-        <div class="meta"><span class="venue">Molecular Biology and Evolution</span> 42(8):msaf178</div>
+        <div class="meta">Wiberg R. A. W., <strong>Zwoińska M. K.</strong>, Kaufman P., Howie J. M., Immonen E. · <span class="venue">Molecular Biology and Evolution</span> 42(8):msaf178</div>
       </div>
     </div>
 
@@ -399,15 +506,16 @@
       </div>
     </div>
 
-    <div style="margin-top:22px">
+    </div>
+
+    <div class="links" style="margin-top:22px">
       <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">🎓 All publications on Google Scholar</a>
-      <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener" style="margin-left:8px">🔗 ORCID record</a>
+      <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">🔗 ORCID record</a>
     </div>
   </section>
 
   <!-- ============ COLLABORATORS ============ -->
   <section id="collaborators" class="wrap">
-    <div class="kicker">People</div>
     <h2>Collaborators</h2>
     <div class="cards">
       <div class="card">
@@ -425,7 +533,6 @@
 
   <!-- ============ STUDENTS ============ -->
   <section id="students" class="wrap">
-    <div class="kicker">Supervision</div>
     <h2>Students</h2>
     <div class="cards">
       <div class="card">
@@ -439,9 +546,38 @@
     </div>
   </section>
 
+  <!-- ============ BEYOND RESEARCH ============ -->
+  <section id="beyond-research" class="wrap">
+    <h2>Beyond Research</h2>
+    <p class="beyond-intro">
+      Research is the centre of my professional work, but not the boundary of my interests. I also use
+      AI-assisted coding to turn biological and creative ideas into functional digital projects.
+    </p>
+    <article class="game-card" aria-labelledby="game-title">
+      <div class="game-visual" aria-hidden="true">
+        <span class="worm one"></span>
+        <span class="worm two"></span>
+        <span class="food-dot a"></span>
+        <span class="food-dot b"></span>
+        <span class="food-dot c"></span>
+        <span class="sparkle one">★</span>
+        <span class="sparkle two">✦</span>
+      </div>
+      <div class="game-copy">
+        <h3 id="game-title">The Game of Worms</h3>
+        <p>Help tiny worms explore, find snacks, and survive surprises.</p>
+        <div class="game-badges" aria-label="Game highlights">
+          <span class="game-badge">🪱 Worms</span>
+          <span class="game-badge">🍽️ Snacks</span>
+          <span class="game-badge">✨ Surprises</span>
+        </div>
+        <a class="pill" href="game-of-worms/index.html" target="_blank" rel="noopener">▶ Play The Game of Worms</a>
+      </div>
+    </article>
+  </section>
+
   <!-- ============ CONTACT ============ -->
   <section id="contact" class="wrap">
-    <div class="kicker">Get in touch</div>
     <h2>Contact</h2>
     <div class="contact-box">
       <p>
@@ -454,12 +590,14 @@
         <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">🎓 Google Scholar</a>
         <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">🔗 ORCID</a>
         <a class="pill" href="https://www.researchgate.net/profile/Martyna-Zwoinska" target="_blank" rel="noopener">📄 ResearchGate</a>
-        <a class="pill" href="https://www.linkedin.com/in/martyna-zwoinska" target="_blank" rel="noopener">in LinkedIn</a>
+        <a class="pill" href="https://www.linkedin.com/in/martyna-zwoinska" target="_blank" rel="noopener">LinkedIn</a>
         <a class="pill" href="https://bsky.app/profile/martynazwoinska.bsky.social" target="_blank" rel="noopener">🦋 Bluesky</a>
         <a class="pill" href="https://www.uu.se/en/contact-and-organisation/staff?query=N12-104" target="_blank" rel="noopener">🏛 Uppsala profile</a>
       </div>
     </div>
   </section>
+
+  </main>
 
   <footer>
     <div class="wrap">
@@ -474,15 +612,41 @@
 
     // Theme toggle (remembers choice)
     var root = document.documentElement;
+    var themeToggle = document.getElementById('themeToggle');
     var saved = localStorage.getItem('theme');
     if (saved) root.setAttribute('data-theme', saved);
-    document.getElementById('themeToggle').addEventListener('click', function () {
-      var isDark = getComputedStyle(root).getPropertyValue('--bg').trim().indexOf('#14') === 0
-                   || root.getAttribute('data-theme') === 'dark';
-      var next = isDark ? 'light' : 'dark';
+
+    function syncThemeButton() {
+      var isDark = root.getAttribute('data-theme') === 'dark'
+        || (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+      themeToggle.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    syncThemeButton();
+    themeToggle.addEventListener('click', function () {
+      var next = themeToggle.getAttribute('aria-pressed') === 'true' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
+      syncThemeButton();
     });
+
+    // Keep Beyond Research opt-in and remove duplicate copies from conflict merges.
+    var beyondLinks = Array.prototype.slice.call(document.querySelectorAll('nav a[href="#beyond-research"]'));
+    beyondLinks.slice(0, -1).forEach(function (link) { link.remove(); });
+
+    var beyondSections = Array.prototype.slice.call(document.querySelectorAll('section[id="beyond-research"]'));
+    beyondSections.slice(0, -1).forEach(function (section) { section.remove(); });
+
+    function syncBeyondResearch() {
+      var section = document.getElementById('beyond-research');
+      if (!section) return;
+      section.hidden = window.location.hash !== '#beyond-research';
+    }
+
+    syncBeyondResearch();
+    window.addEventListener('hashchange', syncBeyondResearch);
   </script>
 </body>
 </html>
