@@ -244,17 +244,27 @@
     .card .cdesc { color: var(--text-faint); font-size: .86rem; }
 
     /* project highlight */
-    .project { max-width: 72ch; }
-    .project + .project { margin-top: 30px; }
+    .project { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: start; }
+    .project + .project { margin-top: 40px; }
+    .project-text { max-width: 62ch; }
     .project h3 { margin: 0 0 10px; font-size: 1.25rem; }
-    .project p { color: var(--text-soft); margin: 0 0 14px; }
-    .project figure { margin: 18px 0 0; }
+    .project p { color: var(--text-soft); margin: 0; }
+    .project figure { margin: 4px 0 0; }
     .project figure img {
-      width: 100%; max-width: 680px; height: auto; display: block;
+      width: 100%; height: auto; display: block;
       background: #fff; border: 1px solid var(--border); border-radius: 12px;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow); transition: transform .1s ease;
     }
-    .project figcaption { color: var(--text-faint); font-size: .84rem; margin-top: 9px; max-width: 680px; }
+    .project figure a:hover img { transform: translateY(-2px); border-color: var(--accent); }
+    .project figcaption { color: var(--text-faint); font-size: .82rem; margin-top: 8px; }
+    /* themes with no figure keep text readable */
+    .project:not(:has(figure)) { display: block; }
+    .project:not(:has(figure)) .project-text { max-width: 72ch; }
+    @media (max-width: 680px) {
+      .project { grid-template-columns: 1fr; gap: 16px; }
+      .project figure { margin: 0; }
+      .project figure img { max-width: 460px; }
+    }
 
     /* contact */
     .contact-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
@@ -362,44 +372,50 @@
   <section id="project" class="wrap">
     <h2>Current work</h2>
     <div class="project">
-      <h3>Adaptive response modes under environmental variability</h3>
-      <p>
-        In an ongoing project I ask how reproductive mode, especially selfing versus outcrossing,
-        changes the adaptive responses populations evolve when the environment changes in ways
-        that can be predictable or unpredictable. My ambition is to combine empirical research
-        with individual-based population-genetic simulations.
-      </p>
+      <div class="project-text">
+        <h3>Adaptive response modes under environmental variability</h3>
+        <p>
+          In an ongoing project I ask how reproductive mode, especially selfing versus outcrossing,
+          changes the adaptive responses populations evolve when the environment changes in ways
+          that can be predictable or unpredictable. My ambition is to combine empirical research
+          with individual-based population-genetic simulations.
+        </p>
+      </div>
       <figure>
-        <img src="response-modes.png" alt="Adaptive response modes across cue reliability and between-generation environmental variability: reversible plasticity, developmental plasticity, bet-hedging, and continuous genetic adaptation" onerror="this.closest('figure').remove()" />
+        <a href="response-modes.png" target="_blank" rel="noopener"><img src="response-modes.png" alt="Adaptive response modes across cue reliability and between-generation environmental variability: reversible plasticity, developmental plasticity, bet-hedging, and continuous genetic adaptation" onerror="this.closest('figure').remove()" /></a>
         <figcaption>Adaptive response modes across cue reliability and environmental variability. Modified from Botero et al. (2015).</figcaption>
       </figure>
     </div>
     <div class="project">
-      <h3>Learning and cognition</h3>
-      <p>
-        While it may not seem obvious, nematode worms from the genus <em>Caenorhabditis</em> can
-        learn and form memories, and they do so with only 300 to 400 neurons. What began during
-        my PhD under the supervision of Alexei A. Maklakov continues to this day, because who could
-        resist the charm of learning roundworms? Most lately, we focus on the phenomenon of learned
-        pathogen avoidance, which can be passed down several generations.
-      </p>
+      <div class="project-text">
+        <h3>Learning and cognition</h3>
+        <p>
+          While it may not seem obvious, nematode worms from the genus <em>Caenorhabditis</em> can
+          learn and form memories, and they do so with only 300 to 400 neurons. What began during
+          my PhD under the supervision of Alexei A. Maklakov continues to this day, because who could
+          resist the charm of learning roundworms? Most lately, we focus on the phenomenon of learned
+          pathogen avoidance, which can be passed down several generations.
+        </p>
+      </div>
       <figure>
-        <img src="nematode-illustration.png" alt="Illustration of Caenorhabditis nematodes" onerror="this.closest('figure').remove()" />
+        <a href="nematode-illustration.png" target="_blank" rel="noopener"><img src="nematode-illustration.png" alt="Illustration of Caenorhabditis nematodes" onerror="this.closest('figure').remove()" /></a>
         <figcaption>The roundworms at the heart of this work: <em>Caenorhabditis</em> nematodes.</figcaption>
       </figure>
     </div>
     <div class="project">
-      <h3>Sexually antagonistic selection</h3>
-      <p>
-        Working with the group of Elina Immonen, I investigate the conditions under which sexually
-        antagonistic selection can preserve genetic variation, or in other words generate balancing
-        selection. Sexually antagonistic selection is just one of many scenarios that can generate
-        balancing selection, and as much as we do not fully understand the role of balancing
-        selection in maintaining the genetic polymorphism we observe, we also do not understand
-        particularly well the relative importance of its different mechanisms.
-      </p>
+      <div class="project-text">
+        <h3>Sexually antagonistic selection</h3>
+        <p>
+          Working with the group of Elina Immonen, I investigate the conditions under which sexually
+          antagonistic selection can preserve genetic variation, or in other words generate balancing
+          selection. Sexually antagonistic selection is just one of many scenarios that can generate
+          balancing selection, and as much as we do not fully understand the role of balancing
+          selection in maintaining the genetic polymorphism we observe, we also do not understand
+          particularly well the relative importance of its different mechanisms.
+        </p>
+      </div>
       <figure>
-        <img src="seed-beetles.png" alt="Experimentally evolved sexual size dimorphism across selection regimes in Callosobruchus seed beetles" onerror="this.closest('figure').remove()" />
+        <a href="seed-beetles.png" target="_blank" rel="noopener"><img src="seed-beetles.png" alt="Experimentally evolved sexual size dimorphism across selection regimes in Callosobruchus seed beetles" onerror="this.closest('figure').remove()" /></a>
         <figcaption>Sexual size dimorphism evolving under sexually antagonistic and sex-limited selection in <em>Callosobruchus</em> seed beetles.</figcaption>
       </figure>
     </div>
