@@ -357,7 +357,13 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
   filter: drop-shadow(0 18px 16px rgba(23,51,61,.18));
   overflow: visible;
 }
-.worm-species { transform: scale(var(--worm-scale)); transform-origin: 210px 170px; transition: transform .28s ease; }
+.worm-species { transform: translate(var(--pose-x, 0), var(--pose-y, 0)) rotate(var(--pose-angle, 0deg)) scale(var(--worm-scale)); transform-origin: 210px 170px; transition: transform .28s ease; }
+.habitat[data-pose="hero"] { --pose-x: 0px; --pose-y: 0px; --pose-angle: 0deg; }
+.habitat[data-pose="island"] { --pose-x: -24px; --pose-y: 10px; --pose-angle: -8deg; }
+.habitat[data-pose="forager"] { --pose-x: 26px; --pose-y: 18px; --pose-angle: 7deg; }
+.habitat[data-pose="rainforest"] { --pose-x: 32px; --pose-y: -7px; --pose-angle: -5deg; }
+.habitat[data-pose="woodland"] { --pose-x: -20px; --pose-y: 16px; --pose-angle: -7deg; }
+.habitat[data-pose="coast"] { --pose-x: 24px; --pose-y: 4px; --pose-angle: 9deg; }
 .worm-line { fill: none; stroke: var(--worm-color); stroke-width: 46; stroke-linecap: round; stroke-linejoin: round; }
 .worm-shadow { fill: none; stroke: color-mix(in srgb, var(--worm-deep) 35%, transparent); stroke-width: 54; stroke-linecap: round; transform: translateY(7px); }
 .companion-line { fill: none; stroke: var(--worm-color); stroke-width: 42; stroke-linecap: round; stroke-linejoin: round; }
