@@ -3,12 +3,12 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 
 const regionalPacks = {
-  okinawa: { sceneName: "Okinawa fig garden", looks: ["Fig-leaf hat", "Okinawa fig scarf", "Fig-wasp flight rig"], icons: ["🍃", "🧣", "🪽"] },
-  kauai: { sceneName: "Kauaʻi island forest", looks: ["Kauaʻi flower wreath", "Island rain cape", "Fern climbing sash"], icons: ["🌺", "🌧️", "🌿"] },
-  field: { sceneName: "Garden compost", looks: ["Field explorer cap", "Compost satchel", "Sample-jar pack"], icons: ["🧢", "🎒", "🧪"] },
-  rainforest: { sceneName: "Tropical rainforest", looks: ["Rainforest leaf crown", "Monsoon flight cape", "Jungle fruit garland"], icons: ["🌿", "🌧️", "🍊"] },
-  woodland: { sceneName: "Temperate woodland", looks: ["Acorn beret", "Woodland trail scarf", "Oak-leaf shield"], icons: ["🌰", "🧣", "🍂"] },
-  ocean: { sceneName: "Pantropical coast", looks: ["Palm-leaf sun hat", "Ocean wave wrap", "Tropical flower garland"], icons: ["🌴", "🌊", "🌸"] }
+  okinawa: { sceneName: "Ishigaki fig grove", looks: ["Fig-leaf explorer hat", "Yaeyama minsā field sash", "Fig-wasp flight rig"], icons: ["🍃", "🧵", "🪽"], note: "Ishigaki’s Yaeyama minsā textile inspires the sash; fig leaves and the fig-wasp vector complete the field kit." },
+  kauai: { sceneName: "Kauaʻi cloud forest", looks: ["Mokihana lei crown", "Lauhala sample satchel", "Fern trail glider"], icons: ["🌿", "🧺", "🪶"], note: "Kauaʻi’s mokihana lei material and Hawaiʻi’s lauhala weaving inspire a crown and a practical sample bag." },
+  field: { sceneName: "Rot-fruit field site", looks: ["Mushroom-forager cap", "Rot-fruit field satchel", "Specimen-vial backpack"], icons: ["🍄", "🎒", "🧪"], note: "Mushroom compost, rotting fruit, and specimen vials turn real collection substrates into a tiny field-research kit." },
+  rainforest: { sceneName: "Tropical fruit forest", looks: ["Drip-leaf rain hat", "Canopy climbing harness", "Tropical fruit sample belt"], icons: ["🌿", "🧗", "🍌"], note: "Broad rain-shedding leaves, a climbing harness, and fruit-sampling gear fit humid tropical collection sites." },
+  woodland: { sceneName: "Temperate leaf litter", looks: ["Acorn trail cap", "Leaf-litter field satchel", "Beetle-wing explorer pack"], icons: ["🌰", "🎒", "🪲"], note: "Acorns, leaf litter, and beetles echo the temperate decomposing-plant and invertebrate communities where worms are found." },
+  ocean: { sceneName: "Tropical island garden", looks: ["Palm-leaf sun visor", "Woven island sample bag", "Island flower lei"], icons: ["🌴", "🧺", "🌸"], note: "Palm shade, a woven collecting bag, and island flowers evoke tropical island records without suggesting the worms live in seawater." }
 };
 
 const species = [
@@ -24,9 +24,9 @@ const species = [
     scale: 1.08,
     pose: "hero",
     localStyle: "okinawa",
-    sceneName: "Okinawa fig garden",
-    localLooks: ["Fig-leaf hat", "Okinawa fig scarf", "Fig-wasp wings"],
-    localIcons: ["🍃", "🧣", "🪽"],
+    sceneName: "Ishigaki fig grove",
+    localLooks: ["Fig-leaf explorer hat", "Yaeyama minsā field sash", "Fig-wasp flight rig"],
+    localIcons: ["🍃", "🧵", "🪽"],
     habitat: "Fresh figs",
     habitatKey: "fig",
     intro: "A surprisingly large close relative of C. elegans that lives in fresh figs and travels with fig wasps.",
@@ -40,30 +40,37 @@ const species = [
     ]
   },
   {
-    id: "kamaaina",
-    short: "C. kamaaina",
-    name: "Caenorhabditis kamaaina",
-    nickname: "The Kauaʻi local",
-    region: "Kauaʻi, Hawaiʻi",
-    reproduction: "outcrossing",
-    reproductionLabel: "♀ female + ♂ male",
-    cast: ["female", "male"],
-    scale: .74,
+    id: "briggsae",
+    short: "C. briggsae",
+    name: "Caenorhabditis briggsae",
+    nickname: "The tropical selfer",
+    region: "Warm regions worldwide",
+    reproduction: "selfing",
+    reproductionLabel: "⚥ hermaphrodite + ♂ rare male",
+    cast: ["hermaphrodite", "rare male"],
+    scale: .73,
     pose: "island",
-    localStyle: "kauai",
-    sceneName: "Kauaʻi island forest",
-    localLooks: ["Kauaʻi flower wreath", "Island rain cape", "Fern sash"],
-    localIcons: ["🌺", "🌧️", "🌿"],
-    habitat: "Island wild sites",
-    habitatKey: "island",
-    intro: "A Hawaiian species known from Kauaʻi, where it has been found at only a small number of wild sites.",
-    fact: "This species reproduces through separate males and females and is known from only a small number of Hawaiian collections.",
+    localStyle: "rainforest",
+    sceneName: "Tropical fruit forest",
+    localLooks: ["Drip-leaf rain hat", "Canopy climbing harness", "Tropical fruit sample belt"],
+    localIcons: ["🌿", "🧗", "🍌"],
+    habitat: "Rotting fruit, flowers & compost",
+    habitatKey: "tropical",
+    intro: "A globally distributed warm-climate selfer often collected from rotting fruit, flowers, compost, and other bacteria-rich plant material.",
+    fact: "Self-fertile C. briggsae hermaphrodites can found a population alone; its sister species C. nigoni instead needs females and males.",
     worm: "#8bc9a7",
     wormDeep: "#387d68",
     habitatOne: "#8ed0ad",
     habitatTwo: "#59a6a0",
     locations: [
-      { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.50, 22.08], style: "kauai" }
+      { name: "Ahmedabad, India · AF16", coordinates: [72.56, 23.03], source: "CaeNDR", style: "field" },
+      { name: "Taipei, Taiwan · BRC20390", coordinates: [121.576542, 25.027105], source: "CaeNDR", style: "rainforest" },
+      { name: "Kerala, India · JU1337", coordinates: [77.075, 8.32], source: "CaeNDR", style: "rainforest" },
+      { name: "Kauaʻi, Hawaiʻi · QG130", coordinates: [-159.5829, 22.2202], source: "CaeNDR", style: "kauai" },
+      { name: "Réunion Island · JU1375", coordinates: [55.6885, -21.0469], source: "CaeNDR", style: "ocean" },
+      { name: "Orsay, France · JU2518", coordinates: [2.1725, 48.7015], source: "CaeNDR", style: "field" },
+      { name: "São Paulo region, Brazil · EG5612", coordinates: [-44.19, -23.18], source: "CaeNDR", style: "rainforest" },
+      { name: "New South Wales, Australia · QG2814", coordinates: [153.0090333, -30.6445167], source: "CaeNDR", style: "rainforest" }
     ]
   },
   {
@@ -78,9 +85,9 @@ const species = [
     scale: .72,
     pose: "forager",
     localStyle: "field",
-    sceneName: "Garden compost",
-    localLooks: ["Field explorer cap", "Compost satchel", "Sample-jar pack"],
-    localIcons: ["🧢", "🎒", "🧪"],
+    sceneName: "Rot-fruit field site",
+    localLooks: ["Mushroom-forager cap", "Rot-fruit field satchel", "Specimen-vial backpack"],
+    localIcons: ["🍄", "🎒", "🧪"],
     habitat: "Rotting plants & compost",
     habitatKey: "compost",
     intro: "The famous laboratory worm is also a wild explorer of short-lived, bacteria-rich places such as rotting fruit and compost.",
@@ -101,61 +108,64 @@ const species = [
     ]
   },
   {
-    id: "brenneri",
-    short: "C. brenneri",
-    name: "Caenorhabditis brenneri",
-    nickname: "The tropical mixer",
-    region: "Tropical regions",
+    id: "nigoni",
+    short: "C. nigoni",
+    name: "Caenorhabditis nigoni",
+    nickname: "The fruit-market mixer",
+    region: "Tropical regions worldwide",
     reproduction: "outcrossing",
     reproductionLabel: "♀ female + ♂ male",
     cast: ["female", "male"],
-    scale: .78,
+    scale: .75,
     pose: "rainforest",
     localStyle: "rainforest",
-    sceneName: "Tropical rainforest",
-    localLooks: ["Rainforest leaf crown", "Monsoon cape", "Fruit necklace"],
-    localIcons: ["🌿", "🌧️", "🍊"],
-    habitat: "Tropical rotting fruit",
+    sceneName: "Tropical fruit forest",
+    localLooks: ["Drip-leaf rain hat", "Canopy climbing harness", "Tropical fruit sample belt"],
+    localIcons: ["🌿", "🧗", "🍌"],
+    habitat: "Tropical rotting fruit & flowers",
     habitatKey: "tropical",
-    intro: "A warm-climate species found across tropical regions, usually in the busy microbial world of decaying plant material.",
-    fact: "Its populations contain extraordinary genetic diversity—far more than predominantly selfing Caenorhabditis species.",
+    intro: "The outcrossing sister species of C. briggsae, collected from rotting flowers, starfruit, guava, coconut, figs, and other tropical plant material.",
+    fact: "C. nigoni and C. briggsae are close enough to produce hybrids, making this pair especially useful for studying how species and mating systems diverge.",
     worm: "#f5a66f",
     wormDeep: "#cc5c45",
     habitatOne: "#f5be68",
     habitatTwo: "#de7055",
     locations: [
-      { name: "Costa Rica", coordinates: [-84.1, 9.9], style: "rainforest" },
-      { name: "Brazil", coordinates: [-47.9, -15.8], style: "rainforest" },
-      { name: "Southern India", coordinates: [77.3, 10.2], style: "rainforest" }
+      { name: "Trivandrum, Kerala · JU1325", coordinates: [76.94, 8.52], source: "Félix Lab", style: "rainforest" },
+      { name: "Singapore · ZF1220", coordinates: [103.82, 1.32], source: "Félix Lab", style: "rainforest" },
+      { name: "Praslin, Seychelles · YR106", coordinates: [55.7467, -4.3193], source: "Félix Lab", style: "ocean" },
+      { name: "São Tomé · JU2484", coordinates: [6.73, 0.34], source: "Félix Lab", style: "rainforest" },
+      { name: "Mahahual, Mexico · JU2617", coordinates: [-87.71, 18.72], source: "Félix Lab", style: "rainforest" },
+      { name: "Mauritius · JU2909", coordinates: [57.4061, -20.2914], source: "Félix Lab", style: "ocean" },
+      { name: "Ho Chi Minh City · JU4356", coordinates: [106.6939439, 10.7742239], source: "Félix Lab", style: "rainforest" },
+      { name: "Lombok, Indonesia · HPT26", coordinates: [116.23966, -8.527466], source: "Félix Lab", style: "rainforest" }
     ]
   },
   {
-    id: "remanei",
-    short: "C. remanei",
-    name: "Caenorhabditis remanei",
-    nickname: "The temperate mixer",
-    region: "Europe & North America",
+    id: "wallacei",
+    short: "C. wallacei",
+    name: "Caenorhabditis wallacei",
+    nickname: "The cacao cousin",
+    region: "Bali, Indonesia",
     reproduction: "outcrossing",
     reproductionLabel: "♀ female + ♂ male",
     cast: ["female", "male"],
-    scale: .76,
+    scale: .74,
     pose: "woodland",
-    localStyle: "woodland",
-    sceneName: "Temperate woodland",
-    localLooks: ["Acorn beret", "Woodland scarf", "Oak-leaf badge"],
-    localIcons: ["🌰", "🧣", "🍂"],
-    habitat: "Temperate woodlands",
-    habitatKey: "woodland",
-    intro: "A temperate-zone species often collected from decaying plant material and invertebrate-rich woodland habitats.",
-    fact: "At some gene regions, two wild C. remanei worms differed at as many as one in four silent DNA letters—an extraordinary amount of diversity within one species.",
+    localStyle: "rainforest",
+    sceneName: "Bali cacao grove",
+    localLooks: ["Drip-leaf rain hat", "Canopy climbing harness", "Tropical fruit sample belt"],
+    localIcons: ["🌿", "🧗", "🍫"],
+    habitat: "Rotten cacao fruit",
+    habitatKey: "tropical",
+    intro: "The outcrossing sister species of C. tropicalis, known from a rotten cacao fruit collected in a plantation near Sanda, Bali.",
+    fact: "Its reference isolate JU1873 came from one cacao fruit in 2009; comparing it with selfing C. tropicalis helps reveal changes that accompanied self-fertilization.",
     worm: "#a9a0df",
     wormDeep: "#5f55a5",
     habitatOne: "#a9c796",
     habitatTwo: "#8d79bd",
     locations: [
-      { name: "Germany", coordinates: [10.4, 51.1], style: "woodland" },
-      { name: "Ohio, USA", coordinates: [-82.8, 40.3], style: "woodland" },
-      { name: "Ontario, Canada", coordinates: [-79.4, 44.4], style: "woodland" }
+      { name: "Sanda, Bali · JU1873", coordinates: [115.0, -8.3], source: "Félix Lab", style: "rainforest", history: "JU1873 was isolated from a rotten cacao fruit collected in a plantation near Sanda, Bali, in November 2009." }
     ]
   },
   {
@@ -170,9 +180,9 @@ const species = [
     scale: .72,
     pose: "coast",
     localStyle: "ocean",
-    sceneName: "Pantropical coast",
-    localLooks: ["Palm-leaf sun hat", "Ocean wrap", "Tropical flower necklace"],
-    localIcons: ["🌴", "🌊", "🌸"],
+    sceneName: "Tropical island garden",
+    localLooks: ["Palm-leaf sun visor", "Woven island sample bag", "Island flower lei"],
+    localIcons: ["🌴", "🧺", "🌸"],
     habitat: "Tropical fruit & flowers",
     habitatKey: "flowers",
     intro: "A tropical species in which self-fertile hermaphrodites can start a new population even when they arrive alone.",
@@ -195,6 +205,12 @@ const species = [
       { name: "Réunion Island", coordinates: [55.688, -21.047], source: "CaeNDR", style: "ocean" }
     ]
   }
+];
+
+const sisterPairs = [
+  { members: ["elegans", "inopinata"], label: "sister species" },
+  { members: ["briggsae", "nigoni"], label: "sister species" },
+  { members: ["tropicalis", "wallacei"], label: "sister species" }
 ];
 
 const byId = new Map(species.map(item => [item.id, item]));
@@ -231,6 +247,7 @@ const els = {
   localWrapLabel: document.querySelector('[data-accessory="local-wrap"] .button-label'),
   localCharmIcon: document.querySelector('[data-accessory="local-charm"] .button-icon'),
   localCharmLabel: document.querySelector('[data-accessory="local-charm"] .button-label'),
+  wardrobeNote: document.getElementById("wardrobe-note"),
   speciesRegion: document.getElementById("species-region"),
   speciesNumber: document.getElementById("species-number"),
   speciesName: document.getElementById("species-name"),
@@ -250,7 +267,7 @@ function italicText(element, value) {
   element.appendChild(italic);
 }
 
-const scientificNamePattern = /\b(?:Caenorhabditis(?:\s+(?:inopinata|kamaaina|elegans|brenneri|remanei|tropicalis))?|C\.\s+(?:inopinata|kamaaina|elegans|brenneri|remanei|tropicalis))\b/g;
+const scientificNamePattern = /\b(?:Caenorhabditis(?:\s+(?:inopinata|elegans|briggsae|nigoni|tropicalis|wallacei))?|C\.\s+(?:inopinata|elegans|briggsae|nigoni|tropicalis|wallacei))\b/g;
 
 function scientificText(element, value) {
   element.replaceChildren();
@@ -268,36 +285,53 @@ function scientificText(element, value) {
 
 function renderTabs() {
   els.tabs.replaceChildren();
-  species.forEach((item, index) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "species-tab";
-    button.dataset.species = item.id;
-    button.style.setProperty("--tab-color", item.wormDeep);
-    button.setAttribute("aria-pressed", String(item.id === selectedId));
-    button.setAttribute("aria-label", `Meet ${item.name}, ${item.nickname}`);
+  sisterPairs.forEach(pair => {
+    const pairGroup = document.createElement("div");
+    pairGroup.className = "sister-pair";
+    pairGroup.setAttribute("role", "group");
+    const pairNames = pair.members.map(id => byId.get(id).short).join(" and ");
+    pairGroup.setAttribute("aria-label", `Sister species: ${pairNames}`);
 
-    const worm = document.createElement("span");
-    worm.className = "mini-worm";
-    worm.setAttribute("aria-hidden", "true");
-    const name = document.createElement("i");
-    name.textContent = item.short;
-    const number = document.createElement("small");
-    number.textContent = String(index + 1).padStart(2, "0");
-    button.append(worm, name, number);
-    button.addEventListener("click", () => selectSpecies(item.id));
-    els.tabs.appendChild(button);
+    const pairLabel = document.createElement("span");
+    pairLabel.className = "sister-label";
+    pairLabel.textContent = pair.label;
+
+    const pairButtons = document.createElement("div");
+    pairButtons.className = "sister-buttons";
+    pair.members.forEach(id => {
+      const item = byId.get(id);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "species-tab";
+      button.dataset.species = item.id;
+      button.style.setProperty("--tab-color", item.wormDeep);
+      button.setAttribute("aria-pressed", String(item.id === selectedId));
+      button.setAttribute("aria-label", `Meet ${item.name}, ${item.nickname}`);
+
+      const worm = document.createElement("span");
+      worm.className = "mini-worm";
+      worm.setAttribute("aria-hidden", "true");
+      const name = document.createElement("i");
+      name.textContent = item.short;
+      const mode = document.createElement("small");
+      mode.className = item.reproduction;
+      mode.textContent = item.reproduction === "selfing" ? "mostly selfing" : "outcrossing";
+      button.append(worm, name, mode);
+      button.addEventListener("click", () => selectSpecies(item.id));
+      pairButtons.appendChild(button);
+    });
+    pairGroup.append(pairLabel, pairButtons);
+    els.tabs.appendChild(pairGroup);
   });
 }
 
 function renderSpecies(item, place) {
-  const index = species.findIndex(candidate => candidate.id === item.id);
   const placeName = typeof place === "string" ? place : place?.name;
   const placeSource = typeof place === "object" ? place?.source : null;
   const styleKey = typeof place === "object" && place?.style ? place.style : item.localStyle;
   const regionalPack = regionalPacks[styleKey];
   els.speciesRegion.textContent = placeName || item.region;
-  els.speciesNumber.textContent = `${String(index + 1).padStart(2, "0")} / ${String(species.length).padStart(2, "0")}`;
+  els.speciesNumber.textContent = "sister pair";
   italicText(els.speciesName, item.name);
   els.speciesNickname.textContent = item.nickname;
   scientificText(els.speciesIntro, item.intro);
@@ -313,7 +347,8 @@ function renderSpecies(item, place) {
   els.localWrapLabel.textContent = regionalPack.looks[1];
   els.localCharmIcon.textContent = regionalPack.icons[2];
   els.localCharmLabel.textContent = regionalPack.looks[2];
-  els.sceneName.textContent = regionalPack.sceneName;
+  els.wardrobeNote.textContent = regionalPack.note;
+  els.sceneName.textContent = typeof place === "object" ? (place.sceneName || regionalPack.sceneName) : item.sceneName;
 
   els.habitat.dataset.habitat = item.habitatKey;
   els.habitat.dataset.localStyle = styleKey;

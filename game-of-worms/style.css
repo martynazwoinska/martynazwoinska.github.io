@@ -242,10 +242,34 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
 
 .species-tabs {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
   margin: 16px 0 20px;
 }
+.sister-pair {
+  position: relative;
+  border: 1px solid rgba(22,125,122,.2);
+  border-radius: 22px;
+  padding: 25px 8px 8px;
+  background: linear-gradient(180deg, rgba(191,232,232,.42), rgba(255,255,255,.34));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+}
+.sister-label {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--teal-dark);
+  font-size: .64rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.sister-label::before, .sister-label::after { content: ""; position: absolute; top: 50%; width: 23px; height: 1px; background: rgba(22,125,122,.34); }
+.sister-label::before { right: calc(100% + 7px); }
+.sister-label::after { left: calc(100% + 7px); }
+.sister-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
 .species-tab {
   min-height: 76px;
   border: 2px solid transparent;
@@ -274,7 +298,9 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
   transform: rotate(-9deg);
 }
 .species-tab i { display: block; font-weight: 800; }
-.species-tab small { display: block; margin-top: 2px; color: var(--ink-soft); }
+.species-tab small { display: inline-block; margin-top: 5px; border-radius: 999px; padding: 2px 7px; font-size: .62rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }
+.species-tab small.selfing { color: #a94347; background: rgba(243,111,98,.14); }
+.species-tab small.outcrossing { color: #51438f; background: rgba(117,103,184,.14); }
 
 .play-grid {
   display: grid;
@@ -328,10 +354,19 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
 .habitat[data-local-style="rainforest"] [data-scene="rainforest"],
 .habitat[data-local-style="woodland"] [data-scene="woodland"],
 .habitat[data-local-style="ocean"] [data-scene="ocean"] { display: inline; }
-.scene-sky { fill: var(--scene-sky); }
-.scene-ground, .scene-island { fill: var(--scene-ground); }
-.scene-water { fill: var(--scene-water); }
-.scene-sun, .scene-accent, .scene-fruit-detail, .scene-flower-centre { fill: var(--scene-highlight); }
+.scene-sky { fill: url(#scene-sky-gradient); }
+.scene-sky-top { stop-color: color-mix(in srgb, var(--scene-sky) 55%, white); }
+.scene-sky-bottom { stop-color: var(--scene-sky); }
+.scene-ground, .scene-island { fill: url(#scene-ground-gradient); }
+.scene-ground-top { stop-color: color-mix(in srgb, var(--scene-ground) 78%, white); }
+.scene-ground-bottom { stop-color: color-mix(in srgb, var(--scene-ground) 72%, var(--scene-detail)); }
+.scene-water { fill: url(#scene-water-gradient); }
+.scene-water-top { stop-color: color-mix(in srgb, var(--scene-water) 72%, white); }
+.scene-water-bottom { stop-color: var(--scene-water); }
+.scene-sun { fill: url(#scene-sun-gradient); filter: drop-shadow(0 0 16px rgba(255,215,108,.42)); }
+.scene-sun-core { stop-color: var(--scene-highlight); }
+.scene-sun-edge { stop-color: color-mix(in srgb, var(--scene-highlight) 65%, #f2a55f); }
+.scene-accent, .scene-fruit-detail, .scene-flower-centre { fill: var(--scene-highlight); }
 .scene-leaf, .scene-canopy, .scene-canopy-dot { fill: color-mix(in srgb, var(--scene-ground) 78%, var(--scene-detail)); }
 .scene-stem, .scene-stroke, .scene-wave, .scene-fence, .scene-waterfall { fill: none; stroke: var(--scene-detail); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
 .scene-waterfall { stroke: #eefcfa; stroke-width: 10; }
@@ -344,6 +379,20 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
 .scene-trunk { fill: #8d684f; }
 .scene-acorn-cap { fill: #664b3b; }
 .scene-flower circle { fill: var(--habitat-two); }
+.scene-clouds { fill: rgba(255,255,255,.58); filter: drop-shadow(0 5px 10px rgba(48,91,91,.08)); }
+.scene-clouds.mist { opacity: .42; }
+.scene-distant-island { fill: color-mix(in srgb, var(--scene-ground) 48%, var(--scene-sky)); opacity: .76; }
+.scene-waterfall-mist { fill: rgba(255,255,255,.68); filter: blur(4px); }
+.scene-sparkles { fill: rgba(255,255,255,.72); }
+.scene-mokihana circle { fill: #7567b8; stroke: rgba(255,255,255,.7); stroke-width: 2; }
+.scene-mushrooms path:first-of-type { fill: none; stroke: #f5e7ce; stroke-width: 8; stroke-linecap: round; }
+.scene-mushrooms path:nth-of-type(2) { fill: #e77b68; stroke: #9d5449; stroke-width: 2; }
+.scene-mushrooms circle { fill: #fff4d6; }
+.scene-mushrooms.woodland path:nth-of-type(2) { fill: #b66b55; }
+.scene-compost-specks { fill: rgba(65,85,55,.5); }
+.scene-vine { fill: none; stroke: color-mix(in srgb, var(--scene-detail) 75%, var(--scene-ground)); stroke-width: 10; stroke-linecap: round; }
+.scene-sunbeams { fill: rgba(255,244,190,.16); }
+.scene-leaf-litter { fill: color-mix(in srgb, var(--scene-detail) 60%, #b6784f); }
 .rain-lines path { fill: none; stroke: rgba(255,255,255,.72); stroke-width: 6; stroke-linecap: round; }
 .fig-cluster, .fern, .fig-wasp, .scene-flower { opacity: .9; }
 .scene-name {
@@ -417,6 +466,29 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
 .fruit-berry { fill: #bb5273; stroke: var(--worm-deep); stroke-width: 2; }
 .fruit-shine { fill: rgba(255,255,255,.72); }
 .male-accessory { filter: drop-shadow(0 3px 2px rgba(23,51,61,.22)); }
+.mokihana-leaf { fill: #5f9d69; stroke: var(--worm-deep); stroke-width: 2; }
+.mokihana-berry { fill: #7b62b6; stroke: #463c7c; stroke-width: 2; }
+.mushroom-cap { fill: #e6675f; stroke: var(--worm-deep); stroke-width: 3; stroke-linejoin: round; }
+.mushroom-spot { fill: #fff5d8; stroke: rgba(123,78,67,.35); stroke-width: 1.5; }
+.rain-drop { fill: #89d5dc; stroke: #287c82; stroke-width: 1.5; }
+.minsa-pattern { fill: #fff4d6; opacity: .9; }
+.woven-bag { fill: #d6a96b; stroke: var(--worm-deep); stroke-width: 3; stroke-linejoin: round; }
+.woven-line { fill: none; stroke: #8b6748; stroke-width: 2; opacity: .75; }
+.ocean-bag { fill: #d9bd78; }
+.palm-mark { fill: none; stroke: #447864; stroke-width: 3; stroke-linecap: round; }
+.harness-strap { fill: none; stroke: var(--local-primary); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+.harness-ring { fill: none; stroke: var(--local-secondary); stroke-width: 6; }
+.harness-rope { fill: none; stroke: var(--worm-deep); stroke-width: 4; stroke-linecap: round; }
+.leaf-bag { fill: #8eaa72; stroke: var(--worm-deep); stroke-width: 3; stroke-linejoin: round; }
+.acorn-sample { fill: #9c7047; stroke: #65452f; stroke-width: 2; }
+.fern-wing { fill: rgba(173,226,188,.72); stroke: #3f8b66; stroke-width: 4; }
+.fern-vein { fill: none; stroke: #3f8b66; stroke-width: 2; stroke-linecap: round; }
+.vial-liquid { fill: #74cbd2; stroke: #287c82; stroke-width: 2; }
+.sample-pouch { fill: #d6a96b; stroke: var(--worm-deep); stroke-width: 2; }
+.beetle-wing { stroke: #433a78; stroke-width: 4; }
+.beetle-wing.left { fill: #68b6a5; }
+.beetle-wing.right { fill: #7b6dc0; }
+.beetle-line { fill: none; stroke: rgba(255,255,255,.62); stroke-width: 2; stroke-linecap: round; }
 .habitat[data-local-style="okinawa"] { --local-primary: #e96558; --local-secondary: #f8c64e; --scene-sky: #bfe5e8; --scene-ground: #75a96d; --scene-water: #63b7c5; --scene-highlight: #ffd166; --scene-detail: #315e58; }
 .habitat[data-local-style="kauai"] { --local-primary: #e77ea5; --local-secondary: #73b98d; --scene-sky: #bfe8ef; --scene-ground: #549369; --scene-water: #54b6cc; --scene-highlight: #ffd166; --scene-detail: #315f55; }
 .habitat[data-local-style="field"] { --local-primary: #4f7f72; --local-secondary: #d7b96d; --scene-sky: #d8edf0; --scene-ground: #94b877; --scene-water: #8bc8ce; --scene-highlight: #f7c85b; --scene-detail: #607050; }
@@ -525,7 +597,7 @@ footer p { margin: 0; }
   .map-wrap, #world-map { min-height: 310px; }
   .map-legend { left: 10px; right: auto; top: 10px; border-radius: 16px; }
   .map-selection { left: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 10px 12px; }
-  .species-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .species-tabs { grid-template-columns: 1fr; }
   .species-tab { min-height: 68px; }
   .habitat { min-height: 340px; }
   .scene-name { left: 12px; top: 12px; max-width: calc(100% - 24px); }
