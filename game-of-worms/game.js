@@ -199,7 +199,8 @@ const species = [
 
 const byId = new Map(species.map(item => [item.id, item]));
 const visited = new Set(["inopinata"]);
-const activeAccessories = new Set();
+const accessoryIds = ["local-headwear", "local-wrap", "local-charm"];
+const wardrobes = new Map(species.map(item => [item.id, new Set()]));
 let selectedId = "inopinata";
 let selectedRecordName = null;
 let projection;
@@ -322,6 +323,7 @@ function renderSpecies(item, place) {
   els.habitat.style.setProperty("--habitat-one", item.habitatOne);
   els.habitat.style.setProperty("--habitat-two", item.habitatTwo);
   els.habitat.style.setProperty("--worm-scale", item.scale);
+  syncAccessories();
 
   els.selectionPlace.textContent = placeSource ? `${placeName} · ${placeSource}` : (placeName || item.region);
   els.selectionSpecies.replaceChildren();
@@ -355,6 +357,8 @@ function selectSpecies(id, place) {
 }
 
 function toggleAccessory(id, force) {
+  const activeAccessories = wardrobes.get(selectedId);
+  if (!activeAccessories) return;
   const shouldShow = typeof force === "boolean" ? force : !activeAccessories.has(id);
   const accessory = document.getElementById(id);
   const button = document.querySelector(`[data-accessory="${id}"]`);
@@ -365,14 +369,24 @@ function toggleAccessory(id, force) {
   else activeAccessories.delete(id);
 }
 
+function syncAccessories() {
+  const activeAccessories = wardrobes.get(selectedId) || new Set();
+  accessoryIds.forEach(id => {
+    const accessory = document.getElementById(id);
+    const button = document.querySelector(`[data-accessory="${id}"]`);
+    const shouldShow = activeAccessories.has(id);
+    accessory?.toggleAttribute("hidden", !shouldShow);
+    button?.setAttribute("aria-pressed", String(shouldShow));
+  });
+}
+
 document.querySelectorAll("[data-accessory]").forEach(button => {
   button.addEventListener("click", () => toggleAccessory(button.dataset.accessory));
 });
 
 els.surprise.addEventListener("click", () => {
-  const options = ["local-headwear", "local-wrap", "local-charm"];
-  options.forEach(id => toggleAccessory(id, false));
-  const shuffled = options.slice().sort(() => Math.random() - .5);
+  accessoryIds.forEach(id => toggleAccessory(id, false));
+  const shuffled = accessoryIds.slice().sort(() => Math.random() - .5);
   const count = 1 + Math.floor(Math.random() * 3);
   shuffled.slice(0, count).forEach(id => toggleAccessory(id, true));
 });
