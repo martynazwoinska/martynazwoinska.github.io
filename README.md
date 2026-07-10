@@ -46,7 +46,7 @@ between the tags. Placeholders I left for you:
 | What | Find this | Do this |
 |------|-----------|---------|
 | **Email** | `mailto:martyna.zwoinska@ebc.uu.se` | Replace if you want a different public email (appears twice) |
-| **Photo** | hero image area in `index.html` | The current PR keeps the initials placeholder because this review flow does not support binary image files. Add `photo.jpg` directly on GitHub later if you want the headshot displayed. |
+| **Photo** | `photo.jpg` in the repository root | Replace this file when you want to update the displayed headshot. |
 | **ORCID** | the `ORCID` link | Paste your ORCID URL |
 | **Publications** | the Publications section | Add/remove entries |
 | **Collaborators** | the Collaborators section | Add/remove people |
