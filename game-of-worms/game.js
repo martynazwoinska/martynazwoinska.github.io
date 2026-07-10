@@ -72,19 +72,17 @@ function locationKit(placeName, fallback, speciesId) {
 const speciesGear = {
   inopinata: { looks: ["fig-leaf visor", "Yaeyama minsā sash", "fig-wasp wings"], icons: ["🍃", "🧵", "🪽"] },
   elegans: { looks: ["lab goggles", "sample utility belt", "cryo-vial jetpack"], icons: ["🥽", "🧰", "❄️"] },
-  briggsae: { looks: ["heart sunglasses", "sun-cream stripes", "butterfly wings"], icons: ["😎", "🧴", "🦋"] },
+  briggsae: { looks: ["Uttarayan kite hat", "bandhani scarf", "dandiya sticks"], icons: ["🪁", "🧣", "✨"] },
   nigoni: { looks: ["fruit-slice crown", "market-tote belt", "dragonfly wings"], icons: ["🍊", "🧺", "🪽"] },
   tropicalis: { looks: ["star sunglasses", "tropical bikini", "SPF 50 sun-cream pack"], icons: ["⭐", "👙", "🧴"] },
   wallacei: { looks: ["cacao-pod helmet", "cacao climbing harness", "chocolate bar"], icons: ["🍫", "🧗", "🍫"] }
 };
 
-function funLocationKit(baseKit, item, placeName) {
+function funLocationKit(baseKit, item) {
   const gear = speciesGear[item.id];
-  const placeTag = (placeName || item.region).split(" ·")[0].split(",")[0];
-  const looks = gear.looks.map(look => `${placeTag} ${look}`);
   return {
     ...baseKit,
-    looks,
+    looks: gear.looks,
     icons: gear.icons
   };
 }
@@ -263,7 +261,7 @@ const species = [
     localIcons: ["🌴", "🧺", "🌸"],
     habitat: "Tropical fruit & flowers",
     habitatKey: "flowers",
-    intro: "Some C. tropicalis strains carry Medea-like gene drives: a mother’s genes can eliminate offspring that fail to inherit the matching genetic antidote.",
+    intro: "Some C. tropicalis strains carry a genetic trick called Medea. The mother makes a toxin, and only baby worms that inherit the matching antidote survive.",
     fact: "Its populations are strongly connected to geography, with especially rich diversity reported from Hawaiʻi and Taiwan.",
     worm: "#7dc9c2",
     wormDeep: "#287c82",
@@ -312,7 +310,6 @@ const els = {
   mapTooltipSpecies: document.getElementById("map-tooltip-species"),
   mapTooltipDetail: document.getElementById("map-tooltip-detail"),
   mapLoading: document.getElementById("map-loading"),
-  recordCount: document.getElementById("record-count"),
   countries: document.getElementById("map-countries"),
   sphere: document.getElementById("map-sphere"),
   graticule: document.getElementById("map-graticule"),
@@ -426,7 +423,7 @@ function renderSpecies(item, place) {
   const placeName = typeof place === "string" ? place : place?.name;
   const placeSource = typeof place === "object" ? place?.source : null;
   const styleKey = typeof place === "object" && place?.style ? place.style : item.localStyle;
-  const regionalPack = funLocationKit(locationKit(placeName, regionalPacks[styleKey], item.id), item, placeName);
+  const regionalPack = funLocationKit(locationKit(placeName, regionalPacks[styleKey], item.id), item);
   els.speciesRegion.textContent = placeName || item.region;
   italicText(els.speciesName, item.name);
   els.speciesNickname.textContent = item.nickname;
@@ -753,7 +750,6 @@ const mapSection = document.querySelector(".map-section");
 atlas.insertBefore(discoverySection, mapSection);
 
 renderTabs();
-els.recordCount.textContent = String(species.reduce((count, item) => count + item.locations.length, 0));
 const initialSpecies = byId.get(selectedId);
 const initialPlace = initialSpecies.locations[0];
 selectedRecordName = initialPlace.name;

@@ -577,7 +577,10 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .minsa-lines { stroke: #fff4d6; stroke-width: 5; }
 .lab-goggles circle { fill: rgba(174,232,240,.62); stroke: #295f72; stroke-width: 5; }
 .lab-goggles path { fill: none; stroke: #295f72; stroke-width: 5; stroke-linecap: round; }
-.heart-glasses path:not(.gear-stroke) { fill: #ed5d7b; stroke: #8e3555; stroke-width: 3; }
+.kite-body { fill: #ef6f62; stroke: #783c55; stroke-width: 3; }
+.kite-body.male { fill: #f1b64f; }
+.kite-cross, .kite-string, .kite-tail { fill: none; stroke: #783c55; stroke-width: 2.5; stroke-linecap: round; }
+.kite-bow { fill: #f1b64f; stroke: #783c55; stroke-width: 2; }
 .fruit-crown circle { fill: #f2a34d; stroke: #a45338; stroke-width: 3; }
 .fruit-crown path { fill: none; stroke: #fff0b1; stroke-width: 2; }
 .star-glasses path:not(.gear-stroke) { fill: #ffd166; stroke: #a6633c; stroke-width: 3; }
@@ -586,24 +589,24 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .utility-pocket { fill: #3b8e91; }
 .utility-pocket.accent { fill: #e7b663; }
 .utility-button { fill: white; }
-.suncream-kit rect { fill: #f5e5a4; stroke: #ba6b4d; stroke-width: 3; }
-.suncream-stripe { fill: none; stroke: #fff7d6; stroke-width: 11; stroke-linecap: round; }
-.suncream-mark { fill: #f39b68; stroke: #ba6b4d; stroke-width: 2; }
+.bandhani-wrap, .bandhani-tail { fill: #d64d62; stroke: #7a3650; stroke-width: 3; stroke-linejoin: round; }
+.bandhani-dots { fill: none; stroke: #fff1a8; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1 10; }
 .market-tote { fill: #d8a05f; }
 .fruit-dot.orange { fill: #f08a45; }
 .fruit-dot.berry { fill: #b95a7a; }
-.worm-bikini .bikini-strap { fill: none; stroke: #e95884; stroke-width: 6; stroke-linecap: round; }
+.worm-bikini .bikini-band, .worm-bikini .bikini-tie { fill: none; stroke: #e95884; stroke-width: 6; stroke-linecap: round; }
 .worm-bikini .bikini-cup { fill: #f1749a; stroke: #9f3f66; stroke-width: 3; }
+.worm-bikini .bikini-bottom { fill: #f1749a; stroke: #9f3f66; stroke-width: 3; }
 .wasp-wing, .dragonfly-wing { fill: rgba(235,252,255,.7); stroke: var(--local-primary); stroke-width: 4; }
 .wing-detail, .leaf-vein { fill: none; stroke: color-mix(in srgb, var(--local-primary) 65%, var(--worm-deep)); stroke-width: 2.5; stroke-linecap: round; }
 .cryo-jetpack rect { fill: #4a929e; }
 .cryo-jetpack path { fill: #ffd166; stroke: #d86b59; stroke-width: 2; }
 .cryo-jetpack circle { fill: #d9f5f5; stroke: #2f7885; stroke-width: 3; }
 .snow-mark { fill: none !important; stroke: #4c9aa8 !important; stroke-width: 2 !important; }
-.butterfly-wing { stroke: #8b3f75; stroke-width: 4; }
-.butterfly-wing.upper { fill: #ef80ab; }
-.butterfly-wing.lower { fill: #ffd166; }
-.wing-dot { fill: #7659ac; stroke: white; stroke-width: 2; }
+.dandiya-clip { fill: none; stroke: #75445d; stroke-width: 9; stroke-linecap: round; }
+.dandiya-stick { fill: none; stroke: #f3b449; stroke-width: 9; stroke-linecap: round; }
+.dandiya-stick.coral { stroke: #e85f62; }
+.dandiya-grip { fill: none; stroke: #fff0ad; stroke-width: 4; stroke-linecap: round; }
 .spf-pack rect { fill: #f5db75; }
 .spf-pack circle { fill: #ff8f6b; stroke: white; stroke-width: 3; }
 .spf-pack text { fill: #713c52; font-size: 14px; font-weight: 900; stroke: none; }
