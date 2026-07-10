@@ -160,7 +160,6 @@
     .nav-links a.nav-beyond:hover { text-decoration: underline; text-underline-offset: 3px; }
 
     /* Beyond Research featured project */
-    .beyond-lead { color: var(--text-soft); max-width: 66ch; margin: 0 0 22px; }
     .feature {
       display: grid; grid-template-columns: 128px 1fr; gap: 24px; align-items: center;
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
@@ -212,7 +211,7 @@
     @media (max-width: 620px) { .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 22px; } }
     .avatar {
       position: relative;
-      width: 160px; height: 190px; border-radius: 28px;
+      width: 150px; height: 150px; border-radius: 50%;
       background: linear-gradient(140deg, var(--accent-soft), var(--surface-2));
       border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
@@ -220,7 +219,7 @@
     }
     .avatar img {
       width: 100%; height: 100%; display: block;
-      object-fit: contain; object-position: center center; background: #fff;
+      object-fit: cover; object-position: center center; background: #fff;
     }
     .avatar-mono { font-family: var(--serif); font-size: 3rem; color: var(--accent); }
     @media (max-width: 620px) { .avatar { margin: 0 auto; } }
@@ -721,7 +720,6 @@
   <!-- ============ BEYOND RESEARCH ============ -->
   <section id="beyond-research" class="wrap">
     <h2>Beyond Research</h2>
-    <p class="beyond-lead">Research is the centre of my professional work, but not the boundary of my interests. I also use AI-assisted coding to turn biological and creative ideas into functional digital projects.</p>
     <div class="feature">
       <div class="feature-emblem" aria-hidden="true">🪱</div>
       <div>
