@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#143f4a" />
-  <link rel="stylesheet" href="style.css?v=20260710-7" />
+  <link rel="stylesheet" href="style.css?v=20260710-8" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
@@ -32,7 +32,7 @@
     <section class="map-section" aria-labelledby="map-title">
       <div class="section-heading">
         <div>
-          <span class="eyebrow"><span id="record-count">27</span> featured wild records</span>
+          <span class="eyebrow"><span id="record-count">37</span> featured wild records</span>
           <h2 id="map-title">Where in the world are the worms?</h2>
         </div>
         <p>Tap a glowing spot. Records are representative and clustered for readability—not a complete range map.</p>
@@ -70,6 +70,7 @@
           <span class="eyebrow">Your worm cabinet</span>
           <h2 id="meet-title">Meet the species</h2>
         </div>
+        <p>Three real sister-species pairs. In each pair, compare a mostly selfing worm with an outcrossing relative.</p>
       </div>
 
       <div id="species-tabs" class="species-tabs" aria-label="Choose a worm species"></div>
@@ -78,9 +79,30 @@
         <section class="worm-playground" aria-labelledby="dress-title">
           <div id="habitat" class="habitat" data-habitat="fig">
             <svg class="regional-backdrop" viewBox="0 0 600 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs>
+                <linearGradient id="scene-sky-gradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop class="scene-sky-top" offset="0%"></stop>
+                  <stop class="scene-sky-bottom" offset="100%"></stop>
+                </linearGradient>
+                <linearGradient id="scene-ground-gradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop class="scene-ground-top" offset="0%"></stop>
+                  <stop class="scene-ground-bottom" offset="100%"></stop>
+                </linearGradient>
+                <linearGradient id="scene-water-gradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop class="scene-water-top" offset="0%"></stop>
+                  <stop class="scene-water-bottom" offset="100%"></stop>
+                </linearGradient>
+                <radialGradient id="scene-sun-gradient">
+                  <stop offset="0%" stop-color="#fff6c9"></stop>
+                  <stop offset="70%" class="scene-sun-core"></stop>
+                  <stop offset="100%" class="scene-sun-edge"></stop>
+                </radialGradient>
+              </defs>
               <g data-scene="okinawa">
                 <rect class="scene-sky" width="600" height="430"></rect>
+                <g class="scene-clouds"><ellipse cx="92" cy="76" rx="54" ry="17"></ellipse><ellipse cx="133" cy="68" rx="39" ry="22"></ellipse><ellipse cx="168" cy="78" rx="46" ry="15"></ellipse></g>
                 <path class="scene-water" d="M0 260 Q90 238 180 260 T360 260 T600 250 V430 H0 Z"></path>
+                <path class="scene-distant-island" d="M290 260 Q352 214 421 249 Q470 220 544 253 L600 270 H280 Z"></path>
                 <path class="scene-ground" d="M0 330 Q145 280 290 330 T600 315 V430 H0 Z"></path>
                 <circle class="scene-sun" cx="500" cy="78" r="42"></circle>
                 <g class="fig-cluster">
@@ -95,14 +117,17 @@
                   <ellipse class="scene-insect" cx="0" cy="3" rx="13" ry="22"></ellipse>
                   <path class="scene-stroke" d="M-5 -16 L-16 -30 M5 -16 L16 -30"></path>
                 </g>
+                <g class="scene-sparkles"><circle cx="382" cy="94" r="4"></circle><circle cx="405" cy="121" r="2.5"></circle><circle cx="548" cy="168" r="3"></circle></g>
               </g>
 
               <g data-scene="kauai">
                 <rect class="scene-sky" width="600" height="430"></rect>
+                <g class="scene-clouds mist"><ellipse cx="110" cy="113" rx="74" ry="22"></ellipse><ellipse cx="305" cy="92" rx="90" ry="25"></ellipse><ellipse cx="512" cy="139" rx="70" ry="20"></ellipse></g>
                 <circle class="scene-sun" cx="495" cy="82" r="44"></circle>
                 <path class="scene-mountain-back" d="M0 310 L105 170 L176 235 L278 106 L390 245 L472 178 L600 318 V430 H0 Z"></path>
                 <path class="scene-mountain" d="M0 340 L116 212 L198 274 L286 148 L386 274 L480 218 L600 342 V430 H0 Z"></path>
                 <path class="scene-waterfall" d="M286 151 Q275 232 290 318" ></path>
+                <ellipse class="scene-waterfall-mist" cx="290" cy="321" rx="38" ry="10"></ellipse>
                 <path class="scene-water" d="M0 345 Q100 328 200 348 T400 346 T600 342 V430 H0 Z"></path>
                 <g class="fern" transform="translate(52 318)">
                   <path class="scene-stroke" d="M0 76 Q50 26 112 0"></path>
@@ -110,10 +135,12 @@
                   <ellipse class="scene-leaf" cx="57" cy="34" rx="27" ry="10" transform="rotate(18 57 34)"></ellipse>
                   <ellipse class="scene-leaf" cx="79" cy="20" rx="25" ry="9" transform="rotate(-28 79 20)"></ellipse>
                 </g>
+                <g class="scene-mokihana" transform="translate(480 318)"><path class="scene-stroke" d="M0 58 Q37 22 78 0"></path><ellipse class="scene-leaf" cx="25" cy="37" rx="20" ry="8" transform="rotate(-28 25 37)"></ellipse><ellipse class="scene-leaf" cx="49" cy="20" rx="20" ry="8" transform="rotate(24 49 20)"></ellipse><circle cx="19" cy="47" r="6"></circle><circle cx="43" cy="29" r="6"></circle><circle cx="66" cy="10" r="6"></circle></g>
               </g>
 
               <g data-scene="field">
                 <rect class="scene-sky" width="600" height="430"></rect>
+                <g class="scene-clouds"><ellipse cx="110" cy="92" rx="58" ry="18"></ellipse><ellipse cx="155" cy="83" rx="42" ry="24"></ellipse><ellipse cx="196" cy="94" rx="48" ry="16"></ellipse></g>
                 <circle class="scene-sun" cx="500" cy="78" r="40"></circle>
                 <path class="scene-hill-back" d="M0 285 Q140 210 300 282 T600 270 V430 H0 Z"></path>
                 <path class="scene-ground" d="M0 326 Q160 265 322 324 T600 310 V430 H0 Z"></path>
@@ -122,10 +149,13 @@
                 <path class="scene-stem" d="M151 270 Q156 242 178 232"></path>
                 <path class="scene-leaf" d="M172 234 Q204 213 223 244 Q192 258 172 234 Z"></path>
                 <path class="scene-fence" d="M380 292 V420 M505 278 V420 M350 330 L550 306 M350 380 L550 355"></path>
+                <g class="scene-mushrooms" transform="translate(260 344)"><path d="M0 35 V12 M42 42 V20"></path><path d="M-22 14 Q0 -18 22 14 Z M22 22 Q42 -7 62 22 Z"></path><circle cx="-4" cy="7" r="3"></circle><circle cx="46" cy="14" r="3"></circle></g>
+                <g class="scene-compost-specks"><circle cx="83" cy="362" r="5"></circle><circle cx="118" cy="341" r="4"></circle><circle cx="171" cy="368" r="6"></circle><circle cx="210" cy="382" r="4"></circle></g>
               </g>
 
               <g data-scene="rainforest">
                 <rect class="scene-sky" width="600" height="430"></rect>
+                <path class="scene-mountain-back" d="M0 300 Q90 202 175 276 Q276 160 376 278 Q472 202 600 294 V430 H0 Z"></path>
                 <path class="scene-ground" d="M0 330 Q120 292 250 331 T600 320 V430 H0 Z"></path>
                 <path class="scene-canopy" d="M0 0 H600 V78 Q542 111 485 68 Q416 124 356 73 Q294 121 228 70 Q157 122 92 68 Q42 109 0 84 Z"></path>
                 <g class="rain-lines">
@@ -140,10 +170,13 @@
                   <circle class="scene-fruit" cx="61" cy="61" r="31"></circle>
                   <path class="scene-leaf" d="M16 9 Q45 -16 73 8 Q45 30 16 9 Z"></path>
                 </g>
+                <path class="scene-vine" d="M360 0 Q321 54 359 102 Q391 144 349 198"></path>
+                <g class="scene-sparkles"><circle cx="214" cy="124" r="3"></circle><circle cx="246" cy="154" r="4"></circle><circle cx="400" cy="205" r="2.5"></circle></g>
               </g>
 
               <g data-scene="woodland">
                 <rect class="scene-sky" width="600" height="430"></rect>
+                <g class="scene-sunbeams"><path d="M390 0 L262 430 H354 L456 0 Z"></path><path d="M510 0 L430 430 H500 L560 0 Z"></path></g>
                 <circle class="scene-sun" cx="492" cy="82" r="43"></circle>
                 <path class="scene-hill-back" d="M0 294 Q120 230 248 291 T600 276 V430 H0 Z"></path>
                 <rect class="scene-trunk" x="62" y="70" width="58" height="330" rx="22"></rect>
@@ -157,11 +190,15 @@
                   <ellipse class="scene-acorn" cx="104" cy="44" rx="22" ry="28"></ellipse>
                   <path class="scene-acorn-cap" d="M82 35 Q104 10 126 35 Z"></path>
                 </g>
+                <g class="scene-mushrooms woodland" transform="translate(176 350)"><path d="M0 34 V12 M38 40 V19"></path><path d="M-20 14 Q0 -15 20 14 Z M20 21 Q38 -5 57 21 Z"></path><circle cx="-3" cy="8" r="3"></circle><circle cx="42" cy="14" r="3"></circle></g>
+                <g class="scene-leaf-litter"><ellipse cx="255" cy="382" rx="18" ry="6" transform="rotate(-22 255 382)"></ellipse><ellipse cx="319" cy="360" rx="16" ry="6" transform="rotate(28 319 360)"></ellipse><ellipse cx="44" cy="394" rx="20" ry="7" transform="rotate(16 44 394)"></ellipse></g>
               </g>
 
               <g data-scene="ocean">
                 <rect class="scene-sky" width="600" height="430"></rect>
+                <g class="scene-clouds"><ellipse cx="150" cy="82" rx="58" ry="18"></ellipse><ellipse cx="195" cy="72" rx="42" ry="24"></ellipse><ellipse cx="236" cy="84" rx="48" ry="16"></ellipse></g>
                 <circle class="scene-sun" cx="488" cy="87" r="48"></circle>
+                <path class="scene-distant-island" d="M320 267 Q371 211 432 258 Q481 227 550 263 L600 276 H300 Z"></path>
                 <path class="scene-water" d="M0 266 Q74 243 148 266 T296 266 T444 266 T600 258 V430 H0 Z"></path>
                 <path class="scene-wave" d="M0 315 Q58 286 116 315 T232 315 T348 315 T464 315 T600 305"></path>
                 <path class="scene-island" d="M0 374 Q115 320 239 370 T470 365 T600 352 V430 H0 Z"></path>
@@ -174,9 +211,10 @@
                 <g class="scene-flower" transform="translate(470 335)">
                   <circle cx="0" cy="-18" r="18"></circle><circle cx="18" cy="0" r="18"></circle><circle cx="0" cy="18" r="18"></circle><circle cx="-18" cy="0" r="18"></circle><circle class="scene-flower-centre" cx="0" cy="0" r="11"></circle>
                 </g>
+                <g class="scene-sparkles"><circle cx="342" cy="132" r="4"></circle><circle cx="371" cy="161" r="2.5"></circle><circle cx="535" cy="184" r="3"></circle></g>
               </g>
             </svg>
-            <span id="scene-name" class="scene-name">Okinawa fig garden</span>
+            <span id="scene-name" class="scene-name">Ishigaki fig grove</span>
 
             <svg id="worm-avatar" class="worm-avatar" viewBox="0 0 420 320" role="img" aria-label="Illustrated Caenorhabditis inopinata female and male">
 
@@ -214,46 +252,46 @@
 
                   <g id="local-headwear" class="accessory regional-accessory" hidden>
                     <g data-style="okinawa"><path class="regional-primary" d="M285 43 Q320 2 370 26 Q349 69 285 43 Z"></path><path class="regional-stroke" d="M293 42 Q330 32 362 27"></path><circle class="regional-accent" cx="347" cy="31" r="9"></circle></g>
-                    <g data-style="kauai"><path class="regional-stroke thick" d="M287 48 Q327 24 369 49"></path><g class="regional-flower" transform="translate(304 38)"><circle cx="0" cy="-9" r="8"></circle><circle cx="9" cy="0" r="8"></circle><circle cx="0" cy="9" r="8"></circle><circle cx="-9" cy="0" r="8"></circle><circle class="regional-accent" r="5"></circle></g><g class="regional-flower" transform="translate(335 30)"><circle cx="0" cy="-9" r="8"></circle><circle cx="9" cy="0" r="8"></circle><circle cx="0" cy="9" r="8"></circle><circle cx="-9" cy="0" r="8"></circle><circle class="regional-accent" r="5"></circle></g><g class="regional-flower" transform="translate(362 42)"><circle cx="0" cy="-9" r="8"></circle><circle cx="9" cy="0" r="8"></circle><circle cx="0" cy="9" r="8"></circle><circle cx="-9" cy="0" r="8"></circle><circle class="regional-accent" r="5"></circle></g></g>
-                    <g data-style="field"><path class="regional-primary" d="M294 44 Q307 10 343 12 Q359 19 358 48 Z"></path><path class="regional-secondary" d="M286 44 Q330 35 373 49 Q356 59 322 57 Q299 55 286 44 Z"></path></g>
-                    <g data-style="rainforest"><path class="regional-primary" d="M303 46 Q286 4 316 9 Q337 27 329 50 Z"></path><path class="regional-secondary" d="M328 45 Q337 -2 359 10 Q370 35 350 53 Z"></path><path class="regional-primary" d="M291 49 Q267 17 289 10 Q315 20 316 49 Z"></path></g>
+                    <g data-style="kauai"><path class="regional-stroke thick" d="M287 48 Q327 24 369 49"></path><ellipse class="mokihana-leaf" cx="302" cy="39" rx="18" ry="8" transform="rotate(-24 302 39)"></ellipse><ellipse class="mokihana-leaf" cx="332" cy="31" rx="18" ry="8" transform="rotate(12 332 31)"></ellipse><ellipse class="mokihana-leaf" cx="361" cy="42" rx="18" ry="8" transform="rotate(28 361 42)"></ellipse><circle class="mokihana-berry" cx="313" cy="34" r="7"></circle><circle class="mokihana-berry" cx="345" cy="34" r="7"></circle><circle class="mokihana-berry" cx="372" cy="48" r="7"></circle></g>
+                    <g data-style="field"><path class="mushroom-cap" d="M287 45 Q326 -3 367 45 Q356 57 327 57 Q298 57 287 45 Z"></path><path class="regional-secondary" d="M315 55 Q326 62 340 55 L338 67 L317 67 Z"></path><circle class="mushroom-spot" cx="315" cy="34" r="5"></circle><circle class="mushroom-spot" cx="339" cy="24" r="6"></circle><circle class="mushroom-spot" cx="353" cy="40" r="4"></circle></g>
+                    <g data-style="rainforest"><path class="regional-primary" d="M303 46 Q286 4 316 9 Q337 27 329 50 Z"></path><path class="regional-secondary" d="M328 45 Q337 -2 359 10 Q370 35 350 53 Z"></path><path class="regional-primary" d="M291 49 Q267 17 289 10 Q315 20 316 49 Z"></path><path class="rain-drop" d="M291 61 Q299 48 307 61 Q299 72 291 61 Z M352 65 Q359 53 366 65 Q359 75 352 65 Z"></path></g>
                     <g data-style="woodland"><ellipse class="regional-primary" cx="329" cy="36" rx="43" ry="21" transform="rotate(8 329 36)"></ellipse><path class="regional-secondary" d="M313 18 Q329 -4 348 18 Q333 29 313 18 Z"></path><path class="regional-stroke" d="M333 8 Q340 0 346 2"></path></g>
                     <g data-style="ocean"><path class="regional-secondary" d="M280 49 Q326 32 375 50 Q358 62 325 61 Q298 59 280 49 Z"></path><path class="regional-primary" d="M318 43 Q298 4 326 9 Q346 25 340 48 Z M338 43 Q355 4 372 19 Q373 43 348 52 Z"></path></g>
                     <g data-style="okinawa" class="male-accessory"><path class="regional-primary" d="M88 101 Q105 76 130 88 Q119 112 88 101 Z"></path><path class="regional-stroke" d="M93 100 L126 89"></path></g>
-                    <g data-style="kauai" class="male-accessory"><g class="regional-flower" transform="translate(110 96) scale(.7)"><circle cx="0" cy="-9" r="8"></circle><circle cx="9" cy="0" r="8"></circle><circle cx="0" cy="9" r="8"></circle><circle cx="-9" cy="0" r="8"></circle><circle class="regional-accent" r="5"></circle></g></g>
-                    <g data-style="field" class="male-accessory"><path class="regional-primary" d="M94 102 Q99 83 116 84 Q126 89 126 104 Z"></path><path class="regional-secondary" d="M88 102 Q110 97 132 105 Q119 111 100 108 Z"></path></g>
-                    <g data-style="rainforest" class="male-accessory"><path class="regional-primary" d="M103 103 Q94 79 108 83 Q119 92 116 105 Z"></path><path class="regional-secondary" d="M114 104 Q121 78 131 88 Q133 102 122 108 Z"></path></g>
+                    <g data-style="kauai" class="male-accessory"><path class="regional-stroke" d="M91 103 Q110 86 130 103"></path><ellipse class="mokihana-leaf" cx="105" cy="95" rx="11" ry="5" transform="rotate(-20 105 95)"></ellipse><ellipse class="mokihana-leaf" cx="124" cy="98" rx="11" ry="5" transform="rotate(24 124 98)"></ellipse><circle class="mokihana-berry" cx="113" cy="94" r="4"></circle><circle class="mokihana-berry" cx="132" cy="103" r="4"></circle></g>
+                    <g data-style="field" class="male-accessory"><path class="mushroom-cap" d="M88 103 Q111 76 134 103 Q126 111 111 111 Q96 111 88 103 Z"></path><path class="regional-secondary" d="M105 109 H118 L117 117 H106 Z"></path><circle class="mushroom-spot" cx="105" cy="95" r="3"></circle><circle class="mushroom-spot" cx="121" cy="91" r="3"></circle></g>
+                    <g data-style="rainforest" class="male-accessory"><path class="regional-primary" d="M103 103 Q94 79 108 83 Q119 92 116 105 Z"></path><path class="regional-secondary" d="M114 104 Q121 78 131 88 Q133 102 122 108 Z"></path><path class="rain-drop" d="M98 112 Q103 104 108 112 Q103 119 98 112 Z"></path></g>
                     <g data-style="woodland" class="male-accessory"><ellipse class="regional-primary" cx="111" cy="100" rx="24" ry="12" transform="rotate(8 111 100)"></ellipse><path class="regional-stroke" d="M112 89 Q116 81 120 84"></path></g>
                     <g data-style="ocean" class="male-accessory"><path class="regional-secondary" d="M87 104 Q110 94 134 105 Q122 113 103 111 Z"></path><path class="regional-primary" d="M107 101 Q98 81 111 84 Q122 92 119 105 Z M118 102 Q127 82 135 91 Q134 104 123 108 Z"></path></g>
                   </g>
 
                   <g id="local-wrap" class="accessory regional-accessory" hidden>
-                    <g data-style="okinawa"><path class="regional-secondary" d="M257 105 Q277 94 298 108 Q295 124 278 130 Q261 123 257 105 Z"></path><path class="regional-primary" d="M275 124 C262 153 250 177 229 194 L249 202 C271 177 284 149 286 127 Z"></path><circle class="regional-accent" cx="242" cy="185" r="8"></circle></g>
-                    <g data-style="kauai"><path class="regional-primary" d="M119 176 Q96 223 111 277 Q151 300 194 276 Q167 235 190 192 Z"></path><path class="regional-stroke" d="M120 180 Q146 206 187 194"></path></g>
+                    <g data-style="okinawa"><path class="regional-secondary" d="M257 105 Q277 94 298 108 Q295 124 278 130 Q261 123 257 105 Z"></path><path class="regional-primary" d="M275 124 C262 153 250 177 229 194 L249 202 C271 177 284 149 286 127 Z"></path><g class="minsa-pattern"><rect x="259" y="143" width="7" height="7"></rect><rect x="252" y="153" width="7" height="7"></rect><rect x="245" y="163" width="7" height="7"></rect><rect x="238" y="173" width="7" height="7"></rect><rect x="234" y="185" width="7" height="7"></rect></g><circle class="regional-accent" cx="242" cy="195" r="7"></circle></g>
+                    <g data-style="kauai"><path class="regional-stroke thick" d="M274 114 Q228 151 184 215"></path><path class="woven-bag" d="M139 199 Q172 183 207 202 L200 255 Q166 271 133 250 Z"></path><path class="woven-line" d="M139 215 L204 218 M136 232 L202 235 M152 194 L148 254 M174 190 L171 261 M195 198 L192 256"></path><circle class="regional-accent" cx="184" cy="212" r="7"></circle></g>
                     <g data-style="field"><path class="regional-stroke thick" d="M274 114 Q230 153 184 218"></path><rect class="regional-primary" x="145" y="199" width="66" height="54" rx="13"></rect><path class="regional-secondary" d="M157 198 Q174 177 196 198"></path></g>
-                    <g data-style="rainforest"><path class="regional-primary" d="M114 177 Q82 226 102 283 Q151 307 202 276 Q164 232 191 190 Z"></path><path class="regional-secondary" d="M111 183 Q150 213 191 195 L184 211 Q146 226 105 198 Z"></path></g>
-                    <g data-style="woodland"><path class="regional-secondary" d="M255 103 Q278 91 300 109 Q294 130 277 132 Q260 126 255 103 Z"></path><path class="regional-primary" d="M276 126 Q260 168 229 198 L247 209 Q278 180 291 133 Z"></path><path class="regional-stroke" d="M238 193 L247 201 M248 183 L258 191 M258 170 L268 178"></path></g>
-                    <g data-style="ocean"><path class="regional-primary" d="M252 104 Q275 90 301 109 Q294 130 276 132 Q259 125 252 104 Z"></path><path class="regional-stroke thick" d="M256 112 Q271 101 286 112 T300 112"></path><path class="regional-secondary" d="M278 128 Q264 162 238 190 L255 201 Q282 178 291 134 Z"></path></g>
-                    <g data-style="okinawa" class="male-accessory"><path class="regional-secondary" d="M78 126 Q92 119 105 130 Q101 142 90 142 Q80 137 78 126 Z"></path><path class="regional-primary" d="M91 140 L75 166 L88 171 L103 143 Z"></path></g>
-                    <g data-style="kauai" class="male-accessory"><path class="regional-primary" d="M53 151 Q39 179 49 203 Q72 213 94 198 Q76 177 89 154 Z"></path></g>
+                    <g data-style="rainforest"><path class="harness-strap" d="M256 109 Q277 94 299 111 M275 125 Q237 159 207 205 M289 129 Q257 166 226 211"></path><circle class="harness-ring" cx="218" cy="202" r="13"></circle><path class="harness-rope" d="M215 188 Q188 191 186 216 Q190 240 215 233 Q232 227 221 213 Q208 202 199 216"></path></g>
+                    <g data-style="woodland"><path class="regional-stroke thick" d="M273 114 Q229 152 186 216"></path><path class="leaf-bag" d="M139 205 Q169 177 207 202 Q194 251 147 259 Q128 235 139 205 Z"></path><path class="regional-stroke" d="M144 211 Q173 219 199 205 M149 228 Q172 235 194 221"></path><circle class="acorn-sample" cx="181" cy="244" r="8"></circle></g>
+                    <g data-style="ocean"><path class="regional-stroke thick" d="M274 114 Q231 151 186 216"></path><path class="woven-bag ocean-bag" d="M140 201 Q173 184 208 203 L200 255 Q166 269 134 250 Z"></path><path class="woven-line" d="M141 216 L204 220 M138 233 L202 237 M153 195 L149 254 M176 191 L172 262 M197 199 L193 256"></path><path class="palm-mark" d="M170 230 Q181 214 191 229 M181 228 V246"></path></g>
+                    <g data-style="okinawa" class="male-accessory"><path class="regional-secondary" d="M78 126 Q92 119 105 130 Q101 142 90 142 Q80 137 78 126 Z"></path><path class="regional-primary" d="M91 140 L75 166 L88 171 L103 143 Z"></path><g class="minsa-pattern"><rect x="86" y="146" width="5" height="5"></rect><rect x="82" y="153" width="5" height="5"></rect><rect x="78" y="160" width="5" height="5"></rect><rect x="84" y="165" width="5" height="5"></rect></g></g>
+                    <g data-style="kauai" class="male-accessory"><path class="regional-stroke thick" d="M91 134 Q74 151 59 175"></path><path class="woven-bag" d="M45 168 Q60 160 76 169 L73 195 Q58 202 43 193 Z"></path><path class="woven-line" d="M46 177 L74 179 M45 186 L73 188 M55 164 L53 197 M66 165 L64 198"></path></g>
                     <g data-style="field" class="male-accessory"><path class="regional-stroke thick" d="M91 133 Q75 149 60 174"></path><rect class="regional-primary" x="47" y="166" width="30" height="25" rx="7"></rect></g>
-                    <g data-style="rainforest" class="male-accessory"><path class="regional-primary" d="M53 151 Q36 181 47 207 Q73 219 98 199 Q77 177 90 154 Z"></path><path class="regional-secondary" d="M51 157 Q73 171 92 158 L87 168 Q69 179 47 166 Z"></path></g>
-                    <g data-style="woodland" class="male-accessory"><path class="regional-secondary" d="M77 126 Q91 117 106 131 Q101 144 90 143 Q80 138 77 126 Z"></path><path class="regional-primary" d="M91 141 L75 170 L89 176 L103 145 Z"></path></g>
-                    <g data-style="ocean" class="male-accessory"><path class="regional-primary" d="M77 127 Q92 116 107 131 Q102 144 90 143 Q80 138 77 127 Z"></path><path class="regional-stroke" d="M80 132 Q90 124 100 132 T107 132"></path></g>
+                    <g data-style="rainforest" class="male-accessory"><path class="harness-strap" d="M78 129 Q92 119 107 131 M91 141 Q75 158 62 178 M100 143 Q85 162 73 181"></path><circle class="harness-ring" cx="67" cy="177" r="7"></circle><path class="harness-rope" d="M64 169 Q49 171 49 184 Q53 196 66 191 Q75 185 68 179"></path></g>
+                    <g data-style="woodland" class="male-accessory"><path class="regional-stroke thick" d="M91 134 Q75 151 60 176"></path><path class="leaf-bag" d="M46 170 Q60 157 77 170 Q71 195 50 198 Q41 187 46 170 Z"></path><circle class="acorn-sample" cx="64" cy="188" r="4"></circle></g>
+                    <g data-style="ocean" class="male-accessory"><path class="regional-stroke thick" d="M91 134 Q74 151 59 175"></path><path class="woven-bag ocean-bag" d="M45 168 Q60 160 76 169 L73 195 Q58 202 43 193 Z"></path><path class="woven-line" d="M46 177 L74 179 M45 186 L73 188 M55 164 L53 197 M66 165 L64 198"></path></g>
                   </g>
 
                   <g id="local-charm" class="accessory regional-accessory" hidden>
                     <g data-style="okinawa"><path class="wing-harness" d="M205 151 Q219 143 232 157"></path><path class="regional-wing" d="M214 151 Q178 101 153 126 Q161 164 211 164 Z"></path><path class="regional-wing" d="M226 158 Q260 111 286 139 Q273 177 229 171 Z"></path><path class="wing-vein" d="M207 155 L165 130 M232 161 L274 142 M205 158 L173 151 M235 165 L264 163"></path><circle class="regional-accent" cx="220" cy="159" r="8"></circle></g>
-                    <g data-style="kauai"><path class="regional-stroke thick" d="M186 194 Q218 163 248 137"></path><ellipse class="regional-primary" cx="205" cy="177" rx="18" ry="7" transform="rotate(-35 205 177)"></ellipse><ellipse class="regional-primary" cx="224" cy="157" rx="18" ry="7" transform="rotate(25 224 157)"></ellipse></g>
-                    <g data-style="field"><rect class="regional-primary" x="116" y="190" width="48" height="68" rx="11"></rect><rect class="regional-secondary" x="128" y="179" width="24" height="18" rx="5"></rect><circle class="regional-accent" cx="140" cy="223" r="11"></circle></g>
-                    <g data-style="rainforest"><path class="regional-stroke thick" d="M250 105 Q276 139 304 112"></path><circle class="fruit-orange" cx="260" cy="119" r="11"></circle><path class="fruit-leaf" d="M256 107 Q262 97 270 105 Q265 113 256 107 Z"></path><path class="fruit-banana" d="M273 122 Q286 111 294 119 Q286 139 271 135 Q267 131 273 122 Z"></path><circle class="fruit-berry" cx="300" cy="117" r="10"></circle><circle class="fruit-shine" cx="297" cy="113" r="3"></circle></g>
-                    <g data-style="woodland"><path class="regional-primary" d="M218 155 Q246 126 270 154 Q246 184 218 155 Z"></path><path class="regional-stroke" d="M224 155 L264 153"></path></g>
+                    <g data-style="kauai"><path class="wing-harness" d="M205 151 Q219 143 232 157"></path><path class="fern-wing" d="M212 154 Q177 111 154 132 Q164 166 211 166 Z"></path><path class="fern-wing" d="M228 158 Q259 119 282 143 Q269 174 230 170 Z"></path><path class="fern-vein" d="M207 158 L164 136 M203 153 L180 132 M202 161 L177 156 M233 162 L273 147 M238 156 L254 137 M236 167 L259 166"></path><circle class="regional-accent" cx="220" cy="160" r="7"></circle></g>
+                    <g data-style="field"><rect class="regional-primary" x="116" y="190" width="48" height="68" rx="11"></rect><rect class="regional-secondary" x="128" y="179" width="24" height="18" rx="5"></rect><rect class="vial-liquid" x="123" y="232" width="34" height="18" rx="6"></rect><circle class="regional-accent" cx="140" cy="218" r="8"></circle></g>
+                    <g data-style="rainforest"><path class="regional-stroke thick" d="M250 105 Q276 139 304 112"></path><circle class="fruit-orange" cx="260" cy="119" r="11"></circle><path class="fruit-leaf" d="M256 107 Q262 97 270 105 Q265 113 256 107 Z"></path><path class="fruit-banana" d="M273 122 Q286 111 294 119 Q286 139 271 135 Q267 131 273 122 Z"></path><circle class="fruit-berry" cx="300" cy="117" r="10"></circle><circle class="fruit-shine" cx="297" cy="113" r="3"></circle><path class="sample-pouch" d="M268 137 Q278 131 289 138 L287 153 Q278 160 269 153 Z"></path></g>
+                    <g data-style="woodland"><path class="wing-harness" d="M205 151 Q220 143 234 158"></path><path class="beetle-wing left" d="M212 156 Q173 112 151 141 Q161 177 211 170 Z"></path><path class="beetle-wing right" d="M230 159 Q263 116 287 145 Q273 180 232 173 Z"></path><path class="beetle-line" d="M207 160 L162 145 M234 164 L277 149 M205 166 L173 166 M238 169 L265 171"></path><circle class="regional-accent" cx="221" cy="163" r="8"></circle></g>
                     <g data-style="ocean"><path class="regional-stroke" d="M250 106 Q276 137 302 113"></path><g class="regional-flower small" transform="translate(263 119)"><circle cx="0" cy="-7" r="6"></circle><circle cx="7" cy="0" r="6"></circle><circle cx="0" cy="7" r="6"></circle><circle cx="-7" cy="0" r="6"></circle><circle class="regional-accent" r="4"></circle></g><g class="regional-flower small" transform="translate(287 120)"><circle cx="0" cy="-7" r="6"></circle><circle cx="7" cy="0" r="6"></circle><circle cx="0" cy="7" r="6"></circle><circle cx="-7" cy="0" r="6"></circle><circle class="regional-accent" r="4"></circle></g></g>
                     <g data-style="okinawa" class="male-accessory"><path class="wing-harness" d="M52 158 Q61 152 70 160"></path><path class="regional-wing" d="M58 158 Q39 136 27 148 Q33 168 57 166 Z"></path><path class="regional-wing" d="M66 160 Q84 140 96 153 Q87 171 68 168 Z"></path><path class="wing-vein" d="M55 161 L34 150 M70 162 L90 154"></path></g>
-                    <g data-style="kauai" class="male-accessory"><path class="regional-stroke" d="M48 166 Q65 148 82 139"></path><ellipse class="regional-primary" cx="59" cy="156" rx="10" ry="4" transform="rotate(-30 59 156)"></ellipse><ellipse class="regional-primary" cx="72" cy="146" rx="10" ry="4" transform="rotate(24 72 146)"></ellipse></g>
-                    <g data-style="field" class="male-accessory"><rect class="regional-primary" x="38" y="158" width="27" height="36" rx="7"></rect><rect class="regional-secondary" x="45" y="151" width="13" height="10" rx="3"></rect><circle class="regional-accent" cx="51" cy="177" r="6"></circle></g>
-                    <g data-style="rainforest" class="male-accessory"><path class="regional-stroke" d="M78 128 Q91 145 105 132"></path><circle class="fruit-orange" cx="84" cy="136" r="6"></circle><path class="fruit-banana" d="M91 138 Q99 130 104 136 Q99 147 90 145 Z"></path></g>
-                    <g data-style="woodland" class="male-accessory"><path class="regional-primary" d="M51 166 Q66 149 80 165 Q66 182 51 166 Z"></path><path class="regional-stroke" d="M55 166 L76 165"></path></g>
+                    <g data-style="kauai" class="male-accessory"><path class="wing-harness" d="M52 158 Q61 152 70 160"></path><path class="fern-wing" d="M58 158 Q39 136 27 148 Q33 168 57 166 Z"></path><path class="fern-wing" d="M66 160 Q84 140 96 153 Q87 171 68 168 Z"></path><path class="fern-vein" d="M55 161 L34 150 M70 162 L90 154"></path></g>
+                    <g data-style="field" class="male-accessory"><rect class="regional-primary" x="38" y="158" width="27" height="36" rx="7"></rect><rect class="regional-secondary" x="45" y="151" width="13" height="10" rx="3"></rect><rect class="vial-liquid" x="42" y="181" width="19" height="9" rx="3"></rect><circle class="regional-accent" cx="51" cy="173" r="4"></circle></g>
+                    <g data-style="rainforest" class="male-accessory"><path class="regional-stroke" d="M78 128 Q91 145 105 132"></path><circle class="fruit-orange" cx="84" cy="136" r="6"></circle><path class="fruit-banana" d="M91 138 Q99 130 104 136 Q99 147 90 145 Z"></path><path class="sample-pouch" d="M87 146 Q94 142 101 147 L99 157 Q94 161 88 157 Z"></path></g>
+                    <g data-style="woodland" class="male-accessory"><path class="wing-harness" d="M52 158 Q61 152 70 160"></path><path class="beetle-wing left" d="M58 158 Q38 136 26 150 Q32 170 57 167 Z"></path><path class="beetle-wing right" d="M67 160 Q85 139 98 153 Q89 173 69 169 Z"></path><path class="beetle-line" d="M55 162 L33 151 M71 163 L92 155"></path></g>
                     <g data-style="ocean" class="male-accessory"><g class="regional-flower small" transform="translate(83 137) scale(.7)"><circle cx="0" cy="-7" r="6"></circle><circle cx="7" cy="0" r="6"></circle><circle cx="0" cy="7" r="6"></circle><circle cx="-7" cy="0" r="6"></circle><circle class="regional-accent" r="4"></circle></g></g>
                   </g>
                 </g>
@@ -269,19 +307,19 @@
               <h2 id="dress-title">Make this worm yours</h2>
             </div>
             <div class="dress-buttons" aria-label="Worm accessories">
-              <button type="button" data-accessory="local-headwear" aria-pressed="false"><span class="button-icon" aria-hidden="true">🍃</span> <span class="button-label">Fig-leaf hat</span></button>
-              <button type="button" data-accessory="local-wrap" aria-pressed="false"><span class="button-icon" aria-hidden="true">🧣</span> <span class="button-label">Okinawa fig scarf</span></button>
-              <button type="button" data-accessory="local-charm" aria-pressed="false"><span class="button-icon" aria-hidden="true">🪽</span> <span class="button-label">Fig-wasp wings</span></button>
+              <button type="button" data-accessory="local-headwear" aria-pressed="false"><span class="button-icon" aria-hidden="true">🍃</span> <span class="button-label">Fig-leaf explorer hat</span></button>
+              <button type="button" data-accessory="local-wrap" aria-pressed="false"><span class="button-icon" aria-hidden="true">🧵</span> <span class="button-label">Yaeyama minsā field sash</span></button>
+              <button type="button" data-accessory="local-charm" aria-pressed="false"><span class="button-icon" aria-hidden="true">🪽</span> <span class="button-label">Fig-wasp flight rig</span></button>
               <button id="surprise-me" class="surprise-button" type="button"><span aria-hidden="true">✨</span> Surprise me</button>
             </div>
-            <p class="wardrobe-note">Each species has its own place-inspired wardrobe—and remembers its outfit.</p>
+            <p id="wardrobe-note" class="wardrobe-note">Ishigaki’s Yaeyama minsā textile inspires the sash; fig leaves and the fig-wasp vector complete the field kit.</p>
           </div>
         </section>
 
         <article class="species-story" aria-live="polite">
           <div class="story-topline">
             <span id="species-region" class="region-label">Okinawa, Japan</span>
-            <span id="species-number" class="species-number">01 / 06</span>
+            <span id="species-number" class="species-number">sister pair</span>
           </div>
           <h2 id="species-name"><i>Caenorhabditis inopinata</i></h2>
           <p id="species-nickname" class="nickname">The fig giant</p>
@@ -304,12 +342,17 @@
       <summary>For curious grown-ups: map notes and sources</summary>
       <p>Markers show selected published collection records, not complete species ranges. Dense sampling areas are represented by a few readable points. “Mostly selfing” means self-fertile hermaphrodites predominate, although rare males and occasional outcrossing can occur.</p>
       <ul>
-        <li><a href="https://caendr.org/data/strain_database" target="_blank" rel="noopener">CaeNDR strain database</a> and <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10767927/" target="_blank" rel="noopener">Crombie et al. (2024)</a> — coordinates and ecological metadata for representative <i>C. elegans</i> and <i>C. tropicalis</i> records.</li>
+        <li><a href="https://caendr.org/data/strain_database" target="_blank" rel="noopener">CaeNDR strain database</a> and <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10767927/" target="_blank" rel="noopener">Crombie et al. (2024)</a> — coordinates and ecological metadata for representative <i>C. elegans</i>, <i>C. briggsae</i>, and <i>C. tropicalis</i> records.</li>
+        <li><a href="https://justbio.com/tools/worms/search.php" target="_blank" rel="noopener">Félix Lab strain database</a> — collection substrates and locations for <i>C. inopinata</i>, <i>C. nigoni</i>, and <i>C. wallacei</i>.</li>
         <li><a href="https://cgc.umn.edu/strain/N2" target="_blank" rel="noopener">CGC N2 record</a> and <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4417040/" target="_blank" rel="noopener">Sterken et al. (2015)</a> — the Bristol N2 strain's journey from mushroom compost to the canonical laboratory reference.</li>
         <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3277298/" target="_blank" rel="noopener">Kiontke et al. (2011)</a> — Caenorhabditis phylogeny, habitats, and tropical/temperate distributions.</li>
-        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3984244/" target="_blank" rel="noopener">Félix et al. (2014)</a> — species diagnoses, including Hawaiian <i>C. kamaaina</i>.</li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3984244/" target="_blank" rel="noopener">Félix et al. (2014)</a> — species diagnoses for <i>C. nigoni</i>, <i>C. tropicalis</i>, and <i>C. wallacei</i>.</li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6457397/" target="_blank" rel="noopener">Stevens et al. (2019)</a> — comparative phylogeny and repeated evolution of self-fertilization in the Elegans group.</li>
         <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6102938/" target="_blank" rel="noopener">Woodruff &amp; Phillips (2018)</a> — <i>C. inopinata</i> in Okinawan figs and fig wasps.</li>
-        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1602088/" target="_blank" rel="noopener">Cutter et al. (2006)</a> — exceptionally high DNA sequence diversity in wild <i>C. remanei</i>.</li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6614896/" target="_blank" rel="noopener">Bi et al. (2019)</a> — the <i>C. briggsae–C. nigoni</i> pair for studying speciation genetics.</li>
+        <li><a href="https://www.nature.com/articles/s41559-025-02894-2" target="_blank" rel="noopener">Hernández-Sánchez et al. (2025)</a> — <i>C. tropicalis</i> and its sister species <i>C. wallacei</i>.</li>
+        <li><a href="https://visitokinawajapan.com/travel-inspiration/ishigaki-traditions-inspired-by-the-sea/" target="_blank" rel="noopener">Official Okinawa travel guide</a> — the five-and-four kasuri motif of Yaeyama minsā cloth made on Ishigaki and Taketomi.</li>
+        <li><a href="https://www.hawaii.edu/kawaihapai/hana-list/ulana-lauhala/" target="_blank" rel="noopener">University of Hawaiʻi Kawaihāpai</a> — lauhala weaving from prepared pandanus leaves.</li>
         <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7853720/" target="_blank" rel="noopener">Noble et al. (2021)</a> — global diversity and frequent selfing in <i>C. tropicalis</i>.</li>
         <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13081884/" target="_blank" rel="noopener">Wang et al. (2026 preprint)</a> — global sampling and geographic diversity in <i>C. tropicalis</i>.</li>
         <li><a href="https://doi.org/10.1016/j.cub.2005.06.022" target="_blank" rel="noopener">Barrière &amp; Félix (2005)</a> — predominant selfing and rare outcrossing in wild <i>C. elegans</i>.</li>
@@ -321,6 +364,6 @@
     <p>Part 1: meet the worms. Fitness, bacteria, and environmental responses can come next.</p>
   </footer>
 
-  <script type="module" src="game.js?v=20260710-7"></script>
+  <script type="module" src="game.js?v=20260710-8"></script>
 </body>
 </html>
