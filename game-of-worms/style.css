@@ -111,6 +111,7 @@ a { color: var(--emerald); }
 .dispositions select {
   font-family: var(--sans); font-size: .88rem; padding: 7px 9px; border-radius: 9px;
   background: #1c1722; color: var(--ink); border: 1px solid var(--border);
+  width: 100%; max-width: 100%; min-width: 0;
 }
 #start-screen .panel { padding: 18px 22px; }
 #start-screen h2 { margin: 0 0 6px; }
@@ -177,6 +178,11 @@ button:focus-visible, select:focus-visible, a:focus-visible {
   .panel h2 { font-size: 1.4rem; }
   .hud { gap: 8px 14px; }
   .meter { width: 72px; }
+  #start-screen {
+    position: relative; inset: auto; margin-top: 10px; padding: 10px;
+    overflow: visible; align-items: flex-start;
+  }
+  #start-screen .panel { min-width: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ticker.flash { animation: none; }
