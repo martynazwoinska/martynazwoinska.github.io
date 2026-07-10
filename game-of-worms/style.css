@@ -667,7 +667,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .draw-color[data-draw-color="#ffd166"] { background: #ffd166; }
 .draw-color.is-selected { box-shadow: 0 0 0 3px var(--ink); }
 .clear-drawing { border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; background: white; color: var(--ink); cursor: pointer; font-weight: 800; }
-.draw-tools small { flex-basis: 100%; color: var(--ink-soft); }
 .species-story {
   padding: clamp(24px, 4vw, 38px);
   display: flex;
