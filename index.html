@@ -248,6 +248,13 @@
     .project + .project { margin-top: 30px; }
     .project h3 { margin: 0 0 10px; font-size: 1.25rem; }
     .project p { color: var(--text-soft); margin: 0 0 14px; }
+    .project figure { margin: 18px 0 0; }
+    .project figure img {
+      width: 100%; max-width: 680px; height: auto; display: block;
+      background: #fff; border: 1px solid var(--border); border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+    .project figcaption { color: var(--text-faint); font-size: .84rem; margin-top: 9px; max-width: 680px; }
 
     /* contact */
     .contact-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
@@ -383,6 +390,10 @@
         selection in maintaining the genetic polymorphism we observe, we also do not understand
         particularly well the relative importance of its different mechanisms.
       </p>
+      <figure>
+        <img src="seed-beetles.png" alt="Experimentally evolved sexual size dimorphism across selection regimes in Callosobruchus seed beetles" onerror="this.closest('figure').remove()" />
+        <figcaption>Sexual size dimorphism evolving under sexually antagonistic and sex-limited selection in <em>Callosobruchus</em> seed beetles.</figcaption>
+      </figure>
     </div>
   </section>
 
