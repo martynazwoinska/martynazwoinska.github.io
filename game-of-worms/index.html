@@ -23,8 +23,11 @@
       <h1>Worm Atlas</h1>
       <p>Pick a place. Meet a worm. Dress it up.</p>
     </div>
-    <div class="explored" aria-live="polite">
-      <strong id="explored-count">1</strong><span>of 6 met</span>
+    <div class="atlas-actions">
+      <button id="reset-atlas" class="reset-atlas" type="button"><span aria-hidden="true">↺</span> Reset atlas</button>
+      <div class="explored" aria-live="polite">
+        <strong id="explored-count">1</strong><span>of 6 met</span>
+      </div>
     </div>
   </header>
 
@@ -32,16 +35,16 @@
     <section class="map-section" aria-labelledby="map-title">
       <div class="section-heading">
         <div>
-          <span class="eyebrow">Featured wild records</span>
+          <span class="eyebrow"><span id="record-count">26</span> featured wild records</span>
           <h2 id="map-title">Where in the world are the worms?</h2>
         </div>
-        <p>Tap a glowing spot. This is a playful sample, not a complete range map.</p>
+        <p>Tap a glowing spot. Records are representative and clustered for readability—not a complete range map.</p>
       </div>
 
       <div class="map-wrap">
         <svg id="world-map" viewBox="0 0 960 470" role="img" aria-labelledby="world-map-title world-map-desc">
           <title id="world-map-title">World map with featured Caenorhabditis records</title>
-          <desc id="world-map-desc">Interactive locations for six Caenorhabditis species, including records from Hawaii, Japan, Europe, the Americas, and tropical regions.</desc>
+          <desc id="world-map-desc">Interactive representative locations for six Caenorhabditis species, including records from Hawaiʻi, Japan, Europe, the Americas, Oceania, and tropical regions.</desc>
           <path id="map-sphere" class="map-sphere"></path>
           <path id="map-graticule" class="map-graticule"></path>
           <g id="map-countries" class="map-countries"></g>
@@ -78,12 +81,27 @@
             <span class="habitat-shape shape-three" aria-hidden="true"></span>
 
             <svg id="worm-avatar" class="worm-avatar" viewBox="0 0 420 320" role="img" aria-labelledby="worm-avatar-title worm-avatar-desc">
-              <title id="worm-avatar-title">A dressed-up Caenorhabditis inopinata worm</title>
-              <desc id="worm-avatar-desc">A friendly illustrated worm. Use the dress-up buttons to add or remove accessories.</desc>
+              <title id="worm-avatar-title">A dressed-up Caenorhabditis inopinata pair</title>
+              <desc id="worm-avatar-desc">A friendly illustrated female and male. Use the dress-up buttons to add or remove accessories.</desc>
 
-              <g id="cape" class="accessory cape" hidden>
-                <path d="M110 176 C88 215 96 266 154 278 C145 239 166 208 190 190 Z"></path>
-              </g>
+              <g id="worm-species" class="worm-species">
+                <g id="companion-worm" class="companion-worm" transform="translate(-12 104) scale(.58)" aria-hidden="true">
+                  <g class="companion-body">
+                    <path class="companion-shadow" d="M78 238 C122 290 173 265 181 213 C188 161 225 115 278 123 C330 131 355 92 326 64"></path>
+                    <path class="companion-line" d="M78 228 C122 280 173 255 181 203 C188 151 225 105 278 113 C330 121 355 82 326 54"></path>
+                    <path class="male-tail" d="M79 228 L49 210 L64 242 Z"></path>
+                    <circle class="worm-cheek" cx="311" cy="70" r="8"></circle>
+                    <circle class="worm-eye" cx="323" cy="49" r="5"></circle>
+                    <circle class="worm-eye" cx="340" cy="58" r="5"></circle>
+                    <path class="worm-smile" d="M320 72 Q331 83 343 69"></path>
+                  </g>
+                </g>
+
+                <g id="primary-worm" class="primary-worm">
+
+                  <g id="cape" class="accessory cape" hidden>
+                    <path d="M110 176 C88 215 96 266 154 278 C145 239 166 208 190 190 Z"></path>
+                  </g>
 
               <g class="worm-body">
                 <path class="worm-shadow" d="M78 238 C122 290 173 265 181 213 C188 161 225 115 278 123 C330 131 355 92 326 64"></path>
@@ -121,12 +139,34 @@
                 <circle class="flower-centre" cx="300" cy="54" r="8"></circle>
               </g>
 
-              <g id="bow" class="accessory bow" hidden>
-                <path d="M214 150 C190 130 176 140 183 162 C190 179 206 169 217 158 Z"></path>
-                <path d="M222 152 C244 132 260 142 252 163 C245 180 230 170 219 159 Z"></path>
-                <circle cx="218" cy="156" r="9"></circle>
+                  <g id="bow" class="accessory bow" hidden>
+                    <path d="M214 150 C190 130 176 140 183 162 C190 179 206 169 217 158 Z"></path>
+                    <path d="M222 152 C244 132 260 142 252 163 C245 180 230 170 219 159 Z"></path>
+                    <circle cx="218" cy="156" r="9"></circle>
+                  </g>
+
+                  <g id="local-headwear" class="accessory local-headwear" hidden>
+                    <path class="local-hat-brim" d="M286 44 Q325 29 369 48 Q360 60 327 60 Q299 58 286 44 Z"></path>
+                    <path class="local-hat-crown" d="M306 42 Q311 10 344 9 Q356 18 353 48 Z"></path>
+                    <path class="local-hat-band" d="M305 37 Q331 31 355 40 L353 49 Q329 42 304 47 Z"></path>
+                    <circle class="local-motif motif-one" cx="318" cy="25" r="4"></circle>
+                    <circle class="local-motif motif-two" cx="339" cy="20" r="4"></circle>
+                  </g>
+
+                  <g id="local-wrap" class="accessory local-wrap" hidden>
+                    <path class="local-wrap-band" d="M257 105 Q276 94 296 108 Q294 124 278 130 Q262 123 257 105 Z"></path>
+                    <path class="local-wrap-tail" d="M275 124 C263 151 252 174 232 190 L248 199 C270 176 283 149 286 127 Z"></path>
+                    <circle class="local-motif motif-one" cx="273" cy="111" r="4"></circle>
+                    <circle class="local-motif motif-two" cx="245" cy="183" r="4"></circle>
+                  </g>
+                </g>
               </g>
             </svg>
+
+            <div class="worm-cast" aria-live="polite">
+              <span><i class="cast-dot primary" aria-hidden="true"></i><b id="primary-sex">female</b></span>
+              <span><i class="cast-dot companion" aria-hidden="true"></i><b id="companion-sex">male</b></span>
+            </div>
 
             <span id="worm-name-tag" class="worm-name-tag"><i>C. inopinata</i></span>
           </div>
@@ -143,8 +183,11 @@
               <button type="button" data-accessory="flower" aria-pressed="false"><span aria-hidden="true">🌺</span> Flower</button>
               <button type="button" data-accessory="bow" aria-pressed="false"><span aria-hidden="true">🎀</span> Bow</button>
               <button type="button" data-accessory="cape" aria-pressed="false"><span aria-hidden="true">🦸</span> Cape</button>
+              <button type="button" data-accessory="local-headwear" aria-pressed="false"><span aria-hidden="true">🧢</span> <span class="button-label">Okinawa sun hat</span></button>
+              <button type="button" data-accessory="local-wrap" aria-pressed="false"><span aria-hidden="true">🧣</span> <span class="button-label">Fig-pattern scarf</span></button>
               <button id="surprise-me" class="surprise-button" type="button"><span aria-hidden="true">✨</span> Surprise me</button>
             </div>
+            <p class="wardrobe-note">Place-inspired playwear based on each worm's landscape—not traditional or ceremonial dress.</p>
           </div>
         </section>
 
@@ -172,8 +215,9 @@
 
     <details class="science-notes">
       <summary>For curious grown-ups: map notes and sources</summary>
-      <p>Markers show selected published collection regions, not complete species ranges. “Mostly selfing” means self-fertile hermaphrodites predominate, although males and occasional outcrossing can occur.</p>
+      <p>Markers show selected published collection records, not complete species ranges. Dense sampling areas are represented by a few readable points. “Mostly selfing” means self-fertile hermaphrodites predominate, although rare males and occasional outcrossing can occur.</p>
       <ul>
+        <li><a href="https://caendr.org/data/strain_database" target="_blank" rel="noopener">CaeNDR strain database</a> and <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10767927/" target="_blank" rel="noopener">Crombie et al. (2024)</a> — coordinates and ecological metadata for representative <i>C. elegans</i> and <i>C. tropicalis</i> records.</li>
         <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3277298/" target="_blank" rel="noopener">Kiontke et al. (2011)</a> — Caenorhabditis phylogeny, habitats, and tropical/temperate distributions.</li>
         <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3984244/" target="_blank" rel="noopener">Félix et al. (2014)</a> — species diagnoses, including Hawaiian <i>C. kamaaina</i>.</li>
         <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6102938/" target="_blank" rel="noopener">Woodruff &amp; Phillips (2018)</a> — <i>C. inopinata</i> in Okinawan figs and fig wasps.</li>
