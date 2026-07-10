@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#143f4a" />
-  <link rel="stylesheet" href="style.css?v=20260710-8" />
+  <link rel="stylesheet" href="style.css?v=20260711-1" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
@@ -21,7 +21,7 @@
     <div class="brand">
       <span class="part-label">Part 1</span>
       <h1>Worm Atlas</h1>
-      <p>Pick a place. Meet a worm. Dress it up.</p>
+      <p>Meet a sister pair. Dress a worm. Explore the map.</p>
     </div>
     <div class="explored" aria-live="polite">
       <strong id="explored-count">0</strong><span>of 6 met</span>
@@ -215,6 +215,7 @@
               </g>
             </svg>
             <span id="scene-name" class="scene-name">Ishigaki fig grove</span>
+            <span id="place-motif" class="place-motif" aria-hidden="true">🌿</span>
 
             <svg id="worm-avatar" class="worm-avatar" viewBox="0 0 420 320" role="img" aria-label="Illustrated Caenorhabditis inopinata female and male">
 
@@ -263,6 +264,8 @@
                     <g data-style="rainforest" class="male-accessory"><path class="regional-primary" d="M103 103 Q94 79 108 83 Q119 92 116 105 Z"></path><path class="regional-secondary" d="M114 104 Q121 78 131 88 Q133 102 122 108 Z"></path><path class="rain-drop" d="M98 112 Q103 104 108 112 Q103 119 98 112 Z"></path></g>
                     <g data-style="woodland" class="male-accessory"><ellipse class="regional-primary" cx="111" cy="100" rx="24" ry="12" transform="rotate(8 111 100)"></ellipse><path class="regional-stroke" d="M112 89 Q116 81 120 84"></path></g>
                     <g data-style="ocean" class="male-accessory"><path class="regional-secondary" d="M87 104 Q110 94 134 105 Q122 113 103 111 Z"></path><path class="regional-primary" d="M107 101 Q98 81 111 84 Q122 92 119 105 Z M118 102 Q127 82 135 91 Q134 104 123 108 Z"></path></g>
+                    <text id="headwear-symbol" class="kit-symbol" x="333" y="39" text-anchor="middle" aria-hidden="true">🍃</text>
+                    <text id="headwear-symbol-male" class="kit-symbol male" x="113" y="99" text-anchor="middle" aria-hidden="true">🍃</text>
                   </g>
 
                   <g id="local-wrap" class="accessory regional-accessory" hidden>
@@ -278,6 +281,8 @@
                     <g data-style="rainforest" class="male-accessory"><path class="harness-strap" d="M78 129 Q92 119 107 131 M91 141 Q75 158 62 178 M100 143 Q85 162 73 181"></path><circle class="harness-ring" cx="67" cy="177" r="7"></circle><path class="harness-rope" d="M64 169 Q49 171 49 184 Q53 196 66 191 Q75 185 68 179"></path></g>
                     <g data-style="woodland" class="male-accessory"><path class="regional-stroke thick" d="M91 134 Q75 151 60 176"></path><path class="leaf-bag" d="M46 170 Q60 157 77 170 Q71 195 50 198 Q41 187 46 170 Z"></path><circle class="acorn-sample" cx="64" cy="188" r="4"></circle></g>
                     <g data-style="ocean" class="male-accessory"><path class="regional-stroke thick" d="M91 134 Q74 151 59 175"></path><path class="woven-bag ocean-bag" d="M45 168 Q60 160 76 169 L73 195 Q58 202 43 193 Z"></path><path class="woven-line" d="M46 177 L74 179 M45 186 L73 188 M55 164 L53 197 M66 165 L64 198"></path></g>
+                    <text id="wrap-symbol" class="kit-symbol" x="173" y="226" text-anchor="middle" aria-hidden="true">🧺</text>
+                    <text id="wrap-symbol-male" class="kit-symbol male" x="60" y="183" text-anchor="middle" aria-hidden="true">🧺</text>
                   </g>
 
                   <g id="local-charm" class="accessory regional-accessory" hidden>
@@ -293,6 +298,8 @@
                     <g data-style="rainforest" class="male-accessory"><path class="regional-stroke" d="M78 128 Q91 145 105 132"></path><circle class="fruit-orange" cx="84" cy="136" r="6"></circle><path class="fruit-banana" d="M91 138 Q99 130 104 136 Q99 147 90 145 Z"></path><path class="sample-pouch" d="M87 146 Q94 142 101 147 L99 157 Q94 161 88 157 Z"></path></g>
                     <g data-style="woodland" class="male-accessory"><path class="wing-harness" d="M52 158 Q61 152 70 160"></path><path class="beetle-wing left" d="M58 158 Q38 136 26 150 Q32 170 57 167 Z"></path><path class="beetle-wing right" d="M67 160 Q85 139 98 153 Q89 173 69 169 Z"></path><path class="beetle-line" d="M55 162 L33 151 M71 163 L92 155"></path></g>
                     <g data-style="ocean" class="male-accessory"><g class="regional-flower small" transform="translate(83 137) scale(.7)"><circle cx="0" cy="-7" r="6"></circle><circle cx="7" cy="0" r="6"></circle><circle cx="0" cy="7" r="6"></circle><circle cx="-7" cy="0" r="6"></circle><circle class="regional-accent" r="4"></circle></g></g>
+                    <text id="charm-symbol" class="kit-symbol" x="220" y="162" text-anchor="middle" aria-hidden="true">🪽</text>
+                    <text id="charm-symbol-male" class="kit-symbol male" x="62" y="164" text-anchor="middle" aria-hidden="true">🪽</text>
                   </g>
                 </g>
               </g>
@@ -364,6 +371,6 @@
     <p>Part 1: meet the worms. Fitness, bacteria, and environmental responses can come next.</p>
   </footer>
 
-  <script type="module" src="game.js?v=20260710-8"></script>
+  <script type="module" src="game.js?v=20260711-1"></script>
 </body>
 </html>

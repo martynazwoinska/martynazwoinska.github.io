@@ -301,6 +301,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
 .species-tab small { display: inline-block; margin-top: 5px; border-radius: 999px; padding: 2px 7px; font-size: .62rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }
 .species-tab small.selfing { color: #a94347; background: rgba(243,111,98,.14); }
 .species-tab small.outcrossing { color: #51438f; background: rgba(117,103,184,.14); }
+.featured-place { display: block; margin-top: 4px; color: var(--teal-dark); font-size: .58rem; font-weight: 900; letter-spacing: .03em; text-transform: uppercase; }
 
 .play-grid {
   display: grid;
@@ -346,7 +347,8 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
     linear-gradient(to bottom, rgba(255,255,255,.1), transparent 55%, rgba(24,58,54,.09));
   box-shadow: inset 0 -34px 55px rgba(29,65,57,.08);
 }
-.regional-backdrop { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; opacity: .92; }
+.regional-backdrop { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; opacity: .94; filter: hue-rotate(var(--place-hue, 0deg)); transform: scale(1.01); transition: transform .7s ease, filter .5s ease; }
+.habitat:hover .regional-backdrop { transform: scale(1.035); }
 .regional-backdrop > [data-scene] { display: none; }
 .habitat[data-local-style="okinawa"] [data-scene="okinawa"],
 .habitat[data-local-style="kauai"] [data-scene="kauai"],
@@ -363,7 +365,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
 .scene-water { fill: url(#scene-water-gradient); }
 .scene-water-top { stop-color: color-mix(in srgb, var(--scene-water) 72%, white); }
 .scene-water-bottom { stop-color: var(--scene-water); }
-.scene-sun { fill: url(#scene-sun-gradient); filter: drop-shadow(0 0 16px rgba(255,215,108,.42)); }
+.scene-sun { fill: url(#scene-sun-gradient); filter: drop-shadow(0 0 16px rgba(255,215,108,.42)); transform-origin: center; animation: sun-breathe 5.8s ease-in-out infinite; }
 .scene-sun-core { stop-color: var(--scene-highlight); }
 .scene-sun-edge { stop-color: color-mix(in srgb, var(--scene-highlight) 65%, #f2a55f); }
 .scene-accent, .scene-fruit-detail, .scene-flower-centre { fill: var(--scene-highlight); }
@@ -379,7 +381,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
 .scene-trunk { fill: #8d684f; }
 .scene-acorn-cap { fill: #664b3b; }
 .scene-flower circle { fill: var(--habitat-two); }
-.scene-clouds { fill: rgba(255,255,255,.58); filter: drop-shadow(0 5px 10px rgba(48,91,91,.08)); }
+.scene-clouds { fill: rgba(255,255,255,.58); filter: drop-shadow(0 5px 10px rgba(48,91,91,.08)); animation: cloud-drift 16s ease-in-out infinite alternate; }
 .scene-clouds.mist { opacity: .42; }
 .scene-distant-island { fill: color-mix(in srgb, var(--scene-ground) 48%, var(--scene-sky)); opacity: .76; }
 .scene-waterfall-mist { fill: rgba(255,255,255,.68); filter: blur(4px); }
@@ -393,6 +395,8 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
 .scene-vine { fill: none; stroke: color-mix(in srgb, var(--scene-detail) 75%, var(--scene-ground)); stroke-width: 10; stroke-linecap: round; }
 .scene-sunbeams { fill: rgba(255,244,190,.16); }
 .scene-leaf-litter { fill: color-mix(in srgb, var(--scene-detail) 60%, #b6784f); }
+@keyframes cloud-drift { from { transform: translateX(-8px); } to { transform: translateX(16px); } }
+@keyframes sun-breathe { 0%, 100% { transform: scale(1); opacity: .92; } 50% { transform: scale(1.06); opacity: 1; } }
 .rain-lines path { fill: none; stroke: rgba(255,255,255,.72); stroke-width: 6; stroke-linecap: round; }
 .fig-cluster, .fern, .fig-wasp, .scene-flower { opacity: .9; }
 .scene-name {
@@ -439,10 +443,10 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
 .worm-body { transform-origin: 210px 170px; animation: worm-bob 3.2s ease-in-out infinite; }
 .companion-body { transform-origin: 210px 170px; animation: worm-bob 3.2s .45s ease-in-out infinite; }
 @keyframes worm-bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-7px) rotate(1deg); } }
-.accessory { transform-origin: center; }
+.accessory { --accessory-x: 0px; --accessory-y: 0px; transform: translate(var(--accessory-x), var(--accessory-y)); transform-origin: center; }
 .accessory[hidden] { display: none; }
 .accessory:not([hidden]) { animation: accessory-pop .24s cubic-bezier(.2,.8,.25,1.25); }
-@keyframes accessory-pop { from { opacity: 0; transform: scale(.82); } to { opacity: 1; transform: scale(1); } }
+@keyframes accessory-pop { from { opacity: 0; transform: translate(var(--accessory-x), var(--accessory-y)) scale(.82); } to { opacity: 1; transform: translate(var(--accessory-x), var(--accessory-y)) scale(1); } }
 .regional-accessory > [data-style] { display: none; }
 .habitat[data-local-style="okinawa"] .regional-accessory > [data-style="okinawa"],
 .habitat[data-local-style="kauai"] .regional-accessory > [data-style="kauai"],
@@ -489,6 +493,44 @@ main { max-width: 1180px; margin: 0 auto; padding: 18px 28px 70px; }
 .beetle-wing.left { fill: #68b6a5; }
 .beetle-wing.right { fill: #7b6dc0; }
 .beetle-line { fill: none; stroke: rgba(255,255,255,.62); stroke-width: 2; stroke-linecap: round; }
+.kit-symbol { font-size: 15px; paint-order: stroke; stroke: rgba(255,255,255,.86); stroke-width: 3px; stroke-linejoin: round; }
+.kit-symbol.male { font-size: 9px; stroke-width: 2px; }
+.habitat[data-local-style="rainforest"] #local-wrap { --accessory-x: -13px; --accessory-y: 15px; }
+.habitat[data-local-style="rainforest"] #local-charm { --accessory-x: 12px; --accessory-y: 28px; }
+.habitat[data-local-style="rainforest"] .kit-symbol { display: none; }
+.habitat[data-local-style="woodland"] #local-wrap { --accessory-x: -14px; --accessory-y: 18px; }
+.habitat[data-local-style="woodland"] #local-charm { --accessory-x: 15px; --accessory-y: -11px; }
+.habitat[data-local-style="field"] #local-wrap { --accessory-x: -13px; --accessory-y: 12px; }
+.habitat[data-local-style="field"] #local-charm { --accessory-x: 15px; --accessory-y: -8px; }
+.place-motif {
+  position: absolute;
+  right: 22px;
+  bottom: 20px;
+  z-index: 1;
+  font-size: clamp(3rem, 8vw, 5.2rem);
+  opacity: .17;
+  filter: saturate(.8) drop-shadow(0 8px 10px rgba(23,51,61,.14));
+  transform: rotate(8deg);
+  pointer-events: none;
+}
+.habitat.is-changing .worm-avatar { animation: worm-arrive .62s cubic-bezier(.2,.9,.2,1.18); }
+@keyframes worm-arrive { 0% { opacity: .25; transform: translateY(22px) scale(.9); } 65% { opacity: 1; transform: translateY(-5px) scale(1.025); } 100% { transform: translateY(0) scale(1); } }
+.selection-spark {
+  position: absolute;
+  left: 50%;
+  top: 49%;
+  z-index: 4;
+  color: var(--scene-highlight);
+  font-size: 1.25rem;
+  pointer-events: none;
+  animation: spark-burst .7s ease-out forwards;
+}
+@keyframes spark-burst {
+  from { opacity: 1; transform: translate(-50%,-50%) rotate(var(--spark-angle)) translateX(18px) scale(.5); }
+  to { opacity: 0; transform: translate(-50%,-50%) rotate(var(--spark-angle)) translateX(var(--spark-distance)) scale(1.35); }
+}
+.sister-pair:hover .sister-label { color: var(--coral); }
+.sister-pair:hover { border-color: rgba(243,111,98,.35); box-shadow: 0 10px 25px rgba(26,71,79,.1), inset 0 1px 0 rgba(255,255,255,.8); }
 .habitat[data-local-style="okinawa"] { --local-primary: #e96558; --local-secondary: #f8c64e; --scene-sky: #bfe5e8; --scene-ground: #75a96d; --scene-water: #63b7c5; --scene-highlight: #ffd166; --scene-detail: #315e58; }
 .habitat[data-local-style="kauai"] { --local-primary: #e77ea5; --local-secondary: #73b98d; --scene-sky: #bfe8ef; --scene-ground: #549369; --scene-water: #54b6cc; --scene-highlight: #ffd166; --scene-detail: #315f55; }
 .habitat[data-local-style="field"] { --local-primary: #4f7f72; --local-secondary: #d7b96d; --scene-sky: #d8edf0; --scene-ground: #94b877; --scene-water: #8bc8ce; --scene-highlight: #f7c85b; --scene-detail: #607050; }
