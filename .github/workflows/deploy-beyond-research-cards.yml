@@ -1,0 +1,257 @@
+name: Deploy Beyond Research cards
+
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-beyond-research-cards.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Replace Beyond Research feature with two Art Nouveau cards
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          old_css = '''    /* Beyond Research featured project */
+    .feature {
+      display: grid; grid-template-columns: 128px 1fr; gap: 24px; align-items: center;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px; box-shadow: var(--shadow); position: relative; overflow: hidden;
+    }
+    .feature::before {
+      content: ""; position: absolute; inset: 10px; pointer-events: none; opacity: .5;
+      background:
+        linear-gradient(90deg, var(--accent), transparent) left top / 54px 1px no-repeat,
+        linear-gradient(180deg, var(--accent), transparent) left top / 1px 44px no-repeat,
+        linear-gradient(270deg, var(--accent-berry), transparent) right bottom / 54px 1px no-repeat,
+        linear-gradient(0deg, var(--accent-berry), transparent) right bottom / 1px 44px no-repeat;
+    }
+    .feature::after {
+      content: ""; position: absolute; inset: 0 0 0 auto; width: 6px;
+      background: linear-gradient(var(--accent), var(--accent-berry));
+    }
+    .feature-emblem {
+      width: 128px; height: 128px; border-radius: 50%; display: grid; place-items: center;
+      background: radial-gradient(circle at 40% 35%, var(--accent-soft), var(--surface-2));
+      border: 1px solid var(--border); font-size: 3.1rem;
+    }
+    .feature h3 { margin: 0 0 4px; font-size: 1.55rem; font-weight: 700; }
+    .feature .feature-kicker { text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; color: var(--accent); font-weight: 700; }
+    .feature p { color: var(--text-soft); margin: 8px 0 16px; max-width: 60ch; }
+    .play-btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 76%, var(--accent-berry)));
+      color: #fff;
+      padding: 11px 20px; border-radius: 999px; font-weight: 600; box-shadow: var(--shadow);
+    }
+    .play-btn:hover { text-decoration: none; filter: brightness(1.06); transform: translateY(-1px); }
+    @media (max-width: 560px) { .feature { grid-template-columns: 1fr; text-align: left; } .feature-emblem { margin: 0 auto; } }
+'''
+
+          new_css = '''    /* Beyond Research: two restrained Art Nouveau doorways */
+    .beyond-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .beyond-card {
+      position: relative;
+      isolation: isolate;
+      min-height: 205px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px 30px 26px;
+      overflow: hidden;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid color-mix(in srgb, var(--accent) 62%, var(--border));
+      border-radius: 28px 14px 28px 14px;
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .beyond-card::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      z-index: -1;
+      pointer-events: none;
+      border: 1px solid color-mix(in srgb, var(--accent-gold) 58%, transparent);
+      border-radius: 22px 10px 22px 10px;
+      opacity: .72;
+    }
+    .beyond-card::after {
+      content: "";
+      position: absolute;
+      width: 96px;
+      height: 72px;
+      right: -10px;
+      bottom: -8px;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .48;
+      background:
+        radial-gradient(ellipse at 17% 78%, transparent 45%, var(--accent) 47% 49%, transparent 51%),
+        radial-gradient(ellipse at 54% 62%, transparent 46%, var(--accent-violet) 48% 50%, transparent 52%),
+        radial-gradient(ellipse at 82% 28%, transparent 45%, var(--accent-gold) 47% 49%, transparent 51%);
+      transform: rotate(-9deg);
+    }
+    .beyond-card:hover {
+      color: var(--text);
+      text-decoration: none;
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 2px 4px rgba(31,35,40,.07), 0 14px 30px rgba(31,35,40,.10);
+    }
+    .beyond-card:focus-visible { border-radius: 28px 14px 28px 14px; }
+    .beyond-card h3 {
+      margin: 0;
+      max-width: 13ch;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .beyond-card p {
+      margin: 13px 0 24px;
+      max-width: 31ch;
+      color: var(--text-soft);
+      font-size: .96rem;
+      line-height: 1.5;
+    }
+    .beyond-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: max-content;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .beyond-action::after {
+      content: "→";
+      transition: transform .18s ease;
+    }
+    .beyond-card:hover .beyond-action::after { transform: translateX(4px); }
+    .beyond-card--worms { border-radius: 32px 13px 26px 17px; }
+    .beyond-card--worms::after {
+      width: 112px;
+      height: 58px;
+      right: -3px;
+      bottom: 4px;
+      background: none;
+      border-bottom: 2px solid color-mix(in srgb, var(--accent) 70%, transparent);
+      border-radius: 0 0 70% 45%;
+      transform: rotate(-7deg);
+    }
+    .beyond-card--cabinet::after {
+      background:
+        radial-gradient(ellipse at 17% 78%, transparent 45%, var(--accent) 47% 49%, transparent 51%),
+        radial-gradient(ellipse at 54% 62%, transparent 46%, var(--accent-violet) 48% 50%, transparent 52%),
+        radial-gradient(ellipse at 82% 28%, transparent 45%, var(--accent-gold) 47% 49%, transparent 51%);
+    }
+    @media (max-width: 680px) {
+      .beyond-grid { grid-template-columns: 1fr; }
+      .beyond-card { min-height: 180px; padding: 27px 26px 24px; }
+    }
+'''
+
+          old_html = '''  <!-- ============ BEYOND RESEARCH ============ -->
+  <section id="beyond-research" class="wrap">
+    <h2>Beyond Research</h2>
+    <div class="feature">
+      <div class="feature-emblem" aria-hidden="true">🪱</div>
+      <div>
+        <div class="feature-kicker">Featured project</div>
+        <h3>The Game of Worms</h3>
+        <p>A browser-based game inspired by nematode biology, developed through AI-assisted coding and co-designed with my children.</p>
+        <a class="play-btn" href="game-of-worms/index.html">▶ Play The Game of Worms</a>
+      </div>
+    </div>
+  </section>
+'''
+
+          new_html = '''  <!-- ============ BEYOND RESEARCH ============ -->
+  <section id="beyond-research" class="wrap">
+    <h2>Beyond Research</h2>
+    <div class="beyond-grid">
+      <a class="beyond-card beyond-card--worms" href="game-of-worms/index.html" aria-label="Play The Game of Worms">
+        <div>
+          <h3>The Game of Worms</h3>
+          <p>A browser game inspired by nematode biology.</p>
+        </div>
+        <span class="beyond-action">Play</span>
+      </a>
+      <a class="beyond-card beyond-card--cabinet" href="cabinet-of-curiosities/index.html" aria-label="Explore The Cabinet of Curiosities">
+        <div>
+          <h3>The Cabinet of Curiosities</h3>
+          <p>Chocolate, crochet and collected curiosities.</p>
+        </div>
+        <span class="beyond-action">Explore</span>
+      </a>
+    </div>
+  </section>
+'''
+
+          if text.count(old_css) != 1:
+              raise SystemExit(f'Expected one old CSS block, found {text.count(old_css)}')
+          if text.count(old_html) != 1:
+              raise SystemExit(f'Expected one old HTML block, found {text.count(old_html)}')
+
+          text = text.replace(old_css, new_css).replace(old_html, new_html)
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Add Cabinet placeholder destination
+        run: |
+          mkdir -p cabinet-of-curiosities
+          cat > cabinet-of-curiosities/index.html <<'HTML'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>The Cabinet of Curiosities | Martyna K. Zwoińska</title>
+            <meta name="description" content="An interactive cabinet of chocolate, crochet and collected curiosities." />
+            <style>
+              :root { color-scheme: light dark; --bg:#fbfaf7; --surface:#fff; --text:#1f2328; --soft:#55606b; --green:#1c7a52; --gold:#a88445; }
+              @media (prefers-color-scheme: dark) { :root { --bg:#14171a; --surface:#1c2024; --text:#eceef0; --soft:#b3bcc4; --green:#5fcb9d; --gold:#d2b66f; } }
+              * { box-sizing:border-box; }
+              body { margin:0; min-height:100vh; display:grid; place-items:center; padding:24px; background:var(--bg); color:var(--text); font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+              main { position:relative; width:min(660px,100%); padding:52px 38px; text-align:center; background:var(--surface); border:1px solid var(--green); border-radius:32px 15px; }
+              main::before { content:""; position:absolute; inset:10px; border:1px solid color-mix(in srgb,var(--gold) 60%,transparent); border-radius:25px 10px; pointer-events:none; }
+              h1 { margin:0 0 12px; font:700 clamp(2.2rem,7vw,3.5rem)/1.05 Georgia,serif; }
+              p { margin:0 auto 28px; max-width:38ch; color:var(--soft); }
+              a { position:relative; color:var(--green); font-weight:700; text-decoration:none; }
+              a:hover { text-decoration:underline; text-underline-offset:4px; }
+            </style>
+          </head>
+          <body>
+            <main>
+              <h1>The Cabinet of Curiosities</h1>
+              <p>The interactive cabinet is being prepared.</p>
+              <a href="../#beyond-research">← Back to Beyond Research</a>
+            </main>
+          </body>
+          </html>
+          HTML
+
+      - name: Remove temporary workflow and commit deployment
+        run: |
+          rm .github/workflows/deploy-beyond-research-cards.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html cabinet-of-curiosities/index.html .github/workflows/deploy-beyond-research-cards.yml
+          git commit -m "Add two-card Beyond Research landing"
+          git push
