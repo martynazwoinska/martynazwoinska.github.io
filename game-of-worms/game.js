@@ -21,7 +21,7 @@ const locationKits = {
   "Orsay, France · JU2518": ["Orsay apple orchard", "apple beret", "orchard basket", "baguette backpack", "🍎", "🧺", "🥖", "🍎"],
   "São Paulo region, Brazil · EG5612": ["Brazilian jackfruit garden", "jackfruit helmet", "carnival sash", "microscope backpack", "🍈", "🎉", "🔬", "🍈"],
   "New South Wales, Australia · QG2814": ["New South Wales rainforest", "waratah crown", "eucalyptus wrap", "kookaburra backpack", "🌺", "🌿", "🐦", "🌺"],
-  "Bristol N2, England": ["Bristol mushroom compost, 1951", "lab goggles", "lab coat", "cryo-vial jetpack", "🥽", "🥼", "❄️", "🍄", null, "elegans"],
+  "Bristol N2, England": ["Bristol mushroom compost, 1951", "seeded NGM agar plate", "fitted lab coat", "cryo-vial jetpack", "🧫", "🥼", "❄️", "🍄", null, "elegans"],
   "Santeuil, France": ["Santeuil orchard floor", "apple beret", "gingham picnic sash", "cider basket", "🍏", "🧣", "🧺", "🍏"],
   "Scotland, Great Britain": ["Scottish wet leaf litter", "tartan tam", "Highland kilt", "bagpipe backpack", "🧢", "🧶", "🎵", "🌿", null, "scotland"],
   "Tenerife, Spain": ["Tenerife volcanic garden", "Teide volcano visor", "banana-leaf wrap", "lava-rock jetpack", "🌋", "🍌", "🚀", "🌋"],
