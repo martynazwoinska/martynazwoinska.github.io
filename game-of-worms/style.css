@@ -539,7 +539,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .habitat[data-local-style="field"] #local-charm { --accessory-x: 15px; --accessory-y: -8px; }
 .habitat[data-species] #local-wrap, .habitat[data-species] #local-charm { --accessory-x: 0px; --accessory-y: 0px; }
 .habitat[data-accessory-visual="elegans"] #local-wrap { --accessory-x: 0px; --accessory-y: 0px; }
-.habitat[data-accessory-visual="elegans"] #local-charm { --accessory-x: 29px; --accessory-y: -16px; }
+.habitat[data-accessory-visual="elegans"] #local-charm { --accessory-x: 0px; --accessory-y: 0px; }
 .habitat[data-accessory-visual="tropicalis"] #local-charm { --accessory-x: 32px; --accessory-y: -22px; }
 .place-motif {
   position: absolute;
@@ -588,10 +588,19 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .cacao-helmet path:first-child, .cacao-helmet path:nth-child(3) { fill: #b96d45; stroke: #6f4937; stroke-width: 3; }
 .cacao-helmet path:nth-child(2), .cacao-helmet path:nth-child(4) { fill: none; stroke: #f1ba71; stroke-width: 3; }
 .lab-coat-body { fill: #fffdf5; stroke: #526d76; stroke-width: 4; stroke-linejoin: round; }
-.lab-coat-lapel { fill: #dbeff0; stroke: #526d76; stroke-width: 3; stroke-linejoin: round; }
+.lab-coat-collar { fill: #dbeff0; stroke: #526d76; stroke-width: 3; stroke-linejoin: round; }
+.lab-coat-opening { fill: none; stroke: #526d76; stroke-width: 3; stroke-linecap: round; }
 .lab-coat-seam { fill: none; stroke: #9ab9bd; stroke-width: 3; }
-.lab-coat-pocket { fill: #edf7f5; stroke: #526d76; stroke-width: 2; }
+.lab-coat-pocket { fill: #edf7f5; stroke: #526d76; stroke-width: 2; stroke-linejoin: round; }
 .lab-coat-button { fill: #3b8e91; stroke: white; stroke-width: 1; }
+.ngm-plate .plate-shadow { fill: rgba(25,54,61,.2); }
+.ngm-plate .plate-rim { fill: rgba(225,245,242,.78); stroke: #527b7d; stroke-width: 3; }
+.ngm-plate .plate-agar { fill: #e8dca5; stroke: #b4a36a; stroke-width: 2; }
+.ngm-plate .bacterial-lawn { fill: #d6cf8b; opacity: .9; }
+.ngm-plate .worm-tracks path { fill: none; stroke: rgba(255,255,238,.86); stroke-width: 2; stroke-linecap: round; }
+.ngm-plate .plate-highlight { fill: rgba(255,255,255,.9); }
+.ngm-plate text { fill: #355e64; font: 700 9px/1 sans-serif; letter-spacing: .02em; }
+.pack-harness { fill: none; stroke: #295f72; stroke-width: 7; stroke-linecap: round; }
 .bandhani-wrap, .bandhani-tail { fill: #d64d62; stroke: #7a3650; stroke-width: 3; stroke-linejoin: round; }
 .bandhani-dots { fill: none; stroke: #fff1a8; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1 10; }
 .market-tote { fill: #d8a05f; }
@@ -603,7 +612,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .wasp-wing, .dragonfly-wing { fill: rgba(235,252,255,.7); stroke: var(--local-primary); stroke-width: 4; }
 .wing-detail, .leaf-vein { fill: none; stroke: color-mix(in srgb, var(--local-primary) 65%, var(--worm-deep)); stroke-width: 2.5; stroke-linecap: round; }
 .cryo-jetpack rect { fill: #4a929e; }
-.cryo-jetpack path { fill: #ffd166; stroke: #d86b59; stroke-width: 2; }
+.cryo-jetpack .jet-flame { fill: #ffd166; stroke: #d86b59; stroke-width: 2; }
 .cryo-jetpack circle { fill: #d9f5f5; stroke: #2f7885; stroke-width: 3; }
 .snow-mark { fill: none !important; stroke: #4c9aa8 !important; stroke-width: 2 !important; }
 .dandiya-clip { fill: none; stroke: #75445d; stroke-width: 9; stroke-linecap: round; }
