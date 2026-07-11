@@ -594,12 +594,20 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .lab-coat-pocket { fill: #edf7f5; stroke: #526d76; stroke-width: 2; stroke-linejoin: round; }
 .lab-coat-button { fill: #3b8e91; stroke: white; stroke-width: 1; }
 .ngm-plate .plate-shadow { fill: rgba(25,54,61,.2); }
+.ngm-plate .plate-base { fill: rgba(197,224,222,.72); stroke: #527b7d; stroke-width: 3; }
 .ngm-plate .plate-rim { fill: rgba(225,245,242,.78); stroke: #527b7d; stroke-width: 3; }
 .ngm-plate .plate-agar { fill: #e8dca5; stroke: #b4a36a; stroke-width: 2; }
 .ngm-plate .bacterial-lawn { fill: #d6cf8b; opacity: .9; }
 .ngm-plate .worm-tracks path { fill: none; stroke: rgba(255,255,238,.86); stroke-width: 2; stroke-linecap: round; }
 .ngm-plate .plate-highlight { fill: rgba(255,255,255,.9); }
 .ngm-plate text { fill: #355e64; font: 700 9px/1 sans-serif; letter-spacing: .02em; }
+.ngm-plate .plate-glare { fill: none; stroke: rgba(255,255,255,.82); stroke-width: 3; stroke-linecap: round; }
+.fig-visor path:first-child, .fig-visor path:nth-of-type(4) { fill: #72a66b; stroke: var(--worm-deep); stroke-width: 3; }
+.fig-vein, .visor-band { fill: none; stroke: #315f50; stroke-width: 2.5; stroke-linecap: round; }
+.satchel-strap { fill: none; stroke: #745744; stroke-width: 7; stroke-linecap: round; }
+.satchel-bag { fill: #c99b63; stroke: var(--worm-deep); stroke-width: 3; }
+.satchel-flap { fill: #9d724c; stroke: var(--worm-deep); stroke-width: 2; }
+.fig-mark { fill: #759e67; stroke: #496f4d; stroke-width: 2; }
 .pack-harness { fill: none; stroke: #295f72; stroke-width: 7; stroke-linecap: round; }
 .bandhani-wrap, .bandhani-tail { fill: #d64d62; stroke: #7a3650; stroke-width: 3; stroke-linejoin: round; }
 .bandhani-dots { fill: none; stroke: #fff1a8; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1 10; }

@@ -3,7 +3,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 
 const regionalPacks = {
-  okinawa: { sceneName: "Ishigaki fig grove", looks: ["Fig-leaf explorer hat", "Yaeyama minsā field sash", "Fig-wasp flight rig"], icons: ["🍃", "🧵", "🪽"], note: "Ishigaki’s Yaeyama minsā textile inspires the sash; fig leaves and the fig-wasp vector complete the field kit." },
+  okinawa: { sceneName: "Ishigaki fig grove", looks: ["Sculpted fig-leaf visor", "Fig-sample satchel", "Fig-wasp wings"], icons: ["🍃", "🧺", "🪽"], note: "A sculpted fig-leaf visor, a field satchel for fig samples, and wings inspired by the species’ fig-wasp vector complete the Ishigaki kit." },
   kauai: { sceneName: "Kauaʻi cloud forest", looks: ["Mokihana lei crown", "Lauhala sample satchel", "Fern trail glider"], icons: ["🌿", "🧺", "🪶"], note: "Kauaʻi’s mokihana lei material and Hawaiʻi’s lauhala weaving inspire a crown and a practical sample bag." },
   field: { sceneName: "Rot-fruit field site", looks: ["Mushroom-forager cap", "Rot-fruit field satchel", "Specimen-vial backpack"], icons: ["🍄", "🎒", "🧪"], note: "Mushroom compost, rotting fruit, and specimen vials turn real collection substrates into a tiny field-research kit." },
   rainforest: { sceneName: "Tropical fruit forest", looks: ["Drip-leaf rain hat", "Canopy climbing harness", "Tropical fruit sample belt"], icons: ["🌿", "🧗", "🍌"], note: "Broad rain-shedding leaves, a climbing harness, and fruit-sampling gear fit humid tropical collection sites." },
@@ -12,7 +12,7 @@ const regionalPacks = {
 };
 
 const locationKits = {
-  "Ishigaki, Japan": ["Ishigaki fig grove", "fig-leaf visor", "Yaeyama minsā sash", "fig-wasp wings", "🍃", "🧵", "🪽", "🌿", null, "inopinata"],
+  "Ishigaki, Japan": ["Ishigaki fig grove", "sculpted fig-leaf visor", "fig-sample satchel", "fig-wasp wings", "🍃", "🧺", "🪽", "🌿", null, "inopinata"],
   "Ahmedabad, India · AF16": ["Ahmedabad pol garden", "Uttarayan kite hat", "bandhani scarf", "dandiya sticks", "🪁", "🧣", "✨", "🌳", "ahmedabad", "briggsae"],
   "Taipei, Taiwan · BRC20390": ["Taipei mountain compost", "Taipei 101 party hat", "night-market tote", "bubble-tea backpack", "🏙️", "🛍️", "🧋", "⛰️"],
   "Kerala, India · JU1337": ["Kerala coconut grove", "coconut-shell hat", "kasavu-gold sash", "banana-chip backpack", "🥥", "✨", "🍌", "🥥"],
