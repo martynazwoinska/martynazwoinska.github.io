@@ -158,7 +158,7 @@ const species = [
     habitatOne: "#d7b96d",
     habitatTwo: "#8ba56f",
     locations: [
-      { name: "Bristol N2, England", coordinates: [-2.59, 51.45], source: "CaeNDR", style: "field", strain: "N2", history: "N2 came from mushroom compost near Bristol. C. elegans can be frozen alive in a protective solution and revived after thawing—the reason for its cryo-vial jetpack. An early N2 tube frozen around 1968 was later thawed to establish an ancestral laboratory stock." },
+      { name: "Bristol N2, England", coordinates: [-2.59, 51.45], source: "CaeNDR", style: "field", strain: "N2", history: "N2 came from mushroom compost near Bristol. C. elegans can be frozen alive in a protective solution and revived after thawing. This is the reason for its cryo-vial jetpack. An early N2 tube frozen around 1968 was later thawed to establish an ancestral laboratory stock." },
       { name: "Santeuil, France", coordinates: [1.951, 49.121], source: "CaeNDR", style: "field" },
       { name: "Scotland, Great Britain", coordinates: [-3.19, 55.92], source: "CaeNDR", style: "woodland" },
       { name: "Tenerife, Spain", coordinates: [-16.535, 28.411], source: "CaeNDR", style: "ocean" },
@@ -455,7 +455,7 @@ function renderSpecies(item, place) {
   els.selectionSpecies.replaceChildren();
   const italic = document.createElement("i");
   italic.textContent = item.short;
-  els.selectionSpecies.append(italic, document.createTextNode(` — ${item.nickname.replace(/^The /, "the ")}`));
+  els.selectionSpecies.append(italic, document.createTextNode(`: ${item.nickname.replace(/^The /, "the ")}`));
 }
 
 function updateSelectedControls() {
