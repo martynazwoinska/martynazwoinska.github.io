@@ -191,9 +191,6 @@
     .beyond-action { margin-top: auto; color: var(--accent); font-weight: 700; }
     .beyond-action span { display: inline-block; transition: transform .18s ease; }
     .beyond-card:hover .beyond-action span, .beyond-card:focus-visible .beyond-action span { transform: translateX(4px); }
-    .beyond-card::after { content: ""; position: absolute; pointer-events: none; }
-    .beyond-card--game::after { width: 56px; height: 18px; right: 22px; bottom: 21px; border-bottom: 2px solid var(--accent); border-radius: 50%; transform: rotate(-8deg); }
-    .beyond-card--cabinet::after { width: 34px; height: 34px; right: 23px; top: 20px; border: 2px solid var(--accent-violet); border-radius: 70% 30% 65% 35%; box-shadow: 10px 8px 0 -7px var(--accent-gold); transform: rotate(28deg); }
     @media (max-width: 680px) { .beyond-grid { grid-template-columns: 1fr; } .beyond-card { min-height: 220px; } }
     .theme-btn {
       background: var(--surface-2); border: 1px solid var(--border); color: var(--text-soft);
