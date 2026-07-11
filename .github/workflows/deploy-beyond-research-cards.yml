@@ -255,3 +255,5 @@ jobs:
           git add index.html cabinet-of-curiosities/index.html .github/workflows/deploy-beyond-research-cards.yml
           git commit -m "Add two-card Beyond Research landing"
           git push
+
+# Trigger deployment through a merged pull request.
