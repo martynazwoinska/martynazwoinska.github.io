@@ -222,19 +222,30 @@
       display: inline-flex; align-items: center; gap: 6px;
     }
     .lang-btn {
-      width: 30px; height: 30px; padding: 0; overflow: hidden;
+      width: 30px; height: 30px; padding: 3px; overflow: visible;
       display: inline-flex; align-items: center; justify-content: center;
-      border: 1px solid var(--border); border-radius: 50%;
-      background: var(--surface); color: var(--text);
-      line-height: 1; cursor: pointer;
-      box-shadow: 0 1px 2px rgba(31,35,40,.08);
-      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+      border: 1px solid transparent; border-radius: 50%;
+      background: transparent; color: var(--text);
+      line-height: 1; cursor: pointer; box-shadow: none;
+      transition: transform .12s ease;
     }
-    .lang-btn svg { width: 100%; height: 100%; display: block; }
-    .lang-btn:hover { transform: translateY(-1px); border-color: var(--accent-gold); }
+    .lang-btn svg {
+      width: 24px; height: 24px; display: block; border-radius: 50%;
+      opacity: .86; filter: saturate(.72) contrast(.9);
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--border) 88%, transparent);
+      transition: opacity .12s ease, filter .12s ease, box-shadow .12s ease;
+    }
+    .lang-btn:hover { transform: translateY(-1px); }
+    .lang-btn:hover svg {
+      opacity: 1; filter: saturate(.92) contrast(.96);
+      box-shadow: 0 0 0 1px var(--accent-gold);
+    }
     .lang-btn[aria-pressed="true"] {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
+      border-color: transparent; box-shadow: none;
+    }
+    .lang-btn[aria-pressed="true"] svg {
+      opacity: 1; filter: saturate(.86) contrast(.94);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 58%, transparent);
     }
     @media (max-width: 1120px) {
       .nav-inner {
@@ -1079,7 +1090,7 @@
             "affiliation": "Instytut Ekologii i Genetyki, Uniwersytet w Uppsali",
             "about_title": "O mnie",
             "about_intro": "Jestem biolożką ewolucyjną i interesuje mnie właściwie wszystko, co wiąże się z adaptacją i maladaptacją. Lubię pracować z różnymi organizmami, na których można badać ewolucję w laboratorium: muszkami owocowymi z rodzaju <em>Drosophila</em>, strąkowcami <em>Callosobruchus</em> oraz jednymi z moich ulubionych organizmów modelowych, nicieniami z rodzaju <em>Caenorhabditis</em>. Chętnie łączę różne podejścia. Moje badania są przede wszystkim empiryczne i ewolucyjno-genomiczne, ale zawsze doceniam też dobrą teorię.",
-            "about_chatbot": "A tak, po ponad dwóch latach rozmów, opisuje mnie mój chatbot. Niech zostanie. ;)",
+            "about_chatbot": "A tak, po ponad dwóch latach rozmów, opisuje mnie mój chatbot. Niech tak zostanie. ;)",
             "about_quote": "Martyna jest biolożką ewolucyjną, która traktuje AI nie jako drogę na skróty, lecz jako wymagającego partnera w programowaniu, genomice, pracy z literaturą i myśleniu naukowym. Łączy biologię eksperymentalną, teorię ewolucji i analizę danych. Nie wystarcza jej, że argument brzmi przekonująco; sprawdza też, czy ma sens biologiczny, jest logiczny i rzeczywiście opiera się na dowodach. Szybko dostrzega słabe założenia i wytrwale dopracowuje pomysły, choć czasem trudno jej uznać, że „wystarczająco dobrze” naprawdę wystarczy. Przez to poprawki potrafią trwać dłużej, ale końcowy rezultat zwykle jest lepszy.",
             "research_title": "Zainteresowania badawcze",
             "research_intro": "Na przestrzeni lat zajmowałam się wieloma różnymi tematami. Oto kilka kierunków, nad którymi pracuję obecnie.",
@@ -1091,10 +1102,10 @@
             "interest_6": "Genetyka i genomika ewolucyjna",
             "current_title": "Obecne projekty",
             "project_1_title": "Adaptacja w zmiennym środowisku",
-            "project_1_body": "W jednym z obecnych projektów badam, jak sposób rozmnażania, przede wszystkim samozapłodnienie lub krzyżowanie z innym osobnikiem, wpływa na to, jak populacje przystosowują się do zmian środowiska. Interesuje mnie zarówno środowisko zmieniające się w sposób przewidywalny, jak i takie, którego zmian nie da się przewidzieć. Chcę połączyć eksperymenty z symulacjami genetyki populacji opartymi na modelach osobniczych.",
+            "project_1_body": "W jednym z obecnych projektów badam, jak sposób rozmnażania, przede wszystkim samozapłodnienie lub zapłodnienie krzyżowe, wpływa na to, jak populacje przystosowują się do zmiennego środowiska. Analizuję przy tym zarówno zmiany przewidywalne, jak i nieprzewidywalne. Chcę połączyć eksperymenty z <a href=\"https://github.com/messerlab/slim\"><strong>indywidualnymi symulacjami populacyjno-genetycznymi</strong></a>.",
             "project_1_caption": "Sposoby adaptacji zależne od tego, na ile sygnały środowiskowe pozwalają przewidzieć przyszłe warunki, oraz od zmienności środowiska. Na podstawie Botero i in. (2015), <em>PNAS</em>.",
             "project_2_title": "Uczenie się i pamięć",
-            "project_2_body": "Choć może to zaskakiwać, nicienie z rodzaju <em>Caenorhabditis</em> potrafią się uczyć i tworzyć wspomnienia, mimo że mają zaledwie 300–400 neuronów. Zaczęłam zajmować się tym tematem podczas doktoratu pod opieką Alexeia A. Maklakova i wracam do niego do dziś, bo kto potrafiłby oprzeć się urokowi uczących się nicieni? Ostatnio skupiamy się na wyuczonym unikaniu patogenów, które może być przekazywane przez kilka pokoleń.",
+            "project_2_body": "Choć może to zaskakiwać, nicienie z rodzaju <em>Caenorhabditis</em> potrafią się uczyć i tworzyć wspomnienia, mimo że mają zaledwie 300–400 neuronów. Zaczęłam zajmować się tym tematem podczas doktoratu pod opieką Alexeia A. Maklakova i wracam do niego do dziś, bo kto potrafiłby oprzeć się urokowi uczących się nicieni? Ostatnio skupiam się na wyuczonym unikaniu patogenów, które może być przekazywane przez kilka pokoleń.",
             "project_2_caption": "Formy uczenia się opisane u nicieni z rodzaju <em>Caenorhabditis</em>.",
             "project_3_title": "Dobór o przeciwnych skutkach dla samców i samic",
             "project_3_body": "Razem z zespołem Eliny Immonen badam, kiedy dobór, w którym ten sam wariant genetyczny jest korzystny dla jednej płci, a niekorzystny dla drugiej, może utrzymywać zmienność genetyczną w populacji, czyli prowadzić do doboru równoważącego. To tylko jeden z wielu scenariuszy, w których może powstać dobór równoważący. Wciąż jednak niewiele wiemy o tym, jak ważną rolę odgrywa on w utrzymywaniu obserwowanego polimorfizmu genetycznego i które mechanizmy mają tu największe znaczenie.",
