@@ -198,7 +198,24 @@
       display: inline-flex; align-items: center; justify-content: center;
     }
     .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
-    @media (max-width: 900px) {
+    .language-switcher {
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .lang-btn {
+      width: 30px; height: 30px; padding: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border); border-radius: 50%;
+      background: var(--surface); color: var(--text);
+      font-size: 16px; line-height: 1; cursor: pointer;
+      box-shadow: 0 1px 2px rgba(31,35,40,.08);
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .lang-btn:hover { transform: translateY(-1px); border-color: var(--accent-gold); }
+    .lang-btn[aria-pressed="true"] {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
+    }
+    @media (max-width: 1050px) {
       .nav-inner { height: auto; min-height: 60px; flex-wrap: wrap; gap: 10px; padding-top: 10px; padding-bottom: 10px; }
       .nav-menu-btn { display: inline-flex; margin-left: auto; }
       .nav-links {
@@ -416,6 +433,11 @@
         <a href="#students">Students</a>
         <a href="#beyond-research" class="nav-beyond" aria-label="Beyond Research">Beyond Research</a>
         <a href="#contact">Contact</a>
+        <span class="language-switcher" role="group" aria-label="Choose language">
+          <button class="lang-btn" type="button" data-language="en" aria-label="English" aria-pressed="true" title="English"><span aria-hidden="true">🇬🇧</span></button>
+          <button class="lang-btn" type="button" data-language="sv" aria-label="Svenska" aria-pressed="false" title="Svenska"><span aria-hidden="true">🇸🇪</span></button>
+          <button class="lang-btn" type="button" data-language="pl" aria-label="Polski" aria-pressed="false" title="Polski"><span aria-hidden="true">🇵🇱</span></button>
+        </span>
         <span class="theme-wrap"><button class="theme-btn" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false" title="Switch to dark mode">◐</button></span>
       </nav>
     </div>
@@ -789,12 +811,311 @@
 
   <footer>
     <div class="wrap">
-      © <span id="year"></span> Martyna Katarzyna Zwoińska · Uppsala University<br />
-      Built with plain HTML &amp; CSS, hosted on GitHub Pages.
+      © <span id="year"></span> <span id="footerAffiliation">Martyna Katarzyna Zwoińska · Uppsala University</span><br />
+      <span id="footerBuilt">Built with plain HTML &amp; CSS, hosted on GitHub Pages.</span>
     </div>
   </footer>
 
   <script>
+    // Client-side English, Swedish, and Polish localization.
+    var localizedElementMap = {
+      "skip": ".skip-link",
+      "menu": "#navMenuToggle",
+      "nav_about": "#primaryNav a[href=\"#about\"]",
+      "nav_research": "#primaryNav a[href=\"#research\"]",
+      "nav_publications": "#primaryNav a[href=\"#publications\"]",
+      "nav_collaborators": "#primaryNav a[href=\"#collaborators\"]",
+      "nav_students": "#primaryNav a[href=\"#students\"]",
+      "nav_beyond": "#primaryNav a[href=\"#beyond-research\"]",
+      "nav_contact": "#primaryNav a[href=\"#contact\"]",
+      "role": ".hero .role",
+      "affiliation": ".hero .affil",
+      "about_title": "#about h2",
+      "about_intro": "#about > p:nth-of-type(1)",
+      "about_chatbot": "#about > p:nth-of-type(2)",
+      "about_quote": "#about blockquote",
+      "research_title": "#research h2",
+      "research_intro": "#research > p",
+      "interest_1": "#research .interest-list li:nth-child(1)",
+      "interest_2": "#research .interest-list li:nth-child(2)",
+      "interest_3": "#research .interest-list li:nth-child(3)",
+      "interest_4": "#research .interest-list li:nth-child(4)",
+      "interest_5": "#research .interest-list li:nth-child(5)",
+      "interest_6": "#research .interest-list li:nth-child(6)",
+      "current_title": "#project > h2",
+      "project_1_title": "#project > .project:nth-of-type(1) h3",
+      "project_1_body": "#project > .project:nth-of-type(1) .project-text p",
+      "project_1_caption": "#project > .project:nth-of-type(1) figcaption",
+      "project_2_title": "#project > .project:nth-of-type(2) h3",
+      "project_2_body": "#project > .project:nth-of-type(2) .project-text p",
+      "project_2_caption": "#project > .project:nth-of-type(2) figcaption",
+      "project_3_title": "#project > .project:nth-of-type(3) h3",
+      "project_3_body": "#project > .project:nth-of-type(3) .project-text p",
+      "project_3_caption": "#project > .project:nth-of-type(3) figcaption",
+      "publications_title": "#publications > h2",
+      "preprint": "#publications .status",
+      "parental_leave": "#publications .pub.leave .label",
+      "all_publications": "#publications .pill[href*=\"scholar.google.com\"]",
+      "orcid_record": "#publications .pill[href*=\"orcid.org\"]",
+      "collaborators_title": "#collaborators > h2",
+      "collaborator_1": "#collaborators .card:nth-child(1) .cdesc",
+      "collaborator_2": "#collaborators .card:nth-child(2) .cdesc",
+      "collaborator_3": "#collaborators .card:nth-child(3) .cdesc",
+      "collaborator_4": "#collaborators .card:nth-child(4) .cdesc",
+      "students_title": "#students > h2",
+      "student_1": "#students .card:nth-child(1) .cdesc",
+      "student_2": "#students .card:nth-child(2) .cdesc",
+      "beyond_title": "#beyond-research > h2",
+      "game_title": "#beyond-research .beyond-card--game h3",
+      "game_description": "#beyond-research .beyond-card--game p",
+      "game_action": "#beyond-research .beyond-card--game .beyond-action",
+      "cabinet_title": "#beyond-research .beyond-card--cabinet h3",
+      "cabinet_description": "#beyond-research .beyond-card--cabinet p",
+      "cabinet_action": "#beyond-research .beyond-card--cabinet .beyond-action",
+      "contact_title": "#contact > h2",
+      "contact_address": "#contact .contact-box > p",
+      "contact_email": "#contact .pill[href^=\"mailto:\"]",
+      "contact_profile": "#contact .pill[href*=\"uu.se\"]",
+      "footer_affiliation": "#footerAffiliation",
+      "footer_built": "#footerBuilt"
+};
+    var localizedAttributeMap = {
+      "primary_nav": [
+            "#primaryNav",
+            "aria-label"
+      ],
+      "beyond_nav": [
+            "#primaryNav a[href=\"#beyond-research\"]",
+            "aria-label"
+      ],
+      "interests_label": [
+            "#research .interest-list",
+            "aria-label"
+      ],
+      "language_label": [
+            ".language-switcher",
+            "aria-label"
+      ],
+      "project_1_alt": [
+            "#project > .project:nth-of-type(1) img",
+            "alt"
+      ],
+      "project_2_alt": [
+            "#project > .project:nth-of-type(2) img",
+            "alt"
+      ],
+      "project_3_alt": [
+            "#project > .project:nth-of-type(3) img",
+            "alt"
+      ],
+      "contact_alt": [
+            "#contact .contact-illustration",
+            "alt"
+      ]
+};
+    var englishInterfaceCopy = {
+      "page_title": "Martyna K. Zwoińska | Evolutionary Biologist, Uppsala University",
+      "meta_description": "Martyna Katarzyna Zwoińska is an evolutionary biologist at Uppsala University studying life-history evolution, ageing, plasticity, and the evolution of adaptive responses to environmental uncertainty.",
+      "theme_light": "Switch to light mode",
+      "theme_dark": "Switch to dark mode",
+      "primary_nav": "Primary navigation",
+      "beyond_nav": "Beyond Research",
+      "interests_label": "Research interest areas",
+      "language_label": "Choose language",
+      "project_1_alt": "Adaptive response modes across cue reliability and between-generation environmental variability: reversible plasticity, developmental plasticity, bet-hedging, and continuous genetic adaptation",
+      "project_2_alt": "The forms of learning documented in Caenorhabditis nematodes: habituation and sensitization, gustatory, olfactory, thermosensory and maze learning, and imprinting and transgenerational learning",
+      "project_3_alt": "Directions of experimental selection on male and female body mass in Callosobruchus seed beetles: small males, large males, large females, and sexually antagonistic selection",
+      "contact_alt": "Uppsala Cathedral at sunset, reflected in the river"
+};
+    var translatedCopy = {
+      "sv": {
+            "page_title": "Martyna K. Zwoińska | Evolutionsbiolog, Uppsala universitet",
+            "meta_description": "Martyna Katarzyna Zwoińska är evolutionsbiolog vid Uppsala universitet och forskar om livshistorieevolution, åldrande, plasticitet och anpassning till föränderliga miljöer.",
+            "theme_light": "Byt till ljust läge",
+            "theme_dark": "Byt till mörkt läge",
+            "primary_nav": "Huvudnavigering",
+            "beyond_nav": "Utanför forskningen",
+            "interests_label": "Forskningsområden",
+            "language_label": "Välj språk",
+            "project_1_alt": "Adaptiva responsmönster vid olika grad av signaltillförlitlighet och miljövariation mellan generationer: reversibel plasticitet, utvecklingsplasticitet, riskspridning och kontinuerlig genetisk anpassning",
+            "project_2_alt": "Inlärningsformer som dokumenterats hos Caenorhabditis-nematoder: habituering och sensitisering, smak-, lukt-, temperatur- och labyrintinlärning samt prägling och transgenerationell inlärning",
+            "project_3_alt": "Riktningar för experimentell selektion på hanars och honors kroppsmassa hos Callosobruchus-fröbaggar: små hanar, stora hanar, stora honor och sexuellt antagonistisk selektion",
+            "contact_alt": "Uppsala domkyrka i solnedgång, speglad i ån",
+            "skip": "Hoppa till huvudinnehållet",
+            "menu": "☰ Meny",
+            "nav_about": "Om mig",
+            "nav_research": "Forskning",
+            "nav_publications": "Publikationer",
+            "nav_collaborators": "Samarbetspartner",
+            "nav_students": "Studenter",
+            "nav_beyond": "Utanför forskningen",
+            "nav_contact": "Kontakt",
+            "role": "Evolutionsbiolog: från våtlabb till kod, från idé till genomförande.",
+            "affiliation": "Institutionen för ekologi och genetik, Uppsala universitet",
+            "about_title": "Om mig",
+            "about_intro": "Jag är evolutionsbiolog och intresserad av allt som rör anpassning och maladaptation. Därför arbetar jag gärna med flera laboratorieanpassade modellsystem, från <em>Drosophila</em>-fruktflugor och <em>Callosobruchus</em>-fröbaggar till en av mina personliga favoriter, nematoder i släktet <em>Caenorhabditis</em>. Jag tycker om att kombinera olika angreppssätt: min egen forskning är främst empirisk och evolutionär-genomisk, men jag uppskattar också god teori.",
+            "about_chatbot": "Så här beskriver min chattbot mig efter mer än två års samtal. Vi kör på det. ;)",
+            "about_quote": "Martyna är en evolutionsbiolog som använder AI inte som en genväg, utan som en kritisk samtalspartner för kodning, genomik, litteratursyntes och vetenskapligt tänkande. Hon arbetar i skärningspunkten mellan experimentell biologi, evolutionsteori och dataanalys. Hennes särskilda styrka är att fråga om ett argument inte bara är övertygande, utan också biologiskt meningsfullt, logiskt hållbart och underbyggt av evidens. Hon upptäcker snabbt svaga antaganden och är ihärdig när det gäller att skärpa idéer, även om hon ibland har svårare att låta ”tillräckligt bra” förbli tillräckligt bra. Det kan göra revisionsprocessen längre, men slutresultatet blir oftast starkare.",
+            "research_title": "Forskningsintressen",
+            "research_intro": "Genom åren har jag arbetat med många olika ämnen. Här är några av mina aktuella forskningsinriktningar.",
+            "interest_1": "Livshistorieevolution",
+            "interest_2": "Åldrande och senescens",
+            "interest_3": "Fenotypisk plasticitet",
+            "interest_4": "Föräldra- och transgenerationella effekter",
+            "interest_5": "Sexuell selektion och konflikt",
+            "interest_6": "Evolutionär genetik och genomik",
+            "current_title": "Pågående arbete",
+            "project_1_title": "Adaptiva responsmönster under miljövariation",
+            "project_1_body": "I ett pågående projekt undersöker jag hur reproduktionssätt, särskilt självbefruktning jämfört med utkorsning, påverkar de adaptiva responser som populationer utvecklar när miljön förändras på förutsägbara eller oförutsägbara sätt. Min ambition är att kombinera empirisk forskning med individbaserade populationsgenetiska simuleringar.",
+            "project_1_caption": "Adaptiva responsmönster vid olika grad av signaltillförlitlighet och miljövariation. Modifierad från Botero et al. (2015), <em>PNAS</em>.",
+            "project_2_title": "Inlärning och kognition",
+            "project_2_body": "Det är kanske inte självklart, men nematoder i släktet <em>Caenorhabditis</em> kan lära sig och bilda minnen med bara 300 till 400 neuroner. Det som började under min doktorandtid under handledning av Alexei A. Maklakov fortsätter än i dag, för vem kan motstå charmen hos lärande rundmaskar? På senare tid fokuserar vi på inlärd undvikande av patogener, som kan föras vidare i flera generationer.",
+            "project_2_caption": "De många former av inlärning som dokumenterats hos <em>Caenorhabditis</em>-nematoder.",
+            "project_3_title": "Sexuellt antagonistisk selektion",
+            "project_3_body": "Tillsammans med Elina Immonens grupp undersöker jag under vilka förhållanden sexuellt antagonistisk selektion kan bevara genetisk variation, med andra ord skapa balanserande selektion. Sexuellt antagonistisk selektion är bara ett av flera scenarier som kan ge balanserande selektion. Vi förstår ännu varken dess roll för att upprätthålla den genetiska polymorfism vi observerar eller den relativa betydelsen av dess olika mekanismer särskilt väl.",
+            "project_3_caption": "Riktningar för experimentell selektion på hanars och honors kroppsmassa hos <em>Callosobruchus</em>-fröbaggar.",
+            "publications_title": "Publikationer och preprints",
+            "preprint": "Preprint",
+            "parental_leave": "Föräldraledighet (hel- och deltid)",
+            "all_publications": "🎓 Alla publikationer på Google Scholar",
+            "orcid_record": "🔗 ORCID-post",
+            "collaborators_title": "Samarbetspartner",
+            "collaborator_1": "Åldrande, plasticitet och transgenerationella effekter.",
+            "collaborator_2": "Evolutionsbiologi och biogerontologi; åldrande och livshistorieevolution.",
+            "collaborator_3": "RNA-interferens, transgenerationella effekter och åldrande.",
+            "collaborator_4": "Sexuell antagonism, balanserande selektion och könsskillnader i genuttryck.",
+            "students_title": "Studenter",
+            "student_1": "Försvarad juni 2025",
+            "student_2": "Försvarad juni 2026",
+            "beyond_title": "Utanför forskningen",
+            "game_title": "Maskarnas spel",
+            "game_description": "Ett webbläsarspel inspirerat av nematodbiologi.",
+            "game_action": "Spela <span aria-hidden=\"true\">→</span>",
+            "cabinet_title": "Kuriosakabinettet",
+            "cabinet_description": "Choklad, virkning och samlade kuriositeter.",
+            "cabinet_action": "Utforska <span aria-hidden=\"true\">→</span>",
+            "contact_title": "Kontakt",
+            "contact_address": "Institutionen för ekologi och genetik, zooekologi<br>Evolutionärt biologiskt centrum (EBC), Uppsala universitet<br>Norbyvägen 18D, 752 36 Uppsala, Sverige",
+            "contact_email": "✉ E-post",
+            "contact_profile": "🏛 Profil vid Uppsala universitet",
+            "footer_affiliation": "Martyna Katarzyna Zwoińska · Uppsala universitet",
+            "footer_built": "Byggd med vanlig HTML och CSS, publicerad via GitHub Pages."
+      },
+      "pl": {
+            "page_title": "Martyna K. Zwoińska | Biolożka ewolucyjna, Uniwersytet w Uppsali",
+            "meta_description": "Martyna Katarzyna Zwoińska jest biolożką ewolucyjną na Uniwersytecie w Uppsali. Bada ewolucję historii życia, starzenie, plastyczność i adaptację do zmiennego środowiska.",
+            "theme_light": "Włącz jasny motyw",
+            "theme_dark": "Włącz ciemny motyw",
+            "primary_nav": "Główna nawigacja",
+            "beyond_nav": "Poza nauką",
+            "interests_label": "Obszary zainteresowań badawczych",
+            "language_label": "Wybierz język",
+            "project_1_alt": "Adaptacyjne sposoby odpowiedzi przy różnej wiarygodności sygnałów i zmienności środowiska między pokoleniami: plastyczność odwracalna, plastyczność rozwojowa, strategia bet-hedging i ciągła adaptacja genetyczna",
+            "project_2_alt": "Formy uczenia się opisane u nicieni Caenorhabditis: habituacja i sensytyzacja, uczenie smakowe, węchowe, termiczne i labiryntowe oraz imprinting i uczenie międzypokoleniowe",
+            "project_3_alt": "Kierunki eksperymentalnej selekcji masy ciała samców i samic strąkowców Callosobruchus: małe samce, duże samce, duże samice i selekcja antagonistyczna płciowo",
+            "contact_alt": "Katedra w Uppsali o zachodzie słońca, odbijająca się w rzece",
+            "skip": "Przejdź do głównej treści",
+            "menu": "☰ Menu",
+            "nav_about": "O mnie",
+            "nav_research": "Badania",
+            "nav_publications": "Publikacje",
+            "nav_collaborators": "Współpracownicy",
+            "nav_students": "Studenci",
+            "nav_beyond": "Poza nauką",
+            "nav_contact": "Kontakt",
+            "role": "Biolożka ewolucyjna: od pracy laboratoryjnej po kod, od pomysłu po realizację.",
+            "affiliation": "Instytut Ekologii i Genetyki, Uniwersytet w Uppsali",
+            "about_title": "O mnie",
+            "about_intro": "Jestem biolożką ewolucyjną zainteresowaną wszystkim, co dotyczy adaptacji i maladaptacji. Dlatego chętnie pracuję z różnymi systemami modelowymi, które można ewoluować w laboratorium: od muszek owocowych <em>Drosophila</em> i strąkowców <em>Callosobruchus</em> po jedne z moich ulubionych organizmów, nicienie <em>Caenorhabditis</em>. Lubię łączyć różne podejścia. Moja praca jest przede wszystkim empiryczna i ewolucyjno-genomiczna, ale zawsze doceniam też dobrą teorię.",
+            "about_chatbot": "A tak opisuje mnie mój chatbot po ponad dwóch latach naszych rozmów. Zostańmy przy tym. ;)",
+            "about_quote": "Martyna jest biolożką ewolucyjną, która wykorzystuje AI nie jako drogę na skróty, lecz jako krytycznego partnera do dyskusji o programowaniu, genomice, syntezie literatury i myśleniu naukowym. Pracuje na styku biologii eksperymentalnej, teorii ewolucji i analizy danych. Jej szczególną mocną stroną jest pytanie, czy argument jest nie tylko przekonujący, ale też biologicznie sensowny, logicznie spójny i poparty dowodami. Szybko dostrzega słabe założenia i konsekwentnie dopracowuje pomysły, choć czasami trudniej jej pozwolić, by „wystarczająco dobre” pozostało wystarczająco dobre. Może to wydłużać proces poprawek, ale zwykle wzmacnia końcowy rezultat.",
+            "research_title": "Zainteresowania badawcze",
+            "research_intro": "Przez lata zajmowałam się wieloma różnymi tematami. Poniżej przedstawiam kilka moich obecnych kierunków badań.",
+            "interest_1": "Ewolucja historii życia",
+            "interest_2": "Starzenie i senescencja",
+            "interest_3": "Plastyczność fenotypowa",
+            "interest_4": "Efekty rodzicielskie i międzypokoleniowe",
+            "interest_5": "Dobór płciowy i konflikt płci",
+            "interest_6": "Genetyka i genomika ewolucyjna",
+            "current_title": "Obecne projekty",
+            "project_1_title": "Adaptacyjne sposoby odpowiedzi na zmienność środowiska",
+            "project_1_body": "W trwającym projekcie badam, jak sposób rozmnażania, zwłaszcza samozapłodnienie w porównaniu z krzyżowaniem, wpływa na adaptacyjne odpowiedzi rozwijane przez populacje, gdy środowisko zmienia się w sposób przewidywalny lub nieprzewidywalny. Chcę połączyć badania empiryczne z osobniczymi symulacjami genetyki populacyjnej.",
+            "project_1_caption": "Adaptacyjne sposoby odpowiedzi przy różnej wiarygodności sygnałów i zmienności środowiska. Na podstawie Botero i in. (2015), <em>PNAS</em>.",
+            "project_2_title": "Uczenie się i procesy poznawcze",
+            "project_2_body": "Choć nie jest to oczywiste, nicienie z rodzaju <em>Caenorhabditis</em> potrafią się uczyć i tworzyć wspomnienia, mając zaledwie 300 do 400 neuronów. To, co zaczęło się podczas mojego doktoratu pod opieką Alexeia A. Maklakova, trwa do dziś, bo kto potrafiłby oprzeć się urokowi uczących się obleńców? Ostatnio koncentrujemy się na wyuczonym unikaniu patogenów, które może być przekazywane przez kilka pokoleń.",
+            "project_2_caption": "Liczne formy uczenia się opisane u nicieni <em>Caenorhabditis</em>.",
+            "project_3_title": "Selekcja antagonistyczna płciowo",
+            "project_3_body": "Wspólnie z grupą Eliny Immonen badam warunki, w których selekcja antagonistyczna płciowo może zachowywać zmienność genetyczną, czyli prowadzić do selekcji równoważącej. Selekcja antagonistyczna płciowo jest tylko jednym z wielu scenariuszy mogących powodować selekcję równoważącą. Nadal nie rozumiemy dobrze ani jej roli w utrzymywaniu obserwowanego polimorfizmu genetycznego, ani względnego znaczenia różnych mechanizmów.",
+            "project_3_caption": "Kierunki eksperymentalnej selekcji masy ciała samców i samic strąkowców <em>Callosobruchus</em>.",
+            "publications_title": "Publikacje i preprinty",
+            "preprint": "Preprint",
+            "parental_leave": "Urlop rodzicielski (w pełnym i niepełnym wymiarze)",
+            "all_publications": "🎓 Wszystkie publikacje w Google Scholar",
+            "orcid_record": "🔗 Profil ORCID",
+            "collaborators_title": "Współpracownicy",
+            "collaborator_1": "Starzenie, plastyczność i efekty międzypokoleniowe.",
+            "collaborator_2": "Biologia ewolucyjna i biogerontologia; starzenie i ewolucja historii życia.",
+            "collaborator_3": "Interferencja RNA, efekty międzypokoleniowe i starzenie.",
+            "collaborator_4": "Antagonizm płciowy, selekcja równoważąca i ekspresja genów zależna od płci.",
+            "students_title": "Studenci",
+            "student_1": "Obrona w czerwcu 2025",
+            "student_2": "Obrona w czerwcu 2026",
+            "beyond_title": "Poza nauką",
+            "game_title": "Gra w robaki",
+            "game_description": "Gra przeglądarkowa inspirowana biologią nicieni.",
+            "game_action": "Zagraj <span aria-hidden=\"true\">→</span>",
+            "cabinet_title": "Gabinet osobliwości",
+            "cabinet_description": "Czekolada, szydełkowanie i kolekcja osobliwości.",
+            "cabinet_action": "Odkryj <span aria-hidden=\"true\">→</span>",
+            "contact_title": "Kontakt",
+            "contact_address": "Instytut Ekologii i Genetyki, Ekologia Zwierząt<br>Centrum Biologii Ewolucyjnej (EBC), Uniwersytet w Uppsali<br>Norbyvägen 18D, 752 36 Uppsala, Szwecja",
+            "contact_email": "✉ E-mail",
+            "contact_profile": "🏛 Profil na Uniwersytecie w Uppsali",
+            "footer_affiliation": "Martyna Katarzyna Zwoińska · Uniwersytet w Uppsali",
+            "footer_built": "Strona zbudowana w czystym HTML i CSS, hostowana w GitHub Pages."
+      }
+};
+    var englishPageCopy = {};
+
+    Object.keys(localizedElementMap).forEach(function (key) {
+      var element = document.querySelector(localizedElementMap[key]);
+      if (element) englishPageCopy[key] = element.innerHTML;
+    });
+
+    function languageCopy(language) {
+      return Object.assign({}, englishInterfaceCopy, englishPageCopy, translatedCopy[language] || {});
+    }
+
+    var storedLanguage = localStorage.getItem('language');
+    var currentLanguage = ['en', 'sv', 'pl'].indexOf(storedLanguage) >= 0 ? storedLanguage : 'en';
+
+    function applyLanguage(language) {
+      if (['en', 'sv', 'pl'].indexOf(language) < 0) language = 'en';
+      currentLanguage = language;
+      var copy = languageCopy(language);
+
+      Object.keys(localizedElementMap).forEach(function (key) {
+        document.querySelectorAll(localizedElementMap[key]).forEach(function (element) {
+          if (copy[key] !== undefined) element.innerHTML = copy[key];
+        });
+      });
+
+      Object.keys(localizedAttributeMap).forEach(function (key) {
+        var target = localizedAttributeMap[key];
+        var element = document.querySelector(target[0]);
+        if (element && copy[key] !== undefined) element.setAttribute(target[1], copy[key]);
+      });
+
+      document.documentElement.lang = language;
+      document.title = copy.page_title;
+      document.querySelector('meta[name="description"]').setAttribute('content', copy.meta_description);
+      document.querySelectorAll('.lang-btn').forEach(function (button) {
+        button.setAttribute('aria-pressed', String(button.getAttribute('data-language') === language));
+      });
+      localStorage.setItem('language', language);
+      syncThemeButton();
+    }
+
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -808,8 +1129,9 @@
       var isDark = root.getAttribute('data-theme') === 'dark'
         || (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
       themeToggle.setAttribute('aria-pressed', String(isDark));
-      themeToggle.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-      themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      var copy = languageCopy(currentLanguage);
+      themeToggle.setAttribute('title', isDark ? copy.theme_light : copy.theme_dark);
+      themeToggle.setAttribute('aria-label', isDark ? copy.theme_light : copy.theme_dark);
     }
 
     syncThemeButton();
@@ -836,6 +1158,13 @@
         primaryNav.setAttribute('data-open', 'false');
       }
     });
+    document.querySelectorAll('.lang-btn').forEach(function (button) {
+      button.addEventListener('click', function () {
+        applyLanguage(button.getAttribute('data-language'));
+      });
+    });
+    applyLanguage(currentLanguage);
+
   </script>
 </body>
 </html>
