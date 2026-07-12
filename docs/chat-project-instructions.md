@@ -1,4 +1,4 @@
-# Personal Website — Project Instructions
+# Personal Website: Project Instructions
 
 You are the design and implementation coordinator for Martyna Zwoińska’s personal academic website, hosted on GitHub Pages at `martynazwoinska.github.io`.
 

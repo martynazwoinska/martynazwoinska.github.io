@@ -11,6 +11,13 @@
   const panelToggle = document.getElementById('collection-toggle');
   const panelClose = document.getElementById('collection-close');
   const collectionList = document.getElementById('collection-list');
+  const wheelToggle = document.getElementById('wheel-toggle');
+  const wheelDialog = document.getElementById('wheel-dialog');
+  const wheelClose = document.getElementById('wheel-close');
+  const wheelSpin = document.getElementById('wheel-spin');
+  const wheelVisual = document.getElementById('wheel-visual');
+  const flavourWheel = document.getElementById('flavour-wheel');
+  const wheelStatus = document.getElementById('wheel-status');
   const dialog = document.getElementById('detail-dialog');
   const detailClose = document.getElementById('detail-close');
   const detailKind = document.getElementById('detail-kind');
@@ -21,6 +28,9 @@
   const detailLink = document.getElementById('detail-link');
   let lastDialogTrigger = null;
   let lastPanelTrigger = null;
+  let lastWheelTrigger = null;
+  let wheelRotation = 0;
+  let wheelTimer = null;
 
   const statusLabels = {
     confirmed: 'Confirmed identification',
@@ -170,11 +180,61 @@
     if (lastPanelTrigger instanceof HTMLElement) lastPanelTrigger.focus();
   }
 
+  function clearWheelTimer() {
+    if (wheelTimer !== null) {
+      window.clearTimeout(wheelTimer);
+      wheelTimer = null;
+    }
+    wheelVisual.removeAttribute('aria-busy');
+  }
+
+  function openWheel() {
+    lastWheelTrigger = document.activeElement;
+    if (!wheelDialog.open) wheelDialog.showModal();
+    wheelSpin.focus();
+  }
+
+  function closeWheel() {
+    if (wheelDialog.open) wheelDialog.close();
+  }
+
+  function spinWheel() {
+    clearWheelTimer();
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const randomOffset = 30 + Math.round(Math.random() * 300);
+    const fullTurns = prefersReducedMotion ? 0 : 720 + Math.round(Math.random() * 720);
+    wheelRotation += fullTurns + randomOffset;
+
+    flavourWheel.classList.toggle('is-reduced-motion', prefersReducedMotion);
+    wheelVisual.setAttribute('aria-busy', 'true');
+    wheelStatus.textContent = prefersReducedMotion ? 'Wheel moved.' : 'Wheel is spinning.';
+    flavourWheel.style.transform = `rotate(${wheelRotation}deg)`;
+
+    const delay = prefersReducedMotion ? 50 : 1850;
+    wheelTimer = window.setTimeout(() => {
+      wheelVisual.removeAttribute('aria-busy');
+      wheelStatus.textContent = 'Wheel stopped. Explore the descriptor nearest the marker.';
+      wheelTimer = null;
+    }, delay);
+  }
+
   panelToggle.addEventListener('click', () => {
     if (panel.hidden) openPanel();
     else closePanel();
   });
   panelClose.addEventListener('click', closePanel);
+  wheelToggle.addEventListener('click', openWheel);
+  wheelClose.addEventListener('click', closeWheel);
+  wheelSpin.addEventListener('click', spinWheel);
+  wheelDialog.addEventListener('cancel', clearWheelTimer);
+  wheelDialog.addEventListener('close', () => {
+    clearWheelTimer();
+    if (lastWheelTrigger instanceof HTMLElement) lastWheelTrigger.focus();
+  });
+  wheelDialog.addEventListener('click', event => {
+    if (event.target === wheelDialog) closeWheel();
+  });
   detailClose.addEventListener('click', () => dialog.close());
   dialog.addEventListener('cancel', () => hidePreview());
   dialog.addEventListener('close', () => {
@@ -184,7 +244,7 @@
     if (event.target === dialog) dialog.close();
   });
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && !dialog.open && !panel.hidden) {
+    if (event.key === 'Escape' && !dialog.open && !wheelDialog.open && !panel.hidden) {
       event.preventDefault();
       closePanel();
     }

@@ -8,13 +8,13 @@ manager, or installation step.
 
 ## Site structure
 
-- `index.html` — primary academic profile and the Beyond Research landing section
-- `game-of-worms/` — interactive browser game inspired by nematode biology
-- `cabinet-of-curiosities/` — Cabinet of Curiosities landing page and assets
-- `fonts/` — locally hosted Cormorant Garamond display fonts
-- `docs/` — durable project instructions and kickoff context
-- `PROJECT_STATUS.md` — approved decisions and current implementation status
-- `AGENTS.md` — repository-specific working rules
+- `index.html`: primary academic profile and the Beyond Research landing section
+- `game-of-worms/`: interactive browser game inspired by nematode biology
+- `cabinet-of-curiosities/`: Cabinet of Curiosities landing page and assets
+- `fonts/`: locally hosted Cormorant Garamond display fonts
+- `docs/`: durable project instructions and kickoff context
+- `PROJECT_STATUS.md`: approved decisions and current implementation status
+- `AGENTS.md`: repository-specific working rules
 
 ## Deployment
 
@@ -47,9 +47,9 @@ approval.
 
 The Cabinet uses two distinct source assets:
 
-- `cabinet-of-curiosities/assets/cabinet-of-curiosities.png` — approved stylised
+- `cabinet-of-curiosities/assets/cabinet-of-curiosities.png`: approved stylised
   website image
-- `cabinet-of-curiosities/assets/cabinet-original-photo.jpg` — untouched real
+- `cabinet-of-curiosities/assets/cabinet-original-photo.jpg`: untouched real
   reference photograph and source of truth for wrapper identities, text, and
   object placement
 

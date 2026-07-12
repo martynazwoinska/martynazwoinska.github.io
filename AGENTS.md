@@ -9,7 +9,7 @@ This repository is Martyna Zwoińska’s personal academic website, published wi
 - Deployment: GitHub Pages from the repository
 - Primary page: `index.html`
 - Interactive game: `game-of-worms/`
-- Planned interactive collection: `cabinet-of-curiosities/`
+- Interactive collection: `cabinet-of-curiosities/`
 
 Read `PROJECT_STATUS.md` before working on active features.
 
@@ -55,7 +55,9 @@ If the working tree contains unrelated changes:
 
 ## Visual system
 
-Use the existing site rather than inventing a new design system.
+Use the existing site rather than inventing a new design system. The canonical palette, usage rules and review checklist are in [`docs/visual-style.md`](docs/visual-style.md). Read that document before creating, editing or integrating visual assets.
+
+Whenever legally, practically and scientifically appropriate, new graphical objects should match the website palette and style. Scientific accuracy, licensing and source identity take priority. When colour does not encode meaningful categories, use one consistent colour for all equivalent elements.
 
 Core direction:
 
@@ -78,7 +80,8 @@ Avoid:
 - sharp, aggressive ornaments;
 - cluttered frames;
 - generic stock or generated imagery;
-- decorative text that competes with content.
+- decorative text that competes with content;
+- using several accent colours for equivalent elements when the colours carry no meaning.
 
 ## Copy rules
 
@@ -97,8 +100,10 @@ Avoid:
 - Use responsive dimensions and prevent layout shift.
 - Write accurate alt text based on visible content.
 - Do not infer fine wrapper text from a stylized image; use the original photograph and user-confirmed metadata as the source of truth.
+- Check licensing before adapting an external graphic and include the required attribution.
+- Preserve scientifically meaningful colours even when they differ from the site palette.
 
-## Beyond Research — approved landing design
+## Beyond Research: approved landing design
 
 The homepage section keeps the heading:
 
@@ -106,39 +111,44 @@ The homepage section keeps the heading:
 Beyond Research
 ```
 
-It contains two equal, image-free, fully clickable Art Nouveau doorway cards.
+It contains two equal Art Nouveau doorway cards.
 
 ### Card 1
 
 - Title: `The Game of Worms`
-- Description: `A browser game inspired by nematode biology.`
+- Description: `A browser game inspired by nematode biology, with creative input from my children.`
 - Action: `Play →`
 - Destination: `game-of-worms/index.html`
+- The card remains one semantic link.
 
 ### Card 2
 
 - Title: `The Cabinet of Curiosities`
-- Description: `Chocolate, crochet and collected curiosities.`
+- Description: `Fine and craft chocolate, especially bean-to-bar, gave me another subject to geek out about. Take a look for yourself!`
 - Action: `Explore →`
 - Destination: `cabinet-of-curiosities/index.html`
+- The Cabinet navigation link and flavour-wheel button are sibling controls. Never nest the button inside the link.
+- The official Cocoa of Excellence Flavour Wheel may appear on the right side as the only preview graphic in the landing cards.
 
 Constraints:
 
 - no introductory sentence above the cards;
-- no preview images, emoji, screenshots, or background illustrations;
+- no preview images, emoji, screenshots or background illustrations except the approved official flavour wheel on the Cabinet card;
 - equal visual weight and dimensions;
 - two columns on desktop, one column on mobile;
-- whole card is one semantic link;
 - thin emerald outer line;
 - fine muted-gold inner line;
 - softly asymmetric rounded corners;
-- restrained ornament occupying no more than roughly 5–8% of the card;
+- restrained ornament occupying no more than roughly 5 to 8 percent of the card;
 - subtle worm-like flowing line on the Game card;
 - subtle botanical or seed-pod motif on the Cabinet card;
-- 2–3 px lift and small arrow movement on hover/focus;
-- honour `prefers-reduced-motion`.
+- 2 to 3 px lift and small arrow movement on hover or focus;
+- honour `prefers-reduced-motion`;
+- keep every interactive target semantic, keyboard accessible and visually distinct.
 
-## Cabinet of Curiosities — current direction
+The flavour wheel must retain its official labels and colours. Include a concise source and licence path to the full attribution in the Cabinet experience.
+
+## Cabinet of Curiosities: current direction
 
 Approved stylised website image:
 
@@ -152,9 +162,9 @@ Untouched real reference photograph:
 cabinet-of-curiosities/assets/cabinet-original-photo.jpg
 ```
 
-Do not change or overwrite either image unless explicitly requested. Use the real photograph as the source of truth for wrapper identities, wrapper text, and original object placement.
+Do not change or overwrite either image unless explicitly requested. Use the real photograph as the source of truth for wrapper identities, wrapper text and original object placement.
 
-The future interactive page should use the image as the central object board.
+The interactive page uses the real photograph as the central object board, surrounded by the stylised cabinet scene. The photograph and object positions must remain intact; expand the fantasy setting around the board rather than altering the bars or their placement.
 
 Interactive objects:
 
@@ -171,6 +181,8 @@ Decorative and non-interactive:
 Use a responsive SVG overlay or another coordinate system tied to the image’s intrinsic dimensions. Do not use fixed-position hotspots that drift when the image scales.
 
 Chocolate metadata must be data-driven and separate from the markup. Unknown values and URLs remain empty; never fabricate them.
+
+The Cocoa of Excellence Flavour Wheel is a separate interactive reference, not part of the photographed object board. Open it in an accessible dialog or equivalent overlay so it does not shrink or move the board. Let users spin it as a playful exploration aid, but do not claim that the pointer identifies an objectively measured flavour. Show the full source, copyright and licence attribution in the wheel view.
 
 ## Accessibility
 

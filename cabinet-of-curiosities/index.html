@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="cabinet.css?v=20260712-1">
+  <link rel="stylesheet" href="cabinet.css?v=20260712-2">
 </head>
 <body>
   <main class="cabinet-page">
@@ -25,7 +25,10 @@
         <p class="eyebrow">Chocolate, crochet and collected curiosities</p>
         <h1>The Cabinet of Curiosities</h1>
       </div>
-      <button class="collection-toggle" id="collection-toggle" type="button" aria-expanded="false" aria-controls="collection-panel">Browse collection</button>
+      <div class="header-actions">
+        <button class="wheel-toggle" id="wheel-toggle" type="button" aria-haspopup="dialog" aria-controls="wheel-dialog">Wheel</button>
+        <button class="collection-toggle" id="collection-toggle" type="button" aria-expanded="false" aria-controls="collection-panel">Browse collection</button>
+      </div>
     </header>
 
     <section class="cabinet-stage" aria-label="Interactive cabinet display">
@@ -63,9 +66,31 @@
       <p class="detail-note" id="detail-note"></p>
       <a class="detail-link" id="detail-link" href="#" target="_blank" rel="noreferrer" hidden></a>
     </dialog>
+
+    <dialog class="wheel-dialog" id="wheel-dialog" aria-labelledby="wheel-title" aria-describedby="wheel-description">
+      <div class="wheel-dialog-head">
+        <div>
+          <p class="eyebrow">A guide for sensory exploration</p>
+          <h2 id="wheel-title">Cocoa of Excellence Flavour Wheel</h2>
+        </div>
+        <button class="icon-button" id="wheel-close" type="button" aria-label="Close flavour wheel">×</button>
+      </div>
+      <div class="wheel-dialog-layout">
+        <div class="wheel-visual" id="wheel-visual">
+          <span class="wheel-marker" aria-hidden="true"></span>
+          <img class="flavour-wheel" id="flavour-wheel" src="assets/cacao-of-excellence-flavour-wheel.png" alt="Cocoa of Excellence Flavour Wheel, arranged in concentric rings of cocoa aroma and flavour descriptors.">
+        </div>
+        <div class="wheel-copy">
+          <p id="wheel-description">Spin the wheel, then use the descriptor nearest the fixed gold marker as a prompt while tasting chocolate. The result is an invitation to explore, not a flavour diagnosis.</p>
+          <button class="wheel-spin" id="wheel-spin" type="button" aria-describedby="wheel-description wheel-status">Spin the wheel</button>
+          <p class="wheel-status" id="wheel-status" role="status" aria-live="polite">Ready to spin.</p>
+          <p class="wheel-attribution">Adapted (rasterised and cropped; labels and colours unchanged) from Cocoa of Excellence Technical Committee (2021), Cocoa of Excellence Flavour Wheel, Bioversity International, Rome, August 2021. © Bioversity International 2021. Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en" target="_blank" rel="noreferrer">CC BY-NC 4.0</a>. <a href="https://www.cacaoofexcellence.org/fileadmin/Websites/CocoaOfExcellence/CoEx-2023/CoEx_flavour_wheel_A4_EN-19Aug21.pdf" target="_blank" rel="noreferrer">View the source PDF.</a></p>
+        </div>
+      </div>
+    </dialog>
   </main>
 
   <script src="cabinet-data.js?v=20260712-1"></script>
-  <script src="cabinet.js?v=20260712-1"></script>
+  <script src="cabinet.js?v=20260712-2"></script>
 </body>
 </html>

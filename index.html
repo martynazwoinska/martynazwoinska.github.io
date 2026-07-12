@@ -155,22 +155,13 @@
       display: flex; align-items: center; gap: 24px;
       min-height: 78px; max-width: 1180px;
     }
-    .nav-brand {
-      display: flex; flex: 0 0 auto; flex-direction: column;
-      align-items: flex-start; gap: 7px;
-    }
-    .nav-name {
-      font-family: var(--sans); font-weight: 600; font-size: 1.06rem;
-      line-height: 1; letter-spacing: .1px; color: var(--text);
-      white-space: nowrap;
-    }
     .nav-links {
       display: flex; align-items: center; justify-content: flex-end;
-      gap: 20px; min-width: 0; margin-left: auto;
+      gap: 20px; min-width: 0;
     }
-    .nav-links a { color: var(--text-soft); font-size: .92rem; font-weight: 600; white-space: nowrap; }
+    .nav-links a { color: var(--text-soft); font-size: .97rem; font-weight: 600; white-space: nowrap; }
     .nav-actions {
-      display: inline-flex; flex: 0 0 auto; align-items: center; gap: 8px;
+      display: inline-flex; flex: 0 0 auto; align-items: center; gap: 8px; margin-left: auto;
     }
     .nav-menu-btn {
       display: none; align-items: center; gap: 8px;
@@ -200,6 +191,11 @@
       border-color: color-mix(in srgb, var(--accent) 82%, var(--text));
       box-shadow: inset 0 0 0 5px var(--surface), inset 0 0 0 6px color-mix(in srgb, var(--accent-gold) 78%, transparent);
     }
+    .beyond-card--cabinet:focus-within {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--accent) 82%, var(--text));
+      box-shadow: inset 0 0 0 5px var(--surface), inset 0 0 0 6px color-mix(in srgb, var(--accent-gold) 78%, transparent);
+    }
     .beyond-card h3 { margin: 0 0 12px; font-size: clamp(1.65rem, 3vw, 2rem); }
     .beyond-card--game h3 { margin-bottom: 3px; }
     .beyond-subtitle {
@@ -211,7 +207,53 @@
     .beyond-action { margin-top: auto; color: var(--accent); font-weight: 700; }
     .beyond-action span { display: inline-block; transition: transform .18s ease; }
     .beyond-card:hover .beyond-action span, .beyond-card:focus-visible .beyond-action span { transform: translateX(4px); }
-    @media (max-width: 680px) { .beyond-grid { grid-template-columns: 1fr; } .beyond-card { min-height: 220px; } }
+    .beyond-card--cabinet {
+      display: grid; grid-template-columns: minmax(0, 1fr) 132px;
+      align-items: center; gap: 20px; justify-content: stretch;
+    }
+    .beyond-card__content {
+      min-width: 0; align-self: stretch; display: flex; flex-direction: column;
+      justify-content: center; position: relative; z-index: 1; pointer-events: none;
+    }
+    .beyond-card__link { position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
+    .beyond-card__link:focus-visible { outline: 3px solid var(--accent-gold); outline-offset: -8px; }
+    .flavour-wheel-wrap {
+      width: 132px; position: relative; z-index: 2; display: grid;
+      justify-items: center; align-content: center; gap: 4px;
+    }
+    .flavour-wheel-control {
+      width: 122px; min-height: 150px; padding: 14px 5px 4px;
+      display: grid; justify-items: center; align-content: center; gap: 4px;
+      position: relative; border: 0; border-radius: 18px; cursor: pointer;
+      background: transparent; color: var(--accent); font: inherit;
+    }
+    .flavour-wheel-control:hover { background: color-mix(in srgb, var(--accent-soft) 55%, transparent); }
+    .flavour-wheel-control:focus-visible { outline: 3px solid var(--accent-gold); outline-offset: 2px; }
+    .flavour-wheel-control img {
+      width: 112px; height: 112px; display: block; border-radius: 50%;
+      filter: saturate(.82) contrast(.94); transition: transform 1.05s cubic-bezier(.18,.8,.18,1);
+      box-shadow: 0 3px 12px color-mix(in srgb, var(--text) 14%, transparent);
+    }
+    .flavour-wheel-marker {
+      position: absolute; top: 2px; left: 50%; z-index: 2; transform: translateX(-50%);
+      color: var(--accent-berry); font-size: 17px; line-height: 1;
+      filter: drop-shadow(0 1px 0 var(--surface));
+    }
+    .flavour-wheel-label { font-size: .78rem; font-weight: 750; letter-spacing: .02em; }
+    .flavour-wheel-source { color: var(--text-faint); font-size: .62rem; line-height: 1.25; text-align: center; }
+    .sr-only {
+      position: absolute !important; width: 1px !important; height: 1px !important;
+      padding: 0 !important; margin: -1px !important; overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important;
+    }
+    @media (max-width: 680px) {
+      .beyond-grid { grid-template-columns: 1fr; }
+      .beyond-card { min-height: 220px; }
+      .beyond-card--cabinet { grid-template-columns: minmax(0, 1fr) 112px; gap: 12px; }
+      .flavour-wheel-wrap { width: 112px; }
+      .flavour-wheel-control { width: 106px; min-height: 136px; }
+      .flavour-wheel-control img { width: 96px; height: 96px; }
+    }
     .theme-btn {
       background: var(--surface-2); border: 1px solid var(--border); color: var(--text-soft);
       width: 34px; height: 34px; border-radius: 9px; cursor: pointer; font-size: 15px;
@@ -252,7 +294,6 @@
         height: auto; min-height: 78px; flex-wrap: wrap;
         gap: 8px 10px; padding-top: 10px; padding-bottom: 10px;
       }
-      .nav-name { font-size: 1rem; }
       .nav-actions { margin-left: auto; }
       .nav-menu-btn { display: inline-flex; margin-left: 0; }
       .nav-links {
@@ -340,11 +381,11 @@
     section.wrap { padding-top: 52px; padding-bottom: 52px; }
     section h2 { font-size: 2.45rem; font-weight: 700; margin: 0 0 24px; letter-spacing: .15px; }
     @media (max-width: 620px) { section h2 { font-size: 2.2rem; } }
-    .about p { color: var(--text-soft); max-width: 68ch; }
+    .about p { color: var(--text-soft); max-width: 80ch; }
     .about p + p { margin-top: 14px; }
     .about blockquote {
       margin: 16px 0 0; padding: 4px 0 4px 22px;
-      border-left: 3px solid var(--accent); max-width: 68ch;
+      border-left: 3px solid var(--accent); max-width: 80ch;
       color: var(--text-soft); font-style: italic;
     }
 
@@ -461,8 +502,16 @@
   <!-- ============ NAV ============ -->
   <header class="nav">
     <div class="wrap nav-inner">
-      <div class="nav-brand">
-        <span class="nav-name">Martyna K. Zwoińska</span>
+      <nav class="nav-links" id="primaryNav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#collaborators">Collaborators</a>
+        <a href="#students">Students</a>
+        <a href="#beyond-research" class="nav-beyond" aria-label="Beyond Research">Beyond Research</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
         <span class="language-switcher" role="group" aria-label="Choose language">
           <button class="lang-btn" type="button" data-language="en" aria-label="English" aria-pressed="true" title="English">
             <svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
@@ -486,17 +535,6 @@
             </svg>
           </button>
         </span>
-      </div>
-      <nav class="nav-links" id="primaryNav" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#collaborators">Collaborators</a>
-        <a href="#students">Students</a>
-        <a href="#beyond-research" class="nav-beyond" aria-label="Beyond Research">Beyond Research</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="nav-actions">
         <span class="theme-wrap"><button class="theme-btn" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false" title="Switch to dark mode">◐</button></span>
         <button class="nav-menu-btn" id="navMenuToggle" type="button" aria-expanded="false" aria-controls="primaryNav">☰ Menu</button>
       </div>
@@ -515,7 +553,7 @@
       </div>
       <div>
         <h1>Martyna Katarzyna Zwoińska</h1>
-        <div class="role">Evolutionary biologist: from wet lab to code, from ideas to execution.</div>
+        <div class="role">Evolutionary biologist. From lab to code, from ideas to execution.</div>
         <div class="affil">Department of Ecology and Genetics, Uppsala University</div>
       </div>
     </div>
@@ -589,12 +627,12 @@
           While it may not seem obvious, nematode worms from the genus <em>Caenorhabditis</em> can
           learn and form memories, and they do so with only 300 to 400 neurons. What began during
           my PhD under the supervision of Alexei A. Maklakov continues to this day, because who could
-          resist the charm of learning roundworms? Most lately, we focus on the phenomenon of learned
-          pathogen avoidance, which can be passed down several generations.
+          resist the charm of learning roundworms? Most recently, I have focused on learned pathogen
+          avoidance, a behaviour that can be passed down across several generations.
         </p>
       </div>
       <figure>
-        <a href="nematode-learning.png" target="_blank" rel="noopener"><img class="figure-padded" src="nematode-learning.png" alt="The forms of learning documented in Caenorhabditis nematodes: habituation and sensitization, gustatory, olfactory, thermosensory and maze learning, and imprinting and transgenerational learning" onerror="this.closest('figure').remove()" /></a>
+        <a href="nematode-learning-palette.png" target="_blank" rel="noopener"><img class="figure-padded" src="nematode-learning-palette.png" alt="The forms of learning documented in Caenorhabditis nematodes: habituation and sensitization, gustatory, olfactory, thermosensory and maze learning, and imprinting and transgenerational learning" onerror="this.closest('figure').remove()" /></a>
         <figcaption>The many forms of learning documented in <em>Caenorhabditis</em> nematodes.</figcaption>
       </figure>
     </div>
@@ -611,7 +649,7 @@
         </p>
       </div>
       <figure>
-        <a href="seed-beetles.png" target="_blank" rel="noopener"><img src="seed-beetles.png" alt="Directions of experimental selection on male and female body mass in Callosobruchus seed beetles: small males, large males, large females, and sexually antagonistic selection" onerror="this.closest('figure').remove()" /></a>
+        <a href="seed-beetles-palette.png" target="_blank" rel="noopener"><img src="seed-beetles-palette.png" alt="Directions of experimental selection on male and female body mass in Callosobruchus seed beetles: small males, large males, large females, and sexually antagonistic selection" onerror="this.closest('figure').remove()" /></a>
         <figcaption>Directions of experimental selection on male and female body mass in <em>Callosobruchus</em> seed beetles.</figcaption>
       </figure>
     </div>
@@ -831,14 +869,26 @@
       <a class="beyond-card beyond-card--game" href="game-of-worms/index.html">
         <h3>The Game of Worms</h3>
         <span class="beyond-subtitle">A world of nematodes</span>
-        <p>A browser game inspired by nematode biology.</p>
+        <p>A browser game inspired by nematode biology, with creative input from my children.</p>
         <span class="beyond-action">Play <span aria-hidden="true">→</span></span>
       </a>
-      <a class="beyond-card beyond-card--cabinet" href="cabinet-of-curiosities/index.html">
-        <h3>The Cabinet of Curiosities</h3>
-        <p>Chocolate, crochet and collected curiosities.</p>
-        <span class="beyond-action">Explore <span aria-hidden="true">→</span></span>
-      </a>
+      <article class="beyond-card beyond-card--cabinet">
+        <div class="beyond-card__content">
+          <h3>The Cabinet of Curiosities</h3>
+          <p>Fine and craft chocolate, especially bean-to-bar, gave me another subject to geek out about. Take a look for yourself!</p>
+          <span class="beyond-action">Explore <span aria-hidden="true">→</span></span>
+        </div>
+        <a class="beyond-card__link" id="cabinetCardLink" href="cabinet-of-curiosities/index.html" aria-label="Explore The Cabinet of Curiosities"><span class="sr-only">Explore The Cabinet of Curiosities</span></a>
+        <div class="flavour-wheel-wrap">
+          <button class="flavour-wheel-control" id="homeWheel" type="button" aria-label="Spin the Cacao of Excellence flavour wheel" aria-describedby="homeWheelCredit">
+            <span class="flavour-wheel-marker" aria-hidden="true">▼</span>
+            <img src="cabinet-of-curiosities/assets/cacao-of-excellence-flavour-wheel.png" alt="" />
+            <span class="flavour-wheel-label">Spin the wheel</span>
+          </button>
+          <span class="flavour-wheel-source" id="homeWheelCredit">Cacao of Excellence, CC BY-NC 4.0</span>
+          <span class="sr-only" id="homeWheelStatus" aria-live="polite"></span>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -934,6 +984,7 @@
       "cabinet_title": "#beyond-research .beyond-card--cabinet h3",
       "cabinet_description": "#beyond-research .beyond-card--cabinet p",
       "cabinet_action": "#beyond-research .beyond-card--cabinet .beyond-action",
+      "wheel_spin": "#homeWheel .flavour-wheel-label",
       "contact_title": "#contact > h2",
       "contact_address": "#contact .contact-box > p",
       "contact_email": "#contact .pill[href^=\"mailto:\"]",
@@ -956,6 +1007,14 @@
       ],
       "language_label": [
             ".language-switcher",
+            "aria-label"
+      ],
+      "home_wheel_label": [
+            "#homeWheel",
+            "aria-label"
+      ],
+      "cabinet_card_label": [
+            "#cabinetCardLink",
             "aria-label"
       ],
       "project_1_alt": [
@@ -984,6 +1043,10 @@
       "beyond_nav": "Beyond Research",
       "interests_label": "Research interest areas",
       "language_label": "Choose language",
+      "home_wheel_label": "Spin the Cacao of Excellence flavour wheel",
+      "cabinet_card_label": "Explore The Cabinet of Curiosities",
+      "wheel_spinning": "The flavour wheel is spinning.",
+      "wheel_stopped": "The wheel has stopped. Explore the descriptor nearest the marker.",
       "project_1_alt": "Adaptive response modes across cue reliability and between-generation environmental variability: reversible plasticity, developmental plasticity, bet-hedging, and continuous genetic adaptation",
       "project_2_alt": "The forms of learning documented in Caenorhabditis nematodes: habituation and sensitization, gustatory, olfactory, thermosensory and maze learning, and imprinting and transgenerational learning",
       "project_3_alt": "Directions of experimental selection on male and female body mass in Callosobruchus seed beetles: small males, large males, large females, and sexually antagonistic selection",
@@ -1012,7 +1075,7 @@
             "nav_students": "Studenter",
             "nav_beyond": "Utanför forskningen",
             "nav_contact": "Kontakt",
-            "role": "Evolutionsbiolog: från våtlabb till kod, från idé till genomförande.",
+            "role": "Evolutionsbiolog. Från labb till kod, från idé till genomförande.",
             "affiliation": "Institutionen för ekologi och genetik, Uppsala universitet",
             "about_title": "Om mig",
             "about_intro": "Jag är evolutionsbiolog och intresserar mig för allt som rör anpassning och felanpassning. Därför arbetar jag gärna med olika organismer som lämpar sig för evolutionsexperiment i laboratoriet: bananflugor i släktet <em>Drosophila</em>, fröbaggar i släktet <em>Callosobruchus</em> och en av mina personliga favoriter, nematoder i släktet <em>Caenorhabditis</em>. Jag kombinerar gärna olika angreppssätt. Min forskning är framför allt empirisk, ofta med evolutionär genomik som verktyg, men jag uppskattar alltid bra teori.",
@@ -1031,7 +1094,7 @@
             "project_1_body": "I ett pågående projekt undersöker jag hur reproduktionssättet, framför allt självbefruktning jämfört med korsbefruktning, påverkar vilka anpassningsstrategier populationer utvecklar när miljön förändras på förutsägbara eller oförutsägbara sätt. Jag vill kombinera empiriska studier med individbaserade simuleringar inom populationsgenetik.",
             "project_1_caption": "Anpassningsstrategier beroende på hur väl miljösignaler förutsäger framtida förhållanden och hur mycket miljön varierar. Bearbetad efter Botero et al. (2015), <em>PNAS</em>.",
             "project_2_title": "Inlärning och kognition",
-            "project_2_body": "Det är kanske inte det första man tänker på, men nematoder i släktet <em>Caenorhabditis</em> kan både lära sig och bilda minnen trots att de bara har 300 till 400 nervceller. Jag började arbeta med frågan under min doktorandtid, med Alexei A. Maklakov som handledare, och har fortsatt sedan dess; vem kan motstå charmen hos lärande nematoder? På senare tid har vi framför allt studerat inlärt undvikandebeteende mot patogener och hur detta beteende kan föras vidare i flera generationer.",
+            "project_2_body": "Det är kanske inte det första man tänker på, men nematoder i släktet <em>Caenorhabditis</em> kan både lära sig och bilda minnen trots att de bara har 300 till 400 nervceller. Jag började arbeta med frågan under min doktorandtid, med Alexei A. Maklakov som handledare, och har fortsatt sedan dess; vem kan motstå charmen hos lärande nematoder? På senare tid har jag framför allt studerat inlärt undvikande av patogener, ett beteende som kan föras vidare i flera generationer.",
             "project_2_caption": "Olika former av inlärning som har dokumenterats hos nematoder i släktet <em>Caenorhabditis</em>.",
             "project_3_title": "Sexuellt antagonistiskt urval",
             "project_3_body": "Tillsammans med Elina Immonens forskargrupp undersöker jag under vilka förhållanden sexuellt antagonistiskt urval kan bevara genetisk variation och därmed ge upphov till balanserande selektion. Sexuellt antagonistiskt urval är bara en av flera mekanismer som kan ge upphov till balanserande selektion. Vi vet fortfarande inte särskilt mycket om vilken roll balanserande selektion spelar för att upprätthålla den genetiska polymorfism vi observerar, eller om hur viktiga dess olika mekanismer är i förhållande till varandra.",
@@ -1052,11 +1115,16 @@
             "beyond_title": "Utanför forskningen",
             "game_title": "The Game of Worms",
             "game_subtitle": "Nematodernas värld",
-            "game_description": "Ett webbläsarspel med inspiration från nematodernas biologi.",
+            "game_description": "Ett webbläsarspel inspirerat av nematodernas biologi, med kreativa idéer från mina barn.",
             "game_action": "Spela <span aria-hidden=\"true\">→</span>",
             "cabinet_title": "Kuriosakabinettet",
-            "cabinet_description": "Choklad, virkning och en samling kuriositeter.",
+            "cabinet_description": "Hantverkschoklad, särskilt bean-to-bar, gav mig ännu ett område att nörda ner mig i. Titta in och se själv!",
             "cabinet_action": "Utforska <span aria-hidden=\"true\">→</span>",
+            "wheel_spin": "Snurra hjulet",
+            "home_wheel_label": "Snurra Cacao of Excellence-smakhjulet",
+            "cabinet_card_label": "Utforska Kuriosakabinettet",
+            "wheel_spinning": "Smakhjulet snurrar.",
+            "wheel_stopped": "Hjulet har stannat. Utforska beskrivningen närmast markören.",
             "contact_title": "Kontakt",
             "contact_address": "Institutionen för ekologi och genetik, avdelningen för zooekologi<br>Evolutionsbiologiskt centrum (EBC), Uppsala universitet<br>Norbyvägen 18D, 752 36 Uppsala, Sverige",
             "contact_email": "✉ E-post",
@@ -1086,7 +1154,7 @@
             "nav_students": "Studenci",
             "nav_beyond": "Poza nauką",
             "nav_contact": "Kontakt",
-            "role": "Biolożka ewolucyjna: od laboratorium po kod, od pomysłu do realizacji.",
+            "role": "Biolożka ewolucyjna. Od laboratorium po kod, od pomysłu do realizacji.",
             "affiliation": "Instytut Ekologii i Genetyki, Uniwersytet w Uppsali",
             "about_title": "O mnie",
             "about_intro": "Jestem biolożką ewolucyjną i interesuje mnie właściwie wszystko, co wiąże się z adaptacją i maladaptacją. Lubię pracować z różnymi organizmami, na których można badać ewolucję w laboratorium: muszkami owocowymi z rodzaju <em>Drosophila</em>, strąkowcami <em>Callosobruchus</em> oraz jednymi z moich ulubionych organizmów modelowych, nicieniami z rodzaju <em>Caenorhabditis</em>. Chętnie łączę różne podejścia. Moje badania są przede wszystkim empiryczne i ewolucyjno-genomiczne, ale zawsze doceniam też dobrą teorię.",
@@ -1105,7 +1173,7 @@
             "project_1_body": "W jednym z obecnych projektów badam, jak sposób rozmnażania, przede wszystkim samozapłodnienie lub zapłodnienie krzyżowe, wpływa na to, jak populacje przystosowują się do zmiennego środowiska. Analizuję przy tym zarówno zmiany przewidywalne, jak i nieprzewidywalne. Chcę połączyć eksperymenty z indywidualnymi symulacjami populacyjno-genetycznymi.",
             "project_1_caption": "Sposoby adaptacji zależne od tego, na ile sygnały środowiskowe pozwalają przewidzieć przyszłe warunki, oraz od zmienności środowiska. Na podstawie Botero i in. (2015), <em>PNAS</em>.",
             "project_2_title": "Uczenie się i pamięć",
-            "project_2_body": "Choć może to zaskakiwać, nicienie z rodzaju <em>Caenorhabditis</em> potrafią się uczyć i tworzyć wspomnienia, mimo że mają zaledwie 300–400 neuronów. Zaczęłam zajmować się tym tematem podczas doktoratu pod opieką Alexeia A. Maklakova i wracam do niego do dziś, bo kto potrafiłby oprzeć się urokowi uczących się nicieni? Ostatnio skupiam się na wyuczonym unikaniu patogenów, które może być przekazywane przez kilka pokoleń.",
+            "project_2_body": "Choć może to zaskakiwać, nicienie z rodzaju <em>Caenorhabditis</em> potrafią się uczyć i tworzyć wspomnienia, mimo że mają zaledwie 300–400 neuronów. Zaczęłam zajmować się tym tematem podczas doktoratu pod opieką Alexeia A. Maklakova i wracam do niego do dziś, bo kto potrafiłby oprzeć się urokowi uczących się nicieni? Ostatnio skupiam się na wyuczonym unikaniu patogenów i na tym, jak zachowanie to może być przekazywane przez kilka pokoleń.",
             "project_2_caption": "Formy uczenia się opisane u nicieni z rodzaju <em>Caenorhabditis</em>.",
             "project_3_title": "Dobór o przeciwnych skutkach dla samców i samic",
             "project_3_body": "Razem z zespołem Eliny Immonen badam, kiedy dobór, w którym ten sam wariant genetyczny jest korzystny dla jednej płci, a niekorzystny dla drugiej, może utrzymywać zmienność genetyczną w populacji, czyli prowadzić do doboru równoważącego. To tylko jeden z wielu scenariuszy, w których może powstać dobór równoważący. Wciąż jednak niewiele wiemy o tym, jak ważną rolę odgrywa on w utrzymywaniu obserwowanego polimorfizmu genetycznego i które mechanizmy mają tu największe znaczenie.",
@@ -1126,11 +1194,16 @@
             "beyond_title": "Poza nauką",
             "game_title": "The Game of Worms",
             "game_subtitle": "Świat nicieni",
-            "game_description": "Gra przeglądarkowa inspirowana biologią nicieni.",
+            "game_description": "Gra przeglądarkowa inspirowana biologią nicieni, w której wykorzystałam także pomysły moich dzieci.",
             "game_action": "Zagraj <span aria-hidden=\"true\">→</span>",
             "cabinet_title": "Gabinet osobliwości",
-            "cabinet_description": "Czekolada, szydełko i najróżniejsze osobliwości.",
+            "cabinet_description": "Czekolada rzemieślnicza, zwłaszcza bean-to-bar, stała się dla mnie kolejnym tematem, w który mogłam się z przyjemnością wkręcić. Zajrzyj i zobacz!",
             "cabinet_action": "Zajrzyj <span aria-hidden=\"true\">→</span>",
+            "wheel_spin": "Zakręć kołem",
+            "home_wheel_label": "Zakręć kołem smaków Cacao of Excellence",
+            "cabinet_card_label": "Zajrzyj do Gabinetu osobliwości",
+            "wheel_spinning": "Koło smaków się obraca.",
+            "wheel_stopped": "Koło się zatrzymało. Sprawdź określenie najbliżej znacznika.",
             "contact_title": "Kontakt",
             "contact_address": "Instytut Ekologii i Genetyki, Zakład Ekologii Zwierząt<br>Centrum Biologii Ewolucyjnej (EBC), Uniwersytet w Uppsali<br>Norbyvägen 18D, 752 36 Uppsala, Szwecja",
             "contact_email": "✉ E-mail",
@@ -1227,6 +1300,28 @@
         applyLanguage(button.getAttribute('data-language'));
       });
     });
+
+    // Small, independent flavour-wheel interaction on the Cabinet card.
+    var homeWheel = document.getElementById('homeWheel');
+    var homeWheelImage = homeWheel.querySelector('img');
+    var homeWheelStatus = document.getElementById('homeWheelStatus');
+    var homeWheelRotation = 0;
+    var homeWheelTimer;
+
+    homeWheel.addEventListener('click', function () {
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var increment = reducedMotion
+        ? 30 + Math.round(Math.random() * 300)
+        : 720 + Math.round(Math.random() * 720);
+      homeWheelRotation += increment;
+      homeWheelImage.style.transform = 'rotate(' + homeWheelRotation + 'deg)';
+      homeWheelStatus.textContent = languageCopy(currentLanguage).wheel_spinning;
+      window.clearTimeout(homeWheelTimer);
+      homeWheelTimer = window.setTimeout(function () {
+        homeWheelStatus.textContent = languageCopy(currentLanguage).wheel_stopped;
+      }, reducedMotion ? 80 : 1100);
+    });
+
     applyLanguage(currentLanguage);
 
   </script>

@@ -89,19 +89,19 @@ The page should eventually use a responsive overlay and a reusable accessible de
 
 These identifications were explicitly corrected or confirmed by the user:
 
-- Storm & Bille — Uganda chilli bar, 70%.
-- Raaka — Tanzania, 100%.
-- Vigdis Rosenkilde — Echarete, 80%.
-- Kamm — Ecuador, 85%.
-- Luisa Abram — Rio Juruá, 70%.
-- Paradai Thailand — Nakhon Si Thammarat dark chocolate, 70%, Red Pod.
-- Paradai yellow wrapper — Chanthaburi; exact percentage still needs confirmation.
-- Malmö Chokladfabrik — Craft Madagascar; the central wrapper showing the chocolate-making process.
-- Friis-Holm mini bars — link together to:
+- Storm & Bille: Uganda chilli bar, 70%.
+- Raaka: Tanzania, 100%.
+- Vigdis Rosenkilde: Echarete, 80%.
+- Kamm: Ecuador, 85%.
+- Luisa Abram: Rio Juruá, 70%.
+- Paradai Thailand: Nakhon Si Thammarat dark chocolate, 70%, Red Pod.
+- Paradai yellow wrapper: Chanthaburi; exact percentage still needs confirmation.
+- Malmö Chokladfabrik: Craft Madagascar; the central wrapper showing the chocolate-making process.
+- Friis-Holm mini bars: link together to:
   `https://friisholmchokolade.dk/products/bag-mix-12-x-5-g`
-- Taza — the circular package; it must not be labelled as Malmö Chokladfabrik.
-- Zotter Labooko White — the small wrapper on the right; it must not be labelled Omnom.
-- Chocolate Naive — Xocoatl wrapper reference:
+- Taza: the circular package; it must not be labelled as Malmö Chokladfabrik.
+- Zotter Labooko White: the small wrapper on the right; it must not be labelled Omnom.
+- Chocolate Naive: Xocoatl wrapper reference:
   `https://chocolatenaive.com/storage/2023/03/xocoatl.webp`
 
 Tentative and requiring confirmation:
