@@ -120,6 +120,9 @@ It contains two equal Art Nouveau doorway cards.
 - Action: `Play →`
 - Destination: `game-of-worms/index.html`
 - The card remains one semantic link.
+- Do not place a subtitle between the title and description.
+- Use a subtle animated nematode circling an antique-gold crown-like sigil. The mood may suggest high-fantasy maps and heraldry, but must not reproduce protected title treatments, logos or symbols.
+- Keep the animation decorative, unobtrusive and static under `prefers-reduced-motion`.
 
 ### Card 2
 

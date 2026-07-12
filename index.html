@@ -76,7 +76,7 @@
       --border: #e7e3d9;
       --shadow: 0 1px 2px rgba(31,35,40,.06), 0 8px 24px rgba(31,35,40,.06);
       --radius: 14px;
-      --maxw: 940px;
+      --maxw: 1160px;
       --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Times New Roman', serif;
       --display: 'Cormorant Garamond', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
       --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -197,12 +197,6 @@
       box-shadow: inset 0 0 0 5px var(--surface), inset 0 0 0 6px color-mix(in srgb, var(--accent-gold) 78%, transparent);
     }
     .beyond-card h3 { margin: 0 0 12px; font-size: clamp(1.65rem, 3vw, 2rem); }
-    .beyond-card--game h3 { margin-bottom: 3px; }
-    .beyond-subtitle {
-      display: block; margin: 0 0 12px;
-      color: var(--text-faint); font-size: .8rem; font-weight: 650;
-      letter-spacing: .03em;
-    }
     .beyond-card p { margin: 0 0 24px; color: var(--text-soft); }
     .beyond-action { margin-top: auto; color: var(--accent); font-weight: 700; }
     .beyond-action span { display: inline-block; transition: transform .18s ease; }
@@ -240,6 +234,46 @@
       filter: drop-shadow(0 1px 0 var(--surface));
     }
     .flavour-wheel-source { color: var(--text-faint); font-size: .62rem; line-height: 1.25; text-align: center; }
+    .beyond-card--game > h3,
+    .beyond-card--game > p,
+    .beyond-card--game > .beyond-action { position: relative; z-index: 1; }
+    .worm-sigil {
+      position: absolute; right: 22px; bottom: 16px; z-index: 0;
+      width: 170px; height: auto; color: var(--accent);
+      opacity: .68; pointer-events: none;
+      transform-origin: center; transition: opacity .18s ease, transform .18s ease;
+    }
+    .worm-sigil svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .worm-sigil__orbit {
+      fill: none; stroke: var(--accent-gold); stroke-width: 1.5;
+      opacity: .42;
+    }
+    .worm-sigil__worm,
+    .worm-sigil__gleam {
+      fill: none; stroke-linecap: round; stroke-linejoin: round;
+      stroke-dasharray: 64 238; animation: worm-circuit 8s linear infinite;
+    }
+    .worm-sigil__worm { stroke: var(--accent); stroke-width: 5.2; }
+    .worm-sigil__gleam {
+      stroke: color-mix(in srgb, var(--accent-gold) 78%, white);
+      stroke-width: 1.25; opacity: .68;
+    }
+    .worm-sigil__crown {
+      fill: color-mix(in srgb, var(--accent-gold) 24%, transparent);
+      stroke: var(--accent-gold); stroke-width: 1.5; stroke-linejoin: round;
+      transform-origin: 91px 43px; animation: crown-breathe 5s ease-in-out infinite;
+    }
+    .beyond-card--game:hover .worm-sigil,
+    .beyond-card--game:focus-visible .worm-sigil { opacity: .92; transform: scale(1.035); }
+    .beyond-card--game:hover .worm-sigil__worm,
+    .beyond-card--game:hover .worm-sigil__gleam,
+    .beyond-card--game:focus-visible .worm-sigil__worm,
+    .beyond-card--game:focus-visible .worm-sigil__gleam { animation-duration: 3.8s; }
+    @keyframes worm-circuit { to { stroke-dashoffset: -302; } }
+    @keyframes crown-breathe {
+      0%, 100% { transform: scale(.98); opacity: .68; }
+      50% { transform: scale(1.04); opacity: 1; }
+    }
     .sr-only {
       position: absolute !important; width: 1px !important; height: 1px !important;
       padding: 0 !important; margin: -1px !important; overflow: hidden !important;
@@ -253,6 +287,7 @@
       .flavour-wheel-control { width: 106px; min-height: 106px; padding: 8px 2px 0; }
       .flavour-wheel-control img { width: 100px; height: 100px; }
       .flavour-wheel-source { font-size: .56rem; }
+      .worm-sigil { right: 14px; bottom: 13px; width: 132px; opacity: .52; }
     }
     .theme-btn {
       background: var(--surface-2); border: 1px solid var(--border); color: var(--text-soft);
@@ -308,6 +343,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .worm-sigil__worm, .worm-sigil__gleam, .worm-sigil__crown { animation: none !important; }
     }
 
     /* ----------  Hero  ---------- */
@@ -381,11 +417,11 @@
     section.wrap { padding-top: 52px; padding-bottom: 52px; }
     section h2 { font-size: 2.45rem; font-weight: 700; margin: 0 0 24px; letter-spacing: .15px; }
     @media (max-width: 620px) { section h2 { font-size: 2.2rem; } }
-    .about p { color: var(--text-soft); max-width: 80ch; }
+    .about p { color: var(--text-soft); max-width: none; }
     .about p + p { margin-top: 14px; }
     .about blockquote {
       margin: 16px 0 0; padding: 4px 0 4px 22px;
-      border-left: 3px solid var(--accent); max-width: 80ch;
+      border-left: 3px solid var(--accent); max-width: none;
       color: var(--text-soft); font-style: italic;
     }
 
@@ -449,7 +485,7 @@
     /* project highlight */
     .project { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: start; }
     .project + .project { margin-top: 40px; }
-    .project-text { max-width: 62ch; }
+    .project-text { max-width: none; }
     .project h3 { margin: 0 0 10px; font-size: 1.65rem; font-weight: 700; }
     .project p { color: var(--text-soft); margin: 0; }
     .project figure { margin: 4px 0 0; }
@@ -463,8 +499,8 @@
     .project figcaption { color: var(--text-faint); font-size: .82rem; margin-top: 8px; }
     /* themes with no figure keep text readable */
     .project:not(:has(figure)) { display: block; }
-    .project:not(:has(figure)) .project-text { max-width: 72ch; }
-    @media (max-width: 680px) {
+    .project:not(:has(figure)) .project-text { max-width: none; }
+    @media (max-width: 840px) {
       .project { grid-template-columns: 1fr; gap: 16px; }
       .project figure { margin: 0; }
       .project figure img { max-width: 460px; }
@@ -868,9 +904,16 @@
     <div class="beyond-grid">
       <a class="beyond-card beyond-card--game" href="game-of-worms/index.html">
         <h3>The Game of Worms</h3>
-        <span class="beyond-subtitle">A world of nematodes</span>
         <p>A browser game inspired by nematode biology, with creative input from my children.</p>
         <span class="beyond-action">Play <span aria-hidden="true">→</span></span>
+        <span class="worm-sigil" aria-hidden="true">
+          <svg viewBox="0 0 182 92" focusable="false">
+            <path class="worm-sigil__orbit" d="M20 58 C36 30 64 21 91 42 C116 19 146 30 162 57 C147 79 119 80 91 59 C64 80 36 79 20 58 Z" />
+            <path class="worm-sigil__worm" d="M20 58 C36 30 64 21 91 42 C116 19 146 30 162 57 C147 79 119 80 91 59 C64 80 36 79 20 58 Z" />
+            <path class="worm-sigil__gleam" d="M20 58 C36 30 64 21 91 42 C116 19 146 30 162 57 C147 79 119 80 91 59 C64 80 36 79 20 58 Z" />
+            <path class="worm-sigil__crown" d="M70 50 L75 34 L85 43 L91 27 L98 43 L108 34 L113 50 Z M72 54 H111" />
+          </svg>
+        </span>
       </a>
       <article class="beyond-card beyond-card--cabinet">
         <div class="beyond-card__content">
@@ -977,7 +1020,6 @@
       "student_2": "#students .card:nth-child(2) .cdesc",
       "beyond_title": "#beyond-research > h2",
       "game_title": "#beyond-research .beyond-card--game h3",
-      "game_subtitle": "#beyond-research .beyond-card--game .beyond-subtitle",
       "game_description": "#beyond-research .beyond-card--game p",
       "game_action": "#beyond-research .beyond-card--game .beyond-action",
       "cabinet_title": "#beyond-research .beyond-card--cabinet h3",
@@ -1112,7 +1154,6 @@
             "student_2": "Uppsatsen försvarades i juni 2026",
             "beyond_title": "Utanför forskningen",
             "game_title": "The Game of Worms",
-            "game_subtitle": "Nematodernas värld",
             "game_description": "Ett webbläsarspel inspirerat av nematodernas biologi, med kreativa idéer från mina barn.",
             "game_action": "Spela <span aria-hidden=\"true\">→</span>",
             "cabinet_title": "Kuriosakabinettet",
@@ -1190,7 +1231,6 @@
             "student_2": "Obrona pracy magisterskiej: czerwiec 2026",
             "beyond_title": "Poza nauką",
             "game_title": "The Game of Worms",
-            "game_subtitle": "Świat nicieni",
             "game_description": "Gra przeglądarkowa inspirowana biologią nicieni, w której wykorzystałam także pomysły moich dzieci.",
             "game_action": "Zagraj <span aria-hidden=\"true\">→</span>",
             "cabinet_title": "Gabinet osobliwości",
