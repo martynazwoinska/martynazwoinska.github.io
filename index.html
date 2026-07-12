@@ -181,40 +181,33 @@
       align-items: stretch; gap: 22px;
     }
     .beyond-card {
-      min-height: 520px; display: grid;
-      grid-template-rows: auto minmax(310px, 1fr) auto; gap: 14px;
-      position: relative; overflow: hidden; padding: 32px 30px 28px; color: var(--text);
+      min-height: 400px; display: grid;
+      grid-template-rows: auto minmax(190px, 1fr) auto; gap: 12px;
+      position: relative; overflow: hidden; padding: 28px 28px 24px; color: var(--text);
       background: var(--surface); border: 1px solid var(--accent);
       border-radius: 26px 10px 24px 12px; text-decoration: none;
       box-shadow: inset 0 0 0 5px var(--surface), inset 0 0 0 6px color-mix(in srgb, var(--accent-gold) 55%, transparent);
       transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
     }
-    .beyond-card:hover, .beyond-card:focus-visible {
+    .beyond-card:hover, .beyond-card:focus-within {
       color: var(--text); text-decoration: none; transform: translateY(-3px);
       border-color: color-mix(in srgb, var(--accent) 82%, var(--text));
       box-shadow: inset 0 0 0 5px var(--surface), inset 0 0 0 6px color-mix(in srgb, var(--accent-gold) 78%, transparent);
     }
-    .beyond-card--cabinet:focus-within {
-      transform: translateY(-3px);
-      border-color: color-mix(in srgb, var(--accent) 82%, var(--text));
-      box-shadow: inset 0 0 0 5px var(--surface), inset 0 0 0 6px color-mix(in srgb, var(--accent-gold) 78%, transparent);
-    }
-    .beyond-card__copy { min-width: 0; position: relative; z-index: 1; }
+    .beyond-card__copy { min-width: 0; position: relative; z-index: 2; pointer-events: none; }
     .beyond-card h3 { margin: 0 0 8px; font-size: clamp(1.65rem, 3vw, 2rem); }
     .beyond-card p { margin: 0; color: var(--text-soft); }
     .beyond-action { align-self: flex-start; margin-top: auto; color: var(--accent); font-weight: 700; }
     .beyond-action span { display: inline-block; transition: transform .18s ease; }
-    .beyond-card:hover .beyond-action span, .beyond-card:focus-visible .beyond-action span { transform: translateX(4px); }
+    .beyond-card:hover .beyond-action span, .beyond-card:focus-within .beyond-action span { transform: translateX(4px); }
     .beyond-card--cabinet {
-      display: grid; grid-template-rows: auto minmax(310px, 1fr) auto;
+      display: grid; grid-template-rows: auto minmax(190px, 1fr) auto;
     }
-    .beyond-card--cabinet .beyond-card__copy,
-    .beyond-card--cabinet .beyond-action { pointer-events: none; }
-    .beyond-card--cabinet .beyond-action { position: relative; z-index: 2; }
+    .beyond-card .beyond-action { position: relative; z-index: 2; pointer-events: none; }
     .beyond-card__link { position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
     .beyond-card__link:focus-visible { outline: 3px solid var(--accent-gold); outline-offset: -8px; }
     .flavour-wheel-wrap {
-      width: min(306px, 100%); position: relative; z-index: 2; display: grid;
+      width: min(180px, 100%); position: relative; z-index: 2; display: grid;
       place-self: center; justify-items: center; align-content: center; gap: 6px;
     }
     .flavour-wheel-control {
@@ -240,11 +233,25 @@
       filter: drop-shadow(0 1px 0 var(--surface));
     }
     .flavour-wheel-source { color: var(--text-faint); font-size: .62rem; line-height: 1.25; text-align: center; }
-    .beyond-card--game > .beyond-card__copy,
-    .beyond-card--game > .beyond-action { position: relative; z-index: 1; }
+    .n2-preview-wrap {
+      width: min(180px, 100%); position: relative; z-index: 2;
+      display: grid; place-self: center;
+    }
+    .n2-preview-control {
+      width: 100%; min-height: 0; aspect-ratio: 1; padding: 0;
+      display: grid; place-items: center; position: relative;
+      border: 0; border-radius: 50%; cursor: pointer;
+      background: transparent; color: inherit; font: inherit;
+      transition: background .18s ease, transform .18s ease;
+    }
+    .n2-preview-control:hover {
+      background: color-mix(in srgb, var(--accent-soft) 55%, transparent);
+      transform: scale(1.018);
+    }
+    .n2-preview-control:focus-visible { outline: 3px solid var(--accent-gold); outline-offset: 2px; }
     .n2-preview {
       --tilt-x: 0deg; --tilt-y: 0deg;
-      width: min(306px, 100%); aspect-ratio: 1; place-self: center;
+      width: 100%; aspect-ratio: 1; place-self: center;
       display: grid; pointer-events: none; transform-style: preserve-3d;
     }
     .n2-preview svg {
@@ -292,14 +299,16 @@
     .n2-preview__label {
       fill: var(--text-soft); font: 700 12px var(--sans); letter-spacing: .12em;
     }
-    .beyond-card--game:hover .n2-preview svg,
-    .beyond-card--game:focus-visible .n2-preview svg {
+    .n2-preview-control:hover .n2-preview svg,
+    .n2-preview-control:focus-visible .n2-preview svg {
       filter: drop-shadow(0 10px 16px color-mix(in srgb, var(--text) 21%, transparent));
     }
-    .beyond-card--game:hover .n2-preview__worm--primary,
-    .beyond-card--game:focus-visible .n2-preview__worm--primary { animation-duration: 2.8s; }
-    .beyond-card--game:hover .n2-preview__worm--male,
-    .beyond-card--game:focus-visible .n2-preview__worm--male { animation-duration: 2.8s; }
+    .n2-preview-control:hover .n2-preview__worm--primary,
+    .n2-preview-control:focus-visible .n2-preview__worm--primary { animation-duration: 2.8s; }
+    .n2-preview-control:hover .n2-preview__worm--male,
+    .n2-preview-control:focus-visible .n2-preview__worm--male { animation-duration: 2.8s; }
+    .n2-preview.is-wriggling .n2-preview__worm--primary { animation: n2-wriggle .82s ease-in-out 1; }
+    .n2-preview.is-wriggling .n2-preview__worm--male { animation: n2-wriggle-male .82s .06s ease-in-out 1; }
     @keyframes n2-bob {
       0%, 100% { transform: translateY(0) rotate(0); }
       50% { transform: translateY(-5px) rotate(.7deg); }
@@ -308,6 +317,20 @@
       0%, 100% { transform: translateY(0) rotate(0); }
       50% { transform: translateY(-3px) rotate(-1deg); }
     }
+    @keyframes n2-wriggle {
+      0%, 100% { transform: translate(0, 0) rotate(0); }
+      20% { transform: translate(-4px, -3px) rotate(-2.4deg); }
+      42% { transform: translate(4px, -6px) rotate(2.6deg); }
+      64% { transform: translate(-3px, -2px) rotate(-1.8deg); }
+      82% { transform: translate(2px, -4px) rotate(1.2deg); }
+    }
+    @keyframes n2-wriggle-male {
+      0%, 100% { transform: translate(0, 0) rotate(0); }
+      22% { transform: translate(4px, -2px) rotate(3deg); }
+      46% { transform: translate(-3px, -5px) rotate(-2.6deg); }
+      68% { transform: translate(3px, -2px) rotate(2deg); }
+      84% { transform: translate(-2px, -3px) rotate(-1.2deg); }
+    }
     .sr-only {
       position: absolute !important; width: 1px !important; height: 1px !important;
       padding: 0 !important; margin: -1px !important; overflow: hidden !important;
@@ -315,15 +338,15 @@
     }
     @media (max-width: 1040px) {
       .beyond-grid { grid-template-columns: 1fr; }
-      .beyond-card { min-height: 500px; }
+      .beyond-card { min-height: 400px; }
     }
     @media (max-width: 560px) {
       .beyond-card,
       .beyond-card--cabinet {
-        min-height: 450px; padding: 26px 24px 24px;
-        grid-template-rows: auto minmax(245px, 1fr) auto;
+        min-height: 370px; padding: 24px 22px 22px;
+        grid-template-rows: auto minmax(180px, 1fr) auto;
       }
-      .flavour-wheel-wrap, .n2-preview { width: min(238px, 100%); }
+      .flavour-wheel-wrap, .n2-preview-wrap { width: min(180px, 100%); }
       .flavour-wheel-source { font-size: .56rem; }
     }
     .theme-btn {
@@ -940,12 +963,15 @@
   <section id="beyond-research" class="wrap">
     <h2>Beyond Research</h2>
     <div class="beyond-grid">
-      <a class="beyond-card beyond-card--game" href="game-of-worms/index.html">
+      <article class="beyond-card beyond-card--game">
         <div class="beyond-card__copy">
           <h3>The Game of Worms</h3>
           <p>A browser game inspired by nematode biology, with creative input from my children.</p>
         </div>
-        <span class="n2-preview" aria-hidden="true">
+        <a class="beyond-card__link" id="gameCardLink" href="game-of-worms/index.html" aria-label="Play The Game of Worms"><span class="sr-only">Play The Game of Worms</span></a>
+        <div class="n2-preview-wrap">
+          <button class="n2-preview-control" id="homeWorms" type="button" aria-label="Make the Bristol N2 worms wriggle" aria-describedby="homeWormStatus">
+            <span class="n2-preview" aria-hidden="true">
           <svg viewBox="50 0 320 320" focusable="false">
             <defs>
               <clipPath id="n2-preview-clip"><circle cx="210" cy="160" r="137" /></clipPath>
@@ -958,7 +984,7 @@
               <path class="n2-preview__track" d="M111 120 C146 86 184 101 207 129 S269 175 309 132" />
               <path class="n2-preview__track" d="M101 207 C139 180 170 190 196 220 S261 252 304 218" />
               <path class="n2-preview__track" d="M140 75 C169 64 198 69 219 89" />
-              <g transform="translate(38 18) scale(.82)">
+              <g transform="translate(67 51) scale(.68)">
                 <ellipse class="n2-preview__ground-shadow" cx="165" cy="278" rx="96" ry="15" />
                 <g class="n2-preview__worm--primary">
                   <path class="n2-preview__body-shadow" d="M78 238 C122 290 173 265 181 213 C188 161 225 115 278 123 C330 131 355 92 326 64" />
@@ -972,7 +998,7 @@
                   <path class="n2-preview__smile" d="M320 72 Q331 83 343 69" />
                 </g>
               </g>
-              <g transform="translate(42 126) scale(.38)">
+              <g transform="translate(65 156) scale(.31)">
                 <ellipse class="n2-preview__ground-shadow" cx="164" cy="274" rx="92" ry="13" />
                 <g class="n2-preview__worm--male">
                   <path class="n2-preview__body-shadow" d="M78 238 C122 290 173 265 181 213 C188 161 225 115 278 123 C330 131 355 92 326 64" />
@@ -992,9 +1018,12 @@
             <rect class="n2-preview__label-bg" x="158" y="269" width="104" height="25" rx="12.5" />
             <text class="n2-preview__label" x="210" y="286" text-anchor="middle">BRISTOL N2</text>
           </svg>
-        </span>
+            </span>
+          </button>
+          <span class="sr-only" id="homeWormStatus" aria-live="polite"></span>
+        </div>
         <span class="beyond-action">Play <span aria-hidden="true">→</span></span>
-      </a>
+      </article>
       <article class="beyond-card beyond-card--cabinet">
         <div class="beyond-card__copy">
           <h3>The Cabinet of Curiosities</h3>
@@ -1129,6 +1158,14 @@
             ".language-switcher",
             "aria-label"
       ],
+      "home_worms_label": [
+            "#homeWorms",
+            "aria-label"
+      ],
+      "game_card_label": [
+            "#gameCardLink",
+            "aria-label"
+      ],
       "home_wheel_label": [
             "#homeWheel",
             "aria-label"
@@ -1163,6 +1200,9 @@
       "beyond_nav": "Beyond Research",
       "interests_label": "Research interest areas",
       "language_label": "Choose language",
+      "home_worms_label": "Make the Bristol N2 worms wriggle",
+      "game_card_label": "Play The Game of Worms",
+      "worms_wriggling": "The Bristol N2 worms are wriggling.",
       "home_wheel_label": "Spin the Cacao of Excellence flavour wheel",
       "cabinet_card_label": "Explore The Cabinet of Curiosities",
       "wheel_spinning": "The flavour wheel is spinning.",
@@ -1239,6 +1279,9 @@
             "cabinet_title": "Kuriosakabinettet",
             "cabinet_description": "Hantverkschoklad blev ännu ett ämne jag verkligen nördade ner mig i!",
             "cabinet_action": "Utforska <span aria-hidden=\"true\">→</span>",
+            "home_worms_label": "Låt Bristol N2-nematoderna slingra sig",
+            "game_card_label": "Spela The Game of Worms",
+            "worms_wriggling": "Bristol N2-nematoderna slingrar sig.",
             "home_wheel_label": "Snurra Cacao of Excellence-smakhjulet",
             "cabinet_card_label": "Utforska Kuriosakabinettet",
             "wheel_spinning": "Smakhjulet snurrar.",
@@ -1316,6 +1359,9 @@
             "cabinet_title": "Gabinet osobliwości",
             "cabinet_description": "Czekolada rzemieślnicza stała się dla mnie kolejnym tematem, w który się wkręciłam!",
             "cabinet_action": "Zajrzyj <span aria-hidden=\"true\">→</span>",
+            "home_worms_label": "Wpraw nicienie Bristol N2 w ruch",
+            "game_card_label": "Zagraj w The Game of Worms",
+            "worms_wriggling": "Nicienie Bristol N2 wiją się.",
             "home_wheel_label": "Zakręć kołem smaków Cacao of Excellence",
             "cabinet_card_label": "Zajrzyj do Gabinetu osobliwości",
             "wheel_spinning": "Koło smaków się obraca.",
@@ -1438,19 +1484,41 @@
       }, reducedMotion ? 80 : 1100);
     });
 
-    // The N2 dish responds gently to the pointer while remaining one clear link.
+    // The N2 preview is independently interactive, like the flavour wheel.
     var n2Card = document.querySelector('.beyond-card--game');
     var n2Preview = n2Card ? n2Card.querySelector('.n2-preview') : null;
-    if (n2Card && n2Preview) {
-      n2Card.addEventListener('pointermove', function (event) {
+    var homeWorms = document.getElementById('homeWorms');
+    var homeWormStatus = document.getElementById('homeWormStatus');
+    var homeWormTimer;
+    var homeWormStatusTimer;
+    if (homeWorms && n2Preview && homeWormStatus) {
+      homeWorms.addEventListener('click', function () {
+        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.clearTimeout(homeWormTimer);
+        window.clearTimeout(homeWormStatusTimer);
+        n2Preview.classList.remove('is-wriggling');
+        homeWormStatus.textContent = '';
+        if (!reducedMotion) {
+          void n2Preview.offsetWidth;
+          n2Preview.classList.add('is-wriggling');
+        }
+        homeWormStatusTimer = window.setTimeout(function () {
+          homeWormStatus.textContent = languageCopy(currentLanguage).worms_wriggling;
+        }, 20);
+        homeWormTimer = window.setTimeout(function () {
+          n2Preview.classList.remove('is-wriggling');
+        }, reducedMotion ? 40 : 900);
+      });
+
+      homeWorms.addEventListener('pointermove', function (event) {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        var bounds = n2Card.getBoundingClientRect();
+        var bounds = homeWorms.getBoundingClientRect();
         var horizontal = (event.clientX - bounds.left) / bounds.width - .5;
         var vertical = (event.clientY - bounds.top) / bounds.height - .5;
         n2Preview.style.setProperty('--tilt-x', (-vertical * 4).toFixed(2) + 'deg');
         n2Preview.style.setProperty('--tilt-y', (horizontal * 4).toFixed(2) + 'deg');
       });
-      n2Card.addEventListener('pointerleave', function () {
+      homeWorms.addEventListener('pointerleave', function () {
         n2Preview.style.setProperty('--tilt-x', '0deg');
         n2Preview.style.setProperty('--tilt-y', '0deg');
       });
