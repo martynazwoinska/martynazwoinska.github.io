@@ -438,7 +438,8 @@ function renderSpecies(item, place) {
   els.habitat.dataset.habitat = item.habitatKey;
   els.habitat.dataset.localStyle = styleKey;
   els.habitat.dataset.placeScene = regionalPack.sceneKey || "";
-  els.habitat.dataset.accessoryVisual = regionalPack.visualKey || "icons";
+  els.habitat.dataset.accessoryVisual = regionalPack.visualKey || item.id;
+  els.habitat.dataset.hasCustomVisual = String(Boolean(regionalPack.visualKey));
   els.habitat.dataset.species = item.id;
   els.habitat.dataset.pose = item.pose;
   els.habitat.style.setProperty("--worm-color", item.worm);
@@ -739,6 +740,8 @@ renderTabs();
 const initialSpecies = byId.get(selectedId);
 const initialPlace = initialSpecies.locations[0];
 selectedRecordName = initialPlace.name;
+visited.add(selectedId);
+els.exploredCount.textContent = String(visited.size);
 renderSpecies(initialSpecies, initialPlace);
 updateSelectedControls();
 
