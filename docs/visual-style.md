@@ -32,6 +32,9 @@ Use the CSS custom properties rather than copying hex values into component rule
 | `--accent-berry` | `#7d2145` | `#d889a8` | Oxblood or berry secondary accent |
 | `--accent-gold` | `#a88445` | `#d2b66f` | Antique-gold fine borders, markers and restrained highlights |
 | `--accent-violet` | `#6b4a73` | `#c1a4ca` | Muted violet for limited botanical or categorical detail |
+| `--nav-bg` | `#ece1cb` | `#29261f` | Warm parchment-gold top navigation surface |
+| `--nav-border` | `#b99a60` | `#6d5e3d` | Antique-gold divider below the sticky navigation |
+| `--nav-accent` | `#196f4a` | `#5fcb9d` | Accessible emerald cue within the golden navigation surface |
 | `--border` | `#e7e3d9` | `#2c3238` | Neutral borders and dividers |
 | `--shadow` | `0 1px 2px rgba(31,35,40,.06), 0 8px 24px rgba(31,35,40,.06)` | `0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35)` | Standard restrained elevation |
 
