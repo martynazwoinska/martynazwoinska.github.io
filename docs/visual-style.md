@@ -31,7 +31,7 @@ Use the CSS custom properties rather than copying hex values into component rule
 | `--accent-soft` | `#e3f1e9` | `#16302a` | Quiet emerald backgrounds and selected-state fills |
 | `--accent-berry` | `#7d2145` | `#d889a8` | Oxblood or berry secondary accent |
 | `--accent-gold` | `#a88445` | `#d2b66f` | Antique-gold fine borders, markers and restrained highlights |
-| `--accent-plum` | `#6c3a60` | `#d1a2c0` | Mature plum secondary accent for section landmarks, botanical terminals and restrained interaction states |
+| `--accent-plum` | `#6c3a60` | `#d1a2c0` | Mature plum secondary accent for botanical terminals, the portrait ring and restrained interaction states |
 | `--nav-bg` | `#ece1cb` | `#29261f` | Warm parchment-gold top navigation surface |
 | `--nav-border` | `#b99a60` | `#6d5e3d` | Antique-gold divider below the sticky navigation |
 | `--nav-accent` | `#196f4a` | `#5fcb9d` | Accessible emerald cue within the golden navigation surface |
@@ -45,7 +45,7 @@ The automatic dark theme and the explicit `data-theme="dark"` theme use the same
 1. Use neutral backgrounds and text colours for most of the page.
 2. Use emerald for the main action, active language or navigation state, scientific emphasis and important structure.
 3. Use antique gold for fine ornament, secondary focus and small markers. It should not compete with emerald.
-4. Use plum as the visible secondary accent for section headings and botanical details. Reserve berry for very small warm details and strong focus cues.
+4. Use plum as a restrained secondary accent for botanical details and small interaction states, not for primary headings. Reserve berry for very small warm details and strong focus cues.
 5. Prefer `color-mix()` with the semantic variables when a quieter tint is needed.
 
 `--accent-violet` remains a compatibility alias for `--accent-plum`; new components should use the plum token directly.
