@@ -86,7 +86,7 @@ button { color: inherit; }
 .cabinet-page {
   /* The element retains the full photograph's coordinate system so every
      hotspot stays aligned. Only the physical pinboard is revealed below. */
-  --board-width: min(1440px, calc((100svh - 80px) * 1.8018), calc((100vw - 20px) * 1.3889));
+  --board-width: min(1320px, calc((100svh - 60px) * 1.529), calc((100vw - 20px) * 1.312));
   --board-height: min(calc(75vw - 39px), calc(100svh - 118.5px), 1152px);
   position: relative;
   isolation: isolate;
@@ -283,19 +283,19 @@ button { color: inherit; }
    metal rails and pale shelf from the source photograph stay transparent. */
 .board-photo-main {
   -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, transparent 12.6%, #000 14.2%, #000 86%, transparent 87.4%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, transparent 13.9%, #000 15.5%, #000 87.7%, transparent 89.2%, transparent 100%);
+    linear-gradient(to right, transparent 0%, transparent 13.6%, #000 14.5%, #000 85.7%, transparent 86.7%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, transparent 15.1%, #000 16%, #000 87%, transparent 88%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(to right, transparent 0%, transparent 12.6%, #000 14.2%, #000 86%, transparent 87.4%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, transparent 13.9%, #000 15.5%, #000 87.7%, transparent 89.2%, transparent 100%);
+    linear-gradient(to right, transparent 0%, transparent 13.6%, #000 14.5%, #000 85.7%, transparent 86.7%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, transparent 15.1%, #000 16%, #000 87%, transparent 88%, transparent 100%);
   mask-composite: intersect;
 }
 
 /* This bar sits just in front of the pinboard in the original display.
    A tight polygon keeps the wrapper intact without bringing back the shelf. */
 .board-photo-extra {
-  clip-path: polygon(11.2% 79.4%, 26.1% 78.8%, 26.5% 92.4%, 11.3% 93.6%);
+  clip-path: polygon(11.3% 79.7%, 25.9% 78.7%, 26.25% 89%, 11.4% 93%);
 }
 
 .hotspot-layer { position: absolute; z-index: 3; inset: 0; }
@@ -434,8 +434,8 @@ button { color: inherit; }
 .object-preview {
   position: fixed;
   z-index: 30;
-  width: min(270px, calc(100vw - 24px));
-  padding: 9px 11px;
+  width: min(220px, calc(100vw - 24px));
+  padding: 7px 9px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: rgba(12, 22, 17, .96);
@@ -444,7 +444,7 @@ button { color: inherit; }
 }
 
 .object-preview strong { display: block; }
-.object-preview strong { font-family: var(--display); font-size: 1.1rem; line-height: 1.1; }
+.object-preview strong { font-family: var(--display); font-size: .96rem; line-height: 1.15; }
 
 .collection-panel {
   position: fixed;
