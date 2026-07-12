@@ -480,6 +480,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .habitat[data-accessory-visual="inopinata"] [data-species-look="inopinata"],
 .habitat[data-accessory-visual="elegans"] [data-species-look="elegans"],
 .habitat[data-accessory-visual="briggsae"] [data-species-look="briggsae"],
+.habitat[data-accessory-visual="nigoni"] [data-species-look="nigoni"],
 .habitat[data-accessory-visual="tropicalis"] [data-species-look="tropicalis"],
 .habitat[data-accessory-visual="wallacei"] [data-species-look="wallacei"],
 .habitat[data-accessory-visual="scotland"] [data-location-look="scotland"] { display: inline; }
@@ -528,9 +529,9 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .beetle-wing.left { fill: #68b6a5; }
 .beetle-wing.right { fill: #7b6dc0; }
 .beetle-line { fill: none; stroke: rgba(255,255,255,.62); stroke-width: 2; stroke-linecap: round; }
-.kit-symbol { display: none; font-size: 38px; paint-order: stroke; stroke: rgba(255,255,255,.92); stroke-width: 6px; stroke-linejoin: round; filter: drop-shadow(0 4px 3px rgba(23,51,61,.28)); }
-.kit-symbol.male { font-size: 23px; stroke-width: 4px; }
-.habitat[data-accessory-visual="icons"] .kit-symbol { display: inline; }
+.kit-symbol { display: none; font-size: 18px; opacity: .9; paint-order: stroke; stroke: rgba(255,255,255,.94); stroke-width: 3px; stroke-linejoin: round; filter: drop-shadow(0 2px 2px rgba(23,51,61,.25)); }
+.kit-symbol.male { font-size: 12px; stroke-width: 2px; }
+.habitat[data-has-custom-visual="false"] .kit-symbol { display: inline; }
 .habitat[data-local-style="rainforest"] #local-wrap { --accessory-x: -13px; --accessory-y: 15px; }
 .habitat[data-local-style="rainforest"] #local-charm { --accessory-x: 12px; --accessory-y: 28px; }
 .habitat[data-local-style="woodland"] #local-wrap { --accessory-x: -14px; --accessory-y: 18px; }
@@ -593,6 +594,10 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .lab-coat-seam { fill: none; stroke: #9ab9bd; stroke-width: 3; }
 .lab-coat-pocket { fill: #edf7f5; stroke: #526d76; stroke-width: 2; stroke-linejoin: round; }
 .lab-coat-button { fill: #3b8e91; stroke: white; stroke-width: 1; }
+.lab-id-badge { fill: #d8eef0; stroke: #526d76; stroke-width: 1.5; }
+.lab-id-text { fill: #2e6570; font: 800 8px/1 sans-serif; stroke: none; }
+.lab-id-text.male { font-size: 5px; }
+.lab-pen { fill: none; stroke: #d45265; stroke-width: 2.5; stroke-linecap: round; }
 .ngm-plate .plate-shadow { fill: rgba(25,54,61,.2); }
 .ngm-plate .plate-base { fill: rgba(197,224,222,.72); stroke: #527b7d; stroke-width: 3; }
 .ngm-plate .plate-rim { fill: rgba(225,245,242,.78); stroke: #527b7d; stroke-width: 3; }
@@ -602,6 +607,18 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .ngm-plate .plate-highlight { fill: rgba(255,255,255,.9); }
 .ngm-plate text { fill: #355e64; font: 700 9px/1 sans-serif; letter-spacing: .02em; }
 .ngm-plate .plate-glare { fill: none; stroke: rgba(255,255,255,.82); stroke-width: 3; stroke-linecap: round; }
+.ngm-plate-small .plate-base, .ngm-plate-small .plate-rim { stroke-width: 2; }
+.ngm-plate-small .plate-agar { stroke-width: 1.25; }
+.ngm-plate-small .plate-glare { stroke-width: 1.5; }
+.ngm-plate-small text { font-size: 6px; }
+.cryo-jetpack .cryo-pack-shell { fill: #3f7f8a; stroke: #295f72; stroke-width: 3; }
+.cryo-jetpack .cryo-vial-body { fill: rgba(222,247,247,.92); stroke: #2f7885; stroke-width: 2.5; }
+.cryo-jetpack .cryo-vial-cap { fill: #285f70; stroke: #214d5b; stroke-width: 2; }
+.cryo-jetpack .cryo-ice { fill: #88d7df; stroke: #3b8e9b; stroke-width: 1.5; }
+.cryo-jetpack .cryo-medallion { fill: #d9f5f5; stroke: #2f7885; stroke-width: 2.5; }
+.cryo-plume { fill: none; stroke: #b8edf0; stroke-width: 5; stroke-linecap: round; }
+.cryo-plume.small { stroke-width: 3; }
+.snow-mark.small { stroke-width: 1.5 !important; }
 .fig-visor path:first-child, .fig-visor path:nth-of-type(4) { fill: #72a66b; stroke: var(--worm-deep); stroke-width: 3; }
 .fig-vein, .visor-band { fill: none; stroke: #315f50; stroke-width: 2.5; stroke-linecap: round; }
 .satchel-strap { fill: none; stroke: #745744; stroke-width: 7; stroke-linecap: round; }
