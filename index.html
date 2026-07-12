@@ -248,11 +248,12 @@
     }
     @media (max-width: 680px) {
       .beyond-grid { grid-template-columns: 1fr; }
-      .beyond-card { min-height: 220px; }
-      .beyond-card--cabinet { grid-template-columns: minmax(0, 1fr) 112px; gap: 12px; }
-      .flavour-wheel-wrap { width: 112px; }
-      .flavour-wheel-control { width: 106px; min-height: 136px; }
-      .flavour-wheel-control img { width: 96px; height: 96px; }
+      .beyond-card { min-height: 220px; padding-inline: 28px; }
+      .beyond-card--cabinet { grid-template-columns: minmax(0, 1fr) 90px; gap: 8px; }
+      .flavour-wheel-wrap { width: 90px; }
+      .flavour-wheel-control { width: 86px; min-height: 122px; padding-inline: 2px; }
+      .flavour-wheel-control img { width: 78px; height: 78px; }
+      .flavour-wheel-source { font-size: .56rem; }
     }
     .theme-btn {
       background: var(--surface-2); border: 1px solid var(--border); color: var(--text-soft);
@@ -285,1045 +286,4 @@
     .lang-btn[aria-pressed="true"] {
       border-color: transparent; box-shadow: none;
     }
-    .lang-btn[aria-pressed="true"] svg {
-      opacity: 1; filter: saturate(.86) contrast(.94);
-      box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 58%, transparent);
-    }
-    @media (max-width: 1120px) {
-      .nav-inner {
-        height: auto; min-height: 78px; flex-wrap: wrap;
-        gap: 8px 10px; padding-top: 10px; padding-bottom: 10px;
-      }
-      .nav-actions { margin-left: auto; }
-      .nav-menu-btn { display: inline-flex; margin-left: 0; }
-      .nav-links {
-        order: 3; display: none; width: 100%; margin-left: 0;
-        flex-direction: column; align-items: stretch;
-        gap: 0; padding: 4px 0 2px; border-top: 1px solid var(--border);
-      }
-      .nav-links[data-open="true"] { display: flex; }
-      .nav-links a { padding: 8px 2px; }
-      .theme-wrap { padding-top: 0; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
-    }
-
-    /* ----------  Hero  ---------- */
-    .hero { padding: 64px 0 40px; }
-    .hero-grid { display: grid; grid-template-columns: 154px 1fr; gap: 36px; align-items: center; }
-    @media (max-width: 620px) { .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 22px; } }
-    .avatar {
-      position: relative;
-      width: 154px; height: 162px;
-      border-radius: 48% 52% 47% 53% / 55% 55% 45% 45%;
-      background: linear-gradient(140deg, var(--accent-soft), var(--surface-2));
-      border: 2px solid color-mix(in srgb, var(--accent) 48%, var(--border));
-      display: flex; align-items: center; justify-content: center;
-      box-shadow:
-        0 0 0 4px var(--bg),
-        0 0 0 5px color-mix(in srgb, var(--accent-gold) 55%, var(--border)),
-        var(--shadow);
-      overflow: hidden;
-    }
-    .avatar img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%; display: block;
-      object-fit: cover; object-position: center center; background: #fff;
-    }
-    .avatar-mono { font-family: var(--serif); font-size: 3rem; color: var(--accent); }
-    @media (max-width: 620px) { .avatar { margin: 0 auto; } }
-    .hero h1 { font-size: 3.25rem; font-weight: 700; margin: 0 0 4px; letter-spacing: .25px; }
-    .hero .role { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 4px; }
-    .hero .affil { color: var(--text-soft); margin-bottom: 18px; }
-    .hero p.lead { color: var(--text-soft); font-size: 1.02rem; max-width: 46ch; margin: 0 auto; }
-    @media (min-width: 621px) { .hero p.lead { margin: 0; } }
-    @media (max-width: 620px) { .hero h1 { font-size: 2.7rem; } }
-
-    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-    @media (max-width: 620px) { .links { justify-content: center; } }
-    .pill {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: var(--surface); border: 1px solid var(--border);
-      color: var(--text-soft); padding: 8px 14px; border-radius: 999px;
-      font-size: .9rem; box-shadow: var(--shadow); transition: transform .1s ease;
-    }
-    .pill:hover {
-      color: var(--accent); border-color: color-mix(in srgb, var(--accent-gold) 72%, var(--border));
-      text-decoration: none; transform: translateY(-1px);
-    }
-
-    /* ----------  Sections  ---------- */
-    section { border-top: 0; position: relative; scroll-margin-top: 76px; }
-    /* Soft Art Nouveau vines with bellflower curls and an open centre */
-    section::after {
-      content: ""; position: absolute; z-index: 0; top: -17px; left: 50%;
-      transform: translateX(-50%); width: 100%; height: 34px;
-      background: var(--accent-gold); pointer-events: none;
-      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M62 25 C155 12 260 14 345 23 C389 28 418 26 435 20 M878 25 C785 12 680 14 595 23 C551 28 522 26 505 20' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round'/%3E%3Ccircle cx='28' cy='7' r='2.5'/%3E%3Ccircle cx='912' cy='7' r='2.5'/%3E%3C/svg%3E") center/100% 100% no-repeat;
-              mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M62 25 C155 12 260 14 345 23 C389 28 418 26 435 20 M878 25 C785 12 680 14 595 23 C551 28 522 26 505 20' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round'/%3E%3Ccircle cx='28' cy='7' r='2.5'/%3E%3Ccircle cx='912' cy='7' r='2.5'/%3E%3C/svg%3E") center/100% 100% no-repeat;
-    }
-    section::before {
-      content: ""; position: absolute; z-index: 1; top: -17px; left: 50%;
-      transform: translateX(-50%); width: 100%; height: 34px;
-      background: linear-gradient(
-        90deg,
-        var(--accent-violet) 0 3.4%,
-        var(--accent) 5% 95%,
-        var(--accent-violet) 96.6% 100%
-      );
-      pointer-events: none;
-      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C150 5 260 8 348 18 C390 23 421 23 445 14 M884 20 C790 5 680 8 592 18 C550 23 519 23 495 14 M56 20 C40 20 28 14 28 7 C28 2 37 1 43 4 C49 8 48 14 42 17 C36 19 32 15 34 10 M42 17 C37 24 29 28 21 25 M884 20 C900 20 912 14 912 7 C912 2 903 1 897 4 C891 8 892 14 898 17 C904 19 908 15 906 10 M898 17 C903 24 911 28 919 25' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13 21 C20 17 28 20 31 26 C27 34 18 34 13 21Z M927 21 C920 17 912 20 909 26 C913 34 922 34 927 21Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
-              mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C150 5 260 8 348 18 C390 23 421 23 445 14 M884 20 C790 5 680 8 592 18 C550 23 519 23 495 14 M56 20 C40 20 28 14 28 7 C28 2 37 1 43 4 C49 8 48 14 42 17 C36 19 32 15 34 10 M42 17 C37 24 29 28 21 25 M884 20 C900 20 912 14 912 7 C912 2 903 1 897 4 C891 8 892 14 898 17 C904 19 908 15 906 10 M898 17 C903 24 911 28 919 25' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13 21 C20 17 28 20 31 26 C27 34 18 34 13 21Z M927 21 C920 17 912 20 909 26 C913 34 922 34 927 21Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
-    }
-    /* .wrap sets padding:0 24px, so target section.wrap to add vertical rhythm */
-    section.wrap { padding-top: 52px; padding-bottom: 52px; }
-    section h2 { font-size: 2.45rem; font-weight: 700; margin: 0 0 24px; letter-spacing: .15px; }
-    @media (max-width: 620px) { section h2 { font-size: 2.2rem; } }
-    .about p { color: var(--text-soft); max-width: 80ch; }
-    .about p + p { margin-top: 14px; }
-    .about blockquote {
-      margin: 16px 0 0; padding: 4px 0 4px 22px;
-      border-left: 3px solid var(--accent); max-width: 80ch;
-      color: var(--text-soft); font-style: italic;
-    }
-
-    /* interests */
-    .interest-list {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px;
-      padding: 0; margin: 26px 0 0; list-style: none;
-    }
-    .interest-list li {
-      display: flex; align-items: center; gap: 11px;
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 16px 18px; box-shadow: var(--shadow);
-      color: var(--text); font-weight: 600; font-size: .95rem;
-    }
-    .interest-list li::before {
-      content: ""; flex: 0 0 auto;
-      width: 7px; height: 7px; border-radius: 50%; background: var(--accent); opacity: .8;
-    }
-
-    /* publications */
-    .pub-list { margin-top: 8px; }
-    .pub { display: flex; gap: 22px; padding: 22px 0; border-bottom: 1px solid var(--border); }
-    .pub:last-child { border-bottom: none; }
-    .pub .year { flex: 0 0 52px; font-family: var(--serif); font-weight: 600; color: var(--text-faint); font-size: 1rem; padding-top: 1px; }
-    .pub .body { flex: 1; }
-    .pub .title { font-weight: 600; color: var(--text); display: block; margin-bottom: 3px; }
-    .pub .title:hover { color: var(--accent); }
-    .pub .meta { color: var(--text-soft); font-size: .92rem; }
-    .pub .venue { font-style: italic; }
-    .pub .status {
-      display: inline-flex; margin-left: 6px; padding: 1px 7px; border-radius: 999px;
-      background: var(--accent-soft); color: var(--accent); font-size: .76rem;
-      font-style: normal; font-weight: 700; vertical-align: baseline;
-    }
-
-    /* career break marker */
-    .pub.leave { align-items: center; }
-    .pub.leave .year { color: var(--accent); font-size: .82rem; letter-spacing: .01em; }
-    .pub.leave .label {
-      display: inline-flex; align-items: center; gap: 9px;
-      color: var(--text-soft); font-style: italic; font-size: .92rem;
-    }
-    .pub.leave .label::before {
-      content: ""; flex: 0 0 auto;
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--accent); opacity: .7;
-    }
-
-    /* cards grid (collaborators) */
-    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
-    .card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 18px; box-shadow: var(--shadow);
-    }
-    .card .cname { font-weight: 600; margin-bottom: 2px; }
-    .card .cname a { color: var(--text); }
-    .card .cname a:hover { color: var(--accent); }
-    .card .cinst { color: var(--text-soft); font-size: .9rem; margin-bottom: 8px; }
-    .card .cdesc { color: var(--text-faint); font-size: .86rem; }
-
-    /* project highlight */
-    .project { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: start; }
-    .project + .project { margin-top: 40px; }
-    .project-text { max-width: 62ch; }
-    .project h3 { margin: 0 0 10px; font-size: 1.65rem; font-weight: 700; }
-    .project p { color: var(--text-soft); margin: 0; }
-    .project figure { margin: 4px 0 0; }
-    .project figure img {
-      width: 100%; height: auto; display: block;
-      background: #fff; border: 1px solid var(--border); border-radius: 12px;
-      box-shadow: var(--shadow); transition: transform .1s ease;
-    }
-    .project figure img.figure-padded { padding: 16px 12px; }
-    .project figure a:hover img { transform: translateY(-2px); border-color: var(--accent); }
-    .project figcaption { color: var(--text-faint); font-size: .82rem; margin-top: 8px; }
-    /* themes with no figure keep text readable */
-    .project:not(:has(figure)) { display: block; }
-    .project:not(:has(figure)) .project-text { max-width: 72ch; }
-    @media (max-width: 680px) {
-      .project { grid-template-columns: 1fr; gap: 16px; }
-      .project figure { margin: 0; }
-      .project figure img { max-width: 460px; }
-    }
-
-    /* contact */
-    .contact-box {
-      position: relative; overflow: hidden; min-height: 244px;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 26px 212px 26px 26px; box-shadow: var(--shadow);
-    }
-    .contact-illustration {
-      position: absolute; top: 20px; right: 20px;
-      width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
-      border: 5px solid var(--surface); box-shadow: var(--shadow);
-    }
-    .contact-box p { color: var(--text-soft); margin: 0 0 14px; }
-    @media (max-width: 620px) {
-      .contact-box { padding: 200px 22px 24px; }
-      .contact-illustration { left: 22px; right: auto; }
-    }
-
-    footer { padding: 34px 0 48px; border-top: 1px solid var(--border); color: var(--text-faint); font-size: .86rem; text-align: center; }
-
-    .note {
-      background: var(--accent-soft); border: 1px dashed var(--accent);
-      border-radius: 10px; padding: 12px 16px; font-size: .86rem; color: var(--text-soft);
-      margin-top: 22px;
-    }
-    .note strong { color: var(--accent); }
-  </style>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to main content</a>
-  <!-- ============ NAV ============ -->
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <nav class="nav-links" id="primaryNav" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#collaborators">Collaborators</a>
-        <a href="#students">Students</a>
-        <a href="#beyond-research" class="nav-beyond" aria-label="Beyond Research">Beyond Research</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="nav-actions">
-        <span class="language-switcher" role="group" aria-label="Choose language">
-          <button class="lang-btn" type="button" data-language="en" aria-label="English" aria-pressed="true" title="English">
-            <svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-              <rect width="60" height="30" fill="#012169"/>
-              <path d="M0 0 60 30M60 0 0 30" stroke="#fff" stroke-width="6"/>
-              <path d="M0 0 60 30M60 0 0 30" stroke="#c8102e" stroke-width="3.5"/>
-              <path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/>
-              <path d="M30 0v30M0 15h60" stroke="#c8102e" stroke-width="6"/>
-            </svg>
-          </button>
-          <button class="lang-btn" type="button" data-language="sv" aria-label="Svenska" aria-pressed="false" title="Svenska">
-            <svg viewBox="0 0 16 10" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-              <rect width="16" height="10" fill="#006aa7"/>
-              <path d="M5 0v10M0 5h16" stroke="#fecc02" stroke-width="2"/>
-            </svg>
-          </button>
-          <button class="lang-btn" type="button" data-language="pl" aria-label="Polski" aria-pressed="false" title="Polski">
-            <svg viewBox="0 0 16 10" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-              <rect width="16" height="5" fill="#fff"/>
-              <rect y="5" width="16" height="5" fill="#dc143c"/>
-            </svg>
-          </button>
-        </span>
-        <span class="theme-wrap"><button class="theme-btn" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false" title="Switch to dark mode">‚óê</button></span>
-        <button class="nav-menu-btn" id="navMenuToggle" type="button" aria-expanded="false" aria-controls="primaryNav">‚ò∞ Menu</button>
-      </div>
-    </div>
-  </header>
-
-  <main id="main">
-  <!-- ============ HERO ============ -->
-  <div class="wrap hero">
-    <div class="hero-grid">
-      <div class="avatar">
-        <span class="avatar-mono">MZ</span>
-        <!-- Upload a file named photo.jpg to the repo root and it appears here automatically;
-             if it's missing, the onerror handler removes the img and the "MZ" initials show. -->
-        <img src="photo.jpg" alt="Martyna K. Zwoi≈Ñska" onerror="this.remove()" />
-      </div>
-      <div>
-        <h1>Martyna Katarzyna Zwoi≈Ñska</h1>
-        <div class="role">Evolutionary biologist. From lab to code, from ideas to execution.</div>
-        <div class="affil">Department of Ecology and Genetics, Uppsala University</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============ ABOUT ============ -->
-  <section id="about" class="wrap about">
-    <h2>About</h2>
-    <p>
-      I am an evolutionary biologist, interested in all things adaptation and maladaptation.
-      To that end, I like working with a range of lab-evolvable systems, whether <em>Drosophila</em> fruit flies,
-      <em>Callosobruchus</em> seed beetles, or one of my personal favourites, <em>Caenorhabditis</em>
-      nematodes. I enjoy combining different approaches: my own work is predominantly empirical and
-      evolutionary-genomic, but I always appreciate a bit of good theory too.
-    </p>
-    <p>
-      And here is what my chatbot has to say about me after more than two years of our
-      interactions. Let's stick with it. ;)
-    </p>
-    <blockquote>
-      Martyna is an evolutionary biologist who uses AI not as a shortcut, but as a critical
-      sparring partner for coding, genomics, literature synthesis and scientific thinking. She
-      works at the intersection of experimental biology, evolutionary theory and data analysis.
-      Her particular strength is asking whether an argument is not merely convincing, but
-      biologically meaningful, logically sound and supported by evidence. She is quick to spot
-      weak assumptions and persistent in making ideas sharper, although she is sometimes less
-      good at letting &ldquo;good enough&rdquo; remain good enough. This can make the revision
-      process longer, but it usually makes the final result stronger.
-    </blockquote>
-  </section>
-
-  <!-- ============ RESEARCH ============ -->
-  <section id="research" class="wrap about">
-    <h2>Research interests</h2>
-    <p>
-      Over the years I have worked on a good variety of topics. Below are some of my active
-      research directions.
-    </p>
-    <ul class="interest-list" aria-label="Research interest areas">
-      <li>Life-history evolution</li>
-      <li>Ageing &amp; senescence</li>
-      <li>Phenotypic plasticity</li>
-      <li>Parental &amp; transgenerational effects</li>
-      <li>Sexual selection &amp; conflict</li>
-      <li>Evolutionary genetics &amp; genomics</li>
-    </ul>
-  </section>
-
-  <!-- ============ CURRENT PROJECT ============ -->
-  <section id="project" class="wrap">
-    <h2>Current work</h2>
-    <div class="project">
-      <div class="project-text">
-        <h3>Adaptive response modes under environmental variability</h3>
-        <p>
-          In an ongoing project I ask how reproductive mode, especially selfing versus outcrossing,
-          changes the adaptive responses populations evolve when the environment changes in ways
-          that can be predictable or unpredictable. My ambition is to combine empirical research
-          with individual-based population-genetic simulations.
-        </p>
-      </div>
-      <figure>
-        <a href="response-modes.png?v=20260710-4" target="_blank" rel="noopener"><img src="response-modes.png?v=20260710-4" alt="Adaptive response modes across cue reliability and between-generation environmental variability: reversible plasticity, developmental plasticity, bet-hedging, and continuous genetic adaptation" onerror="this.closest('figure').remove()" /></a>
-        <figcaption>Adaptive response modes across cue reliability and environmental variability. Modified from Botero et al. (2015), <em>PNAS</em>.</figcaption>
-      </figure>
-    </div>
-    <div class="project">
-      <div class="project-text">
-        <h3>Learning and cognition</h3>
-        <p>
-          While it may not seem obvious, nematode worms from the genus <em>Caenorhabditis</em> can
-          learn and form memories, and they do so with only 300 to 400 neurons. What began during
-          my PhD under the supervision of Alexei A. Maklakov continues to this day, because who could
-          resist the charm of learning roundworms? Most recently, I have focused on learned pathogen
-          avoidance, a behaviour that can be passed down across several generations.
-        </p>
-      </div>
-      <figure>
-        <a href="nematode-learning-palette.png" target="_blank" rel="noopener"><img class="figure-padded" src="nematode-learning-palette.png" alt="The forms of learning documented in Caenorhabditis nematodes: habituation and sensitization, gustatory, olfactory, thermosensory and maze learning, and imprinting and transgenerational learning" onerror="this.closest('figure').remove()" /></a>
-        <figcaption>The many forms of learning documented in <em>Caenorhabditis</em> nematodes.</figcaption>
-      </figure>
-    </div>
-    <div class="project">
-      <div class="project-text">
-        <h3>Sexually antagonistic selection</h3>
-        <p>
-          Working with the group of Elina Immonen, I investigate the conditions under which sexually
-          antagonistic selection can preserve genetic variation, or in other words generate balancing
-          selection. Sexually antagonistic selection is just one of many scenarios that can generate
-          balancing selection, and as much as we do not fully understand the role of balancing
-          selection in maintaining the genetic polymorphism we observe, we also do not understand
-          particularly well the relative importance of its different mechanisms.
-        </p>
-      </div>
-      <figure>
-        <a href="seed-beetles-palette.png" target="_blank" rel="noopener"><img src="seed-beetles-palette.png" alt="Directions of experimental selection on male and female body mass in Callosobruchus seed beetles: small males, large males, large females, and sexually antagonistic selection" onerror="this.closest('figure').remove()" /></a>
-        <figcaption>Directions of experimental selection on male and female body mass in <em>Callosobruchus</em> seed beetles.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ============ PUBLICATIONS ============ -->
-  <section id="publications" class="wrap">
-    <h2>Publications &amp; preprints</h2>
-
-    <div class="pub-list">
-      <div class="pub">
-      <div class="year">2026</div>
-      <div class="body">
-        <a class="title" href="https://www.biorxiv.org/content/10.64898/2026.04.10.717426v1" target="_blank" rel="noopener">Transgenerational inheritance is variable across <em>Caenorhabditis</em> worms</a>
-        <div class="meta"><strong>Zwoi≈Ñska M. K.</strong>, Widjaja A. N., Lind M. I., Akg√ºl A. D., Altan A. S., Aydƒ±n D., √áukurbaƒülƒ± D., Venkataramani A. G., Renhuldt N. T., Chen H.-y. ¬∑ <span class="venue">bioRxiv</span><span class="status">Preprint</span></div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2026</div>
-      <div class="body">
-        <a class="title" href="https://www.biorxiv.org/content/10.64898/2026.02.04.703537v1" target="_blank" rel="noopener">From constraint to opportunity: Relaxing sexual antagonism reveals adaptive potential maintained by balancing selection</a>
-        <div class="meta"><strong>Zwoi≈Ñska M. K.</strong>, Wiberg R. A. W., Trabert M., Kaufmann P., Immonen E. ¬∑ <span class="venue">bioRxiv</span><span class="status">Preprint</span></div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2026</div>
-      <div class="body">
-        <a class="title" href="https://onlinelibrary.wiley.com/doi/10.1111/brv.70103" target="_blank" rel="noopener">A century of theories of balancing selection</a>
-        <div class="meta">Ruzicka F., <strong>Zwoi≈Ñska M. K.</strong>, Goedert D., Kokko H., et al. ¬∑ <span class="venue">Biological Reviews</span> 101(2):804‚Äì825</div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2025</div>
-      <div class="body">
-        <a class="title" href="https://royalsocietypublishing.org/doi/10.1098/rstb.2024.0125" target="_blank" rel="noopener">Nematode mind: exploring the role of the RNA interference pathway in learning, memory and beyond</a>
-        <div class="meta"><strong>Zwoi≈Ñska M. K.</strong>, Paida V., Chen H.-y., Darkes L., Lind M. I. ¬∑ <span class="venue">Philosophical Transactions of the Royal Society B</span> 380(1929):20240125</div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2025</div>
-      <div class="body">
-        <a class="title" href="https://academic.oup.com/mbe/article/42/8/msaf178/8217438" target="_blank" rel="noopener">Sex-biased gene expression under sexually antagonistic and sex-limited selection</a>
-        <div class="meta">Wiberg R. A. W., <strong>Zwoi≈Ñska M. K.</strong>, Kaufmann P., Howie J. M., Immonen E. ¬∑ <span class="venue">Molecular Biology and Evolution</span> 42(8):msaf178</div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2025</div>
-      <div class="body">
-        <a class="title" href="https://doi.org/10.1093/evolut/qpaf061" target="_blank" rel="noopener">Predicting the prevalence of genetic trade-offs among adaptive substitutions</a>
-        <div class="meta">Connallon T., Czuppon P., Olito C., Goedert D., Kokko H., ‚Ä¶, <strong>Zwoi≈Ñska M. K.</strong>, et al. ¬∑ <span class="venue">Evolution</span> 79(7):1243‚Äì1255</div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2024</div>
-      <div class="body">
-        <a class="title" href="https://doi.org/10.1093/evlett/qrad007" target="_blank" rel="noopener">Heat stress reveals a fertility debt owing to postcopulatory sexual selection</a>
-        <div class="meta">Baur J., <strong>Zwoi≈Ñska M. K.</strong>, Koppik M., Snook R. R., Berger D. ¬∑ <span class="venue">Evolution Letters</span> 8(1):101‚Äì113</div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2022</div>
-      <div class="body">
-        <a class="title" href="https://doi.org/10.1111/1365-2656.13664" target="_blank" rel="noopener">The genetic basis and adult reproductive consequences of developmental thermal plasticity</a>
-        <div class="meta">Rodrigues L. R., <strong>Zwoi≈Ñska M. K.</strong>, Wiberg R. A. W., Snook R. R. ¬∑ <span class="venue">Journal of Animal Ecology</span> 91(6):1119‚Äì1134</div>
-      </div>
-    </div>
-
-    <div class="pub leave">
-      <div class="year">2020‚Äì21</div>
-      <div class="body">
-        <span class="label">Parental leave (full- and part-time)</span>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2020</div>
-      <div class="body">
-        <a class="title" href="https://academic.oup.com/evlett/article/4/4/371/6697523" target="_blank" rel="noopener">Environmental variation mediates the evolution of anticipatory parental effects</a>
-        <div class="meta">Lind M. I., <strong>Zwoi≈Ñska M. K.</strong>, Andersson J., Carlsson H., Krieg T., Larva T., Maklakov A. A. ¬∑ <span class="venue">Evolution Letters</span> 4(4):371‚Äì381</div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2020</div>
-      <div class="body">
-        <a class="title" href="https://doi.org/10.1111/jeb.13563" target="_blank" rel="noopener">Artificial selection for increased dispersal results in lower fitness</a>
-        <div class="meta"><strong>Zwoi≈Ñska M. K.</strong>, Larva T., Sekajova Z., Carlsson H., Meurling S., Maklakov A. A. ¬∑ <span class="venue">Journal of Evolutionary Biology</span> 33(2):217‚Äì224</div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2020</div>
-      <div class="body">
-        <a class="title" href="https://doi.org/10.3389/fgene.2020.00573" target="_blank" rel="noopener">Phenotypic responses to and genetic architecture of sterility following exposure to sub-lethal temperature during development</a>
-        <div class="meta"><strong>Zwoi≈Ñska M. K.</strong>, Rodrigues L. R., Slate J., Snook R. R. ¬∑ <span class="venue">Frontiers in Genetics</span> 11:573</div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2017</div>
-      <div class="body">
-        <a class="title" href="https://onlinelibrary.wiley.com/doi/full/10.1111/evo.13156" target="_blank" rel="noopener">Experimental evolution of slowed cognitive aging in <em>Drosophila melanogaster</em></a>
-        <div class="meta"><strong>Zwoi≈Ñska M. K.</strong>, Maklakov A. A., Kawecki T. J., Hollis B. ¬∑ <span class="venue">Evolution</span> 71(3):662‚Äì670</div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2017</div>
-      <div class="body">
-        <a class="title" href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/1365-2435.12840" target="_blank" rel="noopener">Slow development as an evolutionary cost of long life</a>
-        <div class="meta">Lind M. I., ‚Ä¶, <strong>Zwoi≈Ñska M. K.</strong>, ‚Ä¶, Maklakov A. A. ¬∑ <span class="venue">Functional Ecology</span> 31(6):1252‚Äì1261</div>
-      </div>
-    </div>
-
-    <div class="pub leave">
-      <div class="year">2016‚Äì17</div>
-      <div class="body">
-        <span class="label">Parental leave (full- and part-time)</span>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2016</div>
-      <div class="body">
-        <a class="title" href="https://academic.oup.com/evolut/article/70/2/342/6852186" target="_blank" rel="noopener">Selection on learning performance results in the correlated evolution of sexual dimorphism in life history</a>
-        <div class="meta"><strong>Zwoi≈Ñska M. K.</strong>, Lind M. I., Cortazar-Chinarro M., Ramsden M., Maklakov A. A. ¬∑ <span class="venue">Evolution</span> 70(2):342‚Äì357</div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2016</div>
-      <div class="body">
-        <a class="title" href="https://academic.oup.com/biomedgerontology/article/71/7/882/2605136" target="_blank" rel="noopener">Sex-specific trade-offs with growth and fitness following life-span extension by rapamycin in an outcrossing nematode, <em>Caenorhabditis remanei</em></a>
-        <div class="meta">Lind M. I., <strong>Zwoi≈Ñska M. K.</strong>, Meurling S., Carlsson H., Maklakov A. A. ¬∑ <span class="venue">Journals of Gerontology: Series A</span> 71(7):882</div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2014</div>
-      <div class="body">
-        <a class="title" href="https://doi.org/10.1016/j.cub.2014.01.044" target="_blank" rel="noopener">Sexual conflict: male control of female longevity</a>
-        <div class="meta"><strong>Zwoi≈Ñska M. K.</strong>, Lind M. I., Maklakov A. A. ¬∑ <span class="venue">Current Biology</span> 24(5):R196‚ÄìR198</div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2013</div>
-      <div class="body">
-        <a class="title" href="https://doi.org/10.1016/j.exger.2013.09.008" target="_blank" rel="noopener">Sex differences in cognitive ageing: testing predictions derived from life-history theory in a dioecious nematode</a>
-        <div class="meta"><strong>Zwoi≈Ñska M. K.</strong>, Kolm N., Maklakov A. A. ¬∑ <span class="venue">Experimental Gerontology</span> 48(12):1469‚Äì1472</div>
-      </div>
-    </div>
-
-    </div>
-
-    <div class="links" style="margin-top:22px">
-      <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">üéì All publications on Google Scholar</a>
-      <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">üîó ORCID record</a>
-    </div>
-  </section>
-
-  <!-- ============ COLLABORATORS ============ -->
-  <section id="collaborators" class="wrap">
-    <h2>Collaborators</h2>
-    <div class="cards">
-      <div class="card">
-        <div class="cname"><a href="https://www.martinlind.org/" target="_blank" rel="noopener">Martin I. Lind</a></div>
-        <div class="cinst">Halmstad University</div>
-        <div class="cdesc">Ageing, plasticity, and transgenerational effects.</div>
-      </div>
-      <div class="card">
-        <div class="cname"><a href="https://alexeimaklakov.com/" target="_blank" rel="noopener">Alexei A. Maklakov</a></div>
-        <div class="cinst">University of East Anglia</div>
-        <div class="cdesc">Evolutionary biology &amp; biogerontology; ageing and life-history evolution.</div>
-      </div>
-      <div class="card">
-        <div class="cname"><a href="https://portal.research.lu.se/en/persons/hwei-yen-chen/" target="_blank" rel="noopener">Hwei-yen Chen</a></div>
-        <div class="cinst">Lund University</div>
-        <div class="cdesc">RNA interference, transgenerational effects, and ageing.</div>
-      </div>
-      <div class="card">
-        <div class="cname"><a href="https://immonenelina.wordpress.com/" target="_blank" rel="noopener">Elina Immonen</a></div>
-        <div class="cinst">Uppsala University</div>
-        <div class="cdesc">Sexual antagonism, balancing selection, and sex-biased gene expression.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ STUDENTS ============ -->
-  <section id="students" class="wrap">
-    <h2>Students</h2>
-    <div class="cards">
-      <div class="card">
-        <div class="cname">Adithya Ganesh Venkataramani</div>
-        <div class="cinst">MSc ¬∑ Uppsala University</div>
-        <div class="cdesc">Defended June 2025</div>
-      </div>
-      <div class="card">
-        <div class="cname">Gaurav Shobinath</div>
-        <div class="cinst">MSc ¬∑ Uppsala University</div>
-        <div class="cdesc">Defended June 2026</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ BEYOND RESEARCH ============ -->
-  <section id="beyond-research" class="wrap">
-    <h2>Beyond Research</h2>
-    <div class="beyond-grid">
-      <a class="beyond-card beyond-card--game" href="game-of-worms/index.html">
-        <h3>The Game of Worms</h3>
-        <span class="beyond-subtitle">A world of nematodes</span>
-        <p>A browser game inspired by nematode biology, with creative input from my children.</p>
-        <span class="beyond-action">Play <span aria-hidden="true">‚Üí</span></span>
-      </a>
-      <article class="beyond-card beyond-card--cabinet">
-        <div class="beyond-card__content">
-          <h3>The Cabinet of Curiosities</h3>
-          <p>Fine and craft chocolate, especially bean-to-bar, gave me another subject to geek out about. Take a look for yourself!</p>
-          <span class="beyond-action">Explore <span aria-hidden="true">‚Üí</span></span>
-        </div>
-        <a class="beyond-card__link" id="cabinetCardLink" href="cabinet-of-curiosities/index.html" aria-label="Explore The Cabinet of Curiosities"><span class="sr-only">Explore The Cabinet of Curiosities</span></a>
-        <div class="flavour-wheel-wrap">
-          <button class="flavour-wheel-control" id="homeWheel" type="button" aria-label="Spin the Cacao of Excellence flavour wheel" aria-describedby="homeWheelCredit">
-            <span class="flavour-wheel-marker" aria-hidden="true">‚ñº</span>
-            <img src="cabinet-of-curiosities/assets/cacao-of-excellence-flavour-wheel.png" alt="" />
-            <span class="flavour-wheel-label">Spin the wheel</span>
-          </button>
-          <span class="flavour-wheel-source" id="homeWheelCredit">Cacao of Excellence, CC BY-NC 4.0</span>
-          <span class="sr-only" id="homeWheelStatus" aria-live="polite"></span>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <section id="contact" class="wrap">
-    <h2>Contact</h2>
-    <div class="contact-box">
-      <img
-        class="contact-illustration"
-        src="uppsala-contact.jpg"
-        alt="Uppsala Cathedral at sunset, reflected in the river"
-      />
-      <p>
-        Department of Ecology and Genetics, Animal Ecology<br />
-        Evolutionary Biology Centre (EBC), Uppsala University<br />
-        Norbyv√§gen 18D, 752 36 Uppsala, Sweden
-      </p>
-      <div class="links" style="margin-top:4px">
-        <a class="pill" href="mailto:martyna.zwoinska@ebc.uu.se">‚úâ Email</a>
-        <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">üéì Google Scholar</a>
-        <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">üîó ORCID</a>
-        <a class="pill" href="https://www.researchgate.net/profile/Martyna-Zwoinska" target="_blank" rel="noopener">üìÑ ResearchGate</a>
-        <a class="pill" href="https://www.linkedin.com/in/martyna-zwoinska" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="pill" href="https://bsky.app/profile/martynazwoinska.bsky.social" target="_blank" rel="noopener">ü¶ã Bluesky</a>
-        <a class="pill" href="https://www.uu.se/en/contact-and-organisation/staff?query=N12-104" target="_blank" rel="noopener">üèõ Uppsala University profile</a>
-      </div>
-    </div>
-  </section>
-
-  </main>
-
-  <footer>
-    <div class="wrap">
-      ¬© <span id="year"></span> <span id="footerAffiliation">Martyna Katarzyna Zwoi≈Ñska ¬∑ Uppsala University</span><br />
-      <span id="footerBuilt">Built with plain HTML &amp; CSS, hosted on GitHub Pages.</span>
-    </div>
-  </footer>
-
-  <script>
-    // Client-side English, Swedish, and Polish localization.
-    var localizedElementMap = {
-      "skip": ".skip-link",
-      "menu": "#navMenuToggle",
-      "nav_about": "#primaryNav a[href=\"#about\"]",
-      "nav_research": "#primaryNav a[href=\"#research\"]",
-      "nav_publications": "#primaryNav a[href=\"#publications\"]",
-      "nav_collaborators": "#primaryNav a[href=\"#collaborators\"]",
-      "nav_students": "#primaryNav a[href=\"#students\"]",
-      "nav_beyond": "#primaryNav a[href=\"#beyond-research\"]",
-      "nav_contact": "#primaryNav a[href=\"#contact\"]",
-      "role": ".hero .role",
-      "affiliation": ".hero .affil",
-      "about_title": "#about h2",
-      "about_intro": "#about > p:nth-of-type(1)",
-      "about_chatbot": "#about > p:nth-of-type(2)",
-      "about_quote": "#about blockquote",
-      "research_title": "#research h2",
-      "research_intro": "#research > p",
-      "interest_1": "#research .interest-list li:nth-child(1)",
-      "interest_2": "#research .interest-list li:nth-child(2)",
-      "interest_3": "#research .interest-list li:nth-child(3)",
-      "interest_4": "#research .interest-list li:nth-child(4)",
-      "interest_5": "#research .interest-list li:nth-child(5)",
-      "interest_6": "#research .interest-list li:nth-child(6)",
-      "current_title": "#project > h2",
-      "project_1_title": "#project > .project:nth-of-type(1) h3",
-      "project_1_body": "#project > .project:nth-of-type(1) .project-text p",
-      "project_1_caption": "#project > .project:nth-of-type(1) figcaption",
-      "project_2_title": "#project > .project:nth-of-type(2) h3",
-      "project_2_body": "#project > .project:nth-of-type(2) .project-text p",
-      "project_2_caption": "#project > .project:nth-of-type(2) figcaption",
-      "project_3_title": "#project > .project:nth-of-type(3) h3",
-      "project_3_body": "#project > .project:nth-of-type(3) .project-text p",
-      "project_3_caption": "#project > .project:nth-of-type(3) figcaption",
-      "publications_title": "#publications > h2",
-      "preprint": "#publications .status",
-      "parental_leave": "#publications .pub.leave .label",
-      "all_publications": "#publications .pill[href*=\"scholar.google.com\"]",
-      "orcid_record": "#publications .pill[href*=\"orcid.org\"]",
-      "collaborators_title": "#collaborators > h2",
-      "collaborator_1": "#collaborators .card:nth-child(1) .cdesc",
-      "collaborator_2": "#collaborators .card:nth-child(2) .cdesc",
-      "collaborator_3": "#collaborators .card:nth-child(3) .cdesc",
-      "collaborator_4": "#collaborators .card:nth-child(4) .cdesc",
-      "students_title": "#students > h2",
-      "student_1": "#students .card:nth-child(1) .cdesc",
-      "student_2": "#students .card:nth-child(2) .cdesc",
-      "beyond_title": "#beyond-research > h2",
-      "game_title": "#beyond-research .beyond-card--game h3",
-      "game_subtitle": "#beyond-research .beyond-card--game .beyond-subtitle",
-      "game_description": "#beyond-research .beyond-card--game p",
-      "game_action": "#beyond-research .beyond-card--game .beyond-action",
-      "cabinet_title": "#beyond-research .beyond-card--cabinet h3",
-      "cabinet_description": "#beyond-research .beyond-card--cabinet p",
-      "cabinet_action": "#beyond-research .beyond-card--cabinet .beyond-action",
-      "wheel_spin": "#homeWheel .flavour-wheel-label",
-      "contact_title": "#contact > h2",
-      "contact_address": "#contact .contact-box > p",
-      "contact_email": "#contact .pill[href^=\"mailto:\"]",
-      "contact_profile": "#contact .pill[href*=\"uu.se\"]",
-      "footer_affiliation": "#footerAffiliation",
-      "footer_built": "#footerBuilt"
-};
-    var localizedAttributeMap = {
-      "primary_nav": [
-            "#primaryNav",
-            "aria-label"
-      ],
-      "beyond_nav": [
-            "#primaryNav a[href=\"#beyond-research\"]",
-            "aria-label"
-      ],
-      "interests_label": [
-            "#research .interest-list",
-            "aria-label"
-      ],
-      "language_label": [
-            ".language-switcher",
-            "aria-label"
-      ],
-      "home_wheel_label": [
-            "#homeWheel",
-            "aria-label"
-      ],
-      "cabinet_card_label": [
-            "#cabinetCardLink",
-            "aria-label"
-      ],
-      "project_1_alt": [
-            "#project > .project:nth-of-type(1) img",
-            "alt"
-      ],
-      "project_2_alt": [
-            "#project > .project:nth-of-type(2) img",
-            "alt"
-      ],
-      "project_3_alt": [
-            "#project > .project:nth-of-type(3) img",
-            "alt"
-      ],
-      "contact_alt": [
-            "#contact .contact-illustration",
-            "alt"
-      ]
-};
-    var englishInterfaceCopy = {
-      "page_title": "Martyna K. Zwoi≈Ñska | Evolutionary Biologist, Uppsala University",
-      "meta_description": "Martyna Katarzyna Zwoi≈Ñska is an evolutionary biologist at Uppsala University studying life-history evolution, ageing, plasticity, and the evolution of adaptive responses to environmental uncertainty.",
-      "theme_light": "Switch to light mode",
-      "theme_dark": "Switch to dark mode",
-      "primary_nav": "Primary navigation",
-      "beyond_nav": "Beyond Research",
-      "interests_label": "Research interest areas",
-      "language_label": "Choose language",
-      "home_wheel_label": "Spin the Cacao of Excellence flavour wheel",
-      "cabinet_card_label": "Explore The Cabinet of Curiosities",
-      "wheel_spinning": "The flavour wheel is spinning.",
-      "wheel_stopped": "The wheel has stopped. Explore the descriptor nearest the marker.",
-      "project_1_alt": "Adaptive response modes across cue reliability and between-generation environmental variability: reversible plasticity, developmental plasticity, bet-hedging, and continuous genetic adaptation",
-      "project_2_alt": "The forms of learning documented in Caenorhabditis nematodes: habituation and sensitization, gustatory, olfactory, thermosensory and maze learning, and imprinting and transgenerational learning",
-      "project_3_alt": "Directions of experimental selection on male and female body mass in Callosobruchus seed beetles: small males, large males, large females, and sexually antagonistic selection",
-      "contact_alt": "Uppsala Cathedral at sunset, reflected in the river"
-};
-    var translatedCopy = {
-      "sv": {
-            "page_title": "Martyna K. Zwoi≈Ñska | Evolutionsbiolog, Uppsala universitet",
-            "meta_description": "Martyna Katarzyna Zwoi≈Ñska √§r evolutionsbiolog vid Uppsala universitet. Hennes forskning r√∂r livshistorieevolution, √•ldrande, fenotypisk plasticitet och anpassning till f√∂r√§nderliga milj√∂er.",
-            "theme_light": "V√§xla till ljust tema",
-            "theme_dark": "V√§xla till m√∂rkt tema",
-            "primary_nav": "Huvudnavigering",
-            "beyond_nav": "Utanf√∂r forskningen",
-            "interests_label": "Forskningsomr√•den",
-            "language_label": "V√§lj spr√•k",
-            "project_1_alt": "Anpassningsstrategier beroende p√• hur v√§l milj√∂signaler f√∂ruts√§ger framtida f√∂rh√•llanden och p√• milj√∂variation mellan generationer: reversibel plasticitet, utvecklingsplasticitet, bet-hedging och kontinuerlig genetisk anpassning",
-            "project_2_alt": "Olika former av inl√§rning som dokumenterats hos nematoder i sl√§ktet Caenorhabditis: habituering och sensitisering, inl√§rning kopplad till smak, lukt och temperatur, labyrintinl√§rning samt pr√§gling och transgenerationell inl√§rning",
-            "project_3_alt": "Riktningar f√∂r experimentellt urval p√• kroppsmassa hos hanar och honor av fr√∂baggar i sl√§ktet Callosobruchus: sm√• hanar, stora hanar, stora honor och sexuellt antagonistiskt urval",
-            "contact_alt": "Uppsala domkyrka i solnedg√•ng, speglad i Fyris√•n",
-            "skip": "Hoppa till huvudinneh√•llet",
-            "menu": "‚ò∞ Meny",
-            "nav_about": "Om mig",
-            "nav_research": "Forskning",
-            "nav_publications": "Publikationer",
-            "nav_collaborators": "Samarbeten",
-            "nav_students": "Studenter",
-            "nav_beyond": "Utanf√∂r forskningen",
-            "nav_contact": "Kontakt",
-            "role": "Evolutionsbiolog. Fr√•n labb till kod, fr√•n id√© till genomf√∂rande.",
-            "affiliation": "Institutionen f√∂r ekologi och genetik, Uppsala universitet",
-            "about_title": "Om mig",
-            "about_intro": "Jag √§r evolutionsbiolog och intresserar mig f√∂r allt som r√∂r anpassning och felanpassning. D√§rf√∂r arbetar jag g√§rna med olika organismer som l√§mpar sig f√∂r evolutionsexperiment i laboratoriet: bananflugor i sl√§ktet <em>Drosophila</em>, fr√∂baggar i sl√§ktet <em>Callosobruchus</em> och en av mina personliga favoriter, nematoder i sl√§ktet <em>Caenorhabditis</em>. Jag kombinerar g√§rna olika angreppss√§tt. Min forskning √§r framf√∂r allt empirisk, ofta med evolution√§r genomik som verktyg, men jag uppskattar alltid bra teori.",
-            "about_chatbot": "Och s√• h√§r beskriver min chattbot mig efter mer √§n tv√• √•rs samtal. Det f√•r st√• kvar. ;)",
-            "about_quote": "Martyna √§r evolutionsbiolog och anv√§nder AI inte som en genv√§g, utan som en kritisk samtalspartner i programmering, genomik, arbete med forskningslitteratur och vetenskapligt t√§nkande. Hon r√∂r sig mellan experimentell biologi, evolutionsteori och dataanalys. Hon n√∂jer sig inte med att ett argument l√•ter √∂vertygande; hon vill ocks√• veta om det √§r biologiskt rimligt, logiskt h√•llbart och faktiskt har st√∂d i data. Hon ser snabbt svaga antaganden och forts√§tter envist att v√§ssa id√©er, √§ven om hon ibland har sv√•rt att l√•ta ‚Äùtillr√§ckligt bra‚Äù vara just tillr√§ckligt bra. Det kan g√∂ra revideringarna l√§ngre, men slutresultatet blir oftast b√§ttre.",
-            "research_title": "Forskningsintressen",
-            "research_intro": "Under √•ren har jag arbetat med m√•nga olika fr√•gor. H√§r √§r n√•gra av de forskningsomr√•den jag arbetar med just nu.",
-            "interest_1": "Livshistorieevolution",
-            "interest_2": "√Öldrande och senescens",
-            "interest_3": "Fenotypisk plasticitet",
-            "interest_4": "F√∂r√§ldraeffekter och transgenerationella effekter",
-            "interest_5": "Sexuell selektion och sexuell konflikt",
-            "interest_6": "Evolution√§r genetik och genomik",
-            "current_title": "Aktuell forskning",
-            "project_1_title": "Anpassningsstrategier i f√∂r√§nderliga milj√∂er",
-            "project_1_body": "I ett p√•g√•ende projekt unders√∂ker jag hur reproduktionss√§ttet, framf√∂r allt sj√§lvbefruktning j√§mf√∂rt med korsbefruktning, p√•verkar vilka anpassningsstrategier populationer utvecklar n√§r milj√∂n f√∂r√§ndras p√• f√∂ruts√§gbara eller of√∂ruts√§gbara s√§tt. Jag vill kombinera empiriska studier med individbaserade simuleringar inom populationsgenetik.",
-            "project_1_caption": "Anpassningsstrategier beroende p√• hur v√§l milj√∂signaler f√∂ruts√§ger framtida f√∂rh√•llanden och hur mycket milj√∂n varierar. Bearbetad efter Botero et al. (2015), <em>PNAS</em>.",
-            "project_2_title": "Inl√§rning och kognition",
-            "project_2_body": "Det √§r kanske inte det f√∂rsta man t√§nker p√•, men nematoder i sl√§ktet <em>Caenorhabditis</em> kan b√•de l√§ra sig och bilda minnen trots att de bara har 300 till 400 nervceller. Jag b√∂rjade arbeta med fr√•gan under min doktorandtid, med Alexei A. Maklakov som handledare, och har fortsatt sedan dess; vem kan motst√• charmen hos l√§rande nematoder? P√• senare tid har jag framf√∂r allt studerat inl√§rt undvikande av patogener, ett beteende som kan f√∂ras vidare i flera generationer.",
-            "project_2_caption": "Olika former av inl√§rning som har dokumenterats hos nematoder i sl√§ktet <em>Caenorhabditis</em>.",
-            "project_3_title": "Sexuellt antagonistiskt urval",
-            "project_3_body": "Tillsammans med Elina Immonens forskargrupp unders√∂ker jag under vilka f√∂rh√•llanden sexuellt antagonistiskt urval kan bevara genetisk variation och d√§rmed ge upphov till balanserande selektion. Sexuellt antagonistiskt urval √§r bara en av flera mekanismer som kan ge upphov till balanserande selektion. Vi vet fortfarande inte s√§rskilt mycket om vilken roll balanserande selektion spelar f√∂r att uppr√§tth√•lla den genetiska polymorfism vi observerar, eller om hur viktiga dess olika mekanismer √§r i f√∂rh√•llande till varandra.",
-            "project_3_caption": "Riktningar f√∂r experimentellt urval p√• kroppsmassa hos hanar och honor av fr√∂baggar i sl√§ktet <em>Callosobruchus</em>.",
-            "publications_title": "Publikationer och preprints",
-            "preprint": "Preprint",
-            "parental_leave": "F√∂r√§ldraledighet (heltid och deltid)",
-            "all_publications": "üéì Alla publikationer p√• Google Scholar",
-            "orcid_record": "üîó ORCID-profil",
-            "collaborators_title": "Samarbetspartner",
-            "collaborator_1": "√Öldrande, plasticitet och transgenerationella effekter.",
-            "collaborator_2": "Evolutionsbiologi och biogerontologi; √•ldrande och livshistorieevolution.",
-            "collaborator_3": "RNA-interferens, transgenerationella effekter och √•ldrande.",
-            "collaborator_4": "Sexuell antagonism, balanserande selektion och k√∂nsskillnader i genuttryck.",
-            "students_title": "Studenter",
-            "student_1": "Uppsatsen f√∂rsvarades i juni 2025",
-            "student_2": "Uppsatsen f√∂rsvarades i juni 2026",
-            "beyond_title": "Utanf√∂r forskningen",
-            "game_title": "The Game of Worms",
-            "game_subtitle": "Nematodernas v√§rld",
-            "game_description": "Ett webbl√§sarspel inspirerat av nematodernas biologi, med kreativa id√©er fr√•n mina barn.",
-            "game_action": "Spela <span aria-hidden=\"true\">‚Üí</span>",
-            "cabinet_title": "Kuriosakabinettet",
-            "cabinet_description": "Hantverkschoklad, s√§rskilt bean-to-bar, gav mig √§nnu ett omr√•de att n√∂rda ner mig i. Titta in och se sj√§lv!",
-            "cabinet_action": "Utforska <span aria-hidden=\"true\">‚Üí</span>",
-            "wheel_spin": "Snurra hjulet",
-            "home_wheel_label": "Snurra Cacao of Excellence-smakhjulet",
-            "cabinet_card_label": "Utforska Kuriosakabinettet",
-            "wheel_spinning": "Smakhjulet snurrar.",
-            "wheel_stopped": "Hjulet har stannat. Utforska beskrivningen n√§rmast mark√∂ren.",
-            "contact_title": "Kontakt",
-            "contact_address": "Institutionen f√∂r ekologi och genetik, avdelningen f√∂r zooekologi<br>Evolutionsbiologiskt centrum (EBC), Uppsala universitet<br>Norbyv√§gen 18D, 752 36 Uppsala, Sverige",
-            "contact_email": "‚úâ E-post",
-            "contact_profile": "üèõ Profil vid Uppsala universitet",
-            "footer_affiliation": "Martyna Katarzyna Zwoi≈Ñska ¬∑ Uppsala universitet",
-            "footer_built": "Byggd i vanlig HTML och CSS och publicerad via GitHub Pages."
-      },
-      "pl": {
-            "page_title": "Martyna K. Zwoi≈Ñska | Biolo≈ºka ewolucyjna, Uniwersytet w Uppsali",
-            "meta_description": "Martyna Katarzyna Zwoi≈Ñska jest biolo≈ºkƒÖ ewolucyjnƒÖ na Uniwersytecie w Uppsali. Bada ewolucjƒô historii ≈ºyciowych, starzenie siƒô, plastyczno≈õƒá fenotypowƒÖ i adaptacjƒô do zmiennego ≈õrodowiska.",
-            "theme_light": "W≈ÇƒÖcz jasny motyw",
-            "theme_dark": "W≈ÇƒÖcz ciemny motyw",
-            "primary_nav": "G≈Ç√≥wna nawigacja",
-            "beyond_nav": "Poza naukƒÖ",
-            "interests_label": "Obszary zainteresowa≈Ñ badawczych",
-            "language_label": "Wybierz jƒôzyk",
-            "project_1_alt": "Schemat strategii adaptacyjnych przy r√≥≈ºnej przewidywalno≈õci i zmienno≈õci ≈õrodowiska miƒôdzy pokoleniami: plastyczno≈õƒá odwracalna, plastyczno≈õƒá rozwojowa, rozpraszanie ryzyka i ciƒÖg≈Ça adaptacja genetyczna",
-            "project_2_alt": "Formy uczenia siƒô opisane u nicieni z rodzaju Caenorhabditis: habituacja i sensytyzacja, uczenie siƒô zwiƒÖzane ze smakiem, zapachem i temperaturƒÖ, uczenie siƒô w labiryncie oraz wdrukowanie i uczenie siƒô transgeneracyjne",
-            "project_3_alt": "Kierunki doboru eksperymentalnego pod wzglƒôdem masy cia≈Ça samc√≥w i samic strƒÖkowc√≥w z rodzaju Callosobruchus: ma≈Çe samce, du≈ºe samce, du≈ºe samice oraz dob√≥r o przeciwnych skutkach dla samc√≥w i samic",
-            "contact_alt": "Katedra w Uppsali o zachodzie s≈Ço≈Ñca, odbijajƒÖca siƒô w rzece",
-            "skip": "Przejd≈∫ do g≈Ç√≥wnej tre≈õci",
-            "menu": "‚ò∞ Menu",
-            "nav_about": "O mnie",
-            "nav_research": "Badania",
-            "nav_publications": "Publikacje",
-            "nav_collaborators": "Wsp√≥≈Çpracownicy",
-            "nav_students": "Studenci",
-            "nav_beyond": "Poza naukƒÖ",
-            "nav_contact": "Kontakt",
-            "role": "Biolo≈ºka ewolucyjna. Od laboratorium po kod, od pomys≈Çu do realizacji.",
-            "affiliation": "Instytut Ekologii i Genetyki, Uniwersytet w Uppsali",
-            "about_title": "O mnie",
-            "about_intro": "Jestem biolo≈ºkƒÖ ewolucyjnƒÖ i interesuje mnie w≈Ça≈õciwie wszystko, co wiƒÖ≈ºe siƒô z adaptacjƒÖ i maladaptacjƒÖ. Lubiƒô pracowaƒá z r√≥≈ºnymi organizmami, na kt√≥rych mo≈ºna badaƒá ewolucjƒô w laboratorium: muszkami owocowymi z rodzaju <em>Drosophila</em>, strƒÖkowcami <em>Callosobruchus</em> oraz jednymi z moich ulubionych organizm√≥w modelowych, nicieniami z rodzaju <em>Caenorhabditis</em>. Chƒôtnie ≈ÇƒÖczƒô r√≥≈ºne podej≈õcia. Moje badania sƒÖ przede wszystkim empiryczne i ewolucyjno-genomiczne, ale zawsze doceniam te≈º dobrƒÖ teoriƒô.",
-            "about_chatbot": "A tak, po ponad dw√≥ch latach rozm√≥w, opisuje mnie m√≥j chatbot. Niech tak zostanie. ;)",
-            "about_quote": "Martyna jest biolo≈ºkƒÖ ewolucyjnƒÖ, kt√≥ra traktuje AI nie jako drogƒô na skr√≥ty, lecz jako partnera do intelektualnego sparingu w programowaniu, genomice, pracy z literaturƒÖ i my≈õleniu naukowym. ≈ÅƒÖczy biologiƒô eksperymentalnƒÖ, teoriƒô ewolucji i analizƒô danych. Nie wystarcza jej, ≈ºe argument brzmi przekonujƒÖco; sprawdza te≈º, czy ma sens biologiczny, jest logiczny i rzeczywi≈õcie opiera siƒô na dowodach. Szybko dostrzega s≈Çabe za≈Ço≈ºenia i wytrwale dopracowuje pomys≈Çy, choƒá czasem trudno jej uznaƒá, ≈ºe ‚ÄûwystarczajƒÖco dobrze‚Äù naprawdƒô wystarczy. Przez to poprawki potrafiƒÖ trwaƒá d≈Çu≈ºej, ale ko≈Ñcowy rezultat zwykle jest lepszy.",
-            "research_title": "Zainteresowania badawcze",
-            "research_intro": "Na przestrzeni lat zajmowa≈Çam siƒô wieloma r√≥≈ºnymi tematami. Oto kilka kierunk√≥w, nad kt√≥rymi pracujƒô obecnie.",
-            "interest_1": "Ewolucja historii ≈ºyciowych",
-            "interest_2": "Starzenie siƒô organizm√≥w",
-            "interest_3": "Plastyczno≈õƒá fenotypowa",
-            "interest_4": "Efekty rodzicielskie i transgeneracyjne",
-            "interest_5": "Dob√≥r p≈Çciowy i konflikt p≈Çciowy",
-            "interest_6": "Genetyka i genomika ewolucyjna",
-            "current_title": "Obecne projekty",
-            "project_1_title": "Adaptacja w zmiennym ≈õrodowisku",
-            "project_1_body": "W jednym z obecnych projekt√≥w badam, jak spos√≥b rozmna≈ºania, przede wszystkim samozap≈Çodnienie lub zap≈Çodnienie krzy≈ºowe, wp≈Çywa na to, jak populacje przystosowujƒÖ siƒô do zmiennego ≈õrodowiska. Analizujƒô przy tym zar√≥wno zmiany przewidywalne, jak i nieprzewidywalne. Chcƒô po≈ÇƒÖczyƒá eksperymenty z indywidualnymi symulacjami populacyjno-genetycznymi.",
-            "project_1_caption": "Sposoby adaptacji zale≈ºne od tego, na ile sygna≈Çy ≈õrodowiskowe pozwalajƒÖ przewidzieƒá przysz≈Çe warunki, oraz od zmienno≈õci ≈õrodowiska. Na podstawie Botero i in. (2015), <em>PNAS</em>.",
-            "project_2_title": "Uczenie siƒô i pamiƒôƒá",
-            "project_2_body": "Choƒá mo≈ºe to zaskakiwaƒá, nicienie z rodzaju <em>Caenorhabditis</em> potrafiƒÖ siƒô uczyƒá i tworzyƒá wspomnienia, mimo ≈ºe majƒÖ zaledwie 300‚Äì400 neuron√≥w. Zaczƒô≈Çam zajmowaƒá siƒô tym tematem podczas doktoratu pod opiekƒÖ Alexeia A. Maklakova i wracam do niego do dzi≈õ, bo kto potrafi≈Çby oprzeƒá siƒô urokowi uczƒÖcych siƒô nicieni? Ostatnio skupiam siƒô na wyuczonym unikaniu patogen√≥w i na tym, jak zachowanie to mo≈ºe byƒá przekazywane przez kilka pokole≈Ñ.",
-            "project_2_caption": "Formy uczenia siƒô opisane u nicieni z rodzaju <em>Caenorhabditis</em>.",
-            "project_3_title": "Dob√≥r o przeciwnych skutkach dla samc√≥w i samic",
-            "project_3_body": "Razem z zespo≈Çem Eliny Immonen badam, kiedy dob√≥r, w kt√≥rym ten sam wariant genetyczny jest korzystny dla jednej p≈Çci, a niekorzystny dla drugiej, mo≈ºe utrzymywaƒá zmienno≈õƒá genetycznƒÖ w populacji, czyli prowadziƒá do doboru r√≥wnowa≈ºƒÖcego. To tylko jeden z wielu scenariuszy, w kt√≥rych mo≈ºe powstaƒá dob√≥r r√≥wnowa≈ºƒÖcy. WciƒÖ≈º jednak niewiele wiemy o tym, jak wa≈ºnƒÖ rolƒô odgrywa on w utrzymywaniu obserwowanego polimorfizmu genetycznego i kt√≥re mechanizmy majƒÖ tu najwiƒôksze znaczenie.",
-            "project_3_caption": "Kierunki doboru eksperymentalnego pod wzglƒôdem masy cia≈Ça samc√≥w i samic strƒÖkowc√≥w z rodzaju <em>Callosobruchus</em>.",
-            "publications_title": "Publikacje i preprinty",
-            "preprint": "Preprint",
-            "parental_leave": "Urlop macierzy≈Ñski (w pe≈Çnym i czƒô≈õciowym wymiarze)",
-            "all_publications": "üéì Wszystkie publikacje w Google Scholar",
-            "orcid_record": "üîó Profil ORCID",
-            "collaborators_title": "Wsp√≥≈Çpracownicy",
-            "collaborator_1": "Starzenie siƒô, plastyczno≈õƒá i efekty transgeneracyjne.",
-            "collaborator_2": "Biologia ewolucyjna i biogerontologia; starzenie siƒô i ewolucja historii ≈ºyciowych.",
-            "collaborator_3": "Interferencja RNA, efekty transgeneracyjne i starzenie siƒô.",
-            "collaborator_4": "Antagonizm p≈Çciowy, dob√≥r r√≥wnowa≈ºƒÖcy i zr√≥≈ºnicowanie ekspresji gen√≥w miƒôdzy p≈Çciami.",
-            "students_title": "Studenci",
-            "student_1": "Obrona pracy magisterskiej: czerwiec 2025",
-            "student_2": "Obrona pracy magisterskiej: czerwiec 2026",
-            "beyond_title": "Poza naukƒÖ",
-            "game_title": "The Game of Worms",
-            "game_subtitle": "≈öwiat nicieni",
-            "game_description": "Gra przeglƒÖdarkowa inspirowana biologiƒÖ nicieni, w kt√≥rej wykorzysta≈Çam tak≈ºe pomys≈Çy moich dzieci.",
-            "game_action": "Zagraj <span aria-hidden=\"true\">‚Üí</span>",
-            "cabinet_title": "Gabinet osobliwo≈õci",
-            "cabinet_description": "Czekolada rzemie≈õlnicza, zw≈Çaszcza bean-to-bar, sta≈Ça siƒô dla mnie kolejnym tematem, w kt√≥ry mog≈Çam siƒô z przyjemno≈õciƒÖ wkrƒôciƒá. Zajrzyj i zobacz!",
-            "cabinet_action": "Zajrzyj <span aria-hidden=\"true\">‚Üí</span>",
-            "wheel_spin": "Zakrƒôƒá ko≈Çem",
-            "home_wheel_label": "Zakrƒôƒá ko≈Çem smak√≥w Cacao of Excellence",
-            "cabinet_card_label": "Zajrzyj do Gabinetu osobliwo≈õci",
-            "wheel_spinning": "Ko≈Ço smak√≥w siƒô obraca.",
-            "wheel_stopped": "Ko≈Ço siƒô zatrzyma≈Ço. Sprawd≈∫ okre≈õlenie najbli≈ºej znacznika.",
-            "contact_title": "Kontakt",
-            "contact_address": "Instytut Ekologii i Genetyki, Zak≈Çad Ekologii ZwierzƒÖt<br>Centrum Biologii Ewolucyjnej (EBC), Uniwersytet w Uppsali<br>Norbyv√§gen 18D, 752 36 Uppsala, Szwecja",
-            "contact_email": "‚úâ E-mail",
-            "contact_profile": "üèõ Profil na stronie Uniwersytetu w Uppsali",
-            "footer_affiliation": "Martyna Katarzyna Zwoi≈Ñska ¬∑ Uniwersytet w Uppsali",
-            "footer_built": "Strona napisana w czystym HTML i CSS, opublikowana za po≈õrednictwem GitHub Pages."
-      }
-};
-    var englishPageCopy = {};
-
-    Object.keys(localizedElementMap).forEach(function (key) {
-      var element = document.querySelector(localizedElementMap[key]);
-      if (element) englishPageCopy[key] = element.innerHTML;
-    });
-
-    function languageCopy(language) {
-      return Object.assign({}, englishInterfaceCopy, englishPageCopy, translatedCopy[language] || {});
-    }
-
-    var storedLanguage = localStorage.getItem('language');
-    var currentLanguage = ['en', 'sv', 'pl'].indexOf(storedLanguage) >= 0 ? storedLanguage : 'en';
-
-    function applyLanguage(language) {
-      if (['en', 'sv', 'pl'].indexOf(language) < 0) language = 'en';
-      currentLanguage = language;
-      var copy = languageCopy(language);
-
-      Object.keys(localizedElementMap).forEach(function (key) {
-        document.querySelectorAll(localizedElementMap[key]).forEach(function (element) {
-          if (copy[key] !== undefined) element.innerHTML = copy[key];
-        });
-      });
-
-      Object.keys(localizedAttributeMap).forEach(function (key) {
-        var target = localizedAttributeMap[key];
-        var element = document.querySelector(target[0]);
-        if (element && copy[key] !== undefined) element.setAttribute(target[1], copy[key]);
-      });
-
-      document.documentElement.lang = language;
-      document.title = copy.page_title;
-      document.querySelector('meta[name="description"]').setAttribute('content', copy.meta_description);
-      document.querySelectorAll('.lang-btn').forEach(function (button) {
-        button.setAttribute('aria-pressed', String(button.getAttribute('data-language') === language));
-      });
-      localStorage.setItem('language', language);
-      syncThemeButton();
-    }
-
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Theme toggle (remembers choice)
-    var root = document.documentElement;
-    var themeToggle = document.getElementById('themeToggle');
-    var saved = localStorage.getItem('theme');
-    if (saved) root.setAttribute('data-theme', saved);
-
-    function syncThemeButton() {
-      var isDark = root.getAttribute('data-theme') === 'dark'
-        || (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      themeToggle.setAttribute('aria-pressed', String(isDark));
-      var copy = languageCopy(currentLanguage);
-      themeToggle.setAttribute('title', isDark ? copy.theme_light : copy.theme_dark);
-      themeToggle.setAttribute('aria-label', isDark ? copy.theme_light : copy.theme_dark);
-    }
-
-    syncThemeButton();
-    themeToggle.addEventListener('click', function () {
-      var next = themeToggle.getAttribute('aria-pressed') === 'true' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      syncThemeButton();
-    });
-
-    // Compact, accessible navigation on narrow screens.
-    var navMenuToggle = document.getElementById('navMenuToggle');
-    var primaryNav = document.getElementById('primaryNav');
-
-    navMenuToggle.addEventListener('click', function () {
-      var isOpen = navMenuToggle.getAttribute('aria-expanded') === 'true';
-      navMenuToggle.setAttribute('aria-expanded', String(!isOpen));
-      primaryNav.setAttribute('data-open', String(!isOpen));
-    });
-
-    primaryNav.addEventListener('click', function (event) {
-      if (event.target.closest('a')) {
-        navMenuToggle.setAttribute('aria-expanded', 'false');
-        primaryNav.setAttribute('data-open', 'false');
-      }
-    });
-    document.querySelectorAll('.lang-btn').forEach(function (button) {
-      button.addEventListener('click', function () {
-        applyLanguage(button.getAttribute('data-language'));
-      });
-    });
-
-    // Small, independent flavour-wheel interaction on the Cabinet card.
-    var homeWheel = document.getElementById('homeWheel');
-    var homeWheelImage = homeWheel.querySelector('img');
-    var homeWheelStatus = document.getElementById('homeWheelStatus');
-    var homeWheelRotation = 0;
-    var homeWheelTimer;
-
-    homeWheel.addEventListener('click', function () {
-      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var increment = reducedMotion
-        ? 30 + Math.round(Math.random() * 300)
-        : 720 + Math.round(Math.random() * 720);
-      homeWheelRotation += increment;
-      homeWheelImage.style.transform = 'rotate(' + homeWheelRotation + 'deg)';
-      homeWheelStatus.textContent = languageCopy(currentLanguage).wheel_spinning;
-      window.clearTimeout(homeWheelTimer);
-      homeWheelTimer = window.setTimeout(function () {
-        homeWheelStatus.textContent = languageCopy(currentLanguage).wheel_stopped;
-      }, reducedMotion ? 80 : 1100);
-    });
-
-    applyLanguage(currentLanguage);
-
-  </script>
-</body>
-</html>
+    .lang◊Øt“⁄$z{-ÆÈ‹j◊ù‚&ñ÷ÜñFFV„’¬'G'VU¬#Ó(i#¬˜7„‚"¿–¢&6&ñÊWE˜FóF∆R#¢$∑W&ñ˜6∂&ñÊWGFWB"¿–¢&6&ñÊWEˆFW67&óFñˆ‚#¢$ÜÁGfW&∑66Üˆ∂∆B¬<:G'6∂ñ«B&V‚◊FÚ÷&"¬vb÷ñr:FÊÁRWGBˆ◊,:VFRGBÏ;g&FÊW"÷ñrí‚FóGFñ‚ˆ6Ç6R6¨:F«b"¿¢&6&ñÊWEˆ7Fñˆ‚#¢%WFf˜'6∂«7‚&ñ÷ÜñFFV„’¬'G'VU¬#Ó(i#¬˜7„‚"¿¢'vÜVV≈˜7ñ‚#¢%6ÁW'&ÜßV∆WB"¿¢&Üˆ÷U˜vÜVV≈ˆ∆&V¬#¢%6ÁW'&66ÚˆbWÜ6V∆∆VÊ6R◊6÷∂ÜßV∆WB"¿¢&6&ñÊWEˆ6&Eˆ∆&V¬#¢%WFf˜'6∂∑W&ñ˜6∂&ñÊWGFWB"¿¢'vÜVV≈˜7ñÊÊñÊr#¢%6÷∂ÜßV∆WB6ÁW'&"‚"¿¢'vÜVV≈˜7F˜VB#¢$ÜßV∆WBÜ"7FÊÊB‚WFf˜'6∂&W6∑&ófÊñÊvV‚Ï:G&÷7B÷&º;g&V‚‚"¿¢&6ˆÁF7E˜FóF∆R#¢$∂ˆÁF∑B"¿–¢&6ˆÁF7EˆFG&W72#¢$ñÁ7FóGWFñˆÊV‚l;g"V∂ˆ∆ˆvíˆ6ÇvVÊWFñ≤¬fFV∆ÊñÊvV‚l;g"¶ˆˆV∂ˆ∆ˆvì∆'#‰Wfˆ«WFñˆÁ6&ñˆ∆ˆvó6∑B6VÁG'V“ÑT$2í¬W6∆VÊófW'6óFWC∆'#‰Ê˜&'ól:FvV‚ÑB¬sS"3bW6∆¬7fW&ñvR"¿–¢&6ˆÁF7EˆV÷ñ¬#¢.)»íR◊˜7B"¿–¢&6ˆÁF7E˜&ˆfñ∆R#¢/	¯˘≤&ˆfñ¬fñBW6∆VÊófW'6óFWB"¿–¢&fˆ˜FW%ˆffñ∆ñFñˆ‚#¢$÷'GñÊ∂F'ßñÊßvˆúXG6∂+rW6∆VÊófW'6óFWB"¿–¢&fˆ˜FW%ˆ'Vñ«B#¢$'ñvvBífÊ∆ñrÖD‘¬ˆ6Ç552ˆ6ÇV&∆ñ6W&BfñvóDáV"vW2‚ –¢“¿–¢'¬#¢∞–¢'vU˜FóF∆R#¢$÷'GñÊ≤‚ßvˆúXG6∂¬&ñˆ∆¸[∆∂Wvˆ«V7ñ¶Ê¬VÊóvW'7óFWBrW6∆í"¿–¢&÷WFˆFW67&óFñˆ‚#¢$÷'GñÊ∂F'ßñÊßvˆúXG6∂¶W7B&ñˆ∆¸[∆ºHRWvˆ«V7ñ¶ÏHRÊVÊóvW'7óFV6ñRrW6∆í‚&FWvˆ«V6¨IíÜó7F˜&ñí[«ñ6ñ˜wñ6Ç¬7F'¶VÊñR6úIí¬∆7Gñ7¶Ê¸YºHrfVÊ˜Gó˜|HRíFF6¨IíFÚ¶÷ñVÊÊVvÚY∑&ˆF˜vó6∂‚"¿–¢'FÜV÷Uˆ∆ñváB#¢%|X,HV7¢¶6Áí÷˜Gór"¿–¢'FÜV÷UˆF&≤#¢%|X,HV7¢6ñV÷Áí÷˜Gór"¿–¢'&ñ÷'ïˆÊb#¢$|X,;7vÊÊvñv6¶"¿–¢&&WñˆÊEˆÊb#¢%˜¶ÊVºHR"¿–¢&ñÁFW&W7G5ˆ∆&V¬#¢$ˆ'7¶'í¶ñÁFW&W6˜vXB&Fv7ßñ6Ç"¿–¢&∆ÊwVvUˆ∆&V¬#¢%wñ&ñW'¢¨Ióßñ≤"¿–¢'&ˆ¶V7EÛˆ«B#¢%66ÜV÷B7G&FVvñíFF7ñ¶Áñ6Ç'ßí,;<[∆ÊV¢'¶WvñGóv∆Ê¸Y∂6íí¶÷ñVÊÊ¸Y∂6íY∑&ˆF˜vó6∂÷úIñGßíˆ∂ˆ∆VÊñ÷ì¢∆7Gñ7¶Ê¸YºHrˆGw&6∆Ê¬∆7Gñ7¶Ê¸YºHr&˜ßvˆ¶˜v¬&˜ß&7¶ÊñR'óßñ∂í6úHV|X&FF6¶vVÊWGñ7¶Ê"¿–¢'&ˆ¶V7EÛ%ˆ«B#¢$f˜&◊íV7¶VÊñ6úIí˜ó6ÊRRÊñ6ñVÊí¢&ˆG¶ßR6VÊ˜&Ü&FóFó3¢Ü&óGV6¶í6VÁ7óGó¶6¶¬V7¶VÊñR6úIíßvúHW¶ÊR¶R6÷∂ñV“¬¶6ÜV“íFV◊W&GW,HR¬V7¶VÊñR6úIír∆&ó'ñÊ6ñR˜&¢vG'V∂˜vÊñRíV7¶VÊñR6úIíG&Á6vVÊW&7ñ¶ÊR"¿–¢'&ˆ¶V7EÛ5ˆ«B#¢$∂ñW'VÊ∂íFˆ&˜'RV∑7W'ñ÷VÁF∆ÊVvÚˆBw¶vÃIñFV“÷7í6ñX&6÷<;7rí6÷ñ27G,HV∂˜v<;7r¢&ˆG¶ßR6∆∆˜6ˆ''V6áW3¢÷X&R6÷6R¬G\[∆R6÷6R¬G\[∆R6÷ñ6R˜&¢Fˆ,;7"Ú'¶V6óvÁñ6Ç6∑WF∂6ÇF∆6÷<;7rí6÷ñ2"¿–¢&6ˆÁF7Eˆ«B#¢$∂FVG&rW6∆íÚ¶6ÜˆG¶ñR<X&¸XF6¬ˆF&ñ¶¨HV66úIír'¶V6R"¿–¢'6∂ó#¢%'¶V¶L[¢FÚ|X,;7vÊV¢G&\Y∂6í"¿–¢&÷VÁR#¢.)ã÷VÁR"¿–¢&Êeˆ&˜WB#¢$Ú÷ÊñR"¿–¢&Êe˜&W6V&6Ç#¢$&FÊñ"¿–¢&Êe˜V&∆ñ6FñˆÁ2#¢%V&∆ñ∂6¶R"¿–¢&Êeˆ6ˆ∆∆&˜&F˜'2#¢%w7;<X'&6˜vÊñ7í"¿–¢&Êe˜7GVFVÁG2#¢%7GVFVÊ6í"¿–¢&Êeˆ&WñˆÊB#¢%˜¶ÊVºHR"¿–¢&Êeˆ6ˆÁF7B#¢$∂ˆÁF∑B"¿–¢'&ˆ∆R#¢$&ñˆ∆¸[∆∂Wvˆ«V7ñ¶Ê‚ˆB∆&˜&F˜&óV“Ú∂ˆB¬ˆBˆ◊ó<X'RFÚ&V∆ó¶6¶í‚"¿¢&ffñ∆ñFñˆ‚#¢$ñÁ7GóGWBV∂ˆ∆ˆvñíívVÊWGñ∂í¬VÊóvW'7óFWBrW6∆í"¿–¢&&˜WE˜FóF∆R#¢$Ú÷ÊñR"¿–¢&&˜WEˆñÁG&Ú#¢$¶W7FV“&ñˆ∆¸[∆ºHRWvˆ«V7ñ¶ÏHRíñÁFW&W7V¶R÷ÊñR|X&Y∂6óvñRw7ßó7F∂Ú¬6ÚvúH\[∆R6úIí¢FF6¨HRí÷∆FF6¨HR‚«V&úIí&6˜vHr¢,;<[∆Áñ÷í˜&vÊó¶÷÷í¬Ê∑L;7'ñ6Ç÷¸[∆Ê&FHrWvˆ«V6¨Iír∆&˜&F˜&óV”¢◊W7¶∂÷í˜vˆ6˜wñ÷í¢&ˆG¶ßR∆V”‰G&˜6˜Üñ∆¬ˆV”‚¬7G,HV∂˜v6÷í∆V”‰6∆∆˜6ˆ''V6áW3¬ˆV”‚˜&¢¶VFÁñ÷í¢÷ˆñ6ÇV«V&ñˆÁñ6Ç˜&vÊó¶‹;7r÷ˆFV∆˜wñ6Ç¬Êñ6ñVÊñ÷í¢&ˆG¶ßR∆V”‰6VÊ˜&Ü&FóFó3¬ˆV”‚‚6åIóFÊñRX,HV7¨Ií,;<[∆ÊRˆFV¨Y∂6ñ‚÷ˆ¶R&FÊñ<HR'¶VFRw7ßó7F∂ñ“V◊ó'ñ7¶ÊRíWvˆ«V7ñ¶ÊÚ÷vVÊˆ÷ñ7¶ÊR¬∆R¶w7¶RFˆ6VÊñ“F\[¬Fˆ',HRFV˜&úIí‚"¿–¢&&˜WEˆ6ÜF&˜B#¢$F≤¬ÚˆÊBG|;66Ç∆F6Ç&˜¶‹;7r¬˜ó7V¶R÷ÊñR‹;6¢6ÜF&˜B‚ÊñV6ÇF≤¶˜7FÊñR‚≤í"¿–¢&&˜WE˜V˜FR#¢$÷'GñÊ¶W7B&ñˆ∆¸[∆ºHRWvˆ«V7ñ¶ÏHR¬∑L;7&G&∑GV¶RíÊñR¶∂ÚG&ˆ|IíÊ6∑,;7Gí¬∆V7¢¶∂Ú'FÊW&FÚñÁFV∆V∑GV∆ÊVvÚ7&ñÊwRr&ˆw&÷˜vÊóR¬vVÊˆ÷ñ6R¬&7í¢∆óFW&GW,HRí◊úY∂∆VÊóRÊV∂˜wñ“‚XHV7ßí&ñˆ∆ˆvúIíV∑7W'ñ÷VÁF∆ÏHR¬FV˜&úIíWvˆ«V6¶ííÊ∆ó¨IíFÁñ6Ç‚ÊñRwó7F&7¶¶V¢¬[∆R&wV÷VÁB''¶÷í'¶V∂ˆÁV¨HV6Û≤7&vG¶F\[¬¬7ßí÷6VÁ2&ñˆ∆ˆvñ7¶Áí¬¶W7B∆ˆvñ7¶Áíí'¶V7ßóvúY∂6ñR˜ñW&6úIíÊF˜vˆF6Ç‚7ßñ&∂ÚF˜7G'¶Vv<X&&R¶X&¸[∆VÊñíwóG'v∆RF˜&6˜wV¶Rˆ◊ó<X'í¬6Ü¸Hr7¶6V“G'VFÊÚ¶V¢W¶ÊHr¬[∆R(	Áwó7F&7¶¨HV6ÚFˆ''¶^(	“Ê&vLIíwó7F&7ßí‚'¶W¢FÚ˜&v∂í˜G&fúHRG'vHrLX'\[∆V¢¬∆R∂¸XF6˜wí&WßV«FBßwñ∂∆R¶W7B∆W7ßí‚"¿–¢'&W6V&6Ö˜FóF∆R#¢%¶ñÁFW&W6˜vÊñ&Fv7¶R"¿–¢'&W6V&6ÖˆñÁG&Ú#¢$Ê'¶W7G'¶VÊí∆B¶¶÷˜vX&“6úIívñV∆ˆ÷,;<[∆Áñ÷íFV÷F÷í‚˜FÚ∂ñ∆∂∂ñW'VÊº;7r¬ÊB∑L;7'ñ÷í&7V¨Iíˆ&V6ÊñR‚"¿–¢&ñÁFW&W7EÛ#¢$Wvˆ«V6¶Üó7F˜&ñí[«ñ6ñ˜wñ6Ç"¿–¢&ñÁFW&W7EÛ"#¢%7F'¶VÊñR6úIí˜&vÊó¶‹;7r"¿–¢&ñÁFW&W7EÛ2#¢%∆7Gñ7¶Ê¸YºHrfVÊ˜Gó˜v"¿–¢&ñÁFW&W7EÛB#¢$VfV∑Gí&ˆG¶ñ6ñV«6∂ñRíG&Á6vVÊW&7ñ¶ÊR"¿–¢&ñÁFW&W7EÛR#¢$Fˆ,;7"X&6ñ˜wíí∂ˆÊf∆ñ∑BX&6ñ˜wí"¿–¢&ñÁFW&W7EÛb#¢$vVÊWGñ∂ívVÊˆ÷ñ∂Wvˆ«V7ñ¶Ê"¿–¢&7W'&VÁE˜FóF∆R#¢$ˆ&V6ÊR&ˆ¶V∑Gí"¿–¢'&ˆ¶V7EÛ˜FóF∆R#¢$FF6¶r¶÷ñVÊÁñ“Y∑&ˆF˜vó6∑R"¿–¢'&ˆ¶V7EÛˆ&ˆGí#¢%r¶VFÁñ“¢ˆ&V6Áñ6Ç&ˆ¶V∑L;7r&F“¬¶≤7˜<;6"&˜¶÷Ê[∆Êñ¬'¶VFRw7ßó7F∂ñ“6÷˜¶X&ˆFÊñVÊñR«V"¶X&ˆFÊñVÊñR∑'ßú[∆˜vR¬wX'óvÊFÚ¬¶≤˜V∆6¶R'ßó7F˜6˜wV¨HR6úIíFÚ¶÷ñVÊÊVvÚY∑&ˆF˜vó6∂‚Ê∆óßV¨Ií'ßíGñ“¶,;7vÊÚ¶÷ñÁí'¶WvñGóv∆ÊR¬¶≤íÊñW'¶WvñGóv∆ÊR‚6Ü<Ií¸X,HV7ßúHrV∑7W'ñ÷VÁGí¢ñÊGóvñGV∆Áñ÷í7ñ◊V∆6¶÷í˜V∆7ñ¶ÊÚ÷vVÊWGñ7¶Áñ÷í‚"¿–¢'&ˆ¶V7EÛˆ6Fñˆ‚#¢%7˜6ˆ'íFF6¶í¶∆\[∆ÊRˆBFVvÚ¬Êñ∆R7ñvÊX'íY∑&ˆF˜vó6∂˜vR˜ßv∆¨HR'¶WvñG¶ñ\Hr'ßó7¨X&Rv'VÊ∂í¬˜&¢ˆB¶÷ñVÊÊ¸Y∂6íY∑&ˆF˜vó6∂‚ÊˆG7FvñR&˜FW&Úíñ‚‚É#Rí¬∆V”Â‰3¬ˆV”‚‚"¿–¢'&ˆ¶V7EÛ%˜FóF∆R#¢%V7¶VÊñR6úIíí÷úIúHr"¿–¢'&ˆ¶V7EÛ%ˆ&ˆGí#¢$6Ü¸Hr÷¸[∆RFÚ¶6∂∂óvHr¬Êñ6ñVÊñR¢&ˆG¶ßR∆V”‰6VÊ˜&Ü&FóFó3¬ˆV”‚˜G&fúHR6úIíV7ßúHríGv˜'ßúHrw7ˆ÷ÊñVÊñ¬÷ñ÷Ú[∆R÷¨HR¶∆VGvñR3(	3CÊWW&ˆÏ;7r‚¶7¨IúX&“¶¶÷˜vHr6úIíGñ“FV÷FV“ˆF7¶2Fˆ∑F˜&GRˆB˜ñVºHR∆WÜVñ‚÷∂∆∂˜fíw&6“FÚÊñVvÚFÚG¶úY≤¬&Ú∑FÚ˜G&fúX&'í˜'¶\Hr6úIíW&ˆ∂˜víV7¨HV7ñ6Ç6úIíÊñ6ñVÊìÚ˜7FFÊñÚ6∑Wñ“6úIíÊwóV7¶ˆÁñ“VÊñ∂ÊóRFˆvVÏ;7ríÊGñ“¬¶≤¶6Ü˜vÊñRFÚ÷¸[∆R'úHr'¶V∂ßóvÊR'¶W¢∂ñ∆∂ˆ∂ˆ∆\XB‚"¿¢'&ˆ¶V7EÛ%ˆ6Fñˆ‚#¢$f˜&◊íV7¶VÊñ6úIí˜ó6ÊRRÊñ6ñVÊí¢&ˆG¶ßR∆V”‰6VÊ˜&Ü&FóFó3¬ˆV”‚‚"¿–¢'&ˆ¶V7EÛ5˜FóF∆R#¢$Fˆ,;7"Ú'¶V6óvÁñ6Ç6∑WF∂6ÇF∆6÷<;7rí6÷ñ2"¿–¢'&ˆ¶V7EÛ5ˆ&ˆGí#¢%&¶V“¢¶W7¸X&V“V∆ñÁíñ÷÷ˆÊV‚&F“¬∂ñVGíFˆ,;7"¬r∑L;7'ñ“FV‚6“v&ñÁBvVÊWGñ7¶Áí¶W7B∂˜'ßó7FÁíF∆¶VFÊV¢X&6í¬ÊñV∂˜'ßó7FÁíF∆G'VvñV¢¬÷¸[∆RWG'ßñ◊óvHr¶÷ñVÊÊ¸YºHrvVÊWGñ7¶ÏHRr˜V∆6¶í¬7ßñ∆í&˜vG¶úHrFÚFˆ&˜'R,;7vÊ˜v[ÃHV6VvÚ‚FÚGñ∆∂Ú¶VFV‚¢vñV«R66VÊ&óW7ßí¬r∑L;7'ñ6Ç÷¸[∆R˜w7FHrFˆ,;7",;7vÊ˜v[ÃHV7í‚v6úH\[¬¶VFÊ≤ÊñWvñV∆RvñV◊íÚGñ“¬¶≤v[∆ÏHR&ˆÃIíˆFw'óvˆ‚rWG'ßñ◊óvÊóRˆ'6W'v˜vÊVvÚˆ∆ñ÷˜&fó¶◊RvVÊWGñ7¶ÊVvÚí∑L;7&R÷V6ÜÊó¶◊í÷¨HRGRÊßvúIñ∑7¶R¶Ê7¶VÊñR‚"¿–¢'&ˆ¶V7EÛ5ˆ6Fñˆ‚#¢$∂ñW'VÊ∂íFˆ&˜'RV∑7W'ñ÷VÁF∆ÊVvÚˆBw¶vÃIñFV“÷7í6ñX&6÷<;7rí6÷ñ27G,HV∂˜v<;7r¢&ˆG¶ßR∆V”‰6∆∆˜6ˆ''V6áW3¬ˆV”‚‚"¿–¢'V&∆ñ6FñˆÁ5˜FóF∆R#¢%V&∆ñ∂6¶Rí&W&ñÁGí"¿–¢'&W&ñÁB#¢%&W&ñÁB"¿–¢'&VÁF≈ˆ∆VfR#¢%W&∆˜÷6ñW'ßúXG6∂íár\X&Áñ“í7¨IúY∂6ñ˜wñ“wñ÷ñ'¶Rí"¿–¢&∆≈˜V&∆ñ6FñˆÁ2#¢/	¯È2w7ßó7F∂ñRV&∆ñ∂6¶Rrvˆˆv∆R66Üˆ∆""¿–¢&˜&6ñE˜&V6˜&B#¢/	˘Ir&ˆfñ¬ı$4îB"¿–¢&6ˆ∆∆&˜&F˜'5˜FóF∆R#¢%w7;<X'&6˜vÊñ7í"¿–¢&6ˆ∆∆&˜&F˜%Û#¢%7F'¶VÊñR6úIí¬∆7Gñ7¶Ê¸YºHríVfV∑GíG&Á6vVÊW&7ñ¶ÊR‚"¿–¢&6ˆ∆∆&˜&F˜%Û"#¢$&ñˆ∆ˆvñWvˆ«V7ñ¶Êí&ñˆvW&ˆÁFˆ∆ˆvñ≤7F'¶VÊñR6úIííWvˆ«V6¶Üó7F˜&ñí[«ñ6ñ˜wñ6Ç‚"¿–¢&6ˆ∆∆&˜&F˜%Û2#¢$ñÁFW&fW&VÊ6¶$‰¬VfV∑GíG&Á6vVÊW&7ñ¶ÊRí7F'¶VÊñR6úIí‚"¿–¢&6ˆ∆∆&˜&F˜%ÛB#¢$ÁFvˆÊó¶“X&6ñ˜wí¬Fˆ,;7",;7vÊ˜v[ÃHV7ííß,;<[∆Êñ6˜vÊñRV∑7&W6¶ívVÏ;7r÷úIñGßíX&6ñ÷í‚"¿–¢'7GVFVÁG5˜FóF∆R#¢%7GVFVÊ6í"¿–¢'7GVFVÁEÛ#¢$ˆ'&ˆÊ&7í÷vó7FW'6∂ñV£¢7¶W'vñV2##R"¿–¢'7GVFVÁEÛ"#¢$ˆ'&ˆÊ&7í÷vó7FW'6∂ñV£¢7¶W'vñV2##b"¿–¢&&WñˆÊE˜FóF∆R#¢%˜¶ÊVºHR"¿–¢&v÷U˜FóF∆R#¢%FÜRv÷Rˆbv˜&◊2"¿–¢&v÷U˜7V'FóF∆R#¢,YßvñBÊñ6ñVÊí"¿–¢&v÷UˆFW67&óFñˆ‚#¢$w&'¶VvÃHVF&∂˜vñÁ7ó&˜vÊ&ñˆ∆ˆvúHRÊñ6ñVÊí¬r∑L;7&V¢wñ∂˜'ßó7FX&“Fº[∆Rˆ◊ó<X'í÷ˆñ6ÇG¶ñV6í‚"¿¢&v÷Uˆ7Fñˆ‚#¢%¶w&¢«7‚&ñ÷ÜñFFV„’¬'G'VU¬#Ó(i#¬˜7„‚"¿–¢&6&ñÊWE˜FóF∆R#¢$v&ñÊWB˜6ˆ&∆óv¸Y∂6í"¿–¢&6&ñÊWEˆFW67&óFñˆ‚#¢$7¶V∂ˆ∆F'¶V÷ñ\Y∂∆Êñ7¶¬ß|X&7¶7¶&V‚◊FÚ÷&"¬7FX&6úIíF∆÷ÊñR∂ˆ∆V¶Áñ“FV÷FV“¬r∑L;7'í÷ˆ|X&“6úIí¢'ßñ¶V÷Ê¸Y∂6úHRv∑,Iñ6úHr‚¶ß'ßñ¢í¶ˆ&7¢"¿¢&6&ñÊWEˆ7Fñˆ‚#¢%¶ß'ßñ¢«7‚&ñ÷ÜñFFV„’¬'G'VU¬#Ó(i#¬˜7„‚"¿¢'vÜVV≈˜7ñ‚#¢%¶∑,IúHr∂¸X&V“"¿¢&Üˆ÷U˜vÜVV≈ˆ∆&V¬#¢%¶∑,IúHr∂¸X&V“6÷º;7r66ÚˆbWÜ6V∆∆VÊ6R"¿¢&6&ñÊWEˆ6&Eˆ∆&V¬#¢%¶ß'ßñ¢FÚv&ñÊWGR˜6ˆ&∆óv¸Y∂6í"¿¢'vÜVV≈˜7ñÊÊñÊr#¢$∂¸X&Ú6÷º;7r6úIíˆ'&6‚"¿¢'vÜVV≈˜7F˜VB#¢$∂¸X&Ú6úIí¶G'ßñ÷X&Ú‚7&vL[¢ˆ∑&\Y∂∆VÊñRÊ¶&∆ú[∆V¢¶Ê7¶Êñ∂‚"¿¢&6ˆÁF7E˜FóF∆R#¢$∂ˆÁF∑B"¿–¢&6ˆÁF7EˆFG&W72#¢$ñÁ7GóGWBV∂ˆ∆ˆvñíívVÊWGñ∂í¬¶ºX&BV∂ˆ∆ˆvñíßvñW'¨HWC∆'#‰6VÁG'V“&ñˆ∆ˆvñíWvˆ«V7ñ¶ÊV¢ÑT$2í¬VÊóvW'7óFWBrW6∆ì∆'#‰Ê˜&'ól:FvV‚ÑB¬sS"3bW6∆¬7ßvV6¶"¿–¢&6ˆÁF7EˆV÷ñ¬#¢.)»íR÷÷ñ¬"¿–¢&6ˆÁF7E˜&ˆfñ∆R#¢/	¯˘≤&ˆfñ¬Ê7G&ˆÊñRVÊóvW'7óFWGRrW6∆í"¿–¢&fˆ˜FW%ˆffñ∆ñFñˆ‚#¢$÷'GñÊ∂F'ßñÊßvˆúXG6∂+rVÊóvW'7óFWBrW6∆í"¿–¢&fˆ˜FW%ˆ'Vñ«B#¢%7G&ˆÊÊó6Êr7ßó7Gñ“ÖD‘¬í552¬˜V&∆ñ∂˜vÊ¶¸Y∑&VFÊñ7GvV“vóDáV"vW2‚ –¢––ß”∞–¢f"VÊv∆ó6ÖvT6˜í“∑”∞–†–¢ˆ&¶V7BÊ∂Wó2Ü∆ˆ6∆ó¶VDV∆V÷VÁD÷íÊf˜$V6ÇÜgVÊ7Fñˆ‚Ü∂Wíí∞–¢f"V∆V÷VÁB“Fˆ7V÷VÁBÁVW'ï6V∆V7F˜"Ü∆ˆ6∆ó¶VDV∆V÷VÁD÷∂∂Wï“ì∞–¢ñbÜV∆V÷VÁBíVÊv∆ó6ÖvT6˜ï∂∂Wï““V∆V÷VÁBÊñÊÊW$ÖD‘√∞–¢“ì∞–†–¢gVÊ7Fñˆ‚∆ÊwVvT6˜íÜ∆ÊwVvRí∞–¢&WGW&‚ˆ&¶V7BÊ76ñv‚á∑“¬VÊv∆ó6ÑñÁFW&f6T6˜í¬VÊv∆ó6ÖvT6˜í¬G&Á6∆FVD6˜ï∂∆ÊwVvU“«¬∑“ì∞–¢––†–¢f"7F˜&VD∆ÊwVvR“∆ˆ6≈7F˜&vRÊvWDóFV“Çv∆ÊwVvRrì∞–¢f"7W'&VÁD∆ÊwVvR“≤vV‚r¬w7br¬w¬u“ÊñÊFWÑˆbá7F˜&VD∆ÊwVvRí„“Ú7F˜&VD∆ÊwVvR¢vV‚s∞–†–¢gVÊ7Fñˆ‚«î∆ÊwVvRÜ∆ÊwVvRí∞–¢ñbÖ≤vV‚r¬w7br¬w¬u“ÊñÊFWÑˆbÜ∆ÊwVvRí¬í∆ÊwVvR“vV‚s∞–¢7W'&VÁD∆ÊwVvR“∆ÊwVvS∞–¢f"6˜í“∆ÊwVvT6˜íÜ∆ÊwVvRì∞–†–¢ˆ&¶V7BÊ∂Wó2Ü∆ˆ6∆ó¶VDV∆V÷VÁD÷íÊf˜$V6ÇÜgVÊ7Fñˆ‚Ü∂Wíí∞–¢Fˆ7V÷VÁBÁVW'ï6V∆V7F˜$∆¬Ü∆ˆ6∆ó¶VDV∆V÷VÁD÷∂∂Wï“íÊf˜$V6ÇÜgVÊ7Fñˆ‚ÜV∆V÷VÁBí∞–¢ñbÜ6˜ï∂∂Wï“”“VÊFVfñÊVBíV∆V÷VÁBÊñÊÊW$ÖD‘¬“6˜ï∂∂Wï”∞–¢“ì∞–¢“ì∞–†–¢ˆ&¶V7BÊ∂Wó2Ü∆ˆ6∆ó¶VDGG&ñ'WFT÷íÊf˜$V6ÇÜgVÊ7Fñˆ‚Ü∂Wíí∞–¢f"F&vWB“∆ˆ6∆ó¶VDGG&ñ'WFT÷∂∂Wï”∞–¢f"V∆V÷VÁB“Fˆ7V÷VÁBÁVW'ï6V∆V7F˜"áF&vWE≥“ì∞–¢ñbÜV∆V÷VÁBbb6˜ï∂∂Wï“”“VÊFVfñÊVBíV∆V÷VÁBÁ6WDGG&ñ'WFRáF&vWE≥“¬6˜ï∂∂Wï“ì∞–¢“ì∞–†–¢Fˆ7V÷VÁBÊFˆ7V÷VÁDV∆V÷VÁBÊ∆Êr“∆ÊwVvS∞–¢Fˆ7V÷VÁBÁFóF∆R“6˜íÁvU˜FóF∆S∞–¢Fˆ7V÷VÁBÁVW'ï6V∆V7F˜"Çv÷WF∂Ê÷S“&FW67&óFñˆ‚%“ríÁ6WDGG&ñ'WFRÇv6ˆÁFVÁBr¬6˜íÊ÷WFˆFW67&óFñˆ‚ì∞–¢Fˆ7V÷VÁBÁVW'ï6V∆V7F˜$∆¬ÇrÊ∆Êr÷'F‚ríÊf˜$V6ÇÜgVÊ7Fñˆ‚Ü'WGFˆ‚í∞–¢'WGFˆ‚Á6WDGG&ñ'WFRÇv&ñ◊&W76VBr¬7G&ñÊrÜ'WGFˆ‚ÊvWDGG&ñ'WFRÇvFF÷∆ÊwVvRrí””“∆ÊwVvRíì∞–¢“ì∞–¢∆ˆ6≈7F˜&vRÁ6WDóFV“Çv∆ÊwVvRr¬∆ÊwVvRì∞–¢7ñÊ5FÜV÷T'WGFˆ‚Çì∞–¢––†–¢ÚÚfˆ˜FW"ñV –¢Fˆ7V÷VÁBÊvWDV∆V÷VÁD'îñBÇwñV"ríÁFWáD6ˆÁFVÁB“ÊWrFFRÇíÊvWDgV∆≈ñV"Çì∞–†–¢ÚÚFÜV÷RFˆvv∆Rá&V÷V÷&W'26Üˆñ6Rê–¢f"&ˆ˜B“Fˆ7V÷VÁBÊFˆ7V÷VÁDV∆V÷VÁC∞–¢f"FÜV÷UFˆvv∆R“Fˆ7V÷VÁBÊvWDV∆V÷VÁD'îñBÇwFÜV÷UFˆvv∆Rrì∞–¢f"6fVB“∆ˆ6≈7F˜&vRÊvWDóFV“ÇwFÜV÷Rrì∞–¢ñbá6fVBí&ˆ˜BÁ6WDGG&ñ'WFRÇvFF◊FÜV÷Rr¬6fVBì∞–†–¢gVÊ7Fñˆ‚7ñÊ5FÜV÷T'WGFˆ‚Çí∞–¢f"ó4F&≤“&ˆ˜BÊvWDGG&ñ'WFRÇvFF◊FÜV÷Rrí””“vF&≤p–¢«¬Ç&ˆ˜BÊvWDGG&ñ'WFRÇvFF◊FÜV÷RríbbvñÊF˜rÊ÷F6Ñ÷VFñÇrá&VfW'2÷6ˆ∆˜"◊66ÜV÷S¢F&≤íríÊ÷F6ÜW2ì∞–¢FÜV÷UFˆvv∆RÁ6WDGG&ñ'WFRÇv&ñ◊&W76VBr¬7G&ñÊrÜó4F&≤íì∞–¢f"6˜í“∆ÊwVvT6˜íÜ7W'&VÁD∆ÊwVvRì∞–¢FÜV÷UFˆvv∆RÁ6WDGG&ñ'WFRÇwFóF∆Rr¬ó4F&≤Ú6˜íÁFÜV÷Uˆ∆ñváB¢6˜íÁFÜV÷UˆF&≤ì∞–¢FÜV÷UFˆvv∆RÁ6WDGG&ñ'WFRÇv&ñ÷∆&V¬r¬ó4F&≤Ú6˜íÁFÜV÷Uˆ∆ñváB¢6˜íÁFÜV÷UˆF&≤ì∞–¢––†–¢7ñÊ5FÜV÷T'WGFˆ‚Çì∞–¢FÜV÷UFˆvv∆RÊFDWfVÁD∆ó7FVÊW"Çv6∆ñ6≤r¬gVÊ7Fñˆ‚Çí∞–¢f"ÊWáB“FÜV÷UFˆvv∆RÊvWDGG&ñ'WFRÇv&ñ◊&W76VBrí””“wG'VRrÚv∆ñváBr¢vF&≤s∞–¢&ˆ˜BÁ6WDGG&ñ'WFRÇvFF◊FÜV÷Rr¬ÊWáBì∞–¢∆ˆ6≈7F˜&vRÁ6WDóFV“ÇwFÜV÷Rr¬ÊWáBì∞–¢7ñÊ5FÜV÷T'WGFˆ‚Çì∞–¢“ì∞–†–¢ÚÚ6ˆ◊7B¬66W76ñ&∆RÊfñvFñˆ‚ˆ‚Ê'&˜r67&VVÁ2‡–¢f"Êd÷VÁUFˆvv∆R“Fˆ7V÷VÁBÊvWDV∆V÷VÁD'îñBÇvÊd÷VÁUFˆvv∆Rrì∞–¢f"&ñ÷'îÊb“Fˆ7V÷VÁBÊvWDV∆V÷VÁD'îñBÇw&ñ÷'îÊbrì∞–†–¢Êd÷VÁUFˆvv∆RÊFDWfVÁD∆ó7FVÊW"Çv6∆ñ6≤r¬gVÊ7Fñˆ‚Çí∞–¢f"ó4˜V‚“Êd÷VÁUFˆvv∆RÊvWDGG&ñ'WFRÇv&ñ÷WáÊFVBrí””“wG'VRs∞–¢Êd÷VÁUFˆvv∆RÁ6WDGG&ñ'WFRÇv&ñ÷WáÊFVBr¬7G&ñÊrÇó4˜V‚íì∞–¢&ñ÷'îÊbÁ6WDGG&ñ'WFRÇvFF÷˜V‚r¬7G&ñÊrÇó4˜V‚íì∞–¢“ì∞–†–¢&ñ÷'îÊbÊFDWfVÁD∆ó7FVÊW"Çv6∆ñ6≤r¬gVÊ7Fñˆ‚ÜWfVÁBí∞–¢ñbÜWfVÁBÁF&vWBÊ6∆˜6W7BÇvríí∞–¢Êd÷VÁUFˆvv∆RÁ6WDGG&ñ'WFRÇv&ñ÷WáÊFVBr¬vf«6Rrì∞–¢&ñ÷'îÊbÁ6WDGG&ñ'WFRÇvFF÷˜V‚r¬vf«6Rrì∞–¢––¢“ì∞–¢Fˆ7V÷VÁBÁVW'ï6V∆V7F˜$∆¬ÇrÊ∆Êr÷'F‚ríÊf˜$V6ÇÜgVÊ7Fñˆ‚Ü'WGFˆ‚í∞¢'WGFˆ‚ÊFDWfVÁD∆ó7FVÊW"Çv6∆ñ6≤r¬gVÊ7Fñˆ‚Çí∞¢«î∆ÊwVvRÜ'WGFˆ‚ÊvWDGG&ñ'WFRÇvFF÷∆ÊwVvRríì∞¢“ì∞¢“ì∞†¢ÚÚ6÷∆¬¬ñÊFWVÊFVÁBf∆f˜W"◊vÜVV¬ñÁFW&7Fñˆ‚ˆ‚FÜR6&ñÊWB6&B‡¢f"Üˆ÷UvÜVV¬“Fˆ7V÷VÁBÊvWDV∆V÷VÁD'îñBÇvÜˆ÷UvÜVV¬rì∞¢f"Üˆ÷UvÜVVƒñ÷vR“Üˆ÷UvÜVV¬ÁVW'ï6V∆V7F˜"Çvñ÷rrì∞¢f"Üˆ÷UvÜVV≈7FGW2“Fˆ7V÷VÁBÊvWDV∆V÷VÁD'îñBÇvÜˆ÷UvÜVV≈7FGW2rì∞¢f"Üˆ÷UvÜVV≈&˜FFñˆ‚“∞¢f"Üˆ÷UvÜVV≈Fñ÷W#∞†¢Üˆ÷UvÜVV¬ÊFDWfVÁD∆ó7FVÊW"Çv6∆ñ6≤r¬gVÊ7Fñˆ‚Çí∞¢f"&VGV6VD÷˜Fñˆ‚“vñÊF˜rÊ÷F6Ñ÷VFñÇrá&VfW'2◊&VGV6VB÷÷˜Fñˆ„¢&VGV6RíríÊ÷F6ÜW3∞¢f"ñÊ7&V÷VÁB“&VGV6VD÷˜Fñˆ‡¢Ú3≤÷FÇÁ&˜VÊBÑ÷FÇÁ&ÊFˆ“Çí¢3ê¢¢s#≤÷FÇÁ&˜VÊBÑ÷FÇÁ&ÊFˆ“Çí¢s#ì∞¢Üˆ÷UvÜVV≈&˜FFñˆ‚≥“ñÊ7&V÷VÁC∞¢Üˆ÷UvÜVVƒñ÷vRÁ7Gñ∆RÁG&Á6f˜&““w&˜FFRÇr≤Üˆ÷UvÜVV≈&˜FFñˆ‚≤vFVrís∞¢Üˆ÷UvÜVV≈7FGW2ÁFWáD6ˆÁFVÁB“∆ÊwVvT6˜íÜ7W'&VÁD∆ÊwVvRíÁvÜVV≈˜7ñÊÊñÊs∞¢vñÊF˜rÊ6∆V%Fñ÷V˜WBÜÜˆ÷UvÜVV≈Fñ÷W"ì∞¢Üˆ÷UvÜVV≈Fñ÷W"“vñÊF˜rÁ6WEFñ÷V˜WBÜgVÊ7Fñˆ‚Çí∞¢Üˆ÷UvÜVV≈7FGW2ÁFWáD6ˆÁFVÁB“∆ÊwVvT6˜íÜ7W'&VÁD∆ÊwVvRíÁvÜVV≈˜7F˜VC∞¢“¬&VGV6VD÷˜Fñˆ‚ÚÉ¢ì∞¢“ì∞†¢«î∆ÊwVvRÜ7W'&VÁD∆ÊwVvRì∞†–¢¬˜67&óC‡–£¬ˆ&ˆGì‡–£¬ˆáF÷√‡–
