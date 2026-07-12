@@ -31,7 +31,7 @@ Use the CSS custom properties rather than copying hex values into component rule
 | `--accent-soft` | `#e3f1e9` | `#16302a` | Quiet emerald backgrounds and selected-state fills |
 | `--accent-berry` | `#7d2145` | `#d889a8` | Oxblood or berry secondary accent |
 | `--accent-gold` | `#a88445` | `#d2b66f` | Antique-gold fine borders, markers and restrained highlights |
-| `--accent-plum` | `#6c3a60` | `#d1a2c0` | Mature plum secondary accent for botanical terminals, the portrait ring and restrained interaction states |
+| `--accent-plum` | `#6c3a60` | `#d1a2c0` | Mature plum secondary accent for botanical terminals and restrained interaction states |
 | `--nav-bg` | `#ece1cb` | `#29261f` | Warm parchment-gold top navigation surface |
 | `--nav-border` | `#b99a60` | `#6d5e3d` | Antique-gold divider below the sticky navigation |
 | `--nav-accent` | `#196f4a` | `#5fcb9d` | Accessible emerald cue within the golden navigation surface |
