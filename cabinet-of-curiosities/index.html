@@ -3,19 +3,69 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#13231d">
   <title>The Cabinet of Curiosities · Martyna Zwoińska</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#14171a;--surface:#1c2024;--text:#eceef0;--soft:#b3bcc4;--emerald:#5fcb9d;--gold:#d2b66f;--violet:#c1a4ca;--display:'Cormorant Garamond',Georgia,serif;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
-    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6}.page{position:relative;width:100%;height:100%;margin:0}.top{position:absolute;inset:14px auto auto 14px;z-index:2}a{color:var(--emerald);font-weight:650}.top a{display:inline-block;background:rgba(11,13,15,.78);backdrop-filter:blur(7px);border:1px solid rgba(95,203,157,.65);border-radius:999px;padding:8px 14px;color:#eceef0;text-decoration:none}.cabinet-frame{display:grid;place-items:center;margin:0;width:100vw;height:100vh;background:var(--bg)}.cabinet-frame img{display:block;width:auto;height:auto;max-width:100vw;max-height:100vh;object-fit:contain}.top a:focus-visible{outline:3px solid var(--gold);outline-offset:4px}@media(max-width:600px){.top{inset:8px auto auto 8px}.top a{padding:6px 10px;font-size:.86rem}.cabinet-frame{height:100svh}.cabinet-frame img{max-height:100svh}}
-  </style>
+  <link rel="stylesheet" href="cabinet.css?v=20260712-1">
 </head>
 <body>
-  <main class="page">
-    <header class="top"><a href="../index.html#beyond-research">← Martyna's site</a></header>
-    <figure class="cabinet-frame"><img src="assets/cabinet-of-curiosities.png" alt="Art Nouveau cabinet display containing chocolate wrappers, two crocheted eye motifs and crocheted figures."></figure>
+  <main class="cabinet-page">
+    <div class="fantasy-surround" aria-hidden="true">
+      <img src="assets/cabinet-of-curiosities.png" alt="">
+      <span class="vine vine-left"></span>
+      <span class="vine vine-right"></span>
+      <span class="cabinet-glow"></span>
+    </div>
+
+    <header class="cabinet-header">
+      <a class="home-link" href="../index.html#beyond-research">← Martyna's site</a>
+      <div class="title-plaque">
+        <p class="eyebrow">Chocolate, crochet and collected curiosities</p>
+        <h1>The Cabinet of Curiosities</h1>
+      </div>
+      <button class="collection-toggle" id="collection-toggle" type="button" aria-expanded="false" aria-controls="collection-panel">Browse collection</button>
+    </header>
+
+    <section class="cabinet-stage" aria-label="Interactive cabinet display">
+      <figure class="board-shell" id="board-shell">
+        <img class="board-photo" src="assets/cabinet-original-photo.jpg" width="1536" height="1152" alt="A photographed display board of chocolate packages, crocheted eye motifs and crocheted figures.">
+        <div class="hotspot-layer" id="hotspot-layer" aria-label="Objects on the display board"></div>
+        <figcaption class="sr-only">Explore the photographed packages and the two crocheted eyes. The long worm, blue octopus and display notes are decorative.</figcaption>
+      </figure>
+      <p class="explore-hint" id="explore-hint">Select a gold marker, or browse the collection by name.</p>
+      <div class="object-preview" id="object-preview" role="status" aria-live="polite" hidden>
+        <strong id="preview-title"></strong>
+        <span id="preview-status"></span>
+      </div>
+    </section>
+
+    <aside class="collection-panel" id="collection-panel" aria-labelledby="collection-heading" hidden>
+      <div class="collection-panel-head">
+        <div>
+          <p class="eyebrow">Object index</p>
+          <h2 id="collection-heading">Browse the collection</h2>
+        </div>
+        <button class="icon-button" id="collection-close" type="button" aria-label="Close collection index">×</button>
+      </div>
+      <p class="collection-note">Confirmed identifications are separated from names read directly from the photograph and from objects that still need identification.</p>
+      <div id="collection-list" class="collection-list"></div>
+    </aside>
+
+    <dialog class="detail-dialog" id="detail-dialog" aria-labelledby="detail-title">
+      <div class="dialog-ornament" aria-hidden="true"></div>
+      <button class="icon-button detail-close" id="detail-close" type="button" aria-label="Close object details">×</button>
+      <p class="detail-kicker" id="detail-kind"></p>
+      <h2 id="detail-title"></h2>
+      <p class="detail-status" id="detail-status"></p>
+      <dl class="detail-facts" id="detail-facts"></dl>
+      <p class="detail-note" id="detail-note"></p>
+      <a class="detail-link" id="detail-link" href="#" target="_blank" rel="noreferrer" hidden></a>
+    </dialog>
   </main>
+
+  <script src="cabinet-data.js?v=20260712-1"></script>
+  <script src="cabinet.js?v=20260712-1"></script>
 </body>
 </html>
