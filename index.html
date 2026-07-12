@@ -147,9 +147,9 @@
     /* ----------  Top nav  ---------- */
     header.nav {
       position: sticky; top: 0; z-index: 20;
-      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      background: color-mix(in srgb, var(--surface) 82%, var(--accent-soft));
       backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
     }
     .nav-inner {
       display: flex; align-items: center; gap: 24px;
@@ -159,7 +159,7 @@
       display: flex; align-items: center; justify-content: flex-end;
       gap: 20px; min-width: 0;
     }
-    .nav-links a { color: var(--text-soft); font-size: .97rem; font-weight: 600; white-space: nowrap; }
+    .nav-links a { color: var(--text-soft); font-size: 1rem; font-weight: 600; white-space: nowrap; }
     .nav-actions {
       display: inline-flex; flex: 0 0 auto; align-items: center; gap: 8px; margin-left: auto;
     }
@@ -177,10 +177,14 @@
     .nav-links a.nav-beyond::before { content: "❧ "; opacity: .75; }
     .nav-links a.nav-beyond:hover { color: var(--accent-berry); text-decoration: underline; text-underline-offset: 3px; }
 
-    .beyond-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .beyond-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch; gap: 22px;
+    }
     .beyond-card {
-      min-height: 245px; display: flex; flex-direction: column; justify-content: center;
-      position: relative; overflow: hidden; padding: 38px 34px; color: var(--text);
+      min-height: 520px; display: grid;
+      grid-template-rows: auto minmax(310px, 1fr) auto; gap: 14px;
+      position: relative; overflow: hidden; padding: 32px 30px 28px; color: var(--text);
       background: var(--surface); border: 1px solid var(--accent);
       border-radius: 26px 10px 24px 12px; text-decoration: none;
       box-shadow: inset 0 0 0 5px var(--surface), inset 0 0 0 6px color-mix(in srgb, var(--accent-gold) 55%, transparent);
@@ -196,35 +200,38 @@
       border-color: color-mix(in srgb, var(--accent) 82%, var(--text));
       box-shadow: inset 0 0 0 5px var(--surface), inset 0 0 0 6px color-mix(in srgb, var(--accent-gold) 78%, transparent);
     }
-    .beyond-card h3 { margin: 0 0 12px; font-size: clamp(1.65rem, 3vw, 2rem); }
-    .beyond-card p { margin: 0 0 24px; color: var(--text-soft); }
+    .beyond-card__copy { min-width: 0; position: relative; z-index: 1; }
+    .beyond-card h3 { margin: 0 0 8px; font-size: clamp(1.65rem, 3vw, 2rem); }
+    .beyond-card p { margin: 0; color: var(--text-soft); }
     .beyond-action { align-self: flex-start; margin-top: auto; color: var(--accent); font-weight: 700; }
     .beyond-action span { display: inline-block; transition: transform .18s ease; }
     .beyond-card:hover .beyond-action span, .beyond-card:focus-visible .beyond-action span { transform: translateX(4px); }
     .beyond-card--cabinet {
-      display: grid; grid-template-columns: minmax(0, 1fr) 150px;
-      align-items: center; gap: 20px; justify-content: stretch;
+      display: grid; grid-template-rows: auto minmax(310px, 1fr) auto;
     }
-    .beyond-card__content {
-      min-width: 0; align-self: stretch; display: flex; flex-direction: column;
-      justify-content: center; position: relative; z-index: 1; pointer-events: none;
-    }
+    .beyond-card--cabinet .beyond-card__copy,
+    .beyond-card--cabinet .beyond-action { pointer-events: none; }
+    .beyond-card--cabinet .beyond-action { position: relative; z-index: 2; }
     .beyond-card__link { position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
     .beyond-card__link:focus-visible { outline: 3px solid var(--accent-gold); outline-offset: -8px; }
     .flavour-wheel-wrap {
-      width: 150px; position: relative; z-index: 2; display: grid;
-      justify-items: center; align-content: center; gap: 4px;
+      width: min(306px, 100%); position: relative; z-index: 2; display: grid;
+      place-self: center; justify-items: center; align-content: center; gap: 6px;
     }
     .flavour-wheel-control {
-      width: 144px; min-height: 144px; padding: 10px 4px 2px;
+      width: 100%; min-height: 0; aspect-ratio: 1; padding: 7px;
       display: grid; justify-items: center; align-content: center;
-      position: relative; border: 0; border-radius: 18px; cursor: pointer;
+      position: relative; border: 0; border-radius: 50%; cursor: pointer;
       background: transparent; color: var(--accent); font: inherit;
+      transition: background .18s ease, transform .18s ease;
     }
-    .flavour-wheel-control:hover { background: color-mix(in srgb, var(--accent-soft) 55%, transparent); }
+    .flavour-wheel-control:hover {
+      background: color-mix(in srgb, var(--accent-soft) 55%, transparent);
+      transform: scale(1.012);
+    }
     .flavour-wheel-control:focus-visible { outline: 3px solid var(--accent-gold); outline-offset: 2px; }
     .flavour-wheel-control img {
-      width: 136px; height: 136px; display: block; border-radius: 50%;
+      width: 100%; height: 100%; display: block; border-radius: 50%;
       filter: saturate(.82) contrast(.94); transition: transform 1.05s cubic-bezier(.18,.8,.18,1);
       box-shadow: 0 3px 12px color-mix(in srgb, var(--text) 14%, transparent);
     }
@@ -234,60 +241,91 @@
       filter: drop-shadow(0 1px 0 var(--surface));
     }
     .flavour-wheel-source { color: var(--text-faint); font-size: .62rem; line-height: 1.25; text-align: center; }
-    .beyond-card--game > h3,
-    .beyond-card--game > p,
+    .beyond-card--game > .beyond-card__copy,
     .beyond-card--game > .beyond-action { position: relative; z-index: 1; }
-    .worm-sigil {
-      position: absolute; right: 22px; bottom: 16px; z-index: 0;
-      width: 170px; height: auto; color: var(--accent);
-      opacity: .68; pointer-events: none;
-      transform-origin: center; transition: opacity .18s ease, transform .18s ease;
+    .n2-preview {
+      --tilt-x: 0deg; --tilt-y: 0deg;
+      width: min(306px, 100%); aspect-ratio: 1; place-self: center;
+      display: grid; pointer-events: none; transform-style: preserve-3d;
     }
-    .worm-sigil svg { display: block; width: 100%; height: auto; overflow: visible; }
-    .worm-sigil__orbit {
-      fill: none; stroke: var(--accent-gold); stroke-width: 1.5;
-      opacity: .42;
+    .n2-preview svg {
+      width: 100%; height: 100%; display: block; overflow: visible;
+      filter: drop-shadow(0 8px 13px color-mix(in srgb, var(--text) 16%, transparent));
+      transform: perspective(680px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+      transition: transform .18s ease, filter .18s ease;
     }
-    .worm-sigil__worm,
-    .worm-sigil__gleam {
-      fill: none; stroke-linecap: round; stroke-linejoin: round;
-      stroke-dasharray: 64 238; animation: worm-circuit 8s linear infinite;
+    .n2-preview__shadow { fill: color-mix(in srgb, var(--text) 13%, transparent); }
+    .n2-preview__base {
+      fill: color-mix(in srgb, var(--surface-2) 76%, var(--accent-soft));
+      stroke: color-mix(in srgb, var(--accent-gold) 54%, var(--border)); stroke-width: 6;
     }
-    .worm-sigil__worm { stroke: var(--accent); stroke-width: 5.2; }
-    .worm-sigil__gleam {
-      stroke: color-mix(in srgb, var(--accent-gold) 78%, white);
-      stroke-width: 1.25; opacity: .68;
+    .n2-preview__agar {
+      fill: color-mix(in srgb, var(--accent-soft) 48%, #d8c99d);
+      stroke: color-mix(in srgb, var(--accent-gold) 34%, var(--surface)); stroke-width: 3;
     }
-    .worm-sigil__crown {
-      fill: color-mix(in srgb, var(--accent-gold) 24%, transparent);
-      stroke: var(--accent-gold); stroke-width: 1.5; stroke-linejoin: round;
-      transform-origin: 91px 43px; animation: crown-breathe 5s ease-in-out infinite;
+    .n2-preview__lawn { fill: color-mix(in srgb, var(--accent) 18%, #c9bd8c); opacity: .58; }
+    .n2-preview__track {
+      fill: none; stroke: color-mix(in srgb, var(--surface) 82%, transparent);
+      stroke-width: 2.3; stroke-linecap: round; opacity: .78;
     }
-    .beyond-card--game:hover .worm-sigil,
-    .beyond-card--game:focus-visible .worm-sigil { opacity: .92; transform: scale(1.035); }
-    .beyond-card--game:hover .worm-sigil__worm,
-    .beyond-card--game:hover .worm-sigil__gleam,
-    .beyond-card--game:focus-visible .worm-sigil__worm,
-    .beyond-card--game:focus-visible .worm-sigil__gleam { animation-duration: 3.8s; }
-    @keyframes worm-circuit { to { stroke-dashoffset: -302; } }
-    @keyframes crown-breathe {
-      0%, 100% { transform: scale(.98); opacity: .68; }
-      50% { transform: scale(1.04); opacity: 1; }
+    .n2-preview__glare {
+      fill: none; stroke: color-mix(in srgb, white 58%, transparent);
+      stroke-width: 7; stroke-linecap: round; opacity: .56;
+    }
+    .n2-preview__ground-shadow { fill: color-mix(in srgb, var(--text) 15%, transparent); }
+    .n2-preview__body,
+    .n2-preview__body-shadow,
+    .n2-preview__highlight { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .n2-preview__body { stroke: #f0c78e; stroke-width: 46; }
+    .n2-preview__body-shadow { stroke: color-mix(in srgb, #bd7c45 38%, transparent); stroke-width: 54; }
+    .n2-preview__highlight { stroke: rgba(255,255,255,.32); stroke-width: 8; }
+    .n2-preview__tail { fill: #f0c78e; stroke: #bd7c45; stroke-width: 3; stroke-linejoin: round; }
+    .n2-preview__cheek { fill: color-mix(in srgb, var(--accent-berry) 28%, transparent); }
+    .n2-preview__eye { fill: var(--text); }
+    .n2-preview__eye-shine { fill: white; opacity: .9; }
+    .n2-preview__smile { fill: none; stroke: var(--text); stroke-width: 4; stroke-linecap: round; }
+    .n2-preview__worm--primary { transform-origin: 210px 160px; animation: n2-bob 4.4s ease-in-out infinite; }
+    .n2-preview__worm--male { transform-origin: 105px 192px; animation: n2-bob-male 4.4s .55s ease-in-out infinite; }
+    .n2-preview__label-bg {
+      fill: color-mix(in srgb, var(--surface) 88%, transparent);
+      stroke: color-mix(in srgb, var(--accent) 42%, var(--border)); stroke-width: 1.5;
+    }
+    .n2-preview__label {
+      fill: var(--text-soft); font: 700 12px var(--sans); letter-spacing: .12em;
+    }
+    .beyond-card--game:hover .n2-preview svg,
+    .beyond-card--game:focus-visible .n2-preview svg {
+      filter: drop-shadow(0 10px 16px color-mix(in srgb, var(--text) 21%, transparent));
+    }
+    .beyond-card--game:hover .n2-preview__worm--primary,
+    .beyond-card--game:focus-visible .n2-preview__worm--primary { animation-duration: 2.8s; }
+    .beyond-card--game:hover .n2-preview__worm--male,
+    .beyond-card--game:focus-visible .n2-preview__worm--male { animation-duration: 2.8s; }
+    @keyframes n2-bob {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-5px) rotate(.7deg); }
+    }
+    @keyframes n2-bob-male {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-3px) rotate(-1deg); }
     }
     .sr-only {
       position: absolute !important; width: 1px !important; height: 1px !important;
       padding: 0 !important; margin: -1px !important; overflow: hidden !important;
       clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important;
     }
-    @media (max-width: 680px) {
+    @media (max-width: 1040px) {
       .beyond-grid { grid-template-columns: 1fr; }
-      .beyond-card { min-height: 220px; padding-inline: 28px; }
-      .beyond-card--cabinet { grid-template-columns: minmax(0, 1fr) 110px; gap: 8px; }
-      .flavour-wheel-wrap { width: 110px; }
-      .flavour-wheel-control { width: 106px; min-height: 106px; padding: 8px 2px 0; }
-      .flavour-wheel-control img { width: 100px; height: 100px; }
+      .beyond-card { min-height: 500px; }
+    }
+    @media (max-width: 560px) {
+      .beyond-card,
+      .beyond-card--cabinet {
+        min-height: 450px; padding: 26px 24px 24px;
+        grid-template-rows: auto minmax(245px, 1fr) auto;
+      }
+      .flavour-wheel-wrap, .n2-preview { width: min(238px, 100%); }
       .flavour-wheel-source { font-size: .56rem; }
-      .worm-sigil { right: 14px; bottom: 13px; width: 132px; opacity: .52; }
     }
     .theme-btn {
       background: var(--surface-2); border: 1px solid var(--border); color: var(--text-soft);
@@ -343,7 +381,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
-      .worm-sigil__worm, .worm-sigil__gleam, .worm-sigil__crown { animation: none !important; }
+      .n2-preview__worm--primary, .n2-preview__worm--male { animation: none !important; }
     }
 
     /* ----------  Hero  ---------- */
@@ -367,6 +405,7 @@
       position: absolute; inset: 0;
       width: 100%; height: 100%; display: block;
       object-fit: cover; object-position: center center; background: #fff;
+      filter: saturate(.985) contrast(.97) brightness(.995);
     }
     .avatar-mono { font-family: var(--serif); font-size: 3rem; color: var(--accent); }
     @media (max-width: 620px) { .avatar { margin: 0 auto; } }
@@ -903,23 +942,64 @@
     <h2>Beyond Research</h2>
     <div class="beyond-grid">
       <a class="beyond-card beyond-card--game" href="game-of-worms/index.html">
-        <h3>The Game of Worms</h3>
-        <p>A browser game inspired by nematode biology, with creative input from my children.</p>
-        <span class="beyond-action">Play <span aria-hidden="true">→</span></span>
-        <span class="worm-sigil" aria-hidden="true">
-          <svg viewBox="0 0 182 92" focusable="false">
-            <path class="worm-sigil__orbit" d="M20 58 C36 30 64 21 91 42 C116 19 146 30 162 57 C147 79 119 80 91 59 C64 80 36 79 20 58 Z" />
-            <path class="worm-sigil__worm" d="M20 58 C36 30 64 21 91 42 C116 19 146 30 162 57 C147 79 119 80 91 59 C64 80 36 79 20 58 Z" />
-            <path class="worm-sigil__gleam" d="M20 58 C36 30 64 21 91 42 C116 19 146 30 162 57 C147 79 119 80 91 59 C64 80 36 79 20 58 Z" />
-            <path class="worm-sigil__crown" d="M70 50 L75 34 L85 43 L91 27 L98 43 L108 34 L113 50 Z M72 54 H111" />
+        <div class="beyond-card__copy">
+          <h3>The Game of Worms</h3>
+          <p>A browser game inspired by nematode biology, with creative input from my children.</p>
+        </div>
+        <span class="n2-preview" aria-hidden="true">
+          <svg viewBox="0 0 420 320" focusable="false">
+            <defs>
+              <clipPath id="n2-preview-clip"><circle cx="210" cy="160" r="137" /></clipPath>
+            </defs>
+            <ellipse class="n2-preview__shadow" cx="210" cy="298" rx="126" ry="16" />
+            <circle class="n2-preview__base" cx="210" cy="160" r="147" />
+            <circle class="n2-preview__agar" cx="210" cy="160" r="137" />
+            <g clip-path="url(#n2-preview-clip)">
+              <path class="n2-preview__lawn" d="M86 157 C99 83 164 42 239 55 C311 67 351 122 333 190 C318 250 249 280 178 264 C111 249 76 215 86 157 Z" />
+              <path class="n2-preview__track" d="M111 120 C146 86 184 101 207 129 S269 175 309 132" />
+              <path class="n2-preview__track" d="M101 207 C139 180 170 190 196 220 S261 252 304 218" />
+              <path class="n2-preview__track" d="M140 75 C169 64 198 69 219 89" />
+              <g transform="translate(38 18) scale(.82)">
+                <ellipse class="n2-preview__ground-shadow" cx="165" cy="278" rx="96" ry="15" />
+                <g class="n2-preview__worm--primary">
+                  <path class="n2-preview__body-shadow" d="M78 238 C122 290 173 265 181 213 C188 161 225 115 278 123 C330 131 355 92 326 64" />
+                  <path class="n2-preview__body" d="M78 228 C122 280 173 255 181 203 C188 151 225 105 278 113 C330 121 355 82 326 54" />
+                  <path class="n2-preview__highlight" d="M84 220 C124 264 161 243 168 198 C177 143 224 91 282 101 C316 107 338 80 323 60" />
+                  <circle class="n2-preview__cheek" cx="311" cy="70" r="8" />
+                  <circle class="n2-preview__eye" cx="323" cy="49" r="5" />
+                  <circle class="n2-preview__eye" cx="340" cy="58" r="5" />
+                  <circle class="n2-preview__eye-shine" cx="321.5" cy="47.5" r="1.8" />
+                  <circle class="n2-preview__eye-shine" cx="338.5" cy="56.5" r="1.8" />
+                  <path class="n2-preview__smile" d="M320 72 Q331 83 343 69" />
+                </g>
+              </g>
+              <g transform="translate(42 126) scale(.38)">
+                <ellipse class="n2-preview__ground-shadow" cx="164" cy="274" rx="92" ry="13" />
+                <g class="n2-preview__worm--male">
+                  <path class="n2-preview__body-shadow" d="M78 238 C122 290 173 265 181 213 C188 161 225 115 278 123 C330 131 355 92 326 64" />
+                  <path class="n2-preview__body" d="M78 228 C122 280 173 255 181 203 C188 151 225 105 278 113 C330 121 355 82 326 54" />
+                  <path class="n2-preview__highlight" d="M84 220 C124 264 161 243 168 198 C177 143 224 91 282 101 C316 107 338 80 323 60" />
+                  <path class="n2-preview__tail" d="M79 228 L49 210 L64 242 Z" />
+                  <circle class="n2-preview__cheek" cx="311" cy="70" r="8" />
+                  <circle class="n2-preview__eye" cx="323" cy="49" r="5" />
+                  <circle class="n2-preview__eye" cx="340" cy="58" r="5" />
+                  <circle class="n2-preview__eye-shine" cx="321.5" cy="47.5" r="1.8" />
+                  <circle class="n2-preview__eye-shine" cx="338.5" cy="56.5" r="1.8" />
+                  <path class="n2-preview__smile" d="M320 72 Q331 83 343 69" />
+                </g>
+              </g>
+            </g>
+            <path class="n2-preview__glare" d="M105 97 C135 46 199 24 257 40" />
+            <rect class="n2-preview__label-bg" x="158" y="269" width="104" height="25" rx="12.5" />
+            <text class="n2-preview__label" x="210" y="286" text-anchor="middle">BRISTOL N2</text>
           </svg>
         </span>
+        <span class="beyond-action">Play <span aria-hidden="true">→</span></span>
       </a>
       <article class="beyond-card beyond-card--cabinet">
-        <div class="beyond-card__content">
+        <div class="beyond-card__copy">
           <h3>The Cabinet of Curiosities</h3>
           <p>Craft chocolate became another subject I got really into!</p>
-          <span class="beyond-action">Explore <span aria-hidden="true">→</span></span>
         </div>
         <a class="beyond-card__link" id="cabinetCardLink" href="cabinet-of-curiosities/index.html" aria-label="Explore The Cabinet of Curiosities"><span class="sr-only">Explore The Cabinet of Curiosities</span></a>
         <div class="flavour-wheel-wrap">
@@ -930,6 +1010,7 @@
           <span class="flavour-wheel-source" id="homeWheelCredit">Cacao of Excellence, CC BY-NC 4.0</span>
           <span class="sr-only" id="homeWheelStatus" aria-live="polite"></span>
         </div>
+        <span class="beyond-action">Explore <span aria-hidden="true">→</span></span>
       </article>
     </div>
   </section>
@@ -1357,6 +1438,24 @@
         homeWheelStatus.textContent = languageCopy(currentLanguage).wheel_stopped;
       }, reducedMotion ? 80 : 1100);
     });
+
+    // The N2 dish responds gently to the pointer while remaining one clear link.
+    var n2Card = document.querySelector('.beyond-card--game');
+    var n2Preview = n2Card ? n2Card.querySelector('.n2-preview') : null;
+    if (n2Card && n2Preview) {
+      n2Card.addEventListener('pointermove', function (event) {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var bounds = n2Card.getBoundingClientRect();
+        var horizontal = (event.clientX - bounds.left) / bounds.width - .5;
+        var vertical = (event.clientY - bounds.top) / bounds.height - .5;
+        n2Preview.style.setProperty('--tilt-x', (-vertical * 4).toFixed(2) + 'deg');
+        n2Preview.style.setProperty('--tilt-y', (horizontal * 4).toFixed(2) + 'deg');
+      });
+      n2Card.addEventListener('pointerleave', function () {
+        n2Preview.style.setProperty('--tilt-x', '0deg');
+        n2Preview.style.setProperty('--tilt-y', '0deg');
+      });
+    }
 
     applyLanguage(currentLanguage);
 
