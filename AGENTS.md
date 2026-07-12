@@ -124,11 +124,12 @@ It contains two equal Art Nouveau doorway cards.
 ### Card 2
 
 - Title: `The Cabinet of Curiosities`
-- Description: `Fine and craft chocolate, especially bean-to-bar, gave me another subject to geek out about. Take a look for yourself!`
+- Description: `Craft chocolate became another subject I got really into!`
 - Action: `Explore →`
 - Destination: `cabinet-of-curiosities/index.html`
 - The Cabinet navigation link and flavour-wheel button are sibling controls. Never nest the button inside the link.
 - The official Cocoa of Excellence Flavour Wheel may appear on the right side as the only preview graphic in the landing cards.
+- The wheel image itself is the control. Keep its accessible name, but do not add a visible instruction such as `Spin the wheel` below it.
 
 Constraints:
 

@@ -208,7 +208,7 @@
     .beyond-action span { display: inline-block; transition: transform .18s ease; }
     .beyond-card:hover .beyond-action span, .beyond-card:focus-visible .beyond-action span { transform: translateX(4px); }
     .beyond-card--cabinet {
-      display: grid; grid-template-columns: minmax(0, 1fr) 132px;
+      display: grid; grid-template-columns: minmax(0, 1fr) 150px;
       align-items: center; gap: 20px; justify-content: stretch;
     }
     .beyond-card__content {
@@ -218,19 +218,19 @@
     .beyond-card__link { position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
     .beyond-card__link:focus-visible { outline: 3px solid var(--accent-gold); outline-offset: -8px; }
     .flavour-wheel-wrap {
-      width: 132px; position: relative; z-index: 2; display: grid;
+      width: 150px; position: relative; z-index: 2; display: grid;
       justify-items: center; align-content: center; gap: 4px;
     }
     .flavour-wheel-control {
-      width: 122px; min-height: 150px; padding: 14px 5px 4px;
-      display: grid; justify-items: center; align-content: center; gap: 4px;
+      width: 144px; min-height: 144px; padding: 10px 4px 2px;
+      display: grid; justify-items: center; align-content: center;
       position: relative; border: 0; border-radius: 18px; cursor: pointer;
       background: transparent; color: var(--accent); font: inherit;
     }
     .flavour-wheel-control:hover { background: color-mix(in srgb, var(--accent-soft) 55%, transparent); }
     .flavour-wheel-control:focus-visible { outline: 3px solid var(--accent-gold); outline-offset: 2px; }
     .flavour-wheel-control img {
-      width: 112px; height: 112px; display: block; border-radius: 50%;
+      width: 136px; height: 136px; display: block; border-radius: 50%;
       filter: saturate(.82) contrast(.94); transition: transform 1.05s cubic-bezier(.18,.8,.18,1);
       box-shadow: 0 3px 12px color-mix(in srgb, var(--text) 14%, transparent);
     }
@@ -239,7 +239,6 @@
       color: var(--accent-berry); font-size: 17px; line-height: 1;
       filter: drop-shadow(0 1px 0 var(--surface));
     }
-    .flavour-wheel-label { font-size: .78rem; font-weight: 750; letter-spacing: .02em; }
     .flavour-wheel-source { color: var(--text-faint); font-size: .62rem; line-height: 1.25; text-align: center; }
     .sr-only {
       position: absolute !important; width: 1px !important; height: 1px !important;
@@ -249,10 +248,10 @@
     @media (max-width: 680px) {
       .beyond-grid { grid-template-columns: 1fr; }
       .beyond-card { min-height: 220px; padding-inline: 28px; }
-      .beyond-card--cabinet { grid-template-columns: minmax(0, 1fr) 90px; gap: 8px; }
-      .flavour-wheel-wrap { width: 90px; }
-      .flavour-wheel-control { width: 86px; min-height: 122px; padding-inline: 2px; }
-      .flavour-wheel-control img { width: 78px; height: 78px; }
+      .beyond-card--cabinet { grid-template-columns: minmax(0, 1fr) 110px; gap: 8px; }
+      .flavour-wheel-wrap { width: 110px; }
+      .flavour-wheel-control { width: 106px; min-height: 106px; padding: 8px 2px 0; }
+      .flavour-wheel-control img { width: 100px; height: 100px; }
       .flavour-wheel-source { font-size: .56rem; }
     }
     .theme-btn {
@@ -876,7 +875,7 @@
       <article class="beyond-card beyond-card--cabinet">
         <div class="beyond-card__content">
           <h3>The Cabinet of Curiosities</h3>
-          <p>Fine and craft chocolate, especially bean-to-bar, gave me another subject to geek out about. Take a look for yourself!</p>
+          <p>Craft chocolate became another subject I got really into!</p>
           <span class="beyond-action">Explore <span aria-hidden="true">→</span></span>
         </div>
         <a class="beyond-card__link" id="cabinetCardLink" href="cabinet-of-curiosities/index.html" aria-label="Explore The Cabinet of Curiosities"><span class="sr-only">Explore The Cabinet of Curiosities</span></a>
@@ -884,7 +883,6 @@
           <button class="flavour-wheel-control" id="homeWheel" type="button" aria-label="Spin the Cacao of Excellence flavour wheel" aria-describedby="homeWheelCredit">
             <span class="flavour-wheel-marker" aria-hidden="true">▼</span>
             <img src="cabinet-of-curiosities/assets/cacao-of-excellence-flavour-wheel.png" alt="" />
-            <span class="flavour-wheel-label">Spin the wheel</span>
           </button>
           <span class="flavour-wheel-source" id="homeWheelCredit">Cacao of Excellence, CC BY-NC 4.0</span>
           <span class="sr-only" id="homeWheelStatus" aria-live="polite"></span>
@@ -985,7 +983,6 @@
       "cabinet_title": "#beyond-research .beyond-card--cabinet h3",
       "cabinet_description": "#beyond-research .beyond-card--cabinet p",
       "cabinet_action": "#beyond-research .beyond-card--cabinet .beyond-action",
-      "wheel_spin": "#homeWheel .flavour-wheel-label",
       "contact_title": "#contact > h2",
       "contact_address": "#contact .contact-box > p",
       "contact_email": "#contact .pill[href^=\"mailto:\"]",
@@ -1119,9 +1116,8 @@
             "game_description": "Ett webbläsarspel inspirerat av nematodernas biologi, med kreativa idéer från mina barn.",
             "game_action": "Spela <span aria-hidden=\"true\">→</span>",
             "cabinet_title": "Kuriosakabinettet",
-            "cabinet_description": "Hantverkschoklad, särskilt bean-to-bar, gav mig ännu ett område att nörda ner mig i. Titta in och se själv!",
+            "cabinet_description": "Hantverkschoklad blev ännu ett ämne jag verkligen nördade ner mig i!",
             "cabinet_action": "Utforska <span aria-hidden=\"true\">→</span>",
-            "wheel_spin": "Snurra hjulet",
             "home_wheel_label": "Snurra Cacao of Excellence-smakhjulet",
             "cabinet_card_label": "Utforska Kuriosakabinettet",
             "wheel_spinning": "Smakhjulet snurrar.",
@@ -1198,9 +1194,8 @@
             "game_description": "Gra przeglądarkowa inspirowana biologią nicieni, w której wykorzystałam także pomysły moich dzieci.",
             "game_action": "Zagraj <span aria-hidden=\"true\">→</span>",
             "cabinet_title": "Gabinet osobliwości",
-            "cabinet_description": "Czekolada rzemieślnicza, zwłaszcza bean-to-bar, stała się dla mnie kolejnym tematem, w który mogłam się z przyjemnością wkręcić. Zajrzyj i zobacz!",
+            "cabinet_description": "Czekolada rzemieślnicza stała się dla mnie kolejnym tematem, w który się wkręciłam!",
             "cabinet_action": "Zajrzyj <span aria-hidden=\"true\">→</span>",
-            "wheel_spin": "Zakręć kołem",
             "home_wheel_label": "Zakręć kołem smaków Cacao of Excellence",
             "cabinet_card_label": "Zajrzyj do Gabinetu osobliwości",
             "wheel_spinning": "Koło smaków się obraca.",
