@@ -33,7 +33,8 @@
 
   const kindLabels = {
     chocolate: 'Chocolate package',
-    crochet: 'Crocheted object'
+    crochet: 'Crocheted object',
+    ephemera: 'Collected ephemera'
   };
 
   function hidePreview() {
@@ -82,7 +83,8 @@
     ].filter(Boolean).forEach(row => detailFacts.append(row));
 
     detailFacts.hidden = detailFacts.children.length === 0;
-    detailNote.textContent = item.note || 'No further confirmed information has been added yet.';
+    detailNote.textContent = item.note || '';
+    detailNote.hidden = !item.note;
 
     if (item.link) {
       detailLink.href = item.link;
@@ -169,9 +171,11 @@
   function buildCollectionIndex() {
     const chocolates = objects.filter(item => item.kind === 'chocolate');
     const crochet = objects.filter(item => item.kind === 'crochet');
+    const ephemera = objects.filter(item => item.kind === 'ephemera');
     collectionList.replaceChildren(
       buildCollectionGroup('Chocolate packages', chocolates),
-      buildCollectionGroup('Crocheted eyes', crochet)
+      buildCollectionGroup('Crocheted eyes', crochet),
+      buildCollectionGroup('Collected ephemera', ephemera)
     );
   }
 

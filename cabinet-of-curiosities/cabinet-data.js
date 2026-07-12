@@ -111,11 +111,18 @@
     }),
     {
       id: 'green-crocheted-eye', label: 'Green crocheted eye', kind: 'crochet', status: 'confirmed', box: [59.64, 34.64, 10.29, 14.24], shape: 'circle',
-      note: 'A crocheted eye made by Martyna. The exact pattern and Ravelry profile links have not yet been supplied, so no link is shown.'
+      note: 'Crocheted by Martyna using the Blooming Eye Crochet Pattern.',
+      link: 'https://www.etsy.com/listing/4342094945/blooming-eye-crochet-pattern-pdf', linkLabel: 'View the English crochet pattern on Etsy'
     },
     {
       id: 'yellow-crocheted-eye', label: 'Yellow crocheted eye', kind: 'crochet', status: 'confirmed', box: [35.29, 65.02, 10.29, 14.84], shape: 'circle',
-      note: 'A crocheted eye made by Martyna. The exact pattern and Ravelry profile links have not yet been supplied, so no link is shown.'
+      note: 'Crocheted by Martyna using the Blooming Eye Crochet Pattern.',
+      link: 'https://www.etsy.com/listing/4342094945/blooming-eye-crochet-pattern-pdf', linkLabel: 'View the English crochet pattern on Etsy'
+    },
+    {
+      id: 'sfoodies-sticker', label: '“Either You Love Chocolate” sticker', kind: 'ephemera', status: 'confirmed', box: [31.45, 80.10, 5.40, 6.30], shape: 'rectangle',
+      maker: 'S-Foodies', origin: 'Uppsala, Sweden', note: 'A sticker from S-Foodies Healthy Desserts Lab in Uppsala.',
+      link: 'https://sfoodies.se/en', linkLabel: 'Visit the S-Foodies website'
     }
   ]);
 }());

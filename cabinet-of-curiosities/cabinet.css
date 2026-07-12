@@ -173,7 +173,7 @@ button { color: inherit; }
   inset: 12px 14px auto;
   z-index: 20;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: start;
   gap: 12px;
   pointer-events: none;
