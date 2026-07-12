@@ -249,7 +249,9 @@ button { color: inherit; }
 }
 
 .board-shell {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
   box-sizing: content-box;
   width: var(--board-width);
   aspect-ratio: 4 / 3;
@@ -259,7 +261,7 @@ button { color: inherit; }
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-  transform: translateY(-8px);
+  transform: translate(-50%, calc(-50% - 8px));
 }
 
 .board-plane {
