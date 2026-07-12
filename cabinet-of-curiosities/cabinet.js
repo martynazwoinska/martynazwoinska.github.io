@@ -227,7 +227,11 @@
   wheelToggle.addEventListener('click', openWheel);
   wheelClose.addEventListener('click', closeWheel);
   wheelSpin.addEventListener('click', spinWheel);
-  wheelDialog.addEventListener('cancel', clearWheelTimer);
+  wheelDialog.addEventListener('cancel', event => {
+    event.preventDefault();
+    clearWheelTimer();
+    closeWheel();
+  });
   wheelDialog.addEventListener('close', () => {
     clearWheelTimer();
     if (lastWheelTrigger instanceof HTMLElement) lastWheelTrigger.focus();
