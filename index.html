@@ -1411,6 +1411,9 @@
       document.querySelectorAll('.lang-btn').forEach(function (button) {
         button.setAttribute('aria-pressed', String(button.getAttribute('data-language') === language));
       });
+      document.querySelectorAll('#homeWormStatus, #homeWheelStatus').forEach(function (status) {
+        status.textContent = '';
+      });
       localStorage.setItem('language', language);
       syncThemeButton();
     }
