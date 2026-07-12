@@ -120,7 +120,7 @@
       link: 'https://www.etsy.com/listing/4342094945/blooming-eye-crochet-pattern-pdf', linkLabel: 'View the English crochet pattern on Etsy'
     },
     {
-      id: 'sfoodies-sticker', label: '“Either You Love Chocolate” sticker', kind: 'ephemera', status: 'confirmed', box: [31.45, 80.10, 5.40, 6.30], shape: 'rectangle',
+      id: 'sfoodies-sticker', label: '“Either You Love Chocolate” sticker', kind: 'ephemera', status: 'confirmed', box: [28.50, 80.10, 5.60, 6.80], shape: 'rectangle',
       maker: 'S-Foodies', origin: 'Uppsala, Sweden', note: 'A sticker from S-Foodies Healthy Desserts Lab in Uppsala.',
       link: 'https://sfoodies.se/en', linkLabel: 'Visit the S-Foodies website'
     }
