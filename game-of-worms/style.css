@@ -38,7 +38,7 @@ body {
 button, summary { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 button:focus-visible, a:focus-visible, summary:focus-visible {
-  outline: 4px solid rgba(243, 111, 98, .48);
+  outline: 3px solid var(--teal-dark);
   outline-offset: 3px;
 }
 a { color: var(--teal-dark); }
@@ -100,7 +100,7 @@ a { color: var(--teal-dark); }
   transform: rotate(3deg);
 }
 .explored strong { display: block; font-family: var(--display); font-size: 1.25rem; line-height: 1; }
-.explored span { font-size: .58rem; font-weight: 800; }
+.explored span { font-size: .68rem; font-weight: 800; }
 
 main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .section-heading {
@@ -166,7 +166,11 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   transition: transform .16s ease, box-shadow .16s ease;
 }
 .map-marker.selfing { background: var(--coral); color: var(--coral); }
-.map-marker.outcrossing { background: var(--violet); color: var(--violet); }
+.map-marker.outcrossing {
+  border-radius: 6px;
+  background: var(--violet);
+  color: var(--violet);
+}
 .map-marker:hover, .map-marker:focus-visible { transform: translate(-50%, -50%) scale(1.28); }
 .map-marker.is-species-selected {
   transform: translate(-50%, -50%) scale(1.12);
@@ -184,6 +188,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   border-radius: 50%;
   animation: marker-pulse 1.8s ease-out infinite;
 }
+.map-marker.outcrossing.is-selected::after { border-radius: 5px; }
 @keyframes marker-pulse { from { opacity: .8; transform: scale(.65); } to { opacity: 0; transform: scale(1.35); } }
 .map-tooltip {
   position: absolute;
@@ -224,7 +229,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .map-legend span { display: inline-flex; align-items: center; gap: 6px; }
 .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
 .legend-dot.selfing { background: var(--coral); }
-.legend-dot.outcrossing { background: var(--violet); }
+.legend-dot.outcrossing { border-radius: 2px; background: var(--violet); }
 .map-selection {
   position: absolute;
   left: 18px;
@@ -259,7 +264,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   left: 50%;
   transform: translateX(-50%);
   color: var(--teal-dark);
-  font-size: .64rem;
+  font-size: .68rem;
   font-weight: 900;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -297,10 +302,10 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   transform: rotate(-9deg);
 }
 .species-tab i { display: block; font-weight: 800; }
-.species-tab small { display: inline-block; margin-top: 5px; border-radius: 999px; padding: 2px 7px; font-size: .62rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }
+.species-tab small { display: inline-block; margin-top: 5px; border-radius: 999px; padding: 2px 7px; font-size: .68rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }
 .species-tab small.selfing { color: #a94347; background: rgba(243,111,98,.14); }
 .species-tab small.outcrossing { color: #51438f; background: rgba(117,103,184,.14); }
-.featured-place { display: block; margin-top: 4px; color: var(--teal-dark); font-size: .58rem; font-weight: 900; letter-spacing: .03em; text-transform: uppercase; }
+.featured-place { display: block; margin-top: 4px; color: var(--teal-dark); font-size: .68rem; font-weight: 900; letter-spacing: .03em; text-transform: uppercase; }
 
 .play-grid {
   display: grid;
@@ -393,404 +398,4 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .scene-mushrooms path:first-of-type { fill: none; stroke: #f5e7ce; stroke-width: 8; stroke-linecap: round; }
 .scene-mushrooms path:nth-of-type(2) { fill: #e77b68; stroke: #9d5449; stroke-width: 2; }
 .ahmedabad-sky { fill: #f8d7ad; }
-.ahmedabad-sun { fill: #f4a75a; opacity: .78; filter: drop-shadow(0 0 18px rgba(230,125,62,.3)); }
-.sabarmati-ribbon { fill: #78b8bd; }
-.pol-wall { fill: #d88c63; stroke: #8e503d; stroke-width: 4; }
-.pol-roof { fill: #8d4f43; stroke: #6d3a35; stroke-width: 4; }
-.pol-window path { fill: #4b6f71; stroke: #f3c28f; stroke-width: 7; }
-.pol-balcony { fill: none; stroke: #734438; stroke-width: 7; stroke-linejoin: round; }
-.pol-door { fill: #6e4339; stroke: #f1bb82; stroke-width: 5; }
-.stepwell path { fill: #c97952; stroke: #8f513d; stroke-width: 3; }
-.stepwell .stepwell-water { fill: #5fa5aa; }
-.banyan-trunk { fill: #79513f; stroke: #5d4035; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
-.banyan-canopy { fill: #507b55; stroke: #315b43; stroke-width: 3; }
-.banyan-roots { fill: none; stroke: #6b493a; stroke-width: 5; stroke-linecap: round; opacity: .8; }
-.ahmedabad-ground { fill: #bf825a; }
-.cacao-sky { fill: #c6e2ce; }
-.bali-hill.far { fill: #6aa876; }
-.bali-hill.near { fill: #397e5a; }
-.cacao-trunk { fill: #79503d; stroke: #54382f; stroke-width: 5; }
-.cacao-leaves { fill: #32704e; stroke: #24543d; stroke-width: 3; }
-.cacao-pods path:nth-child(-n+2) { fill: #d98439; stroke: #754832; stroke-width: 4; }
-.cacao-pods path:last-child { fill: none; stroke: #f2b75f; stroke-width: 3; stroke-linecap: round; }
-.cacao-ground { fill: #536f43; }
-.cacao-litter { fill: #b17b43; stroke: #6d5235; stroke-width: 2; }
-.scene-mushrooms circle { fill: #fff4d6; }
-.scene-mushrooms.woodland path:nth-of-type(2) { fill: #b66b55; }
-.scene-compost-specks { fill: rgba(65,85,55,.5); }
-.scene-vine { fill: none; stroke: color-mix(in srgb, var(--scene-detail) 75%, var(--scene-ground)); stroke-width: 10; stroke-linecap: round; }
-.scene-sunbeams { fill: rgba(255,244,190,.16); }
-.scene-leaf-litter { fill: color-mix(in srgb, var(--scene-detail) 60%, #b6784f); }
-@keyframes cloud-drift { from { transform: translateX(-8px); } to { transform: translateX(16px); } }
-@keyframes sun-breathe { 0%, 100% { transform: scale(1); opacity: .92; } 50% { transform: scale(1.06); opacity: 1; } }
-.rain-lines path { fill: none; stroke: rgba(255,255,255,.72); stroke-width: 6; stroke-linecap: round; }
-.fig-cluster, .fern, .fig-wasp, .scene-flower { opacity: .9; }
-.scene-name {
-  position: absolute;
-  left: 18px;
-  top: 16px;
-  z-index: 3;
-  border-radius: 999px;
-  padding: 7px 11px;
-  background: rgba(255,255,255,.82);
-  color: var(--ink-soft);
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  backdrop-filter: blur(6px);
-}
-.worm-avatar {
-  position: relative;
-  z-index: 2;
-  width: min(88%, 520px);
-  filter: drop-shadow(0 16px 13px rgba(23,51,61,.16));
-  overflow: visible;
-}
-.worm-species { transform: translate(var(--pose-x, 0), var(--pose-y, 0)) rotate(var(--pose-angle, 0deg)) scale(var(--worm-scale)); transform-origin: 210px 170px; transition: transform .28s ease; }
-.habitat[data-pose="hero"] { --pose-x: 0px; --pose-y: 0px; --pose-angle: 0deg; }
-.habitat[data-pose="island"] { --pose-x: -24px; --pose-y: 10px; --pose-angle: -8deg; }
-.habitat[data-pose="forager"] { --pose-x: 26px; --pose-y: 18px; --pose-angle: 7deg; }
-.habitat[data-pose="rainforest"] { --pose-x: 32px; --pose-y: -7px; --pose-angle: -5deg; }
-.habitat[data-pose="woodland"] { --pose-x: -20px; --pose-y: 16px; --pose-angle: -7deg; }
-.habitat[data-pose="coast"] { --pose-x: 24px; --pose-y: 4px; --pose-angle: 9deg; }
-.worm-line { fill: none; stroke: var(--worm-color); stroke-width: 46; stroke-linecap: round; stroke-linejoin: round; }
-.worm-shadow { fill: none; stroke: color-mix(in srgb, var(--worm-deep) 35%, transparent); stroke-width: 54; stroke-linecap: round; transform: translateY(7px); }
-.companion-line { fill: none; stroke: var(--worm-color); stroke-width: 42; stroke-linecap: round; stroke-linejoin: round; }
-.companion-shadow { fill: none; stroke: color-mix(in srgb, var(--worm-deep) 35%, transparent); stroke-width: 50; stroke-linecap: round; transform: translateY(7px); }
-.worm-highlight, .companion-highlight { fill: none; stroke: rgba(255,255,255,.26); stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
-.companion-highlight { stroke-width: 7; }
-.worm-ground-shadow { fill: rgba(35,65,58,.17); filter: blur(7px); }
-.male-tail { fill: var(--worm-color); stroke: var(--worm-deep); stroke-width: 3; stroke-linejoin: round; }
-.worm-eye { fill: var(--ink); }
-.worm-eye-shine { fill: white; opacity: .9; }
-.worm-cheek { fill: color-mix(in srgb, var(--coral) 60%, transparent); }
-.worm-smile { fill: none; stroke: var(--ink); stroke-width: 4; stroke-linecap: round; }
-.worm-body { transform-origin: 210px 170px; animation: worm-bob 3.2s ease-in-out infinite; }
-.companion-body { transform-origin: 210px 170px; animation: worm-bob 3.2s .45s ease-in-out infinite; }
-@keyframes worm-bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-7px) rotate(1deg); } }
-.accessory { --accessory-x: 0px; --accessory-y: 0px; transform: translate(var(--accessory-x), var(--accessory-y)); transform-origin: center; }
-.accessory[hidden] { display: none; }
-.accessory:not([hidden]) { animation: accessory-pop .24s cubic-bezier(.2,.8,.25,1.25); }
-@keyframes accessory-pop { from { opacity: 0; transform: translate(var(--accessory-x), var(--accessory-y)) scale(.82); } to { opacity: 1; transform: translate(var(--accessory-x), var(--accessory-y)) scale(1); } }
-.regional-accessory > [data-style] { display: none; }
-.regional-accessory > [data-species-look] { display: none; }
-.regional-accessory > [data-location-look] { display: none; }
-.habitat[data-species] .regional-accessory > [data-style] { display: none !important; }
-.habitat[data-accessory-visual="inopinata"] [data-species-look="inopinata"],
-.habitat[data-accessory-visual="elegans"] [data-species-look="elegans"],
-.habitat[data-accessory-visual="briggsae"] [data-species-look="briggsae"],
-.habitat[data-accessory-visual="nigoni"] [data-species-look="nigoni"],
-.habitat[data-accessory-visual="tropicalis"] [data-species-look="tropicalis"],
-.habitat[data-accessory-visual="wallacei"] [data-species-look="wallacei"],
-.habitat[data-accessory-visual="scotland"] [data-location-look="scotland"] { display: inline; }
-.habitat[data-local-style="okinawa"] .regional-accessory > [data-style="okinawa"],
-.habitat[data-local-style="kauai"] .regional-accessory > [data-style="kauai"],
-.habitat[data-local-style="field"] .regional-accessory > [data-style="field"],
-.habitat[data-local-style="rainforest"] .regional-accessory > [data-style="rainforest"],
-.habitat[data-local-style="woodland"] .regional-accessory > [data-style="woodland"],
-.habitat[data-local-style="ocean"] .regional-accessory > [data-style="ocean"] { display: inline; }
-.regional-accessory { filter: drop-shadow(0 5px 4px rgba(23,51,61,.24)); }
-.regional-primary { fill: var(--local-primary); stroke: var(--worm-deep); stroke-width: 2.5; stroke-linejoin: round; }
-.regional-secondary { fill: var(--local-secondary); stroke: var(--worm-deep); stroke-width: 2.5; stroke-linejoin: round; }
-.regional-accent { fill: var(--paper-strong); stroke: var(--worm-deep); stroke-width: 2; }
-.regional-stroke { fill: none; stroke: var(--worm-deep); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.regional-stroke.thick { stroke-width: 7; }
-.regional-flower circle { fill: var(--local-primary); stroke: var(--worm-deep); stroke-width: 1.5; }
-.regional-wing { fill: rgba(255,255,255,.62); stroke: var(--local-primary); stroke-width: 4; }
-.wing-harness { fill: none; stroke: var(--worm-deep); stroke-width: 9; stroke-linecap: round; }
-.wing-vein { fill: none; stroke: color-mix(in srgb, var(--local-primary) 70%, var(--worm-deep)); stroke-width: 2; stroke-linecap: round; }
-.fruit-orange { fill: #ef8d46; stroke: var(--worm-deep); stroke-width: 2; }
-.fruit-leaf { fill: #58a36d; stroke: var(--worm-deep); stroke-width: 1.5; }
-.fruit-banana { fill: #f4cf52; stroke: var(--worm-deep); stroke-width: 2; }
-.fruit-berry { fill: #bb5273; stroke: var(--worm-deep); stroke-width: 2; }
-.fruit-shine { fill: rgba(255,255,255,.72); }
-.male-accessory { filter: drop-shadow(0 3px 2px rgba(23,51,61,.22)); }
-.mokihana-leaf { fill: #5f9d69; stroke: var(--worm-deep); stroke-width: 2; }
-.mokihana-berry { fill: #7b62b6; stroke: #463c7c; stroke-width: 2; }
-.mushroom-cap { fill: #e6675f; stroke: var(--worm-deep); stroke-width: 3; stroke-linejoin: round; }
-.mushroom-spot { fill: #fff5d8; stroke: rgba(123,78,67,.35); stroke-width: 1.5; }
-.rain-drop { fill: #89d5dc; stroke: #287c82; stroke-width: 1.5; }
-.minsa-pattern { fill: #fff4d6; opacity: .9; }
-.woven-bag { fill: #d6a96b; stroke: var(--worm-deep); stroke-width: 3; stroke-linejoin: round; }
-.woven-line { fill: none; stroke: #8b6748; stroke-width: 2; opacity: .75; }
-.ocean-bag { fill: #d9bd78; }
-.palm-mark { fill: none; stroke: #447864; stroke-width: 3; stroke-linecap: round; }
-.harness-strap { fill: none; stroke: var(--local-primary); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
-.harness-ring { fill: none; stroke: var(--local-secondary); stroke-width: 6; }
-.harness-rope { fill: none; stroke: var(--worm-deep); stroke-width: 4; stroke-linecap: round; }
-.leaf-bag { fill: #8eaa72; stroke: var(--worm-deep); stroke-width: 3; stroke-linejoin: round; }
-.acorn-sample { fill: #9c7047; stroke: #65452f; stroke-width: 2; }
-.fern-wing { fill: rgba(173,226,188,.72); stroke: #3f8b66; stroke-width: 4; }
-.fern-vein { fill: none; stroke: #3f8b66; stroke-width: 2; stroke-linecap: round; }
-.vial-liquid { fill: #74cbd2; stroke: #287c82; stroke-width: 2; }
-.sample-pouch { fill: #d6a96b; stroke: var(--worm-deep); stroke-width: 2; }
-.beetle-wing { stroke: #433a78; stroke-width: 4; }
-.beetle-wing.left { fill: #68b6a5; }
-.beetle-wing.right { fill: #7b6dc0; }
-.beetle-line { fill: none; stroke: rgba(255,255,255,.62); stroke-width: 2; stroke-linecap: round; }
-.kit-symbol { display: none; font-size: 18px; opacity: .9; paint-order: stroke; stroke: rgba(255,255,255,.94); stroke-width: 3px; stroke-linejoin: round; filter: drop-shadow(0 2px 2px rgba(23,51,61,.25)); }
-.kit-symbol.male { font-size: 12px; stroke-width: 2px; }
-.habitat[data-has-custom-visual="false"] .kit-symbol { display: inline; }
-.habitat[data-local-style="rainforest"] #local-wrap { --accessory-x: -13px; --accessory-y: 15px; }
-.habitat[data-local-style="rainforest"] #local-charm { --accessory-x: 12px; --accessory-y: 28px; }
-.habitat[data-local-style="woodland"] #local-wrap { --accessory-x: -14px; --accessory-y: 18px; }
-.habitat[data-local-style="woodland"] #local-charm { --accessory-x: 15px; --accessory-y: -11px; }
-.habitat[data-local-style="field"] #local-wrap { --accessory-x: -13px; --accessory-y: 12px; }
-.habitat[data-local-style="field"] #local-charm { --accessory-x: 15px; --accessory-y: -8px; }
-.habitat[data-species] #local-wrap, .habitat[data-species] #local-charm { --accessory-x: 0px; --accessory-y: 0px; }
-.habitat[data-accessory-visual="elegans"] #local-wrap { --accessory-x: 0px; --accessory-y: 0px; }
-.habitat[data-accessory-visual="elegans"] #local-charm { --accessory-x: 0px; --accessory-y: 0px; }
-.habitat[data-accessory-visual="tropicalis"] #local-charm { --accessory-x: 32px; --accessory-y: -22px; }
-.place-motif {
-  position: absolute;
-  right: 22px;
-  bottom: 20px;
-  z-index: 1;
-  font-size: clamp(3rem, 8vw, 5.2rem);
-  opacity: .17;
-  filter: saturate(.8) drop-shadow(0 8px 10px rgba(23,51,61,.14));
-  transform: rotate(8deg);
-  pointer-events: none;
-}
-.habitat.is-changing .worm-avatar { animation: worm-arrive .62s cubic-bezier(.2,.9,.2,1.18); }
-@keyframes worm-arrive { 0% { opacity: .25; transform: translateY(22px) scale(.9); } 65% { opacity: 1; transform: translateY(-5px) scale(1.025); } 100% { transform: translateY(0) scale(1); } }
-.selection-spark {
-  position: absolute;
-  left: 50%;
-  top: 49%;
-  z-index: 4;
-  color: var(--scene-highlight);
-  font-size: 1.25rem;
-  pointer-events: none;
-  animation: spark-burst .7s ease-out forwards;
-}
-@keyframes spark-burst {
-  from { opacity: 1; transform: translate(-50%,-50%) rotate(var(--spark-angle)) translateX(18px) scale(.5); }
-  to { opacity: 0; transform: translate(-50%,-50%) rotate(var(--spark-angle)) translateX(var(--spark-distance)) scale(1.35); }
-}
-.sister-pair:hover .sister-label { color: var(--coral); }
-.sister-pair:hover { border-color: rgba(243,111,98,.35); box-shadow: 0 10px 25px rgba(26,71,79,.1), inset 0 1px 0 rgba(255,255,255,.8); }
-.gear-primary, .gear-secondary, .market-tote, .cryo-jetpack rect, .spf-pack rect { stroke: var(--worm-deep); stroke-width: 3; stroke-linejoin: round; }
-.gear-primary { fill: var(--local-primary); }
-.gear-secondary { fill: var(--local-secondary); }
-.gear-stroke, .minsa-lines, .tote-handle { fill: none; stroke: var(--worm-deep); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-.gear-stroke.thick { stroke-width: 8; }
-.minsa-lines { stroke: #fff4d6; stroke-width: 5; }
-.lab-goggles circle { fill: rgba(174,232,240,.62); stroke: #295f72; stroke-width: 5; }
-.lab-goggles path { fill: none; stroke: #295f72; stroke-width: 5; stroke-linecap: round; }
-.kite-body { fill: #ef6f62; stroke: #783c55; stroke-width: 3; }
-.kite-body.male { fill: #f1b64f; }
-.kite-cross, .kite-string, .kite-tail { fill: none; stroke: #783c55; stroke-width: 2.5; stroke-linecap: round; }
-.kite-bow { fill: #f1b64f; stroke: #783c55; stroke-width: 2; }
-.fruit-crown circle { fill: #f2a34d; stroke: #a45338; stroke-width: 3; }
-.fruit-crown path { fill: none; stroke: #fff0b1; stroke-width: 2; }
-.star-glasses path:not(.gear-stroke) { fill: #ffd166; stroke: #a6633c; stroke-width: 3; }
-.cacao-helmet path:first-child, .cacao-helmet path:nth-child(3) { fill: #b96d45; stroke: #6f4937; stroke-width: 3; }
-.cacao-helmet path:nth-child(2), .cacao-helmet path:nth-child(4) { fill: none; stroke: #f1ba71; stroke-width: 3; }
-.lab-coat-body { fill: #fffdf5; stroke: #526d76; stroke-width: 4; stroke-linejoin: round; }
-.lab-coat-collar { fill: #dbeff0; stroke: #526d76; stroke-width: 3; stroke-linejoin: round; }
-.lab-coat-opening { fill: none; stroke: #526d76; stroke-width: 3; stroke-linecap: round; }
-.lab-coat-seam { fill: none; stroke: #9ab9bd; stroke-width: 3; }
-.lab-coat-pocket { fill: #edf7f5; stroke: #526d76; stroke-width: 2; stroke-linejoin: round; }
-.lab-coat-button { fill: #3b8e91; stroke: white; stroke-width: 1; }
-.lab-id-badge { fill: #d8eef0; stroke: #526d76; stroke-width: 1.5; }
-.lab-id-text { fill: #2e6570; font: 800 8px/1 sans-serif; stroke: none; }
-.lab-id-text.male { font-size: 5px; }
-.lab-pen { fill: none; stroke: #d45265; stroke-width: 2.5; stroke-linecap: round; }
-.ngm-plate .plate-shadow { fill: rgba(25,54,61,.2); }
-.ngm-plate .plate-base { fill: rgba(197,224,222,.72); stroke: #527b7d; stroke-width: 3; }
-.ngm-plate .plate-rim { fill: rgba(225,245,242,.78); stroke: #527b7d; stroke-width: 3; }
-.ngm-plate .plate-agar { fill: #e8dca5; stroke: #b4a36a; stroke-width: 2; }
-.ngm-plate .bacterial-lawn { fill: #d6cf8b; opacity: .9; }
-.ngm-plate .worm-tracks path { fill: none; stroke: rgba(255,255,238,.86); stroke-width: 2; stroke-linecap: round; }
-.ngm-plate .plate-highlight { fill: rgba(255,255,255,.9); }
-.ngm-plate text { fill: #355e64; font: 700 9px/1 sans-serif; letter-spacing: .02em; }
-.ngm-plate .plate-glare { fill: none; stroke: rgba(255,255,255,.82); stroke-width: 3; stroke-linecap: round; }
-.ngm-plate-small .plate-base, .ngm-plate-small .plate-rim { stroke-width: 2; }
-.ngm-plate-small .plate-agar { stroke-width: 1.25; }
-.ngm-plate-small .plate-glare { stroke-width: 1.5; }
-.ngm-plate-small text { font-size: 6px; }
-.cryo-jetpack .cryo-pack-shell { fill: #3f7f8a; stroke: #295f72; stroke-width: 3; }
-.cryo-jetpack .cryo-vial-body { fill: rgba(222,247,247,.92); stroke: #2f7885; stroke-width: 2.5; }
-.cryo-jetpack .cryo-vial-cap { fill: #285f70; stroke: #214d5b; stroke-width: 2; }
-.cryo-jetpack .cryo-ice { fill: #88d7df; stroke: #3b8e9b; stroke-width: 1.5; }
-.cryo-jetpack .cryo-medallion { fill: #d9f5f5; stroke: #2f7885; stroke-width: 2.5; }
-.cryo-plume { fill: none; stroke: #b8edf0; stroke-width: 5; stroke-linecap: round; }
-.cryo-plume.small { stroke-width: 3; }
-.snow-mark.small { stroke-width: 1.5 !important; }
-.fig-visor path:first-child, .fig-visor path:nth-of-type(4) { fill: #72a66b; stroke: var(--worm-deep); stroke-width: 3; }
-.fig-vein, .visor-band { fill: none; stroke: #315f50; stroke-width: 2.5; stroke-linecap: round; }
-.satchel-strap { fill: none; stroke: #745744; stroke-width: 7; stroke-linecap: round; }
-.satchel-bag { fill: #c99b63; stroke: var(--worm-deep); stroke-width: 3; }
-.satchel-flap { fill: #9d724c; stroke: var(--worm-deep); stroke-width: 2; }
-.fig-mark { fill: #759e67; stroke: #496f4d; stroke-width: 2; }
-.pack-harness { fill: none; stroke: #295f72; stroke-width: 7; stroke-linecap: round; }
-.bandhani-wrap, .bandhani-tail { fill: #d64d62; stroke: #7a3650; stroke-width: 3; stroke-linejoin: round; }
-.bandhani-dots { fill: none; stroke: #fff1a8; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1 10; }
-.market-tote { fill: #d8a05f; }
-.fruit-dot.orange { fill: #f08a45; }
-.fruit-dot.berry { fill: #b95a7a; }
-.worm-bikini .bikini-band, .worm-bikini .bikini-tie { fill: none; stroke: #e95884; stroke-width: 6; stroke-linecap: round; }
-.worm-bikini .bikini-cup { fill: #f1749a; stroke: #9f3f66; stroke-width: 3; }
-.worm-bikini .bikini-bottom { fill: #f1749a; stroke: #9f3f66; stroke-width: 3; }
-.wasp-wing, .dragonfly-wing { fill: rgba(235,252,255,.7); stroke: var(--local-primary); stroke-width: 4; }
-.wing-detail, .leaf-vein { fill: none; stroke: color-mix(in srgb, var(--local-primary) 65%, var(--worm-deep)); stroke-width: 2.5; stroke-linecap: round; }
-.cryo-jetpack rect { fill: #4a929e; }
-.cryo-jetpack .jet-flame { fill: #ffd166; stroke: #d86b59; stroke-width: 2; }
-.cryo-jetpack circle { fill: #d9f5f5; stroke: #2f7885; stroke-width: 3; }
-.snow-mark { fill: none !important; stroke: #4c9aa8 !important; stroke-width: 2 !important; }
-.dandiya-clip { fill: none; stroke: #75445d; stroke-width: 9; stroke-linecap: round; }
-.dandiya-stick { fill: none; stroke: #f3b449; stroke-width: 9; stroke-linecap: round; }
-.dandiya-stick.coral { stroke: #e85f62; }
-.dandiya-grip { fill: none; stroke: #fff0ad; stroke-width: 4; stroke-linecap: round; }
-.tam-crown { fill: #274d76; stroke: #162f4e; stroke-width: 3; }
-.tam-band { fill: none; stroke: #e45356; stroke-width: 7; stroke-linecap: round; }
-.tam-pom { fill: #e8b84f; stroke: #67482f; stroke-width: 2; }
-.kilt-wrap { fill: #315b78; stroke: #193a51; stroke-width: 3; }
-.kilt-pleats { fill: none; stroke: #e45356; stroke-width: 5; }
-.kilt-cross { fill: none; stroke: #f1c95a; stroke-width: 4; }
-.bagpipe-strap { fill: none; stroke: #5b3c5c; stroke-width: 9; stroke-linecap: round; }
-.bagpipe-bag { fill: #386b57; stroke: #223d38; stroke-width: 4; }
-.bagpipe-pipe { fill: none; stroke: #79512f; stroke-width: 8; stroke-linecap: round; }
-.bagpipe-drone { fill: none; stroke: #e6bb57; stroke-width: 6; stroke-linecap: round; }
-.spf-pack rect { fill: #f5db75; }
-.spf-pack circle { fill: #ff8f6b; stroke: white; stroke-width: 3; }
-.spf-pack text { fill: #713c52; font-size: 14px; font-weight: 900; stroke: none; }
-.sun-ray { fill: none; stroke: #ff8f6b; stroke-width: 3; stroke-linecap: round; }
-.chocolate-strap { fill: none; stroke: #684337; stroke-width: 10; stroke-linecap: round; }
-.chocolate-wrapper { fill: #f3bd54; stroke: #704033; stroke-width: 4; }
-.chocolate-bar { fill: #77402e; stroke: #4b2b25; stroke-width: 3; }
-.chocolate-grid { fill: none; stroke: #b36c46; stroke-width: 3; }
-.wrapper-fold { fill: #e96558; stroke: #704033; stroke-width: 3; }
-.doodle-layer { pointer-events: none; }
-.doodle-stroke { fill: none; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 2px 1px rgba(23,51,61,.2)); }
-.worm-avatar.is-drawing { cursor: crosshair; touch-action: none; outline: 3px dashed rgba(243,111,98,.65); outline-offset: 7px; border-radius: 18px; }
-.habitat[data-local-style="okinawa"] { --local-primary: #e96558; --local-secondary: #f8c64e; --scene-sky: #bfe5e8; --scene-ground: #75a96d; --scene-water: #63b7c5; --scene-highlight: #ffd166; --scene-detail: #315e58; }
-.habitat[data-local-style="kauai"] { --local-primary: #e77ea5; --local-secondary: #73b98d; --scene-sky: #bfe8ef; --scene-ground: #549369; --scene-water: #54b6cc; --scene-highlight: #ffd166; --scene-detail: #315f55; }
-.habitat[data-local-style="field"] { --local-primary: #4f7f72; --local-secondary: #d7b96d; --scene-sky: #d8edf0; --scene-ground: #94b877; --scene-water: #8bc8ce; --scene-highlight: #f7c85b; --scene-detail: #607050; }
-.habitat[data-local-style="rainforest"] { --local-primary: #3e9c70; --local-secondary: #f1a94b; --scene-sky: #b8ddd0; --scene-ground: #377f5d; --scene-water: #69b9b2; --scene-highlight: #f3c658; --scene-detail: #245443; }
-.habitat[data-local-style="woodland"] { --local-primary: #6f679d; --local-secondary: #9ebc84; --scene-sky: #d8e2d3; --scene-ground: #879b68; --scene-water: #8eb3aa; --scene-highlight: #e9bd62; --scene-detail: #5a5b45; }
-.habitat[data-local-style="ocean"] { --local-primary: #318ca5; --local-secondary: #f29b77; --scene-sky: #c7e9ea; --scene-ground: #77ad79; --scene-water: #4db3c5; --scene-highlight: #ffd166; --scene-detail: #2a6670; }
-.worm-name-tag {
-  position: absolute;
-  left: 18px;
-  bottom: 16px;
-  z-index: 3;
-  border-radius: 999px;
-  padding: 8px 13px;
-  background: rgba(255,255,255,.82);
-  font-weight: 800;
-  backdrop-filter: blur(6px);
-}
-
-.dress-bar { padding: 18px 20px 20px; }
-.dress-bar h2 { margin: 3px 0 12px; font-family: var(--display); font-size: 1.4rem; }
-.dress-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
-.dress-buttons button {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 9px 12px;
-  background: var(--paper-strong);
-  color: var(--ink);
-  cursor: pointer;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  box-shadow: 0 3px 0 rgba(29,70,68,.06);
-  transition: transform .16s ease, border-color .16s ease, background .16s ease, box-shadow .16s ease;
-}
-.dress-buttons button:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(29,70,68,.12); }
-.dress-buttons button[aria-pressed="true"] { background: var(--teal-dark); color: white; border-color: var(--teal-dark); box-shadow: 0 4px 10px rgba(20,75,78,.22); }
-.dress-buttons button[data-accessory][aria-pressed="true"]::after { content: "âœ“"; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(255,255,255,.19); font-size: .72rem; }
-.dress-buttons .button-icon { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: color-mix(in srgb, var(--yellow) 45%, white); font-size: .92rem; }
-.dress-buttons .surprise-button { background: var(--yellow); border-color: #e8b638; }
-.dress-buttons .freestyle-button[aria-pressed="true"] { background: var(--violet); border-color: var(--violet); color: white; }
-.draw-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; padding: 10px 12px; border-radius: 16px; background: rgba(117,103,184,.09); }
-.draw-tools[hidden] { display: none; }
-.draw-tools > span { font-size: .72rem; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; }
-.draw-color { width: 27px; height: 27px; border: 3px solid white; border-radius: 50%; background: var(--draw-color); box-shadow: 0 0 0 1px var(--line); cursor: pointer; }
-.draw-color[data-draw-color="#f36f62"] { background: #f36f62; }
-.draw-color[data-draw-color="#167d7a"] { background: #167d7a; }
-.draw-color[data-draw-color="#7567b8"] { background: #7567b8; }
-.draw-color[data-draw-color="#ffd166"] { background: #ffd166; }
-.draw-color.is-selected { box-shadow: 0 0 0 3px var(--ink); }
-.clear-drawing { border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; background: white; color: var(--ink); cursor: pointer; font-weight: 800; }
-.species-story {
-  padding: clamp(24px, 4vw, 38px);
-  display: flex;
-  flex-direction: column;
-}
-.story-topline { display: flex; align-items: center; }
-.region-label { color: var(--teal); font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.species-story h2 { margin: 20px 0 0; font-family: var(--display); font-size: clamp(2rem, 4vw, 3rem); line-height: .98; letter-spacing: -.04em; }
-.nickname { margin: 7px 0 20px; color: var(--coral); font-family: var(--display); font-size: 1.22rem; font-weight: 800; }
-.species-intro { margin: 0; color: var(--ink-soft); font-size: 1.05rem; }
-.fact-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
-.fact-pill { border-radius: 999px; padding: 8px 12px; font-size: .82rem; font-weight: 800; }
-.fact-pill.selfing { background: rgba(243,111,98,.17); color: #a5393f; }
-.fact-pill.outcrossing { background: rgba(117,103,184,.17); color: #514395; }
-.habitat-pill { background: rgba(22,125,122,.14); color: var(--teal-dark); }
-.wow-fact {
-  margin-top: auto;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 12px;
-  align-items: start;
-  border-radius: 20px;
-  padding: 16px;
-  background: rgba(255,209,102,.28);
-}
-.wow-fact > span { font-size: 1.7rem; }
-.wow-fact p { margin: 0; }
-.wow-fact strong, .wow-fact p span { display: block; }
-.wow-fact p span { margin-top: 3px; color: var(--ink-soft); }
-
-.science-notes {
-  margin: 30px 0 0;
-  border-top: 1px solid var(--line);
-  padding: 18px 4px 0;
-  color: var(--ink-soft);
-}
-.science-notes summary { cursor: pointer; color: var(--ink); font-weight: 800; }
-.science-notes p, .science-notes ul { max-width: 850px; }
-.science-notes li + li { margin-top: 6px; }
-
-footer {
-  padding: 24px 20px 38px;
-  border-top: 1px solid var(--line);
-  color: var(--ink-soft);
-  text-align: center;
-}
-footer p { margin: 0; }
-
-@media (max-width: 900px) {
-  .species-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .play-grid { grid-template-columns: 1fr; }
-  .species-story { min-height: 420px; }
-}
-
-@media (max-width: 680px) {
-  .topbar { grid-template-columns: 1fr auto 1fr; padding: 9px 14px 5px; }
-  .brand { grid-column: 2; grid-row: 1; }
-  .back-link { grid-column: 1; grid-row: 1; font-size: .76rem; }
-  .explored { grid-column: 3; grid-row: 1; width: 52px; height: 52px; }
-  main { padding: 4px 14px 48px; }
-  .section-heading { display: block; }
-  .section-heading > p { margin-top: 8px; text-align: left; }
-  .map-wrap, #world-map { min-height: 310px; }
-  .map-legend { left: 10px; right: auto; top: 10px; border-radius: 16px; }
-  .map-selection { left: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 10px 12px; }
-  .species-tabs { grid-template-columns: 1fr; }
-  .species-tab { min-height: 68px; }
-  .habitat { min-height: 340px; }
-  .scene-name { left: 12px; top: 12px; max-width: calc(100% - 24px); }
-  .dress-bar { padding: 16px; }
-  .species-story { min-height: 390px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
-}
+.ã^»¶‰žËkºwµçQ•ÈµÁ…¥Èé¡½Ù•Èì‰½É‘•Èµ½±½ÈèÉ‰„ ÈÐÌ°ÄÄÄ°äà°¸ÌÔ¤ì‰½àµÍ¡…‘½Üè€À€ÄÁÁà€ÈÕÁàÉ‰„ ÈØ°ÜÄ°Üä°¸Ä¤°¥¹Í•Ð€À€ÅÁà€ÀÉ‰„ ÈÔÔ°ÈÔÔ°ÈÔÔ°¸à¤ìô4(¹•…ÈµÁÉ¥µ…Éä°€¹•…ÈµÍ•½¹‘…Éä°€¹µ…É­•ÐµÑ½Ñ”°€¹Éå¼µ©•ÑÁ…¬É•Ð°€¹ÍÁ˜µÁ…¬É•ÐìÍÑÉ½­”èÙ…È ´µÝ½É´µ‘••À¤ìÍÑÉ½­”µÝ¥‘Ñ è€ÌìÍÑÉ½­”µ±¥¹•©½¥¸èÉ½Õ¹ìô4(¹•…ÈµÁÉ¥µ…Éäì™¥±°èÙ…È ´µ±½…°µÁÉ¥µ…Éä¤ìô4(¹•…ÈµÍ•½¹‘…Éäì™¥±°èÙ…È ´µ±½…°µÍ•½¹‘…Éä¤ìô4(¹•…ÈµÍÑÉ½­”°€¹µ¥¹Í„µ±¥¹•Ì°€¹Ñ½Ñ”µ¡…¹‘±”ì™¥±°è¹½¹”ìÍÑÉ½­”èÙ…È ´µÝ½É´µ‘••À¤ìÍÑÉ½­”µÝ¥‘Ñ è€ÐìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìÍÑÉ½­”µ±¥¹•©½¥¸èÉ½Õ¹ìô4(¹•…ÈµÍÑÉ½­”¹Ñ¡¥¬ìÍÑÉ½­”µÝ¥‘Ñ è€àìô4(¹µ¥¹Í„µ±¥¹•ÌìÍÑÉ½­”è€™™˜ÑØìÍÑÉ½­”µÝ¥‘Ñ è€Ôìô4(¹±…ˆµ½±•Ì¥É±”ì™¥±°èÉ‰„ ÄÜÐ°ÈÌÈ°ÈÐÀ°¸ØÈ¤ìÍÑÉ½­”è€ŒÈäÕ˜ÜÈìÍÑÉ½­”µÝ¥‘Ñ è€Ôìô4(¹±…ˆµ½±•ÌÁ…Ñ ì™¥±°è¹½¹”ìÍÑÉ½­”è€ŒÈäÕ˜ÜÈìÍÑÉ½­”µÝ¥‘Ñ è€ÔìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹­¥Ñ”µ‰½‘äì™¥±°è€•˜Ù˜ØÈìÍÑÉ½­”è€ŒÜàÍŒÔÔìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹­¥Ñ”µ‰½‘ä¹µ…±”ì™¥±°è€˜ÅˆØÑ˜ìô4(¹­¥Ñ”µÉ½ÍÌ°€¹­¥Ñ”µÍÑÉ¥¹œ°€¹­¥Ñ”µÑ…¥°ì™¥±°è¹½¹”ìÍÑÉ½­”è€ŒÜàÍŒÔÔìÍÑÉ½­”µÝ¥‘Ñ è€È¸ÔìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹­¥Ñ”µ‰½Üì™¥±°è€˜ÅˆØÑ˜ìÍÑÉ½­”è€ŒÜàÍŒÔÔìÍÑÉ½­”µÝ¥‘Ñ è€Èìô4(¹™ÉÕ¥ÐµÉ½Ý¸¥É±”ì™¥±°è€˜É„ÌÑìÍÑÉ½­”è€„ÐÔÌÌàìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹™ÉÕ¥ÐµÉ½Ý¸Á…Ñ ì™¥±°è¹½¹”ìÍÑÉ½­”è€™™˜ÁˆÄìÍÑÉ½­”µÝ¥‘Ñ è€Èìô4(¹ÍÑ…Èµ±…ÍÍ•ÌÁ…Ñ é¹½Ð ¹•…ÈµÍÑÉ½­”¤ì™¥±°è€™™ÄØØìÍÑÉ½­”è€„ØØÌÍŒìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹……¼µ¡•±µ•ÐÁ…Ñ é™¥ÉÍÐµ¡¥±°€¹……¼µ¡•±µ•ÐÁ…Ñ é¹Ñ µ¡¥± Ì¤ì™¥±°è€ˆäÙÐÔìÍÑÉ½­”è€ŒÙ˜ÐäÌÜìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹……¼µ¡•±µ•ÐÁ…Ñ é¹Ñ µ¡¥± È¤°€¹……¼µ¡•±µ•ÐÁ…Ñ é¹Ñ µ¡¥± Ð¤ì™¥±°è¹½¹”ìÍÑÉ½­”è€˜Å‰„ÜÄìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹±…ˆµ½…Ðµ‰½‘äì™¥±°è€™™™‘˜ÔìÍÑÉ½­”è€ŒÔÈÙÜØìÍÑÉ½­”µÝ¥‘Ñ è€ÐìÍÑÉ½­”µ±¥¹•©½¥¸èÉ½Õ¹ìô4(¹±…ˆµ½…Ðµ½±±…Èì™¥±°è€‘‰•™˜ÀìÍÑÉ½­”è€ŒÔÈÙÜØìÍÑÉ½­”µÝ¥‘Ñ è€ÌìÍÑÉ½­”µ±¥¹•©½¥¸èÉ½Õ¹ìô4(¹±…ˆµ½…Ðµ½Á•¹¥¹œì™¥±°è¹½¹”ìÍÑÉ½­”è€ŒÔÈÙÜØìÍÑÉ½­”µÝ¥‘Ñ è€ÌìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹±…ˆµ½…ÐµÍ•…´ì™¥±°è¹½¹”ìÍÑÉ½­”è€Œå…ˆå‰ìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹±…ˆµ½…ÐµÁ½­•Ðì™¥±°è€•‘˜Ý˜ÔìÍÑÉ½­”è€ŒÔÈÙÜØìÍÑÉ½­”µÝ¥‘Ñ è€ÈìÍÑÉ½­”µ±¥¹•©½¥¸èÉ½Õ¹ìô4(¹±…ˆµ½…Ðµ‰ÕÑÑ½¸ì™¥±°è€ŒÍˆá”äÄìÍÑÉ½­”èÝ¡¥Ñ”ìÍÑÉ½­”µÝ¥‘Ñ è€Äìô4(¹±…ˆµ¥µ‰…‘”ì™¥±°è€á••˜ÀìÍÑÉ½­”è€ŒÔÈÙÜØìÍÑÉ½­”µÝ¥‘Ñ è€Ä¸Ôìô4(¹±…ˆµ¥µÑ•áÐì™¥±°è€ŒÉ”ØÔÜÀì™½¹Ðè€àÀÀ€áÁà¼ÄÍ…¹ÌµÍ•É¥˜ìÍÑÉ½­”è¹½¹”ìô4(¹±…ˆµ¥µÑ•áÐ¹µ…±”ì™½¹ÐµÍ¥é”è€ÕÁàìô4(¹±…ˆµÁ•¸ì™¥±°è¹½¹”ìÍÑÉ½­”è€ÐÔÈØÔìÍÑÉ½­”µÝ¥‘Ñ è€È¸ÔìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹¹´µÁ±…Ñ”€¹Á±…Ñ”µÍ¡…‘½Üì™¥±°èÉ‰„ ÈÔ°ÔÐ°ØÄ°¸È¤ìô4(¹¹´µÁ±…Ñ”€¹Á±…Ñ”µ‰…Í”ì™¥±°èÉ‰„ ÄäÜ°ÈÈÐ°ÈÈÈ°¸ÜÈ¤ìÍÑÉ½­”è€ŒÔÈÝˆÝìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹¹´µÁ±…Ñ”€¹Á±…Ñ”µÉ¥´ì™¥±°èÉ‰„ ÈÈÔ°ÈÐÔ°ÈÐÈ°¸Üà¤ìÍÑÉ½­”è€ŒÔÈÝˆÝìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹¹´µÁ±…Ñ”€¹Á±…Ñ”µ……Èì™¥±°è€”á‘„ÔìÍÑÉ½­”è€ˆÑ„ÌÙ„ìÍÑÉ½­”µÝ¥‘Ñ è€Èìô4(¹¹´µÁ±…Ñ”€¹‰…Ñ•É¥…°µ±…Ý¸ì™¥±°è€Ù˜áˆì½Á…¥Ñäè€¸äìô4(¹¹´µÁ±…Ñ”€¹Ý½É´µÑÉ…­ÌÁ…Ñ ì™¥±°è¹½¹”ìÍÑÉ½­”èÉ‰„ ÈÔÔ°ÈÔÔ°ÈÌà°¸àØ¤ìÍÑÉ½­”µÝ¥‘Ñ è€ÈìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹¹´µÁ±…Ñ”€¹Á±…Ñ”µ¡¥¡±¥¡Ðì™¥±°èÉ‰„ ÈÔÔ°ÈÔÔ°ÈÔÔ°¸ä¤ìô4(¹¹´µÁ±…Ñ”Ñ•áÐì™¥±°è€ŒÌÔÕ”ØÐì™½¹Ðè€ÜÀÀ€åÁà¼ÄÍ…¹ÌµÍ•É¥˜ì±•ÑÑ•ÈµÍÁ…¥¹œè€¸ÀÉ•´ìô4(¹¹´µÁ±…Ñ”€¹Á±…Ñ”µ±…É”ì™¥±°è¹½¹”ìÍÑÉ½­”èÉ‰„ ÈÔÔ°ÈÔÔ°ÈÔÔ°¸àÈ¤ìÍÑÉ½­”µÝ¥‘Ñ è€ÌìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹¹´µÁ±…Ñ”µÍµ…±°€¹Á±…Ñ”µ‰…Í”°€¹¹´µÁ±…Ñ”µÍµ…±°€¹Á±…Ñ”µÉ¥´ìÍÑÉ½­”µÝ¥‘Ñ è€Èìô4(¹¹´µÁ±…Ñ”µÍµ…±°€¹Á±…Ñ”µ……ÈìÍÑÉ½­”µÝ¥‘Ñ è€Ä¸ÈÔìô4(¹¹´µÁ±…Ñ”µÍµ…±°€¹Á±…Ñ”µ±…É”ìÍÑÉ½­”µÝ¥‘Ñ è€Ä¸Ôìô4(¹¹´µÁ±…Ñ”µÍµ…±°Ñ•áÐì™½¹ÐµÍ¥é”è€ÙÁàìô4(¹Éå¼µ©•ÑÁ…¬€¹Éå¼µÁ…¬µÍ¡•±°ì™¥±°è€ŒÍ˜Ý˜á„ìÍÑÉ½­”è€ŒÈäÕ˜ÜÈìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹Éå¼µ©•ÑÁ…¬€¹Éå¼µÙ¥…°µ‰½‘äì™¥±°èÉ‰„ ÈÈÈ°ÈÐÜ°ÈÐÜ°¸äÈ¤ìÍÑÉ½­”è€ŒÉ˜ÜààÔìÍÑÉ½­”µÝ¥‘Ñ è€È¸Ôìô4(¹Éå¼µ©•ÑÁ…¬€¹Éå¼µÙ¥…°µ…Àì™¥±°è€ŒÈàÕ˜ÜÀìÍÑÉ½­”è€ŒÈÄÑÕˆìÍÑÉ½­”µÝ¥‘Ñ è€Èìô4(¹Éå¼µ©•ÑÁ…¬€¹Éå¼µ¥”ì™¥±°è€ŒàáÝ‘˜ìÍÑÉ½­”è€ŒÍˆá”åˆìÍÑÉ½­”µÝ¥‘Ñ è€Ä¸Ôìô4(¹Éå¼µ©•ÑÁ…¬€¹Éå¼µµ•‘…±±¥½¸ì™¥±°è€å˜Õ˜ÔìÍÑÉ½­”è€ŒÉ˜ÜààÔìÍÑÉ½­”µÝ¥‘Ñ è€È¸Ôìô4(¹Éå¼µÁ±Õµ”ì™¥±°è¹½¹”ìÍÑÉ½­”è€ˆá•‘˜ÀìÍÑÉ½­”µÝ¥‘Ñ è€ÔìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹Éå¼µÁ±Õµ”¹Íµ…±°ìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹Í¹½Üµµ…É¬¹Íµ…±°ìÍÑÉ½­”µÝ¥‘Ñ è€Ä¸Ô€…¥µÁ½ÉÑ…¹Ðìô4(¹™¥œµÙ¥Í½ÈÁ…Ñ é™¥ÉÍÐµ¡¥±°€¹™¥œµÙ¥Í½ÈÁ…Ñ é¹Ñ µ½˜µÑåÁ” Ð¤ì™¥±°è€ŒÜÉ„ØÙˆìÍÑÉ½­”èÙ…È ´µÝ½É´µ‘••À¤ìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹™¥œµÙ•¥¸°€¹Ù¥Í½Èµ‰…¹ì™¥±°è¹½¹”ìÍÑÉ½­”è€ŒÌÄÕ˜ÔÀìÍÑÉ½­”µÝ¥‘Ñ è€È¸ÔìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹Í…Ñ¡•°µÍÑÉ…Àì™¥±°è¹½¹”ìÍÑÉ½­”è€ŒÜÐÔÜÐÐìÍÑÉ½­”µÝ¥‘Ñ è€ÜìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹Í…Ñ¡•°µ‰…œì™¥±°è€ŒäåˆØÌìÍÑÉ½­”èÙ…È ´µÝ½É´µ‘••À¤ìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹Í…Ñ¡•°µ™±…Àì™¥±°è€ŒåÜÈÑŒìÍÑÉ½­”èÙ…È ´µÝ½É´µ‘••À¤ìÍÑÉ½­”µÝ¥‘Ñ è€Èìô4(¹™¥œµµ…É¬ì™¥±°è€ŒÜÔå”ØÜìÍÑÉ½­”è€ŒÐäÙ˜ÑìÍÑÉ½­”µÝ¥‘Ñ è€Èìô4(¹Á…¬µ¡…É¹•ÍÌì™¥±°è¹½¹”ìÍÑÉ½­”è€ŒÈäÕ˜ÜÈìÍÑÉ½­”µÝ¥‘Ñ è€ÜìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹‰…¹‘¡…¹¤µÝÉ…À°€¹‰…¹‘¡…¹¤µÑ…¥°ì™¥±°è€ØÑØÈìÍÑÉ½­”è€ŒÝ„ÌØÔÀìÍÑÉ½­”µÝ¥‘Ñ è€ÌìÍÑÉ½­”µ±¥¹•©½¥¸èÉ½Õ¹ìô4(¹‰…¹‘¡…¹¤µ‘½ÑÌì™¥±°è¹½¹”ìÍÑÉ½­”è€™™˜Å„àìÍÑÉ½­”µÝ¥‘Ñ è€ÔìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìÍÑÉ½­”µ‘…Í¡…ÉÉ…äè€Ä€ÄÀìô4(¹µ…É­•ÐµÑ½Ñ”ì™¥±°è€á„ÀÕ˜ìô4(¹™ÉÕ¥Ðµ‘½Ð¹½É…¹”ì™¥±°è€˜Àá„ÐÔìô4(¹™ÉÕ¥Ðµ‘½Ð¹‰•ÉÉäì™¥±°è€ˆäÕ„Ý„ìô4(¹Ý½É´µ‰¥­¥¹¤€¹‰¥­¥¹¤µ‰…¹°€¹Ý½É´µ‰¥­¥¹¤€¹‰¥­¥¹¤µÑ¥”ì™¥±°è¹½¹”ìÍÑÉ½­”è€”äÔààÐìÍÑÉ½­”µÝ¥‘Ñ è€ØìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹Ý½É´µ‰¥­¥¹¤€¹‰¥­¥¹¤µÕÀì™¥±°è€˜ÄÜÐå„ìÍÑÉ½­”è€Œå˜Í˜ØØìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹Ý½É´µ‰¥­¥¹¤€¹‰¥­¥¹¤µ‰½ÑÑ½´ì™¥±°è€˜ÄÜÐå„ìÍÑÉ½­”è€Œå˜Í˜ØØìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹Ý…ÍÀµÝ¥¹œ°€¹‘É…½¹™±äµÝ¥¹œì™¥±°èÉ‰„ ÈÌÔ°ÈÔÈ°ÈÔÔ°¸Ü¤ìÍÑÉ½­”èÙ…È ´µ±½…°µÁÉ¥µ…Éä¤ìÍÑÉ½­”µÝ¥‘Ñ è€Ðìô4(¹Ý¥¹œµ‘•Ñ…¥°°€¹±•…˜µÙ•¥¸ì™¥±°è¹½¹”ìÍÑÉ½­”è½±½Èµµ¥à¡¥¸ÍÉˆ°Ù…È ´µ±½…°µÁÉ¥µ…Éä¤€ØÔ”°Ù…È ´µÝ½É´µ‘••À¤¤ìÍÑÉ½­”µÝ¥‘Ñ è€È¸ÔìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹Éå¼µ©•ÑÁ…¬É•Ðì™¥±°è€ŒÑ„äÈå”ìô4(¹Éå¼µ©•ÑÁ…¬€¹©•Ðµ™±…µ”ì™¥±°è€™™ÄØØìÍÑÉ½­”è€àÙˆÔäìÍÑÉ½­”µÝ¥‘Ñ è€Èìô4(¹Éå¼µ©•ÑÁ…¬¥É±”ì™¥±°è€å˜Õ˜ÔìÍÑÉ½­”è€ŒÉ˜ÜààÔìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹Í¹½Üµµ…É¬ì™¥±°è¹½¹”€…¥µÁ½ÉÑ…¹ÐìÍÑÉ½­”è€ŒÑŒå…„à€…¥µÁ½ÉÑ…¹ÐìÍÑÉ½­”µÝ¥‘Ñ è€È€…¥µÁ½ÉÑ…¹Ðìô4(¹‘…¹‘¥å„µ±¥Àì™¥±°è¹½¹”ìÍÑÉ½­”è€ŒÜÔÐÐÕìÍÑÉ½­”µÝ¥‘Ñ è€äìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹‘…¹‘¥å„µÍÑ¥¬ì™¥±°è¹½¹”ìÍÑÉ½­”è€˜ÍˆÐÐäìÍÑÉ½­”µÝ¥‘Ñ è€äìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹‘…¹‘¥å„µÍÑ¥¬¹½É…°ìÍÑÉ½­”è€”àÕ˜ØÈìô4(¹‘…¹‘¥å„µÉ¥Àì™¥±°è¹½¹”ìÍÑÉ½­”è€™™˜Á…ìÍÑÉ½­”µÝ¥‘Ñ è€ÐìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹Ñ…´µÉ½Ý¸ì™¥±°è€ŒÈÜÑÜØìÍÑÉ½­”è€ŒÄØÉ˜Ñ”ìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹Ñ…´µ‰…¹ì™¥±°è¹½¹”ìÍÑÉ½­”è€”ÐÔÌÔØìÍÑÉ½­”µÝ¥‘Ñ è€ÜìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹Ñ…´µÁ½´ì™¥±°è€”áˆàÑ˜ìÍÑÉ½­”è€ŒØÜÐàÉ˜ìÍÑÉ½­”µÝ¥‘Ñ è€Èìô4(¹­¥±ÐµÝÉ…Àì™¥±°è€ŒÌÄÕˆÜàìÍÑÉ½­”è€ŒÄäÍ„ÔÄìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹­¥±ÐµÁ±•…ÑÌì™¥±°è¹½¹”ìÍÑÉ½­”è€”ÐÔÌÔØìÍÑÉ½­”µÝ¥‘Ñ è€Ôìô4(¹­¥±ÐµÉ½ÍÌì™¥±°è¹½¹”ìÍÑÉ½­”è€˜ÅŒäÕ„ìÍÑÉ½­”µÝ¥‘Ñ è€Ðìô4(¹‰…Á¥Á”µÍÑÉ…Àì™¥±°è¹½¹”ìÍÑÉ½­”è€ŒÕˆÍŒÕŒìÍÑÉ½­”µÝ¥‘Ñ è€äìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹‰…Á¥Á”µ‰…œì™¥±°è€ŒÌàÙˆÔÜìÍÑÉ½­”è€ŒÈÈÍÌàìÍÑÉ½­”µÝ¥‘Ñ è€Ðìô4(¹‰…Á¥Á”µÁ¥Á”ì™¥±°è¹½¹”ìÍÑÉ½­”è€ŒÜäÔÄÉ˜ìÍÑÉ½­”µÝ¥‘Ñ è€àìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹‰…Á¥Á”µ‘É½¹”ì™¥±°è¹½¹”ìÍÑÉ½­”è€”Ù‰ˆÔÜìÍÑÉ½­”µÝ¥‘Ñ è€ØìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹ÍÁ˜µÁ…¬É•Ðì™¥±°è€˜Õ‘ˆÜÔìô4(¹ÍÁ˜µÁ…¬¥É±”ì™¥±°è€™˜á˜ÙˆìÍÑÉ½­”èÝ¡¥Ñ”ìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹ÍÁ˜µÁ…¬Ñ•áÐì™¥±°è€ŒÜÄÍŒÔÈì™½¹ÐµÍ¥é”è€ÄÑÁàì™½¹ÐµÝ•¥¡Ðè€äÀÀìÍÑÉ½­”è¹½¹”ìô4(¹ÍÕ¸µÉ…äì™¥±°è¹½¹”ìÍÑÉ½­”è€™˜á˜ÙˆìÍÑÉ½­”µÝ¥‘Ñ è€ÌìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹¡½½±…Ñ”µÍÑÉ…Àì™¥±°è¹½¹”ìÍÑÉ½­”è€ŒØàÐÌÌÜìÍÑÉ½­”µÝ¥‘Ñ è€ÄÀìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìô4(¹¡½½±…Ñ”µÝÉ…ÁÁ•Èì™¥±°è€˜Í‰ÔÐìÍÑÉ½­”è€ŒÜÀÐÀÌÌìÍÑÉ½­”µÝ¥‘Ñ è€Ðìô4(¹¡½½±…Ñ”µ‰…Èì™¥±°è€ŒÜÜÐÀÉ”ìÍÑÉ½­”è€ŒÑˆÉˆÈÔìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹¡½½±…Ñ”µÉ¥ì™¥±°è¹½¹”ìÍÑÉ½­”è€ˆÌÙŒÐØìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹ÝÉ…ÁÁ•Èµ™½±ì™¥±°è€”äØÔÔàìÍÑÉ½­”è€ŒÜÀÐÀÌÌìÍÑÉ½­”µÝ¥‘Ñ è€Ììô4(¹‘½½‘±”µ±…å•ÈìÁ½¥¹Ñ•Èµ•Ù•¹ÑÌè¹½¹”ìô4(¹‘½½‘±”µÍÑÉ½­”ì™¥±°è¹½¹”ìÍÑÉ½­”µÝ¥‘Ñ è€ØìÍÑÉ½­”µ±¥¹•…ÀèÉ½Õ¹ìÍÑÉ½­”µ±¥¹•©½¥¸èÉ½Õ¹ì™¥±Ñ•Èè‘É½ÀµÍ¡…‘½Ü À€ÉÁà€ÅÁàÉ‰„ ÈÌ°ÔÄ°ØÄ°¸È¤¤ìô4(¹Ý½É´µ…Ù…Ñ…È¹¥Ìµ‘É…Ý¥¹œìÕÉÍ½ÈèÉ½ÍÍ¡…¥ÈìÑ½Õ µ…Ñ¥½¸è¹½¹”ì½ÕÑ±¥¹”è€ÍÁà‘…Í¡•É‰„ ÈÐÌ°ÄÄÄ°äà°¸ØÔ¤ì½ÕÑ±¥¹”µ½™™Í•Ðè€ÝÁàì‰½É‘•ÈµÉ…‘¥ÕÌè€ÄáÁàìô4(¹¡…‰¥Ñ…Ñm‘…Ñ„µ±½…°µÍÑå±”ô‰½­¥¹…Ý„‰tì€´µ±½…°µÁÉ¥µ…Éäè€”äØÔÔàì€´µ±½…°µÍ•½¹‘…Éäè€˜áŒØÑ”ì€´µÍ•¹”µÍ­äè€‰™”Õ”àì€´µÍ•¹”µÉ½Õ¹è€ŒÜÕ„äÙì€´µÍ•¹”µÝ…Ñ•Èè€ŒØÍˆÝŒÔì€´µÍ•¹”µ¡¥¡±¥¡Ðè€™™ÄØØì€´µÍ•¹”µ‘•Ñ…¥°è€ŒÌÄÕ”Ôàìô4(¹¡…‰¥Ñ…Ñm‘…Ñ„µ±½…°µÍÑå±”ô‰­…Õ…¤‰tì€´µ±½…°µÁÉ¥µ…Éäè€”ÜÝ•„Ôì€´µ±½…°µÍ•½¹‘…Éäè€ŒÜÍˆäáì€´µÍ•¹”µÍ­äè€‰™”á•˜ì€´µÍ•¹”µÉ½Õ¹è€ŒÔÐäÌØäì€´µÍ•¹”µÝ…Ñ•Èè€ŒÔÑˆÙŒì€´µÍ•¹”µ¡¥¡±¥¡Ðè€™™ÄØØì€´µÍ•¹”µ‘•Ñ…¥°è€ŒÌÄÕ˜ÔÔìô4(¹¡…‰¥Ñ…Ñm‘…Ñ„µ±½…°µÍÑå±”ô‰™¥•±‰tì€´µ±½…°µÁÉ¥µ…Éäè€ŒÑ˜Ý˜ÜÈì€´µ±½…°µÍ•½¹‘…Éäè€ÝˆäÙì€´µÍ•¹”µÍ­äè€á•‘˜Àì€´µÍ•¹”µÉ½Õ¹è€ŒäÑˆàÜÜì€´µÍ•¹”µÝ…Ñ•Èè€Œá‰Œá”ì€´µÍ•¹”µ¡¥¡±¥¡Ðè€˜ÝŒàÕˆì€´µÍ•¹”µ‘•Ñ…¥°è€ŒØÀÜÀÔÀìô4(¹¡…‰¥Ñ…Ñm‘…Ñ„µ±½…°µÍÑå±”ô‰É…¥¹™½É•ÍÐ‰tì€´µ±½…°µÁÉ¥µ…Éäè€ŒÍ”åŒÜÀì€´µ±½…°µÍ•½¹‘…Éäè€˜Å„äÑˆì€´µÍ•¹”µÍ­äè€ˆá‘‘Àì€´µÍ•¹”µÉ½Õ¹è€ŒÌÜÝ˜Õì€´µÍ•¹”µÝ…Ñ•Èè€ŒØåˆåˆÈì€´µÍ•¹”µ¡¥¡±¥¡Ðè€˜ÍŒØÔàì€´µÍ•¹”µ‘•Ñ…¥°è€ŒÈÐÔÐÐÌìô4(¹¡…‰¥Ñ…Ñm‘…Ñ„µ±½…°µÍÑå±”ô‰Ý½½‘±…¹‰tì€´µ±½…°µÁÉ¥µ…Éäè€ŒÙ˜ØÜåì€´µ±½…°µÍ•½¹‘…Éäè€Œå•‰ŒàÐì€´µÍ•¹”µÍ­äè€á”ÉÌì€´µÍ•¹”µÉ½Õ¹è€ŒàÜåˆØàì€´µÍ•¹”µÝ…Ñ•Èè€Œá•ˆÍ…„ì€´µÍ•¹”µ¡¥¡±¥¡Ðè€”å‰ØÈì€´µÍ•¹”µ‘•Ñ…¥°è€ŒÕ„ÕˆÐÔìô4(¹¡…‰¥Ñ…Ñm‘…Ñ„µ±½…°µÍÑå±”ô‰½•…¸‰tì€´µ±½…°µÁÉ¥µ…Éäè€ŒÌÄá„Ôì€´µ±½…°µÍ•½¹‘…Éäè€˜ÈåˆÜÜì€´µÍ•¹”µÍ­äè€ŒÝ”å•„ì€´µÍ•¹”µÉ½Õ¹è€ŒÜÝ…Üäì€´µÍ•¹”µÝ…Ñ•Èè€ŒÑ‘ˆÍŒÔì€´µÍ•¹”µ¡¥¡±¥¡Ðè€™™ÄØØì€´µÍ•¹”µ‘•Ñ…¥°è€ŒÉ„ØØÜÀìô4(¹Ý½É´µ¹…µ”µÑ…œì4(€Á½Í¥Ñ¥½¸è…‰Í½±ÕÑ”ì4(€±•™Ðè€ÄáÁàì4(€‰½ÑÑ½´è€ÄÙÁàì4(€èµ¥¹‘•àè€Ìì4(€‰½É‘•ÈµÉ…‘¥ÕÌè€ääåÁàì4(€Á…‘‘¥¹œè€áÁà€ÄÍÁàì4(€‰…­É½Õ¹èÉ‰„ ÈÔÔ°ÈÔÔ°ÈÔÔ°¸àÈ¤ì4(€™½¹ÐµÝ•¥¡Ðè€àÀÀì4(€‰…­‘É½Àµ™¥±Ñ•Èè‰±ÕÈ ÙÁà¤ì4)ô4(4(¹‘É•ÍÌµ‰…ÈìÁ…‘‘¥¹œè€ÄáÁà€ÈÁÁà€ÈÁÁàìô4(¹‘É•ÍÌµ‰…È Èìµ…É¥¸è€ÍÁà€À€ÄÉÁàì™½¹Ðµ™…µ¥±äèÙ…È ´µ‘¥ÍÁ±…ä¤ì™½¹ÐµÍ¥é”è€Ä¸ÑÉ•´ìô4(¹‘É•ÍÌµ‰ÕÑÑ½¹Ìì‘¥ÍÁ±…äè™±•àì™±•àµÝÉ…ÀèÝÉ…Àì…Àè€áÁàìô4(¹‘É•ÍÌµ‰ÕÑÑ½¹Ì‰ÕÑÑ½¸ì4(€‰½É‘•Èè€ÅÁàÍ½±¥Ù…È ´µ±¥¹”¤ì4(€‰½É‘•ÈµÉ…‘¥ÕÌè€ääåÁàì4(€Á…‘‘¥¹œè€åÁà€ÄÉÁàì4(€‰…­É½Õ¹èÙ…È ´µÁ…Á•ÈµÍÑÉ½¹œ¤ì4(€½±½ÈèÙ…È ´µ¥¹¬¤ì4(€ÕÉÍ½ÈèÁ½¥¹Ñ•Èì4(€™½¹ÐµÝ•¥¡Ðè€ÜÀÀì4(€‘¥ÍÁ±…äè¥¹±¥¹”µ™±•àì4(€…±¥¸µ¥Ñ•µÌè•¹Ñ•Èì4(€…Àè€ÝÁàì4(€‰½àµÍ¡…‘½Üè€À€ÍÁà€ÀÉ‰„ Èä°ÜÀ°Øà°¸ÀØ¤ì4(€ÑÉ…¹Í¥Ñ¥½¸èÑÉ…¹Í™½É´€¸ÄÙÌ•…Í”°‰½É‘•Èµ½±½È€¸ÄÙÌ•…Í”°‰…­É½Õ¹€¸ÄÙÌ•…Í”°‰½àµÍ¡…‘½Ü€¸ÄÙÌ•…Í”ì4)ô4(¹‘É•ÍÌµ‰ÕÑÑ½¹Ì‰ÕÑÑ½¸é¡½Ù•Èì‰½É‘•Èµ½±½ÈèÙ…È ´µÑ•…°¤ìÑÉ…¹Í™½É´èÑÉ…¹Í±…Ñ•d ´ÉÁà¤ì‰½àµÍ¡…‘½Üè€À€ÙÁà€ÄÉÁàÉ‰„ Èä°ÜÀ°Øà°¸ÄÈ¤ìô4(¹‘É•ÍÌµ‰ÕÑÑ½¹Ì‰ÕÑÑ½¹m…É¥„µÁÉ•ÍÍ•ô‰ÑÉÕ”‰tì‰…­É½Õ¹èÙ…È ´µÑ•…°µ‘…É¬¤ì½±½ÈèÝ¡¥Ñ”ì‰½É‘•Èµ½±½ÈèÙ…È ´µÑ•…°µ‘…É¬¤ì‰½àµÍ¡…‘½Üè€À€ÑÁà€ÄÁÁàÉ‰„ ÈÀ°ÜÔ°Üà°¸ÈÈ¤ìô4(¹‘É•ÍÌµ‰ÕÑÑ½¹Ì‰ÕÑÑ½¹m‘…Ñ„µ…•ÍÍ½Éåum…É¥„µÁÉ•ÍÍ•ô‰ÑÉÕ”‰tèé…™Ñ•Èì½¹Ñ•¹Ðè€‹ŠrLˆì‘¥ÍÁ±…äèÉ¥ìÁ±…”µ¥Ñ•µÌè•¹Ñ•ÈìÝ¥‘Ñ è€ÄáÁàì¡•¥¡Ðè€ÄáÁàì‰½É‘•ÈµÉ…‘¥ÕÌè€ÔÀ”ì‰…­É½Õ¹èÉ‰„ ÈÔÔ°ÈÔÔ°ÈÔÔ°¸Ää¤ì™½¹ÐµÍ¥é”è€¸ÜÉÉ•´ìô4(¹‘É•ÍÌµ‰ÕÑÑ½¹Ì€¹‰ÕÑÑ½¸µ¥½¸ì‘¥ÍÁ±…äèÉ¥ìÁ±…”µ¥Ñ•µÌè•¹Ñ•ÈìÝ¥‘Ñ è€ÈÑÁàì¡•¥¡Ðè€ÈÑÁàì‰½É‘•ÈµÉ…‘¥ÕÌè€ÔÀ”ì‰…­É½Õ¹è½±½Èµµ¥à¡¥¸ÍÉˆ°Ù…È ´µå•±±½Ü¤€ÐÔ”°Ý¡¥Ñ”¤ì™½¹ÐµÍ¥é”è€¸äÉÉ•´ìô4(¹‘É•ÍÌµ‰ÕÑÑ½¹Ì€¹ÍÕÉÁÉ¥Í”µ‰ÕÑÑ½¸ì‰…­É½Õ¹èÙ…È ´µå•±±½Ü¤ì‰½É‘•Èµ½±½Èè€”áˆØÌàìô4(¹‘É•ÍÌµ‰ÕÑÑ½¹Ì€¹™É••ÍÑå±”µ‰ÕÑÑ½¹m…É¥„µÁÉ•ÍÍ•ô‰ÑÉÕ”‰tì‰…­É½Õ¹èÙ…È ´µÙ¥½±•Ð¤ì‰½É‘•Èµ½±½ÈèÙ…È ´µÙ¥½±•Ð¤ì½±½ÈèÝ¡¥Ñ”ìô4(¹‘É…ÜµÑ½½±Ìì‘¥ÍÁ±…äè™±•àì™±•àµÝÉ…ÀèÝÉ…Àì…±¥¸µ¥Ñ•µÌè•¹Ñ•Èì…Àè€áÁàìµ…É¥¸µÑ½Àè€ÄÁÁàìÁ…‘‘¥¹œè€ÄÁÁà€ÄÉÁàì‰½É‘•ÈµÉ…‘¥ÕÌè€ÄÙÁàì‰…­É½Õ¹èÉ‰„ ÄÄÜ°ÄÀÌ°ÄàÐ°¸Àä¤ìô4(¹‘É…ÜµÑ½½±Ím¡¥‘‘•¹tì‘¥ÍÁ±…äè¹½¹”ìô4(¹‘É…ÜµÑ½½±Ì€øÍÁ…¸ì™½¹ÐµÍ¥é”è€¸ÜÉÉ•´ì™½¹ÐµÝ•¥¡Ðè€äÀÀìÑ•áÐµÑÉ…¹Í™½É´èÕÁÁ•É…Í”ì±•ÑÑ•ÈµÍÁ…¥¹œè€¸Àá•´ìô4(¹‘É…Üµ½±½ÈìÝ¥‘Ñ è€ÈÝÁàì¡•¥¡Ðè€ÈÝÁàì‰½É‘•Èè€ÍÁàÍ½±¥Ý¡¥Ñ”ì‰½É‘•ÈµÉ…‘¥ÕÌè€ÔÀ”ì‰…­É½Õ¹èÙ…È ´µ‘É…Üµ½±½È¤ì‰½àµÍ¡…‘½Üè€À€À€À€ÅÁàÙ…È ´µ±¥¹”¤ìÕÉÍ½ÈèÁ½¥¹Ñ•Èìô4(¹‘É…Üµ½±½Ém‘…Ñ„µ‘É…Üµ½±½Èôˆ˜ÌÙ˜ØÈ‰tì‰…­É½Õ¹è€˜ÌÙ˜ØÈìô4(¹‘É…Üµ½±½Ém‘…Ñ„µ‘É…Üµ½±½ÈôˆŒÄØÝÝ„‰tì‰…­É½Õ¹è€ŒÄØÝÝ„ìô4(¹‘É…Üµ½±½Ém‘…Ñ„µ‘É…Üµ½±½ÈôˆŒÜÔØÝˆà‰tì‰…­É½Õ¹è€ŒÜÔØÝˆàìô4(¹‘É…Üµ½±½Ém‘…Ñ„µ‘É…Üµ½±½Èôˆ™™ÄØØ‰tì‰…­É½Õ¹è€™™ÄØØìô4(¹‘É…Üµ½±½È¹¥ÌµÍ•±•Ñ•ì‰½àµÍ¡…‘½Üè€À€À€À€ÍÁàÙ…È ´µ¥¹¬¤ìô4(¹±•…Èµ‘É…Ý¥¹œì‰½É‘•Èè€ÅÁàÍ½±¥Ù…È ´µ±¥¹”¤ì‰½É‘•ÈµÉ…‘¥ÕÌè€ääåÁàìÁ…‘‘¥¹œè€ÙÁà€ÄÁÁàì‰…­É½Õ¹èÝ¡¥Ñ”ì½±½ÈèÙ…È ´µ¥¹¬¤ìÕÉÍ½ÈèÁ½¥¹Ñ•Èì™½¹ÐµÝ•¥¡Ðè€àÀÀìô4(¹ÍÁ•¥•ÌµÍÑ½Éäì4(€Á…‘‘¥¹œè±…µÀ ÈÑÁà°€ÑÙÜ°€ÌáÁà¤ì4(€‘¥ÍÁ±…äè™±•àì4(€™±•àµ‘¥É•Ñ¥½¸è½±Õµ¸ì4)ô4(¹ÍÑ½ÉäµÑ½Á±¥¹”ì‘¥ÍÁ±…äè™±•àì…±¥¸µ¥Ñ•µÌè•¹Ñ•Èìô4(¹É•¥½¸µ±…‰•°ì½±½ÈèÙ…È ´µÑ•…°¤ì™½¹ÐµÍ¥é”è€¸ÜáÉ•´ì™½¹ÐµÝ•¥¡Ðè€àÀÀì±•ÑÑ•ÈµÍÁ…¥¹œè€¸Àá•´ìÑ•áÐµÑÉ…¹Í™½É´èÕÁÁ•É…Í”ìô4(¹ÍÁ•¥•ÌµÍÑ½Éä Èìµ…É¥¸è€ÈÁÁà€À€Àì™½¹Ðµ™…µ¥±äèÙ…È ´µ‘¥ÍÁ±…ä¤ì™½¹ÐµÍ¥é”è±…µÀ ÉÉ•´°€ÑÙÜ°€ÍÉ•´¤ì±¥¹”µ¡•¥¡Ðè€¸äàì±•ÑÑ•ÈµÍÁ…¥¹œè€´¸ÀÑ•´ìô4(¹¹¥­¹…µ”ìµ…É¥¸è€ÝÁà€À€ÈÁÁàì½±½ÈèÙ…È ´µ½É…°¤ì™½¹Ðµ™…µ¥±äèÙ…È ´µ‘¥ÍÁ±…ä¤ì™½¹ÐµÍ¥é”è€Ä¸ÈÉÉ•´ì™½¹ÐµÝ•¥¡Ðè€àÀÀìô4(¹ÍÁ•¥•Ìµ¥¹ÑÉ¼ìµ…É¥¸è€Àì½±½ÈèÙ…È ´µ¥¹¬µÍ½™Ð¤ì™½¹ÐµÍ¥é”è€Ä¸ÀÕÉ•´ìô4(¹™…ÐµÁ¥±±Ìì‘¥ÍÁ±…äè™±•àì™±•àµÝÉ…ÀèÝÉ…Àì…Àè€áÁàìµ…É¥¸è€ÈÑÁà€Àìô4(¹™…ÐµÁ¥±°ì‰½É‘•ÈµÉ…‘¥ÕÌè€ääåÁàìÁ…‘‘¥¹œè€áÁà€ÄÉÁàì™½¹ÐµÍ¥é”è€¸àÉÉ•´ì™½¹ÐµÝ•¥¡Ðè€àÀÀìô4(¹™…ÐµÁ¥±°¹Í•±™¥¹œì‰…­É½Õ¹èÉ‰„ ÈÐÌ°ÄÄÄ°äà°¸ÄÜ¤ì½±½Èè€„ÔÌäÍ˜ìô4(¹™…ÐµÁ¥±°¹½ÕÑÉ½ÍÍ¥¹œì‰…­É½Õ¹èÉ‰„ ÄÄÜ°ÄÀÌ°ÄàÐ°¸ÄÜ¤ì½±½Èè€ŒÔÄÐÌäÔìô4(¹¡…‰¥Ñ…ÐµÁ¥±°ì‰…­É½Õ¹èÉ‰„ ÈÈ°ÄÈÔ°ÄÈÈ°¸ÄÐ¤ì½±½ÈèÙ…È ´µÑ•…°µ‘…É¬¤ìô4(¹Ý½Üµ™…Ðì4(€µ…É¥¸µÑ½Àè…ÕÑ¼ì4(€‘¥ÍÁ±…äèÉ¥ì4(€É¥µÑ•µÁ±…Ñ”µ½±Õµ¹Ìè…ÕÑ¼€Å™Èì4(€…Àè€ÄÉÁàì4(€…±¥¸µ¥Ñ•µÌèÍÑ…ÉÐì4(€‰½É‘•ÈµÉ…‘¥ÕÌè€ÈÁÁàì4(€Á…‘‘¥¹œè€ÄÙÁàì4(€‰…­É½Õ¹èÉ‰„ ÈÔÔ°ÈÀä°ÄÀÈ°¸Èà¤ì4)ô4(¹Ý½Üµ™…Ð€øÍÁ…¸ì™½¹ÐµÍ¥é”è€Ä¸ÝÉ•´ìô4(¹Ý½Üµ™…ÐÀìµ…É¥¸è€Àìô4(¹Ý½Üµ™…ÐÍÑÉ½¹œ°€¹Ý½Üµ™…ÐÀÍÁ…¸ì‘¥ÍÁ±…äè‰±½¬ìô4(¹Ý½Üµ™…ÐÀÍÁ…¸ìµ…É¥¸µÑ½Àè€ÍÁàì½±½ÈèÙ…È ´µ¥¹¬µÍ½™Ð¤ìô4(4(¹Í¥•¹”µ¹½Ñ•Ìì4(€µ…É¥¸è€ÌÁÁà€À€Àì4(€‰½É‘•ÈµÑ½Àè€ÅÁàÍ½±¥Ù…È ´µ±¥¹”¤ì4(€Á…‘‘¥¹œè€ÄáÁà€ÑÁà€Àì4(€½±½ÈèÙ…È ´µ¥¹¬µÍ½™Ð¤ì4)ô4(¹Í¥•¹”µ¹½Ñ•ÌÍÕµµ…ÉäìÕÉÍ½ÈèÁ½¥¹Ñ•Èì½±½ÈèÙ…È ´µ¥¹¬¤ì™½¹ÐµÝ•¥¡Ðè€àÀÀìô4(¹Í¥•¹”µ¹½Ñ•ÌÀ°€¹Í¥•¹”µ¹½Ñ•ÌÕ°ìµ…àµÝ¥‘Ñ è€àÔÁÁàìô4(¹Í¥•¹”µ¹½Ñ•Ì±¤€¬±¤ìµ…É¥¸µÑ½Àè€ÙÁàìô4(4)™½½Ñ•Èì4(€Á…‘‘¥¹œè€ÈÑÁà€ÈÁÁà€ÌáÁàì4(€‰½É‘•ÈµÑ½Àè€ÅÁàÍ½±¥Ù…È ´µ±¥¹”¤ì4(€½±½ÈèÙ…È ´µ¥¹¬µÍ½™Ð¤ì4(€Ñ•áÐµ…±¥¸è•¹Ñ•Èì4)ô4)™½½Ñ•ÈÀìµ…É¥¸è€Àìô4(4)µ•‘¥„€¡µ…àµÝ¥‘Ñ è€äÀÁÁà¤ì4(€€¹ÍÁ•¥•ÌµÑ…‰ÌìÉ¥µÑ•µÁ±…Ñ”µ½±Õµ¹ÌèÉ•Á•…Ð Ì°µ¥¹µ…à À°€Å™È¤¤ìô4(€€¹Á±…äµÉ¥ìÉ¥µÑ•µÁ±…Ñ”µ½±Õµ¹Ìè€Å™Èìô4(€€¹ÍÁ•¥•ÌµÍÑ½Éäìµ¥¸µ¡•¥¡Ðè€ÐÈÁÁàìô4)ô4(4)µ•‘¥„€¡µ…àµÝ¥‘Ñ è€ØàÁÁà¤ì4(€€¹Ñ½Á‰…ÈìÉ¥µÑ•µÁ±…Ñ”µ½±Õµ¹Ìè€Å™È…ÕÑ¼€Å™ÈìÁ…‘‘¥¹œè€åÁà€ÄÑÁà€ÕÁàìô4(€€¹‰É…¹ìÉ¥µ½±Õµ¸è€ÈìÉ¥µÉ½Üè€Äìô4(€€¹‰…¬µ±¥¹¬ìÉ¥µ½±Õµ¸è€ÄìÉ¥µÉ½Üè€Äì™½¹ÐµÍ¥é”è€¸ÜÙÉ•´ìô4(€€¹•áÁ±½É•ìÉ¥µ½±Õµ¸è€ÌìÉ¥µÉ½Üè€ÄìÝ¥‘Ñ è€ÔÉÁàì¡•¥¡Ðè€ÔÉÁàìô4(€µ…¥¸ìÁ…‘‘¥¹œè€ÑÁà€ÄÑÁà€ÐáÁàìô4(€€¹Í•Ñ¥½¸µ¡•…‘¥¹œì‘¥ÍÁ±…äè‰±½¬ìô4(€€¹Í•Ñ¥½¸µ¡•…‘¥¹œ€øÀìµ…É¥¸µÑ½Àè€áÁàìÑ•áÐµ…±¥¸è±•™Ðìô4(€€¹µ…ÀµÝÉ…À°€Ý½É±µµ…Àìµ¥¸µ¡•¥¡Ðè€ÌÄÁÁàìô4(€€¹µ…Àµ±••¹ì±•™Ðè€ÄÁÁàìÉ¥¡Ðè…ÕÑ¼ìÑ½Àè€ÄÁÁàì‰½É‘•ÈµÉ…‘¥ÕÌè€ÄÙÁàìô4(€€¹µ…ÀµÍ•±•Ñ¥½¸ì±•™Ðè€ÄÁÁàì‰½ÑÑ½´è€ÄÁÁàìµ…àµÝ¥‘Ñ è…±Œ ÄÀÀ”€´€ÈÁÁà¤ìÁ…‘‘¥¹œè€ÄÁÁà€ÄÉÁàìô4(€€¹ÍÁ•¥•ÌµÑ…‰ÌìÉ¥µÑ•µÁ±…Ñ”µ½±Õµ¹Ìè€Å™Èìô4(€€¹ÍÁ•¥•ÌµÑ…ˆìµ¥¸µ¡•¥¡Ðè€ØáÁàìô4(€€¹¡…‰¥Ñ…Ðìµ¥¸µ¡•¥¡Ðè€ÌÐÁÁàìô4(€€¹Í•¹”µ¹…µ”ì±•™Ðè€ÄÉÁàìÑ½Àè€ÄÉÁàìµ…àµÝ¥‘Ñ è…±Œ ÄÀÀ”€´€ÈÑÁà¤ìô4(€€¹‘É•ÍÌµ‰…ÈìÁ…‘‘¥¹œè€ÄÙÁàìô4(€€¹ÍÁ•¥•ÌµÍÑ½Éäìµ¥¸µ¡•¥¡Ðè€ÌäÁÁàìô4)ô4(4)µ•‘¥„€¡ÁÉ•™•ÉÌµÉ•‘Õ•µµ½Ñ¥½¸èÉ•‘Õ”¤ì4(€¡Ñµ°ìÍÉ½±°µ‰•¡…Ù¥½Èè…ÕÑ¼ìô4(€€¨°€¨èé‰•™½É”°€¨èé…™Ñ•Èì…¹¥µ…Ñ¥½¸è¹½¹”€…¥µÁ½ÉÑ…¹ÐìÑÉ…¹Í¥Ñ¥½¸µ‘ÕÉ…Ñ¥½¸è€¸ÀÅµÌ€…¥µÁ½ÉÑ…¹Ðìô4)ô4

@@ -26,7 +26,7 @@ Use the CSS custom properties rather than copying hex values into component rule
 | `--surface-2` | `#f3f1ea` | `#23282d` | Secondary surfaces, quiet controls and inset areas |
 | `--text` | `#1f2328` | `#eceef0` | Primary text and headings |
 | `--text-soft` | `#55606b` | `#b3bcc4` | Supporting body text and secondary labels |
-| `--text-faint` | `#8a929c` | `#7d8791` | Tertiary metadata on sufficiently large or non-essential text |
+| `--text-faint` | `#6b7480` | `#7f8993` | Tertiary metadata and small supporting text with WCAG AA contrast |
 | `--accent` | `#1c7a52` | `#5fcb9d` | Emerald primary accent, links, active states and structural emphasis |
 | `--accent-soft` | `#e3f1e9` | `#16302a` | Quiet emerald backgrounds and selected-state fills |
 | `--accent-berry` | `#7d2145` | `#d889a8` | Oxblood or berry secondary accent |

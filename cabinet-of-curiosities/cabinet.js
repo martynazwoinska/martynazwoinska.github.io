@@ -6,7 +6,6 @@
   const boardShell = document.getElementById('board-shell');
   const preview = document.getElementById('object-preview');
   const previewTitle = document.getElementById('preview-title');
-  const previewStatus = document.getElementById('preview-status');
   const panel = document.getElementById('collection-panel');
   const panelToggle = document.getElementById('collection-toggle');
   const panelClose = document.getElementById('collection-close');
@@ -15,14 +14,13 @@
   const wheelDialog = document.getElementById('wheel-dialog');
   const wheelClose = document.getElementById('wheel-close');
   const wheelSpin = document.getElementById('wheel-spin');
-  const wheelVisual = document.getElementById('wheel-visual');
+  const wheelVisual = wheelSpin;
   const flavourWheel = document.getElementById('flavour-wheel');
   const wheelStatus = document.getElementById('wheel-status');
   const dialog = document.getElementById('detail-dialog');
   const detailClose = document.getElementById('detail-close');
   const detailKind = document.getElementById('detail-kind');
   const detailTitle = document.getElementById('detail-title');
-  const detailStatus = document.getElementById('detail-status');
   const detailFacts = document.getElementById('detail-facts');
   const detailNote = document.getElementById('detail-note');
   const detailLink = document.getElementById('detail-link');
@@ -31,22 +29,12 @@
   let lastWheelTrigger = null;
   let wheelRotation = 0;
   let wheelTimer = null;
-
-  const statusLabels = {
-    confirmed: 'Confirmed identification',
-    visible: 'Read from the original wrapper',
-    tentative: 'Tentative identification',
-    unknown: 'Identification still open'
-  };
+  let compactHotspotMode = null;
 
   const kindLabels = {
     chocolate: 'Chocolate package',
     crochet: 'Crocheted object'
   };
-
-  function statusFor(item) {
-    return statusLabels[item.status] || 'Collection object';
-  }
 
   function hidePreview() {
     preview.hidden = true;
@@ -54,7 +42,6 @@
 
   function showPreview(item, trigger) {
     previewTitle.textContent = item.label;
-    previewStatus.textContent = statusFor(item);
     preview.hidden = false;
 
     const triggerRect = trigger.getBoundingClientRect();
@@ -86,7 +73,6 @@
     hidePreview();
     detailKind.textContent = kindLabels[item.kind] || 'Collection object';
     detailTitle.textContent = item.label;
-    detailStatus.textContent = statusFor(item);
     detailFacts.replaceChildren();
 
     [
@@ -113,25 +99,49 @@
 
   function buildHotspots() {
     const fragment = document.createDocumentFragment();
-    objects.forEach(item => {
+    const compactTopRowIds = new Set([
+      'small-wrapper-upper-left',
+      'friis-holm-mini-1',
+      'friis-holm-mini-2',
+      'friis-holm-mini-3',
+      'friis-holm-mini-4',
+      'small-orange-wrapper',
+      'raaka-tanzania-100',
+      'small-green-wrapper'
+    ]);
+    const groupTopRow = window.innerWidth <= 760;
+    compactHotspotMode = groupTopRow;
+
+    function appendHotspot(item, clickAction) {
       const [left, top, width, height] = item.box;
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'hotspot';
       button.dataset.id = item.id;
       button.dataset.shape = item.shape || 'rect';
-      button.style.left = `${left}%`;
-      button.style.top = `${top}%`;
+      button.style.left = `${left + width / 2}%`;
+      button.style.top = `${top + height / 2}%`;
       button.style.width = `${width}%`;
       button.style.height = `${height}%`;
-      button.setAttribute('aria-label', `${item.label}. ${statusFor(item)}. Open details.`);
+      button.setAttribute('aria-label', clickAction ? item.label : `${item.label}. Open details.`);
       button.addEventListener('pointerenter', () => showPreview(item, button));
       button.addEventListener('pointerleave', hidePreview);
       button.addEventListener('focus', () => showPreview(item, button));
       button.addEventListener('blur', hidePreview);
-      button.addEventListener('click', () => openDetails(item, button));
+      button.addEventListener('click', clickAction || (() => openDetails(item, button)));
       fragment.append(button);
+    }
+
+    objects.forEach(item => {
+      if (!groupTopRow || !compactTopRowIds.has(item.id)) appendHotspot(item);
     });
+    if (groupTopRow) {
+      appendHotspot({
+        id: 'top-row-mini-bars',
+        label: 'Browse the top-row mini bars',
+        box: [31.84, 16.58, 27.99, 7.03]
+      }, openPanel);
+    }
     hotspotLayer.replaceChildren(fragment);
   }
 
@@ -145,12 +155,10 @@
     items.forEach(item => {
       const button = document.createElement('button');
       const name = document.createElement('strong');
-      const status = document.createElement('span');
       button.type = 'button';
       button.className = 'collection-item';
       name.textContent = item.label;
-      status.textContent = item.status;
-      button.append(name, status);
+      button.append(name);
       button.addEventListener('click', () => openDetails(item, button));
       list.append(button);
     });
@@ -169,15 +177,13 @@
 
   function openPanel() {
     lastPanelTrigger = document.activeElement;
-    panel.hidden = false;
+    if (!panel.open) panel.showModal();
     panelToggle.setAttribute('aria-expanded', 'true');
     panelClose.focus();
   }
 
   function closePanel() {
-    panel.hidden = true;
-    panelToggle.setAttribute('aria-expanded', 'false');
-    if (lastPanelTrigger instanceof HTMLElement) lastPanelTrigger.focus();
+    if (panel.open) panel.close();
   }
 
   function clearWheelTimer() {
@@ -220,10 +226,17 @@
   }
 
   panelToggle.addEventListener('click', () => {
-    if (panel.hidden) openPanel();
+    if (!panel.open) openPanel();
     else closePanel();
   });
   panelClose.addEventListener('click', closePanel);
+  panel.addEventListener('close', () => {
+    panelToggle.setAttribute('aria-expanded', 'false');
+    if (lastPanelTrigger instanceof HTMLElement) lastPanelTrigger.focus();
+  });
+  panel.addEventListener('click', event => {
+    if (event.target === panel) closePanel();
+  });
   wheelToggle.addEventListener('click', openWheel);
   wheelClose.addEventListener('click', closeWheel);
   wheelSpin.addEventListener('click', spinWheel);
@@ -247,13 +260,11 @@
   dialog.addEventListener('click', event => {
     if (event.target === dialog) dialog.close();
   });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && !dialog.open && !wheelDialog.open && !panel.hidden) {
-      event.preventDefault();
-      closePanel();
-    }
+  window.addEventListener('resize', () => {
+    hidePreview();
+    const nextCompactMode = window.innerWidth <= 760 && window.matchMedia('(pointer: coarse)').matches;
+    if (nextCompactMode !== compactHotspotMode) buildHotspots();
   });
-  window.addEventListener('resize', hidePreview);
   boardShell.addEventListener('pointerleave', hidePreview);
 
   buildHotspots();
