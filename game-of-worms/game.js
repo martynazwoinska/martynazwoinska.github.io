@@ -2,6 +2,7 @@ import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
+import { getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260713-2";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -21,12 +22,12 @@ const locationKits = {
   "Kerala, India · JU1337": ["Kerala coconut grove", "coconut-shell hat", "kasavu-gold sash", "banana-chip backpack", "🥥", "✨", "🍌", "🥥"],
   "Kauaʻi, Hawaiʻi · QG130": ["Kauaʻi cloud forest", "mokihana lei crown", "lauhala satchel", "fern trail glider", "🌿", "🧺", "🪶", "🌿"],
   "Réunion Island · JU1375": ["Réunion volcanic garden", "volcano helmet", "snail-shell satchel", "lava-lamp backpack", "🌋", "🐌", "🪔", "🌋"],
-  "Orsay, France · JU2518": ["Orsay apple orchard", "apple beret", "orchard basket", "baguette backpack", "🍎", "🧺", "🥖", "🍎"],
-  "São Paulo region, Brazil · EG5612": ["Brazilian jackfruit garden", "jackfruit helmet", "carnival sash", "microscope backpack", "🍈", "🎉", "🔬", "🍈"],
-  "New South Wales, Australia · QG2814": ["New South Wales rainforest", "waratah crown", "eucalyptus wrap", "kookaburra backpack", "🌺", "🌿", "🐦", "🌺"],
+  "Orsay, France · JU2518": ["Yvette valley garden", "garden-leaf cap", "field-sample satchel", "specimen-vial backpack", "🍃", "🎒", "🧪", "🌿"],
+  "Angra dos Reis, Rio de Janeiro · EG5612": ["Angra Atlantic forest cove", "Atlantic-forest leaf visor", "field sash", "specimen-vial backpack", "🍃", "🧭", "🧪", "🌿"],
+  "Nambucca Heads, New South Wales · QG2814": ["Nambucca estuary garden", "waratah crown", "eucalyptus wrap", "kookaburra backpack", "🌺", "🌿", "🐦", "🌊"],
   "Bristol N2, England": ["Bristol mushroom compost, 1951", "seeded NGM agar plate", "fitted lab coat", "cryo-vial jetpack", "🧫", "🥼", "❄️", "🍄", null, "elegans"],
   "Santeuil, France": ["Santeuil orchard floor", "apple beret", "gingham picnic sash", "cider basket", "🍏", "🧣", "🧺", "🍏"],
-  "Scotland, Great Britain": ["Scottish wet leaf litter", "tartan tam", "Highland kilt", "bagpipe backpack", "🧢", "🧶", "🎵", "🌿", null, "scotland"],
+  "Edinburgh, Scotland": ["Edinburgh volcanic park", "tartan tam", "field wrap", "bagpipe backpack", "🧢", "🧶", "🎵", "⛰️", null, "scotland"],
   "Tenerife, Spain": ["Tenerife volcanic garden", "Teide volcano visor", "banana-leaf wrap", "lava-rock jetpack", "🌋", "🍌", "🚀", "🌋"],
   "Kauaʻi, Hawaiʻi": ["Kauaʻi cloud forest", "mokihana crown", "lauhala belt", "fern surfboard", "🌿", "🧺", "🏄", "🌿"],
   "elegans::Kauaʻi, Hawaiʻi": ["Kauaʻi C. elegans fruit site", "mokihana crown", "lauhala belt", "fern surfboard", "🌿", "🧺", "🏄", "🍈"],
@@ -133,8 +134,8 @@ const species = [
       { name: "Kauaʻi, Hawaiʻi · QG130", coordinates: [-159.5829, 22.2202], source: "CaeNDR", style: "kauai" },
       { name: "Réunion Island · JU1375", coordinates: [55.6885, -21.0469], source: "CaeNDR", style: "ocean" },
       { name: "Orsay, France · JU2518", coordinates: [2.1725, 48.7015], source: "CaeNDR", style: "field" },
-      { name: "São Paulo region, Brazil · EG5612", coordinates: [-44.19, -23.18], source: "CaeNDR", style: "rainforest" },
-      { name: "New South Wales, Australia · QG2814", coordinates: [153.0090333, -30.6445167], source: "CaeNDR", style: "rainforest" }
+      { name: "Angra dos Reis, Rio de Janeiro · EG5612", coordinates: [-44.19, -23.18], source: "CaeNDR", style: "rainforest" },
+      { name: "Nambucca Heads, New South Wales · QG2814", coordinates: [153.0090333, -30.6445167], source: "CaeNDR", style: "rainforest" }
     ]
   },
   {
@@ -163,7 +164,7 @@ const species = [
     locations: [
       { name: "Bristol N2, England", coordinates: [-2.59, 51.45], source: "CaeNDR", style: "field", strain: "N2", history: "N2 came from mushroom compost near Bristol. C. elegans can be frozen alive in a protective solution and revived after thawing. This is the reason for its cryo-vial jetpack. An early N2 tube frozen around 1968 was later thawed to establish an ancestral laboratory stock." },
       { name: "Santeuil, France", coordinates: [1.951, 49.121], source: "CaeNDR", style: "field" },
-      { name: "Scotland, Great Britain", coordinates: [-3.19, 55.92], source: "CaeNDR", style: "woodland" },
+      { name: "Edinburgh, Scotland", coordinates: [-3.19, 55.92], source: "CaeNDR", style: "woodland" },
       { name: "Tenerife, Spain", coordinates: [-16.535, 28.411], source: "CaeNDR", style: "ocean" },
       { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.663, 22.147], source: "CaeNDR", style: "kauai" },
       { name: "Australian Capital Territory", coordinates: [149.115, -35.254], source: "CaeNDR", style: "field" },
@@ -290,7 +291,7 @@ let drawingEnabled = false;
 let drawingColor = "#f36f62";
 let activeDoodle = null;
 let activeAccessoryDrag = null;
-let selectedAccessoryWormPart = "primary";
+let accessoryResizeFrame = null;
 let projection;
 let projectedLocations = [];
 
@@ -309,6 +310,7 @@ const els = {
   selectionSpecies: document.getElementById("map-selection-species"),
   tabs: document.getElementById("species-tabs"),
   habitat: document.getElementById("habitat"),
+  locationScene: document.getElementById("location-scene"),
   sceneName: document.getElementById("scene-name"),
   wormNameTag: document.getElementById("worm-name-tag"),
   wormAvatar: document.getElementById("worm-avatar"),
@@ -333,6 +335,8 @@ const els = {
   speciesReproduction: document.getElementById("species-reproduction"),
   speciesHabitat: document.getElementById("species-habitat"),
   speciesFact: document.getElementById("species-fact"),
+  environmentNote: document.getElementById("environment-note"),
+  environmentSource: document.getElementById("environment-source"),
   exploredCount: document.getElementById("explored-count"),
   freestyle: document.getElementById("freestyle-draw"),
   drawTools: document.getElementById("draw-tools"),
@@ -421,6 +425,7 @@ function renderSpecies(item, place) {
   const placeSource = typeof place === "object" ? place?.source : null;
   const styleKey = typeof place === "object" && place?.style ? place.style : item.localStyle;
   const regionalPack = locationKit(placeName, regionalPacks[styleKey], item.id);
+  const environment = getEnvironmentProfile(placeName, item.id);
   els.speciesRegion.textContent = placeName || item.region;
   italicText(els.speciesName, item.name);
   els.speciesNickname.textContent = item.nickname;
@@ -441,7 +446,7 @@ function renderSpecies(item, place) {
   els.localWrapLabel.textContent = regionalPack.looks[1];
   els.localCharmIcon.textContent = regionalPack.icons[2];
   els.localCharmLabel.textContent = regionalPack.looks[2];
-  els.sceneName.textContent = regionalPack.sceneName;
+  els.sceneName.textContent = environment?.title || regionalPack.sceneName;
   const placeSymbols = regionalPack.icons || ["🍃", "🎒", "✨"];
   els.placeMotif.textContent = regionalPack.motif || placeSymbols[0];
   els.headwearSymbol.textContent = placeSymbols[0];
@@ -453,7 +458,8 @@ function renderSpecies(item, place) {
 
   els.habitat.dataset.habitat = item.habitatKey;
   els.habitat.dataset.localStyle = styleKey;
-  els.habitat.dataset.placeScene = regionalPack.sceneKey || "";
+  els.habitat.dataset.placeScene = environment ? "dynamic" : (regionalPack.sceneKey || "");
+  els.habitat.dataset.environment = environment?.id || "fallback";
   els.habitat.dataset.accessoryVisual = regionalPack.visualKey || item.id;
   els.habitat.dataset.hasCustomVisual = String(Boolean(regionalPack.visualKey));
   els.habitat.dataset.species = item.id;
@@ -463,9 +469,19 @@ function renderSpecies(item, place) {
   els.habitat.style.setProperty("--habitat-one", item.habitatOne);
   els.habitat.style.setProperty("--habitat-two", item.habitatTwo);
   els.habitat.style.setProperty("--worm-scale", item.scale);
-  const placeSeed = [...(placeName || item.id)].reduce((sum, character) => sum + character.codePointAt(0), 0);
-  els.habitat.style.setProperty("--place-hue", `${(placeSeed % 19) - 9}deg`);
-  updateAccessoryWormLabels(item);
+  if (environment) {
+    renderEnvironmentScene(els.locationScene, environment, els.habitat);
+    els.environmentNote.textContent = environment.note;
+    els.environmentSource.href = environment.source.url;
+    els.environmentSource.textContent = environment.source.label;
+    els.environmentSource.setAttribute("aria-label", `${environment.source.label} (opens in a new tab)`);
+  } else {
+    els.locationScene.replaceChildren();
+    els.environmentNote.textContent = "This record is waiting for a checked regional landscape profile.";
+    els.environmentSource.removeAttribute("href");
+    els.environmentSource.removeAttribute("aria-label");
+    els.environmentSource.textContent = "Landscape source unavailable";
+  }
   syncAccessories();
   renderDoodles();
 
@@ -525,7 +541,7 @@ function accessoryPositionKey(id, wormPart) {
   return `${id}::${wormPart}`;
 }
 
-function accessoryPosition(id, wormPart = selectedAccessoryWormPart) {
+function accessoryPosition(id, wormPart) {
   return activeAccessoryPositions().get(accessoryPositionKey(id, wormPart)) || { x: 0, y: 0 };
 }
 
@@ -627,27 +643,12 @@ function accessoryName(id, wormPart) {
   return t("accessoryForWorm", { accessory, worm: accessoryWormName(wormPart) });
 }
 
-function updateAccessoryWormLabels(item = byId.get(selectedId)) {
-  document.querySelectorAll("[data-worm-part-label]").forEach(label => {
-    const index = label.dataset.wormPartLabel === "companion" ? 1 : 0;
-    label.textContent = item?.cast[index] || (index ? "male" : "worm");
-  });
-}
-
-function selectAccessoryWormPart(wormPart) {
-  if (!accessoryWormParts.includes(wormPart)) return;
-  selectedAccessoryWormPart = wormPart;
-  document.querySelectorAll('input[name="accessory-worm-part"]').forEach(radio => {
-    radio.checked = radio.value === wormPart;
-  });
-}
-
 function announceAccessory(message) {
   els.accessoryStatus.textContent = "";
   requestAnimationFrame(() => { els.accessoryStatus.textContent = message; });
 }
 
-function resetAccessoryPosition(id, wormPart = selectedAccessoryWormPart) {
+function resetAccessoryPosition(id, wormPart) {
   const position = { x: 0, y: 0 };
   activeAccessoryPositions().set(accessoryPositionKey(id, wormPart), position);
   applyAccessoryPosition(id, wormPart, position);
@@ -689,6 +690,7 @@ els.freestyle.addEventListener("click", () => {
   els.freestyle.setAttribute("aria-pressed", String(drawingEnabled));
   els.drawTools.toggleAttribute("hidden", !drawingEnabled);
   els.wormAvatar.classList.toggle("is-drawing", drawingEnabled);
+  refreshAccessoryPieceControls();
 });
 
 document.querySelectorAll("[data-draw-color]").forEach(button => {
@@ -753,6 +755,7 @@ function toggleAccessory(id, force) {
   button.setAttribute("aria-pressed", String(shouldShow));
   if (shouldShow) activeAccessories.add(id);
   else activeAccessories.delete(id);
+  refreshAccessoryPieceControls();
 }
 
 function syncAccessories() {
@@ -765,7 +768,65 @@ function syncAccessories() {
     accessory?.toggleAttribute("hidden", !shouldShow);
     button?.setAttribute("aria-pressed", String(shouldShow));
   });
+  refreshAccessoryPieceControls();
 }
+
+function refreshAccessoryPieceControls() {
+  document.querySelectorAll(".accessory-piece[data-worm-part]").forEach(piece => {
+    piece.querySelector(":scope > .accessory-hit-target")?.remove();
+    piece.setAttribute("tabindex", "-1");
+    piece.setAttribute("focusable", "false");
+    piece.removeAttribute("role");
+    piece.removeAttribute("aria-label");
+    piece.removeAttribute("aria-roledescription");
+    piece.removeAttribute("aria-describedby");
+    piece.removeAttribute("aria-keyshortcuts");
+  });
+
+  if (drawingEnabled) return;
+  accessoryIds.forEach(id => {
+    if (!activeWardrobe().has(id)) return;
+    accessoryWormParts.forEach(wormPart => {
+      const piece = visibleAccessoryPieces(id, wormPart)[0];
+      if (!piece) return;
+      piece.setAttribute("tabindex", "0");
+      piece.setAttribute("focusable", "true");
+      piece.setAttribute("role", "button");
+      piece.setAttribute("aria-roledescription", "movable accessory");
+      piece.setAttribute("aria-label", accessoryName(id, wormPart));
+      piece.setAttribute("aria-describedby", "accessory-move-hint");
+      piece.setAttribute("aria-keyshortcuts", "ArrowUp ArrowDown ArrowLeft ArrowRight Home");
+      addAccessoryHitTarget(piece);
+    });
+  });
+}
+
+function addAccessoryHitTarget(piece) {
+  const bounds = piece.getBBox();
+  const matrix = piece.getScreenCTM();
+  if (!matrix || !Number.isFinite(bounds.width) || !Number.isFinite(bounds.height)) return;
+  const scaleX = Math.hypot(matrix.a, matrix.b) || 1;
+  const scaleY = Math.hypot(matrix.c, matrix.d) || 1;
+  const width = Math.max(bounds.width, 44 / scaleX);
+  const height = Math.max(bounds.height, 44 / scaleY);
+  const hitTarget = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  hitTarget.setAttribute("class", "accessory-hit-target");
+  hitTarget.setAttribute("x", String(bounds.x - (width - bounds.width) / 2));
+  hitTarget.setAttribute("y", String(bounds.y - (height - bounds.height) / 2));
+  hitTarget.setAttribute("width", String(width));
+  hitTarget.setAttribute("height", String(height));
+  hitTarget.setAttribute("rx", String(Math.min(width, height) * .22));
+  hitTarget.setAttribute("aria-hidden", "true");
+  piece.prepend(hitTarget);
+}
+
+window.addEventListener("resize", () => {
+  if (accessoryResizeFrame) cancelAnimationFrame(accessoryResizeFrame);
+  accessoryResizeFrame = requestAnimationFrame(() => {
+    accessoryResizeFrame = null;
+    refreshAccessoryPieceControls();
+  });
+});
 
 function playSelectionEffect() {
   els.habitat.classList.remove("is-changing");
@@ -784,44 +845,8 @@ function playSelectionEffect() {
   setTimeout(() => els.habitat.classList.remove("is-changing"), 720);
 }
 
-document.querySelectorAll('input[name="accessory-worm-part"]').forEach(radio => {
-  radio.addEventListener("change", () => {
-    if (radio.checked) selectAccessoryWormPart(radio.value);
-  });
-});
-
 document.querySelectorAll("[data-accessory]").forEach(button => {
   button.addEventListener("click", () => toggleAccessory(button.dataset.accessory));
-  button.addEventListener("keydown", event => {
-    const id = button.dataset.accessory;
-    const wormPart = selectedAccessoryWormPart;
-    if (!activeWardrobe().has(id)) return;
-    if (event.key === "Home") {
-      event.preventDefault();
-      resetAccessoryPosition(id, wormPart);
-      return;
-    }
-
-    const direction = {
-      ArrowLeft: [-1, 0],
-      ArrowRight: [1, 0],
-      ArrowUp: [0, -1],
-      ArrowDown: [0, 1]
-    }[event.key];
-    if (!direction) return;
-    event.preventDefault();
-    const current = accessoryPosition(id, wormPart);
-    const step = event.shiftKey ? 12 : 4;
-    const position = moveAccessory(id, wormPart, {
-      x: current.x + direction[0] * step,
-      y: current.y + direction[1] * step
-    });
-    announceAccessory(t("accessoryPosition", {
-      accessory: accessoryName(id, wormPart),
-      x: Math.round(position.x),
-      y: Math.round(position.y)
-    }));
-  });
 });
 
 function finishAccessoryDrag(event) {
@@ -843,7 +868,7 @@ document.querySelectorAll(".accessory-piece[data-worm-part]").forEach(piece => {
     if (activeAccessoryDrag || drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
     event.preventDefault();
     event.stopPropagation();
-    selectAccessoryWormPart(wormPart);
+    piece.focus({ preventScroll: true });
     piece.setPointerCapture(event.pointerId);
     piece.classList.add("is-dragging");
     activeAccessoryDrag = {
@@ -869,6 +894,35 @@ document.querySelectorAll(".accessory-piece[data-worm-part]").forEach(piece => {
       x: activeAccessoryDrag.startPosition.x + deltaX,
       y: activeAccessoryDrag.startPosition.y + deltaY
     }, piece);
+  });
+
+  piece.addEventListener("keydown", event => {
+    if (piece.getAttribute("tabindex") !== "0" || drawingEnabled || !activeWardrobe().has(id)) return;
+    if (event.key === "Home") {
+      event.preventDefault();
+      resetAccessoryPosition(id, wormPart);
+      return;
+    }
+
+    const direction = {
+      ArrowLeft: [-1, 0],
+      ArrowRight: [1, 0],
+      ArrowUp: [0, -1],
+      ArrowDown: [0, 1]
+    }[event.key];
+    if (!direction) return;
+    event.preventDefault();
+    const current = accessoryPosition(id, wormPart);
+    const step = event.shiftKey ? 12 : 4;
+    const position = moveAccessory(id, wormPart, {
+      x: current.x + direction[0] * step,
+      y: current.y + direction[1] * step
+    }, piece);
+    announceAccessory(t("accessoryPosition", {
+      accessory: accessoryName(id, wormPart),
+      x: Math.round(position.x),
+      y: Math.round(position.y)
+    }));
   });
 
 });

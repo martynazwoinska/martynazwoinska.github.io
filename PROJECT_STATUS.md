@@ -56,7 +56,8 @@ The two cards have equal visual weight, stack on mobile, retain emerald and anti
 - The homepage, Game of Worms, and Cabinet of Curiosities are deployed through GitHub Pages.
 - Shared theme and language-preference handling is present under `shared/`.
 - Homepage behaviour and translations are separated into `home.js` and `home-i18n.js`.
-- Each worm’s copy of a Game of Worms accessory can be repositioned independently by pointer, touch, or keyboard. Keyboard controls use the current species’ female or hermaphrodite and male or rare male labels; positions remain separate for each worm, species, and location during the session, and Home resets the selected worm’s item. The random `Surprise me` control has been removed.
+- Each worm’s copy of a Game of Worms accessory can be repositioned independently. There is no separate worm-target selector: visitors switch an accessory on, then drag its visible copy directly. Keyboard users focus that same visible object, move it with the arrow keys, and press Home to reset it. Positions remain separate for each worm, species, and location during the session. The random `Surprise me` control has been removed.
+- Every representative collection record has an explicit, source-backed regional landscape profile with its own geographic silhouette, local ecological cues, a short `Place clues` lesson, and a primary or official source link. The landscape is clearly described as wider regional context rather than the exact microscopic collection substrate.
 - The Cabinet uses separate HTML, CSS, JavaScript, translation, and data files.
 - The Cabinet presents the authentic photographed object board inside an extended fantasy surround.
 - On phones held vertically, the Cabinet asks the visitor to turn the device sideways; the interactive board is presented in landscape orientation.

@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#143f4a" />
   <link rel="stylesheet" href="../shared/site-tokens.css" />
-  <link rel="stylesheet" href="style.css?v=20260713-5" />
+  <link rel="stylesheet" href="style.css?v=20260713-6" />
   <script src="../shared/site-preferences.js" defer></script>
 </head>
 <body>
@@ -75,7 +75,7 @@
 
       <div class="play-grid">
         <section class="worm-playground" aria-labelledby="dress-title">
-          <div id="habitat" class="habitat" data-habitat="compost" data-local-style="field" data-place-scene="" data-accessory-visual="elegans" data-has-custom-visual="true" data-species="elegans" data-pose="forager" style="--worm-color: #f0c78e; --worm-deep: #bd7c45; --habitat-one: #d7b96d; --habitat-two: #8ba56f; --worm-scale: .72; --place-hue: 6deg;">
+          <div id="habitat" class="habitat" data-habitat="compost" data-local-style="field" data-place-scene="" data-accessory-visual="elegans" data-has-custom-visual="true" data-species="elegans" data-pose="forager" style="--worm-color: #f0c78e; --worm-deep: #bd7c45; --habitat-one: #d7b96d; --habitat-two: #8ba56f; --worm-scale: .72;">
             <svg class="regional-backdrop" viewBox="0 0 600 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
               <defs>
                 <linearGradient id="scene-sky-gradient" x1="0" y1="0" x2="0" y2="1">
@@ -96,6 +96,7 @@
                   <stop offset="100%" class="scene-sun-edge"></stop>
                 </radialGradient>
               </defs>
+              <g id="location-scene" class="environment-scene"></g>
               <g data-scene="okinawa">
                 <rect class="scene-sky" width="600" height="430"></rect>
                 <g class="scene-clouds"><ellipse cx="92" cy="76" rx="54" ry="17"></ellipse><ellipse cx="133" cy="68" rx="39" ry="22"></ellipse><ellipse cx="168" cy="78" rx="46" ry="15"></ellipse></g>
@@ -256,7 +257,7 @@
             <span id="scene-name" class="scene-name">Bristol mushroom compost, 1951</span>
             <span id="place-motif" class="place-motif" aria-hidden="true">🍄</span>
 
-            <svg id="worm-avatar" class="worm-avatar" viewBox="0 0 420 320" role="img" aria-label="Illustrated Caenorhabditis elegans hermaphrodite and rare male">
+            <svg id="worm-avatar" class="worm-avatar" viewBox="0 0 420 320" role="group" aria-label="Illustrated Caenorhabditis elegans hermaphrodite and rare male">
 
               <g id="worm-species" class="worm-species">
                 <g id="companion-worm" class="companion-worm" transform="translate(-28 82) scale(.43)" aria-hidden="true">
@@ -412,18 +413,11 @@
               <span class="eyebrow">Dress-up drawer</span>
               <h2 id="dress-title">Make this worm yours</h2>
             </div>
-            <p id="accessory-move-hint" class="accessory-move-hint">Switch on an accessory, then drag either worm’s item independently. Keyboard: choose a worm, use the arrow keys on an accessory button, and press Home to reset that worm’s item.</p>
-            <fieldset class="accessory-target-picker">
-              <legend class="sr-only">Choose which worm’s accessories to move</legend>
-              <div class="accessory-target-options">
-                <label><input type="radio" name="accessory-worm-part" value="primary" checked> <span class="sr-only" data-worm-part-label="primary">hermaphrodite</span><span class="accessory-target-worm" aria-hidden="true"></span></label>
-                <label><input type="radio" name="accessory-worm-part" value="companion"> <span class="sr-only" data-worm-part-label="companion">rare male</span><span class="accessory-target-worm companion" aria-hidden="true"></span></label>
-              </div>
-            </fieldset>
+            <p id="accessory-move-hint" class="accessory-move-hint">Switch on an accessory, then touch and drag either worm’s item directly. Keyboard: tab to an item, use the arrow keys to move it, and press Home to reset it.</p>
             <div class="dress-buttons" aria-label="Worm accessories">
-              <button type="button" data-accessory="local-headwear" aria-pressed="false" aria-describedby="accessory-move-hint" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight Home"><span class="button-icon" aria-hidden="true">🧫</span> <span class="button-label">seeded NGM agar plate</span></button>
-              <button type="button" data-accessory="local-wrap" aria-pressed="false" aria-describedby="accessory-move-hint" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight Home"><span class="button-icon" aria-hidden="true">🥼</span> <span class="button-label">fitted lab coat</span></button>
-              <button type="button" data-accessory="local-charm" aria-pressed="false" aria-describedby="accessory-move-hint" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight Home"><span class="button-icon" aria-hidden="true">❄️</span> <span class="button-label">cryo-vial jetpack</span></button>
+              <button type="button" data-accessory="local-headwear" aria-pressed="false"><span class="button-icon" aria-hidden="true">🧫</span> <span class="button-label">seeded NGM agar plate</span></button>
+              <button type="button" data-accessory="local-wrap" aria-pressed="false"><span class="button-icon" aria-hidden="true">🥼</span> <span class="button-label">fitted lab coat</span></button>
+              <button type="button" data-accessory="local-charm" aria-pressed="false"><span class="button-icon" aria-hidden="true">❄️</span> <span class="button-label">cryo-vial jetpack</span></button>
               <button id="freestyle-draw" class="freestyle-button" type="button" aria-pressed="false"><span aria-hidden="true">🎨</span> Freestyle draw</button>
             </div>
             <p id="accessory-status" class="sr-only" aria-live="polite"></p>
@@ -451,6 +445,12 @@
             <span id="species-habitat" class="fact-pill habitat-pill">Rotting plants &amp; compost</span>
           </div>
 
+          <div class="place-lesson">
+            <span class="eyebrow">Place clues</span>
+            <p id="environment-note">N2’s recorded habitat was compost in a Bristol urban garden; the wooded Avon Gorge locates the city without replacing that real microhabitat.</p>
+            <a id="environment-source" href="https://caendr.org/isotype/N2/" target="_blank" rel="noopener" aria-label="CaeNDR N2 record (opens in a new tab)">CaeNDR N2 record</a>
+          </div>
+
           <div class="wow-fact">
             <span aria-hidden="true">💡</span>
             <p><strong>Tiny surprise</strong><span id="species-fact">N2 came from mushroom compost near Bristol. <i>C. elegans</i> can be frozen alive in a protective solution and revived after thawing. This is the reason for its cryo-vial jetpack. An early N2 tube frozen around 1968 was later thawed to establish an ancestral laboratory stock.</span></p>
@@ -461,7 +461,7 @@
 
     <details class="science-notes">
       <summary>For curious grown-ups: map notes and sources</summary>
-      <p>Markers show selected published collection records, not complete species ranges. Dense sampling areas are represented by a few readable points. “Mostly selfing” means self-fertile hermaphrodites predominate, although rare males and occasional outcrossing can occur.</p>
+      <p>Markers show selected published collection records, not complete species ranges. Dense sampling areas are represented by a few readable points. The illustrated landscapes teach the wider regional setting around each record; they do not claim that a worm was collected from every feature shown. The “Place clues” source supports each regional scene. “Mostly selfing” means self-fertile hermaphrodites predominate, although rare males and occasional outcrossing can occur.</p>
       <ul>
         <li><a href="https://caendr.org/data/strain_database" target="_blank" rel="noopener">CaeNDR strain database</a> and <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10767927/" target="_blank" rel="noopener">Crombie et al. (2024)</a>: coordinates and ecological metadata for representative <i>C. elegans</i>, <i>C. briggsae</i>, and <i>C. tropicalis</i> records.</li>
         <li><a href="https://justbio.com/tools/worms/search.php" target="_blank" rel="noopener">Félix Lab strain database</a>: collection substrates and locations for <i>C. inopinata</i>, <i>C. nigoni</i>, and <i>C. wallacei</i>.</li>
@@ -481,6 +481,6 @@
     </details>
   </main>
 
-  <script type="module" src="game.js?v=20260713-4"></script>
+  <script type="module" src="game.js?v=20260713-6"></script>
 </body>
 </html>
