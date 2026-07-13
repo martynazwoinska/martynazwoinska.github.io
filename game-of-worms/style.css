@@ -249,6 +249,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+  min-height: 147px;
   margin: 16px 0 20px;
 }
 .sister-pair {
@@ -848,7 +849,7 @@ footer p { margin: 0; }
   .map-wrap, #world-map { min-height: 310px; }
   .map-legend { left: 10px; right: auto; top: 10px; border-radius: 16px; }
   .map-selection { left: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 10px 12px; }
-  .species-tabs { grid-template-columns: 1fr; }
+  .species-tabs { grid-template-columns: 1fr; min-height: 424px; }
   .species-tab { min-height: 68px; }
   .habitat { min-height: 340px; }
   .scene-name { left: 12px; top: 12px; max-width: calc(100% - 24px); }

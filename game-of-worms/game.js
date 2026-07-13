@@ -1060,11 +1060,6 @@ function drawMap() {
   els.mapWrap.classList.add("map-ready");
 }
 
-const atlas = document.getElementById("atlas");
-const discoverySection = document.querySelector(".discovery");
-const mapSection = document.querySelector(".map-section");
-atlas.insertBefore(discoverySection, mapSection);
-
 renderTabs();
 const initialSpecies = byId.get(selectedId);
 const initialPlace = initialSpecies.locations[0];
