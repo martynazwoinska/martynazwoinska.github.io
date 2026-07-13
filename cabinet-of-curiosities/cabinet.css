@@ -282,7 +282,6 @@ button { color: inherit; }
   -webkit-user-drag: none;
 }
 
-.board-backdrop { z-index: 0; }
 .board-content-layer { z-index: 1; }
 
 .hotspot-layer { position: absolute; z-index: 3; inset: 0; }
@@ -701,6 +700,11 @@ button { color: inherit; }
 }
 
 @media (max-width: 760px) {
+  .cabinet-page {
+    /* The board plane keeps transparent side margins, so 125vw fits the full
+       photographed collection while retaining a useful object scale. */
+    --board-width: min(125vw, calc((100svh - 64px) * 1.56), 960px);
+  }
   .fantasy-surround {
     background:
       radial-gradient(circle at 12% 18%, rgba(213, 185, 105, .22), transparent 24%),
@@ -711,7 +715,7 @@ button { color: inherit; }
     display: block;
     object-fit: cover;
     object-position: center;
-    filter: saturate(.72) brightness(.62) contrast(1.04);
+    filter: none;
   }
   .fantasy-surround::before {
     background:
@@ -775,7 +779,7 @@ button { color: inherit; }
     --line: rgba(127, 95, 25, .46);
     --shadow: rgba(36, 25, 10, .35);
   }
-  .fantasy-surround img { filter: saturate(.78) brightness(.94) contrast(1.01); opacity: 1; }
+  .fantasy-surround img { filter: none; opacity: 1; }
   .fantasy-surround::before { background: radial-gradient(ellipse at center, rgba(255, 251, 236, .1) 28%, rgba(238, 231, 209, .5) 80%); }
   .cabinet-glow {
     background: radial-gradient(ellipse at center, rgba(235, 224, 194, .7), rgba(235, 224, 194, .34) 66%, transparent 100%);
