@@ -478,23 +478,28 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .accessory {
   --accessory-x: 0px;
   --accessory-y: 0px;
+  transform: translate(var(--accessory-x), var(--accessory-y));
+  transform-origin: center;
+}
+.accessory-piece {
   --accessory-user-x: 0px;
   --accessory-user-y: 0px;
-  transform: translate(calc(var(--accessory-x) + var(--accessory-user-x)), calc(var(--accessory-y) + var(--accessory-user-y)));
+  transform: translate(var(--accessory-user-x), var(--accessory-user-y));
   transform-origin: center;
 }
 .accessory[hidden] { display: none; }
-.accessory:not([hidden]) { cursor: grab; pointer-events: visiblePainted; touch-action: none; animation: accessory-pop .24s cubic-bezier(.2,.8,.25,1.25); }
-.accessory.is-dragging { cursor: grabbing; }
-.worm-avatar.is-drawing .accessory { cursor: crosshair; }
+.accessory:not([hidden]) { animation: accessory-pop .24s cubic-bezier(.2,.8,.25,1.25); }
+.accessory:not([hidden]) .accessory-piece { cursor: grab; pointer-events: visiblePainted; touch-action: none; }
+.accessory-piece.is-dragging { cursor: grabbing; }
+.worm-avatar.is-drawing .accessory-piece { cursor: crosshair; }
 @keyframes accessory-pop {
-  from { opacity: 0; transform: translate(calc(var(--accessory-x) + var(--accessory-user-x)), calc(var(--accessory-y) + var(--accessory-user-y))) scale(.82); }
-  to { opacity: 1; transform: translate(calc(var(--accessory-x) + var(--accessory-user-x)), calc(var(--accessory-y) + var(--accessory-user-y))) scale(1); }
+  from { opacity: 0; transform: translate(var(--accessory-x), var(--accessory-y)) scale(.82); }
+  to { opacity: 1; transform: translate(var(--accessory-x), var(--accessory-y)) scale(1); }
 }
-.regional-accessory > [data-style] { display: none; }
+.regional-accessory > .accessory-piece > [data-style] { display: none; }
 .regional-accessory > [data-species-look] { display: none; }
 .regional-accessory > [data-location-look] { display: none; }
-.habitat[data-species] .regional-accessory > [data-style] { display: none !important; }
+.habitat[data-species] .regional-accessory > .accessory-piece > [data-style] { display: none !important; }
 .habitat[data-accessory-visual="inopinata"] [data-species-look="inopinata"],
 .habitat[data-accessory-visual="elegans"] [data-species-look="elegans"],
 .habitat[data-accessory-visual="briggsae"] [data-species-look="briggsae"],
@@ -502,12 +507,12 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .habitat[data-accessory-visual="tropicalis"] [data-species-look="tropicalis"],
 .habitat[data-accessory-visual="wallacei"] [data-species-look="wallacei"],
 .habitat[data-accessory-visual="scotland"] [data-location-look="scotland"] { display: inline; }
-.habitat[data-local-style="okinawa"] .regional-accessory > [data-style="okinawa"],
-.habitat[data-local-style="kauai"] .regional-accessory > [data-style="kauai"],
-.habitat[data-local-style="field"] .regional-accessory > [data-style="field"],
-.habitat[data-local-style="rainforest"] .regional-accessory > [data-style="rainforest"],
-.habitat[data-local-style="woodland"] .regional-accessory > [data-style="woodland"],
-.habitat[data-local-style="ocean"] .regional-accessory > [data-style="ocean"] { display: inline; }
+.habitat[data-local-style="okinawa"] .regional-accessory > .accessory-piece > [data-style="okinawa"],
+.habitat[data-local-style="kauai"] .regional-accessory > .accessory-piece > [data-style="kauai"],
+.habitat[data-local-style="field"] .regional-accessory > .accessory-piece > [data-style="field"],
+.habitat[data-local-style="rainforest"] .regional-accessory > .accessory-piece > [data-style="rainforest"],
+.habitat[data-local-style="woodland"] .regional-accessory > .accessory-piece > [data-style="woodland"],
+.habitat[data-local-style="ocean"] .regional-accessory > .accessory-piece > [data-style="ocean"] { display: inline; }
 .regional-accessory { filter: drop-shadow(0 5px 4px rgba(23,51,61,.24)); }
 .regional-primary { fill: var(--local-primary); stroke: var(--worm-deep); stroke-width: 2.5; stroke-linejoin: round; }
 .regional-secondary { fill: var(--local-secondary); stroke: var(--worm-deep); stroke-width: 2.5; stroke-linejoin: round; }
@@ -704,7 +709,12 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 
 .dress-bar { padding: 18px 20px 20px; }
 .dress-bar h2 { margin: 3px 0 12px; font-family: var(--display); font-size: 1.4rem; }
-.accessory-move-hint { margin: -3px 0 12px; color: var(--ink-soft); font-size: .83rem; line-height: 1.45; }
+.accessory-move-hint { margin: -3px 0 10px; color: var(--ink-soft); font-size: .83rem; line-height: 1.45; }
+.accessory-target-picker { margin: 0 0 12px; padding: 0; border: 0; }
+.accessory-target-picker legend { margin-bottom: 6px; color: var(--ink-soft); font-size: .72rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.accessory-target-options { display: flex; flex-wrap: wrap; gap: 8px 14px; }
+.accessory-target-options label { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--ink); font-size: .82rem; font-weight: 800; cursor: pointer; }
+.accessory-target-options input { width: 18px; height: 18px; margin: 0; accent-color: var(--teal-dark); }
 .dress-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
 .dress-buttons button {
   min-height: 44px;

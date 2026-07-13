@@ -8,6 +8,7 @@ const english = Object.freeze({
   illustratedPairAria: "Illustrated {name} {first} and {second}",
   markerAria: "Meet {name}, {reproduction}, from {place}{source}",
   markerSourceSuffix: ", record from {source}",
+  accessoryForWorm: "{accessory} for the {worm}",
   accessoryMoved: "{accessory} moved.",
   accessoryPosition: "{accessory} position: {x} across and {y} down.",
   accessoryReset: "{accessory} position reset.",

@@ -1,7 +1,7 @@
 import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.net/npm/d3-geo@3/+esm";
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
-import { createGameTranslator } from "./game-i18n.js?v=20260713-2";
+import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -280,6 +280,7 @@ const sisterPairs = [
 const byId = new Map(species.map(item => [item.id, item]));
 const visited = new Set();
 const accessoryIds = ["local-headwear", "local-wrap", "local-charm"];
+const accessoryWormParts = ["primary", "companion"];
 const wardrobes = new Map();
 const accessoryPositions = new Map();
 const drawings = new Map();
@@ -289,6 +290,7 @@ let drawingEnabled = false;
 let drawingColor = "#f36f62";
 let activeDoodle = null;
 let activeAccessoryDrag = null;
+let selectedAccessoryWormPart = "primary";
 let projection;
 let projectedLocations = [];
 
@@ -463,6 +465,7 @@ function renderSpecies(item, place) {
   els.habitat.style.setProperty("--worm-scale", item.scale);
   const placeSeed = [...(placeName || item.id)].reduce((sum, character) => sum + character.codePointAt(0), 0);
   els.habitat.style.setProperty("--place-hue", `${(placeSeed % 19) - 9}deg`);
+  updateAccessoryWormLabels(item);
   syncAccessories();
   renderDoodles();
 
@@ -518,19 +521,49 @@ function activeAccessoryPositions() {
   return accessoryPositions.get(key);
 }
 
-function accessoryPosition(id) {
-  return activeAccessoryPositions().get(id) || { x: 0, y: 0 };
+function accessoryPositionKey(id, wormPart) {
+  return `${id}::${wormPart}`;
 }
 
-function applyAccessoryPosition(id, position = accessoryPosition(id)) {
+function accessoryPosition(id, wormPart = selectedAccessoryWormPart) {
+  return activeAccessoryPositions().get(accessoryPositionKey(id, wormPart)) || { x: 0, y: 0 };
+}
+
+function accessoryPieces(id, wormPart) {
   const accessory = document.getElementById(id);
-  if (!accessory) return;
-  accessory.style.setProperty("--accessory-user-x", `${position.x.toFixed(1)}px`);
-  accessory.style.setProperty("--accessory-user-y", `${position.y.toFixed(1)}px`);
+  if (!accessory) return [];
+  return [...accessory.querySelectorAll(`.accessory-piece[data-worm-part="${wormPart}"]`)];
 }
 
-function accessoryPoint(event, accessory) {
-  const matrix = accessory.parentElement?.getScreenCTM();
+function applyAccessoryPosition(id, wormPart, position = accessoryPosition(id, wormPart)) {
+  accessoryPieces(id, wormPart).forEach(piece => {
+    piece.style.setProperty("--accessory-user-x", `${position.x.toFixed(1)}px`);
+    piece.style.setProperty("--accessory-user-y", `${position.y.toFixed(1)}px`);
+  });
+}
+
+function visibleAccessoryPieces(id, wormPart) {
+  return accessoryPieces(id, wormPart).filter(piece => {
+    const bounds = piece.getBoundingClientRect();
+    return bounds.width > 0 && bounds.height > 0;
+  });
+}
+
+function accessoryPieceBounds(id, wormPart) {
+  const bounds = visibleAccessoryPieces(id, wormPart).map(piece => piece.getBoundingClientRect());
+  if (!bounds.length) return null;
+  return {
+    left: Math.min(...bounds.map(box => box.left)),
+    top: Math.min(...bounds.map(box => box.top)),
+    right: Math.max(...bounds.map(box => box.right)),
+    bottom: Math.max(...bounds.map(box => box.bottom)),
+    width: Math.max(...bounds.map(box => box.right)) - Math.min(...bounds.map(box => box.left)),
+    height: Math.max(...bounds.map(box => box.bottom)) - Math.min(...bounds.map(box => box.top))
+  };
+}
+
+function accessoryPoint(event, piece) {
+  const matrix = piece.parentElement?.getScreenCTM();
   if (!matrix) return doodlePoint(event);
   const point = els.wormAvatar.createSVGPoint();
   point.x = event.clientX;
@@ -538,8 +571,8 @@ function accessoryPoint(event, accessory) {
   return point.matrixTransform(matrix.inverse());
 }
 
-function screenDeltaToAccessorySpace(accessory, x, y) {
-  const matrix = accessory.parentElement?.getScreenCTM();
+function screenDeltaToAccessorySpace(piece, x, y) {
+  const matrix = piece.parentElement?.getScreenCTM();
   if (!matrix) return { x, y };
   const inverse = matrix.inverse();
   const origin = els.wormAvatar.createSVGPoint();
@@ -551,19 +584,19 @@ function screenDeltaToAccessorySpace(accessory, x, y) {
   return { x: localTarget.x - localOrigin.x, y: localTarget.y - localOrigin.y };
 }
 
-function moveAccessory(id, desiredPosition) {
-  const accessory = document.getElementById(id);
-  if (!accessory) return desiredPosition;
+function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAccessoryPieces(id, wormPart)[0]) {
+  if (!referencePiece) return desiredPosition;
   let position = desiredPosition;
-  activeAccessoryPositions().set(id, position);
-  applyAccessoryPosition(id, position);
+  const positionKey = accessoryPositionKey(id, wormPart);
+  activeAccessoryPositions().set(positionKey, position);
+  applyAccessoryPosition(id, wormPart, position);
 
   const avatarBounds = els.wormAvatar.getBoundingClientRect();
   const margin = 6;
   if (avatarBounds.width && avatarBounds.height) {
-    for (let attempt = 0; attempt < 4; attempt += 1) {
-      const accessoryBounds = accessory.getBoundingClientRect();
-      if (!accessoryBounds.width || !accessoryBounds.height) break;
+    for (let attempt = 0; attempt < 8; attempt += 1) {
+      const accessoryBounds = accessoryPieceBounds(id, wormPart);
+      if (!accessoryBounds?.width || !accessoryBounds.height) break;
 
       let screenX = 0;
       let screenY = 0;
@@ -573,17 +606,40 @@ function moveAccessory(id, desiredPosition) {
       else if (accessoryBounds.bottom > avatarBounds.bottom - margin) screenY = avatarBounds.bottom - margin - accessoryBounds.bottom;
 
       if (Math.abs(screenX) < .5 && Math.abs(screenY) < .5) break;
-      const correction = screenDeltaToAccessorySpace(accessory, screenX, screenY);
+      const correction = screenDeltaToAccessorySpace(referencePiece, screenX, screenY);
       position = { x: position.x + correction.x, y: position.y + correction.y };
-      activeAccessoryPositions().set(id, position);
-      applyAccessoryPosition(id, position);
+      activeAccessoryPositions().set(positionKey, position);
+      applyAccessoryPosition(id, wormPart, position);
     }
   }
   return position;
 }
 
-function accessoryName(id) {
-  return document.querySelector(`[data-accessory="${id}"] .button-label`)?.textContent || "Accessory";
+function accessoryWormName(wormPart) {
+  const item = byId.get(selectedId);
+  const index = wormPart === "companion" ? 1 : 0;
+  return item?.cast[index] || (wormPart === "companion" ? "male" : "worm");
+}
+
+function accessoryName(id, wormPart) {
+  const accessory = document.querySelector(`[data-accessory="${id}"] .button-label`)?.textContent || "Accessory";
+  if (!wormPart) return accessory;
+  return t("accessoryForWorm", { accessory, worm: accessoryWormName(wormPart) });
+}
+
+function updateAccessoryWormLabels(item = byId.get(selectedId)) {
+  document.querySelectorAll("[data-worm-part-label]").forEach(label => {
+    const index = label.dataset.wormPartLabel === "companion" ? 1 : 0;
+    label.textContent = item?.cast[index] || (index ? "male" : "worm");
+  });
+}
+
+function selectAccessoryWormPart(wormPart) {
+  if (!accessoryWormParts.includes(wormPart)) return;
+  selectedAccessoryWormPart = wormPart;
+  document.querySelectorAll('input[name="accessory-worm-part"]').forEach(radio => {
+    radio.checked = radio.value === wormPart;
+  });
 }
 
 function announceAccessory(message) {
@@ -591,11 +647,11 @@ function announceAccessory(message) {
   requestAnimationFrame(() => { els.accessoryStatus.textContent = message; });
 }
 
-function resetAccessoryPosition(id) {
+function resetAccessoryPosition(id, wormPart = selectedAccessoryWormPart) {
   const position = { x: 0, y: 0 };
-  activeAccessoryPositions().set(id, position);
-  applyAccessoryPosition(id, position);
-  announceAccessory(t("accessoryReset", { accessory: accessoryName(id) }));
+  activeAccessoryPositions().set(accessoryPositionKey(id, wormPart), position);
+  applyAccessoryPosition(id, wormPart, position);
+  announceAccessory(t("accessoryReset", { accessory: accessoryName(id, wormPart) }));
 }
 
 function activeDrawing() {
@@ -692,7 +748,7 @@ function toggleAccessory(id, force) {
   const accessory = document.getElementById(id);
   const button = document.querySelector(`[data-accessory="${id}"]`);
   if (!accessory || !button) return;
-  applyAccessoryPosition(id);
+  accessoryWormParts.forEach(wormPart => applyAccessoryPosition(id, wormPart));
   accessory.toggleAttribute("hidden", !shouldShow);
   button.setAttribute("aria-pressed", String(shouldShow));
   if (shouldShow) activeAccessories.add(id);
@@ -705,7 +761,7 @@ function syncAccessories() {
     const accessory = document.getElementById(id);
     const button = document.querySelector(`[data-accessory="${id}"]`);
     const shouldShow = activeAccessories.has(id);
-    applyAccessoryPosition(id);
+    accessoryWormParts.forEach(wormPart => applyAccessoryPosition(id, wormPart));
     accessory?.toggleAttribute("hidden", !shouldShow);
     button?.setAttribute("aria-pressed", String(shouldShow));
   });
@@ -728,14 +784,21 @@ function playSelectionEffect() {
   setTimeout(() => els.habitat.classList.remove("is-changing"), 720);
 }
 
+document.querySelectorAll('input[name="accessory-worm-part"]').forEach(radio => {
+  radio.addEventListener("change", () => {
+    if (radio.checked) selectAccessoryWormPart(radio.value);
+  });
+});
+
 document.querySelectorAll("[data-accessory]").forEach(button => {
   button.addEventListener("click", () => toggleAccessory(button.dataset.accessory));
   button.addEventListener("keydown", event => {
     const id = button.dataset.accessory;
+    const wormPart = selectedAccessoryWormPart;
     if (!activeWardrobe().has(id)) return;
     if (event.key === "Home") {
       event.preventDefault();
-      resetAccessoryPosition(id);
+      resetAccessoryPosition(id, wormPart);
       return;
     }
 
@@ -747,66 +810,71 @@ document.querySelectorAll("[data-accessory]").forEach(button => {
     }[event.key];
     if (!direction) return;
     event.preventDefault();
-    const current = accessoryPosition(id);
+    const current = accessoryPosition(id, wormPart);
     const step = event.shiftKey ? 12 : 4;
-    const position = moveAccessory(id, {
+    const position = moveAccessory(id, wormPart, {
       x: current.x + direction[0] * step,
       y: current.y + direction[1] * step
     });
     announceAccessory(t("accessoryPosition", {
-      accessory: accessoryName(id),
+      accessory: accessoryName(id, wormPart),
       x: Math.round(position.x),
       y: Math.round(position.y)
     }));
   });
 });
 
-accessoryIds.forEach(id => {
-  const accessory = document.getElementById(id);
-  if (!accessory) return;
+function finishAccessoryDrag(event) {
+  if (!activeAccessoryDrag || activeAccessoryDrag.pointerId !== event.pointerId) return;
+  const { id, wormPart, piece, moved } = activeAccessoryDrag;
+  if (piece.hasPointerCapture(event.pointerId)) piece.releasePointerCapture(event.pointerId);
+  piece.classList.remove("is-dragging");
+  if (moved) announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
+  activeAccessoryDrag = null;
+}
 
-  accessory.addEventListener("pointerdown", event => {
-    if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
+document.querySelectorAll(".accessory-piece[data-worm-part]").forEach(piece => {
+  const accessory = piece.closest(".accessory");
+  const id = accessory?.id;
+  const wormPart = piece.dataset.wormPart;
+  if (!accessory || !id || !accessoryWormParts.includes(wormPart)) return;
+
+  piece.addEventListener("pointerdown", event => {
+    if (activeAccessoryDrag || drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
     event.preventDefault();
     event.stopPropagation();
-    accessory.setPointerCapture(event.pointerId);
-    accessory.classList.add("is-dragging");
+    selectAccessoryWormPart(wormPart);
+    piece.setPointerCapture(event.pointerId);
+    piece.classList.add("is-dragging");
     activeAccessoryDrag = {
       id,
-      accessory,
+      wormPart,
+      piece,
       pointerId: event.pointerId,
-      startPoint: accessoryPoint(event, accessory),
-      startPosition: accessoryPosition(id),
+      startPoint: accessoryPoint(event, piece),
+      startPosition: accessoryPosition(id, wormPart),
       moved: false
     };
   });
 
-  accessory.addEventListener("pointermove", event => {
-    if (!activeAccessoryDrag || activeAccessoryDrag.pointerId !== event.pointerId || activeAccessoryDrag.id !== id) return;
+  piece.addEventListener("pointermove", event => {
+    if (!activeAccessoryDrag || activeAccessoryDrag.pointerId !== event.pointerId || activeAccessoryDrag.piece !== piece) return;
     event.preventDefault();
     event.stopPropagation();
-    const point = accessoryPoint(event, accessory);
+    const point = accessoryPoint(event, piece);
     const deltaX = point.x - activeAccessoryDrag.startPoint.x;
     const deltaY = point.y - activeAccessoryDrag.startPoint.y;
     if (Math.hypot(deltaX, deltaY) > 1) activeAccessoryDrag.moved = true;
-    moveAccessory(id, {
+    moveAccessory(id, wormPart, {
       x: activeAccessoryDrag.startPosition.x + deltaX,
       y: activeAccessoryDrag.startPosition.y + deltaY
-    });
+    }, piece);
   });
 
-  const finishAccessoryDrag = event => {
-    if (!activeAccessoryDrag || activeAccessoryDrag.pointerId !== event.pointerId || activeAccessoryDrag.id !== id) return;
-    event.stopPropagation();
-    if (accessory.hasPointerCapture(event.pointerId)) accessory.releasePointerCapture(event.pointerId);
-    accessory.classList.remove("is-dragging");
-    if (activeAccessoryDrag.moved) announceAccessory(t("accessoryMoved", { accessory: accessoryName(id) }));
-    activeAccessoryDrag = null;
-  };
-
-  accessory.addEventListener("pointerup", finishAccessoryDrag);
-  accessory.addEventListener("pointercancel", finishAccessoryDrag);
 });
+
+window.addEventListener("pointerup", finishAccessoryDrag, true);
+window.addEventListener("pointercancel", finishAccessoryDrag, true);
 
 function createMarker(record) {
   const item = byId.get(record.speciesId);
