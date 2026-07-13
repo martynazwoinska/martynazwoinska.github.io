@@ -9,12 +9,15 @@ manager, or installation step.
 ## Site structure
 
 - `index.html`: primary academic profile and the Beyond Research landing section
+- `home.js` and `home-i18n.js`: homepage behaviour and page-local EN/SV/PL dictionary
+- `shared/`: prefixed visual tokens plus language and theme preference storage
 - `game-of-worms/`: interactive browser game inspired by nematode biology
 - `cabinet-of-curiosities/`: Cabinet of Curiosities landing page and assets
 - `fonts/`: locally hosted Cormorant Garamond display fonts
 - `docs/`: durable project instructions and kickoff context
 - `PROJECT_STATUS.md`: approved decisions and current implementation status
 - `AGENTS.md`: repository-specific working rules
+- `docs/agent-workflow.md`: worktree, ownership and integration protocol
 
 ## Deployment
 
