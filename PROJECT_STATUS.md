@@ -14,6 +14,15 @@ This file records approved decisions and the last known implementation state. Al
 - Display font: Cormorant Garamond
 - Light and dark themes must remain functional
 
+## Parallel ownership
+
+- `agent/site-architecture`: homepage, shared files, documentation and integration
+- `agent/cabinet`: `cabinet-of-curiosities/**` only
+- `agent/game-worms`: `game-of-worms/**` only
+- independent QA: read-only review with no file edits
+
+The durable workflow is documented in `docs/agent-workflow.md`. The shared layer uses prefixed `--site-*` tokens and preserves the existing `language` and `theme` storage keys. Translation dictionaries remain page-local.
+
 ## Active workstream: Beyond Research
 
 Approved information architecture:

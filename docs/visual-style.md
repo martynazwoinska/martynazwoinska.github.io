@@ -1,6 +1,6 @@
 # Visual style and colour system
 
-This document formalises the visual language already implemented in `index.html`. It is the reference for new interface components, illustrations, scientific figures and interactive objects.
+This document formalises the visual language implemented through `shared/site-tokens.css` and page-local aliases. It is the reference for new interface components, illustrations, scientific figures and interactive objects.
 
 ## Design direction
 
@@ -17,26 +17,26 @@ Avoid generic dashboard styling, heavy gradients, glow, glass effects, excessive
 
 ## Semantic colour tokens
 
-Use the CSS custom properties rather than copying hex values into component rules. The values below are the canonical homepage palette.
+Use the prefixed CSS custom properties rather than copying hex values into component rules. The values below are the canonical site palette. A page may alias them to shorter local names, but shared files must never introduce unprefixed tokens that could collide with Game or Cabinet variables.
 
 | Token | Light theme | Dark theme | Intended use |
 | --- | --- | --- | --- |
-| `--bg` | `#fbfaf7` | `#14171a` | Page background |
-| `--surface` | `#ffffff` | `#1c2024` | Primary cards, panels and dialogs |
-| `--surface-2` | `#f3f1ea` | `#23282d` | Secondary surfaces, quiet controls and inset areas |
-| `--text` | `#1f2328` | `#eceef0` | Primary text and headings |
-| `--text-soft` | `#55606b` | `#b3bcc4` | Supporting body text and secondary labels |
-| `--text-faint` | `#6b7480` | `#7f8993` | Tertiary metadata and small supporting text with WCAG AA contrast |
-| `--accent` | `#1c7a52` | `#5fcb9d` | Emerald primary accent, links, active states and structural emphasis |
-| `--accent-soft` | `#e3f1e9` | `#16302a` | Quiet emerald backgrounds and selected-state fills |
-| `--accent-berry` | `#7d2145` | `#d889a8` | Oxblood or berry secondary accent |
-| `--accent-gold` | `#a88445` | `#d2b66f` | Antique-gold fine borders, markers and restrained highlights |
-| `--accent-violet` | `#6b4a73` | `#c1a4ca` | Muted violet for limited botanical or categorical detail |
-| `--nav-bg` | `#cbe3d7` | `#29261f` | Clearly green light header and warm golden-brown dark header |
-| `--nav-border` | `rgba(28, 122, 82, .48)` | `#6d5e3d` | Theme-coherent divider below the sticky navigation |
-| `--nav-accent` | `#196f4a` | `#5fcb9d` | Accessible emerald cue within the golden navigation surface |
-| `--border` | `#e7e3d9` | `#2c3238` | Neutral borders and dividers |
-| `--shadow` | `0 1px 2px rgba(31,35,40,.06), 0 8px 24px rgba(31,35,40,.06)` | `0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35)` | Standard restrained elevation |
+| `--site-bg` | `#fbfaf7` | `#14171a` | Page background |
+| `--site-surface` | `#ffffff` | `#1c2024` | Primary cards, panels and dialogs |
+| `--site-surface-muted` | `#f3f1ea` | `#23282d` | Secondary surfaces, quiet controls and inset areas |
+| `--site-text` | `#1f2328` | `#eceef0` | Primary text and headings |
+| `--site-text-soft` | `#55606b` | `#b3bcc4` | Supporting body text and secondary labels |
+| `--site-text-faint` | `#6b7480` | `#7f8993` | Tertiary metadata and small supporting text with WCAG AA contrast |
+| `--site-brand-emerald` | `#1c7a52` | `#5fcb9d` | Emerald primary accent, links, active states and structural emphasis |
+| `--site-brand-emerald-soft` | `#e3f1e9` | `#16302a` | Quiet emerald backgrounds and selected-state fills |
+| `--site-brand-berry` | `#7d2145` | `#d889a8` | Oxblood or berry secondary accent |
+| `--site-brand-gold` | `#a88445` | `#d2b66f` | Antique-gold fine borders, markers and restrained highlights |
+| `--site-brand-violet` | `#6b4a73` | `#c1a4ca` | Muted violet for limited botanical or categorical detail |
+| `--site-nav-bg` | `#cbe3d7` | `#29261f` | Clearly green light header and warm golden-brown dark header |
+| `--site-nav-border` | `rgba(28, 122, 82, .48)` | `#6d5e3d` | Theme-coherent divider below the sticky navigation |
+| `--site-nav-accent` | `#196f4a` | `#5fcb9d` | Accessible emerald cue within the navigation surface |
+| `--site-border` | `#e7e3d9` | `#2c3238` | Neutral borders and dividers |
+| `--site-shadow` | `0 1px 2px rgba(31,35,40,.06), 0 8px 24px rgba(31,35,40,.06)` | `0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35)` | Standard restrained elevation |
 
 The automatic dark theme and the explicit `data-theme="dark"` theme use the same dark values. The explicit `data-theme="light"` theme restores the light values.
 
@@ -48,7 +48,7 @@ The automatic dark theme and the explicit `data-theme="dark"` theme use the same
 4. Use berry or oxblood as the saturated secondary accent for botanical terminals, hover states and small warm details. Keep violet muted and limited to meaningful categories.
 5. Prefer `color-mix()` with the semantic variables when a quieter tint is needed.
 
-The theme toggle uses `--accent-gold` with `#14171a` ink in both themes. This keeps the control distinct from the green or golden-brown header surface without adding another palette colour.
+The theme toggle uses the page alias of `--site-brand-gold` with `#14171a` ink in both themes. This keeps the control distinct from the green or golden-brown header surface without adding another palette colour.
 
 ### Categories and scientific figures
 
