@@ -58,6 +58,7 @@ The two cards have equal visual weight, stack on mobile, retain emerald and anti
 - Homepage behaviour and translations are separated into `home.js` and `home-i18n.js`.
 - The Cabinet uses separate HTML, CSS, JavaScript, translation, and data files.
 - The Cabinet presents the authentic photographed object board inside an extended fantasy surround.
+- On phones held vertically, the Cabinet asks the visitor to turn the device sideways; the interactive board is presented in landscape orientation.
 - The board has percentage-based responsive hotspots for 35 chocolate packages, two crocheted eyes, and the S-Foodies sticker.
 - A browseable collection index and reusable accessible object-detail dialog are implemented.
 - The Cocoa of Excellence Flavour Wheel opens in a separate accessible dialog with source and licence attribution.
@@ -98,7 +99,7 @@ Do not overwrite or confuse these files. The original photograph is the source o
 - Zotter Labooko White: the small pale wrapper on the right, not Omnom.
 - Chocolate Naive: Xocoatl.
 
-Other labels marked `visible` in `cabinet-data.js` were read from the original photograph and linked where a suitable page was found, but they are not equivalent to explicit user confirmation. Do not silently promote them to `confirmed`.
+All chocolate identities currently recorded in `cabinet-data.js` were confirmed by the user on 2026-07-13. The Friis-Holm bars link to the official mixed mini-bars collection because individual flavours are not assigned.
 
 ## Crochet eyes
 
@@ -114,6 +115,4 @@ The Etsy pattern is the only external link planned for these objects.
 
 1. Run a focused cross-site QA pass at the widths defined in `docs/agent-workflow.md`.
 2. Verify keyboard navigation, dialog focus restoration, reduced motion, language and theme persistence, console errors, and horizontal overflow.
-3. Review entries marked `visible` against the original photograph before treating them as confirmed.
-4. Review unreferenced intermediate Cabinet composites before deciding whether they should remain as source history or be removed.
-5. Keep `game-of-worms/` unchanged during Cabinet-only work.
+3. Keep `game-of-worms/` unchanged during Cabinet-only work.

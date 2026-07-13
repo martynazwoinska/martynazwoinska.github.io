@@ -212,6 +212,10 @@ button { color: inherit; }
   padding: 0;
 }
 
+.orientation-notice {
+  display: none;
+}
+
 .board-shell {
   position: absolute;
   left: 50%;
@@ -710,6 +714,45 @@ button { color: inherit; }
   .explore-hint { bottom: 8px; font-size: .7rem; }
   .wheel-dialog { width: calc(100vw - 12px); padding: 18px; }
   .wheel-visual { width: min(92vw, calc(100svh - 54px), 100%); }
+}
+
+@media (max-width: 760px) and (orientation: portrait) {
+  .cabinet-stage,
+  .header-actions {
+    display: none;
+  }
+
+  .orientation-notice {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: min(82vw, 420px);
+    padding: 30px 24px;
+    border: 1px solid rgba(120, 199, 163, .55);
+    border-radius: 28px 6px;
+    background: rgba(10, 18, 14, .88);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .35), inset 0 0 0 1px rgba(213, 185, 105, .18);
+    color: #f3efe5;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .orientation-notice .eyebrow {
+    color: #f1dc9d;
+  }
+
+  .orientation-notice h1 {
+    margin: 5px 0 8px;
+    font-family: var(--display);
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 1;
+  }
+
+  .orientation-notice p:last-child {
+    margin: 0;
+    color: #c9c2b2;
+  }
 }
 
 @media (max-width: 420px) {

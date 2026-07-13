@@ -212,7 +212,7 @@
           "contact_email": "✉ E-post",
           "contact_profile": "🏛 Profil vid Uppsala universitet",
           "footer_affiliation": "Martyna Katarzyna Zwoińska · Uppsala universitet",
-          "footer_built": "Byggd i vanlig HTML och CSS och publicerad via GitHub Pages."
+          "footer_built": "Byggd i vanlig HTML, CSS och JavaScript och publicerad via GitHub Pages."
     },
     "pl": {
           "page_title": "Martyna K. Zwoińska | Biolożka ewolucyjna, Uniwersytet w Uppsali",
@@ -292,7 +292,7 @@
           "contact_email": "✉ E-mail",
           "contact_profile": "🏛 Profil na stronie Uniwersytetu w Uppsali",
           "footer_affiliation": "Martyna Katarzyna Zwoińska · Uniwersytet w Uppsali",
-          "footer_built": "Strona napisana w czystym HTML i CSS, opublikowana za pośrednictwem GitHub Pages."
+          "footer_built": "Strona napisana w czystym HTML, CSS i JavaScript, opublikowana za pośrednictwem GitHub Pages."
     }
   };
 
