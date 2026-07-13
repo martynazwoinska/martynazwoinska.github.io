@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#143f4a" />
   <link rel="stylesheet" href="../shared/site-tokens.css" />
-  <link rel="stylesheet" href="style.css?v=20260713-1" />
+  <link rel="stylesheet" href="style.css?v=20260713-2" />
   <script src="../shared/site-preferences.js" defer></script>
 </head>
 <body>
@@ -396,13 +396,15 @@
               <span class="eyebrow">Dress-up drawer</span>
               <h2 id="dress-title">Make this worm yours</h2>
             </div>
+            <p id="accessory-move-hint" class="accessory-move-hint">Switch on an accessory, then drag it on the worms. Keyboard: use the arrow keys on its button; Home puts it back.</p>
             <div class="dress-buttons" aria-label="Worm accessories">
-              <button type="button" data-accessory="local-headwear" aria-pressed="false"><span class="button-icon" aria-hidden="true">🧫</span> <span class="button-label">seeded NGM agar plate</span></button>
-              <button type="button" data-accessory="local-wrap" aria-pressed="false"><span class="button-icon" aria-hidden="true">🥼</span> <span class="button-label">fitted lab coat</span></button>
-              <button type="button" data-accessory="local-charm" aria-pressed="false"><span class="button-icon" aria-hidden="true">❄️</span> <span class="button-label">cryo-vial jetpack</span></button>
+              <button type="button" data-accessory="local-headwear" aria-pressed="false" aria-describedby="accessory-move-hint" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight Home"><span class="button-icon" aria-hidden="true">🧫</span> <span class="button-label">seeded NGM agar plate</span></button>
+              <button type="button" data-accessory="local-wrap" aria-pressed="false" aria-describedby="accessory-move-hint" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight Home"><span class="button-icon" aria-hidden="true">🥼</span> <span class="button-label">fitted lab coat</span></button>
+              <button type="button" data-accessory="local-charm" aria-pressed="false" aria-describedby="accessory-move-hint" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight Home"><span class="button-icon" aria-hidden="true">❄️</span> <span class="button-label">cryo-vial jetpack</span></button>
               <button id="surprise-me" class="surprise-button" type="button"><span aria-hidden="true">✨</span> Surprise me</button>
               <button id="freestyle-draw" class="freestyle-button" type="button" aria-pressed="false"><span aria-hidden="true">🎨</span> Freestyle draw</button>
             </div>
+            <p id="accessory-status" class="sr-only" aria-live="polite"></p>
             <div id="draw-tools" class="draw-tools" hidden aria-label="Freestyle drawing tools">
               <span>Ink</span>
               <button type="button" class="draw-color is-selected" data-draw-color="#f36f62" aria-label="Coral ink" aria-pressed="true"></button>
@@ -457,6 +459,6 @@
     </details>
   </main>
 
-  <script type="module" src="game.js?v=20260713-1"></script>
+  <script type="module" src="game.js?v=20260713-2"></script>
 </body>
 </html>

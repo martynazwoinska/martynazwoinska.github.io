@@ -1,7 +1,7 @@
 import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.net/npm/d3-geo@3/+esm";
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
-import { createGameTranslator } from "./game-i18n.js?v=20260713-1";
+import { createGameTranslator } from "./game-i18n.js?v=20260713-2";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -281,12 +281,14 @@ const byId = new Map(species.map(item => [item.id, item]));
 const visited = new Set();
 const accessoryIds = ["local-headwear", "local-wrap", "local-charm"];
 const wardrobes = new Map();
+const accessoryPositions = new Map();
 const drawings = new Map();
 let selectedId = "elegans";
 let selectedRecordName = null;
 let drawingEnabled = false;
 let drawingColor = "#f36f62";
 let activeDoodle = null;
+let activeAccessoryDrag = null;
 let projection;
 let projectedLocations = [];
 
@@ -333,7 +335,8 @@ const els = {
   surprise: document.getElementById("surprise-me"),
   freestyle: document.getElementById("freestyle-draw"),
   drawTools: document.getElementById("draw-tools"),
-  clearDrawing: document.getElementById("clear-drawing")
+  clearDrawing: document.getElementById("clear-drawing"),
+  accessoryStatus: document.getElementById("accessory-status")
 };
 
 function italicText(element, value) {
@@ -510,6 +513,92 @@ function activeWardrobe() {
   return wardrobes.get(key);
 }
 
+function activeAccessoryPositions() {
+  const key = wardrobeKey();
+  if (!accessoryPositions.has(key)) accessoryPositions.set(key, new Map());
+  return accessoryPositions.get(key);
+}
+
+function accessoryPosition(id) {
+  return activeAccessoryPositions().get(id) || { x: 0, y: 0 };
+}
+
+function applyAccessoryPosition(id, position = accessoryPosition(id)) {
+  const accessory = document.getElementById(id);
+  if (!accessory) return;
+  accessory.style.setProperty("--accessory-user-x", `${position.x.toFixed(1)}px`);
+  accessory.style.setProperty("--accessory-user-y", `${position.y.toFixed(1)}px`);
+}
+
+function accessoryPoint(event, accessory) {
+  const matrix = accessory.parentElement?.getScreenCTM();
+  if (!matrix) return doodlePoint(event);
+  const point = els.wormAvatar.createSVGPoint();
+  point.x = event.clientX;
+  point.y = event.clientY;
+  return point.matrixTransform(matrix.inverse());
+}
+
+function screenDeltaToAccessorySpace(accessory, x, y) {
+  const matrix = accessory.parentElement?.getScreenCTM();
+  if (!matrix) return { x, y };
+  const inverse = matrix.inverse();
+  const origin = els.wormAvatar.createSVGPoint();
+  const target = els.wormAvatar.createSVGPoint();
+  target.x = x;
+  target.y = y;
+  const localOrigin = origin.matrixTransform(inverse);
+  const localTarget = target.matrixTransform(inverse);
+  return { x: localTarget.x - localOrigin.x, y: localTarget.y - localOrigin.y };
+}
+
+function moveAccessory(id, desiredPosition) {
+  const accessory = document.getElementById(id);
+  if (!accessory) return desiredPosition;
+  let position = desiredPosition;
+  activeAccessoryPositions().set(id, position);
+  applyAccessoryPosition(id, position);
+
+  const avatarBounds = els.wormAvatar.getBoundingClientRect();
+  const margin = 6;
+  if (avatarBounds.width && avatarBounds.height) {
+    for (let attempt = 0; attempt < 4; attempt += 1) {
+      const accessoryBounds = accessory.getBoundingClientRect();
+      if (!accessoryBounds.width || !accessoryBounds.height) break;
+
+      let screenX = 0;
+      let screenY = 0;
+      if (accessoryBounds.left < avatarBounds.left + margin) screenX = avatarBounds.left + margin - accessoryBounds.left;
+      else if (accessoryBounds.right > avatarBounds.right - margin) screenX = avatarBounds.right - margin - accessoryBounds.right;
+      if (accessoryBounds.top < avatarBounds.top + margin) screenY = avatarBounds.top + margin - accessoryBounds.top;
+      else if (accessoryBounds.bottom > avatarBounds.bottom - margin) screenY = avatarBounds.bottom - margin - accessoryBounds.bottom;
+
+      if (Math.abs(screenX) < .5 && Math.abs(screenY) < .5) break;
+      const correction = screenDeltaToAccessorySpace(accessory, screenX, screenY);
+      position = { x: position.x + correction.x, y: position.y + correction.y };
+      activeAccessoryPositions().set(id, position);
+      applyAccessoryPosition(id, position);
+    }
+  }
+  return position;
+}
+
+function accessoryName(id) {
+  return document.querySelector(`[data-accessory="${id}"] .button-label`)?.textContent || "Accessory";
+}
+
+function announceAccessory(message) {
+  els.accessoryStatus.textContent = "";
+  requestAnimationFrame(() => { els.accessoryStatus.textContent = message; });
+}
+
+function resetAccessoryPosition(id) {
+  const position = { x: 0, y: 0 };
+  activeAccessoryPositions().set(id, position);
+  applyAccessoryPosition(id, position);
+  announceAccessory(t("accessoryReset", { accessory: accessoryName(id) }));
+}
+
 function activeDrawing() {
   const key = wardrobeKey();
   if (!drawings.has(key)) drawings.set(key, []);
@@ -604,6 +693,7 @@ function toggleAccessory(id, force) {
   const accessory = document.getElementById(id);
   const button = document.querySelector(`[data-accessory="${id}"]`);
   if (!accessory || !button) return;
+  applyAccessoryPosition(id);
   accessory.toggleAttribute("hidden", !shouldShow);
   button.setAttribute("aria-pressed", String(shouldShow));
   if (shouldShow) activeAccessories.add(id);
@@ -616,6 +706,7 @@ function syncAccessories() {
     const accessory = document.getElementById(id);
     const button = document.querySelector(`[data-accessory="${id}"]`);
     const shouldShow = activeAccessories.has(id);
+    applyAccessoryPosition(id);
     accessory?.toggleAttribute("hidden", !shouldShow);
     button?.setAttribute("aria-pressed", String(shouldShow));
   });
@@ -640,6 +731,82 @@ function playSelectionEffect() {
 
 document.querySelectorAll("[data-accessory]").forEach(button => {
   button.addEventListener("click", () => toggleAccessory(button.dataset.accessory));
+  button.addEventListener("keydown", event => {
+    const id = button.dataset.accessory;
+    if (!activeWardrobe().has(id)) return;
+    if (event.key === "Home") {
+      event.preventDefault();
+      resetAccessoryPosition(id);
+      return;
+    }
+
+    const direction = {
+      ArrowLeft: [-1, 0],
+      ArrowRight: [1, 0],
+      ArrowUp: [0, -1],
+      ArrowDown: [0, 1]
+    }[event.key];
+    if (!direction) return;
+    event.preventDefault();
+    const current = accessoryPosition(id);
+    const step = event.shiftKey ? 12 : 4;
+    const position = moveAccessory(id, {
+      x: current.x + direction[0] * step,
+      y: current.y + direction[1] * step
+    });
+    announceAccessory(t("accessoryPosition", {
+      accessory: accessoryName(id),
+      x: Math.round(position.x),
+      y: Math.round(position.y)
+    }));
+  });
+});
+
+accessoryIds.forEach(id => {
+  const accessory = document.getElementById(id);
+  if (!accessory) return;
+
+  accessory.addEventListener("pointerdown", event => {
+    if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
+    event.preventDefault();
+    event.stopPropagation();
+    accessory.setPointerCapture(event.pointerId);
+    accessory.classList.add("is-dragging");
+    activeAccessoryDrag = {
+      id,
+      accessory,
+      pointerId: event.pointerId,
+      startPoint: accessoryPoint(event, accessory),
+      startPosition: accessoryPosition(id),
+      moved: false
+    };
+  });
+
+  accessory.addEventListener("pointermove", event => {
+    if (!activeAccessoryDrag || activeAccessoryDrag.pointerId !== event.pointerId || activeAccessoryDrag.id !== id) return;
+    event.preventDefault();
+    event.stopPropagation();
+    const point = accessoryPoint(event, accessory);
+    const deltaX = point.x - activeAccessoryDrag.startPoint.x;
+    const deltaY = point.y - activeAccessoryDrag.startPoint.y;
+    if (Math.hypot(deltaX, deltaY) > 1) activeAccessoryDrag.moved = true;
+    moveAccessory(id, {
+      x: activeAccessoryDrag.startPosition.x + deltaX,
+      y: activeAccessoryDrag.startPosition.y + deltaY
+    });
+  });
+
+  const finishAccessoryDrag = event => {
+    if (!activeAccessoryDrag || activeAccessoryDrag.pointerId !== event.pointerId || activeAccessoryDrag.id !== id) return;
+    event.stopPropagation();
+    if (accessory.hasPointerCapture(event.pointerId)) accessory.releasePointerCapture(event.pointerId);
+    accessory.classList.remove("is-dragging");
+    if (activeAccessoryDrag.moved) announceAccessory(t("accessoryMoved", { accessory: accessoryName(id) }));
+    activeAccessoryDrag = null;
+  };
+
+  accessory.addEventListener("pointerup", finishAccessoryDrag);
+  accessory.addEventListener("pointercancel", finishAccessoryDrag);
 });
 
 els.surprise.addEventListener("click", () => {

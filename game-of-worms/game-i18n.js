@@ -8,6 +8,9 @@ const english = Object.freeze({
   illustratedPairAria: "Illustrated {name} {first} and {second}",
   markerAria: "Meet {name}, {reproduction}, from {place}{source}",
   markerSourceSuffix: ", record from {source}",
+  accessoryMoved: "{accessory} moved.",
+  accessoryPosition: "{accessory} position: {x} across and {y} down.",
+  accessoryReset: "{accessory} position reset.",
   worldGeometryUnavailable: "World geometry unavailable",
   mapUnavailable: "The map is taking a nap. Pick a worm below."
 });

@@ -56,6 +56,7 @@ The two cards have equal visual weight, stack on mobile, retain emerald and anti
 - The homepage, Game of Worms, and Cabinet of Curiosities are deployed through GitHub Pages.
 - Shared theme and language-preference handling is present under `shared/`.
 - Homepage behaviour and translations are separated into `home.js` and `home-i18n.js`.
+- Game of Worms accessories can be repositioned by pointer, touch, or keyboard; positions are kept separately for each species and location during the session, and Home resets the selected accessory.
 - The Cabinet uses separate HTML, CSS, JavaScript, translation, and data files.
 - The Cabinet presents the authentic photographed object board inside an extended fantasy surround.
 - On phones held vertically, the Cabinet asks the visitor to turn the device sideways; the interactive board is presented in landscape orientation.
