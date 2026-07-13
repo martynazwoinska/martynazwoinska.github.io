@@ -80,7 +80,7 @@
       maker: 'Luisa Abram', origin: 'Rio Juruá', cacao: '70%', link: 'https://luisaabram.com/products/barra-de-chocolate-luisa-abram-rio-jurua-70-cacau', linkLabel: 'View the official product page'
     }),
     chocolate('paradai-nakhon-si-thammarat-red-pod', 'Paradai Nakhon Si Thammarat Red Pod, 70%', 'confirmed', [35.16, 54.86, 13.02, 11.37], {
-      maker: 'Paradai', origin: 'Nakhon Si Thammarat', cacao: '70%', note: 'Red Pod bar.'
+      maker: 'Paradai', origin: 'Nakhon Si Thammarat', cacao: '70%', note: 'Red Pod bar.', link: 'https://premifair.com/products/paradai-schokolade-nakhon-si-thammarat-red-pod-70-thailand', linkLabel: 'View the EU distributor page'
     }),
     chocolate('aroko-chuao-amazonas-70', 'Aroko Chuao, Aragua Venezuela, 70%', 'visible', [47.59, 53.56, 13.22, 18.58], {
       maker: 'Aroko', origin: 'Chuao, Aragua, Venezuela', cacao: '70%', link: 'https://www.arokochocolate.com/en/pages/chuao-70-aragua-venezuela-50-gr', linkLabel: 'View the official product page'
@@ -100,8 +100,8 @@
     chocolate('willies-cacao-pistachio-date', "Willie's Cacao Pistachio & Date", 'visible', [73.83, 73.00, 10.29, 14.15], {
       maker: "Willie's Cacao", link: 'https://www.williescacao.com/product/pistachio-date/', linkLabel: 'View the official product page'
     }),
-    chocolate('paradai-chanthaburi-yellow', 'Paradai Chanthaburi', 'confirmed', [11.33, 79.34, 14.78, 13.54], {
-      maker: 'Paradai', origin: 'Chanthaburi', note: 'The cacao percentage is not clearly legible on the yellow wrapper.'
+    chocolate('paradai-chanthaburi-yellow', 'Paradai Chanthaburi, 70%', 'confirmed', [11.33, 79.34, 14.78, 13.54], {
+      maker: 'Paradai', origin: 'Chanthaburi', cacao: '70%', link: 'https://premifair.com/products/paradai-chanthaburi-70', linkLabel: 'View the EU distributor page'
     }),
     chocolate('date-cashew-vegan', 'Zotter Date & Cashew', 'visible', [33.66, 79.60, 11.46, 7.03], {
       maker: 'Zotter', link: 'https://www.zotter.at/en/online-shop/brands/hand-scooped-chocolates/date-cashew', linkLabel: 'View the official product page'

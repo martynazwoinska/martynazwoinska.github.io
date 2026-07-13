@@ -2,17 +2,18 @@
 
 Last updated: 2026-07-13
 
-This file records approved decisions and the last known implementation state. Always verify the current repository before acting.
+This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
 ## Website
 
 - Repository: `martynazwoinska/martynazwoinska.github.io`
-- Hosting: GitHub Pages
+- Hosting: GitHub Pages from `main` and the repository root
 - Stack: plain HTML, CSS, and JavaScript
 - Main visual direction: restrained Art Nouveau / Pre-Raphaelite
 - Primary colours: emerald, antique gold, muted violet or berry
 - Display font: Cormorant Garamond
 - Light and dark themes must remain functional
+- Homepage language options: English, Swedish, and Polish
 
 ## Parallel ownership
 
@@ -23,7 +24,7 @@ This file records approved decisions and the last known implementation state. Al
 
 The durable workflow is documented in `docs/agent-workflow.md`. The shared layer uses prefixed `--site-*` tokens and preserves the existing `language` and `theme` storage keys. Translation dictionaries remain page-local.
 
-## Active workstream: Beyond Research
+## Beyond Research
 
 Approved information architecture:
 
@@ -33,39 +34,39 @@ Beyond Research
 └── The Cabinet of Curiosities
 ```
 
-Approved homepage card copy:
+### The Game of Worms card
 
-### The Game of Worms
-
-- Description: `A browser game inspired by nematode biology.`
+- Description: `A browser game inspired by nematode biology, with creative input from my children.`
 - Action: `Play →`
 - Destination: `game-of-worms/index.html`
+- The card includes a restrained interactive nematode preview.
 
-### The Cabinet of Curiosities
+### The Cabinet of Curiosities card
 
-- Description: `Chocolate, crochet and collected curiosities.`
+- Description: `Craft chocolate became another subject I got really into!`
 - Action: `Explore →`
 - Destination: `cabinet-of-curiosities/index.html`
+- The official Cocoa of Excellence Flavour Wheel is the only approved preview graphic.
+- The Cabinet link and flavour-wheel button remain separate semantic controls.
 
-Approved landing design:
+The two cards have equal visual weight, stack on mobile, retain emerald and antique-gold borders, preserve visible focus, and respect reduced motion.
 
-- two equal image-free cards;
-- side by side on desktop and stacked on mobile;
-- thin emerald line plus fine gold inner line;
-- restrained Art Nouveau accents;
-- no introductory text;
-- no preview images or emoji;
-- entire card clickable.
+## Verified implementation on `main`
 
-## Last known implementation state
+- The homepage, Game of Worms, and Cabinet of Curiosities are deployed through GitHub Pages.
+- Shared theme and language-preference handling is present under `shared/`.
+- Homepage behaviour and translations are separated into `home.js` and `home-i18n.js`.
+- The Cabinet uses separate HTML, CSS, JavaScript, translation, and data files.
+- The Cabinet presents the authentic photographed object board inside an extended fantasy surround.
+- The board has percentage-based responsive hotspots for 35 chocolate packages, two crocheted eyes, and the S-Foodies sticker.
+- A browseable collection index and reusable accessible object-detail dialog are implemented.
+- The Cocoa of Excellence Flavour Wheel opens in a separate accessible dialog with source and licence attribution.
+- The long crocheted worm, blue crocheted octopus, and surrounding decoration remain non-interactive.
+- No temporary deployment workflow remains under `.github/workflows/`.
 
-The approved two-card Beyond Research section and the Cabinet destination page are now present on `main`. Always inspect the current files before changing them.
+## Cabinet source images
 
-Temporary deployment workflows created during earlier attempts should not remain in the repository. Check `.github/workflows/` before starting new work.
-
-## Cabinet image
-
-Approved stylised image asset:
+Approved stylised source image:
 
 ```text
 cabinet-of-curiosities/assets/cabinet-of-curiosities.png
@@ -77,61 +78,42 @@ Untouched original photograph:
 cabinet-of-curiosities/assets/cabinet-original-photo.jpg
 ```
 
-The stylised image is the exact selected website visual and must not be regenerated or edited during implementation. The original photograph is the source of truth for wrapper identities, wrapper text, and object placement.
-
-## Cabinet interaction decisions
-
-Interactive:
-
-- all chocolate packages;
-- green crocheted eye;
-- yellow crocheted eye.
-
-Not interactive:
-
-- long crocheted worm;
-- blue crocheted octopus.
-
-The page should eventually use a responsive overlay and a reusable accessible detail panel. Metadata should be stored separately from the HTML.
+Do not overwrite or confuse these files. The original photograph is the source of truth for wrapper identities, wrapper text, and object placement. Live composite derivatives must preserve the authentic photographed board and extend only the surrounding fantasy setting.
 
 ## Confirmed chocolate information
-
-These identifications were explicitly corrected or confirmed by the user:
 
 - Storm & Bille: Uganda chilli bar, 70%.
 - Raaka: Tanzania, 100%.
 - Vigdis Rosenkilde: Echarete, 80%.
 - Kamm: Ecuador, 85%.
 - Luisa Abram: Rio Juruá, 70%.
-- Paradai Thailand: Nakhon Si Thammarat dark chocolate, 70%, Red Pod.
-- Paradai yellow wrapper: Chanthaburi; exact percentage still needs confirmation.
-- Malmö Chokladfabrik: Craft Madagascar; the central wrapper showing the chocolate-making process.
-- Friis-Holm mini bars: link together to:
+- Paradai: Nakhon Si Thammarat Red Pod, 70%; EU distributor:
+  `https://premifair.com/products/paradai-schokolade-nakhon-si-thammarat-red-pod-70-thailand`
+- Paradai: Chanthaburi, 70%; EU distributor:
+  `https://premifair.com/products/paradai-chanthaburi-70`
+- Malmö Chokladfabrik: Craft Madagascar; the central rectangular wrapper showing the chocolate-making process.
+- Friis-Holm mini bars share:
   `https://friisholmchokolade.dk/products/bag-mix-12-x-5-g`
-- Taza: the circular package; it must not be labelled as Malmö Chokladfabrik.
-- Zotter Labooko White: the small wrapper on the right; it must not be labelled Omnom.
-- Chocolate Naive: Xocoatl wrapper reference:
-  `https://chocolatenaive.com/storage/2023/03/xocoatl.webp`
+- Taza: the circular package, not the Malmö Chokladfabrik wrapper.
+- Zotter Labooko White: the small pale wrapper on the right, not Omnom.
+- Chocolate Naive: Xocoatl.
 
-Tentative and requiring confirmation:
+Other labels marked `visible` in `cabinet-data.js` were read from the original photograph and linked where a suitable page was found, but they are not equivalent to explicit user confirmation. Do not silently promote them to `confirmed`.
 
-- the green Marou bar may be Bến Tre;
-- remaining wrapper variants, percentages, descriptions, and destination links.
+## Crochet eyes
 
-Do not silently promote tentative identifications to confirmed values.
+Both crocheted eyes use the confirmed Blooming Eye Crochet Pattern:
 
-## Crochet links still needed
+```text
+https://www.etsy.com/listing/4342094945/blooming-eye-crochet-pattern-pdf
+```
 
-The two crocheted eyes should eventually link to:
+The Etsy pattern is the only external link planned for these objects.
 
-- the exact pattern used;
-- Martyna’s Ravelry profile.
+## Current follow-up work
 
-The pattern name, designer, pattern URL, and Ravelry URL must not be invented.
-
-## Next safe sequence
-
-1. Audit the current repository.
-2. Verify the approved two-card Beyond Research landing and Cabinet page.
-3. Confirm responsive behaviour, themes, keyboard focus, and paths.
-4. Continue with hotspot mapping and chocolate metadata.
+1. Run a focused cross-site QA pass at the widths defined in `docs/agent-workflow.md`.
+2. Verify keyboard navigation, dialog focus restoration, reduced motion, language and theme persistence, console errors, and horizontal overflow.
+3. Review entries marked `visible` against the original photograph before treating them as confirmed.
+4. Review unreferenced intermediate Cabinet composites before deciding whether they should remain as source history or be removed.
+5. Keep `game-of-worms/` unchanged during Cabinet-only work.

@@ -12,7 +12,7 @@ manager, or installation step.
 - `home.js` and `home-i18n.js`: homepage behaviour and page-local EN/SV/PL dictionary
 - `shared/`: prefixed visual tokens plus language and theme preference storage
 - `game-of-worms/`: interactive browser game inspired by nematode biology
-- `cabinet-of-curiosities/`: Cabinet of Curiosities landing page and assets
+- `cabinet-of-curiosities/`: interactive Cabinet of Curiosities, object data and assets
 - `fonts/`: locally hosted Cormorant Garamond display fonts
 - `docs/`: durable project instructions and kickoff context
 - `PROJECT_STATUS.md`: approved decisions and current implementation status
@@ -32,8 +32,9 @@ has completed.
 ## Editing the site
 
 Most homepage content and styling live in `index.html`. The interactive game has
-its own HTML, CSS, and JavaScript under `game-of-worms/`. The Cabinet currently
-has a separate landing page under `cabinet-of-curiosities/`.
+its own HTML, CSS, and JavaScript under `game-of-worms/`. The Cabinet is a
+separate interactive collection under `cabinet-of-curiosities/`, with responsive
+hotspots, a collection index, object-detail dialogs and a flavour-wheel dialog.
 
 Before making changes, read:
 
@@ -57,6 +58,10 @@ The Cabinet uses two distinct source assets:
   object placement
 
 Do not overwrite, regenerate, or confuse these files.
+
+The live Cabinet uses separate derivatives for the authentic photographed board
+and its extended fantasy surround. Preserve the source assets above when revising
+those derivatives.
 
 ## Validation
 

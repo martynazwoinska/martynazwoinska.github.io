@@ -64,7 +64,7 @@ Reject generic AI styling, clutter, emoji-led design, excessive gradients, glow,
 - Preserve source files.
 - Create optimized derivatives only when needed and name them clearly.
 - Use the original photograph plus confirmed metadata for chocolate identification.
-- Never invent wrapper text, brands, percentages, links, awards, pattern details, or Ravelry information.
+- Never invent wrapper text, brands, percentages, links, awards, or crochet-pattern details.
 
 ## Implement minimally
 
