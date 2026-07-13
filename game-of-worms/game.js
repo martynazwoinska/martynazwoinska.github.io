@@ -332,7 +332,6 @@ const els = {
   speciesHabitat: document.getElementById("species-habitat"),
   speciesFact: document.getElementById("species-fact"),
   exploredCount: document.getElementById("explored-count"),
-  surprise: document.getElementById("surprise-me"),
   freestyle: document.getElementById("freestyle-draw"),
   drawTools: document.getElementById("draw-tools"),
   clearDrawing: document.getElementById("clear-drawing"),
@@ -807,13 +806,6 @@ accessoryIds.forEach(id => {
 
   accessory.addEventListener("pointerup", finishAccessoryDrag);
   accessory.addEventListener("pointercancel", finishAccessoryDrag);
-});
-
-els.surprise.addEventListener("click", () => {
-  accessoryIds.forEach(id => toggleAccessory(id, false));
-  const shuffled = accessoryIds.slice().sort(() => Math.random() - .5);
-  const count = 1 + Math.floor(Math.random() * 3);
-  shuffled.slice(0, count).forEach(id => toggleAccessory(id, true));
 });
 
 function createMarker(record) {

@@ -725,7 +725,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .dress-buttons button[aria-pressed="true"] { background: var(--teal-dark); color: white; border-color: var(--teal-dark); box-shadow: 0 4px 10px rgba(20,75,78,.22); }
 .dress-buttons button[data-accessory][aria-pressed="true"]::after { content: "✓"; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(255,255,255,.19); font-size: .72rem; }
 .dress-buttons .button-icon { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: color-mix(in srgb, var(--yellow) 45%, white); font-size: .92rem; }
-.dress-buttons .surprise-button { background: var(--yellow); border-color: #e8b638; }
 .dress-buttons .freestyle-button[aria-pressed="true"] { background: var(--violet); border-color: var(--violet); color: white; }
 .draw-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; padding: 10px 12px; border-radius: 16px; background: rgba(117,103,184,.09); }
 .draw-tools[hidden] { display: none; }
