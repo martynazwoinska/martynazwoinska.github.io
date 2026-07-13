@@ -80,6 +80,12 @@ button { color: inherit; }
   overflow: hidden;
 }
 
+.surround-picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .fantasy-surround img {
   width: 100%;
   height: 100%;
@@ -236,6 +242,12 @@ button { color: inherit; }
   position: absolute;
   z-index: 1;
   inset: 0;
+}
+
+.board-picture {
+  position: absolute;
+  inset: 0;
+  display: block;
 }
 
 .board-photo {

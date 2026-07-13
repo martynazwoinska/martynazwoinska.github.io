@@ -9,12 +9,16 @@
   <link rel="canonical" href="https://martynazwoinska.github.io/cabinet-of-curiosities/">
   <script src="../shared/site-preferences.js"></script>
   <link rel="stylesheet" href="../shared/site-tokens.css">
-  <link rel="stylesheet" href="cabinet.css?v=20260713-6">
+  <link rel="stylesheet" href="cabinet.css?v=20260713-7">
 </head>
 <body>
   <main class="cabinet-page">
     <div class="fantasy-surround" aria-hidden="true">
-      <img src="assets/cabinet-surround-grey-v5.webp" alt="">
+      <picture class="surround-picture">
+        <source media="(orientation: landscape) and (max-width: 960px)" srcset="assets/cabinet-surround-grey-v5-960.webp">
+        <source media="(min-width: 761px)" srcset="assets/cabinet-surround-grey-v5.webp">
+        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="1672" height="941" alt="">
+      </picture>
       <span class="vine vine-left"></span>
       <span class="vine vine-right"></span>
       <span class="cabinet-glow"></span>
@@ -37,7 +41,11 @@
     <section class="cabinet-stage" aria-label="Interactive cabinet display">
       <figure class="board-shell" id="board-shell">
         <div class="board-plane">
-          <img class="board-photo board-content-layer" src="assets/cabinet-board-content-v8.webp" width="1536" height="1152" alt="Authentic photographed chocolate packages, papers and crocheted objects arranged within a fantasy cabinet.">
+          <picture class="board-picture">
+            <source media="(orientation: landscape) and (max-width: 960px)" srcset="assets/cabinet-board-content-v8-960.webp">
+            <source media="(min-width: 761px)" srcset="assets/cabinet-board-content-v8.webp">
+            <img class="board-photo board-content-layer" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="1536" height="1152" fetchpriority="high" alt="Authentic photographed chocolate packages, papers and crocheted objects arranged within a fantasy cabinet.">
+          </picture>
           <div class="hotspot-layer" id="hotspot-layer" aria-label="Objects on the display board"></div>
         </div>
         <figcaption class="sr-only">Explore the photographed packages, the two crocheted eyes and the S-Foodies sticker. The long worm and blue octopus are decorative.</figcaption>
