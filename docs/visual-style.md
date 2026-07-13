@@ -32,8 +32,8 @@ Use the CSS custom properties rather than copying hex values into component rule
 | `--accent-berry` | `#7d2145` | `#d889a8` | Oxblood or berry secondary accent |
 | `--accent-gold` | `#a88445` | `#d2b66f` | Antique-gold fine borders, markers and restrained highlights |
 | `--accent-violet` | `#6b4a73` | `#c1a4ca` | Muted violet for limited botanical or categorical detail |
-| `--nav-bg` | `#cbe3d7` | `#43323c` | Clearly green light header and restrained plum dark header |
-| `--nav-border` | `rgba(28, 122, 82, .48)` | `rgba(216, 137, 168, .45)` | Theme-coherent divider below the sticky navigation |
+| `--nav-bg` | `#cbe3d7` | `#29261f` | Clearly green light header and warm golden-brown dark header |
+| `--nav-border` | `rgba(28, 122, 82, .48)` | `#6d5e3d` | Theme-coherent divider below the sticky navigation |
 | `--nav-accent` | `#196f4a` | `#5fcb9d` | Accessible emerald cue within the golden navigation surface |
 | `--border` | `#e7e3d9` | `#2c3238` | Neutral borders and dividers |
 | `--shadow` | `0 1px 2px rgba(31,35,40,.06), 0 8px 24px rgba(31,35,40,.06)` | `0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35)` | Standard restrained elevation |
@@ -48,7 +48,7 @@ The automatic dark theme and the explicit `data-theme="dark"` theme use the same
 4. Use berry or oxblood as the saturated secondary accent for botanical terminals, hover states and small warm details. Keep violet muted and limited to meaningful categories.
 5. Prefer `color-mix()` with the semantic variables when a quieter tint is needed.
 
-The theme toggle uses `--accent-gold` with `#14171a` ink in both themes. This keeps the control distinct from the green or plum header surface without adding another palette colour.
+The theme toggle uses `--accent-gold` with `#14171a` ink in both themes. This keeps the control distinct from the green or golden-brown header surface without adding another palette colour.
 
 ### Categories and scientific figures
 
