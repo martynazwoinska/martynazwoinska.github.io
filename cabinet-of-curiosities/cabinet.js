@@ -2,6 +2,7 @@
   'use strict';
 
   const objects = Array.isArray(window.CABINET_OBJECTS) ? window.CABINET_OBJECTS : [];
+  const copy = window.CABINET_I18N;
   const hotspotLayer = document.getElementById('hotspot-layer');
   const boardShell = document.getElementById('board-shell');
   const preview = document.getElementById('object-preview');
@@ -30,12 +31,6 @@
   let wheelRotation = 0;
   let wheelTimer = null;
   let compactHotspotMode = null;
-
-  const kindLabels = {
-    chocolate: 'Chocolate package',
-    crochet: 'Crocheted object',
-    ephemera: 'Collected ephemera'
-  };
 
   function hidePreview() {
     preview.hidden = true;
@@ -72,14 +67,14 @@
   function openDetails(item, trigger) {
     lastDialogTrigger = trigger || document.activeElement;
     hidePreview();
-    detailKind.textContent = kindLabels[item.kind] || 'Collection object';
+    detailKind.textContent = copy.kindLabels[item.kind] || copy.collectionObject;
     detailTitle.textContent = item.label;
     detailFacts.replaceChildren();
 
     [
-      makeFact('Maker', item.maker),
-      makeFact('Origin', item.origin),
-      makeFact('Cacao', item.cacao)
+      makeFact(copy.factLabels.maker, item.maker),
+      makeFact(copy.factLabels.origin, item.origin),
+      makeFact(copy.factLabels.cacao, item.cacao)
     ].filter(Boolean).forEach(row => detailFacts.append(row));
 
     detailFacts.hidden = detailFacts.children.length === 0;
@@ -88,7 +83,7 @@
 
     if (item.link) {
       detailLink.href = item.link;
-      detailLink.textContent = item.linkLabel || 'Visit supplied link';
+      detailLink.textContent = item.linkLabel || copy.visitSuppliedLink;
       detailLink.hidden = false;
     } else {
       detailLink.removeAttribute('href');
@@ -125,7 +120,7 @@
       button.style.top = `${top + height / 2}%`;
       button.style.width = `${width}%`;
       button.style.height = `${height}%`;
-      button.setAttribute('aria-label', clickAction ? item.label : `${item.label}. Open details.`);
+      button.setAttribute('aria-label', clickAction ? item.label : `${item.label}. ${copy.openDetails}`);
       button.addEventListener('pointerenter', () => showPreview(item, button));
       button.addEventListener('pointerleave', hidePreview);
       button.addEventListener('focus', () => showPreview(item, button));
@@ -140,7 +135,7 @@
     if (groupTopRow) {
       appendHotspot({
         id: 'top-row-mini-bars',
-        label: 'Browse the top-row mini bars',
+        label: copy.topRowMiniBars,
         box: [31.84, 16.58, 27.99, 7.03]
       }, openPanel);
     }
@@ -173,9 +168,9 @@
     const crochet = objects.filter(item => item.kind === 'crochet');
     const ephemera = objects.filter(item => item.kind === 'ephemera');
     collectionList.replaceChildren(
-      buildCollectionGroup('Chocolate packages', chocolates),
-      buildCollectionGroup('Crocheted eyes', crochet),
-      buildCollectionGroup('Collected ephemera', ephemera)
+      buildCollectionGroup(copy.collectionGroups.chocolates, chocolates),
+      buildCollectionGroup(copy.collectionGroups.crochet, crochet),
+      buildCollectionGroup(copy.collectionGroups.ephemera, ephemera)
     );
   }
 
@@ -218,13 +213,13 @@
 
     flavourWheel.classList.toggle('is-reduced-motion', prefersReducedMotion);
     wheelVisual.setAttribute('aria-busy', 'true');
-    wheelStatus.textContent = prefersReducedMotion ? 'Wheel moved.' : 'Wheel is spinning.';
+    wheelStatus.textContent = prefersReducedMotion ? copy.wheel.moved : copy.wheel.spinning;
     flavourWheel.style.transform = `rotate(${wheelRotation}deg)`;
 
     const delay = prefersReducedMotion ? 50 : 1850;
     wheelTimer = window.setTimeout(() => {
       wheelVisual.removeAttribute('aria-busy');
-      wheelStatus.textContent = 'Wheel stopped. Explore the descriptor nearest the marker.';
+      wheelStatus.textContent = copy.wheel.stopped;
       wheelTimer = null;
     }, delay);
   }
