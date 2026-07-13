@@ -1,6 +1,9 @@
 import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.net/npm/d3-geo@3/+esm";
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
+import { createGameTranslator } from "./game-i18n.js?v=20260713-1";
+
+const t = createGameTranslator(document.documentElement.lang);
 
 const regionalPacks = {
   okinawa: { sceneName: "Ishigaki fig grove", looks: ["Sculpted fig-leaf visor", "Fig-sample satchel", "Fig-wasp wings"], icons: ["🍃", "🧺", "🪽"], note: "A sculpted fig-leaf visor, a field satchel for fig samples, and wings inspired by the species’ fig-wasp vector complete the Ishigaki kit." },
@@ -269,9 +272,9 @@ const species = [
 ];
 
 const sisterPairs = [
-  { members: ["elegans", "inopinata"], label: "sister species" },
-  { members: ["briggsae", "nigoni"], label: "sister species" },
-  { members: ["tropicalis", "wallacei"], label: "sister species" }
+  { members: ["elegans", "inopinata"], label: t("sisterSpeciesLabel") },
+  { members: ["briggsae", "nigoni"], label: t("sisterSpeciesLabel") },
+  { members: ["tropicalis", "wallacei"], label: t("sisterSpeciesLabel") }
 ];
 
 const byId = new Map(species.map(item => [item.id, item]));
@@ -363,7 +366,7 @@ function renderTabs() {
     pairGroup.className = "sister-pair";
     pairGroup.setAttribute("role", "group");
     const pairNames = pair.members.map(id => byId.get(id).short).join(" and ");
-    pairGroup.setAttribute("aria-label", `Sister species: ${pairNames}`);
+    pairGroup.setAttribute("aria-label", t("sisterSpeciesAria", { names: pairNames }));
 
     const pairLabel = document.createElement("span");
     pairLabel.className = "sister-label";
@@ -379,7 +382,10 @@ function renderTabs() {
       button.dataset.species = item.id;
       button.style.setProperty("--tab-color", item.wormDeep);
       button.setAttribute("aria-pressed", String(item.id === selectedId));
-      button.setAttribute("aria-label", `Meet ${item.name}, ${item.nickname}`);
+      button.setAttribute("aria-label", t("meetSpeciesAria", {
+        name: item.name,
+        nickname: item.nickname
+      }));
 
       const worm = document.createElement("span");
       worm.className = "mini-worm";
@@ -388,12 +394,14 @@ function renderTabs() {
       name.textContent = item.short;
       const mode = document.createElement("small");
       mode.className = item.reproduction;
-      mode.textContent = item.reproduction === "selfing" ? "mostly selfing" : "outcrossing";
+      mode.textContent = item.reproduction === "selfing"
+        ? t("reproductionMostlySelfing")
+        : t("reproductionOutcrossing");
       button.append(worm, name, mode);
       if (item.id === "elegans") {
         const featured = document.createElement("span");
         featured.className = "featured-place";
-        featured.textContent = "opens Bristol N2";
+        featured.textContent = t("opensBristolN2");
         button.appendChild(featured);
       }
       button.addEventListener("click", () => selectSpecies(item.id));
@@ -418,7 +426,11 @@ function renderSpecies(item, place) {
   els.speciesHabitat.textContent = item.habitat;
   scientificText(els.speciesFact, typeof place === "object" && place?.history ? place.history : item.fact);
   italicText(els.wormNameTag, item.short);
-  els.wormAvatar.setAttribute("aria-label", `Illustrated ${item.name} ${item.cast[0]} and ${item.cast[1]}`);
+  els.wormAvatar.setAttribute("aria-label", t("illustratedPairAria", {
+    name: item.name,
+    first: item.cast[0],
+    second: item.cast[1]
+  }));
   els.localHeadwearIcon.textContent = regionalPack.icons[0];
   els.localHeadwearLabel.textContent = regionalPack.looks[0];
   els.localWrapIcon.textContent = regionalPack.icons[1];
@@ -640,12 +652,22 @@ els.surprise.addEventListener("click", () => {
 function createMarker(record) {
   const item = byId.get(record.speciesId);
   const button = document.createElement("button");
-  const reproductionMode = item.reproduction === "selfing" ? "mostly selfing" : "outcrossing";
+  const reproductionMode = item.reproduction === "selfing"
+    ? t("reproductionMostlySelfing")
+    : t("reproductionOutcrossing");
   button.type = "button";
   button.className = `map-marker ${item.reproduction}`;
   button.dataset.species = item.id;
   button.dataset.place = record.name;
-  button.setAttribute("aria-label", `Meet ${item.name}, ${reproductionMode}, from ${record.name}${record.source ? `, record from ${record.source}` : ""}`);
+  const sourceSuffix = record.source
+    ? t("markerSourceSuffix", { source: record.source })
+    : "";
+  button.setAttribute("aria-label", t("markerAria", {
+    name: item.name,
+    reproduction: reproductionMode,
+    place: record.name,
+    source: sourceSuffix
+  }));
   button.setAttribute("aria-pressed", "false");
   button.tabIndex = -1;
   button.addEventListener("mouseenter", () => showMarkerTooltip(record, item, button));
@@ -730,7 +752,9 @@ function positionMarkers() {
 
 function drawMap() {
   const topology = world && world.objects ? world : world.default;
-  if (!topology || !topology.objects || !topology.objects.features) throw new Error("World geometry unavailable");
+  if (!topology || !topology.objects || !topology.objects.features) {
+    throw new Error(t("worldGeometryUnavailable"));
+  }
 
   const countries = feature(topology, topology.objects.features).features;
   projection = geoNaturalEarth1().fitExtent([[18, 18], [942, 452]], { type: "Sphere" });
@@ -775,5 +799,5 @@ try {
   resizeObserver.observe(document.getElementById("world-map"));
 } catch (error) {
   console.error(error);
-  els.mapLoading.textContent = "The map is taking a nap. Pick a worm below.";
+  els.mapLoading.textContent = t("mapUnavailable");
 }
