@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#143f4a" />
   <link rel="stylesheet" href="../shared/site-tokens.css" />
-  <link rel="stylesheet" href="style.css?v=20260713-6" />
+  <link rel="stylesheet" href="style.css?v=20260713-7" />
   <script src="../shared/site-preferences.js" defer></script>
 </head>
 <body>
@@ -29,40 +29,6 @@
   </header>
 
   <main id="atlas">
-    <section class="map-section" aria-labelledby="map-title">
-      <div class="section-heading">
-        <div>
-          <h2 id="map-title">Where in the world are the worms?</h2>
-        </div>
-        <p>Tap a glowing spot. Records are representative and clustered for readability; they are not a complete range map.</p>
-      </div>
-
-      <div class="map-wrap">
-        <svg id="world-map" viewBox="0 0 960 470" role="img" aria-labelledby="world-map-title world-map-desc">
-          <title id="world-map-title">World map with featured Caenorhabditis records</title>
-          <desc id="world-map-desc">Interactive representative locations for six Caenorhabditis species, including records from Hawaiʻi, Japan, Europe, the Americas, Oceania, and tropical regions.</desc>
-          <path id="map-sphere" class="map-sphere"></path>
-          <path id="map-graticule" class="map-graticule"></path>
-          <g id="map-countries" class="map-countries"></g>
-        </svg>
-        <div id="map-markers" class="map-markers" aria-label="Worm locations"></div>
-        <div id="map-tooltip" class="map-tooltip" role="tooltip" hidden>
-          <span id="map-tooltip-place"></span>
-          <strong><i id="map-tooltip-species">C. elegans</i></strong>
-          <small id="map-tooltip-detail">N2 · ⚥ hermaphrodite + ♂ rare male · CaeNDR</small>
-        </div>
-        <p id="map-loading" class="map-loading">Drawing the world…</p>
-        <div class="map-legend" aria-label="Reproduction legend">
-          <span><i class="legend-dot selfing"></i>Mostly selfing</span>
-          <span><i class="legend-dot outcrossing"></i>Outcrossing</span>
-        </div>
-        <div class="map-selection">
-          <span id="map-selection-place">Bristol N2, England · CaeNDR</span>
-          <strong id="map-selection-species"><i>C. elegans</i>: the world traveller</strong>
-        </div>
-      </div>
-    </section>
-
     <section class="discovery" aria-labelledby="meet-title">
       <div class="section-heading compact">
         <div>
@@ -459,6 +425,40 @@
       </div>
     </section>
 
+    <section class="map-section" aria-labelledby="map-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="map-title">Where in the world are the worms?</h2>
+        </div>
+        <p>Tap a glowing spot. Records are representative and clustered for readability; they are not a complete range map.</p>
+      </div>
+
+      <div class="map-wrap">
+        <svg id="world-map" viewBox="0 0 960 470" role="img" aria-labelledby="world-map-title world-map-desc">
+          <title id="world-map-title">World map with featured Caenorhabditis records</title>
+          <desc id="world-map-desc">Interactive representative locations for six Caenorhabditis species, including records from Hawaiʻi, Japan, Europe, the Americas, Oceania, and tropical regions.</desc>
+          <path id="map-sphere" class="map-sphere"></path>
+          <path id="map-graticule" class="map-graticule"></path>
+          <g id="map-countries" class="map-countries"></g>
+        </svg>
+        <div id="map-markers" class="map-markers" aria-label="Worm locations"></div>
+        <div id="map-tooltip" class="map-tooltip" role="tooltip" hidden>
+          <span id="map-tooltip-place"></span>
+          <strong><i id="map-tooltip-species">C. elegans</i></strong>
+          <small id="map-tooltip-detail">N2 · ⚥ hermaphrodite + ♂ rare male · CaeNDR</small>
+        </div>
+        <p id="map-loading" class="map-loading">Drawing the world…</p>
+        <div class="map-legend" aria-label="Reproduction legend">
+          <span><i class="legend-dot selfing"></i>Mostly selfing</span>
+          <span><i class="legend-dot outcrossing"></i>Outcrossing</span>
+        </div>
+        <div class="map-selection">
+          <span id="map-selection-place">Bristol N2, England · CaeNDR</span>
+          <strong id="map-selection-species"><i>C. elegans</i>: the world traveller</strong>
+        </div>
+      </div>
+    </section>
+
     <details class="science-notes">
       <summary>For curious grown-ups: map notes and sources</summary>
       <p>Markers show selected published collection records, not complete species ranges. Dense sampling areas are represented by a few readable points. The illustrated landscapes teach the wider regional setting around each record; they do not claim that a worm was collected from every feature shown. The “Place clues” source supports each regional scene. “Mostly selfing” means self-fertile hermaphrodites predominate, although rare males and occasional outcrossing can occur.</p>
@@ -481,6 +481,6 @@
     </details>
   </main>
 
-  <script type="module" src="game.js?v=20260713-6"></script>
+  <script type="module" src="game.js?v=20260713-7"></script>
 </body>
 </html>

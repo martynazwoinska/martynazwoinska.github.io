@@ -523,6 +523,7 @@
     .project h3 { margin: 0 0 10px; font-size: 1.65rem; font-weight: 700; }
     .project p { color: var(--text-soft); margin: 0; }
     .project figure { margin: 4px 0 0; }
+    .project figure picture { display: block; }
     .project figure img {
       width: 100%; height: auto; display: block;
       background: #fff; border: 1px solid var(--border); border-radius: 12px;
@@ -702,7 +703,25 @@
         </p>
       </div>
       <figure>
-        <a href="nematode-learning-palette.png" target="_blank" rel="noopener"><img class="figure-padded" src="nematode-learning-palette.png" loading="lazy" decoding="async" alt="The forms of learning documented in Caenorhabditis nematodes: habituation and sensitization, gustatory, olfactory, thermosensory and maze learning, and imprinting and transgenerational learning" onerror="this.closest('figure').remove()" /></a>
+        <a href="nematode-learning-palette.png" target="_blank" rel="noopener">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="nematode-learning-palette-480.webp 480w, nematode-learning-palette-960.webp 960w, nematode-learning-palette-1296.webp 1296w"
+              sizes="(max-width: 508px) calc(100vw - 48px), (max-width: 840px) 460px, 300px"
+            />
+            <img
+              class="figure-padded"
+              src="nematode-learning-palette.png"
+              width="1296"
+              height="1214"
+              loading="lazy"
+              decoding="async"
+              alt="The forms of learning documented in Caenorhabditis nematodes: habituation and sensitization, gustatory, olfactory, thermosensory and maze learning, and imprinting and transgenerational learning"
+              onerror="this.closest('figure').remove()"
+            />
+          </picture>
+        </a>
         <figcaption>The many forms of learning documented in <em>Caenorhabditis</em> nematodes.</figcaption>
       </figure>
     </div>
@@ -719,7 +738,24 @@
         </p>
       </div>
       <figure>
-        <a href="seed-beetles-palette.png" target="_blank" rel="noopener"><img src="seed-beetles-palette.png" loading="lazy" decoding="async" alt="Directions of experimental selection on male and female body mass in Callosobruchus seed beetles: small males, large males, large females, and sexually antagonistic selection" onerror="this.closest('figure').remove()" /></a>
+        <a href="seed-beetles-palette.png" target="_blank" rel="noopener">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="seed-beetles-palette-480.webp 480w, seed-beetles-palette-960.webp 960w, seed-beetles-palette-1254.webp 1254w"
+              sizes="(max-width: 508px) calc(100vw - 48px), (max-width: 840px) 460px, 300px"
+            />
+            <img
+              src="seed-beetles-palette.png"
+              width="1254"
+              height="1254"
+              loading="lazy"
+              decoding="async"
+              alt="Directions of experimental selection on male and female body mass in Callosobruchus seed beetles: small males, large males, large females, and sexually antagonistic selection"
+              onerror="this.closest('figure').remove()"
+            />
+          </picture>
+        </a>
         <figcaption>Directions of experimental selection on male and female body mass in <em>Callosobruchus</em> seed beetles.</figcaption>
       </figure>
     </div>
