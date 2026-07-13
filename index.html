@@ -74,8 +74,8 @@
       --accent-gold: #a88445;     /* restrained antique gold */
       --accent-violet: #6b4a73;   /* muted violet for botanical details */
       --worm-face: #4a3027;       /* warm dark facial ink in both themes */
-      --nav-bg: #ece1cb;          /* warm parchment gold */
-      --nav-border: #b99a60;
+      --nav-bg: #cbe3d7;          /* distinct, quiet emerald header */
+      --nav-border: rgba(28, 122, 82, .48);
       --nav-accent: #196f4a;
       --border: #e7e3d9;
       --shadow: 0 1px 2px rgba(31,35,40,.06), 0 8px 24px rgba(31,35,40,.06);
@@ -98,8 +98,8 @@
         --accent-berry: #d889a8;
         --accent-gold: #d2b66f;
         --accent-violet: #c1a4ca;
-        --nav-bg: #29261f;
-        --nav-border: #6d5e3d;
+        --nav-bg: #43323c;
+        --nav-border: rgba(216, 137, 168, .45);
         --nav-accent: #5fcb9d;
         --border: #2c3238;
         --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
@@ -111,7 +111,7 @@
       --accent: #5fcb9d; --accent-soft: #16302a;
       --accent-berry: #d889a8; --accent-gold: #d2b66f;
       --accent-violet: #c1a4ca;
-      --nav-bg: #29261f; --nav-border: #6d5e3d; --nav-accent: #5fcb9d;
+      --nav-bg: #43323c; --nav-border: rgba(216, 137, 168, .45); --nav-accent: #5fcb9d;
       --border: #2c3238;
       --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
     }
@@ -121,7 +121,7 @@
       --accent: #1c7a52; --accent-soft: #e3f1e9;
       --accent-berry: #7d2145; --accent-gold: #a88445;
       --accent-violet: #6b4a73;
-      --nav-bg: #ece1cb; --nav-border: #b99a60; --nav-accent: #196f4a;
+      --nav-bg: #cbe3d7; --nav-border: rgba(28, 122, 82, .48); --nav-accent: #196f4a;
       --border: #e7e3d9;
       --shadow: 0 1px 2px rgba(31,35,40,.06), 0 8px 24px rgba(31,35,40,.06);
     }
@@ -377,11 +377,17 @@
       .flavour-wheel-source { font-size: .64rem; }
     }
     .theme-btn {
-      background: var(--surface-2); border: 1px solid var(--border); color: var(--accent-berry);
+      background: var(--accent-gold);
+      border: 1px solid color-mix(in srgb, #14171a 58%, var(--accent-gold));
+      color: #14171a;
       width: 34px; height: 34px; border-radius: 9px; cursor: pointer; font-size: 15px;
       display: inline-flex; align-items: center; justify-content: center;
     }
-    .theme-btn:hover { color: var(--accent-berry); border-color: var(--accent-berry); }
+    .theme-btn:hover {
+      background: color-mix(in srgb, var(--accent-gold) 88%, var(--surface) 12%);
+      border-color: #14171a; color: #14171a;
+    }
+    .theme-btn:focus-visible { outline-color: var(--nav-accent); }
     .language-switcher {
       display: inline-flex; align-items: center; gap: 6px;
     }
