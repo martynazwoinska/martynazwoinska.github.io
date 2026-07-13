@@ -53,6 +53,18 @@ If the working tree contains unrelated changes:
 - Do not introduce a framework, package manager, build system, CSS library, icon library, or external JavaScript dependency without explicit approval.
 - Preserve existing accessibility, dark-mode, navigation, and responsive behaviour.
 
+## Ownership and parallel work
+
+Follow [`docs/agent-workflow.md`](docs/agent-workflow.md) for branch, worktree and file ownership.
+
+- The integrator alone owns `index.html`, `home.js`, `home-i18n.js`, `shared/**`, root metadata, documentation, merges and deployment.
+- The Cabinet owner alone edits `cabinet-of-curiosities/**`.
+- The Game owner alone edits `game-of-worms/**`.
+- The QA agent is read-only and reports findings without applying fixes.
+- Feature owners do not edit the Beyond Research cards. They send requested card changes to the integrator.
+- Never allow two agents to edit the same binary asset or physical worktree concurrently.
+- Shared-interface changes land before page-specific changes consume them.
+
 ## Visual system
 
 Use the existing site rather than inventing a new design system. The canonical palette, usage rules and review checklist are in [`docs/visual-style.md`](docs/visual-style.md). Read that document before creating, editing or integrating visual assets.

@@ -1,0 +1,127 @@
+/*
+ * Shared visual primitives for the whole site.
+ *
+ * Page-specific CSS may alias these values, but must keep its own geometry,
+ * illustration colours and interaction state tokens local.
+ */
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-latin-ext-600-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-latin-600-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-latin-ext-700-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-latin-700-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --site-bg: #fbfaf7;
+  --site-surface: #ffffff;
+  --site-surface-muted: #f3f1ea;
+  --site-text: #1f2328;
+  --site-text-soft: #55606b;
+  --site-text-faint: #6b7480;
+  --site-brand-emerald: #1c7a52;
+  --site-brand-emerald-soft: #e3f1e9;
+  --site-brand-berry: #7d2145;
+  --site-brand-gold: #a88445;
+  --site-brand-violet: #6b4a73;
+  --site-nav-bg: #cbe3d7;
+  --site-nav-border: rgba(28, 122, 82, .48);
+  --site-nav-accent: #196f4a;
+  --site-border: #e7e3d9;
+  --site-focus: #7d2145;
+  --site-shadow: 0 1px 2px rgba(31, 35, 40, .06), 0 8px 24px rgba(31, 35, 40, .06);
+  --site-font-display: 'Cormorant Garamond', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --site-font-serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Times New Roman', serif;
+  --site-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --site-bg: #14171a;
+    --site-surface: #1c2024;
+    --site-surface-muted: #23282d;
+    --site-text: #eceef0;
+    --site-text-soft: #b3bcc4;
+    --site-text-faint: #7f8993;
+    --site-brand-emerald: #5fcb9d;
+    --site-brand-emerald-soft: #16302a;
+    --site-brand-berry: #d889a8;
+    --site-brand-gold: #d2b66f;
+    --site-brand-violet: #c1a4ca;
+    --site-nav-bg: #29261f;
+    --site-nav-border: #6d5e3d;
+    --site-nav-accent: #5fcb9d;
+    --site-border: #2c3238;
+    --site-focus: #d889a8;
+    --site-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .35);
+  }
+}
+
+:root[data-theme='dark'] {
+  --site-bg: #14171a;
+  --site-surface: #1c2024;
+  --site-surface-muted: #23282d;
+  --site-text: #eceef0;
+  --site-text-soft: #b3bcc4;
+  --site-text-faint: #7f8993;
+  --site-brand-emerald: #5fcb9d;
+  --site-brand-emerald-soft: #16302a;
+  --site-brand-berry: #d889a8;
+  --site-brand-gold: #d2b66f;
+  --site-brand-violet: #c1a4ca;
+  --site-nav-bg: #29261f;
+  --site-nav-border: #6d5e3d;
+  --site-nav-accent: #5fcb9d;
+  --site-border: #2c3238;
+  --site-focus: #d889a8;
+  --site-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+:root[data-theme='light'] {
+  --site-bg: #fbfaf7;
+  --site-surface: #ffffff;
+  --site-surface-muted: #f3f1ea;
+  --site-text: #1f2328;
+  --site-text-soft: #55606b;
+  --site-text-faint: #6b7480;
+  --site-brand-emerald: #1c7a52;
+  --site-brand-emerald-soft: #e3f1e9;
+  --site-brand-berry: #7d2145;
+  --site-brand-gold: #a88445;
+  --site-brand-violet: #6b4a73;
+  --site-nav-bg: #cbe3d7;
+  --site-nav-border: rgba(28, 122, 82, .48);
+  --site-nav-accent: #196f4a;
+  --site-border: #e7e3d9;
+  --site-focus: #7d2145;
+  --site-shadow: 0 1px 2px rgba(31, 35, 40, .06), 0 8px 24px rgba(31, 35, 40, .06);
+}

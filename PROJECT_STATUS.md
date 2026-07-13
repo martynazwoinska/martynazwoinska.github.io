@@ -1,6 +1,6 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-07-11
+Last updated: 2026-07-13
 
 This file records approved decisions and the last known implementation state. Always verify the current repository before acting.
 
@@ -13,6 +13,15 @@ This file records approved decisions and the last known implementation state. Al
 - Primary colours: emerald, antique gold, muted violet or berry
 - Display font: Cormorant Garamond
 - Light and dark themes must remain functional
+
+## Parallel ownership
+
+- `agent/site-architecture`: homepage, shared files, documentation and integration
+- `agent/cabinet`: `cabinet-of-curiosities/**` only
+- `agent/game-worms`: `game-of-worms/**` only
+- independent QA: read-only review with no file edits
+
+The durable workflow is documented in `docs/agent-workflow.md`. The shared layer uses prefixed `--site-*` tokens and preserves the existing `language` and `theme` storage keys. Translation dictionaries remain page-local.
 
 ## Active workstream: Beyond Research
 
