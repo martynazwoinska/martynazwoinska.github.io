@@ -1,0 +1,119 @@
+diff --git a/game-of-worms/game.js b/game-of-worms/game.js
+--- a/game-of-worms/game.js
++++ b/game-of-worms/game.js
+@@ -465,7 +465,8 @@ function renderSpecies(item, place) {
+   els.habitat.dataset.habitat = item.habitatKey;
+   els.habitat.dataset.localStyle = styleKey;
+   els.habitat.dataset.placeScene = regionalPack.sceneKey || "";
+-  els.habitat.dataset.accessoryVisual = regionalPack.visualKey || "icons";
++  els.habitat.dataset.accessoryVisual = regionalPack.visualKey || item.id;
++  els.habitat.dataset.hasCustomVisual = String(Boolean(regionalPack.visualKey));
+   els.habitat.dataset.species = item.id;
+   els.habitat.dataset.pose = item.pose;
+   els.habitat.style.setProperty("--worm-color", item.worm);
+@@ -741,6 +742,8 @@ renderTabs();
+ const initialSpecies = byId.get(selectedId);
+ const initialPlace = initialSpecies.locations[0];
+ selectedRecordName = initialPlace.name;
++visited.add(selectedId);
++els.exploredCount.textContent = String(visited.size);
+ renderSpecies(initialSpecies, initialPlace);
+ updateSelectedControls();
+ 
+diff --git a/game-of-worms/index.html b/game-of-worms/index.html
+--- a/game-of-worms/index.html
++++ b/game-of-worms/index.html
+@@ -12,6 +12,6 @@
+   <meta property="og:type" content="website" />
+   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
+   <meta name="theme-color" content="#143f4a" />
+-  <link rel="stylesheet" href="style.css?v=20260711-8" />
++  <link rel="stylesheet" href="style.css?v=20260712-2" />
+ </head>
+ <body>
+@@ -73,4 +73,4 @@
+ 
+       <div class="play-grid">
+         <section class="worm-playground" aria-labelledby="dress-title">
+-          <div id="habitat" class="habitat" data-habitat="compost" data-local-style="field" data-place-scene="" data-accessory-visual="elegans" data-species="elegans" data-pose="forager" style="--worm-color: #f0c78e; --worm-deep: #bd7c45; --habitat-one: #d7b96d; --habitat-two: #8ba56f; --worm-scale: .72; --place-hue: 6deg;">
++          <div id="habitat" class="habitat" data-habitat="compost" data-local-style="field" data-place-scene="" data-accessory-visual="elegans" data-has-custom-visual="true" data-species="elegans" data-pose="forager" style="--worm-color: #f0c78e; --worm-deep: #bd7c45; --habitat-one: #d7b96d; --habitat-two: #8ba56f; --worm-scale: .72; --place-hue: 6deg;">
+@@ -305,1 +305,16 @@
+-                    <g data-species-look="elegans"><g class="ngm-plate" aria-label="NGM agar Petri plate seeded with E. coli"><ellipse class="plate-shadow" cx="330" cy="289" rx="67" ry="12"></ellipse><ellipse class="plate-base" cx="330" cy="278" rx="66" ry="24"></ellipse><ellipse class="plate-rim" cx="330" cy="271" rx="66" ry="24"></ellipse><ellipse class="plate-agar" cx="330" cy="269" rx="57" ry="18"></ellipse><path class="bacterial-lawn" d="M280 270 Q300 252 330 257 Q360 251 381 270 Q362 285 331 280 Q300 285 280 270 Z"></path><g class="worm-tracks"><path d="M296 269 Q310 258 323 269 T351 267"></path><path d="M309 277 Q327 266 346 277"></path></g><path class="plate-glare" d="M278 263 Q302 244 331 246"></path><text x="330" y="306" text-anchor="middle">NGM · E. coli OP50</text></g></g>
++                    <g data-species-look="elegans">
++                      <g class="ngm-plate" aria-hidden="true">
++                        <g class="ngm-plate-large" transform="rotate(7 330 27)">
++                          <ellipse class="plate-shadow" cx="330" cy="38" rx="50" ry="9"></ellipse>
++                          <ellipse class="plate-base" cx="330" cy="31" rx="50" ry="17"></ellipse>
++                          <ellipse class="plate-rim" cx="330" cy="26" rx="49" ry="16"></ellipse>
++                          <ellipse class="plate-agar" cx="330" cy="25" rx="42" ry="12"></ellipse>
++                          <path class="bacterial-lawn" d="M292 25 Q309 14 330 17 Q353 13 369 25 Q351 35 330 32 Q307 35 292 25 Z"></path>
++                          <g class="worm-tracks"><path d="M305 25 Q316 17 326 25 T349 24"></path><path d="M315 31 Q329 23 344 30"></path></g>
++                          <path class="plate-glare" d="M291 21 Q309 8 333 10"></path><text x="330" y="29" text-anchor="middle">N2</text>
++                        </g>
++                        <g class="ngm-plate-small" transform="rotate(-7 112 88)">
++                          <ellipse class="plate-shadow" cx="112" cy="96" rx="29" ry="6"></ellipse><ellipse class="plate-base" cx="112" cy="91" rx="29" ry="11"></ellipse><ellipse class="plate-rim" cx="112" cy="87" rx="28" ry="10"></ellipse><ellipse class="plate-agar" cx="112" cy="87" rx="23" ry="7"></ellipse><path class="bacterial-lawn" d="M92 87 Q103 80 113 82 Q126 79 133 87 Q123 93 112 91 Q101 94 92 87 Z"></path><path class="plate-glare" d="M91 84 Q103 76 116 77"></path><text x="112" y="90" text-anchor="middle">N2</text>
++                        </g>
++                      </g>
++                    </g>
+@@ -326,1 +342,1 @@
+-                    <g data-species-look="elegans"><g class="lab-coat"><path class="lab-coat-body" d="M104 239 C130 263 163 259 177 225 C188 199 189 174 211 148 L234 165 C217 186 215 211 205 237 C187 279 139 291 96 254 Z"></path><path class="lab-coat-collar" d="M202 157 L217 137 L237 158 L226 177 L213 162 L203 180 L191 166 Z"></path><path class="lab-coat-opening" d="M213 164 C201 189 199 220 186 249"></path><path class="lab-coat-seam" d="M119 250 Q149 268 177 248"></path><path class="lab-coat-pocket" d="M132 247 Q150 254 166 246 L163 261 Q146 269 130 260 Z"></path><circle class="lab-coat-button" cx="201" cy="190" r="3"></circle><circle class="lab-coat-button" cx="197" cy="207" r="3"></circle><circle class="lab-coat-button" cx="192" cy="224" r="3"></circle><path class="lab-coat-body male" d="M48 180 C61 198 79 196 87 177 C93 162 95 149 108 137 L121 148 C111 160 109 177 103 190 C92 215 63 219 43 192 Z"></path><path class="lab-coat-collar male" d="M103 143 L112 132 L123 145 L116 155 L109 146 L103 157 L96 149 Z"></path><path class="lab-coat-opening male" d="M110 148 Q102 169 96 195"></path><path class="lab-coat-pocket male" d="M62 191 Q73 196 83 190 L81 199 Q71 203 61 199 Z"></path></g></g>
++                    <g data-species-look="elegans"><g class="lab-coat"><path class="lab-coat-body" d="M104 239 C130 263 163 259 177 225 C188 199 189 174 211 148 L234 165 C217 186 215 211 205 237 C187 279 139 291 96 254 Z"></path><path class="lab-coat-collar" d="M202 157 L217 137 L237 158 L226 177 L213 162 L203 180 L191 166 Z"></path><path class="lab-coat-opening" d="M213 164 C201 189 199 220 186 249"></path><path class="lab-coat-seam" d="M119 250 Q149 268 177 248"></path><path class="lab-coat-pocket" d="M132 247 Q150 254 166 246 L163 261 Q146 269 130 260 Z"></path><circle class="lab-coat-button" cx="201" cy="190" r="3"></circle><circle class="lab-coat-button" cx="197" cy="207" r="3"></circle><circle class="lab-coat-button" cx="192" cy="224" r="3"></circle><rect class="lab-id-badge" x="166" y="179" width="25" height="17" rx="3"></rect><text class="lab-id-text" x="178.5" y="191" text-anchor="middle">N2</text><path class="lab-pen" d="M145 249 L153 253"></path><path class="lab-coat-body male" d="M48 180 C61 198 79 196 87 177 C93 162 95 149 108 137 L121 148 C111 160 109 177 103 190 C92 215 63 219 43 192 Z"></path><path class="lab-coat-collar male" d="M103 143 L112 132 L123 145 L116 155 L109 146 L103 157 L96 149 Z"></path><path class="lab-coat-opening male" d="M110 148 Q102 169 96 195"></path><path class="lab-coat-pocket male" d="M62 191 Q73 196 83 190 L81 199 Q71 203 61 199 Z"></path><path class="lab-coat-seam male" d="M53 190 Q70 202 87 189"></path><rect class="lab-id-badge male" x="84" y="160" width="16" height="11" rx="2"></rect><text class="lab-id-text male" x="92" y="168" text-anchor="middle">N2</text></g></g>
+@@ -349,1 +365,8 @@
+-                    <g data-species-look="elegans"><g class="cryo-jetpack" transform="translate(0 18)"><path class="pack-harness" d="M253 120 Q274 101 299 114 M259 132 Q278 116 301 127"></path><rect x="267" y="91" width="58" height="69" rx="12"></rect><rect x="276" y="76" width="16" height="28" rx="6"></rect><rect x="300" y="76" width="16" height="28" rx="6"></rect><path class="jet-flame" d="M278 159 L272 180 L288 169 L296 185 L305 168 L320 178 L316 159 Z"></path><circle cx="296" cy="126" r="13"></circle><path class="snow-mark" d="M296 116 V136 M286 126 H306 M289 119 L303 133 M303 119 L289 133"></path><path class="pack-harness male" d="M124 124 Q139 113 153 120"></path><rect class="male" x="141" y="99" width="32" height="39" rx="7"></rect><rect class="male" x="146" y="90" width="9" height="15" rx="3"></rect><rect class="male" x="159" y="90" width="9" height="15" rx="3"></rect></g></g>
++                    <g data-species-look="elegans"><g class="cryo-jetpack">
++                      <g class="cryo-pack cryo-pack-large">
++                        <path class="pack-harness" d="M245 125 Q267 104 292 116 M250 139 Q272 119 296 132"></path><rect class="cryo-pack-shell" x="258" y="102" width="58" height="58" rx="13"></rect><rect class="cryo-vial-body" x="266" y="81" width="18" height="68" rx="7"></rect><rect class="cryo-vial-body" x="290" y="81" width="18" height="68" rx="7"></rect><rect class="cryo-vial-cap" x="267" y="74" width="16" height="13" rx="4"></rect><rect class="cryo-vial-cap" x="291" y="74" width="16" height="13" rx="4"></rect><path class="cryo-ice" d="M269 126 Q275 121 281 126 V145 H269 Z M293 119 Q299 114 305 119 V145 H293 Z"></path><circle class="cryo-medallion" cx="287" cy="132" r="12"></circle><path class="snow-mark" d="M287 123 V141 M278 132 H296 M281 126 L293 138 M293 126 L281 138"></path><path class="cryo-plume" d="M269 160 Q276 174 283 160 M291 160 Q299 176 307 160"></path>
++                      </g>
++                      <g class="cryo-pack cryo-pack-small">
++                        <path class="pack-harness" d="M105 148 Q119 135 134 142"></path><rect class="cryo-pack-shell" x="116" y="131" width="36" height="37" rx="8"></rect><rect class="cryo-vial-body" x="121" y="117" width="11" height="43" rx="4"></rect><rect class="cryo-vial-body" x="136" y="117" width="11" height="43" rx="4"></rect><rect class="cryo-vial-cap" x="122" y="112" width="9" height="9" rx="3"></rect><rect class="cryo-vial-cap" x="137" y="112" width="9" height="9" rx="3"></rect><path class="cryo-ice" d="M123 146 Q127 142 130 146 V157 H123 Z M138 142 Q142 139 145 142 V157 H138 Z"></path><circle class="cryo-medallion" cx="134" cy="151" r="7"></circle><path class="snow-mark small" d="M134 145 V157 M128 151 H140"></path><path class="cryo-plume small" d="M121 168 Q126 177 131 168 M138 168 Q143 177 148 168"></path>
++                      </g>
++                    </g></g>
+@@ -436,3 +461,3 @@
+-  <script type="module" src="game.js?v=20260712-1"></script>
++  <script type="module" src="game.js?v=20260712-2"></script>
+ </body>
+ </html>
+diff --git a/game-of-worms/style.css b/game-of-worms/style.css
+--- a/game-of-worms/style.css
++++ b/game-of-worms/style.css
+@@ -644,5 +644,6 @@
+ .habitat[data-accessory-visual="elegans"] [data-species-look="elegans"],
+ .habitat[data-accessory-visual="briggsae"] [data-species-look="briggsae"],
++ .habitat[data-accessory-visual="nigoni"] [data-species-look="nigoni"],
+ .habitat[data-accessory-visual="tropicalis"] [data-species-look="tropicalis"],
+ .habitat[data-accessory-visual="wallacei"] [data-species-look="wallacei"],
+ .habitat[data-accessory-visual="scotland"] [data-location-look="scotland"] { display: inline; }
+@@ -696,3 +697,3 @@
+- .kit-symbol { display: none; font-size: 38px; paint-order: stroke; stroke: rgba(255,255,255,.92); stroke-width: 6px; stroke-linejoin: round; filter: drop-shadow(0 4px 3px rgba(23,51,61,.28)); }
+- .kit-symbol.male { font-size: 23px; stroke-width: 4px; }
+- .habitat[data-accessory-visual="icons"] .kit-symbol { display: inline; }
++ .kit-symbol { display: none; font-size: 18px; opacity: .9; paint-order: stroke; stroke: rgba(255,255,255,.94); stroke-width: 3px; stroke-linejoin: round; filter: drop-shadow(0 2px 2px rgba(23,51,61,.25)); }
++ .kit-symbol.male { font-size: 12px; stroke-width: 2px; }
++ .habitat[data-has-custom-visual="false"] .kit-symbol { display: inline; }
+@@ -770,5 +771,9 @@
+ .lab-coat-pocket { fill: #edf7f5; stroke: #526d76; stroke-width: 2; stroke-linejoin: round; }
+ .lab-coat-button { fill: #3b8e91; stroke: white; stroke-width: 1; }
++ .lab-id-badge { fill: #d8eef0; stroke: #526d76; stroke-width: 1.5; }
++ .lab-id-text { fill: #2e6570; font: 800 8px/1 sans-serif; stroke: none; }
++ .lab-id-text.male { font-size: 5px; }
++ .lab-pen { fill: none; stroke: #d45265; stroke-width: 2.5; stroke-linecap: round; }
+ .ngm-plate .plate-shadow { fill: rgba(25,54,61,.2); }
+ .ngm-plate .plate-base { fill: rgba(197,224,222,.72); stroke: #527b7d; stroke-width: 3; }
+ .ngm-plate .plate-rim { fill: rgba(225,245,242,.78); stroke: #527b7d; stroke-width: 3; }
+@@ -780,4 +803,16 @@
+ .ngm-plate text { fill: #355e64; font: 700 9px/1 sans-serif; letter-spacing: .02em; }
+ .ngm-plate .plate-glare { fill: none; stroke: rgba(255,255,255,.82); stroke-width: 3; stroke-linecap: round; }
++ .ngm-plate-small .plate-base, .ngm-plate-small .plate-rim { stroke-width: 2; }
++ .ngm-plate-small .plate-agar { stroke-width: 1.25; }
++ .ngm-plate-small .plate-glare { stroke-width: 1.5; }
++ .ngm-plate-small text { font-size: 6px; }
++ .cryo-jetpack .cryo-pack-shell { fill: #3f7f8a; stroke: #295f72; stroke-width: 3; }
++ .cryo-jetpack .cryo-vial-body { fill: rgba(222,247,247,.92); stroke: #2f7885; stroke-width: 2.5; }
++ .cryo-jetpack .cryo-vial-cap { fill: #285f70; stroke: #214d5b; stroke-width: 2; }
++ .cryo-jetpack .cryo-ice { fill: #88d7df; stroke: #3b8e9b; stroke-width: 1.5; }
++ .cryo-jetpack .cryo-medallion { fill: #d9f5f5; stroke: #2f7885; stroke-width: 2.5; }
++ .cryo-plume { fill: none; stroke: #b8edf0; stroke-width: 5; stroke-linecap: round; }
++ .cryo-plume.small { stroke-width: 3; }
++ .snow-mark.small { stroke-width: 1.5 !important; }
+ .fig-visor path:first-child, .fig-visor path:nth-of-type(4) { fill: #72a66b; stroke: var(--worm-deep); stroke-width: 3; }
+ .fig-vein, .visor-band { fill: none; stroke: #315f50; stroke-width: 2.5; stroke-linecap: round; }
