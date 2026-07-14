@@ -24,7 +24,7 @@ const rows = [
   ["elegans", "Australian Capital Territory", "QG2811 Baermann fig-recovery rig", "qg2811-baermann-fig-recovery", "Yellow Box seed orrery", "yellow-box-seed-orrery", "Black Mountain signal theremin", "black-mountain-signal-theremin"],
   ["elegans", "Auckland, New Zealand", "ECA36 grass-litter profiler", "eca36-grass-litter-profiler", "Auckland volcanic-field monitor", "auckland-volcanic-field-monitor", "ECA36 reproductive-timing clock", "eca36-reproductive-timing-clock"],
   ["elegans", "Araucanía, Chile", "JU4400 compost labyrinth", "compost-labyrinth", "Llaima ashfall recorder", "ashfall-recorder", "JU4400 test-cross identifier", "test-cross-mechanism"],
-  ["nigoni", "Trivandrum, Kerala · JU1325", "coconut rain hood", "coconut-rain-hood", "backwater skates", "skates", "sandbar tambourine", "sandbar-tambourine"],
+  ["nigoni", "Trivandrum, Kerala · JU1325", "JU1325 sample-tube timekeeper", "ju1325-sample-tube-timekeeper", "Trivandrum garden waterworks", "trivandrum-garden-waterworks", "Trivandrum bandstand music box", "trivandrum-bandstand-music-box"],
   ["nigoni", "Singapore · ZF1220", "mangrove stilts", "stilts", "mudflat waders", "waders", "skyline fan", "fan"],
   ["nigoni", "Praslin, Seychelles · YR106", "granite casque", "casque", "palm bustle", "palm-bustle", "coco-de-mer hand drum", "coco-de-mer-drum"],
   ["nigoni", "São Tomé · JU2484", "volcanic-needle ruff", "volcanic-needle-ruff", "cacao ocarina", "cacao-ocarina", "waterfall pennant", "waterfall-pennant"],
@@ -54,7 +54,6 @@ const explicitUniqueRendererFamilies = new Set([
   "cane-ankle-bells",
   "canoe-paddle-bow",
   "coconut-cloche",
-  "coconut-rain-hood",
   "erosion-crinoline",
   "fan-palm-collar",
   "fern-epaulettes",
@@ -94,6 +93,11 @@ const araucaniaRendererIds = new Set([
   "elegans::Araucanía, Chile::wrap",
   "elegans::Araucanía, Chile::charm"
 ]);
+const trivandrumRendererIds = new Set([
+  "nigoni::Trivandrum, Kerala · JU1325::headwear",
+  "nigoni::Trivandrum, Kerala · JU1325::wrap",
+  "nigoni::Trivandrum, Kerala · JU1325::charm"
+]);
 const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
 const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|snorkel|compass|press|gauge rod|camera rig/i;
 const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|skates|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
@@ -109,6 +113,7 @@ function hasNamedRenderer(item) {
     || actRendererFamilies.has(item.family)
     || aucklandRendererFamilies.has(item.family)
     || araucaniaRendererIds.has(item.id)
+    || trivandrumRendererIds.has(item.id)
     || item.family === "volcanic-needle-ruff"
     || instrumentRendererPattern.test(item.label)
     || fieldToolRendererPattern.test(item.label)
@@ -1319,6 +1324,173 @@ function drawAraucaniaAccessory(group, item, companion) {
   return false;
 }
 
+function drawTrivandrumAccessory(group, item, companion) {
+  if (!item.id.startsWith("nigoni::Trivandrum, Kerala · JU1325::")) return false;
+
+  if (item.family === "ju1325-sample-tube-timekeeper") {
+    group.dataset.renderer = "trivandrum-ju1325-sample-tube-timekeeper";
+    group.classList.add("trivandrum-accessory", "sample-tube-timekeeper", companion ? "sample-tube-timekeeper-companion" : "sample-tube-timekeeper-primary");
+    if (companion) {
+      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-86 119Q5 145 95 115Q49 155-77 150Z" });
+      add(group, "path", { class: "timekeeper-tripod", d: "M-47 82L-76 132H-39L-14 88ZM35 84L58 132H93L55 78ZM-9 81L-18 132H19L9 81Z" });
+      add(group, "rect", { class: "timekeeper-upright-frame", x: -43, y: -119, width: 82, height: 204, rx: 16 });
+      add(group, "rect", { class: "timekeeper-glass chamber-upper", x: -28, y: -101, width: 50, height: 77, rx: 19 });
+      add(group, "rect", { class: "timekeeper-glass chamber-lower", x: -28, y: -13, width: 50, height: 78, rx: 18 });
+      add(group, "path", { class: "timekeeper-chamber-divider", d: "M-31-21H26V-13H-31Z" });
+      [[-17,-78,-5,-91],[1,-72,14,-86],[-10,-51,6,-66],[5,-41,18,-53]].forEach(([x1,y1,x2,y2], index) => {
+        add(group, "path", { class: index % 2 ? "timekeeper-petal deep" : "timekeeper-petal", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-7} ${x2} ${y2}Q${(x1+x2)/2+3} ${Math.max(y1,y2)+4} ${x1} ${y1}Z` });
+      });
+      [[-18,17,-2,3],[-4,31,13,14],[-16,49,2,34],[4,56,17,40]].forEach(([x1,y1,x2,y2], index) => {
+        add(group, "path", { class: index % 2 ? "timekeeper-leaf deep" : "timekeeper-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-6} ${x2} ${y2}Q${(x1+x2)/2+4} ${Math.max(y1,y2)+5} ${x1} ${y1}Z` });
+        add(group, "path", { class: "timekeeper-leaf-vein", d: `M${x1+2} ${y1-1}L${x2-2} ${y2+1}` });
+      });
+      add(group, "path", { class: "timekeeper-stopper", d: "M-32-126H26L30-105H-35Z" });
+      add(group, "path", { class: "timekeeper-side-port-housing", d: "M38-16H70L82-5V14L70 26H38Z" });
+      add(group, "circle", { class: "timekeeper-side-port-valve", cx: 66, cy: 5, r: 13 });
+      add(group, "path", { class: "timekeeper-side-port-spokes", d: "M53 5H79M66-8V18M57-4L75 14M75-4L57 14" });
+      add(group, "path", { class: "timekeeper-day-counter-frame", d: "M-82-83H-44V56H-82Z" });
+      [-65,-37,-9,19].forEach((y, index) => add(group, "rect", { class: index % 2 ? "timekeeper-day-window deep" : "timekeeper-day-window", x: -74, y, width: 22, height: 17, rx: 3 }));
+      const dayLabel = add(group, "text", { class: "timekeeper-day-label", x: -63, y: 49, "text-anchor": "middle" });
+      dayLabel.textContent = "14 D";
+      add(group, "path", { class: "timekeeper-agar-drawer", d: "M-36 70H47L58 105H-47Z" });
+      add(group, "path", { class: "timekeeper-drawer-front", d: "M-31 82H42L39 99H-35Z" });
+      add(group, "circle", { class: "timekeeper-drawer-pull", cx: 4, cy: 90, r: 4 });
+    } else {
+      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-157 91Q0 123 164 87Q82 139-145 132Z" });
+      add(group, "path", { class: "timekeeper-yoke-base", d: "M-130 52H131L146 84H-143Z" });
+      add(group, "ellipse", { class: "timekeeper-rotating-yoke", cx: -8, cy: -9, rx: 126, ry: 71 });
+      add(group, "path", { class: "timekeeper-yoke-supports", d: "M-129-10V53M113-10V53M-139 53L-151 96H-112L-97 55M102 55L117 96H157L140 52" });
+      [-1, 1].forEach(side => add(group, "circle", { class: "timekeeper-yoke-pivot", cx: side < 0 ? -129 : 113, cy: -10, r: 11 }));
+      add(group, "rect", { class: "timekeeper-glass horizontal", x: -116, y: -42, width: 213, height: 65, rx: 31 });
+      add(group, "path", { class: "timekeeper-tube-meniscus", d: "M-100 10Q-52-3-8 10Q41-4 82 8" });
+      add(group, "path", { class: "timekeeper-stopper", d: "M-137-35H-109V17H-137L-147 7V-25Z" });
+      [[-88,-17,-68,-31],[-64,4,-42,-16],[-34,-19,-14,-33],[-6,4,16,-14]].forEach(([x1,y1,x2,y2], index) => {
+        add(group, "path", { class: index % 2 ? "timekeeper-petal deep" : "timekeeper-petal", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-8} ${x2} ${y2}Q${(x1+x2)/2+3} ${Math.max(y1,y2)+5} ${x1} ${y1}Z` });
+      });
+      [[20,-13,39,-28],[39,5,60,-13],[58,-12,78,-27],[67,11,88,-4]].forEach(([x1,y1,x2,y2], index) => {
+        add(group, "path", { class: index % 2 ? "timekeeper-leaf deep" : "timekeeper-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-7} ${x2} ${y2}Q${(x1+x2)/2+3} ${Math.max(y1,y2)+5} ${x1} ${y1}Z` });
+        add(group, "path", { class: "timekeeper-leaf-vein", d: `M${x1+2} ${y1-1}L${x2-2} ${y2+1}` });
+      });
+      for (let index = 0; index < 14; index += 1) {
+        const angle = (-164 + index * (328 / 13)) * Math.PI / 180;
+        const x1 = -8 + Math.cos(angle) * 132;
+        const y1 = -9 + Math.sin(angle) * 77;
+        const x2 = -8 + Math.cos(angle) * 143;
+        const y2 = -9 + Math.sin(angle) * 85;
+        add(group, "path", { class: index % 7 === 0 ? "timekeeper-ring-tick major" : "timekeeper-ring-tick", d: `M${x1.toFixed(1)} ${y1.toFixed(1)}L${x2.toFixed(1)} ${y2.toFixed(1)}` });
+      }
+      add(group, "path", { class: "timekeeper-date-tag", d: "M-87-94H4L9-66H-82Z" });
+      const dateText = add(group, "text", { class: "timekeeper-date-text", x: -39, y: -76, "text-anchor": "middle" });
+      dateText.textContent = "21 DEC 2007";
+      add(group, "circle", { class: "timekeeper-transfer-hinge", cx: 93, cy: 30, r: 9 });
+      add(group, "path", { class: "timekeeper-transfer-chute", d: "M96 22L139 35L128 54L91 39Z" });
+      add(group, "path", { class: "timekeeper-culture-deck", d: "M113 52H165L157 84H108Z" });
+      add(group, "path", { class: "timekeeper-culture-rim", d: "M117 58H159L155 76H113Z" });
+      add(group, "path", { class: "timekeeper-deck-brace", d: "M119 82L111 99M151 82L159 99" });
+    }
+    return true;
+  }
+
+  if (item.family === "trivandrum-garden-waterworks") {
+    group.dataset.renderer = "trivandrum-garden-waterworks";
+    group.classList.add("trivandrum-accessory", "garden-waterworks", companion ? "garden-waterworks-companion" : "garden-waterworks-primary");
+    if (companion) {
+      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-79 121Q4 145 87 117Q45 155-71 150Z" });
+      add(group, "path", { class: "waterworks-column-base", d: "M-49 91H49L63 127H-62Z" });
+      add(group, "path", { class: "waterworks-pump-column", d: "M-31-117H27L37 94H-40Z" });
+      add(group, "path", { class: "waterworks-column-cap", d: "M-42-126H38L44-107H-47Z" });
+      [[-91,-68],[-91,2]].forEach(([x,y], index) => {
+        add(group, "path", { class: index ? "waterworks-stacked-cistern deep" : "waterworks-stacked-cistern", d: `M${x} ${y}H-43V${y+52}H${x-8}L${x-17} ${y+26}Z` });
+        add(group, "path", { class: "waterworks-cistern-band", d: `M${x+4} ${y+14}H-47M${x+1} ${y+37}H-47` });
+      });
+      add(group, "path", { class: "waterworks-s-pipe", d: "M24-87C72-89 80-58 51-40C24-24 34 5 69 8C99 10 96 45 62 50V77" });
+      add(group, "path", { class: "waterworks-pipe-joints", d: "M48-48H69M54 3H75M53 48H73M55 76H70" });
+      add(group, "path", { class: "waterworks-sprinkler-head", d: "M49 76H77L83 88H43Z" });
+      [[44,93,26,103],[53,96,42,112],[62,96,66,112],[72,92,88,103]].forEach(([x1,y1,x2,y2], index) => add(group, "path", { class: index % 2 ? "waterworks-spray-leaf deep" : "waterworks-spray-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-5} ${x2} ${y2}Q${(x1+x2)/2+3} ${Math.max(y1,y2)+4} ${x1} ${y1}Z` }));
+      add(group, "path", { class: "waterworks-sight-gauge", d: "M-18-81H13V51H-18Z" });
+      [-58,-29,0,29].forEach(y => add(group, "path", { class: "waterworks-gauge-tick", d: `M-10 ${y}H7` }));
+      add(group, "path", { class: "waterworks-gauge-level", d: "M-12 18H7V45H-12Z" });
+      add(group, "circle", { class: "waterworks-column-valve", cx: -4, cy: 72, r: 16 });
+      add(group, "path", { class: "waterworks-valve-spokes", d: "M-20 72H12M-4 56V88M-15 61L7 83M7 61L-15 83" });
+    } else {
+      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-158 91Q0 124 163 87Q82 139-146 132Z" });
+      add(group, "path", { class: "waterworks-lake-basin", d: "M-151 19Q-127-29-64-39Q-3-53 56-31Q115-39 151 4L139 57Q79 92 12 71Q-55 94-124 66Z" });
+      add(group, "path", { class: "waterworks-basin-water", d: "M-134 20Q-107-12-58-20Q-6-33 44-15Q91-22 130 7L122 42Q74 66 15 53Q-43 72-111 51Z" });
+      add(group, "path", { class: "waterworks-basin-ripple", d: "M-108 17Q-73 4-42 17M-23 1Q12-10 46 4M60 22Q92 11 119 25" });
+      add(group, "path", { class: "waterworks-pump-body", d: "M-119-56H-70L-62 37H-128Z" });
+      add(group, "path", { class: "waterworks-pump-cap", d: "M-128-67H-62L-57-49H-133Z" });
+      add(group, "circle", { class: "waterworks-handwheel", cx: -96, cy: -41, r: 31 });
+      add(group, "circle", { class: "waterworks-wheel-hub", cx: -96, cy: -41, r: 6 });
+      [-90,-45,0,45].forEach(angle => {
+        const radians = angle * Math.PI / 180;
+        const x = Math.cos(radians) * 27;
+        const y = Math.sin(radians) * 27;
+        add(group, "path", { class: "waterworks-wheel-spoke", d: `M${-96-x} ${-41-y}L${-96+x} ${-41+y}` });
+      });
+      add(group, "path", { class: "waterworks-feed-pipe", d: "M-69-28H-34V-5H4V15H37" });
+      add(group, "path", { class: "waterworks-pipe-joints", d: "M-39-35V-21M-3-12V2M31 7V22" });
+      const terraces = [
+        [23,-25,122,-25,137,-3,35,-3],
+        [40,4,143,4,132,28,52,28],
+        [60,34,128,34,112,57,69,57]
+      ];
+      terraces.forEach((points, index) => {
+        const [x1,y1,x2,y2,x3,y3,x4,y4] = points;
+        add(group, "path", { class: index % 2 ? "waterworks-terrace-bed deep" : "waterworks-terrace-bed", d: `M${x1} ${y1}H${x2}L${x3} ${y3}H${x4}Z` });
+        add(group, "path", { class: "waterworks-terrace-channel", d: `M${x1+6} ${y1+8}H${x2-10}L${x3-10} ${y3-7}H${x4+8}` });
+      });
+      [[55,-17],[90,-15],[64,13],[104,15],[82,44]].forEach(([x,y], index) => {
+        add(group, "path", { class: index % 2 ? "waterworks-bed-leaf deep" : "waterworks-bed-leaf", d: `M${x} ${y+11}Q${x-13} ${y-5} ${x-20} ${y+8}Q${x-8} ${y+18} ${x} ${y+11}ZM${x} ${y+11}Q${x+14} ${y-6} ${x+21} ${y+8}Q${x+9} ${y+18} ${x} ${y+11}Z` });
+      });
+      add(group, "path", { class: "waterworks-basin-feet", d: "M-126 60L-139 96H-100L-87 70M98 66L112 96H151L136 57" });
+    }
+    return true;
+  }
+
+  if (item.family === "trivandrum-bandstand-music-box") {
+    group.dataset.renderer = "trivandrum-bandstand-music-box";
+    group.classList.add("trivandrum-accessory", "bandstand-music-box", companion ? "bandstand-music-box-companion" : "bandstand-music-box-primary");
+    if (companion) {
+      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-89 119Q4 146 95 115Q49 156-80 150Z" });
+      add(group, "path", { class: "music-cabinet-body", d: "M-72-79L-47-111H49L76-78V93H-72Z" });
+      add(group, "path", { class: "music-cabinet-canopy", d: "M-84-76L-49-126H51L87-76L69-64H-68Z" });
+      add(group, "path", { class: "music-canopy-ribs", d: "M-49-119L-26-72M1-119V-69M50-119L27-72" });
+      [-46,0,46].forEach((cx, index) => {
+        add(group, "path", { class: index === 1 ? "music-cabinet-arch centre" : "music-cabinet-arch", d: `M${cx-21} 54V-31Q${cx} -59 ${cx+21}-31V54Z` });
+      });
+      add(group, "rect", { class: "music-vertical-roll", x: -15, y: -43, width: 30, height: 98, rx: 12 });
+      [-31,-15,1,17,33].forEach((y, row) => [-7,7].forEach((x, column) => add(group, "circle", { class: (row+column)%2 ? "music-roll-hole deep" : "music-roll-hole", cx: x, cy: y, r: 3.5 })));
+      add(group, "path", { class: "music-roll-spindle", d: "M-23-44H23M-23 56H23" });
+      [-43,43].forEach((x, index) => {
+        add(group, "path", { class: index ? "music-hanging-reed deep" : "music-hanging-reed", d: `M${x}-29V46L${x+9} 62L${x-9} 62Z` });
+        add(group, "circle", { class: "music-reed-pin", cx: x, cy: -33, r: 4 });
+      });
+      add(group, "path", { class: "music-folding-hinges", d: "M-74-48H-60M-74 3H-60M60-48H75M60 3H75" });
+      add(group, "path", { class: "music-triangular-base", d: "M-81 91H84L61 126H-58Z" });
+      add(group, "path", { class: "music-base-resonator", d: "M-42 99H45L34 116H-31Z" });
+    } else {
+      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-160 93Q0 126 165 88Q83 141-147 134Z" });
+      add(group, "path", { class: "bandstand-pavilion-base", d: "M-139 57L-105 34H103L141 57L119 91H-117Z" });
+      add(group, "path", { class: "bandstand-faceted-roof", d: "M-153-48L-107-87H-46L0-103L48-87H108L154-47L126-32H-128Z" });
+      add(group, "path", { class: "bandstand-roof-facets", d: "M-107-87L-75-42M-46-87L-33-38M0-103V-35M48-87L33-38M108-87L74-42" });
+      [-112,-80,-48,-16,16,48,80,112].forEach((x, index) => {
+        add(group, "path", { class: index % 2 ? "bandstand-column deep" : "bandstand-column", d: `M${x-5}-38H${x+5}V59H${x-5}ZM${x-9}-43H${x+9}V-34H${x-9}ZM${x-9} 55H${x+9}V64H${x-9}Z` });
+      });
+      add(group, "path", { class: "bandstand-cylinder-frame", d: "M-74-10H75V44H-74Z" });
+      add(group, "rect", { class: "bandstand-pinned-cylinder", x: -55, y: -2, width: 110, height: 34, rx: 16 });
+      [-43,-25,-7,11,29,47].forEach((x, column) => [-1,10,21].forEach((y, row) => add(group, "circle", { class: (column+row)%2 ? "bandstand-cylinder-pin deep" : "bandstand-cylinder-pin", cx: x, cy: y, r: 2.8 })));
+      add(group, "path", { class: "bandstand-cylinder-spindle", d: "M-70 15H-55M55 15H83" });
+      add(group, "path", { class: "bandstand-winding-crank", d: "M82 15H111V-5H129" });
+      add(group, "circle", { class: "bandstand-crank-handle", cx: 133, cy: -5, r: 6 });
+      [-92,-76,-60,64,80,96].forEach((x, index) => add(group, "path", { class: index % 2 ? "bandstand-resonator-slat deep" : "bandstand-resonator-slat", d: `M${x} 2V44` }));
+      add(group, "path", { class: "bandstand-pavilion-feet", d: "M-118 84L-130 108H-95L-84 89M84 88L96 108H132L117 82" });
+    }
+    return true;
+  }
+
+  return false;
+}
+
 function drawInstrument(group, item, companion) {
   const label = item.label;
   if (/fiddle/i.test(label)) {
@@ -1601,11 +1773,7 @@ function drawRepeatedFamilyAccessory(group, item, companion) {
       }
       return true;
     case "skates":
-      if(/backwater/i.test(label)) {
-        [-28,28].forEach(x=>{path(group,`M${x-17}-31Q${x} -43 ${x+17}-30L${x+12} 31H${x-13}Z`); line(group,`M${x-18} 36Q${x} ${companion?44:51} ${x+18} 36`,`acc-line thick`);});
-      } else {
-        [-29,29].forEach((x,j)=>{path(group,`M${x-22}-25L${x+20}-17L${x+16} 18L${x-18} 25Z`); const wheels=companion?2:3; for(let i=0;i<wheels;i+=1) dot(group,x-13+i*(26/(wheels-1)),31,6,j?"acc-accent":"acc-dark");});
-      }
+      [-29,29].forEach((x,j)=>{path(group,`M${x-22}-25L${x+20}-17L${x+16} 18L${x-18} 25Z`); const wheels=companion?2:3; for(let i=0;i<wheels;i+=1) dot(group,x-13+i*(26/(wheels-1)),31,6,j?"acc-accent":"acc-dark");});
       return true;
     case "skirt":
       if(/crater/i.test(label)) {
@@ -1706,11 +1874,6 @@ function drawUniqueNamedAccessory(group, item, companion) {
       line(group, companion ? "M-52 48L-4-13L45-45 M-4-13L56 35" : "M-69 64L-5-18L59-60 M-5-18L75 47", "acc-line thick");
       path(group, companion ? "M35-50Q51-67 65-48Q68-25 48-18Q29-29 35-50Z" : "M46-67Q67-89 86-64Q91-33 64-24Q38-39 46-67Z", "acc-main");
       path(group, companion ? "M-56 42L-66 58L-48 63L-39 49Z" : "M-74 56L-88 77L-64 84L-52 65Z", "acc-accent");
-      return true;
-    case "coconut-rain-hood":
-      path(group, companion ? "M-46 24Q-54-31 0-56Q54-31 46 24L28 35Q0 15-28 35Z" : "M-61 32Q-72-42 0-75Q72-42 61 32L37 47Q0 20-37 47Z", "acc-main");
-      line(group, companion ? "M0-52V17 M-33-17Q0-1 33-17" : "M0-70V23 M-44-23Q0-1 44-23");
-      [-1, 1].forEach(side => path(group, companion ? `M${side * 35}-13Q${side * 55} 5 ${side * 42} 28` : `M${side * 47}-18Q${side * 73} 7 ${side * 56} 38`, "acc-accent-line"));
       return true;
     case "palm-bustle": {
       const count = companion ? 5 : 8;
@@ -1864,6 +2027,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawAustralianCapitalTerritoryAccessory(group, item, companion)) return true;
   if (drawAucklandAccessory(group, item, companion)) return true;
   if (drawAraucaniaAccessory(group, item, companion)) return true;
+  if (drawTrivandrumAccessory(group, item, companion)) return true;
   if (drawUniqueNamedAccessory(group, item, companion)) return true;
   if (drawRepeatedFamilyAccessory(group, item, companion)) return true;
   if (drawN2Accessory(group, item, companion)) return true;
@@ -1919,7 +2083,10 @@ function renderPiece(target, item, wormPart) {
     "eca36-reproductive-timing-clock": { primary: [380, 254, .41, -1], companion: [-15, 284, .28, 2] },
     "compost-labyrinth": { primary: [352, 110, .4, -2], companion: [18, 125, .29, 2] },
     "ashfall-recorder": { primary: [222, 190, .37, -1], companion: [85, 218, .28, 2] },
-    "test-cross-mechanism": { primary: [360, 268, .35, -1], companion: [0, 292, .29, 2] }
+    "test-cross-mechanism": { primary: [360, 268, .35, -1], companion: [0, 292, .29, 2] },
+    "ju1325-sample-tube-timekeeper": { primary: [355, 145, .36, -2], companion: [0, 105, .28, 2] },
+    "trivandrum-garden-waterworks": { primary: [220, 188, .35, -1], companion: [112, 215, .28, 2] },
+    "trivandrum-bandstand-music-box": { primary: [355, 267, .34, -1], companion: [-2, 290, .28, 2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;

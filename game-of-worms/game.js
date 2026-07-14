@@ -2,8 +2,8 @@ import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
-import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-10";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-13";
+import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-11";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-14";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -115,7 +115,7 @@ const species = [
     habitatOne: "#f5be68",
     habitatTwo: "#de7055",
     locations: [
-      { name: "Trivandrum, Kerala · JU1325", coordinates: [76.94, 8.52], source: "Félix Lab", style: "rainforest" },
+      { name: "Trivandrum, Kerala · JU1325", coordinates: [76.955, 8.512], source: "CGC", style: "rainforest", strain: "JU1325", history: "JU1325, the C. nigoni type isolate, was collected by M.-A. Félix on 21 December 2007 from rotting flowers and leaves in the Trivandrum Zoo/Botanical Garden. Nematodes were isolated on OP50-seeded agar after the sample spent two weeks in a plastic tube." },
       { name: "Singapore · ZF1220", coordinates: [103.82, 1.32], source: "Félix Lab", style: "rainforest" },
       { name: "Praslin, Seychelles · YR106", coordinates: [55.7467, -4.3193], source: "Félix Lab", style: "ocean" },
       { name: "São Tomé · JU2484", coordinates: [6.73, 0.34], source: "Félix Lab", style: "rainforest" },

@@ -159,11 +159,11 @@ const canonicalProfiles = {
     { weather: "cloud", cues: [] }
   ),
   "Trivandrum, Kerala · JU1325": profile(
-    "trivandrum-backwater", "Backwaters between sea and Ghats",
-    "Thiruvananthapuram stretches from the Arabian Sea and backwaters to the Western Ghats; nearby estuaries are lined with coconut and mangrove.",
-    "Kerala Tourism", "https://www.keralatourism.org/districts/thiruvananthapuram/",
-    palettes.island, [[0, 284], [90, 248], [170, 220], [252, 188], [340, 238], [430, 210], [520, 252], [600, 232]],
-    { water: "backwater", weather: "rain", cues: [["coconut", 75, 250, .9], ["mangrove", 500, 300, .8], ["sandbar", 310, 352, .8]] }
+    "trivandrum-zoo-botanical-garden", "JU1325 flower-and-leaf garden slope",
+    "JU1325, the C. nigoni type isolate, was collected from rotting flowers and leaves in Trivandrum's Zoo/Botanical Garden. The wooded lake edge, rising paths, golden bamboo and partly screened museum roof are wider campus context, not the recorded sampling point.",
+    "CGC JU1325 strain record", "https://cgc.umn.edu/strain/JU1325",
+    palettes.rainforest, [[0, 270], [80, 249], [155, 260], [235, 232], [315, 243], [398, 214], [482, 230], [600, 205]],
+    { weather: "cloud", cues: [] }
   ),
   "Singapore · ZF1220": profile(
     "singapore-mangrove-city", "Mangrove edge of an equatorial city",
@@ -438,12 +438,12 @@ const sceneCompositions = Object.freeze({
     "M83 286Q203 293 313 310Q432 326 548 347", [],
     "an irregular layered compost crescent below one diagonal fence, unequal garden beds, low foothills and a tiny far-right double summit softened by cloud"
   ),
-  "trivandrum-backwater": composition(
-    "M0 389 Q91 351 178 384 Q273 418 362 374 Q462 324 600 369 V430 H0Z",
-    "M0 321 Q96 290 192 323 Q290 356 390 310 Q498 260 600 304 V430 H0Z",
-    [["coconut", 24, 354, .88], ["mangrove", 568, 374, .82]],
-    "M0 411 C88 365 163 358 238 394 S389 423 458 371 S552 329 600 340", [0, 2, 1],
-    "a long S-curving backwater ending in distant stepped Western Ghats"
+  "trivandrum-zoo-botanical-garden": composition(
+    "M0 338Q98 318 190 334Q286 353 376 321Q475 286 600 307V430H0Z",
+    "M0 264Q83 239 166 253Q253 267 337 235Q426 201 512 218Q560 226 600 211V328H0Z",
+    [],
+    "M274 430Q247 385 273 348Q300 312 285 277Q270 249 305 224", [],
+    "a collapsed flower-and-leaf bundle below a curved lake, with tiered paths climbing between a bamboo fan and partly hidden museum roof"
   ),
   "singapore-mangrove-city": composition(
     "M0 380 Q127 367 251 385 Q378 402 500 375 L600 381 V430 H0Z",
@@ -1319,6 +1319,86 @@ function drawAraucaniaCuncoScene(target, palette) {
   });
 }
 
+function drawTrivandrumBotanicalGardenScene(target, palette) {
+  append(target, "rect", { class: "environment-sky trivandrum-garden-sky", width: 600, height: 430, fill: palette[0] });
+
+  const cloudVeil = append(target, "g", { class: "trivandrum-cloud-veil", "aria-hidden": "true" });
+  append(cloudVeil, "path", { d: "M20 69Q48 43 82 60Q108 35 145 61Q177 56 198 82H20Z" });
+  append(cloudVeil, "path", { d: "M324 55Q350 33 381 48Q405 26 438 49Q466 44 484 68H324Z" });
+
+  const hillAndDale = append(target, "g", { class: "trivandrum-hill-and-dale", "aria-hidden": "true" });
+  append(hillAndDale, "path", { class: "trivandrum-far-garden-rise", d: "M0 233Q77 211 151 226Q231 244 304 220Q381 194 451 207Q526 221 600 191V282H0Z" });
+  append(hillAndDale, "path", { class: "trivandrum-top-garden-rise", d: "M0 267Q82 239 163 255Q248 272 329 242Q417 208 496 225Q549 235 600 213V300H0Z" });
+  append(hillAndDale, "path", { class: "trivandrum-rise-contour", d: "M5 245Q79 222 151 237M183 239Q250 254 315 231M351 222Q417 202 479 220M514 221Q558 216 600 201" });
+
+  const museum = append(target, "g", { class: "trivandrum-museum-lock", transform: "translate(446 173) scale(.78)", "aria-hidden": "true" });
+  append(museum, "path", { class: "trivandrum-museum-wall", d: "M-126 81V5L-96-18H-54L-31-52H31L54-18H98L127 6V81Z" });
+  append(museum, "path", { class: "trivandrum-museum-roof", d: "M-140 9L-99-31H-60L-31-69L0-88L32-68L60-31H101L141 9L113 1L91-17H62L31-51L0-68L-31-51L-62-17H-92L-113 2Z" });
+  append(museum, "path", { class: "trivandrum-museum-roof-seam", d: "M-99-30L-78 2M-31-68L-16 2M31-68L16 2M101-30L78 2M0-84V7" });
+  append(museum, "path", { class: "trivandrum-museum-minaret left", d: "M-104 3V-73L-96-89L-88-73V5ZM-111-73H-81M-96-89V-101" });
+  append(museum, "path", { class: "trivandrum-museum-minaret right", d: "M83 4V-92L92-111L101-92V5ZM76-92H108M92-111V-126" });
+  append(museum, "path", { class: "trivandrum-museum-arcades", d: "M-73 79V32Q-58 11-43 32V79M-22 79V25Q0-4 22 25V79M43 79V32Q58 11 73 32V79" });
+
+  const highCanopy = append(target, "g", { class: "trivandrum-high-canopy", "aria-hidden": "true" });
+  append(highCanopy, "path", { class: "trivandrum-canopy-mass left", d: "M0 197Q20 165 49 190Q74 146 109 183Q142 155 170 196Q193 182 217 206V276H0Z" });
+  append(highCanopy, "path", { class: "trivandrum-canopy-mass right", d: "M372 198Q393 166 420 190Q445 153 477 184Q509 151 541 190Q570 163 600 196V267H372Z" });
+  append(highCanopy, "path", { class: "trivandrum-canopy-highlight", d: "M17 204Q48 176 77 201M86 195Q119 169 151 201M390 205Q420 177 450 202M462 196Q498 169 528 200M538 195Q567 177 593 202" });
+
+  append(target, "path", { class: "trivandrum-garden-ground", d: "M0 260Q93 238 181 258Q278 281 367 247Q468 208 600 240V430H0Z" });
+
+  const bamboo = append(target, "g", { class: "trivandrum-golden-bamboo", transform: "translate(87 248)", "aria-hidden": "true" });
+  [-52,-34,-15,5,25,45].forEach((x, index) => {
+    const lean = (index - 2.5) * 5;
+    append(bamboo, "path", { class: index % 2 ? "trivandrum-bamboo-cane deep" : "trivandrum-bamboo-cane", d: `M${x} 51Q${x+lean*.25} -20 ${x+lean} -112` });
+    [-77,-45,-13,18].forEach(y => append(bamboo, "path", { class: "trivandrum-bamboo-node", d: `M${x-5+lean*(51-y)/163} ${y}L${x+6+lean*(51-y)/163} ${y-1}` }));
+  });
+  [[-61,-72,-87,-89],[-44,-51,-18,-72],[-28,-93,-50,-111],[-7,-69,18,-88],[12,-103,37,-121],[27,-55,53,-76],[47,-82,71,-98],[18,-25,-6,-42]].forEach(([x1,y1,x2,y2], index) => {
+    append(bamboo, "path", { class: index % 2 ? "trivandrum-bamboo-leaf deep" : "trivandrum-bamboo-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-8} ${x2} ${y2}Q${(x1+x2)/2+4} ${Math.max(y1,y2)+5} ${x1} ${y1}Z` });
+  });
+
+  const lake = append(target, "g", { class: "trivandrum-wooded-lake", "aria-hidden": "true" });
+  append(lake, "path", { class: "trivandrum-lake-bank", d: "M0 291Q70 261 142 275Q209 288 262 267L285 303Q220 329 154 316Q77 300 0 334Z" });
+  append(lake, "path", { class: "trivandrum-lake-water", d: "M0 304Q70 277 139 289Q207 303 264 282L282 305Q218 326 157 315Q79 301 0 334Z" });
+  append(lake, "path", { class: "trivandrum-lake-ripple", d: "M22 306Q67 293 106 300M128 297Q176 309 222 293M65 320Q112 307 153 316M181 311Q226 318 258 305" });
+  const lakeTrees = append(lake, "g", { class: "trivandrum-lake-edge-trees" });
+  [[7,284,25],[49,273,31],[97,278,24],[145,272,28],[198,270,23]].forEach(([cx,cy,r], index) => {
+    append(lakeTrees, "path", { class: "trivandrum-lake-tree-trunk", d: `M${cx-3} ${cy+18}L${cx+2} ${cy-30}` });
+    append(lakeTrees, "circle", { class: index % 2 ? "trivandrum-lake-tree-crown deep" : "trivandrum-lake-tree-crown", cx, cy: cy-33, r });
+  });
+
+  const terraces = append(target, "g", { class: "trivandrum-garden-terraces", "aria-hidden": "true" });
+  append(terraces, "path", { class: "trivandrum-terrace-wall upper", d: "M291 274Q368 246 447 257Q522 266 600 239V266Q522 290 445 279Q369 269 296 296Z" });
+  append(terraces, "path", { class: "trivandrum-terrace-wall lower", d: "M314 319Q392 289 473 303Q536 314 600 291V321Q531 341 469 328Q393 313 320 342Z" });
+  append(terraces, "path", { class: "trivandrum-terrace-cap", d: "M292 273Q368 243 447 254Q522 263 600 236M315 318Q392 286 473 300Q536 311 600 288" });
+  const flowerBeds = [
+    [360,270,60,14,-4], [500,277,54,13,5], [393,318,54,14,-5], [525,330,48,12,4]
+  ];
+  flowerBeds.forEach(([cx,cy,rx,ry,angle], index) => {
+    append(terraces, "ellipse", { class: index % 2 ? "trivandrum-flowerbed deep" : "trivandrum-flowerbed", cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` });
+    [-.55,0,.55].forEach((offset, dotIndex) => append(terraces, "circle", { class: (index+dotIndex)%2 ? "trivandrum-bed-bloom deep" : "trivandrum-bed-bloom", cx: cx + offset * rx, cy: cy - (dotIndex%2 ? 5 : 1), r: 3.6 }));
+  });
+
+  const risingPath = append(target, "g", { class: "trivandrum-rising-path", "aria-hidden": "true" });
+  append(risingPath, "path", { class: "trivandrum-path-surface", d: "M236 430Q255 388 236 359Q216 327 252 302Q282 281 267 254Q254 234 288 219L322 222Q288 245 303 270Q320 300 286 324Q256 345 276 373Q296 401 303 430Z" });
+  append(risingPath, "path", { class: "trivandrum-path-edge", d: "M236 430Q255 388 236 359Q216 327 252 302Q282 281 267 254Q254 234 288 219M303 430Q296 401 276 373Q256 345 286 324Q320 300 303 270Q288 245 322 222" });
+  [[282,242,14,4,-6],[278,277,20,5,6],[269,320,27,6,-7],[260,368,35,7,6],[270,416,44,8,-5]].forEach(([cx,cy,rx,ry,angle], index) => append(risingPath, "ellipse", { class: index % 2 ? "trivandrum-path-step deep" : "trivandrum-path-step", cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` }));
+
+  append(target, "path", { class: "trivandrum-foreground-earth", d: "M0 351Q91 326 180 346Q271 370 362 344Q465 313 600 338V430H0Z" });
+
+  const decay = append(target, "g", { class: "trivandrum-decay-substrate", transform: "translate(461 380) rotate(-4)", "aria-hidden": "true" });
+  append(decay, "ellipse", { class: "trivandrum-decay-shadow", cx: 0, cy: 32, rx: 119, ry: 23 });
+  append(decay, "path", { class: "trivandrum-damp-decay-base", d: "M-116 13Q-91-24-57-15Q-30-43 4-22Q36-43 65-15Q98-27 116 8Q98 39 66 33Q36 54 5 38Q-28 56-59 37Q-94 47-116 13Z" });
+  append(decay, "path", { class: "trivandrum-decay-inner", d: "M-93 7Q-74-16-46-8Q-25-28 0-13Q25-31 48-9Q76-20 94 5Q72 26 47 20Q22 39-3 25Q-28 42-50 25Q-76 33-93 7Z" });
+  [[-86,2,-59,-15],[-66,22,-37,5],[-39,-3,-13,-22],[-14,21,14,3],[15,-8,43,-25],[38,18,66,1],[62,-2,91,-17]].forEach(([x1,y1,x2,y2], index) => {
+    append(decay, "path", { class: index % 3 === 0 ? "trivandrum-decay-leaf green" : (index % 2 ? "trivandrum-decay-leaf deep" : "trivandrum-decay-leaf"), d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-9} ${x2} ${y2}Q${(x1+x2)/2+4} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` });
+    append(decay, "path", { class: "trivandrum-decay-vein", d: `M${x1+4} ${y1-1}L${x2-4} ${y2+1}` });
+  });
+  [[-72,-18,-48,-36],[-44,10,-19,-9],[-8,-17,16,-35],[21,11,47,-8],[53,-14,80,-30]].forEach(([x1,y1,x2,y2], index) => {
+    append(decay, "path", { class: index % 2 ? "trivandrum-wilted-petal deep" : "trivandrum-wilted-petal", d: `M${x1} ${y1}Q${(x1+x2)/2-4} ${Math.min(y1,y2)-11} ${x2} ${y2}Q${(x1+x2)/2+7} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` });
+  });
+  [[-99,20,3],[-62,34,4],[-25,30,3],[8,35,4],[45,29,3],[82,20,4]].forEach(([cx,cy,r], index) => append(decay, "circle", { class: index % 2 ? "trivandrum-decay-fragment deep" : "trivandrum-decay-fragment", cx, cy, r }));
+}
+
 function drawTenerifeScene(target, palette) {
   append(target, "rect", { class: "environment-sky tenerife-sky", width: 600, height: 430, fill: palette[0] });
   append(target, "circle", { class: "tenerife-sun", cx: 516, cy: 58, r: 26 });
@@ -1473,6 +1553,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "cunco-ju4400-compost-garden") {
     drawAraucaniaCuncoScene(target, palette);
+    return;
+  }
+  if (profile.id === "trivandrum-zoo-botanical-garden") {
+    drawTrivandrumBotanicalGardenScene(target, palette);
     return;
   }
 
