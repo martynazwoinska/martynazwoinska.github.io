@@ -788,6 +788,67 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .auckland-grass-underside { fill: color-mix(in srgb, #2b3429 87%, var(--environment-ground)); }
 :root[data-theme='dark'] .auckland-grass-fold,
 :root[data-theme='dark'] .auckland-grass-mat { fill: color-mix(in srgb, #3a5038 82%, var(--environment-land)); }
+#habitat[data-environment="cunco-ju4400-compost-garden"] .regional-backdrop { contain: layout paint; }
+.cunco-garden-sky { fill: color-mix(in srgb, #d5dedb 77%, var(--paper-strong)); }
+.cunco-cloud { fill: color-mix(in srgb, var(--paper-strong) 82%, var(--environment-water)); }
+.cunco-cloud.back { opacity: .56; }
+.cunco-cloud.middle { opacity: .67; }
+.cunco-western-terrain { fill: color-mix(in srgb, var(--environment-land) 48%, #89928a); stroke: color-mix(in srgb, var(--environment-detail) 42%, #69726c); stroke-width: 1.4; }
+.cunco-low-foothills { fill: color-mix(in srgb, var(--environment-land) 58%, #788578); stroke: color-mix(in srgb, var(--environment-detail) 48%, #59665c); stroke-width: 1.6; }
+.cunco-terrain-contour { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 43%, #a4ada1); stroke-width: 2; stroke-linecap: round; opacity: .59; }
+.cunco-llaima-double-summit { fill: color-mix(in srgb, #77817d 56%, var(--environment-land)); stroke: color-mix(in srgb, #5f6965 52%, var(--environment-detail)); stroke-width: 1.3; opacity: .64; }
+.cunco-llaima-contour { fill: none; stroke: color-mix(in srgb, #59645f 49%, var(--environment-detail)); stroke-width: 1.2; stroke-linecap: round; opacity: .56; }
+.cunco-summit-cloud { fill: color-mix(in srgb, var(--paper-strong) 86%, var(--environment-water)); opacity: .78; }
+.cunco-shelterbelt-mass { fill: color-mix(in srgb, var(--environment-land) 75%, #4f6852); stroke: color-mix(in srgb, var(--environment-detail) 62%, #405344); stroke-width: 1.7; stroke-linejoin: round; }
+.cunco-shelterbelt-mass.right { fill: color-mix(in srgb, var(--environment-land) 68%, #586c58); }
+.cunco-shelterbelt-highlight { fill: none; stroke: color-mix(in srgb, var(--environment-land) 49%, var(--paper-strong)); stroke-width: 4; stroke-linecap: round; opacity: .4; }
+.cunco-garden-ground { fill: color-mix(in srgb, var(--environment-ground) 55%, #81775c); }
+.cunco-bed-soil { fill: color-mix(in srgb, #66513c 72%, var(--environment-ground)); stroke: color-mix(in srgb, #4b4034 71%, var(--environment-detail)); stroke-width: 1.5; stroke-linejoin: round; }
+.cunco-bed-soil.right { fill: color-mix(in srgb, #725a40 68%, var(--environment-ground)); }
+.cunco-bed-edge { fill: color-mix(in srgb, #957354 68%, var(--environment-ground)); stroke: color-mix(in srgb, #59483a 75%, var(--environment-detail)); stroke-width: 2.2; stroke-linejoin: round; fill-rule: evenodd; }
+.cunco-bed-edge.right { fill: color-mix(in srgb, #87694d 70%, var(--environment-ground)); }
+.cunco-bed-furrow { fill: none; stroke: color-mix(in srgb, #40372d 55%, var(--environment-ground)); stroke-width: 2; stroke-linecap: round; opacity: .63; }
+.cunco-sprout-stem { fill: none; stroke: color-mix(in srgb, #486047 75%, var(--environment-detail)); stroke-width: 2.2; stroke-linecap: round; }
+.cunco-sprout-leaf { fill: color-mix(in srgb, var(--environment-land) 77%, #516b4c); stroke: color-mix(in srgb, #34493a 72%, var(--environment-detail)); stroke-width: 1.3; stroke-linejoin: round; }
+.cunco-bed-sprout.tone-1 .cunco-sprout-leaf { fill: color-mix(in srgb, var(--environment-land) 62%, #6f7952); }
+.cunco-bed-sprout.tone-2 .cunco-sprout-leaf { fill: color-mix(in srgb, var(--environment-land) 67%, #61765c); }
+.cunco-path-surface { fill: color-mix(in srgb, #b19c79 57%, var(--environment-ground)); stroke: color-mix(in srgb, #776951 45%, var(--environment-detail)); stroke-width: 1.3; }
+.cunco-path-edge { fill: none; stroke: color-mix(in srgb, #7a6b52 55%, var(--environment-detail)); stroke-width: 2.1; stroke-linecap: round; opacity: .56; }
+.cunco-path-wear { fill: color-mix(in srgb, #968569 58%, var(--environment-ground)); opacity: .66; }
+.cunco-path-wear.deep { fill: color-mix(in srgb, #7d705b 62%, var(--environment-ground)); }
+.cunco-fence-rail,
+.cunco-fence-post { fill: none; stroke: color-mix(in srgb, #8d6f4d 71%, var(--environment-detail)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.cunco-fence-post { stroke-width: 6; }
+.cunco-fence-post.deep { stroke: color-mix(in srgb, #665641 77%, var(--environment-detail)); }
+.cunco-foreground-soil { fill: color-mix(in srgb, #5f4b39 72%, var(--environment-ground)); }
+.cunco-litter-clast { fill: color-mix(in srgb, #966a45 64%, var(--environment-accent)); stroke: color-mix(in srgb, #504235 72%, var(--environment-detail)); stroke-width: 1.2; }
+.cunco-litter-clast.deep { fill: color-mix(in srgb, #5f503d 77%, var(--environment-ground)); }
+.cunco-litter-vein { fill: none; stroke: color-mix(in srgb, #4f4236 71%, var(--environment-detail)); stroke-width: 1; }
+.cunco-compost-shadow { fill: rgba(25,34,28,.28); }
+.cunco-compost-base { fill: color-mix(in srgb, #604a37 77%, var(--environment-ground)); stroke: color-mix(in srgb, #3e352d 82%, var(--environment-detail)); stroke-width: 3; stroke-linejoin: round; }
+.cunco-compost-green-layer { fill: color-mix(in srgb, #5b6d45 73%, var(--environment-land)); stroke: color-mix(in srgb, #394536 78%, var(--environment-detail)); stroke-width: 2; stroke-linejoin: round; }
+.cunco-compost-brown-layer { fill: color-mix(in srgb, #79573a 73%, var(--environment-ground)); stroke: color-mix(in srgb, #4b3b30 76%, var(--environment-detail)); stroke-width: 1.8; stroke-linejoin: round; }
+.cunco-compost-layer-line { fill: none; stroke: color-mix(in srgb, #3f4435 63%, var(--environment-detail)); stroke-width: 4; stroke-linecap: round; opacity: .67; }
+.cunco-compost-clast { fill: color-mix(in srgb, #9b6d45 67%, var(--environment-accent)); stroke: color-mix(in srgb, #534235 72%, var(--environment-detail)); stroke-width: 1.2; }
+.cunco-compost-clast.deep { fill: color-mix(in srgb, #564737 80%, var(--environment-ground)); }
+.cunco-compost-clast.green { fill: color-mix(in srgb, #66794d 78%, var(--environment-land)); }
+.cunco-compost-clast-vein { fill: none; stroke: color-mix(in srgb, #4a3d32 70%, var(--environment-detail)); stroke-width: 1; }
+.cunco-compost-fragment { fill: color-mix(in srgb, #b28a55 66%, var(--environment-accent)); }
+.cunco-compost-fragment.deep { fill: color-mix(in srgb, #30352d 84%, var(--environment-detail)); }
+:root[data-theme='dark'] .cunco-garden-sky { fill: color-mix(in srgb, #2b3938 82%, var(--environment-water)); }
+:root[data-theme='dark'] .cunco-cloud { fill: color-mix(in srgb, #647c78 54%, var(--environment-water)); opacity: .4; }
+:root[data-theme='dark'] .cunco-western-terrain { fill: color-mix(in srgb, #455248 79%, var(--environment-land)); }
+:root[data-theme='dark'] .cunco-low-foothills { fill: color-mix(in srgb, #394b3f 81%, var(--environment-land)); }
+:root[data-theme='dark'] .cunco-llaima-double-summit { fill: color-mix(in srgb, #47524e 76%, var(--environment-land)); opacity: .61; }
+:root[data-theme='dark'] .cunco-summit-cloud { fill: color-mix(in srgb, #647a76 54%, var(--environment-water)); opacity: .59; }
+:root[data-theme='dark'] .cunco-shelterbelt-mass { fill: color-mix(in srgb, #284535 85%, var(--environment-land)); }
+:root[data-theme='dark'] .cunco-garden-ground { fill: color-mix(in srgb, #4b4233 82%, var(--environment-ground)); }
+:root[data-theme='dark'] .cunco-bed-edge { fill: color-mix(in srgb, #594534 82%, var(--environment-ground)); }
+:root[data-theme='dark'] .cunco-path-surface { fill: color-mix(in srgb, #6b5d48 75%, var(--environment-ground)); }
+:root[data-theme='dark'] .cunco-foreground-soil { fill: color-mix(in srgb, #3c3028 87%, var(--environment-ground)); }
+:root[data-theme='dark'] .cunco-compost-base { fill: color-mix(in srgb, #3c3028 88%, var(--environment-ground)); }
+:root[data-theme='dark'] .cunco-compost-green-layer { fill: color-mix(in srgb, #33442f 84%, var(--environment-land)); }
+:root[data-theme='dark'] .cunco-compost-brown-layer { fill: color-mix(in srgb, #543b2c 84%, var(--environment-ground)); }
 .scene-sky { fill: url(#scene-sky-gradient); }
 .scene-sky-top { stop-color: color-mix(in srgb, var(--scene-sky) 55%, white); }
 .scene-sky-bottom { stop-color: var(--scene-sky); }
@@ -1687,6 +1748,117 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .timing-clock-sector.early { fill: color-mix(in srgb, #31594a 79%, var(--local-primary)); }
 :root[data-theme='dark'] .timing-clock-sector.late { fill: color-mix(in srgb, #6b5837 79%, var(--local-secondary)); }
 :root[data-theme='dark'] .timing-flip-window { fill: color-mix(in srgb, #294c41 84%, var(--local-primary)); }
+.araucania-accessory { filter: drop-shadow(0 5px 4px rgba(30,38,31,.28)); }
+.araucania-accessory-shadow { fill: rgba(27,35,29,.24); }
+.labyrinth-table-frame { fill: color-mix(in srgb, #8d704b 74%, var(--local-secondary)); fill-rule: evenodd; stroke: color-mix(in srgb, #4e402f 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.labyrinth-kidney-surface { fill: color-mix(in srgb, #d8cfb0 72%, var(--paper-strong)); stroke: color-mix(in srgb, #695840 72%, var(--worm-deep)); stroke-width: 2; }
+.labyrinth-grooved-track,
+.labyrinth-helix-track { fill: none; stroke: color-mix(in srgb, #557264 74%, var(--local-primary)); stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+.labyrinth-grooved-track { stroke: color-mix(in srgb, #49685b 72%, var(--local-primary)); stroke-width: 7; }
+.labyrinth-compost-island { fill: color-mix(in srgb, #8c6241 72%, var(--local-secondary)); stroke: color-mix(in srgb, #4b3d31 80%, var(--worm-deep)); stroke-width: 1.8; }
+.labyrinth-compost-island.deep { fill: color-mix(in srgb, #534739 82%, var(--local-primary)); }
+.labyrinth-compost-island.green { fill: color-mix(in srgb, #536d4e 78%, var(--local-primary)); }
+.labyrinth-island-vein { fill: none; stroke: color-mix(in srgb, #d1b677 57%, var(--paper-strong)); stroke-width: 1.2; stroke-linecap: round; }
+.labyrinth-worm-token { fill: none; stroke: color-mix(in srgb, #82607d 68%, var(--local-primary)); stroke-width: 5; stroke-linecap: round; }
+.labyrinth-worm-token-head,
+.labyrinth-gate-hinge,
+.labyrinth-gate-slider,
+.labyrinth-drawer-pull { fill: color-mix(in srgb, #bc9451 74%, var(--local-secondary)); stroke: color-mix(in srgb, #54432e 79%, var(--worm-deep)); stroke-width: 1.4; }
+.labyrinth-articulated-gate { fill: color-mix(in srgb, #6f805f 70%, var(--local-primary)); stroke: color-mix(in srgb, #3e4e3b 80%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.labyrinth-ticket,
+.labyrinth-ch417-plate { fill: color-mix(in srgb, #d9c17c 72%, var(--paper-strong)); stroke: color-mix(in srgb, #5d4931 76%, var(--worm-deep)); stroke-width: 1.7; }
+.labyrinth-ticket-text,
+.labyrinth-plate-text { fill: color-mix(in srgb, #304b44 81%, var(--worm-deep)); font: 900 11px/1 var(--sans); paint-order: stroke; stroke: color-mix(in srgb, var(--paper-strong) 70%, transparent); stroke-width: 1.4px; }
+.labyrinth-ticket-text.small { font-size: 7px; letter-spacing: .04em; }
+.labyrinth-table-feet,
+.labyrinth-helix-foot,
+.labyrinth-catch-drawer { fill: color-mix(in srgb, #806647 74%, var(--local-secondary)); stroke: color-mix(in srgb, #4a3d30 82%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.labyrinth-helix-chassis { fill: none; stroke: color-mix(in srgb, #957547 74%, var(--worm-deep)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.labyrinth-helix-deck { fill: color-mix(in srgb, #9a7549 72%, var(--local-secondary)); stroke: color-mix(in srgb, #51412f 81%, var(--worm-deep)); stroke-width: 2.2; }
+.labyrinth-helix-deck.deep { fill: color-mix(in srgb, #6f6d4f 67%, var(--local-primary)); }
+.labyrinth-helix-deck-inner { fill: color-mix(in srgb, #d9d0b2 67%, var(--paper-strong)); stroke: color-mix(in srgb, #4b665a 66%, var(--local-primary)); stroke-width: 1.4; }
+.labyrinth-sliding-gate { fill: none; stroke: color-mix(in srgb, #a28149 74%, var(--worm-deep)); stroke-width: 6; stroke-linecap: round; }
+.labyrinth-drawer-front { fill: color-mix(in srgb, #a18255 71%, var(--local-secondary)); stroke: color-mix(in srgb, #58462f 78%, var(--worm-deep)); stroke-width: 1.5; }
+
+.ash-sector-cabinet,
+.ash-cassette-chassis { fill: color-mix(in srgb, #765f46 72%, var(--local-secondary)); stroke: color-mix(in srgb, #433a30 83%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.ash-sector-wheel,
+.ash-analog-dial { fill: color-mix(in srgb, #d9d0b5 74%, var(--paper-strong)); stroke: color-mix(in srgb, #665642 76%, var(--worm-deep)); stroke-width: 2.5; }
+.ash-sector-divider,
+.ash-dial-scale,
+.ash-cassette-handle,
+.ash-panel-hinge,
+.ash-side-panel-brace,
+.ash-chart-hinge,
+.ash-chart-folds,
+.ash-chart-trace { fill: none; stroke: color-mix(in srgb, #5e4c38 75%, var(--worm-deep)); stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+.ash-deposition-cell { fill: color-mix(in srgb, #638073 72%, var(--local-primary)); stroke: color-mix(in srgb, #3a5148 80%, var(--worm-deep)); stroke-width: 1.3; }
+.ash-deposition-cell.deep { fill: color-mix(in srgb, #9c7a4c 68%, var(--local-secondary)); }
+.ash-direction-pointer,
+.ash-pointer-hub { fill: color-mix(in srgb, #805877 66%, var(--local-primary)); stroke: color-mix(in srgb, #4b3a49 80%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
+.ash-counter-shell,
+.ash-vial-chamber,
+.ash-cassette-foot,
+.ash-cabinet-feet { fill: color-mix(in srgb, #8c6d47 73%, var(--local-secondary)); stroke: color-mix(in srgb, #4c3e30 81%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.ash-counter-window,
+.ash-cassette-window { fill: color-mix(in srgb, #9cc2b9 50%, var(--local-primary)); stroke: color-mix(in srgb, #3b5a52 76%, var(--worm-deep)); stroke-width: 1.2; }
+.ash-counter-window.deep,
+.ash-cassette-window.deep { fill: color-mix(in srgb, #b29a62 50%, var(--local-secondary)); }
+.ash-fold-chart,
+.ash-supported-side-panel { fill: color-mix(in srgb, #ddd2b4 74%, var(--paper-strong)); stroke: color-mix(in srgb, #665744 75%, var(--worm-deep)); stroke-width: 2.2; stroke-linejoin: round; }
+.ash-chart-trace { stroke: color-mix(in srgb, #765571 67%, var(--local-primary)); stroke-width: 2.5; }
+.ash-cassette-tray { fill: color-mix(in srgb, #61786b 68%, var(--local-primary)); stroke: color-mix(in srgb, #394c43 81%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.ash-cassette-tray.deep { fill: color-mix(in srgb, #8c734d 69%, var(--local-secondary)); }
+.ash-vial-body { fill: rgba(159,208,201,.54); stroke: color-mix(in srgb, #3f6a64 72%, var(--worm-deep)); stroke-width: 1.8; }
+.ash-vial-cap { fill: color-mix(in srgb, #b38a4b 73%, var(--local-secondary)); stroke: color-mix(in srgb, #57442e 79%, var(--worm-deep)); stroke-width: 1.5; }
+
+.cross-dial-outer,
+.cross-bridge-base,
+.cross-bridge-feet { fill: color-mix(in srgb, #82694b 72%, var(--local-secondary)); stroke: color-mix(in srgb, #493e31 81%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.cross-dial-gate { fill: none; stroke: color-mix(in srgb, #557267 73%, var(--local-primary)); stroke-width: 7; }
+.cross-dial-gate.middle { stroke: color-mix(in srgb, #9a7a4b 71%, var(--local-secondary)); stroke-width: 6; }
+.cross-dial-gate.inner { stroke: color-mix(in srgb, #765773 65%, var(--local-primary)); stroke-width: 5; }
+.cross-dial-spokes,
+.cross-observation-hinge,
+.cross-panel-brace,
+.cross-track-rail,
+.cross-window-divider,
+.cross-result-mast { fill: none; stroke: color-mix(in srgb, #604d38 77%, var(--worm-deep)); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.cross-dial-spokes { stroke-width: 1.5; opacity: .67; }
+.cross-entry-port,
+.cross-entry-chamber { fill: color-mix(in srgb, #667f72 72%, var(--local-primary)); stroke: color-mix(in srgb, #394e45 82%, var(--worm-deep)); stroke-width: 2.2; stroke-linejoin: round; }
+.cross-entry-port.right,
+.cross-entry-chamber.right { fill: color-mix(in srgb, #9d8054 66%, var(--local-secondary)); }
+.cross-dial-hub,
+.cross-result-hinge { fill: color-mix(in srgb, #b68f50 73%, var(--local-secondary)); stroke: color-mix(in srgb, #55422d 79%, var(--worm-deep)); stroke-width: 1.6; }
+.cross-folding-panel,
+.cross-central-chamber { fill: rgba(168,211,204,.49); stroke: color-mix(in srgb, #416b63 74%, var(--worm-deep)); stroke-width: 2.4; stroke-linejoin: round; }
+.cross-blank-window { fill: color-mix(in srgb, #e1d9c1 72%, var(--paper-strong)); stroke: color-mix(in srgb, #685a48 73%, var(--worm-deep)); stroke-width: 1.4; }
+.cross-blank-window.deep { fill: color-mix(in srgb, #c8b684 64%, var(--paper-strong)); }
+.cross-track-rail { stroke: color-mix(in srgb, #557367 74%, var(--local-primary)); stroke-width: 8; }
+.cross-central-gate { fill: none; stroke: color-mix(in srgb, #765574 68%, var(--local-primary)); stroke-width: 4; stroke-linecap: round; }
+.cross-result-flag { fill: color-mix(in srgb, #8a6682 64%, var(--local-primary)); stroke: color-mix(in srgb, #4d3c4b 80%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.cross-ju4400-plate { fill: color-mix(in srgb, #d7bd7a 72%, var(--paper-strong)); stroke: color-mix(in srgb, #5c4931 77%, var(--worm-deep)); stroke-width: 1.6; }
+.cross-ju4400-text { fill: color-mix(in srgb, #304a44 80%, var(--worm-deep)); font: 900 10px/1 var(--sans); paint-order: stroke; stroke: color-mix(in srgb, var(--paper-strong) 70%, transparent); stroke-width: 1.2px; }
+:root[data-theme='dark'] .labyrinth-kidney-surface,
+:root[data-theme='dark'] .labyrinth-helix-deck-inner,
+:root[data-theme='dark'] .ash-sector-wheel,
+:root[data-theme='dark'] .ash-analog-dial,
+:root[data-theme='dark'] .ash-fold-chart,
+:root[data-theme='dark'] .ash-supported-side-panel,
+:root[data-theme='dark'] .cross-blank-window { fill: color-mix(in srgb, #5b5749 79%, var(--paper-strong)); }
+:root[data-theme='dark'] .labyrinth-compost-island { fill: color-mix(in srgb, #604332 82%, var(--local-secondary)); }
+:root[data-theme='dark'] .labyrinth-compost-island.green { fill: color-mix(in srgb, #304b36 84%, var(--local-primary)); }
+:root[data-theme='dark'] .ash-sector-cabinet,
+:root[data-theme='dark'] .ash-cassette-chassis,
+:root[data-theme='dark'] .cross-dial-outer,
+:root[data-theme='dark'] .cross-bridge-base { fill: color-mix(in srgb, #524131 83%, var(--local-secondary)); }
+:root[data-theme='dark'] .ash-counter-window,
+:root[data-theme='dark'] .ash-cassette-window,
+:root[data-theme='dark'] .cross-central-chamber,
+:root[data-theme='dark'] .cross-folding-panel { fill: rgba(67,123,115,.52); }
+:root[data-theme='dark'] .cross-entry-port,
+:root[data-theme='dark'] .cross-entry-chamber { fill: color-mix(in srgb, #28483d 85%, var(--local-primary)); }
 .fig-visor path:first-child, .fig-visor path:nth-of-type(4) { fill: #72a66b; stroke: var(--worm-deep); stroke-width: 3; }
 .fig-vein, .visor-band { fill: none; stroke: #315f50; stroke-width: 2.5; stroke-linecap: round; }
 .satchel-strap { fill: none; stroke: #745744; stroke-width: 7; stroke-linecap: round; }

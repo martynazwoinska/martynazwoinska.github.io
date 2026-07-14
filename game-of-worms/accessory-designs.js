@@ -23,7 +23,7 @@ const rows = [
   ["elegans", "Kauaʻi, Hawaiʻi", "decay-substrate theatre", "decay-substrate-theatre", "Kōkeʻe cloud-water collector", "kokee-cloud-water-collector", "XZ1516 haplotype viewer", "xz1516-haplotype-viewer"],
   ["elegans", "Australian Capital Territory", "QG2811 Baermann fig-recovery rig", "qg2811-baermann-fig-recovery", "Yellow Box seed orrery", "yellow-box-seed-orrery", "Black Mountain signal theremin", "black-mountain-signal-theremin"],
   ["elegans", "Auckland, New Zealand", "ECA36 grass-litter profiler", "eca36-grass-litter-profiler", "Auckland volcanic-field monitor", "auckland-volcanic-field-monitor", "ECA36 reproductive-timing clock", "eca36-reproductive-timing-clock"],
-  ["elegans", "Araucanía, Chile", "araucaria halo", "araucaria-halo", "volcano-lake diving bell", "volcano-lake-diving-bell", "snowline telescope", "telescope"],
+  ["elegans", "Araucanía, Chile", "JU4400 compost labyrinth", "compost-labyrinth", "Llaima ashfall recorder", "ashfall-recorder", "JU4400 test-cross identifier", "test-cross-mechanism"],
   ["nigoni", "Trivandrum, Kerala · JU1325", "coconut rain hood", "coconut-rain-hood", "backwater skates", "skates", "sandbar tambourine", "sandbar-tambourine"],
   ["nigoni", "Singapore · ZF1220", "mangrove stilts", "stilts", "mudflat waders", "waders", "skyline fan", "fan"],
   ["nigoni", "Praslin, Seychelles · YR106", "granite casque", "casque", "palm bustle", "palm-bustle", "coco-de-mer hand drum", "coco-de-mer-drum"],
@@ -47,7 +47,6 @@ const rows = [
 ];
 
 const explicitUniqueRendererFamilies = new Set([
-  "araucaria-halo",
   "basalt-cuffs",
   "boulder-spectacles",
   "cacao-cuirass",
@@ -73,7 +72,6 @@ const explicitUniqueRendererFamilies = new Set([
   "shade-visor",
   "terrace-boots",
   "two-river-yoke",
-  "volcano-lake-diving-bell",
   "watershed-swimwear"
 ]);
 
@@ -91,6 +89,11 @@ const tenerifeRendererFamilies = new Set(["avocado-microhabitat-viewer", "aerial
 const kauaiRendererFamilies = new Set(["decay-substrate-theatre", "kokee-cloud-water-collector", "xz1516-haplotype-viewer"]);
 const actRendererFamilies = new Set(["qg2811-baermann-fig-recovery", "yellow-box-seed-orrery", "black-mountain-signal-theremin"]);
 const aucklandRendererFamilies = new Set(["eca36-grass-litter-profiler", "auckland-volcanic-field-monitor", "eca36-reproductive-timing-clock"]);
+const araucaniaRendererIds = new Set([
+  "elegans::Araucanía, Chile::headwear",
+  "elegans::Araucanía, Chile::wrap",
+  "elegans::Araucanía, Chile::charm"
+]);
 const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
 const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|snorkel|compass|press|gauge rod|camera rig/i;
 const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|skates|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
@@ -105,6 +108,7 @@ function hasNamedRenderer(item) {
     || kauaiRendererFamilies.has(item.family)
     || actRendererFamilies.has(item.family)
     || aucklandRendererFamilies.has(item.family)
+    || araucaniaRendererIds.has(item.id)
     || item.family === "volcanic-needle-ruff"
     || instrumentRendererPattern.test(item.label)
     || fieldToolRendererPattern.test(item.label)
@@ -1175,6 +1179,146 @@ function drawAucklandAccessory(group, item, companion) {
   return false;
 }
 
+function drawAraucaniaAccessory(group, item, companion) {
+  if (!item.id.startsWith("elegans::Araucanía, Chile::")) return false;
+
+  if (item.family === "compost-labyrinth") {
+    group.dataset.renderer = "araucania-ju4400-compost-labyrinth";
+    group.classList.add("araucania-accessory", "compost-labyrinth", companion ? "compost-labyrinth-companion" : "compost-labyrinth-primary");
+    if (companion) {
+      add(group, "path", { class: "araucania-accessory-shadow", d: "M-89 112Q0 137 91 109Q45 150-81 145Z" });
+      add(group, "path", { class: "labyrinth-helix-chassis", d: "M-61-112H60L72 92H-70ZM-52-82H52M-60-10H61M-65 59H67" });
+      const decks = [[0,-70,48,17],[3,0,55,19],[-2,69,61,21]];
+      decks.forEach(([cx, cy, rx, ry], index) => {
+        add(group, "ellipse", { class: index % 2 ? "labyrinth-helix-deck deep" : "labyrinth-helix-deck", cx, cy, rx, ry });
+        add(group, "ellipse", { class: "labyrinth-helix-deck-inner", cx, cy, rx: rx - 11, ry: ry - 6 });
+      });
+      add(group, "path", { class: "labyrinth-helix-track", d: "M-42-74C-9-92 43-85 42-65C40-43-40-51-38-20C-36 7 52-18 50 8C48 37-49 25-49 62C-48 91 26 86 47 72" });
+      [[-45,-72,-57,-49],[49,-2,64,19]].forEach(([x1,y1,x2,y2], index) => {
+        add(group, "path", { class: "labyrinth-sliding-gate", d: `M${x1} ${y1}L${x2} ${y2}` });
+        add(group, "rect", { class: "labyrinth-gate-slider", x: index ? 51 : -62, y: index ? 6 : -58, width: 14, height: 9, rx: 2 });
+      });
+      add(group, "path", { class: "labyrinth-catch-drawer", d: "M-48 88H49L58 120H-59Z" });
+      add(group, "path", { class: "labyrinth-drawer-front", d: "M-42 98H43L39 114H-40Z" });
+      add(group, "circle", { class: "labyrinth-drawer-pull", cx: 0, cy: 106, r: 4 });
+      add(group, "path", { class: "labyrinth-ch417-plate", d: "M-51-106H37L43-83H-48Z" });
+      const formerName = add(group, "text", { class: "labyrinth-plate-text", x: -4, y: -91, "text-anchor": "middle" });
+      formerName.textContent = "Ch41.7";
+      add(group, "path", { class: "labyrinth-helix-foot", d: "M-64 91L-76 124H-35L-26 94ZM28 95L38 124H78L64 90Z" });
+    } else {
+      add(group, "path", { class: "araucania-accessory-shadow", d: "M-153 78Q0 112 157 74Q79 129-140 122Z" });
+      add(group, "path", { class: "labyrinth-table-frame", d: "M-143-14Q-132-71-79-83Q-34-105 11-80Q58-94 105-68Q143-47 141 8Q142 56 96 75Q49 96 4 76Q-45 99-93 75Q-139 57-143-14ZM-120-9Q-111-52-71-62Q-34-79 3-60Q43-72 82-51Q114-34 114 5Q115 40 79 54Q42 70 5 55Q-33 73-71 55Q-112 41-120-9Z" });
+      add(group, "path", { class: "labyrinth-kidney-surface", d: "M-115-8Q-105-46-69-56Q-35-72 1-55Q39-67 78-47Q108-31 109 4Q110 35 76 49Q40 64 6 50Q-30 68-67 50Q-106 37-115-8Z" });
+      add(group, "path", { class: "labyrinth-grooved-track", d: "M-93-14C-77-48-36-50-20-25C-3 1-46 17-22 39C3 60 30 25 52 39C74 54 99 26 90 4C81-19 42-9 31-31C19-55 66-67 91-39" });
+      const clasts = [
+        [-74,-22,-16,11],[-42,19,9,-13],[-12,-26,-9,14],[18,16,10,-12],[49,-25,-12,14],[76,8,13,-9],[6,43,-14,8]
+      ];
+      clasts.forEach(([cx,cy,rx,ry], index) => {
+        add(group, "path", { class: index % 3 === 0 ? "labyrinth-compost-island green" : (index % 2 ? "labyrinth-compost-island deep" : "labyrinth-compost-island"), d: `M${cx-rx} ${cy}Q${cx} ${cy+ry*1.4} ${cx+rx} ${cy}Q${cx} ${cy-ry*1.4} ${cx-rx} ${cy}Z` });
+        add(group, "path", { class: "labyrinth-island-vein", d: `M${cx-rx*.65} ${cy+1}L${cx+rx*.65} ${cy-1}` });
+      });
+      add(group, "path", { class: "labyrinth-worm-token", d: "M-83 10Q-66-3-54 12Q-43 25-28 10" });
+      add(group, "circle", { class: "labyrinth-worm-token-head", cx: -27, cy: 10, r: 4.5 });
+      add(group, "circle", { class: "labyrinth-gate-hinge", cx: 103, cy: -25, r: 7 });
+      add(group, "path", { class: "labyrinth-articulated-gate", d: "M103-25L126-3L116 7L94-15Z" });
+      add(group, "path", { class: "labyrinth-ticket", d: "M-138-75H-63L-57-48H-132Z" });
+      const ticketTop = add(group, "text", { class: "labyrinth-ticket-text", x: -98, y: -64, "text-anchor": "middle" });
+      ticketTop.textContent = "JU4400";
+      const ticketBottom = add(group, "text", { class: "labyrinth-ticket-text small", x: -96, y: -54, "text-anchor": "middle" });
+      ticketBottom.textContent = "COMPOST";
+      add(group, "path", { class: "labyrinth-table-feet", d: "M-114 58L-129 95H-92L-80 67ZM78 60L90 95H128L112 55Z" });
+    }
+    return true;
+  }
+
+  if (item.family === "ashfall-recorder") {
+    group.dataset.renderer = "araucania-llaima-ashfall-recorder";
+    group.classList.add("araucania-accessory", "ashfall-recorder", companion ? "ashfall-recorder-companion" : "ashfall-recorder-primary");
+    if (companion) {
+      add(group, "path", { class: "araucania-accessory-shadow", d: "M-82 115Q3 139 88 112Q46 151-74 145Z" });
+      add(group, "path", { class: "ash-cassette-chassis", d: "M-54-116H49L61 100H-63Z" });
+      [-82,-38,6,50].forEach((y, index) => {
+        add(group, "path", { class: index % 2 ? "ash-cassette-tray deep" : "ash-cassette-tray", d: `M-43 ${y}H40L46 ${y+29}H-48Z` });
+        add(group, "rect", { class: "ash-cassette-window", x: -30 + (index % 2) * 7, y: y + 7, width: 57, height: 12, rx: 3 });
+        add(group, "path", { class: "ash-cassette-handle", d: `M-10 ${y+24}H11` });
+      });
+      add(group, "circle", { class: "ash-analog-dial", cx: 0, cy: -91, r: 23 });
+      add(group, "path", { class: "ash-dial-scale", d: "M-15-84Q0-105 16-84M0-91L11-102" });
+      add(group, "path", { class: "ash-vial-chamber", d: "M-38 91H38L44 122H-44Z" });
+      add(group, "path", { class: "ash-vial-body", d: "M-12 88H13L10 113Q0 121-10 113Z" });
+      add(group, "path", { class: "ash-vial-cap", d: "M-15 82H16V91H-15Z" });
+      add(group, "path", { class: "ash-panel-hinge", d: "M51-55H68M54-17H74M57 20H78" });
+      add(group, "path", { class: "ash-supported-side-panel", d: "M70-70L112-55L107 53L76 67Z" });
+      add(group, "path", { class: "ash-side-panel-brace", d: "M70-55L102-42M74-13L107 0M77 30L105 41M75 66L58 92" });
+      add(group, "path", { class: "ash-cassette-foot", d: "M-57 98L-70 128H-31L-21 102ZM24 102L35 128H74L58 97Z" });
+    } else {
+      add(group, "path", { class: "araucania-accessory-shadow", d: "M-151 88Q0 119 155 84Q78 135-139 128Z" });
+      add(group, "path", { class: "ash-sector-cabinet", d: "M-109-77L91-77L139-32V48L97 84H-103L-140 43V-34Z" });
+      add(group, "circle", { class: "ash-sector-wheel", cx: -9, cy: 1, r: 62 });
+      [-90,-30,30,90,150,210].forEach((angle, index) => {
+        const radians = angle * Math.PI / 180;
+        const x = -9 + Math.cos(radians) * 61;
+        const y = 1 + Math.sin(radians) * 61;
+        add(group, "path", { class: "ash-sector-divider", d: `M-9 1L${x.toFixed(1)} ${y.toFixed(1)}` });
+        const coverX = -9 + Math.cos(radians + Math.PI / 6) * 39;
+        const coverY = 1 + Math.sin(radians + Math.PI / 6) * 39;
+        add(group, "path", { class: index % 2 ? "ash-deposition-cell deep" : "ash-deposition-cell", d: `M${(coverX-11).toFixed(1)} ${(coverY-7).toFixed(1)}h22v14h-22Z` });
+      });
+      add(group, "path", { class: "ash-direction-pointer", d: "M-9 1L30-41L20-12Z" });
+      add(group, "circle", { class: "ash-pointer-hub", cx: -9, cy: 1, r: 8 });
+      add(group, "path", { class: "ash-counter-shell", d: "M65-54H117L123-17H70Z" });
+      [-47,-29,-11].forEach((y, index) => add(group, "rect", { class: index % 2 ? "ash-counter-window deep" : "ash-counter-window", x: 76, y, width: 34, height: 12, rx: 2 }));
+      add(group, "path", { class: "ash-chart-hinge", d: "M103 48H124M106 66H126" });
+      add(group, "path", { class: "ash-fold-chart", d: "M124 34L157 45L151 100L119 87Z" });
+      add(group, "path", { class: "ash-chart-folds", d: "M136 39L133 92M122 61L154 72" });
+      add(group, "path", { class: "ash-chart-trace", d: "M124 78L132 69L138 80L144 58L151 67" });
+      add(group, "path", { class: "ash-cabinet-feet", d: "M-113 72L-126 105H-87L-77 83ZM75 82L88 105H128L108 73Z" });
+    }
+    return true;
+  }
+
+  if (item.family === "test-cross-mechanism") {
+    group.dataset.renderer = "araucania-ju4400-test-cross-identifier";
+    group.classList.add("araucania-accessory", "test-cross-identifier", companion ? "test-cross-identifier-companion" : "test-cross-identifier-primary");
+    if (companion) {
+      add(group, "path", { class: "araucania-accessory-shadow", d: "M-108 91Q0 121 111 87Q56 137-99 130Z" });
+      add(group, "circle", { class: "cross-dial-outer", cx: -12, cy: -5, r: 78 });
+      add(group, "circle", { class: "cross-dial-gate outer", cx: -12, cy: -5, r: 59 });
+      add(group, "circle", { class: "cross-dial-gate middle", cx: -12, cy: -5, r: 39 });
+      add(group, "circle", { class: "cross-dial-gate inner", cx: -12, cy: -5, r: 20 });
+      add(group, "path", { class: "cross-dial-spokes", d: "M-90-5H66M-12-83V73M-67-60L43 50M43-60L-67 50" });
+      add(group, "path", { class: "cross-entry-port left", d: "M-111-24H-77V14H-111L-126 2V-12Z" });
+      add(group, "path", { class: "cross-entry-port right", d: "M53-24H87L103-12V2L87 14H53Z" });
+      add(group, "circle", { class: "cross-dial-hub", cx: -12, cy: -5, r: 9 });
+      add(group, "path", { class: "cross-observation-hinge", d: "M56 44L76 58M65 29L84 42" });
+      add(group, "path", { class: "cross-folding-panel", d: "M78 38L128 55L117 113L68 95Z" });
+      [[81,54],[104,62],[77,76],[100,84]].forEach(([x,y], index) => add(group, "rect", { class: index % 2 ? "cross-blank-window deep" : "cross-blank-window", x, y, width: 16, height: 13, rx: 2 }));
+      add(group, "path", { class: "cross-panel-brace", d: "M70 94L51 113M78 38L64 22" });
+    } else {
+      add(group, "path", { class: "araucania-accessory-shadow", d: "M-161 75Q0 106 165 71Q83 121-148 115Z" });
+      add(group, "path", { class: "cross-bridge-base", d: "M-150 43H151L137 74H-139Z" });
+      add(group, "path", { class: "cross-track-rail upper", d: "M-131-23H-49Q-30-23-25-7H24Q30-23 49-23H129" });
+      add(group, "path", { class: "cross-track-rail lower", d: "M-131 23H-49Q-30 23-25 7H24Q30 23 49 23H129" });
+      add(group, "path", { class: "cross-entry-chamber left", d: "M-150-48H-101L-82-23V23L-101 48H-150Z" });
+      add(group, "path", { class: "cross-entry-chamber right", d: "M150-48H101L82-23V23L101 48H150Z" });
+      add(group, "path", { class: "cross-central-chamber", d: "M-38-38H38L51 0L38 38H-38L-51 0Z" });
+      add(group, "path", { class: "cross-central-gate", d: "M-26-24L26 24M26-24L-26 24" });
+      [[-86,-11],[-86,14],[65,-11],[65,14]].forEach(([x,y], index) => add(group, "rect", { class: index % 2 ? "cross-blank-window deep" : "cross-blank-window", x, y, width: 21, height: 15, rx: 3 }));
+      add(group, "path", { class: "cross-window-divider", d: "M-76-11V4M-86-3H-65M-76 14V29M-86 22H-65M75-11V4M65-3H86M75 14V29M65 22H86" });
+      add(group, "path", { class: "cross-result-mast", d: "M112-47V-72H139" });
+      add(group, "circle", { class: "cross-result-hinge", cx: 112, cy: -47, r: 6 });
+      add(group, "path", { class: "cross-result-flag", d: "M139-78L169-69L160-47L139-54Z" });
+      add(group, "path", { class: "cross-bridge-feet", d: "M-133 64L-145 94H-108L-97 68ZM99 68L111 94H149L134 63Z" });
+      add(group, "path", { class: "cross-ju4400-plate", d: "M-31 46H35L40 67H-36Z" });
+      const identifierLabel = add(group, "text", { class: "cross-ju4400-text", x: 2, y: 60, "text-anchor": "middle" });
+      identifierLabel.textContent = "JU4400";
+    }
+    return true;
+  }
+
+  return false;
+}
+
 function drawInstrument(group, item, companion) {
   const label = item.label;
   if (/fiddle/i.test(label)) {
@@ -1506,11 +1650,7 @@ function drawRepeatedFamilyAccessory(group, item, companion) {
       }
       return true;
     case "telescope":
-      if(/snowline/i.test(label)) {
-        path(group,companion?"M-55 14L44-22L52-4L-47 32Z":"M-73 18L58-29L68-6L-63 42Z"); for(let x=-28;x<=29;x+=19) line(group,`M${x} ${8-x*.35}L${x+5} ${22-x*.35}`); line(group,"M0 10L-25 70 M0 10L28 70 M-25 70H28");
-      } else {
-        path(group,companion?"M-43 4L18-19L27-2L-34 21Z":"M-57 5L24-25L36-3L-45 28Z"); line(group,companion?"M-5 10L28 38L58 22 M28 38L9 68 M28 38L49 67":"M-7 13L38 51L78 29 M38 51L12 91 M38 51L66 89","acc-line thick");
-      }
+      path(group,companion?"M-43 4L18-19L27-2L-34 21Z":"M-57 5L24-25L36-3L-45 28Z"); line(group,companion?"M-5 10L28 38L58 22 M28 38L9 68 M28 38L49 67":"M-7 13L38 51L78 29 M38 51L12 91 M38 51L66 89","acc-line thick");
       return true;
     case "umbrella":
       path(group,companion?"M0-60Q43-27 49 8Q21-5 0 11Q-21-5-49 8Q-43-27 0-60Z":"M0-80Q57-36 65 10Q28-7 0 15Q-28-7-65 10Q-57-36 0-80Z","acc-soft"); line(group,companion?"M0-55V67Q0 81-18 72":"M0-73V90Q0 108-24 97","acc-line thick");
@@ -1566,25 +1706,6 @@ function drawUniqueNamedAccessory(group, item, companion) {
       line(group, companion ? "M-52 48L-4-13L45-45 M-4-13L56 35" : "M-69 64L-5-18L59-60 M-5-18L75 47", "acc-line thick");
       path(group, companion ? "M35-50Q51-67 65-48Q68-25 48-18Q29-29 35-50Z" : "M46-67Q67-89 86-64Q91-33 64-24Q38-39 46-67Z", "acc-main");
       path(group, companion ? "M-56 42L-66 58L-48 63L-39 49Z" : "M-74 56L-88 77L-64 84L-52 65Z", "acc-accent");
-      return true;
-    case "araucaria-halo": {
-      const radius = companion ? 43 : 58;
-      add(group, "ellipse", { class: "acc-line", cx: 0, cy: 0, rx: radius, ry: companion ? 24 : 32 });
-      const count = companion ? 8 : 12;
-      for (let index = 0; index < count; index += 1) {
-        const angle = index * Math.PI * 2 / count;
-        const x = Math.cos(angle) * radius;
-        const y = Math.sin(angle) * (companion ? 24 : 32);
-        path(group, `M${x.toFixed(1)} ${(y - (companion ? 8 : 11)).toFixed(1)}L${(x - (companion ? 7 : 9)).toFixed(1)} ${(y + (companion ? 7 : 9)).toFixed(1)}L${(x + (companion ? 7 : 9)).toFixed(1)} ${(y + (companion ? 7 : 9)).toFixed(1)}Z`, index % 2 ? "acc-accent" : "acc-main");
-      }
-      return true;
-    }
-    case "volcano-lake-diving-bell":
-      path(group, companion ? "M-42 37V-10Q0-49 42-8V37Z" : "M-56 50V-14Q0-66 56-11V50Z", "acc-main");
-      dot(group, 0, companion ? -4 : -6, companion ? 20 : 27, "acc-soft");
-      dot(group, 0, companion ? -4 : -6, companion ? 12 : 17, "acc-dark");
-      path(group, companion ? "M-48 36H48L37 55H-37Z" : "M-64 49H64L49 73H-49Z", "acc-accent");
-      line(group, companion ? "M-30 18L-39 42 M30 18L39 42" : "M-40 24L-52 56 M40 24L52 56");
       return true;
     case "coconut-rain-hood":
       path(group, companion ? "M-46 24Q-54-31 0-56Q54-31 46 24L28 35Q0 15-28 35Z" : "M-61 32Q-72-42 0-75Q72-42 61 32L37 47Q0 20-37 47Z", "acc-main");
@@ -1742,6 +1863,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawKauaiAccessory(group, item, companion)) return true;
   if (drawAustralianCapitalTerritoryAccessory(group, item, companion)) return true;
   if (drawAucklandAccessory(group, item, companion)) return true;
+  if (drawAraucaniaAccessory(group, item, companion)) return true;
   if (drawUniqueNamedAccessory(group, item, companion)) return true;
   if (drawRepeatedFamilyAccessory(group, item, companion)) return true;
   if (drawN2Accessory(group, item, companion)) return true;
@@ -1794,7 +1916,10 @@ function renderPiece(target, item, wormPart) {
     "black-mountain-signal-theremin": { primary: [381, 248, .35, -1], companion: [203, 290, .29, 1] },
     "eca36-grass-litter-profiler": { primary: [370, 125, .46, -2], companion: [-5, 95, .3, 2] },
     "auckland-volcanic-field-monitor": { primary: [225, 185, .43, -1], companion: [85, 195, .3, 2] },
-    "eca36-reproductive-timing-clock": { primary: [380, 254, .41, -1], companion: [-15, 284, .28, 2] }
+    "eca36-reproductive-timing-clock": { primary: [380, 254, .41, -1], companion: [-15, 284, .28, 2] },
+    "compost-labyrinth": { primary: [352, 110, .4, -2], companion: [18, 125, .29, 2] },
+    "ashfall-recorder": { primary: [222, 190, .37, -1], companion: [85, 218, .28, 2] },
+    "test-cross-mechanism": { primary: [360, 268, .35, -1], companion: [0, 292, .29, 2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;

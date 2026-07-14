@@ -2,8 +2,8 @@ import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
-import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-9";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-12";
+import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-10";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-13";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -91,7 +91,7 @@ const species = [
       { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.668, 22.149], source: "CaeNDR", style: "kauai", strain: "XZ1516", history: "XZ1516 was collected by M. Ailion on 15 October 2014 at 983 m from rotting nut, pod, seed or fruit. Population-genomic research identifies it among Kauaʻi’s exceptionally divergent C. elegans isotypes." },
       { name: "Australian Capital Territory", coordinates: [149.115, -35.254], source: "CaeNDR", style: "field", strain: "QG2811", history: "This marker represents QG2811, recorded at 590 m. M. Rockman collected rotting figs from an O'Connor backyard on 22 March 2017; a hermaphrodite was recovered through a Baermann funnel on 2 April. The public garden illustration is anonymised." },
       { name: "Auckland, New Zealand", coordinates: [174.746, -36.893], source: "CaeNDR", style: "field", strain: "ECA36", history: "ECA36, formerly GD6, was collected from garden grass in an Auckland urban garden at 46 m on 27 July 2013. In a controlled laboratory comparison it was an outlier for brood size and male-production rate; those are lab phenotypes, not evidence of field adaptation." },
-      { name: "Araucanía, Chile", coordinates: [-72.151, -38.938], source: "CaeNDR", style: "woodland" }
+      { name: "Araucanía, Chile", coordinates: [-72.1509, -38.9379], source: "CaeNDR", style: "field", strain: "JU4400", history: "JU4400, formerly Ch41.7, was collected and isolated by M.-A. Félix on 3 March 2023 from compost in a rural garden in Cunco at 300 m. Its species identification was recorded as a test cross." }
     ]
   },
   {

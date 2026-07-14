@@ -152,11 +152,11 @@ const canonicalProfiles = {
     { weather: "cloud", cues: [] }
   ),
   "Araucanía, Chile": profile(
-    "araucania-volcano-lake", "Araucaria forest beneath a volcano",
-    "Araucanía is a volcano–lake–ancient-araucaria mosaic whose landscape and ecology are inseparable from Mapuche territory and knowledge.",
-    "UNESCO Kütralkura Geopark", "https://www.unesco.org/en/iggp/kutralkura-unesco-global-geopark",
-    palettes.volcanic, [[0, 305], [90, 276], [170, 258], [258, 112], [338, 256], [420, 232], [510, 270], [600, 248]],
-    { water: "lake", weather: "cloud", cues: [["araucaria", 80, 280, .9], ["araucaria", 515, 300, .7], ["snow", 258, 130, .8]] }
+    "cunco-ju4400-compost-garden", "Compost in a rural garden near Cunco",
+    "JU4400, formerly Ch41.7, was collected from compost in a rural garden in Cunco. The anonymised beds, path and fence are restrained garden context; the tiny cloud-softened Llaima double summit is wider regional orientation, not a recorded collection-site view.",
+    "CaeNDR JU4400 isotype record", "https://caendr.org/isotype/JU4400/",
+    palettes.temperate, [[0, 252], [82, 239], [165, 248], [247, 232], [330, 241], [415, 224], [500, 238], [600, 222]],
+    { weather: "cloud", cues: [] }
   ),
   "Trivandrum, Kerala · JU1325": profile(
     "trivandrum-backwater", "Backwaters between sea and Ghats",
@@ -431,12 +431,12 @@ const sceneCompositions = Object.freeze({
     "M84 328Q197 306 305 324Q422 343 548 311", [],
     "two unequal grass-litter folds below a broken fence and roofline, two low separated volcanic shoulders and one hairline city needle"
   ),
-  "araucania-volcano-lake": composition(
-    "M0 389 Q104 361 207 383 Q308 407 414 378 Q518 351 600 369 V430 H0Z",
-    "M0 327 L110 303 L192 325 L258 170 L325 326 L443 298 L600 319 V430 H0Z",
-    [["araucaria", 26, 365, .98], ["araucaria", 570, 375, .78]],
-    "M0 353 Q151 336 300 358 T600 349", [2, 0, 1],
-    "candelabra-like araucarias bracketing a snow-marked cone and lake"
+  "cunco-ju4400-compost-garden": composition(
+    "M0 319Q92 297 181 314Q279 334 371 305Q470 276 600 300V430H0Z",
+    "M0 250Q91 232 179 245Q273 260 363 238Q461 215 600 231V326H0Z",
+    [],
+    "M83 286Q203 293 313 310Q432 326 548 347", [],
+    "an irregular layered compost crescent below one diagonal fence, unequal garden beds, low foothills and a tiny far-right double summit softened by cloud"
   ),
   "trivandrum-backwater": composition(
     "M0 389 Q91 351 178 384 Q273 418 362 374 Q462 324 600 369 V430 H0Z",
@@ -1246,6 +1246,79 @@ function drawAucklandGardenGrassScene(target, palette) {
   });
 }
 
+function drawAraucaniaCuncoScene(target, palette) {
+  append(target, "rect", { class: "environment-sky cunco-garden-sky", width: 600, height: 430, fill: palette[0] });
+
+  const quietClouds = append(target, "g", { class: "cunco-quiet-clouds", "aria-hidden": "true" });
+  append(quietClouds, "path", { class: "cunco-cloud back", d: "M21 76Q48 49 81 67Q105 39 141 64Q170 58 188 82H21Z" });
+  append(quietClouds, "path", { class: "cunco-cloud back", d: "M245 54Q269 33 299 49Q322 27 354 50Q381 45 396 66H245Z" });
+  append(quietClouds, "path", { class: "cunco-cloud middle", d: "M403 89Q429 61 461 80Q487 51 522 78Q554 71 575 99H403Z" });
+
+  const terrain = append(target, "g", { class: "cunco-low-terrain", "aria-hidden": "true" });
+  append(terrain, "path", { class: "cunco-western-terrain", d: "M0 221Q77 204 151 216Q231 231 303 212Q381 190 452 205Q526 220 600 197V274H0Z" });
+  append(terrain, "path", { class: "cunco-low-foothills", d: "M0 252Q81 229 159 245Q246 264 324 240Q411 212 488 232Q545 247 600 224V286H0Z" });
+  append(terrain, "path", { class: "cunco-terrain-contour", d: "M0 229Q78 213 152 225M188 225Q245 236 304 220M340 211Q395 199 449 213M482 221Q539 216 600 205" });
+
+  const llaima = append(target, "g", { class: "cunco-llaima-context", "aria-hidden": "true" });
+  append(llaima, "path", { class: "cunco-llaima-double-summit", d: "M474 221L494 207L512 182L528 209L546 197L558 168L574 206L600 220V249H474Z" });
+  append(llaima, "path", { class: "cunco-llaima-contour", d: "M490 214L512 188L528 210M539 203L558 174L576 211" });
+  append(llaima, "path", { class: "cunco-summit-cloud", d: "M474 189Q489 174 508 184Q525 165 545 183Q562 171 580 188Q594 184 600 193V209H474Z" });
+
+  const shelterbelt = append(target, "g", { class: "cunco-shelterbelt", "aria-hidden": "true" });
+  append(shelterbelt, "path", { class: "cunco-shelterbelt-mass left", d: "M0 234Q19 208 43 230Q64 197 91 227Q118 205 141 236Q160 224 178 243V286H0Z" });
+  append(shelterbelt, "path", { class: "cunco-shelterbelt-mass right", d: "M438 239Q458 214 481 235Q505 207 532 232Q556 212 579 240Q590 232 600 239V281H438Z" });
+  append(shelterbelt, "path", { class: "cunco-shelterbelt-highlight", d: "M13 240Q39 220 63 239M71 235Q97 216 122 239M452 244Q478 224 501 242M511 237Q539 219 566 244" });
+
+  append(target, "path", { class: "cunco-garden-ground", d: "M0 256Q94 240 185 255Q283 274 376 249Q475 222 600 244V430H0Z" });
+
+  const beds = append(target, "g", { class: "cunco-anonymous-beds", "aria-hidden": "true" });
+  append(beds, "path", { class: "cunco-bed-soil left", d: "M18 292L197 269L238 316L39 343Z" });
+  append(beds, "path", { class: "cunco-bed-edge left", d: "M15 287L197 263L243 313L239 323L38 350L14 335Z" });
+  append(beds, "path", { class: "cunco-bed-soil right", d: "M356 278L542 266L585 309L382 330Z" });
+  append(beds, "path", { class: "cunco-bed-edge right", d: "M352 273L544 260L590 307L586 318L380 337L351 321Z" });
+  append(beds, "path", { class: "cunco-bed-furrow", d: "M45 301L203 280M59 319L221 297M382 287L548 276M398 307L567 293" });
+  [[73,294,-8],[112,289,7],[162,284,-5],[409,281,8],[461,277,-6],[519,278,5]].forEach(([x, y, angle], index) => {
+    const plant = append(beds, "g", { class: `cunco-bed-sprout tone-${index % 3}`, transform: `translate(${x} ${y}) rotate(${angle})` });
+    append(plant, "path", { class: "cunco-sprout-stem", d: "M0 17Q-2 2 1-15" });
+    append(plant, "path", { class: "cunco-sprout-leaf", d: "M0 3Q-18-11-24 4Q-10 15 0 3ZM0-2Q16-17 23-3Q12 10 0-2Z" });
+  });
+
+  const pathGroup = append(target, "g", { class: "cunco-worn-path", "aria-hidden": "true" });
+  append(pathGroup, "path", { class: "cunco-path-surface", d: "M286 242Q323 277 300 307Q277 337 303 365Q326 392 339 430H225Q242 391 228 361Q211 329 246 302Q277 278 263 243Z" });
+  append(pathGroup, "path", { class: "cunco-path-edge", d: "M263 243Q277 278 246 302Q211 329 228 361Q242 391 225 430M286 242Q323 277 300 307Q277 337 303 365Q326 392 339 430" });
+  [[271,270,18,5,-8],[268,315,25,6,6],[265,365,31,7,-5],[285,407,39,8,7]].forEach(([cx, cy, rx, ry, angle], index) => {
+    append(pathGroup, "ellipse", { class: index % 2 ? "cunco-path-wear deep" : "cunco-path-wear", cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` });
+  });
+
+  const fence = append(target, "g", { class: "cunco-diagonal-fence", "aria-hidden": "true" });
+  append(fence, "path", { class: "cunco-fence-rail", d: "M62 275L550 333M59 291L546 351" });
+  [[72,257,314],[151,268,323],[238,276,335],[332,287,346],[432,299,360],[536,312,372]].forEach(([x, top, bottom], index) => {
+    append(fence, "path", { class: index % 2 ? "cunco-fence-post deep" : "cunco-fence-post", d: `M${x} ${top}L${x + (index % 2 ? 4 : -3)} ${bottom}` });
+  });
+
+  append(target, "path", { class: "cunco-foreground-soil", d: "M0 342Q91 317 181 339Q273 365 362 337Q465 304 600 331V430H0Z" });
+
+  const soilLitter = append(target, "g", { class: "cunco-soil-litter", "aria-hidden": "true" });
+  [[16,405,47,388],[70,426,103,405],[152,414,184,394],[208,425,239,405],[487,412,519,390],[545,426,580,404]].forEach(([x1, y1, x2, y2], index) => {
+    append(soilLitter, "path", { class: index % 2 ? "cunco-litter-clast deep" : "cunco-litter-clast", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-9} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` });
+    append(soilLitter, "path", { class: "cunco-litter-vein", d: `M${x1+4} ${y1-1}L${x2-4} ${y2+1}` });
+  });
+
+  const compost = append(target, "g", { class: "cunco-compost-crescent", transform: "translate(402 374) rotate(-5)", "aria-hidden": "true" });
+  append(compost, "ellipse", { class: "cunco-compost-shadow", cx: -4, cy: 40, rx: 124, ry: 22 });
+  append(compost, "path", { class: "cunco-compost-base", d: "M-122 8Q-105-34-63-48Q-20-65 22-40Q67-49 108-15L84 7Q52-18 20-8Q-17-29-53-7Q-79 8-89 36Q-50 55-8 47Q33 58 76 34L106 53Q62 87 9 72Q-45 84-93 58Q-126 41-122 8Z" });
+  append(compost, "path", { class: "cunco-compost-green-layer", d: "M-107 2Q-86-26-53-35Q-19-47 12-27Q46-35 78-16L58 2Q31-13 7-3Q-22-21-49-4Q-65 6-74 25Q-43 39-9 34Q25 43 57 25L76 39Q42 61 5 52Q-37 61-74 44Q-105 29-107 2Z" });
+  append(compost, "path", { class: "cunco-compost-brown-layer", d: "M-91 34Q-50 18-13 38Q24 20 75 35L95 52Q54 76 6 65Q-37 76-79 56Z" });
+  append(compost, "path", { class: "cunco-compost-layer-line", d: "M-100 18Q-66 5-34 20Q-2 8 27 20M-75 45Q-43 35-12 49Q20 35 57 45" });
+  [[-82,-7,-60,-21],[-62,22,-38,7],[-36,-18,-12,-30],[-16,21,8,7],[18,-13,42,-27],[35,18,60,4],[57,40,84,25]].forEach(([x1, y1, x2, y2], index) => {
+    append(compost, "path", { class: index % 3 === 0 ? "cunco-compost-clast green" : (index % 2 ? "cunco-compost-clast deep" : "cunco-compost-clast"), d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-8} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+6} ${x1} ${y1}Z` });
+    append(compost, "path", { class: "cunco-compost-clast-vein", d: `M${x1+3} ${y1-1}L${x2-3} ${y2+1}` });
+  });
+  [[-98,19,3],[-70,38,4],[-45,2,3],[-10,49,4],[25,4,3],[48,36,4],[78,48,3]].forEach(([cx, cy, r], index) => {
+    append(compost, "circle", { class: index % 2 ? "cunco-compost-fragment deep" : "cunco-compost-fragment", cx, cy, r });
+  });
+}
+
 function drawTenerifeScene(target, palette) {
   append(target, "rect", { class: "environment-sky tenerife-sky", width: 600, height: 430, fill: palette[0] });
   append(target, "circle", { class: "tenerife-sun", cx: 516, cy: 58, r: 26 });
@@ -1396,6 +1469,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "auckland-eca36-garden-grass") {
     drawAucklandGardenGrassScene(target, palette);
+    return;
+  }
+  if (profile.id === "cunco-ju4400-compost-garden") {
+    drawAraucaniaCuncoScene(target, palette);
     return;
   }
 
