@@ -2,8 +2,8 @@ import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
-import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-12";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-15";
+import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-13";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-16";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -117,7 +117,7 @@ const species = [
     locations: [
       { name: "Trivandrum, Kerala · JU1325", coordinates: [76.955, 8.512], source: "CGC", style: "rainforest", strain: "JU1325", history: "JU1325, the C. nigoni type isolate, was collected by M.-A. Félix on 21 December 2007 from rotting flowers and leaves in the Trivandrum Zoo/Botanical Garden. Nematodes were isolated on OP50-seeded agar after the sample spent two weeks in a plastic tube." },
       { name: "Singapore · ZF1220", coordinates: [103.82, 1.32], source: "Félix Lab", style: "rainforest", strain: "ZF1220", history: "ZF1220, also known as SF0, was collected on 3 September 2011 from rotten starfruit in Singapore by Adeline Seah and Takao Inoue. Takao Inoue isolated it as a multifemale line. The record gives no exact address, elevation or founder count." },
-      { name: "Praslin, Seychelles · YR106", coordinates: [55.7467, -4.3193], source: "Félix Lab", style: "ocean" },
+      { name: "Praslin, Seychelles · YR106", coordinates: [55.7467, -4.3193], source: "Félix Lab", style: "rainforest", strain: "YR106", history: "YR106, also known as PR3, is a wild isolate recorded only as Praslin, Seychelles, with coarse published coordinates. Its exact collection point, date, elevation, substrate, microhabitat, collector and isolator are unreported. A recent genomic study describes an isofemale line sequenced with ONT GridION; that sequencing record does not establish the original collection site." },
       { name: "São Tomé · JU2484", coordinates: [6.73, 0.34], source: "Félix Lab", style: "rainforest" },
       { name: "Mahahual, Mexico · JU2617", coordinates: [-87.71, 18.72], source: "Félix Lab", style: "rainforest" },
       { name: "Mauritius · JU2909", coordinates: [57.4061, -20.2914], source: "Félix Lab", style: "ocean" },

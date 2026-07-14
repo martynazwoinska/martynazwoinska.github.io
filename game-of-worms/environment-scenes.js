@@ -173,11 +173,11 @@ const canonicalProfiles = {
     { weather: "cloud", cues: [] }
   ),
   "Praslin, Seychelles · YR106": profile(
-    "praslin-vallee-de-mai", "Coco-de-mer forest and granite shore",
-    "Granitic Praslin protects the Vallée de Mai’s ancient palm forest, where all six endemic Seychelles palms grow together.",
-    "UNESCO Vallée de Mai", "https://whc.unesco.org/en/list/261",
-    palettes.island, [[0, 292], [86, 266], [170, 276], [250, 238], [335, 270], [430, 230], [520, 268], [600, 250]],
-    { water: "coast", weather: "sun", cues: [["cocodemer", 95, 250, .95], ["boulder", 500, 324, 1], ["palm", 420, 274, .7]] }
+    "praslin-yr106-granitic-palm-forest", "YR106 in regional Praslin palm-forest context",
+    "YR106, also known as PR3, is recorded only at island level on Praslin; its exact point, date, elevation, substrate and microhabitat are unreported. The enclosed granitic palm forest is wider regional context, not a claimed collection site.",
+    "Félix Lab YR106 record", "https://www.justbio.com/tools/worms/details.php?strain_id=333579",
+    palettes.rainforest, [[0, 217], [76, 201], [151, 214], [231, 186], [311, 205], [392, 181], [474, 199], [545, 181], [600, 194]],
+    { weather: "mist", cues: [] }
   ),
   "São Tomé · JU2484": profile(
     "sao-tome-volcanic-cacao", "São Tomé volcanic cacao landscape",
@@ -452,12 +452,12 @@ const sceneCompositions = Object.freeze({
     "M286 430Q252 390 278 350Q305 311 292 273Q280 239 320 211", [],
     "one softened five-ridged starfruit and detached star section below a drooping pinnate bough, with an S-curving planted path ending in one narrow urban opening"
   ),
-  "praslin-vallee-de-mai": composition(
-    "M0 390 Q99 355 195 386 Q301 417 405 380 Q507 344 600 372 V430 H0Z",
-    "M0 307 Q122 285 244 313 Q362 340 476 304 L600 316 V430 H0Z",
-    [["boulder", 28, 392, 1.13], ["cocodemer", 552, 351, .92]],
-    "M433 302 Q514 277 600 284", [0, 2, 1],
-    "huge rounded granite boulders beneath tall coco-de-mer columns"
+  "praslin-yr106-granitic-palm-forest": composition(
+    "M0 321Q84 299 166 316Q255 336 343 306Q442 272 518 293Q562 306 600 292V430H0Z",
+    "M0 230Q73 202 145 219Q222 238 292 207Q370 173 449 193Q526 211 600 180V326H0Z",
+    [],
+    "M527 430Q489 390 454 349Q422 311 374 278", [],
+    "an off-centre cleft granite boulder and diagonal boulder-choked drainage thread beneath two unequal giant fan rosettes forming a closed palm vault"
   ),
   "sao-tome-volcanic-cacao": composition(
     "M0 389 Q100 349 197 384 Q302 419 407 377 Q503 344 600 368 V430 H0Z",
@@ -656,9 +656,8 @@ function drawFeature(parent, cue) {
     if (kind === "igapo") append(group, "path", { class: "env-water-line", d: "M -40 58 Q 0 49 40 58" });
     return;
   }
-  if (["palm", "coconut", "cocodemer", "pandanus", "fanpalm"].includes(kind)) {
-    drawPalm(group, kind === "cocodemer" || kind === "fanpalm");
-    if (kind === "cocodemer") append(group, "path", { class: "env-accent", d: "M -15 -8 Q -1 -22 1 -5 Q 3 -22 17 -8 Q 14 12 1 18 Q -13 11 -15 -8 Z" });
+  if (["palm", "coconut", "pandanus", "fanpalm"].includes(kind)) {
+    drawPalm(group, kind === "fanpalm");
     return;
   }
   if (kind === "fig") {
@@ -1477,6 +1476,84 @@ function drawSingaporeStarfruitGardenScene(target, palette) {
   [[0,-23],[22,-6],[14,18],[-14,18],[-22,-6]].forEach(([cx,cy], index) => append(section, "ellipse", { class: index%2 ? "singapore-star-section-seed deep" : "singapore-star-section-seed", cx, cy, rx: 3.5, ry: 6, transform: `rotate(${index*72} ${cx} ${cy})` }));
 }
 
+function drawPraslinGraniticPalmForestScene(target, palette) {
+  append(target, "rect", { class: "environment-sky praslin-forest-sky", width: 600, height: 430, fill: palette[0] });
+
+  const humidDistance = append(target, "g", { class: "praslin-humid-distance", "aria-hidden": "true" });
+  append(humidDistance, "path", { class: "praslin-mist-veil back", d: "M0 54Q64 31 128 51Q195 72 258 48Q327 22 391 46Q465 72 531 42Q570 25 600 38V127H0Z" });
+  append(humidDistance, "path", { class: "praslin-closed-ridge", d: "M0 190Q55 162 109 178Q170 197 226 169Q287 139 346 158Q407 177 466 150Q536 118 600 137V243H0Z" });
+  append(humidDistance, "path", { class: "praslin-ridge-contour", d: "M0 188Q56 166 109 182M145 184Q191 187 229 169M266 157Q307 144 346 162M383 169Q426 168 465 151M507 140Q555 126 600 141" });
+  append(humidDistance, "path", { class: "praslin-light-slit", d: "M329 0Q345 53 338 108Q331 148 349 183L381 174Q365 132 372 88Q379 40 363 0Z" });
+
+  const canopy = append(target, "g", { class: "praslin-layered-canopy", "aria-hidden": "true" });
+  append(canopy, "path", { class: "praslin-canopy-mass upper", d: "M0 0H600V76Q573 58 550 75Q520 48 491 74Q459 50 431 78Q399 55 370 80Q341 56 311 80Q279 52 248 77Q214 49 185 73Q152 45 123 70Q90 43 61 67Q31 46 0 61Z" });
+  append(canopy, "path", { class: "praslin-canopy-mass lower", d: "M0 111Q24 82 54 104Q81 72 112 101Q144 76 172 108Q206 80 235 107Q264 82 294 111L304 185Q247 184 197 207Q139 231 79 210Q38 196 0 211ZM386 102Q413 75 441 100Q470 70 500 99Q531 73 557 104Q580 86 600 99V205Q554 190 510 205Q462 222 415 203L380 171Z" });
+  append(canopy, "path", { class: "praslin-canopy-highlight", d: "M20 108Q55 81 91 105M113 102Q147 78 178 108M410 103Q444 77 478 101M504 99Q540 78 575 108" });
+
+  append(target, "path", { class: "praslin-forest-floor", d: "M0 244Q84 218 166 239Q256 263 342 231Q436 196 520 218Q565 231 600 216V430H0Z" });
+  append(target, "path", { class: "praslin-floor-contour", d: "M0 275Q86 246 170 268Q256 291 343 259Q434 225 520 247Q564 258 600 246" });
+
+  const addFanPalm = (x, crownY, groundY, scale, lean, tone = "") => {
+    const palm = append(target, "g", { class: `praslin-fan-palm ${tone}`.trim(), transform: `translate(${x} ${crownY}) rotate(${lean}) scale(${scale})`, "aria-hidden": "true" });
+    const localGround = (groundY - crownY) / scale;
+    append(palm, "path", { class: "praslin-palm-trunk", d: `M-10 ${localGround}Q-18 ${localGround * .55}-4 0Q2-8 9 0Q18 ${localGround * .54} 12 ${localGround}Z` });
+    [-.76,-.49,-.22,.05,.32,.59,.83].forEach((ratio, index) => {
+      const angle = -87 + index * 29;
+      const length = index === 3 ? 111 : 92 + (index % 3) * 9;
+      const radians = angle * Math.PI / 180;
+      const endX = Math.cos(radians) * length;
+      const endY = Math.sin(radians) * length;
+      append(palm, "path", { class: index % 3 === 1 ? "praslin-fan-blade deep" : "praslin-fan-blade", d: `M-6-2Q${endX * .45 - 12} ${endY * .43 + ratio * 7} ${endX} ${endY}Q${endX * .58 + 15} ${endY * .56 - ratio * 8} 6 4Z` });
+      append(palm, "path", { class: "praslin-fan-rib", d: `M0 1Q${endX * .46} ${endY * .5} ${endX * .91} ${endY * .91}` });
+    });
+    append(palm, "circle", { class: "praslin-fan-hub", cx: 0, cy: 0, r: 10 });
+    [-.55,-.26,.04,.34,.63].forEach((ratio, index) => append(palm, "path", { class: "praslin-trunk-band", d: `M${-9 - ratio * 2} ${localGround * (index + 1) / 6}Q0 ${localGround * (index + 1) / 6 + 5} ${10 + ratio * 2} ${localGround * (index + 1) / 6}` }));
+  };
+
+  addFanPalm(151, 145, 326, 1.08, -5, "great-left");
+  addFanPalm(451, 130, 306, .83, 7, "high-right");
+
+  const stiltPalm = append(target, "g", { class: "praslin-stilt-palm", "aria-hidden": "true" });
+  append(stiltPalm, "path", { class: "praslin-stilt-trunk", d: "M511 294Q506 241 519 190Q526 163 523 137" });
+  append(stiltPalm, "path", { class: "praslin-stilt-roots", d: "M511 292L482 329M511 292L501 337M511 292L527 333M511 292L550 321" });
+  [-82,-58,-34,-10,16,42,68].forEach((angle, index) => {
+    const radians = angle * Math.PI / 180;
+    const ex = 523 + Math.cos(radians) * (index % 2 ? 75 : 86);
+    const ey = 137 + Math.sin(radians) * (index % 2 ? 75 : 86);
+    append(stiltPalm, "path", { class: index % 2 ? "praslin-stilt-leaf deep" : "praslin-stilt-leaf", d: `M520 140Q${(520+ex)/2 + (index-3)*2} ${(140+ey)/2 - 8} ${ex} ${ey}Q${(520+ex)/2 - (index-3)*2} ${(140+ey)/2 + 8} 526 143Z` });
+    append(stiltPalm, "path", { class: "praslin-stilt-rib", d: `M523 141L${ex} ${ey}` });
+  });
+
+  const pandanus = append(target, "g", { class: "praslin-pandanus", "aria-hidden": "true" });
+  append(pandanus, "path", { class: "praslin-pandanus-trunk", d: "M64 307Q73 258 69 213" });
+  append(pandanus, "path", { class: "praslin-pandanus-roots", d: "M67 279L39 321M69 279L58 327M69 279L89 323M69 279L110 313" });
+  [[-61,-38],[-48,-62],[-27,-72],[-4,-80],[20,-76],[43,-61],[61,-41],[-70,-12],[69,-9]].forEach(([dx,dy], index) => {
+    append(pandanus, "path", { class: index % 3 ? "praslin-pandanus-leaf" : "praslin-pandanus-leaf deep", d: `M65 216Q${65 + dx * .48} ${216 + dy * .4 - 7} ${65 + dx} ${216 + dy}Q${65 + dx * .5} ${216 + dy * .55 + 6} 72 219Z` });
+  });
+
+  const drainage = append(target, "g", { class: "praslin-drainage-thread", "aria-hidden": "true" });
+  append(drainage, "path", { class: "praslin-drainage-bed", d: "M600 251Q555 265 527 294Q500 323 483 346Q462 376 426 430H548Q545 392 561 357Q575 326 600 312Z" });
+  append(drainage, "path", { class: "praslin-drainage-water", d: "M600 274Q558 284 539 307Q516 334 506 357Q492 389 460 430H503Q501 396 522 365Q538 340 551 319Q568 295 600 291Z" });
+  append(drainage, "path", { class: "praslin-water-glint", d: "M583 290Q559 299 549 315M535 335Q522 351 516 368M501 391Q487 408 478 425" });
+  [[570,307,20,12,-8],[535,326,16,11,12],[554,353,24,14,-7],[503,368,17,12,9],[530,397,27,16,-9],[471,409,22,14,8]].forEach(([cx,cy,rx,ry,angle], index) => append(drainage, "ellipse", { class: index % 2 ? "praslin-drainage-stone deep" : "praslin-drainage-stone", cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` }));
+
+  const cleft = append(target, "g", { class: "praslin-cleft-boulder", transform: "translate(142 351) rotate(-4)", "aria-hidden": "true" });
+  append(cleft, "ellipse", { class: "praslin-granite-shadow", cx: 3, cy: 54, rx: 105, ry: 25 });
+  append(cleft, "path", { class: "praslin-granite-boulder left", d: "M-101 42Q-112 3-79-28Q-46-59-8-37Q9-20 4 9L-6 51Z" });
+  append(cleft, "path", { class: "praslin-granite-boulder right", d: "M2 50Q-5 11 13-18Q36-53 75-34Q110-17 105 23Q101 48 76 58Z" });
+  append(cleft, "path", { class: "praslin-granite-cleft", d: "M-8-34Q11-11 1 13Q-6 30 4 52" });
+  append(cleft, "path", { class: "praslin-granite-vein", d: "M-83 10Q-55-8-27 2M34-20Q55-4 79-11M39 26Q65 15 91 26" });
+  [[-70,-16,5],[-43,28,4],[35,-2,5],[68,34,4]].forEach(([cx,cy,r], index) => append(cleft, "circle", { class: index % 2 ? "praslin-granite-mottle deep" : "praslin-granite-mottle", cx, cy, r }));
+
+  append(target, "path", { class: "praslin-foreground-litter-bed", d: "M0 353Q85 331 171 352Q256 373 343 345Q440 313 600 342V430H0Z" });
+  const litter = append(target, "g", { class: "praslin-palm-litter", "aria-hidden": "true" });
+  [[8,413,54,387],[68,429,115,399],[212,418,255,390],[272,430,319,399],[338,414,379,388],[573,418,600,397]].forEach(([x1,y1,x2,y2], index) => {
+    append(litter, "path", { class: index % 3 === 0 ? "praslin-litter-blade green" : (index % 2 ? "praslin-litter-blade deep" : "praslin-litter-blade"), d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-8} ${x2} ${y2}Q${(x1+x2)/2+4} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` });
+    append(litter, "path", { class: "praslin-litter-rib", d: `M${x1+4} ${y1-1}L${x2-4} ${y2+1}` });
+  });
+  [[30,371,2],[188,402,3],[250,374,2],[322,397,3],[393,375,2],[582,369,3]].forEach(([cx,cy,r], index) => append(litter, "circle", { class: index % 2 ? "praslin-litter-fragment deep" : "praslin-litter-fragment", cx, cy, r }));
+}
+
 function drawTenerifeScene(target, palette) {
   append(target, "rect", { class: "environment-sky tenerife-sky", width: 600, height: 430, fill: palette[0] });
   append(target, "circle", { class: "tenerife-sun", cx: 516, cy: 58, r: 26 });
@@ -1639,6 +1716,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "singapore-zf1220-starfruit-garden") {
     drawSingaporeStarfruitGardenScene(target, palette);
+    return;
+  }
+  if (profile.id === "praslin-yr106-granitic-palm-forest") {
+    drawPraslinGraniticPalmForestScene(target, palette);
     return;
   }
 

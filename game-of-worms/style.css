@@ -972,6 +972,73 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .singapore-starfruit-collapse { fill: color-mix(in srgb, #493326 87%, var(--environment-ground)); }
 :root[data-theme='dark'] .singapore-star-section-rind { fill: color-mix(in srgb, #745b24 81%, var(--environment-accent)); }
 :root[data-theme='dark'] .singapore-star-section-flesh { fill: color-mix(in srgb, #90773a 79%, var(--environment-accent)); }
+#habitat[data-environment="praslin-yr106-granitic-palm-forest"] .regional-backdrop { contain: layout paint; }
+.praslin-forest-sky { fill: color-mix(in srgb, #bfd9cf 82%, var(--paper-strong)); }
+.praslin-mist-veil { fill: color-mix(in srgb, var(--paper-strong) 76%, var(--environment-water)); opacity: .46; }
+.praslin-mist-veil.back { opacity: .36; }
+.praslin-closed-ridge { fill: color-mix(in srgb, var(--environment-land) 53%, #728779); stroke: color-mix(in srgb, var(--environment-detail) 48%, #4d6456); stroke-width: 1.5; }
+.praslin-ridge-contour { fill: none; stroke: color-mix(in srgb, var(--environment-land) 43%, var(--paper-strong)); stroke-width: 2; stroke-linecap: round; opacity: .45; }
+.praslin-light-slit { fill: color-mix(in srgb, #dce8dc 72%, var(--environment-accent)); opacity: .68; }
+.praslin-canopy-mass { fill: color-mix(in srgb, var(--environment-land) 83%, #2f5b43); stroke: color-mix(in srgb, var(--environment-detail) 65%, #29463a); stroke-width: 1.7; stroke-linejoin: round; }
+.praslin-canopy-mass.lower { fill: color-mix(in srgb, var(--environment-land) 74%, #365e48); }
+.praslin-canopy-highlight { fill: none; stroke: color-mix(in srgb, var(--environment-land) 45%, var(--paper-strong)); stroke-width: 4; stroke-linecap: round; opacity: .34; }
+.praslin-forest-floor { fill: color-mix(in srgb, var(--environment-ground) 51%, #627151); }
+.praslin-floor-contour { fill: none; stroke: color-mix(in srgb, #4b5845 53%, var(--environment-detail)); stroke-width: 2; stroke-linecap: round; opacity: .54; }
+.praslin-palm-trunk,
+.praslin-stilt-trunk,
+.praslin-pandanus-trunk { fill: color-mix(in srgb, #75573f 70%, var(--environment-detail)); stroke: color-mix(in srgb, #493d33 76%, var(--environment-detail)); stroke-width: 2.2; stroke-linejoin: round; }
+.praslin-fan-blade { fill: color-mix(in srgb, #527d55 79%, var(--environment-land)); stroke: color-mix(in srgb, #34513d 77%, var(--environment-detail)); stroke-width: 1.25; stroke-linejoin: round; }
+.praslin-fan-blade.deep { fill: color-mix(in srgb, #315f46 82%, var(--environment-land)); }
+.praslin-fan-rib,
+.praslin-stilt-rib { fill: none; stroke: color-mix(in srgb, #b59a59 49%, var(--environment-detail)); stroke-width: 1.8; stroke-linecap: round; opacity: .78; }
+.praslin-fan-hub { fill: color-mix(in srgb, #8d7148 68%, var(--environment-accent)); stroke: color-mix(in srgb, #4b4134 78%, var(--environment-detail)); stroke-width: 1.8; }
+.praslin-trunk-band { fill: none; stroke: color-mix(in srgb, #b18e59 51%, var(--environment-detail)); stroke-width: 2.2; stroke-linecap: round; opacity: .66; }
+.praslin-stilt-trunk { fill: none; stroke-width: 10; stroke-linecap: round; }
+.praslin-stilt-roots,
+.praslin-pandanus-roots { fill: none; stroke: color-mix(in srgb, #72533c 74%, var(--environment-detail)); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.praslin-stilt-leaf { fill: color-mix(in srgb, #5a845d 77%, var(--environment-land)); stroke: color-mix(in srgb, #34513c 77%, var(--environment-detail)); stroke-width: 1.2; stroke-linejoin: round; }
+.praslin-stilt-leaf.deep { fill: color-mix(in srgb, #37684b 82%, var(--environment-land)); }
+.praslin-pandanus-trunk { fill: none; stroke-width: 9; stroke-linecap: round; }
+.praslin-pandanus-leaf { fill: color-mix(in srgb, #66875a 77%, var(--environment-land)); stroke: color-mix(in srgb, #38533e 76%, var(--environment-detail)); stroke-width: 1.1; stroke-linejoin: round; }
+.praslin-pandanus-leaf.deep { fill: color-mix(in srgb, #456f4d 82%, var(--environment-land)); }
+.praslin-drainage-bed { fill: color-mix(in srgb, #5a4e43 68%, var(--environment-ground)); stroke: color-mix(in srgb, #423b34 61%, var(--environment-detail)); stroke-width: 1.5; }
+.praslin-drainage-water { fill: color-mix(in srgb, var(--environment-water) 74%, #5f9188); stroke: color-mix(in srgb, #3d6962 61%, var(--environment-detail)); stroke-width: 1.5; }
+.praslin-water-glint { fill: none; stroke: color-mix(in srgb, var(--environment-water) 45%, var(--paper-strong)); stroke-width: 2.1; stroke-linecap: round; opacity: .71; }
+.praslin-drainage-stone { fill: color-mix(in srgb, #a9949a 66%, var(--environment-ground)); stroke: color-mix(in srgb, #695d62 59%, var(--environment-detail)); stroke-width: 1.4; }
+.praslin-drainage-stone.deep { fill: color-mix(in srgb, #827279 69%, var(--environment-ground)); }
+.praslin-granite-shadow { fill: rgba(25,35,29,.29); }
+.praslin-granite-boulder { fill: color-mix(in srgb, #ae969d 70%, var(--environment-ground)); stroke: color-mix(in srgb, #67585e 69%, var(--environment-detail)); stroke-width: 2.7; stroke-linejoin: round; }
+.praslin-granite-boulder.right { fill: color-mix(in srgb, #9d858e 69%, var(--environment-ground)); }
+.praslin-granite-cleft { fill: none; stroke: color-mix(in srgb, #4c4143 80%, var(--environment-detail)); stroke-width: 6; stroke-linecap: round; }
+.praslin-granite-vein { fill: none; stroke: color-mix(in srgb, #d0bdbe 56%, var(--paper-strong)); stroke-width: 2; stroke-linecap: round; opacity: .63; }
+.praslin-granite-mottle { fill: color-mix(in srgb, #c4adb2 63%, var(--environment-ground)); }
+.praslin-granite-mottle.deep { fill: color-mix(in srgb, #6f6068 72%, var(--environment-detail)); }
+.praslin-foreground-litter-bed { fill: color-mix(in srgb, #493d31 69%, var(--environment-ground)); }
+.praslin-litter-blade { fill: color-mix(in srgb, #906c48 66%, var(--environment-accent)); stroke: color-mix(in srgb, #493b31 75%, var(--environment-detail)); stroke-width: 1.1; }
+.praslin-litter-blade.deep { fill: color-mix(in srgb, #5b4a38 80%, var(--environment-ground)); }
+.praslin-litter-blade.green { fill: color-mix(in srgb, #506a43 79%, var(--environment-land)); }
+.praslin-litter-rib { fill: none; stroke: color-mix(in srgb, #40362e 73%, var(--environment-detail)); stroke-width: 1; }
+.praslin-litter-fragment { fill: color-mix(in srgb, #ad8b52 66%, var(--environment-accent)); }
+.praslin-litter-fragment.deep { fill: color-mix(in srgb, #28332c 87%, var(--environment-detail)); }
+:root[data-theme='dark'] .praslin-forest-sky { fill: color-mix(in srgb, #213a35 86%, var(--environment-water)); }
+:root[data-theme='dark'] .praslin-mist-veil { fill: color-mix(in srgb, #57736b 47%, var(--environment-water)); opacity: .3; }
+:root[data-theme='dark'] .praslin-closed-ridge { fill: color-mix(in srgb, #355043 84%, var(--environment-land)); }
+:root[data-theme='dark'] .praslin-light-slit { fill: color-mix(in srgb, #77754b 62%, var(--environment-accent)); opacity: .45; }
+:root[data-theme='dark'] .praslin-canopy-mass { fill: color-mix(in srgb, #1f3f30 89%, var(--environment-land)); }
+:root[data-theme='dark'] .praslin-canopy-mass.lower { fill: color-mix(in srgb, #284936 87%, var(--environment-land)); }
+:root[data-theme='dark'] .praslin-forest-floor { fill: color-mix(in srgb, #384431 85%, var(--environment-ground)); }
+:root[data-theme='dark'] .praslin-fan-blade,
+:root[data-theme='dark'] .praslin-stilt-leaf,
+:root[data-theme='dark'] .praslin-pandanus-leaf { fill: color-mix(in srgb, #2b563c 86%, var(--environment-land)); }
+:root[data-theme='dark'] .praslin-fan-blade.deep,
+:root[data-theme='dark'] .praslin-stilt-leaf.deep,
+:root[data-theme='dark'] .praslin-pandanus-leaf.deep { fill: color-mix(in srgb, #204633 89%, var(--environment-land)); }
+:root[data-theme='dark'] .praslin-drainage-bed { fill: color-mix(in srgb, #322c27 88%, var(--environment-ground)); }
+:root[data-theme='dark'] .praslin-drainage-water { fill: color-mix(in srgb, #2d5c55 84%, var(--environment-water)); }
+:root[data-theme='dark'] .praslin-drainage-stone { fill: color-mix(in srgb, #655a60 79%, var(--environment-ground)); }
+:root[data-theme='dark'] .praslin-granite-boulder { fill: color-mix(in srgb, #695a61 80%, var(--environment-ground)); }
+:root[data-theme='dark'] .praslin-granite-boulder.right { fill: color-mix(in srgb, #5b4d55 82%, var(--environment-ground)); }
+:root[data-theme='dark'] .praslin-foreground-litter-bed { fill: color-mix(in srgb, #29231f 91%, var(--environment-ground)); }
 .scene-sky { fill: url(#scene-sky-gradient); }
 .scene-sky-top { stop-color: color-mix(in srgb, var(--scene-sky) 55%, white); }
 .scene-sky-bottom { stop-color: var(--scene-sky); }
@@ -2222,6 +2289,119 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .orchid-tower-window { fill: rgba(57,119,109,.54); }
 :root[data-theme='dark'] .orchid-bench-rail,
 :root[data-theme='dark'] .orchid-propagation-tower { fill: color-mix(in srgb, #30483a 85%, var(--local-primary)); }
+.praslin-accessory { filter: drop-shadow(0 5px 4px rgba(22,35,29,.3)); }
+.praslin-accessory-shadow { fill: rgba(20,32,27,.26); }
+.genome-loom-frame,
+.genome-reel-base { fill: color-mix(in srgb, #8f7050 72%, var(--local-secondary)); stroke: color-mix(in srgb, #4b3d31 83%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
+.genome-loom-membrane { fill: color-mix(in srgb, #d4caa9 65%, var(--paper-strong)); stroke: color-mix(in srgb, #665340 75%, var(--worm-deep)); stroke-width: 2.2; stroke-linejoin: round; }
+.genome-membrane-grid { fill: none; stroke: color-mix(in srgb, #7c7161 48%, var(--local-primary)); stroke-width: 1.1; opacity: .58; }
+.genome-pore-ring,
+.genome-single-pore { fill: color-mix(in srgb, #688978 66%, var(--local-primary)); stroke: color-mix(in srgb, #354f43 81%, var(--worm-deep)); stroke-width: 2.2; }
+.genome-pore-ring.deep { fill: color-mix(in srgb, #795b72 64%, var(--local-primary)); }
+.genome-pore-core { fill: color-mix(in srgb, #d4b467 70%, var(--local-secondary)); stroke: color-mix(in srgb, #624a2e 78%, var(--worm-deep)); stroke-width: 1.4; }
+.genome-continuous-read,
+.genome-spiral-strand { fill: none; stroke: color-mix(in srgb, #9f4771 70%, var(--local-primary)); stroke-width: 5.4; stroke-linecap: round; stroke-linejoin: round; }
+.genome-scaffold-tab,
+.genome-radial-drawer { fill: color-mix(in srgb, #6d8c78 64%, var(--local-primary)); stroke: color-mix(in srgb, #385043 79%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
+.genome-scaffold-tab.deep,
+.genome-radial-drawer.deep { fill: color-mix(in srgb, #9a7451 69%, var(--local-secondary)); }
+.genome-open-reel,
+.genome-reel-stand,
+.genome-counter-arm,
+.genome-crank-shaft,
+.genome-crank-spokes,
+.genome-loom-feet,
+.genome-reel-feet { fill: none; stroke: color-mix(in srgb, #5a4634 82%, var(--worm-deep)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.genome-open-reel { stroke-width: 9; }
+.genome-counter-arm,
+.genome-crank-shaft,
+.genome-crank-spokes { stroke-width: 3; }
+.genome-crank-wheel,
+.genome-drawer-pull { fill: color-mix(in srgb, #76546d 66%, var(--local-primary)); stroke: color-mix(in srgb, #493946 81%, var(--worm-deep)); stroke-width: 1.8; }
+.genome-record-tag,
+.genome-read-counter { fill: color-mix(in srgb, #d8c98f 70%, var(--paper-strong)); stroke: color-mix(in srgb, #66513a 78%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
+.genome-record-text,
+.genome-small-text,
+.growth-tag-text { fill: color-mix(in srgb, #294b42 84%, var(--worm-deep)); font: 900 9px/1 var(--sans); paint-order: stroke; stroke: color-mix(in srgb, var(--paper-strong) 72%, transparent); stroke-width: 1.1px; letter-spacing: .02em; }
+.genome-small-text { font-size: 7px; }
+
+.growth-frame-base,
+.growth-census-base { fill: color-mix(in srgb, #896b4b 72%, var(--local-secondary)); stroke: color-mix(in srgb, #4a3c31 83%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
+.growth-measuring-frame,
+.growth-caliper-rail,
+.growth-sliding-caliper,
+.growth-frame-feet,
+.growth-census-feet { fill: none; stroke: color-mix(in srgb, #5a4634 82%, var(--worm-deep)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.growth-caliper-rail,
+.growth-sliding-caliper { stroke-width: 3; }
+.growth-scale-ticks { fill: none; stroke: color-mix(in srgb, #9d7a48 74%, var(--local-secondary)); stroke-width: 2.1; stroke-linecap: round; }
+.growth-model-root { fill: none; stroke: color-mix(in srgb, #5a7654 75%, var(--local-primary)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.growth-model-root.deep { stroke: color-mix(in srgb, #806949 72%, var(--local-secondary)); }
+.growth-model-leaf { fill: color-mix(in srgb, #6c9070 67%, var(--local-primary)); stroke: color-mix(in srgb, #385143 80%, var(--worm-deep)); stroke-width: 1.5; }
+.growth-model-leaf.deep { fill: color-mix(in srgb, #a48a54 66%, var(--local-secondary)); }
+.growth-stage-marker,
+.growth-stage-counter { fill: color-mix(in srgb, #bb9857 73%, var(--local-secondary)); stroke: color-mix(in srgb, #59442e 81%, var(--worm-deep)); stroke-width: 1.4; }
+.growth-stage-counter.deep { fill: color-mix(in srgb, #6e846d 66%, var(--local-primary)); }
+.growth-marked-tree-tag,
+.growth-data-roll,
+.growth-mapping-drawer { fill: color-mix(in srgb, #d5c893 69%, var(--paper-strong)); stroke: color-mix(in srgb, #65523d 78%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
+.growth-data-roll-arm,
+.growth-data-lines,
+.growth-map-lines { fill: none; stroke: color-mix(in srgb, #61513e 79%, var(--worm-deep)); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.growth-data-roll-arm { stroke-width: 3.5; }
+.growth-census-panel { fill: color-mix(in srgb, #d1c6a5 68%, var(--paper-strong)); stroke: color-mix(in srgb, #695741 76%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.growth-census-panel.deep { fill: color-mix(in srgb, #a9bea6 57%, var(--local-primary)); }
+.growth-fold-hinge,
+.growth-interval-rail { fill: none; stroke: color-mix(in srgb, #5c4a38 80%, var(--worm-deep)); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.growth-interval-node,
+.growth-drawer-pull { fill: color-mix(in srgb, #76546c 66%, var(--local-primary)); stroke: color-mix(in srgb, #493846 81%, var(--worm-deep)); stroke-width: 1.4; }
+.growth-interval-node.deep { fill: color-mix(in srgb, #b18c4f 73%, var(--local-secondary)); }
+
+.listener-canopy-base,
+.listener-tripod-hub,
+.listener-wave-carriage { fill: color-mix(in srgb, #896b4b 72%, var(--local-secondary)); stroke: color-mix(in srgb, #4a3c31 83%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
+.listener-petal-bowl { fill: color-mix(in srgb, #795773 68%, var(--local-primary)); stroke: color-mix(in srgb, #493a47 83%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
+.listener-bowl-inner { fill: color-mix(in srgb, #b28d57 70%, var(--local-secondary)); stroke: color-mix(in srgb, #5e482f 78%, var(--worm-deep)); stroke-width: 2; }
+.listener-bowl-petal-lines,
+.listener-bowl-neck { fill: none; stroke: color-mix(in srgb, #4e3d43 79%, var(--worm-deep)); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.listener-crooked-tripod,
+.listener-tripod-brace,
+.listener-carriage-feet,
+.listener-crescent-arch,
+.listener-arch-inlay,
+.listener-canopy-feet { fill: none; stroke: color-mix(in srgb, #594532 82%, var(--worm-deep)); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.listener-tripod-brace,
+.listener-arch-inlay { stroke-width: 3; }
+.listener-crescent-arch { stroke: color-mix(in srgb, #7d5d72 69%, var(--local-primary)); stroke-width: 14; }
+.listener-direction-vane,
+.listener-resonator-cord,
+.listener-spectrogram-arm { fill: none; stroke: color-mix(in srgb, #9b7949 75%, var(--local-secondary)); stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; }
+.listener-vane-fin,
+.listener-hanging-resonator { fill: color-mix(in srgb, #738a72 66%, var(--local-primary)); stroke: color-mix(in srgb, #3d5141 80%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
+.listener-vane-fin.deep,
+.listener-hanging-resonator.deep { fill: color-mix(in srgb, #a78653 69%, var(--local-secondary)); }
+.listener-resonator-ripple,
+.listener-waveform,
+.listener-spectrogram-lines { fill: none; stroke: color-mix(in srgb, #7c4969 72%, var(--local-primary)); stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+.listener-spectrogram-roll { fill: color-mix(in srgb, #d5c894 69%, var(--paper-strong)); stroke: color-mix(in srgb, #65523d 78%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
+:root[data-theme='dark'] .genome-loom-membrane,
+:root[data-theme='dark'] .genome-record-tag,
+:root[data-theme='dark'] .genome-read-counter,
+:root[data-theme='dark'] .growth-marked-tree-tag,
+:root[data-theme='dark'] .growth-data-roll,
+:root[data-theme='dark'] .growth-mapping-drawer,
+:root[data-theme='dark'] .growth-census-panel,
+:root[data-theme='dark'] .listener-spectrogram-roll { fill: color-mix(in srgb, #565143 82%, var(--paper-strong)); }
+:root[data-theme='dark'] .genome-loom-frame,
+:root[data-theme='dark'] .genome-reel-base,
+:root[data-theme='dark'] .growth-frame-base,
+:root[data-theme='dark'] .growth-census-base,
+:root[data-theme='dark'] .listener-canopy-base,
+:root[data-theme='dark'] .listener-tripod-hub,
+:root[data-theme='dark'] .listener-wave-carriage { fill: color-mix(in srgb, #4b3b30 85%, var(--local-secondary)); }
+:root[data-theme='dark'] .growth-census-panel.deep { fill: color-mix(in srgb, #334b3c 85%, var(--local-primary)); }
+:root[data-theme='dark'] .listener-petal-bowl { fill: color-mix(in srgb, #4e394d 84%, var(--local-primary)); }
+:root[data-theme='dark'] .listener-bowl-inner { fill: color-mix(in srgb, #6e5432 82%, var(--local-secondary)); }
 .fig-visor path:first-child, .fig-visor path:nth-of-type(4) { fill: #72a66b; stroke: var(--worm-deep); stroke-width: 3; }
 .fig-vein, .visor-band { fill: none; stroke: #315f50; stroke-width: 2.5; stroke-linecap: round; }
 .satchel-strap { fill: none; stroke: #745744; stroke-width: 7; stroke-linecap: round; }
