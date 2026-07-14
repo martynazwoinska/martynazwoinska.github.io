@@ -691,6 +691,57 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .kauai-kokee-canopy-leaf { fill: color-mix(in srgb, #28543e 82%, var(--environment-land)); }
 :root[data-theme='dark'] .kauai-kokee-substrate-shell { fill: color-mix(in srgb, #49372b 82%, var(--environment-ground)); }
 :root[data-theme='dark'] .kauai-kokee-substrate-soft { fill: color-mix(in srgb, #5e452f 80%, var(--environment-accent)); }
+#habitat[data-environment="canberra-oconnor-fig-garden"] .regional-backdrop { contain: layout paint; }
+.canberra-oconnor-sky { fill: color-mix(in srgb, #e7dfcf 82%, var(--paper-strong)); }
+.canberra-oconnor-sun { fill: color-mix(in srgb, var(--environment-accent) 70%, #f4d58a); opacity: .72; filter: drop-shadow(0 0 12px rgba(185,143,74,.2)); }
+.canberra-oconnor-ridge { fill: color-mix(in srgb, var(--environment-land) 61%, #8e8b67); stroke: color-mix(in srgb, var(--environment-detail) 54%, #62634f); stroke-width: 1.8; }
+.canberra-oconnor-ridge-detail { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 48%, #aaa078); stroke-width: 2.2; stroke-linecap: round; opacity: .58; }
+.canberra-ridge-tree { fill: color-mix(in srgb, var(--environment-land) 72%, #657554); stroke: color-mix(in srgb, var(--environment-detail) 61%, #4e5746); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.canberra-ridge-tree.deep { fill: color-mix(in srgb, var(--environment-land) 82%, #536746); }
+.canberra-tower-mast,
+.canberra-tower-platform { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 88%, #3f4744); stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; }
+.canberra-tower-tip { fill: color-mix(in srgb, var(--environment-accent) 74%, #9b7650); stroke: var(--environment-detail); stroke-width: .8; }
+.canberra-garden-ground { fill: color-mix(in srgb, var(--environment-ground) 62%, #938063); }
+.canberra-roof-fragment { fill: color-mix(in srgb, #a46d54 54%, var(--environment-ground)); stroke: color-mix(in srgb, var(--environment-detail) 67%, #665248); stroke-width: 2; stroke-linejoin: round; }
+.canberra-roof-seam { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 54%, #7d5d4d); stroke-width: 1.5; stroke-linecap: round; }
+.canberra-fence-rail,
+.canberra-fence-post { fill: none; stroke: color-mix(in srgb, #826b4d 72%, var(--environment-detail)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.canberra-fence-post { stroke-width: 6; }
+.canberra-yellow-box-trunk,
+.canberra-yellow-box-branch { fill: color-mix(in srgb, #9a7b55 72%, var(--environment-ground)); stroke: color-mix(in srgb, #5c4f3f 78%, var(--environment-detail)); stroke-width: 2.5; stroke-linejoin: round; }
+.canberra-yellow-box-leaves { fill: color-mix(in srgb, var(--environment-land) 72%, #78925f); stroke: color-mix(in srgb, var(--environment-detail) 67%, #4f654b); stroke-width: 1.6; }
+.canberra-yellow-box-leaves.deep { fill: color-mix(in srgb, var(--environment-land) 83%, #5f7850); }
+.canberra-step-stone { fill: color-mix(in srgb, #aaa28d 66%, var(--environment-ground)); stroke: color-mix(in srgb, var(--environment-detail) 59%, #777466); stroke-width: 1.7; }
+.canberra-step-stone.deep { fill: color-mix(in srgb, #8e897b 68%, var(--environment-ground)); }
+.canberra-edge-earth { fill: color-mix(in srgb, #6f5942 71%, var(--environment-ground)); }
+.canberra-edge-stone { fill: color-mix(in srgb, #a49a84 66%, var(--environment-ground)); stroke: color-mix(in srgb, var(--environment-detail) 61%, #6f685a); stroke-width: 1.5; stroke-linejoin: round; }
+.canberra-edge-stone.deep { fill: color-mix(in srgb, #887d6b 70%, var(--environment-ground)); }
+.canberra-decay-patch { fill: color-mix(in srgb, #554638 74%, var(--environment-ground)); stroke: color-mix(in srgb, var(--environment-detail) 68%, #463c32); stroke-width: 2; }
+.canberra-litter-leaf { fill: color-mix(in srgb, #9b7048 66%, var(--environment-accent)); stroke: color-mix(in srgb, var(--environment-detail) 70%, #5b4938); stroke-width: 1.25; }
+.canberra-litter-leaf.deep { fill: color-mix(in srgb, #66533e 78%, var(--environment-ground)); }
+.canberra-litter-vein { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 70%, #5b4938); stroke-width: 1; }
+.canberra-fig-shadow { fill: rgba(30,37,30,.27); }
+.canberra-fig-rind { fill: color-mix(in srgb, #765447 73%, var(--environment-ground)); stroke: color-mix(in srgb, #493b34 82%, var(--environment-detail)); stroke-width: 2.8; stroke-linejoin: round; }
+.canberra-fig-rind.sagged { fill: color-mix(in srgb, #665044 77%, var(--environment-ground)); }
+.canberra-fig-flesh { fill: color-mix(in srgb, #a16b6c 62%, var(--environment-accent)); stroke: color-mix(in srgb, #5d3f45 76%, var(--environment-detail)); stroke-width: 2; }
+.canberra-fig-cleft,
+.canberra-fig-crease { fill: none; stroke: color-mix(in srgb, #423731 82%, var(--environment-detail)); stroke-width: 2; stroke-linecap: round; }
+.canberra-fig-collapse { fill: color-mix(in srgb, #8b6255 65%, var(--environment-ground)); stroke: color-mix(in srgb, #4a3b35 77%, var(--environment-detail)); stroke-width: 1.8; }
+.canberra-fig-seed { fill: color-mix(in srgb, #d1b36f 72%, var(--environment-accent)); stroke: color-mix(in srgb, #694b3c 72%, var(--environment-detail)); stroke-width: .8; }
+.canberra-fig-seed.deep,
+.canberra-fig-mottle.deep { fill: color-mix(in srgb, #443b34 84%, var(--environment-detail)); }
+.canberra-fig-mottle { fill: color-mix(in srgb, #9b7458 63%, var(--environment-accent)); }
+:root[data-theme='dark'] .canberra-oconnor-sky { fill: color-mix(in srgb, #2f3734 84%, var(--environment-water)); }
+:root[data-theme='dark'] .canberra-oconnor-sun { opacity: .48; }
+:root[data-theme='dark'] .canberra-oconnor-ridge { fill: color-mix(in srgb, #4d5744 78%, var(--environment-land)); }
+:root[data-theme='dark'] .canberra-garden-ground { fill: color-mix(in srgb, #514536 80%, var(--environment-ground)); }
+:root[data-theme='dark'] .canberra-roof-fragment { fill: color-mix(in srgb, #66483c 75%, var(--environment-ground)); }
+:root[data-theme='dark'] .canberra-yellow-box-leaves { fill: color-mix(in srgb, #344d36 81%, var(--environment-land)); }
+:root[data-theme='dark'] .canberra-step-stone,
+:root[data-theme='dark'] .canberra-edge-stone { fill: color-mix(in srgb, #655f54 78%, var(--environment-ground)); }
+:root[data-theme='dark'] .canberra-decay-patch { fill: color-mix(in srgb, #3d332c 86%, var(--environment-ground)); }
+:root[data-theme='dark'] .canberra-fig-rind { fill: color-mix(in srgb, #513b35 82%, var(--environment-ground)); }
+:root[data-theme='dark'] .canberra-fig-flesh { fill: color-mix(in srgb, #74484f 77%, var(--environment-accent)); }
 .scene-sky { fill: url(#scene-sky-gradient); }
 .scene-sky-top { stop-color: color-mix(in srgb, var(--scene-sky) 55%, white); }
 .scene-sky-bottom { stop-color: var(--scene-sky); }
@@ -1363,6 +1414,107 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .haplotype-lightbox-field,
 :root[data-theme='dark'] .haplotype-drum-field { fill: color-mix(in srgb, #162c2a 88%, var(--local-primary)); }
 :root[data-theme='dark'] .haplotype-magnifier-glass { fill: rgba(77,142,129,.52); }
+.act-accessory { filter: drop-shadow(0 5px 4px rgba(31,38,31,.27)); }
+.act-accessory-shadow { fill: rgba(31,36,30,.23); }
+.baermann-stand-base,
+.baermann-tripod-frame,
+.baermann-ring-stand,
+.baermann-ring-brace,
+.baermann-reservoir-rim { fill: none; stroke: color-mix(in srgb, #aa844b 72%, var(--worm-deep)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.baermann-stand-base { fill: color-mix(in srgb, #8a6e47 72%, var(--local-secondary)); stroke-width: 2.8; }
+.baermann-ring-brace { stroke-width: 2.5; }
+.baermann-support-ring,
+.baermann-clamp-wheel { fill: color-mix(in srgb, #bd9654 72%, var(--local-secondary)); stroke: color-mix(in srgb, #59472f 79%, var(--worm-deep)); stroke-width: 2.5; }
+.baermann-funnel,
+.baermann-reservoir.companion { fill: rgba(170,211,204,.49); stroke: color-mix(in srgb, #456e67 70%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.baermann-water { fill: rgba(102,174,172,.5); stroke: color-mix(in srgb, #3c7771 71%, var(--worm-deep)); stroke-width: 1.7; }
+.baermann-hammock,
+.baermann-basket-frame,
+.baermann-filter-line { fill: rgba(226,218,188,.43); stroke: color-mix(in srgb, #786a4e 72%, var(--worm-deep)); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.baermann-basket-frame,
+.baermann-filter-line { fill: none; }
+.baermann-fig-sample { fill: color-mix(in srgb, #735147 72%, var(--local-secondary)); stroke: color-mix(in srgb, #473a34 80%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.baermann-fig-speck { fill: color-mix(in srgb, #c1a167 67%, var(--local-secondary)); }
+.baermann-fig-speck.deep { fill: color-mix(in srgb, #353833 84%, var(--worm-deep)); }
+.baermann-outlet,
+.baermann-tube,
+.baermann-clamp,
+.baermann-clamp-spokes { fill: none; stroke: color-mix(in srgb, #4c5149 76%, var(--worm-deep)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.baermann-tube { stroke: color-mix(in srgb, #495a55 73%, var(--worm-deep)); stroke-width: 5; }
+.baermann-clamp { fill: color-mix(in srgb, #b58b4b 73%, var(--local-secondary)); stroke-width: 2.5; }
+.baermann-clamp-spokes { stroke-width: 1.8; }
+.baermann-vial { fill: rgba(161,210,203,.54); stroke: color-mix(in srgb, #3e6b65 72%, var(--worm-deep)); stroke-width: 2.3; stroke-linejoin: round; }
+.baermann-vial-cap { fill: color-mix(in srgb, #b58d4c 73%, var(--local-secondary)); stroke: color-mix(in srgb, #5a472f 79%, var(--worm-deep)); stroke-width: 2; }
+.baermann-vial-level { fill: rgba(91,160,158,.62); stroke: none; }
+.baermann-vial-label { fill: color-mix(in srgb, #f0dfae 72%, var(--paper-strong)); font: 900 7px/1 var(--sans); letter-spacing: -.04em; stroke: color-mix(in srgb, #33433e 65%, var(--worm-deep)); stroke-width: .8px; paint-order: stroke; }
+
+.seed-orrery-outer-ring,
+.seed-column-frame,
+.seed-column-foot { fill: none; stroke: color-mix(in srgb, #a98346 73%, var(--worm-deep)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.seed-column-frame { fill: color-mix(in srgb, #6f7555 37%, transparent); }
+.seed-column-foot { fill: color-mix(in srgb, #8b7048 70%, var(--local-secondary)); stroke-width: 2.5; }
+.seed-orrery-inner-ring,
+.seed-orrery-hub,
+.seed-arm-joint,
+.seed-valve-hub { fill: color-mix(in srgb, #bd9854 73%, var(--local-secondary)); stroke: color-mix(in srgb, #57462f 79%, var(--worm-deep)); stroke-width: 2; }
+.seed-orrery-arm,
+.seed-column-spine,
+.seed-leaf-vane-arm,
+.seed-winding-shaft,
+.seed-winding-key { fill: none; stroke: color-mix(in srgb, #9e7c45 73%, var(--worm-deep)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.seed-arm-leaf,
+.seed-leaf-vane { fill: color-mix(in srgb, #527653 76%, var(--local-primary)); stroke: color-mix(in srgb, #354a38 80%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.seed-arm-leaf.deep { fill: color-mix(in srgb, #405f46 81%, var(--local-primary)); }
+.seed-leaf-vein.act { stroke: color-mix(in srgb, #bdc992 58%, var(--paper-strong)); stroke-width: 1.5; }
+.seed-arm-shutter,
+.seed-star-valve { fill: color-mix(in srgb, #b88e49 72%, var(--local-secondary)); stroke: color-mix(in srgb, #5a462e 79%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
+.seed-capsule-cutaway,
+.seed-column-capsule { fill: color-mix(in srgb, #816344 71%, var(--local-secondary)); stroke: color-mix(in srgb, #4c3e31 81%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.seed-capsule-half,
+.seed-column-capsule.lower { fill: color-mix(in srgb, #a2784a 66%, var(--local-secondary)); }
+.seed-capsule-septa { fill: none; stroke: color-mix(in srgb, #d0b476 62%, var(--paper-strong)); stroke-width: 1.8; stroke-linecap: round; }
+.seed-release-seed { fill: color-mix(in srgb, #d0aa5d 74%, var(--local-secondary)); stroke: color-mix(in srgb, #654c31 74%, var(--worm-deep)); stroke-width: .9; }
+.seed-release-seed.deep { fill: color-mix(in srgb, #755335 78%, var(--worm-deep)); }
+.seed-crescent-tray { fill: color-mix(in srgb, #9a794a 71%, var(--local-secondary)); stroke: color-mix(in srgb, #55442f 79%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+
+.theremin-soundbox,
+.theremin-crescent-body,
+.theremin-foot { fill: color-mix(in srgb, #755f46 70%, var(--local-secondary)); stroke: color-mix(in srgb, #443b31 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.theremin-body-panel,
+.theremin-soundbox-panel { fill: color-mix(in srgb, #345f58 78%, var(--local-primary)); stroke: color-mix(in srgb, #294740 82%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.theremin-mast { fill: color-mix(in srgb, #8f724a 72%, var(--local-secondary)); stroke: color-mix(in srgb, #50422f 80%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.theremin-mast-seam,
+.theremin-pitch-rod,
+.theremin-volume-loop,
+.theremin-short-mast,
+.theremin-loop,
+.theremin-frequency-scale,
+.theremin-speaker-line { fill: none; stroke: color-mix(in srgb, #ad894b 73%, var(--worm-deep)); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.theremin-loop { stroke: color-mix(in srgb, #b79a5b 72%, var(--local-secondary)); stroke-width: 4; }
+.theremin-mast-seam,
+.theremin-frequency-scale,
+.theremin-speaker-line { stroke-width: 1.7; }
+.theremin-signal-ring { fill: none; stroke: color-mix(in srgb, #8a6c91 64%, var(--local-secondary)); stroke-width: 2; opacity: .78; }
+.theremin-waveform-gauge { fill: none; stroke: color-mix(in srgb, #d6c17b 68%, var(--paper-strong)); stroke-width: 1.8; stroke-linejoin: round; }
+.theremin-slider,
+.theremin-control { fill: color-mix(in srgb, #b88f4a 74%, var(--local-secondary)); stroke: color-mix(in srgb, #54412b 79%, var(--worm-deep)); stroke-width: 1.5; }
+.theremin-speaker { fill: color-mix(in srgb, #263d3a 82%, var(--local-primary)); stroke: color-mix(in srgb, #172d2a 84%, var(--worm-deep)); stroke-width: 2; }
+:root[data-theme='dark'] .baermann-funnel,
+:root[data-theme='dark'] .baermann-reservoir.companion,
+:root[data-theme='dark'] .baermann-vial { fill: rgba(75,131,123,.51); }
+:root[data-theme='dark'] .baermann-water,
+:root[data-theme='dark'] .baermann-vial-level { fill: rgba(56,121,118,.66); }
+:root[data-theme='dark'] .baermann-stand-base,
+:root[data-theme='dark'] .seed-column-foot,
+:root[data-theme='dark'] .theremin-soundbox,
+:root[data-theme='dark'] .theremin-crescent-body { fill: color-mix(in srgb, #584431 81%, var(--local-secondary)); }
+:root[data-theme='dark'] .seed-column-frame { fill: rgba(48,69,52,.42); }
+:root[data-theme='dark'] .seed-arm-leaf,
+:root[data-theme='dark'] .seed-leaf-vane { fill: color-mix(in srgb, #2f4e36 83%, var(--local-primary)); }
+:root[data-theme='dark'] .seed-capsule-cutaway,
+:root[data-theme='dark'] .seed-column-capsule { fill: color-mix(in srgb, #5b4431 82%, var(--local-secondary)); }
+:root[data-theme='dark'] .theremin-body-panel,
+:root[data-theme='dark'] .theremin-soundbox-panel { fill: color-mix(in srgb, #1f3d37 87%, var(--local-primary)); }
 .fig-visor path:first-child, .fig-visor path:nth-of-type(4) { fill: #72a66b; stroke: var(--worm-deep); stroke-width: 3; }
 .fig-vein, .visor-band { fill: none; stroke: #315f50; stroke-width: 2.5; stroke-linecap: round; }
 .satchel-strap { fill: none; stroke: #745744; stroke-width: 7; stroke-linecap: round; }

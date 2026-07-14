@@ -12,6 +12,7 @@ const palettes = {
   coral: ["#c9ebea", "#87b58e", "#5f9270", "#426c59", "#43b5c4", "#f3cf78", "#315d65"],
   canyon: ["#d9e3dc", "#bf8658", "#985d43", "#704d3e", "#6ba8b2", "#e7bf5a", "#4b4f42"],
   uplandForest: ["#d4e1dc", "#789184", "#456e57", "#664938", "#83aaa4", "#c9a45a", "#314c43"],
+  dryGarden: ["#e6dfcf", "#a69b74", "#73805b", "#79654a", "#91aaa0", "#c39a52", "#4b5143"],
   blackwater: ["#c2ddd5", "#6b9872", "#3e7055", "#315a47", "#4c7770", "#e8bd5d", "#263e3b"]
 };
 
@@ -137,11 +138,11 @@ const canonicalProfiles = {
     { water: "river", weather: "rain", cues: [["taro", 92, 342, .82], ["waterfall", 308, 192, .74], ["paddy", 476, 346, .78]] }
   ),
   "Australian Capital Territory": profile(
-    "canberra-black-mountain", "Black Mountain bushland by the lake",
-    "Central Canberra is a bush capital, with dry native eucalypt forest surviving on Black Mountain beside Lake Burley Griffin and the city.",
-    "ACT Parks and Conservation", "https://www.parks.act.gov.au/find-a-nature-park/canberra-nature-park/black-mountain-nature-reserve",
-    palettes.farm, [[0, 300], [95, 282], [185, 270], [285, 218], [365, 272], [470, 286], [600, 275]],
-    { water: "lake", weather: "sun", cues: [["eucalyptus", 95, 260, .9], ["tower", 310, 225, .55], ["grass", 515, 350, .9]] }
+    "canberra-oconnor-fig-garden", "O'Connor backyard figs and dry ridge",
+    "This marker represents QG2811. Its figs were collected in an anonymised O'Connor backyard on 22 March 2017; a hermaphrodite was recovered through a Baermann funnel on 2 April. O'Connor Ridge, a Yellow Box-like crown and the tiny Black Mountain cue are wider neighbourhood context.",
+    "CaeNDR QG2811 isotype record", "https://caendr.org/isotype/QG2811/",
+    palettes.dryGarden, [[0, 259], [78, 249], [155, 253], [232, 236], [310, 247], [390, 229], [468, 244], [540, 232], [600, 241]],
+    { weather: "sun", cues: [] }
   ),
   "Auckland, New Zealand": profile(
     "auckland-volcanic-harbour", "Auckland maunga and harbour",
@@ -416,12 +417,12 @@ const sceneCompositions = Object.freeze({
     "M0 408 Q116 369 230 397 Q344 425 454 377 Q529 345 600 361", [1, 0, 2],
     "a broad wet amphitheatre with kalo plots and several waterfall curtains"
   ),
-  "canberra-black-mountain": composition(
-    "M0 374 Q103 348 207 370 Q328 397 448 359 Q523 338 600 352 V430 H0Z",
-    "M0 320 Q167 309 300 242 Q432 310 600 316 V430 H0Z",
-    [["grass", 38, 397, .84], ["eucalyptus", 562, 354, .76]],
-    "M40 388 H156 V430 M40 388V430 M98 388V430 M156 388V430", [2, 0, 1],
-    "a low Black Mountain dome, fine tower, and horizontal lake at three scales"
+  "canberra-oconnor-fig-garden": composition(
+    "M0 285Q96 267 190 282Q288 301 385 276Q482 250 600 269V430H0Z",
+    "M0 249Q90 235 177 247Q270 260 357 240Q459 216 600 235V306H0Z",
+    [],
+    "M76 322Q192 304 302 319Q425 335 552 303", [],
+    "an asymmetric pair of collapsed figs below a broken garden edge, one broad open eucalypt crown and a low ridge with a tiny offset tower"
   ),
   "auckland-volcanic-harbour": composition(
     "M0 388 Q119 352 233 381 Q344 407 454 371 Q524 348 600 361 V430 H0Z",
@@ -1111,6 +1112,74 @@ function drawKauaiKokeeScene(target, palette) {
   append(substrate, "path", { class: "kauai-kokee-moisture-glint", d: "M-55-11Q-40-20-25-12M31-8Q43-14 54-6M-6 25Q5 18 17 23" });
 }
 
+function drawCanberraOConnorScene(target, palette) {
+  append(target, "rect", { class: "environment-sky canberra-oconnor-sky", width: 600, height: 430, fill: palette[0] });
+  append(target, "circle", { class: "canberra-oconnor-sun", cx: 82, cy: 65, r: 25 });
+
+  const ridge = append(target, "g", { class: "canberra-oconnor-ridge-lock", "aria-hidden": "true" });
+  append(ridge, "path", { class: "canberra-oconnor-ridge", d: "M0 226Q72 205 145 219Q218 233 288 212Q365 189 438 207Q514 225 600 196V273H0Z" });
+  append(ridge, "path", { class: "canberra-oconnor-ridge-detail", d: "M0 232Q74 214 144 227M177 225Q231 234 290 219M333 207Q386 196 438 214M477 215Q538 211 600 204" });
+  const ridgeTrees = append(ridge, "g", { class: "canberra-oconnor-ridge-trees" });
+  [[24,221,13],[66,212,10],[112,217,14],[170,222,9],[214,217,12],[277,211,9],[325,205,13],[372,201,10],[438,208,13],[485,211,9],[536,202,12],[580,195,10]].forEach(([x, y, r], index) => {
+    append(ridgeTrees, "path", { class: index % 2 ? "canberra-ridge-tree deep" : "canberra-ridge-tree", d: `M${x} ${y + 20}V${y - 2}M${x - r} ${y + 2}Q${x} ${y - r} ${x + r} ${y + 2}Q${x + 5} ${y + 10} ${x} ${y + 8}Q${x - 6} ${y + 11} ${x - r} ${y + 2}Z` });
+  });
+
+  const tower = append(target, "g", { class: "canberra-oconnor-black-mountain-cue", transform: "translate(518 170)", "aria-hidden": "true" });
+  append(tower, "path", { class: "canberra-tower-mast", d: "M0 38L2-12L5 38M1-4L-7 7M3 5L11 15" });
+  append(tower, "path", { class: "canberra-tower-platform", d: "M-8 17H12M-5 27H9" });
+  append(tower, "circle", { class: "canberra-tower-tip", cx: 2, cy: -14, r: 2.4 });
+
+  append(target, "path", { class: "canberra-garden-ground", d: "M0 243Q102 227 201 244Q303 264 403 238Q500 213 600 234V430H0Z" });
+
+  const fragments = append(target, "g", { class: "canberra-backyard-fragments", "aria-hidden": "true" });
+  append(fragments, "path", { class: "canberra-roof-fragment", d: "M0 225L42 205L96 220L112 238H0Z" });
+  append(fragments, "path", { class: "canberra-roof-seam", d: "M13 224L43 211L80 220M46 211L58 232" });
+  append(fragments, "path", { class: "canberra-fence-rail", d: "M12 266L176 258M18 291L166 279M472 260L600 246M478 286L600 272" });
+  [[21,250,302],[72,247,296],[126,247,288],[171,246,284],[480,242,295],[532,238,288],[585,229,280]].forEach(([x, top, bottom]) => {
+    append(fragments, "path", { class: "canberra-fence-post", d: `M${x} ${top}L${x + (x % 2 ? 3 : -2)} ${bottom}` });
+  });
+
+  const tree = append(target, "g", { class: "canberra-yellow-box", "aria-hidden": "true" });
+  append(tree, "path", { class: "canberra-yellow-box-trunk", d: "M401 340Q421 286 414 235Q407 190 421 132L446 137Q438 190 452 225Q470 272 462 342Z" });
+  append(tree, "path", { class: "canberra-yellow-box-branch", d: "M425 222Q383 172 331 159L337 140Q395 146 438 190ZM440 194Q472 148 528 132L535 151Q489 167 451 226ZM430 174Q423 132 391 105L407 93Q443 123 449 167Z" });
+  const crown = append(tree, "g", { class: "canberra-yellow-box-crown" });
+  [[337,137,44,22,-13],[386,106,48,24,10],[449,104,52,25,-8],[510,130,46,23,14],[371,167,38,19,8],[465,159,42,21,-12],[546,165,34,17,9]].forEach(([cx, cy, rx, ry, angle], index) => {
+    append(crown, "ellipse", { class: index % 2 ? "canberra-yellow-box-leaves deep" : "canberra-yellow-box-leaves", cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` });
+  });
+
+  const stones = append(target, "g", { class: "canberra-stepping-stones", "aria-hidden": "true" });
+  [[344,252,37,12,-8],[327,286,43,14,6],[303,327,51,16,-5],[282,373,61,18,7]].forEach(([cx, cy, rx, ry, angle], index) => {
+    append(stones, "ellipse", { class: index % 2 ? "canberra-step-stone deep" : "canberra-step-stone", cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` });
+  });
+
+  const edge = append(target, "g", { class: "canberra-broken-garden-edge", "aria-hidden": "true" });
+  append(edge, "path", { class: "canberra-edge-earth", d: "M0 330Q61 311 119 325L173 309L232 323L281 311L307 332L255 346L192 335L137 350L74 338L0 352Z" });
+  [[12,326,67,337],[80,322,132,334],[145,316,194,329],[207,318,258,331]].forEach(([x1,y1,x2,y2], index) => {
+    append(edge, "path", { class: index % 2 ? "canberra-edge-stone deep" : "canberra-edge-stone", d: `M${x1} ${y1}Q${(x1+x2)/2} ${y1-9-index*2} ${x2} ${y2}L${x2-7} ${y2+11}Q${(x1+x2)/2} ${y2+5} ${x1+4} ${y1+10}Z` });
+  });
+
+  const litter = append(target, "g", { class: "canberra-fig-litter", "aria-hidden": "true" });
+  append(litter, "path", { class: "canberra-decay-patch", d: "M35 372Q92 337 157 354Q211 333 272 357Q323 376 295 413Q239 432 176 416Q111 433 49 411Q20 397 35 372Z" });
+  [[44,403,76,386],[91,421,125,399],[188,423,222,402],[253,414,285,391],[298,425,334,406]].forEach(([x1,y1,x2,y2], index) => {
+    append(litter, "path", { class: index % 2 ? "canberra-litter-leaf deep" : "canberra-litter-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-9} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` });
+    append(litter, "path", { class: "canberra-litter-vein", d: `M${x1+4} ${y1-1}L${x2-4} ${y2+1}` });
+  });
+
+  const splitFig = append(target, "g", { class: "canberra-rotten-fig split", transform: "translate(125 380) rotate(-8)", "aria-hidden": "true" });
+  append(splitFig, "ellipse", { class: "canberra-fig-shadow", cx: 2, cy: 28, rx: 69, ry: 16 });
+  append(splitFig, "path", { class: "canberra-fig-rind", d: "M-67 8Q-62-24-30-35Q-5-42 10-20Q25-40 53-28Q73-17 68 9Q60 34 31 40Q7 44-7 29Q-29 46-52 31Q-69 24-67 8Z" });
+  append(splitFig, "path", { class: "canberra-fig-flesh", d: "M-54 7Q-48-16-26-24Q-8-30 3-14Q16-29 39-20Q55-12 52 7Q45 24 25 28Q7 31-4 20Q-22 33-39 23Q-54 19-54 7Z" });
+  append(splitFig, "path", { class: "canberra-fig-cleft", d: "M6-18Q-3-3 2 22M13-20Q21-2 12 25" });
+  [[-37,3],[-26,14],[-15,-7],[-4,9],[19,-7],[28,10],[40,1]].forEach(([cx, cy], index) => append(splitFig, "ellipse", { class: index % 2 ? "canberra-fig-seed deep" : "canberra-fig-seed", cx, cy, rx: 2.4, ry: 4, transform: `rotate(${index % 2 ? 28 : -24} ${cx} ${cy})` }));
+
+  const saggedFig = append(target, "g", { class: "canberra-rotten-fig sagged", transform: "translate(239 390) rotate(7)", "aria-hidden": "true" });
+  append(saggedFig, "ellipse", { class: "canberra-fig-shadow", cx: 0, cy: 23, rx: 58, ry: 14 });
+  append(saggedFig, "path", { class: "canberra-fig-rind sagged", d: "M-57 7Q-50-18-25-28Q-5-36 6-20Q20-31 43-19Q60-8 55 12Q46 34 18 35Q-2 37-15 27Q-34 37-50 25Q-60 18-57 7Z" });
+  append(saggedFig, "path", { class: "canberra-fig-collapse", d: "M-43 8Q-22-5-4 12Q14-3 42 9Q29 27 7 24Q-16 31-43 8Z" });
+  append(saggedFig, "path", { class: "canberra-fig-crease", d: "M-32-8Q-13 1-18 22M7-15Q22-2 17 22M34-7Q44 3 35 17" });
+  [[-39,9],[-24,-10],[-7,16],[13,-8],[30,8],[43,0]].forEach(([cx, cy], index) => append(saggedFig, "circle", { class: index % 2 ? "canberra-fig-mottle deep" : "canberra-fig-mottle", cx, cy, r: index % 3 === 0 ? 3.5 : 2.5 }));
+}
+
 function drawTenerifeScene(target, palette) {
   append(target, "rect", { class: "environment-sky tenerife-sky", width: 600, height: 430, fill: palette[0] });
   append(target, "circle", { class: "tenerife-sun", cx: 516, cy: 58, r: 26 });
@@ -1253,6 +1322,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "kauai-kokee-upland-forest") {
     drawKauaiKokeeScene(target, palette);
+    return;
+  }
+  if (profile.id === "canberra-oconnor-fig-garden") {
+    drawCanberraOConnorScene(target, palette);
     return;
   }
 

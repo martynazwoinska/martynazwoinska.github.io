@@ -2,8 +2,8 @@ import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
-import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-7";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-10";
+import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-8";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-11";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -89,7 +89,7 @@ const species = [
       { name: "Edinburgh, Scotland", coordinates: [-3.19, 55.92], source: "CaeNDR", style: "field", strain: "ED3010", history: "ED3010 represents an urban-garden compost sample from Midmar Allotment, field 1, plot 39. The Edinburgh marker currently brings together 12 strains in 4 isotype groups, all isolated from urban-garden compost." },
       { name: "Tenerife, Spain", coordinates: [-16.535468, 28.411121], source: "CaeNDR", style: "field", strain: "NIC1787", history: "This Tenerife marker combines 23 C. elegans records collected in the Puerto de la Cruz botanical garden on 14 March 2019. NIC1787, formerly 9.1, is the representative; it was isolated at 114 m from ‘Avocado fruit, old, very rotten.’ The wider record set also includes other rotting fruits, flowers, stems and plant litter." },
       { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.668, 22.149], source: "CaeNDR", style: "kauai", strain: "XZ1516", history: "XZ1516 was collected by M. Ailion on 15 October 2014 at 983 m from rotting nut, pod, seed or fruit. Population-genomic research identifies it among Kauaʻi’s exceptionally divergent C. elegans isotypes." },
-      { name: "Australian Capital Territory", coordinates: [149.115, -35.254], source: "CaeNDR", style: "field" },
+      { name: "Australian Capital Territory", coordinates: [149.115, -35.254], source: "CaeNDR", style: "field", strain: "QG2811", history: "This marker represents QG2811, recorded at 590 m. M. Rockman collected rotting figs from an O'Connor backyard on 22 March 2017; a hermaphrodite was recovered through a Baermann funnel on 2 April. The public garden illustration is anonymised." },
       { name: "Auckland, New Zealand", coordinates: [174.746, -36.893], source: "CaeNDR", style: "woodland" },
       { name: "Araucanía, Chile", coordinates: [-72.151, -38.938], source: "CaeNDR", style: "woodland" }
     ]
