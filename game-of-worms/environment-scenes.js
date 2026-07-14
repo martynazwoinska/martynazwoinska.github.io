@@ -105,7 +105,7 @@ const canonicalProfiles = {
     "Representative JU1925 microhabitat at 49.121, 1.951: forest in Santeuil’s narrow valley, where the isolate came from rotting common-hogweed (Heracleum sphondylium) stem S73.",
     "Official CaeNDR strain-data CSV", "https://caendr.org/request-strains/download/c_elegans/latest/strain-data/csv",
     palettes.temperate, [[0, 248], [145, 245], [245, 262], [325, 304], [405, 275], [495, 246], [600, 244]],
-    { water: "stream", weather: "sun", cues: [["village", 490, 255, .75], ["reeds", 300, 355, .8], ["fields", 105, 315, .9]] }
+    { water: "stream", weather: "sun", cues: [["forest", 108, 258, .9], ["stream", 314, 338, .7], ["village", 474, 188, .72]] }
   ),
   "Edinburgh, Scotland": profile(
     "edinburgh-holyrood", "Arthur’s Seat and Salisbury Crags",
@@ -381,11 +381,11 @@ const sceneCompositions = Object.freeze({
     "opposing gorge faces forming a central river notch behind a compost heap"
   ),
   "santeuil-viosne-vexin": composition(
-    "M0 327 H193 L236 360 Q300 395 365 358 L410 326 H600 V430 H0Z",
-    "M0 281 H224 L254 310 Q301 342 351 308 L383 280 H600 V343 H0Z",
-    [["fields", 58, 353, .76], ["reeds", 305, 405, .78]],
-    "M299 430 Q309 384 300 350 Q288 321 305 285", [2, 1, 0],
-    "a flat plateau sharply incised by one narrow Viosne valley"
+    "M0 310Q95 286 189 307Q259 320 295 303Q309 328 327 348Q320 379 300 430H0Z M329 280Q384 303 443 290Q524 271 600 304V430H384Q365 397 357 366Q365 326 329 280Z",
+    "M0 146Q83 128 149 163Q212 191 257 235Q278 254 293 278L307 430H0Z M600 168Q543 151 492 181Q429 206 370 244Q341 263 323 286L310 430H600Z",
+    [["forest", 72, 370, .72], ["stream", 338, 406, .48]],
+    "M314 218C311 246 299 270 309 298C319 326 344 344 341 371C338 395 343 413 342 430", [2, 0, 1],
+    "a broken hollow hogweed stem beside a narrow stream-bank notch, crossed by a low railway cue below the church tower and ruler-flat Vexin plateau"
   ),
   "edinburgh-holyrood": composition(
     "M0 381 Q117 343 216 373 Q322 404 430 366 Q521 336 600 370 V430 H0Z",
