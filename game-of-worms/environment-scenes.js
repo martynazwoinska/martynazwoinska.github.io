@@ -270,12 +270,12 @@ const canonicalProfiles = {
     palettes.coral, [[0, 286], [90, 240], [180, 214], [270, 238], [355, 204], [445, 244], [530, 218], [600, 270]],
     { water: "coast", weather: "cloud", cues: [["hoodoo", 105, 330, .9], ["hoodoo", 155, 344, .65], ["cape", 450, 330, .8]] }
   ),
-  "Pohnpei, Micronesia": profile(
-    "pohnpei-basalt-mangrove", "Pohnpei’s volcanic island and tidal ruins",
-    "Pohnpei is a high volcanic island ringed by mangroves, lagoon, and barrier reef; Nan Madol’s basalt-and-coral islets sit in this intertidal setting.",
-    "UNESCO Nan Madol", "https://whc.unesco.org/en/list/1503/",
-    palettes.island, [[0, 300], [75, 250], [145, 220], [220, 134], [295, 198], [365, 168], [440, 236], [520, 212], [600, 282]],
-    { water: "lagoon", weather: "rain", cues: [["waterfall", 222, 170, .75], ["mangrove", 80, 300, .75], ["basaltwall", 485, 335, .8]] }
+  "Pohnpei, Micronesia · QG4739": profile(
+    "pohnpei-qg4739-paies-kotop-cloudforest", "QG4739 Paies kotop-fruit cloudforest",
+    "QG4739, previously C-0230F, is one of seven isotype-reference strains collected at the same Paies, Kitti coordinate. It was sampled from rotting fruit recorded by CaeNDR as Clinostigma ponapensis, locally called kotop, in cloudforest on 7 December 2023. Kew accepts the palm name as C. ponapense. CaeNDR reports 540 m in the isotype summary and 542 m in the sampling comment. Fruit appearance, exact placement and collection-patch geometry are illustrative.",
+    "CaeNDR QG4739 isotype record", "https://caendr.org/isotype/QG4739/",
+    palettes.rainforest, [[0, 351], [74, 339], [148, 325], [224, 307], [300, 285], [376, 260], [452, 235], [526, 210], [600, 188]],
+    { water: "none", weather: "mist", cues: [] }
   ),
   "Queensland, Australia": profile(
     "queensland-daintree", "Daintree forest-to-reef coast",
@@ -550,12 +550,12 @@ const sceneCompositions = Object.freeze({
     "M81 373 Q229 332 381 351 Q474 362 600 329", [0, 1, 2],
     "a long low sandstone cape ending in differently proportioned mushroom rocks"
   ),
-  "pohnpei-basalt-mangrove": composition(
-    "M0 390 L95 371 L187 393 L277 365 L369 391 L462 360 L600 383 V430 H0Z",
-    "M0 323 L118 296 L220 315 L301 201 L381 316 L495 292 L600 320 V430 H0Z",
-    [["basaltwall", 33, 398, .98], ["mangrove", 552, 376, .76]],
-    "M0 414 H210 V385 H390 V410 H600", [2, 1, 0],
-    "rectilinear low basalt walls against one steep high volcanic island"
+  "pohnpei-qg4739-paies-kotop-cloudforest": composition(
+    "M0 355Q95 347 181 331Q284 311 381 277Q485 238 600 191V430H0Z",
+    "M0 300Q97 287 188 272Q289 252 387 220Q492 184 600 145V328H0Z",
+    [],
+    "M39 370Q151 344 272 305Q398 264 557 196", [],
+    "a pale ringed palm column opening into an asymmetric lower-left root lattice beside one low softened fruit sample, with a steep forest-floor diagonal closing into layered trunks, oblique mist and one narrow upper-right light slit"
   ),
   "queensland-daintree": composition(
     "M0 386 Q104 342 211 372 Q317 403 424 367 Q518 336 600 355 V430 H0Z",
@@ -759,9 +759,6 @@ function drawFeature(parent, cue) {
     };
     append(group, "path", { class: kind === "fumarole" || kind === "cirque" || kind === "canyon" ? "env-detail env-stroke" : "env-rock", d: special[kind] });
     return;
-  }
-  if (kind === "basaltwall") {
-    [-45, -25, -5, 15, 35].forEach((x, index) => append(group, "rect", { class: "env-rock dark", x, y: -10 - (index % 3) * 12, width: 17, height: 54 + (index % 3) * 12, rx: 2 }));
   }
 }
 
@@ -1645,6 +1642,82 @@ function drawSaoTomeForestFloorScene(target, palette) {
   [[-59,-11,4],[-35,18,2.5],[-11,-19,2],[13,23,3],[37,-6,2],[54,14,3],[71,3,2]].forEach(([cx,cy,r], index) => append(fruit, "circle", { class: index % 2 ? "sao-tome-fruit-mottle deep" : "sao-tome-fruit-mottle", cx, cy, r }));
 }
 
+function drawPohnpeiQG4739Scene(target, palette) {
+  append(target, "rect", { class: "environment-sky pohnpei-cloudforest-sky", width: 600, height: 430, fill: palette[0] });
+
+  const depth = append(target, "g", { class: "pohnpei-cloudforest-depth", "aria-hidden": "true" });
+  append(depth, "path", { class: "pohnpei-high-haze", d: "M0 0H600V132Q546 112 492 128Q431 146 373 119Q308 89 248 116Q179 148 119 119Q57 89 0 111Z" });
+  append(depth, "path", { class: "pohnpei-light-slit", d: "M522 0H582L553 86L521 161L491 213L507 222L544 174L572 100L600 37V0Z" });
+  append(depth, "path", { class: "pohnpei-rear-slope", d: "M0 269Q91 251 177 250Q269 248 354 219Q452 185 600 126V318H0Z" });
+
+  const rearTrunks = append(depth, "g", { class: "pohnpei-rear-trunks" });
+  [
+    [183, 286, 194, 198, 186, 86, "deep"],
+    [255, 267, 246, 182, 259, 58, ""],
+    [337, 244, 346, 155, 339, 28, "deep"],
+    [420, 218, 412, 136, 430, 14, ""],
+    [495, 193, 510, 112, 505, -8, "deep"],
+    [569, 164, 558, 93, 574, -12, ""]
+  ].forEach(([x1,y1,cx,cy,x2,y2,tone]) => append(rearTrunks, "path", { class: `pohnpei-rear-trunk ${tone}`.trim(), d: `M${x1} ${y1}Q${cx} ${cy} ${x2} ${y2}` }));
+
+  append(depth, "path", { class: "pohnpei-mist-band upper", d: "M142 117Q244 91 350 103Q455 116 594 65L600 79Q462 130 348 118Q246 108 151 131Z" });
+  append(depth, "path", { class: "pohnpei-mist-band middle", d: "M191 174Q302 145 406 156Q500 166 600 126V141Q501 181 403 171Q301 160 197 189Z" });
+  append(depth, "path", { class: "pohnpei-mist-band lower", d: "M302 221Q390 192 471 198Q537 203 600 178V190Q537 216 469 211Q391 206 308 234Z" });
+
+  append(target, "path", { class: "pohnpei-middle-slope", d: "M0 315Q95 302 184 289Q283 273 380 242Q490 207 600 163V344H0Z" });
+  append(target, "path", { class: "pohnpei-forest-floor", d: "M0 359Q92 349 180 333Q281 315 380 282Q490 245 600 197V430H0Z" });
+  append(target, "path", { class: "pohnpei-floor-contour", d: "M2 381Q101 366 190 350Q291 330 390 298Q495 264 598 221M213 385Q324 359 431 321Q506 294 578 263" });
+
+  const understory = append(target, "g", { class: "pohnpei-understory", "aria-hidden": "true" });
+  append(understory, "path", { class: "pohnpei-understory-stem", d: "M550 307Q538 271 547 235M551 286Q574 258 590 247M543 268Q519 248 508 230" });
+  [
+    [547,234,"M0 0Q-28-31-4-48Q23-42 29-13Q15 7 0 0Z",-5],
+    [589,246,"M0 0Q-3-34 23-39Q47-19 40 7Q16 18 0 0Z",12],
+    [508,230,"M0 0Q-35-13-29-39Q-5-55 24-35Q28-8 0 0Z",-17]
+  ].forEach(([x,y,d,angle], index) => {
+    const leaf = append(understory, "g", { transform: `translate(${x} ${y}) rotate(${angle})` });
+    append(leaf, "path", { class: index === 1 ? "pohnpei-understory-leaf deep" : "pohnpei-understory-leaf", d });
+    append(leaf, "path", { class: "pohnpei-understory-vein", d: "M0 0Q4-20 2-39" });
+  });
+
+  const palm = append(target, "g", { class: "pohnpei-ringed-palm", "aria-hidden": "true" });
+  append(palm, "path", { class: "pohnpei-palm-column", d: "M20-12Q31 77 42 158Q51 233 73 309Q83 336 105 346L143 333Q114 299 106 236Q96 156 99 76Q102 29 101-12Z" });
+  [38,78,121,166,211,253,290].forEach((y, index) => append(palm, "path", { class: index % 2 ? "pohnpei-trunk-ring deep" : "pohnpei-trunk-ring", d: `M${31 + index * 4} ${y}Q${64 + index * 2} ${y + 11} ${98 + index} ${y + 2}` }));
+  append(palm, "path", { class: "pohnpei-root-lattice main", d: "M91 302Q58 330 12 356Q-4 365-12 384Q37 378 79 359Q112 344 133 327Z" });
+  append(palm, "path", { class: "pohnpei-root-lattice arch", d: "M99 310Q126 325 157 344Q178 357 211 365L190 388Q157 377 130 352Q109 333 87 329Z" });
+  append(palm, "path", { class: "pohnpei-root-lattice fork", d: "M77 313Q61 346 48 394L75 404Q82 365 107 329Z" });
+  append(palm, "path", { class: "pohnpei-root-lattice rear", d: "M113 316Q139 321 175 317Q197 314 218 326L204 346Q171 338 136 344Z" });
+  append(palm, "path", { class: "pohnpei-root-opening", d: "M86 333Q117 336 139 359Q115 377 76 375Q71 352 86 333Z" });
+
+  const frond = append(target, "g", { class: "pohnpei-drooping-frond", "aria-hidden": "true" });
+  append(frond, "path", { class: "pohnpei-frond-rachis", d: "M82 43Q179 13 275 29Q365 44 451 92" });
+  [
+    [116,35,-24,-45],[144,29,-18,-53],[175,25,-11,-58],[207,25,-3,-60],[239,28,7,-58],[271,34,17,-52],[303,43,27,-45],[335,54,36,-35],[366,67,44,-24],[397,81,48,-13],
+    [126,37,-17,34],[158,31,-12,40],[191,29,-5,44],[224,30,4,46],[257,34,13,45],[290,41,23,42],[322,51,31,36],[353,63,38,29],[383,77,43,20],[414,91,46,12]
+  ].forEach(([x,y,dx,dy], index) => append(frond, "path", { class: index % 4 === 1 ? "pohnpei-frond-leaflet deep" : "pohnpei-frond-leaflet", d: `M${x} ${y}Q${x + dx * .55} ${y + dy * .45 - 3} ${x + dx} ${y + dy}Q${x + dx * .47} ${y + dy * .6 + 4} ${x} ${y}Z` }));
+  append(frond, "path", { class: "pohnpei-frond-tip", d: "M449 90Q478 103 499 130Q466 118 442 98Z" });
+
+  append(target, "path", { class: "pohnpei-foreground-litter-bed", d: "M0 382Q91 365 181 379Q279 394 377 363Q480 331 600 349V430H0Z" });
+  const litter = append(target, "g", { class: "pohnpei-leaf-litter", "aria-hidden": "true" });
+  [[1,418,47,391],[58,430,109,399],[212,420,257,394],[278,430,326,399],[357,413,402,384],[520,422,565,393],[563,389,600,366]].forEach(([x1,y1,x2,y2], index) => {
+    append(litter, "path", { class: index % 3 === 0 ? "pohnpei-litter-leaf green" : (index % 2 ? "pohnpei-litter-leaf deep" : "pohnpei-litter-leaf"), d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-8} ${x2} ${y2}Q${(x1+x2)/2+5} ${Math.max(y1,y2)+6} ${x1} ${y1}Z` });
+    append(litter, "path", { class: "pohnpei-litter-vein", d: `M${x1+4} ${y1-1}L${x2-4} ${y2+1}` });
+  });
+  [[25,378,3],[201,397,2],[267,376,3],[334,401,2],[495,380,3],[583,363,2]].forEach(([cx,cy,r], index) => append(litter, "circle", { class: index % 2 ? "pohnpei-litter-fragment deep" : "pohnpei-litter-fragment", cx, cy, r }));
+
+  const fruit = append(target, "g", { class: "pohnpei-kotop-sample", transform: "translate(255 300) rotate(-7) scale(.82)", "aria-hidden": "true" });
+  append(fruit, "ellipse", { class: "pohnpei-fruit-shadow", cx: 0, cy: 20, rx: 57, ry: 11 });
+  append(fruit, "path", { class: "pohnpei-fruit-rind", d: "M-61 3Q-51-23-24-26Q3-34 30-22Q54-16 61 2Q63 21 43 31Q18 39-9 33Q-37 38-55 23Q-66 14-61 3Z" });
+  append(fruit, "path", { class: "pohnpei-fruit-collapse", d: "M-44 5Q-30-11-12-4Q5-15 22-5Q39-7 47 7Q35 22 17 19Q-1 29-20 20Q-37 24-48 13Z" });
+  append(fruit, "path", { class: "pohnpei-fruit-rind-fold", d: "M-48 4Q-31-8-15-3M10-13Q29-9 43 3M-33 24Q-12 15 8 22M22 18Q35 15 45 9" });
+  [
+    "M-45-7Q-37-13-29-8Q-34-1-43-2Z",
+    "M-22 11Q-13 5-5 11Q-10 18-20 17Z",
+    "M5-17Q14-20 20-13Q14-7 5-10Z",
+    "M27 5Q39 2 43 10Q35 17 25 13Z"
+  ].forEach((d, index) => append(fruit, "path", { class: index % 2 ? "pohnpei-fruit-mottle deep" : "pohnpei-fruit-mottle", d }));
+}
+
 function drawTenerifeScene(target, palette) {
   append(target, "rect", { class: "environment-sky tenerife-sky", width: 600, height: 430, fill: palette[0] });
   append(target, "circle", { class: "tenerife-sun", cx: 516, cy: 58, r: 26 });
@@ -1815,6 +1888,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "sao-tome-ju2484-forest-floor") {
     drawSaoTomeForestFloorScene(target, palette);
+    return;
+  }
+  if (profile.id === "pohnpei-qg4739-paies-kotop-cloudforest") {
+    drawPohnpeiQG4739Scene(target, palette);
     return;
   }
 

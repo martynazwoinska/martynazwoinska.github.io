@@ -41,13 +41,12 @@ const rows = [
   ["tropicalis", "Oʻahu, Hawaiʻi", "knife-ridge sunglasses", "sunglasses", "watershed swimwear", "watershed-swimwear", "waterfall umbrella", "umbrella"],
   ["tropicalis", "Kauaʻi, Hawaiʻi", "taro bonnet", "bonnet", "wetland waders", "waders", "paddy metronome", "paddy-metronome"],
   ["tropicalis", "New Taipei City, Taiwan", "hoodoo helmet", "hoodoo-helmet", "erosion crinoline", "erosion-crinoline", "cape fiddle", "bowed-strings"],
-  ["tropicalis", "Pohnpei, Micronesia", "basalt cuffs", "basalt-cuffs", "lagoon snorkel", "snorkel", "basalt-log chimes", "basalt-log-chimes"],
+  ["tropicalis", "Pohnpei, Micronesia · QG4739", "QG4739 kotop name-concordance cabinet", "qg4739-kotop-name-concordance", "QG4739 paired-temperature differential bridge", "qg4739-paired-temperature-differential", "C-0230 seven-isotype registry", "c0230-seven-isotype-registry"],
   ["tropicalis", "Queensland, Australia", "fan-palm collar", "fan-palm-collar", "reef monocle", "monocle", "continuum skates", "skates"],
   ["tropicalis", "Réunion Island", "cirque hoop skirt", "skirt", "lava crampons", "lava-crampons", "ravine trumpet", "ravine-trumpet"]
 ];
 
 const explicitUniqueRendererFamilies = new Set([
-  "basalt-cuffs",
   "boulder-spectacles",
   "cacao-cuirass",
   "caldera-headband",
@@ -76,7 +75,7 @@ const explicitUniqueRendererFamilies = new Set([
 const repeatedRendererFamilies = new Set([
   "bellows-instrument", "bonnet", "bowed-strings", "cape", "casque",
   "compass", "fan", "flute-piccolo", "glider", "monocle", "skates",
-  "skirt", "snorkel", "stilts", "sunglasses", "telescope", "umbrella",
+  "skirt", "stilts", "sunglasses", "telescope", "umbrella",
   "waders", "wig", "wings"
 ]);
 
@@ -112,8 +111,13 @@ const saoTomeRendererIds = new Set([
   "nigoni::São Tomé · JU2484::wrap",
   "nigoni::São Tomé · JU2484::charm"
 ]);
+const pohnpeiQG4739RendererIds = new Set([
+  "tropicalis::Pohnpei, Micronesia · QG4739::headwear",
+  "tropicalis::Pohnpei, Micronesia · QG4739::wrap",
+  "tropicalis::Pohnpei, Micronesia · QG4739::charm"
+]);
 const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
-const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|snorkel|compass|press|gauge rod|camera rig/i;
+const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|compass|press|gauge rod|camera rig/i;
 const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|skates|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
 
 function hasNamedRenderer(item) {
@@ -131,6 +135,7 @@ function hasNamedRenderer(item) {
     || singaporeRendererIds.has(item.id)
     || praslinRendererIds.has(item.id)
     || saoTomeRendererIds.has(item.id)
+    || pohnpeiQG4739RendererIds.has(item.id)
     || instrumentRendererPattern.test(item.label)
     || fieldToolRendererPattern.test(item.label)
     || naturalRendererPattern.test(item.label);
@@ -180,7 +185,7 @@ function artworkForm(label, kind) {
   if (/sieve|net|shield|press/i.test(label)) return 6;
   if (/compass/i.test(label)) return 7;
   if (/jetpack|waterwheel|camera rig/i.test(label)) return 9;
-  if (/telescope|periscope|snorkel/i.test(label)) return 12;
+  if (/telescope|periscope/i.test(label)) return 12;
   if (/skates|snowshoes|stilts|crampons/i.test(label)) return 13;
   if (/capsule|sampler|sampling tool|carousel|claws|reel|maracas|wind-vane|paddle|yoke|metronome/i.test(label)) return 8;
   return 18;
@@ -1959,6 +1964,211 @@ function drawSaoTomeAccessory(group, item, companion) {
   return false;
 }
 
+function drawPohnpeiQG4739Accessory(group, item, companion) {
+  if (!item.id.startsWith("tropicalis::Pohnpei, Micronesia · QG4739::")) return false;
+
+  const label = (parent, value, x, y, className = "pohnpei-machine-text", anchor = "middle", transform = null) => {
+    const attributes = { class: className, x, y, "text-anchor": anchor };
+    if (transform) attributes.transform = transform;
+    const text = add(parent, "text", attributes);
+    text.textContent = value;
+    return text;
+  };
+
+  if (item.family === "qg4739-kotop-name-concordance") {
+    group.dataset.renderer = "qg4739-kotop-name-concordance";
+    group.classList.add("pohnpei-accessory", "kotop-concordance", companion ? "kotop-concordance-companion" : "kotop-concordance-primary");
+    if (companion) {
+      add(group, "path", { class: "pohnpei-machine-shadow", d: "M-112 126Q0 158 116 123Q59 173-101 166Z" });
+      add(group, "path", { class: "pohnpei-machine-base", d: "M-87 82H80L100 128H-104Z" });
+      add(group, "path", { class: "concordance-tower-frame", d: "M-53 82V-112H45V82M-53-112H45" });
+      add(group, "circle", { class: "concordance-index-wheel", cx: -4, cy: -72, r: 35 });
+      add(group, "circle", { class: "concordance-index-hub", cx: -4, cy: -72, r: 8 });
+      const shutters = [
+        [-39,-93,56,23,"KOTOP"],
+        [-16,-62,65,23,"CaeNDR"],
+        [-39,-31,56,23,"KEW"]
+      ];
+      shutters.forEach(([x,y,width,height,value], index) => {
+        add(group, "path", { class: index === 1 ? "concordance-shutter deep" : "concordance-shutter", d: "M" + x + " " + y + "H" + (x+width) + "L" + (x+width-6) + " " + (y+height) + "H" + (x-5) + "Z" });
+        label(group, value, x + width / 2 - 2, y + 15, "pohnpei-machine-text tiny");
+      });
+      add(group, "path", { class: "concordance-leaf-shutter", d: "M-67-48Q-112-88-103-122Q-66-124-44-85Q-45-57-67-48Z" });
+      add(group, "path", { class: "concordance-leaf-rib", d: "M-66-51Q-76-81-96-111M-73-75L-95-81M-80-90L-58-88" });
+      add(group, "path", { class: "concordance-specimen-drawer", d: "M-43 9H43L37 62H-49Z" });
+      add(group, "path", { class: "concordance-drawer-seam", d: "M-37 30H35M-35 49H32" });
+      add(group, "circle", { class: "concordance-drawer-pull", cx: -3, cy: 19, r: 4 });
+      add(group, "circle", { class: "concordance-return-gear large", cx: 69, cy: -75, r: 16 });
+      add(group, "circle", { class: "concordance-return-gear", cx: 69, cy: 42, r: 11 });
+      add(group, "path", { class: "concordance-return-chain", d: "M69-59V31M61-70L50-55M77-70L88-55M61 38L49 27M77 38L88 27" });
+      add(group, "path", { class: "concordance-vial-bracket", d: "M-54 3H-83V47H-70" });
+      add(group, "rect", { class: "pohnpei-culture-vial", x: -96, y: 19, width: 28, height: 52, rx: 8 });
+      add(group, "rect", { class: "pohnpei-vial-cap", x: -93, y: 10, width: 22, height: 12, rx: 3 });
+      label(group, "QG", -82, 50, "pohnpei-machine-text tiny", "middle", "rotate(-90 -82 50)");
+      add(group, "path", { class: "concordance-kotop-tab", d: "M47-119H94L87-95H47Z" });
+      label(group, "KOTOP", 68, -103, "pohnpei-machine-text tiny");
+      add(group, "circle", { class: "concordance-viewing-aperture", cx: -4, cy: 67, r: 14 });
+      add(group, "circle", { class: "concordance-aperture-inner", cx: -4, cy: 67, r: 6 });
+      label(group, "KOTOP", -2, 116, "pohnpei-machine-text pohnpei-machine-mobile-key");
+      add(group, "path", { class: "pohnpei-machine-feet", d: "M-75 125L-87 151M71 125L84 151" });
+    } else {
+      add(group, "path", { class: "pohnpei-machine-shadow", d: "M-181 112Q0 150 185 108Q92 166-168 158Z" });
+      add(group, "path", { class: "pohnpei-machine-base", d: "M-164 67H151L175 114H-178Z" });
+      add(group, "path", { class: "concordance-cabinet-frame", d: "M-151 67V-85H136V67M-151-85H136" });
+      const windows = [
+        [-137,-70,78,40,"KOTOP"],
+        [-48,-70,83,40,"CaeNDR"],
+        [46,-70,74,40,"KEW"]
+      ];
+      windows.forEach(([x,y,width,height,value], index) => {
+        add(group, "rect", { class: index === 1 ? "concordance-window deep" : "concordance-window", x, y, width, height, rx: 7 });
+        label(group, value, x + width / 2, y + 25, "pohnpei-machine-text");
+      });
+      add(group, "path", { class: "concordance-spelling-rail", d: "M-126-13H111M-126-19V-7M111-19V-7" });
+      add(group, "rect", { class: "concordance-spelling-carriage", x: -98, y: -24, width: 186, height: 25, rx: 6 });
+      label(group, "ponapensis ↔ ponapense", -5, -8, "pohnpei-machine-text micro");
+      add(group, "path", { class: "concordance-fruit-cradle", d: "M-76 21Q-57-2-31 16Q-8-3 14 16Q39-3 61 19L51 50H-68Z" });
+      add(group, "path", { class: "concordance-fruit-sample", d: "M-49 21Q-43 4-26 3Q-12-7 1 4Q17-3 31 8Q45 16 36 27Q24 39 8 34Q-8 43-22 34Q-41 38-50 28Z" });
+      add(group, "path", { class: "concordance-drive-shaft", d: "M111-13H154V8H174" });
+      add(group, "circle", { class: "concordance-crank-wheel", cx: 180, cy: 8, r: 12 });
+      add(group, "path", { class: "concordance-crank-spokes", d: "M169 8H191M180-3V19" });
+      add(group, "path", { class: "concordance-vial-dock", d: "M107 17H142V60H107" });
+      add(group, "rect", { class: "pohnpei-culture-vial", x: 117, y: 22, width: 27, height: 47, rx: 8 });
+      add(group, "rect", { class: "pohnpei-vial-cap", x: 120, y: 14, width: 21, height: 11, rx: 3 });
+      label(group, "QG4739", 131, 51, "pohnpei-machine-text micro", "middle", "rotate(-90 131 51)");
+      add(group, "path", { class: "concordance-flipplate", d: "M-62 76H71L62 103H-70Z" });
+      label(group, "C-0230F  /  QG4739", 1, 94, "pohnpei-machine-text tiny");
+      label(group, "KOTOP", 1, 101, "pohnpei-machine-text pohnpei-machine-mobile-key");
+      add(group, "path", { class: "pohnpei-machine-feet", d: "M-149 110L-161 139M139 110L152 139" });
+    }
+    return true;
+  }
+
+  if (item.family === "qg4739-paired-temperature-differential") {
+    group.dataset.renderer = "qg4739-paired-temperature-differential";
+    group.classList.add("pohnpei-accessory", "temperature-differential", companion ? "temperature-differential-companion" : "temperature-differential-primary");
+    if (companion) {
+      add(group, "path", { class: "pohnpei-machine-shadow", d: "M-108 130Q0 160 114 126Q57 175-99 168Z" });
+      add(group, "path", { class: "pohnpei-machine-base", d: "M-82 84H79L99 130H-102Z" });
+      add(group, "path", { class: "temperature-column-frame", d: "M-48 84V-112H44V84M-48-112H44" });
+      add(group, "circle", { class: "temperature-air-bulb", cx: 24, cy: -88, r: 23 });
+      add(group, "circle", { class: "temperature-contact-bulb", cx: -21, cy: 45, r: 25 });
+      add(group, "path", { class: "temperature-closed-capillary", d: "M24-65V-47H-4V25H-21M-21 20H12V-47H24" });
+      add(group, "rect", { class: "temperature-value-shutter", x: -43, y: -53, width: 55, height: 25, rx: 5 });
+      add(group, "rect", { class: "temperature-value-shutter deep", x: 2, y: 4, width: 57, height: 25, rx: 5 });
+      label(group, "26.0", -16, -36, "pohnpei-machine-text");
+      label(group, "23.7", 30, 21, "pohnpei-machine-text");
+      add(group, "path", { class: "temperature-rack", d: "M-62-75V43M-62-66H-53M-62-49H-53M-62-32H-53M-62-15H-53M-62 2H-53M-62 19H-53M-62 36H-53" });
+      add(group, "circle", { class: "temperature-differential-gear", cx: -32, cy: -13, r: 18 });
+      add(group, "path", { class: "temperature-gear-spokes", d: "M-50-13H-14M-32-31V5M-45-26L-19 0M-19-26L-45 0" });
+      add(group, "path", { class: "temperature-result-window", d: "M-13 38H58L52 70H-19Z" });
+      label(group, "Δ 2.3 °C", 19, 59, "pohnpei-machine-text");
+      add(group, "path", { class: "temperature-calibration-drawer", d: "M-69 67H-8L-13 97H-75Z" });
+      add(group, "circle", { class: "temperature-drawer-pull", cx: -42, cy: 77, r: 4 });
+      add(group, "path", { class: "temperature-crank-shaft", d: "M58 49H86V70H101" });
+      add(group, "circle", { class: "temperature-crank-wheel", cx: 106, cy: 70, r: 10 });
+      add(group, "path", { class: "temperature-crank-spokes", d: "M97 70H115M106 61V79" });
+      label(group, "23↔26", -1, 117, "pohnpei-machine-text pohnpei-machine-mobile-key");
+      add(group, "path", { class: "pohnpei-machine-feet", d: "M-71 128L-83 153M69 128L81 153" });
+    } else {
+      add(group, "path", { class: "pohnpei-machine-shadow", d: "M-181 116Q0 152 184 112Q92 168-167 161Z" });
+      add(group, "path", { class: "pohnpei-machine-base", d: "M-161 72H153L175 118H-175Z" });
+      add(group, "path", { class: "temperature-bridge-frame", d: "M-145 71V-54H132V71M-145-54H132" });
+      add(group, "path", { class: "temperature-contact-chamber", d: "M-135 15Q-116-25-75-25Q-36-24-22 13L-30 53H-128Z" });
+      add(group, "path", { class: "temperature-contact-pad", d: "M-116 15Q-100-7-76-7Q-51-7-39 15L-46 34H-110Z" });
+      add(group, "circle", { class: "temperature-air-bulb", cx: 105, cy: -28, r: 29 });
+      add(group, "path", { class: "temperature-air-stand", d: "M105 1V51M83 51H127" });
+      add(group, "path", { class: "temperature-closed-capillary", d: "M-26-8H-4V-35H76V-28H76M76-17H15V16H-22" });
+      add(group, "circle", { class: "temperature-differential-gear", cx: 6, cy: 31, r: 27 });
+      add(group, "path", { class: "temperature-gear-spokes", d: "M-21 31H33M6 4V58M-13 12L25 50M25 12L-13 50" });
+      add(group, "path", { class: "temperature-opposed-pointers", d: "M6 31L-8 12M6 31L24 17" });
+      add(group, "rect", { class: "temperature-value-shutter", x: -124, y: -43, width: 63, height: 27, rx: 6 });
+      add(group, "rect", { class: "temperature-value-shutter deep", x: 66, y: 10, width: 74, height: 27, rx: 6 });
+      label(group, "23.7", -92, -24, "pohnpei-machine-text");
+      label(group, "26.0", 103, 29, "pohnpei-machine-text");
+      add(group, "path", { class: "temperature-result-window", d: "M-32 66H50L43 96H-39Z" });
+      label(group, "Δ 2.3 °C", 5, 86, "pohnpei-machine-text");
+      add(group, "path", { class: "temperature-crank-shaft", d: "M32 31H62V51H79" });
+      add(group, "circle", { class: "temperature-crank-wheel", cx: 85, cy: 51, r: 11 });
+      add(group, "path", { class: "temperature-crank-spokes", d: "M75 51H95M85 41V61" });
+      add(group, "path", { class: "temperature-vial-dock", d: "M-157-21H-137V57H-151" });
+      add(group, "rect", { class: "pohnpei-culture-vial", x: -174, y: 1, width: 29, height: 55, rx: 8 });
+      add(group, "rect", { class: "pohnpei-vial-cap", x: -171, y: -9, width: 23, height: 13, rx: 3 });
+      label(group, "QG4739", -159, 35, "pohnpei-machine-text micro", "middle", "rotate(-90 -159 35)");
+      label(group, "23↔26", 0, 105, "pohnpei-machine-text pohnpei-machine-mobile-key");
+      add(group, "path", { class: "pohnpei-machine-feet", d: "M-146 114L-158 142M139 114L152 142" });
+    }
+    return true;
+  }
+
+  if (item.family === "c0230-seven-isotype-registry") {
+    group.dataset.renderer = "c0230-seven-isotype-registry";
+    group.classList.add("pohnpei-accessory", "seven-isotype-registry", companion ? "seven-isotype-registry-companion" : "seven-isotype-registry-primary");
+    if (companion) {
+      add(group, "path", { class: "pohnpei-machine-shadow", d: "M-109 131Q0 161 115 127Q57 176-100 169Z" });
+      add(group, "path", { class: "pohnpei-machine-base", d: "M-83 85H81L101 131H-103Z" });
+      add(group, "path", { class: "registry-spine", d: "M0 83V-117" });
+      add(group, "circle", { class: "registry-return-wheel large", cx: 0, cy: -109, r: 16 });
+      add(group, "circle", { class: "registry-return-wheel", cx: 0, cy: 76, r: 13 });
+      add(group, "path", { class: "registry-return-chain", d: "M-11-98Q-30-58-22-18Q-15 18-11 66M11-98Q30-58 22-18Q15 18 11 66" });
+      const drawerData = [
+        ["A",-77,-82,58],["B",20,-57,61],["C",-80,-30,61],["D",21,-3,63],
+        ["E",-78,25,60],["F",19,51,68],["G",-72,78,56]
+      ];
+      drawerData.forEach(([value,x,y,width], index) => {
+        add(group, "path", { class: value === "F" ? "registry-helical-drawer focus" : (index % 2 ? "registry-helical-drawer deep" : "registry-helical-drawer"), d: "M" + x + " " + y + "H" + (x+width) + "L" + (x+width-6) + " " + (y+22) + "H" + (x-5) + "Z" });
+        label(group, value, x + width / 2 - 2, y + 15, "pohnpei-machine-text");
+        add(group, "circle", { class: "registry-qg-tab", cx: x < 0 ? x + width + 5 : x - 7, cy: y + 11, r: 4 });
+      });
+      add(group, "path", { class: "registry-f-view-frame", d: "M87 38H116V87H87" });
+      add(group, "circle", { class: "registry-viewing-lens", cx: 101, cy: 58, r: 14 });
+      add(group, "circle", { class: "registry-viewing-lens-inner", cx: 101, cy: 58, r: 6 });
+      label(group, "QG4739", 101, 84, "pohnpei-machine-text micro");
+      add(group, "path", { class: "registry-coordinate-plate", d: "M-90 101H66L59 128H-98Z" });
+      label(group, "6.9066 / 158.1818", -16, 119, "pohnpei-machine-text tiny");
+      add(group, "path", { class: "registry-winding-shaft", d: "M14-109H65V-91H84" });
+      add(group, "circle", { class: "registry-winding-wheel", cx: 89, cy: -91, r: 10 });
+      add(group, "path", { class: "registry-winding-spokes", d: "M80-91H98M89-100V-82" });
+      label(group, "A–G", -14, 121, "pohnpei-machine-text pohnpei-machine-mobile-key");
+      add(group, "path", { class: "pohnpei-machine-feet", d: "M-73 129L-85 154M71 129L83 154" });
+    } else {
+      add(group, "path", { class: "pohnpei-machine-shadow", d: "M-184 112Q0 151 187 108Q94 167-169 159Z" });
+      add(group, "path", { class: "pohnpei-machine-base", d: "M-166 67H156L179 114H-180Z" });
+      add(group, "path", { class: "registry-rail-frame", d: "M-148 65V-48H141V65M-148-48H141" });
+      add(group, "path", { class: "registry-main-rail", d: "M-126-5H125M-126 34H125M-126-12V42M125-12V42" });
+      const gateXs = [-108,-72,-36,0,36,72,108];
+      gateXs.forEach((x, index) => {
+        const value = String.fromCharCode(65 + index);
+        add(group, "path", { class: value === "F" ? "registry-gate focus" : (index % 2 ? "registry-gate deep" : "registry-gate"), d: "M" + (x-14) + "-31H" + (x+14) + "V20H" + (x-14) + "Z" });
+        label(group, value, x, -9, "pohnpei-machine-text");
+        add(group, "circle", { class: "registry-vial-socket", cx: x, cy: 36, r: 8 });
+      });
+      add(group, "circle", { class: "registry-geneva-wheel", cx: -151, cy: 10, r: 29 });
+      add(group, "circle", { class: "registry-geneva-hub", cx: -151, cy: 10, r: 8 });
+      [-90,-30,30,90,150,210].forEach(angle => {
+        const rad = angle * Math.PI / 180;
+        add(group, "circle", { class: "registry-geneva-slot", cx: -151 + Math.cos(rad) * 19, cy: 10 + Math.sin(rad) * 19, r: 4 });
+      });
+      add(group, "path", { class: "registry-drive-link", d: "M-122 10H-108V34" });
+      add(group, "path", { class: "registry-f-view-frame", d: "M57-58H87V-20H57" });
+      add(group, "circle", { class: "registry-viewing-lens", cx: 72, cy: -39, r: 13 });
+      add(group, "circle", { class: "registry-viewing-lens-inner", cx: 72, cy: -39, r: 6 });
+      label(group, "QG4739", 72, -65, "pohnpei-machine-text micro");
+      add(group, "path", { class: "registry-coordinate-drum", d: "M-63 68Q0 53 64 68V101Q0 116-63 101Z" });
+      add(group, "path", { class: "registry-drum-ribs", d: "M-63 76Q0 61 64 76M-63 93Q0 108 64 93" });
+      label(group, "6.9066 / 158.1818", 0, 89, "pohnpei-machine-text tiny");
+      add(group, "path", { class: "registry-drum-axle", d: "M-91 84H-63M64 84H93" });
+      add(group, "circle", { class: "registry-winding-wheel", cx: 101, cy: 84, r: 12 });
+      add(group, "path", { class: "registry-winding-spokes", d: "M90 84H112M101 73V95" });
+      label(group, "A–G", 0, 96, "pohnpei-machine-text pohnpei-machine-mobile-key");
+      add(group, "path", { class: "pohnpei-machine-feet", d: "M-151 110L-163 139M143 110L156 139" });
+    }
+    return true;
+  }
+
+  return false;
+}
+
 function drawInstrument(group, item, companion) {
   const label = item.label;
   if (/fiddle/i.test(label)) {
@@ -2055,8 +2265,8 @@ function drawSamplingOrFieldTool(group, item, companion) {
     add(group,"rect",{class:"acc-soft",x:companion?-40:-52,y:companion?-40:-52,width:companion?80:104,height:companion?80:104,rx:3,transform:companion?"rotate(45)":""});
     [-1,0,1].forEach(i=>{line(group,`M${i*18}-50V50`);line(group,`M-50 ${i*18}H50`);}); return true;
   }
-  if (/telescope|periscope|snorkel/i.test(label)) {
-    if(/periscope|snorkel/i.test(label)) line(group,companion?"M-16 48V-42H35V-18H5":"M-22 64V-56H47V-24H7","acc-line thick");
+  if (/telescope|periscope/i.test(label)) {
+    if(/periscope/i.test(label)) line(group,companion?"M-16 48V-42H35V-18H5":"M-22 64V-56H47V-24H7","acc-line thick");
     else {path(group,companion?"M-55 13L43-23L51-5L-47 31Z":"M-72 17L57-31L67-7L-62 41Z"); line(group,"M-7 8L-23 57 M18-1L37 53 M-23 57H37");}
     return true;
   }
@@ -2242,9 +2452,6 @@ function drawRepeatedFamilyAccessory(group, item, companion) {
       } else {
         const count=companion?3:5; for(let i=0;i<count;i+=1){add(group,"ellipse",{class:i%2?"acc-accent":"acc-main",cx:0,cy:-22+i*(companion?22:19),rx:(companion?25:31)+i*(companion?9:11),ry:10});} line(group,companion?"M0-43V51":"M0-57V65");
       }
-      return true;
-    case "snorkel":
-      line(group,companion?"M-24 51Q-11 13-17-47H28V-25H3":"M-32 68Q-15 18-23-63H38V-33H4","acc-line thick"); path(group,companion?"M-41 12Q0-18 41 12Q0 38-41 12Z":"M-55 16Q0-25 55 16Q0 51-55 16Z","acc-soft");
       return true;
     case "stilts":
       if(/mangrove/i.test(label)) {
@@ -2459,12 +2666,6 @@ function drawUniqueNamedAccessory(group, item, companion) {
       path(group, companion ? "M-52 40Q-24 23 0 43Q25 23 53 40" : "M-69 54Q-32 31 0 57Q33 31 70 54", "acc-soft");
       return true;
     }
-    case "basalt-cuffs":
-      [-1, 1].forEach(side => {
-        path(group, companion ? `M${side * 19}-33L${side * 50}-25L${side * 55} 26L${side * 23} 37L${side * 12} 5Z` : `M${side * 25}-44L${side * 67}-34L${side * 73} 35L${side * 31} 50L${side * 16} 7Z`, side < 0 ? "acc-dark" : "acc-main");
-        path(group, companion ? `M${side * 26}-19L${side * 44}-14L${side * 46} 15L${side * 29} 21Z` : `M${side * 35}-26L${side * 59}-19L${side * 62} 20L${side * 39} 28Z`, "acc-accent");
-      });
-      return true;
     default:
       return false;
   }
@@ -2482,6 +2683,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawSingaporeAccessory(group, item, companion)) return true;
   if (drawPraslinAccessory(group, item, companion)) return true;
   if (drawSaoTomeAccessory(group, item, companion)) return true;
+  if (drawPohnpeiQG4739Accessory(group, item, companion)) return true;
   if (drawUniqueNamedAccessory(group, item, companion)) return true;
   if (drawRepeatedFamilyAccessory(group, item, companion)) return true;
   if (drawN2Accessory(group, item, companion)) return true;
@@ -2549,7 +2751,10 @@ function renderPiece(target, item, wormPart) {
     "praslin-black-parrot-call-listener": { primary: [354, 266, .34, -1], companion: [-4, 291, .28, 2] },
     "ju2484-fruit-fall-kinetic-track": { primary: [352, 126, .32, -2], companion: [-4, 106, .27, 2] },
     "sao-tome-point-count-sound-loom": { primary: [223, 188, .32, -1], companion: [109, 197, .27, 2] },
-    "sao-tome-begonia-lineage-kinetoscope": { primary: [338, 267, .3, -1], companion: [28, 279, .24, 2] }
+    "sao-tome-begonia-lineage-kinetoscope": { primary: [338, 267, .3, -1], companion: [28, 279, .24, 2] },
+    "qg4739-kotop-name-concordance": { primary: [362, 126, .3, -2], companion: [-1, 111, .25, 2] },
+    "qg4739-paired-temperature-differential": { primary: [235, 128, .3, -1], companion: [114, 157, .25, 2] },
+    "c0230-seven-isotype-registry": { primary: [343, 258, .28, -1], companion: [-27, 326, .24, 2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;

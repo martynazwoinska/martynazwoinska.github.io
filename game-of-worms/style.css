@@ -1105,6 +1105,66 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .sao-tome-fruit-pulp { fill: color-mix(in srgb, #665537 83%, var(--environment-accent)); }
 :root[data-theme='dark'] .sao-tome-fruit-collapse,
 :root[data-theme='dark'] .sao-tome-fruit-torn-rind { fill: color-mix(in srgb, #392c25 90%, var(--environment-ground)); }
+#habitat[data-environment="pohnpei-qg4739-paies-kotop-cloudforest"] .regional-backdrop { contain: layout paint; }
+.pohnpei-cloudforest-sky { fill: color-mix(in srgb, #c9ded5 82%, var(--paper-strong)); }
+.pohnpei-high-haze { fill: color-mix(in srgb, #dce7dc 67%, var(--environment-water)); opacity: .72; }
+.pohnpei-light-slit { fill: color-mix(in srgb, #e7e4bd 66%, var(--environment-accent)); opacity: .58; }
+.pohnpei-rear-slope { fill: color-mix(in srgb, #708675 64%, var(--environment-land)); stroke: color-mix(in srgb, #4d6254 55%, var(--environment-detail)); stroke-width: 1.5; }
+.pohnpei-rear-trunk { fill: none; stroke: color-mix(in srgb, #667363 58%, var(--environment-detail)); stroke-width: 13; stroke-linecap: round; opacity: .7; }
+.pohnpei-rear-trunk.deep { stroke: color-mix(in srgb, #44594a 72%, var(--environment-detail)); stroke-width: 10; opacity: .76; }
+.pohnpei-mist-band { fill: color-mix(in srgb, #e2ebe2 70%, var(--environment-water)); opacity: .5; }
+.pohnpei-mist-band.middle { opacity: .41; }
+.pohnpei-mist-band.lower { opacity: .34; }
+.pohnpei-middle-slope { fill: color-mix(in srgb, #5f795f 70%, var(--environment-land)); stroke: color-mix(in srgb, #425845 56%, var(--environment-detail)); stroke-width: 1.5; }
+.pohnpei-forest-floor { fill: color-mix(in srgb, #536d51 62%, var(--environment-ground)); }
+.pohnpei-floor-contour { fill: none; stroke: color-mix(in srgb, #3d5140 67%, var(--environment-detail)); stroke-width: 2; stroke-linecap: round; opacity: .54; }
+.pohnpei-understory-stem { fill: none; stroke: color-mix(in srgb, #49694e 73%, var(--environment-detail)); stroke-width: 4; stroke-linecap: round; }
+.pohnpei-understory-leaf { fill: color-mix(in srgb, #60805e 75%, var(--environment-land)); stroke: color-mix(in srgb, #364e3b 74%, var(--environment-detail)); stroke-width: 1.4; stroke-linejoin: round; }
+.pohnpei-understory-leaf.deep { fill: color-mix(in srgb, #456a4c 81%, var(--environment-land)); }
+.pohnpei-understory-vein { fill: none; stroke: color-mix(in srgb, #9a7758 44%, var(--environment-detail)); stroke-width: 1.5; stroke-linecap: round; }
+.pohnpei-palm-column { fill: color-mix(in srgb, #b4a78a 69%, var(--environment-ground)); stroke: color-mix(in srgb, #5c584b 71%, var(--environment-detail)); stroke-width: 2.6; stroke-linejoin: round; }
+.pohnpei-trunk-ring { fill: none; stroke: color-mix(in srgb, #7e765f 58%, var(--environment-detail)); stroke-width: 2.2; stroke-linecap: round; opacity: .71; }
+.pohnpei-trunk-ring.deep { stroke: color-mix(in srgb, #5a584b 68%, var(--environment-detail)); }
+.pohnpei-root-lattice { fill: color-mix(in srgb, #9f9174 69%, var(--environment-ground)); stroke: color-mix(in srgb, #565246 74%, var(--environment-detail)); stroke-width: 2.3; stroke-linejoin: round; }
+.pohnpei-root-lattice.arch { fill: color-mix(in srgb, #8d8169 71%, var(--environment-ground)); }
+.pohnpei-root-lattice.fork { fill: color-mix(in srgb, #a99b7e 67%, var(--environment-ground)); }
+.pohnpei-root-lattice.rear { fill: color-mix(in srgb, #746e5c 74%, var(--environment-ground)); }
+.pohnpei-root-opening { fill: color-mix(in srgb, #27382f 86%, var(--environment-detail)); opacity: .76; }
+.pohnpei-frond-rachis { fill: none; stroke: color-mix(in srgb, #5d7050 71%, var(--environment-detail)); stroke-width: 5; stroke-linecap: round; }
+.pohnpei-frond-leaflet,
+.pohnpei-frond-tip { fill: color-mix(in srgb, #567858 78%, var(--environment-land)); stroke: color-mix(in srgb, #354e3b 75%, var(--environment-detail)); stroke-width: 1.1; stroke-linejoin: round; }
+.pohnpei-frond-leaflet.deep { fill: color-mix(in srgb, #3f684b 82%, var(--environment-land)); }
+.pohnpei-foreground-litter-bed { fill: color-mix(in srgb, #4b4035 70%, var(--environment-ground)); }
+.pohnpei-litter-leaf { fill: color-mix(in srgb, #8b674a 67%, var(--environment-accent)); stroke: color-mix(in srgb, #463a31 76%, var(--environment-detail)); stroke-width: 1.1; }
+.pohnpei-litter-leaf.deep { fill: color-mix(in srgb, #5b4b3d 79%, var(--environment-ground)); }
+.pohnpei-litter-leaf.green { fill: color-mix(in srgb, #506747 79%, var(--environment-land)); }
+.pohnpei-litter-vein { fill: none; stroke: color-mix(in srgb, #3f352f 74%, var(--environment-detail)); stroke-width: 1; }
+.pohnpei-litter-fragment { fill: color-mix(in srgb, #a88755 67%, var(--environment-accent)); }
+.pohnpei-litter-fragment.deep { fill: color-mix(in srgb, #2c342d 87%, var(--environment-detail)); }
+.pohnpei-fruit-shadow { fill: rgba(28,33,28,.29); }
+.pohnpei-fruit-rind { fill: color-mix(in srgb, #775366 66%, var(--environment-ground)); stroke: color-mix(in srgb, #493943 80%, var(--environment-detail)); stroke-width: 2.5; stroke-linejoin: round; }
+.pohnpei-fruit-collapse { fill: color-mix(in srgb, #7e6840 66%, var(--environment-accent)); stroke: color-mix(in srgb, #4e4434 76%, var(--environment-detail)); stroke-width: 1.6; stroke-linejoin: round; }
+.pohnpei-fruit-rind-fold { fill: none; stroke: color-mix(in srgb, #b09671 55%, var(--environment-accent)); stroke-width: 2.3; stroke-linecap: round; }
+.pohnpei-fruit-mottle { fill: color-mix(in srgb, #4f3a43 81%, var(--environment-detail)); }
+.pohnpei-fruit-mottle.deep { fill: color-mix(in srgb, #2d342d 89%, var(--environment-detail)); }
+:root[data-theme='dark'] .pohnpei-cloudforest-sky { fill: color-mix(in srgb, #213a35 87%, var(--environment-water)); }
+:root[data-theme='dark'] .pohnpei-high-haze { fill: color-mix(in srgb, #4f6c61 53%, var(--environment-water)); opacity: .38; }
+:root[data-theme='dark'] .pohnpei-light-slit { fill: color-mix(in srgb, #77734b 60%, var(--environment-accent)); opacity: .39; }
+:root[data-theme='dark'] .pohnpei-rear-slope { fill: color-mix(in srgb, #314b3b 85%, var(--environment-land)); }
+:root[data-theme='dark'] .pohnpei-mist-band { fill: color-mix(in srgb, #667c70 47%, var(--environment-water)); opacity: .3; }
+:root[data-theme='dark'] .pohnpei-middle-slope { fill: color-mix(in srgb, #2d4b37 87%, var(--environment-land)); }
+:root[data-theme='dark'] .pohnpei-forest-floor { fill: color-mix(in srgb, #33412f 87%, var(--environment-ground)); }
+:root[data-theme='dark'] .pohnpei-palm-column,
+:root[data-theme='dark'] .pohnpei-root-lattice { fill: color-mix(in srgb, #615845 80%, var(--environment-ground)); }
+:root[data-theme='dark'] .pohnpei-root-lattice.arch { fill: color-mix(in srgb, #514c3e 84%, var(--environment-ground)); }
+:root[data-theme='dark'] .pohnpei-root-lattice.fork { fill: color-mix(in srgb, #6a5f49 79%, var(--environment-ground)); }
+:root[data-theme='dark'] .pohnpei-root-lattice.rear { fill: color-mix(in srgb, #47463b 87%, var(--environment-ground)); }
+:root[data-theme='dark'] .pohnpei-frond-leaflet,
+:root[data-theme='dark'] .pohnpei-frond-tip,
+:root[data-theme='dark'] .pohnpei-understory-leaf { fill: color-mix(in srgb, #2b533b 86%, var(--environment-land)); }
+:root[data-theme='dark'] .pohnpei-foreground-litter-bed { fill: color-mix(in srgb, #29231f 91%, var(--environment-ground)); }
+:root[data-theme='dark'] .pohnpei-fruit-rind { fill: color-mix(in srgb, #4b3543 85%, var(--environment-ground)); }
+:root[data-theme='dark'] .pohnpei-fruit-collapse { fill: color-mix(in srgb, #5f4f30 83%, var(--environment-accent)); }
 .scene-sky { fill: url(#scene-sky-gradient); }
 .scene-sky-top { stop-color: color-mix(in srgb, var(--scene-sky) 55%, white); }
 .scene-sky-bottom { stop-color: var(--scene-sky); }
@@ -2594,6 +2654,132 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .begonia-leaf-drum { fill: color-mix(in srgb, #324c37 85%, var(--local-primary)); }
 :root[data-theme='dark'] .begonia-shutter.deep,
 :root[data-theme='dark'] .begonia-flip-panel.deep { fill: color-mix(in srgb, #3d5040 84%, var(--local-primary)); }
+.pohnpei-machine-shadow { fill: rgba(24,32,28,.22); }
+.pohnpei-machine-base { fill: color-mix(in srgb, #866b48 72%, var(--local-secondary)); stroke: color-mix(in srgb, #493d31 83%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
+.pohnpei-machine-feet,
+.concordance-tower-frame,
+.concordance-cabinet-frame,
+.temperature-column-frame,
+.temperature-bridge-frame,
+.registry-spine,
+.registry-rail-frame { fill: none; stroke: color-mix(in srgb, #624e38 79%, var(--worm-deep)); stroke-width: 5.5; stroke-linecap: round; stroke-linejoin: round; }
+.pohnpei-machine-text { fill: color-mix(in srgb, #2f463d 87%, var(--worm-deep)); font: 900 20px/1 var(--sans); paint-order: stroke; stroke: color-mix(in srgb, var(--paper-strong) 76%, transparent); stroke-width: 1.15px; letter-spacing: 0; }
+.pohnpei-machine-text.tiny { font-size: 15px; }
+.pohnpei-machine-text.micro { font-size: 11px; }
+.pohnpei-machine-mobile-key { display: none; }
+.pohnpei-culture-vial { fill: color-mix(in srgb, #d2c9a8 68%, var(--paper-strong)); stroke: color-mix(in srgb, #665440 79%, var(--worm-deep)); stroke-width: 1.7; }
+.pohnpei-vial-cap { fill: color-mix(in srgb, #78546f 70%, var(--local-primary)); stroke: color-mix(in srgb, #493746 82%, var(--worm-deep)); stroke-width: 1.5; }
+.concordance-window,
+.concordance-shutter,
+.concordance-spelling-carriage,
+.concordance-flipplate,
+.concordance-kotop-tab { fill: color-mix(in srgb, #d2c7a3 68%, var(--paper-strong)); stroke: color-mix(in srgb, #64523d 79%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
+.concordance-window.deep,
+.concordance-shutter.deep { fill: color-mix(in srgb, #aebba1 58%, var(--local-primary)); }
+.concordance-spelling-rail,
+.concordance-drive-shaft,
+.concordance-crank-spokes,
+.concordance-return-chain,
+.concordance-vial-bracket,
+.concordance-vial-dock,
+.concordance-drawer-seam { fill: none; stroke: color-mix(in srgb, #9b7948 74%, var(--local-secondary)); stroke-width: 3.1; stroke-linecap: round; stroke-linejoin: round; }
+.concordance-spelling-rail { stroke-width: 4; }
+.concordance-fruit-cradle,
+.concordance-specimen-drawer { fill: color-mix(in srgb, #5b5541 68%, var(--local-primary)); stroke: color-mix(in srgb, #413b31 81%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.concordance-fruit-sample { fill: color-mix(in srgb, #765268 68%, var(--local-primary)); stroke: color-mix(in srgb, #493743 82%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
+.concordance-index-wheel { fill: color-mix(in srgb, #76556d 68%, var(--local-primary)); stroke: color-mix(in srgb, #493946 82%, var(--worm-deep)); stroke-width: 2.2; }
+.concordance-index-hub,
+.concordance-return-gear,
+.concordance-crank-wheel,
+.concordance-drawer-pull { fill: color-mix(in srgb, #ad884f 72%, var(--local-secondary)); stroke: color-mix(in srgb, #58442f 82%, var(--worm-deep)); stroke-width: 1.7; }
+.concordance-return-gear.large { stroke-width: 2.1; }
+.concordance-leaf-shutter { fill: color-mix(in srgb, #66805c 67%, var(--local-primary)); stroke: color-mix(in srgb, #3d503e 81%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.concordance-leaf-rib { fill: none; stroke: color-mix(in srgb, #a05272 65%, var(--local-primary)); stroke-width: 2.2; stroke-linecap: round; }
+.concordance-viewing-aperture { fill: color-mix(in srgb, #ad884f 72%, var(--local-secondary)); stroke: color-mix(in srgb, #58442f 82%, var(--worm-deep)); stroke-width: 1.8; }
+.concordance-aperture-inner { fill: color-mix(in srgb, #334c42 84%, var(--worm-deep)); stroke: color-mix(in srgb, #d2c69f 64%, var(--paper-strong)); stroke-width: 1.3; }
+.temperature-contact-chamber,
+.temperature-calibration-drawer { fill: color-mix(in srgb, #6d573f 67%, var(--local-secondary)); stroke: color-mix(in srgb, #443a30 82%, var(--worm-deep)); stroke-width: 2.1; stroke-linejoin: round; }
+.temperature-contact-pad { fill: color-mix(in srgb, #765469 68%, var(--local-primary)); stroke: color-mix(in srgb, #493743 81%, var(--worm-deep)); stroke-width: 1.6; }
+.temperature-air-bulb { fill: color-mix(in srgb, #c8d8cd 62%, var(--paper-strong)); stroke: color-mix(in srgb, #4a6559 78%, var(--worm-deep)); stroke-width: 2.3; }
+.temperature-contact-bulb { fill: color-mix(in srgb, #9b7747 70%, var(--local-secondary)); stroke: color-mix(in srgb, #58442f 82%, var(--worm-deep)); stroke-width: 2.2; }
+.temperature-air-stand,
+.temperature-closed-capillary,
+.temperature-rack,
+.temperature-gear-spokes,
+.temperature-opposed-pointers,
+.temperature-crank-shaft,
+.temperature-crank-spokes,
+.temperature-vial-dock { fill: none; stroke: color-mix(in srgb, #79566f 72%, var(--local-primary)); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.temperature-closed-capillary { stroke: color-mix(in srgb, #ad8a50 72%, var(--local-secondary)); stroke-width: 3.5; }
+.temperature-rack { stroke-width: 3.3; }
+.temperature-differential-gear,
+.temperature-crank-wheel,
+.temperature-drawer-pull { fill: color-mix(in srgb, #aa844d 72%, var(--local-secondary)); stroke: color-mix(in srgb, #57432f 82%, var(--worm-deep)); stroke-width: 1.9; }
+.temperature-value-shutter,
+.temperature-result-window { fill: color-mix(in srgb, #d1c7a7 68%, var(--paper-strong)); stroke: color-mix(in srgb, #65523e 79%, var(--worm-deep)); stroke-width: 1.7; stroke-linejoin: round; }
+.temperature-value-shutter.deep { fill: color-mix(in srgb, #aec0ad 58%, var(--local-primary)); }
+.registry-main-rail,
+.registry-return-chain,
+.registry-drive-link,
+.registry-winding-shaft,
+.registry-winding-spokes,
+.registry-drum-axle,
+.registry-drum-ribs { fill: none; stroke: color-mix(in srgb, #9a7848 73%, var(--local-secondary)); stroke-width: 3.1; stroke-linecap: round; stroke-linejoin: round; }
+.registry-main-rail { stroke-width: 4.2; }
+.registry-gate,
+.registry-helical-drawer,
+.registry-coordinate-plate,
+.registry-coordinate-drum { fill: color-mix(in srgb, #d0c5a1 68%, var(--paper-strong)); stroke: color-mix(in srgb, #64513d 79%, var(--worm-deep)); stroke-width: 1.7; stroke-linejoin: round; }
+.registry-gate.deep,
+.registry-helical-drawer.deep { fill: color-mix(in srgb, #aebca4 58%, var(--local-primary)); }
+.registry-gate.focus,
+.registry-helical-drawer.focus { fill: color-mix(in srgb, #7a566f 68%, var(--local-primary)); stroke: color-mix(in srgb, #4a3746 83%, var(--worm-deep)); stroke-width: 2.1; }
+.registry-vial-socket,
+.registry-qg-tab,
+.registry-geneva-wheel,
+.registry-geneva-hub,
+.registry-return-wheel,
+.registry-winding-wheel { fill: color-mix(in srgb, #ad874e 72%, var(--local-secondary)); stroke: color-mix(in srgb, #57432f 82%, var(--worm-deep)); stroke-width: 1.7; }
+.registry-geneva-slot { fill: color-mix(in srgb, #455d4f 78%, var(--local-primary)); stroke: color-mix(in srgb, #304239 84%, var(--worm-deep)); stroke-width: 1; }
+.registry-f-view-frame { fill: none; stroke: color-mix(in srgb, #79566f 72%, var(--local-primary)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.registry-viewing-lens { fill: color-mix(in srgb, #ac884f 72%, var(--local-secondary)); stroke: color-mix(in srgb, #57432f 82%, var(--worm-deep)); stroke-width: 1.8; }
+.registry-viewing-lens-inner { fill: color-mix(in srgb, #334d42 84%, var(--worm-deep)); stroke: color-mix(in srgb, #d2c69f 64%, var(--paper-strong)); stroke-width: 1.3; }
+:root[data-theme='dark'] .pohnpei-machine-base,
+:root[data-theme='dark'] .temperature-contact-chamber,
+:root[data-theme='dark'] .temperature-calibration-drawer { fill: color-mix(in srgb, #493a2f 86%, var(--local-secondary)); }
+:root[data-theme='dark'] .concordance-window,
+:root[data-theme='dark'] .concordance-shutter,
+:root[data-theme='dark'] .concordance-spelling-carriage,
+:root[data-theme='dark'] .concordance-flipplate,
+:root[data-theme='dark'] .concordance-kotop-tab,
+:root[data-theme='dark'] .pohnpei-culture-vial,
+:root[data-theme='dark'] .temperature-value-shutter,
+:root[data-theme='dark'] .temperature-result-window,
+:root[data-theme='dark'] .registry-gate,
+:root[data-theme='dark'] .registry-helical-drawer,
+:root[data-theme='dark'] .registry-coordinate-plate,
+:root[data-theme='dark'] .registry-coordinate-drum { fill: color-mix(in srgb, #555045 82%, var(--paper-strong)); }
+:root[data-theme='dark'] .concordance-window.deep,
+:root[data-theme='dark'] .concordance-shutter.deep,
+:root[data-theme='dark'] .temperature-value-shutter.deep,
+:root[data-theme='dark'] .registry-gate.deep,
+:root[data-theme='dark'] .registry-helical-drawer.deep { fill: color-mix(in srgb, #3c5041 85%, var(--local-primary)); }
+:root[data-theme='dark'] .concordance-fruit-cradle,
+:root[data-theme='dark'] .concordance-specimen-drawer { fill: color-mix(in srgb, #35483b 86%, var(--local-primary)); }
+:root[data-theme='dark'] .concordance-fruit-sample,
+:root[data-theme='dark'] .temperature-contact-pad,
+:root[data-theme='dark'] .registry-gate.focus,
+:root[data-theme='dark'] .registry-helical-drawer.focus { fill: color-mix(in srgb, #4b3748 86%, var(--local-primary)); }
+:root[data-theme='dark'] .temperature-air-bulb { fill: color-mix(in srgb, #43574e 84%, var(--paper-strong)); }
+@media (max-width: 600px) {
+  .pohnpei-accessory .pohnpei-machine-text:not(.pohnpei-machine-mobile-key) { display: none; }
+  .pohnpei-accessory .pohnpei-machine-mobile-key {
+    display: inline;
+    font-size: 44px;
+    letter-spacing: -.045em;
+    stroke-width: 2px;
+  }
+}
 .fig-visor path:first-child, .fig-visor path:nth-of-type(4) { fill: #72a66b; stroke: var(--worm-deep); stroke-width: 3; }
 .fig-vein, .visor-band { fill: none; stroke: #315f50; stroke-width: 2.5; stroke-linecap: round; }
 .satchel-strap { fill: none; stroke: #745744; stroke-width: 7; stroke-linecap: round; }

@@ -2,8 +2,8 @@ import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
-import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-14";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-17";
+import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-15";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-18";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -178,7 +178,7 @@ const species = [
       { name: "Oʻahu, Hawaiʻi", coordinates: [-157.765, 21.356], source: "CaeNDR", style: "kauai" },
       { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.478, 22.194], source: "CaeNDR", style: "kauai" },
       { name: "New Taipei City, Taiwan", coordinates: [121.773, 25.053], source: "CaeNDR", style: "rainforest" },
-      { name: "Pohnpei, Micronesia", coordinates: [158.182, 6.907], source: "CaeNDR", style: "ocean" },
+      { name: "Pohnpei, Micronesia · QG4739", coordinates: [158.1818, 6.9066], source: "CaeNDR", style: "rainforest", strain: "QG4739", history: "QG4739, previously C-0230F, is one representative of seven C-0230A–G isotype-reference strains collected at 6.9066, 158.1818. It was sampled and isolated by S. Tintori, T. Nguyen, H. Yomai and M. Rockman on 7 December 2023 from rotting fruit recorded as Clinostigma ponapensis, locally called kotop, in cloudforest at Paies, Kitti. CaeNDR records substrate temperature 23.7 °C, ambient temperature 26.0 °C and test-cross identification; its isotype summary gives 540 m while the sampling comment gives 542 m." },
       { name: "Queensland, Australia", coordinates: [145.446, -16.103], source: "CaeNDR", style: "rainforest" },
       { name: "Réunion Island", coordinates: [55.688, -21.047], source: "CaeNDR", style: "ocean" }
     ]
