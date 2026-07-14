@@ -826,10 +826,10 @@ function drawBristolScene(target, palette) {
   append(target, "path", { class: "bristol-cliff-face right", d: "M487 164L454 205L446 255L418 287L386 374L369 430H430L455 353L482 321L487 263L520 211Z" });
   append(target, "path", { class: "bristol-cliff-strata", d: "M142 184L171 203L183 245M157 267L190 282L207 324M475 191L457 224L458 256M452 291L425 322L408 367" });
 
-  append(target, "path", { class: "environment-water bristol-avon", d: "M273 214C287 257 282 300 258 344C243 372 231 399 221 430H405C389 387 371 346 358 302C347 267 344 238 346 214Z", fill: palette[4] });
+  append(target, "path", { class: "environment-water bristol-avon", d: "M312 164C305 217 286 299 258 344C242 373 229 402 221 430H405C391 388 373 345 358 302C346 260 334 193 312 164Z", fill: palette[4] });
   append(target, "path", { class: "bristol-tidal-bank left", d: "M239 302Q271 278 284 240Q282 286 260 332Q238 374 221 430H182Q202 355 239 302Z" });
   append(target, "path", { class: "bristol-tidal-bank right", d: "M348 242Q351 288 373 330Q399 377 415 430H405Q387 382 365 333Q344 285 348 242Z" });
-  append(target, "path", { class: "bristol-river-glint", d: "M292 246Q318 237 343 246M282 288Q319 276 354 290M268 340Q320 326 371 345M247 393Q320 372 390 400" });
+  append(target, "path", { class: "bristol-river-glint", d: "M304 251Q320 246 335 251M291 294Q322 284 352 295M269 344Q322 329 371 346M244 397Q322 373 391 400" });
 
   const bridge = append(target, "g", { class: "bristol-bridge", "aria-hidden": "true" });
   append(bridge, "path", { class: "bristol-bridge-chain", d: "M82 159Q139 151 181 78Q238 137 300 153Q361 137 400 78Q449 151 521 159" });
