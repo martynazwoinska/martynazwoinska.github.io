@@ -1,6 +1,6 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-07-13
+Last updated: 2026-07-14
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
@@ -13,6 +13,7 @@ This file records approved decisions and the verified implementation state. Alwa
 - Primary colours: emerald, antique gold, muted violet or berry
 - Display font: Cormorant Garamond
 - Light and dark themes must remain functional
+- The dark-theme top navigation uses a restrained saturated bronze (`#302a20`); the light-theme green remains `#cbe3d7`.
 - Homepage language options: English, Swedish, and Polish
 
 ## Parallel ownership
@@ -57,7 +58,10 @@ The two cards have equal visual weight, stack on mobile, retain emerald and anti
 - Shared theme and language-preference handling is present under `shared/`.
 - Homepage behaviour and translations are separated into `home.js` and `home-i18n.js`.
 - Each worm’s copy of a Game of Worms accessory can be repositioned independently. There is no separate worm-target selector: visitors switch an accessory on, then drag its visible copy directly. Keyboard users focus that same visible object, move it with the arrow keys, and press Home to reset it. Positions remain separate for each worm, species, and location during the session. The random `Surprise me` control has been removed.
-- Every representative collection record has an explicit, source-backed regional landscape profile with its own geographic silhouette, local ecological cues, a short `Place clues` lesson, and a primary or official source link. The landscape is clearly described as wider regional context rather than the exact microscopic collection substrate.
+- The Game has 37 explicit, source-backed regional landscape profiles and 37 matching scene compositions. Each composition has its own ground, middle distance, foreground cues, route, cue order, and recognisable silhouette; there is no generic environment fallback.
+- The Game has 37 explicit three-item accessory sets: 111 named designs in total. No accessory family is used more than twice, paired objects have visibly different geometry, and no emoji or species-level costume fallback remains. N2 keeps its seeded NGM agar plate, fitted lab coat, and cryo-vial jetpack.
+- `docs/game-of-worms-art-catalogue.md` is the durable illustration catalogue for landscape evidence, composition locks, and accessory concepts. Clothing and props are playful geography-, ecology-, collection-, or research-derived designs, not claims of authentic local dress.
+- Each landscape retains a short `Place clues` lesson and a primary or official source link. The landscape is clearly described as wider regional context rather than the exact microscopic collection substrate.
 - The Cabinet uses separate HTML, CSS, JavaScript, translation, and data files.
 - The Cabinet presents the authentic photographed object board inside an extended fantasy surround.
 - On phones held vertically, the Cabinet asks the visitor to turn the device sideways; the interactive board is presented in landscape orientation.
@@ -115,6 +119,6 @@ The Etsy pattern is the only external link planned for these objects.
 
 ## Current follow-up work
 
-1. Run a focused cross-site QA pass at the widths defined in `docs/agent-workflow.md`.
-2. Verify keyboard navigation, dialog focus restoration, reduced motion, language and theme persistence, console errors, and horizontal overflow.
+1. Continue periodic visual review of the 37 Game landscapes and 111 accessory designs as illustrations, while preserving their audited one-to-one catalogue mapping.
+2. Keep the maximum-two accessory-family rule and N2’s three approved concepts when refining individual drawings.
 3. Keep `game-of-worms/` unchanged during Cabinet-only work.
