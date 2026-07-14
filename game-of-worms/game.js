@@ -741,13 +741,14 @@ function addAccessoryHitTarget(piece) {
   piece.prepend(hitTarget);
 }
 
-window.addEventListener("resize", () => {
+const accessoryResizeObserver = new ResizeObserver(() => {
   if (accessoryResizeFrame) cancelAnimationFrame(accessoryResizeFrame);
   accessoryResizeFrame = requestAnimationFrame(() => {
     accessoryResizeFrame = null;
     refreshAccessoryPieceControls();
   });
 });
+accessoryResizeObserver.observe(els.wormAvatar);
 
 function playSelectionEffect() {
   els.habitat.classList.remove("is-changing");

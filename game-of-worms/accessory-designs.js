@@ -1298,7 +1298,7 @@ function renderPiece(target, item, wormPart) {
     "couleuvre-dragonfly-automaton": { primary: [304, 235, .61, -2], companion: [76, 266, .5, 3] },
     "midmar-compost-tumbler": { primary: [325, 134, .56, -2], companion: [48, 127, .48, 3] },
     "galaxy-plate-scanner": { primary: [184, 204, .54, -1], companion: [68, 202, .43, 2] },
-    "agassiz-ice-flow-model": { primary: [303, 285, .52, -2], companion: [52, 290, .42, 2] }
+    "agassiz-ice-flow-model": { primary: [322, 260, .52, -2], companion: [52, 290, .42, 2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;
