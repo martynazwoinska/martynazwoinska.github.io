@@ -32,7 +32,7 @@ Use the prefixed CSS custom properties rather than copying hex values into compo
 | `--site-brand-berry` | `#7d2145` | `#d889a8` | Oxblood or berry secondary accent |
 | `--site-brand-gold` | `#a88445` | `#d2b66f` | Antique-gold fine borders, markers and restrained highlights |
 | `--site-brand-violet` | `#6b4a73` | `#c1a4ca` | Muted violet for limited botanical or categorical detail |
-| `--site-nav-bg` | `#cbe3d7` | `#29261f` | Clearly green light header and warm golden-brown dark header |
+| `--site-nav-bg` | `#cbe3d7` | `#302a20` | Clearly green light header and subtly saturated bronze-gold dark header |
 | `--site-nav-border` | `rgba(28, 122, 82, .48)` | `#6d5e3d` | Theme-coherent divider below the sticky navigation |
 | `--site-nav-accent` | `#196f4a` | `#5fcb9d` | Accessible emerald cue within the navigation surface |
 | `--site-border` | `#e7e3d9` | `#2c3238` | Neutral borders and dividers |
