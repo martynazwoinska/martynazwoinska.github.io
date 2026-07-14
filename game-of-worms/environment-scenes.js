@@ -291,6 +291,286 @@ const canonicalProfiles = {
   )
 };
 
+function composition(ground, middle, foreground, route, cueOrder, silhouetteLock) {
+  return Object.freeze({
+    ground,
+    middle,
+    foreground: Object.freeze(foreground),
+    route,
+    cueOrder: Object.freeze(cueOrder),
+    silhouetteLock,
+    geometrySignature: [ground, middle, route, foreground.map(cue => cue.join(":")), cueOrder.join(":")].join("|")
+  });
+}
+
+/*
+ * These are 37 separate compositions, one for each canonical profile. They
+ * retain the source-backed profile text above but lock a distinct viewpoint,
+ * foreground frame and spatial path into the illustration. No profile falls
+ * back to a regional or species scene.
+ */
+const sceneCompositions = Object.freeze({
+  "ishigaki-reef-estuary": composition(
+    "M0 379 Q92 350 181 369 Q292 395 403 365 Q505 344 600 371 V430 H0Z",
+    "M0 305 Q90 286 176 299 L230 430 H0Z M450 314 Q526 291 600 303 V430 H515Z",
+    [["fig", 22, 319, 1.18], ["coral", 566, 386, .9]],
+    "M115 430 Q169 349 237 333 Q343 307 600 318", [0, 2, 1],
+    "arched fig canopy, diagonal mangrove roots, and a flat reef horizon"
+  ),
+  "ahmedabad-pol-sabarmati": composition(
+    "M0 344 L154 339 Q245 365 340 346 L600 337 V430 H0Z",
+    "M0 276 L112 252 L220 264 L338 247 L468 260 L600 247 V333 H0Z",
+    [["drytree", 24, 350, .92], ["pol", 552, 292, .72]],
+    "M0 372 Q165 346 305 370 T600 359", [1, 0, 2],
+    "a long shaded city mass punctured by one slender chabutro"
+  ),
+  "taipei-xiangshan": composition(
+    "M0 382 Q119 343 236 369 Q348 392 600 342 V430 H0Z",
+    "M0 337 L86 279 L154 219 L244 149 L324 218 L405 283 L470 326 V430 H0Z",
+    [["boulder", 48, 372, 1.05], ["fern", 174, 360, .82]],
+    "M45 430 Q91 351 147 300 Q206 244 266 155", [1, 2, 0],
+    "a steep triangular forest slope opposed by a single needle tower"
+  ),
+  "kerala-lowland-farm": composition(
+    "M0 361 H124 L142 338 H286 L305 366 H438 L456 343 H600 V430 H0Z",
+    "M0 294 H600 V342 H0Z M0 317 H600 M0 336 H600",
+    [["fruit", 80, 384, .85], ["coconut", 566, 300, .82]],
+    "M34 430 C82 390 104 332 184 326 S324 377 392 336 S520 302 600 314", [2, 0, 1],
+    "level paddy bands crossed by a strong S-shaped irrigation channel"
+  ),
+  "kauai-north-shore": composition(
+    "M0 384 Q94 350 189 378 Q309 402 406 370 Q505 344 600 380 V430 H0Z",
+    "M0 322 Q92 266 176 313 Q292 346 390 294 Q509 245 600 319 V430 H0Z",
+    [["taro", 53, 380, .88], ["pandanus", 558, 341, .74]],
+    "M282 201 Q271 267 291 328 Q310 370 344 430", [1, 0, 2],
+    "a low horseshoe valley opening directly to a sea glimpse"
+  ),
+  "reunion-saint-benoit-farm": composition(
+    "M0 375 L105 349 L223 378 L347 341 L474 369 L600 337 V430 H0Z",
+    "M0 314 L600 286 V348 L0 376Z",
+    [["cane", 30, 377, 1.05], ["basalt", 557, 384, .78]],
+    "M12 424 L179 337 M94 430 L258 326 M221 430 L385 315 M365 430 L523 302", [2, 0, 1],
+    "diagonal cane rows climbing toward one wet volcanic ridge tooth"
+  ),
+  "orsay-yvette-garden": composition(
+    "M0 366 Q89 328 183 359 Q282 390 381 351 Q482 318 600 355 V430 H0Z",
+    "M38 351 Q143 298 252 337 Q374 379 520 331 L600 348 V430 H0Z",
+    [["deciduous", 36, 329, 1.02], ["reeds", 534, 392, .86]],
+    "M173 382 Q274 337 396 367 Q459 385 528 371", [0, 2, 1],
+    "a large round pond beneath an offset deciduous canopy"
+  ),
+  "angra-serra-cove": composition(
+    "M0 393 Q83 351 169 381 Q248 410 338 373 L410 349 V430 H0Z M550 376 Q579 357 600 362 V430H550Z",
+    "M0 330 L68 262 L135 296 L201 222 L268 281 L335 242 L407 318 V430 H0Z",
+    [["mangrove", 26, 373, .98], ["fruit", 154, 403, .72]],
+    "M404 358 Q463 329 514 344 Q559 357 600 337", [0, 2, 1],
+    "serrated rainforest mountains stepping down into progressively smaller islets"
+  ),
+  "nambucca-estuary-garden": composition(
+    "M0 350 Q121 333 238 368 Q356 399 475 354 Q542 329 600 340 V430 H0Z",
+    "M0 297 Q151 282 284 307 Q418 331 600 292 V354 H0Z",
+    [["banksia", 553, 363, .86], ["flower", 83, 395, .72]],
+    "M0 378 C121 321 213 322 300 368 S479 411 600 341", [2, 0, 1],
+    "a broad flat estuary bend framed by unlike banksia and eucalyptus masses"
+  ),
+  "bristol-garden-gorge": composition(
+    "M0 369 L126 340 L206 363 L273 331 L335 365 L442 339 L600 361 V430 H0Z",
+    "M0 300 L188 257 L250 314 L300 430 H0Z M600 292 L419 252 L352 314 L314 430 H600Z",
+    [["compost", 74, 393, 1.02], ["city", 524, 342, .58]],
+    "M300 430 Q293 362 311 316 Q328 277 348 248", [0, 2, 1],
+    "opposing gorge faces forming a central river notch behind a compost heap"
+  ),
+  "santeuil-viosne-vexin": composition(
+    "M0 327 H193 L236 360 Q300 395 365 358 L410 326 H600 V430 H0Z",
+    "M0 281 H224 L254 310 Q301 342 351 308 L383 280 H600 V343 H0Z",
+    [["fields", 58, 353, .76], ["reeds", 305, 405, .78]],
+    "M299 430 Q309 384 300 350 Q288 321 305 285", [2, 1, 0],
+    "a flat plateau sharply incised by one narrow Viosne valley"
+  ),
+  "edinburgh-holyrood": composition(
+    "M0 381 Q117 343 216 373 Q322 404 430 366 Q521 336 600 370 V430 H0Z",
+    "M0 333 L131 320 L214 258 L294 279 L386 326 L600 315 V430 H0Z",
+    [["reeds", 30, 407, .72], ["stonecity", 557, 349, .54]],
+    "M70 389 Q176 364 275 387 Q379 409 475 373", [1, 2, 0],
+    "an asymmetric Arthur's Seat peak and Salisbury Crags profile"
+  ),
+  "tenerife-teide": composition(
+    "M0 376 L92 344 L163 366 L236 337 L310 368 L384 331 L470 360 L600 340 V430 H0Z",
+    "M0 313 Q109 298 213 317 L300 175 L388 318 Q495 297 600 314 V430 H0Z",
+    [["lava", 34, 392, .98], ["broom", 556, 384, .82]],
+    "M0 249 Q150 229 300 246 T600 243", [1, 0, 2],
+    "one tall Teide cone floating above a ruler-flat cloudbank"
+  ),
+  "kauai-waimea-canyon": composition(
+    "M0 322 L93 353 L166 326 L246 378 L318 345 L397 394 L482 352 L600 386 V430 H0Z",
+    "M0 278 L83 304 L157 271 L238 329 L311 289 L389 350 L474 303 L600 337 V430 H0Z",
+    [["fern", 558, 386, .8], ["canyon", 52, 363, .76]],
+    "M90 283 L164 323 L237 289 L318 348 L398 306 L482 365", [2, 1, 0],
+    "layered red and ochre chevrons descending into a zigzag gorge"
+  ),
+  "kauai-hanalei-valley": composition(
+    "M0 367 H98 L121 348 H229 L250 375 H374 L397 348 H510 L531 369 H600 V430 H0Z",
+    "M0 302 Q87 257 169 303 Q254 346 337 299 Q427 249 514 301 L600 322 V430 H0Z",
+    [["taro", 45, 394, .78], ["paddy", 528, 388, .72]],
+    "M0 408 Q116 369 230 397 Q344 425 454 377 Q529 345 600 361", [1, 0, 2],
+    "a broad wet amphitheatre with kalo plots and several waterfall curtains"
+  ),
+  "canberra-black-mountain": composition(
+    "M0 374 Q103 348 207 370 Q328 397 448 359 Q523 338 600 352 V430 H0Z",
+    "M0 320 Q167 309 300 242 Q432 310 600 316 V430 H0Z",
+    [["grass", 38, 397, .84], ["eucalyptus", 562, 354, .76]],
+    "M40 388 H156 V430 M40 388V430 M98 388V430 M156 388V430", [2, 0, 1],
+    "a low Black Mountain dome, fine tower, and horizontal lake at three scales"
+  ),
+  "auckland-volcanic-harbour": composition(
+    "M0 388 Q119 352 233 381 Q344 407 454 371 Q524 348 600 361 V430 H0Z",
+    "M0 321 Q113 306 218 327 L300 255 Q380 327 492 306 L600 320 V430 H0Z",
+    [["pohutukawa", 27, 369, .9], ["islet", 544, 361, .66]],
+    "M250 267 Q300 246 350 269 Q321 281 300 278 Q278 282 250 267", [0, 2, 1],
+    "a notched rounded scoria cone counterbalanced by low harbour islets"
+  ),
+  "araucania-volcano-lake": composition(
+    "M0 389 Q104 361 207 383 Q308 407 414 378 Q518 351 600 369 V430 H0Z",
+    "M0 327 L110 303 L192 325 L258 170 L325 326 L443 298 L600 319 V430 H0Z",
+    [["araucaria", 26, 365, .98], ["araucaria", 570, 375, .78]],
+    "M0 353 Q151 336 300 358 T600 349", [2, 0, 1],
+    "candelabra-like araucarias bracketing a snow-marked cone and lake"
+  ),
+  "trivandrum-backwater": composition(
+    "M0 389 Q91 351 178 384 Q273 418 362 374 Q462 324 600 369 V430 H0Z",
+    "M0 321 Q96 290 192 323 Q290 356 390 310 Q498 260 600 304 V430 H0Z",
+    [["coconut", 24, 354, .88], ["mangrove", 568, 374, .82]],
+    "M0 411 C88 365 163 358 238 394 S389 423 458 371 S552 329 600 340", [0, 2, 1],
+    "a long S-curving backwater ending in distant stepped Western Ghats"
+  ),
+  "singapore-mangrove-city": composition(
+    "M0 380 Q127 367 251 385 Q378 402 500 375 L600 381 V430 H0Z",
+    "M0 330 H600 V373 H0Z",
+    [["mangrove", 31, 368, .98], ["city", 557, 333, .62]],
+    "M104 430 L476 296 M151 430 L502 304 M204 430 L526 314", [1, 0, 2],
+    "a diagonal boardwalk vanishing line connecting mudflat roots and towers"
+  ),
+  "praslin-vallee-de-mai": composition(
+    "M0 390 Q99 355 195 386 Q301 417 405 380 Q507 344 600 372 V430 H0Z",
+    "M0 307 Q122 285 244 313 Q362 340 476 304 L600 316 V430 H0Z",
+    [["boulder", 28, 392, 1.13], ["cocodemer", 552, 351, .92]],
+    "M433 302 Q514 277 600 284", [0, 2, 1],
+    "huge rounded granite boulders beneath tall coco-de-mer columns"
+  ),
+  "sao-tome-volcanic-cacao": composition(
+    "M0 389 Q100 349 197 384 Q302 419 407 377 Q503 344 600 368 V430 H0Z",
+    "M0 334 L91 299 L163 314 L219 135 L269 319 L354 278 L441 326 L513 309 L600 329 V430 H0Z",
+    [["cacao", 28, 367, 1.04], ["cacao", 572, 382, .78]],
+    "M219 143 Q205 226 230 286 Q244 322 235 367", [1, 0, 2],
+    "a narrow offset volcanic needle, vertical waterfall, cacao trunks, and low coastal islet"
+  ),
+  "mahahual-reef-lagoon": composition(
+    "M0 398 Q150 390 300 400 T600 394 V430 H0Z",
+    "M0 323 H600 V351 H0Z M0 360 H600 V380 H0Z",
+    [["seagrass", 75, 410, .82], ["seagrass", 524, 409, .72]],
+    "M0 306 H600 M0 337 H600 M0 370 H600", [1, 2, 0],
+    "three shallow horizontal lagoon zones under a thin mangrove fringe, with no mountains"
+  ),
+  "mauritius-le-morne": composition(
+    "M0 387 Q113 355 222 384 Q333 413 442 374 Q521 347 600 362 V430 H0Z",
+    "M0 330 L148 304 L247 318 L285 198 L355 178 L401 305 L600 321 V430 H0Z",
+    [["cane", 24, 386, .85], ["sandbar", 523, 389, .72]],
+    "M0 352 Q154 330 305 353 T600 344", [0, 2, 1],
+    "a steep-sided Le Morne block on one side and open reef-ringed lagoon on the other"
+  ),
+  "hcmc-can-gio": composition(
+    "M0 393 Q141 378 279 397 Q433 414 600 385 V430 H0Z",
+    "M0 339 H600 V381 H0Z",
+    [["mangrove", 32, 379, 1.04], ["saltpan", 532, 393, .65]],
+    "M0 413 C116 376 188 407 278 375 S449 411 600 367 M0 390 C135 357 229 384 331 350 S501 378 600 352", [0, 2, 1],
+    "an ultra-flat horizon dominated by branching tidal channels and roots"
+  ),
+  "lombok-rinjani": composition(
+    "M0 353 Q91 309 181 337 Q295 371 419 326 Q512 293 600 329 V430 H0Z",
+    "M0 287 Q109 211 214 267 Q300 317 390 260 Q494 195 600 282 V430 H0Z",
+    [["grass", 31, 382, .8], ["cone", 410, 337, .58]],
+    "M155 305 Q300 237 447 302 Q309 372 155 305Z M235 309 Q302 277 372 307", [1, 0, 2],
+    "nested oval caldera rims containing crater water and a smaller young cone"
+  ),
+  "sanda-cacao-highland": composition(
+    "M0 382 L103 355 L198 379 L292 344 L398 374 L492 341 L600 363 V430 H0Z",
+    "M0 318 L600 278 V344 L0 385Z M0 337 L600 302 M0 358 L600 325",
+    [["cacao", 24, 367, 1.06], ["cacao", 570, 375, .84]],
+    "M40 388H205 M68 369H238 M98 350H275", [0, 2, 1],
+    "a cacao trunk arch over clear stepped highland cultivation"
+  ),
+  "barro-gatun": composition(
+    "M0 395 Q121 369 240 393 Q363 417 481 384 L600 390 V430 H0Z",
+    "M0 321 Q142 286 278 319 Q414 352 600 305 V430 H0Z",
+    [["dock", 28, 403, .92], ["forest", 322, 348, .75]],
+    "M0 430 L178 332 M24 430 L193 342", [1, 0, 2],
+    "a diagonal research dock, compact island dome, and long distant canal ship"
+  ),
+  "la-selva-river-corridor": composition(
+    "M0 389 Q108 355 213 382 Q302 405 384 373 Q486 333 600 365 V430 H0Z",
+    "M0 322 L117 300 L215 314 L301 221 L389 316 L496 296 L600 320 V430 H0Z",
+    [["bridge", 24, 390, .82], ["station", 558, 359, .58]],
+    "M232 430 Q245 373 300 329 Q349 292 379 249 M367 430 Q347 370 300 329 Q258 291 238 257", [0, 2, 1],
+    "two rivers converging through a central forest corridor toward a distant cone"
+  ),
+  "guadeloupe-soufriere": composition(
+    "M0 387 Q115 350 225 380 Q337 412 445 372 Q529 341 600 359 V430 H0Z",
+    "M0 331 L117 301 L214 321 Q280 221 354 315 L470 295 L600 327 V430 H0Z",
+    [["fern", 24, 378, 1.08], ["fumarole", 342, 236, .68]],
+    "M433 287 Q419 329 441 367 Q451 391 446 430", [2, 0, 1],
+    "a steaming La Soufrière dome with an offset waterfall and oversized fern foreground"
+  ),
+  "nouragues-inselberg": composition(
+    "M0 393 Q121 366 239 391 Q358 416 478 382 L600 389 V430 H0Z",
+    "M0 321 H152 Q215 207 320 204 Q426 207 488 321 H600 V430 H0Z",
+    [["canoe", 33, 397, .76], ["station", 560, 365, .5]],
+    "M0 410 Q141 373 281 404 Q430 437 600 381", [0, 2, 1],
+    "one unbroken granite dome rising above a level canopy on the river approach"
+  ),
+  "manaus-meeting-waters": composition(
+    "M0 403 Q151 386 300 405 T600 398 V430 H0Z",
+    "M0 316 H600 V349 H0Z",
+    [["igapo", 28, 382, .98], ["forest", 565, 349, .68]],
+    "M0 342 Q142 318 282 350 L600 391 M600 324 Q452 308 318 347 L0 397", [1, 0, 2],
+    "a bold Y-shaped dark-and-light confluence dominating flooded forest"
+  ),
+  "oahu-koolau": composition(
+    "M0 392 Q98 355 192 384 Q292 416 387 378 Q491 337 600 368 V430 H0Z",
+    "M0 340 L68 278 L122 327 L181 247 L235 321 L294 228 L352 326 L417 258 L479 333 L541 282 L600 329 V430 H0Z",
+    [["stream", 28, 401, .78], ["city", 560, 359, .5]],
+    "M12 430 Q72 383 135 362 Q218 333 294 232", [0, 2, 1],
+    "a rhythm of narrow diagonal Koʻolau ridge fins along a wet valley axis"
+  ),
+  "new-taipei-yehliu": composition(
+    "M0 397 Q147 381 289 400 Q446 417 600 386 V430 H0Z",
+    "M0 348 Q121 332 246 347 Q360 360 460 334 L600 344 V430 H0Z",
+    [["hoodoo", 38, 388, 1.05], ["hoodoo", 130, 402, .66]],
+    "M81 373 Q229 332 381 351 Q474 362 600 329", [0, 1, 2],
+    "a long low sandstone cape ending in differently proportioned mushroom rocks"
+  ),
+  "pohnpei-basalt-mangrove": composition(
+    "M0 390 L95 371 L187 393 L277 365 L369 391 L462 360 L600 383 V430 H0Z",
+    "M0 323 L118 296 L220 315 L301 201 L381 316 L495 292 L600 320 V430 H0Z",
+    [["basaltwall", 33, 398, .98], ["mangrove", 552, 376, .76]],
+    "M0 414 H210 V385 H390 V410 H600", [2, 1, 0],
+    "rectilinear low basalt walls against one steep high volcanic island"
+  ),
+  "queensland-daintree": composition(
+    "M0 386 Q104 342 211 372 Q317 403 424 367 Q518 336 600 355 V430 H0Z",
+    "M0 322 Q111 260 219 301 Q322 342 425 304 Q519 270 600 292 V430 H0Z",
+    [["fanpalm", 22, 364, 1], ["reef", 545, 402, .72]],
+    "M0 372 Q124 349 248 370 Q376 393 600 349", [0, 1, 2],
+    "an uninterrupted lateral forest-to-white-sand-to-reef transect with no generic mountain"
+  ),
+  "reunion-cirque-volcano": composition(
+    "M0 375 L81 342 L155 371 L235 334 L315 379 L397 329 L484 366 L600 337 V430 H0Z",
+    "M0 238 Q62 337 151 349 Q300 376 449 346 Q538 333 600 232 V430 H0Z",
+    [["lava", 30, 395, .92], ["ravine", 556, 383, .76]],
+    "M95 230 L156 171 L214 229 L302 139 L373 221 L463 162 L520 234", [0, 2, 1],
+    "enclosing U-shaped cirque walls and a triple-piton skyline"
+  )
+});
+
 const aliases = {
   "São Paulo region, Brazil · EG5612": "Angra dos Reis, Rio de Janeiro · EG5612",
   "New South Wales, Australia · QG2814": "Nambucca Heads, New South Wales · QG2814",
@@ -298,6 +578,26 @@ const aliases = {
 };
 
 export const environmentProfileEntries = Object.freeze(Object.entries(canonicalProfiles));
+export const environmentCompositionEntries = Object.freeze(Object.entries(sceneCompositions));
+
+export function auditEnvironmentCompositions() {
+  const profileIds = environmentProfileEntries.map(([, value]) => value.id);
+  const compositionIds = environmentCompositionEntries.map(([id]) => id);
+  const duplicateProfileIds = profileIds.filter((id, index) => profileIds.indexOf(id) !== index);
+  const missingCompositionIds = profileIds.filter(id => !sceneCompositions[id]);
+  const unexpectedCompositionIds = compositionIds.filter(id => !profileIds.includes(id));
+  const signatures = environmentCompositionEntries.map(([, value]) => value.geometrySignature);
+  const duplicateGeometrySignatures = signatures.filter((signature, index) => signatures.indexOf(signature) !== index);
+  return Object.freeze({
+    profileCount: profileIds.length,
+    compositionCount: compositionIds.length,
+    duplicateProfileIds,
+    missingCompositionIds,
+    unexpectedCompositionIds,
+    duplicateGeometrySignatures,
+    valid: profileIds.length === 37 && compositionIds.length === 37 && !duplicateProfileIds.length && !missingCompositionIds.length && !unexpectedCompositionIds.length && !duplicateGeometrySignatures.length
+  });
+}
 
 export function getEnvironmentProfile(placeName, speciesId = "") {
   const canonicalName = aliases[placeName] || placeName;
@@ -508,8 +808,11 @@ function drawWater(parent, type, palette) {
 export function renderEnvironmentScene(target, profile, habitatElement) {
   if (!target || !profile) return;
   const palette = profile.palette;
+  const sceneComposition = sceneCompositions[profile.id];
+  if (!sceneComposition) throw new Error(`Missing explicit environment composition for ${profile.id}`);
   target.replaceChildren();
   target.dataset.profile = profile.id;
+  target.dataset.composition = profile.id;
   habitatElement?.style.setProperty("--environment-accent", palette[5]);
   habitatElement?.style.setProperty("--environment-land", palette[2]);
   habitatElement?.style.setProperty("--environment-ground", palette[3]);
@@ -519,8 +822,12 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
   drawWeather(target, profile.weather, palette);
   append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+  append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
   if (profile.near) append(target, "path", { class: "environment-near", d: ridgePath(profile.near), fill: palette[2] });
   drawWater(target, profile.water, palette);
-  append(target, "path", { class: "environment-ground", d: "M0 354 Q138 324 285 354 T600 342 V430 H0Z", fill: palette[3] });
-  profile.cues.forEach(cue => drawFeature(target, cue));
+  append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+  if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  sceneComposition.cueOrder.map(index => profile.cues[index]).filter(Boolean).forEach(cue => drawFeature(target, cue));
+  const foreground = append(target, "g", { class: "environment-composition-foreground" });
+  sceneComposition.foreground.forEach(cue => drawFeature(foreground, cue));
 }

@@ -2,79 +2,10 @@ import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
-import { getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260713-2";
+import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-1";
+import { auditAccessoryCatalogue, renderLocationAccessories } from "./accessory-designs.js?v=20260714-2";
 
 const t = createGameTranslator(document.documentElement.lang);
-
-const regionalPacks = {
-  okinawa: { sceneName: "Ishigaki fig grove", looks: ["Sculpted fig-leaf visor", "Fig-sample satchel", "Fig-wasp wings"], icons: ["🍃", "🧺", "🪽"], note: "A sculpted fig-leaf visor, a field satchel for fig samples, and wings inspired by the species’ fig-wasp vector complete the Ishigaki kit." },
-  kauai: { sceneName: "Kauaʻi cloud forest", looks: ["Mokihana lei crown", "Lauhala sample satchel", "Fern trail glider"], icons: ["🌿", "🧺", "🪶"], note: "Kauaʻi’s mokihana lei material and Hawaiʻi’s lauhala weaving inspire a crown and a practical sample bag." },
-  field: { sceneName: "Rot-fruit field site", looks: ["Mushroom-forager cap", "Rot-fruit field satchel", "Specimen-vial backpack"], icons: ["🍄", "🎒", "🧪"], note: "Mushroom compost, rotting fruit, and specimen vials turn real collection substrates into a tiny field-research kit." },
-  rainforest: { sceneName: "Tropical fruit forest", looks: ["Drip-leaf rain hat", "Canopy climbing harness", "Tropical fruit sample belt"], icons: ["🌿", "🧗", "🍌"], note: "Broad rain-shedding leaves, a climbing harness, and fruit-sampling gear fit humid tropical collection sites." },
-  woodland: { sceneName: "Temperate leaf litter", looks: ["Acorn trail cap", "Leaf-litter field satchel", "Beetle-wing explorer pack"], icons: ["🌰", "🎒", "🪲"], note: "Acorns, leaf litter, and beetles echo the temperate decomposing-plant and invertebrate communities where worms are found." },
-  ocean: { sceneName: "Tropical island garden", looks: ["Palm-leaf sun visor", "Woven island sample bag", "Island flower lei"], icons: ["🌴", "🧺", "🌸"], note: "Palm shade, a woven collecting bag, and island flowers evoke tropical island records without suggesting the worms live in seawater." }
-};
-
-const locationKits = {
-  "Ishigaki, Japan": ["Ishigaki fig grove", "sculpted fig-leaf visor", "fig-sample satchel", "fig-wasp wings", "🍃", "🧺", "🪽", "🌿", null, "inopinata"],
-  "Ahmedabad, India · AF16": ["Ahmedabad pol garden", "Uttarayan kite hat", "bandhani scarf", "dandiya sticks", "🪁", "🧣", "✨", "🌳", "ahmedabad", "briggsae"],
-  "Taipei, Taiwan · BRC20390": ["Taipei mountain compost", "Taipei 101 party hat", "night-market tote", "bubble-tea backpack", "🏙️", "🛍️", "🧋", "⛰️"],
-  "Kerala, India · JU1337": ["Kerala coconut grove", "coconut-shell hat", "kasavu-gold sash", "banana-chip backpack", "🥥", "✨", "🍌", "🥥"],
-  "Kauaʻi, Hawaiʻi · QG130": ["Kauaʻi cloud forest", "mokihana lei crown", "lauhala satchel", "fern trail glider", "🌿", "🧺", "🪶", "🌿"],
-  "Réunion Island · JU1375": ["Réunion volcanic garden", "volcano helmet", "snail-shell satchel", "lava-lamp backpack", "🌋", "🐌", "🪔", "🌋"],
-  "Orsay, France · JU2518": ["Yvette valley garden", "garden-leaf cap", "field-sample satchel", "specimen-vial backpack", "🍃", "🎒", "🧪", "🌿"],
-  "Angra dos Reis, Rio de Janeiro · EG5612": ["Angra Atlantic forest cove", "Atlantic-forest leaf visor", "field sash", "specimen-vial backpack", "🍃", "🧭", "🧪", "🌿"],
-  "Nambucca Heads, New South Wales · QG2814": ["Nambucca estuary garden", "waratah crown", "eucalyptus wrap", "kookaburra backpack", "🌺", "🌿", "🐦", "🌊"],
-  "Bristol N2, England": ["Bristol mushroom compost, 1951", "seeded NGM agar plate", "fitted lab coat", "cryo-vial jetpack", "🧫", "🥼", "❄️", "🍄", null, "elegans"],
-  "Santeuil, France": ["Santeuil orchard floor", "apple beret", "gingham picnic sash", "cider basket", "🍏", "🧣", "🧺", "🍏"],
-  "Edinburgh, Scotland": ["Edinburgh volcanic park", "tartan tam", "field wrap", "bagpipe backpack", "🧢", "🧶", "🎵", "⛰️", null, "scotland"],
-  "Tenerife, Spain": ["Tenerife volcanic garden", "Teide volcano visor", "banana-leaf wrap", "lava-rock jetpack", "🌋", "🍌", "🚀", "🌋"],
-  "Kauaʻi, Hawaiʻi": ["Kauaʻi cloud forest", "mokihana crown", "lauhala belt", "fern surfboard", "🌿", "🧺", "🏄", "🌿"],
-  "elegans::Kauaʻi, Hawaiʻi": ["Kauaʻi C. elegans fruit site", "mokihana crown", "lauhala belt", "fern surfboard", "🌿", "🧺", "🏄", "🍈"],
-  "tropicalis::Kauaʻi, Hawaiʻi": ["Kauaʻi C. tropicalis garden", "rainbow lei crown", "lauhala sample belt", "shave-ice backpack", "🌈", "🧺", "🍧", "🌺"],
-  "tropicalis::Oʻahu, Hawaiʻi": ["Oʻahu island garden", "star sunglasses", "tropical bikini", "SPF 50 sun-cream pack", "⭐", "👙", "🧴", "🌼", null, "tropicalis"],
-  "Australian Capital Territory": ["Canberra eucalyptus compost", "eucalyptus cork hat", "kangaroo-pouch belt", "boomerang backpack", "🌿", "🦘", "🪃", "🦘"],
-  "Auckland, New Zealand": ["Auckland fern garden", "silver-fern crown", "raincoat wrap", "kiwi backpack", "🌿", "🧥", "🥝", "🌿"],
-  "Araucanía, Chile": ["Araucanía forest floor", "araucaria-cone crown", "forest-rain wrap", "pudú backpack", "🌲", "🌧️", "🦌", "🌲"],
-  "Trivandrum, Kerala · JU1325": ["Trivandrum botanical garden", "jasmine crown", "banana-leaf sash", "spice-box backpack", "🌺", "🍃", "🧂", "🌺"],
-  "Singapore · ZF1220": ["Singapore starfruit garden", "starfruit crown", "Peranakan-tile sash", "Merlion water pack", "⭐", "🔷", "🦁", "⭐"],
-  "Praslin, Seychelles · YR106": ["Praslin island forest", "coco-de-mer crown", "woven-palm wrap", "tortoise backpack", "🥥", "🌴", "🐢", "🥥"],
-  "São Tomé · JU2484": ["São Tomé guava grove", "guava crown", "island explorer sash", "parrot backpack", "🍈", "🧣", "🦜", "🍈"],
-  "Mahahual, Mexico · JU2617": ["Mahahual citrus heap", "orange-peel sombrero", "coral-reef sash", "citrus cooler", "🍊", "🪸", "🧊", "🍊"],
-  "Mauritius · JU2909": ["Mauritius fruit forest", "dodo hat", "séga-dance sash", "fruit-basket backpack", "🦤", "🪇", "🧺", "🏝️"],
-  "Ho Chi Minh City · JU4356": ["Ho Chi Minh carambola park", "starfruit crown", "lantern sash", "scooter sample box", "⭐", "🏮", "🛵", "⭐"],
-  "Lombok, Indonesia · HPT26": ["Lombok fig forest", "fig-leaf hat", "songket sash", "volcano backpack", "🍃", "🧵", "🌋", "🌳"],
-  "Sanda, Bali · JU1873": ["Sanda cacao grove", "cacao-pod helmet", "cacao climbing harness", "chocolate bar", "🍫", "🧗", "🍫", "🍫", "bali-cacao", "wallacei"],
-  "Barro Colorado Island, Panama": ["Barro Colorado canopy", "leaf rain hat", "sloth satchel", "field-radio backpack", "🍃", "🦥", "📻", "🌴"],
-  "La Selva, Costa Rica": ["La Selva rainforest station", "heliconia crown", "frog-pattern sash", "banana backpack", "🌺", "🐸", "🍌", "🌺"],
-  "Guadeloupe": ["Guadeloupe flower garden", "clusia flower crown", "madras sash", "hummingbird backpack", "🌸", "🧣", "🐦", "🌸"],
-  "Nouragues, French Guiana": ["Nouragues rainforest", "raindrop crown", "canopy-rope belt", "satellite tracker", "🌧️", "🧗", "🛰️", "🌧️"],
-  "Manaus region, Brazil": ["Manaus forest floor", "Brazil-nut hat", "river-wave sash", "toucan backpack", "🌰", "🌊", "🐦", "🌳"],
-  "Oʻahu, Hawaiʻi": ["Oʻahu island garden", "ʻilima lei crown", "aloha-shirt wrap", "pineapple backpack", "🌼", "👕", "🍍", "🌼"],
-  "New Taipei City, Taiwan": ["New Taipei mountain garden", "mountain-leaf crown", "lantern sash", "tea-flask backpack", "🍃", "🏮", "🍵", "⛰️"],
-  "Pohnpei, Micronesia": ["Pohnpei rain garden", "breadfruit hat", "woven-island sash", "rain-cloud backpack", "🍈", "🧵", "🌧️", "🌴"],
-  "Queensland, Australia": ["Queensland rainforest", "fan-palm hat", "reef-pattern sash", "cassowary backpack", "🌴", "🪸", "🐦", "🌺"],
-  "Réunion Island": ["Réunion volcanic garden", "volcano visor", "séga-dance sash", "vanilla-pod backpack", "🌋", "🪇", "🌿", "🌋"]
-};
-
-function locationKit(placeName, fallback, speciesId) {
-  const kit = locationKits[`${speciesId}::${placeName}`] || locationKits[placeName];
-  if (!kit) return fallback;
-  const [sceneName, ...parts] = kit;
-  const looks = parts.slice(0, 3);
-  const icons = parts.slice(3, 6);
-  const motif = parts[6];
-  const sceneKey = parts[7];
-  const visualKey = parts[8];
-  return {
-    sceneName,
-    looks,
-    icons,
-    motif,
-    sceneKey,
-    visualKey
-  };
-}
 
 const species = [
   {
@@ -89,9 +20,6 @@ const species = [
     scale: 1.08,
     pose: "hero",
     localStyle: "okinawa",
-    sceneName: "Ishigaki fig grove",
-    localLooks: ["Fig-leaf explorer hat", "Yaeyama minsā field sash", "Fig-wasp flight rig"],
-    localIcons: ["🍃", "🧵", "🪽"],
     habitat: "Fresh figs",
     habitatKey: "fig",
     intro: "A surprisingly large close relative of C. elegans that lives in fresh figs and travels with fig wasps.",
@@ -116,9 +44,6 @@ const species = [
     scale: .73,
     pose: "island",
     localStyle: "rainforest",
-    sceneName: "Tropical fruit forest",
-    localLooks: ["Drip-leaf rain hat", "Canopy climbing harness", "Tropical fruit sample belt"],
-    localIcons: ["🌿", "🧗", "🍌"],
     habitat: "Rotting fruit, flowers & compost",
     habitatKey: "tropical",
     intro: "A globally distributed warm-climate selfer often collected from rotting fruit, flowers, compost, and other bacteria-rich plant material.",
@@ -150,9 +75,6 @@ const species = [
     scale: .72,
     pose: "forager",
     localStyle: "field",
-    sceneName: "Rot-fruit field site",
-    localLooks: ["Mushroom-forager cap", "Rot-fruit field satchel", "Specimen-vial backpack"],
-    localIcons: ["🍄", "🎒", "🧪"],
     habitat: "Rotting plants & compost",
     habitatKey: "compost",
     intro: "The famous laboratory worm is also a wild explorer of short-lived, bacteria-rich places such as rotting fruit and compost.",
@@ -184,9 +106,6 @@ const species = [
     scale: .75,
     pose: "rainforest",
     localStyle: "rainforest",
-    sceneName: "Tropical fruit forest",
-    localLooks: ["Drip-leaf rain hat", "Canopy climbing harness", "Tropical fruit sample belt"],
-    localIcons: ["🌿", "🧗", "🍌"],
     habitat: "Tropical rotting fruit & flowers",
     habitatKey: "tropical",
     intro: "The outcrossing sister species of C. briggsae, collected from rotting flowers, starfruit, guava, coconut, figs, and other tropical plant material.",
@@ -218,9 +137,6 @@ const species = [
     scale: .74,
     pose: "woodland",
     localStyle: "rainforest",
-    sceneName: "Bali cacao grove",
-    localLooks: ["Drip-leaf rain hat", "Canopy climbing harness", "Tropical fruit sample belt"],
-    localIcons: ["🌿", "🧗", "🍫"],
     habitat: "Rotten cacao fruit",
     habitatKey: "tropical",
     intro: "The outcrossing sister species of C. tropicalis, known from a rotten cacao fruit collected in a plantation near Sanda, Bali.",
@@ -245,9 +161,6 @@ const species = [
     scale: .72,
     pose: "coast",
     localStyle: "ocean",
-    sceneName: "Tropical island garden",
-    localLooks: ["Palm-leaf sun visor", "Woven island sample bag", "Island flower lei"],
-    localIcons: ["🌴", "🧺", "🌸"],
     habitat: "Tropical fruit & flowers",
     habitatKey: "flowers",
     intro: "Some C. tropicalis strains carry a genetic trick called Medea. The mother makes a toxin, and only baby worms that inherit the matching antidote survive.",
@@ -279,12 +192,22 @@ const sisterPairs = [
 ];
 
 const byId = new Map(species.map(item => [item.id, item]));
+const expectedAccessoryKeys = species.flatMap(item => item.locations.map(location => `${item.id}::${location.name}`));
+const accessoryCatalogueAudit = auditAccessoryCatalogue(expectedAccessoryKeys);
+if (!accessoryCatalogueAudit.valid) {
+  throw new Error(`Invalid location accessory catalogue: ${JSON.stringify(accessoryCatalogueAudit)}`);
+}
+const environmentCompositionAudit = auditEnvironmentCompositions();
+if (!environmentCompositionAudit.valid) {
+  throw new Error(`Invalid environment composition catalogue: ${JSON.stringify(environmentCompositionAudit)}`);
+}
 const visited = new Set();
 const accessoryIds = ["local-headwear", "local-wrap", "local-charm"];
 const accessoryWormParts = ["primary", "companion"];
 const wardrobes = new Map();
 const accessoryPositions = new Map();
 const drawings = new Map();
+const wiredAccessoryPieces = new WeakSet();
 let selectedId = "elegans";
 let selectedRecordName = null;
 let drawingEnabled = false;
@@ -315,13 +238,9 @@ const els = {
   wormNameTag: document.getElementById("worm-name-tag"),
   wormAvatar: document.getElementById("worm-avatar"),
   doodleLayer: document.getElementById("doodle-layer"),
-  placeMotif: document.getElementById("place-motif"),
-  headwearSymbol: document.getElementById("headwear-symbol"),
-  headwearSymbolMale: document.getElementById("headwear-symbol-male"),
-  wrapSymbol: document.getElementById("wrap-symbol"),
-  wrapSymbolMale: document.getElementById("wrap-symbol-male"),
-  charmSymbol: document.getElementById("charm-symbol"),
-  charmSymbolMale: document.getElementById("charm-symbol-male"),
+  localHeadwear: document.getElementById("local-headwear"),
+  localWrap: document.getElementById("local-wrap"),
+  localCharm: document.getElementById("local-charm"),
   localHeadwearIcon: document.querySelector('[data-accessory="local-headwear"] .button-icon'),
   localHeadwearLabel: document.querySelector('[data-accessory="local-headwear"] .button-label'),
   localWrapIcon: document.querySelector('[data-accessory="local-wrap"] .button-icon'),
@@ -424,8 +343,14 @@ function renderSpecies(item, place) {
   const placeName = typeof place === "string" ? place : place?.name;
   const placeSource = typeof place === "object" ? place?.source : null;
   const styleKey = typeof place === "object" && place?.style ? place.style : item.localStyle;
-  const regionalPack = locationKit(placeName, regionalPacks[styleKey], item.id);
   const environment = getEnvironmentProfile(placeName, item.id);
+  const accessoryDesign = renderLocationAccessories({
+    headwear: els.localHeadwear,
+    wrap: els.localWrap,
+    charm: els.localCharm
+  }, item.id, placeName);
+  if (!accessoryDesign) throw new Error(`Missing accessory design for ${item.id}::${placeName}`);
+  wireAccessoryPieces();
   els.speciesRegion.textContent = placeName || item.region;
   italicText(els.speciesName, item.name);
   els.speciesNickname.textContent = item.nickname;
@@ -440,28 +365,20 @@ function renderSpecies(item, place) {
     first: item.cast[0],
     second: item.cast[1]
   }));
-  els.localHeadwearIcon.textContent = regionalPack.icons[0];
-  els.localHeadwearLabel.textContent = regionalPack.looks[0];
-  els.localWrapIcon.textContent = regionalPack.icons[1];
-  els.localWrapLabel.textContent = regionalPack.looks[1];
-  els.localCharmIcon.textContent = regionalPack.icons[2];
-  els.localCharmLabel.textContent = regionalPack.looks[2];
-  els.sceneName.textContent = environment?.title || regionalPack.sceneName;
-  const placeSymbols = regionalPack.icons || ["🍃", "🎒", "✨"];
-  els.placeMotif.textContent = regionalPack.motif || placeSymbols[0];
-  els.headwearSymbol.textContent = placeSymbols[0];
-  els.headwearSymbolMale.textContent = placeSymbols[0];
-  els.wrapSymbol.textContent = placeSymbols[1];
-  els.wrapSymbolMale.textContent = placeSymbols[1];
-  els.charmSymbol.textContent = placeSymbols[2];
-  els.charmSymbolMale.textContent = placeSymbols[2];
+  els.localHeadwearIcon.textContent = "⌒";
+  els.localHeadwearLabel.textContent = accessoryDesign.headwear.label;
+  els.localWrapIcon.textContent = "≈";
+  els.localWrapLabel.textContent = accessoryDesign.wrap.label;
+  els.localCharmIcon.textContent = "✦";
+  els.localCharmLabel.textContent = accessoryDesign.charm.label;
+  els.sceneName.textContent = environment?.title || placeName;
 
   els.habitat.dataset.habitat = item.habitatKey;
   els.habitat.dataset.localStyle = styleKey;
-  els.habitat.dataset.placeScene = environment ? "dynamic" : (regionalPack.sceneKey || "");
+  els.habitat.dataset.placeScene = environment ? "dynamic" : "";
   els.habitat.dataset.environment = environment?.id || "fallback";
-  els.habitat.dataset.accessoryVisual = regionalPack.visualKey || item.id;
-  els.habitat.dataset.hasCustomVisual = String(Boolean(regionalPack.visualKey));
+  els.habitat.dataset.accessoryVisual = accessoryDesign.key;
+  els.habitat.dataset.hasCustomVisual = "true";
   els.habitat.dataset.species = item.id;
   els.habitat.dataset.pose = item.pose;
   els.habitat.style.setProperty("--worm-color", item.worm);
@@ -858,74 +775,77 @@ function finishAccessoryDrag(event) {
   activeAccessoryDrag = null;
 }
 
-document.querySelectorAll(".accessory-piece[data-worm-part]").forEach(piece => {
-  const accessory = piece.closest(".accessory");
-  const id = accessory?.id;
-  const wormPart = piece.dataset.wormPart;
-  if (!accessory || !id || !accessoryWormParts.includes(wormPart)) return;
+function wireAccessoryPieces() {
+  document.querySelectorAll(".accessory-piece[data-worm-part]").forEach(piece => {
+    if (wiredAccessoryPieces.has(piece)) return;
+    const accessory = piece.closest(".accessory");
+    const id = accessory?.id;
+    const wormPart = piece.dataset.wormPart;
+    if (!accessory || !id || !accessoryWormParts.includes(wormPart)) return;
+    wiredAccessoryPieces.add(piece);
 
-  piece.addEventListener("pointerdown", event => {
-    if (activeAccessoryDrag || drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
-    event.preventDefault();
-    event.stopPropagation();
-    piece.focus({ preventScroll: true });
-    piece.setPointerCapture(event.pointerId);
-    piece.classList.add("is-dragging");
-    activeAccessoryDrag = {
-      id,
-      wormPart,
-      piece,
-      pointerId: event.pointerId,
-      startPoint: accessoryPoint(event, piece),
-      startPosition: accessoryPosition(id, wormPart),
-      moved: false
-    };
-  });
-
-  piece.addEventListener("pointermove", event => {
-    if (!activeAccessoryDrag || activeAccessoryDrag.pointerId !== event.pointerId || activeAccessoryDrag.piece !== piece) return;
-    event.preventDefault();
-    event.stopPropagation();
-    const point = accessoryPoint(event, piece);
-    const deltaX = point.x - activeAccessoryDrag.startPoint.x;
-    const deltaY = point.y - activeAccessoryDrag.startPoint.y;
-    if (Math.hypot(deltaX, deltaY) > 1) activeAccessoryDrag.moved = true;
-    moveAccessory(id, wormPart, {
-      x: activeAccessoryDrag.startPosition.x + deltaX,
-      y: activeAccessoryDrag.startPosition.y + deltaY
-    }, piece);
-  });
-
-  piece.addEventListener("keydown", event => {
-    if (piece.getAttribute("tabindex") !== "0" || drawingEnabled || !activeWardrobe().has(id)) return;
-    if (event.key === "Home") {
+    piece.addEventListener("pointerdown", event => {
+      if (activeAccessoryDrag || drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
       event.preventDefault();
-      resetAccessoryPosition(id, wormPart);
-      return;
-    }
+      event.stopPropagation();
+      piece.focus({ preventScroll: true });
+      piece.setPointerCapture(event.pointerId);
+      piece.classList.add("is-dragging");
+      activeAccessoryDrag = {
+        id,
+        wormPart,
+        piece,
+        pointerId: event.pointerId,
+        startPoint: accessoryPoint(event, piece),
+        startPosition: accessoryPosition(id, wormPart),
+        moved: false
+      };
+    });
 
-    const direction = {
-      ArrowLeft: [-1, 0],
-      ArrowRight: [1, 0],
-      ArrowUp: [0, -1],
-      ArrowDown: [0, 1]
-    }[event.key];
-    if (!direction) return;
-    event.preventDefault();
-    const current = accessoryPosition(id, wormPart);
-    const step = event.shiftKey ? 12 : 4;
-    const position = moveAccessory(id, wormPart, {
-      x: current.x + direction[0] * step,
-      y: current.y + direction[1] * step
-    }, piece);
-    announceAccessory(t("accessoryPosition", {
-      accessory: accessoryName(id, wormPart),
-      x: Math.round(position.x),
-      y: Math.round(position.y)
-    }));
+    piece.addEventListener("pointermove", event => {
+      if (!activeAccessoryDrag || activeAccessoryDrag.pointerId !== event.pointerId || activeAccessoryDrag.piece !== piece) return;
+      event.preventDefault();
+      event.stopPropagation();
+      const point = accessoryPoint(event, piece);
+      const deltaX = point.x - activeAccessoryDrag.startPoint.x;
+      const deltaY = point.y - activeAccessoryDrag.startPoint.y;
+      if (Math.hypot(deltaX, deltaY) > 1) activeAccessoryDrag.moved = true;
+      moveAccessory(id, wormPart, {
+        x: activeAccessoryDrag.startPosition.x + deltaX,
+        y: activeAccessoryDrag.startPosition.y + deltaY
+      }, piece);
+    });
+
+    piece.addEventListener("keydown", event => {
+      if (piece.getAttribute("tabindex") !== "0" || drawingEnabled || !activeWardrobe().has(id)) return;
+      if (event.key === "Home") {
+        event.preventDefault();
+        resetAccessoryPosition(id, wormPart);
+        return;
+      }
+
+      const direction = {
+        ArrowLeft: [-1, 0],
+        ArrowRight: [1, 0],
+        ArrowUp: [0, -1],
+        ArrowDown: [0, 1]
+      }[event.key];
+      if (!direction) return;
+      event.preventDefault();
+      const current = accessoryPosition(id, wormPart);
+      const step = event.shiftKey ? 12 : 4;
+      const position = moveAccessory(id, wormPart, {
+        x: current.x + direction[0] * step,
+        y: current.y + direction[1] * step
+      }, piece);
+      announceAccessory(t("accessoryPosition", {
+        accessory: accessoryName(id, wormPart),
+        x: Math.round(position.x),
+        y: Math.round(position.y)
+      }));
+    });
   });
-
-});
+}
 
 window.addEventListener("pointerup", finishAccessoryDrag, true);
 window.addEventListener("pointercancel", finishAccessoryDrag, true);

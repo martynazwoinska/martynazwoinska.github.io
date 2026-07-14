@@ -372,9 +372,21 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .environment-scene { isolation: isolate; }
 .environment-far { opacity: .86; }
 .environment-near { opacity: .96; }
+.environment-composition-middle { opacity: .72; }
 .environment-water { opacity: .94; }
 .environment-water.blackwater, .environment-water.whitewater { opacity: 1; }
 .environment-ground { opacity: .94; }
+.environment-composition-route {
+  fill: none;
+  stroke: color-mix(in srgb, var(--environment-water) 70%, var(--paper-strong));
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: .78;
+}
+.environment-composition-foreground .environment-cue {
+  filter: drop-shadow(0 7px 7px rgba(25,57,54,.2));
+}
 .environment-sun { opacity: .88; filter: drop-shadow(0 0 14px rgba(255,216,118,.38)); animation: sun-breathe 5.8s ease-in-out infinite; }
 .environment-clouds { fill: rgba(255,255,255,.58); filter: drop-shadow(0 5px 10px rgba(48,91,91,.08)); animation: cloud-drift 16s ease-in-out infinite alternate; }
 .environment-clouds.mist { opacity: .44; }
@@ -531,24 +543,49 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   from { opacity: 0; transform: translate(var(--accessory-x), var(--accessory-y)) scale(.82); }
   to { opacity: 1; transform: translate(var(--accessory-x), var(--accessory-y)) scale(1); }
 }
-.regional-accessory > .accessory-piece > [data-style] { display: none; }
-.regional-accessory > [data-species-look] { display: none; }
-.regional-accessory > [data-location-look] { display: none; }
-.habitat[data-species] .regional-accessory > .accessory-piece > [data-style] { display: none !important; }
-.habitat[data-accessory-visual="inopinata"] [data-species-look="inopinata"],
-.habitat[data-accessory-visual="elegans"] [data-species-look="elegans"],
-.habitat[data-accessory-visual="briggsae"] [data-species-look="briggsae"],
-.habitat[data-accessory-visual="nigoni"] [data-species-look="nigoni"],
-.habitat[data-accessory-visual="tropicalis"] [data-species-look="tropicalis"],
-.habitat[data-accessory-visual="wallacei"] [data-species-look="wallacei"],
-.habitat[data-accessory-visual="scotland"] [data-location-look="scotland"] { display: inline; }
-.habitat[data-local-style="okinawa"] .regional-accessory > .accessory-piece > [data-style="okinawa"],
-.habitat[data-local-style="kauai"] .regional-accessory > .accessory-piece > [data-style="kauai"],
-.habitat[data-local-style="field"] .regional-accessory > .accessory-piece > [data-style="field"],
-.habitat[data-local-style="rainforest"] .regional-accessory > .accessory-piece > [data-style="rainforest"],
-.habitat[data-local-style="woodland"] .regional-accessory > .accessory-piece > [data-style="woodland"],
-.habitat[data-local-style="ocean"] .regional-accessory > .accessory-piece > [data-style="ocean"] { display: inline; }
 .regional-accessory { filter: drop-shadow(0 5px 4px rgba(23,51,61,.24)); }
+.location-accessory-art {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.location-accessory-art .acc-main {
+  fill: var(--local-primary);
+  stroke: var(--worm-deep);
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+.location-accessory-art .acc-accent {
+  fill: var(--local-secondary);
+  stroke: var(--worm-deep);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+.location-accessory-art .acc-soft {
+  fill: color-mix(in srgb, var(--paper-strong) 72%, var(--local-primary));
+  stroke: var(--worm-deep);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+.location-accessory-art .acc-dark {
+  fill: color-mix(in srgb, var(--worm-deep) 80%, var(--ink));
+  stroke: var(--paper-strong);
+  stroke-width: 1.5;
+}
+.location-accessory-art .acc-line,
+.location-accessory-art .acc-accent-line,
+.location-accessory-art .acc-strap {
+  fill: none;
+  stroke: var(--worm-deep);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.location-accessory-art .acc-accent-line { stroke: var(--local-secondary); }
+.location-accessory-art .acc-strap { stroke-width: 8; }
+.location-accessory-art .acc-line.thick { stroke-width: 8; }
+.companion-accessory .location-accessory-art {
+  filter: saturate(.92) brightness(1.04);
+}
 .regional-primary { fill: var(--local-primary); stroke: var(--worm-deep); stroke-width: 2.5; stroke-linejoin: round; }
 .regional-secondary { fill: var(--local-secondary); stroke: var(--worm-deep); stroke-width: 2.5; stroke-linejoin: round; }
 .regional-accent { fill: var(--paper-strong); stroke: var(--worm-deep); stroke-width: 2; }
@@ -587,30 +624,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .beetle-wing.left { fill: #68b6a5; }
 .beetle-wing.right { fill: #7b6dc0; }
 .beetle-line { fill: none; stroke: rgba(255,255,255,.62); stroke-width: 2; stroke-linecap: round; }
-.kit-symbol { display: none; font-size: 18px; opacity: .9; paint-order: stroke; stroke: rgba(255,255,255,.94); stroke-width: 3px; stroke-linejoin: round; filter: drop-shadow(0 2px 2px rgba(23,51,61,.25)); }
-.kit-symbol.male { font-size: 12px; stroke-width: 2px; }
-.habitat[data-has-custom-visual="false"] .kit-symbol { display: inline; }
-.habitat[data-local-style="rainforest"] #local-wrap { --accessory-x: -13px; --accessory-y: 15px; }
-.habitat[data-local-style="rainforest"] #local-charm { --accessory-x: 12px; --accessory-y: 28px; }
-.habitat[data-local-style="woodland"] #local-wrap { --accessory-x: -14px; --accessory-y: 18px; }
-.habitat[data-local-style="woodland"] #local-charm { --accessory-x: 15px; --accessory-y: -11px; }
-.habitat[data-local-style="field"] #local-wrap { --accessory-x: -13px; --accessory-y: 12px; }
-.habitat[data-local-style="field"] #local-charm { --accessory-x: 15px; --accessory-y: -8px; }
-.habitat[data-species] #local-wrap, .habitat[data-species] #local-charm { --accessory-x: 0px; --accessory-y: 0px; }
-.habitat[data-accessory-visual="elegans"] #local-wrap { --accessory-x: 0px; --accessory-y: 0px; }
-.habitat[data-accessory-visual="elegans"] #local-charm { --accessory-x: 0px; --accessory-y: 0px; }
-.habitat[data-accessory-visual="tropicalis"] #local-charm { --accessory-x: 32px; --accessory-y: -22px; }
-.place-motif {
-  position: absolute;
-  right: 22px;
-  bottom: 20px;
-  z-index: 1;
-  font-size: clamp(3rem, 8vw, 5.2rem);
-  opacity: .17;
-  filter: saturate(.8) drop-shadow(0 8px 10px rgba(23,51,61,.14));
-  transform: rotate(8deg);
-  pointer-events: none;
-}
 .habitat.is-changing .worm-avatar { animation: worm-arrive .62s cubic-bezier(.2,.9,.2,1.18); }
 @keyframes worm-arrive { 0% { opacity: .25; transform: translateY(22px) scale(.9); } 65% { opacity: 1; transform: translateY(-5px) scale(1.025); } 100% { transform: translateY(0) scale(1); } }
 .selection-spark {
