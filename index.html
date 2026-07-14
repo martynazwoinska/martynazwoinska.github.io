@@ -437,15 +437,17 @@
     section::before {
       content: ""; position: absolute; z-index: 1; top: -17px; left: 50%;
       transform: translateX(-50%); width: min(calc(100% + 96px), calc(100vw - 32px)); height: 34px;
-      background: linear-gradient(
-        90deg,
-        var(--accent-berry) 0 7%,
-        var(--accent) 11% 89%,
-        var(--accent-berry) 93% 100%
-      );
+      background: var(--accent);
       pointer-events: none;
-      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C150 5 260 8 348 18 C390 23 421 23 445 14 M884 20 C790 5 680 8 592 18 C550 23 519 23 495 14 M56 20 C40 20 28 14 28 7 C28 2 37 1 43 4 C49 8 48 14 42 17 C36 19 32 15 34 10 M42 17 C37 24 29 28 21 25 M884 20 C900 20 912 14 912 7 C912 2 903 1 897 4 C891 8 892 14 898 17 C904 19 908 15 906 10 M898 17 C903 24 911 28 919 25' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13 21 C20 17 28 20 31 26 C27 34 18 34 13 21Z M927 21 C920 17 912 20 909 26 C913 34 922 34 927 21Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
-              mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C150 5 260 8 348 18 C390 23 421 23 445 14 M884 20 C790 5 680 8 592 18 C550 23 519 23 495 14 M56 20 C40 20 28 14 28 7 C28 2 37 1 43 4 C49 8 48 14 42 17 C36 19 32 15 34 10 M42 17 C37 24 29 28 21 25 M884 20 C900 20 912 14 912 7 C912 2 903 1 897 4 C891 8 892 14 898 17 C904 19 908 15 906 10 M898 17 C903 24 911 28 919 25' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13 21 C20 17 28 20 31 26 C27 34 18 34 13 21Z M927 21 C920 17 912 20 909 26 C913 34 922 34 927 21Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C150 5 260 8 348 18 C390 23 421 23 445 14 M884 20 C790 5 680 8 592 18 C550 23 519 23 495 14' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+              mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C150 5 260 8 348 18 C390 23 421 23 445 14 M884 20 C790 5 680 8 592 18 C550 23 519 23 495 14' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+    }
+    section > h2::before {
+      content: ""; position: absolute; z-index: 2; top: -17px; left: 50%;
+      transform: translateX(-50%); width: min(calc(100% + 96px), calc(100vw - 32px)); height: 34px;
+      background: var(--accent-berry); pointer-events: none;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C40 20 28 14 28 7 C28 2 37 1 43 4 C49 8 48 14 42 17 C36 19 32 15 34 10 M42 17 C37 24 29 28 21 25 M884 20 C900 20 912 14 912 7 C912 2 903 1 897 4 C891 8 892 14 898 17 C904 19 908 15 906 10 M898 17 C903 24 911 28 919 25' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13 21 C20 17 28 20 31 26 C27 34 18 34 13 21Z M927 21 C920 17 912 20 909 26 C913 34 922 34 927 21Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+              mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C40 20 28 14 28 7 C28 2 37 1 43 4 C49 8 48 14 42 17 C36 19 32 15 34 10 M42 17 C37 24 29 28 21 25 M884 20 C900 20 912 14 912 7 C912 2 903 1 897 4 C891 8 892 14 898 17 C904 19 908 15 906 10 M898 17 C903 24 911 28 919 25' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13 21 C20 17 28 20 31 26 C27 34 18 34 13 21Z M927 21 C920 17 912 20 909 26 C913 34 922 34 927 21Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
     }
     /* .wrap sets padding:0 24px, so target section.wrap to add vertical rhythm */
     section.wrap { padding-top: 52px; padding-bottom: 52px; }
@@ -490,6 +492,21 @@
       background: var(--accent-soft); color: var(--accent); font-size: .76rem;
       font-style: normal; font-weight: 700; vertical-align: baseline;
     }
+    .pub-archive summary {
+      display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+      margin-top: 18px; padding: 8px 14px; list-style: none; cursor: pointer;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
+      color: var(--accent); box-shadow: var(--shadow); font-size: .9rem; font-weight: 600;
+    }
+    .pub-archive summary::-webkit-details-marker { display: none; }
+    .pub-archive summary:hover { color: var(--accent-berry); border-color: color-mix(in srgb, var(--accent-berry) 58%, var(--border)); }
+    .pub-archive summary:focus-visible {
+      outline: 3px solid var(--accent-berry); outline-offset: 3px;
+    }
+    .pub-toggle__ellipsis { color: var(--accent-berry); font-size: 1.15rem; line-height: 1; }
+    .pub-toggle__hide { display: none; }
+    .pub-archive[open] .pub-toggle__show { display: none; }
+    .pub-archive[open] .pub-toggle__hide { display: inline; }
 
     /* career break marker */
     .pub.leave { align-items: center; }
@@ -814,6 +831,13 @@
       </div>
     </div>
 
+    <details class="pub-archive">
+      <summary>
+        <span class="pub-toggle__ellipsis" aria-hidden="true">…</span>
+        <span class="pub-toggle__show">Show earlier publications</span>
+        <span class="pub-toggle__hide">Show fewer publications</span>
+      </summary>
+
     <div class="pub">
       <div class="year">2024</div>
       <div class="body">
@@ -915,6 +939,8 @@
         <div class="meta"><strong>Zwoińska M. K.</strong>, Kolm N., Maklakov A. A. · <span class="venue">Experimental Gerontology</span> 48(12):1469–1472</div>
       </div>
     </div>
+
+    </details>
 
     </div>
 
