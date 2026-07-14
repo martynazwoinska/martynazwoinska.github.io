@@ -50,11 +50,12 @@ button { color: inherit; }
 }
 
 .cabinet-page {
-  /* The element retains the full photograph's coordinate system so every
-     hotspot stays aligned. The small viewport gap lets the photographed
-     board tuck into the surrounding wood instead of floating inside it. */
-  --board-width: min(1350px, calc((100svh - clamp(24px, 4svh, 40px)) * 1.56), calc((100vw - 20px) * 1.34));
-  --board-height: min(calc(75vw - 39px), calc(100svh - 118.5px), 1152px);
+  /* The final composite and the hotspot overlay share this single intrinsic
+     1672 × 941 scene. Scaling the scene as one unit prevents the photographed
+     board from drifting away from the illustrated frame or table. */
+  --scene-width: max(100vw, calc(100svh * 1.776833));
+  --scene-height: calc(var(--scene-width) * .562799);
+  --scene-y: -50%;
   position: relative;
   isolation: isolate;
   display: grid;
@@ -78,7 +79,13 @@ button { color: inherit; }
 
 .fantasy-surround {
   z-index: -2;
+  inset: auto;
+  left: 50%;
+  top: 50%;
+  width: var(--scene-width);
+  height: var(--scene-height);
   overflow: hidden;
+  transform: translate(-50%, var(--scene-y));
 }
 
 .surround-picture {
@@ -90,7 +97,7 @@ button { color: inherit; }
 .fantasy-surround img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   object-position: center;
   transform: none;
   filter: none;
@@ -107,30 +114,6 @@ button { color: inherit; }
   border: 0;
   border-radius: 0;
   box-shadow: none;
-}
-
-.vine {
-  display: none;
-}
-
-.vine::before,
-.vine::after {
-  content: '';
-  position: absolute;
-  width: clamp(18px, 3.4vw, 52px);
-  aspect-ratio: 1 / 1.55;
-  border: 1px solid rgba(120, 199, 163, .32);
-  border-radius: 70% 30% 65% 35%;
-  background: rgba(18, 56, 40, .13);
-}
-
-.vine-left { left: 1.7%; transform: rotate(-3deg); }
-.vine-right { right: 1.7%; transform: rotate(3deg) scaleX(-1); }
-.vine::before { top: 18%; right: -5%; transform: rotate(28deg); }
-.vine::after { bottom: 18%; left: -5%; transform: rotate(-32deg); }
-
-.cabinet-glow {
-  display: none;
 }
 
 .cabinet-header {
@@ -225,18 +208,19 @@ button { color: inherit; }
 
 .board-shell {
   position: absolute;
+  z-index: 1;
   left: 50%;
   top: 50%;
-  box-sizing: content-box;
-  width: var(--board-width);
-  aspect-ratio: 4 / 3;
+  width: var(--scene-width);
+  height: var(--scene-height);
+  aspect-ratio: 1672 / 941;
   margin: 0;
   overflow: visible;
   border: 0;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-  transform: translate(-50%, calc(-50% - 8px));
+  transform: translate(-50%, var(--scene-y));
 }
 
 .board-plane {
@@ -245,108 +229,7 @@ button { color: inherit; }
   inset: 0;
 }
 
-.board-picture {
-  position: absolute;
-  inset: 0;
-  display: block;
-  /* Reveal the authentic pinboard and tabletop while the fantasy surround
-     supplies the outer cabinet. Cropping the containing layer avoids GPU
-     tiling artefacts on the scaled photograph in mobile Chrome. */
-  clip-path: inset(15% 14% 13% 14%);
-}
-
-.board-photo {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: none;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-.board-content-layer { z-index: 1; }
-
-.board-floor-object {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-.hotspot-layer { position: absolute; z-index: 3; inset: 0; }
-
-.cabinet-frame-overlay {
-  display: none;
-}
-
-.frame-piece {
-  position: absolute;
-  overflow: hidden;
-  background-image: url('assets/cabinet-of-curiosities.png');
-  background-repeat: no-repeat;
-  background-size: 100vw 100vh;
-  filter: saturate(.78) brightness(.74) contrast(1.04);
-}
-
-.frame-top {
-  inset: 0 0 auto;
-  height: calc((100svh - var(--board-height) + 32px) / 2 + 10px);
-  background-position: left top;
-}
-.frame-right {
-  inset: 0 0 0 auto;
-  width: calc((100vw - var(--board-width)) / 2 + 10px);
-  border-left: 10px solid #2d1b11;
-  background-image:
-    radial-gradient(ellipse at 78% 42%, rgba(125, 33, 69, .14), transparent 25%),
-    linear-gradient(90deg, #3c2519, #24170f 52%, #120d0a);
-  box-shadow:
-    inset 2px 0 rgba(213, 185, 105, .28),
-    inset 18px 0 34px rgba(4, 8, 6, .42),
-    -7px 0 16px rgba(8, 5, 3, .42);
-  filter: none;
-}
-.frame-right::before {
-  content: '';
-  position: absolute;
-  top: 7%;
-  right: 15%;
-  bottom: 42%;
-  left: 24%;
-  border: 1px solid rgba(213, 185, 105, .22);
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-  border-radius: 52% 48% 44% 56%;
-}
-.frame-right::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 52%;
-  background: url('assets/cabinet-of-curiosities.png') right bottom / 150vw 100vh no-repeat;
-  filter: saturate(.72) brightness(.7) contrast(1.04);
-}
-.frame-bottom {
-  inset: auto 0 0;
-  height: calc((100svh - var(--board-height) - 32px) / 2 + 10px);
-  background-position: left bottom;
-}
-.frame-left {
-  inset: 0 auto 0 0;
-  width: calc((100vw - var(--board-width)) / 2 + 10px);
-  background-position: left top;
-}
+.hotspot-layer { position: absolute; z-index: 2; inset: 0; }
 
 .hotspot {
   position: absolute;
@@ -697,64 +580,27 @@ button { color: inherit; }
   .title-plaque { display: none; }
 }
 
+@media (min-aspect-ratio: 2 / 1) {
+  .cabinet-page {
+    /* The lowest foreground package remains visible in very shallow windows. */
+    --scene-y: -50.8%;
+  }
+}
+
 @media (max-width: 760px) {
   .cabinet-page {
-    /* The board plane keeps transparent side margins. A tighter vertical
-       allowance seats it within the mobile surround at a useful scale. */
-    --board-width: min(136vw, calc((100svh - 20px) * 1.56), 960px);
-  }
-  .fantasy-surround {
-    background:
-      radial-gradient(circle at 12% 18%, rgba(213, 185, 105, .22), transparent 24%),
-      radial-gradient(circle at 88% 78%, rgba(120, 199, 163, .15), transparent 28%),
-      linear-gradient(145deg, #291b16, #12231b 46%, #21151d);
-  }
-  .fantasy-surround img {
-    display: block;
-    object-fit: cover;
-    object-position: center;
-    filter: none;
-  }
-  .fantasy-surround::before {
-    background:
-      linear-gradient(90deg, rgba(5, 12, 8, .38), transparent 30%, transparent 70%, rgba(5, 12, 8, .38)),
-      radial-gradient(ellipse at center, rgba(213, 185, 105, .07), rgba(9, 14, 11, .46) 78%);
-  }
-  .fantasy-surround::after {
-    inset: 54px 10px 42px;
-    border: 0;
-    border-radius: 0;
-    background: linear-gradient(180deg, var(--gold), var(--emerald) 48%, var(--gold));
-    box-shadow: none;
-    opacity: .5;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 844'%3E%3Cg fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M30 126 C80 55 150 40 195 82 C240 40 310 55 360 126 M30 718 C80 789 150 804 195 762 C240 804 310 789 360 718 M36 140 C14 250 70 330 34 440 C4 550 70 610 36 704 M354 140 C376 250 320 330 356 440 C386 550 320 610 354 704'/%3E%3C/g%3E%3Cg fill='black'%3E%3Cpath d='M28 178 C7 164 5 141 31 142 C51 148 51 169 28 178Z M45 259 C67 245 84 254 74 277 C62 293 45 283 45 259Z M30 537 C8 522 7 499 33 501 C52 508 52 529 30 537Z M47 628 C70 614 87 624 76 647 C63 662 46 651 47 628Z M362 178 C383 164 385 141 359 142 C339 148 339 169 362 178Z M345 259 C323 245 306 254 316 277 C328 293 345 283 345 259Z M360 537 C382 522 383 499 357 501 C338 508 338 529 360 537Z M343 628 C320 614 303 624 314 647 C327 662 344 651 343 628Z'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat;
-            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 844'%3E%3Cg fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M30 126 C80 55 150 40 195 82 C240 40 310 55 360 126 M30 718 C80 789 150 804 195 762 C240 804 310 789 360 718 M36 140 C14 250 70 330 34 440 C4 550 70 610 36 704 M354 140 C376 250 320 330 356 440 C386 550 320 610 354 704'/%3E%3C/g%3E%3Cg fill='black'%3E%3Cpath d='M28 178 C7 164 5 141 31 142 C51 148 51 169 28 178Z M45 259 C67 245 84 254 74 277 C62 293 45 283 45 259Z M30 537 C8 522 7 499 33 501 C52 508 52 529 30 537Z M47 628 C70 614 87 624 76 647 C63 662 46 651 47 628Z M362 178 C383 164 385 141 359 142 C339 148 339 169 362 178Z M345 259 C323 245 306 254 316 277 C328 293 345 283 345 259Z M360 537 C382 522 383 499 357 501 C338 508 338 529 360 537Z M343 628 C320 614 303 624 314 647 C327 662 344 651 343 628Z'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat;
-  }
-  .cabinet-glow {
-    background: radial-gradient(ellipse at center, rgba(10, 17, 13, .52), rgba(10, 17, 13, .24) 68%, transparent 100%);
+    /* A small shared zoom keeps the objects useful on short landscape phones. */
+    --scene-width: max(120vw, calc(120svh * 1.776833));
+    --scene-height: calc(var(--scene-width) * .562799);
   }
   .cabinet-stage { padding: 0; }
-  .board-shell {
-    width: var(--board-width);
-    border-radius: 0;
-    box-shadow: none;
-  }
-  .cabinet-frame-overlay { display: none; }
   .hotspot::after { top: -3px; right: -3px; min-width: 8px; min-height: 8px; }
   .explore-hint { bottom: 8px; font-size: .7rem; }
   .wheel-dialog { width: calc(100vw - 12px); padding: 18px; }
   .wheel-visual { width: min(92vw, calc(100svh - 54px), 100%); }
 }
 
-@media (min-width: 761px) and (max-width: 980px) and (orientation: portrait) {
-  .cabinet-page {
-    /* Portrait tablets display the full photographed collection rather than
-       cropping both outer objects beyond the viewport. */
-    --board-width: min(calc((100vw - 16px) * 1.2), calc((100svh - 32px) * 1.56), 1080px);
-  }
-}
-
-@media (max-width: 760px) and (orientation: portrait) {
+@media (max-width: 980px) and (orientation: portrait) {
   .cabinet-stage,
   .header-actions {
     display: none;
@@ -806,7 +652,6 @@ button { color: inherit; }
   .wheel-visual { width: min(92vw, calc(100svh - 42px), 100%); }
   .wheel-close { top: 8px; right: 8px; }
   .wheel-credit { right: 8px; bottom: 8px; }
-  .fantasy-surround::after { inset: 8px; }
 }
 
 :root[data-theme='light'] {
@@ -826,9 +671,6 @@ button { color: inherit; }
 
 :root[data-theme='light'] .fantasy-surround img { filter: none; opacity: 1; }
 :root[data-theme='light'] .fantasy-surround::before { background: radial-gradient(ellipse at center, rgba(255, 251, 236, .1) 28%, rgba(238, 231, 209, .5) 80%); }
-:root[data-theme='light'] .cabinet-glow {
-  background: radial-gradient(ellipse at center, rgba(235, 224, 194, .7), rgba(235, 224, 194, .34) 66%, transparent 100%);
-}
 :root[data-theme='light'] .home-link,
 :root[data-theme='light'] .collection-toggle,
 :root[data-theme='light'] .wheel-toggle,
@@ -849,9 +691,6 @@ button { color: inherit; }
       linear-gradient(90deg, rgba(103, 75, 40, .16), transparent 30%, transparent 70%, rgba(103, 75, 40, .16)),
       radial-gradient(ellipse at center, rgba(255, 251, 236, .08), rgba(225, 213, 184, .36) 80%);
   }
-  :root[data-theme='light'] .cabinet-glow {
-    background: radial-gradient(ellipse at center, rgba(235, 224, 194, .42), rgba(235, 224, 194, .16) 68%, transparent 100%);
-  }
 }
 
 @media (prefers-color-scheme: light) {
@@ -871,9 +710,6 @@ button { color: inherit; }
   }
   :root:not([data-theme]) .fantasy-surround img { filter: none; opacity: 1; }
   :root:not([data-theme]) .fantasy-surround::before { background: radial-gradient(ellipse at center, rgba(255, 251, 236, .1) 28%, rgba(238, 231, 209, .5) 80%); }
-  :root:not([data-theme]) .cabinet-glow {
-    background: radial-gradient(ellipse at center, rgba(235, 224, 194, .7), rgba(235, 224, 194, .34) 66%, transparent 100%);
-  }
   :root:not([data-theme]) .home-link,
   :root:not([data-theme]) .collection-toggle,
   :root:not([data-theme]) .wheel-toggle,
@@ -894,9 +730,6 @@ button { color: inherit; }
     background:
       linear-gradient(90deg, rgba(103, 75, 40, .16), transparent 30%, transparent 70%, rgba(103, 75, 40, .16)),
       radial-gradient(ellipse at center, rgba(255, 251, 236, .08), rgba(225, 213, 184, .36) 80%);
-  }
-  :root:not([data-theme]) .cabinet-glow {
-    background: radial-gradient(ellipse at center, rgba(235, 224, 194, .42), rgba(235, 224, 194, .16) 68%, transparent 100%);
   }
 }
 

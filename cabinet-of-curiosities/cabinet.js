@@ -32,6 +32,54 @@
   let wheelTimer = null;
   let compactHotspotMode = null;
 
+  const PHOTO_WIDTH = 1536;
+  const PHOTO_HEIGHT = 1152;
+  const SCENE_WIDTH = 1672;
+  const SCENE_HEIGHT = 941;
+  const PHOTO_TO_SCENE = [
+    [0.832264758, 0, 215.658370],
+    [0.015540190, 0.803724256, -13.696234],
+    [0.000004491, 0, 1]
+  ];
+
+  function transformPhotoPoint(x, y) {
+    const denominator = PHOTO_TO_SCENE[2][0] * x + PHOTO_TO_SCENE[2][2];
+    return [
+      (PHOTO_TO_SCENE[0][0] * x + PHOTO_TO_SCENE[0][2]) / denominator,
+      (PHOTO_TO_SCENE[1][0] * x + PHOTO_TO_SCENE[1][1] * y + PHOTO_TO_SCENE[1][2]) / denominator
+    ];
+  }
+
+  function photoBoxToSceneBox(box) {
+    const [left, top, width, height] = box;
+    const x1 = left * PHOTO_WIDTH / 100;
+    const y1 = top * PHOTO_HEIGHT / 100;
+    const x2 = (left + width) * PHOTO_WIDTH / 100;
+    const y2 = (top + height) * PHOTO_HEIGHT / 100;
+    const corners = [
+      transformPhotoPoint(x1, y1),
+      transformPhotoPoint(x2, y1),
+      transformPhotoPoint(x2, y2),
+      transformPhotoPoint(x1, y2)
+    ];
+    const xs = corners.map(point => point[0]);
+    const ys = corners.map(point => point[1]);
+    const sceneLeft = Math.min(...xs);
+    const sceneTop = Math.min(...ys);
+    const sceneRight = Math.max(...xs);
+    const sceneBottom = Math.max(...ys);
+    return [
+      sceneLeft / SCENE_WIDTH * 100,
+      sceneTop / SCENE_HEIGHT * 100,
+      (sceneRight - sceneLeft) / SCENE_WIDTH * 100,
+      (sceneBottom - sceneTop) / SCENE_HEIGHT * 100
+    ];
+  }
+
+  function usesCompactHotspots() {
+    return window.innerWidth <= 760 && window.matchMedia('(pointer: coarse)').matches;
+  }
+
   function hidePreview() {
     preview.hidden = true;
   }
@@ -106,11 +154,11 @@
       'raaka-tanzania-100',
       'small-green-wrapper'
     ]);
-    const groupTopRow = window.innerWidth <= 760;
+    const groupTopRow = usesCompactHotspots();
     compactHotspotMode = groupTopRow;
 
     function appendHotspot(item, clickAction) {
-      const [left, top, width, height] = item.box;
+      const [left, top, width, height] = photoBoxToSceneBox(item.box);
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'hotspot';
@@ -261,7 +309,7 @@
   });
   window.addEventListener('resize', () => {
     hidePreview();
-    const nextCompactMode = window.innerWidth <= 760 && window.matchMedia('(pointer: coarse)').matches;
+    const nextCompactMode = usesCompactHotspots();
     if (nextCompactMode !== compactHotspotMode) buildHotspots();
   });
   boardShell.addEventListener('pointerleave', hidePreview);
