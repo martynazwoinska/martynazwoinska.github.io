@@ -51,8 +51,9 @@ button { color: inherit; }
 
 .cabinet-page {
   /* The element retains the full photograph's coordinate system so every
-     hotspot stays aligned. Only the physical pinboard is revealed below. */
-  --board-width: min(1350px, calc((100svh - 60px) * 1.56), calc((100vw - 20px) * 1.34));
+     hotspot stays aligned. The small viewport gap lets the photographed
+     board tuck into the surrounding wood instead of floating inside it. */
+  --board-width: min(1350px, calc((100svh - clamp(24px, 4svh, 40px)) * 1.56), calc((100vw - 20px) * 1.34));
   --board-height: min(calc(75vw - 39px), calc(100svh - 118.5px), 1152px);
   position: relative;
   isolation: isolate;
@@ -681,9 +682,9 @@ button { color: inherit; }
 
 @media (max-width: 760px) {
   .cabinet-page {
-    /* The board plane keeps transparent side margins, so 125vw fits the full
-       photographed collection while retaining a useful object scale. */
-    --board-width: min(125vw, calc((100svh - 64px) * 1.56), 960px);
+    /* The board plane keeps transparent side margins. A tighter vertical
+       allowance seats it within the mobile surround at a useful scale. */
+    --board-width: min(136vw, calc((100svh - 20px) * 1.56), 960px);
   }
   .fantasy-surround {
     background:
@@ -726,6 +727,14 @@ button { color: inherit; }
   .explore-hint { bottom: 8px; font-size: .7rem; }
   .wheel-dialog { width: calc(100vw - 12px); padding: 18px; }
   .wheel-visual { width: min(92vw, calc(100svh - 54px), 100%); }
+}
+
+@media (min-width: 761px) and (max-width: 980px) and (orientation: portrait) {
+  .cabinet-page {
+    /* Portrait tablets display the full photographed collection rather than
+       cropping both outer objects beyond the viewport. */
+    --board-width: min(calc((100vw - 16px) * 1.2), calc((100svh - 32px) * 1.56), 1080px);
+  }
 }
 
 @media (max-width: 760px) and (orientation: portrait) {
