@@ -22,7 +22,7 @@ const rows = [
   ["elegans", "Tenerife, Spain", "avocado microhabitat viewer", "avocado-microhabitat-viewer", "aerial-root harp", "aerial-root-harp", "Linnaean seed-exchange engine", "linnaean-seed-exchange-engine"],
   ["elegans", "Kauaʻi, Hawaiʻi", "decay-substrate theatre", "decay-substrate-theatre", "Kōkeʻe cloud-water collector", "kokee-cloud-water-collector", "XZ1516 haplotype viewer", "xz1516-haplotype-viewer"],
   ["elegans", "Australian Capital Territory", "QG2811 Baermann fig-recovery rig", "qg2811-baermann-fig-recovery", "Yellow Box seed orrery", "yellow-box-seed-orrery", "Black Mountain signal theremin", "black-mountain-signal-theremin"],
-  ["elegans", "Auckland, New Zealand", "scoria bowler", "scoria-bowler", "harbour-sail wings", "wings", "pōhutukawa umbrella", "umbrella"],
+  ["elegans", "Auckland, New Zealand", "ECA36 grass-litter profiler", "eca36-grass-litter-profiler", "Auckland volcanic-field monitor", "auckland-volcanic-field-monitor", "ECA36 reproductive-timing clock", "eca36-reproductive-timing-clock"],
   ["elegans", "Araucanía, Chile", "araucaria halo", "araucaria-halo", "volcano-lake diving bell", "volcano-lake-diving-bell", "snowline telescope", "telescope"],
   ["nigoni", "Trivandrum, Kerala · JU1325", "coconut rain hood", "coconut-rain-hood", "backwater skates", "skates", "sandbar tambourine", "sandbar-tambourine"],
   ["nigoni", "Singapore · ZF1220", "mangrove stilts", "stilts", "mudflat waders", "waders", "skyline fan", "fan"],
@@ -69,7 +69,6 @@ const explicitUniqueRendererFamilies = new Set([
   "reef-mask",
   "research-headphones",
   "salt-crystal-jacket",
-  "scoria-bowler",
   "seagrass-tail",
   "shade-visor",
   "terrace-boots",
@@ -91,6 +90,7 @@ const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "galaxy-pla
 const tenerifeRendererFamilies = new Set(["avocado-microhabitat-viewer", "aerial-root-harp", "linnaean-seed-exchange-engine"]);
 const kauaiRendererFamilies = new Set(["decay-substrate-theatre", "kokee-cloud-water-collector", "xz1516-haplotype-viewer"]);
 const actRendererFamilies = new Set(["qg2811-baermann-fig-recovery", "yellow-box-seed-orrery", "black-mountain-signal-theremin"]);
+const aucklandRendererFamilies = new Set(["eca36-grass-litter-profiler", "auckland-volcanic-field-monitor", "eca36-reproductive-timing-clock"]);
 const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
 const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|snorkel|compass|press|gauge rod|camera rig/i;
 const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|skates|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
@@ -104,6 +104,7 @@ function hasNamedRenderer(item) {
     || tenerifeRendererFamilies.has(item.family)
     || kauaiRendererFamilies.has(item.family)
     || actRendererFamilies.has(item.family)
+    || aucklandRendererFamilies.has(item.family)
     || item.family === "volcanic-needle-ruff"
     || instrumentRendererPattern.test(item.label)
     || fieldToolRendererPattern.test(item.label)
@@ -1029,6 +1030,151 @@ function drawAustralianCapitalTerritoryAccessory(group, item, companion) {
   return false;
 }
 
+function drawAucklandAccessory(group, item, companion) {
+  if (item.family === "eca36-grass-litter-profiler") {
+    group.classList.add("auckland-accessory", "grass-profiler", companion ? "grass-profiler-companion" : "grass-profiler-primary");
+    if (companion) {
+      add(group, "path", { class: "auckland-accessory-shadow", d: "M-76 111Q2 132 80 108Q41 142-68 137Z" });
+      add(group, "path", { class: "profiler-tower-frame", d: "M-51-118H43L55 95H-60ZM-45-68H47M-52-5H51M-56 59H54" });
+      const windows = [[-31,-91,47,41],[-8,-28,46,43],[-35,36,48,43]];
+      windows.forEach(([x,y,width,height], index) => {
+        add(group, "rect", { class: index % 2 ? "profiler-window warm" : "profiler-window", x, y, width, height, rx: 6 });
+        add(group, "path", { class: "profiler-window-glint", d: `M${x+7} ${y+8}L${x+width-8} ${y+8}` });
+      });
+      const rollers = [[-23,-70],[22,-8],[-26,58]];
+      rollers.forEach(([cx,cy], index) => {
+        add(group, "circle", { class: "profiler-roller", cx, cy, r: 13 });
+        add(group, "circle", { class: "profiler-roller-hub", cx, cy, r: 4 });
+        add(group, "path", { class: "profiler-roller-spokes", d: `M${cx-10} ${cy}H${cx+10}M${cx} ${cy-10}V${cy+10}` });
+      });
+      add(group, "path", { class: "profiler-litter-ribbon", d: "M-23-107C10-97 11-79-23-70C-55-60-48-27 5-25C49-23 52-2 22-8C-19-16-48 10-26 29C-8 45 7 51-26 58C-52 64-43 85 6 92" });
+      [[-19,-99,-4,-91],[4,-47,21,-38],[-12,17,6,26],[-20,72,-2,80]].forEach(([x1,y1,x2,y2], index) => add(group, "path", { class: index % 2 ? "profiler-ribbon-leaf deep" : "profiler-ribbon-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-7} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+5} ${x1} ${y1}Z` }));
+      add(group, "path", { class: "profiler-crank-shaft", d: "M45-69H69Q86-69 86-52V-39" });
+      add(group, "circle", { class: "profiler-crank-wheel", cx: 86, cy: -25, r: 16 });
+      add(group, "path", { class: "profiler-crank-spokes", d: "M70-25H102M86-41V-9M75-36L97-14M97-36L75-14" });
+      add(group, "path", { class: "profiler-catch-drawer", d: "M-39 87H39L46 119H-47Z" });
+      add(group, "path", { class: "profiler-drawer-front", d: "M-35 98H34L31 113H-32Z" });
+      add(group, "circle", { class: "profiler-drawer-pull", cx: 0, cy: 105, r: 4 });
+      add(group, "path", { class: "profiler-tower-foot", d: "M-53 94L-66 122H-29L-20 97ZM24 98L34 122H70L53 93Z" });
+    } else {
+      add(group, "path", { class: "auckland-accessory-shadow", d: "M-144 79Q0 109 148 75Q75 124-132 117Z" });
+      add(group, "path", { class: "profiler-rail-bed", d: "M-131 62H128L142 80H-145ZM-116 45V77M-58 45V77M61 45V77M116 45V77" });
+      add(group, "path", { class: "profiler-chamber-shell", d: "M-112 49V-15Q-109-82-43-98Q12-114 70-88Q111-68 113-18V51Z" });
+      add(group, "path", { class: "profiler-chamber-glass", d: "M-96 44V-12Q-93-66-40-81Q10-96 59-73Q92-57 96-15V44Z" });
+      add(group, "path", { class: "profiler-chamber-floor", d: "M-96 27Q-49 10-7 25Q38 6 95 25V45H-96Z" });
+      add(group, "path", { class: "profiler-litter-layer deep", d: "M-91 28Q-68 4-43 20Q-21-4 3 19Q27-3 51 19Q74 4 91 27L85 42H-87Z" });
+      add(group, "path", { class: "profiler-litter-layer", d: "M-88 22Q-66 8-45 24Q-24 3-2 22Q23 4 43 22Q66 9 88 23V34Q62 27 40 37Q17 25-5 37Q-30 25-52 37Q-72 29-88 35Z" });
+      [[-75,25,-63,-6],[-57,28,-44,-13],[-37,27,-28,3],[-18,27,-6,-17],[3,26,17,-3],[22,27,36,-16],[46,27,57,0],[65,25,77,-12]].forEach(([x1,y1,x2,y2], index) => add(group, "path", { class: index % 3 === 0 ? "profiler-grass-blade dry" : "profiler-grass-blade", d: `M${x1} ${y1}Q${(x1+x2)/2 + (index%2 ? 4 : -3)} ${(y1+y2)/2} ${x2} ${y2}` }));
+      add(group, "path", { class: "profiler-door left", d: "M-97-9L-111-2V44H-97Z" });
+      add(group, "path", { class: "profiler-door right", d: "M97-10L112-2V44H97Z" });
+      [-1,1].forEach(side => {
+        add(group, "path", { class: "profiler-door-hinge", d: `M${side*102} 3V15M${side*102} 27V39` });
+        add(group, "circle", { class: "profiler-door-latch", cx: side*104, cy: 22, r: 3.5 });
+      });
+      add(group, "path", { class: "profiler-magnifier-rail", d: "M-91-45H87" });
+      add(group, "path", { class: "profiler-magnifier-carriage", d: "M-21-57H31V-39H-21Z" });
+      add(group, "circle", { class: "profiler-magnifier-lens", cx: 6, cy: -11, r: 25 });
+      add(group, "circle", { class: "profiler-magnifier-glass", cx: 6, cy: -11, r: 17 });
+      add(group, "path", { class: "profiler-magnifier-arm", d: "M6-38V-21M23 7L43 27" });
+      add(group, "path", { class: "profiler-ticket", d: "M-119-74H-61L-57-49H-115Z" });
+      const ticket = add(group, "text", { class: "profiler-ticket-text", x: -88, y: -58, "text-anchor": "middle" });
+      ticket.textContent = "ECA36";
+      add(group, "path", { class: "profiler-rail-foot", d: "M-124 79L-132 100H-97L-88 80ZM88 80L97 100H132L123 79Z" });
+    }
+    return true;
+  }
+
+  if (item.family === "auckland-volcanic-field-monitor") {
+    group.classList.add("auckland-accessory", "volcanic-monitor", companion ? "volcanic-monitor-companion" : "volcanic-monitor-primary");
+    if (companion) {
+      add(group, "path", { class: "auckland-accessory-shadow", d: "M-86 109Q0 132 89 105Q45 144-77 138Z" });
+      add(group, "path", { class: "monitor-triangle-frame", d: "M0-119L-70 87H72ZM0-91L-50 72H52Z" });
+      add(group, "path", { class: "monitor-triangle-brace", d: "M-54 42H56M-36-8H37M-18-60H19" });
+      add(group, "path", { class: "monitor-pendulum-wire", d: "M0-87V22" });
+      add(group, "ellipse", { class: "monitor-pendulum-bob", cx: 0, cy: 34, rx: 17, ry: 24 });
+      add(group, "path", { class: "monitor-pendulum-pointer", d: "M0 58L-12 77H12Z" });
+      add(group, "circle", { class: "monitor-amplitude-dial", cx: 0, cy: -25, r: 30 });
+      add(group, "path", { class: "monitor-amplitude-arc", d: "M-20-17Q0-43 21-17M0-25L16-38" });
+      [-18,-9,0,9,18].forEach(x => add(group, "path", { class: "monitor-dial-tick", d: `M${x} ${-18-Math.abs(x)*.18}L${x*.82} ${-23-Math.abs(x)*.2}` }));
+      add(group, "path", { class: "monitor-sensor-link", d: "M-69 87L-88 111M0 87V118M71 87L91 111" });
+      [[-89,114],[0,121],[92,114]].forEach(([cx,cy], index) => add(group, "ellipse", { class: index === 1 ? "monitor-sensor-foot centre" : "monitor-sensor-foot", cx, cy, rx: 18, ry: 7 }));
+      add(group, "path", { class: "monitor-folded-chart", d: "M56-23L103-38L116 32L70 48Z" });
+      add(group, "path", { class: "monitor-chart-fold", d: "M80-30L92 39M60 4L111-11" });
+      add(group, "path", { class: "monitor-chart-trace", d: "M64 18L74 8L83 22L93-3L103 15L111 7" });
+    } else {
+      add(group, "path", { class: "auckland-accessory-shadow", d: "M-150 83Q-1 112 153 80Q76 127-138 121Z" });
+      add(group, "path", { class: "monitor-wide-frame", d: "M-133-77V68H135V-77M-133-61H135M-133 58H135" });
+      add(group, "path", { class: "monitor-frame-brace", d: "M-109-61V61M105-61V61M-133 19H135" });
+      add(group, "path", { class: "monitor-drum-axle", d: "M-102-5H111" });
+      add(group, "path", { class: "monitor-paper-drum", d: "M-86-46H55Q81-44 81-4Q81 37 55 42H-86Z" });
+      add(group, "ellipse", { class: "monitor-drum-end", cx: -86, cy: -2, rx: 21, ry: 44 });
+      add(group, "ellipse", { class: "monitor-drum-cap", cx: 55, cy: -2, rx: 22, ry: 43 });
+      [-67,-46,-25,-4,17,38].forEach(x => add(group, "path", { class: "monitor-paper-rule", d: `M${x}-41V37` }));
+      [-29,-11,7,25].forEach(y => add(group, "path", { class: "monitor-paper-rule faint", d: `M-84 ${y}H57` }));
+      add(group, "path", { class: "monitor-trace", d: "M-84 11L-66 8L-55 18L-44-4L-31 16L-15 12L-2-17L12 19L26 8L39 14L55-2" });
+      add(group, "path", { class: "monitor-suspension", d: "M76-77V-45L93-30V5" });
+      add(group, "path", { class: "monitor-spring", d: "M76-47L68-40L84-33L68-26L84-19L68-12L84-5L76 3" });
+      add(group, "ellipse", { class: "monitor-suspended-mass", cx: 76, cy: 22, rx: 20, ry: 17 });
+      add(group, "path", { class: "monitor-stylus-arm", d: "M76 20L39 4L15 10" });
+      add(group, "circle", { class: "monitor-stylus-tip", cx: 14, cy: 10, r: 4 });
+      add(group, "path", { class: "monitor-four-feet", d: "M-119 67L-132 96H-95L-84 68ZM-42 68L-52 96H-17L-8 68ZM15 68L25 96H60L49 68ZM91 68L103 96H140L125 67Z" });
+    }
+    return true;
+  }
+
+  if (item.family === "eca36-reproductive-timing-clock") {
+    group.classList.add("auckland-accessory", "timing-clock", companion ? "timing-clock-companion" : "timing-clock-primary");
+    if (companion) {
+      add(group, "path", { class: "auckland-accessory-shadow", d: "M-78 119Q0 140 82 116Q42 150-70 145Z" });
+      add(group, "path", { class: "timing-counter-frame", d: "M-53-121H52L63 97H-63Z" });
+      add(group, "path", { class: "timing-counter-branch", d: "M0-95V-66L-31-45V-15M0-66L31-45V-15" });
+      add(group, "rect", { class: "timing-flip-window early", x: -50, y: -21, width: 45, height: 39, rx: 5 });
+      add(group, "rect", { class: "timing-flip-window late", x: 5, y: -21, width: 45, height: 39, rx: 5 });
+      const early = add(group, "text", { class: "timing-window-label", x: -28, y: 4, "text-anchor": "middle" });
+      early.textContent = "EARLY";
+      const late = add(group, "text", { class: "timing-window-label", x: 28, y: 4, "text-anchor": "middle" });
+      late.textContent = "LATE";
+      add(group, "path", { class: "timing-progeny-chute", d: "M-42 18V65L-58 86H-16L-31 65V18" });
+      add(group, "path", { class: "timing-male-chute", d: "M19 18V48L7 66H47L34 48V18" });
+      [[-43,30],[-32,39],[-46,49],[-27,57],[-39,66],[-21,73]].forEach(([cx,cy], index) => add(group, "circle", { class: index % 2 ? "timing-progeny-bead deep" : "timing-progeny-bead", cx, cy, r: 4.2 }));
+      [[24,30],[31,41],[23,51]].forEach(([cx,cy]) => add(group, "circle", { class: "timing-male-tally", cx, cy, r: 3.7 }));
+      add(group, "path", { class: "timing-x-gate", d: "M-16 77H39V104H-16ZM-6 84L28 98M28 84L-6 98" });
+      const xLabel = add(group, "text", { class: "timing-x-label", x: 12, y: 94, "text-anchor": "middle" });
+      xLabel.textContent = "X";
+      add(group, "path", { class: "timing-counter-foot", d: "M-57 96L-70 126H-31L-22 99ZM22 99L31 126H71L57 95Z" });
+    } else {
+      add(group, "path", { class: "auckland-accessory-shadow", d: "M-130 102Q0 130 133 99Q67 144-119 137Z" });
+      add(group, "circle", { class: "timing-clock-outer", cx: 0, cy: -7, r: 90 });
+      add(group, "circle", { class: "timing-clock-face", cx: 0, cy: -7, r: 70 });
+      add(group, "path", { class: "timing-clock-sector early", d: "M0-7L0-77A70 70 0 0 0-61 27Z" });
+      add(group, "path", { class: "timing-clock-sector late", d: "M0-7L-61 27A70 70 0 1 0 0-77Z" });
+      add(group, "path", { class: "timing-clock-divider", d: "M0-76V-7L-60 27" });
+      add(group, "path", { class: "timing-clock-hand", d: "M0-7L43-47M0-7L-28 38" });
+      add(group, "circle", { class: "timing-clock-hub", cx: 0, cy: -7, r: 8 });
+      const labels = [[0,-51,"0"],[-42,19,"36"],[42,28,"72"]];
+      labels.forEach(([x,y,value]) => {
+        const label = add(group, "text", { class: "timing-hour-label", x, y, "text-anchor": "middle" });
+        label.textContent = value;
+      });
+      for (let index = 0; index < 14; index += 1) {
+        const angle = (-154 + index * 24) * Math.PI / 180;
+        add(group, "circle", { class: index % 3 ? "timing-progeny-bead" : "timing-progeny-bead deep", cx: Math.cos(angle) * 106, cy: -7 + Math.sin(angle) * 106, r: index % 2 ? 4.5 : 5.4 });
+      }
+      add(group, "path", { class: "timing-bead-rail", d: "M-101-44A108 108 0 1 0 103-39" });
+      add(group, "path", { class: "timing-male-aperture", d: "M-35 62H37L42 88H-40Z" });
+      [[-22,74],[-8,75],[7,74],[21,76]].forEach(([cx,cy], index) => add(group, "circle", { class: index === 2 ? "timing-male-tally warm" : "timing-male-tally", cx, cy, r: 4 }));
+      const labLabel = add(group, "text", { class: "timing-assay-label", x: 0, y: 85, "text-anchor": "middle" });
+      labLabel.textContent = "LAB ASSAY";
+      add(group, "path", { class: "timing-eca36-tag", d: "M75-93H132L139-67L83-61Z" });
+      const tag = add(group, "text", { class: "timing-eca36-text", x: 108, y: -72, "text-anchor": "middle" });
+      tag.textContent = "ECA36";
+    }
+    return true;
+  }
+
+  return false;
+}
+
 function drawInstrument(group, item, companion) {
   const label = item.label;
   if (/fiddle/i.test(label)) {
@@ -1367,11 +1513,7 @@ function drawRepeatedFamilyAccessory(group, item, companion) {
       }
       return true;
     case "umbrella":
-      if(/pōhutukawa/i.test(label)) {
-        const petals=companion?7:11; for(let i=0;i<petals;i+=1){const a=i*360/petals; add(group,"ellipse",{class:i%2?"acc-accent":"acc-main",cx:0,cy:companion?-35:-47,rx:10,ry:companion?22:29,transform:`rotate(${a})`});} dot(group,0,0,companion?20:27,"acc-soft"); line(group,companion?"M0 0V67Q0 79-15 73":"M0 0V88Q0 105-21 97","acc-line thick");
-      } else {
-        path(group,companion?"M0-60Q43-27 49 8Q21-5 0 11Q-21-5-49 8Q-43-27 0-60Z":"M0-80Q57-36 65 10Q28-7 0 15Q-28-7-65 10Q-57-36 0-80Z","acc-soft"); line(group,companion?"M0-55V67Q0 81-18 72":"M0-73V90Q0 108-24 97","acc-line thick");
-      }
+      path(group,companion?"M0-60Q43-27 49 8Q21-5 0 11Q-21-5-49 8Q-43-27 0-60Z":"M0-80Q57-36 65 10Q28-7 0 15Q-28-7-65 10Q-57-36 0-80Z","acc-soft"); line(group,companion?"M0-55V67Q0 81-18 72":"M0-73V90Q0 108-24 97","acc-line thick");
       return true;
     case "waders":
       if(/mudflat/i.test(label)) {
@@ -1388,11 +1530,7 @@ function drawRepeatedFamilyAccessory(group, item, companion) {
       }
       return true;
     case "wings":
-      if(/harbour-sail/i.test(label)) {
-        path(group,companion?"M-5 9L-62-45L-56 20Z M5 9L61-36L56 25Z":"M-7 12L-82-61L-74 28Z M7 12L81-49L74 34Z","acc-soft"); line(group,companion?"M-56-41L-5 9L-56 18 M60-33L5 9L55 22":"M-76-57L-7 12L-74 25 M79-46L7 12L73 31");
-      } else {
-        path(group,companion?"M-7 4Q-49-37-61-10Q-44 18-7 13Z M7 4Q49-37 61-10Q44 18 7 13Z":"M-9 3Q-65-60-80-24Q-59 16-9 16Z M9 3Q65-60 80-24Q59 16 9 16Z","acc-soft"); const veins=companion?[[-53,-10,-8,8],[53,-10,8,8]]:[[-70,-23,-9,10],[70,-23,9,10],[-54,4,-8,13],[54,4,8,13]]; veins.forEach(([x1,y1,x2,y2])=>line(group,`M${x1} ${y1}L${x2} ${y2}`));
-      }
+      path(group,companion?"M-7 4Q-49-37-61-10Q-44 18-7 13Z M7 4Q49-37 61-10Q44 18 7 13Z":"M-9 3Q-65-60-80-24Q-59 16-9 16Z M9 3Q65-60 80-24Q59 16 9 16Z","acc-soft"); const veins=companion?[[-53,-10,-8,8],[53,-10,8,8]]:[[-70,-23,-9,10],[70,-23,9,10],[-54,4,-8,13],[54,4,8,13]]; veins.forEach(([x1,y1,x2,y2])=>line(group,`M${x1} ${y1}L${x2} ${y2}`));
       return true;
     default: return false;
   }
@@ -1428,11 +1566,6 @@ function drawUniqueNamedAccessory(group, item, companion) {
       line(group, companion ? "M-52 48L-4-13L45-45 M-4-13L56 35" : "M-69 64L-5-18L59-60 M-5-18L75 47", "acc-line thick");
       path(group, companion ? "M35-50Q51-67 65-48Q68-25 48-18Q29-29 35-50Z" : "M46-67Q67-89 86-64Q91-33 64-24Q38-39 46-67Z", "acc-main");
       path(group, companion ? "M-56 42L-66 58L-48 63L-39 49Z" : "M-74 56L-88 77L-64 84L-52 65Z", "acc-accent");
-      return true;
-    case "scoria-bowler":
-      add(group, "ellipse", { class: "acc-soft", cx: 0, cy: companion ? 15 : 20, rx: companion ? 56 : 74, ry: companion ? 17 : 23 });
-      path(group, companion ? "M-38 13Q-36-39 0-48Q37-39 38 13Z" : "M-50 17Q-48-52 0-64Q49-52 50 17Z", "acc-main");
-      [[-19,-15],[7,-26],[22,-6],[-3,2]].slice(0, companion ? 3 : 4).forEach(([x,y], index) => dot(group, companion ? x * .8 : x, companion ? y * .8 : y, companion ? 4 : 6, index % 2 ? "acc-dark" : "acc-accent"));
       return true;
     case "araucaria-halo": {
       const radius = companion ? 43 : 58;
@@ -1608,6 +1741,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawTenerifeAccessory(group, item, companion)) return true;
   if (drawKauaiAccessory(group, item, companion)) return true;
   if (drawAustralianCapitalTerritoryAccessory(group, item, companion)) return true;
+  if (drawAucklandAccessory(group, item, companion)) return true;
   if (drawUniqueNamedAccessory(group, item, companion)) return true;
   if (drawRepeatedFamilyAccessory(group, item, companion)) return true;
   if (drawN2Accessory(group, item, companion)) return true;
@@ -1657,7 +1791,10 @@ function renderPiece(target, item, wormPart) {
     "xz1516-haplotype-viewer": { primary: [385, 260, .4, -1], companion: [28, 285, .3, 2] },
     "qg2811-baermann-fig-recovery": { primary: [385, 132, .37, -2], companion: [-10, 118, .28, 2] },
     "yellow-box-seed-orrery": { primary: [239, 170, .32, 1], companion: [125, 205, .29, -1] },
-    "black-mountain-signal-theremin": { primary: [381, 248, .35, -1], companion: [203, 290, .29, 1] }
+    "black-mountain-signal-theremin": { primary: [381, 248, .35, -1], companion: [203, 290, .29, 1] },
+    "eca36-grass-litter-profiler": { primary: [370, 125, .46, -2], companion: [-5, 95, .3, 2] },
+    "auckland-volcanic-field-monitor": { primary: [225, 185, .43, -1], companion: [85, 195, .3, 2] },
+    "eca36-reproductive-timing-clock": { primary: [380, 254, .41, -1], companion: [-15, 284, .28, 2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;

@@ -145,11 +145,11 @@ const canonicalProfiles = {
     { weather: "sun", cues: [] }
   ),
   "Auckland, New Zealand": profile(
-    "auckland-volcanic-harbour", "Auckland maunga and harbour",
-    "Auckland’s volcanic field is marked by grass-covered scoria cones and culturally important maunga beside a wide island-dotted harbour.",
-    "Auckland Council Maungawhau", "https://www.aucklandcouncil.govt.nz/en/parks-recreation/get-outdoors/aklpaths/path-detail/393.html",
-    palettes.subtropical, [[0, 292], [110, 270], [210, 286], [300, 176], [390, 285], [500, 268], [600, 278]],
-    { water: "harbour", weather: "sun", cues: [["crater", 300, 220, .85], ["pohutukawa", 90, 285, .8], ["islet", 500, 320, .65]] }
+    "auckland-eca36-garden-grass", "Auckland garden grass and volcanic field",
+    "ECA36 came from garden grass in an anonymised Auckland urban garden. The two low volcanic-field shoulders and tiny Sky Tower cue are wider regional context, not a recorded collection view or evidence of local adaptation.",
+    "CaeNDR ECA36 isotype record", "https://caendr.org/isotype/ECA36/",
+    palettes.temperate, [[0, 256], [77, 229], [154, 246], [239, 257], [329, 235], [421, 247], [505, 226], [600, 246]],
+    { weather: "cloud", cues: [] }
   ),
   "Araucanía, Chile": profile(
     "araucania-volcano-lake", "Araucaria forest beneath a volcano",
@@ -424,12 +424,12 @@ const sceneCompositions = Object.freeze({
     "M76 322Q192 304 302 319Q425 335 552 303", [],
     "an asymmetric pair of collapsed figs below a broken garden edge, one broad open eucalypt crown and a low ridge with a tiny offset tower"
   ),
-  "auckland-volcanic-harbour": composition(
-    "M0 388 Q119 352 233 381 Q344 407 454 371 Q524 348 600 361 V430 H0Z",
-    "M0 321 Q113 306 218 327 L300 255 Q380 327 492 306 L600 320 V430 H0Z",
-    [["pohutukawa", 27, 369, .9], ["islet", 544, 361, .66]],
-    "M250 267 Q300 246 350 269 Q321 281 300 278 Q278 282 250 267", [0, 2, 1],
-    "a notched rounded scoria cone counterbalanced by low harbour islets"
+  "auckland-eca36-garden-grass": composition(
+    "M0 302Q78 282 158 299Q244 319 326 296Q422 269 513 292Q556 304 600 294V430H0Z",
+    "M0 258Q84 240 168 254Q253 267 338 246Q428 225 514 244Q558 254 600 248V324H0Z",
+    [],
+    "M84 328Q197 306 305 324Q422 343 548 311", [],
+    "two unequal grass-litter folds below a broken fence and roofline, two low separated volcanic shoulders and one hairline city needle"
   ),
   "araucania-volcano-lake": composition(
     "M0 389 Q104 361 207 383 Q308 407 414 378 Q518 351 600 369 V430 H0Z",
@@ -1180,6 +1180,72 @@ function drawCanberraOConnorScene(target, palette) {
   [[-39,9],[-24,-10],[-7,16],[13,-8],[30,8],[43,0]].forEach(([cx, cy], index) => append(saggedFig, "circle", { class: index % 2 ? "canberra-fig-mottle deep" : "canberra-fig-mottle", cx, cy, r: index % 3 === 0 ? 3.5 : 2.5 }));
 }
 
+function drawAucklandGardenGrassScene(target, palette) {
+  append(target, "rect", { class: "environment-sky auckland-garden-sky", width: 600, height: 430, fill: palette[0] });
+
+  const clouds = append(target, "g", { class: "auckland-garden-clouds", "aria-hidden": "true" });
+  append(clouds, "path", { d: "M24 80Q52 49 87 69Q111 40 151 67Q181 62 199 88H24Z" });
+  append(clouds, "path", { d: "M355 71Q382 48 411 65Q438 36 474 63Q505 58 526 82H355Z" });
+
+  const shoulders = append(target, "g", { class: "auckland-volcanic-field-lock", "aria-hidden": "true" });
+  append(shoulders, "path", { class: "auckland-volcanic-shoulder left", d: "M0 240Q58 210 123 214Q176 216 225 244V286H0Z" });
+  append(shoulders, "path", { class: "auckland-volcanic-shoulder right", d: "M319 251Q376 224 435 229Q505 230 600 204V287H319Z" });
+  append(shoulders, "path", { class: "auckland-volcanic-contour", d: "M0 246Q61 220 124 223Q178 224 221 250M328 256Q379 234 437 237Q508 238 600 213" });
+
+  const tower = append(target, "g", { class: "auckland-sky-tower-cue", transform: "translate(483 177)", "aria-hidden": "true" });
+  append(tower, "path", { class: "auckland-sky-tower-mast", d: "M0 50L2-21L5 50M2-18L-2-7M4-9L9 2" });
+  append(tower, "ellipse", { class: "auckland-sky-tower-deck", cx: 3, cy: 8, rx: 8, ry: 3.2 });
+  append(tower, "path", { class: "auckland-sky-tower-spire", d: "M3-20V-33" });
+
+  const garden = append(target, "g", { class: "auckland-anonymised-garden", "aria-hidden": "true" });
+  append(garden, "path", { class: "auckland-garden-ground", d: "M0 260Q92 245 181 259Q279 275 369 253Q466 230 600 249V430H0Z" });
+  append(garden, "path", { class: "auckland-roof-fragment left", d: "M0 239L38 217L83 229L111 255H0Z" });
+  append(garden, "path", { class: "auckland-roof-fragment right", d: "M518 244L551 223L600 236V260H511Z" });
+  append(garden, "path", { class: "auckland-roof-seam", d: "M9 237L39 222L72 230M542 230L568 241" });
+  append(garden, "path", { class: "auckland-hedge", d: "M0 262Q21 240 45 256Q65 231 94 253Q119 239 142 265L144 300H0ZM451 260Q477 238 499 257Q522 232 550 255Q575 238 600 260V298H450Z" });
+  append(garden, "path", { class: "auckland-hedge-detail", d: "M14 267Q42 248 68 267M76 267Q106 247 133 272M465 269Q492 249 518 270M526 268Q556 246 588 269" });
+
+  const fence = append(garden, "g", { class: "auckland-broken-fence" });
+  append(fence, "path", { class: "auckland-fence-rail", d: "M101 270L231 260M107 292L173 280M185 279L239 276M374 265L463 252M382 292L423 281M437 274L476 267" });
+  [[108,252,308],[154,258,300],[215,249,296],[383,253,304],[425,247,292],[468,240,288]].forEach(([x, top, bottom], index) => {
+    append(fence, "path", { class: index % 2 ? "auckland-fence-post deep" : "auckland-fence-post", d: `M${x} ${top}L${x + (index % 2 ? 4 : -3)} ${bottom}` });
+  });
+
+  const edge = append(target, "g", { class: "auckland-garden-edge", "aria-hidden": "true" });
+  append(edge, "path", { class: "auckland-edge-earth", d: "M0 323Q72 304 144 321L216 306L286 323L357 304L427 318L500 301L600 318V348Q519 331 449 348L373 334L301 350L225 334L152 347L75 334L0 351Z" });
+  [[15,319,72,330],[84,315,140,326],[154,316,211,327],[296,316,350,327],[364,311,418,323],[443,310,499,320],[514,309,575,322]].forEach(([x1,y1,x2,y2], index) => {
+    append(edge, "path", { class: index % 2 ? "auckland-edge-stone deep" : "auckland-edge-stone", d: `M${x1} ${y1}Q${(x1+x2)/2} ${y1-8-index%3} ${x2} ${y2}L${x2-7} ${y2+10}Q${(x1+x2)/2} ${y2+5} ${x1+4} ${y1+10}Z` });
+  });
+
+  const pavers = append(target, "g", { class: "auckland-offset-pavers", "aria-hidden": "true" });
+  [[302,270,34,10,-6],[282,298,38,11,7],[309,329,43,12,-5],[276,364,49,14,8],[317,404,57,16,-7]].forEach(([cx, cy, rx, ry, angle], index) => {
+    append(pavers, "ellipse", { class: index % 2 ? "auckland-paver deep" : "auckland-paver", cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` });
+  });
+
+  const tangled = append(target, "g", { class: "auckland-grass-litter-patch tangled", transform: "translate(119 375) rotate(-4)", "aria-hidden": "true" });
+  append(tangled, "ellipse", { class: "auckland-grass-shadow", cx: 0, cy: 28, rx: 108, ry: 24 });
+  append(tangled, "path", { class: "auckland-grass-underside", d: "M-101 20Q-77-13-45 2Q-24-30 8-8Q32-31 58-7Q89-14 105 15Q77 39 43 31Q11 48-19 33Q-52 46-82 32Z" });
+  append(tangled, "path", { class: "auckland-grass-fold", d: "M-92 8Q-61-20-30-4Q-6-28 19-9Q44-27 73-5Q91 6 99 19Q67 12 45 27Q15 8-8 27Q-36 10-62 28Q-84 23-92 8Z" });
+  [[-81,17,-95,-37],[-66,20,-59,-42],[-49,18,-29,-33],[-31,20,-39,-49],[-12,18,4,-41],[8,19,23,-31],[25,19,17,-52],[43,20,61,-37],[61,19,78,-26],[76,21,87,-41]].forEach(([x1,y1,x2,y2], index) => {
+    append(tangled, "path", { class: index % 3 === 0 ? "auckland-grass-blade dry" : (index % 2 ? "auckland-grass-blade deep" : "auckland-grass-blade"), d: `M${x1} ${y1}Q${(x1+x2)/2 + (index%2 ? 7 : -6)} ${(y1+y2)/2} ${x2} ${y2}` });
+  });
+  [[-68,11,-47,-3],[-44,25,-20,8],[-9,12,12,-2],[23,26,49,8],[55,12,77,-1]].forEach(([x1,y1,x2,y2], index) => {
+    append(tangled, "path", { class: index % 2 ? "auckland-litter-leaf deep" : "auckland-litter-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-9} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` });
+    append(tangled, "path", { class: "auckland-litter-vein", d: `M${x1+3} ${y1-1}L${x2-3} ${y2+1}` });
+  });
+
+  const flattened = append(target, "g", { class: "auckland-grass-litter-patch flattened", transform: "translate(469 386) rotate(5)", "aria-hidden": "true" });
+  append(flattened, "ellipse", { class: "auckland-grass-shadow", cx: 0, cy: 19, rx: 85, ry: 19 });
+  append(flattened, "path", { class: "auckland-grass-mat", d: "M-82 7Q-55-12-30 0Q-5-16 18-2Q43-14 75 3Q90 13 75 24Q45 30 17 21Q-10 34-35 22Q-63 32-82 18Z" });
+  [[-72,10,-44,-15],[-56,13,-24,-8],[-37,14,-9,-20],[-18,15,14,-5],[1,13,33,-17],[19,14,51,-6],[38,13,68,-15],[55,14,81,-2]].forEach(([x1,y1,x2,y2], index) => {
+    append(flattened, "path", { class: index % 3 === 1 ? "auckland-grass-blade dry" : (index % 2 ? "auckland-grass-blade deep" : "auckland-grass-blade"), d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-4} ${x2} ${y2}` });
+  });
+  [[-57,6,-35,-5],[-23,18,-1,4],[19,9,40,-3],[48,20,69,7]].forEach(([x1,y1,x2,y2], index) => {
+    append(flattened, "path", { class: index % 2 ? "auckland-litter-leaf deep" : "auckland-litter-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-7} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+6} ${x1} ${y1}Z` });
+    append(flattened, "path", { class: "auckland-litter-vein", d: `M${x1+3} ${y1-1}L${x2-3} ${y2+1}` });
+  });
+}
+
 function drawTenerifeScene(target, palette) {
   append(target, "rect", { class: "environment-sky tenerife-sky", width: 600, height: 430, fill: palette[0] });
   append(target, "circle", { class: "tenerife-sun", cx: 516, cy: 58, r: 26 });
@@ -1326,6 +1392,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "canberra-oconnor-fig-garden") {
     drawCanberraOConnorScene(target, palette);
+    return;
+  }
+  if (profile.id === "auckland-eca36-garden-grass") {
+    drawAucklandGardenGrassScene(target, palette);
     return;
   }
 

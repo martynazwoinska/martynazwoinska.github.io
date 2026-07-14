@@ -742,6 +742,52 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .canberra-decay-patch { fill: color-mix(in srgb, #3d332c 86%, var(--environment-ground)); }
 :root[data-theme='dark'] .canberra-fig-rind { fill: color-mix(in srgb, #513b35 82%, var(--environment-ground)); }
 :root[data-theme='dark'] .canberra-fig-flesh { fill: color-mix(in srgb, #74484f 77%, var(--environment-accent)); }
+#habitat[data-environment="auckland-eca36-garden-grass"] .regional-backdrop { contain: layout paint; }
+.auckland-garden-sky { fill: color-mix(in srgb, #d7e1dd 77%, var(--paper-strong)); }
+.auckland-garden-clouds { fill: color-mix(in srgb, var(--paper-strong) 82%, var(--environment-water)); opacity: .58; }
+.auckland-volcanic-shoulder { fill: color-mix(in srgb, var(--environment-land) 57%, #7f9180); stroke: color-mix(in srgb, var(--environment-detail) 52%, #5f6f62); stroke-width: 1.7; }
+.auckland-volcanic-shoulder.right { fill: color-mix(in srgb, var(--environment-land) 51%, #879587); }
+.auckland-volcanic-contour { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 49%, #8fa092); stroke-width: 2; stroke-linecap: round; opacity: .62; }
+.auckland-sky-tower-mast,
+.auckland-sky-tower-spire { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 88%, #3f4a48); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.auckland-sky-tower-deck { fill: color-mix(in srgb, var(--environment-accent) 65%, #9c8d64); stroke: color-mix(in srgb, var(--environment-detail) 79%, #3f4946); stroke-width: 1; }
+.auckland-garden-ground { fill: color-mix(in srgb, var(--environment-ground) 57%, #8a8063); }
+.auckland-roof-fragment { fill: color-mix(in srgb, #a06d59 48%, var(--environment-ground)); stroke: color-mix(in srgb, var(--environment-detail) 65%, #66554d); stroke-width: 1.8; stroke-linejoin: round; }
+.auckland-roof-fragment.right { fill: color-mix(in srgb, #8e6658 48%, var(--environment-ground)); }
+.auckland-roof-seam { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 54%, #755d52); stroke-width: 1.4; stroke-linecap: round; }
+.auckland-hedge { fill: color-mix(in srgb, var(--environment-land) 78%, #436650); stroke: color-mix(in srgb, var(--environment-detail) 63%, #3e5446); stroke-width: 1.8; stroke-linejoin: round; }
+.auckland-hedge-detail { fill: none; stroke: color-mix(in srgb, var(--environment-land) 48%, var(--paper-strong)); stroke-width: 4; stroke-linecap: round; opacity: .46; }
+.auckland-fence-rail,
+.auckland-fence-post { fill: none; stroke: color-mix(in srgb, #8f7554 70%, var(--environment-detail)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.auckland-fence-post { stroke-width: 6; }
+.auckland-fence-post.deep { stroke: color-mix(in srgb, #675944 75%, var(--environment-detail)); }
+.auckland-edge-earth { fill: color-mix(in srgb, #65543f 69%, var(--environment-ground)); }
+.auckland-edge-stone { fill: color-mix(in srgb, #a5a08d 66%, var(--environment-ground)); stroke: color-mix(in srgb, var(--environment-detail) 59%, #727267); stroke-width: 1.5; stroke-linejoin: round; }
+.auckland-edge-stone.deep { fill: color-mix(in srgb, #858277 69%, var(--environment-ground)); }
+.auckland-paver { fill: color-mix(in srgb, #ada99b 70%, var(--environment-ground)); stroke: color-mix(in srgb, var(--environment-detail) 55%, #777970); stroke-width: 1.5; }
+.auckland-paver.deep { fill: color-mix(in srgb, #8c8980 69%, var(--environment-ground)); }
+.auckland-grass-shadow { fill: rgba(27,39,31,.27); }
+.auckland-grass-underside { fill: color-mix(in srgb, #3b4735 80%, var(--environment-ground)); stroke: color-mix(in srgb, var(--environment-detail) 76%, #354138); stroke-width: 2.4; stroke-linejoin: round; }
+.auckland-grass-fold,
+.auckland-grass-mat { fill: color-mix(in srgb, var(--environment-land) 63%, #68754d); stroke: color-mix(in srgb, var(--environment-detail) 72%, #42513d); stroke-width: 2.2; stroke-linejoin: round; }
+.auckland-grass-mat { fill: color-mix(in srgb, var(--environment-land) 54%, #7d7955); }
+.auckland-grass-blade { fill: none; stroke: color-mix(in srgb, var(--environment-land) 79%, #36563f); stroke-width: 5; stroke-linecap: round; }
+.auckland-grass-blade.deep { stroke: color-mix(in srgb, var(--environment-detail) 68%, #3f593f); stroke-width: 4.3; }
+.auckland-grass-blade.dry { stroke: color-mix(in srgb, var(--environment-accent) 46%, #89764c); stroke-width: 4.6; }
+.auckland-litter-leaf { fill: color-mix(in srgb, #9a704a 65%, var(--environment-accent)); stroke: color-mix(in srgb, var(--environment-detail) 68%, #58483a); stroke-width: 1.2; }
+.auckland-litter-leaf.deep { fill: color-mix(in srgb, #65533e 77%, var(--environment-ground)); }
+.auckland-litter-vein { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 68%, #58483a); stroke-width: 1; }
+:root[data-theme='dark'] .auckland-garden-sky { fill: color-mix(in srgb, #293b3a 81%, var(--environment-water)); }
+:root[data-theme='dark'] .auckland-garden-clouds { fill: color-mix(in srgb, #67807c 52%, var(--environment-water)); opacity: .37; }
+:root[data-theme='dark'] .auckland-volcanic-shoulder { fill: color-mix(in srgb, #405548 78%, var(--environment-land)); }
+:root[data-theme='dark'] .auckland-garden-ground { fill: color-mix(in srgb, #4b4434 80%, var(--environment-ground)); }
+:root[data-theme='dark'] .auckland-roof-fragment { fill: color-mix(in srgb, #62473d 76%, var(--environment-ground)); }
+:root[data-theme='dark'] .auckland-hedge { fill: color-mix(in srgb, #294837 85%, var(--environment-land)); }
+:root[data-theme='dark'] .auckland-edge-stone,
+:root[data-theme='dark'] .auckland-paver { fill: color-mix(in srgb, #65645b 78%, var(--environment-ground)); }
+:root[data-theme='dark'] .auckland-grass-underside { fill: color-mix(in srgb, #2b3429 87%, var(--environment-ground)); }
+:root[data-theme='dark'] .auckland-grass-fold,
+:root[data-theme='dark'] .auckland-grass-mat { fill: color-mix(in srgb, #3a5038 82%, var(--environment-land)); }
 .scene-sky { fill: url(#scene-sky-gradient); }
 .scene-sky-top { stop-color: color-mix(in srgb, var(--scene-sky) 55%, white); }
 .scene-sky-bottom { stop-color: var(--scene-sky); }
@@ -1515,6 +1561,132 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .seed-column-capsule { fill: color-mix(in srgb, #5b4431 82%, var(--local-secondary)); }
 :root[data-theme='dark'] .theremin-body-panel,
 :root[data-theme='dark'] .theremin-soundbox-panel { fill: color-mix(in srgb, #1f3d37 87%, var(--local-primary)); }
+.auckland-accessory { filter: drop-shadow(0 5px 4px rgba(28,39,34,.27)); }
+.auckland-accessory-shadow { fill: rgba(25,35,30,.23); }
+.profiler-rail-bed,
+.profiler-rail-foot,
+.profiler-tower-foot,
+.profiler-catch-drawer { fill: color-mix(in srgb, #806a4d 72%, var(--local-secondary)); stroke: color-mix(in srgb, #4c4032 81%, var(--worm-deep)); stroke-width: 2.7; stroke-linejoin: round; }
+.profiler-chamber-shell,
+.profiler-chamber-glass { fill: rgba(173,213,208,.39); stroke: color-mix(in srgb, #426a64 70%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.profiler-chamber-glass { fill: rgba(205,231,225,.31); stroke-width: 1.8; }
+.profiler-chamber-floor { fill: color-mix(in srgb, #76634a 62%, var(--local-secondary)); stroke: color-mix(in srgb, #4e4435 79%, var(--worm-deep)); stroke-width: 2; }
+.profiler-litter-layer { fill: color-mix(in srgb, #6e744d 71%, var(--local-primary)); stroke: color-mix(in srgb, #414b35 79%, var(--worm-deep)); stroke-width: 1.7; }
+.profiler-litter-layer.deep { fill: color-mix(in srgb, #4a4935 81%, var(--local-primary)); }
+.profiler-grass-blade { fill: none; stroke: color-mix(in srgb, #4d764f 76%, var(--local-primary)); stroke-width: 3.7; stroke-linecap: round; }
+.profiler-grass-blade.dry { stroke: color-mix(in srgb, #9a7a48 70%, var(--local-secondary)); }
+.profiler-door { fill: rgba(122,173,168,.42); stroke: color-mix(in srgb, #42655f 73%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.profiler-door-hinge,
+.profiler-magnifier-rail,
+.profiler-magnifier-arm,
+.profiler-tower-frame,
+.profiler-crank-shaft,
+.profiler-crank-spokes,
+.profiler-roller-spokes { fill: none; stroke: color-mix(in srgb, #967847 73%, var(--worm-deep)); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.profiler-tower-frame { stroke-width: 4.5; }
+.profiler-door-hinge,
+.profiler-roller-spokes { stroke-width: 1.8; }
+.profiler-door-latch,
+.profiler-drawer-pull,
+.profiler-roller-hub { fill: color-mix(in srgb, #c39a54 73%, var(--local-secondary)); stroke: color-mix(in srgb, #59462f 79%, var(--worm-deep)); stroke-width: 1.4; }
+.profiler-magnifier-carriage,
+.profiler-crank-wheel,
+.profiler-roller { fill: color-mix(in srgb, #a8834b 72%, var(--local-secondary)); stroke: color-mix(in srgb, #55442f 80%, var(--worm-deep)); stroke-width: 2.4; }
+.profiler-magnifier-lens { fill: color-mix(in srgb, #9a7949 70%, var(--local-secondary)); stroke: color-mix(in srgb, #4d4030 80%, var(--worm-deep)); stroke-width: 2.2; }
+.profiler-magnifier-glass { fill: rgba(185,225,219,.58); stroke: color-mix(in srgb, #3e6a64 72%, var(--worm-deep)); stroke-width: 1.6; }
+.profiler-ticket { fill: color-mix(in srgb, #d5bb77 72%, var(--paper-strong)); stroke: color-mix(in srgb, #5c4931 75%, var(--worm-deep)); stroke-width: 1.6; }
+.profiler-ticket-text { fill: color-mix(in srgb, #314d47 78%, var(--worm-deep)); font: 900 11px/1 var(--sans); letter-spacing: -.03em; }
+.profiler-window { fill: rgba(159,207,199,.53); stroke: color-mix(in srgb, #3e6c65 72%, var(--worm-deep)); stroke-width: 2; }
+.profiler-window.warm { fill: color-mix(in srgb, #bca46a 38%, rgba(153,202,195,.64)); }
+.profiler-window-glint { fill: none; stroke: color-mix(in srgb, var(--paper-strong) 73%, #b9d9d3); stroke-width: 2; stroke-linecap: round; opacity: .72; }
+.profiler-litter-ribbon { fill: none; stroke: color-mix(in srgb, #5c6d43 75%, var(--local-primary)); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+.profiler-ribbon-leaf { fill: color-mix(in srgb, #97704b 67%, var(--local-secondary)); stroke: color-mix(in srgb, #514335 74%, var(--worm-deep)); stroke-width: 1.1; }
+.profiler-ribbon-leaf.deep { fill: color-mix(in srgb, #53513b 79%, var(--local-primary)); }
+.profiler-drawer-front { fill: color-mix(in srgb, #9b7c52 70%, var(--local-secondary)); stroke: color-mix(in srgb, #56452f 77%, var(--worm-deep)); stroke-width: 1.5; }
+
+.monitor-wide-frame,
+.monitor-frame-brace,
+.monitor-drum-axle,
+.monitor-suspension,
+.monitor-spring,
+.monitor-stylus-arm,
+.monitor-triangle-frame,
+.monitor-triangle-brace,
+.monitor-pendulum-wire,
+.monitor-sensor-link { fill: none; stroke: color-mix(in srgb, #8f7347 73%, var(--worm-deep)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.monitor-wide-frame { stroke-width: 5; }
+.monitor-frame-brace,
+.monitor-triangle-brace { stroke-width: 2.6; }
+.monitor-paper-drum { fill: color-mix(in srgb, #e8dfc4 75%, var(--paper-strong)); stroke: color-mix(in srgb, #5e5543 74%, var(--worm-deep)); stroke-width: 2.5; }
+.monitor-drum-end,
+.monitor-drum-cap { fill: color-mix(in srgb, #a1804c 72%, var(--local-secondary)); stroke: color-mix(in srgb, #51412d 80%, var(--worm-deep)); stroke-width: 2.3; }
+.monitor-paper-rule { fill: none; stroke: color-mix(in srgb, #8ca59e 55%, var(--local-primary)); stroke-width: 1.1; opacity: .55; }
+.monitor-paper-rule.faint { opacity: .34; }
+.monitor-trace,
+.monitor-chart-trace { fill: none; stroke: color-mix(in srgb, #6f496c 69%, var(--local-primary)); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.monitor-suspended-mass,
+.monitor-pendulum-bob { fill: color-mix(in srgb, #6b6350 72%, var(--local-primary)); stroke: color-mix(in srgb, #3d3c32 82%, var(--worm-deep)); stroke-width: 2.5; }
+.monitor-stylus-tip { fill: color-mix(in srgb, #b05058 67%, var(--local-secondary)); stroke: var(--worm-deep); stroke-width: 1.2; }
+.monitor-four-feet { fill: color-mix(in srgb, #7f6849 72%, var(--local-secondary)); stroke: color-mix(in srgb, #4a3e2f 81%, var(--worm-deep)); stroke-width: 2.3; stroke-linejoin: round; }
+.monitor-amplitude-dial { fill: color-mix(in srgb, #d8ceb1 70%, var(--paper-strong)); stroke: color-mix(in srgb, #67523a 77%, var(--worm-deep)); stroke-width: 2.5; }
+.monitor-amplitude-arc,
+.monitor-dial-tick { fill: none; stroke: color-mix(in srgb, #6c4d66 67%, var(--local-primary)); stroke-width: 2.2; stroke-linecap: round; }
+.monitor-pendulum-pointer { fill: color-mix(in srgb, #b78e4c 74%, var(--local-secondary)); stroke: color-mix(in srgb, #55422e 79%, var(--worm-deep)); stroke-width: 1.8; }
+.monitor-sensor-foot { fill: color-mix(in srgb, #527264 74%, var(--local-primary)); stroke: color-mix(in srgb, #344b43 81%, var(--worm-deep)); stroke-width: 2; }
+.monitor-sensor-foot.centre { fill: color-mix(in srgb, #a8844d 71%, var(--local-secondary)); }
+.monitor-folded-chart { fill: color-mix(in srgb, #ded5b9 72%, var(--paper-strong)); stroke: color-mix(in srgb, #655844 73%, var(--worm-deep)); stroke-width: 2.2; stroke-linejoin: round; }
+.monitor-chart-fold { fill: none; stroke: color-mix(in srgb, #8e8267 61%, var(--worm-deep)); stroke-width: 1.2; }
+
+.timing-clock-outer,
+.timing-clock-hub { fill: color-mix(in srgb, #9e7d49 72%, var(--local-secondary)); stroke: color-mix(in srgb, #52412e 81%, var(--worm-deep)); stroke-width: 3; }
+.timing-clock-face { fill: color-mix(in srgb, #ded5b8 75%, var(--paper-strong)); stroke: color-mix(in srgb, #5b4d39 76%, var(--worm-deep)); stroke-width: 2; }
+.timing-clock-sector { stroke: none; opacity: .66; }
+.timing-clock-sector.early { fill: color-mix(in srgb, var(--local-primary) 57%, #8ab3a1); }
+.timing-clock-sector.late { fill: color-mix(in srgb, var(--local-secondary) 50%, #c7b06f); }
+.timing-clock-divider,
+.timing-clock-hand,
+.timing-bead-rail { fill: none; stroke: color-mix(in srgb, #514333 76%, var(--worm-deep)); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.timing-clock-hand { stroke-width: 4; }
+.timing-bead-rail { stroke: color-mix(in srgb, #9a7a48 70%, var(--local-secondary)); stroke-width: 3; }
+.timing-progeny-bead { fill: color-mix(in srgb, #55765f 74%, var(--local-primary)); stroke: color-mix(in srgb, #34483b 79%, var(--worm-deep)); stroke-width: 1.1; }
+.timing-progeny-bead.deep { fill: color-mix(in srgb, #a77f4a 72%, var(--local-secondary)); }
+.timing-male-aperture { fill: color-mix(in srgb, #4d5f58 75%, var(--local-primary)); stroke: color-mix(in srgb, #303d38 83%, var(--worm-deep)); stroke-width: 2; }
+.timing-male-tally { fill: color-mix(in srgb, #d0bb79 73%, var(--paper-strong)); stroke: color-mix(in srgb, #4e4030 77%, var(--worm-deep)); stroke-width: 1; }
+.timing-male-tally.warm { fill: color-mix(in srgb, #a85e5d 65%, var(--local-secondary)); }
+.timing-hour-label,
+.timing-window-label,
+.timing-assay-label,
+.timing-eca36-text,
+.timing-x-label { fill: color-mix(in srgb, #2d4741 79%, var(--worm-deep)); font: 900 11px/1 var(--sans); paint-order: stroke; stroke: color-mix(in srgb, var(--paper-strong) 74%, transparent); stroke-width: 2px; }
+.timing-hour-label { font-size: 12px; }
+.timing-assay-label { fill: color-mix(in srgb, #e1d69e 72%, var(--paper-strong)); font-size: 8px; stroke: color-mix(in srgb, #33443f 66%, var(--worm-deep)); stroke-width: 1px; }
+.timing-eca36-tag { fill: color-mix(in srgb, #d2ba77 73%, var(--paper-strong)); stroke: color-mix(in srgb, #5b4931 75%, var(--worm-deep)); stroke-width: 1.6; }
+.timing-eca36-text { font-size: 10px; stroke-width: 1px; }
+.timing-counter-frame,
+.timing-counter-foot { fill: color-mix(in srgb, #806948 72%, var(--local-secondary)); stroke: color-mix(in srgb, #4b3f31 81%, var(--worm-deep)); stroke-width: 2.7; stroke-linejoin: round; }
+.timing-counter-branch,
+.timing-progeny-chute,
+.timing-male-chute { fill: none; stroke: color-mix(in srgb, #917346 73%, var(--worm-deep)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.timing-flip-window { fill: color-mix(in srgb, #638175 71%, var(--local-primary)); stroke: color-mix(in srgb, #374d45 80%, var(--worm-deep)); stroke-width: 2; }
+.timing-flip-window.late { fill: color-mix(in srgb, #a18555 68%, var(--local-secondary)); }
+.timing-window-label { fill: color-mix(in srgb, #f0e7c9 80%, var(--paper-strong)); font-size: 8px; stroke: color-mix(in srgb, #33433e 66%, var(--worm-deep)); stroke-width: .8px; }
+.timing-x-gate { fill: color-mix(in srgb, #765570 63%, var(--local-primary)); stroke: color-mix(in srgb, #493747 79%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.timing-x-label { fill: color-mix(in srgb, #f0e2bd 76%, var(--paper-strong)); font-size: 9px; stroke-width: .8px; }
+:root[data-theme='dark'] .profiler-chamber-shell,
+:root[data-theme='dark'] .profiler-chamber-glass,
+:root[data-theme='dark'] .profiler-window { fill: rgba(72,126,119,.51); }
+:root[data-theme='dark'] .profiler-rail-bed,
+:root[data-theme='dark'] .profiler-catch-drawer,
+:root[data-theme='dark'] .monitor-four-feet,
+:root[data-theme='dark'] .timing-counter-frame { fill: color-mix(in srgb, #574532 81%, var(--local-secondary)); }
+:root[data-theme='dark'] .profiler-litter-layer { fill: color-mix(in srgb, #354b35 83%, var(--local-primary)); }
+:root[data-theme='dark'] .monitor-paper-drum,
+:root[data-theme='dark'] .monitor-amplitude-dial,
+:root[data-theme='dark'] .monitor-folded-chart,
+:root[data-theme='dark'] .timing-clock-face { fill: color-mix(in srgb, #5b584a 77%, var(--paper-strong)); }
+:root[data-theme='dark'] .timing-clock-sector.early { fill: color-mix(in srgb, #31594a 79%, var(--local-primary)); }
+:root[data-theme='dark'] .timing-clock-sector.late { fill: color-mix(in srgb, #6b5837 79%, var(--local-secondary)); }
+:root[data-theme='dark'] .timing-flip-window { fill: color-mix(in srgb, #294c41 84%, var(--local-primary)); }
 .fig-visor path:first-child, .fig-visor path:nth-of-type(4) { fill: #72a66b; stroke: var(--worm-deep); stroke-width: 3; }
 .fig-vein, .visor-band { fill: none; stroke: #315f50; stroke-width: 2.5; stroke-linecap: round; }
 .satchel-strap { fill: none; stroke: #745744; stroke-width: 7; stroke-linecap: round; }
