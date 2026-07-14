@@ -719,8 +719,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .ngm-plate .plate-highlight { fill: rgba(255,255,255,.9); }
 .ngm-plate text { fill: #355e64; font: 700 9px/1 sans-serif; letter-spacing: .02em; }
 .ngm-plate .plate-glare { fill: none; stroke: rgba(255,255,255,.82); stroke-width: 3; stroke-linecap: round; }
-.ngm-plate .plate-stand { fill: none; stroke: color-mix(in srgb, var(--local-secondary) 56%, #6a5d43); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-.ngm-plate .plate-clamp { fill: none; stroke: color-mix(in srgb, var(--local-secondary) 62%, #6a5d43); stroke-width: 7; stroke-linecap: round; }
 .ngm-plate .plate-label-tab { fill: color-mix(in srgb, #e7f3f2 72%, var(--local-secondary)); stroke: #527b7d; stroke-width: 2; }
 .ngm-plate .plate-label-text { paint-order: stroke; stroke: rgba(255,255,255,.82); stroke-width: 2.5px; }
 .ngm-plate .plate-label-text.op50 { font-size: 6.5px; }

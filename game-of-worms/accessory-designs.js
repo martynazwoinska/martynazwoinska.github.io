@@ -301,10 +301,7 @@ function drawN2Accessory(group, item, companion) {
       add(group, "path", { class: "plate-label-tab", d: "M-18 35Q0 42 18 35L16 49Q0 54-16 48Z" });
       const label = add(group, "text", { class: "plate-label-text companion", x: 0, y: 46, "text-anchor": "middle" });
       label.textContent = "N2";
-      add(group, "path", { class: "plate-stand", d: "M-29 41L-36 58M29 41L36 58M-43 58H43" });
     } else {
-      add(group, "path", { class: "plate-stand", d: "M-49 12L-70 38M-78 39H-55M-68 37L-63 48" });
-      add(group, "path", { class: "plate-clamp", d: "M-51 5Q-66 4-68 16Q-64 27-52 20" });
       add(group, "ellipse", { class: "plate-shadow", cx: 2, cy: 15, rx: 60, ry: 13 });
       add(group, "ellipse", { class: "plate-base", cx: 0, cy: 8, rx: 59, ry: 22 });
       add(group, "ellipse", { class: "plate-rim", cx: 0, cy: 1, rx: 57, ry: 21 });
