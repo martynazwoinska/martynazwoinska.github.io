@@ -1416,7 +1416,7 @@ function renderPiece(target, item, wormPart) {
     "galaxy-plate-scanner": { primary: [184, 204, .54, -1], companion: [68, 202, .43, 2] },
     "agassiz-ice-flow-model": { primary: [322, 260, .52, -2], companion: [52, 290, .42, 2] },
     "avocado-microhabitat-viewer": { primary: [322, 140, .52, -2], companion: [47, 124, .39, 3] },
-    "aerial-root-harp": { primary: [190, 181, .53, -2], companion: [92, 214, .39, 2] },
+    "aerial-root-harp": { primary: [190, 181, .53, -2], companion: [92, 222, .39, 2] },
     "linnaean-seed-exchange-engine": { primary: [324, 252, .46, -1], companion: [-48, 266, .28, 2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
