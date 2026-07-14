@@ -805,6 +805,64 @@ function drawWater(parent, type, palette) {
   append(parent, "path", { class: "environment-water", d: paths[type] || paths.coast, fill: palette[4] });
 }
 
+function drawBristolScene(target, palette) {
+  append(target, "rect", { class: "environment-sky bristol-sky", width: 600, height: 430, fill: palette[0] });
+
+  const clouds = append(target, "g", { class: "environment-clouds bristol-clouds" });
+  append(clouds, "path", { d: "M42 78Q73 44 110 70Q139 39 178 72Q205 67 219 89H42Z" });
+  append(clouds, "path", { d: "M398 61Q428 34 460 57Q487 28 524 60Q554 54 572 78H398Z" });
+
+  const terraces = append(target, "g", { class: "bristol-terraces", "aria-hidden": "true" });
+  append(terraces, "path", { class: "bristol-terrace-back", d: "M428 146V107L449 94L470 107V89L492 76L513 89V99L535 85L558 98V75L579 63L600 76V171H428Z" });
+  [438, 463, 488, 514, 540, 566].forEach((x, index) => {
+    append(terraces, "rect", { class: "bristol-terrace-house", x, y: 112 - (index % 3) * 9, width: 23, height: 55 + (index % 2) * 8, rx: 1 });
+    append(terraces, "path", { class: "bristol-terrace-roof", d: `M${x - 2} ${112 - (index % 3) * 9}L${x + 11.5} ${99 - (index % 3) * 9}L${x + 25} ${112 - (index % 3) * 9}Z` });
+    append(terraces, "rect", { class: "bristol-terrace-window", x: x + 7, y: 127 - (index % 3) * 9, width: 5, height: 9, rx: 1 });
+  });
+
+  append(target, "path", { class: "bristol-gorge bristol-gorge-wooded", d: "M0 124Q48 103 98 131Q141 149 176 188Q205 222 244 294L267 430H0Z" });
+  append(target, "path", { class: "bristol-gorge bristol-gorge-limestone", d: "M600 132Q553 111 512 145Q469 176 445 226Q420 276 367 430H600Z" });
+  append(target, "path", { class: "bristol-cliff-face left", d: "M130 154L167 181L181 223L210 248L232 317L257 430H207L179 350L151 313L146 248L111 211Z" });
+  append(target, "path", { class: "bristol-cliff-face right", d: "M487 164L454 205L446 255L418 287L386 374L369 430H430L455 353L482 321L487 263L520 211Z" });
+  append(target, "path", { class: "bristol-cliff-strata", d: "M142 184L171 203L183 245M157 267L190 282L207 324M475 191L457 224L458 256M452 291L425 322L408 367" });
+
+  append(target, "path", { class: "environment-water bristol-avon", d: "M273 214C287 257 282 300 258 344C243 372 231 399 221 430H405C389 387 371 346 358 302C347 267 344 238 346 214Z", fill: palette[4] });
+  append(target, "path", { class: "bristol-tidal-bank left", d: "M239 302Q271 278 284 240Q282 286 260 332Q238 374 221 430H182Q202 355 239 302Z" });
+  append(target, "path", { class: "bristol-tidal-bank right", d: "M348 242Q351 288 373 330Q399 377 415 430H405Q387 382 365 333Q344 285 348 242Z" });
+  append(target, "path", { class: "bristol-river-glint", d: "M292 246Q318 237 343 246M282 288Q319 276 354 290M268 340Q320 326 371 345M247 393Q320 372 390 400" });
+
+  const bridge = append(target, "g", { class: "bristol-bridge", "aria-hidden": "true" });
+  append(bridge, "path", { class: "bristol-bridge-chain", d: "M82 159Q139 151 181 78Q238 137 300 153Q361 137 400 78Q449 151 521 159" });
+  append(bridge, "path", { class: "bristol-bridge-chain fine", d: "M83 165Q142 157 184 87Q241 144 300 159Q359 144 397 87Q446 157 520 165" });
+  [[121,148],[149,126],[232,128],[264,144],[336,144],[367,128],[450,126],[484,149]].forEach(([x, y]) => append(bridge, "path", { class: "bristol-bridge-hanger", d: `M${x} ${y}V164` }));
+  append(bridge, "path", { class: "bristol-bridge-tower", d: "M169 166L174 76L190 64L209 76L215 166ZM385 166L391 76L407 64L426 76L432 166Z" });
+  append(bridge, "path", { class: "bristol-bridge-cap", d: "M168 78H216L209 66H175ZM384 78H433L426 66H392Z" });
+  append(bridge, "path", { class: "bristol-bridge-openings", d: "M181 151V94Q181 82 192 82Q204 82 204 94V151ZM398 151V94Q398 82 410 82Q422 82 422 94V151Z" });
+  append(bridge, "path", { class: "bristol-bridge-deck", d: "M76 158Q300 164 526 158L526 170Q300 176 76 170Z" });
+  append(bridge, "path", { class: "bristol-bridge-rail", d: "M77 157Q300 163 525 157M78 166Q300 171 524 166" });
+
+  const woodland = append(target, "g", { class: "bristol-woodland", "aria-hidden": "true" });
+  append(woodland, "path", { d: "M0 157Q25 127 53 151Q78 119 109 151Q135 129 159 160Q179 151 194 180L222 244L0 329Z" });
+  append(woodland, "path", { class: "bristol-woodland-detail", d: "M17 180Q42 154 65 181M67 164Q92 140 116 168M116 185Q142 157 165 188M34 225Q62 196 89 224M100 235Q130 206 157 240" });
+
+  append(target, "path", { class: "bristol-garden-ground", d: "M0 337Q72 310 149 335Q211 358 253 397L264 430H0ZM600 338Q538 316 481 345Q446 365 413 430H600Z" });
+  const wall = append(target, "g", { class: "bristol-garden-wall", "aria-hidden": "true" });
+  append(wall, "path", { d: "M445 347Q520 323 600 337V430H425Z" });
+  [365, 389, 413].forEach((y, row) => append(wall, "path", { class: "bristol-brick-line", d: `M${435 - row * 5} ${y}Q520 ${y - 17} 600 ${y - 8}` }));
+  [470, 520, 570].forEach((x, index) => append(wall, "path", { class: "bristol-brick-line", d: `M${x} ${342 + index * 2}L${x - 7} 430` }));
+
+  const compost = append(target, "g", { class: "bristol-compost", transform: "translate(89 357)", "aria-hidden": "true" });
+  append(compost, "path", { class: "bristol-compost-shadow", d: "M-82 43Q0 64 92 40Q36 20-82 43Z" });
+  append(compost, "path", { class: "bristol-compost-mound", d: "M-78 38Q-62-4-31-10Q-6-43 25-17Q64-17 83 37Q5 57-78 38Z" });
+  append(compost, "path", { class: "bristol-compost-layer", d: "M-62 23Q-34 5-7 18Q22 1 58 19M-48 35Q-18 24 7 33Q37 21 69 33" });
+  [[-50,7,-28,-3],[-23,26,-5,8],[19,10,42,-5],[37,31,62,18],[-4,-7,12,-23]].forEach(([x1,y1,x2,y2]) => append(compost, "path", { class: "bristol-compost-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-8} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+5} ${x1} ${y1}Z` }));
+  append(compost, "path", { class: "bristol-compost-stem", d: "M-36 2V-13M45 14V-2" });
+  append(compost, "path", { class: "bristol-compost-fungi", d: "M-49-12Q-36-27-23-12Q-32-5-49-12ZM32-2Q45-17 58-2Q49 5 32-2Z" });
+
+  const litter = append(target, "g", { class: "bristol-leaf-litter", "aria-hidden": "true" });
+  [[18,407,42,391],[139,416,164,400],[187,391,213,377],[493,399,518,384],[548,416,579,397]].forEach(([x1,y1,x2,y2], index) => append(litter, "path", { d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-10-index%2*3} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` }));
+}
+
 export function renderEnvironmentScene(target, profile, habitatElement) {
   if (!target || !profile) return;
   const palette = profile.palette;
@@ -818,6 +876,11 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   habitatElement?.style.setProperty("--environment-ground", palette[3]);
   habitatElement?.style.setProperty("--environment-water", palette[4]);
   habitatElement?.style.setProperty("--environment-detail", palette[6]);
+
+  if (profile.id === "bristol-garden-gorge") {
+    drawBristolScene(target, palette);
+    return;
+  }
 
   append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
   drawWeather(target, profile.weather, palette);

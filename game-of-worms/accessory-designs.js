@@ -287,36 +287,106 @@ function motif(parent, variant, compact = false) {
 
 function drawN2Accessory(group, item, companion) {
   if (item.family === "ngm-agar-plate") {
-    add(group, "ellipse", { class: "acc-soft", cx: 0, cy: 0, rx: companion ? 40 : 48, ry: companion ? 28 : 31 });
-    add(group, "ellipse", { class: "acc-main", cx: 0, cy: 0, rx: companion ? 32 : 39, ry: companion ? 21 : 24 });
-    const colonies = companion ? [[-14,-5,7],[5,-9,5],[14,8,6],[-5,10,4]] : [[-21,-7,6],[-6,-12,4],[9,-8,7],[22,4,4],[-13,10,7],[7,11,4]];
-    colonies.forEach(([cx, cy, r]) => dot(group, cx, cy, r, "acc-accent"));
-    line(group, companion ? "M-31-20L31 20" : "M-39-24Q0-4 39 24");
+    group.classList.add("ngm-plate", companion ? "ngm-plate-companion" : "ngm-plate-primary");
+    if (companion) {
+      add(group, "circle", { class: "plate-shadow", cx: 4, cy: 7, r: 39 });
+      add(group, "circle", { class: "plate-base", cx: 0, cy: 3, r: 38 });
+      add(group, "circle", { class: "plate-rim", cx: 0, cy: 0, r: 36 });
+      add(group, "circle", { class: "plate-agar", cx: 0, cy: 0, r: 29 });
+      add(group, "path", { class: "bacterial-lawn", d: "M-21-8Q-12-22 3-18Q20-20 24-5Q18 10 4 14Q-13 17-24 4Q-25-2-21-8Z" });
+      const tracks = add(group, "g", { class: "worm-tracks" });
+      add(tracks, "path", { d: "M-18-7Q-9-14-1-6T15-8" });
+      add(tracks, "path", { d: "M-14 8Q-5 1 4 8T18 5" });
+      add(group, "path", { class: "plate-glare", d: "M-23-20Q-8-33 10-29" });
+      add(group, "path", { class: "plate-label-tab", d: "M-18 35Q0 42 18 35L16 49Q0 54-16 48Z" });
+      const label = add(group, "text", { class: "plate-label-text companion", x: 0, y: 46, "text-anchor": "middle" });
+      label.textContent = "N2";
+      add(group, "path", { class: "plate-stand", d: "M-29 41L-36 58M29 41L36 58M-43 58H43" });
+    } else {
+      add(group, "path", { class: "plate-stand", d: "M-49 12L-70 38M-78 39H-55M-68 37L-63 48" });
+      add(group, "path", { class: "plate-clamp", d: "M-51 5Q-66 4-68 16Q-64 27-52 20" });
+      add(group, "ellipse", { class: "plate-shadow", cx: 2, cy: 15, rx: 60, ry: 13 });
+      add(group, "ellipse", { class: "plate-base", cx: 0, cy: 8, rx: 59, ry: 22 });
+      add(group, "ellipse", { class: "plate-rim", cx: 0, cy: 1, rx: 57, ry: 21 });
+      add(group, "ellipse", { class: "plate-agar", cx: 0, cy: 0, rx: 49, ry: 16 });
+      add(group, "path", { class: "bacterial-lawn", d: "M-44 0Q-27-15-5-10Q18-17 43-1Q25 15 3 11Q-22 17-44 0Z" });
+      const tracks = add(group, "g", { class: "worm-tracks" });
+      add(tracks, "path", { d: "M-34 1Q-23-10-12-1T11-2T33 1" });
+      add(tracks, "path", { d: "M-24 8Q-12 0 1 7T27 5" });
+      add(group, "path", { class: "plate-glare", d: "M-45-7Q-21-27 9-22" });
+      add(group, "circle", { class: "plate-highlight", cx: 32, cy: -5, r: 3 });
+      const n2 = add(group, "text", { class: "plate-label-text", x: -33, y: 5, "text-anchor": "middle" });
+      n2.textContent = "N2";
+      const op50 = add(group, "text", { class: "plate-label-text op50", x: 31, y: 6, "text-anchor": "middle" });
+      op50.textContent = "OP50";
+    }
     return true;
   }
   if (item.family === "n2-lab-coat") {
-    path(group, companion
-      ? "M-42-38Q0-57 42-35L33 43Q4 29-28 47L-45 17L-28 4Z"
-      : "M-55-39Q0-64 55-36L44 57Q0 36-47 59L-60 13L-37-3Z", "acc-soft");
-    path(group, companion ? "M-15-46L0-14L17-43L30-29L13-2L0-14L-13-1L-29-29Z" : "M-19-52L0-15L20-49L36-34L16-2L0-15L-16-1L-37-34Z");
-    line(group, companion ? "M0-14V36 M-33 22Q0 40 31 20" : "M0-15V48 M-43 29Q0 53 41 27");
-    add(group, "rect", { class: "acc-main", x: companion ? 8 : 12, y: companion ? 5 : 8, width: companion ? 20 : 25, height: companion ? 14 : 17, rx: 3 });
-    dot(group, companion ? -4 : -5, 2, 3, "acc-dark");
-    dot(group, companion ? -3 : -4, 17, 3, "acc-dark");
+    group.classList.add("n2-lab-coat", companion ? "n2-lab-coat-companion" : "n2-lab-coat-primary");
+    if (companion) {
+      add(group, "path", { class: "lab-coat-body male", d: "M-36 5C-24 23-5 23 5 3C12-12 13-27 27-39L42-28C31-13 30 4 23 18C10 43-20 47-42 19Z" });
+      add(group, "path", { class: "lab-coat-sleeve male", d: "M24-35Q41-45 50-30L42-11Q34-17 29-11L16-20Z" });
+      add(group, "path", { class: "lab-coat-collar male", d: "M21-32L31-46L45-31L36-18L29-29L19-14L10-24Z" });
+      add(group, "path", { class: "lab-coat-opening male", d: "M29-27Q18-3 13 24" });
+      add(group, "path", { class: "lab-coat-seam male", d: "M-28 14Q-8 30 13 21M-20 24Q-2 38 16 29" });
+      add(group, "path", { class: "lab-coat-pocket male", d: "M-20 8Q-6 14 5 7L3 21Q-8 27-21 19Z" });
+      add(group, "path", { class: "lab-coat-pocket male narrow", d: "M22-4L34-7L34 7L21 10Z" });
+      [-12, 2, 15].forEach(y => add(group, "circle", { class: "lab-coat-button", cx: 18 - y * .07, cy: y, r: 2.4 }));
+      add(group, "path", { class: "lab-coat-cuff", d: "M41-11L49-9L53-21L45-24Z" });
+      const badge = add(group, "g", { class: "lab-badge companion", transform: "translate(-12 -14) rotate(6)" });
+      add(badge, "rect", { class: "lab-id-badge", x: -8, y: -6, width: 16, height: 12, rx: 2 });
+      const badgeText = add(badge, "text", { class: "lab-id-text male", x: 0, y: 3, "text-anchor": "middle" });
+      badgeText.textContent = "N2";
+    } else {
+      add(group, "path", { class: "lab-coat-body", d: "M-66 29C-40 53-7 49 7 15C18-11 19-36 41-62L65-45C48-24 45 1 35 27C17 69-31 81-75 44Z" });
+      add(group, "path", { class: "lab-coat-sleeve", d: "M36-56Q58-72 76-52L66-20Q54-31 44-20L24-34Z" });
+      add(group, "path", { class: "lab-coat-collar", d: "M31-53L47-72L68-50L56-29L43-47L29-25L17-38Z" });
+      add(group, "path", { class: "lab-coat-opening", d: "M44-45C32-19 29 12 16 41" });
+      add(group, "path", { class: "lab-coat-seam", d: "M-51 37Q-20 58 10 38M-62 48Q-30 69 1 53" });
+      add(group, "path", { class: "lab-coat-pocket", d: "M-40 24Q-20 33-2 23L-5 43Q-24 53-43 42Z" });
+      add(group, "path", { class: "lab-coat-pocket upper", d: "M-4-8Q9-4 20-9L18 8Q6 14-6 8Z" });
+      [-23, -5, 13, 30].forEach(y => add(group, "circle", { class: "lab-coat-button", cx: 35 - (y + 23) * .13, cy: y, r: 3 }));
+      add(group, "path", { class: "lab-coat-cuff", d: "M64-21L76-16L82-34L70-40Z" });
+      const badge = add(group, "g", { class: "lab-badge", transform: "translate(-19 -16) rotate(-4)" });
+      add(badge, "rect", { class: "lab-id-badge", x: -13, y: -8, width: 26, height: 17, rx: 3 });
+      const badgeText = add(badge, "text", { class: "lab-id-text", x: 0, y: 4, "text-anchor": "middle" });
+      badgeText.textContent = "N2";
+      add(group, "path", { class: "lab-pen", d: "M-14 23L-5 28M-10 20L-1 25" });
+      add(group, "path", { class: "lab-coat-piping", d: "M-71 42Q-30 70 4 50M65-45Q54-28 44-20" });
+    }
     return true;
   }
   if (item.family === "cryo-vial-jetpack") {
-    const tubes = companion ? [0] : [-19, 19];
-    tubes.forEach(x => {
-      add(group, "rect", { class: "acc-soft", x: x - 11, y: -39, width: 22, height: 60, rx: 8 });
-      add(group, "rect", { class: "acc-main", x: x - 9, y: -48, width: 18, height: 13, rx: 3 });
-      path(group, `M${x-10} 21L${x} 43L${x+10} 21Z`, "acc-accent");
-      line(group, `M${x-7}-10H${x+7}`);
-    });
+    group.classList.add("cryo-jetpack", companion ? "cryo-pack-companion" : "cryo-pack-primary");
     if (companion) {
-      path(group, "M-11 5L-39 17L-31 31L-9 18Z M11 5L39 17L31 31L9 18Z", "acc-main");
-      line(group, "M-9-20H9");
-    } else line(group, "M-30-21Q0-40 30-21 M-30 4Q0 23 30 4");
+      add(group, "path", { class: "pack-harness", d: "M16-24Q41-29 48-9M18 2Q40 4 45 24" });
+      add(group, "path", { class: "cryo-pack-shell companion", d: "M-27-29Q-6-39 18-27L24 19Q4 36-25 24Z" });
+      add(group, "rect", { class: "cryo-vial-body companion", x: -13, y: -58, width: 24, height: 70, rx: 9 });
+      add(group, "rect", { class: "cryo-vial-cap companion", x: -11, y: -68, width: 20, height: 14, rx: 4 });
+      add(group, "path", { class: "cryo-ice", d: "M-10-10Q-1-17 8-9V8Q0 14-10 7Z" });
+      add(group, "circle", { class: "cryo-gauge", cx: 9, cy: 14, r: 8 });
+      add(group, "path", { class: "cryo-gauge-mark", d: "M9 14L13 9M4 14H9" });
+      add(group, "path", { class: "cryo-nozzle", d: "M-20 22L-28 39H-12L-9 25ZM8 27L6 44H22L18 24Z" });
+      add(group, "path", { class: "cryo-plume small", d: "M-24 42Q-31 54-21 62Q-13 54-18 44M10 46Q4 57 14 66Q22 56 17 46" });
+      add(group, "path", { class: "cryo-frost", d: "M-23-17L-15-11M17-15L10-9M-23 6L-15 3" });
+    } else {
+      add(group, "path", { class: "pack-harness", d: "M-48-24Q-20-44 13-29M-46 3Q-16-18 17-3" });
+      add(group, "path", { class: "cryo-pack-shell", d: "M-28-35Q8-48 42-31L49 29Q12 48-27 31Z" });
+      [-11, 22].forEach((x, index) => {
+        add(group, "rect", { class: "cryo-vial-body", x: x - 11, y: -67 + index * 3, width: 22, height: 78 - index * 4, rx: 8 });
+        add(group, "rect", { class: "cryo-vial-cap", x: x - 9, y: -78 + index * 3, width: 18, height: 14, rx: 4 });
+        add(group, "path", { class: "cryo-ice", d: `M${x - 8} ${-16 + index * 4}Q${x} ${-23 + index * 3} ${x + 8} ${-15 + index * 4}V${7 + index * 3}Q${x} ${13 + index * 2} ${x - 8} ${7 + index * 3}Z` });
+        add(group, "path", { class: "cryo-vial-tick", d: `M${x - 7}-37H${x + 5}M${x - 7}-27H${x + 2}` });
+      });
+      add(group, "circle", { class: "cryo-medallion", cx: 9, cy: 18, r: 13 });
+      add(group, "path", { class: "snow-mark", d: "M9 8V28M-1 18H19M2 11L16 25M16 11L2 25" });
+      add(group, "path", { class: "cryo-nozzle", d: "M-18 29L-24 47H-7L-4 33ZM30 32L27 50H44L40 29Z" });
+      add(group, "path", { class: "cryo-plume", d: "M-20 49Q-30 65-18 75Q-6 65-14 51M31 52Q22 67 34 78Q46 67 38 52" });
+      const label = add(group, "text", { class: "cryo-label", x: 35, y: 13, "text-anchor": "middle" });
+      label.textContent = "LN₂";
+      add(group, "path", { class: "cryo-hose", d: "M-23-8Q-41-3-37 14Q-33 29-20 22" });
+    }
     return true;
   }
   return false;
@@ -986,18 +1056,26 @@ const layouts = {
 function renderPiece(target, item, wormPart) {
   const companion = wormPart === "companion";
   let [x, y, scale] = layouts[item.slot][item.artKind][wormPart];
-  if (item.family === "cryo-vial-jetpack") {
-    [x, y, scale] = companion ? [48, 168, .44] : [162, 183, .72];
-  }
+  let angleOverride = null;
+  const n2Layouts = {
+    "ngm-agar-plate": { primary: [345, 210, .86, -8], companion: [45, 270, .65, 4] },
+    "n2-lab-coat": { primary: [170, 210, 1, 0], companion: [82, 175, 1, 0] },
+    "cryo-vial-jetpack": { primary: [278, 143, .9, -3], companion: [31, 155, .72, 5] }
+  };
+  const n2Layout = n2Layouts[item.family]?.[wormPart];
+  if (n2Layout) [x, y, scale, angleOverride] = n2Layout;
   const widthBias = 1 + item.geometry.widthStep * .035;
   const heightBias = 1 + item.geometry.heightStep * .03;
-  const angle = companion ? -8 + (item.geometry.pairAttachment % 3) * 3 : -2 + item.geometry.angleStep;
+  const angle = angleOverride ?? (companion ? -8 + (item.geometry.pairAttachment % 3) * 3 : -2 + item.geometry.angleStep);
+  const useGeometryBias = !n2Layout;
+  const artworkScaleX = scale * (useGeometryBias ? widthBias : 1);
+  const artworkScaleY = scale * (useGeometryBias ? heightBias : 1);
   const piece = add(target, "g", {
     class: `accessory-piece location-accessory-piece ${companion ? "companion-accessory" : "primary-accessory"}`,
     "data-worm-part": wormPart,
     "data-accessory-family": item.family
   });
-  const artwork = add(piece, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${(scale * widthBias).toFixed(3)} ${(scale * heightBias).toFixed(3)})` });
+  const artwork = add(piece, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });
   const drewNamedAccessory = drawNamedAccessory(artwork, item, companion);
   if (!drewNamedAccessory) throw new Error(`No named accessory renderer for ${item.label}`);
   return piece;
