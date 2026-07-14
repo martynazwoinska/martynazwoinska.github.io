@@ -570,6 +570,81 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .edinburgh-compost-front,
 :root[data-theme='dark'] .edinburgh-compost-side,
 :root[data-theme='dark'] .edinburgh-compost-back { fill: color-mix(in srgb, #725337 74%, var(--environment-ground)); }
+.tenerife-sky { fill: color-mix(in srgb, #b9dcd8 58%, var(--paper-strong)); }
+.tenerife-sun { fill: color-mix(in srgb, var(--environment-accent) 68%, #fff0b2); opacity: .72; filter: drop-shadow(0 0 13px rgba(218,176,83,.22)); }
+.tenerife-clouds { fill: color-mix(in srgb, var(--paper-strong) 82%, var(--environment-water)); opacity: .5; }
+.tenerife-orotava-slope { fill: color-mix(in srgb, var(--environment-land) 63%, #6e8f68); stroke: color-mix(in srgb, var(--environment-detail) 49%, #536b53); stroke-width: 1.5; }
+.tenerife-slope-detail { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 44%, var(--environment-land)); stroke-width: 3; stroke-linecap: round; opacity: .54; }
+.tenerife-teide-notch { fill: color-mix(in srgb, #7f8b80 56%, var(--environment-land)); stroke: color-mix(in srgb, var(--environment-detail) 48%, #66716a); stroke-width: 1.2; opacity: .68; }
+.tenerife-distant-canopy path { fill: color-mix(in srgb, var(--environment-land) 77%, #3f6c52); stroke: color-mix(in srgb, var(--environment-detail) 64%, #365446); stroke-width: 1.5; }
+.tenerife-wall-face { fill: color-mix(in srgb, #c7b68f 66%, var(--environment-ground)); stroke: color-mix(in srgb, var(--environment-detail) 59%, #6d604e); stroke-width: 2; }
+.tenerife-wall-cap { fill: color-mix(in srgb, #dfd0a8 65%, var(--paper-strong)); stroke: color-mix(in srgb, var(--environment-detail) 63%, #73634e); stroke-width: 1.7; }
+.tenerife-wall-seam { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 46%, #8a765d); stroke-width: 1.5; opacity: .66; }
+.tenerife-garden-ground { fill: color-mix(in srgb, var(--environment-ground) 54%, #746f4e); }
+.tenerife-path { fill: color-mix(in srgb, #c9b58e 58%, var(--environment-ground)); stroke: color-mix(in srgb, var(--environment-detail) 38%, #7f6f58); stroke-width: 1.2; stroke-linejoin: round; }
+.tenerife-path.transverse { fill: color-mix(in srgb, #d1c09b 61%, var(--environment-ground)); }
+.tenerife-path-edge { fill: none; stroke: color-mix(in srgb, #8f7b5d 51%, var(--environment-detail)); stroke-width: 2; stroke-linecap: round; opacity: .54; }
+.tenerife-class-bed { stroke: color-mix(in srgb, var(--environment-detail) 55%, #594c38); stroke-width: 1.3; stroke-linejoin: round; }
+.tenerife-class-bed.tone-0 { fill: color-mix(in srgb, var(--environment-land) 69%, #526a43); }
+.tenerife-class-bed.tone-1 { fill: color-mix(in srgb, var(--environment-ground) 46%, #697348); }
+.tenerife-class-bed.tone-2 { fill: color-mix(in srgb, var(--environment-land) 55%, #7b754f); }
+.tenerife-plant-stem { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 72%, #365542); stroke-width: 3; stroke-linecap: round; }
+.tenerife-plant-leaf { fill: color-mix(in srgb, var(--environment-land) 82%, #356447); stroke: color-mix(in srgb, var(--environment-detail) 71%, #2f4d3c); stroke-width: 1.4; stroke-linejoin: round; }
+.tenerife-bed-plant.plant-1 .tenerife-plant-leaf { fill: color-mix(in srgb, var(--environment-land) 65%, #71834f); }
+.tenerife-bed-plant.plant-2 .tenerife-plant-leaf { fill: color-mix(in srgb, var(--environment-land) 72%, #487a64); }
+.tenerife-bed-plant.plant-3 .tenerife-plant-leaf { fill: color-mix(in srgb, var(--environment-land) 61%, #7a875f); }
+.tenerife-plant-bloom { fill: color-mix(in srgb, #85577b 68%, var(--environment-accent)); stroke: color-mix(in srgb, var(--environment-detail) 72%, #564052); stroke-width: 1; }
+.tenerife-label-support,
+.tenerife-label-line { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 74%, #52483a); stroke-linecap: round; }
+.tenerife-label-support { stroke-width: 2.2; }
+.tenerife-label-line { stroke-width: 1; }
+.tenerife-label-plaque { fill: color-mix(in srgb, #e5ddc5 72%, var(--paper-strong)); stroke: color-mix(in srgb, var(--environment-detail) 62%, #655b4d); stroke-width: 1.4; }
+.tenerife-pond-shadow { fill: rgba(27,48,40,.2); }
+.tenerife-pond-rim { fill: color-mix(in srgb, #9a8b72 58%, var(--environment-ground)); stroke: color-mix(in srgb, var(--environment-detail) 66%, #5a5348); stroke-width: 2.5; }
+.tenerife-pond-water { fill: color-mix(in srgb, var(--environment-water) 77%, #6ea69c); stroke: color-mix(in srgb, var(--environment-detail) 42%, var(--environment-water)); stroke-width: 1.5; }
+.tenerife-pond-glint { fill: none; stroke: color-mix(in srgb, var(--paper-strong) 77%, var(--environment-water)); stroke-width: 2.5; stroke-linecap: round; opacity: .72; }
+.tenerife-water-leaf { fill: color-mix(in srgb, var(--environment-land) 73%, #416b4a); stroke: color-mix(in srgb, var(--environment-detail) 67%, #33513d); stroke-width: 1; }
+.tenerife-ficus-canopy { fill: color-mix(in srgb, var(--environment-land) 82%, #2f6549); stroke: color-mix(in srgb, var(--environment-detail) 77%, #294b3b); stroke-width: 2; stroke-linejoin: round; }
+.tenerife-ficus-trunk,
+.tenerife-ficus-branch,
+.tenerife-ficus-buttress { fill: color-mix(in srgb, #7c6045 69%, var(--environment-ground)); stroke: color-mix(in srgb, var(--environment-detail) 78%, #4e3e32); stroke-width: 2.5; stroke-linejoin: round; }
+.tenerife-ficus-branch { fill: color-mix(in srgb, #70563f 72%, var(--environment-ground)); }
+.tenerife-aerial-root,
+.tenerife-root-arch { fill: none; stroke: color-mix(in srgb, #775b42 72%, var(--environment-detail)); stroke-linecap: round; stroke-linejoin: round; }
+.tenerife-aerial-root.thick { stroke-width: 13; }
+.tenerife-aerial-root.medium { stroke-width: 9; }
+.tenerife-aerial-root.fine { stroke-width: 6; }
+.tenerife-root-arch { stroke-width: 8; }
+.tenerife-ficus-leaf { fill: color-mix(in srgb, var(--environment-land) 79%, #3e7353); stroke: color-mix(in srgb, var(--environment-detail) 68%, #315340); stroke-width: 1.3; }
+.tenerife-ficus-leaf.deep { fill: color-mix(in srgb, var(--environment-land) 88%, #285a43); }
+.tenerife-litter-leaf { fill: color-mix(in srgb, var(--environment-accent) 23%, #8a6544); stroke: color-mix(in srgb, var(--environment-detail) 70%, #554536); stroke-width: 1.4; }
+.tenerife-litter-leaf.damp { fill: color-mix(in srgb, var(--environment-ground) 65%, #4d4d36); }
+.tenerife-litter-vein { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 69%, #4d4033); stroke-width: 1; }
+.tenerife-decay-fragment { fill: color-mix(in srgb, #594b36 72%, var(--environment-ground)); opacity: .8; }
+.tenerife-avocado-shadow { fill: rgba(23,37,29,.25); }
+.tenerife-avocado-rind { fill: color-mix(in srgb, #263f30 82%, var(--environment-land)); stroke: color-mix(in srgb, #1f3228 84%, var(--environment-detail)); stroke-width: 3; stroke-linejoin: round; }
+.tenerife-avocado-flesh { fill: color-mix(in srgb, #887a45 72%, var(--environment-accent)); stroke: color-mix(in srgb, #4d4930 74%, var(--environment-detail)); stroke-width: 2; }
+.tenerife-avocado-collapse { fill: color-mix(in srgb, #6d5136 77%, var(--environment-ground)); stroke: color-mix(in srgb, #4a382c 77%, var(--environment-detail)); stroke-width: 1.8; }
+.tenerife-avocado-pit { fill: color-mix(in srgb, #7f4f34 78%, var(--environment-accent)); stroke: color-mix(in srgb, #4c3328 82%, var(--environment-detail)); stroke-width: 2.4; }
+.tenerife-avocado-pit-split { fill: none; stroke: color-mix(in srgb, #4b3027 82%, var(--environment-detail)); stroke-width: 2; stroke-linecap: round; }
+.tenerife-avocado-peel-flap { fill: color-mix(in srgb, #2f4a36 86%, var(--environment-land)); stroke: color-mix(in srgb, #21362b 86%, var(--environment-detail)); stroke-width: 2.5; }
+.tenerife-avocado-mottle { fill: color-mix(in srgb, #9b7245 58%, var(--environment-ground)); }
+.tenerife-avocado-mottle.dark { fill: color-mix(in srgb, #332c24 79%, var(--environment-detail)); }
+:root[data-theme='dark'] .tenerife-sky { fill: color-mix(in srgb, #244044 77%, var(--environment-water)); }
+:root[data-theme='dark'] .tenerife-clouds { opacity: .25; }
+:root[data-theme='dark'] .tenerife-orotava-slope { fill: color-mix(in srgb, #365a43 79%, var(--environment-land)); }
+:root[data-theme='dark'] .tenerife-teide-notch { fill: color-mix(in srgb, #58665e 72%, var(--environment-ground)); }
+:root[data-theme='dark'] .tenerife-wall-face { fill: color-mix(in srgb, #665c49 77%, var(--environment-ground)); }
+:root[data-theme='dark'] .tenerife-wall-cap { fill: color-mix(in srgb, #8b7b5d 67%, var(--environment-ground)); }
+:root[data-theme='dark'] .tenerife-garden-ground { fill: color-mix(in srgb, #3c4231 79%, var(--environment-ground)); }
+:root[data-theme='dark'] .tenerife-path { fill: color-mix(in srgb, #6c5d46 72%, var(--environment-ground)); }
+:root[data-theme='dark'] .tenerife-class-bed.tone-0 { fill: color-mix(in srgb, #31513a 79%, var(--environment-land)); }
+:root[data-theme='dark'] .tenerife-class-bed.tone-1 { fill: color-mix(in srgb, #464d32 79%, var(--environment-ground)); }
+:root[data-theme='dark'] .tenerife-class-bed.tone-2 { fill: color-mix(in srgb, #46543a 78%, var(--environment-land)); }
+:root[data-theme='dark'] .tenerife-pond-water { fill: color-mix(in srgb, #3b716d 75%, var(--environment-water)); }
+:root[data-theme='dark'] .tenerife-ficus-canopy { fill: color-mix(in srgb, #214834 84%, var(--environment-land)); }
+:root[data-theme='dark'] .tenerife-avocado-flesh { fill: color-mix(in srgb, #635631 78%, var(--environment-accent)); }
+:root[data-theme='dark'] .tenerife-avocado-collapse { fill: color-mix(in srgb, #4d3829 82%, var(--environment-ground)); }
 .scene-sky { fill: url(#scene-sky-gradient); }
 .scene-sky-top { stop-color: color-mix(in srgb, var(--scene-sky) 55%, white); }
 .scene-sky-bottom { stop-color: var(--scene-sky); }
@@ -1018,6 +1093,117 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .agassiz-cutaway { fill: color-mix(in srgb, #4d4058 79%, var(--local-primary)); }
 :root[data-theme='dark'] .agassiz-ice-carriage,
 :root[data-theme='dark'] .agassiz-ice-ribbon { fill: rgba(116,174,177,.58); }
+.tenerife-accessory { filter: drop-shadow(0 5px 4px rgba(25,41,33,.27)); }
+.tenerife-accessory-shadow { fill: rgba(24,39,31,.22); }
+.viewer-rind,
+.viewer-peel-panel,
+.viewer-rind-flap { fill: color-mix(in srgb, #294936 82%, var(--local-primary)); stroke: color-mix(in srgb, #1d3328 84%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.viewer-peel-panel.left { fill: color-mix(in srgb, #35533b 82%, var(--local-primary)); }
+.viewer-peel-panel.right { fill: color-mix(in srgb, #244330 85%, var(--local-primary)); }
+.viewer-triptych-spine { fill: color-mix(in srgb, #4c6241 72%, var(--local-primary)); stroke: color-mix(in srgb, #25372c 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.viewer-flesh,
+.viewer-flesh-panel { fill: color-mix(in srgb, #9b914f 72%, var(--local-secondary)); stroke: color-mix(in srgb, #5d5738 74%, var(--worm-deep)); stroke-width: 2.2; stroke-linejoin: round; }
+.viewer-flesh-panel.left { fill: color-mix(in srgb, #8b8148 75%, var(--local-secondary)); }
+.viewer-flesh-panel.right { fill: color-mix(in srgb, #a79a59 69%, var(--local-secondary)); }
+.viewer-collapsed-flesh { fill: color-mix(in srgb, #715037 78%, var(--local-secondary)); stroke: color-mix(in srgb, #49382d 79%, var(--worm-deep)); stroke-width: 2; }
+.viewer-pit { fill: color-mix(in srgb, #845236 77%, var(--local-secondary)); stroke: color-mix(in srgb, #4d3328 82%, var(--worm-deep)); stroke-width: 2.5; }
+.viewer-pit-fissure { fill: none; stroke: color-mix(in srgb, #3f2c25 84%, var(--worm-deep)); stroke-width: 2; stroke-linecap: round; }
+.viewer-mottle { fill: color-mix(in srgb, #ac7950 57%, var(--local-secondary)); }
+.viewer-mottle.dark { fill: color-mix(in srgb, #2d2d24 79%, var(--worm-deep)); }
+.viewer-hood-bracket,
+.viewer-hinge-strap,
+.viewer-drawer-handle { fill: none; stroke: color-mix(in srgb, #b28b43 78%, var(--worm-deep)); stroke-linecap: round; stroke-linejoin: round; }
+.viewer-hood-bracket { stroke-width: 7; }
+.viewer-hinge-strap { stroke-width: 4; }
+.viewer-drawer-handle { stroke-width: 3; }
+.viewer-hood-hinge,
+.viewer-hinge-pin { fill: color-mix(in srgb, #c8a154 73%, var(--local-secondary)); stroke: color-mix(in srgb, #5d4929 79%, var(--worm-deep)); stroke-width: 2; }
+.viewer-magnifying-hood { fill: color-mix(in srgb, #b58c46 72%, var(--local-secondary)); stroke: color-mix(in srgb, #594526 81%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.viewer-lens-frame { fill: color-mix(in srgb, #c09a52 71%, var(--local-secondary)); stroke: color-mix(in srgb, #594728 79%, var(--worm-deep)); stroke-width: 2.5; }
+.viewer-lens-glass { fill: rgba(191,226,214,.62); stroke: color-mix(in srgb, #426d62 72%, var(--worm-deep)); stroke-width: 2; }
+.viewer-lens-glint { fill: none; stroke: rgba(255,255,255,.78); stroke-width: 2.5; stroke-linecap: round; }
+.viewer-drawer-housing,
+.viewer-triptych-foot { fill: color-mix(in srgb, #6a573c 73%, var(--local-secondary)); stroke: color-mix(in srgb, #493b2d 80%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.viewer-litter-drawer { fill: color-mix(in srgb, #4d4933 74%, var(--local-primary)); stroke: color-mix(in srgb, #39362b 79%, var(--worm-deep)); stroke-width: 2; }
+.viewer-litter { fill: color-mix(in srgb, #8b6040 74%, var(--local-secondary)); stroke: color-mix(in srgb, #4d3d30 77%, var(--worm-deep)); stroke-width: 1; }
+.viewer-litter.green { fill: color-mix(in srgb, #557044 78%, var(--local-primary)); }
+
+.root-harp-living-arch,
+.root-harp-crown-branch,
+.root-harp-root-base,
+.root-harp-buttress-frame,
+.root-harp-foot { fill: color-mix(in srgb, #765c40 72%, var(--local-secondary)); stroke: color-mix(in srgb, #493b2d 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.root-harp-buttress-frame { fill: color-mix(in srgb, #6c573f 70%, var(--local-primary)); }
+.root-harp-branch-box { fill: color-mix(in srgb, #604831 78%, var(--local-secondary)); stroke: color-mix(in srgb, #423428 84%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.root-harp-box-grain { fill: none; stroke: color-mix(in srgb, #a67a49 54%, var(--worm-deep)); stroke-width: 2; stroke-linecap: round; }
+.root-harp-string { fill: none; stroke: color-mix(in srgb, #9a7048 67%, var(--worm-deep)); stroke-linecap: round; }
+.root-harp-string.living { stroke-width: 5; }
+.root-harp-string.living.string-1,
+.root-harp-string.living.string-3 { stroke-width: 7; }
+.root-harp-string.chunky { stroke-width: 9; }
+.root-harp-string.chunky.string-1 { stroke-width: 12; }
+.root-harp-anchor { fill: color-mix(in srgb, #c49c4d 72%, var(--local-secondary)); stroke: color-mix(in srgb, #514028 80%, var(--worm-deep)); stroke-width: 1.5; }
+.root-harp-bridge { fill: none; stroke: color-mix(in srgb, #c19b52 70%, var(--worm-deep)); stroke-width: 5; stroke-linecap: round; }
+.root-harp-leaf-resonator { fill: color-mix(in srgb, #315f46 82%, var(--local-primary)); stroke: color-mix(in srgb, #234534 84%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.root-harp-leaf-vein { fill: none; stroke: color-mix(in srgb, #7ea06c 61%, var(--paper-strong)); stroke-width: 2.5; stroke-linecap: round; }
+.root-harp-fig-peg { fill: color-mix(in srgb, #6c7c45 73%, var(--local-primary)); stroke: color-mix(in srgb, #3e4a32 82%, var(--worm-deep)); stroke-width: 1.5; }
+.root-harp-fig-peg.ripe { fill: color-mix(in srgb, #775471 68%, var(--local-secondary)); }
+.root-harp-peg-stem { fill: none; stroke: color-mix(in srgb, #4b4934 79%, var(--worm-deep)); stroke-width: 2; stroke-linecap: round; }
+
+.seed-cabinet-shell,
+.seed-cabinet-centre,
+.seed-cabinet-wing,
+.seed-board-frame,
+.seed-cabinet-foot,
+.seed-board-foot { fill: color-mix(in srgb, #9b7148 73%, var(--local-secondary)); stroke: color-mix(in srgb, #57402d 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.seed-cabinet-wing.left { fill: color-mix(in srgb, #876142 75%, var(--local-primary)); }
+.seed-cabinet-wing.right { fill: color-mix(in srgb, #aa7d4d 71%, var(--local-secondary)); }
+.seed-cabinet-centre { fill: color-mix(in srgb, #8d6846 72%, var(--local-secondary)); }
+.seed-cabinet-hinge,
+.seed-engine-crank,
+.seed-bridge-rail,
+.seed-capsule-link,
+.seed-index-arm { fill: none; stroke: color-mix(in srgb, #b58d43 75%, var(--worm-deep)); stroke-linecap: round; stroke-linejoin: round; }
+.seed-cabinet-hinge { stroke-width: 4; stroke-dasharray: 8 5; }
+.seed-engine-crank { stroke-width: 5; }
+.seed-bridge-rail { stroke-width: 6; }
+.seed-capsule-link { stroke-width: 2.5; }
+.seed-index-arm { stroke-width: 4; }
+.seed-engine-crank-knob,
+.seed-bridge-axle { fill: color-mix(in srgb, #c59b4d 72%, var(--local-secondary)); stroke: color-mix(in srgb, #564329 81%, var(--worm-deep)); stroke-width: 2; }
+.seed-cabinet-cornice { fill: color-mix(in srgb, #c09455 70%, var(--local-secondary)); stroke: color-mix(in srgb, #5d442d 79%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.herbarium-sheet { fill: color-mix(in srgb, #e7ddbd 78%, var(--paper-strong)); stroke: color-mix(in srgb, #79694e 72%, var(--worm-deep)); stroke-width: 2; }
+.herbarium-stem { fill: none; stroke: color-mix(in srgb, #566746 75%, var(--worm-deep)); stroke-width: 2; stroke-linecap: round; }
+.herbarium-leaf { fill: color-mix(in srgb, #758054 68%, var(--local-primary)); stroke: color-mix(in srgb, #46513a 78%, var(--worm-deep)); stroke-width: 1.2; }
+.seed-drawer { fill: color-mix(in srgb, #b98a58 72%, var(--local-secondary)); stroke: color-mix(in srgb, #624831 77%, var(--worm-deep)); stroke-width: 1.2; }
+.seed-drawer.centre { fill: color-mix(in srgb, #a8794f 71%, var(--local-primary)); }
+.seed-drawer-pull { fill: color-mix(in srgb, #d0ad60 73%, var(--local-secondary)); stroke: color-mix(in srgb, #604a2c 77%, var(--worm-deep)); stroke-width: .7; }
+.seed-board-field { fill: color-mix(in srgb, #5d533f 68%, var(--local-primary)); stroke: color-mix(in srgb, #433b30 82%, var(--worm-deep)); stroke-width: 2.5; }
+.seed-accession-cell { stroke: color-mix(in srgb, #57482f 71%, var(--worm-deep)); stroke-width: 1; }
+.seed-accession-cell.tone-0 { fill: color-mix(in srgb, #c49b57 71%, var(--local-secondary)); }
+.seed-accession-cell.tone-1 { fill: color-mix(in srgb, #829160 67%, var(--local-primary)); }
+.seed-accession-cell.tone-2 { fill: color-mix(in srgb, #a87855 68%, var(--local-secondary)); }
+.seed-accession-dot { fill: color-mix(in srgb, #4a3928 79%, var(--worm-deep)); }
+.seed-capsule-shell { fill: color-mix(in srgb, #71824f 72%, var(--local-primary)); stroke: color-mix(in srgb, #465038 81%, var(--worm-deep)); stroke-width: 1.8; }
+.seed-capsule-shell.warm { fill: color-mix(in srgb, #a96e4d 67%, var(--local-secondary)); }
+.seed-capsule-seam { fill: none; stroke: color-mix(in srgb, #e1c778 59%, var(--paper-strong)); stroke-width: 1.2; stroke-linecap: round; }
+.seed-leaf-pointer { fill: color-mix(in srgb, #3f7652 78%, var(--local-primary)); stroke: color-mix(in srgb, #284a37 83%, var(--worm-deep)); stroke-width: 2; }
+.seed-leaf-vein { fill: none; stroke: color-mix(in srgb, #b7c88e 60%, var(--paper-strong)); stroke-width: 1.5; stroke-linecap: round; }
+.seed-class-count { fill: color-mix(in srgb, #f0dc8c 70%, var(--paper-strong)); font: 900 12px/1 var(--sans); stroke: color-mix(in srgb, #594326 74%, var(--worm-deep)); stroke-width: 1px; paint-order: stroke; }
+:root[data-theme='dark'] .viewer-flesh,
+:root[data-theme='dark'] .viewer-flesh-panel { fill: color-mix(in srgb, #6e6538 79%, var(--local-secondary)); }
+:root[data-theme='dark'] .viewer-lens-glass { fill: rgba(115,168,151,.5); }
+:root[data-theme='dark'] .root-harp-living-arch,
+:root[data-theme='dark'] .root-harp-crown-branch,
+:root[data-theme='dark'] .root-harp-root-base,
+:root[data-theme='dark'] .root-harp-buttress-frame { fill: color-mix(in srgb, #55422f 79%, var(--local-secondary)); }
+:root[data-theme='dark'] .root-harp-leaf-resonator { fill: color-mix(in srgb, #244934 85%, var(--local-primary)); }
+:root[data-theme='dark'] .seed-cabinet-shell,
+:root[data-theme='dark'] .seed-cabinet-centre,
+:root[data-theme='dark'] .seed-cabinet-wing,
+:root[data-theme='dark'] .seed-board-frame { fill: color-mix(in srgb, #6d4d34 78%, var(--local-secondary)); }
+:root[data-theme='dark'] .seed-board-field { fill: color-mix(in srgb, #3a3b2d 79%, var(--local-primary)); }
+:root[data-theme='dark'] .herbarium-sheet { fill: color-mix(in srgb, #94896b 72%, var(--paper-strong)); }
 .fig-visor path:first-child, .fig-visor path:nth-of-type(4) { fill: #72a66b; stroke: var(--worm-deep); stroke-width: 3; }
 .fig-vein, .visor-band { fill: none; stroke: #315f50; stroke-width: 2.5; stroke-linecap: round; }
 .satchel-strap { fill: none; stroke: #745744; stroke-width: 7; stroke-linecap: round; }

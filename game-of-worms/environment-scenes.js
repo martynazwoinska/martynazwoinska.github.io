@@ -115,11 +115,11 @@ const canonicalProfiles = {
     { weather: "cloud", cues: [["compost", 76, 376, .92], ["grass", 510, 354, .72], ["boulder", 208, 255, .62]] }
   ),
   "Tenerife, Spain": profile(
-    "tenerife-teide", "Teide above the sea of clouds",
-    "Tenerife’s high landscape is structured by Teide, Las Cañadas, lava formations, and strong elevation zones—not a generic tropical seascape.",
-    "UNESCO Teide National Park", "https://whc.unesco.org/en/list/1258",
-    palettes.volcanic, [[0, 300], [78, 286], [145, 268], [225, 220], [298, 98], [365, 226], [445, 260], [525, 282], [600, 294]],
-    { weather: "cloudbank", cues: [["lava", 95, 352, .9], ["broom", 500, 330, .8], ["caldera", 295, 290, .8]] }
+    "tenerife-puerto-cruz-botanic", "Puerto de la Cruz botanical garden",
+    "This marker combines 23 records from the Puerto de la Cruz botanical garden; NIC1787 is the representative. Its exact recorded substrate was an old, very rotten avocado, while the paths, pond and Ficus roots show wider garden context.",
+    "CaeNDR NIC1787 isotype record", "https://caendr.org/isotype/NIC1787/",
+    palettes.subtropical, [[0, 238], [76, 228], [151, 221], [227, 207], [301, 213], [375, 197], [448, 204], [524, 190], [600, 202]],
+    { weather: "sun", cues: [] }
   ),
   "Kauaʻi, Hawaiʻi": profile(
     "kauai-waimea-canyon", "Waimea Canyon and Kōkeʻe rim",
@@ -394,12 +394,12 @@ const sceneCompositions = Object.freeze({
     "M18 430L213 257M579 430L389 258M180 430L273 256M438 430L331 256", [2, 1, 0],
     "an angular compost bay and converging allotment plots beneath one lopsided low hill topped by two separated green observatory drums"
   ),
-  "tenerife-teide": composition(
-    "M0 376 L92 344 L163 366 L236 337 L310 368 L384 331 L470 360 L600 340 V430 H0Z",
-    "M0 313 Q109 298 213 317 L300 175 L388 318 Q495 297 600 314 V430 H0Z",
-    [["lava", 34, 392, .98], ["broom", 556, 384, .82]],
-    "M0 249 Q150 229 300 246 T600 243", [1, 0, 2],
-    "one tall Teide cone floating above a ruler-flat cloudbank"
+  "tenerife-puerto-cruz-botanic": composition(
+    "M0 352Q89 327 181 348Q278 369 375 340Q478 309 600 335V430H0Z",
+    "M0 221H600V346H0Z M250 218L203 430H389L333 218Z M0 282L600 307V333L0 306Z",
+    [["fruit", 92, 392, 1.04], ["forest", 34, 286, .78]],
+    "M292 219L286 430M0 294L600 319", [],
+    "a split pear-shaped avocado beneath asymmetric root columns, crossing garden paths around one pond and a tiny distant peak"
   ),
   "kauai-waimea-canyon": composition(
     "M0 322 L93 353 L166 326 L246 378 L318 345 L397 394 L482 352 L600 386 V430 H0Z",
@@ -1038,6 +1038,116 @@ function drawEdinburghScene(target, palette) {
   });
 }
 
+function drawTenerifeScene(target, palette) {
+  append(target, "rect", { class: "environment-sky tenerife-sky", width: 600, height: 430, fill: palette[0] });
+  append(target, "circle", { class: "tenerife-sun", cx: 516, cy: 58, r: 26 });
+  const clouds = append(target, "g", { class: "tenerife-clouds", "aria-hidden": "true" });
+  append(clouds, "path", { d: "M227 70Q246 48 270 66Q291 42 318 65Q340 61 354 79H227Z" });
+  append(clouds, "path", { d: "M429 91Q445 75 465 87Q483 68 505 88Q525 85 536 101H429Z" });
+
+  append(target, "path", { class: "tenerife-orotava-slope", d: "M0 176Q70 152 143 169Q220 187 293 161Q374 132 447 151Q528 171 600 139V226H0Z" });
+  append(target, "path", { class: "tenerife-slope-detail", d: "M0 183Q68 163 135 177M166 176Q228 190 293 168M322 158Q381 140 438 156M515 165Q558 156 600 147" });
+  append(target, "path", { class: "tenerife-teide-notch", d: "M431 184L454 176L470 162L480 145L491 165L507 178L532 184Z" });
+
+  const distantCanopy = append(target, "g", { class: "tenerife-distant-canopy", "aria-hidden": "true" });
+  append(distantCanopy, "path", { d: "M0 187Q22 160 49 183Q73 151 101 180Q127 154 151 187Q179 165 201 192L213 218H0ZM389 190Q416 157 445 188Q470 153 502 185Q532 154 560 190Q580 174 600 188V224H386Z" });
+
+  const wall = append(target, "g", { class: "tenerife-garden-wall", "aria-hidden": "true" });
+  append(wall, "path", { class: "tenerife-wall-face", d: "M0 196Q148 188 299 199Q451 210 600 191V235Q451 249 300 237Q150 226 0 239Z" });
+  append(wall, "path", { class: "tenerife-wall-cap", d: "M0 193Q149 184 299 196Q449 207 600 188L600 199Q451 218 299 206Q150 195 0 204Z" });
+  append(wall, "path", { class: "tenerife-wall-seam", d: "M67 197L65 236M142 193L143 233M220 195L222 235M302 201L303 240M385 204L384 241M470 201L468 237M549 195L548 233" });
+
+  append(target, "path", { class: "tenerife-garden-ground", d: "M0 221Q146 208 299 219Q454 231 600 214V430H0Z" });
+  const paths = append(target, "g", { class: "tenerife-garden-paths", "aria-hidden": "true" });
+  append(paths, "path", { class: "tenerife-path longitudinal", d: "M255 213L329 214L353 430H263Z" });
+  append(paths, "path", { class: "tenerife-path transverse", d: "M0 281L600 300V317L0 300Z" });
+  append(paths, "path", { class: "tenerife-path-edge", d: "M255 214L263 430M329 214L353 430M0 281L600 300M0 300L600 317" });
+
+  const beds = append(target, "g", { class: "tenerife-linnaean-beds", "aria-hidden": "true" });
+  const bedRows = [
+    [
+      "M76 222L130 220L126 247L69 249Z", "M137 220L190 219L189 247L134 247Z", "M197 219L249 218L251 247L195 247Z",
+      "M335 219L377 220L381 249L337 248Z", "M384 220L432 221L438 251L388 250Z", "M439 221L493 222L501 253L445 251Z"
+    ],
+    [
+      "M61 254L126 251L120 280L53 282Z", "M133 251L190 250L188 281L129 281Z", "M197 250L252 249L255 282L195 281Z",
+      "M338 250L382 251L387 284L340 282Z", "M389 251L445 253L452 287L393 284Z", "M452 253L516 255L525 290L459 287Z"
+    ],
+    [
+      "M38 320L113 315L106 347L29 351Z", "M120 315L187 312L184 348L115 349Z", "M195 312L255 310L258 350L191 348Z",
+      "M345 313L395 315L401 353L348 350Z", "M402 315L470 318L478 356L407 353Z", "M477 318L552 321L563 361L485 357Z"
+    ],
+    [
+      "M18 359L105 352L96 398L7 404Z", "M113 352L185 348L182 398L104 400Z", "M192 348L260 346L263 401L187 399Z",
+      "M354 349L415 352L423 405L358 401Z", "M422 352L497 356L508 410L430 406Z", "M504 356L588 361L600 417L516 411Z"
+    ]
+  ];
+  bedRows.forEach((row, rowIndex) => row.forEach((d, columnIndex) => append(beds, "path", {
+    class: `tenerife-class-bed row-${rowIndex} tone-${(rowIndex + columnIndex) % 3}`,
+    d
+  })));
+
+  const planting = append(target, "g", { class: "tenerife-bed-planting", "aria-hidden": "true" });
+  [
+    [94,237,.55,-11], [159,234,.48,9], [222,234,.52,-4], [356,235,.5,7], [411,237,.46,-8], [469,240,.54,11],
+    [88,269,.65,8], [160,266,.52,-7], [224,267,.58,6], [360,268,.52,-9], [419,270,.64,5], [487,273,.5,-5],
+    [73,333,.72,-7], [151,329,.62,8], [226,329,.67,-9], [371,333,.6,8], [440,337,.7,-5], [520,340,.62,7]
+  ].forEach(([x, y, scale, angle], index) => {
+    const plant = append(planting, "g", { class: `tenerife-bed-plant plant-${index % 4}`, transform: `translate(${x} ${y}) rotate(${angle}) scale(${scale})` });
+    append(plant, "path", { class: "tenerife-plant-stem", d: index % 2 ? "M0 16Q-2-2 2-25" : "M0 17Q3-4-1-27" });
+    append(plant, "path", { class: "tenerife-plant-leaf", d: index % 3 === 0 ? "M0 3Q-27-18-33 3Q-15 17 0 3ZM0-5Q23-24 31-5Q15 10 0-5Z" : "M0 5Q-22-12-28 6Q-12 17 0 5ZM0-7Q19-24 27-7Q13 7 0-7Z" });
+    if (index % 4 === 1) append(plant, "circle", { class: "tenerife-plant-bloom", cx: 2, cy: -26, r: 5 });
+  });
+
+  const labels = append(target, "g", { class: "tenerife-botanical-labels", "aria-hidden": "true" });
+  [[121,241],[242,274],[368,245],[494,279],[179,341],[458,349]].forEach(([x, y], index) => {
+    const label = append(labels, "g", { transform: `translate(${x} ${y}) rotate(${index % 2 ? -4 : 4})` });
+    append(label, "path", { class: "tenerife-label-support", d: "M0 5V24" });
+    append(label, "rect", { class: "tenerife-label-plaque", x: -10, y: -7, width: 20, height: 13, rx: 2 });
+    append(label, "path", { class: "tenerife-label-line", d: "M-6-2H6M-6 2H3" });
+  });
+
+  const pond = append(target, "g", { class: "tenerife-irrigation-pond", transform: "translate(550 264) rotate(-3)", "aria-hidden": "true" });
+  append(pond, "ellipse", { class: "tenerife-pond-shadow", cx: 1, cy: 6, rx: 48, ry: 25 });
+  append(pond, "ellipse", { class: "tenerife-pond-rim", cx: 0, cy: 0, rx: 46, ry: 23 });
+  append(pond, "ellipse", { class: "tenerife-pond-water", cx: 0, cy: -1, rx: 37, ry: 16 });
+  append(pond, "path", { class: "tenerife-pond-glint", d: "M-25-5Q-8-12 10-6M6 6Q19 1 29 5" });
+  [[-17,2,-7], [18,-5,8]].forEach(([cx, cy, angle], index) => {
+    append(pond, "ellipse", { class: "tenerife-water-leaf", cx, cy, rx: index ? 8 : 10, ry: index ? 4 : 5, transform: `rotate(${angle} ${cx} ${cy})` });
+  });
+
+  const ficus = append(target, "g", { class: "tenerife-ficus", "aria-hidden": "true" });
+  append(ficus, "path", { class: "tenerife-ficus-canopy", d: "M0 0H196Q207 25 188 47Q207 73 179 92Q187 121 155 132Q132 112 108 128Q82 111 61 125Q33 108 42 82Q13 71 28 45Q2 28 0 0Z" });
+  append(ficus, "path", { class: "tenerife-ficus-trunk", d: "M0 76Q27 66 49 84Q68 105 62 139Q57 187 76 234Q86 259 75 307L19 310Q27 252 15 212Q3 169 7 126Q10 96 0 76Z" });
+  append(ficus, "path", { class: "tenerife-ficus-branch", d: "M31 113Q83 75 143 88Q178 93 206 119L193 142Q157 121 120 122Q76 121 47 151Z" });
+  append(ficus, "path", { class: "tenerife-ficus-buttress", d: "M18 279Q-3 322 0 367Q31 346 46 319Q61 353 99 366Q93 327 72 292Z" });
+  append(ficus, "path", { class: "tenerife-aerial-root thick", d: "M70 104Q61 158 69 210Q78 253 64 331" });
+  append(ficus, "path", { class: "tenerife-aerial-root medium", d: "M104 93Q92 151 101 202Q112 250 96 319" });
+  append(ficus, "path", { class: "tenerife-aerial-root fine", d: "M135 94Q127 148 134 193Q143 236 132 302" });
+  append(ficus, "path", { class: "tenerife-aerial-root medium", d: "M166 102Q153 157 162 205Q174 245 157 287" });
+  append(ficus, "path", { class: "tenerife-root-arch", d: "M54 304Q103 270 163 289Q184 296 201 319" });
+  [[34,36,28,15,-18],[87,45,34,17,12],[143,34,37,18,-8],[164,77,31,15,18],[55,79,30,14,-14]].forEach(([cx, cy, rx, ry, angle], index) => {
+    append(ficus, "ellipse", { class: index % 2 ? "tenerife-ficus-leaf deep" : "tenerife-ficus-leaf", cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` });
+  });
+
+  const litter = append(target, "g", { class: "tenerife-leaf-litter", "aria-hidden": "true" });
+  [[18,405,50,388],[63,426,97,405],[176,415,213,394],[231,425,266,405],[303,406,337,388],[383,423,418,402],[446,404,478,385],[522,427,564,404]].forEach(([x1,y1,x2,y2], index) => {
+    append(litter, "path", { class: index % 3 === 0 ? "tenerife-litter-leaf damp" : "tenerife-litter-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-10-index%2*3} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+8} ${x1} ${y1}Z` });
+    append(litter, "path", { class: "tenerife-litter-vein", d: `M${x1+4} ${y1-1}L${x2-4} ${y2+1}` });
+  });
+  [[278,414,4],[349,397,3],[431,418,4],[575,389,3],[148,400,3]].forEach(([cx, cy, r]) => append(litter, "circle", { class: "tenerife-decay-fragment", cx, cy, r }));
+
+  const avocado = append(target, "g", { class: "tenerife-rotten-avocado", transform: "translate(500 365) rotate(7)", "aria-hidden": "true" });
+  append(avocado, "ellipse", { class: "tenerife-avocado-shadow", cx: -2, cy: 34, rx: 84, ry: 18 });
+  append(avocado, "path", { class: "tenerife-avocado-rind", d: "M-79 13Q-75-23-38-39Q-8-51 11-31Q42-43 69-24Q91-9 83 18Q72 43 35 47Q4 55-24 40Q-51 48-72 34Q-84 27-79 13Z" });
+  append(avocado, "path", { class: "tenerife-avocado-flesh", d: "M-63 10Q-56-17-29-27Q-6-36 8-20Q32-31 55-17Q70-7 66 12Q58 30 31 33Q6 41-16 29Q-37 35-54 25Q-65 20-63 10Z" });
+  append(avocado, "path", { class: "tenerife-avocado-collapse", d: "M-58 15Q-27 2-5 22Q18 3 57 13Q42 37 10 34Q-22 39-58 15Z" });
+  append(avocado, "ellipse", { class: "tenerife-avocado-pit", cx: 20, cy: 5, rx: 21, ry: 18, transform: "rotate(12 20 5)" });
+  append(avocado, "path", { class: "tenerife-avocado-pit-split", d: "M12-10Q20 1 14 18M29-8Q20 3 27 18" });
+  append(avocado, "path", { class: "tenerife-avocado-peel-flap", d: "M-70 16Q-86 35-72 50Q-42 58-20 40Q-48 44-70 16Z" });
+  [[-45,-8,4],[-24,15,3],[2,-21,3],[48,6,4],[36,25,2.5]].forEach(([cx, cy, r], index) => append(avocado, "circle", { class: index % 2 ? "tenerife-avocado-mottle dark" : "tenerife-avocado-mottle", cx, cy, r }));
+}
+
 export function renderEnvironmentScene(target, profile, habitatElement) {
   if (!target || !profile) return;
   const palette = profile.palette;
@@ -1062,6 +1172,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "edinburgh-midmar-blackford") {
     drawEdinburghScene(target, palette);
+    return;
+  }
+  if (profile.id === "tenerife-puerto-cruz-botanic") {
+    drawTenerifeScene(target, palette);
     return;
   }
 
