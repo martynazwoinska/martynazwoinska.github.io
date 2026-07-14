@@ -101,9 +101,9 @@ const canonicalProfiles = {
     { water: "river", weather: "cloud", cues: [["compost", 85, 354, .95], ["city", 475, 274, .75], ["cliff", 285, 255, .8]] }
   ),
   "Santeuil, France": profile(
-    "santeuil-viosne-vexin", "Viosne valley below the Vexin plateau",
-    "Santeuil lies where the Viosne valley cuts into the open Vexin plateau, creating wetter valley-floor habitats below a compact rural settlement.",
-    "Vexin Centre authority", "https://ccvexincentre.fr/santeuil/",
+    "santeuil-viosne-vexin", "Santeuil stream bank and Vexin plateau",
+    "Representative JU1925 microhabitat at 49.121, 1.951: forest in Santeuil’s narrow valley, where the isolate came from rotting common-hogweed (Heracleum sphondylium) stem S73.",
+    "Official CaeNDR strain-data CSV", "https://caendr.org/request-strains/download/c_elegans/latest/strain-data/csv",
     palettes.temperate, [[0, 248], [145, 245], [245, 262], [325, 304], [405, 275], [495, 246], [600, 244]],
     { water: "stream", weather: "sun", cues: [["village", 490, 255, .75], ["reeds", 300, 355, .8], ["fields", 105, 315, .9]] }
   ),
@@ -863,6 +863,84 @@ function drawBristolScene(target, palette) {
   [[18,407,42,391],[139,416,164,400],[187,391,213,377],[493,399,518,384],[548,416,579,397]].forEach(([x1,y1,x2,y2], index) => append(litter, "path", { d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-10-index%2*3} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` }));
 }
 
+function drawSanteuilScene(target, palette) {
+  append(target, "rect", { class: "environment-sky santeuil-sky", width: 600, height: 430, fill: palette[0] });
+  append(target, "circle", { class: "santeuil-sun", cx: 91, cy: 62, r: 27 });
+  const clouds = append(target, "g", { class: "santeuil-clouds", "aria-hidden": "true" });
+  append(clouds, "path", { d: "M182 65Q204 40 231 59Q252 34 283 58Q306 55 319 74H182Z" });
+  append(clouds, "path", { d: "M441 49Q462 31 485 47Q504 28 530 49Q552 46 563 63H441Z" });
+
+  const plateau = append(target, "g", { class: "santeuil-plateau", "aria-hidden": "true" });
+  append(plateau, "path", { class: "santeuil-plateau-field", d: "M0 101H600V177Q531 166 473 183Q401 204 351 225Q321 237 298 226Q271 214 233 188Q162 143 0 156Z" });
+  append(plateau, "path", { class: "santeuil-field-seam", d: "M0 122H600M28 102L82 159M132 102L171 166M493 101L457 184M572 101L538 171" });
+  append(plateau, "path", { class: "santeuil-plateau-rim", d: "M0 157Q148 140 231 188Q276 215 299 226Q326 238 355 223Q422 188 493 174Q549 163 600 178" });
+
+  const village = append(target, "g", { class: "santeuil-village", "aria-hidden": "true" });
+  [
+    [374, 169, 31, 32], [406, 154, 28, 39], [438, 168, 33, 34],
+    [491, 142, 35, 45], [527, 160, 29, 38], [558, 151, 33, 44]
+  ].forEach(([x, y, width, height], index) => {
+    append(village, "rect", { class: "santeuil-house", x, y, width, height, rx: 1 });
+    append(village, "path", { class: "santeuil-roof", d: `M${x - 3} ${y}L${x + width / 2} ${y - 13 - index % 2 * 3}L${x + width + 3} ${y}Z` });
+    append(village, "rect", { class: "santeuil-window", x: x + width * .28, y: y + 12, width: 5, height: 8, rx: 1 });
+  });
+  const church = append(village, "g", { class: "santeuil-church", transform: "translate(458 170)" });
+  append(church, "path", { class: "santeuil-church-body", d: "M-22 31V-16H18V31Z" });
+  append(church, "path", { class: "santeuil-church-roof", d: "M-27-16L-2-34L23-16Z" });
+  append(church, "path", { class: "santeuil-church-tower", d: "M-13-13V-61H10V-13Z" });
+  append(church, "path", { class: "santeuil-church-spire", d: "M-17-61L-2-104L14-61Z" });
+  append(church, "path", { class: "santeuil-church-opening", d: "M-6-41Q-2-51 3-41V-29H-6ZM-7 31V12Q-2 1 4 12V31Z" });
+  append(church, "path", { class: "santeuil-church-cross", d: "M-2-105V-116M-8-111H4" });
+
+  append(target, "path", { class: "santeuil-valley santeuil-valley-left", d: "M0 146Q83 128 149 163Q212 191 257 235Q278 254 293 278L307 430H0Z" });
+  append(target, "path", { class: "santeuil-valley santeuil-valley-right", d: "M600 168Q543 151 492 181Q429 206 370 244Q341 263 323 286L310 430H600Z" });
+
+  const woodland = append(target, "g", { class: "santeuil-woodland", "aria-hidden": "true" });
+  append(woodland, "path", { class: "santeuil-canopy-left", d: "M0 135Q23 106 51 129Q76 95 105 126Q137 101 165 139Q193 126 215 160Q235 162 252 197L274 254L0 330Z" });
+  append(woodland, "path", { class: "santeuil-canopy-right", d: "M600 152Q574 119 547 145Q521 112 489 147Q456 130 430 169Q398 164 377 205L342 270L600 330Z" });
+  [30, 81, 139, 198, 410, 468, 529, 576].forEach((x, index) => {
+    const right = x > 300;
+    append(woodland, "path", { class: "santeuil-tree-trunk", d: `M${x - 4} ${136 + index % 3 * 11}Q${x - 8 + (right ? -4 : 4)} 219 ${x - 3} ${315 - index % 2 * 13}H${x + 10}Q${x + 4} 216 ${x + 7} ${132 + index % 3 * 11}Z` });
+    append(woodland, "path", { class: "santeuil-tree-branch", d: `M${x + 1} ${190 + index % 2 * 12}L${x + (right ? -22 : 22)} ${160 + index % 3 * 6}M${x + 2} ${218 + index % 2 * 9}L${x + (right ? 18 : -18)} ${189 + index % 3 * 4}` });
+  });
+
+  append(target, "path", { class: "environment-water santeuil-stream", d: "M307 218C300 250 285 276 295 303C305 329 330 347 325 375C322 395 311 412 300 430H384C369 400 356 379 358 352C361 322 341 302 329 280C319 259 317 239 320 218Z", fill: palette[4] });
+  append(target, "path", { class: "santeuil-stream-bank left", d: "M0 310Q95 286 189 307Q259 320 295 303Q309 328 327 348Q320 379 300 430H0Z" });
+  append(target, "path", { class: "santeuil-stream-bank right", d: "M329 280Q384 303 443 290Q524 271 600 304V430H384Q365 397 357 366Q365 326 329 280Z" });
+  append(target, "path", { class: "santeuil-stream-glint", d: "M305 260Q315 256 324 260M301 296Q318 290 334 296M314 333Q336 323 354 334M320 374Q344 363 365 376M313 411Q344 397 375 414" });
+
+  const railway = append(target, "g", { class: "santeuil-railway", "aria-hidden": "true" });
+  append(railway, "path", { class: "santeuil-rail-embankment", d: "M153 248Q229 243 289 250Q348 257 437 244L441 257Q350 270 289 263Q225 256 151 262Z" });
+  append(railway, "path", { class: "santeuil-rail-line", d: "M151 249Q225 244 289 252Q351 260 440 246M152 255Q225 250 289 258Q351 266 441 252" });
+  [169, 196, 225, 255, 282, 362, 392, 420].forEach((x, index) => append(railway, "path", { class: "santeuil-sleeper", d: `M${x} ${247 + (index < 5 ? index % 2 * 2 : 8 - index % 2 * 2)}L${x + 2} ${262 + (index < 5 ? index % 2 * 2 : 8 - index % 2 * 2)}` }));
+  append(railway, "path", { class: "santeuil-bridge-face", d: "M280 249Q309 230 340 253L338 269Q310 250 283 265Z" });
+  append(railway, "path", { class: "santeuil-bridge-arch", d: "M289 260Q310 239 332 262" });
+
+  const litter = append(target, "g", { class: "santeuil-leaf-litter", "aria-hidden": "true" });
+  [[22,366,54,348],[62,405,100,387],[181,388,216,365],[232,419,267,399],[418,405,451,380],[474,362,504,344],[542,410,582,387]].forEach(([x1,y1,x2,y2], index) => {
+    append(litter, "path", { d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-10-index%2*4} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+8} ${x1} ${y1}Z` });
+    append(litter, "path", { class: "santeuil-leaf-vein", d: `M${x1 + 4} ${y1 - 1}L${x2 - 4} ${y2 + 1}` });
+  });
+
+  const stem = append(target, "g", { class: "santeuil-hogweed-stem", transform: "translate(126 357) rotate(-8)", "aria-hidden": "true" });
+  append(stem, "path", { class: "santeuil-stem-shadow", d: "M-111 24Q-34 40 91 23Q103 31 116 22Q108 48 88 51Q-33 58-116 40Z" });
+  append(stem, "path", { class: "santeuil-stem-body", d: "M-111-10Q-29-24 88-13Q104-12 111 5Q105 23 88 25Q-34 12-111 25Q-126 8-111-10Z" });
+  [-67, -19, 31].forEach((x, index) => append(stem, "path", { class: "santeuil-stem-node", d: `M${x} ${-16 + index % 2}Q${x + 7} 5 ${x} ${19 - index % 2}` }));
+  append(stem, "ellipse", { class: "santeuil-stem-rim", cx: 94, cy: 6, rx: 22, ry: 27 });
+  append(stem, "ellipse", { class: "santeuil-stem-hollow", cx: 98, cy: 6, rx: 13, ry: 17 });
+  append(stem, "path", { class: "santeuil-stem-fibre", d: "M83-13L91-5M78 18L89 12M103-16L107-6M105 17L111 10" });
+  append(stem, "path", { class: "santeuil-broken-branch", d: "M-42-16Q-29-39-11-51L-2-40Q-21-25-27-11Z" });
+  [[-86,2],[-55,8],[-5,-4],[20,9],[55,0]].forEach(([cx, cy], index) => append(stem, "circle", { class: "santeuil-decay-speck", cx, cy, r: 2 + index % 2 }));
+
+  const comfrey = append(target, "g", { class: "santeuil-comfrey", transform: "translate(520 377)", "aria-hidden": "true" });
+  [[-57,35,-22,-14,-32],[57,35,22,-20,30],[-33,39,-5,-28,-15],[31,40,7,-35,16],[-10,43,-12,-45,-3]].forEach(([x1,y1,x2,y2,angle], index) => {
+    append(comfrey, "path", { class: "santeuil-comfrey-leaf", d: `M0 42Q${x1} ${y1} ${x2} ${y2}Q${x1 * .25} ${y1 - 9} 0 42Z`, transform: `rotate(${angle * .18})` });
+    if (index < 4) append(comfrey, "path", { class: "santeuil-comfrey-vein", d: `M0 42L${x2} ${y2}` });
+  });
+  append(comfrey, "path", { class: "santeuil-comfrey-stem", d: "M2 40Q12-4 35-47M10 27Q-1-5-20-32" });
+  [[35,-47,12],[45,-36,-7],[24,-35,22],[-20,-32,-15],[-29,-24,8]].forEach(([x, y, angle]) => append(comfrey, "path", { class: "santeuil-comfrey-flower", d: `M${x-6} ${y}Q${x} ${y+13} ${x+7} ${y}L${x+4} ${y-8}H${x-4}Z`, transform: `rotate(${angle} ${x} ${y})` }));
+}
+
 export function renderEnvironmentScene(target, profile, habitatElement) {
   if (!target || !profile) return;
   const palette = profile.palette;
@@ -879,6 +957,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
 
   if (profile.id === "bristol-garden-gorge") {
     drawBristolScene(target, palette);
+    return;
+  }
+  if (profile.id === "santeuil-viosne-vexin") {
+    drawSanteuilScene(target, palette);
     return;
   }
 

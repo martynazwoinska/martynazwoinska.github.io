@@ -17,7 +17,7 @@ const rows = [
   ["briggsae", "Angra dos Reis, Rio de Janeiro · EG5612", "cove monocle", "monocle", "mangrove claws", "mangrove-claws", "island compass", "compass"],
   ["briggsae", "Nambucca Heads, New South Wales · QG2814", "banksia wig", "wig", "eucalyptus cape", "cape", "flower press", "flower-press"],
   ["elegans", "Bristol N2, England", "seeded NGM agar plates", "ngm-agar-plate", "fitted lab coats", "n2-lab-coat", "cryo-vial jetpacks", "cryo-vial-jetpack"],
-  ["elegans", "Santeuil, France", "reed boater", "reed-boater", "plot waistcoat", "plot-waistcoat", "stream dip net", "stream-dip-net"],
+  ["elegans", "Santeuil, France", "hollow-stem specimen lantern", "hogweed-specimen-lantern", "Santeuil cylinder organ", "santeuil-cylinder-organ", "Couleuvre dragonfly automaton", "couleuvre-dragonfly-automaton"],
   ["elegans", "Edinburgh, Scotland", "crag ear-warmers", "crag-ear-warmers", "contour accordion", "bellows-instrument", "loch sampler", "loch-sampler"],
   ["elegans", "Tenerife, Spain", "obsidian goggles", "obsidian-goggles", "broom plume", "broom-plume", "caldera glider", "glider"],
   ["elegans", "Kauaʻi, Hawaiʻi", "canyon crest", "canyon-crest", "waterfall scarf", "waterfall-scarf", "fern abseil reel", "fern-abseil-reel"],
@@ -71,8 +71,6 @@ const explicitUniqueRendererFamilies = new Set([
   "obsidian-goggles",
   "paddy-metronome",
   "palm-bustle",
-  "plot-waistcoat",
-  "reed-boater",
   "reef-mask",
   "research-headphones",
   "salt-crystal-jacket",
@@ -94,6 +92,7 @@ const repeatedRendererFamilies = new Set([
 ]);
 
 const n2RendererFamilies = new Set(["ngm-agar-plate", "n2-lab-coat", "cryo-vial-jetpack"]);
+const santeuilRendererFamilies = new Set(["hogweed-specimen-lantern", "santeuil-cylinder-organ", "couleuvre-dragonfly-automaton"]);
 const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
 const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|snorkel|compass|press|gauge rod|camera rig/i;
 const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|skates|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
@@ -102,6 +101,7 @@ function hasNamedRenderer(item) {
   return explicitUniqueRendererFamilies.has(item.family)
     || repeatedRendererFamilies.has(item.family)
     || n2RendererFamilies.has(item.family)
+    || santeuilRendererFamilies.has(item.family)
     || item.family === "volcanic-needle-ruff"
     || instrumentRendererPattern.test(item.label)
     || fieldToolRendererPattern.test(item.label)
@@ -386,6 +386,136 @@ function drawN2Accessory(group, item, companion) {
     }
     return true;
   }
+  return false;
+}
+
+function drawSanteuilAccessory(group, item, companion) {
+  if (item.family === "hogweed-specimen-lantern") {
+    group.classList.add("santeuil-accessory", "hogweed-lantern", companion ? "hogweed-lantern-companion" : "hogweed-lantern-primary");
+    if (companion) {
+      add(group, "path", { class: "stem-lantern-shadow", d: "M-79 24Q-4 42 77 21Q49 48-71 43Z" });
+      add(group, "path", { class: "stem-lantern-section lower", d: "M-74 2L-34-23L-24-10L-63 18Z" });
+      add(group, "path", { class: "stem-lantern-section upper", d: "M35-16L72-38L82-23L45 0Z" });
+      add(group, "ellipse", { class: "stem-lantern-hollow", cx: -70, cy: 10, rx: 10, ry: 15, transform: "rotate(55 -70 10)" });
+      add(group, "ellipse", { class: "stem-lantern-hollow", cx: 76, cy: -30, rx: 9, ry: 14, transform: "rotate(58 76 -30)" });
+      add(group, "path", { class: "stem-lantern-frame", d: "M-36-17L-27 28L50 22L39-20ZM-26 28L-11 38L38 34L50 22" });
+      add(group, "path", { class: "stem-lantern-glass", d: "M-31-12L-24 23L45 18L36-15Z" });
+      add(group, "path", { class: "stem-lantern-handle companion", d: "M-27-17Q0-55 39-19" });
+      add(group, "path", { class: "stem-lantern-hinge", d: "M-35-8L-45-4L-42 12L-31 12M39-9L49-5" });
+      add(group, "path", { class: "stem-lantern-specimen", d: "M-9 9Q0-6 11 6T28 3" });
+      add(group, "circle", { class: "stem-lantern-lens", cx: 1, cy: 4, r: 12 });
+      const seeds = add(group, "g", { class: "stem-seed-cage", transform: "translate(48 15)" });
+      add(seeds, "path", { d: "M0-25V24M-13-18L0-5L14-18M-16 5L0 19L17 3" });
+      [[-13,-18],[14,-18],[-16,5],[17,3],[0,24]].forEach(([cx, cy], index) => add(seeds, "ellipse", { cx, cy, rx: 4 + index % 2, ry: 7, transform: `rotate(${index % 2 ? 25 : -25} ${cx} ${cy})` }));
+    } else {
+      add(group, "path", { class: "stem-lantern-shadow", d: "M-52 76Q2 92 56 74Q30 99-45 94Z" });
+      add(group, "path", { class: "stem-lantern-handle", d: "M-38-51Q-20-91 0-96Q23-91 40-50" });
+      add(group, "path", { class: "stem-lantern-frame", d: "M-44-52L-38 71L39 71L45-52ZM-44-11H44M-41 34H41" });
+      [-30, 14, 58].forEach(y => add(group, "ellipse", { class: "stem-lantern-node", cx: 0, cy: y, rx: 42 - (y + 30) * .035, ry: 7 }));
+      add(group, "path", { class: "stem-lantern-glass", d: "M-35-43L-31 62H31L36-43Z" });
+      add(group, "path", { class: "stem-lantern-glass-highlight", d: "M-24-34Q-17 8-21 48" });
+      add(group, "path", { class: "stem-lantern-cutaway", d: "M-45-52Q0-70 45-52Q0-34-45-52Z" });
+      add(group, "ellipse", { class: "stem-lantern-hollow", cx: 0, cy: -52, rx: 27, ry: 10 });
+      add(group, "path", { class: "stem-lantern-specimen", d: "M-20 27Q-10 4 3 22Q13 36 24 16" });
+      add(group, "circle", { class: "stem-lantern-lens", cx: 2, cy: 22, r: 19 });
+      add(group, "path", { class: "stem-lantern-base", d: "M-48 70Q0 84 48 70L39 86Q0 96-40 85Z" });
+      const umbel = add(group, "g", { class: "stem-umbel", transform: "translate(0 -96)" });
+      add(umbel, "path", { d: "M0 13V-4M0-3L-31-27M0-3L-17-36M0-3L0-42M0-3L18-35M0-3L32-25" });
+      [[-31,-27],[-17,-36],[0,-42],[18,-35],[32,-25]].forEach(([cx, cy], index) => {
+        add(umbel, "circle", { cx, cy, r: 4 + index % 2 });
+        add(umbel, "circle", { cx: cx - 6, cy: cy + 1, r: 2.5 });
+        add(umbel, "circle", { cx: cx + 6, cy: cy + 2, r: 2.5 });
+      });
+    }
+    return true;
+  }
+
+  if (item.family === "santeuil-cylinder-organ") {
+    group.classList.add("santeuil-accessory", "santeuil-organ", companion ? "santeuil-organ-companion" : "santeuil-organ-primary");
+    if (companion) {
+      add(group, "path", { class: "organ-shadow", d: "M-47 72Q3 88 55 69Q28 94-42 91Z" });
+      add(group, "path", { class: "organ-cabinet companion", d: "M-41-66L28-75L43-58V65L-40 72Z" });
+      add(group, "path", { class: "organ-cabinet-cap", d: "M-47-66L30-80L48-60L39-49L-41-51Z" });
+      add(group, "path", { class: "organ-window", d: "M-28-45Q0-61 29-43V2Q0 16-29 1Z" });
+      add(group, "ellipse", { class: "organ-cylinder", cx: 0, cy: -20, rx: 25, ry: 11 });
+      [-16,-8,0,8,16].forEach((x, index) => add(group, "circle", { class: "organ-pin", cx: x, cy: -22 + index % 2 * 4, r: 1.8 }));
+      add(group, "path", { class: "organ-bellows companion", d: "M-38 19L20 11L36 36L-37 47Z" });
+      [-25,-8,9,24].forEach(x => add(group, "path", { class: "organ-bellows-fold", d: `M${x} 18L${x + 5} 43` }));
+      add(group, "rect", { class: "organ-keybed", x: -30, y: 48, width: 61, height: 17, rx: 2 });
+      for (let index = 0; index < 8; index += 1) add(group, "path", { class: "organ-key", d: `M${-27 + index * 7.5} 49V63` });
+      add(group, "path", { class: "organ-crank", d: "M42-17Q63-15 62 5L75 12" });
+      add(group, "circle", { class: "organ-crank-knob", cx: 78, cy: 13, r: 5 });
+      add(group, "path", { class: "organ-vent", d: "M-24 7Q0 21 25 5M-18 14Q0 25 19 13" });
+    } else {
+      add(group, "path", { class: "organ-shadow", d: "M-73 78Q7 101 81 75Q38 108-65 103Z" });
+      add(group, "path", { class: "organ-cabinet", d: "M-67-58Q-51-82-30-91H63L70 78L-65 84Z" });
+      add(group, "path", { class: "organ-secretary-lid", d: "M-51-70H48L60-44L-58-39Z" });
+      add(group, "path", { class: "organ-window", d: "M-47-32Q0-47 49-31V12Q0 28-49 13Z" });
+      add(group, "ellipse", { class: "organ-cylinder", cx: 0, cy: -8, rx: 43, ry: 15 });
+      [-32,-24,-16,-8,0,8,16,24,32].forEach((x, index) => add(group, "circle", { class: "organ-pin", cx: x, cy: -11 + index % 3 * 3, r: 2 }));
+      add(group, "path", { class: "organ-bellows", d: "M-57 23L31 18L59 47L-57 58Z" });
+      [-43,-26,-9,8,25,42].forEach(x => add(group, "path", { class: "organ-bellows-fold", d: `M${x} 23L${x + 6} 54` }));
+      add(group, "path", { class: "organ-keybed-frame", d: "M-58 57Q0 49 59 55L55 79Q0 89-58 81Z" });
+      for (let index = 0; index < 13; index += 1) {
+        const x = -52 + index * 8.7;
+        add(group, "path", { class: "organ-key", d: `M${x} 58L${x + .5} 80` });
+        add(group, "path", { class: "organ-key dark", d: `M${x + 4.2} 58L${x + 4.5} 70` });
+      }
+      const rack = add(group, "g", { class: "organ-pipe-rack", transform: "translate(30 -83)" });
+      add(rack, "path", { class: "organ-rack-frame", d: "M-23 1H35V47H-23ZM-23 15H35M-23 37H35" });
+      [-16,-7,2,11,20,29].forEach((x, index) => {
+        if (index === 1 || index === 4) {
+          add(rack, "circle", { class: "organ-empty-socket", cx: x, cy: 39, r: 3 });
+        } else {
+          add(rack, "path", { class: "organ-pipe", d: `M${x - 3} ${38 - index % 2 * 2}V${7 + index * 4}H${x + 3}V${38 - index % 2 * 2}Z` });
+        }
+      });
+      add(group, "path", { class: "organ-crank", d: "M68-3Q94-5 95 20L111 29" });
+      add(group, "circle", { class: "organ-crank-knob", cx: 115, cy: 31, r: 6 });
+      add(group, "path", { class: "organ-brass-inlay", d: "M-48-77Q-25-93 0-79Q26-94 51-76M-38 34Q0 47 39 33" });
+    }
+    return true;
+  }
+
+  if (item.family === "couleuvre-dragonfly-automaton") {
+    group.classList.add("santeuil-accessory", "couleuvre-automaton", companion ? "couleuvre-automaton-companion" : "couleuvre-automaton-primary");
+    if (companion) {
+      add(group, "path", { class: "automaton-shadow", d: "M-68 49Q9 72 78 45Q38 78-58 72Z" });
+      add(group, "path", { class: "automaton-base companion", d: "M-60 23Q4 5 70 24L63 51Q5 70-59 49Z" });
+      add(group, "ellipse", { class: "automaton-pond", cx: 4, cy: 24, rx: 58, ry: 18 });
+      add(group, "path", { class: "automaton-post", d: "M-13 24L-4-39L8-38L17 25Z" });
+      add(group, "path", { class: "automaton-carousel-arm", d: "M2-33Q34-48 53-25M1-31Q-34-38-48-10" });
+      const dragonfly = add(group, "g", { class: "automaton-dragonfly broad", transform: "translate(47 -29) rotate(12)" });
+      add(dragonfly, "path", { class: "dragonfly-wing broad", d: "M-3-3Q-33-35-48-13Q-34 7-4 5ZM4-3Q28-40 48-20Q38 5 5 5ZM-2 6Q-29 16-36 34Q-17 42 3 11ZM5 7Q33 13 41 30Q24 43 5 12Z" });
+      add(dragonfly, "path", { class: "dragonfly-body", d: "M-3-20Q0-28 4-20L7 23L1 43L-5 23Z" });
+      [-14,-4,7,18].forEach(y => add(dragonfly, "circle", { class: "dragonfly-joint", cx: 1, cy: y, r: 2.5 }));
+      add(group, "path", { class: "automaton-gear-link", d: "M3-14L-39 10M-39 10L-47-10" });
+      add(group, "circle", { class: "automaton-gear", cx: -40, cy: 12, r: 13 });
+      [0,45,90,135].forEach(angle => add(group, "path", { class: "automaton-gear-tooth", d: "M-40-5V2", transform: `rotate(${angle} -40 12)` }));
+      add(group, "path", { class: "automaton-crank", d: "M-52 12Q-76 10-75-11L-88-17" });
+      add(group, "circle", { class: "automaton-crank-knob", cx: -91, cy: -18, r: 5 });
+    } else {
+      add(group, "path", { class: "automaton-shadow", d: "M-85 54Q6 83 91 51Q45 90-74 81Z" });
+      add(group, "path", { class: "automaton-base", d: "M-80 22Q1-3 82 20L76 54Q3 81-78 53Z" });
+      add(group, "ellipse", { class: "automaton-pond", cx: 1, cy: 22, rx: 71, ry: 23 });
+      add(group, "path", { class: "automaton-pond-ripple", d: "M-49 22Q-24 7 1 20Q26 7 53 21M-33 32Q0 20 35 32" });
+      add(group, "circle", { class: "automaton-gear", cx: -28, cy: 22, r: 18 });
+      add(group, "circle", { class: "automaton-gear small", cx: 10, cy: 27, r: 11 });
+      [0,30,60,90,120,150].forEach(angle => add(group, "path", { class: "automaton-gear-tooth", d: "M-28-1V7", transform: `rotate(${angle} -28 22)` }));
+      add(group, "path", { class: "automaton-post", d: "M-4 21L-2-41L10-42L18 23Z" });
+      add(group, "path", { class: "automaton-linkage", d: "M-28 22L5-23L46-33M10 27L43-9" });
+      const damselfly = add(group, "g", { class: "automaton-dragonfly damselfly", transform: "translate(45 -37) rotate(-7)" });
+      add(damselfly, "path", { class: "dragonfly-wing narrow", d: "M-5-2Q-70-25-89-9Q-66 7-5 7ZM5-2Q66-28 88-12Q68 8 5 7Z" });
+      add(damselfly, "path", { class: "dragonfly-wing narrow rear", d: "M-4 5Q-51 14-69 28Q-43 36-3 12ZM5 5Q51 11 71 24Q47 36 5 12Z" });
+      add(damselfly, "path", { class: "dragonfly-body", d: "M-4-20Q0-30 5-20L7 35L1 65L-5 35Z" });
+      [-15,-5,6,17,28,39].forEach((y, index) => add(damselfly, "circle", { class: "dragonfly-joint", cx: index % 2 ? 1 : 0, cy: y, r: index < 2 ? 3 : 2.5 }));
+      add(damselfly, "path", { class: "dragonfly-antenna", d: "M-2-22L-12-34M3-22L13-34" });
+      add(group, "path", { class: "automaton-crank", d: "M-61 37Q-89 39-90 13L-107 4" });
+      add(group, "circle", { class: "automaton-crank-knob", cx: -112, cy: 2, r: 7 });
+    }
+    return true;
+  }
+
   return false;
 }
 
@@ -803,19 +933,6 @@ function drawUniqueNamedAccessory(group, item, companion) {
       path(group, companion ? "M35-50Q51-67 65-48Q68-25 48-18Q29-29 35-50Z" : "M46-67Q67-89 86-64Q91-33 64-24Q38-39 46-67Z", "acc-main");
       path(group, companion ? "M-56 42L-66 58L-48 63L-39 49Z" : "M-74 56L-88 77L-64 84L-52 65Z", "acc-accent");
       return true;
-    case "reed-boater":
-      add(group, "ellipse", { class: "acc-soft", cx: 0, cy: companion ? 11 : 14, rx: companion ? 58 : 76, ry: companion ? 18 : 24 });
-      path(group, companion ? "M-35 9L-29-35Q0-48 30-34L36 9Z" : "M-46 12L-38-47Q0-64 40-45L48 12Z");
-      for (let x = companion ? -25 : -34; x <= (companion ? 25 : 34); x += companion ? 12 : 14) line(group, companion ? `M${x} 5L${x * .82} -35` : `M${x} 7L${x * .82} -48`);
-      line(group, companion ? "M-32-4H33" : "M-43-6H44", "acc-accent-line");
-      return true;
-    case "plot-waistcoat":
-      path(group, companion ? "M-45-39L-12-50L0-22L13-50L45-37L35 49L5 39L0 5L-6 39L-37 50Z" : "M-59-52L-16-66L0-29L17-66L60-49L47 65L7 52L0 7L-8 52L-49 67Z", "acc-main");
-      [-1, 1].forEach(side => {
-        add(group, "rect", { class: "acc-soft", x: side < 0 ? (companion ? -34 : -45) : (companion ? 10 : 14), y: companion ? 8 : 11, width: companion ? 24 : 31, height: companion ? 24 : 31, rx: 2 });
-        line(group, side < 0 ? (companion ? "M-22 8V32 M-34 20H-10" : "M-29 11V42 M-45 26H-14") : (companion ? "M22 8V32 M10 20H34" : "M29 11V42 M14 26H45"));
-      });
-      return true;
     case "crag-ear-warmers":
       path(group, companion ? "M-48 5Q-39-46 0-52Q40-46 48 5" : "M-64 7Q-52-62 0-70Q53-61 64 7", "acc-line thick");
       [-1, 1].forEach(side => path(group, companion ? `M${side * 39}-8L${side * 57} 2L${side * 51} 30L${side * 29} 25L${side * 25} 2Z` : `M${side * 52}-11L${side * 76} 3L${side * 68} 40L${side * 38} 33L${side * 34} 3Z`, side < 0 ? "acc-main" : "acc-accent"));
@@ -1023,6 +1140,7 @@ function drawUniqueNamedAccessory(group, item, companion) {
 }
 
 function drawNamedAccessory(group, item, companion) {
+  if (drawSanteuilAccessory(group, item, companion)) return true;
   if (drawUniqueNamedAccessory(group, item, companion)) return true;
   if (drawRepeatedFamilyAccessory(group, item, companion)) return true;
   if (drawN2Accessory(group, item, companion)) return true;
@@ -1054,17 +1172,20 @@ function renderPiece(target, item, wormPart) {
   const companion = wormPart === "companion";
   let [x, y, scale] = layouts[item.slot][item.artKind][wormPart];
   let angleOverride = null;
-  const n2Layouts = {
+  const customLayouts = {
     "ngm-agar-plate": { primary: [345, 210, .86, -8], companion: [45, 270, .65, 4] },
     "n2-lab-coat": { primary: [170, 210, 1, 0], companion: [82, 175, 1, 0] },
-    "cryo-vial-jetpack": { primary: [278, 143, .9, -3], companion: [31, 155, .72, 5] }
+    "cryo-vial-jetpack": { primary: [278, 143, .9, -3], companion: [31, 155, .72, 5] },
+    "hogweed-specimen-lantern": { primary: [327, 133, .66, 3], companion: [61, 126, .58, -4] },
+    "santeuil-cylinder-organ": { primary: [183, 191, .59, -2], companion: [86, 208, .52, 2] },
+    "couleuvre-dragonfly-automaton": { primary: [304, 235, .61, -2], companion: [76, 266, .5, 3] }
   };
-  const n2Layout = n2Layouts[item.family]?.[wormPart];
-  if (n2Layout) [x, y, scale, angleOverride] = n2Layout;
+  const customLayout = customLayouts[item.family]?.[wormPart];
+  if (customLayout) [x, y, scale, angleOverride] = customLayout;
   const widthBias = 1 + item.geometry.widthStep * .035;
   const heightBias = 1 + item.geometry.heightStep * .03;
   const angle = angleOverride ?? (companion ? -8 + (item.geometry.pairAttachment % 3) * 3 : -2 + item.geometry.angleStep);
-  const useGeometryBias = !n2Layout;
+  const useGeometryBias = !customLayout;
   const artworkScaleX = scale * (useGeometryBias ? widthBias : 1);
   const artworkScaleY = scale * (useGeometryBias ? heightBias : 1);
   const piece = add(target, "g", {

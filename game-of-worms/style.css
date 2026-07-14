@@ -446,6 +446,57 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .bristol-compost-stem { fill: none; stroke: color-mix(in srgb, var(--paper-strong) 55%, #8a7457); stroke-width: 5; stroke-linecap: round; }
 .bristol-compost-fungi { fill: color-mix(in srgb, var(--environment-accent) 64%, #b87358); stroke: var(--environment-detail); stroke-width: 2; }
 .bristol-leaf-litter path { fill: color-mix(in srgb, var(--environment-accent) 36%, #a36c45); stroke: var(--environment-detail); stroke-width: 1.5; }
+.santeuil-sky { fill: color-mix(in srgb, var(--environment-water) 12%, var(--paper-strong)); }
+.santeuil-sun { fill: color-mix(in srgb, var(--environment-accent) 72%, #fff1b8); opacity: .72; filter: drop-shadow(0 0 13px rgba(225,187,92,.25)); }
+.santeuil-clouds { fill: color-mix(in srgb, var(--paper-strong) 82%, var(--environment-water)); opacity: .52; }
+.santeuil-plateau-field { fill: color-mix(in srgb, var(--environment-land) 51%, #c8bd83); }
+.santeuil-field-seam { fill: none; stroke: color-mix(in srgb, var(--environment-ground) 43%, #a78e58); stroke-width: 2; opacity: .5; }
+.santeuil-plateau-rim { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 58%, var(--environment-land)); stroke-width: 3; opacity: .67; }
+.santeuil-house, .santeuil-church-body, .santeuil-church-tower { fill: color-mix(in srgb, var(--paper-strong) 55%, #cbb897); stroke: color-mix(in srgb, var(--environment-detail) 70%, #695c4f); stroke-width: 1.5; }
+.santeuil-roof, .santeuil-church-roof { fill: color-mix(in srgb, var(--environment-ground) 48%, #8f5f4c); stroke: var(--environment-detail); stroke-width: 1.5; }
+.santeuil-window { fill: color-mix(in srgb, var(--environment-water) 51%, var(--environment-detail)); }
+.santeuil-church-spire { fill: color-mix(in srgb, var(--paper-strong) 40%, #9b9383); stroke: color-mix(in srgb, var(--environment-detail) 78%, #5c584f); stroke-width: 2; stroke-linejoin: round; }
+.santeuil-church-opening { fill: color-mix(in srgb, var(--environment-detail) 84%, #433f3b); }
+.santeuil-church-cross { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 88%, #45423c); stroke-width: 2; stroke-linecap: round; }
+.santeuil-valley { stroke: color-mix(in srgb, var(--environment-detail) 52%, var(--environment-land)); stroke-width: 1.5; stroke-linejoin: round; }
+.santeuil-valley-left { fill: color-mix(in srgb, var(--environment-land) 75%, #587052); }
+.santeuil-valley-right { fill: color-mix(in srgb, var(--environment-land) 63%, #68785c); }
+.santeuil-canopy-left, .santeuil-canopy-right { stroke: color-mix(in srgb, var(--environment-detail) 77%, #334f3f); stroke-width: 2; stroke-linejoin: round; }
+.santeuil-canopy-left { fill: color-mix(in srgb, var(--environment-land) 82%, #315640); }
+.santeuil-canopy-right { fill: color-mix(in srgb, var(--environment-land) 72%, #3f6048); }
+.santeuil-tree-trunk { fill: color-mix(in srgb, var(--environment-ground) 58%, #715440); stroke: color-mix(in srgb, var(--environment-detail) 71%, #59463b); stroke-width: 1.5; }
+.santeuil-tree-branch { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 72%, #59463b); stroke-width: 3; stroke-linecap: round; }
+.santeuil-stream { stroke: color-mix(in srgb, var(--environment-detail) 30%, var(--environment-water)); stroke-width: 2; }
+.santeuil-stream-bank { fill: color-mix(in srgb, var(--environment-ground) 73%, #5e5540); stroke: color-mix(in srgb, var(--environment-detail) 58%, #514a3c); stroke-width: 2; }
+.santeuil-stream-bank.left { fill: color-mix(in srgb, var(--environment-ground) 78%, #5b533e); }
+.santeuil-stream-glint { fill: none; stroke: color-mix(in srgb, var(--paper-strong) 74%, var(--environment-water)); stroke-width: 3; stroke-linecap: round; opacity: .72; }
+.santeuil-rail-embankment { fill: color-mix(in srgb, var(--environment-ground) 49%, #8f856d); stroke: color-mix(in srgb, var(--environment-detail) 68%, #5b574e); stroke-width: 1.5; }
+.santeuil-rail-line { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 88%, #363b3b); stroke-width: 1.7; stroke-linecap: round; }
+.santeuil-sleeper { fill: none; stroke: color-mix(in srgb, var(--environment-ground) 48%, #5f4c3d); stroke-width: 3; }
+.santeuil-bridge-face { fill: color-mix(in srgb, var(--paper-strong) 38%, #958c79); stroke: color-mix(in srgb, var(--environment-detail) 77%, #58534b); stroke-width: 1.5; fill-rule: evenodd; }
+.santeuil-bridge-arch { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 82%, #514d45); stroke-width: 3; }
+.santeuil-leaf-litter path:not(.santeuil-leaf-vein) { fill: color-mix(in srgb, var(--environment-accent) 31%, #8c6344); stroke: color-mix(in srgb, var(--environment-detail) 71%, #5d4737); stroke-width: 1.4; }
+.santeuil-leaf-vein { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 66%, #5d4737); stroke-width: 1; }
+.santeuil-stem-shadow { fill: rgba(28,39,31,.23); }
+.santeuil-stem-body, .santeuil-broken-branch { fill: color-mix(in srgb, #aa9a6e 72%, var(--environment-ground)); stroke: color-mix(in srgb, var(--environment-detail) 74%, #574b3a); stroke-width: 2.5; stroke-linejoin: round; }
+.santeuil-stem-node { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 55%, #746446); stroke-width: 4; opacity: .66; }
+.santeuil-stem-rim { fill: color-mix(in srgb, #c9bb8d 66%, var(--paper-strong)); stroke: color-mix(in srgb, var(--environment-detail) 78%, #574b3a); stroke-width: 2.5; }
+.santeuil-stem-hollow { fill: color-mix(in srgb, var(--environment-detail) 79%, #332d24); stroke: color-mix(in srgb, #c5b688 63%, var(--environment-detail)); stroke-width: 2; }
+.santeuil-stem-fibre { fill: none; stroke: color-mix(in srgb, #e3d3a5 69%, var(--environment-detail)); stroke-width: 2; stroke-linecap: round; }
+.santeuil-decay-speck { fill: color-mix(in srgb, var(--environment-detail) 73%, #514434); opacity: .78; }
+.santeuil-comfrey-leaf { fill: color-mix(in srgb, var(--environment-land) 76%, #365e45); stroke: color-mix(in srgb, var(--environment-detail) 76%, #2f4b3b); stroke-width: 1.6; }
+.santeuil-comfrey-vein, .santeuil-comfrey-stem { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 74%, #365e45); stroke-width: 2; stroke-linecap: round; }
+.santeuil-comfrey-flower { fill: color-mix(in srgb, #796aa4 72%, var(--environment-accent)); stroke: color-mix(in srgb, var(--environment-detail) 72%, #4f476c); stroke-width: 1.4; }
+:root[data-theme='dark'] .santeuil-sky { fill: color-mix(in srgb, #263c3c 76%, var(--environment-water)); }
+:root[data-theme='dark'] .santeuil-clouds { opacity: .28; }
+:root[data-theme='dark'] .santeuil-plateau-field { fill: color-mix(in srgb, var(--environment-ground) 58%, #6b704f); }
+:root[data-theme='dark'] .santeuil-house,
+:root[data-theme='dark'] .santeuil-church-body,
+:root[data-theme='dark'] .santeuil-church-tower { fill: color-mix(in srgb, #8f8776 64%, var(--environment-ground)); }
+:root[data-theme='dark'] .santeuil-valley-left { fill: color-mix(in srgb, #284837 72%, var(--environment-land)); }
+:root[data-theme='dark'] .santeuil-valley-right { fill: color-mix(in srgb, #34513d 73%, var(--environment-land)); }
+:root[data-theme='dark'] .santeuil-stream-bank { fill: color-mix(in srgb, #403a30 72%, var(--environment-ground)); }
+:root[data-theme='dark'] .santeuil-stream-glint { opacity: .5; }
 .scene-sky { fill: url(#scene-sky-gradient); }
 .scene-sky-top { stop-color: color-mix(in srgb, var(--scene-sky) 55%, white); }
 .scene-sky-bottom { stop-color: var(--scene-sky); }
@@ -739,6 +790,76 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .cryo-plume { fill: none; stroke: #b8edf0; stroke-width: 5; stroke-linecap: round; }
 .cryo-plume.small { stroke-width: 3; }
 .snow-mark.small { stroke-width: 1.5 !important; }
+.santeuil-accessory { filter: drop-shadow(0 5px 4px rgba(31,43,37,.26)); }
+.stem-lantern-shadow, .organ-shadow, .automaton-shadow { fill: rgba(27,40,34,.2); }
+.stem-lantern-section,
+.stem-lantern-frame,
+.stem-lantern-node,
+.stem-lantern-base,
+.stem-lantern-cutaway { fill: color-mix(in srgb, #b5a56f 74%, var(--local-secondary)); stroke: color-mix(in srgb, var(--worm-deep) 76%, #584c37); stroke-width: 3; stroke-linejoin: round; }
+.stem-lantern-section.upper { fill: color-mix(in srgb, #cabd88 70%, var(--local-primary)); }
+.stem-lantern-hollow { fill: color-mix(in srgb, var(--worm-deep) 79%, #30291f); stroke: color-mix(in srgb, #ddcfa0 70%, var(--worm-deep)); stroke-width: 2; }
+.stem-lantern-glass { fill: rgba(215,240,231,.5); stroke: color-mix(in srgb, var(--worm-deep) 73%, #4e6b61); stroke-width: 2.5; stroke-linejoin: round; }
+.stem-lantern-glass-highlight { fill: none; stroke: rgba(255,255,255,.76); stroke-width: 4; stroke-linecap: round; }
+.stem-lantern-handle,
+.stem-lantern-hinge { fill: none; stroke: color-mix(in srgb, var(--worm-deep) 76%, #68583c); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.stem-lantern-handle.companion { stroke-width: 4; }
+.stem-lantern-specimen { fill: none; stroke: color-mix(in srgb, var(--local-primary) 58%, #2c6957); stroke-width: 4; stroke-linecap: round; }
+.stem-lantern-lens { fill: rgba(240,228,153,.38); stroke: color-mix(in srgb, var(--local-secondary) 58%, #8f7040); stroke-width: 2; }
+.stem-seed-cage path,
+.stem-umbel path { fill: none; stroke: color-mix(in srgb, var(--worm-deep) 72%, #6a5a3e); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.stem-seed-cage ellipse,
+.stem-umbel circle { fill: color-mix(in srgb, var(--local-secondary) 66%, #b6914f); stroke: color-mix(in srgb, var(--worm-deep) 69%, #5e5039); stroke-width: 1.5; }
+.organ-cabinet,
+.organ-cabinet-cap,
+.organ-secretary-lid,
+.organ-keybed,
+.organ-keybed-frame { fill: color-mix(in srgb, #c6975e 72%, var(--local-secondary)); stroke: color-mix(in srgb, var(--worm-deep) 78%, #604327); stroke-width: 3; stroke-linejoin: round; }
+.organ-cabinet.companion { fill: color-mix(in srgb, #b98754 68%, var(--local-primary)); }
+.organ-cabinet-cap, .organ-secretary-lid { fill: color-mix(in srgb, #ddb879 75%, var(--local-secondary)); }
+.organ-window { fill: color-mix(in srgb, #543b2a 77%, var(--worm-deep)); stroke: color-mix(in srgb, #e1bd7b 62%, var(--worm-deep)); stroke-width: 2.5; }
+.organ-cylinder { fill: color-mix(in srgb, #b47840 69%, var(--local-secondary)); stroke: color-mix(in srgb, var(--worm-deep) 75%, #543723); stroke-width: 2.5; }
+.organ-pin { fill: color-mix(in srgb, #e8cb72 72%, var(--paper-strong)); stroke: color-mix(in srgb, #6f552c 73%, var(--worm-deep)); stroke-width: .8; }
+.organ-bellows { fill: color-mix(in srgb, #7d3f42 68%, var(--local-primary)); stroke: color-mix(in srgb, var(--worm-deep) 78%, #542e2e); stroke-width: 3; stroke-linejoin: round; }
+.organ-bellows.companion { fill: color-mix(in srgb, #516e62 60%, var(--local-primary)); }
+.organ-bellows-fold { fill: none; stroke: color-mix(in srgb, var(--paper-strong) 36%, #d7ae76); stroke-width: 2; }
+.organ-key { fill: none; stroke: color-mix(in srgb, var(--worm-deep) 72%, #5d452d); stroke-width: 1.3; }
+.organ-key.dark { stroke: color-mix(in srgb, var(--worm-deep) 90%, #2f261f); stroke-width: 3; }
+.organ-crank,
+.organ-vent,
+.organ-brass-inlay { fill: none; stroke: color-mix(in srgb, #c49a48 74%, var(--worm-deep)); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.organ-crank { stroke-width: 4; }
+.organ-crank-knob { fill: color-mix(in srgb, #9b6941 68%, var(--local-primary)); stroke: var(--worm-deep); stroke-width: 2; }
+.organ-rack-frame { fill: none; stroke: color-mix(in srgb, #865c36 65%, var(--worm-deep)); stroke-width: 2.5; }
+.organ-pipe { fill: color-mix(in srgb, #d1a84e 63%, var(--paper-strong)); stroke: color-mix(in srgb, #6d5528 75%, var(--worm-deep)); stroke-width: 1.5; }
+.organ-empty-socket { fill: color-mix(in srgb, var(--worm-deep) 81%, #30271d); stroke: color-mix(in srgb, #c9a55b 54%, var(--worm-deep)); stroke-width: 1; }
+.automaton-base { fill: color-mix(in srgb, #8a6a47 62%, var(--local-primary)); stroke: color-mix(in srgb, var(--worm-deep) 79%, #4d3d2d); stroke-width: 3; stroke-linejoin: round; }
+.automaton-base.companion { fill: color-mix(in srgb, #765b43 66%, var(--local-secondary)); }
+.automaton-pond { fill: color-mix(in srgb, #78b7ad 62%, var(--paper-strong)); stroke: color-mix(in srgb, var(--worm-deep) 62%, #376b63); stroke-width: 2.5; }
+.automaton-pond-ripple { fill: none; stroke: color-mix(in srgb, var(--paper-strong) 67%, #76b7ad); stroke-width: 2; stroke-linecap: round; }
+.automaton-post,
+.automaton-carousel-arm,
+.automaton-linkage,
+.automaton-gear-link { fill: none; stroke: color-mix(in srgb, #a77d3b 67%, var(--worm-deep)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.automaton-gear { fill: color-mix(in srgb, #c39846 66%, var(--local-secondary)); stroke: color-mix(in srgb, var(--worm-deep) 78%, #594523); stroke-width: 3; }
+.automaton-gear.small { fill: color-mix(in srgb, #836038 68%, var(--local-primary)); }
+.automaton-gear-tooth { fill: none; stroke: color-mix(in srgb, #a9803b 70%, var(--worm-deep)); stroke-width: 5; stroke-linecap: square; }
+.automaton-crank { fill: none; stroke: color-mix(in srgb, #9c7537 70%, var(--worm-deep)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.automaton-crank-knob { fill: color-mix(in srgb, var(--local-primary) 66%, #835f39); stroke: var(--worm-deep); stroke-width: 2; }
+.dragonfly-wing { fill: rgba(223,242,231,.66); stroke: color-mix(in srgb, var(--local-primary) 64%, #3a7164); stroke-width: 2.5; stroke-linejoin: round; }
+.dragonfly-wing.rear { fill: rgba(239,226,196,.55); }
+.dragonfly-body { fill: color-mix(in srgb, var(--local-primary) 62%, #375f4f); stroke: color-mix(in srgb, var(--worm-deep) 79%, #273f36); stroke-width: 2.5; }
+.dragonfly-joint { fill: color-mix(in srgb, var(--local-secondary) 72%, #d0a447); stroke: color-mix(in srgb, var(--worm-deep) 72%, #4d432d); stroke-width: 1; }
+.dragonfly-antenna { fill: none; stroke: color-mix(in srgb, var(--worm-deep) 79%, #273f36); stroke-width: 2; stroke-linecap: round; }
+:root[data-theme='dark'] .stem-lantern-glass { fill: rgba(150,197,183,.34); }
+:root[data-theme='dark'] .stem-lantern-glass-highlight { opacity: .48; }
+:root[data-theme='dark'] .organ-cabinet,
+:root[data-theme='dark'] .organ-cabinet-cap,
+:root[data-theme='dark'] .organ-secretary-lid,
+:root[data-theme='dark'] .organ-keybed,
+:root[data-theme='dark'] .organ-keybed-frame { fill: color-mix(in srgb, #8d653c 72%, var(--local-secondary)); }
+:root[data-theme='dark'] .automaton-pond { fill: color-mix(in srgb, #416f69 73%, var(--local-primary)); }
+:root[data-theme='dark'] .dragonfly-wing { fill: rgba(172,211,199,.46); }
 .fig-visor path:first-child, .fig-visor path:nth-of-type(4) { fill: #72a66b; stroke: var(--worm-deep); stroke-width: 3; }
 .fig-vein, .visor-band { fill: none; stroke: #315f50; stroke-width: 2.5; stroke-linecap: round; }
 .satchel-strap { fill: none; stroke: #745744; stroke-width: 7; stroke-linecap: round; }
