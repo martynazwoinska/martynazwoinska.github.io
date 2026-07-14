@@ -1296,9 +1296,9 @@ function renderPiece(target, item, wormPart) {
     "hogweed-specimen-lantern": { primary: [327, 133, .66, 3], companion: [61, 126, .58, -4] },
     "santeuil-cylinder-organ": { primary: [183, 191, .59, -2], companion: [86, 208, .52, 2] },
     "couleuvre-dragonfly-automaton": { primary: [304, 235, .61, -2], companion: [76, 266, .5, 3] },
-    "midmar-compost-tumbler": { primary: [321, 160, .61, -2], companion: [78, 167, .52, 3] },
-    "galaxy-plate-scanner": { primary: [184, 203, .56, -1], companion: [77, 218, .47, 2] },
-    "agassiz-ice-flow-model": { primary: [300, 246, .58, -2], companion: [73, 260, .47, 2] }
+    "midmar-compost-tumbler": { primary: [325, 134, .56, -2], companion: [48, 127, .48, 3] },
+    "galaxy-plate-scanner": { primary: [184, 204, .54, -1], companion: [68, 202, .43, 2] },
+    "agassiz-ice-flow-model": { primary: [303, 285, .52, -2], companion: [52, 290, .42, 2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;
