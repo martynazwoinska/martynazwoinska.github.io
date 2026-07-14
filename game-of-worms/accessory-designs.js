@@ -25,7 +25,7 @@ const rows = [
   ["elegans", "Auckland, New Zealand", "ECA36 grass-litter profiler", "eca36-grass-litter-profiler", "Auckland volcanic-field monitor", "auckland-volcanic-field-monitor", "ECA36 reproductive-timing clock", "eca36-reproductive-timing-clock"],
   ["elegans", "Araucanía, Chile", "JU4400 compost labyrinth", "compost-labyrinth", "Llaima ashfall recorder", "ashfall-recorder", "JU4400 test-cross identifier", "test-cross-mechanism"],
   ["nigoni", "Trivandrum, Kerala · JU1325", "JU1325 sample-tube timekeeper", "ju1325-sample-tube-timekeeper", "Trivandrum garden waterworks", "trivandrum-garden-waterworks", "Trivandrum bandstand music box", "trivandrum-bandstand-music-box"],
-  ["nigoni", "Singapore · ZF1220", "mangrove stilts", "stilts", "mudflat waders", "waders", "skyline fan", "fan"],
+  ["nigoni", "Singapore · ZF1220", "ZF1220 five-rib field atlas", "zf1220-five-rib-field-atlas", "multifemale provenance merger", "multifemale-provenance-merger", "Holttum orchid hybridisation engine", "holttum-orchid-hybridisation-engine"],
   ["nigoni", "Praslin, Seychelles · YR106", "granite casque", "casque", "palm bustle", "palm-bustle", "coco-de-mer hand drum", "coco-de-mer-drum"],
   ["nigoni", "São Tomé · JU2484", "volcanic-needle ruff", "volcanic-needle-ruff", "cacao ocarina", "cacao-ocarina", "waterfall pennant", "waterfall-pennant"],
   ["nigoni", "Mahahual, Mexico · JU2617", "reef mask", "reef-mask", "seagrass tail", "seagrass-tail", "lagoon saxophone", "lagoon-saxophone"],
@@ -98,6 +98,11 @@ const trivandrumRendererIds = new Set([
   "nigoni::Trivandrum, Kerala · JU1325::wrap",
   "nigoni::Trivandrum, Kerala · JU1325::charm"
 ]);
+const singaporeRendererIds = new Set([
+  "nigoni::Singapore · ZF1220::headwear",
+  "nigoni::Singapore · ZF1220::wrap",
+  "nigoni::Singapore · ZF1220::charm"
+]);
 const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
 const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|snorkel|compass|press|gauge rod|camera rig/i;
 const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|skates|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
@@ -114,6 +119,7 @@ function hasNamedRenderer(item) {
     || aucklandRendererFamilies.has(item.family)
     || araucaniaRendererIds.has(item.id)
     || trivandrumRendererIds.has(item.id)
+    || singaporeRendererIds.has(item.id)
     || item.family === "volcanic-needle-ruff"
     || instrumentRendererPattern.test(item.label)
     || fieldToolRendererPattern.test(item.label)
@@ -1491,6 +1497,157 @@ function drawTrivandrumAccessory(group, item, companion) {
   return false;
 }
 
+function drawSingaporeAccessory(group, item, companion) {
+  if (!item.id.startsWith("nigoni::Singapore · ZF1220::")) return false;
+
+  if (item.family === "zf1220-five-rib-field-atlas") {
+    group.dataset.renderer = "zf1220-five-rib-field-atlas";
+    group.classList.add("singapore-accessory", "five-rib-field-atlas", companion ? "five-rib-atlas-companion" : "five-rib-atlas-primary");
+    if (companion) {
+      add(group, "path", { class: "singapore-accessory-shadow", d: "M-75 126Q4 149 82 124Q43 158-68 153Z" });
+      add(group, "path", { class: "atlas-tall-backboard", d: "M-63-115Q-15-132 53-113L73 104Q14 121-61 101Z" });
+      add(group, "path", { class: "atlas-staggered-page page-one", d: "M-47-99Q-7-113 48-99L55-57Q9-69-45-54Z" });
+      add(group, "path", { class: "atlas-staggered-page page-two", d: "M-42-48Q5-61 58-45L62-2Q13-15-39 0Z" });
+      add(group, "path", { class: "atlas-staggered-page page-three", d: "M-38 8Q8-3 63 10L67 55Q18 42-34 58Z" });
+      add(group, "path", { class: "atlas-staggered-page page-four", d: "M-34 64Q15 51 68 67L70 99Q17 112-31 98Z" });
+      [-91,-64,-35,-6,23,52,81].forEach((cy, index) => {
+        add(group, "circle", { class: index%2 ? "atlas-spiral-ring deep" : "atlas-spiral-ring", cx: -60 + index*.7, cy, r: 7 });
+        add(group, "path", { class: "atlas-spiral-link", d: `M${-68+index*.7} ${cy}H${-49+index*.7}` });
+      });
+      add(group, "path", { class: "atlas-longitudinal-fruit-sleeve", d: "M-11-87Q8-108 27-87L40 63Q22 88 1 65Z" });
+      add(group, "path", { class: "atlas-sleeve-ribs", d: "M-5-80Q10-43 6 61M6-90Q21-44 17 72M17-89Q32-44 29 62" });
+      add(group, "path", { class: "atlas-page-rib-diagram", d: "M-34-76Q-19-90-6-76Q-18-61-34-76ZM39-32Q54-47 65-31Q52-17 39-32ZM-27 27Q-14 13-2 27Q-13 42-27 27Z" });
+      add(group, "path", { class: "atlas-sliding-tab-rail", d: "M50-91L66 78" });
+      add(group, "path", { class: "atlas-location-tab", d: "M43-18H76L79 12H46Z" });
+      const tabText = add(group, "text", { class: "atlas-small-text", x: 61, y: 2, "text-anchor": "middle" });
+      tabText.textContent = "SF0";
+      add(group, "path", { class: "atlas-base-feet", d: "M-46 99L-55 123H-22L-14 106M46 106L54 126H83L65 96" });
+    } else {
+      add(group, "path", { class: "singapore-accessory-shadow", d: "M-163 92Q0 128 166 87Q84 143-150 136Z" });
+      add(group, "path", { class: "atlas-pentagonal-board", d: "M-78-76L0-119L83-76L145-14L113 72L0 97L-114 72L-146-14Z" });
+      add(group, "path", { class: "atlas-central-chamber", d: "M0-59L18-19L61-15L29 14L38 57L0 36L-38 57L-29 14L-61-15L-18-19Z" });
+      add(group, "path", { class: "atlas-starfruit-flesh", d: "M0-43L13-13L45-10L21 11L28 42L0 27L-28 42L-21 11L-45-10L-13-13Z" });
+      add(group, "ellipse", { class: "atlas-starfruit-core", cx: 0, cy: 2, rx: 11, ry: 9 });
+      const shutters = [
+        ["M-142-18L-81-75L-48-50L-76 2Z", "M-122-18Q-92-40-62-37M-112-4Q-89-20-72-18"],
+        ["M-78-79L-6-120L-1-72L-50-48Z", "M-59-87L-18-109M-49-73L-17-91"],
+        ["M6-120L82-78L51-48L3-72Z", "M21-105L60-85M24-88L55-70"],
+        ["M86-73L145-15L75 2L51-46Z", "M103-49Q123-28 129-11M91-34Q110-17 116-5"],
+        ["M142-8L111 70L64 42L75 5Z", "M118 4L102 50M102 8L89 38"]
+      ];
+      shutters.forEach(([panel, detail], index) => {
+        add(group, "path", { class: index%2 ? "atlas-hinged-folio deep" : "atlas-hinged-folio", d: panel });
+        add(group, "path", { class: "atlas-folio-diagram", d: detail });
+      });
+      [[-74,-48],[-27,-80],[28,-80],[76,-45],[82,28]].forEach(([cx,cy], index) => add(group, "circle", { class: "atlas-folio-hinge", cx, cy, r: index===4?5:4 }));
+      add(group, "path", { class: "atlas-specimen-pocket", d: "M-102 34H-44L-40 72H-106Z" });
+      add(group, "path", { class: "atlas-pocket-flap", d: "M-101 35L-72 54L-44 34" });
+      add(group, "path", { class: "atlas-leaf-diagram", d: "M57 30Q83 7 99 33Q75 52 57 30ZM76 30L97 16" });
+      add(group, "path", { class: "atlas-id-tag", d: "M-55 74H73L68 103H-60Z" });
+      const idText = add(group, "text", { class: "atlas-id-text", x: 7, y: 94, "text-anchor": "middle" });
+      idText.textContent = "ZF1220 / SF0";
+    }
+    return true;
+  }
+
+  if (item.family === "multifemale-provenance-merger") {
+    group.dataset.renderer = "multifemale-provenance-merger";
+    group.classList.add("singapore-accessory", "provenance-merger", companion ? "provenance-merger-companion" : "provenance-merger-primary");
+    if (companion) {
+      add(group, "path", { class: "singapore-accessory-shadow", d: "M-88 120Q0 148 94 117Q47 158-79 152Z" });
+      add(group, "path", { class: "merger-drum-stand", d: "M-58 58H44L64 123H-75Z" });
+      add(group, "circle", { class: "merger-offset-drum", cx: -15, cy: -22, r: 79 });
+      add(group, "circle", { class: "merger-drum-inner", cx: -15, cy: -22, r: 56 });
+      const inletArcs = [
+        "M-84-62Q-48-90-18-72Q10-55 8-21",
+        "M-93-17Q-58-42-31-29Q-3-16 8-7",
+        "M-73 38Q-46 7-20 14Q1 19 13 4",
+        "M-23-101Q-5-72 9-54Q25-35 9-18"
+      ];
+      inletArcs.forEach((d, index) => add(group, "path", { class: index%2 ? "merger-drum-track deep" : "merger-drum-track", d }));
+      [[-83,-62],[-93,-17],[-73,38],[-23,-101]].forEach(([cx,cy], index) => add(group, "circle", { class: index%2 ? "merger-drum-inlet deep" : "merger-drum-inlet", cx, cy, r: 8 }));
+      add(group, "circle", { class: "merger-drum-hub", cx: 10, cy: -12, r: 14 });
+      add(group, "path", { class: "merger-suspension-arm", d: "M10 2Q40 20 55 45V69" });
+      add(group, "path", { class: "merger-suspended-vial", d: "M39 61H73L68 115Q56 129 44 115Z" });
+      add(group, "path", { class: "merger-vial-stopper", d: "M35 55H77V68H35Z" });
+      add(group, "path", { class: "merger-vial-culture", d: "M45 96Q56 89 67 96L65 113Q56 122 47 113Z" });
+      add(group, "path", { class: "merger-drum-crank", d: "M50-60H80V-83H98" });
+      add(group, "circle", { class: "merger-crank-handle", cx: 102, cy: -83, r: 6 });
+    } else {
+      add(group, "path", { class: "singapore-accessory-shadow", d: "M-164 91Q0 126 167 87Q84 141-151 135Z" });
+      add(group, "path", { class: "merger-channel-table", d: "M-154-55H75L151-7L130 76H-151Z" });
+      add(group, "path", { class: "merger-table-rim", d: "M-145-42H69L132-3L116 59H-139Z" });
+      const ports = [[-125,-24],[-129,4],[-119,34],[-61,-33],[-57,39]];
+      ports.forEach(([cx,cy], index) => {
+        add(group, "circle", { class: index%2 ? "merger-founder-port deep" : "merger-founder-port", cx, cy, r: 10 });
+        const jointX = index < 3 ? -29 : -7;
+        const jointY = index < 3 ? 2 : 12;
+        add(group, "path", { class: index%2 ? "merger-convergence-channel deep" : "merger-convergence-channel", d: `M${cx+10} ${cy}Q${(cx+jointX)/2} ${cy} ${jointX} ${jointY}` });
+      });
+      add(group, "path", { class: "merger-common-channel", d: "M-30 3Q12 9 42 3L73 1" });
+      add(group, "path", { class: "merger-culture-chamber", d: "M65-30H125L136 4L124 46H68L56 4Z" });
+      add(group, "path", { class: "merger-chamber-window", d: "M76-18H115L124 4L114 34H78L68 4Z" });
+      add(group, "path", { class: "merger-culture-wave", d: "M73 17Q94 7 119 17L114 33H78Z" });
+      add(group, "path", { class: "merger-chamber-cap", d: "M75-43H116L122-29H68Z" });
+      add(group, "path", { class: "merger-table-feet", d: "M-128 70L-140 105H-105L-94 73M103 71L113 105H148L128 66" });
+      add(group, "path", { class: "merger-provenance-plaque", d: "M-38 48H43L48 72H-43Z" });
+      const plaqueText = add(group, "text", { class: "merger-plaque-text", x: 3, y: 65, "text-anchor": "middle" });
+      plaqueText.textContent = "ZF1220";
+    }
+    return true;
+  }
+
+  if (item.family === "holttum-orchid-hybridisation-engine") {
+    group.dataset.renderer = "holttum-orchid-hybridisation-engine";
+    group.classList.add("singapore-accessory", "orchid-hybridisation-engine", companion ? "orchid-engine-companion" : "orchid-engine-primary");
+    if (companion) {
+      add(group, "path", { class: "singapore-accessory-shadow", d: "M-89 123Q2 150 96 119Q49 159-80 154Z" });
+      add(group, "path", { class: "orchid-propagation-base", d: "M-69 83H67L83 126H-82Z" });
+      add(group, "path", { class: "orchid-propagation-tower", d: "M-48-81H37L54 90H-57Z" });
+      add(group, "path", { class: "orchid-capsule-hopper", d: "M-68-128H55L35-79H-46Z" });
+      add(group, "path", { class: "orchid-hopper-ribs", d: "M-46-119L-31-85M-14-122L-8-82M20-121L15-82M48-117L34-84" });
+      add(group, "path", { class: "orchid-capsule-drop", d: "M-17-81V-51Q-17-36-4-36Q9-36 9-51V-81" });
+      add(group, "path", { class: "orchid-tower-window", d: "M-35-29H32V66H-42Z" });
+      [[-20,-7],[10,3],[-18,38],[12,48]].forEach(([cx,cy], index) => {
+        add(group, "path", { class: index%2 ? "orchid-germination-flask deep" : "orchid-germination-flask", d: `M${cx-8} ${cy-13}H${cx+8}V${cy-3}Q${cx+18} ${cy+9} ${cx+12} ${cy+19}Q${cx} ${cy+28} ${cx-12} ${cy+19}Q${cx-18} ${cy+9} ${cx-8} ${cy-3}Z` });
+        add(group, "path", { class: "orchid-flask-seedling", d: `M${cx} ${cy+19}V${cy+7}Q${cx-8} ${cy+1} ${cx-11} ${cy+8}M${cx} ${cy+12}Q${cx+9} ${cy+4} ${cx+12} ${cy+11}` });
+      });
+      add(group, "circle", { class: "orchid-parentage-dial", cx: 58, cy: -20, r: 34 });
+      add(group, "circle", { class: "orchid-parentage-hub", cx: 58, cy: -20, r: 7 });
+      [-72,-36,0,36,72].forEach(angle => {
+        const radians = angle * Math.PI / 180;
+        add(group, "path", { class: "orchid-parentage-tick", d: `M${(58+Math.cos(radians)*22).toFixed(1)} ${(-20+Math.sin(radians)*22).toFixed(1)}L${(58+Math.cos(radians)*30).toFixed(1)} ${(-20+Math.sin(radians)*30).toFixed(1)}` });
+      });
+      add(group, "path", { class: "orchid-side-crank", d: "M75 37H100V60H118" });
+      add(group, "circle", { class: "orchid-crank-grip", cx: 122, cy: 60, r: 7 });
+      add(group, "path", { class: "orchid-tower-feet", d: "M-49 88L-60 116M45 87L58 116" });
+    } else {
+      add(group, "path", { class: "singapore-accessory-shadow", d: "M-166 93Q1 127 169 89Q85 143-152 137Z" });
+      add(group, "path", { class: "orchid-pollination-bench", d: "M-153 36H153L133 86H-137Z" });
+      add(group, "path", { class: "orchid-bench-rail", d: "M-138 23H137V43H-138Z" });
+      add(group, "path", { class: "orchid-clamp left", d: "M-111 25V-50Q-111-69-94-69Q-77-69-77-50V25ZM-120-54H-68" });
+      add(group, "path", { class: "orchid-clamp right", d: "M80 25V-38Q80-63 104-63Q128-63 128-38V25ZM69-42H139" });
+      const leftPetals = [[-96,-83,-25,-10],[-117,-70,-28,12],[-76,-72,30,10],[-103,-48,-6,28]];
+      leftPetals.forEach(([cx,cy,rx,ry], index) => add(group, "ellipse", { class: index%2 ? "orchid-flower-petal left deep" : "orchid-flower-petal left", cx, cy, rx: Math.abs(rx), ry: Math.abs(ry), transform: `rotate(${index===1?-35:index===2?32:index===3?4:-8} ${cx} ${cy})` }));
+      add(group, "path", { class: "orchid-flower-lip left", d: "M-116-60Q-98-38-80-60Q-91-27-101-27Q-111-29-116-60Z" });
+      const rightPetals = [[104,-83,18,29],[80,-71,29,11],[129,-68,26,13],[102,-50,12,25]];
+      rightPetals.forEach(([cx,cy,rx,ry], index) => add(group, "ellipse", { class: index%2 ? "orchid-flower-petal right deep" : "orchid-flower-petal right", cx, cy, rx, ry, transform: `rotate(${index===1?-28:index===2?25:index===3?-3:7} ${cx} ${cy})` }));
+      add(group, "path", { class: "orchid-flower-lip right", d: "M85-59Q104-35 124-58Q114-27 103-26Q91-29 85-59Z" });
+      add(group, "path", { class: "orchid-pollen-bridge", d: "M-78-72Q-24-111 29-83Q50-71 80-72" });
+      add(group, "circle", { class: "orchid-bridge-carriage", cx: 6, cy: -92, r: 13 });
+      add(group, "path", { class: "orchid-pollen-probe", d: "M6-80V-58L16-48" });
+      add(group, "path", { class: "orchid-seed-capsule-window", d: "M-42-4H45L53 38H-49Z" });
+      add(group, "path", { class: "orchid-seed-capsule", d: "M-17 20Q-25-4 1-11Q29-3 20 20Q2 37-17 20Z" });
+      add(group, "path", { class: "orchid-capsule-seam", d: "M-14 10Q2 17 21 9M1-7V29" });
+      add(group, "path", { class: "orchid-blank-pedigree-ribbon", d: "M-66 50H71L61 77L47 69L32 79H-47L-61 68L-76 76Z" });
+      add(group, "path", { class: "orchid-bench-feet", d: "M-122 82L-137 111H-101L-88 85M92 84L104 111H141L126 80" });
+    }
+    return true;
+  }
+
+  return false;
+}
+
 function drawInstrument(group, item, companion) {
   const label = item.label;
   if (/fiddle/i.test(label)) {
@@ -2028,6 +2185,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawAucklandAccessory(group, item, companion)) return true;
   if (drawAraucaniaAccessory(group, item, companion)) return true;
   if (drawTrivandrumAccessory(group, item, companion)) return true;
+  if (drawSingaporeAccessory(group, item, companion)) return true;
   if (drawUniqueNamedAccessory(group, item, companion)) return true;
   if (drawRepeatedFamilyAccessory(group, item, companion)) return true;
   if (drawN2Accessory(group, item, companion)) return true;
@@ -2086,7 +2244,10 @@ function renderPiece(target, item, wormPart) {
     "test-cross-mechanism": { primary: [360, 268, .35, -1], companion: [0, 292, .29, 2] },
     "ju1325-sample-tube-timekeeper": { primary: [355, 145, .36, -2], companion: [0, 105, .28, 2] },
     "trivandrum-garden-waterworks": { primary: [220, 188, .35, -1], companion: [112, 215, .28, 2] },
-    "trivandrum-bandstand-music-box": { primary: [355, 267, .34, -1], companion: [-2, 290, .28, 2] }
+    "trivandrum-bandstand-music-box": { primary: [355, 267, .34, -1], companion: [-2, 290, .28, 2] },
+    "zf1220-five-rib-field-atlas": { primary: [356, 130, .36, -2], companion: [-8, 108, .29, 2] },
+    "multifemale-provenance-merger": { primary: [225, 188, .34, -1], companion: [98, 192, .28, 2] },
+    "holttum-orchid-hybridisation-engine": { primary: [354, 268, .34, -1], companion: [-6, 292, .28, 2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;

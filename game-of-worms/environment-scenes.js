@@ -166,11 +166,11 @@ const canonicalProfiles = {
     { weather: "cloud", cues: [] }
   ),
   "Singapore · ZF1220": profile(
-    "singapore-mangrove-city", "Mangrove edge of an equatorial city",
-    "A dense equatorial city still contains rainforest, freshwater habitats, mangroves, mudflats, and reefs.",
-    "Singapore NParks", "https://www.nparks.gov.sg/nature/ecosystems/terrestrial-freshwater",
-    palettes.wetCity, [[0, 302], [100, 278], [210, 286], [300, 260], [400, 282], [500, 270], [600, 292]],
-    { water: "mudflat", weather: "rain", cues: [["city", 455, 245, .8], ["mangrove", 95, 286, .95], ["boardwalk", 310, 347, .8]] }
+    "singapore-zf1220-starfruit-garden", "ZF1220 rotten starfruit and planted tropical garden",
+    "ZF1220, also known as SF0, was collected from rotten starfruit in Singapore. The record gives no exact address or landscape, so the planted tropical path and narrow city gap are wider regional context, not a claimed collection site.",
+    "Félix Lab ZF1220 record", "https://www.justbio.com/tools/worms/details.php?strain_id=333574",
+    palettes.rainforest, [[0, 265], [82, 246], [161, 257], [242, 231], [325, 242], [408, 218], [493, 235], [600, 209]],
+    { weather: "cloud", cues: [] }
   ),
   "Praslin, Seychelles · YR106": profile(
     "praslin-vallee-de-mai", "Coco-de-mer forest and granite shore",
@@ -445,12 +445,12 @@ const sceneCompositions = Object.freeze({
     "M274 430Q247 385 273 348Q300 312 285 277Q270 249 305 224", [],
     "a collapsed flower-and-leaf bundle below a curved lake, with tiered paths climbing between a bamboo fan and partly hidden museum roof"
   ),
-  "singapore-mangrove-city": composition(
-    "M0 380 Q127 367 251 385 Q378 402 500 375 L600 381 V430 H0Z",
-    "M0 330 H600 V373 H0Z",
-    [["mangrove", 31, 368, .98], ["city", 557, 333, .62]],
-    "M104 430 L476 296 M151 430 L502 304 M204 430 L526 314", [1, 0, 2],
-    "a diagonal boardwalk vanishing line connecting mudflat roots and towers"
+  "singapore-zf1220-starfruit-garden": composition(
+    "M0 333Q92 311 184 326Q282 344 377 314Q478 282 600 304V430H0Z",
+    "M0 254Q79 226 155 244Q237 262 316 233Q403 201 479 219Q544 233 600 207V326H0Z",
+    [],
+    "M286 430Q252 390 278 350Q305 311 292 273Q280 239 320 211", [],
+    "one softened five-ridged starfruit and detached star section below a drooping pinnate bough, with an S-curving planted path ending in one narrow urban opening"
   ),
   "praslin-vallee-de-mai": composition(
     "M0 390 Q99 355 195 386 Q301 417 405 380 Q507 344 600 372 V430 H0Z",
@@ -1399,6 +1399,84 @@ function drawTrivandrumBotanicalGardenScene(target, palette) {
   [[-99,20,3],[-62,34,4],[-25,30,3],[8,35,4],[45,29,3],[82,20,4]].forEach(([cx,cy,r], index) => append(decay, "circle", { class: index % 2 ? "trivandrum-decay-fragment deep" : "trivandrum-decay-fragment", cx, cy, r }));
 }
 
+function drawSingaporeStarfruitGardenScene(target, palette) {
+  append(target, "rect", { class: "environment-sky singapore-garden-sky", width: 600, height: 430, fill: palette[0] });
+
+  const humidHaze = append(target, "g", { class: "singapore-humid-haze", "aria-hidden": "true" });
+  append(humidHaze, "path", { class: "singapore-haze-cloud back", d: "M25 72Q48 47 79 63Q104 36 139 62Q168 55 188 80H25Z" });
+  append(humidHaze, "path", { class: "singapore-haze-cloud", d: "M386 57Q410 35 439 51Q463 28 496 51Q526 46 545 70H386Z" });
+
+  const urbanGap = append(target, "g", { class: "singapore-narrow-urban-gap", transform: "translate(319 170)", "aria-hidden": "true" });
+  append(urbanGap, "path", { class: "singapore-city-haze", d: "M-42 70V9H-26V-8H-9V25H6V-31H24V5H39V70Z" });
+  append(urbanGap, "path", { class: "singapore-city-edge", d: "M-42 70V9H-26V-8H-9V25H6V-31H24V5H39V70M-20 9H-13M12-15H18M12-2H18M12 11H18M12 24H18" });
+
+  const farGarden = append(target, "g", { class: "singapore-planted-canopy", "aria-hidden": "true" });
+  append(farGarden, "path", { class: "singapore-canopy-mass left", d: "M0 194Q18 158 49 182Q73 137 110 175Q141 145 169 183Q198 153 226 190Q248 172 276 198V273H0Z" });
+  append(farGarden, "path", { class: "singapore-canopy-mass right", d: "M355 194Q378 159 407 184Q434 145 466 178Q499 143 529 182Q558 154 600 189V268H355Z" });
+  append(farGarden, "path", { class: "singapore-canopy-highlight", d: "M17 198Q45 171 73 195M85 187Q113 158 143 190M157 188Q186 163 214 194M373 197Q403 169 432 195M445 186Q474 156 506 190M520 186Q552 163 587 194" });
+  [[34,195,51,260],[102,185,111,263],[190,190,181,271],[407,187,397,264],[493,181,505,262],[567,189,576,270]].forEach(([x1,y1,x2,y2], index) => {
+    append(farGarden, "path", { class: index % 2 ? "singapore-canopy-trunk deep" : "singapore-canopy-trunk", d: `M${x1} ${y1}Q${(x1+x2)/2-5} ${(y1+y2)/2} ${x2} ${y2}` });
+  });
+
+  append(target, "path", { class: "singapore-garden-ground", d: "M0 252Q82 226 164 245Q251 267 335 238Q430 204 507 224Q559 235 600 215V430H0Z" });
+
+  const beds = append(target, "g", { class: "singapore-planted-beds", "aria-hidden": "true" });
+  append(beds, "path", { class: "singapore-bed upper", d: "M0 276Q82 250 164 266Q226 278 270 264L279 294Q218 310 155 295Q76 278 0 310Z" });
+  append(beds, "path", { class: "singapore-bed lower", d: "M362 286Q443 253 520 268Q565 277 600 262V304Q560 315 516 305Q439 288 369 318Z" });
+  [[25,278,-9],[62,268,8],[102,276,-6],[146,271,10],[404,288,-8],[451,276,7],[501,286,-10],[552,281,8]].forEach(([x,y,angle], index) => {
+    const plant = append(beds, "g", { class: `singapore-bed-plant tone-${index%3}`, transform: `translate(${x} ${y}) rotate(${angle})` });
+    append(plant, "path", { class: "singapore-bed-stem", d: "M0 12Q2-5 0-25" });
+    append(plant, "path", { class: "singapore-bed-leaf", d: "M0-3Q-17-18-23-3Q-10 9 0-3ZM0-10Q16-24 23-10Q11 3 0-10Z" });
+  });
+
+  const path = append(target, "g", { class: "singapore-s-path", "aria-hidden": "true" });
+  append(path, "path", { class: "singapore-path-surface", d: "M230 430Q267 390 247 356Q226 321 267 296Q304 273 289 246Q278 226 311 207H345Q315 231 330 257Q348 288 305 314Q268 337 290 368Q312 400 319 430Z" });
+  append(path, "path", { class: "singapore-path-edge", d: "M230 430Q267 390 247 356Q226 321 267 296Q304 273 289 246Q278 226 311 207M319 430Q312 400 290 368Q268 337 305 314Q348 288 330 257Q315 231 345 207" });
+  [[313,226,13,3,-4],[310,260,19,4,6],[292,304,26,5,-7],[271,351,35,6,6],[274,405,43,7,-5]].forEach(([cx,cy,rx,ry,angle], index) => append(path, "ellipse", { class: index % 2 ? "singapore-path-step deep" : "singapore-path-step", cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` }));
+
+  const carambola = append(target, "g", { class: "singapore-carambola-bough", "aria-hidden": "true" });
+  append(carambola, "path", { class: "singapore-bough-main", d: "M0 109Q79 93 148 119Q220 146 288 127Q343 112 386 129" });
+  append(carambola, "path", { class: "singapore-bough-secondary", d: "M89 103Q121 65 164 52M166 122Q204 83 249 76M257 133Q302 91 352 88" });
+  const leafSprays = [
+    [122,72,-37,-17],[147,61,-7,-31],[182,100,-36,-12],[214,88,3,-34],[278,106,-33,-18],[319,94,8,-32],[344,109,-25,-10]
+  ];
+  leafSprays.forEach(([x,y,x2,y2], index) => {
+    append(carambola, "path", { class: "singapore-pinnate-rachis", d: `M${x} ${y}L${x+x2} ${y+y2}` });
+    [0.24,0.47,0.7].forEach((ratio, leafIndex) => {
+      const cx = x + x2 * ratio;
+      const cy = y + y2 * ratio;
+      const angle = Math.atan2(y2, x2) * 180 / Math.PI;
+      append(carambola, "ellipse", { class: (index+leafIndex)%3 === 0 ? "singapore-pinnate-leaf deep" : "singapore-pinnate-leaf", cx: cx-5, cy: cy-5, rx: 11, ry: 5, transform: `rotate(${angle-34} ${cx-5} ${cy-5})` });
+      append(carambola, "ellipse", { class: (index+leafIndex)%3 === 1 ? "singapore-pinnate-leaf deep" : "singapore-pinnate-leaf", cx: cx+5, cy: cy+5, rx: 11, ry: 5, transform: `rotate(${angle+34} ${cx+5} ${cy+5})` });
+    });
+  });
+  [[178,113],[196,120],[218,114],[305,121],[329,116]].forEach(([cx,cy], clusterIndex) => {
+    [-7,0,7].forEach((offset, petalIndex) => append(carambola, "ellipse", { class: (clusterIndex+petalIndex)%2 ? "singapore-starfruit-flower deep" : "singapore-starfruit-flower", cx: cx+offset, cy: cy+(petalIndex%2?5:-2), rx: 4, ry: 7, transform: `rotate(${offset*4} ${cx+offset} ${cy})` }));
+  });
+
+  append(target, "path", { class: "singapore-foreground-litter-bed", d: "M0 345Q91 319 181 342Q273 369 368 341Q473 309 600 337V430H0Z" });
+  const litter = append(target, "g", { class: "singapore-foreground-litter", "aria-hidden": "true" });
+  [[15,402,49,382],[62,426,98,405],[126,399,160,380],[184,423,224,402],[255,404,291,383],[323,424,359,402],[516,418,557,396],[560,390,594,372]].forEach(([x1,y1,x2,y2], index) => {
+    append(litter, "path", { class: index%3 === 0 ? "singapore-litter-leaf green" : (index%2 ? "singapore-litter-leaf deep" : "singapore-litter-leaf"), d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-9} ${x2} ${y2}Q${(x1+x2)/2+4} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` });
+    append(litter, "path", { class: "singapore-litter-vein", d: `M${x1+4} ${y1-1}L${x2-4} ${y2+1}` });
+  });
+
+  const fruit = append(target, "g", { class: "singapore-rotten-starfruit", transform: "translate(477 376) rotate(-8)", "aria-hidden": "true" });
+  append(fruit, "ellipse", { class: "singapore-starfruit-shadow", cx: 0, cy: 32, rx: 111, ry: 22 });
+  append(fruit, "path", { class: "singapore-starfruit-body", d: "M-106-8Q-82-38-48-28Q-18-48 12-29Q44-43 72-20Q100-23 112 7Q95 34 66 28Q39 48 9 34Q-21 51-51 35Q-84 45-108 16Q-114 3-106-8Z" });
+  append(fruit, "path", { class: "singapore-starfruit-soft-flesh", d: "M-88-3Q-69-27-43-18Q-18-34 7-18Q34-31 56-12Q80-16 93 7Q77 25 55 19Q32 35 8 24Q-16 39-40 25Q-67 34-89 13Z" });
+  append(fruit, "path", { class: "singapore-starfruit-rib", d: "M-93-7Q-51-2-9 7Q37 18 91 7M-76-23Q-37-10 2 4Q42 18 76 21M-75 30Q-38 19 0 9Q42-2 78-12M-37-24Q-17-10 1 5Q21-8 45-25M-42 31Q-19 19 1 7Q25 18 51 28" });
+  append(fruit, "path", { class: "singapore-starfruit-collapse", d: "M-81 8Q-51-5-23 13Q7-3 35 14Q59 3 87 13Q62 34 34 26Q7 43-22 29Q-52 42-81 8Z" });
+  [[-71,-9,4],[-50,16,3],[-23,-15,3],[4,24,4],[29,-11,3],[53,18,4],[76,1,3]].forEach(([cx,cy,r], index) => append(fruit, "circle", { class: index%2 ? "singapore-starfruit-mottle deep" : "singapore-starfruit-mottle", cx, cy, r }));
+
+  const section = append(target, "g", { class: "singapore-starfruit-section", transform: "translate(366 391) rotate(13)", "aria-hidden": "true" });
+  append(section, "ellipse", { class: "singapore-starfruit-shadow", cx: 1, cy: 22, rx: 48, ry: 12 });
+  append(section, "path", { class: "singapore-star-section-rind", d: "M0-50L14-20L47-16L23 7L29 40L0 24L-29 40L-23 7L-47-16L-14-20Z" });
+  append(section, "path", { class: "singapore-star-section-flesh", d: "M0-37L10-14L34-11L17 5L21 29L0 17L-21 29L-17 5L-34-11L-10-14Z" });
+  append(section, "ellipse", { class: "singapore-star-section-core", cx: 0, cy: 1, rx: 11, ry: 9 });
+  [[0,-23],[22,-6],[14,18],[-14,18],[-22,-6]].forEach(([cx,cy], index) => append(section, "ellipse", { class: index%2 ? "singapore-star-section-seed deep" : "singapore-star-section-seed", cx, cy, rx: 3.5, ry: 6, transform: `rotate(${index*72} ${cx} ${cy})` }));
+}
+
 function drawTenerifeScene(target, palette) {
   append(target, "rect", { class: "environment-sky tenerife-sky", width: 600, height: 430, fill: palette[0] });
   append(target, "circle", { class: "tenerife-sun", cx: 516, cy: 58, r: 26 });
@@ -1557,6 +1635,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "trivandrum-zoo-botanical-garden") {
     drawTrivandrumBotanicalGardenScene(target, palette);
+    return;
+  }
+  if (profile.id === "singapore-zf1220-starfruit-garden") {
+    drawSingaporeStarfruitGardenScene(target, palette);
     return;
   }
 
