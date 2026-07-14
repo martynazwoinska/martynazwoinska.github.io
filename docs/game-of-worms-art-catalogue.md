@@ -67,7 +67,6 @@ Families used exactly twice:
 
 | Family | Records |
 |---|---|
-| Bellows instrument | Orsay; Edinburgh |
 | Bonnet | Orsay; tropicalis Kauaʻi |
 | Bowed strings | Taipei; New Taipei |
 | Cape | Nambucca Heads; La Selva |
@@ -88,7 +87,7 @@ Families used exactly twice:
 | Wig | Nambucca Heads; Guadeloupe |
 | Wings | Ishigaki; Auckland |
 
-The other 71 families occur once. Within every twice-used family, the material, outline, proportions and internal construction must differ. There are no families used three times, no sashes and no ordinary backpacks.
+The other 73 families occur once. Within every twice-used family, the material, outline, proportions and internal construction must differ. There are no families used three times, no sashes and no ordinary backpacks.
 
 ## Implementation acceptance checks
 
