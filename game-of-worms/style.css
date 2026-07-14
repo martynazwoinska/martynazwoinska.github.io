@@ -497,6 +497,79 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .santeuil-valley-right { fill: color-mix(in srgb, #34513d 73%, var(--environment-land)); }
 :root[data-theme='dark'] .santeuil-stream-bank { fill: color-mix(in srgb, #403a30 72%, var(--environment-ground)); }
 :root[data-theme='dark'] .santeuil-stream-glint { opacity: .5; }
+.edinburgh-sky { fill: color-mix(in srgb, #b9c8c7 58%, var(--paper-strong)); }
+.edinburgh-clouds { fill: color-mix(in srgb, var(--paper-strong) 75%, #aebcba); opacity: .62; }
+.edinburgh-blackford-hill { fill: color-mix(in srgb, var(--environment-land) 66%, #657354); stroke: color-mix(in srgb, var(--environment-detail) 58%, #4d5548); stroke-width: 2; stroke-linejoin: round; }
+.edinburgh-andesite-face { fill: color-mix(in srgb, #725f82 52%, var(--environment-ground)); stroke: color-mix(in srgb, #53465e 68%, var(--environment-detail)); stroke-width: 2.5; stroke-linejoin: round; }
+.edinburgh-hill-contour { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 54%, #7b8066); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: .62; }
+.edinburgh-observatory-shadow { fill: rgba(35,42,39,.16); }
+.edinburgh-observatory-body,
+.edinburgh-observatory-end { fill: color-mix(in srgb, #a75f49 69%, var(--environment-ground)); stroke: color-mix(in srgb, #643d36 76%, var(--environment-detail)); stroke-width: 2; stroke-linejoin: round; }
+.edinburgh-observatory-roof { fill: color-mix(in srgb, #665f57 68%, var(--environment-detail)); stroke: color-mix(in srgb, #4d4944 76%, var(--environment-detail)); stroke-width: 1.8; }
+.edinburgh-observatory-window { fill: color-mix(in srgb, #345f64 72%, var(--environment-water)); stroke: color-mix(in srgb, #e2c59f 62%, var(--environment-detail)); stroke-width: 1.5; }
+.edinburgh-copper-drum,
+.edinburgh-copper-dome { fill: color-mix(in srgb, #6c9b88 77%, var(--environment-land)); stroke: color-mix(in srgb, #355f54 78%, var(--environment-detail)); stroke-width: 2; }
+.edinburgh-copper-seam { fill: none; stroke: color-mix(in srgb, #c3d6bc 63%, #3e6c60); stroke-width: 1.5; }
+.edinburgh-drum-base { fill: color-mix(in srgb, #7b604c 68%, var(--environment-detail)); }
+.edinburgh-stone-detail { fill: none; stroke: color-mix(in srgb, #d7ad8c 58%, var(--environment-detail)); stroke-width: 1.2; opacity: .72; }
+.edinburgh-hill-scrub path:first-child { fill: color-mix(in srgb, var(--environment-land) 79%, #3e654d); stroke: color-mix(in srgb, var(--environment-detail) 66%, #375441); stroke-width: 2; }
+.edinburgh-scrub-stems { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 67%, #4f5f45); stroke-width: 2; stroke-linecap: round; }
+.edinburgh-allotment-ground { fill: color-mix(in srgb, var(--environment-land) 55%, #7f815d); }
+.edinburgh-hedges path:first-child { fill: color-mix(in srgb, var(--environment-land) 76%, #3f6549); stroke: color-mix(in srgb, var(--environment-detail) 71%, #344f3d); stroke-width: 2; }
+.edinburgh-hedge-highlight { fill: none; stroke: color-mix(in srgb, var(--environment-land) 56%, var(--paper-strong)); stroke-width: 4; stroke-linecap: round; opacity: .45; }
+.edinburgh-shed.wall { fill: color-mix(in srgb, #8b724e 70%, var(--environment-ground)); stroke: color-mix(in srgb, #514638 72%, var(--environment-detail)); stroke-width: 2; }
+.edinburgh-shed.wall.second { fill: color-mix(in srgb, #6f765d 66%, var(--environment-ground)); }
+.edinburgh-shed.roof { fill: color-mix(in srgb, #6b5140 76%, var(--environment-detail)); stroke: var(--environment-detail); stroke-width: 2; }
+.edinburgh-shed.roof.second { fill: color-mix(in srgb, #585d55 72%, var(--environment-detail)); }
+.edinburgh-shed-door { fill: color-mix(in srgb, #684f3d 76%, var(--environment-ground)); stroke: color-mix(in srgb, #4e4035 78%, var(--environment-detail)); stroke-width: 1.8; }
+.edinburgh-shed-window { fill: color-mix(in srgb, var(--environment-water) 63%, var(--paper-strong)); stroke: var(--environment-detail); stroke-width: 1.5; }
+.edinburgh-plot { stroke: color-mix(in srgb, var(--environment-detail) 59%, #5c503e); stroke-width: 1.5; stroke-linejoin: round; }
+.edinburgh-plot.left { fill: color-mix(in srgb, var(--environment-ground) 69%, #696443); }
+.edinburgh-plot.centre-left { fill: color-mix(in srgb, var(--environment-ground) 64%, #7a6948); }
+.edinburgh-plot.centre-right { fill: color-mix(in srgb, var(--environment-land) 51%, #77634a); }
+.edinburgh-plot.right { fill: color-mix(in srgb, var(--environment-ground) 58%, #6d7551); }
+.edinburgh-plot-board { fill: none; stroke: color-mix(in srgb, #8a6847 73%, var(--environment-detail)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.edinburgh-plot-furrow { fill: none; stroke: color-mix(in srgb, #453f31 48%, var(--environment-ground)); stroke-width: 2; stroke-linecap: round; opacity: .58; }
+.edinburgh-plant-stem { fill: none; stroke: color-mix(in srgb, #45664a 76%, var(--environment-detail)); stroke-width: 2; stroke-linecap: round; }
+.edinburgh-plant-leaf { fill: color-mix(in srgb, var(--environment-land) 77%, #446b4c); stroke: color-mix(in srgb, var(--environment-detail) 69%, #35513e); stroke-width: 1.5; }
+.edinburgh-seed-head { fill: color-mix(in srgb, var(--environment-accent) 48%, #8a6845); stroke: var(--environment-detail); stroke-width: 1; }
+.edinburgh-foreground-soil { fill: color-mix(in srgb, var(--environment-ground) 73%, #544b3a); }
+.edinburgh-bed-soil { fill: color-mix(in srgb, var(--environment-ground) 65%, #4e4535); stroke: color-mix(in srgb, var(--environment-detail) 61%, #4e4438); stroke-width: 1.5; }
+.edinburgh-bed-board { fill: color-mix(in srgb, #9a744e 72%, var(--environment-ground)); stroke: color-mix(in srgb, #5e4937 77%, var(--environment-detail)); stroke-width: 2.5; stroke-linejoin: round; fill-rule: evenodd; }
+.edinburgh-bed-furrow { fill: none; stroke: color-mix(in srgb, #40392d 56%, var(--environment-ground)); stroke-width: 2; stroke-linecap: round; opacity: .68; }
+.edinburgh-compost-shadow { fill: rgba(25,35,30,.24); }
+.edinburgh-compost-cavity { fill: color-mix(in srgb, #302e25 76%, var(--environment-detail)); }
+.edinburgh-compost-green { fill: color-mix(in srgb, #5d774a 75%, var(--environment-land)); stroke: color-mix(in srgb, #374a37 70%, var(--environment-detail)); stroke-width: 1.8; }
+.edinburgh-compost-brown { fill: color-mix(in srgb, #755838 73%, var(--environment-ground)); stroke: color-mix(in srgb, #4e3f30 72%, var(--environment-detail)); stroke-width: 1.8; }
+.edinburgh-compost-damp { fill: none; stroke: color-mix(in srgb, #394a3d 62%, var(--environment-water)); stroke-width: 5; stroke-linecap: round; opacity: .68; }
+.edinburgh-compost-back,
+.edinburgh-compost-side,
+.edinburgh-compost-front { fill: color-mix(in srgb, #a37950 74%, var(--environment-ground)); stroke: color-mix(in srgb, #5d4938 77%, var(--environment-detail)); stroke-width: 2.5; stroke-linejoin: round; }
+.edinburgh-compost-side.right { fill: color-mix(in srgb, #8f6a48 71%, var(--environment-ground)); }
+.edinburgh-compost-front { fill: color-mix(in srgb, #9d744d 77%, var(--environment-ground)); fill-opacity: .96; }
+.edinburgh-compost-slat,
+.edinburgh-compost-board-line { fill: none; stroke: color-mix(in srgb, #5d4836 68%, var(--environment-detail)); stroke-width: 2; }
+.edinburgh-compost-stems { fill: none; stroke: color-mix(in srgb, #80613f 73%, var(--environment-detail)); stroke-width: 4; stroke-linecap: round; }
+.edinburgh-compost-leaf { fill: color-mix(in srgb, #8b6240 70%, var(--environment-accent)); stroke: color-mix(in srgb, #4d4032 72%, var(--environment-detail)); stroke-width: 1.3; }
+.edinburgh-compost-leaf.green { fill: color-mix(in srgb, #597449 79%, var(--environment-land)); }
+.edinburgh-wood-knot { fill: color-mix(in srgb, #5c4735 76%, var(--environment-detail)); opacity: .72; }
+.edinburgh-plot-stake path { fill: color-mix(in srgb, #b18a5c 72%, var(--environment-ground)); stroke: color-mix(in srgb, #624e3b 75%, var(--environment-detail)); stroke-width: 2; }
+.edinburgh-plot-stake text { fill: color-mix(in srgb, var(--environment-detail) 86%, #3e342b); font: 800 9px/1 var(--sans); letter-spacing: .04em; }
+.edinburgh-damp-litter path:not(.edinburgh-leaf-vein) { fill: color-mix(in srgb, #7a583d 68%, var(--environment-accent)); stroke: color-mix(in srgb, var(--environment-detail) 70%, #4e3d31); stroke-width: 1.4; }
+.edinburgh-leaf-vein { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 73%, #493a2f); stroke-width: 1; }
+:root[data-theme='dark'] .edinburgh-sky { fill: color-mix(in srgb, #2f4244 76%, var(--environment-water)); }
+:root[data-theme='dark'] .edinburgh-clouds { opacity: .3; }
+:root[data-theme='dark'] .edinburgh-blackford-hill { fill: color-mix(in srgb, #354a38 77%, var(--environment-land)); }
+:root[data-theme='dark'] .edinburgh-andesite-face { fill: color-mix(in srgb, #51445f 72%, var(--environment-ground)); }
+:root[data-theme='dark'] .edinburgh-observatory-body,
+:root[data-theme='dark'] .edinburgh-observatory-end { fill: color-mix(in srgb, #743f35 76%, var(--environment-ground)); }
+:root[data-theme='dark'] .edinburgh-copper-drum,
+:root[data-theme='dark'] .edinburgh-copper-dome { fill: color-mix(in srgb, #477566 79%, var(--environment-land)); }
+:root[data-theme='dark'] .edinburgh-allotment-ground { fill: color-mix(in srgb, #414b38 75%, var(--environment-land)); }
+:root[data-theme='dark'] .edinburgh-foreground-soil { fill: color-mix(in srgb, #3c382e 78%, var(--environment-ground)); }
+:root[data-theme='dark'] .edinburgh-compost-front,
+:root[data-theme='dark'] .edinburgh-compost-side,
+:root[data-theme='dark'] .edinburgh-compost-back { fill: color-mix(in srgb, #725337 74%, var(--environment-ground)); }
 .scene-sky { fill: url(#scene-sky-gradient); }
 .scene-sky-top { stop-color: color-mix(in srgb, var(--scene-sky) 55%, white); }
 .scene-sky-bottom { stop-color: var(--scene-sky); }
@@ -860,6 +933,91 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .organ-keybed-frame { fill: color-mix(in srgb, #8d653c 72%, var(--local-secondary)); }
 :root[data-theme='dark'] .automaton-pond { fill: color-mix(in srgb, #416f69 73%, var(--local-primary)); }
 :root[data-theme='dark'] .dragonfly-wing { fill: rgba(172,211,199,.46); }
+.edinburgh-accessory { filter: drop-shadow(0 5px 4px rgba(28,38,35,.26)); }
+.edinburgh-accessory-shadow { fill: rgba(25,34,32,.2); }
+.tumbler-a-frame,
+.tumbler-cradle,
+.tumbler-foot { fill: color-mix(in srgb, #6a6e63 76%, var(--worm-deep)); stroke: color-mix(in srgb, #343d3a 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.tumbler-axis,
+.tumbler-crank,
+.tumbler-ground-pin,
+.tumbler-handwheel-rim,
+.tumbler-handwheel-spoke { fill: none; stroke: color-mix(in srgb, #4c5754 77%, var(--worm-deep)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.tumbler-barrel { fill: color-mix(in srgb, #9e7652 72%, var(--local-secondary)); stroke: color-mix(in srgb, #554536 79%, var(--worm-deep)); stroke-width: 3.5; stroke-linejoin: round; }
+.tumbler-barrel.companion { fill: color-mix(in srgb, #8b6849 70%, var(--local-primary)); }
+.tumbler-facet,
+.tumbler-slat { fill: none; stroke: color-mix(in srgb, #5c4938 69%, var(--worm-deep)); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.tumbler-hatch,
+.tumbler-door { fill: color-mix(in srgb, #b58c5e 70%, var(--local-secondary)); stroke: color-mix(in srgb, #5a4737 78%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.tumbler-door.lower { fill: color-mix(in srgb, #7a5b42 72%, var(--local-primary)); }
+.tumbler-hatch-hinge,
+.tumbler-vent.companion { fill: none; stroke: color-mix(in srgb, #44504d 74%, var(--worm-deep)); stroke-width: 3; stroke-linecap: round; }
+.tumbler-cutaway { fill: color-mix(in srgb, #2f352e 79%, var(--worm-deep)); stroke: color-mix(in srgb, #4d4435 72%, var(--worm-deep)); stroke-width: 2; }
+.tumbler-compost.green { fill: color-mix(in srgb, #587247 77%, var(--local-primary)); stroke: #3f5039; stroke-width: 1.5; }
+.tumbler-compost.brown { fill: color-mix(in srgb, #745238 78%, var(--local-secondary)); stroke: #4e3d31; stroke-width: 1.5; }
+.tumbler-vent { fill: color-mix(in srgb, #33413d 82%, var(--worm-deep)); stroke: color-mix(in srgb, #b9b09a 45%, var(--worm-deep)); stroke-width: 1; }
+.tumbler-latch,
+.tumbler-crank-knob,
+.tumbler-handwheel-hub { fill: color-mix(in srgb, #bd9248 73%, var(--local-secondary)); stroke: color-mix(in srgb, #594728 77%, var(--worm-deep)); stroke-width: 2; }
+
+.scanner-cast-frame,
+.scanner-portal { fill: color-mix(in srgb, #48504e 81%, var(--worm-deep)); stroke: color-mix(in srgb, #283330 84%, var(--worm-deep)); stroke-width: 3.5; stroke-linejoin: round; fill-rule: evenodd; }
+.scanner-portal { fill: color-mix(in srgb, #5a625f 75%, var(--local-primary)); }
+.scanner-frame-brace,
+.scanner-head-column,
+.scanner-head-arm,
+.scanner-guide,
+.scanner-rail,
+.scanner-plate-guide { fill: none; stroke: color-mix(in srgb, #69746f 68%, var(--worm-deep)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.scanner-head-column,
+.scanner-head { fill: color-mix(in srgb, #6c7470 76%, var(--worm-deep)); stroke: color-mix(in srgb, #303b38 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.scanner-carriage { fill: color-mix(in srgb, #a18a63 67%, var(--local-secondary)); stroke: color-mix(in srgb, #4b4438 78%, var(--worm-deep)); stroke-width: 3; }
+.scanner-star-plate { fill: color-mix(in srgb, #202d36 86%, #394f5a); stroke: color-mix(in srgb, #b19a6a 64%, var(--worm-deep)); stroke-width: 2; }
+.scanner-star { fill: color-mix(in srgb, #edf4dc 75%, #bcd1d4); stroke: rgba(255,255,255,.5); stroke-width: .7; }
+.scanner-lens { fill: color-mix(in srgb, #72a2a0 58%, var(--paper-strong)); stroke: color-mix(in srgb, #294c4d 77%, var(--worm-deep)); stroke-width: 3; }
+.scanner-aperture { fill: none; stroke: color-mix(in srgb, #2d4b4c 80%, var(--worm-deep)); stroke-width: 2; }
+.scanner-wheel-rim,
+.scanner-wheel-spoke { fill: none; stroke: color-mix(in srgb, #8a6b3c 75%, var(--worm-deep)); stroke-width: 4; stroke-linecap: round; }
+.scanner-wheel-hub,
+.scanner-rivet { fill: color-mix(in srgb, #b5914d 67%, var(--local-secondary)); stroke: color-mix(in srgb, #4d402b 76%, var(--worm-deep)); stroke-width: 1.5; }
+.scanner-portal-rivet { fill: none; stroke: color-mix(in srgb, #d1b86f 66%, var(--paper-strong)); stroke-width: 5; stroke-linecap: round; }
+.scanner-counter { fill: color-mix(in srgb, #d6c9a2 69%, var(--paper-strong)); stroke: color-mix(in srgb, #424b47 79%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.scanner-counter-text { fill: color-mix(in srgb, #263632 85%, var(--worm-deep)); font: 800 11px/1 var(--sans); stroke: none; }
+.scanner-label { fill: color-mix(in srgb, #e2cf8f 73%, var(--paper-strong)); font: 800 8px/1 var(--sans); letter-spacing: .13em; stroke: none; }
+.scanner-foot { fill: color-mix(in srgb, #464e4b 82%, var(--worm-deep)); stroke: color-mix(in srgb, #28312f 84%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+
+.agassiz-base,
+.agassiz-theatre-frame,
+.agassiz-foot { fill: color-mix(in srgb, #846744 71%, var(--local-secondary)); stroke: color-mix(in srgb, #4f402f 78%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; fill-rule: evenodd; }
+.agassiz-andesite-slab,
+.agassiz-cutaway { fill: color-mix(in srgb, #675874 71%, var(--local-primary)); stroke: color-mix(in srgb, #453c50 81%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.agassiz-crag-core { fill: color-mix(in srgb, #594962 78%, var(--worm-deep)); stroke: color-mix(in srgb, #3b3442 82%, var(--worm-deep)); stroke-width: 2; }
+.agassiz-tail-core { fill: color-mix(in srgb, #77667e 66%, var(--local-primary)); stroke: color-mix(in srgb, #4a4050 79%, var(--worm-deep)); stroke-width: 2; }
+.agassiz-groove { fill: none; stroke: color-mix(in srgb, #af9bbb 54%, var(--paper-strong)); stroke-width: 2.5; stroke-linecap: round; opacity: .72; }
+.agassiz-brass-rail,
+.agassiz-rail-tie,
+.agassiz-crank,
+.agassiz-pulley { fill: none; stroke: color-mix(in srgb, #b38a3e 74%, var(--worm-deep)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.agassiz-ice-carriage,
+.agassiz-ice-ribbon { fill: rgba(185,226,225,.72); stroke: color-mix(in srgb, #4b8588 68%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.agassiz-ice-facet { fill: none; stroke: rgba(255,255,255,.72); stroke-width: 2; stroke-linecap: round; }
+.agassiz-carriage-wheel,
+.agassiz-pulley-wheel { fill: color-mix(in srgb, #c59d52 68%, var(--local-secondary)); stroke: color-mix(in srgb, #514127 78%, var(--worm-deep)); stroke-width: 2; }
+.agassiz-flow-arrow { fill: none; stroke: color-mix(in srgb, #d1ad55 74%, var(--worm-deep)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.agassiz-crank-knob { fill: color-mix(in srgb, #8c6540 67%, var(--local-primary)); stroke: var(--worm-deep); stroke-width: 2; }
+.agassiz-direction { fill: color-mix(in srgb, #e0c56c 72%, var(--paper-strong)); font: 900 10px/1 var(--sans); stroke: color-mix(in srgb, var(--worm-deep) 75%, transparent); stroke-width: 1px; paint-order: stroke; }
+.agassiz-level { fill: none; stroke: color-mix(in srgb, #5a4833 78%, var(--worm-deep)); stroke-width: 3; stroke-linecap: round; }
+:root[data-theme='dark'] .tumbler-barrel { fill: color-mix(in srgb, #705237 78%, var(--local-secondary)); }
+:root[data-theme='dark'] .tumbler-hatch,
+:root[data-theme='dark'] .tumbler-door { fill: color-mix(in srgb, #7c5b3c 77%, var(--local-secondary)); }
+:root[data-theme='dark'] .scanner-cast-frame,
+:root[data-theme='dark'] .scanner-portal { fill: color-mix(in srgb, #323c39 84%, var(--local-primary)); }
+:root[data-theme='dark'] .scanner-star-plate { fill: #17242d; }
+:root[data-theme='dark'] .scanner-counter { fill: color-mix(in srgb, #8d845f 69%, var(--paper-strong)); }
+:root[data-theme='dark'] .agassiz-andesite-slab,
+:root[data-theme='dark'] .agassiz-cutaway { fill: color-mix(in srgb, #4d4058 79%, var(--local-primary)); }
+:root[data-theme='dark'] .agassiz-ice-carriage,
+:root[data-theme='dark'] .agassiz-ice-ribbon { fill: rgba(116,174,177,.58); }
 .fig-visor path:first-child, .fig-visor path:nth-of-type(4) { fill: #72a66b; stroke: var(--worm-deep); stroke-width: 3; }
 .fig-vein, .visor-band { fill: none; stroke: #315f50; stroke-width: 2.5; stroke-linecap: round; }
 .satchel-strap { fill: none; stroke: #745744; stroke-width: 7; stroke-linecap: round; }

@@ -108,11 +108,11 @@ const canonicalProfiles = {
     { water: "stream", weather: "sun", cues: [["forest", 108, 258, .9], ["stream", 314, 338, .7], ["village", 474, 188, .72]] }
   ),
   "Edinburgh, Scotland": profile(
-    "edinburgh-holyrood", "Arthur’s Seat and Salisbury Crags",
-    "The supplied coordinates point to Edinburgh, where an ancient volcanic landscape of crags, grasslands, and lochs rises from the city.",
-    "Historic Environment Scotland", "https://www.historicenvironment.scot/visit/all/holyrood-park/",
-    palettes.volcanic, [[0, 306], [90, 290], [150, 252], [215, 184], [280, 218], [346, 267], [410, 244], [492, 284], [600, 292]],
-    { water: "pond", weather: "cloud", cues: [["crags", 300, 284, .9], ["stonecity", 505, 280, .75], ["reeds", 95, 355, .7]] }
+    "edinburgh-midmar-blackford", "Midmar allotment and Blackford Hill",
+    "Representative ED3010 microhabitat at 55.92, −3.19: an urban-garden compost bin in Midmar Allotment, field 1, plot 39; Blackford Hill and the Royal Observatory locate the wider setting.",
+    "CGC Edinburgh strain entries", "https://cgc.umn.edu/species/caenorhabditis%20elegans?f=1&offset=4550",
+    palettes.temperate, [[0, 278], [80, 268], [145, 232], [205, 155], [255, 143], [360, 175], [470, 218], [600, 248]],
+    { weather: "cloud", cues: [["compost", 76, 376, .92], ["grass", 510, 354, .72], ["boulder", 208, 255, .62]] }
   ),
   "Tenerife, Spain": profile(
     "tenerife-teide", "Teide above the sea of clouds",
@@ -387,12 +387,12 @@ const sceneCompositions = Object.freeze({
     "M314 218C311 246 299 270 309 298C319 326 344 344 341 371C338 395 343 413 342 430", [2, 0, 1],
     "a broken hollow hogweed stem beside a narrow stream-bank notch, crossed by a low railway cue below the church tower and ruler-flat Vexin plateau"
   ),
-  "edinburgh-holyrood": composition(
-    "M0 381 Q117 343 216 373 Q322 404 430 366 Q521 336 600 370 V430 H0Z",
-    "M0 333 L131 320 L214 258 L294 279 L386 326 L600 315 V430 H0Z",
-    [["reeds", 30, 407, .72], ["stonecity", 557, 349, .54]],
-    "M70 389 Q176 364 275 387 Q379 409 475 373", [1, 2, 0],
-    "an asymmetric Arthur's Seat peak and Salisbury Crags profile"
+  "edinburgh-midmar-blackford": composition(
+    "M0 327Q103 304 205 322Q312 342 410 315Q507 288 600 310V430H0Z",
+    "M0 278L80 268L145 232L205 155Q225 133 255 143Q330 162 405 193Q500 229 600 248V342H0Z",
+    [["compost", 78, 397, .94], ["grass", 534, 403, .7]],
+    "M18 430L213 257M579 430L389 258M180 430L273 256M438 430L331 256", [2, 1, 0],
+    "an angular compost bay and converging allotment plots beneath one lopsided low hill topped by two separated green observatory drums"
   ),
   "tenerife-teide": composition(
     "M0 376 L92 344 L163 366 L236 337 L310 368 L384 331 L470 360 L600 340 V430 H0Z",
@@ -941,6 +941,103 @@ function drawSanteuilScene(target, palette) {
   [[35,-47,12],[45,-36,-7],[24,-35,22],[-20,-32,-15],[-29,-24,8]].forEach(([x, y, angle]) => append(comfrey, "path", { class: "santeuil-comfrey-flower", d: `M${x-6} ${y}Q${x} ${y+13} ${x+7} ${y}L${x+4} ${y-8}H${x-4}Z`, transform: `rotate(${angle} ${x} ${y})` }));
 }
 
+function drawEdinburghScene(target, palette) {
+  append(target, "rect", { class: "environment-sky edinburgh-sky", width: 600, height: 430, fill: palette[0] });
+  const clouds = append(target, "g", { class: "edinburgh-clouds", "aria-hidden": "true" });
+  append(clouds, "path", { d: "M29 68Q55 42 87 62Q111 36 147 60Q176 54 192 77H29Z" });
+  append(clouds, "path", { d: "M393 48Q417 27 446 45Q472 23 504 49Q532 44 548 65H393Z" });
+
+  append(target, "path", { class: "edinburgh-blackford-hill", d: "M0 278L80 268L145 232L205 155Q225 133 255 143Q330 162 405 193Q500 229 600 248V335H0Z" });
+  append(target, "path", { class: "edinburgh-andesite-face", d: "M83 270L145 232L205 155Q219 139 239 141L205 208L176 236L151 284Z" });
+  append(target, "path", { class: "edinburgh-hill-contour", d: "M115 259L157 225L196 170M151 275L179 239L213 209M266 159Q348 178 437 211Q512 239 584 247" });
+
+  const observatory = append(target, "g", { class: "edinburgh-observatory", "aria-hidden": "true" });
+  append(observatory, "path", { class: "edinburgh-observatory-shadow", d: "M187 181Q303 191 416 179L405 191Q298 202 190 191Z" });
+  append(observatory, "rect", { class: "edinburgh-observatory-body", x: 211, y: 132, width: 184, height: 46, rx: 2 });
+  append(observatory, "path", { class: "edinburgh-observatory-roof", d: "M204 134L218 123H389L402 134Z" });
+  append(observatory, "path", { class: "edinburgh-observatory-end left", d: "M187 176V143L197 130H219L229 143V178Z" });
+  append(observatory, "path", { class: "edinburgh-observatory-end right", d: "M378 178V142L388 128H410L420 142V177Z" });
+  [233, 255, 347, 369].forEach((x, index) => append(observatory, "path", { class: "edinburgh-observatory-window", d: `M${x} 160V145Q${x + 6} ${136 + index % 2 * 2} ${x + 12} 145V160Z` }));
+  [272, 332].forEach((x, index) => {
+    const housing = append(observatory, "g", { class: "edinburgh-observatory-housing", transform: `translate(${x} ${index ? 1 : 0})` });
+    append(housing, "rect", { class: "edinburgh-copper-drum", x: -17, y: 103, width: 34, height: 32, rx: 2 });
+    append(housing, "path", { class: "edinburgh-copper-dome", d: "M-20 105Q-15 83 0 80Q16 83 20 105Z" });
+    append(housing, "path", { class: "edinburgh-copper-seam", d: "M-13 91Q0 85 13 91M0 82V133" });
+    append(housing, "rect", { class: "edinburgh-drum-base", x: -22, y: 132, width: 44, height: 7, rx: 1 });
+  });
+  append(observatory, "path", { class: "edinburgh-stone-detail", d: "M211 151H395M198 152H218M389 150H410" });
+
+  const scrub = append(target, "g", { class: "edinburgh-hill-scrub", "aria-hidden": "true" });
+  append(scrub, "path", { d: "M28 286Q54 254 82 282Q105 251 132 277M431 226Q454 205 479 229Q504 207 528 237M517 250Q548 226 580 253" });
+  append(scrub, "path", { class: "edinburgh-scrub-stems", d: "M51 283L43 258M70 280L78 252M454 228L447 203M474 230L485 202M546 250L539 225M566 249L578 220" });
+
+  append(target, "path", { class: "edinburgh-allotment-ground", d: "M0 285Q105 268 203 283Q302 299 400 276Q505 252 600 275V430H0Z" });
+  const hedge = append(target, "g", { class: "edinburgh-hedges", "aria-hidden": "true" });
+  append(hedge, "path", { d: "M0 291Q22 268 46 286Q69 258 95 281Q120 266 143 289L168 302H0ZM404 279Q430 249 456 275Q482 243 511 270Q543 252 570 278Q588 269 600 278V315H404Z" });
+  append(hedge, "path", { class: "edinburgh-hedge-highlight", d: "M12 286Q31 274 47 285M55 279Q76 265 94 280M424 274Q446 258 459 273M477 269Q499 252 514 268M536 271Q557 258 576 276" });
+
+  const sheds = append(target, "g", { class: "edinburgh-sheds", "aria-hidden": "true" });
+  append(sheds, "path", { class: "edinburgh-shed wall", d: "M43 302V249H98V302Z" });
+  append(sheds, "path", { class: "edinburgh-shed roof", d: "M35 251L68 230L106 251Z" });
+  append(sheds, "path", { class: "edinburgh-shed-door", d: "M59 302V264H82V302ZM64 269L77 295M78 268L63 294" });
+  append(sheds, "path", { class: "edinburgh-shed wall second", d: "M481 294V253L535 243L548 294Z" });
+  append(sheds, "path", { class: "edinburgh-shed roof second", d: "M473 255L522 232L554 245L545 257Z" });
+  append(sheds, "rect", { class: "edinburgh-shed-window", x: 501, y: 257, width: 20, height: 15, rx: 1 });
+
+  const plots = append(target, "g", { class: "edinburgh-plots", "aria-hidden": "true" });
+  [
+    ["M0 430H137L238 272L188 271Z", "left"],
+    ["M154 430H272L278 270L246 270Z", "centre-left"],
+    ["M289 430H410L343 269L309 270Z", "centre-right"],
+    ["M430 430H600L408 268L361 269Z", "right"]
+  ].forEach(([d, side]) => append(plots, "path", { class: `edinburgh-plot ${side}`, d }));
+  append(plots, "path", { class: "edinburgh-plot-board", d: "M4 420L190 278M136 425L239 274M163 423L248 278M270 422L278 274M294 422L310 275M407 423L343 273M435 423L362 274M594 418L407 273" });
+  append(plots, "path", { class: "edinburgh-plot-furrow", d: "M30 391L202 281M62 410L213 288M185 396L257 284M316 395L323 282M464 396L382 280M523 409L394 286" });
+
+  const planting = append(target, "g", { class: "edinburgh-late-planting", "aria-hidden": "true" });
+  [[166,334,-18],[201,309,12],[363,324,-9],[399,305,17],[496,345,-13],[534,366,10]].forEach(([x, y, angle], index) => {
+    append(planting, "path", { class: "edinburgh-plant-stem", d: `M${x} ${y + 18}Q${x - 2} ${y + 3} ${x} ${y - 14}` });
+    append(planting, "path", { class: "edinburgh-plant-leaf", d: `M${x} ${y + 4}Q${x - 20} ${y - 10} ${x - 25} ${y + 8}Q${x - 12} ${y + 14} ${x} ${y + 4}ZM${x} ${y - 1}Q${x + 18} ${y - 15} ${x + 24} ${y + 3}Q${x + 11} ${y + 11} ${x} ${y - 1}Z`, transform: `rotate(${angle} ${x} ${y})` });
+    if (index % 2 === 0) append(planting, "circle", { class: "edinburgh-seed-head", cx: x, cy: y - 15, r: 4 });
+  });
+
+  append(target, "path", { class: "edinburgh-foreground-soil", d: "M0 347Q98 320 196 349Q296 378 400 344Q505 311 600 339V430H0Z" });
+  const beds = append(target, "g", { class: "edinburgh-raised-beds", "aria-hidden": "true" });
+  append(beds, "path", { class: "edinburgh-bed-soil", d: "M367 370L538 326L600 350L431 409Z" });
+  append(beds, "path", { class: "edinburgh-bed-board", d: "M363 365L536 319L600 343V355L431 416L363 383ZM368 367L536 324L594 345L431 408Z" });
+  append(beds, "path", { class: "edinburgh-bed-furrow", d: "M397 369L548 331M425 383L574 342M458 395L592 353" });
+  append(beds, "path", { class: "edinburgh-bed-soil", d: "M6 374L93 343L142 365L52 405Z" });
+  append(beds, "path", { class: "edinburgh-bed-board", d: "M4 369L93 337L146 361V373L52 411L4 390ZM10 371L93 342L138 363L52 404Z" });
+  append(beds, "path", { class: "edinburgh-bed-furrow", d: "M25 378L100 351M43 388L120 359" });
+
+  const compost = append(target, "g", { class: "edinburgh-compost-bay", transform: "translate(121 357)", "aria-hidden": "true" });
+  append(compost, "path", { class: "edinburgh-compost-shadow", d: "M-116 60Q-5 82 111 55Q52 91-104 83Z" });
+  append(compost, "path", { class: "edinburgh-compost-cavity", d: "M-100-37L-72-58L85-47L104-23L88 57L-91 61Z" });
+  append(compost, "path", { class: "edinburgh-compost-green", d: "M-80 5Q-57-34-27-14Q-4-42 23-17Q52-31 77 1L82 18Q-3 33-80 20Z" });
+  append(compost, "path", { class: "edinburgh-compost-brown", d: "M-84 20Q-48 5-11 25Q29 3 81 18L85 46Q4 63-88 49Z" });
+  append(compost, "path", { class: "edinburgh-compost-damp", d: "M-75 32Q-42 22-8 39Q29 20 73 32" });
+  append(compost, "path", { class: "edinburgh-compost-back", d: "M-108-56L-79-69L77-61L102-53L96-40L-77-47Z" });
+  append(compost, "path", { class: "edinburgh-compost-side left", d: "M-108-56L-79-69L-72 58L-96 64Z" });
+  append(compost, "path", { class: "edinburgh-compost-side right", d: "M77-61L102-53L100 55L79 59Z" });
+  append(compost, "path", { class: "edinburgh-compost-front", d: "M-91 36L85 30L82 65L-88 72Z" });
+  [-62,-28,7,42,71].forEach((x, index) => append(compost, "path", { class: "edinburgh-compost-slat", d: `M${x} ${34 - index % 2 * 2}L${x - 1} ${68 - index % 3}` }));
+  append(compost, "path", { class: "edinburgh-compost-board-line", d: "M-89 48L84 42M-88 61L83 55" });
+  append(compost, "path", { class: "edinburgh-compost-stems", d: "M-55 8L-34-22M12 5L24-27M48 7L68-17" });
+  [[-48,-5,-26,-19],[-16,12,7,-2],[27,-8,50,-20],[48,21,71,8]].forEach(([x1,y1,x2,y2], index) => append(compost, "path", { class: index % 2 ? "edinburgh-compost-leaf green" : "edinburgh-compost-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-9} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+6} ${x1} ${y1}Z` }));
+  [[-101,-35],[-82,-58],[87,-46],[96,-19]].forEach(([cx, cy]) => append(compost, "circle", { class: "edinburgh-wood-knot", cx, cy, r: 3 }));
+
+  const stake = append(target, "g", { class: "edinburgh-plot-stake", transform: "translate(239 330) rotate(3)", "aria-hidden": "true" });
+  append(stake, "path", { d: "M-13-28H17L14 9L4 15L3 78H-3L-4 14L-15 8Z" });
+  const stakeText = append(stake, "text", { x: 1, y: -4, "text-anchor": "middle" });
+  stakeText.textContent = "1/39";
+
+  const litter = append(target, "g", { class: "edinburgh-damp-litter", "aria-hidden": "true" });
+  [[18,415,48,394],[205,409,235,386],[275,421,307,399],[457,414,490,390],[546,425,580,403]].forEach(([x1,y1,x2,y2], index) => {
+    append(litter, "path", { d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-10-index%2*3} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` });
+    append(litter, "path", { class: "edinburgh-leaf-vein", d: `M${x1 + 4} ${y1 - 1}L${x2 - 3} ${y2 + 1}` });
+  });
+}
+
 export function renderEnvironmentScene(target, profile, habitatElement) {
   if (!target || !profile) return;
   const palette = profile.palette;
@@ -961,6 +1058,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "santeuil-viosne-vexin") {
     drawSanteuilScene(target, palette);
+    return;
+  }
+  if (profile.id === "edinburgh-midmar-blackford") {
+    drawEdinburghScene(target, palette);
     return;
   }
 

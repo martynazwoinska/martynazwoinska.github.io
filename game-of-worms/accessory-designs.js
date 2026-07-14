@@ -18,7 +18,7 @@ const rows = [
   ["briggsae", "Nambucca Heads, New South Wales · QG2814", "banksia wig", "wig", "eucalyptus cape", "cape", "flower press", "flower-press"],
   ["elegans", "Bristol N2, England", "seeded NGM agar plates", "ngm-agar-plate", "fitted lab coats", "n2-lab-coat", "cryo-vial jetpacks", "cryo-vial-jetpack"],
   ["elegans", "Santeuil, France", "hollow-stem specimen lantern", "hogweed-specimen-lantern", "Santeuil cylinder organ", "santeuil-cylinder-organ", "Couleuvre dragonfly automaton", "couleuvre-dragonfly-automaton"],
-  ["elegans", "Edinburgh, Scotland", "crag ear-warmers", "crag-ear-warmers", "contour accordion", "bellows-instrument", "loch sampler", "loch-sampler"],
+  ["elegans", "Edinburgh, Scotland", "Midmar compost tumbler", "midmar-compost-tumbler", "GALAXY plate-scanner engine", "galaxy-plate-scanner", "Agassiz ice-flow model", "agassiz-ice-flow-model"],
   ["elegans", "Tenerife, Spain", "obsidian goggles", "obsidian-goggles", "broom plume", "broom-plume", "caldera glider", "glider"],
   ["elegans", "Kauaʻi, Hawaiʻi", "canyon crest", "canyon-crest", "waterfall scarf", "waterfall-scarf", "fern abseil reel", "fern-abseil-reel"],
   ["elegans", "Australian Capital Territory", "seedpod maracas", "seedpod-maracas", "quadrat shield", "quadrat-shield", "lake-reed snorkel", "snorkel"],
@@ -58,7 +58,6 @@ const explicitUniqueRendererFamilies = new Set([
   "canyon-crest",
   "coconut-cloche",
   "coconut-rain-hood",
-  "crag-ear-warmers",
   "erosion-crinoline",
   "fan-palm-collar",
   "fern-abseil-reel",
@@ -93,6 +92,7 @@ const repeatedRendererFamilies = new Set([
 
 const n2RendererFamilies = new Set(["ngm-agar-plate", "n2-lab-coat", "cryo-vial-jetpack"]);
 const santeuilRendererFamilies = new Set(["hogweed-specimen-lantern", "santeuil-cylinder-organ", "couleuvre-dragonfly-automaton"]);
+const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "galaxy-plate-scanner", "agassiz-ice-flow-model"]);
 const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
 const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|snorkel|compass|press|gauge rod|camera rig/i;
 const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|skates|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
@@ -102,6 +102,7 @@ function hasNamedRenderer(item) {
     || repeatedRendererFamilies.has(item.family)
     || n2RendererFamilies.has(item.family)
     || santeuilRendererFamilies.has(item.family)
+    || edinburghRendererFamilies.has(item.family)
     || item.family === "volcanic-needle-ruff"
     || instrumentRendererPattern.test(item.label)
     || fieldToolRendererPattern.test(item.label)
@@ -519,6 +520,130 @@ function drawSanteuilAccessory(group, item, companion) {
   return false;
 }
 
+function drawEdinburghAccessory(group, item, companion) {
+  if (item.family === "midmar-compost-tumbler") {
+    group.classList.add("edinburgh-accessory", "midmar-tumbler", companion ? "midmar-tumbler-companion" : "midmar-tumbler-primary");
+    if (companion) {
+      add(group, "path", { class: "edinburgh-accessory-shadow", d: "M-80 54Q0 75 82 51Q43 82-72 76Z" });
+      add(group, "path", { class: "tumbler-cradle", d: "M-65 31Q-49 61 0 64Q50 61 66 29L56 22Q39 46 0 48Q-39 46-55 22Z" });
+      add(group, "path", { class: "tumbler-axis", d: "M-81-2H82" });
+      add(group, "path", { class: "tumbler-barrel companion", d: "M-62-35Q0-49 62-34L68 23Q0 42-68 24Z" });
+      [-47,-28,-9,10,29,48].forEach((x, index) => add(group, "path", { class: "tumbler-slat", d: `M${x}-37Q${x + (index % 2 ? 3 : -2)} -4 ${x + (index % 2 ? 4 : -3)} 29` }));
+      add(group, "path", { class: "tumbler-door upper", d: "M-28-37Q0-43 28-36L27-5Q0 2-28-5Z" });
+      add(group, "path", { class: "tumbler-door lower", d: "M-27 1Q0 8 28 1L29 27Q0 35-29 28Z" });
+      add(group, "circle", { class: "tumbler-latch", cx: 22, cy: -20, r: 4 });
+      add(group, "circle", { class: "tumbler-latch", cx: -21, cy: 14, r: 4 });
+      add(group, "circle", { class: "tumbler-handwheel-rim", cx: 78, cy: -2, r: 21 });
+      add(group, "circle", { class: "tumbler-handwheel-hub", cx: 78, cy: -2, r: 5 });
+      [0,45,90,135].forEach(angle => add(group, "path", { class: "tumbler-handwheel-spoke", d: "M57-2H99", transform: `rotate(${angle} 78 -2)` }));
+      add(group, "path", { class: "tumbler-foot", d: "M-67 40L-78 66H-53L-47 48ZM48 47L54 67H79L66 37Z" });
+      add(group, "path", { class: "tumbler-vent companion", d: "M-52-18L-38-20M37-22L51-19M-50 14L-37 17M38 12L53 9" });
+    } else {
+      add(group, "path", { class: "edinburgh-accessory-shadow", d: "M-76 89Q5 109 80 85Q43 117-68 111Z" });
+      add(group, "path", { class: "tumbler-a-frame", d: "M-72 85L-45-39L-31-39L-48 85ZM72 85L45-39L31-39L48 85ZM-58 55H58" });
+      add(group, "path", { class: "tumbler-axis", d: "M-67-21H68" });
+      add(group, "path", { class: "tumbler-barrel", d: "M-45-72L28-77L55-50L49 35L22 62L-41 54L-57 20L-55-45Z" });
+      add(group, "path", { class: "tumbler-facet", d: "M-45-72L-26-48L-34 35L-41 54M28-77L16-48L23 39L22 62M-55-45L-26-48L16-48L55-50M-57 20L-34 35L23 39L49 35" });
+      add(group, "path", { class: "tumbler-cutaway", d: "M-34 4L22 1L24 39L-34 35Z" });
+      add(group, "path", { class: "tumbler-compost green", d: "M-31 11Q-17-2-3 12Q12-3 21 9V22Q-7 31-32 23Z" });
+      add(group, "path", { class: "tumbler-compost brown", d: "M-32 23Q-15 14 1 27Q12 17 23 23V37L-33 34Z" });
+      add(group, "path", { class: "tumbler-hatch", d: "M-32-45L21-49L26-11L-28-7Z" });
+      add(group, "path", { class: "tumbler-hatch-hinge", d: "M-23-43V-7M13-47V-11" });
+      add(group, "circle", { class: "tumbler-latch", cx: 22, cy: -29, r: 5 });
+      [[-39,-58],[-7,-62],[28,-61],[-45,-25],[-8,-27],[37,-31]].forEach(([cx, cy], index) => add(group, "circle", { class: "tumbler-vent", cx, cy, r: index % 3 === 1 ? 3.5 : 3 }));
+      add(group, "path", { class: "tumbler-crank", d: "M56-21Q84-24 84 1L100 11" });
+      add(group, "circle", { class: "tumbler-crank-knob", cx: 104, cy: 13, r: 7 });
+      add(group, "path", { class: "tumbler-ground-pin", d: "M-51 85V99M51 85V99M-62 99H-40M40 99H62" });
+    }
+    return true;
+  }
+
+  if (item.family === "galaxy-plate-scanner") {
+    group.classList.add("edinburgh-accessory", "galaxy-scanner", companion ? "galaxy-scanner-companion" : "galaxy-scanner-primary");
+    if (companion) {
+      add(group, "path", { class: "edinburgh-accessory-shadow", d: "M-58 82Q5 98 65 79Q34 105-52 103Z" });
+      add(group, "path", { class: "scanner-portal", d: "M-48 77V-65H42V77H24V-46H-30V77Z" });
+      add(group, "path", { class: "scanner-portal-rivet", d: "M-39-54H-37M31-54H33M-39 63H-37M31 63H33" });
+      const carriage = add(group, "g", { class: "scanner-plate-carriage companion", transform: "rotate(-20 0 14)" });
+      add(carriage, "rect", { class: "scanner-carriage", x: -37, y: -20, width: 74, height: 68, rx: 2 });
+      add(carriage, "rect", { class: "scanner-star-plate", x: -28, y: -12, width: 56, height: 50, rx: 1 });
+      [[-18,-3,2.6],[-6,9,1.6],[11,-2,2.1],[18,18,1.4],[-14,27,1.5],[5,29,1.2]].forEach(([cx,cy,r]) => add(carriage, "circle", { class: "scanner-star", cx, cy, r }));
+      add(group, "path", { class: "scanner-head-arm", d: "M-30-42H11L22-23" });
+      add(group, "path", { class: "scanner-head", d: "M7-36L31-31L27-5L4-11Z" });
+      add(group, "circle", { class: "scanner-lens", cx: 17, cy: -20, r: 6 });
+      add(group, "path", { class: "scanner-guide", d: "M-37 57H32M-22 49V68M18 49V68" });
+      add(group, "path", { class: "scanner-counter", d: "M41 8L67 13L62 40L40 35Z" });
+      const companionCounter = add(group, "text", { class: "scanner-counter-text", x: 52, y: 29, "text-anchor": "middle" });
+      companionCounter.textContent = "12";
+      add(group, "path", { class: "scanner-foot", d: "M-52 76L-61 91H-29L-23 77ZM18 77L25 91H56L47 76Z" });
+    } else {
+      add(group, "path", { class: "edinburgh-accessory-shadow", d: "M-108 65Q1 89 111 62Q55 99-98 92Z" });
+      add(group, "path", { class: "scanner-cast-frame", d: "M-96 54V-42H-60V-59H59V-42H96V54H70V-23H-68V54Z" });
+      add(group, "path", { class: "scanner-frame-brace", d: "M-96 34H96M-78-41V54M78-41V54M-60-49H59" });
+      [[-87,-31],[-69,-31],[69,-31],[87,-31],[-87,44],[-69,44],[69,44],[87,44]].forEach(([cx,cy]) => add(group, "circle", { class: "scanner-rivet", cx, cy, r: 3 }));
+      add(group, "path", { class: "scanner-rail", d: "M-72 44H73M-58 55H59" });
+      add(group, "path", { class: "scanner-carriage", d: "M-54-20H55V48H-54Z" });
+      add(group, "rect", { class: "scanner-star-plate", x: -43, y: -11, width: 86, height: 50, rx: 1 });
+      [[-32,-1,2.8],[-20,19,1.5],[-3,5,2],[15,-3,1.5],[31,21,2.4],[4,29,1.2],[28,6,1.1],[-35,31,1.3]].forEach(([cx,cy,r]) => add(group, "circle", { class: "scanner-star", cx, cy, r }));
+      add(group, "path", { class: "scanner-head-column", d: "M-18-79H17L24-24H-25Z" });
+      add(group, "path", { class: "scanner-head", d: "M-32-33H32L27-2H-28Z" });
+      add(group, "circle", { class: "scanner-lens", cx: 0, cy: -17, r: 10 });
+      add(group, "path", { class: "scanner-aperture", d: "M0-27L8-22L10-13L2-7L-7-11L-10-20Z" });
+      add(group, "circle", { class: "scanner-wheel-rim", cx: 87, cy: 8, r: 20 });
+      add(group, "circle", { class: "scanner-wheel-hub", cx: 87, cy: 8, r: 5 });
+      [0,45,90,135].forEach(angle => add(group, "path", { class: "scanner-wheel-spoke", d: "M67 8H107", transform: `rotate(${angle} 87 8)` }));
+      add(group, "rect", { class: "scanner-counter", x: -103, y: -18, width: 34, height: 27, rx: 3 });
+      const counter = add(group, "text", { class: "scanner-counter-text", x: -86, y: 0, "text-anchor": "middle" });
+      counter.textContent = "04";
+      add(group, "path", { class: "scanner-plate-guide", d: "M-50 42L-68 61M50 42L68 61" });
+      add(group, "path", { class: "scanner-foot", d: "M-99 54L-108 72H-67L-62 54ZM62 54L68 72H109L99 54Z" });
+      const galaxy = add(group, "text", { class: "scanner-label", x: 0, y: -48, "text-anchor": "middle" });
+      galaxy.textContent = "GALAXY";
+    }
+    return true;
+  }
+
+  if (item.family === "agassiz-ice-flow-model") {
+    group.classList.add("edinburgh-accessory", "agassiz-model", companion ? "agassiz-model-companion" : "agassiz-model-primary");
+    if (companion) {
+      add(group, "path", { class: "edinburgh-accessory-shadow", d: "M-69 79Q7 99 73 75Q39 106-61 102Z" });
+      add(group, "path", { class: "agassiz-theatre-frame", d: "M-63 77V-71H59V77H46V-57H-49V77Z" });
+      add(group, "path", { class: "agassiz-cutaway", d: "M-46 54L-31-27L-8-65L13-31L42 8L47 55Z" });
+      add(group, "path", { class: "agassiz-crag-core", d: "M-42 50L-30-20L-8-57L6-28L-2 9L28 47Z" });
+      add(group, "path", { class: "agassiz-tail-core", d: "M-2 9L8-28L42 9L47 55L28 47Z" });
+      add(group, "path", { class: "agassiz-ice-ribbon", d: "M-33-19Q-22-39-9-46Q3-31 9-11Q18 8 39 22L36 36Q9 22-2 2Q-13-18-25-6Z" });
+      add(group, "path", { class: "agassiz-flow-arrow", d: "M-18-20Q2-2 23 18M17 8L24 18L12 20" });
+      add(group, "path", { class: "agassiz-crank", d: "M47-32Q69-34 69-12L83-3" });
+      add(group, "circle", { class: "agassiz-crank-knob", cx: 87, cy: -1, r: 6 });
+      add(group, "path", { class: "agassiz-pulley", d: "M-39-43H-7M-23-43V-18" });
+      add(group, "circle", { class: "agassiz-pulley-wheel", cx: -23, cy: -44, r: 9 });
+      add(group, "path", { class: "agassiz-foot", d: "M-65 76L-73 91H-38L-32 77ZM31 77L38 91H72L64 76Z" });
+      const west = add(group, "text", { class: "agassiz-direction", x: -36, y: 68, "text-anchor": "middle" });
+      west.textContent = "W";
+      const east = add(group, "text", { class: "agassiz-direction", x: 35, y: 68, "text-anchor": "middle" });
+      east.textContent = "E";
+    } else {
+      add(group, "path", { class: "edinburgh-accessory-shadow", d: "M-112 49Q0 75 115 46Q58 86-102 80Z" });
+      add(group, "path", { class: "agassiz-base", d: "M-104 32L88 25L109 49L-86 59Z" });
+      add(group, "path", { class: "agassiz-andesite-slab", d: "M-91-24L63-31L88-7L73 30L-79 36L-103 11Z" });
+      add(group, "path", { class: "agassiz-groove", d: "M-75-7Q-30-18 18-16Q46-15 69-7M-76 9Q-35-1 11 1Q44 2 70 10M-64 23Q-22 13 23 15Q49 16 67 22" });
+      add(group, "path", { class: "agassiz-brass-rail", d: "M-87-33L80-40M-87-28L80-35" });
+      add(group, "path", { class: "agassiz-rail-tie", d: "M-66-36L-63-25M-25-38L-22-27M17-40L20-29M58-42L61-31" });
+      add(group, "path", { class: "agassiz-ice-carriage", d: "M0-56L50-61L69-43L60-11L10-7L-8-25Z" });
+      add(group, "path", { class: "agassiz-ice-facet", d: "M0-56L15-35L10-7M50-61L43-36L60-11M15-35L43-36L69-43" });
+      add(group, "circle", { class: "agassiz-carriage-wheel", cx: 4, cy: -29, r: 5 });
+      add(group, "circle", { class: "agassiz-carriage-wheel", cx: 61, cy: -36, r: 5 });
+      add(group, "path", { class: "agassiz-flow-arrow", d: "M-70-48H61M48-58L62-48L48-38" });
+      const east = add(group, "text", { class: "agassiz-direction", x: 82, y: -42, "text-anchor": "middle" });
+      east.textContent = "E";
+      add(group, "path", { class: "agassiz-level", d: "M-91 37V50M76 31V44" });
+    }
+    return true;
+  }
+
+  return false;
+}
+
 function drawInstrument(group, item, companion) {
   const label = item.label;
   if (/fiddle/i.test(label)) {
@@ -726,14 +851,9 @@ function drawRepeatedFamilyAccessory(group, item, companion) {
   const label=item.label;
   switch(item.family) {
     case "bellows-instrument":
-      if(/contour/i.test(label)) {
-        path(group, companion ? "M-48-22L-29-38L-12-21L6-42L23-20L43-34L52-17V29L33 42L14 25L-5 45L-23 23L-43 38L-52 22Z" : "M-63-28L-39-49L-16-27L7-54L30-25L55-45L67-21V38L42 55L18 32L-7 59L-30 29L-55 49L-68 28Z");
-        [-32,-11,10,31].forEach(x=>line(group,`M${x}-23V31`));
-      } else {
-        path(group, companion ? "M-47-31H47V31H-47Z" : "M-61-40H61V40H-61Z");
-        for(let x=companion?-32:-45;x<=(companion?32:45);x+=13) line(group,`M${x} ${companion?-29:-38}V${companion?29:38}`);
-        [-56,56].forEach(x=>dot(group,x,0,6,"acc-soft"));
-      }
+      path(group, companion ? "M-47-31H47V31H-47Z" : "M-61-40H61V40H-61Z");
+      for(let x=companion?-32:-45;x<=(companion?32:45);x+=13) line(group,`M${x} ${companion?-29:-38}V${companion?29:38}`);
+      [-56,56].forEach(x=>dot(group,x,0,6,"acc-soft"));
       return true;
     case "bonnet":
       if(/pond-disc/i.test(label)) {
@@ -932,10 +1052,6 @@ function drawUniqueNamedAccessory(group, item, companion) {
       line(group, companion ? "M-52 48L-4-13L45-45 M-4-13L56 35" : "M-69 64L-5-18L59-60 M-5-18L75 47", "acc-line thick");
       path(group, companion ? "M35-50Q51-67 65-48Q68-25 48-18Q29-29 35-50Z" : "M46-67Q67-89 86-64Q91-33 64-24Q38-39 46-67Z", "acc-main");
       path(group, companion ? "M-56 42L-66 58L-48 63L-39 49Z" : "M-74 56L-88 77L-64 84L-52 65Z", "acc-accent");
-      return true;
-    case "crag-ear-warmers":
-      path(group, companion ? "M-48 5Q-39-46 0-52Q40-46 48 5" : "M-64 7Q-52-62 0-70Q53-61 64 7", "acc-line thick");
-      [-1, 1].forEach(side => path(group, companion ? `M${side * 39}-8L${side * 57} 2L${side * 51} 30L${side * 29} 25L${side * 25} 2Z` : `M${side * 52}-11L${side * 76} 3L${side * 68} 40L${side * 38} 33L${side * 34} 3Z`, side < 0 ? "acc-main" : "acc-accent"));
       return true;
     case "obsidian-goggles":
       path(group, companion ? "M-61-13L-28-35L-3-13L-18 18L-49 20Z M3-13L29-35L61-13L49 20L18 18Z" : "M-80-17L-37-47L-4-17L-24 24L-65 27Z M4-17L38-47L80-17L65 27L24 24Z", "acc-dark");
@@ -1141,6 +1257,7 @@ function drawUniqueNamedAccessory(group, item, companion) {
 
 function drawNamedAccessory(group, item, companion) {
   if (drawSanteuilAccessory(group, item, companion)) return true;
+  if (drawEdinburghAccessory(group, item, companion)) return true;
   if (drawUniqueNamedAccessory(group, item, companion)) return true;
   if (drawRepeatedFamilyAccessory(group, item, companion)) return true;
   if (drawN2Accessory(group, item, companion)) return true;
@@ -1178,7 +1295,10 @@ function renderPiece(target, item, wormPart) {
     "cryo-vial-jetpack": { primary: [278, 143, .9, -3], companion: [31, 155, .72, 5] },
     "hogweed-specimen-lantern": { primary: [327, 133, .66, 3], companion: [61, 126, .58, -4] },
     "santeuil-cylinder-organ": { primary: [183, 191, .59, -2], companion: [86, 208, .52, 2] },
-    "couleuvre-dragonfly-automaton": { primary: [304, 235, .61, -2], companion: [76, 266, .5, 3] }
+    "couleuvre-dragonfly-automaton": { primary: [304, 235, .61, -2], companion: [76, 266, .5, 3] },
+    "midmar-compost-tumbler": { primary: [321, 160, .61, -2], companion: [78, 167, .52, 3] },
+    "galaxy-plate-scanner": { primary: [184, 203, .56, -1], companion: [77, 218, .47, 2] },
+    "agassiz-ice-flow-model": { primary: [300, 246, .58, -2], companion: [73, 260, .47, 2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;

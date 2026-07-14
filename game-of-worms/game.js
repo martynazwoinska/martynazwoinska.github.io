@@ -2,8 +2,8 @@ import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
-import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-4";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-7";
+import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-5";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-8";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -86,7 +86,7 @@ const species = [
     locations: [
       { name: "Bristol N2, England", coordinates: [-2.59, 51.45], source: "CaeNDR", style: "field", strain: "N2", history: "N2 came from mushroom compost near Bristol. C. elegans can be frozen alive in a protective solution and revived after thawing. This is the reason for its cryo-vial jetpack. An early N2 tube frozen around 1968 was later thawed to establish an ancestral laboratory stock." },
       { name: "Santeuil, France", coordinates: [1.951, 49.121], source: "CaeNDR", style: "field", strain: "JU1925", history: "Across three October surveys of Santeuil wood, C. elegans was found on about half of 88 rotting stems; soil yielded it only occasionally." },
-      { name: "Edinburgh, Scotland", coordinates: [-3.19, 55.92], source: "CaeNDR", style: "woodland" },
+      { name: "Edinburgh, Scotland", coordinates: [-3.19, 55.92], source: "CaeNDR", style: "field", strain: "ED3010", history: "ED3010 represents an urban-garden compost sample from Midmar Allotment, field 1, plot 39. The Edinburgh marker currently brings together 12 strains in 4 isotype groups, all isolated from urban-garden compost." },
       { name: "Tenerife, Spain", coordinates: [-16.535, 28.411], source: "CaeNDR", style: "ocean" },
       { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.663, 22.147], source: "CaeNDR", style: "kauai" },
       { name: "Australian Capital Territory", coordinates: [149.115, -35.254], source: "CaeNDR", style: "field" },
