@@ -46,6 +46,68 @@ const rows = [
   ["tropicalis", "Réunion Island", "cirque hoop skirt", "skirt", "lava crampons", "lava-crampons", "ravine trumpet", "ravine-trumpet"]
 ];
 
+const explicitUniqueRendererFamilies = new Set([
+  "araucaria-halo",
+  "basalt-cuffs",
+  "boulder-spectacles",
+  "broom-plume",
+  "cacao-cuirass",
+  "caldera-headband",
+  "cane-ankle-bells",
+  "canoe-paddle-bow",
+  "canyon-crest",
+  "coconut-cloche",
+  "coconut-rain-hood",
+  "crag-ear-warmers",
+  "erosion-crinoline",
+  "fan-palm-collar",
+  "fern-abseil-reel",
+  "fern-epaulettes",
+  "fig-fascinator",
+  "fruit-sampling-tool",
+  "hoodoo-helmet",
+  "lagoon-wind-vane",
+  "le-morne-pauldron",
+  "obsidian-goggles",
+  "paddy-metronome",
+  "palm-bustle",
+  "plot-waistcoat",
+  "reed-boater",
+  "reef-mask",
+  "research-headphones",
+  "salt-crystal-jacket",
+  "scoria-bowler",
+  "seagrass-tail",
+  "shade-visor",
+  "terrace-boots",
+  "two-river-yoke",
+  "volcano-lake-diving-bell",
+  "waterfall-scarf",
+  "watershed-swimwear"
+]);
+
+const repeatedRendererFamilies = new Set([
+  "bellows-instrument", "bonnet", "bowed-strings", "cape", "casque",
+  "compass", "fan", "flute-piccolo", "glider", "monocle", "skates",
+  "skirt", "snorkel", "stilts", "sunglasses", "telescope", "umbrella",
+  "waders", "wig", "wings"
+]);
+
+const n2RendererFamilies = new Set(["ngm-agar-plate", "n2-lab-coat", "cryo-vial-jetpack"]);
+const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
+const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|snorkel|compass|press|gauge rod|camera rig/i;
+const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|skates|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
+
+function hasNamedRenderer(item) {
+  return explicitUniqueRendererFamilies.has(item.family)
+    || repeatedRendererFamilies.has(item.family)
+    || n2RendererFamilies.has(item.family)
+    || item.family === "volcanic-needle-ruff"
+    || instrumentRendererPattern.test(item.label)
+    || fieldToolRendererPattern.test(item.label)
+    || naturalRendererPattern.test(item.label);
+}
+
 function artworkKind(label) {
   if (/coat|waistcoat|cape|waders|jacket|swimwear|skirt|cuirass|boots|pauldron|epaulettes|ruff|collar|diving bell|crinoline|scarf|tail/i.test(label)) return "garment";
   if (/visor|fascinator|spectacles|cloche|casque|bonnet|monocle|wig|agar plate|boater|ear-warmers|goggles|crest|bowler|halo|hood|mask|headband|helmet|headphones|sunglasses/i.test(label)) return "head";
@@ -139,6 +201,7 @@ export function getAccessoryDesign(speciesId, placeName) {
 
 export function auditAccessoryCatalogue(expectedKeys = []) {
   const keys = accessoryCatalogue.map(design => design.key);
+  const items = accessoryCatalogue.flatMap(design => [design.headwear, design.wrap, design.charm]);
   const duplicateKeys = keys.filter((key, index) => keys.indexOf(key) !== index);
   const missingKeys = expectedKeys.filter(key => !catalogueByKey.has(key));
   const unexpectedKeys = keys.filter(key => expectedKeys.length && !expectedKeys.includes(key));
@@ -161,6 +224,8 @@ export function auditAccessoryCatalogue(expectedKeys = []) {
     });
   });
   const overusedFamilies = [...familyCounts].filter(([, count]) => count > 2);
+  const missingNamedRenderers = items.filter(item => !hasNamedRenderer(item)).map(item => item.label);
+  const namedCoverageCount = items.length - missingNamedRenderers.length;
   return Object.freeze({
     recordCount: accessoryCatalogue.length,
     duplicateKeys,
@@ -171,7 +236,9 @@ export function auditAccessoryCatalogue(expectedKeys = []) {
     missingKeys,
     unexpectedKeys,
     overusedFamilies,
-    valid: accessoryCatalogue.length === 37 && designIds.size === 111 && !duplicateKeys.length && !duplicateLabels.length && !duplicateDesignIds.length && !duplicateGeometrySignatures.length && !missingKeys.length && !unexpectedKeys.length && !overusedFamilies.length
+    namedCoverageCount,
+    missingNamedRenderers,
+    valid: accessoryCatalogue.length === 37 && designIds.size === 111 && namedCoverageCount === 111 && !duplicateKeys.length && !duplicateLabels.length && !duplicateDesignIds.length && !duplicateGeometrySignatures.length && !missingKeys.length && !unexpectedKeys.length && !overusedFamilies.length && !missingNamedRenderers.length
   });
 }
 
@@ -216,89 +283,6 @@ function motif(parent, variant, compact = false) {
   if (mode === 10) path(group, "M-21 13 Q-4-18 0-22 Q5-18 21 13 Q0 5-21 13Z M0-22V18", "acc-accent");
   if (mode === 11) { path(group, "M-18 13 Q0-22 18 13 Q0 26-18 13Z", "acc-accent"); dot(group, 0, 3, 5, "acc-dark"); }
   return group;
-}
-
-function drawHead(group, item, companion) {
-  const form = item.form;
-  const skew = (item.variant % 5) - 2;
-  switch (form) {
-    case 0: path(group, `M-48 8 Q-12 ${-34 - skew} 43-7 L36 14 Q-6 1-43 21Z`); line(group, "M-38 11Q0-2 35 0"); break;
-    case 1: path(group, "M-42 12 Q-8-4 34 4 L47 20 Q5 10-38 24Z"); line(group, "M-22 6L4-37L29 5 M4-37V-52"); break;
-    case 2: path(group, "M-34 17 L-18-3 L-8-45 L2-68 L13-43 L21-4 L39 17Z"); line(group, "M-15-11H18 M-10-29H13 M-5-47H8"); break;
-    case 3: path(group, "M-44 20 Q-42-24 0-36 Q42-24 44 20 Q0 3-44 20Z"); line(group, "M-29 6Q0-22 29 6 M-12-23V9 M12-23V9"); break;
-    case 4: for (let i=0;i<7;i+=1){const a=(i/7)*Math.PI*2; add(group,"ellipse",{class:i%2?"acc-accent":"acc-main",cx:(Math.cos(a)*31).toFixed(1),cy:(Math.sin(a)*13).toFixed(1),rx:13,ry:7,transform:`rotate(${i*51})`});} break;
-    case 5: path(group, "M-45 18 Q-39-38 0-48 Q39-38 45 18 L28 28 Q0 16-28 28Z"); line(group, "M-29-3Q0-23 29-3 M0-44V19"); break;
-    case 6: path(group, "M-42 14 Q-30-29 6-32 Q34-24 42 5 L33 19 Q0 4-42 14Z"); path(group, "M-4-29 Q18-47 39-24 L25-15Z", "acc-accent"); break;
-    case 7: path(group, "M-48-4 Q-24-25 0-8 Q24-25 48-4 L34 22 Q12 7 0 18 Q-12 7-34 22Z"); dot(group,-20,0,7,"acc-dark"); dot(group,20,0,7,"acc-dark"); break;
-    case 8: motif(group, item.variant); line(group, "M0 17V30"); break;
-    case 9: add(group,"ellipse",{class:"acc-main",cx:0,cy:0,rx:47,ry:26}); add(group,"ellipse",{class:"acc-soft",cx:0,cy:0,rx:32,ry:15}); for(let i=-2;i<=2;i+=1) dot(group,i*12,(i%2)*4,3,"acc-dark"); break;
-    case 10: path(group, "M-39 15 Q-43-23-5-34 Q34-34 44-4 Q17 15-39 15Z"); path(group, "M-8-34Q4-48 17-32", "acc-accent"); break;
-    case 11: add(group,"ellipse",{class:"acc-main",cx:0,cy:-5,rx:45,ry:24,transform:"rotate(6)"}); path(group,"M-39 2Q0 22 40 5","acc-dark"); dot(group,5,-33,8,"acc-accent"); break;
-    case 12: path(group, "M-45-8 Q-22-26 0-6 Q22-26 45-8 L34 13 Q15 2 0 16 Q-15 2-34 13Z"); path(group,"M-31-7L-15-20L-3-4L-17 9Z M6-4L19-20L34-5L18 9Z","acc-accent"); line(group,"M-3-4L6-4"); break;
-    case 13: path(group,"M-46 15Q-39-26 0-37Q39-26 46 15Q0-1-46 15Z"); for(let i=-3;i<=3;i+=1) line(group,`M${i*11}-19L${i*7} 8`); break;
-    case 14: path(group,"M-43 20Q-49-34 0-52Q49-34 43 20L24 31Q0 12-24 31Z"); line(group,"M-24-18Q0-5 24-18"); break;
-    case 15: path(group,"M-40 18L0-51L40 18Q0 4-40 18Z"); path(group,"M-18-14L0-37L18-14Z","acc-accent"); break;
-    case 16: path(group,"M-45 17Q-52-29-22-37Q0-55 20-37Q52-28 45 17Q29 35 16 20Q0 41-13 21Q-32 36-45 17Z"); line(group,"M-31-10Q-16 5-29 21 M0-28Q11-6 3 25 M29-9Q16 6 28 21"); break;
-    case 17: path(group,"M-43 17Q-34-25 0-31Q34-25 43 17Q0 2-43 17Z"); for(let i=-2;i<=2;i+=1) path(group,`M${i*12}-24 Q${i*10-8}-47 ${i*7}-57 Q${i*10+8}-40 ${i*12}-24Z`,i%2?"acc-accent":"acc-main"); break;
-    default: path(group,"M-44 19Q-45-20-16-34Q0-50 16-34Q45-20 44 19L27 28Q0 7-27 28Z"); line(group,"M-30-8Q0 8 30-8"); break;
-  }
-  const badge = add(group,"g",{transform:`translate(${companion ? 20 : -20} ${companion ? 8 : 2}) scale(.55)`});
-  motif(badge, item.variant + (companion ? 5 : 0), true);
-}
-
-function drawWrap(group, item, companion) {
-  const form = item.form;
-  const lean = companion ? -5 : 4;
-  switch (form) {
-    case 0: path(group,"M-50-30Q0-52 50-28L39 45Q0 27-42 48Z"); line(group,"M-18-41L0-9L19-39 M0-9V34"); break;
-    case 1: path(group,"M-51-32Q0-51 51-29L43-8Q0-23-44-7Z"); path(group,`M${lean}-13Q24 22 5 61L-17 53Q6 18 ${lean}-13Z`,"acc-accent"); break;
-    case 2: path(group,"M-55-34Q0-57 54-31L43 51Q0 32-45 53Z"); line(group,"M0-44V41 M-39 7L-11 15 M12 16L40 8"); dot(group,7,-3,3,"acc-dark"); dot(group,5,13,3,"acc-dark"); break;
-    case 3: path(group,"M-48-34Q0-54 49-31L35 43Q0 31-37 45Z"); line(group,"M-35-20Q0 2 36-18 M-29 15Q0 28 28 14"); break;
-    case 4: path(group,"M-48-31L-35-48Q0-30 35-48L49-29L34 42Q0 27-35 43Z"); line(group,"M-35-28L35 31 M35-28L-35 31"); break;
-    case 5: path(group,"M-41-35Q0-47 41-33L48 48Q0 32-49 49Z"); line(group,"M-36-12H37 M-31 12H40 M-24 34H43"); break;
-    case 6: path(group,"M-54-36Q0-58 55-33L43 51Q0 33-46 53Z"); path(group,"M-44-9Q-63 0-53 21L-34 8Z M44-7Q63 2 52 23L34 8Z","acc-accent"); line(group,"M0-44V42"); break;
-    case 7: line(group,"M-43-34Q0-58 44-31 M-33-14L35 42 M34-13L-33 43","acc-strap"); dot(group,0,13,11,"acc-accent"); break;
-    case 8: path(group,"M-57-30Q0-60 58-27L42 11Q0-15-43 13Z M-42 11L-58 52L-18 33 M42 11L57 49L20 31"); break;
-    case 9: path(group,"M-57-35Q0-59 57-32L44 55Q0 34-46 56Z","acc-soft"); path(group,"M-16-46L0-14L17-44L31-31L15-4L0-14L-14-4L-31-31Z"); line(group,"M0-14V43 M-38 28Q0 48 37 27"); add(group,"rect",{class:"acc-accent",x:13,y:4,width:22,height:15,rx:3}); break;
-    case 10: path(group,"M-53-34Q0-57 53-31L42 44Q0 30-44 46Z"); line(group,"M-39-8Q0 8 40-7 M-34 18Q0 31 34 17"); break;
-    case 11: path(group,"M-51-29Q0-50 51-27L44 18Q0 5-45 20Z"); path(group,"M-45 17L-35 55L-18 28L0 57L17 28L36 54L44 18Z","acc-accent"); line(group,"M-42 4H43 M-31 28L-31 50 M0 25V54 M31 27L31 49"); break;
-    case 12: path(group,"M-62-25Q0-65 62-22L44 51Q0 20-46 53Z"); path(group,"M-22-43L0-14L22-41L34-29L0 3L-34-28Z","acc-accent"); break;
-    case 13: path(group,"M-48-34L-31-50Q0-35 31-50L49-32L39 45Q0 29-41 47Z"); line(group,"M-31-34L31 35 M30-33L-30 36"); add(group,"rect",{class:"acc-accent",x:-17,y:8,width:34,height:23,rx:5}); break;
-    case 14: path(group,"M-53-36Q0-55 53-33L43 47Q0 31-45 49Z"); path(group,"M-39 8Q-19-2-2 8L-5 37Q-23 43-40 32Z M3 8Q22-3 40 7L38 32Q21 43 5 36Z","acc-accent"); line(group,"M0-43V43"); break;
-    case 15: path(group,"M-57-38Q0-61 57-35L43 53Q0 35-45 55Z"); line(group,"M-37-28Q0-5 38-27 M-35-3Q0 18 35-2 M-30 23Q0 39 31 22"); break;
-    case 16: path(group,"M-62-28Q0-62 62-25L47 8Q0-21-48 10Z M-48 9L-65 54L-16 27 M48 9L64 52L17 27"); line(group,"M-49 10Q0 30 49 8"); break;
-    case 17: path(group,"M-48-36Q0-55 48-33L38 4L55 52Q8 35 0 55Q-10 34-56 52L-39 4Z"); line(group,"M-34 5Q0 25 35 4 M0-43V48"); break;
-    default: path(group,"M-56-34Q0-58 56-31L46 46Q0 29-48 48Z"); path(group,"M-42-8L-55 14L-33 26L-19 8Z M42-7L55 15L33 27L18 8Z","acc-accent"); line(group,"M-29-19Q0 5 30-18 M-31 27Q0 42 31 26"); break;
-  }
-  const badge = add(group,"g",{transform:`translate(${companion ? -23 : 24} ${companion ? 12 : 6}) scale(.48)`});
-  motif(badge, item.variant + (companion ? 7 : 2), true);
-}
-
-function drawCharm(group, item, companion) {
-  const form = item.form;
-  switch (form) {
-    case 0: path(group,"M-8-5Q-58-58-75-26Q-58 12-8 7Z M8-5Q58-58 75-26Q58 12 8 7Z","acc-soft"); line(group,"M-68-27L-8 2 M68-27L8 2 M-4-8Q0-18 5-8"); break;
-    case 1: line(group,"M-48-43L48 43 M48-43L-48 43","acc-line thick"); line(group,"M-48-43L-33-29 M48-43L33-29 M48 43L33 29 M-48 43L-33 29","acc-accent-line"); break;
-    case 2: add(group,"rect",{class:"acc-main",x:-56,y:-25,width:112,height:55,rx:12}); line(group,"M-38-25V-47 M18-25L31-50 M-15-25L-8-55"); dot(group,-27,1,14,"acc-soft"); dot(group,12,2,14,"acc-accent"); break;
-    case 3: add(group,"ellipse",{class:"acc-main",cx:0,cy:0,rx:50,ry:44}); dot(group,0,0,21,"acc-soft"); line(group,"M-50 0H50 M0-44V44 M-35-31L35 31 M35-31L-35 31"); break;
-    case 4: path(group,"M-72 22Q0-48 72 20Q0 5-72 22Z","acc-soft"); line(group,"M-62 17Q0-23 62 15 M-43 7L-60-27 M-23-4L-34-42 M0-12V-51 M24-4L38-40 M45 7L63-25"); break;
-    case 5: path(group,"M-37 39Q-45-17 0-43Q45-17 37 39Z"); path(group,"M-22 23Q0-9 22 23Q0 45-22 23Z","acc-accent"); line(group,"M0-43V-61 M-12-58H12"); break;
-    case 6: path(group,"M-58-25Q0-48 58-22L49 42Q0 58-49 41Z"); line(group,"M-38-28Q0-65 39-27 M-45 3H45 M-31 3V37 M0 3V43 M31 3V37"); break;
-    case 7: dot(group,0,0,45,"acc-main"); dot(group,0,0,28,"acc-soft"); path(group,"M0-39L9-8L39 0L9 8L0 39L-9 8L-39 0L-9-8Z","acc-accent"); break;
-    case 8: path(group,"M-50 18Q-23-19 0 5Q23-19 50 18Q20 42 0 23Q-20 42-50 18Z"); path(group,"M-28 6Q-9-48 9-2Q29-45 35 6","acc-accent"); dot(group,-12,11,5,"acc-dark"); break;
-    case 9: add(group,"rect",{class:"acc-main",x:-43,y:-39,width:86,height:78,rx:15}); [-22,0,22].forEach(x=>{add(group,"rect",{class:"acc-soft",x:x-8,y:-31,width:16,height:49,rx:5}); line(group,`M${x}-31V-48 M${x-8}-48H${x+8}`);}); path(group,"M-34 26L0 47L34 26Z","acc-accent"); break;
-    case 10: path(group,"M-56-7Q0-47 56-5L46 40Q0 59-47 39Z"); line(group,"M-39-10Q0-66 40-9 M-39 10H42"); for(let i=-2;i<=2;i+=1) dot(group,i*16,24+(i%2)*5,5,i%2?"acc-accent":"acc-soft"); break;
-    case 11: path(group,"M-49 28Q-56-13-22-29Q8-48 39-19Q57 1 43 30Q0 49-49 28Z"); line(group,"M-25-27L-29-68 M-4-37L3-78 M19-32L35-69 M-35-67H-22 M-4-77H10 M29-69H42"); break;
-    case 12: path(group,"M-75 16Q0-32 75 14L58 32Q0 7-59 34Z"); line(group,"M-62 13Q0-15 62 11 M-44 2L-55-32 M-18-9L-21-50 M12-11L18-51 M39 0L54-35"); break;
-    case 13: path(group,"M-61 5Q-20-48 3-16Q27-45 60-4Q42 4 22 13Q3 21-18 13Q-40 7-61 5Z"); path(group,"M-50 0Q-23-15-6-11 M14-11Q31-17 49-7","acc-accent-line"); break;
-    case 14: path(group,"M-43 31Q-52-22-2-35Q47-22 44 31Q0 15-43 31Z"); path(group,"M-17-33L0-55L17-32 M-7-54H8","acc-accent"); line(group,"M-30 12L30-9 M-25-2L31 17"); break;
-    case 15: path(group,"M-55 36L-42-26L30-18L50 31Q0 50-55 36Z"); path(group,"M-30-23Q0-58 32-17","acc-soft"); line(group,"M-39 4H39 M-27 25H35"); break;
-    case 16: add(group,"rect",{class:"acc-main",x:-48,y:-35,width:96,height:70,rx:8}); line(group,"M-36-19H35 M-36-3H35 M-36 13H35 M-16-30V29 M16-30V29"); path(group,"M-54-11L-76-25 M54 8L75 24","acc-accent-line"); break;
-    case 17: path(group,"M-55 34V-12Q0-48 55-9V34Z"); for(let x=-36;x<=36;x+=18) line(group,`M${x} 29V${-4-Math.abs(x)/5}`); line(group,"M-62-6Q0-62 62-3"); break;
-    default: path(group,"M-56 23Q-42-34 0-42Q42-34 56 23Q0 50-56 23Z"); path(group,"M-31 15Q-23-11-5-5Q10-29 30-7Q39 9 26 25Q0 38-31 15Z","acc-accent"); line(group,"M-43 22L-58 47 M40 21L59 45"); break;
-  }
-  const badge = add(group,"g",{transform:`translate(${companion ? 30 : -31} ${companion ? -17 : 19}) scale(.48)`});
-  motif(badge, item.variant + (companion ? 9 : 4), true);
 }
 
 function drawN2Accessory(group, item, companion) {
@@ -689,7 +673,258 @@ function drawRepeatedFamilyAccessory(group, item, companion) {
   }
 }
 
+function drawUniqueNamedAccessory(group, item, companion) {
+  switch (item.family) {
+    case "fig-fascinator": {
+      const halves = companion ? [[-14, -18, -18], [13, -13, 14]] : [[-22, -24, -24], [0, -33, 2], [23, -19, 23]];
+      halves.forEach(([x, y, angle], index) => {
+        path(group, `M${x} ${y - 22}Q${x - 20} ${y - 3} ${x} ${y + 19}Q${x + 20} ${y - 3} ${x} ${y - 22}Z`, index % 2 ? "acc-accent" : "acc-main").setAttribute("transform", `rotate(${angle} ${x} ${y})`);
+        line(group, `M${x} ${y - 16}V${y + 13}`);
+      });
+      path(group, companion ? "M-39 8Q0-9 39 8L29 21Q0 9-29 21Z" : "M-52 10Q0-14 52 9L39 28Q0 12-39 28Z", "acc-soft");
+      return true;
+    }
+    case "shade-visor":
+      path(group, companion ? "M-54-10Q-8-39 48-16L57 1Q5-8-48 13Z" : "M-72-13Q-10-53 64-21L76 1Q7-10-64 18Z", "acc-main");
+      [0, 1, 2].slice(0, companion ? 2 : 3).forEach(index => line(group, companion ? `M${-42 + index * 34} ${-10 - index * 4}L${-33 + index * 37} ${7 - index * 3}` : `M${-56 + index * 44} ${-14 - index * 5}L${-44 + index * 48} ${9 - index * 4}`));
+      line(group, companion ? "M-46-8L-61-28 M47-14L58-31" : "M-61-11L-81-38 M62-19L78-42", "acc-accent-line");
+      return true;
+    case "boulder-spectacles":
+      path(group, companion ? "M-58-8L-38-29L-8-20L-3 9L-25 27L-53 19Z" : "M-73-10L-49-39L-11-27L-4 12L-31 35L-67 25Z", "acc-dark");
+      path(group, companion ? "M5-19L35-31L59-9L51 22L21 28L2 8Z" : "M7-26L46-41L76-12L66 29L27 37L3 11Z", "acc-soft");
+      line(group, companion ? "M-4-5L5-7 M-51 4L-70-2 M52 3L70-6" : "M-5-7L7-9 M-66 5L-91-3 M67 4L91-8", "acc-line thick");
+      return true;
+    case "coconut-cloche":
+      path(group, companion ? "M-48 19Q-45-33 0-48Q46-32 48 19Q0 3-48 19Z" : "M-64 25Q-60-45 0-64Q61-43 64 25Q0 4-64 25Z");
+      [-2, -1, 0, 1, 2].slice(companion ? 1 : 0, companion ? 4 : 5).forEach(index => line(group, companion ? `M${index * 15} 10Q${index * 11} -22 ${index * 6} -43` : `M${index * 19} 13Q${index * 14} -30 ${index * 8} -58`));
+      path(group, companion ? "M-52 16Q0 35 53 15" : "M-69 21Q0 47 70 20", "acc-accent-line");
+      return true;
+    case "fruit-sampling-tool":
+      line(group, companion ? "M-52 48L-4-13L45-45 M-4-13L56 35" : "M-69 64L-5-18L59-60 M-5-18L75 47", "acc-line thick");
+      path(group, companion ? "M35-50Q51-67 65-48Q68-25 48-18Q29-29 35-50Z" : "M46-67Q67-89 86-64Q91-33 64-24Q38-39 46-67Z", "acc-main");
+      path(group, companion ? "M-56 42L-66 58L-48 63L-39 49Z" : "M-74 56L-88 77L-64 84L-52 65Z", "acc-accent");
+      return true;
+    case "reed-boater":
+      add(group, "ellipse", { class: "acc-soft", cx: 0, cy: companion ? 11 : 14, rx: companion ? 58 : 76, ry: companion ? 18 : 24 });
+      path(group, companion ? "M-35 9L-29-35Q0-48 30-34L36 9Z" : "M-46 12L-38-47Q0-64 40-45L48 12Z");
+      for (let x = companion ? -25 : -34; x <= (companion ? 25 : 34); x += companion ? 12 : 14) line(group, companion ? `M${x} 5L${x * .82} -35` : `M${x} 7L${x * .82} -48`);
+      line(group, companion ? "M-32-4H33" : "M-43-6H44", "acc-accent-line");
+      return true;
+    case "plot-waistcoat":
+      path(group, companion ? "M-45-39L-12-50L0-22L13-50L45-37L35 49L5 39L0 5L-6 39L-37 50Z" : "M-59-52L-16-66L0-29L17-66L60-49L47 65L7 52L0 7L-8 52L-49 67Z", "acc-main");
+      [-1, 1].forEach(side => {
+        add(group, "rect", { class: "acc-soft", x: side < 0 ? (companion ? -34 : -45) : (companion ? 10 : 14), y: companion ? 8 : 11, width: companion ? 24 : 31, height: companion ? 24 : 31, rx: 2 });
+        line(group, side < 0 ? (companion ? "M-22 8V32 M-34 20H-10" : "M-29 11V42 M-45 26H-14") : (companion ? "M22 8V32 M10 20H34" : "M29 11V42 M14 26H45"));
+      });
+      return true;
+    case "crag-ear-warmers":
+      path(group, companion ? "M-48 5Q-39-46 0-52Q40-46 48 5" : "M-64 7Q-52-62 0-70Q53-61 64 7", "acc-line thick");
+      [-1, 1].forEach(side => path(group, companion ? `M${side * 39}-8L${side * 57} 2L${side * 51} 30L${side * 29} 25L${side * 25} 2Z` : `M${side * 52}-11L${side * 76} 3L${side * 68} 40L${side * 38} 33L${side * 34} 3Z`, side < 0 ? "acc-main" : "acc-accent"));
+      return true;
+    case "obsidian-goggles":
+      path(group, companion ? "M-61-13L-28-35L-3-13L-18 18L-49 20Z M3-13L29-35L61-13L49 20L18 18Z" : "M-80-17L-37-47L-4-17L-24 24L-65 27Z M4-17L38-47L80-17L65 27L24 24Z", "acc-dark");
+      line(group, companion ? "M-3-13H3 M-46 3L-27-21 M46 3L28-21" : "M-4-17H4 M-60 4L-36-28 M60 4L37-28", "acc-accent-line");
+      [companion ? -38 : -50, companion ? 38 : 50].forEach((x, index) => path(group, `M${x - 8}-11L${x + 4}-22L${x + 9}-4L${x - 3} 9Z`, index ? "acc-soft" : "acc-main"));
+      return true;
+    case "broom-plume": {
+      line(group, companion ? "M-39 55Q-5 7 18-55" : "M-53 73Q-7 9 24-74", "acc-line thick");
+      const count = companion ? 5 : 8;
+      for (let index = 0; index < count; index += 1) {
+        const y = (companion ? -42 : -57) + index * (companion ? 12 : 14);
+        path(group, companion ? `M${12 - index * 2} ${y}Q${35 + index * 2} ${y - 14} ${47 + index} ${y - 2}Q${30 + index} ${y + 6} ${12 - index * 2} ${y}Z` : `M${16 - index * 2} ${y}Q${47 + index * 2} ${y - 19} ${63 + index} ${y - 3}Q${40 + index} ${y + 8} ${16 - index * 2} ${y}Z`, index % 2 ? "acc-accent" : "acc-main");
+      }
+      return true;
+    }
+    case "canyon-crest":
+      path(group, companion ? "M-50 19L-39-8L-22 2L-9-45L7-12L22-36L34-3L51 19Q0 6-50 19Z" : "M-66 25L-52-11L-29 3L-12-60L9-16L29-48L45-4L68 25Q0 8-66 25Z");
+      line(group, companion ? "M-42 13L-8-32L8-5L23-25L43 14" : "M-56 18L-11-43L11-7L31-34L58 19", "acc-accent-line");
+      return true;
+    case "waterfall-scarf":
+      path(group, companion ? "M-42-28Q0-46 42-26L34-5Q0-21-34-3Z" : "M-55-37Q0-61 55-34L45-7Q0-28-45-4Z", "acc-main");
+      path(group, companion ? "M17-13Q55 10 28 55L7 44Q32 14 17-13Z M-10-11Q-43 21-20 63L0 49Q-22 18-10-11Z" : "M22-17Q73 14 37 73L9 58Q43 19 22-17Z M-13-15Q-57 28-27 84L0 65Q-29 24-13-15Z", "acc-soft");
+      [companion ? -19 : -26, companion ? 25 : 34].forEach((x, index) => dot(group, x, companion ? 68 - index * 8 : 91 - index * 11, companion ? 5 : 7, "acc-accent"));
+      return true;
+    case "fern-abseil-reel":
+      dot(group, 0, 0, companion ? 39 : 52, "acc-main");
+      path(group, companion ? "M0-30Q25-21 17 2Q9 20-10 12Q-23 5-14-9Q-7-19 4-12Q11-6 5 2" : "M0-41Q34-28 23 3Q12 27-13 16Q-31 7-19-12Q-9-26 6-16Q15-8 7 3", "acc-accent-line");
+      line(group, companion ? "M35 20L63 55Q71 67 57 76" : "M47 27L84 73Q95 89 76 101", "acc-line thick");
+      path(group, companion ? "M54 69Q65 87 80 70" : "M72 92Q87 116 107 93", "acc-dark");
+      return true;
+    case "scoria-bowler":
+      add(group, "ellipse", { class: "acc-soft", cx: 0, cy: companion ? 15 : 20, rx: companion ? 56 : 74, ry: companion ? 17 : 23 });
+      path(group, companion ? "M-38 13Q-36-39 0-48Q37-39 38 13Z" : "M-50 17Q-48-52 0-64Q49-52 50 17Z", "acc-main");
+      [[-19,-15],[7,-26],[22,-6],[-3,2]].slice(0, companion ? 3 : 4).forEach(([x,y], index) => dot(group, companion ? x * .8 : x, companion ? y * .8 : y, companion ? 4 : 6, index % 2 ? "acc-dark" : "acc-accent"));
+      return true;
+    case "araucaria-halo": {
+      const radius = companion ? 43 : 58;
+      add(group, "ellipse", { class: "acc-line", cx: 0, cy: 0, rx: radius, ry: companion ? 24 : 32 });
+      const count = companion ? 8 : 12;
+      for (let index = 0; index < count; index += 1) {
+        const angle = index * Math.PI * 2 / count;
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * (companion ? 24 : 32);
+        path(group, `M${x.toFixed(1)} ${(y - (companion ? 8 : 11)).toFixed(1)}L${(x - (companion ? 7 : 9)).toFixed(1)} ${(y + (companion ? 7 : 9)).toFixed(1)}L${(x + (companion ? 7 : 9)).toFixed(1)} ${(y + (companion ? 7 : 9)).toFixed(1)}Z`, index % 2 ? "acc-accent" : "acc-main");
+      }
+      return true;
+    }
+    case "volcano-lake-diving-bell":
+      path(group, companion ? "M-42 37V-10Q0-49 42-8V37Z" : "M-56 50V-14Q0-66 56-11V50Z", "acc-main");
+      dot(group, 0, companion ? -4 : -6, companion ? 20 : 27, "acc-soft");
+      dot(group, 0, companion ? -4 : -6, companion ? 12 : 17, "acc-dark");
+      path(group, companion ? "M-48 36H48L37 55H-37Z" : "M-64 49H64L49 73H-49Z", "acc-accent");
+      line(group, companion ? "M-30 18L-39 42 M30 18L39 42" : "M-40 24L-52 56 M40 24L52 56");
+      return true;
+    case "coconut-rain-hood":
+      path(group, companion ? "M-46 24Q-54-31 0-56Q54-31 46 24L28 35Q0 15-28 35Z" : "M-61 32Q-72-42 0-75Q72-42 61 32L37 47Q0 20-37 47Z", "acc-main");
+      line(group, companion ? "M0-52V17 M-33-17Q0-1 33-17" : "M0-70V23 M-44-23Q0-1 44-23");
+      [-1, 1].forEach(side => path(group, companion ? `M${side * 35}-13Q${side * 55} 5 ${side * 42} 28` : `M${side * 47}-18Q${side * 73} 7 ${side * 56} 38`, "acc-accent-line"));
+      return true;
+    case "palm-bustle": {
+      const count = companion ? 5 : 8;
+      for (let index = 0; index < count; index += 1) {
+        const angle = -70 + index * (140 / (count - 1));
+        path(group, companion ? "M0 26Q-12-7 0-58Q13-8 0 26Z" : "M0 35Q-16-9 0-77Q17-10 0 35Z", index % 2 ? "acc-accent" : "acc-main").setAttribute("transform", `rotate(${angle})`);
+        line(group, companion ? "M0 24V-49" : "M0 33V-65").setAttribute("transform", `rotate(${angle})`);
+      }
+      path(group, companion ? "M-31 26Q0 45 31 26L23 40Q0 58-23 40Z" : "M-41 35Q0 60 41 35L31 53Q0 78-31 53Z", "acc-soft");
+      return true;
+    }
+    case "reef-mask":
+      path(group, companion ? "M-51-13Q-26-38-3-10Q-15 21-40 20Q-56 10-51-13Z M3-10Q26-38 51-13Q56 10 40 20Q15 21 3-10Z" : "M-68-17Q-35-51-4-13Q-20 28-53 27Q-75 14-68-17Z M4-13Q35-51 68-17Q75 14 53 27Q20 28 4-13Z", "acc-soft");
+      path(group, companion ? "M-4-8H4L18 28L0 42L-18 28Z" : "M-5-11H5L24 37L0 56L-24 37Z", "acc-accent");
+      [companion ? -45 : -60, companion ? 45 : 60].forEach((x, index) => path(group, `M${x} 10q${index ? 14 : -14} 14 0 28`, "acc-main"));
+      return true;
+    case "seagrass-tail": {
+      const blades = companion ? 4 : 7;
+      for (let index = 0; index < blades; index += 1) {
+        const x = (index - (blades - 1) / 2) * (companion ? 11 : 13);
+        const sway = index % 2 ? 30 : -28;
+        path(group, companion ? `M${x - 4}-31Q${x + sway} 10 ${x + sway * .4} 65Q${x + 4} 28 ${x + 4}-31Z` : `M${x - 5}-42Q${x + sway * 1.35} 14 ${x + sway * .55} 87Q${x + 5} 37 ${x + 5}-42Z`, index % 2 ? "acc-accent" : "acc-main");
+      }
+      return true;
+    }
+    case "le-morne-pauldron":
+      path(group, companion ? "M-57 19L-35-21L-9-49L14-23L35-40L57 8L43 32L9 21L-17 35L-44 30Z" : "M-76 25L-47-28L-12-65L19-31L47-53L76 11L58 43L12 28L-23 47L-59 40Z", "acc-main");
+      line(group, companion ? "M-47 16L-9-36L12-14L34-30L47 12 M-16 28L-33 53" : "M-63 21L-12-48L16-19L45-40L63 16 M-22 38L-44 71", "acc-accent-line");
+      return true;
+    case "lagoon-wind-vane":
+      line(group, companion ? "M0-55V59" : "M0-74V79", "acc-line thick");
+      path(group, companion ? "M-55-31H43L65-17L43-3H-55L-38-17Z" : "M-74-42H57L87-23L57-4H-74L-51-23Z", "acc-main");
+      path(group, companion ? "M-34 27Q-10 10 15 27Q38 44 58 24Q36 55 8 42Q-18 29-34 45Z" : "M-45 36Q-13 13 20 36Q51 59 78 32Q48 74 11 56Q-24 39-45 60Z", "acc-soft");
+      return true;
+    case "cane-ankle-bells":
+      [-1, 1].forEach(side => {
+        path(group, companion ? `M${side * 35}-25Q${side * 18}-10 ${side * 37} 8Q${side * 56}-10 ${side * 35}-25Z` : `M${side * 47}-33Q${side * 24}-13 ${side * 49} 11Q${side * 75}-13 ${side * 47}-33Z`, "acc-main");
+        const count = companion ? 3 : 5;
+        for (let index = 0; index < count; index += 1) dot(group, side * (companion ? 24 : 32) + (index - (count - 1) / 2) * (companion ? 8 : 10), companion ? 18 + Math.abs(index - 1) * 3 : 25 + Math.abs(index - 2) * 3, companion ? 5 : 7, index % 2 ? "acc-accent" : "acc-soft");
+      });
+      return true;
+    case "salt-crystal-jacket":
+      path(group, companion ? "M-46-39L-15-51L0-22L16-51L47-37L38 50L0 35L-39 52Z" : "M-61-52L-20-68L0-29L21-68L63-49L50 67L0 47L-52 69Z", "acc-main");
+      [[-26,-5],[-12,23],[18,-9],[29,25],[0,4]].slice(0, companion ? 4 : 5).forEach(([x,y], index) => path(group, companion ? `M${x} ${y - 12}L${x + 9} ${y}L${x} ${y + 15}L${x - 9} ${y}Z` : `M${x} ${y - 16}L${x + 12} ${y}L${x} ${y + 20}L${x - 12} ${y}Z`, index % 2 ? "acc-accent" : "acc-soft"));
+      line(group, companion ? "M0-21V39" : "M0-28V52");
+      return true;
+    case "caldera-headband":
+      path(group, companion ? "M-54 9Q0-44 54 9L45 22Q0-21-45 22Z" : "M-72 12Q0-59 72 12L60 30Q0-28-60 30Z", "acc-main");
+      add(group, "ellipse", { class: "acc-soft", cx: 0, cy: companion ? -17 : -23, rx: companion ? 26 : 35, ry: companion ? 11 : 15 });
+      add(group, "ellipse", { class: "acc-dark", cx: 0, cy: companion ? -17 : -23, rx: companion ? 14 : 19, ry: companion ? 5 : 7 });
+      return true;
+    case "cacao-cuirass":
+      path(group, companion ? "M-47-39L-31-52Q0-33 31-52L48-37L35 49Q0 33-36 51Z" : "M-62-52L-41-69Q0-44 42-69L64-49L47 66Q0 44-48 68Z", "acc-main");
+      const pods = companion ? [[-19,-9,-18],[17,-7,17],[0,23,0]] : [[-26,-13,-20],[24,-10,19],[-12,29,-10],[15,31,12]];
+      pods.forEach(([x,y,angle], index) => {
+        add(group, "ellipse", { class: index % 2 ? "acc-accent" : "acc-soft", cx: x, cy: y, rx: companion ? 9 : 12, ry: companion ? 18 : 24, transform: `rotate(${angle} ${x} ${y})` });
+        line(group, `M${x} ${y - (companion ? 13 : 18)}V${y + (companion ? 13 : 18)}`);
+      });
+      return true;
+    case "terrace-boots":
+      [-1, 1].forEach(side => {
+        path(group, companion ? `M${side * 12}-43L${side * 41}-36L${side * 35} 17L${side * 62} 30L${side * 58} 48L${side * 9} 40Z` : `M${side * 16}-58L${side * 55}-48L${side * 47} 23L${side * 83} 40L${side * 77} 64L${side * 12} 53Z`, side < 0 ? "acc-main" : "acc-accent");
+        [0, 1, 2].slice(0, companion ? 2 : 3).forEach(index => line(group, companion ? `M${side * (16 + index * 8)} ${-20 + index * 18}L${side * (38 + index * 6)} ${-17 + index * 18}` : `M${side * (22 + index * 10)} ${-27 + index * 24}L${side * (51 + index * 8)} ${-23 + index * 24}`));
+      });
+      return true;
+    case "research-headphones":
+      path(group, companion ? "M-50 8Q-41-49 0-55Q42-49 50 8" : "M-67 11Q-55-66 0-74Q56-65 67 11", "acc-line thick");
+      [-1, 1].forEach(side => add(group, "rect", { class: side < 0 ? "acc-main" : "acc-accent", x: side < 0 ? (companion ? -58 : -77) : (companion ? 35 : 47), y: companion ? -4 : -5, width: companion ? 23 : 30, height: companion ? 42 : 56, rx: companion ? 9 : 12 }));
+      line(group, companion ? "M45 29Q64 38 56 57L43 59" : "M60 39Q85 51 75 76L57 79", "acc-accent-line");
+      dot(group, companion ? 40 : 53, companion ? 59 : 79, companion ? 4 : 6, "acc-dark");
+      return true;
+    case "two-river-yoke":
+      path(group, companion ? "M-64-18Q0-37 64-18L59-5Q0-20-59-5Z" : "M-85-24Q0-49 85-24L79-7Q0-27-79-7Z", "acc-main");
+      [-1, 1].forEach(side => {
+        line(group, companion ? `M${side * 49}-10Q${side * 58} 13 ${side * 46} 32` : `M${side * 65}-14Q${side * 77} 17 ${side * 61} 43`, "acc-line thick");
+        path(group, companion ? `M${side * 62} 24Q${side * 85} 44 ${side * 58} 65Q${side * 34} 47 ${side * 62} 24Z` : `M${side * 82} 32Q${side * 112} 59 ${side * 77} 87Q${side * 45} 63 ${side * 82} 32Z`, side < 0 ? "acc-soft" : "acc-accent");
+      });
+      line(group, companion ? "M-26 2Q-13 24 0 7Q13-10 27 3" : "M-35 3Q-17 32 0 9Q17-14 36 4", "acc-accent-line");
+      return true;
+    case "fan-palm-collar": {
+      const blades = companion ? 5 : 8;
+      for (let index = 0; index < blades; index += 1) {
+        const angle = (companion ? -58 : -76) + index * ((companion ? 116 : 152) / (blades - 1));
+        const length = companion ? 45 + (index % 2) * 8 : 59 + (index % 3) * 9;
+        path(group, `M0 16L-10 ${16 - length * .68}L0 ${16 - length}L10 ${16 - length * .68}Z`, index % 2 ? "acc-accent" : "acc-main").setAttribute("transform", `rotate(${angle} 0 16)`);
+        line(group, `M0 14V${18 - length}`).setAttribute("transform", `rotate(${angle} 0 16)`);
+      }
+      path(group, companion ? "M-43 12Q0 34 43 12L35 30Q0 49-35 30Z" : "M-57 16Q0 45 57 16L47 40Q0 65-47 40Z", "acc-soft");
+      line(group, companion ? "M-34 18Q0 35 35 18" : "M-46 24Q0 47 47 24", "acc-accent-line");
+      return true;
+    }
+    case "fern-epaulettes":
+      [-1, 1].forEach(side => {
+        line(group, companion ? `M${side * 7}-29Q${side * 41}-8 ${side * 57} 38` : `M${side * 9}-39Q${side * 55}-11 ${side * 76} 51`, "acc-line thick");
+        const count = companion ? 4 : 6;
+        for (let index = 0; index < count; index += 1) {
+          const x = side * (16 + index * (companion ? 8 : 10));
+          const y = -20 + index * (companion ? 11 : 14);
+          path(group, companion ? `M${x} ${y}q${side * 17} -13 ${side * 21} 3Q${side * 10} ${y + 12} ${x} ${y}Z` : `M${x} ${y}q${side * 23} -17 ${side * 28} 4Q${side * 13} ${y + 16} ${x} ${y}Z`, index % 2 ? "acc-accent" : "acc-main");
+        }
+      });
+      return true;
+    case "canoe-paddle-bow":
+      [-1, 1].forEach(side => {
+        line(group, companion ? `M${side * 58}-48L${side * 3} 42` : `M${side * 77}-64L${side * 4} 56`, "acc-line thick");
+        path(group, companion ? `M${side * 58}-48Q${side * 82}-58 ${side * 78}-30L${side * 49}-21Z` : `M${side * 77}-64Q${side * 109}-78 ${side * 104}-40L${side * 65}-28Z`, side < 0 ? "acc-main" : "acc-accent");
+      });
+      path(group, companion ? "M-4 35Q0 57 4 35L12 65L0 79L-12 65Z" : "M-5 47Q0 76 5 47L16 87L0 105L-16 87Z", "acc-soft");
+      return true;
+    case "watershed-swimwear":
+      path(group, companion ? "M-43-38Q0-54 43-36L30-5L45 45L14 34L0 11L-15 34L-46 45L-31-5Z" : "M-57-51Q0-72 57-48L40-7L60 60L19 45L0 15L-20 45L-61 60L-41-7Z", "acc-main");
+      path(group, companion ? "M-35-11L-10-27L0-9L11-27L35-10Q18 5 0 21Q-18 4-35-11Z" : "M-47-15L-13-36L0-12L15-36L47-13Q24 7 0 28Q-24 5-47-15Z", "acc-soft");
+      line(group, companion ? "M-31 5Q-15 22 0 9Q16-4 32 6 M-21 26Q0 42 22 25" : "M-42 7Q-20 30 0 12Q21-6 43 8 M-28 35Q0 56 29 33", "acc-accent-line");
+      return true;
+    case "paddy-metronome":
+      path(group, companion ? "M-38 45L-26-45H27L39 45Z" : "M-51 60L-35-60H36L52 60Z", "acc-main");
+      line(group, companion ? "M0-33L19 31 M0-33L-6-4" : "M0-44L25 42 M0-44L-8-5", "acc-line thick");
+      dot(group, companion ? 13 : 18, companion ? 10 : 13, companion ? 6 : 8, "acc-accent");
+      [-1, 0, 1].slice(0, companion ? 2 : 3).forEach((offset, index) => path(group, companion ? `M${-22 + index * 21} 31Q${-12 + index * 21} 19 ${-2 + index * 21} 31` : `M${-30 + index * 30} 42Q${-15 + index * 30} 25 ${index * 30} 42`, "acc-soft"));
+      return true;
+    case "hoodoo-helmet":
+      path(group, companion ? "M-45 21L-37-17L-20-25L-13-57L0-45L12-72L24-35L39-27L46 21Q0 4-45 21Z" : "M-60 28L-49-23L-27-33L-17-76L0-60L16-96L32-47L52-36L61 28Q0 5-60 28Z", "acc-main");
+      path(group, companion ? "M-31-18L-19-47L-5-39L8-60L19-31L35-24" : "M-42-24L-25-63L-7-52L11-80L26-41L47-32", "acc-accent-line");
+      line(group, companion ? "M-42 12Q0-3 43 12" : "M-56 16Q0-4 57 16");
+      return true;
+    case "erosion-crinoline": {
+      const hoops = companion ? 4 : 6;
+      for (let index = 0; index < hoops; index += 1) {
+        add(group, "ellipse", { class: index % 2 ? "acc-accent" : "acc-main", cx: 0, cy: (companion ? -24 : -32) + index * (companion ? 17 : 20), rx: (companion ? 21 : 28) + index * (companion ? 10 : 13), ry: companion ? 8 : 10 });
+      }
+      [-1, 1].forEach(side => line(group, companion ? `M${side * 13}-31Q${side * 28} 7 ${side * 51} 38` : `M${side * 17}-42Q${side * 37} 9 ${side * 68} 51`, "acc-line thick"));
+      path(group, companion ? "M-52 40Q-24 23 0 43Q25 23 53 40" : "M-69 54Q-32 31 0 57Q33 31 70 54", "acc-soft");
+      return true;
+    }
+    case "basalt-cuffs":
+      [-1, 1].forEach(side => {
+        path(group, companion ? `M${side * 19}-33L${side * 50}-25L${side * 55} 26L${side * 23} 37L${side * 12} 5Z` : `M${side * 25}-44L${side * 67}-34L${side * 73} 35L${side * 31} 50L${side * 16} 7Z`, side < 0 ? "acc-dark" : "acc-main");
+        path(group, companion ? `M${side * 26}-19L${side * 44}-14L${side * 46} 15L${side * 29} 21Z` : `M${side * 35}-26L${side * 59}-19L${side * 62} 20L${side * 39} 28Z`, "acc-accent");
+      });
+      return true;
+    default:
+      return false;
+  }
+}
+
 function drawNamedAccessory(group, item, companion) {
+  if (drawUniqueNamedAccessory(group, item, companion)) return true;
   if (drawRepeatedFamilyAccessory(group, item, companion)) return true;
   if (drawN2Accessory(group, item, companion)) return true;
   if (drawInstrument(group, item, companion)) return true;
@@ -716,27 +951,6 @@ const layouts = {
   }
 };
 
-function drawPairDifference(group, item, companion) {
-  const direction = item.geometry.direction;
-  if (item.artKind === "head") {
-    if (companion) {
-      path(group, `M${direction * 24}-12 Q${direction * 53}-25 ${direction * 47} 5 Q${direction * 34} 18 ${direction * 21} 9Z`, "acc-soft");
-      dot(group, direction * 36, -11, 5, "acc-accent");
-    } else {
-      path(group, `M${direction * 28}-18 Q${direction * 65}-44 ${direction * 59} 10 Q${direction * 43} 26 ${direction * 25} 8Z`, "acc-soft");
-      line(group, `M${direction * 29}-12Q${direction * 46}-18 ${direction * 56} 4`);
-    }
-  } else if (item.artKind === "garment") {
-    if (companion) path(group, `M${direction * 20} 18 L${direction * 54} 38 L${direction * 33} 57 L${direction * 12} 29Z`, "acc-accent");
-    else path(group, `M${direction * 17} 12 Q${direction * 63} 24 ${direction * 57} 65 L${direction * 29} 51 L${direction * 6} 23Z`, "acc-accent");
-  } else if (companion) {
-    dot(group, direction * 49, -16, 7, "acc-accent");
-    dot(group, direction * 59, 4, 5, "acc-soft");
-  } else {
-    path(group, `M${direction * 31}-14 Q${direction * 70}-25 ${direction * 63} 18 Q${direction * 46} 30 ${direction * 29} 10Z`, "acc-soft");
-  }
-}
-
 function renderPiece(target, item, wormPart) {
   const companion = wormPart === "companion";
   let [x, y, scale] = layouts[item.slot][item.artKind][wormPart];
@@ -753,10 +967,7 @@ function renderPiece(target, item, wormPart) {
   });
   const artwork = add(piece, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${(scale * widthBias).toFixed(3)} ${(scale * heightBias).toFixed(3)})` });
   const drewNamedAccessory = drawNamedAccessory(artwork, item, companion);
-  if (!drewNamedAccessory && item.artKind === "head") drawHead(artwork, item, companion);
-  if (!drewNamedAccessory && item.artKind === "garment") drawWrap(artwork, item, companion);
-  if (!drewNamedAccessory && item.artKind === "prop") drawCharm(artwork, item, companion);
-  if (!drewNamedAccessory) drawPairDifference(artwork, item, companion);
+  if (!drewNamedAccessory) throw new Error(`No named accessory renderer for ${item.label}`);
   return piece;
 }
 
