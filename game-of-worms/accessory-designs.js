@@ -20,7 +20,7 @@ const rows = [
   ["elegans", "Santeuil, France", "hollow-stem specimen lantern", "hogweed-specimen-lantern", "Santeuil cylinder organ", "santeuil-cylinder-organ", "Couleuvre dragonfly automaton", "couleuvre-dragonfly-automaton"],
   ["elegans", "Edinburgh, Scotland", "Midmar compost tumbler", "midmar-compost-tumbler", "GALAXY plate-scanner engine", "galaxy-plate-scanner", "Agassiz ice-flow model", "agassiz-ice-flow-model"],
   ["elegans", "Tenerife, Spain", "avocado microhabitat viewer", "avocado-microhabitat-viewer", "aerial-root harp", "aerial-root-harp", "Linnaean seed-exchange engine", "linnaean-seed-exchange-engine"],
-  ["elegans", "Kauaʻi, Hawaiʻi", "canyon crest", "canyon-crest", "waterfall scarf", "waterfall-scarf", "fern abseil reel", "fern-abseil-reel"],
+  ["elegans", "Kauaʻi, Hawaiʻi", "decay-substrate theatre", "decay-substrate-theatre", "Kōkeʻe cloud-water collector", "kokee-cloud-water-collector", "XZ1516 haplotype viewer", "xz1516-haplotype-viewer"],
   ["elegans", "Australian Capital Territory", "seedpod maracas", "seedpod-maracas", "quadrat shield", "quadrat-shield", "lake-reed snorkel", "snorkel"],
   ["elegans", "Auckland, New Zealand", "scoria bowler", "scoria-bowler", "harbour-sail wings", "wings", "pōhutukawa umbrella", "umbrella"],
   ["elegans", "Araucanía, Chile", "araucaria halo", "araucaria-halo", "volcano-lake diving bell", "volcano-lake-diving-bell", "snowline telescope", "telescope"],
@@ -54,12 +54,10 @@ const explicitUniqueRendererFamilies = new Set([
   "caldera-headband",
   "cane-ankle-bells",
   "canoe-paddle-bow",
-  "canyon-crest",
   "coconut-cloche",
   "coconut-rain-hood",
   "erosion-crinoline",
   "fan-palm-collar",
-  "fern-abseil-reel",
   "fern-epaulettes",
   "fig-fascinator",
   "fruit-sampling-tool",
@@ -77,7 +75,6 @@ const explicitUniqueRendererFamilies = new Set([
   "terrace-boots",
   "two-river-yoke",
   "volcano-lake-diving-bell",
-  "waterfall-scarf",
   "watershed-swimwear"
 ]);
 
@@ -92,6 +89,7 @@ const n2RendererFamilies = new Set(["ngm-agar-plate", "n2-lab-coat", "cryo-vial-
 const santeuilRendererFamilies = new Set(["hogweed-specimen-lantern", "santeuil-cylinder-organ", "couleuvre-dragonfly-automaton"]);
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "galaxy-plate-scanner", "agassiz-ice-flow-model"]);
 const tenerifeRendererFamilies = new Set(["avocado-microhabitat-viewer", "aerial-root-harp", "linnaean-seed-exchange-engine"]);
+const kauaiRendererFamilies = new Set(["decay-substrate-theatre", "kokee-cloud-water-collector", "xz1516-haplotype-viewer"]);
 const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
 const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|snorkel|compass|press|gauge rod|camera rig/i;
 const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|skates|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
@@ -103,6 +101,7 @@ function hasNamedRenderer(item) {
     || santeuilRendererFamilies.has(item.family)
     || edinburghRendererFamilies.has(item.family)
     || tenerifeRendererFamilies.has(item.family)
+    || kauaiRendererFamilies.has(item.family)
     || item.family === "volcanic-needle-ruff"
     || instrumentRendererPattern.test(item.label)
     || fieldToolRendererPattern.test(item.label)
@@ -778,6 +777,139 @@ function drawTenerifeAccessory(group, item, companion) {
   return false;
 }
 
+function drawKauaiAccessory(group, item, companion) {
+  if (item.family === "decay-substrate-theatre") {
+    group.classList.add("kauai-accessory", "decay-theatre", companion ? "decay-theatre-companion" : "decay-theatre-primary");
+    if (companion) {
+      add(group, "path", { class: "kauai-accessory-shadow", d: "M-75 94Q5 114 84 91Q45 123-67 119Z" });
+      add(group, "path", { class: "decay-rack-frame", d: "M-3-105L78 68L54 85H-62L-83 65Z" });
+      add(group, "path", { class: "decay-rack-inner", d: "M-3-78L54 49L40 61H-43L-58 48Z" });
+      add(group, "path", { class: "decay-rack-crossbar", d: "M-57 47L57 47M-39 7L40 7M-22-33L23-33" });
+      const wells = [
+        { cx: -30, cy: 33, rx: 20, ry: 14, angle: -8, tone: "brown" },
+        { cx: 17, cy: 29, rx: 15, ry: 21, angle: 7, tone: "green" },
+        { cx: 0, cy: -18, rx: 12, ry: 10, angle: 0, tone: "gold" }
+      ];
+      wells.forEach(({ cx, cy, rx, ry, angle, tone }, index) => {
+        add(group, "ellipse", { class: `decay-sample-well ${tone}`, cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` });
+        add(group, "path", { class: "decay-sample-mark", d: `M${cx-rx*.55} ${cy}Q${cx} ${cy-ry*.55-index*2} ${cx+rx*.55} ${cy+1}` });
+      });
+      add(group, "path", { class: "decay-lens-arm", d: "M35-20Q61-42 74-19" });
+      add(group, "ellipse", { class: "decay-lens-rim", cx: 76, cy: -8, rx: 23, ry: 28, transform: "rotate(13 76 -8)" });
+      add(group, "ellipse", { class: "decay-lens-glass", cx: 76, cy: -8, rx: 15, ry: 19, transform: "rotate(13 76 -8)" });
+      add(group, "path", { class: "decay-lens-glint", d: "M68-20Q75-27 83-19" });
+      add(group, "path", { class: "decay-altitude-tag", d: "M-55 65H18L27 91H-48Z" });
+      const altitude = add(group, "text", { class: "decay-altitude-text", x: -14, y: 82, "text-anchor": "middle" });
+      altitude.textContent = "983 m";
+      add(group, "path", { class: "decay-rack-foot", d: "M-61 82L-72 102H-37L-30 84ZM39 84L48 102H82L68 80Z" });
+    } else {
+      add(group, "path", { class: "kauai-accessory-shadow", d: "M-124 65Q0 92 127 62Q65 106-114 101Z" });
+      add(group, "path", { class: "decay-case-shell", d: "M-117 39L-109-23Q-89-67-40-75L57-67Q96-59 112-20L118 40Q93 65 57 64L-83 67Q-110 61-117 39Z" });
+      add(group, "path", { class: "decay-case-window", d: "M-95 29L-89-16Q-72-48-35-54L48-48Q77-43 90-14L96 28Q75 45 47 44L-69 47Q-90 44-95 29Z" });
+      add(group, "path", { class: "decay-case-fragment", d: "M-70 17L-56-18L-27-29L-7-13L19-27L51-12L73 14L57 33L25 28L-5 39L-37 29L-61 36Z" });
+      add(group, "path", { class: "decay-case-split", d: "M-28-22Q-15-7-22 24M-7-10Q10 3 3 30M22-20Q37-5 29 24" });
+      [[-50,5,4],[-32,20,3],[-6,7,3],[17,23,4],[44,-3,3],[55,17,3]].forEach(([cx, cy, r], index) => add(group, "circle", { class: index % 2 ? "decay-case-pore deep" : "decay-case-pore", cx, cy, r }));
+      add(group, "ellipse", { class: "decay-moisture-window", cx: 73, cy: -22, rx: 17, ry: 13, transform: "rotate(8 73 -22)" });
+      add(group, "path", { class: "decay-moisture-glint", d: "M64-25Q72-32 80-26M67-17Q74-13 81-18" });
+      [-73,-15,44].forEach((x, index) => {
+        add(group, "path", { class: "decay-case-latch", d: `M${x}-48V-61Q${x+8} ${-70-index} ${x+16}-59V-48` });
+        add(group, "circle", { class: "decay-case-hinge", cx: x + 8, cy: -49, r: 4 });
+      });
+      add(group, "path", { class: "decay-specimen-ticket", d: "M-106 37H-43L-39 62H-102Z" });
+      const ticket = add(group, "text", { class: "decay-ticket-text", x: -72, y: 53, "text-anchor": "middle" });
+      ticket.textContent = "XZ1516";
+      add(group, "path", { class: "decay-case-foot", d: "M-100 58L-112 78H-72L-63 65ZM68 63L78 78H116L103 57Z" });
+    }
+    return true;
+  }
+
+  if (item.family === "kokee-cloud-water-collector") {
+    group.classList.add("kauai-accessory", "cloud-collector", companion ? "cloud-collector-companion" : "cloud-collector-primary");
+    if (companion) {
+      add(group, "path", { class: "kauai-accessory-shadow", d: "M-119 68Q0 98 121 64Q61 110-108 105Z" });
+      add(group, "circle", { class: "cloud-ring-frame", cx: 0, cy: -8, r: 79 });
+      add(group, "circle", { class: "cloud-ring-mesh", cx: 0, cy: -8, r: 65 });
+      [0,30,60,90,120,150].forEach(angle => add(group, "path", { class: "cloud-ring-spoke", d: "M-65 0H65", transform: `translate(0 -8) rotate(${angle})` }));
+      add(group, "path", { class: "cloud-ring-spiral", d: "M4-8C4-24 27-27 36-12C49 10 25 31 0 29C-36 26-51-8-37-37C-18-73 31-76 61-46" });
+      add(group, "path", { class: "cloud-ring-gutter", d: "M-76 39Q0 78 78 38L70 58Q0 92-70 60Z" });
+      add(group, "path", { class: "cloud-ring-pipe left", d: "M-43 64Q-50 75-50 86" });
+      add(group, "path", { class: "cloud-ring-pipe right", d: "M42 64Q51 75 51 86" });
+      add(group, "path", { class: "cloud-condensate-bulb left", d: "M-51 75Q-70 96-57 111Q-43 121-31 106Q-24 91-43 75Z" });
+      add(group, "path", { class: "cloud-condensate-bulb right", d: "M49 75Q27 96 42 113Q56 122 69 107Q78 91 58 75Z" });
+      [-98,-87,-78].forEach((cx, index) => add(group, "circle", { class: `cloud-droplet drop-${index}`, cx, cy: 40 + index * 14, r: 5 - index * .7 }));
+      add(group, "path", { class: "cloud-ring-stand", d: "M-77 56L-98 91M76 55L98 91M-108 92H-75M75 92H108" });
+    } else {
+      add(group, "path", { class: "kauai-accessory-shadow", d: "M-82 110Q2 132 86 106Q44 143-74 139Z" });
+      add(group, "path", { class: "cloud-comb-frame", d: "M-69-105H67L61 39Q0 57-63 39Z" });
+      const vanes = [
+        { x: -54, top: -89, width: 14 },
+        { x: -31, top: -111, width: 15 },
+        { x: -7, top: -96, width: 16 },
+        { x: 19, top: -120, width: 15 },
+        { x: 43, top: -84, width: 14 }
+      ];
+      vanes.forEach(({ x, top, width }, index) => {
+        add(group, "path", { class: index % 2 ? "cloud-comb-vane deep" : "cloud-comb-vane", d: `M${x} ${top}H${x+width}L${x+width-2} 28Q${x+width/2} ${35+index%2*3} ${x+2} 28Z` });
+        [-67,-42,-17,8].forEach(y => {
+          if (y > top + 12) add(group, "path", { class: "cloud-comb-mesh", d: `M${x+3} ${y}H${x+width-3}` });
+        });
+      });
+      add(group, "path", { class: "cloud-comb-gutter", d: "M-66 28Q0 47 64 27L61 47Q0 67-63 47Z" });
+      add(group, "path", { class: "cloud-comb-downpipe", d: "M3 53V73" });
+      add(group, "path", { class: "cloud-pear-bulb", d: "M3 67Q-27 88-20 116Q-11 139 5 141Q23 137 28 115Q32 89 3 67Z" });
+      add(group, "path", { class: "cloud-bulb-glint", d: "M-9 92Q-1 83 7 91" });
+      [-7,2,11].forEach((y, index) => add(group, "path", { class: "cloud-bulb-graduation", d: `M-12 ${108+y}H${2+index*3}` }));
+      add(group, "path", { class: "cloud-side-gauge", d: "M68-70H88V72H68Z" });
+      [-54,-29,-4,21,46].forEach((y, index) => add(group, "path", { class: "cloud-gauge-tick", d: `M72 ${y}H${index % 2 ? 82 : 86}` }));
+      add(group, "path", { class: "cloud-gauge-level", d: "M73 40H84V66H73Z" });
+      add(group, "path", { class: "cloud-comb-foot", d: "M-55 45L-69 76H-36L-28 53ZM38 52L46 76H79L62 43Z" });
+    }
+    return true;
+  }
+
+  if (item.family === "xz1516-haplotype-viewer") {
+    group.classList.add("kauai-accessory", "haplotype-viewer", companion ? "haplotype-viewer-companion" : "haplotype-viewer-primary");
+    if (companion) {
+      add(group, "path", { class: "kauai-accessory-shadow", d: "M-92 91Q3 117 98 88Q51 127-83 122Z" });
+      add(group, "circle", { class: "haplotype-drum-shell", cx: -12, cy: -9, r: 78 });
+      add(group, "circle", { class: "haplotype-drum-field", cx: -12, cy: -9, r: 64 });
+      [0,60,120,180,240,300].forEach((angle, index) => {
+        add(group, "path", { class: "haplotype-sector-line", d: "M-12-9L52-9", transform: `rotate(${angle} -12 -9)` });
+        add(group, "path", { class: `haplotype-radial-strip tone-${index % 3}`, d: "M4-15H42L49-9L42-3H4Z", transform: `rotate(${angle} -12 -9)` });
+      });
+      add(group, "circle", { class: "haplotype-drum-hub", cx: -12, cy: -9, r: 12 });
+      add(group, "path", { class: "haplotype-drum-pointer", d: "M-12-97L-2-78L-22-78Z" });
+      add(group, "path", { class: "haplotype-panel-hinge", d: "M56 16Q76 12 82 28" });
+      add(group, "path", { class: "haplotype-result-panel", d: "M75 23L126 38L116 99L68 84Z" });
+      add(group, "path", { class: "haplotype-result-line", d: "M82 43L115 52M79 55L110 64M76 68L99 74" });
+      const result = add(group, "text", { class: "haplotype-result-text", x: 91, y: 90, "text-anchor": "middle", transform: "rotate(16 91 90)" });
+      result.textContent = "XZ";
+      add(group, "path", { class: "haplotype-drum-stand", d: "M-49 62L-67 103H-28L-17 69ZM23 63L34 103H74L51 55Z" });
+    } else {
+      add(group, "path", { class: "kauai-accessory-shadow", d: "M-131 62Q0 92 133 58Q67 107-119 101Z" });
+      add(group, "path", { class: "haplotype-lightbox-shell", d: "M-123-38L-101-59H101L124-36L115 48L93 64H-99L-122 45Z" });
+      add(group, "path", { class: "haplotype-lightbox-field", d: "M-102-31L-87-43H87L103-28L97 35L83 48H-85L-102 33Z" });
+      [ -12, 15 ].forEach((y, trackIndex) => {
+        add(group, "path", { class: `haplotype-ribbon-track track-${trackIndex}`, d: `M-84 ${y}C-65 ${y-18} -45 ${y+18} -25 ${y}S15 ${y-18} 35 ${y}S70 ${y+17} 88 ${y}` });
+        [-65,-37,-8,22,52,78].forEach((x, index) => add(group, "rect", { class: `haplotype-track-block tone-${(index + trackIndex) % 3}`, x, y: y - 6, width: 11 + index % 2 * 4, height: 12, rx: 2 }));
+      });
+      add(group, "path", { class: "haplotype-magnifier-rail", d: "M-91-45H88" });
+      add(group, "rect", { class: "haplotype-magnifier-carriage", x: 14, y: -51, width: 34, height: 9, rx: 3 });
+      add(group, "circle", { class: "haplotype-magnifier-rim", cx: 31, cy: 1, r: 28 });
+      add(group, "circle", { class: "haplotype-magnifier-glass", cx: 31, cy: 1, r: 20 });
+      add(group, "path", { class: "haplotype-magnifier-glint", d: "M20-8Q29-17 38-8" });
+      add(group, "path", { class: "haplotype-side-crank", d: "M111 2Q139 5 137 28L151 39" });
+      add(group, "circle", { class: "haplotype-crank-knob", cx: 156, cy: 42, r: 7 });
+      const label = add(group, "text", { class: "haplotype-lightbox-label", x: -91, y: 57, "text-anchor": "start" });
+      label.textContent = "XZ1516";
+      add(group, "path", { class: "haplotype-lightbox-foot", d: "M-105 50L-117 77H-78L-67 61ZM72 59L82 77H121L108 48Z" });
+    }
+    return true;
+  }
+
+  return false;
+}
+
 function drawInstrument(group, item, companion) {
   const label = item.label;
   if (/fiddle/i.test(label)) {
@@ -1182,21 +1314,6 @@ function drawUniqueNamedAccessory(group, item, companion) {
       path(group, companion ? "M35-50Q51-67 65-48Q68-25 48-18Q29-29 35-50Z" : "M46-67Q67-89 86-64Q91-33 64-24Q38-39 46-67Z", "acc-main");
       path(group, companion ? "M-56 42L-66 58L-48 63L-39 49Z" : "M-74 56L-88 77L-64 84L-52 65Z", "acc-accent");
       return true;
-    case "canyon-crest":
-      path(group, companion ? "M-50 19L-39-8L-22 2L-9-45L7-12L22-36L34-3L51 19Q0 6-50 19Z" : "M-66 25L-52-11L-29 3L-12-60L9-16L29-48L45-4L68 25Q0 8-66 25Z");
-      line(group, companion ? "M-42 13L-8-32L8-5L23-25L43 14" : "M-56 18L-11-43L11-7L31-34L58 19", "acc-accent-line");
-      return true;
-    case "waterfall-scarf":
-      path(group, companion ? "M-42-28Q0-46 42-26L34-5Q0-21-34-3Z" : "M-55-37Q0-61 55-34L45-7Q0-28-45-4Z", "acc-main");
-      path(group, companion ? "M17-13Q55 10 28 55L7 44Q32 14 17-13Z M-10-11Q-43 21-20 63L0 49Q-22 18-10-11Z" : "M22-17Q73 14 37 73L9 58Q43 19 22-17Z M-13-15Q-57 28-27 84L0 65Q-29 24-13-15Z", "acc-soft");
-      [companion ? -19 : -26, companion ? 25 : 34].forEach((x, index) => dot(group, x, companion ? 68 - index * 8 : 91 - index * 11, companion ? 5 : 7, "acc-accent"));
-      return true;
-    case "fern-abseil-reel":
-      dot(group, 0, 0, companion ? 39 : 52, "acc-main");
-      path(group, companion ? "M0-30Q25-21 17 2Q9 20-10 12Q-23 5-14-9Q-7-19 4-12Q11-6 5 2" : "M0-41Q34-28 23 3Q12 27-13 16Q-31 7-19-12Q-9-26 6-16Q15-8 7 3", "acc-accent-line");
-      line(group, companion ? "M35 20L63 55Q71 67 57 76" : "M47 27L84 73Q95 89 76 101", "acc-line thick");
-      path(group, companion ? "M54 69Q65 87 80 70" : "M72 92Q87 116 107 93", "acc-dark");
-      return true;
     case "scoria-bowler":
       add(group, "ellipse", { class: "acc-soft", cx: 0, cy: companion ? 15 : 20, rx: companion ? 56 : 74, ry: companion ? 17 : 23 });
       path(group, companion ? "M-38 13Q-36-39 0-48Q37-39 38 13Z" : "M-50 17Q-48-52 0-64Q49-52 50 17Z", "acc-main");
@@ -1374,6 +1491,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawSanteuilAccessory(group, item, companion)) return true;
   if (drawEdinburghAccessory(group, item, companion)) return true;
   if (drawTenerifeAccessory(group, item, companion)) return true;
+  if (drawKauaiAccessory(group, item, companion)) return true;
   if (drawUniqueNamedAccessory(group, item, companion)) return true;
   if (drawRepeatedFamilyAccessory(group, item, companion)) return true;
   if (drawN2Accessory(group, item, companion)) return true;
@@ -1417,7 +1535,10 @@ function renderPiece(target, item, wormPart) {
     "agassiz-ice-flow-model": { primary: [322, 260, .52, -2], companion: [52, 290, .42, 2] },
     "avocado-microhabitat-viewer": { primary: [322, 140, .52, -2], companion: [47, 124, .39, 3] },
     "aerial-root-harp": { primary: [190, 181, .53, -2], companion: [92, 222, .39, 2] },
-    "linnaean-seed-exchange-engine": { primary: [324, 252, .46, -1], companion: [-48, 266, .28, 2] }
+    "linnaean-seed-exchange-engine": { primary: [324, 252, .46, -1], companion: [-48, 266, .28, 2] },
+    "decay-substrate-theatre": { primary: [385, 145, .44, -2], companion: [12, 135, .32, 2] },
+    "kokee-cloud-water-collector": { primary: [265, 185, .43, 2], companion: [150, 210, .29, -2] },
+    "xz1516-haplotype-viewer": { primary: [385, 260, .4, -1], companion: [28, 285, .3, 2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;

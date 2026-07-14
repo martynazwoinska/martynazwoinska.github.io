@@ -11,6 +11,7 @@ const palettes = {
   rainforest: ["#beddd3", "#6f9f79", "#397456", "#2d5d49", "#61aaa4", "#edbf5c", "#26483d"],
   coral: ["#c9ebea", "#87b58e", "#5f9270", "#426c59", "#43b5c4", "#f3cf78", "#315d65"],
   canyon: ["#d9e3dc", "#bf8658", "#985d43", "#704d3e", "#6ba8b2", "#e7bf5a", "#4b4f42"],
+  uplandForest: ["#d4e1dc", "#789184", "#456e57", "#664938", "#83aaa4", "#c9a45a", "#314c43"],
   blackwater: ["#c2ddd5", "#6b9872", "#3e7055", "#315a47", "#4c7770", "#e8bd5d", "#263e3b"]
 };
 
@@ -122,11 +123,11 @@ const canonicalProfiles = {
     { weather: "sun", cues: [] }
   ),
   "Kauaʻi, Hawaiʻi": profile(
-    "kauai-waimea-canyon", "Waimea Canyon and Kōkeʻe rim",
-    "Western Kauaʻi layers red and ochre canyon walls beneath a wet, deeply cut high rim, clearly different from QG130’s north-shore lowland.",
-    "Hawaiʻi DLNR Waimea Canyon", "https://dlnr.hawaii.gov/dsp/parks/kauai/waimea-canyon-state-park/",
-    palettes.canyon, [[0, 286], [70, 238], [125, 252], [188, 180], [248, 224], [315, 146], [385, 238], [452, 182], [520, 250], [600, 214]],
-    { weather: "mist", cues: [["canyon", 110, 325, .9], ["waterfall", 317, 180, .8], ["fern", 520, 318, .75]] }
+    "kauai-kokee-upland-forest", "Kōkeʻe upland forest floor",
+    "XZ1516 was collected at 983 m from rotting nut, pod, seed or fruit. The misty Kōkeʻe upland forest is wider regional context, not a recorded collection viewpoint or identified host plant.",
+    "CaeNDR XZ1516 isotype record", "https://caendr.org/isotype/XZ1516/",
+    palettes.uplandForest, [[0, 272], [80, 244], [160, 257], [242, 219], [320, 238], [404, 208], [486, 246], [600, 224]],
+    { weather: "mist", cues: [] }
   ),
   "tropicalis::Kauaʻi, Hawaiʻi": profile(
     "kauai-hanalei-valley", "Hanalei valley wetlands",
@@ -401,12 +402,12 @@ const sceneCompositions = Object.freeze({
     "M292 219L286 430M0 294L600 319", [],
     "a split pear-shaped avocado beneath asymmetric root columns, crossing garden paths around one pond and a tiny distant peak"
   ),
-  "kauai-waimea-canyon": composition(
-    "M0 322 L93 353 L166 326 L246 378 L318 345 L397 394 L482 352 L600 386 V430 H0Z",
-    "M0 278 L83 304 L157 271 L238 329 L311 289 L389 350 L474 303 L600 337 V430 H0Z",
-    [["fern", 558, 386, .8], ["canyon", 52, 363, .76]],
-    "M90 283 L164 323 L237 289 L318 348 L398 306 L482 365", [2, 1, 0],
-    "layered red and ochre chevrons descending into a zigzag gorge"
+  "kauai-kokee-upland-forest": composition(
+    "M0 304Q91 280 184 300Q280 322 377 294Q482 264 600 292V430H0Z",
+    "M0 238Q98 203 190 228Q293 258 392 220Q493 184 600 216V332H0Z",
+    [["fern", 41, 386, .86], ["forest", 560, 365, .72]],
+    "M320 211C246 247 371 278 301 323C253 354 347 382 391 430", [],
+    "a left-leaning canopy and forked right trunk framing one S-shaped path that disappears into fog"
   ),
   "kauai-hanalei-valley": composition(
     "M0 367 H98 L121 348 H229 L250 375 H374 L397 348 H510 L531 369 H600 V430 H0Z",
@@ -1038,6 +1039,78 @@ function drawEdinburghScene(target, palette) {
   });
 }
 
+function drawKauaiFern(parent, x, y, scale, direction = 1) {
+  const fern = append(parent, "g", {
+    class: "kauai-kokee-fern",
+    transform: `translate(${x} ${y}) scale(${(scale * direction).toFixed(2)} ${scale.toFixed(2)})`
+  });
+  append(fern, "path", { class: "kauai-kokee-fern-stem", d: "M0 34Q9 2 4-36Q1-62 13-88" });
+  [[2,20,28,2], [5,7,34,-7], [6,-7,31,-18], [7,-21,27,-30], [8,-35,22,-43], [10,-49,17,-58], [12,-62,12,-70]].forEach(([cx, cy, length, tipY], index) => {
+    append(fern, "path", {
+      class: index % 2 ? "kauai-kokee-fern-frond deep" : "kauai-kokee-fern-frond",
+      d: `M${cx} ${cy}Q${cx - length * .55} ${cy - 11} ${cx - length} ${tipY}Q${cx - length * .45} ${cy + 5} ${cx} ${cy}ZM${cx + 1} ${cy - 2}Q${cx + length * .55} ${cy - 15} ${cx + length} ${tipY - 5}Q${cx + length * .5} ${cy + 3} ${cx + 1} ${cy - 2}Z`
+    });
+  });
+}
+
+function drawKauaiKokeeScene(target, palette) {
+  append(target, "rect", { class: "environment-sky kauai-kokee-sky", width: 600, height: 430, fill: palette[0] });
+
+  const ridge = append(target, "g", { class: "kauai-kokee-mist-lock", "aria-hidden": "true" });
+  append(ridge, "path", { class: "kauai-kokee-broken-ridge", d: "M0 192Q71 174 138 190Q211 208 278 181Q347 157 414 180Q493 204 600 164V251H0Z" });
+  append(ridge, "path", { class: "kauai-kokee-fog back", d: "M0 107Q94 89 188 105Q282 121 374 99Q472 76 600 101V172Q500 151 400 169Q297 188 196 164Q98 142 0 162Z" });
+  append(ridge, "path", { class: "kauai-kokee-fog front", d: "M0 151Q105 130 205 153Q305 176 406 149Q503 122 600 142V209Q503 190 410 211Q304 235 200 207Q97 179 0 200Z" });
+
+  const distantForest = append(target, "g", { class: "kauai-kokee-distant-forest", "aria-hidden": "true" });
+  [32, 87, 146, 211, 395, 452, 518, 574].forEach((x, index) => {
+    const height = 63 + (index % 3) * 16;
+    append(distantForest, "path", { class: "kauai-kokee-distant-trunk", d: `M${x - 4} 253Q${x - 8} ${222 - height * .25} ${x + (index % 2 ? 7 : -5)} ${253 - height}L${x + 9} ${253 - height + 2}Q${x + 3} ${224 - height * .2} ${x + 5} 255Z` });
+    append(distantForest, "path", { class: "kauai-kokee-distant-crown", d: `M${x - 38} ${205 - height * .62}Q${x - 29} ${178 - height * .58} ${x - 8} ${190 - height * .64}Q${x + 7} ${165 - height * .55} ${x + 25} ${190 - height * .59}Q${x + 46} ${183 - height * .47} ${x + 42} ${211 - height * .51}Q${x + 9} ${226 - height * .45} ${x - 38} ${205 - height * .62}Z` });
+  });
+
+  append(target, "path", { class: "kauai-kokee-ground", d: "M0 230Q98 205 194 230Q294 258 393 226Q493 195 600 218V430H0Z" });
+  append(target, "path", { class: "kauai-kokee-path", d: "M311 205C282 226 259 244 282 261C318 285 337 299 305 319C268 343 272 378 300 430H423C388 379 348 358 355 333C364 306 386 286 350 267C322 251 327 226 325 205Z" });
+  append(target, "path", { class: "kauai-kokee-path-edge", d: "M311 205C282 226 259 244 282 261C318 285 337 299 305 319C268 343 272 378 300 430M325 205C327 226 322 251 350 267C386 286 364 306 355 333C348 358 388 379 423 430" });
+
+  const leftTree = append(target, "g", { class: "kauai-kokee-left-tree", "aria-hidden": "true" });
+  append(leftTree, "path", { class: "kauai-kokee-tree-trunk", d: "M19 344Q49 270 37 203Q24 140 34 64L66 66Q61 132 80 190Q104 264 83 351Z" });
+  append(leftTree, "path", { class: "kauai-kokee-tree-branch", d: "M43 178Q76 118 132 92Q172 72 209 82L205 108Q165 105 132 127Q94 151 72 214Z" });
+  append(leftTree, "path", { class: "kauai-kokee-left-canopy", d: "M0 0H225Q238 29 214 48Q229 78 198 91Q174 115 143 99Q115 120 88 101Q58 115 38 91Q7 93 0 66Z" });
+  [[43,55,33,17,-17],[96,38,42,20,8],[151,43,40,19,-8],[197,55,34,17,15],[71,88,35,17,12],[137,81,39,18,-12]].forEach(([cx, cy, rx, ry, angle], index) => {
+    append(leftTree, "ellipse", { class: index % 2 ? "kauai-kokee-canopy-leaf deep" : "kauai-kokee-canopy-leaf", cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` });
+  });
+
+  const rightTree = append(target, "g", { class: "kauai-kokee-right-tree", "aria-hidden": "true" });
+  append(rightTree, "path", { class: "kauai-kokee-tree-trunk forked", d: "M486 430Q507 337 501 263Q498 213 468 174L489 148Q519 179 532 219Q546 169 568 112L592 125Q568 188 557 246Q562 336 586 430Z" });
+  append(rightTree, "path", { class: "kauai-kokee-tree-branch fork-left", d: "M509 231Q472 165 425 130L438 109Q491 142 531 198Z" });
+  append(rightTree, "path", { class: "kauai-kokee-tree-branch fork-right", d: "M542 196Q555 122 600 74V115Q574 151 558 224Z" });
+  append(rightTree, "path", { class: "kauai-kokee-right-canopy", d: "M392 70Q421 39 454 58Q478 28 510 52Q539 21 571 50Q600 30 600 30V134Q570 148 546 128Q516 151 488 126Q458 145 436 119Q404 125 386 101Z" });
+  [[421,90,27,14,-15],[464,71,34,16,9],[515,69,35,17,-8],[562,83,32,16,14],[489,112,31,15,-13],[548,119,30,14,8]].forEach(([cx, cy, rx, ry, angle], index) => {
+    append(rightTree, "ellipse", { class: index % 2 ? "kauai-kokee-canopy-leaf deep" : "kauai-kokee-canopy-leaf", cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` });
+  });
+
+  const fernBank = append(target, "g", { class: "kauai-kokee-fern-bank", "aria-hidden": "true" });
+  drawKauaiFern(fernBank, 48, 336, .82, 1);
+  drawKauaiFern(fernBank, 112, 350, .68, -1);
+  drawKauaiFern(fernBank, 162, 344, .57, 1);
+  drawKauaiFern(fernBank, 449, 335, .59, -1);
+  drawKauaiFern(fernBank, 589, 354, .72, -1);
+
+  const litter = append(target, "g", { class: "kauai-kokee-leaf-litter", "aria-hidden": "true" });
+  [[14,406,47,389],[61,426,94,403],[190,414,224,393],[236,428,271,405],[401,416,434,393],[454,429,489,404],[531,411,565,389]].forEach(([x1,y1,x2,y2], index) => {
+    append(litter, "path", { class: index % 3 === 0 ? "kauai-kokee-litter-leaf damp" : "kauai-kokee-litter-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-11-index%2*2} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+8} ${x1} ${y1}Z` });
+    append(litter, "path", { class: "kauai-kokee-litter-vein", d: `M${x1+4} ${y1-1}L${x2-4} ${y2+1}` });
+  });
+
+  const substrate = append(target, "g", { class: "kauai-kokee-decay-substrate", transform: "translate(122 374) rotate(-5)", "aria-hidden": "true" });
+  append(substrate, "ellipse", { class: "kauai-kokee-substrate-shadow", cx: -1, cy: 34, rx: 102, ry: 20 });
+  append(substrate, "path", { class: "kauai-kokee-substrate-shell", d: "M-96 14L-77-27L-40-39L-14-19L21-35L61-18L91 12L71 43L28 36L-9 50L-50 37L-82 46Z" });
+  append(substrate, "path", { class: "kauai-kokee-substrate-soft", d: "M-77 10L-61-16L-36-23L-12-7L20-21L49-10L70 12L55 29L25 24L-7 36L-39 25L-65 31Z" });
+  append(substrate, "path", { class: "kauai-kokee-substrate-split", d: "M-39-22Q-22-5-29 23M-14-8Q7 4-2 34M23-20Q39-2 30 25" });
+  [[-68,3,5],[-49,21,4],[-19,8,3],[9,26,5],[39,-4,4],[55,18,3]].forEach(([cx, cy, r], index) => append(substrate, "circle", { class: index % 2 ? "kauai-kokee-decay-pore deep" : "kauai-kokee-decay-pore", cx, cy, r }));
+  append(substrate, "path", { class: "kauai-kokee-moisture-glint", d: "M-55-11Q-40-20-25-12M31-8Q43-14 54-6M-6 25Q5 18 17 23" });
+}
+
 function drawTenerifeScene(target, palette) {
   append(target, "rect", { class: "environment-sky tenerife-sky", width: 600, height: 430, fill: palette[0] });
   append(target, "circle", { class: "tenerife-sun", cx: 516, cy: 58, r: 26 });
@@ -1176,6 +1249,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "tenerife-puerto-cruz-botanic") {
     drawTenerifeScene(target, palette);
+    return;
+  }
+  if (profile.id === "kauai-kokee-upland-forest") {
+    drawKauaiKokeeScene(target, palette);
     return;
   }
 
