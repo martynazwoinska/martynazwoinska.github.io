@@ -1039,6 +1039,72 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .praslin-granite-boulder { fill: color-mix(in srgb, #695a61 80%, var(--environment-ground)); }
 :root[data-theme='dark'] .praslin-granite-boulder.right { fill: color-mix(in srgb, #5b4d55 82%, var(--environment-ground)); }
 :root[data-theme='dark'] .praslin-foreground-litter-bed { fill: color-mix(in srgb, #29231f 91%, var(--environment-ground)); }
+#habitat[data-environment="sao-tome-ju2484-forest-floor"] .regional-backdrop { contain: layout paint; }
+.sao-tome-forest-sky { fill: color-mix(in srgb, #bcd8cd 82%, var(--paper-strong)); }
+.sao-tome-distant-green { fill: color-mix(in srgb, var(--environment-land) 56%, #718777); }
+.sao-tome-light-shaft { fill: color-mix(in srgb, #dce6cf 70%, var(--environment-accent)); opacity: .32; filter: blur(7px); }
+.sao-tome-back-thicket { fill: color-mix(in srgb, var(--environment-land) 73%, #315b43); stroke: color-mix(in srgb, var(--environment-detail) 57%, #284638); stroke-width: 1.5; stroke-linejoin: round; }
+.sao-tome-back-branch { fill: none; stroke: color-mix(in srgb, #4f6049 61%, var(--environment-detail)); stroke-width: 4; stroke-linecap: round; opacity: .57; }
+.sao-tome-canopy-mass { fill: color-mix(in srgb, var(--environment-land) 84%, #29523b); stroke: color-mix(in srgb, var(--environment-detail) 69%, #223c32); stroke-width: 1.7; stroke-linejoin: round; }
+.sao-tome-canopy-mass.left { fill: color-mix(in srgb, var(--environment-land) 78%, #315b42); }
+.sao-tome-canopy-mass.right { fill: color-mix(in srgb, var(--environment-land) 75%, #375f45); }
+.sao-tome-canopy-highlight { fill: none; stroke: color-mix(in srgb, var(--environment-land) 44%, var(--paper-strong)); stroke-width: 4; stroke-linecap: round; opacity: .31; }
+.sao-tome-forest-floor { fill: color-mix(in srgb, var(--environment-ground) 52%, #5c6c4c); }
+.sao-tome-floor-contour { fill: none; stroke: color-mix(in srgb, #495541 57%, var(--environment-detail)); stroke-width: 2; stroke-linecap: round; opacity: .54; }
+.sao-tome-rear-trunk { fill: none; stroke: color-mix(in srgb, #68513e 66%, var(--environment-detail)); stroke-width: 13; stroke-linecap: round; }
+.sao-tome-rear-trunk.deep { stroke: color-mix(in srgb, #4e4436 75%, var(--environment-detail)); stroke-width: 10; }
+.sao-tome-root-line { fill: none; stroke: color-mix(in srgb, #5b4939 70%, var(--environment-detail)); stroke-width: 6; stroke-linecap: round; }
+.sao-tome-main-trunk,
+.sao-tome-fork-branch { fill: color-mix(in srgb, #72533c 73%, var(--environment-detail)); stroke: color-mix(in srgb, #473b31 79%, var(--environment-detail)); stroke-width: 2.4; stroke-linejoin: round; }
+.sao-tome-fork-branch.deep { fill: color-mix(in srgb, #604a38 77%, var(--environment-detail)); }
+.sao-tome-bark-seam { fill: none; stroke: color-mix(in srgb, #a47c53 49%, var(--environment-detail)); stroke-width: 3; stroke-linecap: round; opacity: .68; }
+.sao-tome-bark-knot { fill: color-mix(in srgb, #a07d57 56%, var(--environment-detail)); stroke: color-mix(in srgb, #4a3d32 74%, var(--environment-detail)); stroke-width: 1.2; }
+.sao-tome-bark-knot.deep { fill: color-mix(in srgb, #554536 77%, var(--environment-detail)); }
+.sao-tome-liana { fill: none; stroke: color-mix(in srgb, #486846 74%, var(--environment-detail)); stroke-width: 4; stroke-linecap: round; }
+.sao-tome-liana.deep { stroke: color-mix(in srgb, #3c5d40 78%, var(--environment-detail)); stroke-width: 5; }
+.sao-tome-liana.fine { stroke-width: 2.4; }
+.sao-tome-liana-leaf { fill: color-mix(in srgb, #59815a 78%, var(--environment-land)); stroke: color-mix(in srgb, #324d39 75%, var(--environment-detail)); stroke-width: 1; }
+.sao-tome-liana-leaf.deep { fill: color-mix(in srgb, #3f6c4d 82%, var(--environment-land)); }
+.sao-tome-fern-stem { fill: none; stroke: color-mix(in srgb, #46684a 75%, var(--environment-detail)); stroke-width: 2.7; stroke-linecap: round; }
+.sao-tome-fern-leaflet { fill: color-mix(in srgb, #62865f 77%, var(--environment-land)); stroke: color-mix(in srgb, #38533d 76%, var(--environment-detail)); stroke-width: .8; }
+.sao-tome-fern-leaflet.deep { fill: color-mix(in srgb, #416d4e 82%, var(--environment-land)); }
+.sao-tome-fern-root { fill: color-mix(in srgb, #4e4935 69%, var(--environment-ground)); stroke: color-mix(in srgb, #3d382e 72%, var(--environment-detail)); stroke-width: 1.2; }
+.sao-tome-fern.rear { opacity: .72; }
+.sao-tome-begonia-petiole { fill: none; stroke: color-mix(in srgb, #9a4f67 60%, var(--environment-detail)); stroke-width: 4; stroke-linecap: round; }
+.sao-tome-begonia-leaf { fill: color-mix(in srgb, #6f8a5d 67%, var(--environment-land)); stroke: color-mix(in srgb, #4d473e 74%, var(--environment-detail)); stroke-width: 1.5; stroke-linejoin: round; }
+.sao-tome-begonia-leaf.deep { fill: color-mix(in srgb, #587b54 70%, var(--environment-land)); }
+.sao-tome-begonia-vein { fill: none; stroke: color-mix(in srgb, #a55d75 59%, var(--environment-detail)); stroke-width: 1.7; stroke-linecap: round; }
+.sao-tome-foreground-litter-bed { fill: color-mix(in srgb, #493d31 69%, var(--environment-ground)); }
+.sao-tome-litter-leaf { fill: color-mix(in srgb, #916944 68%, var(--environment-accent)); stroke: color-mix(in srgb, #493b31 75%, var(--environment-detail)); stroke-width: 1.1; }
+.sao-tome-litter-leaf.deep { fill: color-mix(in srgb, #574737 80%, var(--environment-ground)); }
+.sao-tome-litter-leaf.green { fill: color-mix(in srgb, #506943 79%, var(--environment-land)); }
+.sao-tome-litter-vein { fill: none; stroke: color-mix(in srgb, #3e352d 74%, var(--environment-detail)); stroke-width: 1; }
+.sao-tome-litter-fragment { fill: color-mix(in srgb, #ad8550 66%, var(--environment-accent)); }
+.sao-tome-litter-fragment.deep { fill: color-mix(in srgb, #26322b 87%, var(--environment-detail)); }
+.sao-tome-fruit-shadow { fill: rgba(26,33,26,.31); }
+.sao-tome-fruit-rind { fill: color-mix(in srgb, #8a6842 74%, var(--environment-ground)); stroke: color-mix(in srgb, #4b3c30 82%, var(--environment-detail)); stroke-width: 2.7; stroke-linejoin: round; }
+.sao-tome-fruit-pulp { fill: color-mix(in srgb, #a78859 70%, var(--environment-accent)); stroke: color-mix(in srgb, #66503a 76%, var(--environment-detail)); stroke-width: 1.5; stroke-linejoin: round; }
+.sao-tome-fruit-collapse { fill: color-mix(in srgb, #5d4735 79%, var(--environment-ground)); stroke: color-mix(in srgb, #3e342d 81%, var(--environment-detail)); stroke-width: 1.6; }
+.sao-tome-fruit-torn-rind { fill: color-mix(in srgb, #6f5038 79%, var(--environment-ground)); stroke: color-mix(in srgb, #44372f 82%, var(--environment-detail)); stroke-width: 1.7; stroke-linejoin: round; }
+.sao-tome-fruit-tear-edge { fill: none; stroke: color-mix(in srgb, #b09468 56%, var(--environment-accent)); stroke-width: 2; stroke-linecap: round; }
+.sao-tome-fruit-mottle { fill: color-mix(in srgb, #664432 82%, var(--environment-detail)); }
+.sao-tome-fruit-mottle.deep { fill: color-mix(in srgb, #29312a 89%, var(--environment-detail)); }
+:root[data-theme='dark'] .sao-tome-forest-sky { fill: color-mix(in srgb, #203832 87%, var(--environment-water)); }
+:root[data-theme='dark'] .sao-tome-distant-green { fill: color-mix(in srgb, #304d3d 86%, var(--environment-land)); }
+:root[data-theme='dark'] .sao-tome-light-shaft { fill: color-mix(in srgb, #74734a 61%, var(--environment-accent)); opacity: .24; }
+:root[data-theme='dark'] .sao-tome-back-thicket { fill: color-mix(in srgb, #244432 89%, var(--environment-land)); }
+:root[data-theme='dark'] .sao-tome-canopy-mass { fill: color-mix(in srgb, #1d3c2c 90%, var(--environment-land)); }
+:root[data-theme='dark'] .sao-tome-canopy-mass.left { fill: color-mix(in srgb, #244532 88%, var(--environment-land)); }
+:root[data-theme='dark'] .sao-tome-canopy-mass.right { fill: color-mix(in srgb, #284936 87%, var(--environment-land)); }
+:root[data-theme='dark'] .sao-tome-forest-floor { fill: color-mix(in srgb, #35412f 86%, var(--environment-ground)); }
+:root[data-theme='dark'] .sao-tome-main-trunk,
+:root[data-theme='dark'] .sao-tome-fork-branch { fill: color-mix(in srgb, #49392e 87%, var(--environment-detail)); }
+:root[data-theme='dark'] .sao-tome-begonia-leaf { fill: color-mix(in srgb, #334f39 84%, var(--environment-land)); }
+:root[data-theme='dark'] .sao-tome-foreground-litter-bed { fill: color-mix(in srgb, #28221e 92%, var(--environment-ground)); }
+:root[data-theme='dark'] .sao-tome-fruit-rind { fill: color-mix(in srgb, #51402f 86%, var(--environment-ground)); }
+:root[data-theme='dark'] .sao-tome-fruit-pulp { fill: color-mix(in srgb, #665537 83%, var(--environment-accent)); }
+:root[data-theme='dark'] .sao-tome-fruit-collapse,
+:root[data-theme='dark'] .sao-tome-fruit-torn-rind { fill: color-mix(in srgb, #392c25 90%, var(--environment-ground)); }
 .scene-sky { fill: url(#scene-sky-gradient); }
 .scene-sky-top { stop-color: color-mix(in srgb, var(--scene-sky) 55%, white); }
 .scene-sky-bottom { stop-color: var(--scene-sky); }
@@ -2402,6 +2468,132 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .growth-census-panel.deep { fill: color-mix(in srgb, #334b3c 85%, var(--local-primary)); }
 :root[data-theme='dark'] .listener-petal-bowl { fill: color-mix(in srgb, #4e394d 84%, var(--local-primary)); }
 :root[data-theme='dark'] .listener-bowl-inner { fill: color-mix(in srgb, #6e5432 82%, var(--local-secondary)); }
+.sao-accessory-shadow { fill: rgba(24,34,29,.22); }
+.fruit-track-base,
+.fruit-tower-base,
+.sound-arc-base,
+.sound-mast-base,
+.begonia-drum-base,
+.begonia-strip-base { fill: color-mix(in srgb, #896846 73%, var(--local-secondary)); stroke: color-mix(in srgb, #493b31 83%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
+.fruit-track-frame,
+.fruit-tower-frame,
+.fruit-track-feet,
+.fruit-tower-feet,
+.sound-listening-arc,
+.sound-arc-feet,
+.sound-single-mast,
+.sound-mast-feet,
+.begonia-drum-support,
+.begonia-drum-feet,
+.begonia-petiole-frame,
+.begonia-strip-feet { fill: none; stroke: color-mix(in srgb, #594430 82%, var(--worm-deep)); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.fruit-track-frame,
+.fruit-tower-frame { stroke: color-mix(in srgb, #8e6a3e 74%, var(--local-secondary)); }
+.fruit-glass-beam { fill: color-mix(in srgb, #cde0d7 53%, var(--paper-strong)); stroke: color-mix(in srgb, #675641 75%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; opacity: .86; }
+.fruit-carriage-rail,
+.fruit-suspension-cord,
+.fruit-counter-cord,
+.fruit-vial-bracket,
+.fruit-date-axle,
+.fruit-tower-helix { fill: none; stroke: color-mix(in srgb, #9b7949 74%, var(--local-secondary)); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.fruit-carriage-rail { stroke-width: 4; }
+.fruit-suspension-carriage,
+.fruit-counterweight,
+.fruit-counter-pulley,
+.fruit-counter-anchor,
+.fruit-trapdoor-pivot,
+.fruit-drawer-pull { fill: color-mix(in srgb, #a87d45 72%, var(--local-secondary)); stroke: color-mix(in srgb, #55402d 81%, var(--worm-deep)); stroke-width: 1.7; stroke-linejoin: round; }
+.fruit-anonymous-rind { fill: color-mix(in srgb, #866543 75%, var(--local-secondary)); stroke: color-mix(in srgb, #493b31 82%, var(--worm-deep)); stroke-width: 2.1; stroke-linejoin: round; }
+.fruit-anonymous-pulp { fill: color-mix(in srgb, #b28d59 71%, var(--local-secondary)); stroke: color-mix(in srgb, #695139 76%, var(--worm-deep)); stroke-width: 1.3; }
+.fruit-rind-tear { fill: color-mix(in srgb, #6d4c37 79%, var(--local-primary)); stroke: color-mix(in srgb, #49372d 82%, var(--worm-deep)); stroke-width: 1.5; stroke-linejoin: round; }
+.fruit-decay-mottle { fill: color-mix(in srgb, #684332 81%, var(--worm-deep)); }
+.fruit-decay-mottle.deep { fill: color-mix(in srgb, #29372f 88%, var(--local-primary)); }
+.fruit-catch-bed,
+.fruit-litter-drawer { fill: color-mix(in srgb, #5f513c 69%, var(--local-primary)); stroke: color-mix(in srgb, #453b31 81%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.fruit-catch-leaf { fill: color-mix(in srgb, #8d6845 67%, var(--local-secondary)); stroke: color-mix(in srgb, #4c3e31 78%, var(--worm-deep)); stroke-width: 1.1; }
+.fruit-catch-leaf.deep { fill: color-mix(in srgb, #465d42 79%, var(--local-primary)); }
+.fruit-date-wheel { fill: color-mix(in srgb, #74576d 67%, var(--local-primary)); stroke: color-mix(in srgb, #4b3747 82%, var(--worm-deep)); stroke-width: 2.2; }
+.fruit-date-spokes { fill: none; stroke: color-mix(in srgb, #d2b36f 68%, var(--paper-strong)); stroke-width: 1.5; opacity: .78; }
+.fruit-record-plate,
+.fruit-isofemale-vial,
+.fruit-tower-top-cup { fill: color-mix(in srgb, #d2c59d 68%, var(--paper-strong)); stroke: color-mix(in srgb, #65513c 79%, var(--worm-deep)); stroke-width: 1.7; stroke-linejoin: round; }
+.fruit-vial-cap { fill: color-mix(in srgb, #76516c 69%, var(--local-primary)); stroke: color-mix(in srgb, #4a3545 82%, var(--worm-deep)); stroke-width: 1.5; }
+.fruit-record-text,
+.fruit-small-text { fill: color-mix(in srgb, #2f463d 86%, var(--worm-deep)); font: 900 9px/1 var(--sans); paint-order: stroke; stroke: color-mix(in srgb, var(--paper-strong) 73%, transparent); stroke-width: 1px; letter-spacing: .025em; }
+.fruit-small-text.vertical { font-size: 8px; }
+.fruit-trapdoor { fill: color-mix(in srgb, #7c5b70 67%, var(--local-primary)); stroke: color-mix(in srgb, #493845 82%, var(--worm-deep)); stroke-width: 1.6; stroke-linejoin: round; }
+.fruit-trapdoor.deep { fill: color-mix(in srgb, #a4804b 70%, var(--local-secondary)); }
+.fruit-drawer-litter { fill: none; stroke: color-mix(in srgb, #aa824f 69%, var(--local-secondary)); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.sound-listening-arc { stroke: color-mix(in srgb, #73566e 70%, var(--local-primary)); stroke-width: 12; }
+.sound-arc-inlay,
+.sound-funnel-supports,
+.sound-horn-ribs,
+.sound-cylinder-frame,
+.sound-cylinder-bracket,
+.sound-observer-rail,
+.sound-pendulum-bracket,
+.sound-pendulum-cord { fill: none; stroke: color-mix(in srgb, #9b7848 74%, var(--local-secondary)); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.sound-funnel-supports { stroke-width: 4.5; }
+.sound-acoustic-funnel,
+.sound-single-horn { fill: color-mix(in srgb, #775870 69%, var(--local-primary)); stroke: color-mix(in srgb, #493846 83%, var(--worm-deep)); stroke-width: 2.3; stroke-linejoin: round; }
+.sound-acoustic-funnel.deep { fill: color-mix(in srgb, #a17f4b 70%, var(--local-secondary)); }
+.sound-funnel-throat,
+.sound-funnel-ripple { fill: none; stroke: color-mix(in srgb, #57413e 78%, var(--worm-deep)); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.sound-funnel-throat { stroke-width: 4; }
+.sound-wave-drum,
+.sound-cylinder-frame { fill: color-mix(in srgb, #d1c6a7 68%, var(--paper-strong)); stroke: color-mix(in srgb, #67543f 78%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.sound-woven-wave,
+.sound-spiral-cylinder { fill: none; stroke: color-mix(in srgb, #7b4d6f 72%, var(--local-primary)); stroke-width: 2.7; stroke-linecap: round; stroke-linejoin: round; }
+.sound-ten-minute-dial { fill: color-mix(in srgb, #b18b4f 72%, var(--local-secondary)); stroke: color-mix(in srgb, #59442f 82%, var(--worm-deep)); stroke-width: 2; }
+.sound-dial-hand { fill: none; stroke: color-mix(in srgb, #493846 82%, var(--worm-deep)); stroke-width: 2.3; stroke-linecap: round; }
+.sound-small-text,
+.sound-radius-text { fill: color-mix(in srgb, #30463d 86%, var(--worm-deep)); font: 900 10px/1 var(--sans); paint-order: stroke; stroke: color-mix(in srgb, var(--paper-strong) 73%, transparent); stroke-width: 1px; }
+.sound-radius-text { font-size: 9px; letter-spacing: .04em; }
+.sound-observer-slider { fill: color-mix(in srgb, #6b8b6c 66%, var(--local-primary)); stroke: color-mix(in srgb, #3e5141 81%, var(--worm-deep)); stroke-width: 1.4; }
+.sound-observer-slider.deep { fill: color-mix(in srgb, #9f7b49 72%, var(--local-secondary)); }
+.sound-observer-knob { fill: color-mix(in srgb, #76516d 71%, var(--local-primary)); stroke: color-mix(in srgb, #4a3545 82%, var(--worm-deep)); stroke-width: 1.4; }
+.sound-pendulum-weight { fill: color-mix(in srgb, #7a586e 68%, var(--local-primary)); stroke: color-mix(in srgb, #493845 82%, var(--worm-deep)); stroke-width: 1.8; }
+.begonia-leaf-drum { fill: color-mix(in srgb, #6d875f 66%, var(--local-primary)); stroke: color-mix(in srgb, #3e503f 82%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
+.begonia-leaf-midvein,
+.begonia-leaf-veins,
+.begonia-lineage-ribbon,
+.begonia-flip-spine { fill: none; stroke: color-mix(in srgb, #a15372 68%, var(--local-primary)); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.begonia-leaf-midvein { stroke-width: 4; }
+.begonia-lineage-ring { fill: color-mix(in srgb, #d4c89f 24%, transparent); stroke: color-mix(in srgb, #d0ac63 73%, var(--local-secondary)); stroke-width: 3; }
+.begonia-lineage-ring.middle { stroke: color-mix(in srgb, #7b4e70 74%, var(--local-primary)); }
+.begonia-lineage-ring.inner { stroke: color-mix(in srgb, #45684d 73%, var(--local-primary)); }
+.begonia-shutter,
+.begonia-flip-panel { fill: color-mix(in srgb, #d0c39a 69%, var(--paper-strong)); stroke: color-mix(in srgb, #65523d 78%, var(--worm-deep)); stroke-width: 1.7; stroke-linejoin: round; }
+.begonia-shutter.deep,
+.begonia-flip-panel.deep { fill: color-mix(in srgb, #adbca2 58%, var(--local-primary)); }
+.begonia-shutter-slit { fill: none; stroke: color-mix(in srgb, #78526f 70%, var(--local-primary)); stroke-width: 2; stroke-linecap: round; }
+.begonia-viewing-aperture { fill: color-mix(in srgb, #a5824d 71%, var(--local-secondary)); stroke: color-mix(in srgb, #57432e 81%, var(--worm-deep)); stroke-width: 2; }
+.begonia-aperture-inner { fill: color-mix(in srgb, #334d42 81%, var(--worm-deep)); stroke: color-mix(in srgb, #d3c598 64%, var(--paper-strong)); stroke-width: 1.4; }
+.begonia-crank-shaft,
+.begonia-crank-spokes { fill: none; stroke: color-mix(in srgb, #9b7847 75%, var(--local-secondary)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.begonia-crank-wheel,
+.begonia-panel-hinge { fill: color-mix(in srgb, #79566f 69%, var(--local-primary)); stroke: color-mix(in srgb, #4a3745 82%, var(--worm-deep)); stroke-width: 1.7; }
+:root[data-theme='dark'] .fruit-glass-beam,
+:root[data-theme='dark'] .fruit-record-plate,
+:root[data-theme='dark'] .fruit-isofemale-vial,
+:root[data-theme='dark'] .fruit-tower-top-cup,
+:root[data-theme='dark'] .sound-wave-drum,
+:root[data-theme='dark'] .sound-cylinder-frame,
+:root[data-theme='dark'] .begonia-shutter,
+:root[data-theme='dark'] .begonia-flip-panel { fill: color-mix(in srgb, #555044 82%, var(--paper-strong)); }
+:root[data-theme='dark'] .fruit-track-base,
+:root[data-theme='dark'] .fruit-tower-base,
+:root[data-theme='dark'] .sound-arc-base,
+:root[data-theme='dark'] .sound-mast-base,
+:root[data-theme='dark'] .begonia-drum-base,
+:root[data-theme='dark'] .begonia-strip-base { fill: color-mix(in srgb, #4a392e 86%, var(--local-secondary)); }
+:root[data-theme='dark'] .fruit-anonymous-rind { fill: color-mix(in srgb, #503d30 86%, var(--local-secondary)); }
+:root[data-theme='dark'] .fruit-anonymous-pulp { fill: color-mix(in srgb, #685238 82%, var(--local-secondary)); }
+:root[data-theme='dark'] .sound-acoustic-funnel,
+:root[data-theme='dark'] .sound-single-horn { fill: color-mix(in srgb, #4d394a 85%, var(--local-primary)); }
+:root[data-theme='dark'] .begonia-leaf-drum { fill: color-mix(in srgb, #324c37 85%, var(--local-primary)); }
+:root[data-theme='dark'] .begonia-shutter.deep,
+:root[data-theme='dark'] .begonia-flip-panel.deep { fill: color-mix(in srgb, #3d5040 84%, var(--local-primary)); }
 .fig-visor path:first-child, .fig-visor path:nth-of-type(4) { fill: #72a66b; stroke: var(--worm-deep); stroke-width: 3; }
 .fig-vein, .visor-band { fill: none; stroke: #315f50; stroke-width: 2.5; stroke-linecap: round; }
 .satchel-strap { fill: none; stroke: #745744; stroke-width: 7; stroke-linecap: round; }

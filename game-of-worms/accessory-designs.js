@@ -27,7 +27,7 @@ const rows = [
   ["nigoni", "Trivandrum, Kerala · JU1325", "JU1325 sample-tube timekeeper", "ju1325-sample-tube-timekeeper", "Trivandrum garden waterworks", "trivandrum-garden-waterworks", "Trivandrum bandstand music box", "trivandrum-bandstand-music-box"],
   ["nigoni", "Singapore · ZF1220", "ZF1220 five-rib field atlas", "zf1220-five-rib-field-atlas", "multifemale provenance merger", "multifemale-provenance-merger", "Holttum orchid hybridisation engine", "holttum-orchid-hybridisation-engine"],
   ["nigoni", "Praslin, Seychelles · YR106", "YR106 long-read genome loom", "yr106-long-read-genome-loom", "coco-de-mer growth-monitoring rig", "coco-de-mer-growth-monitoring-rig", "Praslin black-parrot call listener", "praslin-black-parrot-call-listener"],
-  ["nigoni", "São Tomé · JU2484", "volcanic-needle ruff", "volcanic-needle-ruff", "cacao ocarina", "cacao-ocarina", "waterfall pennant", "waterfall-pennant"],
+  ["nigoni", "São Tomé · JU2484", "JU2484 fruit-fall kinetic track", "ju2484-fruit-fall-kinetic-track", "São Tomé point-count sound loom", "sao-tome-point-count-sound-loom", "São Tomé begonia lineage kinetoscope", "sao-tome-begonia-lineage-kinetoscope"],
   ["nigoni", "Mahahual, Mexico · JU2617", "reef mask", "reef-mask", "seagrass tail", "seagrass-tail", "lagoon saxophone", "lagoon-saxophone"],
   ["nigoni", "Mauritius · JU2909", "Le Morne pauldron", "le-morne-pauldron", "lagoon wind-vane", "lagoon-wind-vane", "cane ankle bells", "cane-ankle-bells"],
   ["nigoni", "Ho Chi Minh City · JU4356", "pneumatophore snowshoes", "pneumatophore-snowshoes", "salt-crystal jacket", "salt-crystal-jacket", "tidal waterwheel", "tidal-waterwheel"],
@@ -107,6 +107,11 @@ const praslinRendererIds = new Set([
   "nigoni::Praslin, Seychelles · YR106::wrap",
   "nigoni::Praslin, Seychelles · YR106::charm"
 ]);
+const saoTomeRendererIds = new Set([
+  "nigoni::São Tomé · JU2484::headwear",
+  "nigoni::São Tomé · JU2484::wrap",
+  "nigoni::São Tomé · JU2484::charm"
+]);
 const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
 const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|snorkel|compass|press|gauge rod|camera rig/i;
 const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|skates|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
@@ -125,7 +130,7 @@ function hasNamedRenderer(item) {
     || trivandrumRendererIds.has(item.id)
     || singaporeRendererIds.has(item.id)
     || praslinRendererIds.has(item.id)
-    || item.family === "volcanic-needle-ruff"
+    || saoTomeRendererIds.has(item.id)
     || instrumentRendererPattern.test(item.label)
     || fieldToolRendererPattern.test(item.label)
     || naturalRendererPattern.test(item.label);
@@ -1788,6 +1793,172 @@ function drawPraslinAccessory(group, item, companion) {
   return false;
 }
 
+function drawSaoTomeAccessory(group, item, companion) {
+  if (!item.id.startsWith("nigoni::São Tomé · JU2484::")) return false;
+
+  if (item.family === "ju2484-fruit-fall-kinetic-track") {
+    group.dataset.renderer = "ju2484-fruit-fall-kinetic-track";
+    group.classList.add("sao-tome-accessory", "fruit-fall-track", companion ? "fruit-fall-track-companion" : "fruit-fall-track-primary");
+    if (companion) {
+      add(group, "path", { class: "sao-accessory-shadow", d: "M-112 126Q0 158 117 122Q58 171-103 165Z" });
+      add(group, "path", { class: "fruit-tower-base", d: "M-87 80H78L98 127H-105Z" });
+      add(group, "path", { class: "fruit-tower-frame", d: "M-67 81V-115H58V82M-68-114H59M-68 22H59" });
+      add(group, "path", { class: "fruit-tower-top-cup", d: "M-34-125H26L14-93H-22Z" });
+      add(group, "path", { class: "fruit-tower-helix", d: "M-4-94C57-80 54-52-2-43C-58-34-58-5-1 5C55 15 54 44-3 53C-47 60-50 76-18 82" });
+      [[25,-66,-15],[-29,-22,14],[27,21,-13],[-28,62,16]].forEach(([cx,cy,angle], index) => {
+        add(group, "path", { class: index % 2 ? "fruit-trapdoor deep" : "fruit-trapdoor", d: `M${cx-26} ${cy-5}L${cx+23} ${cy-10}L${cx+26} ${cy+6}L${cx-23} ${cy+11}Z`, transform: `rotate(${angle} ${cx} ${cy})` });
+        add(group, "circle", { class: "fruit-trapdoor-pivot", cx: cx - 24, cy: cy + 2, r: 4 });
+      });
+      add(group, "path", { class: "fruit-litter-drawer", d: "M-62 75H50L43 111H-68Z" });
+      add(group, "path", { class: "fruit-drawer-litter", d: "M-51 91Q-34 76-18 93Q0 76 17 92Q29 80 40 94" });
+      add(group, "circle", { class: "fruit-drawer-pull", cx: -8, cy: 80, r: 4 });
+      add(group, "path", { class: "fruit-vial-bracket", d: "M58-38H82V20H66" });
+      add(group, "rect", { class: "fruit-isofemale-vial", x: 67, y: -27, width: 29, height: 57, rx: 8 });
+      add(group, "rect", { class: "fruit-vial-cap", x: 70, y: -37, width: 23, height: 13, rx: 3 });
+      const vialText = add(group, "text", { class: "fruit-small-text vertical", x: 82, y: 8, "text-anchor": "middle", transform: "rotate(-90 82 8)" });
+      vialText.textContent = "ISO";
+      add(group, "circle", { class: "fruit-counter-pulley", cx: -78, cy: -92, r: 11 });
+      add(group, "path", { class: "fruit-counter-cord", d: "M-67-92H-47V-61M-89-92V-42" });
+      add(group, "circle", { class: "fruit-counter-anchor", cx: -47, cy: -61, r: 4 });
+      add(group, "path", { class: "fruit-counterweight", d: "M-103-43H-75L-70-12H-108Z" });
+      add(group, "path", { class: "fruit-tower-feet", d: "M-77 124L-88 151M70 124L83 151" });
+    } else {
+      add(group, "path", { class: "sao-accessory-shadow", d: "M-176 111Q0 147 181 107Q91 163-163 154Z" });
+      add(group, "path", { class: "fruit-track-base", d: "M-160 68H145L169 113H-174Z" });
+      add(group, "path", { class: "fruit-track-frame", d: "M-145 68V-93H126V69M-145-92H126" });
+      add(group, "path", { class: "fruit-glass-beam", d: "M-126-80H108L121-52H-134Z" });
+      add(group, "path", { class: "fruit-carriage-rail", d: "M-112-66H99" });
+      add(group, "path", { class: "fruit-suspension-carriage", d: "M-12-78H25L31-53H-18Z" });
+      add(group, "path", { class: "fruit-suspension-cord", d: "M7-53V-21" });
+      add(group, "path", { class: "fruit-anonymous-rind", d: "M-56-8Q-46-35-15-33Q7-48 30-28Q57-28 66-4Q53 24 23 27Q-8 41-36 24Q-62 22-56-8Z" });
+      add(group, "path", { class: "fruit-anonymous-pulp", d: "M-42-7Q-33-24-11-22Q6-33 23-18Q43-18 49-1Q39 15 19 14Q-5 27-26 15Q-45 15-42-7Z" });
+      add(group, "path", { class: "fruit-rind-tear", d: "M-47 9Q-69 26-51 42Q-24 42-9 25Q-30 31-47 9ZM39 9Q59 26 46 39Q25 39 15 25Q31 28 39 9Z" });
+      [[-27,-12,4],[-14,12,3],[8,-18,3],[29,6,4]].forEach(([cx,cy,r], index) => add(group, "circle", { class: index % 2 ? "fruit-decay-mottle deep" : "fruit-decay-mottle", cx, cy, r }));
+      add(group, "path", { class: "fruit-catch-bed", d: "M-92 40Q-65 20-39 44Q-14 28 11 47Q34 28 58 45Q77 32 92 50L81 74H-87Z" });
+      [[-70,49,-48,35],[-41,61,-14,42],[18,58,41,38],[52,62,76,45]].forEach(([x1,y1,x2,y2], index) => add(group, "path", { class: index % 2 ? "fruit-catch-leaf deep" : "fruit-catch-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-8} ${x2} ${y2}Q${(x1+x2)/2+4} ${Math.max(y1,y2)+6} ${x1} ${y1}Z` }));
+      add(group, "circle", { class: "fruit-date-wheel", cx: -110, cy: 31, r: 28 });
+      add(group, "path", { class: "fruit-date-axle", d: "M-145 31H-138" });
+      add(group, "path", { class: "fruit-date-spokes", d: "M-110 4V58M-137 31H-83M-129 12L-91 50M-91 12L-129 50" });
+      const dateText = add(group, "text", { class: "fruit-small-text", x: -110, y: 35, "text-anchor": "middle" });
+      dateText.textContent = "28 FEB";
+      add(group, "circle", { class: "fruit-counter-pulley", cx: 112, cy: -66, r: 12 });
+      add(group, "path", { class: "fruit-counter-cord", d: "M100-66H82V-34M124-66V-11" });
+      add(group, "circle", { class: "fruit-counter-anchor", cx: 82, cy: -34, r: 4 });
+      add(group, "path", { class: "fruit-counterweight", d: "M109-12H139L144 25H104Z" });
+      add(group, "path", { class: "fruit-record-plate", d: "M-47 77H73L65 104H-54Z" });
+      const recordText = add(group, "text", { class: "fruit-record-text", x: 9, y: 96, "text-anchor": "middle" });
+      recordText.textContent = "GOY1 / JU2484";
+      add(group, "path", { class: "fruit-track-feet", d: "M-143 108L-154 138M137 108L150 138" });
+    }
+    return true;
+  }
+
+  if (item.family === "sao-tome-point-count-sound-loom") {
+    group.dataset.renderer = "sao-tome-point-count-sound-loom";
+    group.classList.add("sao-tome-accessory", "point-count-loom", companion ? "point-count-loom-companion" : "point-count-loom-primary");
+    if (companion) {
+      add(group, "path", { class: "sao-accessory-shadow", d: "M-105 128Q0 157 112 124Q55 171-96 165Z" });
+      add(group, "path", { class: "sound-mast-base", d: "M-79 83H77L96 129H-99Z" });
+      add(group, "path", { class: "sound-single-mast", d: "M-30 82V-101H-2" });
+      add(group, "path", { class: "sound-single-horn", d: "M-15-111Q26-142 70-119L48-82Q18-98-9-84Z" });
+      add(group, "path", { class: "sound-horn-ribs", d: "M-2-104Q20-117 50-112M-7-94Q17-105 43-100" });
+      add(group, "path", { class: "sound-cylinder-frame", d: "M-8-63H55V61H-8Z" });
+      add(group, "path", { class: "sound-cylinder-bracket", d: "M-30-55H-8M-30 52H-8" });
+      add(group, "path", { class: "sound-spiral-cylinder", d: "M2-53C52-45 52-27 3-20C-36-14-34 3 4 10C48 18 47 35 5 43C-24 48-24 57 0 63" });
+      add(group, "path", { class: "sound-observer-rail", d: "M68-58V83" });
+      [[68,-32,-1],[68,4,1],[68,40,-1]].forEach(([cx,cy,side], index) => {
+        add(group, "path", { class: index % 2 ? "sound-observer-slider deep" : "sound-observer-slider", d: `M${cx-12} ${cy-7}H${cx+12}V${cy+7}H${cx-12}Z` });
+        add(group, "circle", { class: "sound-observer-knob", cx: cx + side * 18, cy, r: 5 });
+      });
+      add(group, "path", { class: "sound-pendulum-bracket", d: "M-30-67H-73V-42" });
+      add(group, "circle", { class: "sound-ten-minute-dial", cx: -73, cy: -19, r: 18 });
+      add(group, "path", { class: "sound-pendulum-cord", d: "M-73-1V62" });
+      add(group, "path", { class: "sound-pendulum-weight", d: "M-87 62Q-73 42-59 62Q-61 82-73 88Q-85 82-87 62Z" });
+      const dialText = add(group, "text", { class: "sound-small-text", x: -73, y: -15, "text-anchor": "middle" });
+      dialText.textContent = "10";
+      add(group, "path", { class: "sound-mast-feet", d: "M-69 126L-80 151M69 126L81 151" });
+    } else {
+      add(group, "path", { class: "sao-accessory-shadow", d: "M-177 117Q0 151 181 113Q91 166-164 160Z" });
+      add(group, "path", { class: "sound-arc-base", d: "M-157 73H150L172 119H-173Z" });
+      add(group, "path", { class: "sound-listening-arc", d: "M-141 72Q-112-91 4-115Q116-87 142 72" });
+      add(group, "path", { class: "sound-arc-inlay", d: "M-116 68Q-89-63 2-83Q91-62 117 68" });
+      const funnels = [
+        [-88,-42,.72,-22],
+        [2,-85,1,0],
+        [91,-34,.82,19]
+      ];
+      funnels.forEach(([cx,cy,scale,angle], index) => {
+        const funnel = add(group, "g", { class: "sound-funnel-group", transform: `translate(${cx} ${cy}) rotate(${angle}) scale(${scale})` });
+        add(funnel, "path", { class: index % 2 ? "sound-acoustic-funnel deep" : "sound-acoustic-funnel", d: "M-33-18Q0-42 35-17L18 18Q0 7-18 19Z" });
+        add(funnel, "path", { class: "sound-funnel-throat", d: "M-11 14L-6 39H7L13 13" });
+        add(funnel, "path", { class: "sound-funnel-ripple", d: "M-23-13Q0-28 25-12M-16-4Q0-15 17-4" });
+      });
+      add(group, "path", { class: "sound-funnel-supports", d: "M-88-14L-56 19M2-46V19M82-3L56 19" });
+      add(group, "path", { class: "sound-wave-drum", d: "M-75 19H76L88 73H-86Z" });
+      add(group, "path", { class: "sound-woven-wave", d: "M-64 45L-51 32L-38 53L-24 27L-10 49L5 23L20 55L35 30L51 49L66 35M-63 57L-48 47L-34 63L-18 42L-2 61L15 40L31 64L47 45L66 58" });
+      add(group, "circle", { class: "sound-ten-minute-dial", cx: 117, cy: 43, r: 24 });
+      add(group, "path", { class: "sound-dial-hand", d: "M117 43L128 27M117 19V25M141 43H135M117 67V61M93 43H99" });
+      const dialText = add(group, "text", { class: "sound-small-text", x: 117, y: 50, "text-anchor": "middle" });
+      dialText.textContent = "10";
+      const radiusText = add(group, "text", { class: "sound-radius-text", x: -112, y: 59, "text-anchor": "middle" });
+      radiusText.textContent = "20 m";
+      add(group, "path", { class: "sound-arc-feet", d: "M-145 115L-156 143M137 115L150 143" });
+    }
+    return true;
+  }
+
+  if (item.family === "sao-tome-begonia-lineage-kinetoscope") {
+    group.dataset.renderer = "sao-tome-begonia-lineage-kinetoscope";
+    group.classList.add("sao-tome-accessory", "begonia-kinetoscope", companion ? "begonia-kinetoscope-companion" : "begonia-kinetoscope-primary");
+    if (companion) {
+      add(group, "path", { class: "sao-accessory-shadow", d: "M-108 128Q0 159 115 124Q58 173-99 166Z" });
+      add(group, "path", { class: "begonia-strip-base", d: "M-82 83H82L101 129H-103Z" });
+      add(group, "path", { class: "begonia-petiole-frame", d: "M-56 84Q-82-5-43-100Q-29-132-2-117Q11-107 5-87M62 83Q83-11 46-80Q31-107 7-97" });
+      add(group, "path", { class: "begonia-flip-spine", d: "M1-92V83" });
+      const panels = [
+        [-43,-72,"M-55-88Q-19-99-4-70Q-27-43-58-51Z"],
+        [35,-30,"M4-49Q35-72 61-40Q53-7 14-4Z"],
+        [-32,13,"M-58-2Q-25-23-3 8Q-15 39-51 43Z"],
+        [36,51,"M8 35Q42 16 66 48Q55 78 18 78Z"]
+      ];
+      panels.forEach(([cx,cy,d], index) => {
+        add(group, "path", { class: index % 2 ? "begonia-flip-panel deep" : "begonia-flip-panel", d });
+        add(group, "circle", { class: "begonia-panel-hinge", cx: index % 2 ? 5 : -3, cy, r: 4 });
+      });
+      add(group, "path", { class: "begonia-lineage-ribbon", d: "M1-82C-26-58-19-38 1-24C23-7 21 12 1 27C-17 41-15 59 0 73M1-24C-38-14-49 4-39 22M1 27C39 20 49 38 41 56" });
+      add(group, "circle", { class: "begonia-viewing-aperture", cx: 54, cy: -84, r: 19 });
+      add(group, "circle", { class: "begonia-aperture-inner", cx: 54, cy: -84, r: 9 });
+      add(group, "path", { class: "begonia-crank-shaft", d: "M63 38H91V59H108" });
+      add(group, "circle", { class: "begonia-crank-wheel", cx: 113, cy: 59, r: 11 });
+      add(group, "path", { class: "begonia-crank-spokes", d: "M103 59H123M113 49V69" });
+      add(group, "path", { class: "begonia-strip-feet", d: "M-70 126L-81 151M71 126L83 151" });
+    } else {
+      add(group, "path", { class: "sao-accessory-shadow", d: "M-173 119Q0 154 178 115Q89 169-160 162Z" });
+      add(group, "path", { class: "begonia-drum-base", d: "M-152 76H146L168 121H-171Z" });
+      add(group, "path", { class: "begonia-leaf-drum", d: "M-145-18Q-103-109-5-101Q76-135 146-62Q162 8 90 55Q22 92-47 62Q-112 56-145-18Z" });
+      add(group, "path", { class: "begonia-leaf-midvein", d: "M-126 17Q-52-8 13-49Q70-83 132-67" });
+      add(group, "path", { class: "begonia-leaf-veins", d: "M-81 1L-100-58M-38-20L-44-82M9-47L27-96M50-66L78-101M-58 22L-59 56M-8-7L14 64M39-35L75 45M82-53L112 9" });
+      add(group, "ellipse", { class: "begonia-lineage-ring outer", cx: 18, cy: -18, rx: 65, ry: 52, transform: "rotate(-13 18 -18)" });
+      add(group, "ellipse", { class: "begonia-lineage-ring middle", cx: 18, cy: -18, rx: 45, ry: 35, transform: "rotate(-13 18 -18)" });
+      add(group, "ellipse", { class: "begonia-lineage-ring inner", cx: 18, cy: -18, rx: 24, ry: 18, transform: "rotate(-13 18 -18)" });
+      [[-96,-21,52,24],[-35,34,55,22],[67,14,55,22]].forEach(([x,y,width,height], index) => {
+        add(group, "path", { class: index % 2 ? "begonia-shutter deep" : "begonia-shutter", d: `M${x} ${y}H${x+width}L${x+width-7} ${y+height}H${x-6}Z` });
+        add(group, "path", { class: "begonia-shutter-slit", d: `M${x+10} ${y+height/2}H${x+width-12}` });
+      });
+      add(group, "path", { class: "begonia-drum-support", d: "M-96 55L-111 78M91 47L112 78" });
+      add(group, "path", { class: "begonia-crank-shaft", d: "M143-37H171V-13H192" });
+      add(group, "circle", { class: "begonia-crank-wheel", cx: 198, cy: -13, r: 12 });
+      add(group, "path", { class: "begonia-crank-spokes", d: "M187-13H209M198-24V-2" });
+      add(group, "circle", { class: "begonia-viewing-aperture", cx: -103, cy: 28, r: 18 });
+      add(group, "circle", { class: "begonia-aperture-inner", cx: -103, cy: 28, r: 8 });
+      add(group, "path", { class: "begonia-drum-feet", d: "M-139 118L-151 145M132 117L145 145" });
+    }
+    return true;
+  }
+
+  return false;
+}
+
 function drawInstrument(group, item, companion) {
   const label = item.label;
   if (/fiddle/i.test(label)) {
@@ -1911,13 +2082,6 @@ function drawSamplingOrFieldTool(group, item, companion) {
 
 function drawNaturalOrMotionAccessory(group, item, companion) {
   const label=item.label;
-  if (item.family === "volcanic-needle-ruff") {
-    path(group, companion
-      ? "M-45 24L-22-16L-8-54L8-12L24-46L45 24Q0 49-45 24Z"
-      : "M-57 30L-28-20L0-73L18-18L36-55L58 30Q0 62-57 30Z");
-    line(group, companion ? "M-34 20L-8-39L7 19 M16-31L34 20" : "M-45 25L0-59L14 24 M27-43L46 25");
-    return true;
-  }
   if (/wings/i.test(label)) {
     if(companion){path(group,"M-7 3Q-52-37-64-9Q-45 18-7 13Z M7 3Q52-37 64-9Q45 18 7 13Z","acc-soft"); line(group,"M-56-8L-6 8 M56-8L6 8");}
     else {path(group,"M-9 2Q-67-62-82-25Q-60 15-9 15Z M9 2Q67-62 82-25Q60 15 9 15Z M-7 14Q-61 17-59 49Q-31 55-2 21Z M7 14Q61 17 59 49Q31 55 2 21Z","acc-soft"); line(group,"M-73-25L-8 9 M73-25L8 9 M-50 43L-5 18 M50 43L5 18");}
@@ -2317,6 +2481,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawTrivandrumAccessory(group, item, companion)) return true;
   if (drawSingaporeAccessory(group, item, companion)) return true;
   if (drawPraslinAccessory(group, item, companion)) return true;
+  if (drawSaoTomeAccessory(group, item, companion)) return true;
   if (drawUniqueNamedAccessory(group, item, companion)) return true;
   if (drawRepeatedFamilyAccessory(group, item, companion)) return true;
   if (drawN2Accessory(group, item, companion)) return true;
@@ -2381,7 +2546,10 @@ function renderPiece(target, item, wormPart) {
     "holttum-orchid-hybridisation-engine": { primary: [354, 268, .34, -1], companion: [-6, 292, .28, 2] },
     "yr106-long-read-genome-loom": { primary: [340, 125, .3, -2], companion: [-5, 106, .28, 2] },
     "coco-de-mer-growth-monitoring-rig": { primary: [225, 186, .34, -1], companion: [125, 199, .28, 2] },
-    "praslin-black-parrot-call-listener": { primary: [354, 266, .34, -1], companion: [-4, 291, .28, 2] }
+    "praslin-black-parrot-call-listener": { primary: [354, 266, .34, -1], companion: [-4, 291, .28, 2] },
+    "ju2484-fruit-fall-kinetic-track": { primary: [352, 126, .32, -2], companion: [-4, 106, .27, 2] },
+    "sao-tome-point-count-sound-loom": { primary: [223, 188, .32, -1], companion: [109, 197, .27, 2] },
+    "sao-tome-begonia-lineage-kinetoscope": { primary: [338, 267, .3, -1], companion: [28, 279, .24, 2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;

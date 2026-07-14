@@ -180,11 +180,11 @@ const canonicalProfiles = {
     { weather: "mist", cues: [] }
   ),
   "São Tomé · JU2484": profile(
-    "sao-tome-volcanic-cacao", "São Tomé volcanic cacao landscape",
-    "São Tomé combines volcanic peaks, Congo Basin rainforest, coast, and long-established cacao and coffee landscapes.",
-    "UNESCO Ilha de São Tomé Biosphere Reserve", "https://www.unesco.org/en/mab/ilha-de-sao-tome",
-    palettes.rainforest, [[0, 315], [75, 270], [140, 226], [205, 88], [260, 232], [330, 174], [405, 258], [482, 216], [545, 270], [600, 242]],
-    { water: "coast", weather: "mist", cues: [["waterfall", 208, 140, .8], ["cacao", 85, 292, .9], ["islet", 505, 320, .7]] }
+    "sao-tome-ju2484-forest-floor", "JU2484 forest-floor fruit microhabitat",
+    "JU2484, formerly Goy1, was sampled by Rémy Froissart on 28 February 2013 from rotten unidentified fruit on the ground in forest on São Tomé; Lise Frézal isolated it as an isofemale line. The exact site, elevation and fruit identity are unreported.",
+    "Worldwide Worms/Félix JU2484 record", "https://www.justbio.com/tools/worldwideworms/search.php?selector=strain&select=JU2484",
+    palettes.rainforest, [[0, 212], [74, 194], [149, 208], [225, 177], [304, 199], [382, 174], [461, 196], [535, 171], [600, 188]],
+    { weather: "cloud", cues: [] }
   ),
   "Mahahual, Mexico · JU2617": profile(
     "mahahual-reef-lagoon", "Mahahual’s shallow reef lagoon",
@@ -459,12 +459,12 @@ const sceneCompositions = Object.freeze({
     "M527 430Q489 390 454 349Q422 311 374 278", [],
     "an off-centre cleft granite boulder and diagonal boulder-choked drainage thread beneath two unequal giant fan rosettes forming a closed palm vault"
   ),
-  "sao-tome-volcanic-cacao": composition(
-    "M0 389 Q100 349 197 384 Q302 419 407 377 Q503 344 600 368 V430 H0Z",
-    "M0 334 L91 299 L163 314 L219 135 L269 319 L354 278 L441 326 L513 309 L600 329 V430 H0Z",
-    [["cacao", 28, 367, 1.04], ["cacao", 572, 382, .78]],
-    "M219 143 Q205 226 230 286 Q244 322 235 367", [1, 0, 2],
-    "a narrow offset volcanic needle, vertical waterfall, cacao trunks, and low coastal islet"
+  "sao-tome-ju2484-forest-floor": composition(
+    "M0 327Q87 303 171 326Q258 350 347 320Q451 285 530 309Q568 319 600 311V430H0Z",
+    "M0 221Q67 187 137 208Q207 230 271 192Q341 152 409 179Q487 208 548 171Q575 154 600 163V329H0Z",
+    [],
+    "M67 430Q96 332 127 252Q158 171 193 111L257 57", [],
+    "an anonymous collapsed fruit below one left-offset diagonal forked trunk, opposed by unequal fern and liana layers and a single asymmetric begonia cue beneath a fully closed canopy"
   ),
   "mahahual-reef-lagoon": composition(
     "M0 398 Q150 390 300 400 T600 394 V430 H0Z",
@@ -1554,6 +1554,97 @@ function drawPraslinGraniticPalmForestScene(target, palette) {
   [[30,371,2],[188,402,3],[250,374,2],[322,397,3],[393,375,2],[582,369,3]].forEach(([cx,cy,r], index) => append(litter, "circle", { class: index % 2 ? "praslin-litter-fragment deep" : "praslin-litter-fragment", cx, cy, r }));
 }
 
+function drawSaoTomeForestFloorScene(target, palette) {
+  append(target, "rect", { class: "environment-sky sao-tome-forest-sky", width: 600, height: 430, fill: palette[0] });
+
+  const depth = append(target, "g", { class: "sao-tome-forest-depth", "aria-hidden": "true" });
+  append(depth, "path", { class: "sao-tome-distant-green", d: "M0 78Q64 48 126 72Q190 97 250 66Q314 32 379 59Q449 88 512 56Q560 32 600 47V274H0Z" });
+  append(depth, "path", { class: "sao-tome-light-shaft", d: "M342 0Q363 61 349 118Q335 178 366 236Q390 282 374 329L425 338Q432 278 407 229Q379 174 395 114Q411 55 384 0Z" });
+  append(depth, "path", { class: "sao-tome-back-thicket", d: "M0 185Q43 151 86 181Q126 139 169 177Q210 146 250 188L278 272Q217 254 158 277Q94 301 0 270ZM402 179Q443 140 486 179Q529 145 566 183Q585 168 600 178V282Q546 258 493 279Q449 293 399 273Z" });
+  append(depth, "path", { class: "sao-tome-back-branch", d: "M18 215Q87 179 149 209M438 211Q508 166 585 201M254 177Q310 139 364 170" });
+
+  const canopy = append(target, "g", { class: "sao-tome-closed-canopy", "aria-hidden": "true" });
+  append(canopy, "path", { class: "sao-tome-canopy-mass upper", d: "M0 0H600V74Q574 51 548 75Q520 43 490 70Q459 42 430 72Q399 45 369 76Q337 48 306 75Q273 43 241 72Q208 42 177 69Q143 39 113 67Q78 39 49 65Q23 44 0 60Z" });
+  append(canopy, "path", { class: "sao-tome-canopy-mass left", d: "M0 44Q28 26 53 50Q78 24 106 53Q135 28 160 60Q190 39 214 66L202 172Q160 151 123 177Q78 207 32 185Q15 178 0 185Z" });
+  append(canopy, "path", { class: "sao-tome-canopy-mass right", d: "M385 61Q414 32 444 61Q474 31 503 61Q535 34 563 66Q584 47 600 62V191Q558 171 518 191Q472 214 428 190Q406 180 388 187Z" });
+  append(canopy, "path", { class: "sao-tome-canopy-highlight", d: "M19 69Q53 42 86 67M106 63Q139 40 171 69M414 70Q448 41 482 68M507 68Q541 45 575 74" });
+
+  append(target, "path", { class: "sao-tome-forest-floor", d: "M0 249Q77 224 154 245Q238 269 319 236Q409 200 491 225Q550 242 600 224V430H0Z" });
+  append(target, "path", { class: "sao-tome-floor-contour", d: "M0 287Q77 260 157 282Q241 305 321 273Q407 239 490 263Q548 279 600 263" });
+
+  const rearTrunks = append(target, "g", { class: "sao-tome-rear-trunks", "aria-hidden": "true" });
+  append(rearTrunks, "path", { class: "sao-tome-rear-trunk", d: "M326 278Q321 213 336 153Q347 112 342 73" });
+  append(rearTrunks, "path", { class: "sao-tome-rear-trunk deep", d: "M566 284Q558 226 568 171Q574 132 567 98" });
+  append(rearTrunks, "path", { class: "sao-tome-root-line", d: "M322 275L294 301M326 275L345 303M562 279L539 301M567 279L591 299" });
+
+  const forkedTrunk = append(target, "g", { class: "sao-tome-forked-trunk", "aria-hidden": "true" });
+  append(forkedTrunk, "path", { class: "sao-tome-main-trunk", d: "M22 430Q63 335 96 255Q129 175 173 102L212 122Q176 190 151 261Q120 345 98 430Z" });
+  append(forkedTrunk, "path", { class: "sao-tome-fork-branch", d: "M164 126Q139 78 111 17L142 0Q176 68 194 108Z" });
+  append(forkedTrunk, "path", { class: "sao-tome-fork-branch deep", d: "M178 112Q226 70 280 39L295 70Q242 105 199 145Z" });
+  append(forkedTrunk, "path", { class: "sao-tome-bark-seam", d: "M72 384Q98 303 125 234Q150 171 184 116M111 361Q126 294 153 221M173 111Q147 69 130 25M193 124Q232 88 278 58" });
+  [[70,360,18,5,-62],[104,275,16,4,-65],[143,186,15,4,-59],[182,117,12,4,-48]].forEach(([cx,cy,rx,ry,angle], index) => append(forkedTrunk, "ellipse", { class: index % 2 ? "sao-tome-bark-knot deep" : "sao-tome-bark-knot", cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` }));
+
+  const lianas = append(target, "g", { class: "sao-tome-lianas", "aria-hidden": "true" });
+  append(lianas, "path", { class: "sao-tome-liana", d: "M258 0C238 56 273 105 245 162C225 202 221 242 248 276" });
+  append(lianas, "path", { class: "sao-tome-liana deep", d: "M471 0C488 50 454 96 476 145C494 184 490 224 463 260" });
+  append(lianas, "path", { class: "sao-tome-liana fine", d: "M521 0Q497 51 519 101Q536 141 516 183" });
+  [[245,162,-24,4],[248,276,21,-3],[476,145,23,2],[463,260,-21,3],[519,101,20,-2]].forEach(([cx,cy,dx,dy], index) => append(lianas, "path", { class: index % 2 ? "sao-tome-liana-leaf deep" : "sao-tome-liana-leaf", d: `M${cx} ${cy}Q${cx+dx*.55} ${cy+dy-12} ${cx+dx} ${cy+dy}Q${cx+dx*.48} ${cy+dy+11} ${cx} ${cy}Z` }));
+
+  const addFern = (x, groundY, scale, lean, frondCount, tone = "") => {
+    const fern = append(target, "g", { class: `sao-tome-fern ${tone}`.trim(), transform: `translate(${x} ${groundY}) rotate(${lean}) scale(${scale})`, "aria-hidden": "true" });
+    const spread = frondCount === 5 ? [-67,-33,0,34,68] : [-77,-52,-26,0,28,55,81];
+    spread.forEach((angle, index) => {
+      const length = 64 + (index % 3) * 15;
+      const radians = (-90 + angle * .54) * Math.PI / 180;
+      const ex = Math.cos(radians) * length;
+      const ey = Math.sin(radians) * length;
+      append(fern, "path", { class: "sao-tome-fern-stem", d: `M0 0Q${ex*.37 + angle*.06} ${ey*.46} ${ex} ${ey}` });
+      const leaflets = 5;
+      for (let leaflet = 1; leaflet <= leaflets; leaflet += 1) {
+        const ratio = leaflet / (leaflets + 1);
+        const px = ex * ratio;
+        const py = ey * ratio;
+        const width = 15 - leaflet * 1.2;
+        [-1,1].forEach(side => append(fern, "path", { class: index % 3 === 1 ? "sao-tome-fern-leaflet deep" : "sao-tome-fern-leaflet", d: `M${px} ${py}Q${px + side*width} ${py-8} ${px + side*(width+5)} ${py-1}Q${px + side*(width*.55)} ${py+5} ${px} ${py}Z` }));
+      }
+    });
+    append(fern, "path", { class: "sao-tome-fern-root", d: "M-17 3Q0-13 19 3L13 13H-14Z" });
+  };
+  addFern(25, 349, .78, -7, 5, "small-left");
+  addFern(574, 347, 1.12, 6, 7, "large-right");
+  addFern(284, 304, .48, -3, 5, "rear");
+
+  const begonia = append(target, "g", { class: "sao-tome-begonia-cue", "aria-hidden": "true" });
+  append(begonia, "path", { class: "sao-tome-begonia-petiole", d: "M520 359Q508 307 500 258M519 337Q552 302 563 264M515 320Q473 291 460 255" });
+  const leaves = [
+    [498,250,"M0 0Q-45-60-7-86Q36-75 51-26Q28 13 0 0Z",-7],
+    [561,258,"M0 0Q-9-62 33-69Q70-36 61 10Q22 29 0 0Z",13],
+    [459,254,"M0 0Q-50-25-38-62Q-2-86 35-55Q41-10 0 0Z",-18]
+  ];
+  leaves.forEach(([x,y,d,angle], index) => {
+    const leaf = append(begonia, "g", { transform: `translate(${x} ${y}) rotate(${angle})` });
+    append(leaf, "path", { class: index === 1 ? "sao-tome-begonia-leaf deep" : "sao-tome-begonia-leaf", d });
+    append(leaf, "path", { class: "sao-tome-begonia-vein", d: "M0 0Q8-35 1-72M2-27L-26-47M4-39L28-50" });
+  });
+
+  append(target, "path", { class: "sao-tome-foreground-litter-bed", d: "M0 349Q84 325 169 348Q256 374 344 344Q440 312 600 341V430H0Z" });
+  const litter = append(target, "g", { class: "sao-tome-forest-litter", "aria-hidden": "true" });
+  [[4,413,50,386],[61,429,109,398],[139,407,180,381],[211,426,258,397],[291,410,337,381],[355,430,402,398],[531,421,574,392],[568,390,600,370]].forEach(([x1,y1,x2,y2], index) => {
+    append(litter, "path", { class: index % 3 === 0 ? "sao-tome-litter-leaf green" : (index % 2 ? "sao-tome-litter-leaf deep" : "sao-tome-litter-leaf"), d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-10} ${x2} ${y2}Q${(x1+x2)/2+5} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` });
+    append(litter, "path", { class: "sao-tome-litter-vein", d: `M${x1+4} ${y1-1}L${x2-4} ${y2+1}` });
+  });
+  [[25,374,3],[121,396,2],[197,378,3],[275,402,2],[338,377,3],[523,390,2],[587,360,3]].forEach(([cx,cy,r], index) => append(litter, "circle", { class: index % 2 ? "sao-tome-litter-fragment deep" : "sao-tome-litter-fragment", cx, cy, r }));
+
+  const fruit = append(target, "g", { class: "sao-tome-collapsed-fruit", transform: "translate(465 363) rotate(-6)", "aria-hidden": "true" });
+  append(fruit, "ellipse", { class: "sao-tome-fruit-shadow", cx: 0, cy: 31, rx: 92, ry: 19 });
+  append(fruit, "path", { class: "sao-tome-fruit-rind", d: "M-88 4Q-77-28-41-34Q-9-49 15-30Q48-39 75-17Q96 2 82 24Q61 45 28 38Q-5 54-37 39Q-69 44-89 24Q-96 14-88 4Z" });
+  append(fruit, "path", { class: "sao-tome-fruit-pulp", d: "M-70 3Q-59-18-34-21Q-10-33 8-19Q34-27 55-11Q70 1 61 15Q44 29 21 24Q-4 38-27 27Q-51 31-68 18Q-75 11-70 3Z" });
+  append(fruit, "path", { class: "sao-tome-fruit-collapse", d: "M-61 13Q-44 0-25 10Q-10 3 7 15Q0 29-20 25Q-39 35-55 24Q-62 21-61 13Z" });
+  append(fruit, "path", { class: "sao-tome-fruit-torn-rind", d: "M-72 15Q-101 31-82 54Q-48 58-21 39Q-54 43-72 15ZM60 18Q83 25 77 41Q59 50 35 36Q51 39 60 18Z" });
+  append(fruit, "path", { class: "sao-tome-fruit-tear-edge", d: "M-72 15Q-49 28-21 39M60 18Q49 29 35 36" });
+  [[-59,-11,4],[-35,18,2.5],[-11,-19,2],[13,23,3],[37,-6,2],[54,14,3],[71,3,2]].forEach(([cx,cy,r], index) => append(fruit, "circle", { class: index % 2 ? "sao-tome-fruit-mottle deep" : "sao-tome-fruit-mottle", cx, cy, r }));
+}
+
 function drawTenerifeScene(target, palette) {
   append(target, "rect", { class: "environment-sky tenerife-sky", width: 600, height: 430, fill: palette[0] });
   append(target, "circle", { class: "tenerife-sun", cx: 516, cy: 58, r: 26 });
@@ -1720,6 +1811,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "praslin-yr106-granitic-palm-forest") {
     drawPraslinGraniticPalmForestScene(target, palette);
+    return;
+  }
+  if (profile.id === "sao-tome-ju2484-forest-floor") {
+    drawSaoTomeForestFloorScene(target, palette);
     return;
   }
 
