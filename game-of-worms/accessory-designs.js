@@ -479,11 +479,25 @@ function drawNaturalOrMotionAccessory(group, item, companion) {
   }
   if (/skates|snowshoes|crampons/i.test(label)) {
     const snow=/snowshoes/i.test(label), spikes=/crampons/i.test(label);
-    [-30,30].forEach(x=>{
-      path(group, snow ? `M${x-22}-39Q${x} -55 ${x+22}-39V37Q${x} 55 ${x-22} 37Z` : `M${x-23}-18Q${x} -31 ${x+23}-17L${x+17} 21Q${x} 33 ${x-18} 20Z`, "acc-main");
-      if(spikes) [-14,0,14].forEach(dx=>path(group,`M${x+dx-4} 19L${x+dx} 38L${x+dx+4} 19Z`,`acc-dark`));
-      else if(!snow) line(group,`M${x-21} 27Q${x} ${companion?37:43} ${x+21} 27`,`acc-accent-line`);
-      else line(group,`M${x-16}-28L${x+16} 27 M${x+16}-28L${x-16} 27`);
+    const offsets = companion ? [-27, 27] : [-32, 32];
+    offsets.forEach(x=>{
+      if (snow) {
+        path(group, companion
+          ? `M${x-18}-34Q${x} -49 ${x+18}-34L${x+16} 29Q${x} 44 ${x-16} 29Z`
+          : `M${x-25}-46Q${x} -66 ${x+25}-46V43Q${x} 63 ${x-25} 43Z`, "acc-main");
+        line(group, companion
+          ? `M${x-13}-23L${x+13} 20 M${x+12}-22L${x-12} 21`
+          : `M${x-19}-34L${x+19} 31 M${x+19}-34L${x-19} 31 M${x-23}-2H${x+23}`);
+      } else {
+        path(group, companion
+          ? `M${x-19}-15Q${x} -26 ${x+19}-14L${x+14} 17Q${x} 27 ${x-15} 16Z`
+          : `M${x-26}-22Q${x} -37 ${x+26}-21L${x+20} 26Q${x} 41 ${x-21} 25Z`, "acc-main");
+        const spikeOffsets = companion ? [-10, 10] : [-15, 0, 15];
+        spikeOffsets.forEach(dx=>path(group, companion
+          ? `M${x+dx-3} 16L${x+dx} 31L${x+dx+3} 16Z`
+          : `M${x+dx-5} 24L${x+dx} 45L${x+dx+5} 24Z`, "acc-dark"));
+        line(group, companion ? `M${x-14}-2L${x+14} 9` : `M${x-20}-7L${x+20} 11 M${x-19} 7L${x+18} 21`, "acc-accent-line");
+      }
     }); return true;
   }
   if (/pennant|streamer wand/i.test(label)) {
@@ -622,16 +636,34 @@ function drawRepeatedFamilyAccessory(group, item, companion) {
       return true;
     case "stilts":
       if(/mangrove/i.test(label)) {
-        [-27,27].forEach(x=>{line(group,`M${x}-48V49 M${x}-1L${x-24} 69 M${x+1} 8L${x+25} 70 M${x} 21L${x-8} 73`,`acc-line thick`);});
+        const offsets = companion ? [-24, 24] : [-29, 29];
+        offsets.forEach(x=>line(group, companion
+          ? `M${x}-39V43 M${x} 5L${x-19} 62 M${x} 14L${x+18} 64`
+          : `M${x}-53V54 M${x}-4L${x-27} 77 M${x+1} 9L${x+29} 79 M${x} 24L${x-10} 82`, "acc-line thick"));
       } else {
-        [-30,30].forEach(x=>{path(group,`M${x-27} 12Q${x} -12 ${x+27} 12L${x+20} 31H${x-20}Z`); line(group,`M${x-16} 27L${x-24} 70 M${x+16} 27L${x+24} 70`,`acc-line thick`);});
+        const offsets = companion ? [-27, 27] : [-33, 33];
+        offsets.forEach(x=>{
+          path(group, companion
+            ? `M${x-22} 10Q${x} -9 ${x+22} 10L${x+16} 27H${x-16}Z`
+            : `M${x-31} 14Q${x} -17 ${x+31} 14L${x+23} 36H${x-23}Z`);
+          line(group, companion
+            ? `M${x-12} 24L${x-19} 62 M${x+12} 24L${x+19} 62`
+            : `M${x-19} 32L${x-29} 79 M${x+19} 32L${x+29} 79 M${x} 35V72`, "acc-line thick");
+        });
       }
       return true;
     case "sunglasses":
       if(/confluence/i.test(label)) {
-        path(group,"M-61-18Q-31-32-4-8Q-18 29-48 23Q-67 12-61-18Z","acc-dark"); path(group,"M4-8Q31-32 61-18Q67 12 48 23Q18 29 4-8Z","acc-soft"); line(group,"M-5-8H5 M-45 1L-12 14 M45 1L12 14");
+        path(group, companion ? "M-48-14Q-25-26-3-7Q-14 22-37 18Q-53 9-48-14Z" : "M-65-21Q-33-38-5-10Q-20 34-52 29Q-73 15-65-21Z", "acc-dark");
+        path(group, companion ? "M3-7Q25-26 48-14Q53 9 37 18Q14 22 3-7Z" : "M5-10Q33-38 65-21Q73 15 52 29Q20 34 5-10Z", "acc-soft");
+        line(group, companion ? "M-3-7H3 M-37 0L-11 11 M37 0L11 11" : "M-5-10H5 M-49 1L-14 18 M49 1L14 18 M-56 13Q-37 30-18 17 M18 17Q37 30 56 13");
       } else {
-        path(group,"M-67-9L-31-35L-4-9L-22 24L-55 19Z M4-9L31-35L67-9L55 19L22 24Z","acc-dark"); line(group,"M-4-9H4 M-54 4L-31-18 M54 4L31-18","acc-accent-line");
+        path(group, companion
+          ? "M-53-7L-26-28L-3-7L-18 18L-44 15Z M3-7L26-28L53-7L44 15L18 18Z"
+          : "M-71-11L-34-43L-5-11L-24 29L-59 24Z M5-11L34-43L71-11L59 24L24 29Z", "acc-dark");
+        line(group, companion
+          ? "M-3-7H3 M-43 3L-26-17 M43 3L26-17"
+          : "M-5-11H5 M-57 5L-34-25 M57 5L34-25 M-45-3L-24 20 M45-3L24 20", "acc-accent-line");
       }
       return true;
     case "telescope":
@@ -969,6 +1001,43 @@ function renderPiece(target, item, wormPart) {
   const drewNamedAccessory = drawNamedAccessory(artwork, item, companion);
   if (!drewNamedAccessory) throw new Error(`No named accessory renderer for ${item.label}`);
   return piece;
+}
+
+function normalizedArtworkSignature(node, isRoot = true) {
+  const rawAttributes = node?.attributes;
+  const attributes = rawAttributes && typeof rawAttributes[Symbol.iterator] === "function"
+    ? [...rawAttributes].map(attribute => [attribute.name, attribute.value])
+    : Object.entries(rawAttributes || {});
+  const normalizedAttributes = attributes
+    .filter(([name]) => !isRoot || (name !== "class" && name !== "transform" && !name.startsWith("data-")))
+    .sort(([left], [right]) => left.localeCompare(right));
+  const children = [...(node?.children || [])].map(child => normalizedArtworkSignature(child, false));
+  return [node?.nodeName || node?.name || "", normalizedAttributes, children];
+}
+
+export function auditAccessoryPairGeometry() {
+  const identicalNormalizedPairs = [];
+  let pairCount = 0;
+  accessoryCatalogue.forEach(design => {
+    [design.headwear, design.wrap, design.charm].forEach(item => {
+      const primaryTarget = svg("g");
+      const companionTarget = svg("g");
+      const primaryPiece = renderPiece(primaryTarget, item, "primary");
+      const companionPiece = renderPiece(companionTarget, item, "companion");
+      const primaryArtwork = primaryPiece.children[0];
+      const companionArtwork = companionPiece.children[0];
+      const primarySignature = JSON.stringify(normalizedArtworkSignature(primaryArtwork));
+      const companionSignature = JSON.stringify(normalizedArtworkSignature(companionArtwork));
+      pairCount += 1;
+      if (primarySignature === companionSignature) identicalNormalizedPairs.push(item.label);
+    });
+  });
+  return Object.freeze({
+    pairCount,
+    distinctPairCount: pairCount - identicalNormalizedPairs.length,
+    identicalNormalizedPairs: Object.freeze(identicalNormalizedPairs),
+    valid: pairCount === 111 && !identicalNormalizedPairs.length
+  });
 }
 
 export function renderLocationAccessories(targets, speciesId, placeName) {

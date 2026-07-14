@@ -3,7 +3,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-1";
-import { auditAccessoryCatalogue, renderLocationAccessories } from "./accessory-designs.js?v=20260714-3";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-4";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -196,6 +196,10 @@ const expectedAccessoryKeys = species.flatMap(item => item.locations.map(locatio
 const accessoryCatalogueAudit = auditAccessoryCatalogue(expectedAccessoryKeys);
 if (!accessoryCatalogueAudit.valid) {
   throw new Error(`Invalid location accessory catalogue: ${JSON.stringify(accessoryCatalogueAudit)}`);
+}
+const accessoryPairGeometryAudit = auditAccessoryPairGeometry();
+if (!accessoryPairGeometryAudit.valid) {
+  throw new Error(`Invalid paired accessory geometry: ${JSON.stringify(accessoryPairGeometryAudit)}`);
 }
 const environmentCompositionAudit = auditEnvironmentCompositions();
 if (!environmentCompositionAudit.valid) {
