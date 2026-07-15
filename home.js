@@ -47,6 +47,7 @@
         status.textContent = '';
       });
       window.SitePreferences.setLanguage(language);
+      syncPrimaryNavLayout();
       syncThemeButton();
     }
 
@@ -78,12 +79,22 @@
     // Compact, accessible navigation on narrow screens.
     var navMenuToggle = document.getElementById('navMenuToggle');
     var primaryNav = document.getElementById('primaryNav');
+    var navBreakpoints = { en: 900, sv: 950, pl: 880 };
 
     function closePrimaryNav(restoreFocus) {
       navMenuToggle.setAttribute('aria-expanded', 'false');
       primaryNav.setAttribute('data-open', 'false');
       if (restoreFocus) navMenuToggle.focus();
     }
+
+    function syncPrimaryNavLayout() {
+      var breakpoint = navBreakpoints[currentLanguage] || navBreakpoints.en;
+      var layout = window.innerWidth <= breakpoint ? 'compact' : 'full';
+      root.setAttribute('data-nav-layout', layout);
+      if (layout === 'full') closePrimaryNav(false);
+    }
+
+    window.addEventListener('resize', syncPrimaryNavLayout);
 
     navMenuToggle.addEventListener('click', function (event) {
       var isOpen = navMenuToggle.getAttribute('aria-expanded') === 'true';
