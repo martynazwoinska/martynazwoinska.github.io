@@ -451,6 +451,7 @@
     }
     /* .wrap sets padding:0 24px, so target section.wrap to add vertical rhythm */
     section.wrap { padding-top: 52px; padding-bottom: 52px; }
+    html[lang="en"] #contact { padding-top: 40px; }
     section h2 { color: var(--text); font-size: 2.45rem; font-weight: 700; margin: 0 0 24px; letter-spacing: .15px; }
     @media (max-width: 620px) { section h2 { font-size: 2.2rem; } }
     .about p { color: var(--text-soft); max-width: none; }
@@ -485,6 +486,12 @@
     }
     .publication-actions > .links { margin-top: 0; }
     .publication-actions > .pub-archive[open] { flex: 1 1 100%; }
+    @media (max-width: 620px) {
+      .publication-actions { justify-content: center; }
+      .pub-archive summary { display: flex; width: max-content; max-width: 100%; margin-inline: auto; }
+      .publication-actions > .pub-archive[open] { display: grid; }
+      .publication-actions > .pub-archive[open] summary { justify-self: center; }
+    }
     .pub { display: flex; gap: 22px; padding: 22px 0; border-bottom: 1px solid var(--border); }
     .pub:last-child { border-bottom: none; }
     .pub .year { flex: 0 0 52px; font-family: var(--serif); font-weight: 600; color: var(--text-faint); font-size: 1rem; padding-top: 1px; }
