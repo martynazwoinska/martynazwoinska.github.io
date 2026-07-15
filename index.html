@@ -457,7 +457,7 @@
     .about p + p { margin-top: 14px; }
     .about blockquote {
       margin: 16px 0 0; padding: 4px 0 4px 22px;
-      border-left: 3px solid var(--accent-berry); max-width: none;
+      border-left: 3px solid var(--accent); max-width: none;
       color: var(--text-soft); font-style: italic;
     }
 
@@ -503,7 +503,6 @@
     .pub-archive summary:focus-visible {
       outline: 3px solid var(--accent-berry); outline-offset: 3px;
     }
-    .pub-toggle__ellipsis { color: var(--accent-berry); font-size: 1.15rem; line-height: 1; }
     .pub-toggle__hide { display: none; }
     .pub-archive[open] .pub-toggle__show { display: none; }
     .pub-archive[open] .pub-toggle__hide { display: inline; }
@@ -833,7 +832,6 @@
 
     <details class="pub-archive">
       <summary>
-        <span class="pub-toggle__ellipsis" aria-hidden="true">…</span>
         <span class="pub-toggle__show">Show earlier publications</span>
         <span class="pub-toggle__hide">Show fewer publications</span>
       </summary>
