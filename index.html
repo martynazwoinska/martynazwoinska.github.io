@@ -426,7 +426,7 @@
     }
 
     /* ----------  Sections  ---------- */
-    section { border-top: 0; position: relative; scroll-margin-top: 76px; }
+    section { border-top: 0; position: relative; scroll-margin-top: 56px; }
     /* Soft Art Nouveau vines with bellflower curls and an open centre */
     section::after {
       content: ""; position: absolute; z-index: 0; top: -17px; left: 50%;
@@ -550,7 +550,10 @@
     .project { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: start; }
     .project + .project { margin-top: 40px; }
     .project-text { max-width: none; }
-    .project h3 { margin: 0 0 10px; font-size: 1.65rem; font-weight: 700; }
+    .project h3 {
+      margin: 0 0 10px; font-size: 1.65rem; font-weight: 700;
+      -webkit-text-stroke: .18px currentColor;
+    }
     .project p { color: var(--text-soft); margin: 0; }
     .project figure { margin: 4px 0 0; }
     .project figure picture { display: block; }
