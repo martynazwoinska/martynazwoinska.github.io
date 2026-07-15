@@ -135,8 +135,7 @@
     var contactCopyStatus = document.getElementById('contactCopyStatus');
     var contactCopyFallback = document.getElementById('contactCopyFallback');
     var contactEmailParts = {
-      general: ['zwoinska', 'gmail', 'com'],
-      uppsala: ['martyna.zwoinska', 'ebc.uu', 'se']
+      general: ['zwoinska', 'gmail', 'com']
     };
 
     function contactEmailAddress(kind) {
