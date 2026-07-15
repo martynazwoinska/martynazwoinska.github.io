@@ -84,7 +84,7 @@
       outline-offset: 3px;
       border-radius: 6px;
     }
-    h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.12; letter-spacing: .2px; }
+    h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.12; letter-spacing: -.01em; }
 
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
     .skip-link {
@@ -382,7 +382,10 @@
     /* ----------  Hero  ---------- */
     .hero { padding: 64px 0 40px; }
     .hero-grid { display: grid; grid-template-columns: 154px 1fr; gap: 36px; align-items: center; }
-    @media (max-width: 620px) { .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 22px; } }
+    @media (max-width: 620px) {
+      .hero { padding: 48px 0 32px; }
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 22px; }
+    }
     .avatar {
       position: relative;
       width: 154px; height: 162px;
@@ -403,8 +406,8 @@
       filter: saturate(.88) contrast(.91) brightness(1.015);
     }
     .avatar-mono { font-family: var(--serif); font-size: 3rem; color: var(--accent); }
-    @media (max-width: 620px) { .avatar { margin: 0 auto; } }
-    .hero h1 { font-size: 3.25rem; font-weight: 700; margin: 0 0 4px; letter-spacing: .25px; }
+    @media (max-width: 620px) { .avatar { width: 136px; height: 143px; margin: 0 auto; } }
+    .hero h1 { font-size: 3.25rem; font-weight: 700; margin: 0 0 4px; }
     .hero .role { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 4px; }
     .hero .affil { color: var(--text-soft); margin-bottom: 18px; }
     .hero p.lead { color: var(--text-soft); font-size: 1.02rem; max-width: 46ch; margin: 0 auto; }
@@ -452,7 +455,7 @@
     /* .wrap sets padding:0 24px, so target section.wrap to add vertical rhythm */
     section.wrap { padding-top: 52px; padding-bottom: 52px; }
     html[lang="en"] #contact { padding-top: 40px; }
-    section h2 { color: var(--text); font-size: 2.45rem; font-weight: 700; margin: 0 0 24px; letter-spacing: .15px; }
+    section h2 { color: var(--text); font-size: 2.45rem; font-weight: 700; margin: 0 0 24px; }
     @media (max-width: 620px) { section h2 { font-size: 2.2rem; } }
     .about p { color: var(--text-soft); max-width: none; }
     .about p + p { margin-top: 14px; }
