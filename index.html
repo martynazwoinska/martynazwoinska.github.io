@@ -479,6 +479,12 @@
 
     /* publications */
     .pub-list { margin-top: 8px; }
+    .publication-actions {
+      display: flex; align-items: flex-start; flex-wrap: wrap; gap: 10px;
+      margin-top: 22px;
+    }
+    .publication-actions > .links { margin-top: 0; }
+    .publication-actions > .pub-archive[open] { flex: 1 1 100%; }
     .pub { display: flex; gap: 22px; padding: 22px 0; border-bottom: 1px solid var(--border); }
     .pub:last-child { border-bottom: none; }
     .pub .year { flex: 0 0 52px; font-family: var(--serif); font-weight: 600; color: var(--text-faint); font-size: 1rem; padding-top: 1px; }
@@ -494,7 +500,7 @@
     }
     .pub-archive summary {
       display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
-      margin-top: 18px; padding: 8px 14px; list-style: none; cursor: pointer;
+      margin-top: 0; padding: 8px 14px; list-style: none; cursor: pointer;
       background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
       color: var(--accent); box-shadow: var(--shadow); font-size: .9rem; font-weight: 600;
     }
@@ -830,6 +836,9 @@
       </div>
     </div>
 
+    </div>
+
+    <div class="publication-actions">
     <details class="pub-archive">
       <summary>
         <span class="pub-toggle__show">Show earlier publications</span>
@@ -940,11 +949,10 @@
 
     </details>
 
-    </div>
-
-    <div class="links" style="margin-top:22px">
+    <div class="links">
       <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">🎓 All publications on Google Scholar</a>
       <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">🔗 ORCID record</a>
+    </div>
     </div>
   </section>
 
