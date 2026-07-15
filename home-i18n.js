@@ -60,7 +60,7 @@
     "contact_title": "#contact > h2",
     "contact_address": "#contact .contact-box > p",
     "contact_email": "#contact .pill[href^=\"mailto:\"]",
-    "contact_profile": "#contact .pill[href*=\"uu.se\"]",
+    "contact_profile": "#contact .pill[href^=\"https://www.uu.se/\"]",
     "footer_affiliation": "#footerAffiliation",
     "footer_built": "#footerBuilt"
   };
