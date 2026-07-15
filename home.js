@@ -43,8 +43,15 @@
       document.querySelectorAll('.lang-btn').forEach(function (button) {
         button.setAttribute('aria-pressed', String(button.getAttribute('data-language') === language));
       });
-      document.querySelectorAll('#homeWormStatus, #homeWheelStatus').forEach(function (status) {
+      document.querySelectorAll('#homeWormStatus, #homeWheelStatus, #contactCopyStatus').forEach(function (status) {
         status.textContent = '';
+      });
+      if (contactCopyFallback) {
+        contactCopyFallback.textContent = '';
+        contactCopyFallback.hidden = true;
+      }
+      document.querySelectorAll('.contact-copy').forEach(function (button) {
+        button.classList.remove('is-copied');
       });
       window.SitePreferences.setLanguage(language);
       syncPrimaryNavLayout();
@@ -120,6 +127,79 @@
     document.querySelectorAll('.lang-btn').forEach(function (button) {
       button.addEventListener('click', function () {
         applyLanguage(button.getAttribute('data-language'));
+      });
+    });
+
+    // Copy-only email controls avoid relying on a configured desktop mail application.
+    var contactCopyButtons = document.querySelectorAll('.contact-copy');
+    var contactCopyStatus = document.getElementById('contactCopyStatus');
+    var contactCopyFallback = document.getElementById('contactCopyFallback');
+    var contactEmailParts = {
+      general: ['zwoinska', 'gmail', 'com'],
+      uppsala: ['martyna.zwoinska', 'ebc.uu', 'se']
+    };
+
+    function contactEmailAddress(kind) {
+      var parts = contactEmailParts[kind];
+      return parts ? parts[0] + '@' + parts[1] + '.' + parts[2] : '';
+    }
+
+    function fallbackCopyText(text) {
+      var input = document.createElement('textarea');
+      input.value = text;
+      input.setAttribute('readonly', '');
+      input.style.position = 'fixed';
+      input.style.opacity = '0';
+      document.body.appendChild(input);
+      input.select();
+      var copied = false;
+      try {
+        copied = document.execCommand('copy');
+      } catch (error) {
+        copied = false;
+      }
+      document.body.removeChild(input);
+      return copied;
+    }
+
+    function copyContactEmail(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text).then(function () {
+          return true;
+        }).catch(function () {
+          return fallbackCopyText(text);
+        });
+      }
+      return Promise.resolve(fallbackCopyText(text));
+    }
+
+    contactCopyButtons.forEach(function (button) {
+      var resetTimer;
+      button.addEventListener('click', function () {
+        var address = contactEmailAddress(button.getAttribute('data-email-kind'));
+        var label = button.querySelector('.contact-copy-label');
+        var copy = languageCopy(currentLanguage);
+        if (!address || !label) return;
+
+        copyContactEmail(address).then(function (copied) {
+          window.clearTimeout(resetTimer);
+          contactCopyFallback.hidden = true;
+          contactCopyFallback.textContent = '';
+          if (copied) {
+            label.textContent = copy.contact_email_copied;
+            button.classList.add('is-copied');
+            contactCopyStatus.textContent = copy.contact_email_copied + ': ' + address;
+            resetTimer = window.setTimeout(function () {
+              label.textContent = languageCopy(currentLanguage)[button.getAttribute('data-copy-label-key')];
+              button.classList.remove('is-copied');
+            }, 1800);
+            return;
+          }
+
+          contactCopyStatus.textContent = copy.contact_email_copy_failed + ' ' + address;
+          contactCopyFallback.textContent = copy.contact_email_copy_failed + ' ' + address;
+          contactCopyFallback.hidden = false;
+        });
       });
     });
 
