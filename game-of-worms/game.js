@@ -173,7 +173,7 @@ const species = [
       { name: "Barro Colorado Island, Panama", coordinates: [-79.840, 9.160], source: "CaeNDR", style: "rainforest" },
       { name: "La Selva, Costa Rica", coordinates: [-84.009, 10.426], source: "CaeNDR", style: "rainforest" },
       { name: "Guadeloupe", coordinates: [-61.643, 16.044], source: "CaeNDR", style: "ocean" },
-      { name: "Nouragues, French Guiana", coordinates: [-52.683, 4.090], source: "CaeNDR", style: "rainforest" },
+      { name: "Nouragues, French Guiana · JU1428", coordinates: [-52.68, 4.08], source: "CaeNDR JU1428 isotype record", style: "rainforest", strain: "JU1428", history: "JU1428 is CaeNDR’s isotype-reference C. tropicalis strain, also called 4A2. P. Châtelet sampled its rotting Duguetia surinamensis fruit on Petit Plateau in Nouragues forest in 2008, and M.-A. Félix isolated the strain. CaeNDR records forest at 86 m; JU1429 and JU1430 share its isotype group." },
       { name: "Manaus region, Brazil", coordinates: [-59.840, -2.960], source: "CaeNDR", style: "rainforest" },
       { name: "Oʻahu, Hawaiʻi", coordinates: [-157.765, 21.356], source: "CaeNDR", style: "kauai" },
       { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.478, 22.194], source: "CaeNDR", style: "kauai" },

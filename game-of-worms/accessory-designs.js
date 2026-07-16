@@ -36,7 +36,7 @@ const rows = [
   ["tropicalis", "Barro Colorado Island, Panama", "research headphones", "research-headphones", "canal periscope", "canal-periscope", "canopy-camera rig", "canopy-camera-rig"],
   ["tropicalis", "La Selva, Costa Rica", "two-river yoke", "two-river-yoke", "transect telescope", "telescope", "station rain cape", "cape"],
   ["tropicalis", "Guadeloupe", "fumarole wig", "wig", "waterfall glass harmonica", "waterfall-glass-harmonica", "fern epaulettes", "fern-epaulettes"],
-  ["tropicalis", "Nouragues, French Guiana", "inselberg compass", "compass", "canoe-paddle bow", "canoe-paddle-bow", "river gauge rod", "river-gauge-rod"],
+  ["tropicalis", "Nouragues, French Guiana · JU1428", "JU1428 Duguetia fruit theatre", "ju1428-duguetia-fruit-theatre", "Nouragues litterfall chronobalance", "nouragues-litterfall-chronobalance", "JU1428 isotype-triad comparator", "ju1428-isotype-triad-comparator"],
   ["tropicalis", "Manaus region, Brazil", "confluence sunglasses", "sunglasses", "igapó stilts", "stilts", "river marimba", "river-marimba"],
   ["tropicalis", "Oʻahu, Hawaiʻi", "knife-ridge sunglasses", "sunglasses", "watershed swimwear", "watershed-swimwear", "waterfall umbrella", "umbrella"],
   ["tropicalis", "Kauaʻi, Hawaiʻi", "taro bonnet", "bonnet", "wetland waders", "waders", "paddy metronome", "paddy-metronome"],
@@ -126,6 +126,11 @@ const reunionJU1373RendererIds = new Set([
   "tropicalis::Saint-Benoît, Réunion · JU1373::wrap",
   "tropicalis::Saint-Benoît, Réunion · JU1373::charm"
 ]);
+const nouraguesJU1428RendererIds = new Set([
+  "tropicalis::Nouragues, French Guiana · JU1428::headwear",
+  "tropicalis::Nouragues, French Guiana · JU1428::wrap",
+  "tropicalis::Nouragues, French Guiana · JU1428::charm"
+]);
 const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
 const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|compass|press|gauge rod|camera rig/i;
 const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
@@ -148,6 +153,7 @@ function hasNamedRenderer(item) {
     || pohnpeiQG4739RendererIds.has(item.id)
     || queenslandQG2904RendererIds.has(item.id)
     || reunionJU1373RendererIds.has(item.id)
+    || nouraguesJU1428RendererIds.has(item.id)
     || instrumentRendererPattern.test(item.label)
     || fieldToolRendererPattern.test(item.label)
     || naturalRendererPattern.test(item.label);
@@ -2937,7 +2943,43 @@ function drawReunionJU1373Accessory(group, item, companion) {
   return true;
 }
 
+function drawNouraguesJU1428Accessory(group, item, companion) {
+  if (!nouraguesJU1428RendererIds.has(item.id)) return false;
+  group.dataset.renderer = item.family;
+  group.classList.add("nouragues-ju1428-accessory", companion ? "ju1428-companion" : "ju1428-primary");
+  const text = (value, x, y) => { const node = add(group, "text", { class: "acc-label", x, y, "text-anchor": "middle" }); node.textContent = value; };
+  const s = companion ? .72 : 1;
+  if (item.family === "ju1428-duguetia-fruit-theatre") {
+    const wings = companion ? "M-47 42Q-78 10-52-42Q-21-57-3-18L-10 43Z M47 42Q78 10 52-42Q21-57 3-18L10 43Z" : "M-72 58Q-112 8-72-64Q-27-80-4-27L-15 59Z M72 58Q112 8 72-64Q27-80 4-27L15 59Z";
+    path(group, wings, "acc-main");
+    [[-35,-20],[-12,-33],[17,-26],[40,-8]].slice(0, companion ? 3 : 4).forEach(([x,y], i) => { add(group,"ellipse",{class:i%2?"acc-accent":"acc-soft",cx:x,cy:y,rx:companion?8:11,ry:companion?13:18,transform:`rotate(${i%2?18:-14} ${x} ${y})`}); line(group,`M${x} ${y-10}L${x} ${y+10}`); });
+    add(group,"ellipse",{class:"acc-accent",cx:0,cy:16,rx:companion?22:31,ry:companion?13:18});
+    line(group, companion ? "M-27 16H-57M27 16H57M0 29V55" : "M-38 16H-83M38 16H83M0 34V68", "acc-line thick");
+    add(group,"circle",{class:"acc-soft",cx:companion?64:94,cy:companion?35:50,r:companion?8:11});
+    text(companion ? "4A2" : "JU1428", 0, companion ? 4 : 2);
+    return true;
+  }
+  if (item.family === "nouragues-litterfall-chronobalance") {
+    if (companion) {
+      path(group,"M-28 67V-66H32V67Z","acc-main"); line(group,"M-28-41H-62M32-41H65M-62-41V5M65-41V5","acc-line");
+      add(group,"path",{class:"acc-accent",d:"M-54 7H-8L-2 29H-48Z"}); add(group,"rect",{class:"acc-soft",x:7,y:13,width:19,height:26,rx:3}); line(group,"M17 13V-26M17-26L39-47","acc-line thick"); text("15 d",17,31);
+    } else {
+      path(group,"M-66 50Q-58-12-40-53H40Q58-12 66 50Z","acc-main"); line(group,"M-40-44Q0-72 40-44M0-43V57M-62 16H62","acc-line thick");
+      [[-45,19,18,10],[0,30,22,11],[44,18,16,9]].forEach(([x,y,rx,ry],i)=>add(group,"ellipse",{class:i===1?"acc-accent":"acc-soft",cx:x,cy:y,rx,ry,transform:`rotate(${i-1} ${x} ${y})`}));
+      add(group,"circle",{class:"acc-dark",cx:0,cy:-15,r:13}); add(group,"path",{class:"acc-accent",d:"M-78-38H-50V-15H-78Z"}); text("PP · 15 d",0,75);
+    }
+    return true;
+  }
+  if (companion) {
+    path(group,"M-28-62H28V62H-28Z","acc-main"); [ -34, 0, 34 ].forEach((y,i)=>{ add(group,"ellipse",{class:i===1?"acc-accent":"acc-soft",cx:0,cy:y,rx:19,ry:13}); text(String(1428+i),0,y+4); }); line(group,"M28-42H51M28 0H58M28 42H48M50-42V42","acc-line thick"); add(group,"circle",{class:"acc-accent",cx:59,cy:0,r:10});
+  } else {
+    path(group,"M-74 43L0-70L74 43Z","acc-main"); [ [-37,25,"1428"],[0,-4,"1429"],[37,25,"1430"] ].forEach(([x,y,label],i)=>{ add(group,"rect",{class:i===1?"acc-accent":"acc-soft",x:x-20,y:y-16,width:40,height:32,rx:5,transform:`rotate(${i===1?0:i?10:-10} ${x} ${y})`}); text(label,x,y+4); }); add(group,"circle",{class:"acc-dark",cx:0,cy:8,r:12}); line(group,"M-55 52H55M0 8V-55","acc-line thick"); text("4A2",0,67);
+  }
+  return true;
+}
+
 function drawNamedAccessory(group, item, companion) {
+  if (drawNouraguesJU1428Accessory(group, item, companion)) return true;
   if (drawReunionJU1373Accessory(group, item, companion)) return true;
   if (drawSanteuilAccessory(group, item, companion)) return true;
   if (drawEdinburghAccessory(group, item, companion)) return true;
@@ -3029,6 +3071,9 @@ function renderPiece(target, item, wormPart) {
     ,"ju1373-torch-ginger-bract-collar": { primary: [366, 118, .33, -4], companion: [8, 112, .28, 5] }
     ,"ju1373-type-isolate-signet-engine": { primary: [224, 194, .31, -1], companion: [105, 207, .27, 2] }
     ,"saint-benoit-windward-slope-mobile": { primary: [365, 270, .31, 1], companion: [6, 286, .26, -2] }
+    ,"ju1428-duguetia-fruit-theatre": { primary: [365, 119, .31, -2], companion: [0, 108, .27, 3] }
+    ,"nouragues-litterfall-chronobalance": { primary: [220, 190, .3, -1], companion: [90, 202, .26, 2] }
+    ,"ju1428-isotype-triad-comparator": { primary: [362, 270, .3, -1], companion: [8, 286, .25, 2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;

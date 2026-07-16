@@ -242,12 +242,12 @@ const canonicalProfiles = {
     palettes.rainforest, [[0, 306], [90, 264], [175, 230], [260, 142], [335, 210], [420, 246], [510, 220], [600, 286]],
     { weather: "mist", cues: [["fumarole", 260, 150, .8], ["waterfall", 435, 242, .9], ["fern", 80, 315, .8]] }
   ),
-  "Nouragues, French Guiana": profile(
-    "nouragues-inselberg", "Nouragues forest and inselberg",
-    "The remote Nouragues station joins plateau and high-relief forest around a granite inselberg with riparian forest along the Arataye River.",
-    "CNRS Nouragues research station", "https://cnrs-nouragues.fr/en/home-nouragues-research-station/",
-    palettes.rainforest, [[0, 290], [100, 274], [180, 260], [250, 176], [320, 150], [390, 210], [465, 260], [540, 272], [600, 282]],
-    { water: "river", weather: "rain", cues: [["inselberg", 320, 230, .9], ["canoe", 480, 350, .7], ["station", 90, 300, .65]] }
+  "Nouragues, French Guiana · JU1428": profile(
+    "nouragues-ju1428-duguetia-fruit-forest", "JU1428 Duguetia-fruit forest floor",
+    "JU1428 was isolated by M.-A. Félix from a rotting Duguetia surinamensis fruit sampled by P. Châtelet on Petit Plateau in Nouragues forest in 2008. CaeNDR records forest at 86 m. The gently sloping, poorly drained granite-backed plateau and cropped inselberg shoulder are site context, not a recorded collection-patch view.",
+    "CaeNDR JU1428 isotype record", "https://caendr.org/isotype/JU1428/",
+    palettes.rainforest, [[0, 294], [80, 270], [155, 278], [228, 256], [305, 272], [382, 250], [460, 268], [540, 246], [600, 270]],
+    { weather: "sun", cues: [] }
   ),
   "Manaus region, Brazil": profile(
     "manaus-meeting-waters", "Meeting of the Negro and Solimões",
@@ -522,12 +522,12 @@ const sceneCompositions = Object.freeze({
     "M433 287 Q419 329 441 367 Q451 391 446 430", [2, 0, 1],
     "a steaming La Soufrière dome with an offset waterfall and oversized fern foreground"
   ),
-  "nouragues-inselberg": composition(
-    "M0 393 Q121 366 239 391 Q358 416 478 382 L600 389 V430 H0Z",
-    "M0 321 H152 Q215 207 320 204 Q426 207 488 321 H600 V430 H0Z",
-    [["canoe", 33, 397, .76], ["station", 560, 365, .5]],
-    "M0 410 Q141 373 281 404 Q430 437 600 381", [0, 2, 1],
-    "one unbroken granite dome rising above a level canopy on the river approach"
+  "nouragues-ju1428-duguetia-fruit-forest": composition(
+    "M0 390Q105 360 205 382T400 375T600 389V430H0Z",
+    "M0 303Q80 270 162 286T310 272T454 285T600 267V430H0Z",
+    [],
+    "M0 418Q130 382 258 406T600 389", [],
+    "a knobbled softened aggregate fruit beside a shallow damp plateau hollow, framed by opposed trunks and a narrow cropped granite shoulder"
   ),
   "manaus-meeting-waters": composition(
     "M0 403 Q151 386 300 405 T600 398 V430 H0Z",
@@ -1921,6 +1921,28 @@ function drawReunionJU1373Scene(target, palette) {
   [ [260,337], [283,344], [306,338], [329,347], [352,340] ].forEach(([x,y], i) => append(target, "path", { class: i % 2 ? "reunion-bract coral" : "reunion-bract", d: `M${x} ${y}Q${x-21} ${y-28} ${x-8} ${y-54}Q${x+16} ${y-31} ${x+14} ${y-4}Z` }));
 }
 
+function drawNouraguesJU1428Scene(target, palette) {
+  append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+  append(target, "path", { fill: palette[1], d: "M0 224Q48 176 91 211Q136 148 181 210Q223 166 270 207Q320 145 365 206Q412 172 455 210Q507 149 548 205Q576 178 600 206V330H0Z" });
+  append(target, "path", { fill: palette[2], d: "M0 274Q94 239 180 263T348 254T474 265T600 246V352H0Z" });
+  // Regional cropped granite shoulder only; no river or full inselberg dome.
+  append(target, "path", { fill: palette[4], d: "M526 257L565 219L600 236V310H526Z" });
+  append(target, "path", { fill: palette[3], d: "M0 320Q100 291 204 318T390 311T600 321V430H0Z" });
+  append(target, "path", { class: "nouragues-plateau-hollow", d: "M174 356Q265 330 362 354Q397 364 421 352" });
+  // Unequal outward trunks and opposed roots frame the quiet play space.
+  append(target, "path", { class: "nouragues-trunk", d: "M68 330Q57 250 93 171Q108 137 119 100L145 106Q125 181 137 235Q147 284 161 330Z" });
+  append(target, "path", { class: "nouragues-trunk dark", d: "M510 331Q536 267 519 207Q505 159 478 121L497 105Q536 149 551 205Q566 271 553 331Z" });
+  append(target, "path", { class: "nouragues-root", d: "M126 294Q91 338 39 368M133 307Q159 350 207 374M535 292Q570 340 600 354M525 304Q484 345 444 370" });
+  // Illustrative leaf litter, not a reconstructed plot.
+  [[22,395,82,375],[92,414,151,388],[172,399,228,381],[397,408,455,383],[478,421,548,392]].forEach(([x1,y1,x2,y2],i)=>append(target,"path",{class:i%2?"nouragues-litter damp":"nouragues-litter",d:`M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-9} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+7} ${x1} ${y1}Z`}));
+  // Dominant softened Duguetia aggregate fruit, partly compressed on one side.
+  const fruit = append(target,"g",{class:"nouragues-duguetia-fruit",transform:"translate(92 356) rotate(-8)","aria-hidden":"true"});
+  append(fruit,"ellipse",{class:"nouragues-fruit-shadow",cx:1,cy:32,rx:76,ry:17});
+  append(fruit,"path",{class:"nouragues-fruit-rind",d:"M-67 10Q-73-26-44-48Q-17-66 8-50Q35-65 60-42Q79-19 66 13Q53 39 25 43Q-5 53-31 39Q-57 43-67 10Z"});
+  [[-43,-16,18,24,-16],[-20,-31,17,27,9],[9,-28,19,26,-7],[36,-15,17,25,16],[-32,14,19,25,8],[0,14,20,28,-5],[30,18,16,21,12]].forEach(([cx,cy,rx,ry,a],i)=>append(fruit,"ellipse",{class:i%2?"nouragues-fruit-panel":"nouragues-fruit-panel dark",cx,cy,rx,ry,transform:`rotate(${a} ${cx} ${cy})`}));
+  append(fruit,"path",{class:"nouragues-fruit-collapse",d:"M-57 16Q-27 4 0 20Q26 5 57 15Q33 39 4 34Q-28 39-57 16Z"});
+}
+
 export function renderEnvironmentScene(target, profile, habitatElement) {
   if (!target || !profile) return;
   const palette = profile.palette;
@@ -1993,6 +2015,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "reunion-ju1373-saint-benoit-torch-ginger-farm") {
     drawReunionJU1373Scene(target, palette);
+    return;
+  }
+  if (profile.id === "nouragues-ju1428-duguetia-fruit-forest") {
+    drawNouraguesJU1428Scene(target, palette);
     return;
   }
 
