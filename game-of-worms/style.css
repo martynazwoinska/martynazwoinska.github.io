@@ -3123,21 +3123,20 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .habitat-pill { background: rgba(22,125,122,.14); color: var(--teal-dark); }
 .wow-fact {
   margin-top: auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 12px;
-  align-items: start;
+  position: relative;
   border-radius: 20px;
   padding: 16px;
   background: rgba(255,209,102,.28);
 }
-.wow-fact > span { grid-column: 2; grid-row: 1; justify-self: end; font-size: 1.45rem; line-height: 1; }
-.wow-fact p { grid-column: 1; grid-row: 1; margin: 0; }
+.wow-fact > span { position: absolute; top: 13px; right: 13px; font-size: .82rem; line-height: 1; opacity: .72; }
+.wow-fact p { margin: 0; }
 .wow-fact strong, .wow-fact p span { display: block; }
+.wow-fact strong { padding-right: 18px; }
 .wow-fact p span { margin-top: 3px; color: var(--ink-soft); }
 @media (max-width: 420px) {
-  .wow-fact { grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 13px; }
-  .wow-fact > span { font-size: 1.25rem; }
+  .wow-fact { padding: 13px; }
+  .wow-fact > span { top: 11px; right: 11px; font-size: .72rem; }
+  .wow-fact strong { padding-right: 16px; }
 }
 
 .science-notes {
