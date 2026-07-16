@@ -286,7 +286,7 @@ const canonicalProfiles = {
   ),
   "Saint-Benoît, Réunion · JU1373": profile(
     "reunion-ju1373-saint-benoit-torch-ginger-farm", "JU1373 Saint-Benoît torch-ginger farm",
-    "JU1373, previously R4D1, was isolated by M.-A. Félix from rotting torch-ginger flowers sampled in agricultural land at Saint-Benoît, Réunion. CaeNDR records a structured date of 31 December 2007, while its collection note says early January 2008.",
+    "JU1373, previously R4D1, was isolated by M.-A. Félix from rotting torch-ginger flowers sampled in agricultural land at Saint-Benoît, Réunion. CaeNDR's structured sampler field names V. Robert, while the free-text collection note credits Valérie Robert and Loïc Sablé. Its structured date is 31 December 2007, while its collection note says early January 2008 and qualitatively describes a highly proliferating population. Exact flower placement, neighbouring crops, weather and the collection-patch view are unreported.",
     "CaeNDR JU1373 isotype record", "https://caendr.org/isotype/JU1373/",
     palettes.farm, [[0, 348], [82, 342], [164, 350], [248, 337], [332, 348], [416, 338], [505, 345], [600, 333]],
     { water: "none", weather: "mist", cues: [] }
@@ -1900,6 +1900,27 @@ function drawTenerifeScene(target, palette) {
   [[-45,-8,4],[-24,15,3],[2,-21,3],[48,6,4],[36,25,2.5]].forEach(([cx, cy, r], index) => append(avocado, "circle", { class: index % 2 ? "tenerife-avocado-mottle dark" : "tenerife-avocado-mottle", cx, cy, r }));
 }
 
+function drawReunionJU1373Scene(target, palette) {
+  append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+  // Dense, unidentified farm fringe with a single rounded upland slit.
+  append(target, "path", { fill: palette[1], d: "M0 210Q38 174 72 205Q111 151 148 202Q188 165 222 207Q260 171 296 207Q338 168 375 204Q417 158 451 207Q488 178 520 207Q560 164 600 202V335H0Z" });
+  append(target, "path", { fill: palette[2], d: "M0 266Q83 238 158 260T310 248T455 259T600 240V355H0Z" });
+  // Narrow regional opening, deliberately subordinate to the farm floor.
+  append(target, "path", { fill: palette[0], d: "M474 205Q515 166 554 190Q580 205 600 180V266H474Z" });
+  append(target, "path", { fill: palette[1], d: "M485 218Q528 175 574 202Q589 213 600 201V267H485Z" });
+  // Shallow berm and irregular litter.
+  append(target, "path", { fill: palette[3], d: "M0 317Q116 286 229 316Q335 340 447 307Q530 286 600 311V430H0Z" });
+  append(target, "path", { class: "reunion-ju1373-berm", d: "M0 326Q120 297 232 325T450 316T600 323" });
+  [[28,379,92,365],[114,401,164,382],[186,369,237,353],[382,395,446,372],[494,381,574,362]].forEach(([x1,y1,x2,y2], i) => append(target, "path", { class: i % 2 ? "reunion-litter" : "reunion-litter damp", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-8} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` }));
+  // Unequal ginger stalk groups with separate bare flower stems.
+  [[108,283,0.9],[178,265,0.7],[401,277,0.78],[463,252,1.0]].forEach(([x,y,s], i) => {
+    append(target, "path", { class: "reunion-ginger-stalk", d: `M${x} ${y}Q${x-8*s} ${y-90*s} ${x+11*s} ${y-171*s}` });
+    append(target, "path", { class: "reunion-ginger-leaf", d: `M${x+8*s} ${y-92*s}Q${x+52*s} ${y-145*s} ${x+108*s} ${y-117*s}Q${x+50*s} ${y-88*s} ${x+8*s} ${y-92*s}Z` });
+  });
+  append(target, "path", { class: "reunion-ginger-diagonal-leaf", d: "M-12 64Q130 104 252 191Q370 273 612 105L600 151Q374 319 230 224Q103 136-12 108Z" });
+  [ [260,337], [283,344], [306,338], [329,347], [352,340] ].forEach(([x,y], i) => append(target, "path", { class: i % 2 ? "reunion-bract coral" : "reunion-bract", d: `M${x} ${y}Q${x-21} ${y-28} ${x-8} ${y-54}Q${x+16} ${y-31} ${x+14} ${y-4}Z` }));
+}
+
 export function renderEnvironmentScene(target, profile, habitatElement) {
   if (!target || !profile) return;
   const palette = profile.palette;
@@ -1968,6 +1989,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "queensland-qg2904-daintree-blackbean-pod-forest") {
     drawQueenslandQG2904Scene(target, palette);
+    return;
+  }
+  if (profile.id === "reunion-ju1373-saint-benoit-torch-ginger-farm") {
+    drawReunionJU1373Scene(target, palette);
     return;
   }
 

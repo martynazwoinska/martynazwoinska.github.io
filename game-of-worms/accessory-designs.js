@@ -2898,6 +2898,7 @@ function drawReunionJU1373Accessory(group, item, companion) {
       add(group, "path", { class: i % 2 ? "acc-accent" : "acc-main", d: `M${x} 8Q${x - 13} ${-28 - i * 2} ${x - 3} ${-54 - i * 3}Q${x + 15} ${-30 - i * 2} ${x + 3} 8Z` });
     }
     add(group, "path", { class: "acc-line", d: companion ? "M-37 10Q0 29 38 10" : "M-64 13Q0 39 64 13" });
+    [-1, 1].forEach(side => add(group, "path", { class: "acc-line", d: companion ? `M${side * 27} 8L${side * 42} -34` : `M${side * 45} 12L${side * 67} -43` }));
     add(group, "circle", { class: "acc-accent", cx: companion ? 28 : 49, cy: 4, r: companion ? 6 : 8 });
     addText(companion ? "R4D1" : "JU1373", companion ? 0 : 0, companion ? 25 : 32);
     return true;
@@ -2907,12 +2908,14 @@ function drawReunionJU1373Accessory(group, item, companion) {
       add(group, "path", { class: "acc-main", d: "M-48 65V-68H45V65M-48-68H45" });
       add(group, "ellipse", { class: "acc-accent", cx: 0, cy: -15, rx: 31, ry: 22 });
       add(group, "path", { class: "acc-line thick", d: "M-25 7L25 51M25 7L-25 51" });
+      add(group, "path", { class: "acc-line", d: "M-45-15H-64M45-15H64M-64-15V28M64-15V28" });
       add(group, "circle", { class: "acc-main", cx: 62, cy: 52, r: 12 });
       addText("JU1373", 0, 0);
     } else {
       add(group, "path", { class: "acc-main", d: "M-76 54H74L88 82H-89Z" });
       add(group, "ellipse", { class: "acc-accent", cx: 0, cy: -4, rx: 43, ry: 27 });
       add(group, "path", { class: "acc-line thick", d: "M-43-4H43M0-31V24M43-4L79-48" });
+      add(group, "path", { class: "acc-line", d: "M-78-48H-43M79-48V-25" });
       add(group, "path", { class: "acc-soft", d: "M-72-50H-32V-29H-72Z" });
       addText("JU1373 · TYPE ISOLATE", 0, -1);
     }
