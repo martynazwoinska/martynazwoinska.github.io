@@ -284,12 +284,12 @@ const canonicalProfiles = {
     palettes.rainforest, [[0, 282], [76, 271], [151, 278], [231, 259], [311, 270], [392, 248], [474, 259], [545, 239], [600, 247]],
     { water: "none", weather: "none", cues: [] }
   ),
-  "Réunion Island": profile(
-    "reunion-cirque-volcano", "Réunion’s pitons, cirques, and lava",
-    "Réunion’s volcanic massifs, landslides, and heavy rainfall formed towering peaks, huge natural amphitheatres, and forested gorges.",
-    "UNESCO Pitons, cirques and remparts", "https://whc.unesco.org/en/list/1317/",
-    palettes.volcanic, [[0, 310], [65, 250], [120, 168], [180, 230], [245, 122], [315, 216], [385, 150], [455, 238], [525, 178], [600, 270]],
-    { weather: "cloud", cues: [["cirque", 310, 270, .85], ["lava", 85, 350, .9], ["ravine", 490, 302, .8]] }
+  "Saint-Benoît, Réunion · JU1373": profile(
+    "reunion-ju1373-saint-benoit-torch-ginger-farm", "JU1373 Saint-Benoît torch-ginger farm",
+    "JU1373, previously R4D1, was isolated by M.-A. Félix from rotting torch-ginger flowers sampled in agricultural land at Saint-Benoît, Réunion. CaeNDR records a structured date of 31 December 2007, while its collection note says early January 2008.",
+    "CaeNDR JU1373 isotype record", "https://caendr.org/isotype/JU1373/",
+    palettes.farm, [[0, 348], [82, 342], [164, 350], [248, 337], [332, 348], [416, 338], [505, 345], [600, 333]],
+    { water: "none", weather: "mist", cues: [] }
   )
 };
 
@@ -564,12 +564,12 @@ const sceneCompositions = Object.freeze({
     "M42 377Q146 352 249 360Q366 367 554 331", [],
     "a long sealed pod beneath two unequal buttress fins, with a hairline canopy-crane fragment visible through one narrow upper-right opening"
   ),
-  "reunion-cirque-volcano": composition(
-    "M0 375 L81 342 L155 371 L235 334 L315 379 L397 329 L484 366 L600 337 V430 H0Z",
-    "M0 238 Q62 337 151 349 Q300 376 449 346 Q538 333 600 232 V430 H0Z",
-    [["lava", 30, 395, .92], ["ravine", 556, 383, .76]],
-    "M95 230 L156 171 L214 229 L302 139 L373 221 L463 162 L520 234", [0, 2, 1],
-    "enclosing U-shaped cirque walls and a triple-piton skyline"
+  "reunion-ju1373-saint-benoit-torch-ginger-farm": composition(
+    "M0 368Q120 342 220 360T420 350T600 365V430H0Z",
+    "M0 306Q90 274 162 291T310 270T462 292T600 275V430H0Z",
+    [["leaf-litter", 92, 374, .8], ["bracts", 285, 383, .72], ["leaf-litter", 505, 371, .65]],
+    "M34 210Q120 125 188 224M215 245Q309 112 380 231M438 236Q522 148 590 220", [1, 0, 2],
+    "a low collapsed bract cone beneath two unequal ginger stalk groups and one enormous diagonal leaf, enclosed by a humid farm fringe with one rounded upland glimpse"
   )
 });
 

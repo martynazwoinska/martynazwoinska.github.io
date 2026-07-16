@@ -43,7 +43,7 @@ const rows = [
   ["tropicalis", "New Taipei City, Taiwan", "hoodoo helmet", "hoodoo-helmet", "erosion crinoline", "erosion-crinoline", "cape fiddle", "bowed-strings"],
   ["tropicalis", "Pohnpei, Micronesia · QG4739", "QG4739 kotop name-concordance cabinet", "qg4739-kotop-name-concordance", "QG4739 paired-temperature differential bridge", "qg4739-paired-temperature-differential", "C-0230 seven-isotype registry", "c0230-seven-isotype-registry"],
   ["tropicalis", "Queensland, Australia · QG2904", "QG2904 uncracked-pod seam scanner", "qg2904-uncracked-pod-seam-scanner", "QG2904 10–24 July recovery relay", "qg2904-collection-to-funnel-relay", "DRO canopy-crane strata mapper", "dro-canopy-crane-strata-mapper"],
-  ["tropicalis", "Réunion Island", "cirque hoop skirt", "skirt", "lava crampons", "lava-crampons", "ravine trumpet", "ravine-trumpet"]
+  ["tropicalis", "Saint-Benoît, Réunion · JU1373", "JU1373 torch-ginger bract collar", "ju1373-torch-ginger-bract-collar", "JU1373 type-isolate signet engine", "ju1373-type-isolate-signet-engine", "Saint-Benoît windward-slope mobile", "saint-benoit-windward-slope-mobile"]
 ];
 
 const explicitUniqueRendererFamilies = new Set([
@@ -121,6 +121,11 @@ const queenslandQG2904RendererIds = new Set([
   "tropicalis::Queensland, Australia · QG2904::wrap",
   "tropicalis::Queensland, Australia · QG2904::charm"
 ]);
+const reunionJU1373RendererIds = new Set([
+  "tropicalis::Saint-Benoît, Réunion · JU1373::headwear",
+  "tropicalis::Saint-Benoît, Réunion · JU1373::wrap",
+  "tropicalis::Saint-Benoît, Réunion · JU1373::charm"
+]);
 const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
 const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|compass|press|gauge rod|camera rig/i;
 const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
@@ -142,6 +147,7 @@ function hasNamedRenderer(item) {
     || saoTomeRendererIds.has(item.id)
     || pohnpeiQG4739RendererIds.has(item.id)
     || queenslandQG2904RendererIds.has(item.id)
+    || reunionJU1373RendererIds.has(item.id)
     || instrumentRendererPattern.test(item.label)
     || fieldToolRendererPattern.test(item.label)
     || naturalRendererPattern.test(item.label);
@@ -2880,7 +2886,56 @@ function drawUniqueNamedAccessory(group, item, companion) {
   }
 }
 
+function drawReunionJU1373Accessory(group, item, companion) {
+  if (!reunionJU1373RendererIds.has(item.id)) return false;
+  const addText = (value, x, y) => { const t = add(group, "text", { class: "acc-label", x, y, "text-anchor": "middle" }); t.textContent = value; };
+  group.dataset.renderer = item.family;
+  group.classList.add("reunion-ju1373-accessory", companion ? "ju1373-companion" : "ju1373-primary");
+  if (item.family === "ju1373-torch-ginger-bract-collar") {
+    const bracts = companion ? 3 : 5;
+    for (let i = 0; i < bracts; i += 1) {
+      const x = (i - (bracts - 1) / 2) * (companion ? 19 : 25);
+      add(group, "path", { class: i % 2 ? "acc-accent" : "acc-main", d: `M${x} 8Q${x - 13} ${-28 - i * 2} ${x - 3} ${-54 - i * 3}Q${x + 15} ${-30 - i * 2} ${x + 3} 8Z` });
+    }
+    add(group, "path", { class: "acc-line", d: companion ? "M-37 10Q0 29 38 10" : "M-64 13Q0 39 64 13" });
+    add(group, "circle", { class: "acc-accent", cx: companion ? 28 : 49, cy: 4, r: companion ? 6 : 8 });
+    addText(companion ? "R4D1" : "JU1373", companion ? 0 : 0, companion ? 25 : 32);
+    return true;
+  }
+  if (item.family === "ju1373-type-isolate-signet-engine") {
+    if (companion) {
+      add(group, "path", { class: "acc-main", d: "M-48 65V-68H45V65M-48-68H45" });
+      add(group, "ellipse", { class: "acc-accent", cx: 0, cy: -15, rx: 31, ry: 22 });
+      add(group, "path", { class: "acc-line thick", d: "M-25 7L25 51M25 7L-25 51" });
+      add(group, "circle", { class: "acc-main", cx: 62, cy: 52, r: 12 });
+      addText("JU1373", 0, 0);
+    } else {
+      add(group, "path", { class: "acc-main", d: "M-76 54H74L88 82H-89Z" });
+      add(group, "ellipse", { class: "acc-accent", cx: 0, cy: -4, rx: 43, ry: 27 });
+      add(group, "path", { class: "acc-line thick", d: "M-43-4H43M0-31V24M43-4L79-48" });
+      add(group, "path", { class: "acc-soft", d: "M-72-50H-32V-29H-72Z" });
+      addText("JU1373 · TYPE ISOLATE", 0, -1);
+    }
+    return true;
+  }
+  if (companion) {
+    add(group, "path", { class: "acc-main", d: "M0 76V-67M0-35L53-10M0 7L-43 32" });
+    add(group, "path", { class: "acc-accent", d: "M53-10Q75-35 95-17Q76 3 53-10Z" });
+    add(group, "path", { class: "acc-soft", d: "M-43 32Q-74 48-91 24Q-69 10-43 32Z" });
+    add(group, "path", { class: "acc-line", d: "M0-67L-20-91M0-67L22-91" });
+    addText("SAINT-BENOÎT · REGIONAL", 0, 95);
+  } else {
+    add(group, "path", { class: "acc-main", d: "M-67 52Q-37 4-8 12Q22 20 67-31" });
+    add(group, "path", { class: "acc-accent", d: "M-52 4Q-24-35 8-18Q26-3 57-41" });
+    add(group, "path", { class: "acc-soft", d: "M-35-62Q0-87 37-62Q7-40-35-62Z" });
+    add(group, "path", { class: "acc-line", d: "M-67 52L-82 73M67-31L82-50" });
+    addText("REGIONAL", 0, 79);
+  }
+  return true;
+}
+
 function drawNamedAccessory(group, item, companion) {
+  if (drawReunionJU1373Accessory(group, item, companion)) return true;
   if (drawSanteuilAccessory(group, item, companion)) return true;
   if (drawEdinburghAccessory(group, item, companion)) return true;
   if (drawTenerifeAccessory(group, item, companion)) return true;
@@ -2968,6 +3023,9 @@ function renderPiece(target, item, wormPart) {
     "qg2904-uncracked-pod-seam-scanner": { primary: [250, -62, .31, -2], companion: [-8, 90, .27, 2] },
     "qg2904-collection-to-funnel-relay": { primary: [220, 148, .32, -1], companion: [90, 212, .26, 2] },
     "dro-canopy-crane-strata-mapper": { primary: [377, 140, .29, -1], companion: [-5, 292, .26, 2] }
+    ,"ju1373-torch-ginger-bract-collar": { primary: [366, 118, .33, -4], companion: [8, 112, .28, 5] }
+    ,"ju1373-type-isolate-signet-engine": { primary: [224, 194, .31, -1], companion: [105, 207, .27, 2] }
+    ,"saint-benoit-windward-slope-mobile": { primary: [365, 270, .31, 1], companion: [6, 286, .26, -2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;
