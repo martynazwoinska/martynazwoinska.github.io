@@ -499,15 +499,16 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .santeuil-valley-right { fill: color-mix(in srgb, #34513d 73%, var(--environment-land)); }
 :root[data-theme='dark'] .santeuil-stream-bank { fill: color-mix(in srgb, #403a30 72%, var(--environment-ground)); }
 :root[data-theme='dark'] .santeuil-stream-glint { opacity: .5; }
-.edinburgh-sky { fill: color-mix(in srgb, #b9c8c7 58%, var(--paper-strong)); }
-.edinburgh-clouds { fill: color-mix(in srgb, var(--paper-strong) 75%, #aebcba); opacity: .62; }
-.edinburgh-blackford-hill { fill: color-mix(in srgb, var(--environment-land) 66%, #657354); stroke: color-mix(in srgb, var(--environment-detail) 58%, #4d5548); stroke-width: 2; stroke-linejoin: round; }
+.edinburgh-sky { fill: color-mix(in srgb, #c8d9d4 63%, var(--paper-strong)); }
+.edinburgh-clouds { fill: color-mix(in srgb, var(--paper-strong) 82%, #b7c7c2); opacity: .58; }
+.edinburgh-haze { fill: color-mix(in srgb, #d9ddd1 74%, var(--environment-water)); opacity: .46; }
+.edinburgh-blackford-hill { fill: color-mix(in srgb, var(--environment-land) 72%, #718264); stroke: color-mix(in srgb, var(--environment-detail) 53%, #4d5e4f); stroke-width: 2; stroke-linejoin: round; }
 .edinburgh-andesite-face { fill: color-mix(in srgb, #725f82 52%, var(--environment-ground)); stroke: color-mix(in srgb, #53465e 68%, var(--environment-detail)); stroke-width: 2.5; stroke-linejoin: round; }
-.edinburgh-hill-contour { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 54%, #7b8066); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: .62; }
+.edinburgh-hill-contour { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 48%, #8a9275); stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; opacity: .54; }
 .edinburgh-observatory-shadow { fill: rgba(35,42,39,.16); }
 .edinburgh-observatory-body,
-.edinburgh-observatory-end { fill: color-mix(in srgb, #a75f49 69%, var(--environment-ground)); stroke: color-mix(in srgb, #643d36 76%, var(--environment-detail)); stroke-width: 2; stroke-linejoin: round; }
-.edinburgh-observatory-roof { fill: color-mix(in srgb, #665f57 68%, var(--environment-detail)); stroke: color-mix(in srgb, #4d4944 76%, var(--environment-detail)); stroke-width: 1.8; }
+.edinburgh-observatory-end { fill: color-mix(in srgb, #a9654f 72%, var(--environment-ground)); stroke: color-mix(in srgb, #643d36 72%, var(--environment-detail)); stroke-width: 1.8; stroke-linejoin: round; }
+.edinburgh-observatory-roof { fill: color-mix(in srgb, #655f59 65%, var(--environment-detail)); stroke: color-mix(in srgb, #4d4944 72%, var(--environment-detail)); stroke-width: 1.6; }
 .edinburgh-observatory-window { fill: color-mix(in srgb, #345f64 72%, var(--environment-water)); stroke: color-mix(in srgb, #e2c59f 62%, var(--environment-detail)); stroke-width: 1.5; }
 .edinburgh-copper-drum,
 .edinburgh-copper-dome { fill: color-mix(in srgb, #6c9b88 77%, var(--environment-land)); stroke: color-mix(in srgb, #355f54 78%, var(--environment-detail)); stroke-width: 2; }
@@ -516,7 +517,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .edinburgh-stone-detail { fill: none; stroke: color-mix(in srgb, #d7ad8c 58%, var(--environment-detail)); stroke-width: 1.2; opacity: .72; }
 .edinburgh-hill-scrub path:first-child { fill: color-mix(in srgb, var(--environment-land) 79%, #3e654d); stroke: color-mix(in srgb, var(--environment-detail) 66%, #375441); stroke-width: 2; }
 .edinburgh-scrub-stems { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 67%, #4f5f45); stroke-width: 2; stroke-linecap: round; }
-.edinburgh-allotment-ground { fill: color-mix(in srgb, var(--environment-land) 55%, #7f815d); }
+.edinburgh-allotment-ground { fill: color-mix(in srgb, var(--environment-land) 58%, #8a8765); }
 .edinburgh-hedges path:first-child { fill: color-mix(in srgb, var(--environment-land) 76%, #3f6549); stroke: color-mix(in srgb, var(--environment-detail) 71%, #344f3d); stroke-width: 2; }
 .edinburgh-hedge-highlight { fill: none; stroke: color-mix(in srgb, var(--environment-land) 56%, var(--paper-strong)); stroke-width: 4; stroke-linecap: round; opacity: .45; }
 .edinburgh-shed.wall { fill: color-mix(in srgb, #8b724e 70%, var(--environment-ground)); stroke: color-mix(in srgb, #514638 72%, var(--environment-detail)); stroke-width: 2; }
@@ -535,7 +536,9 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .edinburgh-plant-stem { fill: none; stroke: color-mix(in srgb, #45664a 76%, var(--environment-detail)); stroke-width: 2; stroke-linecap: round; }
 .edinburgh-plant-leaf { fill: color-mix(in srgb, var(--environment-land) 77%, #446b4c); stroke: color-mix(in srgb, var(--environment-detail) 69%, #35513e); stroke-width: 1.5; }
 .edinburgh-seed-head { fill: color-mix(in srgb, var(--environment-accent) 48%, #8a6845); stroke: var(--environment-detail); stroke-width: 1; }
-.edinburgh-foreground-soil { fill: color-mix(in srgb, var(--environment-ground) 73%, #544b3a); }
+.edinburgh-foreground-soil { fill: color-mix(in srgb, var(--environment-ground) 76%, #5e5140); }
+.edinburgh-garden-path { fill: color-mix(in srgb, #bcae8c 62%, var(--environment-ground)); stroke: color-mix(in srgb, #756b58 48%, var(--environment-detail)); stroke-width: 1.4; }
+.edinburgh-path-glint { fill: none; stroke: color-mix(in srgb, var(--paper-strong) 55%, #c8b990); stroke-width: 4; stroke-linecap: round; opacity: .38; }
 .edinburgh-bed-soil { fill: color-mix(in srgb, var(--environment-ground) 65%, #4e4535); stroke: color-mix(in srgb, var(--environment-detail) 61%, #4e4438); stroke-width: 1.5; }
 .edinburgh-bed-board { fill: color-mix(in srgb, #9a744e 72%, var(--environment-ground)); stroke: color-mix(in srgb, #5e4937 77%, var(--environment-detail)); stroke-width: 2.5; stroke-linejoin: round; fill-rule: evenodd; }
 .edinburgh-bed-furrow { fill: none; stroke: color-mix(in srgb, #40392d 56%, var(--environment-ground)); stroke-width: 2; stroke-linecap: round; opacity: .68; }
@@ -557,10 +560,14 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .edinburgh-wood-knot { fill: color-mix(in srgb, #5c4735 76%, var(--environment-detail)); opacity: .72; }
 .edinburgh-plot-stake path { fill: color-mix(in srgb, #b18a5c 72%, var(--environment-ground)); stroke: color-mix(in srgb, #624e3b 75%, var(--environment-detail)); stroke-width: 2; }
 .edinburgh-plot-stake text { fill: color-mix(in srgb, var(--environment-detail) 86%, #3e342b); font: 800 9px/1 var(--sans); letter-spacing: .04em; }
+.edinburgh-botanical-frame > path:first-child { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 70%, #405c48); stroke-width: 3; stroke-linecap: round; }
+.edinburgh-botanical-frame path:not(:first-child) { fill: color-mix(in srgb, var(--environment-land) 76%, #496b51); stroke: color-mix(in srgb, var(--environment-detail) 64%, #3c5443); stroke-width: 1.5; }
+.edinburgh-botanical-frame path.deep { fill: color-mix(in srgb, var(--environment-land) 64%, #365941); }
 .edinburgh-damp-litter path:not(.edinburgh-leaf-vein) { fill: color-mix(in srgb, #7a583d 68%, var(--environment-accent)); stroke: color-mix(in srgb, var(--environment-detail) 70%, #4e3d31); stroke-width: 1.4; }
 .edinburgh-leaf-vein { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 73%, #493a2f); stroke-width: 1; }
 :root[data-theme='dark'] .edinburgh-sky { fill: color-mix(in srgb, #2f4244 76%, var(--environment-water)); }
 :root[data-theme='dark'] .edinburgh-clouds { opacity: .3; }
+:root[data-theme='dark'] .edinburgh-haze { fill: color-mix(in srgb, #344a49 72%, var(--environment-water)); opacity: .38; }
 :root[data-theme='dark'] .edinburgh-blackford-hill { fill: color-mix(in srgb, #354a38 77%, var(--environment-land)); }
 :root[data-theme='dark'] .edinburgh-andesite-face { fill: color-mix(in srgb, #51445f 72%, var(--environment-ground)); }
 :root[data-theme='dark'] .edinburgh-observatory-body,
@@ -569,6 +576,8 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .edinburgh-copper-dome { fill: color-mix(in srgb, #477566 79%, var(--environment-land)); }
 :root[data-theme='dark'] .edinburgh-allotment-ground { fill: color-mix(in srgb, #414b38 75%, var(--environment-land)); }
 :root[data-theme='dark'] .edinburgh-foreground-soil { fill: color-mix(in srgb, #3c382e 78%, var(--environment-ground)); }
+:root[data-theme='dark'] .edinburgh-garden-path { fill: color-mix(in srgb, #6d6250 64%, var(--environment-ground)); }
+:root[data-theme='dark'] .edinburgh-botanical-frame path:not(:first-child) { fill: color-mix(in srgb, #36583f 74%, var(--environment-land)); }
 :root[data-theme='dark'] .edinburgh-compost-front,
 :root[data-theme='dark'] .edinburgh-compost-side,
 :root[data-theme='dark'] .edinburgh-compost-back { fill: color-mix(in srgb, #725337 74%, var(--environment-ground)); }
@@ -1594,6 +1603,33 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .dragonfly-wing { fill: rgba(172,211,199,.46); }
 .edinburgh-accessory { filter: drop-shadow(0 5px 4px rgba(28,38,35,.26)); }
 .edinburgh-accessory-shadow { fill: rgba(25,34,32,.2); }
+.kilt-shadow,
+.bagpipe-shadow { fill: rgba(25,34,32,.18); }
+.kilt-cloth { fill: color-mix(in srgb, #355f50 72%, var(--local-primary)); stroke: color-mix(in srgb, #263f37 80%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.kilt-cloth.companion { fill: color-mix(in srgb, #466c5c 68%, var(--local-primary)); }
+.kilt-apron { fill: color-mix(in srgb, #466d5d 72%, var(--local-primary)); stroke: color-mix(in srgb, #29453b 72%, var(--worm-deep)); stroke-width: 1.8; }
+.kilt-apron.companion { fill: color-mix(in srgb, #5b7566 69%, var(--local-primary)); }
+.kilt-waistband { fill: color-mix(in srgb, #7d4a53 66%, var(--local-secondary)); stroke: color-mix(in srgb, #4c3037 76%, var(--worm-deep)); stroke-width: 2.5; }
+.kilt-pleat { fill: none; stroke: color-mix(in srgb, #1f3d35 70%, var(--worm-deep)); stroke-width: 2.3; stroke-linecap: round; opacity: .74; }
+.kilt-sett { fill: none; stroke-linecap: round; opacity: .72; }
+.kilt-sett.horizontal { stroke: color-mix(in srgb, #b6894f 68%, var(--local-secondary)); stroke-width: 2.1; }
+.kilt-sett.vertical { stroke: color-mix(in srgb, #8b5360 70%, var(--local-secondary)); stroke-width: 1.8; }
+.kilt-sporran { fill: color-mix(in srgb, #d4c5a4 73%, var(--paper-strong)); stroke: color-mix(in srgb, #5e5546 76%, var(--worm-deep)); stroke-width: 2.2; }
+.kilt-sporran-cap { fill: color-mix(in srgb, #7b6244 69%, var(--local-secondary)); stroke: color-mix(in srgb, #54432f 75%, var(--worm-deep)); stroke-width: 1.5; }
+.kilt-sporran-tassel { fill: none; stroke: color-mix(in srgb, #6d5d49 72%, var(--worm-deep)); stroke-width: 2.5; stroke-linecap: round; }
+.bagpipe-bag { fill: color-mix(in srgb, #456352 70%, var(--local-primary)); stroke: color-mix(in srgb, #294238 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.bagpipe-bag.companion { fill: color-mix(in srgb, #596d5d 66%, var(--local-primary)); }
+.bagpipe-cover { fill: none; stroke: color-mix(in srgb, #b78952 68%, var(--local-secondary)); stroke-width: 2.1; stroke-linecap: round; opacity: .82; }
+.bagpipe-cord { fill: none; stroke: color-mix(in srgb, #8d5361 72%, var(--local-secondary)); stroke-width: 4; stroke-linecap: round; }
+.bagpipe-drone,
+.bagpipe-chanter,
+.bagpipe-blowpipe { fill: none; stroke: color-mix(in srgb, #49382e 82%, var(--worm-deep)); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.bagpipe-mount,
+.bagpipe-ring { fill: color-mix(in srgb, #c09a55 72%, var(--local-secondary)); stroke: color-mix(in srgb, #5d492c 78%, var(--worm-deep)); stroke-width: 1.7; }
+.bagpipe-ring { fill: color-mix(in srgb, #d4c59f 68%, var(--paper-strong)); }
+.bagpipe-chanter-foot,
+.bagpipe-blowpipe-tip { fill: color-mix(in srgb, #a57d43 72%, var(--local-secondary)); stroke: color-mix(in srgb, #55412b 79%, var(--worm-deep)); stroke-width: 1.8; }
+.bagpipe-hole { fill: color-mix(in srgb, #201d1a 82%, var(--worm-deep)); stroke: none; }
 .tumbler-a-frame,
 .tumbler-cradle,
 .tumbler-foot { fill: color-mix(in srgb, #6a6e63 76%, var(--worm-deep)); stroke: color-mix(in srgb, #343d3a 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
