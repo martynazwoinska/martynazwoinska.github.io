@@ -174,7 +174,7 @@ const species = [
       { name: "La Selva, Costa Rica", coordinates: [-84.009, 10.426], source: "CaeNDR", style: "rainforest" },
       { name: "Guadeloupe", coordinates: [-61.643, 16.044], source: "CaeNDR", style: "ocean" },
       { name: "Nouragues, French Guiana · JU1428", coordinates: [-52.68, 4.08], source: "CaeNDR JU1428 isotype record", style: "rainforest", strain: "JU1428", history: "JU1428 is CaeNDR’s isotype-reference C. tropicalis strain, also called 4A2. P. Châtelet sampled its rotting Duguetia surinamensis fruit on Petit Plateau in Nouragues forest in 2008, and M.-A. Félix isolated the strain. CaeNDR records forest at 86 m; JU1429 and JU1430 share its isotype group." },
-      { name: "Manaus region, Brazil", coordinates: [-59.840, -2.960], source: "CaeNDR", style: "rainforest" },
+      { name: "Manaus region, Brazil · JU1976", coordinates: [-59.84, -2.96], source: "CaeNDR JU1976 isotype record", style: "rainforest", strain: "JU1976", history: "JU1976, formerly Br3.1, is a CaeNDR isotype-reference C. tropicalis strain. M.-A. Félix isolated it from an unidentified rotting fruit sampled in forest at Amazon village near Manaus on 22 June 2010 at 21 m. It was recorded about 4 m from JU1975, which came from a different fruit. The record reports no exact fruit identity, neighbouring plants, weather, soil profile or collection-patch geometry." },
       { name: "Oʻahu, Hawaiʻi", coordinates: [-157.765, 21.356], source: "CaeNDR", style: "kauai" },
       { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.478, 22.194], source: "CaeNDR", style: "kauai" },
       { name: "New Taipei City, Taiwan", coordinates: [121.773, 25.053], source: "CaeNDR", style: "rainforest" },
@@ -935,7 +935,7 @@ function positionMarkers() {
   const offsetY = (box.height - 470 * scale) / 2;
   const placed = [];
   const offsets = [[0, 0]];
-  [30, 44, 58, 72, 86].forEach(radius => {
+  [18, 28, 38, 48].forEach(radius => {
     for (let step = 0; step < 8; step += 1) {
       const angle = (Math.PI * 2 * step) / 8;
       offsets.push([Math.round(Math.cos(angle) * radius), Math.round(Math.sin(angle) * radius)]);
@@ -949,14 +949,14 @@ function positionMarkers() {
     for (const candidate of offsets) {
       const x = baseX + candidate[0];
       const y = baseY + candidate[1];
-      const collides = placed.some(mark => Math.abs(mark.x - x) < 28 && Math.abs(mark.y - y) < 28);
+      const collides = placed.some(mark => Math.abs(mark.x - x) < 23 && Math.abs(mark.y - y) < 23);
       if (!collides) {
         chosen = candidate;
         break;
       }
     }
-    const x = Math.max(15, Math.min(box.width - 15, baseX + chosen[0]));
-    const y = Math.max(15, Math.min(box.height - 15, baseY + chosen[1]));
+    const x = Math.max(13, Math.min(box.width - 13, baseX + chosen[0]));
+    const y = Math.max(13, Math.min(box.height - 13, baseY + chosen[1]));
     placed.push({ x, y });
     record.button.style.left = `${x}px`;
     record.button.style.top = `${y}px`;

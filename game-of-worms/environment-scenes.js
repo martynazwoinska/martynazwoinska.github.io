@@ -249,12 +249,12 @@ const canonicalProfiles = {
     palettes.rainforest, [[0, 294], [80, 270], [155, 278], [228, 256], [305, 272], [382, 250], [460, 268], [540, 246], [600, 270]],
     { weather: "sun", cues: [] }
   ),
-  "Manaus region, Brazil": profile(
-    "manaus-meeting-waters", "Meeting of the Negro and Solimões",
-    "Central Amazonia around Manaus contains white-water floodplains, black-water igapó, lakes, and upland forest shaped by the Negro and Solimões.",
-    "UNESCO Central Amazon Biosphere Reserve", "https://www.unesco.org/en/mab/central-amazon",
-    palettes.blackwater, [[0, 276], [95, 254], [190, 270], [285, 248], [380, 266], [480, 246], [600, 270]],
-    { water: "meeting", weather: "rain", cues: [["igapo", 75, 294, .9], ["canoe", 475, 350, .7], ["forest", 315, 286, .75]] }
+  "Manaus region, Brazil · JU1976": profile(
+    "manaus-ju1976-amazon-village-fruit-forest", "JU1976 Amazon-village fruit forest floor",
+    "JU1976, formerly Br3.1, was isolated by M.-A. Félix from an unidentified rotting fruit sampled on 22 June 2010 in forest at Amazon village near Manaus, at 21 m. The record places it about 4 m from JU1975, which came from a different fruit. The palm-rich understorey and subtle soil gradient are wider Manaus-region context, not a reconstruction of the collection patch; exact fruit identity, neighbouring plants, weather, soil profile and patch geometry are unreported.",
+    "CaeNDR JU1976 isotype record", "https://caendr.org/isotype/JU1976/",
+    palettes.rainforest, [[0, 294], [78, 267], [154, 282], [224, 250], [302, 270], [382, 246], [460, 270], [536, 252], [600, 274]],
+    { weather: "sun", cues: [] }
   ),
   "Oʻahu, Hawaiʻi": profile(
     "oahu-koolau", "Koʻolau ridges and wet valleys",
@@ -529,12 +529,12 @@ const sceneCompositions = Object.freeze({
     "M0 418Q130 382 258 406T600 389", [],
     "a knobbled softened aggregate fruit beside a shallow damp plateau hollow, framed by opposed trunks and a narrow cropped granite shoulder"
   ),
-  "manaus-meeting-waters": composition(
-    "M0 403 Q151 386 300 405 T600 398 V430 H0Z",
-    "M0 316 H600 V349 H0Z",
-    [["igapo", 28, 382, .98], ["forest", 565, 349, .68]],
-    "M0 342 Q142 318 282 350 L600 391 M600 324 Q452 308 318 347 L0 397", [1, 0, 2],
-    "a bold Y-shaped dark-and-light confluence dominating flooded forest"
+  "manaus-ju1976-amazon-village-fruit-forest": composition(
+    "M0 402 Q118 375 225 398 T420 389 T600 401 V430 H0Z",
+    "M0 302 Q92 270 170 287 T332 268 T474 282 T600 260 V430 H0Z",
+    [],
+    "M0 420 Q138 382 257 407 T600 393", [],
+    "an anonymous softened fruit below opposed palm fans, with a narrow light shaft through dense forest trunks"
   ),
   "oahu-koolau": composition(
     "M0 392 Q98 355 192 384 Q292 416 387 378 Q491 337 600 368 V430 H0Z",
@@ -1943,6 +1943,27 @@ function drawNouraguesJU1428Scene(target, palette) {
   append(fruit,"path",{class:"nouragues-fruit-collapse",d:"M-57 16Q-27 4 0 20Q26 5 57 15Q33 39 4 34Q-28 39-57 16Z"});
 }
 
+function drawManausJU1976Scene(target, palette) {
+  append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+  append(target, "path", { fill: palette[1], d: "M0 240Q42 188 86 221Q128 150 176 216Q225 172 270 210Q316 148 362 211Q410 170 456 214Q505 153 548 214Q579 184 600 210V326H0Z" });
+  [[34,0,23,300],[105,0,14,286],[177,0,19,309],[246,0,12,278],[364,0,18,304],[439,0,13,282],[528,0,22,312],[580,0,11,290]].forEach(([x,y,w,h],i)=>{
+    append(target, "path", { class: i % 2 ? "manaus-trunk-light" : "manaus-trunk", d: `M${x} ${y}L${x+w} ${y}L${x+w-5} ${h}L${x-6} ${h}Z` });
+  });
+  [[82,80,136,190],[214,52,184,161],[409,74,469,185],[504,32,545,150]].forEach(([x1,y1,x2,y2])=>{
+    append(target, "path", { class: "manaus-liana", d: `M${x1} ${y1}Q${x1+30} ${y1+44} ${x2} ${y2}T${x2+12} ${y2+264}` });
+  });
+  append(target, "path", { fill: palette[2], d: "M0 284Q100 246 190 273T358 264T476 276T600 252V352H0Z" });
+  append(target, "path", { fill: palette[3], d: "M0 318Q112 289 226 319T410 310T600 321V430H0Z" });
+  append(target, "path", { class: "manaus-light-shaft", d: "M291 0L319 0L348 318L272 318Z" });
+  [[70,327,1],[518,327,.82],[113,288,.62],[470,278,.7]].forEach(([x,y,s],i)=>{
+    append(target,"path",{class:i%2?"manaus-palm-tall":"manaus-palm-low",d:`M${x} ${y}Q${x-8*s} ${y-76*s} ${x+3*s} ${y-145*s}M${x+2*s} ${y-76*s}Q${x-54*s} ${y-104*s} ${x-86*s} ${y-82*s}M${x+4*s} ${y-83*s}Q${x+50*s} ${y-120*s} ${x+78*s} ${y-101*s}`});
+    [[-86,-82,-118,-62],[-86,-82,-108,-108],[78,-101,112,-84],[78,-101,97,-125]].forEach(([dx,dy,ex,ey])=>append(target,"path",{class:"manaus-palm-leaf",d:`M${x+dx*s} ${y+dy*s}Q${x+(dx+ex)/2*s} ${y+(dy+ey)/2*s-14} ${x+ex*s} ${y+ey*s}Q${x+(dx+ex)/2*s} ${y+(dy+ey)/2*s+8} ${x+dx*s} ${y+dy*s}Z`}));
+  });
+  [[25,396,92,377],[115,410,172,388],[184,396,248,378],[374,407,438,384],[492,416,570,389]].forEach(([x1,y1,x2,y2],i)=>append(target,"path",{class:i%2?"manaus-litter damp":"manaus-litter",d:`M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-8} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+6} ${x1} ${y1}Z`}));
+  const fruit=append(target,"g",{class:"manaus-anonymous-fruit",transform:"translate(94 362) rotate(-9)","aria-hidden":"true"});
+  append(fruit,"ellipse",{class:"manaus-fruit-shadow",cx:0,cy:27,rx:76,ry:17}); append(fruit,"path",{class:"manaus-fruit-rind",d:"M-69 8Q-76-27-43-48Q-17-64 10-50Q38-66 62-40Q78-12 61 15Q39 42 9 39Q-28 48-55 32Q-70 25-69 8Z"}); append(fruit,"path",{class:"manaus-fruit-collapse",d:"M-54 13Q-20 1 6 17Q34 5 56 15Q29 38 1 32Q-28 38-54 13Z"});
+}
+
 export function renderEnvironmentScene(target, profile, habitatElement) {
   if (!target || !profile) return;
   const palette = profile.palette;
@@ -2019,6 +2040,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "nouragues-ju1428-duguetia-fruit-forest") {
     drawNouraguesJU1428Scene(target, palette);
+    return;
+  }
+  if (profile.id === "manaus-ju1976-amazon-village-fruit-forest") {
+    drawManausJU1976Scene(target, palette);
     return;
   }
 
