@@ -581,25 +581,25 @@ function drawEdinburghAccessory(group, item, companion) {
     group.classList.add("edinburgh-accessory", "edinburgh-kilt", companion ? "edinburgh-kilt-companion" : "edinburgh-kilt-primary");
     if (companion) {
       add(group, "path", { class: "kilt-shadow", d: "M-48 57Q1 77 51 55Q27 82-43 78Z" });
-      add(group, "path", { class: "kilt-cloth companion", d: "M-39-9Q0-23 39-9L35 49Q4 66-34 50Z" });
-      add(group, "path", { class: "kilt-apron companion", d: "M-12-5Q8-14 27-5L24 48Q7 58-14 49Z" });
+      add(group, "path", { class: "kilt-cloth companion", d: "M-37-9Q0-23 37-9L47 48Q3 69-46 50Z" });
+      add(group, "path", { class: "kilt-apron companion", d: "M-11-5Q7-14 25-5L30 48Q7 60-17 51Z" });
       add(group, "path", { class: "kilt-waistband", d: "M-42-12Q0-28 42-12L40 1Q0-13-40 1Z" });
       [-25,-12,1,14,27].forEach((x, index) => add(group, "path", { class: "kilt-pleat", d: `M${x}-2Q${x + (index % 2 ? 3 : -2)} 24 ${x * .86} 52` }));
       [-1,18,36].forEach(y => add(group, "path", { class: "kilt-sett horizontal", d: `M-35 ${y}Q0 ${y + 6} 34 ${y}` }));
       [-23,0,22].forEach(x => add(group, "path", { class: "kilt-sett vertical", d: `M${x}-7L${x * .9} 50` }));
-      add(group, "path", { class: "kilt-sporran", d: "M-14 18Q0 9 14 18L11 38Q0 47-11 38Z" });
-      add(group, "path", { class: "kilt-sporran-tassel", d: "M-6 38L-8 49M0 41V51M6 38L8 49" });
+      add(group, "path", { class: "kilt-sporran", d: "M-11 23Q0 14 11 23L9 38Q0 45-9 38Z" });
+      add(group, "path", { class: "kilt-sporran-tassel", d: "M-5 38L-7 47M0 40V49M5 38L7 47" });
     } else {
       add(group, "path", { class: "kilt-shadow", d: "M-67 68Q2 96 72 64Q38 104-59 97Z" });
-      add(group, "path", { class: "kilt-cloth primary", d: "M-57-12Q0-34 57-12L51 65Q5 92-51 67Z" });
-      add(group, "path", { class: "kilt-apron primary", d: "M-17-7Q10-21 38-8L35 64Q10 81-20 68Z" });
+      add(group, "path", { class: "kilt-cloth primary", d: "M-53-12Q0-34 53-12L66 64Q8 94-64 67Z" });
+      add(group, "path", { class: "kilt-apron primary", d: "M-15-7Q9-21 34-8L42 63Q11 83-23 69Z" });
       add(group, "path", { class: "kilt-waistband", d: "M-62-17Q0-42 62-17L59 1Q0-22-59 2Z" });
       [-43,-28,-13,2,17,32,47].forEach((x, index) => add(group, "path", { class: "kilt-pleat", d: `M${x}-5Q${x + (index % 2 ? 5 : -4)} 30 ${x * .84} 70` }));
       [-3,23,49].forEach(y => add(group, "path", { class: "kilt-sett horizontal", d: `M-51 ${y}Q0 ${y + 10} 49 ${y}` }));
       [-37,-12,13,38].forEach(x => add(group, "path", { class: "kilt-sett vertical", d: `M${x}-10L${x * .88} 67` }));
-      add(group, "path", { class: "kilt-sporran", d: "M-22 25Q0 9 22 25L18 51Q0 66-18 51Z" });
-      add(group, "path", { class: "kilt-sporran-cap", d: "M-20 27Q0 18 20 27Q0 37-20 27Z" });
-      add(group, "path", { class: "kilt-sporran-tassel", d: "M-10 51L-13 69M0 55V72M10 51L13 69" });
+      add(group, "path", { class: "kilt-sporran", d: "M-17 30Q0 17 17 30L14 50Q0 61-14 50Z" });
+      add(group, "path", { class: "kilt-sporran-cap", d: "M-15 31Q0 23 15 31Q0 39-15 31Z" });
+      add(group, "path", { class: "kilt-sporran-tassel", d: "M-8 50L-10 64M0 53V67M8 50L10 64" });
     }
     return true;
   }
