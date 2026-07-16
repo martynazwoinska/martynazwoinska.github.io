@@ -18,7 +18,7 @@ const rows = [
   ["briggsae", "Nambucca Heads, New South Wales · QG2814", "banksia wig", "wig", "eucalyptus cape", "cape", "flower press", "flower-press"],
   ["elegans", "Bristol N2, England", "seeded NGM agar plates", "ngm-agar-plate", "fitted lab coats", "n2-lab-coat", "cryo-vial jetpacks", "cryo-vial-jetpack"],
   ["elegans", "Santeuil, France", "hollow-stem specimen lantern", "hogweed-specimen-lantern", "Santeuil cylinder organ", "santeuil-cylinder-organ", "Couleuvre dragonfly automaton", "couleuvre-dragonfly-automaton"],
-  ["elegans", "Edinburgh, Scotland", "Midmar compost tumbler", "midmar-compost-tumbler", "GALAXY plate-scanner engine", "galaxy-plate-scanner", "Agassiz ice-flow model", "agassiz-ice-flow-model"],
+  ["elegans", "Edinburgh, Scotland", "Midmar compost tumbler", "midmar-compost-tumbler", "Edinburgh tartan kilt", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
   ["elegans", "Tenerife, Spain", "avocado microhabitat viewer", "avocado-microhabitat-viewer", "aerial-root harp", "aerial-root-harp", "Linnaean seed-exchange engine", "linnaean-seed-exchange-engine"],
   ["elegans", "Kauaʻi, Hawaiʻi", "decay-substrate theatre", "decay-substrate-theatre", "Kōkeʻe cloud-water collector", "kokee-cloud-water-collector", "XZ1516 haplotype viewer", "xz1516-haplotype-viewer"],
   ["elegans", "Australian Capital Territory", "QG2811 Baermann fig-recovery rig", "qg2811-baermann-fig-recovery", "Yellow Box seed orrery", "yellow-box-seed-orrery", "Black Mountain signal theremin", "black-mountain-signal-theremin"],
@@ -81,7 +81,7 @@ const repeatedRendererFamilies = new Set([
 
 const n2RendererFamilies = new Set(["ngm-agar-plate", "n2-lab-coat", "cryo-vial-jetpack"]);
 const santeuilRendererFamilies = new Set(["hogweed-specimen-lantern", "santeuil-cylinder-organ", "couleuvre-dragonfly-automaton"]);
-const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "galaxy-plate-scanner", "agassiz-ice-flow-model"]);
+const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
 const tenerifeRendererFamilies = new Set(["avocado-microhabitat-viewer", "aerial-root-harp", "linnaean-seed-exchange-engine"]);
 const kauaiRendererFamilies = new Set(["decay-substrate-theatre", "kokee-cloud-water-collector", "xz1516-haplotype-viewer"]);
 const actRendererFamilies = new Set(["qg2811-baermann-fig-recovery", "yellow-box-seed-orrery", "black-mountain-signal-theremin"]);
@@ -166,7 +166,7 @@ function hasNamedRenderer(item) {
 }
 
 function artworkKind(label) {
-  if (/coat|waistcoat|cape|waders|jacket|swimwear|skirt|cuirass|boots|pauldron|epaulettes|ruff|collar|diving bell|crinoline|scarf|tail/i.test(label)) return "garment";
+  if (/coat|waistcoat|cape|waders|jacket|swimwear|skirt|kilt|cuirass|boots|pauldron|epaulettes|ruff|collar|diving bell|crinoline|scarf|tail/i.test(label)) return "garment";
   if (/visor|fascinator|spectacles|cloche|casque|bonnet|monocle|wig|agar plate|boater|ear-warmers|goggles|crest|bowler|halo|hood|mask|headband|helmet|headphones|sunglasses/i.test(label)) return "head";
   return "prop";
 }
@@ -195,7 +195,7 @@ function artworkForm(label, kind) {
     if (/cuirass/i.test(label)) return 4;
     if (/cape|pauldron|epaulettes|collar|ruff/i.test(label)) return 16;
     if (/waders|boots/i.test(label)) return 14;
-    if (/skirt|crinoline|swimwear/i.test(label)) return 17;
+    if (/skirt|kilt|crinoline|swimwear/i.test(label)) return 17;
     if (/scarf|tail/i.test(label)) return 1;
     return 13;
   }
@@ -577,6 +577,61 @@ function drawSanteuilAccessory(group, item, companion) {
 }
 
 function drawEdinburghAccessory(group, item, companion) {
+  if (item.family === "edinburgh-tartan-kilt") {
+    group.classList.add("edinburgh-accessory", "edinburgh-kilt", companion ? "edinburgh-kilt-companion" : "edinburgh-kilt-primary");
+    if (companion) {
+      add(group, "path", { class: "acc-soft", d: "M-51 59Q0 76 52 57Q28 84-44 79Z" });
+      add(group, "path", { class: "acc-main", d: "M-42-7Q0-21 42-7L36 52Q0 70-36 51Z" });
+      add(group, "path", { class: "acc-accent", d: "M-45-10Q0-25 45-10L43 3Q0-10-43 3Z" });
+      add(group, "path", { class: "acc-soft", d: "M-18 21Q0 11 18 21L15 39Q0 49-15 39Z" });
+      [-27, -14, 0, 14, 27].forEach(x => add(group, "path", { class: "acc-accent-line", d: `M${x}-2Q${x + (x % 2 ? 3 : -3)} 24 ${x * .84} 57` }));
+      [-2, 18, 38].forEach(y => add(group, "path", { class: "acc-line", d: `M-37 ${y}Q0 ${y + 9} 37 ${y}` }));
+      add(group, "circle", { class: "acc-dark", cx: 0, cy: 28, r: 3.5 });
+      add(group, "path", { class: "acc-accent-line", d: "M0 32V45M-6 39L0 34L6 39" });
+    } else {
+      add(group, "path", { class: "acc-soft", d: "M-70 66Q0 90 71 63Q39 101-61 94Z" });
+      add(group, "path", { class: "acc-main", d: "M-59-10Q0-31 59-10L51 66Q0 91-51 65Z" });
+      add(group, "path", { class: "acc-accent", d: "M-63-14Q0-35 63-14L61 3Q0-17-61 3Z" });
+      add(group, "path", { class: "acc-soft", d: "M-25 28Q0 13 25 28L21 51Q0 65-21 51Z" });
+      [-46, -30, -15, 0, 16, 31, 46].forEach(x => add(group, "path", { class: "acc-accent-line", d: `M${x}-5Q${x + (x % 2 ? 5 : -4)} 30 ${x * .84} 72` }));
+      [-4, 21, 46].forEach(y => add(group, "path", { class: "acc-line", d: `M-52 ${y}Q0 ${y + 12} 52 ${y}` }));
+      add(group, "circle", { class: "acc-dark", cx: 0, cy: 36, r: 5 });
+      add(group, "path", { class: "acc-accent-line", d: "M0 41V59M-9 49L0 42L9 49" });
+    }
+    return true;
+  }
+
+  if (item.family === "great-highland-bagpipes") {
+    group.classList.add("edinburgh-accessory", "great-highland-bagpipes", companion ? "bagpipes-companion" : "bagpipes-primary");
+    if (companion) {
+      add(group, "path", { class: "acc-soft", d: "M-61 32Q0 52 62 31Q31 61-53 54Z" });
+      add(group, "path", { class: "acc-main", d: "M-30 18Q-47-3-28-25Q-3-39 24-24Q43-5 29 18Q2 37-30 18Z" });
+      add(group, "path", { class: "acc-accent-line", d: "M-30-15L27 12M-38-3L19 25M-20-28L33 0" });
+      add(group, "path", { class: "acc-strap", d: "M-26-20Q-49-46-42-69" });
+      [-18, -2].forEach((x, index) => {
+        add(group, "path", { class: "acc-line thick", d: `M${x}-17L${x - 7} ${-82 - index * 7}` });
+        add(group, "path", { class: "acc-main", d: `M${x - 13} ${-83 - index * 7}Q${x - 7} ${-91 - index * 7} ${x - 1} ${-83 - index * 7}L${x - 3} ${-76 - index * 7}L${x - 13} ${-76 - index * 7}Z` });
+      });
+      add(group, "path", { class: "acc-line thick", d: "M19 4L54 66" });
+      [31, 42, 53].forEach((y, index) => add(group, "circle", { class: index === 1 ? "acc-accent" : "acc-dark", cx: 36 + index * 6, cy: y, r: 3 }));
+      add(group, "path", { class: "acc-soft", d: "M-47-29Q-63-44-75-35Q-64-22-45-20Z" });
+    } else {
+      add(group, "path", { class: "acc-soft", d: "M-83 48Q0 76 85 46Q43 89-73 79Z" });
+      add(group, "path", { class: "acc-main", d: "M-43 24Q-69-6-43-42Q-6-65 34-40Q62-8 40 25Q2 51-43 24Z" });
+      add(group, "path", { class: "acc-accent-line", d: "M-48-29L36 13M-57-12L25 32M-34-48L49-4M-15-59L55-21" });
+      add(group, "path", { class: "acc-strap", d: "M-38-36Q-70-72-60-111" });
+      [-27, -7, 13].forEach((x, index) => {
+        add(group, "path", { class: "acc-line thick", d: `M${x - 2} ${-35 + index * 4}L${x - 12} ${-126 - index * 11}` });
+        add(group, "path", { class: "acc-main", d: `M${x - 20} ${-128 - index * 11}Q${x - 12} ${-141 - index * 11} ${x - 2} ${-129 - index * 11}L${x - 5} ${-116 - index * 11}L${x - 20} ${-116 - index * 11}Z` });
+      });
+      add(group, "path", { class: "acc-line thick", d: "M31 11L80 92" });
+      [43, 57, 70].forEach((y, index) => add(group, "circle", { class: index === 1 ? "acc-accent" : "acc-dark", cx: 48 + index * 8, cy: y, r: 4 }));
+      add(group, "path", { class: "acc-soft", d: "M-66-40Q-89-61-104-48Q-90-27-63-26Z" });
+      add(group, "circle", { class: "acc-dark", cx: -33, cy: 4, r: 5 });
+    }
+    return true;
+  }
+
   if (item.family === "midmar-compost-tumbler") {
     group.classList.add("edinburgh-accessory", "midmar-tumbler", companion ? "midmar-tumbler-companion" : "midmar-tumbler-primary");
     if (companion) {
@@ -3065,6 +3120,7 @@ function renderPiece(target, item, wormPart) {
     "ngm-agar-plate": { primary: [366, 260, .82, -6], companion: [35, 288, .65, 2] },
     "n2-lab-coat": { primary: [180, 214, 1, 0], companion: [52, 168, .92, -1] },
     "cryo-vial-jetpack": { primary: [278, 143, .9, -3], companion: [31, 155, .72, 5] },
+    "fig-fascinator": { primary: [330, 22, .9, -1], companion: [111, 99, .62, 0] },
     "hogweed-specimen-lantern": { primary: [327, 133, .66, 3], companion: [61, 126, .58, -4] },
     "santeuil-cylinder-organ": { primary: [183, 191, .59, -2], companion: [86, 208, .52, 2] },
     "couleuvre-dragonfly-automaton": { primary: [304, 235, .61, -2], companion: [76, 266, .5, 3] },
@@ -3103,7 +3159,9 @@ function renderPiece(target, item, wormPart) {
     "c0230-seven-isotype-registry": { primary: [343, 258, .28, -1], companion: [-27, 326, .24, 2] },
     "qg2904-uncracked-pod-seam-scanner": { primary: [250, -62, .31, -2], companion: [-8, 90, .27, 2] },
     "qg2904-collection-to-funnel-relay": { primary: [220, 148, .32, -1], companion: [90, 212, .26, 2] },
-    "dro-canopy-crane-strata-mapper": { primary: [377, 140, .29, -1], companion: [-5, 292, .26, 2] }
+    "dro-canopy-crane-strata-mapper": { primary: [377, 140, .29, -1], companion: [-5, 292, .26, 2] },
+    "edinburgh-tartan-kilt": { primary: [223, 184, .74, -2], companion: [70, 172, .48, 2] },
+    "great-highland-bagpipes": { primary: [286, 214, .48, -4], companion: [88, 187, .36, 4] }
     ,"ju1373-torch-ginger-bract-collar": { primary: [366, 118, .33, -4], companion: [8, 112, .28, 5] }
     ,"ju1373-type-isolate-signet-engine": { primary: [224, 194, .31, -1], companion: [105, 207, .27, 2] }
     ,"saint-benoit-windward-slope-mobile": { primary: [365, 270, .31, 1], companion: [6, 286, .26, -2] }

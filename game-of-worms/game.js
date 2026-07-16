@@ -258,8 +258,6 @@ const els = {
   speciesReproduction: document.getElementById("species-reproduction"),
   speciesHabitat: document.getElementById("species-habitat"),
   speciesFact: document.getElementById("species-fact"),
-  environmentNote: document.getElementById("environment-note"),
-  environmentSource: document.getElementById("environment-source"),
   exploredCount: document.getElementById("explored-count"),
   freestyle: document.getElementById("freestyle-draw"),
   drawTools: document.getElementById("draw-tools"),
@@ -392,16 +390,8 @@ function renderSpecies(item, place) {
   els.habitat.style.setProperty("--worm-scale", item.scale);
   if (environment) {
     renderEnvironmentScene(els.locationScene, environment, els.habitat);
-    els.environmentNote.textContent = environment.note;
-    els.environmentSource.href = environment.source.url;
-    els.environmentSource.textContent = environment.source.label;
-    els.environmentSource.setAttribute("aria-label", `${environment.source.label} (opens in a new tab)`);
   } else {
     els.locationScene.replaceChildren();
-    els.environmentNote.textContent = "This record is waiting for a checked regional landscape profile.";
-    els.environmentSource.removeAttribute("href");
-    els.environmentSource.removeAttribute("aria-label");
-    els.environmentSource.textContent = "Landscape source unavailable";
   }
   syncAccessories();
   renderDoodles();
