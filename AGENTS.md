@@ -103,6 +103,8 @@ Avoid:
 - Do not invent URLs, product identities, awards, pattern names, designers, scientific facts, or biographical details.
 - Use `<em>` for scientific names where appropriate.
 - Avoid changing approved text unless the task asks for copy revision.
+- For every public-facing copy change, update the corresponding English, Swedish, and Polish strings in the same proposed change. If a string intentionally exists in only one language, state that exception.
+- Before committing or deploying a copy change, show Martyna the exact wording for every affected language version and wait for her explicit verification. Approval of source-language text alone is not approval of unreviewed translations.
 
 ## Images and assets
 
