@@ -379,23 +379,28 @@
       .n2-preview__worm--primary, .n2-preview__worm--male { animation: none !important; }
     }
 
-    /* ----------  Hero  ---------- */
-    .hero { padding-top: 64px; padding-bottom: 40px; }
-    .hero-grid { display: grid; grid-template-columns: 154px 1fr; gap: 36px; align-items: center; }
-    @media (max-width: 620px) {
-      .hero { padding-top: 48px; padding-bottom: 32px; }
-      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 22px; }
+    /* ----------  Hero: quiet atelier composition  ---------- */
+    .hero {
+      position: relative; isolation: isolate; overflow: hidden;
+      min-height: 500px; padding-top: 84px; padding-bottom: 76px;
     }
+    .hero-grid {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: minmax(0, 1fr) 218px;
+      align-items: center; gap: clamp(64px, 9vw, 132px);
+      width: min(860px, calc(100% - 176px)); min-height: 320px; margin: 0 auto;
+    }
+    .hero-copy { min-width: 0; align-self: center; }
     .avatar {
-      position: relative;
-      width: 154px; height: 162px;
-      border-radius: 48% 52% 47% 53% / 55% 55% 45% 45%;
-      background: linear-gradient(140deg, var(--accent-soft), var(--surface-2));
-      border: 2px solid color-mix(in srgb, var(--accent) 48%, var(--border));
+      position: relative; grid-column: 2; grid-row: 1; justify-self: end;
+      width: 218px; height: 246px;
+      border-radius: 46% 54% 43% 57% / 38% 40% 60% 62%;
+      background: var(--surface-2);
+      border: 1px solid color-mix(in srgb, var(--accent-gold) 82%, var(--border));
       display: flex; align-items: center; justify-content: center;
       box-shadow:
         0 0 0 4px var(--bg),
-        0 0 0 5px color-mix(in srgb, var(--accent-gold) 55%, var(--border)),
+        0 0 0 5px color-mix(in srgb, var(--accent) 38%, var(--accent-gold)),
         var(--shadow);
       overflow: hidden;
     }
@@ -406,13 +411,110 @@
       filter: saturate(.88) contrast(.91) brightness(1.015);
     }
     .avatar-mono { font-family: var(--serif); font-size: 3rem; color: var(--accent); }
-    @media (max-width: 620px) { .avatar { width: 136px; height: 143px; margin: 0 auto; } }
-    .hero h1 { font-size: 3.25rem; font-weight: 700; margin: 0 0 4px; }
-    .hero .role { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 4px; }
-    .hero .affil { color: var(--text-soft); margin-bottom: 18px; }
-    .hero p.lead { color: var(--text-soft); font-size: 1.02rem; max-width: 46ch; margin: 0 auto; }
-    @media (min-width: 621px) { .hero p.lead { margin: 0; } }
-    @media (max-width: 620px) { .hero h1 { font-size: 2.7rem; } }
+    .hero h1 {
+      color: color-mix(in srgb, var(--accent) 64%, var(--text));
+      font-size: clamp(4rem, 6vw, 5rem); font-weight: 600;
+      line-height: .82; letter-spacing: -.025em; margin: 0;
+    }
+    .hero h1 span { display: block; }
+    .hero .role { margin-top: 22px; }
+    .hero .role-title {
+      display: block; color: var(--accent); font-size: 1rem; font-weight: 600;
+      line-height: 1.35;
+    }
+    .hero .role-tagline {
+      display: block; margin-top: 3px; color: var(--text-soft);
+      font-family: var(--serif); font-size: .96rem; font-style: italic; line-height: 1.45;
+    }
+    .hero .affil {
+      max-width: 42ch; margin-top: 12px; color: var(--text-faint);
+      font-size: .84rem; line-height: 1.45;
+    }
+    html[data-theme="dark"] .hero h1 {
+      color: color-mix(in srgb, var(--text) 94%, var(--accent-gold));
+    }
+    @media (prefers-color-scheme: dark) {
+      html:not([data-theme]) .hero h1 {
+        color: color-mix(in srgb, var(--text) 94%, var(--accent-gold));
+      }
+    }
+    .hero-botanical {
+      position: absolute; z-index: 1; display: block; overflow: visible;
+      pointer-events: none; opacity: .92;
+    }
+    .hero-botanical--upper { width: 264px; height: 236px; top: 4px; left: -42px; }
+    .hero-botanical--lower { width: 340px; height: 228px; right: -42px; bottom: 18px; }
+    .hero-botanical__stem,
+    .hero-botanical__gold {
+      fill: none; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .hero-botanical__stem { stroke: color-mix(in srgb, var(--accent) 78%, var(--text-soft)); stroke-width: 2.1; }
+    .hero-botanical__gold { stroke: var(--accent-gold); stroke-width: 1.35; }
+    .hero-botanical__leaf {
+      fill: color-mix(in srgb, var(--accent) 52%, transparent);
+      stroke: color-mix(in srgb, var(--accent) 82%, var(--text-soft)); stroke-width: 1.1;
+    }
+    .hero-botanical__berry {
+      fill: color-mix(in srgb, var(--accent-berry) 86%, var(--accent-violet));
+      stroke: color-mix(in srgb, var(--accent-berry) 72%, var(--text)); stroke-width: 1;
+    }
+    .hero-pause {
+      position: absolute; z-index: 2; left: 50%; bottom: 39px;
+      width: 84px; height: 18px; transform: translateX(-50%);
+      color: var(--accent-gold); pointer-events: none;
+    }
+    .hero-pause path,
+    .hero-pause circle { stroke: currentColor; fill: none; stroke-linecap: round; }
+    .hero-pause .hero-pause__dot { fill: currentColor; stroke: none; }
+    .hero-rule {
+      position: absolute; z-index: 2; right: 24px; bottom: 0; left: 24px;
+      height: 1px; background: color-mix(in srgb, var(--accent-gold) 72%, var(--border));
+      pointer-events: none;
+    }
+    .hero-rule::before {
+      content: ""; position: absolute; top: 50%; left: 20px;
+      width: 5px; height: 5px; background: var(--bg);
+      border: 1px solid var(--accent-gold); transform: translateY(-50%) rotate(45deg);
+    }
+    #about::before,
+    #about::after,
+    #about > h2::before { display: none; }
+    #about { padding-top: 30px; }
+    @media (max-width: 900px) {
+      .hero { min-height: 458px; padding-top: 68px; padding-bottom: 68px; }
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr) 184px;
+        gap: 50px; width: min(680px, calc(100% - 76px)); min-height: 300px;
+      }
+      .avatar { width: 184px; height: 212px; }
+      .hero h1 { font-size: clamp(3.5rem, 8vw, 4.35rem); }
+      .hero-botanical--upper { width: 218px; height: 204px; left: -54px; }
+      .hero-botanical--lower { width: 276px; height: 196px; right: -56px; }
+    }
+    @media (max-width: 620px) {
+      .hero { min-height: 438px; padding: 44px 18px 62px; }
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr) 126px;
+        gap: 16px; width: 100%; min-height: 318px;
+      }
+      .avatar { width: 126px; height: 150px; }
+      .hero h1 { font-size: clamp(2.68rem, 12vw, 3.05rem); line-height: .84; }
+      .hero .role { margin-top: 16px; }
+      .hero .role-title { font-size: .88rem; }
+      .hero .role-tagline { font-size: .82rem; }
+      .hero .affil { margin-top: 8px; font-size: .73rem; line-height: 1.38; }
+      .hero-botanical { opacity: .72; }
+      .hero-botanical--upper { width: 158px; height: 154px; top: 0; left: -60px; }
+      .hero-botanical--lower { width: 204px; height: 154px; right: -76px; bottom: 26px; }
+      .hero-pause { bottom: 29px; width: 68px; }
+      .hero-rule { right: 18px; left: 18px; }
+      #about { padding-top: 26px; }
+    }
+    @media (max-width: 370px) {
+      .hero-grid { grid-template-columns: minmax(0, 1fr) 112px; gap: 12px; }
+      .avatar { width: 112px; height: 136px; }
+      .hero h1 { font-size: 2.55rem; }
+    }
 
     .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
     @media (max-width: 620px) { .links { justify-content: center; } }
@@ -657,19 +759,59 @@
   <main id="main">
   <!-- ============ HERO ============ -->
   <div class="wrap hero">
+    <svg class="hero-botanical hero-botanical--upper" viewBox="0 0 280 240" aria-hidden="true" focusable="false">
+      <path class="hero-botanical__stem" d="M-18 224 C12 146 47 92 119 43 C148 23 180 10 218 3" />
+      <path class="hero-botanical__gold" d="M-8 238 C29 151 71 101 143 55 C171 37 202 25 241 20" />
+      <path class="hero-botanical__stem" d="M32 154 C67 124 93 91 110 51" />
+      <path class="hero-botanical__gold" d="M59 137 C83 118 103 92 119 62" />
+      <path class="hero-botanical__leaf" d="M38 145 C19 140 10 126 15 109 C34 111 46 124 38 145Z" />
+      <path class="hero-botanical__leaf" d="M66 117 C51 105 49 89 59 77 C74 85 81 101 66 117Z" />
+      <path class="hero-botanical__leaf" d="M91 85 C80 70 84 55 97 47 C109 60 107 75 91 85Z" />
+      <path class="hero-botanical__berry" d="M102 47 C95 34 102 22 115 20 C123 29 121 41 110 48Z" />
+      <circle class="hero-botanical__berry" cx="116" cy="18" r="5" />
+    </svg>
     <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>
+          <span>Martyna</span>
+          <span>Katarzyna</span>
+          <span>Zwoińska</span>
+        </h1>
+        <div class="role">
+          <span class="role-title">Evolutionary biologist.</span>
+          <span class="role-tagline">From lab to code, from ideas to execution.</span>
+        </div>
+        <div class="affil">Department of Ecology and Genetics, Uppsala University</div>
+      </div>
       <div class="avatar">
         <span class="avatar-mono">MZ</span>
         <!-- Upload a file named photo.jpg to the repo root and it appears here automatically;
              if it's missing, the onerror handler removes the img and the "MZ" initials show. -->
-        <img src="photo.jpg" alt="Martyna K. Zwoińska" onerror="this.remove()" />
-      </div>
-      <div>
-        <h1>Martyna Katarzyna Zwoińska</h1>
-        <div class="role">Evolutionary biologist. From lab to code, from ideas to execution.</div>
-        <div class="affil">Department of Ecology and Genetics, Uppsala University</div>
+        <img src="photo.jpg" width="400" height="400" alt="Martyna K. Zwoińska" onerror="this.remove()" />
       </div>
     </div>
+    <svg class="hero-botanical hero-botanical--lower" viewBox="0 0 360 230" aria-hidden="true" focusable="false">
+      <path class="hero-botanical__stem" d="M382 220 C313 207 260 181 221 142 C197 118 184 91 177 57" />
+      <path class="hero-botanical__gold" d="M369 229 C300 218 248 196 206 162 C174 136 157 105 151 68" />
+      <path class="hero-botanical__stem" d="M252 169 C271 137 279 106 278 72" />
+      <path class="hero-botanical__stem" d="M223 143 C235 115 238 91 232 65" />
+      <path class="hero-botanical__leaf" d="M277 134 C296 128 309 137 313 153 C294 158 280 151 277 134Z" />
+      <path class="hero-botanical__leaf" d="M278 105 C294 97 308 102 315 116 C299 124 284 120 278 105Z" />
+      <path class="hero-botanical__leaf" d="M237 106 C249 92 265 91 276 101 C265 115 249 117 237 106Z" />
+      <path class="hero-botanical__leaf" d="M219 82 C228 67 243 63 256 71 C248 87 232 91 219 82Z" />
+      <path class="hero-botanical__berry" d="M169 61 C156 48 159 31 174 23 C188 35 188 51 176 63Z" />
+      <path class="hero-botanical__berry" d="M176 25 C181 11 194 8 204 16 C201 29 190 35 176 25Z" />
+    </svg>
+    <svg class="hero-pause" viewBox="0 0 84 18" aria-hidden="true" focusable="false">
+      <path d="M1 9 H29 M55 9 H83" />
+      <path d="M42 2 V16 M35 9 H49" />
+      <circle cx="42" cy="9" r="3" />
+      <circle class="hero-pause__dot" cx="35" cy="9" r="1.25" />
+      <circle class="hero-pause__dot" cx="49" cy="9" r="1.25" />
+      <circle class="hero-pause__dot" cx="42" cy="2" r="1.25" />
+      <circle class="hero-pause__dot" cx="42" cy="16" r="1.25" />
+    </svg>
+    <div class="hero-rule" aria-hidden="true"></div>
   </div>
 
   <!-- ============ ABOUT ============ -->
@@ -1143,7 +1285,7 @@
     </div>
   </footer>
 
-  <script src="home-i18n.js?v=20260716-1"></script>
+  <script src="home-i18n.js?v=20260716-2"></script>
   <script src="home.js?v=20260715-4"></script>
 </body>
 </html>
