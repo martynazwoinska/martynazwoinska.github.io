@@ -397,7 +397,7 @@
     }
     .hero-copy {
       min-width: 0;
-      padding-left: 96px;
+      padding-left: 132px;
       grid-column: 1; grid-row: 1;
     }
     .hero-copy h1 { max-width: 520px; }
@@ -421,9 +421,9 @@
     }
     .hero-lower {
       position: absolute; z-index: 1;
-      width: 300px; height: auto;
+      width: clamp(205px, calc(20vw - 12px), 276px); height: auto;
       right: max(-116px, calc(24px - max(0px, (100vw - var(--maxw)) / 2)));
-      bottom: 16px;
+      bottom: -20px;
     }
     .avatar {
       position: relative;
@@ -446,13 +446,52 @@
       filter: saturate(.88) contrast(.91) brightness(1.015);
     }
     .avatar-mono { font-family: var(--serif); font-size: 3rem; color: var(--accent); }
-    .hero::after { content: none; }
+    .hero-transition {
+      position: absolute; z-index: 0;
+      left: 50%; bottom: -30px;
+      width: min(calc(100% - 48px), 1112px);
+      height: clamp(42px, 6.3vw, 70px);
+      display: block; overflow: visible;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .hero-transition path {
+      vector-effect: non-scaling-stroke;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .hero-transition__vine {
+      fill: none;
+      stroke: color-mix(in srgb, var(--accent) 82%, var(--accent-gold));
+      stroke-width: 1.65;
+    }
+    .hero-transition__gold {
+      fill: none; stroke: var(--accent-gold); stroke-width: 1.05; opacity: .92;
+    }
+    .hero-transition__thread {
+      fill: none; stroke: var(--accent); stroke-width: .7; opacity: .38;
+    }
+    .hero-transition__stem {
+      fill: none; stroke: var(--accent); stroke-width: 1.25;
+    }
+    .hero-transition__leaf {
+      fill: color-mix(in srgb, var(--accent) 76%, var(--accent-gold));
+      stroke: var(--accent-gold); stroke-width: .55;
+    }
+    .hero-transition__bud {
+      fill: color-mix(in srgb, var(--accent-berry) 78%, var(--accent-violet));
+      stroke: var(--accent-gold); stroke-width: .65;
+    }
+    .hero-transition__bud-detail {
+      fill: none;
+      stroke: color-mix(in srgb, var(--accent-gold) 76%, var(--surface));
+      stroke-width: .55; opacity: .85;
+    }
     @media (max-width: 1199px) {
       .hero-grid {
         grid-template-columns: minmax(0, 1fr) 164px;
         gap: 24px; padding-right: 164px;
       }
-      .hero-copy { padding-left: 64px; }
+      .hero-copy { padding-left: 124px; }
       .avatar { width: 164px; height: 176px; }
       .hero-upper {
         width: 210px;
@@ -460,9 +499,8 @@
         top: 12px;
       }
       .hero-lower {
-        width: 250px;
         right: calc(20px - max(0px, (100vw - var(--maxw)) / 2));
-        bottom: 18px;
+        bottom: -16px;
       }
     }
     @media (max-width: 959px) {
@@ -471,27 +509,21 @@
         min-height: 330px;
         padding-right: 114px;
       }
-      .hero-copy { padding-left: 56px; }
+      .hero-copy { padding-left: 124px; }
       .hero-copy h1 { max-width: 410px; }
       .hero-upper { width: 170px; left: 20px; }
-      .hero-lower { width: 205px; right: 16px; }
+      .hero-lower { width: 205px; right: 0; bottom: -12px; }
+      .hero-transition { bottom: -24px; }
     }
     @media (max-width: 759px) {
       .hero { padding-top: 54px; padding-bottom: 70px; }
       .hero-grid { min-height: 300px; grid-template-columns: 1fr; gap: 0; padding-right: 0; }
-      .hero-copy { max-width: 600px; padding-left: 72px; }
+      .hero-copy { max-width: 600px; padding-left: 148px; }
       .avatar { display: none !important; }
       .hero-lower { display: none; }
       html .hero-lower.hero-art--theme-dark { display: none; }
       .hero-upper { width: 150px; left: 24px; top: 16px; }
-      .hero::after {
-        content: ""; display: block; position: absolute; z-index: 3;
-        width: 72px; height: 16px; left: 50%; bottom: 18px;
-        transform: translateX(-50%); background: var(--accent-gold);
-        pointer-events: none;
-        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 84 18'%3E%3Cg fill='none' stroke='black' stroke-linecap='round'%3E%3Cpath d='M1 9H29M55 9H83'/%3E%3Cpath d='M42 2V16M35 9H49'/%3E%3Ccircle cx='42' cy='9' r='3'/%3E%3C/g%3E%3Cg fill='black'%3E%3Ccircle cx='35' cy='9' r='1.25'/%3E%3Ccircle cx='49' cy='9' r='1.25'/%3E%3Ccircle cx='42' cy='2' r='1.25'/%3E%3Ccircle cx='42' cy='16' r='1.25'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat;
-                mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 84 18'%3E%3Cg fill='none' stroke='black' stroke-linecap='round'%3E%3Cpath d='M1 9H29M55 9H83'/%3E%3Cpath d='M42 2V16M35 9H49'/%3E%3Ccircle cx='42' cy='9' r='3'/%3E%3C/g%3E%3Cg fill='black'%3E%3Ccircle cx='35' cy='9' r='1.25'/%3E%3Ccircle cx='49' cy='9' r='1.25'/%3E%3Ccircle cx='42' cy='2' r='1.25'/%3E%3Ccircle cx='42' cy='16' r='1.25'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat;
-      }
+      .hero-transition { bottom: -18px; width: calc(100% - 48px); }
     }
     @media (max-width: 620px) {
       .hero { padding-top: 28px; padding-bottom: 64px; }
@@ -515,13 +547,17 @@
       .hero-lower.hero-art--theme-dark { display: none; }
       html[data-theme="dark"] .hero-lower.hero-art--theme-light { display: none; }
       html[data-theme="dark"] .hero-lower.hero-art--theme-dark { display: block; }
-      .hero::after { content: none; }
+      .hero-transition { display: none; }
     }
     @media (prefers-color-scheme: dark) and (max-width: 620px) {
       html:not([data-theme]) .hero-lower.hero-art--theme-light { display: none; }
       html:not([data-theme]) .hero-lower.hero-art--theme-dark { display: block; }
     }
-    .hero h1 { font-size: 3.25rem; font-weight: 700; margin: 0 0 4px; }
+    .hero h1 {
+      font-size: 3.25rem; font-weight: 700; margin: 0 0 4px;
+      -webkit-text-stroke: .18px currentColor;
+      paint-order: stroke fill;
+    }
     .hero .role { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 4px; }
     .hero .affil { color: var(--text-soft); margin-bottom: 18px; }
     .hero p.lead { color: var(--text-soft); font-size: 1.02rem; max-width: 46ch; margin: 0 auto; }
@@ -825,6 +861,21 @@
         <img src="photo.jpg" alt="Martyna K. Zwoińska" onerror="this.remove()" />
       </div>
     </div>
+    <svg
+      class="hero-transition"
+      viewBox="0 0 1112 70"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path class="hero-transition__vine" d="M8 46 C126 51 214 49 304 38 C405 25 482 27 566 40 C646 53 708 57 776 48 C846 39 884 23 940 24 C1001 25 1047 39 1104 44" />
+      <path class="hero-transition__gold" d="M8 55 C137 61 233 57 320 46 C413 35 487 36 560 47 C633 58 691 63 749 57 C807 51 850 37 908 34 C969 31 1024 43 1084 51" />
+      <path class="hero-transition__thread" d="M39 60 C170 65 257 61 341 51 C428 41 493 42 550 51 C617 62 679 66 730 61" />
+      <path class="hero-transition__stem" d="M769 49 C786 43 795 32 794 18" />
+      <path class="hero-transition__leaf" d="M784 37 C775 35 769 29 771 22 C780 23 786 29 784 37Z" />
+      <path class="hero-transition__bud" d="M794 19 C786 15 784 8 790 3 C795 6 800 6 805 3 C810 9 808 16 800 20 C798 21 796 21 794 19Z" />
+      <path class="hero-transition__bud-detail" d="M795 18 C795 12 797 8 800 5" />
+    </svg>
   </div>
 
   <!-- ============ ABOUT ============ -->
