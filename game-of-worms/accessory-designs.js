@@ -42,7 +42,7 @@ const rows = [
   ["tropicalis", "Kauaʻi, Hawaiʻi", "taro bonnet", "bonnet", "wetland waders", "waders", "paddy metronome", "paddy-metronome"],
   ["tropicalis", "New Taipei City, Taiwan", "hoodoo helmet", "hoodoo-helmet", "erosion crinoline", "erosion-crinoline", "cape fiddle", "bowed-strings"],
   ["tropicalis", "Pohnpei, Micronesia · QG4739", "QG4739 kotop name-concordance cabinet", "qg4739-kotop-name-concordance", "QG4739 paired-temperature differential bridge", "qg4739-paired-temperature-differential", "C-0230 seven-isotype registry", "c0230-seven-isotype-registry"],
-  ["tropicalis", "Queensland, Australia", "fan-palm collar", "fan-palm-collar", "reef monocle", "monocle", "continuum skates", "skates"],
+  ["tropicalis", "Queensland, Australia · QG2904", "QG2904 uncracked-pod seam scanner", "qg2904-uncracked-pod-seam-scanner", "QG2904 10–24 July recovery relay", "qg2904-collection-to-funnel-relay", "DRO canopy-crane strata mapper", "dro-canopy-crane-strata-mapper"],
   ["tropicalis", "Réunion Island", "cirque hoop skirt", "skirt", "lava crampons", "lava-crampons", "ravine trumpet", "ravine-trumpet"]
 ];
 
@@ -54,13 +54,13 @@ const explicitUniqueRendererFamilies = new Set([
   "canoe-paddle-bow",
   "coconut-cloche",
   "erosion-crinoline",
-  "fan-palm-collar",
   "fern-epaulettes",
   "fig-fascinator",
   "fruit-sampling-tool",
   "hoodoo-helmet",
   "lagoon-wind-vane",
   "le-morne-pauldron",
+  "monocle",
   "paddy-metronome",
   "reef-mask",
   "research-headphones",
@@ -74,7 +74,7 @@ const explicitUniqueRendererFamilies = new Set([
 
 const repeatedRendererFamilies = new Set([
   "bellows-instrument", "bonnet", "bowed-strings", "cape", "casque",
-  "compass", "fan", "flute-piccolo", "glider", "monocle", "skates",
+  "compass", "fan", "flute-piccolo", "glider",
   "skirt", "stilts", "sunglasses", "telescope", "umbrella",
   "waders", "wig", "wings"
 ]);
@@ -116,9 +116,14 @@ const pohnpeiQG4739RendererIds = new Set([
   "tropicalis::Pohnpei, Micronesia · QG4739::wrap",
   "tropicalis::Pohnpei, Micronesia · QG4739::charm"
 ]);
+const queenslandQG2904RendererIds = new Set([
+  "tropicalis::Queensland, Australia · QG2904::headwear",
+  "tropicalis::Queensland, Australia · QG2904::wrap",
+  "tropicalis::Queensland, Australia · QG2904::charm"
+]);
 const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
 const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|compass|press|gauge rod|camera rig/i;
-const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|skates|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
+const naturalRendererPattern = /wings|glider|fan|umbrella|stilts|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
 
 function hasNamedRenderer(item) {
   return explicitUniqueRendererFamilies.has(item.family)
@@ -136,6 +141,7 @@ function hasNamedRenderer(item) {
     || praslinRendererIds.has(item.id)
     || saoTomeRendererIds.has(item.id)
     || pohnpeiQG4739RendererIds.has(item.id)
+    || queenslandQG2904RendererIds.has(item.id)
     || instrumentRendererPattern.test(item.label)
     || fieldToolRendererPattern.test(item.label)
     || naturalRendererPattern.test(item.label);
@@ -186,7 +192,7 @@ function artworkForm(label, kind) {
   if (/compass/i.test(label)) return 7;
   if (/jetpack|waterwheel|camera rig/i.test(label)) return 9;
   if (/telescope|periscope/i.test(label)) return 12;
-  if (/skates|snowshoes|stilts|crampons/i.test(label)) return 13;
+  if (/snowshoes|stilts|crampons/i.test(label)) return 13;
   if (/capsule|sampler|sampling tool|carousel|claws|reel|maracas|wind-vane|paddle|yoke|metronome/i.test(label)) return 8;
   return 18;
 }
@@ -2169,6 +2175,224 @@ function drawPohnpeiQG4739Accessory(group, item, companion) {
   return false;
 }
 
+function drawQueenslandQG2904Accessory(group, item, companion) {
+  if (!item.id.startsWith("tropicalis::Queensland, Australia · QG2904::")) return false;
+
+  const label = (parent, value, x, y, className = "queensland-machine-text", anchor = "middle", transform = null) => {
+    const attributes = { class: className, x, y, "text-anchor": anchor };
+    if (transform) attributes.transform = transform;
+    const text = add(parent, "text", attributes);
+    text.textContent = value;
+    return text;
+  };
+
+  const vial = (parent, x, y, value, transform = null) => {
+    const vialGroup = add(parent, "g", { class: "qld-vial-group", transform: transform || `translate(${x} ${y})` });
+    add(vialGroup, "rect", { class: "qld-culture-vial", x: -13, y: -23, width: 26, height: 48, rx: 8 });
+    add(vialGroup, "rect", { class: "qld-vial-cap", x: -10, y: -31, width: 20, height: 11, rx: 3 });
+    label(vialGroup, value, 0, 5, "queensland-machine-text micro", "middle", "rotate(-90 0 5)");
+    return vialGroup;
+  };
+
+  const sealedPod = (parent, transform, vertical = false) => {
+    const pod = add(parent, "g", { class: "qld-sealed-pod", transform });
+    if (vertical) {
+      add(pod, "path", { class: "qld-pod-body", d: "M0-58Q20-48 23-23Q30 0 22 26Q18 50 0 61Q-18 50-22 26Q-30 0-23-23Q-20-48 0-58Z" });
+      add(pod, "path", { class: "qld-pod-seam", d: "M0-51Q-4-27 0-2Q4 24 0 53" });
+      add(pod, "path", { class: "qld-pod-contour", d: "M-12-44Q-21-22-16 1Q-20 25-10 44M12-44Q21-22 16 1Q20 25 10 44" });
+    } else {
+      add(pod, "path", { class: "qld-pod-body", d: "M-104 0Q-91-23-61-25Q-31-31 0-25Q31-31 62-24Q91-20 105 0Q91 22 61 26Q31 32 0 26Q-31 32-62 26Q-92 22-104 0Z" });
+      add(pod, "path", { class: "qld-pod-seam", d: "M-97-1Q-65-9-32-5Q0 0 33-5Q66-9 98-1" });
+      add(pod, "path", { class: "qld-pod-contour", d: "M-88 12Q-59 21-30 17Q0 12 31 18Q61 22 89 12" });
+    }
+    return pod;
+  };
+
+  const crank = (parent, cx, cy, r = 12) => {
+    add(parent, "circle", { class: "qld-crank-wheel", cx, cy, r });
+    add(parent, "path", { class: "qld-crank-spokes", d: `M${cx-r+2} ${cy}H${cx+r-2}M${cx} ${cy-r+2}V${cy+r-2}` });
+  };
+
+  if (item.family === "qg2904-uncracked-pod-seam-scanner") {
+    group.dataset.renderer = "qg2904-uncracked-pod-seam-scanner";
+    group.classList.add("queensland-accessory", "pod-seam-scanner", companion ? "pod-seam-scanner-companion" : "pod-seam-scanner-primary");
+    if (companion) {
+      add(group, "path", { class: "queensland-machine-shadow", d: "M-112 128Q0 159 116 124Q58 174-102 167Z" });
+      add(group, "path", { class: "queensland-machine-base", d: "M-85 85H82L101 130H-104Z" });
+      add(group, "path", { class: "qld-scanner-tower", d: "M-47 84V-116H49V84M-47-116H49" });
+      add(group, "path", { class: "qld-scan-drum", d: "M-38-89Q0-105 38-89V51Q0 67-38 51Z" });
+      add(group, "ellipse", { class: "qld-scan-ring outer", cx: 0, cy: -69, rx: 49, ry: 17 });
+      add(group, "ellipse", { class: "qld-scan-ring", cx: 0, cy: 31, rx: 45, ry: 16 });
+      sealedPod(group, "translate(0 -18)", true);
+      add(group, "circle", { class: "qld-chain-sprocket", cx: 69, cy: -84, r: 12 });
+      add(group, "circle", { class: "qld-chain-sprocket", cx: 69, cy: 47, r: 12 });
+      add(group, "path", { class: "qld-connected-chain", d: "M60-78Q49-50 53-18Q57 12 60 41M78-78Q89-49 85-17Q81 14 78 41" });
+      add(group, "path", { class: "qld-lens-carriage", d: "M47-31H87L81 6H43Z" });
+      add(group, "circle", { class: "qld-lens-glass", cx: 65, cy: -13, r: 10 });
+      add(group, "path", { class: "qld-counterweight-link", d: "M81-84H101V4" });
+      add(group, "path", { class: "qld-counterweight", d: "M90 4H112L108 37H94Z" });
+      add(group, "path", { class: "qld-trace-strip", d: "M-72-97H-50V48H-72Z" });
+      add(group, "path", { class: "qld-trace-line", d: "M-61-83Q-69-56-59-29Q-52-3-62 23Q-68 35-61 43" });
+      add(group, "path", { class: "qld-closed-drawer", d: "M-40 60H42L36 91H-46Z" });
+      add(group, "circle", { class: "qld-drawer-pull", cx: -2, cy: 72, r: 4 });
+      add(group, "path", { class: "qld-vial-dock", d: "M-50 39H-83V82H-68" });
+      vial(group, -81, 64, "QG");
+      add(group, "path", { class: "qld-record-plate", d: "M50-113H101L94-90H50Z" });
+      label(group, "QG2904", 74, -97, "queensland-machine-text tiny");
+      label(group, "SEALED", -2, 117, "queensland-machine-text queensland-machine-mobile-key");
+      add(group, "path", { class: "queensland-machine-feet", d: "M-74 128L-86 153M71 128L84 153" });
+    } else {
+      add(group, "path", { class: "queensland-machine-shadow", d: "M-185 113Q0 151 188 109Q94 168-170 160Z" });
+      add(group, "path", { class: "queensland-machine-base", d: "M-168 69H157L180 116H-182Z" });
+      add(group, "path", { class: "qld-scanner-bridge", d: "M-151 68V-68H142V68M-151-68H142" });
+      add(group, "path", { class: "qld-reflection-bracket", d: "M-108-67V-42M82-67V-42" });
+      add(group, "path", { class: "qld-reflection-shutter", d: "M-142-41H-74L-80-13H-148Z" });
+      add(group, "path", { class: "qld-reflection-shutter deep", d: "M47-41H121L115-13H41Z" });
+      add(group, "path", { class: "qld-pod-cradle", d: "M-137 2Q-120-18-99-3V34H-142Z" });
+      add(group, "path", { class: "qld-pod-cradle", d: "M93-3Q114-18 133 2L139 34H93Z" });
+      sealedPod(group, "translate(-2 12)");
+      add(group, "ellipse", { class: "qld-optical-hoop", cx: -3, cy: 11, rx: 27, ry: 62 });
+      add(group, "circle", { class: "qld-lens-glass", cx: -3, cy: -44, r: 12 });
+      add(group, "path", { class: "qld-lead-screw", d: "M-137 54H143" });
+      for (let x = -122; x <= 127; x += 17) add(group, "path", { class: "qld-screw-thread", d: `M${x} 49L${x+8} 59` });
+      add(group, "path", { class: "qld-crank-shaft", d: "M143 54H166" });
+      crank(group, 177, 54, 13);
+      add(group, "path", { class: "qld-vial-dock", d: "M-151 36H-176V78H-161" });
+      vial(group, -174, 60, "QG2904");
+      add(group, "path", { class: "qld-record-plate", d: "M51 74H142L134 103H43Z" });
+      label(group, "179uc", 92, 94, "queensland-machine-text tiny");
+      label(group, "SEALED", -2, 107, "queensland-machine-text queensland-machine-mobile-key");
+      add(group, "path", { class: "queensland-machine-feet", d: "M-151 113L-164 142M143 113L157 142" });
+    }
+    return true;
+  }
+
+  if (item.family === "qg2904-collection-to-funnel-relay") {
+    group.dataset.renderer = "qg2904-collection-to-funnel-relay";
+    group.classList.add("queensland-accessory", "recovery-relay", companion ? "recovery-relay-companion" : "recovery-relay-primary");
+    if (companion) {
+      add(group, "path", { class: "queensland-machine-shadow", d: "M-112 129Q0 159 116 125Q59 174-102 168Z" });
+      add(group, "path", { class: "queensland-machine-base", d: "M-86 84H84L103 130H-105Z" });
+      add(group, "path", { class: "qld-date-tower", d: "M-50 83V-119H48V83M-50-119H48" });
+      add(group, "path", { class: "qld-date-drawer", d: "M-42-106H40L34-73H-48Z" });
+      label(group, "10 JUL", -4, -84, "queensland-machine-text tiny");
+      add(group, "path", { class: "qld-calendar-cylinder", d: "M-39-64Q0-78 39-64V6Q0 20-39 6Z" });
+      for (let index = 0; index < 14; index += 1) {
+        const y = -58 + index * 4.7;
+        add(group, "path", { class: index % 2 ? "qld-calendar-mark deep" : "qld-calendar-mark", d: `M-34 ${y.toFixed(1)}H34` });
+      }
+      add(group, "path", { class: "qld-funnel-cassette", d: "M-37 18H37L18 52H-18Z" });
+      add(group, "path", { class: "qld-funnel-neck", d: "M-10 51H10V63H-10Z" });
+      add(group, "path", { class: "qld-plate-deck", d: "M-48 67H50L43 92H-55Z" });
+      add(group, "ellipse", { class: "qld-recovery-plate", cx: -2, cy: 73, rx: 31, ry: 7 });
+      add(group, "circle", { class: "qld-chain-sprocket", cx: 70, cy: -94, r: 12 });
+      add(group, "circle", { class: "qld-chain-sprocket", cx: 70, cy: 54, r: 12 });
+      add(group, "path", { class: "qld-connected-chain", d: "M61-88Q51-55 55-20Q59 14 61 48M79-88Q89-53 85-18Q81 16 79 48" });
+      add(group, "path", { class: "qld-counterweight", d: "M88-37H110L107 1H91Z" });
+      add(group, "path", { class: "qld-counterweight-link", d: "M79-94H99V-37" });
+      add(group, "path", { class: "qld-founder-lift", d: "M-51-52H-82V61H-67" });
+      add(group, "path", { class: "qld-vial-platform", d: "M-91 58H-59V71H-91Z" });
+      vial(group, -75, 38, "1 ADULT");
+      add(group, "path", { class: "qld-record-plate", d: "M50 76H105L98 102H48Z" });
+      label(group, "179uc", 76, 94, "queensland-machine-text tiny");
+      label(group, "10→24", -2, 119, "queensland-machine-text queensland-machine-mobile-key");
+      add(group, "path", { class: "queensland-machine-feet", d: "M-75 128L-87 154M73 128L86 154" });
+    } else {
+      add(group, "path", { class: "queensland-machine-shadow", d: "M-187 113Q0 151 190 109Q95 168-171 160Z" });
+      add(group, "path", { class: "queensland-machine-base", d: "M-170 69H160L183 116H-184Z" });
+      add(group, "path", { class: "qld-relay-bench", d: "M-155 68V-47H148V68M-155-47H148" });
+      add(group, "path", { class: "qld-date-drawer", d: "M-145-35H-74L-79 19H-151Z" });
+      add(group, "circle", { class: "qld-drawer-pull", cx: -111, cy: -21, r: 4 });
+      label(group, "10 JUL", -112, 2, "queensland-machine-text tiny");
+      add(group, "path", { class: "qld-covered-channel", d: "M-73-21H55V17H-73Z" });
+      add(group, "path", { class: "qld-channel-cap", d: "M-73-25H-61V21H-73ZM43-25H55V21H43Z" });
+      add(group, "circle", { class: "qld-date-wheel", cx: -8, cy: -2, r: 42 });
+      add(group, "circle", { class: "qld-date-hub", cx: -8, cy: -2, r: 9 });
+      for (let index = 0; index < 14; index += 1) {
+        const angle = (index / 14) * Math.PI * 2;
+        const x1 = -8 + Math.cos(angle) * 33;
+        const y1 = -2 + Math.sin(angle) * 33;
+        const x2 = -8 + Math.cos(angle) * 40;
+        const y2 = -2 + Math.sin(angle) * 40;
+        add(group, "path", { class: "qld-date-notch", d: `M${x1.toFixed(1)} ${y1.toFixed(1)}L${x2.toFixed(1)} ${y2.toFixed(1)}` });
+      }
+      add(group, "path", { class: "qld-funnel-station", d: "M76-39H139L121 3H94Z" });
+      add(group, "path", { class: "qld-funnel-neck", d: "M103 2H116V18H103Z" });
+      add(group, "path", { class: "qld-plate-carriage", d: "M69 29H148L141 56H63Z" });
+      add(group, "ellipse", { class: "qld-recovery-plate", cx: 106, cy: 34, rx: 28, ry: 7 });
+      add(group, "path", { class: "qld-drive-shaft", d: "M34 18V49H63" });
+      add(group, "circle", { class: "qld-drive-gear", cx: 34, cy: 49, r: 12 });
+      add(group, "path", { class: "qld-drive-teeth", d: "M22 49H46M34 37V61M26 41L42 57M42 41L26 57" });
+      add(group, "path", { class: "qld-vial-dock", d: "M-74 31H-46V70H-60" });
+      vial(group, -58, 53, "1 ADULT");
+      add(group, "path", { class: "qld-record-plate", d: "M-155 75H-62L-69 103H-163Z" });
+      label(group, "QG2904", -111, 94, "queensland-machine-text tiny");
+      label(group, "24 JUL", 110, 87, "queensland-machine-text tiny");
+      label(group, "10→24", 4, 108, "queensland-machine-text queensland-machine-mobile-key");
+      add(group, "path", { class: "queensland-machine-feet", d: "M-152 113L-165 142M145 113L158 142" });
+    }
+    return true;
+  }
+
+  if (item.family === "dro-canopy-crane-strata-mapper") {
+    group.dataset.renderer = "dro-canopy-crane-strata-mapper";
+    group.classList.add("queensland-accessory", "canopy-crane-mapper", companion ? "canopy-crane-mapper-companion" : "canopy-crane-mapper-primary");
+    if (companion) {
+      add(group, "path", { class: "queensland-machine-shadow", d: "M-112 129Q0 160 116 125Q58 175-102 168Z" });
+      add(group, "path", { class: "queensland-machine-base", d: "M-86 85H83L103 131H-105Z" });
+      add(group, "path", { class: "qld-crane-mast", d: "M-27 83V-117H29V83M-27-117H29" });
+      for (let y = -102; y <= 58; y += 32) {
+        add(group, "path", { class: "qld-crane-lattice", d: `M-27 ${y}L29 ${y+32}M29 ${y}L-27 ${y+32}M-27 ${y+32}H29` });
+      }
+      add(group, "path", { class: "qld-counter-jib", d: "M-28-108H-82L-92-95H-28M29-108H86L99-95H29" });
+      add(group, "circle", { class: "qld-lift-pulley", cx: 55, cy: -104, r: 11 });
+      add(group, "circle", { class: "qld-lift-pulley", cx: 67, cy: 66, r: 12 });
+      add(group, "path", { class: "qld-lift-cable", d: "M55-93V-19" });
+      add(group, "path", { class: "qld-lift-cable", d: "M66-104Q76-63 73-20Q70 23 70 54" });
+      add(group, "path", { class: "qld-gondola", d: "M36-19H74L69 16H41Z" });
+      add(group, "path", { class: "qld-gondola-rail", d: "M42-9H68M46-17V8M64-17V8" });
+      const gates = [[-55,-77,"CAN"],[-55,-19,"UND"],[-55,39,"FLR"]];
+      gates.forEach(([x,y,value], index) => {
+        add(group, "path", { class: index % 2 ? "qld-strata-gate deep" : "qld-strata-gate", d: `M${x} ${y}H-28V${y+26}H${x}Z` });
+        label(group, value, x + 13, y + 18, "queensland-machine-text micro");
+      });
+      add(group, "path", { class: "qld-map-drawer", d: "M-48 86H49L43 116H-55Z" });
+      add(group, "circle", { class: "qld-drawer-pull", cx: -3, cy: 97, r: 4 });
+      label(group, "1 ha", -3, 112, "queensland-machine-text tiny");
+      label(group, "47 m", 0, 119, "queensland-machine-text queensland-machine-mobile-key");
+      add(group, "path", { class: "queensland-machine-feet", d: "M-75 129L-87 154M72 129L85 154" });
+    } else {
+      add(group, "path", { class: "queensland-machine-shadow", d: "M-184 113Q0 152 187 109Q94 168-169 160Z" });
+      add(group, "path", { class: "queensland-machine-base", d: "M-166 69H157L180 116H-181Z" });
+      add(group, "ellipse", { class: "qld-map-table", cx: -8, cy: -3, rx: 124, ry: 92 });
+      add(group, "ellipse", { class: "qld-radius-ring", cx: -8, cy: -3, rx: 102, ry: 74 });
+      add(group, "path", { class: "qld-canopy-mosaic", d: "M-88-17Q-72-55-38-47Q-11-68 13-43Q49-58 78-29Q63-2 85 22Q60 54 24 43Q-4 64-31 42Q-70 53-88 21Q-71 2-88-17Z" });
+      [
+        [-68,-20,18,13,-10,""],[-38,-37,16,11,13,"deep"],[-4,-43,17,13,-7,""],[32,-31,20,14,9,"deep"],
+        [62,-12,17,12,-13,""],[-54,17,19,14,8,"deep"],[-18,22,20,13,-4,""],[23,14,18,14,12,"deep"],[55,29,16,11,-8,""]
+      ].forEach(([cx,cy,rx,ry,angle,tone]) => add(group, "ellipse", { class: `qld-canopy-token ${tone}`.trim(), cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` }));
+      add(group, "circle", { class: "qld-map-hub", cx: -8, cy: -3, r: 10 });
+      add(group, "path", { class: "qld-radial-jib", d: "M-8-3L82-49" });
+      add(group, "path", { class: "qld-access-box", d: "M73-59H96V-40H73Z" });
+      label(group, "55 m R", -8, 81, "queensland-machine-text tiny");
+      [[-76,1],[-27,-19],[17,34],[49,-4],[5,-58]].forEach(([cx,cy], index) => {
+        add(group, "circle", { class: index % 2 ? "qld-tree-position deep" : "qld-tree-position", cx, cy, r: index % 2 ? 5 : 6 });
+      });
+      add(group, "path", { class: "qld-gear-shaft", d: "M101 39H133V58H145" });
+      add(group, "circle", { class: "qld-rotation-gear", cx: 105, cy: 39, r: 17 });
+      add(group, "path", { class: "qld-drive-teeth", d: "M88 39H122M105 22V56M93 27L117 51M117 27L93 51" });
+      crank(group, 155, 58, 13);
+      add(group, "path", { class: "qld-record-plate", d: "M-157 76H-83L-89 103H-164Z" });
+      label(group, "DRO", -123, 95, "queensland-machine-text tiny");
+      label(group, "55 m", -5, 108, "queensland-machine-text queensland-machine-mobile-key");
+      add(group, "path", { class: "queensland-machine-feet", d: "M-150 113L-163 142M143 113L157 142" });
+    }
+    return true;
+  }
+
+  return false;
+}
+
 function drawInstrument(group, item, companion) {
   const label = item.label;
   if (/fiddle/i.test(label)) {
@@ -2317,7 +2541,7 @@ function drawNaturalOrMotionAccessory(group, item, companion) {
     else {[-31,31].forEach(x=>{line(group,`M${x}-44Q${x-12} 10 ${x-8} 76 M${x}-7L${x-25} 18 M${x+1} 12L${x+23} 34`,`acc-line thick`);});}
     return true;
   }
-  if (/skates|snowshoes|crampons/i.test(label)) {
+  if (/snowshoes|crampons/i.test(label)) {
     const snow=/snowshoes/i.test(label), spikes=/crampons/i.test(label);
     const offsets = companion ? [-27, 27] : [-32, 32];
     offsets.forEach(x=>{
@@ -2442,9 +2666,6 @@ function drawRepeatedFamilyAccessory(group, item, companion) {
       } else {
         path(group,companion?"M-51 3Q0-31 51 3Q0 37-51 3Z":"M-67 4Q0-42 67 4Q0 50-67 4Z","acc-soft"); for(let i=-2;i<=2;i+=1) line(group,`M${i*13} 12V${-8-Math.abs(i)*3}`); line(group,companion?"M42 13L63 50":"M55 17L84 67","acc-line thick");
       }
-      return true;
-    case "skates":
-      [-29,29].forEach((x,j)=>{path(group,`M${x-22}-25L${x+20}-17L${x+16} 18L${x-18} 25Z`); const wheels=companion?2:3; for(let i=0;i<wheels;i+=1) dot(group,x-13+i*(26/(wheels-1)),31,6,j?"acc-accent":"acc-dark");});
       return true;
     case "skirt":
       if(/crater/i.test(label)) {
@@ -2611,18 +2832,6 @@ function drawUniqueNamedAccessory(group, item, companion) {
       });
       line(group, companion ? "M-26 2Q-13 24 0 7Q13-10 27 3" : "M-35 3Q-17 32 0 9Q17-14 36 4", "acc-accent-line");
       return true;
-    case "fan-palm-collar": {
-      const blades = companion ? 5 : 8;
-      for (let index = 0; index < blades; index += 1) {
-        const angle = (companion ? -58 : -76) + index * ((companion ? 116 : 152) / (blades - 1));
-        const length = companion ? 45 + (index % 2) * 8 : 59 + (index % 3) * 9;
-        path(group, `M0 16L-10 ${16 - length * .68}L0 ${16 - length}L10 ${16 - length * .68}Z`, index % 2 ? "acc-accent" : "acc-main").setAttribute("transform", `rotate(${angle} 0 16)`);
-        line(group, `M0 14V${18 - length}`).setAttribute("transform", `rotate(${angle} 0 16)`);
-      }
-      path(group, companion ? "M-43 12Q0 34 43 12L35 30Q0 49-35 30Z" : "M-57 16Q0 45 57 16L47 40Q0 65-47 40Z", "acc-soft");
-      line(group, companion ? "M-34 18Q0 35 35 18" : "M-46 24Q0 47 47 24", "acc-accent-line");
-      return true;
-    }
     case "fern-epaulettes":
       [-1, 1].forEach(side => {
         line(group, companion ? `M${side * 7}-29Q${side * 41}-8 ${side * 57} 38` : `M${side * 9}-39Q${side * 55}-11 ${side * 76} 51`, "acc-line thick");
@@ -2684,6 +2893,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawPraslinAccessory(group, item, companion)) return true;
   if (drawSaoTomeAccessory(group, item, companion)) return true;
   if (drawPohnpeiQG4739Accessory(group, item, companion)) return true;
+  if (drawQueenslandQG2904Accessory(group, item, companion)) return true;
   if (drawUniqueNamedAccessory(group, item, companion)) return true;
   if (drawRepeatedFamilyAccessory(group, item, companion)) return true;
   if (drawN2Accessory(group, item, companion)) return true;
@@ -2754,7 +2964,10 @@ function renderPiece(target, item, wormPart) {
     "sao-tome-begonia-lineage-kinetoscope": { primary: [338, 267, .3, -1], companion: [28, 279, .24, 2] },
     "qg4739-kotop-name-concordance": { primary: [362, 126, .3, -2], companion: [-1, 111, .25, 2] },
     "qg4739-paired-temperature-differential": { primary: [235, 128, .3, -1], companion: [114, 157, .25, 2] },
-    "c0230-seven-isotype-registry": { primary: [343, 258, .28, -1], companion: [-27, 326, .24, 2] }
+    "c0230-seven-isotype-registry": { primary: [343, 258, .28, -1], companion: [-27, 326, .24, 2] },
+    "qg2904-uncracked-pod-seam-scanner": { primary: [250, -62, .31, -2], companion: [-8, 90, .27, 2] },
+    "qg2904-collection-to-funnel-relay": { primary: [220, 148, .32, -1], companion: [90, 212, .26, 2] },
+    "dro-canopy-crane-strata-mapper": { primary: [377, 140, .29, -1], companion: [-5, 292, .26, 2] }
   };
   const customLayout = customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;

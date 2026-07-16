@@ -277,12 +277,12 @@ const canonicalProfiles = {
     palettes.rainforest, [[0, 351], [74, 339], [148, 325], [224, 307], [300, 285], [376, 260], [452, 235], [526, 210], [600, 188]],
     { water: "none", weather: "mist", cues: [] }
   ),
-  "Queensland, Australia": profile(
-    "queensland-daintree", "Daintree forest-to-reef coast",
-    "Near Cape Tribulation, Wet Tropics rainforest reaches white-sand beaches and offshore coral reefs in a direct forest-to-reef continuum.",
-    "UNESCO Wet Tropics of Queensland", "https://whc.unesco.org/en/list/486/",
-    palettes.coral, [[0, 302], [70, 252], [135, 200], [205, 154], [275, 214], [345, 172], [420, 226], [500, 204], [600, 270]],
-    { water: "coast", weather: "sun", cues: [["fanpalm", 75, 285, .9], ["mangrove", 490, 295, .65], ["reef", 370, 360, .85]] }
+  "Queensland, Australia · QG2904": profile(
+    "queensland-qg2904-daintree-blackbean-pod-forest", "QG2904 Daintree uncracked-pod forest",
+    "QG2904 is one isotype-reference line from sample 179uc, an uncracked blackbean pod collected at the Daintree Rainforest Observatory on 10 July 2017. The sample was funnel plated on 24 July and the line was founded from one adult. The plant species, visible decay, exact forest-floor position and collection-patch view are unreported. The small canopy-crane cue is observatory context only.",
+    "CaeNDR QG2904 isotype record", "https://caendr.org/isotype/QG2904/",
+    palettes.rainforest, [[0, 282], [76, 271], [151, 278], [231, 259], [311, 270], [392, 248], [474, 259], [545, 239], [600, 247]],
+    { water: "none", weather: "none", cues: [] }
   ),
   "Réunion Island": profile(
     "reunion-cirque-volcano", "Réunion’s pitons, cirques, and lava",
@@ -557,12 +557,12 @@ const sceneCompositions = Object.freeze({
     "M39 370Q151 344 272 305Q398 264 557 196", [],
     "a pale ringed palm column opening into an asymmetric lower-left root lattice beside one low softened fruit sample, with a steep forest-floor diagonal closing into layered trunks, oblique mist and one narrow upper-right light slit"
   ),
-  "queensland-daintree": composition(
-    "M0 386 Q104 342 211 372 Q317 403 424 367 Q518 336 600 355 V430 H0Z",
-    "M0 322 Q111 260 219 301 Q322 342 425 304 Q519 270 600 292 V430 H0Z",
-    [["fanpalm", 22, 364, 1], ["reef", 545, 402, .72]],
-    "M0 372 Q124 349 248 370 Q376 393 600 349", [0, 1, 2],
-    "an uninterrupted lateral forest-to-white-sand-to-reef transect with no generic mountain"
+  "queensland-qg2904-daintree-blackbean-pod-forest": composition(
+    "M0 354Q92 346 181 352Q280 361 381 340Q484 318 600 327V430H0Z",
+    "M0 287Q82 271 167 280Q257 290 343 267Q438 241 600 250V353H0Z",
+    [],
+    "M42 377Q146 352 249 360Q366 367 554 331", [],
+    "a long sealed pod beneath two unequal buttress fins, with a hairline canopy-crane fragment visible through one narrow upper-right opening"
   ),
   "reunion-cirque-volcano": composition(
     "M0 375 L81 342 L155 371 L235 334 L315 379 L397 329 L484 366 L600 337 V430 H0Z",
@@ -639,11 +639,9 @@ function drawTree(group, variant = "deciduous") {
   append(group, "path", { class: "env-leaf", d: canopy });
 }
 
-function drawPalm(group, fan = false) {
+function drawPalm(group) {
   append(group, "path", { class: "env-trunk", d: "M -7 60 Q 3 6 0 -42 Q 17 5 9 60 Z" });
-  const leaves = fan
-    ? ["M0 -39 Q-48 -62 -55 -25 Q-25 -13 0 -39Z", "M0 -39 Q48 -65 55 -26 Q24 -13 0 -39Z", "M0 -39 Q-18 -78 2 -86 Q17 -67 0 -39Z"]
-    : ["M0 -39 Q-52 -70 -61 -35 Q-30 -15 0 -39Z", "M0 -39 Q52 -72 62 -35 Q31 -14 0 -39Z", "M0 -39 Q-12 -76 8 -82 Q21 -61 0 -39Z", "M0 -39 Q45 -38 47 -10 Q21 -13 0 -39Z"];
+  const leaves = ["M0 -39 Q-52 -70 -61 -35 Q-30 -15 0 -39Z", "M0 -39 Q52 -72 62 -35 Q31 -14 0 -39Z", "M0 -39 Q-12 -76 8 -82 Q21 -61 0 -39Z", "M0 -39 Q45 -38 47 -10 Q21 -13 0 -39Z"];
   leaves.forEach(d => append(group, "path", { class: "env-leaf", d }));
 }
 
@@ -656,8 +654,8 @@ function drawFeature(parent, cue) {
     if (kind === "igapo") append(group, "path", { class: "env-water-line", d: "M -40 58 Q 0 49 40 58" });
     return;
   }
-  if (["palm", "coconut", "pandanus", "fanpalm"].includes(kind)) {
-    drawPalm(group, kind === "fanpalm");
+  if (["palm", "coconut", "pandanus"].includes(kind)) {
+    drawPalm(group);
     return;
   }
   if (kind === "fig") {
@@ -1720,6 +1718,78 @@ function drawPohnpeiQG4739Scene(target, palette) {
   ].forEach((d, index) => append(fruit, "path", { class: index % 2 ? "pohnpei-fruit-mottle deep" : "pohnpei-fruit-mottle", d }));
 }
 
+function drawQueenslandQG2904Scene(target, palette) {
+  append(target, "rect", { class: "environment-sky queensland-rainforest-sky", width: 600, height: 430, fill: palette[0] });
+
+  const depth = append(target, "g", { class: "queensland-rainforest-depth", "aria-hidden": "true" });
+  append(depth, "path", { class: "queensland-canopy-aperture", d: "M458 0H542V86Q524 73 509 89Q490 107 469 91Q480 55 458 0Z" });
+  append(depth, "path", { class: "queensland-rear-canopy", d: "M0 0H505Q521 32 507 66Q493 96 465 113Q421 96 381 116Q328 137 286 105Q234 72 189 101Q140 130 96 105Q48 77 0 101Z" });
+  append(depth, "path", { class: "queensland-rear-canopy lower", d: "M0 77Q47 51 94 81Q139 109 186 85Q231 60 276 92Q323 126 369 94Q416 63 458 91Q499 119 539 90Q568 70 600 85V191Q548 174 496 187Q438 202 383 181Q322 158 265 186Q207 213 150 185Q73 148 0 183Z" });
+  append(depth, "path", { class: "queensland-background-understory", d: "M0 205Q24 174 52 191Q77 158 103 186Q132 165 159 194Q188 161 220 187Q249 151 281 184Q316 150 347 180Q378 142 411 175Q442 145 474 179Q507 148 535 174Q568 151 600 178V335H0Z" });
+  append(depth, "path", { class: "queensland-background-light-pockets", d: "M74 190Q91 173 108 187V269Q91 254 76 270ZM234 184Q251 164 269 182V249Q252 239 236 255ZM403 176Q421 155 439 174V238Q421 229 405 244ZM548 174Q565 156 580 169V227Q565 219 551 232Z" });
+
+  const crane = append(depth, "g", { class: "queensland-crane-fragment" });
+  append(crane, "path", { class: "queensland-crane-rail", d: "M482 9V125M494 9V126M482 22H494M482 43H494M482 64H494M482 85H494M482 106H494M482 22L494 43M494 43L482 64M482 64L494 85M494 85L482 106" });
+  append(crane, "path", { class: "queensland-crane-rail", d: "M488 91L451 115M492 82L455 106M481 95L472 92M472 101L463 98M463 107L454 104" });
+  append(crane, "circle", { class: "queensland-crane-joint", cx: 489, cy: 87, r: 5 });
+
+  const rearTrunks = append(depth, "g", { class: "queensland-rear-trunks" });
+  [
+    [126,296,117,198,132,88,14,""],
+    [198,286,211,191,202,75,11,"deep"],
+    [286,275,270,176,287,52,14,""],
+    [375,261,389,169,381,61,10,"deep"],
+    [455,252,443,163,459,70,13,""]
+  ].forEach(([x1,y1,cx,cy,x2,y2,width,tone]) => append(rearTrunks, "path", { class: `queensland-rear-trunk ${tone}`.trim(), d: `M${x1} ${y1}Q${cx} ${cy} ${x2} ${y2}`, style: `stroke-width:${width}px` }));
+  append(rearTrunks, "path", { class: "queensland-rear-liana", d: "M173 0Q153 57 174 109Q190 151 169 207M421 0Q442 52 424 103Q407 149 430 198" });
+  append(rearTrunks, "path", { class: "queensland-rear-liana fine", d: "M346 0Q330 45 344 83Q355 113 343 149" });
+
+  append(target, "path", { class: "queensland-middle-floor", d: "M0 312Q20 286 48 300Q67 269 94 295Q118 276 143 300Q170 278 198 302Q226 282 252 298Q283 274 310 294Q344 263 377 288Q405 256 435 280Q463 249 494 276Q527 246 554 270Q578 252 600 268V430H0Z" });
+  const understoryDepth = append(target, "g", { class: "queensland-understory-depth", "aria-hidden": "true" });
+  append(understoryDepth, "path", { class: "queensland-understory-shadow", d: "M18 312Q31 272 48 248Q66 270 73 306ZM128 301Q143 260 159 233Q177 256 181 302ZM270 296Q286 251 306 224Q324 252 330 290ZM414 284Q432 236 451 211Q470 240 476 280ZM529 271Q545 229 562 205Q580 231 587 268Z" });
+  append(understoryDepth, "path", { class: "queensland-understory-fronds", d: "M45 302Q24 279 17 256Q43 257 55 281Q60 253 79 237Q87 267 70 296ZM157 293Q135 267 130 246Q154 248 165 271Q169 246 188 232Q195 260 177 291ZM304 286Q280 261 277 238Q302 241 313 263Q318 237 339 224Q345 254 326 282ZM449 274Q426 249 422 226Q447 229 457 251Q462 225 481 211Q490 240 470 273ZM560 263Q540 239 536 217Q559 218 569 240Q574 219 592 207Q600 235 582 261Z" });
+  append(target, "path", { class: "queensland-forest-floor", d: "M0 340Q90 326 181 337Q278 350 373 326Q473 299 600 311V430H0Z" });
+  append(target, "path", { class: "queensland-floor-contour", d: "M2 365Q94 346 184 357Q278 370 372 346Q470 322 598 333M122 397Q230 376 333 386Q444 396 566 361" });
+
+  const arch = append(target, "g", { class: "queensland-buttress-arch", "aria-hidden": "true" });
+  append(arch, "path", { class: "queensland-main-trunk left", d: "M-18-12H91Q88 45 98 107Q107 178 101 245Q98 283 116 318L75 344Q40 317 37 269Q32 196 19 128Q8 67-18 44Z" });
+  append(arch, "path", { class: "queensland-bark-seam", d: "M41 13Q47 91 59 152Q70 218 58 292M76 4Q75 85 85 139Q96 207 82 283" });
+  append(arch, "path", { class: "queensland-buttress-fin left", d: "M82 220Q106 267 171 306Q255 344 391 351Q288 365 193 358Q101 351 53 305Z" });
+  append(arch, "path", { class: "queensland-buttress-ridge", d: "M75 274Q153 322 246 342Q319 355 389 351" });
+  append(arch, "path", { class: "queensland-main-trunk right", d: "M519-12H618V430H562Q558 352 543 288Q529 230 532 171Q535 97 519-12Z" });
+  append(arch, "path", { class: "queensland-bark-seam", d: "M554 3Q567 92 558 176Q550 236 572 307M592 0Q581 96 588 164Q596 231 581 286" });
+  append(arch, "path", { class: "queensland-buttress-fin right", d: "M563 139Q548 207 542 273Q536 338 491 391Q532 375 563 346Q588 319 590 251Z" });
+  append(arch, "path", { class: "queensland-buttress-ridge", d: "M562 190Q551 263 540 315Q527 361 491 391" });
+  append(arch, "path", { class: "queensland-root-shadow", d: "M73 320Q153 355 248 361Q320 365 389 353Q310 381 205 380Q110 376 58 347ZM493 389Q532 369 562 336Q553 377 526 406Q505 405 493 389Z" });
+
+  const leaves = append(target, "g", { class: "queensland-broadleaf-frame", "aria-hidden": "true" });
+  [
+    [29,81,-12,1.05,"deep"],[78,60,17,.92,""],[132,72,-18,.82,"deep"],[224,48,11,.88,""],
+    [312,63,-13,.91,"deep"],[398,50,15,.84,""],[465,75,-14,.78,"deep"],[573,115,18,.86,""],
+    [32,194,22,.72,""],[575,209,-21,.7,"deep"]
+  ].forEach(([x,y,angle,scale,tone], index) => {
+    const leaf = append(leaves, "g", { transform: `translate(${x} ${y}) rotate(${angle}) scale(${scale})` });
+    append(leaf, "path", { class: `queensland-broadleaf ${tone}`.trim(), d: index % 2 ? "M0 0Q-38-26-44-65Q-6-75 25-48Q37-17 0 0Z" : "M0 0Q-49-8-66-44Q-36-72 8-58Q38-35 0 0Z" });
+    append(leaf, "path", { class: "queensland-leaf-vein", d: index % 2 ? "M0 0Q-13-31-37-59" : "M0 0Q-24-23-56-42" });
+  });
+
+  append(target, "path", { class: "queensland-foreground-litter-bed", d: "M0 374Q94 359 186 375Q281 391 379 369Q481 345 600 362V430H0Z" });
+  const litter = append(target, "g", { class: "queensland-leaf-litter", "aria-hidden": "true" });
+  [[-5,418,45,386],[54,430,111,397],[120,410,165,384],[194,430,247,401],[386,425,438,393],[456,411,506,378],[536,430,594,394]].forEach(([x1,y1,x2,y2], index) => {
+    append(litter, "path", { class: index % 3 === 0 ? "queensland-litter-leaf olive" : (index % 2 ? "queensland-litter-leaf deep" : "queensland-litter-leaf"), d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-9} ${x2} ${y2}Q${(x1+x2)/2+7} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` });
+    append(litter, "path", { class: "queensland-litter-vein", d: `M${x1+5} ${y1-1}L${x2-5} ${y2+1}` });
+  });
+  [[23,375,3],[177,398,2],[270,382,3],[359,404,2],[516,374,3],[585,386,2]].forEach(([cx,cy,r], index) => append(litter, "circle", { class: index % 2 ? "queensland-litter-fragment deep" : "queensland-litter-fragment", cx, cy, r }));
+
+  const pod = append(target, "g", { class: "queensland-sealed-pod", transform: "translate(380 350) rotate(-8) scale(.9)", "aria-hidden": "true" });
+  append(pod, "ellipse", { class: "queensland-pod-shadow", cx: 0, cy: 20, rx: 114, ry: 15 });
+  append(pod, "path", { class: "queensland-pod-body", d: "M-116 2Q-102-23-72-27Q-34-34 1-27Q38-34 76-23Q106-17 118 2Q105 24 75 29Q38 35 1 28Q-36 35-74 29Q-103 24-116 2Z" });
+  append(pod, "path", { class: "queensland-pod-seam", d: "M-108 1Q-71-8-35-5Q1 0 37-5Q76-9 109 1" });
+  append(pod, "path", { class: "queensland-pod-lower-contour", d: "M-101 13Q-71 22-35 18Q2 13 39 19Q76 23 101 13" });
+  append(pod, "path", { class: "queensland-pod-end", d: "M-114 2Q-105-3-99 1M116 2Q107-3 101 1" });
+  [-72,-36,0,36,72].forEach((x, index) => append(pod, "path", { class: index % 2 ? "queensland-pod-surface deep" : "queensland-pod-surface", d: `M${x-12} ${-13 + (index%2)*3}Q${x} ${-18 + (index%3)*2} ${x+12} ${-12 + (index%2)*2}` }));
+}
+
 function drawTenerifeScene(target, palette) {
   append(target, "rect", { class: "environment-sky tenerife-sky", width: 600, height: 430, fill: palette[0] });
   append(target, "circle", { class: "tenerife-sun", cx: 516, cy: 58, r: 26 });
@@ -1894,6 +1964,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "pohnpei-qg4739-paies-kotop-cloudforest") {
     drawPohnpeiQG4739Scene(target, palette);
+    return;
+  }
+  if (profile.id === "queensland-qg2904-daintree-blackbean-pod-forest") {
+    drawQueenslandQG2904Scene(target, palette);
     return;
   }
 

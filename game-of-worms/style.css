@@ -1167,6 +1167,68 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 :root[data-theme='dark'] .pohnpei-foreground-litter-bed { fill: color-mix(in srgb, #29231f 91%, var(--environment-ground)); }
 :root[data-theme='dark'] .pohnpei-fruit-rind { fill: color-mix(in srgb, #4b3543 85%, var(--environment-ground)); }
 :root[data-theme='dark'] .pohnpei-fruit-collapse { fill: color-mix(in srgb, #5f4f30 83%, var(--environment-accent)); }
+#habitat[data-environment="queensland-qg2904-daintree-blackbean-pod-forest"] .regional-backdrop { contain: layout paint; }
+.queensland-rainforest-sky { fill: color-mix(in srgb, #a9cfc0 74%, var(--paper-strong)); }
+.queensland-canopy-aperture { fill: color-mix(in srgb, #afc7a5 72%, var(--environment-land)); }
+.queensland-rear-canopy { fill: color-mix(in srgb, #2e6348 80%, var(--environment-land)); stroke: color-mix(in srgb, #244638 72%, var(--environment-detail)); stroke-width: 1.5; }
+.queensland-rear-canopy.lower { fill: color-mix(in srgb, #3a7351 77%, var(--environment-land)); }
+.queensland-background-understory { fill: color-mix(in srgb, #42664b 93%, var(--environment-land)); stroke: color-mix(in srgb, #31513b 82%, var(--environment-detail)); stroke-width: 1.3; }
+.queensland-background-light-pockets { fill: color-mix(in srgb, #b6c8a8 79%, var(--environment-land)); opacity: .43; }
+.queensland-crane-fragment { opacity: .72; }
+.queensland-crane-rail { fill: none; stroke: color-mix(in srgb, #5d5b4c 82%, var(--environment-detail)); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.queensland-crane-joint { fill: color-mix(in srgb, #9b8255 60%, var(--environment-accent)); stroke: color-mix(in srgb, #545043 78%, var(--environment-detail)); stroke-width: 1.3; }
+.queensland-rear-trunk { fill: none; stroke: color-mix(in srgb, #65513e 64%, var(--environment-detail)); stroke-linecap: round; opacity: .7; }
+.queensland-rear-trunk.deep { stroke: color-mix(in srgb, #433f32 76%, var(--environment-detail)); opacity: .76; }
+.queensland-rear-liana { fill: none; stroke: color-mix(in srgb, #456344 74%, var(--environment-detail)); stroke-width: 4; stroke-linecap: round; opacity: .76; }
+.queensland-rear-liana.fine { stroke-width: 2.3; opacity: .67; }
+.queensland-middle-floor { fill: color-mix(in srgb, #526e4d 92%, var(--environment-land)); stroke: color-mix(in srgb, #394d3b 72%, var(--environment-detail)); stroke-width: 1.5; }
+.queensland-understory-shadow { fill: color-mix(in srgb, #35523d 84%, var(--environment-land)); opacity: .73; }
+.queensland-understory-fronds { fill: color-mix(in srgb, #527456 82%, var(--environment-land)); stroke: color-mix(in srgb, #314a38 76%, var(--environment-detail)); stroke-width: 1.2; stroke-linejoin: round; opacity: .82; }
+.queensland-forest-floor { fill: color-mix(in srgb, #536046 66%, var(--environment-ground)); }
+.queensland-floor-contour { fill: none; stroke: color-mix(in srgb, #3d4535 67%, var(--environment-detail)); stroke-width: 2; stroke-linecap: round; opacity: .56; }
+.queensland-main-trunk,
+.queensland-buttress-fin { fill: color-mix(in srgb, #73563f 72%, var(--environment-ground)); stroke: color-mix(in srgb, #483b31 79%, var(--environment-detail)); stroke-width: 2.5; stroke-linejoin: round; }
+.queensland-main-trunk.right { fill: color-mix(in srgb, #66503e 75%, var(--environment-ground)); }
+.queensland-buttress-fin.left { fill: color-mix(in srgb, #806047 70%, var(--environment-ground)); }
+.queensland-buttress-fin.right { fill: color-mix(in srgb, #705541 73%, var(--environment-ground)); }
+.queensland-bark-seam,
+.queensland-buttress-ridge { fill: none; stroke: color-mix(in srgb, #a17a55 47%, var(--environment-detail)); stroke-width: 3; stroke-linecap: round; opacity: .67; }
+.queensland-buttress-ridge { stroke-width: 3.6; }
+.queensland-root-shadow { fill: color-mix(in srgb, #2d352c 78%, var(--environment-detail)); opacity: .34; }
+.queensland-broadleaf { fill: color-mix(in srgb, #507953 79%, var(--environment-land)); stroke: color-mix(in srgb, #30483a 75%, var(--environment-detail)); stroke-width: 1.3; stroke-linejoin: round; }
+.queensland-broadleaf.deep { fill: color-mix(in srgb, #356344 83%, var(--environment-land)); }
+.queensland-leaf-vein { fill: none; stroke: color-mix(in srgb, #9b7650 42%, var(--environment-detail)); stroke-width: 1.5; stroke-linecap: round; }
+.queensland-foreground-litter-bed { fill: color-mix(in srgb, #4c3d31 72%, var(--environment-ground)); }
+.queensland-litter-leaf { fill: color-mix(in srgb, #8d6846 68%, var(--environment-accent)); stroke: color-mix(in srgb, #46382f 78%, var(--environment-detail)); stroke-width: 1.1; }
+.queensland-litter-leaf.deep { fill: color-mix(in srgb, #5a4838 80%, var(--environment-ground)); }
+.queensland-litter-leaf.olive { fill: color-mix(in srgb, #586544 78%, var(--environment-land)); }
+.queensland-litter-vein { fill: none; stroke: color-mix(in srgb, #3d332b 76%, var(--environment-detail)); stroke-width: 1; }
+.queensland-litter-fragment { fill: color-mix(in srgb, #a5804e 68%, var(--environment-accent)); }
+.queensland-litter-fragment.deep { fill: color-mix(in srgb, #2d332b 88%, var(--environment-detail)); }
+.queensland-pod-shadow { fill: rgba(25,29,24,.31); }
+.queensland-pod-body { fill: color-mix(in srgb, #6f3f3b 70%, var(--environment-ground)); stroke: color-mix(in srgb, #3f302e 84%, var(--environment-detail)); stroke-width: 2.7; stroke-linejoin: round; }
+.queensland-pod-seam { fill: none; stroke: color-mix(in srgb, #b08a57 58%, var(--environment-accent)); stroke-width: 3.4; stroke-linecap: round; }
+.queensland-pod-lower-contour,
+.queensland-pod-end,
+.queensland-pod-surface { fill: none; stroke: color-mix(in srgb, #8d6549 59%, var(--environment-detail)); stroke-width: 1.7; stroke-linecap: round; opacity: .76; }
+.queensland-pod-surface.deep { stroke: color-mix(in srgb, #4b3632 77%, var(--environment-detail)); }
+:root[data-theme='dark'] .queensland-rainforest-sky { fill: color-mix(in srgb, #1d332d 89%, var(--environment-water)); }
+:root[data-theme='dark'] .queensland-canopy-aperture { fill: color-mix(in srgb, #4f674d 68%, var(--environment-land)); }
+:root[data-theme='dark'] .queensland-rear-canopy { fill: color-mix(in srgb, #173928 91%, var(--environment-land)); }
+:root[data-theme='dark'] .queensland-rear-canopy.lower { fill: color-mix(in srgb, #20442e 89%, var(--environment-land)); }
+:root[data-theme='dark'] .queensland-background-understory { fill: color-mix(in srgb, #2b4835 91%, var(--environment-land)); }
+:root[data-theme='dark'] .queensland-background-light-pockets { fill: color-mix(in srgb, #405a42 82%, var(--environment-land)); opacity: .45; }
+:root[data-theme='dark'] .queensland-middle-floor { fill: color-mix(in srgb, #294332 87%, var(--environment-land)); }
+:root[data-theme='dark'] .queensland-understory-shadow { fill: color-mix(in srgb, #1d3327 91%, var(--environment-land)); }
+:root[data-theme='dark'] .queensland-understory-fronds { fill: color-mix(in srgb, #294b34 88%, var(--environment-land)); }
+:root[data-theme='dark'] .queensland-forest-floor { fill: color-mix(in srgb, #32392b 89%, var(--environment-ground)); }
+:root[data-theme='dark'] .queensland-main-trunk,
+:root[data-theme='dark'] .queensland-buttress-fin { fill: color-mix(in srgb, #463329 87%, var(--environment-ground)); }
+:root[data-theme='dark'] .queensland-main-trunk.right,
+:root[data-theme='dark'] .queensland-buttress-fin.right { fill: color-mix(in srgb, #3d3028 89%, var(--environment-ground)); }
+:root[data-theme='dark'] .queensland-broadleaf { fill: color-mix(in srgb, #234b32 87%, var(--environment-land)); }
+:root[data-theme='dark'] .queensland-foreground-litter-bed { fill: color-mix(in srgb, #27211d 92%, var(--environment-ground)); }
+:root[data-theme='dark'] .queensland-pod-body { fill: color-mix(in srgb, #4a2929 87%, var(--environment-ground)); }
 .scene-sky { fill: url(#scene-sky-gradient); }
 .scene-sky-top { stop-color: color-mix(in srgb, var(--scene-sky) 55%, white); }
 .scene-sky-bottom { stop-color: var(--scene-sky); }
@@ -2778,6 +2840,132 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   .pohnpei-accessory .pohnpei-machine-mobile-key {
     display: inline;
     font-size: 44px;
+    letter-spacing: -.045em;
+    stroke-width: 2px;
+  }
+}
+.queensland-machine-shadow { fill: rgba(24, 31, 26, .22); }
+.queensland-machine-base { fill: color-mix(in srgb, #8b6b46 72%, var(--local-secondary)); stroke: color-mix(in srgb, #493c31 83%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
+.queensland-machine-feet,
+.qld-scanner-tower,
+.qld-scanner-bridge,
+.qld-date-tower,
+.qld-relay-bench,
+.qld-crane-mast { fill: none; stroke: color-mix(in srgb, #5d4b38 81%, var(--worm-deep)); stroke-width: 5.5; stroke-linecap: round; stroke-linejoin: round; }
+.queensland-machine-text { fill: color-mix(in srgb, #2d473d 88%, var(--worm-deep)); font: 900 20px/1 var(--sans); paint-order: stroke; stroke: color-mix(in srgb, var(--paper-strong) 77%, transparent); stroke-width: 1.15px; letter-spacing: 0; }
+.queensland-machine-text.tiny { font-size: 15px; }
+.queensland-machine-text.micro { font-size: 10px; }
+.queensland-machine-mobile-key { display: none; }
+.qld-culture-vial { fill: color-mix(in srgb, #d5cba8 69%, var(--paper-strong)); stroke: color-mix(in srgb, #66533f 80%, var(--worm-deep)); stroke-width: 1.7; }
+.qld-vial-cap { fill: color-mix(in srgb, #78526a 71%, var(--local-primary)); stroke: color-mix(in srgb, #493642 83%, var(--worm-deep)); stroke-width: 1.5; }
+.qld-vial-dock,
+.qld-founder-lift,
+.qld-counterweight-link,
+.qld-reflection-bracket { fill: none; stroke: color-mix(in srgb, #997548 74%, var(--local-secondary)); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.qld-pod-body { fill: color-mix(in srgb, #74443e 72%, var(--local-primary)); stroke: color-mix(in srgb, #473331 84%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.qld-pod-seam { fill: none; stroke: color-mix(in srgb, #c4a05e 75%, var(--local-secondary)); stroke-width: 3.2; stroke-linecap: round; }
+.qld-pod-contour { fill: none; stroke: color-mix(in srgb, #9b6e4d 61%, var(--worm-deep)); stroke-width: 1.6; stroke-linecap: round; opacity: .78; }
+.qld-pod-cradle,
+.qld-scan-drum,
+.qld-counterweight,
+.qld-vial-platform { fill: color-mix(in srgb, #5e6d53 66%, var(--local-primary)); stroke: color-mix(in srgb, #3e493b 82%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.qld-optical-hoop,
+.qld-scan-ring { fill: color-mix(in srgb, #d5e2d8 18%, transparent); stroke: color-mix(in srgb, #9d7a49 75%, var(--local-secondary)); stroke-width: 4; }
+.qld-scan-ring.outer { stroke: color-mix(in srgb, #79556c 73%, var(--local-primary)); stroke-width: 4.7; }
+.qld-lens-glass { fill: color-mix(in srgb, #b9d5cb 68%, var(--paper-strong)); stroke: color-mix(in srgb, #47675b 80%, var(--worm-deep)); stroke-width: 2.1; }
+.qld-reflection-shutter,
+.qld-record-plate,
+.qld-trace-strip,
+.qld-closed-drawer,
+.qld-date-drawer,
+.qld-covered-channel,
+.qld-calendar-cylinder,
+.qld-plate-deck,
+.qld-map-drawer { fill: color-mix(in srgb, #d4c8a3 69%, var(--paper-strong)); stroke: color-mix(in srgb, #65523d 80%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
+.qld-reflection-shutter.deep,
+.qld-calendar-cylinder,
+.qld-strata-gate.deep { fill: color-mix(in srgb, #acbda3 59%, var(--local-primary)); }
+.qld-lead-screw,
+.qld-crank-shaft,
+.qld-crank-spokes,
+.qld-screw-thread,
+.qld-trace-line,
+.qld-connected-chain,
+.qld-drive-shaft,
+.qld-drive-teeth,
+.qld-lift-cable,
+.qld-gondola-rail,
+.qld-gear-shaft { fill: none; stroke: color-mix(in srgb, #a17c49 76%, var(--local-secondary)); stroke-width: 3.1; stroke-linecap: round; stroke-linejoin: round; }
+.qld-lead-screw { stroke-width: 4; }
+.qld-screw-thread { stroke-width: 1.6; }
+.qld-connected-chain { stroke-dasharray: 4 3; stroke-width: 2.8; }
+.qld-chain-sprocket,
+.qld-crank-wheel,
+.qld-drawer-pull,
+.qld-date-hub,
+.qld-drive-gear,
+.qld-lift-pulley,
+.qld-rotation-gear { fill: color-mix(in srgb, #ad874e 73%, var(--local-secondary)); stroke: color-mix(in srgb, #57432f 83%, var(--worm-deep)); stroke-width: 1.8; }
+.qld-lens-carriage { fill: color-mix(in srgb, #7b566e 70%, var(--local-primary)); stroke: color-mix(in srgb, #493744 83%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
+.qld-date-wheel { fill: color-mix(in srgb, #765269 69%, var(--local-primary)); stroke: color-mix(in srgb, #493642 83%, var(--worm-deep)); stroke-width: 2.5; }
+.qld-date-notch,
+.qld-calendar-mark { fill: none; stroke: color-mix(in srgb, #d7c99e 74%, var(--paper-strong)); stroke-width: 2.2; stroke-linecap: round; }
+.qld-calendar-mark.deep { stroke: color-mix(in srgb, #9c7949 76%, var(--local-secondary)); }
+.qld-channel-cap { fill: color-mix(in srgb, #75546a 70%, var(--local-primary)); stroke: color-mix(in srgb, #493744 82%, var(--worm-deep)); stroke-width: 1.4; }
+.qld-funnel-station,
+.qld-funnel-cassette { fill: color-mix(in srgb, #80604a 69%, var(--local-secondary)); stroke: color-mix(in srgb, #493c32 83%, var(--worm-deep)); stroke-width: 2.1; stroke-linejoin: round; }
+.qld-funnel-neck { fill: color-mix(in srgb, #a98553 72%, var(--local-secondary)); stroke: color-mix(in srgb, #57442f 82%, var(--worm-deep)); stroke-width: 1.6; }
+.qld-plate-carriage { fill: color-mix(in srgb, #6f5a43 68%, var(--local-secondary)); stroke: color-mix(in srgb, #44392e 83%, var(--worm-deep)); stroke-width: 1.9; stroke-linejoin: round; }
+.qld-recovery-plate { fill: color-mix(in srgb, #d7d6c6 72%, var(--paper-strong)); stroke: color-mix(in srgb, #5c645a 75%, var(--worm-deep)); stroke-width: 2; }
+.qld-crane-lattice,
+.qld-counter-jib,
+.qld-radial-jib { fill: none; stroke: color-mix(in srgb, #78576b 73%, var(--local-primary)); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.qld-counter-jib { stroke-width: 4.6; }
+.qld-gondola,
+.qld-access-box,
+.qld-strata-gate { fill: color-mix(in srgb, #d1c6a4 69%, var(--paper-strong)); stroke: color-mix(in srgb, #63513d 80%, var(--worm-deep)); stroke-width: 1.7; stroke-linejoin: round; }
+.qld-map-table { fill: color-mix(in srgb, #687d5d 66%, var(--local-primary)); stroke: color-mix(in srgb, #3e4d3d 83%, var(--worm-deep)); stroke-width: 2.8; }
+.qld-radius-ring { fill: color-mix(in srgb, #d6cfaa 22%, transparent); stroke: color-mix(in srgb, #c19a57 76%, var(--local-secondary)); stroke-width: 3; stroke-dasharray: 5 3; }
+.qld-canopy-mosaic { fill: color-mix(in srgb, #405d45 71%, var(--local-primary)); stroke: color-mix(in srgb, #314338 83%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
+.qld-canopy-token { fill: color-mix(in srgb, #8ba375 67%, var(--local-primary)); stroke: color-mix(in srgb, #435340 80%, var(--worm-deep)); stroke-width: 1.2; }
+.qld-canopy-token.deep { fill: color-mix(in srgb, #566f50 75%, var(--local-primary)); }
+.qld-map-hub,
+.qld-tree-position { fill: color-mix(in srgb, #ac844d 73%, var(--local-secondary)); stroke: color-mix(in srgb, #56422e 83%, var(--worm-deep)); stroke-width: 1.3; }
+.qld-tree-position.deep { fill: color-mix(in srgb, #7b566d 70%, var(--local-primary)); }
+:root[data-theme='dark'] .queensland-machine-base,
+:root[data-theme='dark'] .qld-funnel-station,
+:root[data-theme='dark'] .qld-funnel-cassette,
+:root[data-theme='dark'] .qld-plate-carriage { fill: color-mix(in srgb, #49392e 87%, var(--local-secondary)); }
+:root[data-theme='dark'] .qld-culture-vial,
+:root[data-theme='dark'] .qld-reflection-shutter,
+:root[data-theme='dark'] .qld-record-plate,
+:root[data-theme='dark'] .qld-trace-strip,
+:root[data-theme='dark'] .qld-closed-drawer,
+:root[data-theme='dark'] .qld-date-drawer,
+:root[data-theme='dark'] .qld-covered-channel,
+:root[data-theme='dark'] .qld-calendar-cylinder,
+:root[data-theme='dark'] .qld-plate-deck,
+:root[data-theme='dark'] .qld-map-drawer,
+:root[data-theme='dark'] .qld-gondola,
+:root[data-theme='dark'] .qld-access-box,
+:root[data-theme='dark'] .qld-strata-gate { fill: color-mix(in srgb, #555045 83%, var(--paper-strong)); }
+:root[data-theme='dark'] .qld-reflection-shutter.deep,
+:root[data-theme='dark'] .qld-calendar-cylinder,
+:root[data-theme='dark'] .qld-strata-gate.deep { fill: color-mix(in srgb, #3b5040 86%, var(--local-primary)); }
+:root[data-theme='dark'] .qld-pod-body { fill: color-mix(in srgb, #4b2f32 88%, var(--local-primary)); }
+:root[data-theme='dark'] .qld-pod-cradle,
+:root[data-theme='dark'] .qld-scan-drum,
+:root[data-theme='dark'] .qld-counterweight,
+:root[data-theme='dark'] .qld-vial-platform { fill: color-mix(in srgb, #354438 87%, var(--local-primary)); }
+:root[data-theme='dark'] .qld-lens-glass { fill: color-mix(in srgb, #3f584f 86%, var(--paper-strong)); }
+:root[data-theme='dark'] .qld-map-table { fill: color-mix(in srgb, #334737 87%, var(--local-primary)); }
+:root[data-theme='dark'] .qld-canopy-mosaic { fill: color-mix(in srgb, #253a2d 89%, var(--local-primary)); }
+:root[data-theme='dark'] .qld-canopy-token { fill: color-mix(in srgb, #40563e 86%, var(--local-primary)); }
+@media (max-width: 600px) {
+  .queensland-accessory .queensland-machine-text:not(.queensland-machine-mobile-key) { display: none; }
+  .queensland-accessory .queensland-machine-mobile-key {
+    display: inline;
+    font-size: 42px;
     letter-spacing: -.045em;
     stroke-width: 2px;
   }
