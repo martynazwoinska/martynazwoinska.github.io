@@ -60,12 +60,12 @@ The scene connects one exact compost-bin microhabitat to the immediately neighbo
 - An open timber compost bin is the closest and most legible object.
 - Its layers show decomposing green waste, brown leaves, stems and damp organic matter without turning the pile into rubbish or a pristine flower bed.
 - An optional small `1/39` plot stake may identify the representative record without becoming a decorative title.
-- Raised-bed boards enter from unequal angles and lead the eye into the allotment.
+- A single raised bed and a curving path lead the eye into the allotment without crowding the worms.
 
 ### Middle ground: Midmar allotment
 
-- Irregular plots, modest sheds, hedges and winter or late-season planting form one receding garden space.
-- Bed edges converge toward Blackford Hill instead of forming repeated horizontal field strips.
+- One modest shed, low hedges and winter or late-season planting form one receding garden space.
+- The curving path and one angled bed lead toward Blackford Hill instead of forming a repeated plot grid.
 - Compost remains more prominent than regional landmarks.
 
 ### Background: Blackford lock silhouette
@@ -73,11 +73,11 @@ The scene connects one exact compost-bin microhabitat to the immediately neighbo
 - Blackford Hill is a low asymmetric crag-and-tail landform, with a steeper western face and a longer gentler tail.
 - The Royal Observatory sits on the crest as a long red-sandstone bar with separated green cylindrical housings.
 - Arthur's Seat, Salisbury Crags, a loch and the old generic city skirt do not appear.
-- The locked thumbnail silhouette is an angular compost bay and converging plots beneath one lopsided low hill topped by two separated green drums.
+- The locked thumbnail silhouette is a compact compost bay and curving path beneath one lopsided low hill topped by two separated green drums.
 
 ## Accessory evidence and design contract
 
-The accessories translate the representative microhabitat and nearby scientific landscape into movable play objects. They are not claims about Edinburgh dress.
+The tumbler translates the representative microhabitat into a movable play object. The kilt and bagpipes are playful Scottish cultural cues requested for this isolate; they do not claim a documented relationship to ED3010 or identify a specific historic tartan.
 
 ### Midmar compost tumbler
 
@@ -87,31 +87,21 @@ The Council documents a large tumbler at Midmar, but it post-dates the strain re
 - **Companion:** low slatted barrel in a crescent cradle; end handwheel; two differently placed inspection doors; distinct footing and rotational axis.
 - Neither drawing may look like N2's jetpack, an ordinary backpack or a recoloured cylinder.
 
-### GALAXY plate-scanner engine
+### Edinburgh tartan kilt
 
-The Royal Observatory's GALAXY machine scanned astronomical photographic plates and preceded SuperCOSMOS. It provides a locally scientific object that is neither another telescope nor a generic computer.
+The kilt is a playful regional cue rather than evidence about the isolate. Its restrained emerald, heather and antique-gold sett belongs to the Game's visual system and is not presented as a named clan or historic tartan.
 
-Sources:
+- **Primary:** longer tailored apron, deep curved pleats, broad waistband and a capped sporran with three tassels.
+- **Companion:** shorter asymmetric fitted form, shallower pleats, a different sett rhythm and a simpler uncapped sporran.
+- The two forms must read as cloth wrapped around different worm bodies, not as barrels, shields or recoloured skirts.
 
-- [Royal Observatory Edinburgh: SuperCOSMOS facility](https://www.roe.ac.uk/ifa/wfau/cosmos/facility.html)
-- [Royal Observatory Edinburgh history](https://www.roe.ac.uk/roe/history.html)
-- [National Museums Scotland GALAXY/COSMOS scanner entry](https://www.nms.ac.uk/collections/search/object?creator=Sogenique%20%28Service%29%20Ltd&entry=703800&page=1&view=cards)
+### Great Highland bagpipes
 
-Required construction:
+The bagpipes are the second playful Scottish cue. Their construction must remain recognisable at the small Game scale without becoming a generic backpack or a bundle of sticks.
 
-- **Primary:** wide cast-iron rectangular frame; square star plate on a moving carriage; vertical scanning head; control wheel, counter and cable or guide detail.
-- **Companion:** tall narrow portal frame; diagonally mounted plate carriage; offset scan head; different counter and foot geometry.
-- The star image is a restrained plate clue, not a copied survey image or institutional logo.
-
-### Agassiz ice-flow model
-
-Agassiz Rock near Blackford Hill records the history of recognising glacial striations around Edinburgh. The accessory is an educational replica; worms must not be shown scraping, collecting or altering protected rock.
-
-Source: [Agassiz Rock geological account, Scottish Geology Trust geoguide](https://geoguide.scottishgeologytrust.org/p/gcr06/gcr06_agassizrock).
-
-- **Primary:** horizontal purple-andesite relief slab with parallel grooves; translucent ice carriage moving eastward on a brass rail; direction and motion shown by geometry rather than explanatory text.
-- **Companion:** upright crag-and-tail cutaway theatre; steep west face, gentle east tail and hand-cranked ice ribbon; distinct silhouette and mechanism.
-- The purple andesite and ice colours are scientifically meaningful and may differ from the general site palette.
+- **Primary:** full organic bag, three graduated drones with separate mounts and rings, braided cord, long chanter, blowpipe and finger holes.
+- **Companion:** compact differently shaped bag, two drones, a shorter independent cord route and a distinct chanter and blowpipe.
+- Both copies use dark wood, muted heather cord and restrained brass mounts; their pipes must stay clear of the worm faces.
 
 ## Quality benchmark
 
@@ -122,7 +112,7 @@ The revised Bristol N2 and Santeuil batches are the minimum quality floor, not t
 - Only the Edinburgh landscape and Edinburgh accessory data/drawings change in the Game feature batch.
 - The public marker remains `Edinburgh, Scotland`, while explanatory copy calls ED3010 representative.
 - Every concept has a dedicated SVG drawing path; none uses a generic sampler, accordion or fallback renderer.
-- The old ear-warmers, contour accordion, loch sampler, pond, Arthur's Seat and Salisbury Crags are absent.
+- The old ear-warmers, contour accordion, loch sampler, GALAXY scanner, Agassiz model, pond, Arthur's Seat and Salisbury Crags are absent.
 - Primary and companion copies differ in outline, construction, internal detail and placement.
 - All three pairs remain legible together and do not hide worm faces.
 - Each of the six visible objects remains independently draggable and keyboard movable; Home resets only the focused copy.
