@@ -2,7 +2,7 @@ import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
-import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260716-5";
+import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260716-6";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260716-5";
 
 const t = createGameTranslator(document.documentElement.lang);
@@ -521,18 +521,24 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
   const avatarBounds = els.wormAvatar.getBoundingClientRect();
   const margin = 6;
   if (avatarBounds.width && avatarBounds.height) {
-    for (let attempt = 0; attempt < 8; attempt += 1) {
-      const accessoryBounds = accessoryPieceBounds(id, wormPart);
-      if (!accessoryBounds?.width || !accessoryBounds.height) break;
+    const accessoryBounds = accessoryPieceBounds(id, wormPart);
+    if (!accessoryBounds?.width || !accessoryBounds.height) return position;
 
-      let screenX = 0;
-      let screenY = 0;
-      if (accessoryBounds.left < avatarBounds.left + margin) screenX = avatarBounds.left + margin - accessoryBounds.left;
-      else if (accessoryBounds.right > avatarBounds.right - margin) screenX = avatarBounds.right - margin - accessoryBounds.right;
-      if (accessoryBounds.top < avatarBounds.top + margin) screenY = avatarBounds.top + margin - accessoryBounds.top;
-      else if (accessoryBounds.bottom > avatarBounds.bottom - margin) screenY = avatarBounds.bottom - margin - accessoryBounds.bottom;
+    const isPrimaryFigFascinator = referencePiece.dataset.accessoryFamily === "fig-fascinator"
+      && referencePiece.dataset.wormPart === "primary";
+    const topOverflow = isPrimaryFigFascinator
+      ? Math.min(accessoryBounds.height * .66, avatarBounds.height * .2)
+      : 0;
+    const topBoundary = avatarBounds.top + margin - topOverflow;
 
-      if (Math.abs(screenX) < .5 && Math.abs(screenY) < .5) break;
+    let screenX = 0;
+    let screenY = 0;
+    if (accessoryBounds.left < avatarBounds.left + margin) screenX = avatarBounds.left + margin - accessoryBounds.left;
+    else if (accessoryBounds.right > avatarBounds.right - margin) screenX = avatarBounds.right - margin - accessoryBounds.right;
+    if (accessoryBounds.top < topBoundary) screenY = topBoundary - accessoryBounds.top;
+    else if (accessoryBounds.bottom > avatarBounds.bottom - margin) screenY = avatarBounds.bottom - margin - accessoryBounds.bottom;
+
+    if (Math.abs(screenX) >= .5 || Math.abs(screenY) >= .5) {
       const correction = screenDeltaToAccessorySpace(referencePiece, screenX, screenY);
       position = { x: position.x + correction.x, y: position.y + correction.y };
       activeAccessoryPositions().set(positionKey, position);

@@ -3128,14 +3128,14 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   padding: 16px;
   background: rgba(255,209,102,.28);
 }
-.wow-fact > span { position: absolute; top: 13px; right: 13px; font-size: .82rem; line-height: 1; opacity: .72; }
+.wow-fact > span { position: absolute; top: 12px; right: 12px; font-size: 1.15rem; line-height: 1; opacity: .84; }
 .wow-fact p { margin: 0; }
 .wow-fact strong, .wow-fact p span { display: block; }
 .wow-fact strong { padding-right: 18px; }
 .wow-fact p span { margin-top: 3px; color: var(--ink-soft); }
 @media (max-width: 420px) {
   .wow-fact { padding: 13px; }
-  .wow-fact > span { top: 11px; right: 11px; font-size: .72rem; }
+  .wow-fact > span { top: 10px; right: 10px; font-size: 1rem; }
   .wow-fact strong { padding-right: 16px; }
 }
 

@@ -96,7 +96,7 @@ const canonicalProfiles = {
     { water: "estuary", weather: "sun", cues: [["eucalyptus", 80, 245, .9], ["banksia", 510, 297, .8], ["flower", 155, 363, .75]] }
   ),
   "Bristol N2, England": profile(
-    "bristol-garden-gorge", "Bristol garden and Avon Gorge",
+    "bristol-garden-gorge", "Bristol garden and Avon Gorge, England",
     "N2’s recorded habitat was compost in a Bristol urban garden; the wooded Avon Gorge locates the city without replacing that real microhabitat.",
     "CaeNDR N2 record", "https://caendr.org/isotype/N2/",
     palettes.temperate, [[0, 300], [88, 274], [155, 288], [230, 206], [280, 196], [330, 270], [410, 284], [500, 254], [600, 282]],
