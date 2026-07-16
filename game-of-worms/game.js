@@ -917,9 +917,19 @@ function showMarkerTooltip(record, item, button) {
   const markerY = Number.parseFloat(button.style.top);
   const tooltipX = Math.max(118, Math.min(els.mapWrap.clientWidth - 118, markerX));
   els.mapTooltip.style.left = `${tooltipX}px`;
-  els.mapTooltip.style.top = `${markerY}px`;
-  els.mapTooltip.classList.toggle("below", markerY < 92);
   els.mapTooltip.hidden = false;
+  const tooltipHeight = els.mapTooltip.offsetHeight;
+  const mapHeight = els.mapWrap.clientHeight;
+  const crossesTop = markerY - tooltipHeight - 16 < 0;
+  els.mapTooltip.classList.toggle("below", crossesTop);
+  if (crossesTop) {
+    // Keep a top-edge tooltip inside the map when the marker is also near
+    // the bottom edge (for example after a narrow viewport reflow).
+    const maxTop = Math.max(0, mapHeight - tooltipHeight - 20);
+    els.mapTooltip.style.top = `${Math.min(Math.max(markerY, 0), maxTop)}px`;
+  } else {
+    els.mapTooltip.style.top = `${markerY}px`;
+  }
 }
 
 function hideMarkerTooltip() {
