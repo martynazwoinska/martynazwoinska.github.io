@@ -2,8 +2,8 @@ import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
-import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260714-15";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260714-18";
+import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260716-3";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260716-3";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -728,12 +728,19 @@ function addAccessoryHitTarget(piece) {
   if (!matrix || !Number.isFinite(bounds.width) || !Number.isFinite(bounds.height)) return;
   const scaleX = Math.hypot(matrix.a, matrix.b) || 1;
   const scaleY = Math.hypot(matrix.c, matrix.d) || 1;
-  const width = Math.max(bounds.width, 44 / scaleX);
-  const height = Math.max(bounds.height, 44 / scaleY);
+  const isN2CompanionCoat = piece.dataset.accessoryFamily === "n2-lab-coat" && piece.dataset.wormPart === "companion";
+  const isN2Accessory = ["ngm-agar-plate", "n2-lab-coat", "cryo-vial-jetpack"].includes(piece.dataset.accessoryFamily);
+  const minimumTarget = piece.dataset.accessoryFamily === "ngm-agar-plate" ? 46 : isN2Accessory ? 52 : 44;
+  const width = isN2CompanionCoat ? minimumTarget / scaleX : Math.max(bounds.width, minimumTarget / scaleX);
+  const height = isN2CompanionCoat ? minimumTarget / scaleY : Math.max(bounds.height, minimumTarget / scaleY);
+  const targetX = isN2CompanionCoat
+    ? bounds.x + bounds.width - width / 2 + 3 / scaleX
+    : bounds.x + (bounds.width - width) / 2;
+  const targetY = bounds.y + (bounds.height - height) / 2;
   const hitTarget = document.createElementNS("http://www.w3.org/2000/svg", "rect");
   hitTarget.setAttribute("class", "accessory-hit-target");
-  hitTarget.setAttribute("x", String(bounds.x - (width - bounds.width) / 2));
-  hitTarget.setAttribute("y", String(bounds.y - (height - bounds.height) / 2));
+  hitTarget.setAttribute("x", String(targetX));
+  hitTarget.setAttribute("y", String(targetY));
   hitTarget.setAttribute("width", String(width));
   hitTarget.setAttribute("height", String(height));
   hitTarget.setAttribute("rx", String(Math.min(width, height) * .22));

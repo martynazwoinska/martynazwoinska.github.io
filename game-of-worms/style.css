@@ -416,12 +416,14 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .bristol-terrace-house { fill: color-mix(in srgb, var(--paper-strong) 76%, #c9ad8b); stroke: color-mix(in srgb, var(--environment-detail) 72%, #654f45); stroke-width: 1.5; }
 .bristol-terrace-roof { fill: color-mix(in srgb, var(--environment-detail) 54%, #8e5647); }
 .bristol-terrace-window { fill: color-mix(in srgb, var(--environment-water) 62%, var(--environment-detail)); }
-.bristol-gorge { stroke: var(--environment-detail); stroke-width: 2; stroke-linejoin: round; }
+.bristol-gorge { stroke: none; }
 .bristol-gorge-wooded { fill: color-mix(in srgb, var(--environment-land) 80%, #355e48); }
 .bristol-gorge-limestone { fill: color-mix(in srgb, var(--environment-land) 42%, #d7cfb4); }
-.bristol-cliff-face { stroke: color-mix(in srgb, var(--environment-detail) 72%, #6f6758); stroke-width: 2.5; stroke-linejoin: round; }
+.bristol-gorge-rim { fill: none; stroke: var(--environment-detail); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bristol-cliff-face { stroke: none; }
 .bristol-cliff-face.left { fill: color-mix(in srgb, var(--environment-land) 47%, #9c927a); }
 .bristol-cliff-face.right { fill: color-mix(in srgb, var(--paper-strong) 47%, #a8a18d); }
+.bristol-cliff-outline { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 72%, #6f6758); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 .bristol-cliff-strata { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 68%, #b6aa8d); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: .72; }
 .bristol-avon { stroke: color-mix(in srgb, var(--environment-detail) 32%, var(--environment-water)); stroke-width: 2; }
 .bristol-tidal-bank { fill: color-mix(in srgb, var(--environment-ground) 58%, #978b72); opacity: .78; }
@@ -1436,12 +1438,12 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .ngm-plate .bacterial-lawn { fill: #d6cf8b; opacity: .9; }
 .ngm-plate .worm-tracks path { fill: none; stroke: rgba(255,255,238,.86); stroke-width: 2; stroke-linecap: round; }
 .ngm-plate .plate-highlight { fill: rgba(255,255,255,.9); }
-.ngm-plate text { fill: #355e64; font: 700 9px/1 sans-serif; letter-spacing: .02em; }
+.ngm-plate text { fill: #355e64; font: 800 10.5px/1 sans-serif; letter-spacing: .015em; }
 .ngm-plate .plate-glare { fill: none; stroke: rgba(255,255,255,.82); stroke-width: 3; stroke-linecap: round; }
 .ngm-plate .plate-label-tab { fill: color-mix(in srgb, #e7f3f2 72%, var(--local-secondary)); stroke: #527b7d; stroke-width: 2; }
 .ngm-plate .plate-label-text { paint-order: stroke; stroke: rgba(255,255,255,.82); stroke-width: 2.5px; }
-.ngm-plate .plate-label-text.op50 { font-size: 6.5px; }
-.ngm-plate .plate-label-text.companion { font-size: 8px; }
+.ngm-plate .plate-label-text.op50 { font-size: 8.5px; }
+.ngm-plate .plate-label-text.companion { font-size: 10.5px; }
 .ngm-plate-small .plate-base, .ngm-plate-small .plate-rim { stroke-width: 2; }
 .ngm-plate-small .plate-agar { stroke-width: 1.25; }
 .ngm-plate-small .plate-glare { stroke-width: 1.5; }

@@ -820,9 +820,11 @@ function drawBristolScene(target, palette) {
 
   append(target, "path", { class: "bristol-gorge bristol-gorge-wooded", d: "M0 124Q48 103 98 131Q141 149 176 188Q205 222 244 294L267 430H0Z" });
   append(target, "path", { class: "bristol-gorge bristol-gorge-limestone", d: "M600 132Q553 111 512 145Q469 176 445 226Q420 276 367 430H600Z" });
+  append(target, "path", { class: "bristol-gorge-rim", d: "M0 124Q48 103 98 131Q141 149 176 188Q205 222 231 273M600 132Q553 111 512 145Q469 176 445 226Q435 247 426 267" });
   append(target, "path", { class: "bristol-cliff-face left", d: "M130 154L167 181L181 223L210 248L232 317L257 430H207L179 350L151 313L146 248L111 211Z" });
   append(target, "path", { class: "bristol-cliff-face right", d: "M487 164L454 205L446 255L418 287L386 374L369 430H430L455 353L482 321L487 263L520 211Z" });
-  append(target, "path", { class: "bristol-cliff-strata", d: "M142 184L171 203L183 245M157 267L190 282L207 324M475 191L457 224L458 256M452 291L425 322L408 367" });
+  append(target, "path", { class: "bristol-cliff-outline", d: "M130 154L167 181L181 223L210 248M111 211L146 248L151 313M487 164L454 205L446 255L430 275M520 211L487 263L482 321" });
+  append(target, "path", { class: "bristol-cliff-strata", d: "M142 184L171 203L183 245M119 274L132 291L126 315M482 190L466 215L471 235M463 242L458 257M536 278L522 294L527 307M548 324L531 344L536 360" });
 
   append(target, "path", { class: "environment-water bristol-avon", d: "M312 164C305 217 286 299 258 344C242 373 229 402 221 430H405C391 388 373 345 358 302C346 260 334 193 312 164Z", fill: palette[4] });
   append(target, "path", { class: "bristol-tidal-bank left", d: "M239 302Q271 278 284 240Q282 286 260 332Q238 374 221 430H182Q202 355 239 302Z" });
@@ -845,9 +847,9 @@ function drawBristolScene(target, palette) {
 
   append(target, "path", { class: "bristol-garden-ground", d: "M0 337Q72 310 149 335Q211 358 253 397L264 430H0ZM600 338Q538 316 481 345Q446 365 413 430H600Z" });
   const wall = append(target, "g", { class: "bristol-garden-wall", "aria-hidden": "true" });
-  append(wall, "path", { d: "M445 347Q520 323 600 337V430H425Z" });
-  [365, 389, 413].forEach((y, row) => append(wall, "path", { class: "bristol-brick-line", d: `M${435 - row * 5} ${y}Q520 ${y - 17} 600 ${y - 8}` }));
-  [470, 520, 570].forEach((x, index) => append(wall, "path", { class: "bristol-brick-line", d: `M${x} ${342 + index * 2}L${x - 7} 430` }));
+  append(wall, "path", { d: "M478 370Q536 342 600 352V430H445Z" });
+  [390, 414].forEach((y, row) => append(wall, "path", { class: "bristol-brick-line", d: `M${470 - row * 3} ${y}Q536 ${y - 12} 600 ${y - 6}` }));
+  [526, 574].forEach((x, index) => append(wall, "path", { class: "bristol-brick-line", d: `M${x} ${354 + index * 3}L${x - 6} 430` }));
 
   const compost = append(target, "g", { class: "bristol-compost", transform: "translate(89 357)", "aria-hidden": "true" });
   append(compost, "path", { class: "bristol-compost-shadow", d: "M-82 43Q0 64 92 40Q36 20-82 43Z" });

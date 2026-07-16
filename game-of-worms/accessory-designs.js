@@ -331,8 +331,8 @@ function drawN2Accessory(group, item, companion) {
       add(tracks, "path", { d: "M-18-7Q-9-14-1-6T15-8" });
       add(tracks, "path", { d: "M-14 8Q-5 1 4 8T18 5" });
       add(group, "path", { class: "plate-glare", d: "M-23-20Q-8-33 10-29" });
-      add(group, "path", { class: "plate-label-tab", d: "M-18 35Q0 42 18 35L16 49Q0 54-16 48Z" });
-      const label = add(group, "text", { class: "plate-label-text companion", x: 0, y: 46, "text-anchor": "middle" });
+      add(group, "path", { class: "plate-label-tab", d: "M-23 25Q0 32 23 25L22 36Q0 41-22 36Z" });
+      const label = add(group, "text", { class: "plate-label-text companion", x: 0, y: 35, "text-anchor": "middle" });
       label.textContent = "N2";
     } else {
       add(group, "ellipse", { class: "plate-shadow", cx: 2, cy: 15, rx: 60, ry: 13 });
@@ -2716,8 +2716,8 @@ function renderPiece(target, item, wormPart) {
   let [x, y, scale] = layouts[item.slot][item.artKind][wormPart];
   let angleOverride = null;
   const customLayouts = {
-    "ngm-agar-plate": { primary: [345, 210, .86, -8], companion: [45, 270, .65, 4] },
-    "n2-lab-coat": { primary: [170, 210, 1, 0], companion: [82, 175, 1, 0] },
+    "ngm-agar-plate": { primary: [366, 260, .82, -6], companion: [35, 288, .65, 2] },
+    "n2-lab-coat": { primary: [180, 214, 1, 0], companion: [52, 168, .92, -1] },
     "cryo-vial-jetpack": { primary: [278, 143, .9, -3], companion: [31, 155, .72, 5] },
     "hogweed-specimen-lantern": { primary: [327, 133, .66, 3], companion: [61, 126, .58, -4] },
     "santeuil-cylinder-organ": { primary: [183, 191, .59, -2], companion: [86, 208, .52, 2] },
