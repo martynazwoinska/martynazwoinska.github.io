@@ -55,6 +55,7 @@ The two cards have equal visual weight, stack on mobile, retain emerald and anti
 ## Verified implementation on `main`
 
 - The homepage, Game of Worms, and Cabinet of Curiosities are deployed through GitHub Pages.
+- The homepage hero uses the approved transparent botanical assets in separate light- and dark-theme palettes. Desktop and wide tablet layouts (760 px and above) retain the oval portrait between the upper-left and lower-right ornaments; the compact 621–759 px layout keeps only the upper flourish and pause mark. Phones omit the portrait and upper ornament, centre the name in three rows, and use the lower flourish as the hero-specific transition into About. The standard divider is suppressed only above About; later section dividers remain.
 - Shared theme and language-preference handling is present under `shared/`.
 - Homepage behaviour and translations are separated into `home.js` and `home-i18n.js`.
 - Each worm’s copy of a Game of Worms accessory can be repositioned independently. There is no separate worm-target selector: visitors switch an accessory on, then drag its visible copy directly. Keyboard users focus that same visible object, move it with the arrow keys, and press Home to reset it. Positions remain separate for each worm, species, and location during the session. The random `Surprise me` control has been removed.
