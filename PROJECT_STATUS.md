@@ -1,6 +1,6 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-07-16
+Last updated: 2026-07-17
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
@@ -13,7 +13,7 @@ This file records approved decisions and the verified implementation state. Alwa
 - Primary colours: emerald, antique gold, muted violet or berry
 - Display font: Cormorant Garamond
 - Light and dark themes must remain functional
-- The dark-theme top navigation uses a restrained saturated bronze (`#302a20`); the light-theme green remains `#cbe3d7`.
+- The paired Ivory Ink and Marine Ink themes use page-matched navigation backgrounds with a fine hairline. The filled antique-gold theme toggle remains the single dense header accent.
 - Homepage language options: English, Swedish, and Polish
 
 ## Parallel ownership
@@ -55,7 +55,7 @@ The two cards have equal visual weight, stack on mobile, retain emerald and anti
 ## Verified implementation on `main`
 
 - The homepage, Game of Worms, and Cabinet of Curiosities are deployed through GitHub Pages.
-- The homepage hero uses the approved transparent botanical assets in separate light- and dark-theme palettes. Desktop and wide tablet layouts (760 px and above) retain the oval portrait between deliberately separated upper-left and lower-right ornaments; the name and portrait read as one compact composition centred between those botanical borders. A small antique-gold Quiet Atelier signet closes the hero without acting as a section divider. The compact 621–759 px layout keeps the upper flourish and a scaled signet. Phones omit the portrait, upper ornament and signet, centre the name in three rows, and use the lower flourish as the hero-specific transition into About. The standard divider is suppressed only above About; later section dividers remain.
+- The homepage hero uses the approved transparent botanical assets in paired Ivory Ink light and Marine Ink dark palettes. Desktop and wide tablet layouts (760 px and above) retain the oval portrait between deliberately separated upper-left and lower-right ornaments; the name and portrait read as one compact composition centred between those botanical borders. The portrait has one theme-coherent outline rather than a double cameo ring. A small antique-gold Quiet Atelier signet closes the hero without acting as a section divider. The compact 621–759 px layout keeps the upper flourish and a scaled signet. Phones omit the portrait, upper ornament and signet, centre the name in three rows, and use the lower flourish as the hero-specific transition into About. The standard divider is suppressed only above About; later section dividers remain.
 - Shared theme and language-preference handling is present under `shared/`.
 - Homepage behaviour and translations are separated into `home.js` and `home-i18n.js`.
 - Each worm’s copy of a Game of Worms accessory can be repositioned independently. There is no separate worm-target selector: visitors switch an accessory on, then drag its visible copy directly. Keyboard users focus that same visible object, move it with the arrow keys, and press Home to reset it. Positions remain separate for each worm, species, and location during the session. The random `Surprise me` control has been removed.

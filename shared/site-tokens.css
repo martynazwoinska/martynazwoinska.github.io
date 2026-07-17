@@ -42,23 +42,23 @@
 }
 
 :root {
-  --site-bg: #fbfaf7;
-  --site-surface: #ffffff;
-  --site-surface-muted: #f3f1ea;
-  --site-text: #1f2328;
-  --site-text-soft: #55606b;
-  --site-text-faint: #6b7480;
-  --site-brand-emerald: #1c7a52;
-  --site-brand-emerald-soft: #e3f1e9;
-  --site-brand-berry: #7d2145;
+  --site-bg: #faf8f2;
+  --site-surface: #fffdfa;
+  --site-surface-muted: #eeece4;
+  --site-text: #20313d;
+  --site-text-soft: #53636c;
+  --site-text-faint: #647178;
+  --site-brand-emerald: #1f735f;
+  --site-brand-emerald-soft: #dcebe5;
+  --site-brand-berry: #8b3d5c;
   --site-brand-gold: #a88445;
-  --site-brand-violet: #6b4a73;
-  --site-nav-bg: #cbe3d7;
-  --site-nav-border: rgba(28, 122, 82, .48);
-  --site-nav-accent: #196f4a;
-  --site-border: #e7e3d9;
-  --site-focus: #7d2145;
-  --site-shadow: 0 1px 2px rgba(31, 35, 40, .06), 0 8px 24px rgba(31, 35, 40, .06);
+  --site-brand-violet: #6f5878;
+  --site-nav-bg: #faf8f2;
+  --site-nav-border: #bac9c3;
+  --site-nav-accent: #1b6d59;
+  --site-border: #ddd9cf;
+  --site-focus: #8b3d5c;
+  --site-shadow: 0 1px 2px rgba(27, 43, 50, .06), 0 10px 28px rgba(27, 43, 50, .07);
   --site-font-display: 'Cormorant Garamond', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --site-font-serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Times New Roman', serif;
   --site-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -66,62 +66,62 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --site-bg: #14171a;
-    --site-surface: #1c2024;
-    --site-surface-muted: #23282d;
-    --site-text: #eceef0;
-    --site-text-soft: #b3bcc4;
-    --site-text-faint: #7f8993;
-    --site-brand-emerald: #5fcb9d;
-    --site-brand-emerald-soft: #16302a;
-    --site-brand-berry: #d889a8;
-    --site-brand-gold: #d2b66f;
-    --site-brand-violet: #c1a4ca;
-    --site-nav-bg: #302a20;
-    --site-nav-border: #6d5e3d;
-    --site-nav-accent: #5fcb9d;
-    --site-border: #2c3238;
-    --site-focus: #d889a8;
-    --site-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .35);
+    --site-bg: #172a3a;
+    --site-surface: #1f3748;
+    --site-surface-muted: #294559;
+    --site-text: #f1f2ec;
+    --site-text-soft: #c3d0d5;
+    --site-text-faint: #9eb4be;
+    --site-brand-emerald: #73d1b9;
+    --site-brand-emerald-soft: #1d4645;
+    --site-brand-berry: #ee9aa6;
+    --site-brand-gold: #d3b56b;
+    --site-brand-violet: #b9adda;
+    --site-nav-bg: #172a3a;
+    --site-nav-border: #365367;
+    --site-nav-accent: #88dfc7;
+    --site-border: #365367;
+    --site-focus: #f1a0ad;
+    --site-shadow: 0 1px 2px rgba(5, 15, 28, .32), 0 12px 32px rgba(5, 15, 28, .27);
   }
 }
 
 :root[data-theme='dark'] {
-  --site-bg: #14171a;
-  --site-surface: #1c2024;
-  --site-surface-muted: #23282d;
-  --site-text: #eceef0;
-  --site-text-soft: #b3bcc4;
-  --site-text-faint: #7f8993;
-  --site-brand-emerald: #5fcb9d;
-  --site-brand-emerald-soft: #16302a;
-  --site-brand-berry: #d889a8;
-  --site-brand-gold: #d2b66f;
-  --site-brand-violet: #c1a4ca;
-  --site-nav-bg: #302a20;
-  --site-nav-border: #6d5e3d;
-  --site-nav-accent: #5fcb9d;
-  --site-border: #2c3238;
-  --site-focus: #d889a8;
-  --site-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .35);
+  --site-bg: #172a3a;
+  --site-surface: #1f3748;
+  --site-surface-muted: #294559;
+  --site-text: #f1f2ec;
+  --site-text-soft: #c3d0d5;
+  --site-text-faint: #9eb4be;
+  --site-brand-emerald: #73d1b9;
+  --site-brand-emerald-soft: #1d4645;
+  --site-brand-berry: #ee9aa6;
+  --site-brand-gold: #d3b56b;
+  --site-brand-violet: #b9adda;
+  --site-nav-bg: #172a3a;
+  --site-nav-border: #365367;
+  --site-nav-accent: #88dfc7;
+  --site-border: #365367;
+  --site-focus: #f1a0ad;
+  --site-shadow: 0 1px 2px rgba(5, 15, 28, .32), 0 12px 32px rgba(5, 15, 28, .27);
 }
 
 :root[data-theme='light'] {
-  --site-bg: #fbfaf7;
-  --site-surface: #ffffff;
-  --site-surface-muted: #f3f1ea;
-  --site-text: #1f2328;
-  --site-text-soft: #55606b;
-  --site-text-faint: #6b7480;
-  --site-brand-emerald: #1c7a52;
-  --site-brand-emerald-soft: #e3f1e9;
-  --site-brand-berry: #7d2145;
+  --site-bg: #faf8f2;
+  --site-surface: #fffdfa;
+  --site-surface-muted: #eeece4;
+  --site-text: #20313d;
+  --site-text-soft: #53636c;
+  --site-text-faint: #647178;
+  --site-brand-emerald: #1f735f;
+  --site-brand-emerald-soft: #dcebe5;
+  --site-brand-berry: #8b3d5c;
   --site-brand-gold: #a88445;
-  --site-brand-violet: #6b4a73;
-  --site-nav-bg: #cbe3d7;
-  --site-nav-border: rgba(28, 122, 82, .48);
-  --site-nav-accent: #196f4a;
-  --site-border: #e7e3d9;
-  --site-focus: #7d2145;
-  --site-shadow: 0 1px 2px rgba(31, 35, 40, .06), 0 8px 24px rgba(31, 35, 40, .06);
+  --site-brand-violet: #6f5878;
+  --site-nav-bg: #faf8f2;
+  --site-nav-border: #bac9c3;
+  --site-nav-accent: #1b6d59;
+  --site-border: #ddd9cf;
+  --site-focus: #8b3d5c;
+  --site-shadow: 0 1px 2px rgba(27, 43, 50, .06), 0 10px 28px rgba(27, 43, 50, .07);
 }

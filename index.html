@@ -12,9 +12,9 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/" />
   <meta property="og:image" content="https://martynazwoinska.github.io/photo.jpg" />
   <link rel="canonical" href="https://martynazwoinska.github.io/" />
-  <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#14171a" media="(prefers-color-scheme: dark)" />
-  <link rel="stylesheet" href="shared/site-tokens.css?v=20260713-1" />
+  <meta name="theme-color" content="#faf8f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#172a3a" media="(prefers-color-scheme: dark)" />
+  <link rel="stylesheet" href="shared/site-tokens.css?v=20260717-1" />
   <script src="shared/site-preferences.js?v=20260713-1"></script>
   <script type="application/ld+json">
   {
@@ -63,11 +63,27 @@
       --footer-text: var(--text-soft);
       --footer-rule: color-mix(in srgb, var(--accent-gold) 42%, var(--border));
       --worm-face: #4a3027;
+      --hero-avatar-outline: #3f8075;
+      --hero-avatar-shadow: rgba(27, 43, 50, .16);
       --radius: 14px;
       --maxw: 1160px;
       --serif: var(--site-font-serif);
       --display: var(--site-font-display);
       --sans: var(--site-font-sans);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --hero-avatar-outline: #639aa7;
+        --hero-avatar-shadow: rgba(5, 15, 28, .3);
+      }
+    }
+    :root[data-theme="dark"] {
+      --hero-avatar-outline: #639aa7;
+      --hero-avatar-shadow: rgba(5, 15, 28, .3);
+    }
+    :root[data-theme="light"] {
+      --hero-avatar-outline: #3f8075;
+      --hero-avatar-shadow: rgba(27, 43, 50, .16);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -387,6 +403,11 @@
     .hero {
       position: relative; isolation: isolate; overflow: visible;
       padding-top: 48px; padding-bottom: 56px;
+      background: radial-gradient(
+        ellipse at 72% 40%,
+        color-mix(in srgb, var(--accent) 7%, transparent),
+        transparent 40%
+      );
     }
     .hero-grid {
       min-height: 315px; position: relative; z-index: 2;
@@ -406,6 +427,14 @@
     .hero-art {
       display: block; max-width: none;
       pointer-events: none; user-select: none;
+    }
+    .hero-art--theme-light {
+      opacity: .88;
+      filter: saturate(1.04) contrast(.99);
+    }
+    .hero-art--theme-dark {
+      opacity: .8;
+      filter: saturate(1.3) brightness(1.1) contrast(.95) hue-rotate(7deg);
     }
     .hero-art--theme-dark { display: none; }
     html[data-theme="dark"] .hero-art--theme-light { display: none; }
@@ -430,21 +459,19 @@
       position: relative;
       width: 180px; height: 194px;
       grid-column: 2; grid-row: 1;
-      border-radius: 50% / 47%;
+      border-radius: 47% 53% 49% 51% / 50% 47% 53% 50%;
       background: linear-gradient(140deg, var(--accent-soft), var(--surface-2));
-      border: 1px solid color-mix(in srgb, var(--accent) 56%, var(--border));
+      border: 2px solid var(--hero-avatar-outline);
       display: flex; align-items: center; justify-content: center;
-      box-shadow:
-        0 0 0 3px var(--bg),
-        0 0 0 4px color-mix(in srgb, var(--accent-gold) 64%, var(--border));
+      box-shadow: 0 12px 30px var(--hero-avatar-shadow);
       overflow: hidden;
     }
     .avatar img {
-      position: absolute; inset: 4px;
-      width: calc(100% - 8px); height: calc(100% - 8px); display: block;
+      position: absolute; inset: 2px;
+      width: calc(100% - 4px); height: calc(100% - 4px); display: block;
       border-radius: inherit;
       object-fit: cover; object-position: center center; background: #fff;
-      filter: saturate(.88) contrast(.91) brightness(1.015);
+      filter: saturate(.99) contrast(.98) brightness(1.03);
     }
     .avatar-mono { font-family: var(--serif); font-size: 3rem; color: var(--accent); }
     .hero-signet {
