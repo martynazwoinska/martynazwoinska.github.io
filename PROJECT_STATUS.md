@@ -13,7 +13,7 @@ This file records approved decisions and the verified implementation state. Alwa
 - Primary colours: emerald, antique gold, muted violet or berry
 - Display font: Cormorant Garamond
 - Light and dark themes must remain functional
-- The paired Ivory Ink and Marine Ink themes use page-matched navigation backgrounds with a fine hairline. The filled antique-gold theme toggle remains the single dense header accent.
+- The paired Ivory Ink and Marine Ink themes use page-matched navigation backgrounds with a fine hairline. Marine Ink uses a lifted blue-navy field rather than a near-black ground. The filled antique-gold theme toggle remains the single dense header accent.
 - Homepage language options: English, Swedish, and Polish
 
 ## Parallel ownership
