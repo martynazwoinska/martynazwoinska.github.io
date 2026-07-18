@@ -148,7 +148,7 @@ It contains two equal Art Nouveau doorway cards.
 - The Cabinet navigation link and flavour-wheel button are sibling controls. Never nest the button inside the link.
 - The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour Wheel` may appear on the right side as the only preview graphic in the landing cards.
 - The wheel image itself is the control. Keep its accessible name, but do not add a visible instruction such as `Spin the wheel` below it.
-- Keep the homepage preview free of written wheel instructions and attribution copy. Use only a compact source/licence info link; the Cabinet wheel view carries the full attribution.
+- Keep the homepage preview free of written wheel instructions and full attribution copy. Use only a compact `CC BY-NC 4.0` source/licence link; the Cabinet wheel view carries the full attribution.
 
 Constraints:
 

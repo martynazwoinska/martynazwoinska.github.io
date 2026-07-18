@@ -13,7 +13,7 @@ This file records approved decisions and the verified implementation state. Alwa
 - Primary colours: emerald, antique gold, muted violet or berry
 - Display font: Cormorant Garamond
 - Homepage and Cabinet light and dark themes must remain functional. The Game intentionally uses one fixed light theme, independent of the website theme preference.
-- The paired Ivory Ink and Marine Ink themes use page-matched navigation backgrounds with a fine hairline. Marine Ink uses a lifted blue-navy field rather than a near-black ground. The filled antique-gold theme toggle remains the single dense header accent.
+- The paired Ivory Ink and Marine Ink themes use page-matched navigation backgrounds with a fine antique-gold hairline. Marine Ink uses a lifted blue-navy field rather than a near-black ground. The filled antique-gold theme toggle remains the single dense header accent, with a deliberately substantial half-filled circle glyph.
 - Homepage language options: English, Swedish, and Polish
 - The Swedish homepage uses Martyna’s supplied official Swedish institutional and postal address. English retains the existing English form; Polish intentionally falls back to that English form until separate Polish wording is supplied or approved. The translated email-button label is separate.
 
@@ -50,7 +50,7 @@ Beyond Research
 - Destination: `cabinet-of-curiosities/index.html`
 - The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour Wheel` is the only approved preview graphic.
 - The Cabinet link and flavour-wheel button remain separate semantic controls.
-- The homepage preview uses short translated accessibility names and a compact source/licence info link, with no written wheel instruction or attribution caption below the graphic.
+- The homepage preview uses short translated accessibility names and a compact visible `CC BY-NC 4.0` source/licence link, with no written wheel instruction or full attribution caption below the graphic.
 
 The two cards have equal visual weight, stack on mobile, retain emerald and antique-gold borders, preserve visible focus, and respect reduced motion.
 

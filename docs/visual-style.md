@@ -33,7 +33,7 @@ Use the prefixed CSS custom properties rather than copying hex values into compo
 | `--site-brand-gold` | `#a88445` | `#d3b56b` | Antique-gold fine borders, markers and restrained highlights |
 | `--site-brand-violet` | `#6f5878` | `#b9adda` | Muted violet for limited botanical or categorical detail |
 | `--site-nav-bg` | `#faf8f2` | `#1c3345` | Navigation merged into the page field rather than shown as a separate colour slab |
-| `--site-nav-border` | `#bac9c3` | `#426075` | Fine theme-coherent hairline below the sticky navigation |
+| `--site-nav-border` | `#c8ad78` | `#8f7a4d` | Fine antique-gold hairline below and within the sticky navigation |
 | `--site-nav-accent` | `#1b6d59` | `#88dfc7` | Accessible emerald cue within the navigation |
 | `--site-border` | `#ddd9cf` | `#426075` | Neutral borders and dividers |
 | `--site-focus` | `#8b3d5c` | `#f1a0ad` | Focus outline for controls on the paired site themes |
@@ -51,7 +51,7 @@ The Game of Worms is an intentional scoped exception: it uses one fixed light, p
 4. Use berry or oxblood as the saturated secondary accent for botanical terminals, hover states and small warm details. Keep violet muted and limited to meaningful categories.
 5. Prefer `color-mix()` with the semantic variables when a quieter tint is needed.
 
-The navigation background matches the page background in both themes so the header does not compete with the hero. A fine border preserves structure. The theme toggle deliberately remains the one dense header accent: it uses the page alias of `--site-brand-gold` with `#14171a` ink in both themes.
+The navigation background matches the page background in both themes so the header does not compete with the hero. Fine antique-gold borders separate the header rows and close the header consistently. The theme toggle deliberately remains the one dense header accent: it uses the page alias of `--site-brand-gold` with a substantial `#14171a` half-filled circle in both themes.
 
 The homepage footer mixes 34% of the primary surface into 66% of the page background rather than using an emerald-tinted panel. This produces a soft ivory close in the light theme and a slightly lifted marine field in the dark theme. Its antique-gold top rule provides closure without turning the footer into a heavy colour band.
 
@@ -82,7 +82,7 @@ This rule is subordinate to accuracy, licensing and source identity:
 - describe material modifications in the attribution or project notes;
 - never invent labels, measurements, categories or object details to make a visual fit the design.
 
-The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour Wheel` is a reference graphic, so its labels and colours remain unchanged. Use `Cacao of Excellence` for the current programme and website, but preserve `Cocoa of Excellence Flavour Wheel` when naming the 2021 asset itself. On the homepage, use a compact source/licence info link instead of written attribution below the preview; the Cabinet view carries the full credit. A rasterised or tightly cropped derivative may be used only with clear attribution and the applicable licence notice.
+The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour Wheel` is a reference graphic, so its labels and colours remain unchanged. Use `Cacao of Excellence` for the current programme and website, but preserve `Cocoa of Excellence Flavour Wheel` when naming the 2021 asset itself. On the homepage, show the compact visible licence name `CC BY-NC 4.0` as the source/licence link instead of a generic information icon or full written attribution; the Cabinet view carries the full credit. A rasterised or tightly cropped derivative may be used only with clear attribution and the applicable licence notice.
 
 ## Typography, form and ornament
 
