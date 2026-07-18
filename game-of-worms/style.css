@@ -17,7 +17,7 @@
   --shadow: 0 18px 50px rgba(26, 71, 79, .14);
   --radius: 28px;
   --game-focus: #8b3d5c;
-  --sans: var(--site-font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif);
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --display: "Trebuchet MS", "Avenir Next", Avenir, var(--sans);
 }
 
@@ -489,16 +489,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .santeuil-comfrey-leaf { fill: color-mix(in srgb, var(--environment-land) 76%, #365e45); stroke: color-mix(in srgb, var(--environment-detail) 76%, #2f4b3b); stroke-width: 1.6; }
 .santeuil-comfrey-vein, .santeuil-comfrey-stem { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 74%, #365e45); stroke-width: 2; stroke-linecap: round; }
 .santeuil-comfrey-flower { fill: color-mix(in srgb, #796aa4 72%, var(--environment-accent)); stroke: color-mix(in srgb, var(--environment-detail) 72%, #4f476c); stroke-width: 1.4; }
-:root[data-theme='dark'] .santeuil-sky { fill: color-mix(in srgb, #263c3c 76%, var(--environment-water)); }
-:root[data-theme='dark'] .santeuil-clouds { opacity: .28; }
-:root[data-theme='dark'] .santeuil-plateau-field { fill: color-mix(in srgb, var(--environment-ground) 58%, #6b704f); }
-:root[data-theme='dark'] .santeuil-house,
-:root[data-theme='dark'] .santeuil-church-body,
-:root[data-theme='dark'] .santeuil-church-tower { fill: color-mix(in srgb, #8f8776 64%, var(--environment-ground)); }
-:root[data-theme='dark'] .santeuil-valley-left { fill: color-mix(in srgb, #284837 72%, var(--environment-land)); }
-:root[data-theme='dark'] .santeuil-valley-right { fill: color-mix(in srgb, #34513d 73%, var(--environment-land)); }
-:root[data-theme='dark'] .santeuil-stream-bank { fill: color-mix(in srgb, #403a30 72%, var(--environment-ground)); }
-:root[data-theme='dark'] .santeuil-stream-glint { opacity: .5; }
 .edinburgh-sky { fill: color-mix(in srgb, #c8d9d4 63%, var(--paper-strong)); }
 .edinburgh-clouds { fill: color-mix(in srgb, var(--paper-strong) 82%, #b7c7c2); opacity: .58; }
 .edinburgh-haze { fill: color-mix(in srgb, #d9ddd1 74%, var(--environment-water)); opacity: .46; }
@@ -565,23 +555,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .edinburgh-botanical-frame path.deep { fill: color-mix(in srgb, var(--environment-land) 64%, #365941); }
 .edinburgh-damp-litter path:not(.edinburgh-leaf-vein) { fill: color-mix(in srgb, #7a583d 68%, var(--environment-accent)); stroke: color-mix(in srgb, var(--environment-detail) 70%, #4e3d31); stroke-width: 1.4; }
 .edinburgh-leaf-vein { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 73%, #493a2f); stroke-width: 1; }
-:root[data-theme='dark'] .edinburgh-sky { fill: color-mix(in srgb, #2f4244 76%, var(--environment-water)); }
-:root[data-theme='dark'] .edinburgh-clouds { opacity: .3; }
-:root[data-theme='dark'] .edinburgh-haze { fill: color-mix(in srgb, #344a49 72%, var(--environment-water)); opacity: .38; }
-:root[data-theme='dark'] .edinburgh-blackford-hill { fill: color-mix(in srgb, #354a38 77%, var(--environment-land)); }
-:root[data-theme='dark'] .edinburgh-andesite-face { fill: color-mix(in srgb, #51445f 72%, var(--environment-ground)); }
-:root[data-theme='dark'] .edinburgh-observatory-body,
-:root[data-theme='dark'] .edinburgh-observatory-end { fill: color-mix(in srgb, #743f35 76%, var(--environment-ground)); }
-:root[data-theme='dark'] .edinburgh-copper-drum,
-:root[data-theme='dark'] .edinburgh-copper-dome { fill: color-mix(in srgb, #477566 79%, var(--environment-land)); }
-:root[data-theme='dark'] .edinburgh-allotment-ground { fill: color-mix(in srgb, #414b38 75%, var(--environment-land)); }
-:root[data-theme='dark'] .edinburgh-foreground-soil { fill: color-mix(in srgb, #3c382e 78%, var(--environment-ground)); }
-:root[data-theme='dark'] .edinburgh-garden-path { fill: color-mix(in srgb, #6d6250 64%, var(--environment-ground)); }
-:root[data-theme='dark'] .edinburgh-botanical-frame path:not(:first-child) { fill: color-mix(in srgb, #36583f 74%, var(--environment-land)); }
-:root[data-theme='dark'] .edinburgh-compost-front,
-:root[data-theme='dark'] .edinburgh-compost-side,
-:root[data-theme='dark'] .edinburgh-compost-back { fill: color-mix(in srgb, #725337 74%, var(--environment-ground)); }
-.tenerife-sky { fill: color-mix(in srgb, #b9dcd8 58%, var(--paper-strong)); }
 .tenerife-sun { fill: color-mix(in srgb, var(--environment-accent) 68%, #fff0b2); opacity: .72; filter: drop-shadow(0 0 13px rgba(218,176,83,.22)); }
 .tenerife-clouds { fill: color-mix(in srgb, var(--paper-strong) 82%, var(--environment-water)); opacity: .5; }
 .tenerife-orotava-slope { fill: color-mix(in srgb, var(--environment-land) 63%, #6e8f68); stroke: color-mix(in srgb, var(--environment-detail) 49%, #536b53); stroke-width: 1.5; }
@@ -641,21 +614,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .tenerife-avocado-peel-flap { fill: color-mix(in srgb, #2f4a36 86%, var(--environment-land)); stroke: color-mix(in srgb, #21362b 86%, var(--environment-detail)); stroke-width: 2.5; }
 .tenerife-avocado-mottle { fill: color-mix(in srgb, #9b7245 58%, var(--environment-ground)); }
 .tenerife-avocado-mottle.dark { fill: color-mix(in srgb, #332c24 79%, var(--environment-detail)); }
-:root[data-theme='dark'] .tenerife-sky { fill: color-mix(in srgb, #244044 77%, var(--environment-water)); }
-:root[data-theme='dark'] .tenerife-clouds { opacity: .25; }
-:root[data-theme='dark'] .tenerife-orotava-slope { fill: color-mix(in srgb, #365a43 79%, var(--environment-land)); }
-:root[data-theme='dark'] .tenerife-teide-notch { fill: color-mix(in srgb, #58665e 72%, var(--environment-ground)); }
-:root[data-theme='dark'] .tenerife-wall-face { fill: color-mix(in srgb, #665c49 77%, var(--environment-ground)); }
-:root[data-theme='dark'] .tenerife-wall-cap { fill: color-mix(in srgb, #8b7b5d 67%, var(--environment-ground)); }
-:root[data-theme='dark'] .tenerife-garden-ground { fill: color-mix(in srgb, #3c4231 79%, var(--environment-ground)); }
-:root[data-theme='dark'] .tenerife-path { fill: color-mix(in srgb, #6c5d46 72%, var(--environment-ground)); }
-:root[data-theme='dark'] .tenerife-class-bed.tone-0 { fill: color-mix(in srgb, #31513a 79%, var(--environment-land)); }
-:root[data-theme='dark'] .tenerife-class-bed.tone-1 { fill: color-mix(in srgb, #464d32 79%, var(--environment-ground)); }
-:root[data-theme='dark'] .tenerife-class-bed.tone-2 { fill: color-mix(in srgb, #46543a 78%, var(--environment-land)); }
-:root[data-theme='dark'] .tenerife-pond-water { fill: color-mix(in srgb, #3b716d 75%, var(--environment-water)); }
-:root[data-theme='dark'] .tenerife-ficus-canopy { fill: color-mix(in srgb, #214834 84%, var(--environment-land)); }
-:root[data-theme='dark'] .tenerife-avocado-flesh { fill: color-mix(in srgb, #635631 78%, var(--environment-accent)); }
-:root[data-theme='dark'] .tenerife-avocado-collapse { fill: color-mix(in srgb, #4d3829 82%, var(--environment-ground)); }
 .kauai-kokee-sky { fill: color-mix(in srgb, #cadad7 68%, var(--paper-strong)); }
 #habitat[data-environment="kauai-kokee-upland-forest"] .regional-backdrop { contain: layout paint; }
 .kauai-kokee-broken-ridge { fill: color-mix(in srgb, var(--environment-land) 47%, #748277); stroke: color-mix(in srgb, var(--environment-detail) 38%, #65726a); stroke-width: 1.5; opacity: .58; }
@@ -689,19 +647,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .kauai-kokee-decay-pore { fill: color-mix(in srgb, #a77b4c 62%, var(--environment-accent)); }
 .kauai-kokee-decay-pore.deep { fill: color-mix(in srgb, #30352c 82%, var(--environment-detail)); }
 .kauai-kokee-moisture-glint { fill: none; stroke: color-mix(in srgb, var(--paper-strong) 68%, var(--environment-water)); stroke-width: 2.3; stroke-linecap: round; opacity: .72; }
-:root[data-theme='dark'] .kauai-kokee-sky { fill: color-mix(in srgb, #233c3c 80%, var(--environment-water)); }
-:root[data-theme='dark'] .kauai-kokee-broken-ridge { fill: color-mix(in srgb, #42584d 76%, var(--environment-land)); opacity: .67; }
-:root[data-theme='dark'] .kauai-kokee-fog { fill: color-mix(in srgb, #67837f 58%, var(--environment-water)); }
-:root[data-theme='dark'] .kauai-kokee-fog.back { opacity: .34; }
-:root[data-theme='dark'] .kauai-kokee-fog.front { opacity: .45; }
-:root[data-theme='dark'] .kauai-kokee-distant-forest { opacity: .48; }
-:root[data-theme='dark'] .kauai-kokee-ground { fill: color-mix(in srgb, #4a332d 81%, var(--environment-ground)); }
-:root[data-theme='dark'] .kauai-kokee-path { fill: color-mix(in srgb, #704331 74%, var(--environment-ground)); }
-:root[data-theme='dark'] .kauai-kokee-left-canopy,
-:root[data-theme='dark'] .kauai-kokee-right-canopy { fill: color-mix(in srgb, #204433 84%, var(--environment-land)); }
-:root[data-theme='dark'] .kauai-kokee-canopy-leaf { fill: color-mix(in srgb, #28543e 82%, var(--environment-land)); }
-:root[data-theme='dark'] .kauai-kokee-substrate-shell { fill: color-mix(in srgb, #49372b 82%, var(--environment-ground)); }
-:root[data-theme='dark'] .kauai-kokee-substrate-soft { fill: color-mix(in srgb, #5e452f 80%, var(--environment-accent)); }
 #habitat[data-environment="canberra-oconnor-fig-garden"] .regional-backdrop { contain: layout paint; }
 .canberra-oconnor-sky { fill: color-mix(in srgb, #e7dfcf 82%, var(--paper-strong)); }
 .canberra-oconnor-sun { fill: color-mix(in srgb, var(--environment-accent) 70%, #f4d58a); opacity: .72; filter: drop-shadow(0 0 12px rgba(185,143,74,.2)); }
@@ -742,17 +687,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .canberra-fig-seed.deep,
 .canberra-fig-mottle.deep { fill: color-mix(in srgb, #443b34 84%, var(--environment-detail)); }
 .canberra-fig-mottle { fill: color-mix(in srgb, #9b7458 63%, var(--environment-accent)); }
-:root[data-theme='dark'] .canberra-oconnor-sky { fill: color-mix(in srgb, #2f3734 84%, var(--environment-water)); }
-:root[data-theme='dark'] .canberra-oconnor-sun { opacity: .48; }
-:root[data-theme='dark'] .canberra-oconnor-ridge { fill: color-mix(in srgb, #4d5744 78%, var(--environment-land)); }
-:root[data-theme='dark'] .canberra-garden-ground { fill: color-mix(in srgb, #514536 80%, var(--environment-ground)); }
-:root[data-theme='dark'] .canberra-roof-fragment { fill: color-mix(in srgb, #66483c 75%, var(--environment-ground)); }
-:root[data-theme='dark'] .canberra-yellow-box-leaves { fill: color-mix(in srgb, #344d36 81%, var(--environment-land)); }
-:root[data-theme='dark'] .canberra-step-stone,
-:root[data-theme='dark'] .canberra-edge-stone { fill: color-mix(in srgb, #655f54 78%, var(--environment-ground)); }
-:root[data-theme='dark'] .canberra-decay-patch { fill: color-mix(in srgb, #3d332c 86%, var(--environment-ground)); }
-:root[data-theme='dark'] .canberra-fig-rind { fill: color-mix(in srgb, #513b35 82%, var(--environment-ground)); }
-:root[data-theme='dark'] .canberra-fig-flesh { fill: color-mix(in srgb, #74484f 77%, var(--environment-accent)); }
 #habitat[data-environment="auckland-eca36-garden-grass"] .regional-backdrop { contain: layout paint; }
 .auckland-garden-sky { fill: color-mix(in srgb, #d7e1dd 77%, var(--paper-strong)); }
 .auckland-garden-clouds { fill: color-mix(in srgb, var(--paper-strong) 82%, var(--environment-water)); opacity: .58; }
@@ -788,17 +722,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .auckland-litter-leaf { fill: color-mix(in srgb, #9a704a 65%, var(--environment-accent)); stroke: color-mix(in srgb, var(--environment-detail) 68%, #58483a); stroke-width: 1.2; }
 .auckland-litter-leaf.deep { fill: color-mix(in srgb, #65533e 77%, var(--environment-ground)); }
 .auckland-litter-vein { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 68%, #58483a); stroke-width: 1; }
-:root[data-theme='dark'] .auckland-garden-sky { fill: color-mix(in srgb, #293b3a 81%, var(--environment-water)); }
-:root[data-theme='dark'] .auckland-garden-clouds { fill: color-mix(in srgb, #67807c 52%, var(--environment-water)); opacity: .37; }
-:root[data-theme='dark'] .auckland-volcanic-shoulder { fill: color-mix(in srgb, #405548 78%, var(--environment-land)); }
-:root[data-theme='dark'] .auckland-garden-ground { fill: color-mix(in srgb, #4b4434 80%, var(--environment-ground)); }
-:root[data-theme='dark'] .auckland-roof-fragment { fill: color-mix(in srgb, #62473d 76%, var(--environment-ground)); }
-:root[data-theme='dark'] .auckland-hedge { fill: color-mix(in srgb, #294837 85%, var(--environment-land)); }
-:root[data-theme='dark'] .auckland-edge-stone,
-:root[data-theme='dark'] .auckland-paver { fill: color-mix(in srgb, #65645b 78%, var(--environment-ground)); }
-:root[data-theme='dark'] .auckland-grass-underside { fill: color-mix(in srgb, #2b3429 87%, var(--environment-ground)); }
-:root[data-theme='dark'] .auckland-grass-fold,
-:root[data-theme='dark'] .auckland-grass-mat { fill: color-mix(in srgb, #3a5038 82%, var(--environment-land)); }
 #habitat[data-environment="cunco-ju4400-compost-garden"] .regional-backdrop { contain: layout paint; }
 .cunco-garden-sky { fill: color-mix(in srgb, #d5dedb 77%, var(--paper-strong)); }
 .cunco-cloud { fill: color-mix(in srgb, var(--paper-strong) 82%, var(--environment-water)); }
@@ -846,20 +769,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .cunco-compost-clast-vein { fill: none; stroke: color-mix(in srgb, #4a3d32 70%, var(--environment-detail)); stroke-width: 1; }
 .cunco-compost-fragment { fill: color-mix(in srgb, #b28a55 66%, var(--environment-accent)); }
 .cunco-compost-fragment.deep { fill: color-mix(in srgb, #30352d 84%, var(--environment-detail)); }
-:root[data-theme='dark'] .cunco-garden-sky { fill: color-mix(in srgb, #2b3938 82%, var(--environment-water)); }
-:root[data-theme='dark'] .cunco-cloud { fill: color-mix(in srgb, #647c78 54%, var(--environment-water)); opacity: .4; }
-:root[data-theme='dark'] .cunco-western-terrain { fill: color-mix(in srgb, #455248 79%, var(--environment-land)); }
-:root[data-theme='dark'] .cunco-low-foothills { fill: color-mix(in srgb, #394b3f 81%, var(--environment-land)); }
-:root[data-theme='dark'] .cunco-llaima-double-summit { fill: color-mix(in srgb, #47524e 76%, var(--environment-land)); opacity: .61; }
-:root[data-theme='dark'] .cunco-summit-cloud { fill: color-mix(in srgb, #647a76 54%, var(--environment-water)); opacity: .59; }
-:root[data-theme='dark'] .cunco-shelterbelt-mass { fill: color-mix(in srgb, #284535 85%, var(--environment-land)); }
-:root[data-theme='dark'] .cunco-garden-ground { fill: color-mix(in srgb, #4b4233 82%, var(--environment-ground)); }
-:root[data-theme='dark'] .cunco-bed-edge { fill: color-mix(in srgb, #594534 82%, var(--environment-ground)); }
-:root[data-theme='dark'] .cunco-path-surface { fill: color-mix(in srgb, #6b5d48 75%, var(--environment-ground)); }
-:root[data-theme='dark'] .cunco-foreground-soil { fill: color-mix(in srgb, #3c3028 87%, var(--environment-ground)); }
-:root[data-theme='dark'] .cunco-compost-base { fill: color-mix(in srgb, #3c3028 88%, var(--environment-ground)); }
-:root[data-theme='dark'] .cunco-compost-green-layer { fill: color-mix(in srgb, #33442f 84%, var(--environment-land)); }
-:root[data-theme='dark'] .cunco-compost-brown-layer { fill: color-mix(in srgb, #543b2c 84%, var(--environment-ground)); }
 #habitat[data-environment="trivandrum-zoo-botanical-garden"] .regional-backdrop { contain: layout paint; }
 .trivandrum-garden-sky { fill: color-mix(in srgb, #c9ded8 78%, var(--paper-strong)); }
 .trivandrum-cloud-veil { fill: color-mix(in srgb, var(--paper-strong) 80%, var(--environment-water)); opacity: .54; }
@@ -910,20 +819,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .trivandrum-wilted-petal.deep { fill: color-mix(in srgb, #b88752 67%, var(--environment-accent)); }
 .trivandrum-decay-fragment { fill: color-mix(in srgb, #bb985a 64%, var(--environment-accent)); }
 .trivandrum-decay-fragment.deep { fill: color-mix(in srgb, #2e332c 85%, var(--environment-detail)); }
-:root[data-theme='dark'] .trivandrum-garden-sky { fill: color-mix(in srgb, #253b38 84%, var(--environment-water)); }
-:root[data-theme='dark'] .trivandrum-cloud-veil { fill: color-mix(in srgb, #607d75 50%, var(--environment-water)); opacity: .36; }
-:root[data-theme='dark'] .trivandrum-far-garden-rise { fill: color-mix(in srgb, #3b5944 82%, var(--environment-land)); }
-:root[data-theme='dark'] .trivandrum-top-garden-rise { fill: color-mix(in srgb, #2e4e3a 86%, var(--environment-land)); }
-:root[data-theme='dark'] .trivandrum-museum-wall { fill: color-mix(in srgb, #5e493c 78%, var(--environment-ground)); }
-:root[data-theme='dark'] .trivandrum-museum-roof { fill: color-mix(in srgb, #633e46 78%, var(--environment-accent)); }
-:root[data-theme='dark'] .trivandrum-canopy-mass { fill: color-mix(in srgb, #234334 88%, var(--environment-land)); }
-:root[data-theme='dark'] .trivandrum-garden-ground { fill: color-mix(in srgb, #3f4b36 83%, var(--environment-ground)); }
-:root[data-theme='dark'] .trivandrum-lake-water { fill: color-mix(in srgb, #315f59 83%, var(--environment-water)); }
-:root[data-theme='dark'] .trivandrum-terrace-wall { fill: color-mix(in srgb, #514737 82%, var(--environment-ground)); }
-:root[data-theme='dark'] .trivandrum-path-surface { fill: color-mix(in srgb, #625743 78%, var(--environment-ground)); }
-:root[data-theme='dark'] .trivandrum-foreground-earth { fill: color-mix(in srgb, #302822 89%, var(--environment-ground)); }
-:root[data-theme='dark'] .trivandrum-damp-decay-base { fill: color-mix(in srgb, #2d2521 90%, var(--environment-ground)); }
-:root[data-theme='dark'] .trivandrum-decay-inner { fill: color-mix(in srgb, #443126 85%, var(--environment-ground)); }
 #habitat[data-environment="singapore-zf1220-starfruit-garden"] .regional-backdrop { contain: layout paint; }
 .singapore-garden-sky { fill: color-mix(in srgb, #c2ddd5 82%, var(--paper-strong)); }
 .singapore-haze-cloud { fill: color-mix(in srgb, var(--paper-strong) 78%, var(--environment-water)); opacity: .54; }
@@ -969,20 +864,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .singapore-star-section-core { fill: color-mix(in srgb, #80613a 72%, var(--environment-ground)); stroke: color-mix(in srgb, #493d31 78%, var(--environment-detail)); stroke-width: 1.2; }
 .singapore-star-section-seed { fill: color-mix(in srgb, #6f4932 82%, var(--environment-detail)); }
 .singapore-star-section-seed.deep { fill: color-mix(in srgb, #2f352c 88%, var(--environment-detail)); }
-:root[data-theme='dark'] .singapore-garden-sky { fill: color-mix(in srgb, #243c38 84%, var(--environment-water)); }
-:root[data-theme='dark'] .singapore-haze-cloud { fill: color-mix(in srgb, #5e7b73 50%, var(--environment-water)); opacity: .35; }
-:root[data-theme='dark'] .singapore-city-haze { fill: color-mix(in srgb, #405d58 79%, var(--environment-water)); opacity: .53; }
-:root[data-theme='dark'] .singapore-canopy-mass { fill: color-mix(in srgb, #234533 88%, var(--environment-land)); }
-:root[data-theme='dark'] .singapore-canopy-mass.right { fill: color-mix(in srgb, #2b4b36 86%, var(--environment-land)); }
-:root[data-theme='dark'] .singapore-garden-ground { fill: color-mix(in srgb, #394b34 84%, var(--environment-ground)); }
-:root[data-theme='dark'] .singapore-bed { fill: color-mix(in srgb, #304a35 85%, var(--environment-land)); }
-:root[data-theme='dark'] .singapore-path-surface { fill: color-mix(in srgb, #625641 79%, var(--environment-ground)); }
-:root[data-theme='dark'] .singapore-foreground-litter-bed { fill: color-mix(in srgb, #302921 89%, var(--environment-ground)); }
-:root[data-theme='dark'] .singapore-starfruit-body { fill: color-mix(in srgb, #746027 79%, var(--environment-accent)); }
-:root[data-theme='dark'] .singapore-starfruit-soft-flesh { fill: color-mix(in srgb, #856f34 79%, var(--environment-accent)); }
-:root[data-theme='dark'] .singapore-starfruit-collapse { fill: color-mix(in srgb, #493326 87%, var(--environment-ground)); }
-:root[data-theme='dark'] .singapore-star-section-rind { fill: color-mix(in srgb, #745b24 81%, var(--environment-accent)); }
-:root[data-theme='dark'] .singapore-star-section-flesh { fill: color-mix(in srgb, #90773a 79%, var(--environment-accent)); }
 #habitat[data-environment="praslin-yr106-granitic-palm-forest"] .regional-backdrop { contain: layout paint; }
 .praslin-forest-sky { fill: color-mix(in srgb, #bfd9cf 82%, var(--paper-strong)); }
 .praslin-mist-veil { fill: color-mix(in srgb, var(--paper-strong) 76%, var(--environment-water)); opacity: .46; }
@@ -1031,26 +912,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .praslin-litter-rib { fill: none; stroke: color-mix(in srgb, #40362e 73%, var(--environment-detail)); stroke-width: 1; }
 .praslin-litter-fragment { fill: color-mix(in srgb, #ad8b52 66%, var(--environment-accent)); }
 .praslin-litter-fragment.deep { fill: color-mix(in srgb, #28332c 87%, var(--environment-detail)); }
-:root[data-theme='dark'] .praslin-forest-sky { fill: color-mix(in srgb, #213a35 86%, var(--environment-water)); }
-:root[data-theme='dark'] .praslin-mist-veil { fill: color-mix(in srgb, #57736b 47%, var(--environment-water)); opacity: .3; }
-:root[data-theme='dark'] .praslin-closed-ridge { fill: color-mix(in srgb, #355043 84%, var(--environment-land)); }
-:root[data-theme='dark'] .praslin-light-slit { fill: color-mix(in srgb, #77754b 62%, var(--environment-accent)); opacity: .45; }
-:root[data-theme='dark'] .praslin-canopy-mass { fill: color-mix(in srgb, #1f3f30 89%, var(--environment-land)); }
-:root[data-theme='dark'] .praslin-canopy-mass.lower { fill: color-mix(in srgb, #284936 87%, var(--environment-land)); }
-:root[data-theme='dark'] .praslin-forest-floor { fill: color-mix(in srgb, #384431 85%, var(--environment-ground)); }
-:root[data-theme='dark'] .praslin-fan-blade,
-:root[data-theme='dark'] .praslin-stilt-leaf,
-:root[data-theme='dark'] .praslin-pandanus-leaf { fill: color-mix(in srgb, #2b563c 86%, var(--environment-land)); }
-:root[data-theme='dark'] .praslin-fan-blade.deep,
-:root[data-theme='dark'] .praslin-stilt-leaf.deep,
-:root[data-theme='dark'] .praslin-pandanus-leaf.deep { fill: color-mix(in srgb, #204633 89%, var(--environment-land)); }
-:root[data-theme='dark'] .praslin-drainage-bed { fill: color-mix(in srgb, #322c27 88%, var(--environment-ground)); }
-:root[data-theme='dark'] .praslin-drainage-water { fill: color-mix(in srgb, #2d5c55 84%, var(--environment-water)); }
-:root[data-theme='dark'] .praslin-drainage-stone { fill: color-mix(in srgb, #655a60 79%, var(--environment-ground)); }
-:root[data-theme='dark'] .praslin-granite-boulder { fill: color-mix(in srgb, #695a61 80%, var(--environment-ground)); }
-:root[data-theme='dark'] .praslin-granite-boulder.right { fill: color-mix(in srgb, #5b4d55 82%, var(--environment-ground)); }
-:root[data-theme='dark'] .praslin-foreground-litter-bed { fill: color-mix(in srgb, #29231f 91%, var(--environment-ground)); }
-#habitat[data-environment="sao-tome-ju2484-forest-floor"] .regional-backdrop { contain: layout paint; }
 .sao-tome-forest-sky { fill: color-mix(in srgb, #bcd8cd 82%, var(--paper-strong)); }
 .sao-tome-distant-green { fill: color-mix(in srgb, var(--environment-land) 56%, #718777); }
 .sao-tome-light-shaft { fill: color-mix(in srgb, #dce6cf 70%, var(--environment-accent)); opacity: .32; filter: blur(7px); }
@@ -1100,23 +961,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .sao-tome-fruit-tear-edge { fill: none; stroke: color-mix(in srgb, #b09468 56%, var(--environment-accent)); stroke-width: 2; stroke-linecap: round; }
 .sao-tome-fruit-mottle { fill: color-mix(in srgb, #664432 82%, var(--environment-detail)); }
 .sao-tome-fruit-mottle.deep { fill: color-mix(in srgb, #29312a 89%, var(--environment-detail)); }
-:root[data-theme='dark'] .sao-tome-forest-sky { fill: color-mix(in srgb, #203832 87%, var(--environment-water)); }
-:root[data-theme='dark'] .sao-tome-distant-green { fill: color-mix(in srgb, #304d3d 86%, var(--environment-land)); }
-:root[data-theme='dark'] .sao-tome-light-shaft { fill: color-mix(in srgb, #74734a 61%, var(--environment-accent)); opacity: .24; }
-:root[data-theme='dark'] .sao-tome-back-thicket { fill: color-mix(in srgb, #244432 89%, var(--environment-land)); }
-:root[data-theme='dark'] .sao-tome-canopy-mass { fill: color-mix(in srgb, #1d3c2c 90%, var(--environment-land)); }
-:root[data-theme='dark'] .sao-tome-canopy-mass.left { fill: color-mix(in srgb, #244532 88%, var(--environment-land)); }
-:root[data-theme='dark'] .sao-tome-canopy-mass.right { fill: color-mix(in srgb, #284936 87%, var(--environment-land)); }
-:root[data-theme='dark'] .sao-tome-forest-floor { fill: color-mix(in srgb, #35412f 86%, var(--environment-ground)); }
-:root[data-theme='dark'] .sao-tome-main-trunk,
-:root[data-theme='dark'] .sao-tome-fork-branch { fill: color-mix(in srgb, #49392e 87%, var(--environment-detail)); }
-:root[data-theme='dark'] .sao-tome-begonia-leaf { fill: color-mix(in srgb, #334f39 84%, var(--environment-land)); }
-:root[data-theme='dark'] .sao-tome-foreground-litter-bed { fill: color-mix(in srgb, #28221e 92%, var(--environment-ground)); }
-:root[data-theme='dark'] .sao-tome-fruit-rind { fill: color-mix(in srgb, #51402f 86%, var(--environment-ground)); }
-:root[data-theme='dark'] .sao-tome-fruit-pulp { fill: color-mix(in srgb, #665537 83%, var(--environment-accent)); }
-:root[data-theme='dark'] .sao-tome-fruit-collapse,
-:root[data-theme='dark'] .sao-tome-fruit-torn-rind { fill: color-mix(in srgb, #392c25 90%, var(--environment-ground)); }
-#habitat[data-environment="pohnpei-qg4739-paies-kotop-cloudforest"] .regional-backdrop { contain: layout paint; }
 .pohnpei-cloudforest-sky { fill: color-mix(in srgb, #c9ded5 82%, var(--paper-strong)); }
 .pohnpei-high-haze { fill: color-mix(in srgb, #dce7dc 67%, var(--environment-water)); opacity: .72; }
 .pohnpei-light-slit { fill: color-mix(in srgb, #e7e4bd 66%, var(--environment-accent)); opacity: .58; }
@@ -1158,24 +1002,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .pohnpei-fruit-rind-fold { fill: none; stroke: color-mix(in srgb, #b09671 55%, var(--environment-accent)); stroke-width: 2.3; stroke-linecap: round; }
 .pohnpei-fruit-mottle { fill: color-mix(in srgb, #4f3a43 81%, var(--environment-detail)); }
 .pohnpei-fruit-mottle.deep { fill: color-mix(in srgb, #2d342d 89%, var(--environment-detail)); }
-:root[data-theme='dark'] .pohnpei-cloudforest-sky { fill: color-mix(in srgb, #213a35 87%, var(--environment-water)); }
-:root[data-theme='dark'] .pohnpei-high-haze { fill: color-mix(in srgb, #4f6c61 53%, var(--environment-water)); opacity: .38; }
-:root[data-theme='dark'] .pohnpei-light-slit { fill: color-mix(in srgb, #77734b 60%, var(--environment-accent)); opacity: .39; }
-:root[data-theme='dark'] .pohnpei-rear-slope { fill: color-mix(in srgb, #314b3b 85%, var(--environment-land)); }
-:root[data-theme='dark'] .pohnpei-mist-band { fill: color-mix(in srgb, #667c70 47%, var(--environment-water)); opacity: .3; }
-:root[data-theme='dark'] .pohnpei-middle-slope { fill: color-mix(in srgb, #2d4b37 87%, var(--environment-land)); }
-:root[data-theme='dark'] .pohnpei-forest-floor { fill: color-mix(in srgb, #33412f 87%, var(--environment-ground)); }
-:root[data-theme='dark'] .pohnpei-palm-column,
-:root[data-theme='dark'] .pohnpei-root-lattice { fill: color-mix(in srgb, #615845 80%, var(--environment-ground)); }
-:root[data-theme='dark'] .pohnpei-root-lattice.arch { fill: color-mix(in srgb, #514c3e 84%, var(--environment-ground)); }
-:root[data-theme='dark'] .pohnpei-root-lattice.fork { fill: color-mix(in srgb, #6a5f49 79%, var(--environment-ground)); }
-:root[data-theme='dark'] .pohnpei-root-lattice.rear { fill: color-mix(in srgb, #47463b 87%, var(--environment-ground)); }
-:root[data-theme='dark'] .pohnpei-frond-leaflet,
-:root[data-theme='dark'] .pohnpei-frond-tip,
-:root[data-theme='dark'] .pohnpei-understory-leaf { fill: color-mix(in srgb, #2b533b 86%, var(--environment-land)); }
-:root[data-theme='dark'] .pohnpei-foreground-litter-bed { fill: color-mix(in srgb, #29231f 91%, var(--environment-ground)); }
-:root[data-theme='dark'] .pohnpei-fruit-rind { fill: color-mix(in srgb, #4b3543 85%, var(--environment-ground)); }
-:root[data-theme='dark'] .pohnpei-fruit-collapse { fill: color-mix(in srgb, #5f4f30 83%, var(--environment-accent)); }
 #habitat[data-environment="queensland-qg2904-daintree-blackbean-pod-forest"] .regional-backdrop { contain: layout paint; }
 .queensland-rainforest-sky { fill: color-mix(in srgb, #a9cfc0 74%, var(--paper-strong)); }
 .queensland-canopy-aperture { fill: color-mix(in srgb, #afc7a5 72%, var(--environment-land)); }
@@ -1221,23 +1047,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .queensland-pod-end,
 .queensland-pod-surface { fill: none; stroke: color-mix(in srgb, #8d6549 59%, var(--environment-detail)); stroke-width: 1.7; stroke-linecap: round; opacity: .76; }
 .queensland-pod-surface.deep { stroke: color-mix(in srgb, #4b3632 77%, var(--environment-detail)); }
-:root[data-theme='dark'] .queensland-rainforest-sky { fill: color-mix(in srgb, #1d332d 89%, var(--environment-water)); }
-:root[data-theme='dark'] .queensland-canopy-aperture { fill: color-mix(in srgb, #4f674d 68%, var(--environment-land)); }
-:root[data-theme='dark'] .queensland-rear-canopy { fill: color-mix(in srgb, #173928 91%, var(--environment-land)); }
-:root[data-theme='dark'] .queensland-rear-canopy.lower { fill: color-mix(in srgb, #20442e 89%, var(--environment-land)); }
-:root[data-theme='dark'] .queensland-background-understory { fill: color-mix(in srgb, #2b4835 91%, var(--environment-land)); }
-:root[data-theme='dark'] .queensland-background-light-pockets { fill: color-mix(in srgb, #405a42 82%, var(--environment-land)); opacity: .45; }
-:root[data-theme='dark'] .queensland-middle-floor { fill: color-mix(in srgb, #294332 87%, var(--environment-land)); }
-:root[data-theme='dark'] .queensland-understory-shadow { fill: color-mix(in srgb, #1d3327 91%, var(--environment-land)); }
-:root[data-theme='dark'] .queensland-understory-fronds { fill: color-mix(in srgb, #294b34 88%, var(--environment-land)); }
-:root[data-theme='dark'] .queensland-forest-floor { fill: color-mix(in srgb, #32392b 89%, var(--environment-ground)); }
-:root[data-theme='dark'] .queensland-main-trunk,
-:root[data-theme='dark'] .queensland-buttress-fin { fill: color-mix(in srgb, #463329 87%, var(--environment-ground)); }
-:root[data-theme='dark'] .queensland-main-trunk.right,
-:root[data-theme='dark'] .queensland-buttress-fin.right { fill: color-mix(in srgb, #3d3028 89%, var(--environment-ground)); }
-:root[data-theme='dark'] .queensland-broadleaf { fill: color-mix(in srgb, #234b32 87%, var(--environment-land)); }
-:root[data-theme='dark'] .queensland-foreground-litter-bed { fill: color-mix(in srgb, #27211d 92%, var(--environment-ground)); }
-:root[data-theme='dark'] .queensland-pod-body { fill: color-mix(in srgb, #4a2929 87%, var(--environment-ground)); }
 .scene-sky { fill: url(#scene-sky-gradient); }
 .scene-sky-top { stop-color: color-mix(in srgb, var(--scene-sky) 55%, white); }
 .scene-sky-bottom { stop-color: var(--scene-sky); }
@@ -1592,15 +1401,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .dragonfly-body { fill: color-mix(in srgb, var(--local-primary) 62%, #375f4f); stroke: color-mix(in srgb, var(--worm-deep) 79%, #273f36); stroke-width: 2.5; }
 .dragonfly-joint { fill: color-mix(in srgb, var(--local-secondary) 72%, #d0a447); stroke: color-mix(in srgb, var(--worm-deep) 72%, #4d432d); stroke-width: 1; }
 .dragonfly-antenna { fill: none; stroke: color-mix(in srgb, var(--worm-deep) 79%, #273f36); stroke-width: 2; stroke-linecap: round; }
-:root[data-theme='dark'] .stem-lantern-glass { fill: rgba(150,197,183,.34); }
-:root[data-theme='dark'] .stem-lantern-glass-highlight { opacity: .48; }
-:root[data-theme='dark'] .organ-cabinet,
-:root[data-theme='dark'] .organ-cabinet-cap,
-:root[data-theme='dark'] .organ-secretary-lid,
-:root[data-theme='dark'] .organ-keybed,
-:root[data-theme='dark'] .organ-keybed-frame { fill: color-mix(in srgb, #8d653c 72%, var(--local-secondary)); }
-:root[data-theme='dark'] .automaton-pond { fill: color-mix(in srgb, #416f69 73%, var(--local-primary)); }
-:root[data-theme='dark'] .dragonfly-wing { fill: rgba(172,211,199,.46); }
 .edinburgh-accessory { filter: drop-shadow(0 5px 4px rgba(28,38,35,.26)); }
 .edinburgh-accessory-shadow { fill: rgba(25,34,32,.2); }
 .kilt-shadow,
@@ -1702,19 +1502,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .agassiz-crank-knob { fill: color-mix(in srgb, #8c6540 67%, var(--local-primary)); stroke: var(--worm-deep); stroke-width: 2; }
 .agassiz-direction { fill: color-mix(in srgb, #e0c56c 72%, var(--paper-strong)); font: 900 10px/1 var(--sans); stroke: color-mix(in srgb, var(--worm-deep) 75%, transparent); stroke-width: 1px; paint-order: stroke; }
 .agassiz-level { fill: none; stroke: color-mix(in srgb, #5a4833 78%, var(--worm-deep)); stroke-width: 3; stroke-linecap: round; }
-:root[data-theme='dark'] .tumbler-barrel { fill: color-mix(in srgb, #705237 78%, var(--local-secondary)); }
-:root[data-theme='dark'] .tumbler-hatch,
-:root[data-theme='dark'] .tumbler-door { fill: color-mix(in srgb, #7c5b3c 77%, var(--local-secondary)); }
-:root[data-theme='dark'] .scanner-cast-frame,
-:root[data-theme='dark'] .scanner-portal { fill: color-mix(in srgb, #323c39 84%, var(--local-primary)); }
-:root[data-theme='dark'] .scanner-star-plate { fill: #17242d; }
-:root[data-theme='dark'] .scanner-counter { fill: color-mix(in srgb, #8d845f 69%, var(--paper-strong)); }
-:root[data-theme='dark'] .agassiz-andesite-slab,
-:root[data-theme='dark'] .agassiz-cutaway { fill: color-mix(in srgb, #4d4058 79%, var(--local-primary)); }
-:root[data-theme='dark'] .agassiz-ice-carriage,
-:root[data-theme='dark'] .agassiz-ice-ribbon { fill: rgba(116,174,177,.58); }
-.tenerife-accessory { filter: drop-shadow(0 5px 4px rgba(25,41,33,.27)); }
-.tenerife-accessory-shadow { fill: rgba(24,39,31,.22); }
 .viewer-rind,
 .viewer-peel-panel,
 .viewer-rind-flap { fill: color-mix(in srgb, #294936 82%, var(--local-primary)); stroke: color-mix(in srgb, #1d3328 84%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
@@ -1810,20 +1597,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .seed-leaf-pointer { fill: color-mix(in srgb, #3f7652 78%, var(--local-primary)); stroke: color-mix(in srgb, #284a37 83%, var(--worm-deep)); stroke-width: 2; }
 .seed-leaf-vein { fill: none; stroke: color-mix(in srgb, #b7c88e 60%, var(--paper-strong)); stroke-width: 1.5; stroke-linecap: round; }
 .seed-class-count { fill: color-mix(in srgb, #f0dc8c 70%, var(--paper-strong)); font: 900 12px/1 var(--sans); stroke: color-mix(in srgb, #594326 74%, var(--worm-deep)); stroke-width: 1px; paint-order: stroke; }
-:root[data-theme='dark'] .viewer-flesh,
-:root[data-theme='dark'] .viewer-flesh-panel { fill: color-mix(in srgb, #6e6538 79%, var(--local-secondary)); }
-:root[data-theme='dark'] .viewer-lens-glass { fill: rgba(115,168,151,.5); }
-:root[data-theme='dark'] .root-harp-living-arch,
-:root[data-theme='dark'] .root-harp-crown-branch,
-:root[data-theme='dark'] .root-harp-root-base,
-:root[data-theme='dark'] .root-harp-buttress-frame { fill: color-mix(in srgb, #55422f 79%, var(--local-secondary)); }
-:root[data-theme='dark'] .root-harp-leaf-resonator { fill: color-mix(in srgb, #244934 85%, var(--local-primary)); }
-:root[data-theme='dark'] .seed-cabinet-shell,
-:root[data-theme='dark'] .seed-cabinet-centre,
-:root[data-theme='dark'] .seed-cabinet-wing,
-:root[data-theme='dark'] .seed-board-frame { fill: color-mix(in srgb, #6d4d34 78%, var(--local-secondary)); }
-:root[data-theme='dark'] .seed-board-field { fill: color-mix(in srgb, #3a3b2d 79%, var(--local-primary)); }
-:root[data-theme='dark'] .herbarium-sheet { fill: color-mix(in srgb, #94896b 72%, var(--paper-strong)); }
 .kauai-accessory { filter: drop-shadow(0 5px 4px rgba(24,38,31,.28)); }
 .kauai-accessory-shadow { fill: rgba(23,35,30,.23); }
 .decay-case-shell,
@@ -1916,27 +1689,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .haplotype-result-text,
 .haplotype-lightbox-label { fill: color-mix(in srgb, #f0da8a 72%, var(--paper-strong)); font: 900 11px/1 var(--sans); letter-spacing: .08em; stroke: color-mix(in srgb, #2b3934 72%, var(--worm-deep)); stroke-width: 1px; paint-order: stroke; }
 .haplotype-result-text { fill: color-mix(in srgb, #344b42 82%, var(--worm-deep)); font-size: 12px; stroke: none; }
-:root[data-theme='dark'] .decay-case-shell,
-:root[data-theme='dark'] .decay-rack-frame { fill: color-mix(in srgb, #5c4532 81%, var(--local-secondary)); }
-:root[data-theme='dark'] .decay-case-window,
-:root[data-theme='dark'] .decay-rack-inner,
-:root[data-theme='dark'] .decay-lens-glass,
-:root[data-theme='dark'] .decay-moisture-window { fill: rgba(91,146,132,.47); }
-:root[data-theme='dark'] .decay-specimen-ticket,
-:root[data-theme='dark'] .decay-altitude-tag,
-:root[data-theme='dark'] .cloud-side-gauge,
-:root[data-theme='dark'] .haplotype-result-panel { fill: color-mix(in srgb, #8b8063 75%, var(--paper-strong)); }
-:root[data-theme='dark'] .cloud-comb-frame,
-:root[data-theme='dark'] .cloud-ring-frame { fill: color-mix(in srgb, #3d5947 82%, var(--local-primary)); }
-:root[data-theme='dark'] .cloud-comb-vane,
-:root[data-theme='dark'] .cloud-ring-mesh { fill: rgba(69,126,111,.54); }
-:root[data-theme='dark'] .cloud-pear-bulb,
-:root[data-theme='dark'] .cloud-condensate-bulb { fill: rgba(67,137,128,.55); }
-:root[data-theme='dark'] .haplotype-lightbox-shell,
-:root[data-theme='dark'] .haplotype-drum-shell { fill: color-mix(in srgb, #5d4832 80%, var(--local-secondary)); }
-:root[data-theme='dark'] .haplotype-lightbox-field,
-:root[data-theme='dark'] .haplotype-drum-field { fill: color-mix(in srgb, #162c2a 88%, var(--local-primary)); }
-:root[data-theme='dark'] .haplotype-magnifier-glass { fill: rgba(77,142,129,.52); }
 .act-accessory { filter: drop-shadow(0 5px 4px rgba(31,38,31,.27)); }
 .act-accessory-shadow { fill: rgba(31,36,30,.23); }
 .baermann-stand-base,
@@ -2022,24 +1774,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .theremin-slider,
 .theremin-control { fill: color-mix(in srgb, #b88f4a 74%, var(--local-secondary)); stroke: color-mix(in srgb, #54412b 79%, var(--worm-deep)); stroke-width: 1.5; }
 .theremin-speaker { fill: color-mix(in srgb, #263d3a 82%, var(--local-primary)); stroke: color-mix(in srgb, #172d2a 84%, var(--worm-deep)); stroke-width: 2; }
-:root[data-theme='dark'] .baermann-funnel,
-:root[data-theme='dark'] .baermann-reservoir.companion,
-:root[data-theme='dark'] .baermann-vial { fill: rgba(75,131,123,.51); }
-:root[data-theme='dark'] .baermann-water,
-:root[data-theme='dark'] .baermann-vial-level { fill: rgba(56,121,118,.66); }
-:root[data-theme='dark'] .baermann-stand-base,
-:root[data-theme='dark'] .seed-column-foot,
-:root[data-theme='dark'] .theremin-soundbox,
-:root[data-theme='dark'] .theremin-crescent-body { fill: color-mix(in srgb, #584431 81%, var(--local-secondary)); }
-:root[data-theme='dark'] .seed-column-frame { fill: rgba(48,69,52,.42); }
-:root[data-theme='dark'] .seed-arm-leaf,
-:root[data-theme='dark'] .seed-leaf-vane { fill: color-mix(in srgb, #2f4e36 83%, var(--local-primary)); }
-:root[data-theme='dark'] .seed-capsule-cutaway,
-:root[data-theme='dark'] .seed-column-capsule { fill: color-mix(in srgb, #5b4431 82%, var(--local-secondary)); }
-:root[data-theme='dark'] .theremin-body-panel,
-:root[data-theme='dark'] .theremin-soundbox-panel { fill: color-mix(in srgb, #1f3d37 87%, var(--local-primary)); }
-.auckland-accessory { filter: drop-shadow(0 5px 4px rgba(28,39,34,.27)); }
-.auckland-accessory-shadow { fill: rgba(25,35,30,.23); }
 .profiler-rail-bed,
 .profiler-rail-foot,
 .profiler-tower-foot,
@@ -2149,21 +1883,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .timing-window-label { fill: color-mix(in srgb, #f0e7c9 80%, var(--paper-strong)); font-size: 8px; stroke: color-mix(in srgb, #33433e 66%, var(--worm-deep)); stroke-width: .8px; }
 .timing-x-gate { fill: color-mix(in srgb, #765570 63%, var(--local-primary)); stroke: color-mix(in srgb, #493747 79%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
 .timing-x-label { fill: color-mix(in srgb, #f0e2bd 76%, var(--paper-strong)); font-size: 9px; stroke-width: .8px; }
-:root[data-theme='dark'] .profiler-chamber-shell,
-:root[data-theme='dark'] .profiler-chamber-glass,
-:root[data-theme='dark'] .profiler-window { fill: rgba(72,126,119,.51); }
-:root[data-theme='dark'] .profiler-rail-bed,
-:root[data-theme='dark'] .profiler-catch-drawer,
-:root[data-theme='dark'] .monitor-four-feet,
-:root[data-theme='dark'] .timing-counter-frame { fill: color-mix(in srgb, #574532 81%, var(--local-secondary)); }
-:root[data-theme='dark'] .profiler-litter-layer { fill: color-mix(in srgb, #354b35 83%, var(--local-primary)); }
-:root[data-theme='dark'] .monitor-paper-drum,
-:root[data-theme='dark'] .monitor-amplitude-dial,
-:root[data-theme='dark'] .monitor-folded-chart,
-:root[data-theme='dark'] .timing-clock-face { fill: color-mix(in srgb, #5b584a 77%, var(--paper-strong)); }
-:root[data-theme='dark'] .timing-clock-sector.early { fill: color-mix(in srgb, #31594a 79%, var(--local-primary)); }
-:root[data-theme='dark'] .timing-clock-sector.late { fill: color-mix(in srgb, #6b5837 79%, var(--local-secondary)); }
-:root[data-theme='dark'] .timing-flip-window { fill: color-mix(in srgb, #294c41 84%, var(--local-primary)); }
 .araucania-accessory { filter: drop-shadow(0 5px 4px rgba(30,38,31,.28)); }
 .araucania-accessory-shadow { fill: rgba(27,35,29,.24); }
 .labyrinth-table-frame { fill: color-mix(in srgb, #8d704b 74%, var(--local-secondary)); fill-rule: evenodd; stroke: color-mix(in srgb, #4e402f 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
@@ -2256,27 +1975,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .cross-result-flag { fill: color-mix(in srgb, #8a6682 64%, var(--local-primary)); stroke: color-mix(in srgb, #4d3c4b 80%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
 .cross-ju4400-plate { fill: color-mix(in srgb, #d7bd7a 72%, var(--paper-strong)); stroke: color-mix(in srgb, #5c4931 77%, var(--worm-deep)); stroke-width: 1.6; }
 .cross-ju4400-text { fill: color-mix(in srgb, #304a44 80%, var(--worm-deep)); font: 900 10px/1 var(--sans); paint-order: stroke; stroke: color-mix(in srgb, var(--paper-strong) 70%, transparent); stroke-width: 1.2px; }
-:root[data-theme='dark'] .labyrinth-kidney-surface,
-:root[data-theme='dark'] .labyrinth-helix-deck-inner,
-:root[data-theme='dark'] .ash-sector-wheel,
-:root[data-theme='dark'] .ash-analog-dial,
-:root[data-theme='dark'] .ash-fold-chart,
-:root[data-theme='dark'] .ash-supported-side-panel,
-:root[data-theme='dark'] .cross-blank-window { fill: color-mix(in srgb, #5b5749 79%, var(--paper-strong)); }
-:root[data-theme='dark'] .labyrinth-compost-island { fill: color-mix(in srgb, #604332 82%, var(--local-secondary)); }
-:root[data-theme='dark'] .labyrinth-compost-island.green { fill: color-mix(in srgb, #304b36 84%, var(--local-primary)); }
-:root[data-theme='dark'] .ash-sector-cabinet,
-:root[data-theme='dark'] .ash-cassette-chassis,
-:root[data-theme='dark'] .cross-dial-outer,
-:root[data-theme='dark'] .cross-bridge-base { fill: color-mix(in srgb, #524131 83%, var(--local-secondary)); }
-:root[data-theme='dark'] .ash-counter-window,
-:root[data-theme='dark'] .ash-cassette-window,
-:root[data-theme='dark'] .cross-central-chamber,
-:root[data-theme='dark'] .cross-folding-panel { fill: rgba(67,123,115,.52); }
-:root[data-theme='dark'] .cross-entry-port,
-:root[data-theme='dark'] .cross-entry-chamber { fill: color-mix(in srgb, #28483d 85%, var(--local-primary)); }
-.trivandrum-accessory { filter: drop-shadow(0 5px 4px rgba(24,38,31,.29)); }
-.trivandrum-accessory-shadow { fill: rgba(22,34,28,.25); }
 .timekeeper-yoke-base,
 .timekeeper-tripod,
 .timekeeper-agar-drawer,
@@ -2381,26 +2079,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .bandstand-column.deep { fill: color-mix(in srgb, #ac8b58 67%, var(--local-secondary)); }
 .bandstand-resonator-slat { fill: none; stroke: color-mix(in srgb, #704f67 65%, var(--local-primary)); stroke-width: 6; stroke-linecap: round; }
 .bandstand-resonator-slat.deep { stroke: color-mix(in srgb, #a17e4c 70%, var(--local-secondary)); }
-:root[data-theme='dark'] .timekeeper-date-tag,
-:root[data-theme='dark'] .timekeeper-day-counter-frame,
-:root[data-theme='dark'] .music-cabinet-arch,
-:root[data-theme='dark'] .music-vertical-roll,
-:root[data-theme='dark'] .bandstand-pinned-cylinder,
-:root[data-theme='dark'] .bandstand-column { fill: color-mix(in srgb, #5a5545 80%, var(--paper-strong)); }
-:root[data-theme='dark'] .timekeeper-glass { fill: rgba(65,125,115,.52); }
-:root[data-theme='dark'] .timekeeper-yoke-base,
-:root[data-theme='dark'] .timekeeper-tripod,
-:root[data-theme='dark'] .waterworks-lake-basin,
-:root[data-theme='dark'] .waterworks-column-base,
-:root[data-theme='dark'] .music-cabinet-body,
-:root[data-theme='dark'] .bandstand-pavilion-base { fill: color-mix(in srgb, #4e3e31 84%, var(--local-secondary)); }
-:root[data-theme='dark'] .waterworks-basin-water { fill: rgba(48,112,106,.62); }
-:root[data-theme='dark'] .waterworks-pump-body,
-:root[data-theme='dark'] .waterworks-pump-column,
-:root[data-theme='dark'] .waterworks-terrace-bed { fill: color-mix(in srgb, #30473a 84%, var(--local-primary)); }
-:root[data-theme='dark'] .music-cabinet-canopy,
-:root[data-theme='dark'] .bandstand-faceted-roof { fill: color-mix(in srgb, #553e50 80%, var(--local-primary)); }
-.singapore-accessory { filter: drop-shadow(0 5px 4px rgba(24,38,31,.29)); }
 .singapore-accessory-shadow { fill: rgba(22,34,28,.25); }
 .atlas-pentagonal-board,
 .atlas-tall-backboard { fill: color-mix(in srgb, #92754e 72%, var(--local-secondary)); stroke: color-mix(in srgb, #4e4031 82%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
@@ -2496,26 +2174,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .orchid-flask-seedling { fill: none; stroke: color-mix(in srgb, #41684d 77%, var(--local-primary)); stroke-width: 1.5; stroke-linecap: round; }
 .orchid-parentage-dial { fill: color-mix(in srgb, #d4c9a8 69%, var(--paper-strong)); stroke: color-mix(in srgb, #67523d 77%, var(--worm-deep)); stroke-width: 2.2; }
 .orchid-parentage-tick { fill: none; stroke: color-mix(in srgb, #6f5368 68%, var(--local-primary)); stroke-width: 2; stroke-linecap: round; }
-:root[data-theme='dark'] .atlas-hinged-folio,
-:root[data-theme='dark'] .atlas-staggered-page,
-:root[data-theme='dark'] .atlas-id-tag,
-:root[data-theme='dark'] .merger-table-rim,
-:root[data-theme='dark'] .orchid-blank-pedigree-ribbon,
-:root[data-theme='dark'] .orchid-parentage-dial { fill: color-mix(in srgb, #5a5545 80%, var(--paper-strong)); }
-:root[data-theme='dark'] .atlas-pentagonal-board,
-:root[data-theme='dark'] .atlas-tall-backboard,
-:root[data-theme='dark'] .merger-channel-table,
-:root[data-theme='dark'] .merger-drum-stand,
-:root[data-theme='dark'] .orchid-pollination-bench,
-:root[data-theme='dark'] .orchid-propagation-base { fill: color-mix(in srgb, #4d3d30 84%, var(--local-secondary)); }
-:root[data-theme='dark'] .merger-chamber-window,
-:root[data-theme='dark'] .merger-drum-inner,
-:root[data-theme='dark'] .merger-suspended-vial,
-:root[data-theme='dark'] .orchid-seed-capsule-window,
-:root[data-theme='dark'] .orchid-tower-window { fill: rgba(57,119,109,.54); }
-:root[data-theme='dark'] .orchid-bench-rail,
-:root[data-theme='dark'] .orchid-propagation-tower { fill: color-mix(in srgb, #30483a 85%, var(--local-primary)); }
-.praslin-accessory { filter: drop-shadow(0 5px 4px rgba(22,35,29,.3)); }
 .praslin-accessory-shadow { fill: rgba(20,32,27,.26); }
 .genome-loom-frame,
 .genome-reel-base { fill: color-mix(in srgb, #8f7050 72%, var(--local-secondary)); stroke: color-mix(in srgb, #4b3d31 83%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
@@ -2610,24 +2268,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .listener-waveform,
 .listener-spectrogram-lines { fill: none; stroke: color-mix(in srgb, #7c4969 72%, var(--local-primary)); stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
 .listener-spectrogram-roll { fill: color-mix(in srgb, #d5c894 69%, var(--paper-strong)); stroke: color-mix(in srgb, #65523d 78%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
-:root[data-theme='dark'] .genome-loom-membrane,
-:root[data-theme='dark'] .genome-record-tag,
-:root[data-theme='dark'] .genome-read-counter,
-:root[data-theme='dark'] .growth-marked-tree-tag,
-:root[data-theme='dark'] .growth-data-roll,
-:root[data-theme='dark'] .growth-mapping-drawer,
-:root[data-theme='dark'] .growth-census-panel,
-:root[data-theme='dark'] .listener-spectrogram-roll { fill: color-mix(in srgb, #565143 82%, var(--paper-strong)); }
-:root[data-theme='dark'] .genome-loom-frame,
-:root[data-theme='dark'] .genome-reel-base,
-:root[data-theme='dark'] .growth-frame-base,
-:root[data-theme='dark'] .growth-census-base,
-:root[data-theme='dark'] .listener-canopy-base,
-:root[data-theme='dark'] .listener-tripod-hub,
-:root[data-theme='dark'] .listener-wave-carriage { fill: color-mix(in srgb, #4b3b30 85%, var(--local-secondary)); }
-:root[data-theme='dark'] .growth-census-panel.deep { fill: color-mix(in srgb, #334b3c 85%, var(--local-primary)); }
-:root[data-theme='dark'] .listener-petal-bowl { fill: color-mix(in srgb, #4e394d 84%, var(--local-primary)); }
-:root[data-theme='dark'] .listener-bowl-inner { fill: color-mix(in srgb, #6e5432 82%, var(--local-secondary)); }
 .sao-accessory-shadow { fill: rgba(24,34,29,.22); }
 .fruit-track-base,
 .fruit-tower-base,
@@ -2733,28 +2373,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .begonia-crank-spokes { fill: none; stroke: color-mix(in srgb, #9b7847 75%, var(--local-secondary)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
 .begonia-crank-wheel,
 .begonia-panel-hinge { fill: color-mix(in srgb, #79566f 69%, var(--local-primary)); stroke: color-mix(in srgb, #4a3745 82%, var(--worm-deep)); stroke-width: 1.7; }
-:root[data-theme='dark'] .fruit-glass-beam,
-:root[data-theme='dark'] .fruit-record-plate,
-:root[data-theme='dark'] .fruit-isofemale-vial,
-:root[data-theme='dark'] .fruit-tower-top-cup,
-:root[data-theme='dark'] .sound-wave-drum,
-:root[data-theme='dark'] .sound-cylinder-frame,
-:root[data-theme='dark'] .begonia-shutter,
-:root[data-theme='dark'] .begonia-flip-panel { fill: color-mix(in srgb, #555044 82%, var(--paper-strong)); }
-:root[data-theme='dark'] .fruit-track-base,
-:root[data-theme='dark'] .fruit-tower-base,
-:root[data-theme='dark'] .sound-arc-base,
-:root[data-theme='dark'] .sound-mast-base,
-:root[data-theme='dark'] .begonia-drum-base,
-:root[data-theme='dark'] .begonia-strip-base { fill: color-mix(in srgb, #4a392e 86%, var(--local-secondary)); }
-:root[data-theme='dark'] .fruit-anonymous-rind { fill: color-mix(in srgb, #503d30 86%, var(--local-secondary)); }
-:root[data-theme='dark'] .fruit-anonymous-pulp { fill: color-mix(in srgb, #685238 82%, var(--local-secondary)); }
-:root[data-theme='dark'] .sound-acoustic-funnel,
-:root[data-theme='dark'] .sound-single-horn { fill: color-mix(in srgb, #4d394a 85%, var(--local-primary)); }
-:root[data-theme='dark'] .begonia-leaf-drum { fill: color-mix(in srgb, #324c37 85%, var(--local-primary)); }
-:root[data-theme='dark'] .begonia-shutter.deep,
-:root[data-theme='dark'] .begonia-flip-panel.deep { fill: color-mix(in srgb, #3d5040 84%, var(--local-primary)); }
-.pohnpei-machine-shadow { fill: rgba(24,32,28,.22); }
 .pohnpei-machine-base { fill: color-mix(in srgb, #866b48 72%, var(--local-secondary)); stroke: color-mix(in srgb, #493d31 83%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
 .pohnpei-machine-feet,
 .concordance-tower-frame,
@@ -2844,33 +2462,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .registry-f-view-frame { fill: none; stroke: color-mix(in srgb, #79566f 72%, var(--local-primary)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
 .registry-viewing-lens { fill: color-mix(in srgb, #ac884f 72%, var(--local-secondary)); stroke: color-mix(in srgb, #57432f 82%, var(--worm-deep)); stroke-width: 1.8; }
 .registry-viewing-lens-inner { fill: color-mix(in srgb, #334d42 84%, var(--worm-deep)); stroke: color-mix(in srgb, #d2c69f 64%, var(--paper-strong)); stroke-width: 1.3; }
-:root[data-theme='dark'] .pohnpei-machine-base,
-:root[data-theme='dark'] .temperature-contact-chamber,
-:root[data-theme='dark'] .temperature-calibration-drawer { fill: color-mix(in srgb, #493a2f 86%, var(--local-secondary)); }
-:root[data-theme='dark'] .concordance-window,
-:root[data-theme='dark'] .concordance-shutter,
-:root[data-theme='dark'] .concordance-spelling-carriage,
-:root[data-theme='dark'] .concordance-flipplate,
-:root[data-theme='dark'] .concordance-kotop-tab,
-:root[data-theme='dark'] .pohnpei-culture-vial,
-:root[data-theme='dark'] .temperature-value-shutter,
-:root[data-theme='dark'] .temperature-result-window,
-:root[data-theme='dark'] .registry-gate,
-:root[data-theme='dark'] .registry-helical-drawer,
-:root[data-theme='dark'] .registry-coordinate-plate,
-:root[data-theme='dark'] .registry-coordinate-drum { fill: color-mix(in srgb, #555045 82%, var(--paper-strong)); }
-:root[data-theme='dark'] .concordance-window.deep,
-:root[data-theme='dark'] .concordance-shutter.deep,
-:root[data-theme='dark'] .temperature-value-shutter.deep,
-:root[data-theme='dark'] .registry-gate.deep,
-:root[data-theme='dark'] .registry-helical-drawer.deep { fill: color-mix(in srgb, #3c5041 85%, var(--local-primary)); }
-:root[data-theme='dark'] .concordance-fruit-cradle,
-:root[data-theme='dark'] .concordance-specimen-drawer { fill: color-mix(in srgb, #35483b 86%, var(--local-primary)); }
-:root[data-theme='dark'] .concordance-fruit-sample,
-:root[data-theme='dark'] .temperature-contact-pad,
-:root[data-theme='dark'] .registry-gate.focus,
-:root[data-theme='dark'] .registry-helical-drawer.focus { fill: color-mix(in srgb, #4b3748 86%, var(--local-primary)); }
-:root[data-theme='dark'] .temperature-air-bulb { fill: color-mix(in srgb, #43574e 84%, var(--paper-strong)); }
 @media (max-width: 600px) {
   .pohnpei-accessory .pohnpei-machine-text:not(.pohnpei-machine-mobile-key) { display: none; }
   .pohnpei-accessory .pohnpei-machine-mobile-key {
@@ -2968,35 +2559,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .qld-map-hub,
 .qld-tree-position { fill: color-mix(in srgb, #ac844d 73%, var(--local-secondary)); stroke: color-mix(in srgb, #56422e 83%, var(--worm-deep)); stroke-width: 1.3; }
 .qld-tree-position.deep { fill: color-mix(in srgb, #7b566d 70%, var(--local-primary)); }
-:root[data-theme='dark'] .queensland-machine-base,
-:root[data-theme='dark'] .qld-funnel-station,
-:root[data-theme='dark'] .qld-funnel-cassette,
-:root[data-theme='dark'] .qld-plate-carriage { fill: color-mix(in srgb, #49392e 87%, var(--local-secondary)); }
-:root[data-theme='dark'] .qld-culture-vial,
-:root[data-theme='dark'] .qld-reflection-shutter,
-:root[data-theme='dark'] .qld-record-plate,
-:root[data-theme='dark'] .qld-trace-strip,
-:root[data-theme='dark'] .qld-closed-drawer,
-:root[data-theme='dark'] .qld-date-drawer,
-:root[data-theme='dark'] .qld-covered-channel,
-:root[data-theme='dark'] .qld-calendar-cylinder,
-:root[data-theme='dark'] .qld-plate-deck,
-:root[data-theme='dark'] .qld-map-drawer,
-:root[data-theme='dark'] .qld-gondola,
-:root[data-theme='dark'] .qld-access-box,
-:root[data-theme='dark'] .qld-strata-gate { fill: color-mix(in srgb, #555045 83%, var(--paper-strong)); }
-:root[data-theme='dark'] .qld-reflection-shutter.deep,
-:root[data-theme='dark'] .qld-calendar-cylinder,
-:root[data-theme='dark'] .qld-strata-gate.deep { fill: color-mix(in srgb, #3b5040 86%, var(--local-primary)); }
-:root[data-theme='dark'] .qld-pod-body { fill: color-mix(in srgb, #4b2f32 88%, var(--local-primary)); }
-:root[data-theme='dark'] .qld-pod-cradle,
-:root[data-theme='dark'] .qld-scan-drum,
-:root[data-theme='dark'] .qld-counterweight,
-:root[data-theme='dark'] .qld-vial-platform { fill: color-mix(in srgb, #354438 87%, var(--local-primary)); }
-:root[data-theme='dark'] .qld-lens-glass { fill: color-mix(in srgb, #3f584f 86%, var(--paper-strong)); }
-:root[data-theme='dark'] .qld-map-table { fill: color-mix(in srgb, #334737 87%, var(--local-primary)); }
-:root[data-theme='dark'] .qld-canopy-mosaic { fill: color-mix(in srgb, #253a2d 89%, var(--local-primary)); }
-:root[data-theme='dark'] .qld-canopy-token { fill: color-mix(in srgb, #40563e 86%, var(--local-primary)); }
 @media (max-width: 600px) {
   .queensland-accessory .queensland-machine-text:not(.queensland-machine-mobile-key) { display: none; }
   .queensland-accessory .queensland-machine-mobile-key {

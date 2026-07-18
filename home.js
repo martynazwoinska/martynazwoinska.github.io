@@ -64,12 +64,13 @@
     // Theme toggle (remembers choice)
     var root = document.documentElement;
     var themeToggle = document.getElementById('themeToggle');
+    var systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
     var saved = window.SitePreferences.getTheme();
     if (saved) root.setAttribute('data-theme', saved);
 
     function syncThemeButton() {
       var isDark = root.getAttribute('data-theme') === 'dark'
-        || (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        || (!root.getAttribute('data-theme') && systemThemeQuery.matches);
       themeToggle.setAttribute('aria-pressed', String(isDark));
       var copy = languageCopy(currentLanguage);
       themeToggle.setAttribute('title', isDark ? copy.theme_light : copy.theme_dark);
@@ -77,6 +78,12 @@
     }
 
     syncThemeButton();
+    function handleSystemThemeChange() {
+      if (!window.SitePreferences.getTheme()) syncThemeButton();
+    }
+    if (systemThemeQuery.addEventListener) systemThemeQuery.addEventListener('change', handleSystemThemeChange);
+    else if (systemThemeQuery.addListener) systemThemeQuery.addListener(handleSystemThemeChange);
+
     themeToggle.addEventListener('click', function () {
       var next = themeToggle.getAttribute('aria-pressed') === 'true' ? 'light' : 'dark';
       window.SitePreferences.setTheme(next);

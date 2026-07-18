@@ -35,6 +35,8 @@ Most homepage content and styling live in `index.html`. The interactive game has
 its own HTML, CSS, and JavaScript under `game-of-worms/`. The Cabinet is a
 separate interactive collection under `cabinet-of-curiosities/`, with responsive
 hotspots, a collection index, object-detail dialogs and a flavour-wheel dialog.
+The homepage and Cabinet follow the saved light/dark preference; the Game uses a
+single independent light theme.
 
 Before making changes, read:
 

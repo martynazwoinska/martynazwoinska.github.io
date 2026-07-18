@@ -59,9 +59,6 @@ When multiple agents may be active, use separate branches or worktrees and do no
 
 ## Current priority
 
-The active design area is **Beyond Research**, with two destinations:
+The Beyond Research landing architecture and its two destinations, **The Game of Worms** and **The Cabinet of Curiosities**, are implemented. The current follow-up is the one-location-at-a-time Game of Worms refinement recorded in `PROJECT_STATUS.md`, while preserving the approved homepage hero, paired themes, and Cabinet experience.
 
-1. **The Game of Worms**
-2. **The Cabinet of Curiosities**
-
-Consult `PROJECT_STATUS.md` for the current approved wording, interaction decisions, the selected stylised cabinet image, the untouched real reference photograph, known chocolate identifications, and unresolved tasks.
+Treat `PROJECT_STATUS.md` as the authoritative source for the current approved wording, interaction decisions, verified implementation state, and unresolved tasks.

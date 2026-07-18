@@ -93,6 +93,10 @@
           "#homeWheel",
           "aria-label"
     ],
+    "home_wheel_source_label": [
+          "#homeWheelCredit",
+          "aria-label"
+    ],
     "cabinet_card_label": [
           "#cabinetCardLink",
           "aria-label"
@@ -126,7 +130,8 @@
     "home_worms_label": "Make the Bristol N2 worms wriggle",
     "game_card_label": "Play The Game of Worms",
     "worms_wriggling": "The Bristol N2 worms are wriggling.",
-    "home_wheel_label": "Spin the Cacao of Excellence flavour wheel",
+    "home_wheel_label": "Flavour wheel",
+    "home_wheel_source_label": "Flavour wheel source and licence",
     "cabinet_card_label": "Explore The Cabinet of Curiosities",
     "wheel_spinning": "The flavour wheel is spinning.",
     "wheel_stopped": "The wheel has stopped. Explore the descriptor nearest the marker.",
@@ -209,11 +214,13 @@
           "home_worms_label": "Låt Bristol N2-nematoderna slingra sig",
           "game_card_label": "Spela The Game of Worms",
           "worms_wriggling": "Bristol N2-nematoderna slingrar sig.",
-          "home_wheel_label": "Snurra Cacao of Excellence-smakhjulet",
+          "home_wheel_label": "Smakhjul",
+          "home_wheel_source_label": "Smakhjulets källa och licens",
           "cabinet_card_label": "Utforska Kuriosakabinettet",
           "wheel_spinning": "Smakhjulet snurrar.",
           "wheel_stopped": "Hjulet har stannat. Utforska beskrivningen närmast markören.",
           "contact_title": "Kontakt",
+          "contact_address": "Avdelningen för zooekologi<br />Evolutionsbiologiskt Centrum (EBC)<br />Uppsala universitet<br />Norbyvägen 18D<br />752 36 Uppsala",
           "contact_email": "E-post",
           "contact_email_copied": "E-postadressen har kopierats",
           "contact_email_copy_failed": "Kopieringen misslyckades. Markera och kopiera:",
@@ -292,7 +299,8 @@
           "home_worms_label": "Wpraw nicienie Bristol N2 w ruch",
           "game_card_label": "Zagraj w The Game of Worms",
           "worms_wriggling": "Nicienie Bristol N2 wiją się.",
-          "home_wheel_label": "Zakręć kołem smaków Cacao of Excellence",
+          "home_wheel_label": "Koło smaków",
+          "home_wheel_source_label": "Źródło i licencja koła smaków",
           "cabinet_card_label": "Zajrzyj do Gabinetu osobliwości",
           "wheel_spinning": "Koło smaków się obraca.",
           "wheel_stopped": "Koło się zatrzymało. Sprawdź określenie najbliżej znacznika.",

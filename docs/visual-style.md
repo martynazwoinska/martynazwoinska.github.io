@@ -41,6 +41,8 @@ Use the prefixed CSS custom properties rather than copying hex values into compo
 
 The automatic dark theme and the explicit `data-theme="dark"` theme use the same dark values. The explicit `data-theme="light"` theme restores the light values.
 
+The Game of Worms is an intentional scoped exception: it uses one fixed light, playful scientific palette and does not consume the website theme preference. Navigating from either homepage theme must not alter the Game.
+
 ## Colour hierarchy
 
 1. Use neutral backgrounds and text colours for most of the page.
@@ -50,6 +52,8 @@ The automatic dark theme and the explicit `data-theme="dark"` theme use the same
 5. Prefer `color-mix()` with the semantic variables when a quieter tint is needed.
 
 The navigation background matches the page background in both themes so the header does not compete with the hero. A fine border preserves structure. The theme toggle deliberately remains the one dense header accent: it uses the page alias of `--site-brand-gold` with `#14171a` ink in both themes.
+
+The homepage footer mixes 34% of the primary surface into 66% of the page background rather than using an emerald-tinted panel. This produces a soft ivory close in the light theme and a slightly lifted marine field in the dark theme. Its antique-gold top rule provides closure without turning the footer into a heavy colour band.
 
 ### Categories and scientific figures
 
@@ -78,16 +82,19 @@ This rule is subordinate to accuracy, licensing and source identity:
 - describe material modifications in the attribution or project notes;
 - never invent labels, measurements, categories or object details to make a visual fit the design.
 
-The official Cocoa of Excellence Flavour Wheel is a reference graphic, so its labels and colours remain unchanged. A rasterised or tightly cropped derivative may be used only with clear attribution and the applicable licence notice.
+The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour Wheel` is a reference graphic, so its labels and colours remain unchanged. Use `Cacao of Excellence` for the current programme and website, but preserve `Cocoa of Excellence Flavour Wheel` when naming the 2021 asset itself. On the homepage, use a compact source/licence info link instead of written attribution below the preview; the Cabinet view carries the full credit. A rasterised or tightly cropped derivative may be used only with clear attribution and the applicable licence notice.
 
 ## Typography, form and ornament
 
 - Use `--display` for major headings and decorative plaques.
 - Use `--sans` for body copy, navigation, controls and metadata.
+- The homepage hero name uses the approved Cormorant Garamond 700 with a subtle `.28px` current-colour optical stroke. Do not replace it with a synthetic 800 weight.
 - Keep asymmetric rounded corners soft rather than exaggerated.
 - Use botanical curves, seed-pod forms and worm-like lines as small accents.
 - Keep ornament subordinate to information and interaction.
 - Avoid emoji as primary visual elements and avoid oversized decorative icons.
+
+The homepage hero uses `photo.jpg` with the approved paired ornament assets under `assets/hero/`: `quiet-atelier-upper-left.png`, `quiet-atelier-upper-left-dark.png`, `quiet-atelier-lower-right.png`, and `quiet-atelier-lower-right-dark.png`. Treat these as source assets and preserve their composition instead of redrawing them from screenshots.
 
 ## Accessibility
 

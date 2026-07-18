@@ -49,6 +49,7 @@ If the working tree contains unrelated changes:
 
 - Modify only files needed for the task.
 - Do not alter `game-of-worms/` unless the task explicitly concerns the game.
+- The Game intentionally uses one fixed light palette, independent of the homepage theme preference. Do not add `data-site-preferences="theme"`, the shared preference script, or partial theme overrides to the Game shell.
 - Do not refactor unrelated homepage sections while changing Beyond Research.
 - Do not introduce a framework, package manager, build system, CSS library, icon library, or external JavaScript dependency without explicit approval.
 - Preserve existing accessibility, dark-mode, navigation, and responsive behaviour.
@@ -145,8 +146,9 @@ It contains two equal Art Nouveau doorway cards.
 - Action: `Explore →`
 - Destination: `cabinet-of-curiosities/index.html`
 - The Cabinet navigation link and flavour-wheel button are sibling controls. Never nest the button inside the link.
-- The official Cocoa of Excellence Flavour Wheel may appear on the right side as the only preview graphic in the landing cards.
+- The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour Wheel` may appear on the right side as the only preview graphic in the landing cards.
 - The wheel image itself is the control. Keep its accessible name, but do not add a visible instruction such as `Spin the wheel` below it.
+- Keep the homepage preview free of written wheel instructions and attribution copy. Use only a compact source/licence info link; the Cabinet wheel view carries the full attribution.
 
 Constraints:
 
@@ -188,7 +190,8 @@ Interactive objects:
 
 - every chocolate package;
 - the green crocheted eye;
-- the yellow crocheted eye.
+- the yellow crocheted eye;
+- the S-Foodies sticker.
 
 Decorative and non-interactive:
 
@@ -200,7 +203,7 @@ Use a responsive SVG overlay or another coordinate system tied to the image’s 
 
 Chocolate metadata must be data-driven and separate from the markup. Unknown values and URLs remain empty; never fabricate them.
 
-The Cocoa of Excellence Flavour Wheel is a separate interactive reference, not part of the photographed object board. Open it in an accessible dialog or equivalent overlay so it does not shrink or move the board. Let users spin it as a playful exploration aid, but do not claim that the pointer identifies an objectively measured flavour. Show the full source, copyright and licence attribution in the wheel view.
+The Cacao of Excellence programme’s 2021 `Cocoa of Excellence Flavour Wheel` is a separate interactive reference, not part of the photographed object board. Open it in an accessible dialog or equivalent overlay so it does not shrink or move the board. Let users spin it as a playful exploration aid, but do not claim that the pointer identifies an objectively measured flavour. Show the full source, copyright and licence attribution in the wheel view.
 
 ## Accessibility
 

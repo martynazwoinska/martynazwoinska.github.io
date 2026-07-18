@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#13231d">
+  <meta name="theme-color" content="#eee9dc" media="(prefers-color-scheme: light)" data-site-theme-color="light">
+  <meta name="theme-color" content="#101713" media="(prefers-color-scheme: dark)" data-site-theme-color="dark">
   <meta name="description" content="Explore Martyna Zwoińska's Cabinet of Curiosities: an interactive collection of craft chocolate wrappers, tasting notes, crochet and cacao flavours.">
   <title>The Cabinet of Curiosities · Martyna Zwoińska</title>
   <link rel="canonical" href="https://martynazwoinska.github.io/cabinet-of-curiosities/">
-  <script src="../shared/site-preferences.js"></script>
-  <link rel="stylesheet" href="../shared/site-tokens.css">
+  <script src="../shared/site-preferences.js?v=20260718-1"></script>
+  <link rel="stylesheet" href="../shared/site-tokens.css?v=20260717-2">
   <link rel="stylesheet" href="cabinet.css?v=20260714-6">
 </head>
 <body>
@@ -73,7 +74,7 @@
       <h2 class="sr-only" id="wheel-title">Cocoa of Excellence Flavour Wheel</h2>
       <p class="sr-only" id="wheel-description">Activate the wheel to spin it. The descriptor nearest the fixed gold marker can be used as a tasting prompt.</p>
       <button class="icon-button wheel-close" id="wheel-close" type="button" aria-label="Close flavour wheel">×</button>
-      <button class="wheel-visual" id="wheel-spin" type="button" aria-label="Spin the Cacao of Excellence flavour wheel" aria-describedby="wheel-description wheel-status">
+      <button class="wheel-visual" id="wheel-spin" type="button" aria-label="Flavour wheel" aria-describedby="wheel-description wheel-status">
         <span class="wheel-marker" aria-hidden="true"></span>
         <img class="flavour-wheel" id="flavour-wheel" src="assets/cacao-of-excellence-flavour-wheel.png" loading="lazy" decoding="async" alt="Cocoa of Excellence Flavour Wheel, arranged in concentric rings of cocoa aroma and flavour descriptors.">
       </button>

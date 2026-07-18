@@ -1,5 +1,7 @@
 I am starting a long-running project for my personal website:
 
+> Historical bootstrap prompt: always consult `PROJECT_STATUS.md` for current priorities and verified implementation state before using this checklist.
+
 Repository: `martynazwoinska/martynazwoinska.github.io`
 
 The local repository contains:

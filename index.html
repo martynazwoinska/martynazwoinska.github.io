@@ -12,10 +12,10 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/" />
   <meta property="og:image" content="https://martynazwoinska.github.io/photo.jpg" />
   <link rel="canonical" href="https://martynazwoinska.github.io/" />
-  <meta name="theme-color" content="#faf8f2" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#1c3345" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#faf8f2" media="(prefers-color-scheme: light)" data-site-theme-color="light" />
+  <meta name="theme-color" content="#1c3345" media="(prefers-color-scheme: dark)" data-site-theme-color="dark" />
   <link rel="stylesheet" href="shared/site-tokens.css?v=20260717-2" />
-  <script src="shared/site-preferences.js?v=20260713-1"></script>
+  <script src="shared/site-preferences.js?v=20260718-1"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -53,13 +53,13 @@
       --accent-soft: var(--site-brand-emerald-soft);
       --accent-berry: var(--site-brand-berry);
       --accent-gold: var(--site-brand-gold);
-      --accent-violet: var(--site-brand-violet);
+      --focus: var(--site-focus);
       --nav-bg: var(--site-nav-bg);
       --nav-border: var(--site-nav-border);
       --nav-accent: var(--site-nav-accent);
       --border: var(--site-border);
       --shadow: var(--site-shadow);
-      --footer-bg: color-mix(in srgb, var(--accent-soft) 48%, var(--bg));
+      --footer-bg: color-mix(in srgb, var(--surface) 34%, var(--bg));
       --footer-text: var(--text-soft);
       --footer-rule: color-mix(in srgb, var(--accent-gold) 42%, var(--border));
       --worm-face: #4a3027;
@@ -100,7 +100,7 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     a:focus-visible, button:focus-visible {
-      outline: 3px solid var(--accent-berry);
+      outline: 3px solid var(--focus);
       outline-offset: 3px;
       border-radius: 6px;
     }
@@ -138,12 +138,9 @@
       background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
       border-radius: 9px; padding: 8px 12px; cursor: pointer; font: inherit; font-size: .9rem;
     }
-    .nav-links a[href="#beyond-research"] {
-      color: var(--nav-accent); font-weight: 650;
-    }
     .nav-links a:hover { color: var(--accent-berry); text-decoration: none; }
     /* subtle emerald distinction for Beyond Research */
-    .nav-links a.nav-beyond { color: var(--nav-accent); }
+    .nav-links a.nav-beyond { color: var(--nav-accent); font-weight: 650; }
     .nav-links a.nav-beyond::before { content: "❧ "; opacity: .75; }
     .nav-links a.nav-beyond:hover { color: var(--accent-berry); text-decoration: underline; text-underline-offset: 3px; }
 
@@ -213,7 +210,12 @@
       color: var(--accent-berry); font-size: 17px; line-height: 1;
       filter: drop-shadow(0 1px 0 var(--surface));
     }
-    .flavour-wheel-source { color: var(--text-faint); font-size: .68rem; line-height: 1.25; text-align: center; }
+    .flavour-wheel-source {
+      width: 24px; height: 24px; display: grid; place-items: center;
+      border: 1px solid var(--border); border-radius: 50%; color: var(--text-faint);
+      font-size: .72rem; line-height: 1; text-align: center; text-decoration: none;
+    }
+    .flavour-wheel-source:hover { color: var(--accent-berry); border-color: var(--accent-gold); text-decoration: none; }
     .n2-preview-wrap {
       width: min(var(--beyond-visual-size), 100%); position: relative; z-index: 2;
       display: grid; grid-column: 2; grid-row: 1 / 3; place-self: center end;
@@ -336,7 +338,7 @@
         grid-column: 1; grid-row: 2; place-self: center;
       }
       .beyond-card .beyond-action { grid-column: 1; grid-row: 3; }
-      .flavour-wheel-source { font-size: .64rem; }
+      .flavour-wheel-source { width: 22px; height: 22px; font-size: .68rem; }
     }
     .theme-btn {
       background: var(--accent-gold);
@@ -571,8 +573,6 @@
     }
     .hero .role { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 4px; }
     .hero .affil { color: var(--text-soft); margin-bottom: 18px; }
-    .hero p.lead { color: var(--text-soft); font-size: 1.02rem; max-width: 46ch; margin: 0 auto; }
-    @media (min-width: 621px) { .hero p.lead { margin: 0; } }
     @media (max-width: 620px) {
       .hero h1 { font-size: 2.7rem; margin-left: auto; margin-right: auto; }
     }
@@ -772,12 +772,6 @@
       color: var(--footer-text); font-size: .86rem; text-align: center;
     }
 
-    .note {
-      background: var(--accent-soft); border: 1px dashed var(--accent);
-      border-radius: 10px; padding: 12px 16px; font-size: .86rem; color: var(--text-soft);
-      margin-top: 22px;
-    }
-    .note strong { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -1307,11 +1301,11 @@
         </div>
         <a class="beyond-card__link" id="cabinetCardLink" href="cabinet-of-curiosities/index.html" aria-label="Explore The Cabinet of Curiosities"><span class="sr-only">Explore The Cabinet of Curiosities</span></a>
         <div class="flavour-wheel-wrap">
-          <button class="flavour-wheel-control" id="homeWheel" type="button" aria-label="Spin the Cacao of Excellence flavour wheel" aria-describedby="homeWheelCredit">
+          <button class="flavour-wheel-control" id="homeWheel" type="button" aria-label="Flavour wheel">
             <span class="flavour-wheel-marker" aria-hidden="true">▼</span>
             <img src="cabinet-of-curiosities/assets/cacao-of-excellence-flavour-wheel.png" loading="lazy" decoding="async" alt="" />
           </button>
-          <span class="flavour-wheel-source" id="homeWheelCredit">Cacao of Excellence, CC BY-NC 4.0</span>
+          <a class="flavour-wheel-source" id="homeWheelCredit" href="https://www.cacaoofexcellence.org/fileadmin/Websites/CocoaOfExcellence/CoEx-2023/CoEx_flavour_wheel_A4_EN-19Aug21.pdf" target="_blank" rel="noopener" aria-label="Flavour wheel source and licence">ⓘ</a>
           <span class="sr-only" id="homeWheelStatus" aria-live="polite"></span>
         </div>
         <span class="beyond-action">Explore <span aria-hidden="true">→</span></span>
@@ -1358,7 +1352,7 @@
     </div>
   </footer>
 
-  <script src="home-i18n.js?v=20260716-1"></script>
-  <script src="home.js?v=20260715-4"></script>
+  <script src="home-i18n.js?v=20260718-1"></script>
+  <script src="home.js?v=20260718-1"></script>
 </body>
 </html>

@@ -30,8 +30,9 @@ The shared layer is deliberately small:
 - `shared/site-tokens.css` owns prefixed `--site-*` colour and font primitives. Page geometry, scientific colour mappings, game state and Cabinet scene styling remain local.
 - `shared/site-preferences.js` is the only file that knows the storage keys `language` and `theme`. Pages opt into language or theme application through `data-site-preferences` on the root element.
 - Translation dictionaries remain page-local: `home-i18n.js`, `cabinet-of-curiosities/cabinet-i18n.js`, and `game-of-worms/game-i18n.js`.
+- The homepage contact address is page-local copy: Swedish uses Martyna’s supplied official Swedish form, English uses the existing English form, and Polish intentionally falls back to English until separate Polish wording is supplied or approved. The email-button label remains translated.
 - English-only pages must keep `lang="en"` until their own complete translation exists. A stored homepage language must never relabel an English-only page as Swedish or Polish.
-- The Game keeps its playful scientific and habitat palette local. Importing shared tokens must not silently create a partial dark theme.
+- The Game keeps its playful scientific and habitat palette local and intentionally fixed in one light theme. It does not import or apply the shared theme preference; a stored homepage or Cabinet theme must never alter the Game shell or scenes.
 - The Cabinet keeps its board geometry, immersive surfaces, hotspot coordinates, object metadata and dialog behaviour local.
 
 When a feature needs a new shared token or preference capability, its owner submits the interface request to the integrator. The integrator lands the shared change first; feature work then incorporates that commit before continuing.

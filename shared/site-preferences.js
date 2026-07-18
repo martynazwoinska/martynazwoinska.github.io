@@ -56,10 +56,23 @@
     return next;
   }
 
+  function syncThemeColor(theme) {
+    var explicitTheme = hasValue(validThemes, theme) ? theme : null;
+    document.querySelectorAll('meta[name="theme-color"][data-site-theme-color]').forEach(function (meta) {
+      var targetTheme = meta.getAttribute('data-site-theme-color');
+      if (!hasValue(validThemes, targetTheme)) return;
+      meta.setAttribute(
+        'media',
+        explicitTheme ? (targetTheme === explicitTheme ? 'all' : 'not all') : '(prefers-color-scheme: ' + targetTheme + ')'
+      );
+    });
+  }
+
   function applyTheme(theme) {
     if (!isEnabled('theme')) return theme;
     if (hasValue(validThemes, theme)) root.setAttribute('data-theme', theme);
     else root.removeAttribute('data-theme');
+    syncThemeColor(theme);
     return theme;
   }
 
