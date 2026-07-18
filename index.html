@@ -610,6 +610,9 @@
     .hero .affil { color: var(--text-soft); margin-bottom: 18px; }
     @media (max-width: 620px) {
       .hero h1 { font-size: 2.7rem; margin-left: auto; margin-right: auto; }
+      .hero .affil { line-height: 1.45; }
+      .hero .affil-part { display: block; white-space: nowrap; }
+      .hero .affil-separator { display: none; }
     }
 
     .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
@@ -892,7 +895,7 @@
       <div class="hero-copy">
         <h1><span class="hero-name-part">Martyna</span> <span class="hero-name-part">Katarzyna</span> <span class="hero-name-part">Zwoińska</span></h1>
         <div class="role">Evolutionary biologist. From lab to code, from ideas to execution.</div>
-        <div class="affil">Department of Ecology and Genetics, Uppsala University, Sweden</div>
+        <div class="affil"><span class="affil-part">Department of Ecology and Genetics</span><span class="affil-separator">, </span><span class="affil-part">Uppsala University</span><span class="affil-separator">, </span><span class="affil-part">Sweden</span></div>
       </div>
       <div class="avatar">
         <span class="avatar-mono">MZ</span>
@@ -1387,7 +1390,7 @@
     </div>
   </footer>
 
-  <script src="home-i18n.js?v=20260718-3"></script>
+  <script src="home-i18n.js?v=20260718-4"></script>
   <script src="home.js?v=20260718-1"></script>
 </body>
 </html>
