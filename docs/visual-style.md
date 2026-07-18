@@ -53,7 +53,7 @@ The Game of Worms is an intentional scoped exception: it uses one fixed light, p
 
 The navigation background matches the page background in both themes so the header does not compete with the hero. Fine antique-gold borders separate the header rows and close the header consistently. The theme toggle deliberately remains the one dense header accent: it uses the page alias of `--site-brand-gold` with a substantial `#14171a` half-filled circle in both themes.
 
-The homepage footer mixes 34% of the primary surface into 66% of the page background rather than using an emerald-tinted panel. This produces a soft ivory close in the light theme and a slightly lifted marine field in the dark theme. Its antique-gold top rule provides closure without turning the footer into a heavy colour band.
+The homepage footer uses the exact page background in both themes rather than a separate panel colour. Its antique-gold top rule provides closure while the page field remains visually continuous from the final section to the bottom edge.
 
 ### Categories and scientific figures
 
