@@ -343,7 +343,7 @@
     }
     .theme-btn {
       background: var(--accent-gold);
-      border: 1px solid color-mix(in srgb, #14171a 58%, var(--accent-gold));
+      border: 1px solid color-mix(in srgb, #14171a 24%, var(--accent-gold));
       color: #14171a;
       width: 34px; height: 34px; padding: 0; flex: 0 0 34px;
       border-radius: 9px; cursor: pointer; line-height: 1;
@@ -352,7 +352,7 @@
     .theme-btn svg { display: block; width: 22px; height: 22px; flex: 0 0 22px; }
     .theme-btn:hover {
       background: color-mix(in srgb, var(--accent-gold) 88%, var(--surface) 12%);
-      border-color: #14171a; color: #14171a;
+      border-color: color-mix(in srgb, #14171a 42%, var(--accent-gold)); color: #14171a;
     }
     .theme-btn:focus-visible { outline-color: var(--nav-accent); }
     .language-switcher {
@@ -815,7 +815,7 @@
             </svg>
           </button>
         </span>
-        <span class="theme-wrap"><button class="theme-btn" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false" title="Switch to dark mode"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.25"/><path d="M12 3a9 9 0 0 0 0 18Z" fill="currentColor"/></svg></button></span>
+        <span class="theme-wrap"><button class="theme-btn" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false" title="Switch to dark mode"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M12 3a9 9 0 0 0 0 18Z" fill="currentColor"/></svg></button></span>
         <button class="nav-menu-btn" id="navMenuToggle" type="button" aria-expanded="false" aria-controls="primaryNav">☰ Menu</button>
       </div>
     </div>
