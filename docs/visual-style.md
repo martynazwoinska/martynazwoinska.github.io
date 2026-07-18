@@ -51,7 +51,7 @@ The Game of Worms is an intentional scoped exception: it uses one fixed light, p
 4. Use berry or oxblood as the saturated secondary accent for botanical terminals, hover states and small warm details. Keep violet muted and limited to meaningful categories.
 5. Prefer `color-mix()` with the semantic variables when a quieter tint is needed.
 
-The navigation background matches the page background in both themes so the header does not compete with the hero. Fine antique-gold borders separate the header rows and close the header consistently. The theme toggle deliberately remains the one dense header accent: it uses the page alias of `--site-brand-gold` with a substantial `#14171a` half-filled circle in both themes.
+The navigation background matches the page background in both themes so the header does not compete with the hero. Fine antique-gold borders separate the header rows and close the header consistently. The theme toggle keeps a 34 px control area, but its quieter antique-gold face is inset to 28 px and its half-filled `#14171a` glyph is scaled to 20 px so it does not outweigh the language flags.
 
 The homepage footer uses the exact page background in both themes rather than a separate panel colour. Its antique-gold top rule provides closure while the page field remains visually continuous from the final section to the bottom edge.
 
@@ -88,7 +88,7 @@ The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour
 
 - Use `--display` for major headings and decorative plaques.
 - Use `--sans` for body copy, navigation, controls and metadata.
-- The homepage hero name uses the approved Cormorant Garamond 700 with a subtle `.28px` current-colour optical stroke. Do not replace it with a synthetic 800 weight.
+- Display headings use the approved Cormorant Garamond 700 with a subtle theme-aware current-colour optical stroke (`.2px` in Ivory Ink and `.14px` in Marine Ink). The homepage hero name uses a stronger `.46px` light / `.34px` dark optical stroke. Do not replace the real 700 files with a synthetic 800 weight.
 - Keep asymmetric rounded corners soft rather than exaggerated.
 - Use botanical curves, seed-pod forms and worm-like lines as small accents.
 - Keep ornament subordinate to information and interaction.
