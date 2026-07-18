@@ -13,7 +13,7 @@ This file records approved decisions and the verified implementation state. Alwa
 - Primary colours: emerald, antique gold, muted violet or berry
 - Display font: Cormorant Garamond
 - Homepage and Cabinet light and dark themes must remain functional. The Game intentionally uses one fixed light theme, independent of the website theme preference.
-- The paired Ivory Ink and Marine Ink themes use page-matched navigation backgrounds with a fine antique-gold hairline. Marine Ink uses a lifted blue-navy field rather than a near-black ground. The theme toggle keeps its 34 px interaction box while its quieter antique-gold face is inset to 28 px and its half-filled glyph is optically lighter, balancing it with the language flags.
+- The paired Ivory Ink and Marine Ink themes use page-matched navigation backgrounds with a fine antique-gold hairline. Marine Ink uses a lifted blue-navy field rather than a near-black ground. The theme toggle keeps its 34 px interaction box and strong half-filled glyph. Its desktop face remains 28 px; the compact mobile face is 26 px with a softer antique-gold fill and a half-pixel hairline so it balances with the language flags without becoming harder to tap.
 - Homepage language options: English, Swedish, and Polish
 - The Swedish homepage uses Martyna’s supplied official Swedish institutional and postal address. English retains the existing English form; Polish intentionally falls back to that English form until separate Polish wording is supplied or approved. The translated email-button label is separate.
 
@@ -74,6 +74,7 @@ The two cards have equal visual weight, stack on mobile, retain emerald and anti
 - The Cabinet uses separate HTML, CSS, JavaScript, translation, and data files.
 - The Cabinet presents the authentic photographed object board inside an extended fantasy surround.
 - On phones held vertically, the Cabinet asks the visitor to turn the device sideways; the interactive board is presented in landscape orientation.
+- On coarse-pointer phones held sideways, the Cabinet scene supports one-finger panning, two-finger pinch zoom, visible zoom/reset controls and keyboard equivalents. The authentic scene and its percentage-based hotspot overlay share one transform, so markers remain aligned while the visitor moves or scales the view.
 - The board has percentage-based responsive hotspots for 35 chocolate packages, two crocheted eyes, and the S-Foodies sticker.
 - A browseable collection index and reusable accessible object-detail dialog are implemented.
 - The Cacao of Excellence programme’s 2021 `Cocoa of Excellence Flavour Wheel` opens in a separate accessible dialog with source and licence attribution.

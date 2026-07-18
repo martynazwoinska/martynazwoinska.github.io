@@ -201,6 +201,8 @@ Decorative and non-interactive:
 
 Use a responsive SVG overlay or another coordinate system tied to the image’s intrinsic dimensions. Do not use fixed-position hotspots that drift when the image scales.
 
+On coarse-pointer phones in landscape orientation, the complete scene and its hotspot overlay must move and scale as one unit. Preserve one-finger panning, two-finger pinch zoom, the visible zoom/reset controls and keyboard pan/zoom support; never apply a camera transform to the photograph without applying the identical transform to its hotspots.
+
 Chocolate metadata must be data-driven and separate from the markup. Unknown values and URLs remain empty; never fabricate them.
 
 The Cacao of Excellence programme’s 2021 `Cocoa of Excellence Flavour Wheel` is a separate interactive reference, not part of the photographed object board. Open it in an accessible dialog or equivalent overlay so it does not shrink or move the board. Let users spin it as a playful exploration aid, but do not claim that the pointer identifies an objectively measured flavour. Show the full source, copyright and licence attribution in the wheel view.

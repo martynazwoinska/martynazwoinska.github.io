@@ -2,7 +2,7 @@
 <html lang="en" data-site-preferences="theme">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes,viewport-fit=cover">
   <meta name="theme-color" content="#eee9dc" media="(prefers-color-scheme: light)" data-site-theme-color="light">
   <meta name="theme-color" content="#101713" media="(prefers-color-scheme: dark)" data-site-theme-color="dark">
   <meta name="description" content="Explore Martyna Zwoińska's Cabinet of Curiosities: an interactive collection of craft chocolate wrappers, tasting notes, crochet and cacao flavours.">
@@ -10,18 +10,10 @@
   <link rel="canonical" href="https://martynazwoinska.github.io/cabinet-of-curiosities/">
   <script src="../shared/site-preferences.js?v=20260718-1"></script>
   <link rel="stylesheet" href="../shared/site-tokens.css?v=20260718-1">
-  <link rel="stylesheet" href="cabinet.css?v=20260714-6">
+  <link rel="stylesheet" href="cabinet.css?v=20260718-1">
 </head>
 <body>
   <main class="cabinet-page">
-    <div class="fantasy-surround" aria-hidden="true">
-      <picture class="surround-picture">
-        <source media="(orientation: landscape) and (max-width: 960px)" srcset="assets/cabinet-scene-v3-960.webp">
-        <source media="(min-width: 761px)" srcset="assets/cabinet-scene-v3.webp">
-        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="1672" height="941" fetchpriority="high" alt="">
-      </picture>
-    </div>
-
     <header class="cabinet-header">
       <a class="home-link" href="../index.html#beyond-research">← Martyna's site</a>
       <div class="header-actions">
@@ -36,14 +28,29 @@
       <p>The cabinet is designed to be explored horizontally.</p>
     </section>
 
-    <section class="cabinet-stage" aria-label="Interactive cabinet display">
-      <figure class="board-shell" id="board-shell">
-        <div class="board-plane">
-          <div class="hotspot-layer" id="hotspot-layer" aria-label="Objects on the display board"></div>
+    <section class="cabinet-stage" id="cabinet-stage" aria-label="Interactive cabinet display" tabindex="-1">
+      <div class="scene-space" id="scene-space">
+        <div class="fantasy-surround" aria-hidden="true">
+          <picture class="surround-picture">
+            <source media="(orientation: landscape) and (max-width: 960px)" srcset="assets/cabinet-scene-v3-960.webp">
+            <source media="(min-width: 761px)" srcset="assets/cabinet-scene-v3.webp">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="1672" height="941" fetchpriority="high" alt="">
+          </picture>
         </div>
-        <figcaption class="sr-only">Explore the photographed packages, the two crocheted eyes and the S-Foodies sticker. The long worm and blue octopus are decorative.</figcaption>
-      </figure>
+        <figure class="board-shell" id="board-shell">
+          <div class="board-plane">
+            <div class="hotspot-layer" id="hotspot-layer" aria-label="Objects on the display board"></div>
+          </div>
+          <figcaption class="sr-only">Explore the photographed packages, the two crocheted eyes and the S-Foodies sticker. The long worm and blue octopus are decorative.</figcaption>
+        </figure>
+      </div>
       <p class="explore-hint" id="explore-hint">Select a gold marker, or browse the collection by name.</p>
+      <div class="scene-controls" id="scene-controls" role="group" aria-label="Scene view controls" hidden>
+        <button class="scene-control" id="scene-zoom-out" type="button" aria-label="Zoom out">−</button>
+        <button class="scene-control scene-reset" id="scene-reset" type="button" aria-label="Reset view">100%</button>
+        <button class="scene-control" id="scene-zoom-in" type="button" aria-label="Zoom in">+</button>
+      </div>
+      <p class="sr-only" id="scene-view-status" role="status" aria-live="polite"></p>
       <div class="object-preview" id="object-preview" role="status" aria-live="polite" hidden>
         <strong id="preview-title"></strong>
       </div>
@@ -87,7 +94,7 @@
   </main>
 
   <script src="cabinet-data.js?v=20260713-5"></script>
-  <script src="cabinet-i18n.js?v=20260713-1"></script>
-  <script src="cabinet.js?v=20260714-2"></script>
+  <script src="cabinet-i18n.js?v=20260718-1"></script>
+  <script src="cabinet.js?v=20260718-1"></script>
 </body>
 </html>

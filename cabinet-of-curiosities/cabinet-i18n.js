@@ -16,6 +16,15 @@
     visitSuppliedLink: 'Visit supplied link',
     openDetails: 'Open details.',
     topRowMiniBars: 'Browse the top-row mini bars',
+    scene: Object.freeze({
+      controls: 'Scene view controls',
+      zoomOut: 'Zoom out',
+      zoomIn: 'Zoom in',
+      resetView: 'Reset view',
+      defaultHint: 'Select a gold marker, or browse the collection by name.',
+      touchHint: 'Drag · pinch to zoom · tap a gold marker.',
+      viewScale: percent => `View ${percent}%.`
+    }),
     collectionGroups: Object.freeze({
       chocolates: 'Chocolate packages',
       crochet: 'Crocheted eyes',
