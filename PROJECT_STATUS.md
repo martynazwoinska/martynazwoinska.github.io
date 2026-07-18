@@ -13,7 +13,7 @@ This file records approved decisions and the verified implementation state. Alwa
 - Primary colours: emerald, antique gold, muted violet or berry
 - Display font: Cormorant Garamond
 - Homepage and Cabinet light and dark themes must remain functional. The Game intentionally uses one fixed light theme, independent of the website theme preference.
-- The paired Ivory Ink and Marine Ink themes use page-matched navigation backgrounds with a fine antique-gold hairline. Marine Ink uses a lifted blue-navy field rather than a near-black ground. The theme toggle keeps its 34 px interaction box and strong half-filled glyph. Its desktop face remains 28 px; the compact mobile face is 26 px with a softer antique-gold fill and a half-pixel hairline so it balances with the language flags without becoming harder to tap.
+- The paired Ivory Ink and Marine Ink themes use page-matched navigation backgrounds with a fine antique-gold hairline. Marine Ink uses a lifted blue-navy field rather than a near-black ground. The theme toggle keeps its 34 px interaction box and 28 px antique-gold face at every viewport. In the compact mobile header, only the half-filled glyph reduces from 20 px to 17 px; the face retains its dimensions while using a softer fill and half-pixel hairline.
 - Homepage language options: English, Swedish, and Polish
 - The Swedish homepage uses Martyna’s supplied official Swedish institutional and postal address. English retains the existing English form; Polish intentionally falls back to that English form until separate Polish wording is supplied or approved. The translated email-button label is separate.
 

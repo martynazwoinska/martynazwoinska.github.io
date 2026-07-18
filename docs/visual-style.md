@@ -51,7 +51,7 @@ The Game of Worms is an intentional scoped exception: it uses one fixed light, p
 4. Use berry or oxblood as the saturated secondary accent for botanical terminals, hover states and small warm details. Keep violet muted and limited to meaningful categories.
 5. Prefer `color-mix()` with the semantic variables when a quieter tint is needed.
 
-The navigation background matches the page background in both themes so the header does not compete with the hero. Fine antique-gold borders separate the header rows and close the header consistently. The theme toggle keeps a 34 px control area. Its desktop face is 28 px with a 20 px half-filled `#14171a` glyph; the compact mobile face is 26 px with a softer fill, half-pixel hairline and 19 px glyph so it does not outweigh the language flags.
+The navigation background matches the page background in both themes so the header does not compete with the hero. Fine antique-gold borders separate the header rows and close the header consistently. The theme toggle keeps a 34 px control area and 28 px antique-gold face at every viewport. The desktop glyph is 20 px; in the compact mobile header, only the half-filled `#14171a` glyph reduces to 17 px while the face keeps its size and uses a softer fill and half-pixel hairline.
 
 The homepage footer uses the exact page background in both themes rather than a separate panel colour. Its antique-gold top rule provides closure while the page field remains visually continuous from the final section to the bottom edge.
 
