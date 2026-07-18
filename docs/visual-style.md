@@ -21,9 +21,9 @@ Use the prefixed CSS custom properties rather than copying hex values into compo
 
 | Token | Light theme | Dark theme | Intended use |
 | --- | --- | --- | --- |
-| `--site-bg` | `#faf8f2` | `#1c3345` | Ivory or marine page background |
-| `--site-surface` | `#fffdfa` | `#244255` | Primary cards, panels and dialogs |
-| `--site-surface-muted` | `#eeece4` | `#2e4d61` | Secondary surfaces, quiet controls and inset areas |
+| `--site-bg` | `#faf8f2` | `#213d50` | Ivory or balanced-marine page background |
+| `--site-surface` | `#fffdfa` | `#294b5e` | Primary cards, panels and dialogs |
+| `--site-surface-muted` | `#eeece4` | `#34576c` | Secondary surfaces, quiet controls and inset areas |
 | `--site-text` | `#20313d` | `#f1f2ec` | Primary text and headings |
 | `--site-text-soft` | `#53636c` | `#c3d0d5` | Supporting body text and secondary labels |
 | `--site-text-faint` | `#647178` | `#a8bdc6` | Tertiary metadata and small supporting text with WCAG AA contrast |
@@ -32,10 +32,10 @@ Use the prefixed CSS custom properties rather than copying hex values into compo
 | `--site-brand-berry` | `#8b3d5c` | `#ee9aa6` | Oxblood or berry secondary accent |
 | `--site-brand-gold` | `#a88445` | `#d3b56b` | Antique-gold fine borders, markers and restrained highlights |
 | `--site-brand-violet` | `#6f5878` | `#b9adda` | Muted violet for limited botanical or categorical detail |
-| `--site-nav-bg` | `#faf8f2` | `#1c3345` | Navigation merged into the page field rather than shown as a separate colour slab |
+| `--site-nav-bg` | `#faf8f2` | `#213d50` | Navigation merged into the page field rather than shown as a separate colour slab |
 | `--site-nav-border` | `#c8ad78` | `#8f7a4d` | Fine antique-gold hairline below and within the sticky navigation |
 | `--site-nav-accent` | `#1b6d59` | `#88dfc7` | Accessible emerald cue within the navigation |
-| `--site-border` | `#ddd9cf` | `#426075` | Neutral borders and dividers |
+| `--site-border` | `#ddd9cf` | `#4a697e` | Neutral borders and dividers |
 | `--site-focus` | `#8b3d5c` | `#f1a0ad` | Focus outline for controls on the paired site themes |
 | `--site-shadow` | `0 1px 2px rgba(27,43,50,.06), 0 10px 28px rgba(27,43,50,.07)` | `0 1px 2px rgba(5,15,28,.32), 0 12px 32px rgba(5,15,28,.27)` | Standard restrained elevation |
 
