@@ -590,7 +590,7 @@
       .hero-signet { width: 72px; height: 16px; bottom: 18px; }
     }
     @media (max-width: 620px) {
-      .hero { padding-top: 28px; padding-bottom: 64px; }
+      .hero { padding-top: 28px; padding-bottom: 52px; }
       .hero-grid { min-height: 0; text-align: center; }
       .hero-copy { max-width: 100%; padding-left: 0; padding-right: 0; }
       .hero-copy h1 {
@@ -627,15 +627,22 @@
       line-height: 1.5; margin-bottom: 8px;
     }
     .hero .role-title, .hero .role-expertise { display: block; }
-    .role-expertise-pair + .role-expertise-pair::before { content: " · "; }
+    .role-expertise-item + .role-expertise-item::before { content: " · "; }
     @media (max-width: 759px) {
-      .role-expertise-pair { display: block; white-space: nowrap; }
-      .role-expertise-pair + .role-expertise-pair::before { content: ""; }
+      .role-expertise-item { white-space: nowrap; }
+      .role-expertise-item--analysis { display: block; }
+      .role-expertise-item--analysis::before { content: ""; }
+    }
+    @media (min-width: 621px) and (max-width: 759px) {
+      .role-expertise-item--experimental { display: block; }
+      .role-expertise-item--genomics::before { content: ""; }
+      .role-expertise-item--analysis { display: inline; }
+      .role-expertise-item--analysis::before { content: " · "; }
     }
     .hero .affil { color: var(--text-soft); margin-bottom: 18px; }
     @media (max-width: 620px) {
       .hero h1 { font-size: 2.7rem; margin-left: auto; margin-right: auto; }
-      .hero .affil { line-height: 1.45; }
+      .hero .affil { line-height: 1.45; margin-bottom: 12px; }
       .hero .affil-part { display: block; white-space: nowrap; }
       .hero .affil-separator { display: none; }
     }
@@ -997,7 +1004,7 @@
     <div class="hero-grid">
       <div class="hero-copy">
         <h1><span class="hero-name-part">Martyna</span> <span class="hero-name-part">Katarzyna</span> <span class="hero-name-part">Zwoińska</span></h1>
-        <div class="role"><span class="role-title">Evolutionary biologist</span><span class="role-expertise"><span class="role-expertise-pair">Experimental research · Genomics</span> <span class="role-expertise-pair">Data analysis · AI tools</span></span></div>
+        <div class="role"><span class="role-title">Evolutionary biologist</span><span class="role-expertise"><span class="role-expertise-item role-expertise-item--experimental">Experimental research</span><span class="role-expertise-item role-expertise-item--genomics">Genomics</span><span class="role-expertise-item role-expertise-item--analysis">Data analysis</span><span class="role-expertise-item role-expertise-item--ai">AI tools</span></span></div>
         <div class="affil"><span class="affil-part">Department of Ecology and Genetics</span><span class="affil-separator">, </span><span class="affil-part">Uppsala University</span><span class="affil-separator">, </span><span class="affil-part">Sweden</span></div>
       </div>
       <div class="avatar">
