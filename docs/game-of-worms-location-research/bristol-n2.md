@@ -69,14 +69,14 @@ The scene must remain legible at thumbnail size and use three linked depths rath
 ### Middle ground: Avon Gorge context
 
 - A narrow tidal River Avon channel recedes through two unequal gorge faces.
-- The channel enters beneath the bridge as a narrow horizontal opening and widens continuously toward the foreground; avoid a pointed wedge or steep ripples that make the water appear to climb the gorge.
+- At low tide, a narrow, gently bending water channel sits within a broader muted riverbed. Avoid a centred triangular wedge, straight parallel banks or repeated full-width ripples that make the water resemble a road or appear to climb the gorge.
 - One face should read as more wooded; the other should expose tilted limestone or rock strata and urban-edge cues.
 - The river, cliff geometry, vegetation and built edge must form one coherent view rather than separate clip-art objects.
 
 ### Background: Bristol lock silhouette
 
 - Clifton Suspension Bridge crosses the gorge with two distinct masonry towers, a level deck, curved suspension chains and vertical rods.
-- A restrained, connected cream or stone terrace silhouette sits on the urban side without competing with the bridge; avoid a row of repeated house icons.
+- The bridge itself provides the Bristol urban lock at small sizes. Omit secondary terrace symbols when they compete with the tower or read as a generic skyline.
 - The locked silhouette is the bridge spanning opposing gorge faces over a central river notch. If this is not recognisable when small, the composition has failed.
 
 ### Palette and rendering

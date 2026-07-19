@@ -412,10 +412,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .bristol-sky { fill: color-mix(in srgb, var(--environment-water) 14%, var(--paper-strong)); }
 .bristol-clouds { opacity: .5; }
 .bristol-clouds path { fill: color-mix(in srgb, var(--paper-strong) 80%, var(--environment-water)); }
-.bristol-terrace-back { fill: color-mix(in srgb, var(--environment-detail) 18%, var(--paper-strong)); opacity: .72; }
-.bristol-terrace-house { fill: color-mix(in srgb, var(--paper-strong) 76%, #c9ad8b); stroke: color-mix(in srgb, var(--environment-detail) 72%, #654f45); stroke-width: 1.5; }
-.bristol-terrace-parapet { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 56%, #746257); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: .72; }
-.bristol-terrace-window { fill: color-mix(in srgb, var(--environment-water) 62%, var(--environment-detail)); }
 .bristol-gorge { stroke: none; }
 .bristol-gorge-wooded { fill: color-mix(in srgb, var(--environment-land) 80%, #355e48); }
 .bristol-gorge-limestone { fill: color-mix(in srgb, var(--environment-land) 42%, #d7cfb4); }
@@ -425,9 +421,9 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .bristol-cliff-face.right { fill: color-mix(in srgb, var(--paper-strong) 47%, #a8a18d); }
 .bristol-cliff-outline { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 72%, #6f6758); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 .bristol-cliff-strata { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 68%, #b6aa8d); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: .72; }
-.bristol-avon { stroke: color-mix(in srgb, var(--environment-detail) 32%, var(--environment-water)); stroke-width: 2; }
-.bristol-tidal-bank { fill: color-mix(in srgb, var(--environment-ground) 58%, #978b72); opacity: .64; }
-.bristol-river-glint { fill: none; stroke: color-mix(in srgb, var(--paper-strong) 72%, var(--environment-water)); stroke-width: 3; stroke-linecap: round; opacity: .58; }
+.bristol-tidal-bed { fill: color-mix(in srgb, var(--environment-ground) 52%, #b6aa91); opacity: .72; }
+.bristol-avon { fill: color-mix(in srgb, var(--environment-water) 68%, #71817c); stroke: color-mix(in srgb, var(--environment-detail) 25%, var(--environment-water)); stroke-width: 1.5; }
+.bristol-river-glint { fill: none; stroke: color-mix(in srgb, var(--paper-strong) 65%, var(--environment-water)); stroke-width: 2.5; stroke-linecap: round; opacity: .52; }
 .bristol-bridge-chain, .bristol-bridge-hanger, .bristol-bridge-rail { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 86%, #242a2a); stroke-linecap: round; stroke-linejoin: round; }
 .bristol-bridge-chain { stroke-width: 5; }
 .bristol-bridge-chain.fine { stroke-width: 2; opacity: .8; }
