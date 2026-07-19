@@ -1,6 +1,6 @@
 # Bristol N2 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-19
 
 This is the first location dossier in the location-by-location Game of Worms illustration workflow. It is the evidence and review contract for the Bristol N2 landscape and its three accessory pairs. Later locations require their own dossier before their artwork is revised.
 
@@ -69,13 +69,14 @@ The scene must remain legible at thumbnail size and use three linked depths rath
 ### Middle ground: Avon Gorge context
 
 - A narrow tidal River Avon channel recedes through two unequal gorge faces.
+- The channel enters beneath the bridge as a narrow horizontal opening and widens continuously toward the foreground; avoid a pointed wedge or steep ripples that make the water appear to climb the gorge.
 - One face should read as more wooded; the other should expose tilted limestone or rock strata and urban-edge cues.
 - The river, cliff geometry, vegetation and built edge must form one coherent view rather than separate clip-art objects.
 
 ### Background: Bristol lock silhouette
 
 - Clifton Suspension Bridge crosses the gorge with two distinct masonry towers, a level deck, curved suspension chains and vertical rods.
-- Restrained cream or stone terraces and rooflines sit on the urban side without competing with the bridge.
+- A restrained, connected cream or stone terrace silhouette sits on the urban side without competing with the bridge; avoid a row of repeated house icons.
 - The locked silhouette is the bridge spanning opposing gorge faces over a central river notch. If this is not recognisable when small, the composition has failed.
 
 ### Palette and rendering
