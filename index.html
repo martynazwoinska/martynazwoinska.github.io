@@ -874,6 +874,12 @@
       fill: none; stroke: currentColor; stroke-width: 1.7;
       stroke-linecap: round; stroke-linejoin: round;
     }
+    .contact-icon--orcid > circle:first-child,
+    .contact-icon--linkedin > rect { stroke-width: 1.25; }
+    .contact-icon--orcid .contact-brand-letter,
+    .contact-icon--linkedin .contact-brand-letter { stroke-width: 2.15; }
+    .contact-icon .contact-brand-dot { fill: currentColor; stroke: none; }
+    .contact-icon--researchgate { stroke-width: 1.8; }
     .contact-profile { grid-column: 1 / -1; }
     .contact-copy-fallback {
       margin: 12px 0 0 !important; font-size: .86rem; overflow-wrap: anywhere;
@@ -1463,15 +1469,15 @@
           <span>Google Scholar</span>
         </a>
         <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">
-          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" /><path d="M8.5 10v5M8.5 7.5h.01M12 10h2a2.5 2.5 0 0 1 0 5h-2v-5Z" /></svg>
+          <svg class="contact-icon contact-icon--orcid" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.25" /><circle class="contact-brand-dot" cx="7.5" cy="7.7" r="1.25" /><path class="contact-brand-letter" d="M7.5 11v6M11.6 7.3V17h2.25c3.35 0 5.25-1.72 5.25-4.85S17.2 7.3 13.85 7.3H11.6Z" /></svg>
           <span>ORCID</span>
         </a>
         <a class="pill" href="https://www.researchgate.net/profile/Martyna-Zwoinska" target="_blank" rel="noopener">
-          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="2.5" /><circle cx="18" cy="6" r="2.5" /><circle cx="18" cy="18" r="2.5" /><path d="m8.3 10.8 7.4-3.7M8.3 13.2l7.4 3.7" /></svg>
+          <svg class="contact-icon contact-icon--researchgate" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 18V6h4.05c2.45 0 3.7 1.25 3.7 3.25S9.5 12.5 7.05 12.5H3M7.2 12.5 11.25 18M21.25 8.35a5.25 5.25 0 1 0 0 7.3V12h-3.5" /></svg>
           <span>ResearchGate</span>
         </a>
         <a class="pill" href="https://www.linkedin.com/in/martyna-zwoinska" target="_blank" rel="noopener">
-          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3" /><circle cx="7.5" cy="8" r="1" /><path d="M6.5 11v6M11 11v6M11 13.7c0-3.6 6-3.8 6 0V17" /></svg>
+          <svg class="contact-icon contact-icon--linkedin" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3" /><circle class="contact-brand-dot" cx="7.25" cy="8" r="1.3" /><path class="contact-brand-letter" d="M7.25 11.25V18M11.25 18v-6.75M11.25 14.25c0-4.1 6.5-4.3 6.5 0V18" /></svg>
           <span>LinkedIn</span>
         </a>
         <a class="pill" href="https://bsky.app/profile/martynazwoinska.bsky.social" target="_blank" rel="noopener">
