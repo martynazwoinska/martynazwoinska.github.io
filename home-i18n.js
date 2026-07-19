@@ -15,8 +15,8 @@
     "affiliation": ".hero .affil",
     "about_title": "#about h2",
     "about_intro": "#about > p:nth-of-type(1)",
-    "about_chatbot": "#about > p:nth-of-type(2)",
-    "about_quote": "#about blockquote",
+    "about_chatbot": "#about .field-note figcaption",
+    "about_quote": "#about .field-note blockquote",
     "research_title": "#research h2",
     "research_intro": "#research > p",
     "interest_1": "#research .interest-list li:nth-child(1)",
@@ -43,13 +43,13 @@
     "all_publications": "#publications .pill[href*=\"scholar.google.com\"]",
     "orcid_record": "#publications .pill[href*=\"orcid.org\"]",
     "collaborators_title": "#collaborators > h2",
-    "collaborator_1": "#collaborators .card:nth-child(1) .cdesc",
-    "collaborator_2": "#collaborators .card:nth-child(2) .cdesc",
-    "collaborator_3": "#collaborators .card:nth-child(3) .cdesc",
-    "collaborator_4": "#collaborators .card:nth-child(4) .cdesc",
+    "collaborator_1": "#collaborators .folio-entry:nth-child(1) .cdesc",
+    "collaborator_2": "#collaborators .folio-entry:nth-child(2) .cdesc",
+    "collaborator_3": "#collaborators .folio-entry:nth-child(3) .cdesc",
+    "collaborator_4": "#collaborators .folio-entry:nth-child(4) .cdesc",
     "students_title": "#students > h2",
-    "student_1": "#students .card:nth-child(1) .cdesc",
-    "student_2": "#students .card:nth-child(2) .cdesc",
+    "student_1": "#students .folio-entry:nth-child(1) .cdesc",
+    "student_2": "#students .folio-entry:nth-child(2) .cdesc",
     "beyond_title": "#beyond-research > h2",
     "game_title": "#beyond-research .beyond-card--game h3",
     "game_description": "#beyond-research .beyond-card--game p",
@@ -61,8 +61,7 @@
     "contact_address": "#contact .contact-address",
     "contact_email": "#contact .contact-copy .contact-copy-label",
     "contact_profile": "#contact .pill[href^=\"https://www.uu.se/\"]",
-    "footer_affiliation": "#footerAffiliation",
-    "footer_built": "#footerBuilt"
+    "footer_affiliation": "#footerAffiliation"
   };
   var localizedAttributeMap = {
     "primary_nav": [
@@ -225,8 +224,7 @@
           "contact_email_copied": "E-postadressen har kopierats",
           "contact_email_copy_failed": "Kopieringen misslyckades. Markera och kopiera:",
           "contact_profile": "🏛 Profil vid Uppsala universitet",
-          "footer_affiliation": "Martyna Katarzyna Zwoińska · Uppsala universitet",
-          "footer_built": "Byggd i vanlig HTML, CSS och JavaScript och publicerad via GitHub Pages."
+          "footer_affiliation": "Martyna Katarzyna Zwoińska · Uppsala universitet"
     },
     "pl": {
           "page_title": "Martyna K. Zwoińska | Biolożka ewolucyjna, Uniwersytet w Uppsali",
@@ -309,8 +307,7 @@
           "contact_email_copied": "Adres e-mail skopiowany",
           "contact_email_copy_failed": "Nie udało się skopiować. Zaznacz i skopiuj:",
           "contact_profile": "🏛 Profil na stronie Uniwersytetu w Uppsali",
-          "footer_affiliation": "Martyna Katarzyna Zwoińska · Uniwersytet w Uppsali",
-          "footer_built": "Strona napisana w czystym HTML, CSS i JavaScript, opublikowana za pośrednictwem GitHub Pages."
+          "footer_affiliation": "Martyna Katarzyna Zwoińska · Uniwersytet w Uppsali"
     }
   };
 

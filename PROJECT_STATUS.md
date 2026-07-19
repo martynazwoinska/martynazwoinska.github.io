@@ -1,6 +1,6 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-07-18
+Last updated: 2026-07-19
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
@@ -61,6 +61,7 @@ The two cards have equal visual weight, stack on mobile, retain emerald and anti
 - The approved hero sources are `photo.jpg`, `assets/hero/quiet-atelier-upper-left.png`, `assets/hero/quiet-atelier-upper-left-dark.png`, `assets/hero/quiet-atelier-lower-right.png`, and `assets/hero/quiet-atelier-lower-right-dark.png`. Preserve these assets rather than reconstructing their ornament. Display headings use real Cormorant Garamond 700 with a subtle theme-aware optical stroke. The hero name uses `.46px` in Ivory Ink and `.34px` in Marine Ink; do not substitute a synthetic 800 weight.
 - Shared theme and language-preference handling is present under `shared/`.
 - The homepage footer uses the exact page background in both themes so the page remains visually continuous; its antique-gold top rule provides the only separation.
+- The desktop homepage header includes a restrained `MZ` monogram that is omitted from compact navigation. Collaborators and students share one numbered, flat folio-list treatment; research interests, Beyond Research and Contact retain their existing card treatments. The chatbot quotation is presented as a quiet editorial field note, and the footer contains only the localized copyright affiliation line.
 - Explicit homepage and Cabinet theme choices update their browser `theme-color` metadata, and the homepage theme control follows a live operating-system theme change when no explicit preference is stored.
 - Homepage behaviour and translations are separated into `home.js` and `home-i18n.js`.
 - The Game does not load shared theme tokens or preferences. Its one light palette, browser colour and module cache keys remain independent after navigating from either homepage theme; obsolete dark-only Game CSS overrides have been removed.

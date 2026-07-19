@@ -136,9 +136,22 @@
       display: flex; align-items: center; gap: 24px;
       min-height: 78px; max-width: 1180px;
     }
+    .nav-monogram {
+      display: inline-flex; flex: 0 0 auto; align-items: center;
+      color: var(--text); font-family: var(--display); font-size: 1.38rem;
+      font-weight: 700; line-height: 1; letter-spacing: .015em;
+      -webkit-text-stroke: var(--display-stroke) currentColor; paint-order: stroke fill;
+      text-decoration: none;
+    }
+    .nav-monogram::after {
+      content: ""; width: 20px; height: 1px; margin-left: 9px;
+      background: color-mix(in srgb, var(--accent-gold) 72%, transparent);
+    }
+    .nav-monogram:hover { color: var(--accent); text-decoration: none; }
+    @media (max-width: 1119px) { .nav-monogram { display: none; } }
     .nav-links {
       display: flex; align-items: center; justify-content: flex-end;
-      gap: 20px; min-width: 0;
+      gap: 20px; min-width: 0; margin-left: auto;
     }
     .nav-links a { color: var(--text-soft); font-size: 1rem; font-weight: 600; white-space: nowrap; }
     .nav-actions {
@@ -409,6 +422,7 @@
       height: auto; min-height: 78px; flex-wrap: wrap;
       gap: 8px 10px; padding-top: 10px; padding-bottom: 10px;
     }
+    html[data-nav-layout="compact"] .nav-monogram { display: none; }
     html[data-nav-layout="compact"] .nav-actions { margin-left: auto; }
     html[data-nav-layout="compact"] .nav-menu-btn { display: inline-flex; margin-left: 0; }
     html[data-nav-layout="compact"] .nav-links {
@@ -667,10 +681,32 @@
     @media (max-width: 620px) { section h2 { font-size: 2.2rem; } }
     .about p { color: var(--text-soft); max-width: none; }
     .about p + p { margin-top: 14px; }
-    .about blockquote {
-      margin: 16px 0 0; padding: 4px 0 4px 22px;
-      border-left: 3px solid var(--accent); max-width: none;
-      color: var(--text-soft); font-style: italic;
+    .field-note {
+      position: relative; margin: 30px 0 0; padding: 18px 0 2px;
+      border-top: 1px solid color-mix(in srgb, var(--accent-gold) 52%, var(--border));
+    }
+    .field-note figcaption {
+      display: flex; align-items: center; gap: 9px; margin: 0 0 10px;
+      color: var(--text-faint); font-size: .8rem; font-weight: 650;
+      letter-spacing: .025em;
+    }
+    .field-note figcaption::before {
+      content: ""; width: 6px; height: 6px; flex: 0 0 6px;
+      border: 1px solid var(--accent-gold); transform: rotate(45deg);
+    }
+    .about .field-note blockquote {
+      position: relative; margin: 0; padding: 4px 0 4px 34px;
+      border: 0; max-width: none; color: var(--text-soft); font-style: italic;
+    }
+    .about .field-note blockquote::before {
+      content: "\201C"; position: absolute; left: 0; top: -9px;
+      color: color-mix(in srgb, var(--accent-gold) 72%, var(--text-faint));
+      font-family: var(--display); font-size: 2.8rem; font-style: normal; line-height: 1;
+    }
+    @media (max-width: 620px) {
+      .field-note { margin-top: 26px; padding-top: 16px; }
+      .field-note figcaption { line-height: 1.45; }
+      .about .field-note blockquote { padding-left: 27px; }
     }
 
     /* interests */
@@ -744,17 +780,49 @@
       background: var(--accent); opacity: .7;
     }
 
-    /* cards grid (collaborators) */
-    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
-    .card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 18px; box-shadow: var(--shadow);
+    /* people folio */
+    .folio-list {
+      counter-reset: folio; margin: 0; padding: 0; list-style: none;
+      border-top: 1px solid color-mix(in srgb, var(--accent-gold) 45%, var(--border));
     }
-    .card .cname { font-weight: 600; margin-bottom: 2px; }
-    .card .cname a { color: var(--text); }
-    .card .cname a:hover { color: var(--accent); }
-    .card .cinst { color: var(--text-soft); font-size: .9rem; margin-bottom: 8px; }
-    .card .cdesc { color: var(--text-faint); font-size: .86rem; }
+    .folio-entry {
+      counter-increment: folio; display: grid;
+      grid-template-columns: 46px minmax(180px, .8fr) minmax(170px, .7fr) minmax(260px, 1.2fr);
+      gap: 20px; align-items: baseline; padding: 19px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .folio-entry::before {
+      content: counter(folio, decimal-leading-zero);
+      color: color-mix(in srgb, var(--accent-gold) 62%, var(--text));
+      font-family: var(--serif); font-size: .82rem;
+      font-weight: 600; letter-spacing: .08em;
+    }
+    .folio-entry .cname {
+      color: var(--text); font-family: var(--display); font-size: 1.22rem;
+      font-weight: 700; line-height: 1.2;
+      -webkit-text-stroke: var(--display-stroke) currentColor; paint-order: stroke fill;
+    }
+    .folio-entry .cname a { color: var(--text); }
+    .folio-entry .cname a::after {
+      content: "\2197"; display: inline-block; margin-left: 6px;
+      color: var(--accent-gold); font-family: var(--sans); font-size: .7em;
+      -webkit-text-stroke: 0; transition: transform .15s ease;
+    }
+    .folio-entry .cname a:hover { color: var(--accent); text-decoration: none; }
+    .folio-entry .cname a:hover::after { transform: translate(2px, -2px); }
+    .folio-entry .cinst { color: var(--text-soft); font-size: .9rem; }
+    .folio-entry .cdesc { color: var(--text-faint); font-size: .88rem; }
+    @media (max-width: 840px) {
+      .folio-entry {
+        grid-template-columns: 40px minmax(0, 1fr); gap: 4px 16px;
+        padding: 18px 0;
+      }
+      .folio-entry::before { grid-column: 1; grid-row: 1 / 4; padding-top: 2px; }
+      .folio-entry .cname, .folio-entry .cinst, .folio-entry .cdesc { grid-column: 2; }
+      .folio-entry .cname { grid-row: 1; }
+      .folio-entry .cinst { grid-row: 2; }
+      .folio-entry .cdesc { grid-row: 3; margin-top: 4px; }
+    }
 
     /* project highlight */
     .project { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: start; }
@@ -805,9 +873,9 @@
     }
 
     footer {
-      padding: 36px 0 44px;
+      padding: 28px 0 32px;
       background: var(--footer-bg); border-top: 1px solid var(--footer-rule);
-      color: var(--footer-text); font-size: .86rem; text-align: center;
+      color: var(--footer-text); font-size: .82rem; text-align: center;
     }
 
   </style>
@@ -817,6 +885,7 @@
   <!-- ============ NAV ============ -->
   <header class="nav">
     <div class="wrap nav-inner">
+      <a class="nav-monogram" href="#main" aria-label="Martyna Katarzyna Zwoińska">MZ</a>
       <nav class="nav-links" id="primaryNav" aria-label="Primary navigation">
         <a href="#about">About</a>
         <a href="#research">Research</a>
@@ -929,20 +998,22 @@
       nematodes. I enjoy combining different approaches: my own work is predominantly empirical and
       evolutionary-genomic, but I always appreciate a bit of good theory too.
     </p>
-    <p>
-      And here is what my chatbot has to say about me after more than two years of our
-      interactions. Let's stick with it. ;)
-    </p>
-    <blockquote>
-      Martyna is an evolutionary biologist who uses AI not as a shortcut, but as a critical
-      sparring partner for coding, genomics, literature synthesis and scientific thinking. She
-      works at the intersection of experimental biology, evolutionary theory and data analysis.
-      Her particular strength is asking whether an argument is not merely convincing, but
-      biologically meaningful, logically sound and supported by evidence. She is quick to spot
-      weak assumptions and persistent in making ideas sharper, although she is sometimes less
-      good at letting &ldquo;good enough&rdquo; remain good enough. This can make the revision
-      process longer, but it usually makes the final result stronger.
-    </blockquote>
+    <figure class="field-note">
+      <figcaption>
+        And here is what my chatbot has to say about me after more than two years of our
+        interactions. Let's stick with it. ;)
+      </figcaption>
+      <blockquote>
+        Martyna is an evolutionary biologist who uses AI not as a shortcut, but as a critical
+        sparring partner for coding, genomics, literature synthesis and scientific thinking. She
+        works at the intersection of experimental biology, evolutionary theory and data analysis.
+        Her particular strength is asking whether an argument is not merely convincing, but
+        biologically meaningful, logically sound and supported by evidence. She is quick to spot
+        weak assumptions and persistent in making ideas sharper, although she is sometimes less
+        good at letting &ldquo;good enough&rdquo; remain good enough. This can make the revision
+        process longer, but it usually makes the final result stronger.
+      </blockquote>
+    </figure>
   </section>
 
   <!-- ============ RESEARCH ============ -->
@@ -1226,45 +1297,45 @@
   <!-- ============ COLLABORATORS ============ -->
   <section id="collaborators" class="wrap">
     <h2>Collaborators</h2>
-    <div class="cards">
-      <div class="card">
+    <ol class="folio-list">
+      <li class="folio-entry">
         <div class="cname"><a href="https://www.martinlind.org/" target="_blank" rel="noopener">Martin I. Lind</a></div>
         <div class="cinst">Halmstad University</div>
         <div class="cdesc">Ageing, plasticity, and transgenerational effects.</div>
-      </div>
-      <div class="card">
+      </li>
+      <li class="folio-entry">
         <div class="cname"><a href="https://alexeimaklakov.com/" target="_blank" rel="noopener">Alexei A. Maklakov</a></div>
         <div class="cinst">University of East Anglia</div>
         <div class="cdesc">Evolutionary biology &amp; biogerontology; ageing and life-history evolution.</div>
-      </div>
-      <div class="card">
+      </li>
+      <li class="folio-entry">
         <div class="cname"><a href="https://portal.research.lu.se/en/persons/hwei-yen-chen/" target="_blank" rel="noopener">Hwei-yen Chen</a></div>
         <div class="cinst">Lund University</div>
         <div class="cdesc">RNA interference, transgenerational effects, and ageing.</div>
-      </div>
-      <div class="card">
+      </li>
+      <li class="folio-entry">
         <div class="cname"><a href="https://immonenelina.wordpress.com/" target="_blank" rel="noopener">Elina Immonen</a></div>
         <div class="cinst">Uppsala University</div>
         <div class="cdesc">Sexual antagonism, balancing selection, and sex-biased gene expression.</div>
-      </div>
-    </div>
+      </li>
+    </ol>
   </section>
 
   <!-- ============ STUDENTS ============ -->
   <section id="students" class="wrap">
     <h2>Students</h2>
-    <div class="cards">
-      <div class="card">
+    <ol class="folio-list">
+      <li class="folio-entry">
         <div class="cname">Adithya Ganesh Venkataramani</div>
         <div class="cinst">MSc · Uppsala University</div>
         <div class="cdesc">Defended June 2025</div>
-      </div>
-      <div class="card">
+      </li>
+      <li class="folio-entry">
         <div class="cname">Gaurav Shobinath</div>
         <div class="cinst">MSc · Uppsala University</div>
         <div class="cdesc">Defended June 2026</div>
-      </div>
-    </div>
+      </li>
+    </ol>
   </section>
 
   <!-- ============ BEYOND RESEARCH ============ -->
@@ -1385,12 +1456,11 @@
 
   <footer>
     <div class="wrap">
-      © <span id="year"></span> <span id="footerAffiliation">Martyna Katarzyna Zwoińska · Uppsala University</span><br />
-      <span id="footerBuilt">Built with plain HTML, CSS &amp; JavaScript, hosted on GitHub Pages.</span>
+      © <span id="year"></span> <span id="footerAffiliation">Martyna Katarzyna Zwoińska · Uppsala University</span>
     </div>
   </footer>
 
-  <script src="home-i18n.js?v=20260718-4"></script>
+  <script src="home-i18n.js?v=20260719-1"></script>
   <script src="home.js?v=20260718-1"></script>
 </body>
 </html>
