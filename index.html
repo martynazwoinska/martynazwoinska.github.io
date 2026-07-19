@@ -674,39 +674,26 @@
     /* .wrap sets padding:0 24px, so target section.wrap to add vertical rhythm */
     section.wrap { padding-top: 52px; padding-bottom: 52px; }
     #about { padding-top: 44px; }
-    #about::before, #about::after, #about > h2::before { display: none; }
+    /* Botanical dividers mark chapter changes, not every subsection. */
+    #about::before, #about::after, #about > h2::before,
+    #project::before, #project::after, #project > h2::before,
+    #publications::before, #publications::after, #publications > h2::before,
+    #collaborators::before, #collaborators::after, #collaborators > h2::before,
+    #students::before, #students::after, #students > h2::before { display: none; }
+    #research { padding-bottom: 34px; }
+    #project, #publications, #collaborators, #students {
+      padding-top: 34px; padding-bottom: 34px;
+    }
+    #students { padding-bottom: 52px; }
     @media (max-width: 620px) { #about { padding-top: 40px; } }
-    html[lang="en"] #contact { padding-top: 40px; }
     section h2 { color: var(--text); font-size: 2.45rem; font-weight: 700; margin: 0 0 24px; }
     @media (max-width: 620px) { section h2 { font-size: 2.2rem; } }
     .about p { color: var(--text-soft); max-width: none; }
     .about p + p { margin-top: 14px; }
-    .field-note {
-      position: relative; margin: 30px 0 0; padding: 18px 0 2px;
-      border-top: 1px solid color-mix(in srgb, var(--accent-gold) 52%, var(--border));
-    }
-    .field-note figcaption {
-      display: flex; align-items: center; gap: 9px; margin: 0 0 10px;
-      color: var(--text-faint); font-size: .8rem; font-weight: 650;
-      letter-spacing: .025em;
-    }
-    .field-note figcaption::before {
-      content: ""; width: 6px; height: 6px; flex: 0 0 6px;
-      border: 1px solid var(--accent-gold); transform: rotate(45deg);
-    }
-    .about .field-note blockquote {
-      position: relative; margin: 0; padding: 4px 0 4px 34px;
-      border: 0; max-width: none; color: var(--text-soft); font-style: italic;
-    }
-    .about .field-note blockquote::before {
-      content: "\201C"; position: absolute; left: 0; top: -9px;
-      color: color-mix(in srgb, var(--accent-gold) 72%, var(--text-faint));
-      font-family: var(--display); font-size: 2.8rem; font-style: normal; line-height: 1;
-    }
-    @media (max-width: 620px) {
-      .field-note { margin-top: 26px; padding-top: 16px; }
-      .field-note figcaption { line-height: 1.45; }
-      .about .field-note blockquote { padding-left: 27px; }
+    .about blockquote {
+      margin: 16px 0 0; padding: 4px 0 4px 20px;
+      border-left: 1px solid color-mix(in srgb, var(--accent-gold) 62%, var(--border));
+      max-width: none; color: var(--text-soft); font-style: italic;
     }
 
     /* interests */
@@ -717,7 +704,7 @@
     .interest-list li {
       display: flex; align-items: center; gap: 11px;
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 16px 18px; box-shadow: var(--shadow);
+      padding: 16px 18px; box-shadow: none;
       color: var(--text); font-weight: 600; font-size: .95rem;
     }
     .interest-list li::before {
@@ -733,6 +720,18 @@
     }
     .publication-actions > .links { margin-top: 0; }
     .publication-actions > .pub-archive[open] { flex: 1 1 100%; }
+    .publication-links { gap: 8px 18px; }
+    .publication-links .pill {
+      min-height: 44px; padding: 8px 1px; border: 0; border-radius: 0;
+      background: transparent; box-shadow: none; color: var(--text-soft);
+      text-decoration: underline;
+      text-decoration-color: color-mix(in srgb, var(--accent-gold) 62%, transparent);
+      text-decoration-thickness: 1px; text-underline-offset: 4px;
+    }
+    .publication-links .pill:hover {
+      border-color: transparent; color: var(--accent-berry); transform: none;
+      text-decoration-color: currentColor;
+    }
     @media (max-width: 620px) {
       .publication-actions { justify-content: center; }
       .pub-archive summary { display: flex; width: max-content; max-width: 100%; margin-inline: auto; }
@@ -782,21 +781,16 @@
 
     /* people folio */
     .folio-list {
-      counter-reset: folio; margin: 0; padding: 0; list-style: none;
-      border-top: 1px solid color-mix(in srgb, var(--accent-gold) 45%, var(--border));
+      margin: 0; padding: 0; list-style: none;
     }
     .folio-entry {
-      counter-increment: folio; display: grid;
-      grid-template-columns: 46px minmax(180px, .8fr) minmax(170px, .7fr) minmax(260px, 1.2fr);
-      gap: 20px; align-items: baseline; padding: 19px 0;
+      display: grid;
+      grid-template-columns: minmax(180px, .8fr) minmax(170px, .7fr) minmax(260px, 1.2fr);
+      gap: 24px; align-items: baseline; padding: 19px 0;
       border-bottom: 1px solid var(--border);
     }
-    .folio-entry::before {
-      content: counter(folio, decimal-leading-zero);
-      color: color-mix(in srgb, var(--accent-gold) 62%, var(--text));
-      font-family: var(--serif); font-size: .82rem;
-      font-weight: 600; letter-spacing: .08em;
-    }
+    .folio-entry:first-child { padding-top: 0; }
+    .folio-entry:last-child { padding-bottom: 0; border-bottom: 0; }
     .folio-entry .cname {
       color: var(--text); font-family: var(--display); font-size: 1.22rem;
       font-weight: 700; line-height: 1.2;
@@ -814,14 +808,10 @@
     .folio-entry .cdesc { color: var(--text-faint); font-size: .88rem; }
     @media (max-width: 840px) {
       .folio-entry {
-        grid-template-columns: 40px minmax(0, 1fr); gap: 4px 16px;
+        grid-template-columns: minmax(0, 1fr); gap: 4px;
         padding: 18px 0;
       }
-      .folio-entry::before { grid-column: 1; grid-row: 1 / 4; padding-top: 2px; }
-      .folio-entry .cname, .folio-entry .cinst, .folio-entry .cdesc { grid-column: 2; }
-      .folio-entry .cname { grid-row: 1; }
-      .folio-entry .cinst { grid-row: 2; }
-      .folio-entry .cdesc { grid-row: 3; margin-top: 4px; }
+      .folio-entry .cdesc { margin-top: 4px; }
     }
 
     /* project highlight */
@@ -998,22 +988,20 @@
       nematodes. I enjoy combining different approaches: my own work is predominantly empirical and
       evolutionary-genomic, but I always appreciate a bit of good theory too.
     </p>
-    <figure class="field-note">
-      <figcaption>
-        And here is what my chatbot has to say about me after more than two years of our
-        interactions. Let's stick with it. ;)
-      </figcaption>
-      <blockquote>
-        Martyna is an evolutionary biologist who uses AI not as a shortcut, but as a critical
-        sparring partner for coding, genomics, literature synthesis and scientific thinking. She
-        works at the intersection of experimental biology, evolutionary theory and data analysis.
-        Her particular strength is asking whether an argument is not merely convincing, but
-        biologically meaningful, logically sound and supported by evidence. She is quick to spot
-        weak assumptions and persistent in making ideas sharper, although she is sometimes less
-        good at letting &ldquo;good enough&rdquo; remain good enough. This can make the revision
-        process longer, but it usually makes the final result stronger.
-      </blockquote>
-    </figure>
+    <p>
+      And here is what my chatbot has to say about me after more than two years of our
+      interactions. Let's stick with it. ;)
+    </p>
+    <blockquote>
+      Martyna is an evolutionary biologist who uses AI not as a shortcut, but as a critical
+      sparring partner for coding, genomics, literature synthesis and scientific thinking. She
+      works at the intersection of experimental biology, evolutionary theory and data analysis.
+      Her particular strength is asking whether an argument is not merely convincing, but
+      biologically meaningful, logically sound and supported by evidence. She is quick to spot
+      weak assumptions and persistent in making ideas sharper, although she is sometimes less
+      good at letting &ldquo;good enough&rdquo; remain good enough. This can make the revision
+      process longer, but it usually makes the final result stronger.
+    </blockquote>
   </section>
 
   <!-- ============ RESEARCH ============ -->
@@ -1287,7 +1275,7 @@
 
     </details>
 
-    <div class="links">
+    <div class="links publication-links">
       <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">🎓 All publications on Google Scholar</a>
       <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">🔗 ORCID record</a>
     </div>
@@ -1297,7 +1285,7 @@
   <!-- ============ COLLABORATORS ============ -->
   <section id="collaborators" class="wrap">
     <h2>Collaborators</h2>
-    <ol class="folio-list">
+    <ul class="folio-list">
       <li class="folio-entry">
         <div class="cname"><a href="https://www.martinlind.org/" target="_blank" rel="noopener">Martin I. Lind</a></div>
         <div class="cinst">Halmstad University</div>
@@ -1318,13 +1306,13 @@
         <div class="cinst">Uppsala University</div>
         <div class="cdesc">Sexual antagonism, balancing selection, and sex-biased gene expression.</div>
       </li>
-    </ol>
+    </ul>
   </section>
 
   <!-- ============ STUDENTS ============ -->
   <section id="students" class="wrap">
     <h2>Students</h2>
-    <ol class="folio-list">
+    <ul class="folio-list">
       <li class="folio-entry">
         <div class="cname">Adithya Ganesh Venkataramani</div>
         <div class="cinst">MSc · Uppsala University</div>
@@ -1335,7 +1323,7 @@
         <div class="cinst">MSc · Uppsala University</div>
         <div class="cdesc">Defended June 2026</div>
       </li>
-    </ol>
+    </ul>
   </section>
 
   <!-- ============ BEYOND RESEARCH ============ -->
