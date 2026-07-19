@@ -674,17 +674,24 @@
     /* .wrap sets padding:0 24px, so target section.wrap to add vertical rhythm */
     section.wrap { padding-top: 52px; padding-bottom: 52px; }
     #about { padding-top: 44px; }
-    /* Botanical dividers mark chapter changes, not every subsection. */
-    #about::before, #about::after, #about > h2::before,
-    #project::before, #project::after, #project > h2::before,
-    #publications::before, #publications::after, #publications > h2::before,
-    #collaborators::before, #collaborators::after, #collaborators > h2::before,
-    #students::before, #students::after, #students > h2::before { display: none; }
+    #about::before, #about::after, #about > h2::before { display: none; }
     #research { padding-bottom: 34px; }
-    #project, #publications, #collaborators, #students {
-      padding-top: 34px; padding-bottom: 34px;
+    /* Current work belongs to Research, so it uses a quiet internal rule. */
+    #project { padding-top: 34px; padding-bottom: 34px; }
+    #project::after { display: none; }
+    #project::before {
+      display: block; top: 0; left: 24px; transform: none;
+      width: calc(100% - 48px); height: 1px;
+      background: color-mix(in srgb, var(--accent-gold) 68%, var(--border));
+      -webkit-mask: none; mask: none;
     }
-    #students { padding-bottom: 52px; }
+    #project > h2::before {
+      display: block; top: -3px; left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 7px; height: 7px; background: var(--accent-gold);
+      box-shadow: 0 0 0 3px var(--bg);
+      -webkit-mask: none; mask: none;
+    }
     @media (max-width: 620px) { #about { padding-top: 40px; } }
     section h2 { color: var(--text); font-size: 2.45rem; font-weight: 700; margin: 0 0 24px; }
     @media (max-width: 620px) { section h2 { font-size: 2.2rem; } }
@@ -720,18 +727,6 @@
     }
     .publication-actions > .links { margin-top: 0; }
     .publication-actions > .pub-archive[open] { flex: 1 1 100%; }
-    .publication-links { gap: 8px 18px; }
-    .publication-links .pill {
-      min-height: 44px; padding: 8px 1px; border: 0; border-radius: 0;
-      background: transparent; box-shadow: none; color: var(--text-soft);
-      text-decoration: underline;
-      text-decoration-color: color-mix(in srgb, var(--accent-gold) 62%, transparent);
-      text-decoration-thickness: 1px; text-underline-offset: 4px;
-    }
-    .publication-links .pill:hover {
-      border-color: transparent; color: var(--accent-berry); transform: none;
-      text-decoration-color: currentColor;
-    }
     @media (max-width: 620px) {
       .publication-actions { justify-content: center; }
       .pub-archive summary { display: flex; width: max-content; max-width: 100%; margin-inline: auto; }
@@ -1275,7 +1270,7 @@
 
     </details>
 
-    <div class="links publication-links">
+    <div class="links">
       <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">🎓 All publications on Google Scholar</a>
       <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">🔗 ORCID record</a>
     </div>
