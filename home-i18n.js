@@ -60,7 +60,7 @@
     "contact_title": "#contact > h2",
     "contact_address": "#contact .contact-address",
     "contact_email": "#contact .contact-copy .contact-copy-label",
-    "contact_profile": "#contact .pill[href^=\"https://www.uu.se/\"]",
+    "contact_profile": "#contact .contact-profile-label",
     "footer_affiliation": "#footerAffiliation"
   };
   var localizedAttributeMap = {
@@ -164,7 +164,7 @@
           "nav_students": "Studenter",
           "nav_beyond": "Utanför forskningen",
           "nav_contact": "Kontakt",
-          "role": "Evolutionsbiolog. Från labb till kod, från idé till genomförande.",
+          "role": "<span class=\"role-title\">Evolutionsbiolog</span><span class=\"role-expertise\">Experimentell forskning · Dataanalys · Genomik · AI-verktyg</span><span class=\"role-tagline\">Från labb till kod, från idé till genomförande.</span>",
           "affiliation": "<span class=\"affil-part\">Institutionen för ekologi och genetik</span><span class=\"affil-separator\">, </span><span class=\"affil-part\">Uppsala universitet</span><span class=\"affil-separator\">, </span><span class=\"affil-part\">Sverige</span>",
           "about_title": "Om mig",
           "about_intro": "Jag är evolutionsbiolog och intresserar mig för allt som rör anpassning och felanpassning. Därför arbetar jag gärna med olika organismer som lämpar sig för evolutionsexperiment i laboratoriet: bananflugor i släktet <em>Drosophila</em>, fröbaggar i släktet <em>Callosobruchus</em> och en av mina personliga favoriter, nematoder i släktet <em>Caenorhabditis</em>. Jag kombinerar gärna olika angreppssätt. Min forskning är framför allt empirisk, ofta med evolutionär genomik som verktyg, men jag uppskattar alltid bra teori.",
@@ -223,7 +223,7 @@
           "contact_email": "E-post",
           "contact_email_copied": "E-postadressen har kopierats",
           "contact_email_copy_failed": "Kopieringen misslyckades. Markera och kopiera:",
-          "contact_profile": "🏛 Profil vid Uppsala universitet",
+          "contact_profile": "Profil vid Uppsala universitet",
           "footer_affiliation": "Martyna Katarzyna Zwoińska · Uppsala universitet"
     },
     "pl": {
@@ -248,7 +248,7 @@
           "nav_students": "Studenci",
           "nav_beyond": "Poza nauką",
           "nav_contact": "Kontakt",
-          "role": "Biolożka ewolucyjna. Od laboratorium po kod, od pomysłu do realizacji.",
+          "role": "<span class=\"role-title\">Biolożka ewolucyjna</span><span class=\"role-expertise\">Badania eksperymentalne · Analiza danych · Genomika · Narzędzia AI</span><span class=\"role-tagline\">Od laboratorium po kod, od pomysłu do realizacji.</span>",
           "affiliation": "<span class=\"affil-part\">Instytut Ekologii i Genetyki</span><span class=\"affil-separator\">, </span><span class=\"affil-part\">Uniwersytet w Uppsali</span><span class=\"affil-separator\">, </span><span class=\"affil-part\">Szwecja</span>",
           "about_title": "O mnie",
           "about_intro": "Jestem biolożką ewolucyjną i interesuje mnie właściwie wszystko, co wiąże się z adaptacją i maladaptacją. Lubię pracować z różnymi organizmami, na których można badać ewolucję w laboratorium: muszkami owocowymi z rodzaju <em>Drosophila</em>, strąkowcami <em>Callosobruchus</em> oraz jednymi z moich ulubionych organizmów modelowych, nicieniami z rodzaju <em>Caenorhabditis</em>. Chętnie łączę różne podejścia. Moje badania są przede wszystkim empiryczne i ewolucyjno-genomiczne, ale zawsze doceniam też dobrą teorię.",
@@ -306,7 +306,7 @@
           "contact_email": "E-mail",
           "contact_email_copied": "Adres e-mail skopiowany",
           "contact_email_copy_failed": "Nie udało się skopiować. Zaznacz i skopiuj:",
-          "contact_profile": "🏛 Profil na stronie Uniwersytetu w Uppsali",
+          "contact_profile": "Profil na stronie Uniwersytetu w Uppsali",
           "footer_affiliation": "Martyna Katarzyna Zwoińska · Uniwersytet w Uppsali"
     }
   };

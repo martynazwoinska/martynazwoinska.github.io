@@ -621,6 +621,7 @@
       paint-order: stroke fill;
     }
     .hero .role { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 4px; }
+    .hero .role-title, .hero .role-expertise, .hero .role-tagline { display: block; }
     .hero .affil { color: var(--text-soft); margin-bottom: 18px; }
     @media (max-width: 620px) {
       .hero h1 { font-size: 2.7rem; margin-left: auto; margin-right: auto; }
@@ -849,12 +850,43 @@
       border: 5px solid var(--surface); box-shadow: var(--shadow);
     }
     .contact-box p { color: var(--text-soft); margin: 0 0 14px; }
+    #contact .links {
+      display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.28fr);
+      gap: 10px; width: min(100%, 540px); margin-top: 4px; justify-content: stretch;
+    }
+    #contact .pill {
+      width: 100%; min-width: 0; min-height: 44px; justify-content: flex-start;
+      padding: 9px 12px; border-radius: 13px;
+      background: color-mix(in srgb, var(--surface) 78%, var(--bg));
+      border-color: color-mix(in srgb, var(--accent-gold) 24%, var(--border));
+      box-shadow: none; white-space: nowrap;
+    }
+    #contact .pill:hover {
+      border-color: color-mix(in srgb, var(--accent-gold) 58%, var(--border));
+      box-shadow: 0 4px 14px color-mix(in srgb, var(--text) 9%, transparent);
+    }
+    #contact .pill.is-copied {
+      grid-column: 1 / -1; border-color: color-mix(in srgb, var(--accent) 58%, var(--border));
+      background: color-mix(in srgb, var(--accent-soft) 62%, var(--surface));
+    }
+    .contact-icon {
+      width: 18px; height: 18px; flex: 0 0 18px; color: var(--accent-gold);
+      fill: none; stroke: currentColor; stroke-width: 1.7;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .contact-profile { grid-column: 1 / -1; }
     .contact-copy-fallback {
       margin: 12px 0 0 !important; font-size: .86rem; overflow-wrap: anywhere;
     }
     @media (max-width: 620px) {
       .contact-box { padding: 200px 22px 24px; }
       .contact-illustration { left: 22px; right: auto; }
+      #contact .links { grid-template-columns: minmax(0, .9fr) minmax(0, 1.35fr); }
+      #contact .pill { padding: 8px 10px; font-size: .84rem; }
+    }
+    @media (max-width: 350px) {
+      #contact .links { grid-template-columns: 1fr; }
+      .contact-profile { grid-column: auto; }
     }
 
     footer {
@@ -948,7 +980,7 @@
     <div class="hero-grid">
       <div class="hero-copy">
         <h1><span class="hero-name-part">Martyna</span> <span class="hero-name-part">Katarzyna</span> <span class="hero-name-part">Zwoińska</span></h1>
-        <div class="role">Evolutionary biologist. From lab to code, from ideas to execution.</div>
+        <div class="role"><span class="role-title">Evolutionary biologist</span><span class="role-expertise">Experimental research · Data analysis · Genomics · AI tools</span><span class="role-tagline">From lab to code, from ideas to execution.</span></div>
         <div class="affil"><span class="affil-part">Department of Ecology and Genetics</span><span class="affil-separator">, </span><span class="affil-part">Uppsala University</span><span class="affil-separator">, </span><span class="affil-part">Sweden</span></div>
       </div>
       <div class="avatar">
@@ -1421,14 +1453,35 @@
         Evolutionary Biology Centre (EBC), Uppsala University<br />
         Norbyvägen 18D, 752 36 Uppsala, Sweden
       </p>
-      <div class="links" style="margin-top:4px">
-        <button class="pill contact-copy" type="button" data-email-kind="general" data-copy-label-key="contact_email"><span class="contact-copy-label">Email</span></button>
-        <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">🎓 Google Scholar</a>
-        <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">🔗 ORCID</a>
-        <a class="pill" href="https://www.researchgate.net/profile/Martyna-Zwoinska" target="_blank" rel="noopener">📄 ResearchGate</a>
-        <a class="pill" href="https://www.linkedin.com/in/martyna-zwoinska" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="pill" href="https://bsky.app/profile/martynazwoinska.bsky.social" target="_blank" rel="noopener">🦋 Bluesky</a>
-        <a class="pill" href="https://www.uu.se/en/contact-and-organisation/staff?query=N12-104" target="_blank" rel="noopener">🏛 Uppsala University profile</a>
+      <div class="links">
+        <button class="pill contact-copy" type="button" data-email-kind="general" data-copy-label-key="contact_email">
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
+          <span class="contact-copy-label">Email</span>
+        </button>
+        <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m2.5 8.5 9.5-5 9.5 5-9.5 5-9.5-5Z" /><path d="M6.5 11.5v4.3c3.2 2.4 7.8 2.4 11 0v-4.3M21.5 8.5v6" /></svg>
+          <span>Google Scholar</span>
+        </a>
+        <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" /><path d="M8.5 10v5M8.5 7.5h.01M12 10h2a2.5 2.5 0 0 1 0 5h-2v-5Z" /></svg>
+          <span>ORCID</span>
+        </a>
+        <a class="pill" href="https://www.researchgate.net/profile/Martyna-Zwoinska" target="_blank" rel="noopener">
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="12" r="2.5" /><circle cx="18" cy="6" r="2.5" /><circle cx="18" cy="18" r="2.5" /><path d="m8.3 10.8 7.4-3.7M8.3 13.2l7.4 3.7" /></svg>
+          <span>ResearchGate</span>
+        </a>
+        <a class="pill" href="https://www.linkedin.com/in/martyna-zwoinska" target="_blank" rel="noopener">
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3" /><circle cx="7.5" cy="8" r="1" /><path d="M6.5 11v6M11 11v6M11 13.7c0-3.6 6-3.8 6 0V17" /></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a class="pill" href="https://bsky.app/profile/martynazwoinska.bsky.social" target="_blank" rel="noopener">
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 13C10.3 9 6.7 5 3.5 4.5c-.6 3.8 1.2 7.2 5 8.5-2.8.6-4.3 2.2-3.8 4.5.5 2.1 3 2.8 4.8 1.6 1.2-.8 2-2.1 2.5-3.4.5 1.3 1.3 2.6 2.5 3.4 1.8 1.2 4.3.5 4.8-1.6.5-2.3-1-3.9-3.8-4.5 3.8-1.3 5.6-4.7 5-8.5C18.7 5 13.7 9 12 13Z" /></svg>
+          <span>Bluesky</span>
+        </a>
+        <a class="pill contact-profile" href="https://www.uu.se/en/contact-and-organisation/staff?query=N12-104" target="_blank" rel="noopener">
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 9 9-5 9 5M5 10h14M7 10v7M11 10v7M15 10v7M19 10v7M4 18h16M3 21h18" /></svg>
+          <span class="contact-profile-label">Uppsala University profile</span>
+        </a>
       </div>
       <span class="sr-only" id="contactCopyStatus" aria-live="polite"></span>
       <p class="contact-copy-fallback" id="contactCopyFallback" hidden></p>
