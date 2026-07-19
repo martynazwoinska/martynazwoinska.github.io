@@ -62,6 +62,8 @@
       --footer-bg: var(--bg);
       --footer-text: var(--text-soft);
       --footer-rule: color-mix(in srgb, var(--accent-gold) 42%, var(--border));
+      --section-divider-emerald: color-mix(in srgb, var(--accent) 90%, var(--text) 10%);
+      --section-divider-gold: color-mix(in srgb, var(--accent-gold) 90%, var(--text) 10%);
       --display-stroke: .2px;
       --hero-name-stroke: .46px;
       --worm-face: #4a3027;
@@ -662,17 +664,17 @@
     section::after {
       content: ""; position: absolute; z-index: 0; top: -17px; left: 50%;
       transform: translateX(-50%); width: min(calc(100% + 96px), calc(100vw - 32px)); height: 34px;
-      background: var(--accent-gold); pointer-events: none;
-      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M62 25 C155 12 260 14 345 23 C389 28 418 26 435 20 M878 25 C785 12 680 14 595 23 C551 28 522 26 505 20' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round'/%3E%3Ccircle cx='28' cy='7' r='2.5'/%3E%3Ccircle cx='912' cy='7' r='2.5'/%3E%3C/svg%3E") center/100% 100% no-repeat;
-              mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M62 25 C155 12 260 14 345 23 C389 28 418 26 435 20 M878 25 C785 12 680 14 595 23 C551 28 522 26 505 20' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round'/%3E%3Ccircle cx='28' cy='7' r='2.5'/%3E%3Ccircle cx='912' cy='7' r='2.5'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+      background: var(--section-divider-gold); pointer-events: none;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M62 25 C155 12 260 14 345 23 C389 28 418 26 435 20 M878 25 C785 12 680 14 595 23 C551 28 522 26 505 20' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'/%3E%3Ccircle cx='28' cy='7' r='2.5'/%3E%3Ccircle cx='912' cy='7' r='2.5'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+              mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M62 25 C155 12 260 14 345 23 C389 28 418 26 435 20 M878 25 C785 12 680 14 595 23 C551 28 522 26 505 20' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'/%3E%3Ccircle cx='28' cy='7' r='2.5'/%3E%3Ccircle cx='912' cy='7' r='2.5'/%3E%3C/svg%3E") center/100% 100% no-repeat;
     }
     section::before {
       content: ""; position: absolute; z-index: 1; top: -17px; left: 50%;
       transform: translateX(-50%); width: min(calc(100% + 96px), calc(100vw - 32px)); height: 34px;
-      background: var(--accent);
+      background: var(--section-divider-emerald);
       pointer-events: none;
-      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C150 5 260 8 348 18 C390 23 421 23 445 14 M884 20 C790 5 680 8 592 18 C550 23 519 23 495 14' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;
-              mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C150 5 260 8 348 18 C390 23 421 23 445 14 M884 20 C790 5 680 8 592 18 C550 23 519 23 495 14' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C150 5 260 8 348 18 C390 23 421 23 445 14 M884 20 C790 5 680 8 592 18 C550 23 519 23 495 14' fill='none' stroke='black' stroke-width='2.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+              mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C150 5 260 8 348 18 C390 23 421 23 445 14 M884 20 C790 5 680 8 592 18 C550 23 519 23 495 14' fill='none' stroke='black' stroke-width='2.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;
     }
     section > h2::before {
       content: ""; position: absolute; z-index: 2; top: -17px; left: 50%;

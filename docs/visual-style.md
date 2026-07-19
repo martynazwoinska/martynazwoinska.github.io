@@ -91,6 +91,7 @@ The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour
 - Display headings use the approved Cormorant Garamond 700 with a subtle theme-aware current-colour optical stroke (`.2px` in Ivory Ink and `.14px` in Marine Ink). The homepage hero name uses a stronger `.46px` light / `.34px` dark optical stroke. Do not replace the real 700 files with a synthetic 800 weight.
 - Keep asymmetric rounded corners soft rather than exaggerated.
 - Use botanical curves, seed-pod forms and worm-like lines as small accents.
+- Full-section floral dividers use reinforced gold and emerald stems with theme-aware contrast, while their berry terminals and geometry stay delicate; internal subsection and list rules remain visibly quieter.
 - Keep ornament subordinate to information and interaction.
 - Avoid emoji as primary visual elements and avoid oversized decorative icons.
 
