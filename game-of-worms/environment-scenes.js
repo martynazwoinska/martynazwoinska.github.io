@@ -818,7 +818,7 @@ function drawBristolScene(target, palette) {
 
   append(target, "path", { class: "bristol-tidal-bed", d: "M286 162C275 211 260 268 247 319C236 360 219 400 200 430H452C433 391 417 350 402 311C384 264 357 208 336 162Z" });
   append(target, "path", { class: "environment-water bristol-avon", d: "M303 162C302 201 294 239 300 271C306 304 327 329 326 357C325 386 304 410 291 430H404C396 402 384 379 383 354C381 324 360 301 357 272C353 233 338 193 325 162Z", fill: palette[4] });
-  append(target, "path", { class: "bristol-river-glint", d: "M310 255C320 253 333 254 344 252M336 332C349 329 364 331 375 329M315 399C337 395 362 398 386 394" });
+  append(target, "path", { class: "bristol-river-glint", d: "M310 255C320 253 333 254 344 252M336 332C349 329 364 331 375 329" });
 
   const bridge = append(target, "g", { class: "bristol-bridge", "aria-hidden": "true" });
   append(bridge, "path", { class: "bristol-bridge-chain", d: "M82 159Q139 151 181 78Q238 137 300 153Q361 137 400 78Q449 151 521 159" });
@@ -834,7 +834,7 @@ function drawBristolScene(target, palette) {
   append(woodland, "path", { d: "M0 157Q25 127 53 151Q78 119 109 151Q135 129 159 160Q179 151 194 180L222 244L0 329Z" });
   append(woodland, "path", { class: "bristol-woodland-detail", d: "M17 180Q42 154 65 181M67 164Q92 140 116 168M116 185Q142 157 165 188M34 225Q62 196 89 224M100 235Q130 206 157 240" });
 
-  append(target, "path", { class: "bristol-garden-ground", d: "M0 337Q72 310 149 335Q211 358 253 397L264 430H0ZM600 338Q538 316 481 345Q446 365 413 430H600Z" });
+  append(target, "path", { class: "bristol-garden-ground", d: "M0 337Q72 310 149 335Q211 358 253 397Q303 376 356 394Q421 360 481 345Q538 316 600 338V430H0Z" });
   const wall = append(target, "g", { class: "bristol-garden-wall", "aria-hidden": "true" });
   append(wall, "path", { d: "M478 370Q536 342 600 352V430H445Z" });
   [390, 414].forEach((y, row) => append(wall, "path", { class: "bristol-brick-line", d: `M${470 - row * 3} ${y}Q536 ${y - 12} 600 ${y - 6}` }));

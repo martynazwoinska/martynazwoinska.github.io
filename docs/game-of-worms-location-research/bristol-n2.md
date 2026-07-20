@@ -1,6 +1,6 @@
 # Bristol N2 location research and art brief
 
-Last updated: 2026-07-19
+Last updated: 2026-07-21
 
 This is the first location dossier in the location-by-location Game of Worms illustration workflow. It is the evidence and review contract for the Bristol N2 landscape and its three accessory pairs. Later locations require their own dossier before their artwork is revised.
 
@@ -69,7 +69,7 @@ The scene must remain legible at thumbnail size and use three linked depths rath
 ### Middle ground: Avon Gorge context
 
 - A narrow tidal River Avon channel recedes through two unequal gorge faces.
-- At low tide, a narrow, gently bending water channel sits within a broader muted riverbed. Avoid a centred triangular wedge, straight parallel banks or repeated full-width ripples that make the water resemble a road or appear to climb the gorge.
+- At low tide, a narrow, gently bending water channel sits within a broader muted riverbed. Its lower reach passes behind the near garden edge rather than terminating visibly or continuing as a road-like wedge to the bottom of the frame. Avoid a centred triangular wedge, straight parallel banks or repeated full-width ripples that make the water resemble a road or appear to climb the gorge.
 - One face should read as more wooded; the other should expose tilted limestone or rock strata and urban-edge cues.
 - The river, cliff geometry, vegetation and built edge must form one coherent view rather than separate clip-art objects.
 
