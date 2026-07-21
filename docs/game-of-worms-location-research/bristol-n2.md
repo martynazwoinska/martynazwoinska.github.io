@@ -69,7 +69,7 @@ The scene must remain legible at thumbnail size and use three linked depths rath
 ### Middle ground: Avon Gorge context
 
 - A narrow tidal River Avon channel recedes through two unequal gorge faces.
-- At low tide, a narrow blue water channel sits within a broader muted brown riverbed. The blue must remain the dominant river colour. Both layers reach a broad, gently sloping foreground ground plane just below the large worm's tail and continue behind it, so their endpoints are concealed rather than floating in the gorge. The ground plane must read as a low foreground surface, never as a central mound. Avoid a centred triangular wedge, straight parallel banks or repeated full-width ripples that make the river resemble a road, mountain or uphill channel.
+- Do not draw water or brown riverbed from the bridge down through the upper gorge. The river belongs only in the lower foreground: it begins at the lower SVG edge, with a dominant blue inner channel and restrained muted-brown margins, then narrows upward and ends below the large worm's tail. The surrounding ground must read as a low foreground surface, never as a central mound. Avoid straight parallel banks or repeated full-width ripples that make the river resemble a road, mountain or uphill channel.
 - One face should read as more wooded; the other should expose tilted limestone or rock strata and urban-edge cues.
 - The river, cliff geometry, vegetation and built edge must form one coherent view rather than separate clip-art objects.
 
