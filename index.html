@@ -67,7 +67,6 @@
       --display-stroke: .2px;
       --hero-name-stroke: .46px;
       --worm-face: #4a3027;
-      --hero-avatar-outline: #3f8075;
       --hero-avatar-shadow: rgba(27, 43, 50, .16);
       --radius: 14px;
       --maxw: 1160px;
@@ -77,20 +76,17 @@
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --hero-avatar-outline: #639aa7;
         --hero-avatar-shadow: rgba(5, 15, 28, .3);
         --display-stroke: .14px;
         --hero-name-stroke: .34px;
       }
     }
     :root[data-theme="dark"] {
-      --hero-avatar-outline: #639aa7;
       --hero-avatar-shadow: rgba(5, 15, 28, .3);
       --display-stroke: .14px;
       --hero-name-stroke: .34px;
     }
     :root[data-theme="light"] {
-      --hero-avatar-outline: #3f8075;
       --hero-avatar-shadow: rgba(27, 43, 50, .16);
       --display-stroke: .2px;
       --hero-name-stroke: .46px;
@@ -456,11 +452,6 @@
     .hero {
       position: relative; isolation: isolate; overflow: visible;
       padding-top: 48px; padding-bottom: 56px;
-      background: radial-gradient(
-        ellipse at 72% 40%,
-        color-mix(in srgb, var(--accent) 7%, transparent),
-        transparent 40%
-      );
     }
     .hero-grid {
       min-height: 315px; position: relative; z-index: 2;
@@ -514,9 +505,12 @@
       grid-column: 2; grid-row: 1;
       border-radius: 47% 53% 49% 51% / 50% 47% 53% 50%;
       background: linear-gradient(140deg, var(--accent-soft), var(--surface-2));
-      border: 2px solid var(--hero-avatar-outline);
+      border: 2px solid color-mix(in srgb, var(--accent) 72%, var(--border));
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 12px 30px var(--hero-avatar-shadow);
+      box-shadow:
+        0 0 0 4px var(--bg),
+        0 0 0 5px color-mix(in srgb, var(--accent-gold) 64%, var(--border)),
+        0 12px 30px var(--hero-avatar-shadow);
       overflow: hidden;
     }
     .avatar img {
@@ -683,6 +677,11 @@
       -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C40 20 28 14 28 7 C28 2 37 1 43 4 C49 8 48 14 42 17 C36 19 32 15 34 10 M42 17 C37 24 29 28 21 25 M884 20 C900 20 912 14 912 7 C912 2 903 1 897 4 C891 8 892 14 898 17 C904 19 908 15 906 10 M898 17 C903 24 911 28 919 25' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13 21 C20 17 28 20 31 26 C27 34 18 34 13 21Z M927 21 C920 17 912 20 909 26 C913 34 922 34 927 21Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
               mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C40 20 28 14 28 7 C28 2 37 1 43 4 C49 8 48 14 42 17 C36 19 32 15 34 10 M42 17 C37 24 29 28 21 25 M884 20 C900 20 912 14 912 7 C912 2 903 1 897 4 C891 8 892 14 898 17 C904 19 908 15 906 10 M898 17 C903 24 911 28 919 25' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13 21 C20 17 28 20 31 26 C27 34 18 34 13 21Z M927 21 C920 17 912 20 909 26 C913 34 922 34 927 21Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
     }
+    @media (min-width: 1200px) {
+      section::before, section::after, section > h2::before {
+        transform: translateX(-50%) scaleX(1.12);
+      }
+    }
     /* .wrap sets padding:0 24px, so target section.wrap to add vertical rhythm */
     section.wrap { padding-top: 52px; padding-bottom: 52px; }
     #about { padding-top: 44px; }
@@ -698,26 +697,32 @@
       -webkit-mask: none; mask: none;
     }
     #project > h2::before {
-      display: block; top: -3px; left: 50%;
-      transform: translateX(-50%) rotate(45deg);
-      width: 7px; height: 7px; background: var(--accent-gold);
-      box-shadow: 0 0 0 3px var(--bg);
-      -webkit-mask: none; mask: none;
+      display: none;
+    }
+    .section-signet {
+      position: absolute; z-index: 3;
+      left: 50%; top: -9px;
+      width: 84px; height: 18px;
+      padding: 0 5px; display: block; overflow: visible;
+      color: var(--accent-gold); background: var(--bg); opacity: .96;
+      transform: translateX(-50%);
+      pointer-events: none;
     }
     @media (max-width: 620px) { #about { padding-top: 40px; } }
     section h2 { color: var(--text); font-size: 2.45rem; font-weight: 700; margin: 0 0 24px; }
     @media (max-width: 620px) { section h2 { font-size: 2.2rem; } }
-    .about p { color: var(--text-soft); max-width: none; }
+    .about p { color: var(--text-soft); }
+    .about > p, .about > blockquote { max-width: 80ch; }
     .about p + p { margin-top: 14px; }
     .about blockquote {
       margin: 16px 0 0; padding: 4px 0 4px 20px;
       border-left: 1px solid color-mix(in srgb, var(--accent-gold) 62%, var(--border));
-      max-width: none; color: var(--text-soft); font-style: italic;
+      color: var(--text-soft); font-style: italic;
     }
 
     /* interests */
     .interest-list {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px;
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
       padding: 0; margin: 26px 0 0; list-style: none;
     }
     .interest-list li {
@@ -729,6 +734,12 @@
     .interest-list li::before {
       content: ""; flex: 0 0 auto;
       width: 7px; height: 7px; border-radius: 50%; background: var(--accent); opacity: .8;
+    }
+    @media (max-width: 840px) {
+      .interest-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      .interest-list { grid-template-columns: 1fr; }
     }
 
     /* publications */
@@ -853,11 +864,11 @@
     .contact-box {
       position: relative; overflow: hidden; min-height: 244px;
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 26px 212px 26px 26px; box-shadow: var(--shadow);
+      border-radius: var(--radius); padding: 26px 228px 26px 26px; box-shadow: var(--shadow);
     }
     .contact-illustration {
       position: absolute; top: 20px; right: 20px;
-      width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+      width: 176px; height: 176px; border-radius: 50%; object-fit: cover;
       border: 5px solid var(--surface); box-shadow: var(--shadow);
     }
     .contact-box p { color: var(--text-soft); margin: 0 0 14px; }
@@ -896,7 +907,7 @@
       margin: 12px 0 0 !important; font-size: .86rem; overflow-wrap: anywhere;
     }
     @media (max-width: 620px) {
-      .contact-box { padding: 200px 22px 24px; }
+      .contact-box { padding: 216px 22px 24px; }
       .contact-illustration { left: 22px; right: auto; }
       #contact .links { grid-template-columns: minmax(0, .9fr) minmax(0, 1.35fr); }
       #contact .pill { padding: 8px 10px; font-size: .84rem; }
@@ -1066,7 +1077,20 @@
 
   <!-- ============ CURRENT PROJECT ============ -->
   <section id="project" class="wrap">
-    <h2>Current work</h2>
+    <h2 class="sr-only">Current work</h2>
+    <svg class="section-signet" viewBox="0 0 84 18" aria-hidden="true" focusable="false">
+      <g class="hero-signet__linework">
+        <path d="M1 9H29 M55 9H83" />
+        <path d="M42 2V16 M35 9H49" />
+        <circle cx="42" cy="9" r="3" />
+      </g>
+      <g class="hero-signet__bead">
+        <circle cx="35" cy="9" r="1.25" />
+        <circle cx="49" cy="9" r="1.25" />
+        <circle cx="42" cy="2" r="1.25" />
+        <circle cx="42" cy="16" r="1.25" />
+      </g>
+    </svg>
     <div class="project">
       <div class="project-text">
         <h3>Adaptive response modes under environmental variability</h3>
