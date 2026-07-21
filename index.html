@@ -863,11 +863,13 @@
     .contact-box {
       position: relative; overflow: hidden; min-height: 244px;
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 26px 228px 26px 26px; box-shadow: var(--shadow);
+      border-radius: var(--radius); padding: 26px 260px 26px 26px; box-shadow: var(--shadow);
     }
     .contact-illustration {
-      position: absolute; top: 20px; right: 20px;
-      width: 176px; height: 176px; border-radius: 50%; object-fit: cover;
+      position: absolute; top: 24px; right: 28px;
+      width: 204px; height: 167px;
+      border-radius: 44% 56% 48% 52% / 48% 44% 56% 52%;
+      object-fit: cover; object-position: center center;
       border: 5px solid var(--surface); box-shadow: var(--shadow);
     }
     .contact-box p { color: var(--text-soft); margin: 0 0 14px; }
@@ -907,7 +909,7 @@
     }
     @media (max-width: 620px) {
       .contact-box { padding: 216px 22px 24px; }
-      .contact-illustration { left: 22px; right: auto; }
+      .contact-illustration { left: 50%; right: auto; transform: translateX(-50%); }
       #contact .links { grid-template-columns: minmax(0, .9fr) minmax(0, 1.35fr); }
       #contact .pill { padding: 8px 10px; font-size: .84rem; }
     }
@@ -1456,7 +1458,9 @@
     <div class="contact-box">
       <img
         class="contact-illustration"
-        src="uppsala-contact.jpg"
+        src="uppsala-contact.png"
+        width="410"
+        height="273"
         loading="lazy"
         decoding="async"
         alt="Uppsala Cathedral at sunset, reflected in the river"
