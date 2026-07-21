@@ -451,25 +451,19 @@
     /* ----------  Hero  ---------- */
     .hero {
       position: relative; isolation: isolate; overflow: visible;
-      padding-top: 48px; padding-bottom: 56px;
+      padding-top: 42px; padding-bottom: 44px;
     }
-    .hero::after {
-      content: ""; position: absolute; z-index: 3;
-      left: 24px; right: 24px; bottom: 0; height: 1px;
-      background: color-mix(in srgb, var(--accent-gold) 68%, var(--border));
-      pointer-events: none;
-    }
+    .hero::after { display: none; }
     .hero::before {
       content: ""; position: absolute; z-index: 4;
-      left: 50%; bottom: -3px;
-      width: 7px; height: 7px;
+      left: 50%; bottom: 14px;
+      width: 6px; height: 6px;
       background: var(--accent-gold);
-      box-shadow: 0 0 0 3px var(--bg);
       transform: translateX(-50%) rotate(45deg);
       pointer-events: none;
     }
     .hero-grid {
-      min-height: 315px; position: relative; z-index: 2;
+      min-height: 300px; position: relative; z-index: 2;
       display: grid;
       grid-template-columns: minmax(0, 1fr) 180px;
       gap: 32px; align-items: center;
@@ -482,7 +476,7 @@
       grid-column: 1; grid-row: 1;
     }
     .hero-copy h1 { max-width: 520px; }
-    .hero-name-part { display: inline; }
+    .hero-name-part { display: block; white-space: nowrap; }
     .hero-art {
       display: block; max-width: none;
       pointer-events: none; user-select: none;
@@ -504,15 +498,9 @@
     }
     .hero-upper {
       position: absolute; z-index: 1;
-      width: 252px; height: auto;
-      left: max(-116px, calc(24px - max(0px, (100vw - var(--maxw)) / 2)));
-      top: 8px;
-    }
-    .hero-lower {
-      position: absolute; z-index: 1;
-      width: clamp(205px, calc(20vw - 12px), 276px); height: auto;
-      right: max(-116px, calc(24px - max(0px, (100vw - var(--maxw)) / 2)));
-      bottom: -20px;
+      width: 190px; height: auto;
+      left: calc(-32px - max(0px, (100vw - var(--maxw)) / 2));
+      top: 14px; opacity: .74;
     }
     .avatar {
       position: relative;
@@ -545,47 +533,37 @@
       .hero-copy { padding-left: 124px; }
       .avatar { width: 164px; height: 176px; }
       .hero-upper {
-        width: 210px;
-        left: calc(20px - max(0px, (100vw - var(--maxw)) / 2));
-        top: 12px;
-      }
-      .hero-lower {
-        right: calc(20px - max(0px, (100vw - var(--maxw)) / 2));
-        bottom: -16px;
+        width: 170px;
+        left: calc(-26px - max(0px, (100vw - var(--maxw)) / 2));
+        top: 16px;
       }
     }
     @media (max-width: 1120px) {
       .hero-grid { transform: translateX(24px); }
     }
     @media (max-width: 959px) {
-      .hero { padding-top: 46px; padding-bottom: 52px; }
+      .hero { padding-top: 40px; padding-bottom: 44px; }
       .hero-grid {
-        min-height: 330px;
+        min-height: 310px;
         padding-right: clamp(114px, 16vw, 154px);
         transform: translateX(clamp(0px, calc(8vw - 60.8px), 16px));
       }
       .hero-copy { padding-left: 124px; }
       .hero-copy h1 { max-width: 410px; }
-      .hero-upper { width: 170px; left: 20px; }
-      .hero-lower { width: 205px; right: 0; bottom: -12px; }
-    }
-    @media (min-width: 760px) {
-      .hero-upper { display: none !important; }
+      .hero-upper { width: 155px; left: -22px; }
     }
     @media (max-width: 759px) {
-      .hero { padding-top: 54px; padding-bottom: 70px; }
+      .hero { padding-top: 46px; padding-bottom: 56px; }
       .hero-grid {
-        min-height: 300px; grid-template-columns: 1fr; gap: 0; padding-right: 0;
+        min-height: 285px; grid-template-columns: 1fr; gap: 0; padding-right: 0;
         transform: none;
       }
-      .hero-copy { max-width: 600px; padding-left: 148px; }
+      .hero-copy { max-width: 600px; padding-left: 132px; }
       .avatar { display: none !important; }
-      .hero-lower { display: none; }
-      html .hero-lower.hero-art--theme-dark { display: none; }
-      .hero-upper { width: 150px; left: 24px; top: 16px; }
+      .hero-upper { width: 142px; left: -18px; top: 12px; }
     }
     @media (max-width: 620px) {
-      .hero { padding-top: 28px; padding-bottom: 52px; }
+      .hero { padding-top: 26px; padding-bottom: 20px; }
       .hero-grid { min-height: 0; text-align: center; }
       .hero-copy { max-width: 100%; padding-left: 0; padding-right: 0; }
       .hero-copy h1 {
@@ -597,23 +575,11 @@
       }
       .hero-name-part { display: block; white-space: nowrap; }
       .hero-upper { display: none !important; }
-      .hero-lower {
-        width: clamp(126px, 38.5vw, 136px);
-        right: 12px; top: auto; bottom: -24px;
-        opacity: .92;
-      }
-      .hero-lower.hero-art--theme-light { display: block; }
-      .hero-lower.hero-art--theme-dark { display: none; }
-      html[data-theme="dark"] .hero-lower.hero-art--theme-light { display: none; }
-      html[data-theme="dark"] .hero-lower.hero-art--theme-dark { display: block; }
       .hero::before, .hero::after { display: none; }
     }
-    @media (prefers-color-scheme: dark) and (max-width: 620px) {
-      html:not([data-theme]) .hero-lower.hero-art--theme-light { display: none; }
-      html:not([data-theme]) .hero-lower.hero-art--theme-dark { display: block; }
-    }
     .hero h1 {
-      font-size: 3.25rem; font-weight: 700; margin: 0 0 4px;
+      font-size: 3.25rem; font-weight: 700; line-height: .92;
+      letter-spacing: -.015em; margin: 0 0 12px;
       -webkit-text-stroke: var(--hero-name-stroke) currentColor;
       paint-order: stroke fill;
     }
@@ -985,22 +951,6 @@
     <img
       class="hero-art hero-upper hero-art--theme-dark"
       src="assets/hero/quiet-atelier-upper-left-dark.png"
-      alt=""
-      aria-hidden="true"
-      draggable="false"
-      decoding="async"
-    />
-    <img
-      class="hero-art hero-lower hero-art--theme-light"
-      src="assets/hero/quiet-atelier-lower-right.png"
-      alt=""
-      aria-hidden="true"
-      draggable="false"
-      decoding="async"
-    />
-    <img
-      class="hero-art hero-lower hero-art--theme-dark"
-      src="assets/hero/quiet-atelier-lower-right-dark.png"
       alt=""
       aria-hidden="true"
       draggable="false"

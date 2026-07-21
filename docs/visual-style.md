@@ -95,7 +95,7 @@ The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour
 - Keep ornament subordinate to information and interaction.
 - Avoid emoji as primary visual elements and avoid oversized decorative icons.
 
-The homepage hero uses `photo.jpg` with the approved paired ornament assets under `assets/hero/`: `quiet-atelier-upper-left.png`, `quiet-atelier-upper-left-dark.png`, `quiet-atelier-lower-right.png`, and `quiet-atelier-lower-right-dark.png`. Treat these as source assets and preserve their composition instead of redrawing them from screenshots.
+The homepage hero uses `photo.jpg` with the approved upper-left ornament pair under `assets/hero/`: `quiet-atelier-upper-left.png` and `quiet-atelier-upper-left-dark.png`. The lower-right pair remains preserved as approved source material but is not displayed. Treat these files as source assets and preserve their composition instead of redrawing them from screenshots.
 
 ## Accessibility
 
