@@ -424,6 +424,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .bristol-tidal-bed { fill: color-mix(in srgb, var(--environment-ground) 52%, #b6aa91); opacity: .72; }
 .bristol-avon { fill: color-mix(in srgb, var(--environment-water) 68%, #71817c); stroke: color-mix(in srgb, var(--environment-detail) 25%, var(--environment-water)); stroke-width: 1.5; }
 .bristol-river-glint { fill: none; stroke: color-mix(in srgb, var(--paper-strong) 65%, var(--environment-water)); stroke-width: 2.5; stroke-linecap: round; opacity: .52; }
+.bristol-foreground-floor { fill: color-mix(in srgb, var(--environment-ground) 34%, var(--paper-strong)); }
 .bristol-bridge-chain, .bristol-bridge-hanger, .bristol-bridge-rail { fill: none; stroke: color-mix(in srgb, var(--environment-detail) 86%, #242a2a); stroke-linecap: round; stroke-linejoin: round; }
 .bristol-bridge-chain { stroke-width: 5; }
 .bristol-bridge-chain.fine { stroke-width: 2; opacity: .8; }
