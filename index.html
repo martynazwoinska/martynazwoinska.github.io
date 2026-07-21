@@ -676,8 +676,7 @@
     section h2 { color: var(--text); font-size: 2.45rem; font-weight: 700; margin: 0 0 24px; }
     @media (max-width: 620px) { section h2 { font-size: 2.2rem; } }
     .about p { color: var(--text-soft); }
-    #about > p, #about > blockquote { max-width: 96ch; }
-    #research > p { max-width: 80ch; }
+    #about > p, #about > blockquote, #research > p { max-width: none; }
     .about p + p { margin-top: 14px; }
     .about blockquote {
       margin: 16px 0 0; padding: 4px 0 4px 20px;
@@ -833,8 +832,8 @@
     }
     .contact-illustration {
       position: absolute; top: 24px; right: 28px;
-      width: 204px; height: 167px;
-      border-radius: 44% 56% 48% 52% / 48% 44% 56% 52%;
+      width: 194px; height: 194px;
+      border-radius: 50%;
       object-fit: cover; object-position: center center;
       border: 5px solid var(--surface); box-shadow: var(--shadow);
     }
@@ -874,7 +873,7 @@
       margin: 12px 0 0 !important; font-size: .86rem; overflow-wrap: anywhere;
     }
     @media (max-width: 620px) {
-      .contact-box { padding: 216px 22px 24px; }
+      .contact-box { padding: 244px 22px 24px; }
       .contact-illustration { left: 50%; right: auto; transform: translateX(-50%); }
       #contact .links { grid-template-columns: minmax(0, .9fr) minmax(0, 1.35fr); }
       #contact .pill { padding: 8px 10px; font-size: .84rem; }
