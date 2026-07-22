@@ -830,12 +830,19 @@
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 26px 260px 26px 26px; box-shadow: var(--shadow);
     }
-    .contact-illustration {
+    .contact-illustration-frame {
       position: absolute; top: 24px; right: 28px;
       width: 194px; height: 194px;
-      border-radius: 50%;
-      object-fit: cover; object-position: left center;
+      overflow: hidden; border-radius: 50%;
+      background: url("uppsala-contact.png") left center / auto 100% no-repeat;
       border: 5px solid var(--surface); box-shadow: var(--shadow);
+    }
+    .contact-illustration {
+      display: block; width: 100%; height: 100%;
+      object-fit: cover; object-position: left center;
+      transform: translateY(7px);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 10px, #000 100%);
+      mask-image: linear-gradient(to bottom, transparent 0, #000 10px, #000 100%);
     }
     .contact-box p { color: var(--text-soft); margin: 0 0 14px; }
     #contact .links {
@@ -874,7 +881,7 @@
     }
     @media (max-width: 620px) {
       .contact-box { padding: 244px 22px 24px; }
-      .contact-illustration { left: 50%; right: auto; transform: translateX(-50%); }
+      .contact-illustration-frame { left: 50%; right: auto; transform: translateX(-50%); }
       #contact .links { grid-template-columns: minmax(0, .9fr) minmax(0, 1.35fr); }
       #contact .pill { padding: 8px 10px; font-size: .84rem; }
     }
@@ -1405,15 +1412,17 @@
   <section id="contact" class="wrap">
     <h2>Contact</h2>
     <div class="contact-box">
-      <img
-        class="contact-illustration"
-        src="uppsala-contact.png"
-        width="410"
-        height="273"
-        loading="lazy"
-        decoding="async"
-        alt="Uppsala Cathedral at sunset, reflected in the river"
-      />
+      <div class="contact-illustration-frame">
+        <img
+          class="contact-illustration"
+          src="uppsala-contact.png"
+          width="410"
+          height="273"
+          loading="lazy"
+          decoding="async"
+          alt="Uppsala Cathedral at sunset, reflected in the river"
+        />
+      </div>
       <p class="contact-address">
         Department of Ecology and Genetics, Animal Ecology<br />
         Evolutionary Biology Centre (EBC), Uppsala University<br />
