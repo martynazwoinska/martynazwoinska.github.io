@@ -498,13 +498,10 @@
       font-size: 1.08rem; font-weight: 600; line-height: 1.45;
     }
     .hero-expertise-line { display: block; white-space: nowrap; }
-    .hero-identity {
-      display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px;
-      margin-top: 16px; color: var(--text-soft); line-height: 1.45;
+    .hero-name {
+      margin: 14px 0 0; color: var(--text-soft);
+      font-size: 1.05rem; font-weight: 600; line-height: 1.45;
     }
-    .hero-name { margin: 0; font-size: .96rem; font-weight: 600; }
-    .hero-identity-separator { color: var(--accent-gold); }
-    .hero .affil { margin: 0; color: var(--text-faint); font-size: .86rem; }
     .hero-art {
       display: block; max-width: none;
       pointer-events: none; user-select: none;
@@ -560,7 +557,6 @@
     @media (max-width: 1100px) {
       .hero-grid { transform: translateX(-56px); }
       .hero-lower { right: 24px; bottom: 8px; width: 215px; }
-      .hero-identity-separator { display: none; }
     }
     @media (max-width: 1024px) {
       .hero { min-height: 326px; padding-top: 28px; padding-bottom: 24px; }
@@ -584,7 +580,7 @@
       .avatar { width: 146px; height: 146px; }
       .hero-statement { font-size: 2.55rem; }
       .hero-expertise { margin-top: 18px; font-size: .94rem; }
-      .hero-identity { margin-top: 14px; }
+      .hero-name { margin-top: 13px; }
       .hero-lower { right: 12px; bottom: 8px; width: 164px; opacity: .6; }
     }
     @media (max-width: 759px) {
@@ -598,10 +594,7 @@
       }
       .hero-statement { margin: 0 auto; font-size: clamp(2.05rem, 7vw, 2.55rem); }
       .hero-expertise { max-width: 560px; margin: 19px auto 0; }
-      .hero-identity { display: block; margin-top: 16px; }
-      .hero-name { font-size: .9rem; }
-      .hero-identity-separator { display: none; }
-      .hero .affil { margin-top: 5px; font-size: .82rem; }
+      .hero-name { margin-top: 16px; font-size: .9rem; }
     }
     @media (max-width: 620px) {
       .hero { padding: 27px 20px 14px; }
@@ -616,9 +609,6 @@
       }
       .hero-expertise-line { white-space: normal; }
       .hero-name { font-size: .86rem; }
-      .hero .affil { font-size: .87rem; line-height: 1.45; }
-      .hero .affil-part { display: block; white-space: nowrap; }
-      .hero .affil-separator { display: none; }
     }
     @media (max-width: 350px) {
       .hero { padding-right: 14px; padding-bottom: 12px; padding-left: 14px; }
@@ -975,11 +965,7 @@
       <div class="hero-copy">
         <h1 class="hero-statement"><span class="hero-statement-line">From lab to code,</span><span class="hero-statement-line">from ideas to execution</span></h1>
         <p class="hero-expertise"><span class="hero-expertise-line">Evolutionary biology · Experimental research</span><span class="hero-expertise-line">Genomics · Data analysis · Applied AI</span></p>
-        <div class="hero-identity">
-          <p class="hero-name">Martyna Katarzyna Zwoińska</p>
-          <span class="hero-identity-separator" aria-hidden="true">·</span>
-          <div class="affil"><span class="affil-part">Department of Ecology and Genetics</span><span class="affil-separator">, </span><span class="affil-part">Uppsala University</span><span class="affil-separator">, </span><span class="affil-part">Sweden</span></div>
-        </div>
+        <p class="hero-name">Martyna Katarzyna Zwoińska</p>
       </div>
       <div class="avatar" role="img" aria-label="Martyna K. Zwoińska">
         <span class="avatar-mono" aria-hidden="true">MZ</span>
@@ -1504,7 +1490,7 @@
     </div>
   </footer>
 
-  <script src="home-i18n.js?v=20260722-1"></script>
+  <script src="home-i18n.js?v=20260722-2"></script>
   <script src="home.js?v=20260718-1"></script>
 </body>
 </html>
