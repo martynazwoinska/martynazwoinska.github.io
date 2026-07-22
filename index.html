@@ -482,11 +482,10 @@
       width: min(920px, calc(100% - 64px)); min-height: 286px; margin: 0 auto;
       display: grid; grid-template-columns: 190px minmax(0, 1fr);
       gap: 48px; align-items: center;
-      transform: translateX(-75px);
+      transform: translateX(-60px);
     }
     .hero-copy {
-      width: fit-content; max-width: 100%; min-width: 0;
-      grid-column: 2; grid-row: 1; justify-self: start;
+      min-width: 0; grid-column: 2; grid-row: 1; text-align: left;
     }
     .hero-statement {
       max-width: 700px; margin: 0;
@@ -497,12 +496,12 @@
     }
     .hero-statement-line { display: block; white-space: nowrap; }
     .hero-expertise {
-      margin: 11px 0 0; color: var(--accent); text-align: center;
+      margin: 9px 0 0; color: var(--accent);
       font-size: 1.08rem; font-weight: 600; line-height: 1.45;
     }
     .hero-expertise-line { display: block; white-space: nowrap; }
     .hero-name {
-      margin: 10px 0 0; color: var(--text-soft); text-align: center;
+      margin: 10px 0 0; color: var(--text-soft);
       font-size: 1.05rem; font-weight: 600; line-height: 1.4;
     }
     .hero-art {
@@ -558,7 +557,7 @@
       stroke-width: 1;
     }
     @media (max-width: 1100px) {
-      .hero-grid { transform: translateX(-56px); }
+      .hero-grid { transform: translateX(-44px); }
       .hero-lower { right: 24px; bottom: 8px; width: 215px; }
     }
     @media (max-width: 1024px) {
@@ -566,7 +565,7 @@
       .hero-grid {
         width: min(830px, calc(100% - 48px)); min-height: 260px;
         grid-template-columns: 172px minmax(0, 1fr); gap: 42px;
-        transform: translateX(-45px);
+        transform: translateX(-34px);
       }
       .avatar { width: 172px; height: 172px; }
       .hero-statement { font-size: clamp(2.55rem, 5vw, 3.15rem); }
@@ -578,7 +577,7 @@
       .hero-grid {
         width: calc(100% - 28px); min-height: 246px;
         grid-template-columns: 146px minmax(0, 1fr); gap: 30px;
-        transform: translateX(-24px);
+        transform: translateX(-16px);
       }
       .avatar { width: 146px; height: 146px; }
       .hero-statement { font-size: 2.55rem; }
@@ -591,7 +590,7 @@
       .hero-grid { display: block; width: 100%; min-height: 0; transform: none; }
       .hero-copy {
         width: 100%; max-width: 650px; margin: 0 auto;
-        justify-self: auto; text-align: center;
+        text-align: center;
       }
       .avatar, .hero::before, .hero::after { display: none !important; }
       .hero-lower {
