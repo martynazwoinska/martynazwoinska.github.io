@@ -1339,21 +1339,23 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .lab-id-text { fill: #2e6570; font: 800 8px/1 sans-serif; stroke: none; }
 .lab-id-text.male { font-size: 5px; }
 .lab-pen { fill: none; stroke: #d45265; stroke-width: 2.5; stroke-linecap: round; }
+.ngm-plate { filter: drop-shadow(0 4px 3px rgba(24,49,54,.25)); }
 .ngm-plate .plate-shadow { fill: rgba(25,54,61,.2); }
-.ngm-plate .plate-base { fill: rgba(197,224,222,.72); stroke: #527b7d; stroke-width: 3; }
-.ngm-plate .plate-rim { fill: rgba(225,245,242,.78); stroke: #527b7d; stroke-width: 3; }
-.ngm-plate .plate-agar { fill: #e8dca5; stroke: #b4a36a; stroke-width: 2; }
-.ngm-plate .bacterial-lawn { fill: #d6cf8b; opacity: .9; }
-.ngm-plate .op50-colony { fill: color-mix(in srgb, #c8c26f 78%, #f6efd3); stroke: rgba(103,96,48,.32); stroke-width: .7; }
-.ngm-plate .worm-tracks path { fill: none; stroke: rgba(255,255,238,.86); stroke-width: 2; stroke-linecap: round; }
-.ngm-plate .plate-highlight { fill: rgba(255,255,255,.9); }
-.ngm-plate text { fill: #355e64; font: 800 10.5px/1 sans-serif; letter-spacing: .015em; }
-.ngm-plate .plate-glare { fill: none; stroke: rgba(255,255,255,.82); stroke-width: 3; stroke-linecap: round; }
-.ngm-plate .plate-lid-edge { fill: none; stroke: rgba(82,123,125,.52); stroke-width: 1.5; stroke-linecap: round; }
-.ngm-plate .plate-label-tab { fill: color-mix(in srgb, #e7f3f2 72%, var(--local-secondary)); stroke: #527b7d; stroke-width: 2; }
-.ngm-plate .plate-label-text { paint-order: stroke; stroke: rgba(255,255,255,.82); stroke-width: 2.5px; }
-.ngm-plate .plate-label-text.op50 { font-size: 8.5px; }
-.ngm-plate .plate-label-text.companion { font-size: 10.5px; }
+.ngm-plate .plate-sidewall { fill: rgba(138,184,183,.72); stroke: #456c70; stroke-width: 2.4; stroke-linejoin: round; }
+.ngm-plate .plate-base { fill: rgba(192,222,220,.92); stroke: #456c70; stroke-width: 2.7; }
+.ngm-plate .plate-rim { fill: rgba(231,247,244,.82); stroke: #4d7779; stroke-width: 2.5; }
+.ngm-plate .plate-agar { fill: #eadfa9; stroke: #aa9a61; stroke-width: 1.7; }
+.ngm-plate .plate-inner-ring { fill: none; stroke: rgba(76,117,119,.52); stroke-width: 1.2; }
+.ngm-plate .bacterial-lawn { fill: #d3cb82; opacity: .78; }
+.ngm-plate .op50-colony { fill: color-mix(in srgb, #bbb45f 74%, #f6efd3); stroke: rgba(92,86,42,.38); stroke-width: .65; }
+.ngm-plate .worm-tracks path { fill: none; stroke: rgba(250,248,216,.68); stroke-width: 1.35; stroke-linecap: round; }
+.ngm-plate text { fill: #31565d; font: 800 8.5px/1 sans-serif; letter-spacing: .02em; }
+.ngm-plate .plate-glare { fill: none; stroke: rgba(255,255,255,.86); stroke-width: 2.4; stroke-linecap: round; }
+.ngm-plate .plate-glare.fine { stroke-width: 1.4; opacity: .78; }
+.ngm-plate .plate-condensation { fill: rgba(255,255,255,.72); stroke: rgba(77,119,121,.24); stroke-width: .45; }
+.ngm-plate .plate-label-tape { fill: rgba(246,249,231,.9); stroke: rgba(72,105,106,.64); stroke-width: 1; }
+.ngm-plate .plate-label-text { paint-order: stroke; stroke: rgba(255,255,255,.72); stroke-width: 1.5px; }
+.ngm-plate .plate-label-text.companion { font-size: 8px; }
 .ngm-plate-small .plate-base, .ngm-plate-small .plate-rim { stroke-width: 2; }
 .ngm-plate-small .plate-agar { stroke-width: 1.25; }
 .ngm-plate-small .plate-glare { stroke-width: 1.5; }
