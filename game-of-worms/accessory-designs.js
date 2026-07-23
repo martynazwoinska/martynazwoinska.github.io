@@ -351,9 +351,12 @@ function drawN2Accessory(group, item, companion) {
       add(group, "circle", { class: "plate-rim", cx: 0, cy: 0, r: 36 });
       add(group, "circle", { class: "plate-agar", cx: 0, cy: 0, r: 29 });
       add(group, "path", { class: "bacterial-lawn", d: "M-21-8Q-12-22 3-18Q20-20 24-5Q18 10 4 14Q-13 17-24 4Q-25-2-21-8Z" });
+      add(group, "path", { class: "plate-lid-edge", d: "M-30-12Q-4-34 28-13M-32 15Q0 37 32 15" });
+      [[-15, -3, 2.2], [-3, 8, 1.8], [13, -9, 2], [18, 5, 1.6]].forEach(([cx, cy, r]) => add(group, "circle", { class: "op50-colony", cx, cy, r }));
       const tracks = add(group, "g", { class: "worm-tracks" });
       add(tracks, "path", { d: "M-18-7Q-9-14-1-6T15-8" });
       add(tracks, "path", { d: "M-14 8Q-5 1 4 8T18 5" });
+      add(tracks, "path", { d: "M-7-1Q-2 4 5 0T15 2" });
       add(group, "path", { class: "plate-glare", d: "M-23-20Q-8-33 10-29" });
       add(group, "path", { class: "plate-label-tab", d: "M-23 25Q0 32 23 25L22 36Q0 41-22 36Z" });
       const label = add(group, "text", { class: "plate-label-text companion", x: 0, y: 35, "text-anchor": "middle" });
@@ -364,9 +367,12 @@ function drawN2Accessory(group, item, companion) {
       add(group, "ellipse", { class: "plate-rim", cx: 0, cy: 1, rx: 57, ry: 21 });
       add(group, "ellipse", { class: "plate-agar", cx: 0, cy: 0, rx: 49, ry: 16 });
       add(group, "path", { class: "bacterial-lawn", d: "M-44 0Q-27-15-5-10Q18-17 43-1Q25 15 3 11Q-22 17-44 0Z" });
+      add(group, "path", { class: "plate-lid-edge", d: "M-55 0Q-24-19 8-16Q37-15 55 0M-53 10Q-20 25 16 19Q39 15 55 8" });
+      [[-32, -1, 2.6], [-18, 8, 2.2], [3, -6, 2.4], [20, 6, 1.8], [34, -3, 2.1]].forEach(([cx, cy, r]) => add(group, "circle", { class: "op50-colony", cx, cy, r }));
       const tracks = add(group, "g", { class: "worm-tracks" });
       add(tracks, "path", { d: "M-34 1Q-23-10-12-1T11-2T33 1" });
       add(tracks, "path", { d: "M-24 8Q-12 0 1 7T27 5" });
+      add(tracks, "path", { d: "M-7-6Q5-12 17-5T38-7" });
       add(group, "path", { class: "plate-glare", d: "M-45-7Q-21-27 9-22" });
       add(group, "circle", { class: "plate-highlight", cx: 32, cy: -5, r: 3 });
       const n2 = add(group, "text", { class: "plate-label-text", x: -33, y: 5, "text-anchor": "middle" });
@@ -387,6 +393,8 @@ function drawN2Accessory(group, item, companion) {
       add(group, "path", { class: "lab-coat-pocket male", d: "M-20 8Q-6 14 5 7L3 21Q-8 27-21 19Z" });
       add(group, "path", { class: "lab-coat-pocket male narrow", d: "M22-4L34-7L34 7L21 10Z" });
       [-12, 2, 15].forEach(y => add(group, "circle", { class: "lab-coat-button", cx: 18 - y * .07, cy: y, r: 2.4 }));
+      add(group, "path", { class: "lab-coat-belt male", d: "M-28 19Q-7 31 18 22" });
+      add(group, "path", { class: "lab-coat-stitch male", d: "M-30 8L-23 12M-19 16L-12 20M-1 22L7 20M18-17L23-25M30-17L36-24" });
       add(group, "path", { class: "lab-coat-cuff", d: "M41-11L49-9L53-21L45-24Z" });
       const badge = add(group, "g", { class: "lab-badge companion", transform: "translate(-12 -14) rotate(6)" });
       add(badge, "rect", { class: "lab-id-badge", x: -8, y: -6, width: 16, height: 12, rx: 2 });
@@ -401,6 +409,8 @@ function drawN2Accessory(group, item, companion) {
       add(group, "path", { class: "lab-coat-pocket", d: "M-40 24Q-20 33-2 23L-5 43Q-24 53-43 42Z" });
       add(group, "path", { class: "lab-coat-pocket upper", d: "M-4-8Q9-4 20-9L18 8Q6 14-6 8Z" });
       [-23, -5, 13, 30].forEach(y => add(group, "circle", { class: "lab-coat-button", cx: 35 - (y + 23) * .13, cy: y, r: 3 }));
+      add(group, "path", { class: "lab-coat-belt", d: "M-59 43Q-29 61 4 49M5 50L18 41" });
+      add(group, "path", { class: "lab-coat-stitch", d: "M-52 30L-43 36M-32 43L-22 47M-6 45L4 41M29-30L35-41M43-30L53-42" });
       add(group, "path", { class: "lab-coat-cuff", d: "M64-21L76-16L82-34L70-40Z" });
       const badge = add(group, "g", { class: "lab-badge", transform: "translate(-19 -16) rotate(-4)" });
       add(badge, "rect", { class: "lab-id-badge", x: -13, y: -8, width: 26, height: 17, rx: 3 });
@@ -418,7 +428,9 @@ function drawN2Accessory(group, item, companion) {
       add(group, "path", { class: "cryo-pack-shell companion", d: "M-27-29Q-6-39 18-27L24 19Q4 36-25 24Z" });
       add(group, "rect", { class: "cryo-vial-body companion", x: -13, y: -58, width: 24, height: 70, rx: 9 });
       add(group, "rect", { class: "cryo-vial-cap companion", x: -11, y: -68, width: 20, height: 14, rx: 4 });
+      add(group, "path", { class: "cryo-cap-thread", d: "M-10-63H8M-11-59H9M-10-55H8" });
       add(group, "path", { class: "cryo-ice", d: "M-10-10Q-1-17 8-9V8Q0 14-10 7Z" });
+      add(group, "path", { class: "cryo-vial-label", d: "M-10-42H9V-23H-10Z" });
       add(group, "circle", { class: "cryo-gauge", cx: 9, cy: 14, r: 8 });
       add(group, "path", { class: "cryo-gauge-mark", d: "M9 14L13 9M4 14H9" });
       add(group, "path", { class: "cryo-nozzle", d: "M-20 22L-28 39H-12L-9 25ZM8 27L6 44H22L18 24Z" });
@@ -430,7 +442,9 @@ function drawN2Accessory(group, item, companion) {
       [-11, 22].forEach((x, index) => {
         add(group, "rect", { class: "cryo-vial-body", x: x - 11, y: -67 + index * 3, width: 22, height: 78 - index * 4, rx: 8 });
         add(group, "rect", { class: "cryo-vial-cap", x: x - 9, y: -78 + index * 3, width: 18, height: 14, rx: 4 });
+        add(group, "path", { class: "cryo-cap-thread", d: `M${x - 8} ${-73 + index * 3}H${x + 8}M${x - 9} ${-69 + index * 3}H${x + 9}M${x - 8} ${-65 + index * 3}H${x + 8}` });
         add(group, "path", { class: "cryo-ice", d: `M${x - 8} ${-16 + index * 4}Q${x} ${-23 + index * 3} ${x + 8} ${-15 + index * 4}V${7 + index * 3}Q${x} ${13 + index * 2} ${x - 8} ${7 + index * 3}Z` });
+        add(group, "path", { class: "cryo-vial-label", d: `M${x - 9} ${-43 + index * 3}H${x + 9}V${-23 + index * 3}H${x - 9}Z` });
         add(group, "path", { class: "cryo-vial-tick", d: `M${x - 7}-37H${x + 5}M${x - 7}-27H${x + 2}` });
       });
       add(group, "circle", { class: "cryo-medallion", cx: 9, cy: 18, r: 13 });
