@@ -1136,9 +1136,10 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .fig-cluster, .fern, .fig-wasp, .scene-flower { opacity: .9; }
 .scene-name {
   position: absolute;
-  left: 18px;
-  top: 16px;
+  right: 18px;
+  bottom: 16px;
   z-index: 3;
+  max-width: calc(100% - 164px);
   border-radius: 999px;
   padding: 7px 11px;
   background: rgba(255,255,255,.82);
@@ -1146,7 +1147,9 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   font-size: .72rem;
   font-weight: 800;
   letter-spacing: .05em;
+  text-align: right;
   text-transform: uppercase;
+  white-space: nowrap;
   backdrop-filter: blur(6px);
 }
 .worm-avatar {
@@ -2769,7 +2772,18 @@ footer p { margin: 0; }
   .species-tabs { grid-template-columns: 1fr; min-height: 424px; }
   .species-tab { min-height: 68px; }
   .habitat { min-height: 340px; }
-  .scene-name { left: 12px; top: 12px; max-width: calc(100% - 24px); }
+  .scene-name {
+    right: 12px;
+    bottom: 12px;
+    max-width: calc(100% - 134px);
+    padding: 6px 9px;
+    font-size: .64rem;
+    line-height: 1.15;
+    letter-spacing: .025em;
+    text-align: left;
+    white-space: normal;
+  }
+  .worm-name-tag { left: 12px; bottom: 12px; }
   .dress-bar { padding: 16px; }
   .species-story { min-height: 390px; }
 }
