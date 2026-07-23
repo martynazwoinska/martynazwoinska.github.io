@@ -88,7 +88,7 @@ The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour
 
 - Use `--display` for major headings and decorative plaques.
 - Use `--sans` for body copy, navigation, controls and metadata.
-- Display headings and identity text use the approved Cormorant Garamond 700 with a subtle theme-aware current-colour optical stroke (`.2px` in Ivory Ink and `.14px` in Marine Ink). The homepage hero statement uses a stronger `.46px` light / `.34px` dark optical stroke, while the full name uses the standard display stroke. Keep expertise, navigation, body copy, controls and metadata in the sans-serif stack. Do not replace the real 700 files with a synthetic 800 weight.
+- Display headings and identity text use the approved Cormorant Garamond 700 with a subtle theme-aware current-colour optical stroke (`.24px` in Ivory Ink and `.14px` in Marine Ink). The homepage hero statement uses a stronger `.52px` light / `.34px` dark optical stroke, while the full name uses the standard display stroke. Keep expertise, navigation, body copy, controls and metadata in the sans-serif stack. Do not replace the real 700 files with a synthetic 800 weight.
 - Keep asymmetric rounded corners soft rather than exaggerated.
 - Use botanical curves, seed-pod forms and worm-like lines as small accents.
 - Full-section floral dividers use reinforced gold and emerald stems with theme-aware contrast, while their berry terminals and geometry stay delicate; internal subsection and list rules remain visibly quieter.
