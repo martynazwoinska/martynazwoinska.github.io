@@ -88,14 +88,14 @@ The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour
 
 - Use `--display` for major headings and decorative plaques.
 - Use `--sans` for body copy, navigation, controls and metadata.
-- Display headings use the approved Cormorant Garamond 700 with a subtle theme-aware current-colour optical stroke (`.2px` in Ivory Ink and `.14px` in Marine Ink). The homepage hero statement uses a stronger `.46px` light / `.34px` dark optical stroke. Do not replace the real 700 files with a synthetic 800 weight.
+- Display headings and identity text use the approved Cormorant Garamond 700 with a subtle theme-aware current-colour optical stroke (`.2px` in Ivory Ink and `.14px` in Marine Ink). The homepage hero statement uses a stronger `.46px` light / `.34px` dark optical stroke, while the full name uses the standard display stroke. Keep expertise, navigation, body copy, controls and metadata in the sans-serif stack. Do not replace the real 700 files with a synthetic 800 weight.
 - Keep asymmetric rounded corners soft rather than exaggerated.
 - Use botanical curves, seed-pod forms and worm-like lines as small accents.
 - Full-section floral dividers use reinforced gold and emerald stems with theme-aware contrast, while their berry terminals and geometry stay delicate; internal subsection and list rules remain visibly quieter.
 - Keep ornament subordinate to information and interaction.
 - Avoid emoji as primary visual elements and avoid oversized decorative icons.
 
-The homepage hero uses `photo.jpg` with the approved lower-right ornament pair under `assets/hero/`: `quiet-atelier-lower-right.png` and `quiet-atelier-lower-right-dark.png`. On desktop and tablet, the ornament sits to the lower right of the portrait-and-copy composition; on phones, its smaller version follows the text in normal document flow. The upper-left pair remains preserved as approved source material. Treat all five hero files as source assets and preserve their composition instead of redrawing them from screenshots.
+The homepage hero uses `photo.jpg` with the approved lower-right ornament pair under `assets/hero/`: `quiet-atelier-lower-right.png` and `quiet-atelier-lower-right-dark.png`. On desktop and tablet, the ornament sits to the lower right of the portrait-and-copy composition; the name is a larger Garamond identity line between the statement and sans-serif expertise. On phones, the portrait is omitted and the centred lockup runs statement, expertise, then Garamond name, followed by a modestly enlarged ornament in normal document flow. The upper-left pair remains preserved as approved source material. Treat all five hero files as source assets and preserve their composition instead of redrawing them from screenshots.
 
 ## Accessibility
 
