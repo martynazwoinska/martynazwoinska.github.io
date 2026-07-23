@@ -802,6 +802,23 @@ function drawWater(parent, type, palette) {
 }
 
 function drawBristolScene(target, palette) {
+  const background = append(target, "image", {
+    class: "bristol-painted-background",
+    href: "assets/n2-bristol-painted-background.webp",
+    x: 0,
+    y: 0,
+    width: 600,
+    height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    target.replaceChildren();
+    drawLegacyBristolScene(target, palette);
+  }, { once: true });
+}
+
+function drawLegacyBristolScene(target, palette) {
   append(target, "rect", { class: "environment-sky bristol-sky", width: 600, height: 430, fill: palette[0] });
 
   const clouds = append(target, "g", { class: "environment-clouds bristol-clouds" });

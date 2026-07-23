@@ -1,6 +1,6 @@
 # Bristol N2 location research and art brief
 
-Last updated: 2026-07-21
+Last updated: 2026-07-23
 
 This is the first location dossier in the location-by-location Game of Worms illustration workflow. It is the evidence and review contract for the Bristol N2 landscape and its three accessory pairs. Later locations require their own dossier before their artwork is revised.
 
@@ -35,7 +35,7 @@ Reference pages:
 - [The Avon Gorge](https://cliftonbridge.org.uk/the-avon-gorge/)
 - [Wildlife on the Avon Gorge and Bristol Downs, Bristol City Council](https://www.bristol.gov.uk/files/documents/3664-wildlife-on-the-avon-gorge-and-bristol-downs-leaflet)
 
-These pages are factual and visual references only. No external photograph, illustration, map, or protected bridge-trust artwork is copied into the site. The website scene remains an original SVG illustration in the established Game of Worms style.
+These pages are factual and visual references only. No external photograph, illustration, map, or protected bridge-trust artwork is copied into the site. The website uses an original painted raster scene created for the Game, with the animated worms and movable accessories retained as separate live SVG layers.
 
 ### Local-object candidates for a later accessory decision
 
@@ -68,8 +68,8 @@ The scene must remain legible at thumbnail size and use three linked depths rath
 
 ### Middle ground: Avon Gorge context
 
-- A narrow tidal River Avon channel recedes through two unequal gorge faces.
-- Do not draw water or brown riverbed from the bridge down through the upper gorge. The river belongs only in the lower foreground: it begins at the lower SVG edge, with a dominant blue inner channel and restrained muted-brown margins, then narrows upward and ends below the large worm's tail. The surrounding ground must read as a low foreground surface, never as a central mound. Avoid straight parallel banks or repeated full-width ripples that make the river resemble a road, mountain or uphill channel.
+- A restrained tidal River Avon channel recedes through two unequal gorge faces.
+- Keep the channel subordinate to the compost garden and worms. It should remain narrow, muted blue-green and naturally tapered, without straight parallel banks or repeated full-width ripples that make it resemble a road or uphill channel.
 - One face should read as more wooded; the other should expose tilted limestone or rock strata and urban-edge cues.
 - The river, cliff geometry, vegetation and built edge must form one coherent view rather than separate clip-art objects.
 
@@ -82,8 +82,8 @@ The scene must remain legible at thumbnail size and use three linked depths rath
 ### Palette and rendering
 
 - Use the Game’s existing restrained emerald, antique-gold, muted-violet or berry system, with scientifically meaningful agar and cryogenic colours retained.
-- Vary line weight and shape detail by depth; foreground forms may carry texture, while the background remains quieter.
-- Avoid photorealism, generic gradients, glow, or a collection of repeated tree, rock and building primitives.
+- Vary texture and edge detail by depth; the foreground may carry tactile leaf and timber detail, while the central overlay area and distant background remain quieter.
+- Use the preserved painted source plus an optimized derivative for delivery. Avoid photorealism, generic gradients, glow, or a collection of repeated tree, rock and building primitives.
 
 ## Accessory evidence and design contract
 
