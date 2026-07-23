@@ -500,12 +500,14 @@
       font-size: 1.08rem; font-weight: 600; line-height: 1.45;
     }
     .hero-expertise-line { display: block; white-space: nowrap; }
+    .hero-skill { display: inline; }
     .hero-name {
       margin: 12px 0 0; color: var(--text); font-family: var(--display);
       font-size: clamp(1.38rem, 1.55vw, 1.52rem); font-weight: 700;
       line-height: 1.08; letter-spacing: .006em;
       -webkit-text-stroke: var(--display-stroke) currentColor; paint-order: stroke fill;
     }
+    .hero-name-line { display: inline; }
     .hero-art {
       display: block; max-width: none;
       pointer-events: none; user-select: none;
@@ -588,7 +590,7 @@
       .hero-expertise { margin-top: 10px; font-size: .94rem; }
       .hero-lower { right: 18px; bottom: 8px; width: 164px; opacity: .6; }
     }
-    @media (max-width: 759px) {
+    @media (max-width: 759.98px) {
       .hero { min-height: 0; padding: 36px 20px 28px; }
       .hero-grid { display: block; width: 100%; min-height: 0; transform: none; }
       .hero-copy {
@@ -605,6 +607,40 @@
       .hero-name {
         order: 3; margin-top: 13px; color: var(--text-soft);
         font-size: 1.08rem; line-height: 1.18;
+      }
+    }
+    @media (min-width: 621px) and (max-width: 759.98px) {
+      .hero {
+        padding: 30px 188px 30px 42px;
+      }
+      .hero-copy {
+        max-width: 430px; margin: 0;
+        align-items: flex-start; text-align: left;
+      }
+      .hero-statement { display: none; }
+      .hero-name {
+        order: 1; margin: 0; color: var(--text);
+        font-size: clamp(2.72rem, 7.15vw, 3.12rem);
+        line-height: .86; letter-spacing: -.012em;
+      }
+      .hero-name-line { display: block; }
+      .hero-expertise {
+        order: 2; width: 100%; max-width: none; margin: 20px 0 0;
+        font-size: clamp(.88rem, 2vw, .98rem); line-height: 1.28;
+      }
+      .hero-expertise-line {
+        display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        column-gap: 18px; white-space: normal;
+      }
+      .hero-expertise-line + .hero-expertise-line { margin-top: 9px; }
+      .hero-skill-separator {
+        position: absolute; width: 1px; height: 1px; margin: -1px;
+        overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+        white-space: nowrap;
+      }
+      .hero-lower {
+        position: absolute; right: 22px; bottom: 18px;
+        width: clamp(150px, 23vw, 172px); margin: 0; opacity: .64;
       }
     }
     @media (max-width: 620px) {
@@ -687,16 +723,24 @@
     /* Current work belongs to Research, so it uses a quiet internal rule. */
     #project { padding-top: 34px; padding-bottom: 34px; }
     #project::after {
-      display: block; top: -3px; left: 50%;
+      display: block; top: -2.5px; left: 50%;
       transform: translateX(-50%) rotate(45deg);
-      width: 7px; height: 7px; background: var(--accent-gold);
-      box-shadow: 0 0 0 3px var(--bg);
+      width: 6px; height: 6px; background: var(--accent-gold);
       -webkit-mask: none; mask: none;
     }
     #project::before {
       display: block; top: 0; left: 24px; transform: none;
       width: calc(100% - 48px); height: 1px;
-      background: color-mix(in srgb, var(--accent-gold) 68%, var(--border));
+      background: linear-gradient(
+        90deg,
+        var(--accent-gold) 0,
+        var(--accent-gold) calc(50% - 10px),
+        transparent calc(50% - 10px),
+        transparent calc(50% + 10px),
+        var(--accent-gold) calc(50% + 10px),
+        var(--accent-gold) 100%
+      );
+      opacity: .72;
       -webkit-mask: none; mask: none;
     }
     #project > h2::before {
@@ -978,9 +1022,9 @@
   <div class="wrap hero">
     <div class="hero-grid">
       <div class="hero-copy">
-        <h1 class="hero-statement"><span class="hero-statement-line">From lab to code,</span><span class="hero-statement-line">from ideas to execution</span></h1>
-        <p class="hero-name">Martyna Katarzyna Zwoińska</p>
-        <p class="hero-expertise"><span class="hero-expertise-line">Evolutionary biology · Experimental research</span><span class="hero-expertise-line">Genomics · Data analysis · Applied AI</span></p>
+        <p class="hero-statement"><span class="hero-statement-line">From lab to code,</span><span class="hero-statement-line">from ideas to execution</span></p>
+        <h1 class="hero-name"><span class="hero-name-line">Martyna</span> <span class="hero-name-line">Katarzyna</span> <span class="hero-name-line">Zwoińska</span></h1>
+        <p class="hero-expertise"><span class="hero-expertise-line"><span class="hero-skill">Evolutionary biology</span><span class="hero-skill-separator"> · </span><span class="hero-skill">Experimental research</span></span><span class="hero-expertise-line"><span class="hero-skill">Genomics · Data analysis</span><span class="hero-skill-separator"> · </span><span class="hero-skill">Applied AI</span></span></p>
       </div>
       <div class="avatar" role="img" aria-label="Martyna K. Zwoińska">
         <span class="avatar-mono" aria-hidden="true">MZ</span>
