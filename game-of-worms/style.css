@@ -2707,7 +2707,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 }
 .story-topline { display: flex; align-items: center; }
 .region-label { color: var(--teal); font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.species-story h2 { margin: 20px 0 0; font-family: var(--display); font-size: clamp(2rem, 4vw, 3rem); line-height: .98; letter-spacing: -.04em; }
+.species-story h2 { margin: 20px 0 0; font-family: var(--display); font-size: clamp(2rem, 3.25vw, 2.7rem); line-height: .98; letter-spacing: -.04em; }
 .nickname { margin: 7px 0 20px; color: var(--coral); font-family: var(--display); font-size: 1.22rem; font-weight: 800; }
 .species-intro { margin: 0; color: var(--ink-soft); font-size: 1.05rem; }
 .fact-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
