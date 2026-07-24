@@ -624,7 +624,7 @@
       .hero-name-line { display: block; }
       .hero-expertise {
         order: 2; width: 100%; max-width: none; margin: 20px 0 0;
-        font-size: clamp(.88rem, 2vw, .98rem); line-height: 1.28;
+        font-size: clamp(.96rem, 2.2vw, 1.04rem); line-height: 1.3;
       }
       .hero-expertise-line {
         display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
@@ -651,14 +651,22 @@
       .hero-name-line { display: block; }
       .hero-expertise {
         max-width: 350px; margin-top: 18px;
-        font-size: .92rem; line-height: 1.48;
+        font-size: .98rem; line-height: 1.42;
       }
       .hero-expertise-line { white-space: normal; }
+      .hero-expertise-line + .hero-expertise-line { margin-top: 2px; }
+      .hero-expertise-line .hero-skill { display: block; }
+      .hero-expertise-line:nth-child(2) .hero-skill:last-child { margin-top: 3px; }
+      .hero-expertise-line .hero-skill-separator {
+        position: absolute; width: 1px; height: 1px; margin: -1px;
+        overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+        white-space: nowrap;
+      }
     }
     @media (max-width: 350px) {
       .hero { padding-right: 14px; padding-bottom: 8px; padding-left: 14px; }
       .hero-lower { width: 104px; margin: -4px 0 -8px auto; }
-      .hero-expertise { font-size: .86rem; }
+      .hero-expertise { font-size: .92rem; }
       .hero-name { font-size: 2.42rem; }
     }
 
