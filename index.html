@@ -66,6 +66,7 @@
       --section-divider-gold: color-mix(in srgb, var(--accent-gold) 90%, var(--text) 10%);
       --display-stroke: .24px;
       --hero-statement-stroke: .52px;
+      --hero-mobile-name-stroke: .5px;
       --worm-face: #4a3027;
       --hero-avatar-shadow: rgba(27, 43, 50, .16);
       --radius: 14px;
@@ -79,17 +80,20 @@
         --hero-avatar-shadow: rgba(5, 15, 28, .3);
         --display-stroke: .14px;
         --hero-statement-stroke: .34px;
+        --hero-mobile-name-stroke: .32px;
       }
     }
     :root[data-theme="dark"] {
       --hero-avatar-shadow: rgba(5, 15, 28, .3);
       --display-stroke: .14px;
       --hero-statement-stroke: .34px;
+      --hero-mobile-name-stroke: .32px;
     }
     :root[data-theme="light"] {
       --hero-avatar-shadow: rgba(27, 43, 50, .16);
       --display-stroke: .24px;
       --hero-statement-stroke: .52px;
+      --hero-mobile-name-stroke: .5px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -646,13 +650,13 @@
       .hero { padding: 27px 12px 4px; }
       .hero-lower {
         width: clamp(138px, 40vw, 156px);
-        margin: -7px -4px -18px auto;
+        margin: -15px -4px -18px auto;
         opacity: .64;
       }
       .hero-name {
         margin: 0; font-size: clamp(2.9rem, 14.2vw, 3.4rem);
         line-height: .9; letter-spacing: -.014em;
-        -webkit-text-stroke: calc(var(--display-stroke) + .18px) currentColor;
+        -webkit-text-stroke: var(--hero-mobile-name-stroke) currentColor;
       }
       .hero-name-line { display: block; }
       .hero-expertise {
@@ -677,7 +681,7 @@
     }
     @media (max-width: 350px) {
       .hero { padding-right: 10px; padding-bottom: 2px; padding-left: 10px; }
-      .hero-lower { width: 132px; margin: -5px -2px -16px auto; }
+      .hero-lower { width: 132px; margin: -12px -2px -16px auto; }
       .hero-expertise { font-size: .95rem; row-gap: 3px; }
       .hero-expertise-line--identity { display: contents; }
       .hero-expertise-line--identity .hero-skill { white-space: nowrap; }
