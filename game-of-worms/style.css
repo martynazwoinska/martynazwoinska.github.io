@@ -1535,6 +1535,41 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .fig-wing-harness-detail { fill: none; stroke: color-mix(in srgb, #d2b36e 70%, var(--local-secondary)); stroke-width: 2; stroke-linecap: round; }
 .fig-wing-buckle { fill: color-mix(in srgb, #caa054 72%, var(--local-secondary)); stroke: color-mix(in srgb, #654a2e 78%, var(--worm-deep)); stroke-width: 1.5; }
 
+.ahmedabad-af16-accessory { filter: drop-shadow(0 5px 4px rgba(35,31,25,.24)); }
+.af16-visor-frame { fill: color-mix(in srgb, #79513a 79%, var(--local-secondary)); stroke: color-mix(in srgb, #3f342a 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.af16-jaali-panel { fill: color-mix(in srgb, #375d64 72%, var(--local-primary)); stroke: color-mix(in srgb, #243e43 82%, var(--worm-deep)); stroke-width: 2.3; stroke-linejoin: round; }
+.af16-jaali-line { fill: none; stroke: color-mix(in srgb, #c7a668 70%, var(--local-secondary)); stroke-width: 1.7; stroke-linecap: round; opacity: .84; }
+.af16-jaali-line.light { stroke: color-mix(in srgb, #e0cd9c 72%, var(--paper-strong)); }
+.af16-visor-band,
+.af16-visor-scallop { fill: none; stroke: color-mix(in srgb, #49382d 80%, var(--worm-deep)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.af16-visor-scallop { stroke: color-mix(in srgb, #b28b4d 74%, var(--local-secondary)); stroke-width: 2.5; }
+.af16-visor-hinge,
+.af16-visor-rivet { fill: color-mix(in srgb, #c29c55 72%, var(--local-secondary)); stroke: color-mix(in srgb, #5c472c 78%, var(--worm-deep)); stroke-width: 1.5; }
+.af16-reel-grip,
+.af16-reel-rim,
+.af16-reel-core { fill: color-mix(in srgb, #855638 76%, var(--local-secondary)); stroke: color-mix(in srgb, #45362a 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.af16-reel-core { fill: color-mix(in srgb, #c8a866 70%, var(--local-secondary)); }
+.af16-reel-spindle,
+.af16-reel-brace { fill: none; stroke: color-mix(in srgb, #4b392c 80%, var(--worm-deep)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.af16-reel-thread { fill: none; stroke: color-mix(in srgb, #a94e5f 70%, var(--local-secondary)); stroke-width: 1.8; stroke-linecap: round; }
+.af16-current-ribbon { fill: none; stroke: color-mix(in srgb, #407e88 73%, var(--local-primary)); stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+.af16-current-ribbon.companion { stroke: color-mix(in srgb, #5c7d88 68%, var(--local-primary)); stroke-width: 6; }
+.af16-streamer-fork { fill: none; stroke: color-mix(in srgb, #a94e5f 70%, var(--local-secondary)); stroke-width: 4; stroke-linecap: round; }
+.af16-sieve-frame,
+.af16-sieve-shell,
+.af16-scoop-shell { fill: color-mix(in srgb, #b28d50 70%, var(--local-secondary)); stroke: color-mix(in srgb, #5f4930 80%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.af16-sieve-screen { fill: color-mix(in srgb, #d7c89f 66%, var(--paper-strong)); stroke: color-mix(in srgb, #67563c 78%, var(--worm-deep)); stroke-width: 2; }
+.af16-sieve-mesh { fill: none; stroke: color-mix(in srgb, #67563c 72%, var(--worm-deep)); stroke-width: 1.7; stroke-linecap: round; opacity: .82; }
+.af16-sieve-mesh.light { stroke: color-mix(in srgb, #b79b63 70%, var(--local-secondary)); }
+.af16-sieve-handle { fill: color-mix(in srgb, #77503a 78%, var(--local-secondary)); stroke: color-mix(in srgb, #41342b 82%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.af16-handle-wrap,
+.af16-vial-cap { fill: none; stroke: color-mix(in srgb, #d0ad64 70%, var(--local-secondary)); stroke-width: 2.2; stroke-linecap: round; }
+.af16-sample-vial { fill: rgba(218,239,234,.74); stroke: color-mix(in srgb, #4d746d 72%, var(--worm-deep)); stroke-width: 2.4; }
+.af16-sieve-tray { fill: color-mix(in srgb, #9a6948 72%, var(--local-secondary)); stroke: color-mix(in srgb, #513b2e 80%, var(--worm-deep)); stroke-width: 2.7; stroke-linejoin: round; }
+.af16-soil-grain { fill: color-mix(in srgb, #805039 78%, var(--local-secondary)); stroke: color-mix(in srgb, #4c362b 76%, var(--worm-deep)); stroke-width: 1; }
+.af16-soil-grain.light { fill: color-mix(in srgb, #b17b4d 72%, var(--local-secondary)); }
+.af16-sieve-tag { fill: color-mix(in srgb, #e5d6ae 75%, var(--paper-strong)); stroke: color-mix(in srgb, #6b573a 72%, var(--worm-deep)); stroke-width: 1.8; }
+
 .scanner-cast-frame,
 .scanner-portal { fill: color-mix(in srgb, #48504e 81%, var(--worm-deep)); stroke: color-mix(in srgb, #283330 84%, var(--worm-deep)); stroke-width: 3.5; stroke-linejoin: round; fill-rule: evenodd; }
 .scanner-portal { fill: color-mix(in srgb, #5a625f 75%, var(--local-primary)); }
