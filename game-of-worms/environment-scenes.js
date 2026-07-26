@@ -215,18 +215,18 @@ const canonicalProfiles = {
     { water: "craterlake", weather: "cloud", cues: [["cone", 345, 244, .65], ["grass", 80, 350, .8], ["forest", 520, 298, .7]] }
   ),
   "Sanda, Bali · JU1873": profile(
-    "sanda-cacao-highland", "Sanda cacao highland agroforest",
-    "JU1873 came from rotten cacao near Sanda, in Pupuan’s cultivated highlands of coffee, cacao, fruit trees, and layered ridges.",
-    "Caenorhabditis Genetics Center JU1873", "https://cgc.umn.edu/strain/JU1873",
+    "sanda-ju1873-cacao-plantation", "Sanda cacao plantation floor",
+    "JU1873 came from one rotting cacao fruit in a cacao plantation near Sanda Center. The cacao morphology is botanically grounded; the faint Pupuan ridge is regional context only. Elevation, plantation structure and collection weather were not reported.",
+    "Félix Lab JU1873 record", "https://justbio.com/tools/worms/details.php?strain_id=333372",
     palettes.rainforest, [[0, 302], [80, 258], [155, 220], [235, 252], [315, 186], [400, 236], [485, 194], [545, 250], [600, 230]],
-    { weather: "rain", cues: [["cacao", 85, 280, 1], ["cacao", 500, 292, .8], ["terrace", 335, 324, .8]] }
+    { weather: "none", cues: [] }
   ),
   "Barro Colorado Island, Panama": profile(
-    "barro-gatun", "Barro Colorado in Gatún Lake",
-    "Barro Colorado became an island when the Chagres River was dammed for the Panama Canal and is now a long-studied tropical forest.",
-    "Smithsonian Tropical Research Institute", "https://stri.si.edu/facility/barro-colorado",
+    "bci-qg2726-gustavia-bait-forest", "QG2726 Gustavia-bait forest floor",
+    "QG2726 came from an experimental Gustavia superba-flower-slurry bait in Barro Colorado Island forest at 130 m. The surrounding lowland tropical forest and research cues are regional context; the exact bait appearance and nearby vegetation were not recorded.",
+    "CaeNDR QG2726 isotype record", "https://caendr.org/isotype/QG2726/",
     palettes.rainforest, [[0, 286], [85, 268], [165, 244], [250, 230], [340, 248], [430, 226], [515, 260], [600, 278]],
-    { water: "lake", weather: "cloud", cues: [["ship", 500, 315, .7], ["dock", 105, 337, .8], ["forest", 330, 267, .8]] }
+    { weather: "none", cues: [] }
   ),
   "La Selva, Costa Rica": profile(
     "la-selva-river-corridor", "La Selva river-to-volcano corridor",
@@ -494,19 +494,19 @@ const sceneCompositions = Object.freeze({
     "M155 305 Q300 237 447 302 Q309 372 155 305Z M235 309 Q302 277 372 307", [1, 0, 2],
     "nested oval caldera rims containing crater water and a smaller young cone"
   ),
-  "sanda-cacao-highland": composition(
-    "M0 382 L103 355 L198 379 L292 344 L398 374 L492 341 L600 363 V430 H0Z",
-    "M0 318 L600 278 V344 L0 385Z M0 337 L600 302 M0 358 L600 325",
-    [["cacao", 24, 367, 1.06], ["cacao", 570, 375, .84]],
-    "M40 388H205 M68 369H238 M98 350H275", [0, 2, 1],
-    "a cacao trunk arch over clear stepped highland cultivation"
+  "sanda-ju1873-cacao-plantation": composition(
+    "M0 394Q111 366 222 389T419 379T600 394V430H0Z",
+    "M0 309Q90 281 178 296T335 279T478 291T600 271V430H0Z",
+    [],
+    "M34 410Q152 374 277 399T568 383", [],
+    "two unequal inward-bending cacao trunks framing one dominant decaying fruit beneath a narrow pale ridge gap"
   ),
-  "barro-gatun": composition(
-    "M0 395 Q121 369 240 393 Q363 417 481 384 L600 390 V430 H0Z",
-    "M0 321 Q142 286 278 319 Q414 352 600 305 V430 H0Z",
-    [["dock", 28, 403, .92], ["forest", 322, 348, .75]],
-    "M0 430 L178 332 M24 430 L193 342", [1, 0, 2],
-    "a diagonal research dock, compact island dome, and long distant canal ship"
+  "bci-qg2726-gustavia-bait-forest": composition(
+    "M0 393Q108 363 212 386T410 377T600 392V430H0Z",
+    "M0 306Q82 276 171 291T330 274T478 287T600 266V430H0Z",
+    [],
+    "M42 408Q165 376 284 397T562 381", [],
+    "one low oval bait cup below an off-centre buttress, with a diagonal six-bait field array and a narrow opposing canopy opening"
   ),
   "la-selva-river-corridor": composition(
     "M0 389 Q108 355 213 382 Q302 405 384 373 Q486 333 600 365 V430 H0Z",
@@ -869,6 +869,50 @@ function drawAhmedabadScene(target, profile, sceneComposition) {
     sceneComposition.cueOrder.map(index => profile.cues[index]).filter(Boolean).forEach(cue => drawFeature(target, cue));
     const foreground = append(target, "g", { class: "environment-composition-foreground" });
     sceneComposition.foreground.forEach(cue => drawFeature(foreground, cue));
+  }, { once: true });
+}
+
+function drawBarroColoradoScene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "barro-colorado-painted-background",
+    href: "assets/barro-colorado-painted-background.webp",
+    x: 0,
+    y: 0,
+    width: 600,
+    height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  }, { once: true });
+}
+
+function drawSandaJU1873Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "sanda-ju1873-painted-background",
+    href: "assets/sanda-ju1873-painted-background.webp",
+    x: 0,
+    y: 0,
+    width: 600,
+    height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
   }, { once: true });
 }
 
@@ -2068,6 +2112,14 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   habitatElement?.style.setProperty("--environment-water", palette[4]);
   habitatElement?.style.setProperty("--environment-detail", palette[6]);
 
+  if (profile.id === "sanda-ju1873-cacao-plantation") {
+    drawSandaJU1873Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "bci-qg2726-gustavia-bait-forest") {
+    drawBarroColoradoScene(target, profile, sceneComposition);
+    return;
+  }
   if (profile.id === "ahmedabad-pol-sabarmati") {
     drawAhmedabadScene(target, profile, sceneComposition);
     return;

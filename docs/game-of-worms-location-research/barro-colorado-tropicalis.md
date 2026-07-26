@@ -1,11 +1,14 @@
 # Barro Colorado Island *Caenorhabditis tropicalis* QG2726 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-26
 
 ## Purpose
 
 This dossier defines the evidence boundary and illustration contract for the
 Barro Colorado Island, Panama environment and its three paired accessories.
+
+Implemented on 2026-07-26 with a dedicated painted forest-floor background,
+the exact QG2726 marker metadata and six independently movable bespoke objects.
 
 ## Representative collection record
 

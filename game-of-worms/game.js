@@ -2,8 +2,8 @@ import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
-import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260726-4";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260726-4";
+import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260726-6";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260726-6";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -146,7 +146,7 @@ const species = [
     habitatOne: "#a9c796",
     habitatTwo: "#8d79bd",
     locations: [
-      { name: "Sanda, Bali · JU1873", coordinates: [115.0, -8.3], source: "Félix Lab", style: "rainforest", history: "JU1873 was isolated from a rotten cacao fruit collected in a plantation near Sanda, Bali, in November 2009." }
+      { name: "Sanda, Bali · JU1873", coordinates: [115.02965, -8.36130], source: "Félix Lab JU1873 record", style: "rainforest", strain: "JU1873", history: "JU1873, previously ZB.5, is the type and reference isolate of C. wallacei. J.-B. Pénigault collected and isolated it from one rotting cacao fruit in a cacao plantation near Sanda Center on 11 November 2009; it was plated on 16 November. Elevation, collection weather, plantation structure and the fruit’s exact state of decay were not recorded." }
     ]
   },
   {
@@ -170,7 +170,7 @@ const species = [
     habitatOne: "#7ad6c0",
     habitatTwo: "#f08a85",
     locations: [
-      { name: "Barro Colorado Island, Panama", coordinates: [-79.840, 9.160], source: "CaeNDR", style: "rainforest" },
+      { name: "Barro Colorado Island, Panama", coordinates: [-79.8399, 9.1598], source: "CaeNDR QG2726 isotype record", style: "rainforest", strain: "QG2726", history: "This marker represents QG2726, one of multiple C. tropicalis records at this Barro Colorado Island coordinate. L. Noble sampled and isolated it at 130 m on 27 March 2015 from an experimental bait labelled Cup Lutz Eq3 and described as Gustavia superba slurry. The bait was an experimental habitat patch, not a naturally fallen flower." },
       { name: "La Selva, Costa Rica", coordinates: [-84.009, 10.426], source: "CaeNDR", style: "rainforest" },
       { name: "Guadeloupe", coordinates: [-61.643, 16.044], source: "CaeNDR", style: "ocean" },
       { name: "Nouragues, French Guiana · JU1428", coordinates: [-52.68, 4.08], source: "CaeNDR JU1428 isotype record", style: "rainforest", strain: "JU1428", history: "JU1428 is CaeNDR’s isotype-reference C. tropicalis strain, also called 4A2. P. Châtelet sampled its rotting Duguetia surinamensis fruit on Petit Plateau in Nouragues forest in 2008, and M.-A. Félix isolated the strain. CaeNDR records forest at 86 m; JU1429 and JU1430 share its isotype group." },
