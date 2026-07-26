@@ -39,7 +39,11 @@
 
       document.documentElement.lang = language;
       document.title = copy.page_title;
-      document.querySelector('meta[name="description"]').setAttribute('content', copy.meta_description);
+      document.querySelectorAll(
+        'meta[name="description"], meta[property="og:description"], meta[name="twitter:description"]'
+      ).forEach(function (meta) {
+        meta.setAttribute('content', copy.meta_description);
+      });
       document.querySelectorAll('.lang-btn').forEach(function (button) {
         button.setAttribute('aria-pressed', String(button.getAttribute('data-language') === language));
       });

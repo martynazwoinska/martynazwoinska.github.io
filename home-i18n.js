@@ -15,8 +15,8 @@
     "hero_expertise": ".hero .hero-expertise",
     "about_title": "#about h2",
     "about_intro": "#about > p:nth-of-type(1)",
-    "about_chatbot": "#about > p:nth-of-type(2)",
-    "about_quote": "#about > blockquote",
+    "about_chatbot": "#about > p:nth-of-type(2) > span",
+    "about_quote": "#about > blockquote > span",
     "research_title": "#research h2",
     "research_intro": "#research > p",
     "interest_1": "#research .interest-list li:nth-child(1)",
@@ -119,7 +119,7 @@
   };
   var englishInterfaceCopy = {
     "page_title": "Martyna K. Zwoińska | Evolutionary Biologist, Uppsala University",
-    "meta_description": "Martyna Katarzyna Zwoińska is an evolutionary biologist at Uppsala University studying life-history evolution, ageing, plasticity, and the evolution of adaptive responses to environmental uncertainty.",
+    "meta_description": "I am an evolutionary biologist interested in all things adaptation and maladaptation. I combine experimental research, genomics and data analysis.",
     "theme_light": "Switch to light mode",
     "theme_dark": "Switch to dark mode",
     "primary_nav": "Primary navigation",
@@ -144,7 +144,7 @@
   var translatedCopy = {
     "sv": {
           "page_title": "Martyna K. Zwoińska | Evolutionsbiolog, Uppsala universitet",
-          "meta_description": "Martyna Katarzyna Zwoińska är evolutionsbiolog vid Uppsala universitet. Hennes forskning rör livshistorieevolution, åldrande, fenotypisk plasticitet och anpassning till föränderliga miljöer.",
+          "meta_description": "Jag är evolutionsbiolog och intresserar mig för allt som rör anpassning och felanpassning. Jag kombinerar experimentell forskning, genomik och dataanalys.",
           "theme_light": "Växla till ljust tema",
           "theme_dark": "Växla till mörkt tema",
           "primary_nav": "Huvudnavigering",
@@ -228,7 +228,7 @@
     },
     "pl": {
           "page_title": "Martyna K. Zwoińska | Biolożka ewolucyjna, Uniwersytet w Uppsali",
-          "meta_description": "Martyna Katarzyna Zwoińska jest biolożką ewolucyjną na Uniwersytecie w Uppsali. Bada ewolucję historii życiowych, starzenie się, plastyczność fenotypową i adaptację do zmiennego środowiska.",
+          "meta_description": "Jestem biolożką ewolucyjną i interesuje mnie wszystko, co wiąże się z adaptacją i maladaptacją. Łączę badania eksperymentalne, genomikę i analizę danych.",
           "theme_light": "Włącz jasny motyw",
           "theme_dark": "Włącz ciemny motyw",
           "primary_nav": "Główna nawigacja",
