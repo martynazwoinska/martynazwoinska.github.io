@@ -1497,6 +1497,44 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .tumbler-foot-pad { fill: color-mix(in srgb, #606963 76%, var(--worm-deep)); stroke: color-mix(in srgb, #343d3a 82%, var(--worm-deep)); stroke-width: 2; }
 .tumbler-foot-bolt { fill: color-mix(in srgb, #bd9248 73%, var(--local-secondary)); stroke: none; }
 
+.ishigaki-accessory { filter: drop-shadow(0 5px 4px rgba(24,45,40,.24)); }
+.ishigaki-headband,
+.pannier-yoke,
+.pannier-harness { fill: none; stroke: color-mix(in srgb, #7b4e42 74%, var(--worm-deep)); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.fig-half-rind,
+.fig-skin-petal { fill: color-mix(in srgb, #789b61 70%, var(--local-primary)); stroke: color-mix(in srgb, #355846 78%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
+.fig-skin-petal.light { fill: color-mix(in srgb, #99b777 66%, var(--local-primary)); }
+.fig-half-cavity { fill: color-mix(in srgb, #d6bd77 68%, var(--local-secondary)); stroke: color-mix(in srgb, #7b5c47 72%, var(--worm-deep)); stroke-width: 2.2; }
+.fig-floret { fill: color-mix(in srgb, #8e5364 70%, var(--local-secondary)); stroke: color-mix(in srgb, #5c3a46 72%, var(--worm-deep)); stroke-width: .8; }
+.fig-floret.light { fill: color-mix(in srgb, #e4c98c 72%, var(--local-secondary)); }
+.fig-cut-rim,
+.fig-leaf-vein { fill: none; stroke: color-mix(in srgb, #d3b875 68%, var(--local-secondary)); stroke-width: 2; stroke-linecap: round; }
+.fig-leaf { fill: color-mix(in srgb, #49795a 80%, var(--local-primary)); stroke: color-mix(in srgb, #284b3b 78%, var(--worm-deep)); stroke-width: 2.4; stroke-linejoin: round; }
+.fig-rosette-heart { fill: color-mix(in srgb, #a55d6c 72%, var(--local-secondary)); stroke: color-mix(in srgb, #633d49 72%, var(--worm-deep)); stroke-width: 1.6; }
+.fig-wasp-body,
+.fig-wasp-head { fill: color-mix(in srgb, #3a3029 84%, var(--worm-deep)); stroke: color-mix(in srgb, #1f2927 80%, var(--worm-deep)); stroke-width: 1; }
+.fig-wasp-wing { fill: color-mix(in srgb, rgba(237,249,243,.84) 78%, var(--local-secondary)); stroke: color-mix(in srgb, #54786f 70%, var(--worm-deep)); stroke-width: 1; }
+.fig-wasp-leg { fill: none; stroke: color-mix(in srgb, #3a3029 84%, var(--worm-deep)); stroke-width: 1.3; stroke-linecap: round; }
+.pannier-basket,
+.pannier-cup { fill: color-mix(in srgb, #b78955 72%, var(--local-secondary)); stroke: color-mix(in srgb, #654a37 78%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.pannier-cup.right { fill: color-mix(in srgb, #8d7852 65%, var(--local-primary)); }
+.pannier-rim,
+.pannier-lid { fill: color-mix(in srgb, #c9a36a 72%, var(--local-secondary)); stroke: color-mix(in srgb, #684c37 78%, var(--worm-deep)); stroke-width: 2.5; }
+.pannier-weave { fill: none; stroke: color-mix(in srgb, #73533c 72%, var(--worm-deep)); stroke-width: 1.8; stroke-linecap: round; opacity: .75; }
+.pannier-fig { fill: color-mix(in srgb, #6f9865 74%, var(--local-primary)); stroke: color-mix(in srgb, #3b5b45 76%, var(--worm-deep)); stroke-width: 1.6; }
+.pannier-fig.light { fill: color-mix(in srgb, #93b36e 70%, var(--local-primary)); }
+.pannier-ostiole { fill: color-mix(in srgb, #855568 72%, var(--local-secondary)); stroke: none; }
+.pannier-latch { fill: color-mix(in srgb, #c49a50 70%, var(--local-secondary)); stroke: color-mix(in srgb, #634a2e 76%, var(--worm-deep)); stroke-width: 1.5; }
+.pannier-tag { fill: color-mix(in srgb, #eee4c8 82%, var(--paper-strong)); stroke: color-mix(in srgb, #79694e 68%, var(--worm-deep)); stroke-width: 1.5; }
+.pannier-tag-line { fill: none; stroke: color-mix(in srgb, #79694e 68%, var(--worm-deep)); stroke-width: 1.2; }
+.fig-wasp-wing-panel,
+.fig-wasp-hindwing { fill: rgba(225,246,239,.72); stroke: color-mix(in srgb, #4d7d71 72%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.fig-wasp-hindwing { fill: rgba(242,226,196,.64); }
+.fig-wing-vein { fill: none; stroke: color-mix(in srgb, #5e8a7e 70%, var(--worm-deep)); stroke-width: 1.7; stroke-linecap: round; }
+.fig-wing-harness { fill: color-mix(in srgb, #8d5963 70%, var(--local-secondary)); stroke: color-mix(in srgb, #563842 76%, var(--worm-deep)); stroke-width: 2.7; stroke-linejoin: round; }
+.fig-wing-harness-detail { fill: none; stroke: color-mix(in srgb, #d2b36e 70%, var(--local-secondary)); stroke-width: 2; stroke-linecap: round; }
+.fig-wing-buckle { fill: color-mix(in srgb, #caa054 72%, var(--local-secondary)); stroke: color-mix(in srgb, #654a2e 78%, var(--worm-deep)); stroke-width: 1.5; }
+
 .scanner-cast-frame,
 .scanner-portal { fill: color-mix(in srgb, #48504e 81%, var(--worm-deep)); stroke: color-mix(in srgb, #283330 84%, var(--worm-deep)); stroke-width: 3.5; stroke-linejoin: round; fill-rule: evenodd; }
 .scanner-portal { fill: color-mix(in srgb, #5a625f 75%, var(--local-primary)); }

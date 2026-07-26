@@ -818,6 +818,33 @@ function drawBristolScene(target, palette) {
   }, { once: true });
 }
 
+function drawIshigakiScene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "ishigaki-painted-background",
+    href: "assets/ishigaki-reef-painted-background.webp",
+    x: 0,
+    y: 0,
+    width: 600,
+    height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    drawWeather(target, profile.weather, palette);
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    drawWater(target, profile.water, palette);
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+    sceneComposition.cueOrder.map(index => profile.cues[index]).filter(Boolean).forEach(cue => drawFeature(target, cue));
+    const foreground = append(target, "g", { class: "environment-composition-foreground" });
+    sceneComposition.foreground.forEach(cue => drawFeature(foreground, cue));
+  }, { once: true });
+}
+
 function drawLegacyBristolScene(target, palette) {
   append(target, "rect", { class: "environment-sky bristol-sky", width: 600, height: 430, fill: palette[0] });
 
@@ -2014,6 +2041,10 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   habitatElement?.style.setProperty("--environment-water", palette[4]);
   habitatElement?.style.setProperty("--environment-detail", palette[6]);
 
+  if (profile.id === "ishigaki-reef-estuary") {
+    drawIshigakiScene(target, profile, sceneComposition);
+    return;
+  }
   if (profile.id === "bristol-garden-gorge") {
     drawBristolScene(target, palette);
     return;

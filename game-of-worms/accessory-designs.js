@@ -2847,12 +2847,78 @@ function drawRepeatedFamilyAccessory(group, item, companion) {
 function drawUniqueNamedAccessory(group, item, companion) {
   switch (item.family) {
     case "fig-fascinator": {
-      const halves = companion ? [[-14, -18, -18], [13, -13, 14]] : [[-22, -24, -24], [0, -33, 2], [23, -19, 23]];
-      halves.forEach(([x, y, angle], index) => {
-        path(group, `M${x} ${y - 22}Q${x - 20} ${y - 3} ${x} ${y + 19}Q${x + 20} ${y - 3} ${x} ${y - 22}Z`, index % 2 ? "acc-accent" : "acc-main").setAttribute("transform", `rotate(${angle} ${x} ${y})`);
-        line(group, `M${x} ${y - 16}V${y + 13}`);
-      });
-      path(group, companion ? "M-39 8Q0-9 39 8L29 21Q0 9-29 21Z" : "M-52 10Q0-14 52 9L39 28Q0 12-39 28Z", "acc-soft");
+      group.classList.add("ishigaki-accessory", "ishigaki-fascinator", companion ? "ishigaki-fascinator-male" : "ishigaki-fascinator-female");
+      if (companion) {
+        path(group, "M-47 22Q0-6 47 20", "ishigaki-headband");
+        const rosette = add(group, "g", { class: "fig-rosette", transform: "translate(4 -23) rotate(7)" });
+        [-52,-26,0,27,53].forEach((angle, index) => {
+          path(rosette, "M0 4Q-25-13-11-34Q8-49 17-26Q27-6 0 4Z", index % 2 ? "fig-skin-petal light" : "fig-skin-petal").setAttribute("transform", `rotate(${angle})`);
+        });
+        add(rosette, "circle", { class: "fig-rosette-heart", cx: 0, cy: -3, r: 9 });
+        path(group, "M-27-22Q-52-55-70-28Q-51-12-27-22Z", "fig-leaf");
+        line(group, "M-29-23L-61-31", "fig-leaf-vein");
+        const wasp = add(group, "g", { class: "fig-wasp-pin", transform: "translate(37 -29) rotate(18)" });
+        add(wasp, "ellipse", { class: "fig-wasp-body", cx: 0, cy: 0, rx: 8, ry: 4 });
+        add(wasp, "circle", { class: "fig-wasp-head", cx: -9, cy: -1, r: 3.5 });
+        path(wasp, "M-1-2Q3-15 11-7Q8 1-1 2ZM1 2Q8 4 8 11Q0 10-2 3Z", "fig-wasp-wing");
+        line(wasp, "M-8-3L-14-10M-8 1L-15 7", "fig-wasp-leg");
+      } else {
+        path(group, "M-59 26Q0-10 60 23", "ishigaki-headband");
+        path(group, "M-35-54Q-53-22-38 10Q-5 31 30 8Q47-20 31-51Q0-71-35-54Z", "fig-half-rind");
+        add(group, "ellipse", { class: "fig-half-cavity", cx: -2, cy: -21, rx: 27, ry: 31, transform: "rotate(-4 -2 -21)" });
+        [[-15,-37],[-3,-42],[10,-35],[-19,-22],[-5,-24],[10,-19],[-13,-8],[2,-8],[15,-5]].forEach(([cx,cy], index) => {
+          add(group, "circle", { class: index % 2 ? "fig-floret light" : "fig-floret", cx, cy, r: 2.8 });
+        });
+        path(group, "M29-42Q51-72 73-43Q57-19 31-28Z", "fig-leaf");
+        line(group, "M31-35L65-46M47-40L55-56", "fig-leaf-vein");
+        path(group, "M-40-52Q-4-72 32-52", "fig-cut-rim");
+      }
+      return true;
+    }
+    case "sample-pannier": {
+      group.classList.add("ishigaki-accessory", "ishigaki-pannier", companion ? "ishigaki-pannier-male" : "ishigaki-pannier-female");
+      if (companion) {
+        path(group, "M-62-37Q0-69 61-34", "pannier-yoke");
+        path(group, "M-66-28Q-41-39-17-25L-13 39Q-39 57-65 39Z", "pannier-cup left");
+        path(group, "M15-22Q40-35 64-19L59 43Q37 57 14 39Z", "pannier-cup right");
+        line(group, "M-61-12Q-39 0-16-10M-58 9Q-38 19-14 8M18-6Q39 4 61-5M17 16Q38 27 60 16", "pannier-weave");
+        [-39,36,49].forEach((cx, index) => {
+          add(group, "circle", { class: index % 2 ? "pannier-fig light" : "pannier-fig", cx, cy: index ? -15 : -22, r: 11-index*1.2 });
+          add(group, "circle", { class: "pannier-ostiole", cx, cy: index ? -15 : -22, r: 2.2 });
+        });
+        path(group, "M-5-47L20-43L16-27L-9-31Z", "pannier-tag");
+        line(group, "M0-43L13-32", "pannier-tag-line");
+      } else {
+        path(group, "M-76-46Q-11-89 64-45M-64-43Q-22-65 20-53Q54-45 73-14", "pannier-harness");
+        path(group, "M-67-31Q0-61 68-28L58 53Q0 82-61 53Z", "pannier-basket");
+        add(group, "ellipse", { class: "pannier-rim", cx: 1, cy: -28, rx: 68, ry: 22 });
+        [-48,-24,0,24,48].forEach(x => line(group, `M${x}-38Q${x * .82} 11 ${x * .74} 59`, "pannier-weave"));
+        [-5,19,42].forEach(y => line(group, `M-61 ${y}Q0 ${y + 21} 61 ${y - 1}`, "pannier-weave"));
+        [[-33,-36,16],[-3,-45,18],[31,-34,15]].forEach(([cx,cy,r], index) => {
+          add(group, "circle", { class: index === 1 ? "pannier-fig light" : "pannier-fig", cx, cy, r });
+          add(group, "circle", { class: "pannier-ostiole", cx, cy, r: 3 });
+        });
+        path(group, "M-66-35Q0-70 69-32L57-10Q0-38-59-10Z", "pannier-lid");
+        add(group, "circle", { class: "pannier-latch", cx: 55, cy: -18, r: 5 });
+      }
+      return true;
+    }
+    case "wings": {
+      group.classList.add("ishigaki-accessory", "ishigaki-wings", companion ? "ishigaki-wings-male" : "ishigaki-wings-female");
+      if (companion) {
+        path(group, "M-7-4Q-43-45-67-13Q-54 22-10 22ZM7-4Q43-45 67-13Q54 22 10 22Z", "fig-wasp-wing-panel male");
+        path(group, "M-9 14Q-38 14-48 43Q-19 47-3 24ZM9 14Q38 14 48 43Q19 47 3 24Z", "fig-wasp-hindwing male");
+        line(group, "M-57-13L-7 13M-43-27L-26 19M57-13L7 13M43-27L26 19M-41 35L-5 20M41 35L5 20", "fig-wing-vein");
+        path(group, "M-22-12L21 31M22-12L-21 31", "fig-wing-harness");
+        add(group, "ellipse", { class: "fig-wing-buckle", cx: 0, cy: 9, rx: 10, ry: 8 });
+      } else {
+        path(group, "M-10-2Q-58-79-94-34Q-77 18-12 27ZM10-2Q58-79 94-34Q77 18 12 27Z", "fig-wasp-wing-panel female");
+        path(group, "M-14 18Q-57 22-69 64Q-31 69-4 34ZM14 18Q57 22 69 64Q31 69 4 34Z", "fig-wasp-hindwing female");
+        line(group, "M-84-34L-11 18M-66-58L-42 22M-49-62L-25 25M84-34L11 18M66-58L42 22M49-62L25 25M-58 55L-7 29M58 55L7 29", "fig-wing-vein");
+        path(group, "M-27-17Q0-33 27-17L18 37Q0 48-18 37Z", "fig-wing-harness");
+        path(group, "M-19-9Q0 1 19-9M-16 15Q0 25 16 15", "fig-wing-harness-detail");
+        add(group, "circle", { class: "fig-wing-buckle", cx: 0, cy: 34, r: 7 });
+      }
       return true;
     }
     case "shade-visor":
@@ -3158,7 +3224,9 @@ function renderPiece(target, item, wormPart) {
     "ngm-agar-plate": { primary: [366, 260, .82, -6], companion: [35, 288, .65, 2] },
     "n2-lab-coat": { primary: [180, 214, 1, 0], companion: [52, 168, .92, -1] },
     "cryo-vial-jetpack": { primary: [278, 143, .9, -3], companion: [31, 155, .72, 5] },
-    "fig-fascinator": { primary: [330, 22, .9, -1], companion: [111, 99, .62, 0] },
+    "fig-fascinator": { primary: [326, 55, .64, -2], companion: [108, 105, .5, 3] },
+    "sample-pannier": { primary: [170, 196, .72, -4], companion: [55, 183, .52, 4] },
+    "wings": { primary: [195, 156, .72, -2], companion: [77, 157, .5, 4] },
     "hogweed-specimen-lantern": { primary: [327, 133, .66, 3], companion: [61, 126, .58, -4] },
     "santeuil-cylinder-organ": { primary: [183, 191, .59, -2], companion: [86, 208, .52, 2] },
     "couleuvre-dragonfly-automaton": { primary: [304, 235, .61, -2], companion: [76, 266, .5, 3] },
