@@ -741,6 +741,13 @@
       -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C40 20 28 14 28 7 C28 2 37 1 43 4 C49 8 48 14 42 17 C36 19 32 15 34 10 M42 17 C37 24 29 28 21 25 M884 20 C900 20 912 14 912 7 C912 2 903 1 897 4 C891 8 892 14 898 17 C904 19 908 15 906 10 M898 17 C903 24 911 28 919 25' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13 21 C20 17 28 20 31 26 C27 34 18 34 13 21Z M927 21 C920 17 912 20 909 26 C913 34 922 34 927 21Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
               mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C40 20 28 14 28 7 C28 2 37 1 43 4 C49 8 48 14 42 17 C36 19 32 15 34 10 M42 17 C37 24 29 28 21 25 M884 20 C900 20 912 14 912 7 C912 2 903 1 897 4 C891 8 892 14 898 17 C904 19 908 15 906 10 M898 17 C903 24 911 28 919 25' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13 21 C20 17 28 20 31 26 C27 34 18 34 13 21Z M927 21 C920 17 912 20 909 26 C913 34 922 34 927 21Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
     }
+    @media (max-width: 620px) {
+      section::before, section::after, section > h2::before {
+        top: -20px;
+        width: min(calc(100% + 56px), calc(100vw - 16px));
+        height: 40px;
+      }
+    }
     @media (min-width: 1200px) {
       section::before, section::after, section > h2::before {
         transform: translateX(-50%) scaleX(1.12);
@@ -839,8 +846,10 @@
     .pub-archive summary {
       display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
       margin-top: 0; padding: 8px 14px; list-style: none; cursor: pointer;
-      background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
-      color: var(--accent); box-shadow: var(--shadow); font-size: .9rem; font-weight: 600;
+      background: color-mix(in srgb, var(--surface) 58%, var(--bg));
+      border: 1px solid color-mix(in srgb, var(--accent-gold) 30%, var(--border));
+      border-radius: 13px 6px 12px 7px;
+      color: var(--accent); box-shadow: none; font-size: .9rem; font-weight: 600;
     }
     .pub-archive summary::-webkit-details-marker { display: none; }
     .pub-archive summary:hover { color: var(--accent-berry); border-color: color-mix(in srgb, var(--accent-berry) 58%, var(--border)); }
@@ -850,6 +859,21 @@
     .pub-toggle__hide { display: none; }
     .pub-archive[open] .pub-toggle__show { display: none; }
     .pub-archive[open] .pub-toggle__hide { display: inline; }
+    .publication-actions .pill {
+      min-height: 44px;
+      background: color-mix(in srgb, var(--surface) 58%, var(--bg));
+      border-color: color-mix(in srgb, var(--accent-gold) 30%, var(--border));
+      border-radius: 13px 6px 12px 7px;
+      box-shadow: none;
+    }
+    .publication-action-icon {
+      width: 17px; height: 17px; flex: 0 0 17px;
+      color: var(--accent-gold); fill: none; stroke: currentColor; stroke-width: 1.7;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .publication-action-icon--orcid > circle:first-child { stroke-width: 1.25; }
+    .publication-action-icon--orcid .contact-brand-letter { stroke-width: 2.15; }
+    .publication-action-icon--orcid .contact-brand-dot { fill: currentColor; stroke: none; }
 
     /* career break marker */
     .pub.leave { align-items: center; }
@@ -960,16 +984,16 @@
 
     /* contact */
     .contact-box {
-      position: relative; overflow: hidden; min-height: 244px;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 26px 260px 26px 26px; box-shadow: var(--shadow);
+      position: relative; min-height: 220px;
+      padding: 10px 236px 10px 0;
     }
     .contact-illustration-frame {
-      position: absolute; top: 24px; right: 28px;
+      position: absolute; top: 0; right: 0;
       width: 194px; height: 194px;
       overflow: hidden; border-radius: 50%;
       background: url("uppsala-contact.png") left center / auto 100% no-repeat;
-      border: 5px solid var(--surface); box-shadow: var(--shadow);
+      border: 1px solid color-mix(in srgb, var(--accent-gold) 60%, var(--border));
+      box-shadow: 0 8px 22px color-mix(in srgb, var(--text) 8%, transparent);
     }
     .contact-illustration {
       display: block; width: 100%; height: 100%;
@@ -1014,7 +1038,7 @@
       margin: 12px 0 0 !important; font-size: .86rem; overflow-wrap: anywhere;
     }
     @media (max-width: 620px) {
-      .contact-box { padding: 244px 22px 24px; }
+      .contact-box { min-height: 0; padding: 218px 0 0; }
       .contact-illustration-frame { left: 50%; right: auto; transform: translateX(-50%); }
       #contact .links { grid-template-columns: minmax(0, .9fr) minmax(0, 1.35fr); }
       #contact .pill { padding: 8px 10px; font-size: .84rem; }
@@ -1302,6 +1326,10 @@
     <div class="publication-actions">
     <details class="pub-archive">
       <summary>
+        <svg class="publication-action-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M4 12a8 8 0 1 0 2.35-5.65L4 8.7" />
+          <path d="M4 4v4.7h4.7M12 7.5V12l3 2" />
+        </svg>
         <span class="pub-toggle__show">Show earlier publications</span>
         <span class="pub-toggle__hide">Show fewer publications</span>
       </summary>
@@ -1411,8 +1439,21 @@
     </details>
 
     <div class="links">
-      <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">🎓 All publications on Google Scholar</a>
-      <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">🔗 ORCID record</a>
+      <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">
+        <svg class="publication-action-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="m2.5 8.5 9.5-5 9.5 5-9.5 5-9.5-5Z" />
+          <path d="M6.5 11.5v4.3c3.2 2.4 7.8 2.4 11 0v-4.3M21.5 8.5v6" />
+        </svg>
+        <span class="publication-action-label">All publications on Google Scholar</span>
+      </a>
+      <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">
+        <svg class="publication-action-icon publication-action-icon--orcid" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="9.25" />
+          <circle class="contact-brand-dot" cx="7.5" cy="7.7" r="1.25" />
+          <path class="contact-brand-letter" d="M7.5 11v6M11.6 7.3V17h2.25c3.35 0 5.25-1.72 5.25-4.85S17.2 7.3 13.85 7.3H11.6Z" />
+        </svg>
+        <span class="publication-action-label">ORCID record</span>
+      </a>
     </div>
     </div>
   </section>
