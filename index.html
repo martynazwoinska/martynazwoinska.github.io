@@ -866,15 +866,6 @@
       border-radius: 13px 6px 12px 7px;
       box-shadow: none;
     }
-    .publication-action-icon {
-      width: 17px; height: 17px; flex: 0 0 17px;
-      color: var(--accent-gold); fill: none; stroke: currentColor; stroke-width: 1.7;
-      stroke-linecap: round; stroke-linejoin: round;
-    }
-    .publication-action-icon--orcid > circle:first-child { stroke-width: 1.25; }
-    .publication-action-icon--orcid .contact-brand-letter { stroke-width: 2.15; }
-    .publication-action-icon--orcid .contact-brand-dot { fill: currentColor; stroke: none; }
-
     /* career break marker */
     .pub.leave { align-items: center; }
     .pub.leave .year { color: var(--accent); font-size: .82rem; letter-spacing: .01em; }
@@ -1326,10 +1317,6 @@
     <div class="publication-actions">
     <details class="pub-archive">
       <summary>
-        <svg class="publication-action-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M4 12a8 8 0 1 0 2.35-5.65L4 8.7" />
-          <path d="M4 4v4.7h4.7M12 7.5V12l3 2" />
-        </svg>
         <span class="pub-toggle__show">Show earlier publications</span>
         <span class="pub-toggle__hide">Show fewer publications</span>
       </summary>
@@ -1440,18 +1427,9 @@
 
     <div class="links">
       <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">
-        <svg class="publication-action-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="m2.5 8.5 9.5-5 9.5 5-9.5 5-9.5-5Z" />
-          <path d="M6.5 11.5v4.3c3.2 2.4 7.8 2.4 11 0v-4.3M21.5 8.5v6" />
-        </svg>
         <span class="publication-action-label">All publications on Google Scholar</span>
       </a>
       <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">
-        <svg class="publication-action-icon publication-action-icon--orcid" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <circle cx="12" cy="12" r="9.25" />
-          <circle class="contact-brand-dot" cx="7.5" cy="7.7" r="1.25" />
-          <path class="contact-brand-letter" d="M7.5 11v6M11.6 7.3V17h2.25c3.35 0 5.25-1.72 5.25-4.85S17.2 7.3 13.85 7.3H11.6Z" />
-        </svg>
         <span class="publication-action-label">ORCID record</span>
       </a>
     </div>
