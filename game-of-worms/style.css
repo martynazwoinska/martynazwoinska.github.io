@@ -1448,6 +1448,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .kilt-sett { fill: none; stroke-linecap: round; opacity: .72; }
 .kilt-sett.horizontal { stroke: color-mix(in srgb, #b6894f 68%, var(--local-secondary)); stroke-width: 2.1; }
 .kilt-sett.vertical { stroke: color-mix(in srgb, #8b5360 70%, var(--local-secondary)); stroke-width: 1.8; }
+.kilt-hem { fill: none; stroke: color-mix(in srgb, #d0aa65 66%, var(--local-secondary)); stroke-width: 2.2; stroke-linecap: round; opacity: .84; }
 .kilt-sporran { fill: color-mix(in srgb, #d4c5a4 73%, var(--paper-strong)); stroke: color-mix(in srgb, #5e5546 76%, var(--worm-deep)); stroke-width: 2.2; }
 .kilt-sporran-cap { fill: color-mix(in srgb, #7b6244 69%, var(--local-secondary)); stroke: color-mix(in srgb, #54432f 75%, var(--worm-deep)); stroke-width: 1.5; }
 .kilt-sporran-tassel { fill: none; stroke: color-mix(in srgb, #6d5d49 72%, var(--worm-deep)); stroke-width: 2.5; stroke-linecap: round; }
@@ -1455,9 +1456,11 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .bagpipe-bag.companion { fill: color-mix(in srgb, #596d5d 66%, var(--local-primary)); }
 .bagpipe-cover { fill: none; stroke: color-mix(in srgb, #b78952 68%, var(--local-secondary)); stroke-width: 2.1; stroke-linecap: round; opacity: .82; }
 .bagpipe-cord { fill: none; stroke: color-mix(in srgb, #8d5361 72%, var(--local-secondary)); stroke-width: 4; stroke-linecap: round; }
+.bagpipe-fringe { fill: none; stroke: color-mix(in srgb, #8d5361 72%, var(--local-secondary)); stroke-width: 2.8; stroke-linecap: round; }
 .bagpipe-drone,
 .bagpipe-chanter,
 .bagpipe-blowpipe { fill: none; stroke: color-mix(in srgb, #49382e 82%, var(--worm-deep)); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.bagpipe-stock,
 .bagpipe-mount,
 .bagpipe-ring { fill: color-mix(in srgb, #c09a55 72%, var(--local-secondary)); stroke: color-mix(in srgb, #5d492c 78%, var(--worm-deep)); stroke-width: 1.7; }
 .bagpipe-ring { fill: color-mix(in srgb, #d4c59f 68%, var(--paper-strong)); }
@@ -1480,7 +1483,10 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .tumbler-door { fill: color-mix(in srgb, #b58c5e 70%, var(--local-secondary)); stroke: color-mix(in srgb, #5a4737 78%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
 .tumbler-door.lower { fill: color-mix(in srgb, #7a5b42 72%, var(--local-primary)); }
 .tumbler-hatch-hinge,
+.tumbler-frame-brace,
+.tumbler-stave-band,
 .tumbler-vent.companion { fill: none; stroke: color-mix(in srgb, #44504d 74%, var(--worm-deep)); stroke-width: 3; stroke-linecap: round; }
+.tumbler-stave-band { stroke-width: 1.6; opacity: .72; }
 .tumbler-cutaway { fill: color-mix(in srgb, #2f352e 79%, var(--worm-deep)); stroke: color-mix(in srgb, #4d4435 72%, var(--worm-deep)); stroke-width: 2; }
 .tumbler-compost.green { fill: color-mix(in srgb, #587247 77%, var(--local-primary)); stroke: #3f5039; stroke-width: 1.5; }
 .tumbler-compost.brown { fill: color-mix(in srgb, #745238 78%, var(--local-secondary)); stroke: #4e3d31; stroke-width: 1.5; }
@@ -1488,6 +1494,8 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .tumbler-latch,
 .tumbler-crank-knob,
 .tumbler-handwheel-hub { fill: color-mix(in srgb, #bd9248 73%, var(--local-secondary)); stroke: color-mix(in srgb, #594728 77%, var(--worm-deep)); stroke-width: 2; }
+.tumbler-foot-pad { fill: color-mix(in srgb, #606963 76%, var(--worm-deep)); stroke: color-mix(in srgb, #343d3a 82%, var(--worm-deep)); stroke-width: 2; }
+.tumbler-foot-bolt { fill: color-mix(in srgb, #bd9248 73%, var(--local-secondary)); stroke: none; }
 
 .scanner-cast-frame,
 .scanner-portal { fill: color-mix(in srgb, #48504e 81%, var(--worm-deep)); stroke: color-mix(in srgb, #283330 84%, var(--worm-deep)); stroke-width: 3.5; stroke-linejoin: round; fill-rule: evenodd; }

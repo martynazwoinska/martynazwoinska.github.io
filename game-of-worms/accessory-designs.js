@@ -597,22 +597,24 @@ function drawEdinburghAccessory(group, item, companion) {
     group.classList.add("edinburgh-accessory", "edinburgh-kilt", companion ? "edinburgh-kilt-companion" : "edinburgh-kilt-primary");
     if (companion) {
       add(group, "path", { class: "kilt-shadow", d: "M-48 57Q1 77 51 55Q27 82-43 78Z" });
-      add(group, "path", { class: "kilt-cloth companion", d: "M-37-9Q0-23 37-9L47 48Q3 69-46 50Z" });
-      add(group, "path", { class: "kilt-apron companion", d: "M-11-5Q7-14 25-5L30 48Q7 60-17 51Z" });
+      add(group, "path", { class: "kilt-cloth companion", d: "M-39-10Q-2-25 38-8L45 37Q30 58 5 63Q-22 63-46 49Q-36 18-39-10Z" });
+      add(group, "path", { class: "kilt-apron companion", d: "M-10-5Q8-15 27-4L29 39Q18 53-2 56Q-10 33-10-5Z" });
       add(group, "path", { class: "kilt-waistband", d: "M-42-12Q0-28 42-12L40 1Q0-13-40 1Z" });
       [-25,-12,1,14,27].forEach((x, index) => add(group, "path", { class: "kilt-pleat", d: `M${x}-2Q${x + (index % 2 ? 3 : -2)} 24 ${x * .86} 52` }));
       [-1,18,36].forEach(y => add(group, "path", { class: "kilt-sett horizontal", d: `M-35 ${y}Q0 ${y + 6} 34 ${y}` }));
       [-23,0,22].forEach(x => add(group, "path", { class: "kilt-sett vertical", d: `M${x}-7L${x * .9} 50` }));
+      add(group, "path", { class: "kilt-hem", d: "M-43 46Q1 68 43 42" });
       add(group, "path", { class: "kilt-sporran", d: "M-11 23Q0 14 11 23L9 38Q0 45-9 38Z" });
       add(group, "path", { class: "kilt-sporran-tassel", d: "M-5 38L-7 47M0 40V49M5 38L7 47" });
     } else {
       add(group, "path", { class: "kilt-shadow", d: "M-67 68Q2 96 72 64Q38 104-59 97Z" });
-      add(group, "path", { class: "kilt-cloth primary", d: "M-53-12Q0-34 53-12L66 64Q8 94-64 67Z" });
-      add(group, "path", { class: "kilt-apron primary", d: "M-15-7Q9-21 34-8L42 63Q11 83-23 69Z" });
+      add(group, "path", { class: "kilt-cloth primary", d: "M-56-13Q0-38 56-10L63 45Q45 73 12 82Q-26 84-65 66Q-48 29-56-13Z" });
+      add(group, "path", { class: "kilt-apron primary", d: "M-15-7Q9-22 35-7L39 48Q27 70 4 76Q-15 76-28 67Q-17 30-15-7Z" });
       add(group, "path", { class: "kilt-waistband", d: "M-62-17Q0-42 62-17L59 1Q0-22-59 2Z" });
       [-43,-28,-13,2,17,32,47].forEach((x, index) => add(group, "path", { class: "kilt-pleat", d: `M${x}-5Q${x + (index % 2 ? 5 : -4)} 30 ${x * .84} 70` }));
       [-3,23,49].forEach(y => add(group, "path", { class: "kilt-sett horizontal", d: `M-51 ${y}Q0 ${y + 10} 49 ${y}` }));
       [-37,-12,13,38].forEach(x => add(group, "path", { class: "kilt-sett vertical", d: `M${x}-10L${x * .88} 67` }));
+      add(group, "path", { class: "kilt-hem", d: "M-61 62Q-24 84 12 78Q42 72 59 48" });
       add(group, "path", { class: "kilt-sporran", d: "M-17 30Q0 17 17 30L14 50Q0 61-14 50Z" });
       add(group, "path", { class: "kilt-sporran-cap", d: "M-15 31Q0 23 15 31Q0 39-15 31Z" });
       add(group, "path", { class: "kilt-sporran-tassel", d: "M-8 50L-10 64M0 53V67M8 50L10 64" });
@@ -626,21 +628,27 @@ function drawEdinburghAccessory(group, item, companion) {
       add(group, "path", { class: "bagpipe-shadow", d: "M-54 41Q2 58 58 37Q28 66-49 63Z" });
       add(group, "path", { class: "bagpipe-bag companion", d: "M-34 22Q-51-4-29-29Q-3-43 25-27Q44-9 32 17Q5 42-34 22Z" });
       add(group, "path", { class: "bagpipe-cover", d: "M-32-18Q-3-37 27-19M-39-3L30 19M-25 25L37-4" });
+      add(group, "path", { class: "bagpipe-fringe", d: "M-29 23Q-4 38 25 23M-23 27L-27 36M-10 31L-11 41M4 32L5 42M18 27L22 36" });
       add(group, "path", { class: "bagpipe-cord", d: "M-17-24Q-47-52-40-76Q-31-89-20-78" });
       [[-18,-22,-28,-87],[-1,-27,-5,-98]].forEach(([x1,y1,x2,y2], index) => {
+        add(group, "ellipse", { class: "bagpipe-stock", cx: x1, cy: y1, rx: 8, ry: 6, transform: `rotate(${index ? -3 : -9} ${x1} ${y1})` });
         add(group, "path", { class: "bagpipe-drone", d: `M${x1} ${y1}L${x2} ${y2}` });
         add(group, "path", { class: "bagpipe-mount", d: `M${x2-7} ${y2+4}Q${x2} ${y2-6} ${x2+7} ${y2+4}L${x2+5} ${y2+13}H${x2-5}Z` });
+        add(group, "circle", { class: "bagpipe-ring", cx: x1 + (x2-x1)*.48, cy: y1 + (y2-y1)*.48, r: 4.4-index*.3 });
       });
       add(group, "path", { class: "bagpipe-chanter", d: "M21 5Q43 31 54 68" });
       add(group, "path", { class: "bagpipe-chanter-foot", d: "M47 65Q54 75 62 65Z" });
       [31,43,55].forEach((y,index) => add(group,"circle",{class:"bagpipe-hole",cx:40+index*5,cy:y,r:2.5}));
       add(group, "path", { class: "bagpipe-blowpipe", d: "M-31-22Q-56-41-70-30" });
+      add(group, "path", { class: "bagpipe-blowpipe-tip", d: "M-72-34Q-83-30-72-24" });
     } else {
       add(group, "path", { class: "bagpipe-shadow", d: "M-77 55Q2 82 81 51Q41 92-68 86Z" });
       add(group, "path", { class: "bagpipe-bag primary", d: "M-47 30Q-72-7-45-45Q-9-69 36-42Q65-10 45 27Q5 60-47 30Z" });
       add(group, "path", { class: "bagpipe-cover", d: "M-43-34Q-6-59 39-34M-56-14L43 31M-42 17L52-24M-22 39L56 1" });
+      add(group, "path", { class: "bagpipe-fringe", d: "M-39 31Q3 57 42 29M-32 36L-37 49M-16 43L-18 57M2 45L3 59M20 41L24 54M35 34L42 45" });
       add(group, "path", { class: "bagpipe-cord", d: "M-31-39Q-74-79-61-122Q-50-142-33-125M-11-49Q-35-88-22-145" });
       [[-32,-38,-45,-137],[-10,-47,-14,-155],[12,-40,22,-143]].forEach(([x1,y1,x2,y2], index) => {
+        add(group, "ellipse", { class: "bagpipe-stock", cx: x1, cy: y1, rx: 10, ry: 7, transform: `rotate(${index * 6 - 8} ${x1} ${y1})` });
         add(group, "path", { class: "bagpipe-drone", d: `M${x1} ${y1}L${x2} ${y2}` });
         add(group, "path", { class: "bagpipe-mount", d: `M${x2-9} ${y2+5}Q${x2} ${y2-9} ${x2+9} ${y2+5}L${x2+6} ${y2+18}H${x2-6}Z` });
         add(group, "circle", { class: "bagpipe-ring", cx: x1 + (x2-x1)*.45, cy: y1 + (y2-y1)*.45, r: 5-index*.4 });
@@ -670,6 +678,8 @@ function drawEdinburghAccessory(group, item, companion) {
       add(group, "circle", { class: "tumbler-handwheel-hub", cx: 78, cy: -2, r: 5 });
       [0,45,90,135].forEach(angle => add(group, "path", { class: "tumbler-handwheel-spoke", d: "M57-2H99", transform: `rotate(${angle} 78 -2)` }));
       add(group, "path", { class: "tumbler-foot", d: "M-67 40L-78 66H-53L-47 48ZM48 47L54 67H79L66 37Z" });
+      add(group, "path", { class: "tumbler-frame-brace", d: "M-65 47Q0 66 66 45M-57 53L-42 62M52 51L64 61" });
+      [-52,-18,17,50].forEach(x => add(group, "path", { class: "tumbler-stave-band", d: `M${x}-37Q${x + 4} -4 ${x + 5} 28` }));
       add(group, "path", { class: "tumbler-vent companion", d: "M-52-18L-38-20M37-22L51-19M-50 14L-37 17M38 12L53 9" });
     } else {
       add(group, "path", { class: "edinburgh-accessory-shadow", d: "M-76 89Q5 109 80 85Q43 117-68 111Z" });
@@ -686,6 +696,12 @@ function drawEdinburghAccessory(group, item, companion) {
       [[-39,-58],[-7,-62],[28,-61],[-45,-25],[-8,-27],[37,-31]].forEach(([cx, cy], index) => add(group, "circle", { class: "tumbler-vent", cx, cy, r: index % 3 === 1 ? 3.5 : 3 }));
       add(group, "path", { class: "tumbler-crank", d: "M56-21Q84-24 84 1L100 11" });
       add(group, "circle", { class: "tumbler-crank-knob", cx: 104, cy: 13, r: 7 });
+      add(group, "path", { class: "tumbler-frame-brace", d: "M-61 51L59 50M-55 70L-35 55M54 70L35 55" });
+      [-34,-9,16,40].forEach(x => add(group, "path", { class: "tumbler-stave-band", d: `M${x}-56Q${x + 4} -5 ${x + 3} 45` }));
+      [[-47,84],[48,84]].forEach(([cx,cy]) => {
+        add(group, "circle", { class: "tumbler-foot-pad", cx, cy, r: 7 });
+        add(group, "circle", { class: "tumbler-foot-bolt", cx, cy, r: 2.4 });
+      });
       add(group, "path", { class: "tumbler-ground-pin", d: "M-51 85V99M51 85V99M-62 99H-40M40 99H62" });
     }
     return true;
@@ -3146,7 +3162,7 @@ function renderPiece(target, item, wormPart) {
     "hogweed-specimen-lantern": { primary: [327, 133, .66, 3], companion: [61, 126, .58, -4] },
     "santeuil-cylinder-organ": { primary: [183, 191, .59, -2], companion: [86, 208, .52, 2] },
     "couleuvre-dragonfly-automaton": { primary: [304, 235, .61, -2], companion: [76, 266, .5, 3] },
-    "midmar-compost-tumbler": { primary: [118, 231, .43, -5], companion: [147, 113, .3, 4] },
+    "midmar-compost-tumbler": { primary: [112, 268, .5, -2], companion: [50, 248, .36, 3] },
     "galaxy-plate-scanner": { primary: [184, 204, .54, -1], companion: [68, 202, .43, 2] },
     "agassiz-ice-flow-model": { primary: [322, 260, .52, -2], companion: [52, 290, .42, 2] },
     "avocado-microhabitat-viewer": { primary: [322, 140, .52, -2], companion: [47, 124, .39, 3] },
@@ -3182,8 +3198,8 @@ function renderPiece(target, item, wormPart) {
     "qg2904-uncracked-pod-seam-scanner": { primary: [250, -62, .31, -2], companion: [-8, 90, .27, 2] },
     "qg2904-collection-to-funnel-relay": { primary: [220, 148, .32, -1], companion: [90, 212, .26, 2] },
     "dro-canopy-crane-strata-mapper": { primary: [377, 140, .29, -1], companion: [-5, 292, .26, 2] },
-    "edinburgh-tartan-kilt": { primary: [220, 182, .68, -2], companion: [72, 170, .45, 2] },
-    "great-highland-bagpipes": { primary: [286, 190, .48, -8], companion: [93, 168, .36, 7] }
+    "edinburgh-tartan-kilt": { primary: [220, 178, .64, -4], companion: [72, 168, .47, 3] },
+    "great-highland-bagpipes": { primary: [286, 186, .53, -9], companion: [91, 164, .4, 8] }
     ,"ju1373-torch-ginger-bract-collar": { primary: [366, 118, .33, -4], companion: [8, 112, .28, 5] }
     ,"ju1373-type-isolate-signet-engine": { primary: [224, 194, .31, -1], companion: [105, 207, .27, 2] }
     ,"saint-benoit-windward-slope-mobile": { primary: [365, 270, .31, 1], companion: [6, 286, .26, -2] }
