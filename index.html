@@ -789,26 +789,24 @@
       color: var(--text-soft); font-style: italic;
     }
 
-    /* interests */
+    /* research interests: a flat editorial index rather than static cards */
     .interest-list {
-      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 36px;
       padding: 0; margin: 26px 0 0; list-style: none;
     }
     .interest-list li {
-      display: flex; align-items: center; gap: 11px;
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 16px 18px; box-shadow: none;
-      color: var(--text); font-weight: 600; font-size: .95rem;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text); font-family: var(--display); font-size: 1.2rem;
+      font-weight: 700; line-height: 1.25;
+      -webkit-text-stroke: var(--display-stroke) currentColor; paint-order: stroke fill;
     }
-    .interest-list li::before {
-      content: ""; flex: 0 0 auto;
-      width: 7px; height: 7px; border-radius: 50%; background: var(--accent); opacity: .8;
-    }
-    @media (max-width: 840px) {
-      .interest-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
+    .interest-list li:nth-last-child(-n + 2) { border-bottom: 0; }
     @media (max-width: 620px) {
       .interest-list { grid-template-columns: 1fr; }
+      .interest-list li:nth-last-child(2) { border-bottom: 1px solid var(--border); }
+      .interest-list li:last-child { border-bottom: 0; }
     }
 
     /* publications */
@@ -899,6 +897,37 @@
         padding: 18px 0;
       }
       .folio-entry .cdesc { margin-top: 4px; }
+    }
+    .students-subsection {
+      position: relative; margin-top: 50px; padding-top: 43px;
+    }
+    .students-subsection::before {
+      content: ""; position: absolute; top: 0; left: 0;
+      width: 100%; height: 1px;
+      background: linear-gradient(
+        90deg,
+        var(--accent-gold) 0,
+        var(--accent-gold) calc(50% - 10px),
+        transparent calc(50% - 10px),
+        transparent calc(50% + 10px),
+        var(--accent-gold) calc(50% + 10px),
+        var(--accent-gold) 100%
+      );
+      opacity: .62;
+    }
+    .students-subsection::after {
+      content: ""; position: absolute; top: -2.5px; left: 50%;
+      width: 6px; height: 6px; transform: translateX(-50%) rotate(45deg);
+      background: var(--accent-gold);
+    }
+    .students-subsection h3 {
+      margin: 0 0 22px; color: var(--text);
+      font-size: 1.85rem; font-weight: 700;
+      -webkit-text-stroke: var(--display-stroke) currentColor; paint-order: stroke fill;
+    }
+    @media (max-width: 620px) {
+      .students-subsection { margin-top: 42px; padding-top: 37px; }
+      .students-subsection h3 { font-size: 1.7rem; }
     }
 
     /* project highlight */
@@ -1014,7 +1043,6 @@
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
         <a href="#collaborators">Collaborators</a>
-        <a href="#students">Students</a>
         <a href="#beyond-research" class="nav-beyond" aria-label="Beyond Research">Beyond Research</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -1392,7 +1420,7 @@
   <!-- ============ COLLABORATORS ============ -->
   <section id="collaborators" class="wrap">
     <h2>Collaborators</h2>
-    <ul class="folio-list">
+    <ul class="folio-list collaborator-list">
       <li class="folio-entry">
         <div class="cname"><a href="https://www.martinlind.org/" target="_blank" rel="noopener">Martin I. Lind</a></div>
         <div class="cinst">Halmstad University</div>
@@ -1414,23 +1442,21 @@
         <div class="cdesc">Sexual antagonism, balancing selection, and sex-biased gene expression.</div>
       </li>
     </ul>
-  </section>
-
-  <!-- ============ STUDENTS ============ -->
-  <section id="students" class="wrap">
-    <h2>Students</h2>
-    <ul class="folio-list">
-      <li class="folio-entry">
-        <div class="cname">Adithya Ganesh Venkataramani</div>
-        <div class="cinst">MSc · Uppsala University</div>
-        <div class="cdesc">Defended June 2025</div>
-      </li>
-      <li class="folio-entry">
-        <div class="cname">Gaurav Shobinath</div>
-        <div class="cinst">MSc · Uppsala University</div>
-        <div class="cdesc">Defended June 2026</div>
-      </li>
-    </ul>
+    <div id="students" class="students-subsection">
+      <h3>Students</h3>
+      <ul class="folio-list student-list">
+        <li class="folio-entry">
+          <div class="cname">Adithya Ganesh Venkataramani</div>
+          <div class="cinst">MSc · Uppsala University</div>
+          <div class="cdesc">Defended June 2025</div>
+        </li>
+        <li class="folio-entry">
+          <div class="cname">Gaurav Shobinath</div>
+          <div class="cinst">MSc · Uppsala University</div>
+          <div class="cdesc">Defended June 2026</div>
+        </li>
+      </ul>
+    </div>
   </section>
 
   <!-- ============ BEYOND RESEARCH ============ -->
