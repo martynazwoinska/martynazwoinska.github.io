@@ -979,6 +979,23 @@ function drawSanteuilScene(target, palette) {
 }
 
 function drawEdinburghScene(target, palette) {
+  const background = append(target, "image", {
+    class: "edinburgh-painted-background",
+    href: "assets/edinburgh-midmar-painted-background.webp",
+    x: 0,
+    y: 0,
+    width: 600,
+    height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    target.replaceChildren();
+    drawLegacyEdinburghScene(target, palette);
+  }, { once: true });
+}
+
+function drawLegacyEdinburghScene(target, palette) {
   append(target, "rect", { class: "environment-sky edinburgh-sky", width: 600, height: 430, fill: palette[0] });
   const clouds = append(target, "g", { class: "edinburgh-clouds", "aria-hidden": "true" });
   append(clouds, "path", { d: "M18 74Q48 42 86 61Q119 28 158 56Q190 49 215 76Q154 93 89 88Q48 88 18 74Z" });
