@@ -650,16 +650,16 @@
         opacity: .64;
       }
       .hero-name {
-        margin: 0; font-size: clamp(2.7rem, 13.4vw, 3.2rem);
+        margin: 0; font-size: clamp(2.9rem, 14.2vw, 3.4rem);
         line-height: .9; letter-spacing: -.014em;
-        -webkit-text-stroke: calc(var(--display-stroke) + .12px) currentColor;
+        -webkit-text-stroke: calc(var(--display-stroke) + .18px) currentColor;
       }
       .hero-name-line { display: block; }
       .hero-expertise {
         width: 100%; max-width: none; margin-top: 19px;
         display: grid; justify-items: center; row-gap: 3px;
-        font-size: clamp(.84rem, 3.9vw, .98rem); line-height: 1.4;
-        letter-spacing: -.012em;
+        font-size: clamp(.96rem, 4.4vw, 1.12rem); font-weight: 700;
+        line-height: 1.38; letter-spacing: -.016em;
       }
       .hero-expertise-line {
         margin: 0 !important;
@@ -678,7 +678,7 @@
     @media (max-width: 350px) {
       .hero { padding-right: 10px; padding-bottom: 2px; padding-left: 10px; }
       .hero-lower { width: 132px; margin: -5px -2px -16px auto; }
-      .hero-expertise { font-size: .86rem; row-gap: 2px; }
+      .hero-expertise { font-size: .95rem; row-gap: 3px; }
       .hero-expertise-line--identity { display: contents; }
       .hero-expertise-line--identity .hero-skill { white-space: nowrap; }
       .hero-skill--identity { grid-row: 1; }
@@ -690,7 +690,7 @@
       }
       .hero-skill-group { grid-row: 3; }
       .hero-skill--ai { grid-row: 4; }
-      .hero-name { font-size: 2.55rem; }
+      .hero-name { font-size: 2.7rem; }
     }
 
     .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
