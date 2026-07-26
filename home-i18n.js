@@ -222,7 +222,7 @@
           "contact_email_copied": "E-postadressen har kopierats",
           "contact_email_copy_failed": "Kopieringen misslyckades. Markera och kopiera:",
           "contact_profile": "Profil vid Uppsala universitet",
-          "footer_affiliation": "Martyna Katarzyna Zwoińska · Uppsala universitet"
+          "footer_affiliation": "Martyna Katarzyna Zwoińska"
     },
     "pl": {
           "page_title": "Martyna K. Zwoińska | Biolożka ewolucyjna, Uniwersytet w Uppsali",
@@ -304,7 +304,7 @@
           "contact_email_copied": "Adres e-mail skopiowany",
           "contact_email_copy_failed": "Nie udało się skopiować. Zaznacz i skopiuj:",
           "contact_profile": "Profil na stronie Uniwersytetu w Uppsali",
-          "footer_affiliation": "Martyna Katarzyna Zwoińska · Uniwersytet w Uppsali"
+          "footer_affiliation": "Martyna Katarzyna Zwoińska"
     }
   };
 
