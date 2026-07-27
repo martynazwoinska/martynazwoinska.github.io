@@ -306,13 +306,6 @@
     .n2-preview__smile { fill: none; stroke: var(--worm-face); stroke-width: 4; stroke-linecap: round; }
     .n2-preview__worm--primary { transform-origin: 210px 160px; animation: n2-bob 4.4s ease-in-out infinite; }
     .n2-preview__worm--male { transform-origin: 105px 192px; animation: n2-bob-male 4.4s .55s ease-in-out infinite; }
-    .n2-preview__label-bg {
-      fill: color-mix(in srgb, var(--surface) 88%, transparent);
-      stroke: color-mix(in srgb, var(--accent) 42%, var(--border)); stroke-width: 1.5;
-    }
-    .n2-preview__label {
-      fill: var(--text-soft); font: 700 12px var(--sans); letter-spacing: .12em;
-    }
     .n2-preview-control:hover .n2-preview svg,
     .n2-preview-control:focus-visible .n2-preview svg {
       filter: drop-shadow(0 10px 16px color-mix(in srgb, var(--text) 21%, transparent));
@@ -1538,8 +1531,6 @@
               </g>
             </g>
             <path class="n2-preview__glare" d="M105 97 C135 46 199 24 257 40" />
-            <rect class="n2-preview__label-bg" x="158" y="269" width="104" height="25" rx="12.5" />
-            <text class="n2-preview__label" x="210" y="286" text-anchor="middle">BRISTOL N2</text>
           </svg>
             </span>
           </button>
