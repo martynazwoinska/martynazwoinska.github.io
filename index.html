@@ -949,13 +949,19 @@
     }
 
     /* contact */
+    #contact > h2 { margin-bottom: 20px; }
     .contact-box {
-      position: relative; min-height: 220px;
-      max-width: 820px; padding: 10px 220px 10px 0;
+      --contact-photo-size: clamp(168px, 24vw, 184px);
+      position: relative; min-height: 204px;
+      display: grid;
+      grid-template-columns: minmax(0, 540px) var(--contact-photo-size);
+      grid-template-rows: auto auto;
+      column-gap: clamp(20px, 3vw, 32px); align-items: start;
+      width: min(100%, 756px); padding: 8px 0 10px;
     }
     .contact-illustration-frame {
-      position: absolute; top: 0; right: 0;
-      width: 194px; height: 194px;
+      position: relative; grid-column: 2; grid-row: 1 / span 2;
+      width: var(--contact-photo-size); height: var(--contact-photo-size);
       overflow: hidden; border-radius: 50%;
       background: url("uppsala-contact.png") left center / auto 100% no-repeat;
       border: 1px solid color-mix(in srgb, var(--accent-gold) 60%, var(--border));
@@ -968,10 +974,14 @@
       -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 10px, #000 100%);
       mask-image: linear-gradient(to bottom, transparent 0, #000 10px, #000 100%);
     }
-    .contact-box p { color: var(--text-soft); margin: 0 0 14px; }
+    .contact-box p {
+      grid-column: 1; grid-row: 1;
+      color: var(--text-soft); margin: 0 0 14px;
+    }
     #contact .links {
+      grid-column: 1; grid-row: 2;
       display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.28fr);
-      gap: 10px; width: min(100%, 540px); margin-top: 4px; justify-content: stretch;
+      gap: 10px; width: 100%; margin-top: 4px; justify-content: stretch;
     }
     #contact .pill {
       width: 100%; min-width: 0; min-height: 44px; justify-content: flex-start;
@@ -1004,8 +1014,13 @@
       margin: 12px 0 0 !important; font-size: .86rem; overflow-wrap: anywhere;
     }
     @media (max-width: 620px) {
-      .contact-box { min-height: 0; padding: 218px 0 0; }
-      .contact-illustration-frame { left: 50%; right: auto; transform: translateX(-50%); }
+      #contact > h2 { margin-bottom: 24px; }
+      .contact-box { display: block; min-height: 0; width: 100%; padding: 218px 0 0; }
+      .contact-illustration-frame {
+        position: absolute; top: 0; left: 50%; right: auto;
+        width: 194px; height: 194px;
+        transform: translateX(-50%);
+      }
       #contact .links { grid-template-columns: minmax(0, .9fr) minmax(0, 1.35fr); }
       #contact .pill { padding: 8px 10px; font-size: .84rem; }
     }
