@@ -47,7 +47,7 @@
 
   function getTheme() {
     var stored = read(storageKeys.theme);
-    return hasValue(validThemes, stored) ? stored : null;
+    return hasValue(validThemes, stored) ? stored : 'dark';
   }
 
   function applyLanguage(language) {
