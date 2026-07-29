@@ -1,6 +1,6 @@
 # Santeuil location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-29
 
 This dossier is the evidence and review contract for the Santeuil landscape and its three accessory pairs. It follows the Bristol N2 batch in the location-by-location Game of Worms illustration workflow.
 
@@ -51,7 +51,7 @@ Reference pages:
 - [Santeuil cylinder organ, French Ministry of Culture](https://pop.culture.gouv.fr/notice/palissy/PM95001111)
 - [Historic general view of Santeuil and the Viosne, Val-d'Oise archives](https://archives.valdoise.fr/ark:/18127/152087.774682)
 
-These pages are factual and visual references only. The website uses an original SVG illustration; it does not trace or reproduce an external photograph, map or heritage image.
+These pages are factual and visual references only. The website uses an original painted illustration; it does not trace or reproduce an external photograph, map or heritage image.
 
 ## Landscape composition contract
 
@@ -108,6 +108,16 @@ The official Santeuil description specifically identifies dragonflies at the iso
 
 The revised Bristol N2 artwork is the minimum quality floor, not a template to repeat. Santeuil must exceed it through site-specific environmental depth, carefully constructed materials, two genuinely different drawings per concept and a coherent combined composition.
 
+## Implementation status
+
+- Preserved source painting: `game-of-worms/assets/source/santeuil-ju1925-painted-background-source.png`
+- Optimized runtime derivative: `game-of-worms/assets/santeuil-ju1925-painted-background.webp`
+- The original detailed SVG scene remains in `game-of-worms/environment-scenes.js` as the asset-load fallback.
+- The painted background and its hotspot-free scene layer share the existing responsive SVG coordinate system; animated worms and accessories remain separate live SVG layers.
+- Fresh checks at 360, 768, 1024 and 1440 px confirmed the painted asset, all six active accessory copies and zero horizontal overflow.
+- Pointer dragging moved all six copies independently. Keyboard arrow movement and Home reset affected only the focused copy.
+- Browser-console checks reported no errors.
+
 ## Review and interaction acceptance
 
 - Only the Santeuil landscape and Santeuil accessory data/drawings change in the Game feature batch.
@@ -118,6 +128,6 @@ The revised Bristol N2 artwork is the minimum quality floor, not a template to r
 - Moving or resetting one copy never moves its partner.
 - Accessible names match the visible objects.
 - Pointer and keyboard tests cover all six copies.
-- Visual checks cover light and dark themes and responsive widths from 360 px to wide desktop.
+- Visual checks cover the Game's fixed light palette and responsive widths from 360 px to wide desktop.
 - No horizontal overflow, console error, broken source link or change to another location is accepted.
 - Environment/accessory audits, syntax checks, `git diff --check` and the full diff pass before integration.
