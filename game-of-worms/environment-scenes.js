@@ -1464,7 +1464,7 @@ function drawTrivandrumJU1325Scene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "none",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
