@@ -1,6 +1,6 @@
 # Tenerife location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-29
 
 This dossier is the evidence and review contract for the Tenerife landscape and its three accessory pairs. It follows the Bristol N2, Santeuil and Edinburgh batches in the location-by-location Game of Worms illustration workflow.
 
@@ -63,7 +63,7 @@ Authoritative setting sources:
 - [ICIA *Ficus macrophylla* garden entry](https://www.icia.es/icia/jao/autoguiajao/Ficus%20macrophylla.html?lang=2)
 - [Tenerife government overview of the Orotava Valley](https://www.tenerife.es/el-valle-de-la-orotava)
 
-These pages are factual and visual references only. The website uses an original SVG illustration and does not trace an external photograph, map or institutional graphic.
+These pages are factual and visual references only. The website uses an original painted illustration and does not trace an external photograph, map or institutional graphic.
 
 ## Landscape composition contract
 
@@ -120,6 +120,16 @@ This invented teaching model is grounded in the documented 24-class plan, herbar
 
 The revised Bristol N2, Santeuil and Edinburgh batches are the minimum quality floor, not templates to repeat. Tenerife must exceed them through an exact record-led foreground, coherent garden depth, botanical construction detail, two genuinely different mechanisms per concept and a readable combined composition.
 
+## Implementation status
+
+- Preserved source painting: `game-of-worms/assets/source/tenerife-nic1787-painted-background-source.png`
+- Optimized runtime derivative: `game-of-worms/assets/tenerife-nic1787-painted-background.webp`
+- The original detailed SVG scene remains in `game-of-worms/environment-scenes.js` as the asset-load fallback.
+- The painted background uses the existing responsive SVG coordinate system; animated worms and accessories remain separate live SVG layers.
+- Fresh checks at 360, 768, 1024 and 1440 px confirmed the painted asset, all six active accessory copies and zero horizontal overflow.
+- Pointer dragging moved all six copies independently. Keyboard arrow movement and Home reset affected only the focused copy.
+- Browser-console checks reported no errors.
+
 ## Review and interaction acceptance
 
 - Only the Tenerife landscape and Tenerife accessory data and drawings change in the Game feature batch.
@@ -130,6 +140,6 @@ The revised Bristol N2, Santeuil and Edinburgh batches are the minimum quality f
 - Each of the six visible objects remains independently draggable and keyboard movable; Home resets only the focused copy.
 - Accessible names match the visible objects.
 - Pointer and keyboard tests cover all six copies.
-- Visual checks cover light and dark themes and responsive widths from 360 px to wide desktop.
+- Visual checks cover the Game's fixed light palette and responsive widths from 360 px to wide desktop.
 - No horizontal overflow, console error, broken source link or change to another location is accepted.
 - Environment/accessory audits, syntax checks, `git diff --check` and the full diff pass before integration.
