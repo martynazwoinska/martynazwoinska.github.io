@@ -1,6 +1,6 @@
 # Saint-Benoît, Réunion *Caenorhabditis tropicalis* JU1373 location research and art brief
 
-Last updated: 2026-07-16
+Last updated: 2026-07-29
 
 ## Purpose
 
@@ -323,7 +323,7 @@ dedicated custom scene.
 
 ## Environment illustration contract
 
-Create a dedicated original SVG scene in the existing 600 × 430 viewBox.
+Create a dedicated original painted illustration for the existing 600 × 430 scene viewBox.
 
 ### Camera
 
@@ -571,8 +571,16 @@ Do not remove or modify the separate *C. briggsae* JU1375 Réunion record.
 - Switching location and returning restores the designed starting layout.
 - Keep all six targets at least 44 × 44 CSS px at mobile scale.
 - Keep every object within the stage at 360, 768, 1024 and 1440 px.
-- Keep the environment legible in light and dark themes.
+- Keep the environment legible in the Game's fixed light palette.
 - Honour reduced motion.
+
+## Painted-background implementation status
+
+- The approved runtime painting is `game-of-worms/assets/reunion-ju1373-painted-background.webp`.
+- Its full-resolution source is preserved separately as `game-of-worms/assets/source/reunion-ju1373-painted-background-source.png`.
+- The previous custom SVG landscape remains in `environment-scenes.js` only as an asset-load fallback.
+- The painting keeps the collapsed torch-ginger substrate primary and the screened rounded windward-upland glimpse subordinate, without reconstructing flower colour, exact decay, neighbouring crops, weather or the collection-patch view.
+- The animated worms and all six independently movable accessories remain live SVG layers above the painting.
 
 ## Visual and interaction acceptance
 

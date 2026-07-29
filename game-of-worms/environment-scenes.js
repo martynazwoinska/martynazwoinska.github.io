@@ -1405,6 +1405,23 @@ function drawQueenslandQG2904PaintedScene(target, palette) {
   }, { once: true });
 }
 
+function drawReunionJU1373PaintedScene(target, palette) {
+  const background = append(target, "image", {
+    class: "reunion-ju1373-painted-background",
+    href: "assets/reunion-ju1373-painted-background.webp",
+    x: 0,
+    y: 0,
+    width: 600,
+    height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    target.replaceChildren();
+    drawReunionJU1373Scene(target, palette);
+  }, { once: true });
+}
+
 function drawTrivandrumJU1325Scene(target, palette) {
   const background = append(target, "image", {
     class: "trivandrum-ju1325-painted-background",
@@ -2755,7 +2772,7 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
     return;
   }
   if (profile.id === "reunion-ju1373-saint-benoit-torch-ginger-farm") {
-    drawReunionJU1373Scene(target, palette);
+    drawReunionJU1373PaintedScene(target, palette);
     return;
   }
   if (profile.id === "nouragues-ju1428-duguetia-fruit-forest") {
