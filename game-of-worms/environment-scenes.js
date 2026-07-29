@@ -1269,6 +1269,23 @@ function drawKauaiXZ1516Scene(target, palette) {
   }, { once: true });
 }
 
+function drawACTQG2811Scene(target, palette) {
+  const background = append(target, "image", {
+    class: "act-qg2811-painted-background",
+    href: "assets/act-qg2811-painted-background.webp",
+    x: 0,
+    y: 0,
+    width: 600,
+    height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    target.replaceChildren();
+    drawCanberraOConnorScene(target, palette);
+  }, { once: true });
+}
+
 function drawTrivandrumJU1325Scene(target, palette) {
   const background = append(target, "image", {
     class: "trivandrum-ju1325-painted-background",
@@ -2583,7 +2600,7 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
     return;
   }
   if (profile.id === "canberra-oconnor-fig-garden") {
-    drawCanberraOConnorScene(target, palette);
+    drawACTQG2811Scene(target, palette);
     return;
   }
   if (profile.id === "auckland-eca36-garden-grass") {
