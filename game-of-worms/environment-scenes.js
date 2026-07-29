@@ -1371,6 +1371,23 @@ function drawSaoTomeJU2484Scene(target, palette) {
   }, { once: true });
 }
 
+function drawPohnpeiQG4739PaintedScene(target, palette) {
+  const background = append(target, "image", {
+    class: "pohnpei-qg4739-painted-background",
+    href: "assets/pohnpei-qg4739-painted-background.webp",
+    x: 0,
+    y: 0,
+    width: 600,
+    height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    target.replaceChildren();
+    drawPohnpeiQG4739Scene(target, palette);
+  }, { once: true });
+}
+
 function drawTrivandrumJU1325Scene(target, palette) {
   const background = append(target, "image", {
     class: "trivandrum-ju1325-painted-background",
@@ -2713,7 +2730,7 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
     return;
   }
   if (profile.id === "pohnpei-qg4739-paies-kotop-cloudforest") {
-    drawPohnpeiQG4739Scene(target, palette);
+    drawPohnpeiQG4739PaintedScene(target, palette);
     return;
   }
   if (profile.id === "queensland-qg2904-daintree-blackbean-pod-forest") {

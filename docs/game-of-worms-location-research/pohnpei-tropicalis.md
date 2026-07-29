@@ -1,6 +1,6 @@
 # Pohnpei *Caenorhabditis tropicalis* QG4739 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-29
 
 ## Purpose
 
@@ -593,7 +593,15 @@ not reuse JU1428's triangular comparison geometry or comparison-lens concept.
 - Treat the published coordinates as a collection record, not an invitation
   or access guide.
 - Do not copy external photographs into the artwork; create an original
-  geometric illustration informed by the documented botanical structure.
+  painted illustration informed by the documented botanical structure.
+
+## Painted-background implementation status
+
+- The approved runtime painting is `game-of-worms/assets/pohnpei-qg4739-painted-background.webp`.
+- Its full-resolution source is preserved separately as `game-of-worms/assets/source/pohnpei-qg4739-painted-background-source.png`.
+- The previous custom SVG landscape remains in `environment-scenes.js` only as an asset-load fallback.
+- The painting preserves the steep Paies cloudforest, pale ringed kotop palm, open root lattice and modest softened fruit sample while avoiding any reconstruction of the exact source tree, fruit geometry or collection-day mist.
+- The animated worms and all six independently movable accessories remain live SVG layers above the painting.
 
 ## Variant and interaction requirements
 
@@ -631,7 +639,7 @@ not reuse JU1428's triangular comparison geometry or comparison-lens concept.
 - No accessory hides either worm's face or reproductive-role cue.
 - All mechanism parts remain connected at 360 px.
 - Labels remain legible without becoming the primary visual mass.
-- Light and dark themes preserve contrast and object separation.
+- The Game's fixed light palette preserves contrast and object separation.
 - Reduced motion introduces no loss of meaning.
 - Test at approximately 360, 768, 1024 and 1440 px.
 - Return from mobile to 1440 px and verify geometry resets correctly.
