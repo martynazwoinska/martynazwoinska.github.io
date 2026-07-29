@@ -1,6 +1,6 @@
 # Manaus-region *Caenorhabditis tropicalis* JU1976 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-29
 
 ## Purpose
 
@@ -129,7 +129,7 @@ Marker history:
 
 ## Environment illustration contract
 
-Create a dedicated original SVG scene in the existing 600 × 430 viewBox.
+Create a dedicated original painted illustration for the existing 600 × 430 scene viewBox.
 
 ### Camera
 
@@ -314,7 +314,7 @@ const manausRendererIds = new Set([
 ```
 
 - Add the three explicit layouts.
-- Add scoped light- and dark-theme styling.
+- Add scoped fixed-palette styling.
 - Refresh Game asset cache versions.
 
 ## Variant and interaction requirements
@@ -331,6 +331,14 @@ const manausRendererIds = new Set([
 - Verify Arrow movement, Shift+Arrow movement and Home reset.
 - Preserve visible focus, minimum 44 px touch targets and reduced motion.
 
+## Painted-background implementation status
+
+- The approved runtime painting is `game-of-worms/assets/manaus-ju1976-painted-background.webp`.
+- Its full-resolution source is preserved separately as `game-of-worms/assets/source/manaus-ju1976-painted-background-source.png`.
+- The previous custom SVG landscape remains in `environment-scenes.js` only as an asset-load fallback.
+- The painting keeps the fruit externally closed and anonymous, the opposed palm fans compositionally distinct and the soil transition subordinate, without inventing fruit anatomy, hydrology, collection weather or a collection-patch view.
+- The animated worms and all six independently movable accessories remain live SVG layers above the painting.
+
 ## Acceptance checks
 
 - Exactly 37 environment profiles, compositions and accessory sets.
@@ -342,7 +350,7 @@ const manausRendererIds = new Set([
 - No generic renderer fallback for any of the six new drawings.
 - No initial art or target collision at mobile, tablet or desktop widths.
 - Test approximately 360, 768, 1024 and 1440 px.
-- Test light and dark themes and reduced motion.
+- Test the Game's fixed light palette and reduced motion.
 - Source link resolves.
 - No horizontal overflow, failed request or console error.
 - Full diff review and `git diff --check`.
