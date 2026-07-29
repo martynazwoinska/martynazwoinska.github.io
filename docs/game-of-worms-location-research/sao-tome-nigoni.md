@@ -1,6 +1,6 @@
 # São Tomé *C. nigoni* location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-29
 
 This dossier is the evidence and review contract for the *Caenorhabditis nigoni* São Tomé landscape and its three accessory pairs. It responds directly to the earlier generic and reused São Tomé artwork by making the exact forest-floor record the centre of the scene.
 
@@ -43,7 +43,7 @@ Regional sources:
 - [São Tomé and Príncipe national biodiversity strategy](https://www.cbd.int/doc/world/st/st-nbsap-v2-en.pdf)
 - [Dallimer et al., 2013, Biodiversity and land-use change on São Tomé](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0074148)
 
-These pages are factual and visual references only. The website uses an original SVG illustration and does not trace an external photograph, map, protected organism or institutional graphic.
+These pages are factual and visual references only. The website uses an original painted illustration and does not trace an external photograph, map, protected organism or institutional graphic.
 
 ## Landscape composition contract
 
@@ -107,6 +107,14 @@ Source: [Plana et al., 2004, A phylogeny of the African and São Tomé begonias]
 
 The revised preceding locations are the minimum quality floor, not templates to repeat. São Tomé must exceed them through an exact anonymous-fruit focal point, coherent closed-canopy depth, integrated mechanisms, two genuinely different drawings per concept and a readable combined composition.
 
+## Painted-background implementation status
+
+- The approved runtime painting is `game-of-worms/assets/sao-tome-ju2484-painted-background.webp`.
+- Its full-resolution source is preserved separately as `game-of-worms/assets/source/sao-tome-ju2484-painted-background-source.png`.
+- The previous custom SVG landscape remains in `environment-scenes.js` only as an asset-load fallback.
+- The painting preserves the exact anonymous rotten-fruit-on-ground record and deliberately avoids a cacao identity, named forest, elevation, plantation, coast, waterfall, stream or landmark claim.
+- The animated worms and all six independently movable accessories remain live SVG layers above the painting.
+
 ## Review and interaction acceptance
 
 - Only the São Tomé landscape and its accessory data and drawings change in the Game feature batch.
@@ -117,6 +125,6 @@ The revised preceding locations are the minimum quality floor, not templates to 
 - Each of the six visible objects remains independently draggable and keyboard movable; Home resets only the focused copy.
 - Accessible names match the visible objects.
 - Pointer and keyboard tests cover all six copies, including after a responsive resize.
-- Visual checks cover light and dark themes and responsive widths from 360 px to wide desktop.
+- Visual checks cover the Game's fixed light palette and responsive widths from 360 px to wide desktop.
 - No horizontal overflow, console error, broken source link or change to another location is accepted.
 - Environment/accessory audits, syntax checks, `git diff --check` and the full diff pass before integration.

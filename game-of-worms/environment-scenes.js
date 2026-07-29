@@ -1354,6 +1354,23 @@ function drawPraslinYR106Scene(target, palette) {
   }, { once: true });
 }
 
+function drawSaoTomeJU2484Scene(target, palette) {
+  const background = append(target, "image", {
+    class: "sao-tome-ju2484-painted-background",
+    href: "assets/sao-tome-ju2484-painted-background.webp",
+    x: 0,
+    y: 0,
+    width: 600,
+    height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    target.replaceChildren();
+    drawSaoTomeForestFloorScene(target, palette);
+  }, { once: true });
+}
+
 function drawTrivandrumJU1325Scene(target, palette) {
   const background = append(target, "image", {
     class: "trivandrum-ju1325-painted-background",
@@ -2692,7 +2709,7 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
     return;
   }
   if (profile.id === "sao-tome-ju2484-forest-floor") {
-    drawSaoTomeForestFloorScene(target, palette);
+    drawSaoTomeJU2484Scene(target, palette);
     return;
   }
   if (profile.id === "pohnpei-qg4739-paies-kotop-cloudforest") {
