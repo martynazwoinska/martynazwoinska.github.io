@@ -1,11 +1,15 @@
 # La Selva *Caenorhabditis tropicalis* QG3845 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-26
 
 ## Purpose
 
 This dossier defines the evidence boundary and illustration contract for the
 La Selva, Costa Rica environment and its three paired accessories.
+
+Implemented on 2026-07-26 with a dedicated painted wet-lowland forest-floor
+background, exact QG3845 marker metadata and six independently movable bespoke
+objects.
 
 ## Representative collection record
 

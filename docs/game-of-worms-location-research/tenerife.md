@@ -106,7 +106,7 @@ The form is a playful translation of the garden's documented *Ficus* rather than
 
 - **Primary:** a tall asymmetric living-branch arch; multiple unequal thickening root columns become strings; a broad dark-green leaf is the resonator; small fig-shaped pegs tune it.
 - **Companion:** a low trapezoidal buttress-root frame with only three chunky root strings, an offset branch soundbox and different foot and anchor geometry.
-- Under the conservative semantic ledger, this is the second and final plucked-string family after the Kauaʻi QG130 waterfall lyre. Its outline, material and construction must remain radically different.
+- This remains the only active plucked-string family in the catalogue.
 
 ### Linnaean seed-exchange engine
 

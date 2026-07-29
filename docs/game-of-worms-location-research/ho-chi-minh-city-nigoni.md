@@ -1,6 +1,6 @@
 # Ho Chi Minh City *Caenorhabditis nigoni* JU4356 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-28
 
 ## Purpose
 
@@ -103,6 +103,19 @@ Source URL:
 
 Use `palettes.wetCity`, `water: "none"`, `weather: "none"` and no generic
 feature cues.
+
+Public marker history:
+
+> JU4356, formerly HCM1, is an isofemale wild *C. nigoni* isolate sampled by Mirko Francesconi from one rotting carambola on the ground in an urban garden in Ho Chi Minh City on 30 August 2022 and isolated by M.-A. Félix. ITS2 pointed to *C. nigoni*, and the record says crosses with JU1325 worked in both directions. The exact property, source tree, elevation and collection weather are unreported.
+
+Accessory families: `ju4356-carambola-ground-contact-stage`,
+`ju4356-its2-ribbon-reader`, and `hcmc-urban-canopy-census-engine`.
+
+Primary transforms: `[374, 126, .34, -2]`, `[220, 187, .32, -1]`,
+and `[370, 266, .33, -1]`.
+
+Companion transforms: `[-8, 116, .27, 2]`, `[108, 213, .26, 2]`,
+and `[0, 292, .27, 2]`.
 
 ## Environment illustration contract
 
@@ -229,8 +242,20 @@ Expected totals:
 - No generic-renderer fallback for the six new accessory illustrations.
 - No initial overlap among the three accessories or with critical worm detail.
 - Desktop and mobile checks near 360, 768, 1024 and wide viewports.
-- Light and dark themes.
+- The Game's fixed light palette.
 - Keyboard operation and visible focus.
 - Reduced-motion behaviour.
 - No horizontal overflow or console errors.
 - Full diff review and `git diff --check`.
+
+## Implementation status
+
+Implemented and locally verified on 2026-07-28. The preserved source painting
+is `game-of-worms/assets/source/hcmc-ju4356-painted-background-source.png`;
+the optimized runtime derivative is
+`game-of-worms/assets/hcmc-ju4356-painted-background.webp`. All six objects
+passed independent pointer drag, Arrow, Shift+Arrow and isolated Home-reset
+checks. The 360 px, 768 px, 1024 px and 1440 px layouts passed without
+horizontal overflow or SVG containment failures. The source record, source
+PNG and runtime WebP returned HTTP 200; syntax, catalogue, pair-geometry,
+environment-composition, console and `git diff --check` checks passed.

@@ -47,53 +47,53 @@ const canonicalProfiles = {
     { water: "river", weather: "sun", cues: [["pol", 465, 218, .9], ["chabutro", 110, 230, .8], ["drytree", 210, 262, .8]] }
   ),
   "Taipei, Taiwan · BRC20390": profile(
-    "taipei-xiangshan", "Xiangshan forest beside Taipei",
-    "This 174-metre forest record lies on Taipei’s Xiangshan foothills, where humid subtropical woodland rises immediately beside the city.",
-    "CaeNDR BRC20390 record", "https://caendr.org/isotype/BRC20390/",
+    "taipei-brc20390-forest-slope", "Taipei forest slope at 174 m",
+    "The reference strain of this eleven-strain isotype was sampled by J. Wang in forest at 174 m in Taipei on 4 October 2015. CaeNDR records the substrate and environmental measurements as not determined. The layered slope and narrow city-edge light are restrained regional context, not a reconstruction of the collection view.",
+    "CaeNDR BRC20390 isotype record", "https://caendr.org/isotype/BRC20390/",
     palettes.wetCity, [[0, 314], [75, 240], [132, 274], [210, 176], [285, 258], [360, 204], [430, 272], [514, 222], [600, 303]],
-    { weather: "mist", cues: [["tower", 505, 217, .8], ["boulder", 105, 316, .9], ["fern", 60, 300, .75]] }
+    { weather: "none", cues: [] }
   ),
   "Kerala, India · JU1337": profile(
-    "kerala-lowland-farm", "Kerala’s cultivated humid lowland",
-    "JU1337 came from rotting fruit in low-elevation agricultural land near Neyyattinkara, so this is a cultivated humid lowland rather than generic rainforest.",
-    "CaeNDR JU1337 record", "https://caendr.org/isotype/JU1337/",
+    "poovar-ju1337-agricultural-fruit-edge", "Poovar agricultural fruit-litter edge",
+    "The singleton reference isotype was sampled by M.-A. Félix from broad rotting plant material in agricultural land at 34 m near Poovar on 16 December 2007. The anonymous mixed cultivation, lateritic ground and distant palm rhythm are regional interpretation; the crop, property, weather and water system are unreported.",
+    "CaeNDR JU1337 isotype record", "https://caendr.org/isotype/JU1337/",
     palettes.farm, [[0, 278], [90, 263], [180, 275], [268, 252], [365, 276], [460, 258], [535, 270], [600, 260]],
-    { water: "irrigation", weather: "rain", cues: [["coconut", 75, 214, .9], ["paddy", 430, 340, 1], ["fruit", 160, 356, .8]] }
+    { water: "none", weather: "none", cues: [] }
   ),
   "Kauaʻi, Hawaiʻi · QG130": profile(
-    "kauai-north-shore", "Kauaʻi north-shore coastal valley",
-    "QG130 was sampled from rotting fruit in forest at only 11 metres elevation, fitting a north-shore coastal valley rather than an upland cloud forest.",
-    "CaeNDR QG130 record", "https://caendr.org/isotype/QG130/",
-    palettes.island, [[0, 304], [60, 238], [104, 262], [160, 172], [215, 250], [275, 192], [340, 274], [410, 214], [482, 278], [550, 234], [600, 292]],
-    { water: "coast", weather: "mist", cues: [["taro", 105, 337, .9], ["waterfall", 276, 195, .8], ["pandanus", 500, 287, .8]] }
+    "kauai-qg130-low-forest-fruit-floor", "Kauaʻi low forest fruit floor",
+    "The reference strain belongs to a three-strain isotype sampled by M. Rockman from broad rotting plant material in forest at 11 m on 2 August 2009. The anonymous humid forest floor is an evidence-bounded setting; the fruit identity, weather, water and exact collection view are unreported.",
+    "CaeNDR QG130 isotype record", "https://caendr.org/isotype/QG130/",
+    palettes.island, [[0, 306], [74, 242], [143, 276], [218, 206], [294, 264], [372, 216], [456, 278], [533, 235], [600, 290]],
+    { water: "none", weather: "none", cues: [] }
   ),
   "Réunion Island · JU1375": profile(
-    "reunion-saint-benoit-farm", "Saint-Benoît cane below wet ridges",
-    "JU1375 was found on a mollusk in low agricultural land near Saint-Benoît, where cane fields rise toward Réunion’s wet volcanic interior.",
-    "CaeNDR JU1375 record", "https://caendr.org/isotype/JU1375/",
-    palettes.farm, [[0, 300], [75, 268], [140, 214], [208, 252], [285, 180], [356, 242], [442, 204], [520, 260], [600, 224]],
-    { weather: "cloud", cues: [["cane", 105, 325, .9], ["basalt", 475, 346, .8], ["pandanus", 535, 274, .7]] }
+    "reunion-ju1375-agricultural-mollusk-edge", "Réunion agricultural mollusk edge",
+    "This singleton reference isotype was sampled by V. Robert from a mollusk in agricultural land at 123 m on 31 December 2007. The anonymous wet field edge and distant interior shoulder are restrained regional interpretation; the mollusk species, crop, weather and exact collection view are unreported.",
+    "CaeNDR JU1375 isotype record", "https://caendr.org/isotype/JU1375/",
+    palettes.farm, [[0, 302], [79, 266], [151, 285], [229, 237], [311, 271], [392, 225], [474, 267], [539, 241], [600, 274]],
+    { water: "none", weather: "none", cues: [] }
   ),
   "Orsay, France · JU2518": profile(
-    "orsay-yvette-garden", "Yvette valley garden mosaic",
-    "JU2518 came from rotting fruit in a rural garden within the Yvette valley’s river, pond, woodland, and garden mosaic.",
-    "CaeNDR JU2518 record", "https://caendr.org/isotype/JU2518/",
-    palettes.temperate, [[0, 292], [100, 250], [198, 280], [295, 242], [390, 274], [495, 246], [600, 285]],
-    { water: "pond", weather: "cloud", cues: [["deciduous", 75, 263, .9], ["reeds", 450, 353, .9], ["fruit", 160, 360, .75]] }
+    "orsay-ju2518-rural-garden-apple", "Orsay rural-garden apple floor",
+    "This singleton reference isotype was sampled and isolated by L. Frezal from a rotten apple in a rural garden at 65 m on 6 September 2012. CaeNDR records Santeuil virus as the associated organism. The garden passage and distant roof plane are restrained context; the property, cultivar, weather and exact collection view are unreported.",
+    "CaeNDR JU2518 isotype record", "https://caendr.org/isotype/JU2518/",
+    palettes.temperate, [[0, 294], [91, 257], [182, 279], [274, 246], [369, 272], [472, 239], [600, 281]],
+    { water: "none", weather: "none", cues: [] }
   ),
-  "Angra dos Reis, Rio de Janeiro · EG5612": profile(
-    "angra-serra-cove", "Atlantic forest meeting Angra’s coves",
-    "EG5612 came from rotting fruit in forest at three metres elevation, where Atlantic rainforest meets Angra dos Reis’ island-studded coast.",
-    "CaeNDR EG5612 record", "https://caendr.org/isotype/EG5612/",
-    palettes.rainforest, [[0, 320], [65, 244], [125, 176], [190, 238], [255, 148], [330, 225], [405, 178], [485, 250], [545, 214], [600, 286]],
-    { water: "cove", weather: "mist", cues: [["islet", 470, 313, .9], ["mangrove", 535, 300, .75], ["fruit", 90, 365, .7]] }
+  "Dois Rios, Ilha Grande, Brazil · EG5612": profile(
+    "dois-rios-eg5612-jackfruit-forest-floor", "Dois Rios jackfruit forest floor",
+    "The reference was sampled and isolated by M. Ailion from rotten jackfruit in forest at 3 m near Dois Rios on 29 April 2009. Its paired isotype strain was recorded from a rotten red flower, but both samples travelled in the same bag and may not be independent. The forest corridor is restrained context; water, weather and the exact collection view are unreported.",
+    "CaeNDR EG5612 isotype record", "https://caendr.org/isotype/EG5612/",
+    palettes.rainforest, [[0, 318], [72, 247], [145, 279], [220, 208], [301, 266], [382, 215], [465, 277], [532, 239], [600, 292]],
+    { water: "none", weather: "none", cues: [] }
   ),
   "Nambucca Heads, New South Wales · QG2814": profile(
-    "nambucca-estuary-garden", "Nambucca estuary garden",
-    "QG2814 was collected from a rotting flower in a low urban garden at Nambucca Heads, an estuarine coastal town rather than inland rainforest.",
-    "CaeNDR QG2814 record", "https://caendr.org/isotype/QG2814/",
-    palettes.subtropical, [[0, 292], [100, 268], [190, 282], [280, 250], [375, 276], [470, 244], [535, 266], [600, 252]],
-    { water: "estuary", weather: "sun", cues: [["eucalyptus", 80, 245, .9], ["banksia", 510, 297, .8], ["flower", 155, 363, .75]] }
+    "nambucca-qg2814-rainforest-garden-flowers", "Nambucca rainforest-garden flower floor",
+    "The reference was sampled and isolated by M. Rockman from rotting flowers on the ground in the rainforest garden behind Marcel Towers at 21 m. The two-strain isotype came from one flower sample; the reference began from one L4 on the first of two plates five days later. The flower species, weather and exact collection view are unreported.",
+    "CaeNDR QG2814 isotype record", "https://caendr.org/isotype/QG2814/",
+    palettes.subtropical, [[0, 298], [86, 259], [175, 282], [266, 244], [356, 274], [449, 238], [530, 265], [600, 249]],
+    { water: "none", weather: "none", cues: [] }
   ),
   "Bristol N2, England": profile(
     "bristol-garden-gorge", "Bristol garden and Avon Gorge, England",
@@ -130,12 +130,12 @@ const canonicalProfiles = {
     palettes.uplandForest, [[0, 272], [80, 244], [160, 257], [242, 219], [320, 238], [404, 208], [486, 246], [600, 224]],
     { weather: "mist", cues: [] }
   ),
-  "tropicalis::Kauaʻi, Hawaiʻi": profile(
-    "kauai-hanalei-valley", "Hanalei valley wetlands",
-    "This C. tropicalis marker lies near Hanalei, where waterfall-draped north-shore mountains frame river wetlands and long-established kalo agriculture.",
-    "USFWS Hanalei National Wildlife Refuge", "https://www.fws.gov/refuge/hanalei",
-    palettes.island, [[0, 296], [64, 254], [118, 266], [176, 198], [236, 246], [306, 166], [372, 238], [438, 190], [506, 256], [552, 228], [600, 282]],
-    { water: "river", weather: "rain", cues: [["taro", 92, 342, .82], ["waterfall", 308, 192, .74], ["paddy", 476, 346, .78]] }
+  "tropicalis::Kauaʻi, Hawaiʻi · QG131": profile(
+    "kauai-qg131-sealodge-pandanus-beach-trail", "Sealodge pandanus-fruit beach trail",
+    "QG131 was sampled and isolated by M. Rockman on 3 August 2009 from two rotten pandanus fruits beneath a pandanus tree along the trail down to Sealodge Beach, at 10 m. The illustrated prop roots, descending trail and narrow coastal opening are restrained site context; exact fruit decay geometry, weather and collection viewpoint were not recorded.",
+    "CaeNDR QG131 isotype record", "https://caendr.org/isotype/QG131/",
+    palettes.island, [[0, 248], [80, 241], [160, 250], [240, 243], [320, 251], [400, 242], [480, 247], [600, 240]],
+    { weather: "none", cues: [] }
   ),
   "Australian Capital Territory": profile(
     "canberra-oconnor-fig-garden", "O'Connor backyard figs and dry ridge",
@@ -159,60 +159,60 @@ const canonicalProfiles = {
     { weather: "cloud", cues: [] }
   ),
   "Trivandrum, Kerala · JU1325": profile(
-    "trivandrum-zoo-botanical-garden", "JU1325 flower-and-leaf garden slope",
+    "trivandrum-zoo-botanical-garden", "Flower-and-leaf garden slope",
     "JU1325, the C. nigoni type isolate, was collected from rotting flowers and leaves in Trivandrum's Zoo/Botanical Garden. The wooded lake edge, rising paths, golden bamboo and partly screened museum roof are wider campus context, not the recorded sampling point.",
     "CGC JU1325 strain record", "https://cgc.umn.edu/strain/JU1325",
     palettes.rainforest, [[0, 270], [80, 249], [155, 260], [235, 232], [315, 243], [398, 214], [482, 230], [600, 205]],
     { weather: "cloud", cues: [] }
   ),
   "Singapore · ZF1220": profile(
-    "singapore-zf1220-starfruit-garden", "ZF1220 rotten starfruit and planted tropical garden",
+    "singapore-zf1220-starfruit-garden", "Rotten starfruit in a planted tropical garden",
     "ZF1220, also known as SF0, was collected from rotten starfruit in Singapore. The record gives no exact address or landscape, so the planted tropical path and narrow city gap are wider regional context, not a claimed collection site.",
     "Félix Lab ZF1220 record", "https://www.justbio.com/tools/worms/details.php?strain_id=333574",
     palettes.rainforest, [[0, 265], [82, 246], [161, 257], [242, 231], [325, 242], [408, 218], [493, 235], [600, 209]],
     { weather: "cloud", cues: [] }
   ),
   "Praslin, Seychelles · YR106": profile(
-    "praslin-yr106-granitic-palm-forest", "YR106 in regional Praslin palm-forest context",
+    "praslin-yr106-granitic-palm-forest", "Regional Praslin palm-forest context",
     "YR106, also known as PR3, is recorded only at island level on Praslin; its exact point, date, elevation, substrate and microhabitat are unreported. The enclosed granitic palm forest is wider regional context, not a claimed collection site.",
     "Félix Lab YR106 record", "https://www.justbio.com/tools/worms/details.php?strain_id=333579",
     palettes.rainforest, [[0, 217], [76, 201], [151, 214], [231, 186], [311, 205], [392, 181], [474, 199], [545, 181], [600, 194]],
     { weather: "mist", cues: [] }
   ),
   "São Tomé · JU2484": profile(
-    "sao-tome-ju2484-forest-floor", "JU2484 forest-floor fruit microhabitat",
+    "sao-tome-ju2484-forest-floor", "Forest-floor fruit microhabitat",
     "JU2484, formerly Goy1, was sampled by Rémy Froissart on 28 February 2013 from rotten unidentified fruit on the ground in forest on São Tomé; Lise Frézal isolated it as an isofemale line. The exact site, elevation and fruit identity are unreported.",
     "Worldwide Worms/Félix JU2484 record", "https://www.justbio.com/tools/worldwideworms/search.php?selector=strain&select=JU2484",
     palettes.rainforest, [[0, 212], [74, 194], [149, 208], [225, 177], [304, 199], [382, 174], [461, 196], [535, 171], [600, 188]],
     { weather: "cloud", cues: [] }
   ),
   "Mahahual, Mexico · JU2617": profile(
-    "mahahual-reef-lagoon", "Mahahual’s shallow reef lagoon",
-    "Mahahual faces a shallow lagoon in the Mesoamerican Reef System, with sandy floor, seagrass, reef crest, and mangrove shore.",
-    "Mexico protected-area management summary", "https://sidofqa.segob.gob.mx/notas/docFuente/5545533",
-    palettes.coral, [[0, 278], [100, 270], [205, 280], [310, 268], [410, 276], [505, 264], [600, 274]],
-    { water: "lagoon", weather: "sun", cues: [["reef", 330, 345, 1], ["mangrove", 70, 292, .7], ["seagrass", 500, 370, .9]] }
+    "mahahual-ju2617-citrus-garden", "Citrus-heap coastal garden",
+    "JU2617, previously Y2.1, came from a rotting-fruit heap, mostly oranges, on the ground in a rural Mahahual garden. The coastal-dune plants and tiny distant lighthouse are wider regional context; the private collection garden and its exact view are unreported.",
+    "Worldwide Worms/Félix JU2617 record", "https://www.justbio.com/tools/worldwideworms/search.php?selector=strain&select=JU2617",
+    palettes.farm, [[0, 292], [84, 268], [160, 281], [238, 251], [322, 267], [408, 245], [492, 259], [600, 247]],
+    { weather: "none", cues: [] }
   ),
   "Mauritius · JU2909": profile(
-    "mauritius-le-morne", "Le Morne above a coral lagoon",
-    "Volcanic Mauritius is nearly encircled by reefs and lagoons; Le Morne’s wooded cliffs also carry the history of maroon resistance.",
-    "UNESCO Le Morne Cultural Landscape", "https://whc.unesco.org/en/list/1259/",
-    palettes.island, [[0, 295], [105, 274], [190, 286], [270, 152], [340, 150], [382, 250], [475, 270], [600, 280]],
-    { water: "lagoon", weather: "sun", cues: [["cane", 90, 325, .8], ["reef", 490, 356, .85], ["sandbar", 340, 340, .7]] }
+    "mauritius-casela-fruit-ground", "Casela fruit ground below Rempart Mountain",
+    "JU2909 came from anonymous rotting fruit on the ground at Casela Nature Park in late December 2015. The fruit was described as about 8 cm long and oval with a large woody nut; its identity and exact sampling point are unreported. The planted hill edge and Rempart Mountain are wider regional context.",
+    "Worldwide Worms/Félix JU2909 record", "https://justbio.com/tools/worldwideworms/search.php?selector=strain&select=JU2909",
+    palettes.rainforest, [[0, 304], [78, 275], [155, 289], [232, 246], [304, 267], [382, 221], [459, 248], [531, 193], [600, 229]],
+    { weather: "none", cues: [] }
   ),
   "Ho Chi Minh City · JU4356": profile(
-    "hcmc-can-gio", "Can Gio tidal mangrove",
-    "Can Gio’s brackish wetland was built by Saigon and Dong Nai river sediments and forms a mangrove green belt within Ho Chi Minh City.",
-    "UNESCO Can Gio Mangrove", "https://www.unesco.org/en/mab/can-gio-mangrove",
-    palettes.wetCity, [[0, 292], [110, 278], [210, 286], [315, 270], [420, 284], [520, 274], [600, 288]],
-    { water: "tidal", weather: "rain", cues: [["mangrove", 82, 280, 1], ["saltpan", 445, 340, .8], ["city", 515, 248, .55]] }
+    "hcmc-ju4356-carambola-garden", "Ho Chi Minh City carambola garden",
+    "JU4356 came from one rotting carambola collected on the ground in a Ho Chi Minh City urban garden. The canopy, path and city edge are anonymised regional context; the exact property, source tree, elevation and collection weather were not reported.",
+    "Félix Lab Worldwide Worms: JU4356", "https://justbio.com/tools/worldwideworms/search.php?selector=strain&select=JU4356",
+    palettes.wetCity, [[0, 299], [75, 270], [151, 285], [224, 252], [302, 269], [380, 226], [456, 250], [531, 220], [600, 241]],
+    { water: "none", weather: "none", cues: [] }
   ),
   "Lombok, Indonesia · HPT26": profile(
-    "lombok-rinjani", "Rinjani caldera and Segara Anak",
-    "Lombok rises to the Rinjani volcanic complex, with a vast crater lake, a young cone, and vegetation changing strongly with elevation.",
-    "UNESCO Rinjani-Lombok Global Geopark", "https://www.unesco.org/en/iggp/rinjani-lombok-unesco-global-geopark",
-    palettes.volcanic, [[0, 306], [85, 266], [150, 210], [215, 162], [285, 210], [352, 118], [420, 206], [500, 264], [600, 294]],
-    { water: "craterlake", weather: "cloud", cues: [["cone", 345, 244, .65], ["grass", 80, 350, .8], ["forest", 520, 298, .7]] }
+    "lingsar-hpt26-ficus-forest-edge", "Lingsar Ficus-fruit forest edge",
+    "HPT26 (L14.1) came from rotting Ficus fruits on the ground at 293 m in Lingsar habitat recorded as “forest with some culture.” The forest edge, anonymous cultivated vegetation and tiny distant volcanic shoulder are restrained regional context, not a reconstruction of the collection patch.",
+    "Devi et al. 2025, Supplementary Table S1", "https://doi.org/10.1093/g3journal/jkaf134",
+    palettes.rainforest, [[0, 306], [84, 271], [160, 287], [238, 249], [319, 271], [402, 231], [486, 255], [548, 223], [600, 241]],
+    { water: "none", weather: "none", cues: [] }
   ),
   "Sanda, Bali · JU1873": profile(
     "sanda-ju1873-cacao-plantation", "Sanda cacao plantation floor",
@@ -222,70 +222,70 @@ const canonicalProfiles = {
     { weather: "none", cues: [] }
   ),
   "Barro Colorado Island, Panama": profile(
-    "bci-qg2726-gustavia-bait-forest", "QG2726 Gustavia-bait forest floor",
+    "bci-qg2726-gustavia-bait-forest", "Gustavia-bait forest floor",
     "QG2726 came from an experimental Gustavia superba-flower-slurry bait in Barro Colorado Island forest at 130 m. The surrounding lowland tropical forest and research cues are regional context; the exact bait appearance and nearby vegetation were not recorded.",
     "CaeNDR QG2726 isotype record", "https://caendr.org/isotype/QG2726/",
     palettes.rainforest, [[0, 286], [85, 268], [165, 244], [250, 230], [340, 248], [430, 226], [515, 260], [600, 278]],
     { weather: "none", cues: [] }
   ),
   "La Selva, Costa Rica": profile(
-    "la-selva-river-corridor", "La Selva river-to-volcano corridor",
-    "La Selva protects wet lowland forest between two rivers and connects upward toward Barva Volcano through a major elevational forest corridor.",
-    "Organization for Tropical Studies", "https://tropicalstudies.org/portfolio/la-selva-research-station",
+    "la-selva-qg3845-fruit-forest", "Rotting-fruit forest floor",
+    "QG3845 was sampled and isolated by A. Martel from a rotting unidentified brown fruit in La Selva forest at 65 m on 2 July 2019; its recorded substrate temperature was 26.5 °C. The wet lowland forest and restrained Barva-corridor cue are wider regional context, not a recorded view from the collection patch.",
+    "CaeNDR QG3845 isotype record", "https://caendr.org/isotype/QG3845/",
     palettes.rainforest, [[0, 310], [80, 274], [155, 250], [230, 214], [300, 160], [375, 218], [455, 252], [530, 272], [600, 294]],
-    { water: "river", weather: "rain", cues: [["bridge", 115, 328, .8], ["station", 490, 290, .7], ["broadleaf", 65, 290, .85]] }
+    { weather: "none", cues: [] }
   ),
-  "Guadeloupe": profile(
-    "guadeloupe-soufriere", "La Soufrière and wet forest",
-    "Basse-Terre’s active volcano, heavy rainfall, rivers, and waterfalls support dense montane rainforest, with mangroves on sheltered coasts.",
-    "Guadeloupe National Park", "https://www3.guadeloupe-parcnational.fr/fr/des-decouvertes/les-sites/espaces-terrestres-du-parc-national/la-soufriere",
+  "Guadeloupe · NIC203": profile(
+    "guadeloupe-nic203-torch-ginger-forest", "Torch-ginger forest floor",
+    "NIC203 was sampled and isolated by N. Poullet from a rotting torch-ginger flower in forest at 420 m at the Third Carbet Falls locality on 4 September 2011. The narrow waterfall and humid-forest setting are site context; the sample’s exact placement and collection-patch view were not recorded.",
+    "CaeNDR NIC203 isotype record", "https://caendr.org/isotype/NIC203/",
     palettes.rainforest, [[0, 306], [90, 264], [175, 230], [260, 142], [335, 210], [420, 246], [510, 220], [600, 286]],
-    { weather: "mist", cues: [["fumarole", 260, 150, .8], ["waterfall", 435, 242, .9], ["fern", 80, 315, .8]] }
+    { weather: "none", cues: [] }
   ),
   "Nouragues, French Guiana · JU1428": profile(
-    "nouragues-ju1428-duguetia-fruit-forest", "JU1428 Duguetia-fruit forest floor",
+    "nouragues-ju1428-duguetia-fruit-forest", "Duguetia-fruit forest floor",
     "JU1428 was isolated by M.-A. Félix from a rotting Duguetia surinamensis fruit sampled by P. Châtelet on Petit Plateau in Nouragues forest in 2008. CaeNDR records forest at 86 m. The gently sloping, poorly drained granite-backed plateau and cropped inselberg shoulder are site context, not a recorded collection-patch view.",
     "CaeNDR JU1428 isotype record", "https://caendr.org/isotype/JU1428/",
     palettes.rainforest, [[0, 294], [80, 270], [155, 278], [228, 256], [305, 272], [382, 250], [460, 268], [540, 246], [600, 270]],
     { weather: "sun", cues: [] }
   ),
   "Manaus region, Brazil · JU1976": profile(
-    "manaus-ju1976-amazon-village-fruit-forest", "JU1976 Amazon-village fruit forest floor",
+    "manaus-ju1976-amazon-village-fruit-forest", "Amazon-village fruit forest floor",
     "JU1976, formerly Br3.1, was isolated by M.-A. Félix from an unidentified rotting fruit sampled on 22 June 2010 in forest at Amazon village near Manaus, at 21 m. The record places it about 4 m from JU1975, which came from a different fruit. The palm-rich understorey and subtle soil gradient are wider Manaus-region context, not a reconstruction of the collection patch; exact fruit identity, neighbouring plants, weather, soil profile and patch geometry are unreported.",
     "CaeNDR JU1976 isotype record", "https://caendr.org/isotype/JU1976/",
     palettes.rainforest, [[0, 294], [78, 267], [154, 282], [224, 250], [302, 270], [382, 246], [460, 270], [536, 252], [600, 274]],
     { weather: "sun", cues: [] }
   ),
-  "Oʻahu, Hawaiʻi": profile(
-    "oahu-koolau", "Koʻolau ridges and wet valleys",
-    "Oʻahu’s old volcanic ranges create knife-edged wet watersheds descending through rainforest and mesic forest toward much drier lowlands.",
-    "Hawaiʻi DLNR Oʻahu reserves", "https://dlnr.hawaii.gov/ecosystems/nars/oahu/",
-    palettes.island, [[0, 306], [55, 252], [105, 188], [150, 230], [205, 156], [255, 222], [315, 174], [375, 242], [440, 190], [500, 256], [555, 216], [600, 286]],
-    { weather: "mist", cues: [["waterfall", 315, 190, .8], ["city", 505, 280, .55], ["stream", 100, 342, .8]] }
+  "Oʻahu, Hawaiʻi · ECA789": profile(
+    "oahu-eca789-manoa-flower-forest", "Mānoa trail flower forest floor",
+    "ECA789, formerly S-05097, was sampled and isolated by E. Andersen from an unidentified rotting flower on the ground along Mānoa Falls Trail on 4 August 2017, in forest at 157 m. Substrate and ambient temperatures were both 22.9 °C and ambient humidity was 93.7%. The hooked trail tread and elongated grove trunks are wider trail context, not a reconstruction of the collection patch.",
+    "CaeNDR ECA789 isotype record", "https://caendr.org/isotype/ECA789/",
+    palettes.rainforest, [[0, 306], [55, 252], [105, 188], [150, 230], [205, 156], [255, 222], [315, 174], [375, 242], [440, 190], [500, 256], [555, 216], [600, 286]],
+    { weather: "none", cues: [] }
   ),
-  "New Taipei City, Taiwan": profile(
-    "new-taipei-yehliu", "Yehliu sandstone cape",
-    "New Taipei wraps mountains, river networks, and a long coast; at Yehliu, marine erosion and weathering sculpt a narrow sandstone cape.",
-    "Taiwan Tourism Administration", "https://eng.taiwan.net.tw/m1.aspx?id=155&sno=0002091",
-    palettes.coral, [[0, 286], [90, 240], [180, 214], [270, 238], [355, 204], [445, 244], [530, 218], [600, 270]],
-    { water: "coast", weather: "cloud", cues: [["hoodoo", 105, 330, .9], ["hoodoo", 155, 344, .65], ["cape", 450, 330, .8]] }
+  "New Taipei City, Taiwan · NIC1648": profile(
+    "new-taipei-nic1648-ruifang-fig-stairs", "Ruifang fig-stair forest",
+    "NIC1648, previously 3b, was sampled from small 10–15 mm figs on and beside concrete stairs descending toward Menghuan Falls in Ruifang District. CaeNDR says the material was only thought to be rotting. The stair geometry and surrounding forest are illustrative beyond the recorded landscape and micro-site; the waterfall is not shown because its visibility was unreported.",
+    "CaeNDR NIC1648 isotype record", "https://caendr.org/isotype/NIC1648/",
+    palettes.rainforest, [[0, 252], [82, 244], [164, 251], [246, 242], [328, 249], [410, 240], [492, 247], [600, 239]],
+    { weather: "none", cues: [] }
   ),
   "Pohnpei, Micronesia · QG4739": profile(
-    "pohnpei-qg4739-paies-kotop-cloudforest", "QG4739 Paies kotop-fruit cloudforest",
+    "pohnpei-qg4739-paies-kotop-cloudforest", "Paies kotop-fruit cloudforest",
     "QG4739, previously C-0230F, is one of seven isotype-reference strains collected at the same Paies, Kitti coordinate. It was sampled from rotting fruit recorded by CaeNDR as Clinostigma ponapensis, locally called kotop, in cloudforest on 7 December 2023. Kew accepts the palm name as C. ponapense. CaeNDR reports 540 m in the isotype summary and 542 m in the sampling comment. Fruit appearance, exact placement and collection-patch geometry are illustrative.",
     "CaeNDR QG4739 isotype record", "https://caendr.org/isotype/QG4739/",
     palettes.rainforest, [[0, 351], [74, 339], [148, 325], [224, 307], [300, 285], [376, 260], [452, 235], [526, 210], [600, 188]],
     { water: "none", weather: "mist", cues: [] }
   ),
   "Queensland, Australia · QG2904": profile(
-    "queensland-qg2904-daintree-blackbean-pod-forest", "QG2904 Daintree uncracked-pod forest",
+    "queensland-qg2904-daintree-blackbean-pod-forest", "Daintree uncracked-pod forest",
     "QG2904 is one isotype-reference line from sample 179uc, an uncracked blackbean pod collected at the Daintree Rainforest Observatory on 10 July 2017. The sample was funnel plated on 24 July and the line was founded from one adult. The plant species, visible decay, exact forest-floor position and collection-patch view are unreported. The small canopy-crane cue is observatory context only.",
     "CaeNDR QG2904 isotype record", "https://caendr.org/isotype/QG2904/",
     palettes.rainforest, [[0, 282], [76, 271], [151, 278], [231, 259], [311, 270], [392, 248], [474, 259], [545, 239], [600, 247]],
     { water: "none", weather: "none", cues: [] }
   ),
   "Saint-Benoît, Réunion · JU1373": profile(
-    "reunion-ju1373-saint-benoit-torch-ginger-farm", "JU1373 Saint-Benoît torch-ginger farm",
+    "reunion-ju1373-saint-benoit-torch-ginger-farm", "Saint-Benoît torch-ginger farm",
     "JU1373, previously R4D1, was isolated by M.-A. Félix from rotting torch-ginger flowers sampled in agricultural land at Saint-Benoît, Réunion. CaeNDR's structured sampler field names V. Robert, while the free-text collection note credits Valérie Robert and Loïc Sablé. Its structured date is 31 December 2007, while its collection note says early January 2008 and qualitatively describes a highly proliferating population. Exact flower placement, neighbouring crops, weather and the collection-patch view are unreported.",
     "CaeNDR JU1373 isotype record", "https://caendr.org/isotype/JU1373/",
     palettes.farm, [[0, 348], [82, 342], [164, 350], [248, 337], [332, 348], [416, 338], [505, 345], [600, 333]],
@@ -326,54 +326,54 @@ const sceneCompositions = Object.freeze({
     "M0 372 Q165 346 305 370 T600 359", [1, 0, 2],
     "a long shaded city mass punctured by one slender chabutro"
   ),
-  "taipei-xiangshan": composition(
-    "M0 382 Q119 343 236 369 Q348 392 600 342 V430 H0Z",
-    "M0 337 L86 279 L154 219 L244 149 L324 218 L405 283 L470 326 V430 H0Z",
-    [["boulder", 48, 372, 1.05], ["fern", 174, 360, .82]],
-    "M45 430 Q91 351 147 300 Q206 244 266 155", [1, 2, 0],
-    "a steep triangular forest slope opposed by a single needle tower"
+  "taipei-brc20390-forest-slope": composition(
+    "M0 328Q104 309 205 330Q305 351 407 322Q506 292 600 309V430H0Z",
+    "M0 223Q91 193 184 216Q283 241 381 211Q486 179 600 205V340H0Z",
+    [],
+    "M0 244Q145 295 291 351Q442 406 600 430", [],
+    "a damp diagonal forest slope beneath unequal trunks and roots, with one narrow indistinct city-edge light opening"
   ),
-  "kerala-lowland-farm": composition(
-    "M0 361 H124 L142 338 H286 L305 366 H438 L456 343 H600 V430 H0Z",
-    "M0 294 H600 V342 H0Z M0 317 H600 M0 336 H600",
-    [["fruit", 80, 384, .85], ["coconut", 566, 300, .82]],
-    "M34 430 C82 390 104 332 184 326 S324 377 392 336 S520 302 600 314", [2, 0, 1],
-    "level paddy bands crossed by a strong S-shaped irrigation channel"
+  "poovar-ju1337-agricultural-fruit-edge": composition(
+    "M0 391Q95 354 187 381Q282 410 375 377Q476 341 600 369V430H0Z",
+    "M0 286Q78 252 151 270Q228 289 296 251Q371 210 447 233Q522 258 600 221V371H0Z",
+    [],
+    "M0 421Q126 378 254 404T600 387", [],
+    "one collapsed anonymous plant-material cluster beside a broad lateritic working gap between unequal mixed-cultivation banks"
   ),
-  "kauai-north-shore": composition(
-    "M0 384 Q94 350 189 378 Q309 402 406 370 Q505 344 600 380 V430 H0Z",
-    "M0 322 Q92 266 176 313 Q292 346 390 294 Q509 245 600 319 V430 H0Z",
-    [["taro", 53, 380, .88], ["pandanus", 558, 341, .74]],
-    "M282 201 Q271 267 291 328 Q310 370 344 430", [1, 0, 2],
-    "a low horseshoe valley opening directly to a sea glimpse"
+  "kauai-qg130-low-forest-fruit-floor": composition(
+    "M0 385Q91 354 181 380Q291 411 396 377Q501 342 600 374V430H0Z",
+    "M0 288Q86 240 166 269Q255 302 337 257Q434 207 523 246Q566 264 600 239V371H0Z",
+    [],
+    "M78 430Q151 389 234 402Q319 416 407 394Q501 370 600 386", [],
+    "one broken upright trunk opposed by a low arching root around a broad oval forest-floor clearing"
   ),
-  "reunion-saint-benoit-farm": composition(
-    "M0 375 L105 349 L223 378 L347 341 L474 369 L600 337 V430 H0Z",
-    "M0 314 L600 286 V348 L0 376Z",
-    [["cane", 30, 377, 1.05], ["basalt", 557, 384, .78]],
-    "M12 424 L179 337 M94 430 L258 326 M221 430 L385 315 M365 430 L523 302", [2, 0, 1],
-    "diagonal cane rows climbing toward one wet volcanic ridge tooth"
+  "reunion-ju1375-agricultural-mollusk-edge": composition(
+    "M0 389Q86 354 176 381Q279 411 374 374Q477 336 600 367V430H0Z",
+    "M0 281Q83 250 159 268Q239 286 311 253Q392 214 468 238Q539 262 600 233V371H0Z",
+    [],
+    "M0 417Q121 369 240 398Q350 424 461 381Q528 356 600 369", [],
+    "one curved damp working strip between unequal vegetation banks beneath a soft single interior shoulder"
   ),
-  "orsay-yvette-garden": composition(
-    "M0 366 Q89 328 183 359 Q282 390 381 351 Q482 318 600 355 V430 H0Z",
-    "M38 351 Q143 298 252 337 Q374 379 520 331 L600 348 V430 H0Z",
-    [["deciduous", 36, 329, 1.02], ["reeds", 534, 392, .86]],
-    "M173 382 Q274 337 396 367 Q459 385 528 371", [0, 2, 1],
-    "a large round pond beneath an offset deciduous canopy"
+  "orsay-ju2518-rural-garden-apple": composition(
+    "M0 384Q89 351 180 379Q282 410 383 374Q485 337 600 368V430H0Z",
+    "M0 292Q77 250 158 278Q245 307 327 264Q421 215 509 250Q560 271 600 247V371H0Z",
+    [],
+    "M111 430Q171 377 238 358Q318 334 406 358Q498 382 600 351", [],
+    "one fallen apple beside a pale curving garden passage, low brick edge and small distant roof plane"
   ),
-  "angra-serra-cove": composition(
-    "M0 393 Q83 351 169 381 Q248 410 338 373 L410 349 V430 H0Z M550 376 Q579 357 600 362 V430H550Z",
-    "M0 330 L68 262 L135 296 L201 222 L268 281 L335 242 L407 318 V430 H0Z",
-    [["mangrove", 26, 373, .98], ["fruit", 154, 403, .72]],
-    "M404 358 Q463 329 514 344 Q559 357 600 337", [0, 2, 1],
-    "serrated rainforest mountains stepping down into progressively smaller islets"
+  "dois-rios-eg5612-jackfruit-forest-floor": composition(
+    "M0 391Q92 355 181 382Q282 411 380 376Q482 340 600 370V430H0Z",
+    "M0 289Q77 242 155 272Q243 306 325 260Q420 209 509 246Q559 268 600 241V371H0Z",
+    [],
+    "M91 430Q165 373 240 354Q326 332 414 357Q508 385 600 352", [],
+    "one split jackfruit beside an S-shaped low forest corridor between two unequal Atlantic Forest buttresses"
   ),
-  "nambucca-estuary-garden": composition(
-    "M0 350 Q121 333 238 368 Q356 399 475 354 Q542 329 600 340 V430 H0Z",
-    "M0 297 Q151 282 284 307 Q418 331 600 292 V354 H0Z",
-    [["banksia", 553, 363, .86], ["flower", 83, 395, .72]],
-    "M0 378 C121 321 213 322 300 368 S479 411 600 341", [2, 0, 1],
-    "a broad flat estuary bend framed by unlike banksia and eucalyptus masses"
+  "nambucca-qg2814-rainforest-garden-flowers": composition(
+    "M0 390Q93 356 183 382Q284 412 382 377Q483 342 600 371V430H0Z",
+    "M0 290Q80 247 159 275Q246 306 329 261Q423 213 510 249Q561 270 600 246V371H0Z",
+    [],
+    "M316 430Q389 385 465 372Q531 361 600 339", [],
+    "three collapsed flowers beside a broad garden-soil clearing and curved low edging, with one narrow tower fragment behind dense foliage"
   ),
   "bristol-garden-gorge": composition(
     "M0 369 L126 340 L206 363 L273 331 L335 365 L442 339 L600 361 V430 H0Z",
@@ -410,12 +410,12 @@ const sceneCompositions = Object.freeze({
     "M320 211C246 247 371 278 301 323C253 354 347 382 391 430", [],
     "a left-leaning canopy and forked right trunk framing one S-shaped path that disappears into fog"
   ),
-  "kauai-hanalei-valley": composition(
-    "M0 367 H98 L121 348 H229 L250 375 H374 L397 348 H510 L531 369 H600 V430 H0Z",
-    "M0 302 Q87 257 169 303 Q254 346 337 299 Q427 249 514 301 L600 322 V430 H0Z",
-    [["taro", 45, 394, .78], ["paddy", 528, 388, .72]],
-    "M0 408 Q116 369 230 397 Q344 425 454 377 Q529 345 600 361", [1, 0, 2],
-    "a broad wet amphitheatre with kalo plots and several waterfall curtains"
+  "kauai-qg131-sealodge-pandanus-beach-trail": composition(
+    "M0 322Q96 294 193 318Q290 342 388 315Q487 287 600 306V430H0Z",
+    "M0 218Q100 190 196 216Q293 244 391 211Q493 176 600 205V338H0Z",
+    [],
+    "M246 430Q334 361 405 303Q479 242 600 199", [],
+    "a blade-leaf canopy and prop-rooted left trunk above two fallen fruits, opposed by one diagonal beach trail and a narrow right-edge sea opening"
   ),
   "canberra-oconnor-fig-garden": composition(
     "M0 285Q96 267 190 282Q288 301 385 276Q482 250 600 269V430H0Z",
@@ -466,33 +466,36 @@ const sceneCompositions = Object.freeze({
     "M67 430Q96 332 127 252Q158 171 193 111L257 57", [],
     "an anonymous collapsed fruit below one left-offset diagonal forked trunk, opposed by unequal fern and liana layers and a single asymmetric begonia cue beneath a fully closed canopy"
   ),
-  "mahahual-reef-lagoon": composition(
-    "M0 398 Q150 390 300 400 T600 394 V430 H0Z",
-    "M0 323 H600 V351 H0Z M0 360 H600 V380 H0Z",
-    [["seagrass", 75, 410, .82], ["seagrass", 524, 409, .72]],
-    "M0 306 H600 M0 337 H600 M0 370 H600", [1, 2, 0],
-    "three shallow horizontal lagoon zones under a thin mangrove fringe, with no mountains"
+  "mahahual-ju2617-citrus-garden": composition(
+    "M0 397Q89 360 178 383Q278 411 375 379Q482 344 600 371V430H0Z",
+    "M0 296Q75 260 149 276Q223 292 292 255Q371 213 450 238Q529 262 600 221V366H0Z",
+    [],
+    "M343 430Q338 383 370 343Q403 303 447 277Q491 250 544 232",
+    [],
+    "a dominant asymmetric heap of collapsed oranges beside a curved sandy garden path, opposed by unequal round-leaved coastal scrub and one tiny white lighthouse on a narrow flat horizon"
   ),
-  "mauritius-le-morne": composition(
-    "M0 387 Q113 355 222 384 Q333 413 442 374 Q521 347 600 362 V430 H0Z",
-    "M0 330 L148 304 L247 318 L285 198 L355 178 L401 305 L600 321 V430 H0Z",
-    [["cane", 24, 386, .85], ["sandbar", 523, 389, .72]],
-    "M0 352 Q154 330 305 353 T600 344", [0, 2, 1],
-    "a steep-sided Le Morne block on one side and open reef-ringed lagoon on the other"
+  "mauritius-casela-fruit-ground": composition(
+    "M0 389Q96 354 185 382Q278 411 364 374Q455 336 531 362Q570 375 600 359V430H0Z",
+    "M0 297Q74 267 143 284Q218 302 285 265Q357 224 423 246Q476 263 516 209L542 155L567 231Q584 249 600 242V371H0Z",
+    [],
+    "M352 430Q349 386 374 348Q402 307 446 282Q489 255 548 236",
+    [],
+    "one split anonymous oval fruit exposing a single woody nut below an S-curving planted path and one off-centre Rempart Mountain tooth"
   ),
-  "hcmc-can-gio": composition(
-    "M0 393 Q141 378 279 397 Q433 414 600 385 V430 H0Z",
-    "M0 339 H600 V381 H0Z",
-    [["mangrove", 32, 379, 1.04], ["saltpan", 532, 393, .65]],
-    "M0 413 C116 376 188 407 278 375 S449 411 600 367 M0 390 C135 357 229 384 331 350 S501 378 600 352", [0, 2, 1],
-    "an ultra-flat horizon dominated by branching tidal channels and roots"
+  "hcmc-ju4356-carambola-garden": composition(
+    "M0 391Q93 357 182 382Q279 410 368 375Q456 339 535 365Q572 376 600 361V430H0Z",
+    "M0 302Q71 267 139 282Q213 299 281 261Q352 221 420 245Q488 269 548 226Q577 207 600 216V371H0Z",
+    [],
+    "M36 430Q132 361 232 402Q316 435 389 373Q465 311 562 345M95 430Q188 384 281 413Q362 438 452 386",
+    [],
+    "one softened five-rib carambola below an off-centre forked trunk and shallow-V path split, opposed by one narrow low rectilinear city slit"
   ),
-  "lombok-rinjani": composition(
-    "M0 353 Q91 309 181 337 Q295 371 419 326 Q512 293 600 329 V430 H0Z",
-    "M0 287 Q109 211 214 267 Q300 317 390 260 Q494 195 600 282 V430 H0Z",
-    [["grass", 31, 382, .8], ["cone", 410, 337, .58]],
-    "M155 305 Q300 237 447 302 Q309 372 155 305Z M235 309 Q302 277 372 307", [1, 0, 2],
-    "nested oval caldera rims containing crater water and a smaller young cone"
+  "lingsar-hpt26-ficus-forest-edge": composition(
+    "M0 398Q92 359 188 384Q281 410 374 378Q470 344 600 371V430H0Z",
+    "M0 303Q78 265 151 284Q226 303 294 260Q369 213 445 241Q522 269 600 222V371H0Z",
+    [],
+    "M0 422Q130 378 259 405T600 386", [],
+    "three unequal softened Ficus fruits in damp litter below a diagonal forest-to-cultivation edge, with only a tiny distant volcanic shoulder"
   ),
   "sanda-ju1873-cacao-plantation": composition(
     "M0 394Q111 366 222 389T419 379T600 394V430H0Z",
@@ -508,19 +511,19 @@ const sceneCompositions = Object.freeze({
     "M42 408Q165 376 284 397T562 381", [],
     "one low oval bait cup below an off-centre buttress, with a diagonal six-bait field array and a narrow opposing canopy opening"
   ),
-  "la-selva-river-corridor": composition(
-    "M0 389 Q108 355 213 382 Q302 405 384 373 Q486 333 600 365 V430 H0Z",
-    "M0 322 L117 300 L215 314 L301 221 L389 316 L496 296 L600 320 V430 H0Z",
-    [["bridge", 24, 390, .82], ["station", 558, 359, .58]],
-    "M232 430 Q245 373 300 329 Q349 292 379 249 M367 430 Q347 370 300 329 Q258 291 238 257", [0, 2, 1],
-    "two rivers converging through a central forest corridor toward a distant cone"
+  "la-selva-qg3845-fruit-forest": composition(
+    "M0 396Q105 362 217 388T417 379T600 395V430H0Z",
+    "M0 306Q86 276 169 294T326 278T476 291T600 270V430H0Z",
+    [],
+    "M31 411Q157 374 282 399T570 384", [],
+    "a collapsed anonymous fruit below one sweeping buttress root, opposed by a narrow pale forested ridge slit"
   ),
-  "guadeloupe-soufriere": composition(
-    "M0 387 Q115 350 225 380 Q337 412 445 372 Q529 341 600 359 V430 H0Z",
-    "M0 331 L117 301 L214 321 Q280 221 354 315 L470 295 L600 327 V430 H0Z",
-    [["fern", 24, 378, 1.08], ["fumarole", 342, 236, .68]],
-    "M433 287 Q419 329 441 367 Q451 391 446 430", [2, 0, 1],
-    "a steaming La Soufrière dome with an offset waterfall and oversized fern foreground"
+  "guadeloupe-nic203-torch-ginger-forest": composition(
+    "M0 395Q106 364 219 388T421 380T600 394V430H0Z",
+    "M0 309Q87 278 174 295T333 279T479 291T600 271V430H0Z",
+    [],
+    "M37 410Q161 374 286 399T568 383", [],
+    "a collapsed radial torch-ginger flower below an S-curving trail, opposed by one narrow vertical waterfall slit"
   ),
   "nouragues-ju1428-duguetia-fruit-forest": composition(
     "M0 390Q105 360 205 382T400 375T600 389V430H0Z",
@@ -536,19 +539,19 @@ const sceneCompositions = Object.freeze({
     "M0 420 Q138 382 257 407 T600 393", [],
     "an anonymous softened fruit below opposed palm fans, with a narrow light shaft through dense forest trunks"
   ),
-  "oahu-koolau": composition(
-    "M0 392 Q98 355 192 384 Q292 416 387 378 Q491 337 600 368 V430 H0Z",
-    "M0 340 L68 278 L122 327 L181 247 L235 321 L294 228 L352 326 L417 258 L479 333 L541 282 L600 329 V430 H0Z",
-    [["stream", 28, 401, .78], ["city", 560, 359, .5]],
-    "M12 430 Q72 383 135 362 Q218 333 294 232", [0, 2, 1],
-    "a rhythm of narrow diagonal Koʻolau ridge fins along a wet valley axis"
+  "oahu-eca789-manoa-flower-forest": composition(
+    "M0 395Q108 363 219 388T420 379T600 394V430H0Z",
+    "M0 309Q89 279 176 295T336 279T481 291T600 270V430H0Z",
+    [],
+    "M38 410Q159 376 286 399T568 383", [],
+    "a collapsed anonymous flower opposed by a hooked trail bend beneath three elongated smooth trunks and a narrow vertical light opening"
   ),
-  "new-taipei-yehliu": composition(
-    "M0 397 Q147 381 289 400 Q446 417 600 386 V430 H0Z",
-    "M0 348 Q121 332 246 347 Q360 360 460 334 L600 344 V430 H0Z",
-    [["hoodoo", 38, 388, 1.05], ["hoodoo", 130, 402, .66]],
-    "M81 373 Q229 332 381 351 Q474 362 600 329", [0, 1, 2],
-    "a long low sandstone cape ending in differently proportioned mushroom rocks"
+  "new-taipei-nic1648-ruifang-fig-stairs": composition(
+    "M0 326Q94 302 188 320Q283 341 380 315Q483 286 600 306V430H0Z",
+    "M0 221Q92 195 183 216Q281 240 379 211Q481 180 600 204V340H0Z",
+    [],
+    "M0 430L208 297L154 250L357 164L510 94", [],
+    "small fig forms divided across a broad tread and adjacent litter beneath one broken-diagonal concrete stair corridor and a narrow enclosed forest opening"
   ),
   "pohnpei-qg4739-paies-kotop-cloudforest": composition(
     "M0 355Q95 347 181 331Q284 311 381 277Q485 238 600 191V430H0Z",
@@ -574,7 +577,7 @@ const sceneCompositions = Object.freeze({
 });
 
 const aliases = {
-  "São Paulo region, Brazil · EG5612": "Angra dos Reis, Rio de Janeiro · EG5612",
+  "São Paulo region, Brazil · EG5612": "Dois Rios, Ilha Grande, Brazil · EG5612",
   "New South Wales, Australia · QG2814": "Nambucca Heads, New South Wales · QG2814",
   "Scotland, Great Britain": "Edinburgh, Scotland"
 };
@@ -872,6 +875,139 @@ function drawAhmedabadScene(target, profile, sceneComposition) {
   }, { once: true });
 }
 
+function drawTaipeiBRC20390Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "taipei-brc20390-painted-background",
+    href: "assets/taipei-brc20390-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  }, { once: true });
+}
+
+function drawKeralaJU1337Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "kerala-ju1337-painted-background",
+    href: "assets/kerala-ju1337-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  }, { once: true });
+}
+
+function drawKauaiQG130Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "kauai-qg130-painted-background",
+    href: "assets/kauai-qg130-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  }, { once: true });
+}
+
+function drawReunionJU1375Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "reunion-ju1375-painted-background",
+    href: "assets/reunion-ju1375-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  }, { once: true });
+}
+
+function drawOrsayJU2518Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "orsay-ju2518-painted-background",
+    href: "assets/orsay-ju2518-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  }, { once: true });
+}
+
+function drawDoisRiosEG5612Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "dois-rios-eg5612-painted-background",
+    href: "assets/dois-rios-eg5612-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  }, { once: true });
+}
+
+function drawNambuccaQG2814Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "nambucca-qg2814-painted-background",
+    href: "assets/nambucca-qg2814-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  }, { once: true });
+}
+
 function drawBarroColoradoScene(target, profile, sceneComposition) {
   const background = append(target, "image", {
     class: "barro-colorado-painted-background",
@@ -913,6 +1049,172 @@ function drawSandaJU1873Scene(target, profile, sceneComposition) {
     append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
     append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
     if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  }, { once: true });
+}
+
+function drawMahahualJU2617Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "mahahual-ju2617-painted-background",
+    href: "assets/mahahual-ju2617-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  }, { once: true });
+}
+
+function drawMauritiusJU2909Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "mauritius-ju2909-painted-background",
+    href: "assets/mauritius-ju2909-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  }, { once: true });
+}
+
+function drawHCMCJU4356Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "hcmc-ju4356-painted-background",
+    href: "assets/hcmc-ju4356-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  }, { once: true });
+}
+
+function drawLombokHPT26Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "lombok-hpt26-painted-background",
+    href: "assets/lombok-hpt26-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
+  }, { once: true });
+}
+
+function drawLaSelvaQG3845Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "la-selva-qg3845-painted-background",
+    href: "assets/la-selva-qg3845-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+  }, { once: true });
+}
+
+function drawGuadeloupeNIC203Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "guadeloupe-nic203-painted-background",
+    href: "assets/guadeloupe-nic203-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+  }, { once: true });
+}
+
+function drawOahuECA789Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "oahu-eca789-painted-background",
+    href: "assets/oahu-eca789-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+  }, { once: true });
+}
+
+function drawKauaiQG131SealodgeScene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "kauai-qg131-painted-background",
+    href: "assets/kauai-qg131-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
+  }, { once: true });
+}
+
+function drawNewTaipeiNIC1648Scene(target, profile, sceneComposition) {
+  const background = append(target, "image", {
+    class: "new-taipei-nic1648-painted-background",
+    href: "assets/new-taipei-nic1648-painted-background.webp",
+    x: 0, y: 0, width: 600, height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    const palette = profile.palette;
+    target.replaceChildren();
+    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
+    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
+    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
+    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
   }, { once: true });
 }
 
@@ -2112,6 +2414,70 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   habitatElement?.style.setProperty("--environment-water", palette[4]);
   habitatElement?.style.setProperty("--environment-detail", palette[6]);
 
+  if (profile.id === "mahahual-ju2617-citrus-garden") {
+    drawMahahualJU2617Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "taipei-brc20390-forest-slope") {
+    drawTaipeiBRC20390Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "poovar-ju1337-agricultural-fruit-edge") {
+    drawKeralaJU1337Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "kauai-qg130-low-forest-fruit-floor") {
+    drawKauaiQG130Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "reunion-ju1375-agricultural-mollusk-edge") {
+    drawReunionJU1375Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "orsay-ju2518-rural-garden-apple") {
+    drawOrsayJU2518Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "dois-rios-eg5612-jackfruit-forest-floor") {
+    drawDoisRiosEG5612Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "nambucca-qg2814-rainforest-garden-flowers") {
+    drawNambuccaQG2814Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "mauritius-casela-fruit-ground") {
+    drawMauritiusJU2909Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "hcmc-ju4356-carambola-garden") {
+    drawHCMCJU4356Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "lingsar-hpt26-ficus-forest-edge") {
+    drawLombokHPT26Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "oahu-eca789-manoa-flower-forest") {
+    drawOahuECA789Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "kauai-qg131-sealodge-pandanus-beach-trail") {
+    drawKauaiQG131SealodgeScene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "new-taipei-nic1648-ruifang-fig-stairs") {
+    drawNewTaipeiNIC1648Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "guadeloupe-nic203-torch-ginger-forest") {
+    drawGuadeloupeNIC203Scene(target, profile, sceneComposition);
+    return;
+  }
+  if (profile.id === "la-selva-qg3845-fruit-forest") {
+    drawLaSelvaQG3845Scene(target, profile, sceneComposition);
+    return;
+  }
   if (profile.id === "sanda-ju1873-cacao-plantation") {
     drawSandaJU1873Scene(target, profile, sceneComposition);
     return;

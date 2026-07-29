@@ -1,6 +1,6 @@
 # Kauaʻi *Caenorhabditis tropicalis* QG131 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-26
 
 ## Purpose
 
@@ -264,7 +264,8 @@ curtain.
 - Fog curtain, fern bank, rust-red upland path or haplotype imagery.
 - Hanalei Refuge, river, wetland, kalo plots, paddies or waterfalls.
 - Secret Falls cues from ECA790 or ECA794.
-- QG130's glider, waterfall lyre or fruit-capsule geometry.
+- QG130's three-strain sorter, forest chronometer or low-elevation transect
+  geometry.
 - Identified pandanus species, variety or cultivar.
 - Invented fruit colour, intactness, key count or decay sequence.
 - Visible rain, claimed collection weather or temperature.
@@ -393,7 +394,8 @@ Current post-Oʻahu baseline:
 
 Delete:
 
-- tropicalis Kauaʻi's use of the Bonnet family; Orsay's pond-disc bonnet remains
+- tropicalis Kauaʻi's use of the Bonnet family; Orsay was migrated to a
+  dedicated record-led set on 2026-07-28
 - Wetland waders, a singleton family
 - Paddy metronome, a singleton family
 
@@ -432,8 +434,8 @@ Expected resulting totals:
   dedicated renderer case.
 - Remove `waders` from the repeated renderer set and delete its renderer case
   after confirming no remaining consumer.
-- Preserve the pond-disc bonnet renderer for Orsay, but remove the unreachable
-  tropicalis taro-bonnet branch.
+- Remove the obsolete Bonnet renderer after both Kauaʻi and Orsay have moved
+  to their dedicated record-led sets.
 - Add the three QG131 location-scoped renderer IDs and explicit layouts.
 - Add scoped light- and dark-theme styling for the new scene and mechanisms.
 - Refresh relevant Game asset cache versions.
@@ -487,3 +489,14 @@ Expected resulting totals:
 - Source link resolves.
 - No horizontal overflow, failed request or console error.
 - Full diff review and `git diff --check`.
+
+## Implemented state
+
+Implemented locally on 2026-07-26. The Game now uses the preserved generated
+source `game-of-worms/assets/source/kauai-qg131-painted-background-source.png`
+and its optimized derivative
+`game-of-worms/assets/kauai-qg131-painted-background.webp`. The QG131 marker,
+dedicated Sealodge coastal-trail scene, exact CaeNDR provenance, three
+location-scoped accessory families and six independently movable drawings
+follow this brief. The former Hanalei wetland, waterfall, rain, bonnet, waders
+and paddy-metronome implementation is no longer active.

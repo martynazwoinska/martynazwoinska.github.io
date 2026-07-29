@@ -1,6 +1,6 @@
 # New Taipei City *Caenorhabditis tropicalis* NIC1648 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-26
 
 ## Purpose
 
@@ -525,3 +525,15 @@ Expected resulting totals:
 - Source link resolves.
 - No horizontal overflow, failed request or console error.
 - Full diff review and `git diff --check`.
+
+## Implemented state
+
+Implemented locally on 2026-07-26. The Game now uses the preserved generated
+source
+`game-of-worms/assets/source/new-taipei-nic1648-painted-background-source.png`
+and its optimized derivative
+`game-of-worms/assets/new-taipei-nic1648-painted-background.webp`. The NIC1648
+marker, dedicated Ruifang stair scene, CaeNDR provenance, three
+location-scoped accessory families and six independently movable drawings
+follow this brief. The former Yehliu cape, hoodoo, crinoline and cape-fiddle
+implementation is no longer active.

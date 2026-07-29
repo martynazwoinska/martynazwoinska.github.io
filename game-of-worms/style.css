@@ -1652,6 +1652,77 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .ju1873-label { fill: color-mix(in srgb, #263c35 84%, var(--worm-deep)); font: 900 13px/1 var(--sans); stroke: color-mix(in srgb, #f5ecd2 85%, transparent); stroke-width: 2px; paint-order: stroke; }
 .ju1873-vial-label { fill: color-mix(in srgb, #2f433c 84%, var(--worm-deep)); font: 900 5px/1 var(--sans); letter-spacing: -.02em; stroke: none; }
 
+.la-selva-qg3845-accessory { filter: drop-shadow(0 5px 4px rgba(25,42,34,.25)); }
+.qg3845-cage,.qg3845-dial-shell,.qg3845-calendar-column,.qg3845-lift-frame,.qg3845-gradient-rack { fill: color-mix(in srgb,#876a42 72%,var(--local-secondary)); stroke: color-mix(in srgb,#30463b 82%,var(--worm-deep)); stroke-width:3; stroke-linejoin:round; }
+.qg3845-glass,.qg3845-marker-column,.qg3845-lift-window { fill: color-mix(in srgb,#d8e5d2 72%,var(--paper-strong)); stroke: color-mix(in srgb,#45685a 76%,var(--worm-deep)); stroke-width:2.3; }
+.qg3845-vein,.qg3845-marker,.qg3845-pointer,.qg3845-tick,.qg3845-linkage,.qg3845-crank-arm,.qg3845-counter-cable,.qg3845-lift-cable,.qg3845-rack-tie { fill:none; stroke:color-mix(in srgb,#425c4e 80%,var(--worm-deep)); stroke-width:2.7; stroke-linecap:round; stroke-linejoin:round; }
+.qg3845-contact-shoe,.qg3845-fruit-cradle,.qg3845-tripod,.qg3845-counterweight,.qg3845-leaf-cage { fill:color-mix(in srgb,#6f5a40 70%,var(--local-primary)); stroke:color-mix(in srgb,#30443a 82%,var(--worm-deep)); stroke-width:2.6; stroke-linejoin:round; }
+.qg3845-verify-dial,.qg3845-pivot,.qg3845-crank,.qg3845-handwheel,.qg3845-cloud-wheel,.qg3845-winding-drum { fill:color-mix(in srgb,#bd9550 74%,var(--local-secondary)); stroke:color-mix(in srgb,#415044 80%,var(--worm-deep)); stroke-width:2.3; }
+.qg3845-cam-track,.qg3845-spiral-lift { fill:none; stroke:color-mix(in srgb,#9a7745 74%,var(--local-secondary)); stroke-width:7; stroke-linecap:round; stroke-linejoin:round; }
+.qg3845-ant circle { fill:color-mix(in srgb,#815936 76%,var(--local-secondary)); stroke:color-mix(in srgb,#3a4137 82%,var(--worm-deep)); stroke-width:1.5; }
+.qg3845-ant-leg { fill:none; stroke:color-mix(in srgb,#3a4137 82%,var(--worm-deep)); stroke-width:2.2; stroke-linecap:round; }
+.qg3845-leaf-panel,.qg3845-leaf-carriage,.qg3845-forest-ribbon { fill:color-mix(in srgb,#4f7858 70%,var(--local-primary)); stroke:color-mix(in srgb,#2e4938 82%,var(--worm-deep)); stroke-width:2.3; stroke-linejoin:round; }
+.qg3845-mist-screen { fill:rgba(218,235,221,.78); stroke:color-mix(in srgb,#66857a 66%,var(--worm-deep)); stroke-width:2; }
+.qg3845-label { fill:color-mix(in srgb,#263c35 84%,var(--worm-deep)); font:900 11px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 85%,transparent); stroke-width:2px; paint-order:stroke; }
+.qg3845-small-label { fill:color-mix(in srgb,#263c35 84%,var(--worm-deep)); font:900 8px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 85%,transparent); stroke-width:1.5px; paint-order:stroke; }
+
+.guadeloupe-nic203-accessory { filter:drop-shadow(0 5px 4px rgba(40,25,31,.25)); }
+.nic203-stalk-frame,.nic203-stage-base,.nic203-flow-tower,.nic203-flume-base,.nic203-inheritance-tower,.nic203-logic-board { fill:color-mix(in srgb,#755446 72%,var(--local-secondary)); stroke:color-mix(in srgb,#3c3f38 82%,var(--worm-deep)); stroke-width:3; stroke-linejoin:round; }
+.nic203-bract { fill:color-mix(in srgb,#9a4057 76%,var(--local-secondary)); stroke:color-mix(in srgb,#56343f 82%,var(--worm-deep)); stroke-width:2.2; stroke-linejoin:round; }
+.nic203-flower-cage,.nic203-specimen-cradle,.nic203-litter-drawer,.nic203-flume,.nic203-flow-window,.nic203-logic-board,.nic203-gate { fill:color-mix(in srgb,#c6ad77 68%,var(--paper-strong)); stroke:color-mix(in srgb,#4a5145 78%,var(--worm-deep)); stroke-width:2.3; stroke-linejoin:round; }
+.nic203-vial,.nic203-egg-chamber { fill:rgba(218,234,226,.78); stroke:color-mix(in srgb,#4a6a60 74%,var(--worm-deep)); stroke-width:2.2; }
+.nic203-rail,.nic203-hinge,.nic203-linkage,.nic203-drainpipe,.nic203-drop,.nic203-helix { fill:none; stroke:color-mix(in srgb,#ac8447 74%,var(--local-secondary)); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+.nic203-date-wheel,.nic203-crank,.nic203-loading-wheel,.nic203-winding-drum { fill:color-mix(in srgb,#ba914d 75%,var(--local-secondary)); stroke:color-mix(in srgb,#4a4335 80%,var(--worm-deep)); stroke-width:2.3; }
+.nic203-drop-shutter,.nic203-chromosome-window,.nic203-offspring-shutter { fill:color-mix(in srgb,#617767 70%,var(--local-primary)); stroke:color-mix(in srgb,#35483d 82%,var(--worm-deep)); stroke-width:2.1; }
+.nic203-catch-cup,.nic203-basin { fill:color-mix(in srgb,#6d8e8a 68%,var(--local-primary)); stroke:color-mix(in srgb,#38514d 80%,var(--worm-deep)); stroke-width:2.2; }
+.nic203-rescue-lock,.nic203-rescue-key { fill:color-mix(in srgb,#c59750 75%,var(--local-secondary)); stroke:color-mix(in srgb,#594535 80%,var(--worm-deep)); stroke-width:2; stroke-linejoin:round; }
+.nic203-label { fill:color-mix(in srgb,#263c35 84%,var(--worm-deep)); font:900 10px/1 var(--sans); stroke:color-mix(in srgb,#f6ecd2 85%,transparent); stroke-width:1.8px; paint-order:stroke; }
+.nic203-small-label { fill:color-mix(in srgb,#263c35 84%,var(--worm-deep)); font:900 7px/1 var(--sans); stroke:color-mix(in srgb,#f6ecd2 85%,transparent); stroke-width:1.4px; paint-order:stroke; }
+
+.oahu-eca789-accessory { filter:drop-shadow(0 5px 4px rgba(33,39,34,.25)); }
+.eca789-clock-shell,.eca789-lift-frame,.eca789-console,.eca789-tripod-column,.eca789-folding-rack,.eca789-relay-bench { fill:color-mix(in srgb,#7d6549 72%,var(--local-secondary)); stroke:color-mix(in srgb,#33463c 84%,var(--worm-deep)); stroke-width:3; stroke-linejoin:round; }
+.eca789-petal-shutter { fill:color-mix(in srgb,#a85f69 72%,var(--local-secondary)); stroke:color-mix(in srgb,#583f43 82%,var(--worm-deep)); stroke-width:2.2; stroke-linejoin:round; }
+.eca789-litter-tray,.eca789-specimen-drawer,.eca789-ground-shoe,.eca789-record-plaque { fill:color-mix(in srgb,#705943 72%,var(--local-primary)); stroke:color-mix(in srgb,#35483d 84%,var(--worm-deep)); stroke-width:2.5; stroke-linejoin:round; }
+.eca789-gear,.eca789-return-wheel,.eca789-date-dial,.eca789-humidity-dial,.eca789-field-drum,.eca789-crank { fill:color-mix(in srgb,#bd9552 76%,var(--local-secondary)); stroke:color-mix(in srgb,#514532 82%,var(--worm-deep)); stroke-width:2.4; }
+.eca789-gear.accent { fill:color-mix(in srgb,#607965 72%,var(--local-primary)); }
+.eca789-chain,.eca789-drive,.eca789-vial-cap,.eca789-needle,.eca789-stylus,.eca789-tripod-leg,.eca789-hygrometer-coil,.eca789-trace,.eca789-drum-spoke,.eca789-belt,.eca789-bag-rib { fill:none; stroke:color-mix(in srgb,#43584c 84%,var(--worm-deep)); stroke-width:2.7; stroke-linecap:round; stroke-linejoin:round; }
+.eca789-chain { stroke-dasharray:3 4; }
+.eca789-vial,.eca789-sensor-window,.eca789-value-window,.eca789-paper-drum,.eca789-culture-plate { fill:rgba(220,235,227,.82); stroke:color-mix(in srgb,#4c6a60 74%,var(--worm-deep)); stroke-width:2.2; }
+.eca789-vial-cap,.eca789-contact-bulb,.eca789-air-bulb,.eca789-plate-cradle { fill:color-mix(in srgb,#668376 72%,var(--local-primary)); stroke:color-mix(in srgb,#374c43 84%,var(--worm-deep)); stroke-width:2.2; }
+.eca789-air-cage,.eca789-trace-strip,.eca789-bag-frame,.eca789-data-tile,.eca789-tag-aperture { fill:color-mix(in srgb,#c4b07e 68%,var(--paper-strong)); stroke:color-mix(in srgb,#4a5144 82%,var(--worm-deep)); stroke-width:2.3; stroke-linejoin:round; }
+.eca789-tag-cell,.eca789-chain-link { fill:color-mix(in srgb,#526d5d 76%,var(--local-primary)); stroke:color-mix(in srgb,#34483d 82%,var(--worm-deep)); stroke-width:1.5; }
+.eca789-label { fill:color-mix(in srgb,#263c35 86%,var(--worm-deep)); font:900 9px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 88%,transparent); stroke-width:1.8px; paint-order:stroke; }
+.eca789-small-label { fill:color-mix(in srgb,#263c35 86%,var(--worm-deep)); font:900 7px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 88%,transparent); stroke-width:1.4px; paint-order:stroke; }
+
+.kauai-qg131-accessory { filter:drop-shadow(0 5px 4px rgba(42,35,24,.25)); }
+.qg131-sorter-bench,.qg131-elevator-frame,.qg131-relay-rail,.qg131-escapement-frame,.qg131-viewer-frame,.qg131-motion-drum { fill:color-mix(in srgb,#826443 72%,var(--local-secondary)); stroke:color-mix(in srgb,#38483c 84%,var(--worm-deep)); stroke-width:3; stroke-linejoin:round; }
+.qg131-cradle-rim,.qg131-input-cup,.qg131-wedge-tray,.qg131-receiving-drawer,.qg131-converging-chute,.qg131-freezer-chamber { fill:color-mix(in srgb,#aa7b47 72%,var(--local-secondary)); stroke:color-mix(in srgb,#4e4937 82%,var(--worm-deep)); stroke-width:2.3; stroke-linejoin:round; }
+.qg131-fruit-segment { fill:color-mix(in srgb,#a35f3d 72%,var(--local-secondary)); stroke:color-mix(in srgb,#5e4532 82%,var(--worm-deep)); stroke-width:2; stroke-linejoin:round; }
+.qg131-index-wheel,.qg131-counterweight-wheel,.qg131-date-station,.qg131-handwheel,.qg131-drive-gear { fill:color-mix(in srgb,#c29a53 76%,var(--local-secondary)); stroke:color-mix(in srgb,#544a35 82%,var(--worm-deep)); stroke-width:2.3; }
+.qg131-date-station.terminal { fill:color-mix(in srgb,#718773 74%,var(--local-primary)); }
+.qg131-drive,.qg131-chain,.qg131-date-hand,.qg131-drive-shaft,.qg131-spiral-track,.qg131-motion-trace,.qg131-worm-ribbon { fill:none; stroke:color-mix(in srgb,#42584c 84%,var(--worm-deep)); stroke-width:2.7; stroke-linecap:round; stroke-linejoin:round; }
+.qg131-chain { stroke-dasharray:3 4; }
+.qg131-spiral-track.two,.qg131-worm-ribbon.two { stroke:color-mix(in srgb,#98585c 74%,var(--local-secondary)); }
+.qg131-vial,.qg131-agar-cradle,.qg131-tube-capsule,.qg131-plate-cradle,.qg131-culture-well,.qg131-observation-window { fill:rgba(224,237,229,.84); stroke:color-mix(in srgb,#4c6b60 75%,var(--worm-deep)); stroke-width:2.2; }
+.qg131-specimen-shutter,.qg131-agar-gate,.qg131-motion-strip,.qg131-id-plate,.qg131-id-shutter { fill:color-mix(in srgb,#c6b17e 70%,var(--paper-strong)); stroke:color-mix(in srgb,#4a5144 82%,var(--worm-deep)); stroke-width:2.3; stroke-linejoin:round; }
+.qg131-label { fill:color-mix(in srgb,#263c35 86%,var(--worm-deep)); font:900 9px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 88%,transparent); stroke-width:1.8px; paint-order:stroke; }
+.qg131-small-label { fill:color-mix(in srgb,#263c35 86%,var(--worm-deep)); font:900 7px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 88%,transparent); stroke-width:1.4px; paint-order:stroke; }
+.qg131-tiny-label,.qg131-vial-label { fill:color-mix(in srgb,#263c35 86%,var(--worm-deep)); font:900 6px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 88%,transparent); stroke-width:1.2px; paint-order:stroke; }
+
+.new-taipei-nic1648-accessory { filter:drop-shadow(0 5px 4px rgba(31,39,33,.25)); }
+.nic1648-gauge-tower,.nic1648-comparator-bench,.nic1648-stair-column,.nic1648-index-deck,.nic1648-optical-column,.nic1648-observation-drum { fill:color-mix(in srgb,#76654e 72%,var(--local-secondary)); stroke:color-mix(in srgb,#33483d 84%,var(--worm-deep)); stroke-width:3; stroke-linejoin:round; }
+.nic1648-gauge-ring,.nic1648-micrometer-drum,.nic1648-coordinate-drum,.nic1648-crank,.nic1648-qualitative-dial,.nic1648-focus-wheel,.nic1648-drive-gear { fill:color-mix(in srgb,#bd9653 76%,var(--local-secondary)); stroke:color-mix(in srgb,#504936 82%,var(--worm-deep)); stroke-width:2.3; }
+.nic1648-gauge-ring.large { fill:color-mix(in srgb,#728575 72%,var(--local-primary)); }
+.nic1648-sliding-cup,.nic1648-receiving-drawer,.nic1648-tread-plate,.nic1648-litter-drawer,.nic1648-culture-drawer { fill:color-mix(in srgb,#94734e 72%,var(--local-secondary)); stroke:color-mix(in srgb,#445044 82%,var(--worm-deep)); stroke-width:2.3; stroke-linejoin:round; }
+.nic1648-jaw,.nic1648-jaw-bridge,.nic1648-chain,.nic1648-drive,.nic1648-pointer,.nic1648-worm-strip,.nic1648-observation-trace { fill:none; stroke:color-mix(in srgb,#42594d 84%,var(--worm-deep)); stroke-width:2.7; stroke-linecap:round; stroke-linejoin:round; }
+.nic1648-chain { stroke-dasharray:3 4; }
+.nic1648-specimen-cup,.nic1648-vial,.nic1648-vial-cradle,.nic1648-observation-window,.nic1648-sighting-window { fill:rgba(221,235,227,.84); stroke:color-mix(in srgb,#4a6a5f 75%,var(--worm-deep)); stroke-width:2.2; }
+.nic1648-id-plate,.nic1648-specimen-shutter,.nic1648-litter-pocket,.nic1648-field-strip,.nic1648-note-shutter,.nic1648-tail-gate { fill:color-mix(in srgb,#c5b17f 70%,var(--paper-strong)); stroke:color-mix(in srgb,#4a5144 82%,var(--worm-deep)); stroke-width:2.3; stroke-linejoin:round; }
+.nic1648-tail-reference { fill:color-mix(in srgb,#9d5e64 72%,var(--local-secondary)); stroke:color-mix(in srgb,#563f44 82%,var(--worm-deep)); stroke-width:2; }
+.nic1648-label { fill:color-mix(in srgb,#263c35 86%,var(--worm-deep)); font:900 9px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 88%,transparent); stroke-width:1.8px; paint-order:stroke; }
+.nic1648-small-label { fill:color-mix(in srgb,#263c35 86%,var(--worm-deep)); font:900 7px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 88%,transparent); stroke-width:1.4px; paint-order:stroke; }
+.nic1648-tiny-label,.nic1648-vial-label { fill:color-mix(in srgb,#263c35 86%,var(--worm-deep)); font:900 6px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 88%,transparent); stroke-width:1.2px; paint-order:stroke; }
+
 .scanner-cast-frame,
 .scanner-portal { fill: color-mix(in srgb, #48504e 81%, var(--worm-deep)); stroke: color-mix(in srgb, #283330 84%, var(--worm-deep)); stroke-width: 3.5; stroke-linejoin: round; fill-rule: evenodd; }
 .scanner-portal { fill: color-mix(in srgb, #5a625f 75%, var(--local-primary)); }
@@ -2916,6 +2987,1488 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   .wow-fact { padding: 13px; }
   .wow-fact > span { top: 10px; right: 10px; font-size: 1rem; }
   .wow-fact strong { padding-right: 16px; }
+}
+
+/* Mahahual JU2617: citrus-decay, test-cross and lighthouse mechanisms. */
+.mahahual-ju2617-accessory {
+  --ju2617-ink: color-mix(in srgb, #3f372d 84%, var(--worm-deep));
+  --ju2617-brass: color-mix(in srgb, #b98643 78%, var(--local-secondary));
+  --ju2617-brass-light: color-mix(in srgb, #e5bf74 76%, var(--paper-strong));
+  --ju2617-copper: color-mix(in srgb, #a95e3d 74%, var(--local-primary));
+  --ju2617-glass: color-mix(in srgb, #d8efe8 48%, transparent);
+  --ju2617-orange: #c96f2f;
+  --ju2617-pulp: #e8a34b;
+  --ju2617-cream: color-mix(in srgb, #efe3bc 78%, var(--paper-strong));
+}
+.mahahual-ju2617-accessory path,
+.mahahual-ju2617-accessory circle,
+.mahahual-ju2617-accessory ellipse,
+.mahahual-ju2617-accessory rect {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ju2617-label,
+.ju2617-small-label {
+  fill: var(--ju2617-ink);
+  stroke: none;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  paint-order: stroke;
+}
+.ju2617-small-label { font-size: 13px; }
+.ju2617-recorder-base,
+.ju2617-lock-bench,
+.ju2617-lighthouse-base,
+.ju2617-curved-base,
+.ju2617-litter-drawer,
+.ju2617-progeny-drawer {
+  fill: var(--ju2617-brass);
+  stroke: var(--ju2617-ink);
+  stroke-width: 3;
+}
+.ju2617-record-plate {
+  fill: var(--ju2617-cream);
+  stroke: var(--ju2617-ink);
+  stroke-width: 2.5;
+}
+.ju2617-bell-jar {
+  fill: var(--ju2617-glass);
+  stroke: color-mix(in srgb, #668f87 74%, var(--ju2617-ink));
+  stroke-width: 4;
+}
+.ju2617-jar-rim,
+.ju2617-bubble,
+.ju2617-fresnel-ring {
+  fill: color-mix(in srgb, #d7f0e9 58%, transparent);
+  stroke: color-mix(in srgb, #668f87 72%, var(--ju2617-ink));
+  stroke-width: 2.4;
+}
+.ju2617-bubble.small { stroke-width: 1.8; }
+.ju2617-citrus-rind {
+  fill: var(--ju2617-orange);
+  stroke: color-mix(in srgb, #6d442c 84%, var(--ju2617-ink));
+  stroke-width: 2.7;
+}
+.ju2617-citrus.open .ju2617-citrus-rind { fill: color-mix(in srgb, #ad6333 78%, var(--ju2617-orange)); }
+.ju2617-citrus-collapse {
+  fill: none;
+  stroke: color-mix(in srgb, #704830 84%, var(--ju2617-ink));
+  stroke-width: 2.4;
+}
+.ju2617-citrus-pulp {
+  fill: var(--ju2617-pulp);
+  stroke: color-mix(in srgb, #9f6532 80%, var(--ju2617-ink));
+  stroke-width: 2;
+}
+.ju2617-segment-line {
+  fill: none;
+  stroke: color-mix(in srgb, #fff0bc 68%, var(--ju2617-pulp));
+  stroke-width: 1.5;
+}
+.ju2617-capillary,
+.ju2617-u-tube,
+.ju2617-counter-rail {
+  fill: none;
+  stroke: color-mix(in srgb, #658d84 74%, var(--ju2617-ink));
+  stroke-width: 3.2;
+}
+.ju2617-trace-drum,
+.ju2617-culture-vial {
+  fill: var(--ju2617-cream);
+  stroke: var(--ju2617-ink);
+  stroke-width: 2.5;
+}
+.ju2617-trace-line {
+  fill: none;
+  stroke: var(--ju2617-copper);
+  stroke-width: 2.2;
+}
+.ju2617-u-frame,
+.ju2617-gate-frame {
+  fill: color-mix(in srgb, var(--ju2617-brass) 37%, transparent);
+  stroke: var(--ju2617-ink);
+  stroke-width: 4;
+}
+.ju2617-stacked-chamber,
+.ju2617-twin-tube {
+  fill: color-mix(in srgb, #d8eee6 45%, var(--ju2617-cream));
+  stroke: color-mix(in srgb, #56796f 74%, var(--ju2617-ink));
+  stroke-width: 2.7;
+}
+.ju2617-counter-bead,
+.ju2617-drawer-pull,
+.ju2617-gear-hub {
+  fill: var(--ju2617-brass-light);
+  stroke: var(--ju2617-ink);
+  stroke-width: 1.6;
+}
+.ju2617-counter-bead.accent { fill: var(--ju2617-copper); }
+.ju2617-vial-cap {
+  fill: none;
+  stroke: var(--ju2617-copper);
+  stroke-width: 3;
+}
+.ju2617-bubble-wheel,
+.ju2617-gear,
+.ju2617-escapement-wheel {
+  fill: var(--ju2617-brass-light);
+  stroke: var(--ju2617-ink);
+  stroke-width: 2.5;
+}
+.ju2617-gear-spoke,
+.ju2617-drive,
+.ju2617-timing-tick {
+  fill: none;
+  stroke: var(--ju2617-ink);
+  stroke-width: 2.3;
+}
+.ju2617-cross-arm {
+  fill: none;
+  stroke: var(--ju2617-copper);
+  stroke-width: 12;
+}
+.ju2617-culture-well {
+  fill: color-mix(in srgb, #d9eee6 66%, var(--paper-strong));
+  stroke: color-mix(in srgb, #597f75 74%, var(--ju2617-ink));
+  stroke-width: 3;
+}
+.ju2617-observation-cabinet,
+.ju2617-diagnostic-shutter,
+.ju2617-blank-window {
+  fill: var(--ju2617-cream);
+  stroke: var(--ju2617-ink);
+  stroke-width: 2.5;
+}
+.ju2617-observation-window {
+  fill: color-mix(in srgb, #9fc8bb 48%, transparent);
+  stroke: color-mix(in srgb, #4e746a 76%, var(--ju2617-ink));
+  stroke-width: 2.2;
+}
+.ju2617-gate-feed {
+  fill: none;
+  stroke: var(--ju2617-copper);
+  stroke-width: 3;
+}
+.ju2617-lighthouse-tower {
+  fill: color-mix(in srgb, #f0e7c9 86%, var(--paper-strong));
+  stroke: var(--ju2617-ink);
+  stroke-width: 3;
+}
+.ju2617-lantern-room,
+.ju2617-lantern-roof {
+  fill: var(--ju2617-copper);
+  stroke: var(--ju2617-ink);
+  stroke-width: 2.7;
+}
+.ju2617-lantern-shutter,
+.ju2617-flash-aperture {
+  fill: color-mix(in srgb, #745349 76%, var(--ju2617-ink));
+  stroke: var(--ju2617-ink);
+  stroke-width: 1.8;
+}
+.ju2617-lantern-shutter.lit,
+.ju2617-flash-aperture.lit {
+  fill: #f1c35b;
+}
+.ju2617-timing-ring {
+  fill: color-mix(in srgb, var(--ju2617-brass-light) 30%, transparent);
+  stroke: var(--ju2617-brass);
+  stroke-width: 4;
+}
+.ju2617-fresnel-drum {
+  fill: color-mix(in srgb, #75988e 66%, var(--local-primary));
+  stroke: var(--ju2617-ink);
+  stroke-width: 3;
+}
+.ju2617-escapement-arm {
+  fill: none;
+  stroke: var(--ju2617-copper);
+  stroke-width: 5;
+}
+@media (max-width: 600px) {
+  .mahahual-ju2617-accessory .ju2617-small-label { display: none; }
+  .mahahual-ju2617-accessory .ju2617-label { font-size: 24px; }
+}
+
+/* Mauritius JU2909: fruit-ground, provenance and Casela contour mechanisms. */
+.mauritius-ju2909-accessory {
+  --ju2909-ink: color-mix(in srgb, #3b392f 84%, var(--worm-deep));
+  --ju2909-brass: color-mix(in srgb, #ad8249 76%, var(--local-secondary));
+  --ju2909-brass-light: color-mix(in srgb, #dfc27f 74%, var(--paper-strong));
+  --ju2909-berry: color-mix(in srgb, #84506d 72%, var(--local-primary));
+  --ju2909-leaf: color-mix(in srgb, #4e7257 76%, var(--local-primary));
+  --ju2909-fruit: #9a6739;
+  --ju2909-nut: #69462f;
+  --ju2909-glass: color-mix(in srgb, #d7eee7 52%, transparent);
+  --ju2909-cream: color-mix(in srgb, #efe4c0 79%, var(--paper-strong));
+}
+.mauritius-ju2909-accessory path,
+.mauritius-ju2909-accessory circle,
+.mauritius-ju2909-accessory ellipse,
+.mauritius-ju2909-accessory rect {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ju2909-label,
+.ju2909-small-label {
+  fill: var(--ju2909-ink);
+  stroke: none;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: .035em;
+}
+.ju2909-small-label { font-size: 12px; }
+.ju2909-viewer-bed,
+.ju2909-flow-table,
+.ju2909-relief-table,
+.ju2909-litter-tray,
+.ju2909-litter-cassette {
+  fill: var(--ju2909-brass);
+  stroke: var(--ju2909-ink);
+  stroke-width: 3;
+}
+.ju2909-fruit-rind {
+  fill: var(--ju2909-fruit);
+  stroke: color-mix(in srgb, #543c2d 84%, var(--ju2909-ink));
+  stroke-width: 3;
+}
+.ju2909-fruit-opening {
+  fill: color-mix(in srgb, #c28b50 68%, #5e3b29);
+  stroke: var(--ju2909-ink);
+  stroke-width: 2.4;
+}
+.ju2909-woody-nut {
+  fill: var(--ju2909-nut);
+  stroke: color-mix(in srgb, #3c2c24 86%, var(--ju2909-ink));
+  stroke-width: 2.6;
+}
+.ju2909-nut-cradle,
+.ju2909-backlight-aperture {
+  fill: var(--ju2909-glass);
+  stroke: color-mix(in srgb, #63877c 72%, var(--ju2909-ink));
+  stroke-width: 2.6;
+}
+.ju2909-roller,
+.ju2909-counterweight,
+.ju2909-coordinate-pin {
+  fill: var(--ju2909-brass-light);
+  stroke: var(--ju2909-ink);
+  stroke-width: 2;
+}
+.ju2909-roller-spoke,
+.ju2909-viewer-arm,
+.ju2909-counterweight-line,
+.ju2909-cage-rung,
+.ju2909-table-leg,
+.ju2909-pin-stem {
+  fill: none;
+  stroke: var(--ju2909-ink);
+  stroke-width: 2.5;
+}
+.ju2909-lens-carriage,
+.ju2909-c-frame,
+.ju2909-fork-tower,
+.ju2909-alidade-frame {
+  fill: color-mix(in srgb, var(--ju2909-brass) 36%, transparent);
+  stroke: var(--ju2909-ink);
+  stroke-width: 4;
+}
+.ju2909-side-lens {
+  fill: var(--ju2909-brass-light);
+  stroke: var(--ju2909-ink);
+  stroke-width: 2.5;
+}
+.ju2909-side-lens-glass {
+  fill: color-mix(in srgb, #9fcec1 58%, transparent);
+  stroke: color-mix(in srgb, #50796d 76%, var(--ju2909-ink));
+  stroke-width: 2;
+}
+.ju2909-litter-grain,
+.ju2909-sample-fragment {
+  fill: color-mix(in srgb, #6f543a 76%, var(--ju2909-fruit));
+  stroke: var(--ju2909-ink);
+  stroke-width: 1.4;
+}
+.ju2909-litter-grain.accent,
+.ju2909-sample-fragment.accent { fill: var(--ju2909-berry); }
+.ju2909-shared-cradle,
+.ju2909-flip-tag,
+.ju2909-founder-cue {
+  fill: var(--ju2909-cream);
+  stroke: var(--ju2909-ink);
+  stroke-width: 2.5;
+}
+.ju2909-branch-pipe {
+  fill: none;
+  stroke: var(--ju2909-brass);
+  stroke-width: 4.5;
+}
+.ju2909-line-well {
+  fill: color-mix(in srgb, #d7ebe4 65%, var(--paper-strong));
+  stroke: color-mix(in srgb, #53786c 76%, var(--ju2909-ink));
+  stroke-width: 3;
+}
+.ju2909-line-cage {
+  fill: color-mix(in srgb, var(--ju2909-glass) 72%, var(--ju2909-cream));
+  stroke: var(--ju2909-ink);
+  stroke-width: 2.4;
+}
+.ju2909-sight-window,
+.ju2909-slope-card,
+.ju2909-coordinate-roll {
+  fill: var(--ju2909-cream);
+  stroke: var(--ju2909-ink);
+  stroke-width: 2.4;
+}
+.ju2909-mountain-sight,
+.ju2909-rempart-profile {
+  fill: var(--ju2909-berry);
+  stroke: var(--ju2909-ink);
+  stroke-width: 2.5;
+}
+.ju2909-grid-line {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ju2909-brass) 74%, var(--ju2909-ink));
+  stroke-width: 1.8;
+}
+.ju2909-contour-path {
+  fill: none;
+  stroke: var(--ju2909-berry);
+  stroke-width: 4;
+}
+.ju2909-planted-bed {
+  fill: var(--ju2909-leaf);
+  stroke: color-mix(in srgb, #344d3b 80%, var(--ju2909-ink));
+  stroke-width: 2;
+}
+.ju2909-planted-bed.accent {
+  fill: color-mix(in srgb, var(--ju2909-leaf) 70%, var(--ju2909-brass-light));
+}
+.ju2909-plumb-line {
+  fill: none;
+  stroke: var(--ju2909-berry);
+  stroke-width: 2.2;
+}
+.ju2909-plumb-weight {
+  fill: var(--ju2909-brass-light);
+  stroke: var(--ju2909-ink);
+  stroke-width: 2;
+}
+@media (max-width: 600px) {
+  .mauritius-ju2909-accessory .ju2909-small-label { display: none; }
+  .mauritius-ju2909-accessory .ju2909-label { font-size: 24px; }
+}
+
+/* Ho Chi Minh City JU4356: carambola, ITS2 and urban-canopy mechanisms. */
+.hcmc-ju4356-accessory {
+  --ju4356-ink: color-mix(in srgb, #343d34 84%, var(--worm-deep));
+  --ju4356-brass: color-mix(in srgb, #a77f45 76%, var(--local-secondary));
+  --ju4356-brass-light: color-mix(in srgb, #dfc076 74%, var(--paper-strong));
+  --ju4356-berry: color-mix(in srgb, #7d4f6e 72%, var(--local-primary));
+  --ju4356-leaf: color-mix(in srgb, #46725b 78%, var(--local-primary));
+  --ju4356-fruit: #c5a23f;
+  --ju4356-fruit-deep: #8b6f2f;
+  --ju4356-glass: color-mix(in srgb, #d5ece5 51%, transparent);
+  --ju4356-cream: color-mix(in srgb, #eee3bb 80%, var(--paper-strong));
+}
+.hcmc-ju4356-accessory path,
+.hcmc-ju4356-accessory circle,
+.hcmc-ju4356-accessory ellipse,
+.hcmc-ju4356-accessory rect {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ju4356-label,
+.ju4356-small-label,
+.ju4356-large-symbol {
+  fill: var(--ju4356-ink);
+  stroke: none;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: .035em;
+}
+.ju4356-small-label { font-size: 12px; }
+.ju4356-large-symbol { font-family: var(--display); font-size: 38px; }
+.ju4356-contact-tray,
+.ju4356-reader-bed,
+.ju4356-census-base,
+.ju4356-ground-drawer {
+  fill: var(--ju4356-brass);
+  stroke: var(--ju4356-ink);
+  stroke-width: 3;
+}
+.ju4356-five-rib-cradle,
+.ju4356-sample-shutter,
+.ju4356-flipplate,
+.ju4356-alias-tab,
+.ju4356-tag-drawer,
+.ju4356-blank-tag {
+  fill: var(--ju4356-cream);
+  stroke: var(--ju4356-ink);
+  stroke-width: 2.4;
+}
+.ju4356-fruit-rind {
+  fill: var(--ju4356-fruit);
+  stroke: color-mix(in srgb, #5f542f 82%, var(--ju4356-ink));
+  stroke-width: 2.8;
+}
+.ju4356-fruit-rib {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ju4356-fruit-deep) 77%, var(--ju4356-ink));
+  stroke-width: 1.8;
+}
+.ju4356-fruit-rib.strong { stroke-width: 2.7; }
+.ju4356-softened-patch {
+  fill: color-mix(in srgb, #8c5d36 74%, var(--ju4356-fruit-deep));
+  stroke: color-mix(in srgb, #573d2d 82%, var(--ju4356-ink));
+  stroke-width: 1.8;
+}
+.ju4356-rib-frame,
+.ju4356-spool-tower,
+.ju4356-caliper-cabinet {
+  fill: color-mix(in srgb, var(--ju4356-brass) 35%, transparent);
+  stroke: var(--ju4356-ink);
+  stroke-width: 4;
+}
+.ju4356-culture-vial {
+  fill: var(--ju4356-glass);
+  stroke: color-mix(in srgb, #557d70 74%, var(--ju4356-ink));
+  stroke-width: 2.2;
+}
+.ju4356-vial-cap,
+.ju4356-hinge,
+.ju4356-drive,
+.ju4356-dial-hand,
+.ju4356-reel-spoke,
+.ju4356-counter-spoke {
+  fill: none;
+  stroke: var(--ju4356-ink);
+  stroke-width: 2.4;
+}
+.ju4356-ground-grain {
+  fill: color-mix(in srgb, #65543c 75%, var(--ju4356-fruit-deep));
+  stroke: var(--ju4356-ink);
+  stroke-width: 1.3;
+}
+.ju4356-ground-grain.accent { fill: var(--ju4356-berry); }
+.ju4356-ribbon-reel,
+.ju4356-catch-reel,
+.ju4356-side-dial,
+.ju4356-crown-counter,
+.ju4356-drawer-pull {
+  fill: var(--ju4356-brass-light);
+  stroke: var(--ju4356-ink);
+  stroke-width: 2.3;
+}
+.ju4356-reel-hub {
+  fill: var(--ju4356-berry);
+  stroke: var(--ju4356-ink);
+  stroke-width: 1.7;
+}
+.ju4356-its2-aperture,
+.ju4356-ribbon-window {
+  fill: var(--ju4356-glass);
+  stroke: color-mix(in srgb, #557d70 74%, var(--ju4356-ink));
+  stroke-width: 2.5;
+}
+.ju4356-ribbon {
+  fill: var(--ju4356-cream);
+  stroke: var(--ju4356-berry);
+  stroke-width: 3.2;
+}
+.ju4356-registration-mark {
+  fill: none;
+  stroke: var(--ju4356-brass);
+  stroke-width: 1.7;
+}
+.ju4356-uncertainty-shutter {
+  fill: color-mix(in srgb, var(--ju4356-berry) 64%, var(--ju4356-cream));
+  stroke: var(--ju4356-ink);
+  stroke-width: 2.5;
+}
+.ju4356-trunk-gauge {
+  fill: color-mix(in srgb, #73583f 72%, var(--ju4356-brass));
+  stroke: var(--ju4356-ink);
+  stroke-width: 2.7;
+}
+.ju4356-sliding-arm,
+.ju4356-crown-branch {
+  fill: none;
+  stroke: var(--ju4356-brass);
+  stroke-width: 5;
+}
+.ju4356-path-roll {
+  fill: var(--ju4356-cream);
+  stroke: var(--ju4356-ink);
+  stroke-width: 2.3;
+}
+.ju4356-path-line,
+.ju4356-path-grid {
+  fill: none;
+  stroke: var(--ju4356-berry);
+  stroke-width: 2.4;
+}
+.ju4356-canopy-lobe {
+  fill: var(--ju4356-leaf);
+  stroke: color-mix(in srgb, #304d3b 83%, var(--ju4356-ink));
+  stroke-width: 2.3;
+}
+.ju4356-canopy-lobe.accent {
+  fill: color-mix(in srgb, var(--ju4356-leaf) 72%, var(--ju4356-brass-light));
+}
+.ju4356-canopy-lobe.deep {
+  fill: color-mix(in srgb, var(--ju4356-leaf) 76%, var(--ju4356-berry));
+}
+@media (max-width: 600px) {
+  .hcmc-ju4356-accessory .ju4356-small-label { display: none; }
+  .hcmc-ju4356-accessory .ju4356-label { font-size: 24px; }
+  .hcmc-ju4356-accessory .ju4356-large-symbol { font-size: 45px; }
+}
+
+/* Nambucca rainforest-garden record: flowers, two-plate relay and 18S reader. */
+.nambucca-qg2814-accessory {
+  --qg2814-ink: color-mix(in srgb, #293b36 87%, var(--worm-deep));
+  --qg2814-brass: color-mix(in srgb, #a97842 76%, var(--local-secondary));
+  --qg2814-brass-light: color-mix(in srgb, #dfbd70 78%, var(--paper-strong));
+  --qg2814-green: color-mix(in srgb, #55735d 82%, var(--local-primary));
+  --qg2814-green-light: color-mix(in srgb, #acc4a1 74%, var(--paper-strong));
+  --qg2814-coral: color-mix(in srgb, #b66d63 78%, var(--local-tertiary));
+  --qg2814-cream: color-mix(in srgb, #eee0bd 84%, var(--paper-strong));
+  --qg2814-glass: color-mix(in srgb, #d3e7df 56%, transparent);
+}
+.nambucca-qg2814-accessory path,
+.nambucca-qg2814-accessory circle,
+.nambucca-qg2814-accessory ellipse {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.qg2814-label,
+.qg2814-small-label,
+.qg2814-stage-label,
+.qg2814-date-label {
+  fill: var(--qg2814-ink);
+  font-family: var(--font-sans);
+  font-weight: 900;
+  pointer-events: none;
+}
+.qg2814-small-label { font-size: 11px; letter-spacing: .075em; }
+.qg2814-stage-label { font-size: 18px; }
+.qg2814-date-label { font-size: 22px; }
+.qg2814-flower-cabinet,
+.qg2814-sample-table,
+.qg2814-plate-lift,
+.qg2814-relay-table,
+.qg2814-ribbon-cabinet,
+.qg2814-reader-table {
+  fill: var(--qg2814-brass);
+  stroke: var(--qg2814-ink);
+  stroke-width: 4;
+}
+.qg2814-flower-drawer,
+.qg2814-ribbon-window,
+.qg2814-readout-drawer,
+.qg2814-id-drawer,
+.qg2814-sequence-screen,
+.qg2814-identification-gate,
+.qg2814-species-readout {
+  fill: var(--qg2814-cream);
+  stroke: var(--qg2814-ink);
+  stroke-width: 3.5;
+}
+.qg2814-flower-drawer.accent {
+  fill: var(--qg2814-green-light);
+}
+.qg2814-petal {
+  fill: var(--qg2814-cream);
+  stroke: var(--qg2814-ink);
+  stroke-width: 2.5;
+}
+.qg2814-petal.accent { fill: var(--qg2814-coral); }
+.qg2814-petal.collapsed { fill: color-mix(in srgb, var(--qg2814-coral) 58%, #765343); }
+.qg2814-flower-centre {
+  fill: var(--qg2814-brass-light);
+  stroke: var(--qg2814-ink);
+  stroke-width: 2.5;
+}
+.qg2814-litter-tray,
+.qg2814-index-plate,
+.qg2814-date-window,
+.qg2814-founder-cradle,
+.qg2814-reader-plate {
+  fill: var(--qg2814-brass-light);
+  stroke: var(--qg2814-ink);
+  stroke-width: 3.5;
+}
+.qg2814-ground-membrane {
+  fill: color-mix(in srgb, #70513d 68%, var(--qg2814-cream));
+  stroke: var(--qg2814-ink);
+  stroke-width: 4;
+}
+.qg2814-sampling-aperture,
+.qg2814-culture-plate,
+.qg2814-isotype-seal {
+  fill: var(--qg2814-glass);
+  stroke: var(--qg2814-ink);
+  stroke-width: 4;
+}
+.qg2814-culture-plate.second { fill: color-mix(in srgb, var(--qg2814-green-light) 65%, transparent); }
+.qg2814-plate-lid {
+  fill: none;
+  stroke: var(--qg2814-ink);
+  stroke-width: 2.5;
+}
+.qg2814-litter-chip {
+  fill: #75533e;
+  stroke: var(--qg2814-ink);
+  stroke-width: 2;
+}
+.qg2814-drawer-tabs,
+.qg2814-theatre-tick,
+.qg2814-lift-rail,
+.qg2814-five-notch-column,
+.qg2814-transfer-rail,
+.qg2814-sequence-rung {
+  fill: none;
+  stroke: var(--qg2814-ink);
+  stroke-width: 3;
+}
+.qg2814-founder-window {
+  fill: var(--qg2814-coral);
+  stroke: var(--qg2814-ink);
+  stroke-width: 3.5;
+}
+.qg2814-sequence-ribbon {
+  fill: none;
+  stroke: var(--qg2814-green);
+  stroke-width: 5;
+}
+@media (max-width: 600px) {
+  .nambucca-qg2814-accessory .qg2814-small-label { display: none; }
+  .nambucca-qg2814-accessory .qg2814-stage-label { font-size: 22px; }
+}
+
+/* Dois Rios jackfruit record: emergence, shared-bag provenance and test cross. */
+.dois-rios-eg5612-accessory {
+  --eg5612-ink: color-mix(in srgb, #263b34 87%, var(--worm-deep));
+  --eg5612-brass: color-mix(in srgb, #a8753d 76%, var(--local-secondary));
+  --eg5612-brass-light: color-mix(in srgb, #dfbd70 78%, var(--paper-strong));
+  --eg5612-green: color-mix(in srgb, #566f43 82%, var(--local-primary));
+  --eg5612-green-light: color-mix(in srgb, #a8bd72 74%, var(--paper-strong));
+  --eg5612-ochre: color-mix(in srgb, #c08a45 80%, var(--local-tertiary));
+  --eg5612-red: color-mix(in srgb, #a65048 78%, var(--local-tertiary));
+  --eg5612-cream: color-mix(in srgb, #efe0b8 84%, var(--paper-strong));
+}
+.dois-rios-eg5612-accessory path,
+.dois-rios-eg5612-accessory circle {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.eg5612-label,
+.eg5612-small-label,
+.eg5612-stage-label,
+.eg5612-question {
+  fill: var(--eg5612-ink);
+  font-family: var(--font-sans);
+  font-weight: 900;
+  pointer-events: none;
+}
+.eg5612-small-label { font-size: 11px; letter-spacing: .075em; }
+.eg5612-stage-label { font-size: 18px; }
+.eg5612-question { font-size: 34px; }
+.eg5612-emergence-cabinet,
+.eg5612-theatre-table,
+.eg5612-bag-ledger,
+.eg5612-bag-viewer-table,
+.eg5612-cross-tower,
+.eg5612-cross-gate-table {
+  fill: var(--eg5612-brass);
+  stroke: var(--eg5612-ink);
+  stroke-width: 4;
+}
+.eg5612-rind-window,
+.eg5612-stage-drawer,
+.eg5612-founding-gate,
+.eg5612-bag-pocket,
+.eg5612-species-window,
+.eg5612-cross-channel {
+  fill: var(--eg5612-cream);
+  stroke: var(--eg5612-ink);
+  stroke-width: 3.5;
+}
+.eg5612-stage-drawer.founding,
+.eg5612-stage-window.founding {
+  fill: var(--eg5612-green-light);
+}
+.eg5612-jackfruit-rind {
+  fill: var(--eg5612-green);
+  stroke: var(--eg5612-ink);
+  stroke-width: 4;
+}
+.eg5612-rind-node {
+  fill: var(--eg5612-green-light);
+  stroke: none;
+}
+.eg5612-jackfruit-interior {
+  fill: var(--eg5612-ochre);
+  stroke: var(--eg5612-ink);
+  stroke-width: 3;
+}
+.eg5612-fruit-bulb {
+  fill: var(--eg5612-cream);
+  stroke: var(--eg5612-ink);
+  stroke-width: 2;
+}
+.eg5612-stage-window,
+.eg5612-stage-traces,
+.eg5612-open-cross {
+  fill: var(--eg5612-green-light);
+  stroke: var(--eg5612-ink);
+  stroke-width: 3;
+}
+.eg5612-founding-cradle,
+.eg5612-index-plate,
+.eg5612-provenance-plate,
+.eg5612-cross-result-plate {
+  fill: var(--eg5612-brass-light);
+  stroke: var(--eg5612-ink);
+  stroke-width: 3.5;
+}
+.eg5612-gate-link,
+.eg5612-provenance-ribbon,
+.eg5612-bag-join,
+.eg5612-test-rail,
+.eg5612-closed-cross {
+  fill: none;
+  stroke: var(--eg5612-ink);
+  stroke-width: 3.5;
+}
+.eg5612-transport-bag {
+  fill: color-mix(in srgb, var(--eg5612-cream) 72%, transparent);
+  stroke: var(--eg5612-ink);
+  stroke-width: 4;
+}
+.eg5612-flower-card {
+  fill: var(--eg5612-red);
+  stroke: var(--eg5612-ink);
+  stroke-width: 3.5;
+}
+.eg5612-shared-seal,
+.eg5612-founding-chamber,
+.eg5612-larva-lift {
+  fill: var(--eg5612-ochre);
+  stroke: var(--eg5612-ink);
+  stroke-width: 3.5;
+}
+.eg5612-uncertainty-shutter {
+  fill: var(--eg5612-brass-light);
+  stroke: var(--eg5612-ink);
+  stroke-width: 4;
+}
+@media (max-width: 600px) {
+  .dois-rios-eg5612-accessory .eg5612-small-label { display: none; }
+  .dois-rios-eg5612-accessory .eg5612-stage-label { font-size: 22px; }
+}
+
+/* Orsay rural-garden apple record: decay, association and field ledger. */
+.orsay-ju2518-accessory {
+  --ju2518-ink: color-mix(in srgb, #303a36 86%, var(--worm-deep));
+  --ju2518-brass: color-mix(in srgb, #a77a42 76%, var(--local-secondary));
+  --ju2518-brass-light: color-mix(in srgb, #e0bf73 78%, var(--paper-strong));
+  --ju2518-sage: color-mix(in srgb, #657c5c 80%, var(--local-primary));
+  --ju2518-sage-light: color-mix(in srgb, #b8c69a 74%, var(--paper-strong));
+  --ju2518-apple: color-mix(in srgb, #a64f3f 80%, var(--local-tertiary));
+  --ju2518-apple-light: color-mix(in srgb, #d08a58 76%, var(--paper-strong));
+  --ju2518-cream: color-mix(in srgb, #efe2bd 84%, var(--paper-strong));
+  --ju2518-glass: color-mix(in srgb, #d8e7d0 56%, transparent);
+}
+.orsay-ju2518-accessory path,
+.orsay-ju2518-accessory circle {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ju2518-label,
+.ju2518-small-label,
+.ju2518-number,
+.ju2518-date-label,
+.ju2518-date-number {
+  fill: var(--ju2518-ink);
+  font-family: var(--font-sans);
+  font-weight: 900;
+  pointer-events: none;
+}
+.ju2518-small-label { font-size: 12px; letter-spacing: .08em; }
+.ju2518-number { font-size: 23px; }
+.ju2518-date-label { font-size: 20px; }
+.ju2518-date-number { font-size: 31px; }
+.ju2518-flipbook-cabinet,
+.ju2518-rotoscope-table,
+.ju2518-association-cabinet,
+.ju2518-spectroscope-table,
+.ju2518-fieldbook-tower,
+.ju2518-ledger-table {
+  fill: var(--ju2518-brass);
+  stroke: var(--ju2518-ink);
+  stroke-width: 4;
+}
+.ju2518-state-window,
+.ju2518-channel-window,
+.ju2518-record-window,
+.ju2518-date-window,
+.ju2518-month-window,
+.ju2518-year-window,
+.ju2518-garden-aperture {
+  fill: var(--ju2518-cream);
+  stroke: var(--ju2518-ink);
+  stroke-width: 3.5;
+}
+.ju2518-state-window.accent,
+.ju2518-date-window.accent {
+  fill: var(--ju2518-sage-light);
+}
+.ju2518-apple {
+  fill: var(--ju2518-apple);
+  stroke: var(--ju2518-ink);
+  stroke-width: 4;
+}
+.ju2518-apple.softened { fill: var(--ju2518-apple-light); }
+.ju2518-apple.open { fill: color-mix(in srgb, var(--ju2518-apple-light) 64%, var(--ju2518-cream)); }
+.ju2518-apple-stem,
+.ju2518-flip-tabs,
+.ju2518-rotoscope-tick,
+.ju2518-channel-rail,
+.ju2518-association-bridge,
+.ju2518-elevation-line {
+  fill: none;
+  stroke: var(--ju2518-ink);
+  stroke-width: 3;
+}
+.ju2518-apple-leaf,
+.ju2518-garden-symbol {
+  fill: var(--ju2518-sage);
+  stroke: var(--ju2518-ink);
+  stroke-width: 3;
+}
+.ju2518-decay-window {
+  fill: color-mix(in srgb, #6b4b37 82%, var(--ju2518-cream));
+  stroke: var(--ju2518-ink);
+  stroke-width: 3;
+}
+.ju2518-contact-tray,
+.ju2518-index-plate,
+.ju2518-association-plate,
+.ju2518-elevation-weight,
+.ju2518-nd-drawer,
+.ju2518-nd-shutter {
+  fill: var(--ju2518-brass-light);
+  stroke: var(--ju2518-ink);
+  stroke-width: 3.5;
+}
+.ju2518-rotoscope-disc,
+.ju2518-inspection-lens,
+.ju2518-link-lens,
+.ju2518-date-dial,
+.ju2518-elevation-dial {
+  fill: var(--ju2518-glass);
+  stroke: var(--ju2518-ink);
+  stroke-width: 4;
+}
+.ju2518-signal-ribbon {
+  fill: none;
+  stroke: var(--ju2518-sage);
+  stroke-width: 5;
+}
+.ju2518-signal-node {
+  fill: var(--ju2518-apple-light);
+  stroke: var(--ju2518-ink);
+  stroke-width: 2.5;
+}
+@media (max-width: 600px) {
+  .orsay-ju2518-accessory .ju2518-small-label { display: none; }
+  .orsay-ju2518-accessory .ju2518-date-number { font-size: 35px; }
+}
+
+/* Réunion agricultural-mollusk record: inspection, year-turn date and altitude. */
+.reunion-ju1375-accessory {
+  --ju1375-ink: color-mix(in srgb, #2d3c3a 86%, var(--worm-deep));
+  --ju1375-brass: color-mix(in srgb, #a8753f 76%, var(--local-secondary));
+  --ju1375-brass-light: color-mix(in srgb, #dfbd72 78%, var(--paper-strong));
+  --ju1375-blue: color-mix(in srgb, #557f7c 78%, var(--local-primary));
+  --ju1375-blue-light: color-mix(in srgb, #add0c7 72%, var(--paper-strong));
+  --ju1375-shell: color-mix(in srgb, #b9855f 78%, var(--local-tertiary));
+  --ju1375-cream: color-mix(in srgb, #eee0bd 84%, var(--paper-strong));
+  --ju1375-glass: color-mix(in srgb, #cce5df 56%, transparent);
+}
+.reunion-ju1375-accessory path,
+.reunion-ju1375-accessory circle {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ju1375-label,
+.ju1375-small-label,
+.ju1375-number,
+.ju1375-date-label,
+.ju1375-date-number {
+  fill: var(--ju1375-ink);
+  font-family: var(--font-sans);
+  font-weight: 900;
+  pointer-events: none;
+}
+.ju1375-small-label { font-size: 12px; letter-spacing: .08em; }
+.ju1375-number { font-size: 23px; }
+.ju1375-date-label { font-size: 20px; }
+.ju1375-date-number { font-size: 31px; }
+.ju1375-inspection-cabinet,
+.ju1375-theatre-table,
+.ju1375-clock-tower,
+.ju1375-chronometer-bed,
+.ju1375-altitude-frame,
+.ju1375-altimeter-table {
+  fill: var(--ju1375-brass);
+  stroke: var(--ju1375-ink);
+  stroke-width: 4;
+}
+.ju1375-view-window,
+.ju1375-date-window,
+.ju1375-month-window,
+.ju1375-year-window,
+.ju1375-land-card,
+.ju1375-land-aperture {
+  fill: var(--ju1375-cream);
+  stroke: var(--ju1375-ink);
+  stroke-width: 3.5;
+}
+.ju1375-date-window.accent,
+.ju1375-land-card.accent {
+  fill: var(--ju1375-blue-light);
+}
+.ju1375-shell {
+  fill: var(--ju1375-shell);
+  stroke: var(--ju1375-ink);
+  stroke-width: 4;
+}
+.ju1375-shell.accent { fill: var(--ju1375-brass-light); }
+.ju1375-shell-spiral,
+.ju1375-theatre-tick,
+.ju1375-midnight-line,
+.ju1375-midnight-bridge,
+.ju1375-altitude-line,
+.ju1375-scale-line {
+  fill: none;
+  stroke: var(--ju1375-ink);
+  stroke-width: 3;
+}
+.ju1375-substrate-swatch,
+.ju1375-land-terrace {
+  fill: color-mix(in srgb, var(--ju1375-shell) 66%, var(--ju1375-cream));
+  stroke: var(--ju1375-ink);
+  stroke-width: 3.5;
+}
+.ju1375-aperture-lens,
+.ju1375-theatre-disc,
+.ju1375-date-wheel,
+.ju1375-altitude-dial {
+  fill: var(--ju1375-glass);
+  stroke: var(--ju1375-ink);
+  stroke-width: 4;
+}
+.ju1375-sample-drawer,
+.ju1375-index-plate,
+.ju1375-nd-shutter,
+.ju1375-singleton-latch,
+.ju1375-altitude-weight,
+.ju1375-blank-drawer,
+.ju1375-blank-shutter {
+  fill: var(--ju1375-brass-light);
+  stroke: var(--ju1375-ink);
+  stroke-width: 3.5;
+}
+.ju1375-midnight-weight,
+.ju1375-midnight-star {
+  fill: var(--ju1375-blue);
+  stroke: var(--ju1375-ink);
+  stroke-width: 3;
+}
+.ju1375-land-symbol {
+  fill: none;
+  stroke: var(--ju1375-blue);
+  stroke-width: 6;
+}
+@media (max-width: 600px) {
+  .reunion-ju1375-accessory .ju1375-small-label { display: none; }
+  .reunion-ju1375-accessory .ju1375-date-number { font-size: 35px; }
+}
+
+/* Kauaʻi low-forest record: isotype sorting, collection date and elevation transect. */
+.kauai-qg130-accessory {
+  --qg130-ink: color-mix(in srgb, #263d35 86%, var(--worm-deep));
+  --qg130-brass: color-mix(in srgb, #a8783c 76%, var(--local-secondary));
+  --qg130-brass-light: color-mix(in srgb, #e1c174 78%, var(--paper-strong));
+  --qg130-green: color-mix(in srgb, #527c62 82%, var(--local-primary));
+  --qg130-green-light: color-mix(in srgb, #a8c49c 76%, var(--paper-strong));
+  --qg130-russet: color-mix(in srgb, #85503d 78%, var(--local-tertiary));
+  --qg130-cream: color-mix(in srgb, #eee1b7 84%, var(--paper-strong));
+  --qg130-glass: color-mix(in srgb, #cbe5d8 57%, transparent);
+}
+.kauai-qg130-accessory path,
+.kauai-qg130-accessory circle {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.qg130-label,
+.qg130-small-label,
+.qg130-number,
+.qg130-date-label,
+.qg130-date-number {
+  fill: var(--qg130-ink);
+  font-family: var(--font-sans);
+  font-weight: 900;
+  pointer-events: none;
+}
+.qg130-small-label { font-size: 12px; letter-spacing: .08em; }
+.qg130-number { font-size: 25px; }
+.qg130-date-label { font-size: 20px; }
+.qg130-date-number { font-size: 31px; }
+.qg130-registry-tower,
+.qg130-sorter-table,
+.qg130-clock-case,
+.qg130-chronometer-bed,
+.qg130-survey-frame,
+.qg130-transect-table {
+  fill: var(--qg130-brass);
+  stroke: var(--qg130-ink);
+  stroke-width: 4;
+}
+.qg130-registry-drawer,
+.qg130-sorter-leaf,
+.qg130-date-windows,
+.qg130-month-window,
+.qg130-year-window,
+.qg130-hinged-lens,
+.qg130-coordinate-window {
+  fill: var(--qg130-cream);
+  stroke: var(--qg130-ink);
+  stroke-width: 3.5;
+}
+.qg130-registry-drawer.reference,
+.qg130-sorter-leaf.reference {
+  fill: var(--qg130-green-light);
+}
+.qg130-sorter-spine,
+.qg130-leaf-hinge,
+.qg130-pendulum-line,
+.qg130-plumb-line,
+.qg130-profile-step,
+.qg130-coordinate-lines,
+.qg130-transect-cursor {
+  fill: none;
+  stroke: var(--qg130-ink);
+  stroke-width: 3;
+}
+.qg130-reference-lens,
+.qg130-clock-face,
+.qg130-date-wheel,
+.qg130-hinged-lens,
+.qg130-elevation-dial {
+  fill: var(--qg130-glass);
+  stroke: var(--qg130-ink);
+  stroke-width: 4;
+}
+.qg130-reference-core,
+.qg130-sample-port,
+.qg130-pendulum,
+.qg130-litter-marker {
+  fill: var(--qg130-russet);
+  stroke: var(--qg130-ink);
+  stroke-width: 3;
+}
+.qg130-sample-port.reference,
+.qg130-litter-marker.accent {
+  fill: var(--qg130-brass-light);
+}
+.qg130-registry-base,
+.qg130-index-plate,
+.qg130-forest-window,
+.qg130-nd-leaf,
+.qg130-plumb-weight,
+.qg130-transect-index {
+  fill: var(--qg130-brass-light);
+  stroke: var(--qg130-ink);
+  stroke-width: 3.5;
+}
+.qg130-forest-symbol,
+.qg130-litter-profile {
+  fill: none;
+  stroke: var(--qg130-green);
+  stroke-width: 6;
+}
+.qg130-litter-section {
+  fill: color-mix(in srgb, var(--qg130-russet) 66%, var(--qg130-cream));
+  stroke: var(--qg130-ink);
+  stroke-width: 4;
+}
+@media (max-width: 600px) {
+  .kauai-qg130-accessory .qg130-small-label { display: none; }
+  .kauai-qg130-accessory .qg130-date-number { font-size: 35px; }
+}
+
+/* Poovar agricultural record: sample sorting, field date and site ledger. */
+.kerala-ju1337-accessory {
+  --ju1337-ink: color-mix(in srgb, #3b3f34 84%, var(--worm-deep));
+  --ju1337-brass: color-mix(in srgb, #a77940 76%, var(--local-secondary));
+  --ju1337-brass-light: color-mix(in srgb, #dfc178 76%, var(--paper-strong));
+  --ju1337-berry: color-mix(in srgb, #7b5065 72%, var(--local-primary));
+  --ju1337-leaf: color-mix(in srgb, #587451 78%, var(--local-primary));
+  --ju1337-laterite: #a35f3c;
+  --ju1337-cream: color-mix(in srgb, #eee1b6 82%, var(--paper-strong));
+  --ju1337-glass: color-mix(in srgb, #d9ece2 52%, transparent);
+}
+.kerala-ju1337-accessory path,
+.kerala-ju1337-accessory circle,
+.kerala-ju1337-accessory ellipse,
+.kerala-ju1337-accessory rect { stroke-linecap: round; stroke-linejoin: round; }
+.ju1337-label,
+.ju1337-small-label,
+.ju1337-date-label,
+.ju1337-date-number {
+  fill: var(--ju1337-ink);
+  stroke: none;
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: .035em;
+}
+.ju1337-small-label { font-size: 10px; }
+.ju1337-date-label { font-size: 16px; }
+.ju1337-date-number { font-family: var(--display); font-size: 30px; }
+.ju1337-sorting-table,
+.ju1337-calendar-bed,
+.ju1337-ledger-table,
+.ju1337-culture-tray {
+  fill: var(--ju1337-brass);
+  stroke: var(--ju1337-ink);
+  stroke-width: 3;
+}
+.ju1337-carousel-frame,
+.ju1337-date-tower,
+.ju1337-ledger-cabinet {
+  fill: color-mix(in srgb, var(--ju1337-brass) 34%, transparent);
+  stroke: var(--ju1337-ink);
+  stroke-width: 4;
+}
+.ju1337-carousel-disc,
+.ju1337-date-drum,
+.ju1337-elevation-wheel,
+.ju1337-compass,
+.ju1337-recovery-cup {
+  fill: var(--ju1337-brass-light);
+  stroke: var(--ju1337-ink);
+  stroke-width: 2.4;
+}
+.ju1337-sample-chamber,
+.ju1337-sample-drawer,
+.ju1337-bed {
+  fill: color-mix(in srgb, var(--ju1337-leaf) 70%, var(--ju1337-cream));
+  stroke: var(--ju1337-ink);
+  stroke-width: 2.1;
+}
+.ju1337-sample-chamber.accent,
+.ju1337-sample-drawer.accent,
+.ju1337-bed.accent {
+  fill: color-mix(in srgb, var(--ju1337-laterite) 68%, var(--ju1337-brass-light));
+}
+.ju1337-carousel-shaft,
+.ju1337-carousel-tick,
+.ju1337-weight-line,
+.ju1337-scroll-line,
+.ju1337-compass-line,
+.ju1337-field-symbol {
+  fill: none;
+  stroke: var(--ju1337-ink);
+  stroke-width: 2.3;
+}
+.ju1337-index-plate,
+.ju1337-date-window,
+.ju1337-month-window,
+.ju1337-year-window,
+.ju1337-singleton-latch,
+.ju1337-nd-shutter,
+.ju1337-blank-drawer {
+  fill: var(--ju1337-cream);
+  stroke: var(--ju1337-ink);
+  stroke-width: 2.3;
+}
+.ju1337-date-window.accent { fill: color-mix(in srgb, var(--ju1337-berry) 58%, var(--ju1337-cream)); }
+.ju1337-elevation-weight {
+  fill: var(--ju1337-berry);
+  stroke: var(--ju1337-ink);
+  stroke-width: 2.2;
+}
+.ju1337-field-aperture,
+.ju1337-field-board,
+.ju1337-coordinate-scroll {
+  fill: var(--ju1337-glass);
+  stroke: color-mix(in srgb, var(--ju1337-leaf) 74%, var(--ju1337-ink));
+  stroke-width: 2.4;
+}
+@media (max-width: 600px) {
+  .kerala-ju1337-accessory .ju1337-small-label { display: none; }
+  .kerala-ju1337-accessory .ju1337-date-label { font-size: 20px; }
+  .kerala-ju1337-accessory .ju1337-date-number { font-size: 36px; }
+}
+
+/* Taipei forest record: source photographs, isotype registry and elevation. */
+.taipei-brc20390-accessory {
+  --brc20390-ink: color-mix(in srgb, #303d3a 84%, var(--worm-deep));
+  --brc20390-brass: color-mix(in srgb, #a27a44 76%, var(--local-secondary));
+  --brc20390-brass-light: color-mix(in srgb, #dcc17e 76%, var(--paper-strong));
+  --brc20390-berry: color-mix(in srgb, #76546c 72%, var(--local-primary));
+  --brc20390-leaf: color-mix(in srgb, #4b705c 78%, var(--local-primary));
+  --brc20390-glass: color-mix(in srgb, #d7e9e2 55%, transparent);
+  --brc20390-cream: color-mix(in srgb, #efe4c3 82%, var(--paper-strong));
+  --brc20390-fragment: #51483d;
+}
+.taipei-brc20390-accessory path,
+.taipei-brc20390-accessory circle,
+.taipei-brc20390-accessory ellipse,
+.taipei-brc20390-accessory rect {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.brc20390-label,
+.brc20390-small-label,
+.brc20390-node-number {
+  fill: var(--brc20390-ink);
+  stroke: none;
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: .035em;
+}
+.brc20390-small-label { font-size: 10px; }
+.brc20390-node-number { font-family: var(--display); font-size: 22px; }
+.brc20390-light-table,
+.brc20390-network-table,
+.brc20390-inclinometer-bed,
+.brc20390-reference-drawer {
+  fill: var(--brc20390-brass);
+  stroke: var(--brc20390-ink);
+  stroke-width: 3;
+}
+.brc20390-slide-cabinet,
+.brc20390-registry,
+.brc20390-surveyor-frame {
+  fill: color-mix(in srgb, var(--brc20390-brass) 34%, transparent);
+  stroke: var(--brc20390-ink);
+  stroke-width: 4;
+}
+.brc20390-image-window,
+.brc20390-forest-aperture {
+  fill: var(--brc20390-glass);
+  stroke: color-mix(in srgb, var(--brc20390-leaf) 72%, var(--brc20390-ink));
+  stroke-width: 2.4;
+}
+.brc20390-fragment {
+  fill: var(--brc20390-fragment);
+  stroke: var(--brc20390-ink);
+  stroke-width: 2;
+}
+.brc20390-fragment.accent {
+  fill: color-mix(in srgb, var(--brc20390-fragment) 62%, var(--brc20390-berry));
+}
+.brc20390-shutter,
+.brc20390-index-tab,
+.brc20390-reference-window,
+.brc20390-registry-plate,
+.brc20390-coordinate-scroll,
+.brc20390-nd-drawer,
+.brc20390-nd-shutter {
+  fill: var(--brc20390-cream);
+  stroke: var(--brc20390-ink);
+  stroke-width: 2.3;
+}
+.brc20390-hinge,
+.brc20390-link,
+.brc20390-rotor-hand,
+.brc20390-pendulum-line,
+.brc20390-scroll-line,
+.brc20390-slope-grid,
+.brc20390-forest-symbol {
+  fill: none;
+  stroke: var(--brc20390-ink);
+  stroke-width: 2.2;
+}
+.brc20390-link {
+  stroke: color-mix(in srgb, var(--brc20390-brass) 75%, var(--brc20390-ink));
+  stroke-width: 1.8;
+}
+.brc20390-node,
+.brc20390-rotor,
+.brc20390-elevation-drum {
+  fill: var(--brc20390-brass-light);
+  stroke: var(--brc20390-ink);
+  stroke-width: 2.2;
+}
+.brc20390-node.reference,
+.brc20390-reference-ring {
+  fill: var(--brc20390-berry);
+  stroke: var(--brc20390-ink);
+  stroke-width: 2.4;
+}
+.brc20390-reference-ring { fill: none; stroke-width: 3; }
+.brc20390-counterweight {
+  fill: var(--brc20390-berry);
+  stroke: var(--brc20390-ink);
+  stroke-width: 2.2;
+}
+.brc20390-slope-aperture {
+  fill: color-mix(in srgb, var(--brc20390-leaf) 42%, var(--brc20390-cream));
+  stroke: var(--brc20390-ink);
+  stroke-width: 2.5;
+}
+@media (max-width: 600px) {
+  .taipei-brc20390-accessory .brc20390-small-label { display: none; }
+  .taipei-brc20390-accessory .brc20390-node-number { font-size: 28px; }
+}
+
+/* Lombok HPT26: Ficus-ground recovery, field-to-plate dates and paired substrates. */
+.lombok-hpt26-accessory {
+  --hpt26-ink: color-mix(in srgb, #334139 84%, var(--worm-deep));
+  --hpt26-brass: color-mix(in srgb, #a77c43 76%, var(--local-secondary));
+  --hpt26-brass-light: color-mix(in srgb, #dec17a 76%, var(--paper-strong));
+  --hpt26-berry: color-mix(in srgb, #744f67 72%, var(--local-primary));
+  --hpt26-leaf: color-mix(in srgb, #4d7559 78%, var(--local-primary));
+  --hpt26-fruit: #806343;
+  --hpt26-fruit-deep: #4e3a2d;
+  --hpt26-soil: #8c5c3d;
+  --hpt26-glass: color-mix(in srgb, #d8ece2 54%, transparent);
+  --hpt26-cream: color-mix(in srgb, #efe2b8 82%, var(--paper-strong));
+}
+.lombok-hpt26-accessory path,
+.lombok-hpt26-accessory circle,
+.lombok-hpt26-accessory ellipse,
+.lombok-hpt26-accessory rect {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.hpt26-label,
+.hpt26-small-label,
+.hpt26-date-label,
+.hpt26-date-number {
+  fill: var(--hpt26-ink);
+  stroke: none;
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: .035em;
+}
+.hpt26-small-label { font-size: 11px; }
+.hpt26-date-label { font-size: 13px; }
+.hpt26-date-number { font-family: var(--display); font-size: 25px; }
+.hpt26-litter-table,
+.hpt26-calendar-bed,
+.hpt26-diptych-bench,
+.hpt26-soil-cassette {
+  fill: var(--hpt26-brass);
+  stroke: var(--hpt26-ink);
+  stroke-width: 3;
+}
+.hpt26-soil-membrane {
+  fill: color-mix(in srgb, var(--hpt26-soil) 78%, var(--hpt26-cream));
+  stroke: var(--hpt26-ink);
+  stroke-width: 2.5;
+}
+.hpt26-ficus-fruit {
+  fill: var(--hpt26-fruit);
+  stroke: var(--hpt26-ink);
+  stroke-width: 2.5;
+}
+.hpt26-ficus-fruit.collapsed {
+  fill: color-mix(in srgb, var(--hpt26-fruit-deep) 82%, var(--hpt26-fruit));
+}
+.hpt26-fruit-panel {
+  fill: color-mix(in srgb, var(--hpt26-fruit) 68%, var(--hpt26-brass-light));
+  stroke: color-mix(in srgb, var(--hpt26-fruit-deep) 84%, var(--hpt26-ink));
+  stroke-width: 1.5;
+}
+.hpt26-fruit-stem,
+.hpt26-suspension,
+.hpt26-gauge-hand,
+.hpt26-four-notches,
+.hpt26-crank-spoke,
+.hpt26-transfer-track,
+.hpt26-hinge {
+  fill: none;
+  stroke: var(--hpt26-ink);
+  stroke-width: 2.4;
+}
+.hpt26-litter-chip {
+  fill: var(--hpt26-fruit-deep);
+  stroke: var(--hpt26-ink);
+  stroke-width: 1.2;
+}
+.hpt26-litter-chip.accent { fill: var(--hpt26-berry); }
+.hpt26-flipplate,
+.hpt26-sample-tray,
+.hpt26-cabinet-door,
+.hpt26-shutter,
+.hpt26-elevation-plate {
+  fill: var(--hpt26-cream);
+  stroke: var(--hpt26-ink);
+  stroke-width: 2.3;
+}
+.hpt26-c-frame,
+.hpt26-date-tower,
+.hpt26-rotating-cabinet {
+  fill: color-mix(in srgb, var(--hpt26-brass) 34%, transparent);
+  stroke: var(--hpt26-ink);
+  stroke-width: 4;
+}
+.hpt26-contact-gauge,
+.hpt26-crank,
+.hpt26-date-drum {
+  fill: var(--hpt26-brass-light);
+  stroke: var(--hpt26-ink);
+  stroke-width: 2.4;
+}
+.hpt26-date-drum.accent {
+  fill: color-mix(in srgb, var(--hpt26-berry) 62%, var(--hpt26-cream));
+}
+.hpt26-sample-cup,
+.hpt26-plate-cradle,
+.hpt26-agar-plate {
+  fill: var(--hpt26-glass);
+  stroke: color-mix(in srgb, var(--hpt26-leaf) 72%, var(--hpt26-ink));
+  stroke-width: 2.4;
+}
+.hpt26-agar-ring {
+  fill: color-mix(in srgb, var(--hpt26-brass-light) 62%, transparent);
+  stroke: var(--hpt26-leaf);
+  stroke-width: 1.8;
+}
+.hpt26-diptych-panel {
+  fill: color-mix(in srgb, var(--hpt26-leaf) 34%, var(--hpt26-cream));
+  stroke: var(--hpt26-ink);
+  stroke-width: 2.5;
+}
+.hpt26-arenga-symbol {
+  fill: color-mix(in srgb, var(--hpt26-leaf) 70%, var(--hpt26-brass-light));
+  stroke: var(--hpt26-ink);
+  stroke-width: 2.2;
+}
+.hpt26-elevation-pin {
+  fill: var(--hpt26-berry);
+  stroke: var(--hpt26-ink);
+  stroke-width: 1.8;
+}
+.hpt26-elevation-pin.accent { fill: var(--hpt26-brass-light); }
+@media (max-width: 600px) {
+  .lombok-hpt26-accessory .hpt26-small-label { display: none; }
+  .lombok-hpt26-accessory .hpt26-date-label { font-size: 18px; }
+  .lombok-hpt26-accessory .hpt26-date-number { font-size: 30px; }
 }
 
 .science-notes {

@@ -1,6 +1,6 @@
 # Oʻahu *Caenorhabditis tropicalis* ECA789 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-26
 
 ## Purpose
 
@@ -371,3 +371,14 @@ const oahuRendererIds = new Set([
 - Source link resolves.
 - No horizontal overflow, failed request or console error.
 - Full diff review and `git diff --check`.
+
+## Implemented state
+
+Implemented locally on 2026-07-26. The Game now uses the preserved generated
+source `game-of-worms/assets/source/oahu-eca789-painted-background-source.png`
+and its optimized derivative
+`game-of-worms/assets/oahu-eca789-painted-background.webp`. The marker,
+dedicated painted scene, exact CaeNDR provenance, three location-scoped
+accessory families and six independently movable drawings follow this brief.
+The former ridge, waterfall, sunglasses, swimwear and umbrella implementation
+is no longer active.

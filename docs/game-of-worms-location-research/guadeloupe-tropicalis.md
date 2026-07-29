@@ -1,11 +1,15 @@
 # Guadeloupe *Caenorhabditis tropicalis* NIC203 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-26
 
 ## Purpose
 
 This dossier defines the evidence boundary and illustration contract for the
 Guadeloupe NIC203 environment and its three paired accessories.
+
+Implemented on 2026-07-26 with a dedicated painted humid-forest-floor
+background, exact NIC203 marker metadata and six independently movable bespoke
+objects.
 
 ## Representative choice and current-marker caveat
 

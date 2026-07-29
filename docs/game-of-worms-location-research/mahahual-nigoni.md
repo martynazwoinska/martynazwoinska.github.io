@@ -1,6 +1,6 @@
 # Mahahual *C. nigoni* location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-26
 
 This dossier is the evidence and review contract for the *Caenorhabditis nigoni* Mahahual landscape and its three accessory pairs. It replaces an unsupported underwater reef scene with JU2617's documented rural-garden citrus heap.
 
@@ -47,6 +47,20 @@ Regional sources:
 
 These pages are factual and visual references only. The website uses an original SVG illustration and does not trace an external photograph, map, private property or Navy graphic.
 
+## Game metadata
+
+- Display label: `Mahahual, Mexico · JU2617`
+- Strain: `JU2617`
+- Marker coordinates: `[-87.71, 18.72]`
+- Marker style: `farm`
+- Environment profile ID: `mahahual-ju2617-citrus-garden`
+- Scene title: `JU2617 citrus-heap coastal garden`
+- Source label: `Worldwide Worms/Félix JU2617 record`
+- Source URL: `https://www.justbio.com/tools/worldwideworms/search.php?selector=strain&select=JU2617`
+- Palette: `palettes.farm`
+- Generic weather, water and cue layers: none
+- Public marker history: `JU2617, previously Y2.1, is an isofemale C. nigoni strain sampled by Luc Barre from a rotting-fruit heap, mostly oranges, in a rural garden in Mahahual, Quintana Roo, and isolated by M.-A. Félix. Worldwide Worms records test-cross identification. Its structured date is 31 December 2013, while the collection note says January 2014, so no single exact collection date is asserted here.`
+
 ## Landscape composition contract
 
 The scene connects the exact mostly-orange fruit heap to one continuous anonymised low coastal garden. Marine context remains a narrow distant orientation cue rather than the collection habitat.
@@ -75,6 +89,7 @@ The accessories translate the exact citrus decay, recorded identification method
 
 ### JU2617 citrus-heap respiration recorder
 
+- Accessory family: `ju2617-citrus-heap-respiration-recorder`
 - **Primary:** a broad low bell jar containing unequal collapsed citrus forms, connected by a capillary to a bubble wheel and horizontal trace drum, with reversible `JU2617 / Y2.1` plate.
 - **Companion:** a tall stacked peel-and-pulp chamber inside a U-tube frame, with bead counter, side culture vial and lower litter drawer.
 - The drawing shows no invented temperature, humidity or respiration value.
@@ -83,15 +98,27 @@ The accessories translate the exact citrus decay, recorded identification method
 
 The record supports `test cross`, but not tester identity, parental strain, result or progeny count.
 
+- Accessory family: `ju2617-test-cross-lock`
 - **Primary:** a wide X-arm semaphore with two blank culture wells, central observation window and sliding diagnostic shutters.
 - **Companion:** a tall offset twin-tube gate tower feeding a vertical observation column with blank progeny windows.
 - This is the second and final test-cross semantic family after JU4400. Its X-arm cabinet and vertical gate remain visibly unlike JU4400's bridge and circular dial.
 
 ### Mahahual lighthouse flash sequencer
 
+- Accessory family: `mahahual-lighthouse-flash-sequencer`
 - **Primary:** a tall truncated-pyramid tower mechanism with four lantern shutters and a 16-second timing ring.
 - **Companion:** a low circular Fresnel-style sequencing drum with four flash apertures, escapement wheel and curved base, with no miniature tower.
 - The drawings are original factual abstractions and use no Navy logo or copied institutional detail.
+
+### Accessory placement
+
+| Slot | Primary transform `[x, y, scale, rotation]` | Companion transform `[x, y, scale, rotation]` |
+| --- | --- | --- |
+| Citrus recorder | `[374, 126, .34, -2]` | `[-8, 116, .27, 2]` |
+| Test-cross lock | `[220, 187, .32, -1]` | `[108, 213, .26, 2]` |
+| Lighthouse sequencer | `[370, 266, .33, -1]` | `[0, 292, .27, 2]` |
+
+Each location-scoped item is registered under the exact `nigoni::Mahahual, Mexico · JU2617::*` renderer ID. The primary and companion objects remain distinct drawings within the same evidence family.
 
 ## Cultural, privacy and ecological safeguards
 
@@ -114,6 +141,10 @@ The revised preceding locations are the minimum quality floor, not templates to 
 - Each of the six visible objects remains independently draggable and keyboard movable; Home resets only the focused copy.
 - Accessible names match the visible objects.
 - Pointer and keyboard tests cover all six copies, including after a responsive resize.
-- Visual checks cover light and dark themes and responsive widths from 360 px to wide desktop.
+- Visual checks cover the Game's fixed light palette and responsive widths from 360 px to wide desktop.
 - No horizontal overflow, console error, broken source link or change to another location is accepted.
 - Environment/accessory audits, syntax checks, `git diff --check` and the full diff pass before integration.
+
+## Implementation status
+
+Implemented and locally verified on 2026-07-28. The preserved source painting is `game-of-worms/assets/source/mahahual-ju2617-painted-background-source.png`; the optimized runtime derivative is `game-of-worms/assets/mahahual-ju2617-painted-background.webp`. All six objects passed independent pointer drag, Arrow, Shift+Arrow and isolated Home-reset checks. The fixed Game palette, 360 px, 768 px, 1024 px and 1440 px layouts passed without horizontal overflow or SVG containment failures; the source and runtime assets returned HTTP 200; syntax, catalogue, pair-geometry, environment-composition, console and `git diff --check` checks passed.

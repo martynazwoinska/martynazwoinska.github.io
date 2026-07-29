@@ -1,6 +1,6 @@
 # Mauritius *Caenorhabditis nigoni* JU2909 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-28
 
 This dossier is the evidence and review contract for the JU2909 landscape and its three accessory pairs. It replaces the unsupported Le Morne lagoon setting with the documented Casela Nature Park fruit-ground record.
 
@@ -119,6 +119,14 @@ Semantic family: unique.
 
 The existing display key `Mauritius · JU2909` remains unchanged to preserve saved state and exact-key lookups. The existing `[57.4061, -20.2914]` marker coordinates are already in correct longitude/latitude order. Use `style: "rainforest"`, `strain: "JU2909"`, and the Félix Lab JU2909 record as the environment source.
 
+- Environment profile ID: `mauritius-casela-fruit-ground`
+- Scene title: `Casela fruit ground below Rempart Mountain`
+- Source label: `Worldwide Worms/Félix JU2909 record`
+- Public marker history: `JU2909, previously M2.3, is an isofemale C. nigoni strain sampled by Henrique Teotonio from rotting fruit on the ground at Casela Nature Park, Cascavelle, Mauritius, in late December 2015 and isolated by M.-A. Félix. The anonymous fruit was described as about 8 cm long and oval with a large woody nut. The line began with an L4 female and a male; Worldwide Worms records test-cross identification and says JU2909 came from the same sample as C. briggsae JU2910, without establishing one shared individual fruit.`
+- Accessory families: `ju2909-fruit-nut-viewer`, `ju2909-ju2910-sample-bifurcator`, `casela-rempart-contour-surveyor`
+- Primary transforms: `[374, 126, .34, -2]`, `[220, 187, .32, -1]`, `[370, 266, .33, -1]`
+- Companion transforms: `[-8, 116, .27, 2]`, `[108, 213, .26, 2]`, `[0, 292, .27, 2]`
+
 ## Quality and interaction acceptance
 
 - The fruit and woody nut read clearly at game scale.
@@ -128,6 +136,10 @@ The existing display key `Mauritius · JU2909` remains unchanged to preserve sav
 - All three pairs remain legible together without intersecting one another or hiding worm faces.
 - All six instances remain independently draggable and keyboard movable; Home resets only the focused copy.
 - Accessible names match the visible drawings.
-- Light and dark modes, reduced motion, 360 px through wide desktop, responsive resize, console, overflow and source-link checks pass.
+- The Game's fixed light palette, reduced motion, 360 px through wide desktop, responsive resize, console, overflow and source-link checks pass.
 - Environment/accessory audits retain 37 sets and 111 designs, with no family used more than twice and no identical primary/companion geometry.
 - JS syntax, `git diff --check` and the full diff pass before integration.
+
+## Implementation status
+
+Implemented and locally verified on 2026-07-28. The preserved source painting is `game-of-worms/assets/source/mauritius-ju2909-painted-background-source.png`; the optimized runtime derivative is `game-of-worms/assets/mauritius-ju2909-painted-background.webp`. All six objects passed independent pointer drag, Arrow, Shift+Arrow and isolated Home-reset checks. The 360 px, 768 px, 1024 px and 1440 px layouts passed without horizontal overflow or SVG containment failures. The source record, source PNG and runtime WebP returned HTTP 200; syntax, catalogue, pair-geometry, environment-composition, console and `git diff --check` checks passed.

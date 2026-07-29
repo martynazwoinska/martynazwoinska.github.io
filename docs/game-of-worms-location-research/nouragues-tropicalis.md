@@ -319,7 +319,8 @@ Delete:
 
 Consequences:
 
-- Compass changes from a twice-used family to a singleton at Angra dos Reis.
+- Compass became a singleton during this revision and was retired when the
+  Dois Rios record later received its dedicated provenance set.
 - Canoe-paddle bow and river gauge rod were Nouragues singletons and disappear.
 - Add three singleton families:
   - Aggregate-fruit botanical theatre
@@ -356,7 +357,7 @@ third vegetation-census instrument.
   and `river gauge rod`.
 - Remove `canoe-paddle-bow` from `explicitUniqueRendererFamilies` and delete its
   dedicated switch case.
-- Retain the general `compass` renderer because Angra dos Reis still uses it.
+- Remove the general `compass` renderer once no active location consumes it.
 - Retain global `canoe`, `inselberg` and station feature helpers if other
   locations still consume them.
 - Add three location-scoped renderer IDs rather than family-only recognition:

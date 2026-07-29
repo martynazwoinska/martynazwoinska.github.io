@@ -537,8 +537,8 @@ Current post-Pohnpei baseline:
 - 111 concepts
 
 Delete fan-palm collar and continuum skates, both singleton families, plus
-Queensland’s use of Monocle. Angra dos Reis retains its cove monocle, so
-Monocle changes from a twice-used family to a singleton.
+Queensland’s use of Monocle. The former Dois Rios monocle was retired when
+that record later received its dedicated provenance set.
 
 Add:
 
@@ -575,8 +575,8 @@ The funnel-recovery family is now at its maximum of two and must not be reused.
 - Preserve shared reef, coast and mangrove primitives used elsewhere.
 - Replace the three old accessory entries.
 - Remove fan-palm-collar from the explicit renderer set and delete its case.
-- Preserve the monocle renderer for Angra dos Reis, but classify Monocle as a
-  singleton.
+- Remove the monocle renderer after both Queensland and Dois Rios have moved
+  to dedicated record-led sets.
 - Remove skates from repeated renderers only after confirming no other active
   accessory consumes it.
 - Add the three location-scoped renderer IDs.

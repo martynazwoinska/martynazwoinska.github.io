@@ -1,6 +1,6 @@
 # Lingsar, Lombok *Caenorhabditis nigoni* HPT26 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-28
 
 ## Purpose
 
@@ -90,7 +90,10 @@ Recommended palette: `palettes.rainforest`
 
 ## Environment illustration contract
 
-Create a dedicated original SVG scene at the existing 600 × 430 viewBox.
+Use the optimized painted background
+`game-of-worms/assets/lombok-hpt26-painted-background.webp`, derived from the
+preserved source PNG under `game-of-worms/assets/source/`, in the existing
+600 × 430 scene viewBox. The worms and accessories remain live SVG layers.
 
 Composition lock:
 
@@ -178,7 +181,7 @@ The diptych is a comparison, not a claim that the samples were mixed.
 
 ## Suggested starting layouts
 
-These values require final browser tuning:
+These values were browser-tuned:
 
 ```js
 "hpt26-ficus-ground-contact-stage": {
@@ -233,8 +236,27 @@ the Lombok ukulele is removed.
 - No generic-renderer fallback for the six new accessory illustrations.
 - No initial overlap among the three accessories or with critical worm detail.
 - Desktop and mobile checks near 360, 768, 1024 and wide viewports.
-- Light and dark themes.
+- The Game's intentional fixed light palette.
 - Keyboard operation, direct drag and visible focus.
 - Reduced-motion behaviour.
 - No horizontal overflow, failed requests or console errors.
 - Full diff review and `git diff --check`.
+
+## Implementation status
+
+Implemented and browser-checked on 28 July 2026:
+
+- the unsupported `lombok-rinjani` caldera profile and composition were
+  removed;
+- the dedicated Lingsar painted background and preserved source PNG were
+  added;
+- the HPT26 coordinates, marker source, strain history, evidence note and DOI
+  source were updated;
+- the caldera headband, crater-lake skirt and altimeter ukulele were replaced
+  by the three evidence-led mechanisms above;
+- all six primary/companion drawings have distinct construction and independent
+  pointer, keyboard and Home-reset behaviour;
+- 360, 768, 1024 and 1440 px checks found no horizontal overflow and kept all
+  six objects inside the scene;
+- the browser console was clean and the runtime image request returned HTTP
+  200.
