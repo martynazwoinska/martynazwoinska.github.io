@@ -1,6 +1,6 @@
 # Kauaʻi *C. elegans* location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-29
 
 This dossier is the evidence and review contract for the *Caenorhabditis elegans* Kauaʻi landscape and its three accessory pairs. It follows the Bristol N2, Santeuil, Edinburgh and Tenerife batches in the location-by-location Game of Worms illustration workflow.
 
@@ -40,7 +40,7 @@ Regional sources:
 - [Hawaiʻi DLNR Kōkeʻe State Park](https://dlnr.hawaii.gov/dsp/parks/kauai/kokee-state-park/)
 - [Crombie et al., 2022, Hawaiian *Caenorhabditis* ecology](https://pubmed.ncbi.nlm.nih.gov/35167162/)
 
-These pages are factual and visual references only. The website uses an original SVG illustration and does not trace an external photograph, map or agency graphic.
+These pages are factual and visual references only. The website uses an original painted illustration and does not trace an external photograph, map or agency graphic.
 
 ## Landscape composition contract
 
@@ -102,6 +102,16 @@ Population-genomic work gives XZ1516 a scientifically grounded accessory that is
 
 The revised Bristol N2, Santeuil, Edinburgh and Tenerife batches are the minimum quality floor, not templates to repeat. This Kauaʻi scene must exceed them through an evidence-led forest-floor focal point, coherent misty depth, distinct mechanisms, two genuinely different drawings per concept and a readable combined composition.
 
+## Implementation status
+
+- Preserved source painting: `game-of-worms/assets/source/kauai-xz1516-painted-background-source.png`
+- Optimized runtime derivative: `game-of-worms/assets/kauai-xz1516-painted-background.webp`
+- The original detailed SVG scene remains in `game-of-worms/environment-scenes.js` as the asset-load fallback.
+- The painted background uses the existing responsive SVG coordinate system; animated worms and accessories remain separate live SVG layers.
+- Fresh checks at 360, 768, 1024 and 1440 px confirmed the painted asset, all six active accessory copies and zero horizontal overflow.
+- Pointer dragging moved all six copies independently. Keyboard arrow movement and Home reset affected only the focused copy.
+- Browser-console checks reported no errors.
+
 ## Review and interaction acceptance
 
 - Only the *C. elegans* Kauaʻi landscape and its accessory data and drawings change in the Game feature batch.
@@ -113,6 +123,6 @@ The revised Bristol N2, Santeuil, Edinburgh and Tenerife batches are the minimum
 - Each of the six visible objects remains independently draggable and keyboard movable; Home resets only the focused copy.
 - Accessible names match the visible objects.
 - Pointer and keyboard tests cover all six copies.
-- Visual checks cover light and dark themes and responsive widths from 360 px to wide desktop.
+- Visual checks cover the Game's fixed light palette and responsive widths from 360 px to wide desktop.
 - No horizontal overflow, console error, broken source link or change to another location is accepted.
 - Environment/accessory audits, syntax checks, `git diff --check` and the full diff pass before integration.
