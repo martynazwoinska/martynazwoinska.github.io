@@ -2900,9 +2900,22 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .chocolate-bar { fill: #77402e; stroke: #4b2b25; stroke-width: 3; }
 .chocolate-grid { fill: none; stroke: #b36c46; stroke-width: 3; }
 .wrapper-fold { fill: #e96558; stroke: #704033; stroke-width: 3; }
+.doodle-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.habitat.is-drawing .doodle-canvas {
+  cursor: crosshair;
+  pointer-events: auto;
+  touch-action: none;
+}
 .doodle-layer { pointer-events: none; }
-.doodle-stroke { fill: none; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 2px 1px rgba(23,51,61,.2)); }
-.worm-avatar.is-drawing { cursor: crosshair; touch-action: none; outline: 3px dashed rgba(243,111,98,.65); outline-offset: 7px; border-radius: 18px; }
+.doodle-stroke { fill: none; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; filter: drop-shadow(0 2px 1px rgba(23,51,61,.2)); }
 .habitat[data-local-style="okinawa"] { --local-primary: #e96558; --local-secondary: #f8c64e; --scene-sky: #bfe5e8; --scene-ground: #75a96d; --scene-water: #63b7c5; --scene-highlight: #ffd166; --scene-detail: #315e58; }
 .habitat[data-local-style="kauai"] { --local-primary: #e77ea5; --local-secondary: #73b98d; --scene-sky: #bfe8ef; --scene-ground: #549369; --scene-water: #54b6cc; --scene-highlight: #ffd166; --scene-detail: #315f55; }
 .habitat[data-local-style="field"] { --local-primary: #4f7f72; --local-secondary: #d7b96d; --scene-sky: #d8edf0; --scene-ground: #94b877; --scene-water: #8bc8ce; --scene-highlight: #f7c85b; --scene-detail: #607050; }

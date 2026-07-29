@@ -241,6 +241,7 @@ const els = {
   sceneName: document.getElementById("scene-name"),
   wormNameTag: document.getElementById("worm-name-tag"),
   wormAvatar: document.getElementById("worm-avatar"),
+  doodleCanvas: document.getElementById("doodle-canvas"),
   doodleLayer: document.getElementById("doodle-layer"),
   localHeadwear: document.getElementById("local-headwear"),
   localWrap: document.getElementById("local-wrap"),
@@ -590,10 +591,10 @@ function renderDoodles() {
 }
 
 function doodlePoint(event) {
-  const bounds = els.wormAvatar.getBoundingClientRect();
+  const bounds = els.doodleCanvas.getBoundingClientRect();
   return {
-    x: ((event.clientX - bounds.left) / bounds.width) * 420,
-    y: ((event.clientY - bounds.top) / bounds.height) * 320
+    x: ((event.clientX - bounds.left) / bounds.width) * 600,
+    y: ((event.clientY - bounds.top) / bounds.height) * 430
   };
 }
 
@@ -606,7 +607,7 @@ els.freestyle.addEventListener("click", () => {
   drawingEnabled = !drawingEnabled;
   els.freestyle.setAttribute("aria-pressed", String(drawingEnabled));
   els.drawTools.toggleAttribute("hidden", !drawingEnabled);
-  els.wormAvatar.classList.toggle("is-drawing", drawingEnabled);
+  els.habitat.classList.toggle("is-drawing", drawingEnabled);
   refreshAccessoryPieceControls();
 });
 
@@ -626,10 +627,10 @@ els.clearDrawing.addEventListener("click", () => {
   renderDoodles();
 });
 
-els.wormAvatar.addEventListener("pointerdown", event => {
+els.doodleCanvas.addEventListener("pointerdown", event => {
   if (!drawingEnabled || event.button !== 0) return;
   event.preventDefault();
-  els.wormAvatar.setPointerCapture(event.pointerId);
+  els.doodleCanvas.setPointerCapture(event.pointerId);
   const point = doodlePoint(event);
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   path.setAttribute("class", "doodle-stroke");
@@ -639,7 +640,7 @@ els.wormAvatar.addEventListener("pointerdown", event => {
   activeDoodle = { path, points: [point], color: drawingColor };
 });
 
-els.wormAvatar.addEventListener("pointermove", event => {
+els.doodleCanvas.addEventListener("pointermove", event => {
   if (!activeDoodle) return;
   event.preventDefault();
   const point = doodlePoint(event);
@@ -651,15 +652,15 @@ els.wormAvatar.addEventListener("pointermove", event => {
 
 function finishDoodle(event) {
   if (!activeDoodle) return;
-  if (els.wormAvatar.hasPointerCapture(event.pointerId)) els.wormAvatar.releasePointerCapture(event.pointerId);
+  if (els.doodleCanvas.hasPointerCapture(event.pointerId)) els.doodleCanvas.releasePointerCapture(event.pointerId);
   const d = activeDoodle.path.getAttribute("d");
   if (activeDoodle.points.length > 1) activeDrawing().push({ d, color: activeDoodle.color });
   else activeDoodle.path.remove();
   activeDoodle = null;
 }
 
-els.wormAvatar.addEventListener("pointerup", finishDoodle);
-els.wormAvatar.addEventListener("pointercancel", finishDoodle);
+els.doodleCanvas.addEventListener("pointerup", finishDoodle);
+els.doodleCanvas.addEventListener("pointercancel", finishDoodle);
 
 function toggleAccessory(id, force) {
   const activeAccessories = activeWardrobe();
