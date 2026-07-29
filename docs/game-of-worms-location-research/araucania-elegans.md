@@ -1,6 +1,6 @@
 # Araucanía *C. elegans* location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-29
 
 This dossier is the evidence and review contract for the *Caenorhabditis elegans* Araucanía landscape and its three accessory pairs. It follows the Bristol N2, Santeuil, Edinburgh, Tenerife, Kauaʻi, Australian Capital Territory and Auckland batches in the location-by-location Game of Worms illustration workflow.
 
@@ -41,7 +41,7 @@ Regional sources:
 - [Municipality of Cunco development plan](https://www.municunco.cl/pdfs/pladeco%20cunco%202014%20-%202018.pdf)
 - [SERNAGEOMIN Llaima assessment](https://catalogobiblioteca.sernageomin.cl/Archivos/16015.pdf)
 
-These pages are factual and visual references only. The website uses an original SVG illustration and does not trace an external photograph, map, private garden or agency graphic.
+These pages are factual and visual references only. The website uses an original painted illustration and does not trace an external photograph, map, private garden or agency graphic.
 
 ## Landscape composition contract
 
@@ -117,6 +117,16 @@ Context sources:
 
 The revised preceding locations are the minimum quality floor, not templates to repeat. Araucanía must exceed them through an exact compost focal point, coherent garden depth, integrated mechanisms, two genuinely different drawings per concept and a readable combined composition.
 
+## Implementation status
+
+- Preserved source painting: `game-of-worms/assets/source/araucania-ju4400-painted-background-source.png`
+- Optimized runtime derivative: `game-of-worms/assets/araucania-ju4400-painted-background.webp`
+- The original detailed SVG scene remains in `game-of-worms/environment-scenes.js` as the asset-load fallback.
+- The painted background uses the existing responsive SVG coordinate system; animated worms and accessories remain separate live SVG layers.
+- Fresh checks at 360, 768, 1024 and 1440 px confirmed the painted asset, all six active accessory copies and zero horizontal overflow.
+- Pointer dragging moved all six copies independently. Keyboard arrow movement and Home reset affected only the focused copy.
+- Browser-console checks reported no errors.
+
 ## Review and interaction acceptance
 
 - Only the *C. elegans* Araucanía landscape and its accessory data and drawings change in the Game feature batch.
@@ -127,6 +137,6 @@ The revised preceding locations are the minimum quality floor, not templates to 
 - Each of the six visible objects remains independently draggable and keyboard movable; Home resets only the focused copy.
 - Accessible names match the visible objects.
 - Pointer and keyboard tests cover all six copies, including after a responsive resize.
-- Visual checks cover light and dark themes and responsive widths from 360 px to wide desktop.
+- Visual checks cover the Game's fixed light palette and responsive widths from 360 px to wide desktop.
 - No horizontal overflow, console error, broken source link or change to another location is accepted.
 - Environment/accessory audits, syntax checks, `git diff --check` and the full diff pass before integration.
