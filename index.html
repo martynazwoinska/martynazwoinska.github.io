@@ -1013,6 +1013,28 @@
     .contact-copy-fallback {
       margin: 12px 0 0 !important; font-size: .86rem; overflow-wrap: anywhere;
     }
+    @media (min-width: 621px) {
+      #contact > h2 {
+        width: min(100%, 736px);
+        margin-inline: auto;
+      }
+      .contact-box {
+        grid-template-columns: minmax(0, 1fr) var(--contact-photo-size);
+        width: min(100%, 736px);
+        margin-inline: auto;
+      }
+      #contact .links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      #contact .pill {
+        flex: 0 0 auto;
+        width: auto;
+        padding-inline: 14px;
+      }
+      .contact-profile { grid-column: auto; }
+    }
     @media (max-width: 620px) {
       #contact > h2 { margin-bottom: 24px; }
       .contact-box { display: block; min-height: 0; width: 100%; padding: 218px 0 0; }
