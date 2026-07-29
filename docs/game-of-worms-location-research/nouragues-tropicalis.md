@@ -1,6 +1,6 @@
 # Nouragues *Caenorhabditis tropicalis* JU1428 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-29
 
 ## Purpose
 
@@ -172,7 +172,7 @@ Marker history:
 
 ## Environment illustration contract
 
-Create a dedicated original SVG scene in the existing 600 × 430 viewBox.
+Create a dedicated original painted illustration for the existing 600 × 430 scene viewBox.
 
 ### Camera
 
@@ -371,7 +371,7 @@ const nouraguesRendererIds = new Set([
 ```
 
 - Add explicit layouts for all three new family IDs.
-- Add scoped light- and dark-theme CSS for the scene and objects.
+- Add scoped fixed-palette CSS for the scene and objects.
 - Refresh relevant Game asset cache versions after implementation.
 
 ## Variant and interaction requirements
@@ -388,6 +388,14 @@ const nouraguesRendererIds = new Set([
 - Verify Arrow movement, Shift+Arrow movement and Home reset.
 - Preserve visible focus, minimum 44 px touch targets and reduced motion.
 
+## Painted-background implementation status
+
+- The approved runtime painting is `game-of-worms/assets/nouragues-ju1428-painted-background.webp`.
+- Its full-resolution source is preserved separately as `game-of-worms/assets/source/nouragues-ju1428-painted-background-source.png`.
+- The previous custom SVG landscape remains in `environment-scenes.js` only as an asset-load fallback.
+- The painting keeps the aggregate fruit externally closed and softened, with the damp plateau hollow and cropped granite shoulder subordinate, without inventing exposed seeds, exact decay geometry, weather or a collection-patch view.
+- The animated worms and all six independently movable accessories remain live SVG layers above the painting.
+
 ## Acceptance checks
 
 - Exactly 37 environment profiles and composition IDs.
@@ -400,7 +408,7 @@ const nouraguesRendererIds = new Set([
 - No generic renderer fallback for any of the six new objects.
 - No initial art or target collision at mobile, tablet or desktop widths.
 - Test approximately 360, 768, 1024 and 1440 px.
-- Test light and dark themes and reduced motion.
+- Test the Game's fixed light palette and reduced motion.
 - Source link resolves.
 - No horizontal overflow, failed request or console error.
 - Full diff review and `git diff --check`.

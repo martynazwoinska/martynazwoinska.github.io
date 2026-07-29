@@ -1422,6 +1422,23 @@ function drawReunionJU1373PaintedScene(target, palette) {
   }, { once: true });
 }
 
+function drawNouraguesJU1428PaintedScene(target, palette) {
+  const background = append(target, "image", {
+    class: "nouragues-ju1428-painted-background",
+    href: "assets/nouragues-ju1428-painted-background.webp",
+    x: 0,
+    y: 0,
+    width: 600,
+    height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    target.replaceChildren();
+    drawNouraguesJU1428Scene(target, palette);
+  }, { once: true });
+}
+
 function drawTrivandrumJU1325Scene(target, palette) {
   const background = append(target, "image", {
     class: "trivandrum-ju1325-painted-background",
@@ -2776,7 +2793,7 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
     return;
   }
   if (profile.id === "nouragues-ju1428-duguetia-fruit-forest") {
-    drawNouraguesJU1428Scene(target, palette);
+    drawNouraguesJU1428PaintedScene(target, palette);
     return;
   }
   if (profile.id === "manaus-ju1976-amazon-village-fruit-forest") {
