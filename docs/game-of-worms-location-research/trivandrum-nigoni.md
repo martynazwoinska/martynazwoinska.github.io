@@ -120,3 +120,15 @@ The revised preceding locations are the minimum quality floor, not templates to 
 - Visual checks cover light and dark themes and responsive widths from 360 px to wide desktop.
 - No horizontal overflow, console error, broken source link or change to another location is accepted.
 - Environment/accessory audits, syntax checks, `git diff --check` and the full diff pass before integration.
+
+## Implementation status
+
+Painted-background upgrade implemented and locally verified on 2026-07-29.
+The preserved source painting is
+`game-of-worms/assets/source/trivandrum-ju1325-painted-background-source.png`;
+the optimized runtime derivative is
+`game-of-worms/assets/trivandrum-ju1325-painted-background.webp`. The original
+custom SVG garden scene remains only as the image-load fallback. All six
+objects passed independent pointer drag, Arrow-key movement and isolated
+Home-reset checks. The 360 px, 768 px, 1024 px and 1440 px layouts retained
+six movable objects without document-level horizontal overflow.

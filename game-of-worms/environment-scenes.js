@@ -1218,6 +1218,23 @@ function drawNewTaipeiNIC1648Scene(target, profile, sceneComposition) {
   }, { once: true });
 }
 
+function drawTrivandrumJU1325Scene(target, palette) {
+  const background = append(target, "image", {
+    class: "trivandrum-ju1325-painted-background",
+    href: "assets/trivandrum-ju1325-painted-background.webp",
+    x: 0,
+    y: 0,
+    width: 600,
+    height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    target.replaceChildren();
+    drawTrivandrumBotanicalGardenScene(target, palette);
+  }, { once: true });
+}
+
 function drawLegacyBristolScene(target, palette) {
   append(target, "rect", { class: "environment-sky bristol-sky", width: 600, height: 430, fill: palette[0] });
 
@@ -2527,7 +2544,7 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
     return;
   }
   if (profile.id === "trivandrum-zoo-botanical-garden") {
-    drawTrivandrumBotanicalGardenScene(target, palette);
+    drawTrivandrumJU1325Scene(target, palette);
     return;
   }
   if (profile.id === "singapore-zf1220-starfruit-garden") {
