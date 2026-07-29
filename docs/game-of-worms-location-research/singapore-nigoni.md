@@ -1,6 +1,6 @@
 # Singapore *C. nigoni* location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-29
 
 This dossier is the evidence and review contract for the *Caenorhabditis nigoni* Singapore landscape and its three accessory pairs. It follows the evidence-led, location-by-location Game of Worms illustration workflow.
 
@@ -42,7 +42,7 @@ Authoritative setting sources:
 - [Singapore Botanic Gardens visitor information](https://sbg.nparks.gov.sg/visit/general-info/)
 - [Singapore Botanic Gardens plant collections](https://sbg.nparks.gov.sg/attractions/the-gardens/)
 
-These pages are factual and visual references only. The website uses an original SVG illustration and does not trace an external photograph, map, private parcel or institutional graphic.
+These pages are factual and visual references only. The website uses an original painted illustration and does not trace an external photograph, map, private parcel or institutional graphic.
 
 ## Landscape composition contract
 
@@ -103,6 +103,16 @@ Source: [Singapore Botanic Gardens history](https://sbg.nparks.gov.sg/about/our-
 
 The revised preceding locations are the minimum quality floor, not templates to repeat. Singapore must exceed them through an exact five-ridged fruit focal point, coherent planted depth, integrated mechanisms, two genuinely different drawings per concept and a readable combined composition.
 
+## Implementation status
+
+- Preserved source painting: `game-of-worms/assets/source/singapore-zf1220-painted-background-source.png`
+- Optimized runtime derivative: `game-of-worms/assets/singapore-zf1220-painted-background.webp`
+- The original detailed SVG scene remains in `game-of-worms/environment-scenes.js` as the asset-load fallback.
+- The painted background uses the existing responsive SVG coordinate system; animated worms and accessories remain separate live SVG layers.
+- Fresh checks at 360, 768, 1024 and 1440 px confirmed the painted asset, all six active accessory copies and zero horizontal overflow.
+- Pointer dragging moved all six copies independently. Keyboard arrow movement and Home reset affected only the focused copy.
+- Browser-console checks reported no errors.
+
 ## Review and interaction acceptance
 
 - Only the Singapore landscape and its accessory data and drawings change in the Game feature batch.
@@ -113,6 +123,6 @@ The revised preceding locations are the minimum quality floor, not templates to 
 - Each of the six visible objects remains independently draggable and keyboard movable; Home resets only the focused copy.
 - Accessible names match the visible objects.
 - Pointer and keyboard tests cover all six copies, including after a responsive resize.
-- Visual checks cover light and dark themes and responsive widths from 360 px to wide desktop.
+- Visual checks cover the Game's fixed light palette and responsive widths from 360 px to wide desktop.
 - No horizontal overflow, console error, broken source link or change to another location is accepted.
 - Environment/accessory audits, syntax checks, `git diff --check` and the full diff pass before integration.

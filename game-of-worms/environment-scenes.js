@@ -1320,6 +1320,23 @@ function drawAraucaniaJU4400Scene(target, palette) {
   }, { once: true });
 }
 
+function drawSingaporeZF1220Scene(target, palette) {
+  const background = append(target, "image", {
+    class: "singapore-zf1220-painted-background",
+    href: "assets/singapore-zf1220-painted-background.webp",
+    x: 0,
+    y: 0,
+    width: 600,
+    height: 430,
+    preserveAspectRatio: "xMidYMid slice",
+    "aria-hidden": "true"
+  });
+  background.addEventListener("error", () => {
+    target.replaceChildren();
+    drawSingaporeStarfruitGardenScene(target, palette);
+  }, { once: true });
+}
+
 function drawTrivandrumJU1325Scene(target, palette) {
   const background = append(target, "image", {
     class: "trivandrum-ju1325-painted-background",
@@ -2650,7 +2667,7 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
     return;
   }
   if (profile.id === "singapore-zf1220-starfruit-garden") {
-    drawSingaporeStarfruitGardenScene(target, palette);
+    drawSingaporeZF1220Scene(target, palette);
     return;
   }
   if (profile.id === "praslin-yr106-granitic-palm-forest") {
