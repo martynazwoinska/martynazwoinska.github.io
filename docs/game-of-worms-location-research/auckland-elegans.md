@@ -1,6 +1,6 @@
 # Auckland *C. elegans* location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-29
 
 This dossier is the evidence and review contract for the *Caenorhabditis elegans* Auckland landscape and its three accessory pairs. It follows the Bristol N2, Santeuil, Edinburgh, Tenerife, Kauaʻi and Australian Capital Territory batches in the location-by-location Game of Worms illustration workflow.
 
@@ -40,7 +40,7 @@ Regional sources:
 - [Tūpuna Maunga Authority, Auckland's ancestral mountains](https://maunga.nz/the-ancestral-mountains-of-auckland)
 - [Engineering New Zealand, Auckland Sky Tower heritage record](https://www.engineeringnz.org/programmes/heritage/engineering-heritage-records/buildings/auckland-sky-tower/)
 
-These pages are factual and visual references only. The website uses an original SVG illustration and does not trace an external photograph, live skyline, private property or institutional graphic.
+These pages are factual and visual references only. The website uses an original painted illustration and does not trace an external photograph, live skyline, private property or institutional graphic.
 
 ## Landscape composition contract
 
@@ -109,6 +109,16 @@ Source: [Lim, Kim and Lee, 2021, Natural variation in reproductive traits of *C.
 
 The revised Bristol N2, Santeuil, Edinburgh, Tenerife, Kauaʻi and ACT batches are the minimum quality floor, not templates to repeat. Auckland must exceed them through an exact grass-litter focal point, coherent anonymised garden depth, integrated mechanisms, two genuinely different drawings per concept and a readable combined composition.
 
+## Implementation status
+
+- Preserved source painting: `game-of-worms/assets/source/auckland-eca36-painted-background-source.png`
+- Optimized runtime derivative: `game-of-worms/assets/auckland-eca36-painted-background.webp`
+- The original detailed SVG scene remains in `game-of-worms/environment-scenes.js` as the asset-load fallback.
+- The painted background uses the existing responsive SVG coordinate system; animated worms and accessories remain separate live SVG layers.
+- Fresh checks at 360, 768, 1024 and 1440 px confirmed the painted asset, all six active accessory copies and zero horizontal overflow.
+- Pointer dragging moved all six copies independently. Keyboard arrow movement and Home reset affected only the focused copy.
+- Browser-console checks reported no errors.
+
 ## Review and interaction acceptance
 
 - Only the *C. elegans* Auckland landscape and its accessory data and drawings change in the Game feature batch.
@@ -119,6 +129,6 @@ The revised Bristol N2, Santeuil, Edinburgh, Tenerife, Kauaʻi and ACT batches a
 - Each of the six visible objects remains independently draggable and keyboard movable; Home resets only the focused copy.
 - Accessible names match the visible objects.
 - Pointer and keyboard tests cover all six copies, including after a responsive resize.
-- Visual checks cover light and dark themes and responsive widths from 360 px to wide desktop.
+- Visual checks cover the Game's fixed light palette and responsive widths from 360 px to wide desktop.
 - No horizontal overflow, console error, broken source link or change to another location is accepted.
 - Environment/accessory audits, syntax checks, `git diff --check` and the full diff pass before integration.
