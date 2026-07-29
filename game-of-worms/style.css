@@ -336,7 +336,8 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   --scene-highlight: #ffd166;
   --scene-detail: #496f63;
   position: relative;
-  min-height: 430px;
+  min-height: 0;
+  aspect-ratio: 600 / 430;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -353,8 +354,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
     linear-gradient(to bottom, rgba(255,255,255,.1), transparent 55%, rgba(24,58,54,.09));
   box-shadow: inset 0 -34px 55px rgba(29,65,57,.08);
 }
-.regional-backdrop { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; opacity: .94; transform: scale(1.01); transition: transform .7s ease; }
-.habitat:hover .regional-backdrop { transform: scale(1.035); }
+.regional-backdrop { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; opacity: .94; }
 .regional-backdrop > [data-scene], .regional-backdrop > [data-place-scene] { display: none; }
 .regional-backdrop > #location-scene { display: inline; }
 .habitat[data-local-style="okinawa"] [data-scene="okinawa"],
@@ -4509,7 +4509,6 @@ footer p { margin: 0; }
   .map-selection { left: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 10px 12px; }
   .species-tabs { grid-template-columns: 1fr; min-height: 424px; }
   .species-tab { min-height: 68px; }
-  .habitat { min-height: 340px; }
   .scene-name {
     right: 12px;
     bottom: 12px;
