@@ -1,6 +1,6 @@
 # Queensland *Caenorhabditis tropicalis* QG2904 location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-07-29
 
 ## Purpose
 
@@ -309,7 +309,7 @@ Exact marker replacement:
 
 ## Environment illustration contract
 
-Create a dedicated original SVG scene in the existing 600 × 430 viewBox.
+Create a dedicated original painted illustration for the existing 600 × 430 scene viewBox.
 
 ### Camera
 
@@ -582,7 +582,7 @@ The funnel-recovery family is now at its maximum of two and must not be reused.
 - Add the three location-scoped renderer IDs.
 - Add six dedicated high-detail drawings and three custom initial layouts.
 - Ensure the funnel drawings do not call or clone the QG2811 renderer.
-- Add scoped light- and dark-theme styling.
+- Add scoped fixed-palette styling.
 - Refresh relevant Game asset cache versions.
 - Keep catalogue totals at 12 double-use families and 87 singletons.
 
@@ -626,6 +626,14 @@ The funnel-recovery family is now at its maximum of two and must not be reused.
 - Confirm positions do not leak across species or locations.
 - Preserve visible focus, minimum 44 px targets and reduced motion.
 
+## Painted-background implementation status
+
+- The approved runtime painting is `game-of-worms/assets/queensland-qg2904-painted-background.webp`.
+- Its full-resolution source is preserved separately as `game-of-worms/assets/source/queensland-qg2904-painted-background-source.png`.
+- The previous custom SVG landscape remains in `environment-scenes.js` only as an asset-load fallback.
+- The painting keeps the pod fully sealed, the buttress arch dominant and the canopy-crane fragment subordinate, without asserting a botanical species, visible decay or exact collection-patch view.
+- The animated worms and all six independently movable accessories remain live SVG layers above the painting.
+
 ## Visual and interaction acceptance
 
 - The scene reads as a lowland research-station rainforest, not a beach.
@@ -642,7 +650,7 @@ The funnel-recovery family is now at its maximum of two and must not be reused.
 - Every mechanism remains connected at 360 px.
 - Test approximately 360, 768, 1024 and 1440 px.
 - Return from mobile to 1440 px and verify geometry restoration.
-- Verify light and dark themes and reduced-motion mode.
+- Verify the Game's fixed light palette and reduced-motion mode.
 - Verify no horizontal overflow.
 - Verify visible keyboard focus and correct accessible names.
 - Verify all six direct pointer drags.
