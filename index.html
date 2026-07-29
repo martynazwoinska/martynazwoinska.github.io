@@ -723,10 +723,16 @@
         filter: drop-shadow(0 0 .58px var(--accent-berry));
       }
     }
-    @media (min-width: 1200px) {
-      section { overflow-x: clip; }
+    @media (min-width: 621px) {
+      section {
+        container-type: inline-size;
+        overflow-x: clip;
+      }
       section::before, section::after, section > h2::before {
-        transform: translateX(-50%) scaleX(1.22);
+        transform: translateX(-50%) scaleX(1);
+        transform: translateX(-50%) scaleX(
+          clamp(1, calc(1 + tan(atan2(100cqw - 893px, 993px))), 1.22)
+        );
       }
     }
     /* .wrap sets padding:0 24px, so target section.wrap to add vertical rhythm */
