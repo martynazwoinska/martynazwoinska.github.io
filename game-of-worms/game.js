@@ -208,6 +208,8 @@ if (!environmentCompositionAudit.valid) {
 const visited = new Set();
 const accessoryIds = ["local-headwear", "local-wrap", "local-charm"];
 const accessoryWormParts = ["primary", "companion"];
+const accessoryScaleMin = .6;
+const accessoryScaleMax = 2;
 const wardrobes = new Map();
 const accessoryPositions = new Map();
 const drawings = new Map();
@@ -618,7 +620,7 @@ function accessoryPositionKey(id, wormPart) {
 }
 
 function clampAccessoryScale(scale) {
-  return Math.min(1.6, Math.max(.6, Number.isFinite(scale) ? scale : 1));
+  return Math.min(accessoryScaleMax, Math.max(accessoryScaleMin, Number.isFinite(scale) ? scale : 1));
 }
 
 function accessoryPosition(id, wormPart) {
@@ -858,9 +860,9 @@ function updateAccessorySizeControls() {
   els.accessorySizeControls.hidden = false;
   els.accessorySizeTarget.textContent = accessoryName(target.id, target.wormPart);
   els.accessorySizeValue.value = `${percentage}%`;
-  els.accessorySizeDecrease.disabled = position.scale <= .6;
+  els.accessorySizeDecrease.disabled = position.scale <= accessoryScaleMin;
   els.accessorySizeReset.disabled = Math.abs(position.scale - 1) < .01;
-  els.accessorySizeIncrease.disabled = position.scale >= 1.6;
+  els.accessorySizeIncrease.disabled = position.scale >= accessoryScaleMax;
 }
 
 function selectAccessoryForSizing(id, wormPart) {
