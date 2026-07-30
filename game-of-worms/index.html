@@ -11,6 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#ecf9f7" />
+  <link rel="preload" as="image" href="assets/n2-bristol-painted-background.webp" type="image/webp" fetchpriority="high" />
   <link rel="stylesheet" href="style.css?v=20260730-33" />
 </head>
 <body>
@@ -39,7 +40,7 @@
 
       <div class="play-grid">
         <section class="worm-playground" aria-labelledby="dress-title">
-          <div id="habitat" class="habitat" data-habitat="compost" data-local-style="field" data-place-scene="" data-accessory-visual="elegans" data-has-custom-visual="true" data-species="elegans" data-pose="forager" style="--worm-color: #f0c78e; --worm-deep: #bd7c45; --habitat-one: #d7b96d; --habitat-two: #8ba56f; --worm-scale: .72;">
+          <div id="habitat" class="habitat" data-habitat="compost" data-local-style="field" data-place-scene="dynamic" data-environment="bristol-garden-gorge" data-accessory-visual="elegans" data-has-custom-visual="true" data-species="elegans" data-pose="forager" style="--worm-color: #f0c78e; --worm-deep: #bd7c45; --habitat-one: #d7b96d; --habitat-two: #8ba56f; --worm-scale: .72;">
             <svg class="regional-backdrop" viewBox="0 0 600 430" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
               <defs>
                 <linearGradient id="scene-sky-gradient" x1="0" y1="0" x2="0" y2="1">
@@ -60,7 +61,9 @@
                   <stop offset="100%" class="scene-sun-edge"></stop>
                 </radialGradient>
               </defs>
-              <g id="location-scene" class="environment-scene"></g>
+              <g id="location-scene" class="environment-scene">
+                <image class="bristol-painted-background" href="assets/n2-bristol-painted-background.webp" x="0" y="0" width="600" height="430" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></image>
+              </g>
               <g data-scene="okinawa">
                 <rect class="scene-sky" width="600" height="430"></rect>
                 <g class="scene-clouds"><ellipse cx="92" cy="76" rx="54" ry="17"></ellipse><ellipse cx="133" cy="68" rx="39" ry="22"></ellipse><ellipse cx="168" cy="78" rx="46" ry="15"></ellipse></g>
