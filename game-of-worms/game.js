@@ -350,7 +350,7 @@ function pronounceScientificNames(value) {
     /\bC\.\s+(inopinata|elegans|briggsae|nigoni|tropicalis|wallacei)\b/gi,
     "Caenorhabditis $1"
   );
-  return expanded.replace(/\bCaenorhabditis\b/gi, "see-no-rab-DITE-iss");
+  return expanded.replace(/\bCaenorhabditis\b/gi, "see no rab dye tiss");
 }
 
 function pronounceStrainCodes(value) {
@@ -363,7 +363,7 @@ function narrationSegments(item, place) {
   const placeName = typeof place === "string" ? place : place?.name;
   const fact = typeof place === "object" && place?.history ? place.history : item.fact;
   const reproduction = item.reproduction === "selfing"
-    ? "Mostly selfing: self-fertile hermaphrodites, with rare males."
+    ? "This species is predominantly self-fertilising: populations consist mainly of self-fertilising hermaphrodites, with rare males."
     : "Outcrossing: females and males.";
   return [
     placeName || item.region,
@@ -372,7 +372,7 @@ function narrationSegments(item, place) {
     item.intro,
     reproduction,
     `Habitat: ${item.habitat}.`,
-    `Tiny surprise. ${fact}`
+    fact
   ].map(segment => pronounceStrainCodes(pronounceScientificNames(segment)));
 }
 
@@ -509,8 +509,10 @@ function renderSpecies(item, place) {
   italicText(els.speciesName, item.name);
   els.speciesNickname.textContent = item.nickname;
   scientificText(els.speciesIntro, item.intro);
-  els.speciesReproduction.textContent = item.reproductionLabel;
-  els.speciesReproduction.className = `fact-pill ${item.reproduction}`;
+  els.speciesReproduction.textContent = item.reproduction === "selfing"
+    ? "This species is predominantly self-fertilising: populations consist mainly of self-fertilising hermaphrodites, with rare males."
+    : item.reproductionLabel;
+  els.speciesReproduction.className = `fact-pill ${item.reproduction}${item.reproduction === "selfing" ? " reproduction-note" : ""}`;
   els.speciesHabitat.textContent = item.habitat;
   scientificText(els.speciesFact, typeof place === "object" && place?.history ? place.history : item.fact);
   italicText(els.wormNameTag, item.short);
