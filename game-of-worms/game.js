@@ -1,7 +1,7 @@
 import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.net/npm/d3-geo@3/+esm";
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
-import { createGameTranslator } from "./game-i18n.js?v=20260713-3";
+import { createGameTranslator } from "./game-i18n.js?v=20260730-4";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260729-39";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260728-22";
 
@@ -218,6 +218,7 @@ let drawingEnabled = false;
 let drawingColor = "#f36f62";
 let activeDoodle = null;
 let activeAccessoryDrag = null;
+let selectedAccessorySizeTarget = null;
 let accessoryResizeFrame = null;
 let accessoryConstraintFrame = null;
 let accessoryConstraintTimer = null;
@@ -261,11 +262,20 @@ const els = {
   speciesReproduction: document.getElementById("species-reproduction"),
   speciesHabitat: document.getElementById("species-habitat"),
   speciesFact: document.getElementById("species-fact"),
+  narrationToggle: document.getElementById("narration-toggle"),
+  narrationLabel: document.querySelector("#narration-toggle span"),
+  narrationStatus: document.getElementById("narration-status"),
   exploredCount: document.getElementById("explored-count"),
   freestyle: document.getElementById("freestyle-draw"),
   drawTools: document.getElementById("draw-tools"),
   clearDrawing: document.getElementById("clear-drawing"),
-  accessoryStatus: document.getElementById("accessory-status")
+  accessoryStatus: document.getElementById("accessory-status"),
+  accessorySizeControls: document.getElementById("accessory-size-controls"),
+  accessorySizeTarget: document.getElementById("accessory-size-target"),
+  accessorySizeDecrease: document.getElementById("accessory-size-decrease"),
+  accessorySizeReset: document.getElementById("accessory-size-reset"),
+  accessorySizeIncrease: document.getElementById("accessory-size-increase"),
+  accessorySizeValue: document.getElementById("accessory-size-value")
 };
 
 function italicText(element, value) {
@@ -289,6 +299,145 @@ function scientificText(element, value) {
     cursor = match.index + match[0].length;
   }
   if (cursor < value.length) element.append(document.createTextNode(value.slice(cursor)));
+}
+
+const speechSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+const narrationLabels = {
+  idle: { visible: "Listen", accessible: "Listen to this worm's story" },
+  speaking: { visible: "Pause", accessible: "Pause narration" },
+  paused: { visible: "Resume", accessible: "Resume narration" }
+};
+let narrationState = "idle";
+let currentNarration = null;
+let englishVoices = [];
+
+function refreshNarrationVoices() {
+  if (!speechSupported) return;
+  englishVoices = window.speechSynthesis.getVoices().filter(voice => /^en(?:-|_)/i.test(voice.lang));
+}
+
+function preferredNarrationVoice() {
+  return englishVoices.find(voice => /^en-GB$/i.test(voice.lang))
+    || englishVoices.find(voice => /^en-(?:US|AU|IE|CA|NZ)$/i.test(voice.lang))
+    || englishVoices[0]
+    || null;
+}
+
+function updateNarrationControl(state = narrationState) {
+  narrationState = state;
+  const labels = narrationLabels[state];
+  els.narrationLabel.textContent = labels.visible;
+  els.narrationToggle.setAttribute("aria-label", labels.accessible);
+  els.narrationToggle.setAttribute("aria-pressed", String(state !== "idle"));
+}
+
+function announceNarration(message) {
+  els.narrationStatus.textContent = "";
+  requestAnimationFrame(() => {
+    els.narrationStatus.textContent = message;
+  });
+}
+
+function stopNarration() {
+  if (!speechSupported) return;
+  currentNarration = null;
+  window.speechSynthesis.cancel();
+  updateNarrationControl("idle");
+}
+
+function pronounceScientificNames(value) {
+  const expanded = value.replace(
+    /\bC\.\s+(inopinata|elegans|briggsae|nigoni|tropicalis|wallacei)\b/gi,
+    "Caenorhabditis $1"
+  );
+  return expanded.replace(/\bCaenorhabditis\b/gi, "see-no-rab-DITE-iss");
+}
+
+function pronounceStrainCodes(value) {
+  return value.replace(/\b([A-Z]{1,4})(\d+(?:\.\d+)?)\b/g, (match, letters, number) => {
+    return `${[...letters].join(" ")} ${number}`;
+  });
+}
+
+function narrationSegments(item, place) {
+  const placeName = typeof place === "string" ? place : place?.name;
+  const fact = typeof place === "object" && place?.history ? place.history : item.fact;
+  const reproduction = item.reproduction === "selfing"
+    ? "Mostly selfing: self-fertile hermaphrodites, with rare males."
+    : "Outcrossing: females and males.";
+  return [
+    placeName || item.region,
+    item.name,
+    item.nickname,
+    item.intro,
+    reproduction,
+    `Habitat: ${item.habitat}.`,
+    `Tiny surprise. ${fact}`
+  ].map(segment => pronounceStrainCodes(pronounceScientificNames(segment)));
+}
+
+function startNarration() {
+  if (!speechSupported) return;
+  const item = byId.get(selectedId);
+  if (!item) return;
+  const place = item.locations.find(candidate => candidate.name === selectedRecordName) || item.locations[0];
+  stopNarration();
+  const session = { utterances: [] };
+  const voice = preferredNarrationVoice();
+  session.utterances = narrationSegments(item, place).map((text, index, segments) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-GB";
+    utterance.rate = .92;
+    utterance.pitch = 1;
+    if (voice) utterance.voice = voice;
+    if (index === 0) {
+      utterance.addEventListener("start", () => {
+        if (currentNarration !== session) return;
+        updateNarrationControl("speaking");
+        announceNarration("Narration started.");
+      });
+    }
+    if (index === segments.length - 1) {
+      utterance.addEventListener("end", () => {
+        if (currentNarration !== session) return;
+        currentNarration = null;
+        updateNarrationControl("idle");
+        announceNarration("Narration finished.");
+      });
+    }
+    utterance.addEventListener("error", event => {
+      if (currentNarration !== session) return;
+      currentNarration = null;
+      window.speechSynthesis.cancel();
+      updateNarrationControl("idle");
+      if (!["canceled", "interrupted"].includes(event.error)) {
+        announceNarration("Narration is unavailable in this browser.");
+      }
+    });
+    return utterance;
+  });
+  currentNarration = session;
+  session.utterances.forEach(utterance => window.speechSynthesis.speak(utterance));
+}
+
+if (speechSupported) {
+  refreshNarrationVoices();
+  window.speechSynthesis.addEventListener("voiceschanged", refreshNarrationVoices);
+  els.narrationToggle.addEventListener("click", () => {
+    if (narrationState === "speaking") {
+      window.speechSynthesis.pause();
+      updateNarrationControl("paused");
+      announceNarration("Narration paused.");
+    } else if (narrationState === "paused") {
+      window.speechSynthesis.resume();
+      updateNarrationControl("speaking");
+      announceNarration("Narration resumed.");
+    } else {
+      startNarration();
+    }
+  });
+} else {
+  els.narrationToggle.hidden = true;
 }
 
 function renderTabs() {
@@ -425,6 +574,7 @@ function updateSelectedControls() {
 function selectSpecies(id, place) {
   const item = byId.get(id);
   if (!item) return;
+  stopNarration();
   const activePlace = typeof place === "object" ? place : item.locations[0];
   selectedId = id;
   selectedRecordName = activePlace?.name || null;
@@ -616,6 +766,10 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
     }
   }
   updateAccessoryLabelVisibility();
+  if (
+    selectedAccessorySizeTarget?.id === id
+    && selectedAccessorySizeTarget.wormPart === wormPart
+  ) updateAccessorySizeControls();
   return position;
 }
 
@@ -676,6 +830,80 @@ function accessoryName(id, wormPart) {
   return t("accessoryForWorm", { accessory, worm: accessoryWormName(wormPart) });
 }
 
+function updateAccessorySizeControls() {
+  const target = selectedAccessorySizeTarget;
+  if (
+    drawingEnabled
+    || !target
+    || !activeWardrobe().has(target.id)
+    || !visibleAccessoryPieces(target.id, target.wormPart)[0]
+  ) {
+    els.accessorySizeControls.hidden = true;
+    return;
+  }
+  const position = accessoryPosition(target.id, target.wormPart);
+  const percentage = Math.round(position.scale * 100);
+  els.accessorySizeControls.hidden = false;
+  els.accessorySizeTarget.textContent = accessoryName(target.id, target.wormPart);
+  els.accessorySizeValue.value = `${percentage}%`;
+  els.accessorySizeDecrease.disabled = position.scale <= .6;
+  els.accessorySizeReset.disabled = Math.abs(position.scale - 1) < .01;
+  els.accessorySizeIncrease.disabled = position.scale >= 1.6;
+}
+
+function selectAccessoryForSizing(id, wormPart) {
+  if (!activeWardrobe().has(id) || !accessoryWormParts.includes(wormPart)) return;
+  selectedAccessorySizeTarget = { id, wormPart };
+  updateAccessorySizeControls();
+}
+
+function selectAvailableAccessoryForSizing(preferredId) {
+  if (preferredId && activeWardrobe().has(preferredId)) {
+    selectAccessoryForSizing(preferredId, "primary");
+    return;
+  }
+  if (selectedAccessorySizeTarget && activeWardrobe().has(selectedAccessorySizeTarget.id)) {
+    updateAccessorySizeControls();
+    return;
+  }
+  const availableId = accessoryIds.find(id => activeWardrobe().has(id));
+  if (availableId) selectAccessoryForSizing(availableId, "primary");
+  else {
+    selectedAccessorySizeTarget = null;
+    updateAccessorySizeControls();
+  }
+}
+
+function resizeSelectedAccessory(scaleChange) {
+  const target = selectedAccessorySizeTarget;
+  if (!target) return;
+  const piece = visibleAccessoryPieces(target.id, target.wormPart)[0];
+  if (!piece) return;
+  const current = accessoryPosition(target.id, target.wormPart);
+  const position = moveAccessory(target.id, target.wormPart, {
+    ...current,
+    scale: current.scale + scaleChange
+  }, piece, false);
+  announceAccessory(t("accessorySizeChanged", {
+    accessory: accessoryName(target.id, target.wormPart),
+    size: Math.round(position.scale * 100)
+  }));
+}
+
+function resetSelectedAccessorySize() {
+  const target = selectedAccessorySizeTarget;
+  if (!target) return;
+  const piece = visibleAccessoryPieces(target.id, target.wormPart)[0];
+  if (!piece) return;
+  const current = accessoryPosition(target.id, target.wormPart);
+  moveAccessory(target.id, target.wormPart, { ...current, scale: 1 }, piece, false);
+  announceAccessory(t("accessorySizeReset", { accessory: accessoryName(target.id, target.wormPart) }));
+}
+
+els.accessorySizeDecrease.addEventListener("click", () => resizeSelectedAccessory(-.1));
+els.accessorySizeReset.addEventListener("click", resetSelectedAccessorySize);
+els.accessorySizeIncrease.addEventListener("click", () => resizeSelectedAccessory(.1));
+
 function announceAccessory(message) {
   els.accessoryStatus.textContent = "";
   requestAnimationFrame(() => { els.accessoryStatus.textContent = message; });
@@ -686,6 +914,7 @@ function resetAccessoryPosition(id, wormPart) {
   activeAccessoryPositions().set(accessoryPositionKey(id, wormPart), position);
   applyAccessoryPosition(id, wormPart, position);
   queueAccessoryConstraints(true);
+  updateAccessorySizeControls();
   announceAccessory(t("accessoryReset", { accessory: accessoryName(id, wormPart) }));
 }
 
@@ -725,6 +954,7 @@ els.freestyle.addEventListener("click", () => {
   els.drawTools.toggleAttribute("hidden", !drawingEnabled);
   els.habitat.classList.toggle("is-drawing", drawingEnabled);
   refreshAccessoryPieceControls();
+  updateAccessorySizeControls();
 });
 
 document.querySelectorAll("[data-draw-color]").forEach(button => {
@@ -792,6 +1022,7 @@ function toggleAccessory(id, force) {
   refreshAccessoryPieceControls();
   updateAccessoryLabelVisibility();
   if (shouldShow) queueAccessoryConstraints(true);
+  selectAvailableAccessoryForSizing(shouldShow ? id : null);
 }
 
 function syncAccessories() {
@@ -807,6 +1038,7 @@ function syncAccessories() {
   refreshAccessoryPieceControls();
   updateAccessoryLabelVisibility();
   queueAccessoryConstraints(true);
+  selectAvailableAccessoryForSizing();
 }
 
 function refreshAccessoryPieceControls() {
@@ -925,6 +1157,7 @@ function wireAccessoryPieces() {
     const wormPart = piece.dataset.wormPart;
     if (!accessory || !id || !accessoryWormParts.includes(wormPart)) return;
     wiredAccessoryPieces.add(piece);
+    piece.addEventListener("focus", () => selectAccessoryForSizing(id, wormPart));
 
     piece.addEventListener("pointerdown", event => {
       if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
@@ -1185,6 +1418,10 @@ const initialPlace = initialSpecies.locations[0];
 selectedRecordName = initialPlace.name;
 renderSpecies(initialSpecies, initialPlace);
 updateSelectedControls();
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) stopNarration();
+});
+window.addEventListener("pagehide", () => stopNarration());
 
 try {
   drawMap();

@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#ecf9f7" />
-  <link rel="stylesheet" href="style.css?v=20260730-29" />
+  <link rel="stylesheet" href="style.css?v=20260730-31" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
@@ -263,6 +263,16 @@
               <button type="button" data-accessory="local-charm" aria-pressed="false"><span class="button-icon" aria-hidden="true">✦</span> <span class="button-label">cryo-vial jetpacks</span></button>
               <button id="freestyle-draw" class="freestyle-button" type="button" aria-pressed="false"><span aria-hidden="true">🎨</span> Freestyle draw</button>
             </div>
+            <div id="accessory-size-controls" class="accessory-size-controls" hidden>
+              <span class="accessory-size-caption">Accessory size</span>
+              <strong id="accessory-size-target"></strong>
+              <div class="accessory-size-buttons" role="group" aria-label="Accessory size controls">
+                <button id="accessory-size-decrease" type="button" aria-label="Decrease selected accessory size">−</button>
+                <button id="accessory-size-reset" type="button" aria-label="Reset selected accessory size">Reset</button>
+                <button id="accessory-size-increase" type="button" aria-label="Increase selected accessory size">+</button>
+              </div>
+              <output id="accessory-size-value" aria-live="polite">100%</output>
+            </div>
             <p id="accessory-status" class="sr-only" aria-live="polite"></p>
             <div id="draw-tools" class="draw-tools" hidden aria-label="Freestyle drawing tools">
               <span>Ink</span>
@@ -278,6 +288,13 @@
         <article class="species-story" aria-live="polite">
           <div class="story-topline">
             <span id="species-region" class="region-label">Bristol N2, England</span>
+            <button id="narration-toggle" class="narration-toggle" type="button" aria-label="Listen to this worm's story" aria-pressed="false">
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+                <path d="M5 10v4h3l4 3V7L8 10H5Z"></path>
+                <path class="narration-wave" d="M15 9.2c1.5 1.5 1.5 4.1 0 5.6M17.7 6.6c3 3 3 7.8 0 10.8"></path>
+              </svg>
+              <span>Listen</span>
+            </button>
           </div>
           <h2 id="species-name"><i>Caenorhabditis elegans</i></h2>
           <p id="species-nickname" class="nickname">The world traveller</p>
@@ -292,6 +309,7 @@
             <span aria-hidden="true">💡</span>
             <p><strong>Tiny surprise</strong><span id="species-fact">N2 came from mushroom compost near Bristol. <i>C. elegans</i> can be frozen alive in a protective solution and revived after thawing. This is the reason for its cryo-vial jetpack. An early N2 tube frozen around 1968 was later thawed to establish an ancestral laboratory stock.</span></p>
           </div>
+          <p id="narration-status" class="sr-only" aria-live="polite"></p>
         </article>
       </div>
     </section>
@@ -351,6 +369,6 @@
     </details>
   </main>
 
-  <script type="module" src="game.js?v=20260730-48"></script>
+  <script type="module" src="game.js?v=20260730-50"></script>
 </body>
 </html>
