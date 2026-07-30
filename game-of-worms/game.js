@@ -364,7 +364,7 @@ function narrationSegments(item, place) {
   const fact = typeof place === "object" && place?.history ? place.history : item.fact;
   const reproduction = item.reproduction === "selfing"
     ? "This species is predominantly self-fertilising: populations consist mainly of self-fertilising hermaphrodites, with rare males."
-    : "Outcrossing: females and males.";
+    : "This species is outcrossing, meaning that populations consist of females and males and reproduction requires mating between them.";
   return [
     placeName || item.region,
     item.name,
