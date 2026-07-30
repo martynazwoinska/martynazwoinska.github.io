@@ -3083,14 +3083,6 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .fact-pill { border-radius: 999px; padding: 8px 12px; font-size: .82rem; font-weight: 800; }
 .fact-pill.selfing { background: rgba(243,111,98,.17); color: #a5393f; }
 .fact-pill.outcrossing { background: rgba(117,103,184,.17); color: #514395; }
-.fact-pill.reproduction-note {
-  flex: 1 1 100%;
-  border-radius: 18px;
-  padding: 11px 13px;
-  font-size: .88rem;
-  font-weight: 500;
-  line-height: 1.46;
-}
 .habitat-pill { background: rgba(22,125,122,.14); color: var(--teal-dark); }
 .wow-fact {
   margin-top: auto;

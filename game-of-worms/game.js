@@ -509,10 +509,8 @@ function renderSpecies(item, place) {
   italicText(els.speciesName, item.name);
   els.speciesNickname.textContent = item.nickname;
   scientificText(els.speciesIntro, item.intro);
-  els.speciesReproduction.textContent = item.reproduction === "selfing"
-    ? "This species is predominantly self-fertilising: populations consist mainly of self-fertilising hermaphrodites, with rare males."
-    : item.reproductionLabel;
-  els.speciesReproduction.className = `fact-pill ${item.reproduction}${item.reproduction === "selfing" ? " reproduction-note" : ""}`;
+  els.speciesReproduction.textContent = item.reproductionLabel;
+  els.speciesReproduction.className = `fact-pill ${item.reproduction}`;
   els.speciesHabitat.textContent = item.habitat;
   scientificText(els.speciesFact, typeof place === "object" && place?.history ? place.history : item.fact);
   italicText(els.wormNameTag, item.short);
