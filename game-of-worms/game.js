@@ -514,7 +514,7 @@ function screenDeltaToAccessorySpace(piece, x, y) {
   return { x: localTarget.x - localOrigin.x, y: localTarget.y - localOrigin.y };
 }
 
-function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAccessoryPieces(id, wormPart)[0]) {
+function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAccessoryPieces(id, wormPart)[0], avoidLabels = true) {
   if (!referencePiece) return desiredPosition;
   let position = desiredPosition;
   const positionKey = accessoryPositionKey(id, wormPart);
@@ -541,7 +541,7 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
     if (accessoryBounds.top < topBoundary) screenY = topBoundary - accessoryBounds.top;
     else if (accessoryBounds.bottom > avatarBounds.bottom - margin) screenY = avatarBounds.bottom - margin - accessoryBounds.bottom;
 
-    if (window.matchMedia("(max-width: 680px)").matches) {
+    if (avoidLabels && window.matchMedia("(max-width: 680px)").matches) {
       const labelGap = 10;
       const labelBounds = [els.wormNameTag, els.sceneName]
         .map(label => label?.getBoundingClientRect())
@@ -600,7 +600,29 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
       applyAccessoryPosition(id, wormPart, position);
     }
   }
+  updateAccessoryLabelVisibility();
   return position;
+}
+
+function updateAccessoryLabelVisibility() {
+  const labels = [els.wormNameTag, els.sceneName].filter(Boolean);
+  if (!window.matchMedia("(max-width: 680px)").matches) {
+    labels.forEach(label => label.classList.remove("is-covered"));
+    return;
+  }
+  const accessoryBounds = [...document.querySelectorAll(".accessory:not([hidden]) .accessory-piece[data-worm-part]")]
+    .map(piece => piece.getBoundingClientRect())
+    .filter(bounds => bounds.width && bounds.height);
+  labels.forEach(label => {
+    const labelBounds = label.getBoundingClientRect();
+    const covered = accessoryBounds.some(bounds => (
+      bounds.left < labelBounds.right
+      && bounds.right > labelBounds.left
+      && bounds.top < labelBounds.bottom
+      && bounds.bottom > labelBounds.top
+    ));
+    label.classList.toggle("is-covered", covered);
+  });
 }
 
 function constrainVisibleAccessories() {
@@ -753,6 +775,7 @@ function toggleAccessory(id, force) {
   if (shouldShow) activeAccessories.add(id);
   else activeAccessories.delete(id);
   refreshAccessoryPieceControls();
+  updateAccessoryLabelVisibility();
   if (shouldShow) queueAccessoryConstraints(true);
 }
 
@@ -767,6 +790,7 @@ function syncAccessories() {
     button?.setAttribute("aria-pressed", String(shouldShow));
   });
   refreshAccessoryPieceControls();
+  updateAccessoryLabelVisibility();
   queueAccessoryConstraints(true);
 }
 
@@ -863,7 +887,7 @@ function finishAccessoryDrag(event) {
   if (piece.hasPointerCapture(event.pointerId)) piece.releasePointerCapture(event.pointerId);
   piece.classList.remove("is-dragging");
   document.documentElement.classList.remove("accessory-drag-active");
-  moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
+  moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece, false);
   if (moved) announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
   activeAccessoryDrag = null;
 }
@@ -907,7 +931,7 @@ function wireAccessoryPieces() {
       moveAccessory(id, wormPart, {
         x: activeAccessoryDrag.startPosition.x + deltaX,
         y: activeAccessoryDrag.startPosition.y + deltaY
-      }, piece);
+      }, piece, false);
     });
 
     piece.addEventListener("keydown", event => {
@@ -931,7 +955,7 @@ function wireAccessoryPieces() {
       const position = moveAccessory(id, wormPart, {
         x: current.x + direction[0] * step,
         y: current.y + direction[1] * step
-      }, piece);
+      }, piece, false);
       announceAccessory(t("accessoryPosition", {
         accessory: accessoryName(id, wormPart),
         x: Math.round(position.x),

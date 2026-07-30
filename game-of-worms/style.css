@@ -4543,6 +4543,9 @@ footer p { margin: 0; }
     text-align: left;
     white-space: normal;
   }
+  .worm-avatar { z-index: 4; }
+  .scene-name, .worm-name-tag { transition: opacity .14s ease; }
+  .scene-name.is-covered, .worm-name-tag.is-covered { opacity: 0; }
   .worm-name-tag { left: 12px; bottom: 12px; }
   .dress-bar { padding: 16px; }
   .species-story { min-height: 390px; }
