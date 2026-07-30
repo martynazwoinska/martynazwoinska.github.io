@@ -219,6 +219,8 @@ let drawingColor = "#f36f62";
 let activeDoodle = null;
 let activeAccessoryDrag = null;
 let accessoryResizeFrame = null;
+let accessoryConstraintFrame = null;
+let accessoryConstraintTimer = null;
 let projection;
 let projectedLocations = [];
 
@@ -539,6 +541,58 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
     if (accessoryBounds.top < topBoundary) screenY = topBoundary - accessoryBounds.top;
     else if (accessoryBounds.bottom > avatarBounds.bottom - margin) screenY = avatarBounds.bottom - margin - accessoryBounds.bottom;
 
+    if (window.matchMedia("(max-width: 680px)").matches) {
+      const labelGap = 10;
+      const labelBounds = [els.wormNameTag, els.sceneName]
+        .map(label => label?.getBoundingClientRect())
+        .filter(bounds => bounds?.width && bounds.height);
+      const shiftedBounds = {
+        left: accessoryBounds.left + screenX,
+        top: accessoryBounds.top + screenY,
+        right: accessoryBounds.right + screenX,
+        bottom: accessoryBounds.bottom + screenY
+      };
+      const overlaps = (first, second) => (
+        first.left < second.right + labelGap
+        && first.right > second.left - labelGap
+        && first.top < second.bottom + labelGap
+        && first.bottom > second.top - labelGap
+      );
+      const withinAvatar = bounds => (
+        bounds.left >= avatarBounds.left + margin - .5
+        && bounds.right <= avatarBounds.right - margin + .5
+        && bounds.top >= topBoundary - .5
+        && bounds.bottom <= avatarBounds.bottom - margin + .5
+      );
+
+      labelBounds.forEach(labelBoundsItem => {
+        if (!overlaps(shiftedBounds, labelBoundsItem)) return;
+        const corrections = [
+          { x: 0, y: labelBoundsItem.top - labelGap - shiftedBounds.bottom },
+          { x: labelBoundsItem.left - labelGap - shiftedBounds.right, y: 0 },
+          { x: labelBoundsItem.right + labelGap - shiftedBounds.left, y: 0 }
+        ].map(correction => ({
+          ...correction,
+          distance: Math.hypot(correction.x, correction.y),
+          bounds: {
+            left: shiftedBounds.left + correction.x,
+            top: shiftedBounds.top + correction.y,
+            right: shiftedBounds.right + correction.x,
+            bottom: shiftedBounds.bottom + correction.y
+          }
+        })).filter(correction => withinAvatar(correction.bounds))
+          .sort((left, right) => left.distance - right.distance);
+        const correction = corrections[0];
+        if (!correction) return;
+        screenX += correction.x;
+        screenY += correction.y;
+        shiftedBounds.left = correction.bounds.left;
+        shiftedBounds.top = correction.bounds.top;
+        shiftedBounds.right = correction.bounds.right;
+        shiftedBounds.bottom = correction.bounds.bottom;
+      });
+    }
+
     if (Math.abs(screenX) >= .5 || Math.abs(screenY) >= .5) {
       const correction = screenDeltaToAccessorySpace(referencePiece, screenX, screenY);
       position = { x: position.x + correction.x, y: position.y + correction.y };
@@ -547,6 +601,30 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
     }
   }
   return position;
+}
+
+function constrainVisibleAccessories() {
+  accessoryIds.forEach(id => {
+    if (!activeWardrobe().has(id)) return;
+    accessoryWormParts.forEach(wormPart => {
+      const piece = visibleAccessoryPieces(id, wormPart)[0];
+      if (piece) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
+    });
+  });
+}
+
+function queueAccessoryConstraints(includeAnimationEnd = false) {
+  if (accessoryConstraintFrame) cancelAnimationFrame(accessoryConstraintFrame);
+  accessoryConstraintFrame = requestAnimationFrame(() => {
+    accessoryConstraintFrame = null;
+    constrainVisibleAccessories();
+  });
+  if (!includeAnimationEnd) return;
+  if (accessoryConstraintTimer) clearTimeout(accessoryConstraintTimer);
+  accessoryConstraintTimer = setTimeout(() => {
+    accessoryConstraintTimer = null;
+    constrainVisibleAccessories();
+  }, 280);
 }
 
 function accessoryWormName(wormPart) {
@@ -570,6 +648,7 @@ function resetAccessoryPosition(id, wormPart) {
   const position = { x: 0, y: 0 };
   activeAccessoryPositions().set(accessoryPositionKey(id, wormPart), position);
   applyAccessoryPosition(id, wormPart, position);
+  queueAccessoryConstraints(true);
   announceAccessory(t("accessoryReset", { accessory: accessoryName(id, wormPart) }));
 }
 
@@ -674,6 +753,7 @@ function toggleAccessory(id, force) {
   if (shouldShow) activeAccessories.add(id);
   else activeAccessories.delete(id);
   refreshAccessoryPieceControls();
+  if (shouldShow) queueAccessoryConstraints(true);
 }
 
 function syncAccessories() {
@@ -687,6 +767,7 @@ function syncAccessories() {
     button?.setAttribute("aria-pressed", String(shouldShow));
   });
   refreshAccessoryPieceControls();
+  queueAccessoryConstraints(true);
 }
 
 function refreshAccessoryPieceControls() {
@@ -750,6 +831,7 @@ const accessoryResizeObserver = new ResizeObserver(() => {
   accessoryResizeFrame = requestAnimationFrame(() => {
     accessoryResizeFrame = null;
     refreshAccessoryPieceControls();
+    constrainVisibleAccessories();
   });
 });
 accessoryResizeObserver.observe(els.wormAvatar);
@@ -780,6 +862,8 @@ function finishAccessoryDrag(event) {
   const { id, wormPart, piece, moved } = activeAccessoryDrag;
   if (piece.hasPointerCapture(event.pointerId)) piece.releasePointerCapture(event.pointerId);
   piece.classList.remove("is-dragging");
+  document.documentElement.classList.remove("accessory-drag-active");
+  moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
   activeAccessoryDrag = null;
 }
@@ -800,6 +884,7 @@ function wireAccessoryPieces() {
       piece.focus({ preventScroll: true });
       piece.setPointerCapture(event.pointerId);
       piece.classList.add("is-dragging");
+      document.documentElement.classList.add("accessory-drag-active");
       activeAccessoryDrag = {
         id,
         wormPart,
@@ -858,6 +943,9 @@ function wireAccessoryPieces() {
 
 window.addEventListener("pointerup", finishAccessoryDrag, true);
 window.addEventListener("pointercancel", finishAccessoryDrag, true);
+window.addEventListener("touchmove", event => {
+  if (activeAccessoryDrag) event.preventDefault();
+}, { capture: true, passive: false });
 
 function createMarker(record) {
   const item = byId.get(record.speciesId);

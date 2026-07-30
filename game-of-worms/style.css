@@ -1184,9 +1184,18 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 }
 .accessory[hidden] { display: none; }
 .accessory:not([hidden]) { animation: accessory-pop .24s cubic-bezier(.2,.8,.25,1.25); }
-.accessory:not([hidden]) .accessory-piece { cursor: grab; pointer-events: visiblePainted; touch-action: none; }
+.accessory:not([hidden]) .accessory-piece {
+  cursor: grab;
+  pointer-events: visiblePainted;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.accessory:not([hidden]) .accessory-piece * { touch-action: none; }
 .accessory-hit-target { fill: transparent; stroke: none; pointer-events: all; touch-action: none; }
 .accessory-piece.is-dragging { cursor: grabbing; }
+html.accessory-drag-active,
+html.accessory-drag-active body { overscroll-behavior: none; }
 .accessory-piece[tabindex="0"]:focus { outline: none; }
 .accessory-piece[tabindex="0"]:focus-visible { filter: drop-shadow(0 0 2px white) drop-shadow(0 0 5px var(--game-focus)); }
 .worm-avatar.is-drawing .accessory-piece { cursor: crosshair; }
