@@ -352,7 +352,7 @@ function pronounceScientificNames(value) {
     /\bC\.\s+(inopinata|elegans|briggsae|nigoni|tropicalis|wallacei)\b/gi,
     "Caenorhabditis $1"
   );
-  return expanded.replace(/\bCaenorhabditis\b/gi, "see no rab dye tiss");
+  return expanded.replace(/\bCaenorhabditis\b/gi, "see no rabdye tiss");
 }
 
 function pronounceStrainCodes(value) {
