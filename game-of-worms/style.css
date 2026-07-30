@@ -127,6 +127,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   text-align: right;
 }
 
+.map-section { margin-top: clamp(30px, 4vw, 44px); }
 .map-wrap {
   position: relative;
   min-height: 430px;
