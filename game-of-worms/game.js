@@ -359,6 +359,18 @@ function pronounceStrainCodes(value) {
   });
 }
 
+function placeNameWithoutStrain(place, fallback) {
+  const placeName = typeof place === "string" ? place : place?.name;
+  const strain = typeof place === "object" ? place?.strain : null;
+  if (!placeName || !strain) return placeName || fallback;
+  const escapedStrain = strain.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return placeName
+    .replace(new RegExp(`\\s*·\\s*${escapedStrain}\\b`, "i"), "")
+    .replace(new RegExp(`\\s+${escapedStrain}(?=\\s*,|$)`, "i"), "")
+    .replace(/\s+,/g, ",")
+    .trim();
+}
+
 function narrationSegments(item, place) {
   const placeName = typeof place === "string" ? place : place?.name;
   const fact = typeof place === "object" && place?.history ? place.history : item.fact;
@@ -505,7 +517,7 @@ function renderSpecies(item, place) {
   }, item.id, placeName);
   if (!accessoryDesign) throw new Error(`Missing accessory design for ${item.id}::${placeName}`);
   wireAccessoryPieces();
-  els.speciesRegion.textContent = placeName || item.region;
+  els.speciesRegion.textContent = placeNameWithoutStrain(place, item.region);
   italicText(els.speciesName, item.name);
   els.speciesNickname.textContent = item.nickname;
   scientificText(els.speciesIntro, item.intro);
