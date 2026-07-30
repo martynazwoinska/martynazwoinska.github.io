@@ -364,11 +364,18 @@ function pronounceStrainCodes(value) {
 function placeNameWithoutStrain(place, fallback) {
   const placeName = typeof place === "string" ? place : place?.name;
   const strain = typeof place === "object" ? place?.strain : null;
-  if (!placeName || !strain) return placeName || fallback;
-  const escapedStrain = strain.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  return placeName
-    .replace(new RegExp(`\\s*·\\s*${escapedStrain}\\b`, "i"), "")
-    .replace(new RegExp(`\\s+${escapedStrain}(?=\\s*,|$)`, "i"), "")
+  if (!placeName) return fallback;
+
+  let displayName = placeName;
+  if (strain) {
+    const escapedStrain = strain.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    displayName = displayName
+      .replace(new RegExp(`\\s*·\\s*${escapedStrain}\\b`, "i"), "")
+      .replace(new RegExp(`\\s+${escapedStrain}(?=\\s*,|$)`, "i"), "");
+  }
+
+  return displayName
+    .replace(/\s*·\s*[A-Z]{1,4}\d+(?:\.\d+)?\s*$/i, "")
     .replace(/\s+,/g, ",")
     .trim();
 }
