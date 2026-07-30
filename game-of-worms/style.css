@@ -1180,7 +1180,9 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .accessory-piece {
   --accessory-user-x: 0px;
   --accessory-user-y: 0px;
-  transform: translate(var(--accessory-user-x), var(--accessory-user-y));
+  --accessory-user-scale: 1;
+  transform: translate(var(--accessory-user-x), var(--accessory-user-y)) scale(var(--accessory-user-scale));
+  transform-box: fill-box;
   transform-origin: center;
 }
 .accessory[hidden] { display: none; }

@@ -455,8 +455,17 @@ function accessoryPositionKey(id, wormPart) {
   return `${id}::${wormPart}`;
 }
 
+function clampAccessoryScale(scale) {
+  return Math.min(1.6, Math.max(.6, Number.isFinite(scale) ? scale : 1));
+}
+
 function accessoryPosition(id, wormPart) {
-  return activeAccessoryPositions().get(accessoryPositionKey(id, wormPart)) || { x: 0, y: 0 };
+  const position = activeAccessoryPositions().get(accessoryPositionKey(id, wormPart));
+  return {
+    x: position?.x ?? 0,
+    y: position?.y ?? 0,
+    scale: clampAccessoryScale(position?.scale ?? 1)
+  };
 }
 
 function accessoryPieces(id, wormPart) {
@@ -469,6 +478,7 @@ function applyAccessoryPosition(id, wormPart, position = accessoryPosition(id, w
   accessoryPieces(id, wormPart).forEach(piece => {
     piece.style.setProperty("--accessory-user-x", `${position.x.toFixed(1)}px`);
     piece.style.setProperty("--accessory-user-y", `${position.y.toFixed(1)}px`);
+    piece.style.setProperty("--accessory-user-scale", String(clampAccessoryScale(position.scale)));
   });
 }
 
@@ -516,8 +526,13 @@ function screenDeltaToAccessorySpace(piece, x, y) {
 
 function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAccessoryPieces(id, wormPart)[0], avoidLabels = true) {
   if (!referencePiece) return desiredPosition;
-  let position = desiredPosition;
   const positionKey = accessoryPositionKey(id, wormPart);
+  const currentPosition = accessoryPosition(id, wormPart);
+  let position = {
+    x: desiredPosition.x,
+    y: desiredPosition.y,
+    scale: clampAccessoryScale(desiredPosition.scale ?? currentPosition.scale)
+  };
   activeAccessoryPositions().set(positionKey, position);
   applyAccessoryPosition(id, wormPart, position);
 
@@ -595,7 +610,7 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
 
     if (Math.abs(screenX) >= .5 || Math.abs(screenY) >= .5) {
       const correction = screenDeltaToAccessorySpace(referencePiece, screenX, screenY);
-      position = { x: position.x + correction.x, y: position.y + correction.y };
+      position = { ...position, x: position.x + correction.x, y: position.y + correction.y };
       activeAccessoryPositions().set(positionKey, position);
       applyAccessoryPosition(id, wormPart, position);
     }
@@ -667,7 +682,7 @@ function announceAccessory(message) {
 }
 
 function resetAccessoryPosition(id, wormPart) {
-  const position = { x: 0, y: 0 };
+  const position = { x: 0, y: 0, scale: 1 };
   activeAccessoryPositions().set(accessoryPositionKey(id, wormPart), position);
   applyAccessoryPosition(id, wormPart, position);
   queueAccessoryConstraints(true);
@@ -818,7 +833,7 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
       piece.setAttribute("aria-describedby", "accessory-move-hint");
-      piece.setAttribute("aria-keyshortcuts", "ArrowUp ArrowDown ArrowLeft ArrowRight Home");
+      piece.setAttribute("aria-keyshortcuts", "ArrowUp ArrowDown ArrowLeft ArrowRight + - Home");
       addAccessoryHitTarget(piece);
     });
   });
@@ -881,10 +896,20 @@ document.querySelectorAll("[data-accessory]").forEach(button => {
   button.addEventListener("click", () => toggleAccessory(button.dataset.accessory));
 });
 
+function captureAccessoryPointer(piece, pointerId) {
+  try {
+    piece.setPointerCapture(pointerId);
+  } catch {
+    // The gesture still works while the pointer remains over the accessory.
+  }
+}
+
 function finishAccessoryDrag(event) {
-  if (!activeAccessoryDrag || activeAccessoryDrag.pointerId !== event.pointerId) return;
-  const { id, wormPart, piece, moved } = activeAccessoryDrag;
-  if (piece.hasPointerCapture(event.pointerId)) piece.releasePointerCapture(event.pointerId);
+  if (!activeAccessoryDrag || !activeAccessoryDrag.pointers.has(event.pointerId)) return;
+  const { id, wormPart, piece, moved, pointers } = activeAccessoryDrag;
+  pointers.forEach((value, pointerId) => {
+    if (piece.hasPointerCapture(pointerId)) piece.releasePointerCapture(pointerId);
+  });
   piece.classList.remove("is-dragging");
   document.documentElement.classList.remove("accessory-drag-active");
   moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece, false);
@@ -902,18 +927,33 @@ function wireAccessoryPieces() {
     wiredAccessoryPieces.add(piece);
 
     piece.addEventListener("pointerdown", event => {
-      if (activeAccessoryDrag || drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
+      if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
+      if (activeAccessoryDrag) {
+        if (activeAccessoryDrag.piece !== piece || activeAccessoryDrag.pointers.size >= 2) return;
+        event.preventDefault();
+        event.stopPropagation();
+        captureAccessoryPointer(piece, event.pointerId);
+        activeAccessoryDrag.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+        const [first, second] = [...activeAccessoryDrag.pointers.values()];
+        activeAccessoryDrag.pinch = {
+          startDistance: Math.max(1, Math.hypot(second.x - first.x, second.y - first.y)),
+          startScale: accessoryPosition(id, wormPart).scale
+        };
+        return;
+      }
       event.preventDefault();
       event.stopPropagation();
       piece.focus({ preventScroll: true });
-      piece.setPointerCapture(event.pointerId);
+      captureAccessoryPointer(piece, event.pointerId);
       piece.classList.add("is-dragging");
       document.documentElement.classList.add("accessory-drag-active");
       activeAccessoryDrag = {
         id,
         wormPart,
         piece,
-        pointerId: event.pointerId,
+        primaryPointerId: event.pointerId,
+        pointers: new Map([[event.pointerId, { x: event.clientX, y: event.clientY }]]),
+        pinch: null,
         startPoint: accessoryPoint(event, piece),
         startPosition: accessoryPosition(id, wormPart),
         moved: false
@@ -921,16 +961,30 @@ function wireAccessoryPieces() {
     });
 
     piece.addEventListener("pointermove", event => {
-      if (!activeAccessoryDrag || activeAccessoryDrag.pointerId !== event.pointerId || activeAccessoryDrag.piece !== piece) return;
+      if (!activeAccessoryDrag || activeAccessoryDrag.piece !== piece || !activeAccessoryDrag.pointers.has(event.pointerId)) return;
       event.preventDefault();
       event.stopPropagation();
+      activeAccessoryDrag.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+      if (activeAccessoryDrag.pinch && activeAccessoryDrag.pointers.size === 2) {
+        const [first, second] = [...activeAccessoryDrag.pointers.values()];
+        const distance = Math.hypot(second.x - first.x, second.y - first.y);
+        if (Math.abs(distance - activeAccessoryDrag.pinch.startDistance) > 1) activeAccessoryDrag.moved = true;
+        const current = accessoryPosition(id, wormPart);
+        moveAccessory(id, wormPart, {
+          ...current,
+          scale: activeAccessoryDrag.pinch.startScale * distance / activeAccessoryDrag.pinch.startDistance
+        }, piece, false);
+        return;
+      }
+      if (activeAccessoryDrag.primaryPointerId !== event.pointerId) return;
       const point = accessoryPoint(event, piece);
       const deltaX = point.x - activeAccessoryDrag.startPoint.x;
       const deltaY = point.y - activeAccessoryDrag.startPoint.y;
       if (Math.hypot(deltaX, deltaY) > 1) activeAccessoryDrag.moved = true;
       moveAccessory(id, wormPart, {
         x: activeAccessoryDrag.startPosition.x + deltaX,
-        y: activeAccessoryDrag.startPosition.y + deltaY
+        y: activeAccessoryDrag.startPosition.y + deltaY,
+        scale: activeAccessoryDrag.startPosition.scale
       }, piece, false);
     });
 
@@ -939,6 +993,19 @@ function wireAccessoryPieces() {
       if (event.key === "Home") {
         event.preventDefault();
         resetAccessoryPosition(id, wormPart);
+        return;
+      }
+
+      const scaleDirection = ["+", "="].includes(event.key)
+        ? 1
+        : ["-", "_"].includes(event.key) ? -1 : 0;
+      if (scaleDirection) {
+        event.preventDefault();
+        const current = accessoryPosition(id, wormPart);
+        moveAccessory(id, wormPart, {
+          ...current,
+          scale: current.scale + scaleDirection * (event.shiftKey ? .2 : .1)
+        }, piece, false);
         return;
       }
 
@@ -954,7 +1021,8 @@ function wireAccessoryPieces() {
       const step = event.shiftKey ? 12 : 4;
       const position = moveAccessory(id, wormPart, {
         x: current.x + direction[0] * step,
-        y: current.y + direction[1] * step
+        y: current.y + direction[1] * step,
+        scale: current.scale
       }, piece, false);
       announceAccessory(t("accessoryPosition", {
         accessory: accessoryName(id, wormPart),
