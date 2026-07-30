@@ -812,7 +812,7 @@ function drawBristolScene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -829,7 +829,7 @@ function drawIshigakiScene(target, profile, sceneComposition) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -856,7 +856,7 @@ function drawAhmedabadScene(target, profile, sceneComposition) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -880,7 +880,7 @@ function drawTaipeiBRC20390Scene(target, profile, sceneComposition) {
     class: "taipei-brc20390-painted-background",
     href: "assets/taipei-brc20390-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -899,7 +899,7 @@ function drawKeralaJU1337Scene(target, profile, sceneComposition) {
     class: "kerala-ju1337-painted-background",
     href: "assets/kerala-ju1337-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -918,7 +918,7 @@ function drawKauaiQG130Scene(target, profile, sceneComposition) {
     class: "kauai-qg130-painted-background",
     href: "assets/kauai-qg130-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -937,7 +937,7 @@ function drawReunionJU1375Scene(target, profile, sceneComposition) {
     class: "reunion-ju1375-painted-background",
     href: "assets/reunion-ju1375-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -956,7 +956,7 @@ function drawOrsayJU2518Scene(target, profile, sceneComposition) {
     class: "orsay-ju2518-painted-background",
     href: "assets/orsay-ju2518-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -975,7 +975,7 @@ function drawDoisRiosEG5612Scene(target, profile, sceneComposition) {
     class: "dois-rios-eg5612-painted-background",
     href: "assets/dois-rios-eg5612-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -994,7 +994,7 @@ function drawNambuccaQG2814Scene(target, profile, sceneComposition) {
     class: "nambucca-qg2814-painted-background",
     href: "assets/nambucca-qg2814-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1016,7 +1016,7 @@ function drawBarroColoradoScene(target, profile, sceneComposition) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1038,7 +1038,7 @@ function drawSandaJU1873Scene(target, profile, sceneComposition) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1057,7 +1057,7 @@ function drawMahahualJU2617Scene(target, profile, sceneComposition) {
     class: "mahahual-ju2617-painted-background",
     href: "assets/mahahual-ju2617-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1076,7 +1076,7 @@ function drawMauritiusJU2909Scene(target, profile, sceneComposition) {
     class: "mauritius-ju2909-painted-background",
     href: "assets/mauritius-ju2909-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1095,7 +1095,7 @@ function drawHCMCJU4356Scene(target, profile, sceneComposition) {
     class: "hcmc-ju4356-painted-background",
     href: "assets/hcmc-ju4356-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1114,7 +1114,7 @@ function drawLombokHPT26Scene(target, profile, sceneComposition) {
     class: "lombok-hpt26-painted-background",
     href: "assets/lombok-hpt26-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1133,7 +1133,7 @@ function drawLaSelvaQG3845Scene(target, profile, sceneComposition) {
     class: "la-selva-qg3845-painted-background",
     href: "assets/la-selva-qg3845-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1151,7 +1151,7 @@ function drawGuadeloupeNIC203Scene(target, profile, sceneComposition) {
     class: "guadeloupe-nic203-painted-background",
     href: "assets/guadeloupe-nic203-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1169,7 +1169,7 @@ function drawOahuECA789Scene(target, profile, sceneComposition) {
     class: "oahu-eca789-painted-background",
     href: "assets/oahu-eca789-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1187,7 +1187,7 @@ function drawKauaiQG131SealodgeScene(target, profile, sceneComposition) {
     class: "kauai-qg131-painted-background",
     href: "assets/kauai-qg131-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1205,7 +1205,7 @@ function drawNewTaipeiNIC1648Scene(target, profile, sceneComposition) {
     class: "new-taipei-nic1648-painted-background",
     href: "assets/new-taipei-nic1648-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1226,7 +1226,7 @@ function drawSanteuilJU1925Scene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1243,7 +1243,7 @@ function drawTenerifeNIC1787Scene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1260,7 +1260,7 @@ function drawKauaiXZ1516Scene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1277,7 +1277,7 @@ function drawACTQG2811Scene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1294,7 +1294,7 @@ function drawAucklandECA36Scene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1311,7 +1311,7 @@ function drawAraucaniaJU4400Scene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1328,7 +1328,7 @@ function drawSingaporeZF1220Scene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1345,7 +1345,7 @@ function drawPraslinYR106Scene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1362,7 +1362,7 @@ function drawSaoTomeJU2484Scene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1379,7 +1379,7 @@ function drawPohnpeiQG4739PaintedScene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1396,7 +1396,7 @@ function drawQueenslandQG2904PaintedScene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1413,7 +1413,7 @@ function drawReunionJU1373PaintedScene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1430,7 +1430,7 @@ function drawNouraguesJU1428PaintedScene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1447,7 +1447,7 @@ function drawManausJU1976PaintedScene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1464,7 +1464,7 @@ function drawTrivandrumJU1325Scene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "none",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
@@ -1641,7 +1641,7 @@ function drawEdinburghScene(target, palette) {
     y: 0,
     width: 600,
     height: 430,
-    preserveAspectRatio: "xMidYMid meet",
+    preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
   });
   background.addEventListener("error", () => {
