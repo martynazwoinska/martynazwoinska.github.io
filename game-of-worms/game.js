@@ -361,6 +361,10 @@ function pronounceStrainCodes(value) {
   });
 }
 
+function pronounceAmbiguousWords(value) {
+  return value.replace(/\banother fig\.(?=\s|$)/gi, "another fig fruit.");
+}
+
 function placeNameWithoutStrain(place, fallback) {
   const placeName = typeof place === "string" ? place : place?.name;
   const strain = typeof place === "object" ? place?.strain : null;
@@ -394,7 +398,7 @@ function narrationSegments(item, place) {
     reproduction,
     `Habitat: ${item.habitat}.`,
     fact
-  ].map(segment => pronounceStrainCodes(pronounceScientificNames(segment)));
+  ].map(segment => pronounceAmbiguousWords(pronounceStrainCodes(pronounceScientificNames(segment))));
 }
 
 function startNarration() {
