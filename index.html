@@ -451,6 +451,59 @@
       .n2-preview__worm--primary, .n2-preview__worm--male { animation: none !important; }
     }
 
+    /* ----------  Wide-screen painted botanical frame  ---------- */
+    .botanical-frame { display: none; }
+    @media (min-width: 1680px) {
+      .botanical-frame {
+        display: block; position: absolute; z-index: 21;
+        inset: 0 0 auto; height: 1040px; overflow: hidden;
+        pointer-events: none; user-select: none;
+      }
+      .botanical-frame__piece {
+        position: absolute; display: block;
+        background-repeat: no-repeat; background-position: 0 0; background-size: 100% 100%;
+      }
+      .botanical-frame__upper-left {
+        top: -5px; left: -15px;
+        width: clamp(330px, calc((100vw - var(--maxw)) / 2 + 80px), 510px);
+        aspect-ratio: 47 / 56;
+        background-image: url("assets/botanical-frame/painted-botanical-upper-left-light.webp");
+      }
+      .botanical-frame__lower-left {
+        top: 520px; left: -8px;
+        width: clamp(320px, calc((100vw - var(--maxw)) / 2 + 32px), 396px);
+        aspect-ratio: 180 / 187;
+        background-image: url("assets/botanical-frame/painted-botanical-lower-left-light.webp");
+      }
+      .botanical-frame__lower-right {
+        top: 90px; right: -18px;
+        width: clamp(286px, calc((100vw - var(--maxw)) / 2 - 4px), 361px);
+        aspect-ratio: 51 / 129;
+        background-image: url("assets/botanical-frame/painted-botanical-lower-right-light.webp");
+      }
+      .hero-lower { display: none !important; }
+      html[data-theme="dark"] .botanical-frame__upper-left {
+        background-image: url("assets/botanical-frame/painted-botanical-upper-left-dark.webp");
+      }
+      html[data-theme="dark"] .botanical-frame__lower-left {
+        background-image: url("assets/botanical-frame/painted-botanical-lower-left-dark.webp");
+      }
+      html[data-theme="dark"] .botanical-frame__lower-right {
+        background-image: url("assets/botanical-frame/painted-botanical-lower-right-dark.webp");
+      }
+    }
+    @media (min-width: 1680px) and (prefers-color-scheme: dark) {
+      html:not([data-theme]) .botanical-frame__upper-left {
+        background-image: url("assets/botanical-frame/painted-botanical-upper-left-dark.webp");
+      }
+      html:not([data-theme]) .botanical-frame__lower-left {
+        background-image: url("assets/botanical-frame/painted-botanical-lower-left-dark.webp");
+      }
+      html:not([data-theme]) .botanical-frame__lower-right {
+        background-image: url("assets/botanical-frame/painted-botanical-lower-right-dark.webp");
+      }
+    }
+
     /* ----------  Hero  ---------- */
     .hero {
       position: relative; isolation: isolate; overflow: hidden;
@@ -1076,6 +1129,11 @@
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="botanical-frame" aria-hidden="true">
+    <span class="botanical-frame__piece botanical-frame__upper-left"></span>
+    <span class="botanical-frame__piece botanical-frame__lower-left"></span>
+    <span class="botanical-frame__piece botanical-frame__lower-right"></span>
+  </div>
   <!-- ============ NAV ============ -->
   <header class="nav">
     <div class="wrap nav-inner">
