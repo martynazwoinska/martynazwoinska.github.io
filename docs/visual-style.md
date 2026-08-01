@@ -4,7 +4,7 @@ This document formalises the visual language implemented through `shared/site-to
 
 ## Design direction
 
-The website combines a restrained Art Nouveau and Pre-Raphaelite influence with a clear academic presentation. Its paired Ivory Ink light theme and Deep Teal Ink dark theme share one visual hierarchy. Their character comes from:
+The website combines a restrained Art Nouveau and Pre-Raphaelite influence with a clear academic presentation. Its paired Ivory Ink light theme and Petrol Ink dark theme share one visual hierarchy. Their character comes from:
 
 - emerald as the principal accent;
 - antique gold, muted berry and muted violet as limited secondary accents;
@@ -21,25 +21,25 @@ Use the prefixed CSS custom properties rather than copying hex values into compo
 
 | Token | Light theme | Dark theme | Intended use |
 | --- | --- | --- | --- |
-| `--site-bg` | `#faf8f2` | `#0f4747` | Warm ivory or saturated deep-teal page background |
-| `--site-surface` | `#fffdfa` | `#175754` | Primary cards, panels and dialogs |
-| `--site-surface-muted` | `#eeece4` | `#22645e` | Secondary surfaces, quiet controls and inset areas |
+| `--site-bg` | `#faf8f2` | `#104a52` | Warm ivory or balanced petrol-teal page background |
+| `--site-surface` | `#fffdfa` | `#185b61` | Primary cards, panels and dialogs |
+| `--site-surface-muted` | `#eeece4` | `#246a6d` | Secondary surfaces, quiet controls and inset areas |
 | `--site-text` | `#20313d` | `#f5f3ea` | Primary text and headings |
-| `--site-text-soft` | `#53636c` | `#cad9d3` | Supporting body text and secondary labels |
-| `--site-text-faint` | `#647178` | `#a9c3ba` | Tertiary metadata and small supporting text with WCAG AA contrast |
+| `--site-text-soft` | `#53636c` | `#cad8d6` | Supporting body text and secondary labels |
+| `--site-text-faint` | `#647178` | `#b6caca` | Tertiary metadata and small supporting text with WCAG AA contrast |
 | `--site-brand-emerald` | `#1f735f` | `#79dec2` | Emerald primary accent, links, active states and structural emphasis |
-| `--site-brand-emerald-soft` | `#dcebe5` | `#154940` | Quiet emerald backgrounds and selected-state fills |
-| `--site-brand-berry` | `#8b3d5c` | `#f0a0ad` | Oxblood or berry secondary accent |
+| `--site-brand-emerald-soft` | `#dcebe5` | `#164b4d` | Quiet emerald backgrounds and selected-state fills |
+| `--site-brand-berry` | `#8b3d5c` | `#e9a0bd` | Oxblood or plum-berry secondary accent |
 | `--site-brand-gold` | `#a88445` | `#d7b96f` | Antique-gold fine borders, markers and restrained highlights |
 | `--site-brand-violet` | `#6f5878` | `#c4b2dd` | Muted violet for limited botanical or categorical detail |
-| `--site-nav-bg` | `#faf8f2` | `#0f4747` | Navigation merged into the page field rather than shown as a separate colour slab |
+| `--site-nav-bg` | `#faf8f2` | `#104a52` | Navigation merged into the page field rather than shown as a separate colour slab |
 | `--site-nav-border` | `#c8ad78` | `#987d49` | Fine antique-gold hairline below and within the sticky navigation |
 | `--site-nav-accent` | `#1b6d59` | `#8be4c8` | Accessible emerald cue within the navigation |
-| `--site-border` | `#ddd9cf` | `#3a7770` | Neutral borders and dividers |
-| `--site-focus` | `#8b3d5c` | `#f2a2ae` | Focus outline for controls on the paired site themes |
-| `--site-shadow` | `0 1px 2px rgba(27,43,50,.06), 0 10px 28px rgba(27,43,50,.07)` | `0 1px 2px rgba(2,21,20,.34), 0 12px 32px rgba(2,18,17,.28)` | Standard restrained elevation |
+| `--site-border` | `#ddd9cf` | `#3a7477` | Neutral borders and dividers |
+| `--site-focus` | `#8b3d5c` | `#efa5c3` | Focus outline for controls on the paired site themes |
+| `--site-shadow` | `0 1px 2px rgba(27,43,50,.06), 0 10px 28px rgba(27,43,50,.07)` | `0 1px 2px rgba(2,22,28,.34), 0 12px 32px rgba(2,19,25,.28)` | Standard restrained elevation |
 
-Deep Teal Ink is the first-visit default when no theme preference has been stored. A visitor’s explicit light or dark choice is retained for later visits. The explicit `data-theme="light"` theme restores the unchanged Ivory Ink values.
+Petrol Ink is the first-visit default when no theme preference has been stored. A visitor’s explicit light or dark choice is retained for later visits. The explicit `data-theme="light"` theme restores the unchanged Ivory Ink values.
 
 The Game of Worms is an intentional scoped exception: it uses one fixed light, playful scientific palette and does not consume the website theme preference. Navigating from either homepage theme must not alter the Game.
 
@@ -88,7 +88,7 @@ The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour
 
 - Use `--display` for major headings and decorative plaques.
 - Use `--sans` for body copy, navigation, controls and metadata.
-- Display headings and identity text use the approved Cormorant Garamond 700 with a subtle theme-aware current-colour optical stroke (`.24px` in Ivory Ink and `.14px` in Deep Teal Ink). The homepage hero statement uses a stronger `.52px` light / `.34px` dark optical stroke. On narrow screens, the full name uses a dedicated `.5px` Ivory Ink / `.32px` Deep Teal Ink stroke so that the light version retains equal authority without making the dark version heavy. Keep expertise, navigation, body copy, controls and metadata in the sans-serif stack. Do not replace the real 700 files with a synthetic 800 weight.
+- Display headings and identity text use the approved Cormorant Garamond 700 with a subtle theme-aware current-colour optical stroke (`.24px` in Ivory Ink and `.14px` in Petrol Ink). The homepage hero statement uses a stronger `.52px` light / `.34px` dark optical stroke. On narrow screens, the full name uses a dedicated `.5px` Ivory Ink / `.32px` Petrol Ink stroke so that the light version retains equal authority without making the dark version heavy. Keep expertise, navigation, body copy, controls and metadata in the sans-serif stack. Do not replace the real 700 files with a synthetic 800 weight.
 - Keep asymmetric rounded corners soft rather than exaggerated.
 - Use botanical curves, seed-pod forms and worm-like lines as small accents.
 - Full-section floral dividers use reinforced gold and emerald stems with theme-aware contrast, while their berry terminals and geometry stay delicate. On phones, preserve the approved footprint and dimensions; reinforce only the compressed edges with a subtle same-colour treatment rather than lengthening or enlarging the ornament. Internal subsection and list rules remain visibly quieter.

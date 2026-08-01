@@ -66,44 +66,44 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --site-bg: #0f4747;
-    --site-surface: #175754;
-    --site-surface-muted: #22645e;
+    --site-bg: #104a52;
+    --site-surface: #185b61;
+    --site-surface-muted: #246a6d;
     --site-text: #f5f3ea;
-    --site-text-soft: #cad9d3;
-    --site-text-faint: #a9c3ba;
+    --site-text-soft: #cad8d6;
+    --site-text-faint: #b6caca;
     --site-brand-emerald: #79dec2;
-    --site-brand-emerald-soft: #154940;
-    --site-brand-berry: #f0a0ad;
+    --site-brand-emerald-soft: #164b4d;
+    --site-brand-berry: #e9a0bd;
     --site-brand-gold: #d7b96f;
     --site-brand-violet: #c4b2dd;
-    --site-nav-bg: #0f4747;
+    --site-nav-bg: #104a52;
     --site-nav-border: #987d49;
     --site-nav-accent: #8be4c8;
-    --site-border: #3a7770;
-    --site-focus: #f2a2ae;
-    --site-shadow: 0 1px 2px rgba(2, 21, 20, .34), 0 12px 32px rgba(2, 18, 17, .28);
+    --site-border: #3a7477;
+    --site-focus: #efa5c3;
+    --site-shadow: 0 1px 2px rgba(2, 22, 28, .34), 0 12px 32px rgba(2, 19, 25, .28);
   }
 }
 
 :root[data-theme='dark'] {
-  --site-bg: #0f4747;
-  --site-surface: #175754;
-  --site-surface-muted: #22645e;
+  --site-bg: #104a52;
+  --site-surface: #185b61;
+  --site-surface-muted: #246a6d;
   --site-text: #f5f3ea;
-  --site-text-soft: #cad9d3;
-  --site-text-faint: #a9c3ba;
+  --site-text-soft: #cad8d6;
+  --site-text-faint: #b6caca;
   --site-brand-emerald: #79dec2;
-  --site-brand-emerald-soft: #154940;
-  --site-brand-berry: #f0a0ad;
+  --site-brand-emerald-soft: #164b4d;
+  --site-brand-berry: #e9a0bd;
   --site-brand-gold: #d7b96f;
   --site-brand-violet: #c4b2dd;
-  --site-nav-bg: #0f4747;
+  --site-nav-bg: #104a52;
   --site-nav-border: #987d49;
   --site-nav-accent: #8be4c8;
-  --site-border: #3a7770;
-  --site-focus: #f2a2ae;
-  --site-shadow: 0 1px 2px rgba(2, 21, 20, .34), 0 12px 32px rgba(2, 18, 17, .28);
+  --site-border: #3a7477;
+  --site-focus: #efa5c3;
+  --site-shadow: 0 1px 2px rgba(2, 22, 28, .34), 0 12px 32px rgba(2, 19, 25, .28);
 }
 
 :root[data-theme='light'] {
