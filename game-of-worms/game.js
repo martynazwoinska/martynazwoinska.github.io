@@ -282,9 +282,8 @@ const els = {
   accessoryStatus: document.getElementById("accessory-status"),
   accessorySizeControls: document.getElementById("accessory-size-controls"),
   accessorySizeTarget: document.getElementById("accessory-size-target"),
-  accessorySizeDecrease: document.getElementById("accessory-size-decrease"),
+  accessorySizeSlider: document.getElementById("accessory-size-slider"),
   accessorySizeReset: document.getElementById("accessory-size-reset"),
-  accessorySizeIncrease: document.getElementById("accessory-size-increase"),
   accessorySizeValue: document.getElementById("accessory-size-value")
 };
 
@@ -932,10 +931,13 @@ function updateAccessorySizeControls() {
   const percentage = Math.round(position.scale * 100);
   els.accessorySizeControls.hidden = false;
   els.accessorySizeTarget.textContent = accessoryName(target.id, target.wormPart);
+  els.accessorySizeSlider.value = String(percentage);
+  els.accessorySizeSlider.setAttribute("aria-valuetext", `${percentage}%`);
+  const sliderRange = accessoryScaleMax - accessoryScaleMin;
+  const sliderProgress = sliderRange ? (position.scale - accessoryScaleMin) / sliderRange * 100 : 0;
+  els.accessorySizeSlider.style.setProperty("--accessory-size-progress", `${sliderProgress.toFixed(2)}%`);
   els.accessorySizeValue.value = `${percentage}%`;
-  els.accessorySizeDecrease.disabled = position.scale <= accessoryScaleMin;
   els.accessorySizeReset.disabled = Math.abs(position.scale - 1) < .01;
-  els.accessorySizeIncrease.disabled = position.scale >= accessoryScaleMax;
 }
 
 function selectAccessoryForSizing(id, wormPart) {
@@ -961,16 +963,22 @@ function selectAvailableAccessoryForSizing(preferredId) {
   }
 }
 
-function resizeSelectedAccessory(scaleChange) {
+function setSelectedAccessoryScale(scale) {
   const target = selectedAccessorySizeTarget;
   if (!target) return;
   const piece = visibleAccessoryPieces(target.id, target.wormPart)[0];
   if (!piece) return;
   const current = accessoryPosition(target.id, target.wormPart);
-  const position = moveAccessory(target.id, target.wormPart, {
+  moveAccessory(target.id, target.wormPart, {
     ...current,
-    scale: current.scale + scaleChange
+    scale
   }, piece, false);
+}
+
+function announceSelectedAccessorySize() {
+  const target = selectedAccessorySizeTarget;
+  if (!target) return;
+  const position = accessoryPosition(target.id, target.wormPart);
   announceAccessory(t("accessorySizeChanged", {
     accessory: accessoryName(target.id, target.wormPart),
     size: Math.round(position.scale * 100)
@@ -987,9 +995,11 @@ function resetSelectedAccessorySize() {
   announceAccessory(t("accessorySizeReset", { accessory: accessoryName(target.id, target.wormPart) }));
 }
 
-els.accessorySizeDecrease.addEventListener("click", () => resizeSelectedAccessory(-.1));
+els.accessorySizeSlider.addEventListener("input", event => {
+  setSelectedAccessoryScale(Number(event.currentTarget.value) / 100);
+});
+els.accessorySizeSlider.addEventListener("change", announceSelectedAccessorySize);
 els.accessorySizeReset.addEventListener("click", resetSelectedAccessorySize);
-els.accessorySizeIncrease.addEventListener("click", () => resizeSelectedAccessory(.1));
 
 function announceAccessory(message) {
   els.accessoryStatus.textContent = "";
