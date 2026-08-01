@@ -4,7 +4,7 @@ import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries
 import { createGameTranslator } from "./game-i18n.js?v=20260730-4";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260728-22";
-import { speciesGalleries } from "./species-gallery.js?v=20260801-1";
+import { speciesGalleries } from "./species-gallery.js?v=20260801-2";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -273,7 +273,6 @@ const els = {
   galleryTitle: document.getElementById("species-gallery-title"),
   galleryDescription: document.getElementById("species-gallery-description"),
   galleryImages: document.getElementById("species-gallery-images"),
-  gallerySourceNote: document.getElementById("species-gallery-source-note"),
   gallerySource: document.getElementById("species-gallery-source"),
   galleryLicence: document.getElementById("species-gallery-licence"),
   exploredCount: document.getElementById("explored-count"),
@@ -323,29 +322,39 @@ function renderSpeciesGallery(item) {
   els.galleryImages.replaceChildren();
   gallery.images.forEach(image => {
     const figure = document.createElement("figure");
+    const imageFrame = document.createElement("div");
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
     const sourceImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
+    const tooltip = document.createElement("span");
     const [x, y, width, height] = image.viewBox;
     figure.style.setProperty("--gallery-card-width", `${image.maxWidth}px`);
+    imageFrame.className = "whole-worm-view-frame";
+    imageFrame.setAttribute("role", "img");
+    imageFrame.setAttribute("tabindex", "0");
+    imageFrame.setAttribute("aria-label", image.alt);
     svg.classList.add("whole-worm-view");
+    if (image.palePadding) svg.classList.add("whole-worm-view--pale-padding");
     svg.setAttribute("viewBox", `${x} ${y} ${width} ${height}`);
     svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
-    svg.setAttribute("role", "img");
-    title.textContent = image.alt;
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("focusable", "false");
     sourceImage.setAttribute("href", image.src);
     sourceImage.setAttribute("width", String(image.sourceWidth));
     sourceImage.setAttribute("height", String(image.sourceHeight));
     sourceImage.setAttribute("preserveAspectRatio", "none");
-    svg.append(title, sourceImage);
+    svg.append(sourceImage);
+    imageFrame.append(svg);
+    tooltip.className = "species-gallery-image-tooltip";
+    tooltip.setAttribute("role", "tooltip");
+    tooltip.setAttribute("aria-hidden", "true");
+    scientificText(tooltip, image.alt);
     const caption = document.createElement("figcaption");
     caption.textContent = image.caption;
-    figure.append(svg, caption);
+    figure.append(imageFrame, tooltip, caption);
     els.galleryImages.appendChild(figure);
   });
 
-  els.gallerySourceNote.textContent = `${gallery.source.note} `;
-  els.gallerySource.textContent = gallery.source.label;
+  scientificText(els.gallerySource, gallery.source.label);
   els.gallerySource.href = gallery.source.url;
   els.galleryLicence.textContent = gallery.source.licence.label;
   els.galleryLicence.href = gallery.source.licence.url;
@@ -439,27 +448,7 @@ function pronounceAmbiguousWords(value) {
   return value.replace(/\banother fig\.(?=\s|$)/gi, "another fig fruit.");
 }
 
-function placeNameWithoutStrain(place, fallback) {
-  const placeName = typeof place === "string" ? place : place?.name;
-  const strain = typeof place === "object" ? place?.strain : null;
-  if (!placeName) return fallback;
-
-  let displayName = placeName;
-  if (strain) {
-    const escapedStrain = strain.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    displayName = displayName
-      .replace(new RegExp(`\\s*·\\s*${escapedStrain}\\b`, "i"), "")
-      .replace(new RegExp(`\\s+${escapedStrain}(?=\\s*,|$)`, "i"), "");
-  }
-
-  return displayName
-    .replace(/\s*·\s*[A-Z]{1,4}\d+(?:\.\d+)?\s*$/i, "")
-    .replace(/\s+,/g, ",")
-    .trim();
-}
-
 function narrationSegments(item, place) {
-  const placeName = placeNameWithoutStrain(place, item.region);
   const fact = typeof place === "object" && place?.history ? place.history : item.fact;
   const reproduction = item.reproduction === "selfing"
     ? "This species is predominantly self-fertilising: populations consist mainly of self-fertilising hermaphrodites, with rare males."
@@ -470,7 +459,6 @@ function narrationSegments(item, place) {
     item.intro,
     reproduction,
     `Habitat: ${item.habitat}.`,
-    `This illustrated record is from ${placeName}.`,
     fact
   ].map(segment => pronounceAmbiguousWords(pronounceStrainCodes(pronounceScientificNames(segment))));
 }
