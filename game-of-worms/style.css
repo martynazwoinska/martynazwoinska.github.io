@@ -2972,9 +2972,13 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .dress-buttons .freestyle-button[aria-pressed="true"] { background: var(--violet); border-color: var(--violet); color: white; }
 .accessory-size-controls {
   display: none;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "caption target reset"
+    "slider slider value";
   align-items: center;
-  flex-wrap: wrap;
-  gap: 9px;
+  column-gap: 10px;
+  row-gap: 3px;
   width: min(100%, 650px);
   box-sizing: border-box;
   max-width: 100%;
@@ -2987,6 +2991,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 }
 .accessory-size-controls[hidden] { display: none; }
 .accessory-size-caption {
+  grid-area: caption;
   color: var(--teal-dark);
   font-size: .72rem;
   font-weight: 900;
@@ -2994,18 +2999,71 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   text-transform: uppercase;
 }
 .accessory-size-controls > strong {
-  flex: 1 1 190px;
-  min-width: 120px;
-  max-width: 280px;
+  grid-area: target;
+  min-width: 0;
   overflow: hidden;
   font-size: .8rem;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.accessory-size-buttons { display: flex; gap: 4px; }
-.accessory-size-buttons button {
-  min-width: 36px;
-  min-height: 36px;
+.accessory-size-slider {
+  --accessory-size-progress: 28.57%;
+  grid-area: slider;
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  margin: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  accent-color: var(--teal-dark);
+}
+.accessory-size-slider::-webkit-slider-runnable-track {
+  height: 8px;
+  border: 1px solid color-mix(in srgb, var(--teal) 38%, var(--line));
+  border-radius: 999px;
+  background: linear-gradient(to right,
+    var(--teal-dark) 0 var(--accessory-size-progress),
+    color-mix(in srgb, var(--teal) 12%, var(--paper-strong)) var(--accessory-size-progress) 100%);
+}
+.accessory-size-slider::-webkit-slider-thumb {
+  width: 24px;
+  height: 24px;
+  margin-top: -9px;
+  appearance: none;
+  border: 3px solid var(--paper-strong);
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 1px var(--teal-dark), 0 3px 7px rgba(23,51,61,.22);
+}
+.accessory-size-slider::-moz-range-track {
+  height: 8px;
+  border: 1px solid color-mix(in srgb, var(--teal) 38%, var(--line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--teal) 12%, var(--paper-strong));
+}
+.accessory-size-slider::-moz-range-progress {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--teal-dark);
+}
+.accessory-size-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--paper-strong);
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 1px var(--teal-dark), 0 3px 7px rgba(23,51,61,.22);
+}
+.accessory-size-slider:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--gold) 78%, white);
+  outline-offset: 2px;
+  border-radius: 999px;
+}
+.accessory-size-reset {
+  grid-area: reset;
+  min-width: 56px;
+  min-height: 44px;
   border: 1px solid var(--line);
   border-radius: 11px;
   padding: 4px 9px;
@@ -3014,11 +3072,11 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   cursor: pointer;
   font-weight: 900;
 }
-.accessory-size-buttons button:hover:not(:disabled) { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 9%, white); }
-.accessory-size-buttons button:disabled { cursor: default; opacity: .42; }
-.accessory-size-controls output { min-width: 38px; color: var(--ink-soft); font-size: .76rem; font-weight: 800; text-align: right; }
+.accessory-size-reset:hover:not(:disabled) { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 9%, white); }
+.accessory-size-reset:disabled { cursor: default; opacity: .42; }
+.accessory-size-controls output { grid-area: value; min-width: 38px; color: var(--ink-soft); font-size: .76rem; font-weight: 800; text-align: right; }
 @media (min-width: 681px) and (hover: hover) and (pointer: fine) {
-  .accessory-size-controls:not([hidden]) { display: flex; }
+  .accessory-size-controls:not([hidden]) { display: grid; }
 }
 .draw-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; padding: 10px 12px; border-radius: 16px; background: rgba(117,103,184,.09); }
 .draw-tools[hidden] { display: none; }
