@@ -3150,14 +3150,6 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 }
 .species-gallery-close:hover { border-color: var(--teal); color: var(--teal-dark); }
 .species-gallery-close:focus-visible { outline: 3px solid color-mix(in srgb, var(--gold) 80%, white); outline-offset: 3px; }
-.species-gallery-kicker {
-  margin: 0 56px 7px 0;
-  color: var(--teal);
-  font-size: .78rem;
-  font-weight: 900;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
 .species-gallery-dialog h2 {
   margin: 0;
   padding-right: 54px;
@@ -3166,7 +3158,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   line-height: 1;
   letter-spacing: -.035em;
 }
-.species-gallery-description { max-width: 68ch; margin: 13px 0 0; color: var(--ink-soft); }
+.species-gallery-description { width: 100%; margin: 13px 0 0; color: var(--ink-soft); }
 .species-gallery-images {
   display: grid;
   grid-template-columns: minmax(0, 680px);
@@ -3175,7 +3167,10 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   margin-top: 26px;
 }
 .species-gallery-images figure {
-  position: relative;
+  display: grid;
+  grid-template-areas:
+    "image"
+    "meta";
   min-width: 0;
   width: min(100%, var(--gallery-card-width, 680px));
   justify-self: center;
@@ -3185,6 +3180,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   border-radius: 18px;
   background: color-mix(in srgb, var(--paper) 90%, var(--teal));
 }
+.whole-worm-view-frame { grid-area: image; }
 .species-gallery-images .whole-worm-view {
   display: block;
   width: 100%;
@@ -3199,32 +3195,26 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 }
 
 .species-gallery-image-tooltip {
-  position: absolute;
-  z-index: 2;
-  right: 12px;
-  bottom: 50px;
-  left: 12px;
-  padding: 8px 10px;
-  border: 1px solid color-mix(in srgb, var(--teal) 34%, var(--line));
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--paper-strong) 95%, transparent);
-  box-shadow: 0 7px 18px rgba(23,51,61,.16);
+  grid-area: meta;
+  align-self: stretch;
+  padding: 11px 13px 13px;
   color: var(--ink);
   font-size: .78rem;
   line-height: 1.35;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(4px);
-  transition: opacity .14s ease, transform .14s ease, visibility .14s ease;
+  transition: opacity .14s ease, visibility .14s ease;
 }
 
 .species-gallery-images figure:hover .species-gallery-image-tooltip,
 .species-gallery-images figure:focus-within .species-gallery-image-tooltip {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
 }
+
+.species-gallery-images figure:hover figcaption,
+.species-gallery-images figure:focus-within figcaption { opacity: 0; }
 
 .whole-worm-view-frame:focus-visible {
   outline: 3px solid color-mix(in srgb, var(--gold) 82%, white);
@@ -3235,10 +3225,12 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .species-gallery-credit i { font-style: italic; }
 
 .species-gallery-images figcaption {
+  grid-area: meta;
   padding: 11px 13px 13px;
   color: var(--ink-soft);
   font-size: .86rem;
   font-weight: 800;
+  transition: opacity .14s ease;
 }
 .species-gallery-credit {
   margin: 18px 0 0;
