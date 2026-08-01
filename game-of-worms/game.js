@@ -4,6 +4,7 @@ import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries
 import { createGameTranslator } from "./game-i18n.js?v=20260730-4";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260728-22";
+import { speciesGalleries } from "./species-gallery.js?v=20260801-1";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -29,7 +30,7 @@ const species = [
     habitatOne: "#f8c98b",
     habitatTwo: "#e98f7a",
     locations: [
-      { name: "Ishigaki, Japan", coordinates: [124.16, 24.34], style: "okinawa", history: "C. inopinata lives in fresh, pollinated figs rather than rotting fruit. Dauer larvae leave mature figs with emerging pollinating wasps, which can carry them to another fig. Its discovery was so unexpected that its name means “surprising”." }
+      { name: "Ishigaki, Japan", sceneLabel: "Fresh fig · Ishigaki · Japan", coordinates: [124.16, 24.34], style: "okinawa", history: "C. inopinata lives in fresh, pollinated figs rather than rotting fruit. Dauer larvae leave mature figs with emerging pollinating wasps, which can carry them to another fig. Its discovery was so unexpected that its name means “surprising”." }
     ]
   },
   {
@@ -53,14 +54,14 @@ const species = [
     habitatOne: "#8ed0ad",
     habitatTwo: "#59a6a0",
     locations: [
-      { name: "Ahmedabad, India · AF16", coordinates: [72.56, 23.03], source: "CaeNDR", style: "field", history: "AF16 came from soil in Ahmedabad—but the entire surviving habitat description is simply “soil”. Its precise city microhabitat remains unknown." },
-      { name: "Taipei, Taiwan · BRC20390", coordinates: [121.576542, 25.027105], source: "CaeNDR BRC20390 isotype record", style: "rainforest", strain: "BRC20390", history: "A Taipei forest site yielded eleven C. briggsae strains belonging to one isotype. Surviving photographs show dark sample fragments, but not enough detail to identify what the worms inhabited." },
-      { name: "Kerala, India · JU1337", coordinates: [77.075, 8.32], source: "CaeNDR JU1337 isotype record", style: "rainforest", strain: "JU1337", history: "This worm came from rotting plant material on agricultural land near Poovar, Kerala. The source plant was never identified." },
-      { name: "Kauaʻi, Hawaiʻi · QG130", coordinates: [-159.5829, 22.2202], source: "CaeNDR QG130 isotype record", style: "kauai", strain: "QG130", history: "Three closely related C. briggsae strains were recovered from rotting plant material in low-elevation Kauaʻi forest." },
-      { name: "Réunion Island · JU1375", coordinates: [55.6885, -21.0469], source: "CaeNDR JU1375 isotype record", style: "ocean", strain: "JU1375", history: "C. briggsae is usually associated with decaying plant material, but this isolate was collected from a mollusc on agricultural land in Réunion." },
-      { name: "Orsay, France · JU2518", coordinates: [2.1725, 48.7015], source: "CaeNDR JU2518 isotype record", style: "field", strain: "JU2518", history: "This worm came from a rotten apple in a rural garden in Orsay, where Santeuil virus was also recorded in the sample." },
-      { name: "Dois Rios, Ilha Grande, Brazil · EG5612", coordinates: [-44.19, -23.18], source: "CaeNDR EG5612 isotype record", style: "rainforest", strain: "EG5612", history: "A rotten jackfruit in Ilha Grande forest yielded many worms, but this laboratory line began from a single L4 larva. Test crosses confirmed that it was C. briggsae." },
-      { name: "Nambucca Heads, New South Wales · QG2814", coordinates: [153.0090333, -30.6445167], source: "CaeNDR QG2814 isotype record", style: "rainforest", strain: "QG2814", history: "Two C. briggsae strains emerged from the same sample of rotting flowers in a rainforest garden. The reference line began from a single L4 larva five days later." }
+      { name: "Ahmedabad, India · AF16", sceneLabel: "Soil · Ahmedabad · India", coordinates: [72.56, 23.03], source: "CaeNDR", style: "field", history: "AF16 came from soil in Ahmedabad—but the entire surviving habitat description is simply “soil”. Its precise city microhabitat remains unknown." },
+      { name: "Taipei, Taiwan · BRC20390", sceneLabel: "Forest sample · Taipei · Taiwan", coordinates: [121.576542, 25.027105], source: "CaeNDR BRC20390 isotype record", style: "rainforest", strain: "BRC20390", history: "A Taipei forest site yielded eleven C. briggsae strains belonging to one isotype. Surviving photographs show dark sample fragments, but not enough detail to identify what the worms inhabited." },
+      { name: "Kerala, India · JU1337", sceneLabel: "Rotting plants · Kerala · India", coordinates: [77.075, 8.32], source: "CaeNDR JU1337 isotype record", style: "rainforest", strain: "JU1337", history: "This worm came from rotting plant material on agricultural land near Poovar, Kerala. The source plant was never identified." },
+      { name: "Kauaʻi, Hawaiʻi · QG130", sceneLabel: "Rotting plants · Kauaʻi · United States", coordinates: [-159.5829, 22.2202], source: "CaeNDR QG130 isotype record", style: "kauai", strain: "QG130", history: "Three closely related C. briggsae strains were recovered from rotting plant material in low-elevation Kauaʻi forest." },
+      { name: "Réunion Island · JU1375", sceneLabel: "Farmland mollusc · Réunion · France", coordinates: [55.6885, -21.0469], source: "CaeNDR JU1375 isotype record", style: "ocean", strain: "JU1375", history: "C. briggsae is usually associated with decaying plant material, but this isolate was collected from a mollusc on agricultural land in Réunion." },
+      { name: "Orsay, France · JU2518", sceneLabel: "Rotten apple · Orsay · France", coordinates: [2.1725, 48.7015], source: "CaeNDR JU2518 isotype record", style: "field", strain: "JU2518", history: "This worm came from a rotten apple in a rural garden in Orsay, where Santeuil virus was also recorded in the sample." },
+      { name: "Dois Rios, Ilha Grande, Brazil · EG5612", sceneLabel: "Rotten jackfruit · Ilha Grande · Brazil", coordinates: [-44.19, -23.18], source: "CaeNDR EG5612 isotype record", style: "rainforest", strain: "EG5612", history: "A rotten jackfruit in Ilha Grande forest yielded many worms, but this laboratory line began from a single L4 larva. Test crosses confirmed that it was C. briggsae." },
+      { name: "Nambucca Heads, New South Wales · QG2814", sceneLabel: "Rotting flowers · Nambucca Heads · Australia", coordinates: [153.0090333, -30.6445167], source: "CaeNDR QG2814 isotype record", style: "rainforest", strain: "QG2814", history: "Two C. briggsae strains emerged from the same sample of rotting flowers in a rainforest garden. The reference line began from a single L4 larva five days later." }
     ]
   },
   {
@@ -84,14 +85,14 @@ const species = [
     habitatOne: "#d7b96d",
     habitatTwo: "#8ba56f",
     locations: [
-      { name: "Bristol N2, England", coordinates: [-2.59, 51.45], source: "CaeNDR", style: "field", strain: "N2", history: "N2 came from mushroom compost near Bristol. C. elegans can be frozen alive in a protective solution and revived after thawing. This is the reason for its cryo-vial jetpack. An early N2 tube frozen around 1968 was later thawed to establish an ancestral laboratory stock." },
-      { name: "Santeuil, France", coordinates: [1.951, 49.121], source: "CaeNDR", style: "field", strain: "JU1925", history: "Across three October surveys, C. elegans was found on about half of 88 rotting stems in Santeuil wood—but only occasionally in the surrounding soil." },
-      { name: "Edinburgh, Scotland", coordinates: [-3.19, 55.92], source: "CaeNDR", style: "field", strain: "ED3010", history: "Edinburgh’s marker represents twelve C. elegans strains from four different isotypes—all recovered from compost in the same urban allotment." },
-      { name: "Tenerife, Spain", coordinates: [-16.535468, 28.411121], source: "CaeNDR", style: "field", strain: "NIC1787", history: "A single day’s sampling in Puerto de la Cruz botanical garden produced 23 C. elegans records from rotting avocado, other fruits, flowers, stems and plant litter." },
-      { name: "Kauaʻi, Hawaiʻi", coordinates: [-159.668, 22.149], source: "CaeNDR", style: "kauai", strain: "XZ1516", history: "This high-elevation Kauaʻi isolate came from rotting plant material and belongs to one of the island’s exceptionally divergent C. elegans lineages." },
-      { name: "Australian Capital Territory", coordinates: [149.115, -35.254], source: "CaeNDR", style: "field", strain: "QG2811", history: "Rotting figs collected from an O’Connor backyard yielded a hermaphrodite through a Baermann funnel eleven days later." },
-      { name: "Auckland, New Zealand", coordinates: [174.746, -36.893], source: "CaeNDR", style: "field", strain: "ECA36", history: "This garden-grass isolate became an unusual laboratory performer, with distinctive brood size and male-production rate in a controlled comparison. That does not necessarily mean it was adapted to Auckland." },
-      { name: "Araucanía, Chile", coordinates: [-72.1509, -38.9379], source: "CaeNDR", style: "field", strain: "JU4400", history: "A compost heap in a rural garden in Cunco yielded this C. elegans isolate in March 2023—one of the game’s most recently collected worms." }
+      { name: "Bristol N2, England", sceneLabel: "Mushroom compost · Bristol · England", coordinates: [-2.59, 51.45], source: "CaeNDR", style: "field", strain: "N2", history: "N2 came from mushroom compost near Bristol. C. elegans can be frozen alive in a protective solution and revived after thawing. This is the reason for its cryo-vial jetpack. An early N2 tube frozen around 1968 was later thawed to establish an ancestral laboratory stock." },
+      { name: "Santeuil, France", sceneLabel: "Rotting stems · Santeuil · France", coordinates: [1.951, 49.121], source: "CaeNDR", style: "field", strain: "JU1925", history: "Across three October surveys, C. elegans was found on about half of 88 rotting stems in Santeuil wood—but only occasionally in the surrounding soil." },
+      { name: "Edinburgh, Scotland", sceneLabel: "Allotment compost · Edinburgh · Scotland", coordinates: [-3.19, 55.92], source: "CaeNDR", style: "field", strain: "ED3010", history: "Edinburgh’s marker represents twelve C. elegans strains from four different isotypes—all recovered from compost in the same urban allotment." },
+      { name: "Tenerife, Spain", sceneLabel: "Botanical garden · Tenerife · Spain", coordinates: [-16.535468, 28.411121], source: "CaeNDR", style: "field", strain: "NIC1787", history: "A single day’s sampling in Puerto de la Cruz botanical garden produced 23 C. elegans records from rotting avocado, other fruits, flowers, stems and plant litter." },
+      { name: "Kauaʻi, Hawaiʻi", sceneLabel: "Rotting plants · Kauaʻi · United States", coordinates: [-159.668, 22.149], source: "CaeNDR", style: "kauai", strain: "XZ1516", history: "This high-elevation Kauaʻi isolate came from rotting plant material and belongs to one of the island’s exceptionally divergent C. elegans lineages." },
+      { name: "Australian Capital Territory", sceneLabel: "Rotten fig · O’Connor · Australia", coordinates: [149.115, -35.254], source: "CaeNDR", style: "field", strain: "QG2811", history: "Rotting figs collected from an O’Connor backyard yielded a hermaphrodite through a Baermann funnel eleven days later." },
+      { name: "Auckland, New Zealand", sceneLabel: "Garden grass · Auckland · New Zealand", coordinates: [174.746, -36.893], source: "CaeNDR", style: "field", strain: "ECA36", history: "This garden-grass isolate became an unusual laboratory performer, with distinctive brood size and male-production rate in a controlled comparison. That does not necessarily mean it was adapted to Auckland." },
+      { name: "Araucanía, Chile", sceneLabel: "Compost heap · Araucanía · Chile", coordinates: [-72.1509, -38.9379], source: "CaeNDR", style: "field", strain: "JU4400", history: "A compost heap in a rural garden in Cunco yielded this C. elegans isolate in March 2023—one of the game’s most recently collected worms." }
     ]
   },
   {
@@ -115,14 +116,14 @@ const species = [
     habitatOne: "#f5be68",
     habitatTwo: "#de7055",
     locations: [
-      { name: "Trivandrum, Kerala · JU1325", coordinates: [76.955, 8.512], source: "CGC", style: "rainforest", strain: "JU1325", history: "The type isolate of C. nigoni came from rotting flowers and leaves in a botanical garden. The sample waited two weeks in a plastic tube before the worms were placed on food-seeded agar." },
-      { name: "Singapore · ZF1220", coordinates: [103.82, 1.32], source: "Félix Lab", style: "rainforest", strain: "ZF1220", history: "This C. nigoni line came from a rotten starfruit in Singapore and was founded from several females rather than a single worm." },
-      { name: "Praslin, Seychelles · YR106", coordinates: [55.7467, -4.3193], source: "Félix Lab", style: "rainforest", strain: "YR106", history: "C. nigoni has been recorded on Praslin, but the original date, substrate and exact collection site were never documented." },
-      { name: "São Tomé · JU2484", coordinates: [6.6, 0.2], source: "Félix Lab", style: "rainforest", strain: "JU2484", history: "This female-founded C. nigoni line came from an unidentified rotten fruit lying on the forest floor on São Tomé." },
-      { name: "Mahahual, Mexico · JU2617", coordinates: [-87.71, 18.72], source: "Worldwide Worms/Félix JU2617 record", style: "farm", strain: "JU2617", history: "A heap of rotting fruit—mostly oranges—in a rural garden in Mahahual yielded this C. nigoni line." },
-      { name: "Mauritius · JU2909", coordinates: [57.4061, -20.2914], source: "Worldwide Worms/Félix JU2909 record", style: "rainforest", strain: "JU2909", history: "An oval fruit with a large woody nut yielded both C. nigoni and C. briggsae in the same sample. The C. nigoni line began with one female larva and one male." },
-      { name: "Ho Chi Minh City · JU4356", coordinates: [106.6939439, 10.7742239], source: "Félix Lab Worldwide Worms: JU4356", style: "rainforest", strain: "JU4356", history: "One rotten carambola in a Ho Chi Minh City garden yielded this C. nigoni line. It later crossed successfully with the species’ type strain in both directions." },
-      { name: "Lombok, Indonesia · HPT26", coordinates: [116.239667, -8.527466], source: "Devi et al. 2025", style: "rainforest", strain: "HPT26", history: "This C. nigoni line came from rotting Ficus fruit in Lombok in May 2024, making it the newest collection represented in the game." }
+      { name: "Trivandrum, Kerala · JU1325", sceneLabel: "Botanical garden · Trivandrum · India", coordinates: [76.955, 8.512], source: "CGC", style: "rainforest", strain: "JU1325", history: "The type isolate of C. nigoni came from rotting flowers and leaves in a botanical garden. The sample waited two weeks in a plastic tube before the worms were placed on food-seeded agar." },
+      { name: "Singapore · ZF1220", sceneLabel: "Rotten starfruit · Singapore", coordinates: [103.82, 1.32], source: "Félix Lab", style: "rainforest", strain: "ZF1220", history: "This C. nigoni line came from a rotten starfruit in Singapore and was founded from several females rather than a single worm." },
+      { name: "Praslin, Seychelles · YR106", sceneLabel: "Unknown substrate · Praslin · Seychelles", coordinates: [55.7467, -4.3193], source: "Félix Lab", style: "rainforest", strain: "YR106", history: "C. nigoni has been recorded on Praslin, but the original date, substrate and exact collection site were never documented." },
+      { name: "São Tomé · JU2484", sceneLabel: "Forest fruit · São Tomé · São Tomé and Príncipe", coordinates: [6.6, 0.2], source: "Félix Lab", style: "rainforest", strain: "JU2484", history: "This female-founded C. nigoni line came from an unidentified rotten fruit lying on the forest floor on São Tomé." },
+      { name: "Mahahual, Mexico · JU2617", sceneLabel: "Rotting fruit · Mahahual · Mexico", coordinates: [-87.71, 18.72], source: "Worldwide Worms/Félix JU2617 record", style: "farm", strain: "JU2617", history: "A heap of rotting fruit—mostly oranges—in a rural garden in Mahahual yielded this C. nigoni line." },
+      { name: "Mauritius · JU2909", sceneLabel: "Rotten fruit · Mauritius", coordinates: [57.4061, -20.2914], source: "Worldwide Worms/Félix JU2909 record", style: "rainforest", strain: "JU2909", history: "An oval fruit with a large woody nut yielded both C. nigoni and C. briggsae in the same sample. The C. nigoni line began with one female larva and one male." },
+      { name: "Ho Chi Minh City · JU4356", sceneLabel: "Rotten carambola · Ho Chi Minh City · Vietnam", coordinates: [106.6939439, 10.7742239], source: "Félix Lab Worldwide Worms: JU4356", style: "rainforest", strain: "JU4356", history: "One rotten carambola in a Ho Chi Minh City garden yielded this C. nigoni line. It later crossed successfully with the species’ type strain in both directions." },
+      { name: "Lombok, Indonesia · HPT26", sceneLabel: "Rotten fig · Lombok · Indonesia", coordinates: [116.239667, -8.527466], source: "Devi et al. 2025", style: "rainforest", strain: "HPT26", history: "This C. nigoni line came from rotting Ficus fruit in Lombok in May 2024, making it the newest collection represented in the game." }
     ]
   },
   {
@@ -146,7 +147,7 @@ const species = [
     habitatOne: "#a9c796",
     habitatTwo: "#8d79bd",
     locations: [
-      { name: "Sanda, Bali · JU1873", coordinates: [115.02965, -8.36130], source: "Félix Lab JU1873 record", style: "rainforest", strain: "JU1873", history: "A single rotting cacao fruit collected near Sanda in 2009 yielded the type isolate of a species that would later be named C. wallacei." }
+      { name: "Sanda, Bali · JU1873", sceneLabel: "Cacao plantation · Sanda, Bali · Indonesia", coordinates: [115.02965, -8.36130], source: "Félix Lab JU1873 record", style: "rainforest", strain: "JU1873", history: "A single rotting cacao fruit collected near Sanda in 2009 yielded the type isolate of a species that would later be named C. wallacei." }
     ]
   },
   {
@@ -170,17 +171,17 @@ const species = [
     habitatOne: "#7ad6c0",
     habitatTwo: "#f08a85",
     locations: [
-      { name: "Barro Colorado Island, Panama", coordinates: [-79.8399, 9.1598], source: "CaeNDR QG2726 isotype record", style: "rainforest", strain: "QG2726", history: "This C. tropicalis line was lured into an experimental forest bait made from Gustavia superba slurry—not found in a naturally fallen flower or fruit." },
-      { name: "La Selva, Costa Rica", coordinates: [-84.01138, 10.43082], source: "CaeNDR QG3845 isotype record", style: "rainforest", strain: "QG3845", history: "A rotting brown fruit in La Selva forest yielded this C. tropicalis line at 26.5 °C. The culture then lived on agar plates in Costa Rica for about six months before travelling to New York." },
-      { name: "Guadeloupe · NIC203", coordinates: [-61.6262, 16.0459], source: "CaeNDR NIC203 isotype record", style: "rainforest", strain: "NIC203", history: "This line came from a rotting torch-ginger flower at the Third Carbet Falls locality. Later crosses helped reveal three maternal-effect toxin–antidote systems in its genome." },
-      { name: "Nouragues, French Guiana · JU1428", coordinates: [-52.68, 4.08], source: "CaeNDR JU1428 isotype record", style: "rainforest", strain: "JU1428", history: "A rotting Duguetia surinamensis fruit in French Guiana forest yielded this line and two other strains belonging to the same C. tropicalis isotype." },
-      { name: "Manaus region, Brazil · JU1976", coordinates: [-59.84, -2.96], source: "CaeNDR JU1976 isotype record", style: "rainforest", strain: "JU1976", history: "Two C. tropicalis isolates were found only about four metres apart in forest near Manaus—each in a different rotting fruit." },
-      { name: "Oʻahu, Hawaiʻi · ECA789", coordinates: [-157.799786, 21.336056], source: "CaeNDR ECA789 isotype record", style: "rainforest", strain: "ECA789", history: "This C. tropicalis line came from a rotting flower along Mānoa Falls Trail, where the recorded humidity was 93.7%." },
-      { name: "Kauaʻi, Hawaiʻi · QG131", coordinates: [-159.4764, 22.22955], source: "CaeNDR QG131 isotype record", style: "ocean", strain: "QG131", history: "Two rotten pandanus fruits beneath a trailside tree yielded this C. tropicalis line. Within three weeks, its culture had moved from agar isolation to food culture and frozen storage." },
-      { name: "New Taipei City, Taiwan · NIC1648", coordinates: [121.82753, 25.06574], source: "CaeNDR NIC1648 isotype record", style: "rainforest", strain: "NIC1648", history: "Tiny figs scattered on concrete steps towards Menghuan Falls yielded this C. tropicalis line. The culture note records many males, although no count or explanation was provided." },
-      { name: "Pohnpei, Micronesia · QG4739", coordinates: [158.1818, 6.9066], source: "CaeNDR", style: "rainforest", strain: "QG4739", history: "Rotting kotop fruit in Pohnpei cloudforest yielded seven closely related reference strains. The collection site lay about 540 metres above sea level." },
-      { name: "Queensland, Australia · QG2904", coordinates: [145.447317, -16.10365], source: "CaeNDR", style: "rainforest", strain: "QG2904", history: "An intact blackbean pod from the Daintree Rainforest Observatory produced a plate containing thousands of worms. Most were Caenorhabditis hermaphrodites; no males were seen in that first observation." },
-      { name: "Saint-Benoît, Réunion · JU1373", coordinates: [55.6885, -21.0473], source: "CaeNDR JU1373 isotype record", style: "farm", strain: "JU1373", history: "The type isolate of C. tropicalis came from rotting torch-ginger flowers on Réunion. The original note describes a hermaphrodite and a highly proliferating population." }
+      { name: "Barro Colorado Island, Panama", sceneLabel: "Forest bait · Barro Colorado Island · Panama", coordinates: [-79.8399, 9.1598], source: "CaeNDR QG2726 isotype record", style: "rainforest", strain: "QG2726", history: "This C. tropicalis line was lured into an experimental forest bait made from Gustavia superba slurry—not found in a naturally fallen flower or fruit." },
+      { name: "La Selva, Costa Rica", sceneLabel: "Rotting fruit · La Selva · Costa Rica", coordinates: [-84.01138, 10.43082], source: "CaeNDR QG3845 isotype record", style: "rainforest", strain: "QG3845", history: "A rotting brown fruit in La Selva forest yielded this C. tropicalis line at 26.5 °C. The culture then lived on agar plates in Costa Rica for about six months before travelling to New York." },
+      { name: "Guadeloupe · NIC203", sceneLabel: "Torch-ginger flower · Guadeloupe · France", coordinates: [-61.6262, 16.0459], source: "CaeNDR NIC203 isotype record", style: "rainforest", strain: "NIC203", history: "This line came from a rotting torch-ginger flower at the Third Carbet Falls locality. Later crosses helped reveal three maternal-effect toxin–antidote systems in its genome." },
+      { name: "Nouragues, French Guiana · JU1428", sceneLabel: "Forest fruit · Nouragues · French Guiana, France", coordinates: [-52.68, 4.08], source: "CaeNDR JU1428 isotype record", style: "rainforest", strain: "JU1428", history: "A rotting Duguetia surinamensis fruit in French Guiana forest yielded this line and two other strains belonging to the same C. tropicalis isotype." },
+      { name: "Manaus region, Brazil · JU1976", sceneLabel: "Forest fruit · Manaus · Brazil", coordinates: [-59.84, -2.96], source: "CaeNDR JU1976 isotype record", style: "rainforest", strain: "JU1976", history: "Two C. tropicalis isolates were found only about four metres apart in forest near Manaus—each in a different rotting fruit." },
+      { name: "Oʻahu, Hawaiʻi · ECA789", sceneLabel: "Rotting flower · Oʻahu · United States", coordinates: [-157.799786, 21.336056], source: "CaeNDR ECA789 isotype record", style: "rainforest", strain: "ECA789", history: "This C. tropicalis line came from a rotting flower along Mānoa Falls Trail, where the recorded humidity was 93.7%." },
+      { name: "Kauaʻi, Hawaiʻi · QG131", sceneLabel: "Pandanus fruit · Kauaʻi · United States", coordinates: [-159.4764, 22.22955], source: "CaeNDR QG131 isotype record", style: "ocean", strain: "QG131", history: "Two rotten pandanus fruits beneath a trailside tree yielded this C. tropicalis line. Within three weeks, its culture had moved from agar isolation to food culture and frozen storage." },
+      { name: "New Taipei City, Taiwan · NIC1648", sceneLabel: "Fallen figs · New Taipei City · Taiwan", coordinates: [121.82753, 25.06574], source: "CaeNDR NIC1648 isotype record", style: "rainforest", strain: "NIC1648", history: "Tiny figs scattered on concrete steps towards Menghuan Falls yielded this C. tropicalis line. The culture note records many males, although no count or explanation was provided." },
+      { name: "Pohnpei, Micronesia · QG4739", sceneLabel: "Kotop fruit · Pohnpei · Micronesia", coordinates: [158.1818, 6.9066], source: "CaeNDR", style: "rainforest", strain: "QG4739", history: "Rotting kotop fruit in Pohnpei cloudforest yielded seven closely related reference strains. The collection site lay about 540 metres above sea level." },
+      { name: "Queensland, Australia · QG2904", sceneLabel: "Blackbean pod · Queensland · Australia", coordinates: [145.447317, -16.10365], source: "CaeNDR", style: "rainforest", strain: "QG2904", history: "An intact blackbean pod from the Daintree Rainforest Observatory produced a plate containing thousands of worms. Most were Caenorhabditis hermaphrodites; no males were seen in that first observation." },
+      { name: "Saint-Benoît, Réunion · JU1373", sceneLabel: "Torch-ginger flowers · Saint-Benoît · Réunion, France", coordinates: [55.6885, -21.0473], source: "CaeNDR JU1373 isotype record", style: "farm", strain: "JU1373", history: "The type isolate of C. tropicalis came from rotting torch-ginger flowers on Réunion. The original note describes a hermaphrodite and a highly proliferating population." }
     ]
   }
 ];
@@ -257,7 +258,6 @@ const els = {
   localWrapLabel: document.querySelector('[data-accessory="local-wrap"] .button-label'),
   localCharmIcon: document.querySelector('[data-accessory="local-charm"] .button-icon'),
   localCharmLabel: document.querySelector('[data-accessory="local-charm"] .button-label'),
-  speciesRegion: document.getElementById("species-region"),
   speciesName: document.getElementById("species-name"),
   speciesNickname: document.getElementById("species-nickname"),
   speciesIntro: document.getElementById("species-intro"),
@@ -267,6 +267,15 @@ const els = {
   narrationToggle: document.getElementById("narration-toggle"),
   narrationLabel: document.querySelector("#narration-toggle span"),
   narrationStatus: document.getElementById("narration-status"),
+  galleryToggle: document.getElementById("species-gallery-toggle"),
+  galleryDialog: document.getElementById("species-gallery-dialog"),
+  galleryClose: document.getElementById("species-gallery-close"),
+  galleryTitle: document.getElementById("species-gallery-title"),
+  galleryDescription: document.getElementById("species-gallery-description"),
+  galleryImages: document.getElementById("species-gallery-images"),
+  gallerySourceNote: document.getElementById("species-gallery-source-note"),
+  gallerySource: document.getElementById("species-gallery-source"),
+  galleryLicence: document.getElementById("species-gallery-licence"),
   exploredCount: document.getElementById("explored-count"),
   freestyle: document.getElementById("freestyle-draw"),
   drawTools: document.getElementById("draw-tools"),
@@ -302,6 +311,71 @@ function scientificText(element, value) {
   }
   if (cursor < value.length) element.append(document.createTextNode(value.slice(cursor)));
 }
+
+let galleryRestoreFocus = null;
+
+function renderSpeciesGallery(item) {
+  const gallery = speciesGalleries[item.id];
+  if (!gallery) return;
+
+  italicText(els.galleryTitle, gallery.scientificName);
+  els.galleryDescription.textContent = gallery.description;
+  els.galleryImages.replaceChildren();
+  gallery.images.forEach(image => {
+    const figure = document.createElement("figure");
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+    const sourceImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
+    const [x, y, width, height] = image.viewBox;
+    figure.style.setProperty("--gallery-card-width", `${image.maxWidth}px`);
+    svg.classList.add("whole-worm-view");
+    svg.setAttribute("viewBox", `${x} ${y} ${width} ${height}`);
+    svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+    svg.setAttribute("role", "img");
+    title.textContent = image.alt;
+    sourceImage.setAttribute("href", image.src);
+    sourceImage.setAttribute("width", String(image.sourceWidth));
+    sourceImage.setAttribute("height", String(image.sourceHeight));
+    sourceImage.setAttribute("preserveAspectRatio", "none");
+    svg.append(title, sourceImage);
+    const caption = document.createElement("figcaption");
+    caption.textContent = image.caption;
+    figure.append(svg, caption);
+    els.galleryImages.appendChild(figure);
+  });
+
+  els.gallerySourceNote.textContent = `${gallery.source.note} `;
+  els.gallerySource.textContent = gallery.source.label;
+  els.gallerySource.href = gallery.source.url;
+  els.galleryLicence.textContent = gallery.source.licence.label;
+  els.galleryLicence.href = gallery.source.licence.url;
+}
+
+function openSpeciesGallery() {
+  const item = byId.get(selectedId);
+  if (!item || !els.galleryDialog) return;
+  renderSpeciesGallery(item);
+  galleryRestoreFocus = document.activeElement;
+  els.galleryDialog.showModal();
+  els.galleryClose.focus();
+}
+
+els.galleryToggle.addEventListener("click", openSpeciesGallery);
+els.galleryClose.addEventListener("click", () => els.galleryDialog.close());
+els.galleryDialog.addEventListener("keydown", event => {
+  if (event.key !== "Escape") return;
+  event.preventDefault();
+  els.galleryDialog.close();
+});
+els.galleryDialog.addEventListener("click", event => {
+  if (event.target === els.galleryDialog) els.galleryDialog.close();
+});
+els.galleryDialog.addEventListener("close", () => {
+  if (galleryRestoreFocus instanceof HTMLElement && galleryRestoreFocus.isConnected) {
+    galleryRestoreFocus.focus();
+  }
+  galleryRestoreFocus = null;
+});
 
 const speechSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
 const narrationLabels = {
@@ -391,12 +465,12 @@ function narrationSegments(item, place) {
     ? "This species is predominantly self-fertilising: populations consist mainly of self-fertilising hermaphrodites, with rare males."
     : "This species is outcrossing, meaning that populations consist of females and males and reproduction requires mating between them.";
   return [
-    placeName,
     item.name,
     item.nickname,
     item.intro,
     reproduction,
     `Habitat: ${item.habitat}.`,
+    `This illustrated record is from ${placeName}.`,
     fact
   ].map(segment => pronounceAmbiguousWords(pronounceStrainCodes(pronounceScientificNames(segment))));
 }
@@ -530,8 +604,8 @@ function renderSpecies(item, place) {
   }, item.id, placeName);
   if (!accessoryDesign) throw new Error(`Missing accessory design for ${item.id}::${placeName}`);
   wireAccessoryPieces();
-  els.speciesRegion.textContent = placeNameWithoutStrain(place, item.region);
   italicText(els.speciesName, item.name);
+  els.galleryToggle.setAttribute("aria-label", `See whole-animal photographs of ${item.name}`);
   els.speciesNickname.textContent = item.nickname;
   scientificText(els.speciesIntro, item.intro);
   els.speciesReproduction.textContent = item.reproductionLabel;
@@ -550,7 +624,7 @@ function renderSpecies(item, place) {
   els.localWrapLabel.textContent = accessoryDesign.wrap.label;
   els.localCharmIcon.textContent = "✦";
   els.localCharmLabel.textContent = accessoryDesign.charm.label;
-  els.sceneName.textContent = environment?.title || placeName;
+  els.sceneName.textContent = place?.sceneLabel || environment?.title || placeName;
 
   els.habitat.dataset.habitat = item.habitatKey;
   els.habitat.dataset.localStyle = styleKey;
