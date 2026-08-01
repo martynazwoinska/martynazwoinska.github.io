@@ -66,44 +66,44 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --site-bg: #213d50;
-    --site-surface: #294b5e;
-    --site-surface-muted: #34576c;
-    --site-text: #f1f2ec;
-    --site-text-soft: #c3d0d5;
-    --site-text-faint: #a8bdc6;
-    --site-brand-emerald: #73d1b9;
-    --site-brand-emerald-soft: #1d4645;
-    --site-brand-berry: #ee9aa6;
-    --site-brand-gold: #d3b56b;
-    --site-brand-violet: #b9adda;
-    --site-nav-bg: #213d50;
-    --site-nav-border: #8f7a4d;
-    --site-nav-accent: #88dfc7;
-    --site-border: #4a697e;
-    --site-focus: #f1a0ad;
-    --site-shadow: 0 1px 2px rgba(5, 15, 28, .32), 0 12px 32px rgba(5, 15, 28, .27);
+    --site-bg: #0f4747;
+    --site-surface: #175754;
+    --site-surface-muted: #22645e;
+    --site-text: #f5f3ea;
+    --site-text-soft: #cad9d3;
+    --site-text-faint: #a9c3ba;
+    --site-brand-emerald: #79dec2;
+    --site-brand-emerald-soft: #154940;
+    --site-brand-berry: #f0a0ad;
+    --site-brand-gold: #d7b96f;
+    --site-brand-violet: #c4b2dd;
+    --site-nav-bg: #0f4747;
+    --site-nav-border: #987d49;
+    --site-nav-accent: #8be4c8;
+    --site-border: #3a7770;
+    --site-focus: #f2a2ae;
+    --site-shadow: 0 1px 2px rgba(2, 21, 20, .34), 0 12px 32px rgba(2, 18, 17, .28);
   }
 }
 
 :root[data-theme='dark'] {
-  --site-bg: #213d50;
-  --site-surface: #294b5e;
-  --site-surface-muted: #34576c;
-  --site-text: #f1f2ec;
-  --site-text-soft: #c3d0d5;
-  --site-text-faint: #a8bdc6;
-  --site-brand-emerald: #73d1b9;
-  --site-brand-emerald-soft: #1d4645;
-  --site-brand-berry: #ee9aa6;
-  --site-brand-gold: #d3b56b;
-  --site-brand-violet: #b9adda;
-  --site-nav-bg: #213d50;
-  --site-nav-border: #8f7a4d;
-  --site-nav-accent: #88dfc7;
-  --site-border: #4a697e;
-  --site-focus: #f1a0ad;
-  --site-shadow: 0 1px 2px rgba(5, 15, 28, .32), 0 12px 32px rgba(5, 15, 28, .27);
+  --site-bg: #0f4747;
+  --site-surface: #175754;
+  --site-surface-muted: #22645e;
+  --site-text: #f5f3ea;
+  --site-text-soft: #cad9d3;
+  --site-text-faint: #a9c3ba;
+  --site-brand-emerald: #79dec2;
+  --site-brand-emerald-soft: #154940;
+  --site-brand-berry: #f0a0ad;
+  --site-brand-gold: #d7b96f;
+  --site-brand-violet: #c4b2dd;
+  --site-nav-bg: #0f4747;
+  --site-nav-border: #987d49;
+  --site-nav-accent: #8be4c8;
+  --site-border: #3a7770;
+  --site-focus: #f2a2ae;
+  --site-shadow: 0 1px 2px rgba(2, 21, 20, .34), 0 12px 32px rgba(2, 18, 17, .28);
 }
 
 :root[data-theme='light'] {
