@@ -470,13 +470,6 @@
         aspect-ratio: 47 / 56;
         background-image: url("assets/botanical-frame/painted-botanical-upper-left-light.webp");
       }
-      .botanical-frame__lower-left {
-        position: fixed;
-        bottom: -36px; left: -8px;
-        width: clamp(320px, calc((100vw - var(--maxw)) / 2 + 32px), 396px);
-        aspect-ratio: 180 / 187;
-        background-image: url("assets/botanical-frame/painted-botanical-lower-left-light.webp");
-      }
       .botanical-frame__lower-right {
         position: fixed;
         bottom: -46px; right: -8px;
@@ -488,9 +481,6 @@
       html[data-theme="dark"] .botanical-frame__upper-left {
         background-image: url("assets/botanical-frame/painted-botanical-upper-left-dark.webp");
       }
-      html[data-theme="dark"] .botanical-frame__lower-left {
-        background-image: url("assets/botanical-frame/painted-botanical-lower-left-dark.webp");
-      }
       html[data-theme="dark"] .botanical-frame__lower-right {
         background-image: url("assets/botanical-frame/painted-botanical-lower-right-dark.webp");
       }
@@ -498,9 +488,6 @@
     @media (min-width: 1680px) and (prefers-color-scheme: dark) {
       html:not([data-theme]) .botanical-frame__upper-left {
         background-image: url("assets/botanical-frame/painted-botanical-upper-left-dark.webp");
-      }
-      html:not([data-theme]) .botanical-frame__lower-left {
-        background-image: url("assets/botanical-frame/painted-botanical-lower-left-dark.webp");
       }
       html:not([data-theme]) .botanical-frame__lower-right {
         background-image: url("assets/botanical-frame/painted-botanical-lower-right-dark.webp");
@@ -1134,7 +1121,6 @@
   <a class="skip-link" href="#main">Skip to main content</a>
   <div class="botanical-frame" aria-hidden="true">
     <span class="botanical-frame__piece botanical-frame__upper-left"></span>
-    <span class="botanical-frame__piece botanical-frame__lower-left"></span>
     <span class="botanical-frame__piece botanical-frame__lower-right"></span>
   </div>
   <!-- ============ NAV ============ -->
