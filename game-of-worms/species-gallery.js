@@ -78,7 +78,7 @@ export const speciesGalleries = Object.freeze({
         sourceHeight: 541,
         viewBox: [10, 0, 785, 148],
         alt: "A complete adult Caenorhabditis inopinata female below a smaller complete Caenorhabditis elegans adult for scale.",
-        caption: "Whole adult female, with C. elegans for scale",
+        caption: "Whole adult female (down), with C. elegans for scale",
         maxWidth: 820
       })
     ])
