@@ -105,6 +105,7 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
+      position: relative;
       overflow-x: clip;
       background: var(--bg);
       color: var(--text);
@@ -456,7 +457,7 @@
     @media (min-width: 1680px) {
       .botanical-frame {
         display: block; position: absolute; z-index: 21;
-        inset: 0 0 auto; height: 1040px; overflow: hidden;
+        inset: 0; overflow: clip;
         pointer-events: none; user-select: none;
       }
       .botanical-frame__piece {
@@ -464,19 +465,19 @@
         background-repeat: no-repeat; background-position: 0 0; background-size: 100% 100%;
       }
       .botanical-frame__upper-left {
-        top: -5px; left: -15px;
-        width: clamp(330px, calc((100vw - var(--maxw)) / 2 + 80px), 510px);
-        aspect-ratio: 47 / 56;
+        top: -4px; left: -10px;
+        width: clamp(240px, calc((100vw - var(--maxw)) / 2 - 10px), 320px);
+        height: clamp(520px, 31vw, 610px);
         background-image: url("assets/botanical-frame/painted-botanical-upper-left-light.webp");
       }
       .botanical-frame__lower-left {
-        top: 520px; left: -8px;
+        bottom: -36px; left: -8px;
         width: clamp(320px, calc((100vw - var(--maxw)) / 2 + 32px), 396px);
         aspect-ratio: 180 / 187;
         background-image: url("assets/botanical-frame/painted-botanical-lower-left-light.webp");
       }
       .botanical-frame__lower-right {
-        top: 90px; right: -18px;
+        bottom: -46px; right: clamp(72px, 5vw, 104px);
         width: clamp(286px, calc((100vw - var(--maxw)) / 2 - 4px), 361px);
         aspect-ratio: 51 / 129;
         background-image: url("assets/botanical-frame/painted-botanical-lower-right-light.webp");
