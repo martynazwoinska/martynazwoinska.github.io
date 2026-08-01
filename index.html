@@ -465,32 +465,33 @@
         background-repeat: no-repeat; background-position: 0 0; background-size: 100% 100%;
       }
       .botanical-frame__upper-left {
+        position: fixed;
         top: -4px; left: -4px;
-        width: clamp(330px, calc((100vw - var(--maxw)) / 2 + 80px), 510px);
+        width: clamp(345px, calc((100vw - var(--maxw)) / 2 + 105px), 530px);
         aspect-ratio: 47 / 56;
-        background-image: url("assets/botanical-frame/painted-botanical-upper-left-light.webp");
+        background-image: url("assets/botanical-frame/painted-botanical-upper-left-light-ivory.webp");
       }
       .botanical-frame__lower-right {
         position: fixed;
         bottom: -46px; right: -8px;
         width: clamp(286px, calc((100vw - var(--maxw)) / 2 - 4px), 361px);
         aspect-ratio: 51 / 129;
-        background-image: url("assets/botanical-frame/painted-botanical-lower-right-light.webp");
+        background-image: url("assets/botanical-frame/painted-botanical-lower-right-light-ivory.webp");
       }
       .hero-lower { display: none !important; }
       html[data-theme="dark"] .botanical-frame__upper-left {
-        background-image: url("assets/botanical-frame/painted-botanical-upper-left-dark.webp");
+        background-image: url("assets/botanical-frame/painted-botanical-upper-left-dark-petrol.webp");
       }
       html[data-theme="dark"] .botanical-frame__lower-right {
-        background-image: url("assets/botanical-frame/painted-botanical-lower-right-dark.webp");
+        background-image: url("assets/botanical-frame/painted-botanical-lower-right-dark-petrol.webp");
       }
     }
     @media (min-width: 1680px) and (prefers-color-scheme: dark) {
       html:not([data-theme]) .botanical-frame__upper-left {
-        background-image: url("assets/botanical-frame/painted-botanical-upper-left-dark.webp");
+        background-image: url("assets/botanical-frame/painted-botanical-upper-left-dark-petrol.webp");
       }
       html:not([data-theme]) .botanical-frame__lower-right {
-        background-image: url("assets/botanical-frame/painted-botanical-lower-right-dark.webp");
+        background-image: url("assets/botanical-frame/painted-botanical-lower-right-dark-petrol.webp");
       }
     }
 
