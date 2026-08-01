@@ -4,7 +4,7 @@ import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries
 import { createGameTranslator } from "./game-i18n.js?v=20260730-4";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260728-22";
-import { speciesGalleries } from "./species-gallery.js?v=20260801-2";
+import { speciesGalleries } from "./species-gallery.js?v=20260801-3";
 
 const t = createGameTranslator(document.documentElement.lang);
 
