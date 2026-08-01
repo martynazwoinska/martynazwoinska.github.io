@@ -465,19 +465,21 @@
         background-repeat: no-repeat; background-position: 0 0; background-size: 100% 100%;
       }
       .botanical-frame__upper-left {
-        top: -4px; left: -10px;
-        width: clamp(240px, calc((100vw - var(--maxw)) / 2 - 10px), 320px);
-        height: clamp(520px, 31vw, 610px);
+        top: -4px; left: -4px;
+        width: clamp(330px, calc((100vw - var(--maxw)) / 2 + 80px), 510px);
+        aspect-ratio: 47 / 56;
         background-image: url("assets/botanical-frame/painted-botanical-upper-left-light.webp");
       }
       .botanical-frame__lower-left {
+        position: fixed;
         bottom: -36px; left: -8px;
         width: clamp(320px, calc((100vw - var(--maxw)) / 2 + 32px), 396px);
         aspect-ratio: 180 / 187;
         background-image: url("assets/botanical-frame/painted-botanical-lower-left-light.webp");
       }
       .botanical-frame__lower-right {
-        bottom: -46px; right: clamp(72px, 5vw, 104px);
+        position: fixed;
+        bottom: -46px; right: -8px;
         width: clamp(286px, calc((100vw - var(--maxw)) / 2 - 4px), 361px);
         aspect-ratio: 51 / 129;
         background-image: url("assets/botanical-frame/painted-botanical-lower-right-light.webp");
