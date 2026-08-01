@@ -324,12 +324,10 @@ function renderSpeciesGallery(item) {
     const imageFrame = document.createElement("div");
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     const sourceImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
-    const tooltip = document.createElement("span");
     const [x, y, width, height] = image.viewBox;
     figure.style.setProperty("--gallery-card-width", `${image.maxWidth}px`);
     imageFrame.className = "whole-worm-view-frame";
     imageFrame.setAttribute("role", "img");
-    imageFrame.setAttribute("tabindex", "0");
     imageFrame.setAttribute("aria-label", image.alt);
     svg.classList.add("whole-worm-view");
     if (image.palePadding) svg.classList.add("whole-worm-view--pale-padding");
@@ -343,13 +341,7 @@ function renderSpeciesGallery(item) {
     sourceImage.setAttribute("preserveAspectRatio", "none");
     svg.append(sourceImage);
     imageFrame.append(svg);
-    tooltip.className = "species-gallery-image-tooltip";
-    tooltip.setAttribute("role", "tooltip");
-    tooltip.setAttribute("aria-hidden", "true");
-    scientificText(tooltip, image.alt);
-    const caption = document.createElement("figcaption");
-    caption.textContent = image.caption;
-    figure.append(imageFrame, tooltip, caption);
+    figure.append(imageFrame);
     els.galleryImages.appendChild(figure);
   });
 

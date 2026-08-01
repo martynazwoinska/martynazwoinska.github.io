@@ -3225,10 +3225,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   margin-top: 26px;
 }
 .species-gallery-images figure {
-  display: grid;
-  grid-template-areas:
-    "image"
-    "meta";
+  display: block;
   min-width: 0;
   width: min(100%, var(--gallery-card-width, 680px));
   justify-self: center;
@@ -3238,7 +3235,6 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   border-radius: 18px;
   background: color-mix(in srgb, var(--paper) 90%, var(--teal));
 }
-.whole-worm-view-frame { grid-area: image; }
 .species-gallery-images .whole-worm-view {
   display: block;
   width: 100%;
@@ -3252,44 +3248,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   background: #f3f3f1;
 }
 
-.species-gallery-image-tooltip {
-  grid-area: meta;
-  align-self: stretch;
-  padding: 11px 13px 13px;
-  color: var(--ink);
-  font-size: .78rem;
-  line-height: 1.35;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity .14s ease, visibility .14s ease;
-}
-
-.species-gallery-images figure:hover .species-gallery-image-tooltip,
-.species-gallery-images figure:focus-within .species-gallery-image-tooltip {
-  opacity: 1;
-  visibility: visible;
-}
-
-.species-gallery-images figure:hover figcaption,
-.species-gallery-images figure:focus-within figcaption { opacity: 0; }
-
-.whole-worm-view-frame:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--gold) 82%, white);
-  outline-offset: -4px;
-}
-
-.species-gallery-image-tooltip i,
 .species-gallery-credit i { font-style: italic; }
-
-.species-gallery-images figcaption {
-  grid-area: meta;
-  padding: 11px 13px 13px;
-  color: var(--ink-soft);
-  font-size: .86rem;
-  font-weight: 800;
-  transition: opacity .14s ease;
-}
 .species-gallery-credit {
   margin: 18px 0 0;
   color: var(--ink-soft);
