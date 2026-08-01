@@ -92,7 +92,7 @@ The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour
 - Keep asymmetric rounded corners soft rather than exaggerated.
 - Use botanical curves, seed-pod forms and worm-like lines as small accents.
 - Full-section floral dividers use reinforced gold and emerald stems with theme-aware contrast, while their berry terminals and geometry stay delicate. On phones, preserve the approved footprint and dimensions; reinforce only the compressed edges with a subtle same-colour treatment rather than lengthening or enlarging the ornament. Internal subsection and list rules remain visibly quieter.
-- At wide viewports, treat the painted botanical frame as a pair of viewport-fixed growths rather than page-bound decoration: the upper-left piece hangs from the current top edge and the lower-right piece rises from the current bottom edge. Use separate Ivory Ink and Petrol Ink derivatives with alpha edges matted to `--site-bg`; do not reuse a derivative prepared against the other theme or alter the preserved source artwork.
+- At wide viewports, treat the painted botanical frame as a pair of viewport-fixed growths rather than page-bound decoration: the upper-left piece hangs from the current top edge, stays clear of the `MZ` monogram and the lower-right piece rises from the current bottom edge. Build both theme derivatives from the pristine source painting so the foliage and gold retain their original local contrast; use cleaned alpha geometry instead of a page-colour veil, and reserve the warmer fuchsia flower treatment for Ivory Ink. Do not alter the preserved source artwork.
 - Keep ornament subordinate to information and interaction.
 - Avoid emoji as primary visual elements and avoid oversized decorative icons.
 
