@@ -310,8 +310,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .species-tab small { display: inline-block; margin-top: 5px; border-radius: 999px; padding: 2px 7px; font-size: .68rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }
 .species-tab small.selfing { color: #a94347; background: rgba(243,111,98,.14); }
 .species-tab small.outcrossing { color: #51438f; background: rgba(117,103,184,.14); }
-.featured-place { display: block; margin-top: 4px; color: var(--teal-dark); font-size: .68rem; font-weight: 900; letter-spacing: .03em; text-transform: uppercase; }
-
 .play-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.45fr) minmax(300px, .75fr);
@@ -1315,6 +1313,15 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .minsa-lines { stroke: #fff4d6; stroke-width: 5; }
 .lab-goggles circle { fill: rgba(174,232,240,.62); stroke: #295f72; stroke-width: 5; }
 .lab-goggles path { fill: none; stroke: #295f72; stroke-width: 5; stroke-linecap: round; }
+.n2-lab-goggles { filter: drop-shadow(0 3px 2px rgba(24,49,54,.2)); }
+.n2-lab-goggles .goggle-strap { fill: none; stroke: #58777a; stroke-width: 4.2; stroke-linecap: round; }
+.n2-lab-goggles .goggle-seal { fill: rgba(231,243,240,.3); stroke: #245b65; stroke-width: 3.6; stroke-linejoin: round; }
+.n2-lab-goggles .goggle-lens { fill: rgba(157,222,229,.42); stroke: #4a8f98; stroke-width: 1.6; stroke-linejoin: round; }
+.n2-lab-goggles .goggle-lens.companion { fill: rgba(190,233,233,.46); }
+.n2-lab-goggles .goggle-vent-body { fill: #f8f5e8; stroke: #245b65; stroke-width: 1.8; }
+.n2-lab-goggles .goggle-vent-slots { fill: none; stroke: #739296; stroke-width: 1.2; stroke-linecap: round; }
+.n2-lab-goggles .goggle-highlight { fill: none; stroke: rgba(255,255,255,.92); stroke-width: 2; stroke-linecap: round; }
+.n2-lab-goggles .goggle-adjuster { fill: #c49b51; stroke: #6c5837; stroke-width: 1.2; }
 .kite-body { fill: #ef6f62; stroke: #783c55; stroke-width: 3; }
 .kite-body.male { fill: #f1b64f; }
 .kite-cross, .kite-string, .kite-tail { fill: none; stroke: #783c55; stroke-width: 2.5; stroke-linecap: round; }
@@ -2970,6 +2977,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .dress-buttons button[aria-pressed="true"] { background: color-mix(in srgb, var(--teal) 13%, var(--paper-strong)); color: var(--teal-dark); border-color: var(--teal); box-shadow: 0 4px 10px rgba(20,75,78,.13); }
 .dress-buttons button[data-accessory][aria-pressed="true"]::after { content: "✓"; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--teal-dark); color: white; font-size: .72rem; }
 .dress-buttons .button-icon { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: color-mix(in srgb, var(--yellow) 45%, white); font-size: .92rem; }
+.goggles-button-icon svg { width: 18px; height: 18px; fill: rgba(174,232,240,.5); stroke: #295f72; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .dress-buttons .freestyle-button { margin-inline-start: 5px; border-color: color-mix(in srgb, var(--teal) 25%, var(--line)); background: color-mix(in srgb, var(--teal) 4%, var(--paper-strong)); }
 .dress-buttons .freestyle-button[aria-pressed="true"] { background: color-mix(in srgb, var(--teal) 13%, var(--paper-strong)); border-color: var(--teal); color: var(--teal-dark); }
 .freestyle-icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }

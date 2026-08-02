@@ -16,7 +16,7 @@ const rows = [
   ["briggsae", "Orsay, France · JU2518", "rotten-apple decay rotoscope", "ju2518-rotten-apple-decay-rotoscope", "Santeuil-virus association spectroscope", "ju2518-virus-association-spectroscope", "six-September garden field ledger", "ju2518-six-september-garden-ledger"],
   ["briggsae", "Dois Rios, Ilha Grande, Brazil · EG5612", "jackfruit emergence theatre", "eg5612-jackfruit-emergence-theatre", "shared-bag provenance bifurcator", "eg5612-shared-bag-provenance-bifurcator", "single-larva test-cross gate", "eg5612-single-larva-test-cross-gate"],
   ["briggsae", "Nambucca Heads, New South Wales · QG2814", "ground-flower sample theatre", "qg2814-ground-flower-sample-theatre", "five-day two-plate founding relay", "qg2814-five-day-two-plate-relay", "18S identity ribbon reader", "qg2814-18s-identity-ribbon-reader"],
-  ["elegans", "Bristol N2, England", "seeded NGM agar plates", "ngm-agar-plate", "fitted lab coats", "n2-lab-coat", "cryo-vial jetpacks", "cryo-vial-jetpack"],
+  ["elegans", "Bristol N2, England", "seeded NGM agar plates", "ngm-agar-plate", "fitted lab coats", "n2-lab-coat", "cryo-vial jetpacks", "cryo-vial-jetpack", "lab goggles", "n2-lab-goggles"],
   ["elegans", "Santeuil, France", "hollow-stem specimen lantern", "hogweed-specimen-lantern", "Santeuil cylinder organ", "santeuil-cylinder-organ", "Couleuvre dragonfly automaton", "couleuvre-dragonfly-automaton"],
   ["elegans", "Edinburgh, Scotland", "Midmar compost tumbler", "midmar-compost-tumbler", "Edinburgh tartan kilt", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
   ["elegans", "Tenerife, Spain", "avocado microhabitat viewer", "avocado-microhabitat-viewer", "aerial-root harp", "aerial-root-harp", "Linnaean seed-exchange engine", "linnaean-seed-exchange-engine"],
@@ -60,7 +60,7 @@ const repeatedRendererFamilies = new Set([
   "wig", "wings"
 ]);
 
-const n2RendererFamilies = new Set(["ngm-agar-plate", "n2-lab-coat", "cryo-vial-jetpack"]);
+const n2RendererFamilies = new Set(["ngm-agar-plate", "n2-lab-coat", "cryo-vial-jetpack", "n2-lab-goggles"]);
 const santeuilRendererFamilies = new Set(["hogweed-specimen-lantern", "santeuil-cylinder-organ", "couleuvre-dragonfly-automaton"]);
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
 const tenerifeRendererFamilies = new Set(["avocado-microhabitat-viewer", "aerial-root-harp", "linnaean-seed-exchange-engine"]);
@@ -310,7 +310,7 @@ function artworkForm(label, kind) {
   return 18;
 }
 
-function freezeDesign([speciesId, placeName, headLabel, headFamily, wrapLabel, wrapFamily, charmLabel, charmFamily], index) {
+function freezeDesign([speciesId, placeName, headLabel, headFamily, wrapLabel, wrapFamily, charmLabel, charmFamily, extraLabel, extraFamily], index) {
   const make = (label, family, slot) => {
     const artKind = artworkKind(label);
     const form = artworkForm(label, artKind);
@@ -340,12 +340,14 @@ function freezeDesign([speciesId, placeName, headLabel, headFamily, wrapLabel, w
     key: `${speciesId}::${placeName}`,
     headwear: make(headLabel, headFamily, "headwear"),
     wrap: make(wrapLabel, wrapFamily, "wrap"),
-    charm: make(charmLabel, charmFamily, "charm")
+    charm: make(charmLabel, charmFamily, "charm"),
+    extra: extraLabel ? make(extraLabel, extraFamily, "extra") : null
   });
 }
 
 export const accessoryCatalogue = Object.freeze(rows.map(freezeDesign));
 const catalogueByKey = new Map(accessoryCatalogue.map(design => [design.key, design]));
+const designItems = design => [design.headwear, design.wrap, design.charm, design.extra].filter(Boolean);
 
 export function getAccessoryDesign(speciesId, placeName) {
   return catalogueByKey.get(`${speciesId}::${placeName}`) || null;
@@ -353,7 +355,7 @@ export function getAccessoryDesign(speciesId, placeName) {
 
 export function auditAccessoryCatalogue(expectedKeys = []) {
   const keys = accessoryCatalogue.map(design => design.key);
-  const items = accessoryCatalogue.flatMap(design => [design.headwear, design.wrap, design.charm]);
+  const items = accessoryCatalogue.flatMap(designItems);
   const duplicateKeys = keys.filter((key, index) => keys.indexOf(key) !== index);
   const missingKeys = expectedKeys.filter(key => !catalogueByKey.has(key));
   const unexpectedKeys = keys.filter(key => expectedKeys.length && !expectedKeys.includes(key));
@@ -365,7 +367,7 @@ export function auditAccessoryCatalogue(expectedKeys = []) {
   const duplicateLabels = [];
   const labels = new Set();
   accessoryCatalogue.forEach(design => {
-    [design.headwear, design.wrap, design.charm].forEach(item => {
+    designItems(design).forEach(item => {
       familyCounts.set(item.family, (familyCounts.get(item.family) || 0) + 1);
       if (designIds.has(item.id)) duplicateDesignIds.push(item.id);
       designIds.add(item.id);
@@ -390,7 +392,7 @@ export function auditAccessoryCatalogue(expectedKeys = []) {
     overusedFamilies,
     namedCoverageCount,
     missingNamedRenderers,
-    valid: accessoryCatalogue.length === 37 && designIds.size === 111 && namedCoverageCount === 111 && !duplicateKeys.length && !duplicateLabels.length && !duplicateDesignIds.length && !duplicateGeometrySignatures.length && !missingKeys.length && !unexpectedKeys.length && !overusedFamilies.length && !missingNamedRenderers.length
+    valid: accessoryCatalogue.length === 37 && designIds.size === 112 && namedCoverageCount === 112 && !duplicateKeys.length && !duplicateLabels.length && !duplicateDesignIds.length && !duplicateGeometrySignatures.length && !missingKeys.length && !unexpectedKeys.length && !overusedFamilies.length && !missingNamedRenderers.length
   });
 }
 
@@ -551,6 +553,28 @@ function drawN2Accessory(group, item, companion) {
       const label = add(group, "text", { class: "cryo-label", x: 35, y: 13, "text-anchor": "middle" });
       label.textContent = "LN₂";
       add(group, "path", { class: "cryo-hose", d: "M-23-8Q-41-3-37 14Q-33 29-20 22" });
+    }
+    return true;
+  }
+  if (item.family === "n2-lab-goggles") {
+    group.classList.add("n2-lab-goggles", companion ? "n2-goggles-companion" : "n2-goggles-primary");
+    if (companion) {
+      add(group, "path", { class: "goggle-strap", d: "M-31 0Q-24-14-14-16M17-11Q27-8 31 4" });
+      add(group, "path", { class: "goggle-seal", d: "M-28-8Q-18-18-4-13Q8-17 23-7L27 3Q20 14 7 11L-2 7Q-14 15-24 8Q-31 4-28-8Z" });
+      add(group, "path", { class: "goggle-lens companion", d: "M-23-7Q-15-13-4-9Q7-13 18-6L22 2Q16 9 8 7L-2 4Q-12 10-20 6Q-25 3-23-7Z" });
+      add(group, "rect", { class: "goggle-vent-body", x: -30, y: -2, width: 7, height: 10, rx: 3 });
+      add(group, "path", { class: "goggle-vent-slots", d: "M-28 1H-25M-28 4H-25" });
+      add(group, "path", { class: "goggle-highlight", d: "M-17-7Q-11-11-6-8" });
+      add(group, "rect", { class: "goggle-adjuster", x: 24, y: -5, width: 5, height: 9, rx: 1.5, transform: "rotate(-13 26.5 -.5)" });
+    } else {
+      add(group, "path", { class: "goggle-strap", d: "M-47 1Q-39-20-24-23M26-15Q40-11 47 7" });
+      add(group, "path", { class: "goggle-seal", d: "M-40-12Q-27-25-8-18Q1-14 8-17Q27-19 39-6L40 5Q31 19 12 15L1 10Q-13 20-30 13Q-43 8-40-12Z" });
+      add(group, "path", { class: "goggle-lens", d: "M-34-10Q-24-19-9-14Q0-10 8-13Q23-15 33-5L34 3Q26 13 13 10L1 6Q-11 15-25 9Q-36 6-34-10Z" });
+      add(group, "rect", { class: "goggle-vent-body", x: -44, y: -4, width: 10, height: 15, rx: 4 });
+      add(group, "rect", { class: "goggle-vent-body", x: 33, y: -1, width: 10, height: 15, rx: 4 });
+      add(group, "path", { class: "goggle-vent-slots", d: "M-41 0H-36M-41 4H-36M36 3H41M36 7H41" });
+      add(group, "path", { class: "goggle-highlight", d: "M-25-11Q-17-16-10-12M11-11Q18-13 24-8" });
+      add(group, "rect", { class: "goggle-adjuster", x: 38, y: -9, width: 7, height: 12, rx: 2, transform: "rotate(-16 41.5 -3)" });
     }
     return true;
   }
@@ -4931,6 +4955,11 @@ const layouts = {
     head: { primary: [286, 93, .68], companion: [94, 118, .4] },
     garment: { primary: [168, 198, .66], companion: [49, 178, .39] },
     prop: { primary: [266, 203, .67], companion: [89, 183, .4] }
+  },
+  extra: {
+    head: { primary: [331, 53, 1], companion: [111, 104, .58] },
+    garment: { primary: [286, 114, .67], companion: [101, 127, .4] },
+    prop: { primary: [306, 105, .66], companion: [105, 125, .4] }
   }
 };
 
@@ -4942,6 +4971,7 @@ function renderPiece(target, item, wormPart) {
     "ngm-agar-plate": { primary: [366, 260, .82, -6], companion: [35, 288, .65, 2] },
     "n2-lab-coat": { primary: [180, 214, 1, 0], companion: [52, 168, .92, -1] },
     "cryo-vial-jetpack": { primary: [278, 143, .9, -3], companion: [31, 155, .72, 5] },
+    "n2-lab-goggles": { primary: [331, 53, 1, 14], companion: [111, 104, .58, 14] },
     "fig-fascinator": { primary: [326, 55, .64, -2], companion: [108, 105, .5, 3] },
     "sample-pannier": { primary: [170, 196, .72, -4], companion: [55, 183, .52, 4] },
     "wings": { primary: [195, 156, .72, -2], companion: [77, 157, .5, 4] },
@@ -5085,7 +5115,7 @@ export function auditAccessoryPairGeometry() {
   const identicalNormalizedPairs = [];
   let pairCount = 0;
   accessoryCatalogue.forEach(design => {
-    [design.headwear, design.wrap, design.charm].forEach(item => {
+    designItems(design).forEach(item => {
       const primaryTarget = svg("g");
       const companionTarget = svg("g");
       const primaryPiece = renderPiece(primaryTarget, item, "primary");
@@ -5102,7 +5132,7 @@ export function auditAccessoryPairGeometry() {
     pairCount,
     distinctPairCount: pairCount - identicalNormalizedPairs.length,
     identicalNormalizedPairs: Object.freeze(identicalNormalizedPairs),
-    valid: pairCount === 111 && !identicalNormalizedPairs.length
+    valid: pairCount === 112 && !identicalNormalizedPairs.length
   });
 }
 
@@ -5112,11 +5142,17 @@ export function renderLocationAccessories(targets, speciesId, placeName) {
   const assignments = [
     [targets.headwear, design.headwear],
     [targets.wrap, design.wrap],
-    [targets.charm, design.charm]
+    [targets.charm, design.charm],
+    [targets.extra, design.extra]
   ];
   assignments.forEach(([target, item]) => {
     if (!target) return;
     target.replaceChildren();
+    if (!item) {
+      delete target.dataset.accessoryFamily;
+      target.hidden = true;
+      return;
+    }
     target.dataset.accessoryFamily = item.family;
     renderPiece(target, item, "primary");
     renderPiece(target, item, "companion");
