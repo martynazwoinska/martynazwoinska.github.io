@@ -13,7 +13,6 @@ const english = Object.freeze({
   accessoryPosition: "{accessory} position: {x} across and {y} down.",
   accessoryReset: "{accessory} position reset.",
   accessorySizeChanged: "{accessory} size {size} percent.",
-  accessorySizeReset: "{accessory} size reset.",
   worldGeometryUnavailable: "World geometry unavailable",
   mapUnavailable: "The map is taking a nap. Pick a worm below."
 });

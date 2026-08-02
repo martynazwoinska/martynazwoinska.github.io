@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#ecf9f7" />
   <link rel="preload" as="image" href="assets/n2-bristol-painted-background.webp" type="image/webp" fetchpriority="high" />
-  <link rel="stylesheet" href="style.css?v=20260802-40" />
+  <link rel="stylesheet" href="style.css?v=20260802-41" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
@@ -259,7 +259,6 @@
             <div>
               <h2 id="dress-title">Make this worm yours</h2>
             </div>
-            <p id="accessory-move-hint" class="accessory-move-hint">Switch on an accessory, then touch and drag either worm’s item directly. Keyboard: tab to an item, use the arrow keys to move it, and press Home to reset it.</p>
             <div class="dress-buttons" aria-label="Worm accessories">
               <button type="button" data-accessory="local-headwear" aria-pressed="false"><span class="button-icon" aria-hidden="true">⌒</span> <span class="button-label">seeded NGM agar plates</span></button>
               <button type="button" data-accessory="local-wrap" aria-pressed="false"><span class="button-icon" aria-hidden="true">≈</span> <span class="button-label">fitted lab coats</span></button>
@@ -271,7 +270,6 @@
               <strong id="accessory-size-target"></strong>
               <input id="accessory-size-slider" class="accessory-size-slider" type="range" min="60" max="200" step="1" value="100" aria-labelledby="accessory-size-caption accessory-size-target" />
               <output id="accessory-size-value" for="accessory-size-slider">100%</output>
-              <button id="accessory-size-reset" class="accessory-size-reset" type="button" aria-label="Reset selected accessory size">Reset</button>
             </div>
             <p id="accessory-status" class="sr-only" aria-live="polite"></p>
             <div id="draw-tools" class="draw-tools" hidden aria-label="Freestyle drawing tools">
@@ -388,6 +386,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="game.js?v=20260802-67"></script>
+  <script type="module" src="game.js?v=20260802-68"></script>
 </body>
 </html>

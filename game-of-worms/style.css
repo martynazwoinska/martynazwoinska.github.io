@@ -2948,7 +2948,6 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 
 .dress-bar { padding: 18px 20px 20px; }
 .dress-bar h2 { margin: 3px 0 12px; font-family: var(--display); font-size: 1.4rem; }
-.accessory-move-hint { margin: -3px 0 10px; color: var(--ink-soft); font-size: .83rem; line-height: 1.45; }
 .dress-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
 .dress-buttons button {
   min-height: 44px;
@@ -2974,7 +2973,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   display: none;
   grid-template-columns: auto minmax(0, 1fr) auto;
   grid-template-areas:
-    "caption target reset"
+    "caption target target"
     "slider slider value";
   align-items: center;
   column-gap: 10px;
@@ -3060,20 +3059,6 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   outline-offset: 2px;
   border-radius: 999px;
 }
-.accessory-size-reset {
-  grid-area: reset;
-  min-width: 56px;
-  min-height: 44px;
-  border: 1px solid var(--line);
-  border-radius: 11px;
-  padding: 4px 9px;
-  background: var(--paper-strong);
-  color: var(--ink);
-  cursor: pointer;
-  font-weight: 900;
-}
-.accessory-size-reset:hover:not(:disabled) { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 9%, white); }
-.accessory-size-reset:disabled { cursor: default; opacity: .42; }
 .accessory-size-controls output { grid-area: value; min-width: 38px; color: var(--ink-soft); font-size: .76rem; font-weight: 800; text-align: right; }
 @media (min-width: 681px) and (hover: hover) and (pointer: fine) {
   .accessory-size-controls:not([hidden]) { display: grid; }

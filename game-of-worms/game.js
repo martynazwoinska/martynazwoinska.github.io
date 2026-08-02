@@ -1,7 +1,7 @@
 import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.net/npm/d3-geo@3/+esm";
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
-import { createGameTranslator } from "./game-i18n.js?v=20260730-4";
+import { createGameTranslator } from "./game-i18n.js?v=20260802-5";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260728-22";
 import { speciesGalleries } from "./species-gallery.js?v=20260801-3";
@@ -283,7 +283,6 @@ const els = {
   accessorySizeControls: document.getElementById("accessory-size-controls"),
   accessorySizeTarget: document.getElementById("accessory-size-target"),
   accessorySizeSlider: document.getElementById("accessory-size-slider"),
-  accessorySizeReset: document.getElementById("accessory-size-reset"),
   accessorySizeValue: document.getElementById("accessory-size-value")
 };
 
@@ -929,7 +928,6 @@ function updateAccessorySizeControls() {
   const sliderProgress = sliderRange ? (position.scale - accessoryScaleMin) / sliderRange * 100 : 0;
   els.accessorySizeSlider.style.setProperty("--accessory-size-progress", `${sliderProgress.toFixed(2)}%`);
   els.accessorySizeValue.value = `${percentage}%`;
-  els.accessorySizeReset.disabled = Math.abs(position.scale - 1) < .01;
 }
 
 function selectAccessoryForSizing(id, wormPart) {
@@ -977,21 +975,10 @@ function announceSelectedAccessorySize() {
   }));
 }
 
-function resetSelectedAccessorySize() {
-  const target = selectedAccessorySizeTarget;
-  if (!target) return;
-  const piece = visibleAccessoryPieces(target.id, target.wormPart)[0];
-  if (!piece) return;
-  const current = accessoryPosition(target.id, target.wormPart);
-  moveAccessory(target.id, target.wormPart, { ...current, scale: 1 }, piece, false);
-  announceAccessory(t("accessorySizeReset", { accessory: accessoryName(target.id, target.wormPart) }));
-}
-
 els.accessorySizeSlider.addEventListener("input", event => {
   setSelectedAccessoryScale(Number(event.currentTarget.value) / 100);
 });
 els.accessorySizeSlider.addEventListener("change", announceSelectedAccessorySize);
-els.accessorySizeReset.addEventListener("click", resetSelectedAccessorySize);
 
 function announceAccessory(message) {
   els.accessoryStatus.textContent = "";
@@ -1153,7 +1140,6 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-describedby", "accessory-move-hint");
       piece.setAttribute("aria-keyshortcuts", "ArrowUp ArrowDown ArrowLeft ArrowRight + - Home");
       addAccessoryHitTarget(piece);
     });
