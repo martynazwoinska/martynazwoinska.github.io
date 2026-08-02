@@ -4,7 +4,7 @@ import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries
 import { createGameTranslator } from "./game-i18n.js?v=20260802-5";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260728-22";
-import { speciesGalleries } from "./species-gallery.js?v=20260801-3";
+import { speciesGalleries } from "./species-gallery.js?v=20260802-5";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -273,8 +273,7 @@ const els = {
   galleryTitle: document.getElementById("species-gallery-title"),
   galleryDescription: document.getElementById("species-gallery-description"),
   galleryImages: document.getElementById("species-gallery-images"),
-  gallerySource: document.getElementById("species-gallery-source"),
-  galleryLicence: document.getElementById("species-gallery-licence"),
+  galleryCredit: document.getElementById("species-gallery-credit"),
   exploredCount: document.getElementById("explored-count"),
   freestyle: document.getElementById("freestyle-draw"),
   drawTools: document.getElementById("draw-tools"),
@@ -344,10 +343,23 @@ function renderSpeciesGallery(item) {
     els.galleryImages.appendChild(figure);
   });
 
-  scientificText(els.gallerySource, gallery.source.label);
-  els.gallerySource.href = gallery.source.url;
-  els.galleryLicence.textContent = gallery.source.licence.label;
-  els.galleryLicence.href = gallery.source.licence.url;
+  const gallerySources = [gallery.source, ...gallery.images.map(image => image.source).filter(Boolean)];
+  const uniqueSources = gallerySources.filter((source, index) => gallerySources.findIndex(candidate => candidate.url === source.url) === index);
+  els.galleryCredit.replaceChildren();
+  uniqueSources.forEach((source, index) => {
+    if (index > 0) els.galleryCredit.append(document.createElement("br"));
+    const sourceLink = document.createElement("a");
+    const licenceLink = document.createElement("a");
+    sourceLink.href = source.url;
+    sourceLink.target = "_blank";
+    sourceLink.rel = "noopener";
+    scientificText(sourceLink, source.label);
+    licenceLink.href = source.licence.url;
+    licenceLink.target = "_blank";
+    licenceLink.rel = "noopener";
+    licenceLink.textContent = source.licence.label;
+    els.galleryCredit.append("Source: ", sourceLink, ". Licence: ", licenceLink, ".");
+  });
 }
 
 function openSpeciesGallery() {
