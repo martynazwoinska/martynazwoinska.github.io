@@ -775,25 +775,25 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
   activeAccessoryPositions().set(positionKey, position);
   applyAccessoryPosition(id, wormPart, position);
 
-  const avatarBounds = els.wormAvatar.getBoundingClientRect();
-  const margin = 6;
-  if (avatarBounds.width && avatarBounds.height) {
+  const movementBounds = els.habitat.getBoundingClientRect();
+  const margin = Math.max(12, Math.min(18, movementBounds.width * .025));
+  if (movementBounds.width && movementBounds.height) {
     const accessoryBounds = accessoryPieceBounds(id, wormPart);
     if (!accessoryBounds?.width || !accessoryBounds.height) return position;
 
     const isPrimaryFigFascinator = referencePiece.dataset.accessoryFamily === "fig-fascinator"
       && referencePiece.dataset.wormPart === "primary";
     const topOverflow = isPrimaryFigFascinator
-      ? Math.min(accessoryBounds.height * .66, avatarBounds.height * .2)
+      ? Math.min(accessoryBounds.height * .66, movementBounds.height * .2)
       : 0;
-    const topBoundary = avatarBounds.top + margin - topOverflow;
+    const topBoundary = movementBounds.top + margin - topOverflow;
 
     let screenX = 0;
     let screenY = 0;
-    if (accessoryBounds.left < avatarBounds.left + margin) screenX = avatarBounds.left + margin - accessoryBounds.left;
-    else if (accessoryBounds.right > avatarBounds.right - margin) screenX = avatarBounds.right - margin - accessoryBounds.right;
+    if (accessoryBounds.left < movementBounds.left + margin) screenX = movementBounds.left + margin - accessoryBounds.left;
+    else if (accessoryBounds.right > movementBounds.right - margin) screenX = movementBounds.right - margin - accessoryBounds.right;
     if (accessoryBounds.top < topBoundary) screenY = topBoundary - accessoryBounds.top;
-    else if (accessoryBounds.bottom > avatarBounds.bottom - margin) screenY = avatarBounds.bottom - margin - accessoryBounds.bottom;
+    else if (accessoryBounds.bottom > movementBounds.bottom - margin) screenY = movementBounds.bottom - margin - accessoryBounds.bottom;
 
     if (avoidLabels && window.matchMedia("(max-width: 680px)").matches) {
       const labelGap = 10;
@@ -812,11 +812,11 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
         && first.top < second.bottom + labelGap
         && first.bottom > second.top - labelGap
       );
-      const withinAvatar = bounds => (
-        bounds.left >= avatarBounds.left + margin - .5
-        && bounds.right <= avatarBounds.right - margin + .5
+      const withinMovementBounds = bounds => (
+        bounds.left >= movementBounds.left + margin - .5
+        && bounds.right <= movementBounds.right - margin + .5
         && bounds.top >= topBoundary - .5
-        && bounds.bottom <= avatarBounds.bottom - margin + .5
+        && bounds.bottom <= movementBounds.bottom - margin + .5
       );
 
       labelBounds.forEach(labelBoundsItem => {
@@ -834,7 +834,7 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
             right: shiftedBounds.right + correction.x,
             bottom: shiftedBounds.bottom + correction.y
           }
-        })).filter(correction => withinAvatar(correction.bounds))
+        })).filter(correction => withinMovementBounds(correction.bounds))
           .sort((left, right) => left.distance - right.distance);
         const correction = corrections[0];
         if (!correction) return;
