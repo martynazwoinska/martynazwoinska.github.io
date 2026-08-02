@@ -2975,10 +2975,10 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .freestyle-icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .accessory-size-controls {
   display: none;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   grid-template-areas:
-    "caption target target"
-    "slider slider value";
+    "caption caption"
+    "slider value";
   align-items: center;
   column-gap: 10px;
   row-gap: 3px;
@@ -2999,15 +2999,8 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   font-size: .72rem;
   font-weight: 900;
   letter-spacing: .06em;
+  text-align: center;
   text-transform: uppercase;
-}
-.accessory-size-controls > strong {
-  grid-area: target;
-  min-width: 0;
-  overflow: hidden;
-  font-size: .8rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 .accessory-size-slider {
   --accessory-size-progress: 28.57%;
