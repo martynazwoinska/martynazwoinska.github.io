@@ -1,4 +1,8 @@
 const licences = Object.freeze({
+  ccBy: Object.freeze({
+    label: "CC BY",
+    url: "https://plos.org/terms-of-use/"
+  }),
   ccBy4: Object.freeze({
     label: "CC BY 4.0",
     url: "https://creativecommons.org/licenses/by/4.0/"
@@ -14,6 +18,11 @@ const sources = Object.freeze({
     label: "Zeynep F. Altun (2006), adult C. elegans",
     url: "https://commons.wikimedia.org/wiki/File:Adult_Caenorhabditis_elegans.jpg",
     licence: licences.ccBySa25
+  }),
+  seidel: Object.freeze({
+    label: "Seidel et al. (2011), Fig. 2A",
+    url: "https://doi.org/10.1371/journal.pbio.1001115.g002",
+    licence: licences.ccBy
   }),
   toker: Object.freeze({
     label: "Toker & Hobert (2022), Fig. 1C",
@@ -37,7 +46,7 @@ const sources = Object.freeze({
   })
 });
 
-function wholeAnimalImage({ src, sourceWidth, sourceHeight, viewBox, alt, caption, maxWidth = 680, palePadding = false }) {
+function wholeAnimalImage({ src, sourceWidth, sourceHeight, viewBox, alt, caption, source = null, maxWidth = 680, palePadding = false }) {
   return Object.freeze({
     src,
     sourceWidth,
@@ -45,6 +54,7 @@ function wholeAnimalImage({ src, sourceWidth, sourceHeight, viewBox, alt, captio
     viewBox: Object.freeze(viewBox),
     alt,
     caption,
+    source,
     maxWidth,
     palePadding
   });
@@ -53,7 +63,7 @@ function wholeAnimalImage({ src, sourceWidth, sourceHeight, viewBox, alt, captio
 export const speciesGalleries = Object.freeze({
   elegans: Object.freeze({
     scientificName: "Caenorhabditis elegans",
-    description: "A single complete adult hermaphrodite under differential interference contrast microscopy.",
+    description: "A complete adult hermaphrodite and a complete adult male; green fluorescence in the male marks sperm-producing cells.",
     source: sources.altun,
     images: Object.freeze([
       wholeAnimalImage({
@@ -64,6 +74,16 @@ export const speciesGalleries = Object.freeze({
         alt: "A single complete adult Caenorhabditis elegans hermaphrodite under differential interference contrast microscopy.",
         caption: "Whole adult hermaphrodite",
         maxWidth: 820
+      }),
+      wholeAnimalImage({
+        src: "assets/species-gallery/source-seidel-figure2.png",
+        sourceWidth: 979,
+        sourceHeight: 1883,
+        viewBox: [10, 8, 959, 478],
+        alt: "A complete adult male Caenorhabditis elegans curled into a U shape under Nomarski microscopy, with green fluorescence marking sperm-producing cells in the gonad.",
+        caption: "Whole adult male",
+        source: sources.seidel,
+        maxWidth: 680
       })
     ])
   }),
