@@ -30,6 +30,7 @@ Use the prefixed CSS custom properties rather than copying hex values into compo
 | `--site-brand-emerald` | `#1f735f` | `#79dec2` | Emerald primary accent, links, active states and structural emphasis |
 | `--site-brand-emerald-soft` | `#dcebe5` | `#164b4d` | Quiet emerald backgrounds and selected-state fills |
 | `--site-brand-berry` | `#8b3d5c` | `#e9a0bd` | Oxblood or plum-berry secondary accent |
+| `--site-ornament-berry` | `#a44057` | `#d878c4` | Theme-specific painted-flower echo for divider terminals only |
 | `--site-brand-gold` | `#a88445` | `#d7b96f` | Antique-gold fine borders, markers and restrained highlights |
 | `--site-brand-violet` | `#6f5878` | `#c4b2dd` | Muted violet for limited botanical or categorical detail |
 | `--site-nav-bg` | `#faf8f2` | `#104a52` | Navigation merged into the page field rather than shown as a separate colour slab |
@@ -37,6 +38,8 @@ Use the prefixed CSS custom properties rather than copying hex values into compo
 | `--site-nav-accent` | `#1b6d59` | `#8be4c8` | Accessible emerald cue within the navigation |
 | `--site-border` | `#ddd9cf` | `#3a7477` | Neutral borders and dividers |
 | `--site-focus` | `#8b3d5c` | `#efa5c3` | Focus outline for controls on the paired site themes |
+| `--site-selection-bg` | `#e6c7d2` | `#75406d` | Deliberate berry/plum text-selection field instead of browser blue |
+| `--site-selection-text` | `#20313d` | `#f5f3ea` | Readable selected text in each theme |
 | `--site-shadow` | `0 1px 2px rgba(27,43,50,.06), 0 10px 28px rgba(27,43,50,.07)` | `0 1px 2px rgba(2,22,28,.34), 0 12px 32px rgba(2,19,25,.28)` | Standard restrained elevation |
 
 Petrol Ink is the first-visit default when no theme preference has been stored. A visitor’s explicit light or dark choice is retained for later visits. The explicit `data-theme="light"` theme restores the unchanged Ivory Ink values.
@@ -48,7 +51,7 @@ The Game of Worms is an intentional scoped exception: it uses one fixed light, p
 1. Use neutral backgrounds and text colours for most of the page.
 2. Use emerald for the main action, active language or navigation state, scientific emphasis and important structure.
 3. Use antique gold for fine ornament, secondary focus and small markers. It should not compete with emerald.
-4. Use berry or oxblood as the saturated secondary accent for botanical terminals, hover states and small warm details. Keep violet muted and limited to meaningful categories.
+4. Use berry or oxblood as the saturated secondary accent for hover states and small warm details. Divider terminals use the narrower `--site-ornament-berry` treatment so they echo the painted flowers without forcing the accessible interaction berry to do two different jobs. Keep violet muted and limited to meaningful categories.
 5. Prefer `color-mix()` with the semantic variables when a quieter tint is needed.
 
 The navigation background matches the page background in both themes so the header does not compete with the hero. Fine antique-gold borders separate the header rows and close the header consistently. The theme toggle keeps a 34 px control area and 28 px antique-gold face at every viewport. The desktop glyph is 20 px; in the compact mobile header, only the half-filled `#14171a` glyph reduces to 17 px while the face keeps its size and uses a softer fill and half-pixel hairline.
@@ -91,7 +94,7 @@ The Cacao of Excellence programme’s official 2021 `Cocoa of Excellence Flavour
 - Display headings and identity text use the approved Cormorant Garamond 700 with a subtle theme-aware current-colour optical stroke (`.24px` in Ivory Ink and `.14px` in Petrol Ink). The homepage hero statement uses a stronger `.52px` light / `.34px` dark optical stroke. On narrow screens, the full name uses a dedicated `.5px` Ivory Ink / `.32px` Petrol Ink stroke so that the light version retains equal authority without making the dark version heavy. Keep expertise, navigation, body copy, controls and metadata in the sans-serif stack. Do not replace the real 700 files with a synthetic 800 weight.
 - Keep asymmetric rounded corners soft rather than exaggerated.
 - Use botanical curves, seed-pod forms and worm-like lines as small accents.
-- Full-section floral dividers use reinforced gold and emerald stems with theme-aware contrast, while their berry terminals and geometry stay delicate. On phones, preserve the approved footprint and dimensions; reinforce only the compressed edges with a subtle same-colour treatment rather than lengthening or enlarging the ornament. Internal subsection and list rules remain visibly quieter.
+- Full-section floral dividers use reinforced gold and emerald stems with theme-aware contrast, while their theme-specific berry terminals echo the wide painted flowers and keep the geometry delicate. On phones, preserve the approved footprint and dimensions; reinforce only the compressed edges with a subtle same-colour treatment rather than lengthening or enlarging the ornament. Internal subsection and list rules remain visibly quieter.
 - At wide viewports, treat the painted botanical frame as a pair of viewport-fixed growths rather than page-bound decoration. The lighter, diagonal upper-left piece enters from the current top-left edge and leaves a deliberate clear gap before the `MZ` monogram; the taller lower-right piece rises from the current bottom-right edge and carries greater visual weight. Use exactly the same alpha geometry and positioning in Ivory Ink and Petrol Ink, changing only palette values. Ivory Ink uses warm olive and bottle green, antique gold, warm ivory and berry-fuchsia; Petrol Ink deepens the greens and uses a saturated plum-violet flower while retaining antique-gold and cream details. Preserve the transparent source masters and do not add a page-colour veil, rectangular matte, glow or sticker-like outline.
 - Keep ornament subordinate to information and interaction.
 - Avoid emoji as primary visual elements and avoid oversized decorative icons.
