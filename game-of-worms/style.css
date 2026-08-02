@@ -2975,7 +2975,9 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 }
 .dress-buttons button:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(29,70,68,.12); }
 .dress-buttons button[aria-pressed="true"] { background: color-mix(in srgb, var(--teal) 13%, var(--paper-strong)); color: var(--teal-dark); border-color: var(--teal); box-shadow: 0 4px 10px rgba(20,75,78,.13); }
-.dress-buttons button[data-accessory][aria-pressed="true"]::after { content: "✓"; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--teal-dark); color: white; font-size: .72rem; }
+.dress-buttons button[data-accessory] { position: relative; padding-inline-end: 34px; }
+.dress-buttons button[data-accessory]::after { content: ""; position: absolute; inset-inline-end: 10px; top: 50%; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--teal-dark); color: white; font-size: .72rem; opacity: 0; transform: translateY(-50%) scale(.8); pointer-events: none; }
+.dress-buttons button[data-accessory][aria-pressed="true"]::after { content: "✓"; opacity: 1; transform: translateY(-50%) scale(1); }
 .dress-buttons .button-icon { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: color-mix(in srgb, var(--yellow) 45%, white); font-size: .92rem; }
 .goggles-button-icon svg { width: 18px; height: 18px; fill: rgba(174,232,240,.5); stroke: #295f72; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .dress-buttons .freestyle-button { margin-inline-start: 5px; border-color: color-mix(in srgb, var(--teal) 25%, var(--line)); background: color-mix(in srgb, var(--teal) 4%, var(--paper-strong)); }
