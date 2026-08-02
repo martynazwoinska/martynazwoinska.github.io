@@ -465,13 +465,6 @@
         position: absolute; display: block;
         background-repeat: no-repeat; background-position: 0 0; background-size: 100% 100%;
       }
-      .botanical-frame__upper-left {
-        position: fixed;
-        top: -24px; left: -190px;
-        width: clamp(420px, calc((100vw - var(--maxw)) / 2 + 180px), 540px);
-        aspect-ratio: 1228 / 729;
-        background-image: url("assets/botanical-frame/hybrid-botanical-upper-left-light-v2.webp?v=2");
-      }
       .botanical-frame__lower-right {
         position: fixed;
         bottom: 6px; right: -6px;
@@ -480,17 +473,11 @@
         background-image: url("assets/botanical-frame/hybrid-botanical-lower-right-light-v3.webp?v=4");
       }
       .hero-lower { display: none !important; }
-      html[data-theme="dark"] .botanical-frame__upper-left {
-        background-image: url("assets/botanical-frame/hybrid-botanical-upper-left-dark-v2.webp?v=2");
-      }
       html[data-theme="dark"] .botanical-frame__lower-right {
         background-image: url("assets/botanical-frame/hybrid-botanical-lower-right-dark-v3.webp?v=4");
       }
     }
     @media (min-width: 1680px) and (prefers-color-scheme: dark) {
-      html:not([data-theme]) .botanical-frame__upper-left {
-        background-image: url("assets/botanical-frame/hybrid-botanical-upper-left-dark-v2.webp?v=2");
-      }
       html:not([data-theme]) .botanical-frame__lower-right {
         background-image: url("assets/botanical-frame/hybrid-botanical-lower-right-dark-v3.webp?v=4");
       }
@@ -1122,7 +1109,6 @@
 <body id="top">
   <a class="skip-link" href="#main">Skip to main content</a>
   <div class="botanical-frame" aria-hidden="true">
-    <span class="botanical-frame__piece botanical-frame__upper-left"></span>
     <span class="botanical-frame__piece botanical-frame__lower-right"></span>
   </div>
   <!-- ============ NAV ============ -->
