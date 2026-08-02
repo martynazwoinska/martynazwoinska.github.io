@@ -316,7 +316,7 @@ function renderSpeciesGallery(item) {
   if (!gallery) return;
 
   italicText(els.galleryTitle, gallery.scientificName);
-  els.galleryDescription.textContent = gallery.description;
+  scientificText(els.galleryDescription, gallery.description);
   els.galleryImages.replaceChildren();
   gallery.images.forEach(image => {
     const figure = document.createElement("figure");
