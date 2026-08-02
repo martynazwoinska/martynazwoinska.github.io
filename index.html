@@ -493,20 +493,19 @@
     .hero {
       position: relative; isolation: isolate; overflow: hidden;
       min-height: 344px; padding-top: 30px; padding-bottom: 24px;
+      --hero-pause-line: 24px;
+      --hero-pause-gap: 20px;
     }
     .hero::after {
       content: ""; display: block; position: absolute; z-index: 3;
       left: 50%; bottom: 14.5px;
-      width: 68px; height: 1px;
+      width: calc(var(--hero-pause-line) + var(--hero-pause-gap) + var(--hero-pause-line)); height: 1px;
       transform: translateX(-50%);
       background: linear-gradient(
         90deg,
-        var(--accent-gold) 0,
-        var(--accent-gold) 24px,
-        transparent 24px,
-        transparent 44px,
-        var(--accent-gold) 44px,
-        var(--accent-gold) 68px
+        var(--accent-gold) 0 var(--hero-pause-line),
+        transparent var(--hero-pause-line) calc(var(--hero-pause-line) + var(--hero-pause-gap)),
+        var(--accent-gold) calc(var(--hero-pause-line) + var(--hero-pause-gap)) 100%
       );
       opacity: .72; pointer-events: none;
     }
@@ -517,6 +516,9 @@
       background: var(--accent-gold);
       transform: translateX(-50%) rotate(45deg);
       pointer-events: none;
+    }
+    @media (min-width: 1280px) {
+      .hero { --hero-pause-line: clamp(30px, 2vw, 40px); }
     }
     .hero-grid {
       position: relative; z-index: 2;
