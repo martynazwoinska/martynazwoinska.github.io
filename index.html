@@ -557,12 +557,12 @@
       pointer-events: none; user-select: none;
     }
     .hero-art--theme-light {
-      opacity: .72;
-      filter: saturate(1.02) contrast(.99);
+      opacity: .88;
+      filter: none;
     }
     .hero-art--theme-dark {
-      opacity: .7;
-      filter: saturate(1.25) brightness(1.08) contrast(.95) hue-rotate(7deg);
+      opacity: .88;
+      filter: none;
     }
     .hero-art--theme-dark { display: none; }
     html[data-theme="dark"] .hero-art--theme-light { display: none; }
@@ -632,7 +632,7 @@
       .hero-statement { font-size: 2.55rem; }
       .hero-name { margin-top: 11px; font-size: 1.3rem; }
       .hero-expertise { margin-top: 10px; font-size: .94rem; }
-      .hero-lower { right: 24px; bottom: 10px; width: 156px; opacity: .6; }
+      .hero-lower { right: 24px; bottom: 10px; width: 156px; }
     }
     @media (max-width: 759.98px) {
       .hero { min-height: 0; padding: 30px 16px 8px; }
@@ -646,7 +646,6 @@
         position: relative; right: auto; bottom: auto;
         width: clamp(174px, 28vw, 210px);
         margin: -32px clamp(18px, 4vw, 34px) -18px auto;
-        opacity: .66;
       }
       .hero-statement { display: none; }
       .hero-name {
@@ -682,7 +681,6 @@
       .hero-lower {
         width: clamp(148px, 43vw, 166px);
         margin: -30px 4px -20px auto;
-        opacity: .66;
       }
       .hero-name {
         font-size: clamp(2.9rem, 14.2vw, 3.4rem);
@@ -1183,7 +1181,7 @@
     </div>
     <img
       class="hero-art hero-lower hero-art--theme-light"
-      src="assets/hero/quiet-atelier-lower-right.png"
+      src="assets/botanical-frame/hybrid-botanical-lower-right-light-v3.webp?v=4"
       alt=""
       aria-hidden="true"
       draggable="false"
@@ -1191,7 +1189,7 @@
     />
     <img
       class="hero-art hero-lower hero-art--theme-dark"
-      src="assets/hero/quiet-atelier-lower-right-dark.png"
+      src="assets/botanical-frame/hybrid-botanical-lower-right-dark-v3.webp?v=4"
       alt=""
       aria-hidden="true"
       draggable="false"
