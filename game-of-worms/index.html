@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#ecf9f7" />
   <link rel="preload" as="image" href="assets/n2-bristol-painted-background.webp" type="image/webp" fetchpriority="high" />
-  <link rel="stylesheet" href="style.css?v=20260802-43" />
+  <link rel="stylesheet" href="style.css?v=20260802-47" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
@@ -244,6 +244,8 @@
                   <g id="local-wrap" class="accessory regional-accessory" hidden></g>
 
                   <g id="local-charm" class="accessory regional-accessory" hidden></g>
+
+                  <g id="local-extra" class="accessory regional-accessory" hidden></g>
                 </g>
               </g>
             </svg>
@@ -263,6 +265,16 @@
               <button type="button" data-accessory="local-headwear" aria-pressed="false"><span class="button-icon" aria-hidden="true">⌒</span> <span class="button-label">seeded NGM agar plates</span></button>
               <button type="button" data-accessory="local-wrap" aria-pressed="false"><span class="button-icon" aria-hidden="true">≈</span> <span class="button-label">fitted lab coats</span></button>
               <button type="button" data-accessory="local-charm" aria-pressed="false"><span class="button-icon" aria-hidden="true">✦</span> <span class="button-label">cryo-vial jetpacks</span></button>
+              <button id="local-extra-button" type="button" data-accessory="local-extra" aria-pressed="false" hidden>
+                <span class="button-icon goggles-button-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M2.5 11.5 5 8.8c2.2-1.3 4.4-1.2 7 .1 2.6-1.3 4.8-1.4 7-.1l2.5 2.7-.7 4.4c-2.7 2-5.4 2.1-8.8.3-3.4 1.8-6.1 1.7-8.8-.3l-.7-4.4Z"></path>
+                    <path d="M5.7 11c1.7-.8 3.4-.7 5.1.2M13.2 11.2c1.7-.9 3.4-1 5.1-.2"></path>
+                    <path d="M3 12H1.5M21 12h1.5"></path>
+                  </svg>
+                </span>
+                <span class="button-label">lab goggles</span>
+              </button>
               <button id="freestyle-draw" class="freestyle-button" type="button" aria-pressed="false">
                 <svg class="freestyle-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
                   <path d="M5 17.5 15.7 6.8l1.5 1.5L6.5 19H5v-1.5Z"></path>
@@ -393,6 +405,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="game.js?v=20260802-72"></script>
+  <script type="module" src="game.js?v=20260802-75"></script>
 </body>
 </html>

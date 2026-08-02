@@ -4,7 +4,6 @@ const english = Object.freeze({
   meetSpeciesAria: "Meet {name}, {nickname}",
   reproductionMostlySelfing: "mostly selfing",
   reproductionOutcrossing: "outcrossing",
-  opensBristolN2: "opens Bristol N2",
   illustratedPairAria: "Illustrated {name} {first} and {second}",
   markerAria: "Meet {name}, {reproduction}, from {place}{source}",
   markerSourceSuffix: ", record from {source}",

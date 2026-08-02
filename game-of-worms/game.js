@@ -1,9 +1,9 @@
 import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.net/npm/d3-geo@3/+esm";
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
-import { createGameTranslator } from "./game-i18n.js?v=20260802-5";
+import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260728-22";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260802-24";
 import { speciesGalleries } from "./species-gallery.js?v=20260802-5";
 
 const t = createGameTranslator(document.documentElement.lang);
@@ -207,7 +207,7 @@ if (!environmentCompositionAudit.valid) {
   throw new Error(`Invalid environment composition catalogue: ${JSON.stringify(environmentCompositionAudit)}`);
 }
 const visited = new Set();
-const accessoryIds = ["local-headwear", "local-wrap", "local-charm"];
+const accessoryIds = ["local-headwear", "local-wrap", "local-charm", "local-extra"];
 const accessoryWormParts = ["primary", "companion"];
 const accessoryScaleMin = .6;
 const accessoryScaleMax = 2;
@@ -252,12 +252,15 @@ const els = {
   localHeadwear: document.getElementById("local-headwear"),
   localWrap: document.getElementById("local-wrap"),
   localCharm: document.getElementById("local-charm"),
+  localExtra: document.getElementById("local-extra"),
   localHeadwearIcon: document.querySelector('[data-accessory="local-headwear"] .button-icon'),
   localHeadwearLabel: document.querySelector('[data-accessory="local-headwear"] .button-label'),
   localWrapIcon: document.querySelector('[data-accessory="local-wrap"] .button-icon'),
   localWrapLabel: document.querySelector('[data-accessory="local-wrap"] .button-label'),
   localCharmIcon: document.querySelector('[data-accessory="local-charm"] .button-icon'),
   localCharmLabel: document.querySelector('[data-accessory="local-charm"] .button-label'),
+  localExtraButton: document.getElementById("local-extra-button"),
+  localExtraLabel: document.querySelector('[data-accessory="local-extra"] .button-label'),
   speciesName: document.getElementById("species-name"),
   speciesNickname: document.getElementById("species-nickname"),
   speciesIntro: document.getElementById("species-intro"),
@@ -568,12 +571,6 @@ function renderTabs() {
         ? t("reproductionMostlySelfing")
         : t("reproductionOutcrossing");
       button.append(worm, name, mode);
-      if (item.id === "elegans") {
-        const featured = document.createElement("span");
-        featured.className = "featured-place";
-        featured.textContent = t("opensBristolN2");
-        button.appendChild(featured);
-      }
       button.addEventListener("click", () => selectSpecies(item.id));
       pairButtons.appendChild(button);
     });
@@ -590,7 +587,8 @@ function renderSpecies(item, place) {
   const accessoryDesign = renderLocationAccessories({
     headwear: els.localHeadwear,
     wrap: els.localWrap,
-    charm: els.localCharm
+    charm: els.localCharm,
+    extra: els.localExtra
   }, item.id, placeName);
   if (!accessoryDesign) throw new Error(`Missing accessory design for ${item.id}::${placeName}`);
   wireAccessoryPieces();
@@ -614,6 +612,8 @@ function renderSpecies(item, place) {
   els.localWrapLabel.textContent = accessoryDesign.wrap.label;
   els.localCharmIcon.textContent = "✦";
   els.localCharmLabel.textContent = accessoryDesign.charm.label;
+  els.localExtraButton.hidden = !accessoryDesign.extra;
+  if (accessoryDesign.extra) els.localExtraLabel.textContent = accessoryDesign.extra.label;
   els.sceneName.textContent = place?.sceneLabel || environment?.title || placeName;
 
   els.habitat.dataset.habitat = item.habitatKey;
@@ -1165,7 +1165,7 @@ function addAccessoryHitTarget(piece) {
   const scaleX = Math.hypot(matrix.a, matrix.b) || 1;
   const scaleY = Math.hypot(matrix.c, matrix.d) || 1;
   const isN2CompanionCoat = piece.dataset.accessoryFamily === "n2-lab-coat" && piece.dataset.wormPart === "companion";
-  const isN2Accessory = ["ngm-agar-plate", "n2-lab-coat", "cryo-vial-jetpack"].includes(piece.dataset.accessoryFamily);
+  const isN2Accessory = ["ngm-agar-plate", "n2-lab-coat", "cryo-vial-jetpack", "n2-lab-goggles"].includes(piece.dataset.accessoryFamily);
   const minimumTarget = piece.dataset.accessoryFamily === "ngm-agar-plate" ? 46 : isN2Accessory ? 52 : 44;
   const width = isN2CompanionCoat ? minimumTarget / scaleX : Math.max(bounds.width, minimumTarget / scaleX);
   const height = isN2CompanionCoat ? minimumTarget / scaleY : Math.max(bounds.height, minimumTarget / scaleY);
