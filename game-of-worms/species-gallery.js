@@ -31,7 +31,7 @@ const sources = Object.freeze({
     licence: licences.ccBy4
   }),
   ebert: Object.freeze({
-    label: "Ebert & Bargmann (2023), Fig. 2 / Fig. S1",
+    label: "Ebert & Bargmann (2023), Fig. S1",
     url: "https://doi.org/10.1101/2023.10.16.562407",
     licence: licences.ccBy4
   })
