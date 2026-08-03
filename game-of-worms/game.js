@@ -211,6 +211,7 @@ const accessoryIds = ["local-headwear", "local-wrap", "local-charm", "local-extr
 const accessoryWormParts = ["primary", "companion"];
 const accessoryScaleMin = .6;
 const accessoryScaleMax = 2;
+const accessoryBottomMargin = 2;
 const wardrobes = new Map();
 const accessoryPositions = new Map();
 const drawings = new Map();
@@ -741,15 +742,6 @@ function accessoryPieceBounds(id, wormPart) {
   };
 }
 
-function accessoryPoint(event, piece) {
-  const matrix = piece.parentElement?.getScreenCTM();
-  if (!matrix) return doodlePoint(event);
-  const point = els.wormAvatar.createSVGPoint();
-  point.x = event.clientX;
-  point.y = event.clientY;
-  return point.matrixTransform(matrix.inverse());
-}
-
 function screenDeltaToAccessorySpace(piece, x, y) {
   const matrix = piece.parentElement?.getScreenCTM();
   if (!matrix) return { x, y };
@@ -793,7 +785,7 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
     if (accessoryBounds.left < movementBounds.left + margin) screenX = movementBounds.left + margin - accessoryBounds.left;
     else if (accessoryBounds.right > movementBounds.right - margin) screenX = movementBounds.right - margin - accessoryBounds.right;
     if (accessoryBounds.top < topBoundary) screenY = topBoundary - accessoryBounds.top;
-    else if (accessoryBounds.bottom > movementBounds.bottom - margin) screenY = movementBounds.bottom - margin - accessoryBounds.bottom;
+    else if (accessoryBounds.bottom > movementBounds.bottom - accessoryBottomMargin) screenY = movementBounds.bottom - accessoryBottomMargin - accessoryBounds.bottom;
 
     if (avoidLabels && window.matchMedia("(max-width: 680px)").matches) {
       const labelGap = 10;
@@ -816,7 +808,7 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
         bounds.left >= movementBounds.left + margin - .5
         && bounds.right <= movementBounds.right - margin + .5
         && bounds.top >= topBoundary - .5
-        && bounds.bottom <= movementBounds.bottom - margin + .5
+        && bounds.bottom <= movementBounds.bottom - accessoryBottomMargin + .5
       );
 
       labelBounds.forEach(labelBoundsItem => {
@@ -898,6 +890,7 @@ function queueAccessoryConstraints(includeAnimationEnd = false) {
   accessoryConstraintFrame = requestAnimationFrame(() => {
     accessoryConstraintFrame = null;
     constrainVisibleAccessories();
+    requestAnimationFrame(updateAccessoryLabelVisibility);
   });
   if (!includeAnimationEnd) return;
   if (accessoryConstraintTimer) clearTimeout(accessoryConstraintTimer);
@@ -1064,7 +1057,11 @@ els.clearDrawing.addEventListener("click", () => {
 els.doodleCanvas.addEventListener("pointerdown", event => {
   if (!drawingEnabled || event.button !== 0) return;
   event.preventDefault();
-  els.doodleCanvas.setPointerCapture(event.pointerId);
+  try {
+    els.habitat.setPointerCapture(event.pointerId);
+  } catch {
+    // Window-level pointer listeners keep the stroke alive as a fallback.
+  }
   const point = doodlePoint(event);
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   path.setAttribute("class", "doodle-stroke");
@@ -1074,7 +1071,7 @@ els.doodleCanvas.addEventListener("pointerdown", event => {
   activeDoodle = { path, points: [point], color: drawingColor };
 });
 
-els.doodleCanvas.addEventListener("pointermove", event => {
+function moveActiveDoodlePointer(event) {
   if (!activeDoodle) return;
   event.preventDefault();
   const point = doodlePoint(event);
@@ -1082,19 +1079,25 @@ els.doodleCanvas.addEventListener("pointermove", event => {
   if (Math.hypot(point.x - previous.x, point.y - previous.y) < 1.8) return;
   activeDoodle.points.push(point);
   activeDoodle.path.setAttribute("d", pathFromPoints(activeDoodle.points));
-});
+}
 
 function finishDoodle(event) {
   if (!activeDoodle) return;
-  if (els.doodleCanvas.hasPointerCapture(event.pointerId)) els.doodleCanvas.releasePointerCapture(event.pointerId);
+  if (els.habitat.hasPointerCapture?.(event.pointerId)) els.habitat.releasePointerCapture(event.pointerId);
   const d = activeDoodle.path.getAttribute("d");
   if (activeDoodle.points.length > 1) activeDrawing().push({ d, color: activeDoodle.color });
   else activeDoodle.path.remove();
   activeDoodle = null;
 }
 
-els.doodleCanvas.addEventListener("pointerup", finishDoodle);
-els.doodleCanvas.addEventListener("pointercancel", finishDoodle);
+els.habitat.addEventListener("pointermove", event => {
+  if (!activeDoodle) return;
+  event.stopPropagation();
+  moveActiveDoodlePointer(event);
+});
+window.addEventListener("pointermove", moveActiveDoodlePointer, { passive: false });
+window.addEventListener("pointerup", finishDoodle, true);
+window.addEventListener("pointercancel", finishDoodle, true);
 
 function toggleAccessory(id, force) {
   const activeAccessories = activeWardrobe();
@@ -1215,11 +1218,11 @@ document.querySelectorAll("[data-accessory]").forEach(button => {
   button.addEventListener("click", () => toggleAccessory(button.dataset.accessory));
 });
 
-function captureAccessoryPointer(piece, pointerId) {
+function captureAccessoryPointer(pointerId) {
   try {
-    piece.setPointerCapture(pointerId);
+    els.habitat.setPointerCapture(pointerId);
   } catch {
-    // The gesture still works while the pointer remains over the accessory.
+    // Window-level pointer listeners keep the gesture alive as a fallback.
   }
 }
 
@@ -1227,13 +1230,59 @@ function finishAccessoryDrag(event) {
   if (!activeAccessoryDrag || !activeAccessoryDrag.pointers.has(event.pointerId)) return;
   const { id, wormPart, piece, moved, pointers } = activeAccessoryDrag;
   pointers.forEach((value, pointerId) => {
-    if (piece.hasPointerCapture(pointerId)) piece.releasePointerCapture(pointerId);
+    if (els.habitat.hasPointerCapture?.(pointerId)) els.habitat.releasePointerCapture(pointerId);
   });
   piece.classList.remove("is-dragging");
   document.documentElement.classList.remove("accessory-drag-active");
   moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece, false);
   if (moved) announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
   activeAccessoryDrag = null;
+  queueAccessoryConstraints();
+}
+
+function moveActiveAccessoryPointer(event) {
+  if (!activeAccessoryDrag || !activeAccessoryDrag.pointers.has(event.pointerId)) return;
+  const { id, wormPart, piece } = activeAccessoryDrag;
+  event.preventDefault();
+  activeAccessoryDrag.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+  if (activeAccessoryDrag.pinch && activeAccessoryDrag.pointers.size === 2) {
+    const [first, second] = [...activeAccessoryDrag.pointers.values()];
+    const distance = Math.hypot(second.x - first.x, second.y - first.y);
+    if (Math.abs(distance - activeAccessoryDrag.pinch.startDistance) > 1) activeAccessoryDrag.moved = true;
+    const current = accessoryPosition(id, wormPart);
+    moveAccessory(id, wormPart, {
+      ...current,
+      scale: activeAccessoryDrag.pinch.startScale * distance / activeAccessoryDrag.pinch.startDistance
+    }, piece, false);
+    return;
+  }
+  if (activeAccessoryDrag.primaryPointerId !== event.pointerId) return;
+  const movementBounds = els.habitat.getBoundingClientRect();
+  const margin = Math.max(12, Math.min(18, movementBounds.width * .025));
+  const startBounds = activeAccessoryDrag.startBounds;
+  let screenDeltaX = event.clientX - activeAccessoryDrag.startClientPoint.x;
+  let screenDeltaY = event.clientY - activeAccessoryDrag.startClientPoint.y;
+  if (startBounds?.width && startBounds.height) {
+    screenDeltaX = Math.max(
+      movementBounds.left + margin - startBounds.left,
+      Math.min(movementBounds.right - margin - startBounds.right, screenDeltaX)
+    );
+    const topOverflow = piece.dataset.accessoryFamily === "fig-fascinator"
+      && piece.dataset.wormPart === "primary"
+      ? Math.min(startBounds.height * .66, movementBounds.height * .2)
+      : 0;
+    screenDeltaY = Math.max(
+      movementBounds.top + margin - topOverflow - startBounds.top,
+      Math.min(movementBounds.bottom - accessoryBottomMargin - startBounds.bottom, screenDeltaY)
+    );
+  }
+  if (Math.hypot(screenDeltaX, screenDeltaY) > 1) activeAccessoryDrag.moved = true;
+  const delta = screenDeltaToAccessorySpace(piece, screenDeltaX, screenDeltaY);
+  moveAccessory(id, wormPart, {
+    x: activeAccessoryDrag.startPosition.x + delta.x,
+    y: activeAccessoryDrag.startPosition.y + delta.y,
+    scale: activeAccessoryDrag.startPosition.scale
+  }, piece, false);
 }
 
 function wireAccessoryPieces() {
@@ -1252,7 +1301,7 @@ function wireAccessoryPieces() {
         if (activeAccessoryDrag.piece !== piece || activeAccessoryDrag.pointers.size >= 2) return;
         event.preventDefault();
         event.stopPropagation();
-        captureAccessoryPointer(piece, event.pointerId);
+        captureAccessoryPointer(event.pointerId);
         activeAccessoryDrag.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
         const [first, second] = [...activeAccessoryDrag.pointers.values()];
         activeAccessoryDrag.pinch = {
@@ -1264,7 +1313,7 @@ function wireAccessoryPieces() {
       event.preventDefault();
       event.stopPropagation();
       piece.focus({ preventScroll: true });
-      captureAccessoryPointer(piece, event.pointerId);
+      captureAccessoryPointer(event.pointerId);
       piece.classList.add("is-dragging");
       document.documentElement.classList.add("accessory-drag-active");
       activeAccessoryDrag = {
@@ -1274,38 +1323,11 @@ function wireAccessoryPieces() {
         primaryPointerId: event.pointerId,
         pointers: new Map([[event.pointerId, { x: event.clientX, y: event.clientY }]]),
         pinch: null,
-        startPoint: accessoryPoint(event, piece),
+        startClientPoint: { x: event.clientX, y: event.clientY },
+        startBounds: accessoryPieceBounds(id, wormPart),
         startPosition: accessoryPosition(id, wormPart),
         moved: false
       };
-    });
-
-    piece.addEventListener("pointermove", event => {
-      if (!activeAccessoryDrag || activeAccessoryDrag.piece !== piece || !activeAccessoryDrag.pointers.has(event.pointerId)) return;
-      event.preventDefault();
-      event.stopPropagation();
-      activeAccessoryDrag.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
-      if (activeAccessoryDrag.pinch && activeAccessoryDrag.pointers.size === 2) {
-        const [first, second] = [...activeAccessoryDrag.pointers.values()];
-        const distance = Math.hypot(second.x - first.x, second.y - first.y);
-        if (Math.abs(distance - activeAccessoryDrag.pinch.startDistance) > 1) activeAccessoryDrag.moved = true;
-        const current = accessoryPosition(id, wormPart);
-        moveAccessory(id, wormPart, {
-          ...current,
-          scale: activeAccessoryDrag.pinch.startScale * distance / activeAccessoryDrag.pinch.startDistance
-        }, piece, false);
-        return;
-      }
-      if (activeAccessoryDrag.primaryPointerId !== event.pointerId) return;
-      const point = accessoryPoint(event, piece);
-      const deltaX = point.x - activeAccessoryDrag.startPoint.x;
-      const deltaY = point.y - activeAccessoryDrag.startPoint.y;
-      if (Math.hypot(deltaX, deltaY) > 1) activeAccessoryDrag.moved = true;
-      moveAccessory(id, wormPart, {
-        x: activeAccessoryDrag.startPosition.x + deltaX,
-        y: activeAccessoryDrag.startPosition.y + deltaY,
-        scale: activeAccessoryDrag.startPosition.scale
-      }, piece, false);
     });
 
     piece.addEventListener("keydown", event => {
@@ -1353,6 +1375,12 @@ function wireAccessoryPieces() {
   });
 }
 
+els.habitat.addEventListener("pointermove", event => {
+  if (!activeAccessoryDrag) return;
+  event.stopPropagation();
+  moveActiveAccessoryPointer(event);
+});
+window.addEventListener("pointermove", moveActiveAccessoryPointer, { passive: false });
 window.addEventListener("pointerup", finishAccessoryDrag, true);
 window.addEventListener("pointercancel", finishAccessoryDrag, true);
 window.addEventListener("touchmove", event => {
