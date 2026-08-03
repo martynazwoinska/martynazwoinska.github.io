@@ -724,13 +724,18 @@ function applyAccessoryPosition(id, wormPart, position = accessoryPosition(id, w
 
 function visibleAccessoryPieces(id, wormPart) {
   return accessoryPieces(id, wormPart).filter(piece => {
-    const bounds = piece.getBoundingClientRect();
+    const bounds = accessoryArtworkBounds(piece);
     return bounds.width > 0 && bounds.height > 0;
   });
 }
 
+function accessoryArtworkBounds(piece) {
+  return piece.querySelector(":scope > .location-accessory-art")?.getBoundingClientRect()
+    || piece.getBoundingClientRect();
+}
+
 function accessoryPieceBounds(id, wormPart) {
-  const bounds = visibleAccessoryPieces(id, wormPart).map(piece => piece.getBoundingClientRect());
+  const bounds = visibleAccessoryPieces(id, wormPart).map(accessoryArtworkBounds);
   if (!bounds.length) return null;
   return {
     left: Math.min(...bounds.map(box => box.left)),
@@ -809,7 +814,7 @@ function updateAccessoryLabelVisibility() {
     return;
   }
   const accessoryBounds = [...document.querySelectorAll(".accessory:not([hidden]) .accessory-piece[data-worm-part]")]
-    .map(piece => piece.getBoundingClientRect())
+    .map(accessoryArtworkBounds)
     .filter(bounds => bounds.width && bounds.height);
   labels.forEach(label => {
     const labelBounds = label.getBoundingClientRect();
