@@ -755,7 +755,7 @@ function screenDeltaToAccessorySpace(piece, x, y) {
   return { x: localTarget.x - localOrigin.x, y: localTarget.y - localOrigin.y };
 }
 
-function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAccessoryPieces(id, wormPart)[0], avoidLabels = true) {
+function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAccessoryPieces(id, wormPart)[0]) {
   if (!referencePiece) return desiredPosition;
   const positionKey = accessoryPositionKey(id, wormPart);
   const currentPosition = accessoryPosition(id, wormPart);
@@ -786,58 +786,6 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
     else if (accessoryBounds.right > movementBounds.right - margin) screenX = movementBounds.right - margin - accessoryBounds.right;
     if (accessoryBounds.top < topBoundary) screenY = topBoundary - accessoryBounds.top;
     else if (accessoryBounds.bottom > movementBounds.bottom - accessoryBottomMargin) screenY = movementBounds.bottom - accessoryBottomMargin - accessoryBounds.bottom;
-
-    if (avoidLabels && window.matchMedia("(max-width: 680px)").matches) {
-      const labelGap = 10;
-      const labelBounds = [els.wormNameTag, els.sceneName]
-        .map(label => label?.getBoundingClientRect())
-        .filter(bounds => bounds?.width && bounds.height);
-      const shiftedBounds = {
-        left: accessoryBounds.left + screenX,
-        top: accessoryBounds.top + screenY,
-        right: accessoryBounds.right + screenX,
-        bottom: accessoryBounds.bottom + screenY
-      };
-      const overlaps = (first, second) => (
-        first.left < second.right + labelGap
-        && first.right > second.left - labelGap
-        && first.top < second.bottom + labelGap
-        && first.bottom > second.top - labelGap
-      );
-      const withinMovementBounds = bounds => (
-        bounds.left >= movementBounds.left + margin - .5
-        && bounds.right <= movementBounds.right - margin + .5
-        && bounds.top >= topBoundary - .5
-        && bounds.bottom <= movementBounds.bottom - accessoryBottomMargin + .5
-      );
-
-      labelBounds.forEach(labelBoundsItem => {
-        if (!overlaps(shiftedBounds, labelBoundsItem)) return;
-        const corrections = [
-          { x: 0, y: labelBoundsItem.top - labelGap - shiftedBounds.bottom },
-          { x: labelBoundsItem.left - labelGap - shiftedBounds.right, y: 0 },
-          { x: labelBoundsItem.right + labelGap - shiftedBounds.left, y: 0 }
-        ].map(correction => ({
-          ...correction,
-          distance: Math.hypot(correction.x, correction.y),
-          bounds: {
-            left: shiftedBounds.left + correction.x,
-            top: shiftedBounds.top + correction.y,
-            right: shiftedBounds.right + correction.x,
-            bottom: shiftedBounds.bottom + correction.y
-          }
-        })).filter(correction => withinMovementBounds(correction.bounds))
-          .sort((left, right) => left.distance - right.distance);
-        const correction = corrections[0];
-        if (!correction) return;
-        screenX += correction.x;
-        screenY += correction.y;
-        shiftedBounds.left = correction.bounds.left;
-        shiftedBounds.top = correction.bounds.top;
-        shiftedBounds.right = correction.bounds.right;
-        shiftedBounds.bottom = correction.bounds.bottom;
-      });
-    }
 
     if (Math.abs(screenX) >= .5 || Math.abs(screenY) >= .5) {
       const correction = screenDeltaToAccessorySpace(referencePiece, screenX, screenY);
@@ -876,6 +824,7 @@ function updateAccessoryLabelVisibility() {
 }
 
 function constrainVisibleAccessories() {
+  if (els.habitat.classList.contains("is-changing")) return;
   accessoryIds.forEach(id => {
     if (!activeWardrobe().has(id)) return;
     accessoryWormParts.forEach(wormPart => {
@@ -967,7 +916,8 @@ function setSelectedAccessoryScale(scale) {
   moveAccessory(target.id, target.wormPart, {
     ...current,
     scale
-  }, piece, false);
+  }, piece);
+  queueAccessoryConstraints(true);
 }
 
 function announceSelectedAccessorySize() {
@@ -1259,7 +1209,10 @@ function playSelectionEffect() {
     els.habitat.appendChild(spark);
     setTimeout(() => spark.remove(), 720);
   }
-  setTimeout(() => els.habitat.classList.remove("is-changing"), 720);
+  setTimeout(() => {
+    els.habitat.classList.remove("is-changing");
+    queueAccessoryConstraints(true);
+  }, 720);
 }
 
 document.querySelectorAll("[data-accessory]").forEach(button => {
@@ -1282,7 +1235,7 @@ function finishAccessoryDrag(event) {
   });
   piece.classList.remove("is-dragging");
   document.documentElement.classList.remove("accessory-drag-active");
-  moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece, false);
+  moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
@@ -1301,7 +1254,7 @@ function moveActiveAccessoryPointer(event) {
     moveAccessory(id, wormPart, {
       ...current,
       scale: activeAccessoryDrag.pinch.startScale * distance / activeAccessoryDrag.pinch.startDistance
-    }, piece, false);
+    }, piece);
     return;
   }
   if (activeAccessoryDrag.primaryPointerId !== event.pointerId) return;
@@ -1330,7 +1283,7 @@ function moveActiveAccessoryPointer(event) {
     x: activeAccessoryDrag.startPosition.x + delta.x,
     y: activeAccessoryDrag.startPosition.y + delta.y,
     scale: activeAccessoryDrag.startPosition.scale
-  }, piece, false);
+  }, piece);
 }
 
 function wireAccessoryPieces() {
@@ -1395,7 +1348,8 @@ function wireAccessoryPieces() {
         moveAccessory(id, wormPart, {
           ...current,
           scale: current.scale + scaleDirection * (event.shiftKey ? .2 : .1)
-        }, piece, false);
+        }, piece);
+        queueAccessoryConstraints(true);
         return;
       }
 
@@ -1413,7 +1367,8 @@ function wireAccessoryPieces() {
         x: current.x + direction[0] * step,
         y: current.y + direction[1] * step,
         scale: current.scale
-      }, piece, false);
+      }, piece);
+      queueAccessoryConstraints(true);
       announceAccessory(t("accessoryPosition", {
         accessory: accessoryName(id, wormPart),
         x: Math.round(position.x),
