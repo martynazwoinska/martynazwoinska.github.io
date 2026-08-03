@@ -556,6 +556,7 @@
       display: block; max-width: none;
       pointer-events: none; user-select: none;
     }
+    .hero-art > img { display: block; width: 100%; height: auto; }
     .hero-art--theme-light {
       opacity: .88;
       filter: none;
@@ -635,7 +636,7 @@
       .hero-lower { right: 24px; bottom: 10px; width: 156px; }
     }
     @media (max-width: 759.98px) {
-      .hero { min-height: 0; padding: 30px 16px 8px; }
+      .hero { min-height: 0; padding: 30px 16px 112px; }
       .hero-grid { display: block; width: 100%; min-height: 0; transform: none; }
       .hero-copy {
         width: 100%; max-width: 650px; margin: 0 auto;
@@ -643,9 +644,9 @@
       }
       .avatar, .hero::before, .hero::after { display: none !important; }
       .hero-lower {
-        position: relative; right: auto; bottom: auto;
-        width: clamp(174px, 28vw, 210px);
-        margin: -32px clamp(18px, 4vw, 34px) -18px auto;
+        position: absolute; right: 0; bottom: -2px;
+        width: clamp(176px, 52vw, 210px);
+        margin: 0;
       }
       .hero-statement { display: none; }
       .hero-name {
@@ -677,10 +678,11 @@
       }
     }
     @media (max-width: 620px) {
-      .hero { padding: 27px 12px 4px; }
+      .hero { padding: 27px 12px 104px; }
       .hero-lower {
-        width: clamp(148px, 43vw, 166px);
-        margin: -30px 4px -20px auto;
+        right: 0; bottom: -2px;
+        width: clamp(176px, 52vw, 200px);
+        margin: 0;
       }
       .hero-name {
         font-size: clamp(2.9rem, 14.2vw, 3.4rem);
@@ -691,8 +693,8 @@
       }
     }
     @media (max-width: 350px) {
-      .hero { padding-right: 10px; padding-bottom: 2px; padding-left: 10px; }
-      .hero-lower { width: 132px; margin: -20px -2px -16px auto; }
+      .hero { padding-right: 10px; padding-bottom: 96px; padding-left: 10px; }
+      .hero-lower { right: -4px; bottom: -6px; width: 176px; margin: 0; }
       .hero-expertise { font-size: .95rem; row-gap: 3px; }
       .hero-expertise-line--identity { display: contents; }
       .hero-expertise-line--identity .hero-skill { white-space: nowrap; }
@@ -1179,22 +1181,26 @@
         </svg>
       </div>
     </div>
-    <img
-      class="hero-art hero-lower hero-art--theme-light"
-      src="assets/botanical-frame/hybrid-botanical-lower-right-light-v3.webp?v=4"
-      alt=""
-      aria-hidden="true"
-      draggable="false"
-      decoding="async"
-    />
-    <img
-      class="hero-art hero-lower hero-art--theme-dark"
-      src="assets/botanical-frame/hybrid-botanical-lower-right-dark-v3.webp?v=4"
-      alt=""
-      aria-hidden="true"
-      draggable="false"
-      decoding="async"
-    />
+    <picture class="hero-art hero-lower hero-art--theme-light">
+      <source media="(max-width: 759.98px)" srcset="assets/botanical-frame/compact-crescent-light.webp?v=1" />
+      <img
+        src="assets/botanical-frame/hybrid-botanical-lower-right-light-v3.webp?v=4"
+        alt=""
+        aria-hidden="true"
+        draggable="false"
+        decoding="async"
+      />
+    </picture>
+    <picture class="hero-art hero-lower hero-art--theme-dark">
+      <source media="(max-width: 759.98px)" srcset="assets/botanical-frame/compact-crescent-dark.webp?v=1" />
+      <img
+        src="assets/botanical-frame/hybrid-botanical-lower-right-dark-v3.webp?v=4"
+        alt=""
+        aria-hidden="true"
+        draggable="false"
+        decoding="async"
+      />
+    </picture>
   </div>
 
   <!-- ============ ABOUT ============ -->
