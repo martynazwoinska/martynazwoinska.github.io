@@ -1025,8 +1025,36 @@ function doodlePoint(event) {
 }
 
 function pathFromPoints(points) {
-  if (points.length < 2) return `M ${points[0].x} ${points[0].y}`;
+  if (points.length < 2) {
+    const point = points[0];
+    return `M ${point.x.toFixed(1)} ${point.y.toFixed(1)} L ${(point.x + 0.1).toFixed(1)} ${point.y.toFixed(1)}`;
+  }
   return points.reduce((path, point, index) => `${path}${index ? " L" : "M"} ${point.x.toFixed(1)} ${point.y.toFixed(1)}`, "");
+}
+
+function beginDoodle(input, inputType, inputId) {
+  if (activeDoodle) return;
+  const point = doodlePoint(input);
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("class", "doodle-stroke");
+  path.setAttribute("stroke", drawingColor);
+  path.setAttribute("d", pathFromPoints([point]));
+  els.doodleLayer.appendChild(path);
+  activeDoodle = { path, points: [point], color: drawingColor, inputType, inputId };
+}
+
+function extendActiveDoodle(input) {
+  const point = doodlePoint(input);
+  const previous = activeDoodle.points.at(-1);
+  if (Math.hypot(point.x - previous.x, point.y - previous.y) < 1.8) return;
+  activeDoodle.points.push(point);
+  activeDoodle.path.setAttribute("d", pathFromPoints(activeDoodle.points));
+}
+
+function saveActiveDoodle() {
+  const d = activeDoodle.path.getAttribute("d");
+  activeDrawing().push({ d, color: activeDoodle.color });
+  activeDoodle = null;
 }
 
 els.freestyle.addEventListener("click", () => {
@@ -1055,39 +1083,26 @@ els.clearDrawing.addEventListener("click", () => {
 });
 
 els.doodleCanvas.addEventListener("pointerdown", event => {
-  if (!drawingEnabled || event.button !== 0) return;
+  if (!drawingEnabled || activeDoodle || event.button !== 0) return;
   event.preventDefault();
   try {
     els.habitat.setPointerCapture(event.pointerId);
   } catch {
     // Window-level pointer listeners keep the stroke alive as a fallback.
   }
-  const point = doodlePoint(event);
-  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path.setAttribute("class", "doodle-stroke");
-  path.setAttribute("stroke", drawingColor);
-  path.setAttribute("d", pathFromPoints([point]));
-  els.doodleLayer.appendChild(path);
-  activeDoodle = { path, points: [point], color: drawingColor };
+  beginDoodle(event, "pointer", event.pointerId);
 });
 
 function moveActiveDoodlePointer(event) {
-  if (!activeDoodle) return;
+  if (!activeDoodle || activeDoodle.inputType !== "pointer" || activeDoodle.inputId !== event.pointerId) return;
   event.preventDefault();
-  const point = doodlePoint(event);
-  const previous = activeDoodle.points.at(-1);
-  if (Math.hypot(point.x - previous.x, point.y - previous.y) < 1.8) return;
-  activeDoodle.points.push(point);
-  activeDoodle.path.setAttribute("d", pathFromPoints(activeDoodle.points));
+  extendActiveDoodle(event);
 }
 
-function finishDoodle(event) {
-  if (!activeDoodle) return;
+function finishDoodlePointer(event) {
+  if (!activeDoodle || activeDoodle.inputType !== "pointer" || activeDoodle.inputId !== event.pointerId) return;
   if (els.habitat.hasPointerCapture?.(event.pointerId)) els.habitat.releasePointerCapture(event.pointerId);
-  const d = activeDoodle.path.getAttribute("d");
-  if (activeDoodle.points.length > 1) activeDrawing().push({ d, color: activeDoodle.color });
-  else activeDoodle.path.remove();
-  activeDoodle = null;
+  saveActiveDoodle();
 }
 
 els.habitat.addEventListener("pointermove", event => {
@@ -1096,8 +1111,41 @@ els.habitat.addEventListener("pointermove", event => {
   moveActiveDoodlePointer(event);
 });
 window.addEventListener("pointermove", moveActiveDoodlePointer, { passive: false });
-window.addEventListener("pointerup", finishDoodle, true);
-window.addEventListener("pointercancel", finishDoodle, true);
+window.addEventListener("pointerup", finishDoodlePointer, true);
+window.addEventListener("pointercancel", finishDoodlePointer, true);
+
+function matchingTouch(touchList, identifier) {
+  return Array.from(touchList).find(touch => touch.identifier === identifier);
+}
+
+function moveActiveDoodleTouch(event) {
+  if (!activeDoodle || activeDoodle.inputType !== "touch") return;
+  const touch = matchingTouch(event.touches, activeDoodle.inputId);
+  if (!touch) return;
+  event.preventDefault();
+  extendActiveDoodle(touch);
+}
+
+function finishDoodleTouch(event) {
+  if (!activeDoodle || activeDoodle.inputType !== "touch") return;
+  const touch = matchingTouch(event.changedTouches, activeDoodle.inputId);
+  if (!touch) return;
+  event.preventDefault();
+  saveActiveDoodle();
+}
+
+if (!("PointerEvent" in window)) {
+  els.doodleCanvas.addEventListener("touchstart", event => {
+    if (!drawingEnabled || activeDoodle) return;
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+    event.preventDefault();
+    beginDoodle(touch, "touch", touch.identifier);
+  }, { passive: false });
+  els.doodleCanvas.addEventListener("touchmove", moveActiveDoodleTouch, { passive: false });
+  els.doodleCanvas.addEventListener("touchend", finishDoodleTouch, { passive: false });
+  els.doodleCanvas.addEventListener("touchcancel", finishDoodleTouch, { passive: false });
+}
 
 function toggleAccessory(id, force) {
   const activeAccessories = activeWardrobe();
