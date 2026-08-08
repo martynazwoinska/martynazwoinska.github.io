@@ -166,7 +166,7 @@
       background: color-mix(in srgb, var(--accent-gold) 82%, transparent);
     }
     .nav-monogram:hover { color: var(--accent); text-decoration: none; }
-    @media (max-width: 1119px) { .nav-monogram { display: none; } }
+    @media (max-width: 559.98px) { .nav-monogram { display: none; } }
     .nav-links {
       display: flex; align-items: center; justify-content: flex-end;
       gap: 20px; min-width: 0; margin-left: auto;
@@ -432,7 +432,6 @@
       height: auto; min-height: 78px; flex-wrap: wrap;
       gap: 8px 10px; padding-top: 10px; padding-bottom: 10px;
     }
-    html[data-nav-layout="compact"] .nav-monogram { display: none; }
     html[data-nav-layout="compact"] .nav-actions { margin-left: auto; }
     html[data-nav-layout="compact"] .nav-menu-btn { display: inline-flex; margin-left: 0; }
     html[data-nav-layout="compact"] .nav-links {
@@ -450,36 +449,6 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
       .n2-preview__worm--primary, .n2-preview__worm--male { animation: none !important; }
-    }
-
-    /* ----------  Wide-screen painted botanical frame  ---------- */
-    .botanical-frame { display: none; }
-    @media (min-width: 1780px) {
-      .botanical-frame {
-        display: block; position: absolute; z-index: 21;
-        inset: 0; overflow: clip;
-        pointer-events: none; user-select: none;
-      }
-      .botanical-frame__piece {
-        position: absolute; display: block;
-        background-repeat: no-repeat; background-position: 0 0; background-size: 100% 100%;
-      }
-      .botanical-frame__lower-right {
-        position: fixed;
-        bottom: 6px; right: -6px;
-        width: clamp(280px, calc((100vw - var(--maxw)) / 2 - 24px), 410px);
-        aspect-ratio: 971 / 1511;
-        background-image: url("assets/botanical-frame/hybrid-botanical-lower-right-light-v3.webp?v=4");
-      }
-      .hero-lower { display: none !important; }
-      html[data-theme="dark"] .botanical-frame__lower-right {
-        background-image: url("assets/botanical-frame/hybrid-botanical-lower-right-dark-v3.webp?v=4");
-      }
-    }
-    @media (min-width: 1780px) and (prefers-color-scheme: dark) {
-      html:not([data-theme]) .botanical-frame__lower-right {
-        background-image: url("assets/botanical-frame/hybrid-botanical-lower-right-dark-v3.webp?v=4");
-      }
     }
 
     /* ----------  Hero  ---------- */
@@ -525,7 +494,7 @@
     }
     .hero-statement {
       max-width: 700px; margin: 0;
-      color: var(--text); font-family: var(--display); font-size: clamp(2.9rem, 4.25vw, 3.55rem);
+      color: var(--text); font-family: var(--display); font-size: clamp(3.15rem, 4.25vw, 3.55rem);
       font-weight: 700; line-height: .98; letter-spacing: -.018em;
       -webkit-text-stroke: var(--hero-statement-stroke) currentColor;
       paint-order: stroke fill;
@@ -611,8 +580,8 @@
       }
       .avatar { width: 172px; height: 172px; }
       .hero-statement { font-size: clamp(2.55rem, 5vw, 3.15rem); }
-      .hero-name { font-size: 1.38rem; }
-      .hero-expertise { font-size: 1rem; }
+      .hero-name { font-size: clamp(1.38rem, 2.35vw, 1.52rem); }
+      .hero-expertise { font-size: clamp(1rem, 1.68vw, 1.08rem); }
       .hero-lower { right: 48px; bottom: 12px; width: 200px; }
     }
     @media (max-width: 840px) {
@@ -623,9 +592,9 @@
         transform: translateX(-8px);
       }
       .avatar { width: 146px; height: 146px; }
-      .hero-statement { font-size: 2.55rem; }
-      .hero-name { margin-top: 11px; font-size: 1.3rem; }
-      .hero-expertise { margin-top: 10px; font-size: .94rem; }
+      .hero-statement { font-size: clamp(2.55rem, 5vw, 3.15rem); }
+      .hero-name { margin-top: 11px; font-size: clamp(1.3rem, 2.625vw, 1.38rem); }
+      .hero-expertise { margin-top: 10px; font-size: clamp(.94rem, 1.9vw, 1rem); }
       .hero-lower { right: 24px; bottom: 10px; width: 174px; }
     }
     @media (max-width: 759.98px) {
@@ -644,7 +613,7 @@
       .hero-statement { display: none; }
       .hero-name {
         order: 1; margin: 0; color: var(--text);
-        font-size: clamp(3rem, 8vw, 3.5rem);
+        font-size: clamp(3.4rem, 8vw, 3.5rem);
         line-height: .9; letter-spacing: -.014em;
         -webkit-text-stroke: var(--hero-mobile-name-stroke) currentColor;
       }
@@ -653,7 +622,7 @@
         order: 2; width: 100%; max-width: none; margin: 20px auto 0;
         display: grid; justify-items: center; row-gap: 3px;
         color: var(--accent);
-        font-size: clamp(1rem, 2.4vw, 1.12rem); font-weight: 700;
+        font-size: 1.12rem; font-weight: 700;
         line-height: 1.38; letter-spacing: -.016em;
       }
       .hero-expertise-line {
@@ -700,7 +669,7 @@
       }
       .hero-skill-group { grid-row: 3; }
       .hero-skill--ai { grid-row: 4; }
-      .hero-name { font-size: 2.7rem; }
+      .hero-name { font-size: clamp(2.7rem, 14.2vw, 3.4rem); }
     }
 
     .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
@@ -1109,9 +1078,6 @@
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to main content</a>
-  <div class="botanical-frame" aria-hidden="true">
-    <span class="botanical-frame__piece botanical-frame__lower-right"></span>
-  </div>
   <!-- ============ NAV ============ -->
   <header class="nav">
     <div class="wrap nav-inner">
