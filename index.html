@@ -551,11 +551,11 @@
     }
     .hero-art > img { display: block; width: 100%; height: auto; }
     .hero-art--theme-light {
-      opacity: .88;
+      opacity: 1;
       filter: none;
     }
     .hero-art--theme-dark {
-      opacity: .88;
+      opacity: 1;
       filter: none;
     }
     .hero-art--theme-dark { display: none; }
@@ -568,7 +568,7 @@
     .hero-lower {
       position: absolute; z-index: 1;
       right: 116px; bottom: 18px;
-      width: 220px; height: auto;
+      width: 240px; height: auto;
     }
     .avatar {
       position: relative; grid-column: 1; grid-row: 1;
@@ -600,7 +600,7 @@
     }
     @media (max-width: 1100px) {
       .hero-grid { transform: translateX(-24px); }
-      .hero-lower { right: 78px; bottom: 14px; width: 205px; }
+      .hero-lower { right: 72px; bottom: 14px; width: 220px; }
     }
     @media (max-width: 1024px) {
       .hero { min-height: 326px; padding-top: 28px; padding-bottom: 24px; }
@@ -613,7 +613,7 @@
       .hero-statement { font-size: clamp(2.55rem, 5vw, 3.15rem); }
       .hero-name { font-size: 1.38rem; }
       .hero-expertise { font-size: 1rem; }
-      .hero-lower { right: 52px; bottom: 12px; width: 180px; }
+      .hero-lower { right: 48px; bottom: 12px; width: 200px; }
     }
     @media (max-width: 840px) {
       .hero { min-height: 310px; padding-top: 26px; padding-bottom: 22px; }
@@ -626,10 +626,10 @@
       .hero-statement { font-size: 2.55rem; }
       .hero-name { margin-top: 11px; font-size: 1.3rem; }
       .hero-expertise { margin-top: 10px; font-size: .94rem; }
-      .hero-lower { right: 24px; bottom: 10px; width: 156px; }
+      .hero-lower { right: 24px; bottom: 10px; width: 174px; }
     }
     @media (max-width: 759.98px) {
-      .hero { min-height: 0; padding: 30px 16px 136px; }
+      .hero { min-height: 0; padding: 30px 16px 148px; }
       .hero-grid { display: block; width: 100%; min-height: 0; transform: none; }
       .hero-copy {
         width: 100%; max-width: 650px; margin: 0 auto;
@@ -637,8 +637,8 @@
       }
       .avatar, .hero::before, .hero::after { display: none !important; }
       .hero-lower {
-        position: absolute; right: 14px; bottom: 0;
-        width: clamp(176px, 52vw, 210px);
+        position: absolute; right: 26px; bottom: 0;
+        width: clamp(184px, 54vw, 204px);
         margin: 0;
       }
       .hero-statement { display: none; }
@@ -671,10 +671,10 @@
       }
     }
     @media (max-width: 620px) {
-      .hero { padding: 27px 12px 128px; }
+      .hero { padding: 27px 12px 148px; }
       .hero-lower {
-        right: 14px; bottom: 0;
-        width: clamp(176px, 52vw, 200px);
+        right: 24px; bottom: 0;
+        width: clamp(184px, 54vw, 198px);
         margin: 0;
       }
       .hero-name {
@@ -686,8 +686,8 @@
       }
     }
     @media (max-width: 350px) {
-      .hero { padding-right: 10px; padding-bottom: 120px; padding-left: 10px; }
-      .hero-lower { right: 14px; bottom: 0; width: 176px; margin: 0; }
+      .hero { padding-right: 10px; padding-bottom: 140px; padding-left: 10px; }
+      .hero-lower { right: 18px; bottom: 0; width: 184px; margin: 0; }
       .hero-expertise { font-size: .95rem; row-gap: 3px; }
       .hero-expertise-line--identity { display: contents; }
       .hero-expertise-line--identity .hero-skill { white-space: nowrap; }
@@ -1181,7 +1181,7 @@
     </div>
     <picture class="hero-art hero-lower hero-art--theme-light">
       <img
-        src="assets/botanical-frame/compact-crescent-m23b-light-ivory.webp?v=1"
+        src="assets/botanical-frame/compact-crescent-depth-light-ivory.webp?v=1"
         alt=""
         aria-hidden="true"
         draggable="false"
@@ -1190,7 +1190,7 @@
     </picture>
     <picture class="hero-art hero-lower hero-art--theme-dark">
       <img
-        src="assets/botanical-frame/compact-crescent-m23b-dark-petrol.webp?v=1"
+        src="assets/botanical-frame/compact-crescent-depth-dark-petrol.webp?v=1"
         alt=""
         aria-hidden="true"
         draggable="false"
