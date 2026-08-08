@@ -169,11 +169,15 @@
     @media (max-width: 559.98px) { .nav-monogram { display: none; } }
     .nav-links {
       display: flex; align-items: center; justify-content: flex-end;
-      gap: 20px; min-width: 0; margin-left: auto;
+      flex: 0 0 auto; gap: 20px; min-width: 0; margin-left: auto;
     }
     .nav-links a { color: var(--text-soft); font-size: 1rem; font-weight: 600; white-space: nowrap; }
     .nav-actions {
       display: inline-flex; flex: 0 0 auto; align-items: center; gap: 8px; margin-left: auto;
+    }
+    @media (min-width: 900.01px) and (max-width: 1040px) {
+      .nav-inner { gap: 12px; }
+      .nav-links { gap: 16px; }
     }
     .nav-menu-btn {
       display: none; align-items: center; gap: 8px;
