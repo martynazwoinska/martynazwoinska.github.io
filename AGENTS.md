@@ -112,6 +112,9 @@ Avoid:
 - Treat approved images as immutable source assets unless the user explicitly asks to edit them.
 - Never regenerate, redraw, relabel, recolour, crop, or “improve” an approved image during a coding task.
 - Preserve original files and use separate optimized derivatives when needed.
+- Never present a concept preview as the version awaiting final approval. Before asking Martyna to approve a visual asset, create the exact production PNG, WebP, SVG, or other file that the website will load and show that file at its real implemented dimensions in the actual page context, including every affected theme and responsive state. Label earlier explorations explicitly as concept previews.
+- Treat the production-file view and its in-browser contextual render as the final asset proof. After approval, integrate that exact byte-identical production file without regenerating it or applying unapproved cropping, recolouring, opacity, filters, compression, layout changes, or other visual processing. If any later processing or presentation change is necessary, produce and show a new final asset proof and obtain approval again before implementation or deployment.
+- Every responsive browser proof must capture the complete rendered page at the exact tested viewport width. Use an uncropped full-page screenshot from the page's top through its footer; never substitute a viewport-height capture, clipped browser window, manually cropped image, or enlarged partial section for full-display validation. Verify and report the screenshot's pixel width and full-page height. Additional detail crops may accompany the full-page proof but cannot replace it.
 - Use responsive dimensions and prevent layout shift.
 - Write accurate alt text based on visible content.
 - Do not infer fine wrapper text from a stylized image; use the original photograph and user-confirmed metadata as the source of truth.
@@ -234,6 +237,7 @@ At minimum, check:
 
 - desktop and mobile layouts;
 - approximately 360 px, 768 px, 1024 px, and a wide viewport;
+- uncropped full-page screenshots at each tested viewport width, covering the page from its top through its footer in every affected theme;
 - light and dark modes;
 - keyboard navigation and focus;
 - link and asset paths under GitHub Pages;
