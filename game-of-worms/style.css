@@ -2974,6 +2974,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   box-shadow: 0 3px 0 rgba(29,70,68,.06);
   transition: transform .16s ease, border-color .16s ease, background .16s ease, box-shadow .16s ease;
 }
+.dress-buttons button[hidden] { display: none; }
 .dress-buttons button:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(29,70,68,.12); }
 .dress-buttons button[aria-pressed="true"] { background: color-mix(in srgb, var(--teal) 13%, var(--paper-strong)); color: var(--teal-dark); border-color: var(--teal); box-shadow: 0 4px 10px rgba(20,75,78,.13); }
 .dress-buttons button[data-accessory] { position: relative; padding-inline-end: 34px; }

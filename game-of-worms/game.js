@@ -215,6 +215,7 @@ const accessoryBottomMargin = 2;
 const wardrobes = new Map();
 const accessoryPositions = new Map();
 const drawings = new Map();
+const drawingModes = new Map();
 const wiredAccessoryPieces = new WeakSet();
 let selectedId = "elegans";
 let selectedRecordName = null;
@@ -668,9 +669,11 @@ function selectSpecies(id, place) {
   const activePlace = typeof place === "object" ? place : item.locations[0];
   selectedId = id;
   selectedRecordName = activePlace?.name || null;
+  drawingEnabled = drawingModes.get(wardrobeKey()) || false;
   visited.add(id);
   els.exploredCount.textContent = String(visited.size);
   renderSpecies(item, activePlace);
+  syncDrawingMode();
   updateSelectedControls();
   playSelectionEffect();
 }
@@ -1012,13 +1015,18 @@ function saveActiveDoodle() {
   activeDoodle = null;
 }
 
-els.freestyle.addEventListener("click", () => {
-  drawingEnabled = !drawingEnabled;
+function syncDrawingMode() {
   els.freestyle.setAttribute("aria-pressed", String(drawingEnabled));
   els.drawTools.toggleAttribute("hidden", !drawingEnabled);
   els.habitat.classList.toggle("is-drawing", drawingEnabled);
   refreshAccessoryPieceControls();
   updateAccessorySizeControls();
+}
+
+els.freestyle.addEventListener("click", () => {
+  drawingEnabled = !drawingEnabled;
+  drawingModes.set(wardrobeKey(), drawingEnabled);
+  syncDrawingMode();
 });
 
 document.querySelectorAll("[data-draw-color]").forEach(button => {
