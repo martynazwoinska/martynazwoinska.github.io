@@ -148,10 +148,23 @@
     }
     .nav-monogram {
       display: inline-flex; flex: 0 0 auto; align-items: center;
-      color: var(--text); font-family: var(--display); font-size: 1.38rem;
-      font-weight: 700; line-height: 1; letter-spacing: .015em;
-      -webkit-text-stroke: var(--display-stroke) currentColor; paint-order: stroke fill;
-      text-decoration: none;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-monogram__mark {
+      display: block; width: 54px; height: 40px; overflow: visible;
+    }
+    .nav-monogram__letters {
+      fill: currentColor; font-family: var(--display); font-weight: 700;
+      paint-order: stroke fill; stroke: currentColor; stroke-width: .22px;
+    }
+    .nav-monogram__stem {
+      fill: none; stroke: var(--accent); stroke-width: 1.15;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .nav-monogram__flower { fill: var(--accent-berry); }
+    .nav-monogram__flower-detail {
+      fill: none; stroke: color-mix(in srgb, var(--accent-berry) 72%, var(--accent-gold));
+      stroke-width: .55; stroke-linecap: round;
     }
     .nav-monogram::after {
       content: ""; width: 20px; height: 1px; margin-left: 9px;
@@ -1107,7 +1120,16 @@
   <!-- ============ NAV ============ -->
   <header class="nav">
     <div class="wrap nav-inner">
-      <a class="nav-monogram" href="#top" aria-label="Martyna Katarzyna Zwoińska">MZ</a>
+      <a class="nav-monogram" href="#top" aria-label="Martyna Katarzyna Zwoińska">
+        <svg class="nav-monogram__mark" viewBox="0 0 54 40" aria-hidden="true" focusable="false">
+          <text class="nav-monogram__letters" x="12" y="31" font-size="35">M</text>
+          <text class="nav-monogram__letters" x="29" y="36" font-size="32">Z</text>
+          <path class="nav-monogram__stem" d="M17.2 17.4C14.6 9.1 7.5 5.3 3.6 9.3C.7 12.3 2.1 17.1 5.5 17.4C8.2 17.6 9.2 14.5 7.1 13.1C5.7 12.2 4.2 13.2 4.3 14.7M3.7 17.2C3.8 20 3.5 22.2 2.9 24.2" />
+          <path class="nav-monogram__flower" d="M.3 23.8C.5 22.4 1.4 21.6 2.9 21.6C4.4 21.6 5.3 22.4 5.5 23.8L5.2 27.7C5.1 29.5 4.3 31 2.9 32C1.5 31 .7 29.5 .6 27.7Z" />
+          <path class="nav-monogram__flower" d="M.7 27.3C.4 29.1-.2 30.1-1 30.7C.4 30.9 1.5 30.3 2.2 29.2M5.1 27.3C5.4 29.1 6 30.1 6.8 30.7C5.4 30.9 4.3 30.3 3.6 29.2" />
+          <path class="nav-monogram__flower-detail" d="M2.9 23.1V29.3" />
+        </svg>
+      </a>
       <nav class="nav-links" id="primaryNav" aria-label="Primary navigation">
         <a href="#about">About</a>
         <a href="#research">Research</a>
