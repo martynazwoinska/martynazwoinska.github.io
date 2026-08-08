@@ -446,7 +446,7 @@
 
     /* ----------  Wide-screen painted botanical frame  ---------- */
     .botanical-frame { display: none; }
-    @media (min-width: 1480px) {
+    @media (min-width: 1780px) {
       .botanical-frame {
         display: block; position: absolute; z-index: 21;
         inset: 0; overflow: clip;
@@ -459,7 +459,7 @@
       .botanical-frame__lower-right {
         position: fixed;
         bottom: 6px; right: -6px;
-        width: clamp(280px, calc((100vw - var(--maxw)) / 2 + 120px), 410px);
+        width: clamp(280px, calc((100vw - var(--maxw)) / 2 - 24px), 410px);
         aspect-ratio: 971 / 1511;
         background-image: url("assets/botanical-frame/hybrid-botanical-lower-right-light-v3.webp?v=4");
       }
@@ -468,7 +468,7 @@
         background-image: url("assets/botanical-frame/hybrid-botanical-lower-right-dark-v3.webp?v=4");
       }
     }
-    @media (min-width: 1480px) and (prefers-color-scheme: dark) {
+    @media (min-width: 1780px) and (prefers-color-scheme: dark) {
       html:not([data-theme]) .botanical-frame__lower-right {
         background-image: url("assets/botanical-frame/hybrid-botanical-lower-right-dark-v3.webp?v=4");
       }
