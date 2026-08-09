@@ -3310,29 +3310,40 @@ function drawAhmedabadAF16Accessory(group, item, companion) {
 
   if (item.family === "soil-kit") {
     if (companion) {
-      path(group, "M-62-31Q0-57 63-27L48 31Q0 8-49 33Z", "af16-scoop-shell");
-      [[-38,-17],[-18,-24],[3,-27],[24,-21],[42,-12],[-28,3],[-5,0],[18,3],[35,12]].forEach(([cx,cy]) => add(group, "circle", { class: "af16-scoop-hole", cx, cy, r: 4 }));
-      path(group, "M42 10L84 48L68 66L27 25Z", "af16-kit-handle");
-      [-1,0,1].forEach(index => line(group, `M${58 + index*7} 34L${48 + index*7} 49`, "af16-handle-wrap"));
-      add(group, "rect", { class: "af16-sample-vial", x: -86, y: 3, width: 27, height: 58, rx: 8, transform: "rotate(-7 -72 32)" });
-      add(group, "rect", { class: "af16-vial-soil", x: -82, y: 39, width: 19, height: 17, rx: 5, transform: "rotate(-7 -72 32)" });
-      path(group, "M-82 5H-58", "af16-vial-cap");
-      path(group, "M-80 23H-62M-79 29H-65", "af16-vial-label");
+      const bag = add(group, "g", { transform: "translate(40 5) rotate(4)" });
+      path(bag, "M-29-38H29L34 43Q4 54-34 43Z", "af16-sample-bag");
+      path(bag, "M-29-38L-23-49H24L29-38Z", "af16-bag-fold");
+      path(bag, "M-31 20Q0 7 32 21L34 43Q4 54-34 43Z", "af16-bag-soil");
+      add(bag, "rect", { class: "af16-bag-label", x: -20, y: -24, width: 40, height: 27, rx: 3 });
+      line(bag, "M-13-15H13M-13-8H8M-13-1H12", "af16-bag-label-line");
+      const trowel = add(group, "g", { transform: "translate(-35 1) rotate(-13)" });
+      path(trowel, "M0 55C-20 34-26 4-19-24Q0-39 19-24C26 4 20 34 0 55Z", "af16-trowel-blade");
+      path(trowel, "M0-26V42", "af16-trowel-ridge");
+      path(trowel, "M-9-30L-7-51H7L9-30Z", "af16-trowel-socket");
+      path(trowel, "M-13-88Q0-99 13-88L9-48H-9Z", "af16-trowel-grip");
+      [-78,-68,-58].forEach(y => line(trowel, `M-9 ${y}H9`, "af16-grip-line"));
+      path(group, "M-76 50Q-13 65 67 55L56 70Q-6 82-67 67Z", "af16-sample-tray");
+      [[-52,51],[-25,58],[2,55],[25,60]].forEach(([cx,cy], index) => add(group, "circle", { class: index % 2 ? "af16-soil-grain light" : "af16-soil-grain", cx, cy, r: 4 + index % 2 }));
     } else {
-      const defs = add(group, "defs");
-      const meshClipId = "af16-soil-kit-mesh-clip-primary";
-      const meshClip = add(defs, "clipPath", { id: meshClipId });
-      add(meshClip, "circle", { cx: 0, cy: -12, r: 54 });
-      path(group, "M-68 54Q0 84 68 53L56 82Q0 105-57 82Z", "af16-kit-tray");
-      add(group, "circle", { class: "af16-kit-frame", cx: 0, cy: -12, r: 70 });
-      add(group, "circle", { class: "af16-kit-screen", cx: 0, cy: -12, r: 55 });
-      const mesh = add(group, "g", { class: "af16-kit-mesh", "clip-path": `url(#${meshClipId})` });
-      [-44,-22,0,22,44].forEach(x => line(mesh, `M${x}-69V45`, "af16-mesh-line"));
-      [-56,-34,-12,10,32].forEach(y => line(mesh, `M-58 ${y}H58`, "af16-mesh-line"));
-      path(group, "M-82-34L-114-17L-103 13L-72-4ZM81-35L113-18L102 12L71-5Z", "af16-kit-handle");
-      [[-40,59],[-21,69],[0,63],[21,71],[41,60]].forEach(([cx,cy],index) => add(group, "circle", { class: index%2 ? "af16-soil-grain light" : "af16-soil-grain", cx, cy, r: 4 + index%3 }));
-      path(group, "M-20 88H22L18 108H-23Z", "af16-kit-tag");
-      line(group, "M-13 95H14M-12 101H8", "af16-kit-tag-line");
+      path(group, "M-58-20Q-47-82 0-88Q48-82 59-20", "af16-bucket-handle");
+      [-59,59].forEach(cx => add(group, "circle", { class: "af16-bucket-lug", cx, cy: -18, r: 6 }));
+      path(group, "M-64-18L-52 64Q0 82 52 64L64-18Z", "af16-bucket-body");
+      add(group, "ellipse", { class: "af16-bucket-rim", cx: 0, cy: -18, rx: 65, ry: 22 });
+      add(group, "ellipse", { class: "af16-bucket-soil", cx: 0, cy: -16, rx: 53, ry: 14 });
+      [-34,-17,0,17,34].forEach(x => line(group, `M${x}-1L${x * .82} 62`, "af16-bucket-rib"));
+      [[-34,-18],[-13,-12],[9,-19],[31,-13]].forEach(([cx,cy],index) => add(group, "circle", { class: index % 2 ? "af16-soil-grain light" : "af16-soil-grain", cx, cy, r: 5 + index % 2 }));
+      const probe = add(group, "g", { transform: "translate(19 -35) rotate(13)" });
+      path(probe, "M-7-69H7L6 61L0 73L-6 61Z", "af16-soil-probe");
+      path(probe, "M-30-76Q0-86 30-76L27-65Q0-72-27-65Z", "af16-probe-handle");
+      path(probe, "M-4 15H4V59H-4Z", "af16-probe-slot");
+      path(probe, "M-3 34H3V58H-3Z", "af16-probe-soil");
+      line(probe, "M-5-45H5M-5-20H5M-5 5H5", "af16-probe-mark");
+      const bag = add(group, "g", { transform: "translate(62 27) rotate(7)" });
+      path(bag, "M-25-32H25L29 39Q0 50-29 39Z", "af16-sample-bag");
+      path(bag, "M-25-32L-20-42H21L25-32Z", "af16-bag-fold");
+      path(bag, "M-27 18Q0 7 27 18L29 39Q0 50-29 39Z", "af16-bag-soil");
+      add(bag, "rect", { class: "af16-bag-label", x: -17, y: -19, width: 34, height: 23, rx: 3 });
+      line(bag, "M-11-11H11M-11-5H7M-11 1H10", "af16-bag-label-line");
     }
     return true;
   }
@@ -5096,7 +5107,7 @@ function renderPiece(target, item, wormPart) {
     "wings": { primary: [270, 124, .66, 42], companion: [116, 129, .46, 40] },
     "lattice-fan": { primary: [295, 126, .5, -8], companion: [101, 100, .42, -6] },
     "kite-rig": { primary: [168, 190, .46, -4], companion: [61, 185, .36, 4] },
-    "soil-kit": { primary: [315, 228, .44, -2], companion: [47, 229, .35, 4] },
+    "soil-kit": { primary: [315, 226, .48, -2], companion: [47, 225, .39, 4] },
     "hogweed-specimen-lantern": { primary: [327, 133, .66, 3], companion: [61, 126, .58, -4] },
     "santeuil-cylinder-organ": { primary: [183, 191, .59, -2], companion: [86, 208, .52, 2] },
     "couleuvre-dragonfly-automaton": { primary: [304, 235, .61, -2], companion: [76, 266, .5, 3] },

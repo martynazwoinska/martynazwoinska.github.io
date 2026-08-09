@@ -76,9 +76,9 @@ Sources:
 
 ### Soil kits
 
-- **Hermaphrodite:** a round field sieve with a clipped square mesh, two handles, a shallow receiving tray, visible soil fractions and a sample tag.
-- **Male:** a curved perforated sampling scoop with one wrapped handle and a separate transparent vial containing a small soil sample.
-- Brown is reserved for the documented soil and its particles; the tool bodies use indigo, turquoise, coral, antique gold and ivory.
+- **Hermaphrodite:** an open field bucket with a working carry handle, visible soil, a slotted stainless-steel sampling probe with depth marks and soil core, plus a filled labelled sample bag.
+- **Male:** a pointed stainless-steel hand trowel with a central blade ridge, metal socket and gripped handle, paired with a shallow sample tray and a differently proportioned filled labelled sample bag.
+- Brown is reserved for the documented soil and its particles; steel parts use cool metal tones, while the bucket, grips and labels use indigo, turquoise, coral, antique gold and ivory.
 
 ## Quality and interaction acceptance
 
