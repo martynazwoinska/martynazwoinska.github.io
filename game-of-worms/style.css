@@ -1521,7 +1521,8 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 }
 .ishigaki-headband,
 .pannier-yoke,
-.pannier-harness { fill: none; stroke: var(--ishigaki-berry); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.pannier-harness,
+.pannier-handle { fill: none; stroke: var(--ishigaki-gold); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
 .ishigaki-visor-band { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 2.8; stroke-linejoin: round; }
 .ishigaki-visor-brim { fill: var(--ishigaki-sea); stroke: var(--ishigaki-ink); stroke-width: 2.4; stroke-linejoin: round; }
 .visor-binding { fill: none; stroke: var(--ishigaki-gold); stroke-width: 2.2; stroke-linecap: round; }
@@ -1552,24 +1553,26 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .fig-wasp-wing { fill: rgba(197,238,228,.82); stroke: var(--ishigaki-emerald-deep); stroke-width: 1; }
 .fig-wasp-leg { fill: none; stroke: var(--ishigaki-ink); stroke-width: 1.3; stroke-linecap: round; }
 .pannier-basket,
-.pannier-cup { fill: var(--ishigaki-sea); stroke: var(--ishigaki-ink); stroke-width: 3; stroke-linejoin: round; }
-.pannier-cup.right { fill: var(--ishigaki-emerald); }
-.pannier-rim,
-.pannier-lid { fill: var(--ishigaki-emerald-deep); stroke: var(--ishigaki-ink); stroke-width: 2.5; }
-.pannier-rim { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 2.5; }
-.pannier-weave { fill: none; stroke: var(--ishigaki-sea-light); stroke-width: 1.7; stroke-linecap: round; opacity: .82; }
+.pannier-cup { fill: var(--ishigaki-emerald); stroke: var(--ishigaki-ink); stroke-width: 3; stroke-linejoin: round; }
+.pannier-cup.right { fill: color-mix(in srgb, var(--ishigaki-emerald) 78%, var(--ishigaki-sea)); }
+.pannier-interior { fill: #173f42; stroke: var(--ishigaki-ink); stroke-width: 2; }
+.pannier-rim { fill: none; stroke: var(--ishigaki-gold); stroke-width: 5.5; }
+.pannier-front-rim { fill: none; stroke: var(--ishigaki-ivory); stroke-width: 3; stroke-linecap: round; }
+.pannier-weave-field { pointer-events: none; }
+.pannier-weave-a,
+.pannier-weave-b { fill: none; stroke: var(--ishigaki-sea-light); stroke-width: 2.4; stroke-linecap: round; opacity: .88; }
+.pannier-weave-b { stroke: var(--ishigaki-gold); stroke-width: 1.8; opacity: .82; }
+.pannier-weave-row { fill: none; stroke: var(--ishigaki-ivory); stroke-width: 2.7; stroke-linecap: round; opacity: .68; }
 .pannier-fig { fill: #659a62; stroke: var(--ishigaki-emerald-deep); stroke-width: 1.6; }
 .pannier-fig.light { fill: #8eba76; }
 .pannier-ostiole { fill: var(--ishigaki-berry); stroke: none; }
-.pannier-latch { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 1.5; }
 .pannier-tag { fill: var(--ishigaki-ivory); stroke: var(--ishigaki-berry); stroke-width: 1.5; }
 .pannier-tag-line { fill: none; stroke: var(--ishigaki-berry); stroke-width: 1.2; }
 .pannier-sample-vial { fill: rgba(222,249,243,.92); stroke: var(--ishigaki-ink); stroke-width: 1.8; }
 .pannier-vial-fluid { fill: rgba(217,105,131,.78); stroke: none; }
 .pannier-vial-cap { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 1.3; }
 .pannier-vial-label { fill: none; stroke: var(--ishigaki-gold); stroke-width: 2.2; stroke-linecap: round; }
-.pannier-reinforcement { fill: none; stroke: var(--ishigaki-gold); stroke-width: 3; stroke-linecap: round; opacity: .95; }
-.pannier-panel-highlight { fill: none; stroke: rgba(255,255,255,.5); stroke-width: 2.4; stroke-linecap: round; }
+.pannier-base-band { fill: none; stroke: var(--ishigaki-gold); stroke-width: 4.5; stroke-linecap: round; }
 .fig-wasp-wing-panel,
 .fig-wasp-hindwing { fill: rgba(197,238,228,.72); stroke: var(--ishigaki-emerald-deep); stroke-width: 2.4; stroke-linejoin: round; }
 .fig-wasp-wing-panel { fill: rgba(201,237,240,.78); }
@@ -1578,13 +1581,12 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .fig-wing-far-side .fig-wasp-wing-panel { fill: rgba(182,219,220,.62); }
 .fig-wing-far-side .fig-wasp-hindwing { fill: rgba(193,184,213,.57); }
 .fig-wing-near-side { opacity: .98; }
-.fig-wing-vein { fill: none; stroke: var(--ishigaki-emerald); stroke-width: 1.45; stroke-linecap: round; stroke-linejoin: round; opacity: .88; }
-.fig-wing-leading-edge { fill: none; stroke: var(--ishigaki-emerald-deep); stroke-width: 2.3; stroke-linecap: round; }
-.fig-wing-shimmer { fill: none; stroke: rgba(255,255,255,.8); stroke-width: 2.4; stroke-linecap: round; }
+.fig-wing-vein { fill: none; stroke: var(--ishigaki-emerald); stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; opacity: .84; }
+.fig-wing-costa { fill: none; stroke: var(--ishigaki-emerald-deep); stroke-width: 2.1; stroke-linecap: round; opacity: .92; }
+.fig-wing-venation.far { opacity: .64; }
 .fig-wing-harness { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 2.7; stroke-linejoin: round; }
 .fig-wing-harness-detail { fill: none; stroke: var(--ishigaki-gold); stroke-width: 2; stroke-linecap: round; }
 .fig-wing-buckle { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 1.5; }
-.fig-wing-cell { fill: var(--ishigaki-fig); stroke: var(--ishigaki-emerald-deep); stroke-width: .8; }
 
 .ahmedabad-af16-accessory { filter: drop-shadow(0 5px 4px rgba(35,31,25,.24)); }
 .af16-visor-frame { fill: color-mix(in srgb, #79513a 79%, var(--local-secondary)); stroke: color-mix(in srgb, #3f342a 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
