@@ -32,7 +32,7 @@ const rows = [
   ["nigoni", "Mauritius · JU2909", "fruit-and-nut viewer", "ju2909-fruit-nut-viewer", "paired-sample bifurcator", "ju2909-ju2910-sample-bifurcator", "Casela–Rempart contour surveyor", "casela-rempart-contour-surveyor"],
   ["nigoni", "Ho Chi Minh City · JU4356", "carambola ground-contact stage", "ju4356-carambola-ground-contact-stage", "ITS2 ribbon reader", "ju4356-its2-ribbon-reader", "Ho Chi Minh City urban-canopy census engine", "hcmc-urban-canopy-census-engine"],
   ["nigoni", "Lombok, Indonesia · HPT26", "Ficus-ground contact stage", "hpt26-ficus-ground-contact-stage", "Lingsar field-to-plate calendar", "lingsar-field-to-plate-calendar", "paired-substrate diptych", "hpt26-hpt27-substrate-diptych"],
-  ["wallacei", "Sanda, Bali · JU1873", "rotten-cacao specimen lantern", "ju1873-cacao-specimen-lantern", "five-day plating chronograph", "ju1873-plating-chronograph", "living-type voucher vault", "ju1873-living-type-vault"],
+  ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "five-day plating chronograph", "ju1873-plating-chronograph", "living-type voucher vault", "ju1873-living-type-vault"],
   ["tropicalis", "Barro Colorado Island, Panama", "Gustavia-bait array", "qg2726-gustavia-bait-array", "BCI forest-census mapper", "bci-forest-census-mapper", "Lutz runoff recorder", "lutz-runoff-recorder"],
   ["tropicalis", "La Selva, Costa Rica", "26.5 °C substrate dial", "qg3845-substrate-temperature", "La Selva leaf-cutter automaton", "la-selva-leafcutter-automaton", "La Selva–Barva gradient lift", "barva-gradient-lift"],
   ["tropicalis", "Guadeloupe · NIC203", "torch-ginger bract stage", "nic203-torch-ginger-bract-stage", "Carbet three-fall hydraulic sequencer", "carbet-three-fall-hydraulic-sequencer", "toxin–antidote inheritance automaton", "nic203-toxin-antidote-automaton"],
@@ -4870,77 +4870,80 @@ function drawSandaJU1873Accessory(group, item, companion) {
 
   if (item.family === "ju1873-cacao-specimen-lantern") {
     if (companion) {
-      path(group, "M-28-78Q0-92 28-76L36 65Q0 78-37 62Z", "ju1873-rind-column");
-      [-55,-30,-5,20,45].forEach((y, index) => path(group, `M-25 ${y}Q0 ${y - 8 + index % 2 * 3} 27 ${y}`, "ju1873-louvre"));
-      add(group, "ellipse", { class: "ju1873-inspection-window", cx: 0, cy: 7, rx: 19, ry: 27 });
-      line(group, "M0-79Q29-111 43-82Q47-70 33-58", "ju1873-peduncle-hook");
-      path(group, "M-34 62L-49 78H20L35 64", "ju1873-lantern-foot");
-      [[-17,-43],[16,-19],[-14,39]].forEach(([cx,cy]) => add(group, "circle", { class: "ju1873-decay-shutter", cx, cy, r: 4 }));
+      path(group, "M-92 33Q-42-16 19-40Q52-53 84-43Q70-13 39 5Q7 24-45 56L-76 57Z", "ju1873-machete-blade compact");
+      path(group, "M-73 38Q-25 1 25-20Q50-31 69-29Q53-10 27 6Q-8 29-50 51", "ju1873-blade-bevel");
+      line(group, "M-88 30Q-35-25 24-47Q59-59 88-45", "ju1873-blade-spine");
+      path(group, "M-96 30L-73 55L-94 83L-121 62Z", "ju1873-handguard");
+      path(group, "M-116 57L-92 78L-126 121Q-137 127-146 116L-153 104Z", "ju1873-machete-handle");
+      [-118,-130,-142].forEach((x, index) => line(group, `M${x} ${72 + index * 12}L${x - 18} ${87 + index * 12}`, "ju1873-handle-wrap"));
+      path(group, "M-7 48Q24 30 55 44L70 74Q36 99-2 80Z", "ju1873-pod-half");
+      [[18,58],[39,53],[51,69],[26,75]].forEach(([cx,cy], index) => add(group, "ellipse", { class: index % 2 ? "ju1873-pod-seed light" : "ju1873-pod-seed", cx, cy, rx: 6, ry: 9, transform: `rotate(${index * 22 - 28} ${cx} ${cy})` }));
     } else {
-      path(group, "M-87-25Q-49-66 0-60Q50-66 87-24L72 42Q34 64 0 59Q-37 64-74 41Z", "ju1873-rind-half");
-      path(group, "M-66-19Q-31-46 0-43Q34-47 65-18L55 27Q27 43 0 39Q-29 43-57 27Z", "ju1873-pulp-chamber");
-      [[-38,-14],[-14,-22],[12,-19],[38,-9],[-28,13],[0,9],[29,14]].forEach(([cx,cy],index) => add(group, "ellipse", { class: index % 2 ? "ju1873-seed light" : "ju1873-seed", cx, cy, rx: 8, ry: 11, transform: `rotate(${index * 17 - 35} ${cx} ${cy})` }));
-      line(group, "M-66-25Q-49-91 0-93Q52-91 68-24", "ju1873-carry-handle");
-      line(group, "M-86-25Q0-3 87-24M-73 41Q0 25 72 42", "ju1873-hinge-rib");
-      [[-73,-10],[69,-3],[-57,29],[54,28]].forEach(([cx,cy]) => add(group, "circle", { class: "ju1873-decay-shutter", cx, cy, r: 5 }));
+      path(group, "M-112 22Q-36-48 54-60Q104-67 150-39Q135-4 94 19Q45 48-33 72L-82 67Z", "ju1873-machete-blade");
+      path(group, "M-91 25Q-28-23 57-39Q100-47 130-31Q114-10 80 9Q31 37-38 61", "ju1873-blade-bevel");
+      line(group, "M-107 18Q-35-57 57-69Q111-75 155-42", "ju1873-blade-spine");
+      path(group, "M-119 18L-83 66L-112 91L-146 57Z", "ju1873-handguard");
+      path(group, "M-139 52L-107 84L-158 135Q-171 142-184 129L-197 111Z", "ju1873-machete-handle");
+      [-143,-158,-173].forEach((x, index) => line(group, `M${x} ${70 + index * 14}L${x - 21} ${90 + index * 14}`, "ju1873-handle-wrap"));
+      path(group, "M52 35Q91 9 128 25L145 62Q104 95 58 73Z", "ju1873-pod-half");
+      [[78,46],[101,39],[122,49],[88,63],[116,67]].forEach(([cx,cy], index) => add(group, "ellipse", { class: index % 2 ? "ju1873-pod-seed light" : "ju1873-pod-seed", cx, cy, rx: 7, ry: 11, transform: `rotate(${index * 19 - 32} ${cx} ${cy})` }));
+      line(group, "M61 72Q99 55 139 61", "ju1873-pod-rib");
     }
     return true;
   }
 
   if (item.family === "ju1873-plating-chronograph") {
     if (companion) {
-      path(group, "M-30-81H31L38 73H-37Z", "ju1873-calendar-column");
-      [-57,-31,-5,21,47].forEach((y,index) => {
-        path(group, `M${index % 2 ? -20 : -27} ${y}H${index % 2 ? 25 : 18}V${y + 17}H${index % 2 ? -20 : -27}Z`, index === 0 || index === 4 ? "ju1873-date-card accent" : "ju1873-date-card");
-        if (index < 4) line(group, `M${index % 2 ? 21 : 14} ${y + 17}L${index % 2 ? 14 : 21} ${y + 26}`, "ju1873-step-link");
-      });
-      label("11", -4, -44);
-      label("16", -4, 60);
-      line(group, "M32-37H63V29", "ju1873-cradle-arm");
-      add(group, "ellipse", { class: "ju1873-plate-cradle", cx: 63, cy: 35, rx: 25, ry: 11 });
-      add(group, "ellipse", { class: "ju1873-culture-plate", cx: 63, cy: 31, rx: 20, ry: 8 });
-      line(group, "M-4 73V97M-17 97H9", "ju1873-pendulum");
-      add(group, "circle", { class: "ju1873-pendulum-weight", cx: -4, cy: 98, r: 8 });
+      add(group, "rect", { class: "ju1873-calendar-column", x: -55, y: -100, width: 105, height: 172, rx: 13 });
+      add(group, "rect", { class: "ju1873-date-card", x: -42, y: -76, width: 78, height: 55, rx: 7 });
+      add(group, "rect", { class: "ju1873-date-card accent", x: -42, y: -10, width: 78, height: 55, rx: 7 });
+      [-28, 22].forEach(x => add(group, "circle", { class: "ju1873-calendar-ring", cx: x, cy: -92, r: 7 }));
+      label("11", -3, -37, "ju1873-date-number");
+      label("16", -3, 29, "ju1873-date-number");
+      [-70,-42,-14,14,42].forEach((y,index) => add(group, "circle", { class: index === 4 ? "ju1873-day-dot accent" : "ju1873-day-dot", cx: -66, cy: y, r: 7 }));
+      line(group, "M51-25H81V45", "ju1873-cradle-arm");
+      add(group, "ellipse", { class: "ju1873-plate-cradle", cx: 82, cy: 51, rx: 31, ry: 14 });
+      add(group, "ellipse", { class: "ju1873-culture-plate", cx: 82, cy: 46, rx: 25, ry: 9 });
+      path(group, "M-47 72H43L34 94H-39Z", "ju1873-calendar-foot");
     } else {
-      add(group, "circle", { class: "ju1873-date-wheel", cx: 0, cy: -5, r: 60 });
-      [-90,-54,-18,18,54].forEach((angle,index) => {
-        const radians = angle * Math.PI / 180;
-        const x = Math.cos(radians) * 46;
-        const y = -5 + Math.sin(radians) * 46;
-        line(group, `M${x * .78} ${-5 + (y + 5) * .78}L${x} ${y}`, index === 0 || index === 4 ? "ju1873-notch accent" : "ju1873-notch");
-      });
-      path(group, "M-99-32H-62V24H-99Z", "ju1873-specimen-cup");
-      add(group, "ellipse", { class: "ju1873-cup-rim", cx: -80, cy: -32, rx: 19, ry: 7 });
-      add(group, "ellipse", { class: "ju1873-plate-cradle", cx: 84, cy: 15, rx: 29, ry: 14 });
-      add(group, "ellipse", { class: "ju1873-culture-plate", cx: 84, cy: 10, rx: 23, ry: 9 });
-      line(group, "M-62-5H-54M57 1H61M-51-5Q0-47 51-5M54 1L63 10", "ju1873-escapement-link");
-      add(group, "circle", { class: "ju1873-escapement-gear", cx: 0, cy: -5, r: 16 });
-      label("11", -36, 45);
-      label("16", 37, 45);
+      add(group, "rect", { class: "ju1873-calendar-board", x: -122, y: -66, width: 170, height: 120, rx: 15 });
+      add(group, "rect", { class: "ju1873-date-card", x: -105, y: -44, width: 58, height: 70, rx: 8 });
+      add(group, "rect", { class: "ju1873-date-card accent", x: -27, y: -44, width: 58, height: 70, rx: 8 });
+      [-88,-64,-10,14].forEach(x => add(group, "circle", { class: "ju1873-calendar-ring", cx: x, cy: -57, r: 7 }));
+      label("11", -76, 5, "ju1873-date-number");
+      label("16", 2, 5, "ju1873-date-number");
+      line(group, "M-39-8H-30", "ju1873-date-arrow");
+      [-96,-66,-36,-6,24].forEach((x,index) => add(group, "circle", { class: index === 4 ? "ju1873-day-dot accent" : "ju1873-day-dot", cx: x, cy: 41, r: 7 }));
+      add(group, "ellipse", { class: "ju1873-plate-cradle", cx: 99, cy: 17, rx: 43, ry: 21 });
+      add(group, "ellipse", { class: "ju1873-culture-plate", cx: 99, cy: 10, rx: 35, ry: 14 });
+      line(group, "M44 7H57", "ju1873-cradle-arm");
     }
     return true;
   }
 
   if (item.family === "ju1873-living-type-vault") {
     if (companion) {
-      path(group, "M-42-83H37L46 74H-49Z", "ju1873-vault-outer");
-      path(group, "M-26-65H21L27 55H-31Z", "ju1873-vault-inner");
-      line(group, "M-3-64V14", "ju1873-capillary-cable");
-      add(group, "rect", { class: "ju1873-capillary", x: -12, y: 5, width: 18, height: 43, rx: 7 });
-      line(group, "M38-49H69V15L48 28", "ju1873-retrieval-arm");
-      add(group, "circle", { class: "ju1873-vault-dial", cx: -49, cy: -40, r: 16 });
-      line(group, "M-49-40L-42-48", "ju1873-dial-hand");
-      path(group, "M-34 55H31L23 78H-40Z", "ju1873-lower-cradle");
-      label("JU1873", -3, 67);
+      add(group, "rect", { class: "ju1873-vault-outer", x: -54, y: -101, width: 106, height: 178, rx: 14 });
+      add(group, "rect", { class: "ju1873-vault-inner", x: -37, y: -79, width: 71, height: 132, rx: 10 });
+      path(group, "M52-82L99-60V54L52 76Z", "ju1873-open-vault-door");
+      line(group, "M66-54V48M79-47V42", "ju1873-door-rack");
+      add(group, "rect", { class: "ju1873-vial", x: -20, y: -48, width: 37, height: 82, rx: 12 });
+      add(group, "rect", { class: "ju1873-vial-cap-solid", x: -18, y: -59, width: 33, height: 17, rx: 4 });
+      label("JU", -2, -5, "ju1873-vial-mark");
+      label("1873", -2, 13, "ju1873-vial-mark small");
+      add(group, "circle", { class: "ju1873-vault-dial", cx: -2, cy: 62, r: 11 });
+      path(group, "M-45 77H45L34 101H-36Z", "ju1873-lower-cradle");
     } else {
-      path(group, "M-101-43H100V52H-101Z", "ju1873-vault-outer");
-      path(group, "M-84-27H78V35H-84Z", "ju1873-vault-inner");
-      [[-54,3,18],[-4,3,14],[41,3,20]].forEach(([cx,cy,r],index) => add(group, "circle", { class: index === 1 ? "ju1873-storage-port accent" : "ju1873-storage-port", cx, cy, r }));
-      add(group, "rect", { class: "ju1873-vial", x: -13, y: -17, width: 18, height: 38, rx: 6 });
-      line(group, "M-11-11H3", "ju1873-vial-cap");
-      label("JU1873", -4, 10, "ju1873-vial-label");
-      path(group, "M-87 51H59L91 76H-68Z", "ju1873-retrieval-rail");
-      line(group, "M-58 53V70M56 53L77 70M-86-43Q0-67 99-43", "ju1873-vault-hinge");
+      add(group, "rect", { class: "ju1873-vault-outer", x: -126, y: -58, width: 246, height: 119, rx: 17 });
+      path(group, "M-111-59Q-71-101 0-100Q72-101 106-59Z", "ju1873-vault-lid");
+      add(group, "rect", { class: "ju1873-vault-inner", x: -106, y: -39, width: 206, height: 78, rx: 12 });
+      [[-71,0,22],[62,0,22]].forEach(([cx,cy,r]) => add(group, "circle", { class: "ju1873-storage-port", cx, cy, r }));
+      add(group, "rect", { class: "ju1873-vial", x: -22, y: -31, width: 44, height: 65, rx: 13 });
+      add(group, "rect", { class: "ju1873-vial-cap-solid", x: -19, y: -42, width: 38, height: 16, rx: 4 });
+      label("JU", 0, -3, "ju1873-vial-mark");
+      label("1873", 0, 17, "ju1873-vial-mark small");
+      path(group, "M-104 61H75L107 89H-80Z", "ju1873-retrieval-rail");
+      line(group, "M-73-70Q0-96 72-70", "ju1873-case-handle");
     }
     return true;
   }
@@ -4954,71 +4957,71 @@ function drawBarroColoradoQG2726Accessory(group, item, companion) {
 
   if (item.family === "qg2726-gustavia-bait-array") {
     if (companion) {
-      path(group, "M-45-79H39L48 62H-51Z", "bci-cabinet-shell");
-      path(group, "M-31-55H25V-4H-31Z", "bci-slurry-window");
-      add(group, "ellipse", { class: "bci-bait-slurry", cx: -3, cy: -11, rx: 23, ry: 10 });
-      path(group, "M-40 10H37V49H-40Z", "bci-floor-drawer");
-      line(group, "M-29 20H26M-29 31H26M-29 42H26", "bci-field-rail");
-      line(group, "M39-56H68V9", "bci-hanger");
-      add(group, "path", { class: "bci-hanging-cup", d: "M53 7H83L78 35Q68 43 58 35Z" });
-      add(group, "ellipse", { class: "bci-cup-rim", cx: 68, cy: 7, rx: 15, ry: 6 });
-      path(group, "M-57 61Q-8 47 53 61L46 76Q-7 64-54 77Z", "bci-forest-contact");
+      add(group, "rect", { class: "bci-sample-rack", x: -57, y: -91, width: 105, height: 159, rx: 15 });
+      add(group, "rect", { class: "bci-clear-bait-jar", x: -35, y: -64, width: 61, height: 93, rx: 18 });
+      add(group, "rect", { class: "bci-jar-lid", x: -39, y: -78, width: 69, height: 19, rx: 5 });
+      path(group, "M-31-5Q-4-19 22-4V23H-31Z", "bci-bait-slurry-large");
+      add(group, "ellipse", { class: "bci-bait-slurry", cx: -4, cy: -5, rx: 27, ry: 10 });
+      line(group, "M48-57H80V20", "bci-hanger");
+      add(group, "path", { class: "bci-hanging-cup", d: "M62 18H92L86 51Q76 61 67 51Z" });
+      add(group, "ellipse", { class: "bci-cup-rim", cx: 77, cy: 18, rx: 15, ry: 6 });
+      path(group, "M-69 67H58L46 90H-58Z", "bci-forest-contact");
     } else {
-      path(group, "M-91 42Q0 20 91 42L78 69Q0 52-78 70Z", "bci-forest-contact");
-      path(group, "M-84-45H83L70 34H-72Z", "bci-array-table");
-      line(group, "M-64-30H62M-64 0H62M-41-43V23M0-43V23M41-43V23", "bci-spacing-rail");
-      [[-43,-28], [0,-28], [43,-28], [-43,3], [0,3], [43,3]].forEach(([cx, cy], index) => {
-        add(group, "ellipse", { class: index === 4 ? "bci-bait-well selected" : "bci-bait-well", cx, cy, rx: 17, ry: 10 });
-        add(group, "ellipse", { class: "bci-bait-slurry", cx, cy: cy + 1, rx: 11, ry: 5 });
+      path(group, "M-123-59H88L111 65H-113Z", "bci-array-table");
+      line(group, "M-99-45H71M-99 8H82M-67-55V54M-8-55V54M51-55V54", "bci-spacing-rail");
+      [[-68,-29], [-8,-29], [52,-29], [-68,25], [-8,25], [52,25]].forEach(([cx, cy], index) => {
+        add(group, "circle", { class: index === 4 ? "bci-bait-well selected" : "bci-bait-well", cx, cy, r: 23 });
+        add(group, "circle", { class: "bci-bait-slurry", cx, cy, r: 15 });
       });
-      path(group, "M62-24H96V22H62Z", "bci-vial-cradle");
-      add(group, "rect", { class: "bci-culture-vial", x: 70, y: -16, width: 18, height: 31, rx: 7 });
-      line(group, "M71-10H87", "bci-vial-cap");
+      path(group, "M84-40H125V42H84Z", "bci-vial-cradle");
+      add(group, "rect", { class: "bci-culture-vial", x: 94, y: -26, width: 23, height: 51, rx: 8 });
+      line(group, "M95-17H116", "bci-vial-cap");
+      line(group, "M-85-72H57", "bci-tray-handle");
     }
     return true;
   }
 
   if (item.family === "bci-forest-census-mapper") {
     if (companion) {
-      path(group, "M-39-83H34L43 75H-46Z", "bci-caliper-cabinet");
-      line(group, "M-19-61V-7M-19-42H48M-19-17H62", "bci-caliper");
-      path(group, "M48-49V-34H17M62-24V-9H9", "bci-caliper-jaw");
-      [-1, 1].forEach(index => path(group, `M-31 ${index < 0 ? 7 : 35}H27V${index < 0 ? 29 : 57}H-31Z`, "bci-tag-drawer"));
-      add(group, "circle", { class: "bci-mapping-reel", cx: 48, cy: 43, r: 18 });
-      add(group, "circle", { class: "bci-growth-wheel", cx: -49, cy: -51, r: 15 });
-      line(group, "M-49-66V-37M34 43H48", "bci-instrument-link");
+      add(group, "circle", { class: "bci-trunk-section", cx: 26, cy: 4, r: 32 });
+      add(group, "circle", { class: "bci-trunk-ring", cx: 26, cy: 4, r: 19 });
+      line(group, "M-58-96V91M-58-72H79M-58 44H70", "bci-caliper-heavy");
+      path(group, "M79-72V-34H55M70 44V80H46", "bci-caliper-jaw-heavy");
+      add(group, "rect", { class: "bci-caliper-slider", x: -72, y: -2, width: 29, height: 39, rx: 5 });
+      add(group, "circle", { class: "bci-growth-wheel", cx: -57, cy: 17, r: 10 });
+      [-71,-45,-19,7,33,59].forEach(y=>line(group,`M-57 ${y}H-42`,"bci-caliper-tick"));
+      path(group, "M-38 55H29L38 85H-45Z", "bci-caliper-tag");
     } else {
-      path(group, "M-94 39H91L76 70H-81Z", "bci-map-table");
-      path(group, "M-78-48H70L84 31H-91Z", "bci-marquetry-board");
-      [-48,-12,25,57].forEach(x => line(group, `M${x}-41L${x + 7} 25`, "bci-grid-line"));
-      [-25,0,22].forEach(y => line(group, `M-82 ${y}H76`, "bci-grid-line"));
-      [[-55,-28,7],[-20,-10,10],[18,-30,5],[50,-5,8],[-45,17,5],[10,12,9]].forEach(([cx,cy,r]) => add(group, "circle", { class: "bci-stem-disc", cx, cy, r }));
-      line(group, "M-70-58H59M-36-65V-50M37-65V-50", "bci-sliding-bridge");
-      path(group, "M75-38Q103-30 93 5Q86 24 75 26Z", "bci-census-roll");
-      line(group, "M79-24H91M79-12H92M79 0H88", "bci-roll-line");
+      add(group, "rect", { class: "bci-clipboard", x: -103, y: -78, width: 183, height: 147, rx: 13 });
+      add(group, "rect", { class: "bci-map-paper", x: -86, y: -57, width: 149, height: 105, rx: 6 });
+      add(group, "rect", { class: "bci-clipboard-clip", x: -39, y: -88, width: 57, height: 24, rx: 7 });
+      [-59,-24,11,46].forEach(x => line(group, `M${x}-52V43`, "bci-grid-line"));
+      [-28,-1,26].forEach(y => line(group, `M-81 ${y}H58`, "bci-grid-line"));
+      [[-62,-38,8],[-28,-13,11],[9,-39,6],[40,-10,9],[-53,29,6],[16,23,10]].forEach(([cx,cy,r]) => add(group, "circle", { class: "bci-stem-disc", cx, cy, r }));
+      path(group, "M91-62L113-56L89 62L74 68Z", "bci-map-pencil");
+      path(group, "M87-61L113-56L105-78Z", "bci-pencil-tip");
     }
     return true;
   }
 
   if (item.family === "lutz-runoff-recorder") {
     if (companion) {
-      path(group, "M-30-82H26L34 69H-38Z", "bci-bubble-column");
-      add(group, "rect", { class: "bci-chart", x: -18, y: -65, width: 32, height: 105, rx: 4 });
-      line(group, "M-11-49Q4-39-9-28Q5-18-8-7Q5 3-6 14Q7 24-5 34", "bci-chart-trace");
-      path(group, "M31-58Q76-50 51-19Q79 7 48 32Q74 54 38 67", "bci-coiled-tube");
-      add(group, "circle", { class: "bci-step-wheel", cx: -49, cy: 40, r: 19 });
-      [-49,-31,-13,5,23].forEach((angle, index) => line(group, `M-49 40L${-49 + Math.cos(index * 1.256) * 16} ${40 + Math.sin(index * 1.256) * 16}`, "bci-wheel-spoke"));
-      line(group, "M-62-67V68M-70-48H-55M-70-21H-55M-70 7H-55", "bci-calibration-staff");
+      add(group, "rect", { class: "bci-measuring-column", x: -42, y: -97, width: 70, height: 169, rx: 20 });
+      path(group, "M-34 2H20V63H-34Z", "bci-gauge-water");
+      [-66,-38,-10,18,46].forEach(y=>line(group,`M-30 ${y}H7`,"bci-gauge-tick"));
+      path(group, "M28-65Q86-51 53-18Q92 13 51 43Q82 71 36 83", "bci-coiled-tube");
+      path(group, "M63-78H99L84-46H74Z", "bci-runoff-funnel");
+      path(group, "M-50 72H39L31 98H-42Z", "bci-column-foot");
     } else {
-      path(group, "M-92 24H-30L0-31L31 24H91V70H-92Z", "bci-weir-basin");
-      path(group, "M-67 6H-22L0-36L23 6H67V39H-67Z", "bci-weir-face");
-      path(group, "M-22 6L0-36L23 6", "bci-v-notch");
-      add(group, "circle", { class: "bci-float-well", cx: 70, cy: -29, r: 24 });
-      add(group, "circle", { class: "bci-float", cx: 70, cy: -29, r: 9 });
-      path(group, "M-81-51H-35V7H-81Z", "bci-chart-drum");
-      line(group, "M-73-41H-44M-73-27H-44M-73-13H-44", "bci-chart-line");
-      line(group, "M-35-22H4L34-29H46M70-5V8H45", "bci-instrument-link");
-      path(group, "M-74 53Q0 39 76 53", "bci-water-line");
+      path(group, "M-121 4H-48L0-50L50 4H121V76H-121Z", "bci-weir-basin");
+      path(group, "M-105 15H-40L0-29L42 15H105V55H-105Z", "bci-basin-water");
+      path(group, "M-47 4L0-50L49 4", "bci-v-notch");
+      add(group, "rect", { class: "bci-chart-panel", x: -116, y: -67, width: 55, height: 68, rx: 7 });
+      line(group, "M-105-52Q-91-36-102-23Q-88-10-72-31", "bci-chart-trace");
+      add(group, "circle", { class: "bci-float-well", cx: 93, cy: -35, r: 29 });
+      add(group, "circle", { class: "bci-float", cx: 93, cy: -35, r: 11 });
+      line(group, "M-61-29H-33M51-22H64M93-6V19H58", "bci-instrument-link");
+      path(group, "M-103 61Q0 43 103 61", "bci-water-line");
     }
     return true;
   }
@@ -5155,12 +5158,12 @@ function renderPiece(target, item, wormPart) {
     ,"ju1428-duguetia-fruit-theatre": { primary: [365, 119, .31, -2], companion: [0, 108, .27, 3] }
     ,"nouragues-litterfall-chronobalance": { primary: [220, 190, .3, -1], companion: [90, 202, .26, 2] }
     ,"ju1428-isotype-triad-comparator": { primary: [362, 270, .3, -1], companion: [8, 286, .25, 2] }
-    ,"qg2726-gustavia-bait-array": { primary: [385, 135, .36, -2], companion: [-8, 122, .28, 2] }
-    ,"bci-forest-census-mapper": { primary: [232, 177, .34, 1], companion: [125, 214, .28, -1] }
-    ,"lutz-runoff-recorder": { primary: [384, 252, .34, -1], companion: [202, 292, .28, 1] }
+    ,"qg2726-gustavia-bait-array": { primary: [380, 139, .40, -2], companion: [-2, 124, .32, 2] }
+    ,"bci-forest-census-mapper": { primary: [225, 180, .38, 1], companion: [122, 214, .35, -1] }
+    ,"lutz-runoff-recorder": { primary: [380, 252, .38, -1], companion: [204, 289, .32, 1] }
     ,"ju1873-cacao-specimen-lantern": { primary: [385, 132, .37, -2], companion: [-8, 118, .28, 3] }
-    ,"ju1873-plating-chronograph": { primary: [240, 175, .32, 1], companion: [126, 205, .27, -2] }
-    ,"ju1873-living-type-vault": { primary: [385, 248, .34, -1], companion: [18, 286, .27, 2] }
+    ,"ju1873-plating-chronograph": { primary: [236, 177, .37, 1], companion: [126, 205, .31, -2] }
+    ,"ju1873-living-type-vault": { primary: [380, 251, .38, -1], companion: [20, 283, .31, 2] }
     ,"qg3845-substrate-temperature": { primary: [385, 135, .38, -2], companion: [-8, 120, .29, 2] }
     ,"la-selva-leafcutter-automaton": { primary: [235, 185, .33, 1], companion: [125, 210, .27, -1] }
     ,"barva-gradient-lift": { primary: [380, 250, .34, -1], companion: [195, 290, .27, 1] }

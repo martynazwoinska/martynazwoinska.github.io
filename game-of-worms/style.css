@@ -1744,6 +1744,159 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .ju1873-label { fill: color-mix(in srgb, #263c35 84%, var(--worm-deep)); font: 900 13px/1 var(--sans); stroke: color-mix(in srgb, #f5ecd2 85%, transparent); stroke-width: 2px; paint-order: stroke; }
 .ju1873-vial-label { fill: color-mix(in srgb, #2f433c 84%, var(--worm-deep)); font: 900 5px/1 var(--sans); letter-spacing: -.02em; stroke: none; }
 
+/* Bright enamel-and-glass palettes for the two sister-species showcase scenes. */
+.barro-qg2726-accessory {
+  --bci-ink: #263955;
+  --bci-indigo: #4d52a4;
+  --bci-teal: #17988f;
+  --bci-aqua: #75d9d0;
+  --bci-coral: #e45e78;
+  --bci-orchid: #9b4f9c;
+  --bci-gold: #e0ae3f;
+  --bci-ivory: #fff7df;
+  --bci-leaf: #2e8c5c;
+  filter: drop-shadow(0 5px 4px rgba(30,48,70,.24));
+}
+.bci-cabinet-shell,
+.bci-array-table,
+.bci-map-table,
+.bci-caliper-cabinet,
+.bci-weir-basin,
+.bci-bubble-column { fill: var(--bci-indigo); stroke: var(--bci-ink); }
+.bci-forest-contact { fill: var(--bci-leaf); stroke: var(--bci-ink); }
+.bci-slurry-window,
+.bci-floor-drawer,
+.bci-chart { fill: var(--bci-ivory); stroke: var(--bci-ink); }
+.bci-marquetry-board { fill: var(--bci-aqua); stroke: var(--bci-ink); }
+.bci-bait-slurry { fill: var(--bci-coral); stroke: var(--bci-ink); }
+.bci-hanging-cup,
+.bci-bait-well,
+.bci-culture-vial,
+.bci-vial-cradle { fill: var(--bci-ivory); stroke: var(--bci-teal); }
+.bci-bait-well.selected { fill: var(--bci-gold); stroke: var(--bci-ink); }
+.bci-cup-rim,
+.bci-field-rail,
+.bci-spacing-rail,
+.bci-hanger,
+.bci-grid-line,
+.bci-sliding-bridge,
+.bci-caliper,
+.bci-caliper-jaw,
+.bci-instrument-link,
+.bci-chart-line,
+.bci-calibration-staff,
+.bci-wheel-spoke,
+.bci-water-line { stroke: var(--bci-ink); }
+.bci-stem-disc,
+.bci-growth-wheel,
+.bci-mapping-reel,
+.bci-step-wheel { fill: var(--bci-gold); stroke: var(--bci-ink); }
+.bci-tag-drawer,
+.bci-census-roll,
+.bci-chart-drum { fill: var(--bci-ivory); stroke: var(--bci-orchid); }
+.bci-roll-line,
+.bci-chart-trace,
+.bci-coiled-tube,
+.bci-v-notch { stroke: var(--bci-aqua); }
+.bci-weir-face { fill: var(--bci-teal); stroke: var(--bci-ink); }
+.bci-float-well { fill: var(--bci-aqua); stroke: var(--bci-indigo); }
+.bci-float { fill: var(--bci-coral); stroke: var(--bci-ink); }
+
+.sanda-ju1873-accessory {
+  --sanda-ink: #28344f;
+  --sanda-indigo: #5550a8;
+  --sanda-teal: #188f87;
+  --sanda-aqua: #83d6d0;
+  --sanda-coral: #df5875;
+  --sanda-berry: #9f427b;
+  --sanda-gold: #dda93a;
+  --sanda-ivory: #fff6dc;
+  --sanda-steel: #dce8e9;
+  --sanda-steel-deep: #91adb6;
+  filter: drop-shadow(0 5px 4px rgba(30,39,66,.25));
+}
+.ju1873-calendar-column,
+.ju1873-date-wheel,
+.ju1873-vault-outer { fill: var(--sanda-indigo); stroke: var(--sanda-ink); }
+.ju1873-step-link,
+.ju1873-cradle-arm,
+.ju1873-pendulum,
+.ju1873-escapement-link,
+.ju1873-capillary-cable,
+.ju1873-retrieval-arm,
+.ju1873-dial-hand,
+.ju1873-vial-cap,
+.ju1873-vault-hinge { stroke: var(--sanda-gold); }
+.ju1873-specimen-cup,
+.ju1873-plate-cradle,
+.ju1873-lower-cradle,
+.ju1873-retrieval-rail { fill: var(--sanda-teal); stroke: var(--sanda-ink); }
+.ju1873-date-card,
+.ju1873-vault-inner { fill: var(--sanda-ivory); stroke: var(--sanda-indigo); }
+.ju1873-date-card.accent { fill: var(--sanda-coral); }
+.ju1873-notch { stroke: var(--sanda-aqua); }
+.ju1873-notch.accent { stroke: var(--sanda-coral); }
+.ju1873-culture-plate,
+.ju1873-cup-rim { fill: rgba(131,214,208,.58); stroke: var(--sanda-teal); }
+.ju1873-escapement-gear,
+.ju1873-pendulum-weight,
+.ju1873-vault-dial { fill: var(--sanda-gold); stroke: var(--sanda-ink); }
+.ju1873-storage-port { fill: var(--sanda-teal); stroke: var(--sanda-ink); }
+.ju1873-storage-port.accent { fill: var(--sanda-coral); }
+.ju1873-vial,
+.ju1873-capillary { fill: rgba(220,232,233,.86); stroke: var(--sanda-teal); }
+.ju1873-label { fill: var(--sanda-ink); stroke: rgba(255,246,220,.9); }
+.ju1873-vial-label { fill: var(--sanda-ink); }
+.ju1873-machete-blade { fill: var(--sanda-steel); stroke: var(--sanda-ink); stroke-width: 3.5; stroke-linejoin: round; }
+.ju1873-blade-bevel { fill: var(--sanda-steel-deep); stroke: none; opacity: .78; }
+.ju1873-blade-spine { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; opacity: .88; }
+.ju1873-handguard { fill: var(--sanda-gold); stroke: var(--sanda-ink); stroke-width: 3; stroke-linejoin: round; }
+.ju1873-machete-handle { fill: var(--sanda-berry); stroke: var(--sanda-ink); stroke-width: 3; stroke-linejoin: round; }
+.ju1873-handle-wrap { fill: none; stroke: var(--sanda-ivory); stroke-width: 3; stroke-linecap: round; }
+.ju1873-pod-half { fill: var(--sanda-coral); stroke: var(--sanda-ink); stroke-width: 3; stroke-linejoin: round; }
+.ju1873-pod-seed { fill: var(--sanda-ivory); stroke: var(--sanda-berry); stroke-width: 1.5; }
+.ju1873-pod-seed.light { fill: var(--sanda-aqua); }
+.ju1873-pod-rib { fill: none; stroke: var(--sanda-gold); stroke-width: 3; stroke-linecap: round; }
+.ju1873-calendar-board,
+.ju1873-calendar-foot { fill: var(--sanda-indigo); stroke: var(--sanda-ink); stroke-width: 3; stroke-linejoin: round; }
+.ju1873-calendar-ring { fill: var(--sanda-gold); stroke: var(--sanda-ink); stroke-width: 2; }
+.ju1873-date-number { fill: var(--sanda-ink); font: 900 29px/1 var(--sans); text-anchor: middle; paint-order: stroke; stroke: rgba(255,246,220,.92); stroke-width: 2px; }
+.ju1873-day-dot { fill: var(--sanda-aqua); stroke: var(--sanda-ink); stroke-width: 1.7; }
+.ju1873-day-dot.accent { fill: var(--sanda-coral); }
+.ju1873-date-arrow { fill: none; stroke: var(--sanda-gold); stroke-width: 5; stroke-linecap: round; }
+.ju1873-open-vault-door { fill: var(--sanda-aqua); stroke: var(--sanda-ink); stroke-width: 3; stroke-linejoin: round; }
+.ju1873-door-rack { fill: none; stroke: var(--sanda-indigo); stroke-width: 4; stroke-linecap: round; }
+.ju1873-vial-cap-solid { fill: var(--sanda-coral); stroke: var(--sanda-ink); stroke-width: 2; }
+.ju1873-vial-mark { fill: var(--sanda-ink); font: 900 14px/1 var(--sans); text-anchor: middle; }
+.ju1873-vial-mark.small { font-size: 10px; }
+.ju1873-vault-lid { fill: var(--sanda-aqua); stroke: var(--sanda-ink); stroke-width: 3; stroke-linejoin: round; }
+.ju1873-case-handle { fill: none; stroke: var(--sanda-gold); stroke-width: 8; stroke-linecap: round; }
+
+.bci-sample-rack { fill: var(--bci-indigo); stroke: var(--bci-ink); stroke-width: 3; }
+.bci-clear-bait-jar { fill: rgba(255,255,255,.62); stroke: var(--bci-teal); stroke-width: 3; }
+.bci-jar-lid { fill: var(--bci-gold); stroke: var(--bci-ink); stroke-width: 2.5; }
+.bci-bait-slurry-large { fill: var(--bci-coral); stroke: none; }
+.bci-tray-handle { fill: none; stroke: var(--bci-gold); stroke-width: 8; stroke-linecap: round; }
+.bci-caliper-heavy { fill: none; stroke: var(--bci-indigo); stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
+.bci-caliper-jaw-heavy { fill: none; stroke: var(--bci-gold); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+.bci-caliper-slider { fill: var(--bci-coral); stroke: var(--bci-ink); stroke-width: 2.5; }
+.bci-trunk-section { fill: var(--bci-coral); stroke: var(--bci-ink); stroke-width: 3; }
+.bci-trunk-ring { fill: none; stroke: var(--bci-gold); stroke-width: 3; }
+.bci-caliper-tick { fill: none; stroke: var(--bci-ivory); stroke-width: 2.5; stroke-linecap: round; }
+.bci-caliper-tag { fill: var(--bci-ivory); stroke: var(--bci-ink); stroke-width: 2.5; stroke-linejoin: round; }
+.bci-clipboard { fill: var(--bci-indigo); stroke: var(--bci-ink); stroke-width: 3; }
+.bci-map-paper { fill: var(--bci-ivory); stroke: var(--bci-teal); stroke-width: 2.5; }
+.bci-clipboard-clip { fill: var(--bci-gold); stroke: var(--bci-ink); stroke-width: 2.5; }
+.bci-map-pencil { fill: var(--bci-coral); stroke: var(--bci-ink); stroke-width: 2.5; stroke-linejoin: round; }
+.bci-pencil-tip { fill: var(--bci-gold); stroke: var(--bci-ink); stroke-width: 2; }
+.bci-measuring-column { fill: rgba(255,255,255,.62); stroke: var(--bci-indigo); stroke-width: 4; }
+.bci-gauge-water,
+.bci-basin-water { fill: var(--bci-aqua); stroke: var(--bci-teal); stroke-width: 2.5; }
+.bci-gauge-tick { fill: none; stroke: var(--bci-ink); stroke-width: 2.5; stroke-linecap: round; }
+.bci-runoff-funnel { fill: var(--bci-coral); stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
+.bci-column-foot { fill: var(--bci-indigo); stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
+.bci-chart-panel { fill: var(--bci-ivory); stroke: var(--bci-orchid); stroke-width: 3; }
+
 .la-selva-qg3845-accessory { filter: drop-shadow(0 5px 4px rgba(25,42,34,.25)); }
 .qg3845-cage,.qg3845-dial-shell,.qg3845-calendar-column,.qg3845-lift-frame,.qg3845-gradient-rack { fill: color-mix(in srgb,#876a42 72%,var(--local-secondary)); stroke: color-mix(in srgb,#30463b 82%,var(--worm-deep)); stroke-width:3; stroke-linejoin:round; }
 .qg3845-glass,.qg3845-marker-column,.qg3845-lift-window { fill: color-mix(in srgb,#d8e5d2 72%,var(--paper-strong)); stroke: color-mix(in srgb,#45685a 76%,var(--worm-deep)); stroke-width:2.3; }

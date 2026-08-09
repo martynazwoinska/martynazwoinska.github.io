@@ -193,13 +193,12 @@ Family ID: `qg2726-gustavia-bait-array`
 Scientific basis: QG2726 came from one experimental *Gustavia superba* slurry
 bait within the March 2015 Barro Colorado field experiment.
 
-Primary: a broad low 3 × 2 array table with six unequal bait wells on visible
-30 cm spacing rails, irregular forest-contact base, one highlighted QG2726
-chamber and a separate culture vial in a sliding cradle.
+Primary: a broad handled 3 × 2 field tray with six large round bait cups on
+visible spacing rails, one highlighted QG2726 cup and a separate culture vial
+in a side cradle.
 
-Companion: a tall cutaway single-bait cabinet with a shallow slurry window,
-separate forest-floor contact drawer, hanging sample cup and small three-step
-field progression rail.
+Companion: a tall clear single-bait jar held in an enamelled field rack, with a
+visible slurry level, separate lid, hanging sample cup and forest-contact foot.
 
 Do not add undocumented chemistry, mesh size or temperature. The pair must not
 become two differently sized Petri dishes.
@@ -212,13 +211,12 @@ Regional basis: Barro Colorado’s 50-hectare plot established the long-running
 ForestGEO forest-census model. This object represents regional research
 history, not QG2726’s collection apparatus or collection point.
 
-Primary: a wide marquetry map table with abstract rectangular census grid,
-unequal blank stem discs, sliding measurement bridge and fold-out blank census
-roll.
+Primary: a wide clipboard with pale map paper, abstract rectangular census
+grid, unequal blank stem discs, a real clip and a separate pencil.
 
-Companion: a tall folding tree-caliper cabinet with two asymmetric sliding
-jaws, stacked blank tag drawers, vertical mapping reel and separate
-growth-wheel counter.
+Companion: a tall tree caliper with one heavy graduated spine, two asymmetric
+jaws visibly enclosing a tree cross-section, sliding block, growth-wheel
+counter and one blank field tag.
 
 Do not reproduce real plot data, tree positions, tag numbers, logos or maps.
 
@@ -231,13 +229,11 @@ weir, strip-chart recorder and bubble-flow instrument in the Lutz catchment.
 The QG2726 sample label contains `Lutz`, but the reviewed public records do not
 prove that the bait was beside the weir.
 
-Primary: a broad 120-degree V-notch weir model with low stilling basin,
-connected float well, side-mounted winding strip-chart drum and visible
-mechanical linkage.
+Primary: a broad 120-degree V-notch weir model with a clearly blue stilling
+basin, separate strip-chart panel, connected float well and visible linkage.
 
-Companion: a tall bubble-flow recorder column with coiled sampling tube,
-five-minute stepping wheel, separate calibration staff and narrow vertical
-chart.
+Companion: a tall transparent graduated measuring column with visible blue
+water level, separate runoff funnel, coiled sampling tube and stable foot.
 
 This is place-based research context. It must not imply that QG2726 was
 aquatic, sampled from a stream or isolated with hydrological equipment.

@@ -62,6 +62,8 @@ retained.
   https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0094723
 - Kew cacao morphology:
   https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A320783-2/general-information
+- International Cocoa Organization harvesting and pod-opening guidance:
+  https://www.icco.org/harvesting-post-harvest-new/
 - Official Sanda village profile, regional context only:
   https://sanda.desa.id/artikel/2024/05/17/profil-desa-sanda
 - Official Pupuan district site, regional context only:
@@ -142,22 +144,27 @@ All three are independently movable props, not costumes. Primary and companion
 versions must be materially different objects rather than resized or
 recoloured duplicates.
 
-### JU1873 rotten-cacao specimen lantern
+### JU1873 cacao-pod machete
 
 Family ID: `ju1873-cacao-specimen-lantern`
 
 Scientific basis: the exact rotting-cacao substrate, with fruit morphology
-grounded in Kew.
+grounded in Kew. The International Cocoa Organization documents machetes as
+one tool used to split harvested cacao pods, although a wooden club reduces
+the risk of cutting the beans. The accessory is playful plantation context,
+not a claim that this tool was used to open the JU1873 source fruit.
 
-Primary: a broad horizontal hinged half-fruit lantern with ribbed rind halves,
-a softly translucent pulp-and-seed chamber, curved carrying handle and small
-decay-speck shutters.
+Primary: a broad side-view working machete with a gently curved steel blade,
+visible bevel and spine highlight, short berry-wrapped handle, gold guard and
+one separate opened cacao half near the blade tip.
 
-Companion: a tall louvered rind-column lamp with one separate oval inspection
-window, hooked peduncle-like top and offset foot.
+Companion: a shorter upward-angled machete with a compact broad blade, distinct
+handle proportions and a smaller opened cacao half. Its blade and handle must
+remain one clear silhouette at production size.
 
-Keep the silhouettes horizontal versus vertical. Do not present the decay
-pattern as a diagnosed disease.
+Keep both blades away from the worms' faces. Do not imply that a machete is the
+only or preferred pod-opening method, and do not present the illustrated pod
+as the documented JU1873 fruit's exact decay state.
 
 ### JU1873 five-day plating chronograph
 
@@ -165,11 +172,11 @@ Family ID: `ju1873-plating-chronograph`
 
 Scientific basis: collection on 11 November and plating on 16 November.
 
-Primary: a wide low five-notch date wheel connecting a specimen cup to a
-culture-plate cradle through a visible coherent escapement.
+Primary: a wide flip-calendar board with large separate `11` and `16` pages,
+five day markers, visible binding rings and a separate Petri-dish cradle.
 
-Companion: a tall `11 → 16` flip-calendar column with a zigzag five-step
-mechanism, separate side cradle and pendulum.
+Companion: a tall two-page `11 → 16` desk calendar with five side markers,
+visible binding rings, a broad foot and a separate side Petri-dish cradle.
 
 Every connector must have an obvious mechanical purpose. Do not add arbitrary
 rods or sticks touching the plate. The five divisions encode the documented
@@ -183,11 +190,12 @@ Family ID: `ju1873-living-type-vault`
 Scientific basis: JU1873 is the type and reference isolate retained as a
 living repository strain.
 
-Primary: a low horizontal double-wall storage carousel containing one clearly
-labelled JU1873 vial, three unequal storage ports and a hinged retrieval rail.
+Primary: a low horizontal insulated specimen case with an open lid and handle,
+one large clearly labelled JU1873 vial, two empty storage ports and a retrieval
+tray.
 
-Companion: a tall double-wall lift vault with one suspended capillary, offset
-retrieval arm, narrow temperature dial and separate lower cradle.
+Companion: a tall open specimen cabinet with one large JU1873 vial, a visibly
+swung-open rack door, an unnumbered condition dial and a separate lower cradle.
 
 This must read as standalone storage and retrieval equipment, not a backpack
 or jetpack. Do not display an invented storage temperature.
