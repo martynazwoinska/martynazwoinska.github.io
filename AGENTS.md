@@ -121,6 +121,31 @@ Avoid:
 - Check licensing before adapting an external graphic and include the required attribution.
 - Preserve scientifically meaningful colours even when they differ from the site palette.
 
+## Visual-quality gate
+
+Technical correctness is not sufficient for visual approval. An illustration must also be recognizable, physically coherent and polished at its final displayed size.
+
+Before drawing or generating an object:
+
+- identify reliable visual references for its real construction, anatomy, proportions and material;
+- if the object is unfamiliar or its anatomy is uncertain, research it or ask for clarification rather than guessing;
+- references may guide structure and anatomy, but do not copy protected artwork.
+
+Every finished illustration must pass these checks:
+
+- it is recognizable without relying on its label;
+- its silhouette, proportions and defining structures match the intended object;
+- materials are communicated through construction, edges and details, not colour alone;
+- attachment, orientation, perspective, overlap and occlusion are physically plausible in the scene;
+- internal details remain contained within the object's boundaries;
+- foreground and far-side elements use deliberate layering rather than arbitrary symmetry;
+- colour choices preserve meaningful distinctions and do not mechanically reduce everything to the same brown, beige or muted palette;
+- small details remain legible at the exact production size without becoming cluttered.
+
+The first technically complete drawing is a draft, not automatically a final asset. Perform at least one critical visual review and refinement pass before presenting it for approval. Specifically inspect silhouette, anatomy, construction, material, placement, layering and readability.
+
+Show the exact production render in its real page context and at all relevant responsive sizes. Do not implement, commit or deploy an illustration that still depends on explanation to look correct, has ambiguous construction, or is merely "good enough" technically.
+
 ## Beyond Research: approved landing design
 
 The homepage section keeps the heading:

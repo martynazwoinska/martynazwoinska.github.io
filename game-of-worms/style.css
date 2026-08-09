@@ -1588,40 +1588,60 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .fig-wing-harness-detail { fill: none; stroke: var(--ishigaki-gold); stroke-width: 2; stroke-linecap: round; }
 .fig-wing-buckle { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 1.5; }
 
-.ahmedabad-af16-accessory { filter: drop-shadow(0 5px 4px rgba(35,31,25,.24)); }
-.af16-visor-frame { fill: color-mix(in srgb, #79513a 79%, var(--local-secondary)); stroke: color-mix(in srgb, #3f342a 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
-.af16-jaali-panel { fill: color-mix(in srgb, #375d64 72%, var(--local-primary)); stroke: color-mix(in srgb, #243e43 82%, var(--worm-deep)); stroke-width: 2.3; stroke-linejoin: round; }
-.af16-jaali-line { fill: none; stroke: color-mix(in srgb, #c7a668 70%, var(--local-secondary)); stroke-width: 1.7; stroke-linecap: round; opacity: .84; }
-.af16-jaali-line.light { stroke: color-mix(in srgb, #e0cd9c 72%, var(--paper-strong)); }
-.af16-visor-band,
-.af16-visor-scallop { fill: none; stroke: color-mix(in srgb, #49382d 80%, var(--worm-deep)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-.af16-visor-scallop { stroke: color-mix(in srgb, #b28b4d 74%, var(--local-secondary)); stroke-width: 2.5; }
-.af16-visor-hinge,
-.af16-visor-rivet { fill: color-mix(in srgb, #c29c55 72%, var(--local-secondary)); stroke: color-mix(in srgb, #5c472c 78%, var(--worm-deep)); stroke-width: 1.5; }
-.af16-reel-grip,
-.af16-reel-rim,
-.af16-reel-core { fill: color-mix(in srgb, #855638 76%, var(--local-secondary)); stroke: color-mix(in srgb, #45362a 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
-.af16-reel-core { fill: color-mix(in srgb, #c8a866 70%, var(--local-secondary)); }
-.af16-reel-spindle,
-.af16-reel-brace { fill: none; stroke: color-mix(in srgb, #4b392c 80%, var(--worm-deep)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-.af16-reel-thread { fill: none; stroke: color-mix(in srgb, #a94e5f 70%, var(--local-secondary)); stroke-width: 1.8; stroke-linecap: round; }
-.af16-current-ribbon { fill: none; stroke: color-mix(in srgb, #407e88 73%, var(--local-primary)); stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
-.af16-current-ribbon.companion { stroke: color-mix(in srgb, #5c7d88 68%, var(--local-primary)); stroke-width: 6; }
-.af16-streamer-fork { fill: none; stroke: color-mix(in srgb, #a94e5f 70%, var(--local-secondary)); stroke-width: 4; stroke-linecap: round; }
-.af16-sieve-frame,
-.af16-sieve-shell,
-.af16-scoop-shell { fill: color-mix(in srgb, #b28d50 70%, var(--local-secondary)); stroke: color-mix(in srgb, #5f4930 80%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
-.af16-sieve-screen { fill: color-mix(in srgb, #d7c89f 66%, var(--paper-strong)); stroke: color-mix(in srgb, #67563c 78%, var(--worm-deep)); stroke-width: 2; }
-.af16-sieve-mesh { fill: none; stroke: color-mix(in srgb, #67563c 72%, var(--worm-deep)); stroke-width: 1.7; stroke-linecap: round; opacity: .82; }
-.af16-sieve-mesh.light { stroke: color-mix(in srgb, #b79b63 70%, var(--local-secondary)); }
-.af16-sieve-handle { fill: color-mix(in srgb, #77503a 78%, var(--local-secondary)); stroke: color-mix(in srgb, #41342b 82%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.ahmedabad-af16-accessory {
+  --af16-ink: #263b55;
+  --af16-indigo: #4654a3;
+  --af16-turquoise: #38a7a4;
+  --af16-turquoise-light: #a8e4dc;
+  --af16-coral: #dc6078;
+  --af16-gold: #d6a63e;
+  --af16-ivory: #fff8e5;
+  --af16-soil: #95583f;
+  filter: drop-shadow(0 4px 3px rgba(29,48,67,.25));
+}
+.af16-fan-panel { fill: var(--af16-indigo); stroke: var(--af16-ink); stroke-width: 3; stroke-linejoin: round; }
+.af16-fan-panel.companion { fill: var(--af16-turquoise); }
+.af16-fan-wedge { stroke: none; opacity: .94; }
+.af16-fan-wedge.coral { fill: var(--af16-coral); }
+.af16-fan-wedge.turquoise { fill: var(--af16-turquoise); }
+.af16-fan-wedge.ivory { fill: var(--af16-ivory); }
+.af16-fan-wedge.indigo { fill: var(--af16-indigo); }
+.af16-lattice-line { fill: none; stroke: var(--af16-turquoise-light); stroke-width: 1.75; stroke-linecap: round; opacity: .72; }
+.af16-lattice-line.alt { stroke: var(--af16-gold); stroke-width: 1.35; }
+.af16-fan-rim { fill: none; stroke: var(--af16-coral); stroke-width: 5; stroke-linecap: round; }
+.af16-fan-rib { fill: none; stroke: var(--af16-gold); stroke-width: 2.8; stroke-linecap: round; }
+.af16-fan-handle { fill: var(--af16-coral); stroke: var(--af16-ink); stroke-width: 2.5; stroke-linejoin: round; }
+.af16-fan-pivot { fill: var(--af16-gold); stroke: var(--af16-ink); stroke-width: 2; }
+.af16-kite-paper { fill: var(--af16-ivory); stroke: var(--af16-ink); stroke-width: 3; stroke-linejoin: round; }
+.af16-kite-quarter.indigo { fill: var(--af16-indigo); stroke: none; }
+.af16-kite-quarter.turquoise { fill: var(--af16-turquoise); stroke: none; }
+.af16-kite-quarter.coral { fill: var(--af16-coral); stroke: none; }
+.af16-kite-spar { fill: none; stroke: var(--af16-gold); stroke-width: 2.5; stroke-linecap: round; }
+.af16-kite-line { fill: none; stroke: var(--af16-ink); stroke-width: 1.8; stroke-linecap: round; }
+.af16-kite-tail { fill: none; stroke: var(--af16-indigo); stroke-width: 2.5; stroke-linecap: round; }
+.af16-tail-bow { fill: none; stroke: var(--af16-coral); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.af16-tail-bow.gold { stroke: var(--af16-gold); }
+.af16-spool-thread { fill: var(--af16-coral); stroke: var(--af16-ink); stroke-width: 2.5; }
+.af16-spool-rim { fill: var(--af16-gold); stroke: var(--af16-ink); stroke-width: 2.3; }
+.af16-spool-winding { fill: none; stroke: var(--af16-ivory); stroke-width: 1.8; opacity: .84; }
+.af16-spool-grip { fill: none; stroke: var(--af16-indigo); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.af16-spool-crank { fill: var(--af16-turquoise); stroke: var(--af16-ink); stroke-width: 1.8; }
+.af16-kit-frame,
+.af16-scoop-shell { fill: var(--af16-turquoise); stroke: var(--af16-ink); stroke-width: 3; stroke-linejoin: round; }
+.af16-kit-screen { fill: rgba(202,241,234,.78); stroke: var(--af16-gold); stroke-width: 2.5; }
+.af16-mesh-line { fill: none; stroke: var(--af16-indigo); stroke-width: 1.6; stroke-linecap: round; opacity: .78; }
+.af16-kit-handle { fill: var(--af16-coral); stroke: var(--af16-ink); stroke-width: 2.5; stroke-linejoin: round; }
 .af16-handle-wrap,
-.af16-vial-cap { fill: none; stroke: color-mix(in srgb, #d0ad64 70%, var(--local-secondary)); stroke-width: 2.2; stroke-linecap: round; }
-.af16-sample-vial { fill: rgba(218,239,234,.74); stroke: color-mix(in srgb, #4d746d 72%, var(--worm-deep)); stroke-width: 2.4; }
-.af16-sieve-tray { fill: color-mix(in srgb, #9a6948 72%, var(--local-secondary)); stroke: color-mix(in srgb, #513b2e 80%, var(--worm-deep)); stroke-width: 2.7; stroke-linejoin: round; }
-.af16-soil-grain { fill: color-mix(in srgb, #805039 78%, var(--local-secondary)); stroke: color-mix(in srgb, #4c362b 76%, var(--worm-deep)); stroke-width: 1; }
-.af16-soil-grain.light { fill: color-mix(in srgb, #b17b4d 72%, var(--local-secondary)); }
-.af16-sieve-tag { fill: color-mix(in srgb, #e5d6ae 75%, var(--paper-strong)); stroke: color-mix(in srgb, #6b573a 72%, var(--worm-deep)); stroke-width: 1.8; }
+.af16-vial-cap { fill: none; stroke: var(--af16-gold); stroke-width: 3; stroke-linecap: round; }
+.af16-sample-vial { fill: rgba(220,249,244,.92); stroke: var(--af16-ink); stroke-width: 2.4; }
+.af16-vial-soil { fill: var(--af16-soil); stroke: none; }
+.af16-vial-label { fill: none; stroke: var(--af16-indigo); stroke-width: 1.5; stroke-linecap: round; }
+.af16-scoop-hole { fill: var(--af16-ivory); stroke: var(--af16-indigo); stroke-width: 1.2; }
+.af16-kit-tray { fill: var(--af16-indigo); stroke: var(--af16-ink); stroke-width: 2.7; stroke-linejoin: round; }
+.af16-soil-grain { fill: var(--af16-soil); stroke: #573b35; stroke-width: 1; }
+.af16-soil-grain.light { fill: #c47a54; }
+.af16-kit-tag { fill: var(--af16-ivory); stroke: var(--af16-coral); stroke-width: 1.8; }
+.af16-kit-tag-line { fill: none; stroke: var(--af16-indigo); stroke-width: 1.4; stroke-linecap: round; }
 
 .barro-qg2726-accessory { filter: drop-shadow(0 5px 4px rgba(28,41,29,.25)); }
 .bci-cabinet-shell,

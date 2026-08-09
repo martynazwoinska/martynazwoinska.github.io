@@ -55,30 +55,30 @@ The locked silhouette is a deep shaded lane between unequal carved façades, pun
 
 ## Accessory design contract
 
-The accessories are playful designs derived from shade architecture, Ahmedabad’s kite craft, the Sabarmati and the documented soil collection. They do not claim to be authentic dress.
+The accessories are playful designs derived from pol lattice architecture, Ahmedabad’s kite craft and the documented soil collection. They do not claim to be authentic dress or historical equipment.
 
-### Shade visor
+### Lattice fans
 
-- **Hermaphrodite:** a broad carved-teak jharokha visor with a scalloped shade edge, pierced side panels and a curved fitted band.
-- **Male:** a smaller asymmetric jaali visor with a diamond lattice, indigo inset and separate side hinge.
-- The two designs differ in silhouette and construction, and neither covers the eyes.
+- **Hermaphrodite:** a broad folding fan with a bounded diamond lattice, seven visible structural ribs, a scalloped coral rim, central pivot and fitted handle.
+- **Male:** a smaller asymmetric rigid fan with a different clipped lattice, five unequal ribs and an offset handle.
+- The fans translate the geometry of pol lattice screens into playful props; they are not presented as traditional Ahmedabad fans.
 
-### Current-streamer wand
+### Kite rigs
 
-- **Hermaphrodite:** a large patang-style charkhi reel with carved rims, visible wound line and one long Sabarmati-coloured current ribbon.
-- **Male:** a compact twin-spindle reel with two shorter forked streamers and a different hand grip.
-- Both objects suggest Ahmedabad’s kite-making culture while retaining the approved current-streamer concept.
+- **Hermaphrodite:** a large four-panel patang-style kite with visible crossed spars, a bow-decorated tail, taut line and one charkhi-style spool with wound thread, rims, grip and crank.
+- **Male:** a smaller rotated four-panel kite, shorter bow tail and a compact differently proportioned spool and grip.
+- The line visibly connects each kite to its spool so the construction remains understandable without its label.
 
 Sources:
 
 - [Kite making, Development Commissioner (Handicrafts), Government of India](https://handicrafts.nic.in/crafts/All_Crafts/Craft_Categories/Paper/Paper_Crafts/Kite_making/KiteMakingWebPage.html)
 - [Ahmedabad Kite Festival, Gujarat Tourism](https://ikf.gujarattourism.com/about.html)
 
-### Soil sieve
+### Soil kits
 
-- **Hermaphrodite:** a round brass-and-wood field sieve with a fine square mesh, two handles, a shallow receiving tray and visible soil fractions.
-- **Male:** a crescent hand-scoop sieve with radial perforations, one wrapped handle and a small separate sample vial.
-- The pair differs in working action and outline rather than scale alone.
+- **Hermaphrodite:** a round field sieve with a clipped square mesh, two handles, a shallow receiving tray, visible soil fractions and a sample tag.
+- **Male:** a curved perforated sampling scoop with one wrapped handle and a separate transparent vial containing a small soil sample.
+- Brown is reserved for the documented soil and its particles; the tool bodies use indigo, turquoise, coral, antique gold and ivory.
 
 ## Quality and interaction acceptance
 

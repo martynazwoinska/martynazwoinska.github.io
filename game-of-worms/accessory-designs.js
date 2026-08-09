@@ -8,7 +8,7 @@ const SVG_NS = "http://www.w3.org/2000/svg";
  */
 const rows = [
   ["inopinata", "Ishigaki, Japan", "fig UV visors", "fig-fascinator", "field specimen baskets", "sample-pannier", "fig-wasp wings", "wings"],
-  ["briggsae", "Ahmedabad, India · AF16", "shade visor", "shade-visor", "current-streamer wand", "current-streamer-wand", "soil sieve", "soil-sieve"],
+  ["briggsae", "Ahmedabad, India · AF16", "lattice fans", "lattice-fan", "kite rigs", "kite-rig", "soil kits", "soil-kit"],
   ["briggsae", "Taipei, Taiwan · BRC20390", "two-photo provenance viewer", "brc20390-two-photo-provenance-viewer", "eleven-strain isotype constellation", "brc20390-eleven-strain-isotype-constellation", "Taipei 174 m forest-record inclinometer", "taipei-174m-forest-record-inclinometer"],
   ["briggsae", "Kerala, India · JU1337", "rotting-material recovery carousel", "ju1337-rotting-material-recovery-carousel", "sixteen-December field calendar", "ju1337-sixteen-december-field-calendar", "Poovar agricultural-edge ledger", "poovar-agricultural-edge-ledger"],
   ["briggsae", "Kauaʻi, Hawaiʻi · QG130", "three-strain isotype sorter", "qg130-three-strain-isotype-sorter", "two-August forest chronometer", "qg130-two-august-forest-chronometer", "eleven-metre forest-floor transect lens", "qg130-eleven-metre-forest-floor-transect"],
@@ -3232,67 +3232,102 @@ function drawAhmedabadAF16Accessory(group, item, companion) {
   group.dataset.renderer = item.family;
   group.classList.add("ahmedabad-af16-accessory", companion ? "af16-companion" : "af16-primary");
 
-  if (item.family === "shade-visor") {
+  if (item.family === "lattice-fan") {
+    const defs = add(group, "defs");
+    const clipId = companion ? "af16-lattice-fan-clip-companion" : "af16-lattice-fan-clip-primary";
+    const fanClip = add(defs, "clipPath", { id: clipId });
     if (companion) {
-      path(group, "M-58 12Q-30-43 11-45Q44-43 63-5L48 17Q11-2-46 28Z", "af16-visor-frame");
-      path(group, "M-43 8Q-20-27 8-29Q34-28 48-7L38 7Q10-5-34 18Z", "af16-jaali-panel");
-      [-26,-8,10,28].forEach((x, index) => {
-        line(group, `M${x}-19L${x + 18} 8M${x + 18}-19L${x} 8`, index % 2 ? "af16-jaali-line light" : "af16-jaali-line");
-      });
-      path(group, "M-47 25Q6 2 54 18", "af16-visor-band");
-      add(group, "circle", { class: "af16-visor-hinge", cx: 50, cy: 5, r: 6 });
+      const fanShape = "M-12 38C-49 29-68-4-55-34C-42-62-2-70 28-52C49-39 61-14 57 8C39 27 14 37-12 38Z";
+      path(fanClip, fanShape);
+      path(group, fanShape, "af16-fan-panel companion");
+      const lattice = add(group, "g", { class: "af16-fan-lattice", "clip-path": `url(#${clipId})` });
+      [-72,-52,-32,-12,8,28,48].forEach(x => line(lattice, `M${x}-62L${x + 72} 40`, "af16-lattice-line"));
+      [-62,-42,-22,-2,18,38,58].forEach(x => line(lattice, `M${x} 42L${x + 62}-62`, "af16-lattice-line alt"));
+      path(group, "M-12 38C-49 29-68-4-55-34C-42-62-2-70 28-52C49-39 61-14 57 8", "af16-fan-rim");
+      path(group, "M-10 37L-30 75L-17 81L3 40Z", "af16-fan-handle");
+      line(group, "M-10 37L-50-33M-10 37L-26-57M-10 37L3-62M-10 37L31-49M-10 37L53-17", "af16-fan-rib");
+      add(group, "circle", { class: "af16-fan-pivot", cx: -10, cy: 37, r: 7 });
     } else {
-      path(group, "M-80 14Q-48-54 0-61Q50-52 81 12L69 35Q0 5-70 36Z", "af16-visor-frame");
-      path(group, "M-68 8Q-42-39 0-45Q43-39 68 7L59 20Q0-2-59 21Z", "af16-jaali-panel");
-      [-45,-22,0,22,45].forEach(x => line(group, `M${x}-27L${x + 20} 12M${x + 20}-27L${x} 12`, "af16-jaali-line"));
-      path(group, "M-70 32Q0 3 70 31", "af16-visor-band");
-      path(group, "M-70 33Q-58 47-46 31Q-34 47-22 30Q-11 45 0 27Q12 45 24 30Q36 47 48 31Q59 46 70 31", "af16-visor-scallop");
-      [-58,58].forEach(cx => add(group, "circle", { class: "af16-visor-rivet", cx, cy: 25, r: 4 }));
+      const fanShape = "M0 48L-82-4Q-71-43-43-62Q-21-76 0-80Q22-76 44-62Q72-43 83-4Z";
+      path(fanClip, fanShape);
+      path(group, fanShape, "af16-fan-panel primary");
+      const fanWedges = add(group, "g", { class: "af16-fan-wedges", "clip-path": `url(#${clipId})` });
+      path(fanWedges, "M0 48L-82-4Q-71-43-43-62Z", "af16-fan-wedge coral");
+      path(fanWedges, "M0 48L-43-62Q-21-76 0-80Z", "af16-fan-wedge turquoise");
+      path(fanWedges, "M0 48L0-80Q22-76 44-62Z", "af16-fan-wedge ivory");
+      path(fanWedges, "M0 48L44-62Q72-43 83-4Z", "af16-fan-wedge indigo");
+      const lattice = add(group, "g", { class: "af16-fan-lattice", "clip-path": `url(#${clipId})` });
+      [-104,-78,-52,-26,0,26,52,78].forEach(x => line(lattice, `M${x}-82L${x + 84} 50`, "af16-lattice-line"));
+      [-84,-58,-32,-6,20,46,72,98].forEach(x => line(lattice, `M${x} 50L${x + 84}-82`, "af16-lattice-line alt"));
+      path(group, "M-82-4Q-71-43-43-62Q-21-76 0-80Q22-76 44-62Q72-43 83-4", "af16-fan-rim");
+      [-72,-48,-24,0,24,48,72].forEach(x => line(group, `M0 48L${x} ${-65 + Math.abs(x) * .58}`, "af16-fan-rib"));
+      path(group, "M-8 44L-13 91L13 91L8 44Z", "af16-fan-handle");
+      add(group, "circle", { class: "af16-fan-pivot", cx: 0, cy: 48, r: 9 });
     }
     return true;
   }
 
-  if (item.family === "current-streamer-wand") {
+  if (item.family === "kite-rig") {
     if (companion) {
-      path(group, "M-47 25L-19-10M20-8L49 22", "af16-reel-grip");
-      add(group, "ellipse", { class: "af16-reel-rim", cx: -19, cy: -15, rx: 24, ry: 33 });
-      add(group, "ellipse", { class: "af16-reel-rim", cx: 20, cy: -13, rx: 20, ry: 28 });
-      line(group, "M-19-45V16M20-39V14M-35-15H37", "af16-reel-spindle");
-      [-28,-19,-10,10,20,29].forEach((x,index) => line(group, `M${x}-31Q${x + (index%2?8:-7)}-14 ${x} 4`, "af16-reel-thread"));
-      path(group, "M-40-26Q-67-56-83-24Q-66 0-44-8M38-20Q67-43 83-13Q69 8 44 3", "af16-current-ribbon companion");
-      path(group, "M-82-24L-67-18L-78-7M83-13L68-8L79 4", "af16-streamer-fork");
+      const kite = add(group, "g", { transform: "translate(47 -48) rotate(11)" });
+      path(kite, "M0-55L42 0L0 51L-42 0Z", "af16-kite-paper companion");
+      path(kite, "M0-55L42 0L0 0Z", "af16-kite-quarter turquoise");
+      path(kite, "M0 0L0 51L-42 0Z", "af16-kite-quarter coral");
+      line(kite, "M0-53V49M-40 0H40", "af16-kite-spar");
+      path(kite, "M0 50Q18 65 3 80Q-12 94 8 108", "af16-kite-tail");
+      [[9,66],[-1,82],[6,100]].forEach(([cx,cy], index) => path(kite, `M${cx-7} ${cy-4}L${cx} ${cy}L${cx-7} ${cy+5}M${cx+7} ${cy-4}L${cx} ${cy}L${cx+7} ${cy+5}`, index % 2 ? "af16-tail-bow gold" : "af16-tail-bow"));
+      const spool = add(group, "g", { transform: "translate(-47 29) rotate(-8)" });
+      path(spool, "M-35-20H35V20H-35Z", "af16-spool-thread");
+      add(spool, "ellipse", { class: "af16-spool-rim", cx: -35, cy: 0, rx: 8, ry: 27 });
+      add(spool, "ellipse", { class: "af16-spool-rim", cx: 35, cy: 0, rx: 8, ry: 27 });
+      [-24,-12,0,12,24].forEach(x => line(spool, `M${x}-19V19`, "af16-spool-winding"));
+      path(spool, "M-42 26L-25 43M42 26L25 43M-26 43H26", "af16-spool-grip");
+      path(group, "M-11 29Q15-9 47-48", "af16-kite-line");
     } else {
-      path(group, "M-18 52L-8 5H10L23 52Z", "af16-reel-grip");
-      add(group, "ellipse", { class: "af16-reel-rim", cx: 0, cy: -11, rx: 53, ry: 65 });
-      add(group, "ellipse", { class: "af16-reel-core", cx: 0, cy: -11, rx: 35, ry: 48 });
-      line(group, "M0-72V51M-49-11H49", "af16-reel-spindle");
-      [-28,-18,-8,2,12,22,32].forEach((x,index) => line(group, `M${x}-52Q${x + (index%2?13:-11)}-11 ${x} 31`, "af16-reel-thread"));
-      [-1,1].forEach(side => path(group, `M${side*48}-45Q${side*67}-13 ${side*48} 23`, "af16-reel-brace"));
-      path(group, "M47-22Q83-70 113-28Q93 1 63-3Q99 24 78 56Q48 42 37 20", "af16-current-ribbon");
-      path(group, "M108-29L125-22L114-8", "af16-streamer-fork");
+      const kite = add(group, "g", { transform: "translate(58 -55) rotate(-6)" });
+      path(kite, "M0-72L56 0L0 67L-56 0Z", "af16-kite-paper primary");
+      path(kite, "M0-72L56 0L0 0Z", "af16-kite-quarter indigo");
+      path(kite, "M0 0L0 67L-56 0Z", "af16-kite-quarter coral");
+      line(kite, "M0-70V65M-54 0H54", "af16-kite-spar");
+      path(kite, "M0 66Q25 82 5 101Q-16 120 10 140", "af16-kite-tail");
+      [[13,83],[1,104],[8,130]].forEach(([cx,cy], index) => path(kite, `M${cx-9} ${cy-5}L${cx} ${cy}L${cx-9} ${cy+6}M${cx+9} ${cy-5}L${cx} ${cy}L${cx+9} ${cy+6}`, index % 2 ? "af16-tail-bow gold" : "af16-tail-bow"));
+      const spool = add(group, "g", { transform: "translate(-56 34) rotate(-7)" });
+      path(spool, "M-43-27H43V27H-43Z", "af16-spool-thread");
+      add(spool, "ellipse", { class: "af16-spool-rim", cx: -43, cy: 0, rx: 10, ry: 36 });
+      add(spool, "ellipse", { class: "af16-spool-rim", cx: 43, cy: 0, rx: 10, ry: 36 });
+      [-30,-15,0,15,30].forEach(x => line(spool, `M${x}-26V26`, "af16-spool-winding"));
+      path(spool, "M-50 35L-31 55M50 35L31 55M-32 55H32", "af16-spool-grip");
+      add(spool, "circle", { class: "af16-spool-crank", cx: 54, cy: 39, r: 7 });
+      path(group, "M-12 34Q19-17 58-55", "af16-kite-line");
     }
     return true;
   }
 
-  if (item.family === "soil-sieve") {
+  if (item.family === "soil-kit") {
     if (companion) {
-      path(group, "M-58-28Q0-55 59-24L45 27Q0 6-46 30Z", "af16-scoop-shell");
-      [-42,-24,-6,12,30,48].forEach((x,index) => line(group, `M${x}-28Q${x * .7} 0 ${x * .78} 25`, index % 2 ? "af16-sieve-mesh light" : "af16-sieve-mesh"));
-      [-13,4,20].forEach(y => line(group, `M-49 ${y}Q0 ${y - 13} 50 ${y}`, "af16-sieve-mesh"));
-      path(group, "M43 9L78 47L64 62L29 22Z", "af16-sieve-handle");
-      [-1,0,1].forEach(index => line(group, `M${54 + index*7} 33L${44 + index*7} 48`, "af16-handle-wrap"));
-      add(group, "rect", { class: "af16-sample-vial", x: -82, y: 8, width: 23, height: 48, rx: 7, transform: "rotate(-8 -70 32)" });
-      path(group, "M-78 12H-58", "af16-vial-cap");
-      [[-30,-2],[-8,6],[15,-6],[32,8]].forEach(([cx,cy],index) => add(group, "circle", { class: index%2 ? "af16-soil-grain light" : "af16-soil-grain", cx, cy, r: 3.5 }));
+      path(group, "M-62-31Q0-57 63-27L48 31Q0 8-49 33Z", "af16-scoop-shell");
+      [[-38,-17],[-18,-24],[3,-27],[24,-21],[42,-12],[-28,3],[-5,0],[18,3],[35,12]].forEach(([cx,cy]) => add(group, "circle", { class: "af16-scoop-hole", cx, cy, r: 4 }));
+      path(group, "M42 10L84 48L68 66L27 25Z", "af16-kit-handle");
+      [-1,0,1].forEach(index => line(group, `M${58 + index*7} 34L${48 + index*7} 49`, "af16-handle-wrap"));
+      add(group, "rect", { class: "af16-sample-vial", x: -86, y: 3, width: 27, height: 58, rx: 8, transform: "rotate(-7 -72 32)" });
+      add(group, "rect", { class: "af16-vial-soil", x: -82, y: 39, width: 19, height: 17, rx: 5, transform: "rotate(-7 -72 32)" });
+      path(group, "M-82 5H-58", "af16-vial-cap");
+      path(group, "M-80 23H-62M-79 29H-65", "af16-vial-label");
     } else {
-      add(group, "circle", { class: "af16-sieve-frame", cx: 0, cy: -7, r: 69 });
-      add(group, "circle", { class: "af16-sieve-screen", cx: 0, cy: -7, r: 55 });
-      [-40,-20,0,20,40].forEach(x => line(group, `M${x}-57V43`, "af16-sieve-mesh"));
-      [-47,-27,-7,13,33].forEach(y => line(group, `M-49 ${y}H49`, "af16-sieve-mesh"));
-      path(group, "M-81-30L-110-14L-100 12L-72-1ZM80-31L110-16L101 11L72-2Z", "af16-sieve-handle");
-      path(group, "M-70 58Q0 88 70 57L56 83Q0 108-58 83Z", "af16-sieve-tray");
-      [[-42,64],[-23,73],[-3,68],[18,76],[39,65]].forEach(([cx,cy],index) => add(group, "circle", { class: index%2 ? "af16-soil-grain light" : "af16-soil-grain", cx, cy, r: 4 + index%3 }));
-      path(group, "M-18 90H22L18 108H-22Z", "af16-sieve-tag");
+      const defs = add(group, "defs");
+      const meshClipId = "af16-soil-kit-mesh-clip-primary";
+      const meshClip = add(defs, "clipPath", { id: meshClipId });
+      add(meshClip, "circle", { cx: 0, cy: -12, r: 54 });
+      path(group, "M-68 54Q0 84 68 53L56 82Q0 105-57 82Z", "af16-kit-tray");
+      add(group, "circle", { class: "af16-kit-frame", cx: 0, cy: -12, r: 70 });
+      add(group, "circle", { class: "af16-kit-screen", cx: 0, cy: -12, r: 55 });
+      const mesh = add(group, "g", { class: "af16-kit-mesh", "clip-path": `url(#${meshClipId})` });
+      [-44,-22,0,22,44].forEach(x => line(mesh, `M${x}-69V45`, "af16-mesh-line"));
+      [-56,-34,-12,10,32].forEach(y => line(mesh, `M-58 ${y}H58`, "af16-mesh-line"));
+      path(group, "M-82-34L-114-17L-103 13L-72-4ZM81-35L113-18L102 12L71-5Z", "af16-kit-handle");
+      [[-40,59],[-21,69],[0,63],[21,71],[41,60]].forEach(([cx,cy],index) => add(group, "circle", { class: index%2 ? "af16-soil-grain light" : "af16-soil-grain", cx, cy, r: 4 + index%3 }));
+      path(group, "M-20 88H22L18 108H-23Z", "af16-kit-tag");
+      line(group, "M-13 95H14M-12 101H8", "af16-kit-tag-line");
     }
     return true;
   }
@@ -5054,9 +5089,9 @@ function renderPiece(target, item, wormPart) {
     "fig-fascinator": { primary: [326, 62, .64, -2], companion: [108, 106, .5, 3] },
     "sample-pannier": { primary: [170, 194, .63, -4], companion: [55, 181, .46, 4] },
     "wings": { primary: [270, 124, .66, 42], companion: [116, 129, .46, 40] },
-    "shade-visor": { primary: [329, 48, .63, -2], companion: [109, 99, .51, 3] },
-    "current-streamer-wand": { primary: [165, 192, .54, -4], companion: [64, 182, .43, 4] },
-    "soil-sieve": { primary: [316, 220, .47, -2], companion: [47, 223, .39, 4] },
+    "lattice-fan": { primary: [295, 126, .5, -8], companion: [45, 100, .42, 8] },
+    "kite-rig": { primary: [168, 190, .46, -4], companion: [61, 185, .36, 4] },
+    "soil-kit": { primary: [315, 228, .44, -2], companion: [47, 229, .35, 4] },
     "hogweed-specimen-lantern": { primary: [327, 133, .66, 3], companion: [61, 126, .58, -4] },
     "santeuil-cylinder-organ": { primary: [183, 191, .59, -2], companion: [86, 208, .52, 2] },
     "couleuvre-dragonfly-automaton": { primary: [304, 235, .61, -2], companion: [76, 266, .5, 3] },
