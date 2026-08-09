@@ -3237,16 +3237,21 @@ function drawAhmedabadAF16Accessory(group, item, companion) {
     const clipId = companion ? "af16-lattice-fan-clip-companion" : "af16-lattice-fan-clip-primary";
     const fanClip = add(defs, "clipPath", { id: clipId });
     if (companion) {
-      const fanShape = "M-12 38C-49 29-68-4-55-34C-42-62-2-70 28-52C49-39 61-14 57 8C39 27 14 37-12 38Z";
+      const fanShape = "M0 43L-64-1Q-56-34-33-50Q-17-60 0-63Q18-59 35-48Q58-31 65-1Z";
       path(fanClip, fanShape);
       path(group, fanShape, "af16-fan-panel companion");
+      const fanWedges = add(group, "g", { class: "af16-fan-wedges", "clip-path": `url(#${clipId})` });
+      path(fanWedges, "M0 43L-64-1Q-56-34-33-50Z", "af16-fan-wedge indigo");
+      path(fanWedges, "M0 43L-33-50Q-17-60 0-63Z", "af16-fan-wedge turquoise");
+      path(fanWedges, "M0 43L0-63Q18-59 35-48Z", "af16-fan-wedge ivory");
+      path(fanWedges, "M0 43L35-48Q58-31 65-1Z", "af16-fan-wedge coral");
       const lattice = add(group, "g", { class: "af16-fan-lattice", "clip-path": `url(#${clipId})` });
-      [-72,-52,-32,-12,8,28,48].forEach(x => line(lattice, `M${x}-62L${x + 72} 40`, "af16-lattice-line"));
-      [-62,-42,-22,-2,18,38,58].forEach(x => line(lattice, `M${x} 42L${x + 62}-62`, "af16-lattice-line alt"));
-      path(group, "M-12 38C-49 29-68-4-55-34C-42-62-2-70 28-52C49-39 61-14 57 8", "af16-fan-rim");
-      path(group, "M-10 37L-30 75L-17 81L3 40Z", "af16-fan-handle");
-      line(group, "M-10 37L-50-33M-10 37L-26-57M-10 37L3-62M-10 37L31-49M-10 37L53-17", "af16-fan-rib");
-      add(group, "circle", { class: "af16-fan-pivot", cx: -10, cy: 37, r: 7 });
+      [-82,-60,-38,-16,6,28,50,72].forEach(x => line(lattice, `M${x}-66L${x + 72} 45`, "af16-lattice-line"));
+      [-68,-46,-24,-2,20,42,64,86].forEach(x => line(lattice, `M${x} 45L${x + 72}-66`, "af16-lattice-line alt"));
+      path(group, "M-64-1Q-56-34-33-50Q-17-60 0-63Q18-59 35-48Q58-31 65-1", "af16-fan-rim");
+      [-55,-28,0,28,55].forEach(x => line(group, `M0 43L${x} ${-51 + Math.abs(x) * .72}`, "af16-fan-rib"));
+      path(group, "M-7 40L-10 76L11 76L7 40Z", "af16-fan-handle");
+      add(group, "circle", { class: "af16-fan-pivot", cx: 0, cy: 43, r: 7.5 });
     } else {
       const fanShape = "M0 48L-82-4Q-71-43-43-62Q-21-76 0-80Q22-76 44-62Q72-43 83-4Z";
       path(fanClip, fanShape);
@@ -5089,7 +5094,7 @@ function renderPiece(target, item, wormPart) {
     "fig-fascinator": { primary: [326, 62, .64, -2], companion: [108, 106, .5, 3] },
     "sample-pannier": { primary: [170, 194, .63, -4], companion: [55, 181, .46, 4] },
     "wings": { primary: [270, 124, .66, 42], companion: [116, 129, .46, 40] },
-    "lattice-fan": { primary: [295, 126, .5, -8], companion: [45, 100, .42, 8] },
+    "lattice-fan": { primary: [295, 126, .5, -8], companion: [101, 100, .42, -6] },
     "kite-rig": { primary: [168, 190, .46, -4], companion: [61, 185, .36, 4] },
     "soil-kit": { primary: [315, 228, .44, -2], companion: [47, 229, .35, 4] },
     "hogweed-specimen-lantern": { primary: [327, 133, .66, 3], companion: [61, 126, .58, -4] },

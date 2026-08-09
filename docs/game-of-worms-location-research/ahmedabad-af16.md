@@ -60,7 +60,7 @@ The accessories are playful designs derived from pol lattice architecture, Ahmed
 ### Lattice fans
 
 - **Hermaphrodite:** a broad folding fan with a bounded diamond lattice, seven visible structural ribs, a scalloped coral rim, central pivot and fitted handle.
-- **Male:** a smaller asymmetric rigid fan with a different clipped lattice, five unequal ribs and an offset handle.
+- **Male:** a compact five-rib folding fan with a shallower arc, differently ordered colour panels, bounded lattice, central pivot and fitted handle.
 - The fans translate the geometry of pol lattice screens into playful props; they are not presented as traditional Ahmedabad fans.
 
 ### Kite rigs
