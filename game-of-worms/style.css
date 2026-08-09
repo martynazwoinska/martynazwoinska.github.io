@@ -2335,110 +2335,124 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .cross-result-flag { fill: color-mix(in srgb, #8a6682 64%, var(--local-primary)); stroke: color-mix(in srgb, #4d3c4b 80%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
 .cross-ju4400-plate { fill: color-mix(in srgb, #d7bd7a 72%, var(--paper-strong)); stroke: color-mix(in srgb, #5c4931 77%, var(--worm-deep)); stroke-width: 1.6; }
 .cross-ju4400-text { fill: color-mix(in srgb, #304a44 80%, var(--worm-deep)); font: 900 10px/1 var(--sans); paint-order: stroke; stroke: color-mix(in srgb, var(--paper-strong) 70%, transparent); stroke-width: 1.2px; }
+.trivandrum-accessory {
+  --tri-ink: #263955;
+  --tri-indigo: #4b4fa6;
+  --tri-teal: #209f9a;
+  --tri-aqua: #79d8d1;
+  --tri-coral: #df6079;
+  --tri-gold: #d7a63e;
+  --tri-ivory: #fff6df;
+  --tri-leaf: #32895f;
+  --tri-berry: #9d4678;
+  --tri-steel: #c8d8da;
+  filter: drop-shadow(0 5px 4px rgba(31,48,71,.25));
+}
+.trivandrum-accessory-shadow { fill: rgba(27,42,61,.24); }
 .timekeeper-yoke-base,
 .timekeeper-tripod,
 .timekeeper-agar-drawer,
-.timekeeper-culture-deck { fill: color-mix(in srgb, #937247 73%, var(--local-secondary)); stroke: color-mix(in srgb, #4f3f30 82%, var(--worm-deep)); stroke-width: 2.7; stroke-linejoin: round; }
-.timekeeper-rotating-yoke { fill: none; stroke: color-mix(in srgb, #aa884f 76%, var(--local-secondary)); stroke-width: 8; }
-.timekeeper-yoke-supports { fill: none; stroke: color-mix(in srgb, #755c3d 78%, var(--worm-deep)); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.timekeeper-culture-deck { fill: var(--tri-indigo); stroke: var(--tri-ink); stroke-width: 2.7; stroke-linejoin: round; }
+.timekeeper-rotating-yoke { fill: none; stroke: var(--tri-gold); stroke-width: 8; }
+.timekeeper-yoke-supports { fill: none; stroke: var(--tri-indigo); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
 .timekeeper-yoke-pivot,
 .timekeeper-transfer-hinge,
-.timekeeper-drawer-pull { fill: color-mix(in srgb, #c49a54 76%, var(--local-secondary)); stroke: color-mix(in srgb, #58432d 82%, var(--worm-deep)); stroke-width: 2; }
-.timekeeper-glass { fill: rgba(157,214,205,.48); stroke: color-mix(in srgb, #3e746b 73%, var(--worm-deep)); stroke-width: 2.5; }
-.timekeeper-glass.chamber-lower { fill: rgba(142,196,176,.47); }
-.timekeeper-tube-meniscus { fill: none; stroke: rgba(227,248,239,.81); stroke-width: 3; stroke-linecap: round; }
+.timekeeper-drawer-pull { fill: var(--tri-gold); stroke: var(--tri-ink); stroke-width: 2; }
+.timekeeper-glass { fill: rgba(121,216,209,.48); stroke: var(--tri-teal); stroke-width: 2.5; }
+.timekeeper-glass.chamber-lower { fill: rgba(121,216,209,.38); }
+.timekeeper-tube-meniscus { fill: none; stroke: rgba(255,255,255,.88); stroke-width: 3; stroke-linecap: round; }
 .timekeeper-stopper,
-.timekeeper-chamber-divider { fill: color-mix(in srgb, #7f5f45 75%, var(--local-secondary)); stroke: color-mix(in srgb, #45382d 83%, var(--worm-deep)); stroke-width: 2.2; stroke-linejoin: round; }
-.timekeeper-petal { fill: color-mix(in srgb, #a25e78 68%, var(--local-secondary)); stroke: color-mix(in srgb, #583d4b 77%, var(--worm-deep)); stroke-width: 1.2; }
-.timekeeper-petal.deep { fill: color-mix(in srgb, #c08c55 66%, var(--local-secondary)); }
-.timekeeper-leaf { fill: color-mix(in srgb, #587d58 72%, var(--local-primary)); stroke: color-mix(in srgb, #334b3a 82%, var(--worm-deep)); stroke-width: 1.2; }
-.timekeeper-leaf.deep { fill: color-mix(in srgb, #66714b 68%, var(--local-secondary)); }
-.timekeeper-leaf-vein { fill: none; stroke: color-mix(in srgb, #34463a 76%, var(--worm-deep)); stroke-width: 1; }
-.timekeeper-ring-tick { fill: none; stroke: color-mix(in srgb, #7d6241 74%, var(--worm-deep)); stroke-width: 2.2; stroke-linecap: round; }
-.timekeeper-ring-tick.major { stroke: color-mix(in srgb, #7b4f6a 66%, var(--local-primary)); stroke-width: 4; }
+.timekeeper-chamber-divider { fill: var(--tri-coral); stroke: var(--tri-ink); stroke-width: 2.2; stroke-linejoin: round; }
+.timekeeper-petal { fill: var(--tri-coral); stroke: var(--tri-ink); stroke-width: 1.2; }
+.timekeeper-petal.deep { fill: var(--tri-berry); }
+.timekeeper-leaf { fill: var(--tri-leaf); stroke: var(--tri-ink); stroke-width: 1.2; }
+.timekeeper-leaf.deep { fill: var(--tri-teal); }
+.timekeeper-leaf-vein { fill: none; stroke: var(--tri-ivory); stroke-width: 1; }
+.timekeeper-ring-tick { fill: none; stroke: var(--tri-indigo); stroke-width: 2.2; stroke-linecap: round; }
+.timekeeper-ring-tick.major { stroke: var(--tri-coral); stroke-width: 4; }
 .timekeeper-date-tag,
-.timekeeper-day-counter-frame { fill: color-mix(in srgb, #d7c68f 70%, var(--paper-strong)); stroke: color-mix(in srgb, #63503a 77%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
+.timekeeper-day-counter-frame { fill: var(--tri-ivory); stroke: var(--tri-indigo); stroke-width: 1.8; stroke-linejoin: round; }
 .timekeeper-date-text,
-.timekeeper-day-label { fill: color-mix(in srgb, #2f5147 81%, var(--worm-deep)); font: 900 9px/1 var(--sans); paint-order: stroke; stroke: color-mix(in srgb, var(--paper-strong) 70%, transparent); stroke-width: 1.1px; letter-spacing: .02em; }
-.timekeeper-day-window { fill: color-mix(in srgb, #65a095 56%, var(--local-primary)); stroke: color-mix(in srgb, #34594f 78%, var(--worm-deep)); stroke-width: 1.1; }
-.timekeeper-day-window.deep { fill: color-mix(in srgb, #b28c55 57%, var(--local-secondary)); }
-.timekeeper-upright-frame { fill: none; stroke: color-mix(in srgb, #8d6d47 77%, var(--local-secondary)); stroke-width: 5; }
+.timekeeper-day-label { fill: var(--tri-ink); font: 900 9px/1 var(--sans); paint-order: stroke; stroke: rgba(255,246,223,.8); stroke-width: 1.1px; letter-spacing: .02em; }
+.timekeeper-day-window { fill: var(--tri-teal); stroke: var(--tri-ink); stroke-width: 1.1; }
+.timekeeper-day-window.deep { fill: var(--tri-coral); }
+.timekeeper-upright-frame { fill: none; stroke: var(--tri-indigo); stroke-width: 5; }
 .timekeeper-side-port-housing,
 .timekeeper-culture-rim,
-.timekeeper-drawer-front { fill: color-mix(in srgb, #718476 62%, var(--local-primary)); stroke: color-mix(in srgb, #3b4d42 80%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
-.timekeeper-side-port-valve { fill: color-mix(in srgb, #c09653 73%, var(--local-secondary)); stroke: color-mix(in srgb, #51402d 81%, var(--worm-deep)); stroke-width: 2; }
+.timekeeper-drawer-front { fill: var(--tri-steel); stroke: var(--tri-ink); stroke-width: 1.8; stroke-linejoin: round; }
+.timekeeper-side-port-valve { fill: var(--tri-gold); stroke: var(--tri-ink); stroke-width: 2; }
 .timekeeper-side-port-spokes,
-.timekeeper-deck-brace { fill: none; stroke: color-mix(in srgb, #59462f 80%, var(--worm-deep)); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-.timekeeper-transfer-chute { fill: color-mix(in srgb, #9a7a4f 73%, var(--local-secondary)); stroke: color-mix(in srgb, #4f4030 81%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.timekeeper-deck-brace { fill: none; stroke: var(--tri-ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.timekeeper-transfer-chute { fill: var(--tri-teal); stroke: var(--tri-ink); stroke-width: 2; stroke-linejoin: round; }
 
 .waterworks-lake-basin,
-.waterworks-column-base { fill: color-mix(in srgb, #7c654b 70%, var(--local-secondary)); stroke: color-mix(in srgb, #453a31 82%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
-.waterworks-basin-water { fill: rgba(102,181,176,.58); stroke: color-mix(in srgb, #376c67 73%, var(--worm-deep)); stroke-width: 2; }
-.waterworks-basin-ripple { fill: none; stroke: rgba(223,246,238,.8); stroke-width: 2.3; stroke-linecap: round; }
+.waterworks-column-base { fill: var(--tri-indigo); stroke: var(--tri-ink); stroke-width: 2.8; stroke-linejoin: round; }
+.waterworks-basin-water { fill: rgba(121,216,209,.72); stroke: var(--tri-teal); stroke-width: 2; }
+.waterworks-basin-ripple { fill: none; stroke: rgba(255,255,255,.9); stroke-width: 2.3; stroke-linecap: round; }
 .waterworks-pump-body,
-.waterworks-pump-column { fill: color-mix(in srgb, #6c735a 66%, var(--local-primary)); stroke: color-mix(in srgb, #3c4538 82%, var(--worm-deep)); stroke-width: 2.7; stroke-linejoin: round; }
+.waterworks-pump-column { fill: var(--tri-teal); stroke: var(--tri-ink); stroke-width: 2.7; stroke-linejoin: round; }
 .waterworks-pump-cap,
-.waterworks-column-cap { fill: color-mix(in srgb, #a88450 73%, var(--local-secondary)); stroke: color-mix(in srgb, #4f3e2c 82%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
+.waterworks-column-cap { fill: var(--tri-gold); stroke: var(--tri-ink); stroke-width: 2; stroke-linejoin: round; }
 .waterworks-handwheel,
-.waterworks-column-valve { fill: color-mix(in srgb, #b88f4d 72%, var(--local-secondary)); stroke: color-mix(in srgb, #55412d 82%, var(--worm-deep)); stroke-width: 3; }
-.waterworks-wheel-hub { fill: color-mix(in srgb, #76516d 64%, var(--local-primary)); stroke: color-mix(in srgb, #463846 78%, var(--worm-deep)); stroke-width: 1.6; }
+.waterworks-column-valve { fill: var(--tri-coral); stroke: var(--tri-ink); stroke-width: 3; }
+.waterworks-wheel-hub { fill: var(--tri-gold); stroke: var(--tri-ink); stroke-width: 1.6; }
 .waterworks-wheel-spoke,
 .waterworks-valve-spokes,
 .waterworks-feed-pipe,
 .waterworks-s-pipe,
-.waterworks-pipe-joints { fill: none; stroke: color-mix(in srgb, #6d573d 78%, var(--worm-deep)); stroke-linecap: round; stroke-linejoin: round; }
+.waterworks-pipe-joints { fill: none; stroke: var(--tri-ink); stroke-linecap: round; stroke-linejoin: round; }
 .waterworks-wheel-spoke,
 .waterworks-valve-spokes { stroke-width: 2.2; }
 .waterworks-feed-pipe,
-.waterworks-s-pipe { stroke: color-mix(in srgb, #a17b47 74%, var(--local-secondary)); stroke-width: 8; }
+.waterworks-s-pipe { stroke: var(--tri-gold); stroke-width: 8; }
 .waterworks-pipe-joints { stroke-width: 3; }
-.waterworks-terrace-bed { fill: color-mix(in srgb, #687753 69%, var(--local-primary)); stroke: color-mix(in srgb, #3b4d3a 81%, var(--worm-deep)); stroke-width: 1.7; stroke-linejoin: round; }
-.waterworks-terrace-bed.deep { fill: color-mix(in srgb, #82704f 68%, var(--local-secondary)); }
-.waterworks-terrace-channel { fill: none; stroke: rgba(106,189,183,.74); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.waterworks-terrace-bed { fill: var(--tri-leaf); stroke: var(--tri-ink); stroke-width: 1.7; stroke-linejoin: round; }
+.waterworks-terrace-bed.deep { fill: var(--tri-indigo); }
+.waterworks-terrace-channel { fill: none; stroke: var(--tri-aqua); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
 .waterworks-bed-leaf,
-.waterworks-spray-leaf { fill: color-mix(in srgb, #50745a 74%, var(--local-primary)); stroke: color-mix(in srgb, #32483a 81%, var(--worm-deep)); stroke-width: 1.1; }
+.waterworks-spray-leaf { fill: var(--tri-leaf); stroke: var(--tri-ink); stroke-width: 1.1; }
 .waterworks-bed-leaf.deep,
-.waterworks-spray-leaf.deep { fill: color-mix(in srgb, #9e824e 66%, var(--local-secondary)); }
-.waterworks-basin-feet { fill: none; stroke: color-mix(in srgb, #67533b 81%, var(--worm-deep)); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
-.waterworks-stacked-cistern { fill: color-mix(in srgb, #7a9a8d 58%, var(--local-primary)); stroke: color-mix(in srgb, #3c5a50 79%, var(--worm-deep)); stroke-width: 2.2; stroke-linejoin: round; }
-.waterworks-stacked-cistern.deep { fill: color-mix(in srgb, #9b7d52 65%, var(--local-secondary)); }
+.waterworks-spray-leaf.deep { fill: var(--tri-coral); }
+.waterworks-basin-feet { fill: none; stroke: var(--tri-indigo); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.waterworks-stacked-cistern { fill: var(--tri-teal); stroke: var(--tri-ink); stroke-width: 2.2; stroke-linejoin: round; }
+.waterworks-stacked-cistern.deep { fill: var(--tri-indigo); }
 .waterworks-cistern-band,
 .waterworks-sight-gauge,
-.waterworks-gauge-tick { fill: none; stroke: color-mix(in srgb, #514333 78%, var(--worm-deep)); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.waterworks-sight-gauge { fill: rgba(147,207,198,.45); stroke: color-mix(in srgb, #3b695f 76%, var(--worm-deep)); stroke-width: 2.3; }
-.waterworks-gauge-level { fill: rgba(72,157,148,.72); }
-.waterworks-sprinkler-head { fill: color-mix(in srgb, #a37e49 73%, var(--local-secondary)); stroke: color-mix(in srgb, #50402d 80%, var(--worm-deep)); stroke-width: 1.8; }
+.waterworks-gauge-tick { fill: none; stroke: var(--tri-ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.waterworks-sight-gauge { fill: rgba(255,255,255,.55); stroke: var(--tri-teal); stroke-width: 2.3; }
+.waterworks-gauge-level { fill: var(--tri-aqua); }
+.waterworks-sprinkler-head { fill: var(--tri-gold); stroke: var(--tri-ink); stroke-width: 1.8; }
 
 .music-cabinet-body,
 .bandstand-pavilion-base,
-.music-triangular-base { fill: color-mix(in srgb, #82664b 73%, var(--local-secondary)); stroke: color-mix(in srgb, #463930 83%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
+.music-triangular-base { fill: var(--tri-indigo); stroke: var(--tri-ink); stroke-width: 2.8; stroke-linejoin: round; }
 .music-cabinet-canopy,
-.bandstand-faceted-roof { fill: color-mix(in srgb, #76546c 64%, var(--local-primary)); stroke: color-mix(in srgb, #473846 82%, var(--worm-deep)); stroke-width: 2.7; stroke-linejoin: round; }
+.bandstand-faceted-roof { fill: var(--tri-coral); stroke: var(--tri-ink); stroke-width: 2.7; stroke-linejoin: round; }
 .music-canopy-ribs,
 .bandstand-roof-facets,
 .music-folding-hinges,
 .music-roll-spindle,
 .bandstand-cylinder-spindle,
 .bandstand-winding-crank,
-.bandstand-pavilion-feet { fill: none; stroke: color-mix(in srgb, #574333 79%, var(--worm-deep)); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-.music-cabinet-arch { fill: color-mix(in srgb, #d3c8a5 69%, var(--paper-strong)); stroke: color-mix(in srgb, #66513d 76%, var(--worm-deep)); stroke-width: 2; }
-.music-cabinet-arch.centre { fill: color-mix(in srgb, #b5c9b5 57%, var(--local-primary)); }
+.bandstand-pavilion-feet { fill: none; stroke: var(--tri-gold); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.music-cabinet-arch { fill: var(--tri-ivory); stroke: var(--tri-ink); stroke-width: 2; }
+.music-cabinet-arch.centre { fill: var(--tri-aqua); }
 .music-vertical-roll,
-.bandstand-pinned-cylinder { fill: color-mix(in srgb, #d7cfb4 72%, var(--paper-strong)); stroke: color-mix(in srgb, #655540 76%, var(--worm-deep)); stroke-width: 2.2; }
+.bandstand-pinned-cylinder { fill: var(--tri-ivory); stroke: var(--tri-ink); stroke-width: 2.2; }
 .music-roll-hole,
-.bandstand-cylinder-pin { fill: color-mix(in srgb, #765571 68%, var(--local-primary)); }
+.bandstand-cylinder-pin { fill: var(--tri-coral); }
 .music-roll-hole.deep,
-.bandstand-cylinder-pin.deep { fill: color-mix(in srgb, #a6824e 69%, var(--local-secondary)); }
-.music-hanging-reed { fill: color-mix(in srgb, #aa864f 72%, var(--local-secondary)); stroke: color-mix(in srgb, #57442f 79%, var(--worm-deep)); stroke-width: 1.7; stroke-linejoin: round; }
-.music-hanging-reed.deep { fill: color-mix(in srgb, #6e5267 64%, var(--local-primary)); }
+.bandstand-cylinder-pin.deep { fill: var(--tri-indigo); }
+.music-hanging-reed { fill: var(--tri-gold); stroke: var(--tri-ink); stroke-width: 1.7; stroke-linejoin: round; }
+.music-hanging-reed.deep { fill: var(--tri-coral); }
 .music-reed-pin,
-.bandstand-crank-handle { fill: color-mix(in srgb, #c39a55 73%, var(--local-secondary)); stroke: color-mix(in srgb, #55422e 80%, var(--worm-deep)); stroke-width: 1.5; }
+.bandstand-crank-handle { fill: var(--tri-gold); stroke: var(--tri-ink); stroke-width: 1.5; }
 .music-base-resonator,
-.bandstand-cylinder-frame { fill: color-mix(in srgb, #667b69 63%, var(--local-primary)); stroke: color-mix(in srgb, #3b4c3f 81%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
-.bandstand-column { fill: color-mix(in srgb, #d3c79f 67%, var(--paper-strong)); stroke: color-mix(in srgb, #6c563e 75%, var(--worm-deep)); stroke-width: 1.5; }
-.bandstand-column.deep { fill: color-mix(in srgb, #ac8b58 67%, var(--local-secondary)); }
-.bandstand-resonator-slat { fill: none; stroke: color-mix(in srgb, #704f67 65%, var(--local-primary)); stroke-width: 6; stroke-linecap: round; }
-.bandstand-resonator-slat.deep { stroke: color-mix(in srgb, #a17e4c 70%, var(--local-secondary)); }
+.bandstand-cylinder-frame { fill: var(--tri-teal); stroke: var(--tri-ink); stroke-width: 2; stroke-linejoin: round; }
+.bandstand-column { fill: var(--tri-ivory); stroke: var(--tri-ink); stroke-width: 1.5; }
+.bandstand-column.deep { fill: var(--tri-gold); }
+.bandstand-resonator-slat { fill: none; stroke: var(--tri-coral); stroke-width: 6; stroke-linecap: round; }
+.bandstand-resonator-slat.deep { stroke: var(--tri-gold); }
 .singapore-accessory-shadow { fill: rgba(22,34,28,.25); }
 .atlas-pentagonal-board,
 .atlas-tall-backboard { fill: color-mix(in srgb, #92754e 72%, var(--local-secondary)); stroke: color-mix(in srgb, #4e4031 82%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
