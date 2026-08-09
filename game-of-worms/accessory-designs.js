@@ -33,7 +33,7 @@ const rows = [
   ["nigoni", "Ho Chi Minh City · JU4356", "carambola ground-contact stage", "ju4356-carambola-ground-contact-stage", "ITS2 ribbon reader", "ju4356-its2-ribbon-reader", "Ho Chi Minh City urban-canopy census engine", "hcmc-urban-canopy-census-engine"],
   ["nigoni", "Lombok, Indonesia · HPT26", "Ficus-ground contact stage", "hpt26-ficus-ground-contact-stage", "Lingsar field-to-plate calendar", "lingsar-field-to-plate-calendar", "paired-substrate diptych", "hpt26-hpt27-substrate-diptych"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "five-day plating chronograph", "ju1873-plating-chronograph", "living-type voucher vault", "ju1873-living-type-vault"],
-  ["tropicalis", "Barro Colorado Island, Panama", "Gustavia-bait array", "qg2726-gustavia-bait-array", "BCI forest-census mapper", "bci-forest-census-mapper", "Lutz runoff recorder", "lutz-runoff-recorder"],
+  ["tropicalis", "Barro Colorado Island, Panama", "flower-bait cup", "qg2726-gustavia-bait-array", "tree calipers", "bci-forest-census-mapper", "rain gauge", "lutz-runoff-recorder"],
   ["tropicalis", "La Selva, Costa Rica", "26.5 °C substrate dial", "qg3845-substrate-temperature", "La Selva leaf-cutter automaton", "la-selva-leafcutter-automaton", "La Selva–Barva gradient lift", "barva-gradient-lift"],
   ["tropicalis", "Guadeloupe · NIC203", "torch-ginger bract stage", "nic203-torch-ginger-bract-stage", "Carbet three-fall hydraulic sequencer", "carbet-three-fall-hydraulic-sequencer", "toxin–antidote inheritance automaton", "nic203-toxin-antidote-automaton"],
   ["tropicalis", "Nouragues, French Guiana · JU1428", "Duguetia fruit theatre", "ju1428-duguetia-fruit-theatre", "Nouragues litterfall chronobalance", "nouragues-litterfall-chronobalance", "isotype-triad comparator", "ju1428-isotype-triad-comparator"],
@@ -4886,71 +4886,78 @@ function drawBarroColoradoQG2726Accessory(group, item, companion) {
 
   if (item.family === "qg2726-gustavia-bait-array") {
     if (companion) {
-      add(group, "rect", { class: "bci-sample-rack", x: -57, y: -91, width: 105, height: 159, rx: 15 });
-      add(group, "rect", { class: "bci-clear-bait-jar", x: -35, y: -64, width: 61, height: 93, rx: 18 });
-      add(group, "rect", { class: "bci-jar-lid", x: -39, y: -78, width: 69, height: 19, rx: 5 });
-      path(group, "M-31-5Q-4-19 22-4V23H-31Z", "bci-bait-slurry-large");
-      add(group, "ellipse", { class: "bci-bait-slurry", cx: -4, cy: -5, rx: 27, ry: 10 });
-      line(group, "M48-57H80V20", "bci-hanger");
-      add(group, "path", { class: "bci-hanging-cup", d: "M62 18H92L86 51Q76 61 67 51Z" });
-      add(group, "ellipse", { class: "bci-cup-rim", cx: 77, cy: 18, rx: 15, ry: 6 });
-      path(group, "M-69 67H58L46 90H-58Z", "bci-forest-contact");
+      path(group, "M-91 75Q-5 101 88 73Q43 112-82 106Z", "bci-accessory-shadow");
+      add(group, "ellipse", { class: "bci-bait-lid", cx: 44, cy: -66, rx: 64, ry: 17, transform: "rotate(13 44 -66)" });
+      path(group, "M-87-28H75L64 57Q-5 82-76 56Z", "bci-bait-cup-shell");
+      add(group, "ellipse", { class: "bci-bait-cup-rim", cx: -6, cy: -28, rx: 81, ry: 18 });
+      path(group, "M-74 7Q-7-8 63 8L57 50Q-7 70-69 50Z", "bci-flower-paste");
+      add(group, "ellipse", { class: "bci-flower-paste-surface", cx: -6, cy: 7, rx: 68, ry: 14 });
+      [[-47,4,0],[-21,16,18],[8,2,-12],[36,18,24]].forEach(([x,y,angle],index)=>add(group,"path",{class:index%2?"bci-paste-petal deep":"bci-paste-petal",d:"M-11-5C-18-18-1-23 5-11C12-23 29-13 22 0C35 4 28 20 14 15C8 29-10 20-7 7C-21 5-23-10-11-5Z",transform:`translate(${x} ${y}) rotate(${angle}) scale(.42)`}));
+      path(group, "M-48 32H38L42 52H-45Z", "bci-bait-label");
+      const baitLabel = add(group, "text", { class: "bci-bait-label-text", x: -3, y: 46 });
+      baitLabel.textContent = "FLOWER BAIT";
     } else {
-      path(group, "M-123-59H88L111 65H-113Z", "bci-array-table");
-      line(group, "M-99-45H71M-99 8H82M-67-55V54M-8-55V54M51-55V54", "bci-spacing-rail");
-      [[-68,-29], [-8,-29], [52,-29], [-68,25], [-8,25], [52,25]].forEach(([cx, cy], index) => {
-        add(group, "circle", { class: index === 4 ? "bci-bait-well selected" : "bci-bait-well", cx, cy, r: 23 });
-        add(group, "circle", { class: "bci-bait-slurry", cx, cy, r: 15 });
-      });
-      path(group, "M84-40H125V42H84Z", "bci-vial-cradle");
-      add(group, "rect", { class: "bci-culture-vial", x: 94, y: -26, width: 23, height: 51, rx: 8 });
-      line(group, "M95-17H116", "bci-vial-cap");
-      line(group, "M-85-72H57", "bci-tray-handle");
+      path(group, "M-134 91Q0 126 139 87Q70 142-122 135Z", "bci-accessory-shadow");
+      add(group, "ellipse", { class: "bci-bait-lid", cx: 72, cy: -86, rx: 86, ry: 21, transform: "rotate(12 72 -86)" });
+      path(group, "M-119-40H103L89 76Q-10 108-106 74Z", "bci-bait-cup-shell");
+      add(group, "ellipse", { class: "bci-bait-cup-rim", cx: -8, cy: -40, rx: 111, ry: 24 });
+      path(group, "M-103 9Q-8-12 88 10L80 66Q-10 92-96 65Z", "bci-flower-paste");
+      add(group, "ellipse", { class: "bci-flower-paste-surface", cx: -8, cy: 9, rx: 96, ry: 20 });
+      [[-70,4,-8],[-39,24,16],[-5,2,-18],[29,25,22],[62,5,4]].forEach(([x,y,angle],index)=>add(group,"path",{class:index%2?"bci-paste-petal deep":"bci-paste-petal",d:"M-11-5C-18-18-1-23 5-11C12-23 29-13 22 0C35 4 28 20 14 15C8 29-10 20-7 7C-21 5-23-10-11-5Z",transform:`translate(${x} ${y}) rotate(${angle}) scale(.58)`}));
+      path(group, "M-63 43H49L55 69H-58Z", "bci-bait-label");
+      const baitLabel = add(group, "text", { class: "bci-bait-label-text", x: -4, y: 61 });
+      baitLabel.textContent = "FLOWER BAIT";
     }
     return true;
   }
 
   if (item.family === "bci-forest-census-mapper") {
     if (companion) {
-      add(group, "circle", { class: "bci-trunk-section", cx: 26, cy: 4, r: 32 });
-      add(group, "circle", { class: "bci-trunk-ring", cx: 26, cy: 4, r: 19 });
-      line(group, "M-58-96V91M-58-72H79M-58 44H70", "bci-caliper-heavy");
-      path(group, "M79-72V-34H55M70 44V80H46", "bci-caliper-jaw-heavy");
-      add(group, "rect", { class: "bci-caliper-slider", x: -72, y: -2, width: 29, height: 39, rx: 5 });
-      add(group, "circle", { class: "bci-growth-wheel", cx: -57, cy: 17, r: 10 });
-      [-71,-45,-19,7,33,59].forEach(y=>line(group,`M-57 ${y}H-42`,"bci-caliper-tick"));
-      path(group, "M-38 55H29L38 85H-45Z", "bci-caliper-tag");
+      path(group, "M-105 101Q0 130 111 98Q55 144-96 137Z", "bci-accessory-shadow");
+      add(group, "ellipse", { class: "bci-tree-trunk", cx: 5, cy: -9, rx: 36, ry: 66 });
+      add(group, "ellipse", { class: "bci-tree-ring", cx: 5, cy: -9, rx: 25, ry: 49 });
+      path(group, "M-98 52H105V70H-98Z", "bci-caliper-beam");
+      path(group, "M-98 62V-81H-76V44H-56V62Z", "bci-caliper-fixed-jaw");
+      path(group, "M53 43V-76H75V62H53Z", "bci-caliper-moving-jaw");
+      add(group, "rect", { class: "bci-caliper-slider", x: 45, y: 40, width: 39, height: 38, rx: 6 });
+      [-63,-35,-7,21,49,77].forEach(x=>line(group,`M${x} 53V62`,"bci-caliper-tick"));
+      add(group, "circle", { class: "bci-caliper-lock", cx: 65, cy: 59, r: 7 });
     } else {
-      add(group, "rect", { class: "bci-clipboard", x: -103, y: -78, width: 183, height: 147, rx: 13 });
-      add(group, "rect", { class: "bci-map-paper", x: -86, y: -57, width: 149, height: 105, rx: 6 });
-      add(group, "rect", { class: "bci-clipboard-clip", x: -39, y: -88, width: 57, height: 24, rx: 7 });
-      [-59,-24,11,46].forEach(x => line(group, `M${x}-52V43`, "bci-grid-line"));
-      [-28,-1,26].forEach(y => line(group, `M-81 ${y}H58`, "bci-grid-line"));
-      [[-62,-38,8],[-28,-13,11],[9,-39,6],[40,-10,9],[-53,29,6],[16,23,10]].forEach(([cx,cy,r]) => add(group, "circle", { class: "bci-stem-disc", cx, cy, r }));
-      path(group, "M91-62L113-56L89 62L74 68Z", "bci-map-pencil");
-      path(group, "M87-61L113-56L105-78Z", "bci-pencil-tip");
+      path(group, "M-157 104Q0 139 164 100Q82 153-144 146Z", "bci-accessory-shadow");
+      add(group, "ellipse", { class: "bci-tree-trunk", cx: 7, cy: -14, rx: 53, ry: 91 });
+      add(group, "ellipse", { class: "bci-tree-ring", cx: 7, cy: -14, rx: 38, ry: 70 });
+      path(group, "M-145 67H151V91H-145Z", "bci-caliper-beam");
+      path(group, "M-145 80V-112H-116V55H-86V80Z", "bci-caliper-fixed-jaw");
+      path(group, "M78 52V-106H108V80H78Z", "bci-caliper-moving-jaw");
+      add(group, "rect", { class: "bci-caliper-slider", x: 67, y: 49, width: 54, height: 51, rx: 7 });
+      [-101,-61,-21,19,59,99,139].forEach(x=>line(group,`M${x} 69V82`,"bci-caliper-tick"));
+      add(group, "circle", { class: "bci-caliper-lock", cx: 94, cy: 75, r: 9 });
+      const caliperLabel = add(group, "text", { class: "bci-caliper-label", x: 94, y: 97 });
+      caliperLabel.textContent = "DBH";
     }
     return true;
   }
 
   if (item.family === "lutz-runoff-recorder") {
     if (companion) {
-      add(group, "rect", { class: "bci-measuring-column", x: -42, y: -97, width: 70, height: 169, rx: 20 });
-      path(group, "M-34 2H20V63H-34Z", "bci-gauge-water");
-      [-66,-38,-10,18,46].forEach(y=>line(group,`M-30 ${y}H7`,"bci-gauge-tick"));
-      path(group, "M28-65Q86-51 53-18Q92 13 51 43Q82 71 36 83", "bci-coiled-tube");
-      path(group, "M63-78H99L84-46H74Z", "bci-runoff-funnel");
-      path(group, "M-50 72H39L31 98H-42Z", "bci-column-foot");
+      path(group, "M-91 110Q0 138 96 108Q48 151-83 144Z", "bci-accessory-shadow");
+      path(group, "M-76-82H76L42-37H-42Z", "bci-rain-funnel");
+      add(group, "ellipse", { class: "bci-rain-rim", cx: 0, cy: -82, rx: 76, ry: 17 });
+      path(group, "M-50-38H50L43 91H-43Z", "bci-rain-outer");
+      path(group, "M-22-31H22V82H-22Z", "bci-rain-inner");
+      path(group, "M-18 27H18V78H-18Z", "bci-rain-water");
+      [-12,8,28,48,68].forEach(y=>line(group,`M24 ${y}H39`,"bci-rain-tick"));
+      path(group, "M-59 91H59L72 111H-72Z", "bci-rain-base");
     } else {
-      path(group, "M-121 4H-48L0-50L50 4H121V76H-121Z", "bci-weir-basin");
-      path(group, "M-105 15H-40L0-29L42 15H105V55H-105Z", "bci-basin-water");
-      path(group, "M-47 4L0-50L49 4", "bci-v-notch");
-      add(group, "rect", { class: "bci-chart-panel", x: -116, y: -67, width: 55, height: 68, rx: 7 });
-      line(group, "M-105-52Q-91-36-102-23Q-88-10-72-31", "bci-chart-trace");
-      add(group, "circle", { class: "bci-float-well", cx: 93, cy: -35, r: 29 });
-      add(group, "circle", { class: "bci-float", cx: 93, cy: -35, r: 11 });
-      line(group, "M-61-29H-33M51-22H64M93-6V19H58", "bci-instrument-link");
-      path(group, "M-103 61Q0 43 103 61", "bci-water-line");
+      path(group, "M-122 109Q0 142 128 106Q64 155-111 148Z", "bci-accessory-shadow");
+      path(group, "M-104-102H104L59-43H-59Z", "bci-rain-funnel");
+      add(group, "ellipse", { class: "bci-rain-rim", cx: 0, cy: -102, rx: 104, ry: 23 });
+      path(group, "M-70-45H70L61 103H-61Z", "bci-rain-outer");
+      path(group, "M-31-36H31V91H-31Z", "bci-rain-inner");
+      path(group, "M-26 15H26V87H-26Z", "bci-rain-water");
+      [-18,4,26,48,70].forEach(y=>line(group,`M34 ${y}H57`,"bci-rain-tick"));
+      path(group, "M-84 102H84L101 127H-101Z", "bci-rain-base");
+      line(group, "M-7-83V-49", "bci-rain-flow");
     }
     return true;
   }

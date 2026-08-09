@@ -10,6 +10,10 @@ const licences = Object.freeze({
   ccBySa25: Object.freeze({
     label: "CC BY-SA 2.5",
     url: "https://creativecommons.org/licenses/by-sa/2.5/"
+  }),
+  bmcOpenAccess: Object.freeze({
+    label: "Open access",
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC329410/"
   })
 });
 
@@ -28,6 +32,11 @@ const sources = Object.freeze({
     label: "Toker & Hobert (2022), Fig. 1C",
     url: "https://micropublication.org/journals/biology/micropub.biology.000554/",
     licence: licences.ccBy4
+  }),
+  guptaSternberg: Object.freeze({
+    label: "Gupta & Sternberg (2003), Fig. 1a",
+    url: "https://doi.org/10.1186/gb-2003-4-12-238",
+    licence: licences.bmcOpenAccess
   }),
   kanzaki: Object.freeze({
     label: "Kanzaki et al. (2018), Fig. 1a",
@@ -63,7 +72,7 @@ function wholeAnimalImage({ src, sourceWidth, sourceHeight, viewBox, alt, captio
 export const speciesGalleries = Object.freeze({
   elegans: Object.freeze({
     scientificName: "Caenorhabditis elegans",
-    description: "A complete adult hermaphrodite and a complete adult male; green fluorescence in the male marks sperm-producing cells.",
+    description: "A complete adult hermaphrodite and a complete adult male; green fluorescence in the male marks sperm-producing cells. Across Caenorhabditis, adult females and hermaphrodites are generally larger than adult males.",
     source: sources.altun,
     images: Object.freeze([
       wholeAnimalImage({
@@ -105,18 +114,17 @@ export const speciesGalleries = Object.freeze({
   }),
   briggsae: Object.freeze({
     scientificName: "Caenorhabditis briggsae",
-    description: "A single complete wild-type AF16 adult, photographed from head to tail.",
-    source: sources.toker,
+    description: "A complete adult Caenorhabditis briggsae hermaphrodite under differential interference contrast microscopy.",
+    source: sources.guptaSternberg,
     images: Object.freeze([
       wholeAnimalImage({
-        src: "assets/species-gallery/source-toker-figure1.png",
-        sourceWidth: 7056,
-        sourceHeight: 4997,
-        viewBox: [250, 3000, 1238, 600],
-        alt: "A single complete wild-type AF16 Caenorhabditis briggsae adult on a pale microscopy background.",
-        caption: "Whole wild-type AF16 adult",
-        maxWidth: 720,
-        palePadding: true
+        src: "assets/species-gallery/gupta-sternberg-briggsae-hermaphrodite.webp",
+        sourceWidth: 685,
+        sourceHeight: 282,
+        viewBox: [0, 0, 685, 282],
+        alt: "A complete adult Caenorhabditis briggsae hermaphrodite curving across a grey differential interference contrast microscopy background.",
+        caption: "Whole adult hermaphrodite",
+        maxWidth: 685
       })
     ])
   }),

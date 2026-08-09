@@ -1801,6 +1801,33 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .bci-weir-face { fill: var(--bci-teal); stroke: var(--bci-ink); }
 .bci-float-well { fill: var(--bci-aqua); stroke: var(--bci-indigo); }
 .bci-float { fill: var(--bci-coral); stroke: var(--bci-ink); }
+.bci-accessory-shadow { fill: rgba(24,42,53,.2); stroke: none; }
+.bci-bait-lid { fill: rgba(255,247,223,.78); stroke: var(--bci-indigo); stroke-width: 3; }
+.bci-bait-cup-shell { fill: rgba(117,217,208,.42); stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
+.bci-bait-cup-rim { fill: rgba(255,247,223,.66); stroke: var(--bci-teal); stroke-width: 3; }
+.bci-flower-paste { fill: var(--bci-coral); stroke: var(--bci-ink); stroke-width: 2.5; stroke-linejoin: round; }
+.bci-flower-paste-surface { fill: #f18ba0; stroke: var(--bci-ink); stroke-width: 2.5; }
+.bci-paste-petal { fill: var(--bci-ivory); stroke: var(--bci-orchid); stroke-width: 3; }
+.bci-paste-petal.deep { fill: var(--bci-gold); stroke: var(--bci-ink); }
+.bci-bait-label { fill: var(--bci-ivory); stroke: var(--bci-indigo); stroke-width: 2.2; stroke-linejoin: round; }
+.bci-bait-label-text { fill: var(--bci-ink); font: 900 10px/1 var(--sans); letter-spacing: .03em; text-anchor: middle; }
+.bci-tree-trunk { fill: #e09a59; stroke: var(--bci-ink); stroke-width: 3; }
+.bci-tree-ring { fill: #f2c477; stroke: var(--bci-coral); stroke-width: 3; stroke-dasharray: 7 5; }
+.bci-caliper-beam,
+.bci-caliper-fixed-jaw,
+.bci-caliper-moving-jaw { fill: var(--bci-aqua); stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
+.bci-caliper-slider { fill: var(--bci-indigo); stroke: var(--bci-ink); stroke-width: 3; }
+.bci-caliper-tick { fill: none; stroke: var(--bci-ink); stroke-width: 2; stroke-linecap: round; }
+.bci-caliper-lock { fill: var(--bci-gold); stroke: var(--bci-ink); stroke-width: 2; }
+.bci-caliper-label { fill: var(--bci-ivory); font: 900 10px/1 var(--sans); text-anchor: middle; }
+.bci-rain-funnel { fill: var(--bci-gold); stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
+.bci-rain-rim { fill: var(--bci-ivory); stroke: var(--bci-ink); stroke-width: 3; }
+.bci-rain-outer { fill: rgba(77,82,164,.88); stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
+.bci-rain-inner { fill: rgba(255,247,223,.76); stroke: var(--bci-aqua); stroke-width: 3; }
+.bci-rain-water { fill: rgba(117,217,208,.9); stroke: var(--bci-teal); stroke-width: 2; }
+.bci-rain-tick,
+.bci-rain-flow { fill: none; stroke: var(--bci-ivory); stroke-width: 2.5; stroke-linecap: round; }
+.bci-rain-base { fill: var(--bci-teal); stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
 
 .sanda-ju1873-accessory {
   --sanda-ink: #28344f;

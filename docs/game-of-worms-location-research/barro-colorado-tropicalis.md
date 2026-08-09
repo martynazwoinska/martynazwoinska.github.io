@@ -49,7 +49,9 @@ different 6 cm agar baits arranged 3 × 2 with 30 cm spacing.
 
 The experiment’s baits were placed on 24 March and collected on 27 March 2015.
 The study tested differences in bait composition and accessibility. Some bait
-types contained heat-defaunated *Gustavia superba* flower slurry.
+types contained heat-defaunated *Gustavia superba* flower slurry: flowers and
+water homogenized into a paste and then heated to remove animals already in
+the mixture.
 
 The CaeNDR QG2726 row specifically identifies its sample as an experimental
 bait labelled `Cup Lutz Eq3` and describes *Gustavia superba* slurry. The
@@ -133,9 +135,9 @@ Marker history:
 
 > This marker represents QG2726, one of multiple *C. tropicalis* records at
 > this Barro Colorado Island coordinate. L. Noble sampled and isolated it at
-> 130 m on 27 March 2015 from an experimental bait labelled Cup Lutz Eq3 and
-> described as *Gustavia superba* slurry. The bait was an experimental habitat
-> patch, not a naturally fallen flower.
+> 130 m on 27 March 2015 from an experimental bait labelled Cup Lutz Eq3. The
+> bait used *Gustavia superba* flowers blended with water into a paste; it was
+> an experimental habitat patch, not a naturally fallen flower.
 
 ## Environment illustration contract
 
@@ -186,24 +188,25 @@ Forbidden:
 
 ## Accessory contract
 
-### QG2726 Gustavia-bait array
+### Flower-bait cup
 
 Family ID: `qg2726-gustavia-bait-array`
 
 Scientific basis: QG2726 came from one experimental *Gustavia superba* slurry
 bait within the March 2015 Barro Colorado field experiment.
 
-Primary: a broad handled 3 × 2 field tray with six large round bait cups on
-visible spacing rails, one highlighted QG2726 cup and a separate culture vial
-in a side cradle.
+Primary: a broad transparent lidded field cup with a clearly visible layer of
+flower paste, several contained petal fragments and a simple `FLOWER BAIT`
+field label.
 
-Companion: a tall clear single-bait jar held in an enamelled field rack, with a
-visible slurry level, separate lid, hanging sample cup and forest-contact foot.
+Companion: a compact squat transparent cup with the same viewing orientation,
+a separate lid, independently arranged flower paste and petal fragments, and
+the same simple field label.
 
-Do not add undocumented chemistry, mesh size or temperature. The pair must not
-become two differently sized Petri dishes.
+Do not add undocumented chemistry, mesh size or temperature. Both copies must
+read as lidded field bait cups rather than Petri dishes or abstract machinery.
 
-### BCI forest-census mapper
+### Tree calipers
 
 Family ID: `bci-forest-census-mapper`
 
@@ -211,32 +214,33 @@ Regional basis: Barro Colorado’s 50-hectare plot established the long-running
 ForestGEO forest-census model. This object represents regional research
 history, not QG2726’s collection apparatus or collection point.
 
-Primary: a wide clipboard with pale map paper, abstract rectangular census
-grid, unequal blank stem discs, a real clip and a separate pencil.
+Primary: broad forestry calipers with a graduated horizontal beam, one fixed
+jaw and one sliding jaw visibly spanning a trunk section.
 
-Companion: a tall tree caliper with one heavy graduated spine, two asymmetric
-jaws visibly enclosing a tree cross-section, sliding block, growth-wheel
-counter and one blank field tag.
+Companion: compact forestry calipers with the same beam-and-jaw orientation,
+different proportions and an independently positioned sliding block.
 
 Do not reproduce real plot data, tree positions, tag numbers, logos or maps.
+The parallel jaws and graduated beam must make the tool recognizable without
+its public label.
 
-### Lutz runoff recorder
+### Rain gauge
 
 Family ID: `lutz-runoff-recorder`
 
-Regional basis: STRI’s physical monitoring programme uses a 120-degree V-notch
-weir, strip-chart recorder and bubble-flow instrument in the Lutz catchment.
-The QG2726 sample label contains `Lutz`, but the reviewed public records do not
-prove that the bait was beside the weir.
+Regional basis: Barro Colorado’s long-running physical monitoring includes
+rainfall and hydrological observations. This is regional field-research
+context; it is not QG2726 collection equipment.
 
-Primary: a broad 120-degree V-notch weir model with a clearly blue stilling
-basin, separate strip-chart panel, connected float well and visible linkage.
+Primary: a tall standard-style rain gauge with a wide collector funnel, outer
+overflow can, visible inner measuring tube, graduations and stable base.
 
-Companion: a tall transparent graduated measuring column with visible blue
-water level, separate runoff funnel, coiled sampling tube and stable foot.
+Companion: a compact upright rain gauge with the same orientation, a wide
+funnel, transparent outer body, visible measuring tube, graduations and water
+level.
 
 This is place-based research context. It must not imply that QG2726 was
-aquatic, sampled from a stream or isolated with hydrological equipment.
+collected in rainwater or isolated with meteorological equipment.
 
 ## Suggested initial layouts
 
@@ -244,16 +248,16 @@ These values require final browser tuning:
 
 ```js
 "qg2726-gustavia-bait-array": {
-  primary: [385, 135, .36, -2],
-  companion: [-8, 122, .28, 2]
+  primary: [380, 139, .40, -2],
+  companion: [-2, 124, .32, 2]
 },
 "bci-forest-census-mapper": {
-  primary: [232, 177, .34, 1],
-  companion: [125, 214, .28, -1]
+  primary: [225, 180, .38, 1],
+  companion: [122, 214, .35, -1]
 },
 "lutz-runoff-recorder": {
-  primary: [384, 252, .34, -1],
-  companion: [202, 292, .28, 1]
+  primary: [380, 252, .38, -1],
+  companion: [204, 289, .32, 1]
 }
 ```
 
