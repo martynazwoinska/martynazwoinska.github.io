@@ -2502,6 +2502,41 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   filter: drop-shadow(0 5px 4px rgba(31,48,71,.25));
 }
 .trivandrum-accessory-shadow { fill: rgba(27,42,61,.24); }
+.loupe-handle,
+.loupe-folding-arm { fill: none; stroke: var(--tri-gold); stroke-width: 17; stroke-linecap: round; }
+.loupe-grip,
+.loupe-folding-case { fill: var(--tri-indigo); stroke: var(--tri-ink); stroke-width: 3; stroke-linejoin: round; }
+.loupe-neck,
+.loupe-hinge { fill: var(--tri-coral); stroke: var(--tri-ink); stroke-width: 3; }
+.loupe-rim { fill: var(--tri-gold); stroke: var(--tri-ink); stroke-width: 3; }
+.loupe-glass { fill: rgba(151,231,225,.63); stroke: var(--tri-ivory); stroke-width: 3; }
+.loupe-glint { fill: none; stroke: rgba(255,255,255,.92); stroke-width: 7; stroke-linecap: round; }
+.loupe-worm { fill: none; stroke: var(--tri-berry); stroke-width: 7; stroke-linecap: round; }
+.loupe-worm.second { stroke: var(--tri-indigo); stroke-width: 5; }
+
+.watering-can-handle { fill: none; stroke: var(--tri-indigo); stroke-width: 16; stroke-linecap: round; }
+.watering-can-body,
+.watering-can-spout,
+.watering-can-rose { fill: var(--tri-teal); stroke: var(--tri-ink); stroke-width: 3; stroke-linejoin: round; }
+.watering-can-body.slim { fill: var(--tri-aqua); }
+.watering-can-top { fill: var(--tri-aqua); stroke: var(--tri-ink); stroke-width: 3; }
+.watering-can-opening { fill: var(--tri-ink); stroke: var(--tri-gold); stroke-width: 3; }
+.watering-can-hole { fill: var(--tri-ink); }
+.watering-can-highlight,
+.watering-can-base { fill: none; stroke: rgba(255,255,255,.82); stroke-width: 4; stroke-linecap: round; }
+.watering-can-flower-mark { fill: var(--tri-coral); stroke: var(--tri-ink); stroke-width: 2; }
+.watering-can-flower-centre { fill: var(--tri-gold); stroke: var(--tri-ink); stroke-width: 1.5; }
+
+.sample-tube-cap { fill: var(--tri-coral); stroke: var(--tri-ink); stroke-width: 3; stroke-linejoin: round; }
+.sample-tube-glass { fill: rgba(151,231,225,.5); stroke: var(--tri-teal); stroke-width: 3; stroke-linejoin: round; }
+.sample-tube-glint { fill: none; stroke: rgba(255,255,255,.9); stroke-width: 6; stroke-linecap: round; }
+.sample-leaf { fill: var(--tri-leaf); stroke: var(--tri-ink); stroke-width: 2; }
+.sample-leaf.deep { fill: var(--tri-teal); }
+.sample-petal { fill: var(--tri-coral); stroke: var(--tri-ink); stroke-width: 1.8; }
+.sample-petal.small { fill: var(--tri-berry); }
+.sample-tag-string { fill: none; stroke: var(--tri-gold); stroke-width: 3; stroke-linecap: round; }
+.sample-tag { fill: var(--tri-ivory); stroke: var(--tri-indigo); stroke-width: 2.5; stroke-linejoin: round; }
+.sample-tag-text { fill: var(--tri-ink); font: 900 11px/1 var(--sans); letter-spacing: .025em; paint-order: stroke; stroke: rgba(255,246,223,.9); stroke-width: 1.1px; }
 .timekeeper-yoke-base,
 .timekeeper-tripod,
 .timekeeper-agar-drawer,

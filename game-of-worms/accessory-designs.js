@@ -24,7 +24,7 @@ const rows = [
   ["elegans", "Australian Capital Territory", "Baermann fig-recovery rig", "qg2811-baermann-fig-recovery", "Yellow Box seed orrery", "yellow-box-seed-orrery", "Black Mountain signal theremin", "black-mountain-signal-theremin"],
   ["elegans", "Auckland, New Zealand", "grass-litter profiler", "eca36-grass-litter-profiler", "Auckland volcanic-field monitor", "auckland-volcanic-field-monitor", "reproductive-timing clock", "eca36-reproductive-timing-clock"],
   ["elegans", "Araucanía, Chile", "compost labyrinth", "compost-labyrinth", "Llaima ashfall recorder", "ashfall-recorder", "test-cross identifier", "test-cross-mechanism"],
-  ["nigoni", "Trivandrum, Kerala · JU1325", "sample-tube timekeeper", "ju1325-sample-tube-timekeeper", "Trivandrum garden waterworks", "trivandrum-garden-waterworks", "Trivandrum bandstand music box", "trivandrum-bandstand-music-box"],
+  ["nigoni", "Trivandrum, Kerala · JU1325", "field loupe", "trivandrum-field-loupe", "garden watering can", "trivandrum-garden-watering-can", "sample tube", "trivandrum-sample-tube"],
   ["nigoni", "Singapore · ZF1220", "five-rib field atlas", "zf1220-five-rib-field-atlas", "multifemale provenance merger", "multifemale-provenance-merger", "Holttum orchid hybridisation engine", "holttum-orchid-hybridisation-engine"],
   ["nigoni", "Praslin, Seychelles · YR106", "long-read genome loom", "yr106-long-read-genome-loom", "coco-de-mer growth-monitoring rig", "coco-de-mer-growth-monitoring-rig", "Praslin black-parrot call listener", "praslin-black-parrot-call-listener"],
   ["nigoni", "São Tomé · JU2484", "fruit-fall kinetic track", "ju2484-fruit-fall-kinetic-track", "São Tomé point-count sound loom", "sao-tome-point-count-sound-loom", "São Tomé begonia lineage kinetoscope", "sao-tome-begonia-lineage-kinetoscope"],
@@ -1585,163 +1585,92 @@ function drawAraucaniaAccessory(group, item, companion) {
 function drawTrivandrumAccessory(group, item, companion) {
   if (!item.id.startsWith("nigoni::Trivandrum, Kerala · JU1325::")) return false;
 
-  if (item.family === "ju1325-sample-tube-timekeeper") {
-    group.dataset.renderer = "trivandrum-ju1325-sample-tube-timekeeper";
-    group.classList.add("trivandrum-accessory", "sample-tube-timekeeper", companion ? "sample-tube-timekeeper-companion" : "sample-tube-timekeeper-primary");
+  if (item.family === "trivandrum-field-loupe") {
+    group.dataset.renderer = "trivandrum-field-loupe";
+    group.classList.add("trivandrum-accessory", "trivandrum-field-loupe", companion ? "field-loupe-companion" : "field-loupe-primary");
     if (companion) {
-      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-86 119Q5 145 95 115Q49 155-77 150Z" });
-      add(group, "path", { class: "timekeeper-tripod", d: "M-47 82L-76 132H-39L-14 88ZM35 84L58 132H93L55 78ZM-9 81L-18 132H19L9 81Z" });
-      add(group, "rect", { class: "timekeeper-upright-frame", x: -43, y: -119, width: 82, height: 204, rx: 16 });
-      add(group, "rect", { class: "timekeeper-glass chamber-upper", x: -28, y: -101, width: 50, height: 77, rx: 19 });
-      add(group, "rect", { class: "timekeeper-glass chamber-lower", x: -28, y: -13, width: 50, height: 78, rx: 18 });
-      add(group, "path", { class: "timekeeper-chamber-divider", d: "M-31-21H26V-13H-31Z" });
-      [[-17,-78,-5,-91],[1,-72,14,-86],[-10,-51,6,-66],[5,-41,18,-53]].forEach(([x1,y1,x2,y2], index) => {
-        add(group, "path", { class: index % 2 ? "timekeeper-petal deep" : "timekeeper-petal", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-7} ${x2} ${y2}Q${(x1+x2)/2+3} ${Math.max(y1,y2)+4} ${x1} ${y1}Z` });
-      });
-      [[-18,17,-2,3],[-4,31,13,14],[-16,49,2,34],[4,56,17,40]].forEach(([x1,y1,x2,y2], index) => {
-        add(group, "path", { class: index % 2 ? "timekeeper-leaf deep" : "timekeeper-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-6} ${x2} ${y2}Q${(x1+x2)/2+4} ${Math.max(y1,y2)+5} ${x1} ${y1}Z` });
-        add(group, "path", { class: "timekeeper-leaf-vein", d: `M${x1+2} ${y1-1}L${x2-2} ${y2+1}` });
-      });
-      add(group, "path", { class: "timekeeper-stopper", d: "M-32-126H26L30-105H-35Z" });
-      add(group, "path", { class: "timekeeper-side-port-housing", d: "M38-16H70L82-5V14L70 26H38Z" });
-      add(group, "circle", { class: "timekeeper-side-port-valve", cx: 66, cy: 5, r: 13 });
-      add(group, "path", { class: "timekeeper-side-port-spokes", d: "M53 5H79M66-8V18M57-4L75 14M75-4L57 14" });
-      add(group, "path", { class: "timekeeper-day-counter-frame", d: "M-82-83H-44V56H-82Z" });
-      [-65,-37,-9,19].forEach((y, index) => add(group, "rect", { class: index % 2 ? "timekeeper-day-window deep" : "timekeeper-day-window", x: -74, y, width: 22, height: 17, rx: 3 }));
-      const dayLabel = add(group, "text", { class: "timekeeper-day-label", x: -63, y: 49, "text-anchor": "middle" });
-      dayLabel.textContent = "14 D";
-      add(group, "path", { class: "timekeeper-agar-drawer", d: "M-36 70H47L58 105H-47Z" });
-      add(group, "path", { class: "timekeeper-drawer-front", d: "M-31 82H42L39 99H-35Z" });
-      add(group, "circle", { class: "timekeeper-drawer-pull", cx: 4, cy: 90, r: 4 });
+      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-98 108Q0 138 104 110Q52 151-89 145Z" });
+      add(group, "path", { class: "loupe-handle", d: "M-65 116L-17 51" });
+      add(group, "path", { class: "loupe-grip", d: "M-80 122L-64 137L-16 67L-31 52Z" });
+      add(group, "circle", { class: "loupe-neck", cx: -9, cy: 41, r: 13 });
+      add(group, "circle", { class: "loupe-rim", cx: 38, cy: -25, r: 58 });
+      add(group, "circle", { class: "loupe-glass", cx: 38, cy: -25, r: 47 });
+      add(group, "path", { class: "loupe-glint", d: "M7-43Q23-65 49-67" });
+      add(group, "path", { class: "loupe-worm", d: "M8-24C20-48 33-8 46-33S70-18 66 2" });
+      add(group, "path", { class: "loupe-worm second", d: "M18 8C29-5 42 17 54 1S72 8 75 17" });
     } else {
-      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-157 91Q0 123 164 87Q82 139-145 132Z" });
-      add(group, "path", { class: "timekeeper-yoke-base", d: "M-130 52H131L146 84H-143Z" });
-      add(group, "ellipse", { class: "timekeeper-rotating-yoke", cx: -8, cy: -9, rx: 126, ry: 71 });
-      add(group, "path", { class: "timekeeper-yoke-supports", d: "M-129-10V53M113-10V53M-139 53L-151 96H-112L-97 55M102 55L117 96H157L140 52" });
-      [-1, 1].forEach(side => add(group, "circle", { class: "timekeeper-yoke-pivot", cx: side < 0 ? -129 : 113, cy: -10, r: 11 }));
-      add(group, "rect", { class: "timekeeper-glass horizontal", x: -116, y: -42, width: 213, height: 65, rx: 31 });
-      add(group, "path", { class: "timekeeper-tube-meniscus", d: "M-100 10Q-52-3-8 10Q41-4 82 8" });
-      add(group, "path", { class: "timekeeper-stopper", d: "M-137-35H-109V17H-137L-147 7V-25Z" });
-      [[-88,-17,-68,-31],[-64,4,-42,-16],[-34,-19,-14,-33],[-6,4,16,-14]].forEach(([x1,y1,x2,y2], index) => {
-        add(group, "path", { class: index % 2 ? "timekeeper-petal deep" : "timekeeper-petal", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-8} ${x2} ${y2}Q${(x1+x2)/2+3} ${Math.max(y1,y2)+5} ${x1} ${y1}Z` });
-      });
-      [[20,-13,39,-28],[39,5,60,-13],[58,-12,78,-27],[67,11,88,-4]].forEach(([x1,y1,x2,y2], index) => {
-        add(group, "path", { class: index % 2 ? "timekeeper-leaf deep" : "timekeeper-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-7} ${x2} ${y2}Q${(x1+x2)/2+3} ${Math.max(y1,y2)+5} ${x1} ${y1}Z` });
-        add(group, "path", { class: "timekeeper-leaf-vein", d: `M${x1+2} ${y1-1}L${x2-2} ${y2+1}` });
-      });
-      for (let index = 0; index < 14; index += 1) {
-        const angle = (-164 + index * (328 / 13)) * Math.PI / 180;
-        const x1 = -8 + Math.cos(angle) * 132;
-        const y1 = -9 + Math.sin(angle) * 77;
-        const x2 = -8 + Math.cos(angle) * 143;
-        const y2 = -9 + Math.sin(angle) * 85;
-        add(group, "path", { class: index % 7 === 0 ? "timekeeper-ring-tick major" : "timekeeper-ring-tick", d: `M${x1.toFixed(1)} ${y1.toFixed(1)}L${x2.toFixed(1)} ${y2.toFixed(1)}` });
-      }
-      add(group, "path", { class: "timekeeper-date-tag", d: "M-87-94H4L9-66H-82Z" });
-      const dateText = add(group, "text", { class: "timekeeper-date-text", x: -39, y: -76, "text-anchor": "middle" });
-      dateText.textContent = "21 DEC 2007";
-      add(group, "circle", { class: "timekeeper-transfer-hinge", cx: 93, cy: 30, r: 9 });
-      add(group, "path", { class: "timekeeper-transfer-chute", d: "M96 22L139 35L128 54L91 39Z" });
-      add(group, "path", { class: "timekeeper-culture-deck", d: "M113 52H165L157 84H108Z" });
-      add(group, "path", { class: "timekeeper-culture-rim", d: "M117 58H159L155 76H113Z" });
-      add(group, "path", { class: "timekeeper-deck-brace", d: "M119 82L111 99M151 82L159 99" });
+      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-157 103Q4 137 167 96Q87 150-144 143Z" });
+      add(group, "path", { class: "loupe-handle", d: "M-97 118L-29 38" });
+      add(group, "path", { class: "loupe-grip", d: "M-116 125L-96 143L-29 57L-48 40Z" });
+      add(group, "circle", { class: "loupe-neck", cx: -20, cy: 27, r: 17 });
+      add(group, "circle", { class: "loupe-rim", cx: 45, cy: -43, r: 88 });
+      add(group, "circle", { class: "loupe-glass", cx: 45, cy: -43, r: 73 });
+      add(group, "path", { class: "loupe-glint", d: "M-1-71Q22-105 64-108" });
+      add(group, "path", { class: "loupe-worm", d: "M-3-43C13-77 34-19 53-55S91-34 84-4" });
+      add(group, "path", { class: "loupe-worm second", d: "M12-2C28-20 47 13 67-10S94 6 98 21" });
     }
     return true;
   }
 
-  if (item.family === "trivandrum-garden-waterworks") {
-    group.dataset.renderer = "trivandrum-garden-waterworks";
-    group.classList.add("trivandrum-accessory", "garden-waterworks", companion ? "garden-waterworks-companion" : "garden-waterworks-primary");
+  if (item.family === "trivandrum-garden-watering-can") {
+    group.dataset.renderer = "trivandrum-garden-watering-can";
+    group.classList.add("trivandrum-accessory", "garden-watering-can", companion ? "watering-can-companion" : "watering-can-primary");
     if (companion) {
-      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-79 121Q4 145 87 117Q45 155-71 150Z" });
-      add(group, "path", { class: "waterworks-column-base", d: "M-49 91H49L63 127H-62Z" });
-      add(group, "path", { class: "waterworks-pump-column", d: "M-31-117H27L37 94H-40Z" });
-      add(group, "path", { class: "waterworks-column-cap", d: "M-42-126H38L44-107H-47Z" });
-      [[-91,-68],[-91,2]].forEach(([x,y], index) => {
-        add(group, "path", { class: index ? "waterworks-stacked-cistern deep" : "waterworks-stacked-cistern", d: `M${x} ${y}H-43V${y+52}H${x-8}L${x-17} ${y+26}Z` });
-        add(group, "path", { class: "waterworks-cistern-band", d: `M${x+4} ${y+14}H-47M${x+1} ${y+37}H-47` });
-      });
-      add(group, "path", { class: "waterworks-s-pipe", d: "M24-87C72-89 80-58 51-40C24-24 34 5 69 8C99 10 96 45 62 50V77" });
-      add(group, "path", { class: "waterworks-pipe-joints", d: "M48-48H69M54 3H75M53 48H73M55 76H70" });
-      add(group, "path", { class: "waterworks-sprinkler-head", d: "M49 76H77L83 88H43Z" });
-      [[44,93,26,103],[53,96,42,112],[62,96,66,112],[72,92,88,103]].forEach(([x1,y1,x2,y2], index) => add(group, "path", { class: index % 2 ? "waterworks-spray-leaf deep" : "waterworks-spray-leaf", d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-5} ${x2} ${y2}Q${(x1+x2)/2+3} ${Math.max(y1,y2)+4} ${x1} ${y1}Z` }));
-      add(group, "path", { class: "waterworks-sight-gauge", d: "M-18-81H13V51H-18Z" });
-      [-58,-29,0,29].forEach(y => add(group, "path", { class: "waterworks-gauge-tick", d: `M-10 ${y}H7` }));
-      add(group, "path", { class: "waterworks-gauge-level", d: "M-12 18H7V45H-12Z" });
-      add(group, "circle", { class: "waterworks-column-valve", cx: -4, cy: 72, r: 16 });
-      add(group, "path", { class: "waterworks-valve-spokes", d: "M-20 72H12M-4 56V88M-15 61L7 83M7 61L-15 83" });
+      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-132 99Q0 136 130 101Q66 148-119 142Z" });
+      add(group, "path", { class: "watering-can-handle", d: "M-43-12C-101-84-130-5-76 61" });
+      add(group, "path", { class: "watering-can-spout", d: "M22 24L96-63L117-46L41 48Z" });
+      add(group, "ellipse", { class: "watering-can-rose", cx: 118, cy: -59, rx: 25, ry: 16, transform: "rotate(38 118 -59)" });
+      [[107,-66],[116,-62],[125,-57],[114,-51],[130,-64]].forEach(([cx,cy]) => add(group, "circle", { class: "watering-can-hole", cx, cy, r: 2.5 }));
+      add(group, "path", { class: "watering-can-body slim", d: "M-58-26Q-3-44 52-25L45 69Q-5 97-61 68Z" });
+      add(group, "ellipse", { class: "watering-can-top", cx: -3, cy: -26, rx: 55, ry: 13 });
+      add(group, "ellipse", { class: "watering-can-opening", cx: -3, cy: -30, rx: 21, ry: 7 });
+      add(group, "path", { class: "watering-can-highlight", d: "M-42 3Q-4-12 34 0" });
+      add(group, "path", { class: "watering-can-base", d: "M-52 65Q-4 83 39 64" });
     } else {
-      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-158 91Q0 124 163 87Q82 139-146 132Z" });
-      add(group, "path", { class: "waterworks-lake-basin", d: "M-151 19Q-127-29-64-39Q-3-53 56-31Q115-39 151 4L139 57Q79 92 12 71Q-55 94-124 66Z" });
-      add(group, "path", { class: "waterworks-basin-water", d: "M-134 20Q-107-12-58-20Q-6-33 44-15Q91-22 130 7L122 42Q74 66 15 53Q-43 72-111 51Z" });
-      add(group, "path", { class: "waterworks-basin-ripple", d: "M-108 17Q-73 4-42 17M-23 1Q12-10 46 4M60 22Q92 11 119 25" });
-      add(group, "path", { class: "waterworks-pump-body", d: "M-119-56H-70L-62 37H-128Z" });
-      add(group, "path", { class: "waterworks-pump-cap", d: "M-128-67H-62L-57-49H-133Z" });
-      add(group, "circle", { class: "waterworks-handwheel", cx: -96, cy: -41, r: 31 });
-      add(group, "circle", { class: "waterworks-wheel-hub", cx: -96, cy: -41, r: 6 });
-      [-90,-45,0,45].forEach(angle => {
-        const radians = angle * Math.PI / 180;
-        const x = Math.cos(radians) * 27;
-        const y = Math.sin(radians) * 27;
-        add(group, "path", { class: "waterworks-wheel-spoke", d: `M${-96-x} ${-41-y}L${-96+x} ${-41+y}` });
-      });
-      add(group, "path", { class: "waterworks-feed-pipe", d: "M-69-28H-34V-5H4V15H37" });
-      add(group, "path", { class: "waterworks-pipe-joints", d: "M-39-35V-21M-3-12V2M31 7V22" });
-      const terraces = [
-        [23,-25,122,-25,137,-3,35,-3],
-        [40,4,143,4,132,28,52,28],
-        [60,34,128,34,112,57,69,57]
-      ];
-      terraces.forEach((points, index) => {
-        const [x1,y1,x2,y2,x3,y3,x4,y4] = points;
-        add(group, "path", { class: index % 2 ? "waterworks-terrace-bed deep" : "waterworks-terrace-bed", d: `M${x1} ${y1}H${x2}L${x3} ${y3}H${x4}Z` });
-        add(group, "path", { class: "waterworks-terrace-channel", d: `M${x1+6} ${y1+8}H${x2-10}L${x3-10} ${y3-7}H${x4+8}` });
-      });
-      [[55,-17],[90,-15],[64,13],[104,15],[82,44]].forEach(([x,y], index) => {
-        add(group, "path", { class: index % 2 ? "waterworks-bed-leaf deep" : "waterworks-bed-leaf", d: `M${x} ${y+11}Q${x-13} ${y-5} ${x-20} ${y+8}Q${x-8} ${y+18} ${x} ${y+11}ZM${x} ${y+11}Q${x+14} ${y-6} ${x+21} ${y+8}Q${x+9} ${y+18} ${x} ${y+11}Z` });
-      });
-      add(group, "path", { class: "waterworks-basin-feet", d: "M-126 60L-139 96H-100L-87 70M98 66L112 96H151L136 57" });
+      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-166 103Q0 139 173 98Q89 153-151 146Z" });
+      add(group, "path", { class: "watering-can-handle", d: "M-116-18C-183-118-211-4-146 65" });
+      add(group, "path", { class: "watering-can-spout", d: "M-2 31L113-82L139-59L22 59Z" });
+      add(group, "ellipse", { class: "watering-can-rose", cx: 142, cy: -72, rx: 35, ry: 22, transform: "rotate(36 142 -72)" });
+      [[126,-82],[137,-77],[149,-71],[159,-64],[132,-66],[145,-59],[155,-78]].forEach(([cx,cy]) => add(group, "circle", { class: "watering-can-hole", cx, cy, r: 3.1 }));
+      add(group, "path", { class: "watering-can-body", d: "M-140-34Q-70-57 5-31L19 74Q-62 108-143 72Z" });
+      add(group, "ellipse", { class: "watering-can-top", cx: -67, cy: -34, rx: 72, ry: 18 });
+      add(group, "ellipse", { class: "watering-can-opening", cx: -67, cy: -40, rx: 29, ry: 10 });
+      add(group, "path", { class: "watering-can-highlight", d: "M-119 4Q-73-16-21 1" });
+      add(group, "path", { class: "watering-can-base", d: "M-130 68Q-62 94 8 69" });
+      add(group, "path", { class: "watering-can-flower-mark", d: "M-76 17C-94-4-108 20-86 30C-108 39-92 60-76 41C-60 61-43 40-65 30C-43 18-59-3-76 17Z" });
+      add(group, "circle", { class: "watering-can-flower-centre", cx: -76, cy: 29, r: 6 });
     }
     return true;
   }
 
-  if (item.family === "trivandrum-bandstand-music-box") {
-    group.dataset.renderer = "trivandrum-bandstand-music-box";
-    group.classList.add("trivandrum-accessory", "bandstand-music-box", companion ? "bandstand-music-box-companion" : "bandstand-music-box-primary");
+  if (item.family === "trivandrum-sample-tube") {
+    group.dataset.renderer = "trivandrum-sample-tube";
+    group.classList.add("trivandrum-accessory", "trivandrum-sample-tube", companion ? "sample-tube-companion" : "sample-tube-primary");
     if (companion) {
-      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-89 119Q4 146 95 115Q49 156-80 150Z" });
-      add(group, "path", { class: "music-cabinet-body", d: "M-72-79L-47-111H49L76-78V93H-72Z" });
-      add(group, "path", { class: "music-cabinet-canopy", d: "M-84-76L-49-126H51L87-76L69-64H-68Z" });
-      add(group, "path", { class: "music-canopy-ribs", d: "M-49-119L-26-72M1-119V-69M50-119L27-72" });
-      [-46,0,46].forEach((cx, index) => {
-        add(group, "path", { class: index === 1 ? "music-cabinet-arch centre" : "music-cabinet-arch", d: `M${cx-21} 54V-31Q${cx} -59 ${cx+21}-31V54Z` });
-      });
-      add(group, "rect", { class: "music-vertical-roll", x: -15, y: -43, width: 30, height: 98, rx: 12 });
-      [-31,-15,1,17,33].forEach((y, row) => [-7,7].forEach((x, column) => add(group, "circle", { class: (row+column)%2 ? "music-roll-hole deep" : "music-roll-hole", cx: x, cy: y, r: 3.5 })));
-      add(group, "path", { class: "music-roll-spindle", d: "M-23-44H23M-23 56H23" });
-      [-43,43].forEach((x, index) => {
-        add(group, "path", { class: index ? "music-hanging-reed deep" : "music-hanging-reed", d: `M${x}-29V46L${x+9} 62L${x-9} 62Z` });
-        add(group, "circle", { class: "music-reed-pin", cx: x, cy: -33, r: 4 });
-      });
-      add(group, "path", { class: "music-folding-hinges", d: "M-74-48H-60M-74 3H-60M60-48H75M60 3H75" });
-      add(group, "path", { class: "music-triangular-base", d: "M-81 91H84L61 126H-58Z" });
-      add(group, "path", { class: "music-base-resonator", d: "M-42 99H45L34 116H-31Z" });
+      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-123 84Q0 112 128 82Q64 125-112 120Z" });
+      add(group, "path", { class: "sample-tube-cap", d: "M-112-35L-97-70L-68-59L-83-25Z" });
+      add(group, "path", { class: "sample-tube-glass horizontal", d: "M-84-31L73 33Q99 43 108 20Q113 1 90-8L-69-69Z" });
+      add(group, "path", { class: "sample-tube-glint", d: "M-62-55L78 2Q91 6 93 15" });
+      add(group, "path", { class: "sample-leaf", d: "M-43-19Q-23-43-7-16Q-25-2-43-19Z" });
+      add(group, "path", { class: "sample-leaf deep", d: "M32 16Q51-10 70 15Q53 33 32 16Z" });
+      add(group, "path", { class: "sample-petal", d: "M-4-5C-17-10-12-27 2-25C4-38 22-33 19-19C33-24 39-7 26-1C36 9 22 23 13 12C4 24-13 14-4-5Z" });
+      add(group, "path", { class: "sample-tag-string", d: "M-81-46Q-52-81-19-66" });
+      add(group, "path", { class: "sample-tag", d: "M-45-78H20L24-52H-42Z" });
+      const label = add(group, "text", { class: "sample-tag-text", x: -10, y: -60, "text-anchor": "middle" });
+      label.textContent = "14 DAYS";
     } else {
-      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-160 93Q0 126 165 88Q83 141-147 134Z" });
-      add(group, "path", { class: "bandstand-pavilion-base", d: "M-139 57L-105 34H103L141 57L119 91H-117Z" });
-      add(group, "path", { class: "bandstand-faceted-roof", d: "M-153-48L-107-87H-46L0-103L48-87H108L154-47L126-32H-128Z" });
-      add(group, "path", { class: "bandstand-roof-facets", d: "M-107-87L-75-42M-46-87L-33-38M0-103V-35M48-87L33-38M108-87L74-42" });
-      [-112,-80,-48,-16,16,48,80,112].forEach((x, index) => {
-        add(group, "path", { class: index % 2 ? "bandstand-column deep" : "bandstand-column", d: `M${x-5}-38H${x+5}V59H${x-5}ZM${x-9}-43H${x+9}V-34H${x-9}ZM${x-9} 55H${x+9}V64H${x-9}Z` });
-      });
-      add(group, "path", { class: "bandstand-cylinder-frame", d: "M-74-10H75V44H-74Z" });
-      add(group, "rect", { class: "bandstand-pinned-cylinder", x: -55, y: -2, width: 110, height: 34, rx: 16 });
-      [-43,-25,-7,11,29,47].forEach((x, column) => [-1,10,21].forEach((y, row) => add(group, "circle", { class: (column+row)%2 ? "bandstand-cylinder-pin deep" : "bandstand-cylinder-pin", cx: x, cy: y, r: 2.8 })));
-      add(group, "path", { class: "bandstand-cylinder-spindle", d: "M-70 15H-55M55 15H83" });
-      add(group, "path", { class: "bandstand-winding-crank", d: "M82 15H111V-5H129" });
-      add(group, "circle", { class: "bandstand-crank-handle", cx: 133, cy: -5, r: 6 });
-      [-92,-76,-60,64,80,96].forEach((x, index) => add(group, "path", { class: index % 2 ? "bandstand-resonator-slat deep" : "bandstand-resonator-slat", d: `M${x} 2V44` }));
-      add(group, "path", { class: "bandstand-pavilion-feet", d: "M-118 84L-130 108H-95L-84 89M84 88L96 108H132L117 82" });
+      add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-163 90Q1 126 170 88Q86 142-149 135Z" });
+      add(group, "path", { class: "sample-tube-cap", d: "M-153-47L-135-91L-100-77L-118-34Z" });
+      add(group, "path", { class: "sample-tube-glass horizontal", d: "M-119-42L105 48Q139 62 151 29Q158 3 126-10L-99-99Z" });
+      add(group, "path", { class: "sample-tube-glint", d: "M-88-78L111 1Q128 8 130 21" });
+      add(group, "path", { class: "sample-leaf", d: "M-65-28Q-35-62-12-24Q-38-3-65-28Z" });
+      add(group, "path", { class: "sample-leaf deep", d: "M36 21Q63-17 91 19Q66 45 36 21Z" });
+      add(group, "path", { class: "sample-petal", d: "M-18-7C-37-15-30-39-10-36C-8-55 19-48 15-28C35-35 44-9 25-1C39 14 18 34 5 18C-8 35-32 21-18-7Z" });
+      add(group, "path", { class: "sample-petal small", d: "M66 6C54-3 61-19 74-14C77-27 94-19 90-6C104-7 107 11 93 14C99 27 81 34 75 20C62 27 52 15 66 6Z" });
+      add(group, "path", { class: "sample-tag-string", d: "M-116-61Q-71-104-29-78" });
+      add(group, "path", { class: "sample-tag", d: "M-70-106H22L27-70H-66Z" });
+      const label = add(group, "text", { class: "sample-tag-text", x: -22, y: -82, "text-anchor": "middle" });
+      label.textContent = "14 DAYS";
     }
     return true;
   }
@@ -5132,9 +5061,9 @@ function renderPiece(target, item, wormPart) {
     "compost-labyrinth": { primary: [352, 110, .4, -2], companion: [18, 125, .29, 2] },
     "ashfall-recorder": { primary: [222, 190, .37, -1], companion: [85, 218, .28, 2] },
     "test-cross-mechanism": { primary: [360, 268, .35, -1], companion: [0, 292, .29, 2] },
-    "ju1325-sample-tube-timekeeper": { primary: [355, 145, .36, -2], companion: [0, 105, .28, 2] },
-    "trivandrum-garden-waterworks": { primary: [220, 188, .35, -1], companion: [112, 215, .28, 2] },
-    "trivandrum-bandstand-music-box": { primary: [355, 267, .34, -1], companion: [-2, 290, .28, 2] },
+    "trivandrum-field-loupe": { primary: [366, 139, .41, -7], companion: [-3, 118, .33, -7] },
+    "trivandrum-garden-watering-can": { primary: [226, 188, .39, 1], companion: [62, 218, .31, 1] },
+    "trivandrum-sample-tube": { primary: [365, 269, .39, -2], companion: [3, 291, .3, -2] },
     "zf1220-five-rib-field-atlas": { primary: [356, 130, .36, -2], companion: [-8, 108, .29, 2] },
     "multifemale-provenance-merger": { primary: [225, 188, .34, -1], companion: [98, 192, .28, 2] },
     "holttum-orchid-hybridisation-engine": { primary: [354, 268, .34, -1], companion: [-6, 292, .28, 2] },

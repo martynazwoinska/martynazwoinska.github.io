@@ -74,27 +74,26 @@ The scene connects the exact flower-and-leaf substrate to one continuous sloping
 
 The accessories translate JU1325's documented recovery history and wider garden infrastructure into movable teaching objects. They are original mechanisms, not claimed historic artefacts or traditional Kerala objects.
 
-### JU1325 sample-tube timekeeper
+### Field loupe
 
-- **Primary:** a broad horizontal transparent tube in a brass rotating yoke; separate petal and leaf layers, stopper, date tag, fourteen-segment time ring and offset hinged transfer chute ending at a small culture deck.
-- **Companion:** a tall upright twin-chamber tube with petals above curled leaves, side sampling port, vertical day counter, crooked tripod and slide-out agar drawer at the base.
-- The drawings do not become two resized cylinders and cannot resemble N2's cryovial jetpacks or agar-plate objects.
+- **Primary:** a large circular handheld loupe with a metal rim, coloured grip, clear lens and two contained magnified nematode silhouettes.
+- **Companion:** a compact circular handheld loupe with the same lens-over-handle orientation and differently arranged magnified worms.
+- Both copies must read immediately as optical magnifiers without relying on their labels; the lens details remain fully contained by the rim.
 
-### Trivandrum garden waterworks
+### Garden watering can
 
-This playful teaching model is grounded in documented lakes, rising terraces and lake-fed garden watering; it is not claimed historical equipment.
+The watering can refers to the documented botanical garden and its lake-fed gardening infrastructure. It is a familiar garden object, not a reconstruction of historical equipment and not a claim about the collection method.
 
-- **Primary:** a wide low lake basin with an exposed handwheel pump feeding three unequal zig-zag terrace channels and small planted beds.
-- **Companion:** a tall narrow pump column beside two stacked cisterns, an S-shaped delivery pipe, offset leaf sprinklers and separate sight gauge.
-- One construction is horizontal and openly mechanical; the other is vertical and hydraulic.
+- **Primary:** a broad conventional watering can with a high arched handle, top opening, long tapered spout and perforated rose.
+- **Companion:** a slimmer can with a differently proportioned body and the same left-handle/right-spout orientation.
+- Both copies use clear vessel, handle, spout and rose silhouettes rather than pumps, cisterns, channels or fantasy machinery.
 
-### Trivandrum bandstand music box
+### Sample tube
 
-The garden's documented bandstand provides a local musical mechanism without imitating a named traditional instrument.
-
-- **Primary:** a broad octagonal pavilion with eight slender columns, shallow faceted roof, visible horizontal pinned music cylinder, winding crank and resonator slats.
-- **Companion:** a tall folding three-arch cabinet with a steeper canopy, vertical perforated music roll, two hanging sound reeds and triangular base.
-- The design is an original mechanical translation, not a reconstruction or celebration of the bandstand's former military use.
+- **Primary:** a plain horizontal transparent plastic tube containing anonymous wilted petals and curled leaves, closed by a coloured cap and accompanied by a small `14 DAYS` tag.
+- **Companion:** a shorter horizontal tube pointing in the same direction, with independently arranged petals and leaves and its own tied tag.
+- The public label is simply `sample tube`; the contents and fourteen-day tag connect it to JU1325's documented recovery history without placing the strain name on the object.
+- Each primary/companion pair keeps one consistent viewing orientation; size, proportions and internal details provide the variation.
 
 ## Cultural and ecological safeguards
 
