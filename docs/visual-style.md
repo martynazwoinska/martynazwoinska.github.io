@@ -29,7 +29,7 @@ Use the prefixed CSS custom properties rather than copying hex values into compo
 | `--site-text-faint` | `#647178` | `#b6caca` | Tertiary metadata and small supporting text with WCAG AA contrast |
 | `--site-brand-emerald` | `#1f735f` | `#79dec2` | Emerald primary accent, links, active states and structural emphasis |
 | `--site-brand-emerald-soft` | `#dcebe5` | `#164b4d` | Quiet emerald backgrounds and selected-state fills |
-| `--site-brand-berry` | `#8b3d5c` | `#e9a0bd` | Oxblood or plum-berry secondary accent |
+| `--site-brand-berry` | `#8b3d5c` | `#e0a5ca` | Oxblood or plum-berry secondary accent |
 | `--site-ornament-berry` | `#a44057` | `#c46cab` | Theme-specific painted-flower echo for divider terminals only |
 | `--site-brand-gold` | `#a88445` | `#d7b96f` | Antique-gold fine borders, markers and restrained highlights |
 | `--site-brand-violet` | `#6f5878` | `#c4b2dd` | Muted violet for limited botanical or categorical detail |
