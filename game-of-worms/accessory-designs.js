@@ -524,7 +524,7 @@ function drawN2Accessory(group, item, companion) {
   if (item.family === "cryo-vial-jetpack") {
     group.classList.add("cryo-jetpack", companion ? "cryo-pack-companion" : "cryo-pack-primary");
     if (companion) {
-      add(group, "path", { class: "pack-harness", d: "M16-24Q41-29 48-9M18 2Q40 4 45 24" });
+      add(group, "path", { class: "pack-harness", d: "M-16-24Q-41-29-48-9M-18 2Q-40 4-45 24" });
       add(group, "path", { class: "cryo-pack-shell companion", d: "M-27-29Q-6-39 18-27L24 19Q4 36-25 24Z" });
       add(group, "rect", { class: "cryo-vial-body companion", x: -13, y: -58, width: 24, height: 70, rx: 9 });
       add(group, "rect", { class: "cryo-vial-cap companion", x: -11, y: -68, width: 20, height: 14, rx: 4 });
@@ -537,7 +537,7 @@ function drawN2Accessory(group, item, companion) {
       add(group, "path", { class: "cryo-plume small", d: "M-24 42Q-31 54-21 62Q-13 54-18 44M10 46Q4 57 14 66Q22 56 17 46" });
       add(group, "path", { class: "cryo-frost", d: "M-23-17L-15-11M17-15L10-9M-23 6L-15 3" });
     } else {
-      add(group, "path", { class: "pack-harness", d: "M-48-24Q-20-44 13-29M-46 3Q-16-18 17-3" });
+      add(group, "path", { class: "pack-harness", d: "M48-24Q20-44-13-29M46 3Q16-18-17-3" });
       add(group, "path", { class: "cryo-pack-shell", d: "M-28-35Q8-48 42-31L49 29Q12 48-27 31Z" });
       [-11, 22].forEach((x, index) => {
         add(group, "rect", { class: "cryo-vial-body", x: x - 11, y: -67 + index * 3, width: 22, height: 78 - index * 4, rx: 8 });
@@ -1617,28 +1617,50 @@ function drawTrivandrumAccessory(group, item, companion) {
     group.classList.add("trivandrum-accessory", "garden-watering-can", companion ? "watering-can-companion" : "watering-can-primary");
     if (companion) {
       add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-132 99Q0 136 130 101Q66 148-119 142Z" });
+      add(group, "path", { class: "watering-can-handle-under", d: "M-43-12C-101-84-130-5-76 61" });
       add(group, "path", { class: "watering-can-handle", d: "M-43-12C-101-84-130-5-76 61" });
-      add(group, "path", { class: "watering-can-spout", d: "M22 24L96-63L117-46L41 48Z" });
-      add(group, "ellipse", { class: "watering-can-rose", cx: 118, cy: -59, rx: 25, ry: 16, transform: "rotate(38 118 -59)" });
-      [[107,-66],[116,-62],[125,-57],[114,-51],[130,-64]].forEach(([cx,cy]) => add(group, "circle", { class: "watering-can-hole", cx, cy, r: 2.5 }));
+      add(group, "path", { class: "watering-can-handle-glint", d: "M-52-20C-86-54-112-25-103 18" });
+      add(group, "path", { class: "watering-can-spout", d: "M23 22C49 1 74-31 98-54L116-42C88-13 64 20 40 48Z" });
+      add(group, "path", { class: "watering-can-spout-ridge", d: "M34 24C57 4 79-25 103-47" });
+      add(group, "path", { class: "watering-can-spout-collar", d: "M27 18L46 38L40 49L20 27Z" });
+      add(group, "ellipse", { class: "watering-can-rose-rim", cx: 118, cy: -55, rx: 29, ry: 19, transform: "rotate(38 118 -55)" });
+      add(group, "ellipse", { class: "watering-can-rose", cx: 118, cy: -55, rx: 23, ry: 14, transform: "rotate(38 118 -55)" });
+      [[106,-62],[115,-59],[124,-54],[113,-49],[129,-61],[124,-47]].forEach(([cx,cy]) => add(group, "circle", { class: "watering-can-hole", cx, cy, r: 2.3 }));
       add(group, "path", { class: "watering-can-body slim", d: "M-58-26Q-3-44 52-25L45 69Q-5 97-61 68Z" });
       add(group, "ellipse", { class: "watering-can-top", cx: -3, cy: -26, rx: 55, ry: 13 });
+      add(group, "ellipse", { class: "watering-can-top-rim", cx: -3, cy: -26, rx: 48, ry: 9 });
       add(group, "ellipse", { class: "watering-can-opening", cx: -3, cy: -30, rx: 21, ry: 7 });
+      add(group, "path", { class: "watering-can-opening-glint", d: "M-15-33Q-3-37 10-32" });
+      add(group, "path", { class: "watering-can-panel-seam", d: "M-45-11Q-3-24 39-10M-47 43Q-4 58 37 43" });
+      add(group, "path", { class: "watering-can-body-band", d: "M-57 58Q-5 78 43 58" });
       add(group, "path", { class: "watering-can-highlight", d: "M-42 3Q-4-12 34 0" });
       add(group, "path", { class: "watering-can-base", d: "M-52 65Q-4 83 39 64" });
+      add(group, "circle", { class: "watering-can-rivet", cx: -48, cy: 54, r: 3.5 });
+      add(group, "circle", { class: "watering-can-rivet", cx: 35, cy: 53, r: 3.5 });
+      add(group, "path", { class: "watering-can-emboss", d: "M-18 20Q-3 5 12 20Q-3 35-18 20ZM-3 8V33" });
     } else {
       add(group, "path", { class: "trivandrum-accessory-shadow", d: "M-166 103Q0 139 173 98Q89 153-151 146Z" });
-      add(group, "path", { class: "watering-can-handle", d: "M-116-18C-183-118-211-4-146 65" });
-      add(group, "path", { class: "watering-can-spout", d: "M-2 31L113-82L139-59L22 59Z" });
-      add(group, "ellipse", { class: "watering-can-rose", cx: 142, cy: -72, rx: 35, ry: 22, transform: "rotate(36 142 -72)" });
-      [[126,-82],[137,-77],[149,-71],[159,-64],[132,-66],[145,-59],[155,-78]].forEach(([cx,cy]) => add(group, "circle", { class: "watering-can-hole", cx, cy, r: 3.1 }));
+      add(group, "path", { class: "watering-can-handle-under primary", d: "M-116-18C-183-118-211-4-146 65" });
+      add(group, "path", { class: "watering-can-handle primary", d: "M-116-18C-183-118-211-4-146 65" });
+      add(group, "path", { class: "watering-can-handle-glint primary", d: "M-127-29C-172-73-201-31-188 23" });
+      add(group, "path", { class: "watering-can-spout", d: "M-2 29C39 2 77-42 116-77L139-58C96-14 59 32 21 59Z" });
+      add(group, "path", { class: "watering-can-spout-ridge primary", d: "M13 33C52 6 86-34 123-67" });
+      add(group, "path", { class: "watering-can-spout-collar primary", d: "M3 23L28 49L21 61L-7 34Z" });
+      add(group, "ellipse", { class: "watering-can-rose-rim", cx: 143, cy: -69, rx: 40, ry: 26, transform: "rotate(36 143 -69)" });
+      add(group, "ellipse", { class: "watering-can-rose", cx: 143, cy: -69, rx: 33, ry: 20, transform: "rotate(36 143 -69)" });
+      [[125,-79],[136,-76],[147,-70],[158,-63],[130,-66],[142,-59],[154,-76],[164,-70],[150,-84]].forEach(([cx,cy]) => add(group, "circle", { class: "watering-can-hole", cx, cy, r: 2.9 }));
       add(group, "path", { class: "watering-can-body", d: "M-140-34Q-70-57 5-31L19 74Q-62 108-143 72Z" });
       add(group, "ellipse", { class: "watering-can-top", cx: -67, cy: -34, rx: 72, ry: 18 });
+      add(group, "ellipse", { class: "watering-can-top-rim", cx: -67, cy: -34, rx: 63, ry: 13 });
       add(group, "ellipse", { class: "watering-can-opening", cx: -67, cy: -40, rx: 29, ry: 10 });
+      add(group, "path", { class: "watering-can-opening-glint", d: "M-86-43Q-68-49-48-42" });
+      add(group, "path", { class: "watering-can-panel-seam", d: "M-125-14Q-65-34-5-12M-128 45Q-57 70 10 45" });
+      add(group, "path", { class: "watering-can-body-band primary", d: "M-139 59Q-61 88 16 58" });
       add(group, "path", { class: "watering-can-highlight", d: "M-119 4Q-73-16-21 1" });
       add(group, "path", { class: "watering-can-base", d: "M-130 68Q-62 94 8 69" });
-      add(group, "path", { class: "watering-can-flower-mark", d: "M-76 17C-94-4-108 20-86 30C-108 39-92 60-76 41C-60 61-43 40-65 30C-43 18-59-3-76 17Z" });
-      add(group, "circle", { class: "watering-can-flower-centre", cx: -76, cy: 29, r: 6 });
+      add(group, "circle", { class: "watering-can-rivet", cx: -129, cy: 59, r: 4.5 });
+      add(group, "circle", { class: "watering-can-rivet", cx: 7, cy: 58, r: 4.5 });
+      add(group, "path", { class: "watering-can-emboss primary", d: "M-92 24Q-69-1-46 24Q-69 49-92 24ZM-69 4V45" });
     }
     return true;
   }
@@ -6177,7 +6199,7 @@ function renderPiece(target, item, wormPart) {
   const customLayouts = {
     "ngm-agar-plate": { primary: [366, 260, .82, -6], companion: [35, 288, .65, 2] },
     "n2-lab-coat": { primary: [180, 214, 1, 0], companion: [52, 168, .92, -1] },
-    "cryo-vial-jetpack": { primary: [258, 118, .84, 28], companion: [43, 132, .65, 32] },
+    "cryo-vial-jetpack": { primary: [258, 118, .84, 208], companion: [43, 132, .65, 212] },
     "n2-lab-goggles": { primary: [331, 53, 1, 14], companion: [111, 104, .58, 14] },
     "fig-fascinator": { primary: [326, 62, .64, -2], companion: [108, 106, .5, 3] },
     "sample-pannier": { primary: [170, 194, .63, -4], companion: [55, 181, .46, 4] },
@@ -6224,7 +6246,7 @@ function renderPiece(target, item, wormPart) {
     "qg2904-uncracked-pod-seam-scanner": { primary: [250, -62, .31, -2], companion: [-8, 90, .27, 2] },
     "qg2904-collection-to-funnel-relay": { primary: [220, 148, .32, -1], companion: [90, 212, .26, 2] },
     "dro-canopy-crane-strata-mapper": { primary: [377, 140, .29, -1], companion: [-5, 292, .26, 2] },
-    "edinburgh-tartan-kilt": { primary: [220, 176, .62, -11], companion: [72, 166, .46, -22] },
+    "edinburgh-tartan-kilt": { primary: [220, 176, .62, 35], companion: [72, 166, .46, 42] },
     "great-highland-bagpipes": { primary: [291, 190, .49, -8], companion: [94, 168, .37, 5] }
     ,"ju1373-torch-ginger-bract-collar": { primary: [366, 118, .33, -4], companion: [8, 112, .28, 5] }
     ,"ju1373-type-isolate-signet-engine": { primary: [224, 194, .31, -1], companion: [105, 207, .27, 2] }

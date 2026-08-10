@@ -2541,7 +2541,12 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .loupe-worm { fill: none; stroke: var(--tri-berry); stroke-width: 7; stroke-linecap: round; }
 .loupe-worm.second { stroke: var(--tri-indigo); stroke-width: 5; }
 
-.watering-can-handle { fill: none; stroke: var(--tri-indigo); stroke-width: 16; stroke-linecap: round; }
+.watering-can-handle-under { fill: none; stroke: var(--tri-ink); stroke-width: 22; stroke-linecap: round; }
+.watering-can-handle-under.primary { stroke-width: 27; }
+.watering-can-handle { fill: none; stroke: var(--tri-indigo); stroke-width: 15; stroke-linecap: round; }
+.watering-can-handle.primary { stroke-width: 19; }
+.watering-can-handle-glint { fill:none; stroke:rgba(255,255,255,.62); stroke-width:3.5; stroke-linecap:round; }
+.watering-can-handle-glint.primary { stroke-width:5; }
 .watering-can-body,
 .watering-can-spout,
 .watering-can-rose { fill: var(--tri-teal); stroke: var(--tri-ink); stroke-width: 3; stroke-linejoin: round; }
@@ -2549,6 +2554,18 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .watering-can-top { fill: var(--tri-aqua); stroke: var(--tri-ink); stroke-width: 3; }
 .watering-can-opening { fill: var(--tri-ink); stroke: var(--tri-gold); stroke-width: 3; }
 .watering-can-hole { fill: var(--tri-ink); }
+.watering-can-rose-rim,
+.watering-can-spout-collar { fill:var(--tri-gold); stroke:var(--tri-ink); stroke-width:3; stroke-linejoin:round; }
+.watering-can-spout-ridge,
+.watering-can-opening-glint { fill:none; stroke:rgba(255,255,255,.7); stroke-width:3; stroke-linecap:round; }
+.watering-can-spout-ridge.primary { stroke-width:4; }
+.watering-can-top-rim { fill:none; stroke:rgba(255,246,223,.8); stroke-width:3; }
+.watering-can-panel-seam { fill:none; stroke:rgba(31,48,71,.34); stroke-width:2; stroke-linecap:round; }
+.watering-can-body-band { fill:none; stroke:var(--tri-indigo); stroke-width:3; stroke-linecap:round; opacity:.7; }
+.watering-can-body-band.primary { stroke-width:4; }
+.watering-can-rivet { fill:var(--tri-coral); stroke:var(--tri-ink); stroke-width:1.5; }
+.watering-can-emboss { fill:none; stroke:rgba(255,246,223,.8); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+.watering-can-emboss.primary { stroke-width:4; }
 .watering-can-highlight,
 .watering-can-base { fill: none; stroke: rgba(255,255,255,.82); stroke-width: 4; stroke-linecap: round; }
 .watering-can-flower-mark { fill: var(--tri-coral); stroke: var(--tri-ink); stroke-width: 2; }
@@ -4845,6 +4862,13 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 }
 .elegans-field-redesign.efr-santeuil { --efr-primary:#4d4fa8; --efr-secondary:#63cec8; --efr-accent:#e95b80; --efr-leaf:#1b8d78; }
 .elegans-field-redesign.efr-edinburgh { --efr-primary:#4a4e9f; --efr-secondary:#54c5bd; --efr-accent:#cf4770; --efr-leaf:#177d72; }
+.elegans-field-redesign.efr-edinburgh .efr-kilt { fill:#183f46; }
+.elegans-field-redesign.efr-edinburgh .efr-waistband { fill:#873449; }
+.elegans-field-redesign.efr-edinburgh .efr-tartan-gold { stroke:#d1ad5e; }
+.elegans-field-redesign.efr-edinburgh .efr-tartan-aqua { stroke:#a94752; }
+.elegans-field-redesign.efr-edinburgh .efr-kilt-pleat { stroke:#102e38; }
+.elegans-field-redesign.efr-edinburgh .efr-kilt-hem { stroke:#17313b; }
+.elegans-field-redesign.efr-edinburgh .efr-sporran-detail { stroke:#b9934e; }
 .elegans-field-redesign.efr-tenerife { --efr-primary:#4554aa; --efr-secondary:#5fd0bb; --efr-accent:#e54f79; --efr-leaf:#188f70; }
 .elegans-field-redesign.efr-kauai { --efr-primary:#504ca8; --efr-secondary:#65d1ca; --efr-accent:#e85a85; --efr-leaf:#178e7a; }
 .elegans-field-redesign.efr-act { --efr-primary:#4454aa; --efr-secondary:#55c9c1; --efr-accent:#e2527c; --efr-leaf:#198b72; }

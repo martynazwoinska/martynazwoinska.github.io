@@ -89,10 +89,10 @@ The Royal Observatory on Blackford Hill is the landscape's clearest local landma
 
 ### Edinburgh tartan kilts
 
-The kilt is a playful regional cue rather than evidence about the isolate. Its indigo, turquoise, coral and antique-gold sett belongs to the Game's playful palette and is not presented as a named clan or historic tartan.
+The kilt is a playful regional cue rather than evidence about the isolate. Its deep green and navy field, muted red, antique-gold and ivory sett belongs to the Game's playful palette and is not presented as a named clan or historic tartan.
 
-- **Primary:** longer indigo tailored apron, broad coral waistband, deep gold-and-turquoise sett and large ivory sporran.
-- **Companion:** shorter fitted form in the same orientation with fewer pleats, independently spaced sett and compact sporran.
+- **Primary:** longer deep-green-and-navy tailored apron, broad muted-red waistband, antique-gold-and-red sett and large ivory sporran.
+- **Companion:** shorter fitted form in the same clockwise body-crossing orientation, with fewer pleats, independently spaced sett and compact sporran.
 - The two forms must read as cloth wrapped around different worm bodies, not as barrels, shields or recoloured skirts.
 
 ### Great Highland bagpipes
