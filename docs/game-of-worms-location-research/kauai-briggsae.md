@@ -61,29 +61,27 @@ and accessories above it.
 
 ## Accessory contract
 
-### Three-strain isotype sorter
+### Three-vial sample case
 
-Primary: a broad asymmetric three-lobed sorting table with one reference
-aperture and three separately hinged sample leaves.
+Primary: a recognizable indigo field case holding three transparent, capped
+sample vials labelled `128`, `129` and `130`; QG130 is picked out in coral.
 
-Companion: a tall three-level registry tower with unequal drawers and a
-separate reference lens.
+Companion: the same case and vial arrangement at worm-appropriate scale and
+the same viewing angle.
 
-### Two-August forest chronometer
+### 2 August field tag
 
-Primary: a wide date wheel reading `02 AUG 2009`, joined to a small forest
-aperture and environmental-data shutters.
+Primary: a large tied field-specimen tag with a reinforced eyelet, cord,
+folded corner and the clearly separated date `02 AUG 2009`.
 
-Companion: a tall pendulum clock with separate day, month and year windows and
-three closed measurement leaves.
+Companion: the same tied tag at worm-appropriate scale and orientation.
 
-### Eleven-metre forest-floor transect lens
+### 11 m tape measure
 
-Primary: a broad low transect frame with an 11 m elevation dial, leaf-litter
-cross-section and coordinate cursor.
+Primary: a recognizable retractable field tape measure with a contoured
+indigo case, grip, lock button, yellow marked tape, end hook and `11 m` badge.
 
-Companion: a tall hinged survey lens with a hanging 11 m weight and stepped
-forest-floor profile.
+Companion: the same tape measure at worm-appropriate scale and orientation.
 
 The buttons omit the strain code. Internal IDs may retain it.
 
@@ -97,6 +95,6 @@ The buttons omit the strain code. Internal IDs may retain it.
 
 ## Implementation status
 
-Implemented and validated on 2026-07-28 with the preserved source PNG,
-optimized WebP, evidence-bounded low-forest composition and six bespoke
-independently movable accessory drawings.
+Environment implemented and validated on 2026-07-28. Accessories were
+redesigned on 2026-08-10 as three recognizable, brightly coloured field
+objects, with matching orientation and proportions across both worms.

@@ -9,9 +9,9 @@ const SVG_NS = "http://www.w3.org/2000/svg";
 const rows = [
   ["inopinata", "Ishigaki, Japan", "fig UV visors", "fig-fascinator", "field specimen baskets", "sample-pannier", "fig-wasp wings", "wings"],
   ["briggsae", "Ahmedabad, India · AF16", "lattice fans", "lattice-fan", "kite rigs", "kite-rig", "soil kits", "soil-kit"],
-  ["briggsae", "Taipei, Taiwan · BRC20390", "two-photo provenance viewer", "brc20390-two-photo-provenance-viewer", "eleven-strain isotype constellation", "brc20390-eleven-strain-isotype-constellation", "Taipei 174 m forest-record inclinometer", "taipei-174m-forest-record-inclinometer"],
-  ["briggsae", "Kerala, India · JU1337", "rotting-material recovery carousel", "ju1337-rotting-material-recovery-carousel", "sixteen-December field calendar", "ju1337-sixteen-december-field-calendar", "Poovar agricultural-edge ledger", "poovar-agricultural-edge-ledger"],
-  ["briggsae", "Kauaʻi, Hawaiʻi · QG130", "three-strain isotype sorter", "qg130-three-strain-isotype-sorter", "two-August forest chronometer", "qg130-two-august-forest-chronometer", "eleven-metre forest-floor transect lens", "qg130-eleven-metre-forest-floor-transect"],
+  ["briggsae", "Taipei, Taiwan · BRC20390", "field cameras", "brc20390-two-photo-provenance-viewer", "eleven-sample carriers", "brc20390-eleven-strain-isotype-constellation", "174 m altimeters", "taipei-174m-forest-record-inclinometer"],
+  ["briggsae", "Kerala, India · JU1337", "sample jars", "ju1337-rotting-material-recovery-carousel", "16 December calendars", "ju1337-sixteen-december-field-calendar", "field notebooks", "poovar-agricultural-edge-ledger"],
+  ["briggsae", "Kauaʻi, Hawaiʻi · QG130", "three-vial sample case", "qg130-three-strain-isotype-sorter", "2 August field tag", "qg130-two-august-forest-chronometer", "11 m tape measure", "qg130-eleven-metre-forest-floor-transect"],
   ["briggsae", "Réunion Island · JU1375", "mollusk-substrate inspection theatre", "ju1375-mollusk-substrate-inspection", "year-turn collection chronometer", "ju1375-year-turn-collection-chronometer", "123-metre agricultural-land altimeter", "ju1375-agricultural-land-altimeter"],
   ["briggsae", "Orsay, France · JU2518", "rotten-apple decay rotoscope", "ju2518-rotten-apple-decay-rotoscope", "Santeuil-virus association spectroscope", "ju2518-virus-association-spectroscope", "six-September garden field ledger", "ju2518-six-september-garden-ledger"],
   ["briggsae", "Dois Rios, Ilha Grande, Brazil · EG5612", "jackfruit emergence theatre", "eg5612-jackfruit-emergence-theatre", "shared-bag provenance bifurcator", "eg5612-shared-bag-provenance-bifurcator", "single-larva test-cross gate", "eg5612-single-larva-test-cross-gate"],
@@ -3894,82 +3894,44 @@ function drawKauaiQG130Accessory(group, item, companion) {
   };
 
   if (item.family === "qg130-three-strain-isotype-sorter") {
-    if (companion) {
-      path(group, "M-43-84H34L48 72H-50Z", "qg130-registry-tower");
-      [[-55,-25,26],[-19,-31,31],[19,-24,24]].forEach(([cy,x,w], index) => {
-        path(group, `M${x} ${cy-13}H${x+w}V${cy+13}H${x}Z`, index === 1 ? "qg130-registry-drawer reference" : "qg130-registry-drawer");
-      });
-      line(group, "M-3-68V46", "qg130-sorter-spine");
-      add(group, "circle", { class: "qg130-reference-lens", cx: 44, cy: -43, r: 19 });
-      add(group, "circle", { class: "qg130-reference-core", cx: 44, cy: -43, r: 8 });
-      path(group, "M-27 47H28L21 72H-34Z", "qg130-registry-base");
-      text("3", -3, 66, "qg130-number");
-    } else {
-      path(group, "M-109 23H106V71H-109Z", "qg130-sorter-table");
-      const leaves = [
-        "M-93-12Q-75-57-27-53L-14-8Q-53 9-93-12Z",
-        "M-19-56Q23-70 51-38L25 2Q-4-4-19-56Z",
-        "M41-32Q79-45 99-8Q73 17 34 5Z"
-      ];
-      leaves.forEach((d, index) => path(group, d, index === 1 ? "qg130-sorter-leaf reference" : "qg130-sorter-leaf"));
-      [[-52,-28],[16,-34],[68,-10]].forEach(([cx,cy], index) => add(group, "circle", {
-        class: index === 1 ? "qg130-sample-port reference" : "qg130-sample-port", cx, cy, r: index === 1 ? 12 : 9
-      }));
-      line(group, "M-14-8L-2 22M25 2L17 25M34 5L44 27", "qg130-leaf-hinge");
-      path(group, "M-81 71H78L69 94H-89Z", "qg130-index-plate");
-      text("THREE-STRAIN ISOTYPE", -6, 87, "qg130-small-label");
-    }
+    const caseGroup = add(group, "g", { transform: `scale(${companion ? .78 : 1})` });
+    path(caseGroup, "M-92-10Q-92-27-75-27H75Q92-27 92-10V61Q92 76 77 76H-77Q-92 76-92 61Z", "qg130-case-shell");
+    path(caseGroup, "M-66-28V-47Q-66-59-54-59H54Q66-59 66-47V-28", "qg130-case-handle");
+    path(caseGroup, "M-82-13H82V1H-82Z", "qg130-case-lip");
+    [-51, 0, 51].forEach((cx, index) => {
+      path(caseGroup, `M${cx-16}-1H${cx+16}L${cx+12}50Q${cx+10}61 ${cx}61Q${cx-10}61 ${cx-12}50Z`, index === 2 ? "qg130-vial reference" : "qg130-vial");
+      path(caseGroup, `M${cx-18}-9H${cx+18}V4H${cx-18}Z`, index === 2 ? "qg130-vial-cap reference" : "qg130-vial-cap");
+      path(caseGroup, `M${cx-11}27H${cx+11}V45H${cx-11}Z`, "qg130-vial-label");
+      text(index === 2 ? "130" : `${128 + index}`, cx, 41, "qg130-vial-number");
+    });
+    path(caseGroup, "M-75 67H75", "qg130-case-highlight");
     return true;
   }
 
   if (item.family === "qg130-two-august-forest-chronometer") {
-    if (companion) {
-      path(group, "M-39-84H34L48 72H-48Z", "qg130-clock-case");
-      add(group, "circle", { class: "qg130-clock-face", cx: -2, cy: -44, r: 29 });
-      text("02", -2, -35, "qg130-date-number");
-      line(group, "M-2-14V31", "qg130-pendulum-line");
-      add(group, "circle", { class: "qg130-pendulum", cx: -2, cy: 42, r: 13 });
-      path(group, "M30-67H61V-38H30ZM31-29H61V0H31ZM31 9H61V38H31Z", "qg130-date-windows");
-      text("AUG", 45, -47, "qg130-small-label");
-      text("2009", 46, -9, "qg130-small-label");
-      text("ND", 46, 29, "qg130-small-label");
-    } else {
-      path(group, "M-108 24H106V71H-108Z", "qg130-chronometer-bed");
-      add(group, "circle", { class: "qg130-date-wheel", cx: -56, cy: -18, r: 43 });
-      text("02", -56, -6, "qg130-date-number");
-      path(group, "M-8-49H51V9H-8Z", "qg130-month-window");
-      text("AUG", 22, -12, "qg130-date-label");
-      path(group, "M56-49H98V9H56Z", "qg130-year-window");
-      text("2009", 77, -12, "qg130-small-label");
-      path(group, "M-24 20Q5-1 34 20V54H-24Z", "qg130-forest-window");
-      path(group, "M-16 43Q-7 17 2 38Q14 11 27 43", "qg130-forest-symbol");
-      [53,75,97].forEach(cx => path(group, `M${cx-9} 26H${cx+9}V53H${cx-9}Z`, "qg130-nd-leaf"));
-      text("ND", 75, 46, "qg130-small-label");
-    }
+    const tag = add(group, "g", { transform: `scale(${companion ? .77 : 1}) rotate(-4)` });
+    path(tag, "M-73-73H64L84-51V73H-73Z", "qg130-field-tag");
+    path(tag, "M64-73V-51H84", "qg130-tag-fold");
+    add(tag, "circle", { class: "qg130-tag-eyelet", cx: -52, cy: -53, r: 9 });
+    path(tag, "M-53-62Q-86-95-103-58Q-117-29-88-12", "qg130-tag-cord");
+    path(tag, "M-73-24H84V-2H-73Z", "qg130-tag-band");
+    text("02", -26, -33, "qg130-date-number");
+    text("AUG", 35, -34, "qg130-date-label");
+    text("2009", 4, 24, "qg130-tag-year");
+    path(tag, "M-47 43H53M-47 55H27", "qg130-tag-writing");
     return true;
   }
 
   if (item.family === "qg130-eleven-metre-forest-floor-transect") {
-    if (companion) {
-      path(group, "M-42-83H37L49 72H-50Z", "qg130-survey-frame");
-      path(group, "M-29-64H28V5H-29Z", "qg130-hinged-lens");
-      path(group, "M-22-10Q-7-29 7-12Q17-1 24-16", "qg130-litter-profile");
-      line(group, "M-5-71V38", "qg130-plumb-line");
-      path(group, "M-16 36L-5 59L6 36Z", "qg130-plumb-weight");
-      text("11 m", -5, 77, "qg130-small-label");
-      [-37,-10,17].forEach((cy,index)=>line(group,`M35 ${cy}H${54-index*4}`,"qg130-profile-step"));
-    } else {
-      path(group, "M-109 25H106V72H-109Z", "qg130-transect-table");
-      path(group, "M-96-27Q-42-55 6-31Q51-8 96-34V18Q48 43 0 22Q-48 2-96 25Z", "qg130-litter-section");
-      [-74,-43,-10,24,58,84].forEach((cx,index)=>add(group,"circle",{class:index%2?"qg130-litter-marker accent":"qg130-litter-marker",cx,cy:-12+(index%3)*12,r:4+index%2}));
-      add(group, "circle", { class: "qg130-elevation-dial", cx: -74, cy: -51, r: 26 });
-      text("11", -74, -43, "qg130-number");
-      path(group, "M32-62H94V-20H32Z", "qg130-coordinate-window");
-      line(group, "M41-51H84M41-40H84M41-29H84", "qg130-coordinate-lines");
-      line(group, "M2-47V33M-6-38H10M-6-16H10M-6 7H10", "qg130-transect-cursor");
-      path(group, "M-79 72H79L70 94H-88Z", "qg130-transect-index");
-      text("FOREST · 11 m", -5, 87, "qg130-small-label");
-    }
+    const tape = add(group, "g", { transform: `scale(${companion ? .78 : 1}) rotate(3)` });
+    path(tape, "M-65-56Q-82-45-82-18V38Q-82 58-62 65H28Q55 65 67 43L80 16Q88-4 70-22L42-50Q31-61 13-61H-45Q-56-61-65-56Z", "qg130-tape-case");
+    path(tape, "M-58-42Q-36-59-11-51", "qg130-tape-grip");
+    add(tape, "circle", { class: "qg130-tape-button", cx: 35, cy: -30, r: 15 });
+    path(tape, "M64 4H139V35H65Z", "qg130-measuring-tape");
+    path(tape, "M139 2H153V39H139Z", "qg130-tape-hook");
+    [78,92,106,120,134].forEach((x,index) => line(tape, `M${x} 6V${index % 2 ? 20 : 26}`, "qg130-tape-tick"));
+    text("11 m", 23, 26, "qg130-tape-number");
+    path(tape, "M-67 50Q-22 72 37 57", "qg130-tape-shine");
     return true;
   }
   return false;
@@ -3986,66 +3948,60 @@ function drawKeralaJU1337Accessory(group, item, companion) {
 
   if (item.family === "ju1337-rotting-material-recovery-carousel") {
     if (companion) {
-      path(group, "M-39-83H34L47 71H-48Z", "ju1337-carousel-frame");
-      [-57,-24,9,42].forEach((cy,index)=>path(group,`M${index%2?-24:-31} ${cy}H${index%2?30:23}V${cy+23}H${index%2?-24:-31}Z`,index%2?"ju1337-sample-drawer accent":"ju1337-sample-drawer"));
-      line(group, "M-3-70V56", "ju1337-carousel-shaft");
-      add(group, "circle", { class: "ju1337-recovery-cup", cx: 44, cy: -41, r: 18 });
-      path(group, "M-25 53H30L23 76H-33Z", "ju1337-culture-tray");
+      add(group,"rect",{class:"ju1337-jar-lid",x:-62,y:-72,width:124,height:25,rx:7});
+      add(group,"rect",{class:"ju1337-jar-glass",x:-56,y:-50,width:112,height:118,rx:23});
+      path(group,"M-43 10Q-22-29-2 7Q17-25 37 10Q20 33-2 21Q-23 38-43 10Z","ju1337-jar-fragment leaf");
+      path(group,"M-34 39Q-11 18 10 42Q31 19 43 48Q15 63-12 53Q-29 61-34 39Z","ju1337-jar-fragment fruit");
+      path(group,"M-31 67H31L26 86H-26Z","ju1337-jar-label");
+      text("SAMPLE",0,81,"ju1337-small-label");
     } else {
-      path(group, "M-108 25H105V71H-108Z", "ju1337-sorting-table");
-      add(group, "circle", { class: "ju1337-carousel-disc", cx: 0, cy: -9, r: 65 });
-      const chambers=[[-37,-31],[-34,20],[34,-28],[39,21]];
-      chambers.forEach(([cx,cy],index)=>path(group,`M${cx-23} ${cy-17}Q${cx} ${cy-30} ${cx+23} ${cy-14}Q${cx+19} ${cy+18} ${cx-20} ${cy+16}Z`,index%2?"ju1337-sample-chamber accent":"ju1337-sample-chamber"));
-      add(group, "circle", { class: "ju1337-recovery-cup", cx: 0, cy: -7, r: 17 });
-      line(group, "M0-74V-58M-65-9H-49M0 50V61M49-9H65", "ju1337-carousel-tick");
-      path(group, "M-75 71H75L67 94H-83Z", "ju1337-index-plate");
-      text("FRUIT · LITTER · BARK · SOIL", -4, 87, "ju1337-small-label");
+      add(group,"rect",{class:"ju1337-jar-lid",x:-94,y:-91,width:188,height:32,rx:9});
+      add(group,"rect",{class:"ju1337-jar-glass",x:-85,y:-62,width:170,height:151,rx:31});
+      path(group,"M-67-4Q-39-49-7-2Q21-44 50-1Q28 28-6 17Q-38 36-67-4Z","ju1337-jar-fragment leaf");
+      path(group,"M-60 48Q-30 19 2 51Q36 18 63 58Q28 82-10 68Q-42 82-60 48Z","ju1337-jar-fragment fruit");
+      path(group,"M-51 88H53L46 113H-44Z","ju1337-jar-label");
+      text("PLANT SAMPLE",1,105,"ju1337-small-label");
     }
     return true;
   }
 
   if (item.family === "ju1337-sixteen-december-field-calendar") {
     if (companion) {
-      path(group, "M-39-84H34L48 72H-48Z", "ju1337-date-tower");
-      [["16",-52],["DEC",-17],["2007",18]].forEach(([label,cy],index)=>{path(group,`M-26 ${cy-14}H27V${cy+14}H-26Z`,index===1?"ju1337-date-window accent":"ju1337-date-window");text(label,1,cy+6,index===2?"ju1337-small-label":"ju1337-date-label");});
-      line(group, "M-58-62V29", "ju1337-weight-line");
-      path(group, "M-68 26L-58 48L-48 26Z", "ju1337-elevation-weight");
-      text("34 m", -58, 67, "ju1337-small-label");
-      path(group, "M29 41H59V69H29Z", "ju1337-nd-shutter");
-      text("ND",44,60,"ju1337-small-label");
+      add(group,"rect",{class:"ju1337-calendar-page",x:-69,y:-74,width:138,height:151,rx:12});
+      path(group,"M-69-74H69V-31H-69Z","ju1337-calendar-header");
+      [-42,0,42].forEach(x=>add(group,"circle",{class:"ju1337-calendar-ring",cx:x,cy:-70,r:8}));
+      text("DEC",0,-43,"ju1337-date-label");
+      text("16",0,27,"ju1337-calendar-day");
+      text("2007",0,59,"ju1337-small-label");
     } else {
-      path(group, "M-108 25H105V71H-108Z", "ju1337-calendar-bed");
-      add(group, "circle", { class: "ju1337-date-drum", cx: -48, cy: -17, r: 40 });
-      text("16", -48, -5, "ju1337-date-number");
-      path(group, "M-6-48H50V10H-6Z", "ju1337-month-window");
-      text("DEC",22,-12,"ju1337-date-label");
-      path(group, "M54-48H97V10H54Z", "ju1337-year-window");
-      text("2007",76,-12,"ju1337-small-label");
-      add(group, "circle", { class: "ju1337-elevation-wheel", cx: 34, cy: 41, r: 25 });
-      text("34 m",34,47,"ju1337-small-label");
-      path(group, "M-87 50H-17L-24 75H-94Z", "ju1337-singleton-latch");
-      text("SINGLETON", -56, 67, "ju1337-small-label");
+      add(group,"rect",{class:"ju1337-calendar-page",x:-102,y:-91,width:204,height:190,rx:16});
+      path(group,"M-102-91H102V-38H-102Z","ju1337-calendar-header");
+      [-66,-22,22,66].forEach(x=>add(group,"circle",{class:"ju1337-calendar-ring",cx:x,cy:-87,r:10}));
+      text("DECEMBER",0,-53,"ju1337-date-label");
+      text("16",0,39,"ju1337-calendar-day");
+      text("2007",0,78,"ju1337-date-label");
+      add(group,"circle",{class:"ju1337-calendar-badge",cx:91,cy:89,r:28});
+      text("34 m",91,95,"ju1337-small-label");
     }
     return true;
   }
 
   if (item.family === "poovar-agricultural-edge-ledger") {
     if (companion) {
-      path(group, "M-40-83H35L48 72H-49Z", "ju1337-ledger-cabinet");
-      path(group, "M-27-66H27V-15H-27Z", "ju1337-field-aperture");
-      path(group, "M-21-22Q-11-51 0-27Q14-53 22-22", "ju1337-field-symbol");
-      path(group, "M30-65H59V13H30Z", "ju1337-coordinate-scroll");
-      line(group, "M36-51H53M36-38H53M36-25H53M36-12H53", "ju1337-scroll-line");
-      [-7,22,51].forEach((cy,index)=>path(group,`M-61 ${cy}H-29V${cy+20}H-61Z`,"ju1337-blank-drawer"));
-      text("ND", -45, 46, "ju1337-small-label");
+      add(group,"rect",{class:"ju1337-notebook-cover",x:-67,y:-80,width:134,height:158,rx:12});
+      path(group,"M-49-63H51V60H-49Z","ju1337-notebook-page");
+      [-47,-20,7,34].forEach(y=>line(group,`M-36 ${y}H39`,`ju1337-notebook-line`));
+      path(group,"M-18 19Q0-24 19 18Q1 43-18 19Z","ju1337-notebook-leaf");
+      [-60,-30,0,30,60].forEach(y=>add(group,"circle",{class:"ju1337-notebook-ring",cx:-67,cy:y,r:5}));
+      path(group,"M53-68L70-56L16 65L0 68Z","ju1337-notebook-pen");
     } else {
-      path(group, "M-109 25H106V72H-109Z", "ju1337-ledger-table");
-      path(group, "M-95-52H57V23H-95Z", "ju1337-field-board");
-      [-65,-27,12,47].forEach((x,index)=>path(group,`M${x-18} ${-35+index%2*11}Q${x} ${-52+index%2*9} ${x+18} ${-34+index%2*12}Q${x} ${-14+index%2*8} ${x-18} ${-35+index%2*11}Z`,index%2?"ju1337-bed accent":"ju1337-bed"));
-      add(group, "circle", { class: "ju1337-compass", cx: 79, cy: -30, r: 26 });
-      line(group, "M79-50V-10M59-30H99M79-30L91-44", "ju1337-compass-line");
-      [37,67,97].forEach(cx=>path(group,`M${cx-11} 29H${cx+11}V56H${cx-11}Z`,"ju1337-nd-shutter"));
-      text("ND",67,49,"ju1337-small-label");
+      add(group,"rect",{class:"ju1337-notebook-cover",x:-103,y:-92,width:206,height:184,rx:16});
+      path(group,"M-78-70H78V68H-78Z","ju1337-notebook-page");
+      [-52,-23,6,35].forEach(y=>line(group,`M-58 ${y}H58`,`ju1337-notebook-line`));
+      path(group,"M-27 21Q0-41 29 19Q2 55-27 21Z","ju1337-notebook-leaf");
+      [-69,-35,0,35,69].forEach(y=>add(group,"circle",{class:"ju1337-notebook-ring",cx:-103,cy:y,r:7}));
+      path(group,"M83-78L104-63L25 82L4 87Z","ju1337-notebook-pen");
+      text("FIELD NOTES",0,-74,"ju1337-small-label");
     }
     return true;
   }
@@ -4060,73 +4016,72 @@ function drawTaipeiBRC20390Accessory(group, item, companion) {
     const node = add(group, "text", { class: className, x, y, "text-anchor": "middle" });
     node.textContent = value;
   };
-  const fragment = (parent, d, className = "brc20390-fragment") => path(parent, d, className);
-
   if (item.family === "brc20390-two-photo-provenance-viewer") {
     if (companion) {
-      path(group, "M-43-84H37L49 72H-51Z", "brc20390-slide-cabinet");
-      path(group, "M-29-67H28V-13H-29ZM-22 1H35V49H-22Z", "brc20390-image-window");
-      fragment(group, "M-19-48Q-5-66 15-49Q23-32 5-24Q-14-28-19-48Z");
-      fragment(group, "M-10 18Q5 3 25 19Q30 36 12 42Q-7 38-10 18Z", "brc20390-fragment accent");
-      path(group, "M28-62H55V-22H28ZM34 8H60V42H34Z", "brc20390-shutter");
-      path(group, "M-33 53H31L24 76H-39Z", "brc20390-reference-drawer");
-      text("REF", -4, 69, "brc20390-small-label");
+      path(group, "M-67-31Q0-91 67-31", "brc20390-camera-strap");
+      add(group, "rect", { class: "brc20390-camera-body", x: -71, y: -37, width: 142, height: 88, rx: 16 });
+      path(group, "M-39-37L-21-59H22L40-37Z", "brc20390-camera-prism");
+      add(group, "circle", { class: "brc20390-camera-lens", cx: 9, cy: 8, r: 31 });
+      add(group, "circle", { class: "brc20390-camera-glass", cx: 9, cy: 8, r: 19 });
+      add(group, "rect", { class: "brc20390-camera-flash", x: -53, y: -20, width: 21, height: 16, rx: 3 });
+      path(group, "M50-30H76V42H50Z", "brc20390-camera-grip");
+      add(group, "circle", { class: "brc20390-camera-button", cx: 56, cy: -29, r: 5 });
     } else {
-      path(group, "M-108 21H105V70H-108Z", "brc20390-light-table");
-      path(group, "M-95-52H-6V28H-95ZM8-44H95V28H8Z", "brc20390-image-window");
-      fragment(group, "M-76-31Q-55-54-29-34Q-20-12-44 6Q-70 4-76-31Z");
-      fragment(group, "M26-25Q47-45 76-23Q87 1 62 16Q32 13 26-25Z", "brc20390-fragment accent");
-      line(group, "M0-59V38M-7-49H7M-7-24H7M-7 2H7", "brc20390-hinge");
-      path(group, "M-70 70H74L66 94H-78Z", "brc20390-index-tab");
-      text("TWO SOURCE PHOTOS", -2, 87, "brc20390-small-label");
+      path(group, "M-94-38Q0-122 94-38", "brc20390-camera-strap");
+      path(group, "M-112-48H-56L-35-72H38L59-48H112V68H-112Z", "brc20390-camera-body");
+      path(group, "M-40-48L-18-82H27L49-48Z", "brc20390-camera-prism");
+      add(group, "circle", { class: "brc20390-camera-lens", cx: 9, cy: 10, r: 43 });
+      add(group, "circle", { class: "brc20390-camera-glass", cx: 9, cy: 10, r: 27 });
+      add(group, "rect", { class: "brc20390-camera-flash", x: -88, y: -25, width: 31, height: 23, rx: 4 });
+      path(group, "M78-37H121V58H78Z", "brc20390-camera-grip");
+      add(group, "circle", { class: "brc20390-camera-button", cx: 91, cy: -40, r: 7 });
+      path(group, "M-76 69H76L69 88H-69Z", "brc20390-photo-tab");
+      text("2 PHOTOS", 0, 83, "brc20390-small-label");
     }
     return true;
   }
 
   if (item.family === "brc20390-eleven-strain-isotype-constellation") {
     if (companion) {
-      path(group, "M-40-84H35L48 72H-48Z", "brc20390-registry");
-      const tabs = [[-25,-61],[-2,-66],[20,-51],[-21,-33],[5,-34],[24,-15],[-24,-4],[1,2],[22,18],[-17,27],[8,37]];
-      tabs.forEach(([cx,cy],index)=>path(group,`M${cx-8} ${cy-7}H${cx+8}V${cy+7}H${cx-8}Z`,index===7?"brc20390-node reference":"brc20390-node"));
-      path(group, "M-26 48H31V69H-26Z", "brc20390-reference-window");
-      text("REFERENCE", 2, 63, "brc20390-small-label");
-      add(group, "circle", { class: "brc20390-rotor", cx: 51, cy: -42, r: 17 });
-      line(group, "M51-42L61-53", "brc20390-rotor-hand");
-    } else {
-      path(group, "M-109 24H106V71H-109Z", "brc20390-network-table");
-      const nodes = [[-86,-32],[-61,-51],[-48,-7],[-22,-38],[-5,8],[18,-47],[35,-11],[60,-43],[83,-18],[66,15],[17,19]];
-      nodes.forEach(([cx,cy],index)=>{
-        if(index!==4) line(group,`M-5 8L${cx} ${cy}`,"brc20390-link");
-        add(group,"circle",{class:index===4?"brc20390-node reference":"brc20390-node",cx,cy,r:index===4?13:8});
+      path(group, "M-82-48H82V63H-82Z", "brc20390-sample-case");
+      path(group, "M-69-64H69L82-48H-82Z", "brc20390-case-handle");
+      [[-55,-25],[-27,-25],[1,-25],[29,-25],[57,-25],[-55,18],[-27,18],[1,18],[29,18],[57,18],[1,55]].forEach(([cx,cy],index)=>{
+        add(group,"rect",{class:index===10?"brc20390-vial reference":"brc20390-vial",x:cx-9,y:cy-15,width:18,height:31,rx:6});
+        add(group,"rect",{class:"brc20390-vial-cap",x:cx-10,y:cy-18,width:20,height:7,rx:2});
       });
-      add(group, "circle", { class: "brc20390-reference-ring", cx: -5, cy: 8, r: 21 });
-      text("11", -5, 14, "brc20390-node-number");
-      path(group, "M-82 70H81L73 92H-89Z", "brc20390-registry-plate");
-      text("ONE ISOTYPE", -4, 85, "brc20390-small-label");
+      add(group, "circle", { class: "brc20390-count-badge", cx: 66, cy: 60, r: 20 });
+      text("11", 66, 67, "brc20390-node-number");
+    } else {
+      path(group, "M-126-64H126V75H-126Z", "brc20390-sample-case");
+      path(group, "M-92-82H92L111-64H-111Z", "brc20390-case-handle");
+      [[-96,-30],[-58,-30],[-20,-30],[18,-30],[56,-30],[94,-30],[-77,27],[-39,27],[-1,27],[37,27],[75,27]].forEach(([cx,cy],index)=>{
+        add(group,"rect",{class:index===8?"brc20390-vial reference":"brc20390-vial",x:cx-12,y:cy-22,width:24,height:44,rx:8});
+        add(group,"rect",{class:"brc20390-vial-cap",x:cx-13,y:cy-27,width:26,height:9,rx:3});
+      });
+      add(group, "circle", { class: "brc20390-count-badge", cx: 103, cy: 69, r: 27 });
+      text("11", 103, 77, "brc20390-node-number");
     }
     return true;
   }
 
   if (item.family === "taipei-174m-forest-record-inclinometer") {
     if (companion) {
-      path(group, "M-39-84H35L48 72H-48Z", "brc20390-surveyor-frame");
-      line(group, "M-2-68V31", "brc20390-pendulum-line");
-      path(group, "M-14 29L-2 54L10 29Z", "brc20390-counterweight");
-      text("174 m", -2, 76, "brc20390-small-label");
-      path(group, "M30-63H61V-4H30Z", "brc20390-coordinate-scroll");
-      line(group, "M36-49H55M36-37H55M36-25H55M36-13H55", "brc20390-scroll-line");
-      [-43,-13,17].forEach((cy,index)=>path(group,`M-59 ${cy}H-29V${cy+19}H-59Z`,"brc20390-nd-drawer"));
-      text("ND", -44, -30, "brc20390-small-label");
+      path(group, "M-34-83H34V-57H-34ZM-34 57H34V83H-34Z", "brc20390-altimeter-strap");
+      add(group, "circle", { class: "brc20390-altimeter-case", cx: 0, cy: 0, r: 62 });
+      add(group, "circle", { class: "brc20390-altimeter-face", cx: 0, cy: 0, r: 47 });
+      [-120,-60,0,60,120].forEach(angle=>add(group,"line",{class:"brc20390-altimeter-tick",x1:0,y1:-39,x2:0,y2:-48,transform:`rotate(${angle})`}));
+      line(group, "M0 4L26-25", "brc20390-altimeter-hand");
+      text("174", 0, 18, "brc20390-altimeter-number");
+      text("m", 0, 36, "brc20390-small-label");
     } else {
-      path(group, "M-108 27H105V72H-108Z", "brc20390-inclinometer-bed");
-      path(group, "M-91 13L80-41L91 13Z", "brc20390-slope-aperture");
-      line(group, "M-81 5L72-43M-47-6V8M-10-18V8M28-30V8M65-41V8", "brc20390-slope-grid");
-      add(group, "circle", { class: "brc20390-elevation-drum", cx: -72, cy: -34, r: 27 });
-      text("174", -72, -27, "brc20390-node-number");
-      path(group, "M-32-62H34V-17H-32Z", "brc20390-forest-aperture");
-      path(group, "M-25-23Q-12-51 0-27Q13-55 27-22", "brc20390-forest-symbol");
-      [46,70,94].forEach((cx,index)=>path(group,`M${cx-10} 24H${cx+10}V51H${cx-10}Z`,"brc20390-nd-shutter"));
-      text("ND", 70, 44, "brc20390-small-label");
+      path(group, "M-48-111H48V-76H-48ZM-48 77H48V112H-48Z", "brc20390-altimeter-strap");
+      add(group, "circle", { class: "brc20390-altimeter-case", cx: 0, cy: 0, r: 84 });
+      add(group, "circle", { class: "brc20390-altimeter-face", cx: 0, cy: 0, r: 64 });
+      [-150,-120,-90,-60,-30,0,30,60,90,120,150].forEach(angle=>add(group,"line",{class:"brc20390-altimeter-tick",x1:0,y1:-54,x2:0,y2:-65,transform:`rotate(${angle})`}));
+      line(group, "M0 5L39-38", "brc20390-altimeter-hand");
+      text("174", 0, 22, "brc20390-altimeter-number");
+      text("metres", 0, 48, "brc20390-small-label");
+      path(group, "M-91 0L-73-14V14Z", "brc20390-altimeter-crown");
     }
     return true;
   }
@@ -5127,15 +5082,15 @@ function renderPiece(target, item, wormPart) {
     ,"hpt26-ficus-ground-contact-stage": { primary: [385, 142, .43, -2], companion: [14, 132, .30, 3] }
     ,"lingsar-field-to-plate-calendar": { primary: [238, 199, .42, -1], companion: [117, 218, .30, 2] }
     ,"hpt26-hpt27-substrate-diptych": { primary: [382, 270, .39, -1], companion: [30, 291, .28, 2] }
-    ,"brc20390-two-photo-provenance-viewer": { primary: [384, 136, .38, -2], companion: [-8, 119, .29, 3] }
-    ,"brc20390-eleven-strain-isotype-constellation": { primary: [232, 186, .34, 1], companion: [116, 213, .27, -2] }
-    ,"taipei-174m-forest-record-inclinometer": { primary: [382, 258, .34, -1], companion: [195, 294, .27, 2] }
-    ,"ju1337-rotting-material-recovery-carousel": { primary: [382, 137, .37, -2], companion: [-8, 119, .29, 3] }
-    ,"ju1337-sixteen-december-field-calendar": { primary: [233, 185, .34, 1], companion: [115, 213, .27, -2] }
-    ,"poovar-agricultural-edge-ledger": { primary: [381, 258, .34, -1], companion: [195, 294, .27, 2] }
-    ,"qg130-three-strain-isotype-sorter": { primary: [380, 137, .37, -2], companion: [-7, 119, .29, 3] }
-    ,"qg130-two-august-forest-chronometer": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
-    ,"qg130-eleven-metre-forest-floor-transect": { primary: [381, 258, .34, -1], companion: [194, 294, .27, 2] }
+    ,"brc20390-two-photo-provenance-viewer": { primary: [386, 139, .46, -2], companion: [24, 126, .35, 2] }
+    ,"brc20390-eleven-strain-isotype-constellation": { primary: [250, 196, .42, 0], companion: [128, 216, .34, 0] }
+    ,"taipei-174m-forest-record-inclinometer": { primary: [382, 272, .42, -3], companion: [194, 293, .34, 2] }
+    ,"ju1337-rotting-material-recovery-carousel": { primary: [383, 143, .45, -2], companion: [8, 128, .35, 2] }
+    ,"ju1337-sixteen-december-field-calendar": { primary: [246, 196, .43, 1], companion: [126, 217, .34, -1] }
+    ,"poovar-agricultural-edge-ledger": { primary: [379, 271, .42, -2], companion: [194, 292, .34, 2] }
+    ,"qg130-three-strain-isotype-sorter": { primary: [383, 141, .46, -2], companion: [12, 129, .36, 2] }
+    ,"qg130-two-august-forest-chronometer": { primary: [245, 198, .44, 1], companion: [128, 217, .35, -1] }
+    ,"qg130-eleven-metre-forest-floor-transect": { primary: [378, 274, .43, -3], companion: [191, 294, .34, 2] }
     ,"ju1375-mollusk-substrate-inspection": { primary: [380, 137, .37, -2], companion: [-7, 119, .29, 3] }
     ,"ju1375-year-turn-collection-chronometer": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
     ,"ju1375-agricultural-land-altimeter": { primary: [381, 258, .34, -1], companion: [194, 294, .27, 2] }

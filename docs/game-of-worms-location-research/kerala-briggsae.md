@@ -71,29 +71,30 @@ view, with live SVG worms and accessories above it.
 
 ## Accessory contract
 
-### Rotting-material recovery carousel
+### Sample jars
 
-Primary: a broad rotating sorting table with four unequal abstract chambers
-for fruit, litter, bark and soil and one central recovery cup.
+Primary: a large transparent specimen jar with a clearly constructed indigo
+lid, visible abstract green and coral plant fragments, and a separate
+`PLANT SAMPLE` field label.
 
-Companion: a tall four-level carousel with staggered sample drawers and a
-separate lower culture tray.
+Companion: a compact jar in the same upright orientation, with a shorter lid,
+independently arranged plant fragments and its own `SAMPLE` label.
 
-### Sixteen-December field calendar
+### 16 December calendars
 
-Primary: a wide date drum reading `16 DEC 2007`, a 34 m elevation wheel and a
-single-isotype latch.
+Primary: a large tear-off field calendar with visible binding rings, coral
+month header, oversized `16`, `2007` and a separate `34 m` badge.
 
-Companion: a tall calendar tower with separate day, month and year windows,
-one hanging elevation weight and one closed environmental-data shutter.
+Companion: a compact tear-off calendar in the same orientation with its own
+rings and the same exact date, but without the primary's elevation badge.
 
-### Poovar agricultural-edge ledger
+### Field notebooks
 
-Primary: a wide field ledger with anonymous bed silhouettes, one coordinate
-compass and three separate `ND` environmental shutters.
+Primary: a large indigo spiral field notebook with an ivory ruled page,
+abstract leaf specimen, five visible binding rings and a coral pen.
 
-Companion: a tall fold-out survey cabinet with an agricultural-land aperture,
-coordinate scroll and three blank measurement drawers.
+Companion: a compact notebook in the same orientation, with a narrower page,
+independently proportioned binding and its own pen.
 
 The buttons omit the strain code. Internal IDs may retain it.
 
@@ -101,16 +102,16 @@ The buttons omit the strain code. Internal IDs may retain it.
 
 ```js
 "ju1337-rotting-material-recovery-carousel": {
-  primary: [382, 137, .37, -2],
-  companion: [-8, 119, .29, 3]
+  primary: [383, 143, .45, -2],
+  companion: [8, 128, .35, 2]
 },
 "ju1337-sixteen-december-field-calendar": {
-  primary: [233, 185, .34, 1],
-  companion: [115, 213, .27, -2]
+  primary: [246, 196, .43, 1],
+  companion: [126, 217, .34, -1]
 },
 "poovar-agricultural-edge-ledger": {
-  primary: [381, 258, .34, -1],
-  companion: [195, 294, .27, 2]
+  primary: [379, 271, .42, -2],
+  companion: [194, 292, .34, 2]
 }
 ```
 
@@ -128,3 +129,7 @@ Implemented on 2026-07-28 with the preserved source PNG and optimized WebP,
 the evidence-bounded Poovar agricultural-edge composition, and six bespoke
 independently movable accessory drawings. Responsive and interaction QA is
 recorded in the working-session validation notes before publication.
+
+The three miniature brass mechanisms were replaced in August 2026 by large,
+recognizable sample jars, tear-off calendars and spiral field notebooks using
+a teal, indigo, coral and gold material palette.

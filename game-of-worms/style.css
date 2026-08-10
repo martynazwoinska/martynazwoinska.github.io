@@ -4572,117 +4572,119 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   .reunion-ju1375-accessory .ju1375-date-number { font-size: 35px; }
 }
 
-/* Kauaʻi low-forest record: isotype sorting, collection date and elevation transect. */
+/* Kauaʻi low-forest record: three samples, collection date and 11 m elevation. */
 .kauai-qg130-accessory {
-  --qg130-ink: color-mix(in srgb, #263d35 86%, var(--worm-deep));
-  --qg130-brass: color-mix(in srgb, #a8783c 76%, var(--local-secondary));
-  --qg130-brass-light: color-mix(in srgb, #e1c174 78%, var(--paper-strong));
-  --qg130-green: color-mix(in srgb, #527c62 82%, var(--local-primary));
-  --qg130-green-light: color-mix(in srgb, #a8c49c 76%, var(--paper-strong));
-  --qg130-russet: color-mix(in srgb, #85503d 78%, var(--local-tertiary));
-  --qg130-cream: color-mix(in srgb, #eee1b7 84%, var(--paper-strong));
-  --qg130-glass: color-mix(in srgb, #cbe5d8 57%, transparent);
+  --qg130-ink: #24304d;
+  --qg130-indigo: #514ca8;
+  --qg130-violet: #7a58b5;
+  --qg130-aqua: #6fd4cf;
+  --qg130-teal: #168d88;
+  --qg130-coral: #e4587a;
+  --qg130-yellow: #f0bf45;
+  --qg130-ivory: #fff7df;
+  --qg130-glass: rgba(218, 244, 242, .9);
+  filter: drop-shadow(0 5px 4px rgba(31, 39, 71, .26));
 }
 .kauai-qg130-accessory path,
 .kauai-qg130-accessory circle {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.qg130-label,
-.qg130-small-label,
-.qg130-number,
 .qg130-date-label,
-.qg130-date-number {
+.qg130-date-number,
+.qg130-tag-year,
+.qg130-vial-number,
+.qg130-tape-number {
   fill: var(--qg130-ink);
   font-family: var(--font-sans);
   font-weight: 900;
+  text-anchor: middle;
   pointer-events: none;
+  paint-order: stroke;
+  stroke: rgba(255, 247, 223, .86);
+  stroke-width: 2px;
 }
-.qg130-small-label { font-size: 12px; letter-spacing: .08em; }
-.qg130-number { font-size: 25px; }
-.qg130-date-label { font-size: 20px; }
-.qg130-date-number { font-size: 31px; }
-.qg130-registry-tower,
-.qg130-sorter-table,
-.qg130-clock-case,
-.qg130-chronometer-bed,
-.qg130-survey-frame,
-.qg130-transect-table {
-  fill: var(--qg130-brass);
-  stroke: var(--qg130-ink);
-  stroke-width: 4;
-}
-.qg130-registry-drawer,
-.qg130-sorter-leaf,
-.qg130-date-windows,
-.qg130-month-window,
-.qg130-year-window,
-.qg130-hinged-lens,
-.qg130-coordinate-window {
-  fill: var(--qg130-cream);
+.qg130-date-label { font-size: 22px; }
+.qg130-date-number { font-size: 34px; }
+.qg130-tag-year { font-size: 26px; letter-spacing: .08em; }
+.qg130-vial-number { font-size: 10px; stroke-width: 1px; }
+.qg130-tape-number { font-size: 27px; }
+.qg130-case-shell,
+.qg130-field-tag,
+.qg130-tape-case {
+  fill: var(--qg130-indigo);
   stroke: var(--qg130-ink);
   stroke-width: 3.5;
 }
-.qg130-registry-drawer.reference,
-.qg130-sorter-leaf.reference {
-  fill: var(--qg130-green-light);
-}
-.qg130-sorter-spine,
-.qg130-leaf-hinge,
-.qg130-pendulum-line,
-.qg130-plumb-line,
-.qg130-profile-step,
-.qg130-coordinate-lines,
-.qg130-transect-cursor {
+.qg130-case-handle,
+.qg130-tag-cord,
+.qg130-tape-grip,
+.qg130-tape-shine {
   fill: none;
+  stroke: var(--qg130-yellow);
+  stroke-width: 8;
+}
+.qg130-case-lip,
+.qg130-tag-band {
+  fill: var(--qg130-coral);
   stroke: var(--qg130-ink);
   stroke-width: 3;
 }
-.qg130-reference-lens,
-.qg130-clock-face,
-.qg130-date-wheel,
-.qg130-hinged-lens,
-.qg130-elevation-dial {
+.qg130-vial {
   fill: var(--qg130-glass);
+  stroke: var(--qg130-teal);
+  stroke-width: 3;
+}
+.qg130-vial.reference { fill: #fce5ef; stroke: var(--qg130-coral); }
+.qg130-vial-cap {
+  fill: var(--qg130-aqua);
   stroke: var(--qg130-ink);
+  stroke-width: 2.5;
+}
+.qg130-vial-cap.reference { fill: var(--qg130-coral); }
+.qg130-vial-label {
+  fill: var(--qg130-ivory);
+  stroke: var(--qg130-indigo);
+  stroke-width: 1.5;
+}
+.qg130-case-highlight {
+  fill: none;
+  stroke: var(--qg130-aqua);
   stroke-width: 4;
 }
-.qg130-reference-core,
-.qg130-sample-port,
-.qg130-pendulum,
-.qg130-litter-marker {
-  fill: var(--qg130-russet);
+.qg130-tag-fold {
+  fill: var(--qg130-aqua);
   stroke: var(--qg130-ink);
   stroke-width: 3;
 }
-.qg130-sample-port.reference,
-.qg130-litter-marker.accent {
-  fill: var(--qg130-brass-light);
-}
-.qg130-registry-base,
-.qg130-index-plate,
-.qg130-forest-window,
-.qg130-nd-leaf,
-.qg130-plumb-weight,
-.qg130-transect-index {
-  fill: var(--qg130-brass-light);
+.qg130-tag-eyelet,
+.qg130-tape-button {
+  fill: var(--qg130-yellow);
   stroke: var(--qg130-ink);
-  stroke-width: 3.5;
+  stroke-width: 3;
 }
-.qg130-forest-symbol,
-.qg130-litter-profile {
+.qg130-tag-writing {
   fill: none;
-  stroke: var(--qg130-green);
-  stroke-width: 6;
-}
-.qg130-litter-section {
-  fill: color-mix(in srgb, var(--qg130-russet) 66%, var(--qg130-cream));
-  stroke: var(--qg130-ink);
+  stroke: var(--qg130-aqua);
   stroke-width: 4;
+}
+.qg130-measuring-tape {
+  fill: var(--qg130-yellow);
+  stroke: var(--qg130-ink);
+  stroke-width: 3;
+}
+.qg130-tape-hook {
+  fill: var(--qg130-aqua);
+  stroke: var(--qg130-ink);
+  stroke-width: 3;
+}
+.qg130-tape-tick {
+  fill: none;
+  stroke: var(--qg130-ink);
+  stroke-width: 2.5;
 }
 @media (max-width: 600px) {
-  .kauai-qg130-accessory .qg130-small-label { display: none; }
-  .kauai-qg130-accessory .qg130-date-number { font-size: 35px; }
+  .kauai-qg130-accessory .qg130-date-number { font-size: 37px; }
 }
 
 /* Poovar agricultural record: sample sorting, field date and site ledger. */
@@ -4695,6 +4697,12 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   --ju1337-laterite: #a35f3c;
   --ju1337-cream: color-mix(in srgb, #eee1b6 82%, var(--paper-strong));
   --ju1337-glass: color-mix(in srgb, #d9ece2 52%, transparent);
+  --ju1337-teal: #159d98;
+  --ju1337-aqua: #89dfd0;
+  --ju1337-indigo: #5350a8;
+  --ju1337-coral: #ef747b;
+  --ju1337-gold: #f1bd43;
+  --ju1337-ivory: #fff7df;
 }
 .kerala-ju1337-accessory path,
 .kerala-ju1337-accessory circle,
@@ -4714,6 +4722,23 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .ju1337-small-label { font-size: 10px; }
 .ju1337-date-label { font-size: 16px; }
 .ju1337-date-number { font-family: var(--display); font-size: 30px; }
+.ju1337-calendar-day { fill: var(--ju1337-indigo); stroke: none; font-family: var(--display); font-size: 72px; font-weight: 900; text-anchor: middle; }
+.ju1337-jar-lid { fill: var(--ju1337-indigo); stroke: var(--ju1337-ink); stroke-width: 4; }
+.ju1337-jar-glass { fill: color-mix(in srgb, var(--ju1337-aqua) 58%, transparent); stroke: var(--ju1337-ink); stroke-width: 4; }
+.ju1337-jar-fragment { stroke: var(--ju1337-ink); stroke-width: 3; }
+.ju1337-jar-fragment.leaf { fill: var(--ju1337-teal); }
+.ju1337-jar-fragment.fruit { fill: var(--ju1337-coral); }
+.ju1337-jar-label { fill: var(--ju1337-ivory); stroke: var(--ju1337-ink); stroke-width: 3; }
+.ju1337-calendar-page { fill: var(--ju1337-ivory); stroke: var(--ju1337-ink); stroke-width: 4; }
+.ju1337-calendar-header { fill: var(--ju1337-coral); stroke: var(--ju1337-ink); stroke-width: 4; }
+.ju1337-calendar-ring { fill: var(--ju1337-gold); stroke: var(--ju1337-ink); stroke-width: 3; }
+.ju1337-calendar-badge { fill: var(--ju1337-aqua); stroke: var(--ju1337-ink); stroke-width: 3; }
+.ju1337-notebook-cover { fill: var(--ju1337-indigo); stroke: var(--ju1337-ink); stroke-width: 4; }
+.ju1337-notebook-page { fill: var(--ju1337-ivory); stroke: var(--ju1337-teal); stroke-width: 3; }
+.ju1337-notebook-line { fill: none; stroke: var(--ju1337-aqua); stroke-width: 3; }
+.ju1337-notebook-leaf { fill: var(--ju1337-teal); stroke: var(--ju1337-ink); stroke-width: 3; }
+.ju1337-notebook-ring { fill: var(--ju1337-gold); stroke: var(--ju1337-ink); stroke-width: 2; }
+.ju1337-notebook-pen { fill: var(--ju1337-coral); stroke: var(--ju1337-ink); stroke-width: 3; }
 .ju1337-sorting-table,
 .ju1337-calendar-bed,
 .ju1337-ledger-table,
@@ -4792,14 +4817,13 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 
 /* Taipei forest record: source photographs, isotype registry and elevation. */
 .taipei-brc20390-accessory {
-  --brc20390-ink: color-mix(in srgb, #303d3a 84%, var(--worm-deep));
-  --brc20390-brass: color-mix(in srgb, #a27a44 76%, var(--local-secondary));
-  --brc20390-brass-light: color-mix(in srgb, #dcc17e 76%, var(--paper-strong));
-  --brc20390-berry: color-mix(in srgb, #76546c 72%, var(--local-primary));
-  --brc20390-leaf: color-mix(in srgb, #4b705c 78%, var(--local-primary));
-  --brc20390-glass: color-mix(in srgb, #d7e9e2 55%, transparent);
-  --brc20390-cream: color-mix(in srgb, #efe4c3 82%, var(--paper-strong));
-  --brc20390-fragment: #51483d;
+  --brc20390-ink: #173d4d;
+  --brc20390-teal: #1aa6a4;
+  --brc20390-aqua: #8ce1d2;
+  --brc20390-indigo: #514fa6;
+  --brc20390-coral: #ee6f78;
+  --brc20390-gold: #f0bd45;
+  --brc20390-ivory: #fff7df;
 }
 .taipei-brc20390-accessory path,
 .taipei-brc20390-accessory circle,
@@ -4818,87 +4842,30 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   font-weight: 900;
   letter-spacing: .035em;
 }
-.brc20390-small-label { font-size: 10px; }
-.brc20390-node-number { font-family: var(--display); font-size: 22px; }
-.brc20390-light-table,
-.brc20390-network-table,
-.brc20390-inclinometer-bed,
-.brc20390-reference-drawer {
-  fill: var(--brc20390-brass);
-  stroke: var(--brc20390-ink);
-  stroke-width: 3;
-}
-.brc20390-slide-cabinet,
-.brc20390-registry,
-.brc20390-surveyor-frame {
-  fill: color-mix(in srgb, var(--brc20390-brass) 34%, transparent);
-  stroke: var(--brc20390-ink);
-  stroke-width: 4;
-}
-.brc20390-image-window,
-.brc20390-forest-aperture {
-  fill: var(--brc20390-glass);
-  stroke: color-mix(in srgb, var(--brc20390-leaf) 72%, var(--brc20390-ink));
-  stroke-width: 2.4;
-}
-.brc20390-fragment {
-  fill: var(--brc20390-fragment);
-  stroke: var(--brc20390-ink);
-  stroke-width: 2;
-}
-.brc20390-fragment.accent {
-  fill: color-mix(in srgb, var(--brc20390-fragment) 62%, var(--brc20390-berry));
-}
-.brc20390-shutter,
-.brc20390-index-tab,
-.brc20390-reference-window,
-.brc20390-registry-plate,
-.brc20390-coordinate-scroll,
-.brc20390-nd-drawer,
-.brc20390-nd-shutter {
-  fill: var(--brc20390-cream);
-  stroke: var(--brc20390-ink);
-  stroke-width: 2.3;
-}
-.brc20390-hinge,
-.brc20390-link,
-.brc20390-rotor-hand,
-.brc20390-pendulum-line,
-.brc20390-scroll-line,
-.brc20390-slope-grid,
-.brc20390-forest-symbol {
-  fill: none;
-  stroke: var(--brc20390-ink);
-  stroke-width: 2.2;
-}
-.brc20390-link {
-  stroke: color-mix(in srgb, var(--brc20390-brass) 75%, var(--brc20390-ink));
-  stroke-width: 1.8;
-}
-.brc20390-node,
-.brc20390-rotor,
-.brc20390-elevation-drum {
-  fill: var(--brc20390-brass-light);
-  stroke: var(--brc20390-ink);
-  stroke-width: 2.2;
-}
-.brc20390-node.reference,
-.brc20390-reference-ring {
-  fill: var(--brc20390-berry);
-  stroke: var(--brc20390-ink);
-  stroke-width: 2.4;
-}
-.brc20390-reference-ring { fill: none; stroke-width: 3; }
-.brc20390-counterweight {
-  fill: var(--brc20390-berry);
-  stroke: var(--brc20390-ink);
-  stroke-width: 2.2;
-}
-.brc20390-slope-aperture {
-  fill: color-mix(in srgb, var(--brc20390-leaf) 42%, var(--brc20390-cream));
-  stroke: var(--brc20390-ink);
-  stroke-width: 2.5;
-}
+.brc20390-small-label { font-size: 12px; }
+.brc20390-node-number,
+.brc20390-altimeter-number { font-family: var(--display); font-size: 26px; }
+.brc20390-camera-strap { fill: none; stroke: var(--brc20390-coral); stroke-width: 9; }
+.brc20390-camera-body { fill: var(--brc20390-teal); stroke: var(--brc20390-ink); stroke-width: 4; }
+.brc20390-camera-prism,
+.brc20390-camera-grip { fill: var(--brc20390-indigo); stroke: var(--brc20390-ink); stroke-width: 4; }
+.brc20390-camera-lens { fill: var(--brc20390-ivory); stroke: var(--brc20390-ink); stroke-width: 4; }
+.brc20390-camera-glass { fill: var(--brc20390-aqua); stroke: var(--brc20390-indigo); stroke-width: 4; }
+.brc20390-camera-flash { fill: var(--brc20390-gold); stroke: var(--brc20390-ink); stroke-width: 3; }
+.brc20390-camera-button { fill: var(--brc20390-coral); stroke: var(--brc20390-ink); stroke-width: 2; }
+.brc20390-photo-tab { fill: var(--brc20390-ivory); stroke: var(--brc20390-ink); stroke-width: 3; }
+.brc20390-sample-case { fill: var(--brc20390-indigo); stroke: var(--brc20390-ink); stroke-width: 4; }
+.brc20390-case-handle { fill: var(--brc20390-gold); stroke: var(--brc20390-ink); stroke-width: 4; }
+.brc20390-vial { fill: var(--brc20390-aqua); stroke: var(--brc20390-ink); stroke-width: 2.5; }
+.brc20390-vial.reference { fill: var(--brc20390-coral); }
+.brc20390-vial-cap { fill: var(--brc20390-ivory); stroke: var(--brc20390-ink); stroke-width: 2; }
+.brc20390-count-badge { fill: var(--brc20390-gold); stroke: var(--brc20390-ink); stroke-width: 3; }
+.brc20390-altimeter-strap { fill: var(--brc20390-coral); stroke: var(--brc20390-ink); stroke-width: 4; }
+.brc20390-altimeter-case { fill: var(--brc20390-indigo); stroke: var(--brc20390-ink); stroke-width: 4; }
+.brc20390-altimeter-face { fill: var(--brc20390-ivory); stroke: var(--brc20390-teal); stroke-width: 4; }
+.brc20390-altimeter-tick,
+.brc20390-altimeter-hand { fill: none; stroke: var(--brc20390-ink); stroke-width: 4; }
+.brc20390-altimeter-crown { fill: var(--brc20390-gold); stroke: var(--brc20390-ink); stroke-width: 3; }
 @media (max-width: 600px) {
   .taipei-brc20390-accessory .brc20390-small-label { display: none; }
   .taipei-brc20390-accessory .brc20390-node-number { font-size: 28px; }

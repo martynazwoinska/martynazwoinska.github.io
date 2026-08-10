@@ -119,42 +119,44 @@ Forbidden:
 
 ## Accessory contract
 
-### Two-photo provenance viewer
+### Field cameras
 
 Scientific basis: the CaeNDR page links two BRC20390 source photographs.
 
-Primary: a broad hinged light table with two unequal image windows, an
-`BRC20390` index tab and abstract dark fragment silhouettes.
+Primary: a large teal field camera with a clear lens, flash, grip, shutter
+button and coral neck strap. A small `2 PHOTOS` tab records the two source
+images without copying their content.
 
-Companion: a tall twin-slide cabinet with vertically staggered windows,
-independent shutters and a small reference-strain drawer.
+Companion: a compact camera in the same orientation, with the same identifiable
+lens, flash, grip, shutter and strap construction.
 
 The drawings represent the existence and composition of the two source
 photographs, not copied photographs or identified substrate.
 
-### Eleven-strain isotype constellation
+### Eleven-sample carriers
 
 Scientific basis: CaeNDR lists eleven strains in the BRC20390 isotype.
 
-Primary: a wide brass network table with one central reference-strain hub and
-ten unequal satellite nodes linked in an asymmetric genomic constellation.
+Primary: a broad indigo field case holding eleven clearly separated capped
+sample vials in two rows. One coral vial marks the reference strain and a large
+`11` badge makes the recorded set size legible.
 
-Companion: a tall rotating registry with eleven independently placed tabs and
-one highlighted BRC20390 reference window.
+Companion: a compact handled carrier with the same eleven-vial construction,
+one independently positioned coral reference vial and its own count badge.
 
 Do not imply that the eleven strains came from one sample or location.
 
-### Taipei 174 m forest-record inclinometer
+### 174 m altimeters
 
 Scientific basis: the reference record gives a forest landscape, 174 m
 elevation and exact coordinate, while substrate and environmental measurements
 are ND.
 
-Primary: a wide slope inclinometer with a 174 m elevation drum, forest-field
-aperture and three closed `ND` shutters.
+Primary: a large analogue wrist altimeter with a coral strap, indigo case,
+graduated ivory dial, readable pointer and central `174 metres` display.
 
-Companion: a tall pendulum surveyor with coordinate scroll, 174 m counterweight
-and three separate blank measurement drawers.
+Companion: a compact analogue wrist altimeter in the same orientation, with a
+shorter strap, fewer readable tick marks and a central `174 m` display.
 
 The slope is an illustrative reading device, not a measured terrain angle.
 
@@ -162,16 +164,16 @@ The slope is an illustrative reading device, not a measured terrain angle.
 
 ```js
 "brc20390-two-photo-provenance-viewer": {
-  primary: [384, 136, .38, -2],
-  companion: [-8, 119, .29, 3]
+  primary: [386, 139, .46, -2],
+  companion: [24, 126, .35, 2]
 },
 "brc20390-eleven-strain-isotype-constellation": {
-  primary: [232, 186, .34, 1],
-  companion: [116, 213, .27, -2]
+  primary: [250, 196, .42, 0],
+  companion: [128, 216, .34, 0]
 },
 "taipei-174m-forest-record-inclinometer": {
-  primary: [382, 258, .34, -1],
-  companion: [195, 294, .27, 2]
+  primary: [382, 272, .42, -3],
+  companion: [194, 293, .34, 2]
 }
 ```
 
@@ -196,8 +198,9 @@ Implemented and browser-checked on 28 July 2026:
   PNG were added;
 - the marker source, strain history, profile note and CaeNDR link were aligned
   with the reference-isotype record;
-- the three evidence-led mechanisms above replaced the spectacles, fan and
-  fiddle, with six structurally distinct movable drawings;
+- the former miniature evidence-led mechanisms were replaced in August 2026
+  by large, recognizable field cameras, eleven-vial carriers and analogue
+  altimeters, with a brighter teal, indigo, coral and gold material palette;
 - the scene plaque and accessory buttons omit the strain code under the
   Game-wide visible-label rule;
 - all six pieces passed direct pointer drag, Arrow and Shift+Arrow movement,
