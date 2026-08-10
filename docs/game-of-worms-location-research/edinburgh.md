@@ -83,8 +83,8 @@ The tumbler translates the representative microhabitat into a movable play objec
 
 The Royal Observatory on Blackford Hill is the landscape's clearest local landmark. The telescope is a playful regional research cue, not claimed equipment from the ED3010 collection.
 
-- **Primary:** large indigo refracting telescope angled upward, with turquoise barrel, gold mounting axis, visible lens and eyepiece, stable three-legged tripod and `BLACKFORD` plate.
-- **Companion:** shorter telescope in the same orientation with independently proportioned barrel, lens housing and tripod.
+- **Primary:** large upward-angled refracting telescope with a navy optical tube, turquoise dew shield, visible objective lens, focuser, eyepiece, finder scope, twin tube rings, equatorial-style axis and counterweight, stable spreader-braced tripod and `BLACKFORD` plate.
+- **Companion:** shorter refractor in the same orientation with independently proportioned tube, dew shield, objective, focuser, finder, mounting axis, counterweight and braced tripod.
 - Both copies read as complete optical instruments and remain clear of the worm faces.
 
 ### Edinburgh tartan kilts

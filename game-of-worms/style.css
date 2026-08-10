@@ -4947,6 +4947,29 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .elegans-field-redesign .efr-telescope-tube { fill:var(--efr-primary); }
 .elegans-field-redesign .efr-telescope-lens { fill:var(--efr-secondary); }
 .elegans-field-redesign .efr-telescope-eye { fill:var(--efr-accent); }
+.elegans-field-redesign .efr-scope-tube { fill:#315d72; stroke:var(--efr-ink); stroke-width:4; }
+.elegans-field-redesign .efr-scope-dew-shield { fill:#269b9b; stroke:var(--efr-ink); stroke-width:4; }
+.elegans-field-redesign .efr-scope-objective-rim { fill:var(--efr-gold); stroke:var(--efr-ink); stroke-width:3; }
+.elegans-field-redesign .efr-scope-objective { fill:#bce8e5; stroke:#32556b; stroke-width:2.5; }
+.elegans-field-redesign .efr-scope-lens-glint { fill:none; stroke:rgba(255,255,255,.9); stroke-width:3; stroke-linecap:round; }
+.elegans-field-redesign .efr-scope-focuser { fill:#873449; stroke:var(--efr-ink); stroke-width:3; }
+.elegans-field-redesign .efr-scope-eyepiece { fill:#23394a; stroke:var(--efr-ink); stroke-width:3; }
+.elegans-field-redesign .efr-scope-ring { fill:#d1ad5e; stroke:var(--efr-ink); stroke-width:2.5; }
+.elegans-field-redesign .efr-finder-tube { fill:#5ac8c1; stroke:var(--efr-ink); stroke-width:3; }
+.elegans-field-redesign .efr-finder-lens { fill:#d9f4ef; stroke:var(--efr-ink); stroke-width:2; }
+.elegans-field-redesign .efr-finder-bracket { fill:none; stroke:#d1ad5e; stroke-width:4; stroke-linecap:round; }
+.elegans-field-redesign .efr-scope-highlight { fill:none; stroke:rgba(255,255,255,.58); stroke-width:3.5; stroke-linecap:round; }
+.elegans-field-redesign .efr-mount-saddle { fill:#873449; stroke:var(--efr-ink); stroke-width:4; stroke-linejoin:round; }
+.elegans-field-redesign .efr-mount-axis { fill:#d1ad5e; stroke:var(--efr-ink); stroke-width:3; }
+.elegans-field-redesign .efr-counterweight-shaft { fill:none; stroke:#294f63; stroke-width:7; stroke-linecap:round; }
+.elegans-field-redesign .efr-counterweight-shaft.primary { stroke-width:9; }
+.elegans-field-redesign .efr-counterweight { fill:#873449; stroke:var(--efr-ink); stroke-width:3; }
+.elegans-field-redesign .efr-focus-knob { fill:#5ac8c1; stroke:var(--efr-ink); stroke-width:2.5; }
+.elegans-field-redesign .efr-tripod-hub { fill:#315d72; stroke:var(--efr-ink); stroke-width:4; stroke-linejoin:round; }
+.elegans-field-redesign .efr-tripod-spreader { fill:none; stroke:#d1ad5e; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; }
+.elegans-field-redesign .efr-scope-plate { fill:#d9f4ef; stroke:var(--efr-ink); stroke-width:3; stroke-linejoin:round; }
+.elegans-field-redesign .efr-telescope-label { fill:#23394a; font:900 13px/1 var(--sans); letter-spacing:.045em; }
+.elegans-field-redesign .efr-telescope-label.primary { font-size:15px; }
 .elegans-field-redesign .efr-kilt { fill:var(--efr-primary); }
 .elegans-field-redesign .efr-waistband { fill:var(--efr-accent); }
 .elegans-field-redesign .efr-sporran { fill:var(--efr-ivory); }
