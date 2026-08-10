@@ -30,7 +30,7 @@ Use the prefixed CSS custom properties rather than copying hex values into compo
 | `--site-brand-emerald` | `#1f735f` | `#79dec2` | Emerald primary accent, links, active states and structural emphasis |
 | `--site-brand-emerald-soft` | `#dcebe5` | `#164b4d` | Quiet emerald backgrounds and selected-state fills |
 | `--site-brand-berry` | `#8b3d5c` | `#e9a0bd` | Oxblood or plum-berry secondary accent |
-| `--site-ornament-berry` | `#a44057` | `#d878c4` | Theme-specific painted-flower echo for divider terminals only |
+| `--site-ornament-berry` | `#a44057` | `#c46cab` | Theme-specific painted-flower echo for divider terminals only |
 | `--site-brand-gold` | `#a88445` | `#d7b96f` | Antique-gold fine borders, markers and restrained highlights |
 | `--site-brand-violet` | `#6f5878` | `#c4b2dd` | Muted violet for limited botanical or categorical detail |
 | `--site-nav-bg` | `#faf8f2` | `#104a52` | Navigation merged into the page field rather than shown as a separate colour slab |
