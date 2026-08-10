@@ -4961,10 +4961,17 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .elegans-field-redesign .efr-tripod-foot,
 .elegans-field-redesign .efr-tartan-gold,
 .elegans-field-redesign .efr-tartan-aqua,
+.elegans-field-redesign .efr-kilt-pleat,
+.elegans-field-redesign .efr-kilt-hem,
+.elegans-field-redesign .efr-sporran-detail,
 .elegans-field-redesign .efr-drone,
 .elegans-field-redesign .efr-drone-alt,
 .elegans-field-redesign .efr-chanter,
 .elegans-field-redesign .efr-gold-line,
+.elegans-field-redesign .efr-bag-braid,
+.elegans-field-redesign .efr-drone-cord,
+.elegans-field-redesign .efr-cord-tassel,
+.elegans-field-redesign .efr-blowpipe,
 .elegans-field-redesign .efr-tape-tick,
 .elegans-field-redesign .efr-handle,
 .elegans-field-redesign .efr-mesh,
@@ -5007,10 +5014,37 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .elegans-field-redesign .efr-barrel-rib { stroke:var(--efr-primary); stroke-width:5; }
 .elegans-field-redesign .efr-tartan-gold { stroke:var(--efr-gold); stroke-width:6; }
 .elegans-field-redesign .efr-tartan-aqua { stroke:var(--efr-secondary); stroke-width:7; }
+.elegans-field-redesign .efr-kilt-pleat { stroke:#343a79; stroke-width:3; opacity:.78; }
+.elegans-field-redesign .efr-kilt-hem { stroke:var(--efr-ink); stroke-width:4; }
+.elegans-field-redesign .efr-sporran-detail { stroke:var(--efr-gold); stroke-width:3; }
 .elegans-field-redesign .efr-drone { stroke:var(--efr-primary); stroke-width:9; }
 .elegans-field-redesign .efr-drone-alt { stroke:var(--efr-accent); stroke-width:9; }
 .elegans-field-redesign .efr-chanter { stroke:var(--efr-gold); stroke-width:12; }
 .elegans-field-redesign .efr-gold-line { stroke:var(--efr-gold); stroke-width:5; }
+.elegans-field-redesign .efr-bag-braid { stroke:var(--efr-gold); stroke-width:4; opacity:.9; }
+.elegans-field-redesign .efr-drone-cord { stroke:var(--efr-gold); stroke-width:4; }
+.elegans-field-redesign .efr-cord-tassel { stroke:var(--efr-accent); stroke-width:3.5; }
+.elegans-field-redesign .efr-blowpipe { stroke:var(--efr-primary); stroke-width:13; }
+.elegans-field-redesign .efr-drone-body,
+.elegans-field-redesign .efr-drone-ferrule,
+.elegans-field-redesign .efr-drone-cap,
+.elegans-field-redesign .efr-bagpipe-stock,
+.elegans-field-redesign .efr-blowpipe-mouthpiece,
+.elegans-field-redesign .efr-chanter-body,
+.elegans-field-redesign .efr-chanter-sole {
+  stroke:var(--efr-ink);
+  stroke-width:3.5;
+}
+.elegans-field-redesign .efr-drone-body { fill:var(--efr-primary); }
+.elegans-field-redesign .efr-drone-body-alt { fill:var(--efr-accent); }
+.elegans-field-redesign .efr-drone-ferrule { fill:var(--efr-gold); }
+.elegans-field-redesign .efr-drone-cap { fill:var(--efr-secondary); }
+.elegans-field-redesign .efr-drone-cap-alt { fill:var(--efr-accent); }
+.elegans-field-redesign .efr-bagpipe-stock { fill:var(--efr-gold); }
+.elegans-field-redesign .efr-blowpipe-mouthpiece { fill:var(--efr-secondary); }
+.elegans-field-redesign .efr-chanter-body { fill:var(--efr-primary); }
+.elegans-field-redesign .efr-chanter-sole { fill:var(--efr-accent); }
+.elegans-field-redesign .efr-chanter-hole { stroke:var(--efr-ivory); stroke-width:1.5; }
 .elegans-field-redesign .efr-tape-tick { stroke:var(--efr-ink); stroke-width:2.5; }
 .elegans-field-redesign .efr-mesh { fill:rgba(215,247,244,.7); stroke:var(--efr-primary); }
 .elegans-field-redesign .efr-mesh-line { stroke:var(--efr-secondary); stroke-width:3; }

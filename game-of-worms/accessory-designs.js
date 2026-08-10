@@ -5843,25 +5843,56 @@ function drawElegansFieldAccessory(group, item, companion) {
 
   if (location === "edinburgh" && item.family === "edinburgh-tartan-kilt") {
     shadow(91, 107);
-    path(group, companion ? "M-59-72H55L70 82Q0 107-70 82Z" : "M-72-78H67L87 84Q0 114-88 84Z", "efr-kilt");
-    path(group, companion ? "M-63-75H59V-50H-63Z" : "M-77-81H72V-53H-77Z", "efr-waistband");
-    [-48,-24,0,24,48].filter(x => companion ? Math.abs(x) < 52 : true).forEach(x => path(group, `M ${x} -49 L ${x * 1.24} 85`, "efr-tartan-gold"));
-    [-25,11,47].forEach(y => path(group, `M ${companion ? -57 : -70} ${y} H ${companion ? 54 : 69}`, "efr-tartan-aqua"));
-    path(group, "M-23-17H23V53Q0 69-23 53Z", "efr-sporran");
-    path(group, "M-18-8H18M-12 16H12", "efr-fine");
+    path(group, companion
+      ? "M-61-58Q-4-79 57-57L70 63Q45 91 5 98Q-35 96-72 70Z"
+      : "M-76-63Q-5-91 71-61L88 68Q57 103 7 111Q-43 108-91 76Z", "efr-kilt");
+    path(group, companion
+      ? "M-65-66Q-4-88 62-64L63-39Q-3-61-62-39Z"
+      : "M-81-72Q-5-101 77-69L79-41Q-4-68-77-40Z", "efr-waistband");
+    [-49,-25,-1,23,47].filter(x => companion ? Math.abs(x) < 48 : true).forEach((x, index) => {
+      path(group, `M ${x} -42 Q ${x + (index % 2 ? 5 : -4)} 24 ${x * 1.18} 82`, "efr-tartan-gold");
+      path(group, `M ${x + 7} -45 Q ${x + 10} 24 ${(x + 7) * 1.13} 85`, "efr-kilt-pleat");
+    });
+    [-19,17,53].forEach(y => path(group, `M ${companion ? -59 : -74} ${y} Q 0 ${y + 9} ${companion ? 60 : 75} ${y - 1}`, "efr-tartan-aqua"));
+    path(group, companion ? "M-67 66Q-29 91 7 92Q42 86 66 62" : "M-85 72Q-41 103 7 104Q52 96 83 66", "efr-kilt-hem");
+    path(group, companion ? "M-21-5Q0-20 21-4L19 43Q0 61-19 43Z" : "M-27-8Q0-27 27-6L24 52Q0 74-24 52Z", "efr-sporran");
+    path(group, companion ? "M-17 1Q0-10 17 2M-8 44L-11 58M0 49V63M8 44L11 58" : "M-22-1Q0-16 22 1M-11 54L-14 72M0 59V77M11 54L14 72", "efr-sporran-detail");
     return true;
   }
 
   if (location === "edinburgh" && item.family === "great-highland-bagpipes") {
     shadow(106, 109);
-    path(group, companion ? "M-63-11Q-78-56-37-72Q10-84 47-47Q68-23 52 24Q36 71-12 72Q-55 69-63-11Z" : "M-79-9Q-94-63-46-82Q13-97 59-51Q83-21 64 31Q45 84-15 84Q-68 80-79-9Z", "efr-bag");
-    [-44,-12,20].filter(x => companion ? x < 15 : true).forEach((x,index) => {
-      path(group, `M ${x} -60 L ${x + 12} -129`, index === 1 ? "efr-drone-alt" : "efr-drone");
-      path(group, `M ${x + 6} -128 H ${x + 23}`, "efr-gold-line");
-    });
-    path(group, companion ? "M44-32Q85-15 91 37Q77 72 51 71" : "M57-38Q108-16 113 43Q95 85 62 80", "efr-chanter");
-    [4,17,30,43].forEach(y => add(group, "circle", { class: "efr-hole", cx: companion ? 77 : 96, cy: y, r: 3 }));
-    path(group, "M-39-20Q0 2 39-21", "efr-gold-line");
+    const drawDrone = (x, y, height, angle, alternate = false) => {
+      const drone = add(group, "g", { class: "efr-bagpipe-drone", transform: `translate(${x} ${y}) rotate(${angle})` });
+      add(drone, "ellipse", { class: "efr-bagpipe-stock", cx: 0, cy: 20, rx: 11, ry: 8 });
+      path(drone, `M-7 20L-6 ${-height + 20}Q0 ${-height + 12} 6 ${-height + 20}L7 20Z`, alternate ? "efr-drone-body efr-drone-body-alt" : "efr-drone-body");
+      [-height * .32, -height * .67].forEach(offset => path(drone, `M-10 ${offset + 20}H10V${offset + 31}H-10Z`, "efr-drone-ferrule"));
+      path(drone, `M-11 ${-height + 23}Q0 ${-height + 7} 11 ${-height + 23}V${-height + 34}H-11Z`, alternate ? "efr-drone-cap efr-drone-cap-alt" : "efr-drone-cap");
+    };
+    const drones = companion
+      ? [[-29,-42,82,-8,false],[2,-48,91,3,true]]
+      : [[-43,-44,101,-10,false],[-11,-53,116,-2,true],[22,-46,104,8,false]];
+    drones.forEach(parts => drawDrone(...parts));
+    path(group, companion
+      ? "M-65-4Q-80-48-42-70Q-3-87 37-55Q65-32 57 14Q47 62 5 75Q-41 75-65-4Z"
+      : "M-82-2Q-101-57-51-81Q-1-105 51-62Q84-30 72 23Q59 80 4 92Q-54 90-82-2Z", "efr-bag");
+    path(group, companion
+      ? "M-58-17Q-7-62 49-31M-61 7Q-5-31 55 0M-49 42Q1 14 49 35"
+      : "M-73-22Q-8-78 61-37M-78 8Q-7-43 68 1M-63 51Q0 13 61 44", "efr-bag-braid");
+    path(group, companion
+      ? "M-31-77Q-14-57 1-83Q19-55 33-76M-26-69Q-3-46 25-67"
+      : "M-47-98Q-24-68-5-105Q18-69 39-96M-40-87Q-6-54 34-84", "efr-drone-cord");
+    [-1,1].forEach(direction => path(group, companion
+      ? `M${direction * 26}-68Q${direction * 31}-56 ${direction * 25}-43M${direction * 21}-43L${direction * 27}-31M${direction * 27}-43L${direction * 34}-33`
+      : `M${direction * 39}-86Q${direction * 46}-70 ${direction * 37}-54M${direction * 31}-54L${direction * 40}-38M${direction * 40}-54L${direction * 49}-42`, "efr-cord-tassel"));
+    const blowpipe = add(group, "g", { transform: companion ? "translate(43 -31) rotate(51)" : "translate(56 -38) rotate(49)" });
+    path(blowpipe, companion ? "M0 0H76" : "M0 0H96", "efr-blowpipe");
+    path(blowpipe, companion ? "M63-8H82V8H63Z" : "M79-9H102V9H79Z", "efr-blowpipe-mouthpiece");
+    add(blowpipe, "ellipse", { class: "efr-bagpipe-stock", cx: 0, cy: 0, rx: 10, ry: 8 });
+    const chanter = add(group, "g", { transform: companion ? "translate(36 30) rotate(-24)" : "translate(48 37) rotate(-24)" });
+    path(chanter, companion ? "M-8 0H8L13 78Q0 88-13 78Z" : "M-10 0H10L16 101Q0 114-16 101Z", "efr-chanter-body");
+    path(chanter, companion ? "M-18 75Q0 89 18 75L14 91Q0 101-14 91Z" : "M-23 98Q0 116 23 98L18 119Q0 132-18 119Z", "efr-chanter-sole");
+    (companion ? [25,40,55,69] : [29,47,65,83,98]).forEach(y => add(chanter, "circle", { class: "efr-hole efr-chanter-hole", cx: 0, cy: y, r: companion ? 3.2 : 3.8 }));
     return true;
   }
 
@@ -6146,7 +6177,7 @@ function renderPiece(target, item, wormPart) {
   const customLayouts = {
     "ngm-agar-plate": { primary: [366, 260, .82, -6], companion: [35, 288, .65, 2] },
     "n2-lab-coat": { primary: [180, 214, 1, 0], companion: [52, 168, .92, -1] },
-    "cryo-vial-jetpack": { primary: [278, 143, .9, -3], companion: [31, 155, .72, 5] },
+    "cryo-vial-jetpack": { primary: [258, 118, .84, 28], companion: [43, 132, .65, 32] },
     "n2-lab-goggles": { primary: [331, 53, 1, 14], companion: [111, 104, .58, 14] },
     "fig-fascinator": { primary: [326, 62, .64, -2], companion: [108, 106, .5, 3] },
     "sample-pannier": { primary: [170, 194, .63, -4], companion: [55, 181, .46, 4] },
@@ -6193,8 +6224,8 @@ function renderPiece(target, item, wormPart) {
     "qg2904-uncracked-pod-seam-scanner": { primary: [250, -62, .31, -2], companion: [-8, 90, .27, 2] },
     "qg2904-collection-to-funnel-relay": { primary: [220, 148, .32, -1], companion: [90, 212, .26, 2] },
     "dro-canopy-crane-strata-mapper": { primary: [377, 140, .29, -1], companion: [-5, 292, .26, 2] },
-    "edinburgh-tartan-kilt": { primary: [220, 178, .64, -4], companion: [72, 168, .47, 3] },
-    "great-highland-bagpipes": { primary: [286, 186, .53, -9], companion: [91, 164, .4, 8] }
+    "edinburgh-tartan-kilt": { primary: [220, 176, .62, -11], companion: [72, 166, .46, -22] },
+    "great-highland-bagpipes": { primary: [291, 190, .49, -8], companion: [94, 168, .37, 5] }
     ,"ju1373-torch-ginger-bract-collar": { primary: [366, 118, .33, -4], companion: [8, 112, .28, 5] }
     ,"ju1373-type-isolate-signet-engine": { primary: [224, 194, .31, -1], companion: [105, 207, .27, 2] }
     ,"saint-benoit-windward-slope-mobile": { primary: [365, 270, .31, 1], companion: [6, 286, .26, -2] }
