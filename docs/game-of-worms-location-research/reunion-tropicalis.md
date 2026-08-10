@@ -1,6 +1,8 @@
 # Saint-Benoît, Réunion *Caenorhabditis tropicalis* JU1373 location research and art brief
 
-Last updated: 2026-07-29
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `Réunion torch-ginger trays`, `type-isolate badges`, and `windward rain gauges`. These recognizable objects supersede the earlier abstract mechanism sketches below; the rain gauge is regional context and does not claim collection-day rainfall.
 
 ## Purpose
 

@@ -1,6 +1,6 @@
 # Orsay *Caenorhabditis briggsae* JU2518 location research and art brief
 
-Last updated: 2026-07-28
+Last updated: 2026-08-10
 
 ## Exact record
 
@@ -66,30 +66,30 @@ and accessories above it.
 
 ## Accessory contract
 
-### Rotten-apple decay rotoscope
+### Apple specimen box
 
-Primary: a broad rotating apple cross-section stage with intact, softened and
-open decay windows.
+Primary: a transparent lidded field box containing a recognisable russet-red
+apple with a small decay patch and a bold `APPLE SAMPLE` band.
 
-Companion: a tall flipbook cabinet with three unequal apple-state apertures
-and a separate ground-contact tray.
+Companion: a narrower box in the same upright orientation, with an independently
+proportioned apple and lid.
 
-### Santeuil-virus association spectroscope
+### Virus association cards
 
-Primary: a wide paired-record viewer joining an abstract apple specimen
-window to a nonliteral ribbon signal.
+Primary: two overlapping clipped record cards, one with an apple icon and one
+marked `SV`, joined by a visible association line. The cards communicate the
+database relationship without depicting virion morphology.
 
-Companion: a tall two-channel association cabinet with separate host and
-signal shutters. It visualises the database relationship, not virion
-morphology.
+Companion: a narrower pair of cards in the same orientation with a shorter
+association line.
 
-### Six-September garden field ledger
+### 6 September field notebook
 
-Primary: a broad `06 SEP 2012` date board with a 65 m dial and rural-garden
-aperture.
+Primary: a large indigo spiral notebook with ruled page, `06 SEP 2012`, apple
+mark and coral field pen.
 
-Companion: a tall field-book tower with separate date windows, elevation
-weight and three closed environmental-data drawers.
+Companion: a compact notebook in the same upright orientation with narrower
+page and binding.
 
 The buttons omit the strain code. Internal IDs may retain it.
 

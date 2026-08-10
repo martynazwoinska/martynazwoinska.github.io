@@ -1,6 +1,8 @@
 # Praslin *C. nigoni* location research and art brief
 
-Last updated: 2026-07-29
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `DNA sequencing reels`, `coco-de-mer measuring tapes`, and `black-parrot field headphones`. These recognizable objects supersede the earlier abstract mechanism sketches below; the palm and bird remain regional context, not collection evidence.
 
 This dossier is the evidence and review contract for the *Caenorhabditis nigoni* Praslin landscape and its three accessory pairs. It follows the evidence-led, location-by-location Game of Worms illustration workflow.
 

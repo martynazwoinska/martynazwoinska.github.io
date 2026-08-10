@@ -1,6 +1,8 @@
 # Lingsar, Lombok *Caenorhabditis nigoni* HPT26 location research and art brief
 
-Last updated: 2026-07-28
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `fig sample trays`, `field-to-plate calendars`, and `paired sample boxes`. These recognizable objects supersede the earlier abstract mechanism sketches below while preserving the recorded dates and the HPT26/HPT27 comparison boundary.
 
 ## Purpose
 

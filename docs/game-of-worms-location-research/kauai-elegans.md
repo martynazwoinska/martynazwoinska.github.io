@@ -1,6 +1,6 @@
 # Kauaʻi *C. elegans* location research and art brief
 
-Last updated: 2026-07-29
+Last updated: 2026-08-10
 
 This dossier is the evidence and review contract for the *Caenorhabditis elegans* Kauaʻi landscape and its three accessory pairs. It follows the Bristol N2, Santeuil, Edinburgh and Tenerife batches in the location-by-location Game of Worms illustration workflow.
 
@@ -70,24 +70,23 @@ The scene is a continuous ground-level upland-forest view rather than a tourist 
 
 The accessories translate the documented substrate, upland moisture and XZ1516's scientific significance into movable teaching objects. They do not use Native Hawaiian cultural motifs as generic costume decoration.
 
-### Decay-substrate theatre
+### Plant sample cases
 
-- **Primary:** a broad curved hinged display case with an irregular decaying fragment, moisture window, integrated latches and a small XZ1516 specimen ticket.
-- **Companion:** an upright triangular rotating rack with three unequal sample wells, an offset inspection lens and a restrained 983 m tag.
-- The companion is not a rotated or scaled copy; its supporting frame, viewing direction and sample arrangement are different.
+- **Primary:** an open waterproof field case containing a clearly bounded plant sample, collection vial and XZ1516 ticket.
+- **Companion:** a compact case in the same viewing orientation, with simplified compartments that remain legible at the smaller scale.
 
-### Kōkeʻe cloud-water collector
+### Mist collector bottles
 
-- **Primary:** a tall comb-like mesh collector with five unequal vanes, a coherent gutter, graduated pear-shaped bulb and side gauge.
-- **Companion:** a wide spiral collector ring with radial mesh, twin offset condensate bulbs and a short droplet chain.
-- The mechanisms collect fog playfully without claiming a historical local device. Neither may become a backpack, wing or unexplained set of rods.
+- **Primary:** a transparent graduated bottle beneath a turquoise mesh funnel, with visible collected droplets and a secure field cap.
+- **Companion:** a smaller collector in the same orientation, preserving the funnel, bottle and droplet cues.
+- The objects refer to the wet upland setting without claiming that this device was used to collect XZ1516.
 
-### XZ1516 haplotype viewer
+### XZ1516 haplotype cards
 
-Population-genomic work gives XZ1516 a scientifically grounded accessory that is different from Edinburgh's astronomical plate scanner.
+Population-genomic work gives XZ1516 a scientifically grounded accessory that is different from Edinburgh's observatory telescope.
 
-- **Primary:** a long hexagonal comparison lightbox with two chromosome-ribbon tracks, a sliding magnifier and side crank.
-- **Companion:** a circular six-sector comparison drum with radial haplotype strips, pointer and folding result panel.
+- **Primary:** a clipped fan of high-contrast comparison cards with colored marker bands and a clear XZ1516 tab.
+- **Companion:** a smaller card fan in the same orientation, retaining the marker bands and strain tab.
 - The graphics are original abstractions and do not reproduce a published figure, exact genetic sequence or institutional logo.
 
 ## Cultural and scientific safeguards

@@ -1,6 +1,8 @@
 # Queensland *Caenorhabditis tropicalis* QG2904 location research and art brief
 
-Last updated: 2026-07-29
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `blackbean pod cases`, `recovery calendars`, and `canopy-crane models`. These recognizable objects supersede the earlier abstract mechanism sketches below; the crane remains observatory context rather than collection equipment.
 
 ## Purpose
 

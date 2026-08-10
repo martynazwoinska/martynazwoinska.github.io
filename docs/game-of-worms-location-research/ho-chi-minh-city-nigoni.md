@@ -1,6 +1,8 @@
 # Ho Chi Minh City *Caenorhabditis nigoni* JU4356 location research and art brief
 
-Last updated: 2026-07-28
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `carambola sample trays`, `ITS2 DNA cards`, and `tree survey calipers`. These recognizable objects supersede the earlier abstract mechanism sketches below and retain the exact fruit and identification evidence without reconstructing the private garden.
 
 ## Purpose
 

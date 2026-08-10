@@ -1,6 +1,8 @@
 # Guadeloupe *Caenorhabditis tropicalis* NIC203 location research and art brief
 
-Last updated: 2026-07-26
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `Guadeloupe torch-ginger trays`, `waterfall flow meters`, and `toxin–antidote inheritance cards`. These recognizable objects supersede the earlier abstract mechanism sketches below while keeping waterfall imagery explicitly regional.
 
 ## Purpose
 

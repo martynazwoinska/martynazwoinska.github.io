@@ -1,6 +1,8 @@
 # São Tomé *C. nigoni* location research and art brief
 
-Last updated: 2026-07-29
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `fruit sample baskets`, `bird-call microphones`, and `begonia flower presses`. These recognizable objects supersede the earlier abstract mechanism sketches below while retaining the anonymous-fruit evidence and clearly regional bird and begonia context.
 
 This dossier is the evidence and review contract for the *Caenorhabditis nigoni* São Tomé landscape and its three accessory pairs. It responds directly to the earlier generic and reused São Tomé artwork by making the exact forest-floor record the centre of the scene.
 

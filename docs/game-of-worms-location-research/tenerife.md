@@ -1,6 +1,6 @@
 # Tenerife location research and art brief
 
-Last updated: 2026-07-29
+Last updated: 2026-08-10
 
 This dossier is the evidence and review contract for the Tenerife landscape and its three accessory pairs. It follows the Bristol N2, Santeuil and Edinburgh batches in the location-by-location Game of Worms illustration workflow.
 
@@ -94,27 +94,25 @@ The scene connects NIC1787's exact avocado microhabitat to a coherent historic b
 
 The accessories translate the representative substrate and documented garden into movable educational objects. They are original playful mechanisms, not claims about traditional Tenerife clothing or historical instruments.
 
-### Avocado microhabitat viewer
+### Avocado sample trays
 
-- **Primary:** a low horizontal pear-shaped cutaway with mottled rind, collapsed browned flesh, central pit and hinged antique-brass magnifying hood.
-- **Companion:** a tall folding peel triptych whose panels open like doors, with an off-centre pit-viewing lens and a separate shallow litter drawer.
-- The drawings use no circular Petri-dish outline, unexplained rods or brown sticks and cannot be mistaken for N2's agar plate.
+- **Primary:** an open coral field tray holding a cut avocado, a separate pit and a clipped sample label.
+- **Companion:** a smaller tray in the same viewing orientation, with its own avocado half and label placement.
+- The fruit, tray rims and labels remain distinct at both worm scales and cannot be mistaken for N2's agar plate.
 
-### Aerial-root harp
+### Aerial-root measuring tapes
 
-The form is a playful translation of the garden's documented *Ficus* rather than an authentic local instrument.
+The tape refers to the garden's documented *Ficus* aerial roots without presenting an invented traditional object.
 
-- **Primary:** a tall asymmetric living-branch arch; multiple unequal thickening root columns become strings; a broad dark-green leaf is the resonator; small fig-shaped pegs tune it.
-- **Companion:** a low trapezoidal buttress-root frame with only three chunky root strings, an offset branch soundbox and different foot and anchor geometry.
-- This remains the only active plucked-string family in the catalogue.
+- **Primary:** a turquoise retractable tape with a long marked blade, end hook and small root-and-leaf cue.
+- **Companion:** a compact version in the same orientation, with the same readable case, blade and hook construction.
 
-### Linnaean seed-exchange engine
+### Botanical seed boxes
 
-This invented teaching model is grounded in the documented 24-class plan, herbarium and international germplasm exchange. It is not claimed to be a historical garden instrument.
+The boxes are grounded in the documented botanical garden and its plant collections. They are illustrative field objects, not historical garden artefacts.
 
-- **Primary:** a wide wood-and-brass six-by-four accession board with a rotating bridge of seed capsules and one leaf-shaped index pointer.
-- **Companion:** a tall folding cabinet with three banks of eight differently sized drawers, a central herbarium-sheet panel and a side crank.
-- Neither drawing may reuse Edinburgh's portal scanner, a generic backpack or a plain labelled rectangle.
+- **Primary:** an open indigo specimen box with divided compartments, differently shaped seeds, a hinged lid and botanical label.
+- **Companion:** a smaller box in the same orientation with a reduced but still legible compartment arrangement.
 
 ## Quality benchmark
 

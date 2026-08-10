@@ -12,38 +12,38 @@ const rows = [
   ["briggsae", "Taipei, Taiwan · BRC20390", "field cameras", "brc20390-two-photo-provenance-viewer", "eleven-sample carriers", "brc20390-eleven-strain-isotype-constellation", "174 m altimeters", "taipei-174m-forest-record-inclinometer"],
   ["briggsae", "Kerala, India · JU1337", "sample jars", "ju1337-rotting-material-recovery-carousel", "16 December calendars", "ju1337-sixteen-december-field-calendar", "field notebooks", "poovar-agricultural-edge-ledger"],
   ["briggsae", "Kauaʻi, Hawaiʻi · QG130", "three-vial sample case", "qg130-three-strain-isotype-sorter", "2 August field tag", "qg130-two-august-forest-chronometer", "11 m tape measure", "qg130-eleven-metre-forest-floor-transect"],
-  ["briggsae", "Réunion Island · JU1375", "mollusk-substrate inspection theatre", "ju1375-mollusk-substrate-inspection", "year-turn collection chronometer", "ju1375-year-turn-collection-chronometer", "123-metre agricultural-land altimeter", "ju1375-agricultural-land-altimeter"],
-  ["briggsae", "Orsay, France · JU2518", "rotten-apple decay rotoscope", "ju2518-rotten-apple-decay-rotoscope", "Santeuil-virus association spectroscope", "ju2518-virus-association-spectroscope", "six-September garden field ledger", "ju2518-six-september-garden-ledger"],
-  ["briggsae", "Dois Rios, Ilha Grande, Brazil · EG5612", "jackfruit emergence theatre", "eg5612-jackfruit-emergence-theatre", "shared-bag provenance bifurcator", "eg5612-shared-bag-provenance-bifurcator", "single-larva test-cross gate", "eg5612-single-larva-test-cross-gate"],
-  ["briggsae", "Nambucca Heads, New South Wales · QG2814", "ground-flower sample theatre", "qg2814-ground-flower-sample-theatre", "five-day two-plate founding relay", "qg2814-five-day-two-plate-relay", "18S identity ribbon reader", "qg2814-18s-identity-ribbon-reader"],
+  ["briggsae", "Réunion Island · JU1375", "shell sample jars", "ju1375-mollusk-substrate-inspection", "31 December field calendars", "ju1375-year-turn-collection-chronometer", "123 m altimeters", "ju1375-agricultural-land-altimeter"],
+  ["briggsae", "Orsay, France · JU2518", "apple specimen boxes", "ju2518-rotten-apple-decay-rotoscope", "virus association cards", "ju2518-virus-association-spectroscope", "6 September field notebooks", "ju2518-six-september-garden-ledger"],
+  ["briggsae", "Dois Rios, Ilha Grande, Brazil · EG5612", "jackfruit sample trays", "eg5612-jackfruit-emergence-theatre", "shared sample bags", "eg5612-shared-bag-provenance-bifurcator", "test-cross plates", "eg5612-single-larva-test-cross-gate"],
+  ["briggsae", "Nambucca Heads, New South Wales · QG2814", "flower presses", "qg2814-ground-flower-sample-theatre", "two culture plates", "qg2814-five-day-two-plate-relay", "18S DNA cards", "qg2814-18s-identity-ribbon-reader"],
   ["elegans", "Bristol N2, England", "seeded NGM agar plates", "ngm-agar-plate", "fitted lab coats", "n2-lab-coat", "cryo-vial jetpacks", "cryo-vial-jetpack", "lab goggles", "n2-lab-goggles"],
-  ["elegans", "Santeuil, France", "hollow-stem specimen lantern", "hogweed-specimen-lantern", "Santeuil cylinder organ", "santeuil-cylinder-organ", "Couleuvre dragonfly automaton", "couleuvre-dragonfly-automaton"],
-  ["elegans", "Edinburgh, Scotland", "Midmar compost tumbler", "midmar-compost-tumbler", "Edinburgh tartan kilt", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
-  ["elegans", "Tenerife, Spain", "avocado microhabitat viewer", "avocado-microhabitat-viewer", "aerial-root harp", "aerial-root-harp", "Linnaean seed-exchange engine", "linnaean-seed-exchange-engine"],
-  ["elegans", "Kauaʻi, Hawaiʻi", "decay-substrate theatre", "decay-substrate-theatre", "Kōkeʻe cloud-water collector", "kokee-cloud-water-collector", "haplotype viewer", "xz1516-haplotype-viewer"],
-  ["elegans", "Australian Capital Territory", "Baermann fig-recovery rig", "qg2811-baermann-fig-recovery", "Yellow Box seed orrery", "yellow-box-seed-orrery", "Black Mountain signal theremin", "black-mountain-signal-theremin"],
-  ["elegans", "Auckland, New Zealand", "grass-litter profiler", "eca36-grass-litter-profiler", "Auckland volcanic-field monitor", "auckland-volcanic-field-monitor", "reproductive-timing clock", "eca36-reproductive-timing-clock"],
-  ["elegans", "Araucanía, Chile", "compost labyrinth", "compost-labyrinth", "Llaima ashfall recorder", "ashfall-recorder", "test-cross identifier", "test-cross-mechanism"],
+  ["elegans", "Santeuil, France", "stem sample tubes", "hogweed-specimen-lantern", "Santeuil music boxes", "santeuil-cylinder-organ", "dragonfly field pins", "couleuvre-dragonfly-automaton"],
+  ["elegans", "Edinburgh, Scotland", "Blackford observatory telescopes", "midmar-compost-tumbler", "Edinburgh tartan kilts", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
+  ["elegans", "Tenerife, Spain", "avocado sample trays", "avocado-microhabitat-viewer", "aerial-root measuring tapes", "aerial-root-harp", "botanical seed boxes", "linnaean-seed-exchange-engine"],
+  ["elegans", "Kauaʻi, Hawaiʻi", "plant sample cases", "decay-substrate-theatre", "mist collector bottles", "kokee-cloud-water-collector", "XZ1516 haplotype cards", "xz1516-haplotype-viewer"],
+  ["elegans", "Australian Capital Territory", "Baermann funnels", "qg2811-baermann-fig-recovery", "Yellow Box seed jars", "yellow-box-seed-orrery", "Black Mountain field radios", "black-mountain-signal-theremin"],
+  ["elegans", "Auckland, New Zealand", "grass sample bags", "eca36-grass-litter-profiler", "volcanic seismographs", "auckland-volcanic-field-monitor", "timing stopwatches", "eca36-reproductive-timing-clock"],
+  ["elegans", "Araucanía, Chile", "compost sample buckets", "compost-labyrinth", "Llaima ashfall gauges", "ashfall-recorder", "reciprocal-cross plates", "test-cross-mechanism"],
   ["nigoni", "Trivandrum, Kerala · JU1325", "field loupe", "trivandrum-field-loupe", "garden watering can", "trivandrum-garden-watering-can", "sample tube", "trivandrum-sample-tube"],
-  ["nigoni", "Singapore · ZF1220", "five-rib field atlas", "zf1220-five-rib-field-atlas", "multifemale provenance merger", "multifemale-provenance-merger", "Holttum orchid hybridisation engine", "holttum-orchid-hybridisation-engine"],
-  ["nigoni", "Praslin, Seychelles · YR106", "long-read genome loom", "yr106-long-read-genome-loom", "coco-de-mer growth-monitoring rig", "coco-de-mer-growth-monitoring-rig", "Praslin black-parrot call listener", "praslin-black-parrot-call-listener"],
-  ["nigoni", "São Tomé · JU2484", "fruit-fall kinetic track", "ju2484-fruit-fall-kinetic-track", "São Tomé point-count sound loom", "sao-tome-point-count-sound-loom", "São Tomé begonia lineage kinetoscope", "sao-tome-begonia-lineage-kinetoscope"],
-  ["nigoni", "Mahahual, Mexico · JU2617", "citrus-heap respiration recorder", "ju2617-citrus-heap-respiration-recorder", "test-cross lock", "ju2617-test-cross-lock", "Mahahual lighthouse flash sequencer", "mahahual-lighthouse-flash-sequencer"],
-  ["nigoni", "Mauritius · JU2909", "fruit-and-nut viewer", "ju2909-fruit-nut-viewer", "paired-sample bifurcator", "ju2909-ju2910-sample-bifurcator", "Casela–Rempart contour surveyor", "casela-rempart-contour-surveyor"],
-  ["nigoni", "Ho Chi Minh City · JU4356", "carambola ground-contact stage", "ju4356-carambola-ground-contact-stage", "ITS2 ribbon reader", "ju4356-its2-ribbon-reader", "Ho Chi Minh City urban-canopy census engine", "hcmc-urban-canopy-census-engine"],
-  ["nigoni", "Lombok, Indonesia · HPT26", "Ficus-ground contact stage", "hpt26-ficus-ground-contact-stage", "Lingsar field-to-plate calendar", "lingsar-field-to-plate-calendar", "paired-substrate diptych", "hpt26-hpt27-substrate-diptych"],
+  ["nigoni", "Singapore · ZF1220", "Singapore starfruit sample trays", "zf1220-five-rib-field-atlas", "five-female sample cards", "multifemale-provenance-merger", "orchid pollination brushes", "holttum-orchid-hybridisation-engine"],
+  ["nigoni", "Praslin, Seychelles · YR106", "DNA sequencing reels", "yr106-long-read-genome-loom", "coco-de-mer measuring tapes", "coco-de-mer-growth-monitoring-rig", "black-parrot field headphones", "praslin-black-parrot-call-listener"],
+  ["nigoni", "São Tomé · JU2484", "fruit sample baskets", "ju2484-fruit-fall-kinetic-track", "bird-call microphones", "sao-tome-point-count-sound-loom", "begonia flower presses", "sao-tome-begonia-lineage-kinetoscope"],
+  ["nigoni", "Mahahual, Mexico · JU2617", "citrus sample buckets", "ju2617-citrus-heap-respiration-recorder", "JU2617 test-cross plates", "ju2617-test-cross-lock", "Mahahual lighthouse models", "mahahual-lighthouse-flash-sequencer"],
+  ["nigoni", "Mauritius · JU2909", "fruit-and-nut sample trays", "ju2909-fruit-nut-viewer", "paired sample jars", "ju2909-ju2910-sample-bifurcator", "contour compasses", "casela-rempart-contour-surveyor"],
+  ["nigoni", "Ho Chi Minh City · JU4356", "carambola sample trays", "ju4356-carambola-ground-contact-stage", "ITS2 DNA cards", "ju4356-its2-ribbon-reader", "tree survey calipers", "hcmc-urban-canopy-census-engine"],
+  ["nigoni", "Lombok, Indonesia · HPT26", "fig sample trays", "hpt26-ficus-ground-contact-stage", "field-to-plate calendars", "lingsar-field-to-plate-calendar", "paired sample boxes", "hpt26-hpt27-substrate-diptych"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "five-day plating chronograph", "ju1873-plating-chronograph", "living-type voucher vault", "ju1873-living-type-vault"],
   ["tropicalis", "Barro Colorado Island, Panama", "flower-bait cup", "qg2726-gustavia-bait-array", "tree calipers", "bci-forest-census-mapper", "rain gauge", "lutz-runoff-recorder"],
-  ["tropicalis", "La Selva, Costa Rica", "26.5 °C substrate dial", "qg3845-substrate-temperature", "La Selva leaf-cutter automaton", "la-selva-leafcutter-automaton", "La Selva–Barva gradient lift", "barva-gradient-lift"],
-  ["tropicalis", "Guadeloupe · NIC203", "torch-ginger bract stage", "nic203-torch-ginger-bract-stage", "Carbet three-fall hydraulic sequencer", "carbet-three-fall-hydraulic-sequencer", "toxin–antidote inheritance automaton", "nic203-toxin-antidote-automaton"],
-  ["tropicalis", "Nouragues, French Guiana · JU1428", "Duguetia fruit theatre", "ju1428-duguetia-fruit-theatre", "Nouragues litterfall chronobalance", "nouragues-litterfall-chronobalance", "isotype-triad comparator", "ju1428-isotype-triad-comparator"],
-  ["tropicalis", "Manaus region, Brazil · JU1976", "substrate shadow theatre", "ju1976-substrate-identity-shadow-theatre", "four-metre sample rail", "ju1975-ju1976-four-metre-sample-rail", "Manaus plateau–valley soil harmonograph", "manaus-plateau-valley-soil-harmonograph"],
-  ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "fallen-flower decay chronoscope", "eca789-fallen-flower-decay-chronoscope", "paired microclimate harmonograph", "eca789-paired-microclimate-harmonograph", "field-record relay", "c0085-field-record-relay"],
-  ["tropicalis", "Kauaʻi, Hawaiʻi · QG131", "paired-pandanus key sorter", "qg131-paired-pandanus-key-sorter", "four-date culture relay", "qg131-four-date-culture-relay", "mating-ID motion theatre", "qg131-mating-id-motion-theatre"],
-  ["tropicalis", "New Taipei City, Taiwan · NIC1648", "10–15 mm fig comparator", "nic1648-fig-diameter-comparator", "stair-side sample indexer", "nic1648-stair-side-sample-indexer", "qualitative male viewer", "nic1648-qualitative-male-viewer"],
-  ["tropicalis", "Pohnpei, Micronesia · QG4739", "kotop name-concordance cabinet", "qg4739-kotop-name-concordance", "paired-temperature differential bridge", "qg4739-paired-temperature-differential", "seven-isotype registry", "c0230-seven-isotype-registry"],
-  ["tropicalis", "Queensland, Australia · QG2904", "uncracked-pod seam scanner", "qg2904-uncracked-pod-seam-scanner", "10–24 July recovery relay", "qg2904-collection-to-funnel-relay", "DRO canopy-crane strata mapper", "dro-canopy-crane-strata-mapper"],
-  ["tropicalis", "Saint-Benoît, Réunion · JU1373", "torch-ginger bract collar", "ju1373-torch-ginger-bract-collar", "type-isolate signet engine", "ju1373-type-isolate-signet-engine", "Saint-Benoît windward-slope mobile", "saint-benoit-windward-slope-mobile"]
+  ["tropicalis", "La Selva, Costa Rica", "26.5 °C thermometers", "qg3845-substrate-temperature", "leaf-cutter ant field loupes", "la-selva-leafcutter-automaton", "La Selva–Barva elevation maps", "barva-gradient-lift"],
+  ["tropicalis", "Guadeloupe · NIC203", "Guadeloupe torch-ginger trays", "nic203-torch-ginger-bract-stage", "waterfall flow meters", "carbet-three-fall-hydraulic-sequencer", "toxin–antidote inheritance cards", "nic203-toxin-antidote-automaton"],
+  ["tropicalis", "Nouragues, French Guiana · JU1428", "Duguetia sample boxes", "ju1428-duguetia-fruit-theatre", "litterfall baskets", "nouragues-litterfall-chronobalance", "three-strain sample racks", "ju1428-isotype-triad-comparator"],
+  ["tropicalis", "Manaus region, Brazil · JU1976", "anonymous-fruit sample cases", "ju1976-substrate-identity-shadow-theatre", "four-metre tape measures", "ju1975-ju1976-four-metre-sample-rail", "soil-profile charts", "manaus-plateau-valley-soil-harmonograph"],
+  ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "fallen-flower sample boxes", "eca789-fallen-flower-decay-chronoscope", "temperature-humidity meters", "eca789-paired-microclimate-harmonograph", "field-record folders", "c0085-field-record-relay"],
+  ["tropicalis", "Kauaʻi, Hawaiʻi · QG131", "pandanus sample baskets", "qg131-paired-pandanus-key-sorter", "four-date culture calendars", "qg131-four-date-culture-relay", "mating-test plates", "qg131-mating-id-motion-theatre"],
+  ["tropicalis", "New Taipei City, Taiwan · NIC1648", "fig measuring calipers", "nic1648-fig-diameter-comparator", "stair-side sample bags", "nic1648-stair-side-sample-indexer", "male-count microscopes", "nic1648-qualitative-male-viewer"],
+  ["tropicalis", "Pohnpei, Micronesia · QG4739", "kotop sample boxes", "qg4739-kotop-name-concordance", "paired thermometers", "qg4739-paired-temperature-differential", "seven-vial sample racks", "c0230-seven-isotype-registry"],
+  ["tropicalis", "Queensland, Australia · QG2904", "blackbean pod cases", "qg2904-uncracked-pod-seam-scanner", "recovery calendars", "qg2904-collection-to-funnel-relay", "canopy-crane models", "dro-canopy-crane-strata-mapper"],
+  ["tropicalis", "Saint-Benoît, Réunion · JU1373", "Réunion torch-ginger trays", "ju1373-torch-ginger-bract-collar", "type-isolate badges", "ju1373-type-isolate-signet-engine", "windward rain gauges", "saint-benoit-windward-slope-mobile"]
 ];
 
 const explicitUniqueRendererFamilies = new Set([
@@ -3899,9 +3899,9 @@ function drawKauaiQG130Accessory(group, item, companion) {
     path(caseGroup, "M-66-28V-47Q-66-59-54-59H54Q66-59 66-47V-28", "qg130-case-handle");
     path(caseGroup, "M-82-13H82V1H-82Z", "qg130-case-lip");
     [-51, 0, 51].forEach((cx, index) => {
-      path(caseGroup, `M${cx-16}-1H${cx+16}L${cx+12}50Q${cx+10}61 ${cx}61Q${cx-10}61 ${cx-12}50Z`, index === 2 ? "qg130-vial reference" : "qg130-vial");
+      path(caseGroup, `M ${cx - 16} -1 H ${cx + 16} L ${cx + 12} 50 Q ${cx + 10} 61 ${cx} 61 Q ${cx - 10} 61 ${cx - 12} 50 Z`, index === 2 ? "qg130-vial reference" : "qg130-vial");
       path(caseGroup, `M${cx-18}-9H${cx+18}V4H${cx-18}Z`, index === 2 ? "qg130-vial-cap reference" : "qg130-vial-cap");
-      path(caseGroup, `M${cx-11}27H${cx+11}V45H${cx-11}Z`, "qg130-vial-label");
+      path(caseGroup, `M ${cx - 11} 27 H ${cx + 11} V 45 H ${cx - 11} Z`, "qg130-vial-label");
       text(index === 2 ? "130" : `${128 + index}`, cx, 41, "qg130-vial-number");
     });
     path(caseGroup, "M-75 67H75", "qg130-case-highlight");
@@ -4919,7 +4919,1159 @@ function drawBarroColoradoQG2726Accessory(group, item, companion) {
   return false;
 }
 
+function drawBriggsaeFieldAccessory(group, item, companion) {
+  const isReunion = reunionJU1375RendererIds.has(item.id);
+  const isOrsay = orsayJU2518RendererIds.has(item.id);
+  const isDoisRios = doisRiosEG5612RendererIds.has(item.id);
+  const isNambucca = nambuccaQG2814RendererIds.has(item.id);
+  if (!isReunion && !isOrsay && !isDoisRios && !isNambucca) return false;
+
+  group.dataset.renderer = `${item.family}-field-redesign`;
+  group.classList.add(
+    "briggsae-field-redesign",
+    isReunion ? "bfr-reunion" : isOrsay ? "bfr-orsay" : isDoisRios ? "bfr-dois-rios" : "bfr-nambucca",
+    companion ? "bfr-companion" : "bfr-primary"
+  );
+
+  const label = (value, x, y, className = "bfr-label") => {
+    const node = add(group, "text", { class: className, x, y, "text-anchor": "middle" });
+    node.textContent = value;
+  };
+  const shadow = (wide = 108, y = 101) => add(group, "ellipse", {
+    class: "bfr-shadow", cx: 0, cy: y, rx: companion ? wide * .78 : wide, ry: companion ? 12 : 15
+  });
+  const apple = (cx, cy, scale = 1) => {
+    const appleGroup = add(group, "g", { transform: `translate(${cx} ${cy}) scale(${scale})` });
+    path(appleGroup, "M0-25C-10-39-30-35-37-17C-47 9-28 35 0 39C28 35 47 9 37-17C30-35 10-39 0-25Z", "bfr-fruit");
+    path(appleGroup, "M0-27Q2-43 15-49", "bfr-line");
+    path(appleGroup, "M13-45Q29-47 31-34Q20-30 13-45Z", "bfr-leaf");
+    path(appleGroup, "M-28 7Q-13-3-4 12Q-14 27-28 18Z", "bfr-decay");
+  };
+  const shell = (cx, cy, scale = 1) => {
+    const shellGroup = add(group, "g", { transform: `translate(${cx} ${cy}) scale(${scale})` });
+    path(shellGroup, "M-34 17C-42-9-25-35 2-39C31-43 48-21 42 5C37 31 7 43-18 33C-27 29-32 24-34 17Z", "bfr-shell");
+    path(shellGroup, "M-13 14C-25 1-16-18 1-20C19-22 29-7 24 7C19 22 2 25-7 17C-15 10-10-1 0-3C9-4 12 5 7 10C3 14-2 12-2 7", "bfr-fine");
+  };
+  const plate = (cx, cy, rx, ry, className = "bfr-glass") => {
+    add(group, "ellipse", { class: className, cx, cy, rx, ry });
+    add(group, "ellipse", { class: "bfr-fine bfr-no-fill", cx, cy: cy - 4, rx: rx - 7, ry: ry - 7 });
+  };
+
+  if (isReunion && item.family === "ju1375-mollusk-substrate-inspection") {
+    shadow(88, 108);
+    if (companion) {
+      path(group, "M-51-76H48L58-57V76Q58 91 42 96H-39Q-55 91-55 76V-57Z", "bfr-glass");
+      path(group, "M-58-76H55V-55H-58Z", "bfr-primary");
+      path(group, "M-43-50H43V58Q30 71 0 70Q-30 71-43 58Z", "bfr-water");
+      shell(0, 17, .78);
+      path(group, "M-43 63H43V87H-43Z", "bfr-ivory");
+      label("MOLLUSK", 0, 80, "bfr-small");
+      path(group, "M-29-82Q0-105 29-82", "bfr-line");
+    } else {
+      path(group, "M-69-78H66L76-55V76Q76 94 57 100H-53Q-72 94-72 76V-55Z", "bfr-glass");
+      path(group, "M-76-78H73V-53H-76Z", "bfr-primary");
+      [-47,-17,13,43].forEach(x => path(group, `M ${x} -76 V -55`, "bfr-fine"));
+      path(group, "M-57-45H57V55Q39 73 0 72Q-39 73-57 55Z", "bfr-water");
+      shell(-3, 14, 1.02);
+      path(group, "M-55 62H55V91H-55Z", "bfr-ivory");
+      label("SHELL SAMPLE", 0, 82, "bfr-small");
+      path(group, "M-38-84Q0-116 38-84", "bfr-line");
+    }
+    return true;
+  }
+
+  if (isReunion && item.family === "ju1375-year-turn-collection-chronometer") {
+    shadow(82, 104);
+    const width = companion ? 118 : 150;
+    const left = -width / 2;
+    path(group, `M ${left} -76 H ${-left} V 91 H ${left} Z`, "bfr-ivory");
+    path(group, `M ${left} -76 H ${-left} V -43 H ${left} Z`, "bfr-primary");
+    [-35,0,35].filter(x => Math.abs(x) < width / 2 - 4).forEach(x => {
+      add(group, "circle", { class: "bfr-gold", cx: x, cy: -77, r: 8 });
+      path(group, `M ${x} -91 V -69`, "bfr-fine");
+    });
+    label("31", 0, 24, "bfr-date-number");
+    label("DECEMBER", 0, 51, "bfr-label");
+    path(group, `M ${left + 12} 63 H ${-left - 12}`, "bfr-fine");
+    label("2007", 0, 82, "bfr-small");
+    path(group, `M ${left + 10} -35 H ${-left - 10}`, "bfr-accent-line");
+    return true;
+  }
+
+  if (isReunion && item.family === "ju1375-agricultural-land-altimeter") {
+    shadow(76, 107);
+    path(group, companion ? "M-46-63Q-70-31-69 11Q-68 53-44 77" : "M-54-70Q-82-32-80 13Q-78 57-51 84", "bfr-strap");
+    path(group, companion ? "M46-63Q70-31 69 11Q68 53 44 77" : "M54-70Q82-32 80 13Q78 57 51 84", "bfr-strap");
+    const radius = companion ? 65 : 79;
+    add(group, "circle", { class: "bfr-primary", cx: 0, cy: 0, r: radius });
+    add(group, "circle", { class: "bfr-ivory", cx: 0, cy: 0, r: radius - 12 });
+    [-70,-50,-30,-10,10,30,50,70].forEach(deg => {
+      const radians = deg * Math.PI / 180;
+      const inner = radius - 24;
+      const outer = radius - 15;
+      line(group, `M ${(Math.sin(radians) * inner).toFixed(1)} ${(-Math.cos(radians) * inner).toFixed(1)} L ${(Math.sin(radians) * outer).toFixed(1)} ${(-Math.cos(radians) * outer).toFixed(1)}`, "bfr-fine");
+    });
+    path(group, "M0 6L33-34", "bfr-pointer");
+    add(group, "circle", { class: "bfr-gold", cx: 0, cy: 6, r: 7 });
+    path(group, "M-34 28H34V57H-34Z", "bfr-secondary");
+    label("123 m", 0, 49, "bfr-label");
+    label("ALT", 0, -28, "bfr-small");
+    return true;
+  }
+
+  if (isOrsay && item.family === "ju2518-rotten-apple-decay-rotoscope") {
+    shadow(103, 101);
+    const width = companion ? 158 : 202;
+    const left = -width / 2;
+    path(group, `M ${left} -61 H ${-left} L ${-left + 12} 79 H ${left - 12} Z`, "bfr-glass");
+    path(group, `M ${left} -61 L ${left - 18} -90 H ${-left - 18} L ${-left} -61 Z`, "bfr-secondary");
+    path(group, `M ${left - 18} -90 V -66 M ${-left - 18} -90 V -66`, "bfr-line");
+    apple(companion ? -8 : -15, 9, companion ? .9 : 1.12);
+    path(group, `M ${left + 10} 56 H ${-left - 10} V 86 H ${left + 10} Z`, "bfr-primary");
+    label("APPLE SAMPLE", 0, 77, "bfr-small bfr-light-text");
+    path(group, `M ${-left - 24} -54 V 45`, "bfr-fine");
+    return true;
+  }
+
+  if (isOrsay && item.family === "ju2518-virus-association-spectroscope") {
+    shadow(95, 104);
+    const cardWidth = companion ? 112 : 132;
+    path(group, `M ${-cardWidth + 8} -63 H 8 V 70 H ${-cardWidth + 8} Z`, "bfr-ivory");
+    path(group, `M-8-48H${cardWidth - 8}V85H-8Z`, "bfr-secondary");
+    path(group, `M ${-cardWidth + 8} -63 H 8 V -37 H ${-cardWidth + 8} Z`, "bfr-primary");
+    path(group, `M-8-48H${cardWidth - 8}V-22H-8Z`, "bfr-accent");
+    apple(-cardWidth / 2 + 5, 8, .45);
+    add(group, "circle", { class: "bfr-ivory", cx: cardWidth / 2 - 7, cy: 17, r: 30 });
+    label("SV", cardWidth / 2 - 7, 26, "bfr-card-symbol");
+    path(group, `M ${-cardWidth / 2 + 30} 7 C -18 -2 11 38 ${cardWidth / 2 - 38} 18`, "bfr-accent-line");
+    label("APPLE", -cardWidth / 2 + 5, 57, "bfr-small");
+    label("ASSOCIATED", cardWidth / 2 - 7, 68, "bfr-small bfr-light-text");
+    add(group, "circle", { class: "bfr-gold", cx: 0, cy: -56, r: 9 });
+    return true;
+  }
+
+  if (isOrsay && item.family === "ju2518-six-september-garden-ledger") {
+    shadow(93, 104);
+    const width = companion ? 132 : 168;
+    path(group, `M ${-width / 2} -79 H ${width / 2} V 91 H ${-width / 2} Z`, "bfr-primary");
+    path(group, `M ${-width / 2 + 17} -66 H ${width / 2 - 10} V 80 H ${-width / 2 + 17} Z`, "bfr-ivory");
+    [-55,-25,5,35,65].forEach(y => path(group, `M${-width / 2 + 4} ${y}H${-width / 2 + 27}`, "bfr-gold-line"));
+    label("06 SEP", 12, -28, "bfr-date-label");
+    label("2012", 12, -4, "bfr-small");
+    [-1,22,45].forEach(y => path(group, `M${-width / 2 + 34} ${y}H${width / 2 - 21}`, "bfr-fine"));
+    apple(width / 2 - 31, 59, .27);
+    path(group, `M ${width / 2 - 4} -54 L ${width / 2 + 20} 58 L ${width / 2 + 10} 75 L ${width / 2 - 16} -49 Z`, "bfr-accent");
+    return true;
+  }
+
+  if (isDoisRios && item.family === "eg5612-jackfruit-emergence-theatre") {
+    shadow(110, 105);
+    const width = companion ? 172 : 222;
+    path(group, `M ${-width / 2} -7 H ${width / 2} L ${width / 2 - 15} 86 H ${-width / 2 + 15} Z`, "bfr-primary");
+    path(group, `M ${-width / 2 + 12} 10 H ${width / 2 - 12} V 70 H ${-width / 2 + 12} Z`, "bfr-ivory");
+    path(group, companion ? "M-62 8Q-73-43-31-59Q15-75 56-42Q73-28 58 13Q37 61-4 58Q-48 58-62 8Z" : "M-82 8Q-94-47-41-66Q17-87 72-45Q93-28 76 15Q49 67-6 64Q-62 66-82 8Z", "bfr-fruit-green");
+    path(group, companion ? "M-48 3Q-44-35-12-45Q22-55 49-26Q50 13 23 35Q-14 50-48 3Z" : "M-65 3Q-58-39-15-52Q31-64 63-29Q64 16 29 42Q-19 59-65 3Z", "bfr-fruit-gold");
+    [[-34,-14],[-9,-27],[17,-23],[39,-6],[-25,18],[4,11],[29,22]].forEach(([x,y]) => add(group, "ellipse", { class: "bfr-fruit-pod", cx: x, cy: y, rx: companion ? 7 : 9, ry: companion ? 11 : 14 }));
+    path(group, `M ${-width / 2 + 25} 88 H ${width / 2 - 25}`, "bfr-line");
+    label("JACKFRUIT", 0, 97, "bfr-small");
+    return true;
+  }
+
+  if (isDoisRios && item.family === "eg5612-shared-bag-provenance-bifurcator") {
+    shadow(91, 107);
+    const width = companion ? 122 : 154;
+    path(group, `M ${-width / 2} -77 H ${width / 2} L ${width / 2 + 12} 88 H ${-width / 2 - 12} Z`, "bfr-glass");
+    path(group, `M ${-width / 2} -77 H ${width / 2} V -54 H ${-width / 2} Z`, "bfr-primary");
+    path(group, `M ${-width / 2 + 10} -47 H ${width / 2 - 10}`, "bfr-zip");
+    path(group, "M0-45V55", "bfr-fine");
+    path(group, "M-54 3Q-61-29-28-39Q5-45 22-20Q11 13-18 28Q-43 27-54 3Z", "bfr-fruit-green");
+    [[-34,-8],[-15,-17],[-25,8],[-5,4]].forEach(([x,y]) => add(group, "circle", { class: "bfr-fruit-gold", cx: x, cy: y, r: 7 }));
+    [-1,71,143,215,287].forEach(deg => {
+      const rad = deg * Math.PI / 180;
+      path(group, `M40 8Q${40 + Math.cos(rad) * 25} ${8 + Math.sin(rad) * 25} ${40 + Math.cos(rad) * 17} ${8 + Math.sin(rad) * 17}Q40 8 40 8Z`, "bfr-flower");
+    });
+    add(group, "circle", { class: "bfr-gold", cx: 40, cy: 8, r: 8 });
+    path(group, "M-54 48H54V78H-54Z", "bfr-accent");
+    label("SAME BAG", 0, 69, "bfr-small bfr-light-text");
+    return true;
+  }
+
+  if (isDoisRios && item.family === "eg5612-single-larva-test-cross-gate") {
+    shadow(107, 104);
+    plate(companion ? -35 : -48, 4, companion ? 49 : 60, companion ? 37 : 44);
+    plate(companion ? 38 : 53, 17, companion ? 49 : 60, companion ? 37 : 44, "bfr-water");
+    path(group, "M-76-52H75V-23H-76Z", "bfr-primary");
+    label("TEST CROSS", 0, -31, "bfr-small bfr-light-text");
+    label("N2", companion ? -35 : -48, 10, "bfr-label");
+    label("AF16", companion ? 38 : 53, 23, "bfr-label");
+    path(group, companion ? "M-53 25L-18-9M-53-9L-18 25" : "M-68 24L-28-16M-68-16L-28 24", "bfr-negative");
+    path(group, companion ? "M21 13L34 28L58-4" : "M31 13L47 31L78-8", "bfr-positive");
+    path(group, "M-30 75H28V96H-30Z", "bfr-secondary");
+    label("L4", -1, 90, "bfr-small");
+    return true;
+  }
+
+  if (isNambucca && item.family === "qg2814-ground-flower-sample-theatre") {
+    shadow(105, 106);
+    const width = companion ? 162 : 210;
+    path(group, `M ${-width / 2} -68 H ${width / 2} V 64 H ${-width / 2} Z`, "bfr-primary");
+    path(group, `M ${-width / 2 + 13} -55 H ${width / 2 - 13} V 51 H ${-width / 2 + 13} Z`, "bfr-ivory");
+    [-65,65].filter(x => Math.abs(x) < width / 2 - 15).forEach(x => {
+      path(group, `M ${x} -92 V 86`, "bfr-gold-line");
+      add(group, "circle", { class: "bfr-gold", cx: x, cy: -87, r: 9 });
+      add(group, "circle", { class: "bfr-gold", cx: x, cy: 82, r: 9 });
+    });
+    const flowers = companion ? [[-34,-13,.72],[25,5,.64]] : [[-52,-14,.8],[4,2,.72],[54,-18,.64]];
+    flowers.forEach(([cx,cy,size], flowerIndex) => {
+      [-90,-18,54,126,198].forEach(deg => {
+        const rad = deg * Math.PI / 180;
+        add(group, "ellipse", { class: flowerIndex % 2 ? "bfr-flower-alt" : "bfr-flower", cx: cx + Math.cos(rad) * 21 * size, cy: cy + Math.sin(rad) * 21 * size, rx: 9 * size, ry: 18 * size, transform: `rotate(${deg + 90} ${cx + Math.cos(rad) * 21 * size} ${cy + Math.sin(rad) * 21 * size})` });
+      });
+      add(group, "circle", { class: "bfr-gold", cx, cy, r: 7 * size });
+    });
+    path(group, `M ${-width / 2 - 7} 70 H ${width / 2 + 7} V 91 H ${-width / 2 - 7} Z`, "bfr-secondary");
+    label("FLOWER PRESS", 0, 85, "bfr-small");
+    return true;
+  }
+
+  if (isNambucca && item.family === "qg2814-five-day-two-plate-relay") {
+    shadow(108, 106);
+    const offset = companion ? 43 : 55;
+    path(group, companion ? "M-99-61H99V82H-99Z" : "M-124-66H124V86H-124Z", "bfr-primary");
+    plate(-offset, 3, companion ? 43 : 53, companion ? 32 : 39);
+    plate(offset, 10, companion ? 43 : 53, companion ? 32 : 39, "bfr-water");
+    label("1", -offset, 10, "bfr-card-symbol");
+    label("2", offset, 17, "bfr-card-symbol");
+    path(group, "M-25-4H25M13-15L27-4L13 7", "bfr-accent-line");
+    path(group, companion ? "M-74 44H74V72H-74Z" : "M-93 48H93V77H-93Z", "bfr-ivory");
+    label("25 → 30 MAR", 0, companion ? 63 : 69, "bfr-small");
+    path(group, "M-12-83Q0-102 12-83", "bfr-line");
+    label("L4", -offset, -32, "bfr-small bfr-light-text");
+    return true;
+  }
+
+  if (isNambucca && item.family === "qg2814-18s-identity-ribbon-reader") {
+    shadow(88, 106);
+    const width = companion ? 124 : 154;
+    path(group, `M ${-width / 2} -82 H ${width / 2} L ${width / 2 + 8} 89 H ${-width / 2 - 8} Z`, "bfr-primary");
+    path(group, `M ${-width / 2 + 13} -64 H ${width / 2 - 13} V 53 H ${-width / 2 + 13} Z`, "bfr-ivory");
+    path(group, "M-27-47C25-30-25-10 27 7C-25 24 25 43-27 55", "bfr-dna-a");
+    path(group, "M27-47C-25-30 25-10-27 7C25 24-25 43 27 55", "bfr-dna-b");
+    [-39,-20,-1,18,37].forEach(y => path(group, `M${y % 2 ? -18 : -24} ${y}H${y % 2 ? 18 : 24}`, "bfr-dna-rung"));
+    path(group, `M ${-width / 2 + 13} 59 H ${width / 2 - 13} V 85 H ${-width / 2 + 13} Z`, "bfr-accent");
+    label("18S DNA", 0, 77, "bfr-label bfr-light-text");
+    label("C. briggsae", 0, -69, "bfr-small bfr-light-text");
+    path(group, "M-17-93H17V-79H-17Z", "bfr-gold");
+    return true;
+  }
+
+  return false;
+}
+
+function drawNigoniFieldAccessory(group, item, companion) {
+  const location = singaporeRendererIds.has(item.id) ? "singapore"
+    : praslinRendererIds.has(item.id) ? "praslin"
+      : saoTomeRendererIds.has(item.id) ? "sao-tome"
+        : mahahualJU2617RendererIds.has(item.id) ? "mahahual"
+          : mauritiusJU2909RendererIds.has(item.id) ? "mauritius"
+            : hcmcJU4356RendererIds.has(item.id) ? "hcmc"
+              : lombokHPT26RendererIds.has(item.id) ? "lombok" : null;
+  if (!location) return false;
+
+  group.dataset.renderer = `${item.family}-field-redesign`;
+  group.classList.add("nigoni-field-redesign", `nfr-${location}`, companion ? "nfr-companion" : "nfr-primary");
+  const label = (value, x, y, className = "nfr-label") => {
+    const node = add(group, "text", { class: className, x, y, "text-anchor": "middle" });
+    node.textContent = value;
+  };
+  const shadow = (rx = 100, y = 104) => add(group, "ellipse", { class: "nfr-shadow", cx: 0, cy: y, rx: companion ? rx * .8 : rx, ry: companion ? 11 : 14 });
+  const plate = (cx, cy, rx = 48, ry = 35, alternate = false) => {
+    add(group, "ellipse", { class: alternate ? "nfr-glass-alt" : "nfr-glass", cx, cy, rx, ry });
+    add(group, "ellipse", { class: "nfr-fine nfr-no-fill", cx, cy: cy - 4, rx: rx - 7, ry: ry - 7 });
+  };
+  const fruit = (parent, kind, cx, cy, scale = 1) => {
+    const fruitGroup = add(parent, "g", { transform: `translate(${cx} ${cy}) scale(${scale})` });
+    if (kind === "starfruit") {
+      path(fruitGroup, "M0-47L13-17L45-15L20 6L29 38L0 20L-29 38L-20 6L-45-15L-13-17Z", "nfr-fruit-yellow");
+      path(fruitGroup, "M0-38V16M-34-11L-16 2M34-11L16 2M-22 27L-8 10M22 27L8 10", "nfr-fruit-line");
+    } else if (kind === "fig") {
+      path(fruitGroup, "M0-46Q-12-32-27-15Q-43 8-29 31Q-17 48 0 49Q17 48 29 31Q43 8 27-15Q12-32 0-46Z", "nfr-fruit-berry");
+      add(fruitGroup, "circle", { class: "nfr-fruit-dot", cx: 0, cy: 33, r: 5 });
+      path(fruitGroup, "M0-44Q9-58 22-51", "nfr-leaf-line");
+    } else if (kind === "citrus") {
+      add(fruitGroup, "circle", { class: "nfr-fruit-coral", cx: 0, cy: 0, r: 39 });
+      path(fruitGroup, "M-5-37Q5-57 24-45Q18-30-5-37Z", "nfr-leaf");
+      path(fruitGroup, "M-30-4Q0-24 30-4M-27 13Q0-3 27 13", "nfr-fruit-line");
+    } else if (kind === "nut") {
+      path(fruitGroup, "M0-45Q34-34 40-2Q44 33 0 47Q-44 33-40-2Q-34-34 0-45Z", "nfr-fruit-gold");
+      path(fruitGroup, "M0-39V40M-31-9Q0 3 31-9", "nfr-fruit-line");
+    } else {
+      path(fruitGroup, "M0-43Q-35-46-43-11Q-49 28-9 45Q31 52 43 15Q51-20 18-38Q9-43 0-43Z", "nfr-fruit-coral");
+      path(fruitGroup, "M1-41Q9-59 27-48Q22-31 1-41Z", "nfr-leaf");
+    }
+    return fruitGroup;
+  };
+  const sampleTray = (kind, title, includeNut = false) => {
+    shadow(108, 107);
+    path(group, companion ? "M-92-8H92L79 83H-79Z" : "M-117-10H117L101 91H-101Z", "nfr-primary");
+    path(group, companion ? "M-78 4H78L69 64H-69Z" : "M-99 3H99L87 70H-87Z", "nfr-ivory");
+    fruit(group, kind, includeNut ? -28 : -13, companion ? 24 : 20, companion ? .66 : .82);
+    if (includeNut) fruit(group, "nut", 47, 26, companion ? .45 : .56);
+    path(group, companion ? "M26-66H87V-28H26Z" : "M38-79H112V-32H38Z", "nfr-card");
+    label(title, companion ? 56 : 75, companion ? -42 : -49, "nfr-small");
+    path(group, companion ? "M-70 72H70" : "M-90 78H90", "nfr-accent-line");
+  };
+
+  if (["zf1220-five-rib-field-atlas", "ju4356-carambola-ground-contact-stage"].includes(item.family)) {
+    sampleTray("starfruit", location === "singapore" ? "ZF1220" : "JU4356");
+    return true;
+  }
+  if (item.family === "hpt26-ficus-ground-contact-stage") {
+    sampleTray("fig", "HPT26");
+    return true;
+  }
+  if (item.family === "ju2909-fruit-nut-viewer") {
+    sampleTray("fruit", "JU2909", true);
+    return true;
+  }
+  if (item.family === "ju2484-fruit-fall-kinetic-track") {
+    shadow(104, 109);
+    path(group, companion ? "M-83-37Q0-72 83-37L70 78Q0 104-70 78Z" : "M-108-43Q0-88 108-43L91 84Q0 116-91 84Z", "nfr-basket");
+    [-60,-30,0,30,60].filter(x => companion ? Math.abs(x) < 70 : true).forEach(x => path(group, `M ${x} -35 Q ${x * .72} 38 ${x * .72} 84`, "nfr-weave"));
+    [-18,12,42].forEach(y => path(group, `M ${companion ? -73 : -96} ${y} Q 0 ${y + 25} ${companion ? 73 : 96} ${y}`, "nfr-weave"));
+    fruit(group, "fruit", companion ? -25 : -34, companion ? -24 : -29, companion ? .48 : .63);
+    fruit(group, "fruit", companion ? 32 : 43, companion ? -15 : -19, companion ? .4 : .53);
+    path(group, companion ? "M-63-46Q0-113 63-46" : "M-82-53Q0-137 82-53", "nfr-handle");
+    label("FRUIT", 0, companion ? 72 : 78, "nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "ju2617-citrus-heap-respiration-recorder") {
+    shadow(101, 109);
+    path(group, companion ? "M-77-45H77L67 82Q0 105-67 82Z" : "M-99-51H99L85 89Q0 117-85 89Z", "nfr-bucket");
+    path(group, companion ? "M-82-48H82V-25H-82Z" : "M-105-55H105V-27H-105Z", "nfr-primary");
+    fruit(group, "citrus", companion ? -29 : -38, companion ? -21 : -26, companion ? .46 : .6);
+    fruit(group, "citrus", companion ? 28 : 36, companion ? -14 : -18, companion ? .39 : .51);
+    path(group, companion ? "M-62-49Q-76-111 0-112Q76-111 62-49" : "M-79-56Q-98-134 0-136Q98-134 79-56", "nfr-handle");
+    label("CITRUS", 0, companion ? 75 : 82, "nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "multifemale-provenance-merger") {
+    shadow(100, 105);
+    const width = companion ? 142 : 182;
+    [-2,-1,0,1,2].forEach((index) => {
+      const x = index * (companion ? 21 : 27);
+      const y = Math.abs(index) * 9 - 56;
+      path(group, `M ${x - 24} ${y} H ${x + 24} V ${y + 112} H ${x - 24} Z`, index % 2 ? "nfr-card-alt" : "nfr-card");
+      add(group, "circle", { class: "nfr-female", cx: x, cy: y + 31, r: companion ? 8 : 10 });
+      path(group, `M ${x - 13} ${y + 56} H ${x + 13} M ${x - 13} ${y + 70} H ${x + 13}`, "nfr-fine");
+    });
+    path(group, `M ${-width / 2} 69 H ${width / 2} V 91 H ${-width / 2} Z`, "nfr-primary");
+    label("5 FEMALES", 0, 84, "nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "holttum-orchid-hybridisation-engine") {
+    shadow(108, 107);
+    path(group, companion ? "M-90-18H91V82H-90Z" : "M-116-22H117V91H-116Z", "nfr-primary");
+    path(group, companion ? "M-79-7H79V65H-79Z" : "M-102-9H102V72H-102Z", "nfr-ivory");
+    [-48,-8,32].forEach((x,index) => {
+      const dx = companion ? x * .8 : x;
+      path(group, `M ${dx - 7} -66 L ${dx + 17} 55`, index % 2 ? "nfr-brush-alt" : "nfr-brush");
+      path(group, `M ${dx - 15} -76 Q ${dx} -94 ${dx + 15} -76 L ${dx + 8} -57 H ${dx - 8} Z`, index % 2 ? "nfr-bristle-alt" : "nfr-bristle");
+    });
+    path(group, companion ? "M43-33Q70-62 92-34Q76-9 54-18Q42 4 29-18Q20-42 43-33Z" : "M54-43Q89-81 116-44Q96-12 68-24Q53 5 37-24Q25-55 54-43Z", "nfr-orchid");
+    label("POLLINATION", 0, companion ? 78 : 84, "nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "yr106-long-read-genome-loom") {
+    shadow(101, 105);
+    const radius = companion ? 57 : 72;
+    add(group, "circle", { class: "nfr-primary", cx: -18, cy: -3, r: radius });
+    add(group, "circle", { class: "nfr-ivory", cx: -18, cy: -3, r: radius - 14 });
+    add(group, "circle", { class: "nfr-gold", cx: -18, cy: -3, r: companion ? 13 : 17 });
+    [-90,-30,30,90,150,210].forEach(deg => { const r = deg * Math.PI / 180; path(group, `M ${(-18 + Math.cos(r) * (radius - 15)).toFixed(1)} ${(-3 + Math.sin(r) * (radius - 15)).toFixed(1)} L ${(-18 + Math.cos(r) * 15).toFixed(1)} ${(-3 + Math.sin(r) * 15).toFixed(1)}`, "nfr-spoke"); });
+    path(group, companion ? "M32-22Q92-53 103-3Q113 45 59 59L26 69" : "M44-28Q119-68 133-4Q146 57 77 75L34 88", "nfr-dna-ribbon");
+    path(group, companion ? "M39-9Q73-29 94-7M43 8Q76-10 99 9M43 25Q72 11 95 29" : "M53-12Q95-38 122-10M57 10Q98-14 128 12M56 32Q94 13 123 37", "nfr-dna-rungs");
+    label("DNA", -18, 4, "nfr-label");
+    return true;
+  }
+  if (item.family === "coco-de-mer-growth-monitoring-rig") {
+    shadow(101, 106);
+    add(group, "circle", { class: "nfr-primary", cx: companion ? -46 : -59, cy: 15, r: companion ? 46 : 57 });
+    path(group, companion ? "M-75 15Q-61-32-45-13Q-29-32-16 15Q-24 55-45 62Q-67 55-75 15Z" : "M-96 17Q-77-43-58-17Q-38-43-20 17Q-31 69-58 78Q-86 69-96 17Z", "nfr-nut");
+    path(group, companion ? "M-1-31H96V-6H-1Z" : "M-5-43H126V-10H-5Z", "nfr-tape");
+    [12,32,52,72,92].forEach(x => path(group, `M ${x} ${companion ? -29 : -41} V ${companion ? -15 : -20}`, "nfr-tape-tick"));
+    path(group, companion ? "M88-38H105V1H88Z" : "M115-51H136V3H115Z", "nfr-hook");
+    label("MEASURE", companion ? 47 : 58, companion ? -13 : -20, "nfr-small");
+    return true;
+  }
+  if (item.family === "praslin-black-parrot-call-listener") {
+    shadow(95, 108);
+    path(group, companion ? "M-73 23Q-83-64 0-78Q83-64 73 23" : "M-92 28Q-105-82 0-98Q105-82 92 28", "nfr-headband");
+    path(group, companion ? "M-79-2H-45V61H-79Z" : "M-101-5H-57V72H-101Z", "nfr-earcup");
+    path(group, companion ? "M45-2H79V61H45Z" : "M57-5H101V72H57Z", "nfr-earcup-alt");
+    path(group, companion ? "M56 54Q93 57 101 82" : "M72 66Q118 70 128 99", "nfr-cable");
+    path(group, companion ? "M-18-24Q7-48 31-21Q36 7 14 23Q-8 23-18-2Z" : "M-24-31Q8-62 40-28Q47 9 18 30Q-11 30-24-3Z", "nfr-parrot");
+    path(group, companion ? "M27-17L52-6L28 2" : "M35-22L67-8L36 3", "nfr-beak");
+    add(group, "circle", { class: "nfr-eye", cx: companion ? 17 : 22, cy: companion ? -20 : -26, r: 4 });
+    label("LISTEN", 0, companion ? 87 : 104, "nfr-small");
+    return true;
+  }
+  if (item.family === "sao-tome-point-count-sound-loom") {
+    shadow(91, 108);
+    path(group, companion ? "M-32-80H31V45H-32Z" : "M-41-99H40V56H-41Z", "nfr-microphone");
+    path(group, companion ? "M-39-82Q0-105 38-82V-45Q0-23-39-45Z" : "M-50-102Q0-132 49-102V-56Q0-29-50-56Z", "nfr-mic-head");
+    [-67,-51,-35].forEach(y => path(group, `M ${companion ? -31 : -40} ${companion ? y : y * 1.25} H ${companion ? 30 : 39}`, "nfr-mic-slot"));
+    path(group, companion ? "M0 45V85M-50 85H50" : "M0 56V103M-64 103H64", "nfr-stand");
+    path(group, companion ? "M45-50Q86-68 98-31M45-27Q82-38 96-9" : "M58-63Q111-86 126-39M58-34Q105-48 123-11", "nfr-sound");
+    label("BIRD CALL", 0, companion ? 78 : 96, "nfr-small");
+    return true;
+  }
+  if (item.family === "sao-tome-begonia-lineage-kinetoscope") {
+    shadow(105, 107);
+    path(group, companion ? "M-89-63H89V78H-89Z" : "M-114-76H114V89H-114Z", "nfr-primary");
+    path(group, companion ? "M-75-49H75V57H-75Z" : "M-96-60H96V66H-96Z", "nfr-ivory");
+    path(group, companion ? "M-57-31Q-12-63 4-10Q-16 42-57 22Q-80-2-57-31Z" : "M-74-39Q-16-80 5-13Q-20 53-74 28Q-103-3-74-39Z", "nfr-begonia-leaf");
+    path(group, companion ? "M33-21Q56-48 77-20Q59 2 37-4Q22 20 9-5Q12-28 33-21Z" : "M43-27Q72-62 99-26Q75 3 48-5Q28 25 12-6Q15-36 43-27Z", "nfr-begonia-flower");
+    path(group, companion ? "M-96-70H96M-96 85H96" : "M-123-84H123M-123 98H123", "nfr-press-bar");
+    label("BEGONIA", 21, companion ? 52 : 60, "nfr-small");
+    return true;
+  }
+  if (item.family === "ju2617-test-cross-lock") {
+    shadow(108, 105);
+    plate(companion ? -41 : -53, 5, companion ? 43 : 53, companion ? 32 : 39);
+    plate(companion ? 41 : 53, 10, companion ? 43 : 53, companion ? 32 : 39, true);
+    path(group, companion ? "M-101-65H101V87H-101Z" : "M-128-72H128V94H-128Z", "nfr-frame");
+    path(group, "M-22-7H22M10-19L24-7L10 5M22 34H-22M-10 22L-24 34L-10 46", "nfr-arrow");
+    label("TEST CROSS", 0, companion ? 74 : 81, "nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "mahahual-lighthouse-flash-sequencer") {
+    shadow(77, 109);
+    path(group, companion ? "M-47-48H47L58 84H-58Z" : "M-59-61H59L74 94H-74Z", "nfr-lighthouse");
+    path(group, companion ? "M-60-52H60V-18H-60Z" : "M-77-66H77V-22H-77Z", "nfr-lamp-room");
+    path(group, companion ? "M-69-54L0-101L69-54Z" : "M-88-69L0-129L88-69Z", "nfr-light-beam");
+    path(group, companion ? "M-55 24H55M-52 53H52" : "M-69 29H69M-66 65H66", "nfr-stripe");
+    path(group, companion ? "M-72 85H72V101H-72Z" : "M-91 95H91V113H-91Z", "nfr-primary");
+    label("MAHAHUAL", 0, companion ? 97 : 108, "nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "ju2909-ju2910-sample-bifurcator") {
+    shadow(101, 107);
+    [-1,1].forEach((side,index) => {
+      const x = side * (companion ? 43 : 55);
+      path(group, `M ${x - (companion ? 28 : 35)} -62 H ${x + (companion ? 28 : 35)} V -39 L ${x + (companion ? 36 : 45)} -22 V 75 Q ${x} 91 ${x - (companion ? 36 : 45)} 75 V -22 L ${x - (companion ? 28 : 35)} -39 Z`, index ? "nfr-glass-alt" : "nfr-glass");
+      path(group, `M ${x - (companion ? 31 : 39)} -67 H ${x + (companion ? 31 : 39)} V -44 H ${x - (companion ? 31 : 39)} Z`, index ? "nfr-accent" : "nfr-primary");
+      path(group, `M ${x - (companion ? 25 : 32)} 20 H ${x + (companion ? 25 : 32)} V 64 H ${x - (companion ? 25 : 32)} Z`, index ? "nfr-water-alt" : "nfr-water");
+      label(index ? "2910" : "2909", x, 52, "nfr-small");
+    });
+    path(group, companion ? "M-43-70Q0-105 43-70" : "M-55-82Q0-126 55-82", "nfr-handle");
+    return true;
+  }
+  if (item.family === "casela-rempart-contour-surveyor") {
+    shadow(82, 107);
+    const radius = companion ? 64 : 79;
+    add(group, "circle", { class: "nfr-primary", cx: 0, cy: 0, r: radius });
+    add(group, "circle", { class: "nfr-ivory", cx: 0, cy: 0, r: radius - 12 });
+    [0,45,90,135,180,225,270,315].forEach(deg => { const r=deg*Math.PI/180; path(group, `M ${(Math.cos(r)*(radius-25)).toFixed(1)} ${(Math.sin(r)*(radius-25)).toFixed(1)} L ${(Math.cos(r)*(radius-14)).toFixed(1)} ${(Math.sin(r)*(radius-14)).toFixed(1)}`, "nfr-fine"); });
+    path(group, "M0-49L15 8L0 55L-15 8Z", "nfr-needle");
+    add(group, "circle", { class: "nfr-gold", cx: 0, cy: 8, r: 7 });
+    label("N", 0, companion ? -39 : -51, "nfr-small");
+    path(group, companion ? "M-34 26Q-12 7 6 28T38 22" : "M-43 33Q-15 9 8 36T49 28", "nfr-contour");
+    return true;
+  }
+  if (item.family === "ju4356-its2-ribbon-reader") {
+    shadow(99, 104);
+    const width = companion ? 140 : 180;
+    path(group, `M ${-width / 2} -75 H 4 V 72 H ${-width / 2} Z`, "nfr-card");
+    path(group, `M -4 -58 H ${width / 2} V 88 H -4 Z`, "nfr-card-alt");
+    [-38,-12,14,40].forEach((y,index) => {
+      path(group, `M ${-width / 2 + 13} ${y} H ${index % 2 ? -17 : -29}`, index % 2 ? "nfr-band-alt" : "nfr-band");
+      path(group, `M 10 ${y + 9} H ${width / 2 - 13}`, index % 2 ? "nfr-band" : "nfr-band-alt");
+    });
+    label("ITS2", width / 4, 77, "nfr-small nfr-light-text");
+    path(group, "M-13-83H13V-68H-13Z", "nfr-gold");
+    return true;
+  }
+  if (item.family === "hcmc-urban-canopy-census-engine") {
+    shadow(105, 105);
+    path(group, companion ? "M-102-28H27M-102-28V-58M27-28V-58" : "M-130-35H35M-130-35V-74M35-35V-74", "nfr-caliper");
+    path(group, companion ? "M-85-17V76M10-17V76" : "M-108-22V94M13-22V94", "nfr-caliper-jaw");
+    path(group, companion ? "M-104 12H99V36H-104Z" : "M-133 15H128V45H-133Z", "nfr-ruler");
+    [-70,-40,-10,20,50,80].forEach(x => path(group, `M ${companion ? x * .8 : x} ${companion ? 13 : 16} V ${companion ? 29 : 37}`, "nfr-tape-tick"));
+    path(group, companion ? "M44-51Q73-82 101-46Q86-18 56-28Q39-4 24-29Q24-54 44-51Z" : "M56-65Q94-105 130-59Q109-23 72-35Q50-5 31-37Q31-69 56-65Z", "nfr-leaf");
+    label("TREE", companion ? -42 : -53, companion ? 31 : 39, "nfr-small");
+    return true;
+  }
+  if (item.family === "lingsar-field-to-plate-calendar") {
+    shadow(88, 105);
+    const width=companion?124:158;
+    path(group, `M ${-width/2} -76 H ${width/2} V 91 H ${-width/2} Z`, "nfr-ivory");
+    path(group, `M ${-width/2} -76 H ${width/2} V -43 H ${-width/2} Z`, "nfr-primary");
+    [-34,0,34].filter(x=>Math.abs(x)<width/2-5).forEach(x=>{add(group,"circle",{class:"nfr-gold",cx:x,cy:-77,r:8});path(group,`M ${x} -91 V -69`,"nfr-fine")});
+    label("FIELD", -width/4, -21, "nfr-small");
+    label("PLATE", width/4, 45, "nfr-small");
+    path(group,"M0-36V69M-12 57L0 71L12 57","nfr-arrow");
+    plate(width/4,17,companion?25:31,companion?18:22,true);
+    label("HPT26",0,83,"nfr-small");
+    return true;
+  }
+  if (item.family === "hpt26-hpt27-substrate-diptych") {
+    shadow(108, 106);
+    const offset=companion?51:66;
+    [-1,1].forEach((side,index)=>{
+      const x=side*offset;
+      path(group,`M ${x-(companion?44:55)} -63 H ${x+(companion?44:55)} V 75 H ${x-(companion?44:55)} Z`,index?"nfr-primary":"nfr-secondary");
+      path(group,`M ${x-(companion?34:43)} -50 H ${x+(companion?34:43)} V 50 H ${x-(companion?34:43)} Z`,"nfr-glass");
+      fruit(group,index?"fruit":"fig",x,0,companion?.38:.49);
+      label(index?"HPT27":"HPT26",x,68,"nfr-small nfr-light-text");
+    });
+    path(group,"M-12-72H12V82H-12Z","nfr-gold");
+    return true;
+  }
+  return false;
+}
+
+function drawTropicalisFieldAccessory(group, item, companion) {
+  const location = laSelvaQG3845RendererIds.has(item.id) ? "la-selva"
+    : guadeloupeNIC203RendererIds.has(item.id) ? "guadeloupe"
+      : nouraguesJU1428RendererIds.has(item.id) ? "nouragues"
+        : manausJU1976RendererIds.has(item.id) ? "manaus"
+          : oahuECA789RendererIds.has(item.id) ? "oahu"
+            : kauaiQG131RendererIds.has(item.id) ? "kauai-qg131"
+              : newTaipeiNIC1648RendererIds.has(item.id) ? "new-taipei"
+                : pohnpeiQG4739RendererIds.has(item.id) ? "pohnpei"
+                  : queenslandQG2904RendererIds.has(item.id) ? "queensland"
+                    : reunionJU1373RendererIds.has(item.id) ? "reunion" : null;
+  if (!location) return false;
+
+  group.dataset.renderer = `${item.family}-field-redesign`;
+  group.classList.add("nigoni-field-redesign", "tropicalis-field-redesign", `tfr-${location}`, companion ? "nfr-companion" : "nfr-primary");
+  const label = (value, x, y, className = "nfr-label") => {
+    const node = add(group, "text", { class: className, x, y, "text-anchor": "middle" });
+    node.textContent = value;
+  };
+  const shadow = (rx = 100, y = 105) => add(group, "ellipse", { class: "nfr-shadow", cx: 0, cy: y, rx: companion ? rx * .8 : rx, ry: companion ? 11 : 14 });
+  const fruit = (cx, cy, scale = 1, flower = false) => {
+    const node = add(group, "g", { transform: `translate(${cx} ${cy}) scale(${scale})` });
+    if (flower) {
+      [-90,-18,54,126,198].forEach(deg => { const r=deg*Math.PI/180; path(node, `M0 0Q${(Math.cos(r-.42)*45).toFixed(1)} ${(Math.sin(r-.42)*45).toFixed(1)} ${(Math.cos(r)*37).toFixed(1)} ${(Math.sin(r)*37).toFixed(1)}Q${(Math.cos(r+.42)*45).toFixed(1)} ${(Math.sin(r+.42)*45).toFixed(1)} 0 0Z`, "nfr-orchid"); });
+      add(node,"circle",{class:"nfr-gold",cx:0,cy:0,r:10});
+    } else {
+      path(node,"M0-48Q-39-45-46-8Q-50 32-10 48Q32 53 47 16Q54-22 18-42Q8-48 0-48Z","nfr-fruit-coral");
+      path(node,"M1-44Q12-62 31-48Q24-30 1-44Z","nfr-leaf");
+      [-18,2,22].forEach(x=>path(node,`M ${x} -26 Q ${x+8} 0 ${x-3} 26`,"nfr-fruit-line"));
+    }
+  };
+  const sampleBox = (title, flower = false) => {
+    shadow(108,108);
+    const width=companion?170:220;
+    path(group,`M ${-width/2} -51 H ${width/2} V 88 H ${-width/2} Z`,"nfr-primary");
+    path(group,`M ${-width/2+12} -38 H ${width/2-12} V 62 H ${-width/2+12} Z`,"nfr-glass");
+    path(group,`M ${-width/2+9} -57 Q 0 -101 ${width/2-9} -57`,"nfr-handle");
+    fruit(companion?-23:-31,10,companion?.65:.82,flower);
+    path(group,companion?"M28-29H75V43H28Z":"M39-38H98V52H39Z","nfr-card");
+    label(title,companion?51:68,companion?13:17,"nfr-small");
+    path(group,`M ${-width/2+17} 68 H ${width/2-17}`,"nfr-accent-line");
+  };
+
+  if (item.family === "qg3845-substrate-temperature") {
+    shadow(81,108);
+    path(group, companion ? "M-30-88H30V40Q53 61 45 86Q36 111 0 112Q-36 111-45 86Q-53 61-30 40Z" : "M-38-111H38V49Q67 77 56 108Q45 138 0 139Q-45 138-56 108Q-67 77-38 49Z", "nfr-glass");
+    path(group, companion ? "M-12-70H12V62Q29 73 25 88Q19 104 0 104Q-19 104-25 88Q-29 73-12 62Z" : "M-15-90H15V78Q36 91 31 110Q24 130 0 130Q-24 130-31 110Q-36 91-15 78Z", "nfr-accent");
+    [-52,-27,-2,23].forEach(y=>path(group,`M ${companion?29:37} ${companion?y:y*1.25} H ${companion?45:58}`,"nfr-tape-tick"));
+    label("26.5°C",0,companion?11:15,"nfr-small");
+    return true;
+  }
+  if (item.family === "la-selva-leafcutter-automaton") {
+    shadow(103,105);
+    add(group,"circle",{class:"nfr-glass",cx:companion?-25:-32,cy:companion?-20:-25,r:companion?61:78});
+    path(group,companion?"M17 25L91 97":"M22 31L117 124","nfr-handle");
+    path(group,companion?"M-58-27Q-28-56-3-24Q-30 7-58-27Z":"M-74-35Q-36-72-4-31Q-38 9-74-35Z","nfr-leaf");
+    add(group,"circle",{class:"nfr-ink-fill",cx:companion?-18:-23,cy:companion?4:5,r:companion?10:13});
+    add(group,"circle",{class:"nfr-ink-fill",cx:companion?3:4,cy:companion?13:17,r:companion?8:10});
+    path(group,companion?"M-12 8L-31 27M-8 11L-19 37M-3 14L13 33M7 14L25 27":"M-15 10L-40 35M-10 14L-24 47M-4 18L17 42M9 18L32 35","nfr-fine");
+    label("ANT",companion?-25:-32,companion?-64:-82,"nfr-small");
+    return true;
+  }
+  if (item.family === "barva-gradient-lift") {
+    shadow(108,106);
+    path(group,companion?"M-101-67L-34-88L15-56L95-80V72L28 91L-26 59L-101 83Z":"M-129-84L-43-111L19-71L122-102V91L36 116L-33 75L-129 106Z","nfr-ivory");
+    path(group,companion?"M-34-88V59M15-56V91":"M-43-111V75M19-71V116","nfr-fine");
+    path(group,companion?"M-82 55L-41 7L-3 35L41-23L79 17":"M-105 70L-53 9L-4 44L52-29L102 22","nfr-mountain");
+    path(group,companion?"M-75 70Q0 29 77 55":"M-96 88Q0 37 99 70","nfr-contour");
+    label("65 m",companion?-65:-84,companion?31:40,"nfr-small");
+    label("2906 m",companion?57:73,companion?-29:-37,"nfr-small");
+    return true;
+  }
+  if (item.family === "nic203-torch-ginger-bract-stage") {
+    sampleBox("NIC203",true);
+    return true;
+  }
+  if (item.family === "carbet-three-fall-hydraulic-sequencer") {
+    shadow(102,107);
+    path(group,companion?"M-94-70H-14V84H-94ZM14-70H94V84H14Z":"M-121-88H-18V101H-121ZM18-88H121V101H18Z","nfr-primary");
+    path(group,companion?"M-73-48Q-42-9-68 27Q-87 56-54 72":"M-94-61Q-54-12-87 34Q-111 70-69 91","nfr-water-flow");
+    add(group,"circle",{class:"nfr-ivory",cx:companion?54:69,cy:companion?-18:-23,r:companion?32:41});
+    path(group,companion?"M54-18L73-37":"M69-23L94-48","nfr-needle-line");
+    add(group,"circle",{class:"nfr-gold",cx:companion?54:69,cy:companion?-18:-23,r:6});
+    [-40,-8,24,56].forEach(y=>path(group,`M ${companion?20:26} ${companion?y:y*1.25} H ${companion?86:111}`,"nfr-fine"));
+    label("FLOW",companion?54:69,companion?67:84,"nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "nic203-toxin-antidote-automaton") {
+    shadow(104,105);
+    const width=companion?144:184;
+    path(group,`M ${-width/2} -73 H 5 V 72 H ${-width/2} Z`,"nfr-card");
+    path(group,`M -5 -58 H ${width/2} V 87 H -5 Z`,"nfr-card-alt");
+    label("TOXIN",-width/4,-24,"nfr-small");label("ANTIDOTE",width/4,-8,"nfr-small");
+    path(group,"M-49 7H-15M15 20H49M-31-5L-14 7L-31 19M31 8L14 20L31 32","nfr-arrow");
+    [[-44,38],[-20,51],[22,47],[48,60]].forEach(([x,y],i)=>add(group,"circle",{class:i%2?"nfr-accent":"nfr-gold",cx:x,cy:y,r:8}));
+    path(group,"M-13-82H13V-67H-13Z","nfr-primary");
+    return true;
+  }
+  if (item.family === "ju1428-duguetia-fruit-theatre") {
+    sampleBox("JU1428");
+    return true;
+  }
+  if (item.family === "nouragues-litterfall-chronobalance") {
+    shadow(105,108);
+    path(group,companion?"M-88-36Q0-70 88-36L73 78Q0 104-73 78Z":"M-113-43Q0-87 113-43L94 86Q0 116-94 86Z","nfr-basket");
+    [-57,-28,0,28,57].filter(x=>companion?Math.abs(x)<70:true).forEach(x=>path(group,`M ${x} -34 Q ${x*.7} 36 ${x*.7} 82`,`nfr-weave`));
+    [-13,18,49].forEach(y=>path(group,`M ${companion?-78:-101} ${y} Q 0 ${y+22} ${companion?78:101} ${y}`,"nfr-weave"));
+    [-48,-15,18,49].forEach((x,i)=>path(group,`M ${x-10} -31 Q ${x} ${-52-(i%2)*12} ${x+10} -31 Q ${x} -14 ${x-10} -31Z`,i%2?"nfr-leaf":"nfr-begonia-leaf"));
+    label("LITTERFALL",0,companion?75:82,"nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "ju1428-isotype-triad-comparator") {
+    shadow(106,107);
+    [-1,0,1].forEach((index)=>{const x=index*(companion?58:74);path(group,`M ${x-(companion?24:30)} -68 H ${x+(companion?24:30)} V 74 Q ${x} 91 ${x-(companion?24:30)} 74 Z`,index===0?"nfr-glass-alt":"nfr-glass");path(group,`M ${x-(companion?27:34)} -73 H ${x+(companion?27:34)} V -48 H ${x-(companion?27:34)} Z`,index===0?"nfr-accent":"nfr-primary");label(`${1429+index}`,x,54,"nfr-small")});
+    path(group,companion?"M-91 82H91V101H-91Z":"M-116 91H116V113H-116Z","nfr-secondary");
+    label("THREE STRAINS",0,companion?96:107,"nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "ju1976-substrate-identity-shadow-theatre") {
+    sampleBox("JU1976");
+    return true;
+  }
+  if (item.family === "ju1975-ju1976-four-metre-sample-rail") {
+    shadow(105,106);
+    add(group,"circle",{class:"nfr-primary",cx:companion?-52:-67,cy:14,r:companion?48:60});
+    add(group,"circle",{class:"nfr-ivory",cx:companion?-52:-67,cy:14,r:companion?25:31});
+    path(group,companion?"M-13-26H98V3H-13Z":"M-17-34H127V4H-17Z","nfr-tape");
+    [-2,20,42,64,86].forEach(x=>path(group,`M ${companion?x:x*1.28} ${companion?-23:-30} V ${companion?-8:-11}`,"nfr-tape-tick"));
+    path(group,companion?"M89-33H108V10H89Z":"M115-44H139V13H115Z","nfr-hook");
+    label("4 m",companion?43:55,companion?-7:-10,"nfr-small");
+    return true;
+  }
+  if (item.family === "manaus-plateau-valley-soil-harmonograph") {
+    shadow(105,106);
+    path(group,companion?"M-99-72H99V89H-99Z":"M-126-89H126V105H-126Z","nfr-primary");
+    path(group,companion?"M-84-57H84V69H-84Z":"M-107-71H107V82H-107Z","nfr-ivory");
+    path(group,companion?"M-83 42Q-43 8 0 31T83 5V68H-83Z":"M-106 52Q-55 10 0 39T106 6V81H-106Z","nfr-soil-dark");
+    path(group,companion?"M-83 12Q-38-21 0 3T83-24V14Q43 44 0 30T-83 42Z":"M-106 15Q-49-27 0 4T106-30V17Q55 56 0 38T-106 52Z","nfr-soil-light");
+    [-58,-30,-2,26].forEach(y=>path(group,`M ${companion?-80:-102} ${companion?y:y*1.24} H ${companion?-63:-80}`,"nfr-tape-tick"));
+    label("SOIL PROFILE",0,companion?84:99,"nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "eca789-fallen-flower-decay-chronoscope") {
+    sampleBox("ECA789",true);
+    return true;
+  }
+  if (item.family === "eca789-paired-microclimate-harmonograph") {
+    shadow(104,106);
+    const width=companion?164:210;
+    path(group,`M ${-width/2} -65 H ${width/2} V 87 H ${-width/2} Z`,"nfr-primary");
+    path(group,`M ${-width/2+12} -51 H ${width/2-12} V 64 H ${-width/2+12} Z`,"nfr-ivory");
+    add(group,"circle",{class:"nfr-glass",cx:-width/4,cy:2,r:companion?35:44});
+    add(group,"circle",{class:"nfr-glass-alt",cx:width/4,cy:2,r:companion?35:44});
+    path(group,`M ${-width/4} 2 L ${-width/4+18} -21 M ${width/4} 2 L ${width/4-15} -25`,"nfr-needle-line");
+    label("22.9°",-width/4,companion?31:38,"nfr-small");label("93.7%",width/4,companion?31:38,"nfr-small");
+    label("TEMP + HUMIDITY",0,companion?81:80,"nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "c0085-field-record-relay") {
+    shadow(101,106);
+    path(group,companion?"M-82-74H65L88-50V87H-82Z":"M-104-92H83L112-63V103H-104Z","nfr-folder");
+    path(group,companion?"M-68-55H68V69H-68Z":"M-87-70H87V82H-87Z","nfr-ivory");
+    path(group,companion?"M-82-74H-21L-6-51H65":"M-104-92H-27L-8-64H83","nfr-folder-tab");
+    [-32,-6,20,46].forEach(y=>path(group,`M ${companion?-53:-68} ${companion?y:y*1.23} H ${companion?55:70}`,"nfr-fine"));
+    path(group,companion?"M-54 48H54V71H-54Z":"M-69 59H69V87H-69Z","nfr-accent");
+    label("FIELD RECORD",0,companion?65:79,"nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "qg131-paired-pandanus-key-sorter") {
+    shadow(106,108);
+    path(group,companion?"M-88-34Q0-70 88-34L74 79Q0 104-74 79Z":"M-113-42Q0-88 113-42L95 87Q0 117-95 87Z","nfr-basket");
+    [-57,-28,0,28,57].filter(x=>companion?Math.abs(x)<70:true).forEach(x=>path(group,`M ${x} -32 Q ${x*.7} 38 ${x*.7} 82`,"nfr-weave"));
+    [-12,19,50].forEach(y=>path(group,`M ${companion?-78:-101} ${y} Q 0 ${y+22} ${companion?78:101} ${y}`,"nfr-weave"));
+    [-1,1].forEach(side=>{const x=side*(companion?35:45);path(group,`M ${x} -57Q${x+28} -46 ${x+30} -12Q${x+24} 22 ${x} 31Q${x-24} 22 ${x-30} -12Q${x-28} -46 ${x} -57Z`,side<0?"nfr-fruit-coral":"nfr-fruit-yellow");[-34,-12,10].forEach(y=>path(group,`M ${x-22} ${y} H ${x+22}`,"nfr-fruit-line"))});
+    path(group,companion?"M-65-43Q0-110 65-43":"M-83-51Q0-137 83-51","nfr-handle");
+    label("PANDANUS",0,companion?76:83,"nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "qg131-four-date-culture-relay") {
+    shadow(107,105);
+    const width=companion?184:236;
+    path(group,`M ${-width/2} -70 H ${width/2} V 91 H ${-width/2} Z`,"nfr-ivory");
+    path(group,`M ${-width/2} -70 H ${width/2} V -39 H ${-width/2} Z`,"nfr-primary");
+    const dates=["03","08","14","23"];
+    dates.forEach((date,index)=>{const x=(index-1.5)*(companion?41:53);path(group,`M ${x-(companion?17:22)} -23 H ${x+(companion?17:22)} V 52 H ${x-(companion?17:22)} Z`,index%2?"nfr-card-alt":"nfr-card");label(date,x,15,"nfr-label");label("AUG",x,39,"nfr-small")});
+    label("CULTURE DATES",0,82,"nfr-small");
+    return true;
+  }
+  if (item.family === "qg131-mating-id-motion-theatre") {
+    shadow(108,105);
+    const offset=companion?42:54;
+    path(group,companion?"M-103-65H103V88H-103Z":"M-130-72H130V95H-130Z","nfr-frame");
+    [-1,1].forEach((side,index)=>{const x=side*offset;add(group,"ellipse",{class:index?"nfr-glass-alt":"nfr-glass",cx:x,cy:5,rx:companion?44:54,ry:companion?33:40});add(group,"ellipse",{class:"nfr-fine nfr-no-fill",cx:x,cy:1,rx:companion?36:45,ry:companion?25:32})});
+    path(group,"M-22-7H22M10-19L24-7L10 5M22 34H-22M-10 22L-24 34L-10 46","nfr-arrow");
+    label("MATING TEST",0,companion?76:82,"nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "nic1648-fig-diameter-comparator") {
+    shadow(105,106);
+    path(group,companion?"M-101-28H31M-101-28V-59M31-28V-59":"M-130-35H40M-130-35V-75M40-35V-75","nfr-caliper");
+    path(group,companion?"M-84-17V76M14-17V76":"M-108-22V94M18-22V94","nfr-caliper-jaw");
+    path(group,companion?"M-103 12H102V36H-103Z":"M-132 15H131V45H-132Z","nfr-ruler");
+    [-70,-40,-10,20,50,80].forEach(x=>path(group,`M ${companion?x*.8:x} ${companion?13:16} V ${companion?29:37}`,"nfr-tape-tick"));
+    path(group,companion?"M53-52Q22-51 13-20Q8 16 45 34Q81 41 91 7Q98-28 70-47Z":"M68-67Q28-65 17-26Q10 21 58 44Q104 53 117 9Q126-36 90-60Z","nfr-fruit-berry");
+    label("10–15 mm",companion?-39:-50,companion?31:39,"nfr-small");
+    return true;
+  }
+  if (item.family === "nic1648-stair-side-sample-indexer") {
+    shadow(93,108);
+    const width=companion?126:158;
+    path(group,`M ${-width/2} -77 H ${width/2} L ${width/2+11} 87 H ${-width/2-11} Z`,"nfr-glass");
+    path(group,`M ${-width/2} -77 H ${width/2} V -54 H ${-width/2} Z`,"nfr-primary");
+    path(group,`M ${-width/2+11} -47 H ${width/2-11}`,"nfr-fine");
+    [-35,-8,19].forEach((y,index)=>path(group,`M ${-width/2+18+index*12} ${y} H ${width/2-18} V ${y+17} H ${-width/2+18+index*12} Z`,index%2?"nfr-card-alt":"nfr-card"));
+    path(group,`M ${-width/2+12} 51 H ${width/2-12} V 80 H ${-width/2+12} Z`,"nfr-secondary");
+    label("STAIR SAMPLE",0,72,"nfr-small");
+    return true;
+  }
+  if (item.family === "nic1648-qualitative-male-viewer") {
+    shadow(100,106);
+    path(group,companion?"M-73-43Q-78-88-35-98Q8-106 29-66L83 44L54 60L2-39Q-18-15-51-17Z":"M-94-55Q-101-113-45-126Q10-136 37-84L107 57L69 77L3-50Q-23-19-65-22Z","nfr-microscope");
+    path(group,companion?"M-13-19H71V4H-13Z":"M-17-24H91V5H-17Z","nfr-stage");
+    path(group,companion?"M45 5Q74 29 60 65Q42 95 3 84":"M58 6Q95 37 77 83Q54 121 4 108","nfr-microscope-base");
+    add(group,"circle",{class:"nfr-glass",cx:companion?-45:-58,cy:companion?-71:-91,r:companion?18:23});
+    label("MALE COUNT",companion?20:26,companion?78:99,"nfr-small");
+    return true;
+  }
+  if (item.family === "qg4739-kotop-name-concordance") {
+    sampleBox("QG4739");
+    return true;
+  }
+  if (item.family === "qg4739-paired-temperature-differential") {
+    shadow(100,108);
+    [-1,1].forEach((side,index)=>{const x=side*(companion?45:58);path(group,`M ${x-(companion?21:27)} -77 H ${x+(companion?21:27)} V 35Q${x+(companion?39:50)} 52 ${x+(companion?31:40)} 76Q${x+(companion?24:31)} 101 ${x} 101Q${x-(companion?24:31)} 101 ${x-(companion?31:40)} 76Q${x-(companion?39:50)} 52 ${x-(companion?21:27)} 35Z`,index?"nfr-glass-alt":"nfr-glass");path(group,`M ${x-8} -60 H ${x+8} V 55Q${x+20} 66 ${x+14} 80Q${x+9} 91 ${x} 91Q${x-9} 91 ${x-14} 80Q${x-20} 66 ${x-8} 55Z`,index?"nfr-secondary":"nfr-accent");label(index?"26.0°":"23.7°",x,19,"nfr-small")});
+    return true;
+  }
+  if (item.family === "c0230-seven-isotype-registry") {
+    shadow(110,106);
+    const xs=companion?[-75,-50,-25,0,25,50,75]:[-96,-64,-32,0,32,64,96];
+    xs.forEach((x,index)=>{path(group,`M ${x-(companion?11:14)} -59 H ${x+(companion?11:14)} V 65Q${x} 76 ${x-(companion?11:14)} 65Z`,index===5?"nfr-glass-alt":"nfr-glass");path(group,`M ${x-(companion?13:17)} -64 H ${x+(companion?13:17)} V -45 H ${x-(companion?13:17)} Z`,index===5?"nfr-accent":"nfr-primary");label(String.fromCharCode(65+index),x,48,"nfr-small")});
+    path(group,companion?"M-94 76H94V98H-94Z":"M-119 79H119V105H-119Z","nfr-secondary");
+    label("7 ISOTYPES",0,companion?92:99,"nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "qg2904-uncracked-pod-seam-scanner") {
+    shadow(111,107);
+    path(group,companion?"M-104-62H104V85H-104Z":"M-133-77H133V101H-133Z","nfr-primary");
+    path(group,companion?"M-89-47H89V61H-89Z":"M-114-60H114V74H-114Z","nfr-glass");
+    path(group,companion?"M-71 15Q-37-45 8-32Q59-17 73 24Q43 54-3 49Q-48 48-71 15Z":"M-91 19Q-47-58 10-41Q76-22 94 31Q55 69-4 63Q-62 61-91 19Z","nfr-pod");
+    path(group,companion?"M-63 12Q-21 4 64 23":"M-81 15Q-27 5 82 29","nfr-pod-seam");
+    label("BLACKBEAN POD",0,companion?78:93,"nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "qg2904-collection-to-funnel-relay") {
+    shadow(91,105);
+    const width=companion?130:166;
+    path(group,`M ${-width/2} -76 H ${width/2} V 91 H ${-width/2} Z`,"nfr-ivory");
+    path(group,`M ${-width/2} -76 H ${width/2} V -43 H ${-width/2} Z`,"nfr-primary");
+    label("10 JUL",0,-10,"nfr-label");label("24 JUL",0,39,"nfr-label");
+    path(group,"M-38 54H38V78H-38Z","nfr-accent");label("RECOVERY",0,71,"nfr-small nfr-light-text");
+    return true;
+  }
+  if (item.family === "dro-canopy-crane-strata-mapper") {
+    shadow(108,107);
+    path(group,companion?"M-76 85V-79H-49V85M-76-56H66M-41-79H83":"M-98 99V-101H-63V99M-98-72H85M-52-101H108","nfr-crane");
+    path(group,companion?"M66-56V10H39V-56M83-79L66-56":"M85-72V14H50V-72M108-101L85-72","nfr-crane-cable");
+    path(group,companion?"M22 10H56V40H22Z":"M28 14H72V52H28Z","nfr-accent");
+    path(group,companion?"M-96 86H-28M-54-79L-76-56L-49-31L-76-7L-49 18L-76 43L-49 68":"M-123 100H-36M-69-101L-98-72L-63-40L-98-9L-63 23L-98 55L-63 87","nfr-crane-brace");
+    label("DRO",companion?-61:-79,companion?98:116,"nfr-small");
+    return true;
+  }
+  if (item.family === "ju1373-torch-ginger-bract-collar") {
+    sampleBox("JU1373",true);
+    return true;
+  }
+  if (item.family === "ju1373-type-isolate-signet-engine") {
+    shadow(87,106);
+    path(group,companion?"M-61-53H61V56Q0 100-61 56Z":"M-78-67H78V71Q0 127-78 71Z","nfr-badge");
+    path(group,companion?"M-50-42H50V48Q0 81-50 48Z":"M-64-54H64V61Q0 103-64 61Z","nfr-ivory");
+    add(group,"circle",{class:"nfr-accent",cx:0,cy:companion?-3:-4,r:companion?28:36});
+    label("TYPE",0,companion?5:7,"nfr-small nfr-light-text");
+    path(group,companion?"M-43-53L-25-94L0-69L25-94L43-53":"M-55-67L-32-120L0-88L32-120L55-67","nfr-ribbon");
+    label("JU1373",0,companion?58:73,"nfr-small");
+    return true;
+  }
+  if (item.family === "saint-benoit-windward-slope-mobile") {
+    shadow(82,107);
+    path(group,companion?"M-53-83H53L66-59V78Q66 98 44 103H-44Q-66 98-66 78V-59Z":"M-68-93H68L84-63V82Q84 106 56 112H-56Q-84 106-84 82V-63Z","nfr-glass");
+    path(group,companion?"M-59-83H59V-60H-59Z":"M-76-94H76V-62H-76Z","nfr-primary");
+    path(group,companion?"M-50 31H50V78Q0 94-50 78Z":"M-64 35H64V83Q0 103-64 83Z","nfr-water");
+    [ -40,-15,10,35,60 ].forEach(y=>path(group,`M ${companion?43:56} ${y} H ${companion?60:77}`,"nfr-tape-tick"));
+    path(group,companion?"M-42 20L-10-21L13 6L40-31L53 20Z":"M-54 24L-13-27L17 8L51-40L68 24Z","nfr-mountain");
+    label("RAIN",0,companion?73:78,"nfr-small nfr-light-text");
+    return true;
+  }
+  return false;
+}
+
+function drawElegansFieldAccessory(group, item, companion) {
+  const location = santeuilRendererFamilies.has(item.family) ? "santeuil"
+    : edinburghRendererFamilies.has(item.family) ? "edinburgh"
+      : tenerifeRendererFamilies.has(item.family) ? "tenerife"
+        : kauaiRendererFamilies.has(item.family) ? "kauai"
+          : actRendererFamilies.has(item.family) ? "act"
+            : aucklandRendererFamilies.has(item.family) ? "auckland"
+              : araucaniaRendererIds.has(item.id) ? "araucania" : null;
+  if (!location) return false;
+
+  group.dataset.renderer = `${item.family}-field-redesign`;
+  group.classList.add("elegans-field-redesign", `efr-${location}`, companion ? "efr-companion" : "efr-primary");
+  const label = (value, x, y, className = "efr-label") => {
+    const node = add(group, "text", { class: className, x, y, "text-anchor": "middle" });
+    node.textContent = value;
+  };
+  const shadow = (rx = 102, y = 104) => add(group, "ellipse", { class: "efr-shadow", cx: 0, cy: y, rx: companion ? rx * .8 : rx, ry: companion ? 11 : 14 });
+  const plate = (cx, cy, rx, ry, alternate = false) => {
+    add(group, "ellipse", { class: alternate ? "efr-glass-alt" : "efr-glass", cx, cy, rx, ry });
+    add(group, "ellipse", { class: "efr-fine efr-no-fill", cx, cy: cy - 4, rx: rx - 7, ry: ry - 7 });
+  };
+  const bottle = (cx, cy, scale = 1, alternate = false) => {
+    const bottleGroup = add(group, "g", { transform: `translate(${cx} ${cy}) scale(${scale})` });
+    path(bottleGroup, "M-21-53H21V-35L31-21V55Q31 69 17 73H-17Q-31 69-31 55V-21L-21-35Z", alternate ? "efr-glass-alt" : "efr-glass");
+    path(bottleGroup, "M-24-57H24V-39H-24Z", alternate ? "efr-accent" : "efr-primary");
+    path(bottleGroup, "M-24 19H24V60H-24Z", alternate ? "efr-water-alt" : "efr-water");
+    return bottleGroup;
+  };
+  const seed = (parent, cx, cy, scale = 1) => path(parent, `M ${cx} ${cy - 12 * scale} Q ${cx + 15 * scale} ${cy - 3 * scale} ${cx} ${cy + 12 * scale} Q ${cx - 15 * scale} ${cy - 3 * scale} ${cx} ${cy - 12 * scale} Z`, "efr-seed");
+
+  if (location === "santeuil" && item.family === "hogweed-specimen-lantern") {
+    shadow(111, 66);
+    if (companion) {
+      path(group, "M-92-39H68Q95-39 95 0Q95 39 68 39H-92Z", "efr-glass");
+      path(group, "M-109-46H-78V46H-109Z", "efr-primary");
+      path(group, "M-84-3Q-45-25-8-2T65 0", "efr-stem");
+      path(group, "M-84 3Q-45 25-8 2T65 6", "efr-stem-edge");
+      [-57,-23,12,47].forEach(x => path(group, `M ${x} -13 V 16`, "efr-stem-node"));
+      path(group, "M-44 44H64V68H-44Z", "efr-secondary");
+      label("STEM", 10, 61, "efr-small");
+    } else {
+      path(group, "M-119-45H84Q116-45 116 0Q116 45 84 45H-119Z", "efr-glass");
+      path(group, "M-139-53H-101V53H-139Z", "efr-primary");
+      [-128,-116,-104].forEach(x => path(group, `M ${x} -45 V 45`, "efr-gold-line"));
+      path(group, "M-110-4Q-64-31-19-3T78 1", "efr-stem");
+      path(group, "M-110 4Q-64 31-19 3T78 8", "efr-stem-edge");
+      [-78,-37,5,48].forEach(x => path(group, `M ${x} -15 V 18`, "efr-stem-node"));
+      path(group, "M-53 51H82V79H-53Z", "efr-secondary");
+      label("STEM SAMPLE", 15, 71, "efr-small");
+      path(group, "M94-35L126-52L132-33L101-16Z", "efr-accent");
+    }
+    return true;
+  }
+
+  if (location === "santeuil" && item.family === "santeuil-cylinder-organ") {
+    shadow(97, 104);
+    const width = companion ? 138 : 174;
+    path(group, `M ${-width / 2} -36 H ${width / 2} V 87 H ${-width / 2} Z`, "efr-primary");
+    path(group, `M ${-width / 2 + 9} -30 H ${width / 2 - 9} V 18 H ${-width / 2 + 9} Z`, "efr-ivory");
+    add(group, "ellipse", { class: "efr-cylinder", cx: 0, cy: -6, rx: companion ? 46 : 61, ry: 17 });
+    [-34,-17,0,17,34].filter(x => Math.abs(x) < width / 2 - 25).forEach((x, index) => add(group, "circle", { class: index % 2 ? "efr-gold" : "efr-accent", cx: x, cy: -9 + (index % 2) * 5, r: 4 }));
+    [34,48,62].forEach(y => path(group, `M ${-width / 2 + 15} ${y} H ${width / 2 - 15}`, "efr-music-slot"));
+    path(group, `M ${width / 2} 1 H ${width / 2 + 22} V 19 H ${width / 2 + 8}`, "efr-crank");
+    add(group, "circle", { class: "efr-gold", cx: width / 2 + 24, cy: 19, r: 7 });
+    path(group, `M ${-width / 2 + 7} -40 Q 0 -92 ${width / 2 - 7} -40`, "efr-lid");
+    label("MUSIC BOX", 0, 81, "efr-small efr-light-text");
+    return true;
+  }
+
+  if (location === "santeuil" && item.family === "couleuvre-dragonfly-automaton") {
+    shadow(112, 102);
+    path(group, "M-14-73Q0-91 14-73L11 63Q0 79-11 63Z", "efr-body");
+    add(group, "circle", { class: "efr-gold", cx: 0, cy: -77, r: 15 });
+    add(group, "circle", { class: "efr-eye", cx: -6, cy: -80, r: 3 });
+    add(group, "circle", { class: "efr-eye", cx: 6, cy: -80, r: 3 });
+    const leftUpper = companion ? "M-9-45Q-72-92-110-52Q-73-13-12-24Z" : "M-10-47Q-88-102-129-54Q-87-6-12-24Z";
+    const rightUpper = companion ? "M9-45Q72-92 110-52Q73-13 12-24Z" : "M10-47Q88-102 129-54Q87-6 12-24Z";
+    const leftLower = companion ? "M-10-15Q-63 0-80 49Q-38 55-8 18Z" : "M-11-16Q-76-2-99 51Q-47 63-8 19Z";
+    const rightLower = companion ? "M10-15Q63 0 80 49Q38 55 8 18Z" : "M11-16Q76-2 99 51Q47 63 8 19Z";
+    [leftUpper,rightUpper].forEach(d => path(group, d, "efr-wing"));
+    [leftLower,rightLower].forEach(d => path(group, d, "efr-wing-alt"));
+    path(group, "M0-62V66M-8-35H8M-9-7H9M-8 22H8M-6 48H6", "efr-fine");
+    path(group, "M-26 78H26L18 99H-18Z", "efr-primary");
+    label("FIELD PIN", 0, 94, "efr-small efr-light-text");
+    return true;
+  }
+
+  if (location === "edinburgh" && item.family === "midmar-compost-tumbler") {
+    shadow(107, 107);
+    if (companion) {
+      path(group, "M-83-59L67-102L80-64L-70-20Z", "efr-telescope-tube");
+      path(group, "M58-105L84-112L96-70L72-62Z", "efr-telescope-lens");
+      path(group, "M-98-57L-78-63L-67-25L-87-18Z", "efr-telescope-eye");
+      add(group, "circle", { class: "efr-gold", cx: 0, cy: -39, r: 13 });
+      path(group, "M0-26L-45 87M0-26L48 87M0-26V86", "efr-tripod");
+      path(group, "M-64 88H-26M29 88H67M-18 88H18", "efr-tripod-foot");
+      path(group, "M-42 35H40V61H-42Z", "efr-secondary");
+      label("BLACKFORD", -1, 54, "efr-small");
+    } else {
+      path(group, "M-109-68L84-124L101-76L-92-19Z", "efr-telescope-tube");
+      path(group, "M72-128L109-138L125-84L92-73Z", "efr-telescope-lens");
+      path(group, "M-128-66L-102-74L-89-22L-115-15Z", "efr-telescope-eye");
+      path(group, "M-38-45L32-65", "efr-telescope-band");
+      add(group, "circle", { class: "efr-gold", cx: 0, cy: -34, r: 16 });
+      path(group, "M0-18L-59 99M0-18L63 99M0-18V98", "efr-tripod");
+      path(group, "M-81 100H-37M39 100H85M-22 100H22", "efr-tripod-foot");
+      path(group, "M-54 39H52V70H-54Z", "efr-secondary");
+      label("BLACKFORD", -1, 61, "efr-small");
+    }
+    return true;
+  }
+
+  if (location === "edinburgh" && item.family === "edinburgh-tartan-kilt") {
+    shadow(91, 107);
+    path(group, companion ? "M-59-72H55L70 82Q0 107-70 82Z" : "M-72-78H67L87 84Q0 114-88 84Z", "efr-kilt");
+    path(group, companion ? "M-63-75H59V-50H-63Z" : "M-77-81H72V-53H-77Z", "efr-waistband");
+    [-48,-24,0,24,48].filter(x => companion ? Math.abs(x) < 52 : true).forEach(x => path(group, `M ${x} -49 L ${x * 1.24} 85`, "efr-tartan-gold"));
+    [-25,11,47].forEach(y => path(group, `M ${companion ? -57 : -70} ${y} H ${companion ? 54 : 69}`, "efr-tartan-aqua"));
+    path(group, "M-23-17H23V53Q0 69-23 53Z", "efr-sporran");
+    path(group, "M-18-8H18M-12 16H12", "efr-fine");
+    return true;
+  }
+
+  if (location === "edinburgh" && item.family === "great-highland-bagpipes") {
+    shadow(106, 109);
+    path(group, companion ? "M-63-11Q-78-56-37-72Q10-84 47-47Q68-23 52 24Q36 71-12 72Q-55 69-63-11Z" : "M-79-9Q-94-63-46-82Q13-97 59-51Q83-21 64 31Q45 84-15 84Q-68 80-79-9Z", "efr-bag");
+    [-44,-12,20].filter(x => companion ? x < 15 : true).forEach((x,index) => {
+      path(group, `M ${x} -60 L ${x + 12} -129`, index === 1 ? "efr-drone-alt" : "efr-drone");
+      path(group, `M ${x + 6} -128 H ${x + 23}`, "efr-gold-line");
+    });
+    path(group, companion ? "M44-32Q85-15 91 37Q77 72 51 71" : "M57-38Q108-16 113 43Q95 85 62 80", "efr-chanter");
+    [4,17,30,43].forEach(y => add(group, "circle", { class: "efr-hole", cx: companion ? 77 : 96, cy: y, r: 3 }));
+    path(group, "M-39-20Q0 2 39-21", "efr-gold-line");
+    return true;
+  }
+
+  if (location === "tenerife" && item.family === "avocado-microhabitat-viewer") {
+    shadow(105, 104);
+    path(group, companion ? "M-84 28H84L72 88H-72Z" : "M-108 25H108L94 92H-94Z", "efr-primary");
+    path(group, companion ? "M-62-12Q-66-69-20-87Q33-101 63-50Q86-6 50 47Q17 82-25 62Q-62 48-62-12Z" : "M-79-13Q-84-83-25-104Q42-119 80-58Q108-4 64 58Q20 99-32 75Q-79 59-79-13Z", "efr-avocado");
+    path(group, companion ? "M-48-6Q-51-51-16-65Q24-75 47-38Q64-3 37 34Q6 61-25 43Q-48 31-48-6Z" : "M-61-8Q-66-63-20-80Q31-92 60-46Q83-3 47 44Q9 77-31 55Q-61 39-61-8Z", "efr-avocado-flesh");
+    add(group, "circle", { class: "efr-pit", cx: companion ? 10 : 12, cy: companion ? 5 : 7, r: companion ? 23 : 30 });
+    path(group, "M-70 58H71", "efr-fine");
+    label("AVOCADO", 0, companion ? 80 : 83, "efr-small efr-light-text");
+    return true;
+  }
+
+  if (location === "tenerife" && item.family === "aerial-root-harp") {
+    shadow(102, 103);
+    add(group, "circle", { class: "efr-primary", cx: companion ? -42 : -55, cy: 24, r: companion ? 47 : 57 });
+    path(group, companion ? "M-42 24L22-66H75V-43H37L-22 39Z" : "M-55 24L24-82H91V-56H42L-31 43Z", "efr-tape-blade");
+    [0,1,2,3,4,5].forEach(index => {
+      const x = (companion ? 2 : 1) + index * (companion ? 11 : 14);
+      path(group, `M ${x} ${companion ? -54 + index * 2 : -69 + index * 2} L ${x + 5} ${companion ? -45 + index * 2 : -59 + index * 2}`, "efr-tape-tick");
+    });
+    path(group, companion ? "M-69 31Q-43-14-17 30Q-35 68-69 31Z" : "M-88 33Q-55-24-21 31Q-46 82-88 33Z", "efr-root");
+    label("ROOT", companion ? -42 : -55, 36, "efr-small efr-light-text");
+    return true;
+  }
+
+  if (location === "tenerife" && item.family === "linnaean-seed-exchange-engine") {
+    shadow(112, 107);
+    const width = companion ? 174 : 226;
+    path(group, `M ${-width / 2} -45 H ${width / 2} V 87 H ${-width / 2} Z`, "efr-primary");
+    path(group, `M ${-width / 2 + 10} -35 H ${width / 2 - 10} V 72 H ${-width / 2 + 10} Z`, "efr-ivory");
+    const packets = companion ? [[-50,-23],[2,-15],[50,-23]] : [[-72,-22],[-23,-13],[27,-24],[74,-13]];
+    packets.forEach(([x,y],index) => {
+      path(group, `M ${x - 20} ${y} H ${x + 20} V ${y + 66} H ${x - 20} Z`, index % 2 ? "efr-packet-alt" : "efr-packet");
+      seed(group, x, y + 33, .7);
+    });
+    path(group, `M ${-width / 2 + 7} -51 Q 0 -99 ${width / 2 - 7} -51`, "efr-lid");
+    label("SEED BOX", 0, 82, "efr-small efr-light-text");
+    return true;
+  }
+
+  if (location === "kauai" && item.family === "decay-substrate-theatre") {
+    shadow(108, 106);
+    const width = companion ? 168 : 216;
+    path(group, `M ${-width / 2} -55 H ${width / 2} V 88 H ${-width / 2} Z`, "efr-primary");
+    path(group, `M ${-width / 2 + 12} -42 H ${width / 2 - 12} V 65 H ${-width / 2 + 12} Z`, "efr-glass");
+    path(group, `M ${-width / 2 + 9} -59 Q 0 -101 ${width / 2 - 9} -59`, "efr-handle");
+    [-1,1].forEach(side => path(group, `M ${side * 6} -41 V 65`, "efr-fine"));
+    path(group, companion ? "M-72 17Q-44-22-14 14Q-43 47-72 17Z" : "M-92 20Q-57-31-17 16Q-54 60-92 20Z", "efr-leaf");
+    path(group, companion ? "M8 35Q31-17 65 9Q60 49 8 35Z" : "M10 39Q41-27 85 8Q77 61 10 39Z", "efr-fragment");
+    [[-51,48],[0,40],[47,50]].filter(([x])=>Math.abs(x)<width/2-18).forEach(([x,y],index)=>add(group,"circle",{class:index===1?"efr-accent":"efr-gold",cx:x,cy:y,r:8}));
+    path(group, `M ${-width / 2 + 17} 68 H ${width / 2 - 17}`, "efr-accent-line");
+    label("PLANT SAMPLE", 0, 83, "efr-small efr-light-text");
+    return true;
+  }
+
+  if (location === "kauai" && item.family === "kokee-cloud-water-collector") {
+    shadow(103, 108);
+    bottle(companion ? -32 : -43, 27, companion ? .72 : .88);
+    bottle(companion ? 37 : 49, 34, companion ? .63 : .78, true);
+    path(group, companion ? "M-78-61H70L48-15H-53Z" : "M-102-74H92L63-17H-70Z", "efr-mesh");
+    for(let x=-70;x<=70;x+=20) path(group, `M ${x} ${companion ? -55 : -67} L ${x + 18} ${companion ? -20 : -22}`, "efr-mesh-line");
+    path(group, companion ? "M-44-14L-32-2M45-14L37 7" : "M-58-17L-43-3M59-17L49 8", "efr-flow-line");
+    label("MIST", 0, companion ? -37 : -48, "efr-label");
+    return true;
+  }
+
+  if (location === "kauai" && item.family === "xz1516-haplotype-viewer") {
+    shadow(103, 104);
+    const width = companion ? 142 : 184;
+    path(group, `M ${-width / 2} -76 H 5 V 71 H ${-width / 2} Z`, "efr-card");
+    path(group, `M -5 -60 H ${width / 2} V 87 H -5 Z`, "efr-card-alt");
+    [ -39,-13,13,39 ].filter(y=>y<60).forEach((y,index)=>{
+      path(group, `M ${-width / 2 + 13} ${y} H ${index % 2 ? -16 : -28}`, index % 2 ? "efr-band-alt" : "efr-band");
+      path(group, `M 10 ${y + 11} H ${width / 2 - 13}`, index % 2 ? "efr-band" : "efr-band-alt");
+    });
+    path(group, `M ${-width / 2 + 10} -73 H ${-width / 2 + 45} V -59 H ${-width / 2 + 10} Z`, "efr-gold");
+    label("XZ1516", width / 4 - 1, 75, "efr-small efr-light-text");
+    path(group, "M-12-83H12V-68H-12Z", "efr-accent");
+    return true;
+  }
+
+  if (location === "act" && item.family === "qg2811-baermann-fig-recovery") {
+    shadow(106, 109);
+    path(group, companion ? "M-68-74H68L43-5V61H-43V-5Z" : "M-88-91H88L55-7V72H-55V-7Z", "efr-funnel");
+    path(group, companion ? "M-54-58H54L34-10H-34Z" : "M-70-72H70L45-12H-45Z", "efr-water");
+    path(group, companion ? "M-39-48Q-15-69 3-43T40-44" : "M-52-61Q-21-87 4-55T53-56", "efr-fig-sample");
+    path(group, companion ? "M0 61V91Q29 103 43 81" : "M0 72V105Q37 119 55 91", "efr-tube");
+    bottle(companion ? 52 : 66, companion ? 68 : 81, companion ? .42 : .5);
+    path(group, companion ? "M-88-85V95M-88-85H-58" : "M-111-104V108M-111-104H-74", "efr-stand");
+    path(group, companion ? "M-101 96H-42" : "M-126 109H-54", "efr-stand");
+    label("BAERMANN", 0, companion ? 20 : 29, "efr-small");
+    return true;
+  }
+
+  if (location === "act" && item.family === "yellow-box-seed-orrery") {
+    shadow(93, 104);
+    path(group, companion ? "M-54-78H51L62-58V78Q62 93 45 98H-42Q-59 93-59 78V-58Z" : "M-69-84H65L78-59V80Q78 98 57 104H-54Q-75 98-75 80V-59Z", "efr-glass");
+    path(group, companion ? "M-60-79H57V-56H-60Z" : "M-76-85H72V-57H-76Z", "efr-primary");
+    const seeds = companion ? [[-26,-11],[12,-24],[28,17],[-16,29]] : [[-37,-17],[0,-30],[35,-9],[22,28],[-24,31],[2,8]];
+    seeds.forEach(([x,y],index)=>seed(group,x,y,index%2?.75:.9));
+    path(group, companion ? "M-44 52H47V82H-44Z" : "M-57 56H59V89H-57Z", "efr-secondary");
+    label("YELLOW BOX", 0, companion ? 73 : 78, "efr-small");
+    path(group, companion ? "M-32-84Q0-109 32-84" : "M-41-90Q0-121 41-90", "efr-handle");
+    return true;
+  }
+
+  if (location === "act" && item.family === "black-mountain-signal-theremin") {
+    shadow(99, 106);
+    const width = companion ? 132 : 168;
+    path(group, `M ${-width / 2} -51 H ${width / 2} V 84 H ${-width / 2} Z`, "efr-primary");
+    path(group, `M ${-width / 2 + 12} -37 H ${width / 2 - 12} V 35 H ${-width / 2 + 12} Z`, "efr-ivory");
+    add(group,"circle",{class:"efr-speaker",cx:companion?-28:-37,cy:0,r:companion?22:28});
+    [-12,0,12].forEach(y=>path(group,`M ${companion ? 4 : 5} ${y} H ${width / 2 - 23}`,"efr-radio-slot"));
+    add(group,"circle",{class:"efr-gold",cx:width/2-24,cy:-25,r:7});
+    path(group, `M ${width / 2 - 18} -51 L ${width / 2 + 17} -121`, "efr-antenna");
+    path(group, `M ${width / 2 + 11} -117 H ${width / 2 + 28}`, "efr-gold-line");
+    path(group, `M ${-width / 2 + 13} 45 H ${width / 2 - 13} V 73 H ${-width / 2 + 13} Z`, "efr-accent");
+    label("FIELD RADIO", 0, 65, "efr-small efr-light-text");
+    return true;
+  }
+
+  if (location === "auckland" && item.family === "eca36-grass-litter-profiler") {
+    shadow(93, 108);
+    const width = companion ? 126 : 158;
+    path(group, `M ${-width / 2} -77 H ${width / 2} L ${width / 2 + 11} 87 H ${-width / 2 - 11} Z`, "efr-glass");
+    path(group, `M ${-width / 2} -77 H ${width / 2} V -54 H ${-width / 2} Z`, "efr-primary");
+    path(group, `M ${-width / 2 + 11} -47 H ${width / 2 - 11}`, "efr-zip");
+    const blades = companion ? [-45,-23,0,23,45] : [-59,-35,-12,12,35,59];
+    blades.forEach((x,index)=>path(group,`M ${x} 47 Q ${x + (index%2?11:-9)} ${index%2?-18:-33} ${x + (index%2?7:-6)} ${index%2?-43:-57}`,index%2?"efr-grass-alt":"efr-grass"));
+    path(group, `M ${-width / 2 + 12} 51 H ${width / 2 - 12} V 80 H ${-width / 2 + 12} Z`, "efr-secondary");
+    label("ECA36 GRASS", 0, 72, "efr-small");
+    return true;
+  }
+
+  if (location === "auckland" && item.family === "auckland-volcanic-field-monitor") {
+    shadow(110, 105);
+    path(group, companion ? "M-91-47H91V71H-91Z" : "M-117-56H117V80H-117Z", "efr-primary");
+    add(group,"ellipse",{class:"efr-drum",cx:companion?-48:-62,cy:4,rx:companion?31:39,ry:companion?45:55});
+    path(group, companion ? "M-70 4H78" : "M-89 4H101", "efr-trace-base");
+    path(group, companion ? "M-70 5L-47-10L-23 18L2-25L27 29L52-8L78 5" : "M-89 5L-61-15L-32 23L0-34L31 36L63-12L101 5", "efr-trace");
+    path(group, companion ? "M60-47V-81L75-98L88-81V-47" : "M77-56V-99L96-119L113-99V-56", "efr-pendulum");
+    add(group,"circle",{class:"efr-gold",cx:companion?75:96,cy:companion?-75:-91,r:8});
+    path(group, companion ? "M-83 74H83V94H-83Z" : "M-108 83H108V105H-108Z", "efr-secondary");
+    label("SEISMOGRAPH", 0, companion ? 89 : 99, "efr-small");
+    return true;
+  }
+
+  if (location === "auckland" && item.family === "eca36-reproductive-timing-clock") {
+    shadow(84, 106);
+    path(group, companion ? "M-44-70Q-68-35-67 12Q-66 57-43 79" : "M-52-78Q-80-38-78 14Q-76 64-50 89", "efr-strap");
+    path(group, companion ? "M44-70Q68-35 67 12Q66 57 43 79" : "M52-78Q80-38 78 14Q76 64 50 89", "efr-strap");
+    const radius=companion?64:78;
+    add(group,"circle",{class:"efr-primary",cx:0,cy:0,r:radius});
+    add(group,"circle",{class:"efr-ivory",cx:0,cy:0,r:radius-12});
+    [0,30,60,90,120,150,180,210,240,270,300,330].forEach(deg=>{const rad=deg*Math.PI/180;path(group,`M ${(Math.cos(rad)*(radius-24)).toFixed(1)} ${(Math.sin(rad)*(radius-24)).toFixed(1)} L ${(Math.cos(rad)*(radius-15)).toFixed(1)} ${(Math.sin(rad)*(radius-15)).toFixed(1)}`,"efr-fine")});
+    path(group,"M0 4L-22-31M0 4L35 17","efr-hands");
+    add(group,"circle",{class:"efr-gold",cx:0,cy:4,r:7});
+    path(group,"M-33 35H33V58H-33Z","efr-accent");
+    label("ECA36",0,52,"efr-small efr-light-text");
+    return true;
+  }
+
+  if (location === "araucania" && item.family === "compost-labyrinth") {
+    shadow(102, 107);
+    path(group, companion ? "M-72-48H72L62 78Q0 99-62 78Z" : "M-91-55H91L78 82Q0 108-78 82Z", "efr-bucket");
+    path(group, companion ? "M-76-49H76V-28H-76Z" : "M-96-56H96V-31H-96Z", "efr-primary");
+    path(group, companion ? "M-62-27Q0-53 62-27V13Q0 40-62 13Z" : "M-79-29Q0-62 79-29V18Q0 52-79 18Z", "efr-compost");
+    [[-42,-17],[-13,-28],[18,-16],[44,-25],[-27,4],[7,8],[34,4]].filter(([x])=>companion?Math.abs(x)<48:true).forEach(([x,y],index)=>path(group,index%2?`M ${x-7} ${y} Q ${x} ${y-13} ${x+7} ${y} Q ${x} ${y+9} ${x-7} ${y} Z`:`M ${x-8} ${y-5} L ${x+7} ${y+6}`,index%2?"efr-leaf":"efr-twig"));
+    path(group, companion ? "M-56-50Q-72-103 0-105Q72-103 56-50" : "M-69-57Q-89-122 0-125Q89-122 69-57", "efr-handle");
+    path(group, companion ? "M48-46L81 48L63 60L30-37Z" : "M61-54L104 55L80 70L38-45Z", "efr-trowel");
+    label("COMPOST",0,70,"efr-small efr-light-text");
+    return true;
+  }
+
+  if (location === "araucania" && item.family === "ashfall-recorder") {
+    shadow(86, 107);
+    path(group, companion ? "M-52-84H52L63-61V76Q63 95 43 100H-43Q-63 95-63 76V-61Z" : "M-67-91H67L80-64V80Q80 102 54 108H-54Q-80 102-80 80V-64Z", "efr-glass");
+    path(group, companion ? "M-58-84H58V-61H-58Z" : "M-74-92H74V-63H-74Z", "efr-primary");
+    path(group, companion ? "M-51 28H51V77Q0 94-51 77Z" : "M-65 31H65V82Q0 104-65 82Z", "efr-ash");
+    [-40,-15,10,35,60].forEach(y=>path(group,`M ${companion?40:53} ${y} H ${companion?58:74}`,"efr-tick"));
+    path(group, companion ? "M-40 17L-9-19L11 5L32-28L50 17Z" : "M-52 20L-12-27L15 5L43-37L65 20Z", "efr-mountain");
+    label("ASH",0,companion?69:74,"efr-small efr-light-text");
+    return true;
+  }
+
+  if (location === "araucania" && item.family === "test-cross-mechanism") {
+    shadow(108, 105);
+    const offset=companion?41:53;
+    path(group, companion ? "M-101-66H101V88H-101Z" : "M-128-72H128V94H-128Z", "efr-primary");
+    plate(-offset,4,companion?43:53,companion?32:39);
+    plate(offset,10,companion?43:53,companion?32:39,true);
+    path(group,"M-24 2H24M12-10L26 2L12 14","efr-forward-arrow");
+    path(group,"M24 32H-24M-12 20L-26 32L-12 44","efr-return-arrow");
+    label("A",-offset,12,"efr-card-symbol");
+    label("B",offset,18,"efr-card-symbol");
+    path(group, companion ? "M-76 51H76V77H-76Z" : "M-96 55H96V83H-96Z", "efr-ivory");
+    label("RECIPROCAL CROSS",0,companion?69:75,"efr-small");
+    return true;
+  }
+
+  return false;
+}
+
 function drawNamedAccessory(group, item, companion) {
+  if (drawBriggsaeFieldAccessory(group, item, companion)) return true;
+  if (drawElegansFieldAccessory(group, item, companion)) return true;
+  if (drawNigoniFieldAccessory(group, item, companion)) return true;
+  if (drawTropicalisFieldAccessory(group, item, companion)) return true;
   if (drawNambuccaQG2814Accessory(group, item, companion)) return true;
   if (drawDoisRiosEG5612Accessory(group, item, companion)) return true;
   if (drawOrsayJU2518Accessory(group, item, companion)) return true;
@@ -5005,7 +6157,7 @@ function renderPiece(target, item, wormPart) {
     "hogweed-specimen-lantern": { primary: [327, 133, .66, 3], companion: [61, 126, .58, -4] },
     "santeuil-cylinder-organ": { primary: [183, 191, .59, -2], companion: [86, 208, .52, 2] },
     "couleuvre-dragonfly-automaton": { primary: [304, 235, .61, -2], companion: [76, 266, .5, 3] },
-    "midmar-compost-tumbler": { primary: [112, 268, .5, -2], companion: [50, 248, .36, 3] },
+    "midmar-compost-tumbler": { primary: [370, 270, .44, -2], companion: [14, 282, .32, 2] },
     "galaxy-plate-scanner": { primary: [184, 204, .54, -1], companion: [68, 202, .43, 2] },
     "agassiz-ice-flow-model": { primary: [322, 260, .52, -2], companion: [52, 290, .42, 2] },
     "avocado-microhabitat-viewer": { primary: [322, 140, .52, -2], companion: [47, 124, .39, 3] },

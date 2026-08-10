@@ -1,6 +1,6 @@
 # Nambucca Heads *Caenorhabditis briggsae* QG2814 location research and art brief
 
-Last updated: 2026-07-28
+Last updated: 2026-08-10
 
 ## Exact record
 
@@ -71,29 +71,29 @@ and accessories above it.
 
 ## Accessory contract
 
-### Ground-flower sample theatre
+### Flower press
 
-Primary: a broad three-flower decay stage with a ground-contact membrane and
-one central sampling aperture.
+Primary: a broad indigo field press with four visible screw posts, a pale paper
+sheet and three differently coloured pressed flowers.
 
-Companion: a tall three-level flower-state cabinet with unequal drawers and a
-separate litter tray.
+Companion: a narrower press in the same upright orientation with two pressed
+flowers and independently spaced hardware.
 
-### Five-day two-plate founding relay
+### Two culture plates
 
-Primary: a wide 25-to-30 March transfer rail linking two unequal culture
-plates to one single-L4 cradle.
+Primary: a handled indigo carrier holding two labelled transparent culture
+plates, a transfer arrow, `L4` note and `25 → 30 MAR` date band.
 
-Companion: a tall first-plate/second-plate lift with separate founder windows
-and a five-notch date column.
+Companion: a compact carrier in the same orientation with smaller plates and
+shorter handle.
 
-### 18S identity ribbon reader
+### 18S DNA card
 
-Primary: a broad sequence-ribbon viewer ending in a species-identification
-gate and a two-strain isotype seal.
+Primary: a front-facing indigo identity card with a large two-colour DNA helix,
+`18S DNA` band and *C. briggsae* heading.
 
-Companion: a tall helical ribbon cabinet with separate readout, identification
-and paired-isotype drawers. No primer or strain code appears on the object.
+Companion: a narrower identity card in the same orientation with a compact
+helix and top clip.
 
 The buttons omit the strain code. Internal IDs may retain it.
 

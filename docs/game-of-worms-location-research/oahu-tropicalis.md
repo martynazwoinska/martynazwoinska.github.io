@@ -1,6 +1,8 @@
 # Oʻahu *Caenorhabditis tropicalis* ECA789 location research and art brief
 
-Last updated: 2026-07-26
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `fallen-flower sample boxes`, `temperature-humidity meters`, and `field-record folders`. These recognizable objects supersede the earlier abstract mechanism sketches below and retain the anonymous-flower and recorded microclimate evidence.
 
 ## Purpose
 

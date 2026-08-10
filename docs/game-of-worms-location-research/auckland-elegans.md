@@ -1,6 +1,6 @@
 # Auckland *C. elegans* location research and art brief
 
-Last updated: 2026-07-29
+Last updated: 2026-08-10
 
 This dossier is the evidence and review contract for the *Caenorhabditis elegans* Auckland landscape and its three accessory pairs. It follows the Bristol N2, Santeuil, Edinburgh, Tenerife, Kauaʻi and Australian Capital Territory batches in the location-by-location Game of Worms illustration workflow.
 
@@ -69,33 +69,32 @@ The scene connects the documented garden-grass substrate to an anonymised compac
 
 The accessories translate the exact substrate, defensible volcanic-field science and ECA36's published laboratory phenotype into movable teaching objects. They are not claims about collection equipment or local traditional objects.
 
-### ECA36 grass-litter profiler
+### Grass sample bags
 
-This fictional inspection mechanism teaches the recorded substrate without pretending that it was used to isolate ECA36.
+The bags show the recorded garden-grass substrate without pretending that they were used to isolate ECA36.
 
-- **Primary:** a broad low arched transparent chamber on complete rails, with irregular green-brown litter layers, hinged inspection doors, sliding magnifier and small ECA36 ticket.
-- **Companion:** a tall zig-zag roller profiler carrying a narrow litter ribbon through three staggered illuminated windows, with a connected crank and lower catch drawer.
-- The silhouettes are horizontal arch versus vertical zig-zag tower. Every rail, crank and support connects visibly; no unexplained rods are accepted.
+- **Primary:** a transparent zip-seal field bag containing clipped grass, with ECA36 label and collection lines.
+- **Companion:** a smaller bag in the same viewing orientation, retaining the grass, seal and label cues.
 
-### Auckland volcanic-field monitor
+### Volcanic seismographs
 
 GeoNet's monitoring of the Auckland Volcanic Field supplies a defensible scientific concept without trivialising a maunga.
 
 Source: [GeoNet Auckland Volcanic Field monitoring](https://www.geonet.org.nz/volcano/monitoring/aucklandvolcanicfield).
 
-- **Primary:** a wide paper-drum seismograph in a four-foot frame, with suspended mass, stylus and an original zig-zag trace.
-- **Companion:** a tall triangular vibration station with enclosed pendulum, circular amplitude dial, three connected sensor feet and a folded side chart.
+- **Primary:** a framed paper-drum seismograph with suspended mass, stylus and an original zig-zag trace.
+- **Companion:** a compact seismograph in the same orientation, preserving the drum, stylus and trace.
 - The drawings do not copy GeoNet branding, live data or named-maunga outlines.
 
-### ECA36 reproductive-timing clock
+### Timing stopwatches
 
 A controlled 96-strain laboratory study found ECA36 an outlier for both brood size and male-production rate. This is a laboratory comparison, not a field observation or proof of local adaptation.
 
 Source: [Lim, Kim and Lee, 2021, Natural variation in reproductive traits of *C. elegans* wild isolates](https://pmc.ncbi.nlm.nih.gov/articles/PMC8664432/).
 
-- **Primary:** a broad circular 72-hour clock split into 0–36 and 36–72-hour sectors, with an outer progeny-bead rail, small male-tally aperture and ECA36 tag.
-- **Companion:** a tall bifurcating flip-counter with separate early and late windows, unequal progeny and male tally chutes and a small X-segregation gate.
-- The drawing does not print a percentage unless it can also carry a clear `lab assay` qualifier without clutter.
+- **Primary:** a coral stopwatch with crown, side pusher, readable timing dial and ECA36 tag.
+- **Companion:** a smaller stopwatch in the same orientation with the same recognizable controls.
+- The stopwatches refer to the published reproductive-timing assay without printing an unsupported field value.
 
 ## Cultural, privacy and scientific safeguards
 

@@ -1,6 +1,8 @@
 # Mauritius *Caenorhabditis nigoni* JU2909 location research and art brief
 
-Last updated: 2026-07-28
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `fruit-and-nut sample trays`, `paired sample jars`, and `contour compasses`. These recognizable objects supersede the earlier abstract mechanism sketches below while preserving the paired-line and Rempart regional-context boundaries.
 
 This dossier is the evidence and review contract for the JU2909 landscape and its three accessory pairs. It replaces the unsupported Le Morne lagoon setting with the documented Casela Nature Park fruit-ground record.
 

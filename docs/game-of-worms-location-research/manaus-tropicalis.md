@@ -1,6 +1,8 @@
 # Manaus-region *Caenorhabditis tropicalis* JU1976 location research and art brief
 
-Last updated: 2026-07-29
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `anonymous-fruit sample cases`, `four-metre tape measures`, and `soil-profile charts`. These recognizable objects supersede the earlier abstract mechanism sketches below without assigning a botanical identity to the fruit.
 
 ## Purpose
 

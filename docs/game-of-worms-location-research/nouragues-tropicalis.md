@@ -1,6 +1,8 @@
 # Nouragues *Caenorhabditis tropicalis* JU1428 location research and art brief
 
-Last updated: 2026-07-29
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `Duguetia sample boxes`, `litterfall baskets`, and `three-strain sample racks`. These recognizable objects supersede the earlier abstract mechanism sketches below and retain the documented fruit, programme-context and isotype-triad boundaries.
 
 ## Purpose
 

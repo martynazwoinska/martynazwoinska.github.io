@@ -1,6 +1,6 @@
 # Araucanía *C. elegans* location research and art brief
 
-Last updated: 2026-07-29
+Last updated: 2026-08-10
 
 This dossier is the evidence and review contract for the *Caenorhabditis elegans* Araucanía landscape and its three accessory pairs. It follows the Bristol N2, Santeuil, Edinburgh, Tenerife, Kauaʻi, Australian Capital Territory and Auckland batches in the location-by-location Game of Worms illustration workflow.
 
@@ -70,15 +70,14 @@ The scene connects exact compost evidence to one coherent anonymised rural garde
 
 The accessories translate the exact substrate, a carefully bounded regional monitoring context and the recorded test-cross identification method into movable teaching objects. They are original mechanisms, not claimed local artefacts or official instruments.
 
-### JU4400 compost labyrinth
+### Compost sample buckets
 
-This is an imaginative microhabitat puzzle, not claimed sampling equipment.
+These are illustrative field containers, not claimed sampling equipment.
 
-- **Primary:** a broad kidney-shaped table maze with seven irregular compost-clast islands, a continuous substantial frame, grooved worm-token track, articulated gate and small `JU4400 / compost` ticket.
-- **Companion:** a tall enclosed helical maze with three offset circular decks, two sliding gates, separate lower catch drawer and `Ch41.7` plate.
-- The pair differs as a horizontal open maze versus vertical enclosed spiral mechanism; neither shares path geometry or relies on scaling.
+- **Primary:** a turquoise handled bucket containing layered compost material, with scoop and JU4400 sample label.
+- **Companion:** a smaller bucket in the same orientation, retaining the handle, sample material and label.
 
-### Llaima ashfall recorder
+### Llaima ashfall gauges
 
 This playful regional monitoring instrument is not official SERNAGEOMIN hardware and is not evidence that ash fell at JU4400's site or collection date.
 
@@ -87,16 +86,16 @@ Sources:
 - [SERNAGEOMIN Llaima assessment](https://catalogobiblioteca.sernageomin.cl/Archivos/16015.pdf)
 - [SERNAGEOMIN National Volcanic Surveillance Network](https://www.sernageomin.cl/rnvv/)
 
-- **Primary:** a wide octagonal sector-wheel cabinet with six covered deposition cells, central directional pointer, mechanical counter and fold-out chart.
-- **Companion:** a tall folding cassette column with four enclosed collection trays, lower vial chamber, analog deposition dial and fully supported hinged side panel.
-- Every support meets a chassis, hinge or housing; no unexplained rods or sticks are accepted.
+- **Primary:** a clear graduated ash collector with broad catch funnel, level markings and covered sample chamber.
+- **Companion:** a compact gauge in the same orientation, preserving the funnel, chamber and measurement scale.
+- The gauges are regional monitoring references, not evidence that ash fell at the JU4400 collection site or date.
 
-### JU4400 test-cross identifier
+### Reciprocal-cross plates
 
 The mechanism is grounded directly in CaeNDR's recorded species-identification method.
 
-- **Primary:** a long horizontal two-track crossing bridge with two entry chambers, a translucent central cross chamber, four blank offspring-observation windows and a mechanical result flag.
-- **Companion:** a circular reciprocal-cross dial with opposing entry ports, three concentric gates and a separate folding observation panel.
+- **Primary:** two linked culture plates with opposing directional arrows, separate sample wells and a JU4400 tab.
+- **Companion:** a smaller matched plate pair in the same orientation, retaining the wells, arrows and strain tab.
 - The artwork does not invent offspring ratios, alleles, genotype labels or results and uses no gender-coded colours.
 
 ## Cultural and ecological safeguards

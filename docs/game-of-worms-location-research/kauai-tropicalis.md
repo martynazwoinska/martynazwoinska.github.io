@@ -1,6 +1,8 @@
 # Kauaʻi *Caenorhabditis tropicalis* QG131 location research and art brief
 
-Last updated: 2026-07-26
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `pandanus sample baskets`, `four-date culture calendars`, and `mating-test plates`. These recognizable objects supersede the earlier abstract mechanism sketches below while preserving the paired-fruit, culture-date and mating-identification evidence.
 
 ## Purpose
 

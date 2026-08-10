@@ -1,6 +1,8 @@
 # New Taipei City *Caenorhabditis tropicalis* NIC1648 location research and art brief
 
-Last updated: 2026-07-26
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `fig measuring calipers`, `stair-side sample bags`, and `male-count microscopes`. These recognizable objects supersede the earlier abstract mechanism sketches below while preserving the measured fig size and qualitative male observation.
 
 ## Purpose
 

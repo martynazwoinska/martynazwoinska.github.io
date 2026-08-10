@@ -1,6 +1,6 @@
 # Réunion *Caenorhabditis briggsae* JU1375 location research and art brief
 
-Last updated: 2026-07-28
+Last updated: 2026-08-10
 
 ## Exact record
 
@@ -62,29 +62,27 @@ and accessories above it.
 
 ## Accessory contract
 
-### Mollusk-substrate inspection theatre
+### Shell sample jar
 
-Primary: a broad rotating theatre with three abstract shell views and one
-central inspection lens.
+Primary: a wide transparent field jar with a handled indigo lid, visible water
+line, generic spiral shell and a clear `SHELL SAMPLE` label.
 
-Companion: a tall hinged cabinet with separate spiral, aperture and substrate
-windows.
+Companion: a slimmer transparent jar in the same upright orientation, with a
+shorter handle, independently proportioned shell and `MOLLUSK` label.
 
-### Year-turn collection chronometer
+### 31 December field calendar
 
-Primary: a wide `31 DEC 2007` date mechanism with a midnight bridge and
-singleton latch.
+Primary: a large ring-bound tear-off field calendar reading `31 DECEMBER 2007`.
 
-Companion: a tall clock tower with separate day, month and year drums plus
-three closed environmental-data shutters.
+Companion: a narrower ring-bound calendar in the same upright orientation.
 
-### 123-metre agricultural-land altimeter
+### 123 m altimeter
 
-Primary: a broad terraced elevation board, 123 m dial and anonymous
-agricultural-land aperture.
+Primary: a front-facing handheld analogue altimeter with a graduated dial,
+pointer, neck strap and digital-style `123 m` window.
 
-Companion: a tall counterweighted altitude frame with stepped land cards and
-three blank measurement drawers.
+Companion: a more compact front-facing altimeter with the same orientation and
+shorter strap.
 
 The buttons omit the strain code. Internal IDs may retain it.
 

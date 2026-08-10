@@ -1,6 +1,8 @@
 # Mahahual *C. nigoni* location research and art brief
 
-Last updated: 2026-07-26
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `citrus sample buckets`, `JU2617 test-cross plates`, and `Mahahual lighthouse models`. These recognizable objects supersede the earlier abstract mechanism sketches below; the lighthouse remains regional context only.
 
 This dossier is the evidence and review contract for the *Caenorhabditis nigoni* Mahahual landscape and its three accessory pairs. It replaces an unsupported underwater reef scene with JU2617's documented rural-garden citrus heap.
 

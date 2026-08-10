@@ -1,6 +1,6 @@
 # Australian Capital Territory location research and art brief
 
-Last updated: 2026-07-29
+Last updated: 2026-08-10
 
 This dossier is the evidence and review contract for the Australian Capital Territory landscape and its three accessory pairs. It follows the Bristol N2, Santeuil, Edinburgh, Tenerife and *C. elegans* Kauaʻi batches in the location-by-location Game of Worms illustration workflow.
 
@@ -74,33 +74,31 @@ The scene connects the documented rotting-fig microhabitat to an anonymised back
 
 The accessories translate the exact recovery method, neighbourhood ecology and regional scientific landmark into movable teaching objects. They use no Indigenous cultural motifs, Australian-animal stereotypes or national-colour costume shorthand.
 
-### QG2811 Baermann fig-recovery rig
+### Baermann funnels
 
 The exact notes make a Baermann apparatus the strongest scientific object. The later field protocol co-authored by M. Rockman provides construction context: a filtered sample sits in water above a sloping funnel and clamped outlet.
 
 Source: [Crombie et al., 2022, Field sampling and laboratory isolation of *Caenorhabditis* nematodes](https://pmc.ncbi.nlm.nih.gov/articles/PMC8857960/).
 
-- **Primary:** a tall glass funnel in a complete brass ring stand; mesh-and-tissue hammock holding irregular fig material; visible water line; connected rubber tube, functional clamp and receiving vial marked QG2811.
-- **Companion:** a squat tripod extractor with a broad sloped transparent reservoir, central suspended sample basket, coiled side tube, wheel clamp and offset collection vial.
-- The constructions differ vertically versus horizontally, single-column versus three-leg support, straight versus coiled tubing and integrated versus offset vial placement.
-- Every rod visibly connects to a ring, clamp, foot or reservoir; no unexplained sticks are accepted.
+- **Primary:** a transparent laboratory funnel in a complete turquoise stand, with sample basket, water line, clamped tube and receiving vial.
+- **Companion:** a compact funnel in the same viewing orientation, preserving the stand, sample basket, outlet and vial.
+- Every support visibly connects to the apparatus so both scales read immediately as Baermann funnels.
 
-### Yellow Box seed orrery
+### Yellow Box seed jars
 
 This playful dispersal machine is grounded in documented neighbourhood vegetation. It is not made from collected protected material and is not proof that QG2811 was found below a Yellow Box.
 
-- **Primary:** a wide radial brass mechanism centred on one woody capsule cutaway, with six unequal articulated branch arms, lanceolate-leaf counterweights, seed-release shutters and a winding key.
-- **Companion:** a tall two-capsule gravity column with different star-shaped valves, a leaf-vane escapement and crescent seed-catching tray.
-- It replaces simplistic gum-nut maracas and must read as a coherent mechanism rather than seedpods attached to sticks.
-- It does not reuse Tenerife's rectangular Linnaean seed-exchange engine.
+- **Primary:** a clear screw-top specimen jar holding woody capsules and seeds, with a Yellow Box leaf tag.
+- **Companion:** a smaller jar in the same orientation with the same recognizable lid, capsule and label cues.
+- The jars are regional botanical context, not evidence that QG2811 was collected beneath a Yellow Box.
 
-### Black Mountain signal theremin
+### Black Mountain field radios
 
 This is an original playful translation of Canberra's telecommunications landmark, not a traditional instrument or a traced tower.
 
-- **Primary:** a tall tapered mast above a curved soundbox, with one pitch rod, one horizontal volume loop, three restrained signal rings and a waveform gauge.
-- **Companion:** a low crescent-bodied electronic instrument with two crossed horizontal antenna loops, sliding frequency scale, offset speaker grille and short side mast.
-- Neither drawing uses Telstra branding, and the two worms do not receive the same tower silhouette.
+- **Primary:** a turquoise field radio with antenna, speaker grille, frequency display and coral controls.
+- **Companion:** a smaller radio in the same orientation with all identifying parts intact.
+- The radio alludes to Black Mountain's telecommunications landmark without using Telstra branding.
 
 ## Cultural and privacy safeguards
 

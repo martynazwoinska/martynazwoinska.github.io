@@ -4573,6 +4573,483 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 }
 
 /* Kauaʻi low-forest record: three samples, collection date and 11 m elevation. */
+/* Recognisable field objects for the four remaining C. briggsae records. */
+.briggsae-field-redesign {
+  --bfr-ink: #252b50;
+  --bfr-primary: #4f4ca8;
+  --bfr-secondary: #62c9c3;
+  --bfr-accent: #e9517b;
+  --bfr-gold: #f0bd45;
+  --bfr-ivory: #fff8df;
+  --bfr-fruit: #cf4d69;
+  --bfr-leaf: #248f79;
+  --bfr-water: rgba(134, 222, 218, .72);
+  filter: drop-shadow(0 5px 4px rgba(30, 34, 72, .27));
+}
+.briggsae-field-redesign.bfr-reunion {
+  --bfr-primary: #504da8;
+  --bfr-secondary: #66d2c9;
+  --bfr-accent: #ed5e7e;
+  --bfr-fruit: #d76483;
+  --bfr-leaf: #178d83;
+}
+.briggsae-field-redesign.bfr-orsay {
+  --bfr-primary: #514ca4;
+  --bfr-secondary: #75c9b9;
+  --bfr-accent: #d94972;
+  --bfr-fruit: #cf3f5e;
+  --bfr-leaf: #248b6c;
+}
+.briggsae-field-redesign.bfr-dois-rios {
+  --bfr-primary: #3f4da5;
+  --bfr-secondary: #45c6b4;
+  --bfr-accent: #e84f76;
+  --bfr-fruit: #e2a62c;
+  --bfr-leaf: #1c9773;
+}
+.briggsae-field-redesign.bfr-nambucca {
+  --bfr-primary: #4151a8;
+  --bfr-secondary: #53c9c5;
+  --bfr-accent: #e54c87;
+  --bfr-fruit: #df5586;
+  --bfr-leaf: #168f78;
+}
+.briggsae-field-redesign path,
+.briggsae-field-redesign rect,
+.briggsae-field-redesign circle,
+.briggsae-field-redesign ellipse {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.briggsae-field-redesign .bfr-shadow {
+  fill: rgba(28, 31, 65, .24);
+  stroke: none;
+}
+.briggsae-field-redesign .bfr-primary,
+.briggsae-field-redesign .bfr-secondary,
+.briggsae-field-redesign .bfr-accent,
+.briggsae-field-redesign .bfr-gold,
+.briggsae-field-redesign .bfr-ivory,
+.briggsae-field-redesign .bfr-glass,
+.briggsae-field-redesign .bfr-water,
+.briggsae-field-redesign .bfr-shell,
+.briggsae-field-redesign .bfr-fruit,
+.briggsae-field-redesign .bfr-leaf,
+.briggsae-field-redesign .bfr-decay,
+.briggsae-field-redesign .bfr-fruit-green,
+.briggsae-field-redesign .bfr-fruit-gold,
+.briggsae-field-redesign .bfr-fruit-pod,
+.briggsae-field-redesign .bfr-flower,
+.briggsae-field-redesign .bfr-flower-alt {
+  stroke: var(--bfr-ink);
+  stroke-width: 4;
+}
+.briggsae-field-redesign .bfr-primary { fill: var(--bfr-primary); }
+.briggsae-field-redesign .bfr-secondary { fill: var(--bfr-secondary); }
+.briggsae-field-redesign .bfr-accent { fill: var(--bfr-accent); }
+.briggsae-field-redesign .bfr-gold { fill: var(--bfr-gold); }
+.briggsae-field-redesign .bfr-ivory { fill: var(--bfr-ivory); }
+.briggsae-field-redesign .bfr-glass { fill: rgba(215, 247, 244, .83); }
+.briggsae-field-redesign .bfr-water { fill: var(--bfr-water); }
+.briggsae-field-redesign .bfr-shell { fill: #e57391; }
+.briggsae-field-redesign .bfr-fruit { fill: var(--bfr-fruit); }
+.briggsae-field-redesign .bfr-leaf { fill: var(--bfr-leaf); }
+.briggsae-field-redesign .bfr-decay { fill: #743b5f; }
+.briggsae-field-redesign .bfr-fruit-green { fill: var(--bfr-leaf); }
+.briggsae-field-redesign .bfr-fruit-gold { fill: var(--bfr-gold); }
+.briggsae-field-redesign .bfr-fruit-pod { fill: var(--bfr-ivory); stroke-width: 2.5; }
+.briggsae-field-redesign .bfr-flower { fill: var(--bfr-accent); stroke-width: 2.5; }
+.briggsae-field-redesign .bfr-flower-alt { fill: var(--bfr-secondary); stroke-width: 2.5; }
+.briggsae-field-redesign .bfr-line,
+.briggsae-field-redesign .bfr-fine,
+.briggsae-field-redesign .bfr-accent-line,
+.briggsae-field-redesign .bfr-gold-line,
+.briggsae-field-redesign .bfr-zip,
+.briggsae-field-redesign .bfr-pointer,
+.briggsae-field-redesign .bfr-negative,
+.briggsae-field-redesign .bfr-positive,
+.briggsae-field-redesign .bfr-dna-a,
+.briggsae-field-redesign .bfr-dna-b,
+.briggsae-field-redesign .bfr-dna-rung,
+.briggsae-field-redesign .bfr-strap {
+  fill: none;
+  stroke: var(--bfr-ink);
+  stroke-width: 4;
+}
+.briggsae-field-redesign .bfr-fine { stroke-width: 2.5; }
+.briggsae-field-redesign .bfr-accent-line { stroke: var(--bfr-accent); stroke-width: 5; }
+.briggsae-field-redesign .bfr-gold-line { stroke: var(--bfr-gold); stroke-width: 5; }
+.briggsae-field-redesign .bfr-zip { stroke: var(--bfr-secondary); stroke-width: 5; stroke-dasharray: 6 5; }
+.briggsae-field-redesign .bfr-pointer { stroke: var(--bfr-accent); stroke-width: 6; }
+.briggsae-field-redesign .bfr-negative { stroke: var(--bfr-accent); stroke-width: 7; }
+.briggsae-field-redesign .bfr-positive { stroke: var(--bfr-leaf); stroke-width: 8; }
+.briggsae-field-redesign .bfr-dna-a { stroke: var(--bfr-accent); stroke-width: 6; }
+.briggsae-field-redesign .bfr-dna-b { stroke: var(--bfr-secondary); stroke-width: 6; }
+.briggsae-field-redesign .bfr-dna-rung { stroke-width: 2.5; }
+.briggsae-field-redesign .bfr-strap { stroke: var(--bfr-primary); stroke-width: 13; }
+.briggsae-field-redesign .bfr-label,
+.briggsae-field-redesign .bfr-small,
+.briggsae-field-redesign .bfr-date-number,
+.briggsae-field-redesign .bfr-date-label,
+.briggsae-field-redesign .bfr-card-symbol {
+  fill: var(--bfr-ink);
+  font-family: var(--font-sans);
+  font-weight: 900;
+  pointer-events: none;
+}
+.briggsae-field-redesign .bfr-label { font-size: 19px; }
+.briggsae-field-redesign .bfr-small { font-size: 12px; letter-spacing: .045em; }
+.briggsae-field-redesign .bfr-date-number { font-size: 64px; }
+.briggsae-field-redesign .bfr-date-label { font-size: 25px; }
+.briggsae-field-redesign .bfr-card-symbol { font-size: 27px; }
+.briggsae-field-redesign .bfr-light-text { fill: var(--bfr-ivory); }
+.briggsae-field-redesign .bfr-no-fill { fill: none; }
+@media (max-width: 600px) {
+  .briggsae-field-redesign .bfr-small { font-size: 15px; letter-spacing: .02em; }
+}
+
+/* Colourful, recognisable field objects for the non-N2 C. elegans records. */
+.nigoni-field-redesign {
+  --nfr-ink:#263052;
+  --nfr-primary:#4a56b5;
+  --nfr-secondary:#36bbaa;
+  --nfr-accent:#e84f7d;
+  --nfr-gold:#efbd45;
+  --nfr-ivory:#fff8df;
+  --nfr-leaf:#16896f;
+  --nfr-water:rgba(99,211,207,.76);
+  --nfr-water-alt:rgba(246,119,151,.58);
+}
+.nigoni-field-redesign.nfr-singapore { --nfr-primary:#4657b7; --nfr-secondary:#32bfae; --nfr-accent:#ed4e79; }
+.nigoni-field-redesign.nfr-praslin { --nfr-primary:#514eb0; --nfr-secondary:#35b9a8; --nfr-accent:#e95783; }
+.nigoni-field-redesign.nfr-sao-tome { --nfr-primary:#4557ad; --nfr-secondary:#2fb59f; --nfr-accent:#e84d77; }
+.nigoni-field-redesign.nfr-mahahual { --nfr-primary:#4f53b2; --nfr-secondary:#31bdb1; --nfr-accent:#ed557a; }
+.nigoni-field-redesign.nfr-mauritius { --nfr-primary:#4958b3; --nfr-secondary:#37bea8; --nfr-accent:#e94f7f; }
+.nigoni-field-redesign.nfr-hcmc { --nfr-primary:#4b50ae; --nfr-secondary:#32b9aa; --nfr-accent:#e84e78; }
+.nigoni-field-redesign.nfr-lombok { --nfr-primary:#4655b0; --nfr-secondary:#35bda9; --nfr-accent:#e75080; }
+.tropicalis-field-redesign.tfr-la-selva { --nfr-primary:#3f58ae; --nfr-secondary:#29b9a4; --nfr-accent:#e9517b; }
+.tropicalis-field-redesign.tfr-guadeloupe { --nfr-primary:#4a50ad; --nfr-secondary:#36bca8; --nfr-accent:#ea4e78; }
+.tropicalis-field-redesign.tfr-nouragues { --nfr-primary:#4356b1; --nfr-secondary:#2db8a6; --nfr-accent:#e95480; }
+.tropicalis-field-redesign.tfr-manaus { --nfr-primary:#4b51ae; --nfr-secondary:#31bba5; --nfr-accent:#e84d76; }
+.tropicalis-field-redesign.tfr-oahu { --nfr-primary:#4656b3; --nfr-secondary:#36bea9; --nfr-accent:#ec527e; }
+.tropicalis-field-redesign.tfr-kauai-qg131 { --nfr-primary:#4753b0; --nfr-secondary:#35bdaa; --nfr-accent:#e94f7c; }
+.tropicalis-field-redesign.tfr-new-taipei { --nfr-primary:#4d50ae; --nfr-secondary:#30baa7; --nfr-accent:#eb527a; }
+.tropicalis-field-redesign.tfr-pohnpei { --nfr-primary:#4458b2; --nfr-secondary:#32b9a4; --nfr-accent:#e9507f; }
+.tropicalis-field-redesign.tfr-queensland { --nfr-primary:#4a52af; --nfr-secondary:#37bda7; --nfr-accent:#e84d77; }
+.tropicalis-field-redesign.tfr-reunion { --nfr-primary:#4555b1; --nfr-secondary:#32bbaa; --nfr-accent:#eb517c; }
+.nigoni-field-redesign path,
+.nigoni-field-redesign rect,
+.nigoni-field-redesign circle,
+.nigoni-field-redesign ellipse { vector-effect:none; }
+.nigoni-field-redesign .nfr-shadow { fill:rgba(25,31,62,.24);stroke:none; }
+.nigoni-field-redesign .nfr-primary { fill:var(--nfr-primary);stroke:var(--nfr-ink);stroke-width:7;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-secondary { fill:var(--nfr-secondary);stroke:var(--nfr-ink);stroke-width:7;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-accent { fill:var(--nfr-accent);stroke:var(--nfr-ink);stroke-width:6;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-gold { fill:var(--nfr-gold);stroke:var(--nfr-ink);stroke-width:5; }
+.nigoni-field-redesign .nfr-ivory { fill:var(--nfr-ivory);stroke:var(--nfr-ink);stroke-width:5; }
+.nigoni-field-redesign .nfr-glass { fill:rgba(190,239,237,.78);stroke:var(--nfr-ink);stroke-width:7;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-glass-alt { fill:rgba(255,211,221,.78);stroke:var(--nfr-ink);stroke-width:7;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-water { fill:var(--nfr-water);stroke:var(--nfr-ink);stroke-width:4; }
+.nigoni-field-redesign .nfr-water-alt { fill:var(--nfr-water-alt);stroke:var(--nfr-ink);stroke-width:4; }
+.nigoni-field-redesign .nfr-card { fill:var(--nfr-ivory);stroke:var(--nfr-ink);stroke-width:6;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-card-alt { fill:#d8f4ee;stroke:var(--nfr-ink);stroke-width:6;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-fine,
+.nigoni-field-redesign .nfr-fruit-line,
+.nigoni-field-redesign .nfr-leaf-line,
+.nigoni-field-redesign .nfr-spoke,
+.nigoni-field-redesign .nfr-dna-rungs,
+.nigoni-field-redesign .nfr-mic-slot { fill:none;stroke:var(--nfr-ink);stroke-width:4;stroke-linecap:round;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-accent-line { fill:none;stroke:var(--nfr-accent);stroke-width:7;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-no-fill { fill:none; }
+.nigoni-field-redesign .nfr-label { fill:var(--nfr-ink);font:900 25px/1 var(--sans);letter-spacing:.04em; }
+.nigoni-field-redesign .nfr-small { fill:var(--nfr-ink);font:900 15px/1 var(--sans);letter-spacing:.055em; }
+.nigoni-field-redesign .nfr-light-text { fill:var(--nfr-ivory); }
+.nigoni-field-redesign .nfr-fruit-yellow { fill:#f5cb4b;stroke:var(--nfr-ink);stroke-width:6;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-fruit-berry { fill:#be437c;stroke:var(--nfr-ink);stroke-width:6; }
+.nigoni-field-redesign .nfr-fruit-coral { fill:#f06d68;stroke:var(--nfr-ink);stroke-width:6; }
+.nigoni-field-redesign .nfr-fruit-gold { fill:#dca445;stroke:var(--nfr-ink);stroke-width:6; }
+.nigoni-field-redesign .nfr-fruit-dot,
+.nigoni-field-redesign .nfr-eye { fill:var(--nfr-ink);stroke:none; }
+.nigoni-field-redesign .nfr-ink-fill { fill:var(--nfr-ink);stroke:var(--nfr-ink);stroke-width:3; }
+.nigoni-field-redesign .nfr-leaf { fill:var(--nfr-leaf);stroke:var(--nfr-ink);stroke-width:5; }
+.nigoni-field-redesign .nfr-basket { fill:#da8d55;stroke:var(--nfr-ink);stroke-width:7;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-weave { fill:none;stroke:#843f55;stroke-width:5;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-handle,
+.nigoni-field-redesign .nfr-headband,
+.nigoni-field-redesign .nfr-cable,
+.nigoni-field-redesign .nfr-sound { fill:none;stroke:var(--nfr-gold);stroke-width:9;stroke-linecap:round;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-bucket { fill:var(--nfr-secondary);stroke:var(--nfr-ink);stroke-width:7;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-female { fill:var(--nfr-accent);stroke:var(--nfr-ink);stroke-width:4; }
+.nigoni-field-redesign .nfr-brush { fill:none;stroke:var(--nfr-primary);stroke-width:12;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-brush-alt { fill:none;stroke:var(--nfr-secondary);stroke-width:12;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-bristle { fill:var(--nfr-accent);stroke:var(--nfr-ink);stroke-width:5; }
+.nigoni-field-redesign .nfr-bristle-alt { fill:var(--nfr-gold);stroke:var(--nfr-ink);stroke-width:5; }
+.nigoni-field-redesign .nfr-orchid,
+.nigoni-field-redesign .nfr-begonia-flower { fill:#ed6e9a;stroke:var(--nfr-ink);stroke-width:6;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-dna-ribbon { fill:none;stroke:var(--nfr-accent);stroke-width:12;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-nut { fill:#d89c54;stroke:var(--nfr-ink);stroke-width:7; }
+.nigoni-field-redesign .nfr-tape { fill:#ffe068;stroke:var(--nfr-ink);stroke-width:6; }
+.nigoni-field-redesign .nfr-tape-tick { fill:none;stroke:var(--nfr-ink);stroke-width:4; }
+.nigoni-field-redesign .nfr-hook { fill:var(--nfr-accent);stroke:var(--nfr-ink);stroke-width:6; }
+.nigoni-field-redesign .nfr-earcup { fill:var(--nfr-primary);stroke:var(--nfr-ink);stroke-width:7; }
+.nigoni-field-redesign .nfr-earcup-alt { fill:var(--nfr-secondary);stroke:var(--nfr-ink);stroke-width:7; }
+.nigoni-field-redesign .nfr-parrot { fill:#304356;stroke:var(--nfr-ink);stroke-width:6; }
+.nigoni-field-redesign .nfr-beak { fill:var(--nfr-gold);stroke:var(--nfr-ink);stroke-width:5; }
+.nigoni-field-redesign .nfr-microphone { fill:var(--nfr-primary);stroke:var(--nfr-ink);stroke-width:7; }
+.nigoni-field-redesign .nfr-mic-head { fill:var(--nfr-secondary);stroke:var(--nfr-ink);stroke-width:7; }
+.nigoni-field-redesign .nfr-stand { fill:none;stroke:var(--nfr-ink);stroke-width:9;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-begonia-leaf { fill:var(--nfr-leaf);stroke:var(--nfr-ink);stroke-width:6; }
+.nigoni-field-redesign .nfr-press-bar { fill:none;stroke:var(--nfr-gold);stroke-width:10;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-frame { fill:none;stroke:var(--nfr-primary);stroke-width:12;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-arrow { fill:none;stroke:var(--nfr-accent);stroke-width:7;stroke-linecap:round;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-lighthouse { fill:var(--nfr-ivory);stroke:var(--nfr-ink);stroke-width:7; }
+.nigoni-field-redesign .nfr-lamp-room { fill:var(--nfr-accent);stroke:var(--nfr-ink);stroke-width:7; }
+.nigoni-field-redesign .nfr-light-beam { fill:rgba(255,221,94,.42);stroke:var(--nfr-gold);stroke-width:5; }
+.nigoni-field-redesign .nfr-stripe { fill:none;stroke:var(--nfr-primary);stroke-width:13; }
+.nigoni-field-redesign .nfr-needle { fill:var(--nfr-accent);stroke:var(--nfr-ink);stroke-width:5; }
+.nigoni-field-redesign .nfr-contour { fill:none;stroke:var(--nfr-secondary);stroke-width:6;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-band { fill:none;stroke:var(--nfr-accent);stroke-width:9;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-band-alt { fill:none;stroke:var(--nfr-primary);stroke-width:9;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-caliper { fill:none;stroke:var(--nfr-primary);stroke-width:12;stroke-linecap:round;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-caliper-jaw { fill:none;stroke:var(--nfr-accent);stroke-width:10;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-ruler { fill:#ffe068;stroke:var(--nfr-ink);stroke-width:6; }
+.nigoni-field-redesign .nfr-mountain { fill:#72c7b0;stroke:var(--nfr-ink);stroke-width:6;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-water-flow { fill:none;stroke:#53cfe0;stroke-width:15;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-needle-line { fill:none;stroke:var(--nfr-accent);stroke-width:7;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-soil-dark { fill:#8c5270;stroke:var(--nfr-ink);stroke-width:5; }
+.nigoni-field-redesign .nfr-soil-light { fill:#e4ae61;stroke:var(--nfr-ink);stroke-width:5; }
+.nigoni-field-redesign .nfr-folder { fill:var(--nfr-primary);stroke:var(--nfr-ink);stroke-width:7;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-folder-tab { fill:var(--nfr-secondary);stroke:var(--nfr-ink);stroke-width:6;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-microscope { fill:none;stroke:var(--nfr-primary);stroke-width:18;stroke-linecap:round;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-stage { fill:var(--nfr-secondary);stroke:var(--nfr-ink);stroke-width:7; }
+.nigoni-field-redesign .nfr-microscope-base { fill:none;stroke:var(--nfr-ink);stroke-width:14;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-pod { fill:#d88f55;stroke:var(--nfr-ink);stroke-width:7;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-pod-seam { fill:none;stroke:#8f3f59;stroke-width:6;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-crane { fill:none;stroke:var(--nfr-primary);stroke-width:11;stroke-linecap:square;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-crane-cable { fill:none;stroke:var(--nfr-gold);stroke-width:6;stroke-linecap:round; }
+.nigoni-field-redesign .nfr-crane-brace { fill:none;stroke:var(--nfr-ink);stroke-width:6;stroke-linecap:round;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-badge { fill:var(--nfr-primary);stroke:var(--nfr-ink);stroke-width:7;stroke-linejoin:round; }
+.nigoni-field-redesign .nfr-ribbon { fill:var(--nfr-accent);stroke:var(--nfr-ink);stroke-width:6;stroke-linejoin:round; }
+
+.elegans-field-redesign {
+  --efr-ink: #252b50;
+  --efr-primary: #4c50aa;
+  --efr-secondary: #64cec3;
+  --efr-accent: #e9527d;
+  --efr-gold: #efbd45;
+  --efr-ivory: #fff8df;
+  --efr-leaf: #188c73;
+  --efr-water: rgba(118, 218, 212, .74);
+  --efr-dark: #324268;
+  filter: drop-shadow(0 5px 4px rgba(30, 34, 72, .27));
+}
+.elegans-field-redesign.efr-santeuil { --efr-primary:#4d4fa8; --efr-secondary:#63cec8; --efr-accent:#e95b80; --efr-leaf:#1b8d78; }
+.elegans-field-redesign.efr-edinburgh { --efr-primary:#4a4e9f; --efr-secondary:#54c5bd; --efr-accent:#cf4770; --efr-leaf:#177d72; }
+.elegans-field-redesign.efr-tenerife { --efr-primary:#4554aa; --efr-secondary:#5fd0bb; --efr-accent:#e54f79; --efr-leaf:#188f70; }
+.elegans-field-redesign.efr-kauai { --efr-primary:#504ca8; --efr-secondary:#65d1ca; --efr-accent:#e85a85; --efr-leaf:#178e7a; }
+.elegans-field-redesign.efr-act { --efr-primary:#4454aa; --efr-secondary:#55c9c1; --efr-accent:#e2527c; --efr-leaf:#198b72; }
+.elegans-field-redesign.efr-auckland { --efr-primary:#4650a4; --efr-secondary:#5bcfc0; --efr-accent:#e35080; --efr-leaf:#168c70; }
+.elegans-field-redesign.efr-araucania { --efr-primary:#514ba3; --efr-secondary:#58c8bd; --efr-accent:#df4c78; --efr-leaf:#1b8b70; }
+.elegans-field-redesign path,
+.elegans-field-redesign rect,
+.elegans-field-redesign circle,
+.elegans-field-redesign ellipse {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.elegans-field-redesign .efr-shadow { fill:rgba(28,31,65,.24); stroke:none; }
+.elegans-field-redesign .efr-primary,
+.elegans-field-redesign .efr-secondary,
+.elegans-field-redesign .efr-accent,
+.elegans-field-redesign .efr-gold,
+.elegans-field-redesign .efr-ivory,
+.elegans-field-redesign .efr-glass,
+.elegans-field-redesign .efr-glass-alt,
+.elegans-field-redesign .efr-water,
+.elegans-field-redesign .efr-water-alt,
+.elegans-field-redesign .efr-stem,
+.elegans-field-redesign .efr-body,
+.elegans-field-redesign .efr-wing,
+.elegans-field-redesign .efr-wing-alt,
+.elegans-field-redesign .efr-cylinder,
+.elegans-field-redesign .efr-barrel,
+.elegans-field-redesign .efr-telescope-tube,
+.elegans-field-redesign .efr-telescope-lens,
+.elegans-field-redesign .efr-telescope-eye,
+.elegans-field-redesign .efr-kilt,
+.elegans-field-redesign .efr-waistband,
+.elegans-field-redesign .efr-sporran,
+.elegans-field-redesign .efr-bag,
+.elegans-field-redesign .efr-avocado,
+.elegans-field-redesign .efr-avocado-flesh,
+.elegans-field-redesign .efr-pit,
+.elegans-field-redesign .efr-tape-blade,
+.elegans-field-redesign .efr-root,
+.elegans-field-redesign .efr-packet,
+.elegans-field-redesign .efr-packet-alt,
+.elegans-field-redesign .efr-leaf,
+.elegans-field-redesign .efr-fragment,
+.elegans-field-redesign .efr-card,
+.elegans-field-redesign .efr-card-alt,
+.elegans-field-redesign .efr-funnel,
+.elegans-field-redesign .efr-seed,
+.elegans-field-redesign .efr-speaker,
+.elegans-field-redesign .efr-drum,
+.elegans-field-redesign .efr-bucket,
+.elegans-field-redesign .efr-compost,
+.elegans-field-redesign .efr-trowel,
+.elegans-field-redesign .efr-ash,
+.elegans-field-redesign .efr-mountain {
+  stroke:var(--efr-ink);
+  stroke-width:4;
+}
+.elegans-field-redesign .efr-primary { fill:var(--efr-primary); }
+.elegans-field-redesign .efr-secondary { fill:var(--efr-secondary); }
+.elegans-field-redesign .efr-accent { fill:var(--efr-accent); }
+.elegans-field-redesign .efr-gold { fill:var(--efr-gold); }
+.elegans-field-redesign .efr-ivory { fill:var(--efr-ivory); }
+.elegans-field-redesign .efr-glass { fill:rgba(215,247,244,.84); }
+.elegans-field-redesign .efr-glass-alt { fill:rgba(229,215,247,.82); }
+.elegans-field-redesign .efr-water { fill:var(--efr-water); }
+.elegans-field-redesign .efr-water-alt { fill:rgba(218,122,180,.62); }
+.elegans-field-redesign .efr-stem { fill:#86c99d; }
+.elegans-field-redesign .efr-body { fill:var(--efr-leaf); }
+.elegans-field-redesign .efr-wing { fill:rgba(123,222,216,.78); }
+.elegans-field-redesign .efr-wing-alt { fill:rgba(218,169,226,.72); }
+.elegans-field-redesign .efr-eye,
+.elegans-field-redesign .efr-hole { fill:var(--efr-ink); stroke:none; }
+.elegans-field-redesign .efr-cylinder { fill:var(--efr-secondary); }
+.elegans-field-redesign .efr-barrel { fill:var(--efr-secondary); }
+.elegans-field-redesign .efr-telescope-tube { fill:var(--efr-primary); }
+.elegans-field-redesign .efr-telescope-lens { fill:var(--efr-secondary); }
+.elegans-field-redesign .efr-telescope-eye { fill:var(--efr-accent); }
+.elegans-field-redesign .efr-kilt { fill:var(--efr-primary); }
+.elegans-field-redesign .efr-waistband { fill:var(--efr-accent); }
+.elegans-field-redesign .efr-sporran { fill:var(--efr-ivory); }
+.elegans-field-redesign .efr-bag { fill:var(--efr-leaf); }
+.elegans-field-redesign .efr-avocado { fill:var(--efr-leaf); }
+.elegans-field-redesign .efr-avocado-flesh { fill:#dbe86d; }
+.elegans-field-redesign .efr-pit { fill:#e85d7f; }
+.elegans-field-redesign .efr-tape-blade { fill:var(--efr-gold); }
+.elegans-field-redesign .efr-root { fill:var(--efr-secondary); }
+.elegans-field-redesign .efr-packet { fill:var(--efr-accent); }
+.elegans-field-redesign .efr-packet-alt { fill:var(--efr-secondary); }
+.elegans-field-redesign .efr-seed { fill:var(--efr-gold); stroke-width:2.5; }
+.elegans-field-redesign .efr-leaf { fill:var(--efr-leaf); }
+.elegans-field-redesign .efr-fragment { fill:var(--efr-accent); }
+.elegans-field-redesign .efr-card { fill:var(--efr-ivory); }
+.elegans-field-redesign .efr-card-alt { fill:var(--efr-secondary); }
+.elegans-field-redesign .efr-funnel { fill:rgba(214,245,242,.88); }
+.elegans-field-redesign .efr-speaker { fill:var(--efr-dark); }
+.elegans-field-redesign .efr-drum { fill:var(--efr-ivory); }
+.elegans-field-redesign .efr-bucket { fill:var(--efr-secondary); }
+.elegans-field-redesign .efr-compost { fill:#735174; }
+.elegans-field-redesign .efr-trowel { fill:var(--efr-accent); }
+.elegans-field-redesign .efr-ash { fill:#8794ad; }
+.elegans-field-redesign .efr-mountain { fill:var(--efr-primary); }
+.elegans-field-redesign .efr-line,
+.elegans-field-redesign .efr-fine,
+.elegans-field-redesign .efr-stem-edge,
+.elegans-field-redesign .efr-stem-node,
+.elegans-field-redesign .efr-music-slot,
+.elegans-field-redesign .efr-crank,
+.elegans-field-redesign .efr-lid,
+.elegans-field-redesign .efr-barrel-rib,
+.elegans-field-redesign .efr-frame,
+.elegans-field-redesign .efr-telescope-band,
+.elegans-field-redesign .efr-tripod,
+.elegans-field-redesign .efr-tripod-foot,
+.elegans-field-redesign .efr-tartan-gold,
+.elegans-field-redesign .efr-tartan-aqua,
+.elegans-field-redesign .efr-drone,
+.elegans-field-redesign .efr-drone-alt,
+.elegans-field-redesign .efr-chanter,
+.elegans-field-redesign .efr-gold-line,
+.elegans-field-redesign .efr-tape-tick,
+.elegans-field-redesign .efr-handle,
+.elegans-field-redesign .efr-mesh,
+.elegans-field-redesign .efr-mesh-line,
+.elegans-field-redesign .efr-flow-line,
+.elegans-field-redesign .efr-band,
+.elegans-field-redesign .efr-band-alt,
+.elegans-field-redesign .efr-fig-sample,
+.elegans-field-redesign .efr-tube,
+.elegans-field-redesign .efr-stand,
+.elegans-field-redesign .efr-radio-slot,
+.elegans-field-redesign .efr-antenna,
+.elegans-field-redesign .efr-zip,
+.elegans-field-redesign .efr-grass,
+.elegans-field-redesign .efr-grass-alt,
+.elegans-field-redesign .efr-trace-base,
+.elegans-field-redesign .efr-trace,
+.elegans-field-redesign .efr-pendulum,
+.elegans-field-redesign .efr-strap,
+.elegans-field-redesign .efr-hands,
+.elegans-field-redesign .efr-twig,
+.elegans-field-redesign .efr-tick,
+.elegans-field-redesign .efr-forward-arrow,
+.elegans-field-redesign .efr-return-arrow {
+  fill:none;
+  stroke:var(--efr-ink);
+  stroke-width:4;
+}
+.elegans-field-redesign .efr-fine { stroke-width:2.5; }
+.elegans-field-redesign .efr-stem-edge { stroke:#d8f1c7; stroke-width:4; }
+.elegans-field-redesign .efr-stem-node { stroke:var(--efr-primary); stroke-width:3; }
+.elegans-field-redesign .efr-music-slot { stroke:var(--efr-accent); stroke-width:5; }
+.elegans-field-redesign .efr-lid,
+.elegans-field-redesign .efr-handle { stroke:var(--efr-primary); stroke-width:10; }
+.elegans-field-redesign .efr-frame,
+.elegans-field-redesign .efr-stand { stroke:var(--efr-primary); stroke-width:8; }
+.elegans-field-redesign .efr-telescope-band { stroke:var(--efr-gold); stroke-width:8; }
+.elegans-field-redesign .efr-tripod { stroke:var(--efr-primary); stroke-width:9; }
+.elegans-field-redesign .efr-tripod-foot { stroke:var(--efr-accent); stroke-width:7; }
+.elegans-field-redesign .efr-barrel-rib { stroke:var(--efr-primary); stroke-width:5; }
+.elegans-field-redesign .efr-tartan-gold { stroke:var(--efr-gold); stroke-width:6; }
+.elegans-field-redesign .efr-tartan-aqua { stroke:var(--efr-secondary); stroke-width:7; }
+.elegans-field-redesign .efr-drone { stroke:var(--efr-primary); stroke-width:9; }
+.elegans-field-redesign .efr-drone-alt { stroke:var(--efr-accent); stroke-width:9; }
+.elegans-field-redesign .efr-chanter { stroke:var(--efr-gold); stroke-width:12; }
+.elegans-field-redesign .efr-gold-line { stroke:var(--efr-gold); stroke-width:5; }
+.elegans-field-redesign .efr-tape-tick { stroke:var(--efr-ink); stroke-width:2.5; }
+.elegans-field-redesign .efr-mesh { fill:rgba(215,247,244,.7); stroke:var(--efr-primary); }
+.elegans-field-redesign .efr-mesh-line { stroke:var(--efr-secondary); stroke-width:3; }
+.elegans-field-redesign .efr-flow-line { stroke:var(--efr-accent); stroke-width:5; }
+.elegans-field-redesign .efr-band { stroke:var(--efr-accent); stroke-width:8; }
+.elegans-field-redesign .efr-band-alt { stroke:var(--efr-primary); stroke-width:8; }
+.elegans-field-redesign .efr-fig-sample { stroke:var(--efr-leaf); stroke-width:14; }
+.elegans-field-redesign .efr-tube { stroke:var(--efr-secondary); stroke-width:7; }
+.elegans-field-redesign .efr-radio-slot { stroke:var(--efr-accent); stroke-width:5; }
+.elegans-field-redesign .efr-antenna { stroke:var(--efr-primary); stroke-width:7; }
+.elegans-field-redesign .efr-zip { stroke:var(--efr-secondary); stroke-width:5; stroke-dasharray:6 5; }
+.elegans-field-redesign .efr-grass { stroke:var(--efr-leaf); stroke-width:7; }
+.elegans-field-redesign .efr-grass-alt { stroke:var(--efr-accent); stroke-width:6; }
+.elegans-field-redesign .efr-trace-base { stroke:var(--efr-gold); stroke-width:3; }
+.elegans-field-redesign .efr-trace { stroke:var(--efr-accent); stroke-width:6; }
+.elegans-field-redesign .efr-pendulum { stroke:var(--efr-secondary); stroke-width:7; }
+.elegans-field-redesign .efr-strap { stroke:var(--efr-primary); stroke-width:13; }
+.elegans-field-redesign .efr-hands { stroke:var(--efr-accent); stroke-width:6; }
+.elegans-field-redesign .efr-twig { stroke:var(--efr-gold); stroke-width:6; }
+.elegans-field-redesign .efr-tick { stroke:var(--efr-primary); stroke-width:3; }
+.elegans-field-redesign .efr-forward-arrow { stroke:var(--efr-accent); stroke-width:7; }
+.elegans-field-redesign .efr-return-arrow { stroke:var(--efr-secondary); stroke-width:7; }
+.elegans-field-redesign .efr-label,
+.elegans-field-redesign .efr-small,
+.elegans-field-redesign .efr-card-symbol {
+  fill:var(--efr-ink);
+  font-family:var(--font-sans);
+  font-weight:900;
+  pointer-events:none;
+}
+.elegans-field-redesign .efr-label { font-size:19px; }
+.elegans-field-redesign .efr-small { font-size:12px; letter-spacing:.045em; }
+.elegans-field-redesign .efr-card-symbol { font-size:28px; }
+.elegans-field-redesign .efr-light-text { fill:var(--efr-ivory); }
+.elegans-field-redesign .efr-no-fill { fill:none; }
+@media (max-width:600px) {
+  .elegans-field-redesign .efr-small { font-size:15px; letter-spacing:.02em; }
+}
+
 .kauai-qg130-accessory {
   --qg130-ink: #24304d;
   --qg130-indigo: #514ca8;

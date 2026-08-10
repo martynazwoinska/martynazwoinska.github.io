@@ -1,6 +1,6 @@
 # Santeuil location research and art brief
 
-Last updated: 2026-07-29
+Last updated: 2026-08-10
 
 This dossier is the evidence and review contract for the Santeuil landscape and its three accessory pairs. It follows the Bristol N2 batch in the location-by-location Game of Worms illustration workflow.
 
@@ -80,29 +80,29 @@ The scene is one continuous stream-bank view, not a row of interchangeable field
 
 The accessories are playful translations of the representative substrate and documented local objects. They are not claims about traditional Santeuil clothing.
 
-### Hollow-stem specimen lantern
+### Stem sample tube
 
-This object teaches the JU1925 substrate by making the hollow, segmented plant stem visible rather than hiding it behind a generic plant icon.
+This object teaches the JU1925 substrate by making a hollow, segmented plant stem visible inside recognisable field storage.
 
-- **Primary:** tall segmented hogweed-stalk frame; cutaway hollow nodes; warm glass specimen chamber; restrained rot, fungus and worm detail; radial umbel finial; coherent handle and base.
-- **Companion:** low horizontal lantern assembled from diagonal stem sections; different hinge and handle; separate seed-cluster cage; no recoloured or merely scaled copy of the primary.
-- The stem is common hogweed, not giant hogweed, bamboo or a green laboratory tube.
+- **Primary:** long horizontal transparent tube with indigo ridged cap, rounded end, visible curved stem, four bounded nodes and a `STEM SAMPLE` tab.
+- **Companion:** shorter horizontal tube in the same orientation with a narrower cap, independently curved stem and `STEM` tab.
+- The illustrated stem is an abstract common-hogweed sample, not giant hogweed or bamboo.
 
-### Santeuil cylinder organ
+### Santeuil music box
 
 The real local organ supplies unusually specific construction details and a musical object unlike the Game's existing flutes, fiddles and accordions.
 
-- **Primary:** blonde-walnut secretary-form cabinet; visible pinned cylinder; wedge bellows; side crank; restrained suggestion of the 26-key range; an open or absent pipe rack that honestly reflects the instrument's present missing metal pipework.
-- **Companion:** compact vertical organette with a different tower-like cabinet, separate cylinder window, offset crank and another bellows geometry.
+- **Primary:** bright indigo hinged music box with visible turquoise pinned cylinder, note slots, top handle and side crank.
+- **Companion:** narrower handled box in the same front-facing orientation with a shorter independently pinned cylinder and compact crank.
 - The drawings are original abstractions based on documented construction, not copies of a heritage photograph.
 
-### Couleuvre dragonfly automaton
+### Dragonfly field pin
 
-The official Santeuil description specifically identifies dragonflies at the isolated Couleuvre-valley pond. The accessory is a kinetic observation toy, not a wearable third reuse of the Game's wing family.
+The official Santeuil description specifically identifies dragonflies at the isolated Couleuvre-valley pond. The accessory is a playful observation pin rather than a claim about the collection substrate.
 
-- **Primary:** hand-cranked pond-ring mechanism; a long-bodied damselfly-like figure with narrow paired wings; visible linkage, gear or cam; stable base.
-- **Companion:** asymmetric carousel with a broader four-wing dragonfly figure, offset crank, different body joints and a distinct pond or reed base.
-- The mechanisms remain readable when all three accessory pairs are visible together.
+- **Primary:** long green body, gold head, two broad turquoise forewings, two violet hindwings and a labelled pin base.
+- **Companion:** shorter body in the same upright orientation with independently proportioned wings and compact pin base.
+- Both copies retain visible body segmentation and four separate wings at Game scale.
 
 ## Quality benchmark
 

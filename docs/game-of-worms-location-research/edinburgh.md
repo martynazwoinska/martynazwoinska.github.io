@@ -1,6 +1,6 @@
 # Edinburgh location research and art brief
 
-Last updated: 2026-07-14
+Last updated: 2026-08-10
 
 This dossier is the evidence and review contract for the Edinburgh landscape and its three accessory pairs. It follows the Bristol N2 and Santeuil batches in the location-by-location Game of Worms illustration workflow.
 
@@ -79,29 +79,29 @@ The scene connects one exact compost-bin microhabitat to the immediately neighbo
 
 The tumbler translates the representative microhabitat into a movable play object. The kilt and bagpipes are playful Scottish cultural cues requested for this isolate; they do not claim a documented relationship to ED3010 or identify a specific historic tartan.
 
-### Midmar compost tumbler
+### Blackford observatory telescope
 
-The Council documents a large tumbler at Midmar, but it post-dates the strain record. It is a locally grounded compost mechanism, not the claimed source of ED3010.
+The Royal Observatory on Blackford Hill is the landscape's clearest local landmark. The telescope is a playful regional research cue, not claimed equipment from the ED3010 collection.
 
-- **Primary:** tall faceted drum in a stable A-frame; side crank; vent rows; inspection hatch; restrained cutaway showing different brown and green compost layers.
-- **Companion:** low slatted barrel in a crescent cradle; end handwheel; two differently placed inspection doors; distinct footing and rotational axis.
-- Neither drawing may look like N2's jetpack, an ordinary backpack or a recoloured cylinder.
+- **Primary:** large indigo refracting telescope angled upward, with turquoise barrel, gold mounting axis, visible lens and eyepiece, stable three-legged tripod and `BLACKFORD` plate.
+- **Companion:** shorter telescope in the same orientation with independently proportioned barrel, lens housing and tripod.
+- Both copies read as complete optical instruments and remain clear of the worm faces.
 
-### Edinburgh tartan kilt
+### Edinburgh tartan kilts
 
-The kilt is a playful regional cue rather than evidence about the isolate. Its restrained emerald, heather and antique-gold sett belongs to the Game's visual system and is not presented as a named clan or historic tartan.
+The kilt is a playful regional cue rather than evidence about the isolate. Its indigo, turquoise, coral and antique-gold sett belongs to the Game's playful palette and is not presented as a named clan or historic tartan.
 
-- **Primary:** longer tailored apron, deep curved pleats, broad waistband and a capped sporran with three tassels.
-- **Companion:** shorter asymmetric fitted form, shallower pleats, a different sett rhythm and a simpler uncapped sporran.
+- **Primary:** longer indigo tailored apron, broad coral waistband, deep gold-and-turquoise sett and large ivory sporran.
+- **Companion:** shorter fitted form in the same orientation with fewer pleats, independently spaced sett and compact sporran.
 - The two forms must read as cloth wrapped around different worm bodies, not as barrels, shields or recoloured skirts.
 
 ### Great Highland bagpipes
 
 The bagpipes are the second playful Scottish cue. Their construction must remain recognisable at the small Game scale without becoming a generic backpack or a bundle of sticks.
 
-- **Primary:** full organic bag, three graduated drones with separate mounts and rings, braided cord, long chanter, blowpipe and finger holes.
-- **Companion:** compact differently shaped bag, two drones, a shorter independent cord route and a distinct chanter and blowpipe.
-- Both copies use dark wood, muted heather cord and restrained brass mounts; their pipes must stay clear of the worm faces.
+- **Primary:** full emerald bag, three separately mounted indigo/coral drones, gold cord and a long gold chanter with visible finger holes.
+- **Companion:** compact emerald bag in the same orientation with two drones, shorter cord and independently proportioned chanter.
+- Their pipes remain clear of the worm faces.
 
 ## Quality benchmark
 

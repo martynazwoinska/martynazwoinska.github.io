@@ -1,6 +1,6 @@
 # Dois Rios, Ilha Grande *Caenorhabditis briggsae* EG5612 location research and art brief
 
-Last updated: 2026-07-28
+Last updated: 2026-08-10
 
 ## Exact record
 
@@ -71,29 +71,30 @@ and accessories above it.
 
 ## Accessory contract
 
-### Jackfruit emergence theatre
+### Jackfruit sample tray
 
-Primary: a broad split-fruit theatre with several small life-stage windows and
-one single-larva founding gate.
+Primary: a broad indigo laboratory tray holding a large split green jackfruit
+with ochre interior and individually visible pale fruit bulbs.
 
-Companion: a tall rind-and-interior cabinet with staggered emergence drawers
-and a separate founding cradle.
+Companion: a narrower tray in the same orientation with a more compact fruit
+half and independently arranged bulbs.
 
-### Shared-bag provenance bifurcator
+### Shared sample bag
 
-Primary: a wide transport-bag viewer joining an abstract jackfruit card and
-red-flower card through one uncertainty shutter.
+Primary: a large transparent zip specimen bag divided between a jackfruit cue
+and a red flower cue, with a prominent `SAME BAG` label.
 
-Companion: a tall two-pocket bag ledger with crossed provenance ribbons and a
-single shared seal.
+Companion: a narrower bag in the same upright orientation with independently
+proportioned specimen cues.
 
-### Single-larva test-cross gate
+### Test-cross plates
 
-Primary: a broad two-channel gate that closes the *C. elegans* route and opens
-the *C. briggsae* route, with one L4 start chamber.
+Primary: two overlapping culture plates in a laboratory carrier, with the N2
+cross marked negative, the AF16 cross marked positive and a separate `L4`
+founder tab.
 
-Companion: a tall sequential test-cross tower with separate species windows
-and one founding-larva lift. No strain code appears on the object.
+Companion: a compact carrier in the same orientation with smaller independently
+proportioned plates. The marks summarise the recorded test-cross outcomes.
 
 The buttons omit the strain code. Internal IDs may retain it.
 

@@ -1,6 +1,8 @@
 # Pohnpei *Caenorhabditis tropicalis* QG4739 location research and art brief
 
-Last updated: 2026-07-29
+Last updated: 2026-08-10
+
+> **Current production accessory contract:** `kotop sample boxes`, `paired thermometers`, and `seven-vial sample racks`. These recognizable objects supersede the earlier abstract mechanism sketches below and retain the naming, temperature and seven-isotype evidence.
 
 ## Purpose
 
