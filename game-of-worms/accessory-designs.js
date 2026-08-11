@@ -33,7 +33,7 @@ const rows = [
   ["nigoni", "Ho Chi Minh City · JU4356", "carambola sample trays", "ju4356-carambola-ground-contact-stage", "ITS2 DNA cards", "ju4356-its2-ribbon-reader", "tree survey calipers", "hcmc-urban-canopy-census-engine"],
   ["nigoni", "Lombok, Indonesia · HPT26", "fig sample trays", "hpt26-ficus-ground-contact-stage", "field-to-plate calendars", "lingsar-field-to-plate-calendar", "paired sample boxes", "hpt26-hpt27-substrate-diptych"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "five-day plating chronograph", "ju1873-plating-chronograph", "living-type voucher vault", "ju1873-living-type-vault"],
-  ["tropicalis", "Barro Colorado Island, Panama", "flower-bait cup", "qg2726-gustavia-bait-array", "tree calipers", "bci-forest-census-mapper", "rain gauge", "lutz-runoff-recorder"],
+  ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower fascinator", "qg2726-gustavia-flower-fascinator", "Golden Fleece cape", "qg2726-golden-fleece-cape", "forest-census notebook", "qg2726-bci-forest-census-notebook"],
   ["tropicalis", "La Selva, Costa Rica", "26.5 °C thermometers", "qg3845-substrate-temperature", "leaf-cutter ant field loupes", "la-selva-leafcutter-automaton", "La Selva–Barva elevation maps", "barva-gradient-lift"],
   ["tropicalis", "Guadeloupe · NIC203", "Guadeloupe torch-ginger trays", "nic203-torch-ginger-bract-stage", "waterfall flow meters", "carbet-three-fall-hydraulic-sequencer", "toxin–antidote inheritance cards", "nic203-toxin-antidote-automaton"],
   ["tropicalis", "Nouragues, French Guiana · JU1428", "Duguetia sample boxes", "ju1428-duguetia-fruit-theatre", "litterfall baskets", "nouragues-litterfall-chronobalance", "three-strain sample racks", "ju1428-isotype-triad-comparator"],
@@ -4861,80 +4861,68 @@ function drawBarroColoradoQG2726Accessory(group, item, companion) {
   group.dataset.renderer = item.family;
   group.classList.add("barro-qg2726-accessory", companion ? "qg2726-companion" : "qg2726-primary");
 
-  if (item.family === "qg2726-gustavia-bait-array") {
-    if (companion) {
-      path(group, "M-91 75Q-5 101 88 73Q43 112-82 106Z", "bci-accessory-shadow");
-      add(group, "ellipse", { class: "bci-bait-lid", cx: 44, cy: -66, rx: 64, ry: 17, transform: "rotate(13 44 -66)" });
-      path(group, "M-87-28H75L64 57Q-5 82-76 56Z", "bci-bait-cup-shell");
-      add(group, "ellipse", { class: "bci-bait-cup-rim", cx: -6, cy: -28, rx: 81, ry: 18 });
-      path(group, "M-74 7Q-7-8 63 8L57 50Q-7 70-69 50Z", "bci-flower-paste");
-      add(group, "ellipse", { class: "bci-flower-paste-surface", cx: -6, cy: 7, rx: 68, ry: 14 });
-      [[-47,4,0],[-21,16,18],[8,2,-12],[36,18,24]].forEach(([x,y,angle],index)=>add(group,"path",{class:index%2?"bci-paste-petal deep":"bci-paste-petal",d:"M-11-5C-18-18-1-23 5-11C12-23 29-13 22 0C35 4 28 20 14 15C8 29-10 20-7 7C-21 5-23-10-11-5Z",transform:`translate(${x} ${y}) rotate(${angle}) scale(.42)`}));
-      path(group, "M-48 32H38L42 52H-45Z", "bci-bait-label");
-      const baitLabel = add(group, "text", { class: "bci-bait-label-text", x: -3, y: 46 });
-      baitLabel.textContent = "FLOWER BAIT";
-    } else {
-      path(group, "M-134 91Q0 126 139 87Q70 142-122 135Z", "bci-accessory-shadow");
-      add(group, "ellipse", { class: "bci-bait-lid", cx: 72, cy: -86, rx: 86, ry: 21, transform: "rotate(12 72 -86)" });
-      path(group, "M-119-40H103L89 76Q-10 108-106 74Z", "bci-bait-cup-shell");
-      add(group, "ellipse", { class: "bci-bait-cup-rim", cx: -8, cy: -40, rx: 111, ry: 24 });
-      path(group, "M-103 9Q-8-12 88 10L80 66Q-10 92-96 65Z", "bci-flower-paste");
-      add(group, "ellipse", { class: "bci-flower-paste-surface", cx: -8, cy: 9, rx: 96, ry: 20 });
-      [[-70,4,-8],[-39,24,16],[-5,2,-18],[29,25,22],[62,5,4]].forEach(([x,y,angle],index)=>add(group,"path",{class:index%2?"bci-paste-petal deep":"bci-paste-petal",d:"M-11-5C-18-18-1-23 5-11C12-23 29-13 22 0C35 4 28 20 14 15C8 29-10 20-7 7C-21 5-23-10-11-5Z",transform:`translate(${x} ${y}) rotate(${angle}) scale(.58)`}));
-      path(group, "M-63 43H49L55 69H-58Z", "bci-bait-label");
-      const baitLabel = add(group, "text", { class: "bci-bait-label-text", x: -4, y: 61 });
-      baitLabel.textContent = "FLOWER BAIT";
-    }
+  if (item.family === "qg2726-gustavia-flower-fascinator") {
+    const s = companion ? .78 : 1;
+    const flower = add(group, "g", { transform: `scale(${s})` });
+    path(flower, companion ? "M-82 18C-98-15-74-48-42-43C-27-78 15-76 29-43C66-61 94-23 73 8C98 33 69 65 38 48C16 75-27 63-31 36C-55 48-80 39-82 18Z" : "M-77 31C-104 3-94-41-55-46C-47-81-3-96 18-61C49-87 91-61 79-23C110-4 91 40 55 39C35 72-12 72-29 42C-50 57-72 49-77 31Z", "bci-gustavia-petal-far");
+    path(flower, companion ? "M-23-10C-54-21-59 10-38 24C-52 49-18 61 1 38C16 64 49 45 38 20C69 10 54-24 24-20C13-46-17-38-23-10Z" : "M-15-12C-54-32-68-3-49 18C-78 37-48 65-20 39C-14 72 25 67 29 37C55 59 84 28 56 10C82-9 57-39 30-20C24-52-13-49-15-12Z", "bci-gustavia-petal-near");
+    (companion ? ["M-61 2Q-34 2-19 12","M-28-33Q-12-15-6 5","M29-28Q21-10 15 6","M62 11Q38 13 23 21"] : ["M-70 17Q-42 7-25 14","M-40-35Q-17-20-9 1","M4-55Q5-27 3-10","M48-38Q27-17 18 1","M69 6Q43 8 25 18","M35 43Q19 28 13 19"]).forEach(d=>path(flower,d,"bci-gustavia-petal-vein"));
+    path(flower, "M-63 37C-92 56-103 85-93 113C-58 106-35 83-29 47Z", "bci-gustavia-leaf");
+    path(flower, "M-86 101Q-62 73-37 52", "bci-gustavia-leaf-vein");
+    add(flower, "ellipse", { class: "bci-gustavia-centre", cx: 3, cy: 7, rx: 31, ry: 27 });
+    [[-24,-4,-42,-16],[-17,14,-34,31],[-7,-14,-12,-37],[4,18,5,43],[11,-14,19,-39],[22,10,43,22],[22,-2,49,-7],[-19,4,-46,4],[-12,-10,-30,-27],[-4,17,-14,39],[13,14,27,35],[14,-8,34,-26]].forEach(([x1,y1,x2,y2])=>line(flower,`M${x1} ${y1}Q${(x1+x2)/2} ${(y1+y2)/2-4} ${x2} ${y2}`,"bci-gustavia-stamen"));
+    [[-42,-16],[-34,31],[-12,-37],[5,43],[19,-39],[43,22],[49,-7],[-46,4],[-30,-27],[-14,39],[27,35],[34,-26]].forEach(([cx,cy])=>add(flower,"circle",{class:"bci-gustavia-anther",cx,cy,r:4.5}));
+    [[-12,-2],[0,-8],[13,-1],[-7,11],[7,10]].forEach(([cx,cy])=>add(flower,"circle",{class:"bci-gustavia-pollen",cx,cy,r:4}));
+    path(flower, "M-42 58Q-10 79 28 57L21 72Q-11 92-49 70Z", "bci-gustavia-band");
+    add(flower, "circle", { class: "bci-gustavia-clasp", cx: -11, cy: 72, r: 8 });
     return true;
   }
 
-  if (item.family === "bci-forest-census-mapper") {
-    if (companion) {
-      path(group, "M-105 101Q0 130 111 98Q55 144-96 137Z", "bci-accessory-shadow");
-      add(group, "ellipse", { class: "bci-tree-trunk", cx: 5, cy: -9, rx: 36, ry: 66 });
-      add(group, "ellipse", { class: "bci-tree-ring", cx: 5, cy: -9, rx: 25, ry: 49 });
-      path(group, "M-98 52H105V70H-98Z", "bci-caliper-beam");
-      path(group, "M-98 62V-81H-76V44H-56V62Z", "bci-caliper-fixed-jaw");
-      path(group, "M53 43V-76H75V62H53Z", "bci-caliper-moving-jaw");
-      add(group, "rect", { class: "bci-caliper-slider", x: 45, y: 40, width: 39, height: 38, rx: 6 });
-      [-63,-35,-7,21,49,77].forEach(x=>line(group,`M${x} 53V62`,"bci-caliper-tick"));
-      add(group, "circle", { class: "bci-caliper-lock", cx: 65, cy: 59, r: 7 });
-    } else {
-      path(group, "M-157 104Q0 139 164 100Q82 153-144 146Z", "bci-accessory-shadow");
-      add(group, "ellipse", { class: "bci-tree-trunk", cx: 7, cy: -14, rx: 53, ry: 91 });
-      add(group, "ellipse", { class: "bci-tree-ring", cx: 7, cy: -14, rx: 38, ry: 70 });
-      path(group, "M-145 67H151V91H-145Z", "bci-caliper-beam");
-      path(group, "M-145 80V-112H-116V55H-86V80Z", "bci-caliper-fixed-jaw");
-      path(group, "M78 52V-106H108V80H78Z", "bci-caliper-moving-jaw");
-      add(group, "rect", { class: "bci-caliper-slider", x: 67, y: 49, width: 54, height: 51, rx: 7 });
-      [-101,-61,-21,19,59,99,139].forEach(x=>line(group,`M${x} 69V82`,"bci-caliper-tick"));
-      add(group, "circle", { class: "bci-caliper-lock", cx: 94, cy: 75, r: 9 });
-      const caliperLabel = add(group, "text", { class: "bci-caliper-label", x: 94, y: 97 });
-      caliperLabel.textContent = "DBH";
-    }
+  if (item.family === "qg2726-golden-fleece-cape") {
+    const s = companion ? .76 : 1;
+    const cape = add(group, "g", { transform: `scale(${s})` });
+    path(cape, companion ? "M-105-36Q-39-70 34-42L82-18Q96 2 79 19L67 58L39 50L17 83L-7 66L-39 91L-53 59L-89 68L-82 34Q-111 5-105-36Z" : "M-121-43Q-47-82 42-48L94-19Q111 4 91 24L76 73L43 61L18 101L-12 77L-51 108L-67 70L-108 81L-98 36Q-130 2-121-43Z", "bci-fleece-body");
+    path(cape, companion ? "M-78-25Q-28-51 27-29L59-11Q71 0 60 15L47 39L19 35L-4 57L-30 43L-58 52L-54 23Q-79 4-78-25Z" : "M-91-30Q-34-59 32-31L67-11Q82 2 68 18L53 48L21 43L-7 70L-37 51L-72 62L-65 26Q-94 4-91-30Z", "bci-fleece-highlight");
+    (companion ? [[-88,-24],[-53,-47],[-12,-52],[29,-40],[65,-15],[70,20],[52,51],[15,66],[-24,72],[-61,55]] : [[-103,-31],[-67,-57],[-23,-63],[23,-54],[64,-30],[87,1],[72,44],[48,72],[11,82],[-31,87],[-72,69],[-95,35]]).forEach(([x,y],i)=>path(cape,`M${x-11} ${y}q11-18 22 0q-11 18-22 0`,i%3?"bci-fleece-curl":"bci-fleece-curl deep"));
+    (companion ? [[-49,-13],[-12,-25],[25,-10],[43,17],[5,30],[-30,27]] : [[-57,-17],[-18,-32],[23,-21],[48,5],[32,34],[-5,45],[-42,34]]).forEach(([x,y],i)=>path(cape,`M${x-13} ${y}q13-14 26 0q-13 16-26 0`,i%2?"bci-fleece-wool":"bci-fleece-wool deep"));
+    path(cape, "M61-24Q91-38 108-15Q110 8 87 15Q68 13 58-2", "bci-fleece-collar");
+    add(cape, "circle", { class: "bci-fleece-clasp", cx: 82, cy: -5, r: 11 });
+    path(cape, "M75-6C80-23 100-18 98-2C95 12 79 11 76 1", "bci-fleece-horn");
+    path(cape, "M83 7Q99 29 89 51", "bci-fleece-cord");
+    path(cape, "M79 50L89 65L99 50Z", "bci-fleece-tassel");
     return true;
   }
 
-  if (item.family === "lutz-runoff-recorder") {
+  if (item.family === "qg2726-bci-forest-census-notebook") {
+    const book = add(group, "g", { transform: `scale(${companion ? .78 : 1})` });
+    path(book, companion ? "M-105 83Q0 111 109 79Q57 125-95 119Z" : "M-128 94Q0 132 135 89Q72 145-116 137Z", "bci-accessory-shadow");
     if (companion) {
-      path(group, "M-91 110Q0 138 96 108Q48 151-83 144Z", "bci-accessory-shadow");
-      path(group, "M-76-82H76L42-37H-42Z", "bci-rain-funnel");
-      add(group, "ellipse", { class: "bci-rain-rim", cx: 0, cy: -82, rx: 76, ry: 17 });
-      path(group, "M-50-38H50L43 91H-43Z", "bci-rain-outer");
-      path(group, "M-22-31H22V82H-22Z", "bci-rain-inner");
-      path(group, "M-18 27H18V78H-18Z", "bci-rain-water");
-      [-12,8,28,48,68].forEach(y=>line(group,`M24 ${y}H39`,"bci-rain-tick"));
-      path(group, "M-59 91H59L72 111H-72Z", "bci-rain-base");
+      path(book, "M-83-56L49-67L83 72L-51 84Z", "bci-notebook-pages");
+      path(book, "M-91-65L37-77L51 69L-78 81Z", "bci-notebook-cover");
+      path(book, "M-91-65L-69-67L-55 79L-78 81Z", "bci-notebook-spine");
+      path(book, "M-56-43L20-50L29 27L-47 34Z", "bci-notebook-map");
+      [-37,-13,11].forEach(x=>line(book,`M${x}-47L${x+8} 31`,"bci-notebook-grid"));
+      [-25,-1,23].forEach(y=>line(book,`M-52 ${y}L25 ${y-7}`,"bci-notebook-grid"));
+      [[-27,-18],[3,8],[12,-28]].forEach(([cx,cy])=>add(book,"circle",{class:"bci-notebook-tree",cx,cy,r:7}));
+      path(book, "M43-61L57 61L70 56L55-66Z", "bci-notebook-pencil");
+      path(book, "M55-66L43-78L42-61Z", "bci-notebook-pencil-tip");
+      path(book, "M-71 54Q-101 55-101 83", "bci-notebook-tag-cord");
+      add(book, "rect", { class: "bci-notebook-tag", x: -119, y: 72, width: 39, height: 26, rx: 5 });
+      const tag = add(book, "text", { class: "bci-notebook-tag-text", x: -99, y: 90 }); tag.textContent = "50 HA";
     } else {
-      path(group, "M-122 109Q0 142 128 106Q64 155-111 148Z", "bci-accessory-shadow");
-      path(group, "M-104-102H104L59-43H-59Z", "bci-rain-funnel");
-      add(group, "ellipse", { class: "bci-rain-rim", cx: 0, cy: -102, rx: 104, ry: 23 });
-      path(group, "M-70-45H70L61 103H-61Z", "bci-rain-outer");
-      path(group, "M-31-36H31V91H-31Z", "bci-rain-inner");
-      path(group, "M-26 15H26V87H-26Z", "bci-rain-water");
-      [-18,4,26,48,70].forEach(y=>line(group,`M34 ${y}H57`,"bci-rain-tick"));
-      path(group, "M-84 102H84L101 127H-101Z", "bci-rain-base");
-      line(group, "M-7-83V-49", "bci-rain-flow");
+      path(book, "M-103-71L65-55L94 86L-76 104Z", "bci-notebook-pages");
+      path(book, "M-112-82L52-67L75 79L-91 96Z", "bci-notebook-cover");
+      path(book, "M-112-82L-85-80L-64 93L-91 96Z", "bci-notebook-spine");
+      path(book, "M-73-53L24-43L38 34L-59 46Z", "bci-notebook-map");
+      [-54,-24,6].forEach(x=>line(book,`M${x}-51L${x+13} 42`,"bci-notebook-grid"));
+      [-27,0,27].forEach(y=>line(book,`M-68 ${y}L33 ${y+8}`,"bci-notebook-grid"));
+      [[-42,-22],[-9,12],[15,-17],[-34,27]].forEach(([cx,cy])=>add(book,"circle",{class:"bci-notebook-tree",cx,cy,r:8}));
+      const title = add(book, "text", { class: "bci-notebook-title", x: -19, y: 65 }); title.textContent = "BCI FIELD CENSUS";
+      path(book, "M62-59L83 73L98 66L77-65Z", "bci-notebook-pencil");
+      path(book, "M77-65L62-82L62-59Z", "bci-notebook-pencil-tip");
+      path(book, "M-82 72Q-126 72-127 108", "bci-notebook-tag-cord");
+      add(book, "rect", { class: "bci-notebook-tag", x: -149, y: 96, width: 48, height: 31, rx: 6 });
+      const tag = add(book, "text", { class: "bci-notebook-tag-text", x: -125, y: 117 }); tag.textContent = "50 HA";
     }
     return true;
   }
@@ -6285,9 +6273,9 @@ function renderPiece(target, item, wormPart) {
     ,"ju1428-duguetia-fruit-theatre": { primary: [365, 119, .31, -2], companion: [0, 108, .27, 3] }
     ,"nouragues-litterfall-chronobalance": { primary: [220, 190, .3, -1], companion: [90, 202, .26, 2] }
     ,"ju1428-isotype-triad-comparator": { primary: [362, 270, .3, -1], companion: [8, 286, .25, 2] }
-    ,"qg2726-gustavia-bait-array": { primary: [380, 139, .40, -2], companion: [-2, 124, .32, 2] }
-    ,"bci-forest-census-mapper": { primary: [225, 180, .38, 1], companion: [122, 214, .35, -1] }
-    ,"lutz-runoff-recorder": { primary: [380, 252, .38, -1], companion: [204, 289, .32, 1] }
+    ,"qg2726-gustavia-flower-fascinator": { primary: [438, 119, .38, -11], companion: [127, 133, .33, -8] }
+    ,"qg2726-golden-fleece-cape": { primary: [300, 124, .42, -9], companion: [136, 121, .36, -11] }
+    ,"qg2726-bci-forest-census-notebook": { primary: [365, 265, .42, -6], companion: [43, 276, .34, -7] }
     ,"ju1873-cacao-specimen-lantern": { primary: [385, 132, .37, -2], companion: [-8, 118, .28, 3] }
     ,"ju1873-plating-chronograph": { primary: [236, 177, .37, 1], companion: [126, 205, .31, -2] }
     ,"ju1873-living-type-vault": { primary: [380, 251, .38, -1], companion: [20, 283, .31, 2] }

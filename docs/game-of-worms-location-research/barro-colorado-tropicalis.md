@@ -188,96 +188,89 @@ Forbidden:
 
 ## Accessory contract
 
-### Flower-bait cup
+### Gustavia flower fascinator
 
-Family ID: `qg2726-gustavia-bait-array`
+Family ID: `qg2726-gustavia-flower-fascinator`
 
-Scientific basis: QG2726 came from one experimental *Gustavia superba* slurry
-bait within the March 2015 Barro Colorado field experiment.
+Scientific basis: QG2726 came from bait made by blending *Gustavia superba*
+flowers with water. The flower is a wearable reference to that bait.
 
-Primary: a broad transparent lidded field cup with a clearly visible layer of
-flower paste, several contained petal fragments and a simple `FLOWER BAIT`
-field label.
+Primary: a broad cream-and-blush flower worn near the head, with irregular
+petals, dense pink filaments, gold anthers, one dark green leaf and a visible
+band and clasp. It must not cover the face.
 
-Companion: a compact squat transparent cup with the same viewing orientation,
-a separate lid, independently arranged flower paste and petal fragments, and
-the same simple field label.
+Companion: a smaller side-facing bloom with a different petal silhouette,
+stamen arrangement and attachment angle.
 
-Do not add undocumented chemistry, mesh size or temperature. Both copies must
-read as lidded field bait cups rather than Petri dishes or abstract machinery.
+Both must resemble the broad-petalled, stamen-rich real flower rather than a
+generic daisy.
 
-### Tree calipers
+### Golden Fleece cape
 
-Family ID: `bci-forest-census-mapper`
+Family ID: `qg2726-golden-fleece-cape`
 
-Regional basis: Barro Colorado’s 50-hectare plot established the long-running
-ForestGEO forest-census model. This object represents regional research
-history, not QG2726’s collection apparatus or collection point.
+Biological basis: maternal toxin/zygotic antidote systems described across
+*C. tropicalis* have been termed Medea-like elements. The fleece is a playful
+allusion to the Medea myth, not evidence that QG2726 carries a specific Medea
+element.
 
-Primary: broad forestry calipers with a graduated horizontal beam, one fixed
-jaw and one sliding jaw visibly spanning a trunk section.
+Primary: an irregular golden sheepskin cape draped along the back, with a
+lighter wool field, contained curls, a berry clasp and a small curled-horn cue.
 
-Companion: compact forestry calipers with the same beam-and-jaw orientation,
-different proportions and an independently positioned sliding block.
+Companion: a shorter shoulder fleece with a different hem, curl distribution,
+clasp position and drape angle. Do not put `Medea`, genotype or gene-drive text
+on either drawing.
 
-Do not reproduce real plot data, tree positions, tag numbers, logos or maps.
-The parallel jaws and graduated beam must make the tool recognizable without
-its public label.
+### Forest-census notebook
 
-### Rain gauge
+Family ID: `qg2726-bci-forest-census-notebook`
 
-Family ID: `lutz-runoff-recorder`
+Regional basis: Barro Colorado's 50-hectare permanent forest plot established
+the long-running ForestGEO tree-census model. Trees are identified, tagged,
+mapped and repeatedly measured.
 
-Regional basis: Barro Colorado’s long-running physical monitoring includes
-rainfall and hydrological observations. This is regional field-research
-context; it is not QG2726 collection equipment.
+Primary: a vivid emerald waterproof field notebook in perspective, with a page
+block, violet spine, forest-map grid, tree marks, attached berry pencil and a
+small aluminium `50 HA` plot tag.
 
-Primary: a tall standard-style rain gauge with a wide collector funnel, outer
-overflow can, visible inner measuring tube, graduations and stable base.
+Companion: a narrower pocket notebook with a different cover silhouette, map
+grid, tree marks, pencil position and hanging plot tag.
 
-Companion: a compact upright rain gauge with the same orientation, a wide
-funnel, transparent outer body, visible measuring tube, graduations and water
-level.
-
-This is place-based research context. It must not imply that QG2726 was
-collected in rainwater or isolated with meteorological equipment.
+This object represents Barro Colorado's research identity rather than QG2726's
+collection apparatus. Do not reproduce real tree identities or plot data.
 
 ## Suggested initial layouts
 
 These values require final browser tuning:
 
 ```js
-"qg2726-gustavia-bait-array": {
-  primary: [380, 139, .40, -2],
-  companion: [-2, 124, .32, 2]
+"qg2726-gustavia-flower-fascinator": {
+  primary: [438, 119, .38, -11],
+  companion: [127, 133, .33, -8]
 },
-"bci-forest-census-mapper": {
-  primary: [225, 180, .38, 1],
-  companion: [122, 214, .35, -1]
+"qg2726-golden-fleece-cape": {
+  primary: [300, 124, .42, -9],
+  companion: [136, 121, .36, -11]
 },
-"lutz-runoff-recorder": {
-  primary: [380, 252, .38, -1],
-  companion: [204, 289, .32, 1]
+"qg2726-bci-forest-census-notebook": {
+  primary: [365, 265, .42, -6],
+  companion: [43, 276, .34, -7]
 }
 ```
 
 ## Semantic reuse ledger
 
-Delete the singleton research-headphones, canal-periscope and
-canopy-camera-rig families.
+Replace the former bait-cup, tree-caliper and rain-gauge set with:
 
-Add:
-
-- Experimental bait array: Barro Colorado QG2726 only
-- Vegetation census instrument: Ho Chi Minh City JU4356 and Barro Colorado
-  QG2726
-- Hydrological runoff recorder: Barro Colorado QG2726 only
+- *Gustavia superba* flower fascinator: Barro Colorado QG2726 only
+- Golden Fleece cape: Barro Colorado QG2726 only
+- Forest-census notebook: Barro Colorado QG2726 only
 
 Expected totals:
 
-- 17 families used exactly twice
-- 77 singleton families
-- 111 concepts across 37 accessory sets
+- 16 families used exactly twice
+- 80 singleton families
+- 112 concepts across 37 accessory sets
 - no semantic family used more than twice
 
 ## Variant and interaction requirements
@@ -296,7 +289,7 @@ Expected totals:
 ## Acceptance checks
 
 - Exactly 37 explicit environment profiles and composition IDs.
-- Exactly 37 accessory sets and 111 unique accessory design IDs.
+- Exactly 37 accessory sets and 112 unique accessory design IDs.
 - No remaining active `barro-gatun` mapping or old headphone, periscope or
   camera-rig object for Barro Colorado.
 - No generic-renderer fallback for the six new drawings.

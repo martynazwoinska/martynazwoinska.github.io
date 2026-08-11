@@ -3,7 +3,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260810-45";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260811-46";
 import { speciesGalleries } from "./species-gallery.js?v=20260809-7";
 
 const t = createGameTranslator(document.documentElement.lang);
@@ -171,7 +171,7 @@ const species = [
     habitatOne: "#7ad6c0",
     habitatTwo: "#f08a85",
     locations: [
-      { name: "Barro Colorado Island, Panama", sceneLabel: "Forest bait · Barro Colorado Island · Panama", coordinates: [-79.8399, 9.1598], source: "CaeNDR QG2726 isotype record", style: "rainforest", strain: "QG2726", history: "This C. tropicalis line came from an experimental forest bait made by blending Gustavia superba flowers with water into a paste. The bait was placed in the forest to attract nematodes; the worms were not collected from a naturally fallen flower or fruit." },
+      { name: "Barro Colorado Island, Panama", sceneLabel: "Forest bait · Barro Colorado Island · Panama", coordinates: [-79.8399, 9.1598], source: "CaeNDR QG2726 isotype record", style: "rainforest", strain: "QG2726", history: "This C. tropicalis line came from an experimental forest bait made by blending Gustavia superba flowers with water into a paste. The bait was placed in the forest to attract nematodes." },
       { name: "La Selva, Costa Rica", sceneLabel: "Rotting fruit · La Selva · Costa Rica", coordinates: [-84.01138, 10.43082], source: "CaeNDR QG3845 isotype record", style: "rainforest", strain: "QG3845", history: "A rotting brown fruit in La Selva forest yielded this C. tropicalis line at 26.5 °C. The culture then lived on agar plates in Costa Rica for about six months before travelling to New York." },
       { name: "Guadeloupe · NIC203", sceneLabel: "Torch-ginger flower · Guadeloupe · France", coordinates: [-61.6262, 16.0459], source: "CaeNDR NIC203 isotype record", style: "rainforest", strain: "NIC203", history: "This line came from a rotting torch-ginger flower at the Third Carbet Falls locality. Later crosses helped reveal three maternal-effect toxin–antidote systems in its genome." },
       { name: "Nouragues, French Guiana · JU1428", sceneLabel: "Forest fruit · Nouragues · French Guiana, France", coordinates: [-52.68, 4.08], source: "CaeNDR JU1428 isotype record", style: "rainforest", strain: "JU1428", history: "A rotting Duguetia surinamensis fruit in French Guiana forest yielded this line and two other strains belonging to the same C. tropicalis isotype." },
@@ -297,7 +297,7 @@ function italicText(element, value) {
   element.appendChild(italic);
 }
 
-const scientificNamePattern = /\b(?:Caenorhabditis(?:\s+(?:inopinata|elegans|briggsae|nigoni|tropicalis|wallacei))?|C\.\s+(?:inopinata|elegans|briggsae|nigoni|tropicalis|wallacei))\b/g;
+const scientificNamePattern = /\b(?:Caenorhabditis(?:\s+(?:inopinata|elegans|briggsae|nigoni|tropicalis|wallacei))?|C\.\s+(?:inopinata|elegans|briggsae|nigoni|tropicalis|wallacei)|Gustavia\s+superba)\b/g;
 
 function scientificText(element, value) {
   element.replaceChildren();
