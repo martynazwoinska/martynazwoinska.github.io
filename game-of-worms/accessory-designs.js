@@ -33,7 +33,7 @@ const rows = [
   ["nigoni", "Ho Chi Minh City · JU4356", "carambola sample trays", "ju4356-carambola-ground-contact-stage", "ITS2 DNA cards", "ju4356-its2-ribbon-reader", "tree survey calipers", "hcmc-urban-canopy-census-engine"],
   ["nigoni", "Lombok, Indonesia · HPT26", "fig sample trays", "hpt26-ficus-ground-contact-stage", "field-to-plate calendars", "lingsar-field-to-plate-calendar", "paired sample boxes", "hpt26-hpt27-substrate-diptych"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "five-day plating chronograph", "ju1873-plating-chronograph", "living-type voucher vault", "ju1873-living-type-vault"],
-  ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower fascinator", "qg2726-gustavia-flower-fascinator", "Golden Fleece cape", "qg2726-golden-fleece-cape", "forest-census notebook", "qg2726-bci-forest-census-notebook"],
+  ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Golden Fleece cape", "qg2726-golden-fleece-cape", "forest-census notebook", "qg2726-bci-forest-census-notebook"],
   ["tropicalis", "La Selva, Costa Rica", "26.5 °C thermometers", "qg3845-substrate-temperature", "leaf-cutter ant field loupes", "la-selva-leafcutter-automaton", "La Selva–Barva elevation maps", "barva-gradient-lift"],
   ["tropicalis", "Guadeloupe · NIC203", "Guadeloupe torch-ginger trays", "nic203-torch-ginger-bract-stage", "waterfall flow meters", "carbet-three-fall-hydraulic-sequencer", "toxin–antidote inheritance cards", "nic203-toxin-antidote-automaton"],
   ["tropicalis", "Nouragues, French Guiana · JU1428", "Duguetia sample boxes", "ju1428-duguetia-fruit-theatre", "litterfall baskets", "nouragues-litterfall-chronobalance", "three-strain sample racks", "ju1428-isotype-triad-comparator"],
@@ -4861,20 +4861,24 @@ function drawBarroColoradoQG2726Accessory(group, item, companion) {
   group.dataset.renderer = item.family;
   group.classList.add("barro-qg2726-accessory", companion ? "qg2726-companion" : "qg2726-primary");
 
-  if (item.family === "qg2726-gustavia-flower-fascinator") {
-    const s = companion ? .78 : 1;
-    const flower = add(group, "g", { transform: `scale(${s})` });
-    path(flower, companion ? "M-82 18C-98-15-74-48-42-43C-27-78 15-76 29-43C66-61 94-23 73 8C98 33 69 65 38 48C16 75-27 63-31 36C-55 48-80 39-82 18Z" : "M-77 31C-104 3-94-41-55-46C-47-81-3-96 18-61C49-87 91-61 79-23C110-4 91 40 55 39C35 72-12 72-29 42C-50 57-72 49-77 31Z", "bci-gustavia-petal-far");
-    path(flower, companion ? "M-23-10C-54-21-59 10-38 24C-52 49-18 61 1 38C16 64 49 45 38 20C69 10 54-24 24-20C13-46-17-38-23-10Z" : "M-15-12C-54-32-68-3-49 18C-78 37-48 65-20 39C-14 72 25 67 29 37C55 59 84 28 56 10C82-9 57-39 30-20C24-52-13-49-15-12Z", "bci-gustavia-petal-near");
-    (companion ? ["M-61 2Q-34 2-19 12","M-28-33Q-12-15-6 5","M29-28Q21-10 15 6","M62 11Q38 13 23 21"] : ["M-70 17Q-42 7-25 14","M-40-35Q-17-20-9 1","M4-55Q5-27 3-10","M48-38Q27-17 18 1","M69 6Q43 8 25 18","M35 43Q19 28 13 19"]).forEach(d=>path(flower,d,"bci-gustavia-petal-vein"));
-    path(flower, "M-63 37C-92 56-103 85-93 113C-58 106-35 83-29 47Z", "bci-gustavia-leaf");
-    path(flower, "M-86 101Q-62 73-37 52", "bci-gustavia-leaf-vein");
-    add(flower, "ellipse", { class: "bci-gustavia-centre", cx: 3, cy: 7, rx: 31, ry: 27 });
-    [[-24,-4,-42,-16],[-17,14,-34,31],[-7,-14,-12,-37],[4,18,5,43],[11,-14,19,-39],[22,10,43,22],[22,-2,49,-7],[-19,4,-46,4],[-12,-10,-30,-27],[-4,17,-14,39],[13,14,27,35],[14,-8,34,-26]].forEach(([x1,y1,x2,y2])=>line(flower,`M${x1} ${y1}Q${(x1+x2)/2} ${(y1+y2)/2-4} ${x2} ${y2}`,"bci-gustavia-stamen"));
-    [[-42,-16],[-34,31],[-12,-37],[5,43],[19,-39],[43,22],[49,-7],[-46,4],[-30,-27],[-14,39],[27,35],[34,-26]].forEach(([cx,cy])=>add(flower,"circle",{class:"bci-gustavia-anther",cx,cy,r:4.5}));
-    [[-12,-2],[0,-8],[13,-1],[-7,11],[7,10]].forEach(([cx,cy])=>add(flower,"circle",{class:"bci-gustavia-pollen",cx,cy,r:4}));
-    path(flower, "M-42 58Q-10 79 28 57L21 72Q-11 92-49 70Z", "bci-gustavia-band");
-    add(flower, "circle", { class: "bci-gustavia-clasp", cx: -11, cy: 72, r: 8 });
+  if (item.family === "qg2726-gustavia-flower-headpiece") {
+    const flower = add(group, "g", { transform: `scale(${companion ? .80 : 1})` });
+    path(flower, companion ? "M-54 26C-88 34-105 68-92 101C-55 98-27 76-19 41Z" : "M-60 28C-100 42-112 82-94 115C-54 107-27 80-20 42Z", "bci-gustavia-leaf");
+    path(flower, companion ? "M-88 91Q-56 63-27 41" : "M-94 105Q-59 70-27 43", "bci-gustavia-leaf-vein");
+    const petalShape = "M0 5C-30-14-39-49-20-73C-5-92 24-88 34-67C44-45 26-12 0 5Z";
+    const petals = companion
+      ? [[-77,.82,.74,"far"],[-19,.91,.82,"far"],[43,.87,.78,"far"],[99,.82,.73,"far"],[-48,.88,.74,"near"],[13,.94,.78,"near"],[73,.86,.72,"near"]]
+      : [[-91,.90,.78,"far"],[-43,1,.86,"far"],[4,.94,.82,"far"],[52,1.02,.87,"far"],[99,.91,.79,"far"],[-67,.96,.79,"near"],[-18,1.04,.87,"near"],[29,1,.83,"near"],[77,.96,.79,"near"]];
+    petals.forEach(([angle,sx,sy,layer])=>add(flower,"path",{class:`bci-gustavia-petal ${layer}`,d:petalShape,transform:`rotate(${angle}) scale(${sx} ${sy})`}));
+    petals.filter((_,index)=>index%2===0).forEach(([angle,sx,sy])=>add(flower,"path",{class:"bci-gustavia-petal-vein",d:"M0-2Q2-28 4-58",transform:`rotate(${angle}) scale(${sx} ${sy})`}));
+    add(flower, "ellipse", { class: "bci-gustavia-centre", cx: 1, cy: 2, rx: companion ? 26 : 31, ry: companion ? 22 : 27 });
+    const stamens = companion
+      ? [[-39,-13],[-33,19],[-18,-34],[-10,36],[8,-38],[15,35],[31,-23],[39,9],[-4,-28],[25,22]]
+      : [[-48,-14],[-42,18],[-30,35],[-23,-38],[-8,-46],[-5,43],[11,-45],[18,42],[31,-33],[37,31],[48,-12],[48,14],[-34,-27],[28,20]];
+    stamens.forEach(([x,y],index)=>{line(flower,`M${x*.46} ${y*.42}Q${x*.72} ${y*.67-4} ${x} ${y}`,"bci-gustavia-stamen");add(flower,"ellipse",{class:"bci-gustavia-anther",cx:x,cy:y,rx:index%3===0?5.5:4.5,ry:index%3===0?4:3.5,transform:`rotate(${index*23} ${x} ${y})`});});
+    [[-13,-5],[-3,-11],[9,-7],[15,3],[6,12],[-7,12],[-16,4]].forEach(([cx,cy])=>add(flower,"circle",{class:"bci-gustavia-pollen",cx,cy,r:4.2}));
+    path(flower, companion ? "M-48 49Q-12 72 29 49L24 65Q-12 86-54 64Z" : "M-48 54Q-10 78 34 53L28 70Q-11 92-55 69Z", "bci-gustavia-band");
+    add(flower, "circle", { class: "bci-gustavia-clasp", cx: -10, cy: companion ? 65 : 70, r: 8 });
     return true;
   }
 
@@ -4883,8 +4887,12 @@ function drawBarroColoradoQG2726Accessory(group, item, companion) {
     const cape = add(group, "g", { transform: `scale(${s})` });
     path(cape, companion ? "M-105-36Q-39-70 34-42L82-18Q96 2 79 19L67 58L39 50L17 83L-7 66L-39 91L-53 59L-89 68L-82 34Q-111 5-105-36Z" : "M-121-43Q-47-82 42-48L94-19Q111 4 91 24L76 73L43 61L18 101L-12 77L-51 108L-67 70L-108 81L-98 36Q-130 2-121-43Z", "bci-fleece-body");
     path(cape, companion ? "M-78-25Q-28-51 27-29L59-11Q71 0 60 15L47 39L19 35L-4 57L-30 43L-58 52L-54 23Q-79 4-78-25Z" : "M-91-30Q-34-59 32-31L67-11Q82 2 68 18L53 48L21 43L-7 70L-37 51L-72 62L-65 26Q-94 4-91-30Z", "bci-fleece-highlight");
-    (companion ? [[-88,-24],[-53,-47],[-12,-52],[29,-40],[65,-15],[70,20],[52,51],[15,66],[-24,72],[-61,55]] : [[-103,-31],[-67,-57],[-23,-63],[23,-54],[64,-30],[87,1],[72,44],[48,72],[11,82],[-31,87],[-72,69],[-95,35]]).forEach(([x,y],i)=>path(cape,`M${x-11} ${y}q11-18 22 0q-11 18-22 0`,i%3?"bci-fleece-curl":"bci-fleece-curl deep"));
-    (companion ? [[-49,-13],[-12,-25],[25,-10],[43,17],[5,30],[-30,27]] : [[-57,-17],[-18,-32],[23,-21],[48,5],[32,34],[-5,45],[-42,34]]).forEach(([x,y],i)=>path(cape,`M${x-13} ${y}q13-14 26 0q-13 16-26 0`,i%2?"bci-fleece-wool":"bci-fleece-wool deep"));
+    path(cape, companion ? "M-67-19Q-24-43 24-24L52-8Q61 1 52 12L38 35L13 31L-5 51L-28 38L-52 47L-47 20Q-69 4-67-19Z" : "M-78-23Q-29-49 28-25L59-7Q69 3 58 16L44 40L16 36L-7 61L-34 43L-60 53L-55 23Q-81 5-78-23Z", "bci-fleece-wool-panel");
+    const woolSpirals = companion
+      ? [[-52,-17,.70,-15],[-22,-29,.76,12],[12,-24,.70,-8],[41,-8,.68,18],[-39,11,.72,8],[-8,7,.78,-12],[24,15,.72,14],[-24,36,.68,-10],[10,42,.64,12]]
+      : [[-62,-20,.78,-15],[-29,-35,.82,10],[8,-31,.78,-8],[42,-15,.75,18],[-48,8,.80,7],[-14,2,.86,-12],[23,8,.82,14],[48,24,.68,-5],[-36,34,.75,-10],[-2,39,.79,12],[26,48,.66,-9]];
+    woolSpirals.forEach(([x,y,s,angle],index)=>add(cape,"path",{class:index%4===0?"bci-fleece-spiral deep":"bci-fleece-spiral",d:"M-15 4C-18-9-5-19 8-15C21-11 22 5 12 12C2 19-11 13-10 3C-9-4 0-8 6-4C11 0 8 7 3 7",transform:`translate(${x} ${y}) rotate(${angle}) scale(${s})`}));
+    (companion ? [[-78,34],[-48,58],[-9,68],[31,60],[61,39]] : [[-93,37],[-66,68],[-29,85],[10,78],[46,68],[72,42]]).forEach(([x,y],index)=>path(cape,`M${x-13} ${y-5}Q${x} ${y+10} ${x+13} ${y-5}`,index%2?"bci-fleece-tuft":"bci-fleece-tuft deep"));
     path(cape, "M61-24Q91-38 108-15Q110 8 87 15Q68 13 58-2", "bci-fleece-collar");
     add(cape, "circle", { class: "bci-fleece-clasp", cx: 82, cy: -5, r: 11 });
     path(cape, "M75-6C80-23 100-18 98-2C95 12 79 11 76 1", "bci-fleece-horn");
@@ -4900,6 +4908,7 @@ function drawBarroColoradoQG2726Accessory(group, item, companion) {
       path(book, "M-83-56L49-67L83 72L-51 84Z", "bci-notebook-pages");
       path(book, "M-91-65L37-77L51 69L-78 81Z", "bci-notebook-cover");
       path(book, "M-91-65L-69-67L-55 79L-78 81Z", "bci-notebook-spine");
+      path(book, "M18-75L35-76L49 68L32 70Z", "bci-notebook-elastic");
       path(book, "M-56-43L20-50L29 27L-47 34Z", "bci-notebook-map");
       [-37,-13,11].forEach(x=>line(book,`M${x}-47L${x+8} 31`,"bci-notebook-grid"));
       [-25,-1,23].forEach(y=>line(book,`M-52 ${y}L25 ${y-7}`,"bci-notebook-grid"));
@@ -4908,11 +4917,13 @@ function drawBarroColoradoQG2726Accessory(group, item, companion) {
       path(book, "M55-66L43-78L42-61Z", "bci-notebook-pencil-tip");
       path(book, "M-71 54Q-101 55-101 83", "bci-notebook-tag-cord");
       add(book, "rect", { class: "bci-notebook-tag", x: -119, y: 72, width: 39, height: 26, rx: 5 });
+      add(book, "circle", { class: "bci-notebook-tag-hole", cx: -111, cy: 80, r: 4 });
       const tag = add(book, "text", { class: "bci-notebook-tag-text", x: -99, y: 90 }); tag.textContent = "50 HA";
     } else {
       path(book, "M-103-71L65-55L94 86L-76 104Z", "bci-notebook-pages");
       path(book, "M-112-82L52-67L75 79L-91 96Z", "bci-notebook-cover");
       path(book, "M-112-82L-85-80L-64 93L-91 96Z", "bci-notebook-spine");
+      path(book, "M28-69L48-67L70 79L50 81Z", "bci-notebook-elastic");
       path(book, "M-73-53L24-43L38 34L-59 46Z", "bci-notebook-map");
       [-54,-24,6].forEach(x=>line(book,`M${x}-51L${x+13} 42`,"bci-notebook-grid"));
       [-27,0,27].forEach(y=>line(book,`M-68 ${y}L33 ${y+8}`,"bci-notebook-grid"));
@@ -4922,6 +4933,7 @@ function drawBarroColoradoQG2726Accessory(group, item, companion) {
       path(book, "M77-65L62-82L62-59Z", "bci-notebook-pencil-tip");
       path(book, "M-82 72Q-126 72-127 108", "bci-notebook-tag-cord");
       add(book, "rect", { class: "bci-notebook-tag", x: -149, y: 96, width: 48, height: 31, rx: 6 });
+      add(book, "circle", { class: "bci-notebook-tag-hole", cx: -139, cy: 105, r: 4.5 });
       const tag = add(book, "text", { class: "bci-notebook-tag-text", x: -125, y: 117 }); tag.textContent = "50 HA";
     }
     return true;
@@ -6273,7 +6285,7 @@ function renderPiece(target, item, wormPart) {
     ,"ju1428-duguetia-fruit-theatre": { primary: [365, 119, .31, -2], companion: [0, 108, .27, 3] }
     ,"nouragues-litterfall-chronobalance": { primary: [220, 190, .3, -1], companion: [90, 202, .26, 2] }
     ,"ju1428-isotype-triad-comparator": { primary: [362, 270, .3, -1], companion: [8, 286, .25, 2] }
-    ,"qg2726-gustavia-flower-fascinator": { primary: [438, 119, .38, -11], companion: [127, 133, .33, -8] }
+    ,"qg2726-gustavia-flower-headpiece": { primary: [438, 119, .38, -11], companion: [127, 133, .33, -8] }
     ,"qg2726-golden-fleece-cape": { primary: [300, 124, .42, -9], companion: [136, 121, .36, -11] }
     ,"qg2726-bci-forest-census-notebook": { primary: [365, 265, .42, -6], companion: [43, 276, .34, -7] }
     ,"ju1873-cacao-specimen-lantern": { primary: [385, 132, .37, -2], companion: [-8, 118, .28, 3] }

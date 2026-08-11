@@ -1802,8 +1802,9 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .bci-float-well { fill: var(--bci-aqua); stroke: var(--bci-indigo); }
 .bci-float { fill: var(--bci-coral); stroke: var(--bci-ink); }
 .bci-accessory-shadow { fill: rgba(24,42,53,.2); stroke: none; }
-.bci-gustavia-petal-far { fill: #f4c8c9; stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
-.bci-gustavia-petal-near { fill: #fff1df; stroke: #a44978; stroke-width: 3; stroke-linejoin: round; }
+.bci-gustavia-petal { stroke-width: 2.7; stroke-linejoin: round; }
+.bci-gustavia-petal.far { fill: #edb8c2; stroke: #873c68; }
+.bci-gustavia-petal.near { fill: #fff0df; stroke: #a44978; }
 .bci-gustavia-petal-vein { fill: none; stroke: rgba(196,75,119,.58); stroke-width: 2; stroke-linecap: round; }
 .bci-gustavia-centre { fill: #cf4f79; stroke: var(--bci-ink); stroke-width: 2.5; }
 .bci-gustavia-stamen { fill: none; stroke: #b33d72; stroke-width: 3; stroke-linecap: round; }
@@ -1815,10 +1816,11 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .bci-gustavia-clasp { fill: var(--bci-gold); stroke: var(--bci-ink); stroke-width: 2.5; }
 .bci-fleece-body { fill: #d99b2b; stroke: var(--bci-ink); stroke-width: 3.5; stroke-linejoin: round; }
 .bci-fleece-highlight { fill: #f6d36a; stroke: #a66624; stroke-width: 2.5; }
-.bci-fleece-curl { fill: none; stroke: #fff1b0; stroke-width: 5; stroke-linecap: round; }
-.bci-fleece-curl.deep { stroke: #a66624; }
-.bci-fleece-wool { fill: none; stroke: #fff1b0; stroke-width: 4; stroke-linecap: round; }
-.bci-fleece-wool.deep { stroke: #c27b24; }
+.bci-fleece-wool-panel { fill: #f8dc82; stroke: #a66624; stroke-width: 2.5; stroke-linejoin: round; }
+.bci-fleece-spiral { fill: none; stroke: #fff3bd; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.bci-fleece-spiral.deep { stroke: #c17b26; }
+.bci-fleece-tuft { fill: none; stroke: #fff0a5; stroke-width: 5; stroke-linecap: round; }
+.bci-fleece-tuft.deep { stroke: #bd7424; }
 .bci-fleece-collar { fill: var(--bci-orchid); stroke: var(--bci-ink); stroke-width: 3; }
 .bci-fleece-clasp { fill: var(--bci-gold); stroke: var(--bci-ink); stroke-width: 3; }
 .bci-fleece-horn { fill: none; stroke: var(--bci-gold); stroke-width: 5; stroke-linecap: round; }
@@ -1827,6 +1829,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .bci-notebook-pages { fill: #fff6dc; stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
 .bci-notebook-cover { fill: #168b70; stroke: var(--bci-ink); stroke-width: 3.5; stroke-linejoin: round; }
 .bci-notebook-spine { fill: #4d52a4; stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
+.bci-notebook-elastic { fill: #9b4f9c; stroke: #263955; stroke-width: 2.4; stroke-linejoin: round; }
 .bci-notebook-map { fill: #9fe0cf; stroke: #263955; stroke-width: 2.5; stroke-linejoin: round; }
 .bci-notebook-grid { fill: none; stroke: rgba(38,57,85,.7); stroke-width: 1.8; stroke-linecap: round; }
 .bci-notebook-tree { fill: #f3c747; stroke: #263955; stroke-width: 2; }
@@ -1835,6 +1838,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .bci-notebook-pencil-tip { fill: #f3c747; stroke: #263955; stroke-width: 3; stroke-linejoin: round; }
 .bci-notebook-tag-cord { fill: none; stroke: #9b4f9c; stroke-width: 4; stroke-linecap: round; }
 .bci-notebook-tag { fill: #dce8e9; stroke: #263955; stroke-width: 2.5; }
+.bci-notebook-tag-hole { fill: #263955; stroke: #fff7df; stroke-width: 1.5; }
 .bci-notebook-tag-text { fill: #263955; font: 900 9px/1 var(--sans); text-anchor: middle; }
 
 .sanda-ju1873-accessory {

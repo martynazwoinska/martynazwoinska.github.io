@@ -188,9 +188,9 @@ Forbidden:
 
 ## Accessory contract
 
-### Gustavia flower fascinator
+### Gustavia flower headpiece
 
-Family ID: `qg2726-gustavia-flower-fascinator`
+Family ID: `qg2726-gustavia-flower-headpiece`
 
 Scientific basis: QG2726 came from bait made by blending *Gustavia superba*
 flowers with water. The flower is a wearable reference to that bait.
@@ -244,7 +244,7 @@ collection apparatus. Do not reproduce real tree identities or plot data.
 These values require final browser tuning:
 
 ```js
-"qg2726-gustavia-flower-fascinator": {
+"qg2726-gustavia-flower-headpiece": {
   primary: [438, 119, .38, -11],
   companion: [127, 133, .33, -8]
 },
@@ -262,7 +262,7 @@ These values require final browser tuning:
 
 Replace the former bait-cup, tree-caliper and rain-gauge set with:
 
-- *Gustavia superba* flower fascinator: Barro Colorado QG2726 only
+- *Gustavia superba* flower headpiece: Barro Colorado QG2726 only
 - Golden Fleece cape: Barro Colorado QG2726 only
 - Forest-census notebook: Barro Colorado QG2726 only
 
