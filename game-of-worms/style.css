@@ -4906,6 +4906,43 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   filter: drop-shadow(0 5px 4px rgba(30, 34, 72, .27));
 }
 .elegans-field-redesign.efr-santeuil { --efr-primary:#4d4fa8; --efr-secondary:#63cec8; --efr-accent:#e95b80; --efr-leaf:#1b8d78; }
+.efr-santeuil .santeuil-armour-straps,
+.efr-santeuil .santeuil-pack-straps { fill:none; stroke:#4d4fa8; stroke-width:11; stroke-linecap:round; }
+.efr-santeuil .santeuil-stem-shell { fill:#46a86f; stroke:#203c49; stroke-width:4.5; }
+.efr-santeuil .santeuil-stem-highlight { fill:#92d58c; stroke:#2f795f; stroke-width:2.5; }
+.efr-santeuil .santeuil-stem-rim { fill:#d6d978; stroke:#203c49; stroke-width:4; }
+.efr-santeuil .santeuil-stem-hollow { fill:#315b4c; stroke:#f1d36c; stroke-width:3.5; }
+.efr-santeuil .santeuil-stem-fibres,
+.efr-santeuil .santeuil-stem-node,
+.efr-santeuil .santeuil-stem-scars { fill:none; stroke:#e3ec9a; stroke-width:3; stroke-linecap:round; }
+.efr-santeuil .santeuil-stem-node { stroke:#217263; stroke-width:4.5; opacity:.85; }
+.efr-santeuil .santeuil-armour-buckle { fill:none; stroke:#e95b80; stroke-width:8; stroke-linecap:round; }
+.efr-santeuil .santeuil-armour-rivet { fill:#efbd45; stroke:#203c49; stroke-width:3; }
+.efr-santeuil .santeuil-organ-cabinet { fill:#157f78; stroke:#252b50; stroke-width:4.5; }
+.efr-santeuil .santeuil-organ-window { fill:#25376b; stroke:#efbd45; stroke-width:3; }
+.efr-santeuil .santeuil-organ-cylinder { fill:#66d1c5; stroke:#252b50; stroke-width:3; }
+.efr-santeuil .santeuil-organ-pin { fill:#ffe28a; stroke:#744b69; stroke-width:1.2; }
+.efr-santeuil .santeuil-organ-bellows { fill:#d94e78; stroke:#252b50; stroke-width:4; }
+.efr-santeuil .santeuil-bellows-fold { fill:none; stroke:#ffd374; stroke-width:3; }
+.efr-santeuil .santeuil-organ-keybed { fill:#fff8df; stroke:#252b50; stroke-width:4; }
+.efr-santeuil .santeuil-organ-key { fill:none; stroke:#4d4fa8; stroke-width:3; }
+.efr-santeuil .santeuil-organ-pipe { fill:#efbd45; stroke:#252b50; stroke-width:3; }
+.efr-santeuil .santeuil-organ-pipe.alt { fill:#65cec8; }
+.efr-santeuil .santeuil-organ-crank { fill:none; stroke:#efbd45; stroke-width:6; stroke-linecap:round; stroke-linejoin:round; }
+.efr-santeuil .santeuil-crank-knob { fill:#e95b80; stroke:#252b50; stroke-width:3; }
+.efr-santeuil .santeuil-organ-inlay { fill:none; stroke:#ffe18b; stroke-width:3; stroke-linecap:round; }
+.efr-santeuil .santeuil-signal-clamp { fill:#4d4fa8; stroke:#252b50; stroke-width:4; }
+.efr-santeuil .santeuil-signal-mast { fill:#f7eed2; stroke:#252b50; stroke-width:4; }
+.efr-santeuil .santeuil-signal-cap { fill:#205f68; stroke:#252b50; stroke-width:4; }
+.efr-santeuil .santeuil-signal-arm { fill:#e65364; stroke:#252b50; stroke-width:4; }
+.efr-santeuil .santeuil-signal-stripes { fill:#fff8df; stroke:none; }
+.efr-santeuil .santeuil-signal-pivot { fill:#efbd45; stroke:#252b50; stroke-width:4; }
+.efr-santeuil .santeuil-signal-lens { fill:#a32754; stroke:#fff0a8; stroke-width:2.5; }
+.efr-santeuil .santeuil-signal-lamp-frame,
+.efr-santeuil .santeuil-clamp-detail,
+.efr-santeuil .santeuil-signal-cable { fill:none; stroke:#252b50; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+.efr-santeuil .santeuil-signal-lamp { fill:#f04f62; stroke:#252b50; stroke-width:3; }
+.efr-santeuil .santeuil-signal-weight { fill:#65cec8; stroke:#252b50; stroke-width:3; }
 .elegans-field-redesign.efr-edinburgh { --efr-primary:#4a4e9f; --efr-secondary:#54c5bd; --efr-accent:#cf4770; --efr-leaf:#177d72; }
 .elegans-field-redesign.efr-edinburgh .efr-kilt { fill:#183f46; }
 .elegans-field-redesign.efr-edinburgh .efr-waistband { fill:#873449; }

@@ -80,29 +80,29 @@ The scene is one continuous stream-bank view, not a row of interchangeable field
 
 The accessories are playful translations of the representative substrate and documented local objects. They are not claims about traditional Santeuil clothing.
 
-### Stem sample tube
+### Hollow hogweed-stem armour
 
-This object teaches the JU1925 substrate by making a hollow, segmented plant stem visible inside recognisable field storage.
+This wearable cutaway makes the JU1925 substrate visible without repeating the sample tubes used elsewhere in the Game.
 
-- **Primary:** long horizontal transparent tube with indigo ridged cap, rounded end, visible curved stem, four bounded nodes and a `STEM SAMPLE` tab.
-- **Companion:** shorter horizontal tube in the same orientation with a narrower cap, independently curved stem and `STEM` tab.
-- The illustrated stem is an abstract common-hogweed sample, not giant hogweed or bamboo.
+- Both copies curve along the worm's back and use fitted straps, a buckle and a rivet to communicate physical attachment.
+- The open end shows the hollow centre, fibrous wall and segmented construction of a common-hogweed stem.
+- Natural greens, yellow-green pith and emerald shadows distinguish the plant material without reducing it to brown or beige.
 
-### Santeuil music box
+### Santeuil cylinder-organ backpack
 
-The real local organ supplies unusually specific construction details and a musical object unlike the Game's existing flutes, fiddles and accordions.
+The real local organ supplies an unusually specific mechanism and a musical object not assigned to another worm.
 
-- **Primary:** bright indigo hinged music box with visible turquoise pinned cylinder, note slots, top handle and side crank.
-- **Companion:** narrower handled box in the same front-facing orientation with a shorter independently pinned cylinder and compact crank.
+- Both wearable cabinets include a visibly pinned cylinder, wedge-like bellows, keybed, pipes, crank, inlay and fitted shoulder straps.
+- Emerald, indigo, berry, turquoise and antique gold separate the materials and keep the mechanism legible at Game scale.
 - The drawings are original abstractions based on documented construction, not copies of a heritage photograph.
 
-### Dragonfly field pin
+### Railway semaphore tail signal
 
-The official Santeuil description specifically identifies dragonflies at the isolated Couleuvre-valley pond. The accessory is a playful observation pin rather than a claim about the collection substrate.
+The signal refers to the railway beside the documented wooded-stream collection habitat without repeating the Game's lantern accessories.
 
-- **Primary:** long green body, gold head, two broad turquoise forewings, two violet hindwings and a labelled pin base.
-- **Companion:** shorter body in the same upright orientation with independently proportioned wings and compact pin base.
-- Both copies retain visible body segmentation and four separate wings at Game scale.
+- A fitted tail clamp carries the mast; the signal is not a freestanding object floating beside the worm.
+- The working construction remains readable through its pivot, striped signal arm, coloured lens, cable and counterweight.
+- Primary and companion copies share the same orientation while retaining independently scaled construction and placement.
 
 ## Quality benchmark
 
