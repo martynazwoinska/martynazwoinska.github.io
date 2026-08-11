@@ -1,6 +1,6 @@
 # Sanda, Bali *Caenorhabditis wallacei* JU1873 location research and art brief
 
-Last updated: 2026-07-26
+Last updated: 2026-08-11
 
 ## Purpose
 
@@ -68,6 +68,10 @@ retained.
   https://sanda.desa.id/artikel/2024/05/17/profil-desa-sanda
 - Official Pupuan district site, regional context only:
   https://pupuan.tabanankab.go.id/
+- Bali Province Endek textile reference, regional context only:
+  https://www.baliprov.go.id/web/ny-putri-koster-ajak-gaungkan-upaya-pelestarian-kain-endek/
+- UNESCO gamelan reference, Indonesian cultural context only:
+  https://ich.unesco.org/en/RL/gamelan-01607
 
 ## Game metadata
 
@@ -166,39 +170,43 @@ Keep both blades away from the worms' faces. Do not imply that a machete is the
 only or preferred pod-opening method, and do not present the illustrated pod
 as the documented JU1873 fruit's exact decay state.
 
-### JU1873 five-day plating chronograph
+### Balinese endek wrap
 
-Family ID: `ju1873-plating-chronograph`
+Family ID: `ju1873-balinese-endek-wrap`
 
-Scientific basis: collection on 11 November and plating on 16 November.
+Regional basis: Endek is a traditional Balinese woven textile. The accessory
+is playful Bali context, not evidence about the collector, plantation workers
+or the JU1873 collection event.
 
-Primary: a wide flip-calendar board with large separate `11` and `16` pages,
-five day markers, visible binding rings and a separate Petri-dish cradle.
+Primary: a fitted asymmetric mid-body wrap with a curved upper edge, layered
+lower border, visible warp and weft, loose fringe and an original repeating
+diamond construction in indigo, emerald, berry, aqua and antique gold.
 
-Companion: a tall two-page `11 → 16` desk calendar with five side markers,
-visible binding rings, a broad foot and a separate side Petri-dish cradle.
+Companion: a narrower fitted wrap using the same material language and body
+orientation but different motif spacing, fringe rhythm and proportions.
 
-Every connector must have an obvious mechanical purpose. Do not add arbitrary
-rods or sticks touching the plate. The five divisions encode the documented
-calendar interval only; do not call it incubation time or infer undocumented
-intermediate handling.
+Do not copy or name a traditional motif. All weave lines and ikat-style
+geometry must remain clipped inside the textile boundary. The cloth should
+follow each worm's body angle rather than float as a flat rectangle.
 
-### JU1873 living-type voucher vault
+### Balinese gamelan gong
 
-Family ID: `ju1873-living-type-vault`
+Family ID: `ju1873-balinese-gamelan-gong`
 
-Scientific basis: JU1873 is the type and reference isolate retained as a
-living repository strain.
+Regional basis: gamelan is an Indonesian percussion tradition strongly
+associated with Bali. The accessory is broader cultural context only, with no
+claim that a gong was present at the collection site.
 
-Primary: a low horizontal insulated specimen case with an open lid and handle,
-one large clearly labelled JU1873 vial, two empty storage ports and a retrieval
-tray.
+Primary: a complete bronze hanging gong with a raised central boss, concentric
+hammered rings, controlled metallic highlights, two suspension cords, a
+carved freestanding frame, stable feet and a padded mallet.
 
-Companion: a tall open specimen cabinet with one large JU1873 vial, a visibly
-swung-open rack door, an unnumbered condition dial and a separate lower cradle.
+Companion: a compact gong with a differently proportioned frame and boss,
+shorter suspension system and separately angled mallet.
 
-This must read as standalone storage and retrieval equipment, not a backpack
-or jetpack. Do not display an invented storage temperature.
+The gong must read immediately as a playable suspended instrument. The frame,
+cords and mallet need plausible attachment and support; the disc must not read
+as an unexplained medallion or shield.
 
 ## Suggested starting layouts
 
@@ -209,13 +217,13 @@ These values require final browser tuning:
   primary: [385, 132, .37, -2],
   companion: [-8, 118, .28, 3]
 },
-"ju1873-plating-chronograph": {
-  primary: [240, 175, .32, 1],
-  companion: [126, 205, .27, -2]
+"ju1873-balinese-endek-wrap": {
+  primary: [254, 190, .43, 13],
+  companion: [113, 199, .34, 20]
 },
-"ju1873-living-type-vault": {
-  primary: [385, 248, .34, -1],
-  companion: [18, 286, .27, 2]
+"ju1873-balinese-gamelan-gong": {
+  primary: [390, 257, .38, -2],
+  companion: [24, 283, .31, 3]
 }
 ```
 
@@ -244,14 +252,10 @@ Defensible compact copy:
 
 Remove the cacao cuirass, terrace boots and cacao-pod xylophone concepts.
 
-Classify the new designs as the second and final use of three semantic
-families:
-
-- Specimen lantern — Santeuil and Sanda JU1873
-- Sample-record timekeeper — Trivandrum JU1325 and Sanda JU1873
-- Cryogenic preservation device — Bristol N2 and Sanda JU1873
-
-The visual forms must remain substantially different between locations.
+The cacao-pod machete remains plantation context. The endek wrap and gamelan
+gong replace the generic timekeeper and cryogenic-storage families with two
+single-use Bali-context families. Their forms must remain distinct from every
+other textile and musical accessory in the Game.
 
 Expected totals:
 
@@ -268,7 +272,8 @@ Expected totals:
   `bali-cacao` scene group.
 - No generic-renderer fallback for the six new accessory illustrations.
 - No initial overlap among the three accessories or with critical worm detail.
-- No unexplained rods or shapes touching the culture plate.
+- Endek weave geometry is fully contained inside both cloth silhouettes.
+- Both gongs show complete support frames, suspension cords and mallets.
 - Desktop and mobile checks near 360, 768, 1024 and wide viewports.
 - Light and dark themes, reduced motion, keyboard focus and direct drag.
 - No horizontal overflow, failed requests or console errors.

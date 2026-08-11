@@ -1910,6 +1910,39 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .ju1873-vial-mark.small { font-size: 10px; }
 .ju1873-vault-lid { fill: var(--sanda-aqua); stroke: var(--sanda-ink); stroke-width: 3; stroke-linejoin: round; }
 .ju1873-case-handle { fill: none; stroke: var(--sanda-gold); stroke-width: 8; stroke-linecap: round; }
+.ju1873-endek-cloth { fill: var(--sanda-indigo); stroke: var(--sanda-ink); stroke-width: 4; stroke-linejoin: round; }
+.ju1873-endek-weave { opacity: .98; }
+.ju1873-endek-warp { fill: none; stroke: var(--sanda-teal); stroke-width: 8; opacity: .76; }
+.ju1873-endek-warp.accent { stroke: var(--sanda-coral); stroke-width: 6; }
+.ju1873-endek-weft { fill: none; stroke: var(--sanda-aqua); stroke-width: 4; opacity: .68; }
+.ju1873-endek-weft.accent { stroke: var(--sanda-gold); stroke-width: 5; opacity: .88; }
+.ju1873-endek-diamond { fill: var(--sanda-teal); stroke: var(--sanda-ivory); stroke-width: 3; stroke-linejoin: round; }
+.ju1873-endek-diamond.berry { fill: var(--sanda-berry); }
+.ju1873-endek-diamond-core { fill: var(--sanda-gold); stroke: var(--sanda-ink); stroke-width: 2; }
+.ju1873-endek-diamond-core.aqua { fill: var(--sanda-aqua); }
+.ju1873-endek-knot { fill: var(--sanda-ivory); stroke: var(--sanda-berry); stroke-width: 1.5; }
+.ju1873-endek-waistband { fill: var(--sanda-berry); stroke: var(--sanda-ink); stroke-width: 3.5; stroke-linejoin: round; }
+.ju1873-endek-border { fill: var(--sanda-teal); stroke: var(--sanda-ink); stroke-width: 3; stroke-linejoin: round; }
+.ju1873-endek-fringe { fill: none; stroke: var(--sanda-gold); stroke-width: 4; stroke-linecap: round; }
+.ju1873-endek-fold { fill: none; stroke: rgba(255,246,220,.72); stroke-width: 3; stroke-linecap: round; }
+.ju1873-gong-frame { fill: var(--sanda-berry); stroke: var(--sanda-ink); stroke-width: 4; stroke-linejoin: round; }
+.ju1873-gong-crown { fill: var(--sanda-indigo); stroke: var(--sanda-gold); stroke-width: 4; stroke-linejoin: round; }
+.ju1873-gong-frame-inlay { fill: none; stroke: var(--sanda-gold); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.ju1873-gong-frame-bolt { fill: var(--sanda-aqua); stroke: var(--sanda-ink); stroke-width: 2; }
+.ju1873-gong-carving { fill: none; stroke: var(--sanda-aqua); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.ju1873-gong-hanger { fill: none; stroke: var(--sanda-gold); stroke-width: 7; stroke-linecap: round; }
+.ju1873-gong-cord { fill: none; stroke: var(--sanda-ivory); stroke-width: 4; stroke-linecap: round; }
+.ju1873-gong-disc { fill: #d99f2f; stroke: var(--sanda-ink); stroke-width: 4; }
+.ju1873-gong-ring { fill: none; stroke: #8b5b22; stroke-width: 4; opacity: .92; }
+.ju1873-gong-ring.outer { stroke: #f7cd61; stroke-width: 5; }
+.ju1873-gong-sheen { fill: none; stroke: #ffe8a1; stroke-width: 7; stroke-linecap: round; opacity: .92; }
+.ju1873-gong-reflection { fill: none; stroke: #b97721; stroke-width: 6; stroke-linecap: round; opacity: .72; }
+.ju1873-gong-hammer-mark { fill: #f0bf55; stroke: #8b5b22; stroke-width: 1.4; opacity: .86; }
+.ju1873-gong-boss { fill: #b86a27; stroke: var(--sanda-ink); stroke-width: 4; }
+.ju1873-gong-boss-light { fill: #f8c858; stroke: none; opacity: .86; }
+.ju1873-gong-mallet-shaft { fill: none; stroke: var(--sanda-teal); stroke-width: 10; stroke-linecap: round; }
+.ju1873-gong-mallet-head { fill: var(--sanda-coral); stroke: var(--sanda-ink); stroke-width: 3; }
+.ju1873-gong-foot { fill: var(--sanda-teal); stroke: var(--sanda-ink); stroke-width: 3; stroke-linejoin: round; }
 
 .bci-sample-rack { fill: var(--bci-indigo); stroke: var(--bci-ink); stroke-width: 3; }
 .bci-clear-bait-jar { fill: rgba(255,255,255,.62); stroke: var(--bci-teal); stroke-width: 3; }
