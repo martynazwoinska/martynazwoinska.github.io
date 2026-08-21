@@ -1985,22 +1985,26 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 
 .guadeloupe-nic203-accessory { filter:drop-shadow(0 5px 4px rgba(40,25,31,.25)); }
 .gua-hummingbird-wing,.gua-hummingbird-wing-alt,.gua-hummingbird-mantle,.gua-hummingbird-throat,.gua-hummingbird-tail { stroke:#173f49; stroke-width:3; stroke-linejoin:round; }
-.gua-hummingbird-wing { fill:#287d68; }
-.gua-hummingbird-wing-alt { fill:#4ab395; }
-.gua-hummingbird-mantle { fill:#184f59; }
+.gua-hummingbird-wing { fill:#347d86; }
+.gua-hummingbird-wing-alt { fill:#b84f70; }
+.gua-hummingbird-mantle { fill:#934766; }
 .gua-hummingbird-throat { fill:#7b4fa2; stroke:#efbd45; }
-.gua-hummingbird-tail { fill:#276d6b; }
-.gua-hummingbird-feather { fill:none; stroke:#a9e1c9; stroke-width:3; stroke-linecap:round; }
+.gua-hummingbird-tail { fill:#3e5f9d; }
+.gua-hummingbird-feather { fill:none; stroke:#efc963; stroke-width:3; stroke-linecap:round; }
 .gua-madras-crown { fill:#f4c445; stroke:#493b59; stroke-width:3; stroke-linejoin:round; }
 .gua-madras-check { fill:none; stroke:#d84e73; stroke-width:8; stroke-linecap:round; opacity:.92; }
 .gua-madras-band { fill:#2b9f85; stroke:#493b59; stroke-width:3; }
 .gua-crown-jewel { fill:#7a4ca4; stroke:#fff4d8; stroke-width:3; }
 .gua-crown-jewel-alt { fill:#d94e70; stroke:#fff4d8; stroke-width:2.5; }
 .gua-drum-body { fill:#a75b3e; stroke:#3b3444; stroke-width:3; stroke-linejoin:round; }
+.gua-drum-stave-alt { fill:#d47a4f; stroke:none; }
+.gua-drum-stave-berry { fill:#8f4058; stroke:none; }
 .gua-drum-head { fill:#f6e3b5; stroke:#3b3444; stroke-width:3; }
 .gua-drum-rim { fill:#5c342e; stroke:#3b3444; stroke-width:3; }
 .gua-drum-rope,.gua-drum-rope-cross { fill:none; stroke:#efc963; stroke-width:3; stroke-linecap:round; }
-.gua-drum-harness { fill:none; stroke:#2c8b75; stroke-width:8; stroke-linecap:round; }
+.gua-drum-band { fill:none; stroke:#6f3452; stroke-width:10; stroke-linecap:round; }
+.gua-drum-medallion { fill:#efc963; stroke:#5b3549; stroke-width:3; }
+.gua-drum-harness { fill:none; stroke:#6d4b8f; stroke-width:8; stroke-linecap:round; }
 .gua-drum-stick { fill:none; stroke:#5b392f; stroke-width:5; stroke-linecap:round; }
 
 .oahu-eca789-accessory { filter:drop-shadow(0 5px 4px rgba(33,39,34,.25)); }

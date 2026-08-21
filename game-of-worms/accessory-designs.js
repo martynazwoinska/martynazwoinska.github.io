@@ -4659,17 +4659,25 @@ function drawGuadeloupeNIC203Accessory(group, item, companion) {
   if (item.family === "guadeloupe-gwoka-drum") {
     if (companion) {
       path(group,"M-37-54Q0-69 37-54L31 57Q0 76-31 57Z","gua-drum-body");
+      path(group,"M-23-57L-18 61Q-8 68-2 66L-5-66Z","gua-drum-stave-alt");
+      path(group,"M7-65L5 66Q16 65 23 58L27-57Z","gua-drum-stave-berry");
       add(group,"ellipse",{class:"gua-drum-head",cx:0,cy:-54,rx:38,ry:14});
       add(group,"ellipse",{class:"gua-drum-rim",cx:0,cy:57,rx:31,ry:11});
       [-25,-8,9,26].forEach(x=>line(group,`M${x}-51L${x*.82} 56`,"gua-drum-rope"));
       line(group,"M-37-43Q0-24 35-42M-34 16Q0 35 33 16","gua-drum-rope-cross");
+      path(group,"M-35 3Q0 21 34 3","gua-drum-band");
+      add(group,"circle",{class:"gua-drum-medallion",cx:0,cy:11,r:8});
       line(group,"M44-61L62-16M49-59L67-19","gua-drum-stick");
     } else {
       path(group,"M-52-49Q0-69 52-49L44 64Q0 88-44 64Z","gua-drum-body");
+      path(group,"M-35-57L-29 69Q-16 77-7 77L-10-66Z","gua-drum-stave-alt");
+      path(group,"M11-65L8 77Q23 74 34 67L40-56Z","gua-drum-stave-berry");
       add(group,"ellipse",{class:"gua-drum-head",cx:0,cy:-49,rx:53,ry:18});
       add(group,"ellipse",{class:"gua-drum-rim",cx:0,cy:64,rx:44,ry:14});
       [-39,-20,0,20,39].forEach(x=>line(group,`M${x}-46L${x*.82} 63`,"gua-drum-rope"));
       line(group,"M-51-34Q0-10 49-33M-47 7Q0 31 46 7M-45 46Q0 67 44 45","gua-drum-rope-cross");
+      path(group,"M-48-4Q0 20 47-4","gua-drum-band");
+      add(group,"circle",{class:"gua-drum-medallion",cx:0,cy:9,r:11});
       path(group,"M-66-43Q-87 7-62 54M66-43Q87 7 62 54","gua-drum-harness");
       line(group,"M61-70L87-13M69-67L94-8","gua-drum-stick");
     }
@@ -6302,7 +6310,7 @@ function renderPiece(target, item, wormPart) {
     ,"qg3845-substrate-temperature": { primary: [385, 135, .38, -2], companion: [-8, 120, .29, 2] }
     ,"la-selva-leafcutter-automaton": { primary: [235, 185, .33, 1], companion: [125, 210, .27, -1] }
     ,"barva-gradient-lift": { primary: [380, 250, .34, -1], companion: [195, 290, .27, 1] }
-    ,"guadeloupe-hummingbird-costume": { primary: [264, 184, .43, -4], companion: [92, 173, .35, 5] }
+    ,"guadeloupe-hummingbird-costume": { primary: [264, 184, .43, 28], companion: [92, 173, .35, 26] }
     ,"guadeloupe-madras-carnival-crown": { primary: [355, 55, .42, -3], companion: [111, 104, .34, 4] }
     ,"guadeloupe-gwoka-drum": { primary: [365, 258, .4, -3], companion: [31, 279, .33, 4] }
     ,"eca789-fallen-flower-decay-chronoscope": { primary: [382, 128, .34, -2], companion: [-4, 124, .27, 2] }
