@@ -4983,6 +4983,46 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .elegans-field-redesign.efr-edinburgh .efr-sporran-detail { stroke:#b9934e; }
 .elegans-field-redesign.efr-tenerife { --efr-primary:#4554aa; --efr-secondary:#5fd0bb; --efr-accent:#e54f79; --efr-leaf:#188f70; }
 .elegans-field-redesign.efr-kauai { --efr-primary:#504ca8; --efr-secondary:#65d1ca; --efr-accent:#e85a85; --efr-leaf:#178e7a; }
+.efr-kauai .kauai-case-straps,
+.efr-kauai .kauai-case-seam,
+.efr-kauai .kauai-case-handle,
+.efr-kauai .kauai-mist-yoke,
+.efr-kauai .kauai-mist-vein,
+.efr-kauai .kauai-mist-glint,
+.efr-kauai .kauai-mist-ties,
+.efr-kauai .kauai-haplotype-band,
+.efr-kauai .kauai-haplotype-band-alt,
+.efr-kauai .kauai-haplotype-dna {
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.efr-kauai .kauai-case-straps { stroke:#77533f; stroke-width:13; }
+.efr-kauai .kauai-case-shell { fill:#4c4a99; stroke:var(--efr-ink); stroke-width:4; }
+.efr-kauai .kauai-case-window { fill:rgba(210,244,236,.9); stroke:var(--efr-gold); stroke-width:3; }
+.efr-kauai .kauai-case-leaf { fill:var(--efr-leaf); stroke:var(--efr-ink); stroke-width:3; }
+.efr-kauai .kauai-case-fragment { fill:#c48555; stroke:var(--efr-ink); stroke-width:3; }
+.efr-kauai .kauai-case-seam { stroke:var(--efr-secondary); stroke-width:3; stroke-dasharray:5 6; }
+.efr-kauai .kauai-case-buckle { fill:var(--efr-gold); stroke:var(--efr-ink); stroke-width:3; }
+.efr-kauai .kauai-case-handle { stroke:#77533f; stroke-width:9; }
+.efr-kauai .kauai-mist-yoke { stroke:var(--efr-gold); stroke-width:8; }
+.efr-kauai .kauai-mist-leaf { fill:#50b99c; stroke:var(--efr-ink); stroke-width:3.5; }
+.efr-kauai .kauai-mist-leaf-alt { fill:#7ccfc2; stroke:var(--efr-ink); stroke-width:3.5; }
+.efr-kauai .kauai-mist-vein { stroke:#f3d875; stroke-width:3; }
+.efr-kauai .kauai-mist-flask { fill:rgba(202,242,239,.9); stroke:var(--efr-ink); stroke-width:3.5; }
+.efr-kauai .kauai-mist-flask-alt { fill:rgba(229,215,247,.88); stroke:var(--efr-ink); stroke-width:3.5; }
+.efr-kauai .kauai-mist-water { fill:#54c7c4; stroke:var(--efr-ink); stroke-width:2; }
+.efr-kauai .kauai-mist-water-alt { fill:#d978b3; stroke:var(--efr-ink); stroke-width:2; }
+.efr-kauai .kauai-mist-glint { stroke:#fffdf2; stroke-width:3; }
+.efr-kauai .kauai-mist-drop { fill:#83e0dc; stroke:var(--efr-ink); stroke-width:2; }
+.efr-kauai .kauai-mist-ties { stroke:var(--efr-accent); stroke-width:6; }
+.efr-kauai .kauai-haplotype-card { fill:var(--efr-ivory); stroke:var(--efr-ink); stroke-width:3; }
+.efr-kauai .kauai-haplotype-card-alt { fill:var(--efr-secondary); stroke:var(--efr-ink); stroke-width:3; }
+.efr-kauai .kauai-haplotype-band { stroke:var(--efr-accent); stroke-width:5; }
+.efr-kauai .kauai-haplotype-band-alt { stroke:var(--efr-primary); stroke-width:5; }
+.efr-kauai .kauai-haplotype-clip { fill:var(--efr-gold); stroke:var(--efr-ink); stroke-width:4; }
+.efr-kauai .kauai-haplotype-dna { stroke:var(--efr-primary); stroke-width:4; }
+.efr-kauai .kauai-haplotype-ribbon { fill:var(--efr-accent); stroke:var(--efr-ink); stroke-width:4; }
 .elegans-field-redesign.efr-act { --efr-primary:#4454aa; --efr-secondary:#55c9c1; --efr-accent:#e2527c; --efr-leaf:#198b72; }
 .elegans-field-redesign.efr-auckland { --efr-primary:#4650a4; --efr-secondary:#5bcfc0; --efr-accent:#e35080; --efr-leaf:#168c70; }
 .elegans-field-redesign.efr-araucania { --efr-primary:#514ba3; --efr-secondary:#58c8bd; --efr-accent:#df4c78; --efr-leaf:#1b8b70; }

@@ -20,7 +20,7 @@ const rows = [
   ["elegans", "Santeuil, France", "hollow hogweed-stem armour", "santeuil-hogweed-stem-armour", "Santeuil cylinder-organ backpacks", "santeuil-cylinder-organ-backpack", "railway semaphore tail signals", "santeuil-railway-semaphore"],
   ["elegans", "Edinburgh, Scotland", "Blackford observatory telescopes", "midmar-compost-tumbler", "Edinburgh tartan kilts", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
   ["elegans", "Tenerife, Spain", "avocado sample trays", "avocado-microhabitat-viewer", "aerial-root measuring tapes", "aerial-root-harp", "botanical seed boxes", "linnaean-seed-exchange-engine"],
-  ["elegans", "Kauaʻi, Hawaiʻi", "plant sample cases", "decay-substrate-theatre", "mist collector bottles", "kokee-cloud-water-collector", "XZ1516 haplotype cards", "xz1516-haplotype-viewer"],
+  ["elegans", "Kauaʻi, Hawaiʻi", "plant sample cases", "decay-substrate-theatre", "mist collector bottles", "kokee-cloud-water-collector", "haplotype cards", "xz1516-haplotype-viewer"],
   ["elegans", "Australian Capital Territory", "Baermann funnels", "qg2811-baermann-fig-recovery", "Yellow Box seed jars", "yellow-box-seed-orrery", "Black Mountain field radios", "black-mountain-signal-theremin"],
   ["elegans", "Auckland, New Zealand", "grass sample bags", "eca36-grass-litter-profiler", "volcanic seismographs", "auckland-volcanic-field-monitor", "timing stopwatches", "eca36-reproductive-timing-clock"],
   ["elegans", "Araucanía, Chile", "compost sample buckets", "compost-labyrinth", "Llaima ashfall gauges", "ashfall-recorder", "reciprocal-cross plates", "test-cross-mechanism"],
@@ -6015,43 +6015,54 @@ function drawElegansFieldAccessory(group, item, companion) {
   }
 
   if (location === "kauai" && item.family === "decay-substrate-theatre") {
-    shadow(108, 106);
-    const width = companion ? 168 : 216;
-    path(group, `M ${-width / 2} -55 H ${width / 2} V 88 H ${-width / 2} Z`, "efr-primary");
-    path(group, `M ${-width / 2 + 12} -42 H ${width / 2 - 12} V 65 H ${-width / 2 + 12} Z`, "efr-glass");
-    path(group, `M ${-width / 2 + 9} -59 Q 0 -101 ${width / 2 - 9} -59`, "efr-handle");
-    [-1,1].forEach(side => path(group, `M ${side * 6} -41 V 65`, "efr-fine"));
-    path(group, companion ? "M-72 17Q-44-22-14 14Q-43 47-72 17Z" : "M-92 20Q-57-31-17 16Q-54 60-92 20Z", "efr-leaf");
-    path(group, companion ? "M8 35Q31-17 65 9Q60 49 8 35Z" : "M10 39Q41-27 85 8Q77 61 10 39Z", "efr-fragment");
-    [[-51,48],[0,40],[47,50]].filter(([x])=>Math.abs(x)<width/2-18).forEach(([x,y],index)=>add(group,"circle",{class:index===1?"efr-accent":"efr-gold",cx:x,cy:y,r:8}));
-    path(group, `M ${-width / 2 + 17} 68 H ${width / 2 - 17}`, "efr-accent-line");
-    label("PLANT SAMPLE", 0, 83, "efr-small efr-light-text");
+    shadow(companion ? 76 : 92, 103);
+    path(group, companion ? "M-61-55Q-82-23-73 29Q-68 63-47 77M61-55Q82-23 73 29Q68 63 47 77" : "M-76-61Q-103-25-91 37Q-85 76-58 91M76-61Q103-25 91 37Q85 76 58 91", "kauai-case-straps");
+    path(group, companion
+      ? "M-69-45Q-49-77 0-81Q49-77 69-45L61 62Q0 91-61 62Z"
+      : "M-86-50Q-61-92 0-97Q61-92 86-50L76 77Q0 112-76 77Z", "kauai-case-shell");
+    path(group, companion
+      ? "M-55-35Q-37-58 0-61Q37-58 55-35L50 35Q0 57-50 35Z"
+      : "M-69-39Q-46-70 0-73Q46-70 69-39L62 45Q0 72-62 45Z", "kauai-case-window");
+    path(group, companion ? "M-48-28Q-22-52 1-20Q-15 17-48 2Z" : "M-59-31Q-28-61 2-23Q-18 25-59 5Z", "kauai-case-leaf");
+    path(group, companion ? "M6 19Q30-43 52-3Q42 36 6 19Z" : "M8 23Q39-54 65-4Q53 45 8 23Z", "kauai-case-fragment");
+    path(group, companion ? "M-56 44Q0 67 56 43" : "M-69 56Q0 84 69 54", "kauai-case-seam");
+    path(group, companion ? "M-17 50H17V72H-17Z" : "M-21 63H21V89H-21Z", "kauai-case-buckle");
+    path(group, companion ? "M-35-73Q0-99 35-73" : "M-44-88Q0-121 44-88", "kauai-case-handle");
     return true;
   }
 
   if (location === "kauai" && item.family === "kokee-cloud-water-collector") {
-    shadow(103, 108);
-    bottle(companion ? -32 : -43, 27, companion ? .72 : .88);
-    bottle(companion ? 37 : 49, 34, companion ? .63 : .78, true);
-    path(group, companion ? "M-78-61H70L48-15H-53Z" : "M-102-74H92L63-17H-70Z", "efr-mesh");
-    for(let x=-70;x<=70;x+=20) path(group, `M ${x} ${companion ? -55 : -67} L ${x + 18} ${companion ? -20 : -22}`, "efr-mesh-line");
-    path(group, companion ? "M-44-14L-32-2M45-14L37 7" : "M-58-17L-43-3M59-17L49 8", "efr-flow-line");
-    label("MIST", 0, companion ? -37 : -48, "efr-label");
+    shadow(companion ? 76 : 91, 108);
+    path(group, companion ? "M-72-46Q0-101 72-46" : "M-91-54Q0-125 91-54", "kauai-mist-yoke");
+    const collectors = companion
+      ? [[-39,-27,.72,false],[38,-19,.63,true]]
+      : [[-50,-34,.88,false],[49,-25,.77,true]];
+    collectors.forEach(([cx,cy,scale,alternate]) => {
+      const collector = add(group, "g", { transform: `translate(${cx} ${cy}) scale(${scale})` });
+      path(collector, alternate ? "M-7-23Q16-78 48-62Q35-18-7-23Z" : "M7-23Q-16-78-48-62Q-35-18 7-23Z", alternate ? "kauai-mist-leaf-alt" : "kauai-mist-leaf");
+      path(collector, alternate ? "M-2-28Q17-49 39-57M5-24Q23-31 38-31" : "M2-28Q-17-49-39-57M-5-24Q-23-31-38-31", "kauai-mist-vein");
+      path(collector, "M-8-22H8V-7Q28 13 28 44Q28 72 0 84Q-28 72-28 44Q-28 13-8-7Z", alternate ? "kauai-mist-flask-alt" : "kauai-mist-flask");
+      path(collector, "M-20 48Q0 61 20 48V62Q0 77-20 62Z", alternate ? "kauai-mist-water-alt" : "kauai-mist-water");
+      path(collector, "M-10 15Q-18 31-14 42", "kauai-mist-glint");
+      add(collector, "circle", { class: "kauai-mist-drop", cx: 0, cy: -15, r: 5 });
+    });
+    path(group, companion ? "M-71-45Q-82-9-68 21M71-45Q82-9 68 21" : "M-90-53Q-103-9-86 29M90-53Q103-9 86 29", "kauai-mist-ties");
     return true;
   }
 
   if (location === "kauai" && item.family === "xz1516-haplotype-viewer") {
-    shadow(103, 104);
-    const width = companion ? 142 : 184;
-    path(group, `M ${-width / 2} -76 H 5 V 71 H ${-width / 2} Z`, "efr-card");
-    path(group, `M -5 -60 H ${width / 2} V 87 H -5 Z`, "efr-card-alt");
-    [ -39,-13,13,39 ].filter(y=>y<60).forEach((y,index)=>{
-      path(group, `M ${-width / 2 + 13} ${y} H ${index % 2 ? -16 : -28}`, index % 2 ? "efr-band-alt" : "efr-band");
-      path(group, `M 10 ${y + 11} H ${width / 2 - 13}`, index % 2 ? "efr-band" : "efr-band-alt");
-    });
-    path(group, `M ${-width / 2 + 10} -73 H ${-width / 2 + 45} V -59 H ${-width / 2 + 10} Z`, "efr-gold");
-    label("XZ1516", width / 4 - 1, 75, "efr-small efr-light-text");
-    path(group, "M-12-83H12V-68H-12Z", "efr-accent");
+    shadow(companion ? 73 : 89, 105);
+    const cards = companion ? 5 : 6;
+    for (let index = 0; index < cards; index += 1) {
+      const angle = -72 + index * (companion ? 36 : 29);
+      const card = add(group, "g", { transform: `rotate(${angle}) translate(0 ${companion ? -43 : -53})` });
+      path(card, companion ? "M-18-50Q0-63 18-50L16 35Q0 47-16 35Z" : "M-22-62Q0-78 22-62L20 43Q0 57-20 43Z", index % 2 ? "kauai-haplotype-card-alt" : "kauai-haplotype-card");
+      path(card, companion ? "M-12-31H12M-12-13H12M-12 5H12" : "M-15-39H15M-15-17H15M-15 6H15", index % 2 ? "kauai-haplotype-band-alt" : "kauai-haplotype-band");
+    }
+    add(group, "circle", { class: "kauai-haplotype-clip", cx: 0, cy: 0, r: companion ? 23 : 29 });
+    path(group, companion ? "M-10-5Q0-18 10-5Q0 9-10 23M10-5Q0 9 10 23Q0 36-10 23" : "M-13-7Q0-24 13-7Q0 12-13 30M13-7Q0 12 13 30Q0 47-13 30", "kauai-haplotype-dna");
+    path(group, companion ? "M-53 55Q0 79 53 55L45 88Q0 106-45 88Z" : "M-66 67Q0 97 66 67L57 108Q0 132-57 108Z", "kauai-haplotype-ribbon");
+    label("XZ1516", 0, companion ? 86 : 104, "efr-small efr-light-text");
     return true;
   }
 
@@ -6273,9 +6284,9 @@ function renderPiece(target, item, wormPart) {
     "avocado-microhabitat-viewer": { primary: [322, 140, .52, -2], companion: [47, 124, .39, 3] },
     "aerial-root-harp": { primary: [190, 181, .53, -2], companion: [92, 222, .39, 2] },
     "linnaean-seed-exchange-engine": { primary: [324, 252, .46, -1], companion: [-48, 266, .28, 2] },
-    "decay-substrate-theatre": { primary: [385, 145, .44, -2], companion: [12, 135, .32, 2] },
+    "decay-substrate-theatre": { primary: [320, 153, .43, -7], companion: [62, 151, .32, 6] },
     "kokee-cloud-water-collector": { primary: [265, 185, .43, 2], companion: [150, 210, .29, -2] },
-    "xz1516-haplotype-viewer": { primary: [385, 260, .4, -1], companion: [28, 285, .3, 2] },
+    "xz1516-haplotype-viewer": { primary: [250, 260, .38, -4], companion: [82, 270, .29, 5] },
     "qg2811-baermann-fig-recovery": { primary: [385, 132, .37, -2], companion: [-10, 118, .28, 2] },
     "yellow-box-seed-orrery": { primary: [239, 170, .32, 1], companion: [125, 205, .29, -1] },
     "black-mountain-signal-theremin": { primary: [381, 248, .35, -1], companion: [203, 290, .29, 1] },
