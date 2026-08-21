@@ -13,7 +13,7 @@
     chocolate('friis-holm-mini-1', 'Friis-Holm mini bar 1', 'confirmed', [35.09, 18.14, 2.28, 4.51], {
       maker: 'Friis-Holm', note: 'One of four mini bars in the shared Friis-Holm selection. Individual flavour not assigned.', link: 'https://friisholmchokolade.dk/products/bag-mix-12-x-5-g', linkLabel: 'View the mixed mini-bars collection'
     }),
-    chocolate('friis-holm-mini-2', 'Zotter Labooko Coffee', 'confirmed', [37.57, 17.19, 2.41, 5.21], {
+    chocolate('zotter-labooko-coffee', 'Zotter Labooko Coffee', 'confirmed', [37.57, 17.19, 2.41, 5.21], {
       maker: 'Zotter', link: 'https://www.zotter.at/en/online-shop/brands/labooko/coffee-1', linkLabel: 'View the official product page'
     }),
     chocolate('friis-holm-mini-3', 'Friis-Holm mini bar 3', 'confirmed', [40.36, 17.27, 2.54, 5.21], {

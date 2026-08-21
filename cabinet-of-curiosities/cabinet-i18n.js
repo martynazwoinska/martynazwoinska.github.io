@@ -22,6 +22,9 @@
       zoomIn: 'Zoom in',
       resetView: 'Reset view',
       defaultHint: 'Select a gold marker, or browse the collection by name.',
+      hiddenMarkerHint: 'Show the objects to explore the photographed collection.',
+      showObjects: 'Show objects',
+      hideObjects: 'Hide objects',
       touchHint: 'Drag · pinch to zoom · tap a gold marker.',
       viewScale: percent => `View ${percent}%.`
     }),
