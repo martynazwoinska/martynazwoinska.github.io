@@ -1984,17 +1984,24 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .qg3845-small-label { fill:color-mix(in srgb,#263c35 84%,var(--worm-deep)); font:900 8px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 85%,transparent); stroke-width:1.5px; paint-order:stroke; }
 
 .guadeloupe-nic203-accessory { filter:drop-shadow(0 5px 4px rgba(40,25,31,.25)); }
-.nic203-stalk-frame,.nic203-stage-base,.nic203-flow-tower,.nic203-flume-base,.nic203-inheritance-tower,.nic203-logic-board { fill:color-mix(in srgb,#755446 72%,var(--local-secondary)); stroke:color-mix(in srgb,#3c3f38 82%,var(--worm-deep)); stroke-width:3; stroke-linejoin:round; }
-.nic203-bract { fill:color-mix(in srgb,#9a4057 76%,var(--local-secondary)); stroke:color-mix(in srgb,#56343f 82%,var(--worm-deep)); stroke-width:2.2; stroke-linejoin:round; }
-.nic203-flower-cage,.nic203-specimen-cradle,.nic203-litter-drawer,.nic203-flume,.nic203-flow-window,.nic203-logic-board,.nic203-gate { fill:color-mix(in srgb,#c6ad77 68%,var(--paper-strong)); stroke:color-mix(in srgb,#4a5145 78%,var(--worm-deep)); stroke-width:2.3; stroke-linejoin:round; }
-.nic203-vial,.nic203-egg-chamber { fill:rgba(218,234,226,.78); stroke:color-mix(in srgb,#4a6a60 74%,var(--worm-deep)); stroke-width:2.2; }
-.nic203-rail,.nic203-hinge,.nic203-linkage,.nic203-drainpipe,.nic203-drop,.nic203-helix { fill:none; stroke:color-mix(in srgb,#ac8447 74%,var(--local-secondary)); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
-.nic203-date-wheel,.nic203-crank,.nic203-loading-wheel,.nic203-winding-drum { fill:color-mix(in srgb,#ba914d 75%,var(--local-secondary)); stroke:color-mix(in srgb,#4a4335 80%,var(--worm-deep)); stroke-width:2.3; }
-.nic203-drop-shutter,.nic203-chromosome-window,.nic203-offspring-shutter { fill:color-mix(in srgb,#617767 70%,var(--local-primary)); stroke:color-mix(in srgb,#35483d 82%,var(--worm-deep)); stroke-width:2.1; }
-.nic203-catch-cup,.nic203-basin { fill:color-mix(in srgb,#6d8e8a 68%,var(--local-primary)); stroke:color-mix(in srgb,#38514d 80%,var(--worm-deep)); stroke-width:2.2; }
-.nic203-rescue-lock,.nic203-rescue-key { fill:color-mix(in srgb,#c59750 75%,var(--local-secondary)); stroke:color-mix(in srgb,#594535 80%,var(--worm-deep)); stroke-width:2; stroke-linejoin:round; }
-.nic203-label { fill:color-mix(in srgb,#263c35 84%,var(--worm-deep)); font:900 10px/1 var(--sans); stroke:color-mix(in srgb,#f6ecd2 85%,transparent); stroke-width:1.8px; paint-order:stroke; }
-.nic203-small-label { fill:color-mix(in srgb,#263c35 84%,var(--worm-deep)); font:900 7px/1 var(--sans); stroke:color-mix(in srgb,#f6ecd2 85%,transparent); stroke-width:1.4px; paint-order:stroke; }
+.gua-hummingbird-wing,.gua-hummingbird-wing-alt,.gua-hummingbird-mantle,.gua-hummingbird-throat,.gua-hummingbird-tail { stroke:#173f49; stroke-width:3; stroke-linejoin:round; }
+.gua-hummingbird-wing { fill:#287d68; }
+.gua-hummingbird-wing-alt { fill:#4ab395; }
+.gua-hummingbird-mantle { fill:#184f59; }
+.gua-hummingbird-throat { fill:#7b4fa2; stroke:#efbd45; }
+.gua-hummingbird-tail { fill:#276d6b; }
+.gua-hummingbird-feather { fill:none; stroke:#a9e1c9; stroke-width:3; stroke-linecap:round; }
+.gua-madras-crown { fill:#f4c445; stroke:#493b59; stroke-width:3; stroke-linejoin:round; }
+.gua-madras-check { fill:none; stroke:#d84e73; stroke-width:8; stroke-linecap:round; opacity:.92; }
+.gua-madras-band { fill:#2b9f85; stroke:#493b59; stroke-width:3; }
+.gua-crown-jewel { fill:#7a4ca4; stroke:#fff4d8; stroke-width:3; }
+.gua-crown-jewel-alt { fill:#d94e70; stroke:#fff4d8; stroke-width:2.5; }
+.gua-drum-body { fill:#a75b3e; stroke:#3b3444; stroke-width:3; stroke-linejoin:round; }
+.gua-drum-head { fill:#f6e3b5; stroke:#3b3444; stroke-width:3; }
+.gua-drum-rim { fill:#5c342e; stroke:#3b3444; stroke-width:3; }
+.gua-drum-rope,.gua-drum-rope-cross { fill:none; stroke:#efc963; stroke-width:3; stroke-linecap:round; }
+.gua-drum-harness { fill:none; stroke:#2c8b75; stroke-width:8; stroke-linecap:round; }
+.gua-drum-stick { fill:none; stroke:#5b392f; stroke-width:5; stroke-linecap:round; }
 
 .oahu-eca789-accessory { filter:drop-shadow(0 5px 4px rgba(33,39,34,.25)); }
 .eca789-clock-shell,.eca789-lift-frame,.eca789-console,.eca789-tripod-column,.eca789-folding-rack,.eca789-relay-bench { fill:color-mix(in srgb,#7d6549 72%,var(--local-secondary)); stroke:color-mix(in srgb,#33463c 84%,var(--worm-deep)); stroke-width:3; stroke-linejoin:round; }
@@ -5009,8 +5016,8 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .efr-kauai .kauai-mist-leaf { fill:#50b99c; stroke:var(--efr-ink); stroke-width:3.5; }
 .efr-kauai .kauai-mist-leaf-alt { fill:#7ccfc2; stroke:var(--efr-ink); stroke-width:3.5; }
 .efr-kauai .kauai-mist-vein { stroke:#f3d875; stroke-width:3; }
-.efr-kauai .kauai-mist-flask { fill:rgba(202,242,239,.9); stroke:var(--efr-ink); stroke-width:3.5; }
-.efr-kauai .kauai-mist-flask-alt { fill:rgba(229,215,247,.88); stroke:var(--efr-ink); stroke-width:3.5; }
+.efr-kauai .kauai-mist-flask { fill:rgba(202,242,239,.97); stroke:var(--efr-ink); stroke-width:3.5; }
+.efr-kauai .kauai-mist-flask-alt { fill:rgba(229,215,247,.96); stroke:var(--efr-ink); stroke-width:3.5; }
 .efr-kauai .kauai-mist-water { fill:#54c7c4; stroke:var(--efr-ink); stroke-width:2; }
 .efr-kauai .kauai-mist-water-alt { fill:#d978b3; stroke:var(--efr-ink); stroke-width:2; }
 .efr-kauai .kauai-mist-glint { stroke:#fffdf2; stroke-width:3; }

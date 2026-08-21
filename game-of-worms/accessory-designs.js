@@ -35,7 +35,7 @@ const rows = [
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "Balinese endek wrap", "ju1873-balinese-endek-wrap", "Balinese gamelan gong", "ju1873-balinese-gamelan-gong"],
   ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Golden Fleece cape", "qg2726-golden-fleece-cape", "forest-census notebook", "qg2726-bci-forest-census-notebook"],
   ["tropicalis", "La Selva, Costa Rica", "26.5 °C thermometers", "qg3845-substrate-temperature", "leaf-cutter ant field loupes", "la-selva-leafcutter-automaton", "La Selva–Barva elevation maps", "barva-gradient-lift"],
-  ["tropicalis", "Guadeloupe · NIC203", "Guadeloupe torch-ginger trays", "nic203-torch-ginger-bract-stage", "waterfall flow meters", "carbet-three-fall-hydraulic-sequencer", "toxin–antidote inheritance cards", "nic203-toxin-antidote-automaton"],
+  ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras carnival crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
   ["tropicalis", "Nouragues, French Guiana · JU1428", "Duguetia sample boxes", "ju1428-duguetia-fruit-theatre", "litterfall baskets", "nouragues-litterfall-chronobalance", "three-strain sample racks", "ju1428-isotype-triad-comparator"],
   ["tropicalis", "Manaus region, Brazil · JU1976", "anonymous-fruit sample cases", "ju1976-substrate-identity-shadow-theatre", "four-metre tape measures", "ju1975-ju1976-four-metre-sample-rail", "soil-profile charts", "manaus-plateau-valley-soil-harmonograph"],
   ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "fallen-flower sample boxes", "eca789-fallen-flower-decay-chronoscope", "temperature-humidity meters", "eca789-paired-microclimate-harmonograph", "field-record folders", "c0085-field-record-relay"],
@@ -4625,56 +4625,53 @@ function drawGuadeloupeNIC203Accessory(group, item, companion) {
     const node = add(group, "text", { class: cls, x, y, "text-anchor": "middle" });
     node.textContent = value;
   };
-  if (item.family === "nic203-torch-ginger-bract-stage") {
+  if (item.family === "guadeloupe-hummingbird-costume") {
     if (companion) {
-      path(group,"M-28-82H27L36 69H-38Z","nic203-stalk-frame");
-      [-54,-25,4,33].forEach((y,i)=>path(group,`M${i%2?-24:-34} ${y}Q0 ${y+21} ${i%2?31:23} ${y}Q0 ${y+7} ${i%2?-24:-34} ${y}Z`,"nic203-bract"));
-      path(group,"M-17-22H20V31H-17Z","nic203-flower-cage");
-      line(group,"M-17-3H20M34-52H61V22","nic203-rail");
-      add(group,"rect",{class:"nic203-vial",x:52,y:15,width:18,height:39,rx:7});
-      path(group,"M-34 52H29V74H-34Z","nic203-litter-drawer");
-      add(group,"circle",{class:"nic203-date-wheel",cx:-48,cy:-48,r:18}); text("4 SEP",-48,-51,"nic203-small-label"); text("2011",-48,-42,"nic203-small-label");
+      path(group,"M-8-42Q-52-75-76-24Q-50-10-18 7Q-41 14-57 45Q-23 43 2 20Z","gua-hummingbird-wing");
+      path(group,"M8-35Q47-63 69-17Q43-7 16 8Q36 18 49 43Q20 39-2 19Z","gua-hummingbird-wing-alt");
+      path(group,"M-15-19Q0-32 15-19L18 24Q0 42-18 24Z","gua-hummingbird-mantle");
+      path(group,"M-11 10Q0-3 11 10Q0 31-11 10Z","gua-hummingbird-throat");
+      path(group,"M-9 25L-23 64L0 48L21 67L10 25Z","gua-hummingbird-tail");
     } else {
-      add(group,"ellipse",{class:"nic203-stage-base",cx:0,cy:20,rx:91,ry:44});
-      [-68,-42,-14,16,45,70].forEach((x,i)=>path(group,`M${x-23} ${19+i%2*4}Q${x} ${-29-i%3*5} ${x+24} ${18+i%2*4}Q${x} ${39+i%2*3} ${x-23} ${19+i%2*4}Z`,"nic203-bract"));
-      add(group,"ellipse",{class:"nic203-specimen-cradle",cx:0,cy:10,rx:31,ry:20});
-      line(group,"M-69 23L-91 56M69 23L91 56M-37 28L-49 54M38 28L49 54","nic203-hinge");
-      add(group,"rect",{class:"nic203-vial",x:74,y:-47,width:19,height:43,rx:7});
-      add(group,"circle",{class:"nic203-crank",cx:-96,cy:42,r:14}); line(group,"M-96 42L-78 25","nic203-linkage");
-      text("G-H1a1 / NIC203",0,75,"nic203-small-label");
+      path(group,"M-14-51Q-72-91-108-25Q-68-15-27 12Q-65 24-82 66Q-31 57 5 25Z","gua-hummingbird-wing");
+      path(group,"M14-47Q74-86 108-18Q67-12 27 13Q66 25 82 67Q31 58-5 25Z","gua-hummingbird-wing-alt");
+      [-73,-50,-28,28,51,74].forEach((x,i)=>path(group,`M${x} ${i<3?-30:-24}Q${x+(x<0?-19:19)} ${i%2?5:15} ${x+(x<0?-7:7)} ${i%2?41:52}`,"gua-hummingbird-feather"));
+      path(group,"M-24-28Q0-48 24-28L27 31Q0 53-27 31Z","gua-hummingbird-mantle");
+      path(group,"M-17 4Q0-14 17 4Q0 34-17 4Z","gua-hummingbird-throat");
+      path(group,"M-15 31L-37 87L0 65L35 89L15 31Z","gua-hummingbird-tail");
     }
     return true;
   }
-  if (item.family === "carbet-three-fall-hydraulic-sequencer") {
+  if (item.family === "guadeloupe-madras-carnival-crown") {
     if (companion) {
-      path(group,"M-35-83H34L42 75H-43Z","nic203-flow-tower");
-      [-59,-17,25].forEach((y,i)=>{path(group,`M-24 ${y}H22V${y+24}H-24Z`,"nic203-flow-window");path(group,`M${i%2?-17:6} ${y+3}V${y+20}`,"nic203-drop-shutter");add(group,"path",{class:"nic203-catch-cup",d:`M${i%2?5:-20} ${y+25}H${i%2?27:2}L${i%2?23:-2} ${y+40}H${i%2?9:-16}Z`});});
-      line(group,"M29-48H58V-5H31V35H61V60","nic203-drainpipe");
-      add(group,"ellipse",{class:"nic203-basin",cx:0,cy:70,rx:42,ry:13});
+      path(group,"M-47 28Q-38-18-17-42L0-69L16-39Q39-18 48 28Q0 45-47 28Z","gua-madras-crown");
+      line(group,"M-40-3H40M-31-27H29M-20 28V-39M4 34V-61M28 29V-26","gua-madras-check");
+      path(group,"M-50 25Q0 47 50 25L44 43Q0 61-44 43Z","gua-madras-band");
+      add(group,"circle",{class:"gua-crown-jewel",cx:0,cy:35,r:9});
     } else {
-      path(group,"M-101 49H99V70H-101Z","nic203-flume-base");
-      [[-80,-48,-19],[-21,4,15],[37,48,35]].forEach(([x1,x2,y],i)=>{path(group,`M${x1} ${y-34}H${x2}V${y}H${x1}Z`,"nic203-flume");add(group,"ellipse",{class:"nic203-catch-cup",cx:(x1+x2)/2,cy:y+5,rx:(x2-x1)/2+4,ry:9});});
-      line(group,"M-48-53V-19M4-19V15M48 1V35","nic203-drop");
-      text("115",-65,-60,"nic203-small-label");text("110",-8,-27,"nic203-small-label");text("20 m",43,-7,"nic203-small-label");
-      add(group,"circle",{class:"nic203-crank",cx:92,cy:-25,r:16}); line(group,"M76-20L48 2","nic203-linkage");
-      add(group,"ellipse",{class:"nic203-basin",cx:58,cy:54,rx:35,ry:13});
+      path(group,"M-75 31Q-65-18-35-48L-10-81L9-42L36-72L48-36Q69-9 77 31Q0 55-75 31Z","gua-madras-crown");
+      line(group,"M-68 1H69M-57-26H56M-38 34V-45M-7 45V-76M24 42V-55M52 35V-24","gua-madras-check");
+      path(group,"M-79 27Q0 60 79 27L70 52Q0 78-70 52Z","gua-madras-band");
+      [-36,0,36].forEach((x,i)=>add(group,"circle",{class:i===1?"gua-crown-jewel":"gua-crown-jewel-alt",cx:x,cy:47,r:i===1?11:8}));
     }
     return true;
   }
-  if (item.family === "nic203-toxin-antidote-automaton") {
+  if (item.family === "guadeloupe-gwoka-drum") {
     if (companion) {
-      path(group,"M-34-82H34L43 75H-43Z","nic203-inheritance-tower");
-      add(group,"ellipse",{class:"nic203-egg-chamber",cx:0,cy:-66,rx:27,ry:17});
-      line(group,"M0-49Q31-35 0-18Q-30-2 0 15Q31 31 0 49","nic203-helix");
-      [["II",-28],["III",3],["V",35]].forEach(([v,y],i)=>{path(group,`M${i%2?-25:4} ${y-11}H${i%2?5:28}V${y+9}H${i%2?-25:4}Z`,"nic203-chromosome-window");text(v,i%2?-10:16,y+3,"nic203-small-label");});
-      [-30,0,30].forEach((y,i)=>path(group,`M${i%2?37:-41} ${y-7}L${i%2?58:-58} ${y}L${i%2?37:-41} ${y+7}Z`,"nic203-rescue-key"));
-      add(group,"circle",{class:"nic203-winding-drum",cx:0,cy:70,r:18});
+      path(group,"M-37-54Q0-69 37-54L31 57Q0 76-31 57Z","gua-drum-body");
+      add(group,"ellipse",{class:"gua-drum-head",cx:0,cy:-54,rx:38,ry:14});
+      add(group,"ellipse",{class:"gua-drum-rim",cx:0,cy:57,rx:31,ry:11});
+      [-25,-8,9,26].forEach(x=>line(group,`M${x}-51L${x*.82} 56`,"gua-drum-rope"));
+      line(group,"M-37-43Q0-24 35-42M-34 16Q0 35 33 16","gua-drum-rope-cross");
+      line(group,"M44-61L62-16M49-59L67-19","gua-drum-stick");
     } else {
-      path(group,"M-101-44H101V58H-101Z","nic203-logic-board");
-      add(group,"circle",{class:"nic203-loading-wheel",cx:-73,cy:5,r:25});
-      [["II",-29],["III",17],["V",63]].forEach(([v,x],i)=>{path(group,`M${x-17}-22H${x+17}V23H${x-17}Z`,"nic203-gate");path(group,`M${x-11}-9L${x}-19L${x+11}-9L${x} 1Z`,"nic203-rescue-lock");text(v,x,40,"nic203-small-label");});
-      line(group,"M-48 5H-31M-12 5H0M34 5H46M80 5H94M-73-20V-35H64","nic203-linkage");
-      [-27,19,65].forEach(x=>path(group,`M${x-13}-39H${x+13}V-25H${x-13}Z`,"nic203-offspring-shutter"));
+      path(group,"M-52-49Q0-69 52-49L44 64Q0 88-44 64Z","gua-drum-body");
+      add(group,"ellipse",{class:"gua-drum-head",cx:0,cy:-49,rx:53,ry:18});
+      add(group,"ellipse",{class:"gua-drum-rim",cx:0,cy:64,rx:44,ry:14});
+      [-39,-20,0,20,39].forEach(x=>line(group,`M${x}-46L${x*.82} 63`,"gua-drum-rope"));
+      line(group,"M-51-34Q0-10 49-33M-47 7Q0 31 46 7M-45 46Q0 67 44 45","gua-drum-rope-cross");
+      path(group,"M-66-43Q-87 7-62 54M66-43Q87 7 62 54","gua-drum-harness");
+      line(group,"M61-70L87-13M69-67L94-8","gua-drum-stick");
     }
     return true;
   }
@@ -5554,32 +5551,6 @@ function drawTropicalisFieldAccessory(group, item, companion) {
     label("2906 m",companion?57:73,companion?-29:-37,"nfr-small");
     return true;
   }
-  if (item.family === "nic203-torch-ginger-bract-stage") {
-    sampleBox("NIC203",true);
-    return true;
-  }
-  if (item.family === "carbet-three-fall-hydraulic-sequencer") {
-    shadow(102,107);
-    path(group,companion?"M-94-70H-14V84H-94ZM14-70H94V84H14Z":"M-121-88H-18V101H-121ZM18-88H121V101H18Z","nfr-primary");
-    path(group,companion?"M-73-48Q-42-9-68 27Q-87 56-54 72":"M-94-61Q-54-12-87 34Q-111 70-69 91","nfr-water-flow");
-    add(group,"circle",{class:"nfr-ivory",cx:companion?54:69,cy:companion?-18:-23,r:companion?32:41});
-    path(group,companion?"M54-18L73-37":"M69-23L94-48","nfr-needle-line");
-    add(group,"circle",{class:"nfr-gold",cx:companion?54:69,cy:companion?-18:-23,r:6});
-    [-40,-8,24,56].forEach(y=>path(group,`M ${companion?20:26} ${companion?y:y*1.25} H ${companion?86:111}`,"nfr-fine"));
-    label("FLOW",companion?54:69,companion?67:84,"nfr-small nfr-light-text");
-    return true;
-  }
-  if (item.family === "nic203-toxin-antidote-automaton") {
-    shadow(104,105);
-    const width=companion?144:184;
-    path(group,`M ${-width/2} -73 H 5 V 72 H ${-width/2} Z`,"nfr-card");
-    path(group,`M -5 -58 H ${width/2} V 87 H -5 Z`,"nfr-card-alt");
-    label("TOXIN",-width/4,-24,"nfr-small");label("ANTIDOTE",width/4,-8,"nfr-small");
-    path(group,"M-49 7H-15M15 20H49M-31-5L-14 7L-31 19M31 8L14 20L31 32","nfr-arrow");
-    [[-44,38],[-20,51],[22,47],[48,60]].forEach(([x,y],i)=>add(group,"circle",{class:i%2?"nfr-accent":"nfr-gold",cx:x,cy:y,r:8}));
-    path(group,"M-13-82H13V-67H-13Z","nfr-primary");
-    return true;
-  }
   if (item.family === "ju1428-duguetia-fruit-theatre") {
     sampleBox("JU1428");
     return true;
@@ -6192,6 +6163,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawBriggsaeFieldAccessory(group, item, companion)) return true;
   if (drawElegansFieldAccessory(group, item, companion)) return true;
   if (drawNigoniFieldAccessory(group, item, companion)) return true;
+  if (drawGuadeloupeNIC203Accessory(group, item, companion)) return true;
   if (drawTropicalisFieldAccessory(group, item, companion)) return true;
   if (drawNambuccaQG2814Accessory(group, item, companion)) return true;
   if (drawDoisRiosEG5612Accessory(group, item, companion)) return true;
@@ -6207,7 +6179,6 @@ function drawNamedAccessory(group, item, companion) {
   if (drawNewTaipeiNIC1648Accessory(group, item, companion)) return true;
   if (drawKauaiQG131Accessory(group, item, companion)) return true;
   if (drawOahuECA789Accessory(group, item, companion)) return true;
-  if (drawGuadeloupeNIC203Accessory(group, item, companion)) return true;
   if (drawLaSelvaQG3845Accessory(group, item, companion)) return true;
   if (drawSandaJU1873Accessory(group, item, companion)) return true;
   if (drawBarroColoradoQG2726Accessory(group, item, companion)) return true;
@@ -6331,9 +6302,9 @@ function renderPiece(target, item, wormPart) {
     ,"qg3845-substrate-temperature": { primary: [385, 135, .38, -2], companion: [-8, 120, .29, 2] }
     ,"la-selva-leafcutter-automaton": { primary: [235, 185, .33, 1], companion: [125, 210, .27, -1] }
     ,"barva-gradient-lift": { primary: [380, 250, .34, -1], companion: [195, 290, .27, 1] }
-    ,"nic203-torch-ginger-bract-stage": { primary: [384, 132, .35, -2], companion: [-8, 120, .27, 2] }
-    ,"carbet-three-fall-hydraulic-sequencer": { primary: [236, 181, .33, 1], companion: [124, 211, .26, -1] }
-    ,"nic203-toxin-antidote-automaton": { primary: [382, 252, .33, -1], companion: [200, 292, .27, 1] }
+    ,"guadeloupe-hummingbird-costume": { primary: [264, 184, .43, -4], companion: [92, 173, .35, 5] }
+    ,"guadeloupe-madras-carnival-crown": { primary: [355, 55, .42, -3], companion: [111, 104, .34, 4] }
+    ,"guadeloupe-gwoka-drum": { primary: [365, 258, .4, -3], companion: [31, 279, .33, 4] }
     ,"eca789-fallen-flower-decay-chronoscope": { primary: [382, 128, .34, -2], companion: [-4, 124, .27, 2] }
     ,"eca789-paired-microclimate-harmonograph": { primary: [228, 184, .33, 1], companion: [112, 214, .26, -1] }
     ,"c0085-field-record-relay": { primary: [384, 254, .33, -1], companion: [198, 294, .27, 1] }

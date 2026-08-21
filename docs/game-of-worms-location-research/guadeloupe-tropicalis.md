@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-10
 
-> **Current production accessory contract:** `Guadeloupe torch-ginger trays`, `waterfall flow meters`, and `toxin–antidote inheritance cards`. These recognizable objects supersede the earlier abstract mechanism sketches below while keeping waterfall imagery explicitly regional.
+> **Current production accessory contract:** `hummingbird costumes`, `madras carnival crowns`, and `gwo ka drums`. These are imaginative Guadeloupe-linked dress-up objects rather than claims about collection equipment, traditional ceremonial dress or worm biology.
 
 ## Purpose
 
