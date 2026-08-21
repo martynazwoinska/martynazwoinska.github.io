@@ -83,8 +83,8 @@ Regional basis: [Government of São Tomé and Príncipe country profile](https:/
 
 ### Birdsong music boxes
 
-- **Primary:** a wide blue-lacquer wind-up box with a visible pinned cylinder, violet gramophone horn, generic rose bird finial and large brass key.
-- **Companion:** a compact arched automaton with its own visible cylinder, perched generic bird, musical scroll and differently constructed key.
+- **Primary:** a wide blue-lacquer cabinet with an arched violet lid, visible pinned cylinder, separately constructed rose bird automaton, gold filigree, curved feet and a large brass key.
+- **Companion:** a compact domed cabinet with its own cylinder, a differently proportioned rose bird and tail, a musical flourish and a smaller separately constructed key.
 - The birds are decorative silhouettes rather than named species. The drawings contain no captured animal, nest coordinate, institutional logo or copied call trace.
 
 ### Begonia stained-glass parasols
@@ -93,8 +93,8 @@ The decorative canopy geometry references published research on the island's beg
 
 Source: [Plana et al., 2004, A phylogeny of the African and São Tomé begonias](https://doi.org/10.1016/j.ympev.2003.08.023).
 
-- **Primary:** a wide asymmetric violet leaf canopy with rose glass detail, dark leading, amber finial and curved brass handle.
-- **Companion:** a compact aqua flower canopy with rose centre, separate leading pattern and a smaller curved handle.
+- **Primary:** a wide lobed violet leaf canopy with contained aqua, rose and gold panes, dark leading, alternating hanging jewels, amber finial and curved brass handle.
+- **Companion:** a compact aqua flower canopy with differently arranged rose and gold panes, separate leading, a shorter alternating fringe and a smaller curved handle.
 - Both are clearly constructed stained-glass fantasy props; neither drawing uses a real specimen, herbarium sheet or protected plant as a costume.
 
 ## Cultural and ecological safeguards

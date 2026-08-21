@@ -5384,28 +5384,29 @@ function drawNigoniFieldAccessory(group, item, companion) {
     return true;
   }
   if (item.family === "sao-tome-chocolate-bars") {
-    shadow(companion ? 91 : 105, 111);
-    const chocolate = add(group, "g", { transform: companion ? "rotate(8 -7 -5)" : "rotate(-7 0 0)" });
+    shadow(companion ? 94 : 103, 112);
+    const chocolate = add(group, "g", { transform: companion ? "rotate(9 -7 -5)" : "rotate(-6 0 0)" });
     if (companion) {
-      path(chocolate, "M-95-51L18-78L48 52L-66 79Z", "st-foil-back");
-      path(chocolate, "M-73-78L40-55L25 18L-89-5Z", "st-chocolate-slab");
-      [-51,-13].forEach(y => path(chocolate, `M-80 ${y}L34 ${y + 23}`, "st-chocolate-groove"));
-      [-52,-15,22].forEach(x => path(chocolate, `M${x}-73L${x-15} 4`, "st-chocolate-groove"));
-      path(chocolate, "M-95-15L45 14L52 77L-74 101L-101 56Z", "st-wrapper");
-      path(chocolate, "M-88 1L43 27M-91 30L47 57", "st-wrapper-rib");
-      path(chocolate, "M-25 19Q-2-6 22 20Q2 47-25 19Z", "st-cocoa-flower");
-      path(chocolate, "M56-56L87-36L67-5L38-19Z", "st-broken-square");
-      path(chocolate, "M58-55L78-34M42-20L66-6", "st-chocolate-groove");
+      path(chocolate, "M-91-98L68-98L80 77L-86 85L-103 57Z", "st-foil-back");
+      path(chocolate, "M-75-91H57V18H-75Z", "st-chocolate-slab");
+      [-57,-14,29].forEach(x => [-73,-34,5].forEach(y => add(chocolate, "rect", { class: "st-chocolate-segment", x, y, width: 35, height: 31, rx: 6 })));
+      path(chocolate, "M-93 32Q-72 18-51 33Q-30 17-9 33Q12 18 33 34Q54 19 73 35L79 91L-91 98Z", "st-wrapper");
+      path(chocolate, "M-82 50Q-37 34 0 51Q37 35 69 49M-82 80Q-35 63 0 80Q36 64 70 79", "st-wrapper-rib");
+      path(chocolate, "M-28 63Q-10 40 8 63Q-9 87-28 63Z", "st-cocoa-pod");
+      path(chocolate, "M-10 45V82M-22 57Q-10 64 3 57M-24 70Q-10 77 4 70", "st-cocoa-pod-rib");
+      path(chocolate, "M-88-91L-67-68L-82-45M60-94L42-69L62-47M-94 4L-78 15L-96 29", "st-foil-fold");
+      path(chocolate, "M75-72L108-54L91-20L56-37Z", "st-broken-square");
+      path(chocolate, "M78-64L98-52L87-31L65-40Z", "st-chocolate-segment");
     } else {
-      path(chocolate, "M-80-117H80V95H-80Z", "st-foil-back");
-      path(chocolate, "M-67-104H68V34H-67Z", "st-chocolate-slab");
-      [-67,-22,23].forEach(x => path(chocolate, `M${x}-104V34`, "st-chocolate-groove"));
-      [-70,-24,22].forEach(y => path(chocolate, `M-67 ${y}H68`, "st-chocolate-groove"));
-      path(chocolate, "M-88-1Q-61-21-37-5Q-14-24 8-4Q30-25 52-5Q72-17 88 0V108H-88Z", "st-wrapper");
-      path(chocolate, "M-88 21Q-42 3 0 23Q42 4 88 21M-88 83Q-43 64 0 84Q43 65 88 83", "st-wrapper-rib");
-      path(chocolate, "M-31 49Q0 12 31 49Q0 83-31 49Z", "st-cocoa-flower");
-      add(chocolate, "circle", { class: "st-wrapper-jewel", cx: 0, cy: 49, r: 8 });
-      path(chocolate, "M-79-114L-55-91L-74-69M79-114L55-91L74-69", "st-foil-fold");
+      path(chocolate, "M-87-119L-72-129H72L88-118L82 103L-82 103Z", "st-foil-back");
+      path(chocolate, "M-69-111H69V35H-69Z", "st-chocolate-slab");
+      [-54,-12,30].forEach(x => [-94,-53,-12,29].forEach(y => add(chocolate, "rect", { class: "st-chocolate-segment", x, y, width: 36, height: 32, rx: 7 })));
+      path(chocolate, "M-91 38Q-69 19-45 37Q-22 17 1 38Q25 17 48 37Q71 20 91 39V111H-91Z", "st-wrapper");
+      path(chocolate, "M-83 59Q-42 40 0 59Q42 40 83 59M-83 91Q-42 73 0 91Q42 73 83 91", "st-wrapper-rib");
+      path(chocolate, "M-24 72Q0 41 24 72Q0 103-24 72Z", "st-cocoa-pod");
+      path(chocolate, "M0 47V97M-17 62Q0 70 17 62M-19 78Q0 87 19 78", "st-cocoa-pod-rib");
+      path(chocolate, "M-80-119L-56-91L-76-68M80-119L56-91L76-68M-87-17L-71-4L-89 12M87-17L71-4L89 12", "st-foil-fold");
+      path(chocolate, "M-50 72Q-33 57-17 71M50 72Q33 57 17 71", "st-wrapper-botanical");
     }
     return true;
   }
@@ -5481,55 +5482,71 @@ function drawNigoniFieldAccessory(group, item, companion) {
     return true;
   }
   if (item.family === "sao-tome-birdsong-music-boxes") {
-    shadow(companion ? 96 : 112, 109);
+    shadow(companion ? 96 : 113, 111);
     if (companion) {
-      path(group, "M-82 8Q0-43 82 8V87Q0 109-82 87Z", "st-music-box");
-      path(group, "M-67 21Q0-13 67 21V76Q0 94-67 76Z", "st-music-box-inlay");
-      path(group, "M-48 47H49V69H-48Z", "st-music-cylinder");
-      [-34,-12,10,32].forEach(x => path(group, `M${x} 49V67`, "st-cylinder-pin"));
-      path(group, "M0 8V-58", "st-perch");
-      path(group, "M-51-55Q-20-89 8-60Q26-84 53-59Q31-22 2-39Q-29-20-51-55Z", "st-songbird");
-      path(group, "M45-56L79-43L49-31", "st-bird-beak");
-      add(group, "circle", { class: "st-bird-eye", cx: 35, cy: -58, r: 5 });
-      path(group, "M82 50H122M122 50V16M107 16H137", "st-winding-key");
-      add(group, "circle", { class: "st-key-knob", cx: 107, cy: 16, r: 7 });
-      add(group, "circle", { class: "st-key-knob", cx: 137, cy: 16, r: 7 });
-      path(group, "M-75-2Q-111-28-89-59M-89-59Q-66-73-54-48", "st-musical-scroll");
-      path(group, "M-103-50Q-119-78-91-86", "st-music-note");
+      path(group, "M-79-2Q-73-75 0-94Q73-75 79-2Z", "st-music-lid");
+      path(group, "M-62-12Q-55-62 0-76Q55-62 62-12Z", "st-music-box-inlay");
+      path(group, "M-86-3H86V83Q68 100 47 91Q0 112-47 91Q-68 100-86 83Z", "st-music-box");
+      path(group, "M-68 17H68V69Q0 88-68 69Z", "st-music-panel");
+      path(group, "M-48 33H49V57H-48Z", "st-music-cylinder");
+      [-35,-13,9,31].forEach(x => path(group, `M${x} 35V55`, "st-cylinder-pin"));
+      path(group, "M0-4V-45M-39-45H40", "st-perch");
+      add(group, "ellipse", { class: "st-songbird", cx: -8, cy: -58, rx: 30, ry: 19 });
+      add(group, "circle", { class: "st-songbird", cx: 23, cy: -70, r: 15 });
+      path(group, "M-33-58L-57-73L-48-48L-62-36L-27-41Z", "st-bird-tail");
+      path(group, "M-11-62Q6-74 15-58Q2-42-17-48Z", "st-bird-wing");
+      path(group, "M37-70L57-62L38-55", "st-bird-beak");
+      add(group, "circle", { class: "st-bird-eye", cx: 27, cy: -73, r: 3.5 });
+      path(group, "M86 46H120M120 46V15M106 15H134", "st-winding-key");
+      add(group, "circle", { class: "st-key-knob", cx: 106, cy: 15, r: 6 });
+      add(group, "circle", { class: "st-key-knob", cx: 134, cy: 15, r: 6 });
+      path(group, "M-55 73Q-34 52-13 72Q8 50 29 72Q48 55 63 71", "st-box-filigree");
+      path(group, "M-64 84V99M64 84V99", "st-music-foot");
+      path(group, "M-73-21Q-102-41-89-67M-89-67Q-73-82-62-61", "st-music-note");
     } else {
-      path(group, "M-112 14L-83-20H78L112 14V94Q0 120-112 94Z", "st-music-box");
-      path(group, "M-91 31H91V81Q0 102-91 81Z", "st-music-box-inlay");
-      path(group, "M-66 48H54V76H-66Z", "st-music-cylinder");
-      [-49,-22,5,32].forEach(x => path(group, `M${x} 51V73`, "st-cylinder-pin"));
-      path(group, "M-83 5Q-119-32-89-69Q-55-105-4-64L-27-28Q-56-8-83 5Z", "st-gramophone-horn");
-      path(group, "M-79-58Q-45-83-11-62M-73-43Q-43-60-18-47", "st-horn-rib");
-      path(group, "M5-57Q33-90 65-60Q85-83 108-55Q81-17 53-38Q28-17 5-57Z", "st-songbird");
-      path(group, "M98-54L131-40L100-27", "st-bird-beak");
-      add(group, "circle", { class: "st-bird-eye", cx: 88, cy: -56, r: 5 });
-      path(group, "M73 14V-27M45-27H101", "st-perch");
-      path(group, "M112 55H158M158 55V15M141 15H175", "st-winding-key");
-      add(group, "circle", { class: "st-key-knob", cx: 141, cy: 15, r: 8 });
-      add(group, "circle", { class: "st-key-knob", cx: 175, cy: 15, r: 8 });
-      path(group, "M-15-87Q-34-114-4-126M-4-126Q18-128 11-106", "st-music-note");
-      path(group, "M31-109Q18-137 49-143M49-143Q70-140 59-120", "st-music-note alternate");
+      path(group, "M-107-7Q-99-80-50-101Q0-128 50-101Q99-80 107-7Z", "st-music-lid");
+      path(group, "M-88-16Q-77-68-40-84Q0-105 40-84Q77-68 88-16Z", "st-music-box-inlay");
+      path(group, "M-116-7H116V91Q89 115 58 99Q0 124-58 99Q-89 115-116 91Z", "st-music-box");
+      path(group, "M-94 17H94V78Q0 102-94 78Z", "st-music-panel");
+      path(group, "M-70 39H63V69H-70Z", "st-music-cylinder");
+      [-53,-27,-1,25,51].forEach(x => path(group, `M${x} 42V66`, "st-cylinder-pin"));
+      path(group, "M0-8V-53M-55-53H55", "st-perch");
+      add(group, "ellipse", { class: "st-songbird", cx: -10, cy: -69, rx: 39, ry: 24 });
+      add(group, "circle", { class: "st-songbird", cx: 31, cy: -84, r: 19 });
+      path(group, "M-43-69L-75-88L-63-57L-80-43L-34-49Z", "st-bird-tail");
+      path(group, "M-14-74Q8-90 21-70Q5-50-20-56Z", "st-bird-wing");
+      path(group, "M49-84L78-73L50-63", "st-bird-beak");
+      add(group, "circle", { class: "st-bird-eye", cx: 36, cy: -88, r: 4.5 });
+      path(group, "M116 49H161M161 49V10M144 10H179", "st-winding-key");
+      add(group, "circle", { class: "st-key-knob", cx: 144, cy: 10, r: 7 });
+      add(group, "circle", { class: "st-key-knob", cx: 179, cy: 10, r: 7 });
+      path(group, "M-76 84Q-52 57-27 82Q0 54 27 82Q52 57 76 84", "st-box-filigree");
+      path(group, "M-88 95V112M88 95V112", "st-music-foot");
+      path(group, "M-79-86Q-97-111-68-124M-68-124Q-47-126-55-105", "st-music-note");
+      path(group, "M66-93Q52-121 82-131M82-131Q103-127 93-108", "st-music-note alternate");
     }
     return true;
   }
   if (item.family === "sao-tome-begonia-glass-parasols") {
-    shadow(companion ? 82 : 101, 111);
+    shadow(companion ? 86 : 105, 112);
     if (companion) {
-      path(group, "M0-104Q54-110 87-66Q55-24 0-18Q-55-24-87-66Q-54-110 0-104Z", "st-parasol-canopy");
-      path(group, "M0-104V-18M0-102Q-39-74-73-65M0-102Q39-74 73-65M0-102Q-23-56-35-28M0-102Q23-56 35-28", "st-glass-leading");
-      path(group, "M0-18V76Q0 105-29 104Q-50 102-51 82", "st-parasol-shaft");
-      add(group, "circle", { class: "st-parasol-jewel", cx: 0, cy: -103, r: 8 });
-      path(group, "M-42-72Q-14-91 0-65Q14-91 42-72Q28-42 0-48Q-28-42-42-72Z", "st-begonia-glass-flower");
+      path(group, "M0-113Q28-122 43-96Q70-107 83-81Q103-69 91-43Q75-19 49-30Q28-11 0-26Q-28-11-49-30Q-75-19-91-43Q-103-69-83-81Q-70-107-43-96Q-28-122 0-113Z", "st-parasol-canopy");
+      path(group, "M0-111L0-26M0-107Q-31-80-78-54M0-107Q31-80 78-54M0-101Q-20-62-47-32M0-101Q20-62 47-32", "st-glass-leading");
+      path(group, "M-72-58Q-43-83-13-54Q-38-28-60-34ZM72-58Q43-83 13-54Q38-28 60-34Z", "st-glass-pane-rose");
+      path(group, "M-21-75Q0-101 21-75Q0-47-21-75Z", "st-glass-pane-gold");
+      path(group, "M0-26V73Q0 107-30 108Q-51 108-54 87Q-55 76-45 69", "st-parasol-shaft");
+      [-70,-36,0,36,70].forEach((x,index) => add(group, "circle", { class: index % 2 ? "st-parasol-drop rose" : "st-parasol-drop", cx: x, cy: index === 2 ? -20 : -31, r: 6 }));
+      add(group, "circle", { class: "st-parasol-jewel", cx: 0, cy: -112, r: 9 });
     } else {
-      path(group, "M0-112Q-38-139-79-112Q-125-82-132-29Q-83-5 0-13Q83-5 132-29Q125-82 79-112Q38-139 0-112Z", "st-leaf-parasol");
-      path(group, "M0-112V-13M0-105Q-44-71-111-39M0-105Q44-71 111-39M0-97Q-65-103-92-76M0-97Q65-103 92-76", "st-glass-leading");
-      path(group, "M0-13V78Q0 112-34 111Q-59 109-60 84", "st-parasol-shaft");
-      path(group, "M-132-29Q-86-5 0-13Q86-5 132-29", "st-parasol-edge");
-      add(group, "circle", { class: "st-parasol-jewel", cx: 0, cy: -112, r: 10 });
-      path(group, "M-19-55Q0-83 19-55Q0-29-19-55Z", "st-begonia-glass-flower");
+      path(group, "M0-120Q-36-143-72-113Q-112-117-120-79Q-143-54-126-22Q-81-3 0-16Q81-3 126-22Q143-54 120-79Q112-117 72-113Q36-143 0-120Z", "st-leaf-parasol");
+      path(group, "M0-118V-16M0-113Q-45-79-114-34M0-113Q45-79 114-34M0-108Q-63-108-99-78M0-108Q63-108 99-78", "st-glass-leading");
+      path(group, "M-111-76Q-70-104-17-71Q-50-38-101-32Z", "st-glass-pane-aqua");
+      path(group, "M111-76Q70-104 17-71Q50-38 101-32Z", "st-glass-pane-rose");
+      path(group, "M-25-75Q0-108 25-75Q0-39-25-75Z", "st-glass-pane-gold");
+      path(group, "M0-16V78Q0 115-35 114Q-61 112-61 87Q-61 74-49 66", "st-parasol-shaft");
+      path(group, "M-126-22Q-92-4-61-16Q-30 0 0-16Q30 0 61-16Q92-4 126-22", "st-parasol-edge");
+      [-101,-62,-22,22,62,101].forEach((x,index) => add(group, "circle", { class: index % 2 ? "st-parasol-drop rose" : "st-parasol-drop", cx: x, cy: index < 3 ? -12 : -11, r: 7 }));
+      add(group, "circle", { class: "st-parasol-jewel", cx: 0, cy: -119, r: 10 });
     }
     return true;
   }

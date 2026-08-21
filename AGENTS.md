@@ -146,6 +146,18 @@ The first technically complete drawing is a draft, not automatically a final ass
 
 Show the exact production render in its real page context and at all relevant responsive sizes. Do not implement, commit or deploy an illustration that still depends on explanation to look correct, has ambiguous construction, or is merely "good enough" technically.
 
+## Game of Worms accessory quality gate
+
+Every new or revised Game accessory, costume or paired prop must follow [`docs/game-of-worms-accessory-quality-standard.md`](docs/game-of-worms-accessory-quality-standard.md).
+
+- A unique label, unique ID and passing geometry audit do not establish visual quality.
+- The object must be recognizable without its label at the default in-page size and communicate its material through construction, not colour alone.
+- Primary and companion versions must be separately designed objects rather than scaled, mirrored or recoloured clones.
+- Fit and orient worn objects to each worm's body; place free-standing props deliberately and keep faces and other accessories readable.
+- Treat the first working SVG as a draft. Complete and inspect a genuine refinement pass before presenting the exact production render for approval.
+- Reject generic containers with swapped icons, ambiguous blobs, arbitrary internal markings, repeated low-effort field gear and objects that become legible only when enlarged.
+- Do not commit or deploy a visual revision that differs materially from the approved contextual proof.
+
 ## Beyond Research: approved landing design
 
 The homepage section keeps the heading:

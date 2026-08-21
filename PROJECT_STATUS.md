@@ -110,6 +110,7 @@ The two cards have equal visual weight, stack on mobile, retain emerald and anti
 - The Game discovery counter starts at zero. The default Bristol N2 preview is not treated as a meeting; a species enters the six-species visited set only after an explicit species-tab or map-marker selection.
 - The Game has 37 explicit three-item accessory sets plus a fourth Bristol N2 accessory: 112 named designs in total. No accessory family is used more than twice, paired objects have visibly different geometry, and no emoji or species-level costume fallback remains. N2 keeps its seeded NGM agar plate, fitted lab coat, cryo-vial jetpack and lab goggles.
 - `docs/game-of-worms-art-catalogue.md` is the durable illustration catalogue for landscape evidence, composition locks, and accessory concepts. Clothing and props are playful geography-, ecology-, collection-, or research-derived designs, not claims of authentic local dress.
+- `docs/game-of-worms-accessory-quality-standard.md` is the mandatory production gate for all new and revised accessories, costumes and paired props. Passing uniqueness and geometry audits is not visual approval: each object must read without its label at the default in-page size, show coherent material construction, use genuinely distinct paired geometry, fit its worm deliberately and complete a critical refinement pass before contextual approval.
 - All thirty-seven locations now use dedicated evidence-led optimized painted backgrounds, each with a separately preserved source PNG, an asset-load SVG fallback, live animated worms and at least six bespoke independently movable SVG objects; Bristol N2 has eight. The painted-art backlog is complete. Painted backgrounds use a complete-image fit inside the fixed 600 × 430 habitat geometry; approved source artwork is not cropped or enlarged on hover.
 - Freestyle drawing uses an invisible 600 × 430 overlay covering the complete habitat. It has no visible boundary and leaves the scene labels above the drawing surface.
 - `docs/game-of-worms-location-research/` contains one evidence-boundary, illustration-contract and interaction-acceptance dossier for each of the 37 locations.
@@ -173,7 +174,7 @@ The Etsy pattern is the only external link planned for these objects.
 ## Current follow-up work
 
 1. Preserve all 37 evidence-backed location dossiers, dedicated landscapes and three bespoke accessory pairs during future maintenance.
-2. Treat catalogue uniqueness as a structural check, not proof of visual quality. Compare revised pairs for silhouette, material construction, body fit, combined readability and genuinely different primary/companion geometry.
+2. Enforce `docs/game-of-worms-accessory-quality-standard.md` for every new or revised pair. Treat catalogue uniqueness as a structural check, not proof of visual quality; reject weak first renders before approval rather than scheduling avoidable redraws after deployment.
 3. Keep the maximum-two accessory-family rule and N2’s four approved concepts. If a family is used twice, the two location designs must differ in material, outline, proportions and internal construction.
 4. Re-run direct pointer and keyboard movement checks independently for both worm copies after any future location or accessory revision.
 5. Keep `game-of-worms/` unchanged during Cabinet-only work.

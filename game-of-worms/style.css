@@ -4886,6 +4886,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   --nfr-ivory:#fff2d5;
   --st-chocolate:#684034;
   --st-chocolate-light:#bd8062;
+  --st-chocolate-bevel:#925b46;
   --st-copper:#dd925b;
   --st-foil:#f1cc7b;
   --st-wrapper:#74436f;
@@ -4989,6 +4990,12 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   stroke-width:7;
   stroke-linejoin:round;
 }
+.nigoni-field-redesign .st-chocolate-segment {
+  fill:var(--st-chocolate-bevel);
+  stroke:var(--st-chocolate-light);
+  stroke-width:3;
+  stroke-linejoin:round;
+}
 .nigoni-field-redesign .st-chocolate-groove {
   fill:none;
   stroke:var(--st-chocolate-light);
@@ -5002,7 +5009,8 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   stroke-linejoin:round;
 }
 .nigoni-field-redesign .st-wrapper-rib,
-.nigoni-field-redesign .st-foil-fold {
+.nigoni-field-redesign .st-foil-fold,
+.nigoni-field-redesign .st-wrapper-botanical {
   fill:none;
   stroke:var(--st-copper);
   stroke-width:5;
@@ -5014,6 +5022,18 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   stroke:var(--st-copper);
   stroke-width:5;
   stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-cocoa-pod {
+  fill:var(--nfr-ivory);
+  stroke:var(--st-copper);
+  stroke-width:5;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-cocoa-pod-rib {
+  fill:none;
+  stroke:var(--st-copper);
+  stroke-width:3;
+  stroke-linecap:round;
 }
 .nigoni-field-redesign .st-wrapper-jewel {
   fill:var(--st-wrapper-accent);
@@ -5031,7 +5051,19 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   stroke-width:7;
   stroke-linejoin:round;
 }
+.nigoni-field-redesign .st-music-lid {
+  fill:var(--st-parasol-violet);
+  stroke:var(--nfr-ink);
+  stroke-width:7;
+  stroke-linejoin:round;
+}
 .nigoni-field-redesign .st-music-box-inlay {
+  fill:var(--st-music-inlay);
+  stroke:var(--nfr-ivory);
+  stroke-width:5;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-music-panel {
   fill:var(--st-music-inlay);
   stroke:var(--nfr-ivory);
   stroke-width:5;
@@ -5055,6 +5087,18 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   stroke-width:6;
   stroke-linejoin:round;
 }
+.nigoni-field-redesign .st-bird-tail {
+  fill:var(--st-music-bird);
+  stroke:var(--nfr-ink);
+  stroke-width:5;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-bird-wing {
+  fill:var(--nfr-ivory);
+  stroke:var(--st-wrapper);
+  stroke-width:4;
+  stroke-linejoin:round;
+}
 .nigoni-field-redesign .st-bird-beak {
   fill:var(--nfr-gold);
   stroke:var(--nfr-ink);
@@ -5065,7 +5109,9 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .nigoni-field-redesign .st-perch,
 .nigoni-field-redesign .st-winding-key,
 .nigoni-field-redesign .st-musical-scroll,
-.nigoni-field-redesign .st-music-note {
+.nigoni-field-redesign .st-music-note,
+.nigoni-field-redesign .st-box-filigree,
+.nigoni-field-redesign .st-music-foot {
   fill:none;
   stroke:var(--nfr-gold);
   stroke-width:8;
@@ -5123,6 +5169,22 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   stroke-width:5;
   stroke-linejoin:round;
 }
+.nigoni-field-redesign .st-glass-pane-aqua,
+.nigoni-field-redesign .st-glass-pane-rose,
+.nigoni-field-redesign .st-glass-pane-gold {
+  stroke:var(--st-leading);
+  stroke-width:4;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-glass-pane-aqua { fill:var(--st-parasol-aqua); }
+.nigoni-field-redesign .st-glass-pane-rose { fill:var(--st-parasol-rose); }
+.nigoni-field-redesign .st-glass-pane-gold { fill:var(--st-parasol-amber); }
+.nigoni-field-redesign .st-parasol-drop {
+  fill:var(--st-parasol-amber);
+  stroke:var(--st-leading);
+  stroke-width:3;
+}
+.nigoni-field-redesign .st-parasol-drop.rose { fill:var(--st-parasol-rose); }
 .nigoni-field-redesign .nfr-frame { fill:none;stroke:var(--nfr-primary);stroke-width:12;stroke-linejoin:round; }
 .nigoni-field-redesign .nfr-arrow { fill:none;stroke:var(--nfr-accent);stroke-width:7;stroke-linecap:round;stroke-linejoin:round; }
 .nigoni-field-redesign .nfr-lighthouse { fill:var(--nfr-ivory);stroke:var(--nfr-ink);stroke-width:7; }
