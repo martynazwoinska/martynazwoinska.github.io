@@ -13,7 +13,7 @@ const rows = [
   ["briggsae", "Kerala, India · JU1337", "sample jars", "ju1337-rotting-material-recovery-carousel", "16 December calendars", "ju1337-sixteen-december-field-calendar", "field notebooks", "poovar-agricultural-edge-ledger"],
   ["briggsae", "Kauaʻi, Hawaiʻi · QG130", "three-vial sample case", "qg130-three-strain-isotype-sorter", "2 August field tag", "qg130-two-august-forest-chronometer", "11 m tape measure", "qg130-eleven-metre-forest-floor-transect"],
   ["briggsae", "Réunion Island · JU1375", "shell sample jars", "ju1375-mollusk-substrate-inspection", "31 December field calendars", "ju1375-year-turn-collection-chronometer", "123 m altimeters", "ju1375-agricultural-land-altimeter"],
-  ["briggsae", "Orsay, France · JU2518", "apple specimen boxes", "ju2518-rotten-apple-decay-rotoscope", "virus association cards", "ju2518-virus-association-spectroscope", "6 September field notebooks", "ju2518-six-september-garden-ledger"],
+  ["briggsae", "Orsay, France · JU2518", "pressed-flower crowns", "ju2518-rotten-apple-decay-rotoscope", "apple field satchels", "ju2518-virus-association-spectroscope", "notebook & pencil harnesses", "ju2518-six-september-garden-ledger"],
   ["briggsae", "Dois Rios, Ilha Grande, Brazil · EG5612", "jackfruit sample trays", "eg5612-jackfruit-emergence-theatre", "shared sample bags", "eg5612-shared-bag-provenance-bifurcator", "test-cross plates", "eg5612-single-larva-test-cross-gate"],
   ["briggsae", "Nambucca Heads, New South Wales · QG2814", "flower presses", "qg2814-ground-flower-sample-theatre", "two culture plates", "qg2814-five-day-two-plate-relay", "18S DNA cards", "qg2814-18s-identity-ribbon-reader"],
   ["elegans", "Bristol N2, England", "seeded NGM agar plates", "ngm-agar-plate", "fitted lab coats", "n2-lab-coat", "cryo-vial jetpacks", "cryo-vial-jetpack", "lab goggles", "n2-lab-goggles"],
@@ -4984,6 +4984,21 @@ function drawBriggsaeFieldAccessory(group, item, companion) {
     path(appleGroup, "M13-45Q29-47 31-34Q20-30 13-45Z", "bfr-leaf");
     path(appleGroup, "M-28 7Q-13-3-4 12Q-14 27-28 18Z", "bfr-decay");
   };
+  const flower = (cx, cy, scale = 1, alternate = false) => {
+    const flowerGroup = add(group, "g", { transform: `translate(${cx} ${cy}) scale(${scale})` });
+    [-90, -18, 54, 126, 198].forEach(angle => {
+      const radians = angle * Math.PI / 180;
+      add(flowerGroup, "ellipse", {
+        class: alternate ? "bfr-flower-alt" : "bfr-flower",
+        cx: (Math.cos(radians) * 12).toFixed(1),
+        cy: (Math.sin(radians) * 12).toFixed(1),
+        rx: 7,
+        ry: 12,
+        transform: `rotate(${angle + 90} ${(Math.cos(radians) * 12).toFixed(1)} ${(Math.sin(radians) * 12).toFixed(1)})`
+      });
+    });
+    add(flowerGroup, "circle", { class: "bfr-gold", cx: 0, cy: 0, r: 6 });
+  };
   const shell = (cx, cy, scale = 1) => {
     const shellGroup = add(group, "g", { transform: `translate(${cx} ${cy}) scale(${scale})` });
     path(shellGroup, "M-34 17C-42-9-25-35 2-39C31-43 48-21 42 5C37 31 7 43-18 33C-27 29-32 24-34 17Z", "bfr-shell");
@@ -5057,47 +5072,46 @@ function drawBriggsaeFieldAccessory(group, item, companion) {
   }
 
   if (isOrsay && item.family === "ju2518-rotten-apple-decay-rotoscope") {
-    shadow(103, 101);
-    const width = companion ? 158 : 202;
-    const left = -width / 2;
-    path(group, `M ${left} -61 H ${-left} L ${-left + 12} 79 H ${left - 12} Z`, "bfr-glass");
-    path(group, `M ${left} -61 L ${left - 18} -90 H ${-left - 18} L ${-left} -61 Z`, "bfr-secondary");
-    path(group, `M ${left - 18} -90 V -66 M ${-left - 18} -90 V -66`, "bfr-line");
-    apple(companion ? -8 : -15, 9, companion ? .9 : 1.12);
-    path(group, `M ${left + 10} 56 H ${-left - 10} V 86 H ${left + 10} Z`, "bfr-primary");
-    label("APPLE SAMPLE", 0, 77, "bfr-small bfr-light-text");
-    path(group, `M ${-left - 24} -54 V 45`, "bfr-fine");
+    const width = companion ? 112 : 146;
+    path(group, `M${-width / 2}-2Q0-82 ${width / 2}-2`, "bfr-crown-stem");
+    path(group, `M${-width / 2 + 3}-4Q0-58 ${width / 2 - 3}-4`, "bfr-crown-twine");
+    const blossoms = companion
+      ? [[-43,-24,.65,false],[-13,-43,.76,true],[20,-39,.68,false],[45,-19,.58,true]]
+      : [[-58,-24,.72,false],[-31,-47,.82,true],[2,-57,.92,false],[35,-46,.8,true],[61,-19,.68,false]];
+    blossoms.forEach(([x,y,scale,alternate]) => flower(x,y,scale,alternate));
+    [[-49,-8,-66,-21],[-26,-27,-43,-44],[25,-29,43,-47],[50,-7,68,-21]].forEach(([x1,y1,x2,y2]) => {
+      path(group, `M${x1} ${y1}Q${(x1+x2)/2} ${y2-8} ${x2} ${y2}`, "bfr-crown-leaf");
+    });
+    path(group, companion ? "M-53-1Q-60 18-46 29M53-1Q60 18 46 29" : "M-69-1Q-78 21-60 34M69-1Q78 21 60 34", "bfr-crown-ribbon");
     return true;
   }
 
   if (isOrsay && item.family === "ju2518-virus-association-spectroscope") {
-    shadow(95, 104);
-    const cardWidth = companion ? 112 : 132;
-    path(group, `M ${-cardWidth + 8} -63 H 8 V 70 H ${-cardWidth + 8} Z`, "bfr-ivory");
-    path(group, `M-8-48H${cardWidth - 8}V85H-8Z`, "bfr-secondary");
-    path(group, `M ${-cardWidth + 8} -63 H 8 V -37 H ${-cardWidth + 8} Z`, "bfr-primary");
-    path(group, `M-8-48H${cardWidth - 8}V-22H-8Z`, "bfr-accent");
-    apple(-cardWidth / 2 + 5, 8, .45);
-    add(group, "circle", { class: "bfr-ivory", cx: cardWidth / 2 - 7, cy: 17, r: 30 });
-    label("SV", cardWidth / 2 - 7, 26, "bfr-card-symbol");
-    path(group, `M ${-cardWidth / 2 + 30} 7 C -18 -2 11 38 ${cardWidth / 2 - 38} 18`, "bfr-accent-line");
-    label("APPLE", -cardWidth / 2 + 5, 57, "bfr-small");
-    label("ASSOCIATED", cardWidth / 2 - 7, 68, "bfr-small bfr-light-text");
-    add(group, "circle", { class: "bfr-gold", cx: 0, cy: -56, r: 9 });
+    shadow(companion ? 68 : 83, 103);
+    path(group, companion ? "M-72-82Q0-116 72-82" : "M-89-88Q0-130 89-88", "bfr-satchel-strap");
+    path(group, companion
+      ? "M0-52C-19-75-55-63-65-29C-79 18-46 76 0 91C46 76 79 18 65-29C55-63 19-75 0-52Z"
+      : "M0-59C-24-88-68-73-79-33C-96 24-56 88 0 105C56 88 96 24 79-33C68-73 24-88 0-59Z", "bfr-satchel-body");
+    path(group, companion ? "M-58-22Q0 22 58-22L51 24Q0 57-51 24Z" : "M-71-26Q0 29 71-26L63 31Q0 72-63 31Z", "bfr-satchel-flap");
+    path(group, companion ? "M-13 32H13V59H-13Z" : "M-16 41H16V73H-16Z", "bfr-satchel-buckle");
+    path(group, companion ? "M0-55Q4-78 24-88" : "M0-62Q4-91 31-103", "bfr-line");
+    path(group, companion ? "M20-84Q43-94 47-71Q29-65 20-84Z" : "M27-99Q56-111 61-81Q37-73 27-99Z", "bfr-satchel-leaf");
+    path(group, companion ? "M-43 50Q-25 43-17 63" : "M-54 62Q-30 52-21 78", "bfr-satchel-stitch");
     return true;
   }
 
   if (isOrsay && item.family === "ju2518-six-september-garden-ledger") {
-    shadow(93, 104);
-    const width = companion ? 132 : 168;
-    path(group, `M ${-width / 2} -79 H ${width / 2} V 91 H ${-width / 2} Z`, "bfr-primary");
-    path(group, `M ${-width / 2 + 17} -66 H ${width / 2 - 10} V 80 H ${-width / 2 + 17} Z`, "bfr-ivory");
-    [-55,-25,5,35,65].forEach(y => path(group, `M${-width / 2 + 4} ${y}H${-width / 2 + 27}`, "bfr-gold-line"));
-    label("06 SEP", 12, -28, "bfr-date-label");
-    label("2012", 12, -4, "bfr-small");
-    [-1,22,45].forEach(y => path(group, `M${-width / 2 + 34} ${y}H${width / 2 - 21}`, "bfr-fine"));
-    apple(width / 2 - 31, 59, .27);
-    path(group, `M ${width / 2 - 4} -54 L ${width / 2 + 20} 58 L ${width / 2 + 10} 75 L ${width / 2 - 16} -49 Z`, "bfr-accent");
+    shadow(companion ? 66 : 81, 105);
+    path(group, companion ? "M-81-77Q-2-112 81-50" : "M-101-86Q-3-132 102-59", "bfr-harness-band");
+    path(group, companion ? "M-74 63Q1 104 76 57" : "M-92 74Q2 124 94 66", "bfr-harness-band");
+    path(group, companion ? "M-63-66L50-78L65 68L-49 81Z" : "M-78-78L62-94L81 81L-60 98Z", "bfr-notebook-cover");
+    path(group, companion ? "M-49-51L38-61L50 51L-38 63Z" : "M-61-60L47-73L63 60L-46 75Z", "bfr-notebook-page");
+    [-28,-5,18].forEach(y => path(group, companion ? `M-39 ${y}L40 ${y-9}` : `M-49 ${y}L51 ${y-12}`, "bfr-notebook-rule"));
+    label("06 SEP", companion ? -3 : 0, companion ? -23 : -31, "bfr-date-label");
+    label("2012", companion ? 2 : 4, companion ? 39 : 43, "bfr-small");
+    path(group, companion ? "M46-80L74 58L88 53L60-84Z" : "M59-96L94 75L111 68L76-100Z", "bfr-pencil-body");
+    path(group, companion ? "M60-84L49-99L46-80Z" : "M76-100L62-119L59-96Z", "bfr-pencil-tip");
+    path(group, companion ? "M-61-38L-70 57" : "M-76-47L-87 69", "bfr-notebook-binding");
     return true;
   }
 
@@ -6342,9 +6356,9 @@ function renderPiece(target, item, wormPart) {
     ,"ju1375-mollusk-substrate-inspection": { primary: [380, 137, .37, -2], companion: [-7, 119, .29, 3] }
     ,"ju1375-year-turn-collection-chronometer": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
     ,"ju1375-agricultural-land-altimeter": { primary: [381, 258, .34, -1], companion: [194, 294, .27, 2] }
-    ,"ju2518-rotten-apple-decay-rotoscope": { primary: [380, 137, .37, -2], companion: [-7, 119, .29, 3] }
+    ,"ju2518-rotten-apple-decay-rotoscope": { primary: [340, 92, .42, -2], companion: [68, 79, .32, 3] }
     ,"ju2518-virus-association-spectroscope": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
-    ,"ju2518-six-september-garden-ledger": { primary: [381, 258, .34, -1], companion: [194, 294, .27, 2] }
+    ,"ju2518-six-september-garden-ledger": { primary: [225, 268, .34, -10], companion: [70, 227, .27, -7] }
     ,"eg5612-jackfruit-emergence-theatre": { primary: [380, 137, .37, -2], companion: [-7, 119, .29, 3] }
     ,"eg5612-shared-bag-provenance-bifurcator": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
     ,"eg5612-single-larva-test-cross-gate": { primary: [381, 258, .34, -1], companion: [194, 294, .27, 2] }

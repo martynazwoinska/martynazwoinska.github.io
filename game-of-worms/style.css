@@ -4766,6 +4766,36 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .briggsae-field-redesign .bfr-card-symbol { font-size: 27px; }
 .briggsae-field-redesign .bfr-light-text { fill: var(--bfr-ivory); }
 .briggsae-field-redesign .bfr-no-fill { fill: none; }
+.briggsae-field-redesign .bfr-crown-stem,
+.briggsae-field-redesign .bfr-crown-twine,
+.briggsae-field-redesign .bfr-crown-ribbon,
+.briggsae-field-redesign .bfr-satchel-strap,
+.briggsae-field-redesign .bfr-satchel-stitch,
+.briggsae-field-redesign .bfr-harness-band,
+.briggsae-field-redesign .bfr-notebook-rule,
+.briggsae-field-redesign .bfr-notebook-binding {
+  fill: none;
+  stroke: var(--bfr-ink);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.briggsae-field-redesign .bfr-crown-stem { stroke: var(--bfr-leaf); stroke-width: 8; }
+.briggsae-field-redesign .bfr-crown-twine { stroke: var(--bfr-gold); stroke-width: 3; }
+.briggsae-field-redesign .bfr-crown-ribbon { stroke: var(--bfr-accent); stroke-width: 6; }
+.briggsae-field-redesign .bfr-crown-leaf,
+.briggsae-field-redesign .bfr-satchel-leaf { fill: var(--bfr-leaf); stroke: var(--bfr-ink); stroke-width: 3; }
+.briggsae-field-redesign .bfr-satchel-strap { stroke: #9a633f; stroke-width: 13; }
+.briggsae-field-redesign .bfr-satchel-body { fill: #bd754d; stroke: var(--bfr-ink); stroke-width: 4; }
+.briggsae-field-redesign .bfr-satchel-flap { fill: #e3a15d; stroke: var(--bfr-ink); stroke-width: 4; }
+.briggsae-field-redesign .bfr-satchel-buckle { fill: var(--bfr-gold); stroke: var(--bfr-ink); stroke-width: 3; }
+.briggsae-field-redesign .bfr-satchel-stitch { stroke: var(--bfr-ivory); stroke-width: 3; stroke-dasharray: 4 5; }
+.briggsae-field-redesign .bfr-harness-band { stroke: #825638; stroke-width: 14; }
+.briggsae-field-redesign .bfr-notebook-cover { fill: var(--bfr-primary); stroke: var(--bfr-ink); stroke-width: 4; }
+.briggsae-field-redesign .bfr-notebook-page { fill: var(--bfr-ivory); stroke: var(--bfr-ink); stroke-width: 3; }
+.briggsae-field-redesign .bfr-notebook-rule { stroke: color-mix(in srgb, var(--bfr-secondary) 72%, var(--bfr-ink)); stroke-width: 2.5; }
+.briggsae-field-redesign .bfr-notebook-binding { stroke: var(--bfr-gold); stroke-width: 7; stroke-dasharray: 5 8; }
+.briggsae-field-redesign .bfr-pencil-body { fill: var(--bfr-accent); stroke: var(--bfr-ink); stroke-width: 3; }
+.briggsae-field-redesign .bfr-pencil-tip { fill: var(--bfr-gold); stroke: var(--bfr-ink); stroke-width: 3; }
 @media (max-width: 600px) {
   .briggsae-field-redesign .bfr-small { font-size: 15px; letter-spacing: .02em; }
 }
