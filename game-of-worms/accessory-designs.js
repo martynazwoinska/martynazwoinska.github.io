@@ -942,27 +942,33 @@ function drawTenerifeAccessory(group, item, companion) {
   if (item.family === "tenerife-timple-guitar") {
     group.classList.add("tenerife-accessory", "tenerife-timple", companion ? "tenerife-timple-companion" : "tenerife-timple-primary");
     if (companion) {
-      add(group, "path", { class: "ten-timple-body ten-timple-body-deep", d: "M-38-8Q-61-29-48-53Q-36-73-12-62Q2-51 13-66Q35-85 52-64Q69-40 49-16Q32 2 11-3Q-6 5-20 15Q-34 17-38-8Z" });
-      add(group, "circle", { class: "ten-timple-rosette", cx: 9, cy: -35, r: 13 });
-      add(group, "circle", { class: "ten-timple-soundhole", cx: 9, cy: -35, r: 7 });
-      add(group, "path", { class: "ten-timple-neck", d: "M41-56L92-92L103-79L52-44Z" });
-      add(group, "path", { class: "ten-timple-headstock", d: "M90-96L111-108L122-93L104-76Z" });
-      [-1,0,1].forEach(offset => add(group, "path", { class: "ten-timple-string", d: `M${9+offset*2}-46L${111+offset*2}-94` }));
-      [62,75,88].forEach((x, index) => add(group, "path", { class: "ten-timple-fret", d: `M${x-5} ${-64-index*8}L${x+6} ${-52-index*8}` }));
-      add(group, "path", { class: "ten-timple-bridge", d: "M-17-13Q5-5 27-17" });
-      [[110,-106],[120,-100],[105,-82],[115,-78]].forEach(([cx,cy]) => add(group, "circle", { class: "ten-timple-peg", cx, cy, r: 3.5 }));
+      const instrument = add(group, "g", { class: "ten-timple-instrument", transform: "rotate(70)" });
+      add(instrument, "path", { class: "ten-timple-body ten-timple-body-deep", d: "M0-30C-27-42-40-25-33-8C-30-1-24 4-17 7C-31 14-39 28-34 43C-27 64-6 71 0 65C7 71 28 64 35 43C40 28 31 14 17 7C24 4 30-1 33-8C40-25 27-42 0-30Z" });
+      add(instrument, "path", { class: "ten-timple-soundboard", d: "M0-23C-19-33-29-22-25-9C-22 0-14 4-9 7C-23 16-27 30-21 43C-15 55-5 58 0 54C6 58 16 55 22 43C28 30 23 16 9 7C15 4 22 0 25-9C29-22 19-33 0-23Z" });
+      add(instrument, "path", { class: "ten-timple-neck", d: "M-7-31L-6-105H6L7-31Z" });
+      add(instrument, "path", { class: "ten-timple-headstock", d: "M-10-105L-13-126Q0-137 13-126L10-105Z" });
+      add(instrument, "circle", { class: "ten-timple-rosette", cx: 0, cy: 8, r: 13 });
+      add(instrument, "circle", { class: "ten-timple-soundhole", cx: 0, cy: 8, r: 7 });
+      [-4,-2,0,2,4].forEach(offset => add(instrument, "path", { class: "ten-timple-string", d: `M${offset} 43L${offset*.7}-126` }));
+      [-45,-59,-73,-87].forEach(y => add(instrument, "path", { class: "ten-timple-fret", d: `M-7 ${y}H7` }));
+      add(instrument, "path", { class: "ten-timple-bridge", d: "M-17 43Q0 48 17 43" });
+      add(instrument, "path", { class: "ten-timple-inlay", d: "M-17 29Q0 17 17 29M-13 34Q0 24 13 34" });
+      [[-15,-119],[15,-119],[-14,-108],[14,-108]].forEach(([cx,cy]) => add(instrument, "circle", { class: "ten-timple-peg", cx, cy, r: 3.5 }));
     } else {
-      add(group, "path", { class: "ten-timple-body", d: "M-86-9Q-114-36-97-67Q-81-94-48-81Q-27-68-12-89Q17-119 43-91Q66-65 48-34Q34-9 3-14Q-19-1-41 14Q-66 18-86-9Z" });
-      add(group, "path", { class: "ten-timple-edge", d: "M-76-14Q-98-37-84-60Q-70-78-48-68Q-22-51-6-79Q15-101 34-82Q51-62 38-41Q25-21 0-26Q-20-12-42 2Q-62 5-76-14Z" });
-      add(group, "circle", { class: "ten-timple-rosette", cx: -5, cy: -48, r: 18 });
-      add(group, "circle", { class: "ten-timple-soundhole", cx: -5, cy: -48, r: 10 });
-      add(group, "path", { class: "ten-timple-neck", d: "M37-78L125-121L137-100L48-58Z" });
-      add(group, "path", { class: "ten-timple-headstock", d: "M120-128L147-139L160-113L136-96Z" });
-      [-2,-1,0,1,2].forEach(offset => add(group, "path", { class: "ten-timple-string", d: `M${-5+offset*2}-61L${146+offset}-121` }));
-      [65,84,103,120].forEach((x, index) => add(group, "path", { class: "ten-timple-fret", d: `M${x-6} ${-91-index*9}L${x+8} ${-72-index*9}` }));
-      add(group, "path", { class: "ten-timple-bridge", d: "M-48-15Q-11-2 25-20" });
-      [[139,-136],[153,-129],[140,-104],[155,-112]].forEach(([cx,cy]) => add(group, "circle", { class: "ten-timple-peg", cx, cy, r: 4.5 }));
-      add(group, "path", { class: "ten-timple-strap", d: "M-76-55Q7 32 124-109" });
+      const instrument = add(group, "g", { class: "ten-timple-instrument", transform: "rotate(78)" });
+      add(instrument, "path", { class: "ten-timple-body", d: "M0-38C-34-51-53-31-43-9C-39 0-31 6-22 9C-41 18-53 37-45 57C-35 85-8 94 0 84C9 94 36 85 46 57C54 37 41 18 22 9C31 6 39 0 43-9C53-31 34-51 0-38Z" });
+      add(instrument, "path", { class: "ten-timple-soundboard", d: "M0-29C-24-40-39-27-33-11C-29-2-21 3-14 8C-31 19-37 38-29 54C-21 72-7 77 0 69C8 77 22 72 30 54C38 38 31 19 14 8C21 3 29-2 33-11C39-27 24-40 0-29Z" });
+      add(instrument, "path", { class: "ten-timple-neck", d: "M-9-39L-8-130H8L9-39Z" });
+      add(instrument, "path", { class: "ten-timple-headstock", d: "M-13-130L-17-156Q0-170 17-156L13-130Z" });
+      add(instrument, "circle", { class: "ten-timple-rosette", cx: 0, cy: 10, r: 16 });
+      add(instrument, "circle", { class: "ten-timple-soundhole", cx: 0, cy: 10, r: 9 });
+      [-5,-2.5,0,2.5,5].forEach(offset => add(instrument, "path", { class: "ten-timple-string", d: `M${offset} 58L${offset*.65}-157` }));
+      [-57,-74,-91,-108].forEach(y => add(instrument, "path", { class: "ten-timple-fret", d: `M-9 ${y}H9` }));
+      add(instrument, "path", { class: "ten-timple-bridge", d: "M-22 58Q0 66 22 58" });
+      add(instrument, "path", { class: "ten-timple-inlay", d: "M-23 38Q0 20 23 38M-18 46Q0 31 18 46" });
+      add(instrument, "path", { class: "ten-timple-scroll", d: "M-32-13Q-14-24-8-9M32-13Q14-24 8-9" });
+      [[-20,-148],[20,-148],[-19,-134],[19,-134]].forEach(([cx,cy]) => add(instrument, "circle", { class: "ten-timple-peg", cx, cy, r: 4.5 }));
+      add(instrument, "path", { class: "ten-timple-strap", d: "M-39-12Q-67 58 0 91Q71 58 39-12" });
     }
     return true;
   }
@@ -6348,7 +6354,7 @@ function renderPiece(target, item, wormPart) {
     "galaxy-plate-scanner": { primary: [184, 204, .54, -1], companion: [68, 202, .43, 2] },
     "agassiz-ice-flow-model": { primary: [322, 260, .52, -2], companion: [52, 290, .42, 2] },
     "tenerife-atlantic-canary-costume": { primary: [271, 166, .5, 30], companion: [97, 166, .39, 28] },
-    "tenerife-timple-guitar": { primary: [347, 222, .39, -7], companion: [42, 235, .31, 10] },
+    "tenerife-timple-guitar": { primary: [344, 222, .46, -7], companion: [43, 230, .37, 10] },
     "tenerife-teide-star-lantern": { primary: [365, 280, .42, -2], companion: [62, 285, .33, 4] },
     "decay-substrate-theatre": { primary: [320, 153, .43, -7], companion: [62, 151, .32, 6] },
     "kokee-cloud-water-collector": { primary: [265, 185, .43, 2], companion: [150, 210, .29, -2] },
