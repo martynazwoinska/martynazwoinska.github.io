@@ -4878,7 +4878,27 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 }
 .nigoni-field-redesign.nfr-singapore { --nfr-primary:#4657b7; --nfr-secondary:#32bfae; --nfr-accent:#ed4e79; }
 .nigoni-field-redesign.nfr-praslin { --nfr-primary:#514eb0; --nfr-secondary:#35b9a8; --nfr-accent:#e95783; }
-.nigoni-field-redesign.nfr-sao-tome { --nfr-primary:#4557ad; --nfr-secondary:#2fb59f; --nfr-accent:#e84d77; }
+.nigoni-field-redesign.nfr-sao-tome {
+  --nfr-primary:#6f579d;
+  --nfr-secondary:#2696a8;
+  --nfr-accent:#e76182;
+  --nfr-gold:#efbd55;
+  --nfr-ivory:#fff2d5;
+  --st-chocolate:#684034;
+  --st-chocolate-light:#bd8062;
+  --st-copper:#dd925b;
+  --st-foil:#f1cc7b;
+  --st-wrapper:#74436f;
+  --st-wrapper-accent:#55c7bd;
+  --st-music-lacquer:#287fa2;
+  --st-music-inlay:#f2a967;
+  --st-music-bird:#d94f7b;
+  --st-parasol-aqua:#69cdbf;
+  --st-parasol-violet:#8870bd;
+  --st-parasol-rose:#ec7398;
+  --st-parasol-amber:#f1bd55;
+  --st-leading:#4f3b70;
+}
 .nigoni-field-redesign.nfr-mahahual { --nfr-primary:#4f53b2; --nfr-secondary:#31bdb1; --nfr-accent:#ed557a; }
 .nigoni-field-redesign.nfr-mauritius { --nfr-primary:#4958b3; --nfr-secondary:#37bea8; --nfr-accent:#e94f7f; }
 .nigoni-field-redesign.nfr-hcmc { --nfr-primary:#4b50ae; --nfr-secondary:#32b9aa; --nfr-accent:#e84e78; }
@@ -4956,6 +4976,153 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .nigoni-field-redesign .nfr-stand { fill:none;stroke:var(--nfr-ink);stroke-width:9;stroke-linecap:round; }
 .nigoni-field-redesign .nfr-begonia-leaf { fill:var(--nfr-leaf);stroke:var(--nfr-ink);stroke-width:6; }
 .nigoni-field-redesign .nfr-press-bar { fill:none;stroke:var(--nfr-gold);stroke-width:10;stroke-linecap:round; }
+.nigoni-field-redesign .st-foil-back {
+  fill:var(--st-foil);
+  stroke:var(--nfr-ink);
+  stroke-width:7;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-chocolate-slab,
+.nigoni-field-redesign .st-broken-square {
+  fill:var(--st-chocolate);
+  stroke:var(--nfr-ink);
+  stroke-width:7;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-chocolate-groove {
+  fill:none;
+  stroke:var(--st-chocolate-light);
+  stroke-width:5;
+  stroke-linecap:round;
+}
+.nigoni-field-redesign .st-wrapper {
+  fill:var(--st-wrapper);
+  stroke:var(--nfr-ink);
+  stroke-width:7;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-wrapper-rib,
+.nigoni-field-redesign .st-foil-fold {
+  fill:none;
+  stroke:var(--st-copper);
+  stroke-width:5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-cocoa-flower {
+  fill:var(--nfr-ivory);
+  stroke:var(--st-copper);
+  stroke-width:5;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-wrapper-jewel {
+  fill:var(--st-wrapper-accent);
+  stroke:var(--nfr-ink);
+  stroke-width:4;
+}
+.nigoni-field-redesign .st-parasol-jewel {
+  fill:var(--st-parasol-amber);
+  stroke:var(--nfr-ink);
+  stroke-width:4;
+}
+.nigoni-field-redesign .st-music-box {
+  fill:var(--st-music-lacquer);
+  stroke:var(--nfr-ink);
+  stroke-width:7;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-music-box-inlay {
+  fill:var(--st-music-inlay);
+  stroke:var(--nfr-ivory);
+  stroke-width:5;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-music-cylinder {
+  fill:var(--nfr-gold);
+  stroke:var(--nfr-ink);
+  stroke-width:5;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-cylinder-pin {
+  fill:none;
+  stroke:var(--st-wrapper);
+  stroke-width:4;
+  stroke-linecap:round;
+}
+.nigoni-field-redesign .st-songbird {
+  fill:var(--st-music-bird);
+  stroke:var(--nfr-ink);
+  stroke-width:6;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-bird-beak {
+  fill:var(--nfr-gold);
+  stroke:var(--nfr-ink);
+  stroke-width:5;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-bird-eye { fill:var(--nfr-ink);stroke:none; }
+.nigoni-field-redesign .st-perch,
+.nigoni-field-redesign .st-winding-key,
+.nigoni-field-redesign .st-musical-scroll,
+.nigoni-field-redesign .st-music-note {
+  fill:none;
+  stroke:var(--nfr-gold);
+  stroke-width:8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-music-note.alternate { stroke:var(--nfr-accent); }
+.nigoni-field-redesign .st-key-knob {
+  fill:var(--st-wrapper-accent);
+  stroke:var(--nfr-ink);
+  stroke-width:4;
+}
+.nigoni-field-redesign .st-gramophone-horn {
+  fill:var(--st-parasol-violet);
+  stroke:var(--nfr-ink);
+  stroke-width:7;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-horn-rib {
+  fill:none;
+  stroke:var(--nfr-gold);
+  stroke-width:5;
+  stroke-linecap:round;
+}
+.nigoni-field-redesign .st-parasol-canopy {
+  fill:var(--st-parasol-aqua);
+  stroke:var(--nfr-ink);
+  stroke-width:7;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-leaf-parasol {
+  fill:var(--st-parasol-violet);
+  stroke:var(--nfr-ink);
+  stroke-width:7;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-glass-leading,
+.nigoni-field-redesign .st-parasol-edge {
+  fill:none;
+  stroke:var(--st-leading);
+  stroke-width:5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-parasol-shaft {
+  fill:none;
+  stroke:var(--nfr-gold);
+  stroke-width:9;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign .st-begonia-glass-flower {
+  fill:var(--st-parasol-rose);
+  stroke:var(--nfr-ivory);
+  stroke-width:5;
+  stroke-linejoin:round;
+}
 .nigoni-field-redesign .nfr-frame { fill:none;stroke:var(--nfr-primary);stroke-width:12;stroke-linejoin:round; }
 .nigoni-field-redesign .nfr-arrow { fill:none;stroke:var(--nfr-accent);stroke-width:7;stroke-linecap:round;stroke-linejoin:round; }
 .nigoni-field-redesign .nfr-lighthouse { fill:var(--nfr-ivory);stroke:var(--nfr-ink);stroke-width:7; }

@@ -1,8 +1,8 @@
 # São Tomé *C. nigoni* location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-08-21
 
-> **Current production accessory contract:** `fruit sample baskets`, `bird-call microphones`, and `begonia flower presses`. These recognizable objects supersede the earlier abstract mechanism sketches below while retaining the anonymous-fruit evidence and clearly regional bird and begonia context.
+> **Current production accessory contract:** `São Tomé chocolate bars`, `birdsong music boxes`, and `begonia stained-glass parasols`. These playful objects use island-wide cocoa and carefully bounded forest-biodiversity references without identifying JU2484's rotten fruit or presenting the accessories as collection equipment.
 
 This dossier is the evidence and review contract for the *Caenorhabditis nigoni* São Tomé landscape and its three accessory pairs. It responds directly to the earlier generic and reused São Tomé artwork by making the exact forest-floor record the centre of the scene.
 
@@ -71,31 +71,31 @@ The scene is a continuous, closed, ground-level forest view centred on the exact
 
 ## Accessory evidence and design contract
 
-The accessories translate the exact record and carefully bounded scientific context into movable teaching mechanisms. They are original objects, not claimed collection equipment or local traditional artefacts.
+The accessories combine one island-wide cocoa reference with original birdsong and begonia-inspired fantasy objects. They are not claimed collection equipment, local traditional artefacts or evidence about JU2484's unidentified fruit.
 
-### JU2484 fruit-fall kinetic track
+### São Tomé chocolate bars
 
-- **Primary:** a broad counterweighted brass-and-glass rig suspending one anonymous collapsed fruit above an irregular litter catch bed, with a date wheel and reversible `Goy1 / JU2484` plate.
-- **Companion:** a tall helical descent tower with staggered trapdoors, bottom litter drawer, side isofemale vial and separate counterweight.
-- The pair differs as a horizontal suspension mechanism versus vertical descent mechanism and does not identify the fruit.
+- **Primary:** a tall partially unwrapped segmented chocolate bar with plum paper, copper-gold foil, restrained ribbing and an abstract botanical medallion.
+- **Companion:** a shorter skewed open bar with differently folded paper and a separate broken chocolate square.
+- The bars are unbranded and carry no invented percentage, producer or product identity. Cocoa is an island-wide reference only; the drawings do not imply that JU2484 was collected from cacao.
 
-### São Tomé point-count sound loom
+Regional basis: [Government of São Tomé and Príncipe country profile](https://stp.gov.st/sobre_pais).
 
-The object playfully translates the published forest study's ten-minute, 20 m-radius point counts conducted by three observers. It is not a traditional instrument or claimed historical apparatus.
+### Birdsong music boxes
 
-- **Primary:** a broad semicircular 20 m listening arc, three unequal acoustic funnels, ten-minute mechanical dial and woven waveform drum.
-- **Companion:** a tall single-horn mast with spiral count cylinder, three observer sliders, separate ten-minute pendulum and offset base.
-- The drawings contain no captured animal, nest coordinate, institutional logo or copied data trace.
+- **Primary:** a wide blue-lacquer wind-up box with a visible pinned cylinder, violet gramophone horn, generic rose bird finial and large brass key.
+- **Companion:** a compact arched automaton with its own visible cylinder, perched generic bird, musical scroll and differently constructed key.
+- The birds are decorative silhouettes rather than named species. The drawings contain no captured animal, nest coordinate, institutional logo or copied call trace.
 
-### São Tomé begonia lineage kinetoscope
+### Begonia stained-glass parasols
 
-The mechanism references published research on the island's endemic palaeoendemic begonias. It does not imply collecting or possessing protected plants.
+The decorative canopy geometry references published research on the island's begonias without implying the collection or possession of protected plants.
 
 Source: [Plana et al., 2004, A phylogeny of the African and São Tomé begonias](https://doi.org/10.1016/j.ympev.2003.08.023).
 
-- **Primary:** a wide asymmetric leaf-shaped viewing drum with rotating lineage rings and three offset shutters.
-- **Companion:** a tall petiole-framed flip strip with staggered leaf panels, bifurcating ribbon, hand crank and separate viewing aperture.
-- Neither drawing uses a real specimen, decorative herbarium sheet or protected plant as costume.
+- **Primary:** a wide asymmetric violet leaf canopy with rose glass detail, dark leading, amber finial and curved brass handle.
+- **Companion:** a compact aqua flower canopy with rose centre, separate leading pattern and a smaller curved handle.
+- Both are clearly constructed stained-glass fantasy props; neither drawing uses a real specimen, herbarium sheet or protected plant as a costume.
 
 ## Cultural and ecological safeguards
 
@@ -103,11 +103,11 @@ Source: [Plana et al., 2004, A phylogeny of the African and São Tomé begonias]
 - Keep famous peaks, waterfalls, coasts and plantation imagery out of the scene.
 - Do not turn endemic birds, snails or plants into trophies, pets, costumes or collectible specimens.
 - Do not borrow Tchiloli clothing, flags, colonial-roça imagery or national colours as decorative shorthand.
-- Treat the point-count and begonia objects as original educational mechanisms, not local traditional artefacts.
+- Treat the chocolate, birdsong and begonia objects as original fantasy accessories, not local traditional artefacts or collection evidence.
 
 ## Quality benchmark
 
-The revised preceding locations are the minimum quality floor, not templates to repeat. São Tomé must exceed them through an exact anonymous-fruit focal point, coherent closed-canopy depth, integrated mechanisms, two genuinely different drawings per concept and a readable combined composition.
+The revised preceding locations are the minimum quality floor, not templates to repeat. São Tomé must exceed them through an exact anonymous-fruit focal point, coherent closed-canopy depth, recognizable material construction, two genuinely different drawings per concept and a readable combined composition.
 
 ## Painted-background implementation status
 
@@ -119,9 +119,9 @@ The revised preceding locations are the minimum quality floor, not templates to 
 
 ## Review and interaction acceptance
 
-- Only the São Tomé landscape and its accessory data and drawings change in the Game feature batch.
-- The marker moves to the published coarse coordinates and public copy preserves unknown elevation, fruit identity and exact forest locality.
-- Every concept has a dedicated SVG drawing path; none uses the old volcanic ruff, generic cacao ocarina, waterfall pennant or a fallback renderer.
+- Only the São Tomé accessory data, drawings and cache keys change in this refinement; the approved landscape and map metadata remain unchanged.
+- Public copy preserves the unknown elevation, fruit identity and exact forest locality.
+- Every concept has a dedicated SVG drawing path; none uses a generic field-object renderer or species-level fallback.
 - Primary and companion copies differ in outline, construction, internal detail and placement.
 - All three pairs remain legible together and do not intersect one another or hide worm faces.
 - Each of the six visible objects remains independently draggable and keyboard movable; Home resets only the focused copy.

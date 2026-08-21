@@ -27,7 +27,7 @@ const rows = [
   ["nigoni", "Trivandrum, Kerala · JU1325", "field loupe", "trivandrum-field-loupe", "garden watering can", "trivandrum-garden-watering-can", "sample tube", "trivandrum-sample-tube"],
   ["nigoni", "Singapore · ZF1220", "Singapore starfruit sample trays", "zf1220-five-rib-field-atlas", "five-female sample cards", "multifemale-provenance-merger", "orchid pollination brushes", "holttum-orchid-hybridisation-engine"],
   ["nigoni", "Praslin, Seychelles · YR106", "DNA sequencing reels", "yr106-long-read-genome-loom", "coco-de-mer measuring tapes", "coco-de-mer-growth-monitoring-rig", "black-parrot field headphones", "praslin-black-parrot-call-listener"],
-  ["nigoni", "São Tomé · JU2484", "fruit sample baskets", "ju2484-fruit-fall-kinetic-track", "bird-call microphones", "sao-tome-point-count-sound-loom", "begonia flower presses", "sao-tome-begonia-lineage-kinetoscope"],
+  ["nigoni", "São Tomé · JU2484", "São Tomé chocolate bars", "sao-tome-chocolate-bars", "birdsong music boxes", "sao-tome-birdsong-music-boxes", "begonia stained-glass parasols", "sao-tome-begonia-glass-parasols"],
   ["nigoni", "Mahahual, Mexico · JU2617", "citrus sample buckets", "ju2617-citrus-heap-respiration-recorder", "JU2617 test-cross plates", "ju2617-test-cross-lock", "Mahahual lighthouse models", "mahahual-lighthouse-flash-sequencer"],
   ["nigoni", "Mauritius · JU2909", "fruit-and-nut sample trays", "ju2909-fruit-nut-viewer", "paired sample jars", "ju2909-ju2910-sample-bifurcator", "contour compasses", "casela-rempart-contour-surveyor"],
   ["nigoni", "Ho Chi Minh City · JU4356", "carambola sample trays", "ju4356-carambola-ground-contact-stage", "ITS2 DNA cards", "ju4356-its2-ribbon-reader", "tree survey calipers", "hcmc-urban-canopy-census-engine"],
@@ -5383,15 +5383,30 @@ function drawNigoniFieldAccessory(group, item, companion) {
     sampleTray("fruit", "JU2909", true);
     return true;
   }
-  if (item.family === "ju2484-fruit-fall-kinetic-track") {
-    shadow(104, 109);
-    path(group, companion ? "M-83-37Q0-72 83-37L70 78Q0 104-70 78Z" : "M-108-43Q0-88 108-43L91 84Q0 116-91 84Z", "nfr-basket");
-    [-60,-30,0,30,60].filter(x => companion ? Math.abs(x) < 70 : true).forEach(x => path(group, `M ${x} -35 Q ${x * .72} 38 ${x * .72} 84`, "nfr-weave"));
-    [-18,12,42].forEach(y => path(group, `M ${companion ? -73 : -96} ${y} Q 0 ${y + 25} ${companion ? 73 : 96} ${y}`, "nfr-weave"));
-    fruit(group, "fruit", companion ? -25 : -34, companion ? -24 : -29, companion ? .48 : .63);
-    fruit(group, "fruit", companion ? 32 : 43, companion ? -15 : -19, companion ? .4 : .53);
-    path(group, companion ? "M-63-46Q0-113 63-46" : "M-82-53Q0-137 82-53", "nfr-handle");
-    label("FRUIT", 0, companion ? 72 : 78, "nfr-small nfr-light-text");
+  if (item.family === "sao-tome-chocolate-bars") {
+    shadow(companion ? 91 : 105, 111);
+    const chocolate = add(group, "g", { transform: companion ? "rotate(8 -7 -5)" : "rotate(-7 0 0)" });
+    if (companion) {
+      path(chocolate, "M-95-51L18-78L48 52L-66 79Z", "st-foil-back");
+      path(chocolate, "M-73-78L40-55L25 18L-89-5Z", "st-chocolate-slab");
+      [-51,-13].forEach(y => path(chocolate, `M-80 ${y}L34 ${y + 23}`, "st-chocolate-groove"));
+      [-52,-15,22].forEach(x => path(chocolate, `M${x}-73L${x-15} 4`, "st-chocolate-groove"));
+      path(chocolate, "M-95-15L45 14L52 77L-74 101L-101 56Z", "st-wrapper");
+      path(chocolate, "M-88 1L43 27M-91 30L47 57", "st-wrapper-rib");
+      path(chocolate, "M-25 19Q-2-6 22 20Q2 47-25 19Z", "st-cocoa-flower");
+      path(chocolate, "M56-56L87-36L67-5L38-19Z", "st-broken-square");
+      path(chocolate, "M58-55L78-34M42-20L66-6", "st-chocolate-groove");
+    } else {
+      path(chocolate, "M-80-117H80V95H-80Z", "st-foil-back");
+      path(chocolate, "M-67-104H68V34H-67Z", "st-chocolate-slab");
+      [-67,-22,23].forEach(x => path(chocolate, `M${x}-104V34`, "st-chocolate-groove"));
+      [-70,-24,22].forEach(y => path(chocolate, `M-67 ${y}H68`, "st-chocolate-groove"));
+      path(chocolate, "M-88-1Q-61-21-37-5Q-14-24 8-4Q30-25 52-5Q72-17 88 0V108H-88Z", "st-wrapper");
+      path(chocolate, "M-88 21Q-42 3 0 23Q42 4 88 21M-88 83Q-43 64 0 84Q43 65 88 83", "st-wrapper-rib");
+      path(chocolate, "M-31 49Q0 12 31 49Q0 83-31 49Z", "st-cocoa-flower");
+      add(chocolate, "circle", { class: "st-wrapper-jewel", cx: 0, cy: 49, r: 8 });
+      path(chocolate, "M-79-114L-55-91L-74-69M79-114L55-91L74-69", "st-foil-fold");
+    }
     return true;
   }
   if (item.family === "ju2617-citrus-heap-respiration-recorder") {
@@ -5465,24 +5480,57 @@ function drawNigoniFieldAccessory(group, item, companion) {
     label("LISTEN", 0, companion ? 87 : 104, "nfr-small");
     return true;
   }
-  if (item.family === "sao-tome-point-count-sound-loom") {
-    shadow(91, 108);
-    path(group, companion ? "M-32-80H31V45H-32Z" : "M-41-99H40V56H-41Z", "nfr-microphone");
-    path(group, companion ? "M-39-82Q0-105 38-82V-45Q0-23-39-45Z" : "M-50-102Q0-132 49-102V-56Q0-29-50-56Z", "nfr-mic-head");
-    [-67,-51,-35].forEach(y => path(group, `M ${companion ? -31 : -40} ${companion ? y : y * 1.25} H ${companion ? 30 : 39}`, "nfr-mic-slot"));
-    path(group, companion ? "M0 45V85M-50 85H50" : "M0 56V103M-64 103H64", "nfr-stand");
-    path(group, companion ? "M45-50Q86-68 98-31M45-27Q82-38 96-9" : "M58-63Q111-86 126-39M58-34Q105-48 123-11", "nfr-sound");
-    label("BIRD CALL", 0, companion ? 78 : 96, "nfr-small");
+  if (item.family === "sao-tome-birdsong-music-boxes") {
+    shadow(companion ? 96 : 112, 109);
+    if (companion) {
+      path(group, "M-82 8Q0-43 82 8V87Q0 109-82 87Z", "st-music-box");
+      path(group, "M-67 21Q0-13 67 21V76Q0 94-67 76Z", "st-music-box-inlay");
+      path(group, "M-48 47H49V69H-48Z", "st-music-cylinder");
+      [-34,-12,10,32].forEach(x => path(group, `M${x} 49V67`, "st-cylinder-pin"));
+      path(group, "M0 8V-58", "st-perch");
+      path(group, "M-51-55Q-20-89 8-60Q26-84 53-59Q31-22 2-39Q-29-20-51-55Z", "st-songbird");
+      path(group, "M45-56L79-43L49-31", "st-bird-beak");
+      add(group, "circle", { class: "st-bird-eye", cx: 35, cy: -58, r: 5 });
+      path(group, "M82 50H122M122 50V16M107 16H137", "st-winding-key");
+      add(group, "circle", { class: "st-key-knob", cx: 107, cy: 16, r: 7 });
+      add(group, "circle", { class: "st-key-knob", cx: 137, cy: 16, r: 7 });
+      path(group, "M-75-2Q-111-28-89-59M-89-59Q-66-73-54-48", "st-musical-scroll");
+      path(group, "M-103-50Q-119-78-91-86", "st-music-note");
+    } else {
+      path(group, "M-112 14L-83-20H78L112 14V94Q0 120-112 94Z", "st-music-box");
+      path(group, "M-91 31H91V81Q0 102-91 81Z", "st-music-box-inlay");
+      path(group, "M-66 48H54V76H-66Z", "st-music-cylinder");
+      [-49,-22,5,32].forEach(x => path(group, `M${x} 51V73`, "st-cylinder-pin"));
+      path(group, "M-83 5Q-119-32-89-69Q-55-105-4-64L-27-28Q-56-8-83 5Z", "st-gramophone-horn");
+      path(group, "M-79-58Q-45-83-11-62M-73-43Q-43-60-18-47", "st-horn-rib");
+      path(group, "M5-57Q33-90 65-60Q85-83 108-55Q81-17 53-38Q28-17 5-57Z", "st-songbird");
+      path(group, "M98-54L131-40L100-27", "st-bird-beak");
+      add(group, "circle", { class: "st-bird-eye", cx: 88, cy: -56, r: 5 });
+      path(group, "M73 14V-27M45-27H101", "st-perch");
+      path(group, "M112 55H158M158 55V15M141 15H175", "st-winding-key");
+      add(group, "circle", { class: "st-key-knob", cx: 141, cy: 15, r: 8 });
+      add(group, "circle", { class: "st-key-knob", cx: 175, cy: 15, r: 8 });
+      path(group, "M-15-87Q-34-114-4-126M-4-126Q18-128 11-106", "st-music-note");
+      path(group, "M31-109Q18-137 49-143M49-143Q70-140 59-120", "st-music-note alternate");
+    }
     return true;
   }
-  if (item.family === "sao-tome-begonia-lineage-kinetoscope") {
-    shadow(105, 107);
-    path(group, companion ? "M-89-63H89V78H-89Z" : "M-114-76H114V89H-114Z", "nfr-primary");
-    path(group, companion ? "M-75-49H75V57H-75Z" : "M-96-60H96V66H-96Z", "nfr-ivory");
-    path(group, companion ? "M-57-31Q-12-63 4-10Q-16 42-57 22Q-80-2-57-31Z" : "M-74-39Q-16-80 5-13Q-20 53-74 28Q-103-3-74-39Z", "nfr-begonia-leaf");
-    path(group, companion ? "M33-21Q56-48 77-20Q59 2 37-4Q22 20 9-5Q12-28 33-21Z" : "M43-27Q72-62 99-26Q75 3 48-5Q28 25 12-6Q15-36 43-27Z", "nfr-begonia-flower");
-    path(group, companion ? "M-96-70H96M-96 85H96" : "M-123-84H123M-123 98H123", "nfr-press-bar");
-    label("BEGONIA", 21, companion ? 52 : 60, "nfr-small");
+  if (item.family === "sao-tome-begonia-glass-parasols") {
+    shadow(companion ? 82 : 101, 111);
+    if (companion) {
+      path(group, "M0-104Q54-110 87-66Q55-24 0-18Q-55-24-87-66Q-54-110 0-104Z", "st-parasol-canopy");
+      path(group, "M0-104V-18M0-102Q-39-74-73-65M0-102Q39-74 73-65M0-102Q-23-56-35-28M0-102Q23-56 35-28", "st-glass-leading");
+      path(group, "M0-18V76Q0 105-29 104Q-50 102-51 82", "st-parasol-shaft");
+      add(group, "circle", { class: "st-parasol-jewel", cx: 0, cy: -103, r: 8 });
+      path(group, "M-42-72Q-14-91 0-65Q14-91 42-72Q28-42 0-48Q-28-42-42-72Z", "st-begonia-glass-flower");
+    } else {
+      path(group, "M0-112Q-38-139-79-112Q-125-82-132-29Q-83-5 0-13Q83-5 132-29Q125-82 79-112Q38-139 0-112Z", "st-leaf-parasol");
+      path(group, "M0-112V-13M0-105Q-44-71-111-39M0-105Q44-71 111-39M0-97Q-65-103-92-76M0-97Q65-103 92-76", "st-glass-leading");
+      path(group, "M0-13V78Q0 112-34 111Q-59 109-60 84", "st-parasol-shaft");
+      path(group, "M-132-29Q-86-5 0-13Q86-5 132-29", "st-parasol-edge");
+      add(group, "circle", { class: "st-parasol-jewel", cx: 0, cy: -112, r: 10 });
+      path(group, "M-19-55Q0-83 19-55Q0-29-19-55Z", "st-begonia-glass-flower");
+    }
     return true;
   }
   if (item.family === "ju2617-test-cross-lock") {
@@ -6377,9 +6425,9 @@ function renderPiece(target, item, wormPart) {
     "yr106-long-read-genome-loom": { primary: [340, 125, .3, -2], companion: [-5, 106, .28, 2] },
     "coco-de-mer-growth-monitoring-rig": { primary: [225, 186, .34, -1], companion: [125, 199, .28, 2] },
     "praslin-black-parrot-call-listener": { primary: [354, 266, .34, -1], companion: [-4, 291, .28, 2] },
-    "ju2484-fruit-fall-kinetic-track": { primary: [352, 126, .32, -2], companion: [-4, 106, .27, 2] },
-    "sao-tome-point-count-sound-loom": { primary: [223, 188, .32, -1], companion: [109, 197, .27, 2] },
-    "sao-tome-begonia-lineage-kinetoscope": { primary: [338, 267, .3, -1], companion: [28, 279, .24, 2] },
+    "sao-tome-chocolate-bars": { primary: [369, 122, .34, -5], companion: [-3, 108, .3, 4] },
+    "sao-tome-birdsong-music-boxes": { primary: [231, 194, .32, -3], companion: [111, 202, .27, 3] },
+    "sao-tome-begonia-glass-parasols": { primary: [368, 273, .31, -4], companion: [17, 286, .26, 4] },
     "qg4739-kotop-name-concordance": { primary: [362, 126, .3, -2], companion: [-1, 111, .25, 2] },
     "qg4739-paired-temperature-differential": { primary: [235, 128, .3, -1], companion: [114, 157, .25, 2] },
     "c0230-seven-isotype-registry": { primary: [343, 258, .28, -1], companion: [-27, 326, .24, 2] },
