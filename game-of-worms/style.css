@@ -2193,6 +2193,56 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .seed-leaf-pointer { fill: color-mix(in srgb, #3f7652 78%, var(--local-primary)); stroke: color-mix(in srgb, #284a37 83%, var(--worm-deep)); stroke-width: 2; }
 .seed-leaf-vein { fill: none; stroke: color-mix(in srgb, #b7c88e 60%, var(--paper-strong)); stroke-width: 1.5; stroke-linecap: round; }
 .seed-class-count { fill: color-mix(in srgb, #f0dc8c 70%, var(--paper-strong)); font: 900 12px/1 var(--sans); stroke: color-mix(in srgb, #594326 74%, var(--worm-deep)); stroke-width: 1px; paint-order: stroke; }
+.tenerife-accessory { filter: drop-shadow(0 5px 4px rgba(25,38,32,.27)); }
+
+.ten-canary-wing,
+.ten-canary-tail,
+.ten-canary-bib { stroke: color-mix(in srgb, #544529 80%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.ten-canary-wing,
+.ten-canary-tail { fill: #e8b946; }
+.ten-canary-wing-deep,
+.ten-canary-tail-deep { fill: #c88131; }
+.ten-canary-bib { fill: #f2d46a; }
+.ten-canary-feather-light { fill: none; stroke: #fff0a8; stroke-width: 4; stroke-linecap: round; opacity: .86; }
+.ten-canary-harness { fill: none; stroke: #594d39; stroke-width: 5; stroke-linecap: round; }
+.ten-canary-clasp { fill: #be675b; stroke: color-mix(in srgb, #51412c 82%, var(--worm-deep)); stroke-width: 2; }
+.ten-canary-clasp-mark { fill: none; stroke: #ffe6a6; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.ten-timple-body,
+.ten-timple-body-deep,
+.ten-timple-edge,
+.ten-timple-neck,
+.ten-timple-headstock { stroke: color-mix(in srgb, #573a26 84%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
+.ten-timple-body { fill: #c8773f; }
+.ten-timple-body-deep { fill: #a85c3c; }
+.ten-timple-edge { fill: #e0a257; }
+.ten-timple-neck { fill: #9b573a; }
+.ten-timple-headstock { fill: #70402f; }
+.ten-timple-rosette { fill: #f0ca73; stroke: #55392a; stroke-width: 2; }
+.ten-timple-soundhole { fill: #362f2a; stroke: #9e5142; stroke-width: 2; }
+.ten-timple-string { fill: none; stroke: #f6e2ad; stroke-width: 1.4; stroke-linecap: round; }
+.ten-timple-fret { fill: none; stroke: #d9ae6d; stroke-width: 2; stroke-linecap: round; }
+.ten-timple-bridge { fill: none; stroke: #4c3528; stroke-width: 5; stroke-linecap: round; }
+.ten-timple-peg { fill: #d5b15f; stroke: #4e382b; stroke-width: 1.5; }
+.ten-timple-strap { fill: none; stroke: #735376; stroke-width: 6; stroke-linecap: round; stroke-dasharray: 9 5; }
+
+.ten-lantern-frame,
+.ten-lantern-cap,
+.ten-lantern-base,
+.ten-lantern-crown { fill: #394a4b; stroke: #202f31; stroke-width: 3; stroke-linejoin: round; }
+.ten-lantern-cap { fill: #5d4d68; }
+.ten-lantern-base { fill: #7f553f; }
+.ten-lantern-crown { fill: #5d4d68; }
+.ten-lantern-pane { fill: #f0bd59; stroke: #6a4931; stroke-width: 3; stroke-linejoin: round; }
+.ten-lantern-teide { fill: #674958; stroke: #3d3540; stroke-width: 2.5; stroke-linejoin: round; }
+.ten-lantern-star { fill: #fff0a6; stroke: #a15a45; stroke-width: 2; stroke-linejoin: round; }
+.ten-lantern-piercing { fill: #ffe49a; stroke: #9b5a44; stroke-width: 1.5; }
+.ten-lantern-handle { fill: none; stroke: #b98949; stroke-width: 7; stroke-linecap: round; }
+.ten-lantern-finial { fill: #d9ad54; stroke: #4d3d31; stroke-width: 2.5; }
+.ten-lantern-arch { fill: none; stroke: #d09b4c; stroke-width: 3; stroke-linecap: round; }
+.ten-lantern-filigree { fill: none; stroke: #e0b55d; stroke-width: 3; stroke-linecap: round; }
+.ten-lantern-spark { fill: none; stroke: #fff0a6; stroke-width: 2.5; stroke-linecap: round; }
+.ten-lantern-jewel { fill: #cf6a5e; stroke: #4d3d31; stroke-width: 2; }
 .kauai-accessory { filter: drop-shadow(0 5px 4px rgba(24,38,31,.28)); }
 .kauai-accessory-shadow { fill: rgba(23,35,30,.23); }
 .decay-case-shell,

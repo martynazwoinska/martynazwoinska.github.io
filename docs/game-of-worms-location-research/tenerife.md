@@ -1,6 +1,6 @@
 # Tenerife location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-08-21
 
 This dossier is the evidence and review contract for the Tenerife landscape and its three accessory pairs. It follows the Bristol N2, Santeuil and Edinburgh batches in the location-by-location Game of Worms illustration workflow.
 
@@ -92,27 +92,29 @@ The scene connects NIC1787's exact avocado microhabitat to a coherent historic b
 
 ## Accessory evidence and design contract
 
-The accessories translate the representative substrate and documented garden into movable educational objects. They are original playful mechanisms, not claims about traditional Tenerife clothing or historical instruments.
+The accessories deliberately expand beyond the collection apparatus. They use recognizable Tenerife references as playful costume, music and light objects while keeping the scientific collection story in the scene and information panel.
 
-### Avocado sample trays
+### Atlantic canary costumes
 
-- **Primary:** an open coral field tray holding a cut avocado, a separate pit and a clipped sample label.
-- **Companion:** a smaller tray in the same viewing orientation, with its own avocado half and label placement.
-- The fruit, tray rims and labels remain distinct at both worm scales and cannot be mistaken for N2's agar plate.
+- **Primary:** a broad asymmetric warm-yellow feather mantle with two swept wings, layered feather marks, split tail, chest bib and fitted harness.
+- **Companion:** a smaller, differently proportioned cape with a compact feather fan and its own tail construction.
+- The costumes are inspired by the Atlantic canary, native to Tenerife, but do not add beaks, masks or a literal species claim to the worms.
 
-### Aerial-root measuring tapes
+### Timple guitars
 
-The tape refers to the garden's documented *Ficus* aerial roots without presenting an invented traditional object.
+- **Primary:** a long small-bodied Canarian guitar with a waisted sound box, decorative rosette, sound hole, bridge, fretboard, headstock, tuning pegs, five visible strings and a violet carrying strap.
+- **Companion:** a rounder, deeper-bodied instrument with a shorter neck and different silhouette.
+- Both remain recognizable as musical instruments without relying on their button label. Their five-string construction follows the common timple form; it is not presented as the instrument collected with the worms.
 
-- **Primary:** a turquoise retractable tape with a long marked blade, end hook and small root-and-leaf cue.
-- **Companion:** a compact version in the same orientation, with the same readable case, blade and hook construction.
+Reference: [CanariWiki overview of the timple](https://www3.gobiernodecanarias.org/medusa/wiki/index.php?title=Timple)
 
-### Botanical seed boxes
+### Teide star lanterns
 
-The boxes are grounded in the documented botanical garden and its plant collections. They are illustrative field objects, not historical garden artefacts.
+- **Primary:** a faceted dark-metal lantern with a warm window, large star aperture, tiny Teide silhouette, side piercings, arched handle and gold finial.
+- **Companion:** a softer domed lantern with a different frame and mountain-window construction.
+- The lanterns refer to Tenerife's astronomical identity and Teide Observatory as island context. They do not imply that the botanical-garden collection happened at the observatory, at night or on Teide.
 
-- **Primary:** an open indigo specimen box with divided compartments, differently shaped seeds, a hinged lid and botanical label.
-- **Companion:** a smaller box in the same orientation with a reduced but still legible compartment arrangement.
+Reference: [Instituto de Astrofísica de Canarias, Teide Observatory](https://www.iac.es/en/observatorios-de-canarias/teide-observatory)
 
 ## Quality benchmark
 
