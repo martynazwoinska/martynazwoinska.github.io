@@ -18,7 +18,6 @@
   const previewTitle = document.getElementById('preview-title');
   const panel = document.getElementById('collection-panel');
   const panelToggle = document.getElementById('collection-toggle');
-  const markersToggle = document.getElementById('markers-toggle');
   const panelClose = document.getElementById('collection-close');
   const collectionList = document.getElementById('collection-list');
   const wheelToggle = document.getElementById('wheel-toggle');
@@ -41,7 +40,6 @@
   let wheelRotation = 0;
   let wheelTimer = null;
   let compactHotspotMode = null;
-  let markersVisible = false;
   let sceneNavigationEnabled = false;
   let dragStart = null;
   let pinchStart = null;
@@ -194,9 +192,7 @@
     cabinetPage.classList.toggle('is-scene-interactive', shouldEnable);
     sceneControls.hidden = !shouldEnable;
     cabinetStage.tabIndex = shouldEnable ? 0 : -1;
-    exploreHint.textContent = markersVisible
-      ? (shouldEnable ? copy.scene.touchHint : copy.scene.defaultHint)
-      : copy.scene.hiddenMarkerHint;
+    exploreHint.textContent = shouldEnable ? copy.scene.touchHint : 'Select a gold marker, or browse the collection by name.';
     activeScenePointers.clear();
     dragStart = null;
     pinchStart = null;
@@ -310,7 +306,7 @@
     const compactTopRowIds = new Set([
       'small-wrapper-upper-left',
       'friis-holm-mini-1',
-      'zotter-labooko-coffee',
+      'friis-holm-mini-2',
       'friis-holm-mini-3',
       'friis-holm-mini-4',
       'small-orange-wrapper',
@@ -332,7 +328,6 @@
       button.style.width = `${width}%`;
       button.style.height = `${height}%`;
       button.setAttribute('aria-label', clickAction ? item.label : `${item.label}. ${copy.openDetails}`);
-      button.tabIndex = markersVisible ? 0 : -1;
       button.addEventListener('pointerenter', () => showPreview(item, button));
       button.addEventListener('pointerleave', hidePreview);
       button.addEventListener('focus', () => showPreview(item, button));
@@ -352,19 +347,6 @@
       }, openPanel);
     }
     hotspotLayer.replaceChildren(fragment);
-  }
-
-  function setMarkersVisible(visible) {
-    markersVisible = visible;
-    cabinetPage.classList.toggle('are-markers-visible', visible);
-    markersToggle.setAttribute('aria-pressed', String(visible));
-    markersToggle.textContent = visible ? copy.scene.hideObjects : copy.scene.showObjects;
-    hotspotLayer.querySelectorAll('.hotspot').forEach(hotspot => {
-      hotspot.tabIndex = visible ? 0 : -1;
-    });
-    exploreHint.textContent = visible
-      ? (sceneNavigationEnabled ? copy.scene.touchHint : copy.scene.defaultHint)
-      : copy.scene.hiddenMarkerHint;
   }
 
   function buildCollectionGroup(title, items) {
@@ -610,7 +592,6 @@
     if (!panel.open) openPanel();
     else closePanel();
   });
-  markersToggle.addEventListener('click', () => setMarkersVisible(!markersVisible));
   panelClose.addEventListener('click', closePanel);
   panel.addEventListener('close', () => {
     panelToggle.setAttribute('aria-expanded', 'false');
@@ -659,5 +640,4 @@
   buildHotspots();
   buildCollectionIndex();
   configureSceneNavigation();
-  setMarkersVisible(false);
 }());

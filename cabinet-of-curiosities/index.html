@@ -10,18 +10,14 @@
   <link rel="canonical" href="https://martynazwoinska.github.io/cabinet-of-curiosities/">
   <script src="../shared/site-preferences.js?v=20260718-1"></script>
   <link rel="stylesheet" href="../shared/site-tokens.css?v=20260802-1">
-  <link rel="stylesheet" href="cabinet.css?v=20260821-1">
+  <link rel="stylesheet" href="cabinet.css?v=20260718-1">
 </head>
 <body>
   <main class="cabinet-page">
     <header class="cabinet-header">
       <a class="home-link" href="../index.html#beyond-research">← Martyna's site</a>
-      <div class="title-plaque" aria-labelledby="cabinet-title">
-        <h1 id="cabinet-title">The Cabinet of Curiosities</h1>
-      </div>
       <div class="header-actions">
         <button class="wheel-toggle" id="wheel-toggle" type="button" aria-haspopup="dialog" aria-controls="wheel-dialog">Wheel</button>
-        <button class="markers-toggle" id="markers-toggle" type="button" aria-pressed="false" aria-controls="hotspot-layer">Show objects</button>
         <button class="collection-toggle" id="collection-toggle" type="button" aria-expanded="false" aria-controls="collection-panel">Browse collection</button>
       </div>
     </header>
@@ -35,13 +31,14 @@
     <section class="cabinet-stage" id="cabinet-stage" aria-label="Interactive cabinet display" tabindex="-1">
       <div class="scene-space" id="scene-space">
         <div class="fantasy-surround" aria-hidden="true">
-          <img src="assets/cabinet-surround-grey-v5.webp" width="1672" height="941" fetchpriority="high" alt="">
+          <picture class="surround-picture">
+            <source media="(orientation: landscape) and (max-width: 960px)" srcset="assets/cabinet-scene-v3-960.webp">
+            <source media="(min-width: 761px)" srcset="assets/cabinet-scene-v3.webp">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="1672" height="941" fetchpriority="high" alt="">
+          </picture>
         </div>
         <figure class="board-shell" id="board-shell">
           <div class="board-plane">
-            <div class="board-photo-window">
-              <img class="board-photo" src="assets/cabinet-original-photo.jpg" width="1536" height="1152" fetchpriority="high" alt="A photographed display of craft chocolate packages, two crocheted eyes and a small chocolate sticker arranged on a grey board.">
-            </div>
             <div class="hotspot-layer" id="hotspot-layer" aria-label="Objects on the display board"></div>
           </div>
           <figcaption class="sr-only">Explore the photographed packages, the two crocheted eyes and the S-Foodies sticker. The long worm and blue octopus are decorative.</figcaption>
@@ -96,8 +93,8 @@
     </dialog>
   </main>
 
-  <script src="cabinet-data.js?v=20260821-1"></script>
-  <script src="cabinet-i18n.js?v=20260821-1"></script>
-  <script src="cabinet.js?v=20260821-1"></script>
+  <script src="cabinet-data.js?v=20260713-5"></script>
+  <script src="cabinet-i18n.js?v=20260718-1"></script>
+  <script src="cabinet.js?v=20260718-1"></script>
 </body>
 </html>
