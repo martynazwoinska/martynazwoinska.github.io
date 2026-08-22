@@ -11,6 +11,18 @@ const licences = Object.freeze({
     label: "CC BY-SA 2.5",
     url: "https://creativecommons.org/licenses/by-sa/2.5/"
   }),
+  ccBySa3: Object.freeze({
+    label: "CC BY-SA 3.0",
+    url: "https://creativecommons.org/licenses/by-sa/3.0/"
+  }),
+  ccBySa4: Object.freeze({
+    label: "CC BY-SA 4.0",
+    url: "https://creativecommons.org/licenses/by-sa/4.0/"
+  }),
+  captionCredit: Object.freeze({
+    label: "Caption and credit required",
+    url: "https://www.eurekalert.org/multimedia/919709"
+  }),
   bmcOpenAccess: Object.freeze({
     label: "Open access",
     url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC329410/"
@@ -23,10 +35,32 @@ const sources = Object.freeze({
     url: "https://commons.wikimedia.org/wiki/File:Adult_Caenorhabditis_elegans.jpg",
     licence: licences.ccBySa25
   }),
+  portman: Object.freeze({
+    label: "Douglas Portman, University of Rochester, adult C. elegans male and hermaphrodite",
+    url: "https://www.urmc.rochester.edu/news/publications/neuroscience/perfect-timing-making-the-switch-from-juvenile-to-adult",
+    licence: licences.captionCredit
+  }),
   seidel: Object.freeze({
     label: "Seidel et al. (2011), Fig. 2A",
     url: "https://doi.org/10.1371/journal.pbio.1001115.g002",
     licence: licences.ccBy
+  }),
+  paves: Object.freeze({
+    label: "Heiti Paves (2010), living C. elegans with fluorescent neurons",
+    url: "https://commons.wikimedia.org/wiki/File:Varbuss.jpg",
+    licence: licences.ccBySa3,
+    note: "Displayed as a resized WebP."
+  }),
+  gulnur: Object.freeze({
+    label: "Гөлнур (2015), Nile-red-stained C. elegans",
+    url: "https://commons.wikimedia.org/wiki/File:C._elegans_nematodes.tif",
+    licence: licences.ccBySa4,
+    note: "Displayed as a resized WebP."
+  }),
+  epfl: Object.freeze({
+    label: "EPFL (2020), two-cell C. elegans embryo",
+    url: "https://commons.wikimedia.org/wiki/File:200915_EPFL_Pierre_G%C3%B6nczy_Two_Cell_Embryo.png",
+    licence: licences.ccBy4
   }),
   toker: Object.freeze({
     label: "Toker & Hobert (2022), Fig. 1C",
@@ -55,7 +89,7 @@ const sources = Object.freeze({
   })
 });
 
-function wholeAnimalImage({ src, sourceWidth, sourceHeight, viewBox, alt, caption, source = null, maxWidth = 680, palePadding = false }) {
+function wholeAnimalImage({ src, sourceWidth, sourceHeight, viewBox, alt, caption, source = null, maxWidth = 680, palePadding = false, layout = "standard" }) {
   return Object.freeze({
     src,
     sourceWidth,
@@ -65,34 +99,58 @@ function wholeAnimalImage({ src, sourceWidth, sourceHeight, viewBox, alt, captio
     caption,
     source,
     maxWidth,
-    palePadding
+    palePadding,
+    layout
   });
 }
 
 export const speciesGalleries = Object.freeze({
   elegans: Object.freeze({
     scientificName: "Caenorhabditis elegans",
-    description: "A complete adult hermaphrodite and a complete adult male; green fluorescence in the male marks sperm-producing cells. Across Caenorhabditis, adult females and hermaphrodites are generally larger than adult males.",
-    source: sources.altun,
+    description: "Meet C. elegans at different scales: an adult hermaphrodite beside the smaller male, living worms with glowing neurons, a colourful stain that reveals stored fats, and a two-cell embryo at the beginning of development.",
+    source: sources.portman,
+    showCaptions: true,
     images: Object.freeze([
       wholeAnimalImage({
-        src: "assets/species-gallery/source-altun-adult-elegans.jpg",
-        sourceWidth: 6424,
-        sourceHeight: 2113,
-        viewBox: [0, 0, 6424, 2113],
-        alt: "A single complete adult Caenorhabditis elegans hermaphrodite under differential interference contrast microscopy.",
-        caption: "Whole adult hermaphrodite",
-        maxWidth: 820
+        src: "assets/species-gallery/source-portman-male-hermaphrodite.jpg",
+        sourceWidth: 1344,
+        sourceHeight: 767,
+        viewBox: [0, 0, 1344, 767],
+        alt: "Two adult Caenorhabditis elegans under microscopy: the smaller, slimmer male crosses above the larger hermaphrodite, with red and green fluorescence marking two neurons in the male's head.",
+        caption: "Adult male (above) and hermaphrodite (below)",
+        maxWidth: 820,
+        layout: "wide"
       }),
       wholeAnimalImage({
-        src: "assets/species-gallery/source-seidel-figure2.png",
-        sourceWidth: 979,
-        sourceHeight: 1883,
-        viewBox: [10, 8, 959, 478],
-        alt: "A complete adult male Caenorhabditis elegans curled into a U shape under Nomarski microscopy, with green fluorescence marking sperm-producing cells in the gonad.",
-        caption: "Whole adult male",
-        source: sources.seidel,
-        maxWidth: 680
+        src: "assets/species-gallery/paves-varbuss-neurons.webp",
+        sourceWidth: 1800,
+        sourceHeight: 1189,
+        viewBox: [306, 0, 1189, 1189],
+        alt: "Several living Caenorhabditis elegans worms under a microscope, with green fluorescent protein highlighting neurons.",
+        caption: "Glowing neurons in living worms",
+        source: sources.paves,
+        maxWidth: 430
+      }),
+      wholeAnimalImage({
+        src: "assets/species-gallery/nile-red-elegans.webp",
+        sourceWidth: 1600,
+        sourceHeight: 1600,
+        viewBox: [0, 0, 1600, 1600],
+        alt: "Many Caenorhabditis elegans worms glowing red against a black background after Nile red staining reveals lipid distribution.",
+        caption: "A red stain reveals stored fats",
+        source: sources.gulnur,
+        maxWidth: 430
+      }),
+      wholeAnimalImage({
+        src: "assets/species-gallery/source-epfl-two-cell-embryo.png",
+        sourceWidth: 481,
+        sourceHeight: 326,
+        viewBox: [0, 0, 481, 326],
+        alt: "A two-cell Caenorhabditis elegans embryo under differential interference contrast microscopy, with green fluorescence marking chromatin in the two nuclei.",
+        caption: "Two cells at the beginning of development",
+        source: sources.epfl,
+        maxWidth: 520,
+        layout: "wide"
       })
     ])
   }),

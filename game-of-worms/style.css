@@ -3592,7 +3592,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 }
 
 .species-gallery-dialog {
-  width: min(960px, calc(100vw - 32px));
+  width: min(1040px, calc(100vw - 32px));
   max-height: min(780px, calc(100dvh - 32px));
   border: 0;
   border-radius: 28px;
@@ -3646,6 +3646,12 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   gap: 14px;
   margin-top: 26px;
 }
+.species-gallery-images[data-species="elegans"] {
+  width: 100%;
+  max-width: 900px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-inline: auto;
+}
 .species-gallery-images figure {
   display: block;
   min-width: 0;
@@ -3656,6 +3662,22 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   border: 1px solid var(--line);
   border-radius: 18px;
   background: color-mix(in srgb, var(--paper) 90%, var(--teal));
+}
+.species-gallery-images[data-species="elegans"] figure {
+  box-shadow: 0 10px 28px rgba(18, 62, 61, .09);
+}
+.species-gallery-images[data-species="elegans"] .species-gallery-card--wide {
+  grid-column: 1 / -1;
+}
+.species-gallery-images figcaption {
+  padding: 11px 14px 12px;
+  border-top: 1px solid color-mix(in srgb, var(--teal) 20%, var(--line));
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
 }
 .species-gallery-images .whole-worm-view {
   display: block;
@@ -3678,6 +3700,16 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   line-height: 1.5;
 }
 .species-gallery-credit a { color: var(--teal-dark); font-weight: 800; }
+
+@media (max-width: 620px) {
+  .species-gallery-images[data-species="elegans"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .species-gallery-images[data-species="elegans"] .species-gallery-card--wide {
+    grid-column: auto;
+  }
+}
 
 @media (max-width: 680px) {
   .species-gallery-dialog { width: min(520px, calc(100vw - 20px)); max-height: calc(100dvh - 20px); border-radius: 22px; }

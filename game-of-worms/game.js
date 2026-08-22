@@ -4,7 +4,7 @@ import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260822-75";
-import { speciesGalleries } from "./species-gallery.js?v=20260809-7";
+import { speciesGalleries } from "./species-gallery.js?v=20260822-9";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -322,12 +322,15 @@ function renderSpeciesGallery(item) {
   italicText(els.galleryTitle, gallery.scientificName);
   scientificText(els.galleryDescription, gallery.description);
   els.galleryImages.replaceChildren();
+  els.galleryImages.dataset.species = item.id;
   gallery.images.forEach(image => {
     const figure = document.createElement("figure");
     const imageFrame = document.createElement("div");
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     const sourceImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
     const [x, y, width, height] = image.viewBox;
+    figure.classList.add("species-gallery-card");
+    if (image.layout === "wide") figure.classList.add("species-gallery-card--wide");
     figure.style.setProperty("--gallery-card-width", `${image.maxWidth}px`);
     imageFrame.className = "whole-worm-view-frame";
     imageFrame.setAttribute("role", "img");
@@ -345,6 +348,11 @@ function renderSpeciesGallery(item) {
     svg.append(sourceImage);
     imageFrame.append(svg);
     figure.append(imageFrame);
+    if (gallery.showCaptions && image.caption) {
+      const caption = document.createElement("figcaption");
+      caption.textContent = image.caption;
+      figure.append(caption);
+    }
     els.galleryImages.appendChild(figure);
   });
 
@@ -364,6 +372,7 @@ function renderSpeciesGallery(item) {
     licenceLink.rel = "noopener";
     licenceLink.textContent = source.licence.label;
     els.galleryCredit.append("Source: ", sourceLink, ". Licence: ", licenceLink, ".");
+    if (source.note) els.galleryCredit.append(` ${source.note}`);
   });
 }
 
