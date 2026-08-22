@@ -50,6 +50,7 @@
   --site-text-faint: #647178;
   --site-brand-emerald: #1f735f;
   --site-brand-emerald-soft: #dcebe5;
+  --site-ornament-emerald: #1f6c5c;
   --site-brand-berry: #8b3d5c;
   --site-ornament-berry: #a44057;
   --site-brand-gold: #a88445;
@@ -77,8 +78,9 @@
     --site-text-faint: #b6caca;
     --site-brand-emerald: #79dec2;
     --site-brand-emerald-soft: #164b4d;
+    --site-ornament-emerald: #72cdb5;
     --site-brand-berry: #e0a5ca;
-    --site-ornament-berry: #c46cab;
+    --site-ornament-berry: #be50b4;
     --site-brand-gold: #d7b96f;
     --site-brand-violet: #c4b2dd;
     --site-nav-bg: #104a52;
@@ -101,8 +103,9 @@
   --site-text-faint: #b6caca;
   --site-brand-emerald: #79dec2;
   --site-brand-emerald-soft: #164b4d;
+  --site-ornament-emerald: #72cdb5;
   --site-brand-berry: #e0a5ca;
-  --site-ornament-berry: #c46cab;
+  --site-ornament-berry: #be50b4;
   --site-brand-gold: #d7b96f;
   --site-brand-violet: #c4b2dd;
   --site-nav-bg: #104a52;
@@ -124,6 +127,7 @@
   --site-text-faint: #647178;
   --site-brand-emerald: #1f735f;
   --site-brand-emerald-soft: #dcebe5;
+  --site-ornament-emerald: #1f6c5c;
   --site-brand-berry: #8b3d5c;
   --site-ornament-berry: #a44057;
   --site-brand-gold: #a88445;
