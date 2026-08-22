@@ -693,7 +693,7 @@ button { color: inherit; }
   }
   .cabinet-stage { padding: 0; }
   .hotspot::after { top: -3px; right: -3px; min-width: 8px; min-height: 8px; }
-  .explore-hint { bottom: 8px; font-size: .7rem; }
+  .explore-hint { bottom: 8px; font-size: .75rem; }
   .wheel-dialog { width: calc(100vw - 12px); padding: 18px; }
   .wheel-visual { width: min(92vw, calc(100svh - 54px), 100%); }
 }
@@ -709,10 +709,11 @@ button { color: inherit; }
   .board-shell,
   .explore-hint,
   .scene-controls,
-  .object-preview,
-  .header-actions {
+  .object-preview {
     display: none;
   }
+
+  .wheel-toggle { display: none; }
 
   .orientation-notice {
     position: relative;
