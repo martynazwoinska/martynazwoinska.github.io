@@ -88,10 +88,10 @@ const sources = Object.freeze({
     licence: licences.ccBy4
   }),
   perez: Object.freeze({
-    label: "Perez et al. (2025), Videos S2 and S5",
+    label: "Perez et al. (2025), supplementary Videos S1, S2 and S5",
     url: "https://doi.org/10.1016/j.cub.2025.05.026",
     licence: licences.ccBy4,
-    note: "Videos stream from the publisher."
+    note: "Videos stream from the publisher. Video S1 uses the former name C. sp. 8 for C. apta."
   })
 });
 
@@ -111,21 +111,24 @@ function wholeAnimalImage({ src, sourceWidth, sourceHeight, viewBox, alt, captio
   });
 }
 
-function galleryVideo({ src, alt, caption, source, maxWidth = 360 }) {
+function galleryVideo({ src, alt, caption, source, maxWidth = 360, width = 1080, height = 1920, layout = "standard" }) {
   return Object.freeze({
     kind: "video",
     src,
     alt,
     caption,
     source,
-    maxWidth
+    maxWidth,
+    width,
+    height,
+    layout
   });
 }
 
 export const speciesGalleries = Object.freeze({
   elegans: Object.freeze({
     scientificName: "Caenorhabditis elegans",
-    description: "Meet C. elegans at different scales: adults, living worms with glowing neurons, stored fats, a two-cell embryo, and collective towers formed by worms at several life stages.",
+    description: "See C. elegans as adults, embryos and living towers, with glowing neurons and stored fats revealed under the microscope. Towers help worms reach passing animals or other surfaces and travel to a new place. The last video shows a pear tower made by another species, Caenorhabditis apta.",
     source: sources.portman,
     showCaptions: true,
     images: Object.freeze([
@@ -181,6 +184,16 @@ export const speciesGalleries = Object.freeze({
         alt: "Video showing a mixed-stage Caenorhabditis elegans tower responding to touch, transferring worms to a glass pick and regrowing.",
         caption: "A mixed-stage tower reaches out, transfers worms and regrows",
         source: sources.perez
+      }),
+      galleryVideo({
+        src: "https://ars.els-cdn.com/content/image/1-s2.0-S0960982225006013-mmc3.mp4",
+        alt: "Video of Caenorhabditis apta worms forming a tower on a rotting pear, reaching nearby surfaces and climbing onto a fruit fly.",
+        caption: "A pear tower made by Caenorhabditis apta, a different species",
+        source: sources.perez,
+        maxWidth: 820,
+        width: 1920,
+        height: 1080,
+        layout: "wide"
       })
     ])
   }),

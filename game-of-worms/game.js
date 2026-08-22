@@ -4,7 +4,7 @@ import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260822-75";
-import { speciesGalleries } from "./species-gallery.js?v=20260822-10";
+import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -297,7 +297,7 @@ function italicText(element, value) {
   element.appendChild(italic);
 }
 
-const scientificNamePattern = /\b(?:Caenorhabditis(?:\s+(?:inopinata|elegans|briggsae|nigoni|tropicalis|wallacei))?|C\.\s+(?:inopinata|elegans|briggsae|nigoni|tropicalis|wallacei)|Gustavia\s+superba)\b/g;
+const scientificNamePattern = /\b(?:Caenorhabditis(?:\s+(?:inopinata|elegans|briggsae|nigoni|tropicalis|wallacei|apta))?|C\.\s+(?:inopinata|elegans|briggsae|nigoni|tropicalis|wallacei|apta)|Gustavia\s+superba)\b/g;
 
 function scientificText(element, value) {
   element.replaceChildren();
@@ -340,8 +340,8 @@ function renderSpeciesGallery(item) {
       video.preload = "metadata";
       video.playsInline = true;
       video.setAttribute("aria-label", image.alt);
-      video.setAttribute("width", "1080");
-      video.setAttribute("height", "1920");
+      video.setAttribute("width", String(image.width));
+      video.setAttribute("height", String(image.height));
       source.src = image.src;
       source.type = "video/mp4";
       fallbackLink.href = image.src;
@@ -373,7 +373,7 @@ function renderSpeciesGallery(item) {
     figure.append(imageFrame);
     if (gallery.showCaptions && image.caption) {
       const caption = document.createElement("figcaption");
-      caption.textContent = image.caption;
+      scientificText(caption, image.caption);
       figure.append(caption);
     }
     els.galleryImages.appendChild(figure);
