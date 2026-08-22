@@ -10,8 +10,12 @@
   core.async = false;
   core.onload = function () {
     var darkMonogram = document.getElementById('navMonogramDark');
+    var darkMonogramOptical = document.getElementById('navMonogramDarkOptical');
     if (darkMonogram) {
       darkMonogram.src = 'data:image/png;base64,' + goldTerminalData;
+      if (darkMonogramOptical) {
+        darkMonogramOptical.src = darkMonogram.src;
+      }
     }
   };
   core.onerror = function () {
