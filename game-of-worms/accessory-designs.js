@@ -5413,15 +5413,14 @@ function drawNigoniFieldAccessory(group, item, companion) {
   if (item.family === "mahahual-reef-ruffle-swim-costumes") {
     group.classList.add("mahahual-beach-accessory", "mahahual-swim-costume");
     if (companion) {
-      path(group, "M8-63Q31-94 56-64", "mh-swim-halter");
-      path(group, "M2-63Q13-84 32-70Q27-48 1-45Z", "mh-swim-top companion");
-      path(group, "M32-70Q48-89 60-65L51-41Q39-47 32-70Z", "mh-swim-top companion");
-      path(group, "M10-54Q20-69 29-62M40-61Q49-75 56-63", "mh-swim-seam");
-      path(group, "M-61 5Q-31-14-2-3Q22 5 31 34L19 51Q-8 62-35 54Q-62 45-61 5Z", "mh-swim-wrap companion");
-      path(group, "M-57 18Q-34 2-10 14Q10 3 28 22", "mh-swim-panel");
-      path(group, "M-36 53Q-29 65-19 54Q-9 68 1 56Q11 68 20 50", "mh-swim-ruffle");
-      add(group, "circle", { class: "mh-swim-brooch", cx: 32, cy: -67, r: 7 });
-      path(group, "M28-61L23-50M36-61L43-48", "mh-swim-brooch-tie");
+      path(group, "M-65-24Q-34-35-2-27L3 18L-11 41Q-39 46-62 29Z", "mh-swim-trunks-leg");
+      path(group, "M-2-27Q27-30 57-15L63 32Q42 46 17 39L3 18Z", "mh-swim-trunks-leg");
+      path(group, "M46-20L57-15L63 32Q57 37 50 39L42 27Z", "mh-swim-trunks-panel");
+      path(group, "M-68-39Q-11-52 58-31L57-14Q-10-35-65-23Z", "mh-swim-trunks-waistband");
+      path(group, "M-53 22Q-33 33-13 29M18 29Q35 36 55 27M3-18L3 18", "mh-swim-trunks-seam");
+      path(group, "M-10-31Q0-18 10-31M0-30V-11M-8-10L0-3L8-10", "mh-swim-trunks-drawstring");
+      add(group, "circle", { class: "mh-swim-trunks-eyelet", cx: -10, cy: -31, r: 4 });
+      add(group, "circle", { class: "mh-swim-trunks-eyelet", cx: 10, cy: -31, r: 4 });
     } else {
       path(group, "M14-69Q43-113 78-75", "mh-swim-strap");
       path(group, "M3-70Q18-97 43-80Q36-52 1-49Z", "mh-swim-top");
@@ -6522,7 +6521,7 @@ function renderPiece(target, item, wormPart) {
     ,"nic1648-fig-diameter-comparator": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
     ,"nic1648-stair-side-sample-indexer": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"nic1648-qualitative-male-viewer": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
-    ,"mahahual-reef-ruffle-swim-costumes": { primary: [220, 155, .5, 20], companion: [67, 146, .36, 20] }
+    ,"mahahual-reef-ruffle-swim-costumes": { primary: [220, 155, .5, 20], companion: [67, 149, .37, 34] }
     ,"mahahual-caribbean-sun-spectacles": { primary: [332, 56, .34, -3], companion: [112, 105, .23, 3] }
     ,"mahahual-sea-grape-beach-parasols": { primary: [357, 268, .32, -5], companion: [27, 264, .34, 5] }
     ,"ju2909-fruit-nut-viewer": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }

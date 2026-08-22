@@ -94,7 +94,7 @@ The accessories use Mahahual's beach setting and its relationship to nearby Banc
 
 - Accessory family: `mahahual-reef-ruffle-swim-costumes`
 - **Primary:** a fitted berry two-cup top with gold straps and central brooch, paired with an indigo curved wrap, shell piping, ruffled hem and side bow. The two pieces follow the large worm's rising body curve.
-- **Companion:** a separately constructed indigo halter top with different cup proportions and a shorter berry wrap with its own asymmetric panel and ruffle, fitted to the smaller worm.
+- **Companion:** indigo male swim trunks with a gathered shell waistband, gold drawstring and eyelets, berry side panel, contrast seams and a split hem, fitted across the smaller male worm's body curve.
 - The reef language is limited to abstract scallops and flowing seams. No coral specimen, protected animal or collection claim appears.
 
 ### Caribbean sun spectacles
@@ -115,7 +115,7 @@ The accessories use Mahahual's beach setting and its relationship to nearby Banc
 
 | Slot | Primary transform `[x, y, scale, rotation]` | Companion transform `[x, y, scale, rotation]` |
 | --- | --- | --- |
-| Reef-ruffle swim costumes | `[220, 155, .50, 20]` | `[67, 146, .36, 20]` |
+| Reef-ruffle swim costumes | `[220, 155, .50, 20]` | `[67, 149, .37, 34]` |
 | Caribbean sun spectacles | `[332, 56, .34, -3]` | `[112, 105, .23, 3]` |
 | Sea-grape beach parasols | `[357, 268, .32, -5]` | `[27, 264, .34, 5]` |
 

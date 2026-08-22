@@ -5240,6 +5240,43 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   stroke:var(--mh-gold);
   stroke-width:5;
 }
+.nigoni-field-redesign.nfr-mahahual .mh-swim-trunks-leg {
+  fill:var(--mh-indigo);
+  stroke:var(--mh-ink);
+  stroke-width:7;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-swim-trunks-panel {
+  fill:var(--mh-berry);
+  stroke:var(--mh-ink);
+  stroke-width:4;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-swim-trunks-seam,
+.nigoni-field-redesign.nfr-mahahual .mh-swim-trunks-drawstring {
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-swim-trunks-waistband {
+  fill:var(--mh-shell);
+  stroke:var(--mh-ink);
+  stroke-width:5;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-swim-trunks-seam {
+  stroke:var(--mh-shell);
+  stroke-width:4;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-swim-trunks-drawstring {
+  stroke:var(--mh-gold);
+  stroke-width:6;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-swim-trunks-eyelet {
+  fill:var(--mh-shell);
+  stroke:var(--mh-gold);
+  stroke-width:3;
+}
 .nigoni-field-redesign.nfr-mahahual .mh-glasses-lens {
   fill:var(--mh-lens);
   stroke:var(--mh-berry);
