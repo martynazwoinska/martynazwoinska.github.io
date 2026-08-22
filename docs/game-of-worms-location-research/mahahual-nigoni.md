@@ -107,8 +107,8 @@ The accessories use Mahahual's beach setting and its relationship to nearby Banc
 ### Sea-grape beach parasols
 
 - Accessory family: `mahahual-sea-grape-beach-parasols`
-- **Primary:** an open scalloped berry canopy with shell, indigo and gold contained panels, visible ribs, alternating drops, finial and curved handle.
-- **Companion:** a folded indigo canopy with separate ribs, fastening band, side bow, drops, finial and hooked handle.
+- **Primary:** an open scalloped berry canopy with shell, indigo and gold contained panels, visible ribs, alternating drops, finial, tall two-part pole and pointed sand anchor.
+- **Companion:** a folded indigo canopy with separate ribs, fastening band, side bow, drops, finial, slimmer telescoping pole and its own sand spike.
 - The name refers to the rounded sea-grape-like leaves already used as regional vegetation in the scene. The parasols are fantasy props, not a claimed Mahahual craft tradition.
 
 ### Accessory placement

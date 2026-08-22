@@ -5588,12 +5588,15 @@ function drawNigoniFieldAccessory(group, item, companion) {
   }
   if (item.family === "mahahual-sea-grape-beach-parasols") {
     group.classList.add("mahahual-beach-accessory", "mahahual-beach-parasol");
-    shadow(companion ? 37 : 104, companion ? 113 : 116);
+    shadow(companion ? 37 : 104, companion ? 254 : 270);
     if (companion) {
       path(group, "M0-116Q-24-106-34-82L-49 34Q-25 54 0 42Q25 54 49 34L34-82Q24-106 0-116Z", "mh-folded-canopy");
       path(group, "M0-110L0 44M-29-82L-12 36M29-82L12 36", "mh-parasol-rib");
       path(group, "M-41-5Q-20 8 0-2Q20 8 41-5", "mh-parasol-band");
-      path(group, "M0-122V92Q0 121-25 121Q-43 121-44 101", "mh-parasol-shaft");
+      path(group, "M0-122V226", "mh-parasol-shaft");
+      add(group, "rect", { class: "mh-parasol-finial", x: -9, y: 74, width: 18, height: 24, rx: 5 });
+      add(group, "circle", { class: "mh-parasol-drop coral", cx: 0, cy: 86, r: 4 });
+      path(group, "M-8 226L0 255L8 226Z", "mh-parasol-finial");
       path(group, "M-12-119L0-136L12-119Z", "mh-parasol-finial");
       path(group, "M39-4Q62-17 64 5Q49 3 40 16M39-4Q59 20 43 31", "mh-parasol-bow");
       [-30,-10,10,30].forEach((x, index) => add(group, "circle", { class: index % 2 ? "mh-parasol-drop coral" : "mh-parasol-drop", cx: x, cy: index % 2 ? 42 : 45, r: 5 }));
@@ -5603,7 +5606,10 @@ function drawNigoniFieldAccessory(group, item, companion) {
       path(group, "M-120-72Q-82-112-21-77Q-58-31-111-27Z", "mh-parasol-panel shell");
       path(group, "M120-72Q82-112 21-77Q58-31 111-27Z", "mh-parasol-panel indigo");
       path(group, "M-25-76Q0-108 25-76Q0-37-25-76Z", "mh-parasol-panel gold");
-      path(group, "M0-9V82Q0 118-34 118Q-59 118-61 93Q-61 80-50 72", "mh-parasol-shaft");
+      path(group, "M0-9V235", "mh-parasol-shaft");
+      add(group, "rect", { class: "mh-parasol-finial", x: -11, y: 72, width: 22, height: 26, rx: 6 });
+      add(group, "circle", { class: "mh-parasol-drop coral", cx: 0, cy: 85, r: 5 });
+      path(group, "M-10 235L0 269L10 235Z", "mh-parasol-finial");
       path(group, "M-131-24Q-98-2-62-17Q-30 2 0-9Q30 2 62-17Q98-2 131-24", "mh-parasol-edge");
       path(group, "M-12-111L0-132L12-111Z", "mh-parasol-finial");
       [-108,-68,-25,25,68,108].forEach((x, index) => add(group, "circle", { class: index % 2 ? "mh-parasol-drop coral" : "mh-parasol-drop", cx: x, cy: index === 2 || index === 3 ? -4 : -13, r: 6 }));
