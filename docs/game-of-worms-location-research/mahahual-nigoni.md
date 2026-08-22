@@ -1,8 +1,8 @@
 # Mahahual *C. nigoni* location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-08-22
 
-> **Current production accessory contract:** `citrus sample buckets`, `JU2617 test-cross plates`, and `Mahahual lighthouse models`. These recognizable objects supersede the earlier abstract mechanism sketches below; the lighthouse remains regional context only.
+> **Current production accessory contract:** `reef-ruffle swim costumes`, `Caribbean sun spectacles`, and `sea-grape beach parasols`. They form a playful Mahahual beach ensemble and are wider regional fantasy, never a claim about the rural-garden collection method.
 
 This dossier is the evidence and review contract for the *Caenorhabditis nigoni* Mahahual landscape and its three accessory pairs. It replaces an unsupported underwater reef scene with JU2617's documented rural-garden citrus heap.
 
@@ -46,6 +46,7 @@ Regional sources:
 
 - [Municipal Mahahual development programme](https://www.opb.gob.mx/portal/wp-content/uploads/transparencia/93/I/f/2022/PLANES%20Y%20PROGRAMAS%20DE%20DESARROLLO%20URBANO/P2/PDUCP%20Mahahual-Definitivo%20mayo.pdf)
 - [Mexican Navy Mahahual port guide](https://digaohm.semar.gob.mx/derrotero/cuestionarios/cnarioMajahual.pdf)
+- [CONANP Banco Chinchorro Biosphere Reserve profile](https://www.gob.mx/conanp/documentos/reserva-de-la-biosfera-banco-chinchorro)
 
 These pages are factual and visual references only. The website uses an original SVG illustration and does not trace an external photograph, map, private property or Navy graphic.
 
@@ -87,38 +88,36 @@ The scene connects the exact mostly-orange fruit heap to one continuous anonymis
 
 ## Accessory evidence and design contract
 
-The accessories translate the exact citrus decay, recorded identification method and factual regional lighthouse into movable teaching objects. They are original mechanisms, not claimed field equipment.
+The accessories use Mahahual's beach setting and its relationship to nearby Banco Chinchorro as a deliberately playful regional layer. They do not represent JU2617 collection equipment, place the collection underwater or transfer any marine substrate to the worm record.
 
-### JU2617 citrus-heap respiration recorder
+### Reef-ruffle swim costumes
 
-- Accessory family: `ju2617-citrus-heap-respiration-recorder`
-- **Primary:** a broad low bell jar containing unequal collapsed citrus forms, connected by a capillary to a bubble wheel and horizontal trace drum, with reversible `JU2617 / Y2.1` plate.
-- **Companion:** a tall stacked peel-and-pulp chamber inside a U-tube frame, with bead counter, side culture vial and lower litter drawer.
-- The drawing shows no invented temperature, humidity or respiration value.
+- Accessory family: `mahahual-reef-ruffle-swim-costumes`
+- **Primary:** a fitted berry two-cup top with gold straps and central brooch, paired with an indigo curved wrap, shell piping, ruffled hem and side bow. The two pieces follow the large worm's rising body curve.
+- **Companion:** a separately constructed indigo halter top with different cup proportions and a shorter berry wrap with its own asymmetric panel and ruffle, fitted to the smaller worm.
+- The reef language is limited to abstract scallops and flowing seams. No coral specimen, protected animal or collection claim appears.
 
-### JU2617 test-cross lock
+### Caribbean sun spectacles
 
-The record supports `test cross`, but not tester identity, parental strain, result or progeny count.
+- Accessory family: `mahahual-caribbean-sun-spectacles`
+- **Primary:** a winged indigo cat-eye frame with pale translucent lenses, a gold bridge, white glints and coral centre jewel.
+- **Companion:** compact rounded berry frames with separate coral brows, gold bridge and different proportions.
+- The lens translucency is intentional so both worm faces remain readable; the frames and bridges carry recognition without depending on the label.
 
-- Accessory family: `ju2617-test-cross-lock`
-- **Primary:** a wide X-arm semaphore with two blank culture wells, central observation window and sliding diagnostic shutters.
-- **Companion:** a tall offset twin-tube gate tower feeding a vertical observation column with blank progeny windows.
-- This is the second and final test-cross semantic family after JU4400. Its X-arm cabinet and vertical gate remain visibly unlike JU4400's bridge and circular dial.
+### Sea-grape beach parasols
 
-### Mahahual lighthouse flash sequencer
-
-- Accessory family: `mahahual-lighthouse-flash-sequencer`
-- **Primary:** a tall truncated-pyramid tower mechanism with four lantern shutters and a 16-second timing ring.
-- **Companion:** a low circular Fresnel-style sequencing drum with four flash apertures, escapement wheel and curved base, with no miniature tower.
-- The drawings are original factual abstractions and use no Navy logo or copied institutional detail.
+- Accessory family: `mahahual-sea-grape-beach-parasols`
+- **Primary:** an open scalloped berry canopy with shell, indigo and gold contained panels, visible ribs, alternating drops, finial and curved handle.
+- **Companion:** a folded indigo canopy with separate ribs, fastening band, side bow, drops, finial and hooked handle.
+- The name refers to the rounded sea-grape-like leaves already used as regional vegetation in the scene. The parasols are fantasy props, not a claimed Mahahual craft tradition.
 
 ### Accessory placement
 
 | Slot | Primary transform `[x, y, scale, rotation]` | Companion transform `[x, y, scale, rotation]` |
 | --- | --- | --- |
-| Citrus recorder | `[374, 126, .34, -2]` | `[-8, 116, .27, 2]` |
-| Test-cross lock | `[220, 187, .32, -1]` | `[108, 213, .26, 2]` |
-| Lighthouse sequencer | `[370, 266, .33, -1]` | `[0, 292, .27, 2]` |
+| Reef-ruffle swim costumes | `[220, 155, .50, 20]` | `[67, 146, .36, 20]` |
+| Caribbean sun spectacles | `[332, 56, .34, -3]` | `[112, 105, .23, 3]` |
+| Sea-grape beach parasols | `[357, 268, .32, -5]` | `[27, 264, .34, 5]` |
 
 Each location-scoped item is registered under the exact `nigoni::Mahahual, Mexico · JU2617::*` renderer ID. The primary and companion objects remain distinct drawings within the same evidence family.
 
@@ -127,17 +126,19 @@ Each location-scoped item is registered under the exact `nigoni::Mahahual, Mexic
 - Do not identify a private garden from coarse coordinates.
 - Do not introduce Maya motifs, cenotes, tourist branding or national-colour costume shorthand.
 - Do not place JU2617 underwater or imply that it came from a reef, seagrass or mangrove sample.
+- Keep the beach ensemble explicitly playful; do not imply that swimwear or parasols were present in the collection garden.
+- Use abstract reef curves only. Do not depict coral, shell or protected wildlife as collected souvenirs.
 - Keep JU2618's different fruit and sample separate.
 
 ## Quality benchmark
 
-The revised preceding locations are the minimum quality floor, not templates to repeat. Mahahual must exceed them through an exact citrus focal point, coherent low-garden depth, integrated mechanisms, two genuinely different drawings per concept and a readable combined composition.
+The revised preceding locations are the minimum quality floor, not templates to repeat. Mahahual must exceed them through an exact citrus focal point, coherent low-garden depth, body-fitted clothing, two genuinely different drawings per concept and a readable combined composition.
 
 ## Review and interaction acceptance
 
 - Only the Mahahual landscape and its accessory data and drawings change in the Game feature batch.
 - The marker retains its coordinates and public copy preserves the date conflict and unknown elevation.
-- Every concept has a dedicated SVG drawing path; none uses the old reef mask, seagrass tail, lagoon saxophone or a generic fallback renderer.
+- Every concept has a dedicated SVG drawing path; none uses the old buckets, test-cross plates, lighthouse models, reef mask, seagrass tail, lagoon saxophone or a generic fallback renderer.
 - Primary and companion copies differ in outline, construction, internal detail and placement.
 - All three pairs remain legible together and do not intersect one another or hide worm faces.
 - Each of the six visible objects remains independently draggable and keyboard movable; Home resets only the focused copy.
@@ -149,4 +150,4 @@ The revised preceding locations are the minimum quality floor, not templates to 
 
 ## Implementation status
 
-Implemented and locally verified on 2026-07-28. The preserved source painting is `game-of-worms/assets/source/mahahual-ju2617-painted-background-source.png`; the optimized runtime derivative is `game-of-worms/assets/mahahual-ju2617-painted-background.webp`. All six objects passed independent pointer drag, Arrow, Shift+Arrow and isolated Home-reset checks. The fixed Game palette, 360 px, 768 px, 1024 px and 1440 px layouts passed without horizontal overflow or SVG containment failures; the source and runtime assets returned HTTP 200; syntax, catalogue, pair-geometry, environment-composition, console and `git diff --check` checks passed.
+The preserved source painting is `game-of-worms/assets/source/mahahual-ju2617-painted-background-source.png`; the optimized runtime derivative is `game-of-worms/assets/mahahual-ju2617-painted-background.webp`. The revised beach ensemble was implemented, refined and contextually approved on 2026-08-22. All six objects passed independent pointer drag, Arrow, Shift+Arrow and isolated Home-reset checks. Catalogue, paired-geometry, environment-composition, syntax, console, reduced-motion and 360/768/1024/1440 px overflow checks passed.

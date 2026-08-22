@@ -4900,7 +4900,19 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   --st-parasol-amber:#f1bd55;
   --st-leading:#4f3b70;
 }
-.nigoni-field-redesign.nfr-mahahual { --nfr-primary:#4f53b2; --nfr-secondary:#31bdb1; --nfr-accent:#ed557a; }
+.nigoni-field-redesign.nfr-mahahual {
+  --nfr-primary:#5553a6;
+  --nfr-secondary:#3b92a1;
+  --nfr-accent:#c74573;
+  --mh-ink:#26314f;
+  --mh-berry:#ad3f70;
+  --mh-indigo:#5553a6;
+  --mh-coral:#e87468;
+  --mh-shell:#fff0cf;
+  --mh-gold:#e1ad45;
+  --mh-turquoise:#4595a3;
+  --mh-lens:rgba(224,246,239,.82);
+}
 .nigoni-field-redesign.nfr-mauritius { --nfr-primary:#4958b3; --nfr-secondary:#37bea8; --nfr-accent:#e94f7f; }
 .nigoni-field-redesign.nfr-hcmc { --nfr-primary:#4b50ae; --nfr-secondary:#32b9aa; --nfr-accent:#e84e78; }
 .nigoni-field-redesign.nfr-lombok { --nfr-primary:#4655b0; --nfr-secondary:#35bda9; --nfr-accent:#e75080; }
@@ -5185,6 +5197,130 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   stroke-width:3;
 }
 .nigoni-field-redesign .st-parasol-drop.rose { fill:var(--st-parasol-rose); }
+.nigoni-field-redesign.nfr-mahahual .mahahual-beach-accessory {
+  filter:drop-shadow(0 5px 4px rgba(25,31,58,.26));
+}
+.nigoni-field-redesign.nfr-mahahual .mh-swim-top,
+.nigoni-field-redesign.nfr-mahahual .mh-swim-wrap {
+  fill:var(--mh-berry);
+  stroke:var(--mh-ink);
+  stroke-width:7;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-swim-top.companion { fill:var(--mh-indigo); }
+.nigoni-field-redesign.nfr-mahahual .mh-swim-wrap { fill:var(--mh-indigo); }
+.nigoni-field-redesign.nfr-mahahual .mh-swim-wrap.companion { fill:var(--mh-berry); }
+.nigoni-field-redesign.nfr-mahahual .mh-swim-panel {
+  fill:none;
+  stroke:var(--mh-shell);
+  stroke-width:8;
+  stroke-linecap:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-swim-ruffle {
+  fill:none;
+  stroke:var(--mh-shell);
+  stroke-width:11;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-swim-strap,
+.nigoni-field-redesign.nfr-mahahual .mh-swim-halter,
+.nigoni-field-redesign.nfr-mahahual .mh-swim-seam,
+.nigoni-field-redesign.nfr-mahahual .mh-swim-bow,
+.nigoni-field-redesign.nfr-mahahual .mh-swim-brooch-tie {
+  fill:none;
+  stroke:var(--mh-gold);
+  stroke-width:7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-swim-seam { stroke-width:4; }
+.nigoni-field-redesign.nfr-mahahual .mh-swim-brooch {
+  fill:var(--mh-shell);
+  stroke:var(--mh-gold);
+  stroke-width:5;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-glasses-lens {
+  fill:var(--mh-lens);
+  stroke:var(--mh-berry);
+  stroke-width:5;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-glasses-lens.companion { stroke:var(--mh-indigo); }
+.nigoni-field-redesign.nfr-mahahual .mh-glasses-frame {
+  fill:none;
+  stroke:var(--mh-indigo);
+  stroke-width:9;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual ellipse.mh-glasses-frame.companion {
+  fill:none;
+  stroke:var(--mh-berry);
+  stroke-width:8;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-glasses-bridge,
+.nigoni-field-redesign.nfr-mahahual .mh-glasses-brow,
+.nigoni-field-redesign.nfr-mahahual .mh-glasses-wing {
+  fill:none;
+  stroke:var(--mh-gold);
+  stroke-width:8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-glasses-brow.companion { stroke:var(--mh-coral);stroke-width:6; }
+.nigoni-field-redesign.nfr-mahahual .mh-glasses-glint {
+  fill:none;
+  stroke:#fff;
+  stroke-width:5;
+  stroke-linecap:round;
+  opacity:.88;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-glasses-jewel {
+  fill:var(--mh-coral);
+  stroke:var(--mh-ink);
+  stroke-width:4;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-canopy,
+.nigoni-field-redesign.nfr-mahahual .mh-folded-canopy {
+  fill:var(--mh-berry);
+  stroke:var(--mh-ink);
+  stroke-width:7;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-folded-canopy { fill:var(--mh-indigo); }
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-panel {
+  stroke:var(--mh-ink);
+  stroke-width:4;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-panel.shell { fill:var(--mh-shell); }
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-panel.indigo { fill:var(--mh-indigo); }
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-panel.gold { fill:var(--mh-gold); }
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-rib,
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-edge,
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-shaft,
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-band,
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-bow {
+  fill:none;
+  stroke:var(--mh-gold);
+  stroke-width:7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-rib { stroke-width:5; }
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-edge { stroke:var(--mh-shell);stroke-width:8; }
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-finial {
+  fill:var(--mh-gold);
+  stroke:var(--mh-ink);
+  stroke-width:4;
+  stroke-linejoin:round;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-drop {
+  fill:var(--mh-turquoise);
+  stroke:var(--mh-ink);
+  stroke-width:3;
+}
+.nigoni-field-redesign.nfr-mahahual .mh-parasol-drop.coral { fill:var(--mh-coral); }
 .nigoni-field-redesign .nfr-frame { fill:none;stroke:var(--nfr-primary);stroke-width:12;stroke-linejoin:round; }
 .nigoni-field-redesign .nfr-arrow { fill:none;stroke:var(--nfr-accent);stroke-width:7;stroke-linecap:round;stroke-linejoin:round; }
 .nigoni-field-redesign .nfr-lighthouse { fill:var(--nfr-ivory);stroke:var(--nfr-ink);stroke-width:7; }

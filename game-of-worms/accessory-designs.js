@@ -28,7 +28,7 @@ const rows = [
   ["nigoni", "Singapore · ZF1220", "Singapore starfruit sample trays", "zf1220-five-rib-field-atlas", "five-female sample cards", "multifemale-provenance-merger", "orchid pollination brushes", "holttum-orchid-hybridisation-engine"],
   ["nigoni", "Praslin, Seychelles · YR106", "DNA sequencing reels", "yr106-long-read-genome-loom", "coco-de-mer measuring tapes", "coco-de-mer-growth-monitoring-rig", "black-parrot field headphones", "praslin-black-parrot-call-listener"],
   ["nigoni", "São Tomé · JU2484", "São Tomé chocolate bars", "sao-tome-chocolate-bars", "birdsong music boxes", "sao-tome-birdsong-music-boxes", "begonia stained-glass parasols", "sao-tome-begonia-glass-parasols"],
-  ["nigoni", "Mahahual, Mexico · JU2617", "citrus sample buckets", "ju2617-citrus-heap-respiration-recorder", "JU2617 test-cross plates", "ju2617-test-cross-lock", "Mahahual lighthouse models", "mahahual-lighthouse-flash-sequencer"],
+  ["nigoni", "Mahahual, Mexico · JU2617", "reef-ruffle swim costumes", "mahahual-reef-ruffle-swim-costumes", "Caribbean sun spectacles", "mahahual-caribbean-sun-spectacles", "sea-grape beach parasols", "mahahual-sea-grape-beach-parasols"],
   ["nigoni", "Mauritius · JU2909", "fruit-and-nut sample trays", "ju2909-fruit-nut-viewer", "paired sample jars", "ju2909-ju2910-sample-bifurcator", "contour compasses", "casela-rempart-contour-surveyor"],
   ["nigoni", "Ho Chi Minh City · JU4356", "carambola sample trays", "ju4356-carambola-ground-contact-stage", "ITS2 DNA cards", "ju4356-its2-ribbon-reader", "tree survey calipers", "hcmc-urban-canopy-census-engine"],
   ["nigoni", "Lombok, Indonesia · HPT26", "fig sample trays", "hpt26-ficus-ground-contact-stage", "field-to-plate calendars", "lingsar-field-to-plate-calendar", "paired sample boxes", "hpt26-hpt27-substrate-diptych"],
@@ -5410,14 +5410,30 @@ function drawNigoniFieldAccessory(group, item, companion) {
     }
     return true;
   }
-  if (item.family === "ju2617-citrus-heap-respiration-recorder") {
-    shadow(101, 109);
-    path(group, companion ? "M-77-45H77L67 82Q0 105-67 82Z" : "M-99-51H99L85 89Q0 117-85 89Z", "nfr-bucket");
-    path(group, companion ? "M-82-48H82V-25H-82Z" : "M-105-55H105V-27H-105Z", "nfr-primary");
-    fruit(group, "citrus", companion ? -29 : -38, companion ? -21 : -26, companion ? .46 : .6);
-    fruit(group, "citrus", companion ? 28 : 36, companion ? -14 : -18, companion ? .39 : .51);
-    path(group, companion ? "M-62-49Q-76-111 0-112Q76-111 62-49" : "M-79-56Q-98-134 0-136Q98-134 79-56", "nfr-handle");
-    label("CITRUS", 0, companion ? 75 : 82, "nfr-small nfr-light-text");
+  if (item.family === "mahahual-reef-ruffle-swim-costumes") {
+    group.classList.add("mahahual-beach-accessory", "mahahual-swim-costume");
+    if (companion) {
+      path(group, "M8-63Q31-94 56-64", "mh-swim-halter");
+      path(group, "M2-63Q13-84 32-70Q27-48 1-45Z", "mh-swim-top companion");
+      path(group, "M32-70Q48-89 60-65L51-41Q39-47 32-70Z", "mh-swim-top companion");
+      path(group, "M10-54Q20-69 29-62M40-61Q49-75 56-63", "mh-swim-seam");
+      path(group, "M-61 5Q-31-14-2-3Q22 5 31 34L19 51Q-8 62-35 54Q-62 45-61 5Z", "mh-swim-wrap companion");
+      path(group, "M-57 18Q-34 2-10 14Q10 3 28 22", "mh-swim-panel");
+      path(group, "M-36 53Q-29 65-19 54Q-9 68 1 56Q11 68 20 50", "mh-swim-ruffle");
+      add(group, "circle", { class: "mh-swim-brooch", cx: 32, cy: -67, r: 7 });
+      path(group, "M28-61L23-50M36-61L43-48", "mh-swim-brooch-tie");
+    } else {
+      path(group, "M14-69Q43-113 78-75", "mh-swim-strap");
+      path(group, "M3-70Q18-97 43-80Q36-52 1-49Z", "mh-swim-top");
+      path(group, "M43-80Q67-104 83-76L70-44Q53-51 43-80Z", "mh-swim-top");
+      path(group, "M12-58Q23-75 37-67M51-68Q63-85 76-70", "mh-swim-seam");
+      path(group, "M-79 2Q-41-25 3-10Q38 1 53 35L38 61Q4 78-35 68Q-69 61-79 2Z", "mh-swim-wrap");
+      path(group, "M-71 19Q-39-4-7 15Q23-3 45 22", "mh-swim-panel");
+      path(group, "M-36 67Q-27 82-16 68Q-4 84 9 68Q22 80 37 60", "mh-swim-ruffle");
+      add(group, "circle", { class: "mh-swim-brooch", cx: 43, cy: -79, r: 9 });
+      path(group, "M38-72L31-56M48-72L58-53", "mh-swim-brooch-tie");
+      path(group, "M-73 7Q-90 17-79 35Q-68 24-57 33", "mh-swim-bow");
+    }
     return true;
   }
   if (item.family === "multifemale-provenance-merger") {
@@ -5550,23 +5566,49 @@ function drawNigoniFieldAccessory(group, item, companion) {
     }
     return true;
   }
-  if (item.family === "ju2617-test-cross-lock") {
-    shadow(108, 105);
-    plate(companion ? -41 : -53, 5, companion ? 43 : 53, companion ? 32 : 39);
-    plate(companion ? 41 : 53, 10, companion ? 43 : 53, companion ? 32 : 39, true);
-    path(group, companion ? "M-101-65H101V87H-101Z" : "M-128-72H128V94H-128Z", "nfr-frame");
-    path(group, "M-22-7H22M10-19L24-7L10 5M22 34H-22M-10 22L-24 34L-10 46", "nfr-arrow");
-    label("TEST CROSS", 0, companion ? 74 : 81, "nfr-small nfr-light-text");
+  if (item.family === "mahahual-caribbean-sun-spectacles") {
+    group.classList.add("mahahual-beach-accessory", "mahahual-sun-spectacles");
+    if (companion) {
+      add(group, "ellipse", { class: "mh-glasses-lens companion", cx: -32, cy: 0, rx: 27, ry: 23 });
+      add(group, "ellipse", { class: "mh-glasses-lens companion", cx: 32, cy: 0, rx: 27, ry: 23 });
+      add(group, "ellipse", { class: "mh-glasses-frame companion", cx: -32, cy: 0, rx: 31, ry: 27 });
+      add(group, "ellipse", { class: "mh-glasses-frame companion", cx: 32, cy: 0, rx: 31, ry: 27 });
+      path(group, "M-2-2Q0-11 2-2M-63-1L-83 7M63-1L82 9", "mh-glasses-bridge");
+      path(group, "M-55-17Q-32-35-8-17M8-17Q32-35 55-17", "mh-glasses-brow companion");
+      add(group, "circle", { class: "mh-glasses-jewel", cx: 0, cy: -9, r: 6 });
+    } else {
+      path(group, "M-87-17Q-57-40-17-20L-22 24Q-58 39-82 18Z", "mh-glasses-lens");
+      path(group, "M87-17Q57-40 17-20L22 24Q58 39 82 18Z", "mh-glasses-lens");
+      path(group, "M-91-20Q-57-47-13-23L-18 28Q-58 45-87 21ZM91-20Q57-47 13-23L18 28Q58 45 87 21Z", "mh-glasses-frame");
+      path(group, "M-14-17Q0-30 14-17M-90-13L-116-1M90-13L116 1", "mh-glasses-bridge");
+      path(group, "M-78-27L-96-44L-62-40M78-27L96-44L62-40", "mh-glasses-wing");
+      path(group, "M-70 8Q-53 23-33 13M70 8Q53 23 33 13", "mh-glasses-glint");
+      add(group, "circle", { class: "mh-glasses-jewel", cx: 0, cy: -22, r: 7 });
+    }
     return true;
   }
-  if (item.family === "mahahual-lighthouse-flash-sequencer") {
-    shadow(77, 109);
-    path(group, companion ? "M-47-48H47L58 84H-58Z" : "M-59-61H59L74 94H-74Z", "nfr-lighthouse");
-    path(group, companion ? "M-60-52H60V-18H-60Z" : "M-77-66H77V-22H-77Z", "nfr-lamp-room");
-    path(group, companion ? "M-69-54L0-101L69-54Z" : "M-88-69L0-129L88-69Z", "nfr-light-beam");
-    path(group, companion ? "M-55 24H55M-52 53H52" : "M-69 29H69M-66 65H66", "nfr-stripe");
-    path(group, companion ? "M-72 85H72V101H-72Z" : "M-91 95H91V113H-91Z", "nfr-primary");
-    label("MAHAHUAL", 0, companion ? 97 : 108, "nfr-small nfr-light-text");
+  if (item.family === "mahahual-sea-grape-beach-parasols") {
+    group.classList.add("mahahual-beach-accessory", "mahahual-beach-parasol");
+    shadow(companion ? 37 : 104, companion ? 113 : 116);
+    if (companion) {
+      path(group, "M0-116Q-24-106-34-82L-49 34Q-25 54 0 42Q25 54 49 34L34-82Q24-106 0-116Z", "mh-folded-canopy");
+      path(group, "M0-110L0 44M-29-82L-12 36M29-82L12 36", "mh-parasol-rib");
+      path(group, "M-41-5Q-20 8 0-2Q20 8 41-5", "mh-parasol-band");
+      path(group, "M0-122V92Q0 121-25 121Q-43 121-44 101", "mh-parasol-shaft");
+      path(group, "M-12-119L0-136L12-119Z", "mh-parasol-finial");
+      path(group, "M39-4Q62-17 64 5Q49 3 40 16M39-4Q59 20 43 31", "mh-parasol-bow");
+      [-30,-10,10,30].forEach((x, index) => add(group, "circle", { class: index % 2 ? "mh-parasol-drop coral" : "mh-parasol-drop", cx: x, cy: index % 2 ? 42 : 45, r: 5 }));
+    } else {
+      path(group, "M0-112Q-42-142-88-108Q-130-80-140-24Q-100-4-52-18Q0 3 52-18Q100-4 140-24Q130-80 88-108Q42-142 0-112Z", "mh-parasol-canopy");
+      path(group, "M0-110V-9M0-106Q-48-76-124-33M0-106Q48-76 124-33M0-103Q-65-108-102-78M0-103Q65-108 102-78", "mh-parasol-rib");
+      path(group, "M-120-72Q-82-112-21-77Q-58-31-111-27Z", "mh-parasol-panel shell");
+      path(group, "M120-72Q82-112 21-77Q58-31 111-27Z", "mh-parasol-panel indigo");
+      path(group, "M-25-76Q0-108 25-76Q0-37-25-76Z", "mh-parasol-panel gold");
+      path(group, "M0-9V82Q0 118-34 118Q-59 118-61 93Q-61 80-50 72", "mh-parasol-shaft");
+      path(group, "M-131-24Q-98-2-62-17Q-30 2 0-9Q30 2 62-17Q98-2 131-24", "mh-parasol-edge");
+      path(group, "M-12-111L0-132L12-111Z", "mh-parasol-finial");
+      [-108,-68,-25,25,68,108].forEach((x, index) => add(group, "circle", { class: index % 2 ? "mh-parasol-drop coral" : "mh-parasol-drop", cx: x, cy: index === 2 || index === 3 ? -4 : -13, r: 6 }));
+    }
     return true;
   }
   if (item.family === "ju2909-ju2910-sample-bifurcator") {
@@ -6480,9 +6522,9 @@ function renderPiece(target, item, wormPart) {
     ,"nic1648-fig-diameter-comparator": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
     ,"nic1648-stair-side-sample-indexer": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"nic1648-qualitative-male-viewer": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
-    ,"ju2617-citrus-heap-respiration-recorder": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
-    ,"ju2617-test-cross-lock": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
-    ,"mahahual-lighthouse-flash-sequencer": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
+    ,"mahahual-reef-ruffle-swim-costumes": { primary: [220, 155, .5, 20], companion: [67, 146, .36, 20] }
+    ,"mahahual-caribbean-sun-spectacles": { primary: [332, 56, .34, -3], companion: [112, 105, .23, 3] }
+    ,"mahahual-sea-grape-beach-parasols": { primary: [357, 268, .32, -5], companion: [27, 264, .34, 5] }
     ,"ju2909-fruit-nut-viewer": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
     ,"ju2909-ju2910-sample-bifurcator": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"casela-rempart-contour-surveyor": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
