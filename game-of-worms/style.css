@@ -3686,6 +3686,26 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   background: #202523;
 }
 
+.species-gallery-images .whole-worm-video-frame {
+  display: grid;
+  place-items: center;
+  background: #111615;
+}
+
+.species-gallery-images .whole-worm-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 640px;
+  background: #111615;
+  object-fit: contain;
+}
+
+.species-gallery-images .whole-worm-video:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--gold) 82%, white);
+  outline-offset: -4px;
+}
+
 .species-gallery-images .whole-worm-view--pale-padding {
   box-sizing: border-box;
   padding-inline: 14px;

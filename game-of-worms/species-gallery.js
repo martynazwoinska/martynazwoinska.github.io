@@ -86,11 +86,18 @@ const sources = Object.freeze({
     label: "Ebert & Bargmann (2023), Fig. S1",
     url: "https://doi.org/10.1101/2023.10.16.562407",
     licence: licences.ccBy4
+  }),
+  perez: Object.freeze({
+    label: "Perez et al. (2025), Videos S2 and S5",
+    url: "https://doi.org/10.1016/j.cub.2025.05.026",
+    licence: licences.ccBy4,
+    note: "Videos stream from the publisher."
   })
 });
 
 function wholeAnimalImage({ src, sourceWidth, sourceHeight, viewBox, alt, caption, source = null, maxWidth = 680, palePadding = false, layout = "standard" }) {
   return Object.freeze({
+    kind: "image",
     src,
     sourceWidth,
     sourceHeight,
@@ -104,10 +111,21 @@ function wholeAnimalImage({ src, sourceWidth, sourceHeight, viewBox, alt, captio
   });
 }
 
+function galleryVideo({ src, alt, caption, source, maxWidth = 360 }) {
+  return Object.freeze({
+    kind: "video",
+    src,
+    alt,
+    caption,
+    source,
+    maxWidth
+  });
+}
+
 export const speciesGalleries = Object.freeze({
   elegans: Object.freeze({
     scientificName: "Caenorhabditis elegans",
-    description: "Meet C. elegans at different scales: an adult hermaphrodite beside the smaller male, living worms with glowing neurons, a colourful stain that reveals stored fats, and a two-cell embryo at the beginning of development.",
+    description: "Meet C. elegans at different scales: adults, living worms with glowing neurons, stored fats, a two-cell embryo, and collective towers formed by worms at several life stages.",
     source: sources.portman,
     showCaptions: true,
     images: Object.freeze([
@@ -151,6 +169,18 @@ export const speciesGalleries = Object.freeze({
         source: sources.epfl,
         maxWidth: 520,
         layout: "wide"
+      }),
+      galleryVideo({
+        src: "https://ars.els-cdn.com/content/image/1-s2.0-S0960982225006013-mmc4.mp4",
+        alt: "Video showing Caenorhabditis elegans adults, dauer larvae and mixed life stages forming upright living towers.",
+        caption: "Adults, dauer larvae and mixed life stages form towers",
+        source: sources.perez
+      }),
+      galleryVideo({
+        src: "https://ars.els-cdn.com/content/image/1-s2.0-S0960982225006013-mmc7.mp4",
+        alt: "Video showing a mixed-stage Caenorhabditis elegans tower responding to touch, transferring worms to a glass pick and regrowing.",
+        caption: "A mixed-stage tower reaches out, transfers worms and regrows",
+        source: sources.perez
       })
     ])
   }),

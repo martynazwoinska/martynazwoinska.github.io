@@ -4,7 +4,7 @@ import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260822-75";
-import { speciesGalleries } from "./species-gallery.js?v=20260822-9";
+import { speciesGalleries } from "./species-gallery.js?v=20260822-10";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -326,27 +326,50 @@ function renderSpeciesGallery(item) {
   gallery.images.forEach(image => {
     const figure = document.createElement("figure");
     const imageFrame = document.createElement("div");
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    const sourceImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
-    const [x, y, width, height] = image.viewBox;
     figure.classList.add("species-gallery-card");
     if (image.layout === "wide") figure.classList.add("species-gallery-card--wide");
     figure.style.setProperty("--gallery-card-width", `${image.maxWidth}px`);
-    imageFrame.className = "whole-worm-view-frame";
-    imageFrame.setAttribute("role", "img");
-    imageFrame.setAttribute("aria-label", image.alt);
-    svg.classList.add("whole-worm-view");
-    if (image.palePadding) svg.classList.add("whole-worm-view--pale-padding");
-    svg.setAttribute("viewBox", `${x} ${y} ${width} ${height}`);
-    svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
-    svg.setAttribute("aria-hidden", "true");
-    svg.setAttribute("focusable", "false");
-    sourceImage.setAttribute("href", image.src);
-    sourceImage.setAttribute("width", String(image.sourceWidth));
-    sourceImage.setAttribute("height", String(image.sourceHeight));
-    sourceImage.setAttribute("preserveAspectRatio", "none");
-    svg.append(sourceImage);
-    imageFrame.append(svg);
+
+    if (image.kind === "video") {
+      const video = document.createElement("video");
+      const source = document.createElement("source");
+      const fallbackLink = document.createElement("a");
+      imageFrame.className = "whole-worm-video-frame";
+      video.className = "whole-worm-video";
+      video.controls = true;
+      video.preload = "metadata";
+      video.playsInline = true;
+      video.setAttribute("aria-label", image.alt);
+      video.setAttribute("width", "1080");
+      video.setAttribute("height", "1920");
+      source.src = image.src;
+      source.type = "video/mp4";
+      fallbackLink.href = image.src;
+      fallbackLink.target = "_blank";
+      fallbackLink.rel = "noopener";
+      fallbackLink.textContent = "Open the video from the publisher";
+      video.append(source, fallbackLink);
+      imageFrame.append(video);
+    } else {
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      const sourceImage = document.createElementNS("http://www.w3.org/2000/svg", "image");
+      const [x, y, width, height] = image.viewBox;
+      imageFrame.className = "whole-worm-view-frame";
+      imageFrame.setAttribute("role", "img");
+      imageFrame.setAttribute("aria-label", image.alt);
+      svg.classList.add("whole-worm-view");
+      if (image.palePadding) svg.classList.add("whole-worm-view--pale-padding");
+      svg.setAttribute("viewBox", `${x} ${y} ${width} ${height}`);
+      svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+      svg.setAttribute("aria-hidden", "true");
+      svg.setAttribute("focusable", "false");
+      sourceImage.setAttribute("href", image.src);
+      sourceImage.setAttribute("width", String(image.sourceWidth));
+      sourceImage.setAttribute("height", String(image.sourceHeight));
+      sourceImage.setAttribute("preserveAspectRatio", "none");
+      svg.append(sourceImage);
+      imageFrame.append(svg);
+    }
     figure.append(imageFrame);
     if (gallery.showCaptions && image.caption) {
       const caption = document.createElement("figcaption");
