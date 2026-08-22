@@ -89,7 +89,7 @@ The scene must remain legible at thumbnail size and use three linked depths rath
 
 The three concepts are scientific play objects, not claims about Bristol dress or local material culture. They are retained because they explain why N2 is central to laboratory nematode research.
 
-### Seeded NGM agar plates
+### Agar plates seeded with bacteria
 
 WormBook states that *C. elegans* is maintained on Nematode Growth Medium agar in Petri plates and is usually fed *E. coli* OP50. It describes a limited, central OP50 lawn because this makes worms easier to observe.
 
