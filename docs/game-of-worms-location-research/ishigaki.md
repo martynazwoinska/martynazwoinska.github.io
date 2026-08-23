@@ -65,22 +65,22 @@ The locked silhouette is one arched fig branch with attached round syconia above
 
 The three accessories translate the fig–fig-wasp ecology into playful objects. They do not imply that the worms wear these structures in nature.
 
-### Fig fascinator
+### Fig UV visors
 
-- **Female:** one halved *F. septica* syconium with a visible internal cavity, small florets, a curved leaf comb and a secure low headband.
-- **Male:** a compact curled fig-skin rosette with a smaller leaf and a separate fig-wasp pin.
-- Both remain inside the SVG bounds and stay clear of the eyes.
+- **Female:** a broad translucent aqua shield with a berry brow, gold lower rim, visible side hinges and a cut-fig medallion with a small leaf.
+- **Male:** a separately proportioned compact shield with lighter hardware and its own smaller fig medallion.
+- Both follow the head angle, retain a transparent view of the face and stay clear of the eyes.
 
 ### Sample pannier
 
-- **Female:** a fitted oval woven side pannier with a curved body harness, three fresh fig samples and one hinged specimen lid.
-- **Male:** two unequal sample cups on a light yoke with a separate collection tag and no backpack outline.
+- **Female:** a fitted oval woven side pannier with a curved handle, raised hinged lid, two whole fresh fig samples and one visibly cut fig.
+- **Male:** two unequal sample cups on a light padded yoke, with one whole fig, one cut fig, a separate collection tag and no backpack outline.
 - The pair differs in silhouette and construction rather than scale alone.
 
 ### Fig-wasp wings
 
-- **Female:** a long translucent forewing pair with a smaller hindwing pair, clear branching veins and a fitted thoracic harness.
-- **Male:** a shorter fan-shaped pair with different venation and a compact crossed harness.
+- **Female:** a long translucent forewing pair with smaller hindwings, clear branching veins, layered gold wing roots and a fitted curved crossed harness.
+- **Male:** a shorter fan-shaped pair with different venation, smaller root plates and a compact crossed harness.
 - Wing edges remain visible over both light worms and the painted vegetation, while faces remain unobstructed.
 
 ## Quality and interaction acceptance

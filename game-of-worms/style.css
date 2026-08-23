@@ -1531,7 +1531,9 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .uv-visor-brow { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 3; stroke-linejoin: round; }
 .uv-visor-shield { fill: rgba(88,205,211,.43); stroke: var(--ishigaki-emerald-deep); stroke-width: 2.8; stroke-linejoin: round; }
 .uv-visor-edge { fill: none; stroke: var(--ishigaki-gold); stroke-width: 3.3; stroke-linecap: round; }
+.uv-visor-lower-rim { fill: none; stroke: rgba(255,248,223,.82); stroke-width: 1.8; stroke-linecap: round; }
 .uv-visor-temple { fill: none; stroke: var(--ishigaki-berry); stroke-width: 5; stroke-linecap: round; }
+.uv-visor-hinge { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 1.4; }
 .uv-visor-glare { fill: none; stroke: rgba(255,255,255,.84); stroke-width: 3.2; stroke-linecap: round; }
 .uv-fig-rind { fill: var(--ishigaki-emerald); stroke: var(--ishigaki-ink); stroke-width: 2; }
 .uv-fig-flesh { fill: var(--ishigaki-fig); stroke: var(--ishigaki-berry); stroke-width: 1.4; }
@@ -1558,6 +1560,13 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .pannier-interior { fill: #173f42; stroke: var(--ishigaki-ink); stroke-width: 2; }
 .pannier-rim { fill: none; stroke: var(--ishigaki-gold); stroke-width: 5.5; }
 .pannier-front-rim { fill: none; stroke: var(--ishigaki-ivory); stroke-width: 3; stroke-linecap: round; }
+.pannier-lid { fill: var(--ishigaki-sea); stroke: var(--ishigaki-ink); stroke-width: 3; }
+.pannier-lid-weave,
+.pannier-lid-rib { fill: none; stroke: var(--ishigaki-ivory); stroke-width: 2.2; stroke-linecap: round; opacity: .82; }
+.pannier-lid-rib { stroke: var(--ishigaki-gold); stroke-width: 1.7; }
+.pannier-lid-hinge { fill: none; stroke: var(--ishigaki-gold); stroke-width: 4; stroke-linecap: round; }
+.pannier-lid-latch,
+.pannier-yoke-pad { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 2; stroke-linejoin: round; }
 .pannier-weave-field { pointer-events: none; }
 .pannier-weave-a,
 .pannier-weave-b { fill: none; stroke: var(--ishigaki-sea-light); stroke-width: 2.4; stroke-linecap: round; opacity: .88; }
@@ -1566,7 +1575,12 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .pannier-fig { fill: #659a62; stroke: var(--ishigaki-emerald-deep); stroke-width: 1.6; }
 .pannier-fig.light { fill: #8eba76; }
 .pannier-ostiole { fill: var(--ishigaki-berry); stroke: none; }
+.pannier-fig-leaf { fill: var(--ishigaki-emerald-deep); stroke: var(--ishigaki-ink); stroke-width: 1.4; stroke-linejoin: round; }
+.pannier-cut-fig { fill: var(--ishigaki-emerald); stroke: var(--ishigaki-ink); stroke-width: 1.8; }
+.pannier-cut-flesh { fill: var(--ishigaki-fig); stroke: var(--ishigaki-berry); stroke-width: 1.2; }
+.pannier-floret { fill: var(--ishigaki-ivory); stroke: var(--ishigaki-gold); stroke-width: .7; }
 .pannier-tag { fill: var(--ishigaki-ivory); stroke: var(--ishigaki-berry); stroke-width: 1.5; }
+.pannier-tag-cord { fill: none; stroke: var(--ishigaki-gold); stroke-width: 2; stroke-linecap: round; }
 .pannier-tag-line { fill: none; stroke: var(--ishigaki-berry); stroke-width: 1.2; }
 .pannier-sample-vial { fill: rgba(222,249,243,.92); stroke: var(--ishigaki-ink); stroke-width: 1.8; }
 .pannier-vial-fluid { fill: rgba(217,105,131,.78); stroke: none; }
@@ -1585,8 +1599,10 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .fig-wing-costa { fill: none; stroke: var(--ishigaki-emerald-deep); stroke-width: 2.1; stroke-linecap: round; opacity: .92; }
 .fig-wing-venation.far { opacity: .64; }
 .fig-wing-harness { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 2.7; stroke-linejoin: round; }
-.fig-wing-harness-detail { fill: none; stroke: var(--ishigaki-gold); stroke-width: 2; stroke-linecap: round; }
+.fig-wing-root { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 2; }
+.fig-wing-harness-detail { fill: none; stroke: var(--ishigaki-gold); stroke-width: 1.7; stroke-linecap: round; }
 .fig-wing-buckle { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 1.5; }
+.fig-wing-sheen { fill: none; stroke: rgba(255,255,255,.72); stroke-width: 1.8; stroke-linecap: round; opacity: .84; }
 
 .ahmedabad-af16-accessory {
   --af16-ink: #263b55;
