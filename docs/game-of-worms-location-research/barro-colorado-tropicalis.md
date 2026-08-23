@@ -1,6 +1,6 @@
 # Barro Colorado Island *Caenorhabditis tropicalis* QG2726 location research and art brief
 
-Last updated: 2026-07-26
+Last updated: 2026-08-23
 
 ## Purpose
 
@@ -221,23 +221,27 @@ Companion: a shorter shoulder fleece with a different hem, curl distribution,
 clasp position and drape angle. Do not put `Medea`, genotype or gene-drive text
 on either drawing.
 
-### Forest-census notebook
+### Forest-census map fans
 
-Family ID: `qg2726-bci-forest-census-notebook`
+Family ID: `qg2726-bci-forest-census-map-fans`
 
 Regional basis: Barro Colorado's 50-hectare permanent forest plot established
 the long-running ForestGEO tree-census model. Trees are identified, tagged,
 mapped and repeatedly measured.
 
-Primary: a vivid emerald waterproof field notebook in perspective, with a page
-block, violet spine, forest-map grid, tree marks, attached berry pencil and a
-small aluminium `50 HA` plot tag.
+Primary: a broad seven-leaf folding fan in emerald, aqua, orchid and antique
+gold. Every panel has its own contained plot line or tree mark, while ivory
+ribs converge on a berry-and-brass pivot. A coral ribbon and hanging aluminium
+`50 HA` tag complete the silhouette.
 
-Companion: a narrower pocket notebook with a different cover silhouette, map
-grid, tree marks, pencil position and hanging plot tag.
+Companion: a compact asymmetric four-blade side fan with a different outer
+silhouette, panel construction, pivot placement, map paths and tree marks. It
+has its own curved ribbon and separately hung `50 HA` tag.
 
-This object represents Barro Colorado's research identity rather than QG2726's
-collection apparatus. Do not reproduce real tree identities or plot data.
+The fans are a playful reference to Barro Colorado's research identity rather
+than QG2726's collection apparatus. They must read first as complete folding
+fans, with the map language remaining secondary. Do not reproduce real tree
+identities, plot coordinates or ForestGEO data.
 
 ## Suggested initial layouts
 
@@ -252,9 +256,9 @@ These values require final browser tuning:
   primary: [300, 124, .42, -9],
   companion: [136, 121, .36, -11]
 },
-"qg2726-bci-forest-census-notebook": {
-  primary: [365, 265, .42, -6],
-  companion: [43, 276, .34, -7]
+"qg2726-bci-forest-census-map-fans": {
+  primary: [364, 258, .45, -5],
+  companion: [45, 271, .37, 5]
 }
 ```
 
@@ -264,7 +268,7 @@ Replace the former bait-cup, tree-caliper and rain-gauge set with:
 
 - *Gustavia superba* flower headpiece: Barro Colorado QG2726 only
 - Golden Fleece cape: Barro Colorado QG2726 only
-- Forest-census notebook: Barro Colorado QG2726 only
+- Forest-census map fans: Barro Colorado QG2726 only
 
 Expected totals:
 

@@ -33,14 +33,14 @@ const rows = [
   ["nigoni", "Ho Chi Minh City · JU4356", "carambola sample trays", "ju4356-carambola-ground-contact-stage", "ITS2 DNA cards", "ju4356-its2-ribbon-reader", "tree survey calipers", "hcmc-urban-canopy-census-engine"],
   ["nigoni", "Lombok, Indonesia · HPT26", "fig sample trays", "hpt26-ficus-ground-contact-stage", "field-to-plate calendars", "lingsar-field-to-plate-calendar", "paired sample boxes", "hpt26-hpt27-substrate-diptych"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "Balinese endek wrap", "ju1873-balinese-endek-wrap", "Balinese gamelan gong", "ju1873-balinese-gamelan-gong"],
-  ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Golden Fleece cape", "qg2726-golden-fleece-cape", "forest-census notebook", "qg2726-bci-forest-census-notebook"],
+  ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Golden Fleece cape", "qg2726-golden-fleece-cape", "forest-census map fans", "qg2726-bci-forest-census-map-fans"],
   ["tropicalis", "La Selva, Costa Rica", "26.5 °C thermometers", "qg3845-substrate-temperature", "leaf-cutter ant field loupes", "la-selva-leafcutter-automaton", "La Selva–Barva elevation maps", "barva-gradient-lift"],
   ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras carnival crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
   ["tropicalis", "Nouragues, French Guiana · JU1428", "Duguetia sample boxes", "ju1428-duguetia-fruit-theatre", "litterfall baskets", "nouragues-litterfall-chronobalance", "three-strain sample racks", "ju1428-isotype-triad-comparator"],
   ["tropicalis", "Manaus region, Brazil · JU1976", "anonymous-fruit sample cases", "ju1976-substrate-identity-shadow-theatre", "four-metre tape measures", "ju1975-ju1976-four-metre-sample-rail", "soil-profile charts", "manaus-plateau-valley-soil-harmonograph"],
   ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "fallen-flower sample boxes", "eca789-fallen-flower-decay-chronoscope", "temperature-humidity meters", "eca789-paired-microclimate-harmonograph", "field-record folders", "c0085-field-record-relay"],
   ["tropicalis", "Kauaʻi, Hawaiʻi · QG131", "pandanus sample baskets", "qg131-paired-pandanus-key-sorter", "four-date culture calendars", "qg131-four-date-culture-relay", "mating-test plates", "qg131-mating-id-motion-theatre"],
-  ["tropicalis", "New Taipei City, Taiwan · NIC1648", "fig measuring calipers", "nic1648-fig-diameter-comparator", "stair-side sample bags", "nic1648-stair-side-sample-indexer", "male-count microscopes", "nic1648-qualitative-male-viewer"],
+  ["tropicalis", "New Taipei City, Taiwan · NIC1648", "fig measuring calipers", "nic1648-fig-diameter-comparator", "single-tail trail shoes", "nic1648-single-tail-trail-shoes", "male-count microscopes", "nic1648-qualitative-male-viewer"],
   ["tropicalis", "Pohnpei, Micronesia · QG4739", "kotop sample boxes", "qg4739-kotop-name-concordance", "paired thermometers", "qg4739-paired-temperature-differential", "seven-vial sample racks", "c0230-seven-isotype-registry"],
   ["tropicalis", "Queensland, Australia · QG2904", "blackbean pod cases", "qg2904-uncracked-pod-seam-scanner", "recovery calendars", "qg2904-collection-to-funnel-relay", "canopy-crane models", "dro-canopy-crane-strata-mapper"],
   ["tropicalis", "Saint-Benoît, Réunion · JU1373", "Réunion torch-ginger trays", "ju1373-torch-ginger-bract-collar", "type-isolate badges", "ju1373-type-isolate-signet-engine", "windward rain gauges", "saint-benoit-windward-slope-mobile"]
@@ -262,7 +262,7 @@ function hasNamedRenderer(item) {
 }
 
 function artworkKind(label) {
-  if (/coat|waistcoat|cape|waders|jacket|swimwear|skirt|kilt|cuirass|boots|pauldron|epaulettes|ruff|collar|diving bell|crinoline|scarf|tail/i.test(label)) return "garment";
+  if (/coat|waistcoat|cape|waders|jacket|swimwear|skirt|kilt|cuirass|boots|shoes?|pauldron|epaulettes|ruff|collar|diving bell|crinoline|scarf|tail/i.test(label)) return "garment";
   if (/visor|fascinator|spectacles|cloche|casque|bonnet|monocle|wig|agar plate|boater|ear-warmers|goggles|crest|bowler|halo|hood|mask|headband|helmet|headphones|sunglasses/i.test(label)) return "head";
   return "prop";
 }
@@ -4437,30 +4437,6 @@ function drawNewTaipeiNIC1648Accessory(group, item, companion) {
     return true;
   }
 
-  if (item.family === "nic1648-stair-side-sample-indexer") {
-    if (companion) {
-      path(group, "M-35-84H29L42 71H-46Z", "nic1648-stair-column");
-      [-61, -28, 5, 38].forEach((y, index) => path(group, `M${index % 2 ? -18 : -30} ${y}H${index % 2 ? 31 : 20}V${y + 19}H${index % 2 ? -18 : -30}Z`, "nic1648-tread-plate"));
-      path(group, "M29-20H67V15H29Z", "nic1648-litter-drawer");
-      line(group, "M-22-69L26-51L-20-32L31-13L-16 7L33 27L-12 48", "nic1648-chain");
-      add(group, "circle", { class: "nic1648-crank", cx: 52, cy: 42, r: 15 });
-      line(group, "M52 42L69 27", "nic1648-drive");
-      path(group, "M-38 53H25V76H-38Z", "nic1648-id-plate");
-      text("NIC1648 / 3b", -6, 68, "nic1648-small-label");
-    } else {
-      path(group, "M-103-42H18V8H-103ZM-17 13H103V61H-17Z", "nic1648-index-deck");
-      path(group, "M-88-29H-31V-6H-88Z", "nic1648-specimen-shutter");
-      path(group, "M31 27H88V50H31Z", "nic1648-litter-pocket");
-      text("ON STEP", -59, -14, "nic1648-small-label");
-      text("BESIDE", 59, 42, "nic1648-small-label");
-      add(group, "circle", { class: "nic1648-coordinate-drum", cx: 0, cy: -14, r: 25 });
-      line(group, "M-31-17L-25-14M25-14L31 29M0-39V11", "nic1648-drive");
-      add(group, "ellipse", { class: "nic1648-vial-cradle", cx: 91, cy: -28, rx: 22, ry: 11 });
-      add(group, "rect", { class: "nic1648-vial", x: 82, y: -67, width: 18, height: 40, rx: 7 });
-    }
-    return true;
-  }
-
   if (item.family === "nic1648-qualitative-male-viewer") {
     if (companion) {
       path(group, "M-36-84H31L43 72H-46Z", "nic1648-optical-column");
@@ -5014,40 +4990,55 @@ function drawBarroColoradoQG2726Accessory(group, item, companion) {
     return true;
   }
 
-  if (item.family === "qg2726-bci-forest-census-notebook") {
-    const book = add(group, "g", { transform: `scale(${companion ? .78 : 1})` });
-    path(book, companion ? "M-105 83Q0 111 109 79Q57 125-95 119Z" : "M-128 94Q0 132 135 89Q72 145-116 137Z", "bci-accessory-shadow");
+  if (item.family === "qg2726-bci-forest-census-map-fans") {
+    const fan = add(group, "g", {});
+    path(fan, companion ? "M-102 86Q2 116 105 79Q54 125-91 121Z" : "M-138 92Q0 137 143 87Q72 150-124 141Z", "bci-accessory-shadow");
+
+    const addTreeMark = (parent, cx, cy, r, accent = false) => {
+      add(parent, "circle", { class: accent ? "bci-census-tree accent" : "bci-census-tree", cx, cy, r });
+      path(parent, `M${cx} ${cy + r}V${cy + r + 8}`, "bci-census-tree-stem");
+    };
+    const addPlotTag = (parent, x, y, angle = 0) => {
+      const tag = add(parent, "g", { transform: `translate(${x} ${y}) rotate(${angle})` });
+      path(tag, "M-24-17H24L29 0L24 17H-24L-29 0Z", "bci-census-tag");
+      add(tag, "circle", { class: "bci-census-tag-hole", cx: -19, cy: 0, r: 4 });
+      const textNode = add(tag, "text", { class: "bci-census-tag-text", x: 4, y: 5 });
+      textNode.textContent = "50 HA";
+    };
+
     if (companion) {
-      path(book, "M-83-56L49-67L83 72L-51 84Z", "bci-notebook-pages");
-      path(book, "M-91-65L37-77L51 69L-78 81Z", "bci-notebook-cover");
-      path(book, "M-91-65L-69-67L-55 79L-78 81Z", "bci-notebook-spine");
-      path(book, "M18-75L35-76L49 68L32 70Z", "bci-notebook-elastic");
-      path(book, "M-56-43L20-50L29 27L-47 34Z", "bci-notebook-map");
-      [-37,-13,11].forEach(x=>line(book,`M${x}-47L${x+8} 31`,"bci-notebook-grid"));
-      [-25,-1,23].forEach(y=>line(book,`M-52 ${y}L25 ${y-7}`,"bci-notebook-grid"));
-      [[-27,-18],[3,8],[12,-28]].forEach(([cx,cy])=>add(book,"circle",{class:"bci-notebook-tree",cx,cy,r:7}));
-      path(book, "M43-61L57 61L70 56L55-66Z", "bci-notebook-pencil");
-      path(book, "M55-66L43-78L42-61Z", "bci-notebook-pencil-tip");
-      path(book, "M-71 54Q-101 55-101 83", "bci-notebook-tag-cord");
-      add(book, "rect", { class: "bci-notebook-tag", x: -119, y: 72, width: 39, height: 26, rx: 5 });
-      add(book, "circle", { class: "bci-notebook-tag-hole", cx: -111, cy: 80, r: 4 });
-      const tag = add(book, "text", { class: "bci-notebook-tag-text", x: -99, y: 90 }); tag.textContent = "50 HA";
+      const pivot = { x: 38, y: 66 };
+      const blades = [
+        { d: "M38 66Q7 24-64-30Q-71-49-53-59Q13-29 38 66Z", cls: "bci-census-panel emerald" },
+        { d: "M38 66Q17 12-29-62Q-29-80-8-84Q37-25 38 66Z", cls: "bci-census-panel aqua" },
+        { d: "M38 66Q39 6 25-77Q33-94 52-84Q68-15 38 66Z", cls: "bci-census-panel orchid" },
+        { d: "M38 66Q62 12 82-61Q96-72 108-55Q99 5 38 66Z", cls: "bci-census-panel gold" }
+      ];
+      blades.forEach(({ d, cls }) => path(fan, d, cls));
+      [[-51,-38],[2,-61],[42,-66],[92,-45]].forEach(([x,y], index) => addTreeMark(fan, x, y, 6, index === 2));
+      [[-48,-21],[-5,-45],[37,-48],[79,-32]].forEach(([x,y]) => path(fan, `M${pivot.x} ${pivot.y}L${x} ${y}`, "bci-census-rib"));
+      path(fan, "M-44-24Q-7-3 27-8M-14-50Q20-28 52-31M35-56Q61-34 86-37", "bci-census-map-line");
+      add(fan, "circle", { class: "bci-census-pivot", cx: pivot.x, cy: pivot.y, r: 15 });
+      add(fan, "circle", { class: "bci-census-pivot-inner", cx: pivot.x, cy: pivot.y, r: 6 });
+      path(fan, "M26 77Q-5 92-31 106", "bci-census-cord");
+      addPlotTag(fan, -52, 108, -7);
+      path(fan, "M48 78Q69 98 85 111", "bci-census-ribbon");
     } else {
-      path(book, "M-103-71L65-55L94 86L-76 104Z", "bci-notebook-pages");
-      path(book, "M-112-82L52-67L75 79L-91 96Z", "bci-notebook-cover");
-      path(book, "M-112-82L-85-80L-64 93L-91 96Z", "bci-notebook-spine");
-      path(book, "M28-69L48-67L70 79L50 81Z", "bci-notebook-elastic");
-      path(book, "M-73-53L24-43L38 34L-59 46Z", "bci-notebook-map");
-      [-54,-24,6].forEach(x=>line(book,`M${x}-51L${x+13} 42`,"bci-notebook-grid"));
-      [-27,0,27].forEach(y=>line(book,`M-68 ${y}L33 ${y+8}`,"bci-notebook-grid"));
-      [[-42,-22],[-9,12],[15,-17],[-34,27]].forEach(([cx,cy])=>add(book,"circle",{class:"bci-notebook-tree",cx,cy,r:8}));
-      const title = add(book, "text", { class: "bci-notebook-title", x: -19, y: 65 }); title.textContent = "BCI FIELD CENSUS";
-      path(book, "M62-59L83 73L98 66L77-65Z", "bci-notebook-pencil");
-      path(book, "M77-65L62-82L62-59Z", "bci-notebook-pencil-tip");
-      path(book, "M-82 72Q-126 72-127 108", "bci-notebook-tag-cord");
-      add(book, "rect", { class: "bci-notebook-tag", x: -149, y: 96, width: 48, height: 31, rx: 6 });
-      add(book, "circle", { class: "bci-notebook-tag-hole", cx: -139, cy: 105, r: 4.5 });
-      const tag = add(book, "text", { class: "bci-notebook-tag-text", x: -125, y: 117 }); tag.textContent = "50 HA";
+      const pivot = { x: 0, y: 72 };
+      const angles = [-66, -44, -22, 0, 22, 44, 66];
+      angles.forEach((angle, index) => {
+        const panel = add(fan, "g", { transform: `rotate(${angle} ${pivot.x} ${pivot.y})` });
+        path(panel, "M0 72C-19 28-21-46 0-91C21-46 19 28 0 72Z", `bci-census-panel ${index === 3 ? "gold" : index % 3 === 0 ? "orchid" : index % 2 ? "aqua" : "emerald"}`);
+        path(panel, "M0 62V-72", "bci-census-rib");
+        [-43,-13,18].forEach((y, lineIndex) => path(panel, `M${-10 + lineIndex * 2} ${y}Q0 ${y - 5} ${10 - lineIndex * 2} ${y}`, "bci-census-map-line"));
+        if (index % 2 === 0) addTreeMark(panel, index === 0 ? -3 : 3, -30 + (index % 3) * 14, 6, index === 6);
+      });
+      add(fan, "circle", { class: "bci-census-pivot", cx: pivot.x, cy: pivot.y, r: 19 });
+      add(fan, "circle", { class: "bci-census-pivot-inner", cx: pivot.x, cy: pivot.y, r: 8 });
+      path(fan, "M-13 85Q-39 111-70 124", "bci-census-cord");
+      addPlotTag(fan, -95, 128, -6);
+      path(fan, "M14 86Q39 113 64 128", "bci-census-ribbon");
+      path(fan, "M64 128Q75 145 58 154Q48 142 64 128Z", "bci-census-ribbon-tip");
     }
     return true;
   }
@@ -5873,15 +5864,40 @@ function drawTropicalisFieldAccessory(group, item, companion) {
     label("10–15 mm",companion?-39:-50,companion?31:39,"nfr-small");
     return true;
   }
-  if (item.family === "nic1648-stair-side-sample-indexer") {
-    shadow(93,108);
-    const width=companion?126:158;
-    path(group,`M ${-width/2} -77 H ${width/2} L ${width/2+11} 87 H ${-width/2-11} Z`,"nfr-glass");
-    path(group,`M ${-width/2} -77 H ${width/2} V -54 H ${-width/2} Z`,"nfr-primary");
-    path(group,`M ${-width/2+11} -47 H ${width/2-11}`,"nfr-fine");
-    [-35,-8,19].forEach((y,index)=>path(group,`M ${-width/2+18+index*12} ${y} H ${width/2-18} V ${y+17} H ${-width/2+18+index*12} Z`,index%2?"nfr-card-alt":"nfr-card"));
-    path(group,`M ${-width/2+12} 51 H ${width/2-12} V 80 H ${-width/2+12} Z`,"nfr-secondary");
-    label("STAIR SAMPLE",0,72,"nfr-small");
+  if (item.family === "nic1648-single-tail-trail-shoes") {
+    group.classList.add("nic1648-tail-shoe");
+    if (companion) {
+      path(group, "M-111 44Q-105 66-83 72H79Q101 69 109 51L102 67Q94 84 73 88H-82Q-105 84-119 67Z", "nic1648-shoe-sole companion-sole");
+      [-88,-58,-28,4,36,68].forEach((x,index)=>path(group, `M${x} ${index%2?70:68}L${x+14} ${index%2?82:84}`, "nic1648-shoe-tread"));
+      path(group, "M-108 41Q-104 4-73-14Q-35-34 7-22L36-14Q53-7 68-20L86-13L101 43Q85 58 57 61H-77Q-102 59-108 41Z", "nic1648-shoe-upper companion-upper");
+      path(group, "M24-14Q46-41 82-24L91 3Q60 13 35-2Z", "nic1648-shoe-collar");
+      path(group, "M35-2Q60-10 91 3L84 20Q60 8 42 16Z", "nic1648-shoe-opening");
+      path(group, "M-96 20Q-55-2-20 2Q-9 22-17 43H-78Q-99 40-96 20Z", "nic1648-shoe-toe-panel");
+      path(group, "M-16-16Q3-30 26-16L42 27Q17 43-10 32Z", "nic1648-shoe-quarter");
+      [-7,8,23].forEach((x,index)=>{
+        add(group,"circle",{class:"nic1648-shoe-eyelet",cx:x,cy:-10+index*9,r:4.5});
+        path(group,`M${x-17} ${-4+index*9}L${x+19} ${-12+index*9}`,"nic1648-shoe-lace");
+      });
+      path(group, "M73-21Q96-36 103-15L101 20", "nic1648-shoe-heel-loop");
+      path(group, "M-70 55Q-37 43-3 54T68 53", "nic1648-shoe-midsole-line");
+      path(group, "M-83 13Q-67 2-50 6", "nic1648-shoe-spark");
+    } else {
+      path(group, "M-139 49Q-136 77-108 86H93Q126 82 139 56L129 79Q116 103 87 108H-108Q-139 103-154 81Z", "nic1648-shoe-sole");
+      [-112,-78,-44,-10,25,60,94].forEach((x,index)=>path(group, `M${x} ${index%2?86:83}L${x+18} ${index%2?103:106}`, "nic1648-shoe-tread"));
+      path(group, "M-137 46Q-134 0-96-21Q-57-44-9-34L34-27Q49-20 57-56L108-49Q126-15 133 48Q112 72 73 73H-97Q-130 69-137 46Z", "nic1648-shoe-upper");
+      path(group, "M47-55Q75-87 113-59L126-16Q91-7 61-25Z", "nic1648-shoe-collar");
+      path(group, "M61-25Q91-39 126-16L119 7Q91-8 69 5Z", "nic1648-shoe-opening");
+      path(group, "M-125 20Q-82-7-39-2Q-24 21-34 54H-99Q-126 50-125 20Z", "nic1648-shoe-toe-panel");
+      path(group, "M-35-28Q-5-48 34-28L62 47Q21 66-27 48Z", "nic1648-shoe-quarter");
+      [-20,-1,18,37].forEach((x,index)=>{
+        add(group,"circle",{class:"nic1648-shoe-eyelet",cx:x,cy:-21+index*11,r:5.5});
+        path(group,`M${x-22} ${-12+index*11}L${x+25} ${-25+index*11}`,"nic1648-shoe-lace");
+      });
+      path(group, "M103-55Q132-74 142-47L136 2", "nic1648-shoe-heel-loop");
+      path(group, "M-91 70Q-48 55-5 68T83 66", "nic1648-shoe-midsole-line");
+      path(group, "M-109 10Q-90-4-70 2", "nic1648-shoe-spark");
+      path(group, "M84 17Q105 10 127 19L130 47Q111 63 88 65Z", "nic1648-shoe-heel-panel");
+    }
     return true;
   }
   if (item.family === "nic1648-qualitative-male-viewer") {
@@ -6508,7 +6524,7 @@ function renderPiece(target, item, wormPart) {
     ,"ju1428-isotype-triad-comparator": { primary: [362, 270, .3, -1], companion: [8, 286, .25, 2] }
     ,"qg2726-gustavia-flower-headpiece": { primary: [438, 119, .38, -11], companion: [127, 133, .33, -8] }
     ,"qg2726-golden-fleece-cape": { primary: [300, 124, .42, -9], companion: [136, 121, .36, -11] }
-    ,"qg2726-bci-forest-census-notebook": { primary: [365, 265, .42, -6], companion: [43, 276, .34, -7] }
+    ,"qg2726-bci-forest-census-map-fans": { primary: [364, 258, .45, -5], companion: [45, 271, .37, 5] }
     ,"ju1873-cacao-specimen-lantern": { primary: [385, 132, .37, -2], companion: [-8, 118, .28, 3] }
     ,"ju1873-balinese-endek-wrap": { primary: [254, 190, .43, 13], companion: [113, 199, .34, 20] }
     ,"ju1873-balinese-gamelan-gong": { primary: [390, 257, .38, -2], companion: [24, 283, .31, 3] }
@@ -6525,7 +6541,7 @@ function renderPiece(target, item, wormPart) {
     ,"qg131-four-date-culture-relay": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"qg131-mating-id-motion-theatre": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
     ,"nic1648-fig-diameter-comparator": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
-    ,"nic1648-stair-side-sample-indexer": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
+    ,"nic1648-single-tail-trail-shoes": { primary: [119, 260, .42, 49], companion: [27, 187, .29, 49] }
     ,"nic1648-qualitative-male-viewer": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
     ,"mahahual-reef-ruffle-swim-costumes": { primary: [220, 155, .5, 20], companion: [67, 149, .37, 34] }
     ,"mahahual-caribbean-sun-spectacles": { primary: [332, 56, .34, -3], companion: [112, 105, .23, 3] }

@@ -1826,20 +1826,24 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .bci-fleece-horn { fill: none; stroke: var(--bci-gold); stroke-width: 5; stroke-linecap: round; }
 .bci-fleece-cord { fill: none; stroke: var(--bci-teal); stroke-width: 4; stroke-linecap: round; }
 .bci-fleece-tassel { fill: var(--bci-coral); stroke: var(--bci-ink); stroke-width: 2.5; stroke-linejoin: round; }
-.bci-notebook-pages { fill: #fff6dc; stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
-.bci-notebook-cover { fill: #168b70; stroke: var(--bci-ink); stroke-width: 3.5; stroke-linejoin: round; }
-.bci-notebook-spine { fill: #4d52a4; stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
-.bci-notebook-elastic { fill: #9b4f9c; stroke: #263955; stroke-width: 2.4; stroke-linejoin: round; }
-.bci-notebook-map { fill: #9fe0cf; stroke: #263955; stroke-width: 2.5; stroke-linejoin: round; }
-.bci-notebook-grid { fill: none; stroke: rgba(38,57,85,.7); stroke-width: 1.8; stroke-linecap: round; }
-.bci-notebook-tree { fill: #f3c747; stroke: #263955; stroke-width: 2; }
-.bci-notebook-title { fill: #fff7df; font: 900 10px/1 var(--sans); letter-spacing: .035em; text-anchor: middle; paint-order: stroke; stroke: #263955; stroke-width: 2.5px; }
-.bci-notebook-pencil { fill: #e45e78; stroke: #263955; stroke-width: 3; stroke-linejoin: round; }
-.bci-notebook-pencil-tip { fill: #f3c747; stroke: #263955; stroke-width: 3; stroke-linejoin: round; }
-.bci-notebook-tag-cord { fill: none; stroke: #9b4f9c; stroke-width: 4; stroke-linecap: round; }
-.bci-notebook-tag { fill: #dce8e9; stroke: #263955; stroke-width: 2.5; }
-.bci-notebook-tag-hole { fill: #263955; stroke: #fff7df; stroke-width: 1.5; }
-.bci-notebook-tag-text { fill: #263955; font: 900 9px/1 var(--sans); text-anchor: middle; }
+.bci-census-panel { stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
+.bci-census-panel.emerald { fill: #178d71; }
+.bci-census-panel.aqua { fill: #72d7ce; }
+.bci-census-panel.orchid { fill: #9b55a2; }
+.bci-census-panel.gold { fill: #efbd4d; }
+.bci-census-rib { fill: none; stroke: #fff2bd; stroke-width: 4; stroke-linecap: round; }
+.bci-census-map-line { fill: none; stroke: rgba(38,57,85,.72); stroke-width: 2.3; stroke-linecap: round; }
+.bci-census-tree { fill: #e95f7e; stroke: var(--bci-ink); stroke-width: 2; }
+.bci-census-tree.accent { fill: #fff3c5; }
+.bci-census-tree-stem { fill: none; stroke: var(--bci-ink); stroke-width: 2; stroke-linecap: round; }
+.bci-census-pivot { fill: #e45e78; stroke: var(--bci-ink); stroke-width: 3; }
+.bci-census-pivot-inner { fill: #fff3c5; stroke: #92537f; stroke-width: 2; }
+.bci-census-cord { fill: none; stroke: #9b4f9c; stroke-width: 4; stroke-linecap: round; }
+.bci-census-tag { fill: #dce8e9; stroke: var(--bci-ink); stroke-width: 2.7; stroke-linejoin: round; }
+.bci-census-tag-hole { fill: var(--bci-ink); stroke: #fff7df; stroke-width: 1.5; }
+.bci-census-tag-text { fill: var(--bci-ink); font: 900 11px/1 var(--sans); text-anchor: middle; }
+.bci-census-ribbon { fill: none; stroke: #e45e78; stroke-width: 6; stroke-linecap: round; }
+.bci-census-ribbon-tip { fill: #e45e78; stroke: var(--bci-ink); stroke-width: 2.5; stroke-linejoin: round; }
 
 .sanda-ju1873-accessory {
   --sanda-ink: #28344f;
@@ -4994,7 +4998,36 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .tropicalis-field-redesign.tfr-manaus { --nfr-primary:#4b51ae; --nfr-secondary:#31bba5; --nfr-accent:#e84d76; }
 .tropicalis-field-redesign.tfr-oahu { --nfr-primary:#4656b3; --nfr-secondary:#36bea9; --nfr-accent:#ec527e; }
 .tropicalis-field-redesign.tfr-kauai-qg131 { --nfr-primary:#4753b0; --nfr-secondary:#35bdaa; --nfr-accent:#e94f7c; }
-.tropicalis-field-redesign.tfr-new-taipei { --nfr-primary:#4d50ae; --nfr-secondary:#30baa7; --nfr-accent:#eb527a; }
+.tropicalis-field-redesign.tfr-new-taipei {
+  --nfr-primary:#4d50ae;
+  --nfr-secondary:#30baa7;
+  --nfr-accent:#eb527a;
+  --nt-shoe-ink:#273451;
+  --nt-shoe-berry:#be4772;
+  --nt-shoe-coral:#ed726f;
+  --nt-shoe-indigo:#5552ad;
+  --nt-shoe-blue:#338da5;
+  --nt-shoe-aqua:#69d2c5;
+  --nt-shoe-gold:#efbd4e;
+  --nt-shoe-ivory:#fff4d3;
+}
+.tfr-new-taipei.nic1648-tail-shoe { filter:drop-shadow(0 5px 4px rgba(25,34,55,.28)); }
+.tfr-new-taipei .nic1648-shoe-sole { fill:var(--nt-shoe-aqua);stroke:var(--nt-shoe-ink);stroke-width:7;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-shoe-sole.companion-sole { fill:var(--nt-shoe-gold); }
+.tfr-new-taipei .nic1648-shoe-tread { fill:none;stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-shoe-upper { fill:var(--nt-shoe-coral);stroke:var(--nt-shoe-ink);stroke-width:7;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-shoe-upper.companion-upper { fill:var(--nt-shoe-indigo); }
+.tfr-new-taipei .nic1648-shoe-collar { fill:var(--nt-shoe-berry);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-shoe-opening { fill:var(--nt-shoe-ivory);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-shoe-toe-panel { fill:var(--nt-shoe-gold);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-shoe-quarter { fill:var(--nt-shoe-berry);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
+.tfr-new-taipei.nfr-companion .nic1648-shoe-quarter { fill:var(--nt-shoe-blue); }
+.tfr-new-taipei .nic1648-shoe-eyelet { fill:var(--nt-shoe-ivory);stroke:var(--nt-shoe-ink);stroke-width:2.5; }
+.tfr-new-taipei .nic1648-shoe-lace { fill:none;stroke:var(--nt-shoe-gold);stroke-width:6;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-shoe-heel-loop { fill:none;stroke:var(--nt-shoe-gold);stroke-width:10;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-shoe-midsole-line { fill:none;stroke:var(--nt-shoe-ivory);stroke-width:4;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-shoe-spark { fill:none;stroke:var(--nt-shoe-ivory);stroke-width:5;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-shoe-heel-panel { fill:var(--nt-shoe-indigo);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
 .tropicalis-field-redesign.tfr-pohnpei { --nfr-primary:#4458b2; --nfr-secondary:#32b9a4; --nfr-accent:#e9507f; }
 .tropicalis-field-redesign.tfr-queensland { --nfr-primary:#4a52af; --nfr-secondary:#37bda7; --nfr-accent:#e84d77; }
 .tropicalis-field-redesign.tfr-reunion { --nfr-primary:#4555b1; --nfr-secondary:#32bbaa; --nfr-accent:#eb517c; }

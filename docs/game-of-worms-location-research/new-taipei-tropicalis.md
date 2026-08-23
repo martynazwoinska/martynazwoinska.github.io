@@ -1,8 +1,8 @@
 # New Taipei City *Caenorhabditis tropicalis* NIC1648 location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-08-23
 
-> **Current production accessory contract:** `fig measuring calipers`, `stair-side sample bags`, and `male-count microscopes`. These recognizable objects supersede the earlier abstract mechanism sketches below while preserving the measured fig size and qualitative male observation.
+> **Current production accessory contract:** `fig measuring calipers`, `single-tail trail shoes`, and `male-count microscopes`. The single oversized shoe fitted to each worm is a playful response to the recorded concrete forest stairs, not collection equipment; the calipers and microscopes preserve the measured fig size and qualitative male observation.
 
 ## Purpose
 
@@ -291,8 +291,8 @@ Use this exact data row:
   "New Taipei City, Taiwan · NIC1648",
   "NIC1648 10–15 mm fig comparator",
   "nic1648-fig-diameter-comparator",
-  "NIC1648 stair-side sample indexer",
-  "nic1648-stair-side-sample-indexer",
+  "NIC1648 single-tail trail shoes",
+  "nic1648-single-tail-trail-shoes",
   "NIC1648 qualitative male viewer",
   "nic1648-qualitative-male-viewer"
 ]
@@ -308,8 +308,8 @@ const newTaipeiNIC1648RendererIds = new Set([
 ]);
 ```
 
-All six drawings are movable scientific or provenance mechanisms, not
-costumes.
+All six drawings are independently movable. The shoes are playful regional
+fantasy; the calipers and microscopes remain evidence-led scientific props.
 
 ### NIC1648 10–15 mm fig comparator
 
@@ -330,24 +330,28 @@ The drawings encode the recorded range; they are not reconstructions of a
 field instrument. Do not imply a mean, exact specimen measurement, sample
 count or fig species.
 
-### NIC1648 stair-side sample indexer
+### NIC1648 single-tail trail shoes
 
-Family ID: `nic1648-stair-side-sample-indexer`
+Family ID: `nic1648-single-tail-trail-shoes`
 
-Exact basis: the substrate was recorded on the concrete stairs and beside
-them.
+Playful basis: the substrate was recorded on and beside concrete stairs. A
+single enormous shoe fitted to a nematode tail makes that stair setting funny
+without pretending the shoe was collection equipment.
 
-Primary: a wide low plan-view indexing deck with two offset tread slabs, one
-`ON STEP` specimen shutter, one `BESIDE` litter-pocket shutter, a visibly
-connected coordinate drum and a separate vial cradle.
+Primary: one oversized coral-and-berry high-top trail shoe wrapped around the
+hermaphrodite tail. It has a fitted ivory opening, distinct upper and quarter
+panels, a gold toe cap and laces, heel loop, curved midsole and deep aqua tread.
 
-Companion: a tall folding stair column with alternating tread plates, one
-offset side-litter drawer, a descending chain linking both collection zones,
-a side crank and reversible `NIC1648 / 3b` plate.
+Companion: one independently constructed indigo low trail shoe fitted to the
+male tail. It has a different collar, toe, quarters, eyelet rhythm, heel and
+gold sole construction. It remains deliberately oversized relative to the
+male while respecting his smaller body.
 
-The primary must read horizontally and the companion vertically. Do not encode
-an exact stair count, landing arrangement, distance, route map or waterfall
-view.
+Each worm receives exactly one shoe, never a floating pair. Align each opening
+and sole with the local tail angle, keep both faces and body outlines clear,
+and retain enough colour contrast against the dark green stair background.
+Do not imply an exact stair count, route, footwear tradition or collection
+method.
 
 ### NIC1648 qualitative male viewer
 
@@ -382,9 +386,9 @@ These require final browser tuning:
   primary: [374, 126, .34, -2],
   companion: [-8, 116, .27, 2]
 },
-"nic1648-stair-side-sample-indexer": {
-  primary: [220, 187, .32, -1],
-  companion: [108, 213, .26, 2]
+"nic1648-single-tail-trail-shoes": {
+  primary: [119, 260, .42, 49],
+  companion: [27, 187, .29, 49]
 },
 "nic1648-qualitative-male-viewer": {
   primary: [370, 266, .33, -1],
@@ -498,7 +502,7 @@ Expected resulting totals:
 
 ## Exact catalogue replacement row
 
-| 34 | *C. tropicalis* — **New Taipei City, Taiwan · NIC1648**; isotype-reference strain, previously 3b; 25.06574, 121.82753; forest at 226 m; small 10–15 mm figs whose presumed decay was not confirmed, on and beside concrete stairs descending toward Menghuan Falls in Ruifang District; sampled by C. Gosse on 17 October 2017 and isolated by C. Braendle; ITS2 identification; strain record notes no bleaching and many males qualitatively; fig species, quantity, attachment or fall status, exact decay geometry, weather, surrounding vegetation and collection-patch view unreported; new-taipei-nic1648-ruifang-fig-stairs | Low forest-stair view. **F:** small anonymous fig forms divided between one broad concrete tread and adjacent leaf litter, with number, form and decay explicitly illustrative. **M:** one broken diagonal concrete stair flight turning around clear central play space. **B:** steep closed forest of unequal unidentified trunks around one narrow route-shaped light opening. **Lock:** small figs straddling a broad tread edge beneath a descending zig-zag stair corridor; no coast, hoodoos, open sea, waterfall, temple, ridge panorama or inferred fig tree. | **NIC1648 10–15 mm fig comparator:** P broad twin-jaw measuring bench with separate 10/15 stops, unequal specimen cups, micrometer drum and vial / C tall counterweighted ring-gauge tower with separate 10 and 15 apertures, sliding cup, lower drawer and NIC1648 plate. **NIC1648 stair-side sample indexer:** P wide plan-view tread deck with separate ON STEP and BESIDE shutters, coordinate drum and vial cradle / C tall folding stair column with offset litter drawer, connected descending chain, side crank and NIC1648/3b plate; no invented stair count or waterfall view. **NIC1648 qualitative male viewer:** P broad multi-window observation drum with abstract worm strips, male-tail reference gate, movable MALES NOTED shutter and separate vial / C tall two-channel optical column with staggered apertures, rotating field strip, qualitative dial and lower culture drawer; no count, frequency, inheritance claim or causal link to the separate no-bleach note. |
+| 34 | *C. tropicalis* — **New Taipei City, Taiwan · NIC1648**; isotype-reference strain, previously 3b; 25.06574, 121.82753; forest at 226 m; small 10–15 mm figs whose presumed decay was not confirmed, on and beside concrete stairs descending toward Menghuan Falls in Ruifang District; sampled by C. Gosse on 17 October 2017 and isolated by C. Braendle; ITS2 identification; strain record notes no bleaching and many males qualitatively; fig species, quantity, attachment or fall status, exact decay geometry, weather, surrounding vegetation and collection-patch view unreported; new-taipei-nic1648-ruifang-fig-stairs | Low forest-stair view. **F:** small anonymous fig forms divided between one broad concrete tread and adjacent leaf litter, with number, form and decay explicitly illustrative. **M:** one broken diagonal concrete stair flight turning around clear central play space. **B:** steep closed forest of unequal unidentified trunks around one narrow route-shaped light opening. **Lock:** small figs straddling a broad tread edge beneath a descending zig-zag stair corridor; no coast, hoodoos, open sea, waterfall, temple, ridge panorama or inferred fig tree. | **Fig measuring calipers:** P broad complete caliper with a berry fig form, readable 10–15 mm scale and deep jaws / C narrower independently proportioned caliper. **Single-tail trail shoes:** P one oversized coral-and-berry high-top with fitted opening, gold laces, heel loop, panel seams and deep aqua tread around the hermaphrodite tail / C one independently constructed indigo low trail shoe with different collar, quarters, lacing, toe and gold sole fitted to the male tail. The shoes are a playful response to the recorded concrete forest stairs, not collection equipment. **Male-count microscopes:** P large complete microscope with objective, stage and base / C compact independently proportioned microscope; the public label remains qualitative and does not assert a count. |
 
 ## Acceptance checks
 
