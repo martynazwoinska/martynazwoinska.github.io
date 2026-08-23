@@ -3901,7 +3901,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   text-transform: uppercase;
 }
 .family-info-intro {
-  max-width: 800px;
+  max-width: 62rem;
   margin: 16px 0 0;
   color: var(--ink-soft);
   font-size: 1.03rem;
