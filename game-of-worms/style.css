@@ -5009,19 +5009,24 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .tfr-new-taipei.nic1648-boba-jetpack { filter:drop-shadow(0 5px 4px rgba(25,34,55,.28)); }
 .tfr-new-taipei .nic1648-magpie-body { fill:var(--nt-magpie-blue);stroke:var(--nt-shoe-ink);stroke-width:7;stroke-linejoin:round; }
 .tfr-new-taipei .nic1648-magpie-body.companion { fill:var(--nt-magpie-deep); }
-.tfr-new-taipei .nic1648-magpie-wing { fill:var(--nt-magpie-aqua);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-magpie-wing-far { fill:var(--nt-magpie-deep);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-magpie-head { fill:var(--nt-shoe-ink);stroke:var(--nt-shoe-ivory);stroke-width:5; }
-.tfr-new-taipei .nic1648-magpie-eye { fill:var(--nt-shoe-ivory);stroke:var(--nt-shoe-ink);stroke-width:2; }
-.tfr-new-taipei .nic1648-magpie-beak { fill:var(--nt-magpie-coral);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-magpie-tail { fill:var(--nt-magpie-blue);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-magpie-tail.alternate { fill:var(--nt-magpie-aqua); }
-.tfr-new-taipei .nic1648-magpie-tail.third { fill:var(--nt-magpie-deep); }
-.tfr-new-taipei .nic1648-magpie-tail-tip { fill:var(--nt-shoe-ivory);stroke:var(--nt-shoe-ink);stroke-width:4;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-kite-panel { fill:var(--nt-magpie-aqua);stroke:var(--nt-shoe-ink);stroke-width:3;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-kite-panel-alt { fill:var(--nt-magpie-blue);stroke:var(--nt-shoe-ink);stroke-width:3;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-kite-panel-deep { fill:var(--nt-magpie-deep);stroke:var(--nt-shoe-ink);stroke-width:3;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-kite-panel-soft { fill:color-mix(in srgb,var(--nt-magpie-aqua) 70%,var(--nt-shoe-ivory));stroke:var(--nt-shoe-ink);stroke-width:3;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-magpie-emblem-body { fill:var(--nt-magpie-blue);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-magpie-emblem-body.companion { fill:var(--nt-magpie-aqua); }
+.tfr-new-taipei .nic1648-magpie-emblem-wing { fill:var(--nt-magpie-aqua);stroke:var(--nt-shoe-ink);stroke-width:4;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-magpie-emblem-head { fill:var(--nt-shoe-ink);stroke:var(--nt-shoe-ivory);stroke-width:4; }
+.tfr-new-taipei .nic1648-magpie-emblem-eye { fill:var(--nt-shoe-ivory);stroke:var(--nt-shoe-ink);stroke-width:2; }
+.tfr-new-taipei .nic1648-magpie-emblem-beak { fill:var(--nt-magpie-coral);stroke:var(--nt-shoe-ink);stroke-width:4;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-magpie-emblem-tail { fill:var(--nt-magpie-blue);stroke:var(--nt-shoe-ink);stroke-width:4;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-magpie-emblem-tail.alternate { fill:var(--nt-magpie-aqua); }
 .tfr-new-taipei .nic1648-kite-spar { fill:none;stroke:var(--nt-shoe-gold);stroke-width:5;stroke-linecap:round;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-kite-string { fill:none;stroke:var(--nt-shoe-ivory);stroke-width:4;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-kite-tail { fill:none;stroke:var(--nt-magpie-deep);stroke-width:8;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-kite-bow { fill:var(--nt-magpie-coral);stroke:var(--nt-shoe-ink);stroke-width:4;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-kite-string { fill:none;stroke:var(--nt-shoe-ivory);stroke-width:4;stroke-linecap:round;stroke-dasharray:10 6; }
 .tfr-new-taipei .nic1648-kite-reel { fill:var(--nt-magpie-coral);stroke:var(--nt-shoe-ink);stroke-width:5; }
-.tfr-new-taipei .nic1648-kite-reel-spoke,.tfr-new-taipei .nic1648-magpie-feather-line { fill:none;stroke:var(--nt-shoe-gold);stroke-width:4;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-kite-reel-spoke { fill:none;stroke:var(--nt-shoe-gold);stroke-width:4;stroke-linecap:round; }
 .tfr-new-taipei .nic1648-boba-harness { fill:none;stroke:var(--nt-shoe-gold);stroke-width:10;stroke-linecap:round; }
 .tfr-new-taipei .nic1648-boba-cup { fill:var(--nt-boba-glass);stroke:var(--nt-shoe-ink);stroke-width:7;stroke-linejoin:round; }
 .tfr-new-taipei .nic1648-boba-tea { fill:var(--nt-boba-tea);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
@@ -5034,23 +5039,21 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .tfr-new-taipei .nic1648-boba-thruster { fill:var(--nt-shoe-gold);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
 .tfr-new-taipei .nic1648-boba-flame { fill:var(--nt-magpie-coral);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
 .tfr-new-taipei .nic1648-boba-highlight,.tfr-new-taipei .nic1648-boba-liquid-line { fill:none;stroke:var(--nt-shoe-ivory);stroke-width:5;stroke-linecap:round; }
-.tfr-new-taipei.nic1648-tail-shoe { filter:drop-shadow(0 5px 4px rgba(25,34,55,.28)); }
-.tfr-new-taipei .nic1648-shoe-sole { fill:var(--nt-shoe-aqua);stroke:var(--nt-shoe-ink);stroke-width:7;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-shoe-sole.companion-sole { fill:var(--nt-shoe-gold); }
-.tfr-new-taipei .nic1648-shoe-tread { fill:none;stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linecap:round; }
-.tfr-new-taipei .nic1648-shoe-upper { fill:var(--nt-shoe-coral);stroke:var(--nt-shoe-ink);stroke-width:7;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-shoe-upper.companion-upper { fill:var(--nt-shoe-indigo); }
-.tfr-new-taipei .nic1648-shoe-collar { fill:var(--nt-shoe-berry);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-shoe-opening { fill:var(--nt-shoe-ivory);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-shoe-toe-panel { fill:var(--nt-shoe-gold);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-shoe-quarter { fill:var(--nt-shoe-berry);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
-.tfr-new-taipei.nfr-companion .nic1648-shoe-quarter { fill:var(--nt-shoe-blue); }
-.tfr-new-taipei .nic1648-shoe-eyelet { fill:var(--nt-shoe-ivory);stroke:var(--nt-shoe-ink);stroke-width:2.5; }
-.tfr-new-taipei .nic1648-shoe-lace { fill:none;stroke:var(--nt-shoe-gold);stroke-width:6;stroke-linecap:round; }
-.tfr-new-taipei .nic1648-shoe-heel-loop { fill:none;stroke:var(--nt-shoe-gold);stroke-width:10;stroke-linecap:round; }
-.tfr-new-taipei .nic1648-shoe-midsole-line { fill:none;stroke:var(--nt-shoe-ivory);stroke-width:4;stroke-linecap:round; }
-.tfr-new-taipei .nic1648-shoe-spark { fill:none;stroke:var(--nt-shoe-ivory);stroke-width:5;stroke-linecap:round; }
-.tfr-new-taipei .nic1648-shoe-heel-panel { fill:var(--nt-shoe-indigo);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
+.tfr-new-taipei.nic1648-rain-boot { filter:drop-shadow(0 5px 4px rgba(25,34,55,.28)); }
+.tfr-new-taipei .nic1648-boot-sole { fill:var(--nt-shoe-aqua);stroke:var(--nt-shoe-ink);stroke-width:8;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-boot-sole.companion-sole { fill:var(--nt-shoe-gold); }
+.tfr-new-taipei .nic1648-boot-tread { fill:none;stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-boot-shell { fill:var(--nt-shoe-coral);stroke:var(--nt-shoe-ink);stroke-width:8;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-boot-shell.companion-shell { fill:var(--nt-shoe-indigo); }
+.tfr-new-taipei .nic1648-boot-top-rim { fill:var(--nt-shoe-berry);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
+.tfr-new-taipei.nfr-companion .nic1648-boot-top-rim { fill:var(--nt-shoe-blue); }
+.tfr-new-taipei .nic1648-boot-opening { fill:color-mix(in srgb,var(--worm-color) 78%,var(--nt-shoe-ivory));stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-boot-ankle-panel { fill:var(--nt-shoe-berry);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-boot-ankle-panel.companion-panel { fill:var(--nt-shoe-blue); }
+.tfr-new-taipei .nic1648-boot-toe-cap { fill:var(--nt-shoe-gold);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-boot-midsole-line,.tfr-new-taipei .nic1648-boot-highlight,.tfr-new-taipei .nic1648-boot-ankle-crease { fill:none;stroke:var(--nt-shoe-ivory);stroke-width:5;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-boot-pull-tab { fill:none;stroke:var(--nt-shoe-gold);stroke-width:11;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-boot-rib { fill:none;stroke:color-mix(in srgb,var(--nt-shoe-ivory) 68%,transparent);stroke-width:5;stroke-linecap:round; }
 .tropicalis-field-redesign.tfr-pohnpei { --nfr-primary:#4458b2; --nfr-secondary:#32b9a4; --nfr-accent:#e9507f; }
 .tropicalis-field-redesign.tfr-queensland { --nfr-primary:#4a52af; --nfr-secondary:#37bda7; --nfr-accent:#e84d77; }
 .tropicalis-field-redesign.tfr-reunion { --nfr-primary:#4555b1; --nfr-secondary:#32bbaa; --nfr-accent:#eb517c; }

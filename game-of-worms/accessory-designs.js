@@ -40,7 +40,7 @@ const rows = [
   ["tropicalis", "Manaus region, Brazil · JU1976", "anonymous-fruit sample cases", "ju1976-substrate-identity-shadow-theatre", "four-metre tape measures", "ju1975-ju1976-four-metre-sample-rail", "soil-profile charts", "manaus-plateau-valley-soil-harmonograph"],
   ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "fallen-flower sample boxes", "eca789-fallen-flower-decay-chronoscope", "temperature-humidity meters", "eca789-paired-microclimate-harmonograph", "field-record folders", "c0085-field-record-relay"],
   ["tropicalis", "Kauaʻi, Hawaiʻi · QG131", "pandanus sample baskets", "qg131-paired-pandanus-key-sorter", "four-date culture calendars", "qg131-four-date-culture-relay", "mating-test plates", "qg131-mating-id-motion-theatre"],
-  ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Taiwan blue-magpie kites", "nic1648-taiwan-blue-magpie-kites", "single-tail trail shoes", "nic1648-single-tail-trail-shoes", "bubble-tea jetpacks", "nic1648-bubble-tea-jetpacks"],
+  ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Taiwan blue-magpie kites", "nic1648-taiwan-blue-magpie-kites", "single-tail rain boots", "nic1648-single-tail-rain-boots", "bubble-tea jetpacks", "nic1648-bubble-tea-jetpacks"],
   ["tropicalis", "Pohnpei, Micronesia · QG4739", "kotop sample boxes", "qg4739-kotop-name-concordance", "paired thermometers", "qg4739-paired-temperature-differential", "seven-vial sample racks", "c0230-seven-isotype-registry"],
   ["tropicalis", "Queensland, Australia · QG2904", "blackbean pod cases", "qg2904-uncracked-pod-seam-scanner", "recovery calendars", "qg2904-collection-to-funnel-relay", "canopy-crane models", "dro-canopy-crane-strata-mapper"],
   ["tropicalis", "Saint-Benoît, Réunion · JU1373", "Réunion torch-ginger trays", "ju1373-torch-ginger-bract-collar", "type-isolate badges", "ju1373-type-isolate-signet-engine", "windward rain gauges", "saint-benoit-windward-slope-mobile"]
@@ -5787,75 +5787,74 @@ function drawTropicalisFieldAccessory(group, item, companion) {
   }
   if (item.family === "nic1648-taiwan-blue-magpie-kites") {
     group.classList.add("nic1648-magpie-kite");
-    shadow(companion ? 92 : 122, companion ? 116 : 124);
+    shadow(companion ? 96 : 124, companion ? 136 : 154);
     const kite = add(group, "g", { class: "nic1648-magpie-kite-body" });
     if (companion) {
-      path(kite, "M-91-24Q-66-71-16-63Q17-58 43-35Q69-42 91-24Q68-7 46-2Q26 6 9 22Q-9 41-37 34Q-63 24-91-24Z", "nic1648-magpie-body companion");
-      path(kite, "M-37-29Q-5-82 45-55Q60-43 51-18Q13-36-21-4Z", "nic1648-magpie-wing companion");
-      path(kite, "M37-34Q64-61 92-40Q106-28 91-12Q62-24 43-7Z", "nic1648-magpie-wing-far companion");
-      add(kite, "circle", { class: "nic1648-magpie-head", cx: 57, cy: -24, r: 24 });
-      path(kite, "M78-28L108-18L79-10Z", "nic1648-magpie-beak");
-      add(kite, "circle", { class: "nic1648-magpie-eye", cx: 64, cy: -30, r: 5 });
-      path(kite, "M-29 25Q-58 67-81 109Q-55 98-34 81Q-20 60-8 33Z", "nic1648-magpie-tail companion");
-      path(kite, "M-7 30Q-22 78-31 121Q-8 105 8 82Q19 59 17 29Z", "nic1648-magpie-tail companion alternate");
-      path(kite, "M-79 106L-64 83L-46 94Q-60 108-79 106ZM-30 118L-24 94L-7 101Q-15 116-30 118Z", "nic1648-magpie-tail-tip");
-      path(kite, "M-72-17Q-9-17 80-22M-20-56L4 28M56-46L42-5", "nic1648-kite-spar");
-      path(kite, "M2 28Q27 71 12 119", "nic1648-kite-string");
-      add(kite, "circle", { class: "nic1648-kite-reel", cx: 8, cy: 127, r: 17 });
-      path(kite, "M-1 127H17M8 118V136", "nic1648-kite-reel-spoke");
+      path(kite, "M0-108L91-37L73 59L0 105L-79 57L-95-35Z", "nic1648-magpie-body companion");
+      path(kite, "M0-101L85-35L4-2Z", "nic1648-kite-panel");
+      path(kite, "M4-2L70 55L0 98Z", "nic1648-kite-panel-alt");
+      path(kite, "M-88-34L0-101L4-2Z", "nic1648-kite-panel-deep");
+      path(kite, "M-72 53L4-2L0 98Z", "nic1648-kite-panel-soft");
+      path(kite, "M0-103V100M-88-34Q0-4 86-36M-75 54Q0 27 70 56", "nic1648-kite-spar");
+      path(kite, "M-7-14Q10-38 37-25Q53-14 43 8Q21 14 1 4Z", "nic1648-magpie-emblem-body companion");
+      add(kite, "circle", { class: "nic1648-magpie-emblem-head", cx: 38, cy: -22, r: 14 });
+      path(kite, "M50-24L67-18L51-13Z", "nic1648-magpie-emblem-beak");
+      path(kite, "M-1 2Q-24 24-36 51Q-15 40 1 19Z", "nic1648-magpie-emblem-tail");
+      path(kite, "M-1 8Q-9 34-12 57Q6 43 15 20Z", "nic1648-magpie-emblem-tail alternate");
+      path(kite, "M0 105Q-34 132-7 158Q16 177-17 207", "nic1648-kite-tail");
+      path(kite, "M-17 130L-39 143L-14 153L7 139ZM2 166L-19 179L5 190L25 176", "nic1648-kite-bow");
+      path(kite, "M4-2Q47 39 42 101Q39 138 57 164", "nic1648-kite-string");
+      add(kite, "circle", { class: "nic1648-kite-reel", cx: 61, cy: 176, r: 16 });
+      path(kite, "M52 176H70M61 167V185", "nic1648-kite-reel-spoke");
     } else {
-      path(kite, "M-18-22Q-66-91-143-54Q-117-14-68 8Q-37 22-17 45Q0 64 21 43Q45 18 80 4Q126-15 148-61Q73-92 17-25Z", "nic1648-magpie-body");
-      path(kite, "M-15-22Q-64-113-145-67Q-129-25-82-2Q-45 15-17 42Z", "nic1648-magpie-wing");
-      path(kite, "M16-24Q69-111 149-73Q140-27 93-2Q56 17 20 43Z", "nic1648-magpie-wing-far");
-      add(kite, "circle", { class: "nic1648-magpie-head", cx: 22, cy: -33, r: 31 });
-      path(kite, "M48-39L88-25L50-16Z", "nic1648-magpie-beak");
-      add(kite, "circle", { class: "nic1648-magpie-eye", cx: 30, cy: -40, r: 6 });
-      path(kite, "M-13 43Q-58 89-78 148Q-48 132-22 105Q-5 82 3 54Z", "nic1648-magpie-tail");
-      path(kite, "M4 47Q-12 102-10 160Q14 137 29 108Q41 77 28 46Z", "nic1648-magpie-tail alternate");
-      path(kite, "M20 43Q29 96 56 145Q71 119 68 91Q61 66 38 42Z", "nic1648-magpie-tail third");
-      path(kite, "M-77 146L-64 119L-40 133Q-55 150-77 146ZM-10 158L-4 130L18 140Q8 157-10 158ZM55 143L44 118L65 111Q68 132 55 143Z", "nic1648-magpie-tail-tip");
-      path(kite, "M-127-54Q0-18 132-59M-58-76L1 47M70-76L15 44", "nic1648-kite-spar");
-      path(kite, "M5 51Q42 92 24 153", "nic1648-kite-string");
-      add(kite, "circle", { class: "nic1648-kite-reel", cx: 17, cy: 165, r: 21 });
-      path(kite, "M5 165H29M17 153V177", "nic1648-kite-reel-spoke");
-      path(kite, "M-105-49Q-84-30-64-19M105-55Q83-34 61-20", "nic1648-magpie-feather-line");
+      path(kite, "M0-145L126-10L0 137L-126-10Z", "nic1648-magpie-body");
+      path(kite, "M0-137L117-10L4-3Z", "nic1648-kite-panel");
+      path(kite, "M4-3L0 128L117-10Z", "nic1648-kite-panel-alt");
+      path(kite, "M-117-10L0-137L4-3Z", "nic1648-kite-panel-deep");
+      path(kite, "M-117-10L0 128L4-3Z", "nic1648-kite-panel-soft");
+      path(kite, "M0-139V131M-119-10H119", "nic1648-kite-spar");
+      path(kite, "M-4-17Q19-58 62-35Q84-20 69 13Q31 26-3 11Z", "nic1648-magpie-emblem-body");
+      path(kite, "M-1-8Q-46-51-76-10Q-50 22-5 17Z", "nic1648-magpie-emblem-wing");
+      add(kite, "circle", { class: "nic1648-magpie-emblem-head", cx: 65, cy: -35, r: 20 });
+      path(kite, "M82-38L109-28L83-20Z", "nic1648-magpie-emblem-beak");
+      add(kite, "circle", { class: "nic1648-magpie-emblem-eye", cx: 70, cy: -40, r: 4 });
+      path(kite, "M-6 9Q-52 50-70 91Q-41 79-14 50L6 19Z", "nic1648-magpie-emblem-tail");
+      path(kite, "M2 14Q-18 62-20 100Q7 79 24 50L18 18Z", "nic1648-magpie-emblem-tail alternate");
+      path(kite, "M0 137Q-45 166-13 195Q15 222-27 258", "nic1648-kite-tail");
+      path(kite, "M-20 162L-49 178L-17 191L11 174ZM3 205L-24 222L8 235L34 217", "nic1648-kite-bow");
+      path(kite, "M4-3Q66 57 52 132Q45 174 70 211", "nic1648-kite-string");
+      add(kite, "circle", { class: "nic1648-kite-reel", cx: 76, cy: 225, r: 20 });
+      path(kite, "M64 225H88M76 213V237", "nic1648-kite-reel-spoke");
     }
     return true;
   }
-  if (item.family === "nic1648-single-tail-trail-shoes") {
-    group.classList.add("nic1648-tail-shoe");
+  if (item.family === "nic1648-single-tail-rain-boots") {
+    group.classList.add("nic1648-rain-boot");
     if (companion) {
-      path(group, "M-174 47Q-169 75-139 83H89Q118 80 128 54L121 78Q111 101 81 105H-140Q-171 101-185 78Z", "nic1648-shoe-sole companion-sole");
-      [-149,-113,-77,-39,-1,37,75].forEach((x,index)=>path(group, `M${x} ${index%2?84:81}L${x+18} ${index%2?99:102}`, "nic1648-shoe-tread"));
-      path(group, "M-171 43Q-166-3-124-24Q-75-51-19-36L32-25Q52-18 67-42L104-34Q119-5 123 44Q104 67 68 70H-126Q-163 66-171 43Z", "nic1648-shoe-upper companion-upper");
-      path(group, "M54-42Q77-69 109-44L119-7Q88 2 63-15Z", "nic1648-shoe-collar");
-      path(group, "M63-15Q89-27 119-7L114 14Q88 2 70 20Z", "nic1648-shoe-opening");
-      path(group, "M-157 17Q-109-12-59-4Q-42 20-53 51H-127Q-159 48-157 17Z", "nic1648-shoe-toe-panel");
-      path(group, "M-58-31Q-23-51 23-30L62 45Q17 63-40 47Z", "nic1648-shoe-quarter");
-      [-43,-22,-1,20].forEach((x,index)=>{
-        add(group,"circle",{class:"nic1648-shoe-eyelet",cx:x,cy:-22+index*11,r:4.5});
-        path(group,`M${x-19} ${-14+index*11}L${x+22} ${-26+index*11}`,"nic1648-shoe-lace");
-      });
-      path(group, "M99-41Q126-57 133-32L126 11", "nic1648-shoe-heel-loop");
-      path(group, "M-130 64Q-75 49-17 63T81 61", "nic1648-shoe-midsole-line");
-      path(group, "M-140 6Q-119-9-96-2", "nic1648-shoe-spark");
-      path(group, "M82 18Q103 11 121 22L122 44Q105 59 84 62Z", "nic1648-shoe-heel-panel");
+      path(group, "M-174 48Q-171 77-141 87H74Q107 83 121 55L114 84Q101 108 67 112H-143Q-176 106-188 82Z", "nic1648-boot-sole companion-sole");
+      [-148,-111,-74,-37,0,38,71].forEach((x,index)=>path(group, `M${x} ${index%2?89:86}L${x+17} ${index%2?105:108}`, "nic1648-boot-tread"));
+      path(group, "M-171 44Q-168 3-127-21Q-82-48-25-35L20-25Q43-19 56-43L53-121Q54-145 81-153L112-147Q129-139 127-116L119 43Q101 71 67 74H-128Q-164 69-171 44Z", "nic1648-boot-shell companion-shell");
+      path(group, "M54-137Q82-159 122-142L126-120Q88-133 54-116Z", "nic1648-boot-top-rim");
+      path(group, "M58-123Q86-138 124-122L122-101Q89-112 59-99Z", "nic1648-boot-opening");
+      path(group, "M45-43Q72-68 121-50L119 43Q101 66 70 69H25Q39 16 45-43Z", "nic1648-boot-ankle-panel companion-panel");
+      path(group, "M-158 13Q-111-15-61-7Q-44 20-54 53H-130Q-160 50-158 13Z", "nic1648-boot-toe-cap");
+      path(group, "M-126 62Q-72 50-16 63T67 61", "nic1648-boot-midsole-line");
+      path(group, "M69-150Q68-174 88-179Q108-177 109-151", "nic1648-boot-pull-tab");
+      path(group, "M72-94L74-55M97-101L99-63", "nic1648-boot-rib");
+      path(group, "M-140 4Q-116-10-91-3", "nic1648-boot-highlight");
     } else {
-      path(group, "M-218 51Q-214 85-179 96H111Q146 91 158 58L150 87Q136 116 101 122H-181Q-217 116-234 88Z", "nic1648-shoe-sole");
-      [-190,-147,-104,-60,-16,28,72,112].forEach((x,index)=>path(group, `M${x} ${index%2?99:95}L${x+22} ${index%2?116:119}`, "nic1648-shoe-tread"));
-      path(group, "M-215 47Q-210-9-158-36Q-98-68-29-49L34-36Q58-29 76-67L131-59Q149-20 153 49Q130 78 86 82H-158Q-206 77-215 47Z", "nic1648-shoe-upper");
-      path(group, "M63-66Q95-105 139-71L151-20Q113-9 77-31Z", "nic1648-shoe-collar");
-      path(group, "M77-31Q112-49 151-20L144 8Q111-9 84 9Z", "nic1648-shoe-opening");
-      path(group, "M-198 15Q-140-20-78-9Q-56 20-69 59H-162Q-200 56-198 15Z", "nic1648-shoe-toe-panel");
-      path(group, "M-77-43Q-32-69 26-42L78 55Q21 80-58 58Z", "nic1648-shoe-quarter");
-      [-58,-32,-6,20,46].forEach((x,index)=>{
-        add(group,"circle",{class:"nic1648-shoe-eyelet",cx:x,cy:-33+index*12,r:5.5});
-        path(group,`M${x-24} ${-23+index*12}L${x+28} ${-38+index*12}`,"nic1648-shoe-lace");
-      });
-      path(group, "M128-67Q161-89 171-56L160 2", "nic1648-shoe-heel-loop");
-      path(group, "M-169 80Q-102 61-31 78T102 75", "nic1648-shoe-midsole-line");
-      path(group, "M-177 2Q-151-16-122-7", "nic1648-shoe-spark");
-      path(group, "M103 14Q131 6 151 21L152 49Q132 69 105 74Z", "nic1648-shoe-heel-panel");
+      path(group, "M-221 51Q-218 87-181 99H108Q145 94 160 59L152 91Q137 121 99 126H-184Q-221 120-237 91Z", "nic1648-boot-sole");
+      [-193,-150,-107,-64,-21,22,65,108].forEach((x,index)=>path(group, `M${x} ${index%2?102:98}L${x+21} ${index%2?121:124}`, "nic1648-boot-tread"));
+      path(group, "M-217 47Q-213-4-163-33Q-105-66-36-48L29-33Q55-25 68-49L74-156Q75-181 105-190L145-185Q164-176 161-151L151 49Q130 80 87 84H-160Q-208 78-217 47Z", "nic1648-boot-shell");
+      path(group, "M75-174Q109-199 157-177L159-153Q113-169 74-151Z", "nic1648-boot-top-rim");
+      path(group, "M78-157Q111-175 156-157L153-132Q113-146 77-128Z", "nic1648-boot-opening");
+      path(group, "M54-51Q83-82 151-58L151 48Q129 76 91 78H22Q43 18 54-51Z", "nic1648-boot-ankle-panel");
+      path(group, "M-201 11Q-143-22-81-10Q-58 20-70 61H-164Q-202 57-201 11Z", "nic1648-boot-toe-cap");
+      path(group, "M-170 81Q-102 62-31 79T101 76", "nic1648-boot-midsole-line");
+      path(group, "M93-188Q91-219 116-223Q142-219 139-187", "nic1648-boot-pull-tab");
+      path(group, "M92-127L94-78M124-137L126-88", "nic1648-boot-rib");
+      path(group, "M-179 0Q-151-19-121-9", "nic1648-boot-highlight");
+      path(group, "M58-31Q78-43 99-35", "nic1648-boot-ankle-crease");
     }
     return true;
   }
@@ -6519,9 +6518,9 @@ function renderPiece(target, item, wormPart) {
     ,"qg131-paired-pandanus-key-sorter": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
     ,"qg131-four-date-culture-relay": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"qg131-mating-id-motion-theatre": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
-    ,"nic1648-taiwan-blue-magpie-kites": { primary: [374, 117, .31, -4], companion: [-1, 111, .27, 5] }
-    ,"nic1648-single-tail-trail-shoes": { primary: [63, 273, .39, -29], companion: [0, 204, .3, -31] }
-    ,"nic1648-bubble-tea-jetpacks": { primary: [231, 178, .25, 8], companion: [61, 166, .22, 8] }
+    ,"nic1648-taiwan-blue-magpie-kites": { primary: [380, 112, .33, -4], companion: [-10, 80, .3, -6] }
+    ,"nic1648-single-tail-rain-boots": { primary: [87, 306, .35, -29], companion: [10, 226, .27, -31] }
+    ,"nic1648-bubble-tea-jetpacks": { primary: [231, 178, .29, 8], companion: [92, 142, .25, 8] }
     ,"mahahual-reef-ruffle-swim-costumes": { primary: [220, 155, .5, 20], companion: [67, 149, .37, 34] }
     ,"mahahual-caribbean-sun-spectacles": { primary: [332, 56, .34, -3], companion: [112, 105, .23, 3] }
     ,"mahahual-sea-grape-beach-parasols": { primary: [357, 268, .32, -5], companion: [27, 264, .34, 5] }
