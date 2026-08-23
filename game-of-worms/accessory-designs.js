@@ -5852,30 +5852,30 @@ function drawTropicalisFieldAccessory(group, item, companion) {
   if (item.family === "nic1648-single-tail-rain-boots") {
     group.classList.add("nic1648-rain-boot");
     if (companion) {
-      path(group, "M-208 48Q-205 79-171 91H74Q108 86 122 55L115 88Q101 113 66 117H-174Q-209 111-223 85Z", "nic1648-boot-sole companion-sole");
-      [-181,-145,-109,-73,-37,-1,35,69].forEach((x,index)=>path(group, `M${x} ${index%2?94:91}L${x+17} ${index%2?110:113}`, "nic1648-boot-tread"));
-      path(group, "M-205 44Q-201 0-154-26Q-103-56-38-39L12-27Q38-21 53-48Q44-91 19-127Q0-158 13-187Q24-211 51-218L84-212Q103-203 102-181Q100-151 111-112L119 43Q101 71 67 75H-161Q-198 70-205 44Z", "nic1648-boot-shell companion-shell");
-      path(group, "M14-201Q47-226 94-207L99-184Q53-199 13-177Z", "nic1648-boot-top-rim");
-      path(group, "M18-186Q51-205 92-187L94-166Q54-178 18-161Z", "nic1648-boot-opening");
-      path(group, "M49-52Q75-80 119-61L119 43Q101 67 70 70H22Q38 12 49-52Z", "nic1648-boot-ankle-panel companion-panel");
-      path(group, "M-191 11Q-139-19-81-9Q-59 20-69 56H-160Q-191 52-191 11Z", "nic1648-boot-toe-cap");
-      path(group, "M-159 66Q-95 51-27 66T67 63", "nic1648-boot-midsole-line");
-      path(group, "M28-215Q27-243 53-247Q79-244 78-216", "nic1648-boot-pull-tab");
-      path(group, "M30-166Q21-135 39-101M62-176Q53-139 70-103", "nic1648-boot-rib");
-      path(group, "M-170 3Q-142-14-112-5", "nic1648-boot-highlight");
+      const maleCurve = "M50 169C46 196 25 203 6 181C-2 172-9 163-21 157";
+      path(group, maleCurve, "nic1648-flex-boot-outline companion");
+      path(group, maleCurve, "nic1648-flex-boot-shell companion");
+      path(group, "M-25 149Q-9 147 5 165Q1 177-11 180Q-25 176-31 165Z", "nic1648-flex-toe companion");
+      path(group, "M-29 171Q-10 178 5 190Q24 205 42 190Q49 183 51 173", "nic1648-flex-sole-outline companion");
+      path(group, "M-29 171Q-10 178 5 190Q24 205 42 190Q49 183 51 173", "nic1648-flex-sole companion");
+      path(group, "M37 162Q50 154 63 164L62 176Q50 168 38 177Z", "nic1648-flex-cuff companion");
+      path(group, "M41 164Q50 159 59 165L59 170Q50 166 41 171Z", "nic1648-flex-opening companion");
+      path(group, "M41 182Q29 192 18 190M20 174Q11 181 4 180", "nic1648-flex-rib companion");
+      path(group, "M45 160Q44 149 51 146Q59 147 59 159", "nic1648-flex-pull companion");
+      [[-20,174,-14,179],[-8,181,-2,186],[5,190,11,195]].forEach(([x1,y1,x2,y2])=>path(group,`M${x1} ${y1}L${x2} ${y2}`,"nic1648-flex-tread companion"));
     } else {
-      path(group, "M-266 51Q-262 89-222 102H109Q147 97 162 59L154 94Q139 125 99 131H-225Q-265 124-282 93Z", "nic1648-boot-sole");
-      [-235,-190,-145,-100,-55,-10,35,80,111].forEach((x,index)=>path(group, `M${x} ${index%2?106:102}L${x+22} ${index%2?125:129}`, "nic1648-boot-tread"));
-      path(group, "M-260 47Q-255-8-196-40Q-130-76-48-52L18-35Q46-27 61-56Q51-111 17-159Q-6-194 9-232Q20-260 51-267L91-260Q110-250 109-226Q106-190 119-139L151 49Q130 80 87 85H-203Q-251 79-260 47Z", "nic1648-boot-shell");
-      path(group, "M9-246Q47-277 97-251L101-225Q52-246 8-220Z", "nic1648-boot-top-rim");
-      path(group, "M13-231Q49-252 95-231L96-204Q51-219 13-203Z", "nic1648-boot-opening");
-      path(group, "M52-61Q80-92 128-73L151 49Q129 76 91 79H18Q41 13 52-61Z", "nic1648-boot-ankle-panel");
-      path(group, "M-242 8Q-176-27-103-13Q-77 20-91 64H-206Q-244 59-242 8Z", "nic1648-boot-toe-cap");
-      path(group, "M-215 84Q-132 63-43 82T101 78", "nic1648-boot-midsole-line");
-      path(group, "M24-263Q23-299 55-305Q87-302 84-265", "nic1648-boot-pull-tab");
-      path(group, "M31-201Q19-160 42-119M68-212Q55-166 77-122", "nic1648-boot-rib");
-      path(group, "M-220-2Q-185-23-147-11", "nic1648-boot-highlight");
-      path(group, "M52-40Q75-55 101-44", "nic1648-boot-ankle-crease");
+      const primaryCurve = "M182 203C175 255 122 280 78 228C65 213 52 211 40 219C28 227 18 234 6 233";
+      path(group, primaryCurve, "nic1648-flex-boot-outline");
+      path(group, primaryCurve, "nic1648-flex-boot-shell");
+      path(group, "M-2 219Q23 210 48 225Q49 244 31 253Q10 252-3 239Z", "nic1648-flex-toe");
+      path(group, "M-4 244Q23 258 49 240Q62 235 80 247Q121 280 158 251Q177 236 183 213", "nic1648-flex-sole-outline");
+      path(group, "M-4 244Q23 258 49 240Q62 235 80 247Q121 280 158 251Q177 236 183 213", "nic1648-flex-sole");
+      path(group, "M158 195Q182 181 207 198L205 220Q182 207 160 221Z", "nic1648-flex-cuff");
+      path(group, "M165 198Q182 190 200 200L199 210Q182 202 165 212Z", "nic1648-flex-opening");
+      path(group, "M166 228Q145 252 122 252M132 237Q111 255 91 245M91 231Q72 241 57 226", "nic1648-flex-rib");
+      path(group, "M169 190Q168 171 182 167Q197 170 196 193", "nic1648-flex-pull");
+      [[3,245,15,250],[24,248,35,244],[48,238,58,239],[67,241,78,248],[88,250,100,257]].forEach(([x1,y1,x2,y2])=>path(group,`M${x1} ${y1}L${x2} ${y2}`,"nic1648-flex-tread"));
+      path(group, "M3 226Q20 219 35 225", "nic1648-flex-highlight");
     }
     return true;
   }
@@ -6540,7 +6540,7 @@ function renderPiece(target, item, wormPart) {
     ,"qg131-four-date-culture-relay": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"qg131-mating-id-motion-theatre": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
     ,"nic1648-taiwan-blue-magpie-kites": { primary: [380, 112, .33, -4], companion: [-10, 80, .3, -6] }
-    ,"nic1648-single-tail-rain-boots": { primary: [105, 321, .33, -36], companion: [20, 239, .255, -38] }
+    ,"nic1648-single-tail-rain-boots": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
     ,"nic1648-bubble-tea-jetpacks": { primary: [231, 178, .29, 8], companion: [92, 142, .25, 8] }
     ,"mahahual-reef-ruffle-swim-costumes": { primary: [220, 155, .5, 20], companion: [67, 149, .37, 34] }
     ,"mahahual-caribbean-sun-spectacles": { primary: [332, 56, .34, -3], companion: [112, 105, .23, 3] }

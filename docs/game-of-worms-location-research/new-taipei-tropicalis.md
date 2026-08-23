@@ -347,17 +347,17 @@ Playful basis: the substrate was recorded on and beside concrete stairs. A
 single enormous rain boot fitted to a nematode tail makes that stair setting
 funny without pretending the boot was collection equipment.
 
-Primary: one extra-long coral rubber boot fitted around the hermaphrodite
-tail. Its swept-left berry shaft follows the local tail curve before reaching
-a worm-coloured recessed opening; a pull loop and curved ribs retain the
-Wellington-boot construction. An extended gold toe cap, curved ankle panel and
-deep aqua lug sole complete the silhouette.
+Primary: one flexible coral rubber boot-sock fitted around the hermaphrodite
+tail. Its upper is traced directly along the tail's U-shaped Bézier curve and
+continues into a soft leftward toe rather than imposing a rigid ankle corner.
+A worm-coloured cuff opening, pull loop and curved ribs retain the boot
+construction; a gold toe cap and aqua edge sole complete the silhouette.
 
-Companion: one independently constructed indigo-and-blue rain boot fitted to
-the male tail. It has a proportionally shorter but still elongated
-left-curving shaft, diagonally shaped top rim, different curved rib placement,
-slimmer worm-coloured opening, extended gold toe cap and gold lug sole. It
-remains deliberately oversized relative to the male without copying the
+Companion: one independently constructed indigo-and-blue boot-sock fitted to
+the male tail. Its shorter upper is traced to the male's transformed tail
+curve and continues into its own rounded leftward toe. It uses a slimmer
+worm-coloured cuff opening, different ribs, a gold toe cap and gold edge sole.
+It remains deliberately oversized relative to the male without copying the
 primary boot.
 
 Each worm receives exactly one boot, never a floating pair. Align each shaft
@@ -397,8 +397,8 @@ These require final browser tuning:
   companion: [-10, 80, .3, -6]
 },
 "nic1648-single-tail-rain-boots": {
-  primary: [105, 321, .33, -36],
-  companion: [20, 239, .255, -38]
+  primary: [0, 0, 1, 0],
+  companion: [0, 0, 1, 0]
 },
 "nic1648-bubble-tea-jetpacks": {
   primary: [231, 178, .29, 8],

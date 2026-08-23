@@ -5056,20 +5056,26 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .tfr-new-taipei .nic1648-boba-flame { fill:var(--nt-magpie-coral);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
 .tfr-new-taipei .nic1648-boba-highlight,.tfr-new-taipei .nic1648-boba-liquid-line { fill:none;stroke:var(--nt-shoe-ivory);stroke-width:5;stroke-linecap:round; }
 .tfr-new-taipei.nic1648-rain-boot { filter:drop-shadow(0 5px 4px rgba(25,34,55,.28)); }
-.tfr-new-taipei .nic1648-boot-sole { fill:var(--nt-shoe-aqua);stroke:var(--nt-shoe-ink);stroke-width:8;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-boot-sole.companion-sole { fill:var(--nt-shoe-gold); }
-.tfr-new-taipei .nic1648-boot-tread { fill:none;stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linecap:round; }
-.tfr-new-taipei .nic1648-boot-shell { fill:var(--nt-shoe-coral);stroke:var(--nt-shoe-ink);stroke-width:8;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-boot-shell.companion-shell { fill:var(--nt-shoe-indigo); }
-.tfr-new-taipei .nic1648-boot-top-rim { fill:var(--nt-shoe-berry);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
-.tfr-new-taipei.nfr-companion .nic1648-boot-top-rim { fill:var(--nt-shoe-blue); }
-.tfr-new-taipei .nic1648-boot-opening { fill:color-mix(in srgb,var(--worm-color) 78%,var(--nt-shoe-ivory));stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-boot-ankle-panel { fill:var(--nt-shoe-berry);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-boot-ankle-panel.companion-panel { fill:var(--nt-shoe-blue); }
-.tfr-new-taipei .nic1648-boot-toe-cap { fill:var(--nt-shoe-gold);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
-.tfr-new-taipei .nic1648-boot-midsole-line,.tfr-new-taipei .nic1648-boot-highlight,.tfr-new-taipei .nic1648-boot-ankle-crease { fill:none;stroke:var(--nt-shoe-ivory);stroke-width:5;stroke-linecap:round; }
-.tfr-new-taipei .nic1648-boot-pull-tab { fill:none;stroke:var(--nt-shoe-gold);stroke-width:11;stroke-linecap:round; }
-.tfr-new-taipei .nic1648-boot-rib { fill:none;stroke:color-mix(in srgb,var(--nt-shoe-ivory) 68%,transparent);stroke-width:5;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-flex-boot-outline { fill:none;stroke:var(--nt-shoe-ink);stroke-width:64;stroke-linecap:round;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-flex-boot-shell { fill:none;stroke:var(--nt-shoe-coral);stroke-width:51;stroke-linecap:round;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-flex-boot-outline.companion { stroke-width:31; }
+.tfr-new-taipei .nic1648-flex-boot-shell.companion { stroke:var(--nt-shoe-indigo);stroke-width:24; }
+.tfr-new-taipei .nic1648-flex-toe { fill:var(--nt-shoe-gold);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-flex-toe.companion { stroke-width:3; }
+.tfr-new-taipei .nic1648-flex-sole-outline { fill:none;stroke:var(--nt-shoe-ink);stroke-width:20;stroke-linecap:round;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-flex-sole { fill:none;stroke:var(--nt-shoe-aqua);stroke-width:12;stroke-linecap:round;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-flex-sole-outline.companion { stroke-width:11; }
+.tfr-new-taipei .nic1648-flex-sole.companion { stroke:var(--nt-shoe-gold);stroke-width:7; }
+.tfr-new-taipei .nic1648-flex-cuff { fill:var(--nt-shoe-berry);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-flex-cuff.companion { fill:var(--nt-shoe-blue);stroke-width:3; }
+.tfr-new-taipei .nic1648-flex-opening { fill:color-mix(in srgb,var(--worm-color) 82%,var(--nt-shoe-ivory));stroke:var(--nt-shoe-ink);stroke-width:4;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-flex-opening.companion { stroke-width:2; }
+.tfr-new-taipei .nic1648-flex-rib,.tfr-new-taipei .nic1648-flex-highlight { fill:none;stroke:color-mix(in srgb,var(--nt-shoe-ivory) 72%,transparent);stroke-width:4;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-flex-rib.companion { stroke-width:2; }
+.tfr-new-taipei .nic1648-flex-pull { fill:none;stroke:var(--nt-shoe-gold);stroke-width:9;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-flex-pull.companion { stroke-width:5; }
+.tfr-new-taipei .nic1648-flex-tread { fill:none;stroke:var(--nt-shoe-ink);stroke-width:3;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-flex-tread.companion { stroke-width:2; }
 .tropicalis-field-redesign.tfr-pohnpei { --nfr-primary:#4458b2; --nfr-secondary:#32b9a4; --nfr-accent:#e9507f; }
 .tropicalis-field-redesign.tfr-queensland { --nfr-primary:#4a52af; --nfr-secondary:#37bda7; --nfr-accent:#e84d77; }
 .tropicalis-field-redesign.tfr-reunion { --nfr-primary:#4555b1; --nfr-secondary:#32bbaa; --nfr-accent:#eb517c; }
