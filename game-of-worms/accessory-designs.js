@@ -5855,27 +5855,25 @@ function drawTropicalisFieldAccessory(group, item, companion) {
       const maleCurve = "M50 169C46 196 25 203 6 181C-2 172-9 163-21 157";
       path(group, maleCurve, "nic1648-flex-boot-outline companion");
       path(group, maleCurve, "nic1648-flex-boot-shell companion");
-      path(group, "M-25 149Q-9 147 5 165Q1 177-11 180Q-25 176-31 165Z", "nic1648-flex-toe companion");
-      path(group, "M-29 171Q-10 178 5 190Q24 205 42 190Q49 183 51 173", "nic1648-flex-sole-outline companion");
-      path(group, "M-29 171Q-10 178 5 190Q24 205 42 190Q49 183 51 173", "nic1648-flex-sole companion");
-      path(group, "M37 162Q50 154 63 164L62 176Q50 168 38 177Z", "nic1648-flex-cuff companion");
-      path(group, "M41 164Q50 159 59 165L59 170Q50 166 41 171Z", "nic1648-flex-opening companion");
-      path(group, "M41 182Q29 192 18 190M20 174Q11 181 4 180", "nic1648-flex-rib companion");
-      path(group, "M45 160Q44 149 51 146Q59 147 59 159", "nic1648-flex-pull companion");
-      [[-20,174,-14,179],[-8,181,-2,186],[5,190,11,195]].forEach(([x1,y1,x2,y2])=>path(group,`M${x1} ${y1}L${x2} ${y2}`,"nic1648-flex-tread companion"));
+      path(group, "M-28 151Q-17 147-5 156Q-7 168-17 173Q-28 169-32 160Z", "nic1648-flex-toe companion");
+      path(group, "M-31 169Q-17 178-3 168Q3 165 8 168", "nic1648-flex-sole-outline companion");
+      path(group, "M-31 169Q-17 178-3 168Q3 165 8 168", "nic1648-flex-sole companion");
+      path(group, "M39 164Q50 157 61 165L60 173Q50 166 39 174Z", "nic1648-flex-cuff companion");
+      path(group, "M43 165Q50 161 57 165L57 169Q50 166 43 170Z", "nic1648-flex-opening companion");
+      path(group, "M38 180Q29 190 19 189", "nic1648-flex-rib companion");
+      [[-25,171,-19,174],[-12,172,-6,170]].forEach(([x1,y1,x2,y2])=>path(group,`M${x1} ${y1}L${x2} ${y2}`,"nic1648-flex-tread companion"));
     } else {
       const primaryCurve = "M182 203C175 255 122 280 78 228C65 213 52 211 40 219C28 227 18 234 6 233";
       path(group, primaryCurve, "nic1648-flex-boot-outline");
       path(group, primaryCurve, "nic1648-flex-boot-shell");
-      path(group, "M-2 219Q23 210 48 225Q49 244 31 253Q10 252-3 239Z", "nic1648-flex-toe");
-      path(group, "M-4 244Q23 258 49 240Q62 235 80 247Q121 280 158 251Q177 236 183 213", "nic1648-flex-sole-outline");
-      path(group, "M-4 244Q23 258 49 240Q62 235 80 247Q121 280 158 251Q177 236 183 213", "nic1648-flex-sole");
-      path(group, "M158 195Q182 181 207 198L205 220Q182 207 160 221Z", "nic1648-flex-cuff");
-      path(group, "M165 198Q182 190 200 200L199 210Q182 202 165 212Z", "nic1648-flex-opening");
-      path(group, "M166 228Q145 252 122 252M132 237Q111 255 91 245M91 231Q72 241 57 226", "nic1648-flex-rib");
-      path(group, "M169 190Q168 171 182 167Q197 170 196 193", "nic1648-flex-pull");
-      [[3,245,15,250],[24,248,35,244],[48,238,58,239],[67,241,78,248],[88,250,100,257]].forEach(([x1,y1,x2,y2])=>path(group,`M${x1} ${y1}L${x2} ${y2}`,"nic1648-flex-tread"));
-      path(group, "M3 226Q20 219 35 225", "nic1648-flex-highlight");
+      path(group, "M-7 225Q9 216 27 223Q29 239 16 247Q0 247-9 238Z", "nic1648-flex-toe");
+      path(group, "M-9 244Q10 254 30 244Q43 235 55 239", "nic1648-flex-sole-outline");
+      path(group, "M-9 244Q10 254 30 244Q43 235 55 239", "nic1648-flex-sole");
+      path(group, "M163 198Q182 188 201 200L200 212Q182 202 164 214Z", "nic1648-flex-cuff");
+      path(group, "M168 200Q182 194 196 201L195 207Q182 201 169 208Z", "nic1648-flex-opening");
+      path(group, "M151 230Q137 244 121 247M109 240Q96 246 84 239", "nic1648-flex-rib");
+      [[-2,247,9,250],[18,248,29,244],[39,239,49,239]].forEach(([x1,y1,x2,y2])=>path(group,`M${x1} ${y1}L${x2} ${y2}`,"nic1648-flex-tread"));
+      path(group, "M1 229Q12 222 23 226", "nic1648-flex-highlight");
     }
     return true;
   }

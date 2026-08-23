@@ -350,21 +350,23 @@ funny without pretending the boot was collection equipment.
 Primary: one flexible coral rubber boot-sock fitted around the hermaphrodite
 tail. Its upper is traced directly along the tail's U-shaped Bézier curve and
 continues into a soft leftward toe rather than imposing a rigid ankle corner.
-A worm-coloured cuff opening, pull loop and curved ribs retain the boot
-construction; a gold toe cap and aqua edge sole complete the silhouette.
+A narrow coral cuff and sparse curved seams retain the boot construction; a
+small blended coral-gold reinforced toe and short aqua outsole sit only at the
+free tip.
 
-Companion: one independently constructed indigo-and-blue boot-sock fitted to
+Companion: one independently constructed indigo boot-sock fitted to
 the male tail. Its shorter upper is traced to the male's transformed tail
-curve and continues into its own rounded leftward toe. It uses a slimmer
-worm-coloured cuff opening, different ribs, a gold toe cap and gold edge sole.
-It remains deliberately oversized relative to the male without copying the
-primary boot.
+curve and continues into its own rounded leftward toe. It uses a narrow indigo
+cuff, one sparse seam, a small blended indigo-gold reinforced toe and a short
+gold outsole only beneath the free tip. It remains deliberately oversized
+relative to the male without copying the primary boot.
 
-Each worm receives exactly one boot, never a floating pair. Align each shaft
-opening and sole with the local tail angle, keep both faces and body outlines
-clear, and retain enough colour contrast against the dark green stair
-background. Do not imply an exact stair count, route, footwear tradition or
-collection method.
+Each worm receives exactly one boot, never a floating pair. Align each cuff
+and upper with the local tail curve, keep both faces and body outlines clear,
+and retain enough colour contrast against the dark green stair background.
+Neither version uses a rigid straight shaft, hard ankle corner, full-length
+sole or pull loop. Do not imply an exact stair count, route, footwear
+tradition or collection method.
 
 ### Bubble-tea jetpacks
 
@@ -499,7 +501,7 @@ Each repeated family differs in silhouette, material and construction.
 
 ## Exact catalogue replacement row
 
-| 34 | *C. tropicalis* — **New Taipei City, Taiwan · NIC1648**; isotype-reference strain, previously 3b; 25.06574, 121.82753; forest at 226 m; small 10–15 mm figs whose presumed decay was not confirmed, on and beside concrete stairs descending toward Menghuan Falls in Ruifang District; sampled by C. Gosse on 17 October 2017 and isolated by C. Braendle; ITS2 identification; strain record notes no bleaching and many males qualitatively; fig species, quantity, attachment or fall status, exact decay geometry, weather, surrounding vegetation and collection-patch view unreported; new-taipei-nic1648-ruifang-fig-stairs | Low forest-stair view. **F:** small anonymous fig forms divided between one broad concrete tread and adjacent leaf litter, with number, form and decay explicitly illustrative. **M:** one broken diagonal concrete stair flight turning around clear central play space. **B:** steep closed forest of unequal unidentified trunks around one narrow route-shaped light opening. **Lock:** small figs straddling a broad tread edge beneath a descending zig-zag stair corridor; no coast, hoodoos, open sea, waterfall, temple, ridge panorama or inferred fig tree. | **Taiwan blue-magpie kites:** P tall four-panel diamond kite with a visible spine, cross spar, bounded blue-magpie motif, bridle, dashed flying line, berry reel and long two-bow tail / C independently constructed six-sided bowed kite with curved spars, different panels, smaller side-profile magpie motif, its own bridle, reel and bow positions. **Single-tail rain boots:** P one comically long coral rubber boot with a tall berry shaft, recessed worm-coloured opening, pull loop, ribs, gold toe cap and aqua lug sole fitted to the hermaphrodite tail / C one independently constructed indigo-and-blue boot with a shorter curved shaft, diagonal rim, different ribs, slimmer fitted opening, gold toe cap and gold lug sole fitted to the male tail. The boots are a playful response to the recorded concrete forest stairs, not collection equipment. **Bubble-tea jetpacks:** P moderately enlarged transparent domed cup with warm tea chamber, visible tapioca pearls, oversized aqua straw, rose lid, gold harness, indigo fins, twin thrusters and coral flames / C enlarged narrower tapered cup with a different lid, straw, pearl layout, asymmetric fins, harness and smaller thrusters. The kites and jetpacks are Taiwan-wide fantasy references, not claims about the NIC1648 collection site. |
+| 34 | *C. tropicalis* — **New Taipei City, Taiwan · NIC1648**; isotype-reference strain, previously 3b; 25.06574, 121.82753; forest at 226 m; small 10–15 mm figs whose presumed decay was not confirmed, on and beside concrete stairs descending toward Menghuan Falls in Ruifang District; sampled by C. Gosse on 17 October 2017 and isolated by C. Braendle; ITS2 identification; strain record notes no bleaching and many males qualitatively; fig species, quantity, attachment or fall status, exact decay geometry, weather, surrounding vegetation and collection-patch view unreported; new-taipei-nic1648-ruifang-fig-stairs | Low forest-stair view. **F:** small anonymous fig forms divided between one broad concrete tread and adjacent leaf litter, with number, form and decay explicitly illustrative. **M:** one broken diagonal concrete stair flight turning around clear central play space. **B:** steep closed forest of unequal unidentified trunks around one narrow route-shaped light opening. **Lock:** small figs straddling a broad tread edge beneath a descending zig-zag stair corridor; no coast, hoodoos, open sea, waterfall, temple, ridge panorama or inferred fig tree. | **Taiwan blue-magpie kites:** P tall four-panel diamond kite with a visible spine, cross spar, bounded blue-magpie motif, bridle, dashed flying line, berry reel and long two-bow tail / C independently constructed six-sided bowed kite with curved spars, different panels, smaller side-profile magpie motif, its own bridle, reel and bow positions. **Single-tail rain boots:** P one flexible coral rubber upper traced directly along the hermaphrodite tail's U-shaped Bézier curve, with a narrow coral cuff, sparse curved seams, small blended coral-gold reinforced toe and short aqua outsole only beneath the free tip / C one independently constructed indigo upper traced to the shorter male tail curve, with a narrow indigo cuff, its own seam, small blended indigo-gold reinforced toe and short gold outsole only beneath the free tip. Neither version uses a rigid shaft, ankle corner, full-length sole or pull loop. The boots are a playful response to the recorded concrete forest stairs, not collection equipment. **Bubble-tea jetpacks:** P moderately enlarged transparent domed cup with warm tea chamber, visible tapioca pearls, oversized aqua straw, rose lid, gold harness, indigo fins, twin thrusters and coral flames / C enlarged narrower tapered cup with a different lid, straw, pearl layout, asymmetric fins, harness and smaller thrusters. The kites and jetpacks are Taiwan-wide fantasy references, not claims about the NIC1648 collection site. |
 
 ## Acceptance checks
 
