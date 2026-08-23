@@ -347,16 +347,18 @@ Playful basis: the substrate was recorded on and beside concrete stairs. A
 single enormous rain boot fitted to a nematode tail makes that stair setting
 funny without pretending the boot was collection equipment.
 
-Primary: one comically long coral rubber boot fitted around the hermaphrodite
-tail. Its tall berry shaft, worm-coloured recessed opening, pull loop and
-vertical ribs establish a Wellington-boot silhouette; a gold toe cap, curved
-ankle panel and deep aqua lug sole complete the construction.
+Primary: one extra-long coral rubber boot fitted around the hermaphrodite
+tail. Its swept-left berry shaft follows the local tail curve before reaching
+a worm-coloured recessed opening; a pull loop and curved ribs retain the
+Wellington-boot construction. An extended gold toe cap, curved ankle panel and
+deep aqua lug sole complete the silhouette.
 
 Companion: one independently constructed indigo-and-blue rain boot fitted to
-the male tail. It has a shorter curved shaft, diagonally shaped top rim,
-different rib placement, slimmer worm-coloured opening, gold toe cap and gold
-lug sole. It remains deliberately oversized relative to the male without
-copying the primary boot.
+the male tail. It has a proportionally shorter but still elongated
+left-curving shaft, diagonally shaped top rim, different curved rib placement,
+slimmer worm-coloured opening, extended gold toe cap and gold lug sole. It
+remains deliberately oversized relative to the male without copying the
+primary boot.
 
 Each worm receives exactly one boot, never a floating pair. Align each shaft
 opening and sole with the local tail angle, keep both faces and body outlines
@@ -395,8 +397,8 @@ These require final browser tuning:
   companion: [-10, 80, .3, -6]
 },
 "nic1648-single-tail-rain-boots": {
-  primary: [87, 306, .35, -29],
-  companion: [10, 226, .27, -31]
+  primary: [105, 321, .33, -36],
+  companion: [20, 239, .255, -38]
 },
 "nic1648-bubble-tea-jetpacks": {
   primary: [231, 178, .29, 8],

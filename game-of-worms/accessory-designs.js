@@ -5852,30 +5852,30 @@ function drawTropicalisFieldAccessory(group, item, companion) {
   if (item.family === "nic1648-single-tail-rain-boots") {
     group.classList.add("nic1648-rain-boot");
     if (companion) {
-      path(group, "M-174 48Q-171 77-141 87H74Q107 83 121 55L114 84Q101 108 67 112H-143Q-176 106-188 82Z", "nic1648-boot-sole companion-sole");
-      [-148,-111,-74,-37,0,38,71].forEach((x,index)=>path(group, `M${x} ${index%2?89:86}L${x+17} ${index%2?105:108}`, "nic1648-boot-tread"));
-      path(group, "M-171 44Q-168 3-127-21Q-82-48-25-35L20-25Q43-19 56-43L53-121Q54-145 81-153L112-147Q129-139 127-116L119 43Q101 71 67 74H-128Q-164 69-171 44Z", "nic1648-boot-shell companion-shell");
-      path(group, "M54-137Q82-159 122-142L126-120Q88-133 54-116Z", "nic1648-boot-top-rim");
-      path(group, "M58-123Q86-138 124-122L122-101Q89-112 59-99Z", "nic1648-boot-opening");
-      path(group, "M45-43Q72-68 121-50L119 43Q101 66 70 69H25Q39 16 45-43Z", "nic1648-boot-ankle-panel companion-panel");
-      path(group, "M-158 13Q-111-15-61-7Q-44 20-54 53H-130Q-160 50-158 13Z", "nic1648-boot-toe-cap");
-      path(group, "M-126 62Q-72 50-16 63T67 61", "nic1648-boot-midsole-line");
-      path(group, "M69-150Q68-174 88-179Q108-177 109-151", "nic1648-boot-pull-tab");
-      path(group, "M72-94L74-55M97-101L99-63", "nic1648-boot-rib");
-      path(group, "M-140 4Q-116-10-91-3", "nic1648-boot-highlight");
+      path(group, "M-208 48Q-205 79-171 91H74Q108 86 122 55L115 88Q101 113 66 117H-174Q-209 111-223 85Z", "nic1648-boot-sole companion-sole");
+      [-181,-145,-109,-73,-37,-1,35,69].forEach((x,index)=>path(group, `M${x} ${index%2?94:91}L${x+17} ${index%2?110:113}`, "nic1648-boot-tread"));
+      path(group, "M-205 44Q-201 0-154-26Q-103-56-38-39L12-27Q38-21 53-48Q44-91 19-127Q0-158 13-187Q24-211 51-218L84-212Q103-203 102-181Q100-151 111-112L119 43Q101 71 67 75H-161Q-198 70-205 44Z", "nic1648-boot-shell companion-shell");
+      path(group, "M14-201Q47-226 94-207L99-184Q53-199 13-177Z", "nic1648-boot-top-rim");
+      path(group, "M18-186Q51-205 92-187L94-166Q54-178 18-161Z", "nic1648-boot-opening");
+      path(group, "M49-52Q75-80 119-61L119 43Q101 67 70 70H22Q38 12 49-52Z", "nic1648-boot-ankle-panel companion-panel");
+      path(group, "M-191 11Q-139-19-81-9Q-59 20-69 56H-160Q-191 52-191 11Z", "nic1648-boot-toe-cap");
+      path(group, "M-159 66Q-95 51-27 66T67 63", "nic1648-boot-midsole-line");
+      path(group, "M28-215Q27-243 53-247Q79-244 78-216", "nic1648-boot-pull-tab");
+      path(group, "M30-166Q21-135 39-101M62-176Q53-139 70-103", "nic1648-boot-rib");
+      path(group, "M-170 3Q-142-14-112-5", "nic1648-boot-highlight");
     } else {
-      path(group, "M-221 51Q-218 87-181 99H108Q145 94 160 59L152 91Q137 121 99 126H-184Q-221 120-237 91Z", "nic1648-boot-sole");
-      [-193,-150,-107,-64,-21,22,65,108].forEach((x,index)=>path(group, `M${x} ${index%2?102:98}L${x+21} ${index%2?121:124}`, "nic1648-boot-tread"));
-      path(group, "M-217 47Q-213-4-163-33Q-105-66-36-48L29-33Q55-25 68-49L74-156Q75-181 105-190L145-185Q164-176 161-151L151 49Q130 80 87 84H-160Q-208 78-217 47Z", "nic1648-boot-shell");
-      path(group, "M75-174Q109-199 157-177L159-153Q113-169 74-151Z", "nic1648-boot-top-rim");
-      path(group, "M78-157Q111-175 156-157L153-132Q113-146 77-128Z", "nic1648-boot-opening");
-      path(group, "M54-51Q83-82 151-58L151 48Q129 76 91 78H22Q43 18 54-51Z", "nic1648-boot-ankle-panel");
-      path(group, "M-201 11Q-143-22-81-10Q-58 20-70 61H-164Q-202 57-201 11Z", "nic1648-boot-toe-cap");
-      path(group, "M-170 81Q-102 62-31 79T101 76", "nic1648-boot-midsole-line");
-      path(group, "M93-188Q91-219 116-223Q142-219 139-187", "nic1648-boot-pull-tab");
-      path(group, "M92-127L94-78M124-137L126-88", "nic1648-boot-rib");
-      path(group, "M-179 0Q-151-19-121-9", "nic1648-boot-highlight");
-      path(group, "M58-31Q78-43 99-35", "nic1648-boot-ankle-crease");
+      path(group, "M-266 51Q-262 89-222 102H109Q147 97 162 59L154 94Q139 125 99 131H-225Q-265 124-282 93Z", "nic1648-boot-sole");
+      [-235,-190,-145,-100,-55,-10,35,80,111].forEach((x,index)=>path(group, `M${x} ${index%2?106:102}L${x+22} ${index%2?125:129}`, "nic1648-boot-tread"));
+      path(group, "M-260 47Q-255-8-196-40Q-130-76-48-52L18-35Q46-27 61-56Q51-111 17-159Q-6-194 9-232Q20-260 51-267L91-260Q110-250 109-226Q106-190 119-139L151 49Q130 80 87 85H-203Q-251 79-260 47Z", "nic1648-boot-shell");
+      path(group, "M9-246Q47-277 97-251L101-225Q52-246 8-220Z", "nic1648-boot-top-rim");
+      path(group, "M13-231Q49-252 95-231L96-204Q51-219 13-203Z", "nic1648-boot-opening");
+      path(group, "M52-61Q80-92 128-73L151 49Q129 76 91 79H18Q41 13 52-61Z", "nic1648-boot-ankle-panel");
+      path(group, "M-242 8Q-176-27-103-13Q-77 20-91 64H-206Q-244 59-242 8Z", "nic1648-boot-toe-cap");
+      path(group, "M-215 84Q-132 63-43 82T101 78", "nic1648-boot-midsole-line");
+      path(group, "M24-263Q23-299 55-305Q87-302 84-265", "nic1648-boot-pull-tab");
+      path(group, "M31-201Q19-160 42-119M68-212Q55-166 77-122", "nic1648-boot-rib");
+      path(group, "M-220-2Q-185-23-147-11", "nic1648-boot-highlight");
+      path(group, "M52-40Q75-55 101-44", "nic1648-boot-ankle-crease");
     }
     return true;
   }
@@ -6540,7 +6540,7 @@ function renderPiece(target, item, wormPart) {
     ,"qg131-four-date-culture-relay": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"qg131-mating-id-motion-theatre": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
     ,"nic1648-taiwan-blue-magpie-kites": { primary: [380, 112, .33, -4], companion: [-10, 80, .3, -6] }
-    ,"nic1648-single-tail-rain-boots": { primary: [87, 306, .35, -29], companion: [10, 226, .27, -31] }
+    ,"nic1648-single-tail-rain-boots": { primary: [105, 321, .33, -36], companion: [20, 239, .255, -38] }
     ,"nic1648-bubble-tea-jetpacks": { primary: [231, 178, .29, 8], companion: [92, 142, .25, 8] }
     ,"mahahual-reef-ruffle-swim-costumes": { primary: [220, 155, .5, 20], companion: [67, 149, .37, 34] }
     ,"mahahual-caribbean-sun-spectacles": { primary: [332, 56, .34, -3], companion: [112, 105, .23, 3] }
