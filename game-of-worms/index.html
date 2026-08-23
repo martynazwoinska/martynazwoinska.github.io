@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#ecf9f7" />
   <link rel="preload" as="image" href="assets/n2-bristol-painted-background.webp" type="image/webp" fetchpriority="high" />
-  <link rel="stylesheet" href="style.css?v=20260823-95" />
+  <link rel="stylesheet" href="style.css?v=20260823-96" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
@@ -30,17 +30,14 @@
   <main id="atlas">
     <section class="discovery" aria-labelledby="meet-title">
       <div class="section-heading compact">
-        <div>
+        <div class="species-heading-copy">
           <h2 id="meet-title">Meet the species</h2>
-        </div>
-        <div class="species-intro">
           <p>Three real sister-species pairs. In each pair, compare a mostly selfing worm with an outcrossing relative.</p>
-          <button id="family-info-toggle" class="family-info-toggle" type="button" aria-haspopup="dialog" aria-controls="family-info-dialog">
-            <span class="family-info-toggle-icon" aria-hidden="true">i</span>
-            <span>Explore the wider family</span>
-            <span class="family-info-toggle-arrow" aria-hidden="true">→</span>
-          </button>
         </div>
+        <button id="family-info-toggle" class="family-info-toggle" type="button" aria-haspopup="dialog" aria-controls="family-info-dialog">
+          <span>Meet the whole family</span>
+          <span class="family-info-toggle-arrow" aria-hidden="true">→</span>
+        </button>
       </div>
 
       <div id="species-tabs" class="species-tabs" aria-label="Choose a worm species"></div>
@@ -415,7 +412,6 @@
   <dialog id="family-info-dialog" class="species-gallery-dialog family-info-dialog" aria-labelledby="family-info-title" aria-describedby="family-info-intro">
     <div class="species-gallery-shell family-info-shell">
       <button id="family-info-close" class="species-gallery-close" type="button" aria-label="Close family information">×</button>
-      <span class="family-info-eyebrow">The wider family</span>
       <h2 id="family-info-title">A much bigger worm family</h2>
       <p id="family-info-intro" class="family-info-intro">The six worms in this game are only a small sample. A peer-reviewed 2025 study counted 86 known <i>Caenorhabditis</i> species. A later 2025 preprint built the broadest available family tree, placing 70 species using 2,955 genes.</p>
 
