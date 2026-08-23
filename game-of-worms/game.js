@@ -5,6 +5,7 @@ import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260823-82";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
+import { renderCaenorhabditisTree } from "./phylogeny.js?v=20260823-1";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -279,6 +280,10 @@ const els = {
   galleryDescription: document.getElementById("species-gallery-description"),
   galleryImages: document.getElementById("species-gallery-images"),
   galleryCredit: document.getElementById("species-gallery-credit"),
+  familyInfoToggle: document.getElementById("family-info-toggle"),
+  familyInfoDialog: document.getElementById("family-info-dialog"),
+  familyInfoClose: document.getElementById("family-info-close"),
+  familyTree: document.getElementById("caenorhabditis-tree"),
   exploredCount: document.getElementById("explored-count"),
   freestyle: document.getElementById("freestyle-draw"),
   drawTools: document.getElementById("draw-tools"),
@@ -423,6 +428,33 @@ els.galleryDialog.addEventListener("close", () => {
     galleryRestoreFocus.focus();
   }
   galleryRestoreFocus = null;
+});
+
+let familyInfoRestoreFocus = null;
+
+function openFamilyInfo() {
+  if (!els.familyInfoDialog) return;
+  renderCaenorhabditisTree(els.familyTree);
+  familyInfoRestoreFocus = document.activeElement;
+  els.familyInfoDialog.showModal();
+  els.familyInfoClose.focus();
+}
+
+els.familyInfoToggle.addEventListener("click", openFamilyInfo);
+els.familyInfoClose.addEventListener("click", () => els.familyInfoDialog.close());
+els.familyInfoDialog.addEventListener("keydown", event => {
+  if (event.key !== "Escape") return;
+  event.preventDefault();
+  els.familyInfoDialog.close();
+});
+els.familyInfoDialog.addEventListener("click", event => {
+  if (event.target === els.familyInfoDialog) els.familyInfoDialog.close();
+});
+els.familyInfoDialog.addEventListener("close", () => {
+  if (familyInfoRestoreFocus instanceof HTMLElement && familyInfoRestoreFocus.isConnected) {
+    familyInfoRestoreFocus.focus();
+  }
+  familyInfoRestoreFocus = null;
 });
 
 const speechSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;

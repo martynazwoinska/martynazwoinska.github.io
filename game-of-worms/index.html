@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#ecf9f7" />
   <link rel="preload" as="image" href="assets/n2-bristol-painted-background.webp" type="image/webp" fetchpriority="high" />
-  <link rel="stylesheet" href="style.css?v=20260823-93" />
+  <link rel="stylesheet" href="style.css?v=20260823-94" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
@@ -33,7 +33,10 @@
         <div>
           <h2 id="meet-title">Meet the species</h2>
         </div>
-        <p>Three real sister-species pairs. In each pair, compare a mostly selfing worm with an outcrossing relative.</p>
+        <div class="species-intro">
+          <p>Three real sister-species pairs. In each pair, compare a mostly selfing worm with an outcrossing relative.</p>
+          <button id="family-info-toggle" class="family-info-toggle" type="button" aria-haspopup="dialog" aria-controls="family-info-dialog" aria-label="Learn about the Caenorhabditis family and mating systems">i</button>
+        </div>
       </div>
 
       <div id="species-tabs" class="species-tabs" aria-label="Choose a worm species"></div>
@@ -405,6 +408,52 @@
     </div>
   </dialog>
 
-  <script type="module" src="game.js?v=20260823-147"></script>
+  <dialog id="family-info-dialog" class="species-gallery-dialog family-info-dialog" aria-labelledby="family-info-title" aria-describedby="family-info-intro">
+    <div class="species-gallery-shell family-info-shell">
+      <button id="family-info-close" class="species-gallery-close" type="button" aria-label="Close family information">×</button>
+      <span class="family-info-eyebrow">The wider family</span>
+      <h2 id="family-info-title">A much bigger worm family</h2>
+      <p id="family-info-intro" class="family-info-intro">The six worms in this game are only a small sample. A peer-reviewed 2025 study counted 86 known <i>Caenorhabditis</i> species. A later 2025 preprint built the broadest available family tree, placing 70 species using 2,955 genes.</p>
+
+      <div class="mating-system-cards">
+        <section class="mating-system-card mating-system-card--selfing" aria-labelledby="selfing-title">
+          <h3 id="selfing-title"><span aria-hidden="true"></span>Mostly selfing</h3>
+          <p>Most young can come from one hermaphrodite, which makes both eggs and sperm. Rare males can still mate with hermaphrodites, so selfing is common rather than compulsory.</p>
+        </section>
+        <section class="mating-system-card mating-system-card--outcrossing" aria-labelledby="outcrossing-title">
+          <h3 id="outcrossing-title"><span aria-hidden="true"></span>Outcrossing</h3>
+          <p>Females and males usually reproduce together. Their young receive DNA from two parents.</p>
+        </section>
+      </div>
+
+      <aside class="selfing-origins" aria-labelledby="selfing-origins-title">
+        <span class="selfing-origins-number" aria-hidden="true">3×</span>
+        <div>
+          <h3 id="selfing-origins-title">Selfing evolved three separate times</h3>
+          <p>It arose independently in the lineages leading to <i>C. elegans</i>, <i>C. briggsae</i> and <i>C. tropicalis</i>—not once in a single selfing ancestor.</p>
+        </div>
+      </aside>
+
+      <section class="family-tree-section" aria-labelledby="family-tree-title">
+        <div class="family-tree-heading">
+          <div>
+            <span class="family-tree-kicker">70 species with comparable genetic data</span>
+            <h3 id="family-tree-title">The published family tree</h3>
+          </div>
+          <div class="family-tree-legend" aria-label="Tree key">
+            <span><i class="tree-key tree-key--game" aria-hidden="true"></i>in this game</span>
+            <span><i class="tree-key tree-key--selfing" aria-hidden="true"></i>independent selfing origin</span>
+          </div>
+        </div>
+        <p class="family-tree-note">Branch lengths are simplified here: the lines show which species are more closely related, not how much time has passed.</p>
+        <div id="caenorhabditis-tree" class="caenorhabditis-tree" tabindex="0" role="region" aria-label="Scrollable family tree of 70 Caenorhabditis species"></div>
+        <p class="unplaced-species"><strong>+ 16 other known species</strong><span>They are recognised, but were not included in this comparison, so they are not placed on these branches.</span></p>
+      </section>
+
+      <p class="family-info-sources">Sources: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12485960/" target="_blank" rel="noopener">Rockman et al. (2025 preprint)</a> for the 70-species tree; <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1011852" target="_blank" rel="noopener">Fusca et al. (2025)</a> for the count of 86 known species; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3277298/" target="_blank" rel="noopener">Kiontke et al. (2011)</a> and <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6457397/" target="_blank" rel="noopener">Stevens et al. (2019)</a> for the independent origins of selfing.</p>
+    </div>
+  </dialog>
+
+  <script type="module" src="game.js?v=20260823-148"></script>
 </body>
 </html>

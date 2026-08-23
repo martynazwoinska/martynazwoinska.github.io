@@ -120,11 +120,40 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   line-height: 1.05;
   letter-spacing: -.035em;
 }
-.section-heading > p {
+.section-heading > p,
+.species-intro p {
   max-width: 390px;
   margin: 0;
   color: var(--ink-soft);
   text-align: right;
+}
+.species-intro {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.family-info-toggle {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border: 2px solid color-mix(in srgb, var(--teal) 70%, var(--ink));
+  border-radius: 50%;
+  padding: 0 0 2px;
+  background: color-mix(in srgb, var(--yellow) 72%, white);
+  color: var(--teal-dark);
+  cursor: pointer;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--gold, #d6a94d) 28%, transparent), 0 8px 20px rgba(26,71,79,.1);
+  font-family: Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1;
+  transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+}
+.family-info-toggle:hover {
+  transform: translateY(-2px);
+  background: var(--yellow);
+  box-shadow: 0 6px 0 rgba(211,167,109,.25), 0 10px 24px rgba(26,71,79,.14);
 }
 
 .map-section { margin-top: clamp(30px, 4vw, 44px); }
@@ -3747,6 +3776,158 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 }
 .species-gallery-credit a { color: var(--teal-dark); font-weight: 800; }
 
+.family-info-dialog { width: min(1080px, calc(100vw - 32px)); }
+.family-info-shell {
+  background:
+    radial-gradient(circle at 92% 4%, rgba(255,209,102,.22), transparent 15rem),
+    radial-gradient(circle at 4% 36%, rgba(191,232,232,.32), transparent 18rem),
+    var(--paper-strong);
+}
+.family-info-eyebrow,
+.family-tree-kicker {
+  display: block;
+  color: var(--teal);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.family-info-intro {
+  max-width: 800px;
+  margin: 16px 0 0;
+  color: var(--ink-soft);
+  font-size: 1.03rem;
+}
+.mating-system-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+.mating-system-card {
+  border: 1px solid var(--line);
+  border-radius: 20px 25px 19px 24px;
+  padding: 18px 20px;
+  box-shadow: 0 9px 24px rgba(26,71,79,.07);
+}
+.mating-system-card--selfing { background: color-mix(in srgb, var(--coral) 11%, white); }
+.mating-system-card--outcrossing { background: color-mix(in srgb, var(--violet) 10%, white); }
+.mating-system-card h3,
+.selfing-origins h3,
+.family-tree-heading h3 {
+  margin: 0;
+  font-family: var(--display);
+  line-height: 1.12;
+}
+.mating-system-card h3 { display: flex; align-items: center; gap: 9px; font-size: 1.14rem; }
+.mating-system-card h3 span { width: 12px; height: 12px; flex: 0 0 auto; background: var(--coral); border-radius: 50%; }
+.mating-system-card--outcrossing h3 span { background: var(--violet); border-radius: 3px; }
+.mating-system-card p { margin: 7px 0 0; color: var(--ink-soft); }
+.selfing-origins {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  border: 1px solid color-mix(in srgb, var(--coral) 32%, var(--line));
+  border-radius: 24px 19px 25px 20px;
+  padding: 17px 20px;
+  background: color-mix(in srgb, var(--yellow) 18%, white);
+}
+.selfing-origins-number {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border: 3px solid var(--coral);
+  border-radius: 50%;
+  background: var(--paper-strong);
+  color: var(--teal-dark);
+  font-family: var(--display);
+  font-size: 1.35rem;
+  font-weight: 900;
+  transform: rotate(-4deg);
+}
+.selfing-origins h3 { font-size: 1.18rem; }
+.selfing-origins p { margin: 5px 0 0; color: var(--ink-soft); }
+.family-tree-section {
+  margin-top: 28px;
+  border: 1px solid color-mix(in srgb, var(--teal) 28%, var(--line));
+  border-radius: 25px 21px 28px 20px;
+  padding: 20px;
+  background: rgba(236,249,247,.58);
+}
+.family-tree-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+}
+.family-tree-heading h3 { margin-top: 3px; font-size: 1.5rem; }
+.family-tree-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px 14px;
+  color: var(--ink-soft);
+  font-size: .75rem;
+  font-weight: 800;
+}
+.family-tree-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.tree-key { display: inline-block; width: 13px; height: 13px; }
+.tree-key--game { border: 2px solid var(--teal); border-radius: 4px; background: rgba(255,255,255,.8); }
+.tree-key--selfing { border-radius: 50%; background: var(--coral); }
+.family-tree-note { margin: 10px 0 14px; color: var(--ink-soft); font-size: .83rem; }
+.caenorhabditis-tree {
+  width: 100%;
+  max-height: 490px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: rgba(255,255,255,.82);
+  scrollbar-color: color-mix(in srgb, var(--teal) 55%, white) transparent;
+}
+.caenorhabditis-tree:focus-visible { outline: 3px solid var(--game-focus); outline-offset: 3px; }
+.caenorhabditis-tree-svg { display: block; min-width: 850px; font-family: var(--sans); }
+.phylogeny-branch { stroke: color-mix(in srgb, var(--teal) 55%, var(--ink-soft)); stroke-width: 1.35; fill: none; }
+.phylogeny-game-row { fill: color-mix(in srgb, var(--violet) 9%, white); stroke: color-mix(in srgb, var(--violet) 28%, transparent); }
+.phylogeny-game-row--selfing { fill: color-mix(in srgb, var(--coral) 10%, white); stroke: color-mix(in srgb, var(--coral) 30%, transparent); }
+.phylogeny-tip-marker { fill: color-mix(in srgb, var(--teal) 48%, white); }
+.phylogeny-tip-marker--outcrossing { fill: var(--violet); }
+.phylogeny-tip-marker--selfing { fill: var(--coral); }
+.phylogeny-tip-label {
+  fill: var(--ink-soft);
+  font-size: 12px;
+  font-style: italic;
+  dominant-baseline: middle;
+}
+.phylogeny-tip-label--game { fill: var(--ink); font-size: 12.5px; font-weight: 900; }
+.phylogeny-origin-label {
+  fill: color-mix(in srgb, var(--coral) 78%, var(--ink));
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  dominant-baseline: middle;
+}
+.unplaced-species {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px 18px;
+  align-items: center;
+  margin: 14px 0 0;
+  border: 1px dashed color-mix(in srgb, var(--teal) 48%, var(--line));
+  border-radius: 15px;
+  padding: 12px 14px;
+  background: color-mix(in srgb, var(--yellow) 12%, white);
+  color: var(--ink-soft);
+  font-size: .85rem;
+}
+.unplaced-species strong { color: var(--teal-dark); white-space: nowrap; }
+.family-info-sources { margin: 18px 0 0; color: var(--ink-soft); font-size: .78rem; line-height: 1.5; }
+.family-info-sources a { color: var(--teal-dark); font-weight: 800; }
+
 @media (max-width: 620px) {
   .species-gallery-images[data-species="elegans"] {
     grid-template-columns: minmax(0, 1fr);
@@ -3761,6 +3942,23 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   .species-gallery-dialog { width: min(520px, calc(100vw - 20px)); max-height: calc(100dvh - 20px); border-radius: 22px; }
   .species-gallery-shell { max-height: calc(100dvh - 20px); padding: 24px 16px 20px; }
   .species-gallery-images { grid-template-columns: 1fr; }
+  .mating-system-cards { grid-template-columns: 1fr; }
+  .family-tree-heading { align-items: start; flex-direction: column; }
+  .family-tree-legend { justify-content: flex-start; }
+  .family-tree-section { padding: 15px; }
+  .unplaced-species { grid-template-columns: 1fr; gap: 3px; }
+}
+
+@media (max-width: 560px) {
+  .section-heading { align-items: start; flex-direction: column; gap: 12px; }
+  .species-intro { width: 100%; align-items: flex-start; justify-content: space-between; }
+  .species-intro p { max-width: none; text-align: left; }
+  .selfing-origins { align-items: start; }
+  .selfing-origins-number { width: 48px; height: 48px; font-size: 1.12rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .family-info-toggle { transition: none; }
 }
 
 /* Mahahual JU2617: citrus-decay, test-cross and lighthouse mechanisms. */
