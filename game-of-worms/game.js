@@ -741,40 +741,57 @@ function launchWormConfetti() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   document.querySelector(".worm-confetti-layer")?.remove();
-  const origin = els.exploredStatus.getBoundingClientRect();
   const layer = document.createElement("div");
   layer.className = "worm-confetti-layer";
   layer.setAttribute("aria-hidden", "true");
   const svgNamespace = "http://www.w3.org/2000/svg";
-  const spread = Math.min(window.innerWidth * .72, 720);
+  const centreX = window.innerWidth / 2;
+  const centreY = Math.min(window.innerHeight * .42, 380);
+  const pieceCount = window.innerWidth <= 560 ? 20 : 26;
 
-  for (let index = 0; index < 18; index += 1) {
+  const crest = document.createElement("div");
+  const crestSvg = document.createElementNS(svgNamespace, "svg");
+  const crestUse = document.createElementNS(svgNamespace, "use");
+  const crestCount = document.createElement("span");
+  crest.className = "worm-completion-flash";
+  crestSvg.classList.add("worm-completion-flash-emblem");
+  crestSvg.setAttribute("viewBox", "0 0 240 190");
+  crestUse.setAttribute("href", "#atlas-family-globe");
+  crestCount.className = "worm-completion-flash-count";
+  crestCount.textContent = "6 / 6";
+  crestSvg.append(crestUse);
+  crest.append(crestSvg, crestCount);
+  layer.append(crest);
+
+  for (let index = 0; index < pieceCount; index += 1) {
     const piece = document.createElementNS(svgNamespace, "svg");
     const pathData = wormConfettiPaths[index % wormConfettiPaths.length];
     const outline = document.createElementNS(svgNamespace, "path");
     const body = document.createElementNS(svgNamespace, "path");
     const highlight = document.createElementNS(svgNamespace, "path");
     const eye = document.createElementNS(svgNamespace, "circle");
-    const angle = (100 + (index % 9) * 8.5 + Math.floor(index / 9) * 3) * Math.PI / 180;
-    const distance = spread * (.38 + (index % 5) * .065);
-    const endX = Math.cos(angle) * distance;
-    const endY = Math.sin(angle) * distance + 115 + (index % 3) * 18;
+    const pupil = document.createElementNS(svgNamespace, "circle");
+    const angle = -Math.PI / 2 + index / pieceCount * Math.PI * 2 + ((index % 3) - 1) * .05;
+    const radiusX = Math.min(window.innerWidth * .47, 620) * (.72 + (index % 4) * .075);
+    const radiusY = Math.min(window.innerHeight * .42, 400) * (.7 + (index % 5) * .06);
+    const endX = Math.cos(angle) * radiusX;
+    const endY = Math.sin(angle) * radiusY + 105 + (index % 4) * 12;
 
     piece.setAttribute("viewBox", "0 0 36 22");
     piece.classList.add("worm-confetti-piece");
     piece.style.setProperty("--worm-confetti-colour", wormConfettiColours[index % wormConfettiColours.length]);
-    piece.style.setProperty("--worm-confetti-origin-x", `${origin.left + origin.width / 2}px`);
-    piece.style.setProperty("--worm-confetti-origin-y", `${origin.top + origin.height / 2}px`);
-    piece.style.setProperty("--worm-confetti-mid-x", `${endX * .56}px`);
-    piece.style.setProperty("--worm-confetti-mid-y", `${endY * .38 - 54}px`);
+    piece.style.setProperty("--worm-confetti-origin-x", `${centreX}px`);
+    piece.style.setProperty("--worm-confetti-origin-y", `${centreY}px`);
+    piece.style.setProperty("--worm-confetti-mid-x", `${endX * .62}px`);
+    piece.style.setProperty("--worm-confetti-mid-y", `${endY * .5 - 72}px`);
     piece.style.setProperty("--worm-confetti-end-x", `${endX}px`);
     piece.style.setProperty("--worm-confetti-end-y", `${endY}px`);
     piece.style.setProperty("--worm-confetti-start-rotation", `${-35 + (index % 7) * 12}deg`);
     piece.style.setProperty("--worm-confetti-mid-rotation", `${60 + (index % 6) * 38}deg`);
     piece.style.setProperty("--worm-confetti-end-rotation", `${210 + (index % 8) * 47}deg`);
-    piece.style.setProperty("--worm-confetti-size", `${24 + (index % 4) * 3}px`);
-    piece.style.setProperty("--worm-confetti-delay", `${(index % 6) * .025 + Math.floor(index / 9) * .08}s`);
-    piece.style.setProperty("--worm-confetti-duration", `${1.35 + (index % 5) * .07}s`);
+    piece.style.setProperty("--worm-confetti-size", `${30 + (index % 5) * 3}px`);
+    piece.style.setProperty("--worm-confetti-delay", `${(index % 7) * .018}s`);
+    piece.style.setProperty("--worm-confetti-duration", `${1.65 + (index % 5) * .075}s`);
 
     outline.setAttribute("d", pathData);
     outline.classList.add("worm-confetti-outline");
@@ -786,12 +803,16 @@ function launchWormConfetti() {
     eye.setAttribute("cy", "8.3");
     eye.setAttribute("r", "1.4");
     eye.classList.add("worm-confetti-eye");
-    piece.append(outline, body, highlight, eye);
+    pupil.setAttribute("cx", "32.4");
+    pupil.setAttribute("cy", "8.1");
+    pupil.setAttribute("r", ".55");
+    pupil.classList.add("worm-confetti-pupil");
+    piece.append(outline, body, highlight, eye, pupil);
     layer.append(piece);
   }
 
   document.body.append(layer);
-  window.setTimeout(() => layer.remove(), 2200);
+  window.setTimeout(() => layer.remove(), 2700);
 }
 
 function updateExploredStatus() {
