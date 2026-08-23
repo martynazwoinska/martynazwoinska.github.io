@@ -101,8 +101,17 @@ function maximumDepth(node, depth = 0) {
   return Math.max(...node.children.map(child => maximumDepth(child, depth + 1)));
 }
 
+function findSmallestClade(node, tipNames) {
+  for (const child of node.children) {
+    const match = findSmallestClade(child, tipNames);
+    if (match) return match;
+  }
+  const descendantNames = new Set(collectLeaves(node, []).map(leaf => leaf.name));
+  return [...tipNames].every(name => descendantNames.has(name)) ? node : null;
+}
+
 function assignCoordinates(node, depth, maxDepth, leafRows) {
-  const branchStart = 26;
+  const branchStart = 56;
   const branchEnd = 500;
   node.x = node.children.length ? branchStart + ((branchEnd - branchStart) * depth / maxDepth) : branchEnd;
   if (!node.children.length) {
@@ -111,6 +120,27 @@ function assignCoordinates(node, depth, maxDepth, leafRows) {
   }
   node.children.forEach(child => assignCoordinates(child, depth + 1, maxDepth, leafRows));
   node.y = node.children.reduce((sum, child) => sum + child.y, 0) / node.children.length;
+}
+
+function addGroupBracket(svg, clade, label) {
+  if (!clade) return;
+  const groupLeaves = collectLeaves(clade, []);
+  const startY = Math.min(...groupLeaves.map(leaf => leaf.y)) - 9;
+  const endY = Math.max(...groupLeaves.map(leaf => leaf.y)) + 9;
+  const centreY = (startY + endY) / 2;
+  const bracket = createSvgElement("path", {
+    d: `M44 ${startY}H34V${endY}H44`,
+    class: "phylogeny-group-bracket",
+    "aria-hidden": "true"
+  });
+  const text = createSvgElement("text", {
+    x: 17,
+    y: centreY,
+    class: "phylogeny-group-label",
+    transform: `rotate(-90 17 ${centreY})`
+  });
+  text.textContent = label;
+  svg.append(bracket, text);
 }
 
 function addBranches(node, group) {
@@ -174,8 +204,10 @@ export function renderCaenorhabditisTree(container) {
     width: 850,
     height,
     role: "img",
-    "aria-label": "Family tree of 70 Caenorhabditis species. The six species in the game are highlighted. Caenorhabditis elegans, briggsae and tropicalis mark three separate origins of selfing."
+    "aria-label": "Family tree of 70 Caenorhabditis species. The Elegans group is marked. The six species in the game are highlighted. Caenorhabditis elegans, briggsae and tropicalis mark three separate origins of selfing."
   });
+  const elegansGroup = findSmallestClade(root, new Set(["HPT10", "QG4628"]));
+  addGroupBracket(svg, elegansGroup, "Elegans group");
   const branchGroup = createSvgElement("g", { "aria-hidden": "true" });
   addBranches(root, branchGroup);
   svg.append(branchGroup);

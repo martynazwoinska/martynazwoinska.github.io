@@ -5,7 +5,7 @@ import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260823-82";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
-import { renderCaenorhabditisTree } from "./phylogeny.js?v=20260823-1";
+import { renderCaenorhabditisTree } from "./phylogeny.js?v=20260823-2";
 
 const t = createGameTranslator(document.documentElement.lang);
 

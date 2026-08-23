@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#ecf9f7" />
   <link rel="preload" as="image" href="assets/n2-bristol-painted-background.webp" type="image/webp" fetchpriority="high" />
-  <link rel="stylesheet" href="style.css?v=20260823-94" />
+  <link rel="stylesheet" href="style.css?v=20260823-95" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
@@ -35,7 +35,11 @@
         </div>
         <div class="species-intro">
           <p>Three real sister-species pairs. In each pair, compare a mostly selfing worm with an outcrossing relative.</p>
-          <button id="family-info-toggle" class="family-info-toggle" type="button" aria-haspopup="dialog" aria-controls="family-info-dialog" aria-label="Learn about the Caenorhabditis family and mating systems">i</button>
+          <button id="family-info-toggle" class="family-info-toggle" type="button" aria-haspopup="dialog" aria-controls="family-info-dialog">
+            <span class="family-info-toggle-icon" aria-hidden="true">i</span>
+            <span>Explore the wider family</span>
+            <span class="family-info-toggle-arrow" aria-hidden="true">→</span>
+          </button>
         </div>
       </div>
 
@@ -430,7 +434,7 @@
         <span class="selfing-origins-number" aria-hidden="true">3×</span>
         <div>
           <h3 id="selfing-origins-title">Selfing evolved three separate times</h3>
-          <p>It arose independently in the lineages leading to <i>C. elegans</i>, <i>C. briggsae</i> and <i>C. tropicalis</i>—not once in a single selfing ancestor.</p>
+          <p>It arose independently in the lineages leading to <i>C. elegans</i>, <i>C. briggsae</i> and <i>C. tropicalis</i>.</p>
         </div>
       </aside>
 
@@ -454,6 +458,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="game.js?v=20260823-148"></script>
+  <script type="module" src="game.js?v=20260823-149"></script>
 </body>
 </html>
