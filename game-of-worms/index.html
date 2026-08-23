@@ -12,13 +12,17 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#ecf9f7" />
   <link rel="preload" as="image" href="assets/n2-bristol-painted-background.webp" type="image/webp" fetchpriority="high" />
-  <link rel="stylesheet" href="style.css?v=20260823-100" />
+  <link rel="stylesheet" href="style.css?v=20260824-101" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
 
   <svg class="atlas-emblem-sprite" aria-hidden="true">
     <symbol id="atlas-family-globe" viewBox="0 0 240 190">
+      <g class="atlas-emblem-halo">
+        <circle cx="120" cy="95" r="79"></circle>
+        <path d="M120 8v12M120 170v12M33 95h12M195 95h12M59 34l9 9M172 147l9 9M59 156l9-9M172 43l9-9"></path>
+      </g>
       <g class="atlas-emblem-orbits">
         <ellipse cx="120" cy="95" rx="73" ry="55"></ellipse>
         <ellipse cx="120" cy="95" rx="69" ry="52" transform="rotate(-25 120 95)"></ellipse>
@@ -490,7 +494,10 @@
       <p id="family-info-intro" class="family-info-intro">The six worms in this game are only a small sample. A peer-reviewed 2025 study counted 86 known <i>Caenorhabditis</i> species. A later 2025 preprint built the broadest available family tree, placing 70 species using 2,955 genes.</p>
 
       <div id="atlas-completion-reward" class="atlas-completion-reward" hidden>
-        <svg class="atlas-completion-emblem" viewBox="0 0 240 190" role="img" aria-label="A globe encircled by six colourful worms"><use href="#atlas-family-globe"></use></svg>
+        <div class="atlas-completion-medallion">
+          <svg class="atlas-completion-emblem" viewBox="0 0 240 190" role="img" aria-label="A globe encircled by six colourful worms"><use href="#atlas-family-globe"></use></svg>
+          <span class="atlas-completion-count" aria-hidden="true">6 / 6</span>
+        </div>
         <p><strong>Atlas complete.</strong><span>You met all six featured worms.</span></p>
       </div>
 
