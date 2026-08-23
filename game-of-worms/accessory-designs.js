@@ -40,7 +40,7 @@ const rows = [
   ["tropicalis", "Manaus region, Brazil · JU1976", "anonymous-fruit sample cases", "ju1976-substrate-identity-shadow-theatre", "four-metre tape measures", "ju1975-ju1976-four-metre-sample-rail", "soil-profile charts", "manaus-plateau-valley-soil-harmonograph"],
   ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "fallen-flower sample boxes", "eca789-fallen-flower-decay-chronoscope", "temperature-humidity meters", "eca789-paired-microclimate-harmonograph", "field-record folders", "c0085-field-record-relay"],
   ["tropicalis", "Kauaʻi, Hawaiʻi · QG131", "pandanus sample baskets", "qg131-paired-pandanus-key-sorter", "four-date culture calendars", "qg131-four-date-culture-relay", "mating-test plates", "qg131-mating-id-motion-theatre"],
-  ["tropicalis", "New Taipei City, Taiwan · NIC1648", "fig measuring calipers", "nic1648-fig-diameter-comparator", "single-tail trail shoes", "nic1648-single-tail-trail-shoes", "male-count microscopes", "nic1648-qualitative-male-viewer"],
+  ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Taiwan blue-magpie kites", "nic1648-taiwan-blue-magpie-kites", "single-tail trail shoes", "nic1648-single-tail-trail-shoes", "bubble-tea jetpacks", "nic1648-bubble-tea-jetpacks"],
   ["tropicalis", "Pohnpei, Micronesia · QG4739", "kotop sample boxes", "qg4739-kotop-name-concordance", "paired thermometers", "qg4739-paired-temperature-differential", "seven-vial sample racks", "c0230-seven-isotype-registry"],
   ["tropicalis", "Queensland, Australia · QG2904", "blackbean pod cases", "qg2904-uncracked-pod-seam-scanner", "recovery calendars", "qg2904-collection-to-funnel-relay", "canopy-crane models", "dro-canopy-crane-strata-mapper"],
   ["tropicalis", "Saint-Benoît, Réunion · JU1373", "Réunion torch-ginger trays", "ju1373-torch-ginger-bract-collar", "type-isolate badges", "ju1373-type-isolate-signet-engine", "windward rain gauges", "saint-benoit-windward-slope-mobile"]
@@ -4398,75 +4398,6 @@ function drawHCMCJU4356Accessory(group, item, companion) {
   return false;
 }
 
-function drawNewTaipeiNIC1648Accessory(group, item, companion) {
-  if (!newTaipeiNIC1648RendererIds.has(item.id)) return false;
-  group.dataset.renderer = item.family;
-  group.classList.add("new-taipei-nic1648-accessory", companion ? "nic1648-companion" : "nic1648-primary");
-  const text = (value, x, y, className = "nic1648-label") => {
-    const node = add(group, "text", { class: className, x, y, "text-anchor": "middle" });
-    node.textContent = value;
-  };
-
-  if (item.family === "nic1648-fig-diameter-comparator") {
-    if (companion) {
-      path(group, "M-35-84H29L42 71H-46Z", "nic1648-gauge-tower");
-      add(group, "circle", { class: "nic1648-gauge-ring small", cx: -5, cy: -48, r: 19 });
-      add(group, "circle", { class: "nic1648-gauge-ring large", cx: 4, cy: 4, r: 27 });
-      text("10", -5, -44, "nic1648-small-label");
-      text("15", 4, 8, "nic1648-small-label");
-      path(group, "M-25 28H27L20 51H-31Z", "nic1648-sliding-cup");
-      line(group, "M-21-68L27-48L-22-28L31-7L-17 14L31 34", "nic1648-chain");
-      add(group, "circle", { class: "nic1648-counterweight", cx: 52, cy: -55, r: 17 });
-      line(group, "M35-55H52M52-38V13", "nic1648-drive");
-      path(group, "M-41 49H30L22 77H-47Z", "nic1648-receiving-drawer");
-      path(group, "M39 42H70V67H39Z", "nic1648-id-plate");
-      text("NIC1648", 55, 57, "nic1648-tiny-label");
-    } else {
-      path(group, "M-106 20H103V63H-106Z", "nic1648-comparator-bench");
-      line(group, "M-83-31V29M-34-31V29M37-31V29M84-31V29", "nic1648-jaw");
-      path(group, "M-83-19H-34M37-19H84", "nic1648-jaw-bridge");
-      add(group, "ellipse", { class: "nic1648-specimen-cup", cx: -58, cy: 8, rx: 21, ry: 13 });
-      add(group, "ellipse", { class: "nic1648-specimen-cup", cx: 60, cy: 8, rx: 27, ry: 16 });
-      text("10 mm", -58, -37, "nic1648-small-label");
-      text("15 mm", 60, -37, "nic1648-small-label");
-      add(group, "circle", { class: "nic1648-micrometer-drum", cx: 0, cy: 21, r: 24 });
-      line(group, "M0 21L13 8M-34-19L-15 12M37-19L17 12", "nic1648-pointer");
-      add(group, "rect", { class: "nic1648-vial", x: 88, y: -44, width: 19, height: 44, rx: 7 });
-      text("NIC1648", 97, -17, "nic1648-vial-label");
-    }
-    return true;
-  }
-
-  if (item.family === "nic1648-qualitative-male-viewer") {
-    if (companion) {
-      path(group, "M-36-84H31L43 72H-46Z", "nic1648-optical-column");
-      [-55, -17, 21].forEach((y, index) => {
-        path(group, `M${index % 2 ? -18 : -29} ${y}H${index % 2 ? 30 : 19}V${y + 25}H${index % 2 ? -18 : -29}Z`, "nic1648-sighting-window");
-      });
-      path(group, "M-8-67H22V47H-8Z", "nic1648-field-strip");
-      path(group, "M0-54Q15-41 1-28Q16-15 1-2Q16 12 2 26Q17 38 3 48", "nic1648-observation-trace");
-      add(group, "circle", { class: "nic1648-qualitative-dial", cx: 49, cy: -45, r: 20 });
-      text("NOTED", 49, -42, "nic1648-tiny-label");
-      add(group, "circle", { class: "nic1648-focus-wheel", cx: 51, cy: 24, r: 16 });
-      path(group, "M-41 51H30L22 78H-47Z", "nic1648-culture-drawer");
-    } else {
-      add(group, "ellipse", { class: "nic1648-observation-drum", cx: 0, cy: 3, rx: 91, ry: 50 });
-      [-55, 0, 55].forEach((cx, index) => path(group, `M${cx - 24}-20H${cx + 24}V27H${cx - 24}Z`, "nic1648-observation-window"));
-      path(group, "M-75 0Q-59-21-43-3Q-29 14-12-1M-12 2Q2-18 18 1Q32 17 48 0M47 2Q63-17 78 3", "nic1648-worm-strip");
-      path(group, "M-9-33H61V30H-9Z", "nic1648-note-shutter");
-      text("MALES", 26, -8, "nic1648-small-label");
-      text("NOTED", 26, 8, "nic1648-small-label");
-      path(group, "M-101-9H-79V31H-101Z", "nic1648-tail-gate");
-      path(group, "M-96 20Q-87 0-82 20Q-88 11-96 20Z", "nic1648-tail-reference");
-      add(group, "circle", { class: "nic1648-drive-gear", cx: -61, cy: 40, r: 16 });
-      add(group, "circle", { class: "nic1648-drive-gear", cx: 62, cy: 40, r: 18 });
-      add(group, "rect", { class: "nic1648-vial", x: 88, y: -48, width: 19, height: 44, rx: 7 });
-    }
-    return true;
-  }
-  return false;
-}
-
 function drawKauaiQG131Accessory(group, item, companion) {
   if (!kauaiQG131RendererIds.has(item.id)) return false;
   group.dataset.renderer = item.family;
@@ -5854,59 +5785,108 @@ function drawTropicalisFieldAccessory(group, item, companion) {
     label("MATING TEST",0,companion?76:82,"nfr-small nfr-light-text");
     return true;
   }
-  if (item.family === "nic1648-fig-diameter-comparator") {
-    shadow(105,106);
-    path(group,companion?"M-101-28H31M-101-28V-59M31-28V-59":"M-130-35H40M-130-35V-75M40-35V-75","nfr-caliper");
-    path(group,companion?"M-84-17V76M14-17V76":"M-108-22V94M18-22V94","nfr-caliper-jaw");
-    path(group,companion?"M-103 12H102V36H-103Z":"M-132 15H131V45H-132Z","nfr-ruler");
-    [-70,-40,-10,20,50,80].forEach(x=>path(group,`M ${companion?x*.8:x} ${companion?13:16} V ${companion?29:37}`,"nfr-tape-tick"));
-    path(group,companion?"M53-52Q22-51 13-20Q8 16 45 34Q81 41 91 7Q98-28 70-47Z":"M68-67Q28-65 17-26Q10 21 58 44Q104 53 117 9Q126-36 90-60Z","nfr-fruit-berry");
-    label("10–15 mm",companion?-39:-50,companion?31:39,"nfr-small");
+  if (item.family === "nic1648-taiwan-blue-magpie-kites") {
+    group.classList.add("nic1648-magpie-kite");
+    shadow(companion ? 92 : 122, companion ? 116 : 124);
+    const kite = add(group, "g", { class: "nic1648-magpie-kite-body" });
+    if (companion) {
+      path(kite, "M-91-24Q-66-71-16-63Q17-58 43-35Q69-42 91-24Q68-7 46-2Q26 6 9 22Q-9 41-37 34Q-63 24-91-24Z", "nic1648-magpie-body companion");
+      path(kite, "M-37-29Q-5-82 45-55Q60-43 51-18Q13-36-21-4Z", "nic1648-magpie-wing companion");
+      path(kite, "M37-34Q64-61 92-40Q106-28 91-12Q62-24 43-7Z", "nic1648-magpie-wing-far companion");
+      add(kite, "circle", { class: "nic1648-magpie-head", cx: 57, cy: -24, r: 24 });
+      path(kite, "M78-28L108-18L79-10Z", "nic1648-magpie-beak");
+      add(kite, "circle", { class: "nic1648-magpie-eye", cx: 64, cy: -30, r: 5 });
+      path(kite, "M-29 25Q-58 67-81 109Q-55 98-34 81Q-20 60-8 33Z", "nic1648-magpie-tail companion");
+      path(kite, "M-7 30Q-22 78-31 121Q-8 105 8 82Q19 59 17 29Z", "nic1648-magpie-tail companion alternate");
+      path(kite, "M-79 106L-64 83L-46 94Q-60 108-79 106ZM-30 118L-24 94L-7 101Q-15 116-30 118Z", "nic1648-magpie-tail-tip");
+      path(kite, "M-72-17Q-9-17 80-22M-20-56L4 28M56-46L42-5", "nic1648-kite-spar");
+      path(kite, "M2 28Q27 71 12 119", "nic1648-kite-string");
+      add(kite, "circle", { class: "nic1648-kite-reel", cx: 8, cy: 127, r: 17 });
+      path(kite, "M-1 127H17M8 118V136", "nic1648-kite-reel-spoke");
+    } else {
+      path(kite, "M-18-22Q-66-91-143-54Q-117-14-68 8Q-37 22-17 45Q0 64 21 43Q45 18 80 4Q126-15 148-61Q73-92 17-25Z", "nic1648-magpie-body");
+      path(kite, "M-15-22Q-64-113-145-67Q-129-25-82-2Q-45 15-17 42Z", "nic1648-magpie-wing");
+      path(kite, "M16-24Q69-111 149-73Q140-27 93-2Q56 17 20 43Z", "nic1648-magpie-wing-far");
+      add(kite, "circle", { class: "nic1648-magpie-head", cx: 22, cy: -33, r: 31 });
+      path(kite, "M48-39L88-25L50-16Z", "nic1648-magpie-beak");
+      add(kite, "circle", { class: "nic1648-magpie-eye", cx: 30, cy: -40, r: 6 });
+      path(kite, "M-13 43Q-58 89-78 148Q-48 132-22 105Q-5 82 3 54Z", "nic1648-magpie-tail");
+      path(kite, "M4 47Q-12 102-10 160Q14 137 29 108Q41 77 28 46Z", "nic1648-magpie-tail alternate");
+      path(kite, "M20 43Q29 96 56 145Q71 119 68 91Q61 66 38 42Z", "nic1648-magpie-tail third");
+      path(kite, "M-77 146L-64 119L-40 133Q-55 150-77 146ZM-10 158L-4 130L18 140Q8 157-10 158ZM55 143L44 118L65 111Q68 132 55 143Z", "nic1648-magpie-tail-tip");
+      path(kite, "M-127-54Q0-18 132-59M-58-76L1 47M70-76L15 44", "nic1648-kite-spar");
+      path(kite, "M5 51Q42 92 24 153", "nic1648-kite-string");
+      add(kite, "circle", { class: "nic1648-kite-reel", cx: 17, cy: 165, r: 21 });
+      path(kite, "M5 165H29M17 153V177", "nic1648-kite-reel-spoke");
+      path(kite, "M-105-49Q-84-30-64-19M105-55Q83-34 61-20", "nic1648-magpie-feather-line");
+    }
     return true;
   }
   if (item.family === "nic1648-single-tail-trail-shoes") {
     group.classList.add("nic1648-tail-shoe");
     if (companion) {
-      path(group, "M-111 44Q-105 66-83 72H79Q101 69 109 51L102 67Q94 84 73 88H-82Q-105 84-119 67Z", "nic1648-shoe-sole companion-sole");
-      [-88,-58,-28,4,36,68].forEach((x,index)=>path(group, `M${x} ${index%2?70:68}L${x+14} ${index%2?82:84}`, "nic1648-shoe-tread"));
-      path(group, "M-108 41Q-104 4-73-14Q-35-34 7-22L36-14Q53-7 68-20L86-13L101 43Q85 58 57 61H-77Q-102 59-108 41Z", "nic1648-shoe-upper companion-upper");
-      path(group, "M24-14Q46-41 82-24L91 3Q60 13 35-2Z", "nic1648-shoe-collar");
-      path(group, "M35-2Q60-10 91 3L84 20Q60 8 42 16Z", "nic1648-shoe-opening");
-      path(group, "M-96 20Q-55-2-20 2Q-9 22-17 43H-78Q-99 40-96 20Z", "nic1648-shoe-toe-panel");
-      path(group, "M-16-16Q3-30 26-16L42 27Q17 43-10 32Z", "nic1648-shoe-quarter");
-      [-7,8,23].forEach((x,index)=>{
-        add(group,"circle",{class:"nic1648-shoe-eyelet",cx:x,cy:-10+index*9,r:4.5});
-        path(group,`M${x-17} ${-4+index*9}L${x+19} ${-12+index*9}`,"nic1648-shoe-lace");
+      path(group, "M-174 47Q-169 75-139 83H89Q118 80 128 54L121 78Q111 101 81 105H-140Q-171 101-185 78Z", "nic1648-shoe-sole companion-sole");
+      [-149,-113,-77,-39,-1,37,75].forEach((x,index)=>path(group, `M${x} ${index%2?84:81}L${x+18} ${index%2?99:102}`, "nic1648-shoe-tread"));
+      path(group, "M-171 43Q-166-3-124-24Q-75-51-19-36L32-25Q52-18 67-42L104-34Q119-5 123 44Q104 67 68 70H-126Q-163 66-171 43Z", "nic1648-shoe-upper companion-upper");
+      path(group, "M54-42Q77-69 109-44L119-7Q88 2 63-15Z", "nic1648-shoe-collar");
+      path(group, "M63-15Q89-27 119-7L114 14Q88 2 70 20Z", "nic1648-shoe-opening");
+      path(group, "M-157 17Q-109-12-59-4Q-42 20-53 51H-127Q-159 48-157 17Z", "nic1648-shoe-toe-panel");
+      path(group, "M-58-31Q-23-51 23-30L62 45Q17 63-40 47Z", "nic1648-shoe-quarter");
+      [-43,-22,-1,20].forEach((x,index)=>{
+        add(group,"circle",{class:"nic1648-shoe-eyelet",cx:x,cy:-22+index*11,r:4.5});
+        path(group,`M${x-19} ${-14+index*11}L${x+22} ${-26+index*11}`,"nic1648-shoe-lace");
       });
-      path(group, "M73-21Q96-36 103-15L101 20", "nic1648-shoe-heel-loop");
-      path(group, "M-70 55Q-37 43-3 54T68 53", "nic1648-shoe-midsole-line");
-      path(group, "M-83 13Q-67 2-50 6", "nic1648-shoe-spark");
+      path(group, "M99-41Q126-57 133-32L126 11", "nic1648-shoe-heel-loop");
+      path(group, "M-130 64Q-75 49-17 63T81 61", "nic1648-shoe-midsole-line");
+      path(group, "M-140 6Q-119-9-96-2", "nic1648-shoe-spark");
+      path(group, "M82 18Q103 11 121 22L122 44Q105 59 84 62Z", "nic1648-shoe-heel-panel");
     } else {
-      path(group, "M-139 49Q-136 77-108 86H93Q126 82 139 56L129 79Q116 103 87 108H-108Q-139 103-154 81Z", "nic1648-shoe-sole");
-      [-112,-78,-44,-10,25,60,94].forEach((x,index)=>path(group, `M${x} ${index%2?86:83}L${x+18} ${index%2?103:106}`, "nic1648-shoe-tread"));
-      path(group, "M-137 46Q-134 0-96-21Q-57-44-9-34L34-27Q49-20 57-56L108-49Q126-15 133 48Q112 72 73 73H-97Q-130 69-137 46Z", "nic1648-shoe-upper");
-      path(group, "M47-55Q75-87 113-59L126-16Q91-7 61-25Z", "nic1648-shoe-collar");
-      path(group, "M61-25Q91-39 126-16L119 7Q91-8 69 5Z", "nic1648-shoe-opening");
-      path(group, "M-125 20Q-82-7-39-2Q-24 21-34 54H-99Q-126 50-125 20Z", "nic1648-shoe-toe-panel");
-      path(group, "M-35-28Q-5-48 34-28L62 47Q21 66-27 48Z", "nic1648-shoe-quarter");
-      [-20,-1,18,37].forEach((x,index)=>{
-        add(group,"circle",{class:"nic1648-shoe-eyelet",cx:x,cy:-21+index*11,r:5.5});
-        path(group,`M${x-22} ${-12+index*11}L${x+25} ${-25+index*11}`,"nic1648-shoe-lace");
+      path(group, "M-218 51Q-214 85-179 96H111Q146 91 158 58L150 87Q136 116 101 122H-181Q-217 116-234 88Z", "nic1648-shoe-sole");
+      [-190,-147,-104,-60,-16,28,72,112].forEach((x,index)=>path(group, `M${x} ${index%2?99:95}L${x+22} ${index%2?116:119}`, "nic1648-shoe-tread"));
+      path(group, "M-215 47Q-210-9-158-36Q-98-68-29-49L34-36Q58-29 76-67L131-59Q149-20 153 49Q130 78 86 82H-158Q-206 77-215 47Z", "nic1648-shoe-upper");
+      path(group, "M63-66Q95-105 139-71L151-20Q113-9 77-31Z", "nic1648-shoe-collar");
+      path(group, "M77-31Q112-49 151-20L144 8Q111-9 84 9Z", "nic1648-shoe-opening");
+      path(group, "M-198 15Q-140-20-78-9Q-56 20-69 59H-162Q-200 56-198 15Z", "nic1648-shoe-toe-panel");
+      path(group, "M-77-43Q-32-69 26-42L78 55Q21 80-58 58Z", "nic1648-shoe-quarter");
+      [-58,-32,-6,20,46].forEach((x,index)=>{
+        add(group,"circle",{class:"nic1648-shoe-eyelet",cx:x,cy:-33+index*12,r:5.5});
+        path(group,`M${x-24} ${-23+index*12}L${x+28} ${-38+index*12}`,"nic1648-shoe-lace");
       });
-      path(group, "M103-55Q132-74 142-47L136 2", "nic1648-shoe-heel-loop");
-      path(group, "M-91 70Q-48 55-5 68T83 66", "nic1648-shoe-midsole-line");
-      path(group, "M-109 10Q-90-4-70 2", "nic1648-shoe-spark");
-      path(group, "M84 17Q105 10 127 19L130 47Q111 63 88 65Z", "nic1648-shoe-heel-panel");
+      path(group, "M128-67Q161-89 171-56L160 2", "nic1648-shoe-heel-loop");
+      path(group, "M-169 80Q-102 61-31 78T102 75", "nic1648-shoe-midsole-line");
+      path(group, "M-177 2Q-151-16-122-7", "nic1648-shoe-spark");
+      path(group, "M103 14Q131 6 151 21L152 49Q132 69 105 74Z", "nic1648-shoe-heel-panel");
     }
     return true;
   }
-  if (item.family === "nic1648-qualitative-male-viewer") {
-    shadow(100,106);
-    path(group,companion?"M-73-43Q-78-88-35-98Q8-106 29-66L83 44L54 60L2-39Q-18-15-51-17Z":"M-94-55Q-101-113-45-126Q10-136 37-84L107 57L69 77L3-50Q-23-19-65-22Z","nfr-microscope");
-    path(group,companion?"M-13-19H71V4H-13Z":"M-17-24H91V5H-17Z","nfr-stage");
-    path(group,companion?"M45 5Q74 29 60 65Q42 95 3 84":"M58 6Q95 37 77 83Q54 121 4 108","nfr-microscope-base");
-    add(group,"circle",{class:"nfr-glass",cx:companion?-45:-58,cy:companion?-71:-91,r:companion?18:23});
-    label("MALE COUNT",companion?20:26,companion?78:99,"nfr-small");
+  if (item.family === "nic1648-bubble-tea-jetpacks") {
+    group.classList.add("nic1648-boba-jetpack");
+    shadow(companion ? 76 : 100, companion ? 112 : 121);
+    const pack = add(group, "g", { class: "nic1648-boba-pack" });
+    if (companion) {
+      path(pack, "M-62-72Q-88-40-79 11Q-73 48-53 71M59-67Q86-39 78 13Q72 49 52 70", "nic1648-boba-harness");
+      path(pack, "M-55-69H58L48 68Q45 88 1 93Q-43 88-47 68Z", "nic1648-boba-cup companion");
+      path(pack, "M-45-13H49L43 67Q18 80-38 68Z", "nic1648-boba-tea companion");
+      path(pack, "M-63-79Q1-96 66-77L61-58Q2-70-58-59Z", "nic1648-boba-lid companion");
+      path(pack, "M17-73L50-135L66-126L35-68Z", "nic1648-boba-straw companion");
+      [[-28,48],[-4,59],[21,45],[36,66],[-20,72],[11,75]].forEach(([cx,cy],index)=>add(pack,"circle",{class:index%3?"nic1648-boba-pearl":"nic1648-boba-pearl accent",cx,cy,r:index%2?8:9}));
+      path(pack, "M-66 3L-94 19L-76 47L-54 34ZM57-2L84 14L75 43L51 31Z", "nic1648-boba-fin companion");
+      path(pack, "M-69 66H-39L-32 101H-78ZM38 67H66L76 100H31Z", "nic1648-boba-thruster companion");
+      path(pack, "M-72 101L-57 127L-42 101ZM40 100L55 127L70 100Z", "nic1648-boba-flame companion");
+      path(pack, "M-35-46Q-8-61 18-50", "nic1648-boba-highlight");
+    } else {
+      path(pack, "M-76-82Q-112-43-101 21Q-94 65-66 87M72-78Q108-41 99 24Q92 65 65 87", "nic1648-boba-harness");
+      path(pack, "M-76-75Q0-96 79-73L67 82Q61 108 0 113Q-62 108-68 82Z", "nic1648-boba-cup");
+      path(pack, "M-65-15H68L60 81Q24 99-57 82Z", "nic1648-boba-tea");
+      path(pack, "M-84-86Q0-110 87-83L81-58Q0-76-78-61Z", "nic1648-boba-lid");
+      path(pack, "M12-77L48-161L69-151L34-69Z", "nic1648-boba-straw");
+      [[-45,49],[-17,61],[12,48],[39,59],[-34,82],[-3,88],[27,82],[48,77]].forEach(([cx,cy],index)=>add(pack,"circle",{class:index%3?"nic1648-boba-pearl":"nic1648-boba-pearl accent",cx,cy,r:index%2?10:11}));
+      path(pack, "M-85-3L-124 18L-101 56L-72 38ZM78-7L117 14L105 52L70 36Z", "nic1648-boba-fin");
+      path(pack, "M-89 78H-50L-41 124H-102ZM48 79H87L101 123H37Z", "nic1648-boba-thruster");
+      path(pack, "M-96 124L-76 161L-55 124ZM43 123L65 161L88 123Z", "nic1648-boba-flame");
+      path(pack, "M-49-50Q-12-74 28-57", "nic1648-boba-highlight");
+      path(pack, "M-74-30Q0-48 73-27", "nic1648-boba-liquid-line");
+    }
     return true;
   }
   if (item.family === "qg4739-kotop-name-concordance") {
@@ -6405,7 +6385,6 @@ function drawNamedAccessory(group, item, companion) {
   if (drawHCMCJU4356Accessory(group, item, companion)) return true;
   if (drawMauritiusJU2909Accessory(group, item, companion)) return true;
   if (drawMahahualJU2617Accessory(group, item, companion)) return true;
-  if (drawNewTaipeiNIC1648Accessory(group, item, companion)) return true;
   if (drawKauaiQG131Accessory(group, item, companion)) return true;
   if (drawOahuECA789Accessory(group, item, companion)) return true;
   if (drawLaSelvaQG3845Accessory(group, item, companion)) return true;
@@ -6540,9 +6519,9 @@ function renderPiece(target, item, wormPart) {
     ,"qg131-paired-pandanus-key-sorter": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
     ,"qg131-four-date-culture-relay": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"qg131-mating-id-motion-theatre": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
-    ,"nic1648-fig-diameter-comparator": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
-    ,"nic1648-single-tail-trail-shoes": { primary: [119, 260, .42, 49], companion: [27, 187, .29, 49] }
-    ,"nic1648-qualitative-male-viewer": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
+    ,"nic1648-taiwan-blue-magpie-kites": { primary: [374, 117, .31, -4], companion: [-1, 111, .27, 5] }
+    ,"nic1648-single-tail-trail-shoes": { primary: [63, 273, .39, -29], companion: [0, 204, .3, -31] }
+    ,"nic1648-bubble-tea-jetpacks": { primary: [231, 178, .25, 8], companion: [61, 166, .22, 8] }
     ,"mahahual-reef-ruffle-swim-costumes": { primary: [220, 155, .5, 20], companion: [67, 149, .37, 34] }
     ,"mahahual-caribbean-sun-spectacles": { primary: [332, 56, .34, -3], companion: [112, 105, .23, 3] }
     ,"mahahual-sea-grape-beach-parasols": { primary: [357, 268, .32, -5], companion: [27, 264, .34, 5] }

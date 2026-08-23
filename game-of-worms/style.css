@@ -2041,20 +2041,6 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .qg131-small-label { fill:color-mix(in srgb,#263c35 86%,var(--worm-deep)); font:900 7px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 88%,transparent); stroke-width:1.4px; paint-order:stroke; }
 .qg131-tiny-label,.qg131-vial-label { fill:color-mix(in srgb,#263c35 86%,var(--worm-deep)); font:900 6px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 88%,transparent); stroke-width:1.2px; paint-order:stroke; }
 
-.new-taipei-nic1648-accessory { filter:drop-shadow(0 5px 4px rgba(31,39,33,.25)); }
-.nic1648-gauge-tower,.nic1648-comparator-bench,.nic1648-stair-column,.nic1648-index-deck,.nic1648-optical-column,.nic1648-observation-drum { fill:color-mix(in srgb,#76654e 72%,var(--local-secondary)); stroke:color-mix(in srgb,#33483d 84%,var(--worm-deep)); stroke-width:3; stroke-linejoin:round; }
-.nic1648-gauge-ring,.nic1648-micrometer-drum,.nic1648-coordinate-drum,.nic1648-crank,.nic1648-qualitative-dial,.nic1648-focus-wheel,.nic1648-drive-gear { fill:color-mix(in srgb,#bd9653 76%,var(--local-secondary)); stroke:color-mix(in srgb,#504936 82%,var(--worm-deep)); stroke-width:2.3; }
-.nic1648-gauge-ring.large { fill:color-mix(in srgb,#728575 72%,var(--local-primary)); }
-.nic1648-sliding-cup,.nic1648-receiving-drawer,.nic1648-tread-plate,.nic1648-litter-drawer,.nic1648-culture-drawer { fill:color-mix(in srgb,#94734e 72%,var(--local-secondary)); stroke:color-mix(in srgb,#445044 82%,var(--worm-deep)); stroke-width:2.3; stroke-linejoin:round; }
-.nic1648-jaw,.nic1648-jaw-bridge,.nic1648-chain,.nic1648-drive,.nic1648-pointer,.nic1648-worm-strip,.nic1648-observation-trace { fill:none; stroke:color-mix(in srgb,#42594d 84%,var(--worm-deep)); stroke-width:2.7; stroke-linecap:round; stroke-linejoin:round; }
-.nic1648-chain { stroke-dasharray:3 4; }
-.nic1648-specimen-cup,.nic1648-vial,.nic1648-vial-cradle,.nic1648-observation-window,.nic1648-sighting-window { fill:rgba(221,235,227,.84); stroke:color-mix(in srgb,#4a6a5f 75%,var(--worm-deep)); stroke-width:2.2; }
-.nic1648-id-plate,.nic1648-specimen-shutter,.nic1648-litter-pocket,.nic1648-field-strip,.nic1648-note-shutter,.nic1648-tail-gate { fill:color-mix(in srgb,#c5b17f 70%,var(--paper-strong)); stroke:color-mix(in srgb,#4a5144 82%,var(--worm-deep)); stroke-width:2.3; stroke-linejoin:round; }
-.nic1648-tail-reference { fill:color-mix(in srgb,#9d5e64 72%,var(--local-secondary)); stroke:color-mix(in srgb,#563f44 82%,var(--worm-deep)); stroke-width:2; }
-.nic1648-label { fill:color-mix(in srgb,#263c35 86%,var(--worm-deep)); font:900 9px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 88%,transparent); stroke-width:1.8px; paint-order:stroke; }
-.nic1648-small-label { fill:color-mix(in srgb,#263c35 86%,var(--worm-deep)); font:900 7px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 88%,transparent); stroke-width:1.4px; paint-order:stroke; }
-.nic1648-tiny-label,.nic1648-vial-label { fill:color-mix(in srgb,#263c35 86%,var(--worm-deep)); font:900 6px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 88%,transparent); stroke-width:1.2px; paint-order:stroke; }
-
 .scanner-cast-frame,
 .scanner-portal { fill: color-mix(in srgb, #48504e 81%, var(--worm-deep)); stroke: color-mix(in srgb, #283330 84%, var(--worm-deep)); stroke-width: 3.5; stroke-linejoin: round; fill-rule: evenodd; }
 .scanner-portal { fill: color-mix(in srgb, #5a625f 75%, var(--local-primary)); }
@@ -5010,7 +4996,44 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   --nt-shoe-aqua:#69d2c5;
   --nt-shoe-gold:#efbd4e;
   --nt-shoe-ivory:#fff4d3;
+  --nt-magpie-blue:#4858c4;
+  --nt-magpie-deep:#303a91;
+  --nt-magpie-aqua:#64d1cf;
+  --nt-magpie-coral:#f06f72;
+  --nt-boba-tea:#e59679;
+  --nt-boba-rose:#e85e88;
+  --nt-boba-glass:rgba(224,247,242,.86);
+  --nt-boba-pearl:#3f315f;
 }
+.tfr-new-taipei.nic1648-magpie-kite,
+.tfr-new-taipei.nic1648-boba-jetpack { filter:drop-shadow(0 5px 4px rgba(25,34,55,.28)); }
+.tfr-new-taipei .nic1648-magpie-body { fill:var(--nt-magpie-blue);stroke:var(--nt-shoe-ink);stroke-width:7;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-magpie-body.companion { fill:var(--nt-magpie-deep); }
+.tfr-new-taipei .nic1648-magpie-wing { fill:var(--nt-magpie-aqua);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-magpie-wing-far { fill:var(--nt-magpie-deep);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-magpie-head { fill:var(--nt-shoe-ink);stroke:var(--nt-shoe-ivory);stroke-width:5; }
+.tfr-new-taipei .nic1648-magpie-eye { fill:var(--nt-shoe-ivory);stroke:var(--nt-shoe-ink);stroke-width:2; }
+.tfr-new-taipei .nic1648-magpie-beak { fill:var(--nt-magpie-coral);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-magpie-tail { fill:var(--nt-magpie-blue);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-magpie-tail.alternate { fill:var(--nt-magpie-aqua); }
+.tfr-new-taipei .nic1648-magpie-tail.third { fill:var(--nt-magpie-deep); }
+.tfr-new-taipei .nic1648-magpie-tail-tip { fill:var(--nt-shoe-ivory);stroke:var(--nt-shoe-ink);stroke-width:4;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-kite-spar { fill:none;stroke:var(--nt-shoe-gold);stroke-width:5;stroke-linecap:round;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-kite-string { fill:none;stroke:var(--nt-shoe-ivory);stroke-width:4;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-kite-reel { fill:var(--nt-magpie-coral);stroke:var(--nt-shoe-ink);stroke-width:5; }
+.tfr-new-taipei .nic1648-kite-reel-spoke,.tfr-new-taipei .nic1648-magpie-feather-line { fill:none;stroke:var(--nt-shoe-gold);stroke-width:4;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-boba-harness { fill:none;stroke:var(--nt-shoe-gold);stroke-width:10;stroke-linecap:round; }
+.tfr-new-taipei .nic1648-boba-cup { fill:var(--nt-boba-glass);stroke:var(--nt-shoe-ink);stroke-width:7;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-boba-tea { fill:var(--nt-boba-tea);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-boba-tea.companion { fill:color-mix(in srgb,var(--nt-boba-tea) 62%,var(--nt-shoe-gold)); }
+.tfr-new-taipei .nic1648-boba-lid { fill:var(--nt-boba-rose);stroke:var(--nt-shoe-ink);stroke-width:7;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-boba-straw { fill:var(--nt-magpie-aqua);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-boba-pearl { fill:var(--nt-boba-pearl);stroke:var(--nt-shoe-ivory);stroke-width:2.5; }
+.tfr-new-taipei .nic1648-boba-pearl.accent { fill:var(--nt-magpie-deep); }
+.tfr-new-taipei .nic1648-boba-fin { fill:var(--nt-magpie-blue);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-boba-thruster { fill:var(--nt-shoe-gold);stroke:var(--nt-shoe-ink);stroke-width:6;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-boba-flame { fill:var(--nt-magpie-coral);stroke:var(--nt-shoe-ink);stroke-width:5;stroke-linejoin:round; }
+.tfr-new-taipei .nic1648-boba-highlight,.tfr-new-taipei .nic1648-boba-liquid-line { fill:none;stroke:var(--nt-shoe-ivory);stroke-width:5;stroke-linecap:round; }
 .tfr-new-taipei.nic1648-tail-shoe { filter:drop-shadow(0 5px 4px rgba(25,34,55,.28)); }
 .tfr-new-taipei .nic1648-shoe-sole { fill:var(--nt-shoe-aqua);stroke:var(--nt-shoe-ink);stroke-width:7;stroke-linejoin:round; }
 .tfr-new-taipei .nic1648-shoe-sole.companion-sole { fill:var(--nt-shoe-gold); }

@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-23
 
-> **Current production accessory contract:** `fig measuring calipers`, `single-tail trail shoes`, and `male-count microscopes`. The single oversized shoe fitted to each worm is a playful response to the recorded concrete forest stairs, not collection equipment; the calipers and microscopes preserve the measured fig size and qualitative male observation.
+> **Current production accessory contract:** `Taiwan blue-magpie kites`, `single-tail trail shoes`, and `bubble-tea jetpacks`. The shoes respond playfully to the recorded concrete forest stairs; the kites and jetpacks are explicitly Taiwan-wide fantasy references rather than collection equipment or claims about the NIC1648 site.
 
 ## Purpose
 
@@ -158,6 +158,10 @@ Do not import evidence from other New Taipei strains. In particular:
   only to audit the current rounded marker
 - [Taiwan Tourism Administration Yehliu Geopark page](https://eng.taiwan.net.tw/m1.aspx?id=155&sno=0002091),
   used only to audit the unsupported Yehliu profile
+- [Taiwan Tourism Administration Cihu page](https://eng.taiwan.net.tw/m1.aspx?id=r145&sno=0002016),
+  used only to confirm the Taiwan blue magpie as a Taiwan forest reference
+- [Taiwan Tourism Administration travel guide](https://eng.taiwan.net.tw/att/files/Time%20for%20Taiwan_ENG.pdf),
+  used only to support bubble tea as a Taiwan-wide cultural reference
 
 ### Link-health check on 2026-07-14
 
@@ -289,12 +293,12 @@ Use this exact data row:
 [
   "tropicalis",
   "New Taipei City, Taiwan · NIC1648",
-  "NIC1648 10–15 mm fig comparator",
-  "nic1648-fig-diameter-comparator",
+  "Taiwan blue-magpie kites",
+  "nic1648-taiwan-blue-magpie-kites",
   "NIC1648 single-tail trail shoes",
   "nic1648-single-tail-trail-shoes",
-  "NIC1648 qualitative male viewer",
-  "nic1648-qualitative-male-viewer"
+  "bubble-tea jetpacks",
+  "nic1648-bubble-tea-jetpacks"
 ]
 ```
 
@@ -308,27 +312,30 @@ const newTaipeiNIC1648RendererIds = new Set([
 ]);
 ```
 
-All six drawings are independently movable. The shoes are playful regional
-fantasy; the calipers and microscopes remain evidence-led scientific props.
+All six drawings are independently movable. Every object in this revised set
+is playful fantasy. None represents collection equipment or evidence that a
+blue magpie, kite, bubble tea or shoe was present at the NIC1648 site.
 
-### NIC1648 10–15 mm fig comparator
+### Taiwan blue-magpie kites
 
-Family ID: `nic1648-fig-diameter-comparator`
+Family ID: `nic1648-taiwan-blue-magpie-kites`
 
-Exact basis: the strain record describes small figs with a diameter range of
-10–15 mm.
+Taiwan-wide basis: the Taiwan Tourism Administration lists the Taiwan blue
+magpie among birds observed in Taiwanese forest. This does not establish its
+presence at the NIC1648 collection point.
 
-Primary: a broad horizontal twin-jaw comparator bench with separate fixed
-`10 mm` and `15 mm` stops, two unequal blank specimen cups, an exposed
-micrometer drum, linked pointer and separate NIC1648 culture vial.
+Primary: a wide airborne bird-shaped kite with unequal outstretched cobalt and
+aqua wings, black head, coral beak, three long separately constructed tail
+feathers with ivory tips, visible gold spars, flying line and berry reel.
 
-Companion: a tall asymmetric ring-gauge tower with two visibly different
-apertures marked `10` and `15`, a counterweighted sliding sample cup, exposed
-chain, lower receiving drawer and offset NIC1648 plate.
+Companion: a compact side-profile bird kite with one raised wing, a smaller
+far wing, two differently curved white-tipped tail feathers, independent spar
+geometry, its own line and smaller reel. It must not be a scaled or mirrored
+copy of the primary.
 
-The drawings encode the recorded range; they are not reconstructions of a
-field instrument. Do not imply a mean, exact specimen measurement, sample
-count or fig species.
+Both kites use the bird's broad colour relationships only; do not claim exact
+plumage reconstruction, collection-site occurrence or a traditional kite
+design.
 
 ### NIC1648 single-tail trail shoes
 
@@ -338,14 +345,17 @@ Playful basis: the substrate was recorded on and beside concrete stairs. A
 single enormous shoe fitted to a nematode tail makes that stair setting funny
 without pretending the shoe was collection equipment.
 
-Primary: one oversized coral-and-berry high-top trail shoe wrapped around the
-hermaphrodite tail. It has a fitted ivory opening, distinct upper and quarter
-panels, a gold toe cap and laces, heel loop, curved midsole and deep aqua tread.
+Primary: one elongated coral-and-berry high-top trail shoe wrapping roughly
+the final third of the hermaphrodite tail. Its fitted ivory opening overlaps
+the tail end, while its curved sole follows the local body tangent and leans
+leftward. It has distinct upper and quarter panels, a gold toe cap and laces,
+heel loop, curved midsole and deep aqua tread.
 
-Companion: one independently constructed indigo low trail shoe fitted to the
-male tail. It has a different collar, toe, quarters, eyelet rhythm, heel and
-gold sole construction. It remains deliberately oversized relative to the
-male while respecting his smaller body.
+Companion: one independently constructed, elongated indigo low trail shoe
+fitted around the male tail. Its slimmer opening and sole follow his separate
+leftward body tangent. It has a different collar, toe, quarters, eyelet
+rhythm, heel and gold sole construction and remains deliberately oversized
+relative to the male while respecting his smaller body.
 
 Each worm receives exactly one shoe, never a floating pair. Align each opening
 and sole with the local tail angle, keep both faces and body outlines clear,
@@ -353,78 +363,60 @@ and retain enough colour contrast against the dark green stair background.
 Do not imply an exact stair count, route, footwear tradition or collection
 method.
 
-### NIC1648 qualitative male viewer
+### Bubble-tea jetpacks
 
-Family ID: `nic1648-qualitative-male-viewer`
+Family ID: `nic1648-bubble-tea-jetpacks`
 
-Exact basis: the strain record qualitatively notes many males but gives no
-number, proportion, observation method, stage or cause.
+Taiwan-wide basis: Taiwan's official tourism material presents bubble tea as a
+recognisable Taiwanese food-and-drink reference. The jetpack construction is
+entirely playful fantasy.
 
-Primary: a broad multi-window observation drum with abstract worm-form strips,
-one male-tail reference gate, a movable `MALES NOTED` shutter, exposed drive
-gears and separate NIC1648 vial. Include no numbered tally.
+Primary: a broad transparent domed cup with a bounded warm tea chamber,
+clearly visible dark tapioca pearls, oversized aqua straw, rose lid, curved
+gold harness, unequal indigo fins, two gold thrusters and coral flames.
 
-Companion: a tall two-channel optical column with staggered sighting apertures,
-a rotating field strip, one qualitative dial marked `NOTED`, an offset focus
-wheel and lower culture drawer.
+Companion: a narrower tapered cup with a differently shaped lid and straw,
+independently arranged pearls, compact asymmetric fins, smaller thrusters and
+its own curved harness. It must remain visibly related without repeating the
+primary geometry.
 
-Do not imply:
-
-- a male count, percentage or sex ratio;
-- that the observation occurred in the original field sample;
-- a heritable phenotype or population-wide property;
-- a connection to Medea, mating success or gene drive;
-- a causal relationship with the separate no-bleach note;
-- an experimental instrument or assay not recorded by the source.
+Do not depict a commercial logo, claim a particular bubble-tea inventor or
+shop, reproduce branded packaging, or imply that bubble tea was present at the
+collection site.
 
 ## Suggested initial layouts
 
 These require final browser tuning:
 
 ```js
-"nic1648-fig-diameter-comparator": {
-  primary: [374, 126, .34, -2],
-  companion: [-8, 116, .27, 2]
+"nic1648-taiwan-blue-magpie-kites": {
+  primary: [374, 117, .31, -4],
+  companion: [-1, 111, .27, 5]
 },
 "nic1648-single-tail-trail-shoes": {
-  primary: [119, 260, .42, 49],
-  companion: [27, 187, .29, 49]
+  primary: [166, 302, .39, -29],
+  companion: [76, 231, .27, -31]
 },
-"nic1648-qualitative-male-viewer": {
-  primary: [370, 266, .33, -1],
-  companion: [0, 292, .27, 2]
+"nic1648-bubble-tea-jetpacks": {
+  primary: [382, 261, .29, -5],
+  companion: [5, 280, .25, 5]
 }
 ```
 
 ## Semantic reuse ledger
 
-Current post-Kauaʻi-QG131 baseline:
+Current post-revision catalogue:
 
-- 13 families used exactly twice
-- 85 singleton families
-- 111 concepts
-
-Delete:
-
-- Hoodoo helmet, a singleton family
-- Erosion crinoline, a singleton family
-- New Taipei's use of Bowed strings
-
-Taipei BRC20390's tower fiddle remains, so Bowed strings changes from a
-twice-used family to a singleton.
-
-Add three singleton families:
-
-- Fig-diameter comparator
-- Stair-side provenance indexer
-- Qualitative male-observation viewer
-
-Expected resulting totals:
-
-- 12 families used exactly twice
-- 87 singleton families
-- 111 concepts across 37 accessory sets
+- 9 families used exactly twice
+- 94 singleton families
+- 112 concepts across 37 accessory sets plus Bristol N2's fourth concept
 - no family used more than twice
+
+The 2026-08-23 playful revision retires New Taipei's fig-diameter comparator
+and qualitative male-observation viewer, retains and redraws the single-tail
+shoe family, makes the blue-magpie kite the second kite-rig use after Ahmedabad
+AF16, and makes the bubble-tea pack the second jetpack use after Bristol N2.
+Each repeated family differs in silhouette, material and construction.
 
 ## Stale implementation cleanup
 
@@ -483,14 +475,15 @@ Expected resulting totals:
   construction and negative space.
 - No pair may be mirrored, merely scaled, recoloured or differentiated only by
   the number of repeated parts.
-- The comparator pair must read as horizontal twin jaws versus a vertical
-  ring-gauge lift.
-- The indexer pair must read as a plan-view deck versus a folding stair column.
-- The viewer pair must read as a broad observation drum versus a tall optical
-  strip reader.
-- Every jaw, pointer, chain, axle, tread, drawer, shutter, wheel and support
-  must visibly terminate in a functional component.
-- No unexplained rod or stick may touch a vial, plate, specimen cup or worm.
+- The kite pair must read as a broad frontal bird silhouette versus an
+  asymmetric side-profile bird, with separately constructed spars, tails,
+  lines and reels.
+- The shoe pair must be elongated and fitted around separate tail tangents;
+  neither shoe may float below the body or reuse the other's upper geometry.
+- The jetpack pair must read as a broad domed cup versus a narrower tapered
+  cup, with separate lid, straw, pearl, harness, fin and thruster arrangements.
+- Every spar, line, reel, lace, tread, harness, fin and thruster must visibly
+  terminate in a functional component.
 - Preserve independent primary and companion positions.
 - Keep worm faces, body outlines and reproductive-role distinctions readable.
 - Verify direct pointer dragging independently for all six objects.
@@ -502,7 +495,7 @@ Expected resulting totals:
 
 ## Exact catalogue replacement row
 
-| 34 | *C. tropicalis* — **New Taipei City, Taiwan · NIC1648**; isotype-reference strain, previously 3b; 25.06574, 121.82753; forest at 226 m; small 10–15 mm figs whose presumed decay was not confirmed, on and beside concrete stairs descending toward Menghuan Falls in Ruifang District; sampled by C. Gosse on 17 October 2017 and isolated by C. Braendle; ITS2 identification; strain record notes no bleaching and many males qualitatively; fig species, quantity, attachment or fall status, exact decay geometry, weather, surrounding vegetation and collection-patch view unreported; new-taipei-nic1648-ruifang-fig-stairs | Low forest-stair view. **F:** small anonymous fig forms divided between one broad concrete tread and adjacent leaf litter, with number, form and decay explicitly illustrative. **M:** one broken diagonal concrete stair flight turning around clear central play space. **B:** steep closed forest of unequal unidentified trunks around one narrow route-shaped light opening. **Lock:** small figs straddling a broad tread edge beneath a descending zig-zag stair corridor; no coast, hoodoos, open sea, waterfall, temple, ridge panorama or inferred fig tree. | **Fig measuring calipers:** P broad complete caliper with a berry fig form, readable 10–15 mm scale and deep jaws / C narrower independently proportioned caliper. **Single-tail trail shoes:** P one oversized coral-and-berry high-top with fitted opening, gold laces, heel loop, panel seams and deep aqua tread around the hermaphrodite tail / C one independently constructed indigo low trail shoe with different collar, quarters, lacing, toe and gold sole fitted to the male tail. The shoes are a playful response to the recorded concrete forest stairs, not collection equipment. **Male-count microscopes:** P large complete microscope with objective, stage and base / C compact independently proportioned microscope; the public label remains qualitative and does not assert a count. |
+| 34 | *C. tropicalis* — **New Taipei City, Taiwan · NIC1648**; isotype-reference strain, previously 3b; 25.06574, 121.82753; forest at 226 m; small 10–15 mm figs whose presumed decay was not confirmed, on and beside concrete stairs descending toward Menghuan Falls in Ruifang District; sampled by C. Gosse on 17 October 2017 and isolated by C. Braendle; ITS2 identification; strain record notes no bleaching and many males qualitatively; fig species, quantity, attachment or fall status, exact decay geometry, weather, surrounding vegetation and collection-patch view unreported; new-taipei-nic1648-ruifang-fig-stairs | Low forest-stair view. **F:** small anonymous fig forms divided between one broad concrete tread and adjacent leaf litter, with number, form and decay explicitly illustrative. **M:** one broken diagonal concrete stair flight turning around clear central play space. **B:** steep closed forest of unequal unidentified trunks around one narrow route-shaped light opening. **Lock:** small figs straddling a broad tread edge beneath a descending zig-zag stair corridor; no coast, hoodoos, open sea, waterfall, temple, ridge panorama or inferred fig tree. | **Taiwan blue-magpie kites:** P broad cobalt-and-aqua bird kite with unequal outstretched wings, black head, coral beak, three long ivory-tipped tail feathers, gold spars, line and berry reel / C compact side-profile bird kite with one raised wing, two differently curved white-tipped tail feathers and its own spar, line and reel geometry. **Single-tail trail shoes:** P one elongated coral-and-berry high-top whose fitted opening and curved aqua sole follow the final third of the hermaphrodite tail leftward / C one independently constructed elongated indigo low shoe with a slimmer fitted opening, different collar, quarters, lacing, toe and gold sole following the male tail leftward. The shoes are a playful response to the recorded concrete forest stairs, not collection equipment. **Bubble-tea jetpacks:** P broad transparent domed cup with warm tea chamber, visible tapioca pearls, oversized aqua straw, rose lid, gold harness, indigo fins, twin thrusters and coral flames / C narrower tapered cup with a different lid, straw, pearl layout, asymmetric fins, harness and smaller thrusters. The kites and jetpacks are Taiwan-wide fantasy references, not claims about the NIC1648 collection site. |
 
 ## Acceptance checks
 
