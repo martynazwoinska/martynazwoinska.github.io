@@ -284,7 +284,10 @@ const els = {
   familyInfoDialog: document.getElementById("family-info-dialog"),
   familyInfoClose: document.getElementById("family-info-close"),
   familyTree: document.getElementById("caenorhabditis-tree"),
+  atlasCompletionReward: document.getElementById("atlas-completion-reward"),
+  exploredStatus: document.getElementById("explored-status"),
   exploredCount: document.getElementById("explored-count"),
+  exploredAnnouncement: document.getElementById("explored-announcement"),
   freestyle: document.getElementById("freestyle-draw"),
   drawTools: document.getElementById("draw-tools"),
   clearDrawing: document.getElementById("clear-drawing"),
@@ -441,6 +444,7 @@ function openFamilyInfo() {
 }
 
 els.familyInfoToggle.addEventListener("click", openFamilyInfo);
+els.exploredStatus.addEventListener("click", openFamilyInfo);
 els.familyInfoClose.addEventListener("click", () => els.familyInfoDialog.close());
 els.familyInfoDialog.addEventListener("keydown", event => {
   if (event.key !== "Escape") return;
@@ -726,6 +730,21 @@ function updateSelectedControls() {
   });
 }
 
+function updateExploredStatus() {
+  const count = visited.size;
+  const isComplete = count === species.length;
+  const status = isComplete
+    ? "All six species met. Open the wider worm family."
+    : `${count} of ${species.length} species met`;
+
+  els.exploredCount.textContent = String(count);
+  els.exploredStatus.disabled = !isComplete;
+  els.exploredStatus.classList.toggle("is-complete", isComplete);
+  els.exploredStatus.setAttribute("aria-label", status);
+  els.exploredAnnouncement.textContent = status;
+  els.atlasCompletionReward.hidden = !isComplete;
+}
+
 function selectSpecies(id, place) {
   const item = byId.get(id);
   if (!item) return;
@@ -735,7 +754,7 @@ function selectSpecies(id, place) {
   selectedRecordName = activePlace?.name || null;
   drawingEnabled = drawingModes.get(wardrobeKey()) || false;
   visited.add(id);
-  els.exploredCount.textContent = String(visited.size);
+  updateExploredStatus();
   renderSpecies(item, activePlace);
   syncDrawingMode();
   updateSelectedControls();

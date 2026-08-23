@@ -12,19 +12,94 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#ecf9f7" />
   <link rel="preload" as="image" href="assets/n2-bristol-painted-background.webp" type="image/webp" fetchpriority="high" />
-  <link rel="stylesheet" href="style.css?v=20260823-96" />
+  <link rel="stylesheet" href="style.css?v=20260823-100" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
+
+  <svg class="atlas-emblem-sprite" aria-hidden="true">
+    <symbol id="atlas-family-globe" viewBox="0 0 240 190">
+      <g class="atlas-emblem-orbits">
+        <ellipse cx="120" cy="95" rx="73" ry="55"></ellipse>
+        <ellipse cx="120" cy="95" rx="69" ry="52" transform="rotate(-25 120 95)"></ellipse>
+      </g>
+      <g class="atlas-emblem-globe">
+        <circle class="atlas-emblem-globe-ring" cx="120" cy="95" r="52"></circle>
+        <circle class="atlas-emblem-globe-sea" cx="120" cy="95" r="47"></circle>
+        <path class="atlas-emblem-grid" d="M73 95H167M120 48C103 62 97 78 97 95s6 33 23 47M120 48c17 14 23 30 23 47s-6 33-23 47M79 73c12 7 26 10 41 10s29-3 41-10M79 117c12-7 26-10 41-10s29 3 41 10"></path>
+        <path class="atlas-emblem-land" d="M88 61c8-8 20-12 29-11l6 8-5 7 5 8-10 5-5 12-10-2-4-10-10-6zM139 62l13 6 8 13-5 8-13-1-6 9-8-5 2-12-6-7 5-10zM127 106l13 4 8 14-7 12-14 5-8-9 3-10-7-7zM84 105l13 2 7 10-5 12-10 5-8-8 3-9-6-6z"></path>
+        <circle class="atlas-emblem-shine" cx="101" cy="66" r="4"></circle>
+      </g>
+
+      <g class="atlas-emblem-worm atlas-emblem-worm--elegans">
+        <path class="atlas-emblem-worm-outline" d="M35 56c11-17 32-18 46-6"></path>
+        <path class="atlas-emblem-worm-body" d="M35 56c11-17 32-18 46-6"></path>
+        <path class="atlas-emblem-worm-highlight" d="M42 51c8-8 19-9 28-6"></path>
+        <circle class="atlas-emblem-worm-head-outline" cx="81" cy="50" r="7"></circle>
+        <circle class="atlas-emblem-worm-head" cx="81" cy="50" r="4.8"></circle>
+        <circle class="atlas-emblem-worm-eye" cx="83" cy="48" r="1.2"></circle>
+      </g>
+      <g class="atlas-emblem-worm atlas-emblem-worm--inopinata">
+        <path class="atlas-emblem-worm-outline" d="M159 49c13-13 32-9 41 8"></path>
+        <path class="atlas-emblem-worm-body" d="M159 49c13-13 32-9 41 8"></path>
+        <path class="atlas-emblem-worm-highlight" d="M166 46c9-5 19-1 25 6"></path>
+        <circle class="atlas-emblem-worm-head-outline" cx="200" cy="57" r="7"></circle>
+        <circle class="atlas-emblem-worm-head" cx="200" cy="57" r="4.8"></circle>
+        <circle class="atlas-emblem-worm-eye" cx="202" cy="55" r="1.2"></circle>
+      </g>
+      <g class="atlas-emblem-worm atlas-emblem-worm--briggsae">
+        <path class="atlas-emblem-worm-outline" d="M24 101c9-17 28-20 43-8"></path>
+        <path class="atlas-emblem-worm-body" d="M24 101c9-17 28-20 43-8"></path>
+        <path class="atlas-emblem-worm-highlight" d="M32 96c8-8 18-9 26-5"></path>
+        <circle class="atlas-emblem-worm-head-outline" cx="67" cy="93" r="7"></circle>
+        <circle class="atlas-emblem-worm-head" cx="67" cy="93" r="4.8"></circle>
+        <circle class="atlas-emblem-worm-eye" cx="69" cy="91" r="1.2"></circle>
+      </g>
+      <g class="atlas-emblem-worm atlas-emblem-worm--nigoni">
+        <path class="atlas-emblem-worm-outline" d="M173 94c16-10 34-3 39 15"></path>
+        <path class="atlas-emblem-worm-body" d="M173 94c16-10 34-3 39 15"></path>
+        <path class="atlas-emblem-worm-highlight" d="M181 92c10-3 19 2 23 10"></path>
+        <circle class="atlas-emblem-worm-head-outline" cx="212" cy="109" r="7"></circle>
+        <circle class="atlas-emblem-worm-head" cx="212" cy="109" r="4.8"></circle>
+        <circle class="atlas-emblem-worm-eye" cx="214" cy="107" r="1.2"></circle>
+      </g>
+      <g class="atlas-emblem-worm atlas-emblem-worm--tropicalis">
+        <path class="atlas-emblem-worm-outline" d="M48 139c12 18 34 20 47 5"></path>
+        <path class="atlas-emblem-worm-body" d="M48 139c12 18 34 20 47 5"></path>
+        <path class="atlas-emblem-worm-highlight" d="M57 143c9 9 20 10 28 5"></path>
+        <circle class="atlas-emblem-worm-head-outline" cx="95" cy="144" r="7"></circle>
+        <circle class="atlas-emblem-worm-head" cx="95" cy="144" r="4.8"></circle>
+        <circle class="atlas-emblem-worm-eye" cx="97" cy="142" r="1.2"></circle>
+      </g>
+      <g class="atlas-emblem-worm atlas-emblem-worm--wallacei">
+        <path class="atlas-emblem-worm-outline" d="M146 144c13 17 34 18 46 1"></path>
+        <path class="atlas-emblem-worm-body" d="M146 144c13 17 34 18 46 1"></path>
+        <path class="atlas-emblem-worm-highlight" d="M155 148c9 7 19 6 28 0"></path>
+        <circle class="atlas-emblem-worm-head-outline" cx="192" cy="145" r="7"></circle>
+        <circle class="atlas-emblem-worm-head" cx="192" cy="145" r="4.8"></circle>
+        <circle class="atlas-emblem-worm-eye" cx="194" cy="143" r="1.2"></circle>
+      </g>
+
+      <g class="atlas-emblem-sparkles">
+        <path d="M112 25v10M107 30h10"></path>
+        <path d="M218 77v8M214 81h8"></path>
+        <path d="M25 127v8M21 131h8"></path>
+        <circle cx="128" cy="163" r="2.2"></circle>
+      </g>
+    </symbol>
+  </svg>
 
   <header class="topbar">
     <a class="back-link" href="../index.html#beyond-research">← Martyna's site</a>
     <div class="brand">
       <h1>Worm Atlas</h1>
     </div>
-    <div class="explored" aria-live="polite">
-      <strong id="explored-count">0</strong><span>of 6 met</span>
-    </div>
+    <button id="explored-status" class="explored" type="button" aria-haspopup="dialog" aria-controls="family-info-dialog" aria-label="0 of 6 species met" disabled>
+      <span class="explored-copy"><strong id="explored-count">0</strong><span>of 6 met</span></span>
+      <svg class="explored-emblem" viewBox="0 0 240 190" aria-hidden="true"><use href="#atlas-family-globe"></use></svg>
+      <span class="explored-complete-count" aria-hidden="true">6/6</span>
+    </button>
+    <span id="explored-announcement" class="sr-only" aria-live="polite">0 of 6 species met</span>
   </header>
 
   <main id="atlas">
@@ -33,11 +108,11 @@
         <div class="species-heading-copy">
           <h2 id="meet-title">Meet the species</h2>
           <p>Three real sister-species pairs. In each pair, compare a mostly selfing worm with an outcrossing relative.</p>
+          <button id="family-info-toggle" class="family-info-toggle" type="button" aria-haspopup="dialog" aria-controls="family-info-dialog">
+            <span>Meet the whole family</span>
+            <span class="family-info-toggle-arrow" aria-hidden="true">→</span>
+          </button>
         </div>
-        <button id="family-info-toggle" class="family-info-toggle" type="button" aria-haspopup="dialog" aria-controls="family-info-dialog">
-          <span>Meet the whole family</span>
-          <span class="family-info-toggle-arrow" aria-hidden="true">→</span>
-        </button>
       </div>
 
       <div id="species-tabs" class="species-tabs" aria-label="Choose a worm species"></div>
@@ -415,6 +490,11 @@
       <h2 id="family-info-title">A much bigger worm family</h2>
       <p id="family-info-intro" class="family-info-intro">The six worms in this game are only a small sample. A peer-reviewed 2025 study counted 86 known <i>Caenorhabditis</i> species. A later 2025 preprint built the broadest available family tree, placing 70 species using 2,955 genes.</p>
 
+      <div id="atlas-completion-reward" class="atlas-completion-reward" hidden>
+        <svg class="atlas-completion-emblem" viewBox="0 0 240 190" role="img" aria-label="A globe encircled by six colourful worms"><use href="#atlas-family-globe"></use></svg>
+        <p><strong>Atlas complete.</strong><span>You met all six featured worms.</span></p>
+      </div>
+
       <div class="mating-system-cards">
         <section class="mating-system-card mating-system-card--selfing" aria-labelledby="selfing-title">
           <h3 id="selfing-title"><span aria-hidden="true"></span>Mostly selfing</h3>
@@ -454,6 +534,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="game.js?v=20260823-149"></script>
+  <script type="module" src="game.js?v=20260823-150"></script>
 </body>
 </html>
