@@ -221,6 +221,60 @@ a { color: var(--teal-dark); }
   100% { transform: rotate(0) scale(1); }
 }
 
+.worm-confetti-layer {
+  position: fixed;
+  z-index: 120;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.worm-confetti-piece {
+  position: absolute;
+  top: var(--worm-confetti-origin-y);
+  left: var(--worm-confetti-origin-x);
+  width: var(--worm-confetti-size);
+  height: auto;
+  overflow: visible;
+  opacity: 0;
+  animation: worm-confetti-flight var(--worm-confetti-duration) cubic-bezier(.18,.72,.3,1) var(--worm-confetti-delay) both;
+  will-change: transform, opacity;
+}
+.worm-confetti-outline,
+.worm-confetti-body,
+.worm-confetti-highlight { fill: none; stroke-linecap: round; }
+.worm-confetti-outline { stroke: var(--ink); stroke-width: 7; }
+.worm-confetti-body { stroke: var(--worm-confetti-colour); stroke-width: 4.6; }
+.worm-confetti-highlight { stroke: rgba(255,255,255,.58); stroke-width: 1.25; }
+.worm-confetti-eye { fill: white; stroke: var(--ink); stroke-width: .9; }
+
+@keyframes worm-confetti-flight {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.25) rotate(var(--worm-confetti-start-rotation));
+  }
+  12% { opacity: 1; }
+  48% {
+    opacity: 1;
+    transform:
+      translate(
+        calc(-50% + var(--worm-confetti-mid-x)),
+        calc(-50% + var(--worm-confetti-mid-y))
+      )
+      scale(1.08)
+      rotate(var(--worm-confetti-mid-rotation));
+  }
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc(-50% + var(--worm-confetti-end-x)),
+        calc(-50% + var(--worm-confetti-end-y))
+      )
+      scale(.82)
+      rotate(var(--worm-confetti-end-rotation));
+  }
+}
+
 main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .section-heading {
   display: flex;

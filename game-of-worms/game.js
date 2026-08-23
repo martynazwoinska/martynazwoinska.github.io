@@ -730,9 +730,74 @@ function updateSelectedControls() {
   });
 }
 
+const wormConfettiColours = ["#bd7c45", "#c95670", "#347d68", "#d75c3d", "#167d7a", "#6254aa"];
+const wormConfettiPaths = [
+  "M3 12C8 2 18 3 21 11S29 21 33 10",
+  "M3 10C9 18 18 17 22 9S29 2 33 10",
+  "M3 14C8 3 15 3 20 12S28 18 33 10"
+];
+
+function launchWormConfetti() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  document.querySelector(".worm-confetti-layer")?.remove();
+  const origin = els.exploredStatus.getBoundingClientRect();
+  const layer = document.createElement("div");
+  layer.className = "worm-confetti-layer";
+  layer.setAttribute("aria-hidden", "true");
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const spread = Math.min(window.innerWidth * .72, 720);
+
+  for (let index = 0; index < 18; index += 1) {
+    const piece = document.createElementNS(svgNamespace, "svg");
+    const pathData = wormConfettiPaths[index % wormConfettiPaths.length];
+    const outline = document.createElementNS(svgNamespace, "path");
+    const body = document.createElementNS(svgNamespace, "path");
+    const highlight = document.createElementNS(svgNamespace, "path");
+    const eye = document.createElementNS(svgNamespace, "circle");
+    const angle = (100 + (index % 9) * 8.5 + Math.floor(index / 9) * 3) * Math.PI / 180;
+    const distance = spread * (.38 + (index % 5) * .065);
+    const endX = Math.cos(angle) * distance;
+    const endY = Math.sin(angle) * distance + 115 + (index % 3) * 18;
+
+    piece.setAttribute("viewBox", "0 0 36 22");
+    piece.classList.add("worm-confetti-piece");
+    piece.style.setProperty("--worm-confetti-colour", wormConfettiColours[index % wormConfettiColours.length]);
+    piece.style.setProperty("--worm-confetti-origin-x", `${origin.left + origin.width / 2}px`);
+    piece.style.setProperty("--worm-confetti-origin-y", `${origin.top + origin.height / 2}px`);
+    piece.style.setProperty("--worm-confetti-mid-x", `${endX * .56}px`);
+    piece.style.setProperty("--worm-confetti-mid-y", `${endY * .38 - 54}px`);
+    piece.style.setProperty("--worm-confetti-end-x", `${endX}px`);
+    piece.style.setProperty("--worm-confetti-end-y", `${endY}px`);
+    piece.style.setProperty("--worm-confetti-start-rotation", `${-35 + (index % 7) * 12}deg`);
+    piece.style.setProperty("--worm-confetti-mid-rotation", `${60 + (index % 6) * 38}deg`);
+    piece.style.setProperty("--worm-confetti-end-rotation", `${210 + (index % 8) * 47}deg`);
+    piece.style.setProperty("--worm-confetti-size", `${24 + (index % 4) * 3}px`);
+    piece.style.setProperty("--worm-confetti-delay", `${(index % 6) * .025 + Math.floor(index / 9) * .08}s`);
+    piece.style.setProperty("--worm-confetti-duration", `${1.35 + (index % 5) * .07}s`);
+
+    outline.setAttribute("d", pathData);
+    outline.classList.add("worm-confetti-outline");
+    body.setAttribute("d", pathData);
+    body.classList.add("worm-confetti-body");
+    highlight.setAttribute("d", "M7 9C12 5 17 6 20 10");
+    highlight.classList.add("worm-confetti-highlight");
+    eye.setAttribute("cx", "32");
+    eye.setAttribute("cy", "8.3");
+    eye.setAttribute("r", "1.4");
+    eye.classList.add("worm-confetti-eye");
+    piece.append(outline, body, highlight, eye);
+    layer.append(piece);
+  }
+
+  document.body.append(layer);
+  window.setTimeout(() => layer.remove(), 2200);
+}
+
 function updateExploredStatus() {
   const count = visited.size;
   const isComplete = count === species.length;
+  const becameComplete = isComplete && !els.exploredStatus.classList.contains("is-complete");
   const status = isComplete
     ? "All six species met. Open the wider worm family."
     : `${count} of ${species.length} species met`;
@@ -743,6 +808,7 @@ function updateExploredStatus() {
   els.exploredStatus.setAttribute("aria-label", status);
   els.exploredAnnouncement.textContent = status;
   els.atlasCompletionReward.hidden = !isComplete;
+  if (becameComplete) launchWormConfetti();
 }
 
 function selectSpecies(id, place) {
