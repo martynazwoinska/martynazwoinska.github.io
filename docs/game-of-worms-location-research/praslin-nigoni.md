@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-24
 
-> **Current production accessory contract:** `giant-tortoise shell costumes`, `black-parrot carnival caps`, and `Moutya dance-bell bands`. They are playful Praslin- and Seychelles-linked fantasy rather than collection equipment; the exact YR106 substrate and collection point remain unknown.
+> **Current production accessory contract:** `giant-tortoise shell costumes`, `black-parrot carnival caps`, and `Seychelles carnival bell bracelets`. They are playful Praslin- and Seychelles-linked fantasy rather than collection equipment or authentic local dress; the exact YR106 substrate and collection point remain unknown.
 
 This dossier is the evidence and review contract for the *Caenorhabditis nigoni* Praslin landscape and its three accessory pairs. It follows the evidence-led, location-by-location Game of Worms illustration workflow.
 
@@ -78,21 +78,21 @@ The accessories are deliberately imaginative regional costumes. They do not repr
 
 ### Giant-tortoise shell costumes
 
-- **Primary:** a broad domed shell fitted to the larger worm's curve, with a thick gold rim, seven contained scute panels, belly harness and two fastening loops.
-- **Companion:** a smaller, higher-domed shell with five differently arranged panels and a shorter independent harness.
+- **Primary:** a broad domed shell fitted to the larger female worm's curve, with a layered brown rim, olive base, warm tortoise-like scutes, subtle highlights and a visible belly harness.
+- **Companion:** a smaller, higher-domed shell rotated with the male worm's body, with five differently arranged scutes and its own fitted harness.
 - The shell construction provides the identity; neither version turns the worm into a realistic tortoise or implies wildlife contact.
 
 ### Black-parrot carnival caps
 
-- **Primary:** a deep dark cap with curved berry band, double feather-shaped fabric crest, eye detail and a small gold beak pin.
-- **Companion:** a shallower cap with a shorter split crest and a differently curved brim.
+- **Primary:** a deep rounded charcoal cap with a curved berry band, one swept fabric crest, eye detail and a small gold beak-shaped brim.
+- **Companion:** a shallower rounded cap with a shorter swept crest and a differently curved brim.
 - The caps are stylised carnival fantasy inspired by Praslin's black-parrot identity. They do not use real feathers, obscure either face or imply capture.
 
-### Moutya dance-bell bands
+### Seychelles carnival bell bracelets
 
-- **Primary:** a broad woven indigo band fitted across the larger worm, with four constructed bells, visible clappers and tied ends.
-- **Companion:** a narrower curved band with four smaller bells in a different arrangement and its own ties.
-- The bells are an imaginative rhythm cue for the game. They are not presented as a documented part of traditional Moutya dress.
+- **Primary:** a narrow flexible bracelet wrapping the final third of the larger worm's tail, with the rear half hidden by the body and three small hanging bells.
+- **Companion:** a smaller differently curved bracelet fitted to the male tail, with three bells in its own rhythm and separate ties.
+- The bracelets are an imaginative carnival rhythm cue for the game. They do not claim a connection to traditional Moutya dress.
 
 ## Cultural and ecological safeguards
 
