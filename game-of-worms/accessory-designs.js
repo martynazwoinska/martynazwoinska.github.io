@@ -26,7 +26,7 @@ const rows = [
   ["elegans", "Araucanía, Chile", "compost sample buckets", "compost-labyrinth", "Llaima ashfall gauges", "ashfall-recorder", "reciprocal-cross plates", "test-cross-mechanism"],
   ["nigoni", "Trivandrum, Kerala · JU1325", "field loupe", "trivandrum-field-loupe", "garden watering can", "trivandrum-garden-watering-can", "sample tube", "trivandrum-sample-tube"],
   ["nigoni", "Singapore · ZF1220", "Singapore starfruit sample trays", "zf1220-five-rib-field-atlas", "five-female sample cards", "multifemale-provenance-merger", "orchid pollination brushes", "holttum-orchid-hybridisation-engine"],
-  ["nigoni", "Praslin, Seychelles · YR106", "DNA sequencing reels", "yr106-long-read-genome-loom", "coco-de-mer measuring tapes", "coco-de-mer-growth-monitoring-rig", "black-parrot field headphones", "praslin-black-parrot-call-listener"],
+  ["nigoni", "Praslin, Seychelles · YR106", "giant-tortoise shell costumes", "praslin-giant-tortoise-shell-costume", "black-parrot carnival caps", "praslin-black-parrot-carnival-cap", "Moutya dance-bell bands", "praslin-moutya-dance-bell-band"],
   ["nigoni", "São Tomé · JU2484", "São Tomé chocolate bars", "sao-tome-chocolate-bars", "birdsong music boxes", "sao-tome-birdsong-music-boxes", "begonia stained-glass parasols", "sao-tome-begonia-glass-parasols"],
   ["nigoni", "Mahahual, Mexico · JU2617", "reef-ruffle swim costumes", "mahahual-reef-ruffle-swim-costumes", "Caribbean sun spectacles", "mahahual-caribbean-sun-spectacles", "sea-grape beach parasols", "mahahual-sea-grape-beach-parasols"],
   ["nigoni", "Mauritius · JU2909", "fruit-and-nut sample trays", "ju2909-fruit-nut-viewer", "paired sample jars", "ju2909-ju2910-sample-bifurcator", "contour compasses", "casela-rempart-contour-surveyor"],
@@ -5405,38 +5405,54 @@ function drawNigoniFieldAccessory(group, item, companion) {
     label("POLLINATION", 0, companion ? 78 : 84, "nfr-small nfr-light-text");
     return true;
   }
-  if (item.family === "yr106-long-read-genome-loom") {
-    shadow(101, 105);
-    const radius = companion ? 57 : 72;
-    add(group, "circle", { class: "nfr-primary", cx: -18, cy: -3, r: radius });
-    add(group, "circle", { class: "nfr-ivory", cx: -18, cy: -3, r: radius - 14 });
-    add(group, "circle", { class: "nfr-gold", cx: -18, cy: -3, r: companion ? 13 : 17 });
-    [-90,-30,30,90,150,210].forEach(deg => { const r = deg * Math.PI / 180; path(group, `M ${(-18 + Math.cos(r) * (radius - 15)).toFixed(1)} ${(-3 + Math.sin(r) * (radius - 15)).toFixed(1)} L ${(-18 + Math.cos(r) * 15).toFixed(1)} ${(-3 + Math.sin(r) * 15).toFixed(1)}`, "nfr-spoke"); });
-    path(group, companion ? "M32-22Q92-53 103-3Q113 45 59 59L26 69" : "M44-28Q119-68 133-4Q146 57 77 75L34 88", "nfr-dna-ribbon");
-    path(group, companion ? "M39-9Q73-29 94-7M43 8Q76-10 99 9M43 25Q72 11 95 29" : "M53-12Q95-38 122-10M57 10Q98-14 128 12M56 32Q94 13 123 37", "nfr-dna-rungs");
-    label("DNA", -18, 4, "nfr-label");
+  if (item.family === "praslin-giant-tortoise-shell-costume") {
+    shadow(companion ? 108 : 133, companion ? 92 : 111);
+    if (companion) {
+      path(group, "M-104 35Q-88-69-9-88Q70-86 105 4Q112 45 81 68Q4 100-75 70Q-101 59-104 35Z", "nfr-gold");
+      path(group, "M-87 29Q-73-52-8-68Q57-65 86 6Q91 38 65 54Q1 78-62 54Q-83 47-87 29Z", "nfr-secondary");
+      path(group, "M-22-57Q4-76 31-54L38-12Q7 8-24-8Z", "nfr-primary");
+      path(group, "M-73-27Q-47-56-23-53L-25-9Q-54 4-78-7Z", "nfr-accent");
+      path(group, "M34-51Q66-37 78-5L39-12Z", "nfr-accent");
+      path(group, "M-63 16Q-34-5-24-7L5 18L-3 61Q-41 62-65 47Z", "nfr-primary");
+      path(group, "M7 18L38-11Q62 0 70 30L63 51Q30 65-3 61Z", "nfr-ivory");
+      path(group, "M-78 66Q0 88 80 64", "nfr-fine");
+      path(group, "M-54 67Q-66 92-48 101M51 67Q65 90 48 100", "nfr-headband");
+    } else {
+      path(group, "M-132 39Q-113-87-7-108Q98-104 136 8Q144 55 105 82Q1 122-103 83Q-130 69-132 39Z", "nfr-gold");
+      path(group, "M-111 31Q-95-67-7-85Q80-82 113 9Q121 47 87 66Q0 98-83 68Q-108 58-111 31Z", "nfr-primary");
+      path(group, "M-39-73Q0-104 41-72L50-19Q3 9-43-18Z", "nfr-secondary");
+      path(group, "M-96-35Q-70-70-40-70L-44-17Q-77 3-103-10Z", "nfr-accent");
+      path(group, "M43-70Q83-52 103-11L50-18Z", "nfr-accent");
+      path(group, "M-89 18Q-57-9-43-17L1 16L-6 78Q-57 80-91 58Z", "nfr-ivory");
+      path(group, "M3 16L50-18Q81-6 93 33L86 65Q41 82-6 78Z", "nfr-secondary");
+      path(group, "M-103 82Q0 111 106 79", "nfr-fine");
+      path(group, "M-69 83Q-85 112-62 124M67 82Q87 110 62 124", "nfr-headband");
+    }
     return true;
   }
-  if (item.family === "coco-de-mer-growth-monitoring-rig") {
-    shadow(101, 106);
-    add(group, "circle", { class: "nfr-primary", cx: companion ? -46 : -59, cy: 15, r: companion ? 46 : 57 });
-    path(group, companion ? "M-75 15Q-61-32-45-13Q-29-32-16 15Q-24 55-45 62Q-67 55-75 15Z" : "M-96 17Q-77-43-58-17Q-38-43-20 17Q-31 69-58 78Q-86 69-96 17Z", "nfr-nut");
-    path(group, companion ? "M-1-31H96V-6H-1Z" : "M-5-43H126V-10H-5Z", "nfr-tape");
-    [12,32,52,72,92].forEach(x => path(group, `M ${x} ${companion ? -29 : -41} V ${companion ? -15 : -20}`, "nfr-tape-tick"));
-    path(group, companion ? "M88-38H105V1H88Z" : "M115-51H136V3H115Z", "nfr-hook");
-    label("MEASURE", companion ? 47 : 58, companion ? -13 : -20, "nfr-small");
+  if (item.family === "praslin-black-parrot-carnival-cap") {
+    shadow(companion ? 86 : 103, companion ? 66 : 76);
+    path(group, companion ? "M-83 13Q-68-55 3-68Q62-62 83-7L67 22Q3 38-69 25Z" : "M-103 18Q-83-72 4-87Q78-78 104-9L82 29Q4 47-86 32Z", "nfr-parrot");
+    path(group, companion ? "M-75 13Q0 30 73 5L81 25Q2 51-78 31Z" : "M-94 18Q1 40 92 7L103 32Q2 63-100 39Z", "nfr-accent");
+    path(group, companion ? "M-55-38Q-34-86-8-103Q0-64 20-45Q22-92 49-109Q53-69 61-34" : "M-70-53Q-44-111-12-132Q-1-83 24-60Q29-119 63-140Q68-87 76-45", "nfr-primary");
+    path(group, companion ? "M-5-66Q18-91 39-66Q23-46-1-49Z" : "M-7-85Q23-116 50-85Q30-58-2-62Z", "nfr-secondary");
+    path(group, companion ? "M60-25L99-8L62 5Z" : "M77-34L126-11L79 7Z", "nfr-beak");
+    add(group, "circle", { class: "nfr-eye", cx: companion ? 47 : 59, cy: companion ? -38 : -49, r: companion ? 4 : 5 });
+    path(group, companion ? "M-57 27Q2 43 62 23" : "M-73 34Q2 54 78 29", "nfr-fine");
     return true;
   }
-  if (item.family === "praslin-black-parrot-call-listener") {
-    shadow(95, 108);
-    path(group, companion ? "M-73 23Q-83-64 0-78Q83-64 73 23" : "M-92 28Q-105-82 0-98Q105-82 92 28", "nfr-headband");
-    path(group, companion ? "M-79-2H-45V61H-79Z" : "M-101-5H-57V72H-101Z", "nfr-earcup");
-    path(group, companion ? "M45-2H79V61H45Z" : "M57-5H101V72H57Z", "nfr-earcup-alt");
-    path(group, companion ? "M56 54Q93 57 101 82" : "M72 66Q118 70 128 99", "nfr-cable");
-    path(group, companion ? "M-18-24Q7-48 31-21Q36 7 14 23Q-8 23-18-2Z" : "M-24-31Q8-62 40-28Q47 9 18 30Q-11 30-24-3Z", "nfr-parrot");
-    path(group, companion ? "M27-17L52-6L28 2" : "M35-22L67-8L36 3", "nfr-beak");
-    add(group, "circle", { class: "nfr-eye", cx: companion ? 17 : 22, cy: companion ? -20 : -26, r: 4 });
-    label("LISTEN", 0, companion ? 87 : 104, "nfr-small");
+  if (item.family === "praslin-moutya-dance-bell-band") {
+    shadow(companion ? 91 : 112, companion ? 72 : 86);
+    path(group, companion ? "M-89-29Q-3-55 87-22L79 17Q-2-7-82 16Z" : "M-112-37Q-3-69 111-27L101 22Q-2-9-103 21Z", "nfr-primary");
+    path(group, companion ? "M-80-16Q-2-37 79-9" : "M-101-21Q-2-48 101-13", "nfr-accent-line");
+    const bells = companion ? [[-57,13,-5],[-20,4,2],[19,5,-2],[56,15,5]] : [[-76,16,-7],[-30,5,2],[17,4,-2],[63,13,6]];
+    bells.forEach(([x,y,angle], index) => {
+      const bell = add(group, "g", { transform: `translate(${x} ${y}) rotate(${angle})` });
+      path(bell, index % 2 ? "M-13 4Q-14 30-25 43H25Q14 30 13 4Z" : "M-16 3Q-17 35-30 50H30Q17 35 16 3Z", index % 2 ? "nfr-gold" : "nfr-secondary");
+      path(bell, index % 2 ? "M-27 42Q0 52 27 42" : "M-32 49Q0 61 32 49", "nfr-fine");
+      add(bell, "circle", { class: "nfr-accent", cx: 0, cy: index % 2 ? 44 : 52, r: index % 2 ? 5 : 6 });
+    });
+    path(group, companion ? "M-74-28L-91-52L-65-59L-50-35M70-24L87-47L64-56L49-31" : "M-95-35L-117-66L-83-72L-64-43M91-31L114-59L82-68L62-39", "nfr-headband");
     return true;
   }
   if (item.family === "sao-tome-birdsong-music-boxes") {
@@ -6530,9 +6546,9 @@ function renderPiece(target, item, wormPart) {
     "zf1220-five-rib-field-atlas": { primary: [356, 130, .36, -2], companion: [-8, 108, .29, 2] },
     "multifemale-provenance-merger": { primary: [225, 188, .34, -1], companion: [98, 192, .28, 2] },
     "holttum-orchid-hybridisation-engine": { primary: [354, 268, .34, -1], companion: [-6, 292, .28, 2] },
-    "yr106-long-read-genome-loom": { primary: [340, 125, .3, -2], companion: [-5, 106, .28, 2] },
-    "coco-de-mer-growth-monitoring-rig": { primary: [225, 186, .34, -1], companion: [125, 199, .28, 2] },
-    "praslin-black-parrot-call-listener": { primary: [354, 266, .34, -1], companion: [-4, 291, .28, 2] },
+    "praslin-giant-tortoise-shell-costume": { primary: [226, 190, .58, -15], companion: [91, 177, .42, 12] },
+    "praslin-black-parrot-carnival-cap": { primary: [370, 60, .29, 8], companion: [98, 99, .23, 7] },
+    "praslin-moutya-dance-bell-band": { primary: [145, 215, .38, -9], companion: [24, 206, .3, 8] },
     "sao-tome-chocolate-bars": { primary: [369, 122, .34, -5], companion: [-3, 108, .3, 4] },
     "sao-tome-birdsong-music-boxes": { primary: [231, 194, .32, -3], companion: [111, 202, .27, 3] },
     "sao-tome-begonia-glass-parasols": { primary: [368, 273, .31, -4], companion: [17, 286, .26, 4] },

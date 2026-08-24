@@ -1,8 +1,8 @@
 # Praslin *C. nigoni* location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-08-24
 
-> **Current production accessory contract:** `DNA sequencing reels`, `coco-de-mer measuring tapes`, and `black-parrot field headphones`. These recognizable objects supersede the earlier abstract mechanism sketches below; the palm and bird remain regional context, not collection evidence.
+> **Current production accessory contract:** `giant-tortoise shell costumes`, `black-parrot carnival caps`, and `Moutya dance-bell bands`. They are playful Praslin- and Seychelles-linked fantasy rather than collection equipment; the exact YR106 substrate and collection point remain unknown.
 
 This dossier is the evidence and review contract for the *Caenorhabditis nigoni* Praslin landscape and its three accessory pairs. It follows the evidence-led, location-by-location Game of Worms illustration workflow.
 
@@ -74,36 +74,32 @@ The scene is an enclosed, continuous granitic palm-forest context rather than a 
 
 ## Accessory evidence and design contract
 
-The accessories translate published genomic work and defensible non-invasive regional research into movable teaching objects. They are original mechanisms, not branded laboratory equipment or locally claimed artefacts.
+The accessories are deliberately imaginative regional costumes. They do not represent the collection method, the unknown substrate, authentic local dress or wildlife handling.
 
-### YR106 long-read genome loom
+### Giant-tortoise shell costumes
 
-- **Primary:** a broad asymmetric membrane loom with one continuous read ribbon, pore rings, staggered scaffold tabs, crank and `YR106 / PR3` record tag.
-- **Companion:** an open circular single-pore reel with a spiral strand, three radial scaffold drawers and offset read counter.
-- The pair differs as a horizontal membrane mechanism versus circular reel and does not reproduce an ONT device or commercial logo.
+- **Primary:** a broad domed shell fitted to the larger worm's curve, with a thick gold rim, seven contained scute panels, belly harness and two fastening loops.
+- **Companion:** a smaller, higher-domed shell with five differently arranged panels and a shorter independent harness.
+- The shell construction provides the identity; neither version turns the worm into a realistic tortoise or implies wildlife contact.
 
-### Coco-de-mer growth-monitoring rig
+### Black-parrot carnival caps
 
-The concept is based on documented repeated measurements of marked seedlings, juveniles, immature and adult palms. It is a teaching model and never a detached real palm part.
+- **Primary:** a deep dark cap with curved berry band, double feather-shaped fabric crest, eye detail and a small gold beak pin.
+- **Companion:** a shallower cap with a shorter split crest and a differently curved brim.
+- The caps are stylised carnival fantasy inspired by Praslin's black-parrot identity. They do not use real feathers, obscure either face or imply capture.
 
-- **Primary:** a tall four-stage rooted-palm measuring frame with sliding leaf caliper, marked-tree tag and side data roll.
-- **Companion:** a low fan-fold census table with separate reproductive counters, zig-zag monitoring-interval rail and mapping drawer.
-- The drawings do not show a nut, frond or trunk being removed, worn or turned into a souvenir.
+### Moutya dance-bell bands
 
-### Praslin black-parrot call listener
-
-The listener is an imagined non-invasive teaching instrument based on researchers following breeding calls, not documented SIF hardware.
-
-- **Primary:** a deep petal-shaped listening bowl on a crooked tripod, with three direction vanes and waveform carriage.
-- **Companion:** a crescent canopy arch with two hanging resonators and a narrow spectrogram roll.
-- No feathers, bird costume, cage, nest coordinates, mist net or capture imagery appears.
+- **Primary:** a broad woven indigo band fitted across the larger worm, with four constructed bells, visible clappers and tied ends.
+- **Companion:** a narrower curved band with four smaller bells in a different arrangement and its own ties.
+- The bells are an imaginative rhythm cue for the game. They are not presented as a documented part of traditional Moutya dress.
 
 ## Cultural and ecological safeguards
 
 - Never claim YR106 came from Vallée de Mai or use UNESCO property coordinates as its collection point.
 - Do not show collecting, cutting or carrying coco-de-mer nuts or fronds or present them as drums, bowls, helmets or souvenirs.
 - Do not disclose or invent protected tree or black-parrot nest locations.
-- Avoid invented Seychellois dress, musical traditions, national symbols and institutional or commercial logos.
+- Clearly label the costumes as playful regional fantasy; do not present them as authentic Seychellois dress, traditional Moutya costume, collection equipment or institutional symbols.
 
 ## Quality benchmark
 
