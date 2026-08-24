@@ -418,19 +418,13 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 
 @media (min-width: 681px) {
   .species-heading-copy {
+    width: 100%;
     grid-template-columns: max-content max-content;
     column-gap: 18px;
     align-items: center;
-    justify-content: start;
-  }
-  .species-heading-copy .family-info-toggle { margin-top: 0; }
-}
-
-@media (min-width: 1120px) {
-  .species-heading-copy {
-    width: 100%;
     justify-content: space-between;
   }
+  .species-heading-copy .family-info-toggle { margin-top: 0; }
 }
 
 .map-section { margin-top: clamp(30px, 4vw, 44px); }
