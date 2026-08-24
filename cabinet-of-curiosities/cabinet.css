@@ -266,6 +266,91 @@ button { color: inherit; }
   pointer-events: none;
 }
 
+.chof-link {
+  position: absolute;
+  z-index: 3;
+  left: 21.5%;
+  top: 12.6%;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  width: 8.4%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: #f1dc9d;
+  text-decoration: none;
+  transform: rotate(-3deg);
+  transform-origin: 50% 52%;
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.chof-link::before {
+  content: '';
+  z-index: 0;
+  grid-area: 1 / 1;
+  width: 112%;
+  height: 112%;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from -6deg,
+    transparent 0deg 12.8deg,
+    rgba(241, 220, 157, .08) 13.6deg,
+    rgba(255, 239, 181, .42) 14.7deg,
+    rgba(241, 220, 157, .08) 15.8deg,
+    transparent 16.6deg 30deg
+  );
+  mask: radial-gradient(circle, transparent 0 53%, #000 61%, transparent 76%);
+  opacity: .32;
+  pointer-events: none;
+  transform: rotate(-2deg) scale(.98);
+  animation: chof-radiance 5.8s ease-in-out infinite;
+}
+
+.chof-link img {
+  z-index: 1;
+  grid-area: 1 / 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(2px 4px 3px rgba(42, 25, 14, .34));
+}
+
+.chof-link-label {
+  z-index: 2;
+  grid-area: 1 / 1;
+  margin-top: 5%;
+  font-family: var(--display);
+  font-size: clamp(.75rem, 1.1vw, 1.15rem);
+  font-weight: 700;
+  letter-spacing: .035em;
+  line-height: 1;
+  text-shadow: 0 1px 1px #25150f, 0 0 4px rgba(58, 30, 18, .55);
+  transform: rotate(3deg);
+}
+
+.chof-link:hover,
+.chof-link:focus-visible {
+  filter: brightness(1.08);
+  transform: rotate(-1deg) scale(1.045);
+}
+
+.chof-link:hover::before,
+.chof-link:focus-visible::before {
+  opacity: .56;
+}
+
+.chof-link:focus-visible {
+  outline: 2px solid var(--gold-pale);
+  outline-offset: 5px;
+}
+
+@keyframes chof-radiance {
+  0%, 100% { opacity: .24; transform: rotate(-2deg) scale(.98); }
+  46% { opacity: .46; transform: rotate(1deg) scale(1.015); }
+  72% { opacity: .31; transform: rotate(0deg) scale(1); }
+}
+
 .hotspot-layer { position: absolute; z-index: 2; inset: 0; }
 
 .hotspot {
