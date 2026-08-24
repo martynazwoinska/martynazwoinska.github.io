@@ -6548,7 +6548,7 @@ function renderPiece(target, item, wormPart) {
     "zf1220-five-rib-field-atlas": { primary: [356, 130, .36, -2], companion: [-8, 108, .29, 2] },
     "multifemale-provenance-merger": { primary: [225, 188, .34, -1], companion: [98, 192, .28, 2] },
     "holttum-orchid-hybridisation-engine": { primary: [354, 268, .34, -1], companion: [-6, 292, .28, 2] },
-    "praslin-giant-tortoise-shell-costume": { primary: [226, 190, .58, -15], companion: [115, 184, .37, 25] },
+    "praslin-giant-tortoise-shell-costume": { primary: [226, 190, .58, -15], companion: [119, 188, .37, -22] },
     "praslin-black-parrot-carnival-cap": { primary: [370, 60, .29, 8], companion: [98, 99, .23, 7] },
     "praslin-seychelles-carnival-bell-bracelet": { primary: [145, 215, .34, -9], companion: [24, 206, .27, 8] },
     "sao-tome-chocolate-bars": { primary: [369, 122, .34, -5], companion: [-3, 108, .3, 4] },

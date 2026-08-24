@@ -78,14 +78,14 @@ The accessories are deliberately imaginative regional costumes. They do not repr
 
 ### Giant-tortoise shell costumes
 
-- **Primary:** a broad domed shell fitted to the larger female worm's curve, with a layered brown rim, olive base, warm tortoise-like scutes, subtle highlights and a visible belly harness.
-- **Companion:** a smaller, higher-domed shell rotated with the male worm's body, with five differently arranged scutes and its own fitted harness.
+- **Primary:** a broad domed shell fitted to the larger female worm's curve, with a layered umber rim, deep brown base, warm amber, terracotta and muted-berry scutes, subtle highlights and a visible belly harness.
+- **Companion:** a smaller, higher-domed shell rotated counter-clockwise with the male worm's rising body curve, with five differently arranged warm scutes and its own fitted harness.
 - The shell construction provides the identity; neither version turns the worm into a realistic tortoise or implies wildlife contact.
 
 ### Black-parrot carnival caps
 
-- **Primary:** a deep rounded charcoal cap with a curved berry band, one swept fabric crest, eye detail and a small gold beak-shaped brim.
-- **Companion:** a shallower rounded cap with a shorter swept crest and a differently curved brim.
+- **Primary:** a deep rounded charcoal cap with a curved berry band, one swept plum-and-copper fabric crest, eye detail and a small gold beak-shaped brim.
+- **Companion:** a shallower rounded cap with a shorter swept plum crest and a differently curved brim.
 - The caps are stylised carnival fantasy inspired by Praslin's black-parrot identity. They do not use real feathers, obscure either face or imply capture.
 
 ### Seychelles carnival bell bracelets
