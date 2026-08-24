@@ -6016,14 +6016,14 @@ function drawElegansFieldAccessory(group, item, companion) {
       path(uniform, "M-53-40Q-69-13-66 21M50-35Q66-9 54 24", "santeuil-driver-piping");
       [-8,17].forEach(y => add(uniform, "circle", { class: "santeuil-driver-button", cx: 5, cy: y, r: 5 }));
       path(uniform, "M-52 15Q-34 6-21 17L-24 35Q-40 39-55 29Z", "santeuil-driver-pocket");
-      add(uniform, "path", { class: "santeuil-driver-cap companion", d: "M-27-72Q0-92 31-71L22-57Q0-64-22-57ZM-34-73Q0-101 42-70Q5-62-34-73Z", transform: "translate(45 -22)" });
+      add(uniform, "path", { class: "santeuil-driver-cap companion", d: "M-27-72Q0-92 31-71L22-57Q0-64-22-57ZM-34-73Q0-101 42-70Q5-62-34-73Z", transform: "translate(58 -27)" });
     } else {
       path(uniform, "M-88-42Q-54-83-5-76Q48-74 86-35L75 55Q32 72-11 66Q-55 64-82 37Z", "santeuil-driver-jacket");
       path(uniform, "M-39-68L-5-25L30-67L53-47L25 0L-4-14L-35 2L-61-45Z", "santeuil-driver-lapels");
       path(uniform, "M-69-47Q-91-14-82 35M67-40Q88-8 74 37", "santeuil-driver-piping");
       [-15,8,31].forEach(y => [-10,13].forEach(x => add(uniform, "circle", { class: "santeuil-driver-button", cx: x, cy: y, r: 4.5 })));
       path(uniform, "M35 14Q52 4 67 17L64 40Q47 44 33 33Z", "santeuil-driver-pocket");
-      add(uniform, "path", { class: "santeuil-driver-cap", d: "M-34-87Q2-112 43-83L32-64Q2-73-27-65ZM-47-87Q1-124 55-81Q5-72-47-87Z", transform: "translate(65 -28)" });
+      add(uniform, "path", { class: "santeuil-driver-cap", d: "M-34-87Q2-112 43-83L32-64Q2-73-27-65ZM-47-87Q1-124 55-81Q5-72-47-87Z", transform: "translate(83 -35)" });
     }
     path(uniform, companion ? "M-31-51Q0-34 31-52L20-25L0-33L-20-25Z" : "M-43-63Q0-39 43-62L27-27L0-41L-27-27Z", "santeuil-driver-neckerchief");
     path(uniform, companion ? "M-20 47Q0 57 23 46" : "M-29 59Q0 72 32 57", "santeuil-driver-hem");
