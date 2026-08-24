@@ -757,7 +757,7 @@ function launchWormConfetti() {
   crest.className = "worm-completion-flash";
   crestSvg.classList.add("worm-completion-flash-emblem");
   crestSvg.setAttribute("viewBox", "0 0 240 190");
-  crestUse.setAttribute("href", "#atlas-family-globe");
+  crestUse.setAttribute("href", "#atlas-explorer-seal");
   crestCount.className = "worm-completion-flash-count";
   crestCount.textContent = "6 / 6";
   crestSvg.append(crestUse);

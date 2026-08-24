@@ -12,78 +12,43 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#ecf9f7" />
   <link rel="preload" as="image" href="assets/n2-bristol-painted-background.webp" type="image/webp" fetchpriority="high" />
-  <link rel="stylesheet" href="style.css?v=20260824-105" />
+  <link rel="stylesheet" href="style.css?v=20260824-107" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
 
   <svg class="atlas-emblem-sprite" aria-hidden="true">
-    <symbol id="atlas-family-globe" viewBox="0 0 240 190">
-      <defs>
-        <radialGradient id="atlas-ocean-gradient" cx="34%" cy="27%" r="76%">
-          <stop offset="0" stop-color="#d7f3f0"></stop>
-          <stop offset=".52" stop-color="#8bcfd0"></stop>
-          <stop offset="1" stop-color="#5aaeb5"></stop>
-        </radialGradient>
-        <linearGradient id="atlas-land-gradient" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#f5e4b7"></stop>
-          <stop offset="1" stop-color="#d7b777"></stop>
-        </linearGradient>
-        <clipPath id="atlas-globe-clip">
-          <circle cx="120" cy="95" r="48"></circle>
-        </clipPath>
-      </defs>
+    <symbol id="atlas-explorer-seal" viewBox="0 0 240 190">
+      <ellipse class="atlas-seal-shadow" cx="120" cy="163" rx="57" ry="7"></ellipse>
+      <circle class="atlas-seal-field" cx="120" cy="92" r="64"></circle>
+      <circle class="atlas-seal-ring atlas-seal-ring--outer" cx="120" cy="92" r="57"></circle>
+      <circle class="atlas-seal-ring atlas-seal-ring--inner" cx="120" cy="92" r="46"></circle>
+      <path class="atlas-seal-ticks" d="M120 31v7M120 146v7M59 92h7M174 92h7M77 49l5 5M158 130l5 5M163 49l-5 5M82 130l-5 5"></path>
 
-      <ellipse class="atlas-emblem-globe-shadow" cx="120" cy="151" rx="45" ry="5"></ellipse>
-      <g class="atlas-emblem-orbits">
-        <ellipse cx="120" cy="95" rx="82" ry="66" transform="rotate(-7 120 95)"></ellipse>
-        <path d="M44 68C68 29 151 18 196 55"></path>
-        <path d="M43 123c27 39 108 52 155 11"></path>
-      </g>
-      <g class="atlas-emblem-globe">
-        <circle class="atlas-emblem-atmosphere" cx="120" cy="95" r="53"></circle>
-        <circle class="atlas-emblem-globe-sea" cx="120" cy="95" r="48"></circle>
-        <g clip-path="url(#atlas-globe-clip)">
-          <path class="atlas-emblem-grid" d="M72 95H168M120 47c-15 14-21 30-21 48s6 34 21 48M120 47c15 14 21 30 21 48s-6 34-21 48M78 72c13 7 27 10 42 10s29-3 42-10M78 118c13-7 27-10 42-10s29 3 42 10"></path>
-          <path class="atlas-emblem-land" d="M74 67l7-8 11-5 12-1 9 4 2 6-6 5-2 7-8 1-5 8-8-1-3-7-8-3zM86 87l7 2 4 6 7 4 2 9-4 10-3 11-6 11-5-7-1-11-5-10 1-9-5-6z"></path>
-          <path class="atlas-emblem-land" d="M121 62l9-7 11-2 10 4 3 6-5 5-9-1-5 5-9-1zM124 75l12-4 12 5 5 10-3 10-6 10-3 13-8 12-7-5-3-12-5-10-5-8 3-9z"></path>
-          <path class="atlas-emblem-land" d="M148 61l13 4 10 9 5 10-7 3-8-4-6 5-6-4 2-8-6-7zM151 115l10-2 8 5-2 9-10 4-8-5z"></path>
-          <path class="atlas-emblem-island" d="M151 108l3 3-2 8-3-2z"></path>
-          <path class="atlas-emblem-coast-highlight" d="M80 65c10-9 21-10 31-6M126 79c8-6 17-6 24 0M88 94c7 6 11 15 10 24"></path>
-        </g>
-        <path class="atlas-emblem-globe-shine" d="M88 70c7-11 17-17 29-20"></path>
+      <g class="atlas-seal-filigree">
+        <path d="M120 50C106 56 99 68 99 82C86 78 73 81 64 92C73 103 86 106 99 102C99 116 106 128 120 134C134 128 141 116 141 102C154 106 167 103 176 92C167 81 154 78 141 82C141 68 134 56 120 50Z"></path>
+        <circle cx="120" cy="92" r="34"></circle>
       </g>
 
-      <g class="atlas-emblem-worm atlas-emblem-worm--elegans">
-        <path class="atlas-emblem-worm-body" d="M25 62c12-21 36-26 59-14 4 2 5 5 2 7-2 2-4 1-7-1-19-9-38-4-49 11-2 3-4 4-6 2-1-1-1-3 1-5z"></path>
-        <path class="atlas-emblem-worm-inner" d="M30 62c12-16 31-21 50-11"></path>
-      </g>
-      <g class="atlas-emblem-worm atlas-emblem-worm--inopinata">
-        <path class="atlas-emblem-worm-body" d="M155 49c17-16 41-12 57 8 2 3 2 6 0 7-3 1-5 0-7-3-13-16-31-19-46-7-3 2-5 2-7 0-1-2 0-4 3-5z"></path>
-        <path class="atlas-emblem-worm-inner" d="M160 51c15-11 33-8 47 8"></path>
-      </g>
-      <g class="atlas-emblem-worm atlas-emblem-worm--briggsae">
-        <path class="atlas-emblem-worm-body" d="M17 105c8-21 29-30 51-17 4 2 5 5 3 7-2 2-5 1-8-1-17-9-33-3-40 13-1 4-3 5-6 3-1-1-1-3 0-5z"></path>
-        <path class="atlas-emblem-worm-inner" d="M22 104c8-15 24-22 42-13"></path>
-      </g>
-      <g class="atlas-emblem-worm atlas-emblem-worm--nigoni">
-        <path class="atlas-emblem-worm-body" d="M171 90c21-10 42 0 50 22 1 4 0 6-2 7-3 0-5-2-6-5-6-17-22-25-39-18-4 2-6 1-7-2 0-2 1-3 4-4z"></path>
-        <path class="atlas-emblem-worm-inner" d="M176 93c17-6 33 2 40 20"></path>
-      </g>
-      <g class="atlas-emblem-worm atlas-emblem-worm--tropicalis">
-        <path class="atlas-emblem-worm-body" d="M42 134c14 22 38 29 58 14 3-2 4-5 2-7-2-2-5-1-8 1-16 11-34 5-46-12-2-3-5-4-7-2-1 2-1 4 1 6z"></path>
-        <path class="atlas-emblem-worm-inner" d="M47 134c12 16 29 22 48 11"></path>
-      </g>
-      <g class="atlas-emblem-worm atlas-emblem-worm--wallacei">
-        <path class="atlas-emblem-worm-body" d="M141 149c17 17 42 16 58-4 2-3 2-6-1-7-2-1-4 0-6 3-13 15-32 17-47 4-3-3-6-3-7-1-1 2 0 4 3 5z"></path>
-        <path class="atlas-emblem-worm-inner" d="M146 147c15 11 32 9 47-5"></path>
+      <g class="atlas-seal-compass">
+        <path class="atlas-seal-compass-gold" d="M120 34l10 47 49 11-49 11-10 47-10-47-49-11 49-11z"></path>
+        <path class="atlas-seal-compass-diagonals" d="M120 92L84 56L108 83ZM120 92L156 56L132 83ZM120 92L156 128L132 101ZM120 92L84 128L108 101Z"></path>
+        <path class="atlas-seal-compass-berry" d="M120 34l10 47-10 11-10-11z"></path>
+        <path class="atlas-seal-compass-emerald" d="M179 92l-49 11-10-11 10-11z"></path>
+        <path class="atlas-seal-compass-shadow" d="M120 150l-10-47 10-11 10 11zM61 92l49-11 10 11-10 11z"></path>
+        <circle class="atlas-seal-compass-centre" cx="120" cy="92" r="9"></circle>
+        <circle class="atlas-seal-compass-pin" cx="120" cy="92" r="3"></circle>
       </g>
 
-      <g class="atlas-emblem-markers">
-        <circle cx="120" cy="23" r="2"></circle>
-        <circle cx="214" cy="80" r="1.7"></circle>
-        <circle cx="28" cy="129" r="1.7"></circle>
+      <g class="atlas-seal-markers" aria-hidden="true">
+        <g transform="translate(120 20)"><circle r="5.5"></circle><circle class="atlas-seal-marker-centre" r="2.2"></circle></g>
+        <g transform="translate(182 54)"><circle r="5.5"></circle><circle class="atlas-seal-marker-centre" r="2.2"></circle></g>
+        <g transform="translate(182 128)"><circle r="5.5"></circle><circle class="atlas-seal-marker-centre" r="2.2"></circle></g>
+        <g transform="translate(120 164)"><circle r="5.5"></circle><circle class="atlas-seal-marker-centre" r="2.2"></circle></g>
+        <g transform="translate(58 128)"><circle r="5.5"></circle><circle class="atlas-seal-marker-centre" r="2.2"></circle></g>
+        <g transform="translate(58 54)"><circle r="5.5"></circle><circle class="atlas-seal-marker-centre" r="2.2"></circle></g>
       </g>
+
     </symbol>
   </svg>
 
@@ -94,7 +59,7 @@
     </div>
     <button id="explored-status" class="explored" type="button" aria-haspopup="dialog" aria-controls="family-info-dialog" aria-label="0 of 6 species met" disabled>
       <span class="explored-copy"><strong id="explored-count">0</strong><span>of 6 met</span></span>
-      <svg class="explored-emblem" viewBox="0 0 240 190" aria-hidden="true"><use href="#atlas-family-globe"></use></svg>
+      <svg class="explored-emblem" viewBox="0 0 240 190" aria-hidden="true"><use href="#atlas-explorer-seal"></use></svg>
       <span class="explored-complete-count" aria-hidden="true">6/6</span>
     </button>
     <span id="explored-announcement" class="sr-only" aria-live="polite">0 of 6 species met</span>
@@ -470,7 +435,7 @@
 
   <dialog id="species-gallery-dialog" class="species-gallery-dialog" aria-labelledby="species-gallery-title" aria-describedby="species-gallery-description">
     <div class="species-gallery-shell">
-      <button id="species-gallery-close" class="species-gallery-close" type="button" aria-label="Close real worm gallery">×</button>
+      <button id="species-gallery-close" class="species-gallery-close" type="button" aria-label="Close real worm gallery"><span aria-hidden="true">×</span></button>
       <h2 id="species-gallery-title"><i>Caenorhabditis elegans</i></h2>
       <p id="species-gallery-description" class="species-gallery-description"></p>
       <div id="species-gallery-images" class="species-gallery-images"></div>
@@ -483,13 +448,13 @@
 
   <dialog id="family-info-dialog" class="species-gallery-dialog family-info-dialog" aria-labelledby="family-info-title" aria-describedby="family-info-intro">
     <div class="species-gallery-shell family-info-shell">
-      <button id="family-info-close" class="species-gallery-close" type="button" aria-label="Close family information">×</button>
+      <button id="family-info-close" class="species-gallery-close" type="button" aria-label="Close family information"><span aria-hidden="true">×</span></button>
       <h2 id="family-info-title">A much bigger worm family</h2>
       <p id="family-info-intro" class="family-info-intro">The six worms in this game are only a small sample. A peer-reviewed 2025 study counted 86 known <i>Caenorhabditis</i> species. A later 2025 preprint built the broadest available family tree, placing 70 species using 2,955 genes.</p>
 
       <div id="atlas-completion-reward" class="atlas-completion-reward" hidden>
         <div class="atlas-completion-medallion">
-          <svg class="atlas-completion-emblem" viewBox="0 0 240 190" role="img" aria-label="A globe encircled by six colourful worms"><use href="#atlas-family-globe"></use></svg>
+          <svg class="atlas-completion-emblem" viewBox="0 0 240 190" role="img" aria-label="An explorer seal with a compass rose and six filled discovery markers"><use href="#atlas-explorer-seal"></use></svg>
           <span class="atlas-completion-count" aria-hidden="true">6 / 6</span>
         </div>
         <p><strong>Atlas complete.</strong><span>You met all six featured worms.</span></p>
@@ -520,9 +485,10 @@
             <span class="family-tree-kicker">70 species with comparable genetic data</span>
             <h3 id="family-tree-title">The published family tree</h3>
           </div>
-          <div class="family-tree-legend" aria-label="Tree key">
-            <span><i class="tree-key tree-key--game" aria-hidden="true"></i>in this game</span>
-            <span><i class="tree-key tree-key--selfing" aria-hidden="true"></i>independent selfing origin</span>
+          <div class="family-tree-legend" aria-label="Markers for species in this game">
+            <strong>In this game:</strong>
+            <span><i class="tree-key tree-key--game tree-key--game-selfing" aria-hidden="true"><b></b></i>independent selfing origin</span>
+            <span><i class="tree-key tree-key--game tree-key--game-outcrossing" aria-hidden="true"><b></b></i>outcrossing</span>
           </div>
         </div>
         <p class="family-tree-note">Branch lengths are simplified here: the lines show which species are more closely related, not how much time has passed.</p>
@@ -534,6 +500,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="game.js?v=20260824-155"></script>
+  <script type="module" src="game.js?v=20260824-156"></script>
 </body>
 </html>

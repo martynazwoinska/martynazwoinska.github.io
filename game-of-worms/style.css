@@ -185,36 +185,24 @@ a { color: var(--teal-dark); }
 }
 .explored.is-complete .explored-complete-count { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-.atlas-emblem-globe-shadow { fill: rgba(23,51,61,.16); }
-.atlas-emblem-orbits ellipse,
-.atlas-emblem-orbits path {
-  fill: none;
-  stroke: color-mix(in srgb, var(--land-edge) 70%, var(--teal));
-  stroke-width: 1.25;
-  opacity: .62;
-  stroke-linecap: round;
-}
-.atlas-emblem-atmosphere {
-  fill: color-mix(in srgb, var(--ocean) 24%, white);
-  stroke: color-mix(in srgb, var(--land-edge) 78%, var(--teal-dark));
-  stroke-width: 2.2;
-}
-.atlas-emblem-globe-sea { fill: url(#atlas-ocean-gradient); stroke: rgba(255,255,255,.88); stroke-width: 1.4; }
-.atlas-emblem-grid { fill: none; stroke: rgba(255,255,255,.48); stroke-width: 1; stroke-linecap: round; }
-.atlas-emblem-land { fill: url(#atlas-land-gradient); stroke: color-mix(in srgb, var(--land-edge) 86%, var(--ink)); stroke-width: 1.15; stroke-linejoin: round; }
-.atlas-emblem-island { fill: color-mix(in srgb, var(--land) 84%, var(--land-edge)); stroke: var(--land-edge); stroke-width: .8; }
-.atlas-emblem-coast-highlight { fill: none; stroke: rgba(255,255,255,.42); stroke-width: 1.1; stroke-linecap: round; }
-.atlas-emblem-globe-shine { fill: none; stroke: rgba(255,255,255,.72); stroke-width: 2.5; stroke-linecap: round; }
-.atlas-emblem-worm { color: var(--teal); }
-.atlas-emblem-worm--elegans { color: #bd7c45; }
-.atlas-emblem-worm--inopinata { color: #c95670; }
-.atlas-emblem-worm--briggsae { color: #347d68; }
-.atlas-emblem-worm--nigoni { color: #d75c3d; }
-.atlas-emblem-worm--tropicalis { color: #167d7a; }
-.atlas-emblem-worm--wallacei { color: #6254aa; }
-.atlas-emblem-worm-body { fill: currentColor; stroke: color-mix(in srgb, var(--ink) 88%, currentColor); stroke-width: 1.55; stroke-linejoin: round; }
-.atlas-emblem-worm-inner { fill: none; stroke: rgba(255,255,255,.52); stroke-width: 1.15; stroke-linecap: round; }
-.atlas-emblem-markers { fill: color-mix(in srgb, var(--yellow) 72%, var(--land-edge)); stroke: var(--land-edge); stroke-width: .65; }
+.atlas-seal-shadow { fill: rgba(23,51,61,.14); }
+.atlas-seal-field { fill: color-mix(in srgb, var(--paper-strong) 88%, var(--yellow)); stroke: color-mix(in srgb, var(--land-edge) 74%, var(--teal-dark)); stroke-width: 2; }
+.atlas-seal-ring { fill: none; }
+.atlas-seal-ring--outer { stroke: color-mix(in srgb, var(--land-edge) 84%, var(--yellow)); stroke-width: 2.2; }
+.atlas-seal-ring--inner { stroke: color-mix(in srgb, var(--teal) 74%, var(--land-edge)); stroke-width: 1.4; stroke-dasharray: 2.2 3.6; }
+.atlas-seal-ticks { fill: none; stroke: color-mix(in srgb, var(--land-edge) 82%, var(--ink-soft)); stroke-width: 1.6; stroke-linecap: round; }
+.atlas-seal-filigree { fill: none; stroke: color-mix(in srgb, var(--land-edge) 46%, transparent); stroke-width: 1.1; }
+.atlas-seal-filigree path { stroke-linejoin: round; }
+.atlas-seal-compass path { stroke: color-mix(in srgb, var(--ink) 74%, var(--teal-dark)); stroke-width: 1.15; stroke-linejoin: round; }
+.atlas-seal-compass-gold { fill: color-mix(in srgb, var(--yellow) 66%, white); }
+.atlas-seal-compass-diagonals { fill: color-mix(in srgb, var(--yellow) 31%, var(--paper-strong)); }
+.atlas-seal-compass-berry { fill: color-mix(in srgb, var(--coral) 72%, var(--ink)); }
+.atlas-seal-compass-emerald { fill: color-mix(in srgb, var(--teal) 86%, var(--teal-dark)); }
+.atlas-seal-compass-shadow { fill: color-mix(in srgb, var(--land-edge) 44%, var(--paper-strong)); }
+.atlas-seal-compass-centre { fill: color-mix(in srgb, var(--paper-strong) 90%, var(--yellow)); stroke: var(--teal-dark); stroke-width: 1.4; }
+.atlas-seal-compass-pin { fill: color-mix(in srgb, var(--coral) 72%, var(--ink)); stroke: var(--paper-strong); stroke-width: .8; }
+.atlas-seal-markers > g > circle:first-child { fill: color-mix(in srgb, var(--paper-strong) 86%, var(--yellow)); stroke: color-mix(in srgb, var(--land-edge) 86%, var(--ink-soft)); stroke-width: 1.35; }
+.atlas-seal-marker-centre { fill: var(--teal); stroke: var(--paper-strong); stroke-width: .65; }
 
 @keyframes atlas-complete-arrive {
   0% { transform: rotate(3deg) scale(.88); }
@@ -3934,15 +3922,19 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   position: absolute;
   top: 14px;
   right: 14px;
+  display: grid;
+  place-items: center;
   width: 44px;
   height: 44px;
   border: 1px solid var(--line);
   border-radius: 50%;
+  padding: 0;
   background: color-mix(in srgb, var(--paper-strong) 90%, var(--teal));
   color: var(--ink);
   cursor: pointer;
   font: 800 1.55rem/1 var(--sans);
 }
+.species-gallery-close span { display: block; line-height: 1; }
 .species-gallery-close:hover { border-color: var(--teal); color: var(--teal-dark); }
 .species-gallery-close:focus-visible { outline: 3px solid color-mix(in srgb, var(--gold) 80%, white); outline-offset: 3px; }
 .species-gallery-dialog h2 {
@@ -4201,16 +4193,24 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .family-tree-legend {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: flex-end;
-  gap: 8px 14px;
+  gap: 7px 12px;
+  border: 1px solid color-mix(in srgb, var(--teal) 24%, var(--line));
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: color-mix(in srgb, var(--paper-strong) 88%, var(--ocean));
   color: var(--ink-soft);
   font-size: .75rem;
   font-weight: 800;
 }
+.family-tree-legend strong { color: var(--teal-dark); font-size: inherit; }
 .family-tree-legend span { display: inline-flex; align-items: center; gap: 6px; }
-.tree-key { display: inline-block; width: 13px; height: 13px; }
-.tree-key--game { border: 2px solid var(--teal); border-radius: 4px; background: rgba(255,255,255,.8); }
-.tree-key--selfing { border-radius: 50%; background: var(--coral); }
+.tree-key { display: inline-grid; place-items: center; width: 16px; height: 16px; }
+.tree-key--game { border: 2px solid var(--teal); border-radius: 5px; background: rgba(255,255,255,.86); }
+.tree-key b { display: block; width: 7px; height: 7px; }
+.tree-key--game-selfing b { border-radius: 50%; background: var(--coral); }
+.tree-key--game-outcrossing b { border-radius: 2px; background: var(--violet); }
 .family-tree-note { margin: 10px 0 14px; color: var(--ink-soft); font-size: .83rem; }
 .caenorhabditis-tree {
   width: 100%;
