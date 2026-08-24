@@ -283,6 +283,11 @@ a { color: var(--teal-dark); }
   animation: worm-confetti-flight var(--worm-confetti-duration) cubic-bezier(.18,.72,.3,1) var(--worm-confetti-delay) both;
   will-change: transform, opacity;
 }
+.worm-confetti-wriggle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: worm-confetti-wriggle var(--worm-wriggle-duration) ease-in-out infinite alternate;
+}
 .worm-confetti-outline,
 .worm-confetti-body,
 .worm-confetti-highlight { fill: none; stroke-linecap: round; }
@@ -306,15 +311,25 @@ a { color: var(--teal-dark); }
     transform: translate(-50%, -50%) scale(.25) rotate(var(--worm-confetti-start-rotation));
   }
   12% { opacity: 1; }
-  48% {
+  42% {
     opacity: 1;
     transform:
       translate(
         calc(-50% + var(--worm-confetti-mid-x)),
         calc(-50% + var(--worm-confetti-mid-y))
       )
-      scale(1.08)
+      scale(1.1)
       rotate(var(--worm-confetti-mid-rotation));
+  }
+  70% {
+    opacity: 1;
+    transform:
+      translate(
+        calc(-50% + var(--worm-confetti-late-x)),
+        calc(-50% + var(--worm-confetti-late-y))
+      )
+      scale(.96)
+      rotate(calc(var(--worm-confetti-mid-rotation) + 72deg));
   }
   100% {
     opacity: 0;
@@ -326,6 +341,11 @@ a { color: var(--teal-dark); }
       scale(.82)
       rotate(var(--worm-confetti-end-rotation));
   }
+}
+
+@keyframes worm-confetti-wriggle {
+  0% { transform: rotate(var(--worm-wriggle-angle)) scaleX(.94) scaleY(1.08); }
+  100% { transform: rotate(calc(var(--worm-wriggle-angle) * -1)) scaleX(1.05) scaleY(.92); }
 }
 
 main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
