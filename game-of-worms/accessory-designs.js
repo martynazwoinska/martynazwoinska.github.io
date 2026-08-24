@@ -6010,7 +6010,7 @@ function drawElegansFieldAccessory(group, item, companion) {
 
   if (location === "santeuil" && item.family === "santeuil-railway-driver-uniform") {
     const uniform = add(group, "g", { class: "santeuil-driver-uniform", transform: companion ? "rotate(12)" : "rotate(10)" });
-    const jacket = add(uniform, "g", { class: "santeuil-driver-jacket-fit", transform: companion ? "translate(18 8) rotate(15) scale(.78)" : "translate(48 30) rotate(13)" });
+    const jacket = add(uniform, "g", { class: "santeuil-driver-jacket-fit", transform: companion ? "translate(18 8) rotate(15) scale(.78)" : "translate(34 54) rotate(13)" });
     if (companion) {
       path(jacket, "M-71-37Q-43-67-7-61Q30-59 61-31L53 43Q18 58-17 53Q-48 50-66 31Z", "santeuil-driver-jacket companion");
       path(jacket, "M-28-57L-2-23L23-56L40-42L18-4L-3-15L-26-2L-47-39Z", "santeuil-driver-lapels");
