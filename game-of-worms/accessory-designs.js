@@ -17,7 +17,7 @@ const rows = [
   ["briggsae", "Dois Rios, Ilha Grande, Brazil · EG5612", "jackfruit sample trays", "eg5612-jackfruit-emergence-theatre", "shared sample bags", "eg5612-shared-bag-provenance-bifurcator", "test-cross plates", "eg5612-single-larva-test-cross-gate"],
   ["briggsae", "Nambucca Heads, New South Wales · QG2814", "flower presses", "qg2814-ground-flower-sample-theatre", "two culture plates", "qg2814-five-day-two-plate-relay", "18S DNA cards", "qg2814-18s-identity-ribbon-reader"],
   ["elegans", "Bristol N2, England", "agar plates with bacteria", "ngm-agar-plate", "fitted lab coats", "n2-lab-coat", "cryo-vial jetpacks", "cryo-vial-jetpack", "lab goggles", "n2-lab-goggles"],
-  ["elegans", "Santeuil, France", "hollow hogweed-stem armour", "santeuil-hogweed-stem-armour", "Santeuil cylinder-organ backpacks", "santeuil-cylinder-organ-backpack", "railway semaphore tail signals", "santeuil-railway-semaphore"],
+  ["elegans", "Santeuil, France", "railway-driver uniforms", "santeuil-railway-driver-uniform", "Santeuil cylinder organs", "santeuil-cylinder-organ-instrument", "hogweed-stem locomotives", "santeuil-hogweed-locomotive"],
   ["elegans", "Edinburgh, Scotland", "Blackford observatory telescopes", "midmar-compost-tumbler", "Edinburgh tartan kilts", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
   ["elegans", "Tenerife, Spain", "Atlantic canary costumes", "tenerife-atlantic-canary-costume", "timple guitars", "tenerife-timple-guitar", "Teide star lanterns", "tenerife-teide-star-lantern"],
   ["elegans", "Kauaʻi, Hawaiʻi", "plant sample cases", "decay-substrate-theatre", "mist collector bottles", "kokee-cloud-water-collector", "haplotype cards", "xz1516-haplotype-viewer"],
@@ -62,7 +62,7 @@ const repeatedRendererFamilies = new Set([
 ]);
 
 const n2RendererFamilies = new Set(["ngm-agar-plate", "n2-lab-coat", "cryo-vial-jetpack", "n2-lab-goggles"]);
-const santeuilRendererFamilies = new Set(["santeuil-hogweed-stem-armour", "santeuil-cylinder-organ-backpack", "santeuil-railway-semaphore"]);
+const santeuilRendererFamilies = new Set(["santeuil-railway-driver-uniform", "santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"]);
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
 const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-teide-star-lantern"]);
 const kauaiRendererFamilies = new Set(["decay-substrate-theatre", "kokee-cloud-water-collector", "xz1516-haplotype-viewer"]);
@@ -6008,57 +6008,87 @@ function drawElegansFieldAccessory(group, item, companion) {
   };
   const seed = (parent, cx, cy, scale = 1) => path(parent, `M ${cx} ${cy - 12 * scale} Q ${cx + 15 * scale} ${cy - 3 * scale} ${cx} ${cy + 12 * scale} Q ${cx - 15 * scale} ${cy - 3 * scale} ${cx} ${cy - 12 * scale} Z`, "efr-seed");
 
-  if (location === "santeuil" && item.family === "santeuil-hogweed-stem-armour") {
-    shadow(116, 88);
-    const armour = add(group, "g", { class: "santeuil-hogweed-armour", transform: companion ? "rotate(-8) scale(.9)" : "rotate(-8)" });
-    path(armour, "M-76-35Q-48-74-4-75Q45-76 79-44M-68 30Q-45 57-6 59Q36 61 67 34", "santeuil-armour-straps");
-    path(armour, "M-104-40C-55-73 24-78 103-35L86 40C29 15-35 15-91 48Z", "santeuil-stem-shell");
-    path(armour, "M-87-27C-41-54 24-58 84-28L74 18C28 1-29 3-79 32Z", "santeuil-stem-highlight");
-    add(armour, "ellipse", { class: "santeuil-stem-rim", cx: -98, cy: 4, rx: 35, ry: 48, transform: "rotate(-10 -98 4)" });
-    add(armour, "ellipse", { class: "santeuil-stem-hollow", cx: -100, cy: 4, rx: 22, ry: 33, transform: "rotate(-10 -100 4)" });
-    path(armour, "M-107-26L-102-18M-119-13L-109-8M-121 9L-110 8M-115 27L-106 20", "santeuil-stem-fibres");
-    [-51,-4,42].forEach((x, index) => path(armour, `M${x}-60Q${x + 12} ${-20 + index * 3} ${x + 4} 34`, "santeuil-stem-node"));
-    path(armour, "M-32-65Q-21-85-7-66M19-65Q30-83 42-57", "santeuil-stem-scars");
-    path(armour, companion ? "M46 37Q59 55 76 42" : "M55 39Q70 62 91 43", "santeuil-armour-buckle");
-    add(armour, "circle", { class: "santeuil-armour-rivet", cx: companion ? 71 : 83, cy: companion ? 43 : 47, r: 6 });
+  if (location === "santeuil" && item.family === "santeuil-railway-driver-uniform") {
+    const uniform = add(group, "g", { class: "santeuil-driver-uniform", transform: companion ? "rotate(12)" : "rotate(10)" });
+    if (companion) {
+      path(uniform, "M-71-37Q-43-67-7-61Q30-59 61-31L53 43Q18 58-17 53Q-48 50-66 31Z", "santeuil-driver-jacket companion");
+      path(uniform, "M-28-57L-2-23L23-56L40-42L18-4L-3-15L-26-2L-47-39Z", "santeuil-driver-lapels");
+      path(uniform, "M-53-40Q-69-13-66 21M50-35Q66-9 54 24", "santeuil-driver-piping");
+      [-8,17].forEach(y => add(uniform, "circle", { class: "santeuil-driver-button", cx: 5, cy: y, r: 5 }));
+      path(uniform, "M-52 15Q-34 6-21 17L-24 35Q-40 39-55 29Z", "santeuil-driver-pocket");
+      add(uniform, "path", { class: "santeuil-driver-cap companion", d: "M-27-72Q0-92 31-71L22-57Q0-64-22-57ZM-34-73Q0-101 42-70Q5-62-34-73Z", transform: "translate(45 -22)" });
+    } else {
+      path(uniform, "M-88-42Q-54-83-5-76Q48-74 86-35L75 55Q32 72-11 66Q-55 64-82 37Z", "santeuil-driver-jacket");
+      path(uniform, "M-39-68L-5-25L30-67L53-47L25 0L-4-14L-35 2L-61-45Z", "santeuil-driver-lapels");
+      path(uniform, "M-69-47Q-91-14-82 35M67-40Q88-8 74 37", "santeuil-driver-piping");
+      [-15,8,31].forEach(y => [-10,13].forEach(x => add(uniform, "circle", { class: "santeuil-driver-button", cx: x, cy: y, r: 4.5 })));
+      path(uniform, "M35 14Q52 4 67 17L64 40Q47 44 33 33Z", "santeuil-driver-pocket");
+      add(uniform, "path", { class: "santeuil-driver-cap", d: "M-34-87Q2-112 43-83L32-64Q2-73-27-65ZM-47-87Q1-124 55-81Q5-72-47-87Z", transform: "translate(65 -28)" });
+    }
+    path(uniform, companion ? "M-31-51Q0-34 31-52L20-25L0-33L-20-25Z" : "M-43-63Q0-39 43-62L27-27L0-41L-27-27Z", "santeuil-driver-neckerchief");
+    path(uniform, companion ? "M-20 47Q0 57 23 46" : "M-29 59Q0 72 32 57", "santeuil-driver-hem");
     return true;
   }
 
-  if (location === "santeuil" && item.family === "santeuil-cylinder-organ-backpack") {
-    shadow(104, 111);
-    const pack = add(group, "g", { class: "santeuil-organ-pack", transform: companion ? "rotate(-9) scale(.88)" : "rotate(-9)" });
-    path(pack, "M-62-55Q-93-33-83 15Q-77 48-54 58M61-50Q91-29 83 20Q78 45 58 58", "santeuil-pack-straps");
-    path(pack, "M-72-70Q0-94 72-69L67 77Q0 94-68 76Z", "santeuil-organ-cabinet");
-    path(pack, "M-61-60Q0-78 61-59L58-14Q0 3-59-13Z", "santeuil-organ-window");
-    add(pack, "ellipse", { class: "santeuil-organ-cylinder", cx: 0, cy: -34, rx: 50, ry: 16 });
-    [-38,-27,-16,-5,6,17,28,39].forEach((x, index) => add(pack, "circle", { class: "santeuil-organ-pin", cx: x, cy: -38 + (index % 3) * 5, r: 2.5 }));
-    path(pack, "M-59-4L45-1L59 32L-58 38Z", "santeuil-organ-bellows");
-    [-44,-25,-6,13,32,49].forEach(x => path(pack, `M${x}-1L${x + 7} 35`, "santeuil-bellows-fold"));
-    path(pack, "M-56 42Q0 32 57 41L54 71Q0 83-56 72Z", "santeuil-organ-keybed");
-    for (let index = 0; index < 11; index += 1) path(pack, `M${-48 + index * 9.5} 43L${-47 + index * 9.5} 71`, "santeuil-organ-key");
-    const pipes = add(pack, "g", { class: "santeuil-organ-pipes", transform: "translate(24 -88)" });
-    [-31,-17,-3,11,25].forEach((x, index) => path(pipes, `M${x}-2V${37 - index * 6}H${x + 9}V-2Z`, index % 2 ? "santeuil-organ-pipe alt" : "santeuil-organ-pipe"));
-    path(pack, "M69-29H91V3L108 13", "santeuil-organ-crank");
-    add(pack, "circle", { class: "santeuil-crank-knob", cx: 112, cy: 16, r: 7 });
-    path(pack, "M-47-68Q-23-84 0-70Q24-85 49-67M-48 53Q0 66 49 51", "santeuil-organ-inlay");
+  if (location === "santeuil" && item.family === "santeuil-cylinder-organ-instrument") {
+    shadow(companion ? 86 : 106, 108);
+    const organ = add(group, "g", { class: "santeuil-organ-instrument", transform: companion ? "rotate(7)" : "rotate(-7)" });
+    if (companion) {
+      path(organ, "M-66-45Q0-70 65-44L59 61Q0 76-61 59Z", "santeuil-organ-cabinet companion");
+      path(organ, "M-55-35Q0-53 54-34L52-2Q0 12-54-1Z", "santeuil-organ-window");
+      add(organ, "ellipse", { class: "santeuil-organ-cylinder", cx: 0, cy: -18, rx: 43, ry: 13 });
+      [-31,-18,-4,11,27].forEach((x, i) => add(organ, "circle", { class: "santeuil-organ-pin", cx: x, cy: -21 + i % 2 * 5, r: 2.5 }));
+      path(organ, "M-52 5L48 4L54 31L-50 35Z", "santeuil-organ-bellows companion");
+      [-37,-17,3,23,42].forEach(x => path(organ, `M${x} 5L${x + 5} 33`, "santeuil-bellows-fold"));
+      path(organ, "M-49 39Q0 32 51 38L48 58Q0 69-49 59Z", "santeuil-organ-keybed");
+      for (let i = 0; i < 9; i += 1) path(organ, `M${-41 + i * 10} 40L${-40 + i * 10} 59`, "santeuil-organ-key");
+      [-34,-17,0,17,34].forEach((x,i) => path(organ, `M${x}-46V${-72 + Math.abs(2-i)*7}H${x+10}V-46Z`, "santeuil-organ-pipe"));
+      path(organ, "M59-21H78V8L91 17", "santeuil-organ-crank");
+      add(organ, "circle", { class: "santeuil-crank-knob", cx: 95, cy: 20, r: 6 });
+    } else {
+      path(organ, "M-76-62Q0-92 76-60L69 72Q0 91-70 70Z", "santeuil-organ-cabinet");
+      path(organ, "M-64-50Q0-73 64-48L60-8Q0 9-62-6Z", "santeuil-organ-window");
+      add(organ, "ellipse", { class: "santeuil-organ-cylinder", cx: 0, cy: -29, rx: 52, ry: 16 });
+      [-41,-28,-15,-2,11,24,37].forEach((x,i) => add(organ, "circle", { class: "santeuil-organ-pin", cx: x, cy: -33 + i % 3 * 5, r: 2.7 }));
+      path(organ, "M-62 1L52 0L63 35L-59 42Z", "santeuil-organ-bellows");
+      [-47,-25,-3,19,41,56].forEach(x => path(organ, `M${x} 2L${x + 7} 38`, "santeuil-bellows-fold"));
+      path(organ, "M-58 47Q0 37 59 45L55 69Q0 83-57 71Z", "santeuil-organ-keybed");
+      for (let i = 0; i < 11; i += 1) path(organ, `M${-49 + i * 9.5} 47L${-48 + i * 9.5} 71`, "santeuil-organ-key");
+      [-38,-21,-4,13,30].forEach((x,i) => path(organ, `M${x}-61V${-99 + i*7}H${x+11}V-61Z`, i%2 ? "santeuil-organ-pipe alt" : "santeuil-organ-pipe"));
+      path(organ, "M72-31H96V7L112 18", "santeuil-organ-crank");
+      add(organ, "circle", { class: "santeuil-crank-knob", cx: 117, cy: 21, r: 7 });
+      path(organ, "M-51-58Q0-78 52-56M-49 57Q0 70 50 55", "santeuil-organ-inlay");
+    }
     return true;
   }
 
-  if (location === "santeuil" && item.family === "santeuil-railway-semaphore") {
-    shadow(83, 104);
-    const signal = add(group, "g", { class: "santeuil-semaphore", transform: companion ? "rotate(-8) scale(.88)" : "rotate(-8)" });
-    path(signal, "M-31 68Q0 54 31 68L24 91Q0 100-25 91Z", "santeuil-signal-clamp");
-    path(signal, "M-8-71H9V75H-8Z", "santeuil-signal-mast");
-    path(signal, "M-18-80H19V-60H-18Z", "santeuil-signal-cap");
-    path(signal, "M3-53L-97-26L-105-5L-5-31Z", "santeuil-signal-arm");
-    path(signal, "M-34-45L-53-40L-60-18L-41-23ZM-72-35L-91-30L-98-9L-79-14Z", "santeuil-signal-stripes");
-    add(signal, "circle", { class: "santeuil-signal-pivot", cx: 1, cy: -41, r: 18 });
-    add(signal, "circle", { class: "santeuil-signal-lens", cx: 1, cy: -41, r: 9 });
-    path(signal, "M-31-5H-9V18H-31ZM-29 18L-37 45M-11 18L-4 45", "santeuil-signal-lamp-frame");
-    add(signal, "circle", { class: "santeuil-signal-lamp red", cx: -20, cy: 6, r: 7 });
-    path(signal, "M-22 74H23M-18 84H19", "santeuil-clamp-detail");
-    path(signal, "M7-8Q34 8 21 35", "santeuil-signal-cable");
-    add(signal, "circle", { class: "santeuil-signal-weight", cx: 19, cy: 43, r: 10 });
+  if (location === "santeuil" && item.family === "santeuil-hogweed-locomotive") {
+    shadow(companion ? 103 : 125, 96);
+    const train = add(group, "g", { class: "santeuil-hogweed-train", transform: companion ? "rotate(-4)" : "rotate(2)" });
+    if (companion) {
+      path(train, "M-86-3H40Q67-1 78 19L70 53H-86Z", "santeuil-train-frame companion");
+      path(train, "M-61-48H25Q53-46 57-18V20H-66Z", "santeuil-train-boiler companion");
+      add(train, "ellipse", { class: "santeuil-train-boiler-rim", cx: -63, cy: -14, rx: 17, ry: 34 });
+      add(train, "ellipse", { class: "santeuil-train-hollow", cx: -65, cy: -14, rx: 10, ry: 23 });
+      path(train, "M28-54H70V23H31ZM37-43H61V-18H37Z", "santeuil-train-cab companion");
+      path(train, "M-24-70H1L-4-47H-20ZM-30-76H8", "santeuil-train-chimney");
+      path(train, "M44-62H73L80-53H37Z", "santeuil-train-roof");
+      [-45,18,57].forEach((x,i) => add(train, "circle", { class: i===1 ? "santeuil-train-wheel small" : "santeuil-train-wheel", cx:x, cy:55, r:i===1?18:23 }));
+      path(train, "M-45 55L57 55M-42 55Q4 25 57 55", "santeuil-train-rods");
+    } else {
+      path(train, "M-112-4H52Q88-2 101 25L91 62H-112Z", "santeuil-train-frame");
+      path(train, "M-83-59H37Q67-57 72-22V29H-89Z", "santeuil-train-boiler");
+      add(train, "ellipse", { class: "santeuil-train-boiler-rim", cx: -87, cy: -15, rx: 22, ry: 43 });
+      add(train, "ellipse", { class: "santeuil-train-hollow", cx: -89, cy: -15, rx: 13, ry: 29 });
+      [-48,-7,33].forEach((x,i) => path(train, `M${x}-57Q${x+10}-13 ${x+2} 27`, "santeuil-train-stem-node"));
+      path(train, "M44-74H94V33H47ZM56-60H82V-23H56Z", "santeuil-train-cab");
+      path(train, "M-28-92H3L-3-59H-22ZM-37-99H14", "santeuil-train-chimney");
+      path(train, "M52-84H100L111-73H40Z", "santeuil-train-roof");
+      [-67,-5,62].forEach((x,i) => add(train, "circle", { class: i===1 ? "santeuil-train-wheel small" : "santeuil-train-wheel", cx:x, cy:65, r:i===1?23:30 }));
+      path(train, "M-67 65L62 65M-63 65Q-2 24 62 65", "santeuil-train-rods");
+      path(train, "M-103 34L-125 53H-104M92 35L119 50H94", "santeuil-train-couplers");
+    }
+    add(train, "circle", { class: "santeuil-train-lamp", cx: companion ? -79 : -104, cy: companion ? 16 : 20, r: companion ? 8 : 10 });
     return true;
   }
 
@@ -6472,9 +6502,9 @@ function renderPiece(target, item, wormPart) {
     "lattice-fan": { primary: [295, 126, .5, -8], companion: [101, 100, .42, -6] },
     "kite-rig": { primary: [168, 190, .46, -4], companion: [61, 185, .36, 4] },
     "soil-kit": { primary: [315, 226, .48, -2], companion: [47, 225, .39, 4] },
-    "santeuil-hogweed-stem-armour": { primary: [291, 142, .67, -7], companion: [76, 139, .55, -7] },
-    "santeuil-cylinder-organ-backpack": { primary: [201, 197, .58, -6], companion: [87, 205, .47, -6] },
-    "santeuil-railway-semaphore": { primary: [82, 214, .5, -8], companion: [7, 181, .4, -8] },
+    "santeuil-railway-driver-uniform": { primary: [296, 132, .72, 0], companion: [91, 126, .58, 0] },
+    "santeuil-cylinder-organ-instrument": { primary: [360, 244, .58, -4], companion: [41, 202, .48, 5] },
+    "santeuil-hogweed-locomotive": { primary: [220, 275, .57, -2], companion: [55, 275, .45, -3] },
     "midmar-compost-tumbler": { primary: [370, 270, .44, -2], companion: [14, 282, .32, 2] },
     "galaxy-plate-scanner": { primary: [184, 204, .54, -1], companion: [68, 202, .43, 2] },
     "agassiz-ice-flow-model": { primary: [322, 260, .52, -2], companion: [52, 290, .42, 2] },

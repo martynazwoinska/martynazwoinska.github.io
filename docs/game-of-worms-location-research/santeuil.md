@@ -80,29 +80,29 @@ The scene is one continuous stream-bank view, not a row of interchangeable field
 
 The accessories are playful translations of the representative substrate and documented local objects. They are not claims about traditional Santeuil clothing.
 
-### Hollow hogweed-stem armour
+### Railway-driver uniforms
 
-This wearable cutaway makes the JU1925 substrate visible without repeating the sample tubes used elsewhere in the Game.
+The uniforms turn the two worms into characters connected to the railway beside the documented habitat without claiming historical dress.
 
-- Both copies curve along the worm's back and use fitted straps, a buckle and a rivet to communicate physical attachment.
-- The open end shows the hollow centre, fibrous wall and segmented construction of a common-hogweed stem.
-- Natural greens, yellow-green pith and emerald shadows distinguish the plant material without reducing it to brown or beige.
+- The primary wears a long double-breasted navy jacket with gold piping, six buttons, lapels, pocket, red neckerchief and peaked cap.
+- The smaller worm wears a separately constructed short blue-green jacket with two buttons, its own pocket, lapels and lower-profile cap.
+- Both garments follow their worm's body angle and leave the faces unobscured.
 
-### Santeuil cylinder-organ backpack
+### Santeuil cylinder organs
 
-The real local organ supplies an unusually specific mechanism and a musical object not assigned to another worm.
+The unusual documented cylinder organ remains the location's specific musical reference, but the instruments are independent free-standing designs rather than backpacks.
 
-- Both wearable cabinets include a visibly pinned cylinder, wedge-like bellows, keybed, pipes, crank, inlay and fitted shoulder straps.
-- Emerald, indigo, berry, turquoise and antique gold separate the materials and keep the mechanism legible at Game scale.
-- The drawings are original abstractions based on documented construction, not copies of a heritage photograph.
+- The primary organ is a tall polished-walnut cabinet with a pinned cylinder, berry bellows, eleven-key bed, graduated pipes, inlay and crank.
+- The companion is a squat darker cabinet with a shorter cylinder, teal bellows, nine-key bed, a symmetric pipe crown and separate crank geometry.
+- The drawings are original construction studies based on the documented mechanism, not copies of heritage imagery.
 
-### Railway semaphore tail signal
+### Hogweed-stem locomotives
 
-The signal refers to the railway beside the documented wooded-stream collection habitat without repeating the Game's lantern accessories.
+The locomotives combine the representative rotting hollow-stem substrate with the nearby railway as deliberate fantasy rather than collection history.
 
-- A fitted tail clamp carries the mast; the signal is not a freestanding object floating beside the worm.
-- The working construction remains readable through its pivot, striped signal arm, coloured lens, cable and counterweight.
-- Primary and companion copies share the same orientation while retaining independently scaled construction and placement.
+- The primary locomotive has a long segmented green stem boiler, visibly hollow rim and pith, blue cab, violet chimney, three-wheel running gear, rods and lamp.
+- The companion is a compact tank engine with a shorter unsegmented boiler, different cab proportions, three unequal wheels and its own connecting-rod path.
+- Wheels, rods, boiler, chimney, cab and roof remain legible at the default habitat scale; the open stem end preserves the plant origin of the fantasy vehicle.
 
 ## Quality benchmark
 

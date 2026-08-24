@@ -6175,6 +6175,48 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .efr-santeuil .santeuil-signal-cable { fill:none; stroke:#252b50; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
 .efr-santeuil .santeuil-signal-lamp { fill:#f04f62; stroke:#252b50; stroke-width:3; }
 .efr-santeuil .santeuil-signal-weight { fill:#65cec8; stroke:#252b50; stroke-width:3; }
+.efr-santeuil .santeuil-driver-jacket { fill:#244d68; stroke:#202d45; stroke-width:5; stroke-linejoin:round; }
+.efr-santeuil .santeuil-driver-jacket.companion { fill:#315f76; }
+.efr-santeuil .santeuil-driver-lapels { fill:#f3d27a; stroke:#202d45; stroke-width:3.5; stroke-linejoin:round; }
+.efr-santeuil .santeuil-driver-piping,
+.efr-santeuil .santeuil-driver-hem { fill:none; stroke:#dfaa47; stroke-width:4; stroke-linecap:round; }
+.efr-santeuil .santeuil-driver-button { fill:#ffd978; stroke:#644a31; stroke-width:1.5; }
+.efr-santeuil .santeuil-driver-pocket { fill:#1a405d; stroke:#f0c564; stroke-width:3; stroke-linejoin:round; }
+.efr-santeuil .santeuil-driver-cap { fill:#23435e; stroke:#202d45; stroke-width:4; stroke-linejoin:round; }
+.efr-santeuil .santeuil-driver-cap.companion { fill:#315f76; }
+.efr-santeuil .santeuil-driver-neckerchief { fill:#cf5364; stroke:#722f4b; stroke-width:3.5; stroke-linejoin:round; }
+.efr-santeuil .santeuil-organ-cabinet { fill:#9a613c; stroke:#382f3d; stroke-width:5; stroke-linejoin:round; }
+.efr-santeuil .santeuil-organ-cabinet.companion { fill:#7e523b; }
+.efr-santeuil .santeuil-organ-window { fill:#3c3045; stroke:#e2b75e; stroke-width:3; }
+.efr-santeuil .santeuil-organ-cylinder { fill:#c88648; stroke:#382f3d; stroke-width:3; }
+.efr-santeuil .santeuil-organ-pin { fill:#f8d67a; stroke:#6a4733; stroke-width:1.2; }
+.efr-santeuil .santeuil-organ-bellows { fill:#a93f58; stroke:#382f3d; stroke-width:4; }
+.efr-santeuil .santeuil-organ-bellows.companion { fill:#337d73; }
+.efr-santeuil .santeuil-bellows-fold { fill:none; stroke:#f3ca70; stroke-width:3; }
+.efr-santeuil .santeuil-organ-keybed { fill:#fff6dc; stroke:#382f3d; stroke-width:4; }
+.efr-santeuil .santeuil-organ-key { fill:none; stroke:#3d3957; stroke-width:2.5; }
+.efr-santeuil .santeuil-organ-pipe { fill:#d8ad50; stroke:#534131; stroke-width:2.5; }
+.efr-santeuil .santeuil-organ-pipe.alt { fill:#73b8ad; }
+.efr-santeuil .santeuil-organ-crank,
+.efr-santeuil .santeuil-organ-inlay { fill:none; stroke:#e5b754; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; }
+.efr-santeuil .santeuil-organ-inlay { stroke-width:3; }
+.efr-santeuil .santeuil-crank-knob { fill:#cf5364; stroke:#382f3d; stroke-width:3; }
+.efr-santeuil .santeuil-train-frame { fill:#a34452; stroke:#243344; stroke-width:5; stroke-linejoin:round; }
+.efr-santeuil .santeuil-train-frame.companion { fill:#ca7155; }
+.efr-santeuil .santeuil-train-boiler { fill:#4e9b68; stroke:#243344; stroke-width:5; stroke-linejoin:round; }
+.efr-santeuil .santeuil-train-boiler.companion { fill:#69ad74; }
+.efr-santeuil .santeuil-train-boiler-rim { fill:#89c782; stroke:#243344; stroke-width:4; }
+.efr-santeuil .santeuil-train-hollow { fill:#294e48; stroke:#d1df8b; stroke-width:3; }
+.efr-santeuil .santeuil-train-stem-node { fill:none; stroke:#2f755d; stroke-width:4; opacity:.9; }
+.efr-santeuil .santeuil-train-cab { fill:#315f76; stroke:#243344; stroke-width:5; stroke-linejoin:round; fill-rule:evenodd; }
+.efr-santeuil .santeuil-train-cab.companion { fill:#4d5792; }
+.efr-santeuil .santeuil-train-roof { fill:#e2b75e; stroke:#243344; stroke-width:5; stroke-linejoin:round; }
+.efr-santeuil .santeuil-train-chimney { fill:#4d5792; stroke:#243344; stroke-width:5; stroke-linejoin:round; }
+.efr-santeuil .santeuil-train-wheel { fill:#344d65; stroke:#202b39; stroke-width:5; }
+.efr-santeuil .santeuil-train-wheel.small { fill:#55708a; }
+.efr-santeuil .santeuil-train-rods,
+.efr-santeuil .santeuil-train-couplers { fill:none; stroke:#e1b554; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; }
+.efr-santeuil .santeuil-train-lamp { fill:#ffe58b; stroke:#704d33; stroke-width:3; }
 .elegans-field-redesign.efr-edinburgh { --efr-primary:#4a4e9f; --efr-secondary:#54c5bd; --efr-accent:#cf4770; --efr-leaf:#177d72; }
 .elegans-field-redesign.efr-edinburgh .efr-kilt { fill:#183f46; }
 .elegans-field-redesign.efr-edinburgh .efr-waistband { fill:#873449; }
