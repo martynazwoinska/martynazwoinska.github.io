@@ -1718,6 +1718,8 @@ renderTabs();
 const initialSpecies = byId.get(selectedId);
 const initialPlace = initialSpecies.locations[0];
 selectedRecordName = initialPlace.name;
+visited.add(initialSpecies.id);
+updateExploredStatus();
 renderSpecies(initialSpecies, initialPlace);
 updateSelectedControls();
 document.addEventListener("visibilitychange", () => {
