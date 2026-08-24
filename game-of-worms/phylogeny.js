@@ -214,3 +214,22 @@ export function renderCaenorhabditisTree(container) {
   leaves.forEach(leaf => addTip(svg, leaf));
   container.append(svg);
 }
+
+export function focusCaenorhabditisTreeLabels(container) {
+  if (!container || container.dataset.initialFocusSet === "true") return;
+
+  requestAnimationFrame(() => {
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    if (maxScrollLeft <= 1) return;
+
+    const firstHighlightedLabel = container.querySelector(".phylogeny-tip-label--game");
+    if (!firstHighlightedLabel) return;
+    const treeBounds = container.getBoundingClientRect();
+    const labelBounds = firstHighlightedLabel.getBoundingClientRect();
+    const labelOffset = labelBounds.left - treeBounds.left + container.scrollLeft;
+    const desiredLabelInset = Math.min(180, Math.max(96, treeBounds.width * .36));
+    container.scrollLeft = Math.max(0, Math.min(maxScrollLeft, labelOffset - desiredLabelInset));
+    container.scrollTop = 0;
+    container.dataset.initialFocusSet = "true";
+  });
+}

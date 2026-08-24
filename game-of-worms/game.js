@@ -5,7 +5,7 @@ import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260824-83";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
-import { renderCaenorhabditisTree } from "./phylogeny.js?v=20260823-2";
+import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -435,28 +435,12 @@ els.galleryDialog.addEventListener("close", () => {
 
 let familyInfoRestoreFocus = null;
 
-function setInitialFamilyTreePhoneFocus() {
-  if (!window.matchMedia("(max-width: 560px)").matches
-    || els.familyTree.dataset.phoneFocusSet === "true") return;
-
-  requestAnimationFrame(() => {
-    const firstHighlightedLabel = els.familyTree.querySelector(".phylogeny-tip-label--game");
-    if (!firstHighlightedLabel) return;
-    const treeBounds = els.familyTree.getBoundingClientRect();
-    const labelBounds = firstHighlightedLabel.getBoundingClientRect();
-    const desiredLabelInset = Math.min(152, treeBounds.width * .6);
-    els.familyTree.scrollLeft += labelBounds.left - treeBounds.left - desiredLabelInset;
-    els.familyTree.scrollTop = 0;
-    els.familyTree.dataset.phoneFocusSet = "true";
-  });
-}
-
 function openFamilyInfo() {
   if (!els.familyInfoDialog) return;
   renderCaenorhabditisTree(els.familyTree);
   familyInfoRestoreFocus = document.activeElement;
   els.familyInfoDialog.showModal();
-  setInitialFamilyTreePhoneFocus();
+  focusCaenorhabditisTreeLabels(els.familyTree);
   els.familyInfoClose.focus();
 }
 
