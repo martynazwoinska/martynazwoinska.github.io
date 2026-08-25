@@ -5,7 +5,8 @@
     kindLabels: Object.freeze({
       chocolate: 'Chocolate package',
       crochet: 'Crocheted object',
-      ephemera: 'Collected ephemera'
+      ephemera: 'Collected ephemera',
+      app: 'Chocolate app'
     }),
     collectionObject: 'Collection object',
     factLabels: Object.freeze({
@@ -21,8 +22,8 @@
       zoomOut: 'Zoom out',
       zoomIn: 'Zoom in',
       resetView: 'Reset view',
-      defaultHint: 'Select a gold marker, or browse the collection by name.',
-      touchHint: 'Drag · pinch to zoom · tap a gold marker.',
+      defaultHint: 'Select an object, or browse the collection by name.',
+      touchHint: 'Drag · pinch to zoom · tap an object.',
       viewScale: percent => `View ${percent}%.`
     }),
     collectionGroups: Object.freeze({

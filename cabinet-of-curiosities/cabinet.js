@@ -2,12 +2,14 @@
   'use strict';
 
   const objects = Array.isArray(window.CABINET_OBJECTS) ? window.CABINET_OBJECTS : [];
+  const chofItem = window.CABINET_CHOF || null;
   const copy = window.CABINET_I18N;
   const cabinetPage = document.querySelector('.cabinet-page');
   const cabinetStage = document.getElementById('cabinet-stage');
   const sceneSpace = document.getElementById('scene-space');
   const hotspotLayer = document.getElementById('hotspot-layer');
   const boardShell = document.getElementById('board-shell');
+  const chofButton = document.getElementById('chof-link');
   const exploreHint = document.getElementById('explore-hint');
   const sceneControls = document.getElementById('scene-controls');
   const zoomOutButton = document.getElementById('scene-zoom-out');
@@ -192,7 +194,7 @@
     cabinetPage.classList.toggle('is-scene-interactive', shouldEnable);
     sceneControls.hidden = !shouldEnable;
     cabinetStage.tabIndex = shouldEnable ? 0 : -1;
-    exploreHint.textContent = shouldEnable ? copy.scene.touchHint : 'Select a gold marker, or browse the collection by name.';
+    exploreHint.textContent = shouldEnable ? copy.scene.touchHint : copy.scene.defaultHint;
     activeScenePointers.clear();
     dragStart = null;
     pinchStart = null;
@@ -581,12 +583,17 @@
   cabinetStage.addEventListener('pointerup', finishScenePointer);
   cabinetStage.addEventListener('pointercancel', finishScenePointer);
   cabinetStage.addEventListener('keydown', sceneKeyDown);
-  hotspotLayer.addEventListener('click', event => {
+  boardShell.addEventListener('click', event => {
     if (window.performance.now() < suppressSceneClickUntil) {
       event.preventDefault();
       event.stopImmediatePropagation();
     }
   }, true);
+
+  if (chofButton && chofItem) {
+    chofButton.setAttribute('aria-label', `${chofItem.label}. ${copy.openDetails}`);
+    chofButton.addEventListener('click', () => openDetails(chofItem, chofButton));
+  }
 
   panelToggle.addEventListener('click', () => {
     if (!panel.open) openPanel();

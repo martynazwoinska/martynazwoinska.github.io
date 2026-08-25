@@ -125,4 +125,14 @@
       link: 'https://sfoodies.se/en', linkLabel: 'Visit the S-Foodies website'
     }
   ]);
+
+  window.CABINET_CHOF = Object.freeze({
+    id: 'chof',
+    label: 'Chof',
+    kind: 'app',
+    status: 'confirmed',
+    note: 'A free chocolate scanner for iOS and Android. Scan a bar to see its maker, origin, ingredients, cacao percentage and flavour notes.',
+    link: 'https://chof.nl/',
+    linkLabel: 'Visit Chof'
+  });
 }());
