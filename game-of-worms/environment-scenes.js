@@ -46,12 +46,12 @@ const canonicalProfiles = {
     palettes.dryCity, [[0, 300], [88, 288], [160, 302], [250, 286], [340, 300], [430, 282], [520, 296], [600, 286]],
     { water: "river", weather: "sun", cues: [["pol", 465, 218, .9], ["chabutro", 110, 230, .8], ["drytree", 210, 262, .8]] }
   ),
-  "Taipei, Taiwan · BRC20390": profile(
-    "taipei-brc20390-forest-slope", "Taipei forest slope at 174 m",
-    "The reference strain of this eleven-strain isotype was sampled by J. Wang in forest at 174 m in Taipei on 4 October 2015. CaeNDR records the substrate and environmental measurements as not determined. The layered slope and narrow city-edge light are restrained regional context, not a reconstruction of the collection view.",
-    "CaeNDR BRC20390 isotype record", "https://caendr.org/isotype/BRC20390/",
-    palettes.wetCity, [[0, 314], [75, 240], [132, 274], [210, 176], [285, 258], [360, 204], [430, 272], [514, 222], [600, 303]],
-    { weather: "none", cues: [] }
+  "Salt Lake City, Utah · EG4181": profile(
+    "salt-lake-eg4181-apricot-garden", "Salt Lake City apricot garden",
+    "EG4181 was isolated by E. M. Haag from a rotting apricot beneath a garden tree on the north side of a home in Salt Lake City on 4 August 2006. The private property is not reconstructed; the apricot tree, dry garden floor and distant Wasatch foothill are restrained city-wide context.",
+    "CGC EG4181 strain record", "https://cgc.umn.edu/strain/EG4181",
+    palettes.dryGarden, [[0, 286], [76, 258], [150, 274], [235, 249], [325, 267], [416, 241], [512, 262], [600, 247]],
+    { weather: "sun", cues: [] }
   ),
   "Kerala, India · JU1337": profile(
     "poovar-ju1337-agricultural-fruit-edge", "Poovar agricultural fruit-litter edge",
@@ -144,12 +144,12 @@ const canonicalProfiles = {
     palettes.dryGarden, [[0, 259], [78, 249], [155, 253], [232, 236], [310, 247], [390, 229], [468, 244], [540, 232], [600, 241]],
     { weather: "sun", cues: [] }
   ),
-  "Auckland, New Zealand": profile(
-    "auckland-eca36-garden-grass", "Auckland garden grass and volcanic field",
-    "ECA36 came from garden grass in an anonymised Auckland urban garden. The two low volcanic-field shoulders and tiny Sky Tower cue are wider regional context, not a recorded collection view or evidence of local adaptation.",
-    "CaeNDR ECA36 isotype record", "https://caendr.org/isotype/ECA36/",
-    palettes.temperate, [[0, 256], [77, 229], [154, 246], [239, 257], [329, 235], [421, 247], [505, 226], [600, 246]],
-    { weather: "cloud", cues: [] }
+  "Claremont, California · ECA250": profile(
+    "claremont-eca250-rain-mushroom-courtyard", "Claremont rain and mushroom courtyard",
+    "This lineage traces to a worm collected from a decaying mushroom during rain in Claremont in November 1972. The exact property and mushroom species were not recorded; the rain-darkened terracotta courtyard, citrus tree and distant foothill are restrained Claremont context rather than a reconstruction.",
+    "CGC CB4857 collection record; CaeNDR ECA250 isotype record", "https://caendr.org/isotype/ECA250/",
+    palettes.temperate, [[0, 270], [82, 247], [164, 264], [246, 240], [332, 258], [420, 234], [510, 252], [600, 239]],
+    { weather: "rain", cues: [] }
   ),
   "Araucanía, Chile": profile(
     "cunco-ju4400-compost-garden", "Compost in a rural garden near Cunco",
@@ -326,12 +326,12 @@ const sceneCompositions = Object.freeze({
     "M0 372 Q165 346 305 370 T600 359", [1, 0, 2],
     "a long shaded city mass punctured by one slender chabutro"
   ),
-  "taipei-brc20390-forest-slope": composition(
-    "M0 328Q104 309 205 330Q305 351 407 322Q506 292 600 309V430H0Z",
-    "M0 223Q91 193 184 216Q283 241 381 211Q486 179 600 205V340H0Z",
+  "salt-lake-eg4181-apricot-garden": composition(
+    "M0 326Q106 306 207 329Q308 350 408 321Q507 293 600 309V430H0Z",
+    "M0 235Q95 211 185 231Q278 251 373 224Q482 193 600 214V341H0Z",
     [],
-    "M0 244Q145 295 291 351Q442 406 600 430", [],
-    "a damp diagonal forest slope beneath unequal trunks and roots, with one narrow indistinct city-edge light opening"
+    "M0 349Q149 324 292 351Q443 382 600 342", [],
+    "one split rotting apricot at the base of a mature tree, beneath a low fruiting canopy with an anonymised fence and narrow Wasatch foothill opening"
   ),
   "poovar-ju1337-agricultural-fruit-edge": composition(
     "M0 391Q95 354 187 381Q282 410 375 377Q476 341 600 369V430H0Z",
@@ -424,12 +424,12 @@ const sceneCompositions = Object.freeze({
     "M76 322Q192 304 302 319Q425 335 552 303", [],
     "an asymmetric pair of collapsed figs below a broken garden edge, one broad open eucalypt crown and a low ridge with a tiny offset tower"
   ),
-  "auckland-eca36-garden-grass": composition(
-    "M0 302Q78 282 158 299Q244 319 326 296Q422 269 513 292Q556 304 600 294V430H0Z",
-    "M0 258Q84 240 168 254Q253 267 338 246Q428 225 514 244Q558 254 600 248V324H0Z",
+  "claremont-eca250-rain-mushroom-courtyard": composition(
+    "M0 316Q82 294 163 311Q248 329 332 305Q427 278 515 300Q559 312 600 301V430H0Z",
+    "M0 247Q88 226 171 241Q258 257 342 234Q430 211 517 232Q561 241 600 237V326H0Z",
     [],
-    "M84 328Q197 306 305 324Q422 343 548 311", [],
-    "two unequal grass-litter folds below a broken fence and roofline, two low separated volcanic shoulders and one hairline city needle"
+    "M70 326Q186 303 302 323Q423 345 550 309", [],
+    "an elevated rain-darkened terracotta courtyard with one decaying mushroom cluster, a broken pot, citrus canopy and a narrow foothill opening"
   ),
   "cunco-ju4400-compost-garden": composition(
     "M0 319Q92 297 181 314Q279 334 371 305Q470 276 600 300V430H0Z",
@@ -875,10 +875,10 @@ function drawAhmedabadScene(target, profile, sceneComposition) {
   }, { once: true });
 }
 
-function drawTaipeiBRC20390Scene(target, profile, sceneComposition) {
+function drawSaltLakeEG4181Scene(target, profile, sceneComposition) {
   const background = append(target, "image", {
-    class: "taipei-brc20390-painted-background",
-    href: "assets/taipei-brc20390-painted-background.webp",
+    class: "salt-lake-eg4181-painted-background",
+    href: "assets/salt-lake-eg4181-painted-background.jpg",
     x: 0, y: 0, width: 600, height: 430,
     preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
@@ -1286,10 +1286,10 @@ function drawACTQG2811Scene(target, palette) {
   }, { once: true });
 }
 
-function drawAucklandECA36Scene(target, palette) {
+function drawClaremontECA250Scene(target, palette) {
   const background = append(target, "image", {
-    class: "auckland-eca36-painted-background",
-    href: "assets/auckland-eca36-painted-background.webp",
+    class: "claremont-eca250-painted-background",
+    href: "assets/claremont-eca250-painted-background.jpg",
     x: 0,
     y: 0,
     width: 600,
@@ -2673,8 +2673,8 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
     drawMahahualJU2617Scene(target, profile, sceneComposition);
     return;
   }
-  if (profile.id === "taipei-brc20390-forest-slope") {
-    drawTaipeiBRC20390Scene(target, profile, sceneComposition);
+  if (profile.id === "salt-lake-eg4181-apricot-garden") {
+    drawSaltLakeEG4181Scene(target, profile, sceneComposition);
     return;
   }
   if (profile.id === "poovar-ju1337-agricultural-fruit-edge") {
@@ -2773,8 +2773,8 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
     drawACTQG2811Scene(target, palette);
     return;
   }
-  if (profile.id === "auckland-eca36-garden-grass") {
-    drawAucklandECA36Scene(target, palette);
+  if (profile.id === "claremont-eca250-rain-mushroom-courtyard") {
+    drawClaremontECA250Scene(target, palette);
     return;
   }
   if (profile.id === "cunco-ju4400-compost-garden") {

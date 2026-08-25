@@ -1,5 +1,7 @@
 # Taipei *Caenorhabditis briggsae* BRC20390 location research and art brief
 
+> Retired from the active Game on 25 August 2026 when Salt Lake City EG4181 was selected to improve North American coverage. Kept as an archival research record.
+
 Last updated: 2026-07-28
 
 ## Purpose

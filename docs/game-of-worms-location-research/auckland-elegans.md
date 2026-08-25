@@ -1,5 +1,7 @@
 # Auckland *C. elegans* location research and art brief
 
+> Retired from the active Game on 25 August 2026 when Claremont ECA250 was selected to improve North American coverage. Kept as an archival research record.
+
 Last updated: 2026-08-10
 
 This dossier is the evidence and review contract for the *Caenorhabditis elegans* Auckland landscape and its three accessory pairs. It follows the Bristol N2, Santeuil, Edinburgh, Tenerife, Kauaʻi and Australian Capital Territory batches in the location-by-location Game of Worms illustration workflow.

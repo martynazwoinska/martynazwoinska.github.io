@@ -2,8 +2,8 @@ import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
-import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260730-40";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260824-92";
+import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260825-41";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260825-93";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
@@ -56,7 +56,7 @@ const species = [
     habitatTwo: "#59a6a0",
     locations: [
       { name: "Ahmedabad, India · AF16", sceneLabel: "Soil · Ahmedabad · India", coordinates: [72.56, 23.03], source: "CaeNDR", style: "field", history: "AF16 came from soil in Ahmedabad—but the entire surviving habitat description is simply “soil”. Its precise city microhabitat remains unknown." },
-      { name: "Taipei, Taiwan · BRC20390", sceneLabel: "Forest sample · Taipei · Taiwan", coordinates: [121.576542, 25.027105], source: "CaeNDR BRC20390 isotype record", style: "rainforest", strain: "BRC20390", history: "A Taipei forest site yielded eleven C. briggsae strains belonging to one isotype. Surviving photographs show dark sample fragments, but not enough detail to identify what the worms inhabited." },
+      { name: "Salt Lake City, Utah · EG4181", sceneLabel: "Rotting apricot · Salt Lake City · United States", coordinates: [-111.867575, 40.707267], source: "CGC EG4181 strain record; CaeNDR EG4360 isotype record", style: "field", strain: "EG4181", history: "EG4181 came from a rotting apricot beneath a garden tree in Salt Lake City in August 2006. The collected worms were noted for moving very quickly." },
       { name: "Kerala, India · JU1337", sceneLabel: "Rotting plants · Kerala · India", coordinates: [77.075, 8.32], source: "CaeNDR JU1337 isotype record", style: "rainforest", strain: "JU1337", history: "This worm came from rotting plant material on agricultural land near Poovar, Kerala. The source plant was never identified." },
       { name: "Kauaʻi, Hawaiʻi · QG130", sceneLabel: "Rotting plants · Kauaʻi · United States", coordinates: [-159.5829, 22.2202], source: "CaeNDR QG130 isotype record", style: "kauai", strain: "QG130", history: "Three closely related C. briggsae strains were recovered from rotting plant material in low-elevation Kauaʻi forest." },
       { name: "Réunion Island · JU1375", sceneLabel: "Farmland mollusc · Réunion · France", coordinates: [55.6885, -21.0469], source: "CaeNDR JU1375 isotype record", style: "ocean", strain: "JU1375", history: "C. briggsae is usually associated with decaying plant material, but this isolate was collected from a mollusc on agricultural land in Réunion." },
@@ -92,7 +92,7 @@ const species = [
       { name: "Tenerife, Spain", sceneLabel: "Botanical garden · Tenerife · Spain", coordinates: [-16.535468, 28.411121], source: "CaeNDR", style: "field", strain: "NIC1787", history: "A single day’s sampling in Puerto de la Cruz botanical garden produced 23 C. elegans records from rotting avocado, other fruits, flowers, stems and plant litter." },
       { name: "Kauaʻi, Hawaiʻi", sceneLabel: "Rotting plants · Kauaʻi · United States", coordinates: [-159.668, 22.149], source: "CaeNDR", style: "kauai", strain: "XZ1516", history: "This high-elevation Kauaʻi isolate came from rotting plant material and belongs to one of the island’s exceptionally divergent C. elegans lineages." },
       { name: "Australian Capital Territory", sceneLabel: "Rotten fig · O’Connor · Australia", coordinates: [149.115, -35.254], source: "CaeNDR", style: "field", strain: "QG2811", history: "Rotting figs collected from an O’Connor backyard yielded a hermaphrodite through a Baermann funnel eleven days later." },
-      { name: "Auckland, New Zealand", sceneLabel: "Garden grass · Auckland · New Zealand", coordinates: [174.746, -36.893], source: "CaeNDR", style: "field", strain: "ECA36", history: "This garden-grass isolate became an unusual laboratory performer, with distinctive brood size and male-production rate in a controlled comparison. That does not necessarily mean it was adapted to Auckland." },
+      { name: "Claremont, California · ECA250", sceneLabel: "Decaying mushroom · Claremont · United States", coordinates: [-117.7198, 34.0967], source: "CGC CB4857 collection record; CaeNDR ECA250 isotype record", style: "field", strain: "ECA250", history: "This lineage began with a worm found in a decaying mushroom during rain in Claremont in November 1972. ECA250 is the current reference for this group of closely related strains." },
       { name: "Araucanía, Chile", sceneLabel: "Compost heap · Araucanía · Chile", coordinates: [-72.1509, -38.9379], source: "CaeNDR", style: "field", strain: "JU4400", history: "A compost heap in a rural garden in Cunco yielded this C. elegans isolate in March 2023—one of the game’s most recently collected worms." }
     ]
   },

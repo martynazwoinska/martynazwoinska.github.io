@@ -6883,6 +6883,79 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   .taipei-brc20390-accessory .brc20390-node-number { font-size: 28px; }
 }
 
+/* Salt Lake City EG4181: apricot garden fantasy, beehive structure and one-tail skis. */
+.salt-lake-eg4181-accessory {
+  --eg4181-ink: #173c4a;
+  --eg4181-apricot: #f28b69;
+  --eg4181-apricot-light: #ffd49b;
+  --eg4181-blossom: #fff3df;
+  --eg4181-berry: #9d4d78;
+  --eg4181-indigo: #4d4f9b;
+  --eg4181-honey: #f2bd4d;
+  --eg4181-aqua: #58c7bd;
+}
+.salt-lake-eg4181-accessory path,
+.salt-lake-eg4181-accessory circle,
+.salt-lake-eg4181-accessory ellipse {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.eg4181-hat-crown { fill: var(--eg4181-apricot); stroke: var(--eg4181-ink); stroke-width: 5; }
+.eg4181-hat-brim { fill: var(--eg4181-indigo); stroke: var(--eg4181-ink); stroke-width: 5; }
+.eg4181-blossom-petal { fill: var(--eg4181-blossom); stroke: var(--eg4181-berry); stroke-width: 4; }
+.eg4181-blossom-petal.light { fill: var(--eg4181-apricot-light); }
+.eg4181-blossom-centre { fill: var(--eg4181-honey); stroke: var(--eg4181-ink); stroke-width: 3; }
+.eg4181-leaf { fill: var(--eg4181-aqua); stroke: var(--eg4181-ink); stroke-width: 4; }
+.eg4181-hive-body { fill: var(--eg4181-honey); stroke: var(--eg4181-ink); stroke-width: 6; }
+.eg4181-hive-band { fill: none; stroke: var(--eg4181-apricot); stroke-width: 7; }
+.eg4181-hive-door { fill: var(--eg4181-indigo); stroke: var(--eg4181-ink); stroke-width: 4; }
+.eg4181-honeycomb { fill: color-mix(in srgb, var(--eg4181-apricot-light) 72%, white); stroke: var(--eg4181-ink); stroke-width: 3; }
+.eg4181-harness { fill: none; stroke: var(--eg4181-berry); stroke-width: 10; }
+.eg4181-handle { fill: none; stroke: var(--eg4181-indigo); stroke-width: 8; }
+.eg4181-bee-wing { fill: color-mix(in srgb, var(--eg4181-aqua) 55%, white); stroke: var(--eg4181-ink); stroke-width: 3; }
+.eg4181-bee-body { fill: var(--eg4181-berry); stroke: var(--eg4181-ink); stroke-width: 3; }
+.eg4181-ski { fill: var(--eg4181-indigo); stroke: var(--eg4181-ink); stroke-width: 7; }
+.eg4181-binding { fill: var(--eg4181-apricot); stroke: var(--eg4181-ink); stroke-width: 5; }
+.eg4181-ski-inlay,
+.eg4181-ski-peak,
+.eg4181-ski-tail-detail { fill: none; stroke: var(--eg4181-honey); stroke-width: 7; }
+
+/* Claremont ECA250: rain-polished mushroom, poppy and terracotta forms. */
+.claremont-eca250-accessory {
+  --eca250-ink: #183d49;
+  --eca250-mushroom: #bd6b58;
+  --eca250-mushroom-deep: #8d4855;
+  --eca250-gill: #f4d8ad;
+  --eca250-poppy: #ef6f61;
+  --eca250-poppy-light: #f59a6f;
+  --eca250-aqua: #55c3ba;
+  --eca250-violet: #6355a7;
+  --eca250-gold: #e4ad43;
+  --eca250-terracotta: #c7684f;
+  --eca250-terracotta-light: #ed9871;
+}
+.claremont-eca250-accessory path,
+.claremont-eca250-accessory circle { stroke-linecap: round; stroke-linejoin: round; }
+.eca250-mushroom-cap { fill: var(--eca250-mushroom); stroke: var(--eca250-ink); stroke-width: 6; }
+.eca250-mushroom-gills { fill: var(--eca250-gill); stroke: var(--eca250-ink); stroke-width: 5; }
+.eca250-rain-mark { fill: none; stroke: color-mix(in srgb, var(--eca250-aqua) 72%, white); stroke-width: 5; }
+.eca250-hat-band { fill: var(--eca250-violet); stroke: var(--eca250-ink); stroke-width: 4; }
+.eca250-raindrop { fill: var(--eca250-aqua); stroke: var(--eca250-ink); stroke-width: 3; }
+.eca250-cape { fill: var(--eca250-violet); stroke: var(--eca250-ink); stroke-width: 7; }
+.eca250-poppy-panel { fill: var(--eca250-poppy); stroke: var(--eca250-ink); stroke-width: 4; }
+.eca250-poppy-panel.light { fill: var(--eca250-poppy-light); }
+.eca250-poppy-centre { fill: var(--eca250-gold); stroke: var(--eca250-ink); stroke-width: 4; }
+.eca250-cape-seam { fill: none; stroke: var(--eca250-aqua); stroke-width: 5; }
+.eca250-cape-collar { fill: none; stroke: var(--eca250-gold); stroke-width: 8; }
+.eca250-cape-clasp { fill: var(--eca250-gold); stroke: var(--eca250-ink); stroke-width: 3; }
+.eca250-cape-tie { fill: none; stroke: var(--eca250-gold); stroke-width: 8; }
+.eca250-rain-bead { fill: var(--eca250-aqua); stroke: var(--eca250-ink); stroke-width: 2.5; }
+.eca250-chime-canopy { fill: var(--eca250-violet); stroke: var(--eca250-ink); stroke-width: 6; }
+.eca250-chime-cord { fill: none; stroke: var(--eca250-gold); stroke-width: 5; }
+.eca250-chime-bell { fill: var(--eca250-terracotta); stroke: var(--eca250-ink); stroke-width: 5; }
+.eca250-chime-bell.light { fill: var(--eca250-terracotta-light); }
+.eca250-chime-drop { fill: var(--eca250-aqua); stroke: var(--eca250-ink); stroke-width: 4; }
+
 /* Lombok HPT26: Ficus-ground recovery, field-to-plate dates and paired substrates. */
 .lombok-hpt26-accessory {
   --hpt26-ink: color-mix(in srgb, #334139 84%, var(--worm-deep));
