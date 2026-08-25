@@ -269,12 +269,12 @@ button { color: inherit; }
 .chof-link {
   position: absolute;
   z-index: 3;
-  left: 20.1%;
-  top: 13.2%;
+  left: 22.2%;
+  top: 15.2%;
   isolation: isolate;
   display: grid;
   place-items: center;
-  width: 9.8%;
+  width: 8.1%;
   aspect-ratio: 1;
   margin: 0;
   padding: 0;
@@ -286,7 +286,7 @@ button { color: inherit; }
   font: inherit;
   text-decoration: none;
   cursor: pointer;
-  transform: rotate(-2.4deg);
+  transform: rotate(-1.8deg);
   transform-origin: 50% 6%;
   transition: transform .2s ease, filter .2s ease;
 }
@@ -295,8 +295,8 @@ button { color: inherit; }
   content: '';
   z-index: 0;
   grid-area: 1 / 1;
-  width: 112%;
-  height: 112%;
+  width: 102%;
+  height: 102%;
   border-radius: 50%;
   background: repeating-conic-gradient(
     from -6deg,
@@ -307,7 +307,8 @@ button { color: inherit; }
     transparent 16.6deg 30deg
   );
   mask: radial-gradient(circle, transparent 0 53%, #000 61%, transparent 76%);
-  opacity: .22;
+  opacity: .13;
+  filter: blur(.5px);
   pointer-events: none;
   transform: rotate(-2deg);
   animation: chof-radiance 6.8s ease-in-out infinite;
@@ -337,9 +338,12 @@ button { color: inherit; }
   height: 100%;
   object-fit: contain;
   filter:
-    drop-shadow(0 1px .55px rgba(31, 18, 10, .72))
-    drop-shadow(1.5px 2.5px 1.35px rgba(42, 25, 14, .48))
-    drop-shadow(3px 4px 2.6px rgba(42, 25, 14, .18));
+    blur(.3px)
+    contrast(.94)
+    saturate(.9)
+    brightness(.98)
+    drop-shadow(.5px 1px .75px rgba(31, 18, 10, .55))
+    drop-shadow(1.5px 2.5px 1.8px rgba(42, 25, 14, .3));
 }
 
 .chof-link-label {
@@ -347,23 +351,26 @@ button { color: inherit; }
   grid-area: 1 / 1;
   margin-top: 5%;
   font-family: var(--display);
-  font-size: clamp(.75rem, 1.1vw, 1.15rem);
+  color: #e2ca91;
+  font-size: clamp(.68rem, .9vw, .98rem);
   font-weight: 700;
   letter-spacing: .035em;
   line-height: 1;
-  text-shadow: 0 1px 1px #25150f, 0 0 4px rgba(58, 30, 18, .55);
+  opacity: .93;
+  filter: blur(.14px);
+  text-shadow: 0 1px 1.3px rgba(37, 21, 15, .72);
   transform: rotate(3deg);
 }
 
 .chof-link:hover,
 .chof-link:focus-visible {
-  filter: brightness(1.06);
-  transform: rotate(-1.5deg);
+  filter: brightness(1.03);
+  transform: rotate(-1.1deg);
 }
 
 .chof-link:hover::before,
 .chof-link:focus-visible::before {
-  opacity: .4;
+  opacity: .2;
 }
 
 .chof-link:focus-visible {
@@ -372,9 +379,9 @@ button { color: inherit; }
 }
 
 @keyframes chof-radiance {
-  0%, 100% { opacity: .16; }
-  48% { opacity: .3; }
-  72% { opacity: .21; }
+  0%, 100% { opacity: .09; }
+  48% { opacity: .17; }
+  72% { opacity: .12; }
 }
 
 .hotspot-layer { position: absolute; z-index: 2; inset: 0; }
