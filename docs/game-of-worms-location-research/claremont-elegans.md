@@ -24,9 +24,15 @@ Regional elements do not claim to reconstruct the unknown property. The scene mu
 
 ## Accessory set
 
-1. **Mushroom rain hats** — recognisable caps with separate crown, gills, band and rain details; the primary and companion hats use different silhouettes.
-2. **California-poppy rain capes** — fitted scalloped rainwear with poppy-panel construction, seams, ties and beads; playful state-wide fantasy, not collection clothing.
-3. **Terracotta rain chimes** — hanging clay bells with cords, canopies and pendants; primary and companion use different bell counts and proportions.
+1. **Citrus-crate racers** — open slatted wooden vehicles with oranges, leaf fenders, steering gear, upholstered seats and independently constructed wheel sets. They refer to Claremont's historic citrus-growing and packing economy, not to the collection method.
+2. **Botanic-garden flower carriages** — a coral California-poppy-inspired parade carriage and a separately constructed cream Matilija-poppy-inspired companion, each with its own petal silhouette, chassis, suspension and wheels. They are playful references to California native flora and the California Botanic Garden in Claremont.
+3. **Living-tree swings** — two different branch-built swing frames with outlined trunks, leaf clusters, tied ropes, shaped wooden seats, roots and visible attachment knots. They refer to Claremont's long-standing “City of Trees” identity.
+
+Regional sources:
+
+- [City of Claremont history](https://www.claremontca.gov/Government/About/History)
+- [California Botanic Garden](https://www.calbg.org/)
+- [City of Claremont historic and specimen trees](https://www.claremontca.gov/City-Services/Trees/Our-Historic-and-Specimen-trees)
 
 ## Production assets
 
