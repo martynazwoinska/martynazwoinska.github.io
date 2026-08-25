@@ -22,7 +22,7 @@ const rows = [
   ["elegans", "Tenerife, Spain", "Atlantic canary costumes", "tenerife-atlantic-canary-costume", "timple guitars", "tenerife-timple-guitar", "Teide star lanterns", "tenerife-teide-star-lantern"],
   ["elegans", "Kauaʻi, Hawaiʻi", "plant sample cases", "decay-substrate-theatre", "mist collector bottles", "kokee-cloud-water-collector", "haplotype cards", "xz1516-haplotype-viewer"],
   ["elegans", "Australian Capital Territory", "Baermann funnels", "qg2811-baermann-fig-recovery", "Yellow Box seed jars", "yellow-box-seed-orrery", "Black Mountain field radios", "black-mountain-signal-theremin"],
-  ["elegans", "Claremont, California · ECA250", "citrus-crate racers", "eca250-citrus-crate-racer", "botanic-garden flower carriages", "eca250-native-flower-carriage", "living-tree swings", "eca250-living-tree-swing"],
+  ["elegans", "Claremont, California · ECA250", "giant open books", "eca250-giant-open-book", "citrus-peel curls", "eca250-citrus-peel-curl", "glazed pottery costumes", "eca250-glazed-pottery-costume"],
   ["elegans", "Araucanía, Chile", "compost sample buckets", "compost-labyrinth", "Llaima ashfall gauges", "ashfall-recorder", "reciprocal-cross plates", "test-cross-mechanism"],
   ["nigoni", "Trivandrum, Kerala · JU1325", "field loupe", "trivandrum-field-loupe", "garden watering can", "trivandrum-garden-watering-can", "sample tube", "trivandrum-sample-tube"],
   ["nigoni", "Singapore · ZF1220", "Singapore starfruit sample trays", "zf1220-five-rib-field-atlas", "five-female sample cards", "multifemale-provenance-merger", "orchid pollination brushes", "holttum-orchid-hybridisation-engine"],
@@ -4220,108 +4220,84 @@ function drawClaremontECA250Accessory(group, item, companion) {
   group.dataset.renderer = item.family;
   group.classList.add("claremont-eca250-accessory", companion ? "eca250-companion" : "eca250-primary");
 
-  const wheel = (parent, cx, cy, radius, alternate = false) => {
-    add(parent, "circle", { class: "eca250-racer-tyre", cx, cy, r: radius });
-    add(parent, "circle", { class: alternate ? "eca250-racer-hub alternate" : "eca250-racer-hub", cx, cy, r: radius * .52 });
-    [0, 45, 90, 135].forEach(angle => path(parent, `M${cx} ${cy}L${cx + Math.cos(angle * Math.PI / 180) * radius * .7} ${cy + Math.sin(angle * Math.PI / 180) * radius * .7}`, "eca250-racer-spoke"));
-    add(parent, "circle", { class: "eca250-racer-axle", cx, cy, r: radius * .14 });
-  };
-  const orange = (parent, cx, cy, radius, alternate = false) => {
-    add(parent, "circle", { class: alternate ? "eca250-orange alternate" : "eca250-orange", cx, cy, r: radius });
-    path(parent, `M${cx} ${cy-radius+2}Q${cx+10} ${cy-radius-15} ${cx+19} ${cy-radius-6}Q${cx+10} ${cy-radius+1} ${cx} ${cy-radius+2}Z`, "eca250-orange-leaf");
+  const pageLines = (parent, paths, companionLine = false) => paths.forEach(d => path(parent, d, companionLine ? "eca250-page-line companion" : "eca250-page-line"));
+  const citrusCrossSection = (parent, cx, cy, radius, small = false) => {
+    add(parent, "circle", { class: small ? "eca250-citrus-fruit companion" : "eca250-citrus-fruit", cx, cy, r: radius });
+    add(parent, "circle", { class: "eca250-citrus-cut", cx, cy, r: radius * .72 });
+    [0, 60, 120].forEach(angle => {
+      const dx = Math.cos(angle * Math.PI / 180) * radius * .66;
+      const dy = Math.sin(angle * Math.PI / 180) * radius * .66;
+      path(parent, `M${cx-dx} ${cy-dy}L${cx+dx} ${cy+dy}`, "eca250-citrus-segment");
+    });
+    add(parent, "circle", { class: "eca250-citrus-pip", cx: cx + radius * .18, cy: cy - radius * .08, r: Math.max(2.5, radius * .11) });
   };
 
-  if (item.family === "eca250-citrus-crate-racer") {
-    add(group, "ellipse", { class: "eca250-ground-shadow", cx: 0, cy: companion ? 70 : 83, rx: companion ? 94 : 135, ry: companion ? 13 : 17 });
+  if (item.family === "eca250-giant-open-book") {
+    add(group, "ellipse", { class: "eca250-ground-shadow", cx: 0, cy: companion ? 73 : 91, rx: companion ? 101 : 151, ry: companion ? 12 : 16 });
     if (companion) {
-      path(group, "M-86-38Q-72-60-47-63H55Q80-57 90-33L78 47Q18 68-74 43Z", "eca250-crate-body companion");
-      path(group, "M-72-43H63M-75-14Q0 2 82-10M-76 17Q2 34 79 18", "eca250-crate-slat");
-      path(group, "M-58-60V42M-14-62V53M34-61V54M70-51V44", "eca250-crate-upright");
-      path(group, "M47-57Q70-91 92-68L78-35", "eca250-racer-handlebar");
-      path(group, "M42-47Q61-66 77-45L65-22Q51-17 38-27Z", "eca250-racer-seat");
-      orange(group, -47, -69, 18);
-      orange(group, -14, -73, 16, true);
-      orange(group, 15, -68, 15);
-      path(group, "M-91 25Q-114 37-98 55H-73", "eca250-leaf-fender");
-      wheel(group, -58, 53, 26);
-      wheel(group, 57, 55, 22, true);
+      path(group, "M-108-14Q-61-48-9-18L-8 58Q-60 35-109 59Z", "eca250-book-page companion left");
+      path(group, "M-8-18Q47-57 108-27L104 50Q46 30-8 58Z", "eca250-book-page companion right");
+      path(group, "M-109 59Q-59 39-8 62Q46 37 105 52L98 68Q45 54-8 72Q-60 50-104 70Z", "eca250-book-cover companion");
+      pageLines(group, ["M-92-4Q-54-24-22-7", "M-91 13Q-55-6-21 8", "M13-7Q51-28 89-15", "M13 11Q49-9 88 1"], true);
+      path(group, "M-8-18V69", "eca250-book-spine");
+      path(group, "M54 39L66 72L77 54L89 65L78 30Z", "eca250-bookmark");
+      path(group, "M-51-28Q-35-48-17-31Q-27-7-50-6Z", "eca250-book-leaf");
     } else {
-      path(group, "M-132-48Q-112-78-76-79H83Q119-72 135-40L122 57Q32 88-116 57Z", "eca250-crate-body");
-      path(group, "M-116-55H108M-123-16Q-9 7 127-12M-120 23Q0 50 124 24", "eca250-crate-slat");
-      path(group, "M-94-76V55M-37-80V70M24-80V72M83-74V61", "eca250-crate-upright");
-      path(group, "M68-73Q91-113 121-87L104-44", "eca250-racer-handlebar");
-      add(group, "circle", { class: "eca250-steering-wheel", cx: 105, cy: -90, r: 20 });
-      path(group, "M53-58Q80-85 103-57L88-22Q68-16 47-34Z", "eca250-racer-seat");
-      [[-80,-91,22,false],[-40,-101,20,true],[1,-94,21,false],[39,-103,18,true]].forEach(([x,y,r,alt]) => orange(group, x, y, r, alt));
-      path(group, "M-135 28Q-169 43-148 67H-112M119 30Q155 42 142 64H117", "eca250-leaf-fender");
-      wheel(group, -89, 68, 35);
-      wheel(group, 91, 69, 31, true);
-      path(group, "M-13-5Q0-19 15-4L11 29Q0 37-11 28Z", "eca250-crate-emblem");
+      path(group, "M-163-31Q-93-87-10-37L-9 73Q-91 38-164 77Z", "eca250-book-page left");
+      path(group, "M-9-37Q76-96 165-45L158 66Q72 32-9 73Z", "eca250-book-page right");
+      path(group, "M-165 77Q-90 47-9 80Q72 43 160 68L151 91Q70 70-9 96Q-91 61-156 94Z", "eca250-book-cover");
+      pageLines(group, ["M-139-13Q-91-47-42-19", "M-141 9Q-92-23-39 4", "M-139 31Q-91 2-40 24", "M23-22Q78-57 137-29", "M23 2Q79-31 138-7", "M24 27Q82-7 139 16"]);
+      path(group, "M-9-37V92", "eca250-book-spine");
+      path(group, "M86 53L98 97L113 75L129 89L114 43Z", "eca250-bookmark");
+      path(group, "M-95-60Q-68-91-39-63Q-53-25-91-25Z", "eca250-book-leaf");
+      path(group, "M-121 53Q-86 34-47 50M33 48Q79 27 127 39", "eca250-page-illustration");
+      add(group, "circle", { class: "eca250-page-sun", cx: 61, cy: 12, r: 12 });
     }
     return true;
   }
 
-  if (item.family === "eca250-native-flower-carriage") {
-    add(group, "ellipse", { class: "eca250-ground-shadow", cx: 0, cy: companion ? 82 : 96, rx: companion ? 88 : 121, ry: companion ? 12 : 15 });
+  if (item.family === "eca250-citrus-peel-curl") {
     if (companion) {
-      path(group, "M-78 17Q-55-34-12-31Q18-71 51-39Q83-28 80 17Q53 49 4 46Q-44 50-78 17Z", "eca250-matilija-petal");
-      path(group, "M-65-4Q-74-52-28-54Q-2-79 18-48Q62-64 72-21Q76 8 46 25Q5 43-43 24Z", "eca250-matilija-petal alternate");
-      add(group, "circle", { class: "eca250-flower-centre", cx: 1, cy: -14, r: 25 });
-      [[-12,-21],[-3,-27],[8,-24],[15,-14],[8,-5],[-4,-3],[-14,-10]].forEach(([cx,cy]) => add(group, "circle", { class: "eca250-flower-stamen", cx, cy, r: 3.2 }));
-      path(group, "M-85 31Q0 63 86 30L72 54Q0 79-73 55Z", "eca250-carriage-chassis companion");
-      path(group, "M-46 33Q0 52 47 31", "eca250-carriage-seat");
-      path(group, "M-73 54Q-92 66-88 83M72 54Q91 64 86 83", "eca250-carriage-suspension");
-      wheel(group, -68, 79, 24, true);
-      wheel(group, 69, 79, 24);
-      path(group, "M-82 21Q-106 7-112-15Q-97-9-83-3", "eca250-carriage-tiller");
+      path(group, "M-84 61Q-128 12-78-31Q-27-72 33-45Q83-22 71 24Q61 60 22 55Q-4 52 1 28Q7 8 29 11Q43 13 39 27", "eca250-peel-outline companion");
+      path(group, "M-84 61Q-128 12-78-31Q-27-72 33-45Q83-22 71 24Q61 60 22 55Q-4 52 1 28Q7 8 29 11Q43 13 39 27", "eca250-peel companion");
+      path(group, "M-84 61Q-128 12-78-31Q-27-72 33-45Q83-22 71 24", "eca250-peel-pith companion");
+      citrusCrossSection(group, 22, 34, 16, true);
+      path(group, "M-85 62Q-106 84-125 65Q-116 45-93 48Z", "eca250-peel-tip companion");
+      path(group, "M31-45Q46-74 69-58Q54-38 35-30Z", "eca250-citrus-leaf companion");
+      [[-67,-31],[-35,-49],[9,-51],[51,-30],[69,7]].forEach(([cx,cy]) => add(group, "circle", { class: "eca250-peel-pore", cx, cy, r: 3 }));
     } else {
-      path(group, "M0 7Q-65 17-103-24Q-116-69-69-81Q-37-85-8-43Q17-96 63-88Q112-77 103-30Q94 4 39 16Q17 23 0 7Z", "eca250-poppy-carriage-petal");
-      path(group, "M-6 4Q-28-53 2-93Q27-126 55-93Q73-63 39-21Q24-4-6 4Z", "eca250-poppy-carriage-petal alternate");
-      path(group, "M-14 4Q-70-12-77-55Q-80-92-39-102Q-2-99 7-52Q11-24-14 4Z", "eca250-poppy-carriage-petal light");
-      add(group, "circle", { class: "eca250-flower-centre", cx: 0, cy: -34, r: 31 });
-      [[-17,-43],[-6,-53],[8,-51],[19,-40],[17,-25],[4,-17],[-11,-20],[-22,-31]].forEach(([cx,cy]) => add(group, "circle", { class: "eca250-flower-stamen", cx, cy, r: 4 }));
-      path(group, "M-115 22Q0 76 116 20L99 59Q0 93-101 61Z", "eca250-carriage-chassis");
-      path(group, "M-64 27Q0 57 66 24", "eca250-carriage-seat");
-      path(group, "M-99 58Q-128 74-120 99M98 57Q127 73 118 98", "eca250-carriage-suspension");
-      wheel(group, -94, 94, 31, true);
-      wheel(group, 95, 94, 31);
-      path(group, "M-110 12Q-148-7-154-38Q-129-31-109-14", "eca250-carriage-tiller");
-      path(group, "M96-11Q126-31 137-10Q119 8 99 23", "eca250-flower-leaf");
+      path(group, "M-139 75Q-188 12-129-47Q-72-104 6-72Q76-44 71 15Q68 69 14 77Q-33 84-49 49Q-63 18-32-2Q-1-22 25 1Q45 19 30 40Q16 57-2 44", "eca250-peel-outline");
+      path(group, "M-139 75Q-188 12-129-47Q-72-104 6-72Q76-44 71 15Q68 69 14 77Q-33 84-49 49Q-63 18-32-2Q-1-22 25 1Q45 19 30 40Q16 57-2 44", "eca250-peel");
+      path(group, "M-139 75Q-188 12-129-47Q-72-104 6-72Q76-44 71 15Q68 69 14 77", "eca250-peel-pith");
+      citrusCrossSection(group, -4, 49, 22);
+      path(group, "M-141 75Q-167 105-195 80Q-182 54-151 57Z", "eca250-peel-tip");
+      path(group, "M3-72Q19-111 51-91Q33-58 8-48Z", "eca250-citrus-leaf");
+      path(group, "M63-29Q98-29 100 1Q71 6 53-10Z", "eca250-citrus-leaf alternate");
+      [[-121,-49],[-83,-76],[-35,-82],[17,-62],[58,-31],[68,15],[42,56],[-8,72],[-43,42]].forEach(([cx,cy]) => add(group, "circle", { class: "eca250-peel-pore", cx, cy, r: 3.5 }));
+      [[-155,19],[-135,-5]].forEach(([cx,cy]) => add(group, "circle", { class: "eca250-blossom-centre", cx, cy, r: 6 }));
     }
     return true;
   }
 
-  if (item.family === "eca250-living-tree-swing") {
-    add(group, "ellipse", { class: "eca250-ground-shadow", cx: 0, cy: companion ? 94 : 111, rx: companion ? 83 : 112, ry: companion ? 11 : 14 });
+  if (item.family === "eca250-glazed-pottery-costume") {
+    add(group, "ellipse", { class: "eca250-ground-shadow", cx: 0, cy: companion ? 83 : 103, rx: companion ? 80 : 111, ry: companion ? 12 : 15 });
     if (companion) {
-      const trunk = "M-79 89Q-77 33-55-9Q-37-56-1-75Q35-89 70-61Q88-47 91-20";
-      const limb = "M-57-13Q-17-41 44-45Q70-44 92-25";
-      path(group, trunk, "eca250-tree-outline companion");
-      path(group, trunk, "eca250-tree-branch companion");
-      path(group, limb, "eca250-tree-limb-outline");
-      path(group, limb, "eca250-tree-limb");
-      path(group, "M-61-27Q-38-58-9-55M21-48Q41-75 68-60", "eca250-tree-twig");
-      [[-56,-36,-24],[-25,-62,8],[35,-58,-12],[67,-48,17],[88,-22,-10]].forEach(([x,y,a],index) => path(group, `M${x} ${y}q${18+index%2*4} ${-16+index%3*5} ${30+index%2*4} 4q-18 17-30-4Z`, index%2 ? "eca250-tree-leaf alternate" : "eca250-tree-leaf"));
-      path(group, "M-30-50V42M51-45V43", "eca250-swing-rope");
-      [[-30,-50],[51,-45]].forEach(([cx,cy]) => add(group, "circle", { class: "eca250-swing-knot", cx, cy, r: 7 }));
-      path(group, "M-47 39Q10 52 68 38L62 59Q9 74-43 58Z", "eca250-swing-seat companion");
-      path(group, "M-45 50Q9 64 64 49", "eca250-swing-seat-grain");
-      path(group, "M-80 88Q-104 95-111 80M-76 73Q-59 86-39 89", "eca250-tree-root");
+      path(group, "M-34-58L-42-37Q-76-24-82 16Q-89 60-49 78Q-19 91 30 82Q72 73 77 31Q82-16 45-36L38-58Z", "eca250-pot-body companion");
+      path(group, "M-43-67H42L49-48Q3-37-50-49Z", "eca250-pot-rim companion");
+      path(group, "M-71-30Q-110-31-108 10Q-105 49-78 49M65-36Q101-32 98 4Q95 38 77 43", "eca250-pot-handle companion");
+      path(group, "M-79 13Q0 41 80 10L75 44Q0 66-79 43Z", "eca250-pot-glaze-band companion");
+      path(group, "M-43-46Q-29-19-15-44Q0-18 15-44Q29-18 43-45", "eca250-pot-glaze-drip companion");
+      path(group, "M-50 82H48L39 96H-40Z", "eca250-pot-foot companion");
+      [[-52,27],[-25,38],[5,43],[34,34],[58,21]].forEach(([cx,cy]) => add(group, "circle", { class: "eca250-pot-tessera companion", cx, cy, r: 6 }));
     } else {
-      const trunk = "M-116 105Q-112 34-85-20Q-57-82-9-104Q37-123 87-84Q116-59 120-18";
-      const limb = "M-89-27Q-31-68 55-64Q91-62 121-28";
-      path(group, trunk, "eca250-tree-outline");
-      path(group, trunk, "eca250-tree-branch");
-      path(group, limb, "eca250-tree-limb-outline");
-      path(group, limb, "eca250-tree-limb");
-      path(group, "M-84-46Q-58-92-18-89M13-90Q42-125 79-98M70-66Q96-92 117-71", "eca250-tree-twig");
-      [[-91,-57,-19],[-58,-91,10],[-18,-105,-12],[31,-105,15],[73,-90,-18],[107,-64,10],[122,-33,-8]].forEach(([x,y,a],index) => path(group, `M${x} ${y}q${23+index%2*5} ${-20+index%3*6} ${39+index%2*5} 5q-23 22-39-5Z`, index%3===1 ? "eca250-tree-leaf alternate" : "eca250-tree-leaf"));
-      path(group, "M-43-76V54M67-62V55", "eca250-swing-rope");
-      [[-43,-76],[67,-62]].forEach(([cx,cy]) => add(group, "circle", { class: "eca250-swing-knot", cx, cy, r: 8 }));
-      path(group, "M-72 49Q12 70 93 47L85 73Q10 94-66 72Z", "eca250-swing-seat");
-      path(group, "M-67 61Q10 82 88 59M-38 59V77M15 66V84M64 58V76", "eca250-swing-seat-grain");
-      path(group, "M-116 104Q-150 117-161 93M-111 83Q-82 103-53 106M-106 65Q-133 62-143 46", "eca250-tree-root");
-      [[-42,-83],[67,-69]].forEach(([x,y]) => add(group, "circle", { class: "eca250-orange-blossom", cx: x, cy: y, r: 8 }));
+      path(group, "M-45-75L-56-49Q-100-28-108 26Q-116 83-64 105Q-24 122 39 111Q94 102 103 48Q113-15 61-46L52-75Z", "eca250-pot-body");
+      path(group, "M-59-91H57L66-67Q4-51-69-68Z", "eca250-pot-rim");
+      path(group, "M-92-47Q-142-49-140 4Q-138 58-104 61M93-48Q143-46 140 5Q138 56 105 61", "eca250-pot-handle");
+      path(group, "M-106 13Q2 56 110 10L103 59Q1 89-105 60Z", "eca250-pot-glaze-band");
+      path(group, "M-62-65Q-43-27-24-63Q-4-24 18-62Q40-25 61-65", "eca250-pot-glaze-drip");
+      path(group, "M-67 106H72L58 126H-54Z", "eca250-pot-foot");
+      [[-72,32],[-42,50],[-8,60],[28,57],[61,42],[83,24]].forEach(([cx,cy],index) => add(group, index%2 ? "path" : "circle", index%2 ? { class: "eca250-pot-tessera alternate", d: `M${cx-7} ${cy}L${cx} ${cy-8}L${cx+8} ${cy}L${cx} ${cy+8}Z` } : { class: "eca250-pot-tessera", cx, cy, r: 7 }));
+      path(group, "M-5 86Q12 70 29 85Q13 102-5 86Z", "eca250-pot-maker-mark");
     }
     return true;
   }
@@ -6788,9 +6764,9 @@ function renderPiece(target, item, wormPart) {
     ,"eg4181-apricot-blossom-hat": { primary: [366, 61, .39, 5], companion: [108, 105, .31, -4] }
     ,"eg4181-beehive-saddle-pack": { primary: [245, 166, .42, 21], companion: [92, 154, .31, 30] }
     ,"eg4181-single-tail-mountain-ski": { primary: [146, 252, .45, -9], companion: [50, 221, .35, -5] }
-    ,"eca250-citrus-crate-racer": { primary: [176, 269, .43, -8], companion: [55, 241, .34, 7] }
-    ,"eca250-native-flower-carriage": { primary: [421, 278, .4, -5], companion: [35, 327, .35, 4] }
-    ,"eca250-living-tree-swing": { primary: [420, 174, .36, -3], companion: [136, 172, .29, 5] }
+    ,"eca250-giant-open-book": { primary: [302, 300, .43, -3], companion: [72, 306, .34, 5] }
+    ,"eca250-citrus-peel-curl": { primary: [245, 172, .44, 20], companion: [98, 151, .33, 28] }
+    ,"eca250-glazed-pottery-costume": { primary: [151, 226, .43, -10], companion: [39, 180, .34, 12] }
     ,"ju1337-rotting-material-recovery-carousel": { primary: [383, 143, .45, -2], companion: [8, 128, .35, 2] }
     ,"ju1337-sixteen-december-field-calendar": { primary: [246, 196, .43, 1], companion: [126, 217, .34, -1] }
     ,"poovar-agricultural-edge-ledger": { primary: [379, 271, .42, -2], companion: [194, 292, .34, 2] }

@@ -6921,79 +6921,77 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .eg4181-ski-peak,
 .eg4181-ski-tail-detail { fill: none; stroke: var(--eg4181-honey); stroke-width: 7; }
 
-/* Claremont ECA250: citrus racers, native-flower carriages and living-tree swings. */
+/* Claremont ECA250: open books, citrus-peel curls and glazed pottery costumes. */
 .claremont-eca250-accessory {
   --eca250-ink: #183d49;
-  --eca250-crate: #d7833e;
-  --eca250-crate-light: #f1b45f;
-  --eca250-crate-deep: #974d32;
-  --eca250-orange: #f2a62c;
-  --eca250-orange-light: #ffd064;
-  --eca250-leaf: #2e8c78;
-  --eca250-aqua: #59c8c0;
-  --eca250-violet: #6656a7;
+  --eca250-paper: #fff6d6;
+  --eca250-paper-shadow: #efd9aa;
+  --eca250-cover: #6656a7;
+  --eca250-cover-companion: #a74766;
+  --eca250-gold: #e0ae46;
+  --eca250-aqua: #58c7bf;
+  --eca250-teal: #2e8c78;
+  --eca250-orange: #ef8d28;
+  --eca250-orange-light: #ffc857;
+  --eca250-pith: #fff0c3;
   --eca250-berry: #a74766;
   --eca250-coral: #ef6d5f;
-  --eca250-cream: #fff2ca;
-  --eca250-bark: #7d583d;
-  --eca250-bark-light: #b58452;
-  --eca250-rope: #e0ba68;
+  --eca250-pot: #55bfb8;
+  --eca250-pot-companion: #7764b5;
+  --eca250-pot-light: #d9f1df;
+  --eca250-cream: #fff6d8;
 }
 .claremont-eca250-accessory path,
 .claremont-eca250-accessory circle,
 .claremont-eca250-accessory ellipse { stroke-linecap: round; stroke-linejoin: round; }
-.eca250-ground-shadow { fill: rgba(24, 61, 73, .18); stroke: none; }
-.eca250-crate-body { fill: var(--eca250-crate); stroke: var(--eca250-ink); stroke-width: 7; }
-.eca250-crate-body.companion { fill: var(--eca250-crate-light); }
-.eca250-crate-slat,
-.eca250-crate-upright { fill: none; stroke: var(--eca250-crate-deep); stroke-width: 7; }
-.eca250-crate-upright { stroke-width: 6; }
-.eca250-racer-tyre { fill: #263843; stroke: var(--eca250-ink); stroke-width: 5; }
-.eca250-racer-hub { fill: var(--eca250-aqua); stroke: var(--eca250-cream); stroke-width: 4; }
-.eca250-racer-hub.alternate { fill: var(--eca250-violet); }
-.eca250-racer-spoke { fill: none; stroke: var(--eca250-cream); stroke-width: 3; }
-.eca250-racer-axle { fill: var(--eca250-orange-light); stroke: var(--eca250-ink); stroke-width: 2; }
-.eca250-racer-seat { fill: var(--eca250-berry); stroke: var(--eca250-ink); stroke-width: 5; }
-.eca250-racer-handlebar,
-.eca250-steering-wheel { fill: none; stroke: var(--eca250-ink); stroke-width: 7; }
-.eca250-leaf-fender { fill: none; stroke: var(--eca250-leaf); stroke-width: 12; }
-.eca250-orange { fill: var(--eca250-orange); stroke: var(--eca250-ink); stroke-width: 4; }
-.eca250-orange.alternate { fill: var(--eca250-orange-light); }
-.eca250-orange-leaf,
-.eca250-flower-leaf { fill: var(--eca250-leaf); stroke: var(--eca250-ink); stroke-width: 3; }
-.eca250-crate-emblem { fill: var(--eca250-cream); stroke: var(--eca250-ink); stroke-width: 4; }
-.eca250-poppy-carriage-petal { fill: var(--eca250-coral); stroke: var(--eca250-ink); stroke-width: 6; }
-.eca250-poppy-carriage-petal.alternate { fill: var(--eca250-berry); }
-.eca250-poppy-carriage-petal.light { fill: var(--eca250-orange-light); }
-.eca250-matilija-petal { fill: var(--eca250-cream); stroke: var(--eca250-ink); stroke-width: 6; }
-.eca250-matilija-petal.alternate { fill: #fffaf0; }
-.eca250-flower-centre { fill: var(--eca250-orange-light); stroke: var(--eca250-ink); stroke-width: 5; }
-.eca250-flower-stamen { fill: var(--eca250-berry); stroke: var(--eca250-ink); stroke-width: 2; }
-.eca250-carriage-chassis { fill: var(--eca250-violet); stroke: var(--eca250-ink); stroke-width: 7; }
-.eca250-carriage-chassis.companion { fill: var(--eca250-aqua); }
-.eca250-carriage-seat { fill: none; stroke: var(--eca250-cream); stroke-width: 9; }
-.eca250-carriage-suspension,
-.eca250-carriage-tiller { fill: none; stroke: var(--eca250-rope); stroke-width: 7; }
-.eca250-tree-branch,
-.eca250-tree-limb,
-.eca250-tree-twig,
-.eca250-tree-root { fill: none; stroke: var(--eca250-bark); stroke-width: 18; }
-.eca250-tree-outline,
-.eca250-tree-limb-outline { fill: none; stroke: var(--eca250-ink); stroke-width: 27; }
-.eca250-tree-outline.companion { stroke-width: 23; }
-.eca250-tree-limb-outline { stroke-width: 21; }
-.eca250-tree-branch.companion { stroke-width: 15; }
-.eca250-tree-limb { stroke: var(--eca250-bark-light); stroke-width: 14; }
-.eca250-tree-twig { stroke: var(--eca250-bark); stroke-width: 8; }
-.eca250-tree-root { stroke-width: 11; }
-.eca250-tree-leaf { fill: var(--eca250-leaf); stroke: var(--eca250-ink); stroke-width: 3; }
-.eca250-tree-leaf.alternate { fill: var(--eca250-aqua); }
-.eca250-swing-rope { fill: none; stroke: var(--eca250-rope); stroke-width: 6; }
-.eca250-swing-knot { fill: var(--eca250-rope); stroke: var(--eca250-ink); stroke-width: 3; }
-.eca250-swing-seat { fill: var(--eca250-crate-light); stroke: var(--eca250-ink); stroke-width: 6; }
-.eca250-swing-seat.companion { fill: var(--eca250-cream); }
-.eca250-swing-seat-grain { fill: none; stroke: var(--eca250-crate-deep); stroke-width: 4; }
-.eca250-orange-blossom { fill: var(--eca250-cream); stroke: var(--eca250-berry); stroke-width: 3; }
+.eca250-ground-shadow { fill: rgba(24, 61, 73, .17); stroke: none; }
+.eca250-book-page { fill: var(--eca250-paper); stroke: var(--eca250-ink); stroke-width: 6; }
+.eca250-book-page.right { fill: #fffaf0; }
+.eca250-book-page.companion { stroke-width: 5; }
+.eca250-book-page.companion.right { fill: #f8edd6; }
+.eca250-book-cover { fill: var(--eca250-cover); stroke: var(--eca250-ink); stroke-width: 7; }
+.eca250-book-cover.companion { fill: var(--eca250-cover-companion); stroke-width: 6; }
+.eca250-page-line { fill: none; stroke: #b58d62; stroke-width: 4; opacity: .8; }
+.eca250-page-line.companion { stroke-width: 3.5; }
+.eca250-book-spine { fill: none; stroke: var(--eca250-gold); stroke-width: 8; }
+.eca250-bookmark { fill: var(--eca250-coral); stroke: var(--eca250-ink); stroke-width: 4; }
+.eca250-book-leaf { fill: var(--eca250-teal); stroke: var(--eca250-ink); stroke-width: 4; }
+.eca250-page-illustration { fill: none; stroke: var(--eca250-aqua); stroke-width: 6; }
+.eca250-page-sun { fill: var(--eca250-orange-light); stroke: var(--eca250-berry); stroke-width: 4; }
+.eca250-peel-outline { fill: none; stroke: var(--eca250-ink); stroke-width: 35; }
+.eca250-peel-outline.companion { stroke-width: 29; }
+.eca250-peel { fill: none; stroke: var(--eca250-orange); stroke-width: 27; }
+.eca250-peel.companion { stroke: var(--eca250-orange-light); stroke-width: 22; }
+.eca250-peel-pith { fill: none; stroke: var(--eca250-pith); stroke-width: 6; }
+.eca250-peel-pith.companion { stroke-width: 5; }
+.eca250-citrus-fruit { fill: var(--eca250-orange); stroke: var(--eca250-ink); stroke-width: 5; }
+.eca250-citrus-fruit.companion { fill: var(--eca250-orange-light); stroke-width: 4; }
+.eca250-citrus-cut { fill: var(--eca250-pith); stroke: var(--eca250-berry); stroke-width: 3; }
+.eca250-citrus-segment { fill: none; stroke: var(--eca250-orange); stroke-width: 3; }
+.eca250-citrus-pip { fill: var(--eca250-cream); stroke: var(--eca250-ink); stroke-width: 1.5; }
+.eca250-peel-tip { fill: var(--eca250-orange-light); stroke: var(--eca250-ink); stroke-width: 5; }
+.eca250-peel-tip.companion { fill: var(--eca250-coral); stroke-width: 4; }
+.eca250-citrus-leaf { fill: var(--eca250-teal); stroke: var(--eca250-ink); stroke-width: 4; }
+.eca250-citrus-leaf.alternate { fill: var(--eca250-aqua); }
+.eca250-citrus-leaf.companion { fill: var(--eca250-cover); }
+.eca250-peel-pore { fill: var(--eca250-orange-light); stroke: var(--eca250-ink); stroke-width: 2; }
+.eca250-blossom-centre { fill: var(--eca250-cream); stroke: var(--eca250-berry); stroke-width: 3; }
+.eca250-pot-body { fill: var(--eca250-pot); stroke: var(--eca250-ink); stroke-width: 8; }
+.eca250-pot-body.companion { fill: var(--eca250-pot-companion); stroke-width: 7; }
+.eca250-pot-rim { fill: var(--eca250-gold); stroke: var(--eca250-ink); stroke-width: 7; }
+.eca250-pot-rim.companion { fill: var(--eca250-coral); stroke-width: 6; }
+.eca250-pot-handle { fill: none; stroke: var(--eca250-ink); stroke-width: 17; }
+.eca250-pot-handle.companion { stroke-width: 14; }
+.eca250-pot-glaze-band { fill: var(--eca250-cream); stroke: var(--eca250-ink); stroke-width: 6; }
+.eca250-pot-glaze-band.companion { fill: var(--eca250-pot-light); stroke-width: 5; }
+.eca250-pot-glaze-drip { fill: none; stroke: var(--eca250-berry); stroke-width: 9; }
+.eca250-pot-glaze-drip.companion { stroke: var(--eca250-aqua); stroke-width: 7; }
+.eca250-pot-foot { fill: var(--eca250-cover); stroke: var(--eca250-ink); stroke-width: 6; }
+.eca250-pot-foot.companion { fill: var(--eca250-gold); stroke-width: 5; }
+.eca250-pot-tessera { fill: var(--eca250-orange-light); stroke: var(--eca250-ink); stroke-width: 3; }
+.eca250-pot-tessera.alternate { fill: var(--eca250-coral); stroke: var(--eca250-ink); stroke-width: 3; }
+.eca250-pot-tessera.companion { fill: var(--eca250-gold); stroke-width: 2; }
+.eca250-pot-maker-mark { fill: var(--eca250-cover); stroke: var(--eca250-ink); stroke-width: 3; }
 
 /* Lombok HPT26: Ficus-ground recovery, field-to-plate dates and paired substrates. */
 .lombok-hpt26-accessory {

@@ -24,13 +24,15 @@ Regional elements do not claim to reconstruct the unknown property. The scene mu
 
 ## Accessory set
 
-1. **Citrus-crate racers** — open slatted wooden vehicles with oranges, leaf fenders, steering gear, upholstered seats and independently constructed wheel sets. They refer to Claremont's historic citrus-growing and packing economy, not to the collection method.
-2. **Botanic-garden flower carriages** — a coral California-poppy-inspired parade carriage and a separately constructed cream Matilija-poppy-inspired companion, each with its own petal silhouette, chassis, suspension and wheels. They are playful references to California native flora and the California Botanic Garden in Claremont.
-3. **Living-tree swings** — two different branch-built swing frames with outlined trunks, leaf clusters, tied ropes, shaped wooden seats, roots and visible attachment knots. They refer to Claremont's long-standing “City of Trees” identity.
+1. **Giant open books** — two separately drawn open volumes with curved page blocks, visible covers and spines, bookmarks and different page illustrations. The oversized books use the visual joke of a literal bookworm and refer to Claremont's identity as a college town.
+2. **Citrus-peel curls** — a long orange spiral and a smaller golden loop, each with visible pith, pores, leaf tips and its own flexible silhouette. They follow the worms' curves and refer to Claremont's historic citrus-growing and packing economy rather than repeating a crate or vehicle.
+3. **Glazed pottery costumes** — fitted turquoise and violet ceramic bodies with separately proportioned openings, rims, feet, handles, glaze drips and decorative tesserae. They refer to Claremont's visual-art and ceramics tradition while reading as wearable sculptural costumes rather than backpacks.
 
 Regional sources:
 
 - [City of Claremont history](https://www.claremontca.gov/Government/About/History)
+- [The Claremont Colleges](https://claremont.edu/)
+- [Claremont Lewis Museum of Art — History](https://clmoa.org/history/)
 - [California Botanic Garden](https://www.calbg.org/)
 - [City of Claremont historic and specimen trees](https://www.claremontca.gov/City-Services/Trees/Our-Historic-and-Specimen-trees)
 
