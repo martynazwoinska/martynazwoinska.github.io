@@ -12,43 +12,45 @@
   <meta property="og:url" content="https://martynazwoinska.github.io/game-of-worms/" />
   <meta name="theme-color" content="#ecf9f7" />
   <link rel="preload" as="image" href="assets/n2-bristol-painted-background.webp" type="image/webp" fetchpriority="high" />
-  <link rel="stylesheet" href="style.css?v=20260824-110" />
+  <link rel="stylesheet" href="style.css?v=20260825-111" />
 </head>
 <body>
   <a class="skip-link" href="#atlas">Skip to the worm atlas</a>
 
   <svg class="atlas-emblem-sprite" aria-hidden="true">
     <symbol id="atlas-explorer-seal" viewBox="0 0 240 190">
-      <ellipse class="atlas-seal-shadow" cx="120" cy="163" rx="57" ry="7"></ellipse>
-      <circle class="atlas-seal-field" cx="120" cy="92" r="64"></circle>
-      <circle class="atlas-seal-ring atlas-seal-ring--outer" cx="120" cy="92" r="57"></circle>
-      <circle class="atlas-seal-ring atlas-seal-ring--inner" cx="120" cy="92" r="46"></circle>
-      <path class="atlas-seal-ticks" d="M120 31v7M120 146v7M59 92h7M174 92h7M77 49l5 5M158 130l5 5M163 49l-5 5M82 130l-5 5"></path>
-
-      <g class="atlas-seal-filigree">
-        <path d="M120 50C106 56 99 68 99 82C86 78 73 81 64 92C73 103 86 106 99 102C99 116 106 128 120 134C134 128 141 116 141 102C154 106 167 103 176 92C167 81 154 78 141 82C141 68 134 56 120 50Z"></path>
-        <circle cx="120" cy="92" r="34"></circle>
-      </g>
+      <ellipse class="atlas-seal-shadow" cx="120" cy="169" rx="66" ry="8"></ellipse>
+      <path class="atlas-seal-bail" d="M105 24c0-12 6-19 15-19s15 7 15 19h-10c0-6-2-9-5-9s-5 3-5 9z"></path>
+      <circle class="atlas-seal-case" cx="120" cy="92" r="70"></circle>
+      <circle class="atlas-seal-bevel" cx="120" cy="92" r="62"></circle>
+      <circle class="atlas-seal-field" cx="120" cy="92" r="53"></circle>
+      <path class="atlas-seal-glint" d="M81 55c12-13 29-20 47-18"></path>
+      <path class="atlas-seal-engraving" d="M120 44v11M120 129v11M72 92h11M157 92h11M86 58l8 8M146 118l8 8M154 58l-8 8M94 118l-8 8"></path>
 
       <g class="atlas-seal-compass">
-        <path class="atlas-seal-compass-gold" d="M120 34l10 47 49 11-49 11-10 47-10-47-49-11 49-11z"></path>
-        <path class="atlas-seal-compass-diagonals" d="M120 92L84 56L108 83ZM120 92L156 56L132 83ZM120 92L156 128L132 101ZM120 92L84 128L108 101Z"></path>
-        <path class="atlas-seal-compass-berry" d="M120 34l10 47-10 11-10-11z"></path>
-        <path class="atlas-seal-compass-emerald" d="M179 92l-49 11-10-11 10-11z"></path>
-        <path class="atlas-seal-compass-shadow" d="M120 150l-10-47 10-11 10 11zM61 92l49-11 10 11-10 11z"></path>
-        <circle class="atlas-seal-compass-centre" cx="120" cy="92" r="9"></circle>
-        <circle class="atlas-seal-compass-pin" cx="120" cy="92" r="3"></circle>
+        <path class="atlas-seal-compass-shadow" d="M120 50l12 31 34 11-34 11-12 31-12-31-34-11 34-11z"></path>
+        <path class="atlas-seal-compass-gold" d="M120 49l10 34 36 9-36 9-10 35-10-35-36-9 36-9z"></path>
+        <path class="atlas-seal-compass-berry" d="M120 49l10 34-10 9-10-9z"></path>
+        <path class="atlas-seal-compass-emerald" d="M166 92l-36 9-10-9 10-9z"></path>
+        <path class="atlas-seal-compass-ivory" d="M120 136l-10-35 10-9 10 9zM74 92l36-9 10 9-10 9z"></path>
+        <circle class="atlas-seal-compass-centre" cx="120" cy="92" r="11"></circle>
+        <circle class="atlas-seal-compass-pin" cx="120" cy="92" r="4"></circle>
+        <path class="atlas-seal-pin-highlight" d="M118 88a4 4 0 0 1 4-1"></path>
       </g>
 
       <g class="atlas-seal-markers" aria-hidden="true">
-        <g transform="translate(120 20)"><circle r="5.5"></circle><circle class="atlas-seal-marker-centre" r="2.2"></circle></g>
-        <g transform="translate(182 54)"><circle r="5.5"></circle><circle class="atlas-seal-marker-centre" r="2.2"></circle></g>
-        <g transform="translate(182 128)"><circle r="5.5"></circle><circle class="atlas-seal-marker-centre" r="2.2"></circle></g>
-        <g transform="translate(120 164)"><circle r="5.5"></circle><circle class="atlas-seal-marker-centre" r="2.2"></circle></g>
-        <g transform="translate(58 128)"><circle r="5.5"></circle><circle class="atlas-seal-marker-centre" r="2.2"></circle></g>
-        <g transform="translate(58 54)"><circle r="5.5"></circle><circle class="atlas-seal-marker-centre" r="2.2"></circle></g>
+        <g class="atlas-seal-marker atlas-seal-marker--elegans" transform="translate(120 25)"><circle class="atlas-seal-marker-setting" r="8"></circle><circle class="atlas-seal-marker-gem" r="4.7"></circle><path d="M117 23l2-2"></path></g>
+        <g class="atlas-seal-marker atlas-seal-marker--inopinata" transform="translate(178 58)"><circle class="atlas-seal-marker-setting" r="8"></circle><circle class="atlas-seal-marker-gem" r="4.7"></circle><path d="M175 56l2-2"></path></g>
+        <g class="atlas-seal-marker atlas-seal-marker--briggsae" transform="translate(178 126)"><circle class="atlas-seal-marker-setting" r="8"></circle><circle class="atlas-seal-marker-gem" r="4.7"></circle><path d="M175 124l2-2"></path></g>
+        <g class="atlas-seal-marker atlas-seal-marker--nigoni" transform="translate(120 159)"><circle class="atlas-seal-marker-setting" r="8"></circle><circle class="atlas-seal-marker-gem" r="4.7"></circle><path d="M117 157l2-2"></path></g>
+        <g class="atlas-seal-marker atlas-seal-marker--tropicalis" transform="translate(62 126)"><circle class="atlas-seal-marker-setting" r="8"></circle><circle class="atlas-seal-marker-gem" r="4.7"></circle><path d="M59 124l2-2"></path></g>
+        <g class="atlas-seal-marker atlas-seal-marker--wallacei" transform="translate(62 58)"><circle class="atlas-seal-marker-setting" r="8"></circle><circle class="atlas-seal-marker-gem" r="4.7"></circle><path d="M59 56l2-2"></path></g>
       </g>
 
+      <path class="atlas-seal-hinge" d="M184 76c8 1 12 7 12 16s-4 15-12 16l-4-8c4-1 6-3 6-8s-2-7-6-8z"></path>
+      <path class="atlas-seal-plaque-shadow" d="M78 147h84l7 8-7 22H78l-7-22z"></path>
+      <path class="atlas-seal-plaque" d="M78 143h84l7 8-7 22H78l-7-22z"></path>
+      <path class="atlas-seal-plaque-highlight" d="M84 149h72"></path>
     </symbol>
   </svg>
 
@@ -454,7 +456,7 @@
 
       <div id="atlas-completion-reward" class="atlas-completion-reward" hidden>
         <div class="atlas-completion-medallion">
-          <svg class="atlas-completion-emblem" viewBox="0 0 240 190" role="img" aria-label="An explorer seal with a compass rose and six filled discovery markers"><use href="#atlas-explorer-seal"></use></svg>
+          <svg class="atlas-completion-emblem" viewBox="0 0 240 190" role="img" aria-label="A brass and enamel explorer compass with six coloured discovery jewels"><use href="#atlas-explorer-seal"></use></svg>
           <span class="atlas-completion-count" aria-hidden="true">6 / 6</span>
         </div>
         <p><strong>Atlas complete.</strong><span>You met all six featured worms.</span></p>
@@ -500,6 +502,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="game.js?v=20260824-167"></script>
+  <script type="module" src="game.js?v=20260825-168"></script>
 </body>
 </html>

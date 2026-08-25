@@ -821,8 +821,50 @@ function launchWormConfetti() {
     layer.append(piece);
   }
 
+  for (let index = 0; index < 6; index += 1) {
+    const shell = document.createElement("div");
+    const crawler = document.createElementNS(svgNamespace, "svg");
+    const wriggle = document.createElementNS(svgNamespace, "g");
+    const pathData = wormConfettiPaths[(index + 2) % wormConfettiPaths.length];
+    const outline = document.createElementNS(svgNamespace, "path");
+    const body = document.createElementNS(svgNamespace, "path");
+    const highlight = document.createElementNS(svgNamespace, "path");
+    const eye = document.createElementNS(svgNamespace, "circle");
+    const pupil = document.createElementNS(svgNamespace, "circle");
+
+    shell.className = `worm-confetti-crawler-shell${index % 2 ? " is-reversed" : ""}`;
+    shell.style.setProperty("--crawler-lane", `${12 + (index % 3) * 27}px`);
+    shell.style.setProperty("--crawler-size", `${45 + (index % 3) * 5}px`);
+    shell.style.setProperty("--crawler-delay", `${.62 + index * .11}s`);
+    shell.style.setProperty("--crawler-duration", `${2.72 + (index % 3) * .2}s`);
+    crawler.setAttribute("viewBox", "0 0 36 22");
+    crawler.style.setProperty("--worm-confetti-colour", wormConfettiColours[index]);
+    crawler.style.setProperty("--worm-wriggle-duration", `${.2 + (index % 3) * .035}s`);
+    crawler.style.setProperty("--worm-wriggle-angle", `${index % 2 === 0 ? 5 : -5}deg`);
+
+    outline.setAttribute("d", pathData);
+    outline.classList.add("worm-confetti-outline");
+    body.setAttribute("d", pathData);
+    body.classList.add("worm-confetti-body");
+    highlight.setAttribute("d", "M7 9C12 5 17 6 20 10");
+    highlight.classList.add("worm-confetti-highlight");
+    eye.setAttribute("cx", "32");
+    eye.setAttribute("cy", "8.3");
+    eye.setAttribute("r", "1.4");
+    eye.classList.add("worm-confetti-eye");
+    pupil.setAttribute("cx", "32.4");
+    pupil.setAttribute("cy", "8.1");
+    pupil.setAttribute("r", ".55");
+    pupil.classList.add("worm-confetti-pupil");
+    wriggle.classList.add("worm-confetti-wriggle");
+    wriggle.append(outline, body, highlight, eye, pupil);
+    crawler.append(wriggle);
+    shell.append(crawler);
+    layer.append(shell);
+  }
+
   document.body.append(layer);
-  window.setTimeout(() => layer.remove(), 3300);
+  window.setTimeout(() => layer.remove(), 4700);
 }
 
 function updateExploredStatus() {
