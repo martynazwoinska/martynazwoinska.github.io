@@ -1,6 +1,6 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-08-23
+Last updated: 2026-08-26
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
@@ -154,13 +154,13 @@ Do not overwrite or confuse these files. The original photograph is the source o
 - Paradai: Chanthaburi, 70%; EU distributor:
   `https://premifair.com/products/paradai-chanthaburi-70`
 - Malmö Chokladfabrik: Sambirano, Madagascar, 70%; the central rectangular wrapper showing the chocolate-making process.
-- Friis-Holm mini bars share:
+- Friis-Holm Indio Rojo, Medagla, Johe, and La Dalia mini bars: 70%. They share:
   `https://friisholmchokolade.dk/products/bag-mix-12-x-5-g`
 - Taza: the circular package, not the Malmö Chokladfabrik wrapper.
 - Zotter Labooko White: the small pale wrapper on the right, not Omnom.
 - Chocolate Naive: Xocoatl.
 
-All chocolate identities currently recorded in `cabinet-of-curiosities/cabinet-data.js` were confirmed by the user on 2026-07-13. The Friis-Holm bars link to the official mixed mini-bars collection because individual flavours are not assigned.
+All chocolate identities currently recorded in `cabinet-of-curiosities/cabinet-data.js` were confirmed by the user, most recently on 2026-08-26. The Friis-Holm bars link to the official mixed mini-bars collection.
 
 ## Crochet eyes
 

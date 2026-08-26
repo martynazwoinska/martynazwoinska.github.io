@@ -10,17 +10,17 @@
     chocolate('small-wrapper-upper-left', 'Zotter Labooko Nicaragua Milk, 60%', 'confirmed', [31.84, 17.27, 3.06, 5.21], {
       maker: 'Zotter', origin: 'Nicaragua', cacao: '60%', link: 'https://www.zotter.at/en/online-shop/brands/labooko/60-milk-chocolate-nicaragua', linkLabel: 'View the official product page'
     }),
-    chocolate('friis-holm-mini-1', 'Friis-Holm mini bar 1', 'confirmed', [35.09, 18.14, 2.28, 4.51], {
-      maker: 'Friis-Holm', note: 'One of four mini bars in the shared Friis-Holm selection. Individual flavour not assigned.', link: 'https://friisholmchokolade.dk/products/bag-mix-12-x-5-g', linkLabel: 'View the mixed mini-bars collection'
+    chocolate('friis-holm-mini-1', 'Friis-Holm Indio Rojo, 70%', 'confirmed', [35.09, 18.14, 2.28, 4.51], {
+      maker: 'Friis-Holm', cacao: '70%', link: 'https://friisholmchokolade.dk/products/bag-mix-12-x-5-g', linkLabel: 'View the mixed mini-bars collection'
     }),
     chocolate('friis-holm-mini-2', 'Zotter Labooko Coffee', 'confirmed', [37.57, 17.19, 2.41, 5.21], {
       maker: 'Zotter', link: 'https://www.zotter.at/en/online-shop/brands/labooko/coffee-1', linkLabel: 'View the official product page'
     }),
-    chocolate('friis-holm-mini-3', 'Friis-Holm mini bar 3', 'confirmed', [40.36, 17.27, 2.54, 5.21], {
-      maker: 'Friis-Holm', note: 'One of four mini bars in the shared Friis-Holm selection. Individual flavour not assigned.', link: 'https://friisholmchokolade.dk/products/bag-mix-12-x-5-g', linkLabel: 'View the mixed mini-bars collection'
+    chocolate('friis-holm-mini-3', 'Friis-Holm Medagla, 70%', 'confirmed', [40.36, 17.27, 2.54, 5.21], {
+      maker: 'Friis-Holm', cacao: '70%', link: 'https://friisholmchokolade.dk/products/bag-mix-12-x-5-g', linkLabel: 'View the mixed mini-bars collection'
     }),
-    chocolate('friis-holm-mini-4', 'Friis-Holm mini bar 4', 'confirmed', [43.42, 17.27, 2.21, 5.30], {
-      maker: 'Friis-Holm', note: 'One of four mini bars in the shared Friis-Holm selection. Individual flavour not assigned.', link: 'https://friisholmchokolade.dk/products/bag-mix-12-x-5-g', linkLabel: 'View the mixed mini-bars collection'
+    chocolate('friis-holm-mini-4', 'Friis-Holm Johe, 70%', 'confirmed', [43.42, 17.27, 2.21, 5.30], {
+      maker: 'Friis-Holm', cacao: '70%', link: 'https://friisholmchokolade.dk/products/bag-mix-12-x-5-g', linkLabel: 'View the mixed mini-bars collection'
     }),
     chocolate('small-orange-wrapper', 'Zotter Labooko Caramel', 'confirmed', [46.55, 16.67, 2.60, 6.94], {
       maker: 'Zotter', link: 'https://www.zotter.at/en/online-shop/brands/labooko/caramel-milk', linkLabel: 'View the official product page'
@@ -58,8 +58,8 @@
     chocolate('taza-round-package', 'Taza Cacao Puro, 70%', 'confirmed', [24.67, 35.50, 7.16, 9.20], {
       maker: 'Taza', cacao: '70%', shape: 'circle', link: 'https://www.tazachocolate.com/products/puro', linkLabel: 'View the official product page'
     }),
-    chocolate('small-white-wrapper', 'Friis-Holm mini bar', 'confirmed', [38.22, 35.85, 2.80, 7.03], {
-      maker: 'Friis-Holm', note: 'Part of the shared Friis-Holm mini-bar selection; the individual flavour is not legible.', link: 'https://friisholmchokolade.dk/products/bag-mix-12-x-5-g', linkLabel: 'View the mixed mini-bars collection'
+    chocolate('small-white-wrapper', 'Friis-Holm La Dalia, 70%', 'confirmed', [38.22, 35.85, 2.80, 7.03], {
+      maker: 'Friis-Holm', cacao: '70%', link: 'https://friisholmchokolade.dk/products/bag-mix-12-x-5-g', linkLabel: 'View the mixed mini-bars collection'
     }),
     chocolate('kamm-ecuador-85', 'Kamm Ecuador, 85%', 'confirmed', [27.93, 35.16, 14.13, 17.97], {
       maker: 'Kamm', origin: 'Ecuador', cacao: '85%', shape: 'triangle', link: 'https://kammchocolate.com/products/cacao-85-ancestral-chocolate-60grs', linkLabel: 'View the official product page'
