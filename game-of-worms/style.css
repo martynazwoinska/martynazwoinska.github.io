@@ -6884,44 +6884,94 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   .taipei-brc20390-accessory .brc20390-node-number { font-size: 28px; }
 }
 
-/* Salt Lake City EG4181: apricot garden fantasy, beehive structure and one-tail skis. */
+/* Salt Lake City EG4181: tailored orchard millinery, woven saddle hives and one-tail powder skis. */
 .salt-lake-eg4181-accessory {
   --eg4181-ink: #173c4a;
-  --eg4181-apricot: #f28b69;
-  --eg4181-apricot-light: #ffd49b;
+  --eg4181-apricot: #ef795f;
+  --eg4181-apricot-light: #ffc775;
   --eg4181-blossom: #fff3df;
-  --eg4181-berry: #9d4d78;
-  --eg4181-indigo: #4d4f9b;
-  --eg4181-honey: #f2bd4d;
-  --eg4181-aqua: #58c7bd;
+  --eg4181-berry: #a7446f;
+  --eg4181-indigo: #4e4b9d;
+  --eg4181-indigo-deep: #343578;
+  --eg4181-honey: #edb63f;
+  --eg4181-honey-light: #ffe29a;
+  --eg4181-aqua: #53bcb5;
+  --eg4181-leather: #845035;
+  --eg4181-snow: #f8f4e5;
 }
 .salt-lake-eg4181-accessory path,
 .salt-lake-eg4181-accessory circle,
-.salt-lake-eg4181-accessory ellipse {
+.salt-lake-eg4181-accessory ellipse,
+.salt-lake-eg4181-accessory line {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.eg4181-hat-crown { fill: var(--eg4181-apricot); stroke: var(--eg4181-ink); stroke-width: 5; }
-.eg4181-hat-brim { fill: var(--eg4181-indigo); stroke: var(--eg4181-ink); stroke-width: 5; }
-.eg4181-blossom-petal { fill: var(--eg4181-blossom); stroke: var(--eg4181-berry); stroke-width: 4; }
+.eg4181-object-shadow { fill: rgba(23, 60, 74, .18); stroke: none; }
+.eg4181-hat-crown { fill: var(--eg4181-apricot); stroke: var(--eg4181-ink); stroke-width: 6; }
+.eg4181-hat-crown.companion { fill: var(--eg4181-berry); stroke-width: 5; }
+.eg4181-hat-brim { fill: var(--eg4181-indigo); stroke: var(--eg4181-ink); stroke-width: 7; }
+.eg4181-hat-brim.companion { fill: var(--eg4181-indigo-deep); stroke-width: 6; }
+.eg4181-hat-band { fill: none; stroke: var(--eg4181-honey-light); stroke-width: 10; }
+.eg4181-hat-band.companion { stroke: var(--eg4181-apricot-light); stroke-width: 8; }
+.eg4181-hat-brim-stitch { fill: none; stroke: var(--eg4181-honey); stroke-width: 3.5; stroke-dasharray: 7 8; }
+.eg4181-hat-brim-stitch.companion { stroke-width: 3; stroke-dasharray: 6 7; }
+.eg4181-orchard-branch { fill: none; stroke: var(--eg4181-leather); stroke-width: 7; }
+.eg4181-orchard-branch.companion { stroke-width: 5; }
+.eg4181-blossom-petal { fill: var(--eg4181-blossom); stroke: var(--eg4181-berry); stroke-width: 3.5; }
 .eg4181-blossom-petal.light { fill: var(--eg4181-apricot-light); }
-.eg4181-blossom-centre { fill: var(--eg4181-honey); stroke: var(--eg4181-ink); stroke-width: 3; }
+.eg4181-blossom-centre { fill: var(--eg4181-honey); stroke: var(--eg4181-ink); stroke-width: 2.5; }
 .eg4181-leaf { fill: var(--eg4181-aqua); stroke: var(--eg4181-ink); stroke-width: 4; }
-.eg4181-hive-body { fill: var(--eg4181-honey); stroke: var(--eg4181-ink); stroke-width: 6; }
-.eg4181-hive-band { fill: none; stroke: var(--eg4181-apricot); stroke-width: 7; }
-.eg4181-hive-door { fill: var(--eg4181-indigo); stroke: var(--eg4181-ink); stroke-width: 4; }
-.eg4181-honeycomb { fill: color-mix(in srgb, var(--eg4181-apricot-light) 72%, white); stroke: var(--eg4181-ink); stroke-width: 3; }
-.eg4181-harness { fill: none; stroke: var(--eg4181-berry); stroke-width: 10; }
-.eg4181-handle { fill: none; stroke: var(--eg4181-indigo); stroke-width: 8; }
-.eg4181-bee-wing { fill: color-mix(in srgb, var(--eg4181-aqua) 55%, white); stroke: var(--eg4181-ink); stroke-width: 3; }
+.eg4181-leaf.alternate { fill: #75a864; }
+.eg4181-leaf.companion { fill: #75a864; stroke-width: 3.5; }
+.eg4181-apricot-fruit { fill: var(--eg4181-apricot-light); stroke: var(--eg4181-ink); stroke-width: 4; }
+.eg4181-apricot-fruit.companion { fill: var(--eg4181-apricot); stroke-width: 3; }
+.eg4181-apricot-stem { fill: none; stroke: var(--eg4181-leather); stroke-width: 4; }
+.eg4181-apricot-stem.companion { stroke-width: 3; }
+.eg4181-apricot-seam { fill: none; stroke: var(--eg4181-apricot); stroke-width: 3; }
+.eg4181-saddle-cloth { fill: var(--eg4181-berry); stroke: var(--eg4181-ink); stroke-width: 7; }
+.eg4181-saddle-cloth.companion { fill: var(--eg4181-indigo); stroke-width: 6; }
+.eg4181-hive-body { fill: var(--eg4181-honey); stroke: var(--eg4181-ink); stroke-width: 8; }
+.eg4181-hive-body.companion { fill: var(--eg4181-honey-light); stroke-width: 7; }
+.eg4181-hive-side { fill: #c97a36; stroke: var(--eg4181-ink); stroke-width: 4; opacity: .78; }
+.eg4181-hive-side.companion { fill: var(--eg4181-apricot); stroke-width: 3.5; opacity: .72; }
+.eg4181-hive-highlight { fill: none; stroke: #fff0b8; stroke-width: 7; opacity: .75; }
+.eg4181-hive-highlight.companion { stroke-width: 5; }
+.eg4181-hive-wicker { fill: none; stroke: #c57b35; stroke-width: 7; }
+.eg4181-hive-wicker.companion { stroke: var(--eg4181-apricot); stroke-width: 6; }
+.eg4181-hive-rib { fill: none; stroke: color-mix(in srgb, var(--eg4181-leather) 78%, var(--eg4181-honey)); stroke-width: 5; }
+.eg4181-hive-rib.companion { stroke-width: 4; }
+.eg4181-hive-door { fill: var(--eg4181-indigo-deep); stroke: var(--eg4181-ink); stroke-width: 5; }
+.eg4181-honeycomb { fill: var(--eg4181-honey-light); stroke: var(--eg4181-ink); stroke-width: 3; }
+.eg4181-honeycomb.companion { fill: var(--eg4181-blossom); }
+.eg4181-honeycomb.berry { fill: var(--eg4181-berry); }
+.eg4181-honeycomb.aqua { fill: var(--eg4181-aqua); }
+.eg4181-honeycomb.cream { fill: var(--eg4181-blossom); }
+.eg4181-harness { fill: none; stroke: var(--eg4181-leather); stroke-width: 12; }
+.eg4181-harness.companion { stroke-width: 9; }
+.eg4181-handle { fill: none; stroke: var(--eg4181-indigo); stroke-width: 9; }
+.eg4181-handle.companion { stroke-width: 7; }
+.eg4181-saddle-stitch { fill: none; stroke: var(--eg4181-honey-light); stroke-width: 4; stroke-dasharray: 7 9; }
+.eg4181-honey-drip { fill: none; stroke: var(--eg4181-honey-light); stroke-width: 6; }
+.eg4181-bee-wing { fill: color-mix(in srgb, var(--eg4181-aqua) 45%, white); stroke: var(--eg4181-ink); stroke-width: 2.5; }
 .eg4181-bee-body { fill: var(--eg4181-berry); stroke: var(--eg4181-ink); stroke-width: 3; }
-.eg4181-ski { fill: var(--eg4181-indigo); stroke: var(--eg4181-ink); stroke-width: 7; }
-.eg4181-binding { fill: var(--eg4181-apricot); stroke: var(--eg4181-ink); stroke-width: 5; }
+.eg4181-bee-detail { fill: none; stroke: var(--eg4181-honey-light); stroke-width: 3; }
+.eg4181-ski-sidewall { fill: var(--eg4181-aqua); stroke: var(--eg4181-ink); stroke-width: 8; }
+.eg4181-ski-sidewall.companion { fill: var(--eg4181-apricot); stroke-width: 7; }
+.eg4181-ski { fill: var(--eg4181-snow); stroke: var(--eg4181-ink); stroke-width: 7; }
+.eg4181-ski.companion { fill: #e7eef2; stroke-width: 6; }
+.eg4181-binding { fill: var(--eg4181-indigo); stroke: var(--eg4181-ink); stroke-width: 6; }
+.eg4181-binding.companion { fill: var(--eg4181-berry); stroke-width: 5; }
+.eg4181-binding-strap { fill: none; stroke: var(--eg4181-honey); stroke-width: 7; }
+.eg4181-binding-strap.companion { stroke: var(--eg4181-apricot-light); stroke-width: 6; }
 .eg4181-ski-inlay,
 .eg4181-ski-peak,
-.eg4181-ski-tail-detail { fill: none; stroke: var(--eg4181-honey); stroke-width: 7; }
+.eg4181-ski-tail-detail,
+.eg4181-ski-tip-detail { fill: none; stroke: var(--eg4181-honey); stroke-width: 6; }
+.eg4181-ski-inlay.companion,
+.eg4181-ski-peak.companion,
+.eg4181-ski-tip-detail.companion { stroke: var(--eg4181-indigo); stroke-width: 5; }
 
-/* Claremont ECA250: open books, citrus-peel curls and glazed pottery costumes. */
+/* Claremont ECA250: a coherent California garden reading day. */
 .claremont-eca250-accessory {
   --eca250-ink: #183d49;
   --eca250-paper: #fff6d6;
@@ -6931,19 +6981,20 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   --eca250-gold: #e0ae46;
   --eca250-aqua: #58c7bf;
   --eca250-teal: #2e8c78;
-  --eca250-orange: #ef8d28;
-  --eca250-orange-light: #ffc857;
-  --eca250-pith: #fff0c3;
   --eca250-berry: #a74766;
   --eca250-coral: #ef6d5f;
-  --eca250-pot: #55bfb8;
-  --eca250-pot-companion: #7764b5;
-  --eca250-pot-light: #d9f1df;
+  --eca250-lemon: #f5c84b;
+  --eca250-lemon-light: #fff1a8;
+  --eca250-glass: rgba(196, 240, 236, .68);
+  --eca250-glass-edge: #5ca6a7;
+  --eca250-liquid: rgba(245, 200, 75, .76);
+  --eca250-lens: rgba(111, 88, 167, .48);
   --eca250-cream: #fff6d8;
 }
 .claremont-eca250-accessory path,
 .claremont-eca250-accessory circle,
-.claremont-eca250-accessory ellipse { stroke-linecap: round; stroke-linejoin: round; }
+.claremont-eca250-accessory ellipse,
+.claremont-eca250-accessory rect { stroke-linecap: round; stroke-linejoin: round; }
 .eca250-ground-shadow { fill: rgba(24, 61, 73, .17); stroke: none; }
 .eca250-book-page { fill: var(--eca250-paper); stroke: var(--eca250-ink); stroke-width: 6; }
 .eca250-book-page.right { fill: #fffaf0; }
@@ -6951,47 +7002,54 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .eca250-book-page.companion.right { fill: #f8edd6; }
 .eca250-book-cover { fill: var(--eca250-cover); stroke: var(--eca250-ink); stroke-width: 7; }
 .eca250-book-cover.companion { fill: var(--eca250-cover-companion); stroke-width: 6; }
+.eca250-book-cover.closed { fill: var(--eca250-cover-companion); }
+.eca250-book-page.closed { fill: var(--eca250-paper); }
+.eca250-book-block { fill: var(--eca250-paper-shadow); stroke: var(--eca250-ink); stroke-width: 5; }
+.eca250-book-spine.closed { fill: var(--eca250-cover); stroke: var(--eca250-ink); stroke-width: 5; }
+.eca250-title-panel { fill: var(--eca250-paper); stroke: var(--eca250-gold); stroke-width: 4; }
+.eca250-title-panel.companion { fill: #fffaf0; stroke-width: 3; }
+.eca250-book-title { fill: var(--eca250-ink); font: 900 19px/1 var(--sans); letter-spacing: 1.5px; paint-order: stroke; stroke: var(--eca250-paper); stroke-width: 1.5px; }
+.eca250-book-title.companion { font-size: 16px; letter-spacing: 1px; }
 .eca250-page-line { fill: none; stroke: #b58d62; stroke-width: 4; opacity: .8; }
 .eca250-page-line.companion { stroke-width: 3.5; }
 .eca250-book-spine { fill: none; stroke: var(--eca250-gold); stroke-width: 8; }
 .eca250-bookmark { fill: var(--eca250-coral); stroke: var(--eca250-ink); stroke-width: 4; }
 .eca250-book-leaf { fill: var(--eca250-teal); stroke: var(--eca250-ink); stroke-width: 4; }
 .eca250-page-illustration { fill: none; stroke: var(--eca250-aqua); stroke-width: 6; }
-.eca250-page-sun { fill: var(--eca250-orange-light); stroke: var(--eca250-berry); stroke-width: 4; }
-.eca250-peel-outline { fill: none; stroke: var(--eca250-ink); stroke-width: 35; }
-.eca250-peel-outline.companion { stroke-width: 29; }
-.eca250-peel { fill: none; stroke: var(--eca250-orange); stroke-width: 27; }
-.eca250-peel.companion { stroke: var(--eca250-orange-light); stroke-width: 22; }
-.eca250-peel-pith { fill: none; stroke: var(--eca250-pith); stroke-width: 6; }
-.eca250-peel-pith.companion { stroke-width: 5; }
-.eca250-citrus-fruit { fill: var(--eca250-orange); stroke: var(--eca250-ink); stroke-width: 5; }
-.eca250-citrus-fruit.companion { fill: var(--eca250-orange-light); stroke-width: 4; }
-.eca250-citrus-cut { fill: var(--eca250-pith); stroke: var(--eca250-berry); stroke-width: 3; }
-.eca250-citrus-segment { fill: none; stroke: var(--eca250-orange); stroke-width: 3; }
-.eca250-citrus-pip { fill: var(--eca250-cream); stroke: var(--eca250-ink); stroke-width: 1.5; }
-.eca250-peel-tip { fill: var(--eca250-orange-light); stroke: var(--eca250-ink); stroke-width: 5; }
-.eca250-peel-tip.companion { fill: var(--eca250-coral); stroke-width: 4; }
-.eca250-citrus-leaf { fill: var(--eca250-teal); stroke: var(--eca250-ink); stroke-width: 4; }
-.eca250-citrus-leaf.alternate { fill: var(--eca250-aqua); }
-.eca250-citrus-leaf.companion { fill: var(--eca250-cover); }
-.eca250-peel-pore { fill: var(--eca250-orange-light); stroke: var(--eca250-ink); stroke-width: 2; }
-.eca250-blossom-centre { fill: var(--eca250-cream); stroke: var(--eca250-berry); stroke-width: 3; }
-.eca250-pot-body { fill: var(--eca250-pot); stroke: var(--eca250-ink); stroke-width: 8; }
-.eca250-pot-body.companion { fill: var(--eca250-pot-companion); stroke-width: 7; }
-.eca250-pot-rim { fill: var(--eca250-gold); stroke: var(--eca250-ink); stroke-width: 7; }
-.eca250-pot-rim.companion { fill: var(--eca250-coral); stroke-width: 6; }
-.eca250-pot-handle { fill: none; stroke: var(--eca250-ink); stroke-width: 17; }
-.eca250-pot-handle.companion { stroke-width: 14; }
-.eca250-pot-glaze-band { fill: var(--eca250-cream); stroke: var(--eca250-ink); stroke-width: 6; }
-.eca250-pot-glaze-band.companion { fill: var(--eca250-pot-light); stroke-width: 5; }
-.eca250-pot-glaze-drip { fill: none; stroke: var(--eca250-berry); stroke-width: 9; }
-.eca250-pot-glaze-drip.companion { stroke: var(--eca250-aqua); stroke-width: 7; }
-.eca250-pot-foot { fill: var(--eca250-cover); stroke: var(--eca250-ink); stroke-width: 6; }
-.eca250-pot-foot.companion { fill: var(--eca250-gold); stroke-width: 5; }
-.eca250-pot-tessera { fill: var(--eca250-orange-light); stroke: var(--eca250-ink); stroke-width: 3; }
-.eca250-pot-tessera.alternate { fill: var(--eca250-coral); stroke: var(--eca250-ink); stroke-width: 3; }
-.eca250-pot-tessera.companion { fill: var(--eca250-gold); stroke-width: 2; }
-.eca250-pot-maker-mark { fill: var(--eca250-cover); stroke: var(--eca250-ink); stroke-width: 3; }
+.eca250-page-sun { fill: var(--eca250-lemon); stroke: var(--eca250-berry); stroke-width: 4; }
+.eca250-page-edge { fill: none; stroke: var(--eca250-paper-shadow); stroke-width: 4; }
+.eca250-lemonade-pitcher,
+.eca250-lemonade-glass { fill: var(--eca250-glass); stroke: var(--eca250-ink); stroke-width: 7; }
+.eca250-lemonade-glass.companion { stroke-width: 6; }
+.eca250-lemonade-liquid { fill: var(--eca250-liquid); stroke: var(--eca250-glass-edge); stroke-width: 4; }
+.eca250-lemonade-liquid.companion { stroke-width: 3; }
+.eca250-glass-rim { fill: rgba(238, 255, 251, .76); stroke: var(--eca250-ink); stroke-width: 6; }
+.eca250-glass-rim.companion { stroke-width: 5; }
+.eca250-pitcher-handle,
+.eca250-glass-handle { fill: none; stroke: var(--eca250-ink); stroke-width: 14; }
+.eca250-glass-handle.companion { stroke-width: 10; }
+.eca250-ice { fill: none; stroke: rgba(255, 255, 255, .9); stroke-width: 12; }
+.eca250-ice.companion { stroke-width: 9; }
+.eca250-straw { fill: none; stroke: var(--eca250-berry); stroke-width: 10; }
+.eca250-straw.companion { stroke: var(--eca250-cover); stroke-width: 8; }
+.eca250-lemon-rind { fill: var(--eca250-lemon); stroke: var(--eca250-ink); stroke-width: 4; }
+.eca250-lemon-rind.companion { fill: var(--eca250-lemon-light); stroke-width: 3; }
+.eca250-lemon-flesh { fill: var(--eca250-lemon-light); stroke: var(--eca250-gold); stroke-width: 2.5; }
+.eca250-lemon-segment { fill: none; stroke: var(--eca250-gold); stroke-width: 2.5; }
+.eca250-glass-highlight { fill: none; stroke: rgba(255, 255, 255, .9); stroke-width: 7; }
+.eca250-glass-highlight.companion { stroke-width: 5; }
+.eca250-glass-base { fill: none; stroke: var(--eca250-glass-edge); stroke-width: 5; }
+.eca250-condensation { fill: rgba(239, 255, 252, .92); stroke: var(--eca250-glass-edge); stroke-width: 2; }
+.eca250-condensation.companion { stroke-width: 1.5; }
+.eca250-glasses-frame { fill: var(--eca250-berry); stroke: var(--eca250-ink); stroke-width: 8; fill-rule: evenodd; }
+.eca250-glasses-frame.companion { fill: var(--eca250-cover); stroke-width: 7; }
+.eca250-glasses-lens { fill: var(--eca250-lens); stroke: var(--eca250-gold); stroke-width: 5; }
+.eca250-glasses-lens.companion { fill: rgba(88, 199, 191, .5); stroke-width: 4; }
+.eca250-glasses-temple { fill: none; stroke: var(--eca250-ink); stroke-width: 9; }
+.eca250-glasses-temple.companion { stroke-width: 7; }
+.eca250-lens-glint { fill: none; stroke: rgba(255, 255, 255, .86); stroke-width: 5; }
+.eca250-lens-glint.companion { stroke-width: 4; }
+.eca250-glasses-bridge-detail { fill: none; stroke: var(--eca250-gold); stroke-width: 4; }
 
 /* Lombok HPT26: Ficus-ground recovery, field-to-plate dates and paired substrates. */
 .lombok-hpt26-accessory {

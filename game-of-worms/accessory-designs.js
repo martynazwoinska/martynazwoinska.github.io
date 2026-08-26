@@ -22,7 +22,7 @@ const rows = [
   ["elegans", "Tenerife, Spain", "Atlantic canary costumes", "tenerife-atlantic-canary-costume", "timple guitars", "tenerife-timple-guitar", "Teide star lanterns", "tenerife-teide-star-lantern"],
   ["elegans", "Kauaʻi, Hawaiʻi", "plant sample cases", "decay-substrate-theatre", "mist collector bottles", "kokee-cloud-water-collector", "haplotype cards", "xz1516-haplotype-viewer"],
   ["elegans", "Australian Capital Territory", "Baermann funnels", "qg2811-baermann-fig-recovery", "Yellow Box seed jars", "yellow-box-seed-orrery", "Black Mountain field radios", "black-mountain-signal-theremin"],
-  ["elegans", "Claremont, California · ECA250", "giant open books", "eca250-giant-open-book", "citrus-peel curls", "eca250-citrus-peel-curl", "glazed pottery costumes", "eca250-glazed-pottery-costume"],
+  ["elegans", "Claremont, California · ECA250", "Bookworm books", "eca250-bookworm-book", "California lemonade", "eca250-california-lemonade", "sunny reading glasses", "eca250-sunny-reading-glasses"],
   ["elegans", "Araucanía, Chile", "compost sample buckets", "compost-labyrinth", "Llaima ashfall gauges", "ashfall-recorder", "reciprocal-cross plates", "test-cross-mechanism"],
   ["nigoni", "Trivandrum, Kerala · JU1325", "field loupe", "trivandrum-field-loupe", "garden watering can", "trivandrum-garden-watering-can", "sample tube", "trivandrum-sample-tube"],
   ["nigoni", "Singapore · ZF1220", "Singapore starfruit sample trays", "zf1220-five-rib-field-atlas", "five-female sample cards", "multifemale-provenance-merger", "orchid pollination brushes", "holttum-orchid-hybridisation-engine"],
@@ -4153,62 +4153,118 @@ function drawSaltLakeEG4181Accessory(group, item, companion) {
   group.dataset.renderer = item.family;
   group.classList.add("salt-lake-eg4181-accessory", companion ? "eg4181-companion" : "eg4181-primary");
 
+  const blossom = (parent, cx, cy, scale = 1, alternate = false) => {
+    const flower = add(parent, "g", { transform: `translate(${cx} ${cy}) scale(${scale})` });
+    [-72, 0, 72, 144, 216].forEach((angle, index) => {
+      add(flower, "ellipse", {
+        class: `eg4181-blossom-petal${alternate && index % 2 ? " light" : ""}`,
+        cx: 0,
+        cy: -18,
+        rx: 10,
+        ry: 19,
+        transform: `rotate(${angle})`
+      });
+    });
+    add(flower, "circle", { class: "eg4181-blossom-centre", cx: 0, cy: 0, r: 7 });
+  };
+
+  const bee = (parent, x, y, scale = 1, reverse = false) => {
+    const insect = add(parent, "g", { transform: `translate(${x} ${y}) scale(${reverse ? -scale : scale} ${scale})` });
+    add(insect, "ellipse", { class: "eg4181-bee-wing", cx: -8, cy: -8, rx: 12, ry: 8, transform: "rotate(-28 -8 -8)" });
+    add(insect, "ellipse", { class: "eg4181-bee-wing", cx: 7, cy: -9, rx: 11, ry: 7, transform: "rotate(31 7 -9)" });
+    add(insect, "ellipse", { class: "eg4181-bee-body", cx: 0, cy: 3, rx: 15, ry: 10 });
+    path(insect, "M-8-3V10M2-5V12M13 0Q23-6 28-1M13 7Q23 11 27 17", "eg4181-bee-detail");
+  };
+
   if (item.family === "eg4181-apricot-blossom-hat") {
     if (companion) {
-      path(group, "M-63 13Q-54-43-8-57Q39-55 61-14Q35-2 5 2Q-28 7-63 13Z", "eg4181-hat-crown");
-      path(group, "M-66 12Q-14 26 66 5Q36 29-14 32Q-47 30-66 12Z", "eg4181-hat-brim");
-      path(group, "M-26-43Q-47-67-20-79Q-5-82 1-63Q7-88 29-77Q46-65 26-45Q5-28-26-43Z", "eg4181-blossom-petal");
-      add(group, "circle", { class: "eg4181-blossom-centre", cx: 2, cy: -57, r: 10 });
-      path(group, "M32-43Q55-64 62-32Q48-21 28-26Z", "eg4181-leaf");
+      add(group, "ellipse", { class: "eg4181-object-shadow", cx: 2, cy: 39, rx: 78, ry: 11 });
+      path(group, "M-64 15Q-48-43-4-59Q42-57 65-11Q43 1 4 5Q-35 8-64 15Z", "eg4181-hat-crown companion");
+      path(group, "M-72 12Q-5 34 78 4Q63 31 14 42Q-38 45-72 12Z", "eg4181-hat-brim companion");
+      path(group, "M-48-8Q-4 8 53-11", "eg4181-hat-band companion");
+      path(group, "M-54 20Q4 37 61 16", "eg4181-hat-brim-stitch companion");
+      path(group, "M-38-39Q-8-58 34-43", "eg4181-orchard-branch companion");
+      blossom(group, -29, -48, .72, true);
+      blossom(group, 17, -56, .58, false);
+      path(group, "M31-45Q60-65 67-33Q54-18 29-25Z", "eg4181-leaf companion");
+      add(group, "circle", { class: "eg4181-apricot-fruit companion", cx: 48, cy: -39, r: 13 });
+      path(group, "M48-52Q43-61 39-63", "eg4181-apricot-stem companion");
     } else {
-      path(group, "M-88 20Q-78-58-16-72Q47-72 86-16Q49 3 3 4Q-48 8-88 20Z", "eg4181-hat-crown");
-      path(group, "M-96 18Q-34 38 96 4Q69 36 8 43Q-58 44-96 18Z", "eg4181-hat-brim");
-      [[-34,-57],[0,-76],[34,-54]].forEach(([x,y], index) => {
-        path(group, `M${x-20} ${y+8}Q${x-34} ${y-18} ${x-8} ${y-27}Q${x+4} ${y-38} ${x+14} ${y-15}Q${x+37} ${y-17} ${x+28} ${y+8}Q${x+9} ${y+27} ${x-20} ${y+8}Z`, index === 1 ? "eg4181-blossom-petal light" : "eg4181-blossom-petal");
-        add(group, "circle", { class: "eg4181-blossom-centre", cx: x + 3, cy: y - 3, r: 9 });
-      });
-      path(group, "M45-55Q77-81 82-42Q66-25 39-33Z", "eg4181-leaf");
+      add(group, "ellipse", { class: "eg4181-object-shadow", cx: 4, cy: 52, rx: 112, ry: 14 });
+      path(group, "M-91 21Q-74-62-13-79Q53-77 91-14Q62 5 8 9Q-46 12-91 21Z", "eg4181-hat-crown");
+      path(group, "M-105 18Q-28 47 111 0Q87 39 21 54Q-55 58-105 18Z", "eg4181-hat-brim");
+      path(group, "M-75-6Q-7 17 72-11", "eg4181-hat-band");
+      path(group, "M-83 27Q1 53 87 22", "eg4181-hat-brim-stitch");
+      path(group, "M-62-49Q-17-78 55-54", "eg4181-orchard-branch");
+      blossom(group, -48, -61, .84, true);
+      blossom(group, -4, -81, .98, false);
+      blossom(group, 43, -64, .78, true);
+      path(group, "M49-55Q83-83 93-43Q73-20 43-32Z", "eg4181-leaf");
+      path(group, "M-69-51Q-94-69-96-37Q-80-22-58-31Z", "eg4181-leaf alternate");
+      add(group, "circle", { class: "eg4181-apricot-fruit", cx: 71, cy: -48, r: 17 });
+      path(group, "M71-65Q66-76 58-79", "eg4181-apricot-stem");
+      path(group, "M67-59Q74-50 71-35", "eg4181-apricot-seam");
     }
     return true;
   }
 
   if (item.family === "eg4181-beehive-saddle-pack") {
     if (companion) {
-      path(group, "M-69-31Q-51-73 0-78Q48-72 67-29L72 51Q49 79 0 84Q-48 78-72 50Z", "eg4181-hive-body");
-      [-35,-4,29].forEach(y => path(group, `M-62 ${y}Q0 ${y+16} 62 ${y}`, "eg4181-hive-band"));
-      add(group, "ellipse", { class: "eg4181-hive-door", cx: 17, cy: 51, rx: 15, ry: 11 });
-      path(group, "M-29-41L-18-48L-7-41V-28L-18-21L-29-28ZM8-48L19-55L30-48V-35L19-28L8-35Z", "eg4181-honeycomb");
-      path(group, "M-58-27Q-91 6-65 50M58-27Q88 7 65 49", "eg4181-harness");
-      path(group, "M-14-76Q0-94 17-75", "eg4181-handle");
-      path(group, "M72-20Q93-34 103-12Q83-1 69 5", "eg4181-bee-wing");
-      add(group, "ellipse", { class: "eg4181-bee-body", cx: 91, cy: 1, rx: 18, ry: 11, transform: "rotate(18 91 1)" });
+      add(group, "ellipse", { class: "eg4181-object-shadow", cx: 0, cy: 88, rx: 91, ry: 14 });
+      path(group, "M-79 45Q-62 74 0 82Q61 75 78 43L64 68Q0 99-66 66Z", "eg4181-saddle-cloth companion");
+      path(group, "M-66-27Q-49-72-7-81Q39-78 62-36L70 47Q45 73-1 78Q-48 71-70 45Z", "eg4181-hive-body companion");
+      path(group, "M31-72Q62-54 65-25L70 47Q52 68 25 75Q49 23 31-72Z", "eg4181-hive-side companion");
+      path(group, "M-42-53Q-55-16-45 44", "eg4181-hive-highlight companion");
+      [-38,-12,16,43].forEach((y,index) => path(group, `M${-60+index*2} ${y}Q-2 ${y+17} ${61-index*2} ${y-1}`, "eg4181-hive-wicker companion"));
+      path(group, "M-37-55Q-2-72 38-55M-50-45Q-79-7-61 48M50-45Q78-6 60 47", "eg4181-hive-rib companion");
+      add(group, "ellipse", { class: "eg4181-hive-door", cx: 17, cy: 50, rx: 15, ry: 12 });
+      path(group, "M-44-18L-31-26L-18-18V-3L-31 5L-44-3Z", "eg4181-honeycomb companion berry");
+      path(group, "M-14-30L-1-38L12-30V-15L-1-7L-14-15Z", "eg4181-honeycomb companion aqua");
+      path(group, "M-56-34Q-90 1-65 53M55-38Q86-5 65 47", "eg4181-harness companion");
+      path(group, "M-19-78Q-1-102 21-78", "eg4181-handle companion");
+      bee(group, 78, -25, .72, false);
     } else {
-      path(group, "M-93-45Q-73-95-10-106Q60-100 92-42L98 65Q62 101 0 108Q-65 101-98 61Z", "eg4181-hive-body");
-      [-57,-20,18,55].forEach((y,index) => path(group, `M${-88+index*3} ${y}Q0 ${y+21} ${88-index*3} ${y}`, "eg4181-hive-band"));
-      add(group, "ellipse", { class: "eg4181-hive-door", cx: 23, cy: 70, rx: 22, ry: 16 });
-      path(group, "M-45-60L-30-70L-15-60V-42L-30-32L-45-42ZM2-71L17-81L32-71V-53L17-43L2-53ZM-19-27L-4-37L11-27V-9L-4 1L-19-9Z", "eg4181-honeycomb");
-      path(group, "M-82-38Q-126 5-90 66M82-38Q124 7 92 64", "eg4181-harness");
-      path(group, "M-18-102Q2-130 27-101", "eg4181-handle");
-      [[-111,-25],[114,5]].forEach(([x,y], index) => {
-        path(group, `M${x} ${y-7}Q${x+(index?25:-25)} ${y-28} ${x+(index?34:-34)} ${y}Q${x+(index?18:-18)} ${y+12} ${x} ${y+7}`, "eg4181-bee-wing");
-        add(group, "ellipse", { class: "eg4181-bee-body", cx: x, cy: y, rx: 19, ry: 11, transform: `rotate(${index?18:-18} ${x} ${y})` });
-      });
+      add(group, "ellipse", { class: "eg4181-object-shadow", cx: 2, cy: 122, rx: 126, ry: 17 });
+      path(group, "M-111 55Q-89 99 2 113Q89 101 112 49L99 87Q3 139-100 91Z", "eg4181-saddle-cloth");
+      path(group, "M-96-47Q-74-104-13-116Q55-112 92-55L103 70Q68 106 2 113Q-67 103-105 67Z", "eg4181-hive-body");
+      path(group, "M48-105Q89-87 95-48L103 70Q76 99 38 108Q70 34 48-105Z", "eg4181-hive-side");
+      path(group, "M-62-81Q-82-24-68 58", "eg4181-hive-highlight");
+      [-65,-29,8,46,76].forEach((y,index) => path(group, `M${-91+index*3} ${y}Q0 ${y+24} ${93-index*3} ${y-2}`, "eg4181-hive-wicker"));
+      path(group, "M-57-82Q0-112 60-83M-79-66Q-126-8-94 69M78-70Q124-10 94 68", "eg4181-hive-rib");
+      add(group, "ellipse", { class: "eg4181-hive-door", cx: 28, cy: 78, rx: 24, ry: 18 });
+      path(group, "M-55-37L-38-48L-21-37V-18L-38-7L-55-18Z", "eg4181-honeycomb berry");
+      path(group, "M-4-54L13-65L30-54V-35L13-24L-4-35Z", "eg4181-honeycomb aqua");
+      path(group, "M-29 3L-12-8L5 3V22L-12 33L-29 22Z", "eg4181-honeycomb cream");
+      path(group, "M-86-51Q-139 3-99 78M84-55Q136 0 98 74", "eg4181-harness");
+      path(group, "M-25-111Q2-147 33-110", "eg4181-handle");
+      path(group, "M-90 94Q-44 119 4 123Q52 121 93 91", "eg4181-saddle-stitch");
+      path(group, "M22 94Q31 106 39 94Q46 107 54 92", "eg4181-honey-drip");
+      bee(group, -113, -35, .86, true);
+      bee(group, 121, 3, .92, false);
     }
     return true;
   }
 
   if (item.family === "eg4181-single-tail-mountain-ski") {
     if (companion) {
-      path(group, "M-121 28Q-42 49 47 35Q93 28 119 5Q112 31 81 45Q-21 69-120 48Z", "eg4181-ski");
-      path(group, "M-40 7Q-15-13 15 5L33 40Q3 49-29 43Z", "eg4181-binding");
-      path(group, "M-97 37Q-43 45 14 38", "eg4181-ski-inlay");
-      path(group, "M58 34L88 10", "eg4181-ski-peak");
+      add(group, "ellipse", { class: "eg4181-object-shadow", cx: 1, cy: 65, rx: 134, ry: 11 });
+      path(group, "M-133 35Q-56 58 45 43Q92 36 126 4Q122 32 94 52Q-4 79-132 58Z", "eg4181-ski-sidewall companion");
+      path(group, "M-132 27Q-57 50 43 36Q91 29 127-1Q120 23 91 43Q-8 68-131 49Z", "eg4181-ski companion");
+      path(group, "M-103 39Q-44 51 18 42", "eg4181-ski-inlay companion");
+      path(group, "M-44 4Q-13-18 20 2L37 38Q5 49-30 42Z", "eg4181-binding companion");
+      path(group, "M-28 8Q-8-4 14 7M-18 22Q1 12 25 22", "eg4181-binding-strap companion");
+      path(group, "M55 37L87 12L101 29", "eg4181-ski-peak companion");
+      path(group, "M111 15Q126 10 133-2", "eg4181-ski-tip-detail companion");
     } else {
-      path(group, "M-166 34Q-56 65 67 43Q133 31 166-4Q157 35 115 55Q-30 92-164 61Z", "eg4181-ski");
-      path(group, "M-57 8Q-24-21 18 4L44 49Q2 61-44 52Z", "eg4181-binding");
-      path(group, "M-133 50Q-61 63 22 49", "eg4181-ski-inlay");
-      path(group, "M82 47L123 13L140 35", "eg4181-ski-peak");
-      path(group, "M-152 57Q-136 72-119 56", "eg4181-ski-tail-detail");
+      add(group, "ellipse", { class: "eg4181-object-shadow", cx: 1, cy: 83, rx: 184, ry: 14 });
+      path(group, "M-186 44Q-70 79 66 54Q137 40 181-9Q176 34 138 61Q-19 105-184 72Z", "eg4181-ski-sidewall");
+      path(group, "M-184 34Q-70 69 64 46Q135 32 182-16Q174 23 135 51Q-23 94-183 61Z", "eg4181-ski");
+      path(group, "M-150 52Q-74 70 28 53", "eg4181-ski-inlay");
+      path(group, "M-61 3Q-24-30 21-1L51 48Q5 65-47 54Z", "eg4181-binding");
+      path(group, "M-39 8Q-13-9 14 5M-28 28Q0 13 34 28", "eg4181-binding-strap");
+      path(group, "M80 50L127 11L149 37", "eg4181-ski-peak");
+      path(group, "M-168 62Q-148 84-126 64", "eg4181-ski-tail-detail");
+      path(group, "M153 18Q176 8 185-15", "eg4181-ski-tip-detail");
     }
     return true;
   }
@@ -4221,83 +4277,89 @@ function drawClaremontECA250Accessory(group, item, companion) {
   group.classList.add("claremont-eca250-accessory", companion ? "eca250-companion" : "eca250-primary");
 
   const pageLines = (parent, paths, companionLine = false) => paths.forEach(d => path(parent, d, companionLine ? "eca250-page-line companion" : "eca250-page-line"));
-  const citrusCrossSection = (parent, cx, cy, radius, small = false) => {
-    add(parent, "circle", { class: small ? "eca250-citrus-fruit companion" : "eca250-citrus-fruit", cx, cy, r: radius });
-    add(parent, "circle", { class: "eca250-citrus-cut", cx, cy, r: radius * .72 });
+  const label = (value, x, y, className = "eca250-book-title") => {
+    const node = add(group, "text", { class: className, x, y, "text-anchor": "middle" });
+    node.textContent = value;
+  };
+  const lemonWheel = (parent, cx, cy, radius, companionWheel = false) => {
+    add(parent, "circle", { class: companionWheel ? "eca250-lemon-rind companion" : "eca250-lemon-rind", cx, cy, r: radius });
+    add(parent, "circle", { class: "eca250-lemon-flesh", cx, cy, r: radius * .75 });
     [0, 60, 120].forEach(angle => {
-      const dx = Math.cos(angle * Math.PI / 180) * radius * .66;
-      const dy = Math.sin(angle * Math.PI / 180) * radius * .66;
-      path(parent, `M${cx-dx} ${cy-dy}L${cx+dx} ${cy+dy}`, "eca250-citrus-segment");
+      const dx = Math.cos(angle * Math.PI / 180) * radius * .68;
+      const dy = Math.sin(angle * Math.PI / 180) * radius * .68;
+      path(parent, `M${cx-dx} ${cy-dy}L${cx+dx} ${cy+dy}`, "eca250-lemon-segment");
     });
-    add(parent, "circle", { class: "eca250-citrus-pip", cx: cx + radius * .18, cy: cy - radius * .08, r: Math.max(2.5, radius * .11) });
   };
 
-  if (item.family === "eca250-giant-open-book") {
+  if (item.family === "eca250-bookworm-book") {
     add(group, "ellipse", { class: "eca250-ground-shadow", cx: 0, cy: companion ? 73 : 91, rx: companion ? 101 : 151, ry: companion ? 12 : 16 });
     if (companion) {
-      path(group, "M-108-14Q-61-48-9-18L-8 58Q-60 35-109 59Z", "eca250-book-page companion left");
-      path(group, "M-8-18Q47-57 108-27L104 50Q46 30-8 58Z", "eca250-book-page companion right");
-      path(group, "M-109 59Q-59 39-8 62Q46 37 105 52L98 68Q45 54-8 72Q-60 50-104 70Z", "eca250-book-cover companion");
-      pageLines(group, ["M-92-4Q-54-24-22-7", "M-91 13Q-55-6-21 8", "M13-7Q51-28 89-15", "M13 11Q49-9 88 1"], true);
-      path(group, "M-8-18V69", "eca250-book-spine");
-      path(group, "M54 39L66 72L77 54L89 65L78 30Z", "eca250-bookmark");
-      path(group, "M-51-28Q-35-48-17-31Q-27-7-50-6Z", "eca250-book-leaf");
+      path(group, "M-104-48Q-17-68 86-37L101 52Q16 31-81 59Z", "eca250-book-cover companion closed");
+      path(group, "M-93-39Q-10-57 80-30L91 39Q10 22-84 49Z", "eca250-book-page companion closed");
+      path(group, "M-83 49Q9 25 92 40L97 54Q8 43-81 63Z", "eca250-book-block companion");
+      path(group, "M-104-48L-81 59L-81 63L-111 51Z", "eca250-book-spine companion closed");
+      path(group, "M-69-30Q-16-41 47-22L54 23Q-8 12-62 31Z", "eca250-title-panel companion");
+      label("BOOKWORM", -7, 4, "eca250-book-title companion");
+      path(group, "M55-19Q76-39 91-18L96 8Q76 24 60 10Z", "eca250-book-leaf companion");
+      path(group, "M-7 46L8 70L22 48", "eca250-bookmark companion");
+      pageLines(group, ["M-71 37Q-23 26 27 35", "M-68 48Q-18 37 33 45"], true);
     } else {
-      path(group, "M-163-31Q-93-87-10-37L-9 73Q-91 38-164 77Z", "eca250-book-page left");
-      path(group, "M-9-37Q76-96 165-45L158 66Q72 32-9 73Z", "eca250-book-page right");
-      path(group, "M-165 77Q-90 47-9 80Q72 43 160 68L151 91Q70 70-9 96Q-91 61-156 94Z", "eca250-book-cover");
-      pageLines(group, ["M-139-13Q-91-47-42-19", "M-141 9Q-92-23-39 4", "M-139 31Q-91 2-40 24", "M23-22Q78-57 137-29", "M23 2Q79-31 138-7", "M24 27Q82-7 139 16"]);
+      path(group, "M-168-38Q-96-91-9-41L-8 76Q-92 39-168 79Z", "eca250-book-page left");
+      path(group, "M-8-41Q82-100 172-47L164 69Q76 31-8 76Z", "eca250-book-page right");
+      path(group, "M-171 79Q-93 47-8 83Q77 42 167 71L156 99Q74 74-8 101Q-94 62-161 98Z", "eca250-book-cover");
+      path(group, "M-148-19Q-91-54-36-23L-38 47Q-93 19-146 50Z", "eca250-title-panel");
+      label("BOOKWORM", -91, 9);
+      pageLines(group, ["M-138 63Q-94 45-44 60", "M22-24Q79-60 140-31", "M22 2Q80-33 141-8", "M24 28Q83-7 142 18"]);
       path(group, "M-9-37V92", "eca250-book-spine");
-      path(group, "M86 53L98 97L113 75L129 89L114 43Z", "eca250-bookmark");
-      path(group, "M-95-60Q-68-91-39-63Q-53-25-91-25Z", "eca250-book-leaf");
-      path(group, "M-121 53Q-86 34-47 50M33 48Q79 27 127 39", "eca250-page-illustration");
-      add(group, "circle", { class: "eca250-page-sun", cx: 61, cy: 12, r: 12 });
+      path(group, "M89 55L102 101L117 77L134 92L118 44Z", "eca250-bookmark");
+      path(group, "M82-63Q113-86 142-61Q128-25 92-31Z", "eca250-book-leaf");
+      path(group, "M39 49Q79 20 125 39M53 49Q81 28 112 40", "eca250-page-illustration");
+      add(group, "circle", { class: "eca250-page-sun", cx: 66, cy: 8, r: 13 });
+      path(group, "M-151 84Q-89 57-10 91Q67 52 153 80", "eca250-page-edge");
     }
     return true;
   }
 
-  if (item.family === "eca250-citrus-peel-curl") {
+  if (item.family === "eca250-california-lemonade") {
+    add(group, "ellipse", { class: "eca250-ground-shadow", cx: companion ? 4 : 7, cy: companion ? 82 : 112, rx: companion ? 65 : 94, ry: companion ? 11 : 15 });
     if (companion) {
-      path(group, "M-84 61Q-128 12-78-31Q-27-72 33-45Q83-22 71 24Q61 60 22 55Q-4 52 1 28Q7 8 29 11Q43 13 39 27", "eca250-peel-outline companion");
-      path(group, "M-84 61Q-128 12-78-31Q-27-72 33-45Q83-22 71 24Q61 60 22 55Q-4 52 1 28Q7 8 29 11Q43 13 39 27", "eca250-peel companion");
-      path(group, "M-84 61Q-128 12-78-31Q-27-72 33-45Q83-22 71 24", "eca250-peel-pith companion");
-      citrusCrossSection(group, 22, 34, 16, true);
-      path(group, "M-85 62Q-106 84-125 65Q-116 45-93 48Z", "eca250-peel-tip companion");
-      path(group, "M31-45Q46-74 69-58Q54-38 35-30Z", "eca250-citrus-leaf companion");
-      [[-67,-31],[-35,-49],[9,-51],[51,-30],[69,7]].forEach(([cx,cy]) => add(group, "circle", { class: "eca250-peel-pore", cx, cy, r: 3 }));
+      path(group, "M-57-48Q0-61 58-47L49 64Q1 81-48 64Z", "eca250-lemonade-glass companion");
+      path(group, "M-50 3Q0-7 52 2L47 62Q1 76-44 62Z", "eca250-lemonade-liquid companion");
+      add(group, "ellipse", { class: "eca250-glass-rim companion", cx: 0, cy: -47, rx: 59, ry: 14 });
+      path(group, "M-38-37L-25-20L-7-34L7-15L24-32L41-16", "eca250-ice companion");
+      path(group, "M30-49L65-91L75-86L43-43", "eca250-straw companion");
+      path(group, "M47-21Q88-17 80 25Q75 56 49 50", "eca250-glass-handle companion");
+      lemonWheel(group, -30, 13, 17, true);
+      path(group, "M-35-31Q-48 11-38 50", "eca250-glass-highlight companion");
+      [[-62,12],[-58,35],[57,36]].forEach(([cx,cy]) => add(group, "circle", { class: "eca250-condensation companion", cx, cy, r: 3.5 }));
     } else {
-      path(group, "M-139 75Q-188 12-129-47Q-72-104 6-72Q76-44 71 15Q68 69 14 77Q-33 84-49 49Q-63 18-32-2Q-1-22 25 1Q45 19 30 40Q16 57-2 44", "eca250-peel-outline");
-      path(group, "M-139 75Q-188 12-129-47Q-72-104 6-72Q76-44 71 15Q68 69 14 77Q-33 84-49 49Q-63 18-32-2Q-1-22 25 1Q45 19 30 40Q16 57-2 44", "eca250-peel");
-      path(group, "M-139 75Q-188 12-129-47Q-72-104 6-72Q76-44 71 15Q68 69 14 77", "eca250-peel-pith");
-      citrusCrossSection(group, -4, 49, 22);
-      path(group, "M-141 75Q-167 105-195 80Q-182 54-151 57Z", "eca250-peel-tip");
-      path(group, "M3-72Q19-111 51-91Q33-58 8-48Z", "eca250-citrus-leaf");
-      path(group, "M63-29Q98-29 100 1Q71 6 53-10Z", "eca250-citrus-leaf alternate");
-      [[-121,-49],[-83,-76],[-35,-82],[17,-62],[58,-31],[68,15],[42,56],[-8,72],[-43,42]].forEach(([cx,cy]) => add(group, "circle", { class: "eca250-peel-pore", cx, cy, r: 3.5 }));
-      [[-155,19],[-135,-5]].forEach(([cx,cy]) => add(group, "circle", { class: "eca250-blossom-centre", cx, cy, r: 6 }));
+      path(group, "M-79-72Q-12-91 69-67L61 86Q-7 111-70 84Z", "eca250-lemonade-pitcher");
+      path(group, "M-70-10Q-5-29 64-8L59 82Q-6 104-64 81Z", "eca250-lemonade-liquid");
+      add(group, "ellipse", { class: "eca250-glass-rim", cx: -5, cy: -70, rx: 76, ry: 18 });
+      path(group, "M68-53Q129-47 122 24Q117 78 62 68M77-33Q106-29 101 18Q97 50 65 48", "eca250-pitcher-handle");
+      path(group, "M-51-57L-31-35L-8-56L14-31L37-54L58-31", "eca250-ice");
+      path(group, "M22-74L72-130L83-122L38-66", "eca250-straw");
+      lemonWheel(group, -36, 25, 25);
+      lemonWheel(group, 34, 49, 20);
+      path(group, "M-51-53Q-68 7-53 67", "eca250-glass-highlight");
+      path(group, "M-69 83Q-7 102 60 81", "eca250-glass-base");
+      [[-88,-20],[-86,9],[-82,42],[76,10],[74,46]].forEach(([cx,cy], index) => add(group, "circle", { class: "eca250-condensation", cx, cy, r: index % 2 ? 4 : 5 }));
     }
     return true;
   }
 
-  if (item.family === "eca250-glazed-pottery-costume") {
-    add(group, "ellipse", { class: "eca250-ground-shadow", cx: 0, cy: companion ? 83 : 103, rx: companion ? 80 : 111, ry: companion ? 12 : 15 });
+  if (item.family === "eca250-sunny-reading-glasses") {
     if (companion) {
-      path(group, "M-34-58L-42-37Q-76-24-82 16Q-89 60-49 78Q-19 91 30 82Q72 73 77 31Q82-16 45-36L38-58Z", "eca250-pot-body companion");
-      path(group, "M-43-67H42L49-48Q3-37-50-49Z", "eca250-pot-rim companion");
-      path(group, "M-71-30Q-110-31-108 10Q-105 49-78 49M65-36Q101-32 98 4Q95 38 77 43", "eca250-pot-handle companion");
-      path(group, "M-79 13Q0 41 80 10L75 44Q0 66-79 43Z", "eca250-pot-glaze-band companion");
-      path(group, "M-43-46Q-29-19-15-44Q0-18 15-44Q29-18 43-45", "eca250-pot-glaze-drip companion");
-      path(group, "M-50 82H48L39 96H-40Z", "eca250-pot-foot companion");
-      [[-52,27],[-25,38],[5,43],[34,34],[58,21]].forEach(([cx,cy]) => add(group, "circle", { class: "eca250-pot-tessera companion", cx, cy, r: 6 }));
+      path(group, "M-80 2Q-88-30-59-43Q-29-48-20-17Q-10-30 2-29Q12-27 20-17Q31-47 60-42Q88-31 80 2Q72 31 43 29Q20 25 20-6Q9-16 0-15Q-10-15-20-6Q-20 25-44 29Q-72 31-80 2Z", "eca250-glasses-frame companion");
+      path(group, "M-68-1Q-73-23-55-29Q-34-31-28-9Q-25 14-45 18Q-64 19-68-1ZM29-8Q35-30 56-29Q74-25 69-1Q65 19 46 18Q26 14 29-8Z", "eca250-glasses-lens companion");
+      path(group, "M-82-20L-111-31M81-19L106-28", "eca250-glasses-temple companion");
+      path(group, "M-52-20Q-42-28-34-18M43-20Q53-27 61-18", "eca250-lens-glint companion");
     } else {
-      path(group, "M-45-75L-56-49Q-100-28-108 26Q-116 83-64 105Q-24 122 39 111Q94 102 103 48Q113-15 61-46L52-75Z", "eca250-pot-body");
-      path(group, "M-59-91H57L66-67Q4-51-69-68Z", "eca250-pot-rim");
-      path(group, "M-92-47Q-142-49-140 4Q-138 58-104 61M93-48Q143-46 140 5Q138 56 105 61", "eca250-pot-handle");
-      path(group, "M-106 13Q2 56 110 10L103 59Q1 89-105 60Z", "eca250-pot-glaze-band");
-      path(group, "M-62-65Q-43-27-24-63Q-4-24 18-62Q40-25 61-65", "eca250-pot-glaze-drip");
-      path(group, "M-67 106H72L58 126H-54Z", "eca250-pot-foot");
-      [[-72,32],[-42,50],[-8,60],[28,57],[61,42],[83,24]].forEach(([cx,cy],index) => add(group, index%2 ? "path" : "circle", index%2 ? { class: "eca250-pot-tessera alternate", d: `M${cx-7} ${cy}L${cx} ${cy-8}L${cx+8} ${cy}L${cx} ${cy+8}Z` } : { class: "eca250-pot-tessera", cx, cy, r: 7 }));
-      path(group, "M-5 86Q12 70 29 85Q13 102-5 86Z", "eca250-pot-maker-mark");
+      path(group, "M-111 7Q-122-38-79-58Q-37-65-23-20Q-12-37 1-37Q16-36 27-19Q42-64 83-54Q124-37 109 9Q97 50 58 45Q25 41 26-5Q14-20 1-20Q-12-20-24-5Q-25 41-59 47Q-100 51-111 7Z", "eca250-glasses-frame");
+      path(group, "M-95 1Q-102-29-74-42Q-45-47-35-15Q-30 20-60 29Q-88 34-95 1ZM38-13Q48-46 78-40Q106-31 97 3Q89 32 61 29Q31 22 38-13Z", "eca250-glasses-lens");
+      path(group, "M-114-28L-157-42M111-25L153-34", "eca250-glasses-temple");
+      path(group, "M-75-31Q-60-44-48-30M64-30Q80-41 90-25", "eca250-lens-glint");
+      path(group, "M-7-35Q1-50 10-35", "eca250-glasses-bridge-detail");
     }
     return true;
   }
@@ -6761,12 +6823,12 @@ function renderPiece(target, item, wormPart) {
     ,"hpt26-ficus-ground-contact-stage": { primary: [385, 142, .43, -2], companion: [14, 132, .30, 3] }
     ,"lingsar-field-to-plate-calendar": { primary: [238, 199, .42, -1], companion: [117, 218, .30, 2] }
     ,"hpt26-hpt27-substrate-diptych": { primary: [382, 270, .39, -1], companion: [30, 291, .28, 2] }
-    ,"eg4181-apricot-blossom-hat": { primary: [366, 61, .39, 5], companion: [108, 105, .31, -4] }
-    ,"eg4181-beehive-saddle-pack": { primary: [245, 166, .42, 21], companion: [92, 154, .31, 30] }
-    ,"eg4181-single-tail-mountain-ski": { primary: [146, 252, .45, -9], companion: [50, 221, .35, -5] }
-    ,"eca250-giant-open-book": { primary: [302, 300, .43, -3], companion: [72, 306, .34, 5] }
-    ,"eca250-citrus-peel-curl": { primary: [245, 172, .44, 20], companion: [98, 151, .33, 28] }
-    ,"eca250-glazed-pottery-costume": { primary: [151, 226, .43, -10], companion: [39, 180, .34, 12] }
+    ,"eg4181-apricot-blossom-hat": { primary: [344, 25, .43, 0], companion: [111, 80, .36, -4] }
+    ,"eg4181-beehive-saddle-pack": { primary: [245, 166, .46, 21], companion: [92, 154, .36, 30] }
+    ,"eg4181-single-tail-mountain-ski": { primary: [151, 239, .49, -10], companion: [55, 211, .40, -7] }
+    ,"eca250-bookworm-book": { primary: [279, 276, .45, -4], companion: [71, 294, .35, 6] }
+    ,"eca250-california-lemonade": { primary: [386, 222, .39, -5], companion: [26, 231, .31, 7] }
+    ,"eca250-sunny-reading-glasses": { primary: [337, 61, .24, -5], companion: [111, 117, .17, 7] }
     ,"ju1337-rotting-material-recovery-carousel": { primary: [383, 143, .45, -2], companion: [8, 128, .35, 2] }
     ,"ju1337-sixteen-december-field-calendar": { primary: [246, 196, .43, 1], companion: [126, 217, .34, -1] }
     ,"poovar-agricultural-edge-ledger": { primary: [379, 271, .42, -2], companion: [194, 292, .34, 2] }

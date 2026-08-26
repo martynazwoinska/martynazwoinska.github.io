@@ -24,9 +24,9 @@ Regional elements do not claim to reconstruct the unknown property. The scene mu
 
 ## Accessory set
 
-1. **Giant open books** — two separately drawn open volumes with curved page blocks, visible covers and spines, bookmarks and different page illustrations. The oversized books use the visual joke of a literal bookworm and refer to Claremont's identity as a college town.
-2. **Citrus-peel curls** — a long orange spiral and a smaller golden loop, each with visible pith, pores, leaf tips and its own flexible silhouette. They follow the worms' curves and refer to Claremont's historic citrus-growing and packing economy rather than repeating a crate or vehicle.
-3. **Glazed pottery costumes** — fitted turquoise and violet ceramic bodies with separately proportioned openings, rims, feet, handles, glaze drips and decorative tesserae. They refer to Claremont's visual-art and ceramics tradition while reading as wearable sculptural costumes rather than backpacks.
+1. **Bookworm books** — a large open illustrated volume and a separately constructed smaller hardback, each with a clearly legible `BOOKWORM` title treatment, visible covers, page blocks, spines and bookmarks. The literal bookworm joke refers to Claremont's identity as a college town.
+2. **California lemonade** — a faceted handled pitcher and a distinct handled tumbler, built from visible glass rims, liquid boundaries, ice, lemon wheels, straws, highlights and condensation. They make the set feel like one warm garden reading day rather than another collection-equipment display.
+3. **Sunny reading glasses** — wide berry-and-violet frames for the hermaphrodite and smaller rounder indigo-and-aqua frames for the male. Each version is separately fitted to its worm's face, with lenses, rims, bridge, temples and glints kept clear of the eyes.
 
 Regional sources:
 
