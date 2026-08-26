@@ -6996,60 +6996,84 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .claremont-eca250-accessory ellipse,
 .claremont-eca250-accessory rect { stroke-linecap: round; stroke-linejoin: round; }
 .eca250-ground-shadow { fill: rgba(24, 61, 73, .17); stroke: none; }
-.eca250-book-page { fill: var(--eca250-paper); stroke: var(--eca250-ink); stroke-width: 6; }
+.eca250-book-page { fill: var(--eca250-paper); stroke: var(--eca250-ink); stroke-width: 5; }
 .eca250-book-page.right { fill: #fffaf0; }
-.eca250-book-page.companion { stroke-width: 5; }
+.eca250-book-page.companion { stroke-width: 4.5; }
 .eca250-book-page.companion.right { fill: #f8edd6; }
-.eca250-book-cover { fill: var(--eca250-cover); stroke: var(--eca250-ink); stroke-width: 7; }
-.eca250-book-cover.companion { fill: var(--eca250-cover-companion); stroke-width: 6; }
+.eca250-book-cover { fill: var(--eca250-cover); stroke: var(--eca250-ink); stroke-width: 6; }
+.eca250-book-cover.companion { fill: var(--eca250-cover-companion); stroke-width: 5.5; }
 .eca250-book-cover.closed { fill: var(--eca250-cover-companion); }
 .eca250-book-page.closed { fill: var(--eca250-paper); }
-.eca250-book-block { fill: var(--eca250-paper-shadow); stroke: var(--eca250-ink); stroke-width: 5; }
-.eca250-book-spine.closed { fill: var(--eca250-cover); stroke: var(--eca250-ink); stroke-width: 5; }
-.eca250-title-panel { fill: var(--eca250-paper); stroke: var(--eca250-gold); stroke-width: 4; }
+.eca250-book-block { fill: var(--eca250-paper-shadow); stroke: var(--eca250-ink); stroke-width: 4.5; }
+.eca250-book-spine.closed { fill: #4b438a; stroke: var(--eca250-ink); stroke-width: 5; }
+.eca250-spine-band { fill: none; stroke: var(--eca250-gold); stroke-width: 5; }
+.eca250-title-panel { fill: #fffaf0; stroke: var(--eca250-gold); stroke-width: 3.5; }
 .eca250-title-panel.companion { fill: #fffaf0; stroke-width: 3; }
-.eca250-book-title { fill: var(--eca250-ink); font: 900 19px/1 var(--sans); letter-spacing: 1.5px; paint-order: stroke; stroke: var(--eca250-paper); stroke-width: 1.5px; }
-.eca250-book-title.companion { font-size: 16px; letter-spacing: 1px; }
-.eca250-page-line { fill: none; stroke: #b58d62; stroke-width: 4; opacity: .8; }
-.eca250-page-line.companion { stroke-width: 3.5; }
-.eca250-book-spine { fill: none; stroke: var(--eca250-gold); stroke-width: 8; }
-.eca250-bookmark { fill: var(--eca250-coral); stroke: var(--eca250-ink); stroke-width: 4; }
-.eca250-book-leaf { fill: var(--eca250-teal); stroke: var(--eca250-ink); stroke-width: 4; }
-.eca250-page-illustration { fill: none; stroke: var(--eca250-aqua); stroke-width: 6; }
+.eca250-title-frame { fill: none; stroke: color-mix(in srgb, var(--eca250-gold) 78%, var(--eca250-berry)); stroke-width: 2; }
+.eca250-book-title { fill: var(--eca250-ink); font: 900 23px/1 var(--sans); letter-spacing: 2px; }
+.eca250-book-title.bottom { fill: var(--eca250-cover); }
+.eca250-book-title.companion { font-size: 18px; letter-spacing: 1.6px; }
+.eca250-book-title.companion.bottom { fill: var(--eca250-cover-companion); }
+.eca250-title-worm { fill: none; stroke: var(--eca250-berry); stroke-width: 5; }
+.eca250-title-worm.companion { stroke: var(--eca250-teal); stroke-width: 4; }
+.eca250-title-worm-eye { fill: var(--eca250-ink); stroke: var(--eca250-paper); stroke-width: 1; }
+.eca250-page-line { fill: none; stroke: #ad8765; stroke-width: 3; opacity: .72; }
+.eca250-page-line.companion { stroke-width: 2.5; }
+.eca250-book-spine { fill: rgba(94, 79, 152, .22); stroke: var(--eca250-gold); stroke-width: 6; }
+.eca250-book-gutter { fill: rgba(119, 89, 68, .18); stroke: none; }
+.eca250-bookmark { fill: var(--eca250-coral); stroke: var(--eca250-ink); stroke-width: 3.5; }
+.eca250-book-leaf { fill: var(--eca250-teal); stroke: var(--eca250-ink); stroke-width: 3.5; }
+.eca250-page-illustration { fill: none; stroke: var(--eca250-aqua); stroke-width: 4; }
 .eca250-page-sun { fill: var(--eca250-lemon); stroke: var(--eca250-berry); stroke-width: 4; }
-.eca250-page-edge { fill: none; stroke: var(--eca250-paper-shadow); stroke-width: 4; }
+.eca250-page-sun-rays { fill: none; stroke: var(--eca250-gold); stroke-width: 2.5; }
+.eca250-page-edge { fill: none; stroke: var(--eca250-paper-shadow); stroke-width: 3.5; }
+.eca250-page-corner { fill: none; stroke: var(--eca250-gold); stroke-width: 2.5; }
 .eca250-lemonade-pitcher,
-.eca250-lemonade-glass { fill: var(--eca250-glass); stroke: var(--eca250-ink); stroke-width: 7; }
-.eca250-lemonade-glass.companion { stroke-width: 6; }
-.eca250-lemonade-liquid { fill: var(--eca250-liquid); stroke: var(--eca250-glass-edge); stroke-width: 4; }
+.eca250-lemonade-glass { fill: rgba(209, 244, 240, .44); stroke: var(--eca250-glass-edge); stroke-width: 5; }
+.eca250-lemonade-glass.companion { stroke-width: 4.5; }
+.eca250-lemonade-liquid { fill: var(--eca250-liquid); stroke: #c99d30; stroke-width: 3; }
 .eca250-lemonade-liquid.companion { stroke-width: 3; }
-.eca250-glass-rim { fill: rgba(238, 255, 251, .76); stroke: var(--eca250-ink); stroke-width: 6; }
-.eca250-glass-rim.companion { stroke-width: 5; }
-.eca250-pitcher-handle,
-.eca250-glass-handle { fill: none; stroke: var(--eca250-ink); stroke-width: 14; }
-.eca250-glass-handle.companion { stroke-width: 10; }
-.eca250-ice { fill: none; stroke: rgba(255, 255, 255, .9); stroke-width: 12; }
-.eca250-ice.companion { stroke-width: 9; }
-.eca250-straw { fill: none; stroke: var(--eca250-berry); stroke-width: 10; }
-.eca250-straw.companion { stroke: var(--eca250-cover); stroke-width: 8; }
+.eca250-liquid-surface { fill: rgba(255, 235, 139, .82); stroke: #c99d30; stroke-width: 3; }
+.eca250-glass-rim { fill: rgba(231, 251, 248, .42); stroke: var(--eca250-glass-edge); stroke-width: 4; }
+.eca250-glass-rim.back { fill: rgba(231, 251, 248, .32); }
+.eca250-glass-rim.companion { stroke-width: 3.5; }
+.eca250-glass-rim-front,
+.eca250-pitcher-spout { fill: none; stroke: var(--eca250-ink); stroke-width: 4; }
+.eca250-glass-rim-front.companion { stroke-width: 3.5; }
+.eca250-glass-handle-outer { fill: none; stroke: var(--eca250-ink); stroke-width: 8; }
+.eca250-glass-handle-outer.companion { stroke-width: 7; }
+.eca250-glass-handle-inner { fill: none; stroke: var(--eca250-glass-edge); stroke-width: 4; }
+.eca250-glass-handle-inner.companion { stroke-width: 3.5; }
+.eca250-ice-cube { fill: rgba(244, 255, 253, .76); stroke: #8fc5c1; stroke-width: 2.5; }
+.eca250-ice-cube.companion { stroke-width: 2; }
+.eca250-straw-outline { fill: none; stroke: var(--eca250-ink); stroke-width: 11; }
+.eca250-straw-outline.companion { stroke-width: 9; }
+.eca250-straw { fill: none; stroke: var(--eca250-berry); stroke-width: 6; stroke-dasharray: 10 6; }
+.eca250-straw.companion { stroke: var(--eca250-cover); stroke-width: 5; stroke-dasharray: 8 5; }
 .eca250-lemon-rind { fill: var(--eca250-lemon); stroke: var(--eca250-ink); stroke-width: 4; }
 .eca250-lemon-rind.companion { fill: var(--eca250-lemon-light); stroke-width: 3; }
 .eca250-lemon-flesh { fill: var(--eca250-lemon-light); stroke: var(--eca250-gold); stroke-width: 2.5; }
 .eca250-lemon-segment { fill: none; stroke: var(--eca250-gold); stroke-width: 2.5; }
-.eca250-glass-highlight { fill: none; stroke: rgba(255, 255, 255, .9); stroke-width: 7; }
-.eca250-glass-highlight.companion { stroke-width: 5; }
-.eca250-glass-base { fill: none; stroke: var(--eca250-glass-edge); stroke-width: 5; }
+.eca250-glass-highlight { fill: none; stroke: rgba(255, 255, 255, .92); stroke-width: 5; }
+.eca250-glass-highlight.companion { stroke-width: 4; }
+.eca250-glass-base { fill: none; stroke: var(--eca250-glass-edge); stroke-width: 4; }
+.eca250-glass-base.companion { stroke-width: 3; }
 .eca250-condensation { fill: rgba(239, 255, 252, .92); stroke: var(--eca250-glass-edge); stroke-width: 2; }
 .eca250-condensation.companion { stroke-width: 1.5; }
-.eca250-glasses-frame { fill: var(--eca250-berry); stroke: var(--eca250-ink); stroke-width: 8; fill-rule: evenodd; }
-.eca250-glasses-frame.companion { fill: var(--eca250-cover); stroke-width: 7; }
-.eca250-glasses-lens { fill: var(--eca250-lens); stroke: var(--eca250-gold); stroke-width: 5; }
-.eca250-glasses-lens.companion { fill: rgba(88, 199, 191, .5); stroke-width: 4; }
-.eca250-glasses-temple { fill: none; stroke: var(--eca250-ink); stroke-width: 9; }
-.eca250-glasses-temple.companion { stroke-width: 7; }
-.eca250-lens-glint { fill: none; stroke: rgba(255, 255, 255, .86); stroke-width: 5; }
-.eca250-lens-glint.companion { stroke-width: 4; }
-.eca250-glasses-bridge-detail { fill: none; stroke: var(--eca250-gold); stroke-width: 4; }
+.eca250-lemon-bubble { fill: rgba(255, 246, 188, .78); stroke: #c99d30; stroke-width: 1.5; }
+.eca250-glasses-lens { fill: rgba(111, 88, 167, .28); stroke: none; }
+.eca250-glasses-lens.companion { fill: rgba(88, 199, 191, .3); }
+.eca250-glasses-rim { fill: none; stroke: var(--eca250-berry); stroke-width: 6; }
+.eca250-glasses-rim.companion { stroke: var(--eca250-cover); stroke-width: 5; }
+.eca250-glasses-bridge { fill: none; stroke: var(--eca250-gold); stroke-width: 5; }
+.eca250-glasses-bridge.companion { stroke-width: 4; }
+.eca250-glasses-temple { fill: none; stroke: var(--eca250-ink); stroke-width: 5; }
+.eca250-glasses-temple.companion { stroke-width: 4; }
+.eca250-glasses-hinge { fill: var(--eca250-gold); stroke: var(--eca250-ink); stroke-width: 2; }
+.eca250-lens-glint { fill: none; stroke: rgba(255, 255, 255, .9); stroke-width: 3.5; }
+.eca250-lens-glint.companion { stroke-width: 3; }
+.eca250-nose-pad { fill: none; stroke: var(--eca250-gold); stroke-width: 2.5; }
+.eca250-glasses-bridge-detail { fill: none; stroke: var(--eca250-gold); stroke-width: 2.5; }
 
 /* Lombok HPT26: Ficus-ground recovery, field-to-plate dates and paired substrates. */
 .lombok-hpt26-accessory {
