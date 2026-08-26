@@ -7032,22 +7032,45 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .eca250-bookmark { fill: var(--eca250-coral); stroke: var(--eca250-ink); stroke-width: 3.5; }
 .eca250-book-leaf { fill: var(--eca250-teal); stroke: var(--eca250-ink); stroke-width: 3.5; }
 .eca250-book-corner { fill: var(--eca250-gold); stroke: var(--eca250-ink); stroke-width: 3; }
-.eca250-illuminated-panel { fill: #fffaf0; stroke: var(--eca250-gold); stroke-width: 4; }
-.eca250-illuminated-frame { fill: none; stroke: var(--eca250-berry); stroke-width: 2.5; }
-.eca250-book-initial { fill: var(--eca250-cover); font: 900 72px/1 Georgia, serif; paint-order: stroke; stroke: var(--eca250-gold); stroke-width: 2.5px; }
-.eca250-page-vine { fill: none; stroke: var(--eca250-teal); stroke-width: 4; }
-.eca250-bacterium { stroke: var(--eca250-ink); stroke-width: 2.5; }
-.eca250-bacterium.rod { fill: var(--eca250-coral); }
-.eca250-bacterium.coccus { fill: var(--eca250-lemon); }
-.eca250-bacterium.spiral { fill: none; stroke: var(--eca250-teal); stroke-width: 5; }
-.eca250-bacterium.left-page { opacity: .9; }
-.eca250-bacterium.specimen { stroke-width: 3; }
-.eca250-bacteria-specimen-window { fill: rgba(255, 246, 216, .68); stroke: var(--eca250-gold); stroke-width: 2.5; }
-.eca250-page-worm { fill: none; stroke: var(--eca250-aqua); stroke-width: 13; }
-.eca250-page-worm-head { fill: var(--eca250-aqua); stroke: var(--eca250-ink); stroke-width: 4; }
-.eca250-page-worm-eye { fill: var(--eca250-ink); stroke: #fffaf0; stroke-width: 1; }
-.eca250-page-worm.studying { stroke-width: 12; }
-.eca250-page-worm-head.studying { fill: var(--eca250-aqua); }
+.eca250-book-cover.serious { fill: #514980; stroke-width: 5; }
+.eca250-book-cover-edge { fill: none; stroke: var(--eca250-gold); stroke-width: 3; }
+.eca250-book-page.serious { stroke-width: 4; }
+.eca250-book-block.serious { fill: #dcc9a1; stroke-width: 4; }
+.eca250-page-edge.serious { stroke: #b79d78; stroke-width: 2.4; }
+.eca250-book-gutter.serious { fill: rgba(83, 65, 69, .2); }
+.eca250-page-inner-border { fill: none; stroke: color-mix(in srgb, var(--eca250-gold) 74%, #fffaf0); stroke-width: 2.2; }
+.eca250-bacteria-heading { fill: var(--eca250-ink); font: 900 21px/1 var(--display); letter-spacing: 2px; }
+.eca250-heading-rule { fill: none; stroke: var(--eca250-gold); stroke-width: 2.4; }
+.eca250-petri-shadow { fill: rgba(52, 57, 78, .16); stroke: none; }
+.eca250-petri-base { fill: #c4aa75; stroke: var(--eca250-ink); stroke-width: 3.4; }
+.eca250-petri-rim { fill: rgba(209, 244, 240, .58); stroke: var(--eca250-ink); stroke-width: 4; }
+.eca250-petri-glass { fill: rgba(244, 224, 141, .67); stroke: var(--eca250-gold); stroke-width: 3; }
+.eca250-petri-clearing { fill: none; stroke: rgba(255, 250, 234, .94); stroke-width: 8; }
+.eca250-petri-clearing-head { fill: rgba(255, 250, 234, .96); stroke: var(--eca250-gold); stroke-width: 1.8; }
+.eca250-petri-clearing-eye { fill: var(--eca250-ink); stroke: none; }
+.eca250-petri-highlight { fill: none; stroke: rgba(255, 255, 255, .92); stroke-width: 3.2; }
+.eca250-bacterial-colony { fill: var(--eca250-teal); stroke: #fffaf0; stroke-width: 1.5; }
+.eca250-bacterial-colony.large { fill: var(--eca250-berry); }
+.eca250-page-flourish { fill: none; stroke: var(--eca250-gold); stroke-width: 2.8; }
+.eca250-magnifier-shadow { fill: rgba(52, 57, 78, .17); stroke: none; }
+.eca250-magnifier-rim { fill: #d6b65f; stroke: var(--eca250-ink); stroke-width: 4.2; }
+.eca250-magnifier-glass { fill: rgba(211, 245, 240, .76); stroke: #fffaf0; stroke-width: 2.4; }
+.eca250-magnifier-handle-outline { fill: none; stroke: var(--eca250-ink); stroke-width: 13; }
+.eca250-magnifier-handle { fill: none; stroke: var(--eca250-berry); stroke-width: 7; }
+.eca250-feeding-worm-body { fill: none; stroke: var(--eca250-aqua); stroke-width: 16; }
+.eca250-feeding-worm-highlight { fill: none; stroke: rgba(233, 255, 249, .78); stroke-width: 4; }
+.eca250-feeding-worm-head { fill: var(--eca250-aqua); stroke: var(--eca250-ink); stroke-width: 3.5; }
+.eca250-feeding-worm-eye { fill: var(--eca250-ink); stroke: #fffaf0; stroke-width: 1; }
+.eca250-feeding-pharynx { fill: none; stroke: var(--eca250-teal); stroke-width: 4; }
+.eca250-feeding-mouth { fill: none; stroke: var(--eca250-ink); stroke-width: 3; }
+.eca250-food-bacterium { stroke: var(--eca250-ink); stroke-width: 2.5; }
+.eca250-food-bacterium.rod { fill: var(--eca250-coral); }
+.eca250-food-bacterium.coccus { fill: var(--eca250-lemon); }
+.eca250-food-bacterium.spiral { fill: none; stroke: var(--eca250-teal); stroke-width: 5; }
+.eca250-food-bacterium.inset { stroke-width: 2; }
+.eca250-food-bacterium.meal { fill: var(--eca250-coral); stroke-width: 2.7; }
+.eca250-food-bacterium-detail { fill: none; stroke: var(--eca250-ink); stroke-width: 1.8; }
+.eca250-book-spine.serious { stroke-width: 5; }
 .eca250-page-curl { fill: #fffaf0; stroke: var(--eca250-ink); stroke-width: 4; }
 .eca250-page-illustration { fill: none; stroke: var(--eca250-aqua); stroke-width: 4; }
 .eca250-page-sun { fill: var(--eca250-lemon); stroke: var(--eca250-berry); stroke-width: 4; }
