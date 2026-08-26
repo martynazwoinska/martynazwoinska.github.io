@@ -7003,9 +7003,15 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .eca250-book-cover { fill: var(--eca250-cover); stroke: var(--eca250-ink); stroke-width: 6; }
 .eca250-book-cover.companion { fill: var(--eca250-cover-companion); stroke-width: 5.5; }
 .eca250-book-cover.closed { fill: var(--eca250-cover-companion); }
+.eca250-book-cover.standing.back { fill: #4b438a; }
+.eca250-book-cover.standing.front { fill: var(--eca250-cover-companion); }
 .eca250-book-page.closed { fill: var(--eca250-paper); }
+.eca250-book-page.standing { fill: #fff8de; }
 .eca250-book-block { fill: var(--eca250-paper-shadow); stroke: var(--eca250-ink); stroke-width: 4.5; }
+.eca250-book-block.standing.side { fill: #d9bd82; }
+.eca250-book-block.standing.base { fill: #f1dcae; }
 .eca250-book-spine.closed { fill: #4b438a; stroke: var(--eca250-ink); stroke-width: 5; }
+.eca250-book-spine.standing { fill: #4b438a; stroke-width: 5.5; }
 .eca250-spine-band { fill: none; stroke: var(--eca250-gold); stroke-width: 5; }
 .eca250-title-panel { fill: #fffaf0; stroke: var(--eca250-gold); stroke-width: 3.5; }
 .eca250-title-panel.companion { fill: #fffaf0; stroke-width: 3; }
@@ -7014,8 +7020,10 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .eca250-book-title.bottom { fill: var(--eca250-cover); }
 .eca250-book-title.companion { font-size: 18px; letter-spacing: 1.6px; }
 .eca250-book-title.companion.bottom { fill: var(--eca250-cover-companion); }
+.eca250-book-title.companion.standing { font-size: 20px; letter-spacing: 1.8px; }
 .eca250-title-worm { fill: none; stroke: var(--eca250-berry); stroke-width: 5; }
 .eca250-title-worm.companion { stroke: var(--eca250-teal); stroke-width: 4; }
+.eca250-title-worm-head { fill: var(--eca250-teal); stroke: var(--eca250-ink); stroke-width: 3; }
 .eca250-title-worm-eye { fill: var(--eca250-ink); stroke: var(--eca250-paper); stroke-width: 1; }
 .eca250-page-line { fill: none; stroke: #ad8765; stroke-width: 3; opacity: .72; }
 .eca250-page-line.companion { stroke-width: 2.5; }
@@ -7023,11 +7031,23 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .eca250-book-gutter { fill: rgba(119, 89, 68, .18); stroke: none; }
 .eca250-bookmark { fill: var(--eca250-coral); stroke: var(--eca250-ink); stroke-width: 3.5; }
 .eca250-book-leaf { fill: var(--eca250-teal); stroke: var(--eca250-ink); stroke-width: 3.5; }
+.eca250-book-corner { fill: var(--eca250-gold); stroke: var(--eca250-ink); stroke-width: 3; }
+.eca250-illuminated-panel { fill: #fffaf0; stroke: var(--eca250-gold); stroke-width: 4; }
+.eca250-illuminated-frame { fill: none; stroke: var(--eca250-berry); stroke-width: 2.5; }
+.eca250-book-initial { fill: var(--eca250-cover); font: 900 72px/1 Georgia, serif; paint-order: stroke; stroke: var(--eca250-gold); stroke-width: 2.5px; }
+.eca250-page-vine { fill: none; stroke: var(--eca250-teal); stroke-width: 4; }
+.eca250-page-worm { fill: none; stroke: var(--eca250-aqua); stroke-width: 13; }
+.eca250-page-worm-head { fill: var(--eca250-aqua); stroke: var(--eca250-ink); stroke-width: 4; }
+.eca250-page-worm-eye { fill: var(--eca250-ink); stroke: #fffaf0; stroke-width: 1; }
+.eca250-page-medallion { fill: var(--eca250-lemon); stroke: var(--eca250-berry); stroke-width: 3; }
+.eca250-page-medallion-detail { fill: none; stroke: var(--eca250-berry); stroke-width: 2.5; }
+.eca250-page-curl { fill: #fffaf0; stroke: var(--eca250-ink); stroke-width: 4; }
 .eca250-page-illustration { fill: none; stroke: var(--eca250-aqua); stroke-width: 4; }
 .eca250-page-sun { fill: var(--eca250-lemon); stroke: var(--eca250-berry); stroke-width: 4; }
 .eca250-page-sun-rays { fill: none; stroke: var(--eca250-gold); stroke-width: 2.5; }
 .eca250-page-edge { fill: none; stroke: var(--eca250-paper-shadow); stroke-width: 3.5; }
 .eca250-page-corner { fill: none; stroke: var(--eca250-gold); stroke-width: 2.5; }
+.eca250-page-line.story { stroke: #a9876a; stroke-width: 3; opacity: .68; }
 .eca250-lemonade-pitcher,
 .eca250-lemonade-glass { fill: rgba(209, 244, 240, .44); stroke: var(--eca250-glass-edge); stroke-width: 5; }
 .eca250-lemonade-glass.companion { stroke-width: 4.5; }

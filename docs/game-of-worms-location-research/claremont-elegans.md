@@ -24,9 +24,9 @@ Regional elements do not claim to reconstruct the unknown property. The scene mu
 
 ## Accessory set
 
-1. **Bookworm books** — a large open illustrated volume and a separately constructed smaller hardback. The open book has a cover beneath the page block, a shaded gutter, turning-page contours, bookmark, botanical marginalia and a two-line `BOOK WORM` title plate with a tiny worm flourish; the closed book has its own perspective, spine bands, page block and title treatment. The literal bookworm joke refers to Claremont's identity as a college town.
+1. **Bookworm books** — a large illuminated storybook and a separately constructed upright hardback. The open volume has a deep cover, layered page edges, a shaded gutter, an ornamental initial, a prominent worm illustration, botanical marginalia, a page medallion, curl and bookmark; the companion book uses an angled standing silhouette with its own front and back covers, page block, spine bands, corner guards, worm emblem and bookmark. The literal bookworm joke refers to Claremont's identity as a college town.
 2. **California lemonade** — a transparent handled pitcher and a distinct handled tumbler, built from separate front and back rims, liquid surfaces, individually rotated ice cubes, sliced lemon wheels, striped straws, layered handles, highlights, bubbles and condensation. They make the set feel like one warm garden reading day rather than another collection-equipment display.
-3. **Sunny reading glasses** — thin berry-and-gold cat-eye wire glasses for the hermaphrodite and smaller rounded violet wire glasses for the male. Each version is separately fitted to its worm's face, with transparent lenses, independent rims, bridge, temples, hinges, nose pads and glints kept clear of the eyes.
+3. **Sunny reading glasses** — thin berry-and-gold cat-eye wire glasses for the hermaphrodite and smaller rounded violet wire glasses for the male. Each version is separately fitted to its worm's face, with lens centres aligned to the diagonal eye line and transparent lenses, independent rims, bridge, temples, hinges, nose pads and glints kept clear of the eyes.
 
 Regional sources:
 

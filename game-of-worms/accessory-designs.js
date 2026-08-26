@@ -4306,41 +4306,46 @@ function drawClaremontECA250Accessory(group, item, companion) {
 
   if (item.family === "eca250-bookworm-book") {
     if (companion) {
-      add(group, "ellipse", { class: "eca250-ground-shadow", cx: 1, cy: 76, rx: 110, ry: 13 });
-      path(group, "M-113-47L-89 65Q8 42 105 58L91-47Q-2-71-113-47Z", "eca250-book-cover companion closed");
-      path(group, "M-101-37L-82 52Q7 31 94 47L82-37Q-2-58-101-37Z", "eca250-book-page companion closed");
-      path(group, "M-82 52Q7 31 94 47L101 61Q7 47-89 68Z", "eca250-book-block companion");
-      pageLines(group, ["M-76 56Q7 37 87 51", "M-74 61Q8 43 91 56"], true);
-      path(group, "M-113-47L-89 68L-106 62L-123-39Z", "eca250-book-spine companion closed");
-      path(group, "M-116-34L-102-28M-109-7L-95-2M-103 22L-91 27M-97 48L-87 52", "eca250-spine-band companion");
-      path(group, "M-72-28Q-8-43 59-26L64 21Q-3 8-66 26Z", "eca250-title-panel companion");
-      path(group, "M-64-21Q-5-34 51-20M-59 18Q-4 7 56 17", "eca250-title-frame companion");
-      label(group, "BOOK", -5, -6, "eca250-book-title companion top");
-      label(group, "WORM", -3, 12, "eca250-book-title companion bottom");
-      wormFlourish(group, "M-45 20Q-28 7-12 20Q4 33 22 17Q29 11 35 17", true);
-      path(group, "M58-24Q82-42 94-23L98 7Q77 21 61 8Z", "eca250-book-leaf companion");
-      path(group, "M28 45L43 73L57 49", "eca250-bookmark companion");
+      add(group, "ellipse", { class: "eca250-ground-shadow", cx: 5, cy: 107, rx: 83, ry: 13 });
+      path(group, "M-83-94L72-68L82 84L-70 106Z", "eca250-book-cover companion standing back");
+      path(group, "M-67-82L59-61L67 72L-57 91Z", "eca250-book-page companion standing");
+      path(group, "M59-61L72-68L82 84L67 72Z", "eca250-book-block companion standing side");
+      path(group, "M-57 91L67 72L82 84L-70 106Z", "eca250-book-block companion standing base");
+      path(group, "M-79-95L66-70L74 76L-67 98Z", "eca250-book-cover companion standing front");
+      path(group, "M-79-95L-67 98L-91 89L-102-86Z", "eca250-book-spine companion standing");
+      path(group, "M-96-66L-75-62M-93-27L-72-24M-89 14L-68 17M-86 56L-65 59", "eca250-spine-band companion");
+      path(group, "M-50-57L43-42L48 35L-45 49Z", "eca250-title-panel companion standing");
+      path(group, "M-43-49L36-36M-39 40L41 28M-43-49L-39 40M36-36L41 28", "eca250-title-frame companion standing");
+      label(group, "BOOK", -3, -16, "eca250-book-title companion top standing");
+      label(group, "WORM", 0, 8, "eca250-book-title companion bottom standing");
+      path(group, "M-33 24Q-16 8 2 21Q20 35 35 17", "eca250-title-worm companion standing");
+      add(group, "circle", { class: "eca250-title-worm-head companion", cx: 36, cy: 16, r: 7 });
+      add(group, "circle", { class: "eca250-title-worm-eye companion", cx: 38, cy: 14, r: 1.8 });
+      path(group, "M46-39L64-34L66-7Q55-1 47-7Z", "eca250-book-corner companion top");
+      path(group, "M47 42L67 38L69 67L50 69Z", "eca250-book-corner companion bottom");
+      path(group, "M13 74L30 103L43 78", "eca250-bookmark companion standing");
     } else {
-      add(group, "ellipse", { class: "eca250-ground-shadow", cx: 0, cy: 112, rx: 178, ry: 17 });
-      path(group, "M-181-35Q-101-96-8-42Q82-103 181-47L176 77Q84 39-8 86Q-101 42-180 82Z", "eca250-book-cover");
-      path(group, "M-170-31Q-96-83-10-35L-9 76Q-97 37-169 75Z", "eca250-book-page left");
-      path(group, "M-9-35Q79-91 170-42L164 70Q78 33-9 76Z", "eca250-book-page right");
-      path(group, "M-169 75Q-97 42-9 82Q78 40 164 70L159 88Q77 56-9 98Q-97 55-166 92Z", "eca250-book-block");
-      path(group, "M-174 84Q-98 49-9 92Q78 49 164 80", "eca250-page-edge");
-      path(group, "M-9-35Q-22 7-9 96Q5 8-9-35Z", "eca250-book-gutter");
-      path(group, "M-151-15Q-94-50-38-20L-40 50Q-96 23-148 55Z", "eca250-title-panel");
-      path(group, "M-143-8Q-94-36-47-14M-140 44Q-95 20-48 42M-143-8L-140 44M-47-14L-48 42", "eca250-title-frame");
-      label(group, "BOOK", -95, 3, "eca250-book-title top");
-      label(group, "WORM", -94, 28, "eca250-book-title bottom");
-      wormFlourish(group, "M-133 38Q-113 22-96 38Q-77 55-58 34Q-52 28-47 33");
-      pageLines(group, ["M-145 65Q-98 43-48 62", "M26-22Q80-56 139-29", "M28 2Q82-30 141-7", "M30 27Q83-4 141 18", "M31 52Q83 24 138 41"]);
-      path(group, "M-9-33V96", "eca250-book-spine");
-      path(group, "M91 58L105 105L120 79L137 94L121 47Z", "eca250-bookmark");
-      path(group, "M91-60Q120-84 148-57Q134-24 101-29Z", "eca250-book-leaf");
-      path(group, "M42 48Q76 22 121 39M56 49Q82 31 110 40", "eca250-page-illustration");
-      add(group, "circle", { class: "eca250-page-sun", cx: 67, cy: 9, r: 14 });
-      path(group, "M55 9L79 9M67-3V21M50-8L84 26M83-8L51 26", "eca250-page-sun-rays");
-      path(group, "M-162-20Q-137-45-116-34M149-27Q126-48 106-36", "eca250-page-corner");
+      add(group, "ellipse", { class: "eca250-ground-shadow", cx: 0, cy: 119, rx: 188, ry: 19 });
+      path(group, "M-190-25Q-109-102-7-45Q90-111 191-36L181 82Q88 42-7 101Q-105 49-184 95Z", "eca250-book-cover open deluxe");
+      path(group, "M-178-22Q-103-87-10-37L-8 83Q-103 42-173 82Z", "eca250-book-page left deluxe");
+      path(group, "M-8-37Q83-96 179-31L169 76Q80 39-8 83Z", "eca250-book-page right deluxe");
+      path(group, "M-173 82Q-99 48-8 91Q81 48 169 76L163 99Q78 69-8 111Q-101 68-169 103Z", "eca250-book-block deluxe");
+      path(group, "M-174 90Q-101 58-8 101Q81 59 165 88M-169 98Q-100 67-8 108Q79 68 160 96", "eca250-page-edge deluxe");
+      path(group, "M-8-37Q-23 7-8 108Q8 8-8-37Z", "eca250-book-gutter deluxe");
+      path(group, "M-151-30Q-101-66-46-34L-47 56Q-99 28-149 62Z", "eca250-illuminated-panel");
+      path(group, "M-143-23Q-100-52-55-28M-141 51Q-99 28-56 48M-143-23L-141 51M-55-28L-56 48", "eca250-illuminated-frame");
+      label(group, "B", -101, 28, "eca250-book-initial");
+      path(group, "M-137-7Q-126-21-113-10M-136 38Q-124 51-111 38M-69-9Q-58-20-51-9M-69 37Q-59 49-51 37", "eca250-page-vine");
+      path(group, "M24 48Q49 8 79 30Q103 48 125 9", "eca250-page-worm");
+      add(group, "circle", { class: "eca250-page-worm-head", cx: 128, cy: 4, r: 16 });
+      add(group, "circle", { class: "eca250-page-worm-eye", cx: 133, cy: 0, r: 3 });
+      path(group, "M35-22Q77-55 139-29M37-2Q69-25 100-17M38 68Q80 43 133 56", "eca250-page-line story");
+      add(group, "circle", { class: "eca250-page-medallion", cx: 59, cy: 11, r: 12 });
+      path(group, "M50 11L68 11M59 2V20", "eca250-page-medallion-detail");
+      path(group, "M-8-34V108", "eca250-book-spine deluxe");
+      path(group, "M99 63L112 114L128 85L144 101L127 50Z", "eca250-bookmark deluxe");
+      path(group, "M139-41Q167-62 181-34L169-4Q150 5 137-6Q150-19 139-41Z", "eca250-page-curl");
+      path(group, "M-177-21Q-151-52-126-40M154-19Q132-43 111-32", "eca250-book-corner open");
     }
     return true;
   }
@@ -4404,15 +4409,15 @@ function drawClaremontECA250Accessory(group, item, companion) {
       path(group, "M-9-10Q-6 1-4 7M11-10Q8 1 6 7", "eca250-nose-pad companion");
     } else {
       path(group, "M-105-11Q-105-51-72-59Q-35-61-25-21Q-19 21-57 31Q-96 35-105-11Z", "eca250-glasses-lens left");
-      path(group, "M28-20Q39-60 77-54Q112-45 105-5Q97 33 60 29Q22 20 28-20Z", "eca250-glasses-lens right");
-      path(group, "M-105-11Q-105-51-72-59Q-35-61-25-21Q-19 21-57 31Q-96 35-105-11ZM28-20Q39-60 77-54Q112-45 105-5Q97 33 60 29Q22 20 28-20Z", "eca250-glasses-rim");
-      path(group, "M-25-30Q2-52 29-29", "eca250-glasses-bridge");
-      path(group, "M-103-39L-151-54M105-34L151-45", "eca250-glasses-temple");
+      path(group, "M-25 17Q-14-23 24-17Q59-8 52 32Q44 70 7 66Q-31 57-25 17Z", "eca250-glasses-lens right");
+      path(group, "M-105-11Q-105-51-72-59Q-35-61-25-21Q-19 21-57 31Q-96 35-105-11ZM-25 17Q-14-23 24-17Q59-8 52 32Q44 70 7 66Q-31 57-25 17Z", "eca250-glasses-rim");
+      path(group, "M-27-19Q-13-5-24 19", "eca250-glasses-bridge");
+      path(group, "M-103-39L-151-54M51 3L92 6", "eca250-glasses-temple");
       add(group, "circle", { class: "eca250-glasses-hinge", cx: -104, cy: -39, r: 6 });
-      add(group, "circle", { class: "eca250-glasses-hinge", cx: 105, cy: -34, r: 6 });
-      path(group, "M-79-45Q-64-54-50-43M58-44Q73-52 87-38", "eca250-lens-glint");
-      path(group, "M-17-21Q-12-6-8 3M20-20Q14-6 10 3", "eca250-nose-pad");
-      path(group, "M-5-45Q1-58 8-44", "eca250-glasses-bridge-detail");
+      add(group, "circle", { class: "eca250-glasses-hinge", cx: 51, cy: 3, r: 6 });
+      path(group, "M-79-45Q-64-54-50-43M-2-10Q13-17 27-3", "eca250-lens-glint");
+      path(group, "M-32-14Q-28-3-26 5M-19 12Q-15 24-13 31", "eca250-nose-pad");
+      path(group, "M-31-26Q-19-36-8-22", "eca250-glasses-bridge-detail");
     }
     return true;
   }
@@ -6879,9 +6884,9 @@ function renderPiece(target, item, wormPart) {
     ,"eg4181-apricot-blossom-hat": { primary: [344, 25, .43, 0], companion: [111, 80, .36, -4] }
     ,"eg4181-beehive-saddle-pack": { primary: [245, 166, .46, 21], companion: [92, 154, .36, 30] }
     ,"eg4181-single-tail-mountain-ski": { primary: [151, 239, .49, -10], companion: [55, 211, .40, -7] }
-    ,"eca250-bookworm-book": { primary: [278, 260, .52, -4], companion: [70, 290, .40, 6] }
+    ,"eca250-bookworm-book": { primary: [278, 260, .52, -4], companion: [70, 286, .44, 6] }
     ,"eca250-california-lemonade": { primary: [386, 222, .39, -5], companion: [26, 231, .31, 7] }
-    ,"eca250-sunny-reading-glasses": { primary: [337, 61, .24, -5], companion: [111, 117, .17, 7] }
+    ,"eca250-sunny-reading-glasses": { primary: [362, 45, .24, -5], companion: [111, 117, .17, 7] }
     ,"ju1337-rotting-material-recovery-carousel": { primary: [383, 143, .45, -2], companion: [8, 128, .35, 2] }
     ,"ju1337-sixteen-december-field-calendar": { primary: [246, 196, .43, 1], companion: [126, 217, .34, -1] }
     ,"poovar-agricultural-edge-ledger": { primary: [379, 271, .42, -2], companion: [194, 292, .34, 2] }
