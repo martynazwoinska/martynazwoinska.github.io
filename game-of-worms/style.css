@@ -7036,11 +7036,18 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .eca250-illuminated-frame { fill: none; stroke: var(--eca250-berry); stroke-width: 2.5; }
 .eca250-book-initial { fill: var(--eca250-cover); font: 900 72px/1 Georgia, serif; paint-order: stroke; stroke: var(--eca250-gold); stroke-width: 2.5px; }
 .eca250-page-vine { fill: none; stroke: var(--eca250-teal); stroke-width: 4; }
+.eca250-bacterium { stroke: var(--eca250-ink); stroke-width: 2.5; }
+.eca250-bacterium.rod { fill: var(--eca250-coral); }
+.eca250-bacterium.coccus { fill: var(--eca250-lemon); }
+.eca250-bacterium.spiral { fill: none; stroke: var(--eca250-teal); stroke-width: 5; }
+.eca250-bacterium.left-page { opacity: .9; }
+.eca250-bacterium.specimen { stroke-width: 3; }
+.eca250-bacteria-specimen-window { fill: rgba(255, 246, 216, .68); stroke: var(--eca250-gold); stroke-width: 2.5; }
 .eca250-page-worm { fill: none; stroke: var(--eca250-aqua); stroke-width: 13; }
 .eca250-page-worm-head { fill: var(--eca250-aqua); stroke: var(--eca250-ink); stroke-width: 4; }
 .eca250-page-worm-eye { fill: var(--eca250-ink); stroke: #fffaf0; stroke-width: 1; }
-.eca250-page-medallion { fill: var(--eca250-lemon); stroke: var(--eca250-berry); stroke-width: 3; }
-.eca250-page-medallion-detail { fill: none; stroke: var(--eca250-berry); stroke-width: 2.5; }
+.eca250-page-worm.studying { stroke-width: 12; }
+.eca250-page-worm-head.studying { fill: var(--eca250-aqua); }
 .eca250-page-curl { fill: #fffaf0; stroke: var(--eca250-ink); stroke-width: 4; }
 .eca250-page-illustration { fill: none; stroke: var(--eca250-aqua); stroke-width: 4; }
 .eca250-page-sun { fill: var(--eca250-lemon); stroke: var(--eca250-berry); stroke-width: 4; }
