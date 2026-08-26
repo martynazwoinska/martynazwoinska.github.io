@@ -592,6 +592,10 @@
 
   if (chofButton && chofItem) {
     chofButton.setAttribute('aria-label', `${chofItem.label}. ${copy.openDetails}`);
+    chofButton.addEventListener('pointerenter', () => showPreview(chofItem, chofButton));
+    chofButton.addEventListener('pointerleave', hidePreview);
+    chofButton.addEventListener('focus', () => showPreview(chofItem, chofButton));
+    chofButton.addEventListener('blur', hidePreview);
     chofButton.addEventListener('click', () => openDetails(chofItem, chofButton));
   }
 
