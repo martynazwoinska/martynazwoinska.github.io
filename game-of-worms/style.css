@@ -7021,10 +7021,13 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .eca250-book-title.companion { font-size: 18px; letter-spacing: 1.6px; }
 .eca250-book-title.companion.bottom { fill: var(--eca250-cover-companion); }
 .eca250-book-title.companion.standing { font-size: 20px; letter-spacing: 1.8px; }
-.eca250-title-worm { fill: none; stroke: var(--eca250-berry); stroke-width: 5; }
-.eca250-title-worm.companion { stroke: var(--eca250-teal); stroke-width: 4; }
-.eca250-title-worm-head { fill: var(--eca250-teal); stroke: var(--eca250-ink); stroke-width: 3; }
-.eca250-title-worm-eye { fill: var(--eca250-ink); stroke: var(--eca250-paper); stroke-width: 1; }
+.eca250-book-title.companion.standing.single { font-size: 16px; letter-spacing: 1px; }
+.eca250-worm-seal { fill: #f5dda0; stroke: var(--eca250-gold); stroke-width: 3; }
+.eca250-seal-worm { fill: none; stroke: var(--eca250-teal); stroke-width: 7; stroke-linecap: round; }
+.eca250-seal-worm-head { fill: var(--eca250-teal); stroke: var(--eca250-ink); stroke-width: 2.5; }
+.eca250-seal-worm-highlight { fill: none; stroke: rgba(240, 255, 249, .82); stroke-width: 2.2; stroke-linecap: round; }
+.eca250-seal-worm-eye { fill: var(--eca250-ink); }
+.eca250-seal-worm-smile { fill: none; stroke: var(--eca250-ink); stroke-width: 1.8; stroke-linecap: round; }
 .eca250-page-line { fill: none; stroke: #ad8765; stroke-width: 3; opacity: .72; }
 .eca250-page-line.companion { stroke-width: 2.5; }
 .eca250-book-spine { fill: rgba(94, 79, 152, .22); stroke: var(--eca250-gold); stroke-width: 6; }
@@ -7051,25 +7054,18 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .eca250-petri-highlight { fill: none; stroke: rgba(255, 255, 255, .92); stroke-width: 3.2; }
 .eca250-bacterial-colony { fill: var(--eca250-teal); stroke: #fffaf0; stroke-width: 1.5; }
 .eca250-bacterial-colony.large { fill: var(--eca250-berry); }
-.eca250-page-flourish { fill: none; stroke: var(--eca250-gold); stroke-width: 2.8; }
-.eca250-magnifier-shadow { fill: rgba(52, 57, 78, .17); stroke: none; }
-.eca250-magnifier-rim { fill: #d6b65f; stroke: var(--eca250-ink); stroke-width: 4.2; }
-.eca250-magnifier-glass { fill: rgba(211, 245, 240, .76); stroke: #fffaf0; stroke-width: 2.4; }
-.eca250-magnifier-handle-outline { fill: none; stroke: var(--eca250-ink); stroke-width: 13; }
-.eca250-magnifier-handle { fill: none; stroke: var(--eca250-berry); stroke-width: 7; }
-.eca250-feeding-worm-body { fill: none; stroke: var(--eca250-aqua); stroke-width: 16; }
-.eca250-feeding-worm-highlight { fill: none; stroke: rgba(233, 255, 249, .78); stroke-width: 4; }
-.eca250-feeding-worm-head { fill: var(--eca250-aqua); stroke: var(--eca250-ink); stroke-width: 3.5; }
-.eca250-feeding-worm-eye { fill: var(--eca250-ink); stroke: #fffaf0; stroke-width: 1; }
-.eca250-feeding-pharynx { fill: none; stroke: var(--eca250-teal); stroke-width: 4; }
-.eca250-feeding-mouth { fill: none; stroke: var(--eca250-ink); stroke-width: 3; }
 .eca250-food-bacterium { stroke: var(--eca250-ink); stroke-width: 2.5; }
 .eca250-food-bacterium.rod { fill: var(--eca250-coral); }
 .eca250-food-bacterium.coccus { fill: var(--eca250-lemon); }
 .eca250-food-bacterium.spiral { fill: none; stroke: var(--eca250-teal); stroke-width: 5; }
-.eca250-food-bacterium.inset { stroke-width: 2; }
-.eca250-food-bacterium.meal { fill: var(--eca250-coral); stroke-width: 2.7; }
 .eca250-food-bacterium-detail { fill: none; stroke: var(--eca250-ink); stroke-width: 1.8; }
+.eca250-food-bacterium.page { stroke-width: 2.4; }
+.eca250-page-divider { fill: none; stroke: var(--eca250-gold); stroke-width: 2.3; }
+.eca250-reading-worm-body { fill: none; stroke: var(--eca250-aqua); stroke-width: 18; stroke-linecap: round; stroke-linejoin: round; }
+.eca250-reading-worm-highlight { fill: none; stroke: rgba(237, 255, 250, .84); stroke-width: 4; stroke-linecap: round; }
+.eca250-reading-worm-head { fill: var(--eca250-aqua); stroke: var(--eca250-ink); stroke-width: 3.5; }
+.eca250-reading-worm-eye { fill: var(--eca250-ink); stroke: #fffaf0; stroke-width: 1; }
+.eca250-reading-worm-smile { fill: none; stroke: var(--eca250-ink); stroke-width: 2.5; stroke-linecap: round; }
 .eca250-book-spine.serious { stroke-width: 5; }
 .eca250-page-curl { fill: #fffaf0; stroke: var(--eca250-ink); stroke-width: 4; }
 .eca250-page-illustration { fill: none; stroke: var(--eca250-aqua); stroke-width: 4; }

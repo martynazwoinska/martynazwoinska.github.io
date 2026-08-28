@@ -4299,11 +4299,6 @@ function drawClaremontECA250Accessory(group, item, companion) {
     rx: size * .18,
     transform: `rotate(${angle} ${x} ${y})`
   });
-  const wormFlourish = (parent, d, companionFlourish = false) => {
-    path(parent, d, companionFlourish ? "eca250-title-worm companion" : "eca250-title-worm");
-    add(parent, "circle", { class: companionFlourish ? "eca250-title-worm-eye companion" : "eca250-title-worm-eye", cx: companionFlourish ? 34 : -47, cy: companionFlourish ? 18 : 27, r: companionFlourish ? 2.5 : 3 });
-  };
-
   if (item.family === "eca250-bookworm-book") {
     if (companion) {
       add(group, "ellipse", { class: "eca250-ground-shadow", cx: 5, cy: 107, rx: 83, ry: 13 });
@@ -4316,11 +4311,13 @@ function drawClaremontECA250Accessory(group, item, companion) {
       path(group, "M-96-66L-75-62M-93-27L-72-24M-89 14L-68 17M-86 56L-65 59", "eca250-spine-band companion");
       path(group, "M-50-57L43-42L48 35L-45 49Z", "eca250-title-panel companion standing");
       path(group, "M-43-49L36-36M-39 40L41 28M-43-49L-39 40M36-36L41 28", "eca250-title-frame companion standing");
-      label(group, "BOOK", -3, -16, "eca250-book-title companion top standing");
-      label(group, "WORM", 0, 8, "eca250-book-title companion bottom standing");
-      path(group, "M-33 24Q-16 8 2 21Q20 35 35 17", "eca250-title-worm companion standing");
-      add(group, "circle", { class: "eca250-title-worm-head companion", cx: 36, cy: 16, r: 7 });
-      add(group, "circle", { class: "eca250-title-worm-eye companion", cx: 38, cy: 14, r: 1.8 });
+      label(group, "BOOKWORM", -1, -17, "eca250-book-title companion standing single");
+      add(group, "ellipse", { class: "eca250-worm-seal companion", cx: 0, cy: 20, rx: 37, ry: 23 });
+      path(group, "M-25 24Q-14 6 1 19Q15 33 27 13", "eca250-seal-worm companion");
+      add(group, "circle", { class: "eca250-seal-worm-head companion", cx: 29, cy: 10, r: 8 });
+      path(group, "M-19 21Q-11 12-2 18", "eca250-seal-worm-highlight companion");
+      add(group, "circle", { class: "eca250-seal-worm-eye companion", cx: 32, cy: 7, r: 2 });
+      path(group, "M27 15Q31 18 35 14", "eca250-seal-worm-smile companion");
       path(group, "M46-39L64-34L66-7Q55-1 47-7Z", "eca250-book-corner companion top");
       path(group, "M47 42L67 38L69 67L50 69Z", "eca250-book-corner companion bottom");
       path(group, "M13 74L30 103L43 78", "eca250-bookmark companion standing");
@@ -4345,30 +4342,21 @@ function drawClaremontECA250Accessory(group, item, companion) {
       add(group, "circle", { class: "eca250-petri-clearing-head", cx: -67, cy: 22, r: 7 });
       add(group, "circle", { class: "eca250-petri-clearing-eye", cx: -64, cy: 19, r: 1.7 });
       path(group, "M-137 9Q-116-4-91 2", "eca250-petri-highlight");
-      [[-132,14],[-113,12],[-88,8],[-75,35],[-130,55],[-109,61],[-87,55],[-70,45],[-102,42],[-120,37]].forEach(([cx, cy], index) => add(group, "circle", { class: index % 4 === 0 ? "eca250-bacterial-colony large" : "eca250-bacterial-colony", cx, cy, r: index % 4 === 0 ? 4.8 : 3.4 }));
+      [[-131,14],[-108,10],[-81,16],[-130,53],[-102,58],[-75,46],[-104,37]].forEach(([cx, cy], index) => add(group, "circle", { class: index === 0 || index === 4 ? "eca250-bacterial-colony large" : "eca250-bacterial-colony", cx, cy, r: index === 0 || index === 4 ? 4.8 : 3.4 }));
 
-      add(group, "circle", { class: "eca250-magnifier-shadow", cx: 112, cy: -4, r: 39 });
-      add(group, "circle", { class: "eca250-magnifier-rim", cx: 110, cy: -7, r: 37 });
-      add(group, "circle", { class: "eca250-magnifier-glass", cx: 110, cy: -7, r: 30 });
-      path(group, "M135 19L157 40", "eca250-magnifier-handle-outline");
-      path(group, "M135 19L157 40", "eca250-magnifier-handle");
-      add(group, "rect", { class: "eca250-food-bacterium rod inset", x: 88, y: -20, width: 27, height: 11, rx: 5.5, transform: "rotate(-12 101 -15)" });
-      path(group, "M101-21L103-10", "eca250-food-bacterium-detail");
-      [[119,-14],[128,-8],[118,-1],[127,5]].forEach(([cx, cy]) => add(group, "circle", { class: "eca250-food-bacterium coccus inset", cx, cy, r: 4.4 }));
-      path(group, "M87 4Q95-5 103 4Q111 13 119 4", "eca250-food-bacterium spiral inset");
+      add(group, "rect", { class: "eca250-food-bacterium rod page", x: 29, y: -19, width: 35, height: 14, rx: 7, transform: "rotate(-10 46 -12)" });
+      path(group, "M46-19L48-5", "eca250-food-bacterium-detail page");
+      path(group, "M82-12Q91-23 100-12Q109-1 118-12", "eca250-food-bacterium spiral page");
+      [[141,-18],[153,-13],[141,-5],[153,0]].forEach(([cx, cy]) => add(group, "circle", { class: "eca250-food-bacterium coccus page", cx, cy, r: 5 }));
+      path(group, "M24 18Q90 6 158 15", "eca250-page-divider");
 
-      path(group, "M24 70Q43 35 68 54Q89 73 108 50Q123 31 139 39", "eca250-feeding-worm-body");
-      path(group, "M28 65Q45 45 65 58Q87 72 105 52Q120 38 135 43", "eca250-feeding-worm-highlight");
-      add(group, "ellipse", { class: "eca250-feeding-worm-head", cx: 145, cy: 38, rx: 17, ry: 15, transform: "rotate(-11 145 38)" });
-      add(group, "circle", { class: "eca250-feeding-worm-eye", cx: 149, cy: 33, r: 3.2 });
-      path(group, "M134 45Q143 37 152 37", "eca250-feeding-pharynx");
-      path(group, "M160 38L167 37", "eca250-feeding-mouth");
-      add(group, "rect", { class: "eca250-food-bacterium rod meal", x: 168, y: 31, width: 20, height: 10, rx: 5, transform: "rotate(-5 178 36)" });
-      path(group, "M178 31L178 41", "eca250-food-bacterium-detail");
-      path(group, "M31 83Q76 62 129 73", "eca250-page-flourish lower");
+      path(group, "M30 69Q48 39 72 55Q94 72 116 52Q135 35 151 47", "eca250-reading-worm-body");
+      path(group, "M34 64Q50 47 69 59Q92 73 113 54", "eca250-reading-worm-highlight");
+      add(group, "ellipse", { class: "eca250-reading-worm-head", cx: 157, cy: 47, rx: 15, ry: 14, transform: "rotate(-8 157 47)" });
+      add(group, "circle", { class: "eca250-reading-worm-eye", cx: 161, cy: 42, r: 3 });
+      path(group, "M154 52Q159 56 164 51", "eca250-reading-worm-smile");
       path(group, "M-9-36V114", "eca250-book-spine serious");
-      path(group, "M105 69L117 120L132 91L149 106L132 55Z", "eca250-bookmark serious");
-      path(group, "M144-39Q171-59 187-32L176-1Q158 8 143-4Q155-18 144-39Z", "eca250-page-curl serious");
+      path(group, "M-3 96L8 125L20 99L13 94Z", "eca250-bookmark serious");
       path(group, "M-178-20Q-153-49-127-39M157-18Q134-42 112-31", "eca250-book-corner serious");
     }
     return true;
@@ -6908,7 +6896,7 @@ function renderPiece(target, item, wormPart) {
     ,"eg4181-apricot-blossom-hat": { primary: [344, 25, .43, 0], companion: [111, 80, .36, -4] }
     ,"eg4181-beehive-saddle-pack": { primary: [245, 166, .46, 21], companion: [92, 154, .36, 30] }
     ,"eg4181-single-tail-mountain-ski": { primary: [151, 239, .49, -10], companion: [55, 211, .40, -7] }
-    ,"eca250-bookworm-book": { primary: [274, 257, .57, -4], companion: [70, 286, .44, 6] }
+    ,"eca250-bookworm-book": { primary: [274, 257, .57, -4], companion: [68, 283, .50, 6] }
     ,"eca250-california-lemonade": { primary: [386, 222, .39, -5], companion: [26, 231, .31, 7] }
     ,"eca250-sunny-reading-glasses": { primary: [362, 45, .24, -5], companion: [117, 107, .17, 7] }
     ,"ju1337-rotting-material-recovery-carousel": { primary: [383, 143, .45, -2], companion: [8, 128, .35, 2] }
