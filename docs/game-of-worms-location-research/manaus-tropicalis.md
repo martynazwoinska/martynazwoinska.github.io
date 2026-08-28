@@ -1,8 +1,10 @@
 # Manaus-region *Caenorhabditis tropicalis* JU1976 location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-08-28
 
-> **Current production accessory contract:** `anonymous-fruit sample cases`, `four-metre tape measures`, and `soil-profile charts`. These recognizable objects supersede the earlier abstract mechanism sketches below without assigning a botanical identity to the fruit.
+> **Retired from the active Game on 2026-08-28.** This dossier and its preserved painting remain archival provenance. The Manaus location, marker, environment profile and accessory set are no longer loaded by the playable atlas. Nouragues JU1428 remains the active South American *C. tropicalis* representative.
+
+> **Former production accessory contract:** `anonymous-fruit sample cases`, `four-metre tape measures`, and `soil-profile charts`. The historical design record below is retained for traceability only.
 
 ## Purpose
 
@@ -344,7 +346,7 @@ const manausRendererIds = new Set([
 ## Acceptance checks
 
 - Exactly 37 environment profiles, compositions and accessory sets.
-- Exactly 111 design IDs.
+- Current playable catalogue: 103 design IDs; Manaus is excluded.
 - Correct JU1976 marker, source, strain, coordinate and history.
 - No active `manaus-meeting-waters`, confluence-sunglasses, igapó-stilts or
   river-marimba reference for Manaus.

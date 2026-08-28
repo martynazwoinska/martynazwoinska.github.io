@@ -322,8 +322,6 @@ This must remain immediately distinguishable from:
   thread;
 - Kauaʻi QG131's pandanus canopy, prop roots, descending beach trail and
   coastal opening;
-- Manaus JU1976's opposed ground-level palm fans and narrow vertical shaft;
-- La Selva QG3845's broad buttress and Barva-corridor ridge slit;
 - New Taipei NIC1648's zig-zag concrete stair;
 - the old rectilinear Nan Madol wall silhouette.
 

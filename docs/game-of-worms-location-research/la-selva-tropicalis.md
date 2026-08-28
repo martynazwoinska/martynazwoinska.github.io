@@ -1,8 +1,10 @@
 # La Selva *Caenorhabditis tropicalis* QG3845 location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-08-28
 
-> **Current production accessory contract:** `26.5 °C thermometers`, `leaf-cutter ant field loupes`, and `La Selva–Barva elevation maps`. These recognizable objects supersede the earlier abstract mechanism sketches below; the ant and elevation map remain regional research context.
+> **Retired from the active Game on 2026-08-28.** This dossier and its preserved painting remain archival provenance. The La Selva location, marker, environment profile and accessory set are no longer loaded by the playable atlas.
+
+> **Former production accessory contract:** `26.5 °C thermometers`, `leaf-cutter ant field loupes`, and `La Selva–Barva elevation maps`. The historical design record below is retained for traceability only.
 
 ## Purpose
 
@@ -313,7 +315,7 @@ Expected totals remain:
 ## Acceptance checks
 
 - Exactly 37 environment profiles and composition IDs.
-- Exactly 37 accessory sets and 111 unique design IDs.
+- Current playable catalogue: 34 active accessory sets and 103 unique design IDs; La Selva is excluded.
 - No active `la-selva-river-corridor` or `two-river-yoke` reference.
 - Correct QG3845 marker, source, strain, history and coordinates.
 - No water, bridge, station or geometric volcano in the revised scene.

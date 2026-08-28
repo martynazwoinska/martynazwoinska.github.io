@@ -336,8 +336,8 @@ Expected totals become:
 
 ## Acceptance checks
 
-- Exactly 37 explicit environment profiles and composition IDs.
-- Exactly 37 accessory sets and 111 unique design IDs.
+- Exactly 35 preserved environment profiles and composition IDs, with 34 active locations.
+- Exactly 34 active accessory sets and 103 unique design IDs.
 - Correct NIC203 marker, strain, history, coordinate, profile and source.
 - No active `guadeloupe-soufriere`, fumarole-wig, waterfall-glass-harmonica or
   fern-epaulettes reference for Guadeloupe.

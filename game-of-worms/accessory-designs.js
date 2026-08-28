@@ -34,10 +34,8 @@ const rows = [
   ["nigoni", "Lombok, Indonesia · HPT26", "fig sample trays", "hpt26-ficus-ground-contact-stage", "field-to-plate calendars", "lingsar-field-to-plate-calendar", "paired sample boxes", "hpt26-hpt27-substrate-diptych"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "Balinese endek wrap", "ju1873-balinese-endek-wrap", "Balinese gamelan gong", "ju1873-balinese-gamelan-gong"],
   ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Golden Fleece cape", "qg2726-golden-fleece-cape", "forest-census map fans", "qg2726-bci-forest-census-map-fans"],
-  ["tropicalis", "La Selva, Costa Rica", "26.5 °C thermometers", "qg3845-substrate-temperature", "leaf-cutter ant field loupes", "la-selva-leafcutter-automaton", "La Selva–Barva elevation maps", "barva-gradient-lift"],
   ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras carnival crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
   ["tropicalis", "Nouragues, French Guiana · JU1428", "Duguetia sample boxes", "ju1428-duguetia-fruit-theatre", "litterfall baskets", "nouragues-litterfall-chronobalance", "three-strain sample racks", "ju1428-isotype-triad-comparator"],
-  ["tropicalis", "Manaus region, Brazil · JU1976", "anonymous-fruit sample cases", "ju1976-substrate-identity-shadow-theatre", "four-metre tape measures", "ju1975-ju1976-four-metre-sample-rail", "soil-profile charts", "manaus-plateau-valley-soil-harmonograph"],
   ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "petal rain trumpets", "eca789-petal-rain-trumpet", "raindrop harps", "eca789-raindrop-harp", "cacao-key xylophones", "eca789-cacao-key-xylophone"],
   ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Taiwan blue-magpie kites", "nic1648-taiwan-blue-magpie-kites", "single-tail rain boots", "nic1648-single-tail-rain-boots", "bubble-tea jetpacks", "nic1648-bubble-tea-jetpacks"],
   ["tropicalis", "Pohnpei, Micronesia · QG4739", "kotop sample boxes", "qg4739-kotop-name-concordance", "paired thermometers", "qg4739-paired-temperature-differential", "seven-vial sample racks", "c0230-seven-isotype-registry"],
@@ -156,11 +154,6 @@ const nambuccaQG2814RendererIds = new Set([
   "briggsae::Nambucca Heads, New South Wales · QG2814::wrap",
   "briggsae::Nambucca Heads, New South Wales · QG2814::charm"
 ]);
-const laSelvaQG3845RendererIds = new Set([
-  "tropicalis::La Selva, Costa Rica::headwear",
-  "tropicalis::La Selva, Costa Rica::wrap",
-  "tropicalis::La Selva, Costa Rica::charm"
-]);
 const guadeloupeNIC203RendererIds = new Set([
   "tropicalis::Guadeloupe · NIC203::headwear",
   "tropicalis::Guadeloupe · NIC203::wrap",
@@ -211,11 +204,6 @@ const nouraguesJU1428RendererIds = new Set([
   "tropicalis::Nouragues, French Guiana · JU1428::wrap",
   "tropicalis::Nouragues, French Guiana · JU1428::charm"
 ]);
-const manausJU1976RendererIds = new Set([
-  "tropicalis::Manaus region, Brazil · JU1976::headwear",
-  "tropicalis::Manaus region, Brazil · JU1976::wrap",
-  "tropicalis::Manaus region, Brazil · JU1976::charm"
-]);
 const instrumentRendererPattern = /fiddle|flute|piccolo|lyre|concertina|accordion|ocarina|saxophone|ukulele|drum|tambourine|marimba|xylophone|chimes|harmonica|trumpet|maracas/i;
 const fieldToolRendererPattern = /sieve|dip net|sampler|pannier|trug|quadrat|telescope|periscope|compass|press|gauge rod|camera rig/i;
 const naturalRendererPattern = /wings|glider|fan|stilts|snowshoes|crampons|pennant|streamer wand|claws|waterwheel|carousel|fruit capsule/i;
@@ -247,7 +235,6 @@ function hasNamedRenderer(item) {
     || nambuccaQG2814RendererIds.has(item.id)
     || barroColoradoQG2726RendererIds.has(item.id)
     || sandaJU1873RendererIds.has(item.id)
-    || laSelvaQG3845RendererIds.has(item.id)
     || guadeloupeNIC203RendererIds.has(item.id)
     || oahuECA789RendererIds.has(item.id)
     || kauaiQG131RendererIds.has(item.id)
@@ -258,7 +245,6 @@ function hasNamedRenderer(item) {
     || lombokHPT26RendererIds.has(item.id)
     || reunionJU1373RendererIds.has(item.id)
     || nouraguesJU1428RendererIds.has(item.id)
-    || manausJU1976RendererIds.has(item.id)
     || instrumentRendererPattern.test(item.label)
     || fieldToolRendererPattern.test(item.label)
     || naturalRendererPattern.test(item.label);
@@ -3266,35 +3252,6 @@ function drawNouraguesJU1428Accessory(group, item, companion) {
   return true;
 }
 
-function drawManausJU1976Accessory(group, item, companion) {
-  if (!manausJU1976RendererIds.has(item.id)) return false;
-  group.dataset.renderer = item.family;
-  group.classList.add("manaus-ju1976-accessory", companion ? "ju1976-companion" : "ju1976-primary");
-  const text = (value, x, y) => { const node = add(group, "text", { class: "acc-label", x, y, "text-anchor": "middle" }); node.textContent = value; };
-  if (item.family === "ju1976-substrate-identity-shadow-theatre") {
-    if (companion) {
-      add(group,"path",{class:"acc-main",d:"M-31-70H31V67H-31Z"}); add(group,"path",{class:"acc-soft",d:"M-18-47H18V24H-18Z"}); add(group,"circle",{class:"acc-accent",cx:0,cy:-11,r:22}); line(group,"M-58-39H-31M31-39H58M-58-39V19M58-39V19","acc-line thick"); add(group,"path",{class:"acc-main",d:"M-45 31H45L34 57H-34Z"}); text("JU1976",0,84);
-    } else {
-      add(group,"path",{class:"acc-main",d:"M-80 55H80L66 76H-66Z"}); add(group,"path",{class:"acc-soft",d:"M-53-49H53V39H-53Z"}); add(group,"ellipse",{class:"acc-accent",cx:0,cy:-5,rx:36,ry:23}); line(group,"M-53-39L-78-65M53-39L78-65M0-28V-64","acc-line thick"); add(group,"rect",{class:"acc-dark",x:61,y:-18,width:26,height:34,rx:4}); text("Br3.1 / JU1976",0,67);
-    }
-    return true;
-  }
-  if (item.family === "ju1975-ju1976-four-metre-sample-rail") {
-    if (companion) {
-      add(group,"path",{class:"acc-main",d:"M-20-75H20V72H-20Z"}); [ -34, 28 ].forEach((y,i)=>{ add(group,"ellipse",{class:i?"acc-accent":"acc-soft",cx:0,cy:y,rx:31,ry:17}); text(i?"JU1976":"JU1975",0,y+4); }); add(group,"circle",{class:"acc-dark",cx:47,cy:0,r:12}); line(group,"M20-34H48M20 28H55M47-34V28","acc-line thick"); text("4 m",53,77);
-    } else {
-      add(group,"path",{class:"acc-main",d:"M-86 38H86V58H-86Z"}); add(group,"path",{class:"acc-soft",d:"M-72-17H-9V26H-72ZM9-10H72V26H9Z"}); line(group,"M-72-17V-35M72-10V-35M-72-35H72","acc-line thick"); add(group,"circle",{class:"acc-accent",cx:0,cy:-36,r:9}); text("JU1975",-40,10); text("JU1976",40,10); text("4 m",0,77);
-    }
-    return true;
-  }
-  if (companion) {
-    add(group,"path",{class:"acc-main",d:"M-27-68H27V70H-27Z"}); [ -38, 0, 38 ].forEach((y,i)=>add(group,"ellipse",{class:i===1?"acc-accent":"acc-soft",cx:0,cy:y,rx:20,ry:13})); line(group,"M27-38H56M27 0H62M27 38H53M56-38V38","acc-line thick"); text("soil",0,77);
-  } else {
-    add(group,"path",{class:"acc-main",d:"M-78 48V-28H-30V-59H30V-28H78V48Z"}); add(group,"path",{class:"acc-soft",d:"M-58 29H-22V-11H-58ZM-12 29H24V-11H-12ZM34 29H68V-11H34Z"}); line(group,"M-30-28V-70M30-28V-70M-63 48H63","acc-line thick"); add(group,"circle",{class:"acc-accent",cx:0,cy:-73,r:8}); text("plateau · valley",0,68);
-  }
-  return true;
-}
-
 function drawAhmedabadAF16Accessory(group, item, companion) {
   if (!ahmedabadAF16RendererIds.has(item.id)) return false;
   group.dataset.renderer = item.family;
@@ -5074,90 +5031,6 @@ function drawGuadeloupeNIC203Accessory(group, item, companion) {
   return false;
 }
 
-function drawLaSelvaQG3845Accessory(group, item, companion) {
-  if (!laSelvaQG3845RendererIds.has(item.id)) return false;
-  group.dataset.renderer = item.family;
-  group.classList.add("la-selva-qg3845-accessory", companion ? "qg3845-companion" : "qg3845-primary");
-  const text = (value, x, y, className = "qg3845-label") => {
-    const node = add(group, "text", { class: className, x, y, "text-anchor": "middle" });
-    node.textContent = value;
-  };
-
-  if (item.family === "qg3845-substrate-temperature") {
-    if (companion) {
-      path(group, "M-28-83H27L37 69H-38Z", "qg3845-cage");
-      line(group, "M-18-65Q0-48 18-65M-20-30Q0-12 21-30M-22 7Q0 25 23 7", "qg3845-vein");
-      path(group, "M-12-56H13V30H-12Z", "qg3845-marker-column");
-      line(group, "M-10-3H11", "qg3845-marker");
-      text("26.5°", 0, 4);
-      path(group, "M-37 55H29L20 78H-44Z", "qg3845-contact-shoe");
-      add(group, "circle", { class: "qg3845-verify-dial", cx: 45, cy: -33, r: 17 });
-      line(group, "M45-33L52-42", "qg3845-pointer");
-      text("QG3845", 0, 65, "qg3845-small-label");
-    } else {
-      path(group, "M-86 44A86 86 0 0 1 86 44L72 67H-72Z", "qg3845-dial-shell");
-      path(group, "M-66 39A67 67 0 0 1 66 39", "qg3845-glass");
-      [-70,-50,-30,-10,10,30,50,70].forEach(angle => {
-        const r=angle*Math.PI/180; line(group, `M${Math.sin(r)*53} ${39-Math.cos(r)*53}L${Math.sin(r)*64} ${39-Math.cos(r)*64}`, "qg3845-tick");
-      });
-      line(group, "M0 39L26-12", "qg3845-pointer");
-      add(group, "circle", { class: "qg3845-pivot", cx: 0, cy: 39, r: 8 });
-      text("26.5 °C", 0, 18);
-      path(group, "M-106 16Q-88-6-66 11L-57 59H-103Z", "qg3845-fruit-cradle");
-      text("AM10 / QG3845", 0, 82, "qg3845-small-label");
-    }
-    return true;
-  }
-
-  if (item.family === "la-selva-leafcutter-automaton") {
-    const ant = (x,y,s=1,angle=0) => {
-      const a=add(group,"g",{class:"qg3845-ant",transform:`translate(${x} ${y}) rotate(${angle}) scale(${s})`});
-      [-12,0,12].forEach((cx,index)=>add(a,"circle",{cx,cy:0,r:index===1?7:6}));
-      [-8,8].forEach(side=>line(a,`M${side}-2L${side*1.7}-14M${side} 3L${side*1.8} 15`,"qg3845-ant-leg"));
-    };
-    if (companion) {
-      path(group, "M-39 72Q-53 33-29 6Q-4-20-19-49Q-5-77 26-64Q49-48 27-20Q7 4 26 27Q45 50 30 72", "qg3845-spiral-lift");
-      ant(-20,18,.72,-25); ant(19,-38,.72,35);
-      path(group, "M21-64L60-82L68-54L34-38Z", "qg3845-leaf-panel");
-      line(group, "M48-58V17", "qg3845-counter-cable");
-      path(group, "M37 17L60 17L55 43H42Z", "qg3845-counterweight");
-      path(group, "M-45 70H45L31 86H-31Z", "qg3845-tripod");
-    } else {
-      add(group, "ellipse", { class: "qg3845-cam-track", cx: 0, cy: 15, rx: 91, ry: 39 });
-      [[-64,15,.7,-12],[-25,-2,.72,8],[20,0,.7,-6],[61,17,.72,14]].forEach(v=>ant(...v));
-      [[-58,-13,-10],[-7,-29,6],[47,-15,15]].forEach(([x,y,a],i)=>path(group,`M${x-19} ${y+3}Q${x} ${y-24-i*3} ${x+20} ${y+2}Q${x} ${y+15} ${x-19} ${y+3}Z`,"qg3845-leaf-panel"));
-      line(group, "M-76 35H77M-55 34L-25 15M-10 35L20 15M41 34L61 19", "qg3845-linkage");
-      add(group, "circle", { class: "qg3845-crank", cx: 94, cy: 20, r: 13 });
-      line(group, "M94 20L112 5", "qg3845-crank-arm");
-    }
-    return true;
-  }
-
-  if (item.family === "barva-gradient-lift") {
-    if (companion) {
-      path(group, "M-34-83H29L39 73H-43Z", "qg3845-lift-frame");
-      path(group, "M-22-65H18V-31H-22ZM-20 30H21V61H-20Z", "qg3845-lift-window");
-      line(group, "M0-31V30M-10-23Q13-9-9 5Q13 18-7 28", "qg3845-forest-braid");
-      add(group, "circle", { class: "qg3845-cloud-wheel", cx: 48, cy: -56, r: 19 });
-      line(group, "M29-56H-1M39 49H61V-8", "qg3845-lift-cable");
-      path(group, "M49-8L73-8L67 22H54Z", "qg3845-leaf-cage");
-      add(group, "circle", { class: "qg3845-winding-drum", cx: -50, cy: 49, r: 17 });
-      text("65 m", 0, 52, "qg3845-small-label"); text("2,906 m", 0, -43, "qg3845-small-label");
-    } else {
-      path(group, "M-91 53L69-57L88-36L-72 73Z", "qg3845-gradient-rack");
-      path(group, "M-75 47Q-27 12 8-9Q43-31 72-43", "qg3845-forest-ribbon");
-      [-54,-18,18,53].forEach((x,i)=>line(group,`M${x} ${28-i*24}L${x+10} ${39-i*24}`,"qg3845-rack-tie"));
-      path(group, "M-8-10L23-27L37-8L5 10Z", "qg3845-leaf-carriage");
-      add(group, "circle", { class: "qg3845-handwheel", cx: -82, cy: 62, r: 18 });
-      line(group, "M-82 62L-67 49", "qg3845-crank-arm");
-      path(group, "M48-64Q78-84 103-58Q83-39 56-44Z", "qg3845-mist-screen");
-      text("65 m", -71, 87, "qg3845-small-label"); text("2,906 m", 78, -69, "qg3845-small-label");
-    }
-    return true;
-  }
-  return false;
-}
-
 function drawSandaJU1873Accessory(group, item, companion) {
   if (!sandaJU1873RendererIds.has(item.id)) return false;
   group.dataset.renderer = item.family;
@@ -6021,16 +5894,14 @@ function drawNigoniFieldAccessory(group, item, companion) {
 }
 
 function drawTropicalisFieldAccessory(group, item, companion) {
-  const location = laSelvaQG3845RendererIds.has(item.id) ? "la-selva"
-    : guadeloupeNIC203RendererIds.has(item.id) ? "guadeloupe"
-      : nouraguesJU1428RendererIds.has(item.id) ? "nouragues"
-        : manausJU1976RendererIds.has(item.id) ? "manaus"
-          : oahuECA789RendererIds.has(item.id) ? "oahu"
-            : kauaiQG131RendererIds.has(item.id) ? "kauai-qg131"
-              : newTaipeiNIC1648RendererIds.has(item.id) ? "new-taipei"
-                : pohnpeiQG4739RendererIds.has(item.id) ? "pohnpei"
-                  : queenslandQG2904RendererIds.has(item.id) ? "queensland"
-                    : reunionJU1373RendererIds.has(item.id) ? "reunion" : null;
+  const location = guadeloupeNIC203RendererIds.has(item.id) ? "guadeloupe"
+    : nouraguesJU1428RendererIds.has(item.id) ? "nouragues"
+      : oahuECA789RendererIds.has(item.id) ? "oahu"
+        : kauaiQG131RendererIds.has(item.id) ? "kauai-qg131"
+          : newTaipeiNIC1648RendererIds.has(item.id) ? "new-taipei"
+            : pohnpeiQG4739RendererIds.has(item.id) ? "pohnpei"
+              : queenslandQG2904RendererIds.has(item.id) ? "queensland"
+                : reunionJU1373RendererIds.has(item.id) ? "reunion" : null;
   if (!location) return false;
 
   group.dataset.renderer = `${item.family}-field-redesign`;
@@ -6063,35 +5934,6 @@ function drawTropicalisFieldAccessory(group, item, companion) {
     path(group,`M ${-width/2+17} 68 H ${width/2-17}`,"nfr-accent-line");
   };
 
-  if (item.family === "qg3845-substrate-temperature") {
-    shadow(81,108);
-    path(group, companion ? "M-30-88H30V40Q53 61 45 86Q36 111 0 112Q-36 111-45 86Q-53 61-30 40Z" : "M-38-111H38V49Q67 77 56 108Q45 138 0 139Q-45 138-56 108Q-67 77-38 49Z", "nfr-glass");
-    path(group, companion ? "M-12-70H12V62Q29 73 25 88Q19 104 0 104Q-19 104-25 88Q-29 73-12 62Z" : "M-15-90H15V78Q36 91 31 110Q24 130 0 130Q-24 130-31 110Q-36 91-15 78Z", "nfr-accent");
-    [-52,-27,-2,23].forEach(y=>path(group,`M ${companion?29:37} ${companion?y:y*1.25} H ${companion?45:58}`,"nfr-tape-tick"));
-    label("26.5°C",0,companion?11:15,"nfr-small");
-    return true;
-  }
-  if (item.family === "la-selva-leafcutter-automaton") {
-    shadow(103,105);
-    add(group,"circle",{class:"nfr-glass",cx:companion?-25:-32,cy:companion?-20:-25,r:companion?61:78});
-    path(group,companion?"M17 25L91 97":"M22 31L117 124","nfr-handle");
-    path(group,companion?"M-58-27Q-28-56-3-24Q-30 7-58-27Z":"M-74-35Q-36-72-4-31Q-38 9-74-35Z","nfr-leaf");
-    add(group,"circle",{class:"nfr-ink-fill",cx:companion?-18:-23,cy:companion?4:5,r:companion?10:13});
-    add(group,"circle",{class:"nfr-ink-fill",cx:companion?3:4,cy:companion?13:17,r:companion?8:10});
-    path(group,companion?"M-12 8L-31 27M-8 11L-19 37M-3 14L13 33M7 14L25 27":"M-15 10L-40 35M-10 14L-24 47M-4 18L17 42M9 18L32 35","nfr-fine");
-    label("ANT",companion?-25:-32,companion?-64:-82,"nfr-small");
-    return true;
-  }
-  if (item.family === "barva-gradient-lift") {
-    shadow(108,106);
-    path(group,companion?"M-101-67L-34-88L15-56L95-80V72L28 91L-26 59L-101 83Z":"M-129-84L-43-111L19-71L122-102V91L36 116L-33 75L-129 106Z","nfr-ivory");
-    path(group,companion?"M-34-88V59M15-56V91":"M-43-111V75M19-71V116","nfr-fine");
-    path(group,companion?"M-82 55L-41 7L-3 35L41-23L79 17":"M-105 70L-53 9L-4 44L52-29L102 22","nfr-mountain");
-    path(group,companion?"M-75 70Q0 29 77 55":"M-96 88Q0 37 99 70","nfr-contour");
-    label("65 m",companion?-65:-84,companion?31:40,"nfr-small");
-    label("2906 m",companion?57:73,companion?-29:-37,"nfr-small");
-    return true;
-  }
   if (item.family === "ju1428-duguetia-fruit-theatre") {
     sampleBox("JU1428");
     return true;
@@ -6110,30 +5952,6 @@ function drawTropicalisFieldAccessory(group, item, companion) {
     [-1,0,1].forEach((index)=>{const x=index*(companion?58:74);path(group,`M ${x-(companion?24:30)} -68 H ${x+(companion?24:30)} V 74 Q ${x} 91 ${x-(companion?24:30)} 74 Z`,index===0?"nfr-glass-alt":"nfr-glass");path(group,`M ${x-(companion?27:34)} -73 H ${x+(companion?27:34)} V -48 H ${x-(companion?27:34)} Z`,index===0?"nfr-accent":"nfr-primary");label(`${1429+index}`,x,54,"nfr-small")});
     path(group,companion?"M-91 82H91V101H-91Z":"M-116 91H116V113H-116Z","nfr-secondary");
     label("THREE STRAINS",0,companion?96:107,"nfr-small nfr-light-text");
-    return true;
-  }
-  if (item.family === "ju1976-substrate-identity-shadow-theatre") {
-    sampleBox("JU1976");
-    return true;
-  }
-  if (item.family === "ju1975-ju1976-four-metre-sample-rail") {
-    shadow(105,106);
-    add(group,"circle",{class:"nfr-primary",cx:companion?-52:-67,cy:14,r:companion?48:60});
-    add(group,"circle",{class:"nfr-ivory",cx:companion?-52:-67,cy:14,r:companion?25:31});
-    path(group,companion?"M-13-26H98V3H-13Z":"M-17-34H127V4H-17Z","nfr-tape");
-    [-2,20,42,64,86].forEach(x=>path(group,`M ${companion?x:x*1.28} ${companion?-23:-30} V ${companion?-8:-11}`,"nfr-tape-tick"));
-    path(group,companion?"M89-33H108V10H89Z":"M115-44H139V13H115Z","nfr-hook");
-    label("4 m",companion?43:55,companion?-7:-10,"nfr-small");
-    return true;
-  }
-  if (item.family === "manaus-plateau-valley-soil-harmonograph") {
-    shadow(105,106);
-    path(group,companion?"M-99-72H99V89H-99Z":"M-126-89H126V105H-126Z","nfr-primary");
-    path(group,companion?"M-84-57H84V69H-84Z":"M-107-71H107V82H-107Z","nfr-ivory");
-    path(group,companion?"M-83 42Q-43 8 0 31T83 5V68H-83Z":"M-106 52Q-55 10 0 39T106 6V81H-106Z","nfr-soil-dark");
-    path(group,companion?"M-83 12Q-38-21 0 3T83-24V14Q43 44 0 30T-83 42Z":"M-106 15Q-49-27 0 4T106-30V17Q55 56 0 38T-106 52Z","nfr-soil-light");
-    [-58,-30,-2,26].forEach(y=>path(group,`M ${companion?-80:-102} ${companion?y:y*1.24} H ${companion?-63:-80}`,"nfr-tape-tick"));
-    label("SOIL PROFILE",0,companion?84:99,"nfr-small nfr-light-text");
     return true;
   }
   if (item.family === "eca789-fallen-flower-decay-chronoscope") {
@@ -6888,11 +6706,9 @@ function drawNamedAccessory(group, item, companion) {
   if (drawMahahualJU2617Accessory(group, item, companion)) return true;
   if (drawKauaiQG131Accessory(group, item, companion)) return true;
   if (drawOahuECA789Accessory(group, item, companion)) return true;
-  if (drawLaSelvaQG3845Accessory(group, item, companion)) return true;
   if (drawSandaJU1873Accessory(group, item, companion)) return true;
   if (drawBarroColoradoQG2726Accessory(group, item, companion)) return true;
   if (drawAhmedabadAF16Accessory(group, item, companion)) return true;
-  if (drawManausJU1976Accessory(group, item, companion)) return true;
   if (drawNouraguesJU1428Accessory(group, item, companion)) return true;
   if (drawReunionJU1373Accessory(group, item, companion)) return true;
   if (drawSanteuilAccessory(group, item, companion)) return true;
@@ -7008,9 +6824,6 @@ function renderPiece(target, item, wormPart) {
     ,"ju1873-cacao-specimen-lantern": { primary: [385, 132, .37, -2], companion: [-8, 118, .28, 3] }
     ,"ju1873-balinese-endek-wrap": { primary: [254, 190, .43, 13], companion: [113, 199, .34, 20] }
     ,"ju1873-balinese-gamelan-gong": { primary: [390, 257, .38, -2], companion: [24, 283, .31, 3] }
-    ,"qg3845-substrate-temperature": { primary: [385, 135, .38, -2], companion: [-8, 120, .29, 2] }
-    ,"la-selva-leafcutter-automaton": { primary: [235, 185, .33, 1], companion: [125, 210, .27, -1] }
-    ,"barva-gradient-lift": { primary: [380, 250, .34, -1], companion: [195, 290, .27, 1] }
     ,"guadeloupe-hummingbird-costume": { primary: [264, 184, .43, 28], companion: [92, 173, .35, 26] }
     ,"guadeloupe-madras-carnival-crown": { primary: [355, 55, .42, -3], companion: [111, 104, .34, 4] }
     ,"guadeloupe-gwoka-drum": { primary: [365, 258, .4, -3], companion: [31, 279, .33, 4] }

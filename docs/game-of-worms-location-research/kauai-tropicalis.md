@@ -475,7 +475,7 @@ Expected resulting totals:
 ## Acceptance checks
 
 - Exactly 37 environment profiles, compositions and accessory sets.
-- Exactly 111 design IDs.
+- Exactly 103 design IDs in the current playable catalogue.
 - Correct QG131 marker, strain, coordinate, profile, history and source.
 - No active `kauai-hanalei-valley`, taro-bonnet, wetland-waders or
   paddy-metronome reference.

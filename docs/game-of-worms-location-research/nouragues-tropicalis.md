@@ -401,7 +401,7 @@ const nouraguesRendererIds = new Set([
 ## Acceptance checks
 
 - Exactly 37 environment profiles and composition IDs.
-- Exactly 37 accessory sets and 111 unique design IDs.
+- Exactly 34 active accessory sets and 103 unique design IDs.
 - Correct JU1428 marker, coordinate, history, profile and source.
 - No active `nouragues-inselberg`, river-approach, canoe-paddle-bow or
   river-gauge-rod reference for Nouragues.

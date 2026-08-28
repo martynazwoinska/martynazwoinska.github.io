@@ -238,8 +238,8 @@ Expected totals:
 
 ## Acceptance checks
 
-- Exactly 37 explicit environment profiles and composition IDs.
-- Exactly 37 accessory sets and 111 unique accessory design IDs.
+- Exactly 35 preserved environment profiles and composition IDs, with 34 active locations.
+- Exactly 34 active accessory sets and 103 unique accessory design IDs.
 - No remaining `hcmc-can-gio` mapping or orphaned Can Gio composition.
 - No generic-renderer fallback for the six new accessory illustrations.
 - No initial overlap among the three accessories or with critical worm detail.

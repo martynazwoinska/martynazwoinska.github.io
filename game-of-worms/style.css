@@ -2322,19 +2322,6 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .bci-column-foot { fill: var(--bci-indigo); stroke: var(--bci-ink); stroke-width: 3; stroke-linejoin: round; }
 .bci-chart-panel { fill: var(--bci-ivory); stroke: var(--bci-orchid); stroke-width: 3; }
 
-.la-selva-qg3845-accessory { filter: drop-shadow(0 5px 4px rgba(25,42,34,.25)); }
-.qg3845-cage,.qg3845-dial-shell,.qg3845-calendar-column,.qg3845-lift-frame,.qg3845-gradient-rack { fill: color-mix(in srgb,#876a42 72%,var(--local-secondary)); stroke: color-mix(in srgb,#30463b 82%,var(--worm-deep)); stroke-width:3; stroke-linejoin:round; }
-.qg3845-glass,.qg3845-marker-column,.qg3845-lift-window { fill: color-mix(in srgb,#d8e5d2 72%,var(--paper-strong)); stroke: color-mix(in srgb,#45685a 76%,var(--worm-deep)); stroke-width:2.3; }
-.qg3845-vein,.qg3845-marker,.qg3845-pointer,.qg3845-tick,.qg3845-linkage,.qg3845-crank-arm,.qg3845-counter-cable,.qg3845-lift-cable,.qg3845-rack-tie { fill:none; stroke:color-mix(in srgb,#425c4e 80%,var(--worm-deep)); stroke-width:2.7; stroke-linecap:round; stroke-linejoin:round; }
-.qg3845-contact-shoe,.qg3845-fruit-cradle,.qg3845-tripod,.qg3845-counterweight,.qg3845-leaf-cage { fill:color-mix(in srgb,#6f5a40 70%,var(--local-primary)); stroke:color-mix(in srgb,#30443a 82%,var(--worm-deep)); stroke-width:2.6; stroke-linejoin:round; }
-.qg3845-verify-dial,.qg3845-pivot,.qg3845-crank,.qg3845-handwheel,.qg3845-cloud-wheel,.qg3845-winding-drum { fill:color-mix(in srgb,#bd9550 74%,var(--local-secondary)); stroke:color-mix(in srgb,#415044 80%,var(--worm-deep)); stroke-width:2.3; }
-.qg3845-cam-track,.qg3845-spiral-lift { fill:none; stroke:color-mix(in srgb,#9a7745 74%,var(--local-secondary)); stroke-width:7; stroke-linecap:round; stroke-linejoin:round; }
-.qg3845-ant circle { fill:color-mix(in srgb,#815936 76%,var(--local-secondary)); stroke:color-mix(in srgb,#3a4137 82%,var(--worm-deep)); stroke-width:1.5; }
-.qg3845-ant-leg { fill:none; stroke:color-mix(in srgb,#3a4137 82%,var(--worm-deep)); stroke-width:2.2; stroke-linecap:round; }
-.qg3845-leaf-panel,.qg3845-leaf-carriage,.qg3845-forest-ribbon { fill:color-mix(in srgb,#4f7858 70%,var(--local-primary)); stroke:color-mix(in srgb,#2e4938 82%,var(--worm-deep)); stroke-width:2.3; stroke-linejoin:round; }
-.qg3845-mist-screen { fill:rgba(218,235,221,.78); stroke:color-mix(in srgb,#66857a 66%,var(--worm-deep)); stroke-width:2; }
-.qg3845-label { fill:color-mix(in srgb,#263c35 84%,var(--worm-deep)); font:900 11px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 85%,transparent); stroke-width:2px; paint-order:stroke; }
-.qg3845-small-label { fill:color-mix(in srgb,#263c35 84%,var(--worm-deep)); font:900 8px/1 var(--sans); stroke:color-mix(in srgb,#f5ecd2 85%,transparent); stroke-width:1.5px; paint-order:stroke; }
 
 .guadeloupe-nic203-accessory { filter:drop-shadow(0 5px 4px rgba(40,25,31,.25)); }
 .gua-hummingbird-wing,.gua-hummingbird-wing-alt,.gua-hummingbird-mantle,.gua-hummingbird-throat,.gua-hummingbird-tail { stroke:#173f49; stroke-width:3; stroke-linejoin:round; }
@@ -5728,10 +5715,8 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .nigoni-field-redesign.nfr-mauritius { --nfr-primary:#4958b3; --nfr-secondary:#37bea8; --nfr-accent:#e94f7f; }
 .nigoni-field-redesign.nfr-hcmc { --nfr-primary:#4b50ae; --nfr-secondary:#32b9aa; --nfr-accent:#e84e78; }
 .nigoni-field-redesign.nfr-lombok { --nfr-primary:#4655b0; --nfr-secondary:#35bda9; --nfr-accent:#e75080; }
-.tropicalis-field-redesign.tfr-la-selva { --nfr-primary:#3f58ae; --nfr-secondary:#29b9a4; --nfr-accent:#e9517b; }
 .tropicalis-field-redesign.tfr-guadeloupe { --nfr-primary:#4a50ad; --nfr-secondary:#36bca8; --nfr-accent:#ea4e78; }
 .tropicalis-field-redesign.tfr-nouragues { --nfr-primary:#4356b1; --nfr-secondary:#2db8a6; --nfr-accent:#e95480; }
-.tropicalis-field-redesign.tfr-manaus { --nfr-primary:#4b51ae; --nfr-secondary:#31bba5; --nfr-accent:#e84d76; }
 .tropicalis-field-redesign.tfr-oahu { --nfr-primary:#4656b3; --nfr-secondary:#36bea9; --nfr-accent:#ec527e; }
 .tropicalis-field-redesign.tfr-kauai-qg131 { --nfr-primary:#4753b0; --nfr-secondary:#35bdaa; --nfr-accent:#e94f7c; }
 .tropicalis-field-redesign.tfr-new-taipei {

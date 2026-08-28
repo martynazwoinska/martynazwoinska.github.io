@@ -253,7 +253,7 @@ Reference: [Mānoa Chocolate FAQ](https://manoachocolate.com/pages/faq)
 ## Semantic reuse ledger
 
 The three retired Oʻahu field-object families are replaced by three bespoke
-singleton families. Current catalogue totals are 109 design IDs across 36
+singleton families. Current catalogue totals are 103 design IDs across 34
 accessory sets, with no repeated exact family label or design ID.
 
 ## Stale implementation cleanup
@@ -307,8 +307,8 @@ const oahuECA789RendererIds = new Set([
 
 ## Acceptance checks
 
-- Exactly 36 environment profiles, compositions and accessory sets.
-- Exactly 109 design IDs.
+- Exactly 35 preserved environment profiles and compositions, with 34 active accessory sets.
+- Exactly 103 design IDs.
 - Correct ECA789 marker, strain, history, coordinate, profile and source.
 - No active `oahu-koolau`, knife-ridge-sunglasses, watershed-swimwear or
   waterfall-umbrella reference.

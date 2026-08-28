@@ -506,7 +506,7 @@ Each repeated family differs in silhouette, material and construction.
 ## Acceptance checks
 
 - Exactly 37 environment profiles, compositions and accessory sets.
-- Exactly 111 unique design IDs.
+- Exactly 103 unique design IDs in the current playable catalogue.
 - Correct NIC1648 marker, strain, coordinate, elevation, history, profile and
   source.
 - No active `new-taipei-yehliu`, hoodoo-helmet or erosion-crinoline reference.
