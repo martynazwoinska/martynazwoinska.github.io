@@ -1,8 +1,8 @@
 # Oʻahu *Caenorhabditis tropicalis* ECA789 location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-08-28
 
-> **Current production accessory contract:** `fallen-flower sample boxes`, `temperature-humidity meters`, and `field-record folders`. These recognizable objects supersede the earlier abstract mechanism sketches below and retain the anonymous-flower and recorded microclimate evidence.
+> **Current production accessory contract:** `petal rain trumpets`, `raindrop harps`, and `cacao-key xylophones`. The first two turn the wet Mānoa setting into a playful rain orchestra. The xylophones are a wider Oʻahu craft-chocolate reference, without producer branding or any suggestion that cacao was the collection substrate.
 
 ## Purpose
 
@@ -208,105 +208,53 @@ Create a dedicated original SVG scene in the existing 600 × 430 viewBox.
 
 ## Accessory contract
 
-### ECA789 fallen-flower decay chronoscope
+### Petal rain trumpets
 
-Family ID: `eca789-fallen-flower-decay-chronoscope`
+Family ID: `eca789-petal-rain-trumpet`
 
-Exact basis: ECA789 came from an unidentified rotting flower on the ground. No
-decay sequence, flower identity or collection apparatus is documented.
+Primary: a broad gold-and-teal trumpet with a readable mouthpiece, curved tube,
+three valve casings and a coral petal-shaped bell.
 
-Primary: a broad eccentric clockwork disc carrying seven unequal blank
-petal-shaped shutters above a shallow litter tray, with a visibly connected
-gear train, separate culture vial and reversible `S-05097 / ECA789` plate.
+Companion: a smaller, differently bent trumpet with its own valve spacing and
+bell construction. It is not a scaled copy.
 
-Companion: a tall open chain-lift carrying four staggered downturned petal
-shutters, with an enclosed lower specimen drawer, offset vial, exposed return
-wheel and `4 AUG 2017` date dial.
+The petal bell refers playfully to the recorded anonymous flower; it does not
+identify that flower or reconstruct collection equipment.
 
-Do not turn either drawing into a decorative flower, imply a measured decay
-timeline or invent identifiable floral anatomy.
+### Raindrop harps
 
-### ECA789 paired microclimate harmonograph
+Family ID: `eca789-raindrop-harp`
 
-Family ID: `eca789-paired-microclimate-harmonograph`
+Primary: an asymmetric standing harp with a deep-blue frame, gold soundboard,
+aqua rain strings and separate planted feet.
 
-Exact basis: CaeNDR records substrate and ambient temperatures of 22.9 °C and
-ambient humidity of 93.7%.
+Companion: a compact leaning harp with fewer strings, a different frame and an
+independent low base.
 
-Primary: a wide twin-sensor console with one ground-contact shoe, one raised
-ventilated cage, two separate `22.9` temperature needles, a `93.7` humidity dial
-and linked styluses writing onto one horizontal paper drum.
+The rain theme reflects the wet Mānoa setting. It does not claim rain was
+observed during collection.
 
-Companion: a tall asymmetrical tripod column with a lower contact bulb, offset
-upper air bulb, large looped hygrometer coil, three stacked value windows and a
-narrow descending trace strip.
+### Cacao-key xylophones
 
-These are educational mechanical metaphors, not reconstructions of the field
-instruments or a time series. Do not add unrecorded values.
+Family ID: `eca789-cacao-key-xylophone`
 
-### C-0085 field-record relay
+Primary: a curved floor xylophone with individually constructed warm cacao,
+gold and berry keys, a teal resonator rail, separate feet and two mallets.
 
-Family ID: `c0085-field-record-relay`
+Companion: a narrower instrument with a different key rhythm, frame, supports
+and mallet placement.
 
-Exact basis: the ECA789 record notes a C-0085 collection plate. The primary
-sampling study describes barcode-linked field labels used to associate
-environmental and isolation data.
+Mānoa Chocolate operates its factory and tasting room in Kailua on Oʻahu. The
+xylophones use cacao only as a playful wider-island craft reference: they carry
+no producer branding and do not imply that cacao was the ECA789 substrate.
 
-Primary: a long left-to-right relay bench with three clearly connected
-stations: pre-labelled collection-bag frame, abstract GPS/photo data tile and
-circular isolation-plate cradle. Connect them through an exposed chain drive
-ending at a separate ECA789 vial and `C-0085` plaque.
-
-Companion: a crooked vertical folding rack with an upper tag aperture, offset
-field-card drum, lower circular plate cradle, descending belt, side crank and
-suspended vial, plus a reversible `S-05097 / ECA789` tab.
-
-Do not claim C-0085 was specifically the barcode rather than the
-collection-plate label. Use only an abstract, non-scannable tag pattern; include
-no phone interface, application branding or invented field data.
-
-## Suggested initial layouts
-
-These require final browser tuning:
-
-```js
-"eca789-fallen-flower-decay-chronoscope": {
-  primary: [382, 128, .34, -2],
-  companion: [-4, 124, .27, 2]
-},
-"eca789-paired-microclimate-harmonograph": {
-  primary: [228, 184, .33, 1],
-  companion: [112, 214, .26, -1]
-},
-"c0085-field-record-relay": {
-  primary: [384, 254, .33, -1],
-  companion: [198, 294, .27, 1]
-}
-```
+Reference: [Mānoa Chocolate FAQ](https://manoachocolate.com/pages/faq)
 
 ## Semantic reuse ledger
 
-Delete:
-
-- Knife-ridge sunglasses
-- Watershed swimwear
-- Waterfall umbrella
-
-After the Manaus redesign, sunglasses, watershed swimwear and umbrella are all
-singleton Oʻahu families.
-
-Add three singleton families:
-
-- Anonymous-flower decay chronoscope
-- Paired substrate–air microclimate recorder
-- Field-record relay mechanism
-
-Expected totals remain:
-
-- 14 families used exactly twice
-- 83 singleton families
-- 111 concepts across 37 accessory sets
-- no family used more than twice
+The three retired Oʻahu field-object families are replaced by three bespoke
+singleton families. Current catalogue totals are 109 design IDs across 36
+accessory sets, with no repeated exact family label or design ID.
 
 ## Stale implementation cleanup
 
@@ -322,17 +270,17 @@ Expected totals remain:
 - Replace `palettes.island` with `palettes.rainforest`.
 - Remove Oʻahu’s mist, waterfall, city and stream cues.
 - Add a dedicated `drawOahuEca789Scene` renderer and dispatch.
-- Replace the three old accessory entries.
+- Replace the three old accessory entries with the rain-orchestra families.
 - Remove `watershed-swimwear` from the explicit renderer set and delete its
   dedicated case.
 - After confirming no remaining runtime consumer, remove `sunglasses` from the
   repeated renderer set and its generic branch.
 - After confirming no remaining runtime consumer, remove `umbrella` from the
   repeated/natural renderer paths and its generic branch.
-- Add location-scoped renderer IDs:
+- Use location-scoped renderer IDs:
 
 ```js
-const oahuRendererIds = new Set([
+const oahuECA789RendererIds = new Set([
   "tropicalis::Oʻahu, Hawaiʻi · ECA789::headwear",
   "tropicalis::Oʻahu, Hawaiʻi · ECA789::wrap",
   "tropicalis::Oʻahu, Hawaiʻi · ECA789::charm"
@@ -359,8 +307,8 @@ const oahuRendererIds = new Set([
 
 ## Acceptance checks
 
-- Exactly 37 environment profiles, compositions and accessory sets.
-- Exactly 111 design IDs.
+- Exactly 36 environment profiles, compositions and accessory sets.
+- Exactly 109 design IDs.
 - Correct ECA789 marker, strain, history, coordinate, profile and source.
 - No active `oahu-koolau`, knife-ridge-sunglasses, watershed-swimwear or
   waterfall-umbrella reference.
@@ -376,11 +324,11 @@ const oahuRendererIds = new Set([
 
 ## Implemented state
 
-Implemented locally on 2026-07-26. The Game now uses the preserved generated
+Implemented locally on 2026-07-26 and visually revised on 2026-08-28. The Game now uses the preserved generated
 source `game-of-worms/assets/source/oahu-eca789-painted-background-source.png`
 and its optimized derivative
 `game-of-worms/assets/oahu-eca789-painted-background.webp`. The marker,
 dedicated painted scene, exact CaeNDR provenance, three location-scoped
-accessory families and six independently movable drawings follow this brief.
+rain-orchestra accessory families and six independently movable drawings follow this brief.
 The former ridge, waterfall, sunglasses, swimwear and umbrella implementation
 is no longer active.

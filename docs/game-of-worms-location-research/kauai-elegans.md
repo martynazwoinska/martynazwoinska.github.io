@@ -1,6 +1,6 @@
 # Kauaʻi *C. elegans* location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-08-28
 
 This dossier is the evidence and review contract for the *Caenorhabditis elegans* Kauaʻi landscape and its three accessory pairs. It follows the Bristol N2, Santeuil, Edinburgh and Tenerife batches in the location-by-location Game of Worms illustration workflow.
 
@@ -68,26 +68,38 @@ The scene is a continuous ground-level upland-forest view rather than a tourist 
 
 ## Accessory evidence and design contract
 
-The accessories translate the documented substrate, upland moisture and XZ1516's scientific significance into movable teaching objects. They do not use Native Hawaiian cultural motifs as generic costume decoration.
+The Kōkeʻe forest-radio set combines bounded regional fantasy with XZ1516's
+scientific significance. It does not turn living wildlife into a costume or
+use Native Hawaiian cultural motifs as generic decoration.
 
-### Plant sample cases
+### Forest-bird listening headphones
 
-- **Primary:** an open waterproof field case containing a clearly bounded plant sample, collection vial and XZ1516 ticket.
-- **Companion:** a compact case in the same viewing orientation, with simplified compartments that remain legible at the smaller scale.
+- **Primary:** a broad gold band with separately built violet and berry ear
+  cups, pale pads and an aqua acoustic scoop inspired by listening for forest
+  birds.
+- **Companion:** a narrower band with differently shaped teal and berry cups,
+  a shorter gold scoop and its own padding geometry.
+- This is a listening-device fantasy, not a bird costume or species claim.
 
-### Mist collector bottles
+### ʻŌhiʻa blossom microphones
 
-- **Primary:** a transparent graduated bottle beneath a turquoise mesh funnel, with visible collected droplets and a secure field cap.
-- **Companion:** a smaller collector in the same orientation, preserving the funnel, bottle and droplet cues.
-- The objects refer to the wet upland setting without claiming that this device was used to collect XZ1516.
+- **Primary:** a deep-blue microphone core and grille surrounded by a structured
+  spray of coral and gold stamens on a curved stand and floor base.
+- **Companion:** a smaller leaning microphone with fewer, differently placed
+  stamens, a separate grille and a different low base.
+- Living ʻōhiʻa is wider upland-forest context; the worms are not shown cutting
+  or transporting plant material.
 
-### XZ1516 haplotype cards
+### Genome tuning wheels
 
-Population-genomic work gives XZ1516 a scientifically grounded accessory that is different from Edinburgh's observatory telescope.
+Population-genomic work gives XZ1516 a scientifically grounded third object.
 
-- **Primary:** a clipped fan of high-contrast comparison cards with colored marker bands and a clear XZ1516 tab.
-- **Companion:** a smaller card fan in the same orientation, retaining the marker bands and strain tab.
-- The graphics are original abstractions and do not reproduce a published figure, exact genetic sequence or institutional logo.
+- **Primary:** a large six-spoke tuning wheel carrying crossed double-helix
+  traces, a branching signal, crank and two-foot floor stand.
+- **Companion:** a compact four-spoke wheel with a different helix rhythm,
+  crank and feet.
+- The graphics are original abstractions. They reproduce no published figure,
+  sequence, quantitative result or logo.
 
 ## Cultural and scientific safeguards
 
@@ -110,6 +122,7 @@ The revised Bristol N2, Santeuil, Edinburgh and Tenerife batches are the minimum
 - Fresh checks at 360, 768, 1024 and 1440 px confirmed the painted asset, all six active accessory copies and zero horizontal overflow.
 - Pointer dragging moved all six copies independently. Keyboard arrow movement and Home reset affected only the focused copy.
 - Browser-console checks reported no errors.
+- The forest-radio accessory set was implemented and refined in context on 2026-08-28.
 
 ## Review and interaction acceptance
 

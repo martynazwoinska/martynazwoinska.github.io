@@ -4374,74 +4374,113 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 
 /* Hawaii refresh: distinct leaf craft, cloud-glass objects and flower-macro jewellery. */
 .kauai-qg130-accessory,
-.elegans-field-redesign .xz-kaleidoscope-barrel,
-.elegans-field-redesign .xz-cloud-cloak,
-.elegans-field-redesign .xz-chime-crescent,
+.elegans-field-redesign .xz-earcup,
+.elegans-field-redesign .xz-mic-core,
+.elegans-field-redesign .xz-tuning-wheel,
 .oahu-eca789-accessory {
   filter: drop-shadow(0 5px 4px rgba(24, 30, 48, .28));
 }
 
-.qg130-leaf-shell { fill:#d88a49; stroke:#24334c; stroke-width:5; }
-.qg130-leaf-shell.companion { fill:#d8ad55; }
-.qg130-leaf-rib,.qg130-leaf-vein { fill:none; stroke:#f7d67b; stroke-width:4; }
-.qg130-sled-runner,.qg130-sled-brace { fill:none; stroke:#55c9c0; stroke-width:7; }
-.qg130-sled-brace { stroke-width:5; }
-.qg130-lantern-glass { fill:rgba(119,217,216,.78); stroke:#263457; stroke-width:5; }
-.qg130-lantern-glass.companion { fill:rgba(240,154,183,.76); }
-.qg130-lantern-cage,.qg130-lantern-handle { fill:none; stroke:#e9bd54; stroke-width:6; }
-.qg130-lantern-light { fill:#fff1a7; stroke:#d45f7c; stroke-width:4; }
-.qg130-glass-glint { fill:none; stroke:#f8ffff; stroke-width:5; stroke-linecap:round; }
-.qg130-hammock-root { fill:none; stroke:#5d3d38; stroke-width:14; stroke-linecap:round; }
-.qg130-hammock-root.companion { stroke-width:11; }
-.qg130-hammock-bed { fill:#7653a8; stroke:#24334c; stroke-width:5; }
-.qg130-hammock-bed.companion { fill:#d8567e; }
-.qg130-hammock-rib { fill:none; stroke:#f2c968; stroke-width:4; }
-.qg130-hammock-cord { fill:none; stroke:#e8c469; stroke-width:5; }
+.qg130-cart-shell { fill:#7b4b37; stroke:#24334c; stroke-width:6; stroke-linejoin:round; }
+.qg130-cart-shell.companion { fill:#9a5d42; }
+.qg130-cart-glow { fill:#f4cb69; stroke:#e05d7b; stroke-width:5; }
+.qg130-cart-glow.companion { fill:#9ce4dc; }
+.qg130-cart-handle,.qg130-shell-rib { fill:none; stroke:#e9bd54; stroke-width:7; stroke-linecap:round; }
+.qg130-shell-rib { stroke:#c88c55; stroke-width:4; }
+.qg130-cart-wheel { fill:#58c7bd; stroke:#24334c; stroke-width:6; }
+.qg130-cart-wheel.companion { fill:#7653a8; stroke-width:5; }
+.qg130-cart-hub { fill:#fff2b6; stroke:#24334c; stroke-width:4; }
+.qg130-cart-glint { fill:none; stroke:#fff8d8; stroke-width:5; stroke-linecap:round; }
+.qg130-carousel-mast,.qg130-carousel-cord { fill:none; stroke:#64413b; stroke-width:13; stroke-linecap:round; stroke-linejoin:round; }
+.qg130-carousel-mast.companion { stroke-width:10; }
+.qg130-carousel-cord { stroke:#f1c86a; stroke-width:5; }
+.qg130-carousel-canopy { fill:#d75e7f; stroke:#24334c; stroke-width:6; stroke-linejoin:round; }
+.qg130-carousel-canopy.companion { fill:#4ca6a2; }
+.qg130-carousel-seat { fill:#f0bd52; stroke:#24334c; stroke-width:5; }
+.qg130-carousel-seat.alt { fill:#77d7cf; }
+.qg130-carousel-base { fill:#6f57a7; stroke:#24334c; stroke-width:6; }
+.qg130-carousel-base.companion { fill:#d96783; stroke-width:5; }
+.qg130-root-grain { fill:none; stroke:#f0b879; stroke-width:4; stroke-linecap:round; }
+.qg130-ribbon-hoop { fill:none; stroke-width:16; }
+.qg130-ribbon-hoop.companion { stroke-width:12; }
+.qg130-ribbon-hoop.gold { stroke:#f1bf4f; }
+.qg130-ribbon-hoop.aqua { stroke:#59c9c1; }
+.qg130-ribbon-hoop.berry { stroke:#df5d82; }
+.qg130-ribbon-knot { fill:#fff5cf; stroke:#24334c; stroke-width:4; }
+.qg130-ribbon-knot.knot-2 { fill:#6d57a6; }
+.qg130-ribbon-knot.knot-3 { fill:#53b9b4; }
+.qg130-hoop-stand { fill:#5b4038; stroke:#24334c; stroke-width:5; }
+.qg130-ribbon-highlight { fill:none; stroke:#fff0bd; stroke-width:4; stroke-linecap:round; }
 
-.xz-kaleidoscope-barrel { fill:#5268a8; stroke:#223450; stroke-width:6; }
-.xz-kaleidoscope-barrel.companion { fill:#3f9295; }
-.xz-kaleidoscope-eye { fill:#e6bc55; stroke:#223450; stroke-width:6; }
-.xz-kaleidoscope-rim,.xz-kaleidoscope-stand,.xz-kaleidoscope-foot { fill:none; stroke:#263b57; stroke-width:7; }
-.xz-kaleidoscope-pane { fill:#e96886; stroke:#263b57; stroke-width:3; }
-.xz-kaleidoscope-pane.alt { fill:#5ed0c4; }
-.xz-kaleidoscope-lens { fill:#fff2c1; stroke:#7559ad; stroke-width:5; }
-.xz-cloud-cloak { fill:#477f91; stroke:#253650; stroke-width:6; }
-.xz-cloud-cloak.companion { fill:#7064ac; }
-.xz-cloak-yoke,.xz-cloak-hem { fill:none; stroke:#e5b956; stroke-width:7; }
-.xz-cloak-mist-line { fill:none; stroke:#bde8e2; stroke-width:5; opacity:.9; }
-.xz-cloak-clasp { fill:#e66a83; stroke:#253650; stroke-width:4; }
-.xz-chime-crescent { fill:none; stroke:#e5b956; stroke-width:13; stroke-linecap:round; }
-.xz-chime-crescent.companion { stroke:#db6d87; stroke-width:11; }
-.xz-chime-cord,.xz-chime-hanger { fill:none; stroke:#c8e3dd; stroke-width:4; }
-.xz-chime-drop { fill:rgba(78,188,190,.88); stroke:#263653; stroke-width:4; }
-.xz-chime-drop.alt { fill:rgba(224,105,139,.9); }
-.xz-chime-ring { fill:none; stroke:#e5b956; stroke-width:6; }
+.xz-headphone-band { fill:none; stroke:#e3b64e; stroke-width:15; stroke-linecap:round; }
+.xz-headphone-band.companion { stroke-width:11; }
+.xz-earcup { fill:#5651a8; stroke:#223450; stroke-width:6; stroke-linejoin:round; }
+.xz-earcup.companion { fill:#3f9295; stroke-width:5; }
+.xz-earcup.alt { fill:#d95e82; }
+.xz-earcup-pad { fill:none; stroke:#c8eee7; stroke-width:5; stroke-linecap:round; }
+.xz-bird-sound-scoop { fill:#5bd0c5; stroke:#223450; stroke-width:6; }
+.xz-bird-sound-scoop.companion { fill:#efbd58; stroke-width:5; }
+.xz-band-highlight,.xz-sound-wave { fill:none; stroke:#fff0b8; stroke-width:5; stroke-linecap:round; }
+.xz-sound-wave { stroke:#e76588; stroke-width:4; }
+.xz-mic-stem,.xz-mic-base { fill:none; stroke:#e5b956; stroke-width:9; stroke-linecap:round; stroke-linejoin:round; }
+.xz-mic-stem.companion { stroke-width:7; }
+.xz-mic-base { fill:#4b8f91; stroke:#223450; stroke-width:5; }
+.xz-mic-base.companion { fill:#6e59a8; }
+.xz-mic-core { fill:#315f71; stroke:#223450; stroke-width:6; }
+.xz-mic-core.companion { stroke-width:5; }
+.xz-ohia-stamen { fill:none; stroke:#e96886; stroke-width:5; stroke-linecap:round; }
+.xz-ohia-stamen.alt { stroke:#f2bd55; }
+.xz-ohia-tip { fill:#fff1bd; stroke:#9b3f64; stroke-width:3; }
+.xz-ohia-tip.alt { fill:#61cec3; }
+.xz-mic-grille { fill:none; stroke:#9ce2da; stroke-width:4; stroke-linecap:round; }
+.xz-tuning-wheel { fill:#3f777f; stroke:#223450; stroke-width:9; }
+.xz-tuning-wheel.companion { fill:#6558a7; stroke-width:7; }
+.xz-tuning-hub { fill:#f0c55b; stroke:#223450; stroke-width:6; }
+.xz-tuning-hub.companion { fill:#e46a86; stroke-width:5; }
+.xz-tuning-spoke { fill:none; stroke:#f4d37b; stroke-width:6; }
+.xz-tuning-spoke.alt { stroke:#72d1c8; }
+.xz-genome-strand { fill:none; stroke:#f5e7b4; stroke-width:6; stroke-linecap:round; }
+.xz-genome-strand.alt { stroke:#ec7995; }
+.xz-genome-rung { fill:none; stroke:#d9ede8; stroke-width:4; }
+.xz-tuning-stand,.xz-tuning-crank,.xz-branching-signal { fill:none; stroke:#263b57; stroke-width:8; stroke-linecap:round; stroke-linejoin:round; }
+.xz-tuning-stand.companion,.xz-tuning-crank.companion { stroke-width:6; }
+.xz-tuning-knob { fill:#ed6687; stroke:#263b57; stroke-width:4; }
+.xz-branching-signal { stroke:#e3b64e; stroke-width:5; }
 
-.eca789-gramophone-horn { fill:#c45576; stroke:#28324f; stroke-width:6; }
-.eca789-gramophone-horn.companion { fill:#e18a58; }
-.eca789-horn-mouth { fill:#f7df9a; stroke:#9b3f64; stroke-width:6; }
-.eca789-horn-mouth.companion { stroke-width:5; }
+.eca789-trumpet-petal { fill:#d65f7f; stroke:#28324f; stroke-width:6; }
+.eca789-trumpet-petal.companion { fill:#ef9a63; stroke-width:5; }
+.eca789-trumpet-bell { fill:#f8df9a; stroke:#9b3f64; stroke-width:6; }
+.eca789-trumpet-bell.companion { stroke:#3d8287; stroke-width:5; }
+.eca789-trumpet-body { fill:#e7b957; stroke:#28324f; stroke-width:5; stroke-linejoin:round; }
+.eca789-trumpet-body.companion { fill:#76cec4; stroke-width:4; }
+.eca789-valve-casing { fill:#6d59a8; stroke:#28324f; stroke-width:4; }
+.eca789-valve-casing.companion { fill:#d75f7e; stroke-width:3; }
+.eca789-trumpet-tube,.eca789-trumpet-valve,.eca789-trumpet-mouthpiece { fill:none; stroke:#e5b553; stroke-width:8; stroke-linecap:round; stroke-linejoin:round; }
+.eca789-trumpet-valve { stroke-width:5; }
+.eca789-valve-key { fill:#7ad3c8; stroke:#28324f; stroke-width:3; }
 .eca789-petal-vein { fill:none; stroke:#f3c76b; stroke-width:5; }
-.eca789-gramophone-neck,.eca789-gramophone-crank,.eca789-sound-wave { fill:none; stroke:#e5b553; stroke-width:7; stroke-linecap:round; }
-.eca789-sound-wave { stroke:#65cbc3; stroke-width:5; }
-.eca789-gramophone-base { fill:#6b59a6; stroke:#28324f; stroke-width:6; }
-.eca789-gramophone-base.companion { fill:#438d91; }
-.eca789-record { fill:#24314d; stroke:#f3cf70; stroke-width:4; }
-.eca789-record-centre { fill:#e96880; }
-.eca789-collar-band { fill:#5f5aa8; stroke:#25334f; stroke-width:6; }
-.eca789-collar-band.companion { fill:#d55b79; }
-.eca789-collar-seam { fill:none; stroke:#f0c866; stroke-width:6; }
-.eca789-collar-highlight { fill:none; stroke:#92dfd5; stroke-width:4; }
-.eca789-dew-jewel { fill:rgba(113,214,205,.9); stroke:#263450; stroke-width:4; }
-.eca789-dew-jewel.accent { fill:rgba(245,190,97,.96); }
-.eca789-prism { fill:rgba(104,211,203,.76); stroke:#273450; stroke-width:6; }
-.eca789-prism.companion { fill:rgba(225,100,133,.74); }
-.eca789-prism-leading,.eca789-prism-cord { fill:none; stroke:#e9be5d; stroke-width:5; }
-.eca789-prism-bead { stroke:#273450; stroke-width:4; }
-.eca789-prism-bead.berry { fill:#d85c80; }
-.eca789-prism-bead.gold { fill:#f1c85f; }
-.eca789-prism-bead.aqua { fill:#5dcac1; }
-.eca789-light-ray { fill:none; stroke:#f2d99a; stroke-width:5; stroke-linecap:round; }
+.eca789-rain-note,.eca789-harp-drop { fill:#69d0c8; stroke:#28324f; stroke-width:4; }
+.eca789-rain-note.alt,.eca789-harp-drop.alt { fill:#775ca9; }
+.eca789-harp-frame { fill:#d96382; stroke:#28324f; stroke-width:7; stroke-linejoin:round; }
+.eca789-harp-frame.companion { fill:#4d9693; stroke-width:6; }
+.eca789-harp-string { fill:none; stroke:#f7df9c; stroke-width:4; }
+.eca789-harp-base { fill:#6d59a8; stroke:#28324f; stroke-width:6; }
+.eca789-harp-base.companion { fill:#e6b64f; stroke-width:5; }
+.eca789-harp-highlight { fill:none; stroke:#8ce0d5; stroke-width:5; stroke-linecap:round; }
+.eca789-xylophone-frame { fill:#5a3d39; stroke:#28324f; stroke-width:7; stroke-linejoin:round; }
+.eca789-xylophone-frame.companion { fill:#795145; stroke-width:6; }
+.eca789-cacao-key { fill:#8f4b3f; stroke:#28324f; stroke-width:4; }
+.eca789-cacao-key.alt { fill:#d09b50; }
+.eca789-cacao-key.bright { fill:#df6f77; }
+.eca789-cacao-resonator { fill:none; stroke:#68c9c1; stroke-width:9; stroke-linecap:round; }
+.eca789-cacao-resonator.companion { stroke:#e76786; stroke-width:7; }
+.eca789-mallet { fill:none; stroke:#e6bd59; stroke-width:6; stroke-linecap:round; }
+.eca789-mallet.companion { stroke-width:5; }
+.eca789-mallet-head { fill:#d65d7c; stroke:#28324f; stroke-width:4; }
+.eca789-mallet-head.companion { fill:#5fc9c0; }
+.eca789-mallet-head.alt { fill:#6d59a8; }
+.eca789-cacao-pod { fill:#d9a54f; stroke:#28324f; stroke-width:5; }
+.eca789-cacao-pod-rib { fill:none; stroke:#8f4b3f; stroke-width:4; stroke-linecap:round; }
 
 @media (prefers-reduced-motion: reduce) {
   .family-info-toggle,

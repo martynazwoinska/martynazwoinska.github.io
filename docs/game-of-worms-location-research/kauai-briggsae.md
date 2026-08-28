@@ -1,6 +1,6 @@
 # Kauaʻi *Caenorhabditis briggsae* QG130 location research and art brief
 
-Last updated: 2026-07-28
+Last updated: 2026-08-28
 
 ## Exact record
 
@@ -61,29 +61,33 @@ and accessories above it.
 
 ## Accessory contract
 
-### Three-vial sample case
+### Kukui-shell glow carts
 
-Primary: a recognizable indigo field case holding three transparent, capped
-sample vials labelled `128`, `129` and `130`; QG130 is picked out in coral.
+Primary: a deep ribbed nutshell cart with a gold luminous chamber, long curved
+root handle, two unequal vine wheels and separate hubs.
 
-Companion: the same case and vial arrangement at worm-appropriate scale and
-the same viewing angle.
+Companion: a compact, more upright shell cart with an aqua light chamber,
+different ribs and independently proportioned wheels. It is not a scaled clone.
 
-### 2 August field tag
+The shell is a playful wider-island forest reference, not an identification of
+the anonymous collected plant material.
 
-Primary: a large tied field-specimen tag with a reinforced eyelet, cord,
-folded corner and the clearly separated date `02 AUG 2009`.
+### Root-loop carousel rides
 
-Companion: the same tied tag at worm-appropriate scale and orientation.
+Primary: a crooked root mast supports an asymmetric berry canopy and four
+differently coloured hanging leaf-pod seats above a rooted base.
 
-### 11 m tape measure
+Companion: a shorter, differently bent mast supports two unequal pod seats and
+a compact separate base.
 
-Primary: a recognizable retractable field tape measure with a contoured
-indigo case, grip, lock button, yellow marked tape, end hook and `11 m` badge.
+### Three-worm ribbon hoops
 
-Companion: the same tape measure at worm-appropriate scale and orientation.
+Primary: three large interlocking gold, aqua and berry hoops use different
+angles, three junction knots and a dark rooted stand.
 
-The buttons omit the strain code. Internal IDs may retain it.
+Companion: three tighter hoops form a more vertical arrangement with different
+overlap, proportions, knots and base. The trio playfully echoes the three
+closely related QG128–QG130 isolates; it is not collection equipment.
 
 ## Acceptance checks
 
@@ -96,5 +100,6 @@ The buttons omit the strain code. Internal IDs may retain it.
 ## Implementation status
 
 Environment implemented and validated on 2026-07-28. Accessories were
-redesigned on 2026-08-10 as three recognizable, brightly coloured field
-objects, with matching orientation and proportions across both worms.
+redesigned on 2026-08-28 as an under-root forest fair. All three concepts use
+separately constructed primary and companion SVGs and remain independently
+movable.

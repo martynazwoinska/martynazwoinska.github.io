@@ -11,7 +11,7 @@ const rows = [
   ["briggsae", "Ahmedabad, India · AF16", "lattice fans", "lattice-fan", "kite rigs", "kite-rig", "soil kits", "soil-kit"],
   ["briggsae", "Salt Lake City, Utah · EG4181", "apricot blossom hats", "eg4181-apricot-blossom-hat", "beehive saddle packs", "eg4181-beehive-saddle-pack", "single-tail mountain skis", "eg4181-single-tail-mountain-ski"],
   ["briggsae", "Kerala, India · JU1337", "sample jars", "ju1337-rotting-material-recovery-carousel", "16 December calendars", "ju1337-sixteen-december-field-calendar", "field notebooks", "poovar-agricultural-edge-ledger"],
-  ["briggsae", "Kauaʻi, Hawaiʻi · QG130", "curled-leaf sleds", "qg130-curled-leaf-sled", "dew-drop lanterns", "qg130-dew-drop-lantern", "root hammocks", "qg130-root-hammock"],
+  ["briggsae", "Kauaʻi, Hawaiʻi · QG130", "kukui-shell glow carts", "qg130-kukui-glow-cart", "root-loop carousel rides", "qg130-root-carousel", "three-worm ribbon hoops", "qg130-three-ribbon-hoops"],
   ["briggsae", "Réunion Island · JU1375", "shell sample jars", "ju1375-mollusk-substrate-inspection", "31 December field calendars", "ju1375-year-turn-collection-chronometer", "123 m altimeters", "ju1375-agricultural-land-altimeter"],
   ["briggsae", "Orsay, France · JU2518", "pressed-flower crowns", "ju2518-rotten-apple-decay-rotoscope", "apple field satchels", "ju2518-virus-association-spectroscope", "notebook & pencil harnesses", "ju2518-six-september-garden-ledger"],
   ["briggsae", "Dois Rios, Ilha Grande, Brazil · EG5612", "jackfruit sample trays", "eg5612-jackfruit-emergence-theatre", "shared sample bags", "eg5612-shared-bag-provenance-bifurcator", "test-cross plates", "eg5612-single-larva-test-cross-gate"],
@@ -20,7 +20,7 @@ const rows = [
   ["elegans", "Santeuil, France", "railway-driver uniforms", "santeuil-railway-driver-uniform", "Santeuil cylinder organs", "santeuil-cylinder-organ-instrument", "hogweed-stem locomotives", "santeuil-hogweed-locomotive"],
   ["elegans", "Edinburgh, Scotland", "Blackford observatory telescopes", "midmar-compost-tumbler", "Edinburgh tartan kilts", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
   ["elegans", "Tenerife, Spain", "Atlantic canary costumes", "tenerife-atlantic-canary-costume", "timple guitars", "tenerife-timple-guitar", "Teide star lanterns", "tenerife-teide-star-lantern"],
-  ["elegans", "Kauaʻi, Hawaiʻi", "genome kaleidoscopes", "xz1516-genome-kaleidoscope", "cloud-forest cloaks", "xz1516-cloud-forest-cloak", "mist-chime mobiles", "xz1516-mist-chime-mobile"],
+  ["elegans", "Kauaʻi, Hawaiʻi", "forest-bird listening headphones", "xz1516-forest-bird-headphones", "ʻōhiʻa blossom microphones", "xz1516-ohia-blossom-microphone", "genome tuning wheels", "xz1516-genome-tuning-wheel"],
   ["elegans", "Australian Capital Territory", "Baermann funnels", "qg2811-baermann-fig-recovery", "Yellow Box seed jars", "yellow-box-seed-orrery", "Black Mountain field radios", "black-mountain-signal-theremin"],
   ["elegans", "Claremont, California · ECA250", "Bookworm books", "eca250-bookworm-book", "California lemonade", "eca250-california-lemonade", "sunny reading glasses", "eca250-sunny-reading-glasses"],
   ["elegans", "Araucanía, Chile", "compost sample buckets", "compost-labyrinth", "Llaima ashfall gauges", "ashfall-recorder", "reciprocal-cross plates", "test-cross-mechanism"],
@@ -38,7 +38,7 @@ const rows = [
   ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras carnival crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
   ["tropicalis", "Nouragues, French Guiana · JU1428", "Duguetia sample boxes", "ju1428-duguetia-fruit-theatre", "litterfall baskets", "nouragues-litterfall-chronobalance", "three-strain sample racks", "ju1428-isotype-triad-comparator"],
   ["tropicalis", "Manaus region, Brazil · JU1976", "anonymous-fruit sample cases", "ju1976-substrate-identity-shadow-theatre", "four-metre tape measures", "ju1975-ju1976-four-metre-sample-rail", "soil-profile charts", "manaus-plateau-valley-soil-harmonograph"],
-  ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "petal gramophones", "eca789-petal-gramophone", "dew-drop collars", "eca789-dew-drop-collar", "rainbow-prism light catchers", "eca789-rainbow-prism-light-catcher"],
+  ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "petal rain trumpets", "eca789-petal-rain-trumpet", "raindrop harps", "eca789-raindrop-harp", "cacao-key xylophones", "eca789-cacao-key-xylophone"],
   ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Taiwan blue-magpie kites", "nic1648-taiwan-blue-magpie-kites", "single-tail rain boots", "nic1648-single-tail-rain-boots", "bubble-tea jetpacks", "nic1648-bubble-tea-jetpacks"],
   ["tropicalis", "Pohnpei, Micronesia · QG4739", "kotop sample boxes", "qg4739-kotop-name-concordance", "paired thermometers", "qg4739-paired-temperature-differential", "seven-vial sample racks", "c0230-seven-isotype-registry"],
   ["tropicalis", "Queensland, Australia · QG2904", "blackbean pod cases", "qg2904-uncracked-pod-seam-scanner", "recovery calendars", "qg2904-collection-to-funnel-relay", "canopy-crane models", "dro-canopy-crane-strata-mapper"],
@@ -64,7 +64,7 @@ const n2RendererFamilies = new Set(["ngm-agar-plate", "n2-lab-coat", "cryo-vial-
 const santeuilRendererFamilies = new Set(["santeuil-railway-driver-uniform", "santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"]);
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
 const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-teide-star-lantern"]);
-const kauaiRendererFamilies = new Set(["xz1516-genome-kaleidoscope", "xz1516-cloud-forest-cloak", "xz1516-mist-chime-mobile"]);
+const kauaiRendererFamilies = new Set(["xz1516-forest-bird-headphones", "xz1516-ohia-blossom-microphone", "xz1516-genome-tuning-wheel"]);
 const actRendererFamilies = new Set(["qg2811-baermann-fig-recovery", "yellow-box-seed-orrery", "black-mountain-signal-theremin"]);
 const claremontRendererIds = new Set([
   "elegans::Claremont, California · ECA250::headwear",
@@ -4027,48 +4027,64 @@ function drawKauaiQG130Accessory(group, item, companion) {
   if (!kauaiQG130RendererIds.has(item.id)) return false;
   group.dataset.renderer = item.family;
   group.classList.add("kauai-qg130-accessory", companion ? "qg130-companion" : "qg130-primary");
-  if (item.family === "qg130-curled-leaf-sled") {
+  if (item.family === "qg130-kukui-glow-cart") {
     if (companion) {
-      path(group, "M-76 20Q-44-69 42-54Q77-47 86-11Q55-23 31-12Q6 2-10 40Q-38 57-70 43Z", "qg130-leaf-shell companion");
-      path(group, "M-61 27Q-25-39 49-40Q15-26-8 31", "qg130-leaf-rib");
-      path(group, "M-70 43Q-17 71 67 40", "qg130-sled-runner");
-      path(group, "M-48 45L-58 60M42 39L52 54", "qg130-sled-brace");
+      path(group, "M-73-18Q-48-66 8-69Q53-67 75-33L62 31Q21 61-34 49Q-69 40-73-18Z", "qg130-cart-shell companion");
+      path(group, "M-57-17Q-35-49 6-52Q41-50 57-28L48 16Q12 38-30 30Q-51 25-57-17Z", "qg130-cart-glow companion");
+      path(group, "M-64-5Q-90-28-104-5Q-112 9-96 18", "qg130-cart-handle");
+      add(group, "circle", { class: "qg130-cart-wheel companion", cx: -35, cy: 49, r: 19 });
+      add(group, "circle", { class: "qg130-cart-wheel companion", cx: 39, cy: 42, r: 14 });
+      path(group, "M-37-47Q6-74 44-44M-37 30Q4 8 48 17", "qg130-shell-rib");
     } else {
-      path(group, "M-112 19Q-73-86 35-72Q92-64 111-12Q66-27 30-14Q-6 0-32 53Q-67 72-106 48Z", "qg130-leaf-shell");
-      path(group, "M-92 28Q-43-54 67-54Q23-35-22 45", "qg130-leaf-rib");
-      [-61,-27,11,48].forEach((x, index) => path(group, `M${x} ${index % 2 ? -22 : -30}Q${x+8} 6 ${x+4} ${index % 2 ? 38 : 30}`, "qg130-leaf-vein"));
-      path(group, "M-105 48Q-26 91 91 45", "qg130-sled-runner");
-      path(group, "M-71 61L-82 81M52 58L66 76", "qg130-sled-brace");
+      path(group, "M-103-28Q-70-91 5-96Q70-92 101-47L91 40Q34 83-42 67Q-91 56-103-28Z", "qg130-cart-shell");
+      path(group, "M-80-25Q-52-65 3-69Q54-67 77-40L70 21Q25 52-34 42Q-69 35-80-25Z", "qg130-cart-glow");
+      path(group, "M-93-10Q-128-42-148-14Q-158 2-137 18", "qg130-cart-handle");
+      add(group, "circle", { class: "qg130-cart-wheel", cx: -51, cy: 70, r: 27 });
+      add(group, "circle", { class: "qg130-cart-wheel", cx: 60, cy: 58, r: 21 });
+      add(group, "circle", { class: "qg130-cart-hub", cx: -51, cy: 70, r: 8 });
+      add(group, "circle", { class: "qg130-cart-hub", cx: 60, cy: 58, r: 7 });
+      path(group, "M-57-70Q2-110 61-67M-72 39Q-4 4 72 23M-87-9Q-12-26 87-16", "qg130-shell-rib");
+      path(group, "M-41-52Q-14-68 14-53Q39-40 52-12", "qg130-cart-glint");
     }
     return true;
   }
 
-  if (item.family === "qg130-dew-drop-lantern") {
+  if (item.family === "qg130-root-carousel") {
     if (companion) {
-      path(group, "M-48-6Q-47-58 0-77Q47-58 48-6Q47 43 0 62Q-47 43-48-6Z", "qg130-lantern-glass companion");
-      path(group, "M-33-15Q0 5 33-15M-29 24Q0 43 29 24M0-72V58", "qg130-lantern-cage");
-      path(group, "M-28-67Q0-103 28-67", "qg130-lantern-handle");
-      add(group, "circle", { class: "qg130-lantern-light", cx: 0, cy: 14, r: 13 });
+      path(group, "M-10-96Q17-68 4-39Q-9-7 12 39V74", "qg130-carousel-mast companion");
+      path(group, "M-70-45Q-16-83 54-53Q66-48 73-36Q8-58-70-45Z", "qg130-carousel-canopy companion");
+      path(group, "M-48-43V21M42-48V4", "qg130-carousel-cord");
+      path(group, "M-70 19Q-45-7-19 17L-27 47Q-50 61-68 43Z", "qg130-carousel-seat companion");
+      path(group, "M20 1Q44-19 64 4L57 32Q39 45 20 28Z", "qg130-carousel-seat alt");
+      path(group, "M-55 76Q5 54 65 75", "qg130-carousel-base companion");
     } else {
-      path(group, "M-31-71Q0-113 31-71L42-49Q76-7 48 39Q30 70 0 90Q-30 70-48 39Q-76-7-42-49Z", "qg130-lantern-glass");
-      path(group, "M-42-48Q0-28 42-48M-48 22Q0 51 48 22M0-88V83", "qg130-lantern-cage");
-      path(group, "M-26-80Q0-118 26-80", "qg130-lantern-handle");
-      add(group, "circle", { class: "qg130-lantern-light", cx: 0, cy: 25, r: 17 });
-      path(group, "M-24-25Q-12-48 2-52", "qg130-glass-glint");
+      path(group, "M-17-132Q25-93 6-51Q-13-8 16 54V99", "qg130-carousel-mast");
+      path(group, "M-107-62Q-23-119 87-72Q105-65 117-49Q14-82-107-62Z", "qg130-carousel-canopy");
+      [-79,-28,36,86].forEach((x, index) => path(group, `M${x} ${index % 2 ? -78 : -67}V${index % 2 ? 17 : 29}`, "qg130-carousel-cord"));
+      path(group, "M-105 24Q-78-9-43 18L-50 61Q-81 79-103 55Z", "qg130-carousel-seat");
+      path(group, "M-52 11Q-23-20 7 12L2 55Q-24 70-49 49Z", "qg130-carousel-seat alt");
+      path(group, "M14 6Q44-25 76 6L70 50Q43 68 17 46Z", "qg130-carousel-seat");
+      path(group, "M66 21Q91-5 112 24L104 59Q86 71 68 52Z", "qg130-carousel-seat alt");
+      path(group, "M-88 105Q13 70 109 103L97 119Q10 93-79 121Z", "qg130-carousel-base");
+      path(group, "M-95-56Q-30-89 15-75Q66-60 102-53", "qg130-root-grain");
     }
     return true;
   }
 
-  if (item.family === "qg130-root-hammock") {
+  if (item.family === "qg130-three-ribbon-hoops") {
     if (companion) {
-      path(group, "M-69 63Q-80 6-54-53Q-41-75-24-82M66 61Q77 10 54-37", "qg130-hammock-root companion");
-      path(group, "M-57-22Q-6 47 57-15L46 42Q-3 79-49 42Z", "qg130-hammock-bed companion");
-      path(group, "M-50-14L-55-36M47-8L55-35", "qg130-hammock-cord");
+      add(group, "ellipse", { class: "qg130-ribbon-hoop gold companion", cx: -25, cy: -18, rx: 42, ry: 57, transform: "rotate(-25 -25 -18)" });
+      add(group, "ellipse", { class: "qg130-ribbon-hoop aqua companion", cx: 20, cy: 5, rx: 38, ry: 54, transform: "rotate(21 20 5)" });
+      add(group, "ellipse", { class: "qg130-ribbon-hoop berry companion", cx: 0, cy: 36, rx: 50, ry: 30, transform: "rotate(-4 0 36)" });
+      [[-46,-53],[42,-24],[4,67]].forEach(([cx,cy], index) => add(group, "circle", { class: `qg130-ribbon-knot knot-${index + 1}`, cx, cy, r: 8 }));
+      path(group, "M-53 69Q0 83 54 68", "qg130-hoop-stand companion");
     } else {
-      path(group, "M-106 72Q-119 4-89-68Q-72-96-48-103M104 70Q118 10 89-59Q78-82 58-92", "qg130-hammock-root");
-      path(group, "M-88-27Q-8 67 88-24L74 51Q-5 104-76 52Z", "qg130-hammock-bed");
-      [-62,-34,-5,25,54].forEach((x, index) => path(group, `M${x} ${index % 2 ? 4 : -7}Q${x+7} 37 ${x+4} 61`, "qg130-hammock-rib"));
-      path(group, "M-79-19L-90-51M77-16L89-49", "qg130-hammock-cord");
+      add(group, "ellipse", { class: "qg130-ribbon-hoop gold", cx: -48, cy: -7, rx: 60, ry: 82, transform: "rotate(-28 -48 -7)" });
+      add(group, "ellipse", { class: "qg130-ribbon-hoop aqua", cx: 37, cy: -11, rx: 60, ry: 82, transform: "rotate(27 37 -11)" });
+      add(group, "ellipse", { class: "qg130-ribbon-hoop berry", cx: -2, cy: 45, rx: 82, ry: 49, transform: "rotate(-3 -2 45)" });
+      [[-81,-72],[78,-69],[1,94]].forEach(([cx,cy], index) => add(group, "circle", { class: `qg130-ribbon-knot knot-${index + 1}`, cx, cy, r: 11 }));
+      path(group, "M-91 102Q-2 130 89 101L80 118Q-2 145-82 119Z", "qg130-hoop-stand");
+      path(group, "M-65-21Q-26-52 15-35M-18 13Q20-20 58-2M-46 56Q-1 31 43 54", "qg130-ribbon-highlight");
     }
     return true;
   }
@@ -4829,58 +4845,63 @@ function drawOahuECA789Accessory(group, item, companion) {
     node.textContent = value;
   };
 
-  if (item.family === "eca789-petal-gramophone") {
+  if (item.family === "eca789-petal-rain-trumpet") {
     if (companion) {
-      path(group, "M-71-21Q-22-70 15-35Q36-15 18 15Q0 40-31 28Z", "eca789-gramophone-horn companion");
-      add(group, "ellipse", { class: "eca789-horn-mouth companion", cx: -52, cy: -18, rx: 24, ry: 35, transform: "rotate(-52 -52 -18)" });
-      path(group, "M-30 25Q-7 45 16 23L45 60", "eca789-gramophone-neck");
-      path(group, "M20 49Q48 35 73 54V76H17Z", "eca789-gramophone-base companion");
-      add(group, "circle", { class: "eca789-record", cx: 47, cy: 50, r: 13 });
-      path(group, "M65 57Q82 58 80 72", "eca789-gramophone-crank");
-      path(group, "M-50-16Q-38-30-24-33M-56 1Q-39-8-24-6", "eca789-sound-wave");
+      path(group, "M-76-35Q-34-78 8-49Q32-31 16-3Q-2 28-39 18Z", "eca789-trumpet-petal companion");
+      add(group, "ellipse", { class: "eca789-trumpet-bell companion", cx: -57, cy: -30, rx: 25, ry: 36, transform: "rotate(-50 -57 -30)" });
+      path(group, "M-40 1H62Q80 1 84 16Q88 32 69 36H-43Z", "eca789-trumpet-body companion");
+      [-2,20,41].forEach((x,index)=>{ add(group,"rect",{class:"eca789-valve-casing companion",x:x-6,y:4,width:12,height:34+index*2,rx:4}); path(group,`M${x} 4V-5`,"eca789-trumpet-valve"); add(group,"circle",{class:"eca789-valve-key",cx:x,cy:-8,r:5}); });
+      path(group, "M-29 31Q-4 58 20 36Q43 15 61 36Q73 49 64 61", "eca789-trumpet-tube companion");
+      path(group, "M76 15H99M99 8V23", "eca789-trumpet-mouthpiece");
+      [[-79,12],[-61,24]].forEach(([cx,cy],index)=>path(group,`M${cx} ${cy-7}Q${cx+7} ${cy} ${cx} ${cy+11}Q${cx-7} ${cy} ${cx} ${cy-7}Z`,index?"eca789-rain-note alt":"eca789-rain-note"));
     } else {
-      path(group, "M-103-24Q-39-94 19-47Q51-19 24 27Q-4 67-52 42Z", "eca789-gramophone-horn");
-      add(group, "ellipse", { class: "eca789-horn-mouth", cx: -74, cy: -21, rx: 34, ry: 49, transform: "rotate(-52 -74 -21)" });
-      path(group, "M-49 38Q-8 68 29 30L64 76", "eca789-gramophone-neck");
-      path(group, "M26 61Q65 39 102 64L93 96H22Z", "eca789-gramophone-base");
-      add(group, "circle", { class: "eca789-record", cx: 66, cy: 63, r: 20 });
-      add(group, "circle", { class: "eca789-record-centre", cx: 66, cy: 63, r: 5 });
-      path(group, "M91 70Q119 70 116 91", "eca789-gramophone-crank");
-      path(group, "M-76-28Q-59-48-38-51M-87-4Q-63-19-41-13M-85 19Q-62 10-45 19", "eca789-sound-wave");
-      path(group, "M-78-35Q-35-63 7-36", "eca789-petal-vein");
+      path(group, "M-112-41Q-50-111 17-62Q57-32 31 13Q2 64-54 39Z", "eca789-trumpet-petal");
+      add(group, "ellipse", { class: "eca789-trumpet-bell", cx: -83, cy: -35, rx: 37, ry: 54, transform: "rotate(-50 -83 -35)" });
+      path(group, "M-58 15H91Q119 15 124 36Q129 59 99 64H-63Z", "eca789-trumpet-body");
+      [0,31,62].forEach((x,index)=>{ add(group,"rect",{class:"eca789-valve-casing",x:x-9,y:19,width:18,height:50+index*2,rx:5}); path(group,`M${x} 20V7`,"eca789-trumpet-valve"); add(group,"circle",{class:"eca789-valve-key",cx:x,cy:2,r:7}); });
+      path(group, "M-46 58Q-10 99 26 66Q59 36 86 65Q103 83 90 104", "eca789-trumpet-tube");
+      path(group, "M113 34H151M151 23V45", "eca789-trumpet-mouthpiece");
+      path(group, "M-87-52Q-54-83-17-58M-95-26Q-58-48-24-28", "eca789-petal-vein");
+      [[-116,16],[-91,35],[-66,53]].forEach(([cx,cy],index)=>path(group,`M${cx} ${cy-10}Q${cx+10} ${cy} ${cx} ${cy+16}Q${cx-10} ${cy} ${cx} ${cy-10}Z`,index===1?"eca789-rain-note alt":"eca789-rain-note"));
     }
     return true;
   }
 
-  if (item.family === "eca789-dew-drop-collar") {
+  if (item.family === "eca789-raindrop-harp") {
     if (companion) {
-      path(group, "M-76-6Q-23-49 38-33Q67-25 78-2Q37-18 6 6Q-27 31-65 21Z", "eca789-collar-band companion");
-      [[-49,12,10],[-16,20,13],[20,11,9]].forEach(([cx,cy,r], index) => path(group, `M${cx} ${cy-r}Q${cx+r} ${cy} ${cx} ${cy+r+7}Q${cx-r} ${cy} ${cx} ${cy-r}Z`, index === 1 ? "eca789-dew-jewel accent" : "eca789-dew-jewel"));
-      path(group, "M-64 1Q-18-25 58-17", "eca789-collar-seam");
+      path(group, "M-58 62Q-55-44 12-77Q45-91 62-57Q28-59 10-34Q-8-8-16 62Z", "eca789-harp-frame companion");
+      [-34,-16,2,20,38].forEach((x,index)=>path(group,`M${x} ${48-index*9}V${-13-index*10}`,"eca789-harp-string"));
+      path(group, "M-66 61Q-5 78 66 57L58 76Q-4 94-60 77Z", "eca789-harp-base companion");
+      [[-34,-19],[2,-40],[38,-59]].forEach(([cx,cy],index)=>path(group,`M${cx} ${cy-7}Q${cx+7} ${cy} ${cx} ${cy+11}Q${cx-7} ${cy} ${cx} ${cy-7}Z`,index===1?"eca789-harp-drop alt":"eca789-harp-drop"));
     } else {
-      path(group, "M-112-10Q-45-68 44-47Q91-36 112-3Q54-25 9 11Q-39 51-96 31Z", "eca789-collar-band");
-      [[-77,18,13],[-37,31,17],[8,22,12],[49,1,10]].forEach(([cx,cy,r], index) => path(group, `M${cx} ${cy-r}Q${cx+r} ${cy} ${cx} ${cy+r+10}Q${cx-r} ${cy} ${cx} ${cy-r}Z`, index === 1 ? "eca789-dew-jewel accent" : "eca789-dew-jewel"));
-      path(group, "M-95 1Q-35-40 78-24", "eca789-collar-seam");
-      path(group, "M-73 16Q-29-6 52-9", "eca789-collar-highlight");
+      path(group, "M-87 88Q-82-64 22-111Q68-131 92-79Q42-82 15-45Q-12-7-25 88Z", "eca789-harp-frame");
+      [-60,-35,-10,15,40,65].forEach((x,index)=>path(group,`M${x} ${72-index*12}V${-15-index*14}`,"eca789-harp-string"));
+      path(group, "M-98 87Q-8 114 101 81L88 108Q-8 137-91 111Z", "eca789-harp-base");
+      [[-60,-21],[-10,-55],[40,-86],[66,-100]].forEach(([cx,cy],index)=>path(group,`M${cx} ${cy-10}Q${cx+10} ${cy} ${cx} ${cy+16}Q${cx-10} ${cy} ${cx} ${cy-10}Z`,index===1?"eca789-harp-drop alt":"eca789-harp-drop"));
+      path(group, "M-74 75Q-55-25-4-62Q44-96 75-78", "eca789-harp-highlight");
     }
     return true;
   }
 
-  if (item.family === "eca789-rainbow-prism-light-catcher") {
+  if (item.family === "eca789-cacao-key-xylophone") {
     if (companion) {
-      path(group, "M-47-62L0-88L48-58L24-6L-25-5Z", "eca789-prism companion");
-      path(group, "M0-88L1-5M-47-62L24-6M48-58L-25-5", "eca789-prism-leading");
-      path(group, "M0-88V-111M-25-5L-46 49M24-6L51 38", "eca789-prism-cord");
-      add(group, "circle", { class: "eca789-prism-bead berry", cx: -48, cy: 54, r: 9 });
-      add(group, "circle", { class: "eca789-prism-bead gold", cx: 54, cy: 43, r: 8 });
+      path(group, "M-73-37Q-11-59 67-34L76 35Q5 62-76 36Z", "eca789-xylophone-frame companion");
+      const companionKeys=[[-52,-35,20,62],[-28,-41,21,68],[-3,-44,22,72],[23,-41,21,66],[48,-34,19,57]];
+      companionKeys.forEach(([x,y,w,h],index)=>add(group,"rect",{class:`eca789-cacao-key ${index % 3 === 1 ? "alt" : index % 3 === 2 ? "bright" : ""}`,x,y,width:w,height:h,rx:6,transform:`rotate(${index*2-4} ${x+w/2} ${y+h/2})`}));
+      path(group, "M-55 46Q-39 72-22 47Q-6 72 12 47Q30 69 48 44", "eca789-cacao-resonator companion");
+      path(group, "M-59-58L-23-30M31-55L59-28", "eca789-mallet companion");
+      add(group,"circle",{class:"eca789-mallet-head companion",cx:-64,cy:-62,r:10});
+      add(group,"circle",{class:"eca789-mallet-head alt",cx:64,cy:-59,r:9});
     } else {
-      path(group, "M-70-55L0-101L72-51L38 29L-41 30Z", "eca789-prism");
-      path(group, "M0-101L2 29M-70-55L38 29M72-51L-41 30", "eca789-prism-leading");
-      path(group, "M0-101V-133M-41 30L-72 92M38 29L76 83M2 29L5 105", "eca789-prism-cord");
-      add(group, "circle", { class: "eca789-prism-bead berry", cx: -76, cy: 97, r: 13 });
-      add(group, "circle", { class: "eca789-prism-bead gold", cx: 80, cy: 88, r: 11 });
-      add(group, "circle", { class: "eca789-prism-bead aqua", cx: 5, cy: 111, r: 10 });
-      path(group, "M-38 40L-77 68M41 39L80 62", "eca789-light-ray");
+      path(group, "M-111-55Q-18-88 103-50L116 53Q10 91-116 57Z", "eca789-xylophone-frame");
+      const keys=[[-84,-52,29,89],[-52,-62,30,99],[-19,-69,31,108],[15,-67,31,105],[49,-58,29,93],[80,-47,25,78]];
+      keys.forEach(([x,y,w,h],index)=>add(group,"rect",{class:`eca789-cacao-key ${index % 3 === 1 ? "alt" : index % 3 === 2 ? "bright" : ""}`,x,y,width:w,height:h,rx:8,transform:`rotate(${index*1.8-4.5} ${x+w/2} ${y+h/2})`}));
+      path(group, "M-88 65Q-66 104-42 66Q-17 105 8 67Q34 101 58 63Q80 92 99 56", "eca789-cacao-resonator");
+      path(group, "M-95-89L-38-49M42-86L91-48", "eca789-mallet");
+      add(group,"circle",{class:"eca789-mallet-head",cx:-102,cy:-95,r:14});
+      add(group,"circle",{class:"eca789-mallet-head alt",cx:98,cy:-93,r:13});
+      path(group, "M-89 74Q-117 89-102 113Q-78 126-58 104Q-45 88-58 72", "eca789-cacao-pod");
+      path(group, "M-92 82Q-79 94-66 81M-100 96Q-81 112-64 94", "eca789-cacao-pod-rib");
     }
     return true;
   }
@@ -6607,57 +6628,69 @@ function drawElegansFieldAccessory(group, item, companion) {
     return true;
   }
 
-  if (location === "kauai" && item.family === "xz1516-genome-kaleidoscope") {
-    shadow(companion ? 72 : 91, 108);
+  if (location === "kauai" && item.family === "xz1516-forest-bird-headphones") {
     if (companion) {
-      path(group, "M-77-26L12-48L61-4L-26 22Z", "xz-kaleidoscope-barrel companion");
-      path(group, "M12-48L47-64L86-24L61-4Z", "xz-kaleidoscope-eye");
-      path(group, "M-26 22L61-4M-56-19L-8 8", "xz-kaleidoscope-rim");
-      path(group, "M-11 18L-28 73M24 9L51 70", "xz-kaleidoscope-stand");
-      path(group, "M-28 73H-52M51 70H75", "xz-kaleidoscope-foot");
+      path(group, "M-60 23Q-61-64 0-79Q53-68 60 4", "xz-headphone-band companion");
+      path(group, "M-74-1Q-52-28-31-7L-29 36Q-53 54-73 31Z", "xz-earcup companion");
+      path(group, "M34-15Q62-37 73-8L64 31Q42 42 29 17Z", "xz-earcup alt");
+      path(group, "M-56 5Q-44-14-35-3M45-7Q57-20 65-4", "xz-earcup-pad");
+      path(group, "M59-22Q84-31 93-12Q79-3 63 2", "xz-bird-sound-scoop companion");
     } else {
-      path(group, "M-111-31L13-65L82-9L-39 31Z", "xz-kaleidoscope-barrel");
-      path(group, "M13-65L62-87L113-35L82-9Z", "xz-kaleidoscope-eye");
-      path(group, "M-39 31L82-9M-83-22L-15 15", "xz-kaleidoscope-rim");
-      path(group, "M-22 25L-51 102M35 7L72 96M-51 102L-78 109M72 96L101 104", "xz-kaleidoscope-stand");
-      [[-51,-19],[1,-34],[50,-48]].forEach(([cx,cy], index) => path(group, `M${cx-18} ${cy}L${cx} ${cy-14}L${cx+18} ${cy}L${cx} ${cy+14}Z`, index % 2 ? "xz-kaleidoscope-pane alt" : "xz-kaleidoscope-pane"));
-      add(group, "circle", { class: "xz-kaleidoscope-lens", cx: 69, cy: -48, r: 14 });
+      path(group, "M-82 34Q-87-86 3-106Q81-88 84 10", "xz-headphone-band");
+      path(group, "M-101-3Q-70-42-40-11L-39 50Q-72 75-101 43Z", "xz-earcup");
+      path(group, "M45-26Q82-55 101-15L89 42Q57 61 37 25Z", "xz-earcup alt");
+      path(group, "M-78 6Q-61-20-47-5M60-15Q77-35 90-10", "xz-earcup-pad");
+      path(group, "M84-37Q124-54 139-22Q116-5 92 4", "xz-bird-sound-scoop");
+      path(group, "M-40-79Q2-101 43-76M-31-63Q5-79 33-59", "xz-band-highlight");
+      [[-115,-30],[-126,-11],[-119,11]].forEach(([cx,cy], index)=>path(group, `M${cx} ${cy}q${-12-index*3} ${-8+index*4} ${-21-index*3} 2`, "xz-sound-wave"));
     }
     return true;
   }
 
-  if (location === "kauai" && item.family === "xz1516-cloud-forest-cloak") {
+  if (location === "kauai" && item.family === "xz1516-ohia-blossom-microphone") {
+    shadow(companion ? 63 : 82, 111);
     if (companion) {
-      path(group, "M-92-34Q-31-69 39-42Q73-29 91-2Q43-19 7 11Q-27 39-78 27Z", "xz-cloud-cloak companion");
-      path(group, "M-78-25Q-24-52 58-29", "xz-cloak-yoke");
-      path(group, "M-76 27Q-23 55 70 13", "xz-cloak-hem");
-      add(group, "circle", { class: "xz-cloak-clasp", cx: 57, cy: -29, r: 9 });
+      path(group, "M-7-37Q-31 7-25 71M2-36Q20 1 17 67", "xz-mic-stem companion");
+      path(group, "M-29 65Q-2 50 25 67L35 82H-39Z", "xz-mic-base companion");
+      add(group, "ellipse", { class: "xz-mic-core companion", cx: -3, cy: -42, rx: 25, ry: 31, transform: "rotate(-15 -3 -42)" });
+      [[-35,-58],[-24,-78],[0,-84],[23,-72],[31,-48],[-27,-32],[23,-28]].forEach(([x,y], index)=>path(group, `M-2-43Q${x*.45} ${y*.72} ${x} ${y}`, index%2?"xz-ohia-stamen alt":"xz-ohia-stamen"));
+      [[-35,-58],[-24,-78],[0,-84],[23,-72],[31,-48],[-27,-32],[23,-28]].forEach(([cx,cy], index)=>add(group,"circle",{class:index%2?"xz-ohia-tip alt":"xz-ohia-tip",cx,cy,r:4.5}));
+      add(group, "ellipse", { class: "xz-mic-core companion", cx: -3, cy: -42, rx: 19, ry: 25, transform: "rotate(-15 -3 -42)" });
+      path(group, "M-15-51Q-3-60 9-50M-16-41Q-3-49 10-40M-14-31Q-3-37 8-30", "xz-mic-grille companion");
     } else {
-      path(group, "M-137-44Q-49-94 57-58Q111-40 137-2Q68-26 15 19Q-36 63-116 39Z", "xz-cloud-cloak");
-      path(group, "M-118-34Q-42-72 89-38", "xz-cloak-yoke");
-      path(group, "M-115 39Q-34 83 108 20", "xz-cloak-hem");
-      path(group, "M-83-10Q-39-30 15-11M-71 12Q-25-4 34 7", "xz-cloak-mist-line");
-      add(group, "circle", { class: "xz-cloak-clasp", cx: 88, cy: -38, r: 12 });
+      path(group, "M-12-43Q-42 22-30 96M3-42Q31 11 25 91", "xz-mic-stem");
+      path(group, "M-43 87Q-5 66 37 91L50 111H-54Z", "xz-mic-base");
+      add(group, "ellipse", { class: "xz-mic-core", cx: -5, cy: -53, rx: 35, ry: 43, transform: "rotate(-14 -5 -53)" });
+      [[-53,-74],[-42,-105],[-13,-119],[20,-108],[46,-78],[44,-43],[20,-22],[-18,-18],[-49,-37]].forEach(([x,y], index)=>path(group, `M-4-54Q${x*.43} ${y*.74} ${x} ${y}`, index%3?"xz-ohia-stamen":"xz-ohia-stamen alt"));
+      [[-53,-74],[-42,-105],[-13,-119],[20,-108],[46,-78],[44,-43],[20,-22],[-18,-18],[-49,-37]].forEach(([cx,cy], index)=>add(group,"circle",{class:index%3?"xz-ohia-tip":"xz-ohia-tip alt",cx,cy,r:6}));
+      add(group, "ellipse", { class: "xz-mic-core", cx: -5, cy: -53, rx: 27, ry: 35, transform: "rotate(-14 -5 -53)" });
+      path(group, "M-23-67Q-4-82 18-66M-19-51Q-2-62 16-50M-14-36Q0-44 13-36", "xz-mic-grille");
     }
     return true;
   }
 
-  if (location === "kauai" && item.family === "xz1516-mist-chime-mobile") {
-    shadow(companion ? 69 : 86, 111);
+  if (location === "kauai" && item.family === "xz1516-genome-tuning-wheel") {
+    shadow(companion ? 72 : 92, 114);
     if (companion) {
-      path(group, "M-65-45Q0-88 64-41", "xz-chime-crescent companion");
-      [[-43,-36,35],[-9,-54,51],[28,-48,41],[53,-31,29]].forEach(([x,y,len], index) => {
-        path(group, `M${x} ${y}V${y+len}`, "xz-chime-cord");
-        path(group, `M${x-8} ${y+len}Q${x} ${y+len+18} ${x+8} ${y+len}Q${x} ${y+len-10} ${x-8} ${y+len}Z`, index % 2 ? "xz-chime-drop alt" : "xz-chime-drop");
-      });
+      add(group, "circle", { class: "xz-tuning-wheel companion", cx: -4, cy: -21, r: 54 });
+      add(group, "circle", { class: "xz-tuning-hub companion", cx: -4, cy: -21, r: 15 });
+      [-85,-28,30,88].forEach((angle,index)=>path(group, `M-4-21L${-4+46*Math.cos(angle*Math.PI/180)} ${-21+46*Math.sin(angle*Math.PI/180)}`, index%2?"xz-tuning-spoke alt":"xz-tuning-spoke"));
+      path(group, "M-40-30Q-18-58 4-29Q26 0 45-29", "xz-genome-strand");
+      path(group, "M-40-12Q-18 16 4-12Q26-40 45-12", "xz-genome-strand alt");
+      [-31,-12,7,26].forEach(x=>path(group,`M${x} ${x%2?-28:-18}L${x+8} ${x%2?-17:-29}`,"xz-genome-rung"));
+      path(group, "M-25 37L-38 80M18 35L36 77M-38 80H-58M36 77H57", "xz-tuning-stand companion");
+      path(group, "M49-9Q77-5 72 20L61 33", "xz-tuning-crank companion");
     } else {
-      path(group, "M-92-52Q0-112 91-46", "xz-chime-crescent");
-      [[-69,-40,48],[-31,-68,72],[10,-74,82],[49,-59,61],[76,-36,42]].forEach(([x,y,len], index) => {
-        path(group, `M${x} ${y}V${y+len}`, "xz-chime-cord");
-        path(group, `M${x-11} ${y+len}Q${x} ${y+len+25} ${x+11} ${y+len}Q${x} ${y+len-14} ${x-11} ${y+len}Z`, index % 2 ? "xz-chime-drop alt" : "xz-chime-drop");
-      });
-      path(group, "M0-88V-128", "xz-chime-hanger");
-      add(group, "circle", { class: "xz-chime-ring", cx: 0, cy: -136, r: 10 });
+      add(group, "circle", { class: "xz-tuning-wheel", cx: -5, cy: -25, r: 79 });
+      add(group, "circle", { class: "xz-tuning-hub", cx: -5, cy: -25, r: 22 });
+      [-102,-51,0,51,102,153].forEach((angle,index)=>path(group, `M-5-25L${-5+68*Math.cos(angle*Math.PI/180)} ${-25+68*Math.sin(angle*Math.PI/180)}`, index%2?"xz-tuning-spoke alt":"xz-tuning-spoke"));
+      path(group, "M-57-37Q-28-78 2-38Q33 1 60-39", "xz-genome-strand");
+      path(group, "M-57-12Q-28 29 2-11Q33-50 60-13", "xz-genome-strand alt");
+      [-45,-25,-5,15,35].forEach((x,index)=>path(group,`M${x} ${index%2?-35:-19}L${x+12} ${index%2?-20:-36}`,"xz-genome-rung"));
+      path(group, "M-38 42L-58 106M27 39L54 102M-58 106H-91M54 102H88", "xz-tuning-stand");
+      path(group, "M70-6Q111-2 105 35L88 52", "xz-tuning-crank");
+      add(group, "circle", { class: "xz-tuning-knob", cx: 84, cy: 58, r: 10 });
+      path(group, "M-65-78Q-30-112 6-88Q39-70 67-91", "xz-branching-signal");
     }
     return true;
   }
@@ -6931,9 +6964,9 @@ function renderPiece(target, item, wormPart) {
     "tenerife-atlantic-canary-costume": { primary: [271, 166, .5, 30], companion: [97, 166, .39, 28] },
     "tenerife-timple-guitar": { primary: [344, 222, .46, -7], companion: [43, 230, .37, 10] },
     "tenerife-teide-star-lantern": { primary: [365, 280, .42, -2], companion: [62, 285, .33, 4] },
-    "xz1516-genome-kaleidoscope": { primary: [382, 126, .4, -5], companion: [-7, 119, .31, 4] },
-    "xz1516-cloud-forest-cloak": { primary: [244, 173, .46, 20], companion: [84, 160, .35, 25] },
-    "xz1516-mist-chime-mobile": { primary: [380, 271, .37, -2], companion: [187, 292, .29, 3] },
+    "xz1516-forest-bird-headphones": { primary: [397, 79, .32, -5], companion: [122, 121, .25, 5] },
+    "xz1516-ohia-blossom-microphone": { primary: [235, 220, .46, -7], companion: [68, 251, .36, 7] },
+    "xz1516-genome-tuning-wheel": { primary: [388, 278, .41, -2], companion: [182, 296, .33, 3] },
     "qg2811-baermann-fig-recovery": { primary: [385, 132, .37, -2], companion: [-10, 118, .28, 2] },
     "yellow-box-seed-orrery": { primary: [239, 170, .32, 1], companion: [125, 205, .29, -1] },
     "black-mountain-signal-theremin": { primary: [381, 248, .35, -1], companion: [203, 290, .29, 1] },
@@ -6981,9 +7014,9 @@ function renderPiece(target, item, wormPart) {
     ,"guadeloupe-hummingbird-costume": { primary: [264, 184, .43, 28], companion: [92, 173, .35, 26] }
     ,"guadeloupe-madras-carnival-crown": { primary: [355, 55, .42, -3], companion: [111, 104, .34, 4] }
     ,"guadeloupe-gwoka-drum": { primary: [365, 258, .4, -3], companion: [31, 279, .33, 4] }
-    ,"eca789-petal-gramophone": { primary: [389, 140, .44, -3], companion: [-3, 132, .34, 4] }
-    ,"eca789-dew-drop-collar": { primary: [242, 181, .48, 17], companion: [98, 176, .4, 22] }
-    ,"eca789-rainbow-prism-light-catcher": { primary: [382, 271, .34, -2], companion: [185, 292, .27, 3] }
+    ,"eca789-petal-rain-trumpet": { primary: [455, 89, .43, 7], companion: [24, 92, .34, -7] }
+    ,"eca789-raindrop-harp": { primary: [233, 200, .39, -3], companion: [106, 221, .31, 4] }
+    ,"eca789-cacao-key-xylophone": { primary: [382, 279, .43, -3], companion: [176, 297, .34, 4] }
     ,"qg131-paired-pandanus-key-sorter": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
     ,"qg131-four-date-culture-relay": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"qg131-mating-id-motion-theatre": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
@@ -7011,9 +7044,9 @@ function renderPiece(target, item, wormPart) {
     ,"ju1337-rotting-material-recovery-carousel": { primary: [383, 143, .45, -2], companion: [8, 128, .35, 2] }
     ,"ju1337-sixteen-december-field-calendar": { primary: [246, 196, .43, 1], companion: [126, 217, .34, -1] }
     ,"poovar-agricultural-edge-ledger": { primary: [379, 271, .42, -2], companion: [194, 292, .34, 2] }
-    ,"qg130-curled-leaf-sled": { primary: [383, 138, .46, -5], companion: [8, 128, .36, 5] }
-    ,"qg130-dew-drop-lantern": { primary: [234, 190, .42, -1], companion: [126, 215, .32, 2] }
-    ,"qg130-root-hammock": { primary: [379, 256, .4, -3], companion: [160, 254, .29, 3] }
+    ,"qg130-kukui-glow-cart": { primary: [388, 137, .47, -5], companion: [7, 128, .37, 5] }
+    ,"qg130-root-carousel": { primary: [236, 228, .43, -2], companion: [126, 245, .35, 3] }
+    ,"qg130-three-ribbon-hoops": { primary: [386, 277, .38, -3], companion: [178, 300, .3, 4] }
     ,"ju1375-mollusk-substrate-inspection": { primary: [380, 137, .37, -2], companion: [-7, 119, .29, 3] }
     ,"ju1375-year-turn-collection-chronometer": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
     ,"ju1375-agricultural-land-altimeter": { primary: [381, 258, .34, -1], companion: [194, 294, .27, 2] }
