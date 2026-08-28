@@ -4372,6 +4372,77 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   .atlas-completion-reward p span { font-size: .86rem; }
 }
 
+/* Hawaii refresh: distinct leaf craft, cloud-glass objects and flower-macro jewellery. */
+.kauai-qg130-accessory,
+.elegans-field-redesign .xz-kaleidoscope-barrel,
+.elegans-field-redesign .xz-cloud-cloak,
+.elegans-field-redesign .xz-chime-crescent,
+.oahu-eca789-accessory {
+  filter: drop-shadow(0 5px 4px rgba(24, 30, 48, .28));
+}
+
+.qg130-leaf-shell { fill:#d88a49; stroke:#24334c; stroke-width:5; }
+.qg130-leaf-shell.companion { fill:#d8ad55; }
+.qg130-leaf-rib,.qg130-leaf-vein { fill:none; stroke:#f7d67b; stroke-width:4; }
+.qg130-sled-runner,.qg130-sled-brace { fill:none; stroke:#55c9c0; stroke-width:7; }
+.qg130-sled-brace { stroke-width:5; }
+.qg130-lantern-glass { fill:rgba(119,217,216,.78); stroke:#263457; stroke-width:5; }
+.qg130-lantern-glass.companion { fill:rgba(240,154,183,.76); }
+.qg130-lantern-cage,.qg130-lantern-handle { fill:none; stroke:#e9bd54; stroke-width:6; }
+.qg130-lantern-light { fill:#fff1a7; stroke:#d45f7c; stroke-width:4; }
+.qg130-glass-glint { fill:none; stroke:#f8ffff; stroke-width:5; stroke-linecap:round; }
+.qg130-hammock-root { fill:none; stroke:#5d3d38; stroke-width:14; stroke-linecap:round; }
+.qg130-hammock-root.companion { stroke-width:11; }
+.qg130-hammock-bed { fill:#7653a8; stroke:#24334c; stroke-width:5; }
+.qg130-hammock-bed.companion { fill:#d8567e; }
+.qg130-hammock-rib { fill:none; stroke:#f2c968; stroke-width:4; }
+.qg130-hammock-cord { fill:none; stroke:#e8c469; stroke-width:5; }
+
+.xz-kaleidoscope-barrel { fill:#5268a8; stroke:#223450; stroke-width:6; }
+.xz-kaleidoscope-barrel.companion { fill:#3f9295; }
+.xz-kaleidoscope-eye { fill:#e6bc55; stroke:#223450; stroke-width:6; }
+.xz-kaleidoscope-rim,.xz-kaleidoscope-stand,.xz-kaleidoscope-foot { fill:none; stroke:#263b57; stroke-width:7; }
+.xz-kaleidoscope-pane { fill:#e96886; stroke:#263b57; stroke-width:3; }
+.xz-kaleidoscope-pane.alt { fill:#5ed0c4; }
+.xz-kaleidoscope-lens { fill:#fff2c1; stroke:#7559ad; stroke-width:5; }
+.xz-cloud-cloak { fill:#477f91; stroke:#253650; stroke-width:6; }
+.xz-cloud-cloak.companion { fill:#7064ac; }
+.xz-cloak-yoke,.xz-cloak-hem { fill:none; stroke:#e5b956; stroke-width:7; }
+.xz-cloak-mist-line { fill:none; stroke:#bde8e2; stroke-width:5; opacity:.9; }
+.xz-cloak-clasp { fill:#e66a83; stroke:#253650; stroke-width:4; }
+.xz-chime-crescent { fill:none; stroke:#e5b956; stroke-width:13; stroke-linecap:round; }
+.xz-chime-crescent.companion { stroke:#db6d87; stroke-width:11; }
+.xz-chime-cord,.xz-chime-hanger { fill:none; stroke:#c8e3dd; stroke-width:4; }
+.xz-chime-drop { fill:rgba(78,188,190,.88); stroke:#263653; stroke-width:4; }
+.xz-chime-drop.alt { fill:rgba(224,105,139,.9); }
+.xz-chime-ring { fill:none; stroke:#e5b956; stroke-width:6; }
+
+.eca789-gramophone-horn { fill:#c45576; stroke:#28324f; stroke-width:6; }
+.eca789-gramophone-horn.companion { fill:#e18a58; }
+.eca789-horn-mouth { fill:#f7df9a; stroke:#9b3f64; stroke-width:6; }
+.eca789-horn-mouth.companion { stroke-width:5; }
+.eca789-petal-vein { fill:none; stroke:#f3c76b; stroke-width:5; }
+.eca789-gramophone-neck,.eca789-gramophone-crank,.eca789-sound-wave { fill:none; stroke:#e5b553; stroke-width:7; stroke-linecap:round; }
+.eca789-sound-wave { stroke:#65cbc3; stroke-width:5; }
+.eca789-gramophone-base { fill:#6b59a6; stroke:#28324f; stroke-width:6; }
+.eca789-gramophone-base.companion { fill:#438d91; }
+.eca789-record { fill:#24314d; stroke:#f3cf70; stroke-width:4; }
+.eca789-record-centre { fill:#e96880; }
+.eca789-collar-band { fill:#5f5aa8; stroke:#25334f; stroke-width:6; }
+.eca789-collar-band.companion { fill:#d55b79; }
+.eca789-collar-seam { fill:none; stroke:#f0c866; stroke-width:6; }
+.eca789-collar-highlight { fill:none; stroke:#92dfd5; stroke-width:4; }
+.eca789-dew-jewel { fill:rgba(113,214,205,.9); stroke:#263450; stroke-width:4; }
+.eca789-dew-jewel.accent { fill:rgba(245,190,97,.96); }
+.eca789-prism { fill:rgba(104,211,203,.76); stroke:#273450; stroke-width:6; }
+.eca789-prism.companion { fill:rgba(225,100,133,.74); }
+.eca789-prism-leading,.eca789-prism-cord { fill:none; stroke:#e9be5d; stroke-width:5; }
+.eca789-prism-bead { stroke:#273450; stroke-width:4; }
+.eca789-prism-bead.berry { fill:#d85c80; }
+.eca789-prism-bead.gold { fill:#f1c85f; }
+.eca789-prism-bead.aqua { fill:#5dcac1; }
+.eca789-light-ray { fill:none; stroke:#f2d99a; stroke-width:5; stroke-linecap:round; }
+
 @media (prefers-reduced-motion: reduce) {
   .family-info-toggle,
   .family-info-toggle-arrow,
