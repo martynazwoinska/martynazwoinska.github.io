@@ -70,9 +70,6 @@
     chocolate('aroko-tocumare', 'Aroko Ocumare, 74%', 'confirmed', [78.58, 34.72, 5.01, 10.33], {
       maker: 'Aroko', origin: 'Ocumare, Aragua, Venezuela', cacao: '74%', link: 'https://www.arokochocolate.com/en/products/ocumare-74-aragua-venezuela-50-gr', linkLabel: 'View the official product page'
     }),
-    chocolate('zotter-labooko-white', 'Zotter Labooko White', 'confirmed', [80.86, 46.09, 3.13, 7.38], {
-      maker: 'Zotter', note: 'The small white wrapper on the right.', link: 'https://www.zotter.at/en/online-shop/brands/labooko/white-chocolate-2', linkLabel: 'View the official product page'
-    }),
     chocolate('tjak-norwegian-brown-cheese', 'Fjåk Milk & Brown Cheese, 45%', 'confirmed', [14.52, 51.56, 10.03, 21.79], {
       maker: 'Fjåk', cacao: '45%', link: 'https://fjaak.no/en/product/45-milk-brown-cheese/', linkLabel: 'View the official product page'
     }),
