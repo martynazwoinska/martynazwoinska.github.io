@@ -91,7 +91,7 @@ const species = [
       { name: "Edinburgh, Scotland", sceneLabel: "Allotment compost · Edinburgh · Scotland", coordinates: [-3.19, 55.92], source: "CaeNDR", style: "field", strain: "ED3010", history: "Edinburgh’s marker represents twelve C. elegans strains from four different isotypes—all recovered from compost in the same urban allotment." },
       { name: "Tenerife, Spain", sceneLabel: "Botanical garden · Tenerife · Spain", coordinates: [-16.535468, 28.411121], source: "CaeNDR", style: "field", strain: "NIC1787", history: "A single day’s sampling in Puerto de la Cruz botanical garden produced 23 C. elegans records from rotting avocado, other fruits, flowers, stems and plant litter." },
       { name: "Kauaʻi, Hawaiʻi", sceneLabel: "Rotting plants · Kauaʻi · United States", coordinates: [-159.668, 22.149], source: "CaeNDR", style: "kauai", strain: "XZ1516", history: "This high-elevation Kauaʻi isolate came from rotting plant material and belongs to one of the island’s exceptionally divergent C. elegans lineages." },
-      { name: "Australian Capital Territory", sceneLabel: "Rotten fig · O’Connor · Australia", coordinates: [149.115, -35.254], source: "CaeNDR", style: "field", strain: "QG2811", history: "Rotting figs collected from an O’Connor backyard yielded a hermaphrodite through a Baermann funnel eleven days later." },
+      { name: "Australian Capital Territory", sceneLabel: "Rotten fig · O’Connor · Australia", coordinates: [149.115, -35.254], source: "CaeNDR", style: "field", strain: "QG2811", historyTitle: "Canberra connections", history: "This O’Connor backyard reflects the real collection site, where this worm was found in rotten figs. The flat white represents Canberra’s café culture, the balloons refer to the city’s annual balloon festival, and sulphur-crested cockatoos are familiar visitors to local gardens and outdoor cafés." },
       { name: "Claremont, California · ECA250", sceneLabel: "Decaying mushroom · Claremont · United States", coordinates: [-117.7198, 34.0967], source: "CGC CB4857 collection record; CaeNDR ECA250 isotype record", style: "field", strain: "ECA250", history: "This lineage began with a worm found in a decaying mushroom during rain in Claremont in November 1972. ECA250 is the current reference for this group of closely related strains." },
       { name: "Araucanía, Chile", sceneLabel: "Compost heap · Araucanía · Chile", coordinates: [-72.1509, -38.9379], source: "CaeNDR", style: "field", strain: "JU4400", history: "A compost heap in a rural garden in Cunco yielded this C. elegans isolate in March 2023—one of the game’s most recently collected worms." }
     ]
@@ -266,6 +266,7 @@ const els = {
   speciesIntro: document.getElementById("species-intro"),
   speciesReproduction: document.getElementById("species-reproduction"),
   speciesHabitat: document.getElementById("species-habitat"),
+  speciesFactTitle: document.getElementById("species-fact-title"),
   speciesFact: document.getElementById("species-fact"),
   narrationToggle: document.getElementById("narration-toggle"),
   narrationLabel: document.querySelector("#narration-toggle span"),
@@ -667,6 +668,7 @@ function renderSpecies(item, place) {
   els.speciesReproduction.textContent = item.reproductionLabel;
   els.speciesReproduction.className = `fact-pill ${item.reproduction}`;
   els.speciesHabitat.textContent = item.habitat;
+  els.speciesFactTitle.textContent = typeof place === "object" && place?.historyTitle ? place.historyTitle : "Tiny surprise";
   scientificText(els.speciesFact, typeof place === "object" && place?.history ? place.history : item.fact);
   italicText(els.wormNameTag, item.short);
   els.wormAvatar.setAttribute("aria-label", t("illustratedPairAria", {
