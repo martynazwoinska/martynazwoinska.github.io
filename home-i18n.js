@@ -115,7 +115,7 @@
     ]
   };
   var englishInterfaceCopy = {
-    "page_title": "Martyna K. Zwoińska | Evolutionary Biologist, Uppsala University",
+    "page_title": "Martyna Zwoińska | Evolutionary Biologist",
     "meta_description": "I am an evolutionary biologist interested in all things adaptation and maladaptation. I combine experimental research, genomics and data analysis.",
     "theme_light": "Switch to light mode",
     "theme_dark": "Switch to dark mode",
@@ -140,7 +140,7 @@
   };
   var translatedCopy = {
     "sv": {
-          "page_title": "Martyna K. Zwoińska | Evolutionsbiolog, Uppsala universitet",
+          "page_title": "Martyna Zwoińska | Evolutionsbiolog",
           "meta_description": "Jag är evolutionsbiolog och intresserar mig för allt som rör anpassning och felanpassning. Jag kombinerar experimentell forskning, genomik och dataanalys.",
           "theme_light": "Växla till ljust tema",
           "theme_dark": "Växla till mörkt tema",
@@ -221,7 +221,7 @@
           "footer_affiliation": "Martyna Katarzyna Zwoińska"
     },
     "pl": {
-          "page_title": "Martyna K. Zwoińska | Biolożka ewolucyjna, Uniwersytet w Uppsali",
+          "page_title": "Martyna Zwoińska | Biolożka ewolucyjna",
           "meta_description": "Jestem biolożką ewolucyjną i interesuje mnie wszystko, co wiąże się z adaptacją i maladaptacją. Łączę badania eksperymentalne, genomikę i analizę danych.",
           "theme_light": "Włącz jasny motyw",
           "theme_dark": "Włącz ciemny motyw",
