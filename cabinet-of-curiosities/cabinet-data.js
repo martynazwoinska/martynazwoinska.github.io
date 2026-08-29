@@ -97,7 +97,7 @@
     chocolate('willies-cacao-pistachio-date', "Willie's Cacao Pistachio & Date", 'confirmed', [73.83, 73.00, 10.29, 14.15], {
       maker: "Willie's Cacao", link: 'https://www.williescacao.com/product/pistachio-date/', linkLabel: 'View the official product page'
     }),
-    chocolate('paradai-chanthaburi-yellow', 'Paradai Chanthaburi, 70%', 'confirmed', [11.00, 81.92, 16.88, 12.55], {
+    chocolate('paradai-chanthaburi-yellow', 'Paradai Chanthaburi, 70%', 'confirmed', [10.50, 81.53, 17.50, 15.50], {
       maker: 'Paradai', origin: 'Chanthaburi', cacao: '70%', link: 'https://premifair.com/products/paradai-chanthaburi-70', linkLabel: 'View the EU distributor page'
     }),
     chocolate('date-cashew-vegan', 'Zotter Date & Cashew', 'confirmed', [33.66, 79.60, 11.46, 7.03], {
