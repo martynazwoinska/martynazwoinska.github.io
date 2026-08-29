@@ -476,6 +476,22 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .map-sphere { fill: rgba(255,255,255,.16); stroke: rgba(23,51,61,.16); stroke-width: 1.2; }
 .map-graticule { fill: none; stroke: rgba(255,255,255,.38); stroke-width: .75; }
 .map-countries path { fill: var(--land); stroke: var(--land-edge); stroke-width: .75; vector-effect: non-scaling-stroke; }
+.map-leaders { pointer-events: none; }
+.map-leader { color: var(--violet); }
+.map-leader.selfing { color: var(--coral); }
+.map-leader line {
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  opacity: .86;
+  vector-effect: non-scaling-stroke;
+}
+.map-leader circle {
+  fill: currentColor;
+  stroke: var(--paper-strong);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
 .map-loading {
   position: absolute;
   inset: 0;
@@ -489,16 +505,23 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .map-markers { position: absolute; inset: 0; pointer-events: none; }
 .map-marker {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
   transform: translate(-50%, -50%);
-  border: 3px solid var(--paper-strong);
+  border: 2px solid var(--paper-strong);
   border-radius: 50%;
   padding: 0;
   cursor: pointer;
+  opacity: .84;
   pointer-events: auto;
   box-shadow: 0 0 0 2px rgba(23,51,61,.12), 0 4px 9px rgba(23,51,61,.22);
   transition: transform .16s ease, box-shadow .16s ease;
+}
+.map-marker::before {
+  content: "";
+  position: absolute;
+  inset: -15px;
 }
 .map-marker.selfing { background: var(--coral); color: var(--coral); }
 .map-marker.outcrossing {
@@ -508,10 +531,16 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 }
 .map-marker:hover, .map-marker:focus-visible { transform: translate(-50%, -50%) scale(1.28); }
 .map-marker.is-species-selected {
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  border-width: 3px;
   transform: translate(-50%, -50%) scale(1.12);
+  opacity: 1;
   box-shadow: 0 0 0 4px rgba(255,255,255,.45), 0 7px 15px rgba(23,51,61,.25);
 }
 .map-marker.is-selected {
+  z-index: 3;
   transform: translate(-50%, -50%) scale(1.35);
   box-shadow: 0 0 0 7px rgba(255,255,255,.56), 0 8px 18px rgba(23,51,61,.3);
 }
