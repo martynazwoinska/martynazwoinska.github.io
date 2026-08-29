@@ -1,6 +1,6 @@
 # Australian Capital Territory location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-08-29
 
 This dossier is the evidence and review contract for the Australian Capital Territory landscape and its three accessory pairs. It follows the Bristol N2, Santeuil, Edinburgh, Tenerife and *C. elegans* Kauaʻi batches in the location-by-location Game of Worms illustration workflow.
 
@@ -72,40 +72,44 @@ The scene connects the documented rotting-fig microhabitat to an anonymised back
 
 ## Accessory evidence and design contract
 
-The accessories translate the exact recovery method, neighbourhood ecology and regional scientific landmark into movable teaching objects. They use no Indigenous cultural motifs, Australian-animal stereotypes or national-colour costume shorthand.
+The revised accessories are a deliberately playful Canberra morning rather than another field-equipment set. They are regional fantasy references and are not presented as collection tools. They use no Indigenous cultural motifs, flag shorthand, commercial branding or claim that the depicted café and balloon event occurred at the private collection site.
 
-### Baermann funnels
+### Canberra flat-white café
 
-The exact notes make a Baermann apparatus the strongest scientific object. The later field protocol co-authored by M. Rockman provides construction context: a filtered sample sits in water above a sloping funnel and clamped outlet.
+VisitCanberra documents both Canberra's specialty-coffee culture and a locally roasted flat white as a characteristic local experience. The artwork uses an original unbranded café set.
 
-Source: [Crombie et al., 2022, Field sampling and laboratory isolation of *Caenorhabditis* nematodes](https://pmc.ncbi.nlm.nih.gov/articles/PMC8857960/).
+Sources:
 
-- **Primary:** a transparent laboratory funnel in a complete turquoise stand, with sample basket, water line, clamped tube and receiving vial.
-- **Companion:** a compact funnel in the same viewing orientation, preserving the stand, sample basket, outlet and vial.
-- Every support visibly connects to the apparatus so both scales read immediately as Baermann funnels.
+- [VisitCanberra, best cafés in Canberra](https://visitcanberra.com.au/articles/best-cafes-in-canberra)
+- [VisitCanberra, Clyde Arnott's Canberra guide](https://visitcanberra.com.au/articles/my-perfect-day-clyde-arnott)
 
-### Yellow Box seed jars
+- **Primary:** a low handmade-stoneware cup and saucer close to the hermaphrodite's mouth, with a real elliptical rim, contained coffee surface, worm-shaped milk pattern, material shading, spoon and three separate steam curls. Its placement must read as drinking rather than as a floating cup.
+- **Companion:** a separately constructed hand grinder with glass bean hopper, visible beans, crank, burr, drawer and feet. It shares the café story without duplicating or shrinking the cup.
 
-This playful dispersal machine is grounded in documented neighbourhood vegetation. It is not made from collected protected material and is not proof that QG2811 was found below a Yellow Box.
+### Dawn balloon carriages
 
-- **Primary:** a clear screw-top specimen jar holding woody capsules and seeds, with a Yellow Box leaf tag.
-- **Companion:** a smaller jar in the same orientation with the same recognizable lid, capsule and label cues.
-- The jars are regional botanical context, not evidence that QG2811 was collected beneath a Yellow Box.
+The Canberra Balloon Spectacular launches balloons at dawn. The Game uses two original imaginary balloons and does not reproduce a real operator's balloon or branding.
 
-### Black Mountain field radios
+Source: [Events Canberra, Canberra Balloon Spectacular](https://events.canberra.com.au/whats-on/68195c816b8dd34331406522/canberra-balloon-spectacular-2)
 
-This is an original playful translation of Canberra's telecommunications landmark, not a traditional instrument or a traced tower.
+- **Primary:** a broad onion-shaped envelope with contained emerald, berry, gold and aqua panels, structural seams, highlight, throat, burner, cables and a wide woven basket.
+- **Companion:** a taller pear-shaped envelope with a different panel rhythm and a compact basket. Its proportions, suspension and weave are separately drawn rather than scaled from the primary balloon.
 
-- **Primary:** a turquoise field radio with antenna, speaker grille, frequency display and coral controls.
-- **Companion:** a smaller radio in the same orientation with all identifying parts intact.
-- The radio alludes to Black Mountain's telecommunications landmark without using Telstra branding.
+### Backyard cockatoo café raids
+
+Sulphur-crested cockatoos are large white parrots with a dark bill, yellow crest and yellow underwing wash, and are common around human settlements. The Game turns that recognisable construction into an imaginative backyard café raid; it is wider Australian urban-garden context rather than a documented observation at the collection address.
+
+Source: [Australian Museum, sulphur-crested cockatoo](https://australian.museum/learn/animals/birds/sulphur-crested-cockatoo/)
+
+- **Primary:** a side-on cockatoo with articulated body, wing feathers, tail, claws, eye patch, dark bill and raised yellow crest, standing on a café tray while stealing fig toast.
+- **Companion:** a front-facing cockatoo crouched in a separate sugar bowl, with bilateral wings, yellow tail wash and a sugar cube. It differs in silhouette, pose and construction from the primary bird.
 
 ## Cultural and privacy safeguards
 
 - Do not identify or reconstruct the private backyard or publish the homeowner's name.
 - O'Connor Ridge is Ngunnawal Country; no cultural form is turned into generic costume decoration.
 - Do not depict protected vegetation as harvested material.
-- Do not introduce kangaroos, koalas, flags or other national shorthand in place of the exact record.
+- Do not introduce kangaroos, koalas, flags or other national shorthand in place of the exact record. The cockatoos are bounded as playful urban-garden companions, not evidence from the sampled backyard.
 
 ## Quality benchmark
 
@@ -125,7 +129,7 @@ The revised Bristol N2, Santeuil, Edinburgh, Tenerife and Kauaʻi batches are th
 
 - Only the Australian Capital Territory landscape and its accessory data and drawings change in the Game feature batch.
 - The marker remains at its current rounded coordinates; explanatory copy calls QG2811 representative and preserves the two-stage date evidence.
-- Every concept has a dedicated SVG drawing path; none uses the old seedpod maracas, quadrat shield, snorkel or a generic fallback renderer.
+- Every concept has a dedicated SVG drawing path; none uses the retired funnels, seed machines, radios, old seedpod maracas, quadrat shield, snorkel or a generic fallback renderer.
 - Primary and companion copies differ in outline, construction, internal detail and placement.
 - All three pairs remain legible together and do not intersect one another or hide worm faces.
 - Each of the six visible objects remains independently draggable and keyboard movable; Home resets only the focused copy.

@@ -21,7 +21,7 @@ const rows = [
   ["elegans", "Edinburgh, Scotland", "Blackford observatory telescopes", "midmar-compost-tumbler", "Edinburgh tartan kilts", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
   ["elegans", "Tenerife, Spain", "Atlantic canary costumes", "tenerife-atlantic-canary-costume", "timple guitars", "tenerife-timple-guitar", "Teide star lanterns", "tenerife-teide-star-lantern"],
   ["elegans", "Kauaʻi, Hawaiʻi", "forest-bird listening headphones", "xz1516-forest-bird-headphones", "ʻōhiʻa blossom microphones", "xz1516-ohia-blossom-microphone", "genome tuning wheels", "xz1516-genome-tuning-wheel"],
-  ["elegans", "Australian Capital Territory", "Baermann funnels", "qg2811-baermann-fig-recovery", "Yellow Box seed jars", "yellow-box-seed-orrery", "Black Mountain field radios", "black-mountain-signal-theremin"],
+  ["elegans", "Australian Capital Territory", "Canberra flat-white café", "canberra-flat-white-cafe", "dawn balloon carriages", "canberra-dawn-balloon-carriage", "backyard cockatoo café raids", "oconnor-cockatoo-cafe-raid"],
   ["elegans", "Claremont, California · ECA250", "Bookworm books", "eca250-bookworm-book", "California lemonade", "eca250-california-lemonade", "sunny reading glasses", "eca250-sunny-reading-glasses"],
   ["elegans", "Araucanía, Chile", "compost sample buckets", "compost-labyrinth", "Llaima ashfall gauges", "ashfall-recorder", "reciprocal-cross plates", "test-cross-mechanism"],
   ["nigoni", "Trivandrum, Kerala · JU1325", "field loupe", "trivandrum-field-loupe", "garden watering can", "trivandrum-garden-watering-can", "sample tube", "trivandrum-sample-tube"],
@@ -63,7 +63,7 @@ const santeuilRendererFamilies = new Set(["santeuil-railway-driver-uniform", "sa
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
 const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-teide-star-lantern"]);
 const kauaiRendererFamilies = new Set(["xz1516-forest-bird-headphones", "xz1516-ohia-blossom-microphone", "xz1516-genome-tuning-wheel"]);
-const actRendererFamilies = new Set(["qg2811-baermann-fig-recovery", "yellow-box-seed-orrery", "black-mountain-signal-theremin"]);
+const actRendererFamilies = new Set(["canberra-flat-white-cafe", "canberra-dawn-balloon-carriage", "oconnor-cockatoo-cafe-raid"]);
 const claremontRendererIds = new Set([
   "elegans::Claremont, California · ECA250::headwear",
   "elegans::Claremont, California · ECA250::wrap",
@@ -1263,115 +1263,117 @@ function drawKauaiAccessory(group, item, companion) {
 }
 
 function drawAustralianCapitalTerritoryAccessory(group, item, companion) {
-  if (item.family === "qg2811-baermann-fig-recovery") {
-    group.classList.add("act-accessory", "baermann-rig", companion ? "baermann-rig-companion" : "baermann-rig-primary");
+  if (item.family === "canberra-flat-white-cafe") {
+    group.classList.add("act-accessory", "canberra-cafe", companion ? "canberra-cafe-companion" : "canberra-cafe-primary");
     if (companion) {
-      add(group, "path", { class: "act-accessory-shadow", d: "M-111 81Q3 108 122 77Q62 119-101 114Z" });
-      add(group, "path", { class: "baermann-tripod-frame", d: "M-78-41Q0-77 76-41M-73-39L-96 83M71-39L82 83M0-55L-5 85M-108 84H-79M-18 86H10M68 84H98" });
-      add(group, "path", { class: "baermann-reservoir companion", d: "M-83-38Q-2-57 80-36L63 5Q38 31 5 36Q-31 32-59 6Z" });
-      add(group, "path", { class: "baermann-water companion", d: "M-69-23Q-2-38 68-21L56 1Q31 20 3 24Q-27 20-51 1Z" });
-      add(group, "path", { class: "baermann-reservoir-rim", d: "M-83-38Q-2-57 80-36Q-1-20-83-38Z" });
-      add(group, "path", { class: "baermann-basket-frame", d: "M-32-53L-25-5Q0 10 28-5L35-52M-27-29Q1-15 31-29" });
-      add(group, "path", { class: "baermann-fig-sample", d: "M-24-25L-15-41L-1-46L9-35L22-42L29-25L19-14L3-17L-8-10L-21-15Z" });
-      [[-13,-29],[1,-34],[15,-27],[5,-19]].forEach(([cx, cy], index) => add(group, "circle", { class: index % 2 ? "baermann-fig-speck deep" : "baermann-fig-speck", cx, cy, r: 2.7 }));
-      add(group, "path", { class: "baermann-outlet companion", d: "M5 35Q9 45 25 48" });
-      add(group, "path", { class: "baermann-tube coiled", d: "M24 47C53 45 55 66 34 69C13 72 15 91 43 89C71 87 69 50 91 45Q105 42 108 55V70" });
-      add(group, "circle", { class: "baermann-clamp-wheel", cx: 91, cy: 46, r: 12 });
-      add(group, "path", { class: "baermann-clamp-spokes", d: "M79 46H103M91 34V58M83 38L99 54M99 38L83 54" });
-      add(group, "path", { class: "baermann-vial companion", d: "M94 67H121L118 103Q108 112 98 103Z" });
-      add(group, "path", { class: "baermann-vial-cap", d: "M92 62H123V72H92Z" });
-      add(group, "path", { class: "baermann-vial-level", d: "M99 91Q108 87 117 91V102Q108 108 99 102Z" });
+      add(group, "path", { class: "act-accessory-shadow", d: "M-92 92Q0 116 96 89Q48 129-83 123Z" });
+      add(group, "path", { class: "cafe-grinder-feet", d: "M-55 83L-64 108H-32L-25 87ZM31 87L39 108H70L58 82Z" });
+      add(group, "path", { class: "cafe-grinder-body", d: "M-58-4Q-54-19-38-23H47Q62-18 64-2L59 85Q2 102-56 84Z" });
+      add(group, "path", { class: "cafe-grinder-side", d: "M41-19Q60-13 62 1L58 80L39 87Z" });
+      add(group, "path", { class: "cafe-grinder-brass", d: "M-47 7Q2-2 51 7V21Q2 11-47 21ZM-42 59H45L41 79Q1 89-39 78Z" });
+      add(group, "rect", { class: "cafe-grinder-drawer", x: -30, y: 30, width: 58, height: 28, rx: 7 });
+      add(group, "circle", { class: "cafe-grinder-drawer-knob", cx: 0, cy: 44, r: 5 });
+      add(group, "path", { class: "cafe-grinder-hopper", d: "M-38-74Q0-91 38-72L30-24Q0-12-30-25Z" });
+      add(group, "ellipse", { class: "cafe-grinder-hopper-rim", cx: 0, cy: -74, rx: 40, ry: 13 });
+      [[-22,-68],[-8,-74],[8,-70],[22,-75],[-16,-55],[1,-58],[18,-52]].forEach(([cx, cy], index) => add(group, "ellipse", { class: index % 2 ? "cafe-bean deep" : "cafe-bean", cx, cy, rx: 7, ry: 4.5, transform: `rotate(${index % 2 ? 26 : -22} ${cx} ${cy})` }));
+      add(group, "path", { class: "cafe-grinder-lid", d: "M-43-80Q0-97 43-79L35-69Q0-82-35-70Z" });
+      add(group, "path", { class: "cafe-grinder-crank", d: "M25-86L72-108L92-99" });
+      add(group, "circle", { class: "cafe-grinder-crank-knob", cx: 99, cy: -95, r: 10 });
+      add(group, "circle", { class: "cafe-grinder-burr", cx: 0, cy: 15, r: 14 });
+      add(group, "path", { class: "cafe-grinder-burr-lines", d: "M-9 15H9M0 6V24M-6 9L6 21M6 9L-6 21" });
     } else {
-      add(group, "path", { class: "act-accessory-shadow", d: "M-92 106Q4 131 99 102Q52 141-83 137Z" });
-      add(group, "path", { class: "baermann-stand-base", d: "M-86 91H4L19 109H-99Z" });
-      add(group, "path", { class: "baermann-ring-stand", d: "M-61 93V-112M-77-111H-45M-61-80H24M-61 13H32" });
-      add(group, "path", { class: "baermann-ring-brace", d: "M-61-80L-49-68M-61 13L-48 24" });
-      add(group, "ellipse", { class: "baermann-support-ring", cx: 25, cy: -55, rx: 45, ry: 13 });
-      add(group, "path", { class: "baermann-funnel", d: "M-18-57Q25-73 68-56L53-8Q42 20 29 35Q14 17 3-9Z" });
-      add(group, "path", { class: "baermann-water", d: "M-9-37Q25-48 59-37L51-12Q39 9 29 22Q16 7 8-13Z" });
-      add(group, "path", { class: "baermann-hammock", d: "M-6-46Q25-27 57-45Q47-12 27-8Q7-14-6-46Z" });
-      add(group, "path", { class: "baermann-fig-sample", d: "M5-38L14-52L27-55L35-44L48-49L55-34L45-23L31-27L19-20L8-26Z" });
-      [[15,-38],[27,-45],[39,-36],[30,-28]].forEach(([cx, cy], index) => add(group, "circle", { class: index % 2 ? "baermann-fig-speck deep" : "baermann-fig-speck", cx, cy, r: 2.7 }));
-      add(group, "path", { class: "baermann-filter-line", d: "M-2-43Q25-31 60-43M3-38Q26-24 56-38" });
-      add(group, "path", { class: "baermann-outlet", d: "M29 34V46Q30 56 45 61Q61 66 62 78" });
-      add(group, "path", { class: "baermann-tube", d: "M29 40V53Q30 64 47 68Q62 72 62 84" });
-      add(group, "path", { class: "baermann-clamp", d: "M42 59L58 51L65 62L49 70ZM55 55L70 45" });
-      add(group, "path", { class: "baermann-vial", d: "M48 78H78L74 113Q63 122 52 113Z" });
-      add(group, "path", { class: "baermann-vial-cap", d: "M46 73H80V83H46Z" });
-      add(group, "path", { class: "baermann-vial-level", d: "M53 101Q63 96 73 101V112Q63 118 53 112Z" });
-      const vialLabel = add(group, "text", { class: "baermann-vial-label", x: 63, y: 95, "text-anchor": "middle" });
-      vialLabel.textContent = "QG2811";
+      add(group, "ellipse", { class: "act-accessory-shadow", cx: 0, cy: 89, rx: 112, ry: 21 });
+      add(group, "ellipse", { class: "cafe-saucer", cx: -7, cy: 66, rx: 105, ry: 29 });
+      add(group, "ellipse", { class: "cafe-saucer-well", cx: -7, cy: 61, rx: 69, ry: 17 });
+      add(group, "path", { class: "cafe-spoon", d: "M-106 55Q-60 71-17 72" });
+      add(group, "ellipse", { class: "cafe-spoon-bowl", cx: -112, cy: 53, rx: 16, ry: 8, transform: "rotate(14 -112 53)" });
+      add(group, "path", { class: "cafe-cup-handle", d: "M64-15Q118-20 116 26Q114 66 72 54Q91 44 92 22Q93 2 69 4Z" });
+      add(group, "path", { class: "cafe-cup-body", d: "M-74-27Q0-46 75-26L65 44Q55 68 0 72Q-55 67-64 43Z" });
+      add(group, "path", { class: "cafe-cup-shadow", d: "M42-30Q70-28 74-21L65 43Q56 62 28 68Q48 39 42-30Z" });
+      add(group, "path", { class: "cafe-cup-ridge", d: "M-57-4Q-51 42-20 54" });
+      add(group, "ellipse", { class: "cafe-cup-rim", cx: 0, cy: -28, rx: 77, ry: 26 });
+      add(group, "ellipse", { class: "cafe-flat-white", cx: 0, cy: -26, rx: 65, ry: 18 });
+      add(group, "path", { class: "cafe-latte-worm", d: "M-36-28C-25-41-12-16 0-29S25-17 36-30" });
+      add(group, "path", { class: "cafe-latte-leaves", d: "M-25-26Q-14-39-5-26Q-15-17-25-26ZM6-28Q17-40 27-28Q17-17 6-28Z" });
+      add(group, "circle", { class: "cafe-latte-dot", cx: 40, cy: -30, r: 3.5 });
+      add(group, "path", { class: "cafe-steam", d: "M-38-54C-51-72-25-79-35-100M1-55C-12-75 14-86 3-111M39-51C26-69 50-77 43-97" });
     }
     return true;
   }
 
-  if (item.family === "yellow-box-seed-orrery") {
-    group.classList.add("act-accessory", "seed-orrery", companion ? "seed-orrery-companion" : "seed-orrery-primary");
+  if (item.family === "canberra-dawn-balloon-carriage") {
+    group.classList.add("act-accessory", "canberra-balloon", companion ? "canberra-balloon-companion" : "canberra-balloon-primary");
     if (companion) {
-      add(group, "path", { class: "act-accessory-shadow", d: "M-70 105Q2 126 74 102Q38 134-63 131Z" });
-      add(group, "path", { class: "seed-column-frame", d: "M-42-92H40L50 91H-50ZM-42-46H43M-46 25H46" });
-      add(group, "path", { class: "seed-column-spine", d: "M0-91V91" });
-      [[0,-51,32,25],[0,20,36,29]].forEach(([cx, cy, rx, ry], index) => {
-        add(group, "path", { class: index ? "seed-column-capsule lower" : "seed-column-capsule", d: `M${cx-rx} ${cy}Q${cx-rx*.6} ${cy-ry} ${cx} ${cy-ry*.82}Q${cx+rx*.68} ${cy-ry} ${cx+rx} ${cy}Q${cx+rx*.55} ${cy+ry} ${cx} ${cy+ry*.72}Q${cx-rx*.65} ${cy+ry} ${cx-rx} ${cy}Z` });
-        add(group, "path", { class: "seed-star-valve", d: `M${cx} ${cy-18}L${cx+6} ${cy-6}L${cx+19} ${cy-5}L${cx+9} ${cy+4}L${cx+12} ${cy+17}L${cx} ${cy+10}L${cx-12} ${cy+17}L${cx-9} ${cy+4}L${cx-19} ${cy-5}L${cx-6} ${cy-6}Z` });
-        add(group, "circle", { class: "seed-valve-hub", cx, cy, r: 5 });
-      });
-      add(group, "path", { class: "seed-leaf-vane-arm", d: "M0-91V-116M0-111L-31-126M0-111L29-132" });
-      add(group, "path", { class: "seed-leaf-vane", d: "M-31-126Q-55-137-60-116Q-43-102-25-118ZM29-132Q53-147 60-126Q46-107 25-123Z" });
-      add(group, "path", { class: "seed-leaf-vein act", d: "M-53-120L-30-124M51-128L29-130" });
-      add(group, "path", { class: "seed-crescent-tray", d: "M-65 80Q0 118 65 79L55 110Q0 137-56 109Z" });
-      [[-29,96],[-10,108],[13,106],[33,94]].forEach(([cx, cy], index) => add(group, "ellipse", { class: index % 2 ? "seed-release-seed deep" : "seed-release-seed", cx, cy, rx: 4, ry: 8, transform: `rotate(${index % 2 ? 28 : -28} ${cx} ${cy})` }));
-      add(group, "path", { class: "seed-column-foot", d: "M-47 91L-60 116H-27L-20 94ZM25 94L32 116H64L49 89Z" });
+      add(group, "path", { class: "balloon-dawn-cloud", d: "M-83 105Q-61 78-35 93Q-11 62 15 91Q44 70 67 96Q86 94 93 113H-88Z" });
+      add(group, "path", { class: "balloon-envelope companion", d: "M0-136C-55-129-80-86-66-40Q-55-3-24 20L-15 45H15L24 20Q57-2 67-41Q80-88 44-122Q25-138 0-136Z" });
+      add(group, "path", { class: "balloon-panel berry companion", d: "M0-134Q-30-111-31-61Q-30-7 0 22Q29-9 31-61Q29-111 0-134Z" });
+      add(group, "path", { class: "balloon-panel gold companion", d: "M-48-111Q-67-80-58-42Q-50-11-24 17Q-35-43-25-86Q-18-116 0-134Q-28-134-48-111Z" });
+      add(group, "path", { class: "balloon-panel aqua companion", d: "M48-112Q69-80 59-41Q51-10 24 18Q35-42 25-86Q18-116 0-134Q28-134 48-112Z" });
+      add(group, "path", { class: "balloon-seam", d: "M0-134V22M-48-111Q-22-87-25-44Q-25-3 0 22M48-112Q22-86 25-44Q25-2 0 22" });
+      add(group, "path", { class: "balloon-neck", d: "M-16 20H16L12 48H-12Z" });
+      add(group, "path", { class: "balloon-cables", d: "M-12 43L-34 80M12 43L34 80M-2 43L-12 80M2 43L12 80" });
+      add(group, "path", { class: "balloon-burner", d: "M-10 48H10L15 62H-15Z" });
+      add(group, "path", { class: "balloon-basket companion", d: "M-38 79Q0 68 39 79L32 116Q0 128-33 115Z" });
+      add(group, "path", { class: "balloon-basket-weave", d: "M-33 92Q0 83 34 92M-35 104Q0 95 33 104M-17 76L-14 120M16 76L14 120" });
     } else {
-      add(group, "path", { class: "act-accessory-shadow", d: "M-133 75Q0 105 136 71Q69 120-121 114Z" });
-      add(group, "circle", { class: "seed-orrery-outer-ring", cx: 0, cy: -5, r: 65 });
-      add(group, "circle", { class: "seed-orrery-inner-ring", cx: 0, cy: -5, r: 29 });
-      const arms = [
-        [0,-5,-102,-39,-118,-52,-18], [0,-5,-54,-77,-60,-103,20], [0,-5,46,-88,55,-111,-12],
-        [0,-5,104,-32,121,-39,16], [0,-5,77,59,91,80,-24], [0,-5,-73,62,-90,82,25]
-      ];
-      arms.forEach(([x1,y1,cx,cy,x2,y2,angle], index) => {
-        add(group, "path", { class: "seed-orrery-arm", d: `M${x1} ${y1}Q${cx*.55} ${cy*.55} ${x2} ${y2}` });
-        add(group, "circle", { class: "seed-arm-joint", cx: x2, cy: y2, r: 6 });
-        add(group, "path", { class: index % 2 ? "seed-arm-leaf deep" : "seed-arm-leaf", d: `M${x2} ${y2}q${-19 * Math.cos(angle*Math.PI/180)} ${-13 * Math.sin(angle*Math.PI/180)-8} ${-33 * Math.cos(angle*Math.PI/180)} ${-5 * Math.sin(angle*Math.PI/180)-2}q${15 * Math.cos(angle*Math.PI/180)} ${17 * Math.sin(angle*Math.PI/180)+9} ${33 * Math.cos(angle*Math.PI/180)} ${5 * Math.sin(angle*Math.PI/180)+2}Z`, transform: `rotate(${angle} ${x2} ${y2})` });
-        add(group, "path", { class: "seed-arm-shutter", d: `M${x2-8} ${y2-4}L${x2+8} ${y2-4}L${x2+5} ${y2+13}L${x2-5} ${y2+13}Z`, transform: `rotate(${angle} ${x2} ${y2})` });
-      });
-      add(group, "path", { class: "seed-capsule-cutaway", d: "M-25-7Q-20-36 0-45Q23-34 27-7Q20 23 0 36Q-22 24-25-7Z" });
-      add(group, "path", { class: "seed-capsule-half", d: "M0-42Q23-30 25-7Q18 17 0 31Z" });
-      add(group, "path", { class: "seed-capsule-septa", d: "M0-40V32M-19-17L0-6L20-18M-20 9L0 1L20 10" });
-      [[-8,-22],[9,-18],[-10,10],[10,13]].forEach(([cx, cy], index) => add(group, "ellipse", { class: index % 2 ? "seed-release-seed deep" : "seed-release-seed", cx, cy, rx: 3.5, ry: 7, transform: `rotate(${index % 2 ? 24 : -24} ${cx} ${cy})` }));
-      add(group, "path", { class: "seed-winding-shaft", d: "M0 36V71H31" });
-      add(group, "path", { class: "seed-winding-key", d: "M31 58V84M31 65Q51 53 58 69Q50 85 31 77" });
-      add(group, "circle", { class: "seed-orrery-hub", cx: 0, cy: -5, r: 10 });
+      add(group, "path", { class: "balloon-dawn-cloud", d: "M-130 100Q-99 68-61 88Q-27 55 6 85Q41 58 72 88Q105 70 129 106H-136Z" });
+      add(group, "path", { class: "balloon-envelope primary", d: "M0-132C-72-132-117-88-109-36Q-104 3-61 28Q-38 43-28 62H28Q39 42 62 28Q104 3 109-37Q116-89 70-119Q38-140 0-132Z" });
+      add(group, "path", { class: "balloon-panel berry primary", d: "M0-132Q-43-112-47-51Q-48 13-24 61H24Q49 13 47-51Q43-112 0-132Z" });
+      add(group, "path", { class: "balloon-panel gold primary", d: "M-69-119Q-111-87-106-37Q-102-1-61 27Q-39 43-28 61Q-56 3-52-53Q-47-108 0-132Q-38-139-69-119Z" });
+      add(group, "path", { class: "balloon-panel aqua primary", d: "M69-119Q111-87 106-37Q102-1 61 27Q39 43 28 61Q56 3 52-53Q47-108 0-132Q38-139 69-119Z" });
+      add(group, "path", { class: "balloon-seam", d: "M0-132V61M-69-118Q-41-88-48-39Q-48 17-28 61M69-118Q41-88 48-39Q48 17 28 61" });
+      add(group, "path", { class: "balloon-highlight", d: "M-80-87Q-99-52-87-20" });
+      add(group, "path", { class: "balloon-neck", d: "M-29 59H29L22 80H-22Z" });
+      add(group, "path", { class: "balloon-cables", d: "M-22 76L-53 112M22 76L53 112M-8 76L-19 112M8 76L19 112" });
+      add(group, "path", { class: "balloon-burner", d: "M-16 79H16L22 96H-22Z" });
+      add(group, "path", { class: "balloon-basket primary", d: "M-58 110Q0 95 59 110L49 155Q0 171-51 154Z" });
+      add(group, "path", { class: "balloon-basket-rim", d: "M-60 109Q0 93 61 109L58 120Q0 105-58 120Z" });
+      add(group, "path", { class: "balloon-basket-weave", d: "M-51 128Q0 114 52 128M-53 141Q0 127 51 141M-28 110L-24 160M0 106V164M29 110L24 160" });
     }
     return true;
   }
 
-  if (item.family === "black-mountain-signal-theremin") {
-    group.classList.add("act-accessory", "signal-theremin", companion ? "signal-theremin-companion" : "signal-theremin-primary");
+  if (item.family === "oconnor-cockatoo-cafe-raid") {
+    group.classList.add("act-accessory", "cockatoo-raid", companion ? "cockatoo-raid-companion" : "cockatoo-raid-primary");
     if (companion) {
-      add(group, "path", { class: "act-accessory-shadow", d: "M-125 68Q0 96 128 65Q65 110-114 104Z" });
-      add(group, "path", { class: "theremin-crescent-body", d: "M-111 25Q-47-7 10 15Q64-5 112 24L101 66Q45 92-9 70Q-60 91-108 65Z" });
-      add(group, "path", { class: "theremin-body-panel", d: "M-83 31Q-38 13 5 29Q45 13 83 30L77 55Q42 69 3 55Q-39 70-79 55Z" });
-      add(group, "path", { class: "theremin-loop left", d: "M-89 29V-19Q-87-43-61-42Q-31-40 5 13" });
-      add(group, "path", { class: "theremin-loop right", d: "M87 29V-17Q85-42 58-40Q28-37-7 14" });
-      add(group, "path", { class: "theremin-short-mast", d: "M91 30V-69L102-79L107 31" });
-      add(group, "path", { class: "theremin-frequency-scale", d: "M-55 40H42M-47 34V46M-28 35V45M-9 33V47M10 35V45M29 34V46" });
-      add(group, "rect", { class: "theremin-slider", x: -18, y: 32, width: 15, height: 16, rx: 3 });
-      add(group, "ellipse", { class: "theremin-speaker", cx: 64, cy: 48, rx: 17, ry: 13 });
-      [-7,0,7].forEach(y => add(group, "path", { class: "theremin-speaker-line", d: `M52 ${48+y*.65}Q64 ${43+y*.65} 76 ${48+y*.65}` }));
+      add(group, "ellipse", { class: "act-accessory-shadow", cx: 0, cy: 94, rx: 86, ry: 20 });
+      add(group, "path", { class: "cockatoo-sugar-bowl", d: "M-70 45Q0 21 70 45L56 91Q0 113-56 91Z" });
+      add(group, "ellipse", { class: "cockatoo-bowl-rim", cx: 0, cy: 44, rx: 72, ry: 22 });
+      add(group, "path", { class: "cockatoo-tail", d: "M18 23Q46 66 34 103L7 47Z" });
+      add(group, "path", { class: "cockatoo-tail yellow", d: "M22 32Q39 66 31 89L13 45Z" });
+      add(group, "path", { class: "cockatoo-body companion", d: "M-35 36Q-56 0-37-39Q-24-68 8-68Q43-65 53-32Q66 8 42 42Q4 61-35 36Z" });
+      add(group, "path", { class: "cockatoo-wing right", d: "M4-34Q43-44 57-9Q57 24 32 38Q17 12-7 7Q10-4 4-34Z" });
+      add(group, "path", { class: "cockatoo-wing-feathers", d: "M15-19Q34-25 47-8M13-7Q34-10 49 6M17 7Q34 7 43 20" });
+      add(group, "circle", { class: "cockatoo-head", cx: -31, cy: -58, r: 36 });
+      add(group, "path", { class: "cockatoo-crest", d: "M-23-91Q-8-130 13-123Q10-105 0-93Q20-122 38-108Q28-90 11-82Q42-103 51-85Q32-68 4-71Z" });
+      add(group, "path", { class: "cockatoo-eye-ring", d: "M-49-69Q-36-78-27-67Q-25-52-40-48Q-54-53-49-69Z" });
+      add(group, "circle", { class: "cockatoo-eye", cx: -39, cy: -61, r: 5 });
+      add(group, "path", { class: "cockatoo-beak", d: "M-61-60Q-91-56-91-37Q-79-25-64-35Q-76-42-61-60Z" });
+      add(group, "path", { class: "cockatoo-claw", d: "M-22 34Q-34 48-46 43M-20 36Q-11 49-2 43" });
+      add(group, "path", { class: "cockatoo-sugar-cube", d: "M-96-43L-77-56L-62-41L-80-27Z" });
+      add(group, "path", { class: "cockatoo-cube-mark", d: "M-87-43L-74-39M-82-50L-70-45" });
     } else {
-      add(group, "path", { class: "act-accessory-shadow", d: "M-91 100Q2 125 96 97Q49 136-82 132Z" });
-      add(group, "path", { class: "theremin-soundbox", d: "M-76 52Q-9 25 75 48L67 96Q4 118-69 94Z" });
-      add(group, "path", { class: "theremin-soundbox-panel", d: "M-59 57Q0 39 58 56L52 83Q1 99-54 83Z" });
-      add(group, "path", { class: "theremin-mast", d: "M-13 51L-7-107L8-121L18 51Z" });
-      add(group, "path", { class: "theremin-mast-seam", d: "M-2-91L9 42M-6-56L13-56M-8-17L15-17" });
-      add(group, "path", { class: "theremin-pitch-rod", d: "M58 54V-94M51-94H65" });
-      add(group, "path", { class: "theremin-volume-loop", d: "M-61 55V-18Q-61-42-37-42H-12Q9-41 9-18V3Q8 22-12 23H-39Q-61 22-61 2" });
-      [-73,-55,-37].forEach((cy, index) => add(group, "ellipse", { class: `theremin-signal-ring ring-${index}`, cx: 2, cy, rx: 21 + index * 9, ry: 7 + index * 3 }));
-      add(group, "path", { class: "theremin-waveform-gauge", d: "M-42 68H39V85H-42ZM-35 77L-27 72L-19 81L-10 69L0 80L10 73L20 82L31 75" });
-      add(group, "circle", { class: "theremin-control", cx: 51, cy: 76, r: 8 });
-      add(group, "path", { class: "theremin-foot", d: "M-59 91L-68 112H-37L-29 99ZM42 98L49 112H79L66 92Z" });
+      add(group, "ellipse", { class: "act-accessory-shadow", cx: 2, cy: 98, rx: 116, ry: 22 });
+      add(group, "path", { class: "cockatoo-tray", d: "M-105 70Q-1 49 106 69L94 88Q0 108-96 88Z" });
+      add(group, "path", { class: "cockatoo-tray-rim", d: "M-102 68Q0 48 103 68Q0 78-102 68Z" });
+      add(group, "path", { class: "cockatoo-tail", d: "M-45 36Q-52 91-17 98L4 43Z" });
+      add(group, "path", { class: "cockatoo-tail yellow", d: "M-31 44Q-35 77-16 86L-4 47Z" });
+      add(group, "path", { class: "cockatoo-tail-lines", d: "M-35 51Q-39 77-19 91M-24 49Q-27 72-14 84" });
+      add(group, "path", { class: "cockatoo-body primary", d: "M-54 27Q-51-31-18-58Q13-80 43-58Q71-36 67 6Q63 49 29 67Q-10 80-43 54Z" });
+      add(group, "path", { class: "cockatoo-wing primary", d: "M-43-4Q-26-36 16-39Q46-33 54-4Q31-15 9 6Q-15 30-35 45Q-50 29-43-4Z" });
+      add(group, "path", { class: "cockatoo-wing-feathers", d: "M-27 10Q-4-10 22-14M-22 23Q2 3 31 1M-13 34Q11 17 38 14" });
+      add(group, "circle", { class: "cockatoo-head", cx: 44, cy: -55, r: 37 });
+      add(group, "path", { class: "cockatoo-cheek-wash", d: "M25-53Q43-69 59-52Q48-35 29-39Z" });
+      add(group, "path", { class: "cockatoo-crest", d: "M27-82Q16-122 37-126Q48-106 49-91Q51-128 72-121Q68-100 59-87Q79-114 91-99Q77-80 63-75Z" });
+      add(group, "path", { class: "cockatoo-eye-ring", d: "M53-67Q66-72 72-59Q68-45 54-48Q45-56 53-67Z" });
+      add(group, "circle", { class: "cockatoo-eye", cx: 61, cy: -58, r: 5 });
+      add(group, "path", { class: "cockatoo-beak", d: "M73-55Q101-50 97-31Q88-21 74-30Q85-37 73-55Z" });
+      add(group, "path", { class: "cockatoo-toast", d: "M94-62Q118-81 145-59L140-9Q116 5 92-15Z" });
+      add(group, "path", { class: "cockatoo-toast-spread", d: "M102-51Q119-66 137-51L134-20Q118-10 101-23Z" });
+      add(group, "circle", { class: "cockatoo-toast-seed", cx: 113, cy: -42, r: 3.1 });
+      add(group, "circle", { class: "cockatoo-toast-seed", cx: 126, cy: -34, r: 2.7 });
+      add(group, "path", { class: "cockatoo-leg", d: "M-4 59L-10 74M22 57L27 70" });
+      add(group, "path", { class: "cockatoo-claw", d: "M-10 73Q-22 84-34 76M-9 73Q0 84 9 75M27 70Q17 81 8 75M27 70Q39 80 48 72" });
     }
     return true;
   }
@@ -6565,46 +6567,6 @@ function drawElegansFieldAccessory(group, item, companion) {
     return true;
   }
 
-  if (location === "act" && item.family === "qg2811-baermann-fig-recovery") {
-    shadow(106, 109);
-    path(group, companion ? "M-68-74H68L43-5V61H-43V-5Z" : "M-88-91H88L55-7V72H-55V-7Z", "efr-funnel");
-    path(group, companion ? "M-54-58H54L34-10H-34Z" : "M-70-72H70L45-12H-45Z", "efr-water");
-    path(group, companion ? "M-39-48Q-15-69 3-43T40-44" : "M-52-61Q-21-87 4-55T53-56", "efr-fig-sample");
-    path(group, companion ? "M0 61V91Q29 103 43 81" : "M0 72V105Q37 119 55 91", "efr-tube");
-    bottle(companion ? 52 : 66, companion ? 68 : 81, companion ? .42 : .5);
-    path(group, companion ? "M-88-85V95M-88-85H-58" : "M-111-104V108M-111-104H-74", "efr-stand");
-    path(group, companion ? "M-101 96H-42" : "M-126 109H-54", "efr-stand");
-    label("BAERMANN", 0, companion ? 20 : 29, "efr-small");
-    return true;
-  }
-
-  if (location === "act" && item.family === "yellow-box-seed-orrery") {
-    shadow(93, 104);
-    path(group, companion ? "M-54-78H51L62-58V78Q62 93 45 98H-42Q-59 93-59 78V-58Z" : "M-69-84H65L78-59V80Q78 98 57 104H-54Q-75 98-75 80V-59Z", "efr-glass");
-    path(group, companion ? "M-60-79H57V-56H-60Z" : "M-76-85H72V-57H-76Z", "efr-primary");
-    const seeds = companion ? [[-26,-11],[12,-24],[28,17],[-16,29]] : [[-37,-17],[0,-30],[35,-9],[22,28],[-24,31],[2,8]];
-    seeds.forEach(([x,y],index)=>seed(group,x,y,index%2?.75:.9));
-    path(group, companion ? "M-44 52H47V82H-44Z" : "M-57 56H59V89H-57Z", "efr-secondary");
-    label("YELLOW BOX", 0, companion ? 73 : 78, "efr-small");
-    path(group, companion ? "M-32-84Q0-109 32-84" : "M-41-90Q0-121 41-90", "efr-handle");
-    return true;
-  }
-
-  if (location === "act" && item.family === "black-mountain-signal-theremin") {
-    shadow(99, 106);
-    const width = companion ? 132 : 168;
-    path(group, `M ${-width / 2} -51 H ${width / 2} V 84 H ${-width / 2} Z`, "efr-primary");
-    path(group, `M ${-width / 2 + 12} -37 H ${width / 2 - 12} V 35 H ${-width / 2 + 12} Z`, "efr-ivory");
-    add(group,"circle",{class:"efr-speaker",cx:companion?-28:-37,cy:0,r:companion?22:28});
-    [-12,0,12].forEach(y=>path(group,`M ${companion ? 4 : 5} ${y} H ${width / 2 - 23}`,"efr-radio-slot"));
-    add(group,"circle",{class:"efr-gold",cx:width/2-24,cy:-25,r:7});
-    path(group, `M ${width / 2 - 18} -51 L ${width / 2 + 17} -121`, "efr-antenna");
-    path(group, `M ${width / 2 + 11} -117 H ${width / 2 + 28}`, "efr-gold-line");
-    path(group, `M ${-width / 2 + 13} 45 H ${width / 2 - 13} V 73 H ${-width / 2 + 13} Z`, "efr-accent");
-    label("FIELD RADIO", 0, 65, "efr-small efr-light-text");
-    return true;
-  }
-
   if (location === "auckland" && item.family === "eca36-grass-litter-profiler") {
     shadow(93, 108);
     const width = companion ? 126 : 158;
@@ -6783,9 +6745,9 @@ function renderPiece(target, item, wormPart) {
     "xz1516-forest-bird-headphones": { primary: [397, 79, .32, -5], companion: [122, 121, .25, 5] },
     "xz1516-ohia-blossom-microphone": { primary: [235, 220, .46, -7], companion: [68, 251, .36, 7] },
     "xz1516-genome-tuning-wheel": { primary: [388, 278, .41, -2], companion: [182, 296, .33, 3] },
-    "qg2811-baermann-fig-recovery": { primary: [385, 132, .37, -2], companion: [-10, 118, .28, 2] },
-    "yellow-box-seed-orrery": { primary: [239, 170, .32, 1], companion: [125, 205, .29, -1] },
-    "black-mountain-signal-theremin": { primary: [381, 248, .35, -1], companion: [203, 290, .29, 1] },
+    "canberra-flat-white-cafe": { primary: [386, 97, .41, -7], companion: [80, 330, .34, 4] },
+    "canberra-dawn-balloon-carriage": { primary: [252, 94, .35, -2], companion: [88, 91, .26, 4] },
+    "oconnor-cockatoo-cafe-raid": { primary: [402, 281, .42, -3], companion: [222, 299, .35, 3] },
     "eca36-grass-litter-profiler": { primary: [370, 125, .46, -2], companion: [-5, 95, .3, 2] },
     "auckland-volcanic-field-monitor": { primary: [225, 185, .43, -1], companion: [85, 195, .3, 2] },
     "eca36-reproductive-timing-clock": { primary: [380, 254, .41, -1], companion: [-15, 284, .28, 2] },

@@ -2664,91 +2664,82 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .haplotype-result-text,
 .haplotype-lightbox-label { fill: color-mix(in srgb, #f0da8a 72%, var(--paper-strong)); font: 900 11px/1 var(--sans); letter-spacing: .08em; stroke: color-mix(in srgb, #2b3934 72%, var(--worm-deep)); stroke-width: 1px; paint-order: stroke; }
 .haplotype-result-text { fill: color-mix(in srgb, #344b42 82%, var(--worm-deep)); font-size: 12px; stroke: none; }
-.act-accessory { filter: drop-shadow(0 5px 4px rgba(31,38,31,.27)); }
-.act-accessory-shadow { fill: rgba(31,36,30,.23); }
-.baermann-stand-base,
-.baermann-tripod-frame,
-.baermann-ring-stand,
-.baermann-ring-brace,
-.baermann-reservoir-rim { fill: none; stroke: color-mix(in srgb, #aa844b 72%, var(--worm-deep)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-.baermann-stand-base { fill: color-mix(in srgb, #8a6e47 72%, var(--local-secondary)); stroke-width: 2.8; }
-.baermann-ring-brace { stroke-width: 2.5; }
-.baermann-support-ring,
-.baermann-clamp-wheel { fill: color-mix(in srgb, #bd9654 72%, var(--local-secondary)); stroke: color-mix(in srgb, #59472f 79%, var(--worm-deep)); stroke-width: 2.5; }
-.baermann-funnel,
-.baermann-reservoir.companion { fill: rgba(170,211,204,.49); stroke: color-mix(in srgb, #456e67 70%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
-.baermann-water { fill: rgba(102,174,172,.5); stroke: color-mix(in srgb, #3c7771 71%, var(--worm-deep)); stroke-width: 1.7; }
-.baermann-hammock,
-.baermann-basket-frame,
-.baermann-filter-line { fill: rgba(226,218,188,.43); stroke: color-mix(in srgb, #786a4e 72%, var(--worm-deep)); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.baermann-basket-frame,
-.baermann-filter-line { fill: none; }
-.baermann-fig-sample { fill: color-mix(in srgb, #735147 72%, var(--local-secondary)); stroke: color-mix(in srgb, #473a34 80%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
-.baermann-fig-speck { fill: color-mix(in srgb, #c1a167 67%, var(--local-secondary)); }
-.baermann-fig-speck.deep { fill: color-mix(in srgb, #353833 84%, var(--worm-deep)); }
-.baermann-outlet,
-.baermann-tube,
-.baermann-clamp,
-.baermann-clamp-spokes { fill: none; stroke: color-mix(in srgb, #4c5149 76%, var(--worm-deep)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-.baermann-tube { stroke: color-mix(in srgb, #495a55 73%, var(--worm-deep)); stroke-width: 5; }
-.baermann-clamp { fill: color-mix(in srgb, #b58b4b 73%, var(--local-secondary)); stroke-width: 2.5; }
-.baermann-clamp-spokes { stroke-width: 1.8; }
-.baermann-vial { fill: rgba(161,210,203,.54); stroke: color-mix(in srgb, #3e6b65 72%, var(--worm-deep)); stroke-width: 2.3; stroke-linejoin: round; }
-.baermann-vial-cap { fill: color-mix(in srgb, #b58d4c 73%, var(--local-secondary)); stroke: color-mix(in srgb, #5a472f 79%, var(--worm-deep)); stroke-width: 2; }
-.baermann-vial-level { fill: rgba(91,160,158,.62); stroke: none; }
-.baermann-vial-label { fill: color-mix(in srgb, #f0dfae 72%, var(--paper-strong)); font: 900 7px/1 var(--sans); letter-spacing: -.04em; stroke: color-mix(in srgb, #33433e 65%, var(--worm-deep)); stroke-width: .8px; paint-order: stroke; }
+.act-accessory { filter: drop-shadow(0 5px 4px rgba(31,38,31,.25)); }
+.act-accessory-shadow { fill: rgba(31,36,30,.22); }
 
-.seed-orrery-outer-ring,
-.seed-column-frame,
-.seed-column-foot { fill: none; stroke: color-mix(in srgb, #a98346 73%, var(--worm-deep)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-.seed-column-frame { fill: color-mix(in srgb, #6f7555 37%, transparent); }
-.seed-column-foot { fill: color-mix(in srgb, #8b7048 70%, var(--local-secondary)); stroke-width: 2.5; }
-.seed-orrery-inner-ring,
-.seed-orrery-hub,
-.seed-arm-joint,
-.seed-valve-hub { fill: color-mix(in srgb, #bd9854 73%, var(--local-secondary)); stroke: color-mix(in srgb, #57462f 79%, var(--worm-deep)); stroke-width: 2; }
-.seed-orrery-arm,
-.seed-column-spine,
-.seed-leaf-vane-arm,
-.seed-winding-shaft,
-.seed-winding-key { fill: none; stroke: color-mix(in srgb, #9e7c45 73%, var(--worm-deep)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-.seed-arm-leaf,
-.seed-leaf-vane { fill: color-mix(in srgb, #527653 76%, var(--local-primary)); stroke: color-mix(in srgb, #354a38 80%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
-.seed-arm-leaf.deep { fill: color-mix(in srgb, #405f46 81%, var(--local-primary)); }
-.seed-leaf-vein.act { stroke: color-mix(in srgb, #bdc992 58%, var(--paper-strong)); stroke-width: 1.5; }
-.seed-arm-shutter,
-.seed-star-valve { fill: color-mix(in srgb, #b88e49 72%, var(--local-secondary)); stroke: color-mix(in srgb, #5a462e 79%, var(--worm-deep)); stroke-width: 1.8; stroke-linejoin: round; }
-.seed-capsule-cutaway,
-.seed-column-capsule { fill: color-mix(in srgb, #816344 71%, var(--local-secondary)); stroke: color-mix(in srgb, #4c3e31 81%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
-.seed-capsule-half,
-.seed-column-capsule.lower { fill: color-mix(in srgb, #a2784a 66%, var(--local-secondary)); }
-.seed-capsule-septa { fill: none; stroke: color-mix(in srgb, #d0b476 62%, var(--paper-strong)); stroke-width: 1.8; stroke-linecap: round; }
-.seed-release-seed { fill: color-mix(in srgb, #d0aa5d 74%, var(--local-secondary)); stroke: color-mix(in srgb, #654c31 74%, var(--worm-deep)); stroke-width: .9; }
-.seed-release-seed.deep { fill: color-mix(in srgb, #755335 78%, var(--worm-deep)); }
-.seed-crescent-tray { fill: color-mix(in srgb, #9a794a 71%, var(--local-secondary)); stroke: color-mix(in srgb, #55442f 79%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
+.cafe-saucer,
+.cafe-cup-body { fill: #f5eee2; stroke: #263f48; stroke-width: 3.3; }
+.cafe-saucer-well { fill: #d8c6ad; stroke: #856d52; stroke-width: 2; }
+.cafe-cup-shadow { fill: #d6c0a5; stroke: none; opacity: .78; }
+.cafe-cup-ridge { fill: none; stroke: rgba(255,255,255,.82); stroke-width: 4; stroke-linecap: round; }
+.cafe-cup-handle { fill: #efe4d4; stroke: #263f48; stroke-width: 4; fill-rule: evenodd; }
+.cafe-cup-rim { fill: #f7f0e5; stroke: #263f48; stroke-width: 3; }
+.cafe-flat-white { fill: #bd7a47; stroke: #604334; stroke-width: 1.8; }
+.cafe-latte-worm,
+.cafe-latte-leaves { fill: none; stroke: #f7ead1; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.cafe-latte-leaves { fill: rgba(247,234,209,.42); stroke-width: 2.6; }
+.cafe-latte-dot { fill: #f7ead1; }
+.cafe-steam { fill: none; stroke: #f7f4ec; stroke-width: 5; stroke-linecap: round; opacity: .9; }
+.cafe-spoon { fill: none; stroke: #b89a62; stroke-width: 5; stroke-linecap: round; }
+.cafe-spoon-bowl { fill: #d8bd7d; stroke: #6d583b; stroke-width: 2; }
 
-.theremin-soundbox,
-.theremin-crescent-body,
-.theremin-foot { fill: color-mix(in srgb, #755f46 70%, var(--local-secondary)); stroke: color-mix(in srgb, #443b31 82%, var(--worm-deep)); stroke-width: 3; stroke-linejoin: round; }
-.theremin-body-panel,
-.theremin-soundbox-panel { fill: color-mix(in srgb, #345f58 78%, var(--local-primary)); stroke: color-mix(in srgb, #294740 82%, var(--worm-deep)); stroke-width: 2; stroke-linejoin: round; }
-.theremin-mast { fill: color-mix(in srgb, #8f724a 72%, var(--local-secondary)); stroke: color-mix(in srgb, #50422f 80%, var(--worm-deep)); stroke-width: 2.5; stroke-linejoin: round; }
-.theremin-mast-seam,
-.theremin-pitch-rod,
-.theremin-volume-loop,
-.theremin-short-mast,
-.theremin-loop,
-.theremin-frequency-scale,
-.theremin-speaker-line { fill: none; stroke: color-mix(in srgb, #ad894b 73%, var(--worm-deep)); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
-.theremin-loop { stroke: color-mix(in srgb, #b79a5b 72%, var(--local-secondary)); stroke-width: 4; }
-.theremin-mast-seam,
-.theremin-frequency-scale,
-.theremin-speaker-line { stroke-width: 1.7; }
-.theremin-signal-ring { fill: none; stroke: color-mix(in srgb, #8a6c91 64%, var(--local-secondary)); stroke-width: 2; opacity: .78; }
-.theremin-waveform-gauge { fill: none; stroke: color-mix(in srgb, #d6c17b 68%, var(--paper-strong)); stroke-width: 1.8; stroke-linejoin: round; }
-.theremin-slider,
-.theremin-control { fill: color-mix(in srgb, #b88f4a 74%, var(--local-secondary)); stroke: color-mix(in srgb, #54412b 79%, var(--worm-deep)); stroke-width: 1.5; }
-.theremin-speaker { fill: color-mix(in srgb, #263d3a 82%, var(--local-primary)); stroke: color-mix(in srgb, #172d2a 84%, var(--worm-deep)); stroke-width: 2; }
+.cafe-grinder-body { fill: #9f4d62; stroke: #263f48; stroke-width: 3.2; stroke-linejoin: round; }
+.cafe-grinder-side { fill: #713f5d; stroke: #263f48; stroke-width: 2.4; }
+.cafe-grinder-brass,
+.cafe-grinder-feet { fill: #d8b85f; stroke: #263f48; stroke-width: 2.6; stroke-linejoin: round; }
+.cafe-grinder-drawer { fill: #f0d29a; stroke: #263f48; stroke-width: 2.4; }
+.cafe-grinder-drawer-knob,
+.cafe-grinder-crank-knob,
+.cafe-grinder-burr { fill: #e9c86f; stroke: #263f48; stroke-width: 2.2; }
+.cafe-grinder-hopper { fill: rgba(151,211,205,.62); stroke: #263f48; stroke-width: 2.8; stroke-linejoin: round; }
+.cafe-grinder-hopper-rim,
+.cafe-grinder-lid { fill: #315c62; stroke: #263f48; stroke-width: 2.5; }
+.cafe-bean { fill: #9a5a38; stroke: #543b31; stroke-width: 1.1; }
+.cafe-bean.deep { fill: #67402f; }
+.cafe-grinder-crank,
+.cafe-grinder-burr-lines { fill: none; stroke: #263f48; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.cafe-grinder-burr-lines { stroke-width: 1.8; }
+
+.balloon-dawn-cloud { fill: rgba(239,234,213,.55); stroke: rgba(103,119,111,.38); stroke-width: 1.8; }
+.balloon-envelope { fill: #315f67; stroke: #263f48; stroke-width: 3.8; stroke-linejoin: round; }
+.balloon-panel.berry { fill: #b95872; }
+.balloon-panel.gold { fill: #e1b957; }
+.balloon-panel.aqua { fill: #63c9c0; }
+.balloon-seam { fill: none; stroke: #263f48; stroke-width: 2.4; stroke-linecap: round; opacity: .88; }
+.balloon-highlight { fill: none; stroke: rgba(255,244,210,.8); stroke-width: 4; stroke-linecap: round; }
+.balloon-neck,
+.balloon-burner { fill: #d8a74e; stroke: #263f48; stroke-width: 2.5; stroke-linejoin: round; }
+.balloon-cables { fill: none; stroke: #5f4838; stroke-width: 3; stroke-linecap: round; }
+.balloon-basket { fill: #b87a45; stroke: #263f48; stroke-width: 3.2; stroke-linejoin: round; }
+.balloon-basket-rim { fill: #dbad64; stroke: #263f48; stroke-width: 2.4; }
+.balloon-basket-weave { fill: none; stroke: #70462f; stroke-width: 2; stroke-linecap: round; opacity: .82; }
+
+.cockatoo-tray,
+.cockatoo-sugar-bowl { fill: #66bdb5; stroke: #263f48; stroke-width: 3.2; stroke-linejoin: round; }
+.cockatoo-tray-rim,
+.cockatoo-bowl-rim { fill: #a9ddd4; stroke: #263f48; stroke-width: 2.5; }
+.cockatoo-body,
+.cockatoo-head,
+.cockatoo-wing { fill: #f4f1e7; stroke: #263f48; stroke-width: 3.2; stroke-linejoin: round; }
+.cockatoo-wing.left { fill: #e9e0cf; }
+.cockatoo-wing.right { fill: #fffaf0; }
+.cockatoo-tail { fill: #e8e3d8; stroke: #263f48; stroke-width: 2.8; stroke-linejoin: round; }
+.cockatoo-tail.yellow,
+.cockatoo-crest { fill: #f4c54f; stroke: #263f48; stroke-width: 2.8; stroke-linejoin: round; }
+.cockatoo-wing-feathers,
+.cockatoo-tail-lines { fill: none; stroke: #b8aa92; stroke-width: 2; stroke-linecap: round; }
+.cockatoo-cheek-wash { fill: #f2d774; stroke: none; opacity: .76; }
+.cockatoo-eye-ring { fill: #d4c6b2; stroke: #263f48; stroke-width: 1.8; }
+.cockatoo-eye { fill: #213740; stroke: #f7f3e8; stroke-width: 1.3; }
+.cockatoo-beak { fill: #48555a; stroke: #263f48; stroke-width: 2.4; stroke-linejoin: round; }
+.cockatoo-beak.front { fill: #536066; }
+.cockatoo-leg,
+.cockatoo-claw { fill: none; stroke: #5b5f5c; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; }
+.cockatoo-toast { fill: #e7b968; stroke: #263f48; stroke-width: 2.5; stroke-linejoin: round; }
+.cockatoo-toast-spread { fill: #9a5267; stroke: #704054; stroke-width: 1.5; }
+.cockatoo-toast-seed { fill: #f1d585; }
+.cockatoo-sugar-cube { fill: #f8f4e8; stroke: #263f48; stroke-width: 2; stroke-linejoin: round; }
+.cockatoo-cube-mark { fill: none; stroke: #d1c7b2; stroke-width: 1.5; }
 .profiler-rail-bed,
 .profiler-rail-foot,
 .profiler-tower-foot,
