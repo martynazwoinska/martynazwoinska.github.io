@@ -470,33 +470,50 @@ let narrationState = "idle";
 let currentNarration = null;
 let englishVoices = [];
 const preferredFemaleNarrationVoices = [
-  /google uk english female/i,
   /\bsonia\b/i,
   /\blibby\b/i,
+  /google uk english female/i,
+  /\bserena\b/i,
   /\bhazel\b/i,
   /\bsusan\b/i,
-  /\bserena\b/i,
   /\bkate\b/i,
   /\bmoira\b/i,
   /\bkaren\b/i,
   /\bsamantha\b/i,
+  /\baria\b/i,
+  /\bjenny\b/i,
+  /\bava\b/i,
+  /\bemma\b/i,
+  /\bmichelle\b/i,
+  /\bvictoria\b/i,
   /\bzira\b/i,
   /\btessa\b/i,
   /\bfiona\b/i
 ];
+const naturalNarrationVoice = /\b(?:natural|neural|enhanced|premium|online)\b/i;
+const likelyMaleNarrationVoice = /\b(?:david|george|ryan|mark|daniel|james|thomas|arthur|oliver|brian|aaron|liam)\b/i;
 
 function refreshNarrationVoices() {
   if (!speechSupported) return;
   englishVoices = window.speechSynthesis.getVoices().filter(voice => /^en(?:-|_)/i.test(voice.lang));
 }
 
+function narrationVoiceScore(voice) {
+  const name = voice.name || "";
+  const preferredIndex = preferredFemaleNarrationVoices.findIndex(pattern => pattern.test(name));
+  let score = preferredIndex >= 0 ? 1000 - preferredIndex * 20 : 0;
+  if (naturalNarrationVoice.test(name)) score += 220;
+  if (/^en-GB$/i.test(voice.lang)) score += 120;
+  if (likelyMaleNarrationVoice.test(name)) score -= 500;
+  if (voice.default) score += 10;
+  return score;
+}
+
 function preferredNarrationVoice() {
-  const femaleVoice = preferredFemaleNarrationVoices
-    .map(pattern => englishVoices.find(voice => pattern.test(voice.name)))
-    .find(Boolean);
-  return femaleVoice
-    || englishVoices.find(voice => /^en-GB$/i.test(voice.lang))
-    || englishVoices.find(voice => /^en-(?:US|AU|IE|CA|NZ)$/i.test(voice.lang))
+  return [...englishVoices].sort((first, second) => {
+    return narrationVoiceScore(second) - narrationVoiceScore(first)
+      || String(first.name).localeCompare(String(second.name));
+  })[0]
     || englishVoices[0]
     || null;
 }
@@ -556,48 +573,49 @@ function narrationSegments(item, place) {
   ].map(segment => pronounceAmbiguousWords(pronounceStrainCodes(pronounceScientificNames(segment))));
 }
 
+function narrationPassage(item, place) {
+  return narrationSegments(item, place).map(segment => {
+    const text = segment.trim();
+    return /[.!?]$/.test(text) ? text : `${text}.`;
+  }).join(" ");
+}
+
 function startNarration() {
   if (!speechSupported) return;
   const item = byId.get(selectedId);
   if (!item) return;
   const place = item.locations.find(candidate => candidate.name === selectedRecordName) || item.locations[0];
   stopNarration();
-  const session = { utterances: [] };
+  refreshNarrationVoices();
   const voice = preferredNarrationVoice();
-  session.utterances = narrationSegments(item, place).map((text, index, segments) => {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-GB";
-    utterance.rate = .92;
-    utterance.pitch = 1;
-    if (voice) utterance.voice = voice;
-    if (index === 0) {
-      utterance.addEventListener("start", () => {
-        if (currentNarration !== session) return;
-        updateNarrationControl("speaking");
-        announceNarration("Narration started.");
-      });
+  const utterance = new SpeechSynthesisUtterance(narrationPassage(item, place));
+  const session = { utterance };
+  utterance.lang = voice?.lang || "en-GB";
+  utterance.rate = .98;
+  utterance.pitch = 1;
+  if (voice) utterance.voice = voice;
+  utterance.addEventListener("start", () => {
+    if (currentNarration !== session) return;
+    updateNarrationControl("speaking");
+    announceNarration("Narration started.");
+  });
+  utterance.addEventListener("end", () => {
+    if (currentNarration !== session) return;
+    currentNarration = null;
+    updateNarrationControl("idle");
+    announceNarration("Narration finished.");
+  });
+  utterance.addEventListener("error", event => {
+    if (currentNarration !== session) return;
+    currentNarration = null;
+    window.speechSynthesis.cancel();
+    updateNarrationControl("idle");
+    if (!["canceled", "interrupted"].includes(event.error)) {
+      announceNarration("Narration is unavailable in this browser.");
     }
-    if (index === segments.length - 1) {
-      utterance.addEventListener("end", () => {
-        if (currentNarration !== session) return;
-        currentNarration = null;
-        updateNarrationControl("idle");
-        announceNarration("Narration finished.");
-      });
-    }
-    utterance.addEventListener("error", event => {
-      if (currentNarration !== session) return;
-      currentNarration = null;
-      window.speechSynthesis.cancel();
-      updateNarrationControl("idle");
-      if (!["canceled", "interrupted"].includes(event.error)) {
-        announceNarration("Narration is unavailable in this browser.");
-      }
-    });
-    return utterance;
   });
   currentNarration = session;
-  session.utterances.forEach(utterance => window.speechSynthesis.speak(utterance));
+  window.speechSynthesis.speak(utterance);
 }
 
 if (speechSupported) {
