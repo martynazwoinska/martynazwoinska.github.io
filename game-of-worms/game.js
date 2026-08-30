@@ -1663,10 +1663,8 @@ function createMarker(record) {
   const svgNamespace = "http://www.w3.org/2000/svg";
   const leader = document.createElementNS(svgNamespace, "g");
   const leaderLine = document.createElementNS(svgNamespace, "line");
-  const anchor = document.createElementNS(svgNamespace, "circle");
   leader.setAttribute("class", `map-leader ${item.reproduction}`);
-  anchor.setAttribute("r", "6");
-  leader.append(leaderLine, anchor);
+  leader.append(leaderLine);
   leader.style.display = "none";
   els.mapLeaders.appendChild(leader);
 
@@ -1713,7 +1711,7 @@ function createMarker(record) {
   });
   els.mapMarkers.appendChild(button);
   record.button = button;
-  record.leader = { group: leader, line: leaderLine, anchor };
+  record.leader = { group: leader, line: leaderLine };
 }
 
 function showMarkerTooltip(record, item, button) {
@@ -1799,8 +1797,6 @@ function positionMarkers() {
       record.leader.line.setAttribute("y1", point[1]);
       record.leader.line.setAttribute("x2", markerPoint[0]);
       record.leader.line.setAttribute("y2", markerPoint[1]);
-      record.leader.anchor.setAttribute("cx", point[0]);
-      record.leader.anchor.setAttribute("cy", point[1]);
     }
     placed.push({ x, y, point });
     record.button.style.left = `${x}px`;

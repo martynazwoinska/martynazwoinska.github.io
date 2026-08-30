@@ -486,12 +486,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
   opacity: .86;
   vector-effect: non-scaling-stroke;
 }
-.map-leader circle {
-  fill: currentColor;
-  stroke: var(--paper-strong);
-  stroke-width: 2;
-  vector-effect: non-scaling-stroke;
-}
 .map-loading {
   position: absolute;
   inset: 0;
