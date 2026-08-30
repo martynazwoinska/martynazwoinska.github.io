@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-28
 
-> **Retired from the active Game on 2026-08-28.** This dossier and its preserved painting remain archival provenance. The Manaus location, marker, environment profile and accessory set are no longer loaded by the playable atlas. Nouragues JU1428 remains the active South American *C. tropicalis* representative.
+> **Retired from the active Game on 2026-08-28.** This dossier and its preserved painting remain archival provenance. The Manaus location, marker, environment profile and accessory set are no longer loaded by the playable atlas.
 
 > **Former production accessory contract:** `anonymous-fruit sample cases`, `four-metre tape measures`, and `soil-profile charts`. The historical design record below is retained for traceability only.
 
@@ -17,8 +17,8 @@ Use JU1976, formerly Br3.1, as the explicit representative.
 
 JU1976 is a CaeNDR isotype-reference strain whose current data agree with the
 2011 primary collection table. JU1975 is also a real Brazilian isolate, but its
-latest downloadable CaeNDR row contains unresolved Nouragues locality wording
-that conflicts with its Brazilian coordinate and date. JU1976 is therefore the
+latest downloadable CaeNDR row contains unresolved locality wording that
+conflicts with its Brazilian coordinate and date. JU1976 is therefore the
 safer public representative.
 
 ## Representative collection record
@@ -284,10 +284,6 @@ Expected totals:
 - 83 singleton families
 - 111 concepts across 37 accessory sets
 - no family used more than twice
-
-The runtime still uses the shared `stilts` renderer for Singapore until that
-location’s redesign is implemented, so do not remove that shared renderer
-prematurely.
 
 ## Stale implementation cleanup
 

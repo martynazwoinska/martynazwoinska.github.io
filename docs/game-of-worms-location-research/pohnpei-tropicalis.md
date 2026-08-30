@@ -485,8 +485,7 @@ The registry records co-location and identity only. It must not imply:
 - an exact count of worms in the original sample;
 - shared culture history beyond fields explicitly present in the CSV.
 
-It must remain distinct from JU1428's triangular isotype-triad comparator:
-this is a seven-entry co-located registry, not a three-strain comparison lens.
+It is a seven-entry co-located registry, not a three-strain comparison lens.
 
 ## Suggested initial layouts
 
@@ -535,8 +534,8 @@ Expected resulting totals:
 - no family used more than twice
 
 The paired-temperature differential must not be classified as a second copy of
-ECA789's trace-based microclimate harmonograph. The seven-isotype registry must
-not reuse JU1428's triangular comparison geometry or comparison-lens concept.
+ECA789's trace-based microclimate harmonograph. The seven-isotype registry uses
+its own seven-entry co-located structure.
 
 ## Stale implementation cleanup
 

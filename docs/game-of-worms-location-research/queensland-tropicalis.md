@@ -362,8 +362,7 @@ Create a dedicated original painted illustration for the existing 600 × 430 sce
 > otherwise closed irregular rainforest canopy.
 
 This must remain immediately distinguishable from Barro Colorado’s six-bait
-grid, Nouragues’s plateau hollow and Duguetia fruit,
-Pohnpei’s ringed palm and cloudforest slope, Praslin’s fan-leaf vault and
+grid, Pohnpei’s ringed palm and cloudforest slope, Praslin’s fan-leaf vault and
 granite, and New Taipei’s concrete stair corridor.
 
 ### Forbidden

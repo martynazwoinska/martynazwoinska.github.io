@@ -93,7 +93,7 @@ Semantic family: Microhabitat viewer, second and final use after Tenerife.
 
 ### JU2909–JU2910 sample bifurcator
 
-Semantic family: Provenance-flow mechanism, second and final use after Singapore.
+Semantic family: Provenance-flow mechanism.
 
 - **Primary:** wide one-to-two flow table; an input tray containing several anonymous fruit fragments feeds separate JU2909 and JU2910 wells, with an M2.3 flip tag and L4-female-plus-male cue on the JU2909 branch.
 - **Companion:** tall counterweighted fork tower with one shared sample cradle and two unequal, separate line cages.
