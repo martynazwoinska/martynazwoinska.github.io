@@ -1,8 +1,8 @@
 # Mauritius *Caenorhabditis nigoni* JU2909 location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-08-30
 
-> **Current production accessory contract:** `fruit-and-nut sample trays`, `paired sample jars`, and `contour compasses`. These recognizable objects supersede the earlier abstract mechanism sketches below while preserving the paired-line and Rempart regional-context boundaries.
+> **Current production accessory contract:** `wriggle-powered ravanne drums`, `Vacoas fruit-gathering tail baskets`, and `dodo-beak fruit grabbers`.
 
 This dossier is the evidence and review contract for the JU2909 landscape and its three accessory pairs. It replaces the unsupported Le Morne lagoon setting with the documented Casela Nature Park fruit-ground record.
 
@@ -81,31 +81,38 @@ Use a dedicated scene renderer so the fruit form, exposed nut, path and mountain
 
 ## Accessory contract
 
-The three accessories are original interpretive mechanisms, not documented field equipment.
+The three accessories are playful Mauritius references. They are not documented JU2909 collection equipment.
 
-### JU2909 fruit-and-nut viewer
+### Wriggle-powered ravanne drums
 
-Semantic family: Microhabitat viewer, second and final use after Tenerife.
+Semantic family: worm-worn frame drums.
 
-- **Primary:** broad horizontal roller bed carrying a collapsed oval-fruit cutaway, separate central woody-nut cradle, ground-litter tray and asymmetric moving lens carriage.
-- **Companion:** tall open C-frame holding an upright split specimen, backlit nut aperture, offset side lens and hanging litter cassette.
-- The pair must not reuse Tenerife's pear-like shell, magnifying hood, peel triptych or pit lens.
+- **Primary:** a broad shallow wooden frame with visible skin, perimeter fasteners, lacing and two spring-linked beaters. Two unequal harness curves fit the female's body bend.
+- **Companion:** a separately constructed tilted oval frame with a different fastener rhythm, a single counterweighted beater and a shorter two-point harness fitted to the male.
+- The ravanne is one of the instruments used in traditional Mauritian Sega. The UNESCO record is the source for the instrument association; the worm-powered linkage is fantasy.
 
-### JU2909–JU2910 sample bifurcator
+### Vacoas fruit-gathering tail baskets
 
-Semantic family: Provenance-flow mechanism.
+Semantic family: fitted woven tail scoops.
 
-- **Primary:** wide one-to-two flow table; an input tray containing several anonymous fruit fragments feeds separate JU2909 and JU2910 wells, with an M2.3 flip tag and L4-female-plus-male cue on the JU2909 branch.
-- **Companion:** tall counterweighted fork tower with one shared sample cradle and two unequal, separate line cages.
-- This is an invented provenance visualisation. It begins with a multi-fruit sample batch and must not resemble a cross-breeding apparatus or imply that both species came from one individual fruit.
+- **Primary:** a long tapered woven sleeve following the female's tail curve, with a braided berry rim, open dark scoop mouth, aqua gathering lip and one anonymous fruit.
+- **Companion:** a compact boat-shaped weave with a different lattice, shorter clasp, separate scoop mouth and smaller fruit.
+- Mauritius National Heritage Fund material identifies Vacoas or Pandanus leaf basket weaving as a Mauritian craft. The fitted fruit-gathering mechanism is fantasy and does not identify the original collection basket or fruit.
 
-### Casela–Rempart contour surveyor
+### Dodo-beak fruit grabbers
 
-Semantic family: unique.
+Semantic family: articulated carved fruit-grabbing tools.
 
-- **Primary:** broad asymmetric relief table with staggered planted beds, an S-curving path, coordinate pin, detachable single-tooth Rempart profile and restrained brass survey grid.
-- **Companion:** tall folding alidade with a narrow mountain sight window, three staggered slope cards, side coordinate roll and hanging plumb line.
-- The pair communicates wider setting only; it is not an exact park plan or historical field instrument.
+- **Primary:** a blue-grey carved dodo head with paired crest feathers, eye, nostril, deep two-part hooked beak, violet beak tip, hinge, control cable and collar-mounted bridge. The open beak grips one woody nut.
+- **Companion:** a smaller aqua-grey head with a different crest, shorter beak, separate hinge and trigger geometry, gripping a smaller nut.
+- The dodo is endemic to Mauritius and appears as a supporter on the country's coat of arms. The grabber is a playful mechanism, not a reconstruction of a live bird or historic tool.
+
+Reference sources:
+
+- [UNESCO Traditional Mauritian Sega](https://ich.unesco.org/en/RL/traditional-mauritian-sega-01003)
+- [Mauritius National Heritage Fund basket-weaving inventory](https://nhf.govmu.org/nhf/?mdocs-file=622)
+- [Natural History Museum dodo reconstruction overview](https://www.nhm.ac.uk/discover/the-dodo-bird-the-real-facts-about-this-icon-of-extinction.html)
+- [Government of Mauritius coat of arms](https://www.govmu.org/FR/Pages/Armoiries.aspx)
 
 ## Scientific, cultural and privacy safeguards
 
@@ -125,23 +132,23 @@ The existing display key `Mauritius · JU2909` remains unchanged to preserve sav
 - Scene title: `Casela fruit ground below Rempart Mountain`
 - Source label: `Worldwide Worms/Félix JU2909 record`
 - Public marker history: `JU2909, previously M2.3, is an isofemale C. nigoni strain sampled by Henrique Teotonio from rotting fruit on the ground at Casela Nature Park, Cascavelle, Mauritius, in late December 2015 and isolated by M.-A. Félix. The anonymous fruit was described as about 8 cm long and oval with a large woody nut. The line began with an L4 female and a male; Worldwide Worms records test-cross identification and says JU2909 came from the same sample as C. briggsae JU2910, without establishing one shared individual fruit.`
-- Accessory families: `ju2909-fruit-nut-viewer`, `ju2909-ju2910-sample-bifurcator`, `casela-rempart-contour-surveyor`
-- Primary transforms: `[374, 126, .34, -2]`, `[220, 187, .32, -1]`, `[370, 266, .33, -1]`
-- Companion transforms: `[-8, 116, .27, 2]`, `[108, 213, .26, 2]`, `[0, 292, .27, 2]`
+- Accessory families: `mauritius-ravanne-crawler-drum`, `mauritius-vacoas-tail-scoop`, `mauritius-dodo-beak-fruit-grabber`
+- Primary transforms: `[265, 172, .48, 17]`, `[151, 248, .5, -14]`, `[421, 116, .42, -8]`
+- Companion transforms: `[90, 177, .38, 20]`, `[37, 230, .4, -7]`, `[132, 138, .34, 5]`
 
 ## Quality and interaction acceptance
 
-- The fruit and woody nut read clearly at game scale.
-- Every concept has a dedicated named SVG renderer; no Le Morne pauldron, lagoon wind-vane, cane ankle bells or generic fallback remains.
+- Every object is recognizable at the default 600 × 430 scene size without relying on its button label.
+- The ravanne frame, skin and beaters; the baskets' woven construction and open scoop mouths; and the dodo tools' hooked beaks, hinges and collars remain legible at game scale.
+- Every concept has a dedicated named SVG renderer; no Le Morne, sample-machine or generic fallback art remains.
 - Primary and companion objects differ in silhouette, construction, internal detail and placement.
-- The shared-sample mechanism begins with a multi-fruit batch and ends in two independent lines.
 - All three pairs remain legible together without intersecting one another or hiding worm faces.
 - All six instances remain independently draggable and keyboard movable; Home resets only the focused copy.
 - Accessible names match the visible drawings.
 - The Game's fixed light palette, reduced motion, 360 px through wide desktop, responsive resize, console, overflow and source-link checks pass.
-- Environment/accessory audits retain 37 sets and 111 designs, with no family used more than twice and no identical primary/companion geometry.
+- Environment/accessory audits retain 31 active sets and 94 designs, with no family used more than twice and no identical primary/companion geometry.
 - JS syntax, `git diff --check` and the full diff pass before integration.
 
 ## Implementation status
 
-Implemented and locally verified on 2026-07-28. The preserved source painting is `game-of-worms/assets/source/mauritius-ju2909-painted-background-source.png`; the optimized runtime derivative is `game-of-worms/assets/mauritius-ju2909-painted-background.webp`. All six objects passed independent pointer drag, Arrow, Shift+Arrow and isolated Home-reset checks. The 360 px, 768 px, 1024 px and 1440 px layouts passed without horizontal overflow or SVG containment failures. The source record, source PNG and runtime WebP returned HTTP 200; syntax, catalogue, pair-geometry, environment-composition, console and `git diff --check` checks passed.
+Redesigned and locally verified on 2026-08-30. The preserved source painting is `game-of-worms/assets/source/mauritius-ju2909-painted-background-source.png`; the optimized runtime derivative is `game-of-worms/assets/mauritius-ju2909-painted-background.webp`. The production SVG set contains six separately constructed objects. Full-page phone, tablet, desktop and wide proofs were captured at 360, 768, 1024 and 1440 px viewport widths, with rendered page heights of 2473, 2433, 1805 and 1934 px and no horizontal overflow. All six objects passed Arrow, scale and isolated Home-reset checks. Catalogue, paired-geometry and environment audits passed during page initialization, and the browser console remained free of warnings and errors.

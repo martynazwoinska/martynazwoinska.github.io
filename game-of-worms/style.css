@@ -4567,17 +4567,20 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   .mahahual-ju2617-accessory .ju2617-label { font-size: 24px; }
 }
 
-/* Mauritius JU2909: fruit-ground, provenance and Casela contour mechanisms. */
+/* Mauritius JU2909: ravanne, Vacoas basketry and dodo-inspired fruit grabbers. */
 .mauritius-ju2909-accessory {
-  --ju2909-ink: color-mix(in srgb, #3b392f 84%, var(--worm-deep));
-  --ju2909-brass: color-mix(in srgb, #ad8249 76%, var(--local-secondary));
-  --ju2909-brass-light: color-mix(in srgb, #dfc27f 74%, var(--paper-strong));
-  --ju2909-berry: color-mix(in srgb, #84506d 72%, var(--local-primary));
-  --ju2909-leaf: color-mix(in srgb, #4e7257 76%, var(--local-primary));
-  --ju2909-fruit: #9a6739;
-  --ju2909-nut: #69462f;
-  --ju2909-glass: color-mix(in srgb, #d7eee7 52%, transparent);
-  --ju2909-cream: color-mix(in srgb, #efe4c0 79%, var(--paper-strong));
+  --ju2909-ink: #253847;
+  --ju2909-wood: #986039;
+  --ju2909-wood-deep: #68422f;
+  --ju2909-skin: #f1ddb0;
+  --ju2909-skin-shadow: #d7b979;
+  --ju2909-gold: #e1b95a;
+  --ju2909-gold-light: #f2d88f;
+  --ju2909-berry: #a34f67;
+  --ju2909-violet: #67559b;
+  --ju2909-aqua: #62a7a4;
+  --ju2909-ivory: #f6edcf;
+  --ju2909-nut: #805133;
 }
 .mauritius-ju2909-accessory path,
 .mauritius-ju2909-accessory circle,
@@ -4586,155 +4589,176 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.ju2909-label,
-.ju2909-small-label {
+.ju2909-ravanne-rim-back {
+  fill: var(--ju2909-wood);
+  stroke: var(--ju2909-ink);
+  stroke-width: 8;
+}
+.ju2909-ravanne-skin {
+  fill: var(--ju2909-skin);
+  stroke: var(--ju2909-wood-deep);
+  stroke-width: 4;
+}
+.ju2909-ravanne-skin.companion-skin { fill: color-mix(in srgb, var(--ju2909-skin) 82%, var(--ju2909-gold-light)); }
+.ju2909-ravanne-sidewall,
+.ju2909-ravanne-harness,
+.ju2909-tail-clasp,
+.ju2909-basket-foot,
+.ju2909-grabber-harness,
+.ju2909-control-cable {
+  fill: none;
+  stroke: var(--ju2909-wood-deep);
+  stroke-width: 7;
+}
+.ju2909-ravanne-harness.accent { stroke: var(--ju2909-berry); }
+.ju2909-ravanne-skin-mark {
+  fill: none;
+  stroke: var(--ju2909-skin-shadow);
+  stroke-width: 3;
+  opacity: .82;
+}
+.ju2909-ravanne-lacing {
+  fill: none;
+  stroke: var(--ju2909-gold-light);
+  stroke-width: 4;
+}
+.ju2909-rivet {
+  fill: var(--ju2909-gold-light);
+  stroke: var(--ju2909-ink);
+  stroke-width: 1.8;
+}
+.ju2909-beater-shaft {
+  fill: none;
+  stroke: var(--ju2909-ink);
+  stroke-width: 5;
+}
+.ju2909-beater-head {
+  fill: var(--ju2909-violet);
+  stroke: var(--ju2909-ink);
+  stroke-width: 3;
+}
+.ju2909-beater-head.accent { fill: var(--ju2909-berry); }
+.ju2909-ravanne-spring {
+  fill: none;
+  stroke: var(--ju2909-aqua);
+  stroke-width: 5;
+}
+.ju2909-vacoas-basket {
+  fill: var(--ju2909-gold-light);
+  stroke: var(--ju2909-ink);
+  stroke-width: 5;
+}
+.ju2909-vacoas-basket.companion-basket { fill: color-mix(in srgb, var(--ju2909-gold-light) 74%, var(--ju2909-ivory)); }
+.ju2909-vacoas-rim {
+  fill: none;
+  stroke: var(--ju2909-berry);
+  stroke-width: 9;
+}
+.ju2909-weave-band {
+  fill: none;
+  stroke: var(--ju2909-violet);
+  stroke-width: 7;
+}
+.ju2909-weave-line {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ju2909-wood) 72%, var(--ju2909-gold));
+  stroke-width: 4;
+}
+.ju2909-fruit-lip {
+  fill: var(--ju2909-aqua);
+  stroke: var(--ju2909-ink);
+  stroke-width: 5;
+}
+.ju2909-basket-mouth {
+  fill: var(--ju2909-wood-deep);
+  stroke: var(--ju2909-ink);
+  stroke-width: 5;
+}
+.ju2909-gathered-fruit {
+  fill: var(--ju2909-berry);
+  stroke: var(--ju2909-ink);
+  stroke-width: 4;
+}
+.ju2909-fruit-stem {
+  fill: none;
+  stroke: var(--ju2909-wood-deep);
+  stroke-width: 4;
+}
+.ju2909-dodo-head {
+  fill: #7f8795;
+  stroke: var(--ju2909-ink);
+  stroke-width: 5;
+}
+.ju2909-dodo-head.companion-head { fill: #6e9a9a; }
+.ju2909-dodo-crest {
+  fill: none;
+  stroke: var(--ju2909-violet);
+  stroke-width: 8;
+}
+.ju2909-dodo-crest-feathers {
+  fill: none;
+  stroke: var(--ju2909-berry);
+  stroke-width: 9;
+}
+.ju2909-dodo-eye {
+  fill: var(--ju2909-ivory);
+  stroke: var(--ju2909-ink);
+  stroke-width: 3;
+}
+.ju2909-body-clamp {
+  fill: none;
+  stroke: var(--ju2909-gold);
+  stroke-width: 9;
+}
+.ju2909-grabber-bridge {
+  fill: none;
+  stroke: var(--ju2909-berry);
+  stroke-width: 7;
+}
+.ju2909-grabber-coupling {
+  fill: var(--ju2909-aqua);
+  stroke: var(--ju2909-ink);
+  stroke-width: 3;
+}
+.ju2909-dodo-upper-beak {
+  fill: var(--ju2909-gold-light);
+  stroke: var(--ju2909-ink);
+  stroke-width: 5;
+}
+.ju2909-dodo-lower-beak {
+  fill: var(--ju2909-gold);
+  stroke: var(--ju2909-ink);
+  stroke-width: 5;
+}
+.ju2909-beak-tip {
+  fill: var(--ju2909-violet);
+  stroke: var(--ju2909-ink);
+  stroke-width: 4;
+}
+.ju2909-dodo-nostril {
   fill: var(--ju2909-ink);
   stroke: none;
-  font-family: var(--sans);
-  font-size: 18px;
-  font-weight: 900;
-  letter-spacing: .035em;
 }
-.ju2909-small-label { font-size: 12px; }
-.ju2909-viewer-bed,
-.ju2909-flow-table,
-.ju2909-relief-table,
-.ju2909-litter-tray,
-.ju2909-litter-cassette {
-  fill: var(--ju2909-brass);
-  stroke: var(--ju2909-ink);
+.ju2909-beak-seam,
+.ju2909-nut-groove {
+  fill: none;
+  stroke: var(--ju2909-wood-deep);
   stroke-width: 3;
-}
-.ju2909-fruit-rind {
-  fill: var(--ju2909-fruit);
-  stroke: color-mix(in srgb, #543c2d 84%, var(--ju2909-ink));
-  stroke-width: 3;
-}
-.ju2909-fruit-opening {
-  fill: color-mix(in srgb, #c28b50 68%, #5e3b29);
-  stroke: var(--ju2909-ink);
-  stroke-width: 2.4;
 }
 .ju2909-woody-nut {
   fill: var(--ju2909-nut);
-  stroke: color-mix(in srgb, #3c2c24 86%, var(--ju2909-ink));
-  stroke-width: 2.6;
-}
-.ju2909-nut-cradle,
-.ju2909-backlight-aperture {
-  fill: var(--ju2909-glass);
-  stroke: color-mix(in srgb, #63877c 72%, var(--ju2909-ink));
-  stroke-width: 2.6;
-}
-.ju2909-roller,
-.ju2909-counterweight,
-.ju2909-coordinate-pin {
-  fill: var(--ju2909-brass-light);
-  stroke: var(--ju2909-ink);
-  stroke-width: 2;
-}
-.ju2909-roller-spoke,
-.ju2909-viewer-arm,
-.ju2909-counterweight-line,
-.ju2909-cage-rung,
-.ju2909-table-leg,
-.ju2909-pin-stem {
-  fill: none;
-  stroke: var(--ju2909-ink);
-  stroke-width: 2.5;
-}
-.ju2909-lens-carriage,
-.ju2909-c-frame,
-.ju2909-fork-tower,
-.ju2909-alidade-frame {
-  fill: color-mix(in srgb, var(--ju2909-brass) 36%, transparent);
   stroke: var(--ju2909-ink);
   stroke-width: 4;
 }
-.ju2909-side-lens {
-  fill: var(--ju2909-brass-light);
-  stroke: var(--ju2909-ink);
-  stroke-width: 2.5;
-}
-.ju2909-side-lens-glass {
-  fill: color-mix(in srgb, #9fcec1 58%, transparent);
-  stroke: color-mix(in srgb, #50796d 76%, var(--ju2909-ink));
-  stroke-width: 2;
-}
-.ju2909-litter-grain,
-.ju2909-sample-fragment {
-  fill: color-mix(in srgb, #6f543a 76%, var(--ju2909-fruit));
-  stroke: var(--ju2909-ink);
-  stroke-width: 1.4;
-}
-.ju2909-litter-grain.accent,
-.ju2909-sample-fragment.accent { fill: var(--ju2909-berry); }
-.ju2909-shared-cradle,
-.ju2909-flip-tag,
-.ju2909-founder-cue {
-  fill: var(--ju2909-cream);
-  stroke: var(--ju2909-ink);
-  stroke-width: 2.5;
-}
-.ju2909-branch-pipe {
-  fill: none;
-  stroke: var(--ju2909-brass);
-  stroke-width: 4.5;
-}
-.ju2909-line-well {
-  fill: color-mix(in srgb, #d7ebe4 65%, var(--paper-strong));
-  stroke: color-mix(in srgb, #53786c 76%, var(--ju2909-ink));
-  stroke-width: 3;
-}
-.ju2909-line-cage {
-  fill: color-mix(in srgb, var(--ju2909-glass) 72%, var(--ju2909-cream));
-  stroke: var(--ju2909-ink);
-  stroke-width: 2.4;
-}
-.ju2909-sight-window,
-.ju2909-slope-card,
-.ju2909-coordinate-roll {
-  fill: var(--ju2909-cream);
-  stroke: var(--ju2909-ink);
-  stroke-width: 2.4;
-}
-.ju2909-mountain-sight,
-.ju2909-rempart-profile {
+.ju2909-beak-hinge {
   fill: var(--ju2909-berry);
   stroke: var(--ju2909-ink);
-  stroke-width: 2.5;
+  stroke-width: 3;
 }
-.ju2909-grid-line {
-  fill: none;
-  stroke: color-mix(in srgb, var(--ju2909-brass) 74%, var(--ju2909-ink));
-  stroke-width: 1.8;
-}
-.ju2909-contour-path {
-  fill: none;
-  stroke: var(--ju2909-berry);
-  stroke-width: 4;
-}
-.ju2909-planted-bed {
-  fill: var(--ju2909-leaf);
-  stroke: color-mix(in srgb, #344d3b 80%, var(--ju2909-ink));
-  stroke-width: 2;
-}
-.ju2909-planted-bed.accent {
-  fill: color-mix(in srgb, var(--ju2909-leaf) 70%, var(--ju2909-brass-light));
-}
-.ju2909-plumb-line {
-  fill: none;
-  stroke: var(--ju2909-berry);
-  stroke-width: 2.2;
-}
-.ju2909-plumb-weight {
-  fill: var(--ju2909-brass-light);
+.ju2909-grabber-trigger {
+  fill: var(--ju2909-aqua);
   stroke: var(--ju2909-ink);
-  stroke-width: 2;
-}
-@media (max-width: 600px) {
-  .mauritius-ju2909-accessory .ju2909-small-label { display: none; }
-  .mauritius-ju2909-accessory .ju2909-label { font-size: 24px; }
+  stroke-width: 4;
 }
 
 /* Ho Chi Minh City JU4356: carambola, ITS2 and urban-canopy mechanisms. */

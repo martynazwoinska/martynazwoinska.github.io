@@ -27,7 +27,7 @@ const rows = [
   ["nigoni", "Praslin, Seychelles · YR106", "giant-tortoise shell costumes", "praslin-giant-tortoise-shell-costume", "black-parrot carnival caps", "praslin-black-parrot-carnival-cap", "Seychelles carnival bell bracelets", "praslin-seychelles-carnival-bell-bracelet"],
   ["nigoni", "São Tomé · JU2484", "São Tomé chocolate bars", "sao-tome-chocolate-bars", "birdsong music boxes", "sao-tome-birdsong-music-boxes", "begonia stained-glass parasols", "sao-tome-begonia-glass-parasols"],
   ["nigoni", "Mahahual, Mexico · JU2617", "reef-ruffle swim costumes", "mahahual-reef-ruffle-swim-costumes", "Caribbean sun spectacles", "mahahual-caribbean-sun-spectacles", "sea-grape beach parasols", "mahahual-sea-grape-beach-parasols"],
-  ["nigoni", "Mauritius · JU2909", "fruit-and-nut sample trays", "ju2909-fruit-nut-viewer", "paired sample jars", "ju2909-ju2910-sample-bifurcator", "contour compasses", "casela-rempart-contour-surveyor"],
+  ["nigoni", "Mauritius · JU2909", "wriggle-powered ravanne drums", "mauritius-ravanne-crawler-drum", "Vacoas fruit-gathering tail baskets", "mauritius-vacoas-tail-scoop", "dodo-beak fruit grabbers", "mauritius-dodo-beak-fruit-grabber"],
   ["nigoni", "Ho Chi Minh City · JU4356", "carambola sample trays", "ju4356-carambola-ground-contact-stage", "ITS2 DNA cards", "ju4356-its2-ribbon-reader", "tree survey calipers", "hcmc-urban-canopy-census-engine"],
   ["nigoni", "Lombok, Indonesia · HPT26", "fig sample trays", "hpt26-ficus-ground-contact-stage", "field-to-plate calendars", "lingsar-field-to-plate-calendar", "paired sample boxes", "hpt26-hpt27-substrate-diptych"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "Balinese endek wrap", "ju1873-balinese-endek-wrap", "Balinese gamelan gong", "ju1873-balinese-gamelan-gong"],
@@ -3290,106 +3290,105 @@ function drawMauritiusJU2909Accessory(group, item, companion) {
   if (!mauritiusJU2909RendererIds.has(item.id)) return false;
   group.dataset.renderer = item.family;
   group.classList.add("mauritius-ju2909-accessory", companion ? "ju2909-companion" : "ju2909-primary");
-  const text = (value, x, y, className = "ju2909-label") => {
-    const node = add(group, "text", { class: className, x, y, "text-anchor": "middle" });
-    node.textContent = value;
-  };
-  const fruit = (parent, transform, upright = false) => {
-    const specimen = add(parent, "g", { class: "ju2909-fruit", transform });
-    path(specimen, upright
-      ? "M0-58Q26-47 29-13Q34 18 16 48Q0 67-17 48Q-35 18-29-13Q-25-47 0-58Z"
-      : "M-68 0Q-55-33-14-39Q28-43 62-16Q77 0 61 19Q25 44-18 38Q-57 32-68 0Z", "ju2909-fruit-rind");
-    path(specimen, upright
-      ? "M-25-17Q-5-32 10-14Q25 4 13 27Q-2 47-22 28"
-      : "M-45-18Q-8-31 17-13Q42 4 29 25Q3 34-23 20Q-39 12-45-18Z", "ju2909-fruit-opening");
-    add(specimen, "ellipse", upright
-      ? { class: "ju2909-woody-nut", cx: -2, cy: 6, rx: 15, ry: 24, transform: "rotate(-8 -2 6)" }
-      : { class: "ju2909-woody-nut", cx: 5, cy: 5, rx: 25, ry: 16, transform: "rotate(-7 5 5)" });
-    return specimen;
-  };
-  const roller = (cx, cy, radius = 10) => {
-    add(group, "circle", { class: "ju2909-roller", cx, cy, r: radius });
-    line(group, `M${cx-radius+2} ${cy}H${cx+radius-2}M${cx} ${cy-radius+2}V${cy+radius-2}`, "ju2909-roller-spoke");
-  };
+  const rivet = (parent, cx, cy, radius = 4) => add(parent, "circle", { class: "ju2909-rivet", cx, cy, r: radius });
+  const weave = (parent, lines) => lines.forEach(d => path(parent, d, "ju2909-weave-line"));
 
-  if (item.family === "ju2909-fruit-nut-viewer") {
+  if (item.family === "mauritius-ravanne-crawler-drum") {
     if (companion) {
-      path(group, "M-48-85H34M-48-85V72H34M-48 72H34", "ju2909-c-frame");
-      fruit(group, "translate(-7 -19) scale(.72)", true);
-      add(group, "ellipse", { class: "ju2909-backlight-aperture", cx: -7, cy: -13, rx: 25, ry: 34 });
-      add(group, "circle", { class: "ju2909-side-lens", cx: 50, cy: -18, r: 19 });
-      add(group, "circle", { class: "ju2909-side-lens-glass", cx: 50, cy: -18, r: 12 });
-      line(group, "M34-18H50M50 1V38", "ju2909-viewer-arm");
-      path(group, "M-32 43H25L19 70H-39Z", "ju2909-litter-cassette");
-      [[-21, 53], [-4, 58], [12, 51]].forEach(([cx, cy], index) => add(group, "circle", { class: index % 2 ? "ju2909-litter-grain accent" : "ju2909-litter-grain", cx, cy, r: 4 }));
-      text("JU2909", 0, 88, "ju2909-small-label");
+      const drum = add(group, "g", { transform: "rotate(-12 -2 -2)" });
+      add(drum, "ellipse", { class: "ju2909-ravanne-rim-back", cx: -2, cy: -3, rx: 68, ry: 56 });
+      add(drum, "ellipse", { class: "ju2909-ravanne-skin companion-skin", cx: -2, cy: -3, rx: 55, ry: 44 });
+      path(drum, "M-60-27Q-75-5-61 24M59-28Q72-4 58 24", "ju2909-ravanne-sidewall");
+      [-49, -22, 12, 43].forEach((cx, index) => rivet(drum, cx, index % 2 ? 43 : -46, 3.5));
+      path(drum, "M-51-21Q-16 8 29-24M-42 25Q-5-5 44 20", "ju2909-ravanne-skin-mark");
+      path(drum, "M-48-39L-39-27M-18-52L-14-38M18-49L13-36M47-33L38-23M-51 34L-41 25M-12 47L-9 35M23 43L19 31M50 27L40 19", "ju2909-ravanne-lacing");
+      path(group, "M-47-58Q-18-79 13-57", "ju2909-ravanne-harness");
+      path(group, "M42-52L72-91M36-47L66-86", "ju2909-beater-shaft");
+      add(group, "ellipse", { class: "ju2909-beater-head", cx: 72, cy: -94, rx: 12, ry: 8, transform: "rotate(-14 72 -94)" });
+      path(group, "M-52 38Q-23 62 12 50", "ju2909-ravanne-harness accent");
     } else {
-      path(group, "M-112 26H106L96 68H-106Z", "ju2909-viewer-bed");
-      [-82, -41, 0, 41, 82].forEach(cx => roller(cx, 40, 10));
-      fruit(group, "translate(-23 -5) scale(.88)", false);
-      add(group, "ellipse", { class: "ju2909-nut-cradle", cx: 40, cy: 3, rx: 35, ry: 22 });
-      add(group, "ellipse", { class: "ju2909-woody-nut", cx: 40, cy: 1, rx: 23, ry: 14, transform: "rotate(8 40 1)" });
-      path(group, "M-87 64Q0 48 87 63L77 91Q0 106-80 91Z", "ju2909-litter-tray");
-      [[-61, 76], [-38, 82], [-13, 74], [17, 81], [43, 73], [66, 82]].forEach(([cx, cy], index) => add(group, "circle", { class: index % 2 ? "ju2909-litter-grain accent" : "ju2909-litter-grain", cx, cy, r: 4 + index % 2 }));
-      path(group, "M53-56H104L94-24H44Z", "ju2909-lens-carriage");
-      add(group, "circle", { class: "ju2909-side-lens", cx: 74, cy: -40, r: 20 });
-      add(group, "circle", { class: "ju2909-side-lens-glass", cx: 74, cy: -40, r: 12 });
-      line(group, "M48-23L25 8M101-23L84 25", "ju2909-viewer-arm");
+      const drum = add(group, "g", { transform: "rotate(8 0 0)" });
+      add(drum, "ellipse", { class: "ju2909-ravanne-rim-back", cx: 0, cy: 0, rx: 92, ry: 74 });
+      path(drum, "M-84-37Q-105-2-83 42M84-38Q105-3 82 42", "ju2909-ravanne-sidewall");
+      add(drum, "ellipse", { class: "ju2909-ravanne-skin", cx: 0, cy: 0, rx: 76, ry: 59 });
+      [-68, -34, 0, 34, 68].forEach((cx, index) => rivet(drum, cx, index % 2 ? 59 : -61, 4.3));
+      [-38, 0, 38].forEach((cx, index) => rivet(drum, cx, index === 1 ? 68 : -67, 3.6));
+      path(drum, "M-63-31Q-24 8 19-36M-61 31Q-13-13 53 27M-18-51Q16-20 62-43", "ju2909-ravanne-skin-mark");
+      path(drum, "M-69-49L-58-35M-37-64L-31-47M0-68V-51M38-62L31-46M69-45L57-33M-71 48L-58 35M-38 63L-31 46M0 68V51M39 62L31 45M70 45L57 32", "ju2909-ravanne-lacing");
+      path(group, "M-71-74Q-20-105 43-76M-73 61Q-21 94 46 69", "ju2909-ravanne-harness");
+      path(group, "M-51-83L-77-121M-39-87L-65-126M52-74L83-109M63-67L93-101", "ju2909-beater-shaft");
+      add(group, "ellipse", { class: "ju2909-beater-head", cx: -72, cy: -126, rx: 14, ry: 9, transform: "rotate(22 -72 -126)" });
+      add(group, "ellipse", { class: "ju2909-beater-head accent", cx: 90, cy: -106, rx: 14, ry: 9, transform: "rotate(-22 90 -106)" });
+      path(group, "M-20 78L-11 99L3 82L15 103L28 77", "ju2909-ravanne-spring");
     }
     return true;
   }
 
-  if (item.family === "ju2909-ju2910-sample-bifurcator") {
+  if (item.family === "mauritius-vacoas-tail-scoop") {
     if (companion) {
-      path(group, "M-41-84H36L47 72H-51Z", "ju2909-fork-tower");
-      path(group, "M-27-69H25L17-40H-20Z", "ju2909-shared-cradle");
-      [-13, 2, 15].forEach((cx, index) => add(group, "ellipse", { class: index % 2 ? "ju2909-sample-fragment accent" : "ju2909-sample-fragment", cx, cy: -55 + index % 2 * 6, rx: 9, ry: 6, transform: `rotate(${index * 13 - 8} ${cx} ${-55 + index % 2 * 6})` }));
-      path(group, "M-2-39V-18L-27 5M-2-18L28-1", "ju2909-branch-pipe");
-      path(group, "M-40 3H-7V42H-40ZM10 11H42V56H10Z", "ju2909-line-cage");
-      line(group, "M-33 13H-14M-33 25H-14M17 22H35M17 35H35M17 48H35", "ju2909-cage-rung");
-      add(group, "circle", { class: "ju2909-counterweight", cx: 51, cy: -48, r: 13 });
-      line(group, "M35-48H51M51-35V16", "ju2909-counterweight-line");
-      text("2909", -24, 64, "ju2909-small-label");
-      text("2910", 25, 69, "ju2909-small-label");
+      path(group, "M-72-42Q-28-62 17-39Q49-19 58 22Q32 54-8 66Q-50 55-72 20Z", "ju2909-vacoas-basket companion-basket");
+      path(group, "M-74-42Q-28-72 20-44Q50-25 61 18", "ju2909-vacoas-rim");
+      path(group, "M-63-20Q-21-42 45-12M-61 7Q-13-12 51 14M-48 35Q-5 24 35 35", "ju2909-weave-band");
+      weave(group, ["M-45-51Q-39 0-6 59", "M-17-56Q-7-4 18 52", "M11-47Q20-6 42 27"]);
+      path(group, "M-76-15Q-103-2-96 29Q-79 44-59 34", "ju2909-tail-clasp");
+      path(group, "M-4 60Q18 82 43 63", "ju2909-basket-foot");
+      add(group, "ellipse", { class: "ju2909-basket-mouth", cx: 55, cy: 12, rx: 16, ry: 30, transform: "rotate(-20 55 12)" });
+      path(group, "M48-2Q80-18 95 8Q83 30 57 35", "ju2909-fruit-lip");
+      add(group, "ellipse", { class: "ju2909-gathered-fruit", cx: 82, cy: 9, rx: 16, ry: 12, transform: "rotate(12 82 9)" });
     } else {
-      path(group, "M-111 17H106V62H-111Z", "ju2909-flow-table");
-      path(group, "M-96-54H-33L-42-20H-87Z", "ju2909-shared-cradle");
-      [[-79, -40], [-61, -34], [-45, -43]].forEach(([cx, cy], index) => add(group, "ellipse", { class: index % 2 ? "ju2909-sample-fragment accent" : "ju2909-sample-fragment", cx, cy, rx: 11, ry: 7, transform: `rotate(${index * 15 - 10} ${cx} ${cy})` }));
-      path(group, "M-41-27H-8V-5L-54 20M-8-5L48 20", "ju2909-branch-pipe");
-      add(group, "circle", { class: "ju2909-line-well", cx: -57, cy: 24, r: 28 });
-      add(group, "circle", { class: "ju2909-line-well", cx: 55, cy: 24, r: 28 });
-      text("JU2909", -57, 28, "ju2909-small-label");
-      text("JU2910", 55, 28, "ju2909-small-label");
-      path(group, "M-19-48H31V-19H-19Z", "ju2909-flip-tag");
-      text("M2.3", 6, -29, "ju2909-small-label");
-      path(group, "M-19 55H19V83H-19Z", "ju2909-founder-cue");
-      text("L4 ♀ + ♂", 0, 73, "ju2909-small-label");
-      line(group, "M-57 52V61H-19M55 52V61H19", "ju2909-branch-pipe");
+      path(group, "M-104-50Q-48-79 18-52Q78-28 98 20Q71 73 10 87Q-55 82-99 39Z", "ju2909-vacoas-basket");
+      path(group, "M-107-49Q-49-91 24-57Q82-31 102 18", "ju2909-vacoas-rim");
+      path(group, "M-91-23Q-36-53 76-10M-92 8Q-31-19 86 21M-76 42Q-22 22 69 51", "ju2909-weave-band");
+      weave(group, ["M-75-65Q-66 4-12 82", "M-39-76Q-25-2 20 82", "M0-70Q17-4 54 66", "M39-54Q54-5 79 41"]);
+      path(group, "M-107-14Q-143 0-134 40Q-112 59-87 45", "ju2909-tail-clasp");
+      path(group, "M-30 83Q-2 110 32 87", "ju2909-basket-foot");
+      add(group, "ellipse", { class: "ju2909-basket-mouth", cx: 94, cy: 12, rx: 22, ry: 42, transform: "rotate(-18 94 12)" });
+      path(group, "M87-12Q126-35 148-3Q137 35 98 47", "ju2909-fruit-lip");
+      add(group, "ellipse", { class: "ju2909-gathered-fruit", cx: 127, cy: 3, rx: 22, ry: 16, transform: "rotate(16 127 3)" });
+      path(group, "M119-8Q128-29 143-21", "ju2909-fruit-stem");
     }
     return true;
   }
 
-  if (item.family === "casela-rempart-contour-surveyor") {
+  if (item.family === "mauritius-dodo-beak-fruit-grabber") {
     if (companion) {
-      path(group, "M-31-82L21-72L38 73H-44Z", "ju2909-alidade-frame");
-      path(group, "M-21-61H25V-30H-21Z", "ju2909-sight-window");
-      path(group, "M-14-46L-2-58L8-39L19-53L25-39", "ju2909-mountain-sight");
-      [-13, 18, 49].forEach((y, index) => path(group, `M${index % 2 ? -13 : -25} ${y}H${index % 2 ? 31 : 19}L${index % 2 ? 24 : 12} ${y + 22}H${index % 2 ? -20 : -32}Z`, "ju2909-slope-card"));
-      path(group, "M31-69H58V44H31Z", "ju2909-coordinate-roll");
-      line(group, "M39-55H51M39-37H51M39-19H51M39-1H51M39 17H51", "ju2909-grid-line");
-      line(group, "M-6-73V56", "ju2909-plumb-line");
-      path(group, "M-14 56L-6 74L2 56Z", "ju2909-plumb-weight");
+      path(group, "M-111-34Q-134-9-111 25M-101-27Q-117-7-102 17", "ju2909-body-clamp");
+      path(group, "M-111 20Q-99 8-84-1", "ju2909-grabber-bridge");
+      add(group, "circle", { class: "ju2909-grabber-coupling", cx: -84, cy: -1, r: 7 });
+      path(group, "M-86-12Q-58-39-27-27Q-8-18-2-1Q-20 11-45 10Q-70 10-86-12Z", "ju2909-dodo-head companion-head");
+      path(group, "M-67-32Q-74-57-60-66Q-50-49-48-34M-50-36Q-45-61-30-63Q-25-45-31-31", "ju2909-dodo-crest-feathers");
+      add(group, "circle", { class: "ju2909-dodo-eye", cx: -33, cy: -17, r: 7 });
+      rivet(group, -33, -17, 2.2);
+      path(group, "M-4-10Q38-36 85-11Q105 1 87 16Q50 25 7 11Q-4 6-4-10Z", "ju2909-dodo-upper-beak");
+      path(group, "M5 12Q50 30 91 11Q79 40 38 42Q13 36 5 12Z", "ju2909-dodo-lower-beak");
+      path(group, "M72-13Q103-10 96 10Q94 29 78 34L67 15Z", "ju2909-beak-tip");
+      path(group, "M12 4Q47-3 82 8", "ju2909-beak-seam");
+      add(group, "ellipse", { class: "ju2909-dodo-nostril", cx: 49, cy: -8, rx: 4, ry: 2.5, transform: "rotate(8 49 -8)" });
+      add(group, "ellipse", { class: "ju2909-woody-nut", cx: 62, cy: 20, rx: 18, ry: 14, transform: "rotate(-9 62 20)" });
+      add(group, "circle", { class: "ju2909-beak-hinge", cx: -3, cy: 1, r: 10 });
+      path(group, "M-75 10Q-108 36-98 72M-89 5Q-119 30-113 61", "ju2909-grabber-harness");
+      path(group, "M-99 67L-85 83L-73 66", "ju2909-grabber-trigger");
     } else {
-      path(group, "M-108 26Q-54 5 0 19Q55 34 109 14L101 70Q52 86 0 75Q-55 89-106 69Z", "ju2909-relief-table");
-      [-78, -35, 9, 53, 87].forEach((x, index) => line(group, `M${x} 24Q${x - 10} 46 ${x + 2} 70`, "ju2909-grid-line"));
-      [32, 49, 65].forEach(y => line(group, `M-99 ${y}Q0 ${y - 15 + (y % 2) * 2} 101 ${y - 2}`, "ju2909-grid-line"));
-      path(group, "M-89 55Q-57 20-28 45Q0 69 30 39Q57 12 94 38", "ju2909-contour-path");
-      path(group, "M23-9L51-42L69-16L83-52L101-9Z", "ju2909-rempart-profile");
-      add(group, "circle", { class: "ju2909-coordinate-pin", cx: -49, cy: 37, r: 8 });
-      line(group, "M-49 29V-23", "ju2909-pin-stem");
-      [-70, -11, 45].forEach((cx, index) => path(group, `M${cx - 16} ${20 + index * 8}Q${cx} ${4 + index * 5} ${cx + 17} ${21 + index * 8}Q${cx} ${35 + index * 7} ${cx - 16} ${20 + index * 8}Z`, index % 2 ? "ju2909-planted-bed accent" : "ju2909-planted-bed"));
-      path(group, "M-88 71L-98 96M85 69L97 94", "ju2909-table-leg");
-      text("57.4061 / −20.2914", 0, 94, "ju2909-small-label");
+      path(group, "M-160-43Q-190-7-160 38M-145-35Q-168-6-145 29", "ju2909-body-clamp");
+      path(group, "M-158 31Q-140 13-118-2", "ju2909-grabber-bridge");
+      add(group, "circle", { class: "ju2909-grabber-coupling", cx: -118, cy: -2, r: 9 });
+      path(group, "M-120-18Q-82-61-31-42Q-4-31 3-4Q-18 18-56 15Q-95 12-120-18Z", "ju2909-dodo-head");
+      path(group, "M-95-41Q-81-68-61-54Q-54-76-35-57", "ju2909-dodo-crest");
+      path(group, "M-93-49Q-104-83-84-94Q-67-76-70-53M-70-54Q-65-90-41-91Q-35-66-49-45", "ju2909-dodo-crest-feathers");
+      add(group, "circle", { class: "ju2909-dodo-eye", cx: -42, cy: -28, r: 9 });
+      rivet(group, -42, -28, 3);
+      path(group, "M0-17Q55-58 115-27Q147-12 130 13Q82 28 14 17Q1 11 0-17Z", "ju2909-dodo-upper-beak");
+      path(group, "M12 19Q72 45 131 9Q118 52 64 58Q29 53 12 19Z", "ju2909-dodo-lower-beak");
+      path(group, "M107-28Q153-25 145 5Q142 34 119 44L102 16Z", "ju2909-beak-tip");
+      path(group, "M17 5Q68-6 119 4", "ju2909-beak-seam");
+      add(group, "ellipse", { class: "ju2909-dodo-nostril", cx: 72, cy: -17, rx: 5.5, ry: 3.2, transform: "rotate(7 72 -17)" });
+      add(group, "ellipse", { class: "ju2909-woody-nut", cx: 91, cy: 30, rx: 27, ry: 20, transform: "rotate(-12 91 30)" });
+      path(group, "M77 18Q91-5 109 15", "ju2909-nut-groove");
+      add(group, "circle", { class: "ju2909-beak-hinge", cx: 0, cy: 0, r: 13 });
+      rivet(group, 0, 0, 4);
+      path(group, "M-103 10Q-148 44-132 91M-116 2Q-160 36-151 76", "ju2909-grabber-harness");
+      path(group, "M-137 83Q-123 105-101 86L-112 69Z", "ju2909-grabber-trigger");
+      path(group, "M-9 11Q11 53 48 57", "ju2909-control-cable");
     }
     return true;
   }
@@ -5228,9 +5227,8 @@ function drawNigoniFieldAccessory(group, item, companion) {
   const location = praslinRendererIds.has(item.id) ? "praslin"
       : saoTomeRendererIds.has(item.id) ? "sao-tome"
         : mahahualJU2617RendererIds.has(item.id) ? "mahahual"
-          : mauritiusJU2909RendererIds.has(item.id) ? "mauritius"
-            : hcmcJU4356RendererIds.has(item.id) ? "hcmc"
-              : lombokHPT26RendererIds.has(item.id) ? "lombok" : null;
+          : hcmcJU4356RendererIds.has(item.id) ? "hcmc"
+            : lombokHPT26RendererIds.has(item.id) ? "lombok" : null;
   if (!location) return false;
 
   group.dataset.renderer = `${item.family}-field-redesign`;
@@ -5283,10 +5281,6 @@ function drawNigoniFieldAccessory(group, item, companion) {
   }
   if (item.family === "hpt26-ficus-ground-contact-stage") {
     sampleTray("fig", "HPT26");
-    return true;
-  }
-  if (item.family === "ju2909-fruit-nut-viewer") {
-    sampleTray("fruit", "JU2909", true);
     return true;
   }
   if (item.family === "sao-tome-chocolate-bars") {
@@ -5538,30 +5532,6 @@ function drawNigoniFieldAccessory(group, item, companion) {
       path(group, "M-12-111L0-132L12-111Z", "mh-parasol-finial");
       [-108,-68,-25,25,68,108].forEach((x, index) => add(group, "circle", { class: index % 2 ? "mh-parasol-drop coral" : "mh-parasol-drop", cx: x, cy: index === 2 || index === 3 ? -4 : -13, r: 6 }));
     }
-    return true;
-  }
-  if (item.family === "ju2909-ju2910-sample-bifurcator") {
-    shadow(101, 107);
-    [-1,1].forEach((side,index) => {
-      const x = side * (companion ? 43 : 55);
-      path(group, `M ${x - (companion ? 28 : 35)} -62 H ${x + (companion ? 28 : 35)} V -39 L ${x + (companion ? 36 : 45)} -22 V 75 Q ${x} 91 ${x - (companion ? 36 : 45)} 75 V -22 L ${x - (companion ? 28 : 35)} -39 Z`, index ? "nfr-glass-alt" : "nfr-glass");
-      path(group, `M ${x - (companion ? 31 : 39)} -67 H ${x + (companion ? 31 : 39)} V -44 H ${x - (companion ? 31 : 39)} Z`, index ? "nfr-accent" : "nfr-primary");
-      path(group, `M ${x - (companion ? 25 : 32)} 20 H ${x + (companion ? 25 : 32)} V 64 H ${x - (companion ? 25 : 32)} Z`, index ? "nfr-water-alt" : "nfr-water");
-      label(index ? "2910" : "2909", x, 52, "nfr-small");
-    });
-    path(group, companion ? "M-43-70Q0-105 43-70" : "M-55-82Q0-126 55-82", "nfr-handle");
-    return true;
-  }
-  if (item.family === "casela-rempart-contour-surveyor") {
-    shadow(82, 107);
-    const radius = companion ? 64 : 79;
-    add(group, "circle", { class: "nfr-primary", cx: 0, cy: 0, r: radius });
-    add(group, "circle", { class: "nfr-ivory", cx: 0, cy: 0, r: radius - 12 });
-    [0,45,90,135,180,225,270,315].forEach(deg => { const r=deg*Math.PI/180; path(group, `M ${(Math.cos(r)*(radius-25)).toFixed(1)} ${(Math.sin(r)*(radius-25)).toFixed(1)} L ${(Math.cos(r)*(radius-14)).toFixed(1)} ${(Math.sin(r)*(radius-14)).toFixed(1)}`, "nfr-fine"); });
-    path(group, "M0-49L15 8L0 55L-15 8Z", "nfr-needle");
-    add(group, "circle", { class: "nfr-gold", cx: 0, cy: 8, r: 7 });
-    label("N", 0, companion ? -39 : -51, "nfr-small");
-    path(group, companion ? "M-34 26Q-12 7 6 28T38 22" : "M-43 33Q-15 9 8 36T49 28", "nfr-contour");
     return true;
   }
   if (item.family === "ju4356-its2-ribbon-reader") {
@@ -6492,9 +6462,9 @@ function renderPiece(target, item, wormPart) {
     ,"mahahual-reef-ruffle-swim-costumes": { primary: [220, 155, .5, 20], companion: [67, 149, .37, 34] }
     ,"mahahual-caribbean-sun-spectacles": { primary: [332, 56, .34, -3], companion: [112, 105, .23, 3] }
     ,"mahahual-sea-grape-beach-parasols": { primary: [357, 268, .32, -5], companion: [27, 264, .34, 5] }
-    ,"ju2909-fruit-nut-viewer": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
-    ,"ju2909-ju2910-sample-bifurcator": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
-    ,"casela-rempart-contour-surveyor": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
+    ,"mauritius-ravanne-crawler-drum": { primary: [265, 172, .48, 17], companion: [90, 177, .38, 20] }
+    ,"mauritius-vacoas-tail-scoop": { primary: [151, 248, .5, -14], companion: [37, 230, .4, -7] }
+    ,"mauritius-dodo-beak-fruit-grabber": { primary: [421, 116, .42, -8], companion: [132, 138, .34, 5] }
     ,"ju4356-carambola-ground-contact-stage": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
     ,"ju4356-its2-ribbon-reader": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"hcmc-urban-canopy-census-engine": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
