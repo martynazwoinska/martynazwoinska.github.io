@@ -1751,10 +1751,15 @@ function positionMarkers() {
   const offsetX = (box.width - 960 * scale) / 2;
   const offsetY = (box.height - 470 * scale) / 2;
   const placed = [];
+  // Fan out genuinely nearby records, not every marker that becomes close
+  // only because the complete world map has narrowed on a phone.
+  const clusterDistance = 20;
   const offsets = [[0, 0]];
-  [18, 28, 38, 48].forEach(radius => {
-    for (let step = 0; step < 8; step += 1) {
-      const angle = (Math.PI * 2 * step) / 8;
+  [30, 46, 62].forEach((radius, ringIndex) => {
+    const steps = 8 + ringIndex * 4;
+    const phase = ringIndex % 2 === 0 ? 0 : Math.PI / steps;
+    for (let step = 0; step < steps; step += 1) {
+      const angle = phase + (Math.PI * 2 * step) / steps;
       offsets.push([Math.round(Math.cos(angle) * radius), Math.round(Math.sin(angle) * radius)]);
     }
   });
@@ -1772,15 +1777,16 @@ function positionMarkers() {
     const baseX = offsetX + point[0] * scale;
     const baseY = offsetY + point[1] * scale;
     let chosen = offsets[0];
-    if (record.speciesId === selectedId) {
-      for (const candidate of offsets) {
-        const x = baseX + candidate[0];
-        const y = baseY + candidate[1];
-        const collides = placed.some(mark => Math.abs(mark.x - x) < 23 && Math.abs(mark.y - y) < 23);
-        if (!collides) {
-          chosen = candidate;
-          break;
-        }
+    for (const candidate of offsets) {
+      const x = baseX + candidate[0];
+      const y = baseY + candidate[1];
+      const collides = placed.some(mark => (
+        Math.hypot(mark.point[0] - point[0], mark.point[1] - point[1]) < clusterDistance
+        && Math.hypot(mark.x - x, mark.y - y) < 30
+      ));
+      if (!collides) {
+        chosen = candidate;
+        break;
       }
     }
     const x = Math.max(13, Math.min(box.width - 13, baseX + chosen[0]));
@@ -1796,7 +1802,7 @@ function positionMarkers() {
       record.leader.anchor.setAttribute("cx", point[0]);
       record.leader.anchor.setAttribute("cy", point[1]);
     }
-    if (record.speciesId === selectedId) placed.push({ x, y });
+    placed.push({ x, y, point });
     record.button.style.left = `${x}px`;
     record.button.style.top = `${y}px`;
   });
