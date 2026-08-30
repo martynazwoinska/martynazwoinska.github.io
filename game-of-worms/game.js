@@ -1783,9 +1783,20 @@ function positionMarkers() {
       return [sum[0] + point[0], sum[1] + point[1]];
     }, [0, 0]).map(total => total / cluster.length);
     const radius = Math.min(32, 17 + cluster.length * 2.5);
-    const phase = -Math.PI / 2;
-    cluster.forEach((record, index) => {
-      const angle = phase + (Math.PI * 2 * index) / cluster.length;
+    const angleStep = (Math.PI * 2) / cluster.length;
+    const orderedCluster = cluster.map(record => {
+      const point = projectedPoints.get(record);
+      const angle = (Math.atan2(point[1] - centre[1], point[0] - centre[0]) + Math.PI * 2) % (Math.PI * 2);
+      return { record, angle };
+    }).sort((a, b) => a.angle - b.angle);
+    const phaseVector = orderedCluster.reduce((sum, item, index) => {
+      const phaseCandidate = item.angle - angleStep * index;
+      return [sum[0] + Math.cos(phaseCandidate), sum[1] + Math.sin(phaseCandidate)];
+    }, [0, 0]);
+    const phase = Math.atan2(phaseVector[1], phaseVector[0]);
+    orderedCluster.forEach((item, index) => {
+      const angle = phase + angleStep * index;
+      const { record } = item;
       clusterTargets.set(record, {
         x: offsetX + centre[0] * scale + Math.cos(angle) * radius,
         y: offsetY + centre[1] * scale + Math.sin(angle) * radius
