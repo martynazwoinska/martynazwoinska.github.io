@@ -2,6 +2,8 @@
 
 Last updated: 2026-07-28
 
+> **Retired from the active Game on 2026-08-30.** This dossier and its preserved painting remain archival provenance. Kerala JU1337 is no longer loaded as a playable location.
+
 ## Exact record
 
 The CaeNDR reference-isotype page records:

@@ -53,13 +53,6 @@ const canonicalProfiles = {
     palettes.dryGarden, [[0, 286], [76, 258], [150, 274], [235, 249], [325, 267], [416, 241], [512, 262], [600, 247]],
     { weather: "sun", cues: [] }
   ),
-  "Kerala, India · JU1337": profile(
-    "poovar-ju1337-agricultural-fruit-edge", "Poovar agricultural fruit-litter edge",
-    "The singleton reference isotype was sampled by M.-A. Félix from broad rotting plant material in agricultural land at 34 m near Poovar on 16 December 2007. The anonymous mixed cultivation, lateritic ground and distant palm rhythm are regional interpretation; the crop, property, weather and water system are unreported.",
-    "CaeNDR JU1337 isotype record", "https://caendr.org/isotype/JU1337/",
-    palettes.farm, [[0, 278], [90, 263], [180, 275], [268, 252], [365, 276], [460, 258], [535, 270], [600, 260]],
-    { water: "none", weather: "none", cues: [] }
-  ),
   "Kauaʻi, Hawaiʻi · QG130": profile(
     "kauai-qg130-low-forest-fruit-floor", "Kauaʻi low forest fruit floor",
     "The reference strain belongs to a three-strain isotype sampled by M. Rockman from broad rotting plant material in forest at 11 m on 2 August 2009. The anonymous humid forest floor is an evidence-bounded setting; the fruit identity, weather, water and exact collection view are unreported.",
@@ -165,13 +158,6 @@ const canonicalProfiles = {
     palettes.rainforest, [[0, 270], [80, 249], [155, 260], [235, 232], [315, 243], [398, 214], [482, 230], [600, 205]],
     { weather: "cloud", cues: [] }
   ),
-  "Singapore · ZF1220": profile(
-    "singapore-zf1220-starfruit-garden", "Rotten starfruit in a planted tropical garden",
-    "ZF1220, also known as SF0, was collected from rotten starfruit in Singapore. The record gives no exact address or landscape, so the planted tropical path and narrow city gap are wider regional context, not a claimed collection site.",
-    "Félix Lab ZF1220 record", "https://www.justbio.com/tools/worms/details.php?strain_id=333574",
-    palettes.rainforest, [[0, 265], [82, 246], [161, 257], [242, 231], [325, 242], [408, 218], [493, 235], [600, 209]],
-    { weather: "cloud", cues: [] }
-  ),
   "Praslin, Seychelles · YR106": profile(
     "praslin-yr106-granitic-palm-forest", "Regional Praslin palm-forest context",
     "YR106, also known as PR3, is recorded only at island level on Praslin; its exact point, date, elevation, substrate and microhabitat are unreported. The enclosed granitic palm forest is wider regional context, not a claimed collection site.",
@@ -234,13 +220,6 @@ const canonicalProfiles = {
     "CaeNDR NIC203 isotype record", "https://caendr.org/isotype/NIC203/",
     palettes.rainforest, [[0, 306], [90, 264], [175, 230], [260, 142], [335, 210], [420, 246], [510, 220], [600, 286]],
     { weather: "none", cues: [] }
-  ),
-  "Nouragues, French Guiana · JU1428": profile(
-    "nouragues-ju1428-duguetia-fruit-forest", "Duguetia-fruit forest floor",
-    "JU1428 was isolated by M.-A. Félix from a rotting Duguetia surinamensis fruit sampled by P. Châtelet on Petit Plateau in Nouragues forest in 2008. CaeNDR records forest at 86 m. The gently sloping, poorly drained granite-backed plateau and cropped inselberg shoulder are site context, not a recorded collection-patch view.",
-    "CaeNDR JU1428 isotype record", "https://caendr.org/isotype/JU1428/",
-    palettes.rainforest, [[0, 294], [80, 270], [155, 278], [228, 256], [305, 272], [382, 250], [460, 268], [540, 246], [600, 270]],
-    { weather: "sun", cues: [] }
   ),
   "Oʻahu, Hawaiʻi · ECA789": profile(
     "oahu-eca789-manoa-flower-forest", "Mānoa trail flower forest floor",
@@ -318,13 +297,6 @@ const sceneCompositions = Object.freeze({
     [],
     "M0 349Q149 324 292 351Q443 382 600 342", [],
     "one split rotting apricot at the base of a mature tree, beneath a low fruiting canopy with an anonymised fence and narrow Wasatch foothill opening"
-  ),
-  "poovar-ju1337-agricultural-fruit-edge": composition(
-    "M0 391Q95 354 187 381Q282 410 375 377Q476 341 600 369V430H0Z",
-    "M0 286Q78 252 151 270Q228 289 296 251Q371 210 447 233Q522 258 600 221V371H0Z",
-    [],
-    "M0 421Q126 378 254 404T600 387", [],
-    "one collapsed anonymous plant-material cluster beside a broad lateritic working gap between unequal mixed-cultivation banks"
   ),
   "kauai-qg130-low-forest-fruit-floor": composition(
     "M0 385Q91 354 181 380Q291 411 396 377Q501 342 600 374V430H0Z",
@@ -431,13 +403,6 @@ const sceneCompositions = Object.freeze({
     "M274 430Q247 385 273 348Q300 312 285 277Q270 249 305 224", [],
     "a collapsed flower-and-leaf bundle below a curved lake, with tiered paths climbing between a bamboo fan and partly hidden museum roof"
   ),
-  "singapore-zf1220-starfruit-garden": composition(
-    "M0 333Q92 311 184 326Q282 344 377 314Q478 282 600 304V430H0Z",
-    "M0 254Q79 226 155 244Q237 262 316 233Q403 201 479 219Q544 233 600 207V326H0Z",
-    [],
-    "M286 430Q252 390 278 350Q305 311 292 273Q280 239 320 211", [],
-    "one softened five-ridged starfruit and detached star section below a drooping pinnate bough, with an S-curving planted path ending in one narrow urban opening"
-  ),
   "praslin-yr106-granitic-palm-forest": composition(
     "M0 321Q84 299 166 316Q255 336 343 306Q442 272 518 293Q562 306 600 292V430H0Z",
     "M0 230Q73 202 145 219Q222 238 292 207Q370 173 449 193Q526 211 600 180V326H0Z",
@@ -504,13 +469,6 @@ const sceneCompositions = Object.freeze({
     "M37 410Q161 374 286 399T568 383", [],
     "a collapsed radial torch-ginger flower below an S-curving trail, opposed by one narrow vertical waterfall slit"
   ),
-  "nouragues-ju1428-duguetia-fruit-forest": composition(
-    "M0 390Q105 360 205 382T400 375T600 389V430H0Z",
-    "M0 303Q80 270 162 286T310 272T454 285T600 267V430H0Z",
-    [],
-    "M0 418Q130 382 258 406T600 389", [],
-    "a knobbled softened aggregate fruit beside a shallow damp plateau hollow, framed by opposed trunks and a narrow cropped granite shoulder"
-  ),
   "oahu-eca789-manoa-flower-forest": composition(
     "M0 395Q108 363 219 388T420 379T600 394V430H0Z",
     "M0 309Q89 279 176 295T336 279T481 291T600 270V430H0Z",
@@ -572,7 +530,7 @@ export function auditEnvironmentCompositions() {
     missingCompositionIds,
     unexpectedCompositionIds,
     duplicateGeometrySignatures,
-    valid: profileIds.length === 35 && compositionIds.length === 35 && !duplicateProfileIds.length && !missingCompositionIds.length && !unexpectedCompositionIds.length && !duplicateGeometrySignatures.length
+    valid: profileIds.length === 32 && compositionIds.length === 32 && !duplicateProfileIds.length && !missingCompositionIds.length && !unexpectedCompositionIds.length && !duplicateGeometrySignatures.length
   });
 }
 
@@ -851,25 +809,6 @@ function drawSaltLakeEG4181Scene(target, profile, sceneComposition) {
   const background = append(target, "image", {
     class: "salt-lake-eg4181-painted-background",
     href: "assets/salt-lake-eg4181-painted-background.jpg",
-    x: 0, y: 0, width: 600, height: 430,
-    preserveAspectRatio: "xMidYMid slice",
-    "aria-hidden": "true"
-  });
-  background.addEventListener("error", () => {
-    const palette = profile.palette;
-    target.replaceChildren();
-    append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
-    append(target, "path", { class: "environment-far", d: ridgePath(profile.ridge), fill: palette[1] });
-    append(target, "path", { class: "environment-composition-middle", d: sceneComposition.middle, fill: palette[2] });
-    append(target, "path", { class: "environment-ground environment-composition-ground", d: sceneComposition.ground, fill: palette[3] });
-    if (sceneComposition.route) append(target, "path", { class: "environment-composition-route", d: sceneComposition.route });
-  }, { once: true });
-}
-
-function drawKeralaJU1337Scene(target, profile, sceneComposition) {
-  const background = append(target, "image", {
-    class: "kerala-ju1337-painted-background",
-    href: "assets/kerala-ju1337-painted-background.webp",
     x: 0, y: 0, width: 600, height: 430,
     preserveAspectRatio: "xMidYMid slice",
     "aria-hidden": "true"
@@ -1274,23 +1213,6 @@ function drawAraucaniaJU4400Scene(target, palette) {
   }, { once: true });
 }
 
-function drawSingaporeZF1220Scene(target, palette) {
-  const background = append(target, "image", {
-    class: "singapore-zf1220-painted-background",
-    href: "assets/singapore-zf1220-painted-background.webp",
-    x: 0,
-    y: 0,
-    width: 600,
-    height: 430,
-    preserveAspectRatio: "xMidYMid slice",
-    "aria-hidden": "true"
-  });
-  background.addEventListener("error", () => {
-    target.replaceChildren();
-    drawSingaporeStarfruitGardenScene(target, palette);
-  }, { once: true });
-}
-
 function drawPraslinYR106Scene(target, palette) {
   const background = append(target, "image", {
     class: "praslin-yr106-painted-background",
@@ -1373,23 +1295,6 @@ function drawReunionJU1373PaintedScene(target, palette) {
   background.addEventListener("error", () => {
     target.replaceChildren();
     drawReunionJU1373Scene(target, palette);
-  }, { once: true });
-}
-
-function drawNouraguesJU1428PaintedScene(target, palette) {
-  const background = append(target, "image", {
-    class: "nouragues-ju1428-painted-background",
-    href: "assets/nouragues-ju1428-painted-background.webp",
-    x: 0,
-    y: 0,
-    width: 600,
-    height: 430,
-    preserveAspectRatio: "xMidYMid slice",
-    "aria-hidden": "true"
-  });
-  background.addEventListener("error", () => {
-    target.replaceChildren();
-    drawNouraguesJU1428Scene(target, palette);
   }, { once: true });
 }
 
@@ -2023,84 +1928,6 @@ function drawTrivandrumBotanicalGardenScene(target, palette) {
   [[-99,20,3],[-62,34,4],[-25,30,3],[8,35,4],[45,29,3],[82,20,4]].forEach(([cx,cy,r], index) => append(decay, "circle", { class: index % 2 ? "trivandrum-decay-fragment deep" : "trivandrum-decay-fragment", cx, cy, r }));
 }
 
-function drawSingaporeStarfruitGardenScene(target, palette) {
-  append(target, "rect", { class: "environment-sky singapore-garden-sky", width: 600, height: 430, fill: palette[0] });
-
-  const humidHaze = append(target, "g", { class: "singapore-humid-haze", "aria-hidden": "true" });
-  append(humidHaze, "path", { class: "singapore-haze-cloud back", d: "M25 72Q48 47 79 63Q104 36 139 62Q168 55 188 80H25Z" });
-  append(humidHaze, "path", { class: "singapore-haze-cloud", d: "M386 57Q410 35 439 51Q463 28 496 51Q526 46 545 70H386Z" });
-
-  const urbanGap = append(target, "g", { class: "singapore-narrow-urban-gap", transform: "translate(319 170)", "aria-hidden": "true" });
-  append(urbanGap, "path", { class: "singapore-city-haze", d: "M-42 70V9H-26V-8H-9V25H6V-31H24V5H39V70Z" });
-  append(urbanGap, "path", { class: "singapore-city-edge", d: "M-42 70V9H-26V-8H-9V25H6V-31H24V5H39V70M-20 9H-13M12-15H18M12-2H18M12 11H18M12 24H18" });
-
-  const farGarden = append(target, "g", { class: "singapore-planted-canopy", "aria-hidden": "true" });
-  append(farGarden, "path", { class: "singapore-canopy-mass left", d: "M0 194Q18 158 49 182Q73 137 110 175Q141 145 169 183Q198 153 226 190Q248 172 276 198V273H0Z" });
-  append(farGarden, "path", { class: "singapore-canopy-mass right", d: "M355 194Q378 159 407 184Q434 145 466 178Q499 143 529 182Q558 154 600 189V268H355Z" });
-  append(farGarden, "path", { class: "singapore-canopy-highlight", d: "M17 198Q45 171 73 195M85 187Q113 158 143 190M157 188Q186 163 214 194M373 197Q403 169 432 195M445 186Q474 156 506 190M520 186Q552 163 587 194" });
-  [[34,195,51,260],[102,185,111,263],[190,190,181,271],[407,187,397,264],[493,181,505,262],[567,189,576,270]].forEach(([x1,y1,x2,y2], index) => {
-    append(farGarden, "path", { class: index % 2 ? "singapore-canopy-trunk deep" : "singapore-canopy-trunk", d: `M${x1} ${y1}Q${(x1+x2)/2-5} ${(y1+y2)/2} ${x2} ${y2}` });
-  });
-
-  append(target, "path", { class: "singapore-garden-ground", d: "M0 252Q82 226 164 245Q251 267 335 238Q430 204 507 224Q559 235 600 215V430H0Z" });
-
-  const beds = append(target, "g", { class: "singapore-planted-beds", "aria-hidden": "true" });
-  append(beds, "path", { class: "singapore-bed upper", d: "M0 276Q82 250 164 266Q226 278 270 264L279 294Q218 310 155 295Q76 278 0 310Z" });
-  append(beds, "path", { class: "singapore-bed lower", d: "M362 286Q443 253 520 268Q565 277 600 262V304Q560 315 516 305Q439 288 369 318Z" });
-  [[25,278,-9],[62,268,8],[102,276,-6],[146,271,10],[404,288,-8],[451,276,7],[501,286,-10],[552,281,8]].forEach(([x,y,angle], index) => {
-    const plant = append(beds, "g", { class: `singapore-bed-plant tone-${index%3}`, transform: `translate(${x} ${y}) rotate(${angle})` });
-    append(plant, "path", { class: "singapore-bed-stem", d: "M0 12Q2-5 0-25" });
-    append(plant, "path", { class: "singapore-bed-leaf", d: "M0-3Q-17-18-23-3Q-10 9 0-3ZM0-10Q16-24 23-10Q11 3 0-10Z" });
-  });
-
-  const path = append(target, "g", { class: "singapore-s-path", "aria-hidden": "true" });
-  append(path, "path", { class: "singapore-path-surface", d: "M230 430Q267 390 247 356Q226 321 267 296Q304 273 289 246Q278 226 311 207H345Q315 231 330 257Q348 288 305 314Q268 337 290 368Q312 400 319 430Z" });
-  append(path, "path", { class: "singapore-path-edge", d: "M230 430Q267 390 247 356Q226 321 267 296Q304 273 289 246Q278 226 311 207M319 430Q312 400 290 368Q268 337 305 314Q348 288 330 257Q315 231 345 207" });
-  [[313,226,13,3,-4],[310,260,19,4,6],[292,304,26,5,-7],[271,351,35,6,6],[274,405,43,7,-5]].forEach(([cx,cy,rx,ry,angle], index) => append(path, "ellipse", { class: index % 2 ? "singapore-path-step deep" : "singapore-path-step", cx, cy, rx, ry, transform: `rotate(${angle} ${cx} ${cy})` }));
-
-  const carambola = append(target, "g", { class: "singapore-carambola-bough", "aria-hidden": "true" });
-  append(carambola, "path", { class: "singapore-bough-main", d: "M0 109Q79 93 148 119Q220 146 288 127Q343 112 386 129" });
-  append(carambola, "path", { class: "singapore-bough-secondary", d: "M89 103Q121 65 164 52M166 122Q204 83 249 76M257 133Q302 91 352 88" });
-  const leafSprays = [
-    [122,72,-37,-17],[147,61,-7,-31],[182,100,-36,-12],[214,88,3,-34],[278,106,-33,-18],[319,94,8,-32],[344,109,-25,-10]
-  ];
-  leafSprays.forEach(([x,y,x2,y2], index) => {
-    append(carambola, "path", { class: "singapore-pinnate-rachis", d: `M${x} ${y}L${x+x2} ${y+y2}` });
-    [0.24,0.47,0.7].forEach((ratio, leafIndex) => {
-      const cx = x + x2 * ratio;
-      const cy = y + y2 * ratio;
-      const angle = Math.atan2(y2, x2) * 180 / Math.PI;
-      append(carambola, "ellipse", { class: (index+leafIndex)%3 === 0 ? "singapore-pinnate-leaf deep" : "singapore-pinnate-leaf", cx: cx-5, cy: cy-5, rx: 11, ry: 5, transform: `rotate(${angle-34} ${cx-5} ${cy-5})` });
-      append(carambola, "ellipse", { class: (index+leafIndex)%3 === 1 ? "singapore-pinnate-leaf deep" : "singapore-pinnate-leaf", cx: cx+5, cy: cy+5, rx: 11, ry: 5, transform: `rotate(${angle+34} ${cx+5} ${cy+5})` });
-    });
-  });
-  [[178,113],[196,120],[218,114],[305,121],[329,116]].forEach(([cx,cy], clusterIndex) => {
-    [-7,0,7].forEach((offset, petalIndex) => append(carambola, "ellipse", { class: (clusterIndex+petalIndex)%2 ? "singapore-starfruit-flower deep" : "singapore-starfruit-flower", cx: cx+offset, cy: cy+(petalIndex%2?5:-2), rx: 4, ry: 7, transform: `rotate(${offset*4} ${cx+offset} ${cy})` }));
-  });
-
-  append(target, "path", { class: "singapore-foreground-litter-bed", d: "M0 345Q91 319 181 342Q273 369 368 341Q473 309 600 337V430H0Z" });
-  const litter = append(target, "g", { class: "singapore-foreground-litter", "aria-hidden": "true" });
-  [[15,402,49,382],[62,426,98,405],[126,399,160,380],[184,423,224,402],[255,404,291,383],[323,424,359,402],[516,418,557,396],[560,390,594,372]].forEach(([x1,y1,x2,y2], index) => {
-    append(litter, "path", { class: index%3 === 0 ? "singapore-litter-leaf green" : (index%2 ? "singapore-litter-leaf deep" : "singapore-litter-leaf"), d: `M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-9} ${x2} ${y2}Q${(x1+x2)/2+4} ${Math.max(y1,y2)+7} ${x1} ${y1}Z` });
-    append(litter, "path", { class: "singapore-litter-vein", d: `M${x1+4} ${y1-1}L${x2-4} ${y2+1}` });
-  });
-
-  const fruit = append(target, "g", { class: "singapore-rotten-starfruit", transform: "translate(477 376) rotate(-8)", "aria-hidden": "true" });
-  append(fruit, "ellipse", { class: "singapore-starfruit-shadow", cx: 0, cy: 32, rx: 111, ry: 22 });
-  append(fruit, "path", { class: "singapore-starfruit-body", d: "M-106-8Q-82-38-48-28Q-18-48 12-29Q44-43 72-20Q100-23 112 7Q95 34 66 28Q39 48 9 34Q-21 51-51 35Q-84 45-108 16Q-114 3-106-8Z" });
-  append(fruit, "path", { class: "singapore-starfruit-soft-flesh", d: "M-88-3Q-69-27-43-18Q-18-34 7-18Q34-31 56-12Q80-16 93 7Q77 25 55 19Q32 35 8 24Q-16 39-40 25Q-67 34-89 13Z" });
-  append(fruit, "path", { class: "singapore-starfruit-rib", d: "M-93-7Q-51-2-9 7Q37 18 91 7M-76-23Q-37-10 2 4Q42 18 76 21M-75 30Q-38 19 0 9Q42-2 78-12M-37-24Q-17-10 1 5Q21-8 45-25M-42 31Q-19 19 1 7Q25 18 51 28" });
-  append(fruit, "path", { class: "singapore-starfruit-collapse", d: "M-81 8Q-51-5-23 13Q7-3 35 14Q59 3 87 13Q62 34 34 26Q7 43-22 29Q-52 42-81 8Z" });
-  [[-71,-9,4],[-50,16,3],[-23,-15,3],[4,24,4],[29,-11,3],[53,18,4],[76,1,3]].forEach(([cx,cy,r], index) => append(fruit, "circle", { class: index%2 ? "singapore-starfruit-mottle deep" : "singapore-starfruit-mottle", cx, cy, r }));
-
-  const section = append(target, "g", { class: "singapore-starfruit-section", transform: "translate(366 391) rotate(13)", "aria-hidden": "true" });
-  append(section, "ellipse", { class: "singapore-starfruit-shadow", cx: 1, cy: 22, rx: 48, ry: 12 });
-  append(section, "path", { class: "singapore-star-section-rind", d: "M0-50L14-20L47-16L23 7L29 40L0 24L-29 40L-23 7L-47-16L-14-20Z" });
-  append(section, "path", { class: "singapore-star-section-flesh", d: "M0-37L10-14L34-11L17 5L21 29L0 17L-21 29L-17 5L-34-11L-10-14Z" });
-  append(section, "ellipse", { class: "singapore-star-section-core", cx: 0, cy: 1, rx: 11, ry: 9 });
-  [[0,-23],[22,-6],[14,18],[-14,18],[-22,-6]].forEach(([cx,cy], index) => append(section, "ellipse", { class: index%2 ? "singapore-star-section-seed deep" : "singapore-star-section-seed", cx, cy, rx: 3.5, ry: 6, transform: `rotate(${index*72} ${cx} ${cy})` }));
-}
-
 function drawPraslinGraniticPalmForestScene(target, palette) {
   append(target, "rect", { class: "environment-sky praslin-forest-sky", width: 600, height: 430, fill: palette[0] });
 
@@ -2549,28 +2376,6 @@ function drawReunionJU1373Scene(target, palette) {
   [ [260,337], [283,344], [306,338], [329,347], [352,340] ].forEach(([x,y], i) => append(target, "path", { class: i % 2 ? "reunion-bract coral" : "reunion-bract", d: `M${x} ${y}Q${x-21} ${y-28} ${x-8} ${y-54}Q${x+16} ${y-31} ${x+14} ${y-4}Z` }));
 }
 
-function drawNouraguesJU1428Scene(target, palette) {
-  append(target, "rect", { class: "environment-sky", width: 600, height: 430, fill: palette[0] });
-  append(target, "path", { fill: palette[1], d: "M0 224Q48 176 91 211Q136 148 181 210Q223 166 270 207Q320 145 365 206Q412 172 455 210Q507 149 548 205Q576 178 600 206V330H0Z" });
-  append(target, "path", { fill: palette[2], d: "M0 274Q94 239 180 263T348 254T474 265T600 246V352H0Z" });
-  // Regional cropped granite shoulder only; no river or full inselberg dome.
-  append(target, "path", { fill: palette[4], d: "M526 257L565 219L600 236V310H526Z" });
-  append(target, "path", { fill: palette[3], d: "M0 320Q100 291 204 318T390 311T600 321V430H0Z" });
-  append(target, "path", { class: "nouragues-plateau-hollow", d: "M174 356Q265 330 362 354Q397 364 421 352" });
-  // Unequal outward trunks and opposed roots frame the quiet play space.
-  append(target, "path", { class: "nouragues-trunk", d: "M68 330Q57 250 93 171Q108 137 119 100L145 106Q125 181 137 235Q147 284 161 330Z" });
-  append(target, "path", { class: "nouragues-trunk dark", d: "M510 331Q536 267 519 207Q505 159 478 121L497 105Q536 149 551 205Q566 271 553 331Z" });
-  append(target, "path", { class: "nouragues-root", d: "M126 294Q91 338 39 368M133 307Q159 350 207 374M535 292Q570 340 600 354M525 304Q484 345 444 370" });
-  // Illustrative leaf litter, not a reconstructed plot.
-  [[22,395,82,375],[92,414,151,388],[172,399,228,381],[397,408,455,383],[478,421,548,392]].forEach(([x1,y1,x2,y2],i)=>append(target,"path",{class:i%2?"nouragues-litter damp":"nouragues-litter",d:`M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-9} ${x2} ${y2}Q${(x1+x2)/2} ${Math.max(y1,y2)+7} ${x1} ${y1}Z`}));
-  // Dominant softened Duguetia aggregate fruit, partly compressed on one side.
-  const fruit = append(target,"g",{class:"nouragues-duguetia-fruit",transform:"translate(92 356) rotate(-8)","aria-hidden":"true"});
-  append(fruit,"ellipse",{class:"nouragues-fruit-shadow",cx:1,cy:32,rx:76,ry:17});
-  append(fruit,"path",{class:"nouragues-fruit-rind",d:"M-67 10Q-73-26-44-48Q-17-66 8-50Q35-65 60-42Q79-19 66 13Q53 39 25 43Q-5 53-31 39Q-57 43-67 10Z"});
-  [[-43,-16,18,24,-16],[-20,-31,17,27,9],[9,-28,19,26,-7],[36,-15,17,25,16],[-32,14,19,25,8],[0,14,20,28,-5],[30,18,16,21,12]].forEach(([cx,cy,rx,ry,a],i)=>append(fruit,"ellipse",{class:i%2?"nouragues-fruit-panel":"nouragues-fruit-panel dark",cx,cy,rx,ry,transform:`rotate(${a} ${cx} ${cy})`}));
-  append(fruit,"path",{class:"nouragues-fruit-collapse",d:"M-57 16Q-27 4 0 20Q26 5 57 15Q33 39 4 34Q-28 39-57 16Z"});
-}
-
 export function renderEnvironmentScene(target, profile, habitatElement) {
   if (!target || !profile) return;
   const palette = profile.palette;
@@ -2591,10 +2396,6 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "salt-lake-eg4181-apricot-garden") {
     drawSaltLakeEG4181Scene(target, profile, sceneComposition);
-    return;
-  }
-  if (profile.id === "poovar-ju1337-agricultural-fruit-edge") {
-    drawKeralaJU1337Scene(target, profile, sceneComposition);
     return;
   }
   if (profile.id === "kauai-qg130-low-forest-fruit-floor") {
@@ -2697,10 +2498,6 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
     drawTrivandrumJU1325Scene(target, palette);
     return;
   }
-  if (profile.id === "singapore-zf1220-starfruit-garden") {
-    drawSingaporeZF1220Scene(target, palette);
-    return;
-  }
   if (profile.id === "praslin-yr106-granitic-palm-forest") {
     drawPraslinYR106Scene(target, palette);
     return;
@@ -2719,10 +2516,6 @@ export function renderEnvironmentScene(target, profile, habitatElement) {
   }
   if (profile.id === "reunion-ju1373-saint-benoit-torch-ginger-farm") {
     drawReunionJU1373PaintedScene(target, palette);
-    return;
-  }
-  if (profile.id === "nouragues-ju1428-duguetia-fruit-forest") {
-    drawNouraguesJU1428PaintedScene(target, palette);
     return;
   }
 

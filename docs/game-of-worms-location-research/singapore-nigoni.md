@@ -2,6 +2,8 @@
 
 Last updated: 2026-08-10
 
+> **Retired from the active Game on 2026-08-30.** This dossier and its preserved painting remain archival provenance. Singapore ZF1220 is no longer loaded as a playable location.
+
 > **Current production accessory contract:** `Singapore starfruit sample trays`, `five-female sample cards`, and `orchid pollination brushes`. These recognizable field objects supersede the earlier abstract mechanism sketches below while preserving the same sample, founder and Singapore botanical-context evidence.
 
 This dossier is the evidence and review contract for the *Caenorhabditis nigoni* Singapore landscape and its three accessory pairs. It follows the evidence-led, location-by-location Game of Worms illustration workflow.

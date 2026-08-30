@@ -2,6 +2,8 @@
 
 Last updated: 2026-08-10
 
+> **Retired from the active Game on 2026-08-30.** This dossier and its preserved painting remain archival provenance. Nouragues JU1428 is no longer loaded as a playable location.
+
 > **Current production accessory contract:** `Duguetia sample boxes`, `litterfall baskets`, and `three-strain sample racks`. These recognizable objects supersede the earlier abstract mechanism sketches below and retain the documented fruit, programme-context and isotype-triad boundaries.
 
 ## Purpose
