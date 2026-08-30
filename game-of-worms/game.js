@@ -1748,47 +1748,57 @@ function positionMarkers() {
   const scale = Math.min(box.width / 960, box.height / 470);
   const offsetX = (box.width - 960 * scale) / 2;
   const offsetY = (box.height - 470 * scale) / 2;
-  const placed = [];
   // Fan out genuinely nearby records, not every marker that becomes close
   // only because the complete world map has narrowed on a phone.
   const clusterDistance = 20;
-  const offsets = [[0, 0]];
-  [30, 46, 62].forEach((radius, ringIndex) => {
-    const steps = 8 + ringIndex * 4;
-    const phase = ringIndex % 2 === 0 ? 0 : Math.PI / steps;
-    for (let step = 0; step < steps; step += 1) {
-      const angle = phase + (Math.PI * 2 * step) / steps;
-      offsets.push([Math.round(Math.cos(angle) * radius), Math.round(Math.sin(angle) * radius)]);
+  const projectedPoints = new Map(projectedLocations.map(record => [
+    record,
+    projection(record.coordinates)
+  ]));
+  const remaining = new Set(projectedLocations);
+  const clusters = [];
+  while (remaining.size) {
+    const seed = remaining.values().next().value;
+    const cluster = [];
+    const queue = [seed];
+    remaining.delete(seed);
+    while (queue.length) {
+      const current = queue.shift();
+      const currentPoint = projectedPoints.get(current);
+      cluster.push(current);
+      [...remaining].forEach(candidate => {
+        const candidatePoint = projectedPoints.get(candidate);
+        if (Math.hypot(candidatePoint[0] - currentPoint[0], candidatePoint[1] - currentPoint[1]) < clusterDistance) {
+          remaining.delete(candidate);
+          queue.push(candidate);
+        }
+      });
     }
+    clusters.push(cluster);
+  }
+  const clusterTargets = new Map();
+  clusters.filter(cluster => cluster.length > 1).forEach(cluster => {
+    const centre = cluster.reduce((sum, record) => {
+      const point = projectedPoints.get(record);
+      return [sum[0] + point[0], sum[1] + point[1]];
+    }, [0, 0]).map(total => total / cluster.length);
+    const radius = Math.min(32, 17 + cluster.length * 2.5);
+    const phase = -Math.PI / 2;
+    cluster.forEach((record, index) => {
+      const angle = phase + (Math.PI * 2 * index) / cluster.length;
+      clusterTargets.set(record, {
+        x: offsetX + centre[0] * scale + Math.cos(angle) * radius,
+        y: offsetY + centre[1] * scale + Math.sin(angle) * radius
+      });
+    });
   });
-  const placementOrder = [...projectedLocations].sort((a, b) => {
-    const aSelected = a.speciesId === selectedId;
-    const bSelected = b.speciesId === selectedId;
-    if (aSelected !== bSelected) return aSelected ? -1 : 1;
-    const aActive = aSelected && a.name === selectedRecordName;
-    const bActive = bSelected && b.name === selectedRecordName;
-    if (aActive !== bActive) return aActive ? -1 : 1;
-    return 0;
-  });
-  placementOrder.forEach(record => {
-    const point = projection(record.coordinates);
+  projectedLocations.forEach(record => {
+    const point = projectedPoints.get(record);
     const baseX = offsetX + point[0] * scale;
     const baseY = offsetY + point[1] * scale;
-    let chosen = offsets[0];
-    for (const candidate of offsets) {
-      const x = baseX + candidate[0];
-      const y = baseY + candidate[1];
-      const collides = placed.some(mark => (
-        Math.hypot(mark.point[0] - point[0], mark.point[1] - point[1]) < clusterDistance
-        && Math.hypot(mark.x - x, mark.y - y) < 30
-      ));
-      if (!collides) {
-        chosen = candidate;
-        break;
-      }
-    }
-    const x = Math.max(13, Math.min(box.width - 13, baseX + chosen[0]));
-    const y = Math.max(13, Math.min(box.height - 13, baseY + chosen[1]));
+    const target = clusterTargets.get(record);
+    const x = Math.max(13, Math.min(box.width - 13, target ? target.x : baseX));
+    const y = Math.max(13, Math.min(box.height - 13, target ? target.y : baseY));
     const displaced = Math.hypot(x - baseX, y - baseY) > 1;
     record.leader.group.style.display = displaced ? "" : "none";
     if (displaced) {
@@ -1798,7 +1808,6 @@ function positionMarkers() {
       record.leader.line.setAttribute("x2", markerPoint[0]);
       record.leader.line.setAttribute("y2", markerPoint[1]);
     }
-    placed.push({ x, y, point });
     record.button.style.left = `${x}px`;
     record.button.style.top = `${y}px`;
   });
