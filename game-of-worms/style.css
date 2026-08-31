@@ -3500,6 +3500,132 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .rain-leaf-sled-runner { stroke: color-mix(in srgb, #e0b457 80%, var(--local-secondary)); stroke-width: 7; }
 .rain-leaf-sled-handle { stroke: color-mix(in srgb, #c55570 75%, var(--local-primary)); stroke-width: 7; }
 .rain-leaf-sled-splash { stroke: color-mix(in srgb, #99d9d6 78%, var(--paper-strong)); stroke-width: 5; }
+.queensland-play-shadow { fill: rgba(25, 31, 27, .25); }
+.pod-drum-body {
+  fill: color-mix(in srgb, #8a543d 76%, var(--local-secondary));
+  stroke: color-mix(in srgb, #493a32 88%, var(--worm-deep));
+  stroke-width: 5;
+  stroke-linejoin: round;
+}
+.pod-drum-body.companion { fill: color-mix(in srgb, #99613e 72%, var(--local-secondary)); stroke-width: 4.5; }
+.pod-drum-seam {
+  fill: none;
+  stroke: color-mix(in srgb, #e2bc72 68%, var(--local-secondary));
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.pod-drum-rim,
+.pod-drum-lacing,
+.pod-drum-harness,
+.pod-drum-stand,
+.pod-drum-mallet {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pod-drum-rim { stroke: color-mix(in srgb, #f0d48e 76%, var(--paper-strong)); stroke-width: 8; }
+.pod-drum-lacing { stroke: color-mix(in srgb, #5ba6a0 76%, var(--local-primary)); stroke-width: 4; }
+.pod-drum-harness { stroke: color-mix(in srgb, #b74f68 74%, var(--local-primary)); stroke-width: 7; }
+.pod-drum-stand { stroke: color-mix(in srgb, #d5ac5c 78%, var(--local-secondary)); stroke-width: 7; }
+.pod-drum-mallet { stroke: color-mix(in srgb, #694d39 84%, var(--worm-deep)); stroke-width: 7; }
+.pod-drum-mallet-head {
+  fill: color-mix(in srgb, #d5a558 78%, var(--local-secondary));
+  stroke: color-mix(in srgb, #593d34 84%, var(--worm-deep));
+  stroke-width: 3.5;
+}
+.pod-drum-mallet-head.alt { fill: color-mix(in srgb, #6ab2aa 76%, var(--local-primary)); }
+.pod-drum-hardware {
+  fill: color-mix(in srgb, #f0d88e 78%, var(--paper-strong));
+  stroke: color-mix(in srgb, #56443a 82%, var(--worm-deep));
+  stroke-width: 3;
+}
+.megaphone-body {
+  fill: color-mix(in srgb, #bd526c 76%, var(--local-primary));
+  stroke: color-mix(in srgb, #533847 88%, var(--worm-deep));
+  stroke-width: 5;
+  stroke-linejoin: round;
+}
+.megaphone-body.companion { fill: color-mix(in srgb, #d6a657 72%, var(--local-secondary)); stroke-width: 4.5; }
+.megaphone-bell {
+  fill: color-mix(in srgb, #f2d98f 82%, var(--paper-strong));
+  stroke: color-mix(in srgb, #553b49 86%, var(--worm-deep));
+  stroke-width: 5;
+}
+.megaphone-bell-inner {
+  fill: color-mix(in srgb, #244f56 84%, var(--worm-deep));
+  stroke: color-mix(in srgb, #f7e4ae 75%, var(--paper-strong));
+  stroke-width: 3;
+}
+.megaphone-mouthpiece,
+.megaphone-grip {
+  fill: color-mix(in srgb, #68527e 78%, var(--local-primary));
+  stroke: color-mix(in srgb, #49394e 86%, var(--worm-deep));
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+.megaphone-rib,
+.megaphone-handle,
+.megaphone-trigger,
+.megaphone-strap,
+.megaphone-sound {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.megaphone-rib { stroke: color-mix(in srgb, #f0d07f 76%, var(--local-secondary)); stroke-width: 4; }
+.megaphone-handle { stroke: color-mix(in srgb, #594350 84%, var(--worm-deep)); stroke-width: 10; }
+.megaphone-trigger { stroke: color-mix(in srgb, #f4d889 76%, var(--local-secondary)); stroke-width: 5; }
+.megaphone-strap { stroke: color-mix(in srgb, #6eb4ad 76%, var(--local-primary)); stroke-width: 6; }
+.megaphone-sound { stroke: color-mix(in srgb, #f2cc72 80%, var(--local-secondary)); stroke-width: 6; }
+.kaleidoscope-body {
+  fill: color-mix(in srgb, #c08b48 74%, var(--local-secondary));
+  stroke: color-mix(in srgb, #4d3c3a 88%, var(--worm-deep));
+  stroke-width: 5;
+  stroke-linejoin: round;
+}
+.kaleidoscope-body.companion { fill: color-mix(in srgb, #5ba8a3 73%, var(--local-primary)); stroke-width: 4.5; }
+.kaleidoscope-side-panel {
+  fill: color-mix(in srgb, #b34f69 72%, var(--local-primary));
+  stroke: color-mix(in srgb, #57404c 84%, var(--worm-deep));
+  stroke-width: 3.5;
+  stroke-linejoin: round;
+}
+.kaleidoscope-eye-cup,
+.kaleidoscope-collar,
+.kaleidoscope-grip {
+  fill: color-mix(in srgb, #6a527e 78%, var(--local-primary));
+  stroke: color-mix(in srgb, #46384d 87%, var(--worm-deep));
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+.kaleidoscope-collar { fill: color-mix(in srgb, #edcf79 78%, var(--local-secondary)); }
+.kaleidoscope-collar.narrow { fill: color-mix(in srgb, #71b3ab 75%, var(--local-primary)); }
+.kaleidoscope-lens-frame {
+  fill: color-mix(in srgb, #f3dc98 80%, var(--paper-strong));
+  stroke: color-mix(in srgb, #4f3e4c 88%, var(--worm-deep));
+  stroke-width: 5;
+  stroke-linejoin: round;
+}
+.kaleidoscope-pane { stroke: color-mix(in srgb, #544254 86%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
+.kaleidoscope-pane.pane-a { fill: #61aaa4; }
+.kaleidoscope-pane.pane-b { fill: #c65470; }
+.kaleidoscope-pane.pane-c { fill: #e3b75f; }
+.kaleidoscope-pane.pane-d { fill: #7662a3; }
+.kaleidoscope-lens-hub {
+  fill: color-mix(in srgb, #f8e5ad 84%, var(--paper-strong));
+  stroke: color-mix(in srgb, #4e3b4b 86%, var(--worm-deep));
+  stroke-width: 3;
+}
+.kaleidoscope-handle,
+.kaleidoscope-wrist-loop,
+.kaleidoscope-spark {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.kaleidoscope-handle { stroke: color-mix(in srgb, #54404b 86%, var(--worm-deep)); stroke-width: 10; }
+.kaleidoscope-wrist-loop { stroke: color-mix(in srgb, #c6536d 74%, var(--local-primary)); stroke-width: 6; }
+.kaleidoscope-spark { stroke: color-mix(in srgb, #f1cf76 80%, var(--local-secondary)); stroke-width: 5; }
 .queensland-machine-shadow { fill: rgba(24, 31, 26, .22); }
 .queensland-machine-base { fill: color-mix(in srgb, #8b6b46 72%, var(--local-secondary)); stroke: color-mix(in srgb, #493c31 83%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
 .queensland-machine-feet,

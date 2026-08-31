@@ -38,7 +38,7 @@ The following simplified, recognizable object sets supersede the earlier abstrac
 - **Kauaʻi QG131:** pandanus sample baskets; four-date culture calendars; mating-test plates.
 - **New Taipei NIC1648:** Taiwan blue-magpie kites; single-tail rain boots; bubble-tea jetpacks.
 - **Pohnpei QG4739:** Kotop-fruit parasols; Peppercorn rollerboards; Cloudforest rain-leaf sleds.
-- **Queensland QG2904:** blackbean pod cases; recovery calendars; canopy-crane models.
+- **Queensland QG2904:** Sealed-pod drums; Funnel megaphones; Canopy kaleidoscopes.
 - **Saint-Benoît JU1373:** Réunion torch-ginger trays; type-isolate badges; windward rain gauges.
 
 ## Catalogue

@@ -36,7 +36,7 @@ const rows = [
   ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "petal rain trumpets", "eca789-petal-rain-trumpet", "raindrop harps", "eca789-raindrop-harp", "cacao-key xylophones", "eca789-cacao-key-xylophone"],
   ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Taiwan blue-magpie kites", "nic1648-taiwan-blue-magpie-kites", "single-tail rain boots", "nic1648-single-tail-rain-boots", "bubble-tea jetpacks", "nic1648-bubble-tea-jetpacks"],
   ["tropicalis", "Pohnpei, Micronesia · QG4739", "Kotop-fruit parasols", "qg4739-kotop-fruit-parasol", "Peppercorn rollerboards", "qg4739-peppercorn-rollerboard", "Cloudforest rain-leaf sleds", "qg4739-rain-leaf-sled"],
-  ["tropicalis", "Queensland, Australia · QG2904", "blackbean pod cases", "qg2904-uncracked-pod-seam-scanner", "recovery calendars", "qg2904-collection-to-funnel-relay", "canopy-crane models", "dro-canopy-crane-strata-mapper"],
+  ["tropicalis", "Queensland, Australia · QG2904", "Sealed-pod drums", "qg2904-sealed-pod-drum", "Funnel megaphones", "qg2904-funnel-megaphone", "Canopy kaleidoscopes", "qg2904-canopy-kaleidoscope"],
   ["tropicalis", "Saint-Benoît, Réunion · JU1373", "Réunion torch-ginger trays", "ju1373-torch-ginger-bract-collar", "type-isolate badges", "ju1373-type-isolate-signet-engine", "windward rain gauges", "saint-benoit-windward-slope-mobile"]
 ];
 
@@ -2366,6 +2366,105 @@ function drawPohnpeiQG4739Accessory(group, item, companion) {
 
 function drawQueenslandQG2904Accessory(group, item, companion) {
   if (!item.id.startsWith("tropicalis::Queensland, Australia · QG2904::")) return false;
+
+  if (item.family === "qg2904-sealed-pod-drum") {
+    group.dataset.renderer = "qg2904-sealed-pod-drum";
+    group.classList.add("queensland-play-accessory", "sealed-pod-drum", companion ? "sealed-pod-drum-companion" : "sealed-pod-drum-primary");
+    if (companion) {
+      add(group, "ellipse", { class: "queensland-play-shadow", cx: 0, cy: 112, rx: 66, ry: 14 });
+      add(group, "path", { class: "pod-drum-body companion", d: "M-31-104Q24-102 49-49Q68 5 43 67Q18 108-34 95Q-77 77-68 16Q-62-52-31-104Z" });
+      add(group, "path", { class: "pod-drum-seam", d: "M-22-92Q1-51 0-4Q2 48-25 84" });
+      add(group, "path", { class: "pod-drum-rim", d: "M-50-68Q-15-88 29-66M-51 70Q-12 94 31 72" });
+      add(group, "path", { class: "pod-drum-lacing", d: "M-56-52L38-38M-65-17L49-5M-65 19L48 29M-56 54L35 61" });
+      add(group, "path", { class: "pod-drum-harness", d: "M-51-45Q-95-10-62 48M35-55Q85-12 47 56" });
+      add(group, "path", { class: "pod-drum-stand", d: "M-42 87L-55 111M28 86L43 111M-66 112H55" });
+      add(group, "path", { class: "pod-drum-mallet", d: "M43-90L13-32" });
+      add(group, "circle", { class: "pod-drum-mallet-head", cx: 49, cy: -101, r: 13 });
+      add(group, "circle", { class: "pod-drum-hardware", cx: 13, cy: -32, r: 7 });
+    } else {
+      add(group, "ellipse", { class: "queensland-play-shadow", cx: 0, cy: 115, rx: 145, ry: 17 });
+      add(group, "path", { class: "pod-drum-body", d: "M-170 5Q-147-45-93-49Q-46-58 0-48Q47-58 96-48Q149-42 172 4Q151 53 97 58Q48 67 1 57Q-47 67-96 58Q-150 52-170 5Z" });
+      add(group, "path", { class: "pod-drum-seam", d: "M-159 2Q-111-15-62-8Q-8 0 43-8Q104-17 161 2" });
+      add(group, "path", { class: "pod-drum-rim", d: "M-145-30Q-173-10-165 22Q-158 50-128 55M141-30Q170-8 165 22Q160 48 132 55" });
+      add(group, "path", { class: "pod-drum-lacing", d: "M-137-34L-118 53M-103-47L-85 61M-65-52L-49 63M-23-52L-10 60M22-52L36 61M65-52L80 61M105-45L121 53" });
+      add(group, "path", { class: "pod-drum-harness", d: "M-118-29Q-71-96 0-77Q69-95 119-26M-111 56Q-43 101 28 70Q72 92 112 56" });
+      add(group, "path", { class: "pod-drum-stand", d: "M-110 60L-127 105M110 59L129 104M-142 106H143" });
+      add(group, "path", { class: "pod-drum-mallet", d: "M-94-72L-37-13M78-68L29-10" });
+      add(group, "circle", { class: "pod-drum-mallet-head", cx: -102, cy: -81, r: 15 });
+      add(group, "circle", { class: "pod-drum-mallet-head alt", cx: 87, cy: -77, r: 15 });
+      add(group, "circle", { class: "pod-drum-hardware", cx: -37, cy: -13, r: 8 });
+      add(group, "circle", { class: "pod-drum-hardware", cx: 29, cy: -10, r: 8 });
+    }
+    return true;
+  }
+
+  if (item.family === "qg2904-funnel-megaphone") {
+    group.dataset.renderer = "qg2904-funnel-megaphone";
+    group.classList.add("queensland-play-accessory", "funnel-megaphone", companion ? "funnel-megaphone-companion" : "funnel-megaphone-primary");
+    if (companion) {
+      add(group, "ellipse", { class: "queensland-play-shadow", cx: 5, cy: 99, rx: 86, ry: 13, transform: "rotate(7 5 99)" });
+      add(group, "path", { class: "megaphone-body companion", d: "M-106 31L48-86Q76-101 98-68Q117-39 84-7L-91 62Z" });
+      add(group, "ellipse", { class: "megaphone-bell", cx: 78, cy: -46, rx: 42, ry: 54, transform: "rotate(51 78 -46)" });
+      add(group, "ellipse", { class: "megaphone-bell-inner", cx: 78, cy: -46, rx: 29, ry: 39, transform: "rotate(51 78 -46)" });
+      add(group, "path", { class: "megaphone-mouthpiece", d: "M-110 28L-82 48L-94 66L-122 45Z" });
+      add(group, "path", { class: "megaphone-rib", d: "M-64 21L-12-15M-54 47L0 9M-25 55L22 22" });
+      add(group, "path", { class: "megaphone-handle", d: "M-35 32Q-9 37-5 62Q-3 83-23 92L-42 75Q-25 66-35 53Z" });
+      add(group, "path", { class: "megaphone-grip", d: "M-42 75L-24 92L-9 78L-26 62Z" });
+      add(group, "path", { class: "megaphone-strap", d: "M-67 52Q-48 112 17 89Q52 77 54 40" });
+      add(group, "path", { class: "megaphone-sound", d: "M121-74Q150-47 130-10M139-94Q184-52 151 9" });
+    } else {
+      add(group, "ellipse", { class: "queensland-play-shadow", cx: 0, cy: 111, rx: 123, ry: 16 });
+      add(group, "path", { class: "megaphone-body", d: "M-158-10L114-119Q145-125 164-84Q180-45 139-2L-149 29Z" });
+      add(group, "ellipse", { class: "megaphone-bell", cx: 136, cy: -57, rx: 52, ry: 70, transform: "rotate(73 136 -57)" });
+      add(group, "ellipse", { class: "megaphone-bell-inner", cx: 136, cy: -57, rx: 36, ry: 52, transform: "rotate(73 136 -57)" });
+      add(group, "path", { class: "megaphone-mouthpiece", d: "M-167-31L-129-21L-133 16L-171 9Z" });
+      add(group, "path", { class: "megaphone-rib", d: "M-105-34L-92 27M-47-49L-37 14M13-64L21 1M72-78L81-13" });
+      add(group, "path", { class: "megaphone-handle", d: "M-37 15Q-5 16 5 48Q12 73-12 91L-39 72Q-17 56-30 38Z" });
+      add(group, "path", { class: "megaphone-grip", d: "M-39 72L-12 91L7 70L-21 50Z" });
+      add(group, "path", { class: "megaphone-trigger", d: "M-25 35Q-6 33-2 49" });
+      add(group, "path", { class: "megaphone-strap", d: "M-128 22Q-94 117-4 101Q62 90 82-11" });
+      add(group, "path", { class: "megaphone-sound", d: "M191-92Q228-56 201-11M211-120Q266-68 228 11" });
+    }
+    return true;
+  }
+
+  if (item.family === "qg2904-canopy-kaleidoscope") {
+    group.dataset.renderer = "qg2904-canopy-kaleidoscope";
+    group.classList.add("queensland-play-accessory", "canopy-kaleidoscope", companion ? "canopy-kaleidoscope-companion" : "canopy-kaleidoscope-primary");
+    if (companion) {
+      add(group, "ellipse", { class: "queensland-play-shadow", cx: 4, cy: 105, rx: 91, ry: 14 });
+      add(group, "path", { class: "kaleidoscope-body companion", d: "M-112-13L34-58L91-17L78 54L-75 64Z" });
+      add(group, "path", { class: "kaleidoscope-side-panel", d: "M-73 64L34-58L91-17L78 54Z" });
+      add(group, "path", { class: "kaleidoscope-eye-cup", d: "M-124-25L-89-17L-84 37L-120 47Q-137 10-124-25Z" });
+      add(group, "path", { class: "kaleidoscope-collar", d: "M-55-3L-29-12L-15 49L-43 57Z" });
+      add(group, "polygon", { class: "kaleidoscope-lens-frame", points: "34,-66 83,-51 105,-14 84,36 39,48 8,9" });
+      add(group, "polygon", { class: "kaleidoscope-pane pane-a", points: "34,-55 58,-47 51,-15 18,5" });
+      add(group, "polygon", { class: "kaleidoscope-pane pane-b", points: "58,-47 92,-17 66,-2 51,-15" });
+      add(group, "polygon", { class: "kaleidoscope-pane pane-c", points: "18,5 51,-15 66,-2 39,35" });
+      add(group, "polygon", { class: "kaleidoscope-pane pane-d", points: "66,-2 92,-17 78,27 39,35" });
+      add(group, "circle", { class: "kaleidoscope-lens-hub", cx: 53, cy: -4, r: 8 });
+      add(group, "path", { class: "kaleidoscope-handle", d: "M-18 48Q7 55 12 80Q17 99-2 109L-26 89Q-8 79-18 65Z" });
+      add(group, "path", { class: "kaleidoscope-wrist-loop", d: "M-26 89Q-58 129-85 94" });
+    } else {
+      add(group, "ellipse", { class: "queensland-play-shadow", cx: 0, cy: 117, rx: 128, ry: 16 });
+      add(group, "path", { class: "kaleidoscope-body", d: "M-164 38L72-95L113-31L-126 93Z" });
+      add(group, "path", { class: "kaleidoscope-side-panel", d: "M-126 93L72-95L113-31L-73 68Z" });
+      add(group, "path", { class: "kaleidoscope-eye-cup", d: "M-177 25L-142 39L-112 84L-146 103Q-183 77-177 25Z" });
+      add(group, "path", { class: "kaleidoscope-collar", d: "M-96-1L-60-21L-19 45L-56 65Z" });
+      add(group, "path", { class: "kaleidoscope-collar narrow", d: "M13-63L42-80L83-14L53 2Z" });
+      add(group, "polygon", { class: "kaleidoscope-lens-frame", points: "65,-111 109,-101 132,-65 125,-23 91,2 49,-7 28,-44 35,-86" });
+      add(group, "polygon", { class: "kaleidoscope-pane pane-a", points: "65,-98 91,-91 83,-61 44,-50 43,-80" });
+      add(group, "polygon", { class: "kaleidoscope-pane pane-b", points: "91,-91 119,-62 98,-44 83,-61" });
+      add(group, "polygon", { class: "kaleidoscope-pane pane-c", points: "44,-50 83,-61 98,-44 83,-10 55,-17" });
+      add(group, "polygon", { class: "kaleidoscope-pane pane-d", points: "98,-44 119,-62 113,-30 83,-10" });
+      add(group, "circle", { class: "kaleidoscope-lens-hub", cx: 83, cy: -48, r: 10 });
+      add(group, "path", { class: "kaleidoscope-handle", d: "M-27 45Q7 52 14 85Q20 111-5 124L-39 99Q-14 84-27 66Z" });
+      add(group, "path", { class: "kaleidoscope-grip", d: "M-39 99L-5 124L15 102L-20 76Z" });
+      add(group, "path", { class: "kaleidoscope-wrist-loop", d: "M-37 103Q-79 152-112 110" });
+      add(group, "path", { class: "kaleidoscope-spark", d: "M145-89L151-71L169-65L151-58L145-40L138-58L120-65L138-71Z" });
+    }
+    return true;
+  }
 
   const label = (parent, value, x, y, className = "queensland-machine-text", anchor = "middle", transform = null) => {
     const attributes = { class: className, x, y, "text-anchor": anchor };
@@ -6461,9 +6560,9 @@ function renderPiece(target, item, wormPart) {
     "qg4739-kotop-fruit-parasol": { primary: [397, 95, .46, -4], companion: [20, 88, .4, 6] },
     "qg4739-peppercorn-rollerboard": { primary: [238, 252, .44, 3], companion: [76, 257, .36, -5] },
     "qg4739-rain-leaf-sled": { primary: [390, 260, .28, -4], companion: [-25, 310, .33, 5] },
-    "qg2904-uncracked-pod-seam-scanner": { primary: [250, -62, .31, -2], companion: [-8, 90, .27, 2] },
-    "qg2904-collection-to-funnel-relay": { primary: [220, 148, .32, -1], companion: [90, 212, .26, 2] },
-    "dro-canopy-crane-strata-mapper": { primary: [377, 140, .29, -1], companion: [-5, 292, .26, 2] },
+    "qg2904-sealed-pod-drum": { primary: [228, 239, .43, 1], companion: [80, 228, .36, 3] },
+    "qg2904-funnel-megaphone": { primary: [358, 113, .36, -2], companion: [1, 112, .32, 5] },
+    "qg2904-canopy-kaleidoscope": { primary: [340, 278, .4, -4], companion: [-5, 290, .34, 4] },
     "edinburgh-tartan-kilt": { primary: [220, 176, .62, 35], companion: [72, 166, .46, 42] },
     "great-highland-bagpipes": { primary: [291, 190, .49, -8], companion: [94, 168, .37, 5] }
     ,"ju1373-torch-ginger-bract-collar": { primary: [366, 118, .33, -4], companion: [8, 112, .28, 5] }

@@ -1,8 +1,8 @@
 # Queensland *Caenorhabditis tropicalis* QG2904 location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-09-01
 
-> **Current production accessory contract:** `blackbean pod cases`, `recovery calendars`, and `canopy-crane models`. These recognizable objects supersede the earlier abstract mechanism sketches below; the crane remains observatory context rather than collection equipment.
+> **Current production accessory contract:** `Sealed-pod drums`, `Funnel megaphones`, and `Canopy kaleidoscopes`. The set uses the recorded closed pod, the funnel-plating step and the Daintree Rainforest Observatory canopy setting.
 
 ## Purpose
 
@@ -384,7 +384,85 @@ granite, and New Taipei’s concrete stair corridor.
 - Exact worm count or male-frequency claim.
 - Evidence from QG2896–QG2899 or QG2905.
 
-## Accessory contract
+## Current playful accessory contract
+
+Use this exact data row:
+
+```js
+[
+  "tropicalis",
+  "Queensland, Australia · QG2904",
+  "Sealed-pod drums",
+  "qg2904-sealed-pod-drum",
+  "Funnel megaphones",
+  "qg2904-funnel-megaphone",
+  "Canopy kaleidoscopes",
+  "qg2904-canopy-kaleidoscope"
+]
+```
+
+### Sealed-pod drums
+
+- The primary is a long horizontal closed-pod drum with reinforced end rims,
+  an uninterrupted seam, seven tension cords, two harness arcs, a connected
+  stand and two differently coloured curved mallets.
+- The companion is a separately built upright drum with a narrower asymmetrical
+  body, vertical seam, four cross-laces, side harness, low stand and one mallet.
+- Both versions preserve a fully closed pod silhouette.
+
+### Funnel megaphones
+
+- The primary is a long strongly flared berry megaphone with a deep horn mouth,
+  reinforced rim, mouthpiece, four structural ribs, handle, trigger, grip,
+  shoulder strap and two sound arcs.
+- The companion is a shorter diagonally held gold megaphone with its own flare,
+  rib layout, handle, grip, strap and sound arcs.
+- Their shape refers playfully to the recorded funnel-plating step without
+  reconstructing laboratory equipment.
+
+### Canopy kaleidoscopes
+
+- The primary is a long three-sided brass-and-berry viewer with two rotating
+  collars, eyecup, handle, wrist loop and an octagonal stained-glass lens.
+- The companion is a shorter triangular teal viewer with a different side
+  panel, collar, handle, wrist loop and six-sided stained-glass lens.
+- Both viewing ends use contained panes and a central hub so the object reads
+  clearly as an optical toy at production size.
+
+The production layouts are:
+
+```js
+"qg2904-sealed-pod-drum": {
+  primary: [228, 239, .43, 1],
+  companion: [80, 228, .36, 3]
+},
+"qg2904-funnel-megaphone": {
+  primary: [358, 113, .36, -2],
+  companion: [1, 112, .32, 5]
+},
+"qg2904-canopy-kaleidoscope": {
+  primary: [340, 278, .4, -4],
+  companion: [-5, 290, .34, 4]
+}
+```
+
+Current acceptance requirements:
+
+- all six props use dedicated SVG geometry and remain independently movable;
+- the drum pair differs in orientation, body construction, lacing and mallet
+  count;
+- each megaphone has a clear flared horn, mouthpiece, handle and strap;
+- each kaleidoscope has contained panes, a lens hub, eyecup and connected grip;
+- faces and reproductive-role cues remain unobscured;
+- all six props remain separated when enabled together at the default layout;
+- the scene remains free of horizontal overflow at 360, 768, 1024 and 1440 px;
+- pointer dragging, Arrow movement, Shift+Arrow movement and Home reset remain
+  independent for both worm copies.
+
+## Retired scientific-accessory contract
+
+The scanner, recovery relay and crane mapper below are retained only as design
+history. They are no longer loaded by the playable catalogue.
 
 Use this exact data row:
 
@@ -512,7 +590,7 @@ The pair is regional research context only. Do not imply that QG2904 was
 collected with the crane, within its one-hectare plot or from the canopy. Do
 not reproduce a Liebherr logo or provide operational instructions.
 
-## Suggested initial layouts
+## Retired scientific-accessory layouts
 
 These require final browser tuning:
 
@@ -529,7 +607,7 @@ These require final browser tuning:
       companion: [-5, 292, .26, 2]
     }
 
-## Semantic reuse ledger
+## Retired scientific-accessory reuse ledger
 
 Current post-Pohnpei baseline:
 
@@ -559,7 +637,7 @@ Expected resulting totals:
 
 The funnel-recovery family is now at its maximum of two and must not be reused.
 
-## Stale implementation cleanup
+## Retired scientific-accessory cleanup plan
 
 - Replace “Queensland, Australia” with “Queensland, Australia · QG2904”
   consistently in marker, profile and accessory keys.
@@ -604,7 +682,7 @@ The funnel-recovery family is now at its maximum of two and must not be reused.
 - Treat the crane as a scientific context cue, not an amusement ride.
 - Preserve the distinction between QG2904 and QG2905.
 
-## Variant and interaction requirements
+## Retired scientific-accessory variant requirements
 
 - All six objects must differ in silhouette, orientation, construction and
   negative space.
@@ -635,7 +713,7 @@ The funnel-recovery family is now at its maximum of two and must not be reused.
 - The painting keeps the pod fully sealed, the buttress arch dominant and the canopy-crane fragment subordinate, without asserting a botanical species, visible decay or exact collection-patch view.
 - The animated worms and all six independently movable accessories remain live SVG layers above the painting.
 
-## Visual and interaction acceptance
+## Retired scientific-accessory acceptance checklist
 
 - The scene reads as a lowland research-station rainforest, not a beach.
 - The sealed pod is visible at mobile size without implying a confirmed plant
