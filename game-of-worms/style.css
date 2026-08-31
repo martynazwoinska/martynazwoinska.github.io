@@ -4212,7 +4212,20 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   .species-gallery-images { grid-template-columns: 1fr; }
   .mating-system-cards { grid-template-columns: 1fr; }
   .family-tree-heading { align-items: start; flex-direction: column; }
-  .family-tree-legend { justify-content: flex-start; }
+  .family-tree-legend {
+    width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    justify-content: stretch;
+    gap: 8px;
+    border-radius: 16px;
+    padding: 10px 12px;
+    line-height: 1.3;
+  }
+  .family-tree-legend span {
+    align-items: flex-start;
+    white-space: normal;
+  }
   .family-tree-section { padding: 15px; }
   .unplaced-species { grid-template-columns: 1fr; gap: 3px; }
 }
@@ -7201,6 +7214,7 @@ footer p { margin: 0; }
   .section-heading { display: block; }
   .section-heading > p { margin-top: 8px; text-align: left; }
   .map-wrap, #world-map { min-height: 310px; }
+  .map-leaders { display: none; }
   .map-legend { left: 10px; right: auto; top: 10px; border-radius: 16px; }
   .map-selection { left: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 10px 12px; }
   .species-tabs { grid-template-columns: 1fr; grid-auto-rows: 1fr; min-height: 424px; }
