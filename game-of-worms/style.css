@@ -3386,6 +3386,120 @@ html.accessory-drag-active body { overscroll-behavior: none; }
     stroke-width: 2px;
   }
 }
+.pohnpei-prop-shadow { fill: rgba(25, 39, 34, .24); }
+.kotop-parasol-canopy {
+  fill: color-mix(in srgb, #bf536d 76%, var(--local-primary));
+  stroke: color-mix(in srgb, #56364d 84%, var(--worm-deep));
+  stroke-width: 4.6;
+  stroke-linejoin: round;
+}
+.kotop-parasol-canopy.companion { stroke-width: 4.2; }
+.kotop-parasol-panel { stroke: none; }
+.kotop-parasol-panel.berry { fill: color-mix(in srgb, #b84b6c 82%, var(--local-primary)); }
+.kotop-parasol-panel.gold { fill: color-mix(in srgb, #e0b55f 82%, var(--local-secondary)); }
+.kotop-parasol-panel.cream { fill: color-mix(in srgb, #fff1c2 87%, var(--paper-strong)); }
+.kotop-parasol-ribs,
+.kotop-parasol-edge,
+.kotop-parasol-stem,
+.kotop-parasol-handle,
+.kotop-parasol-finial {
+  fill: none;
+  stroke: color-mix(in srgb, #725237 83%, var(--worm-deep));
+  stroke-width: 4.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.kotop-parasol-ribs { stroke: color-mix(in srgb, #fff1c9 64%, var(--local-secondary)); stroke-width: 3; }
+.kotop-parasol-edge { stroke: color-mix(in srgb, #5a354a 84%, var(--worm-deep)); stroke-width: 4.8; }
+.kotop-parasol-cap,
+.kotop-parasol-grip {
+  fill: color-mix(in srgb, #6fb3ad 74%, var(--local-primary));
+  stroke: color-mix(in srgb, #355d5a 83%, var(--worm-deep));
+  stroke-width: 3.2;
+  stroke-linejoin: round;
+}
+.pepper-board-deck {
+  fill: color-mix(in srgb, #bf5b70 74%, var(--local-primary));
+  stroke: color-mix(in srgb, #52384b 85%, var(--worm-deep));
+  stroke-width: 5;
+  stroke-linejoin: round;
+}
+.pepper-board-deck.companion { fill: color-mix(in srgb, #dfad57 75%, var(--local-secondary)); stroke-width: 4.5; }
+.pepper-board-edge,
+.pepper-board-grip,
+.pepper-board-vine,
+.pepper-board-harness,
+.pepper-board-calyx {
+  fill: none;
+  stroke: color-mix(in srgb, #f5d98f 72%, var(--paper-strong));
+  stroke-width: 3.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pepper-board-edge { stroke: color-mix(in srgb, #594039 83%, var(--worm-deep)); stroke-width: 5; }
+.pepper-board-grip { stroke: color-mix(in srgb, #6ab2aa 74%, var(--local-primary)); stroke-dasharray: 8 8; }
+.pepper-board-vine { stroke: color-mix(in srgb, #6f9b73 73%, var(--local-primary)); stroke-width: 5; }
+.pepper-board-harness { stroke: color-mix(in srgb, #f0cf78 76%, var(--local-secondary)); stroke-width: 6; }
+.pepper-board-truck {
+  fill: none;
+  stroke: color-mix(in srgb, #7599a0 70%, var(--worm-deep));
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pepper-board-baseplate {
+  fill: color-mix(in srgb, #86aab0 68%, var(--paper-strong));
+  stroke: color-mix(in srgb, #4d6570 82%, var(--worm-deep));
+  stroke-width: 2.8;
+  stroke-linejoin: round;
+}
+.pepper-board-wheel {
+  fill: color-mix(in srgb, #463a4d 86%, var(--worm-deep));
+  stroke: color-mix(in srgb, #f0c66f 75%, var(--local-secondary));
+  stroke-width: 4;
+}
+.pepper-board-wheel.pale { fill: color-mix(in srgb, #f1dfb6 79%, var(--paper-strong)); }
+.pepper-board-bearing {
+  fill: color-mix(in srgb, #6ab6b2 76%, var(--local-primary));
+  stroke: color-mix(in srgb, #345b5a 82%, var(--worm-deep));
+  stroke-width: 2.5;
+}
+.pepper-board-calyx { stroke: color-mix(in srgb, #7ba06f 72%, var(--local-primary)); stroke-width: 3.2; }
+.pepper-board-vine-berry {
+  fill: color-mix(in srgb, #443849 87%, var(--worm-deep));
+  stroke: color-mix(in srgb, #e2b961 74%, var(--local-secondary));
+  stroke-width: 2.4;
+}
+.pepper-board-vine-berry.pale { fill: color-mix(in srgb, #efddb4 82%, var(--paper-strong)); }
+.rain-leaf-sled-shell {
+  fill: color-mix(in srgb, #7766a7 76%, var(--local-primary));
+  stroke: color-mix(in srgb, #463c65 86%, var(--worm-deep));
+  stroke-width: 5;
+  stroke-linejoin: round;
+}
+.rain-leaf-sled-shell.companion { fill: color-mix(in srgb, #5ca9a7 72%, var(--local-primary)); stroke-width: 4.5; }
+.rain-leaf-sled-fold {
+  fill: color-mix(in srgb, #d6a759 72%, var(--local-secondary));
+  stroke: color-mix(in srgb, #674a39 82%, var(--worm-deep));
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+.rain-leaf-sled-midrib,
+.rain-leaf-sled-ribs,
+.rain-leaf-sled-runner,
+.rain-leaf-sled-handle,
+.rain-leaf-sled-splash {
+  fill: none;
+  stroke: color-mix(in srgb, #f5d783 73%, var(--local-secondary));
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.rain-leaf-sled-midrib { stroke-width: 7; }
+.rain-leaf-sled-ribs { stroke: color-mix(in srgb, #f6e4b2 70%, var(--paper-strong)); stroke-width: 3; }
+.rain-leaf-sled-runner { stroke: color-mix(in srgb, #e0b457 80%, var(--local-secondary)); stroke-width: 7; }
+.rain-leaf-sled-handle { stroke: color-mix(in srgb, #c55570 75%, var(--local-primary)); stroke-width: 7; }
+.rain-leaf-sled-splash { stroke: color-mix(in srgb, #99d9d6 78%, var(--paper-strong)); stroke-width: 5; }
 .queensland-machine-shadow { fill: rgba(24, 31, 26, .22); }
 .queensland-machine-base { fill: color-mix(in srgb, #8b6b46 72%, var(--local-secondary)); stroke: color-mix(in srgb, #493c31 83%, var(--worm-deep)); stroke-width: 2.8; stroke-linejoin: round; }
 .queensland-machine-feet,

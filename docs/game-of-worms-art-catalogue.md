@@ -37,7 +37,7 @@ The following simplified, recognizable object sets supersede the earlier abstrac
 - **Oʻahu ECA789:** petal rain trumpets; raindrop harps; cacao-key xylophones.
 - **Kauaʻi QG131:** pandanus sample baskets; four-date culture calendars; mating-test plates.
 - **New Taipei NIC1648:** Taiwan blue-magpie kites; single-tail rain boots; bubble-tea jetpacks.
-- **Pohnpei QG4739:** kotop sample boxes; paired thermometers; seven-vial sample racks.
+- **Pohnpei QG4739:** Kotop-fruit parasols; Peppercorn rollerboards; Cloudforest rain-leaf sleds.
 - **Queensland QG2904:** blackbean pod cases; recovery calendars; canopy-crane models.
 - **Saint-Benoît JU1373:** Réunion torch-ginger trays; type-isolate badges; windward rain gauges.
 

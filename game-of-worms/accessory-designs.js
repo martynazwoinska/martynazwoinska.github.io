@@ -35,7 +35,7 @@ const rows = [
   ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras carnival crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
   ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "petal rain trumpets", "eca789-petal-rain-trumpet", "raindrop harps", "eca789-raindrop-harp", "cacao-key xylophones", "eca789-cacao-key-xylophone"],
   ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Taiwan blue-magpie kites", "nic1648-taiwan-blue-magpie-kites", "single-tail rain boots", "nic1648-single-tail-rain-boots", "bubble-tea jetpacks", "nic1648-bubble-tea-jetpacks"],
-  ["tropicalis", "Pohnpei, Micronesia · QG4739", "kotop sample boxes", "qg4739-kotop-name-concordance", "paired thermometers", "qg4739-paired-temperature-differential", "seven-vial sample racks", "c0230-seven-isotype-registry"],
+  ["tropicalis", "Pohnpei, Micronesia · QG4739", "Kotop-fruit parasols", "qg4739-kotop-fruit-parasol", "Peppercorn rollerboards", "qg4739-peppercorn-rollerboard", "Cloudforest rain-leaf sleds", "qg4739-rain-leaf-sled"],
   ["tropicalis", "Queensland, Australia · QG2904", "blackbean pod cases", "qg2904-uncracked-pod-seam-scanner", "recovery calendars", "qg2904-collection-to-funnel-relay", "canopy-crane models", "dro-canopy-crane-strata-mapper"],
   ["tropicalis", "Saint-Benoît, Réunion · JU1373", "Réunion torch-ginger trays", "ju1373-torch-ginger-bract-collar", "type-isolate badges", "ju1373-type-isolate-signet-engine", "windward rain gauges", "saint-benoit-windward-slope-mobile"]
 ];
@@ -2066,6 +2066,101 @@ function drawSaoTomeAccessory(group, item, companion) {
 
 function drawPohnpeiQG4739Accessory(group, item, companion) {
   if (!item.id.startsWith("tropicalis::Pohnpei, Micronesia · QG4739::")) return false;
+
+  if (item.family === "qg4739-kotop-fruit-parasol") {
+    group.dataset.renderer = "qg4739-kotop-fruit-parasol";
+    group.classList.add("pohnpei-accessory", "kotop-fruit-parasol", companion ? "kotop-fruit-parasol-companion" : "kotop-fruit-parasol-primary");
+    if (companion) {
+      add(group, "ellipse", { class: "pohnpei-prop-shadow", cx: -2, cy: 122, rx: 74, ry: 13, transform: "rotate(8 -2 122)" });
+      add(group, "path", { class: "kotop-parasol-stem", d: "M-60 119Q-18 96 1 50Q15 15 43-17" });
+      add(group, "path", { class: "kotop-parasol-handle", d: "M-60 119Q-79 128-77 143Q-74 158-58 157Q-46 156-42 145" });
+      add(group, "path", { class: "kotop-parasol-canopy companion", d: "M-80-9Q-30-72 38-69Q86-58 112-18Q79-29 56-6Q28-26 3-1Q-22-25-43 1Q-61-16-80-9Z" });
+      add(group, "path", { class: "kotop-parasol-panel berry", d: "M-80-9Q-32-67 38-69Q7-41 3-1Q-22-25-43 1Q-61-16-80-9Z" });
+      add(group, "path", { class: "kotop-parasol-panel gold", d: "M38-69Q84-56 112-18Q79-29 56-6Q31-25 3-1Q7-41 38-69Z" });
+      add(group, "path", { class: "kotop-parasol-ribs", d: "M38-69Q4-42-43 1M38-69Q23-34 3-1M38-69Q53-37 56-6M38-69Q78-45 112-18" });
+      add(group, "path", { class: "kotop-parasol-edge", d: "M-80-9Q-61-16-43 1Q-22-25 3-1Q28-26 56-6Q79-29 112-18" });
+      add(group, "path", { class: "kotop-parasol-finial", d: "M31-70Q38-86 46-70" });
+      add(group, "circle", { class: "kotop-parasol-cap", cx: 39, cy: -73, r: 6 });
+      add(group, "path", { class: "kotop-parasol-grip", d: "M-40 88Q-21 99-9 80L-2 91Q-19 114-46 101Z" });
+    } else {
+      add(group, "ellipse", { class: "pohnpei-prop-shadow", cx: 0, cy: 132, rx: 93, ry: 15 });
+      add(group, "path", { class: "kotop-parasol-stem", d: "M0 129Q12 88 7 38V-26" });
+      add(group, "path", { class: "kotop-parasol-handle", d: "M0 128Q-2 151 18 155Q38 158 44 137Q47 126 37 120" });
+      add(group, "path", { class: "kotop-parasol-canopy", d: "M-158-17Q-112-88 0-105Q104-91 158-17Q119-36 79-4Q39-39 0-3Q-38-40-80-4Q-119-36-158-17Z" });
+      add(group, "path", { class: "kotop-parasol-panel berry", d: "M-158-17Q-112-86 0-105Q-54-69-80-4Q-119-36-158-17Z" });
+      add(group, "path", { class: "kotop-parasol-panel cream", d: "M0-105Q-54-69-80-4Q-38-40 0-3Q37-39 79-4Q54-69 0-105Z" });
+      add(group, "path", { class: "kotop-parasol-panel gold", d: "M0-105Q104-90 158-17Q119-36 79-4Q54-69 0-105Z" });
+      add(group, "path", { class: "kotop-parasol-ribs", d: "M0-105Q-76-73-158-17M0-105Q-52-58-80-4M0-105V-3M0-105Q52-58 79-4M0-105Q77-73 158-17" });
+      add(group, "path", { class: "kotop-parasol-edge", d: "M-158-17Q-119-36-80-4Q-38-40 0-3Q39-39 79-4Q119-36 158-17" });
+      add(group, "path", { class: "kotop-parasol-finial", d: "M-8-104Q0-124 9-104" });
+      add(group, "circle", { class: "kotop-parasol-cap", cx: 0, cy: -108, r: 7 });
+      add(group, "path", { class: "kotop-parasol-grip", d: "M5 76Q28 82 31 58L43 65Q39 96 6 94Z" });
+    }
+    return true;
+  }
+
+  if (item.family === "qg4739-peppercorn-rollerboard") {
+    group.dataset.renderer = "qg4739-peppercorn-rollerboard";
+    group.classList.add("pohnpei-accessory", "peppercorn-rollerboard", companion ? "peppercorn-rollerboard-companion" : "peppercorn-rollerboard-primary");
+    if (companion) {
+      add(group, "ellipse", { class: "pohnpei-prop-shadow", cx: 0, cy: 82, rx: 112, ry: 15 });
+      add(group, "path", { class: "pepper-board-deck companion", d: "M-132 12Q-105 27-65 20Q-7 8 47 16Q89 22 124-5L133 17Q95 48 45 41Q-8 33-65 44Q-112 52-141 31Z" });
+      add(group, "path", { class: "pepper-board-edge", d: "M-140 31Q-111 53-65 44Q-8 33 45 41Q95 48 133 17" });
+      add(group, "path", { class: "pepper-board-grip", d: "M-105 24Q-54 19-11 21M15 23Q61 31 103 13" });
+      add(group, "path", { class: "pepper-board-baseplate", d: "M-96 40H-68L-72 50H-92ZM64 37H88L85 47H67Z" });
+      add(group, "path", { class: "pepper-board-truck", d: "M-82 42V61M-105 61H-59M76 39V58M60 58H93" });
+      [[-105,66,17],[-59,66,17],[76,64,19]].forEach(([cx,cy,r], index) => {
+        add(group, "circle", { class: index === 2 ? "pepper-board-wheel pale" : "pepper-board-wheel", cx, cy, r });
+        add(group, "circle", { class: "pepper-board-bearing", cx, cy, r: 6 });
+        add(group, "path", { class: "pepper-board-calyx", d: `M${cx-6} ${cy-r+4}L${cx} ${cy-r-5}L${cx+6} ${cy-r+4}` });
+      });
+      add(group, "path", { class: "pepper-board-vine", d: "M-48 13Q-18-21 17 5Q43 24 59-3" });
+      add(group, "path", { class: "pepper-board-harness", d: "M-32 19Q-20-9-5 16M23 18Q34-5 48 24" });
+    } else {
+      add(group, "ellipse", { class: "pohnpei-prop-shadow", cx: 0, cy: 89, rx: 146, ry: 17 });
+      add(group, "path", { class: "pepper-board-deck", d: "M-177-1Q-155 23-111 25Q-45 22 0 8Q52 21 112 24Q154 22 177-1L187 19Q157 53 110 51Q53 47 0 35Q-51 48-112 52Q-159 53-188 18Z" });
+      add(group, "path", { class: "pepper-board-edge", d: "M-188 18Q-159 53-112 52Q-51 48 0 35Q53 47 110 51Q157 53 187 19" });
+      add(group, "path", { class: "pepper-board-grip", d: "M-142 16Q-85 31-24 17M24 17Q85 31 142 16" });
+      add(group, "path", { class: "pepper-board-baseplate", d: "M-137 45H-101L-105 56H-133ZM101 45H137L133 56H105Z" });
+      add(group, "path", { class: "pepper-board-truck", d: "M-119 48V66M-147 66H-91M119 48V66M91 66H147" });
+      [[-147,72],[-91,72],[91,72],[147,72]].forEach(([cx,cy], index) => {
+        add(group, "circle", { class: index % 2 ? "pepper-board-wheel pale" : "pepper-board-wheel", cx, cy, r: 21 });
+        add(group, "circle", { class: "pepper-board-bearing", cx, cy, r: 7 });
+        add(group, "path", { class: "pepper-board-calyx", d: `M${cx-7} ${cy-17}L${cx} ${cy-27}L${cx+7} ${cy-17}` });
+      });
+      add(group, "path", { class: "pepper-board-vine", d: "M-69 19Q-41-23 0 8Q39-24 69 20" });
+      add(group, "path", { class: "pepper-board-harness", d: "M-68 27Q-52-8-33 22M33 22Q52-8 68 27" });
+      add(group, "circle", { class: "pepper-board-vine-berry", cx: -15, cy: -2, r: 7 });
+      add(group, "circle", { class: "pepper-board-vine-berry pale", cx: 2, cy: 4, r: 6 });
+      add(group, "circle", { class: "pepper-board-vine-berry", cx: 17, cy: -2, r: 7 });
+    }
+    return true;
+  }
+
+  if (item.family === "qg4739-rain-leaf-sled") {
+    group.dataset.renderer = "qg4739-rain-leaf-sled";
+    group.classList.add("pohnpei-accessory", "rain-leaf-sled", companion ? "rain-leaf-sled-companion" : "rain-leaf-sled-primary");
+    if (companion) {
+      add(group, "ellipse", { class: "pohnpei-prop-shadow", cx: 2, cy: 103, rx: 94, ry: 14, transform: "rotate(-5 2 103)" });
+      add(group, "path", { class: "rain-leaf-sled-shell companion", d: "M-122 34Q-86-17-15-31Q49-23 110-56Q101-5 65 35Q18 75-54 66Q-99 62-122 34Z" });
+      add(group, "path", { class: "rain-leaf-sled-fold", d: "M-111 34Q-54 8-15-31Q11 10 64 35Q17 68-54 59Q-91 55-111 34Z" });
+      add(group, "path", { class: "rain-leaf-sled-midrib", d: "M-108 39Q-25 22 110-56" });
+      add(group, "path", { class: "rain-leaf-sled-ribs", d: "M-73 23L-85-4M-42 8L-46-22M-8-9L-3 28M25-24L37 17M58-38L73-8" });
+      add(group, "path", { class: "rain-leaf-sled-runner", d: "M-101 68Q-35 95 50 72M-84 57Q-26 78 35 61M-83 63L-98 73M40 66L54 75" });
+      add(group, "path", { class: "rain-leaf-sled-handle", d: "M-49 10Q-41-26-16-21Q9-17 9 15" });
+      add(group, "path", { class: "rain-leaf-sled-splash", d: "M-128 42Q-146 30-151 12M-122 52Q-145 55-154 71" });
+    } else {
+      add(group, "ellipse", { class: "pohnpei-prop-shadow", cx: 0, cy: 116, rx: 132, ry: 16 });
+      add(group, "path", { class: "rain-leaf-sled-shell", d: "M-171 21Q-123-46-38-56Q49-66 151-28Q178-17 185-39Q188 29 144 70Q76 113-21 96Q-113 89-171 21Z" });
+      add(group, "path", { class: "rain-leaf-sled-fold", d: "M-153 24Q-86-5-38-56Q-10 5 45 38Q92 68 144 70Q77 105-18 87Q-107 82-153 24Z" });
+      add(group, "path", { class: "rain-leaf-sled-midrib", d: "M-151 28Q-41 15 185-39" });
+      add(group, "path", { class: "rain-leaf-sled-ribs", d: "M-112 16L-127-19M-72 3L-79-39M-29-11L-20 35M16-23L34 21M60-35L83 1M105-44L127-20" });
+      add(group, "path", { class: "rain-leaf-sled-runner", d: "M-139 92Q-40 130 91 104M-118 76Q-34 108 73 88M-111 84L-132 99M76 91L99 108" });
+      add(group, "path", { class: "rain-leaf-sled-handle", d: "M-71-1Q-58-45-25-39Q7-34 10 10M56-24Q69-55 95-42Q116-32 108-3" });
+      add(group, "path", { class: "rain-leaf-sled-splash", d: "M-176 29Q-200 14-204-10M-168 45Q-196 48-208 68M-155 59Q-179 72-183 91" });
+    }
+    return true;
+  }
 
   const label = (parent, value, x, y, className = "pohnpei-machine-text", anchor = "middle", transform = null) => {
     const attributes = { class: className, x, y, "text-anchor": anchor };
@@ -6363,9 +6458,9 @@ function renderPiece(target, item, wormPart) {
     "sao-tome-chocolate-bars": { primary: [369, 122, .34, -5], companion: [-3, 108, .3, 4] },
     "sao-tome-birdsong-music-boxes": { primary: [231, 194, .32, -3], companion: [111, 202, .27, 3] },
     "sao-tome-begonia-glass-parasols": { primary: [368, 273, .31, -4], companion: [17, 286, .26, 4] },
-    "qg4739-kotop-name-concordance": { primary: [362, 126, .3, -2], companion: [-1, 111, .25, 2] },
-    "qg4739-paired-temperature-differential": { primary: [235, 128, .3, -1], companion: [114, 157, .25, 2] },
-    "c0230-seven-isotype-registry": { primary: [343, 258, .28, -1], companion: [-27, 326, .24, 2] },
+    "qg4739-kotop-fruit-parasol": { primary: [397, 95, .46, -4], companion: [20, 88, .4, 6] },
+    "qg4739-peppercorn-rollerboard": { primary: [238, 252, .44, 3], companion: [76, 257, .36, -5] },
+    "qg4739-rain-leaf-sled": { primary: [390, 260, .28, -4], companion: [-25, 310, .33, 5] },
     "qg2904-uncracked-pod-seam-scanner": { primary: [250, -62, .31, -2], companion: [-8, 90, .27, 2] },
     "qg2904-collection-to-funnel-relay": { primary: [220, 148, .32, -1], companion: [90, 212, .26, 2] },
     "dro-canopy-crane-strata-mapper": { primary: [377, 140, .29, -1], companion: [-5, 292, .26, 2] },

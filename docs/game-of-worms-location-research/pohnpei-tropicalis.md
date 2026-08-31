@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-10
 
-> **Current production accessory contract:** `kotop sample boxes`, `paired thermometers`, and `seven-vial sample racks`. These recognizable objects supersede the earlier abstract mechanism sketches below and retain the naming, temperature and seven-isotype evidence.
+> **Current production accessory contract:** `Kotop-fruit parasols`, `Peppercorn rollerboards`, and `Cloudforest rain-leaf sleds`. These playful props replace the scientific cabinets, thermometers and vial racks. The three pairs use the recorded kotop substrate, a wider Pohnpei black-pepper reference and the wet upland cloudforest setting.
 
 ## Purpose
 
@@ -342,7 +342,100 @@ This must remain immediately distinguishable from:
 - Claim that the pictured palm was the sampled tree.
 - Claim that mist or precipitation was observed on the collection date.
 
-## Accessory contract
+## Current playful accessory contract
+
+Use this exact data row:
+
+```js
+[
+  "tropicalis",
+  "Pohnpei, Micronesia · QG4739",
+  "Kotop-fruit parasols",
+  "qg4739-kotop-fruit-parasol",
+  "Peppercorn rollerboards",
+  "qg4739-peppercorn-rollerboard",
+  "Cloudforest rain-leaf sleds",
+  "qg4739-rain-leaf-sled"
+]
+```
+
+The parasols refer to the recorded kotop substrate, while their colour and
+segmented canopy geometry remain illustrative. The rollerboards use Pohnpei's
+documented black-pepper cultivation as a wider island reference and do not
+place pepper at the collection patch. The sleds refer to the wet upland
+cloudforest and use unidentified folded leaves.
+
+Supporting regional sources:
+
+- [University of Hawaiʻi Press, *Ethnobotany of Pohnpei*](https://uhpress.hawaii.edu/title/ethnobotany-of-pohnpei-plants-people-and-island-culture/)
+- [USDA SARE, Pohnpei black-pepper project](https://projects.sare.org/project-reports/fw07-028/)
+- [Kew Plants of the World Online, *Clinostigma ponapense*](https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:666003-1)
+
+### Kotop-fruit parasols
+
+- The primary is a full five-bay parasol with a scalloped canopy, visible ribs,
+  alternating berry, cream and antique-gold panels, a central finial,
+  continuous curved stem, hook handle and separate grip.
+- The companion is a separately constructed tilted four-bay parasol with an
+  asymmetric canopy, different rib fan, offset stem and smaller hooked handle.
+- Neither version recreates the collected fruit or implies that a parasol was
+  present at the site.
+
+### Peppercorn rollerboards
+
+- The primary is a long board with layered deck, two baseplates, two trucks,
+  four peppercorn-shaped wheels with separate bearings and calyx marks, a vine
+  grip line and two body loops.
+- The companion is a shorter tapered three-wheel board with unequal nose and
+  tail, two rear wheels, one larger pale front wheel, separate baseplates,
+  trucks and a single curling vine.
+- Every wheel joins a visible axle and truck.
+
+### Cloudforest rain-leaf sleds
+
+- The primary is a broad asymmetric folded-leaf cradle with a raised prow,
+  contained veins, two handles, twin curved runners and restrained splash
+  lines.
+- The companion is a narrower diagonally folded leaf with a different prow,
+  rib layout, one handle structure and a separate twin-runner chassis.
+- The leaf forms remain botanically anonymous.
+
+The production layouts are:
+
+```js
+"qg4739-kotop-fruit-parasol": {
+  primary: [397, 95, .46, -4],
+  companion: [20, 88, .4, 6]
+},
+"qg4739-peppercorn-rollerboard": {
+  primary: [238, 252, .44, 3],
+  companion: [76, 257, .36, -5]
+},
+"qg4739-rain-leaf-sled": {
+  primary: [390, 260, .28, -4],
+  companion: [-25, 310, .33, 5]
+}
+```
+
+Current acceptance requirements:
+
+- all six props use dedicated SVG geometry and remain independently movable;
+- each companion differs from the primary in silhouette, construction and
+  orientation rather than scale or colour alone;
+- parasol ribs terminate at the canopy and the handles remain continuous;
+- every rollerboard wheel terminates at a visible axle and truck;
+- each sled has a folded shell, contained veins, handles and two connected
+  runners;
+- faces and reproductive-role cues remain unobscured;
+- all six props remain separated when enabled together at the default layout;
+- the scene remains free of horizontal overflow at 360, 768, 1024 and 1440 px;
+- pointer dragging, Arrow movement, Shift+Arrow movement and Home reset remain
+  independent for both worm copies.
+
+## Retired scientific-accessory contract
+
+The following cabinet, thermometer and registry brief is preserved only as
+design history. It is no longer loaded by the playable catalogue.
 
 Use this exact data row:
 
@@ -506,7 +599,7 @@ These require final browser tuning:
 }
 ```
 
-## Semantic reuse ledger
+## Retired scientific-accessory reuse ledger
 
 Current post-New-Taipei baseline:
 
@@ -537,7 +630,7 @@ The paired-temperature differential must not be classified as a second copy of
 ECA789's trace-based microclimate harmonograph. The seven-isotype registry uses
 its own seven-entry co-located structure.
 
-## Stale implementation cleanup
+## Retired scientific-accessory cleanup plan
 
 - Replace `Pohnpei, Micronesia` with
   `Pohnpei, Micronesia · QG4739` consistently in marker, profile and
@@ -602,7 +695,7 @@ its own seven-entry co-located structure.
 - The painting preserves the steep Paies cloudforest, pale ringed kotop palm, open root lattice and modest softened fruit sample while avoiding any reconstruction of the exact source tree, fruit geometry or collection-day mist.
 - The animated worms and all six independently movable accessories remain live SVG layers above the painting.
 
-## Variant and interaction requirements
+## Retired scientific-accessory variant requirements
 
 - All six objects must differ in silhouette, orientation, attachment,
   construction and negative space.
@@ -625,7 +718,7 @@ its own seven-entry co-located structure.
 - Confirm positions do not leak across species or locations.
 - Preserve visible focus, minimum 44 px targets and reduced-motion behaviour.
 
-## Visual and interaction acceptance
+## Retired scientific-accessory acceptance checklist
 
 - The scene reads as a steep, enclosed palm cloudforest at first glance.
 - It contains no visible coast, water, waterfall, mangrove or masonry.
@@ -655,6 +748,6 @@ its own seven-entry co-located structure.
 - Run the catalogue and paired-geometry audits.
 - Run `git diff --check`.
 
-## Exact catalogue replacement row
+## Retired 2026-07 catalogue replacement row
 
 | 35 | *C. tropicalis* — **Pohnpei, Micronesia · QG4739**; representative isotype-reference strain, previously C-0230F; 6.9066, 158.1818; forest at 540 m in the isotype summary and Paies, Kitti cloudforest at 542 m in the CSV sampling comment; rotting fruit recorded as *Clinostigma ponapensis* — kotop — while Kew accepts *C. ponapense*; substrate temperature 23.7 °C and ambient temperature 26.0 °C; sampled and isolated by S. Tintori, T. Nguyen, H. Yomai and M. Rockman on 7 December 2023; test-cross identification; one of seven co-located C-0230A–G isotype-reference strains; fruit count, attachment or fall status, decay geometry, associated organism, humidity, weather and exact collection-patch view unreported; pohnpei-qg4739-paies-kotop-cloudforest | Low upslope cloudforest-floor view. **F:** one low softened kotop-fruit sample in damp leaf litter, with number, outline, colour and placement explicitly illustrative. **M:** one pale ringed palm column opening into an asymmetric root lattice beneath a long drooping pinnate frond, all source-informed botanical context rather than a claimed source tree. **B:** a steep diagonal forest floor closing into layered trunks and thin habitat-context mist around one narrow high light slit. **Lock:** pale palm column and open root lattice at lower left, collapsed fruit just inside it, and one strong rising cloudforest diagonal disappearing at upper right; no Nan Madol, masonry, basalt, coral, coast, mangrove, lagoon, waterfall or Praslin-style fan-leaf granite vault. | **QG4739 kotop name-concordance cabinet:** P broad three-window KOTOP/CaeNDR/KEW record cabinet with sealed fruit cradle, connected spelling rail, separate vial and C-0230F/QG4739 flipplate / C tall rotary three-name index with vertical leaflet shutter, lower specimen drawer, connected gear return, side vial and QG4739 aperture. **QG4739 paired-temperature differential bridge:** P wide 23.7 fruit-contact and 26.0 raised-air stations joined by closed capillary and central differential gear with derived 2.3 °C window / C tall counterflow column with separated bulbs, exact-value shutters, linked rack, result window and calibration drawer; no humidity or time-series claim. **C-0230 seven-isotype registry:** P long A–G seven-cradle rail with Geneva drive, coordinate drum and F/QG4739 viewing gate / C tall helical seven-drawer register with F window, connected return chain, offset QG tabs and coordinate plate; no lineage, priority or genetic-identity claim. |
