@@ -1,6 +1,6 @@
 # Réunion *Caenorhabditis briggsae* JU1375 location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-08-31
 
 ## Exact record
 
@@ -62,29 +62,34 @@ and accessories above it.
 
 ## Accessory contract
 
-### Shell sample jar
+The replacement set uses three immediately recognisable wider Réunion
+references. They are playful scene elements, not collection equipment or
+claims about the JU1375 substrate, crop or exact field.
 
-Primary: a wide transparent field jar with a handled indigo lid, visible water
-line, generic spiral shell and a clear `SHELL SAMPLE` label.
+### Vanilla vine wraps
 
-Companion: a slimmer transparent jar in the same upright orientation, with a
-shorter handle, independently proportioned shell and `MOLLUSK` label.
+Primary: a long, asymmetric green vine with two broad leaves, one open pale
+vanilla flower, two mature dark pods and loose tendrils following the larger
+worm's curve.
 
-### 31 December field calendar
+Companion: a shorter loop with a differently posed flower, one leaf, one pod
+and a separate tendril fitted to the smaller worm.
 
-Primary: a large ring-bound tear-off field calendar reading `31 DECEMBER 2007`.
+### Sugarcane juice
 
-Companion: a narrower ring-bound calendar in the same upright orientation.
+Primary: a tall transparent tumbler with pale-gold juice, visible froth,
+condensation, a nodal cane-stalk stirrer and a separate curved sipping straw.
 
-### 123 m altimeter
+Companion: a squat handled glass with its own rim, juice chamber,
+condensation and shorter nodal cane stalk.
 
-Primary: a front-facing handheld analogue altimeter with a graduated dial,
-pointer, neck strap and digital-style `123 m` window.
+### Bourbon green gecko companions
 
-Companion: a more compact front-facing altimeter with the same orientation and
-shorter strap.
+Primary: a large side-facing green gecko with a long curved tail, four planted
+limbs, separated toes, warm dorsal markings and a clear face.
 
-The buttons omit the strain code. Internal IDs may retain it.
+Companion: a smaller, differently posed gecko with a tighter tail curve,
+different limb geometry and its own marking pattern.
 
 ## Acceptance checks
 
@@ -96,6 +101,7 @@ The buttons omit the strain code. Internal IDs may retain it.
 
 ## Implementation status
 
-Implemented and validated on 2026-07-28 with the preserved source PNG,
-optimized WebP, evidence-bounded agricultural-edge composition and six
-bespoke independently movable accessory drawings.
+The evidence-bounded agricultural-edge composition and preserved painted
+background remain unchanged. The former jar, calendar and altimeter drawings
+were replaced on 2026-08-31 by the vanilla, cane-juice and green-gecko set;
+the exact production render and public labels were approved on 2026-08-31.

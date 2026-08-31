@@ -5284,115 +5284,157 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   .orsay-ju2518-accessory .ju2518-date-number { font-size: 35px; }
 }
 
-/* Réunion agricultural-mollusk record: inspection, year-turn date and altitude. */
-.reunion-ju1375-accessory {
-  --ju1375-ink: color-mix(in srgb, #2d3c3a 86%, var(--worm-deep));
-  --ju1375-brass: color-mix(in srgb, #a8753f 76%, var(--local-secondary));
-  --ju1375-brass-light: color-mix(in srgb, #dfbd72 78%, var(--paper-strong));
-  --ju1375-blue: color-mix(in srgb, #557f7c 78%, var(--local-primary));
-  --ju1375-blue-light: color-mix(in srgb, #add0c7 72%, var(--paper-strong));
-  --ju1375-shell: color-mix(in srgb, #b9855f 78%, var(--local-tertiary));
-  --ju1375-cream: color-mix(in srgb, #eee0bd 84%, var(--paper-strong));
-  --ju1375-glass: color-mix(in srgb, #cce5df 56%, transparent);
+/* Réunion JU1375: vanilla, cane juice and endemic-gecko fantasy references. */
+.bfr-reunion {
+  --ju1375-ink: #263b3b;
+  --ju1375-vine: #2f775d;
+  --ju1375-vine-light: #79aa71;
+  --ju1375-flower: #fff4d8;
+  --ju1375-flower-warm: #f0d39a;
+  --ju1375-lip: #a64169;
+  --ju1375-pod: #5d4937;
+  --ju1375-pod-light: #806244;
+  --ju1375-juice: rgba(228, 190, 75, .78);
+  --ju1375-juice-light: #f4d97d;
+  --ju1375-glass: rgba(214, 244, 237, .34);
+  --ju1375-cane: #718b4d;
+  --ju1375-cane-light: #bed47a;
+  --ju1375-gecko: #4cae72;
+  --ju1375-gecko-light: #8bd48d;
+  --ju1375-gecko-deep: #216c58;
+  --ju1375-gecko-mark: #d75b62;
 }
-.reunion-ju1375-accessory path,
-.reunion-ju1375-accessory circle {
+.bfr-reunion path,
+.bfr-reunion circle,
+.bfr-reunion ellipse {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.ju1375-label,
-.ju1375-small-label,
-.ju1375-number,
-.ju1375-date-label,
-.ju1375-date-number {
-  fill: var(--ju1375-ink);
-  font-family: var(--font-sans);
-  font-weight: 900;
-  pointer-events: none;
-}
-.ju1375-small-label { font-size: 12px; letter-spacing: .08em; }
-.ju1375-number { font-size: 23px; }
-.ju1375-date-label { font-size: 20px; }
-.ju1375-date-number { font-size: 31px; }
-.ju1375-inspection-cabinet,
-.ju1375-theatre-table,
-.ju1375-clock-tower,
-.ju1375-chronometer-bed,
-.ju1375-altitude-frame,
-.ju1375-altimeter-table {
-  fill: var(--ju1375-brass);
-  stroke: var(--ju1375-ink);
-  stroke-width: 4;
-}
-.ju1375-view-window,
-.ju1375-date-window,
-.ju1375-month-window,
-.ju1375-year-window,
-.ju1375-land-card,
-.ju1375-land-aperture {
-  fill: var(--ju1375-cream);
-  stroke: var(--ju1375-ink);
-  stroke-width: 3.5;
-}
-.ju1375-date-window.accent,
-.ju1375-land-card.accent {
-  fill: var(--ju1375-blue-light);
-}
-.ju1375-shell {
-  fill: var(--ju1375-shell);
-  stroke: var(--ju1375-ink);
-  stroke-width: 4;
-}
-.ju1375-shell.accent { fill: var(--ju1375-brass-light); }
-.ju1375-shell-spiral,
-.ju1375-theatre-tick,
-.ju1375-midnight-line,
-.ju1375-midnight-bridge,
-.ju1375-altitude-line,
-.ju1375-scale-line {
+.ju1375-vanilla-vine,
+.ju1375-vanilla-tendril {
   fill: none;
-  stroke: var(--ju1375-ink);
-  stroke-width: 3;
+  stroke: var(--ju1375-vine);
+  stroke-width: 13;
 }
-.ju1375-substrate-swatch,
-.ju1375-land-terrace {
-  fill: color-mix(in srgb, var(--ju1375-shell) 66%, var(--ju1375-cream));
+.ju1375-vanilla-tendril { stroke-width: 4; }
+.ju1375-vanilla-leaf {
+  fill: var(--ju1375-vine);
+  stroke: var(--ju1375-ink);
+  stroke-width: 4;
+}
+.ju1375-vanilla-leaf-light { fill: var(--ju1375-vine-light); }
+.ju1375-vanilla-petal {
+  fill: var(--ju1375-flower);
   stroke: var(--ju1375-ink);
   stroke-width: 3.5;
 }
-.ju1375-aperture-lens,
-.ju1375-theatre-disc,
-.ju1375-date-wheel,
-.ju1375-altitude-dial {
+.ju1375-vanilla-petal.warm { fill: var(--ju1375-flower-warm); }
+.ju1375-vanilla-lip {
+  fill: var(--ju1375-lip);
+  stroke: var(--ju1375-ink);
+  stroke-width: 3.5;
+}
+.ju1375-vanilla-throat {
+  fill: var(--bfr-gold);
+  stroke: var(--ju1375-ink);
+  stroke-width: 2.5;
+}
+.ju1375-vanilla-pod {
+  fill: var(--ju1375-pod);
+  stroke: var(--ju1375-ink);
+  stroke-width: 4;
+}
+.ju1375-vanilla-pod-light { fill: var(--ju1375-pod-light); }
+.ju1375-juice-glass {
   fill: var(--ju1375-glass);
   stroke: var(--ju1375-ink);
+  stroke-width: 5;
+}
+.ju1375-glass-rim {
+  fill: rgba(245, 255, 250, .5);
+  stroke: var(--ju1375-ink);
   stroke-width: 4;
 }
-.ju1375-sample-drawer,
-.ju1375-index-plate,
-.ju1375-nd-shutter,
-.ju1375-singleton-latch,
-.ju1375-altitude-weight,
-.ju1375-blank-drawer,
-.ju1375-blank-shutter {
-  fill: var(--ju1375-brass-light);
+.ju1375-cane-juice {
+  fill: var(--ju1375-juice);
   stroke: var(--ju1375-ink);
   stroke-width: 3.5;
 }
-.ju1375-midnight-weight,
-.ju1375-midnight-star {
-  fill: var(--ju1375-blue);
+.ju1375-juice-froth {
+  fill: none;
+  stroke: var(--ju1375-juice-light);
+  stroke-width: 7;
+}
+.ju1375-cane-straw {
+  fill: none;
+  stroke: var(--ju1375-cane);
+  stroke-width: 16;
+}
+.ju1375-cane-node {
+  fill: none;
+  stroke: var(--ju1375-cane-light);
+  stroke-width: 4;
+}
+.ju1375-sipping-straw,
+.ju1375-sipping-straw-highlight {
+  fill: none;
+  stroke: var(--bfr-accent);
+  stroke-width: 8;
+}
+.ju1375-sipping-straw-highlight {
+  stroke: #f7b3c0;
+  stroke-width: 2.5;
+}
+.ju1375-glass-handle {
+  fill: none;
+  stroke: var(--ju1375-ink);
+  stroke-width: 7;
+}
+.ju1375-condensation {
+  fill: rgba(246, 255, 253, .84);
+  stroke: rgba(54, 111, 108, .52);
+  stroke-width: 2;
+}
+.ju1375-gecko-tail,
+.ju1375-gecko-body,
+.ju1375-gecko-head {
+  fill: var(--ju1375-gecko);
+  stroke: var(--ju1375-ink);
+  stroke-width: 5;
+}
+.ju1375-gecko-head { fill: var(--ju1375-gecko-light); }
+.ju1375-gecko-limb {
+  fill: none;
+  stroke: var(--ju1375-gecko-deep);
+  stroke-width: 9;
+}
+.ju1375-gecko-toe {
+  fill: none;
+  stroke: var(--ju1375-gecko-deep);
+  stroke-width: 4;
+}
+.ju1375-gecko-pad {
+  fill: var(--ju1375-gecko-light);
+  stroke: var(--ju1375-gecko-deep);
+  stroke-width: 2.5;
+}
+.ju1375-gecko-eye {
+  fill: #f7db79;
+  stroke: var(--ju1375-ink);
+  stroke-width: 3.5;
+}
+.ju1375-gecko-pupil { fill: #172e34; stroke: none; }
+.ju1375-gecko-smile,
+.ju1375-gecko-highlight {
+  fill: none;
   stroke: var(--ju1375-ink);
   stroke-width: 3;
 }
-.ju1375-land-symbol {
-  fill: none;
-  stroke: var(--ju1375-blue);
-  stroke-width: 6;
-}
-@media (max-width: 600px) {
-  .reunion-ju1375-accessory .ju1375-small-label { display: none; }
-  .reunion-ju1375-accessory .ju1375-date-number { font-size: 35px; }
+.ju1375-gecko-highlight { stroke: rgba(218, 250, 185, .78); }
+.ju1375-gecko-mark {
+  fill: var(--ju1375-gecko-mark);
+  stroke: var(--ju1375-ink);
+  stroke-width: 2;
 }
 
 /* Kauaʻi low-forest record: three samples, collection date and 11 m elevation. */

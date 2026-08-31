@@ -11,7 +11,7 @@ const rows = [
   ["briggsae", "Ahmedabad, India · AF16", "lattice fans", "lattice-fan", "kite rigs", "kite-rig", "soil kits", "soil-kit"],
   ["briggsae", "Salt Lake City, Utah · EG4181", "apricot blossom hats", "eg4181-apricot-blossom-hat", "beehive saddle packs", "eg4181-beehive-saddle-pack", "single-tail mountain skis", "eg4181-single-tail-mountain-ski"],
   ["briggsae", "Kauaʻi, Hawaiʻi · QG130", "kukui-shell glow carts", "qg130-kukui-glow-cart", "root-loop carousel rides", "qg130-root-carousel", "three-worm ribbon hoops", "qg130-three-ribbon-hoops"],
-  ["briggsae", "Réunion Island · JU1375", "shell sample jars", "ju1375-mollusk-substrate-inspection", "31 December field calendars", "ju1375-year-turn-collection-chronometer", "123 m altimeters", "ju1375-agricultural-land-altimeter"],
+  ["briggsae", "Réunion Island · JU1375", "vanilla vine wraps", "ju1375-vanilla-vine-wrap", "sugarcane juice", "ju1375-sugarcane-juice", "Bourbon green gecko companions", "ju1375-bourbon-green-gecko-companion"],
   ["briggsae", "Orsay, France · JU2518", "pressed-flower crowns", "ju2518-rotten-apple-decay-rotoscope", "apple field satchels", "ju2518-virus-association-spectroscope", "notebook & pencil harnesses", "ju2518-six-september-garden-ledger"],
   ["briggsae", "Dois Rios, Ilha Grande, Brazil · EG5612", "jackfruit sample trays", "eg5612-jackfruit-emergence-theatre", "shared sample bags", "eg5612-shared-bag-provenance-bifurcator", "test-cross plates", "eg5612-single-larva-test-cross-gate"],
   ["briggsae", "Nambucca Heads, New South Wales · QG2814", "flower presses", "qg2814-ground-flower-sample-theatre", "two culture plates", "qg2814-five-day-two-plate-relay", "18S DNA cards", "qg2814-18s-identity-ribbon-reader"],
@@ -3685,95 +3685,6 @@ function drawOrsayJU2518Accessory(group, item, companion) {
   return false;
 }
 
-function drawReunionJU1375Accessory(group, item, companion) {
-  if (!reunionJU1375RendererIds.has(item.id)) return false;
-  group.dataset.renderer = item.family;
-  group.classList.add("reunion-ju1375-accessory", companion ? "ju1375-companion" : "ju1375-primary");
-  const text = (value, x, y, className = "ju1375-label") => {
-    const node = add(group, "text", { class: className, x, y, "text-anchor": "middle" });
-    node.textContent = value;
-  };
-  const shell = (cx, cy, scale, className = "ju1375-shell") => {
-    const shellGroup = add(group, "g", { transform: `translate(${cx} ${cy}) scale(${scale})` });
-    path(shellGroup, "M-36 18Q-42-19-12-36Q18-51 42-25Q63-1 40 24Q17 48-15 37Q-30 32-36 18Z", className);
-    path(shellGroup, "M-9 18Q-27 7-20-11Q-12-30 8-27Q28-23 29-4Q30 13 15 20Q1 26-7 16Q-14 7-8-2Q-2-12 8-9Q17-5 13 5Q9 13 2 8", "ju1375-shell-spiral");
-    return shellGroup;
-  };
-
-  if (item.family === "ju1375-mollusk-substrate-inspection") {
-    if (companion) {
-      path(group, "M-42-84H36L49 72H-49Z", "ju1375-inspection-cabinet");
-      path(group, "M-29-68H28V-20H-29ZM-25-8H31V38H-25Z", "ju1375-view-window");
-      shell(-1, -44, .42);
-      path(group, "M-17 20Q-2 2 16 20Q10 38-8 37Z", "ju1375-substrate-swatch");
-      add(group, "circle", { class: "ju1375-aperture-lens", cx: 47, cy: -40, r: 18 });
-      path(group, "M-28 48H29L22 73H-35Z", "ju1375-sample-drawer");
-      text("MOLLUSK", -3, 66, "ju1375-small-label");
-    } else {
-      path(group, "M-108 24H106V72H-108Z", "ju1375-theatre-table");
-      add(group, "circle", { class: "ju1375-theatre-disc", cx: 0, cy: -12, r: 64 });
-      shell(-45, -15, .5);
-      shell(34, -36, .35, "ju1375-shell accent");
-      path(group, "M19 18Q35-2 57 17Q49 41 26 40Z", "ju1375-substrate-swatch");
-      add(group, "circle", { class: "ju1375-aperture-lens", cx: 0, cy: -12, r: 16 });
-      line(group, "M0-76V-61M-64-12H-50M0 50V63M50-12H64", "ju1375-theatre-tick");
-      path(group, "M-81 72H79L70 94H-89Z", "ju1375-index-plate");
-      text("SUBSTRATE INSPECTION", -5, 87, "ju1375-small-label");
-    }
-    return true;
-  }
-
-  if (item.family === "ju1375-year-turn-collection-chronometer") {
-    if (companion) {
-      path(group, "M-39-84H34L48 72H-48Z", "ju1375-clock-tower");
-      [["31",-52],["DEC",-16],["2007",20]].forEach(([label,cy], index) => {
-        path(group, `M-27 ${cy-13}H27V${cy+13}H-27Z`, index === 1 ? "ju1375-date-window accent" : "ju1375-date-window");
-        text(label, 0, cy + 6, index === 2 ? "ju1375-small-label" : "ju1375-date-label");
-      });
-      line(group, "M-58-61V33", "ju1375-midnight-line");
-      add(group, "circle", { class: "ju1375-midnight-weight", cx: -58, cy: 46, r: 12 });
-      [31,53].forEach((x,index)=>path(group,`M${x-10} 43H${x+10}V68H${x-10}Z`,"ju1375-nd-shutter"));
-      text("ND", 42, 61, "ju1375-small-label");
-    } else {
-      path(group, "M-108 24H106V71H-108Z", "ju1375-chronometer-bed");
-      add(group, "circle", { class: "ju1375-date-wheel", cx: -57, cy: -18, r: 42 });
-      text("31", -57, -6, "ju1375-date-number");
-      path(group, "M-9-49H48V9H-9Z", "ju1375-month-window");
-      text("DEC", 20, -12, "ju1375-date-label");
-      path(group, "M53-49H98V9H53Z", "ju1375-year-window");
-      text("2007", 76, -12, "ju1375-small-label");
-      line(group, "M-14 29H45M16 13V50", "ju1375-midnight-bridge");
-      add(group, "circle", { class: "ju1375-midnight-star", cx: 16, cy: 30, r: 10 });
-      path(group, "M52 25H96V55H52Z", "ju1375-singleton-latch");
-      text("ONE", 74, 47, "ju1375-small-label");
-    }
-    return true;
-  }
-
-  if (item.family === "ju1375-agricultural-land-altimeter") {
-    if (companion) {
-      path(group, "M-42-83H37L49 72H-50Z", "ju1375-altitude-frame");
-      line(group, "M-5-68V35", "ju1375-altitude-line");
-      path(group, "M-17 33L-5 58L7 33Z", "ju1375-altitude-weight");
-      text("123 m", -5, 77, "ju1375-small-label");
-      [-51,-19,13].forEach((cy,index)=>path(group,`M25 ${cy}H${58-index*5}V${cy+21}H25Z`,index===1?"ju1375-land-card accent":"ju1375-land-card"));
-      [-50,-20,10].forEach(cy=>path(group,`M-63 ${cy}H-31V${cy+19}H-63Z`,"ju1375-blank-drawer"));
-    } else {
-      path(group, "M-109 25H106V72H-109Z", "ju1375-altimeter-table");
-      path(group, "M-96 19L-63-8L-29 11L4-25L39-3L72-37L98-11V29H-96Z", "ju1375-land-terrace");
-      add(group, "circle", { class: "ju1375-altitude-dial", cx: -69, cy: -42, r: 28 });
-      text("123", -69, -34, "ju1375-number");
-      path(group, "M11-57H73V-16H11Z", "ju1375-land-aperture");
-      path(group, "M20-24Q32-49 44-28Q55-53 66-25", "ju1375-land-symbol");
-      [35,62,89].forEach(cx=>path(group,`M${cx-10} 31H${cx+10}V57H${cx-10}Z`,"ju1375-blank-shutter"));
-      text("ND", 62, 50, "ju1375-small-label");
-      line(group, "M-7-53V55M-15-39H1M-15-14H1M-15 12H1M-15 38H1", "ju1375-scale-line");
-    }
-    return true;
-  }
-  return false;
-}
-
 function drawKauaiQG130Accessory(group, item, companion) {
   if (!kauaiQG130RendererIds.has(item.id)) return false;
   group.dataset.renderer = item.family;
@@ -5013,65 +4924,88 @@ function drawBriggsaeFieldAccessory(group, item, companion) {
     add(group, "ellipse", { class: "bfr-fine bfr-no-fill", cx, cy: cy - 4, rx: rx - 7, ry: ry - 7 });
   };
 
-  if (isReunion && item.family === "ju1375-mollusk-substrate-inspection") {
-    shadow(88, 108);
+  if (isReunion && item.family === "ju1375-vanilla-vine-wrap") {
+    group.classList.add("reunion-vanilla-wrap");
+    const vine = companion
+      ? "M-82 54C-43 13-61-57-6-70C37-80 72-48 60-10C51 18 20 30-8 17"
+      : "M-112 69C-67 25-90-74-19-91C39-105 91-62 78-7C68 35 24 48-17 27C-48 12-46-24-16-38";
+    path(group, vine, "ju1375-vanilla-vine");
+    path(group, companion ? "M-54 13Q-87-5-91-36Q-61-44-42-22Q-40-2-54 13Z" : "M-75 18Q-117-8-116-49Q-77-55-54-27Q-55-2-75 18Z", "ju1375-vanilla-leaf");
+    path(group, companion ? "M32-49Q48-84 78-77Q84-43 56-24Q40-26 32-49Z" : "M42-67Q62-112 101-102Q109-58 73-34Q51-37 42-67Z", "ju1375-vanilla-leaf ju1375-vanilla-leaf-light");
+    const flowerGroup = add(group, "g", { transform: companion ? "translate(9 -56) rotate(-12) scale(.78)" : "translate(7 -75) rotate(-8)" });
+    [-92,-22,48,118,188].forEach((angle, index) => {
+      const radians = angle * Math.PI / 180;
+      const cx = Math.cos(radians) * 25;
+      const cy = Math.sin(radians) * 20;
+      add(flowerGroup, "ellipse", { class: index === 1 ? "ju1375-vanilla-petal warm" : "ju1375-vanilla-petal", cx: cx.toFixed(1), cy: cy.toFixed(1), rx: 13, ry: 28, transform: `rotate(${angle + 90} ${cx.toFixed(1)} ${cy.toFixed(1)})` });
+    });
+    path(flowerGroup, "M-9-2Q0-19 10-2Q17 12 0 29Q-17 12-9-2Z", "ju1375-vanilla-lip");
+    add(flowerGroup, "circle", { class: "ju1375-vanilla-throat", cx: 0, cy: 2, r: 6 });
     if (companion) {
-      path(group, "M-51-76H48L58-57V76Q58 91 42 96H-39Q-55 91-55 76V-57Z", "bfr-glass");
-      path(group, "M-58-76H55V-55H-58Z", "bfr-primary");
-      path(group, "M-43-50H43V58Q30 71 0 70Q-30 71-43 58Z", "bfr-water");
-      shell(0, 17, .78);
-      path(group, "M-43 63H43V87H-43Z", "bfr-ivory");
-      label("MOLLUSK", 0, 80, "bfr-small");
-      path(group, "M-29-82Q0-105 29-82", "bfr-line");
+      path(group, "M48-15Q65 17 55 55Q47 72 35 54Q43 16 29-8Z", "ju1375-vanilla-pod");
+      path(group, "M-24-58Q-11-35-5-16", "ju1375-vanilla-tendril");
     } else {
-      path(group, "M-69-78H66L76-55V76Q76 94 57 100H-53Q-72 94-72 76V-55Z", "bfr-glass");
-      path(group, "M-76-78H73V-53H-76Z", "bfr-primary");
-      [-47,-17,13,43].forEach(x => path(group, `M ${x} -76 V -55`, "bfr-fine"));
-      path(group, "M-57-45H57V55Q39 73 0 72Q-39 73-57 55Z", "bfr-water");
-      shell(-3, 14, 1.02);
-      path(group, "M-55 62H55V91H-55Z", "bfr-ivory");
-      label("SHELL SAMPLE", 0, 82, "bfr-small");
-      path(group, "M-38-84Q0-116 38-84", "bfr-line");
+      path(group, "M55-15Q75 24 62 69Q52 91 38 67Q48 22 31-7Z", "ju1375-vanilla-pod");
+      path(group, "M74-19Q97 12 91 51Q84 73 70 55Q79 15 59-10Z", "ju1375-vanilla-pod ju1375-vanilla-pod-light");
+      path(group, "M-26-79Q-8-51-3-24M-37 44Q-57 62-75 45", "ju1375-vanilla-tendril");
     }
     return true;
   }
 
-  if (isReunion && item.family === "ju1375-year-turn-collection-chronometer") {
-    shadow(82, 104);
-    const width = companion ? 118 : 150;
-    const left = -width / 2;
-    path(group, `M ${left} -76 H ${-left} V 91 H ${left} Z`, "bfr-ivory");
-    path(group, `M ${left} -76 H ${-left} V -43 H ${left} Z`, "bfr-primary");
-    [-35,0,35].filter(x => Math.abs(x) < width / 2 - 4).forEach(x => {
-      add(group, "circle", { class: "bfr-gold", cx: x, cy: -77, r: 8 });
-      path(group, `M ${x} -91 V -69`, "bfr-fine");
-    });
-    label("31", 0, 24, "bfr-date-number");
-    label("DECEMBER", 0, 51, "bfr-label");
-    path(group, `M ${left + 12} 63 H ${-left - 12}`, "bfr-fine");
-    label("2007", 0, 82, "bfr-small");
-    path(group, `M ${left + 10} -35 H ${-left - 10}`, "bfr-accent-line");
+  if (isReunion && item.family === "ju1375-sugarcane-juice") {
+    group.classList.add("reunion-cane-juice");
+    shadow(companion ? 64 : 78, companion ? 101 : 111);
+    if (companion) {
+      path(group, "M-66-44Q0-58 66-44L57 62Q0 79-57 62Z", "ju1375-juice-glass");
+      add(group, "ellipse", { class: "ju1375-glass-rim", cx: 0, cy: -44, rx: 66, ry: 15 });
+      path(group, "M-53-16Q0-29 53-16L48 57Q0 70-48 57Z", "ju1375-cane-juice");
+      path(group, "M-50-16Q0-28 50-16", "ju1375-juice-froth");
+      path(group, "M21-75L41 50", "ju1375-cane-straw");
+      [ -49,-12,26 ].forEach(y => path(group, `M${17 + (y + 49) * .09} ${y}L${31 + (y + 49) * .09} ${y-2}`, "ju1375-cane-node"));
+      path(group, "M37-29Q75-49 85-13Q88 17 67 33", "ju1375-glass-handle");
+      add(group, "circle", { class: "ju1375-condensation", cx: -38, cy: 4, r: 5 });
+      add(group, "circle", { class: "ju1375-condensation", cx: -26, cy: 30, r: 3.5 });
+    } else {
+      path(group, "M-77-71Q0-88 77-71L67 74Q0 96-67 74Z", "ju1375-juice-glass");
+      add(group, "ellipse", { class: "ju1375-glass-rim", cx: 0, cy: -71, rx: 77, ry: 17 });
+      path(group, "M-63-37Q0-51 63-37L57 67Q0 84-57 67Z", "ju1375-cane-juice");
+      path(group, "M-61-37Q0-51 61-37", "ju1375-juice-froth");
+      path(group, "M29-113L51 63", "ju1375-cane-straw");
+      [-86,-39,8].forEach(y => path(group, `M${25 + (y + 86) * .12} ${y}L${42 + (y + 86) * .12} ${y-3}`, "ju1375-cane-node"));
+      path(group, "M-16-74Q-3-108 25-115Q45-118 58-101", "ju1375-sipping-straw");
+      path(group, "M-18-69Q-4-96 18-101", "ju1375-sipping-straw-highlight");
+      [[-47,-2,5],[-37,29,4],[38,10,4],[29,48,3]].forEach(([cx,cy,r]) => add(group, "circle", { class: "ju1375-condensation", cx, cy, r }));
+    }
     return true;
   }
 
-  if (isReunion && item.family === "ju1375-agricultural-land-altimeter") {
-    shadow(76, 107);
-    path(group, companion ? "M-46-63Q-70-31-69 11Q-68 53-44 77" : "M-54-70Q-82-32-80 13Q-78 57-51 84", "bfr-strap");
-    path(group, companion ? "M46-63Q70-31 69 11Q68 53 44 77" : "M54-70Q82-32 80 13Q78 57 51 84", "bfr-strap");
-    const radius = companion ? 65 : 79;
-    add(group, "circle", { class: "bfr-primary", cx: 0, cy: 0, r: radius });
-    add(group, "circle", { class: "bfr-ivory", cx: 0, cy: 0, r: radius - 12 });
-    [-70,-50,-30,-10,10,30,50,70].forEach(deg => {
-      const radians = deg * Math.PI / 180;
-      const inner = radius - 24;
-      const outer = radius - 15;
-      line(group, `M ${(Math.sin(radians) * inner).toFixed(1)} ${(-Math.cos(radians) * inner).toFixed(1)} L ${(Math.sin(radians) * outer).toFixed(1)} ${(-Math.cos(radians) * outer).toFixed(1)}`, "bfr-fine");
-    });
-    path(group, "M0 6L33-34", "bfr-pointer");
-    add(group, "circle", { class: "bfr-gold", cx: 0, cy: 6, r: 7 });
-    path(group, "M-34 28H34V57H-34Z", "bfr-secondary");
-    label("123 m", 0, 49, "bfr-label");
-    label("ALT", 0, -28, "bfr-small");
+  if (isReunion && item.family === "ju1375-bourbon-green-gecko-companion") {
+    group.classList.add("reunion-gecko-companion");
+    if (companion) {
+      path(group, "M-35 13C-61 31-84 18-80-3C-77-19-56-27-46-15C-38-5-48 7-60 2C-68-2-69-12-63-19", "ju1375-gecko-tail");
+      path(group, "M-42-27C-20-47 17-47 45-30C61-20 62 3 45 15C21 31-16 25-42 10C-58 1-58-14-42-27Z", "ju1375-gecko-body");
+      path(group, "M34-35C49-50 74-49 88-35C98-25 96-10 85-2C69 9 48 5 38-8C31-17 29-28 34-35Z", "ju1375-gecko-head");
+      path(group, "M-22-18Q-47-29-58-11Q-61 0-49 5M-15 14Q-37 24-33 42Q-26 53-14 43M28 11Q48 19 55 35Q56 46 46 50M43-29Q63-35 75-23", "ju1375-gecko-limb");
+      [[-58,-11,-67,-17],[-49,5,-58,13],[-33,42,-41,51],[-14,43,-10,54],[55,35,65,41],[46,50,50,61],[75,-23,85,-29]].forEach(([x1,y1,x2,y2]) => path(group, `M${x1} ${y1}L${x2} ${y2}`, "ju1375-gecko-toe"));
+      [[-67,-17],[-58,13],[-41,51],[-10,54],[65,41],[50,61],[85,-29]].forEach(([cx,cy]) => add(group, "circle", { class: "ju1375-gecko-pad", cx, cy, r: 4 }));
+      add(group, "ellipse", { class: "ju1375-gecko-eye", cx: 65, cy: -28, rx: 8, ry: 7 });
+      add(group, "ellipse", { class: "ju1375-gecko-pupil", cx: 67, cy: -28, rx: 2.5, ry: 4 });
+      path(group, "M68-9Q76-6 82-13", "ju1375-gecko-smile");
+      [[-19,-18,4],[0,-3,3.5],[22,-21,3.5]].forEach(([cx,cy,r]) => add(group, "circle", { class: "ju1375-gecko-mark", cx, cy, r }));
+      path(group, "M-31-27Q1-40 33-26", "ju1375-gecko-highlight");
+    } else {
+      path(group, "M-52 19C-92 44-126 26-122-5C-119-31-86-45-69-27C-56-13-69 5-88-1C-101-6-103-22-93-33", "ju1375-gecko-tail");
+      path(group, "M-64-38C-34-65 17-65 55-41C77-27 79 3 56 21C23 45-28 36-64 16C-86 4-86-20-64-38Z", "ju1375-gecko-body");
+      path(group, "M42-49C64-70 100-68 121-49C134-36 132-14 116-3C94 13 61 8 48-11C38-24 35-39 42-49Z", "ju1375-gecko-head");
+      path(group, "M-36-26Q-72-43-88-17Q-92-1-75 7M-26 20Q-59 34-52 59Q-42 75-24 61M37 17Q67 28 77 52Q78 68 62 73M56-41Q86-50 103-32", "ju1375-gecko-limb");
+      [[-88,-17,-102,-25],[-75,7,-88,19],[-52,59,-64,72],[-24,61,-18,77],[77,52,92,61],[62,73,68,91],[103,-32,119,-41]].forEach(([x1,y1,x2,y2]) => path(group, `M${x1} ${y1}L${x2} ${y2}`, "ju1375-gecko-toe"));
+      [[-102,-25],[-88,19],[-64,72],[-18,77],[92,61],[68,91],[119,-41]].forEach(([cx,cy]) => add(group, "circle", { class: "ju1375-gecko-pad", cx, cy, r: 5.5 }));
+      add(group, "ellipse", { class: "ju1375-gecko-eye", cx: 88, cy: -39, rx: 11, ry: 9 });
+      add(group, "ellipse", { class: "ju1375-gecko-pupil", cx: 92, cy: -39, rx: 3.5, ry: 5 });
+      path(group, "M91-12Q104-8 114-19", "ju1375-gecko-smile");
+      [[-43,-30,5.5],[-13,-6,5],[17,-28,5],[43,2,4.5]].forEach(([cx,cy,r]) => add(group, "circle", { class: "ju1375-gecko-mark", cx, cy, r }));
+      path(group, "M-50-39Q1-57 48-38M-52 13Q-4 31 45 17", "ju1375-gecko-highlight");
+    }
     return true;
   }
 
@@ -6328,7 +6262,6 @@ function drawNamedAccessory(group, item, companion) {
   if (drawNambuccaQG2814Accessory(group, item, companion)) return true;
   if (drawDoisRiosEG5612Accessory(group, item, companion)) return true;
   if (drawOrsayJU2518Accessory(group, item, companion)) return true;
-  if (drawReunionJU1375Accessory(group, item, companion)) return true;
   if (drawKauaiQG130Accessory(group, item, companion)) return true;
   if (drawSaltLakeEG4181Accessory(group, item, companion)) return true;
   if (drawLombokHPT26Accessory(group, item, companion)) return true;
@@ -6480,9 +6413,9 @@ function renderPiece(target, item, wormPart) {
     ,"qg130-kukui-glow-cart": { primary: [388, 137, .47, -5], companion: [7, 128, .37, 5] }
     ,"qg130-root-carousel": { primary: [236, 228, .43, -2], companion: [126, 245, .35, 3] }
     ,"qg130-three-ribbon-hoops": { primary: [386, 277, .38, -3], companion: [178, 300, .3, 4] }
-    ,"ju1375-mollusk-substrate-inspection": { primary: [380, 137, .37, -2], companion: [-7, 119, .29, 3] }
-    ,"ju1375-year-turn-collection-chronometer": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
-    ,"ju1375-agricultural-land-altimeter": { primary: [381, 258, .34, -1], companion: [194, 294, .27, 2] }
+    ,"ju1375-vanilla-vine-wrap": { primary: [271, 183, .52, 18], companion: [93, 172, .42, 19] }
+    ,"ju1375-sugarcane-juice": { primary: [388, 251, .38, -5], companion: [19, 257, .3, 7] }
+    ,"ju1375-bourbon-green-gecko-companion": { primary: [393, 115, .36, -7], companion: [16, 113, .29, 8] }
     ,"ju2518-rotten-apple-decay-rotoscope": { primary: [340, 92, .42, -2], companion: [68, 79, .32, 3] }
     ,"ju2518-virus-association-spectroscope": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
     ,"ju2518-six-september-garden-ledger": { primary: [225, 268, .34, -10], companion: [70, 227, .27, -7] }
