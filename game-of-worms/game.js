@@ -656,16 +656,12 @@ function renderTabs() {
       button.type = "button";
       button.className = "species-tab";
       button.dataset.species = item.id;
-      button.style.setProperty("--tab-color", item.wormDeep);
       button.setAttribute("aria-pressed", String(item.id === selectedId));
       button.setAttribute("aria-label", t("meetSpeciesAria", {
         name: item.name,
         nickname: item.nickname
       }));
 
-      const worm = document.createElement("span");
-      worm.className = "mini-worm";
-      worm.setAttribute("aria-hidden", "true");
       const name = document.createElement("i");
       name.textContent = item.short;
       const mode = document.createElement("small");
@@ -673,7 +669,7 @@ function renderTabs() {
       mode.textContent = item.reproduction === "selfing"
         ? t("reproductionMostlySelfing")
         : t("reproductionOutcrossing");
-      button.append(worm, name, mode);
+      button.append(name, mode);
       button.addEventListener("click", () => selectSpecies(item.id));
       pairButtons.appendChild(button);
     });
