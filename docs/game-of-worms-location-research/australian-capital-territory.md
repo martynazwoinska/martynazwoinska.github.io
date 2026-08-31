@@ -74,7 +74,7 @@ The scene connects the documented rotting-fig microhabitat to an anonymised back
 
 The revised accessories are a deliberately playful Canberra morning rather than another field-equipment set. They are regional fantasy references and are not presented as collection tools. They use no Indigenous cultural motifs, flag shorthand, commercial branding or claim that the depicted café and balloon event occurred at the private collection site.
 
-### Canberra flat-white café
+### Flat white
 
 VisitCanberra documents both Canberra's specialty-coffee culture and a locally roasted flat white as a characteristic local experience. The artwork uses an original unbranded café set.
 
@@ -86,7 +86,7 @@ Sources:
 - **Primary:** a low handmade-stoneware cup and saucer close to the hermaphrodite's mouth, with a real elliptical rim, contained coffee surface, worm-shaped milk pattern, material shading, spoon and three separate steam curls. Its placement must read as drinking rather than as a floating cup.
 - **Companion:** a separately constructed hand grinder with glass bean hopper, visible beans, crank, burr, drawer and feet. It shares the café story without duplicating or shrinking the cup.
 
-### Dawn balloon carriages
+### Balloon carriages
 
 The Canberra Balloon Spectacular launches balloons at dawn. The Game uses two original imaginary balloons and does not reproduce a real operator's balloon or branding.
 
@@ -95,7 +95,7 @@ Source: [Events Canberra, Canberra Balloon Spectacular](https://events.canberra.
 - **Primary:** a broad onion-shaped envelope with contained emerald, berry, gold and aqua panels, structural seams, highlight, throat, burner, cables and a wide woven basket.
 - **Companion:** a taller pear-shaped envelope with a different panel rhythm and a compact basket. Its proportions, suspension and weave are separately drawn rather than scaled from the primary balloon.
 
-### Backyard cockatoo café raids
+### Cockatoo café raids
 
 Sulphur-crested cockatoos are large white parrots with a dark bill, yellow crest and yellow underwing wash, and are common around human settlements. The Game turns that recognisable construction into an imaginative backyard café raid; it is wider Australian urban-garden context rather than a documented observation at the collection address.
 
