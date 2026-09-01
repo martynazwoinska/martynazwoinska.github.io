@@ -63,32 +63,32 @@ The locked silhouette is one arched fig branch with attached round syconia above
 
 ## Accessory evidence and design contract
 
-The three accessories translate the fig–fig-wasp ecology into playful objects. They do not imply that the worms wear these structures in nature.
+The replacement set uses three clearly readable rides rather than clothing, baskets or detached wings. The fig-wasp taxi reflects the documented dispersal association. The boat and manta float use Ishigaki's reef setting as playful regional context rather than collection evidence.
 
-### Fig UV visors
+### Fig-wasp taxis
 
-- **Female:** a broad translucent aqua shield with a berry brow, gold lower rim, visible side hinges and a cut-fig medallion with a small leaf.
-- **Male:** a separately proportioned compact shield with lighter hardware and its own smaller fig medallion.
-- Both follow the head angle, retain a transparent view of the face and stay clear of the eyes.
+- **Primary:** a long side-profile pollinating-wasp ride with a segmented gold abdomen, complete head, thorax, wings, antennae and legs, plus a fitted berry saddle and raised handle.
+- **Companion:** a shorter, steeper three-quarter wasp with different body proportions, wing angles, leg geometry and compact saddle hardware.
+- Both are complete insects carrying riding gear. Neither worm wears imitation wings.
 
-### Sample pannier
+### Glass-bottom boats
 
-- **Female:** a fitted oval woven side pannier with a curved handle, raised hinged lid, two whole fresh fig samples and one visibly cut fig.
-- **Male:** two unequal sample cups on a light padded yoke, with one whole fig, one cut fig, a separate collection tag and no backpack outline.
-- The pair differs in silhouette and construction rather than scale alone.
+- **Primary:** a broad twin-hull sightseeing boat with a berry canopy, gold rails, steering console, portholes and a large transparent central viewing well.
+- **Companion:** a compact open launch with a single shaped hull, smaller canopy, side portholes, rudder and its own glass viewing well.
+- Hull thickness, decks, frames and viewing openings make both objects readable as boats before their colour or labels.
 
-### Fig-wasp wings
+### Manta-ray floats
 
-- **Female:** a long translucent forewing pair with smaller hindwings, clear branching veins, layered gold wing roots and a fitted curved crossed harness.
-- **Male:** a shorter fan-shaped pair with different venation, smaller root plates and a compact crossed harness.
-- Wing edges remain visible over both light worms and the painted vegetation, while faces remain unobstructed.
+- **Primary:** a broad top-down inflatable manta with long wings, extended tail, contained seam lines, contrasting saddle pad and two body-fitted grips.
+- **Companion:** a shorter asymmetric inflatable with a different wing sweep, tail construction, seams and handle layout.
+- Both worms receive their own float; neither object is an animal presented as collection evidence.
 
 ## Quality and interaction acceptance
 
 - The painted background equals or exceeds the Bristol and Edinburgh finish.
 - The attached fresh fig is more prominent than mangroves or reef.
 - All six accessory copies use dedicated SVG geometry and differ between female and male.
-- The fascinator never disappears or clips when focused, touched or dragged.
+- No ride disappears or clips when focused, touched or dragged.
 - All three pairs remain legible together and do not hide either face.
 - Each of the six objects moves independently by pointer and keyboard; Home resets only the focused copy.
 - Visual checks cover 360 px, 768 px, 1024 px and wide desktop.

@@ -7,7 +7,7 @@ const SVG_NS = "http://www.w3.org/2000/svg";
  * non-identical pair, one drawing for each independently movable worm.
  */
 const rows = [
-  ["inopinata", "Ishigaki, Japan", "fig UV visors", "fig-fascinator", "field specimen baskets", "sample-pannier", "fig-wasp wings", "wings"],
+  ["inopinata", "Ishigaki, Japan", "fig-wasp taxis", "ishigaki-fig-wasp-taxi", "glass-bottom boats", "ishigaki-glass-bottom-boat", "manta-ray floats", "ishigaki-manta-float"],
   ["briggsae", "Ahmedabad, India · AF16", "lattice fans", "lattice-fan", "kite rigs", "kite-rig", "soil kits", "soil-kit"],
   ["briggsae", "Salt Lake City, Utah · EG4181", "apricot blossom hats", "eg4181-apricot-blossom-hat", "beehive saddle packs", "eg4181-beehive-saddle-pack", "single-tail mountain skis", "eg4181-single-tail-mountain-ski"],
   ["briggsae", "Kauaʻi, Hawaiʻi · QG130", "kukui-shell glow carts", "qg130-kukui-glow-cart", "root-loop carousel rides", "qg130-root-carousel", "three-worm ribbon hoops", "qg130-three-ribbon-hoops"],
@@ -42,9 +42,10 @@ const rows = [
 
 const explicitUniqueRendererFamilies = new Set([
   "canoe-paddle-bow",
-  "fig-fascinator",
+  "ishigaki-fig-wasp-taxi",
+  "ishigaki-glass-bottom-boat",
+  "ishigaki-manta-float",
   "monocle",
-  "sample-pannier",
   "shade-visor"
 ]);
 
@@ -2999,177 +3000,89 @@ function drawRepeatedFamilyAccessory(group, item, companion) {
 
 function drawUniqueNamedAccessory(group, item, companion) {
   switch (item.family) {
-    case "fig-fascinator": {
-      group.classList.add("ishigaki-accessory", "ishigaki-fascinator", companion ? "ishigaki-fascinator-male" : "ishigaki-fascinator-female");
+    case "ishigaki-fig-wasp-taxi": {
+      group.classList.add("ishigaki-accessory", "ishigaki-wasp-taxi", companion ? "ishigaki-wasp-taxi-companion" : "ishigaki-wasp-taxi-primary");
       if (companion) {
-        path(group, "M-48-15Q0-42 49-14L44-5Q0-26-43-5Z", "uv-visor-brow");
-        path(group, "M-45-7Q0-27 46-6L40 23Q0 42-40 22Z", "uv-visor-shield");
-        path(group, "M-40 22Q0 39 40 23", "uv-visor-edge");
-        path(group, "M-39 16Q0 31 39 17", "uv-visor-lower-rim");
-        path(group, "M-44-5L-59 4M45-4L59 6", "uv-visor-temple");
-        add(group, "circle", { class: "uv-visor-hinge", cx: -43, cy: -4, r: 3.8 });
-        add(group, "circle", { class: "uv-visor-hinge", cx: 44, cy: -3, r: 3.8 });
-        path(group, "M-30-5Q-8-17 16-10", "uv-visor-glare");
-        const medallion = add(group, "g", { class: "uv-fig-medallion", transform: "translate(-37 -19) rotate(-12)" });
-        add(medallion, "circle", { class: "uv-fig-rind", cx: 0, cy: 0, r: 13 });
-        add(medallion, "circle", { class: "uv-fig-flesh", cx: 0, cy: 0, r: 9 });
-        [[-3,-3],[3,-4],[-4,3],[3,3]].forEach(([cx,cy]) => add(medallion, "circle", { class: "uv-fig-seed", cx, cy, r: 1.2 }));
-        path(medallion, "M7-9Q18-20 23-8Q15 1 7-2Z", "uv-fig-leaf");
+        add(group, "ellipse", { class: "ishigaki-ride-shadow", cx: 1, cy: 45, rx: 77, ry: 12 });
+        path(group, "M-21-4C-49-44-83-49-91-25C-78-5-49 9-18 11Z", "ishigaki-wasp-wing far");
+        path(group, "M-13-8C6-47 47-55 68-29C58-7 28 8-6 13Z", "ishigaki-wasp-wing near");
+        path(group, "M-72 12Q-51-7-27 3Q-8 13-18 32Q-46 45-76 31Q-91 22-72 12Z", "ishigaki-wasp-abdomen");
+        path(group, "M-66 10Q-55 27-57 37M-47 3Q-36 25-39 41", "ishigaki-wasp-segment");
+        add(group, "ellipse", { class: "ishigaki-wasp-thorax", cx: -4, cy: 12, rx: 28, ry: 24, transform: "rotate(-9 -4 12)" });
+        add(group, "circle", { class: "ishigaki-wasp-head", cx: 29, cy: 5, r: 20 });
+        add(group, "circle", { class: "ishigaki-wasp-eye", cx: 37, cy: 0, r: 6 });
+        path(group, "M41-11Q61-27 75-17M42-8Q65-12 76 1", "ishigaki-wasp-antenna");
+        path(group, "M-21 27L-51 62M-2 31L-5 68M15 25L42 59M-27 20L-64 46M10 20L53 38", "ishigaki-wasp-leg");
+        path(group, "M-23-1Q-4-18 18-4L14 14Q-4 22-24 12Z", "ishigaki-taxi-saddle");
+        path(group, "M-13-7L-4-26Q4-31 12-23L19-7M-19 9Q-2 30 19 12", "ishigaki-taxi-hardware");
+        path(group, "M20-2Q35-20 48-9", "ishigaki-taxi-handle");
       } else {
-        path(group, "M-67-20Q0-58 68-19L61-7Q0-39-60-7Z", "uv-visor-brow");
-        path(group, "M-62-10Q0-40 63-8L55 31Q0 57-55 29Z", "uv-visor-shield");
-        path(group, "M-55 29Q0 53 55 31", "uv-visor-edge");
-        path(group, "M-54 21Q0 43 54 23", "uv-visor-lower-rim");
-        path(group, "M-61-7L-82 5M62-6L82 8", "uv-visor-temple");
-        add(group, "circle", { class: "uv-visor-hinge", cx: -60, cy: -6, r: 5 });
-        add(group, "circle", { class: "uv-visor-hinge", cx: 61, cy: -5, r: 5 });
-        path(group, "M-45-7Q-15-28 19-17M-39 1Q-18-9 1-6", "uv-visor-glare");
-        const medallion = add(group, "g", { class: "uv-fig-medallion", transform: "translate(-52 -27) rotate(-12)" });
-        add(medallion, "circle", { class: "uv-fig-rind", cx: 0, cy: 0, r: 17 });
-        add(medallion, "circle", { class: "uv-fig-flesh", cx: 0, cy: 0, r: 12 });
-        [[-4,-4],[3,-6],[6,0],[-5,3],[2,5]].forEach(([cx,cy]) => add(medallion, "circle", { class: "uv-fig-seed", cx, cy, r: 1.5 }));
-        path(medallion, "M9-12Q24-27 31-11Q21 3 9-2Z", "uv-fig-leaf");
+        add(group, "ellipse", { class: "ishigaki-ride-shadow", cx: -2, cy: 56, rx: 108, ry: 15 });
+        path(group, "M-32-7C-61-58-111-70-128-37C-112-4-74 18-28 18Z", "ishigaki-wasp-wing far");
+        path(group, "M-18-12C13-69 72-76 101-39C87-5 47 20-9 22Z", "ishigaki-wasp-wing near");
+        path(group, "M-109 16Q-83-15-48-2Q-18 10-31 39Q-66 59-105 42Q-128 30-109 16Z", "ishigaki-wasp-abdomen");
+        path(group, "M-96 10Q-79 33-82 49M-68 0Q-50 30-54 53", "ishigaki-wasp-segment");
+        add(group, "ellipse", { class: "ishigaki-wasp-thorax", cx: -11, cy: 17, rx: 37, ry: 31, transform: "rotate(-8 -11 17)" });
+        add(group, "circle", { class: "ishigaki-wasp-head", cx: 34, cy: 7, r: 25 });
+        add(group, "circle", { class: "ishigaki-wasp-eye", cx: 45, cy: 1, r: 7.5 });
+        path(group, "M48-10Q75-34 94-19M50-7Q79-14 96 4", "ishigaki-wasp-antenna");
+        path(group, "M-35 38L-73 82M-9 44L-11 88M20 37L58 75M-42 28L-88 57M16 29L73 52", "ishigaki-wasp-leg");
+        path(group, "M-38-2Q-12-28 18-8L14 19Q-10 31-39 17Z", "ishigaki-taxi-saddle");
+        path(group, "M-24-12L-11-39Q0-47 13-35L24-10M-30 15Q-9 42 20 17", "ishigaki-taxi-hardware");
+        path(group, "M21-6Q42-30 59-12", "ishigaki-taxi-handle");
       }
       return true;
     }
-    case "sample-pannier": {
-      group.classList.add("ishigaki-accessory", "ishigaki-pannier", companion ? "ishigaki-pannier-male" : "ishigaki-pannier-female");
-      const basketDefs = add(group, "defs");
+    case "ishigaki-glass-bottom-boat": {
+      group.classList.add("ishigaki-accessory", "ishigaki-glass-boat", companion ? "ishigaki-glass-boat-companion" : "ishigaki-glass-boat-primary");
       if (companion) {
-        const leftBody = "M-68-22C-67 5-61 33-54 43Q-41 53-28 44C-21 27-18 2-18-22Z";
-        const rightBody = "M16-19C17 7 21 34 28 44Q40 54 53 45C60 27 66 3 67-18Z";
-        const leftClipId = "ishigaki-pannier-left-clip";
-        const rightClipId = "ishigaki-pannier-right-clip";
-        const leftClip = add(basketDefs, "clipPath", { id: leftClipId });
-        const rightClip = add(basketDefs, "clipPath", { id: rightClipId });
-        path(leftClip, leftBody);
-        path(rightClip, rightBody);
-        path(group, "M-64-29Q0-73 64-26", "pannier-yoke");
-        path(group, "M-20-34Q0-47 20-32L16-23Q0-33-16-24Z", "pannier-yoke-pad");
-        path(group, leftBody, "pannier-cup left");
-        path(group, rightBody, "pannier-cup right");
-        const leftWeave = add(group, "g", { class: "pannier-weave-field", "clip-path": `url(#${leftClipId})` });
-        const rightWeave = add(group, "g", { class: "pannier-weave-field", "clip-path": `url(#${rightClipId})` });
-        [-82,-67,-52,-37,-22,-7].forEach((x, index) => path(leftWeave, `M${x} 49L${x + 45}-30`, index % 2 ? "pannier-weave-b" : "pannier-weave-a"));
-        [-77,-62,-47,-32,-17,-2].forEach((x, index) => path(leftWeave, `M${x}-30L${x + 37} 51`, index % 2 ? "pannier-weave-a" : "pannier-weave-b"));
-        [4,19,34,49,64,79].forEach((x, index) => path(rightWeave, `M${x} 50L${x + 38}-28`, index % 2 ? "pannier-weave-b" : "pannier-weave-a"));
-        [3,18,33,48,63,78].forEach((x, index) => path(rightWeave, `M${x}-29L${x - 38} 52`, index % 2 ? "pannier-weave-a" : "pannier-weave-b"));
-        [5,25].forEach(y => {
-          path(leftWeave, `M-70 ${y}Q-42 ${y + 12} -16 ${y}`, "pannier-weave-row");
-          path(rightWeave, `M14 ${y + 1}Q40 ${y + 13} 67 ${y}`, "pannier-weave-row");
-        });
-        add(group, "ellipse", { class: "pannier-interior", cx: -43, cy: -22, rx: 26, ry: 9 });
-        add(group, "ellipse", { class: "pannier-interior", cx: 41, cy: -19, rx: 27, ry: 9 });
-        add(group, "circle", { class: "pannier-fig light", cx: -47, cy: -27, r: 12 });
-        add(group, "circle", { class: "pannier-ostiole", cx: -47, cy: -27, r: 2.4 });
-        path(group, "M-43-38Q-31-48-25-35Q-34-28-42-31Z", "pannier-fig-leaf");
-        add(group, "circle", { class: "pannier-cut-fig", cx: 42, cy: -24, r: 13 });
-        add(group, "circle", { class: "pannier-cut-flesh", cx: 42, cy: -24, r: 9 });
-        [[39,-27],[45,-28],[38,-21],[45,-20]].forEach(([cx,cy]) => add(group, "circle", { class: "pannier-floret", cx, cy, r: 1.35 }));
-        add(group, "ellipse", { class: "pannier-rim", cx: -43, cy: -22, rx: 27, ry: 10 });
-        add(group, "ellipse", { class: "pannier-rim", cx: 41, cy: -19, rx: 28, ry: 10 });
-        path(group, "M-68-21Q-43-8-17-21M15-18Q41-4 67-17", "pannier-front-rim");
-        path(group, "M-64 39Q-41 54-15 40M15 41Q39 55 61 42", "pannier-base-band");
-        path(group, "M-2-43Q-8-36-7-29", "pannier-tag-cord");
-        path(group, "M-8-43L19-40L16-22L-11-26Z", "pannier-tag");
-        line(group, "M-2-37L13-34M-3-31L11-29M-4-26L7-25", "pannier-tag-line");
+        add(group, "ellipse", { class: "ishigaki-ride-shadow", cx: 0, cy: 65, rx: 86, ry: 12 });
+        path(group, "M-84 8Q0-20 84 8L68 55Q0 76-67 55Z", "ishigaki-boat-hull");
+        path(group, "M-71 14Q0-5 71 14L60 28Q0 42-60 28Z", "ishigaki-boat-deck");
+        path(group, "M-34 31Q0 19 34 31L28 56Q0 65-28 56Z", "ishigaki-viewing-well");
+        path(group, "M-28 36Q0 27 28 36M-23 45Q0 38 23 45", "ishigaki-viewing-ripple");
+        path(group, "M-43 13V-25Q0-43 43-25V13", "ishigaki-boat-canopy-frame");
+        path(group, "M-49-23Q0-49 49-23L40-12Q0-31-40-12Z", "ishigaki-boat-canopy");
+        path(group, "M-71 9V-5M71 9V-5M-71-4H-43M43-4H71", "ishigaki-boat-rail");
+        add(group, "circle", { class: "ishigaki-boat-porthole", cx: -53, cy: 41, r: 7 });
+        add(group, "circle", { class: "ishigaki-boat-porthole", cx: 53, cy: 41, r: 7 });
+        path(group, "M79 31L98 41L78 49Z", "ishigaki-boat-rudder");
       } else {
-        const basketBody = "M-68-28C-65 8-55 43-42 56Q0 72 42 56C55 43 65 8 69-28Z";
-        const basketClipId = "ishigaki-pannier-main-clip";
-        const basketClip = add(basketDefs, "clipPath", { id: basketClipId });
-        path(basketClip, basketBody);
-        path(group, "M-57-27C-53-98 52-98 59-26", "pannier-handle");
-        add(group, "ellipse", { class: "pannier-lid", cx: -3, cy: -50, rx: 61, ry: 17, transform: "rotate(-8 -3 -50)" });
-        path(group, "M-60-53Q-5-77 57-48M-57-48Q-4-25 55-44", "pannier-lid-weave");
-        path(group, "M-50-54Q-2-65 49-49M-42-60Q-2-66 40-54", "pannier-lid-rib");
-        path(group, basketBody, "pannier-basket");
-        const weave = add(group, "g", { class: "pannier-weave-field", "clip-path": `url(#${basketClipId})` });
-        [-94,-70,-46,-22,2,26,50,74].forEach((x, index) => path(weave, `M${x} 66L${x + 78}-39`, index % 2 ? "pannier-weave-b" : "pannier-weave-a"));
-        [-92,-68,-44,-20,4,28,52,76].forEach((x, index) => path(weave, `M${x}-39L${x + 77} 67`, index % 2 ? "pannier-weave-a" : "pannier-weave-b"));
-        [-4,20,43].forEach(y => path(weave, `M-72 ${y}Q0 ${y + 19} 72 ${y}`, "pannier-weave-row"));
-        add(group, "ellipse", { class: "pannier-interior", cx: 0, cy: -28, rx: 66, ry: 16 });
-        add(group, "circle", { class: "pannier-fig light", cx: -31, cy: -39, r: 16 });
-        add(group, "circle", { class: "pannier-ostiole", cx: -31, cy: -39, r: 3 });
-        path(group, "M-25-54Q-9-67 0-50Q-13-39-24-44Z", "pannier-fig-leaf");
-        add(group, "circle", { class: "pannier-fig", cx: 5, cy: -41, r: 18 });
-        add(group, "circle", { class: "pannier-ostiole", cx: 5, cy: -41, r: 3.2 });
-        add(group, "circle", { class: "pannier-cut-fig", cx: 39, cy: -35, r: 18 });
-        add(group, "circle", { class: "pannier-cut-flesh", cx: 39, cy: -35, r: 13 });
-        [[34,-40],[42,-41],[47,-34],[39,-29],[31,-31]].forEach(([cx,cy]) => add(group, "circle", { class: "pannier-floret", cx, cy, r: 1.7 }));
-        add(group, "ellipse", { class: "pannier-rim", cx: 0, cy: -28, rx: 68, ry: 17 });
-        path(group, "M-67-27Q0-9 67-27", "pannier-front-rim");
-        path(group, "M-43 52Q0 67 43 52", "pannier-base-band");
-        path(group, "M-50-29L-47-43M50-27L48-42", "pannier-lid-hinge");
-        path(group, "M-9-17Q0-10 10-17L8-7Q0-2-8-7Z", "pannier-lid-latch");
-        path(group, "M46 1Q55 5 58 11", "pannier-tag-cord");
-        path(group, "M43 3L76 8L72 36L39 30Z", "pannier-tag");
-        line(group, "M49 11L69 15M48 18L67 22M47 25L61 28", "pannier-tag-line");
+        add(group, "ellipse", { class: "ishigaki-ride-shadow", cx: 0, cy: 79, rx: 120, ry: 16 });
+        path(group, "M-122 12Q-107-7-83-2L-64 61Q-95 61-112 43Z", "ishigaki-boat-hull side");
+        path(group, "M122 12Q107-7 83-2L64 61Q95 61 112 43Z", "ishigaki-boat-hull side");
+        path(group, "M-91 0Q0-31 91 0L72 60Q0 83-72 60Z", "ishigaki-boat-deck");
+        path(group, "M-51 25Q0 8 51 25L41 58Q0 72-41 58Z", "ishigaki-viewing-well");
+        path(group, "M-42 31Q0 18 42 31M-35 43Q0 32 35 43M-28 54Q0 47 28 54", "ishigaki-viewing-ripple");
+        path(group, "M-63 2V-43M63 2V-43M-63-41Q0-70 63-41", "ishigaki-boat-canopy-frame");
+        path(group, "M-74-41Q0-79 74-41L63-24Q0-51-63-24Z", "ishigaki-boat-canopy");
+        path(group, "M-93 1V-15M93 1V-15M-93-14H-65M65-14H93", "ishigaki-boat-rail");
+        add(group, "rect", { class: "ishigaki-boat-console", x: 38, y: -18, width: 28, height: 24, rx: 5, transform: "rotate(5 52 -6)" });
+        add(group, "circle", { class: "ishigaki-boat-wheel", cx: 51, cy: -20, r: 12 });
+        add(group, "circle", { class: "ishigaki-boat-porthole", cx: -78, cy: 42, r: 8 });
+        add(group, "circle", { class: "ishigaki-boat-porthole", cx: 78, cy: 42, r: 8 });
       }
       return true;
     }
-    case "wings": {
-      group.classList.add("ishigaki-accessory", "ishigaki-wings", companion ? "ishigaki-wings-male" : "ishigaki-wings-female");
-      const maskId = companion ? "ishigaki-wing-body-mask-companion" : "ishigaki-wing-body-mask-primary";
-      const defs = add(group, "defs");
-      const bodyMask = add(defs, "mask", { id: maskId, x: -150, y: -120, width: 300, height: 260, maskUnits: "userSpaceOnUse" });
-      add(bodyMask, "rect", { x: -150, y: -120, width: 300, height: 260, fill: "white" });
-      path(bodyMask, companion ? "M-24-35Q0-47 24-34L22 45Q0 58-22 44Z" : "M-31-41Q0-57 31-40L28 53Q0 69-28 52Z").setAttribute("fill", "black");
-      const farClipId = companion ? "ishigaki-wing-far-clip-companion" : "ishigaki-wing-far-clip-primary";
-      const nearClipId = companion ? "ishigaki-wing-near-clip-companion" : "ishigaki-wing-near-clip-primary";
-      const farClip = add(defs, "clipPath", { id: farClipId });
-      const nearClip = add(defs, "clipPath", { id: nearClipId });
+    case "ishigaki-manta-float": {
+      group.classList.add("ishigaki-accessory", "ishigaki-manta-float", companion ? "ishigaki-manta-float-companion" : "ishigaki-manta-float-primary");
       if (companion) {
-        const farFore = "M-8 2C-26-30-53-43-70-25C-69-2-45 17-10 19C-17 11-17 6-8 2Z";
-        const farHind = "M-10 15C-33 13-51 28-49 46C-31 53-13 40-4 25Z";
-        const nearFore = "M8 3C29-36 62-47 80-22C80 5 53 27 12 25C18 16 17 8 8 3Z";
-        const nearHind = "M10 17C37 14 58 31 56 52C37 61 15 45 4 27Z";
-        path(farClip, farFore);
-        path(farClip, farHind);
-        path(nearClip, nearFore);
-        path(nearClip, nearHind);
-        const farSide = add(group, "g", { class: "fig-wing-far-side", mask: `url(#${maskId})` });
-        path(farSide, farFore, "fig-wasp-wing-panel far male");
-        path(farSide, farHind, "fig-wasp-hindwing far male");
-        const farVeins = add(farSide, "g", { class: "fig-wing-venation far", "clip-path": `url(#${farClipId})` });
-        path(farVeins, "M-10 16C-29 9-49-5-66-23M-11 17C-30 20-43 14-56 3M-13 20C-27 28-38 37-46 44M-34 11Q-37 20-33 28", "fig-wing-vein");
-        const nearSide = add(group, "g", { class: "fig-wing-near-side" });
-        path(nearSide, nearFore, "fig-wasp-wing-panel near male");
-        path(nearSide, nearHind, "fig-wasp-hindwing near male");
-        const nearVeins = add(nearSide, "g", { class: "fig-wing-venation near", "clip-path": `url(#${nearClipId})` });
-        path(nearVeins, "M11 20C31 12 53-1 75-19M12 21C33 23 52 18 68 8M14 24C30 32 43 41 53 50M29 14Q34 23 32 31M48 3Q52 13 49 21", "fig-wing-vein");
-        path(nearVeins, "M12 18C31 2 54-14 77-21", "fig-wing-costa");
-        add(group, "ellipse", { class: "fig-wing-root", cx: -17, cy: 3, rx: 11, ry: 14, transform: "rotate(-28 -17 3)" });
-        add(group, "ellipse", { class: "fig-wing-root", cx: 18, cy: 4, rx: 11, ry: 14, transform: "rotate(28 18 4)" });
-        path(group, "M-19-13Q0-30 19-12L14 34Q0 47-14 33Z", "fig-wing-harness");
-        path(group, "M-13-6Q0 3 13-5M-11 17Q0 27 11 17M-15-7L14 27M15-7L-13 27", "fig-wing-harness-detail");
-        add(group, "ellipse", { class: "fig-wing-buckle", cx: 0, cy: 31, rx: 7, ry: 6 });
-        path(group, "M22-4Q50-19 72-17M27 9Q50-1 66 2", "fig-wing-sheen");
+        add(group, "ellipse", { class: "ishigaki-ride-shadow", cx: 0, cy: 43, rx: 76, ry: 12 });
+        path(group, "M0-58C-16-42-25-25-35-17C-54-3-77 1-91-4Q-78 29-43 40Q-20 47-7 30L0 19L8 30Q25 48 47 38Q79 22 88-11C65-3 47-6 31-20Q17-40 0-58ZM0 19Q5 45 19 74Q6 67 0 89Q-7 68-20 74Q-6 45 0 19Z", "ishigaki-manta-body");
+        path(group, "M-70 0Q-47 16-31 18M67-5Q45 13 30 17", "ishigaki-manta-seam");
+        path(group, "M-22-8Q0-27 23-8L17 25Q0 35-17 25Z", "ishigaki-manta-seat");
+        path(group, "M-17-2Q0 11 17-2M-12 18Q0 27 12 18", "ishigaki-manta-grip");
+        add(group, "circle", { class: "ishigaki-manta-eye", cx: -20, cy: -25, r: 3.5 });
+        add(group, "circle", { class: "ishigaki-manta-eye", cx: 20, cy: -25, r: 3.5 });
       } else {
-        const farFore = "M-12 1C-36-38-73-55-94-32C-91-4-62 22-15 24C-23 14-23 7-12 1Z";
-        const farHind = "M-13 18C-43 16-68 35-66 59C-43 69-18 52-6 31Z";
-        const nearFore = "M11 3C39-44 87-59 111-27C112 8 77 37 17 32C25 20 24 10 11 3Z";
-        const nearHind = "M13 22C50 17 80 39 77 67C51 79 21 59 6 35Z";
-        path(farClip, farFore);
-        path(farClip, farHind);
-        path(nearClip, nearFore);
-        path(nearClip, nearHind);
-        const farSide = add(group, "g", { class: "fig-wing-far-side", mask: `url(#${maskId})` });
-        path(farSide, farFore, "fig-wasp-wing-panel far female");
-        path(farSide, farHind, "fig-wasp-hindwing far female");
-        const farVeins = add(farSide, "g", { class: "fig-wing-venation far", "clip-path": `url(#${farClipId})` });
-        path(farVeins, "M-15 19C-42 9-68-10-89-30M-16 21C-44 23-64 15-78 1M-18 24C-39 34-54 47-62 57M-46 11Q-50 23-45 34M-69-8Q-66 5-57 15", "fig-wing-vein");
-        const nearSide = add(group, "g", { class: "fig-wing-near-side" });
-        path(nearSide, nearFore, "fig-wasp-wing-panel near female");
-        path(nearSide, nearHind, "fig-wasp-hindwing near female");
-        const nearVeins = add(nearSide, "g", { class: "fig-wing-venation near", "clip-path": `url(#${nearClipId})` });
-        path(nearVeins, "M16 25C44 14 75-5 104-24M17 27C47 30 72 24 94 9M19 31C42 42 60 54 73 65M39 17Q45 28 42 38M67 1Q71 14 66 25", "fig-wing-vein");
-        path(nearVeins, "M15 22C43 1 74-18 106-27", "fig-wing-costa");
-        add(group, "ellipse", { class: "fig-wing-root", cx: -24, cy: 4, rx: 14, ry: 18, transform: "rotate(-30 -24 4)" });
-        add(group, "ellipse", { class: "fig-wing-root", cx: 25, cy: 5, rx: 14, ry: 18, transform: "rotate(30 25 5)" });
-        path(group, "M-26-18Q0-42 26-17L20 45Q0 61-20 44Z", "fig-wing-harness");
-        path(group, "M-18-9Q0 2 18-8M-16 19Q0 31 16 19M-21-11L18 36M21-11L-18 36", "fig-wing-harness-detail");
-        add(group, "circle", { class: "fig-wing-buckle", cx: 0, cy: 40, r: 7 });
-        path(group, "M31-8Q69-29 100-24M38 8Q69-6 91-1M26 39Q53 51 70 61", "fig-wing-sheen");
+        add(group, "ellipse", { class: "ishigaki-ride-shadow", cx: -2, cy: 55, rx: 108, ry: 15 });
+        path(group, "M0-78C-24-58-35-33-51-24C-76-8-104-6-126-18Q-113 30-63 50Q-31 61-11 35L0 21L12 35Q34 61 68 48Q112 27 126-24C96-8 72-10 51-30Q29-58 0-78ZM0 21Q8 62 27 103Q9 91 0 118Q-11 91-29 103Q-8 61 0 21Z", "ishigaki-manta-body");
+        path(group, "M-100-10Q-71 18-47 24M100-15Q70 14 47 22M-78 30Q-54 43-32 45M79 26Q56 41 33 44", "ishigaki-manta-seam");
+        path(group, "M-32-11Q0-39 34-10L26 35Q0 51-27 35Z", "ishigaki-manta-seat");
+        path(group, "M-25-2Q0 18 25-3M-18 27Q0 40 18 27", "ishigaki-manta-grip");
+        add(group, "circle", { class: "ishigaki-manta-eye", cx: -29, cy: -34, r: 4.5 });
+        add(group, "circle", { class: "ishigaki-manta-eye", cx: 29, cy: -34, r: 4.5 });
+        path(group, "M-7-63Q0-72 8-63", "ishigaki-manta-brow");
       }
       return true;
     }
@@ -6521,9 +6434,9 @@ function renderPiece(target, item, wormPart) {
     "n2-lab-coat": { primary: [180, 214, 1, 0], companion: [52, 168, .92, -1] },
     "cryo-vial-jetpack": { primary: [258, 118, .84, 208], companion: [43, 132, .65, 212] },
     "n2-lab-goggles": { primary: [331, 53, 1, 14], companion: [111, 104, .58, 14] },
-    "fig-fascinator": { primary: [326, 62, .64, -2], companion: [108, 106, .5, 3] },
-    "sample-pannier": { primary: [170, 194, .63, -4], companion: [55, 181, .46, 4] },
-    "wings": { primary: [270, 124, .66, 42], companion: [116, 129, .46, 40] },
+    "ishigaki-fig-wasp-taxi": { primary: [326, 143, .5, -10], companion: [76, 137, .39, 8] },
+    "ishigaki-glass-bottom-boat": { primary: [250, 265, .48, -3], companion: [42, 250, .38, 4] },
+    "ishigaki-manta-float": { primary: [422, 286, .4, -5], companion: [170, 303, .32, 5] },
     "lattice-fan": { primary: [295, 126, .5, -8], companion: [101, 100, .42, -6] },
     "kite-rig": { primary: [168, 190, .46, -4], companion: [61, 185, .36, 4] },
     "soil-kit": { primary: [315, 226, .48, -2], companion: [47, 225, .39, 4] },

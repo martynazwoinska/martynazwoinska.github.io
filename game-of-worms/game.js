@@ -3,7 +3,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260901-117";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260901-118";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
@@ -1032,12 +1032,7 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
     const accessoryBounds = accessoryPieceBounds(id, wormPart);
     if (!accessoryBounds?.width || !accessoryBounds.height) return position;
 
-    const isPrimaryFigFascinator = referencePiece.dataset.accessoryFamily === "fig-fascinator"
-      && referencePiece.dataset.wormPart === "primary";
-    const topOverflow = isPrimaryFigFascinator
-      ? Math.min(accessoryBounds.height * .66, movementBounds.height * .2)
-      : 0;
-    const topBoundary = movementBounds.top + margin - topOverflow;
+    const topBoundary = movementBounds.top + margin;
 
     let screenX = 0;
     let screenY = 0;
@@ -1532,12 +1527,8 @@ function moveActiveAccessoryPointer(event) {
       movementBounds.left + margin - startBounds.left,
       Math.min(movementBounds.right - margin - startBounds.right, screenDeltaX)
     );
-    const topOverflow = piece.dataset.accessoryFamily === "fig-fascinator"
-      && piece.dataset.wormPart === "primary"
-      ? Math.min(startBounds.height * .66, movementBounds.height * .2)
-      : 0;
     screenDeltaY = Math.max(
-      movementBounds.top + margin - topOverflow - startBounds.top,
+      movementBounds.top + margin - startBounds.top,
       Math.min(movementBounds.bottom - accessoryBottomMargin - startBounds.bottom, screenDeltaY)
     );
   }
