@@ -6410,7 +6410,7 @@ function renderPiece(target, item, wormPart) {
     "n2-lab-coat": { primary: [180, 214, 1, 0], companion: [52, 168, .92, -1] },
     "cryo-vial-jetpack": { primary: [258, 118, .84, 208], companion: [43, 132, .65, 212] },
     "n2-lab-goggles": { primary: [331, 53, 1, 14], companion: [111, 104, .58, 14] },
-    "fig-fascinator": { primary: [331, 53, .8, 0], companion: [111, 104, .58, 0] },
+    "fig-fascinator": { primary: [331, 53, .7, 0], companion: [111, 104, .5, 0] },
     "sample-pannier": { primary: [170, 176, .66, -4], companion: [51, 164, .39, 4] },
     "wings": { primary: [252, 166, .52, -4], companion: [87, 162, .4, 4] },
     "lattice-fan": { primary: [295, 126, .5, -8], companion: [101, 100, .42, -6] },

@@ -1823,7 +1823,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   filter: drop-shadow(0 4px 3px rgba(20,55,53,.28));
 }
 .uv-visor-brow { fill: color-mix(in srgb, var(--ishigaki-gold) 72%, var(--ishigaki-ivory)); stroke: var(--ishigaki-ink); stroke-width: 3.5; stroke-linejoin: round; }
-.uv-visor-shield { fill: color-mix(in srgb, var(--ishigaki-sea-light) 75%, white); fill-opacity: .86; stroke: var(--ishigaki-emerald-deep); stroke-width: 3.5; stroke-linejoin: round; }
+.uv-visor-shield { fill: color-mix(in srgb, var(--ishigaki-sea-light) 75%, white); fill-opacity: .68; stroke: var(--ishigaki-emerald-deep); stroke-width: 3.5; stroke-linejoin: round; }
 .uv-visor-edge,
 .uv-visor-lower-rim { fill: none; stroke: var(--ishigaki-gold); stroke-width: 3; stroke-linecap: round; }
 .uv-visor-lower-rim { stroke: var(--ishigaki-berry); stroke-width: 2.2; opacity: .82; }
