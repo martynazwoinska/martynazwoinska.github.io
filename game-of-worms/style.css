@@ -1902,6 +1902,10 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .fig-wing-vein { fill: none; stroke: var(--ishigaki-emerald); stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; opacity: .84; }
 .fig-wing-costa { fill: none; stroke: var(--ishigaki-emerald-deep); stroke-width: 2.1; stroke-linecap: round; opacity: .92; }
 .fig-wing-root { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 2; }
+.fig-wing-thorax { fill: color-mix(in srgb, var(--ishigaki-berry) 82%, var(--ishigaki-ink)); stroke: var(--ishigaki-ink); stroke-width: 3; }
+.fig-wing-thorax-band { fill: none; stroke: var(--ishigaki-gold); stroke-width: 2.2; stroke-linecap: round; opacity: .9; }
+.fig-wing-thorax-highlight { fill: none; stroke: var(--ishigaki-ivory); stroke-width: 1.8; stroke-linecap: round; opacity: .5; }
+.fig-wing-joint { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 1.8; }
 .fig-wing-harness { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 3.5; stroke-linejoin: round; }
 .fig-wing-harness-detail { fill: none; stroke: var(--ishigaki-gold); stroke-width: 2.4; stroke-linecap: round; }
 .fig-wing-buckle { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 1.8; }

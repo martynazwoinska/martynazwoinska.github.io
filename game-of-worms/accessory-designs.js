@@ -3128,9 +3128,12 @@ function drawUniqueNamedAccessory(group, item, companion) {
         path(nearVeins, "M12 18C31 2 54-14 77-21", "fig-wing-costa");
         add(group, "ellipse", { class: "fig-wing-root", cx: -17, cy: 3, rx: 11, ry: 14, transform: "rotate(-28 -17 3)" });
         add(group, "ellipse", { class: "fig-wing-root", cx: 18, cy: 4, rx: 11, ry: 14, transform: "rotate(28 18 4)" });
-        path(group, "M-19-13Q0-30 19-12L14 34Q0 47-14 33Z", "fig-wing-harness");
-        path(group, "M-13-6Q0 3 13-5M-11 17Q0 27 11 17M-15-7L14 27M15-7L-13 27", "fig-wing-harness-detail");
-        add(group, "ellipse", { class: "fig-wing-buckle", cx: 0, cy: 31, rx: 7, ry: 6 });
+        add(group, "ellipse", { class: "fig-wing-thorax", cx: 0, cy: 5, rx: 22, ry: 13, transform: "rotate(-8 0 5)" });
+        path(group, "M-10-1Q0-7 10-1", "fig-wing-thorax-highlight");
+        path(group, "M-18 1Q0 10 18 1M-15 9Q0 17 15 9", "fig-wing-thorax-band");
+        add(group, "circle", { class: "fig-wing-joint", cx: -17, cy: 3, r: 4 });
+        add(group, "circle", { class: "fig-wing-joint", cx: 18, cy: 4, r: 4 });
+        add(group, "circle", { class: "fig-wing-buckle", cx: 0, cy: 16, r: 4 });
         path(group, "M22-4Q50-19 72-17M27 9Q50-1 66 2", "fig-wing-sheen");
       } else {
         const farFore = "M-12 1C-36-38-73-55-94-32C-91-4-62 22-15 24C-23 14-23 7-12 1Z";
@@ -3154,9 +3157,12 @@ function drawUniqueNamedAccessory(group, item, companion) {
         path(nearVeins, "M15 22C43 1 74-18 106-27", "fig-wing-costa");
         add(group, "ellipse", { class: "fig-wing-root", cx: -24, cy: 4, rx: 14, ry: 18, transform: "rotate(-30 -24 4)" });
         add(group, "ellipse", { class: "fig-wing-root", cx: 25, cy: 5, rx: 14, ry: 18, transform: "rotate(30 25 5)" });
-        path(group, "M-26-18Q0-42 26-17L20 45Q0 61-20 44Z", "fig-wing-harness");
-        path(group, "M-18-9Q0 2 18-8M-16 19Q0 31 16 19M-21-11L18 36M21-11L-18 36", "fig-wing-harness-detail");
-        add(group, "circle", { class: "fig-wing-buckle", cx: 0, cy: 40, r: 7 });
+        add(group, "ellipse", { class: "fig-wing-thorax", cx: 0, cy: 8, rx: 31, ry: 17, transform: "rotate(-8 0 8)" });
+        path(group, "M-15 0Q0-9 15 0", "fig-wing-thorax-highlight");
+        path(group, "M-26 2Q0 15 26 2M-22 12Q0 25 22 12", "fig-wing-thorax-band");
+        add(group, "circle", { class: "fig-wing-joint", cx: -23, cy: 5, r: 5 });
+        add(group, "circle", { class: "fig-wing-joint", cx: 24, cy: 6, r: 5 });
+        add(group, "circle", { class: "fig-wing-buckle", cx: 0, cy: 20, r: 5 });
         path(group, "M31-8Q69-29 100-24M38 8Q69-6 91-1M26 39Q53 51 70 61", "fig-wing-sheen");
       }
       return true;
@@ -6510,7 +6516,7 @@ function renderPiece(target, item, wormPart) {
     "n2-lab-goggles": { primary: [331, 53, 1, 14], companion: [111, 104, .58, 14] },
     "fig-fascinator": { primary: [331, 53, .7, 0], companion: [111, 104, .5, 0] },
     "sample-pannier": { primary: [170, 176, .66, -4], companion: [51, 164, .39, 4] },
-    "wings": { primary: [247, 151, .46, -18], companion: [88, 148, .35, -16] },
+    "wings": { primary: [247, 150, .46, -22], companion: [88, 147, .35, -20] },
     "lattice-fan": { primary: [295, 126, .5, -8], companion: [101, 100, .42, -6] },
     "kite-rig": { primary: [168, 190, .46, -4], companion: [61, 185, .36, 4] },
     "soil-kit": { primary: [315, 226, .48, -2], companion: [47, 225, .39, 4] },
