@@ -6516,7 +6516,7 @@ function renderPiece(target, item, wormPart) {
     "n2-lab-goggles": { primary: [331, 53, 1, 14], companion: [111, 104, .58, 14] },
     "fig-fascinator": { primary: [331, 53, .7, 0], companion: [111, 104, .5, 0] },
     "sample-pannier": { primary: [170, 176, .66, -4], companion: [51, 164, .39, 4] },
-    "wings": { primary: [247, 150, .46, -22], companion: [88, 147, .35, -20] },
+    "wings": { primary: [247, 150, .46, 68], companion: [88, 147, .35, 70] },
     "lattice-fan": { primary: [295, 126, .5, -8], companion: [101, 100, .42, -6] },
     "kite-rig": { primary: [168, 190, .46, -4], companion: [61, 185, .36, 4] },
     "soil-kit": { primary: [315, 226, .48, -2], companion: [47, 225, .39, 4] },
