@@ -1822,38 +1822,42 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   --ishigaki-ivory: #fff8df;
   filter: drop-shadow(0 4px 3px rgba(20,55,53,.28));
 }
-.ishigaki-ride-shadow { fill: rgba(15,58,58,.2); stroke: none; }
-.ishigaki-wasp-wing { fill: rgba(209,244,238,.74); stroke: var(--ishigaki-emerald-deep); stroke-width: 3; stroke-linejoin: round; }
-.ishigaki-wasp-wing.far { fill: rgba(192,223,220,.56); stroke-width: 2.5; }
-.ishigaki-wasp-abdomen { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 4; stroke-linejoin: round; }
-.ishigaki-wasp-segment { fill: none; stroke: var(--ishigaki-berry); stroke-width: 5; stroke-linecap: round; }
-.ishigaki-wasp-thorax { fill: var(--ishigaki-emerald); stroke: var(--ishigaki-ink); stroke-width: 4; }
-.ishigaki-wasp-head { fill: var(--ishigaki-emerald-deep); stroke: var(--ishigaki-ink); stroke-width: 4; }
-.ishigaki-wasp-eye { fill: var(--ishigaki-ivory); stroke: var(--ishigaki-berry); stroke-width: 2; }
-.ishigaki-wasp-antenna,
-.ishigaki-wasp-leg { fill: none; stroke: var(--ishigaki-ink); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-.ishigaki-taxi-saddle { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 4; stroke-linejoin: round; }
-.ishigaki-taxi-hardware,
-.ishigaki-taxi-handle { fill: none; stroke: var(--ishigaki-gold); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-.ishigaki-boat-hull { fill: var(--ishigaki-emerald-deep); stroke: var(--ishigaki-ink); stroke-width: 4; stroke-linejoin: round; }
-.ishigaki-boat-hull.side { fill: color-mix(in srgb, var(--ishigaki-emerald-deep) 78%, var(--ishigaki-berry)); }
-.ishigaki-boat-deck { fill: var(--ishigaki-ivory); stroke: var(--ishigaki-ink); stroke-width: 4; stroke-linejoin: round; }
-.ishigaki-viewing-well { fill: rgba(128,224,224,.66); stroke: var(--ishigaki-gold); stroke-width: 4; stroke-linejoin: round; }
-.ishigaki-viewing-ripple { fill: none; stroke: rgba(255,255,255,.9); stroke-width: 3; stroke-linecap: round; }
-.ishigaki-boat-canopy { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 4; stroke-linejoin: round; }
-.ishigaki-boat-canopy-frame,
-.ishigaki-boat-rail { fill: none; stroke: var(--ishigaki-gold); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-.ishigaki-boat-porthole { fill: var(--ishigaki-sea-light); stroke: var(--ishigaki-gold); stroke-width: 3; }
-.ishigaki-boat-rudder { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 3; }
-.ishigaki-boat-console { fill: var(--ishigaki-sea); stroke: var(--ishigaki-ink); stroke-width: 3; }
-.ishigaki-boat-wheel { fill: none; stroke: var(--ishigaki-gold); stroke-width: 4; }
-.ishigaki-manta-body { fill: var(--ishigaki-sea); stroke: var(--ishigaki-ink); stroke-width: 5; stroke-linejoin: round; }
-.ishigaki-manta-float-companion .ishigaki-manta-body { fill: color-mix(in srgb, var(--ishigaki-sea) 78%, var(--ishigaki-berry)); }
-.ishigaki-manta-seam { fill: none; stroke: var(--ishigaki-emerald-deep); stroke-width: 3; stroke-linecap: round; }
-.ishigaki-manta-seat { fill: var(--ishigaki-ivory); stroke: var(--ishigaki-gold); stroke-width: 4; stroke-linejoin: round; }
-.ishigaki-manta-grip { fill: none; stroke: var(--ishigaki-berry); stroke-width: 5; stroke-linecap: round; }
-.ishigaki-manta-eye { fill: var(--ishigaki-ink); stroke: var(--ishigaki-ivory); stroke-width: 1.5; }
-.ishigaki-manta-brow { fill: none; stroke: var(--ishigaki-emerald-deep); stroke-width: 3; stroke-linecap: round; }
+.uv-visor-brow { fill: color-mix(in srgb, var(--ishigaki-gold) 72%, var(--ishigaki-ivory)); stroke: var(--ishigaki-ink); stroke-width: 3.5; stroke-linejoin: round; }
+.uv-visor-shield { fill: color-mix(in srgb, var(--ishigaki-sea-light) 75%, white); fill-opacity: .86; stroke: var(--ishigaki-emerald-deep); stroke-width: 3.5; stroke-linejoin: round; }
+.uv-visor-edge,
+.uv-visor-lower-rim { fill: none; stroke: var(--ishigaki-gold); stroke-width: 3; stroke-linecap: round; }
+.uv-visor-lower-rim { stroke: var(--ishigaki-berry); stroke-width: 2.2; opacity: .82; }
+.uv-visor-temple { fill: none; stroke: var(--ishigaki-ink); stroke-width: 3.4; stroke-linecap: round; }
+.uv-visor-hinge { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ivory); stroke-width: 1.5; }
+.uv-visor-glare { fill: none; stroke: white; stroke-width: 3; stroke-linecap: round; opacity: .7; }
+.uv-fig-rind { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 1.8; }
+.uv-fig-flesh { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ivory); stroke-width: 1.5; }
+.uv-fig-seed { fill: var(--ishigaki-ink); }
+.uv-fig-leaf { fill: var(--ishigaki-emerald); stroke: var(--ishigaki-ink); stroke-width: 1.4; }
+.pannier-basket,
+.pannier-cup { fill: color-mix(in srgb, var(--ishigaki-gold) 80%, #8c6637); stroke: var(--ishigaki-ink); stroke-width: 3.5; stroke-linejoin: round; }
+.pannier-handle,
+.pannier-yoke { fill: none; stroke: var(--ishigaki-ink); stroke-width: 5; stroke-linecap: round; }
+.pannier-yoke { stroke: var(--ishigaki-gold); stroke-width: 4; }
+.pannier-front-rim,
+.pannier-base-band { fill: none; stroke: var(--ishigaki-berry); stroke-width: 3; stroke-linecap: round; }
+.pannier-weave-a,
+.pannier-weave-b,
+.pannier-weave-row { fill: none; stroke: color-mix(in srgb, var(--ishigaki-ivory) 70%, var(--ishigaki-gold)); stroke-width: 2; stroke-linecap: round; opacity: .78; }
+.pannier-weave-b { stroke: color-mix(in srgb, var(--ishigaki-emerald-deep) 78%, var(--ishigaki-ink)); stroke-width: 1.6; opacity: .68; }
+.pannier-interior { fill: var(--ishigaki-ivory); stroke: var(--ishigaki-ink); stroke-width: 2.5; }
+.pannier-fig { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 1.8; }
+.pannier-fig.light { fill: var(--ishigaki-sea); }
+.pannier-cut-fig { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 1.8; }
+.pannier-cut-flesh { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ivory); stroke-width: 1.2; }
+.fig-wasp-wing { fill: color-mix(in srgb, var(--ishigaki-sea-light) 75%, white); fill-opacity: .82; stroke: var(--ishigaki-emerald-deep); stroke-width: 3; stroke-linejoin: round; }
+.fig-wasp-wing.far { fill: color-mix(in srgb, var(--ishigaki-sea) 52%, var(--ishigaki-ivory)); fill-opacity: .6; stroke-width: 2.5; }
+.fig-wing-vein { fill: none; stroke: var(--ishigaki-berry); stroke-width: 2.2; stroke-linecap: round; opacity: .86; }
+.fig-wing-root { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 2; }
+.fig-wing-harness { fill: var(--ishigaki-berry); stroke: var(--ishigaki-ink); stroke-width: 3.5; stroke-linejoin: round; }
+.fig-wing-harness-detail { fill: none; stroke: var(--ishigaki-gold); stroke-width: 2.4; stroke-linecap: round; }
+.fig-wing-buckle { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 1.8; }
+.fig-wing-sheen { fill: none; stroke: white; stroke-width: 2.2; stroke-linecap: round; opacity: .52; }
 
 .ahmedabad-af16-accessory {
   --af16-ink: #263b55;

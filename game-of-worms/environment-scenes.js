@@ -41,56 +41,56 @@ const canonicalProfiles = {
   ),
   "Ahmedabad, India · AF16": profile(
     "ahmedabad-pol-sabarmati", "Sabarmati and shaded pol lanes",
-    "Ahmedabad is a hot, seasonally dry Sabarmati city whose compact traditional streets and courtyards create shade; AF16 was collected from soil.",
+    "Ahmedabad is a hot, seasonally dry Sabarmati city whose compact traditional streets and courtyards create shade. AF16 was collected from soil.",
     "CaeNDR AF16 record", "https://caendr.org/isotype/AF16/",
     palettes.dryCity, [[0, 300], [88, 288], [160, 302], [250, 286], [340, 300], [430, 282], [520, 296], [600, 286]],
     { water: "river", weather: "sun", cues: [["pol", 465, 218, .9], ["chabutro", 110, 230, .8], ["drytree", 210, 262, .8]] }
   ),
   "Salt Lake City, Utah · EG4181": profile(
     "salt-lake-eg4181-apricot-garden", "Salt Lake City apricot garden",
-    "EG4181 was isolated by E. M. Haag from a rotting apricot beneath a garden tree on the north side of a home in Salt Lake City on 4 August 2006. The private property is not reconstructed; the apricot tree, dry garden floor and distant Wasatch foothill are restrained city-wide context.",
+    "EG4181 was isolated by E. M. Haag from a rotting apricot beneath a garden tree on the north side of a home in Salt Lake City on 4 August 2006. The private property is not reconstructed. The apricot tree, dry garden floor and distant Wasatch foothill are restrained city-wide context.",
     "CGC EG4181 strain record", "https://cgc.umn.edu/strain/EG4181",
     palettes.dryGarden, [[0, 286], [76, 258], [150, 274], [235, 249], [325, 267], [416, 241], [512, 262], [600, 247]],
     { weather: "sun", cues: [] }
   ),
   "Kauaʻi, Hawaiʻi · QG130": profile(
     "kauai-qg130-low-forest-fruit-floor", "Kauaʻi low forest fruit floor",
-    "The reference strain belongs to a three-strain isotype sampled by M. Rockman from broad rotting plant material in forest at 11 m on 2 August 2009. The anonymous humid forest floor is an evidence-bounded setting; the fruit identity, weather, water and exact collection view are unreported.",
+    "The reference strain belongs to a three-strain isotype sampled by M. Rockman from broad rotting plant material in forest at 11 m on 2 August 2009. The anonymous humid forest floor is an evidence-bounded setting. The fruit identity, weather, water and exact collection view are unreported.",
     "CaeNDR QG130 isotype record", "https://caendr.org/isotype/QG130/",
     palettes.island, [[0, 306], [74, 242], [143, 276], [218, 206], [294, 264], [372, 216], [456, 278], [533, 235], [600, 290]],
     { water: "none", weather: "none", cues: [] }
   ),
   "Réunion Island · JU1375": profile(
     "reunion-ju1375-agricultural-mollusk-edge", "Réunion agricultural mollusk edge",
-    "This singleton reference isotype was sampled by V. Robert from a mollusk in agricultural land at 123 m on 31 December 2007. The anonymous wet field edge and distant interior shoulder are restrained regional interpretation; the mollusk species, crop, weather and exact collection view are unreported.",
+    "This singleton reference isotype was sampled by V. Robert from a mollusk in agricultural land at 123 m on 31 December 2007. The anonymous wet field edge and distant interior shoulder are restrained regional interpretation. The mollusk species, crop, weather and exact collection view are unreported.",
     "CaeNDR JU1375 isotype record", "https://caendr.org/isotype/JU1375/",
     palettes.farm, [[0, 302], [79, 266], [151, 285], [229, 237], [311, 271], [392, 225], [474, 267], [539, 241], [600, 274]],
     { water: "none", weather: "none", cues: [] }
   ),
   "Orsay, France · JU2518": profile(
     "orsay-ju2518-rural-garden-apple", "Orsay rural-garden apple floor",
-    "This singleton reference isotype was sampled and isolated by L. Frezal from a rotten apple in a rural garden at 65 m on 6 September 2012. CaeNDR records Santeuil virus as the associated organism. The garden passage and distant roof plane are restrained context; the property, cultivar, weather and exact collection view are unreported.",
+    "This singleton reference isotype was sampled and isolated by L. Frezal from a rotten apple in a rural garden at 65 m on 6 September 2012. CaeNDR records Santeuil virus as the associated organism. The garden passage and distant roof plane are restrained context. The property, cultivar, weather and exact collection view are unreported.",
     "CaeNDR JU2518 isotype record", "https://caendr.org/isotype/JU2518/",
     palettes.temperate, [[0, 294], [91, 257], [182, 279], [274, 246], [369, 272], [472, 239], [600, 281]],
     { water: "none", weather: "none", cues: [] }
   ),
   "Dois Rios, Ilha Grande, Brazil · EG5612": profile(
     "dois-rios-eg5612-jackfruit-forest-floor", "Dois Rios jackfruit forest floor",
-    "The reference was sampled and isolated by M. Ailion from rotten jackfruit in forest at 3 m near Dois Rios on 29 April 2009. Its paired isotype strain was recorded from a rotten red flower, but both samples travelled in the same bag and may not be independent. The forest corridor is restrained context; water, weather and the exact collection view are unreported.",
+    "The reference was sampled and isolated by M. Ailion from rotten jackfruit in forest at 3 m near Dois Rios on 29 April 2009. Its paired isotype strain was recorded from a rotten red flower, but both samples travelled in the same bag and may not be independent. The forest corridor is restrained context. Water, weather and the exact collection view are unreported.",
     "CaeNDR EG5612 isotype record", "https://caendr.org/isotype/EG5612/",
     palettes.rainforest, [[0, 318], [72, 247], [145, 279], [220, 208], [301, 266], [382, 215], [465, 277], [532, 239], [600, 292]],
     { water: "none", weather: "none", cues: [] }
   ),
   "Nambucca Heads, New South Wales · QG2814": profile(
     "nambucca-qg2814-rainforest-garden-flowers", "Nambucca rainforest-garden flower floor",
-    "The reference was sampled and isolated by M. Rockman from rotting flowers on the ground in the rainforest garden behind Marcel Towers at 21 m. The two-strain isotype came from one flower sample; the reference began from one L4 on the first of two plates five days later. The flower species, weather and exact collection view are unreported.",
+    "The reference was sampled and isolated by M. Rockman from rotting flowers on the ground in the rainforest garden behind Marcel Towers at 21 m. The two-strain isotype came from one flower sample. The reference began from one L4 on the first of two plates five days later. The flower species, weather and exact collection view are unreported.",
     "CaeNDR QG2814 isotype record", "https://caendr.org/isotype/QG2814/",
     palettes.subtropical, [[0, 298], [86, 259], [175, 282], [266, 244], [356, 274], [449, 238], [530, 265], [600, 249]],
     { water: "none", weather: "none", cues: [] }
   ),
   "Bristol N2, England": profile(
     "bristol-garden-gorge", "Bristol garden and Avon Gorge, England",
-    "N2’s recorded habitat was compost in a Bristol urban garden; the wooded Avon Gorge locates the city without replacing that real microhabitat.",
+    "N2’s recorded habitat was compost in a Bristol urban garden. The wooded Avon Gorge locates the city around that real microhabitat.",
     "CaeNDR N2 record", "https://caendr.org/isotype/N2/",
     palettes.temperate, [[0, 300], [88, 274], [155, 288], [230, 206], [280, 196], [330, 270], [410, 284], [500, 254], [600, 282]],
     { water: "river", weather: "cloud", cues: [["compost", 85, 354, .95], ["city", 475, 274, .75], ["cliff", 285, 255, .8]] }
@@ -104,14 +104,14 @@ const canonicalProfiles = {
   ),
   "Edinburgh, Scotland": profile(
     "edinburgh-midmar-blackford", "Midmar allotment and Blackford Hill",
-    "Representative ED3010 microhabitat at 55.92, −3.19: an urban-garden compost bin in Midmar Allotment, field 1, plot 39; Blackford Hill and the Royal Observatory locate the wider setting.",
+    "Representative ED3010 microhabitat at 55.92, −3.19: an urban-garden compost bin in Midmar Allotment, field 1, plot 39. Blackford Hill and the Royal Observatory locate the wider setting.",
     "CGC Edinburgh strain entries", "https://cgc.umn.edu/species/caenorhabditis%20elegans?f=1&offset=4550",
     palettes.temperate, [[0, 278], [80, 268], [145, 232], [205, 155], [255, 143], [360, 175], [470, 218], [600, 248]],
     { weather: "cloud", cues: [["compost", 76, 376, .92], ["grass", 510, 354, .72], ["boulder", 208, 255, .62]] }
   ),
   "Tenerife, Spain": profile(
     "tenerife-puerto-cruz-botanic", "Puerto de la Cruz botanical garden",
-    "This marker combines 23 records from the Puerto de la Cruz botanical garden; NIC1787 is the representative. Its exact recorded substrate was an old, very rotten avocado, while the paths, pond and Ficus roots show wider garden context.",
+    "This marker combines 23 records from the Puerto de la Cruz botanical garden. NIC1787 is the representative. Its exact recorded substrate was an old, very rotten avocado, while the paths, pond and Ficus roots show wider garden context.",
     "CaeNDR NIC1787 isotype record", "https://caendr.org/isotype/NIC1787/",
     palettes.subtropical, [[0, 238], [76, 228], [151, 221], [227, 207], [301, 213], [375, 197], [448, 204], [524, 190], [600, 202]],
     { weather: "sun", cues: [] }
@@ -125,28 +125,28 @@ const canonicalProfiles = {
   ),
   "tropicalis::Kauaʻi, Hawaiʻi · QG131": profile(
     "kauai-qg131-sealodge-pandanus-beach-trail", "Sealodge pandanus-fruit beach trail",
-    "QG131 was sampled and isolated by M. Rockman on 3 August 2009 from two rotten pandanus fruits beneath a pandanus tree along the trail down to Sealodge Beach, at 10 m. The illustrated prop roots, descending trail and narrow coastal opening are restrained site context; exact fruit decay geometry, weather and collection viewpoint were not recorded.",
+    "QG131 was sampled and isolated by M. Rockman on 3 August 2009 from two rotten pandanus fruits beneath a pandanus tree along the trail down to Sealodge Beach, at 10 m. The illustrated prop roots, descending trail and narrow coastal opening are restrained site context. Exact fruit decay geometry, weather and collection viewpoint were not recorded.",
     "CaeNDR QG131 isotype record", "https://caendr.org/isotype/QG131/",
     palettes.island, [[0, 248], [80, 241], [160, 250], [240, 243], [320, 251], [400, 242], [480, 247], [600, 240]],
     { weather: "none", cues: [] }
   ),
   "Australian Capital Territory": profile(
     "canberra-oconnor-fig-garden", "O'Connor backyard figs and dry ridge",
-    "This marker represents QG2811. Its figs were collected in an anonymised O'Connor backyard on 22 March 2017; a hermaphrodite was recovered through a Baermann funnel on 2 April. O'Connor Ridge, a Yellow Box-like crown and the tiny Black Mountain cue are wider neighbourhood context.",
+    "This marker represents QG2811. Its figs were collected in an anonymised O'Connor backyard on 22 March 2017. A hermaphrodite was recovered through a Baermann funnel on 2 April. O'Connor Ridge, a Yellow Box-like crown and the tiny Black Mountain cue are wider neighbourhood context.",
     "CaeNDR QG2811 isotype record", "https://caendr.org/isotype/QG2811/",
     palettes.dryGarden, [[0, 259], [78, 249], [155, 253], [232, 236], [310, 247], [390, 229], [468, 244], [540, 232], [600, 241]],
     { weather: "sun", cues: [] }
   ),
   "Claremont, California · ECA250": profile(
     "claremont-eca250-rain-mushroom-courtyard", "Claremont rain and mushroom courtyard",
-    "This lineage traces to a worm collected from a decaying mushroom during rain in Claremont in November 1972. The exact property and mushroom species were not recorded; the rain-darkened terracotta courtyard, citrus tree and distant foothill are restrained Claremont context rather than a reconstruction.",
-    "CGC CB4857 collection record; CaeNDR ECA250 isotype record", "https://caendr.org/isotype/ECA250/",
+    "This lineage traces to a worm collected from a decaying mushroom during rain in Claremont in November 1972. The exact property and mushroom species were not recorded. The rain-darkened terracotta courtyard, citrus tree and distant foothill are restrained Claremont context rather than a reconstruction.",
+    "CGC CB4857 collection record. CaeNDR ECA250 isotype record", "https://caendr.org/isotype/ECA250/",
     palettes.temperate, [[0, 270], [82, 247], [164, 264], [246, 240], [332, 258], [420, 234], [510, 252], [600, 239]],
     { weather: "rain", cues: [] }
   ),
   "Araucanía, Chile": profile(
     "cunco-ju4400-compost-garden", "Compost in a rural garden near Cunco",
-    "JU4400, formerly Ch41.7, was collected from compost in a rural garden in Cunco. The anonymised beds, path and fence are restrained garden context; the tiny cloud-softened Llaima double summit is wider regional orientation, not a recorded collection-site view.",
+    "JU4400, formerly Ch41.7, was collected from compost in a rural garden in Cunco. The anonymised beds, path and fence are restrained garden context. The tiny cloud-softened Llaima double summit is wider regional orientation, not a recorded collection-site view.",
     "CaeNDR JU4400 isotype record", "https://caendr.org/isotype/JU4400/",
     palettes.temperate, [[0, 252], [82, 239], [165, 248], [247, 232], [330, 241], [415, 224], [500, 238], [600, 222]],
     { weather: "cloud", cues: [] }
@@ -160,35 +160,35 @@ const canonicalProfiles = {
   ),
   "Praslin, Seychelles · YR106": profile(
     "praslin-yr106-granitic-palm-forest", "Regional Praslin palm-forest context",
-    "YR106, also known as PR3, is recorded only at island level on Praslin; its exact point, date, elevation, substrate and microhabitat are unreported. The enclosed granitic palm forest is wider regional context, not a claimed collection site.",
+    "YR106, also known as PR3, is recorded only at island level on Praslin. Its exact point, date, elevation, substrate and microhabitat are unreported. The enclosed granitic palm forest is wider regional context, not a claimed collection site.",
     "Félix Lab YR106 record", "https://www.justbio.com/tools/worms/details.php?strain_id=333579",
     palettes.rainforest, [[0, 217], [76, 201], [151, 214], [231, 186], [311, 205], [392, 181], [474, 199], [545, 181], [600, 194]],
     { weather: "mist", cues: [] }
   ),
   "São Tomé · JU2484": profile(
     "sao-tome-ju2484-forest-floor", "Forest-floor fruit microhabitat",
-    "JU2484, formerly Goy1, was sampled by Rémy Froissart on 28 February 2013 from rotten unidentified fruit on the ground in forest on São Tomé; Lise Frézal isolated it as an isofemale line. The exact site, elevation and fruit identity are unreported.",
+    "JU2484, formerly Goy1, was sampled by Rémy Froissart on 28 February 2013 from rotten unidentified fruit on the ground in forest on São Tomé. Lise Frézal isolated it as an isofemale line. The exact site, elevation and fruit identity are unreported.",
     "Worldwide Worms/Félix JU2484 record", "https://www.justbio.com/tools/worldwideworms/search.php?selector=strain&select=JU2484",
     palettes.rainforest, [[0, 212], [74, 194], [149, 208], [225, 177], [304, 199], [382, 174], [461, 196], [535, 171], [600, 188]],
     { weather: "cloud", cues: [] }
   ),
   "Mahahual, Mexico · JU2617": profile(
     "mahahual-ju2617-citrus-garden", "Citrus-heap coastal garden",
-    "JU2617, previously Y2.1, came from a rotting-fruit heap, mostly oranges, on the ground in a rural Mahahual garden. The coastal-dune plants and tiny distant lighthouse are wider regional context; the private collection garden and its exact view are unreported.",
+    "JU2617, previously Y2.1, came from a rotting-fruit heap, mostly oranges, on the ground in a rural Mahahual garden. The coastal-dune plants and tiny distant lighthouse are wider regional context. The private collection garden and its exact view are unreported.",
     "Worldwide Worms/Félix JU2617 record", "https://www.justbio.com/tools/worldwideworms/search.php?selector=strain&select=JU2617",
     palettes.farm, [[0, 292], [84, 268], [160, 281], [238, 251], [322, 267], [408, 245], [492, 259], [600, 247]],
     { weather: "none", cues: [] }
   ),
   "Mauritius · JU2909": profile(
     "mauritius-casela-fruit-ground", "Casela fruit ground below Rempart Mountain",
-    "JU2909 came from anonymous rotting fruit on the ground at Casela Nature Park in late December 2015. The fruit was described as about 8 cm long and oval with a large woody nut; its identity and exact sampling point are unreported. The planted hill edge and Rempart Mountain are wider regional context.",
+    "JU2909 came from anonymous rotting fruit on the ground at Casela Nature Park in late December 2015. The fruit was described as about 8 cm long and oval with a large woody nut. Its identity and exact sampling point are unreported. The planted hill edge and Rempart Mountain are wider regional context.",
     "Worldwide Worms/Félix JU2909 record", "https://justbio.com/tools/worldwideworms/search.php?selector=strain&select=JU2909",
     palettes.rainforest, [[0, 304], [78, 275], [155, 289], [232, 246], [304, 267], [382, 221], [459, 248], [531, 193], [600, 229]],
     { weather: "none", cues: [] }
   ),
   "Ho Chi Minh City · JU4356": profile(
     "hcmc-ju4356-carambola-garden", "Ho Chi Minh City carambola garden",
-    "JU4356 came from one rotting carambola collected on the ground in a Ho Chi Minh City urban garden. The canopy, path and city edge are anonymised regional context; the exact property, source tree, elevation and collection weather were not reported.",
+    "JU4356 came from one rotting carambola collected on the ground in a Ho Chi Minh City urban garden. The canopy, path and city edge are anonymised regional context. The exact property, source tree, elevation and collection weather were not reported.",
     "Félix Lab Worldwide Worms: JU4356", "https://justbio.com/tools/worldwideworms/search.php?selector=strain&select=JU4356",
     palettes.wetCity, [[0, 299], [75, 270], [151, 285], [224, 252], [302, 269], [380, 226], [456, 250], [531, 220], [600, 241]],
     { water: "none", weather: "none", cues: [] }
@@ -202,21 +202,21 @@ const canonicalProfiles = {
   ),
   "Sanda, Bali · JU1873": profile(
     "sanda-ju1873-cacao-plantation", "Sanda cacao plantation floor",
-    "JU1873 came from one rotting cacao fruit in a cacao plantation near Sanda Center. The cacao morphology is botanically grounded; the faint Pupuan ridge is regional context only. Elevation, plantation structure and collection weather were not reported.",
+    "JU1873 came from one rotting cacao fruit in a cacao plantation near Sanda Center. The cacao morphology is botanically grounded. The faint Pupuan ridge is regional context only. Elevation, plantation structure and collection weather were not reported.",
     "Félix Lab JU1873 record", "https://justbio.com/tools/worms/details.php?strain_id=333372",
     palettes.rainforest, [[0, 302], [80, 258], [155, 220], [235, 252], [315, 186], [400, 236], [485, 194], [545, 250], [600, 230]],
     { weather: "none", cues: [] }
   ),
   "Barro Colorado Island, Panama": profile(
     "bci-qg2726-gustavia-bait-forest", "Gustavia-bait forest floor",
-    "QG2726 came from an experimental Gustavia superba-flower-slurry bait in Barro Colorado Island forest at 130 m. The surrounding lowland tropical forest and research cues are regional context; the exact bait appearance and nearby vegetation were not recorded.",
+    "QG2726 came from an experimental Gustavia superba-flower-slurry bait in Barro Colorado Island forest at 130 m. The surrounding lowland tropical forest and research cues are regional context. The exact bait appearance and nearby vegetation were not recorded.",
     "CaeNDR QG2726 isotype record", "https://caendr.org/isotype/QG2726/",
     palettes.rainforest, [[0, 286], [85, 268], [165, 244], [250, 230], [340, 248], [430, 226], [515, 260], [600, 278]],
     { weather: "none", cues: [] }
   ),
   "Guadeloupe · NIC203": profile(
     "guadeloupe-nic203-torch-ginger-forest", "Torch-ginger forest floor",
-    "NIC203 was sampled and isolated by N. Poullet from a rotting torch-ginger flower in forest at 420 m at the Third Carbet Falls locality on 4 September 2011. The narrow waterfall and humid-forest setting are site context; the sample’s exact placement and collection-patch view were not recorded.",
+    "NIC203 was sampled and isolated by N. Poullet from a rotting torch-ginger flower in forest at 420 m at the Third Carbet Falls locality on 4 September 2011. The narrow waterfall and humid-forest setting are site context. The sample’s exact placement and collection-patch view were not recorded.",
     "CaeNDR NIC203 isotype record", "https://caendr.org/isotype/NIC203/",
     palettes.rainforest, [[0, 306], [90, 264], [175, 230], [260, 142], [335, 210], [420, 246], [510, 220], [600, 286]],
     { weather: "none", cues: [] }
@@ -230,7 +230,7 @@ const canonicalProfiles = {
   ),
   "New Taipei City, Taiwan · NIC1648": profile(
     "new-taipei-nic1648-ruifang-fig-stairs", "Ruifang fig-stair forest",
-    "NIC1648, previously 3b, was sampled from small 10–15 mm figs on and beside concrete stairs descending toward Menghuan Falls in Ruifang District. CaeNDR says the material was only thought to be rotting. The stair geometry and surrounding forest are illustrative beyond the recorded landscape and micro-site; the waterfall is not shown because its visibility was unreported.",
+    "NIC1648, previously 3b, was sampled from small 10–15 mm figs on and beside concrete stairs descending toward Menghuan Falls in Ruifang District. CaeNDR says the material was only thought to be rotting. The stair geometry and surrounding forest are illustrative beyond the recorded landscape and micro-site. The waterfall is not shown because its visibility was unreported.",
     "CaeNDR NIC1648 isotype record", "https://caendr.org/isotype/NIC1648/",
     palettes.rainforest, [[0, 252], [82, 244], [164, 251], [246, 242], [328, 249], [410, 240], [492, 247], [600, 239]],
     { weather: "none", cues: [] }

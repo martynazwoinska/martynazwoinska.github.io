@@ -3,7 +3,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260901-118";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260902-119";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
@@ -49,14 +49,14 @@ const species = [
     habitat: "Rotting fruit, flowers & compost",
     habitatKey: "tropical",
     intro: "A globally distributed warm-climate selfer often collected from rotting fruit, flowers, compost, and other bacteria-rich plant material.",
-    fact: "Self-fertile C. briggsae hermaphrodites can found a population alone; its sister species C. nigoni instead needs females and males.",
+    fact: "Self-fertile C. briggsae hermaphrodites can found a population alone. Its sister species C. nigoni instead needs females and males.",
     worm: "#8bc9a7",
     wormDeep: "#387d68",
     habitatOne: "#8ed0ad",
     habitatTwo: "#59a6a0",
     locations: [
       { name: "Ahmedabad, India · AF16", sceneLabel: "Soil · Ahmedabad · India", coordinates: [72.56, 23.03], source: "CaeNDR", style: "field", history: "AF16 came from soil in Ahmedabad—but the entire surviving habitat description is simply “soil”. Its precise city microhabitat remains unknown." },
-      { name: "Salt Lake City, Utah · EG4181", sceneLabel: "Rotting apricot · Salt Lake City · United States", coordinates: [-111.867575, 40.707267], source: "CGC EG4181 strain record; CaeNDR EG4360 isotype record", style: "field", strain: "EG4181", history: "EG4181 came from a rotting apricot beneath a garden tree in Salt Lake City in August 2006. The collected worms were noted for moving very quickly." },
+      { name: "Salt Lake City, Utah · EG4181", sceneLabel: "Rotting apricot · Salt Lake City · United States", coordinates: [-111.867575, 40.707267], source: "CGC EG4181 strain record. CaeNDR EG4360 isotype record", style: "field", strain: "EG4181", history: "EG4181 came from a rotting apricot beneath a garden tree in Salt Lake City in August 2006. The collected worms were noted for moving very quickly." },
       { name: "Kauaʻi, Hawaiʻi · QG130", sceneLabel: "Rotting plants · Kauaʻi · United States", coordinates: [-159.5829, 22.2202], source: "CaeNDR QG130 isotype record", style: "kauai", strain: "QG130", history: "Three closely related C. briggsae strains were recovered from rotting plant material in low-elevation Kauaʻi forest." },
       { name: "Réunion Island · JU1375", sceneLabel: "Farmland mollusc · Réunion · France", coordinates: [55.6885, -21.0469], source: "CaeNDR JU1375 isotype record", style: "ocean", strain: "JU1375", history: "C. briggsae is usually associated with decaying plant material, but this isolate was collected from a mollusc on agricultural land in Réunion." },
       { name: "Orsay, France · JU2518", sceneLabel: "Rotten apple · Orsay · France", coordinates: [2.1725, 48.7015], source: "CaeNDR JU2518 isotype record", style: "field", strain: "JU2518", history: "This worm came from a rotten apple in a rural garden in Orsay, where Santeuil virus was also recorded in the sample." },
@@ -91,7 +91,7 @@ const species = [
       { name: "Tenerife, Spain", sceneLabel: "Botanical garden · Tenerife · Spain", coordinates: [-16.535468, 28.411121], source: "CaeNDR", style: "field", strain: "NIC1787", history: "A single day’s sampling in Puerto de la Cruz botanical garden produced 23 C. elegans records from rotting avocado, other fruits, flowers, stems and plant litter." },
       { name: "Kauaʻi, Hawaiʻi", sceneLabel: "Rotting plants · Kauaʻi · United States", coordinates: [-159.668, 22.149], source: "CaeNDR", style: "kauai", strain: "XZ1516", history: "This high-elevation Kauaʻi isolate came from rotting plant material and belongs to one of the island’s exceptionally divergent C. elegans lineages." },
       { name: "Australian Capital Territory", sceneLabel: "Rotten fig · O’Connor · Australia", coordinates: [149.1151, -35.2542], source: "CaeNDR", style: "field", strain: "QG2811", history: "This O’Connor backyard reflects the real collection site, where this worm was found in rotten figs. The flat white represents Canberra’s café culture. Balloons refer to the city’s annual festival; sulphur-crested cockatoos are familiar visitors to local gardens and outdoor cafés." },
-      { name: "Claremont, California · ECA250", sceneLabel: "Decaying mushroom · Claremont · United States", coordinates: [-117.7198, 34.0967], source: "CGC CB4857 collection record; CaeNDR ECA250 isotype record", style: "field", strain: "ECA250", history: "This lineage began with a worm found in a decaying mushroom during rain in Claremont in 1972. The worm is reading about bacteria, its food, with lemonade and sunglasses for the Southern California sunshine." },
+      { name: "Claremont, California · ECA250", sceneLabel: "Decaying mushroom · Claremont · United States", coordinates: [-117.7198, 34.0967], source: "CGC CB4857 collection record. CaeNDR ECA250 isotype record", style: "field", strain: "ECA250", history: "This lineage began with a worm found in a decaying mushroom during rain in Claremont in 1972. The worm is reading about bacteria, its food, with lemonade and sunglasses for the Southern California sunshine." },
       { name: "Araucanía, Chile", sceneLabel: "Compost heap · Araucanía · Chile", coordinates: [-72.1509, -38.9379], source: "CaeNDR", style: "field", strain: "JU4400", history: "A compost heap in a rural garden in Cunco yielded this C. elegans isolate in March 2023—one of the game’s most recently collected worms." }
     ]
   },
@@ -140,7 +140,7 @@ const species = [
     habitat: "Rotten cacao fruit",
     habitatKey: "tropical",
     intro: "The outcrossing sister species of C. tropicalis, known from a rotten cacao fruit collected in a plantation near Sanda, Bali.",
-    fact: "Its reference isolate JU1873 came from one cacao fruit in 2009; comparing it with selfing C. tropicalis helps reveal changes that accompanied self-fertilization.",
+    fact: "Its reference isolate JU1873 came from one cacao fruit in 2009. Comparing it with selfing C. tropicalis helps reveal changes that accompanied self-fertilization.",
     worm: "#a9a0df",
     wormDeep: "#5f55a5",
     habitatOne: "#a9c796",
@@ -175,7 +175,7 @@ const species = [
       { name: "Oʻahu, Hawaiʻi · ECA789", sceneLabel: "Rotting flower · Oʻahu · United States", coordinates: [-157.799786, 21.336056], source: "CaeNDR ECA789 isotype record", style: "rainforest", strain: "ECA789", history: "This C. tropicalis line came from a rotting flower along Mānoa Falls Trail, where the recorded humidity was 93.7%." },
       { name: "New Taipei City, Taiwan · NIC1648", sceneLabel: "Fallen figs · New Taipei City · Taiwan", coordinates: [121.82753, 25.06574], source: "CaeNDR NIC1648 isotype record", style: "rainforest", strain: "NIC1648", history: "Tiny figs scattered on concrete steps towards Menghuan Falls yielded this C. tropicalis line. The culture note records many males, although no count or explanation was provided." },
       { name: "Pohnpei, Micronesia · QG4739", sceneLabel: "Kotop fruit · Pohnpei · Micronesia", coordinates: [158.1818, 6.9066], source: "CaeNDR", style: "rainforest", strain: "QG4739", history: "Rotting kotop fruit in Pohnpei cloudforest yielded seven closely related reference strains. The collection site lay about 540 metres above sea level." },
-      { name: "Queensland, Australia · QG2904", sceneLabel: "Blackbean pod · Queensland · Australia", coordinates: [145.447317, -16.10365], source: "CaeNDR", style: "rainforest", strain: "QG2904", history: "An intact blackbean pod from the Daintree Rainforest Observatory produced a plate containing thousands of worms. Most were Caenorhabditis hermaphrodites; no males were seen in that first observation." },
+      { name: "Queensland, Australia · QG2904", sceneLabel: "Blackbean pod · Queensland · Australia", coordinates: [145.447317, -16.10365], source: "CaeNDR", style: "rainforest", strain: "QG2904", history: "An intact blackbean pod from the Daintree Rainforest Observatory produced a plate containing thousands of worms. Most were Caenorhabditis hermaphrodites. No males were seen in that first observation." },
       { name: "Saint-Benoît, Réunion · JU1373", sceneLabel: "Torch-ginger flowers · Saint-Benoît · Réunion, France", coordinates: [55.6885, -21.0473], source: "CaeNDR JU1373 isotype record", style: "farm", strain: "JU1373", history: "A worm collected from rotting torch-ginger flowers in Saint-Benoît became the type isolate used to describe C. tropicalis. The torch-ginger trays reflect the collection material, the type-isolate badge marks its scientific importance, and the rain gauge refers to Réunion’s humid eastern side." }
     ]
   }
