@@ -1,4 +1,5 @@
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
+import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260905-tenerife-wings-4";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -20,7 +21,7 @@ const rows = [
   ["elegans", "Bristol N2, England", "agar plates with bacteria", "ngm-agar-plate", "fitted lab coats", "n2-lab-coat", "cryo-vial jetpacks", "cryo-vial-jetpack", "lab goggles", "n2-lab-goggles"],
   ["elegans", "Santeuil, France", "railway-driver uniforms", "santeuil-railway-driver-uniform", "Santeuil cylinder organs", "santeuil-cylinder-organ-instrument", "hogweed-stem locomotives", "santeuil-hogweed-locomotive"],
   ["elegans", "Edinburgh, Scotland", "Blackford observatory telescopes", "midmar-compost-tumbler", "Edinburgh tartan kilts", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
-  ["elegans", "Tenerife, Spain", "Atlantic canary costumes", "tenerife-atlantic-canary-costume", "timple guitars", "tenerife-timple-guitar", "Teide star lanterns", "tenerife-teide-star-lantern"],
+  ["elegans", "Tenerife, Spain", "Atlantic canary costumes", "tenerife-atlantic-canary-costume", "timple guitars", "tenerife-timple-guitar", "avocado snack bowls", "tenerife-avocado-snack-bowl"],
   ["elegans", "Kauaʻi, Hawaiʻi", "forest-bird listening headphones", "xz1516-forest-bird-headphones", "ʻōhiʻa blossom microphones", "xz1516-ohia-blossom-microphone", "genome tuning wheels", "xz1516-genome-tuning-wheel"],
   ["elegans", "Australian Capital Territory", "Flat white", "canberra-flat-white-cafe", "Balloon carriages", "canberra-dawn-balloon-carriage", "Cockatoo café raids", "oconnor-cockatoo-cafe-raid"],
   ["elegans", "Claremont, California · ECA250", "Bookworm books", "eca250-bookworm-book", "California lemonade", "eca250-california-lemonade", "sunny reading glasses", "eca250-sunny-reading-glasses"],
@@ -60,7 +61,7 @@ const repeatedRendererFamilies = new Set([
 const n2RendererFamilies = new Set(["ngm-agar-plate", "n2-lab-coat", "cryo-vial-jetpack", "n2-lab-goggles"]);
 const santeuilRendererFamilies = new Set(["santeuil-railway-driver-uniform", "santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"]);
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
-const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-teide-star-lantern"]);
+const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-avocado-snack-bowl"]);
 const kauaiRendererFamilies = new Set(["xz1516-forest-bird-headphones", "xz1516-ohia-blossom-microphone", "xz1516-genome-tuning-wheel"]);
 const actRendererFamilies = new Set(["canberra-flat-white-cafe", "canberra-dawn-balloon-carriage", "oconnor-cockatoo-cafe-raid"]);
 const claremontRendererIds = new Set([
@@ -884,98 +885,6 @@ function drawEdinburghAccessory(group, item, companion) {
 }
 
 function drawTenerifeAccessory(group, item, companion) {
-  if (item.family === "tenerife-atlantic-canary-costume") {
-    group.classList.add("tenerife-accessory", "tenerife-canary-costume", companion ? "tenerife-canary-companion" : "tenerife-canary-primary");
-    if (companion) {
-      add(group, "path", { class: "ten-canary-wing ten-canary-wing-deep", d: "M-5-30Q-48-55-82-25Q-61-17-46 1Q-65 12-71 39Q-39 30-17 11Q-30 43-19 65Q7 37 13 4Z" });
-      add(group, "path", { class: "ten-canary-wing", d: "M7-35Q49-54 78-17Q53-17 37-1Q55 7 64 30Q33 25 13 10Z" });
-      add(group, "path", { class: "ten-canary-feather-light", d: "M-62-26Q-37-28-18-6M-58 9Q-36 4-18 11M42-25Q26-21 13-2M43 7Q27 3 15 10" });
-      add(group, "path", { class: "ten-canary-bib", d: "M-15-37Q1-48 18-34L22 10Q4 24-18 10Z" });
-      add(group, "path", { class: "ten-canary-harness", d: "M-21-31Q1-19 22-31M-17 8Q2 19 20 7" });
-      add(group, "path", { class: "ten-canary-tail ten-canary-tail-deep", d: "M-10 12Q-26 57-10 78L3 34Z" });
-      add(group, "path", { class: "ten-canary-tail", d: "M5 15Q14 60 32 70L16 29Z" });
-      add(group, "circle", { class: "ten-canary-clasp", cx: 2, cy: -31, r: 5 });
-    } else {
-      add(group, "path", { class: "ten-canary-wing ten-canary-wing-deep", d: "M-8-37Q-72-70-112-24Q-83-21-62 2Q-91 12-101 50Q-63 40-35 13Q-52 59-33 85Q1 54 12 7Z" });
-      add(group, "path", { class: "ten-canary-wing", d: "M8-43Q73-68 113-16Q80-20 57 2Q86 11 97 43Q57 36 28 12Q44 55 27 77Q1 51-10 8Z" });
-      add(group, "path", { class: "ten-canary-feather-light", d: "M-88-31Q-55-34-26-6M-85 8Q-54 1-26 12M-78 39Q-49 27-30 24M79-25Q48-28 23-3M79 12Q51 4 27 14M70 38Q48 27 30 25" });
-      add(group, "path", { class: "ten-canary-bib", d: "M-22-48Q1-65 25-45L31 13Q5 34-28 15Z" });
-      add(group, "path", { class: "ten-canary-harness", d: "M-29-40Q1-23 30-40M-25 11Q3 29 28 9" });
-      add(group, "path", { class: "ten-canary-tail ten-canary-tail-deep", d: "M-14 15Q-36 73-12 101L4 43Z" });
-      add(group, "path", { class: "ten-canary-tail", d: "M5 17Q19 77 44 91L18 38Z" });
-      add(group, "circle", { class: "ten-canary-clasp", cx: 2, cy: -42, r: 7 });
-      add(group, "path", { class: "ten-canary-clasp-mark", d: "M-1-46L2-37L6-47" });
-    }
-    return true;
-  }
-
-  if (item.family === "tenerife-timple-guitar") {
-    group.classList.add("tenerife-accessory", "tenerife-timple", companion ? "tenerife-timple-companion" : "tenerife-timple-primary");
-    if (companion) {
-      const instrument = add(group, "g", { class: "ten-timple-instrument", transform: "rotate(70)" });
-      add(instrument, "path", { class: "ten-timple-body ten-timple-body-deep", d: "M0-30C-27-42-40-25-33-8C-30-1-24 4-17 7C-31 14-39 28-34 43C-27 64-6 71 0 65C7 71 28 64 35 43C40 28 31 14 17 7C24 4 30-1 33-8C40-25 27-42 0-30Z" });
-      add(instrument, "path", { class: "ten-timple-soundboard", d: "M0-23C-19-33-29-22-25-9C-22 0-14 4-9 7C-23 16-27 30-21 43C-15 55-5 58 0 54C6 58 16 55 22 43C28 30 23 16 9 7C15 4 22 0 25-9C29-22 19-33 0-23Z" });
-      add(instrument, "path", { class: "ten-timple-neck", d: "M-7-31L-6-105H6L7-31Z" });
-      add(instrument, "path", { class: "ten-timple-headstock", d: "M-10-105L-13-126Q0-137 13-126L10-105Z" });
-      add(instrument, "circle", { class: "ten-timple-rosette", cx: 0, cy: 8, r: 13 });
-      add(instrument, "circle", { class: "ten-timple-soundhole", cx: 0, cy: 8, r: 7 });
-      [-4,-2,0,2,4].forEach(offset => add(instrument, "path", { class: "ten-timple-string", d: `M${offset} 43L${offset*.7}-126` }));
-      [-45,-59,-73,-87].forEach(y => add(instrument, "path", { class: "ten-timple-fret", d: `M-7 ${y}H7` }));
-      add(instrument, "path", { class: "ten-timple-bridge", d: "M-17 43Q0 48 17 43" });
-      add(instrument, "path", { class: "ten-timple-inlay", d: "M-17 29Q0 17 17 29M-13 34Q0 24 13 34" });
-      [[-15,-119],[15,-119],[-14,-108],[14,-108]].forEach(([cx,cy]) => add(instrument, "circle", { class: "ten-timple-peg", cx, cy, r: 3.5 }));
-    } else {
-      const instrument = add(group, "g", { class: "ten-timple-instrument", transform: "rotate(78)" });
-      add(instrument, "path", { class: "ten-timple-body", d: "M0-38C-34-51-53-31-43-9C-39 0-31 6-22 9C-41 18-53 37-45 57C-35 85-8 94 0 84C9 94 36 85 46 57C54 37 41 18 22 9C31 6 39 0 43-9C53-31 34-51 0-38Z" });
-      add(instrument, "path", { class: "ten-timple-soundboard", d: "M0-29C-24-40-39-27-33-11C-29-2-21 3-14 8C-31 19-37 38-29 54C-21 72-7 77 0 69C8 77 22 72 30 54C38 38 31 19 14 8C21 3 29-2 33-11C39-27 24-40 0-29Z" });
-      add(instrument, "path", { class: "ten-timple-neck", d: "M-9-39L-8-130H8L9-39Z" });
-      add(instrument, "path", { class: "ten-timple-headstock", d: "M-13-130L-17-156Q0-170 17-156L13-130Z" });
-      add(instrument, "circle", { class: "ten-timple-rosette", cx: 0, cy: 10, r: 16 });
-      add(instrument, "circle", { class: "ten-timple-soundhole", cx: 0, cy: 10, r: 9 });
-      [-5,-2.5,0,2.5,5].forEach(offset => add(instrument, "path", { class: "ten-timple-string", d: `M${offset} 58L${offset*.65}-157` }));
-      [-57,-74,-91,-108].forEach(y => add(instrument, "path", { class: "ten-timple-fret", d: `M-9 ${y}H9` }));
-      add(instrument, "path", { class: "ten-timple-bridge", d: "M-22 58Q0 66 22 58" });
-      add(instrument, "path", { class: "ten-timple-inlay", d: "M-23 38Q0 20 23 38M-18 46Q0 31 18 46" });
-      add(instrument, "path", { class: "ten-timple-scroll", d: "M-32-13Q-14-24-8-9M32-13Q14-24 8-9" });
-      [[-20,-148],[20,-148],[-19,-134],[19,-134]].forEach(([cx,cy]) => add(instrument, "circle", { class: "ten-timple-peg", cx, cy, r: 4.5 }));
-      add(instrument, "path", { class: "ten-timple-strap", d: "M-39-12Q-67 58 0 91Q71 58 39-12" });
-    }
-    return true;
-  }
-
-  if (item.family === "tenerife-teide-star-lantern") {
-    group.classList.add("tenerife-accessory", "tenerife-star-lantern", companion ? "tenerife-star-companion" : "tenerife-star-primary");
-    if (companion) {
-      add(group, "path", { class: "ten-lantern-handle", d: "M-42-55Q0-116 42-55" });
-      add(group, "path", { class: "ten-lantern-crown", d: "M-42-64Q-32-88-17-74Q0-105 17-74Q32-88 42-64L33-53H-33Z" });
-      add(group, "path", { class: "ten-lantern-frame", d: "M-52-57Q0-76 52-57L60 51Q0 78-60 51Z" });
-      add(group, "path", { class: "ten-lantern-pane", d: "M-41-45Q0-58 41-45L46 39Q0 58-46 39Z" });
-      add(group, "path", { class: "ten-lantern-arch", d: "M-33 35V-27Q0-54 33-27V35" });
-      add(group, "path", { class: "ten-lantern-teide", d: "M-38 35L-12 7L0 18L16-11L42 36Z" });
-      add(group, "path", { class: "ten-lantern-star", d: "M2-38L7-25L21-24L10-15L13-1L2-9L-10-1L-7-15L-18-24L-4-25Z" });
-      add(group, "path", { class: "ten-lantern-filigree", d: "M-45-31Q-59-13-43 4Q-56 20-39 34M45-31Q59-13 43 4Q56 20 39 34" });
-      add(group, "path", { class: "ten-lantern-spark", d: "M-27-13H-15M-21-19V-7M17 13H29M23 7V19" });
-      add(group, "path", { class: "ten-lantern-cap", d: "M-58-61L-36-75H36L58-61L49-51H-49Z" });
-      add(group, "path", { class: "ten-lantern-base", d: "M-62 48Q0 70 62 47L52 66Q35 76 22 71Q0 90-22 71Q-37 77-52 66Z" });
-      add(group, "circle", { class: "ten-lantern-jewel", cx: 0, cy: -84, r: 6 });
-    } else {
-      add(group, "path", { class: "ten-lantern-handle", d: "M-57-70Q0-154 57-70" });
-      add(group, "path", { class: "ten-lantern-crown", d: "M-55-82Q-43-113-23-95Q0-138 23-95Q43-113 55-82L43-68H-43Z" });
-      add(group, "path", { class: "ten-lantern-frame", d: "M-72-72L-35-96H35L72-72L62 69L0 94L-62 69Z" });
-      add(group, "path", { class: "ten-lantern-pane", d: "M-56-61L-29-78H29L56-61L48 56L0 75L-48 56Z" });
-      add(group, "path", { class: "ten-lantern-arch", d: "M-43 49V-37Q0-77 43-37V49" });
-      add(group, "path", { class: "ten-lantern-teide", d: "M-49 51L-21 17L-7 26L15-21L49 52Z" });
-      add(group, "path", { class: "ten-lantern-star", d: "M1-54L8-35L28-34L12-21L17-1L1-13L-16-1L-11-21L-27-34L-7-35Z" });
-      [[-35,-21],[36,-18],[-28,14],[32,18]].forEach(([x,y]) => add(group, "circle", { class: "ten-lantern-piercing", cx: x, cy: y, r: 4 }));
-      add(group, "path", { class: "ten-lantern-filigree", d: "M-58-45Q-78-20-55 5Q-73 29-49 53M58-45Q78-20 55 5Q73 29 49 53" });
-      add(group, "path", { class: "ten-lantern-spark", d: "M-38-2H-20M-29-11V7M22 19H40M31 10V28" });
-      add(group, "path", { class: "ten-lantern-cap", d: "M-79-76L-42-103H42L79-76L65-64H-65Z" });
-      add(group, "circle", { class: "ten-lantern-finial", cx: 0, cy: -119, r: 9 });
-      add(group, "path", { class: "ten-lantern-base", d: "M-67 64L0 87L67 63L54 84Q37 91 24 86Q0 116-24 86Q-40 93-54 84Z" });
-      add(group, "circle", { class: "ten-lantern-jewel", cx: 0, cy: -119, r: 4 });
-    }
-    return true;
-  }
 
   if (item.family === "avocado-microhabitat-viewer") {
     group.classList.add("tenerife-accessory", "avocado-viewer", companion ? "avocado-viewer-companion" : "avocado-viewer-primary");
@@ -6491,6 +6400,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawReunionJU1373Accessory(group, item, companion)) return true;
   if (drawSanteuilAccessory(group, item, companion)) return true;
   if (drawEdinburghAccessory(group, item, companion)) return true;
+  if (drawTenerifeRefinement(group, item, companion)) return true;
   if (drawTenerifeAccessory(group, item, companion)) return true;
   if (drawKauaiAccessory(group, item, companion)) return true;
   if (drawAustralianCapitalTerritoryAccessory(group, item, companion)) return true;
@@ -6554,9 +6464,9 @@ function renderPiece(target, item, wormPart) {
     "midmar-compost-tumbler": { primary: [270.4, 55, .35, 0], companion: [106.5, 90.5, .22, 0] },
     "galaxy-plate-scanner": { primary: [184, 204, .54, -1], companion: [68, 202, .43, 2] },
     "agassiz-ice-flow-model": { primary: [322, 260, .52, -2], companion: [52, 290, .42, 2] },
-    "tenerife-atlantic-canary-costume": { primary: [271, 166, .5, 30], companion: [97, 166, .39, 28] },
-    "tenerife-timple-guitar": { primary: [344, 222, .46, -7], companion: [43, 230, .37, 10] },
-    "tenerife-teide-star-lantern": { primary: [365, 280, .42, -2], companion: [62, 285, .33, 4] },
+    "tenerife-atlantic-canary-costume": { primary: [0, 0, 1, 0], companion: [-28, 82, .43, 0] },
+    "tenerife-timple-guitar": { primary: [224, 194, .50, 64], companion: [52, 172, .29, 67] },
+    "tenerife-avocado-snack-bowl": { primary: [346, 224, .52, -16], companion: [32, 211, .33, 15] },
     "xz1516-forest-bird-headphones": { primary: [397, 79, .32, -5], companion: [122, 121, .25, 5] },
     "xz1516-ohia-blossom-microphone": { primary: [235, 220, .46, -7], companion: [68, 251, .36, 7] },
     "xz1516-genome-tuning-wheel": { primary: [388, 278, .41, -2], companion: [182, 296, .33, 3] },
@@ -6656,7 +6566,7 @@ function renderPiece(target, item, wormPart) {
   });
   const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "lingsar-springwater-current";
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope";
-  const isFittedKilt = item.family === "edinburgh-tartan-kilt";
+  const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar";
   const isObservingScope = item.family === "midmar-compost-tumbler";
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
     : isFittedHeadwear || isFittedKilt || isObservingScope ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;

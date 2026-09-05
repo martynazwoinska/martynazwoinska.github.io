@@ -6585,7 +6585,9 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .elegans-field-redesign.efr-edinburgh .efr-kilt-pleat { stroke:#102e38; }
 .elegans-field-redesign.efr-edinburgh .efr-kilt-hem { stroke:#17313b; }
 .elegans-field-redesign.efr-edinburgh .efr-sporran-detail { stroke:#b9934e; }
-.location-accessory-art.edinburgh-tailored-kilt { transform-box:view-box; transform-origin:0 0; }
+.location-accessory-art.edinburgh-tailored-kilt,
+.location-accessory-art.tenerife-refined { transform-box:view-box; transform-origin:0 0; }
+.tenerife-refined { filter:drop-shadow(0 2px 1px rgba(30,40,30,.18)); }
 .location-accessory-art.edinburgh-observing-scope,
 .edinburgh-observing-scope .efr-scope-assembly,
 .edinburgh-focus-wheel { transform-box:view-box; transform-origin:0 0; }

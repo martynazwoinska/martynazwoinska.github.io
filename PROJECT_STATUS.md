@@ -6,6 +6,16 @@ This file records approved decisions and the verified implementation state. Alwa
 
 ### Game accessory refinement, 2026-09-05
 
+Tenerife is approved for release on `codex/tenerife-accessory-polish`.
+Its canary costumes and timples are redrawn and separately fitted.
+The costume fit follow-up uses slim feathered mantles along the nematode
+curves and removes the detached bird-torso silhouette. Timples and bowls
+are unchanged by that follow-up.
+Body fit and raised side-and-up wings are approved.
+Avocado snack bowls replace the star lanterns. The background and collection
+copy are unchanged. The English-only label `avocado snack bowls` is approved
+with the contextual preview. Publication verification follows the release push.
+
 Approved Edinburgh revision: independently fitted kilts now use an explicit waist
 pivot, contained tartan, overlapping aprons, side pleats and leather sporrans.
 Their motion follows each worm. Bagpipes have clearer wood and ivory fittings,

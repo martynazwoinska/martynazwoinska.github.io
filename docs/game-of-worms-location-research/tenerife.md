@@ -1,6 +1,63 @@
 # Tenerife location research and art brief
 
-Last updated: 2026-08-21
+Last updated: 2026-09-05
+
+## Approved revision
+
+The 2026-09-05 revision and contextual preview are approved for publication.
+The painted background, collection record and Tiny surprise remain unchanged.
+The Game is English-only. The only approved public wording change is the
+accessory label: `avocado snack bowls`.
+
+- Canary costumes use narrow feathered mantles traced along each nematode's
+  back. Swept flight feathers and flat coverts follow the body curve, with
+  a narrow sewn fastening. The companion has its own shorter construction.
+  Neither costume adds a bird-shaped chest, neck or separate tail.
+  The approved body fit is retained in the raised-wing follow-up. A broad near
+  wing opens sideways and up, with a narrower foreshortened far wing. Rounded
+  overlapping feather tips replace the first pointed draft. Colours stay
+  unchanged, without assigning bird sexes to the nematode costumes.
+- Timples have curved wooden bodies with visible darker side depth, inset
+  binding, restrained grain, a dark sound hole, five strings and five pegs.
+  Each is fitted across its worm with a leather sling.
+- Avocado snack bowls replace the Teide star lanterns. The two halves have
+  different silhouettes and cavity proportions, textured dark rind, pale
+  flesh, a removed pit and a recessed serving of enlarged bacteria shapes.
+  This is a fantasy prop inspired by the documented avocado substrate.
+  It is not a scaled biological illustration or collection apparatus.
+
+The first feather draft read as a bow and overlapped the instrument neck.
+The refinement replaces it with swept-back, side-on wings and moves each
+instrument lower across its worm. Worn pieces follow their worm's animation.
+The follow-up fit review removed the rounded bird-torso silhouette and mapped
+the costumes into the primary and companion body coordinates. A second edge
+pass softened the primary mantle's lower hem. Timples and bowls are unchanged
+by this costume-only revision.
+
+Construction references:
+
+- [Casa-Museo del Timple, five-string concert instrument](https://casadeltimple.org/timple-de-concierto-02/)
+- [CanariWiki, timple structure and materials](https://www3.gobiernodecanarias.org/medusa/wiki/index.php?title=Timple)
+- [Featherbase, Atlantic canary feather layout](https://www.featherbase.info/en/specimen/4193)
+
+All drawings are original SVG paths. Reference images are not copied or shipped.
+
+Current validation: syntax, the Tenerife three-pair structural check and the
+18-family refinement regression check pass. All six objects pass keyboard
+movement and Home reset at 360 and 1440 px. Six visible objects and no page
+overflow were confirmed at 360, 768, 1024 and 1440 px. The browser reported
+no console errors before the pointer test. Desktop and phone viewport renders
+were inspected.
+
+Release verification captured the complete page in single frames at viewport
+sizes 360 x 2400, 768 x 2381, 1024 x 1753 and 1440 x 1934, from scroll position
+zero through the final map-notes control. This avoids the browser's faulty
+stitched fullPage export. Its capture backend rescales the output, producing
+345 x 2300, 753 x 2334 and 1009 x 1727 image pixels for the first three sizes.
+These are complete page captures, not cropped sections. Direct pointer movement
+and Home reset pass for all six pieces at desktop size. Reduced-motion CSS
+remains inside the existing no-preference media query, but a browser emulation
+check was unavailable. Do not interpret historical checks below as new checks.
 
 This dossier is the evidence and review contract for the Tenerife landscape and its three accessory pairs. It follows the Bristol N2, Santeuil and Edinburgh batches in the location-by-location Game of Worms illustration workflow.
 
@@ -108,7 +165,7 @@ The accessories deliberately expand beyond the collection apparatus. They use re
 
 Reference: [CanariWiki overview of the timple](https://www3.gobiernodecanarias.org/medusa/wiki/index.php?title=Timple)
 
-### Teide star lanterns
+### Teide star lanterns (retired by the local revision)
 
 - **Primary:** a faceted dark-metal lantern with a warm window, large star aperture, tiny Teide silhouette, side piercings, arched handle and gold finial.
 - **Companion:** a softer domed lantern with a different frame and mountain-window construction.

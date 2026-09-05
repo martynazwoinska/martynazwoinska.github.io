@@ -6,6 +6,15 @@ This catalogue is the implementation contract for the 31 active representative c
 
 ## Rules
 
+Tenerife approved revision, 2026-09-05: the active version replaces Teide star
+lanterns with `avocado snack bowls`. Canary costumes now use fitted side-on
+feather construction, traced along each body without a separate bird torso or
+tail. Raised near and far wings extend sideways and upward from this fitted
+base, with separately drawn feather fans. Timples have wooden side depth, five strings and five
+pegs, with separate primary and companion geometry. Both worn pairs follow
+body motion. The original background is unchanged. Artwork and the English-only
+replacement label are approved. The older Tenerife row records the previous design.
+
 Edinburgh local review, 2026-09-05: the two kilts have distinct fitted geometry,
 waist-centred pivots and body-synchronized motion. Contained woven tartan,
 apron edges, pleat shadows and small leather sporrans replace the oversized
