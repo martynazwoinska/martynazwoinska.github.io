@@ -1,6 +1,54 @@
 # Kauaʻi *C. elegans* location research and art brief
 
-Last updated: 2026-08-28
+Last updated: 2026-09-05
+
+## Current accessory revision, approved for release
+
+This section supersedes the older three-pair accessory contract below. The
+painted landscape, collection record and public Tiny surprise are unchanged.
+
+- One shared **reel-to-reel sound recorder** replaces both genome tuning wheels.
+  Its wooden case has a metal face, unequal tape packs, open reel flanges,
+  tape guides, three heads, pinch roller, meters and transport keys.
+- The hermaphrodite wears padded two-ear headphones. The male has a separately
+  constructed single-ear monitor. Both are fitted to native head coordinates.
+- The primary blossom microphone uses a floor stand. The companion microphone
+  has a shorter angled desk stand above the recorder.
+- This is a playful forest-listening arrangement. It makes no claim about
+  collection equipment and uses no real audio recording or microphone access.
+- The recorder is one draggable object with an unsuffixed accessible name.
+  Other locations retain independently drawn paired accessories.
+- A single 4.8-second reel animation runs on enabling the recorder. The
+  reduced-motion CSS path leaves the reels static.
+
+Construction references inspected on 2026-09-05:
+
+- [Revox B77 product documentation](https://revox.com/en-us/collections/tonbandmaschine/products/b77)
+- [Science Museum Group reel-to-reel recorder catalogue](https://collection.sciencemuseumgroup.org.uk/objects/co8418675/reel-to-reel-tape-recorder)
+
+The SVG is original. No external product image or logo is used. The first draft
+was refined by reducing and repositioning the case beside the male, moving the
+desk microphone clear of the reels, adding restrained case-grain details and
+strengthening the flower stamens at their displayed size.
+
+Validation on `codex/kauai-recording-scene`:
+
+- Five objects pass independent pointer movement, keyboard movement, resizing
+  and Home reset. The recorder toggle hides and restores exactly one object
+  with two reel groups and the expected finite animation.
+- No browser errors. DOM overflow checks pass at 360, 768, 1024 and 1440 px.
+  Phone and wide contextual viewport renders were inspected.
+- The 1440 px full-page capture returns 1425 × 1934 px with half-scale content,
+  blank space and duplicated sections. It is rejected as full-page proof.
+  Complete valid responsive screenshot proof remains unavailable.
+- The Game intentionally has one fixed light palette. Reduced-motion behavior
+  is checked structurally, not through browser preference emulation.
+- `scripts/check-kauai-recording.cjs` checks five pieces, one shared recorder,
+  both reels, finite geometry, other-location pair preservation and the full
+  catalogue audit. Santeuil, Tenerife and six-location regression checks pass.
+- The new label is intentionally English-only, matching the Game. Martyna
+  requested commit and deployment after the finished contextual preview and
+  full-page capture-limit disclosure. The reviewed artwork is unchanged.
 
 This dossier is the evidence and review contract for the *Caenorhabditis elegans* Kauaʻi landscape and its three accessory pairs. It follows the Bristol N2, Santeuil, Edinburgh and Tenerife batches in the location-by-location Game of Worms illustration workflow.
 

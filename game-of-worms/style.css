@@ -1468,6 +1468,11 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .companion-highlight { stroke-width: 7; }
 .worm-ground-shadow { fill: rgba(35,65,58,.17); filter: blur(7px); }
 .male-tail { fill: var(--worm-color); stroke: var(--worm-deep); stroke-width: 3; stroke-linejoin: round; }
+/* A brief tape run on enabling the shared recorder, static under reduced motion. */
+@keyframes kauai-tape-run { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: no-preference) {
+  .accessory:not([hidden]) .kauai-tape-reel { animation: kauai-tape-run 4.8s linear 1; }
+}
 .worm-eye { fill: var(--ink); }
 .worm-eye-shine { fill: white; opacity: .9; }
 .worm-cheek { fill: color-mix(in srgb, var(--coral) 60%, transparent); }
@@ -4505,7 +4510,6 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .kauai-qg130-accessory,
 .elegans-field-redesign .xz-earcup,
 .elegans-field-redesign .xz-mic-core,
-.elegans-field-redesign .xz-tuning-wheel,
 .oahu-eca789-accessory {
   filter: drop-shadow(0 5px 4px rgba(24, 30, 48, .28));
 }
@@ -4562,19 +4566,6 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .xz-ohia-tip { fill:#fff1bd; stroke:#9b3f64; stroke-width:3; }
 .xz-ohia-tip.alt { fill:#61cec3; }
 .xz-mic-grille { fill:none; stroke:#9ce2da; stroke-width:4; stroke-linecap:round; }
-.xz-tuning-wheel { fill:#3f777f; stroke:#223450; stroke-width:9; }
-.xz-tuning-wheel.companion { fill:#6558a7; stroke-width:7; }
-.xz-tuning-hub { fill:#f0c55b; stroke:#223450; stroke-width:6; }
-.xz-tuning-hub.companion { fill:#e46a86; stroke-width:5; }
-.xz-tuning-spoke { fill:none; stroke:#f4d37b; stroke-width:6; }
-.xz-tuning-spoke.alt { stroke:#72d1c8; }
-.xz-genome-strand { fill:none; stroke:#f5e7b4; stroke-width:6; stroke-linecap:round; }
-.xz-genome-strand.alt { stroke:#ec7995; }
-.xz-genome-rung { fill:none; stroke:#d9ede8; stroke-width:4; }
-.xz-tuning-stand,.xz-tuning-crank,.xz-branching-signal { fill:none; stroke:#263b57; stroke-width:8; stroke-linecap:round; stroke-linejoin:round; }
-.xz-tuning-stand.companion,.xz-tuning-crank.companion { stroke-width:6; }
-.xz-tuning-knob { fill:#ed6687; stroke:#263b57; stroke-width:4; }
-.xz-branching-signal { stroke:#e3b64e; stroke-width:5; }
 
 .eca789-trumpet-petal { fill:#d65f7f; stroke:#28324f; stroke-width:6; }
 .eca789-trumpet-petal.companion { fill:#ef9a63; stroke-width:5; }

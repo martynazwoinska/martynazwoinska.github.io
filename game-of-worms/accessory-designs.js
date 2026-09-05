@@ -1,14 +1,15 @@
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
 import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260905-tenerife-wings-4";
 import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-santeuil-fit-3";
+import { drawKauaiRecording } from "./kauai-recording.js?v=20260905-kauai-recording-1";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
 /*
  * One explicit wardrobe for every displayed collection record. The `family`
  * value is deliberately auditable: no semantic accessory family occurs more
- * than twice across the full catalogue. Each button reveals a coordinated but
- * non-identical pair, one drawing for each independently movable worm.
+ * than twice across the full catalogue. Buttons normally reveal a coordinated
+ * non-identical pair. Explicit shared props render once for the whole scene.
  */
 const rows = [
   ["inopinata", "Ishigaki, Japan", "fig UV visors", "fig-fascinator", "field specimen baskets", "sample-pannier", "fig-wasp wings", "wings"],
@@ -23,7 +24,7 @@ const rows = [
   ["elegans", "Santeuil, France", "railway-driver uniforms", "santeuil-railway-driver-uniform", "organ & concertina", "santeuil-cylinder-organ-instrument", "locomotive & trolley", "santeuil-hogweed-locomotive"],
   ["elegans", "Edinburgh, Scotland", "Blackford observatory telescopes", "midmar-compost-tumbler", "Edinburgh tartan kilts", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
   ["elegans", "Tenerife, Spain", "Atlantic canary costumes", "tenerife-atlantic-canary-costume", "timple guitars", "tenerife-timple-guitar", "avocado snack bowls", "tenerife-avocado-snack-bowl"],
-  ["elegans", "Kauaʻi, Hawaiʻi", "forest-bird listening headphones", "xz1516-forest-bird-headphones", "ʻōhiʻa blossom microphones", "xz1516-ohia-blossom-microphone", "genome tuning wheels", "xz1516-genome-tuning-wheel"],
+  ["elegans", "Kauaʻi, Hawaiʻi", "forest-bird listening headphones", "xz1516-forest-bird-headphones", "ʻōhiʻa blossom microphones", "xz1516-ohia-blossom-microphone", "reel-to-reel sound recorder", "xz1516-reel-to-reel-recorder"],
   ["elegans", "Australian Capital Territory", "Flat white", "canberra-flat-white-cafe", "Balloon carriages", "canberra-dawn-balloon-carriage", "Cockatoo café raids", "oconnor-cockatoo-cafe-raid"],
   ["elegans", "Claremont, California · ECA250", "Bookworm books", "eca250-bookworm-book", "California lemonade", "eca250-california-lemonade", "sunny reading glasses", "eca250-sunny-reading-glasses"],
   ["elegans", "Araucanía, Chile", "compost sample buckets", "compost-labyrinth", "Llaima ashfall gauges", "ashfall-recorder", "reciprocal-cross plates", "test-cross-mechanism"],
@@ -63,7 +64,8 @@ const n2RendererFamilies = new Set(["ngm-agar-plate", "n2-lab-coat", "cryo-vial-
 const santeuilRendererFamilies = new Set(["santeuil-railway-driver-uniform", "santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"]);
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
 const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-avocado-snack-bowl"]);
-const kauaiRendererFamilies = new Set(["xz1516-forest-bird-headphones", "xz1516-ohia-blossom-microphone", "xz1516-genome-tuning-wheel"]);
+const kauaiRendererFamilies = new Set(["xz1516-forest-bird-headphones", "xz1516-ohia-blossom-microphone", "xz1516-reel-to-reel-recorder"]);
+const sharedAccessoryFamilies = new Set(["xz1516-reel-to-reel-recorder"]);
 const actRendererFamilies = new Set(["canberra-flat-white-cafe", "canberra-dawn-balloon-carriage", "oconnor-cockatoo-cafe-raid"]);
 const claremontRendererIds = new Set([
   "elegans::Claremont, California · ECA250::headwear",
@@ -6092,72 +6094,6 @@ function drawElegansFieldAccessory(group, item, companion) {
     return true;
   }
 
-  if (location === "kauai" && item.family === "xz1516-forest-bird-headphones") {
-    if (companion) {
-      path(group, "M-60 23Q-61-64 0-79Q53-68 60 4", "xz-headphone-band companion");
-      path(group, "M-74-1Q-52-28-31-7L-29 36Q-53 54-73 31Z", "xz-earcup companion");
-      path(group, "M34-15Q62-37 73-8L64 31Q42 42 29 17Z", "xz-earcup alt");
-      path(group, "M-56 5Q-44-14-35-3M45-7Q57-20 65-4", "xz-earcup-pad");
-      path(group, "M59-22Q84-31 93-12Q79-3 63 2", "xz-bird-sound-scoop companion");
-    } else {
-      path(group, "M-82 34Q-87-86 3-106Q81-88 84 10", "xz-headphone-band");
-      path(group, "M-101-3Q-70-42-40-11L-39 50Q-72 75-101 43Z", "xz-earcup");
-      path(group, "M45-26Q82-55 101-15L89 42Q57 61 37 25Z", "xz-earcup alt");
-      path(group, "M-78 6Q-61-20-47-5M60-15Q77-35 90-10", "xz-earcup-pad");
-      path(group, "M84-37Q124-54 139-22Q116-5 92 4", "xz-bird-sound-scoop");
-      path(group, "M-40-79Q2-101 43-76M-31-63Q5-79 33-59", "xz-band-highlight");
-      [[-115,-30],[-126,-11],[-119,11]].forEach(([cx,cy], index)=>path(group, `M${cx} ${cy}q${-12-index*3} ${-8+index*4} ${-21-index*3} 2`, "xz-sound-wave"));
-    }
-    return true;
-  }
-
-  if (location === "kauai" && item.family === "xz1516-ohia-blossom-microphone") {
-    shadow(companion ? 63 : 82, 111);
-    if (companion) {
-      path(group, "M-7-37Q-31 7-25 71M2-36Q20 1 17 67", "xz-mic-stem companion");
-      path(group, "M-29 65Q-2 50 25 67L35 82H-39Z", "xz-mic-base companion");
-      add(group, "ellipse", { class: "xz-mic-core companion", cx: -3, cy: -42, rx: 25, ry: 31, transform: "rotate(-15 -3 -42)" });
-      [[-35,-58],[-24,-78],[0,-84],[23,-72],[31,-48],[-27,-32],[23,-28]].forEach(([x,y], index)=>path(group, `M-2-43Q${x*.45} ${y*.72} ${x} ${y}`, index%2?"xz-ohia-stamen alt":"xz-ohia-stamen"));
-      [[-35,-58],[-24,-78],[0,-84],[23,-72],[31,-48],[-27,-32],[23,-28]].forEach(([cx,cy], index)=>add(group,"circle",{class:index%2?"xz-ohia-tip alt":"xz-ohia-tip",cx,cy,r:4.5}));
-      add(group, "ellipse", { class: "xz-mic-core companion", cx: -3, cy: -42, rx: 19, ry: 25, transform: "rotate(-15 -3 -42)" });
-      path(group, "M-15-51Q-3-60 9-50M-16-41Q-3-49 10-40M-14-31Q-3-37 8-30", "xz-mic-grille companion");
-    } else {
-      path(group, "M-12-43Q-42 22-30 96M3-42Q31 11 25 91", "xz-mic-stem");
-      path(group, "M-43 87Q-5 66 37 91L50 111H-54Z", "xz-mic-base");
-      add(group, "ellipse", { class: "xz-mic-core", cx: -5, cy: -53, rx: 35, ry: 43, transform: "rotate(-14 -5 -53)" });
-      [[-53,-74],[-42,-105],[-13,-119],[20,-108],[46,-78],[44,-43],[20,-22],[-18,-18],[-49,-37]].forEach(([x,y], index)=>path(group, `M-4-54Q${x*.43} ${y*.74} ${x} ${y}`, index%3?"xz-ohia-stamen":"xz-ohia-stamen alt"));
-      [[-53,-74],[-42,-105],[-13,-119],[20,-108],[46,-78],[44,-43],[20,-22],[-18,-18],[-49,-37]].forEach(([cx,cy], index)=>add(group,"circle",{class:index%3?"xz-ohia-tip":"xz-ohia-tip alt",cx,cy,r:6}));
-      add(group, "ellipse", { class: "xz-mic-core", cx: -5, cy: -53, rx: 27, ry: 35, transform: "rotate(-14 -5 -53)" });
-      path(group, "M-23-67Q-4-82 18-66M-19-51Q-2-62 16-50M-14-36Q0-44 13-36", "xz-mic-grille");
-    }
-    return true;
-  }
-
-  if (location === "kauai" && item.family === "xz1516-genome-tuning-wheel") {
-    shadow(companion ? 72 : 92, 114);
-    if (companion) {
-      add(group, "circle", { class: "xz-tuning-wheel companion", cx: -4, cy: -21, r: 54 });
-      add(group, "circle", { class: "xz-tuning-hub companion", cx: -4, cy: -21, r: 15 });
-      [-85,-28,30,88].forEach((angle,index)=>path(group, `M-4-21L${-4+46*Math.cos(angle*Math.PI/180)} ${-21+46*Math.sin(angle*Math.PI/180)}`, index%2?"xz-tuning-spoke alt":"xz-tuning-spoke"));
-      path(group, "M-40-30Q-18-58 4-29Q26 0 45-29", "xz-genome-strand");
-      path(group, "M-40-12Q-18 16 4-12Q26-40 45-12", "xz-genome-strand alt");
-      [-31,-12,7,26].forEach(x=>path(group,`M${x} ${x%2?-28:-18}L${x+8} ${x%2?-17:-29}`,"xz-genome-rung"));
-      path(group, "M-25 37L-38 80M18 35L36 77M-38 80H-58M36 77H57", "xz-tuning-stand companion");
-      path(group, "M49-9Q77-5 72 20L61 33", "xz-tuning-crank companion");
-    } else {
-      add(group, "circle", { class: "xz-tuning-wheel", cx: -5, cy: -25, r: 79 });
-      add(group, "circle", { class: "xz-tuning-hub", cx: -5, cy: -25, r: 22 });
-      [-102,-51,0,51,102,153].forEach((angle,index)=>path(group, `M-5-25L${-5+68*Math.cos(angle*Math.PI/180)} ${-25+68*Math.sin(angle*Math.PI/180)}`, index%2?"xz-tuning-spoke alt":"xz-tuning-spoke"));
-      path(group, "M-57-37Q-28-78 2-38Q33 1 60-39", "xz-genome-strand");
-      path(group, "M-57-12Q-28 29 2-11Q33-50 60-13", "xz-genome-strand alt");
-      [-45,-25,-5,15,35].forEach((x,index)=>path(group,`M${x} ${index%2?-35:-19}L${x+12} ${index%2?-20:-36}`,"xz-genome-rung"));
-      path(group, "M-38 42L-58 106M27 39L54 102M-58 106H-91M54 102H88", "xz-tuning-stand");
-      path(group, "M70-6Q111-2 105 35L88 52", "xz-tuning-crank");
-      add(group, "circle", { class: "xz-tuning-knob", cx: 84, cy: 58, r: 10 });
-      path(group, "M-65-78Q-30-112 6-88Q39-70 67-91", "xz-branching-signal");
-    }
-    return true;
-  }
 
   if (location === "kauai" && item.family === "decay-substrate-theatre") {
     shadow(companion ? 76 : 92, 103);
@@ -6295,6 +6231,7 @@ function drawElegansFieldAccessory(group, item, companion) {
 
 function drawNamedAccessory(group, item, companion) {
   if (drawRefinedAccessory(group, item, companion)) return true;
+  if (drawKauaiRecording(group, item, companion)) return true;
   if (drawSanteuilRefinement(group, item, companion)) return true;
   if (drawBriggsaeFieldAccessory(group, item, companion)) return true;
   if (drawElegansFieldAccessory(group, item, companion)) return true;
@@ -6362,6 +6299,7 @@ const layouts = {
 };
 
 function renderPiece(target, item, wormPart) {
+  if (wormPart === "companion" && sharedAccessoryFamilies.has(item.family)) return null;
   const companion = wormPart === "companion";
   let [x, y, scale] = layouts[item.slot][item.artKind][wormPart];
   let angleOverride = null;
@@ -6385,9 +6323,9 @@ function renderPiece(target, item, wormPart) {
     "tenerife-atlantic-canary-costume": { primary: [0, 0, 1, 0], companion: [-28, 82, .43, 0] },
     "tenerife-timple-guitar": { primary: [224, 194, .50, 64], companion: [52, 172, .29, 67] },
     "tenerife-avocado-snack-bowl": { primary: [346, 224, .52, -16], companion: [32, 211, .33, 15] },
-    "xz1516-forest-bird-headphones": { primary: [397, 79, .32, -5], companion: [122, 121, .25, 5] },
-    "xz1516-ohia-blossom-microphone": { primary: [235, 220, .46, -7], companion: [68, 251, .36, 7] },
-    "xz1516-genome-tuning-wheel": { primary: [388, 278, .41, -2], companion: [182, 296, .33, 3] },
+    "xz1516-forest-bird-headphones": { primary: [332, 51, 1, 27], companion: [114.5, 103.9, .43, 27] },
+    "xz1516-ohia-blossom-microphone": { primary: [371, 81, .8, 0], companion: [153, 83, .45, -20] },
+    "xz1516-reel-to-reel-recorder": { primary: [112, 151, .45, 0] },
     "canberra-flat-white-cafe": { primary: [386, 97, .41, -7], companion: [80, 330, .34, 4] },
     "canberra-dawn-balloon-carriage": { primary: [252, 94, .35, -2], companion: [88, 91, .26, 4] },
     "oconnor-cockatoo-cafe-raid": { primary: [402, 281, .42, -3], companion: [222, 299, .35, 3] },
@@ -6483,10 +6421,11 @@ function renderPiece(target, item, wormPart) {
     "data-accessory-family": item.family
   });
   const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "lingsar-springwater-current";
+  if (sharedAccessoryFamilies.has(item.family)) piece.dataset.sharedAccessory = "true";
   if (item.family === "santeuil-cylinder-organ-instrument") piece.dataset.pieceLabel = companion ? "concertina" : "cylinder organ";
   if (item.family === "santeuil-hogweed-locomotive") piece.dataset.pieceLabel = companion ? "railway trolley" : "hogweed-stem locomotive";
   const isSanteuilCompanionProp = companion && ["santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"].includes(item.family);
-  const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope";
+  const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
@@ -6512,12 +6451,18 @@ function normalizedArtworkSignature(node, isRoot = true) {
 export function auditAccessoryPairGeometry() {
   const identicalNormalizedPairs = [];
   let pairCount = 0;
+  let sharedCount = 0;
   accessoryCatalogue.forEach(design => {
     designItems(design).forEach(item => {
       const primaryTarget = svg("g");
       const companionTarget = svg("g");
       const primaryPiece = renderPiece(primaryTarget, item, "primary");
       const companionPiece = renderPiece(companionTarget, item, "companion");
+      if (sharedAccessoryFamilies.has(item.family)) {
+        if (!primaryPiece?.children.length || companionPiece !== null) identicalNormalizedPairs.push(item.label);
+        sharedCount += 1;
+        return;
+      }
       const primaryArtwork = primaryPiece.children[0];
       const companionArtwork = companionPiece.children[0];
       const primarySignature = JSON.stringify(normalizedArtworkSignature(primaryArtwork));
@@ -6528,9 +6473,10 @@ export function auditAccessoryPairGeometry() {
   });
   return Object.freeze({
     pairCount,
+    sharedCount,
     distinctPairCount: pairCount - identicalNormalizedPairs.length,
     identicalNormalizedPairs: Object.freeze(identicalNormalizedPairs),
-    valid: pairCount === accessoryCatalogue.flatMap(designItems).length && !identicalNormalizedPairs.length
+    valid: pairCount + sharedCount === accessoryCatalogue.flatMap(designItems).length && !identicalNormalizedPairs.length
   });
 }
 

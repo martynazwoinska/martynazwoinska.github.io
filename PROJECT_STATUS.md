@@ -6,6 +6,17 @@ This file records approved decisions and the verified implementation state. Alwa
 
 ### Game accessory refinement, 2026-09-05
 
+Kauaʻi XZ1516 is approved for release on `codex/kauai-recording-scene`.
+One shared reel-to-reel recorder replaces the genome tuning wheels. Fitted
+headphones and separate floor/desk microphones complete the revised equipment.
+The first draft was refined for case construction, footprint and placement.
+The English-only label is `reel-to-reel sound recorder`. The approved painting,
+collection record and Tiny surprise are unchanged. All five pointer, keyboard,
+resize/reset checks pass. Responsive overflow checks pass at 360, 768, 1024
+and 1440 px. Full-page capture still duplicates content at half scale.
+Martyna requested commit and deployment after the contextual preview and
+full-page capture-limit disclosure. See the Kauaʻi dossier.
+
 Santeuil paired-prop preview and its English-only button labels
 `organ & concertina` and `locomotive & trolley` received positive user review.
 The male has an open pump trolley and a fitted concertina.

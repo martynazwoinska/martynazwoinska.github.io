@@ -77,7 +77,7 @@ The following simplified, recognizable object sets supersede the earlier abstrac
 - **Barro Colorado QG2726:** Gustavia flower headpieces; Golden Fleece capes; forest-census map fans.
 - **Guadeloupe NIC203:** hummingbird costumes; madras carnival crowns; gwo ka drums.
 - **Kauaʻi QG130:** kukui-shell glow carts; root-loop carousel rides; three-worm ribbon hoops.
-- **Kauaʻi XZ1516:** forest-bird listening headphones; ʻōhiʻa blossom microphones; genome tuning wheels.
+- **Kauaʻi XZ1516 (approved for release):** fitted forest-bird listening headphones, floor and desk ʻōhiʻa blossom microphones, one shared reel-to-reel sound recorder. This revision supersedes the older genome-wheel pair described in row 13 below. See the Kauaʻi elegans dossier for construction, review and capture limitations.
 - **Oʻahu ECA789:** petal rain trumpets; raindrop harps; cacao-key xylophones.
 - **Kauaʻi QG131:** pandanus sample baskets; four-date culture calendars; mating-test plates.
 - **New Taipei NIC1648:** Taiwan blue-magpie kites; single-tail rain boots; bubble-tea jetpacks.
