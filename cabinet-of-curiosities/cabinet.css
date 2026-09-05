@@ -266,6 +266,42 @@ button { color: inherit; }
   pointer-events: none;
 }
 
+.crochet-eye {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  pointer-events: none;
+  width: calc(160 / 1672 * 100%);
+  object-fit: fill;
+}
+
+.crochet-eye-green {
+  left: calc(970 / 1672 * 100%);
+  top: calc(300 / 941 * 100%);
+  height: calc(150 / 941 * 100%);
+}
+
+.crochet-eye-yellow {
+  left: calc(650 / 1672 * 100%);
+  top: calc(600 / 941 * 100%);
+  height: calc(140 / 941 * 100%);
+}
+
+.crochet-eye.is-orbiting {
+  animation: crochet-orbit 2.8s linear infinite;
+}
+
+@keyframes crochet-orbit {
+  0%, 100% { transform: translate(0, 0); }
+  12.5% { transform: translate(1.4%, -.6%); }
+  25% { transform: translate(2%, -2%); }
+  37.5% { transform: translate(1.4%, -3.4%); }
+  50% { transform: translate(0, -4%); }
+  62.5% { transform: translate(-1.4%, -3.4%); }
+  75% { transform: translate(-2%, -2%); }
+  87.5% { transform: translate(-1.4%, -.6%); }
+}
+
 .chof-link {
   position: absolute;
   z-index: 3;
@@ -502,6 +538,7 @@ button { color: inherit; }
 
 .object-preview strong { display: block; }
 .object-preview strong { font-family: var(--display); font-size: .96rem; line-height: 1.15; }
+.object-preview span:not([hidden]) { display: block; margin-top: .3rem; font-size: .78rem; line-height: 1.35; }
 
 .collection-panel {
   position: fixed;
@@ -948,6 +985,7 @@ button { color: inherit; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .crochet-eye.is-orbiting { animation: none; }
   *,
   *::before,
   *::after {

@@ -18,6 +18,7 @@
   const sceneViewStatus = document.getElementById('scene-view-status');
   const preview = document.getElementById('object-preview');
   const previewTitle = document.getElementById('preview-title');
+  const previewDescription = document.getElementById('preview-description');
   const panel = document.getElementById('collection-panel');
   const panelToggle = document.getElementById('collection-toggle');
   const panelClose = document.getElementById('collection-close');
@@ -247,6 +248,9 @@
 
   function showPreview(item, trigger) {
     previewTitle.textContent = item.label;
+    // Reuse the approved app description already shown in the detail dialog.
+    previewDescription.textContent = item.kind === 'app' ? (item.note || '').split('. ')[0] + '.' : '';
+    previewDescription.hidden = !previewDescription.textContent;
     preview.hidden = false;
 
     const triggerRect = trigger.getBoundingClientRect();
@@ -257,6 +261,13 @@
 
     left = Math.max(margin, Math.min(left, window.innerWidth - previewRect.width - margin));
     if (top < margin) top = triggerRect.bottom + 10;
+    const overlapsHeader = [...document.querySelectorAll('.cabinet-header a, .cabinet-header button')]
+      .some(control => {
+        const rect = control.getBoundingClientRect();
+        return left < rect.right && left + previewRect.width > rect.left &&
+          top < rect.bottom && top + previewRect.height > rect.top;
+      });
+    if (overlapsHeader) top = triggerRect.bottom + 10;
     top = Math.max(margin, Math.min(top, window.innerHeight - previewRect.height - margin));
     preview.style.left = `${left}px`;
     preview.style.top = `${top}px`;
@@ -335,6 +346,13 @@
       button.addEventListener('focus', () => showPreview(item, button));
       button.addEventListener('blur', hidePreview);
       button.addEventListener('click', clickAction || (() => openDetails(item, button)));
+      if (item.kind === 'crochet') {
+        const eye = document.querySelector(`[data-eye="${item.id}"]`);
+        const updateEye = () => eye?.classList.toggle('is-orbiting',
+          button.matches(':hover') || button === document.activeElement);
+        ['pointerenter', 'pointerleave', 'focus', 'blur'].forEach(event =>
+          button.addEventListener(event, updateEye));
+      }
       fragment.append(button);
     }
 
