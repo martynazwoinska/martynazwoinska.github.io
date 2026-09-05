@@ -6585,6 +6585,25 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .elegans-field-redesign.efr-edinburgh .efr-kilt-pleat { stroke:#102e38; }
 .elegans-field-redesign.efr-edinburgh .efr-kilt-hem { stroke:#17313b; }
 .elegans-field-redesign.efr-edinburgh .efr-sporran-detail { stroke:#b9934e; }
+.location-accessory-art.edinburgh-tailored-kilt { transform-box:view-box; transform-origin:0 0; }
+.location-accessory-art.edinburgh-observing-scope,
+.edinburgh-observing-scope .efr-scope-assembly,
+.edinburgh-focus-wheel { transform-box:view-box; transform-origin:0 0; }
+.edinburgh-observing-scope .edinburgh-focus-wheel { transition:none; }
+.elegans-field-redesign.efr-edinburgh .efr-drone-body,
+.elegans-field-redesign.efr-edinburgh .efr-drone-body-alt,
+.elegans-field-redesign.efr-edinburgh .efr-chanter-body { fill:#293541; }
+.elegans-field-redesign.efr-edinburgh .efr-drone-ferrule,
+.elegans-field-redesign.efr-edinburgh .efr-drone-cap,
+.elegans-field-redesign.efr-edinburgh .efr-drone-cap-alt,
+.elegans-field-redesign.efr-edinburgh .efr-chanter-sole { fill:#e4d3a9; }
+.elegans-field-redesign.efr-edinburgh .efr-bag { fill:#316b60; }
+.elegans-field-redesign.efr-edinburgh .efr-bag-braid { stroke:#9bb2a0; stroke-width:2.5; opacity:.65; }
+.elegans-field-redesign.efr-edinburgh .efr-scope-tube { fill:#314e64; }
+.elegans-field-redesign.efr-edinburgh .efr-scope-dew-shield { fill:#548c91; }
+.elegans-field-redesign.efr-edinburgh .efr-tripod { stroke:#725b49; }
+.elegans-field-redesign.efr-edinburgh .efr-tripod-foot { stroke:#293e49; }
+.elegans-field-redesign.efr-edinburgh .efr-scope-ring { fill:#cead6a; }
 .elegans-field-redesign.efr-tenerife { --efr-primary:#4554aa; --efr-secondary:#5fd0bb; --efr-accent:#e54f79; --efr-leaf:#188f70; }
 .elegans-field-redesign.efr-kauai { --efr-primary:#504ca8; --efr-secondary:#65d1ca; --efr-accent:#e85a85; --efr-leaf:#178e7a; }
 .efr-kauai .kauai-case-straps,
@@ -7326,8 +7345,8 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 @keyframes lingsar-flow { to { stroke-dashoffset: -27; } }
 @keyframes lingsar-companion-bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-3.01px) rotate(1deg); } }
 @media (prefers-reduced-motion: no-preference) {
-  .fitted-headwear-motion.primary { transform-origin: 210px 170px; animation: worm-bob 3.2s ease-in-out infinite; }
-  .fitted-headwear-motion.companion { transform-origin: 62.3px 155.1px; animation: lingsar-companion-bob 3.2s .45s ease-in-out infinite; }
+  .fitted-headwear-motion.primary, .fitted-kilt-motion.primary, .fitted-scope-motion.primary { transform-origin: 210px 170px; animation: worm-bob 3.2s ease-in-out infinite; }
+  .fitted-headwear-motion.companion, .fitted-kilt-motion.companion, .fitted-scope-motion.companion { transform-origin: 62.3px 155.1px; animation: lingsar-companion-bob 3.2s .45s ease-in-out infinite; }
 }
 @keyframes lingsar-fig-left { from { transform: rotate(16deg); } to { transform: rotate(0deg); } }
 @keyframes lingsar-fig-right { from { transform: rotate(-16deg); } to { transform: rotate(0deg); } }

@@ -6093,9 +6093,9 @@ function drawElegansFieldAccessory(group, item, companion) {
   }
 
   if (location === "edinburgh" && item.family === "midmar-compost-tumbler") {
-    shadow(107, 107);
+    group.classList.add("edinburgh-observing-scope");
     if (companion) {
-      const scope = add(group, "g", { class: "efr-scope-assembly companion", transform: "translate(0 -57) rotate(-15)" });
+      const scope = add(group, "g", { class: "efr-scope-assembly companion", transform: "translate(0 -57) rotate(-100)" });
       add(scope, "rect", { class: "efr-scope-tube", x: -83, y: -17, width: 151, height: 34, rx: 10 });
       add(scope, "rect", { class: "efr-scope-dew-shield", x: 50, y: -22, width: 42, height: 44, rx: 5 });
       add(scope, "ellipse", { class: "efr-scope-objective-rim", cx: 92, cy: 0, rx: 8, ry: 23 });
@@ -6111,15 +6111,14 @@ function drawElegansFieldAccessory(group, item, companion) {
       add(group, "circle", { class: "efr-mount-axis", cx: 0, cy: -18, r: 14 });
       path(group, "M-7-9L-31 20", "efr-counterweight-shaft");
       add(group, "circle", { class: "efr-counterweight", cx: -35, cy: 25, r: 9 });
-      add(group, "circle", { class: "efr-focus-knob", cx: 15, cy: -17, r: 5 });
       path(group, "M-23-4H23L18 13H-18Z", "efr-tripod-hub");
-      path(group, "M-14 10L-50 88M14 10L51 88M0 11V86", "efr-tripod");
+      path(group, "M-14 10L-50 130M14 10L51 130M0 11V128", "efr-tripod");
       path(group, "M-29 49H30M-29 49L0 64M30 49L0 64", "efr-tripod-spreader");
-      path(group, "M-62 89H-38M39 89H63M-11 88H12", "efr-tripod-foot");
+      path(group, "M-62 131H-38M39 131H63M-11 130H12", "efr-tripod-foot");
       path(group, "M-39 57H39V76H-39Z", "efr-scope-plate");
       label("BLACKFORD", 0, 70, "efr-telescope-label");
     } else {
-      const scope = add(group, "g", { class: "efr-scope-assembly primary", transform: "translate(0 -66) rotate(-15)" });
+      const scope = add(group, "g", { class: "efr-scope-assembly primary", transform: "translate(0 -66) rotate(18) scale(-1 1)" });
       add(scope, "rect", { class: "efr-scope-tube", x: -113, y: -22, width: 204, height: 44, rx: 12 });
       add(scope, "rect", { class: "efr-scope-dew-shield", x: 67, y: -28, width: 55, height: 56, rx: 6 });
       add(scope, "ellipse", { class: "efr-scope-objective-rim", cx: 122, cy: 0, rx: 10, ry: 29 });
@@ -6137,33 +6136,55 @@ function drawElegansFieldAccessory(group, item, companion) {
       add(group, "circle", { class: "efr-mount-axis", cx: 0, cy: -18, r: 18 });
       path(group, "M-9-7L-43 32", "efr-counterweight-shaft primary");
       add(group, "circle", { class: "efr-counterweight", cx: -48, cy: 38, r: 12 });
-      add(group, "circle", { class: "efr-focus-knob", cx: 20, cy: -18, r: 7 });
       path(group, "M-30-2H30L23 18H-23Z", "efr-tripod-hub");
-      path(group, "M-18 15L-66 101M18 15L69 101M0 17V98", "efr-tripod");
+      path(group, "M-18 15L-66 130M18 15L69 130M0 17V128", "efr-tripod");
       path(group, "M-40 58H41M-40 58L0 78M41 58L0 78", "efr-tripod-spreader");
-      path(group, "M-82 102H-51M52 102H84M-15 101H16", "efr-tripod-foot");
+      path(group, "M-82 131H-51M52 131H84M-15 130H16", "efr-tripod-foot");
       path(group, "M-51 65H51V89H-51Z", "efr-scope-plate");
       label("BLACKFORD", 0, 82, "efr-telescope-label primary");
     }
+    const optics = group.querySelector(".efr-scope-assembly");
+    const focuser = add(optics, "g", { transform: companion ? "translate(-91 20)" : "translate(-124 26)" });
+    const rotor = add(focuser, "g", { class:"edinburgh-focus-wheel" });
+    add(rotor, "circle", { r: companion ? 12 : 15, fill:"#d5b978", stroke:"#283b49", "stroke-width":3 });
+    add(rotor, "path", { d: companion ? "M-8 0H8M0-8V8" : "M-11 0H11M0-11V11", fill:"none", stroke:"#6d5843", "stroke-width":2.5 });
+    add(rotor, "circle", { r:3, fill:"#f1e1b5" });
     return true;
   }
 
   if (location === "edinburgh" && item.family === "edinburgh-tartan-kilt") {
-    shadow(91, 107);
-    path(group, companion
-      ? "M-61-58Q-4-79 57-57L70 63Q45 91 5 98Q-35 96-72 70Z"
-      : "M-76-63Q-5-91 71-61L88 68Q57 103 7 111Q-43 108-91 76Z", "efr-kilt");
-    path(group, companion
-      ? "M-65-66Q-4-88 62-64L63-39Q-3-61-62-39Z"
-      : "M-81-72Q-5-101 77-69L79-41Q-4-68-77-40Z", "efr-waistband");
-    [-49,-25,-1,23,47].filter(x => companion ? Math.abs(x) < 48 : true).forEach((x, index) => {
-      path(group, `M ${x} -42 Q ${x + (index % 2 ? 5 : -4)} 24 ${x * 1.18} 82`, "efr-tartan-gold");
-      path(group, `M ${x + 7} -45 Q ${x + 10} 24 ${(x + 7) * 1.13} 85`, "efr-kilt-pleat");
+    group.classList.add("edinburgh-tailored-kilt");
+    const outline = companion
+      ? "M-32 0Q0 10 32 0Q31 42 45 90Q11 108-34 94Q-39 46-32 0Z"
+      : "M-45 0Q0 13 45 0Q47 59 67 112Q14 138-48 117Q-55 63-45 0Z";
+    const clipId = `edinburgh-cloth-${companion ? "companion" : "primary"}`;
+    const defs = add(group, "defs");
+    add(add(defs, "clipPath", { id: clipId }), "path", { d: outline });
+    const cloth = add(group, "g", { "clip-path": `url(#${clipId})` });
+    add(cloth, "path", { d: outline, fill: "#28564f" });
+    const line = (d, stroke, width, opacity = 1) => add(cloth, "path", { d, fill: "none", stroke, "stroke-width": width, opacity });
+    // The sett bends with the wool. Narrow gold threads sit within broad woven bands.
+    (companion ? [-27,-6,17,37] : [-39,-14,13,40,62]).forEach(x => {
+      line(`M${x} -6Q${x-7} 55 ${x+7} 138`, "#152f42", companion ? 9 : 12);
+      line(`M${x+3} -6Q${x-4} 55 ${x+10} 138`, "#c5ab6a", 1.8, .85);
     });
-    [-19,17,53].forEach(y => path(group, `M ${companion ? -59 : -74} ${y} Q 0 ${y + 9} ${companion ? 60 : 75} ${y - 1}`, "efr-tartan-aqua"));
-    path(group, companion ? "M-67 66Q-29 91 7 92Q42 86 66 62" : "M-85 72Q-41 103 7 104Q52 96 83 66", "efr-kilt-hem");
-    path(group, companion ? "M-21-5Q0-20 21-4L19 43Q0 61-19 43Z" : "M-27-8Q0-27 27-6L24 52Q0 74-24 52Z", "efr-sporran");
-    path(group, companion ? "M-17 1Q0-10 17 2M-8 44L-11 58M0 49V63M8 44L11 58" : "M-22-1Q0-16 22 1M-11 54L-14 72M0 59V77M11 54L14 72", "efr-sporran-detail");
+    (companion ? [22,47,73,96] : [24,54,84,115]).forEach(y => {
+      line(`M-65 ${y}Q0 ${y+16} 80 ${y-4}`, "#993e52", companion ? 6 : 8, .88);
+      line(`M-65 ${y+6}Q0 ${y+22} 80 ${y+2}`, "#d5bb78", 1.4, .9);
+    });
+    (companion ? [-30,-20,29] : [-42,-29,38,51]).forEach(x => {
+      add(cloth, "path", { d: `M${x} 12Q${x-5} 59 ${x+5} 130L${x+12} 130Q${x+1} 58 ${x+5} 12Z`, fill: "#102d35", opacity: .56 });
+      line(`M${x+5} 17Q${x} 60 ${x+12} 127`, "#659083", 1.5, .65);
+    });
+    line(companion ? "M21 10Q17 53 30 99" : "M26 13Q24 69 43 127", "#102a35", 3);
+    line(companion ? "M24 12Q20 53 33 98" : "M29 14Q27 68 46 125", "#88a092", 1.3);
+    add(group, "path", { d: outline, fill: "none", stroke: "#213844", "stroke-width": 3, "stroke-linejoin": "round" });
+    add(group, "path", { d: companion ? "M-33-3Q0 5 33-3L32 8Q0 17-33 8Z" : "M-46-4Q0 7 46-4L46 9Q0 22-46 9Z", fill: "#753d48", stroke: "#27313a", "stroke-width": 2.5 });
+    add(group, "rect", { x: companion ? 19 : 29, y: 1, width: companion ? 11 : 14, height: 9, rx: 2, fill: "#cfaf69", stroke: "#293b43", "stroke-width": 1.6 });
+    add(group, "path", { d: companion ? "M-18 12L-5 29L15 13" : "M-27 15L-3 39L24 16", fill: "none", stroke: "#d0b274", "stroke-width": 2.4 });
+    add(group, "path", { d: companion ? "M-17 29Q-4 22 10 30L9 48Q-5 60-18 47Z" : "M-23 37Q-4 25 17 38L15 64Q-4 80-24 64Z", fill: companion ? "#39413e" : "#b18a60", stroke: "#25343c", "stroke-width": 2.7 });
+    add(group, "path", { d: companion ? "M-17 30Q-4 38 10 30" : "M-22 38Q-4 49 16 38", fill: "none", stroke: "#e5cc94", "stroke-width": 3 });
+    (companion ? [-10,3] : [-15,-4,8]).forEach(x => add(group, "path", { d: `M${x} ${companion ? 47 : 64}v${companion ? 9 : 12}`, fill: "none", stroke: "#273b40", "stroke-width": 3.5, "stroke-linecap": "round" }));
     return true;
   }
 
@@ -6173,16 +6194,19 @@ function drawElegansFieldAccessory(group, item, companion) {
       const drone = add(group, "g", { class: "efr-bagpipe-drone", transform: `translate(${x} ${y}) rotate(${angle})` });
       add(drone, "ellipse", { class: "efr-bagpipe-stock", cx: 0, cy: 20, rx: 11, ry: 8 });
       path(drone, `M-7 20L-6 ${-height + 20}Q0 ${-height + 12} 6 ${-height + 20}L7 20Z`, alternate ? "efr-drone-body efr-drone-body-alt" : "efr-drone-body");
+      add(drone, "path", { d: `M-2 12V${-height+30}`, fill:"none", stroke:"#73818a", "stroke-width":1.8 });
       [-height * .32, -height * .67].forEach(offset => path(drone, `M-10 ${offset + 20}H10V${offset + 31}H-10Z`, "efr-drone-ferrule"));
       path(drone, `M-11 ${-height + 23}Q0 ${-height + 7} 11 ${-height + 23}V${-height + 34}H-11Z`, alternate ? "efr-drone-cap efr-drone-cap-alt" : "efr-drone-cap");
     };
     const drones = companion
-      ? [[-29,-42,82,-8,false],[2,-48,91,3,true]]
-      : [[-43,-44,101,-10,false],[-11,-53,116,-2,true],[22,-46,104,8,false]];
+      ? [[-35,-40,108,-12,false],[-8,-47,78,0,true],[18,-42,78,10,false]]
+      : [[-43,-44,139,-10,false],[-11,-53,101,-2,true],[22,-46,101,8,false]];
     drones.forEach(parts => drawDrone(...parts));
     path(group, companion
       ? "M-65-4Q-80-48-42-70Q-3-87 37-55Q65-32 57 14Q47 62 5 75Q-41 75-65-4Z"
       : "M-82-2Q-101-57-51-81Q-1-105 51-62Q84-30 72 23Q59 80 4 92Q-54 90-82-2Z", "efr-bag");
+    add(group, "path", { d: companion ? "M-60-13Q-62-56-32-62Q-8-67 10-50Q-33-48-42-7Q-42 31-12 58Q-50 43-60-13Z" : "M-75-15Q-77-65-39-74Q-9-80 15-59Q-39-56-52-6Q-50 39-14 73Q-63 51-75-15Z", fill:"#648f7b", opacity:.65 });
+    add(group, "path", { d: companion ? "M-53 23Q-37 68 7 65Q37 57 46 27" : "M-66 29Q-45 84 8 79Q46 69 59 31", fill:"none", stroke:"#b8c2a0", "stroke-width":2, "stroke-dasharray":"3 4" });
     path(group, companion
       ? "M-58-17Q-7-62 49-31M-61 7Q-5-31 55 0M-49 42Q1 14 49 35"
       : "M-73-22Q-8-78 61-37M-78 8Q-7-43 68 1M-63 51Q0 13 61 44", "efr-bag-braid");
@@ -6527,7 +6551,7 @@ function renderPiece(target, item, wormPart) {
     "santeuil-railway-driver-uniform": { primary: [296, 132, .72, 0], companion: [91, 126, .58, 0] },
     "santeuil-cylinder-organ-instrument": { primary: [360, 244, .58, -4], companion: [41, 202, .48, 5] },
     "santeuil-hogweed-locomotive": { primary: [220, 275, .57, -2], companion: [55, 275, .45, -3] },
-    "midmar-compost-tumbler": { primary: [370, 270, .44, -2], companion: [14, 282, .32, 2] },
+    "midmar-compost-tumbler": { primary: [270.4, 55, .35, 0], companion: [106.5, 90.5, .22, 0] },
     "galaxy-plate-scanner": { primary: [184, 204, .54, -1], companion: [68, 202, .43, 2] },
     "agassiz-ice-flow-model": { primary: [322, 260, .52, -2], companion: [52, 290, .42, 2] },
     "tenerife-atlantic-canary-costume": { primary: [271, 166, .5, 30], companion: [97, 166, .39, 28] },
@@ -6560,8 +6584,8 @@ function renderPiece(target, item, wormPart) {
     "qg2904-sealed-pod-drum": { primary: [228, 239, .43, 1], companion: [80, 228, .36, 3] },
     "qg2904-funnel-megaphone": { primary: [358, 113, .36, -2], companion: [1, 112, .32, 5] },
     "qg2904-canopy-kaleidoscope": { primary: [340, 278, .4, -4], companion: [-5, 290, .34, 4] },
-    "edinburgh-tartan-kilt": { primary: [220, 176, .62, 35], companion: [72, 166, .46, 42] },
-    "great-highland-bagpipes": { primary: [291, 190, .49, -8], companion: [94, 168, .37, 5] }
+    "edinburgh-tartan-kilt": { primary: [225, 125, .56, 42], companion: [66, 138, .31, 34] },
+    "great-highland-bagpipes": { primary: [306, 177, .40, -8], companion: [110, 163, .26, 5] }
     ,"ju1373-torch-ginger-bract-collar": { primary: [366, 118, .33, -4], companion: [8, 112, .28, 5] }
     ,"ju1373-type-isolate-signet-engine": { primary: [224, 194, .31, -1], companion: [105, 207, .27, 2] }
     ,"saint-benoit-windward-slope-mobile": { primary: [365, 270, .31, 1], companion: [6, 286, .26, -2] }
@@ -6632,8 +6656,10 @@ function renderPiece(target, item, wormPart) {
   });
   const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "lingsar-springwater-current";
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope";
+  const isFittedKilt = item.family === "edinburgh-tartan-kilt";
+  const isObservingScope = item.family === "midmar-compost-tumbler";
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
-    : isFittedHeadwear ? add(piece, "g", { class: `fitted-headwear-motion ${wormPart}` }) : piece;
+    : isFittedHeadwear || isFittedKilt || isObservingScope ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });
   const drewNamedAccessory = drawNamedAccessory(artwork, item, companion);
   if (!drewNamedAccessory) throw new Error(`No named accessory renderer for ${item.label}`);

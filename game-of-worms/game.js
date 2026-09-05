@@ -3,7 +3,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260905-headwear-fit-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260905-edinburgh-scope-2";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
@@ -1372,10 +1372,10 @@ if (!("PointerEvent" in window)) {
 }
 
 function syncFittedHeadwearMotion(accessory) {
-  if (!accessory?.querySelector(".fitted-headwear-motion")) return;
+  if (!accessory?.querySelector(".fitted-headwear-motion, .fitted-kilt-motion, .fitted-scope-motion")) return;
   requestAnimationFrame(() => {
     if (!accessory.isConnected || accessory.hasAttribute("hidden")) return;
-    accessory.querySelectorAll(".fitted-headwear-motion").forEach(motion => {
+    accessory.querySelectorAll(".fitted-headwear-motion, .fitted-kilt-motion, .fitted-scope-motion").forEach(motion => {
       const body = document.querySelector(motion.classList.contains("companion") ? ".companion-body" : ".worm-body");
       const bodyAnimation = body?.getAnimations()[0];
       const hatAnimation = motion.getAnimations()[0];
@@ -1442,7 +1442,7 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-keyshortcuts", "ArrowUp ArrowDown ArrowLeft ArrowRight + - Home");
+      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${piece.querySelector(".edinburgh-focus-wheel") ? " Enter Space" : ""}`);
       addAccessoryHitTarget(piece);
     });
   });
@@ -1526,6 +1526,7 @@ function finishAccessoryDrag(event) {
   document.documentElement.classList.remove("accessory-drag-active");
   moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
+  else if (event.type === "pointerup") turnTelescopeFocus(piece);
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1569,6 +1570,19 @@ function moveActiveAccessoryPointer(event) {
     y: activeAccessoryDrag.startPosition.y + delta.y,
     scale: activeAccessoryDrag.startPosition.scale
   }, piece);
+}
+
+function turnTelescopeFocus(piece) {
+  const wheel = piece.querySelector(".edinburgh-focus-wheel");
+  if (!wheel) return;
+  const start = Number(wheel.dataset.angle || 0);
+  const end = start + 60;
+  wheel.dataset.angle = String(end);
+  wheel.getAnimations().forEach(animation => animation.cancel());
+  wheel.style.transform = `rotate(${end}deg)`;
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    wheel.animate([{ transform:`rotate(${start}deg)` }, { transform:`rotate(${end}deg)` }], { duration:420, easing:"ease-out" });
+  }
 }
 
 function wireAccessoryPieces() {
@@ -1618,6 +1632,11 @@ function wireAccessoryPieces() {
 
     piece.addEventListener("keydown", event => {
       if (piece.getAttribute("tabindex") !== "0" || drawingEnabled || !activeWardrobe().has(id)) return;
+      if ((event.key === "Enter" || event.key === " ") && piece.querySelector(".edinburgh-focus-wheel")) {
+        event.preventDefault();
+        if (!event.repeat) turnTelescopeFocus(piece);
+        return;
+      }
       if (event.key === "Home") {
         event.preventDefault();
         resetAccessoryPosition(id, wormPart);

@@ -1,5 +1,37 @@
 # Edinburgh location research and art brief
 
+## Local accessory refinement, 2026-09-05
+
+The kilt and follow-up telescope revisions are approved for publication.
+The painted background and public copy are unchanged.
+
+- Kilts: separate primary and companion silhouettes, narrowed waist openings,
+  waist-origin rotation, clipped tartan, overlapping front apron, side pleat
+  shading, belt fastening and leather sporrans. Both follow the body motion.
+- Bagpipes: three drones on both instruments, with a longer bass drone,
+  dark turned-wood pipes, ivory-coloured fittings and stitched cloth bags.
+  Smaller placement keeps the kilts readable.
+- Telescopes: existing construction retained with navy tubes, brass rings
+  and timber-coloured tripod legs. The primary barrel aims up-left and the
+  companion aims more steeply towards the hilltop. Each eyepiece meets one
+  eye, with a separately fitted body-supported tripod. Both follow their worm's
+  animation phase. Tap anywhere on an enabled telescope, or use Enter/Space
+  on its focused accessory, to turn the focusing wheel. Dragging remains
+  independent and does not trigger the wheel. Reduced motion uses a static
+  wheel-angle change. Contact, pointer/keyboard activation, drag isolation and
+  motion preferences passed at 360 and 1440 px. No new public strings.
+
+Construction reference: [ScotlandShop kilt guide](https://www.scotlandshop.com/tartanblog/the-kilt-how-do-you-wear-yours).
+The tartan is an original decorative sett with no clan attribution.
+
+Local checks: full-page proofs at 360 × 2531, 768 × 2440, 1024 × 1879 and
+1440 × 1935 pixels. All six objects passed independent pointer movement,
+keyboard movement and Home reset at phone and desktop widths (12 checks).
+Both kilt animation phases track the body after toggling. Reduced motion,
+94-entry catalogue and 94 distinct-pair audits passed, with no page errors
+or horizontal overflow. Waist centres are within 0.5 body-coordinate units
+of each worm's centreline. The Game retains its fixed light palette.
+
 Last updated: 2026-08-10
 
 This dossier is the evidence and review contract for the Edinburgh landscape and its three accessory pairs. It follows the Bristol N2 and Santeuil batches in the location-by-location Game of Worms illustration workflow.

@@ -6,6 +6,17 @@ This file records approved decisions and the verified implementation state. Alwa
 
 ### Game accessory refinement, 2026-09-05
 
+Approved Edinburgh revision: independently fitted kilts now use an explicit waist
+pivot, contained tartan, overlapping aprons, side pleats and leather sporrans.
+Their motion follows each worm. Bagpipes have clearer wood and ivory fittings,
+three drones per instrument and quieter stitched fabric. The telescope palette
+has restrained brass, painted-metal and timber details. Background and public
+copy are unchanged. The kilt revision was approved. A follow-up telescope
+preview aligns the two eyepieces to the eyes, aims each barrel towards the
+observatory and supports tap/Enter/Space focus-wheel movement. Body-phase
+synchronization maintains contact, and reduced motion disables wheel animation.
+Both revisions are approved for publication. Deployment verification is pending.
+
 Follow-up: Salt Lake City hats and Orsay flower crowns have independently
 adjusted head placement and tilt. Orsay's companion crown is smaller.
 Both sets follow their worm's bobbing phase, including when enabled later.

@@ -6,6 +6,14 @@ This catalogue is the implementation contract for the 31 active representative c
 
 ## Rules
 
+Edinburgh local review, 2026-09-05: the two kilts have distinct fitted geometry,
+waist-centred pivots and body-synchronized motion. Contained woven tartan,
+apron edges, pleat shadows and small leather sporrans replace the oversized
+grid panels. Bagpipe fittings and telescope materials are refined without
+changing concepts or the painted scene. Kilts approved. The telescope
+follow-up adds separately fitted eye contact, uphill aim and a tap/keyboard
+focusing wheel, with reduced-motion support. Both contextual proofs are approved.
+
 Headwear fit update, 2026-09-05: Salt Lake City's apricot hats now sit lower
 and tilt with each head. Orsay's flower crowns sit above the eyes, with a
 smaller companion crown. Both sets follow the corresponding body animation
