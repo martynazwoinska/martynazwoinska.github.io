@@ -70,10 +70,29 @@ The set uses three clearly readable, wearable or carried pieces tied to the docu
 - **Primary:** a broad curved shield with a layered brow, temple pieces, glare lines and a small fig medallion.
 - **Companion:** a smaller shield with a distinct arc, hinge details and its own medallion proportions.
 
+Fit refinement, 5 September 2026: shorter curved temple straps and a 25-degree
+clockwise tilt follow the eye line. Primary layout is `[331.5, 47, .50, 25]`,
+companion `[114.5, 102, .32, 25]`. The companion renderer preserves that layout
+instead of replacing its transform. Lens translucency and wing geometry are unchanged.
+The visor's movement boundary uses its drawn parts and a 4 px scene inset so
+responsive resizing keeps the fitted eye position.
+
 ### Field specimen baskets
 
 - **Primary:** a handled woven basket with a shaped rim and three visible fig samples, including a cut fig with seeds.
 - **Companion:** two compact woven cups joined by a yoke, carrying one fresh and one cut fig.
+
+Basket refinement, 5 September 2026: curved woven rows alternate over tapered
+upright stakes. Restrained material shading rounds the walls and fruit.
+Separate rear and bound front rims establish the opening depth, with the fruit
+between them. The large basket keeps its raised woven lid, now with edge
+thickness and hinges behind the contents, a wrapped handle and side sockets.
+The male's two narrower cups retain their own outlines, different weave spacing
+and yoke. Every woven field is clipped to its basket or lid.
+
+Construction references: [Basket Maker's Supply, handle and stake construction](https://resources.basketmakerssupply.com/handles/usingdhandles.htm)
+and [Museo Vasco, basket construction description](https://www.euskalmuseoa.eus/en/obra/basket/).
+These informed construction only. No source artwork was copied.
 
 ### Fig-wasp wings
 

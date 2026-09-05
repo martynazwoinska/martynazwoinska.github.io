@@ -3001,14 +3001,13 @@ function drawUniqueNamedAccessory(group, item, companion) {
   switch (item.family) {
     case "fig-fascinator": {
       group.classList.add("ishigaki-accessory", "ishigaki-fascinator", companion ? "ishigaki-fascinator-companion" : "ishigaki-fascinator-primary");
-      const s = companion ? 0.68 : 1;
       const brow = companion ? "M-48-13Q0-42 49-14L44-3Q0-25-43-3Z" : "M-70-18Q0-61 70-17L61-1Q0-40-60-1Z";
       const shield = companion ? "M-45-4Q0-28 46-4L39 25Q0 43-40 24Z" : "M-62-2Q0-41 63-2L53 35Q0 61-55 34Z";
       path(group, brow, "uv-visor-brow");
       path(group, shield, "uv-visor-shield");
       path(group, companion ? "M-40 23Q0 40 40 24" : "M-55 33Q0 56 55 34", "uv-visor-edge");
       path(group, companion ? "M-40 15Q0 31 40 16" : "M-53 22Q0 45 53 23", "uv-visor-lower-rim");
-      path(group, companion ? "M-45-4L-60 5M46-3L60 6" : "M-62-1L-84 7M63-1L84 9", "uv-visor-temple");
+      path(group, companion ? "M-45-4Q-50-1-52 4M46-3Q50 0 52 5" : "M-62-1Q-69 2-72 7M63-1Q69 3 72 8", "uv-visor-temple");
       add(group, "circle", { class: "uv-visor-hinge", cx: companion ? -44 : -61, cy: companion ? -3 : -1, r: companion ? 3.5 : 5 });
       add(group, "circle", { class: "uv-visor-hinge", cx: companion ? 45 : 62, cy: companion ? -2 : 0, r: companion ? 3.5 : 5 });
       path(group, companion ? "M-30-4Q-8-16 16-10" : "M-46-5Q-15-29 20-17M-39 3Q-18-8 2-6", "uv-visor-glare");
@@ -3017,79 +3016,116 @@ function drawUniqueNamedAccessory(group, item, companion) {
       add(med, "circle", { class: "uv-fig-flesh", cx: 0, cy: 0, r: companion ? 8 : 12 });
       (companion ? [[-3,-2],[3,-3],[-3,3],[3,3]] : [[-4,-4],[3,-5],[6,0],[-5,3],[2,5]]).forEach(([cx,cy]) => add(med, "circle", { class: "uv-fig-seed", cx, cy, r: companion ? 1.15 : 1.5 }));
       path(med, companion ? "M7-8Q18-18 23-8Q15 1 7-2Z" : "M9-12Q24-27 31-11Q21 3 9-2Z", "uv-fig-leaf");
-      if (s < 1) group.setAttribute("transform", "scale(.9)");
       return true;
     }
     case "sample-pannier": {
       group.classList.add("ishigaki-accessory", "ishigaki-pannier", companion ? "ishigaki-pannier-male" : "ishigaki-pannier-female");
-      const basketDefs = add(group, "defs");
+      const defs = add(group, "defs");
+      const prefix = companion ? "ishigaki-cups" : "ishigaki-basket";
+      const bodyPaint = add(defs, "linearGradient", { id: prefix + "-body", x1: "0%", y1: "15%", x2: "100%", y2: "55%" });
+      [[0,"#254f49"],[.24,"#609989"],[.48,"#417c6b"],[.79,"#285b52"],[1,"#163e3b"]].forEach(([offset, color]) => add(bodyPaint, "stop", { offset, "stop-color": color }));
+      const fruitPaint = add(defs, "radialGradient", { id: prefix + "-fruit", cx: "32%", cy: "26%", r: "76%" });
+      [[0,"#c2d390"],[.42,"#94b571"],[1,"#4e784a"]].forEach(([offset, color]) => add(fruitPaint, "stop", { offset, "stop-color": color }));
+      const fruit = (parent, x, y, r, cut = false) => {
+        const fig = add(parent, "g", { transform: `translate(${x} ${y})` });
+        add(fig, "circle", { r, fill: `url(#${prefix}-fruit)`, class: "pannier-fruit-volume" });
+        if (cut) {
+          add(fig, "ellipse", { cx: 1, cy: -1, rx: r * .79, ry: r * .84, class: "pannier-cut-flesh" });
+          add(fig, "ellipse", { cx: 1, cy: -1, rx: r * .28, ry: r * .37, class: "pannier-fruit-cavity" });
+          [0,55,110,165,220,280].forEach(a => {
+            const rad = a * Math.PI / 180;
+            add(fig, "ellipse", { cx: 1 + Math.cos(rad) * r * .55, cy: -1 + Math.sin(rad) * r * .58, rx: r * .09, ry: r * .14, class: "pannier-floret" });
+          });
+        } else {
+          path(fig, `M${-r*.64} ${-r*.22}Q${-r*.65} ${-r*.7} ${-r*.2} ${-r*.72}`, "pannier-fruit-highlight");
+          add(fig, "ellipse", { cx: r * .24, cy: r * .17, rx: r * .14, ry: r * .1, class: "pannier-ostiole" });
+        }
+      };
+      const wovenBody = (d, id, cx, halfWidth, top, bottom, rows, stakes) => {
+        const clip = add(defs, "clipPath", { id });
+        path(clip, d);
+        path(group, d, "pannier-basket").style.fill = `url(#${prefix}-body)`;
+        const weave = add(group, "g", { "clip-path": `url(#${id})`, class: "pannier-weave-field" });
+        // Upright stakes bend inward with the tapered basket wall.
+        for (let i = 0; i < stakes; i++) {
+          const t = -1 + 2 * i / (stakes - 1);
+          const x = cx + t * halfWidth;
+          path(weave, `M${x} ${top-5}Q${cx+t*halfWidth*.88} ${(top+bottom)/2} ${cx+t*halfWidth*.62} ${bottom+5}`, "pannier-stake");
+        }
+        for (let i = 0; i < rows; i++) {
+          const y = top + 7 + i * (bottom-top-12) / (rows-1);
+          const curve = `M${cx-halfWidth-4} ${y}Q${cx} ${y+halfWidth*.28} ${cx+halfWidth+4} ${y}`;
+          path(weave, curve, "pannier-strand-shadow");
+          path(weave, curve, i % 2 ? "pannier-strand warm" : "pannier-strand");
+          // Short alternating overpasses make a woven wall, not an open net.
+          for (let j = i % 2; j < stakes-1; j += 2) {
+            const t = -1 + 2 * (j+.5)/(stakes-1);
+            const x = cx + t * halfWidth * (1-.26*i/rows);
+            const yy = y + halfWidth*.14*(1-t*t);
+            path(weave, `M${x-2.3} ${yy}L${x+2.3} ${yy}`, "pannier-overpass");
+          }
+        }
+        path(weave, `M${cx+halfWidth*.72} ${top}Q${cx+halfWidth*.85} ${bottom*.5} ${cx+halfWidth*.5} ${bottom+5}L${cx+halfWidth+8} ${bottom+5}V${top}Z`, "pannier-side-shade");
+      };
+      const rim = (cx, cy, rx, ry, front) => {
+        const d = front
+          ? `M${cx-rx} ${cy}C${cx-rx} ${cy+ry*1.34} ${cx+rx} ${cy+ry*1.34} ${cx+rx} ${cy}`
+          : `M${cx-rx} ${cy}C${cx-rx} ${cy-ry*1.34} ${cx+rx} ${cy-ry*1.34} ${cx+rx} ${cy}`;
+        path(group, d, "pannier-rim-shadow");
+        path(group, d, front ? "pannier-bound-rim front" : "pannier-bound-rim back");
+        if (front) path(group, d, "pannier-rim-lashing");
+      };
       if (companion) {
+        path(group, "M-64-29Q0-73 64-26", "pannier-yoke");
+        path(group, "M-62-30Q0-67 62-27", "pannier-handle-light");
+        path(group, "M-20-34Q0-47 20-32L16-23Q0-33-16-24Z", "pannier-yoke-pad");
         const leftBody = "M-68-22C-67 5-61 33-54 43Q-41 53-28 44C-21 27-18 2-18-22Z";
         const rightBody = "M16-19C17 7 21 34 28 44Q40 54 53 45C60 27 66 3 67-18Z";
-        const leftClipId = "ishigaki-pannier-left-clip";
-        const rightClipId = "ishigaki-pannier-right-clip";
-        const leftClip = add(basketDefs, "clipPath", { id: leftClipId });
-        const rightClip = add(basketDefs, "clipPath", { id: rightClipId });
-        path(leftClip, leftBody);
-        path(rightClip, rightBody);
-        path(group, "M-64-29Q0-73 64-26", "pannier-yoke");
-        path(group, "M-20-34Q0-47 20-32L16-23Q0-33-16-24Z", "pannier-yoke-pad");
-        path(group, leftBody, "pannier-cup left");
-        path(group, rightBody, "pannier-cup right");
-        const leftWeave = add(group, "g", { class: "pannier-weave-field", "clip-path": `url(#${leftClipId})` });
-        const rightWeave = add(group, "g", { class: "pannier-weave-field", "clip-path": `url(#${rightClipId})` });
-        [-82,-67,-52,-37,-22,-7].forEach((x, index) => path(leftWeave, `M${x} 49L${x + 45}-30`, index % 2 ? "pannier-weave-b" : "pannier-weave-a"));
-        [-77,-62,-47,-32,-17,-2].forEach((x, index) => path(leftWeave, `M${x}-30L${x + 37} 51`, index % 2 ? "pannier-weave-a" : "pannier-weave-b"));
-        [4,19,34,49,64,79].forEach((x, index) => path(rightWeave, `M${x} 50L${x + 38}-28`, index % 2 ? "pannier-weave-b" : "pannier-weave-a"));
-        [3,18,33,48,63,78].forEach((x, index) => path(rightWeave, `M${x}-29L${x - 38} 52`, index % 2 ? "pannier-weave-a" : "pannier-weave-b"));
-        [5,25].forEach(y => {
-          path(leftWeave, `M-70 ${y}Q-42 ${y + 12} -16 ${y}`, "pannier-weave-row");
-          path(rightWeave, `M14 ${y + 1}Q40 ${y + 13} 67 ${y}`, "pannier-weave-row");
-        });
-        add(group, "ellipse", { class: "pannier-interior", cx: -43, cy: -22, rx: 26, ry: 9 });
-        add(group, "ellipse", { class: "pannier-interior", cx: 41, cy: -19, rx: 27, ry: 9 });
-        add(group, "circle", { class: "pannier-fig light", cx: -47, cy: -27, r: 12 });
-        add(group, "circle", { class: "pannier-ostiole", cx: -47, cy: -27, r: 2.4 });
-        path(group, "M-43-38Q-31-48-25-35Q-34-28-42-31Z", "pannier-fig-leaf");
-        add(group, "circle", { class: "pannier-cut-fig", cx: 42, cy: -24, r: 13 });
-        add(group, "circle", { class: "pannier-cut-flesh", cx: 42, cy: -24, r: 9 });
-        [[39,-27],[45,-28],[38,-21],[45,-20]].forEach(([cx,cy]) => add(group, "circle", { class: "pannier-floret", cx, cy, r: 1.35 }));
-        add(group, "ellipse", { class: "pannier-rim", cx: -43, cy: -22, rx: 27, ry: 10 });
-        add(group, "ellipse", { class: "pannier-rim", cx: 41, cy: -19, rx: 28, ry: 10 });
-        path(group, "M-68-21Q-43-8-17-21M15-18Q41-4 67-17", "pannier-front-rim");
-        path(group, "M-64 39Q-41 54-15 40M15 41Q39 55 61 42", "pannier-base-band");
+        wovenBody(leftBody, prefix+"-left", -43, 25, -22, 46, 7, 6);
+        wovenBody(rightBody, prefix+"-right", 41, 26, -19, 47, 6, 7);
+        add(group, "ellipse", { class: "pannier-interior", cx: -43, cy: -22, rx: 25, ry: 9 });
+        add(group, "ellipse", { class: "pannier-interior", cx: 41, cy: -19, rx: 26, ry: 9 });
+        rim(-43,-22,26,9,false); rim(41,-19,27,9,false);
+        fruit(group,-47,-29,12);
+        path(group, "M-43-39Q-31-48-25-35Q-34-28-42-31Z", "pannier-fig-leaf");
+        fruit(group,42,-27,13,true);
+        rim(-43,-22,26,9,true); rim(41,-19,27,9,true);
+        path(group, "M-55 42Q-41 51-28 43M28 44Q40 52 53 44", "pannier-base-band");
         path(group, "M-2-43Q-8-36-7-29", "pannier-tag-cord");
         path(group, "M-8-43L19-40L16-22L-11-26Z", "pannier-tag");
-        line(group, "M-2-37L13-34M-3-31L11-29M-4-26L7-25", "pannier-tag-line");
+        line(group, "M-2-37L13-34M-3-31L11-29", "pannier-tag-line");
       } else {
-        const basketBody = "M-68-28C-65 8-55 43-42 56Q0 72 42 56C55 43 65 8 69-28Z";
-        const basketClipId = "ishigaki-pannier-main-clip";
-        const basketClip = add(basketDefs, "clipPath", { id: basketClipId });
-        path(basketClip, basketBody);
         path(group, "M-57-27C-53-98 52-98 59-26", "pannier-handle");
-        add(group, "ellipse", { class: "pannier-lid", cx: -3, cy: -50, rx: 61, ry: 17, transform: "rotate(-8 -3 -50)" });
-        path(group, "M-60-53Q-5-77 57-48M-57-48Q-4-25 55-44", "pannier-lid-weave");
-        path(group, "M-50-54Q-2-65 49-49M-42-60Q-2-66 40-54", "pannier-lid-rib");
-        path(group, basketBody, "pannier-basket");
-        const weave = add(group, "g", { class: "pannier-weave-field", "clip-path": `url(#${basketClipId})` });
-        [-94,-70,-46,-22,2,26,50,74].forEach((x, index) => path(weave, `M${x} 66L${x + 78}-39`, index % 2 ? "pannier-weave-b" : "pannier-weave-a"));
-        [-92,-68,-44,-20,4,28,52,76].forEach((x, index) => path(weave, `M${x}-39L${x + 77} 67`, index % 2 ? "pannier-weave-a" : "pannier-weave-b"));
-        [-4,20,43].forEach(y => path(weave, `M-72 ${y}Q0 ${y + 19} 72 ${y}`, "pannier-weave-row"));
+        path(group, "M-55-28C-50-91 48-91 56-28", "pannier-handle-light");
+        path(group, "M-57-27C-53-98 52-98 59-26", "pannier-handle-binding");
+        // The raised lid has a visible lower edge and its weave stays inside it.
+        const lid = add(group, "g", { transform: "rotate(-8 -3 -50)" });
+        add(lid, "ellipse", { class: "pannier-lid-edge", cx: -3, cy: -46, rx: 61, ry: 17 });
+        add(lid, "ellipse", { class: "pannier-lid", cx: -3, cy: -50, rx: 61, ry: 17 });
+        const lidClip = add(defs, "clipPath", { id: prefix+"-lid" });
+        add(lidClip, "ellipse", { cx: -3, cy: -50, rx: 58, ry: 14 });
+        const lidWeave = add(lid, "g", { "clip-path": `url(#${prefix}-lid)` });
+        [-59,-52,-45].forEach(y => path(lidWeave, `M-66 ${y}Q-3 ${y+7} 60 ${y}`, "pannier-lid-weave"));
+        [-47,-29,-11,7,25,43].forEach(x => path(lidWeave, `M${x}-69L${x+6}-31`, "pannier-lid-rib"));
+        const body = "M-68-28C-65 8-55 43-42 56Q0 72 42 56C55 43 65 8 69-28Z";
+        wovenBody(body,prefix+"-main",0,68,-28,62,10,11);
         add(group, "ellipse", { class: "pannier-interior", cx: 0, cy: -28, rx: 66, ry: 16 });
-        add(group, "circle", { class: "pannier-fig light", cx: -31, cy: -39, r: 16 });
-        add(group, "circle", { class: "pannier-ostiole", cx: -31, cy: -39, r: 3 });
-        path(group, "M-25-54Q-9-67 0-50Q-13-39-24-44Z", "pannier-fig-leaf");
-        add(group, "circle", { class: "pannier-fig", cx: 5, cy: -41, r: 18 });
-        add(group, "circle", { class: "pannier-ostiole", cx: 5, cy: -41, r: 3.2 });
-        add(group, "circle", { class: "pannier-cut-fig", cx: 39, cy: -35, r: 18 });
-        add(group, "circle", { class: "pannier-cut-flesh", cx: 39, cy: -35, r: 13 });
-        [[34,-40],[42,-41],[47,-34],[39,-29],[31,-31]].forEach(([cx,cy]) => add(group, "circle", { class: "pannier-floret", cx, cy, r: 1.7 }));
-        add(group, "ellipse", { class: "pannier-rim", cx: 0, cy: -28, rx: 68, ry: 17 });
-        path(group, "M-67-27Q0-9 67-27", "pannier-front-rim");
-        path(group, "M-43 52Q0 67 43 52", "pannier-base-band");
+        rim(0,-28,68,17,false);
         path(group, "M-50-29L-47-43M50-27L48-42", "pannier-lid-hinge");
-        path(group, "M-9-17Q0-10 10-17L8-7Q0-2-8-7Z", "pannier-lid-latch");
+        fruit(group,5,-43,18);
+        fruit(group,-31,-39,16);
+        path(group, "M-25-54Q-9-67 0-50Q-13-39-24-44Z", "pannier-fig-leaf");
+        fruit(group,39,-35,18,true);
+        rim(0,-28,68,17,true);
+        [-64,64].forEach(cx => {
+          add(group, "ellipse", { cx, cy: -23, rx: 3.7, ry: 4.5, class: "pannier-handle-socket" });
+          add(group, "circle", { cx: cx-1, cy: -24, r: 1.2, class: "pannier-latch-stud" });
+        });
+        path(group, "M-43 53Q0 68 43 53", "pannier-base-band");
+        path(group, "M-9-12Q0-6 10-12L8 1Q0 5-8 1Z", "pannier-lid-latch");
+        add(group, "circle", { cx: 0, cy: -2, r: 2, class: "pannier-latch-stud" });
         path(group, "M46 1Q55 5 58 11", "pannier-tag-cord");
+        path(group, "M45 6L78 11L74 39L41 33Z", "pannier-tag-shadow");
         path(group, "M43 3L76 8L72 36L39 30Z", "pannier-tag");
         line(group, "M49 11L69 15M48 18L67 22M47 25L61 28", "pannier-tag-line");
       }
@@ -6479,7 +6515,7 @@ function renderPiece(target, item, wormPart) {
     "n2-lab-coat": { primary: [180, 214, 1, 0], companion: [52, 168, .92, -1] },
     "cryo-vial-jetpack": { primary: [258, 118, .84, 208], companion: [43, 132, .65, 212] },
     "n2-lab-goggles": { primary: [331, 53, 1, 14], companion: [111, 104, .58, 14] },
-    "fig-fascinator": { primary: [331, 53, .7, 0], companion: [111, 104, .5, 0] },
+    "fig-fascinator": { primary: [331.5, 47, .50, 25], companion: [114.5, 102, .32, 25] },
     "sample-pannier": { primary: [170, 176, .66, -4], companion: [51, 164, .39, 4] },
     "wings": { primary: [247, 150, .46, 68], companion: [88, 147, .35, 70] },
     "lattice-fan": { primary: [295, 126, .5, -8], companion: [101, 100, .42, -6] },

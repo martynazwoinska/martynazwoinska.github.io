@@ -3,7 +3,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260905-lombok-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260905-ishigaki-polish-1";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
@@ -984,6 +984,19 @@ function visibleAccessoryPieces(id, wormPart) {
 }
 
 function accessoryArtworkBounds(piece) {
+  if (piece.dataset.accessoryFamily === "fig-fascinator") {
+    // A rotated group's empty corner can extend beyond the scene even when
+    // its fitted visor is inside. Constrain the drawn parts, not that corner.
+    const parts = [...piece.querySelectorAll(".location-accessory-art path, .location-accessory-art circle")]
+      .map(part => part.getBoundingClientRect());
+    if (parts.length) {
+      const left = Math.min(...parts.map(part => part.left));
+      const top = Math.min(...parts.map(part => part.top));
+      const right = Math.max(...parts.map(part => part.right));
+      const bottom = Math.max(...parts.map(part => part.bottom));
+      return { left, top, right, bottom, width: right - left, height: bottom - top };
+    }
+  }
   return piece.querySelector(":scope > .location-accessory-art")?.getBoundingClientRect()
     || piece.getBoundingClientRect();
 }
@@ -1027,7 +1040,9 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
   applyAccessoryPosition(id, wormPart, position);
 
   const movementBounds = els.habitat.getBoundingClientRect();
-  const margin = Math.max(12, Math.min(18, movementBounds.width * .025));
+  const margin = referencePiece.dataset.accessoryFamily === "fig-fascinator"
+    ? 4
+    : Math.max(12, Math.min(18, movementBounds.width * .025));
   if (movementBounds.width && movementBounds.height) {
     const accessoryBounds = accessoryPieceBounds(id, wormPart);
     if (!accessoryBounds?.width || !accessoryBounds.height) return position;
