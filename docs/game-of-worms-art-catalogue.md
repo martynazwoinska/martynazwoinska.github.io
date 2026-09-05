@@ -6,6 +6,14 @@ This catalogue is the implementation contract for the 31 active representative c
 
 ## Rules
 
+Santeuil approved revision, 2026-09-05: body-coordinate uniforms replace the old
+independent cap/jacket offsets. Primary and companion coats have distinct
+lapels, seam curves and button arrangements. Hollow stem boilers, cab depth,
+spoked wheels and coupling rods refine the two locomotives. Open walnut-style
+organ cases show pinned cylinders, wooden pipes, mechanical fingers, wedge
+bellows and cranks. The original scene, labels and copy are unchanged.
+Publication is approved. The disclosed full-page capture limitation remains recorded.
+
 Tenerife approved revision, 2026-09-05: the active version replaces Teide star
 lanterns with `avocado snack bowls`. Canary costumes now use fitted side-on
 feather construction, traced along each body without a separate bird torso or

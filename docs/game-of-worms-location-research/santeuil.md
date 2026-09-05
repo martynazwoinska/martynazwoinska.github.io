@@ -120,6 +120,55 @@ The revised Bristol N2 artwork is the minimum quality floor, not a template to r
 
 ## Review and interaction acceptance
 
+### Local refinement, 2026-09-05
+
+Branch: `codex/santeuil-accessory-polish`. Preview:
+`http://127.0.0.1:4198/game-of-worms/?review=santeuil-polish`.
+Approved for commit and deployment after the preview and disclosure of the
+full-page capture limitation. The painted background and all public wording
+remain unchanged. English-only copy was not revised, so no translation approval
+is needed for this pass. Publication verification follows the release push.
+
+Construction references:
+
+- [Santeuil organ, French Ministry of Culture](https://pop.culture.gouv.fr/notice/palissy/PM95001111): walnut secretary-shaped cabinet, wooden cylinders, wedge bellows and surviving wooden pipes.
+- [Barrel organ, Metropolitan Museum of Art](https://www.metmuseum.org/art/collection/search/501977): pinned cylinder, crank, feeder bellows and mechanical action. Used for structural reference only, with no image incorporated.
+- [Locomotion engineering report, National Railway Museum](https://www.railwaymuseum.org.uk/sites/default/files/2023-10/Pages%20from%20LOCOMOTION%20report%20part%201.pdf): spoked driving wheels and coupled running gear.
+
+The organs remain playful miniatures, not scale replicas of the Santeuil
+instrument. The trains retain the existing hollow-stem fantasy construction.
+The new SVGs are original code drawings with no embedded third-party artwork.
+
+The first browser pass exposed the legacy renderer taking precedence. The new
+dispatch now precedes that field renderer and its three obsolete drawing
+branches are removed. A second visual pass enlarged the trains, clarified the
+organ pipe rank and retained distinct primary/companion silhouettes.
+
+Checks completed:
+
+- Structural tests: Santeuil's six paired drawings, dispatch, native-coordinate uniform placements and body-motion wrapper.
+- Existing Tenerife and six-location tests pass. These cover a further 42 paired pieces.
+- JavaScript syntax and `git diff --check` pass.
+- In-page visual reviews at 360, 768, 1024 and 1440 CSS px, fixed Game light palette. All six objects render and no horizontal document overflow was found.
+- All six copies individually moved by pointer and reset with Home.
+- All six copies moved with ArrowRight, enlarged to 110%, moved again, returned to 100% and reset independently.
+- No browser console errors. Reduced-motion protection is inherited from the existing no-preference-only fitted-motion rule and was source-checked, not browser-emulated.
+
+Outstanding proof limitation: full-page screenshot capture is defective in the
+available browser. A requested 1024 px capture returned a 1009 × 1753 image with
+half-scale content and duplicated lower sections. Single-frame capture at a
+1440 × 1934 viewport returned only 1425 × 1097 pixels. Neither is accepted as
+a full-page proof. Viewport-height scene checks are supplementary, not a
+substitute for that outstanding requirement. Document heights measured at
+360/768/1024/1440 widths were 2424/2381/1753/1934 CSS px respectively.
+
+Files created: `game-of-worms/santeuil-accessories.js`,
+`scripts/check-santeuil-accessories.cjs`.
+Files changed: `game-of-worms/accessory-designs.js`, `game-of-worms/game.js`,
+`game-of-worms/index.html`, `game-of-worms/style.css`, `PROJECT_STATUS.md`,
+`docs/game-of-worms-art-catalogue.md` and this dossier.
+Files deleted: none. No homepage or Cabinet changes.
+
 - Only the Santeuil landscape and Santeuil accessory data/drawings change in the Game feature batch.
 - Every concept has a dedicated drawing path; none silently falls back to a generic accessory.
 - Primary and companion copies differ in outline, construction, internal detail and placement.

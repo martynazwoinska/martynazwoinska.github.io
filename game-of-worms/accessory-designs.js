@@ -1,5 +1,6 @@
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
 import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260905-tenerife-wings-4";
+import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-santeuil-1";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -5916,90 +5917,6 @@ function drawElegansFieldAccessory(group, item, companion) {
   };
   const seed = (parent, cx, cy, scale = 1) => path(parent, `M ${cx} ${cy - 12 * scale} Q ${cx + 15 * scale} ${cy - 3 * scale} ${cx} ${cy + 12 * scale} Q ${cx - 15 * scale} ${cy - 3 * scale} ${cx} ${cy - 12 * scale} Z`, "efr-seed");
 
-  if (location === "santeuil" && item.family === "santeuil-railway-driver-uniform") {
-    const uniform = add(group, "g", { class: "santeuil-driver-uniform", transform: companion ? "rotate(12)" : "rotate(10)" });
-    const jacket = add(uniform, "g", { class: "santeuil-driver-jacket-fit", transform: companion ? "translate(18 8) rotate(15) scale(.78)" : "translate(34 54) rotate(13)" });
-    if (companion) {
-      path(jacket, "M-71-37Q-43-67-7-61Q30-59 61-31L53 43Q18 58-17 53Q-48 50-66 31Z", "santeuil-driver-jacket companion");
-      path(jacket, "M-28-57L-2-23L23-56L40-42L18-4L-3-15L-26-2L-47-39Z", "santeuil-driver-lapels");
-      path(jacket, "M-53-40Q-69-13-66 21M50-35Q66-9 54 24", "santeuil-driver-piping");
-      [-8,17].forEach(y => add(jacket, "circle", { class: "santeuil-driver-button", cx: 5, cy: y, r: 5 }));
-      path(jacket, "M-52 15Q-34 6-21 17L-24 35Q-40 39-55 29Z", "santeuil-driver-pocket");
-      add(uniform, "path", { class: "santeuil-driver-cap companion", d: "M-27-72Q0-92 31-71L22-57Q0-64-22-57ZM-34-73Q0-101 42-70Q5-62-34-73Z", transform: "translate(58 -27)" });
-    } else {
-      path(jacket, "M-88-42Q-54-83-5-76Q48-74 86-35L75 55Q32 72-11 66Q-55 64-82 37Z", "santeuil-driver-jacket");
-      path(jacket, "M-39-68L-5-25L30-67L53-47L25 0L-4-14L-35 2L-61-45Z", "santeuil-driver-lapels");
-      path(jacket, "M-69-47Q-91-14-82 35M67-40Q88-8 74 37", "santeuil-driver-piping");
-      [-15,8,31].forEach(y => [-10,13].forEach(x => add(jacket, "circle", { class: "santeuil-driver-button", cx: x, cy: y, r: 4.5 })));
-      path(jacket, "M35 14Q52 4 67 17L64 40Q47 44 33 33Z", "santeuil-driver-pocket");
-      add(uniform, "path", { class: "santeuil-driver-cap", d: "M-34-87Q2-112 43-83L32-64Q2-73-27-65ZM-47-87Q1-124 55-81Q5-72-47-87Z", transform: "translate(83 -35)" });
-    }
-    path(jacket, companion ? "M-31-51Q0-34 31-52L20-25L0-33L-20-25Z" : "M-43-63Q0-39 43-62L27-27L0-41L-27-27Z", "santeuil-driver-neckerchief");
-    path(jacket, companion ? "M-20 47Q0 57 23 46" : "M-29 59Q0 72 32 57", "santeuil-driver-hem");
-    return true;
-  }
-
-  if (location === "santeuil" && item.family === "santeuil-cylinder-organ-instrument") {
-    shadow(companion ? 86 : 106, 108);
-    const organ = add(group, "g", { class: "santeuil-organ-instrument", transform: companion ? "rotate(7)" : "rotate(-7)" });
-    if (companion) {
-      path(organ, "M-66-45Q0-70 65-44L59 61Q0 76-61 59Z", "santeuil-organ-cabinet companion");
-      path(organ, "M-55-35Q0-53 54-34L52-2Q0 12-54-1Z", "santeuil-organ-window");
-      add(organ, "ellipse", { class: "santeuil-organ-cylinder", cx: 0, cy: -18, rx: 43, ry: 13 });
-      [-31,-18,-4,11,27].forEach((x, i) => add(organ, "circle", { class: "santeuil-organ-pin", cx: x, cy: -21 + i % 2 * 5, r: 2.5 }));
-      path(organ, "M-52 5L48 4L54 31L-50 35Z", "santeuil-organ-bellows companion");
-      [-37,-17,3,23,42].forEach(x => path(organ, `M${x} 5L${x + 5} 33`, "santeuil-bellows-fold"));
-      path(organ, "M-49 39Q0 32 51 38L48 58Q0 69-49 59Z", "santeuil-organ-keybed");
-      for (let i = 0; i < 9; i += 1) path(organ, `M${-41 + i * 10} 40L${-40 + i * 10} 59`, "santeuil-organ-key");
-      [-34,-17,0,17,34].forEach((x,i) => path(organ, `M${x}-46V${-72 + Math.abs(2-i)*7}H${x+10}V-46Z`, "santeuil-organ-pipe"));
-      path(organ, "M59-21H78V8L91 17", "santeuil-organ-crank");
-      add(organ, "circle", { class: "santeuil-crank-knob", cx: 95, cy: 20, r: 6 });
-    } else {
-      path(organ, "M-76-62Q0-92 76-60L69 72Q0 91-70 70Z", "santeuil-organ-cabinet");
-      path(organ, "M-64-50Q0-73 64-48L60-8Q0 9-62-6Z", "santeuil-organ-window");
-      add(organ, "ellipse", { class: "santeuil-organ-cylinder", cx: 0, cy: -29, rx: 52, ry: 16 });
-      [-41,-28,-15,-2,11,24,37].forEach((x,i) => add(organ, "circle", { class: "santeuil-organ-pin", cx: x, cy: -33 + i % 3 * 5, r: 2.7 }));
-      path(organ, "M-62 1L52 0L63 35L-59 42Z", "santeuil-organ-bellows");
-      [-47,-25,-3,19,41,56].forEach(x => path(organ, `M${x} 2L${x + 7} 38`, "santeuil-bellows-fold"));
-      path(organ, "M-58 47Q0 37 59 45L55 69Q0 83-57 71Z", "santeuil-organ-keybed");
-      for (let i = 0; i < 11; i += 1) path(organ, `M${-49 + i * 9.5} 47L${-48 + i * 9.5} 71`, "santeuil-organ-key");
-      [-38,-21,-4,13,30].forEach((x,i) => path(organ, `M${x}-61V${-99 + i*7}H${x+11}V-61Z`, i%2 ? "santeuil-organ-pipe alt" : "santeuil-organ-pipe"));
-      path(organ, "M72-31H96V7L112 18", "santeuil-organ-crank");
-      add(organ, "circle", { class: "santeuil-crank-knob", cx: 117, cy: 21, r: 7 });
-      path(organ, "M-51-58Q0-78 52-56M-49 57Q0 70 50 55", "santeuil-organ-inlay");
-    }
-    return true;
-  }
-
-  if (location === "santeuil" && item.family === "santeuil-hogweed-locomotive") {
-    shadow(companion ? 103 : 125, 96);
-    const train = add(group, "g", { class: "santeuil-hogweed-train", transform: companion ? "rotate(-4)" : "rotate(2)" });
-    if (companion) {
-      path(train, "M-86-3H40Q67-1 78 19L70 53H-86Z", "santeuil-train-frame companion");
-      path(train, "M-61-48H25Q53-46 57-18V20H-66Z", "santeuil-train-boiler companion");
-      add(train, "ellipse", { class: "santeuil-train-boiler-rim", cx: -63, cy: -14, rx: 17, ry: 34 });
-      add(train, "ellipse", { class: "santeuil-train-hollow", cx: -65, cy: -14, rx: 10, ry: 23 });
-      path(train, "M28-54H70V23H31ZM37-43H61V-18H37Z", "santeuil-train-cab companion");
-      path(train, "M-24-70H1L-4-47H-20ZM-30-76H8", "santeuil-train-chimney");
-      path(train, "M44-62H73L80-53H37Z", "santeuil-train-roof");
-      [-45,18,57].forEach((x,i) => add(train, "circle", { class: i===1 ? "santeuil-train-wheel small" : "santeuil-train-wheel", cx:x, cy:55, r:i===1?18:23 }));
-      path(train, "M-45 55L57 55M-42 55Q4 25 57 55", "santeuil-train-rods");
-    } else {
-      path(train, "M-112-4H52Q88-2 101 25L91 62H-112Z", "santeuil-train-frame");
-      path(train, "M-83-59H37Q67-57 72-22V29H-89Z", "santeuil-train-boiler");
-      add(train, "ellipse", { class: "santeuil-train-boiler-rim", cx: -87, cy: -15, rx: 22, ry: 43 });
-      add(train, "ellipse", { class: "santeuil-train-hollow", cx: -89, cy: -15, rx: 13, ry: 29 });
-      [-48,-7,33].forEach((x,i) => path(train, `M${x}-57Q${x+10}-13 ${x+2} 27`, "santeuil-train-stem-node"));
-      path(train, "M44-74H94V33H47ZM56-60H82V-23H56Z", "santeuil-train-cab");
-      path(train, "M-28-92H3L-3-59H-22ZM-37-99H14", "santeuil-train-chimney");
-      path(train, "M52-84H100L111-73H40Z", "santeuil-train-roof");
-      [-67,-5,62].forEach((x,i) => add(train, "circle", { class: i===1 ? "santeuil-train-wheel small" : "santeuil-train-wheel", cx:x, cy:65, r:i===1?23:30 }));
-      path(train, "M-67 65L62 65M-63 65Q-2 24 62 65", "santeuil-train-rods");
-      path(train, "M-103 34L-125 53H-104M92 35L119 50H94", "santeuil-train-couplers");
-    }
-    add(train, "circle", { class: "santeuil-train-lamp", cx: companion ? -79 : -104, cy: companion ? 16 : 20, r: companion ? 8 : 10 });
-    return true;
-  }
 
   if (location === "edinburgh" && item.family === "midmar-compost-tumbler") {
     group.classList.add("edinburgh-observing-scope");
@@ -6378,6 +6295,7 @@ function drawElegansFieldAccessory(group, item, companion) {
 
 function drawNamedAccessory(group, item, companion) {
   if (drawRefinedAccessory(group, item, companion)) return true;
+  if (drawSanteuilRefinement(group, item, companion)) return true;
   if (drawBriggsaeFieldAccessory(group, item, companion)) return true;
   if (drawElegansFieldAccessory(group, item, companion)) return true;
   if (drawNigoniFieldAccessory(group, item, companion)) return true;
@@ -6458,9 +6376,9 @@ function renderPiece(target, item, wormPart) {
     "lattice-fan": { primary: [295, 126, .5, -8], companion: [101, 100, .42, -6] },
     "kite-rig": { primary: [168, 190, .46, -4], companion: [61, 185, .36, 4] },
     "soil-kit": { primary: [315, 226, .48, -2], companion: [47, 225, .39, 4] },
-    "santeuil-railway-driver-uniform": { primary: [296, 132, .72, 0], companion: [91, 126, .58, 0] },
-    "santeuil-cylinder-organ-instrument": { primary: [360, 244, .58, -4], companion: [41, 202, .48, 5] },
-    "santeuil-hogweed-locomotive": { primary: [220, 275, .57, -2], companion: [55, 275, .45, -3] },
+  "santeuil-railway-driver-uniform": { primary: [0, 0, 1, 0], companion: [-28, 82, .43, 0] },
+  "santeuil-cylinder-organ-instrument": { primary: [360, 244, .66, -4], companion: [41, 202, .51, 5] },
+  "santeuil-hogweed-locomotive": { primary: [220, 275, .73, -2], companion: [55, 275, .56, -3] },
     "midmar-compost-tumbler": { primary: [270.4, 55, .35, 0], companion: [106.5, 90.5, .22, 0] },
     "galaxy-plate-scanner": { primary: [184, 204, .54, -1], companion: [68, 202, .43, 2] },
     "agassiz-ice-flow-model": { primary: [322, 260, .52, -2], companion: [52, 290, .42, 2] },
@@ -6566,7 +6484,7 @@ function renderPiece(target, item, wormPart) {
   });
   const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "lingsar-springwater-current";
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope";
-  const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar";
+  const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
     : isFittedHeadwear || isFittedKilt || isObservingScope ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;

@@ -6,6 +6,16 @@ This file records approved decisions and the verified implementation state. Alwa
 
 ### Game accessory refinement, 2026-09-05
 
+Santeuil is approved for release on `codex/santeuil-accessory-polish`.
+Its uniforms now follow each worm's native body coordinates and motion.
+The locomotives and cylinder organs have separately drawn paired construction,
+with a second material/readability refinement pass. Labels, public copy and
+the painted landscape are unchanged. Martyna requested commit and deployment
+after the preview and disclosure of the full-page capture limitation.
+Pointer, keyboard, resize/reset and overflow checks pass. Full-page screenshot
+proof remains blocked by the browser capture's duplicated/half-scale output.
+See the Santeuil dossier for exact checks and file scope.
+
 Tenerife is approved for release on `codex/tenerife-accessory-polish`.
 Its canary costumes and timples are redrawn and separately fitted.
 The costume fit follow-up uses slim feathered mantles along the nematode
