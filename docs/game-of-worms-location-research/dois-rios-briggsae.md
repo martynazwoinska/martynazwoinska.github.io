@@ -112,3 +112,10 @@ The buttons omit the strain code. Internal IDs may retain it.
 Implemented and validated on 2026-07-28 with the preserved source PNG,
 optimized WebP, exact-locality jackfruit forest-floor composition and six
 bespoke independently movable accessory drawings.
+
+## Production refinement, 2026-09-05
+
+The accessory construction and placement have been revised. The current paired
+forms supersede the earlier drawing description above. Background and collection
+evidence are unchanged. See the [refinement record](../game-of-worms-six-location-refinement.md)
+and the current [art catalogue](../game-of-worms-art-catalogue.md).

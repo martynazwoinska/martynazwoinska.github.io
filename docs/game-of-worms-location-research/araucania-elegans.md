@@ -139,3 +139,10 @@ The revised preceding locations are the minimum quality floor, not templates to 
 - Visual checks cover the Game's fixed light palette and responsive widths from 360 px to wide desktop.
 - No horizontal overflow, console error, broken source link or change to another location is accepted.
 - Environment/accessory audits, syntax checks, `git diff --check` and the full diff pass before integration.
+
+## Production refinement, 2026-09-05
+
+The accessory construction and placement have been revised. The current paired
+forms supersede the earlier drawing description above. Background and collection
+evidence are unchanged. See the [refinement record](../game-of-worms-six-location-refinement.md)
+and the current [art catalogue](../game-of-worms-art-catalogue.md).

@@ -261,3 +261,10 @@ checks. The 360 px, 768 px, 1024 px and 1440 px layouts passed without
 horizontal overflow or SVG containment failures. The source record, source
 PNG and runtime WebP returned HTTP 200; syntax, catalogue, pair-geometry,
 environment-composition, console and `git diff --check` checks passed.
+
+## Production refinement, 2026-09-05
+
+The accessory construction and placement have been revised. The current paired
+forms supersede the earlier drawing description above. Background and collection
+evidence are unchanged. See the [refinement record](../game-of-worms-six-location-refinement.md)
+and the current [art catalogue](../game-of-worms-art-catalogue.md).

@@ -4,6 +4,15 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Game accessory refinement, 2026-09-05
+
+The six priority sets at Nambucca Heads QG2814, Ho Chi Minh City JU4356,
+Saint-Benoît JU1373, Araucanía, Dois Rios EG5612 and Kauaʻi QG130 now use
+explicit material-aware SVG constructions in `accessory-refinements.js`.
+Approved backgrounds, public labels and scientific copy are unchanged.
+The refinement and validation record is in
+[`docs/game-of-worms-six-location-refinement.md`](docs/game-of-worms-six-location-refinement.md).
+
 ## Website
 
 - Repository: `martynazwoinska/martynazwoinska.github.io`

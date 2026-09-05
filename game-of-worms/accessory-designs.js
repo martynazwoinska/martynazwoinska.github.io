@@ -1,3 +1,5 @@
+import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
+
 const SVG_NS = "http://www.w3.org/2000/svg";
 
 /*
@@ -6442,6 +6444,7 @@ function drawElegansFieldAccessory(group, item, companion) {
 }
 
 function drawNamedAccessory(group, item, companion) {
+  if (drawRefinedAccessory(group, item, companion)) return true;
   if (drawBriggsaeFieldAccessory(group, item, companion)) return true;
   if (drawElegansFieldAccessory(group, item, companion)) return true;
   if (drawNigoniFieldAccessory(group, item, companion)) return true;
@@ -6614,7 +6617,7 @@ function renderPiece(target, item, wormPart) {
     ,"qg2814-five-day-two-plate-relay": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
     ,"qg2814-18s-identity-ribbon-reader": { primary: [381, 258, .34, -1], companion: [194, 294, .27, 2] }
   };
-  const customLayout = customLayouts[item.family]?.[wormPart];
+  const customLayout = refinedLayouts[item.family]?.[companion ? 1 : 0] ?? customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;
   const widthBias = 1 + item.geometry.widthStep * .035;
   const heightBias = 1 + item.geometry.heightStep * .03;
