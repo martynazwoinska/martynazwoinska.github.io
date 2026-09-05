@@ -1929,6 +1929,18 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .fig-wing-harness-detail { fill: none; stroke: var(--ishigaki-gold); stroke-width: 2.4; stroke-linecap: round; }
 .fig-wing-buckle { fill: var(--ishigaki-gold); stroke: var(--ishigaki-ink); stroke-width: 1.8; }
 .fig-wing-sheen { fill: none; stroke: white; stroke-width: 2.2; stroke-linecap: round; opacity: .52; }
+/* Keep this palette on the Ahmedabad renderer, independent of nearby locations. */
+.ahmedabad-af16-accessory {
+  --af16-ink: #263b55;
+  --af16-indigo: #4654a3;
+  --af16-turquoise: #38a7a4;
+  --af16-turquoise-light: #a8e4dc;
+  --af16-coral: #dc6078;
+  --af16-gold: #d6a63e;
+  --af16-ivory: #fff8e5;
+  --af16-soil: #95583f;
+  filter: drop-shadow(0 4px 3px rgba(29,48,67,.25));
+}
 .af16-fan-panel { fill: var(--af16-indigo); stroke: var(--af16-ink); stroke-width: 3; stroke-linejoin: round; }
 .af16-fan-panel.companion { fill: var(--af16-turquoise); }
 .af16-fan-wedge { stroke: none; opacity: .94; }
