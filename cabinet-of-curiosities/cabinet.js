@@ -23,6 +23,9 @@
   const panelToggle = document.getElementById('collection-toggle');
   const panelClose = document.getElementById('collection-close');
   const collectionList = document.getElementById('collection-list');
+  const portraitList = document.getElementById('portrait-collection-list');
+  const portraitCabinetToggle = document.getElementById('portrait-cabinet-toggle');
+  let portraitExploring = false;
   const wheelToggle = document.getElementById('wheel-toggle');
   const wheelDialog = document.getElementById('wheel-dialog');
   const wheelClose = document.getElementById('wheel-close');
@@ -49,7 +52,8 @@
   let sceneGestureMoved = false;
   let suppressSceneClickUntil = 0;
 
-  const sceneNavigationQuery = window.matchMedia('(pointer: coarse) and (orientation: landscape) and (max-width: 980px)');
+  const sceneNavigationQuery = window.matchMedia('(pointer: coarse) and (orientation: landscape) and (max-height: 600px)');
+  const portraitQuery = window.matchMedia('(orientation: portrait) and (max-width: 980px)');
   const activeScenePointers = new Map();
   const sceneView = { scale: 1, panX: 0, panY: 0 };
   const MAX_SCENE_SCALE = 2.5;
@@ -85,14 +89,21 @@
   }
 
   function minimumSceneScale(size = sceneBaseSize()) {
+    if (sceneNavigationEnabled) return 1;
     return Math.max(.4, Math.min(1, window.innerWidth / size.width, window.innerHeight / size.height));
+  }
+
+  function sceneViewport() {
+    const rect = cabinetStage.getBoundingClientRect();
+    return { width: rect.width, height: rect.height, x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
   }
 
   function clampSceneView() {
     const size = sceneBaseSize();
     const offset = sceneDefaultOffset(size);
-    const maximumX = Math.max(0, (size.width * sceneView.scale - window.innerWidth) / 2);
-    const maximumY = Math.max(0, (size.height * sceneView.scale - window.innerHeight) / 2);
+    const viewport = sceneViewport();
+    const maximumX = Math.max(0, (size.width * sceneView.scale - viewport.width) / 2);
+    const maximumY = Math.max(0, (size.height * sceneView.scale - viewport.height) / 2);
     sceneView.panX = clamp(offset.x + sceneView.panX, -maximumX, maximumX) - offset.x;
     sceneView.panY = clamp(offset.y + sceneView.panY, -maximumY, maximumY) - offset.y;
   }
@@ -116,7 +127,7 @@
     if (announce) sceneViewStatus.textContent = copy.scene.viewScale(percent);
   }
 
-  function setSceneScale(nextScale, centerX = window.innerWidth / 2, centerY = window.innerHeight / 2, announce = true) {
+  function setSceneScale(nextScale, centerX = sceneViewport().x, centerY = sceneViewport().y, announce = true) {
     const size = sceneBaseSize();
     const offset = sceneDefaultOffset(size);
     const oldScale = sceneView.scale;
@@ -124,11 +135,12 @@
     const scale = clamp(nextScale, minimum, MAX_SCENE_SCALE);
     if (Math.abs(scale - oldScale) < .0001) return;
 
-    const anchorX = (centerX - window.innerWidth / 2 - offset.x - sceneView.panX) / oldScale;
-    const anchorY = (centerY - window.innerHeight / 2 - offset.y - sceneView.panY) / oldScale;
+    const viewport = sceneViewport();
+    const anchorX = (centerX - viewport.x - offset.x - sceneView.panX) / oldScale;
+    const anchorY = (centerY - viewport.y - offset.y - sceneView.panY) / oldScale;
     sceneView.scale = scale;
-    sceneView.panX = centerX - window.innerWidth / 2 - offset.x - anchorX * scale;
-    sceneView.panY = centerY - window.innerHeight / 2 - offset.y - anchorY * scale;
+    sceneView.panX = centerX - viewport.x - offset.x - anchorX * scale;
+    sceneView.panY = centerY - viewport.y - offset.y - anchorY * scale;
     applySceneView(announce);
   }
 
@@ -176,16 +188,26 @@
     const distance = Math.hypot(second.x - first.x, second.y - first.y);
     const size = sceneBaseSize();
     const offset = sceneDefaultOffset(size);
+    const viewport = sceneViewport();
     pinchStart = {
       distance: Math.max(1, distance),
       scale: sceneView.scale,
-      anchorX: (midpointX - window.innerWidth / 2 - offset.x - sceneView.panX) / sceneView.scale,
-      anchorY: (midpointY - window.innerHeight / 2 - offset.y - sceneView.panY) / sceneView.scale
+      anchorX: (midpointX - viewport.x - offset.x - sceneView.panX) / sceneView.scale,
+      anchorY: (midpointY - viewport.y - offset.y - sceneView.panY) / sceneView.scale
     };
   }
 
   function configureSceneNavigation() {
-    const shouldEnable = sceneNavigationQuery.matches;
+    const portrait = portraitQuery.matches;
+    if (!portrait) portraitExploring = false;
+    const browsing = portrait && !portraitExploring;
+    cabinetPage.classList.toggle('is-portrait-browsing', browsing);
+    document.documentElement.classList.toggle('is-portrait-browsing', browsing);
+    boardShell.inert = browsing;
+    panelToggle.setAttribute('aria-controls', portrait ? 'portrait-collection' : 'collection-panel');
+    if (portrait) panelToggle.removeAttribute('aria-expanded');
+    else panelToggle.setAttribute('aria-expanded', String(panel.open));
+    const shouldEnable = sceneNavigationQuery.matches || (portrait && portraitExploring);
     if (shouldEnable === sceneNavigationEnabled) {
       if (shouldEnable) applySceneView(false);
       return;
@@ -369,7 +391,71 @@
     hotspotLayer.replaceChildren(fragment);
   }
 
-  function buildCollectionGroup(title, items) {
+  function collectionThumbnail(item) {
+    // These are display windows onto the original assets, never edited derivatives.
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.classList.add('collection-thumbnail');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    const image = document.createElementNS(svgNS, 'image');
+    if (item.kind === 'crochet') {
+      const yellow = item.id === 'yellow-crocheted-eye';
+      svg.setAttribute('viewBox', '0 0 160 150');
+      image.setAttribute('href', `assets/cabinet-photo-objects-v${yellow ? 76 : 75}.svg#${yellow ? 'yellow' : 'green'}`);
+      image.setAttribute('width', '160');
+      image.setAttribute('height', '150');
+    } else if (item.kind === 'app') {
+      svg.setAttribute('viewBox', '0 0 360 360');
+      image.setAttribute('href', 'assets/chof-chocolate-sun-v1.png');
+      image.setAttribute('width', '360');
+      image.setAttribute('height', '360');
+    } else {
+      // Bounds of the complete approved cutouts, not the larger touch targets.
+      const windows = {
+        'storm-bille-uganda-chilli': [513,150,94,163], 'small-wrapper-upper-left': [623,160,29,62],
+        'friis-holm-mini-1': [661,166,27,48], 'friis-holm-mini-2': [696,158,29,65],
+        'friis-holm-mini-3': [732,159,25,49], 'friis-holm-mini-4': [769,158,26,48],
+        'small-orange-wrapper': [811,153,29,62], 'raaka-tanzania-100': [854,162,68,34],
+        'small-green-wrapper': [939,154,32,61], 'omnom-craft-madagascar-66': [983,146,172,78],
+        'amedei-porcelana-70': [1166,150,95,168], 'pink-sea-salt-wrapper': [610,229,64,97],
+        'pink-madagascar-wrapper': [682,235,59,86], 'malmo-craft-madagascar': [745,221,224,263],
+        'small-wrapper-middle': [973,243,30,60], 'uganda-horizontal-wrapper': [1019,238,144,61],
+        'vigdis-rosenkilde-echarete-80': [411,294,99,171], 'taza-round-package': [525,327,92,92],
+        'small-white-wrapper': [706,334,27,51], 'kamm-ecuador-85': [574,334,174,151],
+        'wild-schokolade-chimore-65': [1129,326,87,179], 'aroko-tocumare': [1218,332,50,86],
+        'tjak-norwegian-brown-cheese': [404,475,122,188], 'luisa-abram-rio-jurua-70': [527,507,132,191],
+        'paradai-nakhon-si-thammarat-red-pod': [667,509,155,87], 'aroko-chuao-amazonas-70': [827,497,157,168],
+        'black-cherry-70': [995,455,121,141], 'marou-green': [1128,514,66,147],
+        'firetree-solomon-islands': [1210,522,87,141], 'chocolate-naive-xocoatl': [985,611,145,177],
+        'willies-cacao-pistachio-date': [1154,678,110,112], 'paradai-chanthaburi-yellow': [361,756,187,129],
+        'date-cashew-vegan': [645,734,142,63], 'bonnat-java': [808,697,180,93],
+        'sfoodies-sticker': [578,718,58,55]
+      };
+      const [left, top, width, height] = photoBoxToSceneBox(item.box);
+      const [x,y,w,h] = windows[item.id] || [left*SCENE_WIDTH/100,top*SCENE_HEIGHT/100,width*SCENE_WIDTH/100,height*SCENE_HEIGHT/100];
+      const padding = 3;
+      svg.setAttribute('viewBox', `${x - padding} ${y - padding} ${w + padding * 2} ${h + padding * 2}`);
+      // Clip the thumbnail's letterboxing, not the photographed object's outline.
+      const defs = document.createElementNS(svgNS, 'defs');
+      const clip = document.createElementNS(svgNS, 'clipPath');
+      const rect = document.createElementNS(svgNS, 'rect');
+      clip.id = `thumbnail-window-${item.id}`;
+      rect.setAttribute('x', String(x - padding));
+      rect.setAttribute('y', String(y - padding));
+      rect.setAttribute('width', String(w + padding * 2));
+      rect.setAttribute('height', String(h + padding * 2));
+      clip.append(rect);defs.append(clip);svg.append(defs);
+      image.setAttribute('clip-path', `url(#${clip.id})`);
+      image.setAttribute('href', 'assets/cabinet-photo-objects-v75.svg');
+      image.setAttribute('width', String(SCENE_WIDTH));
+      image.setAttribute('height', String(SCENE_HEIGHT));
+    }
+    svg.append(image);
+    return svg;
+  }
+
+  function buildCollectionGroup(title, items, thumbnails = false) {
     const section = document.createElement('section');
     section.className = 'collection-group';
     const heading = document.createElement('h3');
@@ -382,6 +468,7 @@
       button.type = 'button';
       button.className = 'collection-item';
       name.textContent = item.label;
+      if (thumbnails) button.append(collectionThumbnail(item));
       button.append(name);
       button.addEventListener('click', () => openDetails(item, button));
       list.append(button);
@@ -399,6 +486,12 @@
       buildCollectionGroup(copy.collectionGroups.crochet, crochet),
       buildCollectionGroup(copy.collectionGroups.ephemera, ephemera)
     );
+    portraitList.replaceChildren(
+      buildCollectionGroup(copy.collectionGroups.chocolates, chocolates, true),
+      buildCollectionGroup(copy.collectionGroups.crochet, crochet, true),
+      buildCollectionGroup(copy.collectionGroups.ephemera, ephemera, true)
+    );
+    if (chofItem) portraitList.append(buildCollectionGroup(copy.kindLabels.app, [chofItem], true));
   }
 
   function openPanel() {
@@ -486,6 +579,7 @@
       const distance = Math.max(1, Math.hypot(second.x - first.x, second.y - first.y));
       const size = sceneBaseSize();
       const offset = sceneDefaultOffset(size);
+      const viewport = sceneViewport();
       const scale = clamp(
         pinchStart.scale * distance / pinchStart.distance,
         minimumSceneScale(size),
@@ -494,8 +588,8 @@
 
       markSceneGestureMoved();
       sceneView.scale = scale;
-      sceneView.panX = midpointX - window.innerWidth / 2 - offset.x - pinchStart.anchorX * scale;
-      sceneView.panY = midpointY - window.innerHeight / 2 - offset.y - pinchStart.anchorY * scale;
+      sceneView.panX = midpointX - viewport.x - offset.x - pinchStart.anchorX * scale;
+      sceneView.panY = midpointY - viewport.y - offset.y - pinchStart.anchorY * scale;
       applySceneView(false);
       event.preventDefault();
       return;
@@ -618,8 +712,22 @@
   }
 
   panelToggle.addEventListener('click', () => {
+    if (portraitQuery.matches) {
+      const wasExploring = portraitExploring;
+      portraitExploring = false;
+      configureSceneNavigation();
+      if (wasExploring) portraitCabinetToggle.focus();
+      else document.getElementById('portrait-collection-heading').scrollIntoView({ block: 'start' });
+      return;
+    }
     if (!panel.open) openPanel();
     else closePanel();
+  });
+  portraitCabinetToggle.addEventListener('click', () => {
+    portraitExploring = true;
+    window.scrollTo(0, 0);
+    configureSceneNavigation();
+    cabinetStage.focus({ preventScroll: true });
   });
   panelClose.addEventListener('click', closePanel);
   panel.addEventListener('close', () => {
@@ -664,6 +772,7 @@
   } else {
     sceneNavigationQuery.addListener(configureSceneNavigation);
   }
+  portraitQuery.addEventListener('change', configureSceneNavigation);
   boardShell.addEventListener('pointerleave', hidePreview);
 
   buildHotspots();

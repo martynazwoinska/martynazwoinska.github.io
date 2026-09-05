@@ -1001,6 +1001,151 @@ button { color: inherit; }
   }
 }
 
+/* Mobile browsing uses the existing collection data and immutable scene assets. */
+.portrait-collection { display: none; }
+.is-portrait-browsing,
+.is-portrait-browsing body { overflow-x: hidden; overflow-y: auto; }
+.cabinet-page.is-portrait-browsing {
+  display: block;
+  height: auto;
+  min-height: 100svh;
+  padding-top: 62px;
+  background: var(--bg);
+}
+.is-portrait-browsing .orientation-notice,
+.is-scene-interactive .orientation-notice { display: none; }
+.is-portrait-browsing .cabinet-header {
+  position: fixed;
+  inset: 0 0 auto;
+  padding: 8px 10px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.is-portrait-browsing .cabinet-stage {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1672 / 941;
+  padding: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.is-portrait-browsing .scene-space {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transform: none;
+}
+.is-portrait-browsing .fantasy-surround,
+.is-portrait-browsing .board-shell { display: block; }
+.is-portrait-browsing .portrait-collection {
+  display: block;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 12px 18px 36px;
+}
+.portrait-cabinet-toggle { display: block; margin: 0 auto 24px; }
+.portrait-collection h1 {
+  margin: 0 0 24px;
+  font-family: var(--display);
+  font-size: 2rem;
+  line-height: 1.1;
+  scroll-margin-top: 76px;
+}
+.portrait-collection .collection-item { display: grid; grid-template-columns: 64px 1fr; min-height: 82px; padding: 8px 12px; }
+.collection-thumbnail { display: block; width: 64px; height: 64px; overflow: hidden; }
+.portrait-collection .collection-item strong { font-weight: 500; }
+.portrait-collection .collection-group + .collection-group { margin-top: 32px; }
+@media (min-width: 600px) {
+  .portrait-collection .collection-list-items { grid-template-columns: 1fr 1fr; }
+}
+/* A fitted stage between two compact control rails: 100% is a complete view.
+   Only the surrounding wood texture is enlarged; the scene is never stretched. */
+.cabinet-page.is-scene-interactive {
+  --mobile-top: calc(52px + env(safe-area-inset-top));
+  --mobile-bottom: calc(48px + env(safe-area-inset-bottom));
+  --scene-width: min(calc(100vw - env(safe-area-inset-left) - env(safe-area-inset-right)), calc((100dvh - var(--mobile-top) - var(--mobile-bottom)) * 1.776833));
+  --scene-height: calc(var(--scene-width) * .562799);
+  --scene-y: -50%;
+  height: 100dvh;
+  background: #382a20;
+}
+.cabinet-page.is-scene-interactive::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(30, 21, 15, .36), rgba(30, 21, 15, .36)), url('assets/cabinet-clean-plate-v56.svg');
+  background-size: auto, 600% auto;
+  background-position: center, left 40%;
+}
+.cabinet-page.is-scene-interactive .cabinet-stage {
+  display: block;
+  position: absolute;
+  inset: var(--mobile-top) env(safe-area-inset-right) var(--mobile-bottom) env(safe-area-inset-left);
+  width: auto;
+  height: auto;
+  padding: 0;
+  overflow: hidden;
+  pointer-events: auto;
+}
+.is-scene-interactive .fantasy-surround,
+.is-scene-interactive .board-shell { display: block; }
+.is-scene-interactive .scene-space { box-shadow: 0 0 20px rgba(12, 8, 5, .35); }
+.is-scene-interactive .cabinet-header {
+  inset: env(safe-area-inset-top) env(safe-area-inset-right) auto env(safe-area-inset-left);
+  padding: 4px 8px;
+  gap: 8px;
+  align-items: center;
+  background: rgba(25, 19, 14, .8);
+  border-bottom: 1px solid rgba(213, 185, 105, .2);
+}
+.is-scene-interactive .home-link,
+.is-scene-interactive .collection-toggle,
+.is-scene-interactive .wheel-toggle,
+.is-portrait-browsing .home-link,
+.is-portrait-browsing .collection-toggle,
+.is-portrait-browsing .wheel-toggle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 5px 10px;
+  font-size: .75rem;
+  line-height: 1.2;
+  box-shadow: none;
+}
+.is-scene-interactive .header-actions,
+.is-portrait-browsing .header-actions { gap: 6px; }
+.cabinet-page.is-scene-interactive .scene-controls {
+  display: flex;
+  right: max(8px, env(safe-area-inset-right));
+  bottom: env(safe-area-inset-bottom);
+  height: 46px;
+  padding: 0;
+  gap: 0;
+  box-shadow: none;
+}
+.cabinet-page.is-scene-interactive .scene-control { height: 44px; min-width: 44px; }
+.cabinet-page.is-scene-interactive .scene-reset { min-width: 52px; }
+.cabinet-page.is-scene-interactive .explore-hint {
+  display: block;
+  left: max(8px, env(safe-area-inset-left));
+  top: auto;
+  bottom: calc(10px + env(safe-area-inset-bottom));
+  max-width: calc(100vw - 170px - env(safe-area-inset-left) - env(safe-area-inset-right));
+  transform: none;
+  padding: 3px 7px;
+  font-size: .68rem;
+  line-height: 1.3;
+  text-align: left;
+}
+.is-scene-interactive .object-preview:not([hidden]) { display: block; }
+@media (orientation: portrait) {
+  .is-scene-interactive .explore-hint { visibility: hidden; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .chof-link:hover,
   .chof-link:focus-visible { animation: none; }

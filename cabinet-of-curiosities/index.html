@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://martynazwoinska.github.io/cabinet-of-curiosities/">
   <script src="../shared/site-preferences.js?v=20260718-1"></script>
   <link rel="stylesheet" href="../shared/site-tokens.css?v=20260802-1">
-  <link rel="stylesheet" href="cabinet.css?v=20260905-8">
+  <link rel="stylesheet" href="cabinet.css?v=20260906-1">
 </head>
 <body>
   <main class="cabinet-page">
@@ -61,6 +61,12 @@
       </div>
     </section>
 
+    <section class="portrait-collection" id="portrait-collection" aria-labelledby="portrait-collection-heading">
+      <button class="portrait-cabinet-toggle collection-toggle" id="portrait-cabinet-toggle" type="button" aria-controls="cabinet-stage">Cabinet view</button>
+      <h1 id="portrait-collection-heading">Browse the collection</h1>
+      <div id="portrait-collection-list"></div>
+    </section>
+
     <dialog class="collection-panel" id="collection-panel" aria-labelledby="collection-heading">
       <div class="collection-panel-head">
         <div>
@@ -100,6 +106,6 @@
 
   <script src="cabinet-data.js?v=20260829-3"></script>
   <script src="cabinet-i18n.js?v=20260825-1"></script>
-  <script src="cabinet.js?v=20260905-1"></script>
+  <script src="cabinet.js?v=20260906-1"></script>
 </body>
 </html>
