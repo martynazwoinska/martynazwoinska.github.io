@@ -6,6 +6,20 @@ This catalogue is the implementation contract for the 31 active representative c
 
 ## Rules
 
+Santeuil uniform-fit follow-up, 2026-09-05: separate cap and jacket fit groups
+centre the caps on each head and bring the jacket collars forward while
+the lower hems follow the leftward body bend. Original uniform drawing paths,
+colours and details are preserved. The paired-prop preview received positive
+user review. The subsequent fit correction and paired props are approved
+for deployment following their contextual previews.
+
+Santeuil paired-prop local follow-up, 2026-09-05: the male's organ and locomotive
+are replaced by a hexagonal concertina with leather loops and an open wooden
+pump trolley. Both costumes and the primary cylinder organ and locomotive are
+unchanged. Proposed English-only labels are `organ & concertina` and
+`locomotive & trolley`. This preview supersedes the companion-prop descriptions
+in the older row below. Publication is approved together with the fit correction.
+
 Santeuil approved revision, 2026-09-05: body-coordinate uniforms replace the old
 independent cap/jacket offsets. Primary and companion coats have distinct
 lapels, seam curves and button arrangements. Hollow stem boilers, cab depth,

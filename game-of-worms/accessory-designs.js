@@ -1,6 +1,6 @@
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
 import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260905-tenerife-wings-4";
-import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-santeuil-1";
+import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-santeuil-fit-3";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -20,7 +20,7 @@ const rows = [
   ["briggsae", "Dois Rios, Ilha Grande, Brazil · EG5612", "jackfruit sample trays", "eg5612-jackfruit-emergence-theatre", "shared sample bags", "eg5612-shared-bag-provenance-bifurcator", "test-cross plates", "eg5612-single-larva-test-cross-gate"],
   ["briggsae", "Nambucca Heads, New South Wales · QG2814", "flower presses", "qg2814-ground-flower-sample-theatre", "two culture plates", "qg2814-five-day-two-plate-relay", "18S DNA cards", "qg2814-18s-identity-ribbon-reader"],
   ["elegans", "Bristol N2, England", "agar plates with bacteria", "ngm-agar-plate", "fitted lab coats", "n2-lab-coat", "cryo-vial jetpacks", "cryo-vial-jetpack", "lab goggles", "n2-lab-goggles"],
-  ["elegans", "Santeuil, France", "railway-driver uniforms", "santeuil-railway-driver-uniform", "Santeuil cylinder organs", "santeuil-cylinder-organ-instrument", "hogweed-stem locomotives", "santeuil-hogweed-locomotive"],
+  ["elegans", "Santeuil, France", "railway-driver uniforms", "santeuil-railway-driver-uniform", "organ & concertina", "santeuil-cylinder-organ-instrument", "locomotive & trolley", "santeuil-hogweed-locomotive"],
   ["elegans", "Edinburgh, Scotland", "Blackford observatory telescopes", "midmar-compost-tumbler", "Edinburgh tartan kilts", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
   ["elegans", "Tenerife, Spain", "Atlantic canary costumes", "tenerife-atlantic-canary-costume", "timple guitars", "tenerife-timple-guitar", "avocado snack bowls", "tenerife-avocado-snack-bowl"],
   ["elegans", "Kauaʻi, Hawaiʻi", "forest-bird listening headphones", "xz1516-forest-bird-headphones", "ʻōhiʻa blossom microphones", "xz1516-ohia-blossom-microphone", "genome tuning wheels", "xz1516-genome-tuning-wheel"],
@@ -6377,8 +6377,8 @@ function renderPiece(target, item, wormPart) {
     "kite-rig": { primary: [168, 190, .46, -4], companion: [61, 185, .36, 4] },
     "soil-kit": { primary: [315, 226, .48, -2], companion: [47, 225, .39, 4] },
   "santeuil-railway-driver-uniform": { primary: [0, 0, 1, 0], companion: [-28, 82, .43, 0] },
-  "santeuil-cylinder-organ-instrument": { primary: [360, 244, .66, -4], companion: [41, 202, .51, 5] },
-  "santeuil-hogweed-locomotive": { primary: [220, 275, .73, -2], companion: [55, 275, .56, -3] },
+  "santeuil-cylinder-organ-instrument": { primary: [360, 244, .66, -4], companion: [62, 161, .38, -28] },
+  "santeuil-hogweed-locomotive": { primary: [220, 275, .73, -2], companion: [28, 198, .62, 0] },
     "midmar-compost-tumbler": { primary: [270.4, 55, .35, 0], companion: [106.5, 90.5, .22, 0] },
     "galaxy-plate-scanner": { primary: [184, 204, .54, -1], companion: [68, 202, .43, 2] },
     "agassiz-ice-flow-model": { primary: [322, 260, .52, -2], companion: [52, 290, .42, 2] },
@@ -6483,11 +6483,14 @@ function renderPiece(target, item, wormPart) {
     "data-accessory-family": item.family
   });
   const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "lingsar-springwater-current";
+  if (item.family === "santeuil-cylinder-organ-instrument") piece.dataset.pieceLabel = companion ? "concertina" : "cylinder organ";
+  if (item.family === "santeuil-hogweed-locomotive") piece.dataset.pieceLabel = companion ? "railway trolley" : "hogweed-stem locomotive";
+  const isSanteuilCompanionProp = companion && ["santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"].includes(item.family);
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
-    : isFittedHeadwear || isFittedKilt || isObservingScope ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
+    : isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });
   const drewNamedAccessory = drawNamedAccessory(artwork, item, companion);
   if (!drewNamedAccessory) throw new Error(`No named accessory renderer for ${item.label}`);

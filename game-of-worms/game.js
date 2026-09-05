@@ -3,7 +3,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260905-santeuil-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260905-santeuil-fit-3";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
@@ -1127,7 +1127,8 @@ function accessoryWormName(wormPart) {
 function accessoryName(id, wormPart) {
   const accessory = document.querySelector(`[data-accessory="${id}"] .button-label`)?.textContent || "Accessory";
   if (!wormPart) return accessory;
-  return t("accessoryForWorm", { accessory, worm: accessoryWormName(wormPart) });
+  const pieceLabel = visibleAccessoryPieces(id, wormPart)[0]?.dataset.pieceLabel || accessory;
+  return t("accessoryForWorm", { accessory: pieceLabel, worm: accessoryWormName(wormPart) });
 }
 
 function updateAccessorySizeControls() {

@@ -120,6 +120,94 @@ The revised Bristol N2 artwork is the minimum quality floor, not a template to r
 
 ## Review and interaction acceptance
 
+### Release approval, 2026-09-05
+
+Martyna requested deployment of the distinct paired props and subsequent
+uniform-fit correction after reviewing their exact local page renders.
+The English-only paired button labels and matching individual control names
+are approved with that preview. No artwork or public wording changed during
+release preparation. The previously disclosed full-page capture defect remains
+recorded below. Publication verification follows the push.
+
+### Uniform fit correction, local preview 2026-09-05
+
+Preview: `http://127.0.0.1:4198/game-of-worms/?review=santeuil-uniform-fit`.
+After positive review of the distinct companion props, Martyna identified
+remaining hat-to-jacket misalignment. This follow-up adjusts only the uniforms'
+internal placement. The original path artwork, paint, seam details and buttons
+are unchanged. No public copy changes.
+
+Each cap is centred independently above the eyes at a 27-degree eye-line tilt.
+Each jacket has its own fit transform: its collar shifts slightly forwards,
+while the lower hem moves back along the leftward body bend. A first trial
+lowered the whole jacket too uniformly. The refined fit keeps the collar close
+to the neck without pushing the lower hem away from the body. Both components
+retain the same synchronized motion and one drag/resize/reset control per worm.
+The approved trolley, concertina, cylinder organ and locomotive are untouched.
+
+The structural regression now compares the original uniform paths and paint
+against `5f6d3a2`, checks the new fit transforms explicitly, and still requires
+both primary props to match that commit exactly. This is a local preview,
+not a commit or deployment.
+
+Checks for this fit correction: the Santeuil, Tenerife and six-location tests,
+JavaScript syntax and whitespace checks pass. Viewport scene reviews at
+360/768/1024/1440 CSS px found no horizontal overflow or console errors.
+Both uniforms pass keyboard movement, enlargement and Home reset. Pointer
+drag/reset passes for the primary jacket and the companion cap. With the
+concertina enabled, part of the companion jacket lies behind its hit area,
+so the cap remains the clearest uniform drag handle.
+Full-page proof remains unavailable: the 360 px request returned a
+345 × 2400 image with half-scale content, blank space and duplicated sections.
+It is rejected as proof. No full-page validation is claimed.
+
+### Distinct companion props, local preview 2026-09-05
+
+Preview: `http://127.0.0.1:4198/game-of-worms/?review=santeuil-distinct-pairs`.
+Not committed or deployed. This follow-up replaces only the male's musical and
+railway props. Both costumes and both primary drawings are preserved, with
+exact rendered-tree regression comparisons against approved commit `5f6d3a2`.
+
+The male wears a partly opened concertina low across his body, with hexagonal
+wooden ends, visible bellows, ivory buttons and leather loops. The concertina
+is a playful musical partner, with no claim of local heritage or collection use.
+His railway prop is an open planked pump trolley with exposed running gear,
+pump pedestal and rocking handle. Both props follow the companion's body motion.
+The first review exposed a pump/concertina overlap. Moving the pump to the
+opposite end of the trolley separates the two objects.
+
+Construction references, original SVG drawings with no copied images:
+
+- [Grinnell College concertina](https://omeka-s.grinnell.edu/s/MusicalInstruments/item/8134): hexagonal ends, bellows, button rows and hand straps.
+- [Metropolitan Museum concertina](https://www.metmuseum.org/art/collection/search/503682): rosewood, metal, leather and paper construction.
+- [STEAM Museum pump trolley](https://www.steam-museum.org.uk/object-of-the-month/november-2025/): indexed museum description identifies a two-handled pump trolley. The full page returned HTTP 401.
+
+Public labels awaiting verification, Game English-only:
+
+- Buttons: `organ & concertina`, `locomotive & trolley`.
+- Individual controls: `cylinder organ for the hermaphrodite`,
+  `concertina for the rare male`, `hogweed-stem locomotive for the hermaphrodite`,
+  `railway trolley for the rare male`.
+
+Validation: Santeuil, Tenerife and six-location structural tests pass, along
+with JavaScript syntax checks and diff whitespace checks. All six objects
+respond independently to pointer drag, keyboard movement, enlargement,
+reduction and Home reset. The concertina is draggable from its visible upper
+body. Its lower bounding-box centre can overlap the trolley, whose visible
+surface correctly receives the pointer there.
+
+Viewport scene reviews passed at 360, 768, 1024 and 1440 CSS px in the Game's
+fixed light palette, with no document overflow or browser console errors.
+Document heights were 2400, 2381, 1753 and 1934 CSS px. The requested full-page
+1440 px capture returned 1425 × 1934 pixels with duplicated, half-scale content
+and blank space. It is not accepted as full-page proof. That requirement
+remains outstanding, with viewport captures serving only as supplementary checks.
+
+Files changed in this follow-up: `santeuil-accessories.js`,
+`accessory-designs.js`, `game.js` and `index.html` under `game-of-worms/`,
+`scripts/check-santeuil-accessories.cjs`, `PROJECT_STATUS.md`, the art catalogue
+and this dossier. No files created or deleted. No homepage or Cabinet changes.
+
 ### Local refinement, 2026-09-05
 
 Branch: `codex/santeuil-accessory-polish`. Preview:

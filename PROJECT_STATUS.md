@@ -6,6 +6,17 @@ This file records approved decisions and the verified implementation state. Alwa
 
 ### Game accessory refinement, 2026-09-05
 
+Santeuil paired-prop preview and its English-only button labels
+`organ & concertina` and `locomotive & trolley` received positive user review.
+The male has an open pump trolley and a fitted concertina.
+A subsequent uniform-fit correction is approved for deployment: caps are
+centred on the heads, while separate jacket fit groups bring the collars
+forward and the lower hems back along the body curves. Original uniform
+drawing details and both primary props are preserved. Martyna approved release
+of these follow-ups after the contextual previews and capture-limit disclosure.
+All six pointer, keyboard, resize/reset checks pass at the tested sizes.
+Full-page capture remains defective. See the Santeuil dossier for the proof limit.
+
 Santeuil is approved for release on `codex/santeuil-accessory-polish`.
 Its uniforms now follow each worm's native body coordinates and motion.
 The locomotives and cylinder organs have separately drawn paired construction,
