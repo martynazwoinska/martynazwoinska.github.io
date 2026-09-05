@@ -6595,7 +6595,7 @@ function renderPiece(target, item, wormPart) {
     ,"lingsar-spring-collar": { primary: [330, 100, 1, 25], companion: [110, 125, 1, 27] }
     ,"lingsar-ficus-fruit-transformation": { primary: [186, 201, .66, 13], companion: [49, 172, .32, 21] }
     ,"lingsar-springwater-current": { primary: [105, 289, .84, 0], companion: [12, 213, .63, -6] }
-    ,"eg4181-apricot-blossom-hat": { primary: [344, 25, .43, 0], companion: [111, 80, .36, -4] }
+    ,"eg4181-apricot-blossom-hat": { primary: [333, 37, .43, 22], companion: [114, 91, .36, 24] }
     ,"eg4181-beehive-saddle-pack": { primary: [245, 166, .46, 21], companion: [92, 154, .36, 30] }
     ,"eg4181-single-tail-mountain-ski": { primary: [151, 239, .49, -10], companion: [55, 211, .40, -7] }
     ,"eca250-bookworm-book": { primary: [274, 257, .57, -4], companion: [68, 283, .50, 6] }
@@ -6607,7 +6607,7 @@ function renderPiece(target, item, wormPart) {
     ,"ju1375-vanilla-vine-wrap": { primary: [271, 183, .52, 18], companion: [93, 172, .42, 19] }
     ,"ju1375-sugarcane-juice": { primary: [388, 251, .38, -5], companion: [19, 257, .3, 7] }
     ,"ju1375-bourbon-green-gecko-companion": { primary: [393, 115, .36, -7], companion: [16, 113, .29, 8] }
-    ,"ju2518-rotten-apple-decay-rotoscope": { primary: [340, 92, .42, -2], companion: [68, 79, .32, 3] }
+    ,"ju2518-rotten-apple-decay-rotoscope": { primary: [327, 54, .40, 14], companion: [114, 104, .25, 25] }
     ,"ju2518-virus-association-spectroscope": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
     ,"ju2518-six-september-garden-ledger": { primary: [225, 268, .34, -10], companion: [70, 227, .27, -7] }
     ,"eg5612-jackfruit-emergence-theatre": { primary: [380, 137, .37, -2], companion: [-7, 119, .29, 3] }
@@ -6631,7 +6631,9 @@ function renderPiece(target, item, wormPart) {
     "data-accessory-family": item.family
   });
   const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "lingsar-springwater-current";
-  const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` }) : piece;
+  const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope";
+  const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
+    : isFittedHeadwear ? add(piece, "g", { class: `fitted-headwear-motion ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });
   const drewNamedAccessory = drawNamedAccessory(artwork, item, companion);
   if (!drewNamedAccessory) throw new Error(`No named accessory renderer for ${item.label}`);

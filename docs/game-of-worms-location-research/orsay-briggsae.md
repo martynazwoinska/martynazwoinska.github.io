@@ -106,3 +106,11 @@ The buttons omit the strain code. Internal IDs may retain it.
 Implemented and validated on 2026-07-28 with the preserved source PNG,
 optimized WebP, evidence-bounded rural-garden apple composition and six
 bespoke independently movable accessory drawings.
+
+## Headwear fit, 2026-09-05
+
+Adjusted each worm's headwear position and tilt without changing artwork paths
+or colours. The companion Orsay crown has a smaller fitted scale. Headwear now
+follows the corresponding body animation, synchronized whenever enabled.
+Full-page 360, 768, 1024 and 1440 px proofs, independent pointer and keyboard
+movement, Home reset, reduced motion and animation-phase checks passed locally.

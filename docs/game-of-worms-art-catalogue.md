@@ -6,6 +6,11 @@ This catalogue is the implementation contract for the 31 active representative c
 
 ## Rules
 
+Headwear fit update, 2026-09-05: Salt Lake City's apricot hats now sit lower
+and tilt with each head. Orsay's flower crowns sit above the eyes, with a
+smaller companion crown. Both sets follow the corresponding body animation
+and synchronize its phase when enabled. Artwork paths and colours are unchanged.
+
 - Treat every row as a separate illustration, not as a shared ridge with interchangeable symbols.
 - Keep the evidence and source URL already attached to each environment profile.
 - F, M and B mean foreground, middle ground and background. Lock is the silhouette that must remain recognisable at thumbnail size.

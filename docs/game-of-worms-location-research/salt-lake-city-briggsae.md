@@ -32,3 +32,11 @@ The low camera, large trunk and fruit sample contrast with Claremont's elevated 
 
 - Preserved source: `game-of-worms/assets/source/salt-lake-eg4181-painted-background-source.png`
 - Runtime derivative: `game-of-worms/assets/salt-lake-eg4181-painted-background.jpg`
+
+## Headwear fit, 2026-09-05
+
+Adjusted each worm's hat position and tilt without changing artwork paths
+or colours. Both hats now sit lower on the heads. Headwear now
+follows the corresponding body animation, synchronized whenever enabled.
+Full-page 360, 768, 1024 and 1440 px proofs, independent pointer and keyboard
+movement, Home reset, reduced motion and animation-phase checks passed locally.

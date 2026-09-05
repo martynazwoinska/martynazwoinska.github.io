@@ -6,6 +6,11 @@ This file records approved decisions and the verified implementation state. Alwa
 
 ### Game accessory refinement, 2026-09-05
 
+Follow-up: Salt Lake City hats and Orsay flower crowns have independently
+adjusted head placement and tilt. Orsay's companion crown is smaller.
+Both sets follow their worm's bobbing phase, including when enabled later.
+The illustration paths, colours, backgrounds and public copy are unchanged.
+
 The six priority sets at Nambucca Heads QG2814, Ho Chi Minh City JU4356,
 Saint-Benoît JU1373, Araucanía, Dois Rios EG5612 and Kauaʻi QG130 now use
 explicit material-aware SVG constructions in `accessory-refinements.js`.

@@ -7325,6 +7325,10 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .lingsar-fig-opening { transform-origin: 0 75px; }
 @keyframes lingsar-flow { to { stroke-dashoffset: -27; } }
 @keyframes lingsar-companion-bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-3.01px) rotate(1deg); } }
+@media (prefers-reduced-motion: no-preference) {
+  .fitted-headwear-motion.primary { transform-origin: 210px 170px; animation: worm-bob 3.2s ease-in-out infinite; }
+  .fitted-headwear-motion.companion { transform-origin: 62.3px 155.1px; animation: lingsar-companion-bob 3.2s .45s ease-in-out infinite; }
+}
 @keyframes lingsar-fig-left { from { transform: rotate(16deg); } to { transform: rotate(0deg); } }
 @keyframes lingsar-fig-right { from { transform: rotate(-16deg); } to { transform: rotate(0deg); } }
 @media (prefers-reduced-motion: no-preference) {

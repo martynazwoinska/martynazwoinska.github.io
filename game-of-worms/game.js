@@ -3,7 +3,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260905-six-locations-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260905-headwear-fit-1";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
@@ -1371,6 +1371,19 @@ if (!("PointerEvent" in window)) {
   els.doodleCanvas.addEventListener("touchcancel", finishDoodleTouch, { passive: false });
 }
 
+function syncFittedHeadwearMotion(accessory) {
+  if (!accessory?.querySelector(".fitted-headwear-motion")) return;
+  requestAnimationFrame(() => {
+    if (!accessory.isConnected || accessory.hasAttribute("hidden")) return;
+    accessory.querySelectorAll(".fitted-headwear-motion").forEach(motion => {
+      const body = document.querySelector(motion.classList.contains("companion") ? ".companion-body" : ".worm-body");
+      const bodyAnimation = body?.getAnimations()[0];
+      const hatAnimation = motion.getAnimations()[0];
+      if (bodyAnimation && hatAnimation) hatAnimation.currentTime = bodyAnimation.currentTime;
+    });
+  });
+}
+
 function toggleAccessory(id, force) {
   const activeAccessories = activeWardrobe();
   const shouldShow = typeof force === "boolean" ? force : !activeAccessories.has(id);
@@ -1379,6 +1392,7 @@ function toggleAccessory(id, force) {
   if (!accessory || !button) return;
   accessoryWormParts.forEach(wormPart => applyAccessoryPosition(id, wormPart));
   accessory.toggleAttribute("hidden", !shouldShow);
+  if (shouldShow) syncFittedHeadwearMotion(accessory);
   button.setAttribute("aria-pressed", String(shouldShow));
   if (shouldShow) activeAccessories.add(id);
   else activeAccessories.delete(id);
@@ -1396,6 +1410,7 @@ function syncAccessories() {
     const shouldShow = activeAccessories.has(id);
     accessoryWormParts.forEach(wormPart => applyAccessoryPosition(id, wormPart));
     accessory?.toggleAttribute("hidden", !shouldShow);
+    if (shouldShow) syncFittedHeadwearMotion(accessory);
     button?.setAttribute("aria-pressed", String(shouldShow));
   });
   refreshAccessoryPieceControls();
