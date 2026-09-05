@@ -7263,141 +7263,46 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .eca250-nose-pad { fill: none; stroke: var(--eca250-gold); stroke-width: 2.5; }
 .eca250-glasses-bridge-detail { fill: none; stroke: var(--eca250-gold); stroke-width: 2.5; }
 
-/* Lombok HPT26: Ficus-ground recovery, field-to-plate dates and paired substrates. */
+/* Lombok HPT26: spring jewellery, flowing water and opening fig costumes. */
 .lombok-hpt26-accessory {
-  --hpt26-ink: color-mix(in srgb, #334139 84%, var(--worm-deep));
-  --hpt26-brass: color-mix(in srgb, #a77c43 76%, var(--local-secondary));
-  --hpt26-brass-light: color-mix(in srgb, #dec17a 76%, var(--paper-strong));
-  --hpt26-berry: color-mix(in srgb, #744f67 72%, var(--local-primary));
-  --hpt26-leaf: color-mix(in srgb, #4d7559 78%, var(--local-primary));
-  --hpt26-fruit: #806343;
-  --hpt26-fruit-deep: #4e3a2d;
-  --hpt26-soil: #8c5c3d;
-  --hpt26-glass: color-mix(in srgb, #d8ece2 54%, transparent);
-  --hpt26-cream: color-mix(in srgb, #efe2b8 82%, var(--paper-strong));
+  --lingsar-ink: #28494b;
+  --lingsar-gold: #d7b366;
+  --lingsar-gold-dark: #957040;
 }
 .lombok-hpt26-accessory path,
 .lombok-hpt26-accessory circle,
-.lombok-hpt26-accessory ellipse,
-.lombok-hpt26-accessory rect {
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.hpt26-label,
-.hpt26-small-label,
-.hpt26-date-label,
-.hpt26-date-number {
-  fill: var(--hpt26-ink);
-  stroke: none;
-  font-family: var(--sans);
-  font-size: 17px;
-  font-weight: 900;
-  letter-spacing: .035em;
-}
-.hpt26-small-label { font-size: 11px; }
-.hpt26-date-label { font-size: 13px; }
-.hpt26-date-number { font-family: var(--display); font-size: 25px; }
-.hpt26-litter-table,
-.hpt26-calendar-bed,
-.hpt26-diptych-bench,
-.hpt26-soil-cassette {
-  fill: var(--hpt26-brass);
-  stroke: var(--hpt26-ink);
-  stroke-width: 3;
-}
-.hpt26-soil-membrane {
-  fill: color-mix(in srgb, var(--hpt26-soil) 78%, var(--hpt26-cream));
-  stroke: var(--hpt26-ink);
-  stroke-width: 2.5;
-}
-.hpt26-ficus-fruit {
-  fill: var(--hpt26-fruit);
-  stroke: var(--hpt26-ink);
-  stroke-width: 2.5;
-}
-.hpt26-ficus-fruit.collapsed {
-  fill: color-mix(in srgb, var(--hpt26-fruit-deep) 82%, var(--hpt26-fruit));
-}
-.hpt26-fruit-panel {
-  fill: color-mix(in srgb, var(--hpt26-fruit) 68%, var(--hpt26-brass-light));
-  stroke: color-mix(in srgb, var(--hpt26-fruit-deep) 84%, var(--hpt26-ink));
-  stroke-width: 1.5;
-}
-.hpt26-fruit-stem,
-.hpt26-suspension,
-.hpt26-gauge-hand,
-.hpt26-four-notches,
-.hpt26-crank-spoke,
-.hpt26-transfer-track,
-.hpt26-hinge {
-  fill: none;
-  stroke: var(--hpt26-ink);
-  stroke-width: 2.4;
-}
-.hpt26-litter-chip {
-  fill: var(--hpt26-fruit-deep);
-  stroke: var(--hpt26-ink);
-  stroke-width: 1.2;
-}
-.hpt26-litter-chip.accent { fill: var(--hpt26-berry); }
-.hpt26-flipplate,
-.hpt26-sample-tray,
-.hpt26-cabinet-door,
-.hpt26-shutter,
-.hpt26-elevation-plate {
-  fill: var(--hpt26-cream);
-  stroke: var(--hpt26-ink);
-  stroke-width: 2.3;
-}
-.hpt26-c-frame,
-.hpt26-date-tower,
-.hpt26-rotating-cabinet {
-  fill: color-mix(in srgb, var(--hpt26-brass) 34%, transparent);
-  stroke: var(--hpt26-ink);
-  stroke-width: 4;
-}
-.hpt26-contact-gauge,
-.hpt26-crank,
-.hpt26-date-drum {
-  fill: var(--hpt26-brass-light);
-  stroke: var(--hpt26-ink);
-  stroke-width: 2.4;
-}
-.hpt26-date-drum.accent {
-  fill: color-mix(in srgb, var(--hpt26-berry) 62%, var(--hpt26-cream));
-}
-.hpt26-sample-cup,
-.hpt26-plate-cradle,
-.hpt26-agar-plate {
-  fill: var(--hpt26-glass);
-  stroke: color-mix(in srgb, var(--hpt26-leaf) 72%, var(--hpt26-ink));
-  stroke-width: 2.4;
-}
-.hpt26-agar-ring {
-  fill: color-mix(in srgb, var(--hpt26-brass-light) 62%, transparent);
-  stroke: var(--hpt26-leaf);
-  stroke-width: 1.8;
-}
-.hpt26-diptych-panel {
-  fill: color-mix(in srgb, var(--hpt26-leaf) 34%, var(--hpt26-cream));
-  stroke: var(--hpt26-ink);
-  stroke-width: 2.5;
-}
-.hpt26-arenga-symbol {
-  fill: color-mix(in srgb, var(--hpt26-leaf) 70%, var(--hpt26-brass-light));
-  stroke: var(--hpt26-ink);
-  stroke-width: 2.2;
-}
-.hpt26-elevation-pin {
-  fill: var(--hpt26-berry);
-  stroke: var(--hpt26-ink);
-  stroke-width: 1.8;
-}
-.hpt26-elevation-pin.accent { fill: var(--hpt26-brass-light); }
-@media (max-width: 600px) {
-  .lombok-hpt26-accessory .hpt26-small-label { display: none; }
-  .lombok-hpt26-accessory .hpt26-date-label { font-size: 18px; }
-  .lombok-hpt26-accessory .hpt26-date-number { font-size: 30px; }
+.lombok-hpt26-accessory ellipse { stroke-linecap: round; stroke-linejoin: round; }
+.lingsar-collar-band { fill: #315e60; stroke: var(--lingsar-ink); stroke-width: 1.6; }
+.lingsar-enamel { fill: #67b8b0; stroke: #a5ded2; stroke-width: .85; }
+.lingsar-gold-edge { fill: none; stroke: var(--lingsar-gold); stroke-width: 1.8; }
+.lingsar-clasp { fill: var(--lingsar-gold); stroke: var(--lingsar-gold-dark); stroke-width: 1.1; }
+.lingsar-rivet { fill: #f6e4a8; stroke: none; }
+.lingsar-chain { fill: none; stroke: var(--lingsar-gold-dark); stroke-width: 1.1; }
+.lingsar-drop { fill: #7ccec8; fill-opacity: .78; stroke: #366e71; stroke-width: 1.3; }
+.lingsar-glint { fill: none; stroke: #f3fffc; stroke-width: 1.5; }
+.lingsar-water { fill: #57bdbb; fill-opacity: .48; stroke: #458d94; stroke-width: 1.7; }
+.lingsar-water-highlight { fill: none; stroke: #d3f4ed; stroke-width: 2.8; stroke-opacity: .84; }
+.lingsar-water-ripple { fill: none; stroke: #308c9a; stroke-width: 1.8; stroke-opacity: .8; }
+.lingsar-foam { fill: none; stroke: #f0fffa; stroke-width: 2.5; stroke-dasharray: 13 5 3 6; }
+.lingsar-fig-skin { fill: #78536c; stroke: #473e4e; stroke-width: 2.5; }
+.lingsar-fig-skin.far { fill: #5e4659; }
+.lingsar-fig-pith { fill: #eadca7; stroke: #b49b67; stroke-width: 1.5; }
+.lingsar-fig-flesh { fill: #b65f76; stroke: #8e465f; stroke-width: 1.2; }
+.lingsar-fig-seed { fill: #f3d59a; stroke: none; }
+.lingsar-fig-stem { fill: #787b48; stroke: #4d5335; stroke-width: 2; }
+.lingsar-fig-bloom { fill: none; stroke: #b897b3; stroke-width: 2; stroke-opacity: .65; }
+.lingsar-fig-opening { transform-origin: 0 75px; }
+@keyframes lingsar-flow { to { stroke-dashoffset: -27; } }
+@keyframes lingsar-companion-bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-3.01px) rotate(1deg); } }
+@keyframes lingsar-fig-left { from { transform: rotate(16deg); } to { transform: rotate(0deg); } }
+@keyframes lingsar-fig-right { from { transform: rotate(-16deg); } to { transform: rotate(0deg); } }
+@media (prefers-reduced-motion: no-preference) {
+  .lingsar-worn-motion.primary { transform-origin: 210px 170px; animation: worm-bob 3.2s ease-in-out infinite; }
+  .lingsar-worn-motion.companion { transform-origin: 62.3px 155.1px; animation: lingsar-companion-bob 3.2s .45s ease-in-out infinite; }
+  .lingsar-foam { animation: lingsar-flow 2.8s linear infinite; }
+  .hpt26-companion .lingsar-foam { animation-direction: reverse; animation-duration: 3.4s; }
+  .lingsar-fig-opening.left { animation: lingsar-fig-left .8s ease-out both; }
+  .lingsar-fig-opening.right { animation: lingsar-fig-right .8s ease-out both; }
 }
 
 .science-notes {

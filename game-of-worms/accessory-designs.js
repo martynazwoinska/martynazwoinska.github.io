@@ -29,7 +29,7 @@ const rows = [
   ["nigoni", "Mahahual, Mexico · JU2617", "reef-ruffle swim costumes", "mahahual-reef-ruffle-swim-costumes", "Caribbean sun spectacles", "mahahual-caribbean-sun-spectacles", "sea-grape beach parasols", "mahahual-sea-grape-beach-parasols"],
   ["nigoni", "Mauritius · JU2909", "wriggle-powered ravanne drums", "mauritius-ravanne-crawler-drum", "Vacoas fruit-gathering tail baskets", "mauritius-vacoas-tail-scoop", "dodo-beak fruit grabbers", "mauritius-dodo-beak-fruit-grabber"],
   ["nigoni", "Ho Chi Minh City · JU4356", "carambola sample trays", "ju4356-carambola-ground-contact-stage", "ITS2 DNA cards", "ju4356-its2-ribbon-reader", "tree survey calipers", "hcmc-urban-canopy-census-engine"],
-  ["nigoni", "Lombok, Indonesia · HPT26", "fig sample trays", "hpt26-ficus-ground-contact-stage", "field-to-plate calendars", "lingsar-field-to-plate-calendar", "paired sample boxes", "hpt26-hpt27-substrate-diptych"],
+  ["nigoni", "Lombok, Indonesia · HPT26", "Lingsar spring collars", "lingsar-spring-collar", "Ficus fruit transformations", "lingsar-ficus-fruit-transformation", "spring-water currents", "lingsar-springwater-current"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "Balinese endek wrap", "ju1873-balinese-endek-wrap", "Balinese gamelan gong", "ju1873-balinese-gamelan-gong"],
   ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Golden Fleece cape", "qg2726-golden-fleece-cape", "forest-census map fans", "qg2726-bci-forest-census-map-fans"],
   ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras carnival crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
@@ -4312,90 +4312,86 @@ function drawLombokHPT26Accessory(group, item, companion) {
   if (!lombokHPT26RendererIds.has(item.id)) return false;
   group.dataset.renderer = item.family;
   group.classList.add("lombok-hpt26-accessory", companion ? "hpt26-companion" : "hpt26-primary");
-  const text = (value, x, y, className = "hpt26-label") => {
-    const node = add(group, "text", { class: className, x, y, "text-anchor": "middle" });
-    node.textContent = value;
-  };
-  const ficusFruit = (parent, cx, cy, rx, ry, rotation = 0, collapsed = false) => {
-    const fruit = add(parent, "g", { transform: `translate(${cx} ${cy}) rotate(${rotation})` });
-    add(fruit, "ellipse", { class: collapsed ? "hpt26-ficus-fruit collapsed" : "hpt26-ficus-fruit", cx: 0, cy: 0, rx, ry });
-    path(fruit, `M${-rx * .7} ${-ry * .12}Q0 ${-ry * .72} ${rx * .68} ${-ry * .04}Q${rx * .42} ${ry * .64} ${-rx * .62} ${ry * .46}Z`, "hpt26-fruit-panel");
-    line(fruit, `M0 ${-ry}Q${rx * .08} ${-ry - 10} ${rx * .24} ${-ry - 13}`, "hpt26-fruit-stem");
+  const drop = (parent, x, y, size) => {
+    const bead = add(parent, "g", { transform: `translate(${x} ${y}) scale(${size})` });
+    path(bead, "M0-7C-2-3-5 0-5 3A5 5 0 0 0 5 3C5 0 2-3 0-7Z", "lingsar-drop");
+    line(bead, "M-2 1Q-4 4-1 5", "lingsar-glint");
   };
 
-  if (item.family === "hpt26-ficus-ground-contact-stage") {
+  if (item.family === "lingsar-spring-collar") {
+    // Draw the near-side band as a curved cuff across the neck.
     if (companion) {
-      path(group, "M-48-81H39L51 72H-55Z", "hpt26-c-frame");
-      path(group, "M-29 35H28L20 66H-36Z", "hpt26-soil-cassette");
-      ficusFruit(group, 0, -20, 25, 19, -7, true);
-      line(group, "M0-54V-39M-20-52H20M-20-52L-14-42M20-52L14-42", "hpt26-suspension");
-      add(group, "circle", { class: "hpt26-contact-gauge", cx: 49, cy: -31, r: 18 });
-      line(group, "M49-31L59-41", "hpt26-gauge-hand");
-      text("L14.1", -2, 84, "hpt26-small-label");
+      path(group, "M-11-4Q-1-8 11-3L10 3Q0 7-11 2Z", "lingsar-collar-band");
+      line(group, "M-10-3Q0 0 10-2M-9 2Q0 5 9 2", "lingsar-gold-edge");
+      path(group, "M-3-1Q0-4 3-1L2 3H-2Z", "lingsar-enamel");
+      line(group, "M0 4V7", "lingsar-chain");
+      drop(group, 0, 10, .53);
+      add(group, "circle", { class: "lingsar-rivet", cx: -7, cy: 0, r: .8 });
+      add(group, "circle", { class: "lingsar-rivet", cx: 7, cy: 0, r: .8 });
     } else {
-      path(group, "M-111 25H105L97 70H-106Z", "hpt26-litter-table");
-      path(group, "M-92 14Q-47-4 0 11Q51 28 91 8L82 47Q40 62-2 49Q-49 62-88 46Z", "hpt26-soil-membrane");
-      ficusFruit(group, -48, 2, 28, 21, -12, true);
-      ficusFruit(group, 9, -8, 22, 27, 8);
-      ficusFruit(group, 57, 8, 19, 16, -6);
-      [[-86,48],[-61,55],[-31,47],[3,55],[34,48],[68,54]].forEach(([cx, cy], index) => add(group, "circle", { class: index % 2 ? "hpt26-litter-chip accent" : "hpt26-litter-chip", cx, cy, r: 4 }));
-      path(group, "M-72 68H75L67 94H-80Z", "hpt26-flipplate");
-      text("L14.1 / HPT26", -3, 86, "hpt26-small-label");
+      path(group, "M-26-7Q-2-13 26-6L24 6Q1 15-25 5Z", "lingsar-collar-band");
+      path(group, "M-22-4Q1 1 22-3L21 4Q0 11-22 3Z", "lingsar-enamel");
+      line(group, "M-25-6Q0 1 25-5M-24 5Q0 14 23 6", "lingsar-gold-edge");
+      path(group, "M-5-2Q0-7 5-2L4 6Q0 9-4 5Z", "lingsar-clasp");
+      line(group, "M-15 7V11M0 9V15M15 7V11", "lingsar-chain");
+      drop(group, -15, 14, .65);
+      drop(group, 0, 20, .92);
+      drop(group, 15, 14, .65);
+      [-20,-10,10,20].forEach(x => add(group, "circle", { class: "lingsar-rivet", cx: x, cy: 2, r: 1 }));
     }
     return true;
   }
 
-  if (item.family === "lingsar-field-to-plate-calendar") {
+  if (item.family === "lingsar-springwater-current") {
     if (companion) {
-      path(group, "M-41-82H36L49 71H-49Z", "hpt26-date-tower");
-      [ -45, 27 ].forEach((cy, index) => {
-        add(group, "circle", { class: index ? "hpt26-date-drum accent" : "hpt26-date-drum", cx: -3, cy, r: 25 });
-        text(index ? "8" : "4", -3, cy + 7, "hpt26-date-number");
-      });
-      line(group, "M-3-20V2M-12-16H6M-12-8H6M-12 0H6M-12 8H6", "hpt26-four-notches");
-      path(group, "M31-52H59V16H31Z", "hpt26-sample-cup");
-      add(group, "ellipse", { class: "hpt26-plate-cradle", cx: 12, cy: 59, rx: 34, ry: 13 });
-      add(group, "circle", { class: "hpt26-crank", cx: -54, cy: 40, r: 16 });
-      line(group, "M-54 40L-65 29M-54 40H-39", "hpt26-crank-spoke");
+      path(group, "M-44 3Q-53-5-38-11Q-19-17 5-9Q27 0 32-17Q35-28 23-30Q35-39 43-25Q54-4 35 9Q9 22-22 15Q-44 13-44 3Z", "lingsar-water");
+      path(group, "M-36 1Q-18-7 9 0Q26 5 33-9M-30 9Q-9 16 17 10", "lingsar-water-highlight");
+      path(group, "M-19 2Q0-2 13 5Q0 11-16 7", "lingsar-water-ripple");
+      line(group, "M38-26Q47-13 35-2", "lingsar-foam");
+      drop(group, 27, -39, .54);
+      drop(group, -40, -17, .36);
     } else {
-      path(group, "M-106 24H104V69H-106Z", "hpt26-calendar-bed");
-      [-67, 67].forEach((cx, index) => {
-        add(group, "circle", { class: index ? "hpt26-date-drum accent" : "hpt26-date-drum", cx, cy: -18, r: 34 });
-        text(index ? "8 MAY" : "4 MAY", cx, -11, "hpt26-date-label");
-      });
-      line(group, "M-32-18H32M-24-29V-7M-8-29V-7M8-29V-7M24-29V-7", "hpt26-four-notches");
-      path(group, "M-30 14H30L23 52H-37Z", "hpt26-sample-tray");
-      add(group, "ellipse", { class: "hpt26-agar-plate", cx: 55, cy: 49, rx: 35, ry: 14 });
-      add(group, "ellipse", { class: "hpt26-agar-ring", cx: 55, cy: 46, rx: 29, ry: 10 });
-      path(group, "M-89 50Q-58 33-30 49", "hpt26-transfer-track");
+      path(group, "M-95 1C-110-16-61-28-18-19C21-11 50-12 64-34C71-47 62-53 55-52C70-69 94-55 91-33C89-15 71-7 62-1C83 0 98 5 97 14C87 33 16 36-37 27C-72 21-88 16-95 1Z", "lingsar-water");
+      path(group, "M-85-3C-52-17-21-10 5-5C33 2 66-7 77-29", "lingsar-water-highlight");
+      path(group, "M-78 9Q-36 32 27 24Q65 22 82 13", "lingsar-water-highlight");
+      path(group, "M-48 2C-25-7 21-4 32 7C35 17-5 21-29 11C-40 5-12 1 3 6", "lingsar-water-ripple");
+      path(group, "M69-52Q91-43 77-23M-80 1L-62 5M54 18L66 14", "lingsar-foam");
+      drop(group, 53, -63, .85);
+      drop(group, 88, -66, .52);
+      drop(group, -87, -20, .55);
     }
     return true;
   }
 
-  if (item.family === "hpt26-hpt27-substrate-diptych") {
+  if (item.family === "lingsar-ficus-fruit-transformation") {
+    const seed = (parent, x, y, angle, size = 1) => {
+      add(parent, "ellipse", { class: "lingsar-fig-seed", cx: x, cy: y, rx: 1.5 * size, ry: 3 * size, transform: `rotate(${angle} ${x} ${y})` });
+    };
+    const left = add(group, "g", { class: "lingsar-fig-opening left" });
+    const right = add(group, "g", { class: "lingsar-fig-opening right" });
     if (companion) {
-      path(group, "M-42-83H38L49 70H-50Z", "hpt26-rotating-cabinet");
-      path(group, "M-31-66H-2V42H-31ZM5-66H34V42H5Z", "hpt26-cabinet-door");
-      ficusFruit(group, -17, -28, 10, 12, -6, true);
-      path(group, "M11-43Q23-62 32-40Q21-28 12-12Q3-28 11-43Z", "hpt26-arenga-symbol");
-      [-20, 18].forEach(cx => path(group, `M${cx - 11} 18H${cx + 11}V38H${cx - 11}Z`, "hpt26-shutter"));
-      add(group, "circle", { class: "hpt26-elevation-pin", cx: -17, cy: 51, r: 7 });
-      add(group, "circle", { class: "hpt26-elevation-pin accent", cx: 19, cy: 55, r: 7 });
-      text("26", -17, 78, "hpt26-small-label");
-      text("27", 19, 82, "hpt26-small-label");
+      // A narrow side-cut fruit, with its far half turned away.
+      path(left, "M-28-62C-64-61-94-25-87 14C-82 46-50 65-6 64C-30 43-39 18-33-9C-29-27-22-44-28-62Z", "lingsar-fig-skin");
+      path(left, "M-35-49C-62-43-81-15-75 12C-70 35-51 48-23 53C-41 30-47 7-40-15C-36-29-33-41-35-49Z", "lingsar-fig-pith");
+      path(left, "M-40-40C-63-28-72-5-64 19C-58 31-48 40-34 44C-50 21-52 2-46-18Z", "lingsar-fig-flesh");
+      path(left, "M-27-61Q-22-77-14-81L-10-75Q-20-67-20-57", "lingsar-fig-stem");
+      path(right, "M30-45C54-42 79-15 73 16C68 40 41 55 8 64C30 40 41 19 36-6Z", "lingsar-fig-skin far");
+      path(right, "M39-34C61-20 67-1 60 17Q48 36 25 49C42 27 48 6 39-34Z", "lingsar-fig-pith");
+      path(right, "M46-22Q66 9 36 36Q53 12 46-22Z", "lingsar-fig-flesh");
+      [[-54,-22,25],[-63,-3,12],[-59,16,-30],[-46,32,-48],[54,3,4],[45,24,30]].forEach(([x,y,a]) => seed(x < 0 ? left : right,x,y,a,1.1));
     } else {
-      path(group, "M-108 25H107V72H-108Z", "hpt26-diptych-bench");
-      path(group, "M-94-54H-6V29H-94ZM7-54H95V29H7Z", "hpt26-diptych-panel");
-      line(group, "M0-61V40M-7-48H7M-7-20H7M-7 8H7", "hpt26-hinge");
-      ficusFruit(group, -52, -15, 24, 20, -8, true);
-      path(group, "M30-40Q52-67 75-39Q59-20 51 12Q36-14 30-40Z", "hpt26-arenga-symbol");
-      text("FICUS · L14", -50, 21, "hpt26-small-label");
-      text("ARENGA · L22", 52, 21, "hpt26-small-label");
-      path(group, "M-93 72H-8V95H-93ZM9 72H94V95H9Z", "hpt26-elevation-plate");
-      text("293 m", -50, 88, "hpt26-small-label");
-      text("290 m", 52, 88, "hpt26-small-label");
-      text("4 MAY", 0, 58, "hpt26-date-label");
+      path(left, "M-33-81C-69-79-105-43-102 1C-101 44-65 74-5 75C-31 46-44 21-38-12C-35-39-26-61-33-81Z", "lingsar-fig-skin");
+      path(left, "M-42-66C-70-60-93-31-90 0C-88 31-63 55-24 62C-47 30-52 14-48-13C-44-36-39-53-42-66Z", "lingsar-fig-pith");
+      path(left, "M-48-56C-76-45-85-18-80 6C-75 29-60 42-39 48C-55 23-61 7-57-14Z", "lingsar-fig-flesh");
+      path(left, "M-33-80Q-36-98-20-106L-15-99Q-25-90-25-78Z", "lingsar-fig-stem");
+      path(right, "M32-70C69-65 100-31 97 7C93 46 57 70 5 75C31 44 43 14 37-12C32-36 24-51 32-70Z", "lingsar-fig-skin");
+      path(right, "M41-56C69-46 88-22 84 8C79 36 58 50 24 62C46 30 53 10 48-14Z", "lingsar-fig-pith");
+      path(right, "M48-45C75-31 81-7 70 16C63 30 53 39 40 44C58 16 61-2 48-45Z", "lingsar-fig-flesh");
+      [[-61,-37,24],[-73,-20,13],[-74,0,-12],[-68,17,-29],[-53,33,-43],[-54,-13,4],[-60,8,-19],[59,-24,-20],[69,-7,3],[64,12,24],[54,28,36],[58,0,6]].forEach(([x,y,a]) => seed(x < 0 ? left : right,x,y,a));
+      line(left, "M-89-32Q-102 0-79 30", "lingsar-fig-bloom");
+      line(right, "M85-15Q94 13 70 35", "lingsar-fig-bloom");
     }
+    path(group, "M-8 71Q0 67 8 71L5 79H-5Z", "lingsar-fig-stem");
     return true;
   }
   return false;
@@ -5348,8 +5344,7 @@ function drawNigoniFieldAccessory(group, item, companion) {
   const location = praslinRendererIds.has(item.id) ? "praslin"
       : saoTomeRendererIds.has(item.id) ? "sao-tome"
         : mahahualJU2617RendererIds.has(item.id) ? "mahahual"
-          : hcmcJU4356RendererIds.has(item.id) ? "hcmc"
-            : lombokHPT26RendererIds.has(item.id) ? "lombok" : null;
+          : hcmcJU4356RendererIds.has(item.id) ? "hcmc" : null;
   if (!location) return false;
 
   group.dataset.renderer = `${item.family}-field-redesign`;
@@ -5398,10 +5393,6 @@ function drawNigoniFieldAccessory(group, item, companion) {
 
   if (item.family === "ju4356-carambola-ground-contact-stage") {
     sampleTray("starfruit", "JU4356");
-    return true;
-  }
-  if (item.family === "hpt26-ficus-ground-contact-stage") {
-    sampleTray("fig", "HPT26");
     return true;
   }
   if (item.family === "sao-tome-chocolate-bars") {
@@ -5676,32 +5667,6 @@ function drawNigoniFieldAccessory(group, item, companion) {
     [-70,-40,-10,20,50,80].forEach(x => path(group, `M ${companion ? x * .8 : x} ${companion ? 13 : 16} V ${companion ? 29 : 37}`, "nfr-tape-tick"));
     path(group, companion ? "M44-51Q73-82 101-46Q86-18 56-28Q39-4 24-29Q24-54 44-51Z" : "M56-65Q94-105 130-59Q109-23 72-35Q50-5 31-37Q31-69 56-65Z", "nfr-leaf");
     label("TREE", companion ? -42 : -53, companion ? 31 : 39, "nfr-small");
-    return true;
-  }
-  if (item.family === "lingsar-field-to-plate-calendar") {
-    shadow(88, 105);
-    const width=companion?124:158;
-    path(group, `M ${-width/2} -76 H ${width/2} V 91 H ${-width/2} Z`, "nfr-ivory");
-    path(group, `M ${-width/2} -76 H ${width/2} V -43 H ${-width/2} Z`, "nfr-primary");
-    [-34,0,34].filter(x=>Math.abs(x)<width/2-5).forEach(x=>{add(group,"circle",{class:"nfr-gold",cx:x,cy:-77,r:8});path(group,`M ${x} -91 V -69`,"nfr-fine")});
-    label("FIELD", -width/4, -21, "nfr-small");
-    label("PLATE", width/4, 45, "nfr-small");
-    path(group,"M0-36V69M-12 57L0 71L12 57","nfr-arrow");
-    plate(width/4,17,companion?25:31,companion?18:22,true);
-    label("HPT26",0,83,"nfr-small");
-    return true;
-  }
-  if (item.family === "hpt26-hpt27-substrate-diptych") {
-    shadow(108, 106);
-    const offset=companion?51:66;
-    [-1,1].forEach((side,index)=>{
-      const x=side*offset;
-      path(group,`M ${x-(companion?44:55)} -63 H ${x+(companion?44:55)} V 75 H ${x-(companion?44:55)} Z`,index?"nfr-primary":"nfr-secondary");
-      path(group,`M ${x-(companion?34:43)} -50 H ${x+(companion?34:43)} V 50 H ${x-(companion?34:43)} Z`,"nfr-glass");
-      fruit(group,index?"fruit":"fig",x,0,companion?.38:.49);
-      label(index?"HPT27":"HPT26",x,68,"nfr-small nfr-light-text");
-    });
-    path(group,"M-12-72H12V82H-12Z","nfr-gold");
     return true;
   }
   return false;
@@ -6588,9 +6553,9 @@ function renderPiece(target, item, wormPart) {
     ,"ju4356-carambola-ground-contact-stage": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
     ,"ju4356-its2-ribbon-reader": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"hcmc-urban-canopy-census-engine": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
-    ,"hpt26-ficus-ground-contact-stage": { primary: [385, 142, .43, -2], companion: [14, 132, .30, 3] }
-    ,"lingsar-field-to-plate-calendar": { primary: [238, 199, .42, -1], companion: [117, 218, .30, 2] }
-    ,"hpt26-hpt27-substrate-diptych": { primary: [382, 270, .39, -1], companion: [30, 291, .28, 2] }
+    ,"lingsar-spring-collar": { primary: [330, 100, 1, 25], companion: [110, 125, 1, 27] }
+    ,"lingsar-ficus-fruit-transformation": { primary: [186, 201, .66, 13], companion: [49, 172, .32, 21] }
+    ,"lingsar-springwater-current": { primary: [105, 289, .84, 0], companion: [12, 213, .63, -6] }
     ,"eg4181-apricot-blossom-hat": { primary: [344, 25, .43, 0], companion: [111, 80, .36, -4] }
     ,"eg4181-beehive-saddle-pack": { primary: [245, 166, .46, 21], companion: [92, 154, .36, 30] }
     ,"eg4181-single-tail-mountain-ski": { primary: [151, 239, .49, -10], companion: [55, 211, .40, -7] }
@@ -6626,7 +6591,9 @@ function renderPiece(target, item, wormPart) {
     "data-worm-part": wormPart,
     "data-accessory-family": item.family
   });
-  const artwork = add(piece, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });
+  const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "lingsar-springwater-current";
+  const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` }) : piece;
+  const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });
   const drewNamedAccessory = drawNamedAccessory(artwork, item, companion);
   if (!drewNamedAccessory) throw new Error(`No named accessory renderer for ${item.label}`);
   return piece;

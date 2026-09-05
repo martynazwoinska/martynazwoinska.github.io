@@ -1,8 +1,8 @@
 # Lingsar, Lombok *Caenorhabditis nigoni* HPT26 location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-09-05
 
-> **Current production accessory contract:** `fig sample trays`, `field-to-plate calendars`, and `paired sample boxes`. These recognizable objects supersede the earlier abstract mechanism sketches below while preserving the recorded dates and the HPT26/HPT27 comparison boundary.
+> **Current production accessory contract:** `Lingsar spring collars`, `Ficus fruit transformations`, and `spring-water currents`. The figs refer to the recorded substrate. The water designs are playful references to springs in the wider Lingsar area.
 
 ## Purpose
 
@@ -139,126 +139,67 @@ Forbidden:
 
 ## Accessory contract
 
-### HPT26 Ficus-ground contact stage
+### Lingsar spring collars
 
-Scientific basis: HPT26 came from rotting *Ficus* fruits on the ground.
+Two fitted enamel-and-gold cuffs with translucent droplet pendants. The female
+has a broad three-drop cuff. The male has a smaller single-drop clasp.
+Both follow their worm's neck angle and bobbing motion.
 
-Primary: a broad low litter table with three unequal softened fruits, exposed
-soil-contact membrane and an offset `L14.1 / HPT26` flipplate.
+### Ficus fruit transformations
 
-Companion: a tall open C-frame gantry with one suspended fruit above a
-removable ground cassette and a lateral contact gauge.
+A split-fruit costume opens around each worm's lower body. Purple outer skin,
+a pale rind and a rose interior with contained seed marks make the cut surface
+readable. The female fruit has two broad halves. The male has a narrow side-cut
+form with a turned-away far half. The opening animation settles after 0.8 seconds.
 
-Do not present either as documented field equipment or infer a *Ficus*
-species.
+The exact Ficus species was unrecorded. Fruit colour and opening construction
+are imaginative. The drawing uses general Ficus structure, without assigning
+HPT26 to a particular fig species.
 
-### Lingsar field-to-plate calendar
+### Spring-water currents
 
-Scientific basis: collection took place on 4 May and the Lombok sheet notes
-that samples were put on plates on 8 May.
+A translucent curling pool sits beneath each tail. The female pool has a broad
+eddy and raised curl. The male pool has a short side splash and a different
+ripple pattern. Moving foam traces the current. Reduced-motion mode keeps the
+water and fruit static.
 
-Primary: a wide horizontal mechanism with separate `4 MAY` and `8 MAY` end
-drums, four interval notches, a ground-sample tray and an abstract agar plate.
+These are movable fantasy accessories. The landscape and collection record
+remain terrestrial.
 
-Companion: a tall twin-date tower with vertically separated date windows,
-hanging sample cup, lower plate cradle and side crank.
+## Reference additions
 
-The intermediate notches indicate elapsed days only. They must not imply
-undocumented daily procedures.
+- Lombok Barat government, Lingsar history and the Ai' Mual spring:
+  https://lombokbaratkab.go.id/sejarah-singkat-pura-lingsar/
+- Kew, Plants of the World Online, Ficus general structure:
+  https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A327905-2/general-information
 
-### HPT26–HPT27 substrate diptych
+The spring source supports regional context. It does not identify HPT26's
+sampling point as a spring or a temple.
 
-Scientific basis: HPT26 and HPT27 are separate *C. nigoni* samples from the
-same Lingsar survey date at nearby recorded elevations and different fruit
-substrates.
+## Initial layouts
 
-Primary: a wide hinged bench. The left panel shows a generic ground *Ficus*
-sample labelled `L14 · 293 m`; the right shows *Arenga pinnata* fruit labelled
-`L22 · 290 m`; a central `4 MAY` tab keeps the comparison date explicit.
-
-Companion: a tall back-to-back rotating cabinet with separate HPT26/*Ficus*
-and HPT27/*Arenga* compartments, independent shutters and twin elevation pins.
-
-The diptych is a comparison, not a claim that the samples were mixed.
-
-## Suggested starting layouts
-
-These values were browser-tuned:
+Values use the existing worm SVG coordinate system.
 
 ```js
-"hpt26-ficus-ground-contact-stage": {
-  primary: [385, 142, .43, -2],
-  companion: [14, 132, .30, 3]
+"lingsar-spring-collar": {
+  primary: [330, 100, 1, 25],
+  companion: [110, 125, 1, 27]
 },
-"lingsar-field-to-plate-calendar": {
-  primary: [238, 199, .42, -1],
-  companion: [117, 218, .30, 2]
+"lingsar-ficus-fruit-transformation": {
+  primary: [186, 201, .66, 13],
+  companion: [49, 172, .32, 21]
 },
-"hpt26-hpt27-substrate-diptych": {
-  primary: [382, 270, .39, -1],
-  companion: [30, 291, .28, 2]
+"lingsar-springwater-current": {
+  primary: [105, 289, .84, 0],
+  companion: [12, 213, .63, -6]
 }
 ```
 
-## Variant and interaction requirements
+## Validation
 
-- Each primary and companion pair must differ in outer silhouette,
-  orientation, internal construction, attachment point and negative space.
-- Variants must not be scale, colour or count changes of one base drawing.
-- Add a custom initial layout for each family.
-- Inspect all three accessories together on both worms.
-- Keep facial features, species label and body outline readable.
-- Verify direct pointer drag, keyboard movement, Home reset and focus treatment
-  independently for all six pieces.
-- Respect reduced motion and existing touch-target behaviour.
+Inspect all six objects together at 360, 768, 1024 and 1440 px. Verify each
+copy's pointer drag, keyboard movement and Home reset independently. Check
+reduced motion, body attachment, scene boundaries and the catalogue audits.
 
-## Semantic reuse ledger
-
-Remove Lombok from the shared skirt entry. Tropicalis Réunion becomes a
-singleton skirt family.
-
-Remove the caldera-headband and altimeter-ukulele concepts. Add the three new
-Lombok concepts as singleton families.
-
-Expected totals after this catalogue correction:
-
-- 13 families used exactly twice
-- 85 singleton families
-- 111 concepts across 37 accessory sets
-- no semantic family used more than twice
-
-Plucked-string instruments remain limited to Kauaʻi QG130 and Tenerife after
-the Lombok ukulele is removed.
-
-## Acceptance checks
-
-- Exactly 35 preserved environment profiles and composition IDs, with 34 active locations.
-- Exactly 34 active accessory sets and 103 unique accessory design IDs.
-- No remaining active `lombok-rinjani` profile or orphaned caldera composition.
-- No generic-renderer fallback for the six new accessory illustrations.
-- No initial overlap among the three accessories or with critical worm detail.
-- Desktop and mobile checks near 360, 768, 1024 and wide viewports.
-- The Game's intentional fixed light palette.
-- Keyboard operation, direct drag and visible focus.
-- Reduced-motion behaviour.
-- No horizontal overflow, failed requests or console errors.
-- Full diff review and `git diff --check`.
-
-## Implementation status
-
-Implemented and browser-checked on 28 July 2026:
-
-- the unsupported `lombok-rinjani` caldera profile and composition were
-  removed;
-- the dedicated Lingsar painted background and preserved source PNG were
-  added;
-- the HPT26 coordinates, marker source, strain history, evidence note and DOI
-  source were updated;
-- the caldera headband, crater-lake skirt and altimeter ukulele were replaced
-  by the three evidence-led mechanisms above;
-- all six primary/companion drawings have distinct construction and independent
-  pointer, keyboard and Home-reset behaviour;
-- 360, 768, 1024 and 1440 px checks found no horizontal overflow and kept all
-  six objects inside the scene;
-- the browser console was clean and the runtime image request returned HTTP
-  200.
+The earlier sample trays, calendars and comparison boxes are retired.
+The approved painted landscape remains unchanged.
