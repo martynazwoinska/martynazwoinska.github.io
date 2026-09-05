@@ -253,6 +253,8 @@ button { color: inherit; }
   position: absolute;
   z-index: 1;
   inset: 0;
+  /* Move the immutable object images and every hotspot as one assembly. */
+  transform: translateY(calc(-60 / 941 * 100%));
 }
 
 .photo-object-layer {
@@ -469,10 +471,11 @@ button { color: inherit; }
   position: fixed;
   z-index: 20;
   left: 50%;
-  bottom: 9px;
+  top: 18px;
+  bottom: auto;
   transform: translateX(-50%);
   width: max-content;
-  max-width: calc(100vw - 24px);
+  max-width: max(180px, calc(100vw - 500px));
   margin: 0;
   padding: 5px 12px;
   border: 1px solid rgba(213, 185, 105, .28);
@@ -821,6 +824,8 @@ button { color: inherit; }
 
 @media (pointer: coarse) and (orientation: landscape) and (max-width: 980px) {
   .cabinet-page.is-scene-interactive .explore-hint {
+    top: auto;
+    bottom: 2px;
     left: max(10px, env(safe-area-inset-left));
     max-width: calc(100vw - 184px - env(safe-area-inset-left) - env(safe-area-inset-right));
     transform: none;
@@ -842,7 +847,7 @@ button { color: inherit; }
     --scene-height: calc(var(--scene-width) * .562799);
   }
   .cabinet-stage { padding: 0; }
-  .explore-hint { bottom: 8px; font-size: .75rem; }
+  .explore-hint { font-size: .75rem; }
   .wheel-dialog { width: calc(100vw - 12px); padding: 18px; }
   .wheel-visual { width: min(92vw, calc(100svh - 54px), 100%); }
 }
