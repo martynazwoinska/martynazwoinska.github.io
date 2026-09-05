@@ -405,7 +405,14 @@ button { color: inherit; }
 .chof-link:hover,
 .chof-link:focus-visible {
   filter: brightness(1.03);
-  transform: rotate(-1.1deg);
+  animation: chof-swing 2.6s ease-in-out infinite;
+}
+
+@keyframes chof-swing {
+  0%, 100% { transform: rotate(-1.8deg); }
+  22% { transform: rotate(8deg); }
+  52% { transform: rotate(-8deg); }
+  78% { transform: rotate(4deg); }
 }
 
 .chof-link:hover::before,
@@ -531,7 +538,8 @@ button { color: inherit; }
 .object-preview {
   position: fixed;
   z-index: 30;
-  width: min(220px, calc(100vw - 24px));
+  width: max-content;
+  max-width: min(280px, calc(100vw - 24px));
   padding: 7px 9px;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -989,6 +997,8 @@ button { color: inherit; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .chof-link:hover,
+  .chof-link:focus-visible { animation: none; }
   .crochet-eye.is-orbiting { animation: none; }
   *,
   *::before,
