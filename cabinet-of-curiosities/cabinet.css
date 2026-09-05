@@ -288,18 +288,22 @@ button { color: inherit; }
 }
 
 .crochet-eye.is-orbiting {
-  animation: crochet-orbit 2.8s linear infinite;
+  transform-origin: 50% 50%;
+  animation: crochet-orbit 2.8s ease-in-out infinite;
+}
+
+.crochet-eye-green.is-orbiting {
+  animation-duration: 3.2s;
+  animation-direction: reverse;
 }
 
 @keyframes crochet-orbit {
-  0%, 100% { transform: translate(0, 0); }
-  12.5% { transform: translate(1.4%, -.6%); }
-  25% { transform: translate(2%, -2%); }
-  37.5% { transform: translate(1.4%, -3.4%); }
-  50% { transform: translate(0, -4%); }
-  62.5% { transform: translate(-1.4%, -3.4%); }
-  75% { transform: translate(-2%, -2%); }
-  87.5% { transform: translate(-1.4%, -.6%); }
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(18deg); }
+  46% { transform: rotate(-24deg); }
+  66% { transform: rotate(10deg); }
+  82% { transform: rotate(-4deg); }
+  92% { transform: rotate(0deg); }
 }
 
 .chof-link {
