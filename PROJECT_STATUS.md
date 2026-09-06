@@ -6,6 +6,29 @@ This file records approved decisions and the verified implementation state. Alwa
 
 ### Game accessory refinement, 2026-09-05
 
+Trivandrum JU1325 approved for deployment, 2026-09-06: six redrawn props in
+`game-of-worms/trivandrum-refinement.js`. The female has a long-grip magnifier
+and broad oval enamel watering can. The male has a straight compact magnifier and a
+tall compact can. Both tubes have ribbed caps and contained curled leaves and
+petals. A second pass removed opaque lens backing and enlarged the male tube.
+The painting, approved labels and public copy are unchanged.
+Syntax, scoped drawing checks and full catalogue geometry pass.
+Follow-up: both magnifiers start about 12% larger and now show a live 2x view
+of the actual background, worms and other props. Removed the decorative worm
+symbols from the lenses. The male grip is straight, with a short metal neck.
+`live-loupes.js` maps source coordinates into fixed, clipped lens viewports.
+It excludes headwear to prevent recursion, supports drag and size changes,
+and restores normal layering and removes its animation loop on location change.
+Optics mapping, hidden props, cleanup, pointer/keyboard, mobile sizing and
+switch-away/back checks pass. Martyna approved the revised interactive preview
+for deployment, including larger working lenses and the straight male grip.
+All six controls pass pointer drag, keyboard movement and isolated Home reset.
+The browser reports no errors or warnings. Four widths have no
+document overflow. Full-page captures remain defective (half-scale content
+with duplicate sections), so they do not constitute valid full-page proofs.
+Capture sizes: 345 x 2545, 753 x 2429, 1009 x 1897 and 1425 x 1934 pixels for
+360, 768, 1024 and 1440 px viewports. Native phone and desktop views were inspected.
+
 Ahmedabad AF16 approved for deployment, 2026-09-06: refined paper/wood fans and kites,
 painted-metal pail/probe and a separate male tray/trowel. Paired differences
 include geometry and construction, not just scale. Background and copy are

@@ -122,6 +122,29 @@ The revised preceding locations are the minimum quality floor, not templates to 
 
 ## Implementation status
 
+Accessory refinement, 2026-09-06, approved for deployment:
+
+- Preserved the approved botanical garden painting, concepts, labels and copy.
+- Replaced flat lenses with layered metal rims and live 2x optical windows.
+  Both start about 12% larger. The male has a straight compact berry grip
+  connected through a short metal neck. The decorative worm symbols are gone.
+  Each lens samples the actual scene through live SVG references, excluding
+  both magnifiers to prevent recursion. Fixed viewport bounds preserve dragging
+  and sizing. The controller cleans up on location change and leaves other
+  scenes unchanged. Tests cover optical mapping, visibility and cleanup.
+- Rebuilt watering cans around oval enamel vessels, rolled rims, open filling
+  mouths, arched carrying handles, soldered spouts and perforated roses.
+  The male has a narrower upright body and a different spout profile.
+- Rebuilt tubes with ribbed caps, clear edges and restrained highlights.
+  Anonymous curled leaves and wilted petals are clipped inside each vessel.
+  Kept the existing fourteen-day tag and enlarged the male's tube.
+- Critical second pass removed solid backing from both lenses and increased
+  the male tube's default scale from .30 to .36.
+- Six-object drawing checks, full catalogue geometry and syntax pass. Four
+  responsive widths retain all six controls without document overflow.
+  Full-page captures have the existing browser stitching defect and are not
+  accepted as full-page proof. Normal phone and desktop views were inspected.
+
 Painted-background upgrade implemented and locally verified on 2026-07-29.
 The preserved source painting is
 `game-of-worms/assets/source/trivandrum-ju1325-painted-background-source.png`;

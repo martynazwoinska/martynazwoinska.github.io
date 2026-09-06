@@ -5,6 +5,7 @@ import { drawKauaiRecording } from "./kauai-recording.js?v=20260906-kauai-even-c
 import { drawN2Coat } from "./n2-tailoring.js?v=20260906-n2-fabric-2";
 import { drawN2Cryopack } from "./n2-cryopacks.js?v=20260906-n2-sidepack-2";
 import { drawAhmedabadRefinement } from "./ahmedabad-refinement.js?v=20260906-af16-canopy-3";
+import { drawTrivandrumRefinement } from "./trivandrum-refinement.js?v=20260906-live-loupes-2";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -6198,6 +6199,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawAustralianCapitalTerritoryAccessory(group, item, companion)) return true;
   if (drawClaremontECA250Accessory(group, item, companion)) return true;
   if (drawAraucaniaAccessory(group, item, companion)) return true;
+  if (drawTrivandrumRefinement(group, item, companion)) return true;
   if (drawTrivandrumAccessory(group, item, companion)) return true;
   if (drawPraslinAccessory(group, item, companion)) return true;
   if (drawSaoTomeAccessory(group, item, companion)) return true;
@@ -6272,9 +6274,9 @@ function renderPiece(target, item, wormPart) {
     "compost-labyrinth": { primary: [352, 110, .4, -2], companion: [18, 125, .29, 2] },
     "ashfall-recorder": { primary: [222, 190, .37, -1], companion: [85, 218, .28, 2] },
     "test-cross-mechanism": { primary: [360, 268, .35, -1], companion: [0, 292, .29, 2] },
-    "trivandrum-field-loupe": { primary: [366, 139, .41, -7], companion: [-3, 118, .33, -7] },
+    "trivandrum-field-loupe": { primary: [366, 139, .46, -7], companion: [-3, 118, .37, -7] },
     "trivandrum-garden-watering-can": { primary: [226, 188, .39, 1], companion: [62, 218, .31, 1] },
-    "trivandrum-sample-tube": { primary: [365, 269, .39, -2], companion: [3, 291, .3, -2] },
+    "trivandrum-sample-tube": { primary: [365, 269, .39, -2], companion: [3, 291, .36, -2] },
     "praslin-giant-tortoise-shell-costume": { primary: [226, 190, .58, -15], companion: [119, 188, .37, -22] },
     "praslin-black-parrot-carnival-cap": { primary: [370, 60, .29, 8], companion: [98, 99, .23, 7] },
     "praslin-seychelles-carnival-bell-bracelet": { primary: [145, 215, .34, -9], companion: [24, 206, .27, 8] },

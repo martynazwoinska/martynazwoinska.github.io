@@ -3,7 +3,8 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260906-af16-canopy-3";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260906-live-loupes-2";
+import { mountLiveLoupes } from "./live-loupes.js?v=20260906-live-loupes-2";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
@@ -678,7 +679,9 @@ function renderTabs() {
   });
 }
 
+let unmountLiveLoupes = () => {};
 function renderSpecies(item, place) {
+  unmountLiveLoupes();
   const placeName = typeof place === "string" ? place : place?.name;
   const placeSource = typeof place === "object" ? place?.source : null;
   const styleKey = typeof place === "object" && place?.style ? place.style : item.localStyle;
@@ -735,6 +738,7 @@ function renderSpecies(item, place) {
   }
   syncAccessories();
   renderDoodles();
+  unmountLiveLoupes = mountLiveLoupes(els.habitat);
 
   els.selectionPlace.textContent = placeSource ? `${placeName} · ${placeSource}` : (placeName || item.region);
   els.selectionSpecies.replaceChildren();

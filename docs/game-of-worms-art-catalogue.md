@@ -6,6 +6,17 @@ This catalogue is the implementation contract for the 31 active representative c
 
 ## Rules
 
+Trivandrum JU1325 local refinement, 2026-09-06: the existing three concepts
+remain. The female's metal-rimmed handheld magnifier and the male's straight
+compact version use live 2x lenses. Both start about 12% larger. Dragging them
+enlarges the actual scene beneath each lens, including worms and other props.
+Berry enamel cans have rolled silver rims,
+open mouths, carrying handles and perforated roses. The female can is broad
+and oval, the male can upright and narrow. Sample tubes have ribbed screw
+caps, edge reflections, clipped curled plant material and the retained
+`14 DAYS` tags. The male tube is enlarged for readability. No painted asset,
+collection record, label or public prose changed. Approved for deployment.
+
 Ahmedabad local refinement, 2026-09-06: separately opened lattice fans with
 paper folds and wooden ribs, patterned paper kites with bamboo bows and wooden
 reels, and distinct pail/probe versus tray/trowel soil kits. Fans leave faces
