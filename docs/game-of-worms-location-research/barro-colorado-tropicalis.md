@@ -245,6 +245,9 @@ identities, plot coordinates or ForestGEO data.
 
 ## Suggested initial layouts
 
+Superseded for the two worn objects by the 2026-09-06 body-coordinate
+refinement described below. The fan placements remain current.
+
 These values require final browser tuning:
 
 ```js
@@ -303,3 +306,51 @@ Expected totals:
 - Light and dark themes, keyboard focus, direct drag and reduced motion.
 - No horizontal overflow, failed request or console error.
 - Full diff review and `git diff --check`.
+
+## Local refinement, 2026-09-06
+
+Production drawing module: `game-of-worms/panama-refinement.js`. The three
+existing concepts, public labels, collection record and painted scene are
+unchanged. This section supersedes the earlier object-construction draft.
+
+- Primary Gustavia headpiece: overlapping broad pink petals, radial
+  filaments and gold anthers, seated on a curved headband above the eyes.
+- Male headpiece: independently drawn three-quarter cup with a different
+  petal arrangement. Enlarged in the second pass for phone-size readability.
+- Primary fleece: long mantle following the upper body bend with a rolled
+  collar, berry clasp, scalloped hem and contained wool locks.
+- Male fleece: shorter asymmetric shoulder mantle, independently fitted.
+- Primary census fan: eight joined pleated leaves with nine ribs.
+- Male fan: five leaves with six ribs and a narrower asymmetric opening.
+  Both retain the `50 HA` tag and sparse schematic tree marks.
+
+The headpieces and capes use worm-body coordinates and synchronized body
+motion. The companion uses the same body coordinate transform as the male
+worm. All six objects retain independent dragging, resizing and Home reset.
+
+Reference inspected: Steven Paton's Gustavia superba flower photograph in
+the Smithsonian Tropical Research Institute Digital Flora,
+https://biogeodb.stri.si.edu/bioinformatics/dfm/metas/view/8656.
+Used for structural reference only. No source pixels or protected artwork
+were copied into the original vector drawings.
+
+Critical review: the first capes had pointed hems and oversized ring-like
+locks. The second pass replaced these with curved scallops and smaller
+asymmetric tufts. Fan leaves now join along their folds rather than appearing
+as disconnected blades. Faces remain clear with all three toggles enabled.
+
+Validation: scoped six-object drawing checks, full pair geometry, N2,
+six-location and live-loupe regression checks pass. All six pieces were
+pointer-dragged independently, keyboard-moved and reset with Home. Normal
+phone, tablet and desktop views were inspected at 360, 768, 1024 and 1440 px.
+Document scroll widths equal their content widths at each size. No console
+errors or warnings. The Game retains its fixed light palette and existing
+reduced-motion fallback for fitted clothing.
+
+Full-page captures were attempted from top through the final sources control.
+Returned pixel sizes were 345 x 2449, 753 x 2405, 1009 x 1801 and 1425 x 1934,
+respectively. They still show the browser tool's half-scale/duplicate-section
+capture defect. They are not valid full-page proofs. Normal viewport views
+are the available contextual review evidence. Martyna approved this exact
+contextual preview for deployment on 2026-09-06 after disclosure of the
+full-page capture limitation. Publication verification follows the release.

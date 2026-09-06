@@ -6,6 +6,16 @@ This catalogue is the implementation contract for the 31 active representative c
 
 ## Rules
 
+Panama QG2726 local refinement, 2026-09-06: existing Gustavia headpieces,
+Golden Fleece capes and forest-census fans retained as concepts. The primary
+flower is open with overlapping petals and radial stamens, the male bloom
+is a separate three-quarter cup. A long draped fleece and shorter shoulder
+mantle follow their respective body curves. Joined fan leaves replace the
+disconnected blades, with separate broad and compact silhouettes. Fleece
+hems and wool locks received a second softening pass. Background and copy
+are unchanged. Contextual preview approved for deployment. See the Panama dossier for
+references, interaction checks and the full-page screenshot limitation.
+
 Trivandrum JU1325 local refinement, 2026-09-06: the existing three concepts
 remain. The female's metal-rimmed handheld magnifier and the male's straight
 compact version use live 2x lenses. Both start about 12% larger. Dragging them

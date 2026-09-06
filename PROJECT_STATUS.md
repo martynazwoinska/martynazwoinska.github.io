@@ -6,6 +6,21 @@ This file records approved decisions and the verified implementation state. Alwa
 
 ### Game accessory refinement, 2026-09-05
 
+Panama QG2726 local refinement, 2026-09-06: six separately drawn objects in
+`game-of-worms/panama-refinement.js`. Gustavia flower headpieces fit above
+the heads, fleece capes follow the body curves, and census fans have joined
+pleated paper leaves and visible ribs. Primary and male versions differ in
+construction and silhouette. A second visual pass softened the fleece hems
+and enlarged the male bloom. Worn pieces share the body animation clock.
+Background, collection records, labels and public copy are unchanged.
+Scoped drawing, catalogue geometry, N2, six-location and live-loupe checks
+pass, together with pointer dragging and keyboard movement/reset checks.
+Normal renders were inspected at 360, 768, 1024 and 1440 px with no document
+overflow or browser errors. Full-page captures still have the existing
+half-scale/duplicate-section defect and are not valid complete-page proofs.
+Martyna approved this exact contextual preview for deployment on 2026-09-06.
+Publication verification follows the release push.
+
 Trivandrum JU1325 approved for deployment, 2026-09-06: six redrawn props in
 `game-of-worms/trivandrum-refinement.js`. The female has a long-grip magnifier
 and broad oval enamel watering can. The male has a straight compact magnifier and a

@@ -6,6 +6,7 @@ import { drawN2Coat } from "./n2-tailoring.js?v=20260906-n2-fabric-2";
 import { drawN2Cryopack } from "./n2-cryopacks.js?v=20260906-n2-sidepack-2";
 import { drawAhmedabadRefinement } from "./ahmedabad-refinement.js?v=20260906-af16-canopy-3";
 import { drawTrivandrumRefinement } from "./trivandrum-refinement.js?v=20260906-live-loupes-2";
+import { drawPanamaRefinement } from "./panama-refinement.js?v=20260906-panama-1";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -6187,6 +6188,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawKauaiQG131Accessory(group, item, companion)) return true;
   if (drawOahuECA789Accessory(group, item, companion)) return true;
   if (drawSandaJU1873Accessory(group, item, companion)) return true;
+  if (drawPanamaRefinement(group, item, companion)) return true;
   if (drawBarroColoradoQG2726Accessory(group, item, companion)) return true;
   if (drawAhmedabadRefinement(group, item, companion)) return true;
   if (drawAhmedabadAF16Accessory(group, item, companion)) return true;
@@ -6294,8 +6296,8 @@ function renderPiece(target, item, wormPart) {
     ,"ju1373-torch-ginger-bract-collar": { primary: [366, 118, .33, -4], companion: [8, 112, .28, 5] }
     ,"ju1373-type-isolate-signet-engine": { primary: [224, 194, .31, -1], companion: [105, 207, .27, 2] }
     ,"saint-benoit-windward-slope-mobile": { primary: [365, 270, .31, 1], companion: [6, 286, .26, -2] }
-    ,"qg2726-gustavia-flower-headpiece": { primary: [438, 119, .38, -11], companion: [127, 133, .33, -8] }
-    ,"qg2726-golden-fleece-cape": { primary: [300, 124, .42, -9], companion: [136, 121, .36, -11] }
+    ,"qg2726-gustavia-flower-headpiece": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
+    ,"qg2726-golden-fleece-cape": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
     ,"qg2726-bci-forest-census-map-fans": { primary: [364, 258, .45, -5], companion: [45, 271, .37, 5] }
     ,"ju1873-cacao-specimen-lantern": { primary: [385, 132, .37, -2], companion: [-8, 118, .28, 3] }
     ,"ju1873-balinese-endek-wrap": { primary: [254, 190, .43, 13], companion: [113, 199, .34, 20] }
@@ -6367,10 +6369,11 @@ function renderPiece(target, item, wormPart) {
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
+  const isPanamaWorn = ["qg2726-gustavia-flower-headpiece", "qg2726-golden-fleece-cape"].includes(item.family);
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
-    : isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
+    : isPanamaWorn || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });
-  if (["n2-lab-coat", "n2-lab-goggles", "cryo-vial-jetpack"].includes(item.family) && artParent.addEventListener) {
+  if ((isPanamaWorn || ["n2-lab-coat", "n2-lab-goggles", "cryo-vial-jetpack"].includes(item.family)) && artParent.addEventListener) {
     // A toggle can start clothing later than the body. Reuse its animation clock.
     artParent.addEventListener("animationstart", event => {
       if (event.target !== artParent) return;
