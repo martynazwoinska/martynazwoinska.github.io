@@ -3,7 +3,8 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260906-no-female-pod-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260906-cafe-2";
+import { createCanberraCafe, CAFE_FAMILIES } from "./canberra-cafe.js?v=20260906-cafe-2";
 import { mountLiveLoupes } from "./live-loupes.js?v=20260906-live-loupes-2";
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260906-cryo-flight-2";
 import { createBaliGongs, GONG_FAMILY } from "./bali-gongs.js?v=20260906-gongs-1";
@@ -94,7 +95,7 @@ const species = [
       { name: "Edinburgh, Scotland", sceneLabel: "Allotment compost · Edinburgh · Scotland", coordinates: [-3.19, 55.92], source: "CaeNDR", style: "field", strain: "ED3010", history: "Edinburgh’s marker brings together twelve C. elegans strains from four genetic groups found in compost samples around the city. The scene follows ED3010, collected from a compost bin at Midmar Allotments. The telescope refers to the Royal Observatory on nearby Blackford Hill." },
       { name: "Tenerife, Spain", sceneLabel: "Botanical garden · Tenerife · Spain", coordinates: [-16.535468, 28.411121], source: "CaeNDR", style: "field", strain: "NIC1787", history: "A single day’s sampling in Puerto de la Cruz botanical garden produced 23 C. elegans records from rotting avocado, other fruits, flowers, stems and plant litter." },
       { name: "Kauaʻi, Hawaiʻi", sceneLabel: "Rotting plants · Kauaʻi · United States", coordinates: [-159.668, 22.149], source: "CaeNDR", style: "kauai", strain: "XZ1516", history: "This high-elevation Kauaʻi isolate came from rotting plant material and belongs to one of the island’s exceptionally divergent C. elegans lineages." },
-      { name: "Australian Capital Territory", sceneLabel: "Rotten fig · O’Connor · Australia", coordinates: [149.1151, -35.2542], source: "CaeNDR", style: "field", strain: "QG2811", history: "This O’Connor backyard reflects the real collection site, where this worm was found in rotten figs. The flat white represents Canberra’s café culture. Balloons refer to the city’s annual festival; sulphur-crested cockatoos are familiar visitors to local gardens and outdoor cafés." },
+      { name: "Australian Capital Territory", sceneLabel: "Rotten fig · O’Connor · Australia", coordinates: [149.1151, -35.2542], source: "CaeNDR", style: "field", strain: "QG2811", history: "This O’Connor backyard reflects the real collection site, where this worm was found in rotten figs. The flat white represents Canberra’s café culture. Sulphur-crested cockatoos are familiar visitors to local gardens and outdoor cafés." },
       { name: "Claremont, California · ECA250", sceneLabel: "Decaying mushroom · Claremont · United States", coordinates: [-117.7198, 34.0967], source: "CGC CB4857 collection record. CaeNDR ECA250 isotype record", style: "field", strain: "ECA250", history: "This lineage began with a worm found in a decaying mushroom during rain in Claremont in 1972. The worm is reading about bacteria, its food, with lemonade and sunglasses for the Southern California sunshine." },
       { name: "Araucanía, Chile", sceneLabel: "Compost heap · Araucanía · Chile", coordinates: [-72.1509, -38.9379], source: "CaeNDR", style: "field", strain: "JU4400", history: "A compost heap in a rural garden in Cunco yielded this C. elegans isolate in March 2023—one of the game’s most recently collected worms." }
     ]
@@ -686,7 +687,9 @@ let unmountLiveLoupes = () => {};
 const n2CryoFlight = createN2CryoFlight(els.habitat);
 const baliGongs = createBaliGongs(els.habitat);
 const ahmedabadFans = createAhmedabadFans(els.habitat);
+const canberraCafe = createCanberraCafe(els.habitat);
 function renderSpecies(item, place) {
+  canberraCafe.clear();
   ahmedabadFans.cancel();
   baliGongs.cancel();
   n2CryoFlight.cancel();
@@ -1293,6 +1296,7 @@ function saveActiveDoodle() {
 }
 
 function syncDrawingMode() {
+  canberraCafe.cancel();
   ahmedabadFans.cancel();
   baliGongs.cancel();
   n2CryoFlight.cancel();
@@ -1404,6 +1408,7 @@ function syncFittedHeadwearMotion(accessory) {
 }
 
 function toggleAccessory(id, force) {
+  canberraCafe.cancel();
   ahmedabadFans.cancel();
   baliGongs.cancel();
   n2CryoFlight.cancel();
@@ -1464,7 +1469,7 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" ? " Enter Space" : ""}`);
+      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
       addAccessoryHitTarget(piece);
     });
   });
@@ -1548,7 +1553,7 @@ function finishAccessoryDrag(event) {
   document.documentElement.classList.remove("accessory-drag-active");
   moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
-  else if (event.type === "pointerup") { turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); ahmedabadFans.start(piece); }
+  else if (event.type === "pointerup") { turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1592,6 +1597,7 @@ function moveActiveAccessoryPointer(event) {
     y: activeAccessoryDrag.startPosition.y + delta.y,
     scale: activeAccessoryDrag.startPosition.scale
   }, piece);
+  canberraCafe.wipe(piece);
 }
 
 function turnTelescopeFocus(piece) {
@@ -1620,6 +1626,7 @@ function wireAccessoryPieces() {
     piece.addEventListener("pointerdown", event => {
       if (n2CryoFlight.active) return;
       if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
+      canberraCafe.cancel();
       ahmedabadFans.cancel();
       baliGongs.cancel();
       if (activeAccessoryDrag) {
@@ -1658,6 +1665,10 @@ function wireAccessoryPieces() {
     piece.addEventListener("keydown", event => {
       if (n2CryoFlight.active) { if(event.key === "Escape" || event.key === "Home")n2CryoFlight.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
       if (piece.getAttribute("tabindex") !== "0" || drawingEnabled || !activeWardrobe().has(id)) return;
+      if ((event.key === "Enter" || event.key === " ") && canberraCafe.handles(piece)) {
+        event.preventDefault(); if (!event.repeat) canberraCafe.start(piece); return;
+      }
+      if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) canberraCafe.cancel();
       if ((event.key === "Enter" || event.key === " ") && piece.dataset.accessoryFamily === FAN_FAMILY) {
         event.preventDefault(); if(!event.repeat)ahmedabadFans.start(piece); return;
       }
@@ -1676,6 +1687,7 @@ function wireAccessoryPieces() {
       }
       if (event.key === "Home") {
         event.preventDefault();
+        canberraCafe.reset(piece);
         resetAccessoryPosition(id, wormPart);
         return;
       }
@@ -1710,6 +1722,7 @@ function wireAccessoryPieces() {
         scale: current.scale
       }, piece);
       queueAccessoryConstraints(true);
+      canberraCafe.wipe(piece);
       announceAccessory(t("accessoryPosition", {
         accessory: accessoryName(id, wormPart),
         x: Math.round(position.x),

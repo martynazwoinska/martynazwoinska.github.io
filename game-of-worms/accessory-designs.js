@@ -8,6 +8,8 @@ import { drawAhmedabadRefinement } from "./ahmedabad-refinement.js?v=20260906-fa
 import { drawTrivandrumRefinement } from "./trivandrum-refinement.js?v=20260906-live-loupes-2";
 import { drawPanamaRefinement } from "./panama-refinement.js?v=20260906-panama-1";
 import { drawBaliRefinement } from "./bali-refinement.js?v=20260906-no-female-pod-1";
+import { drawFlyingCockatoos } from "./canberra-cockatoos.js?v=20260906-cafe-2";
+import { drawCafeProps } from "./canberra-cafe-art.js?v=20260906-cafe-2";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -31,7 +33,7 @@ const rows = [
   ["elegans", "Edinburgh, Scotland", "Blackford observatory telescopes", "midmar-compost-tumbler", "Edinburgh tartan kilts", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
   ["elegans", "Tenerife, Spain", "Atlantic canary costumes", "tenerife-atlantic-canary-costume", "timple guitars", "tenerife-timple-guitar", "avocado snack bowls", "tenerife-avocado-snack-bowl"],
   ["elegans", "Kauaʻi, Hawaiʻi", "Headphones", "xz1516-forest-bird-headphones", "Microphones", "xz1516-ohia-blossom-microphone", "Tape recorder", "xz1516-reel-to-reel-recorder"],
-  ["elegans", "Australian Capital Territory", "Flat white", "canberra-flat-white-cafe", "Balloon carriages", "canberra-dawn-balloon-carriage", "Cockatoo café raids", "oconnor-cockatoo-cafe-raid"],
+  ["elegans", "Australian Capital Territory", "Coffee & biscuits", "canberra-flat-white-cafe", "Napkins", "canberra-linen-napkins", "Cockatoos", "oconnor-cockatoo-cafe-raid"],
   ["elegans", "Claremont, California · ECA250", "Bookworm books", "eca250-bookworm-book", "California lemonade", "eca250-california-lemonade", "sunny reading glasses", "eca250-sunny-reading-glasses"],
   ["elegans", "Araucanía, Chile", "compost sample buckets", "compost-labyrinth", "Llaima ashfall gauges", "ashfall-recorder", "reciprocal-cross plates", "test-cross-mechanism"],
   ["nigoni", "Trivandrum, Kerala · JU1325", "field loupe", "trivandrum-field-loupe", "garden watering can", "trivandrum-garden-watering-can", "sample tube", "trivandrum-sample-tube"],
@@ -72,7 +74,7 @@ const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-
 const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-avocado-snack-bowl"]);
 const kauaiRendererFamilies = new Set(["xz1516-forest-bird-headphones", "xz1516-ohia-blossom-microphone", "xz1516-reel-to-reel-recorder"]);
 const sharedAccessoryFamilies = new Set(["xz1516-reel-to-reel-recorder"]);
-const actRendererFamilies = new Set(["canberra-flat-white-cafe", "canberra-dawn-balloon-carriage", "oconnor-cockatoo-cafe-raid"]);
+const actRendererFamilies = new Set(["canberra-flat-white-cafe", "canberra-linen-napkins", "oconnor-cockatoo-cafe-raid"]);
 const claremontRendererIds = new Set([
   "elegans::Claremont, California · ECA250::headwear",
   "elegans::Claremont, California · ECA250::wrap",
@@ -1095,6 +1097,8 @@ function drawKauaiAccessory(group, item, companion) {
 }
 
 function drawAustralianCapitalTerritoryAccessory(group, item, companion) {
+  if(drawFlyingCockatoos(group,item,companion))return true;
+  if(drawCafeProps(group,item,companion))return true;
   if (item.family === "canberra-flat-white-cafe") {
     group.classList.add("act-accessory", "canberra-cafe", companion ? "canberra-cafe-companion" : "canberra-cafe-primary");
     if (companion) {
@@ -1119,16 +1123,17 @@ function drawAustralianCapitalTerritoryAccessory(group, item, companion) {
       add(group, "ellipse", { class: "cafe-saucer-well", cx: -7, cy: 61, rx: 69, ry: 17 });
       add(group, "path", { class: "cafe-spoon", d: "M-106 55Q-60 71-17 72" });
       add(group, "ellipse", { class: "cafe-spoon-bowl", cx: -112, cy: 53, rx: 16, ry: 8, transform: "rotate(14 -112 53)" });
-      add(group, "path", { class: "cafe-cup-handle", d: "M64-15Q118-20 116 26Q114 66 72 54Q91 44 92 22Q93 2 69 4Z" });
-      add(group, "path", { class: "cafe-cup-body", d: "M-74-27Q0-46 75-26L65 44Q55 68 0 72Q-55 67-64 43Z" });
-      add(group, "path", { class: "cafe-cup-shadow", d: "M42-30Q70-28 74-21L65 43Q56 62 28 68Q48 39 42-30Z" });
-      add(group, "path", { class: "cafe-cup-ridge", d: "M-57-4Q-51 42-20 54" });
-      add(group, "ellipse", { class: "cafe-cup-rim", cx: 0, cy: -28, rx: 77, ry: 26 });
-      add(group, "ellipse", { class: "cafe-flat-white", cx: 0, cy: -26, rx: 65, ry: 18 });
-      add(group, "path", { class: "cafe-latte-worm", d: "M-36-28C-25-41-12-16 0-29S25-17 36-30" });
-      add(group, "path", { class: "cafe-latte-leaves", d: "M-25-26Q-14-39-5-26Q-15-17-25-26ZM6-28Q17-40 27-28Q17-17 6-28Z" });
-      add(group, "circle", { class: "cafe-latte-dot", cx: 40, cy: -30, r: 3.5 });
-      add(group, "path", { class: "cafe-steam", d: "M-38-54C-51-72-25-79-35-100M1-55C-12-75 14-86 3-111M39-51C26-69 50-77 43-97" });
+      const cup = add(group, "g", { "data-cafe-cup": "" });
+      add(cup, "path", { class: "cafe-cup-handle", d: "M64-15Q118-20 116 26Q114 66 72 54Q91 44 92 22Q93 2 69 4Z" });
+      add(cup, "path", { class: "cafe-cup-body", d: "M-74-27Q0-46 75-26L65 44Q55 68 0 72Q-55 67-64 43Z" });
+      add(cup, "path", { class: "cafe-cup-shadow", d: "M42-30Q70-28 74-21L65 43Q56 62 28 68Q48 39 42-30Z" });
+      add(cup, "path", { class: "cafe-cup-ridge", d: "M-57-4Q-51 42-20 54" });
+      add(cup, "ellipse", { class: "cafe-cup-rim", cx: 0, cy: -28, rx: 77, ry: 26 });
+      add(cup, "ellipse", { class: "cafe-flat-white", cx: 0, cy: -26, rx: 65, ry: 18 });
+      add(cup, "path", { class: "cafe-latte-worm", d: "M-36-28C-25-41-12-16 0-29S25-17 36-30" });
+      add(cup, "path", { class: "cafe-latte-leaves", d: "M-25-26Q-14-39-5-26Q-15-17-25-26ZM6-28Q17-40 27-28Q17-17 6-28Z" });
+      add(cup, "circle", { class: "cafe-latte-dot", cx: 40, cy: -30, r: 3.5 });
+      add(cup, "path", { class: "cafe-steam", d: "M-38-54C-51-72-25-79-35-100M1-55C-12-75 14-86 3-111M39-51C26-69 50-77 43-97" });
     }
     return true;
   }
@@ -6269,9 +6274,9 @@ function renderPiece(target, item, wormPart) {
     "xz1516-forest-bird-headphones": { primary: [329, 59, 1, 15], companion: [114.5, 108.5, .56, 12] },
     "xz1516-ohia-blossom-microphone": { primary: [371, 81, .8, 0], companion: [153, 83, .45, -20] },
     "xz1516-reel-to-reel-recorder": { primary: [112, 151, .45, 0] },
-    "canberra-flat-white-cafe": { primary: [386, 97, .41, -7], companion: [80, 330, .34, 4] },
-    "canberra-dawn-balloon-carriage": { primary: [252, 94, .35, -2], companion: [88, 91, .26, 4] },
-    "oconnor-cockatoo-cafe-raid": { primary: [402, 281, .42, -3], companion: [222, 299, .35, 3] },
+    "canberra-flat-white-cafe": { primary: [394, 119, .41, -7], companion: [104, 198, .38, 4] },
+    "canberra-linen-napkins": { primary: [377, 281, .42, -8], companion: [54, 278, .32, 9] },
+    "oconnor-cockatoo-cafe-raid": { primary: [58, 58, .43, -3], companion: [413, 227, .37, 3] },
     "eca36-grass-litter-profiler": { primary: [370, 125, .46, -2], companion: [-5, 95, .3, 2] },
     "auckland-volcanic-field-monitor": { primary: [225, 185, .43, -1], companion: [85, 195, .3, 2] },
     "eca36-reproductive-timing-clock": { primary: [380, 254, .41, -1], companion: [-15, 284, .28, 2] },
@@ -6367,6 +6372,7 @@ function renderPiece(target, item, wormPart) {
   if (sharedAccessoryFamilies.has(item.family)) piece.dataset.sharedAccessory = "true";
   if (item.family === "santeuil-cylinder-organ-instrument") piece.dataset.pieceLabel = companion ? "concertina" : "cylinder organ";
   if (item.family === "ju1873-cacao-specimen-lantern" && companion) piece.dataset.pieceLabel = "wooden pod-opening club";
+  if (item.family === "canberra-flat-white-cafe") piece.dataset.pieceLabel = companion ? "biscuits" : "flat white";
   if (item.family === "santeuil-hogweed-locomotive") piece.dataset.pieceLabel = companion ? "railway trolley" : "hogweed-stem locomotive";
   const isSanteuilCompanionProp = companion && ["santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"].includes(item.family);
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";

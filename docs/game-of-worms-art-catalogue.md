@@ -1,5 +1,15 @@
 # Game of Worms art catalogue
 
+Canberra interactive café preview, 2026-09-06 supersedes row 14's old
+accessory specifications. Her unchanged stoneware cup lifts for a sip, his
+grinder becomes a three-biscuit serving. Two airborne cockatoos without
+bases steal actual biscuits, with the second favouring a bitten one.
+Two separately draped linen napkins replace balloons and wipe mouth marks.
+Fold refinement removes the first draft's envelope-like diagonals. The
+background and collection evidence are unchanged. Martyna requested release
+of the displayed English-only preview, including its labels and shorter note.
+See the ACT dossier and PROJECT_STATUS for checks and screenshot limitations.
+
 Last updated: 2026-08-28
 
 This catalogue is the implementation contract for the 31 active representative collection records in the Game of Worms. It separates verified collection evidence from the wider regional landscape and gives every active location its own composition and accessory set.

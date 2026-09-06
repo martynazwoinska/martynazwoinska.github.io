@@ -40,6 +40,30 @@ is recorded in the release report after the push.
 
 ### Game accessory refinement, 2026-09-05
 
+Canberra interactive café preview, 2026-09-06: replaces the unpublished
+flight-only draft. Her original flat-white cup lifts and tilts to her mouth.
+His grinder becomes three individually drawn biscuits with bite/consumption
+state. Airborne cockatoos have no bases or pre-attached food. Each flies to
+an actual biscuit, picks it up and leaves head-first, then returns empty.
+The companion bird prefers a bitten biscuit. Linen napkins replace balloons,
+with distinct loose folds after a refinement pass. Dragging over a mouth or
+tap/Enter/Space wipes foam/crumbs and leaves a stain. Home resets food/cloth.
+Finite effects preserve saved accessory transforms and restore on Escape,
+movement, hiding, drawing, location change, page hide and reduced-motion change.
+Tests pass for state, geometry, timelines, cancellation, reduced motion and
+N2/Ahmedabad/Bali regressions. Browser verified drinking, biting, both raids,
+pickup, keyboard wiping, phone taps, reset and Escape without console errors.
+No overflow at 360/768/1024/1440. Full-page captures remain defective:
+345x2573, 753x2431, 1009x1950, 1425x1934, with duplicated sections and blank
+space. Normal desktop/phone renders inspected. Drag contact is covered by
+controller tests, with manual pointer-drag review still recommended.
+English-only labels shown in the approved preview: Coffee & biscuits, Napkins, Cockatoos, with
+individual flat white/biscuits names. Tiny surprise drops the balloon clause.
+No translation dictionaries exist for Game content. Martyna requested
+deployment of this preview. Release integrates main's d454e5b female-pod
+removal and the newer Cabinet publication without altering the approved art.
+Publication is confirmed separately after push and live checks.
+
 Ahmedabad fan interaction preview, 2026-09-06: tapping a lattice fan or
 pressing Enter/Space fans its worm for about three seconds. The primary fan
 has three broader sweeps, the male four quicker sweeps. The existing artwork

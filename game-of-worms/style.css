@@ -2761,6 +2761,30 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .cockatoo-toast-seed { fill: #f1d585; }
 .cockatoo-sugar-cube { fill: #f8f4e8; stroke: #263f48; stroke-width: 2; stroke-linejoin: round; }
 .cockatoo-cube-mark { fill: none; stroke: #d1c7b2; stroke-width: 1.5; }
+
+/* Flight is user-triggered and travels to a real biscuit. */
+.cockatoo-flight-bird {
+  transform-box: view-box;
+  transform-origin: 0 0;
+}
+.cockatoo-flight-wing { transform-box: view-box; transform-origin: 0 0; }
+.is-raiding .cockatoo-flight-wing.near { animation: cockatoo-near-beat .48s ease-in-out 10 both; }
+.is-raiding .cockatoo-flight-wing.far { animation: cockatoo-far-beat .48s ease-in-out 10 both; }
+.accessory-piece.is-dragging .cockatoo-flight-bird,
+.accessory-piece.is-dragging .cockatoo-flight-wing { animation-play-state: paused; }
+@keyframes cockatoo-near-beat {
+  0%, 100% { transform: rotate(0deg); }
+  28% { transform: rotate(13deg); }
+  67% { transform: rotate(-14deg); }
+}
+@keyframes cockatoo-far-beat {
+  0%, 100% { transform: rotate(0deg); }
+  32% { transform: rotate(-11deg); }
+  70% { transform: rotate(12deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cockatoo-flight-bird, .cockatoo-flight-wing, .is-raiding .cockatoo-flight-wing { animation: none; }
+}
 .profiler-rail-bed,
 .profiler-rail-foot,
 .profiler-tower-foot,

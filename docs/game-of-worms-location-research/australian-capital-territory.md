@@ -2,6 +2,53 @@
 
 Last updated: 2026-08-29
 
+## Current local preview, 2026-09-06: interactive café
+
+The following replaces the historical accessory briefs below. The landscape
+and documented collection record are unchanged. Preview approved for release.
+
+- Her original flat-white cup lifts from its saucer and tilts to her mouth,
+  leaving a small milk-foam mark. His grinder is replaced by three biscuits
+  on a shallow ceramic plate. Clicking a biscuit serving takes a bite and
+  leaves crumbs, then a second bite consumes that biscuit.
+- Both cockatoos fly freely without trays, bowls or pre-attached loot. A tap
+  or Enter/Space starts a beak-to-biscuit approach and head-first escape.
+  The selected biscuit disappears from the serving and travels at the bill.
+  The second bird prefers a bitten biscuit. Birds return empty after escape.
+- Linen napkins replace balloons. Separate loose square and narrower folds,
+  hems, edge curls and contained fold shadows differentiate the pair. The
+  refinement pass removed envelope-like diagonal panels. Drag over either
+  mouth to clean it, or tap/Enter/Space for a wipe of that napkin's worm.
+  Foam/crumbs disappear and a small stain appears on the cloth.
+- Home resets the focused cloth or replenishes the serving. Empty-serving
+  activation also replenishes it. Effects cancel without duplicate props on
+  Escape, movement, hiding, drawing, navigation and page hiding. Reduced
+  motion uses stationary state changes.
+- Visual construction references only: [linen napkins](https://www.ikea.com/us/en/p/stockholm-2025-napkin-dark-red-50592448/),
+  [cookie construction](https://www.arnotts.com/brands/arnotts-biscuits/cookies),
+  plus the existing museum cockatoo references below. All paths are original,
+  unbranded and untraced. Cookies are playful props, not nematode diet claims.
+
+English-only public copy shown in the approved preview:
+
+- Shared buttons: `Coffee & biscuits`, `Napkins`, `Cockatoos`.
+- Individual food labels: `flat white`, `biscuits`.
+- Tiny surprise: `This O’Connor backyard reflects the real collection site,
+  where this worm was found in rotten figs. The flat white represents
+  Canberra’s café culture. Sulphur-crested cockatoos are familiar visitors
+  to local gardens and outdoor cafés.`
+
+The Game currently has only English content. No Swedish or Polish content
+dictionary is available. Martyna requested deployment of the displayed preview.
+Controller/drawing tests, catalogue audit and N2/fan/gong regressions pass.
+Browser checked both food actions, bird pickup, Escape/reset, keyboard
+wiping and phone taps. No errors or horizontal overflow at four widths.
+Full-page capture still duplicates sections and leaves blank space, so it
+cannot serve as final responsive proof. Normal contextual renders inspected.
+See PROJECT_STATUS for exact capture dimensions and remaining manual check.
+
+## Historical evidence and earlier design briefs
+
 This dossier is the evidence and review contract for the Australian Capital Territory landscape and its three accessory pairs. It follows the Bristol N2, Santeuil, Edinburgh, Tenerife and *C. elegans* Kauaʻi batches in the location-by-location Game of Worms illustration workflow.
 
 ## Evidence boundaries
@@ -101,8 +148,11 @@ Sulphur-crested cockatoos are large white parrots with a dark bill, yellow crest
 
 Source: [Australian Museum, sulphur-crested cockatoo](https://australian.museum/learn/animals/birds/sulphur-crested-cockatoo/)
 
-- **Primary:** a side-on cockatoo with articulated body, wing feathers, tail, claws, eye patch, dark bill and raised yellow crest, standing on a café tray while stealing fig toast.
-- **Companion:** a front-facing cockatoo crouched in a separate sugar bowl, with bilateral wings, yellow tail wash and a sugar cube. It differs in silhouette, pose and construction from the primary bird.
+- **Primary, revised local preview 2026-09-06:** a right-facing airborne cockatoo with two layered spread wings, trailing tail, tucked feet and fig toast held at the bill. The café tray stays below the bird.
+- **Companion:** a separately drawn left-facing bird banking with one raised wing and one down-swept wing, carrying a sugar cube. Its bowl stays below with clear space beneath the lowest wingtip.
+- Flight construction references: [Museums Victoria flight specimen](https://collections.museumsvictoria.com.au/specimens/2055387) and [flight photograph reference](https://commons.wikimedia.org/wiki/File:Cacatua_galerita_in_flight_-_Austin%27s_Ferry.jpg). References guide anatomy only. New SVG paths are original and no image is traced or incorporated.
+- A finite flight plays on reveal and replays with tap or Enter/Space. Primary and companion timings and banking differ. Wings pivot at their shoulders, café bases remain stationary, dragging pauses flight, and reduced motion retains static airborne poses. The theft sequence itself is proposed, not implemented.
+- The refinement pass raised the companion clear of its bowl and moved the toast into clear contact with the primary bill. Syntax, full catalogue geometry, drawing checks and regression checks pass. Four responsive widths have no overflow, and normal desktop/phone renders were inspected. Full-page screenshot proof remains affected by the existing capture defect. Local preview, not committed or deployed.
 
 ## Cultural and privacy safeguards
 
