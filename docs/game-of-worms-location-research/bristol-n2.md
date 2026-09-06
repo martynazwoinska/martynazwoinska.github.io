@@ -224,3 +224,40 @@ Commit `c603884` is the minimum historical benchmark, not the target. It supplie
 - Visual checks cover light and dark themes at 360, 390, 768, 1024, 1120, 1235 and 1440 px where the layout changes.
 - No horizontal overflow, console error, broken source link or change to another location is accepted.
 - `git diff --check`, source audits and the full diff pass before integration.
+
+## Freeze-flight animation, 2026-09-06
+
+Approved fantasy sequence implemented in `n2-cryo-flight.js`, with no added
+public explanations. This does not alter the existing collection or freezing
+copy. Tap a visible cryovial pack, or focus it and press Enter/Space. Both
+worms freeze under transparent body-shaped ice, fly away with rear exhaust,
+return and thaw. They exit upper-right, reposition while fully off-screen,
+and enter head-first from lower-left. The sequence lasts 8.2 seconds and the
+male lands later. Trajectory tests also verify the heading and return quadrant.
+The flight moves the existing body and worn-prop nodes in temporary wrappers.
+It does not redraw, clone or overwrite approved objects. Food plates stay put.
+The refinement pass added narrow ice facets and explicit CSS animation pause
+to ensure frozen bodies remain still despite temporary reparenting.
+
+Cleanup restores hierarchy, shadow visibility, animation state and accessory
+positions. Switching location, hiding accessories, entering drawing mode,
+Escape/Home, hiding the page and changing motion preference cancel safely.
+Reduced motion uses a stationary 2.8-second frost fade with no flight/plumes.
+
+Checks: timeline tests sample both trajectories, frost/thrust bounds, distinct
+landing timing, exact return and stationary reduced-motion states. Existing
+N2, Bali and live-loupe tests pass. Browser checks cover a complete run with
+all props, saved-position preservation, visible pause/resume, mobile tap,
+replay, Escape, hiding the pack and switching to Bali while flying. No logs
+or horizontal overflow at 360, 768, 1024 and 1440 CSS pixels. Full-page capture
+attempts returned 345x2548, 753x2429, 1009x1848 and 1425x1934 images. The known
+capture defect prevents treating these as complete-page visual proofs.
+Reduced-motion trajectories are unit-tested, not browser-emulated.
+Final route approved for deployment. The separately approved English-only
+species introduction adds: "In the lab these nematodes eat bacteria growing
+on agar plates." The animation itself adds no public text.
+
+Route follow-up: checked the lower-left head-first entry on desktop and phone,
+with zero temporary layers after landing and no console errors or overflow.
+The four fresh full-page capture attempts measured 345x2598, 753x2455,
+1009x1898 and 1425x1934. The same capture limitation applies.

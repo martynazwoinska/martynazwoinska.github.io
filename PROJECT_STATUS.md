@@ -24,6 +24,24 @@ is recorded in the release report after the push.
 
 ### Game accessory refinement, 2026-09-05
 
+N2 freeze-flight release, 2026-09-06: tapping either visible cryovial
+pack (or Enter/Space) freezes both worms, flies them out and back, then thaws
+them over 8.2 seconds. They exit upper-right and return head-first from
+lower-left. The male has a delayed, slightly corrective landing.
+Existing bodies, coats, goggles and packs travel together without changing
+their drawings or saved positions. Food plates stay in the scene. Temporary
+ice/plume layers are removed on completion, Escape, hiding an accessory,
+drawing mode, page hiding or location changes. Reduced motion keeps the worms
+stationary with a short frost fade. No animation explanations were added.
+The separately approved English-only introduction adds: "In the lab these
+nematodes eat bacteria growing on agar plates." Both HTML and species data
+use the identical sentence.
+Timeline tests and N2/Bali/loupe regressions pass. Browser checked complete
+cycles, exact position restoration, actual motion pause/resume, mobile tap,
+replay and cancellation. No overflow at 360/768/1024/1440 or console errors.
+Full-page capture retains the known rendering defect. Martyna approved the
+final route and requested deployment. Publication is verified after push.
+
 Sanda, Bali JU1873 release, 2026-09-06: separate draped female and tied
 male endek wraps follow the worm bodies. The female has a bronze hanging gong
 in a timber frame, the male a low pair of cord-supported kettle gongs. Cacao

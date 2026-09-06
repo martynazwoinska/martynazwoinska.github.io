@@ -6,6 +6,14 @@ This catalogue is the implementation contract for the 31 active representative c
 
 ## Rules
 
+N2 animation-only follow-up, 2026-09-06: a tap on either cryovial pack starts
+freeze, upper-right departure, lower-left head-first return and thaw. Translucent curved ice and rear exhaust
+are temporary vector layers. Worn props travel with their own worm, while
+food plates remain behind. Original artwork and public labels are unchanged.
+The companion lands slightly later with a brief correction. See the Bristol
+N2 dossier for controls, cancellation and verification. Final route approved
+for deployment, with the separately approved agar-plate introduction sentence.
+
 Sanda, Bali JU1873 local refinement, 2026-09-06: keep the existing cacao,
 endek and gamelan themes. Female and male have distinct cloth construction:
 draped overlapping fabric with fringe versus a short tied wrap with loose

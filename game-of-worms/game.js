@@ -5,6 +5,7 @@ import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260906-bali-club-2";
 import { mountLiveLoupes } from "./live-loupes.js?v=20260906-live-loupes-2";
+import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260906-cryo-flight-2";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
@@ -79,7 +80,7 @@ const species = [
     localStyle: "field",
     habitat: "Rotting plants & compost",
     habitatKey: "compost",
-    intro: "The famous laboratory worm is also a wild explorer of short-lived, bacteria-rich places such as rotting fruit and compost.",
+    intro: "The famous laboratory worm is also a wild explorer of short-lived, bacteria-rich places such as rotting fruit and compost. In the lab these nematodes eat bacteria growing on agar plates.",
     fact: "Most wild individuals are self-fertile hermaphrodites. Rare males make occasional outcrossing possible.",
     worm: "#f0c78e",
     wormDeep: "#bd7c45",
@@ -680,7 +681,9 @@ function renderTabs() {
 }
 
 let unmountLiveLoupes = () => {};
+const n2CryoFlight = createN2CryoFlight(els.habitat);
 function renderSpecies(item, place) {
+  n2CryoFlight.cancel();
   unmountLiveLoupes();
   const placeName = typeof place === "string" ? place : place?.name;
   const placeSource = typeof place === "object" ? place?.source : null;
@@ -1097,6 +1100,7 @@ function updateAccessoryLabelVisibility() {
 }
 
 function constrainVisibleAccessories() {
+  if (n2CryoFlight.active) return;
   if (els.habitat.classList.contains("is-changing")) return;
   accessoryIds.forEach(id => {
     if (!activeWardrobe().has(id)) return;
@@ -1283,6 +1287,7 @@ function saveActiveDoodle() {
 }
 
 function syncDrawingMode() {
+  n2CryoFlight.cancel();
   els.freestyle.setAttribute("aria-pressed", String(drawingEnabled));
   els.drawTools.toggleAttribute("hidden", !drawingEnabled);
   els.habitat.classList.toggle("is-drawing", drawingEnabled);
@@ -1391,6 +1396,7 @@ function syncFittedHeadwearMotion(accessory) {
 }
 
 function toggleAccessory(id, force) {
+  n2CryoFlight.cancel();
   const activeAccessories = activeWardrobe();
   const shouldShow = typeof force === "boolean" ? force : !activeAccessories.has(id);
   const accessory = document.getElementById(id);
@@ -1448,7 +1454,7 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${piece.querySelector(".edinburgh-focus-wheel") ? " Enter Space" : ""}`);
+      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" ? " Enter Space" : ""}`);
       addAccessoryHitTarget(piece);
     });
   });
@@ -1532,7 +1538,7 @@ function finishAccessoryDrag(event) {
   document.documentElement.classList.remove("accessory-drag-active");
   moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
-  else if (event.type === "pointerup") turnTelescopeFocus(piece);
+  else if (event.type === "pointerup") { turnTelescopeFocus(piece); n2CryoFlight.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1602,6 +1608,7 @@ function wireAccessoryPieces() {
     piece.addEventListener("focus", () => selectAccessoryForSizing(id, wormPart));
 
     piece.addEventListener("pointerdown", event => {
+      if (n2CryoFlight.active) return;
       if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
       if (activeAccessoryDrag) {
         if (activeAccessoryDrag.piece !== piece || activeAccessoryDrag.pointers.size >= 2) return;
@@ -1637,7 +1644,11 @@ function wireAccessoryPieces() {
     });
 
     piece.addEventListener("keydown", event => {
+      if (n2CryoFlight.active) { if(event.key === "Escape" || event.key === "Home")n2CryoFlight.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
       if (piece.getAttribute("tabindex") !== "0" || drawingEnabled || !activeWardrobe().has(id)) return;
+      if ((event.key === "Enter" || event.key === " ") && piece.dataset.accessoryFamily === "cryo-vial-jetpack") {
+        event.preventDefault(); if(!event.repeat)n2CryoFlight.start(piece); return;
+      }
       if ((event.key === "Enter" || event.key === " ") && piece.querySelector(".edinburgh-focus-wheel")) {
         event.preventDefault();
         if (!event.repeat) turnTelescopeFocus(piece);
