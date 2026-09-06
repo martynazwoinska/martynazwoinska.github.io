@@ -6,6 +6,13 @@ This file records approved decisions and the verified implementation state. Alwa
 
 ### Game accessory refinement, 2026-09-05
 
+Kauaʻi headset-fit follow-up was approved for deployment on 2026-09-06.
+Both headsets sit lower with reduced tilt. The male monitor is 30% larger,
+with a fuller ear cup and a tighter headband. Berry cups and ivory bands
+increase contrast against the forest. Recorder, microphones, painting and
+public copy are unchanged. Both pointer/keyboard/resize/reset checks and
+four-width overflow checks pass. The full-page capture limitation remains.
+
 Kauaʻi XZ1516 is approved for release on `codex/kauai-recording-scene`.
 One shared reel-to-reel recorder replaces the genome tuning wheels. Fitted
 headphones and separate floor/desk microphones complete the revised equipment.

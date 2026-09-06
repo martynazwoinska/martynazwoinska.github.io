@@ -1,7 +1,7 @@
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
 import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260905-tenerife-wings-4";
 import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-santeuil-fit-3";
-import { drawKauaiRecording } from "./kauai-recording.js?v=20260905-kauai-recording-1";
+import { drawKauaiRecording } from "./kauai-recording.js?v=20260905-kauai-headset-fit-3";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -6323,7 +6323,7 @@ function renderPiece(target, item, wormPart) {
     "tenerife-atlantic-canary-costume": { primary: [0, 0, 1, 0], companion: [-28, 82, .43, 0] },
     "tenerife-timple-guitar": { primary: [224, 194, .50, 64], companion: [52, 172, .29, 67] },
     "tenerife-avocado-snack-bowl": { primary: [346, 224, .52, -16], companion: [32, 211, .33, 15] },
-    "xz1516-forest-bird-headphones": { primary: [332, 51, 1, 27], companion: [114.5, 103.9, .43, 27] },
+    "xz1516-forest-bird-headphones": { primary: [329, 59, 1, 15], companion: [114.5, 108.5, .56, 12] },
     "xz1516-ohia-blossom-microphone": { primary: [371, 81, .8, 0], companion: [153, 83, .45, -20] },
     "xz1516-reel-to-reel-recorder": { primary: [112, 151, .45, 0] },
     "canberra-flat-white-cafe": { primary: [386, 97, .41, -7], companion: [80, 330, .34, 4] },

@@ -17,22 +17,23 @@ const box = (g, x, y, width, height, rx, fill, stroke = "#293f49", sw = 2) =>
 function headphones(g, small) {
   // The companion uses a light single-ear monitor with an open far-side support.
   if (small) {
-    line(g,"M-23 0Q-27-33-6-37Q15-40 23-8","#293f49",6);
-    line(g,"M-23 0Q-27-33-6-37Q15-40 23-8","#c7b271",3);
-    path(g,"M-29-9Q-21-15-16-7L-16 13Q-23 19-29 10Z","#aa596c");
-    path(g,"M-24-8Q-18-9-17-3V9Q-20 13-24 10Z","#e2c8b1","none",0);
-    line(g,"M23-9L26 5","#b4c6bb",3);
-    oval(g,26,7,3,6,"#314a55");
+    line(g,"M-23 0Q-27-27-6-31Q15-34 23-8","#293f49",6);
+    line(g,"M-23 0Q-27-27-6-31Q15-34 23-8","#fff1d0",3.5);
+    path(g,"M-31-11Q-21-17-15-8L-15 14Q-24 21-31 12Z","#b94e77");
+    path(g,"M-23-10Q-17-11-16-3V11Q-20 15-23 12Z","#fff1d0","none",0);
+    line(g,"M-28-7V9","#ed9cb6",1.6);
+    line(g,"M23-9L26 5","#fff1d0",3);
+    oval(g,26,7,3,6,"#b94e77");
     line(g,"M-25 14Q-26 27-15 29","#334d57",2);
   } else {
-    line(g,"M-25 1Q-31-42 0-42Q29-42 25 1","#2b414d",7);
-    line(g,"M-25 1Q-31-42 0-42Q29-42 25 1","#bba568",3.5);
-    path(g,"M-19-27Q0-41 18-27L17-33Q0-46-18-33Z","#586276","#293f49",1.3);
+    line(g,"M-25 1Q-31-34 0-34Q29-34 25 1","#2b414d",7);
+    line(g,"M-25 1Q-31-34 0-34Q29-34 25 1","#fff1d0",3.5);
+    path(g,"M-19-19Q0-33 18-19L17-25Q0-38-18-25Z","#8b3d5c","#293f49",1.3);
     for (const side of [-1,1]) {
       const ear = add(g,"g",{transform:`translate(${side*25} 1)`});
-      box(ear,-7,-13,14,28,6,"#645b80","#293f49",1.7);
-      box(ear,side<0?1:-7,-10,6,22,3,"#d8c9b0","#334853",1);
-      line(ear,"M-3-8V7","#a6a1b7",1.5);
+      box(ear,-7,-13,14,28,6,"#b94e77","#293f49",1.7);
+      box(ear,side<0?1:-7,-10,6,22,3,"#fff1d0","#334853",1);
+      line(ear,"M-3-8V7","#ed9cb6",1.5);
       oval(ear,0,-13,2,2,"#d4bb78");
     }
     line(g,"M27 16Q34 29 25 35","#344d57",2);

@@ -2,6 +2,23 @@
 
 Last updated: 2026-09-05
 
+## Headset-fit follow-up, approved for release on 2026-09-06
+
+- Primary fit changes from `(332, 51), 27 degrees` to `(329, 59), 15 degrees`.
+  The crown is shallower so the band follows the head more closely.
+- Companion fit changes from `(114.5, 103.9), 27 degrees, scale 0.43` to
+  `(114.5, 108.5), 12 degrees, scale 0.56`. A wider single ear cup and a
+  lower crown retain its distinct construction at the larger displayed size.
+- Both headsets use matching berry cups (`#b94e77`) with ivory pads and bands
+  (`#fff1d0`), derived from the site's berry/ivory accents for forest contrast.
+- Only headphone artwork and fit change. Recorder, microphones, painted
+  background and public text are preserved. Runtime import keys are refreshed.
+- Both headsets pass pointer drag, arrow movement, resize and Home reset.
+  No console errors or horizontal overflow at 360, 768, 1024 and 1440 px.
+  The known full-page capture defect prevents complete screenshot proof.
+- Martyna approved deployment after the contextual preview and disclosure
+  of the full-page capture limitation. The reviewed artwork is unchanged.
+
 ## Current accessory revision, approved for release
 
 This section supersedes the older three-pair accessory contract below. The

@@ -34,6 +34,10 @@ const walk = n => [n,...n.children.flatMap(walk)];
   const targets = Object.fromEntries(['headwear','wrap','charm','extra'].map(key=>[key,new Element('g')]));
   renderLocationAccessories(targets,'elegans','Kauaʻi, Hawaiʻi');
   assert.equal(targets.headwear.children.length,2);
+  assert.equal(targets.headwear.children[0].querySelector('.location-accessory-art').getAttribute('transform'),
+    'translate(329 59) rotate(15) scale(1.000 1.000)');
+  assert.equal(targets.headwear.children[1].querySelector('.location-accessory-art').getAttribute('transform'),
+    'translate(114.5 108.5) rotate(12) scale(0.560 0.560)');
   assert.equal(targets.wrap.children.length,2);
   assert.equal(targets.charm.children.length,1,'Shared recorder must render only once');
   assert.equal(targets.charm.children[0].dataset.sharedAccessory,'true');
