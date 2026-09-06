@@ -524,6 +524,13 @@
         ['© Zotter Chocolate', 'https://www.zotter.at/en/about-zotter/press-downloads/logo-photos'],
         ['© Friis-Holm Chokolade', 'https://friisholmchokolade.dk/']
       ];
+      const seen = new Set(sources.map(([label]) => label));
+      for (const photo of Object.values(window.CABINET_PRODUCT_IMAGES || {})) {
+        if (photo.source && !seen.has(photo.credit)) {
+          sources.push([photo.credit, photo.source]);
+          seen.add(photo.credit);
+        }
+      }
       for (const [label, href] of sources) {
         const credit = document.createElement('a');
         credit.className = 'collection-photo-credit';

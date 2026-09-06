@@ -2,6 +2,8 @@
 
 These files are used only by the two Browse the collection lists. They do not replace the photographed board, object masks or detail-dialog previews.
 
+Current v102 selection and user-confirmed maker/retailer permission: [SOURCES-v102.md](SOURCES-v102.md). The earlier pending-clearance and fallback notes below are historical; v102 supplies web photos for all 34 chocolate entries.
+
 ## Zotter
 
 Credit: © Zotter Chocolate.

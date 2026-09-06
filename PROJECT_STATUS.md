@@ -4,6 +4,22 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Cabinet list photographs v102, 2026-09-06 — approved release
+
+All 34 chocolate entries now have internet product photographs in both Browse
+the collection lists. Twenty-four new files include the clearer full-size La
+Dalia 70% photograph; ten previously accepted photographs remain unchanged.
+Martyna confirmed permission from the other makers/retailers as well as
+Friis-Holm. Exact sources and packaging-edition caveats are documented in
+`cabinet-of-curiosities/assets/collection-products/SOURCES-v102.md`.
+No names, percentages, detail photographs, furniture or alpha layers change.
+Twenty responsive full-page cases across light/dark modes pass, including
+34 decoded photos per list, fallback, keyboard/focus, touch gestures and no
+horizontal overflow. The v75/v76 alpha hashes match their approved versions.
+Martyna approved the exact production-photo preview and source credits and
+requested publication. Release verification is recorded after the push.
+No Game files changed in this Cabinet update.
+
 ### Cabinet unified furniture, 2026-09-06
 
 Martyna requested the new unified furniture picture on desktop and mobile,
