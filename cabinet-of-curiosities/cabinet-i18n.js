@@ -30,11 +30,6 @@
       chocolates: 'Chocolate packages',
       crochet: 'Crocheted eyes',
       ephemera: 'Collected ephemera'
-    }),
-    wheel: Object.freeze({
-      moved: 'Wheel moved.',
-      spinning: 'Wheel is spinning.',
-      stopped: 'Wheel stopped. Explore the descriptor nearest the marker.'
     })
   });
 })(window);

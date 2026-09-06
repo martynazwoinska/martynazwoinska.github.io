@@ -26,13 +26,6 @@
   const portraitList = document.getElementById('portrait-collection-list');
   const portraitCabinetToggle = document.getElementById('portrait-cabinet-toggle');
   let portraitExploring = false;
-  const wheelToggle = document.getElementById('wheel-toggle');
-  const wheelDialog = document.getElementById('wheel-dialog');
-  const wheelClose = document.getElementById('wheel-close');
-  const wheelSpin = document.getElementById('wheel-spin');
-  const wheelVisual = wheelSpin;
-  const flavourWheel = document.getElementById('flavour-wheel');
-  const wheelStatus = document.getElementById('wheel-status');
   const dialog = document.getElementById('detail-dialog');
   const detailClose = document.getElementById('detail-close');
   const detailKind = document.getElementById('detail-kind');
@@ -42,9 +35,6 @@
   const detailLink = document.getElementById('detail-link');
   let lastDialogTrigger = null;
   let lastPanelTrigger = null;
-  let lastWheelTrigger = null;
-  let wheelRotation = 0;
-  let wheelTimer = null;
   let compactHotspotMode = null;
   let sceneNavigationEnabled = false;
   let dragStart = null;
@@ -554,45 +544,6 @@
     if (panel.open) panel.close();
   }
 
-  function clearWheelTimer() {
-    if (wheelTimer !== null) {
-      window.clearTimeout(wheelTimer);
-      wheelTimer = null;
-    }
-    wheelVisual.removeAttribute('aria-busy');
-  }
-
-  function openWheel() {
-    lastWheelTrigger = document.activeElement;
-    if (!wheelDialog.open) wheelDialog.showModal();
-    wheelSpin.focus();
-  }
-
-  function closeWheel() {
-    if (wheelDialog.open) wheelDialog.close();
-  }
-
-  function spinWheel() {
-    clearWheelTimer();
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const randomOffset = 30 + Math.round(Math.random() * 300);
-    const fullTurns = prefersReducedMotion ? 0 : 720 + Math.round(Math.random() * 720);
-    wheelRotation += fullTurns + randomOffset;
-
-    flavourWheel.classList.toggle('is-reduced-motion', prefersReducedMotion);
-    wheelVisual.setAttribute('aria-busy', 'true');
-    wheelStatus.textContent = prefersReducedMotion ? copy.wheel.moved : copy.wheel.spinning;
-    flavourWheel.style.transform = `rotate(${wheelRotation}deg)`;
-
-    const delay = prefersReducedMotion ? 50 : 1850;
-    wheelTimer = window.setTimeout(() => {
-      wheelVisual.removeAttribute('aria-busy');
-      wheelStatus.textContent = copy.wheel.stopped;
-      wheelTimer = null;
-    }, delay);
-  }
-
   function scenePointerDown(event) {
     if (!sceneNavigationEnabled || event.button !== 0) return;
     if (event.target instanceof Element && event.target.closest('.scene-controls')) return;
@@ -785,21 +736,6 @@
   });
   panel.addEventListener('click', event => {
     if (event.target === panel) closePanel();
-  });
-  wheelToggle.addEventListener('click', openWheel);
-  wheelClose.addEventListener('click', closeWheel);
-  wheelSpin.addEventListener('click', spinWheel);
-  wheelDialog.addEventListener('cancel', event => {
-    event.preventDefault();
-    clearWheelTimer();
-    closeWheel();
-  });
-  wheelDialog.addEventListener('close', () => {
-    clearWheelTimer();
-    if (lastWheelTrigger instanceof HTMLElement) lastWheelTrigger.focus();
-  });
-  wheelDialog.addEventListener('click', event => {
-    if (event.target === wheelDialog) closeWheel();
   });
   detailClose.addEventListener('click', () => dialog.close());
   dialog.addEventListener('cancel', () => hidePreview());
