@@ -2,6 +2,79 @@
 
 Last updated: 2026-07-23
 
+## N2 tailoring release, 2026-09-06
+
+Martyna approved the final side-view packs, aprons and goggles and requested
+deployment. Production artwork remains byte-identical to that final preview.
+All structural and syntax tests pass. The full-page capture limitation was
+disclosed before approval. Publication verification follows the release push.
+The following notes record the successive local refinement stages.
+
+Local work awaiting contextual approval. Existing laboratory concepts, labels,
+agar plates and painted background are retained. A longer button-front coat and
+a shorter wrap-front male coat follow the actual body curves. Contained pockets,
+badges and cuff/hem folds replace the floating badge and low narrow garment.
+Both coats and goggles share their corresponding worm's body motion. Goggles
+are smaller with less opaque lenses. The unchanged cryo-vial artwork is reduced
+and repositioned to attach beside the coat without filling the collar area.
+The refinement pass softens the primary lapel and brings the male pack closer.
+
+Follow-up at Martyna's request: the garments have layered collar folds, pocket
+gussets, restrained edge highlights and softer chest/hem contours. Cryovial
+packs now lie lengthwise on the dorsal edge, with caps towards the head and
+nozzles towards the tail. Their independently drawn curved bands and buckles
+sit on the body. Primary and male orientations are 38 and 30 degrees.
+The packs now follow their corresponding body's animation clock too.
+The first draft's overlong fastening bands were shortened after browser review.
+No goggles, dishes, background or public text changed in this follow-up.
+
+Exhaust-direction follow-up: replace the ambiguous closed gas loops with
+two tapered pale-blue streams behind each pack. The streams leave the
+tail-facing nozzles, opposite the head-first direction. Pack rotations,
+harness fit and aprons are unchanged. Both new paths were verified in the
+live local DOM and the desktop scene, with no browser warnings or errors.
+Structural N2 and six-location checks pass. This remains a local preview
+with the existing full-page responsive-capture limitation.
+
+Cap and apron clarification: cryovial caps now have closed elliptical top
+faces, ribbed sides and berry plastic, distinct from dark rear outlet openings.
+The aprons have softer shaped lapels and independently drawn waist ties.
+The first tie positions were raised after viewing the aprons without packs.
+No collection wording, background, goggles or pack placement changed.
+N2 and six-location checks pass. Four-width full-page captures again contain
+duplicated half-scale content at the same pixel dimensions recorded below.
+Desktop apron-only and combined renders were inspected. N2 remains local.
+
+Side-view pack pass: a dedicated n2-cryopacks.js replaces the frontal panel.
+The primary has an occluded far vial/exhaust behind the near assembly, curved
+retaining bands and an exposed side rail. The male uses one vial on a shorter
+rail with a small stabiliser. Long metal exhaust tubes have flared dark mouths.
+Default drawing scales increase from .52 to .74 (primary) and .34 to .43
+(male), with positions adjusted to preserve back contact and clear the faces.
+The refinement pass adds contained rail fasteners. Aprons, goggles, background
+and public wording remain unchanged. Both packs pass keyboard movement/reset.
+N2, six-location, Kauaʻi and syntax checks pass. No browser warnings or errors.
+Overflow checks pass at all four widths. Full-page captures remain defective
+at 345 × 2548, 753 × 2429, 1009 × 1848 and 1425 × 1934 pixels. Not deployed.
+
+Follow-up checks: four revised pieces pass independent keyboard movement/reset.
+N2, Kauaʻi and six-location structural checks pass, with no browser warnings
+or errors. At 360, 768, 1024 and 1440 px there is no horizontal overflow.
+Repeated full-page captures have the same defective duplicated/half-scale
+content and dimensions recorded below. Normal phone and desktop viewport
+renders were inspected as supplemental checks. Pointer drag and complete
+responsive visual approval remain manual. Nothing from N2 has been deployed.
+
+N2-specific tests cover eight pieces, distinct coat paths, fitted motion,
+goggle scales and valid SVG path commands. Full-catalogue and Kauaʻi tests pass.
+No new scientific claim or public wording is introduced.
+
+All eight objects pass keyboard movement and individual reset. No console
+errors. DOM overflow checks pass at 360, 768, 1024 and 1440 px. Normal phone
+and desktop renders were inspected. Full-page captures remain invalid due to
+duplicated, half-scale content (345 × 2548, 753 × 2429, 1009 × 1848 and
+1425 × 1934 pixels). Complete responsive visual approval is still pending.
+
 This is the first location dossier in the location-by-location Game of Worms illustration workflow. It is the evidence and review contract for the Bristol N2 landscape and its three accessory pairs. Later locations require their own dossier before their artwork is revised.
 
 ## Evidence boundaries

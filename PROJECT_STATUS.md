@@ -6,6 +6,18 @@ This file records approved decisions and the verified implementation state. Alwa
 
 ### Game accessory refinement, 2026-09-05
 
+Kauaʻi release 9ad179b is published on main. GitHub Pages run 34020523952
+succeeded, and all four deployed runtime files match the approved commit.
+
+Bristol N2 is approved for deployment on 2026-09-06: body-fitted aprons,
+smaller transparent goggles, and larger side-view cryovial packs with
+overlapping cylinders and prominent rear exhaust pipes. Worn pieces share
+the body animation clock. Agar plates, Bristol painting and public copy are
+unchanged. The Game remains fixed-light. N2, six-location and Kauaʻi checks,
+syntax checks, keyboard movement/reset and four-width overflow checks pass.
+Martyna approved the final contextual preview after disclosure of the ongoing
+full-page screenshot defect. Publication verification follows the release push.
+
 Latest Kauaʻi follow-up, 2026-09-06, approved for deployment:
 male ear cups now share equal geometry and a balanced band. Both microphone
 stands have neutral charcoal bases, silver poles and neutral grey hardware.

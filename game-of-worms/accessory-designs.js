@@ -2,6 +2,8 @@ import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js
 import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260905-tenerife-wings-4";
 import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-santeuil-fit-3";
 import { drawKauaiRecording } from "./kauai-recording.js?v=20260906-kauai-even-cups-2";
+import { drawN2Coat } from "./n2-tailoring.js?v=20260906-n2-fabric-2";
+import { drawN2Cryopack } from "./n2-cryopacks.js?v=20260906-n2-sidepack-2";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -457,78 +459,11 @@ function drawN2Accessory(group, item, companion) {
     return true;
   }
   if (item.family === "n2-lab-coat") {
-    group.classList.add("n2-lab-coat", companion ? "n2-lab-coat-companion" : "n2-lab-coat-primary");
-    if (companion) {
-      add(group, "path", { class: "lab-coat-body male", d: "M-36 5C-24 23-5 23 5 3C12-12 13-27 27-39L42-28C31-13 30 4 23 18C10 43-20 47-42 19Z" });
-      add(group, "path", { class: "lab-coat-sleeve male", d: "M24-35Q41-45 50-30L42-11Q34-17 29-11L16-20Z" });
-      add(group, "path", { class: "lab-coat-collar male", d: "M21-32L31-46L45-31L36-18L29-29L19-14L10-24Z" });
-      add(group, "path", { class: "lab-coat-opening male", d: "M29-27Q18-3 13 24" });
-      add(group, "path", { class: "lab-coat-seam male", d: "M-28 14Q-8 30 13 21M-20 24Q-2 38 16 29" });
-      add(group, "path", { class: "lab-coat-pocket male", d: "M-20 8Q-6 14 5 7L3 21Q-8 27-21 19Z" });
-      add(group, "path", { class: "lab-coat-pocket male narrow", d: "M22-4L34-7L34 7L21 10Z" });
-      [-12, 2, 15].forEach(y => add(group, "circle", { class: "lab-coat-button", cx: 18 - y * .07, cy: y, r: 2.4 }));
-      add(group, "path", { class: "lab-coat-belt male", d: "M-28 19Q-7 31 18 22" });
-      add(group, "path", { class: "lab-coat-stitch male", d: "M-30 8L-23 12M-19 16L-12 20M-1 22L7 20M18-17L23-25M30-17L36-24" });
-      add(group, "path", { class: "lab-coat-cuff", d: "M41-11L49-9L53-21L45-24Z" });
-      const badge = add(group, "g", { class: "lab-badge companion", transform: "translate(-12 -14) rotate(6)" });
-      add(badge, "rect", { class: "lab-id-badge", x: -8, y: -6, width: 16, height: 12, rx: 2 });
-      const badgeText = add(badge, "text", { class: "lab-id-text male", x: 0, y: 3, "text-anchor": "middle" });
-      badgeText.textContent = "N2";
-    } else {
-      add(group, "path", { class: "lab-coat-body", d: "M-66 29C-40 53-7 49 7 15C18-11 19-36 41-62L65-45C48-24 45 1 35 27C17 69-31 81-75 44Z" });
-      add(group, "path", { class: "lab-coat-sleeve", d: "M36-56Q58-72 76-52L66-20Q54-31 44-20L24-34Z" });
-      add(group, "path", { class: "lab-coat-collar", d: "M31-53L47-72L68-50L56-29L43-47L29-25L17-38Z" });
-      add(group, "path", { class: "lab-coat-opening", d: "M44-45C32-19 29 12 16 41" });
-      add(group, "path", { class: "lab-coat-seam", d: "M-51 37Q-20 58 10 38M-62 48Q-30 69 1 53" });
-      add(group, "path", { class: "lab-coat-pocket", d: "M-40 24Q-20 33-2 23L-5 43Q-24 53-43 42Z" });
-      add(group, "path", { class: "lab-coat-pocket upper", d: "M-4-8Q9-4 20-9L18 8Q6 14-6 8Z" });
-      [-23, -5, 13, 30].forEach(y => add(group, "circle", { class: "lab-coat-button", cx: 35 - (y + 23) * .13, cy: y, r: 3 }));
-      add(group, "path", { class: "lab-coat-belt", d: "M-59 43Q-29 61 4 49M5 50L18 41" });
-      add(group, "path", { class: "lab-coat-stitch", d: "M-52 30L-43 36M-32 43L-22 47M-6 45L4 41M29-30L35-41M43-30L53-42" });
-      add(group, "path", { class: "lab-coat-cuff", d: "M64-21L76-16L82-34L70-40Z" });
-      const badge = add(group, "g", { class: "lab-badge", transform: "translate(-19 -16) rotate(-4)" });
-      add(badge, "rect", { class: "lab-id-badge", x: -13, y: -8, width: 26, height: 17, rx: 3 });
-      const badgeText = add(badge, "text", { class: "lab-id-text", x: 0, y: 4, "text-anchor": "middle" });
-      badgeText.textContent = "N2";
-      add(group, "path", { class: "lab-pen", d: "M-14 23L-5 28M-10 20L-1 25" });
-      add(group, "path", { class: "lab-coat-piping", d: "M-71 42Q-30 70 4 50M65-45Q54-28 44-20" });
-    }
+    drawN2Coat(group, companion);
     return true;
   }
   if (item.family === "cryo-vial-jetpack") {
-    group.classList.add("cryo-jetpack", companion ? "cryo-pack-companion" : "cryo-pack-primary");
-    if (companion) {
-      add(group, "path", { class: "pack-harness", d: "M-16-24Q-41-29-48-9M-18 2Q-40 4-45 24" });
-      add(group, "path", { class: "cryo-pack-shell companion", d: "M-27-29Q-6-39 18-27L24 19Q4 36-25 24Z" });
-      add(group, "rect", { class: "cryo-vial-body companion", x: -13, y: -58, width: 24, height: 70, rx: 9 });
-      add(group, "rect", { class: "cryo-vial-cap companion", x: -11, y: -68, width: 20, height: 14, rx: 4 });
-      add(group, "path", { class: "cryo-cap-thread", d: "M-10-63H8M-11-59H9M-10-55H8" });
-      add(group, "path", { class: "cryo-ice", d: "M-10-10Q-1-17 8-9V8Q0 14-10 7Z" });
-      add(group, "path", { class: "cryo-vial-label", d: "M-10-42H9V-23H-10Z" });
-      add(group, "circle", { class: "cryo-gauge", cx: 9, cy: 14, r: 8 });
-      add(group, "path", { class: "cryo-gauge-mark", d: "M9 14L13 9M4 14H9" });
-      add(group, "path", { class: "cryo-nozzle", d: "M-20 22L-28 39H-12L-9 25ZM8 27L6 44H22L18 24Z" });
-      add(group, "path", { class: "cryo-plume small", d: "M-24 42Q-31 54-21 62Q-13 54-18 44M10 46Q4 57 14 66Q22 56 17 46" });
-      add(group, "path", { class: "cryo-frost", d: "M-23-17L-15-11M17-15L10-9M-23 6L-15 3" });
-    } else {
-      add(group, "path", { class: "pack-harness", d: "M48-24Q20-44-13-29M46 3Q16-18-17-3" });
-      add(group, "path", { class: "cryo-pack-shell", d: "M-28-35Q8-48 42-31L49 29Q12 48-27 31Z" });
-      [-11, 22].forEach((x, index) => {
-        add(group, "rect", { class: "cryo-vial-body", x: x - 11, y: -67 + index * 3, width: 22, height: 78 - index * 4, rx: 8 });
-        add(group, "rect", { class: "cryo-vial-cap", x: x - 9, y: -78 + index * 3, width: 18, height: 14, rx: 4 });
-        add(group, "path", { class: "cryo-cap-thread", d: `M${x - 8} ${-73 + index * 3}H${x + 8}M${x - 9} ${-69 + index * 3}H${x + 9}M${x - 8} ${-65 + index * 3}H${x + 8}` });
-        add(group, "path", { class: "cryo-ice", d: `M${x - 8} ${-16 + index * 4}Q${x} ${-23 + index * 3} ${x + 8} ${-15 + index * 4}V${7 + index * 3}Q${x} ${13 + index * 2} ${x - 8} ${7 + index * 3}Z` });
-        add(group, "path", { class: "cryo-vial-label", d: `M${x - 9} ${-43 + index * 3}H${x + 9}V${-23 + index * 3}H${x - 9}Z` });
-        add(group, "path", { class: "cryo-vial-tick", d: `M${x - 7}-37H${x + 5}M${x - 7}-27H${x + 2}` });
-      });
-      add(group, "circle", { class: "cryo-medallion", cx: 9, cy: 18, r: 13 });
-      add(group, "path", { class: "snow-mark", d: "M9 8V28M-1 18H19M2 11L16 25M16 11L2 25" });
-      add(group, "path", { class: "cryo-nozzle", d: "M-18 29L-24 47H-7L-4 33ZM30 32L27 50H44L40 29Z" });
-      add(group, "path", { class: "cryo-plume", d: "M-20 49Q-30 65-18 75Q-6 65-14 51M31 52Q22 67 34 78Q46 67 38 52" });
-      const label = add(group, "text", { class: "cryo-label", x: 35, y: 13, "text-anchor": "middle" });
-      label.textContent = "LN₂";
-      add(group, "path", { class: "cryo-hose", d: "M-23-8Q-41-3-37 14Q-33 29-20 22" });
-    }
+    drawN2Cryopack(group, companion);
     return true;
   }
   if (item.family === "n2-lab-goggles") {
@@ -6305,9 +6240,9 @@ function renderPiece(target, item, wormPart) {
   let angleOverride = null;
   const customLayouts = {
     "ngm-agar-plate": { primary: [366, 260, .82, -6], companion: [35, 288, .65, 2] },
-    "n2-lab-coat": { primary: [180, 214, 1, 0], companion: [52, 168, .92, -1] },
-    "cryo-vial-jetpack": { primary: [258, 118, .84, 208], companion: [43, 132, .65, 212] },
-    "n2-lab-goggles": { primary: [331, 53, 1, 14], companion: [111, 104, .58, 14] },
+    "n2-lab-coat": { primary: [220, 155, 1, 0], companion: [66.6, 148.65, .43, 0] },
+    "cryo-vial-jetpack": { primary: [176, 144, .74, 38], companion: [42, 147, .43, 30] },
+    "n2-lab-goggles": { primary: [331, 53, .68, 18], companion: [114.5, 105, .38, 18] },
     "fig-fascinator": { primary: [331.5, 47, .50, 25], companion: [114.5, 102, .32, 25] },
     "sample-pannier": { primary: [170, 176, .66, -4], companion: [51, 164, .39, 4] },
     "wings": { primary: [247, 150, .46, 68], companion: [88, 147, .35, 70] },
@@ -6425,12 +6360,24 @@ function renderPiece(target, item, wormPart) {
   if (item.family === "santeuil-cylinder-organ-instrument") piece.dataset.pieceLabel = companion ? "concertina" : "cylinder organ";
   if (item.family === "santeuil-hogweed-locomotive") piece.dataset.pieceLabel = companion ? "railway trolley" : "hogweed-stem locomotive";
   const isSanteuilCompanionProp = companion && ["santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"].includes(item.family);
-  const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones";
+  const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
     : isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });
+  if (["n2-lab-coat", "n2-lab-goggles", "cryo-vial-jetpack"].includes(item.family) && artParent.addEventListener) {
+    // A toggle can start clothing later than the body. Reuse its animation clock.
+    artParent.addEventListener("animationstart", event => {
+      if (event.target !== artParent) return;
+      const body = document.querySelector(companion ? ".companion-body" : ".worm-body");
+      const bodyMotion = body?.getAnimations?.()[0];
+      const clothingMotion = artParent.getAnimations?.()[0];
+      if (bodyMotion && clothingMotion && typeof bodyMotion.startTime === "number") {
+        clothingMotion.startTime = bodyMotion.startTime;
+      }
+    });
+  }
   const drewNamedAccessory = drawNamedAccessory(artwork, item, companion);
   if (!drewNamedAccessory) throw new Error(`No named accessory renderer for ${item.label}`);
   return piece;

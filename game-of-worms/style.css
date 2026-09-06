@@ -1625,8 +1625,8 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .n2-lab-goggles { filter: drop-shadow(0 3px 2px rgba(24,49,54,.2)); }
 .n2-lab-goggles .goggle-strap { fill: none; stroke: #58777a; stroke-width: 4.2; stroke-linecap: round; }
 .n2-lab-goggles .goggle-seal { fill: rgba(231,243,240,.3); stroke: #245b65; stroke-width: 3.6; stroke-linejoin: round; }
-.n2-lab-goggles .goggle-lens { fill: rgba(157,222,229,.42); stroke: #4a8f98; stroke-width: 1.6; stroke-linejoin: round; }
-.n2-lab-goggles .goggle-lens.companion { fill: rgba(190,233,233,.46); }
+.n2-lab-goggles .goggle-lens { fill: rgba(157,222,229,.2); stroke: #4a8f98; stroke-width: 1.6; stroke-linejoin: round; }
+.n2-lab-goggles .goggle-lens.companion { fill: rgba(190,233,233,.22); }
 .n2-lab-goggles .goggle-vent-body { fill: #f8f5e8; stroke: #245b65; stroke-width: 1.8; }
 .n2-lab-goggles .goggle-vent-slots { fill: none; stroke: #739296; stroke-width: 1.2; stroke-linecap: round; }
 .n2-lab-goggles .goggle-highlight { fill: none; stroke: rgba(255,255,255,.92); stroke-width: 2; stroke-linecap: round; }
@@ -1681,7 +1681,9 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .ngm-plate-small text { font-size: 6px; }
 .cryo-jetpack .cryo-pack-shell { fill: #3f7f8a; stroke: #295f72; stroke-width: 3; }
 .cryo-jetpack .cryo-vial-body { fill: rgba(222,247,247,.92); stroke: #2f7885; stroke-width: 2.5; }
-.cryo-jetpack .cryo-vial-cap { fill: #285f70; stroke: #214d5b; stroke-width: 2; }
+.cryo-jetpack .cryo-vial-cap { fill: #8b3d5c; stroke: #533748; stroke-width: 2; }
+.cryo-jetpack .cryo-cap-top { fill: #c888a4; stroke: #533748; stroke-width: 1.5; }
+.cryo-jetpack .cryo-outlet-opening { fill: #20313d; stroke: #b3c8d0; stroke-width: 1.5; }
 .cryo-jetpack .cryo-ice { fill: #88d7df; stroke: #3b8e9b; stroke-width: 1.5; }
 .cryo-jetpack .cryo-cap-thread { fill: none; stroke: rgba(233,251,251,.75); stroke-width: 1.4; stroke-linecap: round; }
 .cryo-jetpack .cryo-vial-label { fill: rgba(241,252,252,.72); stroke: #2f7885; stroke-width: 1.2; }
@@ -1692,6 +1694,8 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .cryo-jetpack .cryo-label { fill: #e9fbfb; font: 800 7px/1 sans-serif; stroke: none; }
 .cryo-plume { fill: none; stroke: #b8edf0; stroke-width: 5; stroke-linecap: round; }
 .cryo-plume.small { stroke-width: 3; }
+.cryo-jetpack .cryo-rear-exhaust { fill: #b8edf0; fill-opacity: .65; stroke: #74b8c5; stroke-opacity: .65; stroke-width: 1; }
+.cryo-jetpack .cryo-exhaust-core { fill: none; stroke: #f0fcff; stroke-width: 2.8; stroke-linecap: round; }
 .snow-mark.small { stroke-width: 1.5 !important; }
 .santeuil-accessory { filter: drop-shadow(0 5px 4px rgba(31,43,37,.26)); }
 .stem-lantern-shadow, .organ-shadow, .automaton-shadow { fill: rgba(27,40,34,.2); }
