@@ -521,7 +521,8 @@
     if (chofItem) portraitList.append(buildCollectionGroup(copy.kindLabels.app, [chofItem], true));
     for (const list of [collectionList, portraitList]) {
       const sources = [
-        ['© Zotter Chocolate', 'https://www.zotter.at/en/about-zotter/press-downloads/logo-photos']
+        ['© Zotter Chocolate', 'https://www.zotter.at/en/about-zotter/press-downloads/logo-photos'],
+        ['© Friis-Holm Chokolade', 'https://friisholmchokolade.dk/']
       ];
       for (const [label, href] of sources) {
         const credit = document.createElement('a');

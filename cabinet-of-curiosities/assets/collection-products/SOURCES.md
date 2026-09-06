@@ -34,9 +34,24 @@ The maker's CDN returned image/jpeg in response to an Accept: image/jpeg request
 
 The maker's purchase terms at https://stormochbille.se/pages/kopvillkor were reviewed; they do not state an image-reuse licence. The photo was tested locally but is excluded from publication. This entry uses the user's own photographed wrapper.
 
+## Friis-Holm: full-size bar photographs
+
+On 2026-09-06 Martyna explicitly requested full-size bar photographs in place of the collected minis in the lists only, and confirmed that she has permission from Friis-Holm to use their product photos. This records user-confirmed permission, not a public licence or independently inspected permission document. It does not extend permission to other makers or unrelated retailer photography.
+
+Credit: © Friis-Holm Chokolade. The credit is a proper name; the Cabinet remains intentionally English-only. No product names, translations or descriptions change. The added credit is shown in the preview for approval before publication.
+
+The complete downloaded JPEG bytes are preserved: no cropping, recolouring, background removal, resizing or re-encoding. Existing `object-fit: contain` displays each complete photograph in the list's 64 × 64 px slot. All four photographed wrappers visibly say 100 g and 70%; the board and detail previews continue to show the original collected minis. La Dalia uses the older grey full-size package image supplied on the linked product page, not the mini image or the 85% variant.
+
+| File | Product page | Original photo URL |
+| --- | --- | --- |
+| friis-holm-indio-rojo-70.jpg | https://friisholmchokolade.dk/products/indio-rojo-70-100-g | https://friisholmchokolade.dk/cdn/shop/files/40101-IndioRojo_Guatemala70_100g.jpg?v=1709022747 |
+| friis-holm-medagla-70.jpg | https://friisholmchokolade.dk/products/medagla-70-100-g | https://friisholmchokolade.dk/cdn/shop/files/41001-Medagla_Nicaragua70_100g..jpg?v=1709023085 |
+| friis-holm-johe-70.jpg | https://friisholmchokolade.dk/products/johe-70-100-g | https://friisholmchokolade.dk/cdn/shop/files/40801-Johe_Nicaragua70_100g.jpg?v=1709022772 |
+| friis-holm-la-dalia-70.jpg | https://hellochocolate.com/products/friis-holm-chocolate-la-dalia-70 | https://hellochocolate.com/cdn/shop/files/friis-holm_chocolate_ladalia_70.jpg?v=1719597006&width=2048 |
+
 ## User-photo fallback
 
-The user approved using her own photographs wherever web pictures need extra clearance or matching. The other 27 chocolate entries use display windows onto the approved photographed object layer, without editing that source file. A failed web-photo load uses the same fallback. Metadata, detail previews and board art remain unchanged.
+The user prefers matching internet product photographs and approved using her own photographs wherever web pictures need extra clearance or matching. The other 23 chocolate entries use display windows onto the approved photographed object layer, without editing that source file. A failed web-photo load uses the same fallback. Metadata, detail previews and board art remain unchanged.
 
 Other makers' images have not been cleared for reuse. Pump Street's [terms](https://pumpstreetchocolate.com/pages/terms-and-conditions) restrict copying beyond personal use; obtain permission before adding its product photos. Do not treat an image being publicly visible as a licence.
 

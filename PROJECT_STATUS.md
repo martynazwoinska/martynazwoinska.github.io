@@ -4,6 +4,24 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Cabinet unified furniture, 2026-09-06
+
+Martyna requested the new unified furniture picture on desktop and mobile,
+with verification and deployment. The same `cabinet-study-unified-v2.png`
+now supplies the complete cabinet, woven recess, window, lamp, smaller plant,
+counter and inset drawer on every layout. Its bytes are unchanged from the
+desktop preview. An outer camera encloses the whole image; an inner assembly
+preserves the original object/hotspot coordinates. The v75/v76 alpha layers
+are byte-identical to their approved sources. Portrait phones show the full
+scene above the collection, with optional interactive Cabinet view; landscape
+phones retain pan, pinch, keyboard zoom and reset. No repeated timber strips.
+The full-size Friis-Holm photos requested previously are list-only, with the
+proper-name credit `© Friis-Holm Chokolade`; the Cabinet remains English-only.
+Twenty full-page browser cases across both themes pass, including responsive
+layout, dialogs/focus, gestures, image fallbacks, reduced motion and overflow.
+No Game files are changed by this Cabinet release. Publication verification
+is recorded in the release report after the push.
+
 ### Game accessory refinement, 2026-09-05
 
 Panama QG2726 local refinement, 2026-09-06: six separately drawn objects in

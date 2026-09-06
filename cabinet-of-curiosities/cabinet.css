@@ -99,65 +99,47 @@ button { color: inherit; }
   overflow: hidden;
 }
 
-/* Room and cabinet are separate scenery; approved object images are
-   unchanged. The old full-width wood remains the compact mobile fallback. */
-.study-room,
-.study-joinery,
-.study-foreground,
-.study-drawer { display: none; }
+/* The outer camera contains the complete furniture. This inner assembly keeps
+   the approved 1672 × 941 object coordinate system and its exact registration. */
+.scene-content {
+  position: absolute;
+  width: calc(100% / 1.1398);
+  height: calc(100% / 1.1217);
+  left: calc(7.92% / 1.1398);
+  top: calc(1.39% / 1.1217);
+}
 
 .cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) {
-  --scene-width: min(130vw, calc((100svh - 76px) * 1.776833));
-  --scene-height: calc(var(--scene-width) * .562799);
+  --scene-width: min(99.1626vw, calc((100svh - 84px) * 1.7097));
+  --scene-height: calc(var(--scene-width) * 1055.5197 / 1905.7456);
   background: #172420;
 }
 .cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .cabinet-stage {
   height: calc(100% - 64px);
   align-self: end;
 }
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-room,
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-joinery,
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-foreground,
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-drawer {
+.cabinet-page .study-room {
   display: block;
   position: absolute;
-  inset: 0;
+  /* Register the background to the existing 1672 × 941 board coordinates.
+     The outer camera fits the whole piece, including drawer, lamp and plant. */
+  width: 113.98%;
+  height: 112.17%;
+  left: -7.92%;
+  top: -1.39%;
+  max-width: none;
 }
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .surround-picture {
+.cabinet-page .surround-picture {
   position: absolute;
   inset: 0;
 }
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .surround-picture img {
-  /* Retain the exact existing cloth and blue note inside the new joinery. */
-  clip-path: url(#study-board-interior);
+.cabinet-page .surround-picture img {
+  /* Keep the original blue note; the new image supplies the entire recess,
+     avoiding a second frame or mismatched shadow at the upper corners. */
+  clip-path: url(#study-note-window);
 }
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-joinery {
-  /* Blend only the background perimeter into the wider room. */
-  mask-image: linear-gradient(to right, transparent 14%, black 19%, black 80.8%, transparent 81%),
-    linear-gradient(to bottom, black 82%, transparent 87%);
-  mask-composite: intersect;
-}
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .fantasy-surround {
+.cabinet-page .fantasy-surround {
   overflow: visible;
-}
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-room,
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-foreground {
-  width: max(100vw, var(--scene-width));
-  left: min(0px, calc((var(--scene-width) - 100vw) / 2));
-}
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-lamp {
-  position: absolute;
-  left: 6.4%;
-  bottom: 13.1%;
-  width: 16.8%;
-  height: 39.8%;
-  object-fit: contain;
-  filter: drop-shadow(3px 4px 3px rgba(15, 9, 5, .3));
-}
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-drawer {
-  clip-path: inset(90.2% 32.5% 1.8% 32.5%);
-  transform: translateY(2.55%) scaleY(.8);
-  transform-origin: 50% 90.2%;
 }
 
 .surround-picture {
@@ -956,7 +938,7 @@ button { color: inherit; }
   inset: auto;
   width: 100%;
   height: auto;
-  aspect-ratio: 1672 / 941;
+  aspect-ratio: 1905.7456 / 1055.5197;
   padding: 0;
   overflow: hidden;
   pointer-events: none;
@@ -999,25 +981,11 @@ button { color: inherit; }
 .cabinet-page.is-scene-interactive {
   --mobile-top: calc(52px + env(safe-area-inset-top));
   --mobile-bottom: calc(48px + env(safe-area-inset-bottom));
-  --scene-width: min(calc(100vw - env(safe-area-inset-left) - env(safe-area-inset-right)), calc((100dvh - var(--mobile-top) - var(--mobile-bottom)) * 1.776833));
-  --scene-height: calc(var(--scene-width) * .562799);
+  --scene-width: min(calc(100vw - env(safe-area-inset-left) - env(safe-area-inset-right)), calc((100dvh - var(--mobile-top) - var(--mobile-bottom)) * 1905.7456 / 1055.5197));
+  --scene-height: calc(var(--scene-width) * 1055.5197 / 1905.7456);
   --scene-y: -50%;
   height: 100dvh;
-  background: #382a20;
-}
-.is-scene-interactive .scene-space::before {
-  content: '';
-  position: absolute;
-  inset: 0 -200vw;
-  z-index: -1;
-  pointer-events: none;
-  /* A background-only SVG view contains a complete outer timber panel and
-     the continuous counter/apron. Its material scale and shelf height match
-     the scene, and it follows the same camera transform. */
-  background-image: url('assets/cabinet-side-panel-v1.svg');
-  background-size: auto 100%;
-  background-position: center top;
-  background-repeat: repeat-x;
+  background: #172420;
 }
 .cabinet-page.is-scene-interactive .cabinet-stage {
   display: block;
