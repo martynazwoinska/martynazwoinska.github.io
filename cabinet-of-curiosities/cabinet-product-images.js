@@ -53,4 +53,47 @@
     images[id] = Object.freeze(photo);
   }
   window.CABINET_PRODUCT_IMAGES = Object.freeze(images);
+  // List-only display outlines on a 320 × 320 object-fit:contain image plane.
+  // Original image bytes, wrapper colours and the Cabinet alpha layers are untouched.
+  // Bounds isolate the packaged bar from the source photo's tabletop and props.
+  const rect = (x, y, w, h) => [[x,y],[x+w,y],[x+w,y+h],[x,y+h]];
+  const windows = {
+    'small-wrapper-upper-left': rect(164,5,132,308),
+    'friis-holm-mini-2': rect(164,5,132,308),
+    'small-orange-wrapper': rect(164,5,132,308),
+    'small-green-wrapper': rect(164,5,132,308),
+    'small-wrapper-middle': rect(164,5,132,308),
+    'uganda-horizontal-wrapper': rect(164,5,132,308),
+    'date-cashew-vegan': rect(5,47,309,129),
+    'friis-holm-mini-1': rect(94,31,133,260),
+    'friis-holm-mini-3': rect(94,31,135,260),
+    'friis-holm-mini-4': rect(94,31,135,260),
+    'storm-bille-uganda-chilli': [[117,59],[122,56],[212,58],[214,64],[213,250],[116,248]],
+    'amedei-porcelana-70': rect(85,12,149,288),
+    'omnom-craft-madagascar-66': [[15,90],[143,89],[159,92],[175,89],[302,90],[303,231],[175,231],[158,233],[144,231],[15,231]],
+    'raaka-tanzania-100': [[102,6],[217,6],[217,62],[222,70],[222,313],[100,313],[99,64]],
+    'malmo-craft-madagascar': [[42,46],[187,46],[187,275],[179,275],[177,276],[42,276]],
+    'small-white-wrapper': rect(79,0,162,320),
+    'taza-round-package': Array.from({length:64},(_,i)=>[160+112*Math.cos(i*Math.PI/32),160+112*Math.sin(i*Math.PI/32)]),
+    'kamm-ecuador-85': [[80,224],[182,45],[284,224]],
+    'wild-schokolade-chimore-65': rect(82,9,157,304),
+    'aroko-tocumare': rect(54,53,212,218),
+    'luisa-abram-rio-jurua-70': [[89,26],[243,38],[225,282],[65,267]],
+    'black-cherry-70': rect(72,65,166,204),
+    'tjak-norwegian-brown-cheese': rect(68,10,186,299),
+    'chocolate-naive-xocoatl': rect(63,32,193,248),
+    'paradai-nakhon-si-thammarat-red-pod': [[52,63],[308,113],[286,255],[21,207]],
+    'marou-green': [[90,34],[226,33],[230,287],[91,288]],
+    'bonnat-java': rect(0,80,320,160),
+    'willies-cacao-pistachio-date': rect(55,55,209,209),
+    'paradai-chanthaburi-yellow': [[33,63],[43,62],[312,102],[289,261],[8,214]],
+    'firetree-solomon-islands': rect(76,15,167,295),
+    'aroko-chuao-amazonas-70': [[52,53],[147,53],[147,33],[161,29],[181,32],[184,53],[190,53],[190,31],[208,29],[220,33],[223,53],[227,53],[227,31],[245,28],[260,33],[264,53],[272,53],[272,276],[52,276]],
+    'pink-sea-salt-wrapper': rect(83,0,159,320),
+    'pink-madagascar-wrapper': rect(82,0,158,320),
+    'vigdis-rosenkilde-echarete-80': rect(93,24,134,272)
+  };
+  window.CABINET_PRODUCT_WINDOWS = Object.freeze(Object.fromEntries(
+    Object.entries(windows).map(([id, points]) => [id, Object.freeze(points.map(point => Object.freeze(point)))])
+  ));
 }());

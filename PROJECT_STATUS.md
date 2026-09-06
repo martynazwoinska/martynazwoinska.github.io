@@ -35,6 +35,19 @@ desktop/phone feeding, keyboard reset, Escape and the hanging-pod strike,
 without console errors. Publication is verified separately after the push.
 See the Sanda dossier for asset provenance, tests and screenshot limitations.
 
+### Cabinet white list backgrounds v103 — approved release
+
+At Martyna's request, all 34 list product photographs now use reversible
+per-photo CSS display outlines on a white 64 × 64 px field. Each packaged
+bar has 4 px minimum breathing room, without changing its aspect ratio.
+Coloured source backgrounds and extra photo props are excluded from the
+list display. All original photo files, Cabinet artwork and approved
+alpha/object layers remain untouched. Detail previews and public text are
+unchanged; credits are retained. Twenty responsive full-page cases pass
+in both themes, including image loading/fallback, focus, gestures and
+overflow. Martyna approved this exact preview and requested publication.
+Publication verification is recorded after the push. No Game changes.
+
 ### Cabinet list photographs v102, 2026-09-06 — approved release
 
 All 34 chocolate entries now have internet product photographs in both Browse
