@@ -7,7 +7,7 @@ import { drawN2Cryopack } from "./n2-cryopacks.js?v=20260906-n2-sidepack-2";
 import { drawAhmedabadRefinement } from "./ahmedabad-refinement.js?v=20260906-fans-1";
 import { drawTrivandrumRefinement } from "./trivandrum-refinement.js?v=20260906-live-loupes-2";
 import { drawPanamaRefinement } from "./panama-refinement.js?v=20260906-panama-1";
-import { drawBaliRefinement } from "./bali-refinement.js?v=20260906-gongs-1";
+import { drawBaliRefinement } from "./bali-refinement.js?v=20260906-no-female-pod-1";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 

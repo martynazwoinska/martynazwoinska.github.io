@@ -17,7 +17,10 @@ const walk=n=>[n,...n.children.flatMap(walk)];
       assert(draw(g,{id:'wallacei::Sanda, Bali · JU1873::wrap',family},male));
       assert.equal(g.dataset.refinement,'bali-20260906');
       const nodes=walk(g),shapes=nodes.filter(n=>['path','ellipse'].includes(n.tag));
-      assert(shapes.length>15);
+      if(family==='ju1873-cacao-specimen-lantern' && !male) {
+        assert.equal(shapes.length,10,'Female keeps only the unchanged machete');
+        assert(!nodes.some(n=>n.attributes.transform?.includes('translate(48 78)')),'Female pod removed');
+      } else assert(shapes.length>15);
       for(const n of shapes) {
         assert(n.attributes.fill); assert(n.attributes.stroke);
         assert(!Object.values(n.attributes).some(v=>/NaN|Infinity|undefined/.test(v)));

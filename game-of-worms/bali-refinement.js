@@ -103,7 +103,6 @@ function cacao(g,male) {
     p(g,'M-116 2L-60-3L-60 4L-116 11Z',berry,'none');
     for(const x of [-106,-80])e(g,x,12,3,3,paleGold,ink,.8);
     p(g,'M-58-11L-49-12L-44 24L-53 27Z',gold,ink,1.4);
-    pod(g,48,78,1.32,12);
     l(g,'M-121 17Q-143 27-129 40Q-115 46-109 27',berry,2.5);
   }
 }
