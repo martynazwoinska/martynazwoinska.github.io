@@ -4,10 +4,10 @@ import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-san
 import { drawKauaiRecording } from "./kauai-recording.js?v=20260906-kauai-even-cups-2";
 import { drawN2Coat } from "./n2-tailoring.js?v=20260906-n2-fabric-2";
 import { drawN2Cryopack } from "./n2-cryopacks.js?v=20260906-n2-sidepack-2";
-import { drawAhmedabadRefinement } from "./ahmedabad-refinement.js?v=20260906-af16-canopy-3";
+import { drawAhmedabadRefinement } from "./ahmedabad-refinement.js?v=20260906-fans-1";
 import { drawTrivandrumRefinement } from "./trivandrum-refinement.js?v=20260906-live-loupes-2";
 import { drawPanamaRefinement } from "./panama-refinement.js?v=20260906-panama-1";
-import { drawBaliRefinement } from "./bali-refinement.js?v=20260906-bali-club-2";
+import { drawBaliRefinement } from "./bali-refinement.js?v=20260906-gongs-1";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 

@@ -109,7 +109,8 @@ function cacao(g,male) {
 }
 
 function mallet(g,x,y,a,small=false) {
-  const c=add(g,'g',{transform:`translate(${x} ${y}) rotate(${a})`});
+  const motion=add(g,'g',{'data-gong-mallet':''});
+  const c=add(motion,'g',{transform:`translate(${x} ${y}) rotate(${a})`});
   p(c,small?'M-3 0H3L4 61Q0 66-4 61Z':'M-3 0H3L5 75Q0 81-5 75Z',gold,ink,1.2);
   p(c,small?'M-7-15Q0-19 7-15L8 4Q0 9-8 4Z':'M-13-20Q0-27 13-20L15 5Q0 15-15 5Z',wine,ink,1.5);
   l(c,small?'M-5-11L5-11M-5-6L5-6':'M-10-17Q0-12 10-17M-11-10Q0-5 11-10M-11-2Q0 3 11-2',berry,2);
@@ -126,13 +127,14 @@ function gong(g,male) {
     for(const x of [-36,35]) {
       const c=add(g,'g',{transform:`translate(${x} ${x<0?23:16})`});
       l(c,'M-38 12L34 20M-32 26L38 6',ivory,2);
-      p(c,'M-30-5Q0-21 30-5L27 18Q0 34-27 18Z',darkBronze,ink,1.7);
-      e(c,0,-4,30,15,bronze,ink,1.7);
-      e(c,0,-5,21,10,'#bda976',darkBronze,1);
-      p(c,'M-10-5V-15Q0-26 10-15V-5Q0 3-10-5Z',bronze,ink,1.3);
-      e(c,0,-16,9,5,paleGold,darkBronze,.8);
-      l(c,'M-24-2Q-19-12-8-13',ivory,1.6);
-      l(c,'M-22 16Q0 26 21 16',gold,1.2);
+      const metal=add(c,'g',{'data-gong-metal':''});
+      p(metal,'M-30-5Q0-21 30-5L27 18Q0 34-27 18Z',darkBronze,ink,1.7);
+      e(metal,0,-4,30,15,bronze,ink,1.7);
+      e(metal,0,-5,21,10,'#bda976',darkBronze,1);
+      p(metal,'M-10-5V-15Q0-26 10-15V-5Q0 3-10-5Z',bronze,ink,1.3);
+      e(metal,0,-16,9,5,paleGold,darkBronze,.8);
+      l(metal,'M-24-2Q-19-12-8-13',ivory,1.6);
+      l(metal,'M-22 16Q0 26 21 16',gold,1.2);
     }
     mallet(g,-61,-28,-40,true);mallet(g,46,-38,43,true);
   } else {
@@ -144,6 +146,8 @@ function gong(g,male) {
     l(g,'M-64-95V80M63-94V80','#b66b77',1.7);
     p(g,'M-62 86H62V98H-62Z',wine,ink,2);
     l(g,'M-48-107L-31-53M48-107L31-53',ivory,2.8);
+    const frame=g;
+    g=add(frame,'g',{'data-gong-metal':''});
     e(g,0,14,61,67,darkBronze,ink,2.2);
     e(g,-2,10,58,63,bronze,ink,1.3);
     p(g,'M15-50Q61-26 60 17Q59 62 18 78Q48 47 44 12Q45-20 15-50Z','#514c3d','none');
@@ -160,6 +164,7 @@ function gong(g,male) {
     e(g,-5,7,15,16,bronze,darkBronze,1);
     p(g,'M-17 5Q-15-8-6-8Q2-8 5-2Q-6-5-9 8Z',paleGold,'none');
     l(g,'M-50 0Q-49-28-23-40',ivory,1.6);
+    g=frame;
     mallet(g,76,17,-25);
     for(const x of [-63,63]) { e(g,x,-82,2.5,2.5,gold,ink,.8);e(g,x,73,2.5,2.5,gold,ink,.8); }
   }

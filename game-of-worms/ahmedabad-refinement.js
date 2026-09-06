@@ -15,6 +15,7 @@ const line = (g,d,stroke=ink,width=1.5) => path(g,d,"none",stroke,width);
 const oval = (g,cx,cy,rx,ry,fill,stroke=ink,width=1.5) => add(g,"ellipse",{cx,cy,rx,ry,fill,stroke,"stroke-width":width});
 
 function fan(g, male) {
+  g=add(g,"g",{"data-fan-motion":""});
   // Two different opening angles and rib counts, with pierced guards and paper pleats.
   const tips = male ? [[-41,-22],[-21,-52],[6,-65],[32,-60],[55,-40]]
     : [[-80,-9],[-65,-44],[-37,-69],[0,-79],[37,-69],[65,-44],[80,-9]];

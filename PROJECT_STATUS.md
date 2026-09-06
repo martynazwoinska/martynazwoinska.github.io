@@ -24,6 +24,44 @@ is recorded in the release report after the push.
 
 ### Game accessory refinement, 2026-09-05
 
+Ahmedabad fan interaction preview, 2026-09-06: tapping a lattice fan or
+pressing Enter/Space fans its worm for about three seconds. The primary fan
+has three broader sweeps, the male four quicker sweeps. The existing artwork
+is wrapped in a neutral motion group and rotates around the grip. Three
+short breeze strokes map from the fan to its own worm's cheek using current
+screen matrices, including saved position, size and body movement.
+Public labels, drawings and collection text are unchanged. Reduced motion
+keeps the fan stationary with a brief static breeze cue. Dragging, keyboard
+movement/reset, hiding, changing location, drawing mode and page hiding
+cancel and restore the original transform. Replay cannot accumulate effects.
+Timeline and lifecycle tests plus Ahmedabad, Bali gong and N2 regressions
+pass. Browser checked tap/Enter/Space, male and primary targeting, exact
+restoration, keyboard movement/Home and hiding while active. No console
+errors or overflow at 360/768/1024/1440. Normal desktop and phone views were
+inspected. Full-page captures retain the existing tool limitation, with
+sizes 345x2400, 753x2329, 1009x1777 and 1425x1882. Approved for deployment
+with the pending Bali gong interaction. Publication is verified after push.
+
+Bali gongs local interaction preview, 2026-09-06: tap or Enter/Space plays
+the female's single low strike or the male's two alternating kettle strikes.
+Original drawing paths, paint, placement and labels are unchanged. Neutral
+SVG groups isolate the mallets and metal faces from the stationary frames.
+The refinement pass adjusted each male mallet's travel to its existing boss.
+Quiet original synthesized percussion starts only from a user gesture, with
+bounded decay and no claim of traditional tuning. Unsupported audio falls
+back to motion. Reduced motion leaves the drawings stationary. Moving,
+resetting, hiding, changing location, drawing mode and page hiding cancel
+playback and restore the exact resting transforms. Rapid replay cancels the
+previous sound with a short release rather than accumulating voices.
+Timeline/audio-lifecycle tests, Bali drawing, N2 and loupe regressions pass.
+Browser checked both keyboard strikes, Escape, arrow movement/Home reset,
+pointer activation and phone activation, with no console errors or overflow
+at 360/768/1024/1440. Full-page captures remain defective (half-scale content
+and duplicate sections): 345x2400, 753x2381, 1009x1753 and 1425x1934 pixels.
+Normal desktop and phone views were inspected. Sound timbre still needs the
+user's listening review. No public-facing copy was added. Included in the
+approved interaction release with Ahmedabad. Publication is verified after push.
+
 N2 freeze-flight release, 2026-09-06: tapping either visible cryovial
 pack (or Enter/Space) freezes both worms, flies them out and back, then thaws
 them over 8.2 seconds. They exit upper-right and return head-first from

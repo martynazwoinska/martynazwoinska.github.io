@@ -3,9 +3,11 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260906-bali-club-2";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260906-fans-1";
 import { mountLiveLoupes } from "./live-loupes.js?v=20260906-live-loupes-2";
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260906-cryo-flight-2";
+import { createBaliGongs, GONG_FAMILY } from "./bali-gongs.js?v=20260906-gongs-1";
+import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-fans-1";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
@@ -682,7 +684,11 @@ function renderTabs() {
 
 let unmountLiveLoupes = () => {};
 const n2CryoFlight = createN2CryoFlight(els.habitat);
+const baliGongs = createBaliGongs(els.habitat);
+const ahmedabadFans = createAhmedabadFans(els.habitat);
 function renderSpecies(item, place) {
+  ahmedabadFans.cancel();
+  baliGongs.cancel();
   n2CryoFlight.cancel();
   unmountLiveLoupes();
   const placeName = typeof place === "string" ? place : place?.name;
@@ -1287,6 +1293,8 @@ function saveActiveDoodle() {
 }
 
 function syncDrawingMode() {
+  ahmedabadFans.cancel();
+  baliGongs.cancel();
   n2CryoFlight.cancel();
   els.freestyle.setAttribute("aria-pressed", String(drawingEnabled));
   els.drawTools.toggleAttribute("hidden", !drawingEnabled);
@@ -1396,6 +1404,8 @@ function syncFittedHeadwearMotion(accessory) {
 }
 
 function toggleAccessory(id, force) {
+  ahmedabadFans.cancel();
+  baliGongs.cancel();
   n2CryoFlight.cancel();
   const activeAccessories = activeWardrobe();
   const shouldShow = typeof force === "boolean" ? force : !activeAccessories.has(id);
@@ -1538,7 +1548,7 @@ function finishAccessoryDrag(event) {
   document.documentElement.classList.remove("accessory-drag-active");
   moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
-  else if (event.type === "pointerup") { turnTelescopeFocus(piece); n2CryoFlight.start(piece); }
+  else if (event.type === "pointerup") { turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); ahmedabadFans.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1610,6 +1620,8 @@ function wireAccessoryPieces() {
     piece.addEventListener("pointerdown", event => {
       if (n2CryoFlight.active) return;
       if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
+      ahmedabadFans.cancel();
+      baliGongs.cancel();
       if (activeAccessoryDrag) {
         if (activeAccessoryDrag.piece !== piece || activeAccessoryDrag.pointers.size >= 2) return;
         event.preventDefault();
@@ -1646,6 +1658,14 @@ function wireAccessoryPieces() {
     piece.addEventListener("keydown", event => {
       if (n2CryoFlight.active) { if(event.key === "Escape" || event.key === "Home")n2CryoFlight.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
       if (piece.getAttribute("tabindex") !== "0" || drawingEnabled || !activeWardrobe().has(id)) return;
+      if ((event.key === "Enter" || event.key === " ") && piece.dataset.accessoryFamily === FAN_FAMILY) {
+        event.preventDefault(); if(!event.repeat)ahmedabadFans.start(piece); return;
+      }
+      if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) ahmedabadFans.cancel();
+      if ((event.key === "Enter" || event.key === " ") && piece.dataset.accessoryFamily === GONG_FAMILY) {
+        event.preventDefault(); if(!event.repeat)baliGongs.start(piece); return;
+      }
+      if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) baliGongs.cancel();
       if ((event.key === "Enter" || event.key === " ") && piece.dataset.accessoryFamily === "cryo-vial-jetpack") {
         event.preventDefault(); if(!event.repeat)n2CryoFlight.start(piece); return;
       }
