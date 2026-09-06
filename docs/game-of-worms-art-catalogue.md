@@ -6,6 +6,18 @@ This catalogue is the implementation contract for the 31 active representative c
 
 ## Rules
 
+Sanda, Bali JU1873 local refinement, 2026-09-06: keep the existing cacao,
+endek and gamelan themes. Female and male have distinct cloth construction:
+draped overlapping fabric with fringe versus a short tied wrap with loose
+ends. The hanging gong and low kettle-gong pair are different instruments,
+not resized duplicates. The female retains a steel machete, while the male
+has a carved wooden pod-opening club beside his cacao half. Its rounded
+striking head, tapered grip and end grain distinguish it from the blade.
+The second pass improves metallic depth, pod/frame separation and species-label
+clearance. Only the male's individual English-only control name changes to the
+approved "wooden pod-opening club". No painted asset or scientific copy changes.
+Deployment requested. See the Sanda dossier for references and QA limitations.
+
 Panama QG2726 local refinement, 2026-09-06: existing Gustavia headpieces,
 Golden Fleece capes and forest-census fans retained as concepts. The primary
 flower is open with overlapping petals and radial stamens, the male bloom

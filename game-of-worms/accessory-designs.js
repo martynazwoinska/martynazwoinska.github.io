@@ -7,6 +7,7 @@ import { drawN2Cryopack } from "./n2-cryopacks.js?v=20260906-n2-sidepack-2";
 import { drawAhmedabadRefinement } from "./ahmedabad-refinement.js?v=20260906-af16-canopy-3";
 import { drawTrivandrumRefinement } from "./trivandrum-refinement.js?v=20260906-live-loupes-2";
 import { drawPanamaRefinement } from "./panama-refinement.js?v=20260906-panama-1";
+import { drawBaliRefinement } from "./bali-refinement.js?v=20260906-bali-club-2";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -6187,6 +6188,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawMahahualJU2617Accessory(group, item, companion)) return true;
   if (drawKauaiQG131Accessory(group, item, companion)) return true;
   if (drawOahuECA789Accessory(group, item, companion)) return true;
+  if (drawBaliRefinement(group, item, companion)) return true;
   if (drawSandaJU1873Accessory(group, item, companion)) return true;
   if (drawPanamaRefinement(group, item, companion)) return true;
   if (drawBarroColoradoQG2726Accessory(group, item, companion)) return true;
@@ -6299,9 +6301,9 @@ function renderPiece(target, item, wormPart) {
     ,"qg2726-gustavia-flower-headpiece": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
     ,"qg2726-golden-fleece-cape": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
     ,"qg2726-bci-forest-census-map-fans": { primary: [364, 258, .45, -5], companion: [45, 271, .37, 5] }
-    ,"ju1873-cacao-specimen-lantern": { primary: [385, 132, .37, -2], companion: [-8, 118, .28, 3] }
-    ,"ju1873-balinese-endek-wrap": { primary: [254, 190, .43, 13], companion: [113, 199, .34, 20] }
-    ,"ju1873-balinese-gamelan-gong": { primary: [390, 257, .38, -2], companion: [24, 283, .31, 3] }
+    ,"ju1873-cacao-specimen-lantern": { primary: [410, 124, .46, -12], companion: [14, 174, .35, 5] }
+    ,"ju1873-balinese-endek-wrap": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
+    ,"ju1873-balinese-gamelan-gong": { primary: [403, 277, .56, 0], companion: [20, 244, .56, 0] }
     ,"guadeloupe-hummingbird-costume": { primary: [264, 184, .43, 28], companion: [92, 173, .35, 26] }
     ,"guadeloupe-madras-carnival-crown": { primary: [355, 55, .42, -3], companion: [111, 104, .34, 4] }
     ,"guadeloupe-gwoka-drum": { primary: [365, 258, .4, -3], companion: [31, 279, .33, 4] }
@@ -6364,16 +6366,17 @@ function renderPiece(target, item, wormPart) {
   const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "lingsar-springwater-current";
   if (sharedAccessoryFamilies.has(item.family)) piece.dataset.sharedAccessory = "true";
   if (item.family === "santeuil-cylinder-organ-instrument") piece.dataset.pieceLabel = companion ? "concertina" : "cylinder organ";
+  if (item.family === "ju1873-cacao-specimen-lantern" && companion) piece.dataset.pieceLabel = "wooden pod-opening club";
   if (item.family === "santeuil-hogweed-locomotive") piece.dataset.pieceLabel = companion ? "railway trolley" : "hogweed-stem locomotive";
   const isSanteuilCompanionProp = companion && ["santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"].includes(item.family);
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
-  const isPanamaWorn = ["qg2726-gustavia-flower-headpiece", "qg2726-golden-fleece-cape"].includes(item.family);
+  const isBodyFittedCloth = ["qg2726-gustavia-flower-headpiece", "qg2726-golden-fleece-cape", "ju1873-balinese-endek-wrap"].includes(item.family);
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
-    : isPanamaWorn || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
+    : isBodyFittedCloth || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });
-  if ((isPanamaWorn || ["n2-lab-coat", "n2-lab-goggles", "cryo-vial-jetpack"].includes(item.family)) && artParent.addEventListener) {
+  if ((isBodyFittedCloth || ["n2-lab-coat", "n2-lab-goggles", "cryo-vial-jetpack"].includes(item.family)) && artParent.addEventListener) {
     // A toggle can start clothing later than the body. Reuse its animation clock.
     artParent.addEventListener("animationstart", event => {
       if (event.target !== artParent) return;

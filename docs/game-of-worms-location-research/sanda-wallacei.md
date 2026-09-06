@@ -210,6 +210,9 @@ as an unexplained medallion or shield.
 
 ## Suggested starting layouts
 
+The 2026-09-06 refinement below supersedes these starting layouts and the
+earlier paired-construction details. Collection evidence remains unchanged.
+
 These values require final browser tuning:
 
 ```js
@@ -278,3 +281,66 @@ Expected totals:
 - Light and dark themes, reduced motion, keyboard focus and direct drag.
 - No horizontal overflow, failed requests or console errors.
 - Full diff review and `git diff --check`.
+
+## Body-fitted and complementary-pair refinement, 2026-09-06
+
+Local production module: `game-of-worms/bali-refinement.js`. The original
+painting, location record, shared labels and scientific prose remain unchanged.
+Martyna requested more meaningful differences between the worms' props.
+
+- Female: overlapping draped endek wrap with a folded return edge, narrow
+  fringe and original stepped weft-like motifs. Male: compact tied wrap with
+  a short loose end and independently arranged motifs. Both use actual body
+  coordinates and synchronized motion. Weave detail is clipped to fabric.
+- Female: broad side-view steel machete with a fitted grip, rivets, bevel,
+  lanyard and separate opened cacao half. Male: wooden pod-opening club above a
+  differently oriented pod half. Rind ribs and white pulp-covered beans
+  replace the old tiny pink shapes. Each pair is independently drawn.
+- Female: raised-boss bronze gong hanging by two cords from a freestanding
+  timber frame with stable feet. Male: two small kettle gongs supported on
+  cords in a low cradle, with separate beaters. This is a playful abbreviated
+  setup, not a depiction of a full reyong instrument or a named ensemble.
+
+Construction references checked:
+
+- Met collection, Balinese gong suwukan, 1986.467.58a,b:
+  https://www.metmuseum.org/art/collection/search/504441
+  Viewed the reference photograph for suspension, rim depth and raised boss.
+- Soniccouture, Balinese Gamelan II, recorded Balinese kettle-gong families:
+  https://www.soniccouture.com/en/products/31-cultures/g26-balinese-gamelan-ii/
+- Powerhouse Museum, Balinese endek shoulder/breast cloth, object 344535:
+  https://collection.powerhouse.com.au/object/344535
+- Asian Art Museum, kampuh endek overwrap, object 21490:
+  https://searchcollection.asianart.org/objects/21490/noblemans-ceremonial-overwrap-kampuh-endek-or-saput-endek
+- ICCO pod opening reference retained from the existing brief:
+  https://www.icco.org/harvesting-post-harvest-new/
+
+All artwork is original vector geometry. No source image or named textile
+motif was reproduced. Cloth styling and instruments are regional context.
+The machete and club are cacao-processing props, not claimed collection tools.
+ICCO describes wooden clubs for splitting pods. The male club uses a rounded
+striking head, carved tapered grip, palm stop, longitudinal grain and visible
+end grain. A refinement pass removed the closed grain loop that could read
+as a spoon bowl and strengthened the grip stop at the default displayed size.
+The approved individual control name is "wooden pod-opening club". The Game
+is English-only. Shared toggles and scientific text are unchanged.
+
+Critical review and refinement: separated the larger pod from the gong crown,
+enlarged its rind and pulp details, replaced flat concentric gong areas with
+an inset face, dark return rim and raised boss, and moved the male's cradle
+upward so its feet do not intersect the species badge at 1024 px.
+
+Checks: six-piece explicit-paint/clipping/geometry tests and full catalogue
+pair audit pass. Panama, N2, six-location and live-loupe regressions pass.
+Independent pointer dragging, keyboard movement, +/- sizing and Home reset
+were checked. Small male pieces were directly dragged in the phone preview
+after allowing focus-induced scrolling to settle. The Game stays fixed-light
+and uses the existing reduced-motion fallback for fitted garments.
+
+Normal phone, tablet and desktop views were inspected. No document overflow
+at 360, 768, 1024 and 1440 px. Browser reports no errors or warnings.
+Full-page captures were attempted with dimensions 345 x 2400, 753 x 2381,
+1009 x 1753 and 1425 x 1934 pixels. The known tool defect persists: half-scale
+content and duplicated sections make those captures invalid full-page proofs.
+Martyna approved the paired refinement, then the different male cacao tool,
+and requested deployment after implementation. Publication is verified after push.

@@ -24,6 +24,27 @@ is recorded in the release report after the push.
 
 ### Game accessory refinement, 2026-09-05
 
+Sanda, Bali JU1873 release, 2026-09-06: separate draped female and tied
+male endek wraps follow the worm bodies. The female has a bronze hanging gong
+in a timber frame, the male a low pair of cord-supported kettle gongs. Cacao
+tools pair a steel machete for the female with a wooden pod-opening club for
+the male, beside opened pods with pulp-covered beans. The male's individual
+English-only control uses the approved name "wooden pod-opening club".
+Background, shared toggle labels and scientific text are unchanged.
+The refinement pass separated the large pod from the gong, added rim/boss
+depth and moved the small gong setup clear of the species label. Six-object
+paint/geometry, full catalogue and regression checks pass. Independent
+desktop dragging, keyboard movement, resizing and reset were checked, as
+were phone interactions. No overflow at 360, 768, 1024 or 1440 px and no
+browser errors. Complete-page capture remains affected by the previously
+reported half-scale/duplicate-section defect. Martyna approved the paired
+refinement and requested the male club followed by deployment. Publication
+verification follows the release push.
+
+Panama release `33b3eee` is published on main. Pages run `34034162185`
+succeeded. All four release runtime files match the approved commit, and
+the live browser renders six refined drawings without errors or warnings.
+
 Panama QG2726 local refinement, 2026-09-06: six separately drawn objects in
 `game-of-worms/panama-refinement.js`. Gustavia flower headpieces fit above
 the heads, fleece capes follow the body curves, and census fans have joined
