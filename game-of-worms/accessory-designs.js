@@ -4,6 +4,7 @@ import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-san
 import { drawKauaiRecording } from "./kauai-recording.js?v=20260906-kauai-even-cups-2";
 import { drawN2Coat } from "./n2-tailoring.js?v=20260906-n2-fabric-2";
 import { drawN2Cryopack } from "./n2-cryopacks.js?v=20260906-n2-sidepack-2";
+import { drawAhmedabadRefinement } from "./ahmedabad-refinement.js?v=20260906-af16-canopy-3";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -6186,6 +6187,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawOahuECA789Accessory(group, item, companion)) return true;
   if (drawSandaJU1873Accessory(group, item, companion)) return true;
   if (drawBarroColoradoQG2726Accessory(group, item, companion)) return true;
+  if (drawAhmedabadRefinement(group, item, companion)) return true;
   if (drawAhmedabadAF16Accessory(group, item, companion)) return true;
   if (drawReunionJU1373Accessory(group, item, companion)) return true;
   if (drawSanteuilAccessory(group, item, companion)) return true;
@@ -6246,9 +6248,9 @@ function renderPiece(target, item, wormPart) {
     "fig-fascinator": { primary: [331.5, 47, .50, 25], companion: [114.5, 102, .32, 25] },
     "sample-pannier": { primary: [170, 176, .66, -4], companion: [51, 164, .39, 4] },
     "wings": { primary: [247, 150, .46, 68], companion: [88, 147, .35, 70] },
-    "lattice-fan": { primary: [295, 126, .5, -8], companion: [101, 100, .42, -6] },
-    "kite-rig": { primary: [168, 190, .46, -4], companion: [61, 185, .36, 4] },
-    "soil-kit": { primary: [315, 226, .48, -2], companion: [47, 225, .39, 4] },
+    "lattice-fan": { primary: [309, 150, .52, 17], companion: [62, 135, .43, -24] },
+    "kite-rig": { primary: [194, 132, .65, -8], companion: [41, 104, .47, -13] },
+    "soil-kit": { primary: [298, 262, .52, -2], companion: [58, 233, .43, -5] },
   "santeuil-railway-driver-uniform": { primary: [0, 0, 1, 0], companion: [-28, 82, .43, 0] },
   "santeuil-cylinder-organ-instrument": { primary: [360, 244, .66, -4], companion: [62, 161, .38, -28] },
   "santeuil-hogweed-locomotive": { primary: [220, 275, .73, -2], companion: [28, 198, .62, 0] },

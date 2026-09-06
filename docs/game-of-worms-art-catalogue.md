@@ -6,6 +6,18 @@ This catalogue is the implementation contract for the 31 active representative c
 
 ## Rules
 
+Ahmedabad local refinement, 2026-09-06: separately opened lattice fans with
+paper folds and wooden ribs, patterned paper kites with bamboo bows and wooden
+reels, and distinct pail/probe versus tray/trowel soil kits. Fans leave faces
+clear and kites sit above the bodies. Original background and public copy are
+unchanged. Final contextual preview approved for deployment. See the Ahmedabad dossier for checks
+and the unresolved full-page capture limitation.
+Kite follow-up: longer curved threads, independent slow drift for each kite,
+fixed reel anchors and paper tilting around the bridle knot. Reduced-motion
+views remain static. Other Ahmedabad artwork is unchanged.
+Canopy proportions are now 1.5 times larger for the primary worm and 1.65
+for the male, keeping the reels and thread anchors unchanged. Approved for release.
+
 Santeuil uniform-fit follow-up, 2026-09-05: separate cap and jacket fit groups
 centre the caps on each head and bring the jacket collars forward while
 the lower hems follow the leftward body bend. Original uniform drawing paths,

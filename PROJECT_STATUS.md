@@ -6,6 +6,18 @@ This file records approved decisions and the verified implementation state. Alwa
 
 ### Game accessory refinement, 2026-09-05
 
+Ahmedabad AF16 approved for deployment, 2026-09-06: refined paper/wood fans and kites,
+painted-metal pail/probe and a separate male tray/trowel. Paired differences
+include geometry and construction, not just scale. Background and copy are
+unchanged. Six-piece pointer/keyboard/resize/reset, geometry, paint, regression
+and overflow checks pass. Normal phone and desktop views reviewed. Complete
+full-page screenshot proof is still blocked by duplicated half-scale captures.
+Martyna approved the final larger-canopy preview for deployment. See the Ahmedabad dossier.
+The subsequent kite preview adds longer curved threads and independently
+timed drifting motion with fixed reel anchors and a reduced-motion fallback.
+The earlier deployment hold was resolved by the approved larger kite-to-reel proportions.
+The latest preview enlarges only the primary/male paper by 50%/65%, respectively.
+
 Kauaʻi release 9ad179b is published on main. GitHub Pages run 34020523952
 succeeded, and all four deployed runtime files match the approved commit.
 

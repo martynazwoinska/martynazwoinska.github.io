@@ -4,6 +4,52 @@ Last updated: 2026-07-26
 
 This dossier is the evidence and review contract for the Ahmedabad landscape and the three *Caenorhabditis briggsae* AF16 accessory pairs.
 
+## Local refinement, 2026-09-06
+
+The new `ahmedabad-refinement.js` renderer supersedes the older accessory
+construction descriptions below. Background, location data and public labels
+remain unchanged. Martyna approved the final contextual preview for deployment.
+
+- Fans: broad seven-rib opening for the hermaphrodite and a narrower asymmetric
+  five-rib opening for the male. Bound edges, shaded paper pleats, contained
+  diamond lattice, wooden guards, a pivot and small tassel replace the dense grid.
+  Neither fan covers the face.
+- Kites: berry/ivory diamond inset for the hermaphrodite and a violet striped
+  kite for the male. Each has a bowed bamboo spar, spine, bridle and line to a
+  wooden reel. Reels have separate axial grips, end flanges and wound thread.
+  The flying paper sits above the body instead of across it.
+- Soil kits: a ribbed painted pail with rolled metal rim and separate sampling
+  probe for the hermaphrodite. A shallow metal tray and ridged hand trowel for
+  the male. Redundant sample bags are omitted to reduce clutter.
+
+Construction reference: [D'Source, Kite Making, Gujarat](https://dsource.in/resource/kite-making-gujarat/making-process/kite-making),
+with the government craft source already listed below. The reference supports
+paper, bamboo and edge reinforcement. Drawings are original.
+
+Review included a second pass on fan lattice, main-fan placement, bucket rim
+and probe spacing. All six pointer drags, keyboard movement, resizing and Home
+reset passed. Ahmedabad geometry/paint, legacy palette, six-location and N2
+checks passed, as did syntax and diff checks. Browser console was clear.
+No overflow at 360, 768, 1024 or 1440 px. The Game remains fixed-light.
+Normal phone and desktop contextual renders were inspected. Full-page captures
+are invalid because they duplicate sections at half scale. Returned images:
+345 × 2400, 753 × 2329, 1009 × 1777 and 1425 × 1882 pixels, respectively.
+Complete full-page responsive proof remains pending.
+
+Kite follow-up: both threads are longer, with opposing cubic curves. The paper
+and thread sway around the fixed reel exit. A separate gentle paper tilt pivots
+on the exact bridle knot, calculated from the kite's placement transform.
+Primary and male drift periods are 7.5 and 6.3 seconds with different phases.
+Keyboard focus pauses motion. Animation is enabled only for no-preference,
+leaving reduced-motion views static. Fans, soil tools, reels and public copy
+are unchanged by this follow-up. This follow-up is included in the approved release.
+Canopy-size follow-up: primary paper is scaled 1.5 and male paper 1.65 around
+the bridle knot. Reels, handles, thread lengths and motion are unchanged.
+Normal desktop and phone renders reviewed, with no canopy clipping or page
+overflow at the four tested widths. Complete full-page proof remains pending.
+Martyna approved these changed proportions and requested deployment after the
+contextual preview and disclosure of the full-page capture limitation.
+
 ## Evidence boundaries
 
 ### AF16 collection record
