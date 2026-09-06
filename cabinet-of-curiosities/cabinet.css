@@ -922,9 +922,9 @@ button { color: inherit; }
 
 :root[data-theme='light'] {
   color-scheme: light;
-  --bg: #eee9dc;
-  --surface: #fbf7ec;
-  --surface-strong: #e8e0ca;
+  --bg: #f2f5f2;
+  --surface: #fbfcfb;
+  --surface-strong: #e3eae5;
   --text: #17231d;
   --soft: #5d655f;
   --emerald: #267654;
@@ -936,36 +936,36 @@ button { color: inherit; }
 }
 
 :root[data-theme='light'] .fantasy-surround img { filter: none; opacity: 1; }
-:root[data-theme='light'] .fantasy-surround::before { background: radial-gradient(ellipse at center, rgba(255, 251, 236, .1) 28%, rgba(238, 231, 209, .5) 80%); }
+:root[data-theme='light'] .fantasy-surround::before { background: radial-gradient(ellipse at center, rgba(248, 251, 249, .1) 28%, rgba(225, 235, 229, .5) 80%); }
 :root[data-theme='light'] .home-link,
 :root[data-theme='light'] .collection-toggle,
 :root[data-theme='light'] .wheel-toggle,
-:root[data-theme='light'] .title-plaque { background: rgba(250, 247, 234, .88); }
-:root[data-theme='light'] .collection-panel { background: rgba(248, 244, 230, .97); }
-:root[data-theme='light'] .object-preview { background: rgba(250, 247, 234, .97); }
-:root[data-theme='light'] .explore-hint { background: rgba(250, 247, 234, .86); }
-:root[data-theme='light'] .scene-controls { background: rgba(250, 247, 234, .9); }
+:root[data-theme='light'] .title-plaque { background: rgba(248, 251, 249, .88); }
+:root[data-theme='light'] .collection-panel { background: rgba(246, 249, 247, .97); }
+:root[data-theme='light'] .object-preview { background: rgba(248, 251, 249, .97); }
+:root[data-theme='light'] .explore-hint { background: rgba(248, 251, 249, .86); }
+:root[data-theme='light'] .scene-controls { background: rgba(248, 251, 249, .9); }
 
 @media (max-width: 760px) {
   :root[data-theme='light'] .fantasy-surround {
     background:
       radial-gradient(circle at 12% 18%, rgba(156, 121, 43, .2), transparent 24%),
       radial-gradient(circle at 88% 78%, rgba(38, 118, 84, .12), transparent 28%),
-      linear-gradient(145deg, #dfd0b4, #eee7d8 46%, #d8c7ba);
+      linear-gradient(145deg, #dce7df, #f2f5f2 46%, #dce5e0);
   }
   :root[data-theme='light'] .fantasy-surround::before {
     background:
       linear-gradient(90deg, rgba(103, 75, 40, .16), transparent 30%, transparent 70%, rgba(103, 75, 40, .16)),
-      radial-gradient(ellipse at center, rgba(255, 251, 236, .08), rgba(225, 213, 184, .36) 80%);
+      radial-gradient(ellipse at center, rgba(248, 251, 249, .08), rgba(218, 229, 222, .36) 80%);
   }
 }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme]) {
     color-scheme: light;
-    --bg: #eee9dc;
-    --surface: #fbf7ec;
-    --surface-strong: #e8e0ca;
+    --bg: #f2f5f2;
+    --surface: #fbfcfb;
+    --surface-strong: #e3eae5;
     --text: #17231d;
     --soft: #5d655f;
     --emerald: #267654;
@@ -976,15 +976,15 @@ button { color: inherit; }
     --shadow: rgba(36, 25, 10, .35);
   }
   :root:not([data-theme]) .fantasy-surround img { filter: none; opacity: 1; }
-  :root:not([data-theme]) .fantasy-surround::before { background: radial-gradient(ellipse at center, rgba(255, 251, 236, .1) 28%, rgba(238, 231, 209, .5) 80%); }
+  :root:not([data-theme]) .fantasy-surround::before { background: radial-gradient(ellipse at center, rgba(248, 251, 249, .1) 28%, rgba(225, 235, 229, .5) 80%); }
   :root:not([data-theme]) .home-link,
   :root:not([data-theme]) .collection-toggle,
   :root:not([data-theme]) .wheel-toggle,
-  :root:not([data-theme]) .title-plaque { background: rgba(250, 247, 234, .88); }
-  :root:not([data-theme]) .collection-panel { background: rgba(248, 244, 230, .97); }
-  :root:not([data-theme]) .object-preview { background: rgba(250, 247, 234, .97); }
-  :root:not([data-theme]) .explore-hint { background: rgba(250, 247, 234, .86); }
-  :root:not([data-theme]) .scene-controls { background: rgba(250, 247, 234, .9); }
+  :root:not([data-theme]) .title-plaque { background: rgba(248, 251, 249, .88); }
+  :root:not([data-theme]) .collection-panel { background: rgba(246, 249, 247, .97); }
+  :root:not([data-theme]) .object-preview { background: rgba(248, 251, 249, .97); }
+  :root:not([data-theme]) .explore-hint { background: rgba(248, 251, 249, .86); }
+  :root:not([data-theme]) .scene-controls { background: rgba(248, 251, 249, .9); }
 }
 
 @media (prefers-color-scheme: light) and (max-width: 760px) {
@@ -992,12 +992,12 @@ button { color: inherit; }
     background:
       radial-gradient(circle at 12% 18%, rgba(156, 121, 43, .2), transparent 24%),
       radial-gradient(circle at 88% 78%, rgba(38, 118, 84, .12), transparent 28%),
-      linear-gradient(145deg, #dfd0b4, #eee7d8 46%, #d8c7ba);
+      linear-gradient(145deg, #dce7df, #f2f5f2 46%, #dce5e0);
   }
   :root:not([data-theme]) .fantasy-surround::before {
     background:
       linear-gradient(90deg, rgba(103, 75, 40, .16), transparent 30%, transparent 70%, rgba(103, 75, 40, .16)),
-      radial-gradient(ellipse at center, rgba(255, 251, 236, .08), rgba(225, 213, 184, .36) 80%);
+      radial-gradient(ellipse at center, rgba(248, 251, 249, .08), rgba(218, 229, 222, .36) 80%);
   }
 }
 
@@ -1054,15 +1054,18 @@ button { color: inherit; }
   line-height: 1.1;
   scroll-margin-top: 76px;
 }
-.portrait-collection .collection-item { display: grid; grid-template-columns: 64px 1fr; min-height: 82px; padding: 8px 12px; }
+.portrait-collection .collection-item { min-height: 82px; padding: 8px 12px; }
+.collection-item.has-thumbnail { display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: center; }
 .collection-thumbnail { display: block; width: 64px; height: 64px; overflow: hidden; }
+.collection-product-photo { object-fit: contain; background: #fff; border-radius: 3px; }
+.collection-photo-credit { display: inline-block; margin-top: 24px; font-size: .75rem; color: var(--soft); text-underline-offset: 3px; }
+.collection-photo-credit + .collection-photo-credit { margin-left: 16px; }
 .portrait-collection .collection-item strong { font-weight: 500; }
 .portrait-collection .collection-group + .collection-group { margin-top: 32px; }
 @media (min-width: 600px) {
   .portrait-collection .collection-list-items { grid-template-columns: 1fr 1fr; }
 }
-/* A fitted stage between two compact control rails: 100% is a complete view.
-   Only the surrounding wood texture is enlarged; the scene is never stretched. */
+/* A fitted stage between two compact control rails: 100% is a complete view. */
 .cabinet-page.is-scene-interactive {
   --mobile-top: calc(52px + env(safe-area-inset-top));
   --mobile-bottom: calc(48px + env(safe-area-inset-bottom));
@@ -1072,14 +1075,19 @@ button { color: inherit; }
   height: 100dvh;
   background: #382a20;
 }
-.cabinet-page.is-scene-interactive::before {
+.is-scene-interactive .scene-space::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: 0 -200vw;
+  z-index: -1;
   pointer-events: none;
-  background-image: linear-gradient(rgba(30, 21, 15, .36), rgba(30, 21, 15, .36)), url('assets/cabinet-clean-plate-v56.svg');
-  background-size: auto, 600% auto;
-  background-position: center, left 40%;
+  /* A background-only SVG view contains a complete outer timber panel and
+     the continuous counter/apron. Its material scale and shelf height match
+     the scene, and it follows the same camera transform. */
+  background-image: url('assets/cabinet-side-panel-v1.svg');
+  background-size: auto 100%;
+  background-position: center top;
+  background-repeat: repeat-x;
 }
 .cabinet-page.is-scene-interactive .cabinet-stage {
   display: block;
@@ -1093,7 +1101,7 @@ button { color: inherit; }
 }
 .is-scene-interactive .fantasy-surround,
 .is-scene-interactive .board-shell { display: block; }
-.is-scene-interactive .scene-space { box-shadow: 0 0 20px rgba(12, 8, 5, .35); }
+.is-scene-interactive .scene-space { box-shadow: none; }
 .is-scene-interactive .cabinet-header {
   inset: env(safe-area-inset-top) env(safe-area-inset-right) auto env(safe-area-inset-left);
   padding: 4px 8px;

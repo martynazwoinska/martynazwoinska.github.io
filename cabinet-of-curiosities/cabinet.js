@@ -391,7 +391,24 @@
     hotspotLayer.replaceChildren(fragment);
   }
 
-  function collectionThumbnail(item) {
+  let thumbnailSequence = 0;
+  function collectionThumbnail(item, ownPhoto = false) {
+    const product = !ownPhoto && item.kind === 'chocolate' && window.CABINET_PRODUCT_IMAGES?.[item.id];
+    if (product) {
+      const img = document.createElement('img');
+      img.className = 'collection-thumbnail collection-product-photo';
+      img.src = product.src;
+      img.alt = '';
+      img.width = 64;
+      img.height = 64;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.addEventListener('error', () => {
+        // The user approved her own photographs as the list-only fallback.
+        img.replaceWith(collectionThumbnail(item, true));
+      }, {once: true});
+      return img;
+    }
     // These are display windows onto the original assets, never edited derivatives.
     const svgNS = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgNS, 'svg');
@@ -440,12 +457,28 @@
       const defs = document.createElementNS(svgNS, 'defs');
       const clip = document.createElementNS(svgNS, 'clipPath');
       const rect = document.createElementNS(svgNS, 'rect');
-      clip.id = `thumbnail-window-${item.id}`;
+      clip.id = `thumbnail-window-${item.id}-${++thumbnailSequence}`;
       rect.setAttribute('x', String(x - padding));
       rect.setAttribute('y', String(y - padding));
       rect.setAttribute('width', String(w + padding * 2));
       rect.setAttribute('height', String(h + padding * 2));
-      clip.append(rect);defs.append(clip);svg.append(defs);
+      if (item.id === 'kamm-ecuador-85') {
+        // A padded triangle keeps the complete wrapper but excludes the nearby
+        // Taza and Friis-Holm cutouts from this list-only display window.
+        const outline = document.createElementNS(svgNS, 'path');
+        outline.setAttribute('d', 'M661 331L752 488H570Z');
+        clip.append(outline);
+      } else if (item.id === 'taza-round-package') {
+        const outline = document.createElementNS(svgNS, 'ellipse');
+        outline.setAttribute('cx', '571');
+        outline.setAttribute('cy', '373');
+        outline.setAttribute('rx', '48');
+        outline.setAttribute('ry', '48');
+        clip.append(outline);
+      } else {
+        clip.append(rect);
+      }
+      defs.append(clip);svg.append(defs);
       image.setAttribute('clip-path', `url(#${clip.id})`);
       image.setAttribute('href', 'assets/cabinet-photo-objects-v75.svg');
       image.setAttribute('width', String(SCENE_WIDTH));
@@ -455,7 +488,7 @@
     return svg;
   }
 
-  function buildCollectionGroup(title, items, thumbnails = false) {
+  function buildCollectionGroup(title, items, thumbnails = true) {
     const section = document.createElement('section');
     section.className = 'collection-group';
     const heading = document.createElement('h3');
@@ -468,7 +501,11 @@
       button.type = 'button';
       button.className = 'collection-item';
       name.textContent = item.label;
-      if (thumbnails) button.append(collectionThumbnail(item));
+      const thumbnail = thumbnails ? collectionThumbnail(item) : null;
+      if (thumbnail) {
+        button.classList.add('has-thumbnail');
+        button.append(thumbnail);
+      }
       button.append(name);
       button.addEventListener('click', () => openDetails(item, button));
       list.append(button);
@@ -492,6 +529,18 @@
       buildCollectionGroup(copy.collectionGroups.ephemera, ephemera, true)
     );
     if (chofItem) portraitList.append(buildCollectionGroup(copy.kindLabels.app, [chofItem], true));
+    for (const list of [collectionList, portraitList]) {
+      const sources = [
+        ['© Zotter Chocolate', 'https://www.zotter.at/en/about-zotter/press-downloads/logo-photos']
+      ];
+      for (const [label, href] of sources) {
+        const credit = document.createElement('a');
+        credit.className = 'collection-photo-credit';
+        credit.href = href;
+        credit.textContent = label;
+        list.append(credit);
+      }
+    }
   }
 
   function openPanel() {
