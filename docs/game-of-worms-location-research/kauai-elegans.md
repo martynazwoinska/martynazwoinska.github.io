@@ -2,6 +2,18 @@
 
 Last updated: 2026-09-05
 
+## Follow-up, 2026-09-06, approved for deployment
+
+The male now has two equally sized padded ear cups on a balanced headband,
+with matching hinge and cushion detail. Existing overall head fit is preserved.
+Both microphone bases and poles use neutral charcoal and silver. Berry capsules,
+silver recorder reels and meters, and the dark recorder case replace the earlier
+yellow fittings. Recorder geometry, primary headphones and painting are preserved.
+The proposed public labels are **Headphones**, **Microphones** and **Tape recorder**.
+These strings intentionally exist only in English, like the rest of the Game.
+Accessible object names and size controls use the same short labels.
+Martyna approved this exact contextual art and wording for deployment.
+
 ## Headset-fit follow-up, approved for release on 2026-09-06
 
 - Primary fit changes from `(332, 51), 27 degrees` to `(329, 59), 15 degrees`.

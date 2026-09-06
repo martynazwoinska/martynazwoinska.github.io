@@ -39,6 +39,18 @@ const walk = n => [n,...n.children.flatMap(walk)];
   assert.equal(targets.headwear.children[1].querySelector('.location-accessory-art').getAttribute('transform'),
     'translate(114.5 108.5) rotate(12) scale(0.560 0.560)');
   assert.equal(targets.wrap.children.length,2);
+  const maleCups=walk(targets.headwear.children[1]).filter(n=>n.classList.contains('kauai-companion-earcup'));
+  assert.equal(maleCups.length,2,'Male headset needs two full ear cups');
+  assert(maleCups.every(n=>n.getAttribute('fill')==='#b94e77'));
+  assert.equal(maleCups[0].getAttribute('d'),maleCups[1].getAttribute('d'),
+    'Male ear cups must have equal dimensions and silhouette');
+  const micPaint=walk(targets.wrap).flatMap(n=>Object.values(n.attributes));
+  assert(!micPaint.includes('#354f59'),'Microphone bases must not be green');
+  assert(micPaint.includes('#55555b') && micPaint.includes('#ededf0'));
+  const equipment=walk(targets.wrap).concat(walk(targets.charm));
+  const oldBrass=['#c4af76','#c3a561','#bba56c','#d4b973','#dccc99','#d4bd7a','#bd905d'];
+  assert(equipment.every(n=>!Object.values(n.attributes).some(v=>oldBrass.includes(v))),
+    'Microphones and recorder must retain the approved cooler metal palette');
   assert.equal(targets.charm.children.length,1,'Shared recorder must render only once');
   assert.equal(targets.charm.children[0].dataset.sharedAccessory,'true');
   const reels=walk(targets.charm).filter(n=>n.attributes.class==='kauai-tape-reel');

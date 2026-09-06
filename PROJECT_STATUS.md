@@ -6,6 +6,30 @@ This file records approved decisions and the verified implementation state. Alwa
 
 ### Game accessory refinement, 2026-09-05
 
+Latest Kauaʻi follow-up, 2026-09-06, approved for deployment:
+male ear cups now share equal geometry and a balanced band. Both microphone
+stands have neutral charcoal bases, silver poles and neutral grey hardware.
+Short English-only public labels: Headphones, Microphones, Tape recorder.
+Labels also propagate to accessible piece names and size controls. Martyna
+approved the wording and contextual artwork. Four accessory regression checks,
+syntax and diff checks pass. Male keyboard movement/reset was verified.
+DOM overflow checks pass at 360, 768, 1024 and 1440 px. Normal phone/desktop
+renders were inspected. This pass's full-page captures are invalid: half-scale
+content and duplicated sections returned at 345 × 2400, 753 × 2381,
+1009 × 1753 and 1425 × 1934 pixels. Complete responsive proof remains pending.
+
+Kauaʻi follow-up, 2026-09-06, local preview awaiting visual approval:
+the male headset now has two padded ear cups and a visible far-side hinge.
+Microphone fittings and recorder reels/meters use cool silver instead of
+yellow brass. Berry microphone housings and recorder fascia improve contrast.
+Primary headset, accessory positions, background and public copy are unchanged.
+Four accessory regression checks, syntax and diff checks pass. Male-headset
+keyboard movement/reset works and browser console has no warnings or errors.
+Complete page captures were reviewed at viewport widths 360, 768, 1024 and 1440.
+Their content images are 345 × 2448, 753 × 2382, 1009 × 1806 and 1425 × 1935
+pixels respectively, excluding the browser's 15-pixel scrollbar. No overflow.
+Game remains fixed-light. No commit or deployment for this follow-up yet.
+
 Kauaʻi headset-fit follow-up was approved for deployment on 2026-09-06.
 Both headsets sit lower with reduced tilt. The male monitor is 30% larger,
 with a fuller ear cup and a tighter headband. Berry cups and ivory bands

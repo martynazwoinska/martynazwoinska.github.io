@@ -1,7 +1,7 @@
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
 import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260905-tenerife-wings-4";
 import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-santeuil-fit-3";
-import { drawKauaiRecording } from "./kauai-recording.js?v=20260905-kauai-headset-fit-3";
+import { drawKauaiRecording } from "./kauai-recording.js?v=20260906-kauai-even-cups-2";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -24,7 +24,7 @@ const rows = [
   ["elegans", "Santeuil, France", "railway-driver uniforms", "santeuil-railway-driver-uniform", "organ & concertina", "santeuil-cylinder-organ-instrument", "locomotive & trolley", "santeuil-hogweed-locomotive"],
   ["elegans", "Edinburgh, Scotland", "Blackford observatory telescopes", "midmar-compost-tumbler", "Edinburgh tartan kilts", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
   ["elegans", "Tenerife, Spain", "Atlantic canary costumes", "tenerife-atlantic-canary-costume", "timple guitars", "tenerife-timple-guitar", "avocado snack bowls", "tenerife-avocado-snack-bowl"],
-  ["elegans", "Kauaʻi, Hawaiʻi", "forest-bird listening headphones", "xz1516-forest-bird-headphones", "ʻōhiʻa blossom microphones", "xz1516-ohia-blossom-microphone", "reel-to-reel sound recorder", "xz1516-reel-to-reel-recorder"],
+  ["elegans", "Kauaʻi, Hawaiʻi", "Headphones", "xz1516-forest-bird-headphones", "Microphones", "xz1516-ohia-blossom-microphone", "Tape recorder", "xz1516-reel-to-reel-recorder"],
   ["elegans", "Australian Capital Territory", "Flat white", "canberra-flat-white-cafe", "Balloon carriages", "canberra-dawn-balloon-carriage", "Cockatoo café raids", "oconnor-cockatoo-cafe-raid"],
   ["elegans", "Claremont, California · ECA250", "Bookworm books", "eca250-bookworm-book", "California lemonade", "eca250-california-lemonade", "sunny reading glasses", "eca250-sunny-reading-glasses"],
   ["elegans", "Araucanía, Chile", "compost sample buckets", "compost-labyrinth", "Llaima ashfall gauges", "ashfall-recorder", "reciprocal-cross plates", "test-cross-mechanism"],
