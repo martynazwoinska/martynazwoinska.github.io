@@ -80,7 +80,7 @@ const species = [
     localStyle: "field",
     habitat: "Rotting plants & compost",
     habitatKey: "compost",
-    intro: "The famous laboratory worm is also a wild explorer of short-lived, bacteria-rich places such as rotting fruit and compost. In the lab these nematodes eat bacteria growing on agar plates.",
+    intro: "The famous laboratory worm is also a wild explorer of short-lived, bacteria-rich places such as rotting fruit and compost. In the lab these nematodes eat bacteria growing on agar plates. The larger worm is a hermaphrodite and the smaller worm is a male.",
     fact: "Most wild individuals are self-fertile hermaphrodites. Rare males make occasional outcrossing possible.",
     worm: "#f0c78e",
     wormDeep: "#bd7c45",
