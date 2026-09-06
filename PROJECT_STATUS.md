@@ -4,6 +4,37 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Bali cacao interactions, 2026-09-06, approved release
+
+The female's existing machete cuts the pod hanging from the right tree.
+Click, Enter/Space or dropping the blade on the fruit starts a backswing,
+150 ms accelerating handle-pivoted strike, impact hold, recoil and return.
+The pod jolts at contact, then two separately illustrated rind halves rotate apart,
+revealing the seed-filled and empty interior faces. The original painting,
+ground fruit and female accessory drawing are
+unchanged. Home restores the original fruit. Scene changes clear the effect,
+and cancellation restores the exact source prop. Reduced motion opens the
+pod directly. Two optional PNGs load only on first use. This replaces the
+rejected ground-pod wipe effect.
+
+The male's club and pod half are replaced by an open paper packet with five
+angular roasted nibs. Click or Enter/Space feeds him one nib. The nib travels
+from its actual packet position to his moving mouth. Home refills the packet,
+and another click after it empties also refills it. Reduced motion consumes
+one nib without travel. Interruptions before contact restore it, while eaten
+nibs stay consumed. A second drawing pass refines the lip, gusset and creases.
+The only new wording is the requested "cacao nibs" on the packet and its
+individual accessible name. Shared toggles and scientific copy are unchanged.
+The Game is English-only. No new captions or explanations are added.
+
+Preview: `http://127.0.0.1:4198/game-of-worms/?review=bali-nibs`.
+Martyna approved the exact final packet and interaction together with the
+female's hanging-pod strike and requested deployment of all Bali changes.
+Seven regression scripts, syntax and diff checks pass. Browser verified
+desktop/phone feeding, keyboard reset, Escape and the hanging-pod strike,
+without console errors. Publication is verified separately after the push.
+See the Sanda dossier for asset provenance, tests and screenshot limitations.
+
 ### Cabinet list photographs v102, 2026-09-06 — approved release
 
 All 34 chocolate entries now have internet product photographs in both Browse

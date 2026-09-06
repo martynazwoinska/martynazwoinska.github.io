@@ -1,5 +1,85 @@
 # Sanda, Bali *Caenorhabditis wallacei* JU1873 location research and art brief
 
+## Hanging pod cutting preview, 2026-09-06
+
+Male nib-feeding follow-up: replaces his wooden club and pod half with an
+open paper packet. The user supplied the sole new wording "cacao nibs".
+It appears on the packet and in its individual accessible name. The Game
+is intentionally English-only. No shared toggle or scientific prose changes.
+Five angular pieces have different profiles, fracture faces and positions.
+The paper has a separate side gusset, dark opening, turned lip and crimped
+foot. A second pass softened its silhouette and refined its folded corners.
+The packet tilts toward the male without covering his eyes or cloth.
+
+Click/Enter/Space takes one actual nib from the packet to the male's current
+mouth position. Dropping the packet opening at his mouth also feeds him.
+Each nib disappears at contact. Home refills the packet. Clicking an empty
+packet refills it. Reduced motion changes food state without travel.
+Cancellation, replay, hiding and reset are covered by dedicated lifecycle
+tests. The existing female strike, gongs and cloth remain independent.
+This is fantasy play, not a claim about nematode diet or the collection.
+Construction reference: ICCO processing guidance distinguishes roasted nibs
+from the separated shell: https://www.icco.org/processing-cocoa/ .
+No external artwork was copied.
+
+Current preview: `http://127.0.0.1:4198/game-of-worms/?review=bali-nibs`.
+Martyna approved the final drawing and both interactions for deployment.
+Seven regression scripts, syntax and diff checks pass. Browser verified
+phone/desktop feeding, reset, Escape and the female strike with no errors.
+Four-width overflow checks pass.
+Full-page captures still exhibit the known duplicate/half-size capture defect,
+at 345x2400, 753x2381, 1009x1753 and 1425x1934 pixels. They are not valid
+full-page proofs. Normal contextual views and interaction checks supplement
+them. Existing raster source bytes are preserved.
+
+`bali-cacao.js` animates the existing female machete along the reddish pod
+hanging from the right tree. The ground fruit remains unchanged. Click or
+Enter/Space starts the cut, as does dropping the blade onto the
+fruit. Home resets both fruit and tool. Scene changes clear it. Interruptions
+restore the exact tool opacity and the pre-animation fruit state. Reduced
+motion reveals the opened pod without moving the blade. This is playful
+cacao processing, not a reconstruction of the isolate's collection.
+
+Production assets `assets/sanda-hanging-pod-backing.png` and
+`assets/sanda-hanging-pod-halves.png` were made with the built-in image
+generation tool, using the original background as reference. They are copied
+byte-for-byte from its PNGs. The halves have genuine RGBA transparency.
+No original raster or accessory path was changed. A tight clip limits the
+clean backing to the original hanging fruit's footprint. Separate original
+exterior surfaces rotate away as the seed-filled and empty inner faces turn
+into view. Each half has a distinct angle, followed by a restrained settling
+motion. The two optional images decode before animation starts.
+
+Generation prompts:
+
+> Precise object removal for an animation clean plate. In this exact painting REMOVE ONLY the dark reddish-brown cacao pod hanging from the RIGHT tree trunk, at approximately x1027-1140 y210-410 of the 1200x859 image. Fill its footprint with coherent shaded bark and small understory leaves matching those immediately behind it. Leave its short stem at the top. Keep the other green hanging pod, all flowers, foliage, trees, large rotten golden pod on the ground, lighting, perspective, composition and framing unchanged. The entire original landscape must remain identical as far as possible. No new objects. Same full original aspect ratio. This is only the empty backing behind the removed right hanging fruit.
+
+> Use case: precise-object-edit / animation sprite extraction. Reference: ONLY the slim DARK REDDISH BROWN cacao pod hanging from the tree at the upper right of this painting. Produce a genuinely TRANSPARENT PNG containing TWO SEPARATE LENGTHWISE HALVES of this one pod, both vertical, pointed tips DOWN and stem ends UP. Left half has dense cream-white moist pulp-covered oval cacao seeds attached in natural longitudinal rows around the central axis. Right half is a slightly narrower concave empty rind half with pale inner pith and a few adherent white pulp fibres. The halves show their freshly cut inner faces toward viewer, with thick pale cut edges and dark reddish-brown ribbed exterior visible along outside rims. Botanically realistic cacao, NOT coconut or papaya. Retain original painting's muted textured realism, directional dappled light and weathered burgundy rind. Place left half entirely within LEFT HALF of canvas and right half entirely within RIGHT HALF with generous transparent separation. Match heights and scale as two sides of the SAME elongated 2:1 pod, no exaggerated wide bowls. Straight vertical axes so they can be individually rotated in animation. Keep each object fully visible, padding on every edge. No ground, no cast shadow onto background, no sky, no trees, no text, NO knife, no additional pods. Real transparent alpha around both cutouts. Square canvas.
+
+Martyna rejected the first ground-fruit wipe as unnatural. This revision
+targets the tree fruit, delays opening until the cut is complete and uses
+physical half rotations with visible rind thickness and different interiors.
+After the first contextual review, added a small asymmetric settling motion.
+Motion-only follow-up: Martyna found the sliding blade unnatural. Replaced it
+with a 520 ms wind-up, 120 ms anticipation, 150 ms accelerating chop around
+the handle, 35 ms impact hold and a visible recoil. The cutting edge lands
+at the hanging pod's near side. A brief pod jolt follows contact, and the
+halves start opening 50 ms after impact. The complete action lasts 2150 ms.
+After reviewing contact in-browser, strengthened the recoil clearance so the
+blade does not linger against the opening fruit. All raster bytes unchanged.
+No labels or other public prose changed, and the Game remains English-only.
+
+Checks: `check-bali-cacao.cjs`, Bali refinement/gongs, Canberra café,
+Ahmedabad fans and N2/full-catalogue geometry pass. Syntax and diff checks
+pass. Actual browser checks cover click, drag-to-pod, Enter, reset, normal
+phone/tablet/desktop views and no horizontal overflow at 360, 768, 1024 and
+1440 px. Full-page screenshot attempts: 345 x 2400, 753 x 2381, 1009 x 1753,
+1425 x 1934. The known capture defect still duplicates sections and blanks
+part of those images, so these are not valid full-page proofs. Reduced
+motion and load-failure/cancellation paths are covered by automated tests.
+The hanging-pod strike is approved with the male nib-feeding follow-up.
+Publication is verified separately after the release push.
+
 Last updated: 2026-08-11
 
 ## Purpose

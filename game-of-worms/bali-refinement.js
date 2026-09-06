@@ -78,21 +78,33 @@ function pod(g, x, y, scale, angle, pale = false) {
 
 function cacao(g,male) {
   if (male) {
-    // A split fruit rests on its rind with a compact tool laid beside it.
-    pod(g,-8,34,1.03,-13,true);
-    // One-piece wooden club: rounded striking end, tapered neck and palm swell.
-    const club=add(g,'g',{'data-tool':'wooden-club',transform:'rotate(-10 -30 -30)'});
-    p(club,'M-111-34Q-103-40-94-35L-66-30Q-40-28-24-43Q-2-62 38-56Q59-53 64-35Q68-13 47-6Q12 3-17-10Q-40-23-66-19L-96-14Q-110-11-116-20Q-121-28-111-34Z','#b17c48',ink,2.1);
-    p(club,'M-115-23Q-109-15-96-19L-66-24Q-37-28-14-16Q16-3 47-12Q61-18 64-35Q68-13 47-6Q12 3-17-10Q-40-23-66-19L-96-14Q-110-11-116-20Z','#765133','none');
-    p(club,'M-99-33L-66-27Q-38-25-21-39Q3-56 35-51Q47-49 51-45Q12-49-16-32Q-35-20-64-25L-98-28Z','#d4a468','none');
-    // End grain and long fibres follow the carved wood, contained by its edge.
-    e(club,52,-32,9,19,'#c69860','#805936',1.3);
-    l(club,'M51-46Q41-31 52-17M55-42Q48-32 55-23','#997044',1.1);
-    l(club,'M-17-37Q10-50 36-43M-22-30Q7-42 35-36M-12-18Q13-11 37-17','#805936',1.3);
-    l(club,'M-106-25Q-86-24-70-27','#e0b47c',1.5);
-    l(club,'M-8-26Q10-33 32-29M-2-23Q14-26 29-23','#91613c',1.1);
-    p(club,'M-114-35Q-121-32-119-23L-116-16Q-112-12-106-17L-108-31Q-109-36-114-35Z','#bd8b54',ink,1.4);
-    l(club,'M-115-30L-112-20','#e0b47c',1.3);
+    // Open gusseted paper pouch: dark interior, separate side fold and crimped foot.
+    const bag=add(g,'g',{'data-cacao-package':''});
+    p(bag,'M-39-47L18-53L38-38Q35 4 41 48Q9 59-38 47Q-43 17-40-9L-43-28Z','#e8cf9c',ink,2);
+    p(bag,'M18-53L38-38L41 48L24 54L25-31Z',berry,ink,1.5);
+    p(bag,'M28-31L33 33L25 48L24 54L41 48L38-38Z',wine,'none');
+    p(bag,'M-39-47L18-53L31-37L-29-31Z','#775446',ink,1.5);
+    p(bag,'M-32-44L15-48L25-38L-28-34Z','#392e2b','none');
+    const pieces=[[-22,-40,1,-14],[-7,-45,.85,20],[8,-41,.95,-20],[-13,-32,.8,48],[17,-34,.75,-7]];
+    pieces.forEach(([x,y,s,a],i)=>{
+      const nib=add(bag,'g',{'data-cacao-nib':String(i),transform:`translate(${x} ${y}) rotate(${a}) scale(${s})`});
+      p(nib,'M-7-3L-1-7L7-4L6 3L0 6L-6 2Z','#704333','#382c28',1);
+      p(nib,'M-7-3L-1-7L7-4L0 0Z','#b3815c','none');
+      p(nib,'M0 0L7-4L6 3L0 6Z','#4f342e','none');
+      l(nib,'M-3-3L0-4M-3 1L-1 2','#d0a17a',.8);
+    });
+    // Turned lip overlaps the lower edges of the loose nibs.
+    p(bag,'M-43-28L-39-37Q-8-27 25-37L26-29Q-6-19-43-28Z','#f5e3bd',ink,1.3);
+    p(bag,'M-43-28L-39-37L-33-28L-36-19Z','#dfbd83','#a57d51',.8);
+    p(bag,'M-38 38Q-9 47 24 40L24 54Q-5 57-38 47Z','#c19b65','none');
+    l(bag,'M-33 43Q-8 49 20 45','#f5e3bd',1.4);
+    p(bag,'M-38 38L-27 45L-35 48Z','#ae8358','none');
+    l(bag,'M-34 34L-27 45M18 35L12 43','#b38e57',1);
+    l(bag,'M-35-20Q-40 2-34 28M19-22Q15 9 21 31','#c8aa79',1.7);
+    p(bag,'M-32-10Q-6-13 19-9L18 25Q-5 29-32 24Z',ivory,'#b38e57',1);
+    const label=add(bag,'text',{x:-7,y:3,fill:wine,'font-family':'Georgia, serif','font-size':14,'font-weight':700,'text-anchor':'middle','stroke':'none'});
+    add(label,'tspan',{x:-7}).textContent='cacao';
+    add(label,'tspan',{x:-7,dy:16}).textContent='nibs';
   } else {
     // Broad working blade with a thick spine, cutting bevel and fitted grip.
     p(g,'M-48-6L92-31Q113-32 124-13Q109 9 78 17L-49 21Z',silver,ink,2);

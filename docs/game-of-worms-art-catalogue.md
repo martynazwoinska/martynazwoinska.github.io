@@ -1,5 +1,19 @@
 # Game of Worms art catalogue
 
+Bali cacao interaction preview, 2026-09-06: the female's unchanged machete
+now cuts the cacao pod hanging from the right tree. Separate seed-filled and
+empty rind halves rotate open after a sharp handle-pivoted strike. A slow
+backswing, accelerating impact and recoil replace the rejected sliding motion.
+The ground fruit remains unchanged. The opening remains until Home or a location
+change. Click, keyboard activation and dropping the blade on the pod work.
+The male's club and pod half become an open, folded paper packet of five
+separately drawn roasted nibs. Its sole label is "cacao nibs", also used for
+the individual accessible control. Click/Enter/Space feeds one nib to his
+mouth. Home or a click after emptying refills it. The opening, gusset and
+folds received a second construction pass, and its angle faces the male.
+Endek wraps, gongs, shared toggle labels and original assets remain unchanged.
+Martyna approved the exact contextual packet and both interactions for deployment.
+
 Canberra interactive café preview, 2026-09-06 supersedes row 14's old
 accessory specifications. Her unchanged stoneware cup lifts for a sip, his
 grinder becomes a three-biscuit serving. Two airborne cockatoos without

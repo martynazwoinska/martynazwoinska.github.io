@@ -7,7 +7,7 @@ import { drawN2Cryopack } from "./n2-cryopacks.js?v=20260906-n2-sidepack-2";
 import { drawAhmedabadRefinement } from "./ahmedabad-refinement.js?v=20260906-fans-1";
 import { drawTrivandrumRefinement } from "./trivandrum-refinement.js?v=20260906-live-loupes-2";
 import { drawPanamaRefinement } from "./panama-refinement.js?v=20260906-panama-1";
-import { drawBaliRefinement } from "./bali-refinement.js?v=20260906-no-female-pod-1";
+import { drawBaliRefinement } from "./bali-refinement.js?v=20260906-nibs-1";
 import { drawFlyingCockatoos } from "./canberra-cockatoos.js?v=20260906-cafe-2";
 import { drawCafeProps } from "./canberra-cafe-art.js?v=20260906-cafe-2";
 
@@ -6306,7 +6306,7 @@ function renderPiece(target, item, wormPart) {
     ,"qg2726-gustavia-flower-headpiece": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
     ,"qg2726-golden-fleece-cape": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
     ,"qg2726-bci-forest-census-map-fans": { primary: [364, 258, .45, -5], companion: [45, 271, .37, 5] }
-    ,"ju1873-cacao-specimen-lantern": { primary: [410, 124, .46, -12], companion: [14, 174, .35, 5] }
+    ,"ju1873-cacao-specimen-lantern": { primary: [410, 124, .46, -12], companion: [150, 168, .62, -7] }
     ,"ju1873-balinese-endek-wrap": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
     ,"ju1873-balinese-gamelan-gong": { primary: [403, 277, .56, 0], companion: [20, 244, .56, 0] }
     ,"guadeloupe-hummingbird-costume": { primary: [264, 184, .43, 28], companion: [92, 173, .35, 26] }
@@ -6371,7 +6371,7 @@ function renderPiece(target, item, wormPart) {
   const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "lingsar-springwater-current";
   if (sharedAccessoryFamilies.has(item.family)) piece.dataset.sharedAccessory = "true";
   if (item.family === "santeuil-cylinder-organ-instrument") piece.dataset.pieceLabel = companion ? "concertina" : "cylinder organ";
-  if (item.family === "ju1873-cacao-specimen-lantern" && companion) piece.dataset.pieceLabel = "wooden pod-opening club";
+  if (item.family === "ju1873-cacao-specimen-lantern" && companion) piece.dataset.pieceLabel = "cacao nibs";
   if (item.family === "canberra-flat-white-cafe") piece.dataset.pieceLabel = companion ? "biscuits" : "flat white";
   if (item.family === "santeuil-hogweed-locomotive") piece.dataset.pieceLabel = companion ? "railway trolley" : "hogweed-stem locomotive";
   const isSanteuilCompanionProp = companion && ["santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"].includes(item.family);

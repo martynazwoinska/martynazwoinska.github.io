@@ -3,11 +3,12 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260906-cafe-2";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260906-nibs-1";
 import { createCanberraCafe, CAFE_FAMILIES } from "./canberra-cafe.js?v=20260906-cafe-2";
 import { mountLiveLoupes } from "./live-loupes.js?v=20260906-live-loupes-2";
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260906-cryo-flight-2";
 import { createBaliGongs, GONG_FAMILY } from "./bali-gongs.js?v=20260906-gongs-1";
+import { createBaliCacao } from "./bali-cacao.js?v=20260906-nibs-1";
 import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-fans-1";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
@@ -686,9 +687,11 @@ function renderTabs() {
 let unmountLiveLoupes = () => {};
 const n2CryoFlight = createN2CryoFlight(els.habitat);
 const baliGongs = createBaliGongs(els.habitat);
+const baliCacao = createBaliCacao(els.habitat);
 const ahmedabadFans = createAhmedabadFans(els.habitat);
 const canberraCafe = createCanberraCafe(els.habitat);
 function renderSpecies(item, place) {
+  baliCacao.clear();
   canberraCafe.clear();
   ahmedabadFans.cancel();
   baliGongs.cancel();
@@ -1219,6 +1222,7 @@ function announceSelectedAccessorySize() {
 }
 
 els.accessorySizeSlider.addEventListener("input", event => {
+  baliCacao.cancel();
   setSelectedAccessoryScale(Number(event.currentTarget.value) / 100);
 });
 els.accessorySizeSlider.addEventListener("change", announceSelectedAccessorySize);
@@ -1296,6 +1300,7 @@ function saveActiveDoodle() {
 }
 
 function syncDrawingMode() {
+  baliCacao.cancel();
   canberraCafe.cancel();
   ahmedabadFans.cancel();
   baliGongs.cancel();
@@ -1408,6 +1413,7 @@ function syncFittedHeadwearMotion(accessory) {
 }
 
 function toggleAccessory(id, force) {
+  baliCacao.cancel();
   canberraCafe.cancel();
   ahmedabadFans.cancel();
   baliGongs.cancel();
@@ -1469,7 +1475,7 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
+      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
       addAccessoryHitTarget(piece);
     });
   });
@@ -1552,8 +1558,11 @@ function finishAccessoryDrag(event) {
   piece.classList.remove("is-dragging");
   document.documentElement.classList.remove("accessory-drag-active");
   moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
-  if (moved) announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
-  else if (event.type === "pointerup") { turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); }
+  if (moved) {
+    announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
+    if (event.type === "pointerup") baliCacao.drop(piece);
+  }
+  else if (event.type === "pointerup") { turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1626,6 +1635,7 @@ function wireAccessoryPieces() {
     piece.addEventListener("pointerdown", event => {
       if (n2CryoFlight.active) return;
       if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
+      baliCacao.cancel();
       canberraCafe.cancel();
       ahmedabadFans.cancel();
       baliGongs.cancel();
@@ -1665,6 +1675,10 @@ function wireAccessoryPieces() {
     piece.addEventListener("keydown", event => {
       if (n2CryoFlight.active) { if(event.key === "Escape" || event.key === "Home")n2CryoFlight.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
       if (piece.getAttribute("tabindex") !== "0" || drawingEnabled || !activeWardrobe().has(id)) return;
+      if ((event.key === "Enter" || event.key === " ") && baliCacao.handles(piece)) {
+        event.preventDefault(); if (!event.repeat) baliCacao.start(piece); return;
+      }
+      if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) baliCacao.cancel();
       if ((event.key === "Enter" || event.key === " ") && canberraCafe.handles(piece)) {
         event.preventDefault(); if (!event.repeat) canberraCafe.start(piece); return;
       }
@@ -1688,6 +1702,7 @@ function wireAccessoryPieces() {
       if (event.key === "Home") {
         event.preventDefault();
         canberraCafe.reset(piece);
+        baliCacao.reset(piece);
         resetAccessoryPosition(id, wormPart);
         return;
       }

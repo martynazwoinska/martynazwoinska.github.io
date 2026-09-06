@@ -32,7 +32,11 @@ const walk=n=>[n,...n.children.flatMap(walk)];
         if(ref)assert(nodes.some(c=>ref===`url(#${c.attributes.id})`));
       }
       if(family.includes('endek'))assert(nodes.some(n=>n.attributes['clip-path']));
-      if(family==='ju1873-cacao-specimen-lantern')assert.equal(nodes.some(n=>n.attributes['data-tool']==='wooden-club'),male);
+      if(family==='ju1873-cacao-specimen-lantern') {
+        assert(!nodes.some(n=>n.attributes['data-tool']==='wooden-club'));
+        assert.equal(nodes.filter(n=>n.attributes['data-cacao-nib']!==undefined).length,male?5:0);
+        if(male)assert.deepEqual(nodes.filter(n=>n.tag==='tspan').map(n=>n.textContent),['cacao','nibs']);
+      }
       return nodes.map(n=>n.attributes);
     });
     assert.notDeepEqual(pair[0],pair[1]);
