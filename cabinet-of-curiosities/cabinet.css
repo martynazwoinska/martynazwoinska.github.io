@@ -118,7 +118,8 @@ button { color: inherit; }
   height: calc(100% - 64px);
   align-self: end;
 }
-.cabinet-page .study-room {
+.cabinet-page .study-room,
+.cabinet-page .study-frame-foliage {
   display: block;
   position: absolute;
   /* Register the background to the existing 1672 × 941 board coordinates.
@@ -132,6 +133,13 @@ button { color: inherit; }
 .cabinet-page .surround-picture {
   position: absolute;
   inset: 0;
+}
+.cabinet-page .study-frame-foliage {
+  /* A background-only window exposes the new timber moulding and foliage.
+     The woven centre, counter and all approved object layers stay unchanged. */
+  mask-image: url("assets/cabinet-frame-foliage-window-v1.svg");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
 }
 .cabinet-page .surround-picture img {
   /* Keep the original blue note; the new image supplies the entire recess,
@@ -309,6 +317,18 @@ button { color: inherit; }
   pointer-events: none;
 }
 
+.recess-depth,
+.object-contact-shadows {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.recess-depth { z-index: 0; }
+.object-contact-shadows { z-index: 0; }
+
 .crochet-eye {
   position: absolute;
   z-index: 1;
@@ -355,6 +375,7 @@ button { color: inherit; }
   left: 22.2%;
   top: 15.2%;
   isolation: isolate;
+  container-type: inline-size;
   display: grid;
   place-items: center;
   width: 8.1%;
@@ -435,7 +456,8 @@ button { color: inherit; }
   margin-top: 5%;
   font-family: var(--display);
   color: #e2ca91;
-  font-size: clamp(.68rem, .9vw, .98rem);
+  /* Size the lettering against its medallion, not the phone viewport. */
+  font-size: 12cqw;
   font-weight: 700;
   letter-spacing: .035em;
   line-height: 1;

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1774" height="887" viewBox="0 0 1774 887">
+  <!-- Background edit window only. Never applied to photographed objects. -->
+  <defs>
+    <filter id="edge" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="1.2"/></filter>
+    <filter id="foliage-edge" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <path fill="white" fill-rule="evenodd" filter="url(#edge)" d="M520 31H1284Q1362 31 1362 110V653H444V109Q444 31 520 31Z M520 53Q466 53 466 109V632H1340V110Q1340 53 1284 53Z"/>
+  <path fill="white" filter="url(#foliage-edge)" d="M1364 335H1730V596L1660 640H1598V606H1480V636H1364Z"/>
+</svg>

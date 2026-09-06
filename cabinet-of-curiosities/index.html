@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://martynazwoinska.github.io/cabinet-of-curiosities/">
   <script src="../shared/site-preferences.js?v=20260718-1"></script>
   <link rel="stylesheet" href="../shared/site-tokens.css?v=20260802-1">
-  <link rel="stylesheet" href="cabinet.css?v=20260906-13">
+  <link rel="stylesheet" href="cabinet.css?v=20260906-15">
 </head>
 <body>
   <main class="cabinet-page">
@@ -39,12 +39,41 @@
         </svg>
         <div class="fantasy-surround" aria-hidden="true">
           <img class="study-room" src="assets/cabinet-study-unified-v2.png" width="1774" height="887" alt="">
+          <img class="study-frame-foliage" src="assets/cabinet-frame-foliage-v2.png" width="1774" height="887" alt="">
           <picture class="surround-picture">
             <img src="assets/cabinet-clean-plate-v59.svg" width="1672" height="941" fetchpriority="high" alt="">
           </picture>
         </div>
         <figure class="board-shell" id="board-shell">
+          <svg class="recess-depth" viewBox="0 0 1672 941" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="recess-contact" x2="0" y2="1">
+                <stop stop-color="#18140f" stop-opacity=".23"/>
+                <stop offset="1" stop-color="#18140f" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="ledge-soften" x="-10%" y="-100%" width="120%" height="300%"><feGaussianBlur stdDeviation="1.3"/></filter>
+            </defs>
+            <path d="M368 738H1308V744H368Z" fill="url(#recess-contact)"/>
+            <path d="M370 160V102Q370 53 416 53H1259Q1307 53 1307 103V738" fill="none" stroke="#191510" stroke-opacity=".12" stroke-width="4" filter="url(#ledge-soften)"/>
+            <path d="M368 740H1308" stroke="#d0b295" stroke-opacity=".15" stroke-width="1"/>
+            <path d="M368 773H1308" stroke="#160f0b" stroke-opacity=".2" stroke-width="3" filter="url(#ledge-soften)"/>
+          </svg>
           <div class="board-plane">
+            <svg class="object-contact-shadows" viewBox="0 0 1672 941" aria-hidden="true" focusable="false">
+              <defs>
+                <filter id="wrapper-contact-shadow" x="-1%" y="-1%" width="102%" height="102%" color-interpolation-filters="sRGB">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="1.1"/>
+                  <feOffset dx="1.2" dy="2" result="silhouette"/>
+                  <feFlood flood-color="#21180f" flood-opacity=".24"/>
+                  <feComposite in2="silhouette" operator="in"/>
+                </filter>
+                <filter id="paradai-soft-shadow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="2.1"/></filter>
+              </defs>
+              <!-- Read the approved image only to cast a separate shadow. Its
+                   visible pixels, alpha, outline and rendering remain untouched. -->
+              <image href="assets/cabinet-photo-objects-v75.svg" width="1672" height="941" filter="url(#wrapper-contact-shadow)"/>
+              <path d="M369 882L546 838L554 844L382 887Z" fill="#19110c" opacity=".21" filter="url(#paradai-soft-shadow)"/>
+            </svg>
             <img class="photo-object-layer" src="assets/cabinet-photo-objects-v75.svg" width="1672" height="941" fetchpriority="high" alt="" aria-hidden="true">
             <img class="crochet-eye crochet-eye-green" data-eye="green-crocheted-eye" src="assets/cabinet-photo-objects-v75.svg#green" width="160" height="150" alt="" aria-hidden="true">
             <img class="crochet-eye crochet-eye-yellow" data-eye="yellow-crocheted-eye" src="assets/cabinet-photo-objects-v76.svg#yellow" width="160" height="140" alt="" aria-hidden="true">
