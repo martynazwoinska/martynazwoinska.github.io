@@ -4,6 +4,8 @@ These files are used only by the two Browse the collection lists. They do not re
 
 Current v102 selection and user-confirmed maker/retailer permission: [SOURCES-v102.md](SOURCES-v102.md). The earlier pending-clearance and fallback notes below are historical; v102 supplies web photos for all 34 chocolate entries.
 
+v103 local preview: Martyna requested white backgrounds and standardized list thumbnails. Reversible CSS display outlines isolate each packaged bar from its source photo's coloured background and props, then fit it inside a white 64 × 64 px field with 4 px breathing room. Source files are byte-identical to v102; no raster editing, recolouring or generated packaging. Existing credits are retained. These display outlines never apply to the cabinet's alpha/object layers or detail previews.
+
 ## Zotter
 
 Credit: © Zotter Chocolate.

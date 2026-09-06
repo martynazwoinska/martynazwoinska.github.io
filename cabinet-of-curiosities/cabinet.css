@@ -992,6 +992,9 @@ button { color: inherit; }
 .collection-item.has-thumbnail { display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: center; }
 .collection-thumbnail { display: block; width: 64px; height: 64px; overflow: hidden; }
 .collection-product-photo { object-fit: contain; background: #fff; border-radius: 3px; }
+.collection-product-frame { position: relative; flex: 0 0 64px; background: #fff; border-radius: 3px; }
+.collection-product-frame .collection-product-photo { display: block; width: 64px; height: 64px; }
+.collection-product-frame .is-windowed { position: absolute; left: 0; top: 0; width: 320px; height: 320px; max-width: none; border-radius: 0; transform-origin: 0 0; }
 .collection-photo-credit { display: inline-block; margin-top: 24px; font-size: .75rem; color: var(--soft); text-underline-offset: 3px; }
 .collection-photo-credit + .collection-photo-credit { margin-left: 16px; }
 .portrait-collection .collection-item strong { font-weight: 500; }

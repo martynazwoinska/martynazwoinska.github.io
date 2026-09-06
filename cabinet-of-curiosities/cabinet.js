@@ -385,19 +385,35 @@
   function collectionThumbnail(item, ownPhoto = false) {
     const product = !ownPhoto && item.kind === 'chocolate' && window.CABINET_PRODUCT_IMAGES?.[item.id];
     if (product) {
+      const frame = document.createElement('span');
+      frame.className = 'collection-thumbnail collection-product-frame';
+      frame.setAttribute('aria-hidden', 'true');
       const img = document.createElement('img');
-      img.className = 'collection-thumbnail collection-product-photo';
+      img.className = 'collection-product-photo';
       img.src = product.src;
       img.alt = '';
       img.width = 64;
       img.height = 64;
       img.loading = 'lazy';
       img.decoding = 'async';
+      const points = window.CABINET_PRODUCT_WINDOWS?.[item.id];
+      if (points?.length) {
+        const xs = points.map(point => point[0]);
+        const ys = points.map(point => point[1]);
+        const left = Math.min(...xs), top = Math.min(...ys);
+        const width = Math.max(...xs) - left, height = Math.max(...ys) - top;
+        // Four pixels of white breathing room; preserve the original aspect ratio.
+        const scale = 56 / Math.max(width, height);
+        img.classList.add('is-windowed');
+        img.style.clipPath = `polygon(${points.map(([x,y]) => `${x}px ${y}px`).join(',')})`;
+        img.style.transform = `matrix(${scale},0,0,${scale},${(64-width*scale)/2-left*scale},${(64-height*scale)/2-top*scale})`;
+      }
       img.addEventListener('error', () => {
         // The user approved her own photographs as the list-only fallback.
-        img.replaceWith(collectionThumbnail(item, true));
+        frame.replaceWith(collectionThumbnail(item, true));
       }, {once: true});
-      return img;
+      frame.append(img);
+      return frame;
     }
     // These are display windows onto the original assets, never edited derivatives.
     const svgNS = 'http://www.w3.org/2000/svg';
