@@ -99,6 +99,67 @@ button { color: inherit; }
   overflow: hidden;
 }
 
+/* Room and cabinet are separate scenery; approved object images are
+   unchanged. The old full-width wood remains the compact mobile fallback. */
+.study-room,
+.study-joinery,
+.study-foreground,
+.study-drawer { display: none; }
+
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) {
+  --scene-width: min(130vw, calc((100svh - 76px) * 1.776833));
+  --scene-height: calc(var(--scene-width) * .562799);
+  background: #172420;
+}
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .cabinet-stage {
+  height: calc(100% - 64px);
+  align-self: end;
+}
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-room,
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-joinery,
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-foreground,
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-drawer {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .surround-picture {
+  position: absolute;
+  inset: 0;
+}
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .surround-picture img {
+  /* Retain the exact existing cloth and blue note inside the new joinery. */
+  clip-path: url(#study-board-interior);
+}
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-joinery {
+  /* Blend only the background perimeter into the wider room. */
+  mask-image: linear-gradient(to right, transparent 14%, black 19%, black 80.8%, transparent 81%),
+    linear-gradient(to bottom, black 82%, transparent 87%);
+  mask-composite: intersect;
+}
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .fantasy-surround {
+  overflow: visible;
+}
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-room,
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-foreground {
+  width: max(100vw, var(--scene-width));
+  left: min(0px, calc((var(--scene-width) - 100vw) / 2));
+}
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-lamp {
+  position: absolute;
+  left: 6.4%;
+  bottom: 13.1%;
+  width: 16.8%;
+  height: 39.8%;
+  object-fit: contain;
+  filter: drop-shadow(3px 4px 3px rgba(15, 9, 5, .3));
+}
+.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .study-drawer {
+  clip-path: inset(90.2% 32.5% 1.8% 32.5%);
+  transform: translateY(2.55%) scaleY(.8);
+  transform-origin: 50% 90.2%;
+}
+
 .surround-picture {
   display: block;
   width: 100%;

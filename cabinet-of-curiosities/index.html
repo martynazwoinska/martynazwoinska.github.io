@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://martynazwoinska.github.io/cabinet-of-curiosities/">
   <script src="../shared/site-preferences.js?v=20260718-1"></script>
   <link rel="stylesheet" href="../shared/site-tokens.css?v=20260802-1">
-  <link rel="stylesheet" href="cabinet.css?v=20260906-5">
+  <link rel="stylesheet" href="cabinet.css?v=20260906-10">
 </head>
 <body>
   <main class="cabinet-page">
@@ -29,10 +29,23 @@
 
     <section class="cabinet-stage" id="cabinet-stage" aria-label="Interactive cabinet display" tabindex="-1">
       <div class="scene-space" id="scene-space">
+        <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+          <defs>
+            <clipPath id="study-board-interior" clipPathUnits="objectBoundingBox">
+              <path transform="scale(.0005980861244 .001062699256)" d="M366 739V163Q366 50 463 50H1210Q1309 50 1309 163V739Z"/>
+            </clipPath>
+          </defs>
+        </svg>
         <div class="fantasy-surround" aria-hidden="true">
+          <img class="study-room" src="assets/cabinet-study-room-v3.png" width="1672" height="941" alt="">
+          <img class="study-joinery" src="assets/cabinet-study-joinery-v1.png" width="1672" height="941" alt="">
           <picture class="surround-picture">
-            <img src="assets/cabinet-clean-plate-v58.svg" width="1672" height="941" fetchpriority="high" alt="">
+            <img src="assets/cabinet-clean-plate-v59.svg" width="1672" height="941" fetchpriority="high" alt="">
           </picture>
+          <img class="study-drawer" src="assets/cabinet-clean-plate-v58.svg" width="1672" height="941" alt="">
+          <div class="study-foreground">
+            <img class="study-lamp" src="assets/cabinet-study-lamp-v1.png" width="1090" height="1443" alt="">
+          </div>
         </div>
         <figure class="board-shell" id="board-shell">
           <div class="board-plane">
