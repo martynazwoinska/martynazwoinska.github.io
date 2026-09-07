@@ -2884,8 +2884,15 @@ function drawUniqueNamedAccessory(group, item, companion) {
       [[0,"#254f49"],[.24,"#609989"],[.48,"#417c6b"],[.79,"#285b52"],[1,"#163e3b"]].forEach(([offset, color]) => add(bodyPaint, "stop", { offset, "stop-color": color }));
       const fruitPaint = add(defs, "radialGradient", { id: prefix + "-fruit", cx: "32%", cy: "26%", r: "76%" });
       [[0,"#c2d390"],[.42,"#94b571"],[1,"#4e784a"]].forEach(([offset, color]) => add(fruitPaint, "stop", { offset, "stop-color": color }));
+      let hasInteractiveFig = false;
       const fruit = (parent, x, y, r, cut = false) => {
         const fig = add(parent, "g", { transform: `translate(${x} ${y})` });
+        if (!cut && !hasInteractiveFig) {
+          hasInteractiveFig = true;
+          fig.dataset.ishigakiFig = '';
+          fig.dataset.figX = x;
+          fig.dataset.figY = y;
+        }
         add(fig, "circle", { r, fill: `url(#${prefix}-fruit)`, class: "pannier-fruit-volume" });
         if (cut) {
           add(fig, "ellipse", { cx: 1, cy: -1, rx: r * .79, ry: r * .84, class: "pannier-cut-flesh" });
@@ -2944,7 +2951,7 @@ function drawUniqueNamedAccessory(group, item, companion) {
         add(group, "ellipse", { class: "pannier-interior", cx: -43, cy: -22, rx: 25, ry: 9 });
         add(group, "ellipse", { class: "pannier-interior", cx: 41, cy: -19, rx: 26, ry: 9 });
         rim(-43,-22,26,9,false); rim(41,-19,27,9,false);
-        fruit(group,-47,-29,12);
+        fruit(group,-47,-32,15);
         path(group, "M-43-39Q-31-48-25-35Q-34-28-42-31Z", "pannier-fig-leaf");
         fruit(group,42,-27,13,true);
         rim(-43,-22,26,9,true); rim(41,-19,27,9,true);
@@ -2970,7 +2977,7 @@ function drawUniqueNamedAccessory(group, item, companion) {
         add(group, "ellipse", { class: "pannier-interior", cx: 0, cy: -28, rx: 66, ry: 16 });
         rim(0,-28,68,17,false);
         path(group, "M-50-29L-47-43M50-27L48-42", "pannier-lid-hinge");
-        fruit(group,5,-43,18);
+        fruit(group,5,-46,21);
         fruit(group,-31,-39,16);
         path(group, "M-25-54Q-9-67 0-50Q-13-39-24-44Z", "pannier-fig-leaf");
         fruit(group,39,-35,18,true);
@@ -3028,7 +3035,7 @@ function drawUniqueNamedAccessory(group, item, companion) {
         add(group, "circle", { class: "fig-wing-joint", cx: -17, cy: 3, r: 4 });
         add(group, "circle", { class: "fig-wing-joint", cx: 18, cy: 4, r: 4 });
         add(group, "circle", { class: "fig-wing-buckle", cx: 0, cy: 16, r: 4 });
-        path(group, "M22-4Q50-19 72-17M27 9Q50-1 66 2", "fig-wing-sheen");
+        path(nearSide, "M22-4Q50-19 72-17M27 9Q50-1 66 2", "fig-wing-sheen");
       } else {
         const farFore = "M-12 1C-36-38-73-55-94-32C-91-4-62 22-15 24C-23 14-23 7-12 1Z";
         const farHind = "M-13 18C-43 16-68 35-66 59C-43 69-18 52-6 31Z";
@@ -3057,7 +3064,7 @@ function drawUniqueNamedAccessory(group, item, companion) {
         add(group, "circle", { class: "fig-wing-joint", cx: -23, cy: 5, r: 5 });
         add(group, "circle", { class: "fig-wing-joint", cx: 24, cy: 6, r: 5 });
         add(group, "circle", { class: "fig-wing-buckle", cx: 0, cy: 20, r: 5 });
-        path(group, "M31-8Q69-29 100-24M38 8Q69-6 91-1M26 39Q53 51 70 61", "fig-wing-sheen");
+        path(nearSide, "M31-8Q69-29 100-24M38 8Q69-6 91-1M26 39Q53 51 70 61", "fig-wing-sheen");
       }
       return true;
     }

@@ -4,6 +4,19 @@ Last updated: 2026-07-26
 
 This dossier is the evidence and review contract for the Ishigaki landscape and the three *Caenorhabditis inopinata* accessory pairs.
 
+## Interactive figs and wings, 7 September 2026
+
+Each worm makes a brief, independently triggered fantasy flight. The existing
+wing panels flutter about their roots, and the visor and basket travel with the
+body. Female and male paths and timing differ. Basket taps lift a larger fig
+and separate its faces, showing a floret-lined cavity and enlarged nematodes.
+This represents the documented fig interior association in Woodruff and
+Phillips (2018), cited below. It is an illustrative enlargement, not a view
+at literal scale. A second tap closes the fig. Reduced motion removes flight
+and crawling. Escape/Home and changing scenes restore temporary state.
+Production refinement rounded the cut faces, varied the male proportions,
+moved wing highlights with the membranes and added a smooth closing motion.
+
 ## Evidence boundaries
 
 ### Type-strain collection record

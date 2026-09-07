@@ -3,7 +3,8 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260907-n2-label-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260907-ishigaki-play-1";
+import { createIshigakiInteractions } from "./ishigaki-interactions.js?v=20260907-ishigaki-play-1";
 import { createCanberraCafe, CAFE_FAMILIES } from "./canberra-cafe.js?v=20260907-cafe-polish-1";
 import { mountLiveLoupes } from "./live-loupes.js?v=20260906-live-loupes-2";
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260907-cryo-sound-1";
@@ -689,7 +690,9 @@ const baliGongs = createBaliGongs(els.habitat);
 const baliCacao = createBaliCacao(els.habitat);
 const ahmedabadFans = createAhmedabadFans(els.habitat);
 const canberraCafe = createCanberraCafe(els.habitat);
+const ishigakiPlay = createIshigakiInteractions(els.habitat);
 function renderSpecies(item, place) {
+  ishigakiPlay.clear();
   baliCacao.clear();
   canberraCafe.clear();
   ahmedabadFans.cancel();
@@ -1111,7 +1114,7 @@ function updateAccessoryLabelVisibility() {
 }
 
 function constrainVisibleAccessories() {
-  if (n2CryoFlight.active) return;
+  if (n2CryoFlight.active || ishigakiPlay.active) return;
   if (els.habitat.classList.contains("is-changing")) return;
   accessoryIds.forEach(id => {
     if (!activeWardrobe().has(id)) return;
@@ -1220,6 +1223,7 @@ function announceSelectedAccessorySize() {
 }
 
 els.accessorySizeSlider.addEventListener("input", event => {
+  ishigakiPlay.clear();
   baliCacao.cancel();
   setSelectedAccessoryScale(Number(event.currentTarget.value) / 100);
 });
@@ -1298,6 +1302,7 @@ function saveActiveDoodle() {
 }
 
 function syncDrawingMode() {
+  ishigakiPlay.clear();
   baliCacao.cancel();
   canberraCafe.cancel();
   ahmedabadFans.cancel();
@@ -1411,6 +1416,7 @@ function syncFittedHeadwearMotion(accessory) {
 }
 
 function toggleAccessory(id, force) {
+  ishigakiPlay.clear();
   baliCacao.cancel();
   canberraCafe.cancel();
   ahmedabadFans.cancel();
@@ -1560,7 +1566,7 @@ function finishAccessoryDrag(event) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") baliCacao.drop(piece);
   }
-  else if (event.type === "pointerup") { turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); }
+  else if (event.type === "pointerup") { turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1631,6 +1637,7 @@ function wireAccessoryPieces() {
     piece.addEventListener("focus", () => selectAccessoryForSizing(id, wormPart));
 
     piece.addEventListener("pointerdown", event => {
+      if (ishigakiPlay.active) return;
       if (n2CryoFlight.active) return;
       if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
       baliCacao.cancel();
@@ -1671,8 +1678,13 @@ function wireAccessoryPieces() {
     });
 
     piece.addEventListener("keydown", event => {
+      if (ishigakiPlay.active) { if(event.key === "Escape" || event.key === "Home")ishigakiPlay.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
       if (n2CryoFlight.active) { if(event.key === "Escape" || event.key === "Home")n2CryoFlight.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
       if (piece.getAttribute("tabindex") !== "0" || drawingEnabled || !activeWardrobe().has(id)) return;
+      if ((event.key === "Enter" || event.key === " ") && ishigakiPlay.handles(piece)) {
+        event.preventDefault(); if (!event.repeat) ishigakiPlay.start(piece); return;
+      }
+      if (event.key === "Escape" || event.key === "Home") ishigakiPlay.reset(piece);
       if ((event.key === "Enter" || event.key === " ") && baliCacao.handles(piece)) {
         event.preventDefault(); if (!event.repeat) baliCacao.start(piece); return;
       }

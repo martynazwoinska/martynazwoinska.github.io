@@ -1,5 +1,11 @@
 # Game of Worms art catalogue
 
+Ishigaki interactions, 2026-09-07: the existing wings now flutter from their
+roots during short individual worm flights. Baskets and visors travel with
+their wearer. The two basket figs open into floret-lined cavities with enlarged
+moving nematodes. Female and male fig proportions, worm counts and flight
+paths differ. Tap again to close. Reduced motion uses a stationary reveal.
+
 Bali cacao interaction preview, 2026-09-06: the female's unchanged machete
 now cuts the cacao pod hanging from the right tree. Separate seed-filled and
 empty rind halves rotate open after a sharp handle-pivoted strike. A slow

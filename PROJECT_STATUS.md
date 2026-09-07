@@ -4,6 +4,19 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Ishigaki wing flights and opening figs, 2026-09-07
+
+Tap either wing pair for an individual flight with attached accessories,
+root-pivoted wingbeats and exact return. Tap either basket to lift and open a
+fig, revealing florets around a cavity and enlarged moving nematodes. Tap again
+to close. Home resets the fig, Escape stops flight, and scene changes clean up
+all temporary drawings. Reduced motion keeps worms still and opens figs directly.
+The Game remains English-only with existing accessory names. No new visible copy.
+Four full-page proofs at requested 360/768/1024/1440 widths were inspected
+(345x2403, 753x2399, 1009x1780, 1425x1928 excluding scrollbars). No overflow or
+console errors. Pointer/keyboard opening, closing, both flights, reset and
+scene-change interruption were checked. Timeline and catalogue checks pass.
+
 ### Canberra coffee and faster café raid, 2026-09-07
 
 Martyna approved the exact refined cup and faster café animation in the
