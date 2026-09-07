@@ -460,7 +460,7 @@ function drawN2Accessory(group, item, companion) {
       [[-28, -12], [13, -13], [39, -6]].forEach(([cx, cy]) => add(group, "circle", { class: "plate-condensation", cx, cy, r: 1.5 }));
       add(group, "rect", { class: "plate-label-tape", x: -23, y: 14, width: 46, height: 11, rx: 3 });
       const plateLabel = add(group, "text", { class: "plate-label-text", x: 0, y: 22.5, "text-anchor": "middle" });
-      plateLabel.textContent = "N2 · OP50";
+      plateLabel.textContent = "N2";
     }
     return true;
   }
