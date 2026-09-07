@@ -6,7 +6,7 @@ import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentS
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260906-nibs-1";
 import { createCanberraCafe, CAFE_FAMILIES } from "./canberra-cafe.js?v=20260906-cafe-2";
 import { mountLiveLoupes } from "./live-loupes.js?v=20260906-live-loupes-2";
-import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260906-cryo-flight-2";
+import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260907-cryo-sound-1";
 import { createBaliGongs, GONG_FAMILY } from "./bali-gongs.js?v=20260906-gongs-1";
 import { createBaliCacao } from "./bali-cacao.js?v=20260906-nibs-1";
 import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-fans-1";
@@ -295,8 +295,7 @@ const els = {
   accessoryStatus: document.getElementById("accessory-status"),
   accessorySizeControls: document.getElementById("accessory-size-controls"),
   accessorySizeTarget: document.getElementById("accessory-size-target"),
-  accessorySizeSlider: document.getElementById("accessory-size-slider"),
-  accessorySizeValue: document.getElementById("accessory-size-value")
+  accessorySizeSlider: document.getElementById("accessory-size-slider")
 };
 
 function italicText(element, value) {
@@ -1172,7 +1171,6 @@ function updateAccessorySizeControls() {
   const sliderRange = accessoryScaleMax - accessoryScaleMin;
   const sliderProgress = sliderRange ? (position.scale - accessoryScaleMin) / sliderRange * 100 : 0;
   els.accessorySizeSlider.style.setProperty("--accessory-size-progress", `${sliderProgress.toFixed(2)}%`);
-  els.accessorySizeValue.value = `${percentage}%`;
 }
 
 function selectAccessoryForSizing(id, wormPart) {

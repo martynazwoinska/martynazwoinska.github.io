@@ -3920,10 +3920,10 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .freestyle-icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .accessory-size-controls {
   display: none;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
   grid-template-areas:
-    "caption value"
-    "slider slider";
+    "caption"
+    "slider";
   align-items: center;
   column-gap: 14px;
   row-gap: 2px;
@@ -4008,19 +4008,6 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   outline: 3px solid color-mix(in srgb, var(--yellow) 72%, white);
   outline-offset: 1px;
   border-radius: 999px;
-}
-.accessory-size-controls output {
-  grid-area: value;
-  min-width: 50px;
-  border: 1px solid color-mix(in srgb, var(--teal) 24%, var(--line));
-  border-radius: 999px;
-  padding: 2px 8px;
-  background: var(--paper-strong);
-  color: var(--teal-dark);
-  font-size: .78rem;
-  font-weight: 900;
-  line-height: 1.4;
-  text-align: center;
 }
 @media (min-width: 681px) and (hover: hover) and (pointer: fine) {
   .accessory-size-controls:not([hidden]) { display: grid; }

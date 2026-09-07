@@ -4,6 +4,22 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### N2 freeze-flight sound and size-control cleanup, 2026-09-07
+
+Added original synthesized frost/chime cues followed by a short jet whoosh,
+timed to the existing N2 freeze and staggered departure. Audio starts only
+from the existing user-triggered animation. Interrupted runs stop their
+scheduled sources. Reduced motion uses only the freezing cues. Unsupported
+or blocked audio leaves the animation usable. No artwork, flight paths or
+public copy changed. Removed the requested visible accessory-size percentage,
+retaining the slider's accessible value and keyboard controls.
+
+Audio scheduling, interruption, replay, delayed resume, unsupported audio,
+reduced motion, N2 flight/tailoring and Bali gong regression checks pass.
+Local browser checks confirm a complete cycle restores the scene, focused
+jetpack Enter/Escape works, the percentage badge is absent and no console
+errors occur. Sound has not been aurally reviewed by the agent.
+
 ### Bali cacao interactions, 2026-09-06, approved release
 
 The female's existing machete cuts the pod hanging from the right tree.

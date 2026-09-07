@@ -1,4 +1,5 @@
 // A reversible, tap-triggered fantasy vignette. Original drawings stay intact.
+import { createN2CryoAudio } from './n2-cryo-audio.js?v=20260907-cryo-sound-1';
 const NS = 'http://www.w3.org/2000/svg';
 const clamp = x => Math.max(0, Math.min(1, x));
 const ease = x => { x = clamp(x); return x * x * (3 - 2 * x); };
@@ -25,6 +26,7 @@ export function cryoFrame(ms, companion = false, reduced = false) {
 }
 
 export function createN2CryoFlight(habitat) {
+  const sound = createN2CryoAudio();
   let restore = null, frame = 0;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const add = (parent, tag, attrs) => {
@@ -33,6 +35,7 @@ export function createN2CryoFlight(habitat) {
     parent.append(node); return node;
   };
   const cancel = () => {
+    sound.cancel();
     cancelAnimationFrame(frame); frame=0;
     if (restore) { const run=restore; restore=null; run(); }
     delete habitat.dataset.cryoFlight;
@@ -94,6 +97,7 @@ export function createN2CryoFlight(habitat) {
       for(const node of [...paused.keys()])resume(node);
     };
     const began=performance.now();
+    sound.start(reduced.matches);
     const tick=now=>{
       if (!piece.isConnected || piece.closest('[hidden]')) { cancel(); return; }
       const elapsed=now-began;
