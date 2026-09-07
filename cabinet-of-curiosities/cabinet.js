@@ -41,6 +41,9 @@
   let pinchStart = null;
   let sceneGestureMoved = false;
   let suppressSceneClickUntil = 0;
+  let tapSelection = null;
+  let tapMotionTimer = 0;
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const sceneNavigationQuery = window.matchMedia('(pointer: coarse) and (orientation: landscape) and (max-height: 600px)');
   const portraitQuery = window.matchMedia('(orientation: portrait) and (max-width: 980px)');
@@ -135,6 +138,7 @@
   }
 
   function resetSceneView(announce = true) {
+    clearTapMotion();
     sceneView.scale = 1;
     sceneView.panX = 0;
     sceneView.panY = 0;
@@ -154,6 +158,7 @@
   }
 
   function markSceneGestureMoved() {
+    clearTapMotion();
     sceneGestureMoved = true;
     cabinetPage.classList.add('is-scene-dragging');
     hidePreview();
@@ -188,12 +193,17 @@
   }
 
   function configureSceneNavigation() {
+    clearTapMotion();
     const portrait = portraitQuery.matches;
     if (!portrait) portraitExploring = false;
     const browsing = portrait && !portraitExploring;
     cabinetPage.classList.toggle('is-portrait-browsing', browsing);
     document.documentElement.classList.toggle('is-portrait-browsing', browsing);
-    boardShell.inert = browsing;
+    // Keep only the three playful objects interactive in the portrait overview.
+    boardShell.inert = false;
+    hotspotLayer.querySelectorAll('.hotspot').forEach(button => {
+      button.inert = browsing && !button.classList.contains('is-playful');
+    });
     panelToggle.setAttribute('aria-controls', portrait ? 'portrait-collection' : 'collection-panel');
     if (portrait) panelToggle.removeAttribute('aria-expanded');
     else panelToggle.setAttribute('aria-expanded', String(panel.open));
@@ -258,10 +268,40 @@
     preview.hidden = true;
   }
 
-  function showPreview(item, trigger) {
+  function clearTapMotion() {
+    window.clearTimeout(tapMotionTimer);
+    tapSelection?.visual.classList.remove('is-tap-animating');
+    tapSelection = null;
+    hidePreview();
+  }
+
+  function bindPlayfulTap(item, button, visual) {
+    let pointerType = '';
+    button.addEventListener('pointerdown', event => { pointerType = event.pointerType; });
+    button.addEventListener('click', event => {
+      const touchTap = event.detail > 0 &&
+        ['touch', 'pen'].includes(event.pointerType || pointerType);
+      pointerType = '';
+      // Keyboard/assistive activation and reduced motion retain direct details.
+      if (!touchTap || reducedMotionQuery.matches || !visual || tapSelection?.button === button) {
+        openDetails(item, button);
+        return;
+      }
+      clearTapMotion();
+      visual.classList.remove('is-orbiting');
+      tapSelection = { button, visual };
+      visual.classList.add('is-tap-animating');
+      showPreview(item, button, true);
+      // One complete existing movement, with no delayed dialog or navigation.
+      tapMotionTimer = window.setTimeout(() => visual.classList.remove('is-tap-animating'), 3400);
+    });
+  }
+
+  function showPreview(item, trigger, detailsHint = false) {
     previewTitle.textContent = item.label;
     // Reuse the approved app description already shown in the detail dialog.
     previewDescription.textContent = item.kind === 'app' ? (item.note || '').split('. ')[0] + '.' : '';
+    if (detailsHint) previewDescription.textContent = [previewDescription.textContent, copy.openDetails].filter(Boolean).join(' ');
     previewDescription.hidden = !previewDescription.textContent;
     preview.hidden = false;
 
@@ -273,7 +313,8 @@
 
     left = Math.max(margin, Math.min(left, window.innerWidth - previewRect.width - margin));
     if (top < margin) top = triggerRect.bottom + 10;
-    const overlapsHeader = [...document.querySelectorAll('.cabinet-header a, .cabinet-header button')]
+    const overlapsHeader = (detailsHint && top < document.querySelector('.cabinet-header').getBoundingClientRect().bottom) ||
+      [...document.querySelectorAll('.cabinet-header a, .cabinet-header button')]
       .some(control => {
         const rect = control.getBoundingClientRect();
         return left < rect.right && left + previewRect.width > rect.left &&
@@ -297,6 +338,7 @@
   }
 
   function openDetails(item, trigger) {
+    clearTapMotion();
     lastDialogTrigger = trigger || document.activeElement;
     hidePreview();
     detailKind.textContent = copy.kindLabels[item.kind] || copy.collectionObject;
@@ -353,17 +395,25 @@
       button.style.width = `${width}%`;
       button.style.height = `${height}%`;
       button.setAttribute('aria-label', clickAction ? item.label : `${item.label}. ${copy.openDetails}`);
-      button.addEventListener('pointerenter', () => showPreview(item, button));
+      button.addEventListener('pointerenter', event => {
+        if (event.pointerType === 'mouse') showPreview(item, button);
+      });
       button.addEventListener('pointerleave', hidePreview);
       button.addEventListener('focus', () => showPreview(item, button));
       button.addEventListener('blur', hidePreview);
-      button.addEventListener('click', clickAction || (() => openDetails(item, button)));
       if (item.kind === 'crochet') {
+        button.classList.add('is-playful');
         const eye = document.querySelector(`[data-eye="${item.id}"]`);
-        const updateEye = () => eye?.classList.toggle('is-orbiting',
-          button.matches(':hover') || button === document.activeElement);
+        bindPlayfulTap(item, button, eye);
+        const updateEye = event => {
+          if (event.pointerType && event.pointerType !== 'mouse') return;
+          eye?.classList.toggle('is-orbiting', button.matches(':focus-visible') ||
+            (window.matchMedia('(hover: hover)').matches && button.matches(':hover')));
+        };
         ['pointerenter', 'pointerleave', 'focus', 'blur'].forEach(event =>
           button.addEventListener(event, updateEye));
+      } else {
+        button.addEventListener('click', clickAction || (() => openDetails(item, button)));
       }
       fragment.append(button);
     }
@@ -584,6 +634,7 @@
   }
 
   function openPanel() {
+    clearTapMotion();
     lastPanelTrigger = document.activeElement;
     if (!panel.open) panel.showModal();
     panelToggle.setAttribute('aria-expanded', 'true');
@@ -754,12 +805,28 @@
 
   if (chofButton && chofItem) {
     chofButton.setAttribute('aria-label', `${chofItem.label}. ${copy.openDetails}`);
-    chofButton.addEventListener('pointerenter', () => showPreview(chofItem, chofButton));
+    chofButton.addEventListener('pointerenter', event => {
+      if (event.pointerType === 'mouse') showPreview(chofItem, chofButton);
+    });
     chofButton.addEventListener('pointerleave', hidePreview);
     chofButton.addEventListener('focus', () => showPreview(chofItem, chofButton));
     chofButton.addEventListener('blur', hidePreview);
-    chofButton.addEventListener('click', () => openDetails(chofItem, chofButton));
+    bindPlayfulTap(chofItem, chofButton, chofButton);
   }
+
+  document.addEventListener('pointerdown', event => {
+    if (tapSelection && !tapSelection.button.contains(event.target)) clearTapMotion();
+  }, true);
+  document.addEventListener('pointercancel', clearTapMotion, true);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') clearTapMotion();
+  });
+  window.addEventListener('scroll', clearTapMotion, { passive: true });
+  window.addEventListener('pagehide', clearTapMotion);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) clearTapMotion();
+  });
+  reducedMotionQuery.addEventListener('change', clearTapMotion);
 
   panelToggle.addEventListener('click', () => {
     if (portraitQuery.matches) {

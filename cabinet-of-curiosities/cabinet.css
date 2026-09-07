@@ -350,12 +350,14 @@ button { color: inherit; }
   height: calc(140 / 941 * 100%);
 }
 
-.crochet-eye.is-orbiting {
+.crochet-eye.is-orbiting,
+.crochet-eye.is-tap-animating {
   transform-origin: 50% 50%;
   animation: crochet-orbit 2.8s ease-in-out infinite;
 }
 
-.crochet-eye-green.is-orbiting {
+.crochet-eye-green.is-orbiting,
+.crochet-eye-green.is-tap-animating {
   animation-duration: 3.2s;
   animation-direction: reverse;
 }
@@ -467,11 +469,20 @@ button { color: inherit; }
   transform: rotate(3deg);
 }
 
-.chof-link:hover,
 .chof-link:focus-visible {
   filter: brightness(1.03);
   animation: chof-swing 2.6s ease-in-out infinite;
 }
+
+@media (hover: hover) {
+  .chof-link:hover {
+    filter: brightness(1.03);
+    animation: chof-swing 2.6s ease-in-out infinite;
+  }
+}
+
+.chof-link.is-tap-animating { animation: chof-swing 2.6s ease-in-out 1; }
+.crochet-eye.is-tap-animating { animation-iteration-count: 1; }
 
 @keyframes chof-swing {
   0%, 100% { transform: rotate(-1.8deg); }
@@ -516,6 +527,18 @@ button { color: inherit; }
 
 @media (max-width: 760px), (pointer: coarse) {
   .hotspot { min-width: 24px; min-height: 24px; }
+}
+
+@media (pointer: coarse) {
+  .hotspot.is-playful { min-width: 44px; min-height: 44px; }
+  .chof-touch-target {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max(100%, 44px);
+    height: max(100%, 44px);
+    transform: translate(-50%, -50%);
+  }
 }
 
 .hotspot[data-shape="circle"] { border-radius: 50%; }
@@ -974,6 +997,10 @@ button { color: inherit; }
 }
 .is-portrait-browsing .fantasy-surround,
 .is-portrait-browsing .board-shell { display: block; }
+.is-portrait-browsing .hotspot.is-playful,
+.is-portrait-browsing .chof-link { pointer-events: auto; }
+.is-portrait-browsing .hotspot.is-playful { min-width: 44px; min-height: 44px; }
+.is-portrait-browsing .object-preview:not([hidden]) { display: block; }
 .is-portrait-browsing .portrait-collection {
   display: block;
   max-width: 760px;
@@ -1077,8 +1104,10 @@ button { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   .chof-link:hover,
-  .chof-link:focus-visible { animation: none; }
-  .crochet-eye.is-orbiting { animation: none; }
+  .chof-link:focus-visible,
+  .chof-link.is-tap-animating { animation: none; }
+  .crochet-eye.is-orbiting,
+  .crochet-eye.is-tap-animating { animation: none; }
   *,
   *::before,
   *::after {
