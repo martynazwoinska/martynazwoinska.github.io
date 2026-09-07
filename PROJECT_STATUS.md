@@ -4,6 +4,23 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Canberra coffee and faster café raid, 2026-09-07
+
+Martyna approved the exact refined cup and faster café animation in the
+Canberra preview and requested deployment. The primary cup has a glazed
+berry body, open handle, porcelain rim and foot, contained microfoam and
+separate saucer/spoon. The male retains his distinct biscuit plate. The
+cockatoo raid lasts 2700 ms (previously 4800), with 320 ms wingbeats,
+banking and an edge grip on the real biscuit. Sipping and biting follow
+small arcs. The background, bird drawings, napkins and public copy are unchanged.
+
+Four full-page proofs were inspected at requested widths 360/768/1024/1440.
+Capture dimensions excluding the scrollbar: 345x2573, 753x2425, 1009x1950
+and 1425x1928. Café state, cockatoo drawing, N2 audio/tailoring regressions,
+syntax and diff checks pass. Browser interaction checks cover sipping,
+theft and cleanup. No cockatoo audio is included: a documented natural flight
+call was found, but excerpt reuse permission remains unverified.
+
 ### N2 freeze-flight sound and size-control cleanup, 2026-09-07
 
 Added original synthesized frost/chime cues followed by a short jet whoosh,

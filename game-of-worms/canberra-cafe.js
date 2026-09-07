@@ -1,13 +1,14 @@
-import { COOKIE_WHOLE, COOKIE_BITTEN } from './canberra-cafe-art.js?v=20260906-cafe-2';
+import { COOKIE_WHOLE, COOKIE_BITTEN } from './canberra-cafe-art.js?v=20260907-cafe-polish-1';
 const NS='http://www.w3.org/2000/svg';
 export const CAFE_FAMILIES=['canberra-flat-white-cafe','canberra-linen-napkins','oconnor-cockatoo-cafe-raid'];
 const clamp=n=>Math.max(0,Math.min(1,n));
 const ease=n=>{n=clamp(n);return n*n*(3-2*n);};
 export function cafeFrame(ms,kind,reduced=false) {
-  const duration=reduced?700:kind==='raid'?4800:kind==='wipe'?1700:2200;
+  const duration=reduced?700:kind==='raid'?2700:kind==='wipe'?1700:2200;
   const t=clamp(ms/duration);
-  return {t,done:ms>=duration,contact:t>=.38&&t<=.62,
-    reach:t<.38?ease(t/.38):t>.62?1-ease((t-.62)/.38):1};
+  const arrival=kind==='raid'?.34:.38, departure=kind==='raid'?.44:.62;
+  return {t,done:ms>=duration,contact:t>=arrival&&t<=departure,
+    reach:t<arrival?ease(t/arrival):t>departure?1-ease((t-departure)/(1-departure)):1};
 }
 export function createCanberraCafe(habitat) {
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -75,7 +76,7 @@ export function createCanberraCafe(habitat) {
     const copy=source.cloneNode(true);copy.removeAttribute('opacity');layer.append(copy);root().append(layer);
     const lifted={source,copy,layer,matrix,opacity:source.getAttribute('opacity')};run.lifts.push(lifted);
     source.setAttribute('opacity','0');
-    lifted.move=(x=0,y=0)=>layer.setAttribute('transform',new DOMMatrix().translate(x,y).multiply(matrix).toString());
+    lifted.move=(x=0,y=0,angle=0,pivot={x:0,y:0})=>layer.setAttribute('transform',new DOMMatrix().translate(x,y).translate(pivot.x,pivot.y).rotate(angle).translate(-pivot.x,-pivot.y).multiply(matrix).toString());
     lifted.move();return lifted;
   }
   function start(piece) {
@@ -94,8 +95,9 @@ export function createCanberraCafe(habitat) {
     if(!source||!mouth(part))return false;
     const current={piece,lifts:[],acted:false};run=current;piece.dataset.cafeAction=kind;
     const object=lift(source,current);
-    const origin=kind==='raid'?xy(object.copy.querySelector('[data-cafe-beak]')):kind==='sip'?xy(object.copy,-65,-28):xy(object.copy);
-    const foodOrigin=biscuit?xy(biscuit):null;
+    const origin=kind==='raid'?xy(object.copy.querySelector('[data-cafe-beak]')):kind==='sip'?xy(object.copy,-74,-28):xy(object.copy);
+    // Grip the biscuit's upper edge, leaving its face visible below the bill.
+    const foodOrigin=biscuit?xy(biscuit,0,-27):null;
     if(kind==='raid')object.layer.classList.add('is-raiding');
     const began=performance.now();
     function tick(now) {
@@ -104,24 +106,30 @@ export function createCanberraCafe(habitat) {
       const state=cafeFrame(now-began,kind,reduced.matches);
       if(state.done){cancel();return;}
       const target=kind==='raid'?foodOrigin:mouthPoint(part);
-      let dx=(target.x-origin.x)*state.reach,dy=(target.y-origin.y)*state.reach;
+      let dx=(target.x-origin.x)*state.reach,dy=(target.y-origin.y)*state.reach,bank=0;
       if(kind==='raid') {
         // Beak meets the exact biscuit, then leaves head-first on its own route.
-        if(state.t<.38)dy-=Math.sin(state.t/.38*Math.PI)*38;
-        if(state.t>.48) {
-          const escape=ease((state.t-.48)/.3);
+        if(state.t<.34) {
+          const approach=state.t/.34;
+          dy-=Math.sin(approach*Math.PI)*26;
+          bank=(part==='primary'?10:-10)*Math.sin(approach*Math.PI);
+        }
+        if(state.t>.44) {
+          const escape=ease((state.t-.44)/.34);
           dx=target.x-origin.x+(part==='primary'?760:-760)*escape;
           dy=target.y-origin.y-370*escape;
+          bank=(part==='primary'?-18:18)*Math.sin(escape*Math.PI/2);
         }
         if(state.t>.80)object.layer.setAttribute('opacity','0');
         if(state.t>.88) {
           object.move(0,0);object.layer.setAttribute('opacity',String(ease((state.t-.88)/.12)));
         }
       } else if(kind==='wipe'&&state.contact)dx+=Math.sin((state.t-.38)/.24*Math.PI*4)*8;
-      if(reduced.matches) {dx=0;dy=0;}
-      if(kind==='sip')object.copy.setAttribute('transform',`rotate(${reduced.matches?0:-14*state.reach} -65 -28)`);
-      if(!(kind==='raid'&&state.t>.88))object.move(dx,dy);
-      if(state.contact&&!current.acted) {
+      else if(kind==='sip'||kind==='bite')dy-=Math.sin(state.reach*Math.PI)*12;
+      if(reduced.matches) {dx=0;dy=0;bank=0;}
+      if(kind==='sip')object.copy.setAttribute('transform',`rotate(${reduced.matches?0:-14*state.reach} -74 -28)`);
+      if(!(kind==='raid'&&state.t>.88))object.move(dx,dy,bank,origin);
+      if((state.contact||(kind==='raid'&&state.t>=.34))&&!current.acted) {
         current.acted=true;
         if(kind==='sip'||kind==='bite')dirty(part);
         if(kind==='wipe') {

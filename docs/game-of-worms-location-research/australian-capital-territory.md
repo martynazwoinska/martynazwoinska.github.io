@@ -133,6 +133,35 @@ Sources:
 - **Primary:** a low handmade-stoneware cup and saucer close to the hermaphrodite's mouth, with a real elliptical rim, contained coffee surface, worm-shaped milk pattern, material shading, spoon and three separate steam curls. Its placement must read as drinking rather than as a floating cup.
 - **Companion:** a separately constructed hand grinder with glass bean hopper, visible beans, crank, burr, drawer and feet. It shares the café story without duplicating or shrinking the cup.
 
+### Café refinement, 2026-09-07 (approved)
+
+The current café replaces the archived balloon/grinder concepts below.
+The hermaphrodite's original SVG cup now uses a glazed berry body, an open
+handle, porcelain rim and foot ring, a contained microfoam tulip, and a
+separate porcelain saucer with a silver teaspoon. The male keeps his three
+separately positioned biscuits. A second drawing pass refined the foot ring,
+crema edge and actual rim-to-mouth contact point.
+
+The raid is 2700 ms instead of 4800 ms. Wingbeats last 320 ms instead of
+480 ms. Each bird banks along its own head-first departure, grips the upper
+edge of the actual biscuit and leaves its face visible. The one-time pickup
+also tolerates a missed contact frame. Sipping and biting now follow a
+small lifting arc. No new scientific claims, labels or background changes.
+Martyna approved the exact in-page production proof and requested deployment.
+
+Uncropped full-page screenshots were inspected at 360/768/1024/1440 viewport
+widths. Actual captures excluding scrollbars: 345x2573, 753x2425, 1009x1950,
+1425x1928. The earlier full-page capture defect did not recur in these proofs.
+Café lifecycle, inventory, cleanup and reduced-motion tests pass, together
+with cockatoo geometry, N2 audio and full accessory catalogue checks.
+
+Sound investigation only: [Gillies and Brown](https://www.publish.csiro.au/ZO/pdf/ZO23043)
+describe contact-call use in flight. [BirdLife Southern Queensland's recording](https://soundcloud.com/user-363253592/calls-from-a-pair-of-birds-sulphur-crested-cockatoo)
+identifies Andrew Spencer's XC328328 as two birds calling in flight and lists
+CC BY-NC-ND 4.0. Do not incorporate a shortened excerpt without verifying
+permission. No recording has been downloaded or included. There is no claim
+of a special food-stealing call.
+
 ### Balloon carriages
 
 The Canberra Balloon Spectacular launches balloons at dawn. The Game uses two original imaginary balloons and does not reproduce a real operator's balloon or branding.

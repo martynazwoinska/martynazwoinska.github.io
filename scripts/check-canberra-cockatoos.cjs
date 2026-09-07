@@ -32,7 +32,7 @@ const walk=n=>[n,...n.children.flatMap(walk)];
   assert.equal(draw(new Element('g'),{family:'canberra-flat-white-cafe'},false),false);
   const css=fs.readFileSync(path.join(__dirname,'../game-of-worms/style.css'),'utf8');
   assert(css.includes('.is-raiding .cockatoo-flight-wing.near'));
-  assert(css.includes('cockatoo-near-beat .48s ease-in-out 10 both'));
+  assert(css.includes('cockatoo-near-beat .32s ease-in-out 9 both'));
   assert(css.includes('.is-raiding .cockatoo-flight-wing { animation: none; }'));
   assert(css.includes('.accessory-piece.is-dragging .cockatoo-flight-wing { animation-play-state: paused; }'));
   console.log('Cockatoos: distinct flying birds, layered wings, no bases or pre-drawn loot, beak anchors, finite motion and reduced-motion fallback.');

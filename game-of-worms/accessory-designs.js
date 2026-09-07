@@ -9,7 +9,7 @@ import { drawTrivandrumRefinement } from "./trivandrum-refinement.js?v=20260906-
 import { drawPanamaRefinement } from "./panama-refinement.js?v=20260906-panama-1";
 import { drawBaliRefinement } from "./bali-refinement.js?v=20260906-nibs-1";
 import { drawFlyingCockatoos } from "./canberra-cockatoos.js?v=20260906-cafe-2";
-import { drawCafeProps } from "./canberra-cafe-art.js?v=20260906-cafe-2";
+import { drawCafeProps } from "./canberra-cafe-art.js?v=20260907-cafe-polish-1";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 

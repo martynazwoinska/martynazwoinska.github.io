@@ -17,6 +17,44 @@ function cookie(g,x,y,angle,index) {
   for(const [cx,cy] of [[-12,-14],[-3,-4],[5,17],[-22,16],[4,5]])e(n,cx,cy,1.4,1,'#b5834d','none');
 }
 export function drawCafeProps(g,item,male) {
+  if(item.family==='canberra-flat-white-cafe' && !male) {
+    g.classList.add('act-accessory','canberra-cafe-primary');
+    // A low porcelain saucer supports the foot ring. The cup lifts separately.
+    e(g,-3,79,99,15,'#39404a','none').setAttribute('opacity','.16');
+    p(g,'M-106 60Q-89 91-5 94Q77 92 98 62Z','#b5a0ac',ink,2.2);
+    e(g,-5,60,104,28,'#f7f0e8',ink,2.4);
+    e(g,-5,61,75,17,'#e7dcd4','#baaa9e',1.4);
+    p(g,'M-99 61Q-76 79-25 80','none','#fffdf6',3);
+    // A silver teaspoon lies across the near edge, not through the cup.
+    p(g,'M-89 79Q-56 88-22 88','none','#667784',5);
+    p(g,'M-88 78Q-55 85-23 87','none','#e1e8e9',2);
+    e(g,-97,76,13,6,'#a5b5bd','#526775',1.4);
+    p(g,'M-106 75Q-98 70-91 75','none','#edf4f4',1.4);
+    const cup=add(g,'g',{'data-cafe-cup':''});
+    // Closed inner/outer paths leave a genuine opening through the handle.
+    p(cup,'M61-17C113-30 119-8 112 19C107 40 88 47 64 40L67 25C84 31 94 22 97 9C101-6 91-12 70-3ZM73-4C90-10 103-5 98 11C95 24 85 31 70 25Z','#98576e',ink,2.7).setAttribute('fill-rule','evenodd');
+    p(cup,'M77-13C101-21 112-5 104 15','none','#d4a4b5',3);
+    e(cup,0,66,36,9,'#f0e4da',ink,2);
+    p(cup,'M-29 69Q0 77 29 69','none','#c5afa9',1.5);
+    p(cup,'M-74-28C-72 12-64 46-43 58C-20 74 24 75 46 56C66 40 72 7 74-28Z','#a35d77',ink,2.7);
+    p(cup,'M41-25C58-24 64-26 72-26C70 16 59 48 43 58C30 69 8 72-9 69C26 61 43 33 41-25Z','#78465f','none');
+    p(cup,'M-60-17C-59 9-54 30-45 42C-40 48-34 47-33 42C-45 23-48 1-48-17Z','#d49aaf','none');
+    p(cup,'M-54-9Q-52 16-46 25','none','#f1c7cf',2.2);
+    p(cup,'M-36 57Q-1 71 28 58','none','#c98c9f',1.7);
+    e(cup,0,-28,76,25,ivory,ink,2.5);
+    e(cup,0,-28,65,18,'#b98553','#8d6047',1.5);
+    e(cup,0,-26,59,13,'#d6b383','none');
+    p(cup,'M-59-30Q-46-41-23-41','none','#e7c698',1.4);
+    // Microfoam tulip in perspective, contained within the coffee surface.
+    p(cup,'M-31-29C-34-35-23-38-13-34C-6-40 10-39 17-34C32-37 40-29 27-23C14-17-7-17-23-21C-32-23-36-26-31-29Z','#fff3d6','none');
+    p(cup,'M-21-29Q-7-24 8-28Q19-31 26-27M-12-24Q1-21 14-24','none','#ba8554',1.5);
+    p(cup,'M-3-34Q-8-23 17-20','none','#fffaf0',2.4);
+    p(cup,'M-63-36Q-25-51 26-44','none','#ffffff',2.1);
+    p(cup,'M-73-24Q-53-7-17-6','none','#ded4c7',1.4);
+    const steam=add(cup,'g',{class:'cafe-steam-fine','pointer-events':'none'});
+    p(steam,'M-22-58C-35-72-15-80-23-94M14-59C2-73 25-80 17-101','none',ivory,2.2).setAttribute('opacity','.65');
+    return true;
+  }
   if(item.family==='canberra-flat-white-cafe' && male) {
     g.classList.add('act-accessory','canberra-biscuits');
     e(g,0,24,99,25,'#bfaeb0','none');

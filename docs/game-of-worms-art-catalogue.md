@@ -14,6 +14,12 @@ folds received a second construction pass, and its angle faces the male.
 Endek wraps, gongs, shared toggle labels and original assets remain unchanged.
 Martyna approved the exact contextual packet and both interactions for deployment.
 
+Canberra refinement, 2026-09-07: approved glazed berry cup with an open
+handle, porcelain rim/foot, microfoam and separate saucer/spoon. The male
+keeps the biscuit plate. Raid reduced to 2700 ms with faster wingbeats,
+banking, edge pickup and curved sip/bite travel. Background and bird art
+unchanged. No cockatoo audio included pending recording permission.
+
 Canberra interactive café preview, 2026-09-06 supersedes row 14's old
 accessory specifications. Her unchanged stoneware cup lifts for a sip, his
 grinder becomes a three-biscuit serving. Two airborne cockatoos without

@@ -2768,8 +2768,8 @@ html.accessory-drag-active body { overscroll-behavior: none; }
   transform-origin: 0 0;
 }
 .cockatoo-flight-wing { transform-box: view-box; transform-origin: 0 0; }
-.is-raiding .cockatoo-flight-wing.near { animation: cockatoo-near-beat .48s ease-in-out 10 both; }
-.is-raiding .cockatoo-flight-wing.far { animation: cockatoo-far-beat .48s ease-in-out 10 both; }
+.is-raiding .cockatoo-flight-wing.near { animation: cockatoo-near-beat .32s ease-in-out 9 both; }
+.is-raiding .cockatoo-flight-wing.far { animation: cockatoo-far-beat .32s ease-in-out 9 both; }
 .accessory-piece.is-dragging .cockatoo-flight-bird,
 .accessory-piece.is-dragging .cockatoo-flight-wing { animation-play-state: paused; }
 @keyframes cockatoo-near-beat {
