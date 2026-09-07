@@ -1,4 +1,5 @@
 import { createBaliNibs } from './bali-nibs.js?v=20260906-nibs-1';
+import { createCacaoCrack } from './bali-cacao-sound.js?v=20260908-crack-1';
 const NS = 'http://www.w3.org/2000/svg';
 export const CACAO_FAMILY = 'ju1873-cacao-specimen-lantern';
 const clamp = n => Math.max(0, Math.min(1, n));
@@ -26,6 +27,7 @@ export function withinCacaoPod(x, y) {
 
 export function createBaliCacao(habitat) {
   const nibs = createBaliNibs(habitat);
+  const crack = createCacaoCrack();
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const backing = new URL('./assets/sanda-hanging-pod-backing.png', import.meta.url).href;
   const halves = new URL('./assets/sanda-hanging-pod-halves.png', import.meta.url).href;
@@ -39,6 +41,7 @@ export function createBaliCacao(habitat) {
   const visible = n => n?.isConnected && !n.closest('[hidden]');
   function cancel() {
     nibs.cancel();
+    crack.stop();
     request++; cancelAnimationFrame(raf); raf = 0;
     if (!run) return;
     run.layer.remove();
@@ -100,7 +103,7 @@ export function createBaliCacao(habitat) {
     const source = piece.querySelector('.location-accessory-art');
     if (!root || !source) return;
     mount(bg);
-    if (reduced.matches) { pose(1); return; }
+    if (reduced.matches) { pose(1); crack.play(); return; }
     const inverse = root.getScreenCTM().inverse();
     const matrix = inverse.multiply(source.getScreenCTM());
     const start = new DOMPoint(-94, 11).matrixTransform(matrix);
@@ -114,7 +117,7 @@ export function createBaliCacao(habitat) {
     const layer = make('g', { 'data-cacao-machete-flight': '', 'aria-hidden': 'true', 'pointer-events': 'none' });
     const copy = source.cloneNode(true); copy.removeAttribute('transform'); copy.removeAttribute('opacity');
     layer.append(copy); root.append(layer);
-    const active = { piece, source, layer, opacity: source.getAttribute('opacity'), previous: opened.dataset.cacaoOpened };
+    const active = { piece, source, layer, opacity: source.getAttribute('opacity'), previous: opened.dataset.cacaoOpened, cracked: false };
     run = active; source.setAttribute('opacity', '0'); pose(0);
     piece.dataset.cacaoCutting = 'true';
     const began = performance.now();
@@ -128,6 +131,11 @@ export function createBaliCacao(habitat) {
       const afterHit = Math.max(0, elapsed - 790), settle = Math.max(0, elapsed - 1360);
       const jolt = afterHit > 0 ? Math.sin(afterHit / 36) * 2.2 * Math.exp(-afterHit / 115) : 0;
       pose(f.reveal, settle > 0 ? Math.sin(settle / 150) * 1.6 * Math.exp(-settle / 300) : 0, jolt);
+      if (!active.cracked && elapsed >= 840) {
+        active.cracked = true;
+        // Follow the opening frame, not asset-load time. Skip a stalled late frame.
+        if (elapsed < 1040) crack.play();
+      }
       if (f.done) { active.previous = '1'; cancel(); return; }
       raf = requestAnimationFrame(tick);
     }
@@ -138,6 +146,7 @@ export function createBaliCacao(habitat) {
     const bg = background();
     if (!handles(piece) || !visible(piece) || !visible(bg)) return false;
     cancel(); const token = request;
+    crack.prepare();
     load().then(() => animate(piece, bg, token)).catch(() => { /* Original scene remains usable if the optional image fails. */ });
     return true;
   }

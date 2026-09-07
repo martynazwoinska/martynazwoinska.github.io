@@ -24,7 +24,15 @@ class Node {
   cloneNode(){const n=new Node(this.tag);Object.entries(this.attrs).forEach(([k,v])=>n.setAttribute(k,v));this.children.forEach(c=>n.append(c.cloneNode()));return n;}
 }
 global.document={createElementNS:(_,tag)=>new Node(tag),addEventListener:(k,cb)=>events[k]=cb};
-global.window={matchMedia:()=>reduced,addEventListener:(k,cb)=>events[k]=cb};
+let audioStarts = 0, audioCreated = 0;
+class Audio {
+  constructor(){audioCreated++;this.state='running';this.sampleRate=48000;this.currentTime=0;this.destination={};}
+  resume(){return Promise.resolve();}
+  createBuffer(_,length){const data=new Float32Array(length);return {getChannelData:()=>data};}
+  createGain(){return {gain:{value:0,cancelScheduledValues(){},setTargetAtTime(){}},connect(){},disconnect(){}};}
+  createBufferSource(){return {connect(){},disconnect(){},start(){audioStarts++;},stop(){this.onended?.();}};}
+}
+global.window={AudioContext:Audio,matchMedia:()=>reduced,addEventListener:(k,cb)=>events[k]=cb};
 global.Image=class {decode(){return Promise.resolve();}};
 global.performance={now:()=>clock};
 global.requestAnimationFrame=cb=>{queue.set(++id,cb);return id;};
@@ -49,6 +57,13 @@ const flush=async()=>{await Promise.resolve();await Promise.resolve();await Prom
   piece.dataset={accessoryFamily:CACAO_FAMILY,wormPart:'primary'};
   env.append(bg);habitat.append(env,root);root.append(piece);piece.append(source);
   const ctl=createBaliCacao(habitat),opened=()=>habitat.querySelector('[data-cacao-opened]');
+  assert.equal(audioCreated,0,'No sound context at page load');
+  ctl.start(piece);await flush();step(790);assert.equal(audioStarts,0,'No crack before the shell starts splitting');
+  step(60);assert.equal(audioStarts,1,'One crack as the shell opens');
+  step(100);step(100);assert.equal(audioStarts,1,'No crack repeated on later frames');
+  ctl.reset(piece);
+  ctl.start(piece);ctl.cancel();await flush();step(900);assert.equal(audioStarts,1,'Cancelled image loading stays silent');
+  ctl.start(piece);await flush();step(1400);assert.equal(audioStarts,1,'A stalled frame does not play a late crack');ctl.reset(piece);
   assert(!ctl.start({dataset:{accessoryFamily:CACAO_FAMILY,wormPart:'companion'},isConnected:false}));
   assert(!ctl.drop(piece));
   assert(ctl.start(piece));await flush();assert.equal(source.getAttribute('opacity'),'0');
@@ -62,8 +77,12 @@ const flush=async()=>{await Promise.resolve();await Promise.resolve();await Prom
     ctl.start(piece);await flush();step(1400);document.hidden=true;events[reason]();document.hidden=false;
     assert.equal(queue.size,0);assert.equal(source.getAttribute('opacity'),null);assert.equal(opened().getAttribute('opacity'),'0');
   }
-  reduced.matches=true;ctl.start(piece);await flush();assert.equal(opened().getAttribute('opacity'),'1');assert.equal(queue.size,0);
+  reduced.matches=true;const beforeReduced=audioStarts;ctl.start(piece);await flush();assert.equal(opened().getAttribute('opacity'),'1');assert.equal(queue.size,0);
+  assert.equal(audioStarts,beforeReduced+1,'Reduced motion gets one crack with immediate opening');
   ctl.clear();assert(!opened());
+  reduced.matches=false;window.AudioContext=undefined;
+  const noAudio=createBaliCacao(habitat);noAudio.start(piece);await flush();step(850);step(1400);
+  assert.equal(opened().getAttribute('opacity'),'1','Unavailable audio does not block opening');noAudio.clear();
   bg.hidden=true;assert(!ctl.start(piece));bg.hidden=false;piece.hidden=true;assert(!ctl.start(piece));piece.hidden=false;
   // A failed optional image never hides the tool, mounts a broken image or blocks a retry.
   global.Image=class {decode(){return Promise.reject(new Error('offline'));}};
@@ -73,5 +92,5 @@ const flush=async()=>{await Promise.resolve();await Promise.resolve();await Prom
   for(const name of ['sanda-hanging-pod-backing.png','sanda-hanging-pod-halves.png'])assert(fs.existsSync(path.join(__dirname,'../game-of-worms/assets',name)));
   const png=fs.readFileSync(path.join(__dirname,'../game-of-worms/assets/sanda-hanging-pod-halves.png'));
   assert.equal(png[25],6,'The two pod-half sprites must have genuine RGBA transparency');
-  console.log('Bali cacao: hanging-pod target only, delayed physical opening, bounded motion, female-only scope, load cancellation/failure, reset, tool restoration and reduced motion pass.');
+  console.log('Bali cacao: synchronized single crack, no late/cancelled sound, silent fallback, hanging-pod target, bounded motion, female-only scope, reset, tool restoration and reduced motion pass.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

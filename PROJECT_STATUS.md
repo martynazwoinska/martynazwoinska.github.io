@@ -4,6 +4,25 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Bali cacao cracking sound, 2026-09-08
+
+Adds an original 420 ms synthesized woody snap and short fibrous tail when
+the female's hanging cacao pod begins opening at 840 ms. Initializes audio
+only from the user's click/key gesture. Plays once per cut, stops on cancel,
+reset, scene change, hiding or resize, and skips late frames or suspended audio.
+Reduced motion keeps the immediate reveal with one crack. No changes to
+drawings, backgrounds, animation movement, accessory size, labels or male nibs.
+
+Waveform checks at four sample rates, audio lifecycle tests and the pod,
+nibs and gong regressions pass. Browser opening, replay, Home, Escape and
+scene-switch cleanup passed without console errors or overflow. Full-page
+Bali proof is 650x2219. The viewport override did not affect this tab, so new
+Bali four-width proofs were not obtained. This is an audio-only change.
+Physical devices, Safari and subjective listening remain untested.
+
+Panama is deployed as `2acd41e`. Pages run `34165730531` succeeded, all six
+published runtime files matched, and the live blender interaction passed.
+
 ### Panama flower-bait interaction preview, 2026-09-08
 
 Approved for deployment on 2026-09-08 after the final contextual review.
