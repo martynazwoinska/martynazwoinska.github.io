@@ -1,5 +1,12 @@
 # Game of Worms art catalogue
 
+Trivandrum interaction preview, 2026-09-07: existing artwork retained.
+The moving loupe magnifies its partner's frame, glass and handle using a
+non-recursive physical copy. The female's can lifts above the male to shower
+his head, while the male's can pours downward. Both return to their original
+positions and retain user scaling. Static reduced-motion state provided.
+Contextual preview approved for deployment on 2026-09-07.
+
 Ishigaki interactions, 2026-09-07: the existing wings now flutter from their
 roots during short individual worm flights. Baskets and visors travel with
 their wearer. The two basket figs open into floret-lined cavities with enlarged

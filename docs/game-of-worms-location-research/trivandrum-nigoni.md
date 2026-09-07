@@ -154,3 +154,10 @@ custom SVG garden scene remains only as the image-load fallback. All six
 objects passed independent pointer drag, Arrow-key movement and isolated
 Home-reset checks. The 360 px, 768 px, 1024 px and 1440 px layouts retained
 six movable objects without document-level horizontal overflow.
+
+2026-09-07 interaction preview: unchanged can and loupe drawings now support
+physical loupe-over-loupe magnification and a watering action. The female's
+larger can showers the male from above. The male can pours downward. Watering
+is a playful interaction, not a claim about nematode behaviour. No public
+labels or biological copy changed. Four complete responsive proofs checked,
+including a mobile shower. Preview approved for deployment on 2026-09-07.

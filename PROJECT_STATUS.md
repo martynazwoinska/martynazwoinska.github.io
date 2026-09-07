@@ -4,6 +4,29 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Trivandrum loupe overlap and watering preview, 2026-09-07
+
+Approved for deployment on 2026-09-07: "once ready, deploy".
+The active loupe moves above its
+partner and magnifies that partner's physical frame, glass and handle without
+recursive optical windows. Keyboard focus survives the layer change.
+The larger female's can lifts above the male and showers his head, then returns.
+The male's can tips downward with a pulsed pour. Existing drawings, labels and
+default placements are unchanged. Water and soft gesture-triggered sound stop
+on cancellation or location changes. Custom accessory scale is preserved.
+
+Refinement fixed changing SVG bounds pulling the rotating can off-screen.
+Loupe overlap in both directions, keyboard movement, pouring, exact return,
+custom scale and Escape cancellation checked in Chromium. Full-page proofs for
+360/768/1024/1440 viewports are 345x2545, 753x2423, 1009x1897 and 1425x1928
+(scrollbar excluded). Mobile shower remains within the scene. No overflow.
+Loupe, watering, Trivandrum drawing, Ahmedabad regression and six-location
+tests pass. Game remains fixed-light. Physical touch devices, Safari and
+subjective sound listening remain untested. No public copy changes.
+
+Ahmedabad commit `9e68244` is deployed. GitHub Pages run `34161261583`
+succeeded and the six published files matched the commit.
+
 ### Ahmedabad hands, digging and sound preview, 2026-09-07
 
 Final contextual render and English-only label `waistcoats` explicitly approved

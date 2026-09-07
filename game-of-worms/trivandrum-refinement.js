@@ -53,6 +53,7 @@ function liveLens(g,cx,cy,rx,ry,male) {
 }
 
 function can(g,male) {
+  g=add(g,'g',{'data-watering-motion':''});
   if (male) {
     // Compact upright can, with a tall bail and a narrow neck.
     l(g,'M-45-10C-114-73-116 47-48 55',ink,13);
