@@ -16,6 +16,11 @@ Four full-page proofs at requested 360/768/1024/1440 widths were inspected
 (345x2403, 753x2399, 1009x1780, 1425x1928 excluding scrollbars). No overflow or
 console errors. Pointer/keyboard opening, closing, both flights, reset and
 scene-change interruption were checked. Timeline and catalogue checks pass.
+Added a quiet original synthesized wing buzz, with separate pitches and
+durations for the two worms and tremolo matched to the drawn wingbeat timing.
+It starts from the triggering gesture and fades on landing or interruption.
+Stationary reduced motion remains silent. Audio scheduling and cancellation
+tests pass. The agent has not aurally reviewed the effect.
 
 ### Canberra coffee and faster café raid, 2026-09-07
 

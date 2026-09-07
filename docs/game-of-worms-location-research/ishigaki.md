@@ -16,6 +16,8 @@ at literal scale. A second tap closes the fig. Reduced motion removes flight
 and crawling. Escape/Home and changing scenes restore temporary state.
 Production refinement rounded the cut faces, varied the male proportions,
 moved wing highlights with the membranes and added a smooth closing motion.
+The accompanying wing sound is original synthesis for this fantasy action,
+with no claim that it reproduces an identified fig-wasp species recording.
 
 ## Evidence boundaries
 

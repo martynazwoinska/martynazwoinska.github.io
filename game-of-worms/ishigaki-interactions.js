@@ -1,3 +1,4 @@
+import { createIshigakiAudio } from './ishigaki-audio.js?v=20260907-ishigaki-sound-1';
 const NS = 'http://www.w3.org/2000/svg';
 const clamp = x => Math.max(0, Math.min(1, x));
 const ease = x => { x=clamp(x); return x*x*(3-2*x); };
@@ -43,12 +44,14 @@ function openFig(parent, male) {
 }
 
 export function createIshigakiInteractions(habitat) {
+  const sound=createIshigakiAudio();
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   let flight=null, raf=0;
   const figs=new Map();
   const handles=piece=>!!piece && ['wings','sample-pannier'].includes(piece.dataset.accessoryFamily)
     && !!piece.querySelector('.fig-wing-thorax,[data-ishigaki-fig]');
   function cancel() {
+    sound.cancel();
     cancelAnimationFrame(raf); raf=0;
     if(flight) { flight(); flight=null; }
     delete habitat.dataset.ishigakiFlight;
@@ -117,6 +120,7 @@ export function createIshigakiInteractions(habitat) {
     if(hadFocus)piece.focus({preventScroll:true});
     habitat.dataset.ishigakiFlight=part;
     const began=performance.now();
+    sound.start(male,reduced.matches);
     const tick=now=>{
       if(!piece.isConnected||piece.closest('[hidden]')){cancel();return;}
       const s=wingFlightFrame(now-began,male,reduced.matches);
