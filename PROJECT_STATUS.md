@@ -4,6 +4,37 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Panama flower-bait interaction preview, 2026-09-08
+
+Approved for deployment on 2026-09-08 after the final contextual review.
+Replaces the active Golden
+Fleece cape with a sealed glass blender for the hermaphrodite and separately
+drawn spoon, mixing bowl and receiving dish for the male. Existing flower and
+fan artwork retained, with animation wrappers and revised fan starting positions.
+The larger flower folds over the eyes and shakes open. The male's bloom tips
+and is straightened with a hand. Fans have individual rhythms, hand grips,
+subtle airflow and flower movement. Blender has contained animated petals,
+mixture and dial, two contact hands and a quiet gesture-triggered motor sound.
+The male transfers a spoonful between dishes. Home clears the receiving dish.
+
+English-only labels explicitly approved by Martyna: `Flower bait`, `blender`,
+`spoon and dish`. No other public prose changes. The painted background and
+collection metadata are unchanged. The new props are playful interpretations,
+not a reconstruction of the experimental equipment.
+
+Critical refinement enlarged blender and dishes, separated the male spoon
+from his fan, and rerouted the lower blender arm outside the glass. Full-page
+proofs at 360/768/1024/1440 viewports: 345x2449, 753x2399, 1009x1801, 1425x1928
+(scrollbar excluded). Six action starts and Escape cancellation, spoon result
+persistence and Home reset, custom blender scale preservation checked.
+Drawing, animation-frame and six-location checks pass, plus Trivandrum and
+Ahmedabad regression tests. No document overflow. Fixed-light Game only.
+Physical touch devices, Safari and subjective sound listening remain untested.
+
+Previous Trivandrum work is deployed as `4a92520`. Pages run `34164097672`
+succeeded. All six published runtime files matched the commit and live watering
+completed without browser errors.
+
 ### Trivandrum loupe overlap and watering preview, 2026-09-07
 
 Approved for deployment on 2026-09-07: "once ready, deploy".

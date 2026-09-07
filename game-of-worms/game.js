@@ -3,7 +3,8 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260907-shower-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260907-panama-play-1";
+import { createPanamaPlay } from "./panama-play.js?v=20260907-panama-play-1";
 import { createAhmedabadHands } from "./ahmedabad-hands.js?v=20260907-paper-cloth-2";
 import { createIshigakiInteractions } from "./ishigaki-interactions.js?v=20260907-ishigaki-sound-1";
 import { createCanberraCafe, CAFE_FAMILIES } from "./canberra-cafe.js?v=20260907-cafe-polish-1";
@@ -695,7 +696,9 @@ const canberraCafe = createCanberraCafe(els.habitat);
 const ishigakiPlay = createIshigakiInteractions(els.habitat);
 const ahmedabadHands = createAhmedabadHands(els.habitat);
 const trivandrumWatering = createTrivandrumWatering(els.habitat);
+const panamaPlay = createPanamaPlay(els.habitat);
 function renderSpecies(item, place) {
+  panamaPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.clear();
   ishigakiPlay.clear();
@@ -1120,7 +1123,7 @@ function updateAccessoryLabelVisibility() {
 }
 
 function constrainVisibleAccessories() {
-  if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active) return;
+  if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || panamaPlay.active) return;
   if (els.habitat.classList.contains("is-changing")) return;
   accessoryIds.forEach(id => {
     if (!activeWardrobe().has(id)) return;
@@ -1229,6 +1232,7 @@ function announceSelectedAccessorySize() {
 }
 
 els.accessorySizeSlider.addEventListener("input", event => {
+  panamaPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.cancel();
   ishigakiPlay.clear();
@@ -1310,6 +1314,7 @@ function saveActiveDoodle() {
 }
 
 function syncDrawingMode() {
+  panamaPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.clear();
   ishigakiPlay.clear();
@@ -1426,6 +1431,7 @@ function syncFittedHeadwearMotion(accessory) {
 }
 
 function toggleAccessory(id, force) {
+  panamaPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.clear();
   ishigakiPlay.clear();
@@ -1491,7 +1497,7 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
+      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
       addAccessoryHitTarget(piece);
     });
   });
@@ -1579,7 +1585,7 @@ function finishAccessoryDrag(event) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") baliCacao.drop(piece);
   }
-  else if (event.type === "pointerup") { turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); }
+  else if (event.type === "pointerup") { turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1660,6 +1666,7 @@ function wireAccessoryPieces() {
       if (ishigakiPlay.active) return;
       if (n2CryoFlight.active) return;
       if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
+      panamaPlay.cancel();
       trivandrumWatering.cancel();
       if (ahmedabadHands.active) ahmedabadHands.cancel();
       baliCacao.cancel();
@@ -1703,6 +1710,11 @@ function wireAccessoryPieces() {
       if (ishigakiPlay.active) { if(event.key === "Escape" || event.key === "Home")ishigakiPlay.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
       if (n2CryoFlight.active) { if(event.key === "Escape" || event.key === "Home")n2CryoFlight.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
       if (piece.getAttribute("tabindex") !== "0" || drawingEnabled || !activeWardrobe().has(id)) return;
+      if ((event.key === "Enter" || event.key === " ") && panamaPlay.handles(piece)) {
+        event.preventDefault(); if(!event.repeat)panamaPlay.start(piece); return;
+      }
+      if (event.key === "Home") panamaPlay.reset(piece);
+      else if (["Escape", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) panamaPlay.cancel();
       if ((event.key === "Enter" || event.key === " ") && trivandrumWatering.handles(piece)) {
         event.preventDefault(); if(!event.repeat)trivandrumWatering.start(piece); return;
       }

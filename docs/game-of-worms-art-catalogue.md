@@ -1,5 +1,15 @@
 # Game of Worms art catalogue
 
+Panama interaction preview, 2026-09-08: `Flower bait` replaces the Golden
+Fleece in the active set. Original sealed glass blender with berry enamel
+base, transparent handle, lid, locking collar and contained flower mixture
+for the hermaphrodite. Separate silver spoon, mixing bowl and receiving dish
+for the male. Existing Gustavia flower artwork folds/tips and returns. Fans
+now work with small hands, distinct rhythms and soft sound. The landscape is
+unchanged. Labels approved. Deployment authorized after final review on 2026-09-08.
+Refinement enlarged the new props, separated spoon/fan placement and kept
+the blender's operating arm outside the glass. Four full-page proofs passed.
+
 Trivandrum interaction preview, 2026-09-07: existing artwork retained.
 The moving loupe magnifies its partner's frame, glass and handle using a
 non-recursive physical copy. The female's can lifts above the male to shower

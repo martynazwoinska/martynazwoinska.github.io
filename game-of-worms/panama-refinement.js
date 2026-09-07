@@ -1,5 +1,6 @@
 // Original QG2726 artwork. The painting and collection metadata are unchanged.
-const ink='#34484b', wool='#d9ad59', gold='#99733c', cream='#fff0bd';
+import { drawFlowerBait } from './panama-bait.js?v=20260907-bait-1';
+const ink='#34484b', gold='#99733c', cream='#fff0bd';
 const berry='#994e70', blush='#e7afbd', ivory='#faf0dc', teal='#487a71';
 const add=(g,tag,attrs={})=>{
   const n=document.createElementNS('http://www.w3.org/2000/svg',tag);
@@ -14,7 +15,7 @@ function flower(g,male) {
   const worn=male?add(g,'g',{transform:'translate(-28 82) scale(.43)'}):g;
   // Attachment follows the crown of the head, above the eyes.
   p(worn,male?'M300 41Q323 13 346 36L342 40Q323 22 304 46Z':'M300 33Q324 12 345 35L341 40Q323 22 302 40Z',berry);
-  const f=add(worn,'g',{transform:male?'translate(307 15) rotate(-25) scale(.93 .78)':'translate(316 12) rotate(-14) scale(.69)'});
+  const f=add(worn,'g',{'data-panama-flower':'',transform:male?'translate(307 15) rotate(-25) scale(.93 .78)':'translate(316 12) rotate(-14) scale(.69)'});
   p(f,'M9 16Q30 12 52 34Q28 46 9 16Z',teal);
   l(f,'M16 22L42 34','#88b398');
   if(male) {
@@ -31,7 +32,7 @@ function flower(g,male) {
   } else {
     const petals=[[-142,.88],[-93,1.02],[-43,.95],[3,.92],[49,1.03],[96,.9],[143,.94],[184,.87]];
     for(const [a,s] of petals) {
-      const petal=add(f,'g',{transform:`rotate(${a}) scale(${s})`});
+      const petal=add(f,'g',{'data-panama-petal':'',transform:`rotate(${a}) scale(${s})`});
       p(petal,'M-6 9C-22-1-37-26-26-38C-19-47-8-38-2-42C13-48 26-37 25-26C24-8 8 4-6 9Z',a%2?ivory:'#eed3ce',berry,1.1);
       p(petal,'M-6 9Q-14-5-20-24Q-10-16-4-9Q10-20 20-25Q15-5-6 9Z',blush,'none',0,{opacity:.45});
       l(petal,'M-2 0Q-7-15-9-30','#d9a4b0',1);
@@ -49,33 +50,9 @@ function flower(g,male) {
   }
 }
 
-function cape(g,male) {
-  const c=male?add(g,'g',{transform:'translate(-28 82) scale(.43)'}):g;
-  const silhouette=male
-    ?'M315 91Q302 79 278 85Q239 83 220 103Q201 119 197 139Q195 149 208 143Q211 159 225 145Q234 158 246 139Q257 149 273 133Q286 138 295 129Q316 125 329 105Z'
-    :'M315 91Q297 80 276 86Q234 81 207 106Q182 130 177 161Q173 170 174 180Q170 191 184 186Q182 203 198 188Q209 200 218 176Q230 185 242 162Q255 170 268 147Q282 152 296 131Q316 125 330 105Z';
-  p(c,silhouette,gold,ink,1.8);
-  const id=`panama-fleece-${male?'male':'primary'}`;
-  const clip=add(add(c,'defs'),'clipPath',{id});p(clip,silhouette,'white','none');
-  const fur=add(c,'g',{'clip-path':`url(#${id})`});
-  p(fur,male?'M318 91Q257 77 221 116L206 144Q248 128 292 131L322 109Z':'M318 91Q251 73 212 114Q185 144 179 182Q206 159 240 151Q279 146 324 110Z',wool,'none');
-  p(fur,male?'M304 89Q258 77 229 103Q251 113 286 109Z':'M304 89Q252 78 219 109Q242 116 279 107Z',cream,'none',0,{opacity:.6});
-  // Overlapping locks follow the drape. Dark roots, pale turned tips.
-  const locks=male?[[231,107],[253,98],[278,97],[302,104],[218,127],[242,119],[265,119],[284,120]]
-    :[[215,115],[237,99],[260,96],[284,99],[303,107],[202,135],[224,126],[248,120],[273,121],[191,159],[216,150],[239,144],[260,138],[198,178]];
-  for(const [x,y] of locks) {
-    p(fur,`M${x-9} ${y-4}Q${x-13} ${y+1} ${x-7} ${y+4}Q${x-9} ${y+10} ${x-2} ${y+8}Q${x+3} ${y+13} ${x+8} ${y+6}Q${x+13} ${y+5} ${x+10} ${y-1}`,wool,gold,1);
-    l(fur,`M${x-7} ${y-4}C${x-9} ${y-10} ${x+1} ${y-11} ${x+2} ${y-5}Q${x+1} ${y} ${x-3} ${y-2}M${x+1} ${y+3}Q${x+6} ${y+7} ${x+8} ${y+1}`,cream,1.7);
-  }
-  // Soft rolled collar wraps below the face, with a small metal fastening.
-  p(c,'M311 87Q319 89 329 101L326 108Q316 100 306 98Z',cream,gold,1.4);
-  l(c,'M309 91L321 101',wool,2.5);
-  e(c,male?320:321,110,6,5,berry,ink,1.1);
-  l(c,'M318 109Q321 106 324 110Q323 114 320 113',cream,1.1);
-  l(c,male?'M321 115Q335 129 323 138':'M321 115Q328 138 310 147',berry,2);
-}
 
 function fan(g,male) {
+  g=add(g,'g',{'data-panama-fan':''});
   const px=male?16:0,py=male?64:72;
   const angles=male?[-143,-123,-103,-83,-63,-43]:[-161,-143,-125,-107,-89,-71,-53,-35,-17];
   const r=male?137:151;
@@ -113,7 +90,7 @@ function fan(g,male) {
 
 export function drawPanamaRefinement(g,item,male) {
   if(!item.id.startsWith('tropicalis::Barro Colorado Island, Panama::')) return false;
-  const draw={'qg2726-gustavia-flower-headpiece':flower,'qg2726-golden-fleece-cape':cape,'qg2726-bci-forest-census-map-fans':fan}[item.family];
+  const draw={'qg2726-gustavia-flower-headpiece':flower,'qg2726-flower-bait':drawFlowerBait,'qg2726-bci-forest-census-map-fans':fan}[item.family];
   if(!draw)return false;
   g.dataset.renderer=item.family;g.dataset.refinement='panama-20260906';draw(g,male);return true;
 }

@@ -2,6 +2,31 @@
 
 Last updated: 2026-08-23
 
+## Current interaction preview, 2026-09-08
+
+The active accessory set now uses the existing Gustavia headpieces, working
+forest-census map fans and `Flower bait` (`qg2726-flower-bait`). This replaces
+the Golden Fleece concept documented historically below. Labels `Flower bait`,
+`blender` and `spoon and dish` were explicitly approved. Deployment was
+authorized after final review on 2026-09-08.
+
+The larger worm operates a sealed glass blender. The male transfers mixture
+between two dishes with a silver spoon. These are original fantasy drawings,
+not replicas of the experiment's undocumented equipment. The research reports
+using a kitchen blender to homogenize Gustavia flowers and water:
+https://pmc.ncbi.nlm.nih.gov/articles/PMC9309040/
+
+Blender construction reference, inspected before drawing: glass jar, handle,
+pouring spout, lid and motor-base connection. No product artwork was copied:
+https://www.kitchenaid.com/countertop-appliances/blenders/accessories/p.kitchenaid-62-oz-glass-jar-blender-accessory.KSBJA71.html
+https://producthelp.kitchenaid.com/Countertop_Appliances/Blenders_and_Hand_Blender/Pure_Power/Operation/How_to_Assemble_the_Blender
+
+Hands, fanning and flower movements are playful animations. Existing painted
+background, collection metadata and public scientific prose are unchanged.
+All six accessories remain individually movable and resettable. Four complete
+responsive renders checked, with a refinement pass on scale, spacing and arm
+placement. Physical phones and Safari remain untested.
+
 ## Purpose
 
 This dossier defines the evidence boundary and illustration contract for the

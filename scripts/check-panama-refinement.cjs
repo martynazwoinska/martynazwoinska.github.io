@@ -11,7 +11,7 @@ const walk=n=>[n,...n.children.flatMap(walk)];
 (async()=>{
   const {drawPanamaRefinement:draw}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/panama-refinement.js')));
   const ids=[];
-  for(const family of ['qg2726-gustavia-flower-headpiece','qg2726-golden-fleece-cape','qg2726-bci-forest-census-map-fans']){
+  for(const family of ['qg2726-gustavia-flower-headpiece','qg2726-flower-bait','qg2726-bci-forest-census-map-fans']){
     const pair=[false,true].map(male=>{
       const g=new Element('g');assert(draw(g,{id:'tropicalis::Barro Colorado Island, Panama::wrap',family},male));
       const nodes=walk(g), shapes=nodes.filter(n=>['path','ellipse'].includes(n.tag));
@@ -33,5 +33,5 @@ const walk=n=>[n,...n.children.flatMap(walk)];
   }
   assert.equal(new Set(ids).size,ids.length,'No duplicate clip identifiers');
   assert.equal(draw(new Element('g'),{id:'tropicalis::Oahu::wrap',family:'qg2726-golden-fleece-cape'},false),false);
-  console.log('Panama: six distinct drawings, contained fleece and fan details, explicit paint, scoped dispatch and valid geometry.');
+  console.log('Panama: six distinct drawings, contained glass and fan details, explicit paint, scoped dispatch and valid geometry.');
 })().catch(e=>{console.error(e);process.exitCode=1});
