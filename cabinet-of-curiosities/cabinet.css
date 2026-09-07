@@ -530,6 +530,24 @@ button { color: inherit; }
 }
 
 @media (pointer: coarse) {
+  /* Keep the original art and lettering size; avoid subpixel smearing on phones. */
+  .chof-link img {
+    filter: contrast(.94) saturate(.9) brightness(.98)
+      drop-shadow(.35px .65px .5px rgba(31, 18, 10, .5));
+  }
+  .chof-link-label {
+    filter: none;
+    opacity: 1;
+    text-shadow: 0 .35px .35px rgba(37, 21, 15, .72);
+  }
+  .chof-link::after {
+    box-sizing: border-box;
+    width: clamp(3px, 5.4%, 4.5px);
+    border: 0;
+    box-shadow: inset 0 0 0 .35px rgba(69, 39, 14, .72),
+      0 .35px .3px rgba(24, 13, 7, .7),
+      .3px .6px .45px rgba(34, 19, 10, .35);
+  }
   .hotspot.is-playful { min-width: 44px; min-height: 44px; }
   .chof-touch-target {
     position: absolute;
