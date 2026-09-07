@@ -83,6 +83,30 @@ caps, edge reflections, clipped curled plant material and the retained
 `14 DAYS` tags. The male tube is enlarged for readability. No painted asset,
 collection record, label or public prose changed. Approved for deployment.
 
+Ahmedabad interaction revision, 2026-09-07 (final render and label approved for deployment):
+Final paper/cloth pass: crisp patang-style paper silhouettes, single bowed
+cross-spars and straight spines, two different pasted-paper patterns, and more
+clearance between the primary kite tail and collar. Rounded bound necklines
+replace suit-like lapels. Original floral embroidery stays within the separately
+fitted open-front primary and buttoned male waistcoat panels. The wider/high arm
+reach, connected kite tether, digging, sounds and manual controls are retained.
+This preview supersedes the historical Ahmedabad table entry below.
+Primary arm range expanded for kite guiding/reeling and digging. Hands remain
+mapped to the tether and tool grips. Male movement and artwork unchanged.
+Latest revision: selectable fans replaced by fitted waistcoats, with open fronts
+for the primary worm and a shorter buttoned companion cut. Fans preserved unused.
+Cloth follows the body during actions. Canopies simplified to cleaner translucent
+paper with finer edges, and primary canopy raised clear of the clothing.
+hands grip the reel and tether, then switch to a D-grip digging spade or the
+male's hand trowel. Individual kite-tug rhythms, one versus two scoops, retained
+soil marks and original gesture-triggered sound effects. The male reel is
+lowered to his body. The follow-up removes the bucket, tray and sample extras,
+leaving only the two digging tools. Canopies have bowed paper edges, bamboo
+structure and restrained shading. Tapered arms have defined elbows and larger
+gloves. Initial positions are spread apart, with higher canopies and wider kite
+excursions. Background, fan drawings, public labels and manual dragging unchanged.
+Full-page checks and remaining manual checks are recorded in PROJECT_STATUS.
+
 Ahmedabad local refinement, 2026-09-06: separately opened lattice fans with
 paper folds and wooden ribs, patterned paper kites with bamboo bows and wooden
 reels, and distinct pail/probe versus tray/trowel soil kits. Fans leave faces

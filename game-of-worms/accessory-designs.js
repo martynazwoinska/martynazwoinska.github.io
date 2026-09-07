@@ -4,7 +4,7 @@ import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-san
 import { drawKauaiRecording } from "./kauai-recording.js?v=20260906-kauai-even-cups-2";
 import { drawN2Coat } from "./n2-tailoring.js?v=20260906-n2-fabric-2";
 import { drawN2Cryopack } from "./n2-cryopacks.js?v=20260906-n2-sidepack-2";
-import { drawAhmedabadRefinement } from "./ahmedabad-refinement.js?v=20260906-fans-1";
+import { drawAhmedabadRefinement } from "./ahmedabad-refinement.js?v=20260907-paper-cloth-2";
 import { drawTrivandrumRefinement } from "./trivandrum-refinement.js?v=20260906-live-loupes-2";
 import { drawPanamaRefinement } from "./panama-refinement.js?v=20260906-panama-1";
 import { drawBaliRefinement } from "./bali-refinement.js?v=20260906-nibs-1";
@@ -21,7 +21,7 @@ const SVG_NS = "http://www.w3.org/2000/svg";
  */
 const rows = [
   ["inopinata", "Ishigaki, Japan", "fig UV visors", "fig-fascinator", "field specimen baskets", "sample-pannier", "fig-wasp wings", "wings"],
-  ["briggsae", "Ahmedabad, India · AF16", "lattice fans", "lattice-fan", "kite rigs", "kite-rig", "soil kits", "soil-kit"],
+  ["briggsae", "Ahmedabad, India · AF16", "waistcoats", "af16-embroidered-waistcoat", "kite rigs", "kite-rig", "soil kits", "soil-kit"],
   ["briggsae", "Salt Lake City, Utah · EG4181", "apricot blossom hats", "eg4181-apricot-blossom-hat", "beehive saddle packs", "eg4181-beehive-saddle-pack", "single-tail mountain skis", "eg4181-single-tail-mountain-ski"],
   ["briggsae", "Kauaʻi, Hawaiʻi · QG130", "kukui-shell glow carts", "qg130-kukui-glow-cart", "root-loop carousel rides", "qg130-root-carousel", "three-worm ribbon hoops", "qg130-three-ribbon-hoops"],
   ["briggsae", "Réunion Island · JU1375", "vanilla vine wraps", "ju1375-vanilla-vine-wrap", "sugarcane juice", "ju1375-sugarcane-juice", "Bourbon green gecko companions", "ju1375-bourbon-green-gecko-companion"],
@@ -6266,9 +6266,10 @@ function renderPiece(target, item, wormPart) {
     "fig-fascinator": { primary: [331.5, 47, .50, 25], companion: [114.5, 102, .32, 25] },
     "sample-pannier": { primary: [170, 176, .66, -4], companion: [51, 164, .39, 4] },
     "wings": { primary: [247, 150, .46, 68], companion: [88, 147, .35, 70] },
-    "lattice-fan": { primary: [309, 150, .52, 17], companion: [62, 135, .43, -24] },
-    "kite-rig": { primary: [194, 132, .65, -8], companion: [41, 104, .47, -13] },
-    "soil-kit": { primary: [298, 262, .52, -2], companion: [58, 233, .43, -5] },
+    "lattice-fan": { primary: [374, 167, .52, 12], companion: [8, 124, .43, -30] },
+    "af16-embroidered-waistcoat": { primary: [0, 0, 1, 0], companion: [-28, 82, .43, 0] },
+  "kite-rig": { primary: [220, 210, .65, 0], companion: [73, 160, .47, -10] },
+    "soil-kit": { primary: [344, 285, .52, -2], companion: [10, 248, .43, -9] },
   "santeuil-railway-driver-uniform": { primary: [0, 0, 1, 0], companion: [-28, 82, .43, 0] },
   "santeuil-cylinder-organ-instrument": { primary: [360, 244, .66, -4], companion: [62, 161, .38, -28] },
   "santeuil-hogweed-locomotive": { primary: [220, 275, .73, -2], companion: [28, 198, .62, 0] },
@@ -6385,7 +6386,7 @@ function renderPiece(target, item, wormPart) {
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
-  const isBodyFittedCloth = ["qg2726-gustavia-flower-headpiece", "qg2726-golden-fleece-cape", "ju1873-balinese-endek-wrap"].includes(item.family);
+  const isBodyFittedCloth = ["qg2726-gustavia-flower-headpiece", "qg2726-golden-fleece-cape", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat"].includes(item.family);
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
     : isBodyFittedCloth || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });

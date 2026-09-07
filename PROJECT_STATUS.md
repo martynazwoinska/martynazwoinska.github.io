@@ -4,6 +4,104 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Ahmedabad hands, digging and sound preview, 2026-09-07
+
+Final contextual render and English-only label `waistcoats` explicitly approved
+by Martyna on 2026-09-07: "Approve and deploy". Publishing the complete Ahmedabad
+bundle below. Historical preview notes are retained as the revision record.
+Final QA: drawing, timeline/audio and six-location audits, syntax and diff checks
+pass. Full-page proofs at 360/768/1024/1440 viewports are 345x2400, 753x2323,
+1009x1777 and 1425x1876 (scrollbar excluded). No horizontal overflow or console
+errors/warnings. Both kite actions, primary digging, matching body/cloth transforms
+and Home reset checked. Physical devices, Safari and subjective sound listening
+remain untested. No source illustration files changed after approval.
+Paper/cloth correction: kite canopies now have straight cut-paper perimeters,
+flat two-colour pasted-paper patterns, one bowed bamboo spar and one straight
+spine. Thin edges replace the padded highlights. The primary kite starts farther
+left/up to separate its tail from the costume. Waistcoats have bound rounded
+necklines and original floral embroidery, with open-front berry primary and
+short buttoned indigo companion. Construction sources are in the dossier.
+All earlier hand-reach, digging, sound, default-spacing and spade-only work is
+retained. User approved deployment of the bundle and the English-only label
+`waistcoats` after viewing the final contextual render.
+Second arm-reach correction: the primary reel lifts 120 local units instead of
+24, with eased early lift so the raised pose is sustained through the pull.
+The guiding hand advances higher and the tether control point follows the lift.
+Regression checks require the reel hand to clear the upper shoulder at default
+size. Male motion, digging, canopies, costumes and sound are unchanged. Updated
+the hands module, its test, two cache keys and this status note. No files added
+or deleted. Four-width full-page checks repeated with the dimensions below,
+no overflow or console warnings/errors. Keyboard activation and Home checked.
+Arm-reach follow-up: primary guiding hand slides farther up the kite tether,
+reel moves outward/up through a larger gesture, and elbows open away from the
+belly. Digging holds the spade farther forward with a broader stroke. Male
+geometry/timing, clothing/canopy drawings, audio, labels and manual controls stay
+unchanged. Reach tests cover finite positions, exact return and unchanged male
+movement. Changed hands controller, its test, Game/index cache keys and these
+three documentation files. No new or deleted files in this follow-up.
+Arm-reach QA: controller/refinement/six-location checks and syntax checks pass.
+Full-page browser captures at viewport widths 360, 768, 1024 and 1440 measure
+345x2400, 753x2323, 1009x1777 and 1425x1876 pixels respectively (scrollbar
+excluded). No horizontal overflow or browser warnings/errors. Desktop and mobile
+renders inspected. Physical-device touch and Safari remain untested.
+
+Latest revision replaces the selectable lattice fans with two fitted embroidered
+waistcoats. The larger worm wears separate open fronts, the male a short buttoned
+cut. Inner cloth follows body motion during digging without changing outer user
+drag/scale. Fans are retained as unused drawings, not assigned elsewhere.
+Canopies now use two clean paper designs, finer outlines and partial translucency.
+The primary kite is raised clear of the waistcoat. Parked reels stay in frame.
+Only public wording change: `waistcoats` replaces `lattice fans`, including
+derived accessible names. The Game is intentionally English-only. This label and
+the contextual drawing require approval before commit/deployment.
+Waistcoat validation: both cloth transforms match their moving body during digging.
+Keyboard move/Home and Escape checked, and zero fan pieces rendered. Latest full-page
+proofs at 360/768/1024/1440: 345x2400, 753x2323, 1009x1777, 1425x1876.
+No overflow or console warnings/errors. Drawing, timeline/audio, retained-fan,
+palette and six-location tests pass. Physical touch, Safari and sound listening
+remain untested. This revision changed accessory-designs.js, ahmedabad-refinement.js,
+ahmedabad-hands.js, game.js, index.html, check-ahmedabad-refinement.cjs and these
+three project/art documents. No files created or deleted in this revision.
+
+Follow-up refinement: paper canopies now have bowed edges, bamboo spars,
+reinforcement patches and restrained shading. Initial positions spread the
+canopies above the worms, fans to the sides and digging tools below. The bucket,
+tray and sample extras were removed at Martyna's request. Arms now taper through
+defined elbows into larger gloves. Kite excursions are wider. Manual drag/scale
+handling, sounds and other locations are unchanged.
+Fresh full-page proofs: viewport 360 -> 345 x 2400, 768 -> 753 x 2323,
+1024 -> 1009 x 1777, 1440 -> 1425 x 1876 (15 px scrollbar excluded).
+No horizontal overflow or browser warnings/errors. Keyboard kite and digging
+actions and Escape reset checked. Geometry, paint, hands/audio, fan and
+six-location checks pass. Physical touch devices, Safari and sound listening
+remain manual checks. No new files in this follow-up, none deleted.
+
+Tap either kite rig to tug its tether with attached hands and a small body lean.
+The larger worm guides the line with one hand, while the male grips both ends
+of his reel and responds more quickly. Tap either soil kit to lower the worm,
+set the reel aside and dig with the same hands. The larger worm has a D-grip
+spade and one scoop, the male a hand trowel and two quick scoops. Holes and soil
+piles remain until reset or scene/accessory changes. Home resets the selected
+pair member, Escape cancels, and keyboard movement/size controls remain available.
+Original procedural wind, reel clicks and soil crunches start only after a
+gesture. Reduced-motion mode uses still poses without these sound effects.
+No public copy or labels changed. Game remains English-only and fixed-light.
+
+Created `game-of-worms/ahmedabad-hands.js`, `game-of-worms/ahmedabad-audio.js`
+and `scripts/check-ahmedabad-hands.cjs`. Changed the Ahmedabad renderer, catalogue
+dispatcher/layout, Game controller/cache keys and the three documentation files.
+Nothing deleted. No homepage or Cabinet changes.
+Checks: Ahmedabad timelines/audio, artwork/paint, fans/palette, six-location
+artwork, Ishigaki interaction/audio regression, syntax and diff checks pass.
+Browser checks cover pointer/keyboard activation, both scoops, switching tools,
+Escape, scene interruption and exact preservation of a selected 1.1 accessory
+scale through a kite cycle. No console errors or horizontal overflow.
+Final uncropped full-page proofs: requested 360/768/1024/1440 viewports produced
+345x2400, 753x2323, 1009x1777 and 1425x1876 images (15 px scrollbar excluded).
+Physical-device drag/pinch, Safari, reduced-motion browser emulation and an
+auditory listening review remain manual. The reduced-motion/audio paths have
+automated checks. Preview: `http://127.0.0.1:4198/game-of-worms/?review=ahmedabad-hands`.
+
 ### Ishigaki wing flights and opening figs, 2026-09-07
 
 Tap either wing pair for an individual flight with attached accessories,

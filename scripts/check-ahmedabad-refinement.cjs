@@ -10,7 +10,7 @@ global.document={createElementNS:(_,tag)=>new Element(tag)};
 const walk=n=>[n,...n.children.flatMap(walk)];
 (async()=>{
   const {drawAhmedabadRefinement:draw}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/ahmedabad-refinement.js')));
-  for (const family of ['lattice-fan','kite-rig','soil-kit']) {
+  for (const family of ['af16-embroidered-waistcoat','kite-rig','soil-kit']) {
     const pair=[false,true].map(male=>{
       const g=new Element('g');
       assert(draw(g,{id:'briggsae::Ahmedabad, India · AF16::headwear',family},male));
@@ -18,19 +18,31 @@ const walk=n=>[n,...n.children.flatMap(walk)];
         const cord=walk(g).find(n=>n.attributes.class==='af16-flight-cord');
         assert(cord.attributes.d.startsWith('M0 0C'),'Curved line starts at the fixed reel exit');
         const end=cord.attributes.d.match(/(-?[\d.]+) (-?[\d.]+)$/).slice(1).map(Number);
-        const [x,y,angle,kx,ky]=male?[-26,-196,-16,12,12]:[20,-218,13,15,14];
+        const [x,y,angle,kx,ky]=male?[-32,-246,-12,12,12]:[-32,-296,10,15,14];
         const r=angle*Math.PI/180;
         assert(Math.hypot(end[0]-(x+kx*Math.cos(r)-ky*Math.sin(r)),
           end[1]-(y+kx*Math.sin(r)+ky*Math.cos(r)))<.001,'Thread ends at transformed bridle knot');
-        assert(Math.hypot(...end)>180,'Long flying thread');
+        assert(Math.hypot(...end)>155,'Long flying thread');
         const paper=walk(g).find(n=>n.attributes.class==='af16-kite-paper-motion');
         assert.equal(paper.attributes.style,`transform-origin: ${kx}px ${ky}px;`,'Paper tilts around its tether');
         const canopy=walk(g).find(n=>n.attributes.class==='af16-kite-canopy');
         assert.equal(canopy.attributes.transform,`translate(${kx} ${ky}) scale(${male?1.65:1.5}) translate(${-kx} ${-ky})`,'Only the canopy grows around the fixed knot');
         assert(g.children.length>1,'Reel remains outside animated flight group');
+        const sheet=walk(canopy).find(n=>'data-af16-paper' in n.attributes);
+        assert(sheet,'Dedicated paper sheet');
+        assert(!/[QC]/.test(sheet.attributes.d),'Cut paper perimeter is straight edged');
+        assert(!walk(canopy).some(n=>n.tag==='linearGradient'),'No padded shading on the paper');
       }
       const shapes=walk(g).filter(n=>['path','ellipse'].includes(n.tag));
-      assert(shapes.length>=15);
+      assert(shapes.length>=(family==='soil-kit'?7:family==='af16-embroidered-waistcoat'?13:15));
+      if(family==='af16-embroidered-waistcoat') {
+        assert(walk(g).some(n=>'data-af16-cloth' in n.attributes),'Body-following cloth layer');
+        assert.equal(walk(g).filter(n=>'data-af16-embroidery' in n.attributes).length,male?2:3,'Separate embroidered panel layouts');
+      }
+      if(family==='soil-kit') {
+        assert(!walk(g).some(n=>'data-af16-container' in n.attributes),'Only the digging tool remains');
+        assert.equal(g.children.length,1,'No extra collection objects');
+      }
       for(const n of shapes) {
         assert(n.attributes.fill,'Explicit paint prevents black fallback');
         assert(n.attributes.stroke,'Explicit outline prevents inherited paint');

@@ -48,7 +48,56 @@ function fan(g, male) {
   for (let i=0;i<3;i++) line(g,`M${px+9+i*2} ${py+44}L${px+5+i*3} ${py+56}`,berry,1.8);
 }
 
+function waistcoat(g,male) {
+  g=add(g,'g',{'data-af16-cloth':''});
+  const cloth=male?'#494866':'#843953', shade=male?'#33364e':'#58293d', trim='#e1c894';
+  // Original floral embroidery, informed by Gujarati sleeveless jackets.
+  // Each sprig is sewn within one panel, with small chain loops and a clear stem.
+  const sprig=(x,y,angle,size=1)=>{
+    const s=add(g,'g',{transform:`translate(${x} ${y}) rotate(${angle}) scale(${size})`,'data-af16-embroidery':''});
+    line(s,'M0 10Q-2 2 0-7',trim,1.05);
+    path(s,'M0 3Q-8 2-7-3Q-1-4 0 3M0-1Q7-3 6-7Q0-7 0-1','none',trim,1);
+    path(s,'M0-7Q-6-9-3-13Q1-14 0-7Q4-14 7-10Q7-6 0-7',trim,'none');
+    oval(s,0,-8,1.6,1.6,ivory,'none');
+  };
+  // Body-coordinate tailoring: curved shoulders, armholes and shaped hems.
+  if(male) {
+    path(g,'M257 92Q236 91 218 108Q225 120 213 132Q201 138 197 135L184 165Q200 184 220 184Q226 153 248 145L263 135Q250 119 257 92Z',cloth,ink,1.8);
+    path(g,'M256 94Q248 112 263 135L248 145Q225 155 220 184L208 181Q217 150 237 135Z',shade,'none');
+    line(g,'M253 96Q248 111 245 122Q227 139 216 176',trim,2.3);
+    // Bound round neckline, no turned-back suit lapel.
+    path(g,'M240 95Q242 105 251 110L249 115Q235 109 235 98Z',shade,trim,1.1);
+    line(g,'M188 164Q204 177 219 178',trim,2);
+    path(g,'M200 145L214 152L209 161L195 154Z','#9d6f87',ink,1);
+    line(g,'M201 146L213 152',trim,1.5);
+    [[239,132],[231,142],[223,155]].forEach(([x,y])=>{oval(g,x,y,2.7,2.7,trim,shade,.8);line(g,`M${x-1} ${y}h2`,shade,.6);});
+    line(g,'M194 162L198 164M201 168L205 170M209 172L213 173',ivory,1);
+    sprig(221,120,28,.7);
+    sprig(209,141,26,.6);
+    line(g,'M216 110Q220 121 208 132',trim,1.3);
+    line(g,'M190 164Q204 180 218 180',ivory,.65);
+  } else {
+    // Separate fronts leave the green body visible through the opening.
+    path(g,'M258 90Q227 87 207 111Q217 126 198 140L177 174Q186 190 203 198L220 171Q227 146 246 130Z',cloth,ink,1.9);
+    path(g,'M265 135Q257 133 251 122Q235 140 229 166L214 204Q228 206 239 196Q239 168 254 156L267 147Z',cloth,ink,1.9);
+    path(g,'M258 90L246 130Q226 147 220 171L203 198L194 193Q213 168 217 149Q233 119 248 95Z',shade,'none');
+    line(g,'M254 94L243 128Q221 150 216 172L201 192M253 129Q238 146 234 170L219 200',trim,2.7);
+    path(g,'M242 92Q239 105 250 114L247 120Q234 110 236 96Z',shade,trim,1.2);
+    line(g,'M250 123Q253 134 263 139',trim,1.3);
+    line(g,'M183 173Q189 185 199 190M221 199Q230 199 235 193',trim,1.7);
+    path(g,'M190 153L203 163L197 173L185 163Z','#a36781',ink,1);
+    line(g,'M190 154L201 163',trim,1.5);
+    line(g,'M207 111Q216 126 198 140','#d5af95',1.3);
+    sprig(222,119,28,.82);
+    sprig(208,145,27,.72);
+    sprig(238,164,22,.57);
+    line(g,'M185 174Q191 184 199 187M222 196Q229 196 233 191',ivory,.7);
+    line(g,'M244 102L242 106M241 110L239 114M232 131L229 135M225 141L223 145',ivory,.9);
+  }
+}
+
 function reel(g,male) {
+  g=add(g,"g",{"data-af16-reel":""});
   // Wooden axial reel, near flange overlaps wound thread. Male uses a narrower bobbin.
   const r=male?18:23, half=male?24:31;
   line(g,`M${-half-19} 0H${half+22}`,edge,7);
@@ -68,44 +117,43 @@ function kiteRig(g,male) {
   // Kite and curved line sway together around the fixed reel exit (0, 0).
   // Compute the line endpoint from the actual bridle knot, avoiding a visual gap.
   const flight = add(g,"g",{class:male?"af16-kite-flight male":"af16-kite-flight primary"});
-  const [x,y,angle] = male?[-26,-196,-16]:[20,-218,13];
+  const [x,y,angle] = male?[-32,-246,-12]:[-32,-296,10];
   const knot = male?12:15, knotY=male?12:14, radians=angle*Math.PI/180;
   const endX=x+knot*Math.cos(radians)-knotY*Math.sin(radians);
   const endY=y+knot*Math.sin(radians)+knotY*Math.cos(radians);
   const cord=`M0 0C${male?48:-48} -58 ${male?-58:68} -136 ${endX.toFixed(3)} ${endY.toFixed(3)}`;
-  path(flight,cord,"none",ivory,2.8,{class:"af16-flight-cord"});
-  path(flight,cord,"none",ink,1,{class:"af16-flight-cord"});
-  const position=add(flight,"g",{transform:`translate(${x} ${y}) rotate(${angle})`});
+  path(flight,cord,"none",ivory,1.8,{class:"af16-flight-cord"});
+  path(flight,cord,"none",ink,.65,{class:"af16-flight-cord"});
+  const position=add(flight,"g",{"data-af16-kite-position":"",transform:`translate(${x} ${y}) rotate(${angle})`});
   const motion=add(position,"g",{class:"af16-kite-paper-motion",style:`transform-origin: ${knot}px ${knotY}px;`});
   // Enlarge only the canopy about its tether. Reel, line and knot stay in place.
   const k=add(motion,"g",{class:"af16-kite-canopy",transform:`translate(${knot} ${knotY}) scale(${male?1.65:1.5}) translate(${-knot} ${-knotY})`});
-  const outline=male?"M0-50L42-2L0 44L-42-2Z":"M0-63L54-1L0 54L-54-1Z";
-  path(k,outline,male?violet:berry,ink,2.3);
+  const outline=male?'M0-51L43-2L0 45L-43-2Z':'M0-64L55-1L0 56L-55-1Z';
+  // Flat, cut tissue paper. The bow belongs to the bamboo, not a padded perimeter.
+  path(k,outline,male?'#71609d':'#c44e74','#574156',.65,{'data-af16-paper':''});
   if(male) {
-    path(k,"M-29-17L-18-29L29 13L17 26Z",ivory,"none");
-    path(k,"M-11-38L-4-45L36-9L30-3Z",berry,"none");
+    path(k,'M0-25L23-1L0 24L-23-1Z','#fff0cc','none',0);
   } else {
-    path(k,"M0-63L54-1L0 54Z",ivory,"none");
-    path(k,"M0-31L27-1L0 26L-27-1Z",violet,ivory,1.5);
+    path(k,'M0-63L54-1L0 55Z','#fff0cc','none',0);
   }
-  line(k,male?"M-40-2Q0-46 40-2M0-48V43":"M-52-1Q0-58 52-1M0-61V53",wood,2);
-  line(k,male?"M0-45V40":"M0-57V50",ivory,.7);
-  path(k,male?"M0 44L-11 52L0 50L11 52Z":"M0 54L-15 65L0 61L15 65Z",berry,ink,1);
+  // One bowed cross-spar and one straight spine, with small pasted corner patches.
+  line(k,male?'M-41-2Q0-63 41-2':'M-53-1Q0-81 53-1','#8a673c',1.15);
+  line(k,male?'M0-49V43':'M0-62V54','#8a673c',1.1);
+  path(k,male?'M-3-44L0-49L3-44L0-39Z':'M-4-56L0-62L4-56L0-50Z',ivory,'none',0,{opacity:.7});
+  path(k,male?'M-4 36L0 42L4 36Z':'M-5 45L0 53L5 45Z',ivory,'none',0,{opacity:.65});
+  path(k,male?'M-41-2L-35-5L-35 1Z M41-2L35-5L35 1Z':'M-53-1L-46-4L-46 2Z M53-1L46-4L46 2Z',ivory,'none',0,{opacity:.6});
+  path(k,male?'M0 44L-11 55L11 55Z':'M0 55L-15 70L15 70Z',male?'#c44e74':'#71609d','#574156',.65);
   // Bridle joins the spar and lower spine at an offset knot, then the flying line.
-  line(k,male?"M0-23L12 12L0 32":"M0-30L15 14L0 39",ivory,1.3);
-  oval(k,male?12:15,male?12:14,2,2,ivory,edge,1);
+  line(k,male?'M0-23L12 12L0 32':'M0-30L15 14L0 39','#fff4da',.8);
+  oval(k,male?12:15,male?12:14,1.3,1.3,ivory,edge,.55);
   reel(g,male);
 }
 
 function soil(g,male) {
+  const surface=g;
   if(male) {
-    // Open shallow tray with a raised front lip and separate resting hand trowel.
-    path(g,"M-66 30L35 19L68 42L-37 60Z",silver);
-    path(g,"M-58 32L32 24L55 40L-36 52Z","#765647",edge,1);
-    [[-38,36],[-17,39],[7,32],[28,38]].forEach(([x,y])=>oval(g,x,y,7,3,"#a87c58",edge,1));
-    path(g,"M-66 30L-37 60L68 42L66 51L-37 69L-66 39Z","#718899");
-    line(g,"M-64 30L-37 60L67 42",ivory,2);
-    const t=add(g,"g",{transform:"translate(-12 -7) rotate(29)"});
+    // A small hand trowel, without collection containers.
+    const t=add(surface,"g",{"data-af16-tool":"",transform:"translate(-12 -7) rotate(29)"});
     path(t,"M-6-14Q-29 4 0 44Q29 4 6-14Z",silver);
     path(t,"M0-12L0 42Q25 4 6-14Z","#7d94a6","none");
     line(t,"M0-12V37",ivory,2);
@@ -113,38 +161,31 @@ function soil(g,male) {
     path(t,"M-10-70Q0-76 10-70L8-33Q0-28-8-33Z",berry);
     line(t,"M-5-66L-4-40","#e79aae",2);
     oval(t,0,-63,2.5,3,ink,"none");
-    path(g,"M43-19L54-22L62 10L52 13Z",ivory,edge,1.5);
-    line(g,"M48-14L54 5",wood,1.5);
   } else {
-    // Ribbed painted-metal pail with a rolled rim and a clearly separate soil probe.
-    line(g,"M-48-12Q-52-73 0-78Q51-73 48-12",ink,5);
-    line(g,"M-48-12Q-52-73 0-78Q51-73 48-12",silver,2.5);
-    path(g,"M-54-10L-43 57Q0 77 43 57L54-10Z",violet);
-    path(g,"M19-8L15 65Q33 63 43 57L54-10Z","#47476c","none");
-    for(const x of [-33,-17,0,17,33]) line(g,`M${x} 9L${x*.8} 55`,"#a5a3c8",2);
-    oval(g,0,-10,55,18,silver);
-    oval(g,0,-10,47,12,"#684b3d",edge,1);
-    [[-28,-12],[-8,-6],[13,-13],[29,-6]].forEach(([x,y])=>oval(g,x,y,6,3,"#b5855f",edge,1));
-    line(g,"M-42 57Q0 76 42 57",silver,3);
-    line(g,"M-38 17L-32 49","#d3cdea",2);
-    oval(g,-48,-4,4,5,silver);
-    oval(g,48,-4,4,5,silver);
-    const p=add(g,"g",{transform:"translate(67 -13) rotate(9)"});
-    path(p,"M-6-66H6V51L0 66L-6 51Z",silver);
-    path(p,"M-3 6H3V49H-3Z","#684b3d",ink,1);
-    line(p,"M-2-62V-1",ivory,2);
-    path(p,"M-24-72Q0-78 24-72V-64H-24Z",berry);
-    line(p,"M-18-70H18","#e79aae",1.5);
-    [-42,-28,-14].forEach(y=>line(p,`M1 ${y}H5`,ink,1));
+    // A digging spade with an open D grip.
+    const p=add(surface,"g",{"data-af16-tool":"",transform:"translate(0 -19) rotate(9)"});
+    path(p,"M-21 10H21L19 54Q12 65 0 70Q-12 65-19 54Z",silver);
+    path(p,"M0 12H19L17 53Q10 62 0 67Z","#859ba9","none");
+    line(p,"M-17 16L-14 50Q-8 58-3 60",ivory,2);
+    path(p,"M-24 8H24V15H-24Z","#7d94a6");
+    path(p,"M-5-61H5V26Q0 34-5 26Z",wood);
+    line(p,"M-2-58V22","#ecd2a1",1.8);
+    path(p,"M-6 2H6V25Q0 33-6 25Z",silver);
+    oval(p,0,19,1.6,1.6,ink,"none");
+    path(p,"M-5-58L-18-70V-88Q0-96 18-88V-70L5-58",'none',ink,9);
+    path(p,"M-5-58L-18-70V-88Q0-96 18-88V-70L5-58",'none',berry,5);
+    line(p,"M-14-84H14",wood,7);
+    line(p,"M-12-86H12","#ecd2a1",1.5);
   }
 }
 
 export function drawAhmedabadRefinement(g,item,male) {
   if (!item.id.startsWith("briggsae::Ahmedabad, India · AF16::")) return false;
-  const draw={"lattice-fan":fan,"kite-rig":kiteRig,"soil-kit":soil}[item.family];
+  const draw={"lattice-fan":fan,"af16-embroidered-waistcoat":waistcoat,"kite-rig":kiteRig,"soil-kit":soil}[item.family];
   if(!draw) return false;
   g.dataset.renderer=item.family;
   g.classList.add("ahmedabad-af16-accessory",male?"af16-companion":"af16-primary");
+  g.setAttribute('style','transform-box: view-box; transform-origin: 0 0;');
   draw(g,male);
   return true;
 }

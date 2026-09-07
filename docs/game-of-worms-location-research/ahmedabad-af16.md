@@ -4,6 +4,70 @@ Last updated: 2026-07-26
 
 This dossier is the evidence and review contract for the Ahmedabad landscape and the three *Caenorhabditis briggsae* AF16 accessory pairs.
 
+## Interactive hands preview, 2026-09-07
+
+Final paper/cloth revision approved on 2026-09-07: crisp straight-edged paper sails with
+one straight bamboo spine and one bowed cross-spar. The larger kite has two
+halves, the smaller has an inset paper diamond. Both retain pasted corner
+patches, a short paper tail and the actual connected bridle. No shaded padded
+edge. The larger kite starts farther left/up to clear the collar.
+
+Sleeveless costumes now have bound rounded necklines and original floral
+embroidery within separately fitted panels. The primary is open-front berry,
+the male a shorter buttoned indigo design. The museum sadri reference below is
+from Kutch/Saurashtra and is not evidence for a uniquely Ahmedabad costume.
+These are Gujarati-inspired fantasy adaptations to worm anatomy.
+Sources: [NID kite construction](https://dsource.in/resource/kite-making-gujarat/making-process/kite-making),
+[Indian Heritage Centre jacket](https://www.roots.gov.sg/Collection-Landing/listing/1322273),
+[V&A embroidery overview](https://www.vam.ac.uk/articles/indian-embroidery).
+References guide structure only. All drawings are original, no source images
+are embedded or copied. The older accessory contract below is historical and
+is superseded by this preview: waistcoats, kite rigs and digging tools only.
+
+This revision adds cartoon hands and playable kite/digging actions. Martyna
+approved the final contextual render and English-only label `waistcoats` for
+publication on 2026-09-07.
+Arm follow-up: the primary worm opens its elbows, moves the reel farther outward
+and lifts the guiding hand along the actual tether. Its spade is held farther
+forward with a broader stroke. Male movement and all artwork remain unchanged.
+
+Latest preview: fans are no longer selectable in Ahmedabad. Two embroidered
+waistcoats replace them, with a curved open-front cut for the larger worm and
+a shorter buttoned cut for the male. Seams, pockets and stitched edging communicate
+cloth construction. These are original fantasy adaptations, not reproductions of
+regional dress. Construction reference: [Indian Heritage Centre, embroidered
+sadri jacket](https://www.roots.gov.sg/Collection-Landing/listing/1322273).
+The cloth tracks the body during digging while keeping manual position and scale.
+Fan artwork remains preserved for possible future reuse. The paper canopies now
+have fewer panels, thinner outlines and subtle translucency. Only the English
+accessory label changes from `lattice fans` to `waistcoats`.
+
+- The primary worm holds the reel and guides its curved tether. The male grips
+  both reel handles. Tapping a rig tightens the tether, moves the paper kite and
+  produces a small body lean. Original wind and wooden-reel effects accompany it.
+- The primary sampling probe becomes a digging spade with an open D grip,
+  wooden shaft, riveted socket, foot tread and dished metal blade. The male keeps
+  his ridged hand trowel. Bucket, tray and sample extras were removed at Martyna's
+  request. Only the digging tools remain.
+- Tapping a soil kit lowers its worm, sets the reel aside and transfers the
+  hands to the tool. The primary worm takes one steady scoop and the male takes
+  two shorter scoops. Soil crunches occur at contact. A shallow hole and pile
+  remain until reset. Tapping the kite returns the hands to its grips.
+- The canopies now have bowed edges, pasted corner reinforcements, slender bamboo
+  spars and subtle paper shading. Construction reference:
+  [Dsource: Kite Making, Gujarat](https://dsource.in/resource/kite-making-gujarat/making-process/kite-making).
+  Fans retain their drawings. Initial positions put canopies higher, fans beside
+  the worms and digging tools below. Kite excursions are wider. Tapered arms have
+  defined elbows and larger gloves. Matrix-mapped grips follow the tool
+  at its current displayed size. Individual user scale remains on the outer
+  accessory element and is not overwritten by animation.
+- Home resets, Escape cancels, and scene changes remove the temporary drawings
+  and body wrappers. Reduced motion uses immediate still poses and no sound.
+
+This is fantasy play, with no new biological claims or public text. The source
+and collection boundaries below are unchanged. See PROJECT_STATUS for the
+responsive proof dimensions, automated checks and remaining manual checks.
+
 ## Local refinement, 2026-09-06
 
 The new `ahmedabad-refinement.js` renderer supersedes the older accessory
