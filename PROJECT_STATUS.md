@@ -4,6 +4,19 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Panama male flower correction, 2026-09-08
+
+Approved for deployment on 2026-09-08. Replaces the male's reaching hand
+and tilted bloom with closing and reopening petals. The attachment stays fixed.
+Existing paths morph into a closed bud, the stamens recede, and a small petal
+fold line appears. Original open paths, colour, position and size are restored
+exactly. The hermaphrodite's flower and all other actions are unchanged.
+
+Path morph, animation and six-location tests pass. Browser checks confirm no
+hand, complete closure, exact reopening and custom size preservation. Full-page
+proof: 650x2268. Four-width revalidation remains outstanding because the browser
+viewport override was ineffective. No public copy or background changes.
+
 ### Bali cacao cracking sound, 2026-09-08
 
 Adds an original 420 ms synthesized woody snap and short fibrous tail when

@@ -1,5 +1,10 @@
 # Game of Worms art catalogue
 
+Panama male flower correction, 2026-09-08, local preview: removed the reaching
+hand and whole-bloom tilt. Petals now close around the stamens and reopen at
+the same attachment. Added a subtle closed-petal seam after visual review.
+Resting artwork and the primary flower remain unchanged. Deployment approved.
+
 Panama interaction preview, 2026-09-08: `Flower bait` replaces the Golden
 Fleece in the active set. Original sealed glass blender with berry enamel
 base, transparent handle, lid, locking collar and contained flower mixture

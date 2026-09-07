@@ -5,6 +5,14 @@ const ease=x=>{x=clamp(x);return x*x*(3-2*x);};
 const add=(g,t,a={})=>{const n=document.createElementNS(NS,t);Object.entries(a).forEach(([k,v])=>n.setAttribute(k,v));g.appendChild(n);return n;};
 const path=(g,d,fill,stroke='#37666a',width=1.2)=>add(g,'path',{d,fill,stroke,'stroke-width':width,'stroke-linecap':'round','stroke-linejoin':'round'});
 
+export function closedPetalPath(open,closed,fold){
+  const numbers=/-?\d*\.?\d+/g,from=open.match(numbers).map(Number);
+  let index=0;
+  if(fold<=0)return open;
+  if(fold>=1)return closed;
+  return closed.replace(numbers,value=>{const start=from[index++];return String(start+(Number(value)-start)*fold);});
+}
+
 export function panamaFrame(ms,kind,male=false,reduced=false){
   const duration=reduced?1000:kind==='bait'?3800:kind==='flower'?2900:3200;
   const q=clamp(ms/duration),env=q===1?0:Math.sin(Math.PI*q)**2;
@@ -79,8 +87,11 @@ export function createPanamaPlay(habitat){
     const serving=remember(piece.querySelector('[data-panama-serving]'),['opacity']);
     const spoonful=remember(piece.querySelector('[data-panama-spoonful]'),['opacity']);
     const flowerPetals=[...piece.querySelectorAll('[data-panama-petal]')].map(n=>remember(n));
+    const closingPetals=[...piece.querySelectorAll('[data-panama-closed-petal]')].map(n=>remember(n,['d']));
+    const stamens=remember(piece.querySelector('[data-panama-stamens]'),['transform','opacity']);
+    const budSeam=remember(piece.querySelector('[data-panama-bud-seam]'),['opacity']);
     const extraFlower=kind==='fan'?remember(habitat.querySelector(`.accessory-piece[data-worm-part="${male?'companion':'primary'}"] [data-panama-flower]`)):null;
-    const arms=kind==='flower'&&!male?[]:Array.from({length:kind==='bait'&&!male?2:1},()=>({line:path(effects,'','none','#437f80',male?3.8:5.3),light:path(effects,'','none','#a9d8cd',male?1.5:2),hand:glove(effects)}));
+    const arms=kind==='flower'?[]:Array.from({length:kind==='bait'&&!male?2:1},()=>({line:path(effects,'','none','#437f80',male?3.8:5.3),light:path(effects,'','none','#a9d8cd',male?1.5:2),hand:glove(effects)}));
     const breeze=kind==='fan'?Array.from({length:3},()=>path(effects,'','none','#fff2de',male?.8:1.2)):[];
     const point=(node,x,y)=>new DOMPoint(x,y).matrixTransform(root.getScreenCTM().inverse().multiply(node.getScreenCTM()));
     const original=n=>run.saved.get(n)?.transform||'';
@@ -97,10 +108,17 @@ export function createPanamaPlay(habitat){
         breeze.forEach((n,i)=>{n.setAttribute('d',`M${from.x} ${from.y+i*3}Q${(from.x+to.x)/2} ${from.y-10+i*3} ${to.x} ${to.y+i*3}`);n.setAttribute('opacity',s.env*.3);});
         extraFlower?.setAttribute('transform',`${original(extraFlower)} rotate(${s.angle*.18})`);
       }else if(kind==='flower'){
-        const shake=now-began>1400?s.angle*.55:0;
-        flower.setAttribute('transform',`${original(flower)} translate(0 ${male?0:s.fold*47}) rotate(${male?s.fold*36+shake:shake})`);
-        flowerPetals.forEach(n=>n.setAttribute('transform',`${original(n)} scale(${1-s.fold*.18} ${1-s.fold*.48})`));
-        if(male)targets=[point(flower,-8,22)];
+        if(male){
+          // Fold the existing petals around their fixed base, without a stem or hand.
+          closingPetals.forEach(n=>n.setAttribute('d',closedPetalPath(run.saved.get(n).d,n.getAttribute('data-panama-closed-petal'),s.fold)));
+          stamens?.setAttribute('opacity',Math.max(0,1-s.fold*2.2));
+          budSeam?.setAttribute('opacity',s.fold*.7);
+          stamens?.setAttribute('transform',`translate(4 28) scale(${1-s.fold*.75} ${1-s.fold*.3}) translate(-4 -28)`);
+        }else{
+          const shake=now-began>1400?s.angle*.55:0;
+          flower.setAttribute('transform',`${original(flower)} translate(0 ${s.fold*47}) rotate(${shake})`);
+          flowerPetals.forEach(n=>n.setAttribute('transform',`${original(n)} scale(${1-s.fold*.18} ${1-s.fold*.48})`));
+        }
       }else if(male){
         serving.setAttribute('opacity',s.served?1:0);spoonful.setAttribute('opacity',s.served?0:1);
         spoon.setAttribute('transform',`translate(${94*s.travel} ${43*s.travel-45*Math.sin(Math.PI*s.travel)}) ${original(spoon)} rotate(${s.travel*35})`);

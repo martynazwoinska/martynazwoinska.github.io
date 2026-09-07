@@ -4,6 +4,10 @@ Last updated: 2026-08-23
 
 ## Current interaction preview, 2026-09-08
 
+Local correction after deployment: the male flower now closes and reopens
+without a reaching hand or stem growth. This is a playful animation. The
+collection evidence, background and public text are unchanged. Deployment approved.
+
 The active accessory set now uses the existing Gustavia headpieces, working
 forest-census map fans and `Flower bait` (`qg2726-flower-bait`). This replaces
 the Golden Fleece concept documented historically below. Labels `Flower bait`,

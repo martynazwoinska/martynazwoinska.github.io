@@ -10,6 +10,7 @@ global.document={createElementNS:(_,tag)=>new Element(tag)};
 const walk=n=>[n,...n.children.flatMap(walk)];
 (async()=>{
   const {drawPanamaRefinement:draw}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/panama-refinement.js')));
+  const {closedPetalPath}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/panama-play.js')));
   const ids=[];
   for(const family of ['qg2726-gustavia-flower-headpiece','qg2726-flower-bait','qg2726-bci-forest-census-map-fans']){
     const pair=[false,true].map(male=>{
@@ -27,6 +28,19 @@ const walk=n=>[n,...n.children.flatMap(walk)];
         if(ref)assert(nodes.some(c=>ref===`url(#${c.attributes.id})`));
       }
       if(family.includes('map-fans'))assert.equal(nodes.find(n=>n.tag==='text').textContent,'50 HA');
+      if(male&&family==='qg2726-gustavia-flower-headpiece'){
+        const petals=nodes.filter(n=>n.attributes['data-panama-closed-petal']);
+        assert.equal(petals.length,4);
+        for(const n of petals){
+          const open=n.attributes.d,closed=n.attributes['data-panama-closed-petal'];
+          assert.equal(open.replace(/[-\d.\s]/g,''),closed.replace(/[-\d.\s]/g,''),'Identical path commands for smooth closing');
+          assert.equal(open.match(/-?\d*\.?\d+/g).length,closed.match(/-?\d*\.?\d+/g).length);
+          assert.equal(closedPetalPath(open,closed,0),open);
+          assert.equal(closedPetalPath(open,closed,1),closed);
+          for(let t=0;t<=1;t+=.05)assert(!/NaN|Infinity|undefined/.test(closedPetalPath(open,closed,t)));
+        }
+        assert(nodes.some(n=>n.attributes['data-panama-stamens']!==undefined));
+      }
       return nodes.map(n=>n.attributes);
     });
     assert.notDeepEqual(pair[0],pair[1]);
