@@ -1,5 +1,14 @@
 # Game of Worms art catalogue
 
+Six-species celebration, 2026-09-08, local preview: original tapered worm
+silhouettes in the six existing species colours, contained highlight/shadow
+strokes, small attached faces, curled paper strips and gold lozenges. Six
+larger worms cross the lower viewport with continuously bending bodies.
+Opposing crawler lanes were separated during the refinement pass. Existing
+compass seal retained byte-for-byte. Four full-page responsive proofs reviewed.
+Reduced-motion users retain the static completion reward. Deployment approved
+on 2026-09-08 after the final contextual preview.
+
 Panama male flower correction, 2026-09-08, local preview: removed the reaching
 hand and whole-bloom tilt. Petals now close around the stamens and reopen at
 the same attachment. Added a subtle closed-petal seam after visual review.

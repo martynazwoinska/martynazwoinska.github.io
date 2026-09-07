@@ -4,6 +4,26 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Six-species celebration preview, 2026-09-08
+
+Approved for deployment on 2026-09-08. Replaces the old confetti with tapered,
+shaded worm silhouettes, curled gold/berry streamers, sparse gold lozenges and
+six crawling worms with travelling body bends and attached faces. The approved
+compass emblem and completion tracking are unchanged. Mobile uses fewer pieces.
+Refinement separates opposing crawler lanes to avoid face-to-face overlap.
+No public copy, sound, scene artwork or accessory-size changes.
+
+New geometry and lifecycle tests pass, including reduced motion, hidden pages,
+timeout, Escape and relaunch cleanup. Browser tests confirm no burst at 5/6,
+keyboard activation at 6/6, retained focus, non-blocking overlay and automatic
+cleanup. No console errors or horizontal overflow. Full-page proofs at viewport
+360/768/1024/1440: 345x2416, 753x2293, 1009x1748, 1425x1846 pixels, excluding
+the browser scrollbar. Fixed-light Game only. Physical phones and Safari untested.
+
+The preceding male flower correction is deployed as `a4e0587`. Pages run
+`34167164046` succeeded and all five changed published runtime paths matched
+the committed files.
+
 ### Panama male flower correction, 2026-09-08
 
 Approved for deployment on 2026-09-08. Replaces the male's reaching hand

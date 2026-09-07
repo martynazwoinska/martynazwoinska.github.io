@@ -5,6 +5,7 @@ import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260908-flower-close-1";
 import { createPanamaPlay } from "./panama-play.js?v=20260908-flower-close-1";
+import { launchWormConfetti } from "./worm-celebration.js?v=20260908-celebration-1";
 import { createAhmedabadHands } from "./ahmedabad-hands.js?v=20260907-paper-cloth-2";
 import { createIshigakiInteractions } from "./ishigaki-interactions.js?v=20260907-ishigaki-sound-1";
 import { createCanberraCafe, CAFE_FAMILIES } from "./canberra-cafe.js?v=20260907-cafe-polish-1";
@@ -789,141 +790,6 @@ function updateSelectedControls() {
   });
 }
 
-const wormConfettiColours = ["#bd7c45", "#c95670", "#347d68", "#d75c3d", "#167d7a", "#6254aa"];
-const wormConfettiPaths = [
-  "M3 12C8 2 18 3 21 11S29 21 33 10",
-  "M3 10C9 18 18 17 22 9S29 2 33 10",
-  "M3 14C8 3 15 3 20 12S28 18 33 10",
-  "M3 9C7 17 14 18 19 10S28 3 33 12",
-  "M3 13C9 7 13 5 18 11S27 17 33 7"
-];
-
-function launchWormConfetti() {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  document.querySelector(".worm-confetti-layer")?.remove();
-  const layer = document.createElement("div");
-  layer.className = "worm-confetti-layer";
-  layer.setAttribute("aria-hidden", "true");
-  const svgNamespace = "http://www.w3.org/2000/svg";
-  const centreX = window.innerWidth / 2;
-  const centreY = Math.min(window.innerHeight * .42, 380);
-  const pieceCount = window.innerWidth <= 560 ? 24 : 32;
-
-  const crest = document.createElement("div");
-  const crestSvg = document.createElementNS(svgNamespace, "svg");
-  const crestUse = document.createElementNS(svgNamespace, "use");
-  const crestCount = document.createElement("span");
-  crest.className = "worm-completion-flash";
-  crestSvg.classList.add("worm-completion-flash-emblem");
-  crestSvg.setAttribute("viewBox", "0 0 240 190");
-  crestUse.setAttribute("href", "#atlas-explorer-seal");
-  crestCount.className = "worm-completion-flash-count";
-  crestCount.textContent = "6 / 6";
-  crestSvg.append(crestUse);
-  crest.append(crestSvg, crestCount);
-  layer.append(crest);
-
-  for (let index = 0; index < pieceCount; index += 1) {
-    const piece = document.createElementNS(svgNamespace, "svg");
-    const wriggle = document.createElementNS(svgNamespace, "g");
-    const pathData = wormConfettiPaths[index % wormConfettiPaths.length];
-    const outline = document.createElementNS(svgNamespace, "path");
-    const body = document.createElementNS(svgNamespace, "path");
-    const highlight = document.createElementNS(svgNamespace, "path");
-    const eye = document.createElementNS(svgNamespace, "circle");
-    const pupil = document.createElementNS(svgNamespace, "circle");
-    const angle = -Math.PI / 2 + index / pieceCount * Math.PI * 2 + ((index % 3) - 1) * .05;
-    const radiusX = Math.min(window.innerWidth * .47, 620) * (.72 + (index % 4) * .075);
-    const radiusY = Math.min(window.innerHeight * .42, 400) * (.7 + (index % 5) * .06);
-    const endX = Math.cos(angle) * radiusX;
-    const endY = Math.sin(angle) * radiusY + 105 + (index % 4) * 12;
-
-    piece.setAttribute("viewBox", "0 0 36 22");
-    piece.classList.add("worm-confetti-piece");
-    piece.style.setProperty("--worm-confetti-colour", wormConfettiColours[index % wormConfettiColours.length]);
-    piece.style.setProperty("--worm-confetti-origin-x", `${centreX}px`);
-    piece.style.setProperty("--worm-confetti-origin-y", `${centreY}px`);
-    piece.style.setProperty("--worm-confetti-mid-x", `${endX * .62}px`);
-    piece.style.setProperty("--worm-confetti-mid-y", `${endY * .5 - 72}px`);
-    piece.style.setProperty("--worm-confetti-late-x", `${endX * .86}px`);
-    piece.style.setProperty("--worm-confetti-late-y", `${endY * .78 - 26}px`);
-    piece.style.setProperty("--worm-confetti-end-x", `${endX}px`);
-    piece.style.setProperty("--worm-confetti-end-y", `${endY}px`);
-    piece.style.setProperty("--worm-confetti-start-rotation", `${-35 + (index % 7) * 12}deg`);
-    piece.style.setProperty("--worm-confetti-mid-rotation", `${60 + (index % 6) * 38}deg`);
-    piece.style.setProperty("--worm-confetti-end-rotation", `${210 + (index % 8) * 47}deg`);
-    piece.style.setProperty("--worm-confetti-size", `${29 + (index % 6) * 2.8}px`);
-    piece.style.setProperty("--worm-confetti-delay", `${(index % 9) * .022}s`);
-    piece.style.setProperty("--worm-confetti-duration", `${1.9 + (index % 6) * .085}s`);
-    piece.style.setProperty("--worm-wriggle-duration", `${.19 + (index % 4) * .035}s`);
-    piece.style.setProperty("--worm-wriggle-angle", `${index % 2 === 0 ? 6 : -6}deg`);
-
-    outline.setAttribute("d", pathData);
-    outline.classList.add("worm-confetti-outline");
-    body.setAttribute("d", pathData);
-    body.classList.add("worm-confetti-body");
-    highlight.setAttribute("d", "M7 9C12 5 17 6 20 10");
-    highlight.classList.add("worm-confetti-highlight");
-    eye.setAttribute("cx", "32");
-    eye.setAttribute("cy", "8.3");
-    eye.setAttribute("r", "1.4");
-    eye.classList.add("worm-confetti-eye");
-    pupil.setAttribute("cx", "32.4");
-    pupil.setAttribute("cy", "8.1");
-    pupil.setAttribute("r", ".55");
-    pupil.classList.add("worm-confetti-pupil");
-    wriggle.classList.add("worm-confetti-wriggle");
-    wriggle.append(outline, body, highlight, eye, pupil);
-    piece.append(wriggle);
-    layer.append(piece);
-  }
-
-  for (let index = 0; index < 6; index += 1) {
-    const shell = document.createElement("div");
-    const crawler = document.createElementNS(svgNamespace, "svg");
-    const wriggle = document.createElementNS(svgNamespace, "g");
-    const pathData = wormConfettiPaths[(index + 2) % wormConfettiPaths.length];
-    const outline = document.createElementNS(svgNamespace, "path");
-    const body = document.createElementNS(svgNamespace, "path");
-    const highlight = document.createElementNS(svgNamespace, "path");
-    const eye = document.createElementNS(svgNamespace, "circle");
-    const pupil = document.createElementNS(svgNamespace, "circle");
-
-    shell.className = `worm-confetti-crawler-shell${index % 2 ? " is-reversed" : ""}`;
-    shell.style.setProperty("--crawler-lane", `${12 + (index % 3) * 27}px`);
-    shell.style.setProperty("--crawler-size", `${45 + (index % 3) * 5}px`);
-    shell.style.setProperty("--crawler-delay", `${.62 + index * .11}s`);
-    shell.style.setProperty("--crawler-duration", `${2.72 + (index % 3) * .2}s`);
-    crawler.setAttribute("viewBox", "0 0 36 22");
-    crawler.style.setProperty("--worm-confetti-colour", wormConfettiColours[index]);
-    crawler.style.setProperty("--worm-wriggle-duration", `${.2 + (index % 3) * .035}s`);
-    crawler.style.setProperty("--worm-wriggle-angle", `${index % 2 === 0 ? 5 : -5}deg`);
-
-    outline.setAttribute("d", pathData);
-    outline.classList.add("worm-confetti-outline");
-    body.setAttribute("d", pathData);
-    body.classList.add("worm-confetti-body");
-    highlight.setAttribute("d", "M7 9C12 5 17 6 20 10");
-    highlight.classList.add("worm-confetti-highlight");
-    eye.setAttribute("cx", "32");
-    eye.setAttribute("cy", "8.3");
-    eye.setAttribute("r", "1.4");
-    eye.classList.add("worm-confetti-eye");
-    pupil.setAttribute("cx", "32.4");
-    pupil.setAttribute("cy", "8.1");
-    pupil.setAttribute("r", ".55");
-    pupil.classList.add("worm-confetti-pupil");
-    wriggle.classList.add("worm-confetti-wriggle");
-    wriggle.append(outline, body, highlight, eye, pupil);
-    crawler.append(wriggle);
-    shell.append(crawler);
-    layer.append(shell);
-  }
-
-  document.body.append(layer);
-  window.setTimeout(() => layer.remove(), 4700);
-}
 
 function updateExploredStatus() {
   const count = visited.size;
