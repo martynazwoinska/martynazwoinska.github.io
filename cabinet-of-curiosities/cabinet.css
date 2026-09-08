@@ -109,12 +109,12 @@ button { color: inherit; }
   top: calc(1.39% / 1.1217);
 }
 
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) {
+html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) {
   --scene-width: min(99.1626vw, calc((100svh - 84px) * 1.7097));
   --scene-height: calc(var(--scene-width) * 1055.5197 / 1905.7456);
   background: #172420;
 }
-.cabinet-page:not(.is-portrait-browsing):not(.is-scene-interactive) .cabinet-stage {
+html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) .cabinet-stage {
   height: calc(100% - 64px);
   align-self: end;
 }
@@ -276,10 +276,6 @@ button { color: inherit; }
 .cabinet-page.is-scene-interactive .cabinet-stage:focus-visible {
   outline: 2px solid var(--gold-pale);
   outline-offset: -4px;
-}
-
-.orientation-notice {
-  display: none;
 }
 
 .board-shell {
@@ -854,37 +850,6 @@ button { color: inherit; }
   }
 
 
-  .orientation-notice {
-    position: relative;
-    z-index: 3;
-    display: grid;
-    place-items: center;
-    width: min(82vw, 420px);
-    padding: 30px 24px;
-    border: 1px solid rgba(120, 199, 163, .55);
-    border-radius: 28px 6px;
-    background: rgba(10, 18, 14, .88);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, .35), inset 0 0 0 1px rgba(213, 185, 105, .18);
-    color: #f3efe5;
-    text-align: center;
-    backdrop-filter: blur(10px);
-  }
-
-  .orientation-notice .eyebrow {
-    color: #f1dc9d;
-  }
-
-  .orientation-notice h1 {
-    margin: 5px 0 8px;
-    font-family: var(--display);
-    font-size: clamp(2rem, 10vw, 3rem);
-    line-height: 1;
-  }
-
-  .orientation-notice p:last-child {
-    margin: 0;
-    color: #c9c2b2;
-  }
 }
 
 @media (max-width: 420px) {
@@ -980,15 +945,13 @@ button { color: inherit; }
 .portrait-collection { display: none; }
 .is-portrait-browsing,
 .is-portrait-browsing body { overflow-x: hidden; overflow-y: auto; }
-.cabinet-page.is-portrait-browsing {
+.is-portrait-browsing .cabinet-page {
   display: block;
   height: auto;
   min-height: 100svh;
   padding-top: 62px;
   background: var(--bg);
 }
-.is-portrait-browsing .orientation-notice,
-.is-scene-interactive .orientation-notice { display: none; }
 .is-portrait-browsing .cabinet-header {
   position: fixed;
   inset: 0 0 auto;
@@ -1031,6 +994,15 @@ button { color: inherit; }
   font-size: 2rem;
   line-height: 1.1;
   scroll-margin-top: 76px;
+}
+.collection-map-entry { margin-bottom: 28px; }
+.collection-map-entry h2,
+.collection-map-entry h3 {
+  margin: 0 0 9px;
+  color: var(--gold-pale);
+  font-family: var(--display);
+  font-size: 1.25rem;
+  line-height: 1.2;
 }
 .portrait-collection .collection-item { min-height: 82px; padding: 8px 12px; }
 .collection-item.has-thumbnail { display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: center; }

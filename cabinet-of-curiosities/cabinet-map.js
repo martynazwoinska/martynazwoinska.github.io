@@ -76,6 +76,7 @@
     if (dialog.open && group === 'uppsala') shopMap.show(); else shopMap.hide();
   }
   let opening=false, timer=0, stopSound=()=>{};
+  let mapTrigger = drawer;
   function resetDrawer() {
     clearTimeout(timer);opening=false;stopSound();stopSound=()=>{};
     scene.classList.remove('map-drawer-opening');drawer.removeAttribute('aria-busy');
@@ -111,13 +112,23 @@
   }
   drawer.addEventListener('click', () => {
     if(opening||dialog.open)return;
+    mapTrigger = drawer;
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){reveal();return;}
     opening=true;drawer.setAttribute('aria-busy','true');scene.classList.add('map-drawer-opening');
     stopSound=creak();timer=setTimeout(reveal,940);
   });
   drawer.addEventListener('pointerdown',e=>e.stopPropagation());
+  document.querySelectorAll('[data-open-chocolate-map]').forEach(button => {
+    button.addEventListener('click', () => {
+      if (dialog.open) return;
+      resetDrawer();
+      mapTrigger = button;
+      group = 'uppsala';
+      reveal();
+    });
+  });
   $('.map-close').addEventListener('click',()=>dialog.close());
-  dialog.addEventListener('close',()=>{shopMap.hide();resetDrawer();drawer.focus({preventScroll:true});});
+  dialog.addEventListener('close',()=>{shopMap.hide();resetDrawer();mapTrigger.focus({preventScroll:true});});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opening){e.preventDefault();resetDrawer();drawer.focus({preventScroll:true});}});
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&opening)resetDrawer();});
   window.addEventListener('pagehide',resetDrawer);

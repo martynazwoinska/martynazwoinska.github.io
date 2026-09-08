@@ -8,9 +8,14 @@
   <meta name="description" content="Explore Martyna Zwoińska's Cabinet of Curiosities: an interactive collection of craft chocolate wrappers, tasting notes, crochet and cacao flavours.">
   <title>The Cabinet of Curiosities · Martyna Zwoińska</title>
   <link rel="canonical" href="https://martynazwoinska.github.io/cabinet-of-curiosities/">
+  <script>
+    // Select the initial phone layout before the slower feature scripts arrive.
+    document.documentElement.classList.toggle('is-portrait-browsing',
+      window.matchMedia('(orientation: portrait) and (max-width: 980px)').matches);
+  </script>
   <script src="../shared/site-preferences.js?v=20260718-1"></script>
   <link rel="stylesheet" href="../shared/site-tokens.css?v=20260802-1">
-  <link rel="stylesheet" href="cabinet.css?v=20260908-1">
+  <link rel="stylesheet" href="cabinet.css?v=20260908-2">
   <link rel="stylesheet" href="cabinet-map.css?v=20260908-4">
 </head>
 <body>
@@ -21,12 +26,6 @@
         <button class="collection-toggle" id="collection-toggle" type="button" aria-expanded="false" aria-controls="collection-panel">Browse collection</button>
       </div>
     </header>
-
-    <section class="orientation-notice" aria-labelledby="orientation-heading">
-      <p class="eyebrow">Cabinet view</p>
-      <h1 id="orientation-heading">Turn your phone sideways</h1>
-      <p>The cabinet is designed to be explored horizontally.</p>
-    </section>
 
     <section class="cabinet-stage" id="cabinet-stage" aria-label="Interactive cabinet display" tabindex="-1">
       <div class="scene-space" id="scene-space">
@@ -103,17 +102,24 @@
 
     <section class="portrait-collection" id="portrait-collection" aria-labelledby="portrait-collection-heading">
       <h1 id="portrait-collection-heading">Browse the collection</h1>
+      <section class="collection-map-entry" aria-labelledby="portrait-map-heading">
+        <h2 id="portrait-map-heading">The chocolate map of Uppsala</h2>
+        <button class="collection-item" type="button" data-open-chocolate-map aria-haspopup="dialog" aria-controls="chocolate-map-dialog">Open the map</button>
+      </section>
       <div id="portrait-collection-list"></div>
     </section>
 
     <dialog class="collection-panel" id="collection-panel" aria-labelledby="collection-heading">
       <div class="collection-panel-head">
         <div>
-          <p class="eyebrow">Object index</p>
           <h2 id="collection-heading">Browse the collection</h2>
         </div>
         <button class="icon-button" id="collection-close" type="button" aria-label="Close collection index">×</button>
       </div>
+      <section class="collection-map-entry" aria-labelledby="collection-map-heading">
+        <h3 id="collection-map-heading">The chocolate map of Uppsala</h3>
+        <button class="collection-item" type="button" data-open-chocolate-map aria-haspopup="dialog" aria-controls="chocolate-map-dialog">Open the map</button>
+      </section>
       <div id="collection-list" class="collection-list"></div>
     </dialog>
 
@@ -136,6 +142,6 @@
   <!-- Uppsala chocolate map in the cabinet drawer. -->
   <script src="cabinet-map-data.js?v=20260908-7"></script>
   <script src="cabinet-shop-map.js?v=20260908-1"></script>
-  <script src="cabinet-map.js?v=20260908-7"></script>
+  <script src="cabinet-map.js?v=20260908-8"></script>
 </body>
 </html>
