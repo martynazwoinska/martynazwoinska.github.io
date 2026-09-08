@@ -3,7 +3,7 @@ const {pathToFileURL}=require('node:url');
 const path=require('node:path');
 (async()=>{
   const {panamaFrame:frame}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/panama-play.js')));
-  for(const kind of ['flower','bait','fan'])for(const male of [false,true]){
+  for(const kind of ['flower','bait'])for(const male of [false,true]){
     const duration=kind==='bait'?3800:kind==='flower'?2900:3200;
     const end=frame(duration,kind,male);
     assert(end.done);assert.equal(end.angle,0);assert.equal(end.fold,0);assert.equal(end.travel,0);assert.equal(end.power,0);
@@ -16,7 +16,6 @@ const path=require('node:path');
     const reduced=frame(500,kind,male,true);assert.equal(reduced.angle,0);assert.equal(reduced.phase,0);assert.equal(reduced.fold,0);
     assert(frame(1000,kind,male,true).done);
   }
-  assert.notEqual(frame(1000,'fan',true).angle,frame(1000,'fan',false).angle);
   assert.equal(frame(1550,'bait',true).travel,1,'Spoon reaches receiving dish before unloading');
-  console.log('Panama actions: distinct fan rhythms, finite transforms, spoon transfer and return, persistent serving and static reduced motion pass.');
+  console.log('Panama actions: finite transforms, flower closure, spoon transfer and return, persistent serving and static reduced motion pass.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -2,6 +2,47 @@
 
 Last updated: 2026-08-23
 
+## Current fan replacement, 2026-09-08
+
+The active third family is now `qg2726-leaf-cutting`, replacing the historical
+forest-census fans below. English-only labels `Leaf cutting`, `Scissors` and
+`Leaf` were explicitly approved. The other two active families are the Gustavia
+headpieces and Flower bait. The painting and QG2726 evidence are unchanged.
+
+Original production drawings and motion live in `panama-leaf-cutting.js`.
+The hermaphrodite operates overlapping hinged steel blades with separate open
+berry handles. The male holds an independently drawn veined leaf. A transverse
+snip releases the leaf tip, which falls onto clear litter to the left of the
+bait dish. One left-facing worker ant picks up the actual cut tip with its
+mandibles and walks out. Six jointed legs, the head/mesosoma/gaster, two waist
+nodes, spines and elbowed antennae give the ant its structure. This enlarged
+playful encounter does not imply a natural worm-ant interaction.
+
+Regional evidence: the experiments in *Plants use macronutrients accumulated
+in leaf-cutting ant nests* used *Atta colombica* nests on Barro Colorado:
+https://pmc.ncbi.nlm.nih.gov/articles/PMC1702380/
+
+Construction references consulted, without copying photographs or artwork:
+- Colombian leaf-cutter worker profile:
+  https://www.inaturalist.org/taxa/126711-Atta-colombica
+- Comparative Atta worker photographs, Texas A&M:
+  https://elp.tamu.edu/ipm/bugs/ants/hymenoptera-formicidae-atta-mexicana-leaf-cutting-ants-worker-f/
+- Steel blade, pivot and loop-handle construction:
+  https://www.fiskars.com/en-gb/scissors-shears/products/multi-purpose-scissors?showAll=true
+
+One controller coordinates cutting with the existing blender, spoon and flowers.
+Custom scale and drag transforms stay on their original wrappers. Motion uses
+current screen matrices, with stable size pivots and deliberate near/far blade
+layering. Home restores the leaf, and replay supplies a whole leaf. Completion
+leaves the cut edge visible. Reduced motion applies the cut without travel or
+audio. A quiet original 420 ms synthesized snip/rustle sounds once at contact.
+No external media or dependencies were added. Public scientific copy is unchanged.
+
+Refinement and verification details are in PROJECT_STATUS.md. Full-page capture
+remains defective. The normal 360/768/1024/1440 views were reviewed, with all
+resting objects inside the scene and no horizontal overflow. Physical-device
+and subjective audio checks remain manual.
+
 ## Current interaction preview, 2026-09-08
 
 Local correction after deployment: the male flower now closes and reopens

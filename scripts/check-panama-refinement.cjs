@@ -12,11 +12,11 @@ const walk=n=>[n,...n.children.flatMap(walk)];
   const {drawPanamaRefinement:draw}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/panama-refinement.js')));
   const {closedPetalPath}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/panama-play.js')));
   const ids=[];
-  for(const family of ['qg2726-gustavia-flower-headpiece','qg2726-flower-bait','qg2726-bci-forest-census-map-fans']){
+  for(const family of ['qg2726-gustavia-flower-headpiece','qg2726-flower-bait','qg2726-leaf-cutting']){
     const pair=[false,true].map(male=>{
       const g=new Element('g');assert(draw(g,{id:'tropicalis::Barro Colorado Island, Panama::wrap',family},male));
       const nodes=walk(g), shapes=nodes.filter(n=>['path','ellipse'].includes(n.tag));
-      assert(shapes.length>12);
+      assert(shapes.length>=12,'Complete construction without padding the leaf with decorative marks');
       for(const n of shapes){
         assert(n.attributes.fill);assert(n.attributes.stroke);
         assert(!Object.values(n.attributes).some(v=>/NaN|Infinity|undefined/.test(v)));
@@ -27,7 +27,7 @@ const walk=n=>[n,...n.children.flatMap(walk)];
         const ref=n.attributes['clip-path'];
         if(ref)assert(nodes.some(c=>ref===`url(#${c.attributes.id})`));
       }
-      if(family.includes('map-fans'))assert.equal(nodes.find(n=>n.tag==='text').textContent,'50 HA');
+      if(family==='qg2726-leaf-cutting')assert(nodes.some(n=>n.attributes[male?'data-panama-leaf':'data-panama-scissors']!==undefined));
       if(male&&family==='qg2726-gustavia-flower-headpiece'){
         const petals=nodes.filter(n=>n.attributes['data-panama-closed-petal']);
         assert.equal(petals.length,4);
@@ -47,5 +47,5 @@ const walk=n=>[n,...n.children.flatMap(walk)];
   }
   assert.equal(new Set(ids).size,ids.length,'No duplicate clip identifiers');
   assert.equal(draw(new Element('g'),{id:'tropicalis::Oahu::wrap',family:'qg2726-golden-fleece-cape'},false),false);
-  console.log('Panama: six distinct drawings, contained glass and fan details, explicit paint, scoped dispatch and valid geometry.');
+  console.log('Panama: six distinct drawings, contained glass, separate scissors and leaf, explicit paint, scoped dispatch and valid geometry.');
 })().catch(e=>{console.error(e);process.exitCode=1});

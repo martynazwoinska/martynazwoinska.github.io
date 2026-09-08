@@ -4,6 +4,56 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Panama leaf cutting, 2026-09-08
+
+Requested replacement for the forest-census fans. The primary worm has original
+hinged steel scissors, the male a separately drawn broad leaf. Tapping either
+starts one shared sequence: hands grip the loops and stem, the blades close
+across the leaf, a cut tip flutters to clear forest floor and one leaf-cutter
+ant carries it away. The ant has six articulated legs, elbowed antennae,
+mandibles and a two-node waist. This is playful regional context, not collection
+equipment or an asserted association with QG2726. The background, Gustavia
+headpieces, flower bait and scientific prose are unchanged.
+
+The existing Panama controller coordinates all actions. Starting the blender,
+spoon or flower interrupts cutting and restores held objects. Escape, dragging,
+resizing, hiding and scene changes cancel. User sizes and positions are retained.
+The leaf stays cut after completion, and Home or replay restores it. Reduced
+motion shows the cut without hand travel, falling, walking or sound. The brief
+original synthesized snip/rustle plays once at blade contact, after a gesture.
+The English-only labels `Leaf cutting`, `Scissors` and `Leaf` were explicitly
+approved by Martyna. No Swedish or Polish Game strings exist.
+
+Refinement corrected blade coordinate separators and matrix interoperability,
+separated the two handle openings at closure, layered the front blade above
+the leaf, tapered the arms, removed the initial cut seam and moved the ant
+route off the bait dish. The source drawings receive no post-approval processing.
+Martyna approved the exact contextual preview and deployment after disclosure
+of the full-page capture fault. New regression coverage checks path command arity, construction, six ant legs,
+the cut/pickup timeline, sound waveform and one cue, three scales, cut/reset
+and reduced-motion frames. Browser checks passed full-cycle restoration of a
+1.1 primary scale and 4 px offset, independent pointer dragging and Home reset,
+keyboard activation, Escape and blender handover with only one active effect.
+Hiding, scene changes and viewport resizing also remove all temporary effects.
+No new browser errors occurred after the draft matrix correction. The full
+catalogue and paired geometry are audited by the running Game. The Panama,
+accessory-label, visit-reset, six-location, Araucanía and Claremont checks pass.
+
+Files created: `game-of-worms/panama-leaf-cutting.js` and
+`scripts/check-panama-leaf-cutting.cjs`. Files changed: this status file,
+`docs/game-of-worms-art-catalogue.md`, the Barro Colorado location dossier,
+`game-of-worms/accessory-designs.js`, `game.js`, `index.html`, `panama-play.js`,
+`panama-refinement.js`, `scripts/check-panama-play.cjs` and
+`scripts/check-panama-refinement.cjs`. No files deleted. Homepage and Cabinet
+are untouched. Branch: `codex/kauai-recording-scene`.
+
+Full-page capture attempts at 360/768/1024/1440 exported 345x2449, 753x2399,
+1009x1801 and 1425x1928 images. The known duplicated/half-scale capture defect
+persists, so these are not valid full-page proofs. Normal contextual views and
+DOM bounds were inspected at each width. All six resting props remain inside
+the scene, without horizontal overflow. Physical phones, Safari and subjective
+sound listening remain manual checks.
+
 ### Accessories off at the start of each visit
 
 Fresh loads already initialize empty per-location wardrobes, hidden accessory

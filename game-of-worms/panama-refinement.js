@@ -1,5 +1,6 @@
 // Original QG2726 artwork. The painting and collection metadata are unchanged.
 import { drawFlowerBait } from './panama-bait.js?v=20260907-bait-1';
+import { drawLeafCutting } from './panama-leaf-cutting.js?v=20260908-leaf-1';
 const ink='#34484b', gold='#99733c', cream='#fff0bd';
 const berry='#994e70', blush='#e7afbd', ivory='#faf0dc', teal='#487a71';
 const add=(g,tag,attrs={})=>{
@@ -53,46 +54,10 @@ function flower(g,male) {
 }
 
 
-function fan(g,male) {
-  g=add(g,'g',{'data-panama-fan':''});
-  const px=male?16:0,py=male?64:72;
-  const angles=male?[-143,-123,-103,-83,-63,-43]:[-161,-143,-125,-107,-89,-71,-53,-35,-17];
-  const r=male?137:151;
-  const tips=angles.map(a=>[px+Math.cos(a*Math.PI/180)*r,py+Math.sin(a*Math.PI/180)*r]);
-  for(let i=0;i<tips.length-1;i++) {
-    const [x,y]=tips[i],[xx,yy]=tips[i+1],mx=(x+xx)/2,my=(y+yy)/2-3;
-    const leaf=`M${px} ${py}L${x} ${y}Q${mx} ${my} ${xx} ${yy}Z`;
-    p(g,leaf,i%2? '#dcdcca':ivory,teal,1.3);
-    p(g,`M${px} ${py}L${mx} ${my}L${xx} ${yy}Z`,teal,'none',0,{opacity:.13});
-    // Fine plot grid stays within each folded panel.
-    const id=`panama-fan-${male?'male':'primary'}-${i}`;
-    const clip=add(add(g,'defs'),'clipPath',{id});p(clip,leaf,'white','none');
-    const print=add(g,'g',{'clip-path':`url(#${id})`});
-    for(const f of [.40,.59,.77]) {
-      const ax=px+(x-px)*f,ay=py+(y-py)*f,bx=px+(xx-px)*f,by=py+(yy-py)*f;
-      l(print,`M${ax} ${ay}L${bx} ${by}`,teal,1.2);
-    }
-    l(print,`M${px+(mx-px)*.32} ${py+(my-py)*.32}L${mx} ${my}`,teal,1.1);
-    if(i%2===0) {
-      const tx=px+(mx-px)*.69,ty=py+(my-py)*.69;
-      p(print,`M${tx} ${ty-8}Q${tx-9} ${ty-1} ${tx-5} ${ty+3}Q${tx} ${ty+7} ${tx+6} ${ty+2}Q${tx+9} ${ty-3} ${tx} ${ty-8}Z`,teal,'none');
-      l(print,`M${tx} ${ty+3}V${ty+10}`,teal,1.6);
-    }
-    l(g,`M${x} ${y}Q${mx} ${my} ${xx} ${yy}`,teal,4);
-  }
-  for(const [x,y] of tips) {
-    l(g,`M${px} ${py+4}L${x} ${y}`,gold,3);
-    l(g,`M${px} ${py-6}L${px+(x-px)*.87} ${py+(y-py)*.87}`,cream,1.3);
-  }
-  e(g,px,py,9,9,berry,ink,2);e(g,px,py,3,3,cream,gold,1);
-  l(g,`M${px-3} ${py+10}Q${px-24} ${py+28} ${px-45} ${py+27}`,berry,3);
-  p(g,`M${px-78} ${py+18}H${px-28}V${py+41}H${px-78}Z`,'#d4e0de',ink,1.5);
-  const t=add(g,'text',{x:px-53,y:py+34,fill:ink,'text-anchor':'middle','font-family':'sans-serif','font-size':11,'font-weight':700});t.textContent='50 HA';
-}
 
 export function drawPanamaRefinement(g,item,male) {
   if(!item.id.startsWith('tropicalis::Barro Colorado Island, Panama::')) return false;
-  const draw={'qg2726-gustavia-flower-headpiece':flower,'qg2726-flower-bait':drawFlowerBait,'qg2726-bci-forest-census-map-fans':fan}[item.family];
+  const draw={'qg2726-gustavia-flower-headpiece':flower,'qg2726-flower-bait':drawFlowerBait,'qg2726-leaf-cutting':drawLeafCutting}[item.family];
   if(!draw)return false;
   g.dataset.renderer=item.family;g.dataset.refinement='panama-20260906';draw(g,male);return true;
 }

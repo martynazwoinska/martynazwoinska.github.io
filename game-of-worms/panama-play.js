@@ -1,5 +1,6 @@
+import { createLeafCutRun, fillLeafSnip, resetLeafCut, LEAF_FAMILY } from './panama-leaf-cutting.js?v=20260908-leaf-1';
 const NS='http://www.w3.org/2000/svg';
-const kinds={'qg2726-gustavia-flower-headpiece':'flower','qg2726-flower-bait':'bait','qg2726-bci-forest-census-map-fans':'fan'};
+const kinds={'qg2726-gustavia-flower-headpiece':'flower','qg2726-flower-bait':'bait',[LEAF_FAMILY]:'leaf'};
 const clamp=x=>Math.max(0,Math.min(1,x));
 const ease=x=>{x=clamp(x);return x*x*(3-2*x);};
 const add=(g,t,a={})=>{const n=document.createElementNS(NS,t);Object.entries(a).forEach(([k,v])=>n.setAttribute(k,v));g.appendChild(n);return n;};
@@ -45,6 +46,7 @@ export function createPanamaPlay(habitat){
     for(const [node,attrs] of run.saved)for(const [key,value] of Object.entries(attrs)){if(value===null)node.removeAttribute(key);else node.setAttribute(key,value);}
     for(const [node,style] of run.anchors){if(style===null)node.removeAttribute('style');else node.setAttribute('style',style);}
     if(complete&&run.kind==='bait'&&run.male){run.piece.querySelector('[data-panama-serving]').setAttribute('opacity',1);run.piece.querySelector('[data-panama-spoonful]').setAttribute('opacity',0);}
+    if(complete&&run.leafRun)run.leafRun.finish();
     run.effects.remove();delete run.piece.dataset.panamaAction;active=null;
   }
   function playSound(kind){
@@ -53,16 +55,18 @@ export function createPanamaPlay(habitat){
       const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;
       audio??=new Audio();audio.resume().catch(()=>{});
       const gain=audio.createGain(),filter=audio.createBiquadFilter();let source;
-      const duration=kind==='bait'?3.2:kind==='fan'?2.6:1;
+      const duration=kind==='bait'?3.2:kind==='snip'?.42:1;
       if(kind==='bait'){
         source=audio.createOscillator();source.type='sawtooth';source.frequency.setValueAtTime(70,audio.currentTime);source.frequency.linearRampToValueAtTime(125,audio.currentTime+.7);
         filter.type='lowpass';filter.frequency.value=650;
       }else{
         source=audio.createBufferSource();const buffer=audio.createBuffer(1,Math.ceil(audio.sampleRate*duration),audio.sampleRate),data=buffer.getChannelData(0);
-        for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.sin(i/audio.sampleRate*Math.PI*3.2)**2;
-        source.buffer=buffer;filter.type='lowpass';filter.frequency.value=kind==='fan'?1100:1600;
+        if(kind==='snip')fillLeafSnip(data,audio.sampleRate);
+        else for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.sin(i/audio.sampleRate*Math.PI*3.2)**2;
+        source.buffer=buffer;filter.type='lowpass';filter.frequency.value=kind==='snip'?5500:1600;
       }
-      const now=audio.currentTime;gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(kind==='bait'?.025:.035,now+.18);gain.gain.setValueAtTime(kind==='bait'?.025:.035,now+duration-.25);gain.gain.linearRampToValueAtTime(0,now+duration);
+      const now=audio.currentTime,level=kind==='snip'?.14:kind==='bait'?.025:.035;
+      gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(level,now+(kind==='snip'?.006:.18));gain.gain.setValueAtTime(level,now+duration-(kind==='snip'?.025:.25));gain.gain.linearRampToValueAtTime(0,now+duration);
       source.connect(filter);filter.connect(gain);gain.connect(audio.destination);sound=source;
       source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();if(sound===source)sound=null;};source.start();source.stop(now+duration);
     }catch{}
@@ -77,9 +81,19 @@ export function createPanamaPlay(habitat){
     const run={piece,root,male,kind,body,art,effects,saved:new Map(),anchors:[]};active=run;piece.dataset.panamaAction=kind;
     const remember=(n,keys=['transform'])=>{if(n&&!run.saved.has(n))run.saved.set(n,Object.fromEntries(keys.map(k=>[k,n.getAttribute(k)])));return n;};
     // Pin scaling origins before animating descendants, preserving drag and size.
-    for(const n of [piece,art]){const box=n.getBBox();run.anchors.push([n,n.getAttribute('style')]);n.style.transformBox='view-box';n.style.transformOrigin=`${box.x+box.width/2}px ${box.y+box.height/2}px`;}
+    const pinned=new Set();
+    const pin=n=>{if(!n||pinned.has(n))return;pinned.add(n);const box=n.getBBox();run.anchors.push([n,n.getAttribute('style')]);n.style.transformBox='view-box';n.style.transformOrigin=`${box.x+box.width/2}px ${box.y+box.height/2}px`;};
+    for(const n of [piece,art])pin(n);
+    if(kind==='leaf'){
+      // Unlock audio inside the input gesture. The snip itself follows blade contact.
+      try{const Audio=window.AudioContext||window.webkitAudioContext;if(Audio&&!reduced.matches){audio??=new Audio();audio.resume().catch(()=>{});}}catch{}
+      const leafRun=createLeafCutRun({habitat,root,effects,remember,pin,reduced:reduced.matches,snip:()=>playSound('snip')});run.leafRun=leafRun;
+      if(!leafRun){cancel();return false;}
+      const began=performance.now();
+      const tick=now=>{if(active!==run)return;if(!piece.isConnected||piece.closest('[hidden]')||document.hidden){cancel();return;}if(leafRun.frame(now-began)){cancel(true);return;}raf=requestAnimationFrame(tick);};
+      raf=requestAnimationFrame(tick);return true;
+    }
     const flower=remember(piece.querySelector('[data-panama-flower]'));
-    const fan=remember(piece.querySelector('[data-panama-fan]'));
     const spoon=remember(piece.querySelector('[data-panama-spoon]'));
     const petals=remember(piece.querySelector('[data-panama-petals]'),['transform','opacity']);
     const swirl=remember(piece.querySelector('[data-panama-swirl]'),['transform','opacity']);
@@ -90,9 +104,7 @@ export function createPanamaPlay(habitat){
     const closingPetals=[...piece.querySelectorAll('[data-panama-closed-petal]')].map(n=>remember(n,['d']));
     const stamens=remember(piece.querySelector('[data-panama-stamens]'),['transform','opacity']);
     const budSeam=remember(piece.querySelector('[data-panama-bud-seam]'),['opacity']);
-    const extraFlower=kind==='fan'?remember(habitat.querySelector(`.accessory-piece[data-worm-part="${male?'companion':'primary'}"] [data-panama-flower]`)):null;
     const arms=kind==='flower'?[]:Array.from({length:kind==='bait'&&!male?2:1},()=>({line:path(effects,'','none','#437f80',male?3.8:5.3),light:path(effects,'','none','#a9d8cd',male?1.5:2),hand:glove(effects)}));
-    const breeze=kind==='fan'?Array.from({length:3},()=>path(effects,'','none','#fff2de',male?.8:1.2)):[];
     const point=(node,x,y)=>new DOMPoint(x,y).matrixTransform(root.getScreenCTM().inverse().multiply(node.getScreenCTM()));
     const original=n=>run.saved.get(n)?.transform||'';
     const began=performance.now();if(!(kind==='bait'&&male))playSound(kind);
@@ -101,13 +113,7 @@ export function createPanamaPlay(habitat){
       if(!piece.isConnected||piece.closest('[hidden]')||document.hidden){cancel();return;}
       const s=panamaFrame(now-began,kind,male,reduced.matches);if(s.done){cancel(true);return;}
       let targets=[];
-      if(kind==='fan'){
-        fan.setAttribute('transform',`rotate(${s.angle} ${male?16:0} ${male?64:72})`);
-        targets=[point(fan,male?16:0,male?64:72)];
-        const from=point(fan,0,-35),to=point(body,320,60);
-        breeze.forEach((n,i)=>{n.setAttribute('d',`M${from.x} ${from.y+i*3}Q${(from.x+to.x)/2} ${from.y-10+i*3} ${to.x} ${to.y+i*3}`);n.setAttribute('opacity',s.env*.3);});
-        extraFlower?.setAttribute('transform',`${original(extraFlower)} rotate(${s.angle*.18})`);
-      }else if(kind==='flower'){
+      if(kind==='flower'){
         if(male){
           // Fold the existing petals around their fixed base, without a stem or hand.
           closingPetals.forEach(n=>n.setAttribute('d',closedPetalPath(run.saved.get(n).d,n.getAttribute('data-panama-closed-petal'),s.fold)));
@@ -142,6 +148,7 @@ export function createPanamaPlay(habitat){
     raf=requestAnimationFrame(tick);return true;
   }
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});window.addEventListener('pagehide',()=>cancel());reduced.addEventListener('change',()=>cancel());
-  function reset(piece){cancel();piece?.querySelector('[data-panama-serving]')?.setAttribute('opacity',0);piece?.querySelector('[data-panama-spoonful]')?.setAttribute('opacity',1);}
+  window.addEventListener('resize',()=>cancel());
+  function reset(piece){cancel();if(piece?.dataset.accessoryFamily===LEAF_FAMILY)resetLeafCut(habitat);piece?.querySelector('[data-panama-serving]')?.setAttribute('opacity',0);piece?.querySelector('[data-panama-spoonful]')?.setAttribute('opacity',1);}
   return {handles,start,cancel,reset,get active(){return !!active;}};
 }

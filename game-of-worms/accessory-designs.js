@@ -8,7 +8,7 @@ import { drawN2Coat } from "./n2-tailoring.js?v=20260906-n2-fabric-2";
 import { drawN2Cryopack } from "./n2-cryopacks.js?v=20260906-n2-sidepack-2";
 import { drawAhmedabadRefinement } from "./ahmedabad-refinement.js?v=20260907-paper-cloth-2";
 import { drawTrivandrumRefinement } from "./trivandrum-refinement.js?v=20260907-shower-1";
-import { drawPanamaRefinement } from "./panama-refinement.js?v=20260908-flower-close-1";
+import { drawPanamaRefinement } from "./panama-refinement.js?v=20260908-leaf-1";
 import { drawBaliRefinement } from "./bali-refinement.js?v=20260906-nibs-1";
 import { drawFlyingCockatoos } from "./canberra-cockatoos.js?v=20260906-cafe-2";
 import { drawCafeProps } from "./canberra-cafe-art.js?v=20260907-cafe-polish-1";
@@ -46,7 +46,7 @@ const rows = [
   ["nigoni", "Ho Chi Minh City · JU4356", "carambola sample trays", "ju4356-carambola-ground-contact-stage", "ITS2 DNA cards", "ju4356-its2-ribbon-reader", "tree survey calipers", "hcmc-urban-canopy-census-engine"],
   ["nigoni", "Lombok, Indonesia · HPT26", "Lingsar spring collars", "lingsar-spring-collar", "Ficus fruit transformations", "lingsar-ficus-fruit-transformation", "spring-water currents", "lingsar-springwater-current"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "Balinese endek wrap", "ju1873-balinese-endek-wrap", "Balinese gamelan gong", "ju1873-balinese-gamelan-gong"],
-  ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Flower bait", "qg2726-flower-bait", "forest-census map fans", "qg2726-bci-forest-census-map-fans"],
+  ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Flower bait", "qg2726-flower-bait", "Leaf cutting", "qg2726-leaf-cutting"],
   ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras carnival crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
   ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "petal rain trumpets", "eca789-petal-rain-trumpet", "raindrop harps", "eca789-raindrop-harp", "cacao-key xylophones", "eca789-cacao-key-xylophone"],
   ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Taiwan blue-magpie kites", "nic1648-taiwan-blue-magpie-kites", "single-tail rain boots", "nic1648-single-tail-rain-boots", "bubble-tea jetpacks", "nic1648-bubble-tea-jetpacks"],
@@ -6258,7 +6258,7 @@ function renderPiece(target, item, wormPart) {
     ,"saint-benoit-windward-slope-mobile": { primary: [365, 270, .31, 1], companion: [6, 286, .26, -2] }
     ,"qg2726-gustavia-flower-headpiece": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
     ,"qg2726-flower-bait": { primary: [270, 239, .54, 0], companion: [104, 174, .48, 0] }
-    ,"qg2726-bci-forest-census-map-fans": { primary: [375, 117, .32, 10], companion: [145, 137, .22, 15] }
+    ,"qg2726-leaf-cutting": { primary: [224, 28, .55, 150], companion: [156, 58, .56, -18] }
     ,"ju1873-cacao-specimen-lantern": { primary: [410, 124, .46, -12], companion: [150, 168, .62, -7] }
     ,"ju1873-balinese-endek-wrap": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
     ,"ju1873-balinese-gamelan-gong": { primary: [403, 277, .56, 0], companion: [20, 244, .56, 0] }
@@ -6327,6 +6327,7 @@ function renderPiece(target, item, wormPart) {
   if (item.family === "ju1873-cacao-specimen-lantern" && companion) piece.dataset.pieceLabel = "cacao nibs";
   if (item.family === "canberra-flat-white-cafe") piece.dataset.pieceLabel = companion ? "biscuits" : "flat white";
   if (item.family === "qg2726-flower-bait") piece.dataset.pieceLabel = companion ? "spoon and dish" : "blender";
+  if (item.family === "qg2726-leaf-cutting") piece.dataset.pieceLabel = companion ? "Leaf" : "Scissors";
   if (item.family === "santeuil-hogweed-locomotive") piece.dataset.pieceLabel = companion ? "railway trolley" : "hogweed-stem locomotive";
   if (item.family === "ju4400-compost-work") piece.dataset.pieceLabel = companion ? "Compost fork" : "Wheelbarrow";
   if (item.family === "ju4400-mate") piece.dataset.pieceLabel = companion ? "Kettle" : "Mate";
