@@ -6,7 +6,11 @@ const path=require('node:path');
   const art=fs.readFileSync(path.join(root,'game-of-worms/claremont-book-art.js'),'utf8');
   const artUrl='data:text/javascript;base64,'+Buffer.from(art).toString('base64');
   const source=fs.readFileSync(path.join(root,'game-of-worms/claremont-play.js'),'utf8').replace(/\.\/claremont-book-art\.js\?v=[^']+/,artUrl);
-  const {leafPose,pourFrame,sipFrame,soundProfile,lemonadeLevels,waterPolygon,createReadingSound}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
+  const {leafPose,pourFrame,sipFrame,soundProfile,lemonadeLevels,waterPolygon,createReadingSound,nextBookPage,pageDuration}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
+  assert.deepEqual([0,1,2,3].map(n=>nextBookPage(n)),[1,2,3,0]);
+  assert.deepEqual([0,1,2,3].map(n=>nextBookPage(n,true)),[1,2,3,1]);
+  assert.ok(pageDuration(true,true)>pageDuration(true,false));
+  for(const y of [-82,0,91]){const x=-73+.062*y;assert.ok(Math.abs((-x+.124*y-146)-x)<1e-10);}
   for(const small of [false,true]){
     assert.equal(leafPose(0,small).scale,1);
     assert.equal(leafPose(1,small).scale,-1);
@@ -72,14 +76,16 @@ const path=require('node:path');
     get firstChild(){return this.children[0];}
   }
   document.createElementNS=(_,tag)=>new Element(tag);
-  const {drawWormbook,bookPage}=await import(artUrl),walk=n=>[n,...n.children.flatMap(walk)];
+  const {drawWormbook,bookPage,SPREADS,SMALL_REFLECTION}=await import(artUrl),walk=n=>[n,...n.children.flatMap(walk)];
+  assert.equal(new Set(SPREADS.flat()).size,8);
+  assert.equal(SMALL_REFLECTION,'matrix(-1 0 .124 1 -146 0)');
   const signatures=[];
   for(const small of [true,false]){
     const g=new Element('g');drawWormbook(g,small);signatures.push(JSON.stringify(g));
     assert.ok(walk(g).some(n=>n.textContent==='Wormbook'));
     assert.ok(walk(g).some(n=>n.tag==='textPath'&&n.textContent==='Wormbook'));
     assert.ok(walk(g).some(n=>Object.hasOwn(n.attrs,'data-book-plate')));
-    for(let index=0;index<3;index++)for(const side of ['left','right'])g.append(bookPage(small,index,side));
+    for(let index=0;index<4;index++)for(const side of ['left','right'])g.append(bookPage(small,index,side));
     const nodes=walk(g),ids=nodes.filter(n=>n.attrs.id).map(n=>n.attrs.id);
     assert.equal(new Set(ids).size,ids.length);
     for(const n of nodes)for(const v of Object.values(n.attrs)){

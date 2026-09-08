@@ -1,5 +1,11 @@
 # Game of Worms art catalogue
 
+Claremont approved follow-up: four large-book spreads replace the three repeated
+cell plates. New original agar-dish, feeding, binary-fission and mushroom
+illustrations vary the layouts. The male cover now opens more slowly and
+subsequent leaves stay on the left with correctly oriented back-side printing.
+The approved closed-cover drawings and all drink behaviour are preserved.
+
 Claremont final approval, 2026-09-08: titles follow the page/cover baselines.
 Worm engravings and bacterial plates sit in consistent centred inset panels.
 The male hardback has a recessed oval illustration, layered edges and banded

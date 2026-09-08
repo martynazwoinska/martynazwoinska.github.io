@@ -1,4 +1,4 @@
-import { drawWormbook } from "./claremont-book-art.js?v=20260909-wormbook-3";
+import { drawWormbook } from "./claremont-book-art.js?v=20260909-wormbook-4";
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
 import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260905-tenerife-wings-4";
 import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-santeuil-fit-3";
@@ -294,6 +294,11 @@ function artworkForm(label, kind) {
   return 18;
 }
 
+// Only the initial letter changes. Preserve UV, DNA, 18S and proper names.
+export function formatAccessoryLabel(label) {
+  return label.replace(/^\p{Ll}/u, letter => letter.toLocaleUpperCase("en"));
+}
+
 function freezeDesign([speciesId, placeName, headLabel, headFamily, wrapLabel, wrapFamily, charmLabel, charmFamily, extraLabel, extraFamily], index) {
   const make = (label, family, slot) => {
     const artKind = artworkKind(label);
@@ -309,7 +314,7 @@ function freezeDesign([speciesId, placeName, headLabel, headFamily, wrapLabel, w
     return Object.freeze({
     id: `${speciesId}::${placeName}::${slot}`,
     geometrySignature: `${artKind}:${form}:${geometry.widthStep}:${geometry.heightStep}:${geometry.direction}:${geometry.motifMode}:${geometry.angleStep}:${geometry.pairAttachment}:${slot}`,
-    label,
+    label: formatAccessoryLabel(label),
     family,
     slot,
     artKind,
@@ -6321,6 +6326,7 @@ function renderPiece(target, item, wormPart) {
   if (item.family === "canberra-flat-white-cafe") piece.dataset.pieceLabel = companion ? "biscuits" : "flat white";
   if (item.family === "qg2726-flower-bait") piece.dataset.pieceLabel = companion ? "spoon and dish" : "blender";
   if (item.family === "santeuil-hogweed-locomotive") piece.dataset.pieceLabel = companion ? "railway trolley" : "hogweed-stem locomotive";
+  if (piece.dataset.pieceLabel) piece.dataset.pieceLabel = formatAccessoryLabel(piece.dataset.pieceLabel);
   const isSanteuilCompanionProp = companion && ["santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"].includes(item.family);
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";

@@ -3,7 +3,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260909-wormbook-3";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260909-label-case-1";
 import { createPanamaPlay } from "./panama-play.js?v=20260908-flower-close-1";
 import { launchWormConfetti } from "./worm-celebration.js?v=20260908-celebration-1";
 import { createAhmedabadHands } from "./ahmedabad-hands.js?v=20260908-ahmedabad-spacing-1";
@@ -14,7 +14,7 @@ import { createTrivandrumWatering } from "./trivandrum-watering.js?v=20260907-sh
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260907-cryo-sound-1";
 import { createBaliGongs, GONG_FAMILY } from "./bali-gongs.js?v=20260906-gongs-1";
 import { createEdinburghPipes } from "./edinburgh-pipes.js?v=20260909-pipes-1";
-import { createClaremontPlay } from "./claremont-play.js?v=20260909-wormbook-3";
+import { createClaremontPlay } from "./claremont-play.js?v=20260909-wormbook-4";
 import { createBaliCacao } from "./bali-cacao.js?v=20260908-crack-1";
 import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-fans-1";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";

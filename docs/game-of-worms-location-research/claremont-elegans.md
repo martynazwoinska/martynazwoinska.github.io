@@ -38,6 +38,22 @@ Regional sources:
 
 ## Production assets
 
+### Varied-page and small-book-motion follow-up
+
+Four large-book spreads now pair title/rods, agar/feeding, division/cocci and
+mushroom/spiral. These are original, unlabelled schematic drawings. The mushroom
+is generic and does not identify the historical collection specimen. Feeding
+shows a worm near bacteria, without claiming anatomical detail. Binary fission
+shows elongation, a septum and two daughter cells. Structural references:
+- [WormAtlas, feeding](https://www.wormatlas.org/hermaphrodite/pharynx/mainframe.htm)
+- [OpenStax, bacterial growth](https://openstax.org/books/microbiology/pages/9-1-how-microbes-grow)
+
+The male book retains illustrated leaves on the left after turning. Reverse
+printing is counter-reflected around the same sloping hinge as the moving leaf.
+Its rigid cover opens in 920 ms, with less skew than the 780 ms paper turns.
+The endpaper is revealed with the cover, not shown flat at the start. This
+revision is a local preview, with no changes to titles or accessory labels.
+
 ### Final Wormbook approval, 2026-09-08
 
 The approved renderer uses curved/sloping text paths for the exact title

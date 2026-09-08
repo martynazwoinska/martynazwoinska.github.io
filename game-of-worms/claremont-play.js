@@ -1,4 +1,4 @@
-import { bookPage, insideCover } from './claremont-book-art.js?v=20260909-wormbook-3';
+import { bookPage, insideCover, SPREADS, SMALL_REFLECTION } from './claremont-book-art.js?v=20260909-wormbook-4';
 const NS='http://www.w3.org/2000/svg';
 export const BOOK='eca250-bookworm-book', LEMONADE='eca250-california-lemonade';
 const clamp=n=>Math.max(0,Math.min(1,n));
@@ -6,6 +6,8 @@ const ease=n=>{n=clamp(n);return n*n*(3-2*n);};
 const make=(tag,attrs={})=>{const n=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);return n;};
 const path=(d,attrs={})=>make('path',{d,...attrs});
 let serial=0;
+export const nextBookPage=(index,small=false)=>small?(index% (SPREADS.length-1))+1:(index+1)%SPREADS.length;
+export const pageDuration=(small,opening)=>small?(opening?920:780):680;
 
 export function leafPose(progress,small=false){
   const p=ease(progress),scale=Math.cos(Math.PI*p)*(1-.06*Math.sin(Math.PI*p));
@@ -100,23 +102,25 @@ export function createClaremontPlay(habitat,onChange=()=>{}){
     s.layer?.remove();s.layer=null;hideContents(s,index!==0);
     if(index===0)return;
     const layer=make('g',{'data-reading-pages':String(index),'pointer-events':'none','aria-hidden':'true'});
-    if(s.small){const cover=smallBack(s);folded(cover,leafPose(1,true),true);layer.append(cover,surface(s,index,'right'));}
+    if(s.small){const cover=smallBack(s);folded(cover,leafPose(1,true),true);layer.append(cover,surface(s,index,'left'),surface(s,index,'right'));}
     else layer.append(surface(s,index,'left'),surface(s,index,'right'));
     const anchor=s.art.querySelector('[data-book-binding]');anchor.before(layer);s.layer=layer;
   }
   function turnBook(piece){
-    cancel();const s=bookState(piece),previous=s.index,next=s.small?(previous===2?1:previous+1):(previous+1)%3;
+    cancel();const s=bookState(piece),previous=s.index,next=nextBookPage(previous,s.small),opening=s.small&&previous===0;
     if(reduced.matches){s.index=next;paintBook(s,next);onChange();immediateSound('paper');return true;}
     paintBook(s,next);
-    const stillLeft=s.small?null:surface(s,previous,'left');
+    if(opening){s.layer.children[0].setAttribute('visibility','hidden');s.layer.children[1].setAttribute('visibility','hidden');}
+    const stillLeft=s.small?(previous>0?surface(s,previous,'left'):null):surface(s,previous,'left');
     const turning=make('g',{'data-turning-page':'','pointer-events':'none'}),front=make('g'),back=make('g');
-    if(s.small&&previous===0){for(const n of s.contents){const c=n.cloneNode(true);c.removeAttribute('visibility');front.append(c);}back.append(smallBack(s));}
-    else {front.append(surface(s,previous,'right'));back.append(surface(s,next,s.small?'right':'left'));if(!s.small)back.setAttribute('transform','translate(-18 0) scale(-1 1)');}
+    if(opening){for(const n of s.contents){const c=n.cloneNode(true);c.removeAttribute('visibility');front.append(c);}back.append(smallBack(s));const endpaper=surface(s,next,'left');endpaper.setAttribute('transform',SMALL_REFLECTION);back.append(endpaper);}
+    else {front.append(surface(s,previous,'right'));back.append(surface(s,next,'left'));back.setAttribute('transform',s.small?SMALL_REFLECTION:'translate(-18 0) scale(-1 1)');}
     turning.append(front,back);if(stillLeft)s.art.append(stillLeft);s.art.append(turning);
     const started=performance.now(),r={piece,restore(){turning.remove();stillLeft?.remove();paintBook(s,s.index);delete piece.dataset.readingActive;}};
     run=r;piece.dataset.readingActive='page';
     Promise.resolve(sound.prepare()).then(()=>{if(run===r)sound.play('paper');}).catch(()=>{});
-    function tick(now){if(run!==r)return;if(!visible(piece)){cancel();return;}const t=clamp((now-started)/620),pose=leafPose(t,s.small);
+    function tick(now){if(run!==r)return;if(!visible(piece)){cancel();return;}const t=clamp((now-started)/pageDuration(s.small,opening)),pose=leafPose(t,s.small);
+      if(opening)pose.skew*=.25;
       folded(turning,pose,s.small);front.setAttribute('display',pose.back?'none':'inline');back.setAttribute('display',pose.back?'inline':'none');
       turning.setAttribute('opacity',String(1-.12*Math.sin(Math.PI*t)));
       if(t===1){s.index=next;cancel();return;}raf=requestAnimationFrame(tick);

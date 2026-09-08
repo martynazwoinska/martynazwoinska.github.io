@@ -4,6 +4,41 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Consistent accessory-label capitalization, approved for deployment
+
+All 94 English-only accessory labels now start consistently with a capital
+letter. A shared formatter changes only the first lowercase letter, preserving
+UV, DNA, 18S, ITS2, Ficus and all remaining wording. This normalizes 60 catalogue
+labels and nine paired-object names used by accessibility labels and size controls.
+IDs, family keys, artwork, geometry and saved settings are untouched. Exact copy
+changes are listed in `docs/game-accessory-label-review.md` and approved by Martyna
+for deployment. `scripts/check-accessory-labels.cjs` covers the full catalogue,
+key preservation, scientific abbreviations and paired-label integration.
+The Wormbook revisions below are included in the same approved release.
+
+### Claremont page motion and varied spreads, approved for deployment
+
+New requested refinement after deployed 72444fa. The male cover opens in
+920 ms, with less skew than a leaf. Subsequent 780 ms page turns now leave
+illustrated left pages behind, with reverse-side artwork corrected for the
+sloping hinge. The opening endpaper is hidden until the moving cover reveals
+it. Home restores the approved closed cover. The large book has four distinct
+spreads: title/rods, agar/feeding, division/cocci and mushroom/spiral. Original
+new drawings vary the composition without adding public labels. Cover artwork,
+Lemonade, sounds, saved accessory size and scene background are unchanged.
+Martyna approved the revised preview and requested deployment.
+
+Checks: opening, mid-turn and settled male pages inspected. Four large-book
+spreads traversed in order. The male's 1.1 scale and 4 px user offset survive
+opening. Resize interruption clears the moving leaf. No console errors,
+duplicate SVG IDs or horizontal overflow at 360/768/1024/1440 px. Full-page
+exports measured 345x2549, 753x2424, 1009x1950 and 1425x1928. The existing
+stitching defect still prevents full-page approval proof. Direct viewport
+renders were reviewed. Mushroom gills and stem shading received a second pass.
+Syntax, Claremont page/hinge/content/audio tests, Edinburgh and six-location
+regressions pass. Physical phones, Safari and reduced-motion browser emulation
+remain untested. No files added or deleted, no homepage or Cabinet changes.
+
 ### Claremont Wormbook and Lemonade, 2026-09-08, approved for deployment
 
 Martyna approved the exact revised preview and deployment. The title lettering

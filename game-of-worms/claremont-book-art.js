@@ -3,6 +3,8 @@ const ink='#284653',ivory='#fffaf0',edge='#c5a36b',green='#368b78',berry='#ad596
 export const PAGE_LEFT='M-177-23Q-99-69-9-34L-9 87Q-91 54-173 86Z';
 export const PAGE_RIGHT='M-9-34Q80-72 177-29L168 82Q79 52-9 87Z';
 export const PAGE_SMALL='M-67-82L59-61L67 72L-57 91Z';
+export const SMALL_REFLECTION='matrix(-1 0 .124 1 -146 0)';
+export const SPREADS=[['title','rods'],['agar','feeding'],['division','cocci'],['mushroom','spiral']];
 let serial=0;
 const el=(tag,attrs={})=>{const n=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);return n;};
 const p=(d,fill='none',stroke=ink,width=2)=>el('path',{d,fill,stroke,'stroke-width':width,'stroke-linecap':'round','stroke-linejoin':'round'});
@@ -47,12 +49,44 @@ function wormEngraving(){
     p('M38-10L41-12','none','#e0eed0',1.5));
   return g;
 }
+function illustratedPlate(subject){
+  if(['rods','cocci','spiral'].includes(subject))return microbePlate(['rods','cocci','spiral'].indexOf(subject));
+  const g=el('g',{'data-book-subject':subject});
+  if(subject==='agar'){
+    g.append(p('M-53-7V12C-53 46 53 46 53 12V-7Z','#d4e0d7',ink,1.8),
+      el('ellipse',{cx:0,cy:9,rx:49,ry:29,fill:'#e5ca80',stroke:'#ab8e53','stroke-width':1.3}),
+      el('ellipse',{cx:0,cy:-7,rx:53,ry:30,fill:'#edf5ec88',stroke:ink,'stroke-width':1.8}),
+      el('ellipse',{cx:0,cy:-5,rx:46,ry:25,fill:'#e5d497',stroke:'#afbb9d','stroke-width':1}));
+    for(const [x,y] of [[-31,-12],[-17,9],[9,-20],[26,0],[12,15],[-3,-2]])g.append(el('circle',{cx:x,cy:y,r:2.5,fill:'#8d9b59'}));
+    g.append(p('M-26 0C-15-15-8 15 6 2S25-9 30-2','none',green,3.2),p('M-42-17Q-29-29-11-28','none',ivory,2.5),p('M-43 24Q-14 41 32 29','none','#f7faf0',2));
+  }else if(subject==='feeding'){
+    g.append(p('M-51 34C-25 55-3 28-16 7C-29-13-19-33-3-28C10-24 8-5 24-10C34-14 34-5 26-2C7 7 0-17-8-18C-16-18-13-5-6 6C13 35-27 64-51 34Z','#7ab897',green,1.8),
+      p('M-40 38C-21 44-8 23-19 7C-29-10-18-27-7-25','none','#d5e4b5',2.3));
+    for(const [x,y,a] of [[35,-26,20],[44,-9,-22],[27,-39,-13],[49,-31,40]])g.append(el('rect',{x:x-5,y:y-2.5,width:10,height:5,rx:2.5,fill:'#ca9a61',stroke:'#956647','stroke-width':1,transform:`rotate(${a} ${x} ${y})`}));
+  }else if(subject==='division'){
+    const cell=(x,y,w)=>{const c=el('g');c.append(el('rect',{x:x-w/2,y:y-9,width:w,height:18,rx:9,fill:'#d6e9cb',stroke:green,'stroke-width':1.8}),p(`M${x-5} ${y}q3-7 8 0t8 0`,'none',berry,1.5));g.append(c);};
+    cell(0,-36,43);
+    g.append(p('M0-23V-15M-3-18L0-15L3-18','none',edge,1.2));
+    cell(0,0,69);g.append(p('M0-9Q-5 0 0 9M1-9Q6 0 1 9','none',green,1.4),p('M-24 0q3-7 8 0t7 0','none',berry,1.5),p('M0 14V22M-3 19L0 22L3 19','none',edge,1.2));
+    cell(-23,37,35);cell(23,37,35);
+  }else if(subject==='mushroom'){
+    g.append(p('M-10-9C-11 5-4 18-15 34Q-4 43 7 34C0 22 4 4 2-8Z','#e8d8af','#88654d',1.7),
+      p('M-48-8Q-15-60 24-31Q42-24 49-7Q0 13-48-8Z','#bc8461','#805642',1.8),
+      p('M-48-8Q-1-1 49-7Q10 24-25 4Q-43-2-48-8Z','#ebcb9b','#805642',1.5));
+    for(const [x,y] of [[-38,-5],[-27,0],[-15,3],[14,3],[27,0],[38,-4]])g.append(p(`M0 9L${x} ${y}`,'none','#926544',1.5));
+    g.append(p('M-35-19Q-13-45 11-33','none','#e3b88a',2),p('M23-31L17-24L23-20L15-13L32-10','none','#805642',1.5),p('M-6 12Q-3 24-8 32','none','#fff4d6',2.1),p('M-43 41Q-18 31 4 42T46 38','none','#ad9870',1.5));
+    for(const [x,y] of [[-30,32],[25,32],[36,24]])g.append(el('ellipse',{cx:x,cy:y,rx:7,ry:2.5,fill:green,transform:`rotate(-20 ${x} ${y})`}));
+  }
+  return g;
+}
 export function bookPage(small,index=0,side='right'){
   const shape=small?PAGE_SMALL:side==='left'?PAGE_LEFT:PAGE_RIGHT;
-  const g=el('g'),id=`wormbook-page-${++serial}`,defs=el('defs'),clip=el('clipPath',{id});clip.append(p(shape));defs.append(clip);
-  g.append(defs,p(shape,ivory,'#a8997e',1.2));
+  const left=side==='left',reflection=small&&left?SMALL_REFLECTION:null;
+  const g=el('g'),id=`wormbook-page-${++serial}`,defs=el('defs'),clip=el('clipPath',{id}),paper=p(shape,ivory,'#a8997e',1.2),mask=p(shape);
+  if(reflection){paper.setAttribute('transform',reflection);mask.setAttribute('transform',reflection);}clip.append(mask);defs.append(clip);
+  g.append(defs,paper);
   const content=el('g',{'clip-path':`url(#${id})`});g.append(content);
-  const left=side==='left';
+  const subject=SPREADS[index%SPREADS.length][left?0:1];g.setAttribute('data-page-subject',subject);
   if(index===0&&!small&&left){
     pageTitle(content,defs,'M-164 1Q-99-32-29-9',21);
     const plate=el('g',{transform:'matrix(1 -.04 0 .84 -98 31)','data-book-plate':''});
@@ -61,11 +95,11 @@ export function bookPage(small,index=0,side='right'){
     content.append(p('M-125 69Q-98 64-71 67','none',edge,1.2));
   }else{
     // One centred specimen plate per page, in the local paper plane.
-    const plane=el('g',{transform:small?'matrix(1 .02 .065 .84 -1 1)':left?'matrix(1 -.04 0 .88 -98 13)':'matrix(1 .035 0 .88 83 12)','data-book-plate':''});
-    plane.append(el('ellipse',{cx:0,cy:0,rx:small?48:59,ry:small?60:51,fill:'#f5efdf',stroke:'#d5c197','stroke-width':1.1}));
-    const art=microbePlate(index===0?0:index+(left?0:1));
+    const plane=el('g',{transform:small?(left?'matrix(1 -.02 .065 .84 -145 1)':'matrix(1 .02 .065 .84 -1 1)'):left?'matrix(1 -.04 0 .88 -98 13)':'matrix(1 .035 0 .88 83 12)','data-book-plate':''});
+    if(['rods','cocci','spiral'].includes(subject))plane.append(el('ellipse',{cx:0,cy:0,rx:small?48:59,ry:small?60:51,fill:'#f5efdf',stroke:'#d5c197','stroke-width':1.1}));
+    const art=illustratedPlate(subject);
     art.setAttribute('transform',small?'scale(.86)':'scale(.96)');plane.append(art);content.append(plane);
-    content.append(p(small?'M-34 64L33 54':left?'M-132 66Q-98 60-64 66':'M49 65Q82 59 116 63','none',edge,1.3));
+    content.append(p(small?(left?'M-179 54L-112 64':'M-34 64L33 54'):left?'M-132 66Q-98 60-64 66':'M49 65Q82 59 116 63','none',edge,1.3));
   }
   // Deliberately light binding shadows, not heavy ink boxes around each page.
   if(!small)content.append(p(left?'M-15-31Q-20 24-14 86L-9 87V-34Z':'M-9-34L-4-36Q-2 21-3 85L-9 87Z','#b7a08155','none',0));
