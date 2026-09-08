@@ -8,7 +8,8 @@ glass are separately constructed coffee props. The refinement pass improved
 the tandem seating, passenger parcel, fruit ribs/cut face, source tray and
 initial spacing. The original background is byte-identical. Martyna approved
 the exact preview and English-only copy for deployment, with the full-page
-capture and listening limitations noted. Publication verification is pending.
+capture and listening limitations noted. Published at `7e37b9a`, with successful
+Pages run `34275912526`, matching live text/audio and browser interaction checks.
 See the Ho Chi Minh City dossier for references, tests and capture limitations.
 
 Nambucca approved revision, 2026-09-08: working Flower presses, Rock painting and

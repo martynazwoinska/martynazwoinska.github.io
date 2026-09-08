@@ -6,15 +6,15 @@ This file records approved decisions and the verified implementation state. Alwa
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 19 left to check in the current interaction
-pass and 12 completed, including the published Nambucca revision.
+It tracks all 31 active scenes: 18 left to check in the current interaction
+pass and 13 completed, including the published Ho Chi Minh City revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
-### Ho Chi Minh City approved fruit-delivery revision, 2026-09-08
+### Ho Chi Minh City fruit-delivery publication, 2026-09-08
 
-Martyna approved implementation of the proposed JU4356 scene. Local-only files
-now provide one shared scooter ride, female starfruit cutting/male collecting
+Martyna approved the final JU4356 preview and requested deployment. The scene
+now provides one shared scooter ride, female starfruit cutting/male collecting
 and tasting, and phin brewing/iced-coffee stirring. Only one activity runs at
 a time. Three CC0 recorded cues cover scooter travel, fruit cutting and stirring.
 The original background is unchanged. Catalogue labels are Scooter, Starfruit
@@ -31,10 +31,22 @@ repeated sections. The dossier records actual JPEG sizes and this limitation.
 Physical-device/Safari, pointer-drag and direct-listening checks remain manual.
 
 Martyna approved the exact visual/copy preview for deployment, explicitly aware
-of the capture and listening limitations. Publication verification is pending.
-Branch: `codex/kauai-recording-scene`.
-Preview: `http://127.0.0.1:8765/game-of-worms/?review=hcmc-fruit-delivery`.
-Keep this scene in the open review queue. No other scene was revised.
+of the capture and listening limitations. Commit `7e37b9a` was pushed to `main`
+from `codex/kauai-recording-scene`. Pages run `34275912526` succeeded. All six
+published text files match local content after line-ending normalization and
+all three WAVs match their local SHA-256 hashes. All nine paths return HTTP 200.
+Live-browser checks confirmed accessories initially off, approved labels and
+copy, a complete scooter ride with original body styles restored, starfruit
+cutting, coffee stirring and Escape cancellation. No fresh console warnings,
+errors or horizontal overflow. Ho Chi Minh City is closed in the review queue.
+Next: Saint-Benoît, Réunion · JU1373. No other scene was revised.
+
+Created: `hcmc-art.js`, `hcmc-play.js`, `hcmc-audio.js` under `game-of-worms/`,
+three `game-of-worms/assets/audio/hcmc-*.wav` clips and `scripts/check-hcmc.cjs`.
+Changed: `game-of-worms/accessory-designs.js`, `game.js`, `index.html`, audio
+`SOURCES.md`, this status file, the location dossier, art catalogue and review
+queue. Seven files created, eight changed, none deleted. Homepage and Cabinet
+untouched. Live: `https://martynazwoinska.github.io/game-of-worms/?verify=7e37b9a`.
 
 ### Nambucca recorded-sound follow-up, 2026-09-08
 

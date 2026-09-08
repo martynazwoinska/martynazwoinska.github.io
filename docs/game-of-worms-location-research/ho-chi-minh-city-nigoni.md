@@ -46,7 +46,7 @@ Scooter travel, human food preparation and coffee are playful regional props.
 The exact collection evidence remains the carambola record below. No new
 claim is made about the worm's natural diet or observed behaviour.
 
-### Exact proposed public copy
+### Exact approved public copy
 
 The Game is intentionally English-only. No Swedish or Polish strings exist
 for these controls.
@@ -86,9 +86,17 @@ Only the obsolete final sentence listing the former accessories was removed.
   lower sections. These are invalid full-page proofs, not visual passes.
 - Physical phones, Safari, pointer dragging and direct audio listening remain
   unverified by the agent in this pass. Final visual/copy approval was received.
-  Publication verification is pending.
+- Commit `7e37b9a` was pushed to `main` from `codex/kauai-recording-scene`.
+  Pages run `34275912526` succeeded. Six public text files match local content
+  after line-ending normalization. The three WAVs match their local SHA-256
+  hashes. All nine paths return HTTP 200. Live-browser verification passed for
+  accessories initially off, approved labels/copy, a complete scooter ride and
+  original-body restoration, starfruit cutting, coffee stirring and Escape
+  cancellation. No fresh console warnings, errors or horizontal overflow.
+  The scene is marked complete in the review queue.
 
 Local preview: `http://127.0.0.1:8765/game-of-worms/?review=hcmc-fruit-delivery`.
+Live: `https://martynazwoinska.github.io/game-of-worms/?verify=7e37b9a`.
 
 ## Purpose
 
