@@ -4,7 +4,7 @@ import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260908-nambucca-1";
-import { createNambuccaPlay } from "./nambucca-play.js?v=20260908-nambucca-1";
+import { createNambuccaPlay } from "./nambucca-play.js?v=20260908-nambucca-recorded";
 import { createDoisRiosPlay } from "./dois-rios-play.js?v=20260908-dois-rios-1";
 import { createPanamaPlay } from "./panama-play.js?v=20260908-snip-2";
 import { launchWormConfetti } from "./worm-celebration.js?v=20260908-celebration-1";

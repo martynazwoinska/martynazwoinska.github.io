@@ -11,6 +11,33 @@ pass and 12 completed, including the published Nambucca revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+### Nambucca recorded-sound follow-up, 2026-09-08
+
+Martyna requested more accurate sounds and deployment. The Nambucca audio
+module now uses five short CC0 recording excerpts: three brush takes, a paper
+rustle and a damped book closure as foley for the paper-buffered press. Exact
+sources and processing are in `game-of-worms/assets/audio/SOURCES.md`. No
+public-facing labels or prose changed. All approved illustrations, layouts
+and visual animation frames are unchanged.
+
+Brush cues now start at contact, after each lift. The screws remain quiet.
+The male's sheet has outward and return cues. Audio loads on gesture, is reused,
+never plays late, stays silent with reduced motion and stops on cancellation.
+Five clips total 196024 bytes. New recorded-audio tests pass for format, levels,
+cue timing, separate takes, cancellation, failure/retry and late-load silence.
+Existing Nambucca art/frame, labels, visit-reset and Panama sound tests pass.
+Local browser checks passed for painting completion, both presses, cancellation
+and clean console. Width checks at 360, 768, 1024 and 1440 px show no horizontal
+overflow. Publication verification follows before reporting deployment.
+Direct audio audition is unavailable in this session. The final subjective
+listening check remains manual. No visual change requires new screenshot proof.
+
+Added: five WAV clips and `scripts/check-nambucca-audio.cjs`.
+Changed: `nambucca-audio.js`, audio cues/import in `nambucca-play.js`, Game
+module cache keys in `game.js` and `index.html`, the Nambucca test, audio
+sources, location dossier and this status file. No files deleted. Homepage,
+Cabinet, background images and accessory drawings untouched.
+
 ### Dois Rios jackfruit and music publication, 2026-09-08
 
 Martyna explicitly requested deployment of the existing Brazil preview on

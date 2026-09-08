@@ -1,5 +1,5 @@
 import { PRESS, PAINT, add } from './nambucca-art.js?v=20260908-nambucca-1';
-import { createNambuccaSound } from './nambucca-audio.js?v=20260908-nambucca-1';
+import { createNambuccaSound, nambuccaSoundCues } from './nambucca-audio.js?v=20260908-nambucca-recorded';
 const clamp=x=>Math.min(1,Math.max(0,x));
 const ease=x=>{x=clamp(x);return x*x*(3-2*x);};
 export function pressFrame(ms,male,reduced=false) {
@@ -68,14 +68,17 @@ export function createNambuccaPlay(habitat,refreshTargets=()=>{}) {
     const lid=save(art.querySelector('[data-nb-lid]')),sheet=save(art.querySelector('[data-nb-sheet]'));
     const nuts=[...art.querySelectorAll('[data-nb-nut]')].map(n=>save(n));
     const arms=Array.from({length:male&&kind==='press'?1:2},()=>arm(effects,male));
-    const cues=new Set(),began=performance.now();
-    if(!reduced.matches)sound.unlock();
-    const cue=(key,type)=>{if(!cues.has(key)){cues.add(key);if(!reduced.matches)sound.play(type);}};
+    const cues=new Set(),audioCues=nambuccaSoundCues(kind,male,strokes.length),began=performance.now();
+    if(!reduced.matches)sound.unlock(kind);
     function tick(now) {
       if(active!==run)return;
       if(document.hidden||!piece.isConnected||piece.closest('[hidden]')){cancel();return;}
       const ms=now-began,s=kind==='paint'?paintFrame(ms,strokes.length,reduced.matches):pressFrame(ms,male,reduced.matches);
       if(s.done){cancel();if(kind==='paint')applyPaintProgress(strokes,strokes.length);return;}
+      for(const cue of audioCues)if(ms>=cue.at&&!cues.has(cue.key)){
+        cues.add(cue.key);
+        if(!reduced.matches&&ms-cue.at<90)sound.play(cue.type,cue.variant,cue.level,ms-cue.at);
+      }
       let targets;
       if(kind==='paint') {
         applyPaintProgress(strokes,s.progress);
@@ -93,18 +96,14 @@ export function createNambuccaPlay(habitat,refreshTargets=()=>{}) {
         const angle=male?27:32;
         brush.setAttribute('transform',`translate(${x} ${y}) rotate(${angle})`);
         paintTip.setAttribute('fill',strokes[index].getAttribute('stroke'));
-        if(s.progress>0&&s.progress<strokes.length)cue('stroke-'+index,'brush');
         targets=[point(brush,0,-38),point(art,male?-45:-55,12)];
       } else if(male) {
         sheet.setAttribute('transform',`translate(${s.pull*52} ${-s.pull*39})`);
-        if(s.pull>.2)cue('paper','paper');
         targets=[point(sheet,54,17)];
       } else {
         lid.setAttribute('transform',`translate(0 ${-44+s.close*44})`);
         const width=.30+.70*Math.abs(Math.cos(s.twist*Math.PI/180));
         nuts.forEach(n=>n.setAttribute('transform',`${run.saved.get(n).transform} scale(${width} 1)`));
-        if(s.close>.98)cue('contact','wood');
-        if(s.twist>180)cue('nut','paper');
         targets=[point(lid,-64,4),point(lid,24,-14)];
       }
       arms.forEach((a,i)=>{

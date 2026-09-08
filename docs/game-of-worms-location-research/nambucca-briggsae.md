@@ -50,8 +50,11 @@ The pressing action compresses and reopens the boards. Real drying takes weeks,
 as the RHS instructions explain. The game does not claim instant preservation
 or that these presses were used to collect QG2814.
 
-Original vector art and short synthesized brush, paper and wood foley live in
-the three nambucca modules. No external image or audio was adapted. Sound starts
+Original vector art lives in the Nambucca art module. On 2026-09-08 Martyna
+requested replacement of the synthesized foley. Five short CC0 recording
+excerpts now supply brush friction, paper movement and soft press contact.
+See `game-of-worms/assets/audio/SOURCES.md` for credits and the physical
+source of each sound. No external image was adapted. Sound starts
 only on activation and stops on interruption. Only the selected worm acts.
 Home clears its painting. Escape, drag/resize, hiding an accessory and changing
 the scene cancel safely. Reduced motion shows a brief static result.

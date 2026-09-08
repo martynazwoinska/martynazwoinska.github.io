@@ -12,7 +12,6 @@ const mod=n=>import(pathToFileURL(path.join(__dirname,'../game-of-worms/',n)));
 (async()=>{
   const {drawNambucca:draw,PRESS,PAINT,APRON,nambuccaLayouts}=await mod('nambucca-art.js');
   const {pressFrame,paintFrame,applyPaintProgress}=await mod('nambucca-play.js');
-  const {makeNambuccaFoley}=await mod('nambucca-audio.js');
   const ids=[];
   for(const family of [PRESS,PAINT,APRON]){
     const pairs=[false,true].map(male=>{
@@ -52,12 +51,5 @@ const mod=n=>import(pathToFileURL(path.join(__dirname,'../game-of-worms/',n)));
     }
     assert(pressFrame(3400,male).done);assert(paintFrame(4300,5).done);
   }
-  for(const kind of ['brush','paper','wood']){
-    const data=makeNambuccaFoley(44100,kind);
-    assert(data.every(Number.isFinite));
-    assert.deepEqual(data,makeNambuccaFoley(44100,kind));
-    const peak=data.reduce((p,x)=>Math.max(p,Math.abs(x)),0);
-    assert(peak>.005&&peak<.5);assert(data.length<=44100*.31);
-  }
-  console.log('Nambucca: six distinct SVGs, fitted origins, four press fastenings, continuous brush paths, independent paint reset, finite action frames, reduced motion and short deterministic foley pass.');
+  console.log('Nambucca: six distinct SVGs, fitted origins, four press fastenings, continuous brush paths, independent paint reset, finite action frames and reduced motion pass. Audio is covered by check-nambucca-audio.cjs.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

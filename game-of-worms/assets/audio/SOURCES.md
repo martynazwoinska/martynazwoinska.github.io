@@ -1,5 +1,58 @@
 # Game sound recordings
 
+## Nambucca flower presses and rock painting
+
+Source and CC0 licences checked on 2026-09-08:
+
+- [Brush on concrete, Joseph SARDIN, BigSoundBank 1107](https://bigsoundbank.com/brush-on-concrete-s1107.html).
+  Recorded bristles on a mineral surface provide texture for rock painting.
+  The original is a dry brush on concrete, not a recording of wet paint.
+  Download: `https://bigsoundbank.com/UPLOAD/mp3/1107.mp3`.
+  Source SHA-256: `58bde79fa9435e56af47686f7ea96f7e70c9f25dda0750f71bf6acbab76440f2`.
+- [Turned Page, DavidGreck, BigSoundBank 0164](https://bigsoundbank.com/turned-page-s0164.html).
+  One short paper movement accompanies the male sliding his flower sheet.
+  Download: `https://bigsoundbank.com/UPLOAD/mp3/0164.mp3`.
+  Source SHA-256: `bbfe308e17db4bcd402d07c69447c31ec351dc9d4143f8d93c4e567d4c1ac8d5`.
+- [Closed book #1, Joseph SARDIN, BigSoundBank 1410](https://bigsoundbank.com/closed-book-1-s1410.html).
+  A softened cover-and-paper contact supplies the press-closing thud.
+  This is a foley substitute for the paper-buffered press, not a recording of
+  a flower press or a wooden lid.
+  Download: `https://bigsoundbank.com/UPLOAD/mp3/1410.mp3`.
+  Source SHA-256: `aecc1873464c8d43b58d6035c2b2f21387d97f361b34d0940093fde9a53923f6`.
+
+[BigSoundBank's CC0 licence](https://bigsoundbank.com/licenses.html) permits
+editing and redistribution. Author credit is retained here.
+
+| File | Start in decoded source | Duration | Low-pass cutoff | Peak |
+| --- | ---: | ---: | ---: | ---: |
+| nambucca-brush-1.wav | 1.100 s | 0.480 s | 3800 Hz | 0.18 |
+| nambucca-brush-2.wav | 2.090 s | 0.480 s | 3800 Hz | 0.18 |
+| nambucca-brush-3.wav | 4.170 s | 0.480 s | 3800 Hz | 0.18 |
+| nambucca-paper-slide.wav | 0.060 s | 0.480 s | 6500 Hz | 0.22 |
+| nambucca-press-close.wav | 0.410 s | 0.300 s | 2400 Hz | 0.25 |
+
+Mono 44100 Hz PCM16, 196024 bytes total. Processing removes DC offset, applies
+a one-pole low-pass filter and short linear fades, then normalizes each excerpt
+to the listed peak. Brush fades: 12/45 ms. Paper: 8/40 ms. Press: 4/60 ms.
+Playback gain 0.7, with quieter male detail strokes and paper return. No added
+oscillators, noise layers, reverb, pitch shift or loops. Three genuine brush
+takes alternate. Brush audio begins at contact after the 120 ms brush lift.
+The press transient is 18 ms into its clip, with the cue at 970 ms.
+Screw turning is quiet. Paper movement has separate outward and return cues.
+
+Recordings load only after an activity gesture and are cached. A missed cue
+remains silent. Cancellation and page hiding stop playback. Reduced motion is
+silent. Untouched downloads, decoded sources and the reproducible processing
+script are retained under ignored `tmp/nambucca-audio/`.
+
+Production SHA-256:
+
+- Brush 1: `819ef551c049749215a88f9f5a8d4d5bbd8f9f6665554afb03e4b3e4880d5478`
+- Brush 2: `a9fdb49c94bad896513c6efb80a8c295f72ac7f9518654e55527d6a1c7928b46`
+- Brush 3: `2c025ee59decc1dbc94b1773b1478263f5147bf7fde6da46bd5c6c527029f177`
+- Paper: `4dcacba69d36ec70a7201077ebc6963d36c2ad16f263b7521abd427717d874de`
+- Press: `f58b4643192f13c2970b1858c42cf5f91e7a0ee48d4496c9fd7b2d67842a82c5`
+
 ## Panama scissors
 
 Source: [Scissors by Joseph SARDIN, BigSoundBank sound 0008](https://bigsoundbank.com/scissors-s0008.html).
