@@ -4,6 +4,25 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Araucanía recorded bread bites and mate sip
+
+Requested after b14f759: replaced the rejected synthesized eating and drinking
+effects with CC0 recordings of bread bites and drinking through a straw.
+Three distinct 380–460 ms bread takes follow the existing bite cues. Both worms
+use a 580 ms straw sip. Source links, licences, excerpt positions and processing
+are in `game-of-worms/assets/audio/SOURCES.md`. The first eating or sipping action
+waits for decoding, with a bounded fetch timeout. Recordings are reused and never
+play late after cancellation. Missing audio fails silently and can retry.
+Other sounds, drawings, placement, animation phases and public copy are unchanged.
+
+Checks: PCM format, clip duration, fades, levels, distinct takes, cached loading,
+failure/retry, no autoplay, one source, hidden-page suppression and cancellation.
+Existing Araucanía, labels, Claremont and six-location checks pass.
+Local browser: all four recordings returned HTTP 200, the first bread action
+worked on a cold cache, both drinking turns and Escape cleanup passed, and
+there were no console errors or horizontal overflow. Drawings and layout are
+unchanged. Listening assessment and physical-device audio checks remain manual.
+
 ### Araucanía compost work and Chilean break, deployment requested
 
 Requested by Martyna after ee446f1. The three accessory slots now contain a

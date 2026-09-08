@@ -10,15 +10,10 @@ export function eatingFrame(t){
   return {reach:ease(t/.23)*(1-ease((t-.81)/.19))*(1-retreat),bite:breadBites.filter(at=>t>=at).length,chewing:t>=.27&&t<.89};
 }
 export const pourWindow={start:.36,end:.63};
-export const slurpSeconds=.32;
-export function fillSlurpSound(data,sampleRate,random=Math.random){
-  const duration=data.length/sampleRate;
-  for(let i=0;i<data.length;i++){
-    const t=i/sampleRate,shape=ease(t/.025)*ease((duration-t)/.055);
-    const suction=(random()*2-1)*(.25+.6*Math.sin(Math.PI*t/duration)**2);
-    data[i]=shape*(suction+.2*Math.sin(2*Math.PI*(600*t+900*t*t)));
-  }
-}
+export const gardenRecordings={
+  crunch:[1,2,3].map(n=>new URL(`./assets/audio/araucania-bread-bite-${n}.wav`,import.meta.url).href),
+  sip:[new URL('./assets/audio/araucania-straw-sip.wav',import.meta.url).href]
+};
 // A quiet continuous trickle with irregular, short water resonances.
 export function fillPourSound(data,sampleRate,random=Math.random){
   const duration=data.length/sampleRate,soften=1-Math.exp(-2*Math.PI*900/sampleRate);
@@ -38,20 +33,42 @@ let passengerSerial=0;
 
 // Gesture-only short foley. One voice at a time, also stopped during handovers.
 export function createGardenSound(){
-  let ctx,voice;
+  let ctx,voice,loading,bite=0;
+  const recordings=new Map();
   const stop=()=>{if(voice){try{voice.stop();}catch{}voice=null;}};
-  async function prepare(){try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;if(!ctx)ctx=new A();await ctx.resume();}catch{}}
+  async function loadRecordings(){
+    await Promise.all(Object.values(gardenRecordings).flat().map(async url=>{
+      if(recordings.has(url))return;
+      const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),4000);
+      try{const response=await fetch(url,{signal:controller.signal});if(!response.ok)throw Error('Audio unavailable');
+        const buffer=await ctx.decodeAudioData(await response.arrayBuffer());recordings.set(url,buffer);
+      }finally{clearTimeout(timeout);}
+    }));
+  }
+  async function prepare(){
+    try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return false;if(!ctx)ctx=new A();
+      const resumed=ctx.resume();loading||=loadRecordings().catch(()=>{loading=null;});
+      await Promise.all([resumed,loading]);return ctx.state==='running';
+    }catch{return false;}
+  }
   function play(kind){
     stop();if(!ctx||ctx.state!=='running'||document.hidden)return;
-    const duration=kind==='pour'?durations.pour*(pourWindow.end-pourWindow.start)/1000:kind==='wheel'?.45:kind==='sip'?slurpSeconds:.2;
+    const clips=gardenRecordings[kind];
+    if(clips){
+      const buffer=recordings.get(clips[kind==='crunch'?bite%clips.length:0]);
+      if(!buffer)return; // No synthetic substitute or late playback after a missed cue.
+      if(kind==='crunch')bite++;
+      const source=ctx.createBufferSource(),gain=ctx.createGain();source.buffer=buffer;gain.gain.value=.8;
+      source.connect(gain);gain.connect(ctx.destination);voice=source;
+      source.onended=()=>{source.disconnect();gain.disconnect();if(voice===source)voice=null;};source.start();return;
+    }
+    const duration=kind==='pour'?durations.pour*(pourWindow.end-pourWindow.start)/1000:kind==='wheel'?.45:.2;
     const source=ctx.createBufferSource(),b=ctx.createBuffer(1,Math.ceil(ctx.sampleRate*duration),ctx.sampleRate),data=b.getChannelData(0);
     if(kind==='pour')fillPourSound(data,ctx.sampleRate);
-    else if(kind==='sip')fillSlurpSound(data,ctx.sampleRate);
     else for(let i=0;i<data.length;i++){const t=i/ctx.sampleRate,w=Math.sin(Math.PI*t/duration)**2;
-      data[i]=w*(kind==='wheel'?.4*Math.sin(2*Math.PI*(420*t+25*Math.sin(t*14))):kind==='wood'?(Math.random()*2-1)*Math.exp(-t*22):(Math.random()*2-1)*(.5+.3*Math.sin(t*(kind==='sip'?140:60))));}
+      data[i]=w*(kind==='wheel'?.4*Math.sin(2*Math.PI*(420*t+25*Math.sin(t*14))):kind==='wood'?(Math.random()*2-1)*Math.exp(-t*22):(Math.random()*2-1)*(.5+.3*Math.sin(t*60)));}
     source.buffer=b;const filter=ctx.createBiquadFilter(),gain=ctx.createGain();filter.type='bandpass';filter.frequency.value=kind==='wood'?600:kind==='wheel'?650:1300;filter.Q.value=.8;gain.gain.value=.035;
     if(kind==='pour'){filter.type='lowpass';filter.frequency.value=2400;filter.Q.value=.55;gain.gain.value=.028;}
-    if(kind==='sip'){filter.frequency.value=1250;filter.Q.value=1.8;gain.gain.value=.038;}
     source.connect(filter);filter.connect(gain);gain.connect(ctx.destination);voice=source;source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();if(voice===source)voice=null;};source.start();
   }
   return {prepare,play,stop};
@@ -150,12 +167,13 @@ export function createAraucaniaPlay(habitat,onChange=()=>{}){
     if(kind==='eat'&&servings>=3){servings=0;updateState();}
     const action=build(piece,kind);if(action.invalid){action.restore();return false;}
     if(reduced.matches){action.finish();action.restore();updateState();onChange();return true;}
-    run={...action,started:performance.now(),last:0,played:false};const current=run;habitat.dataset.gardenActivity=kind;
-    Promise.resolve(sound.prepare()).catch(()=>{});
+    run={...action,started:performance.now(),last:0,played:false,ready:!gardenRecordings[action.soundKind]};const current=run;habitat.dataset.gardenActivity=kind;
+    // Let the first bite/sip start with its recording, including on a cold cache.
+    Promise.resolve(sound.prepare()).finally(()=>{if(run===current&&!current.ready){current.ready=true;current.started=performance.now();}});
     function tick(now){
       if(run!==current)return;if(document.hidden||!current.checks.every(visible)){cancel();return;}
       if(current.ending){const strength=1-ease((now-current.ending)/180);current.frame(current.last,strength);if(strength===0){const next=pending;cancel();if(next&&visible(next))launch(next);return;}}
-      else{const t=clamp((now-current.started)/durations[kind]);current.last=t;current.frame(t,1);if(kind==='eat'){const bites=breadBites.filter(at=>t>=at).length;if(bites>(current.bitesPlayed||0)){current.bitesPlayed=bites;sound.play(current.soundKind);}}else if(t>=current.soundAt&&!current.played){current.played=true;sound.play(current.soundKind);}if(t===1){current.finish();cancel();return;}}
+      else if(current.ready){const t=clamp((now-current.started)/durations[kind]);current.last=t;current.frame(t,1);if(kind==='eat'){const bites=breadBites.filter(at=>t>=at).length;if(bites>(current.bitesPlayed||0)){current.bitesPlayed=bites;sound.play(current.soundKind);}}else if(t>=current.soundAt&&!current.played){current.played=true;sound.play(current.soundKind);}if(t===1){current.finish();cancel();return;}}
       raf=requestAnimationFrame(tick);
     }raf=requestAnimationFrame(tick);return true;
   }
