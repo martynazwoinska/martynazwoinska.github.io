@@ -6,8 +6,8 @@ This file records approved decisions and the verified implementation state. Alwa
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 20 left to check in the current interaction
-pass and 11 completed, including the published Dois Rios revision.
+It tracks all 31 active scenes: 19 left to check in the current interaction
+pass and 12 completed, including the published Nambucca revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
@@ -50,7 +50,13 @@ and Dois Rios research dossier. No files deleted. Homepage and Cabinet untouched
 Martyna explicitly approved the final contextual preview, English-only labels
 and Tiny surprise on 2026-09-08 and requested deployment. The approved runtime
 files are unchanged. Implementation is on `codex/kauai-recording-scene`, based
-on `290250a`. Publication verification is pending. Brazil remains live at `8cbf580`.
+on `290250a`. Commit `80310a1` was pushed to `main`. Pages run `34264416595`
+succeeded. All six changed/new public runtime files returned HTTP 200 and
+matched local text after line-ending normalization. Live checks confirmed
+accessories initially off, six rendered props, five completed painting strokes,
+Home reset, male flower pressing and Escape cancellation. No browser warnings,
+errors or horizontal overflow were reported. The live scene was visually
+inspected. Brazil remains live at `8cbf580`.
 
 Six independently drawn props, original short foley and a shared controller
 replace the old QG2814 objects. The approved garden image is untouched. Only one
@@ -78,8 +84,8 @@ Created: `game-of-worms/nambucca-art.js`, `nambucca-play.js`,
 `nambucca-audio.js`, and `scripts/check-nambucca.cjs`.
 Changed: Game accessory dispatch, game controller and page module version,
 this status file, art catalogue, Nambucca dossier and scene review checklist.
-No files deleted. Homepage and Cabinet untouched. The checklist retains
-Nambucca as approved and awaiting publication, with 19 other scenes still waiting.
+No files deleted. Homepage and Cabinet untouched. The checklist marks Nambucca
+complete, with 19 other scenes still waiting. Ho Chi Minh City is next to review.
 
 ### Panama recorded scissors sound, 2026-09-08
 

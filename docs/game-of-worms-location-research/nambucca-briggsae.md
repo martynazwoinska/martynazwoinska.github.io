@@ -7,7 +7,8 @@ Last updated: 2026-09-08
 Status: Martyna approved the final contextual preview and requested deployment
 on 2026-09-08, acknowledging the full-page capture and manual listening limits.
 Approved English-only labels: Flower presses, Rock painting, Painting aprons.
-Publication verification is tracked in PROJECT_STATUS.md.
+Published at `80310a1`. Pages run `34264416595`, public-file comparisons and
+live-browser checks passed. Full details are in PROJECT_STATUS.md.
 
 The approved garden painting stays unchanged. The new local implementation
 replaces the old static presses, plates and DNA cards:
