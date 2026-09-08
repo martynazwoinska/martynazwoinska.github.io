@@ -1,4 +1,31 @@
-# Araucanía eating and drinking recordings
+# Game sound recordings
+
+## Panama scissors
+
+Source: [Scissors by Joseph SARDIN, BigSoundBank sound 0008](https://bigsoundbank.com/scissors-s0008.html).
+The creator describes three closures, three opening/closing actions and one
+short closure. This excerpt uses the final short closure, without layering in
+synthetic noise. The recording is of scissors, not cutting a leaf.
+
+The source page and [licence](https://bigsoundbank.com/licenses.html) were checked
+on 2026-09-08. They permit editing and redistribution under CC0 1.0.
+Public source: `https://bigsoundbank.com/UPLOAD/mp3/0008.mp3`.
+Source SHA-256: `d87757bca6d6a832a2c43f34fcddfda89d3ec85da5dfac33e8c4ce62060503b2`.
+
+Production: `panama-scissor-snip.wav`, 35324 bytes, mono 44100 Hz PCM16.
+Decoded-source excerpt: 11.565 s for 0.400 s. Linear 4 ms attack and 35 ms
+release fades, with gain 1.82 (peak approximately -8 dBFS). No pitch shift,
+reverb, repeated cuts or synthetic layers. Production SHA-256:
+`77c32b252fcac15bd1bd2888518261704dea6a3f89628a5c76324ed5b669a868`.
+Playback gain is 0.8. The cue begins at 1285 ms so its strongest transient,
+90 ms into the excerpt, coincides with the visual cut at 1380 ms.
+
+The 35 KB clip loads and decodes on the first cutting gesture, then is reused.
+A missed loading deadline is silent, with no late playback or noise substitute.
+Escape, other activities and page hiding stop it. Reduced motion stays silent.
+The untouched download and decoded source are in ignored `tmp/panama-audio/`.
+
+## Araucanía eating and drinking recordings
 
 Source licences checked on 2026-09-08. Both recordings use
 [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/), which permits

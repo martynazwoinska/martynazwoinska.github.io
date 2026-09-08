@@ -42,7 +42,7 @@ function validatePaths(root){
   const mod=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/panama-leaf-cutting.js')));
   for(let ms=0;ms<=5700;ms+=10){const s=mod.leafCutFrame(ms);assert(Object.values(s).every(v=>typeof v==='boolean'||Number.isFinite(v)));if(ms<1380)assert(!s.cut);if(ms<3280)assert.equal(s.carry,0);}
   assert(mod.leafCutFrame(5700).done);assert.equal(mod.leafCutFrame(900,true).done,true);assert.equal(mod.leafCutFrame(400,true).carry,0);
-  for(const rate of [22050,44100,48000]){const a=new Float32Array(Math.ceil(rate*.42));let seed=17;mod.fillLeafSnip(a,rate,()=>{seed=(seed*16807)%2147483647;return seed/2147483647;});assert(a.every(Number.isFinite));assert(Math.max(...a.map(Math.abs))<.8);assert.equal(a[0],0);assert(Math.abs(a.at(-1))<.0001);assert(a.some(v=>Math.abs(v)>.1));}
+  assert.equal(mod.leafSnipAt,1285,'Recorded blade friction begins before full closure');
   for(const extraScale of [.65,1,1.6]){
     const root=new Element('g'),pieces=[];
     for(const [male,transform]of [[false,`translate(231 31) rotate(150) scale(${.55*extraScale})`],[true,'translate(156 58) rotate(-18) scale(.56)']]){

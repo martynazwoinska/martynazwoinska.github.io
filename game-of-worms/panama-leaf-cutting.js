@@ -76,16 +76,8 @@ export function leafCutFrame(ms,reduced=false){
     carry:ease((ms-3280)/2100),returning:ease((ms-5050)/500)};
 }
 
-// A short metal snip followed by a dry leaf rustle, generated here without samples.
-export function fillLeafSnip(data,rate,random=Math.random){
-  for(let i=0;i<data.length;i++){
-    const t=i/rate,noise=random()*2-1;
-    const shear=Math.sin(Math.PI*clamp(t/.14))**2*Math.exp(-t*15);
-    const click=t>.115?Math.exp(-(t-.115)*100):0;
-    const rustle=t>.15?Math.sin(Math.PI*clamp((t-.15)/.26))**2*.12:0;
-    data[i]=noise*(shear*.45+click*.28+rustle)+Math.sin(t*2*Math.PI*2900)*click*.08;
-  }
-}
+// The recording's strongest transient is 90 ms in, just before full closure.
+export const leafSnipAt=1285;
 
 export function resetLeafCut(habitat){
   habitat.querySelector('[data-leaf-tip]')?.setAttribute('opacity',1);
@@ -126,7 +118,7 @@ export function createLeafCutRun({habitat,root,effects,remember,pin,reduced,snip
     frame(ms){
       const s=leafCutFrame(ms,reduced);
       if(s.done)return true;
-      if(!sounded&&s.cut){sounded=true;if(!reduced&&ms<1650)snip();}
+      if(!sounded&&ms>=leafSnipAt){sounded=true;if(!reduced&&ms<1425)snip();}
       const moving=new DOMMatrix().translate(originalScissors.e+(target.e-originalScissors.e)*s.reach,originalScissors.f+(target.f-originalScissors.f)*s.reach).rotate((originalAngle+deltaAngle*s.reach)*180/Math.PI).scale(ownScale);
       scissors.setAttribute('transform',scissorParent.multiply(moving).toString());
       halves.forEach((n,i)=>n.setAttribute('transform',`rotate(${(i?15:-15)*(1-s.close)})`));

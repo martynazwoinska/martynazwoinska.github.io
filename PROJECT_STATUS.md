@@ -4,6 +4,30 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Panama recorded scissors sound, 2026-09-08
+
+Replaces the rejected synthesized hiss with a single 400 ms real scissors
+closure from Joseph SARDIN / BigSoundBank (CC0). Source, excerpt, processing
+and hashes are in `game-of-worms/assets/audio/SOURCES.md`. The clip plays at
+natural pitch and quiet gain, with its strongest transient on blade closure.
+Loading is gesture-only, cached and retryable. Late downloads cannot cause
+late playback. Cancellation and reduced-motion silence are preserved.
+The drawings, object positions, animation paths, labels and other sounds are
+unchanged. The old noise generator is removed. No public prose was changed.
+
+Created: `game-of-worms/panama-leaf-audio.js`,
+`game-of-worms/assets/audio/panama-scissor-snip.wav`, and
+`scripts/check-panama-leaf-audio.cjs`. Changed: this status file, audio source
+notes, `panama-play.js`, `panama-leaf-cutting.js`, its existing regression test,
+and the cache references in `game.js`, `index.html`, `accessory-designs.js` and
+`panama-refinement.js`. No files deleted. Only Game files, tests and supporting
+documentation are touched. Martyna approved committing and deploying this
+exact revision. Audio loading, levels, timing, cancellation and retry tests
+pass, along with the Panama geometry, interaction, labels and visit-reset
+checks. Local browser completion, replay, Home and Escape pass without
+console errors. Drawings and responsive layout are unchanged. Physical-device
+and subjective speaker checks remain manual.
+
 ### Panama leaf cutting, 2026-09-08
 
 Requested replacement for the forest-census fans. The primary worm has original

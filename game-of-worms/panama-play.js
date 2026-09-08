@@ -1,4 +1,5 @@
-import { createLeafCutRun, fillLeafSnip, resetLeafCut, LEAF_FAMILY } from './panama-leaf-cutting.js?v=20260908-leaf-1';
+import { createLeafCutRun, resetLeafCut, LEAF_FAMILY } from './panama-leaf-cutting.js?v=20260908-snip-2';
+import { createLeafCutSound } from './panama-leaf-audio.js?v=20260908-snip-2';
 const NS='http://www.w3.org/2000/svg';
 const kinds={'qg2726-gustavia-flower-headpiece':'flower','qg2726-flower-bait':'bait',[LEAF_FAMILY]:'leaf'};
 const clamp=x=>Math.max(0,Math.min(1,x));
@@ -37,8 +38,9 @@ function glove(g){
 export function createPanamaPlay(habitat){
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   let active=null,raf=0,audio=null,sound=null;
+  const leafSound=createLeafCutSound(()=>audio);
   const handles=piece=>!!kinds[piece?.dataset.accessoryFamily];
-  function stopSound(){if(sound){try{sound.stop();}catch{}sound=null;}}
+  function stopSound(){leafSound.stop();if(sound){try{sound.stop();}catch{}sound=null;}}
   function cancel(complete=false){
     cancelAnimationFrame(raf);raf=0;stopSound();
     if(!active)return;
@@ -51,22 +53,22 @@ export function createPanamaPlay(habitat){
   }
   function playSound(kind){
     if(reduced.matches)return;
+    if(kind==='snip'){leafSound.play();return;}
     try{
       const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;
       audio??=new Audio();audio.resume().catch(()=>{});
       const gain=audio.createGain(),filter=audio.createBiquadFilter();let source;
-      const duration=kind==='bait'?3.2:kind==='snip'?.42:1;
+      const duration=kind==='bait'?3.2:1;
       if(kind==='bait'){
         source=audio.createOscillator();source.type='sawtooth';source.frequency.setValueAtTime(70,audio.currentTime);source.frequency.linearRampToValueAtTime(125,audio.currentTime+.7);
         filter.type='lowpass';filter.frequency.value=650;
       }else{
         source=audio.createBufferSource();const buffer=audio.createBuffer(1,Math.ceil(audio.sampleRate*duration),audio.sampleRate),data=buffer.getChannelData(0);
-        if(kind==='snip')fillLeafSnip(data,audio.sampleRate);
-        else for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.sin(i/audio.sampleRate*Math.PI*3.2)**2;
-        source.buffer=buffer;filter.type='lowpass';filter.frequency.value=kind==='snip'?5500:1600;
+        for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.sin(i/audio.sampleRate*Math.PI*3.2)**2;
+        source.buffer=buffer;filter.type='lowpass';filter.frequency.value=1600;
       }
-      const now=audio.currentTime,level=kind==='snip'?.14:kind==='bait'?.025:.035;
-      gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(level,now+(kind==='snip'?.006:.18));gain.gain.setValueAtTime(level,now+duration-(kind==='snip'?.025:.25));gain.gain.linearRampToValueAtTime(0,now+duration);
+      const now=audio.currentTime,level=kind==='bait'?.025:.035;
+      gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(level,now+.18);gain.gain.setValueAtTime(level,now+duration-.25);gain.gain.linearRampToValueAtTime(0,now+duration);
       source.connect(filter);filter.connect(gain);gain.connect(audio.destination);sound=source;
       source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();if(sound===source)sound=null;};source.start();source.stop(now+duration);
     }catch{}
@@ -86,7 +88,7 @@ export function createPanamaPlay(habitat){
     for(const n of [piece,art])pin(n);
     if(kind==='leaf'){
       // Unlock audio inside the input gesture. The snip itself follows blade contact.
-      try{const Audio=window.AudioContext||window.webkitAudioContext;if(Audio&&!reduced.matches){audio??=new Audio();audio.resume().catch(()=>{});}}catch{}
+      try{const Audio=window.AudioContext||window.webkitAudioContext;if(Audio&&!reduced.matches){audio??=new Audio();audio.resume().catch(()=>{});leafSound.prepare();}}catch{}
       const leafRun=createLeafCutRun({habitat,root,effects,remember,pin,reduced:reduced.matches,snip:()=>playSound('snip')});run.leafRun=leafRun;
       if(!leafRun){cancel();return false;}
       const began=performance.now();
