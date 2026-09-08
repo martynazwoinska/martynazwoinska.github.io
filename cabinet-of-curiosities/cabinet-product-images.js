@@ -52,6 +52,10 @@
   for (const [id, photo] of Object.entries(additional)) {
     images[id] = Object.freeze(photo);
   }
+  // Small list-only derivatives; preserve original downloads and approved windows.
+  for (const [id, photo] of Object.entries(images)) {
+    images[id] = Object.freeze({...photo, thumbnail: `assets/loading-v120/${id}.webp`});
+  }
   window.CABINET_PRODUCT_IMAGES = Object.freeze(images);
   // List-only display outlines on a 320 × 320 object-fit:contain image plane.
   // Original image bytes, wrapper colours and the Cabinet alpha layers are untouched.

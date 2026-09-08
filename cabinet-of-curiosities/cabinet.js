@@ -440,7 +440,7 @@
       frame.setAttribute('aria-hidden', 'true');
       const img = document.createElement('img');
       img.className = 'collection-product-photo';
-      img.src = product.src;
+      img.src = product.thumbnail || product.src;
       img.alt = '';
       img.width = 64;
       img.height = 64;

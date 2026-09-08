@@ -68,7 +68,8 @@
     $('.map-regions').hidden = group !== 'online';
     dialog.querySelectorAll('[data-region]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.region === region)));
     const choices = places.filter(p => group === 'online' ? (p.group === 'online' || (p.onlineName && p.shop)) && (p.region || 'sweden') === region : p.group === group);
-    if (group === 'makers') choices.sort((a, b) => a.name.localeCompare(b.name, 'sv'));
+    const choiceName = p => group === 'online' ? (p.onlineName || p.name) : p.name;
+    if (group === 'makers' || group === 'online') choices.sort((a, b) => choiceName(a).localeCompare(choiceName(b), 'sv'));
     select.replaceChildren(...choices.map(p => new Option(group === 'uppsala' ? (physical.indexOf(p)+1)+' '+p.name : (group === 'online' ? (p.onlineName || p.name) : p.name),p.id)));
     if (remembered[selectionKey()]) select.value = remembered[selectionKey()];
     showPlace();

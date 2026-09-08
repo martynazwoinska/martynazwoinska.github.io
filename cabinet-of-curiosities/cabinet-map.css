@@ -21,7 +21,7 @@
 .map-drawer-motion { position:absolute; inset:0; z-index:9; pointer-events:none; visibility:hidden; }
 .map-drawer-cavity,.map-drawer-front { position:absolute; left:27%; top:85.4%; width:48.1%; height:12.6%; }
 .map-drawer-cavity { background:#130e0a; border:2px solid #35271b; box-shadow:inset 0 8px 15px #000; }
-.map-drawer-front { background:url('assets/cabinet-study-unified-v2.png') 52.023% 97.712% / 207.9% 793.65% no-repeat; transform-origin:50% 0; }
+.map-drawer-front { background:url('assets/loading-v120/cabinet-study-unified-v2.webp') 52.023% 97.712% / 207.9% 793.65% no-repeat; transform-origin:50% 0; }
 .map-drawer-opening .map-drawer-motion { visibility:visible; }
 .map-drawer-opening .map-drawer-front { animation:drawer-slide 900ms cubic-bezier(.28,.08,.28,1) forwards; }
 .map-drawer-opening .map-drawer { animation:paper-slide 900ms cubic-bezier(.28,.08,.28,1) forwards; }
