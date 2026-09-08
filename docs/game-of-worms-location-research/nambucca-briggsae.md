@@ -2,6 +2,34 @@
 
 Last updated: 2026-08-10
 
+## Interaction follow-up proposal, 2026-09-08
+
+Status: design discussion only. Martyna asked to begin Nambucca after publishing
+Brazil. No new objects, labels or public prose are approved yet.
+
+The current garden painting remains suitable and must stay unchanged. Presses,
+plates and DNA cards are all static. Proposed replacement direction:
+
+1. Keep flower pressing, with a properly constructed working press. The larger
+   worm closes the press while the male removes a flattened flower from his
+   separate specimen sheet. This is imaginative flower-related play, not a
+   claim about actual collection equipment.
+2. Replace culture plates with rock painting. The larger worm paints a flower
+   on an irregular stone and the male paints a curved worm on his smaller stone.
+   Brush contact must reveal the paint along its real path, with a short quiet
+   brushing sound. No borrowed public artworks or lettering.
+3. Replace DNA cards with painting aprons, fitted separately to each body and
+   kept static. They provide a quiet worn accessory alongside the two activities.
+
+The V-Wall at Nambucca Heads has rocks painted by visitors and residents:
+[Visit NSW, V-Wall Outdoor Gallery](https://www.visitnsw.com/destinations/north-coast/coffs-harbour-area/nambucca-heads/attractions/v-wall-outdoor-gallery).
+This is town-wide context, not the location where QG2814 was collected. The
+collection record remains the CaeNDR flower sample documented below.
+
+Only one activity should run at a time. Preserve individual dragging, scaling,
+Home reset, keyboard activation and reduced motion. Keep aprons and hands clear
+of the faces. Review final construction and full-size placement before approval.
+
 ## Exact record
 
 The CaeNDR reference-isotype page and its embedded strain records specify:

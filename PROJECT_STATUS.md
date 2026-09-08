@@ -7,15 +7,19 @@ This file records approved decisions and the verified implementation state. Alwa
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
 It tracks all 31 active scenes: 20 left to check in the current interaction
-pass, 10 completed, and Dois Rios approved for publication.
+pass and 11 completed, including the published Dois Rios revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
-### Dois Rios jackfruit and music preview, 2026-09-08
+### Dois Rios jackfruit and music publication, 2026-09-08
 
 Martyna explicitly requested deployment of the existing Brazil preview on
-2026-09-08, approving the displayed artwork and English-only wording. Publication
-verification is pending. Replaces the three active EG5612 accessory families with
+2026-09-08, approving the displayed artwork and English-only wording. Commit
+`8cbf580` was pushed to `main` from `codex/kauai-recording-scene`. Pages run
+`34257605054` succeeded. All six changed/new public runtime files returned HTTP
+200 and matched local text after line-ending normalization. The live browser
+loaded all six accessories, started the duet by keyboard, cancelled it with
+Escape and reported no errors or horizontal overflow. Replaces the three active EG5612 accessory families with
 sticky jackfruit, Brazilian music and floral neckerchiefs. The male and larger
 worm use separately constructed props. Music and fruit actions share one
 controller and cannot run together. The approved forest image is unchanged.
@@ -40,6 +44,14 @@ Files added: `game-of-worms/dois-rios-art.js`, `dois-rios-play.js`,
 `game-of-worms/game.js`, `game-of-worms/index.html`,
 `scripts/check-six-location-accessories.cjs`, this status file, the art catalogue
 and Dois Rios research dossier. No files deleted. Homepage and Cabinet untouched.
+
+### Nambucca Heads next review, 2026-09-08
+
+Active design discussion, not an approved replacement or new runtime change.
+Keep the approved garden painting. The current presses, culture plates and
+DNA cards were inspected individually. The proposed direction is flower
+pressing, V-Wall-inspired rock painting and quiet painting aprons. See the
+Nambucca dossier and queue entry. Only this scene was reviewed after Brazil.
 
 ### Panama recorded scissors sound, 2026-09-08
 
