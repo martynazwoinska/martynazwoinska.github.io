@@ -1,5 +1,13 @@
 # Game of Worms art catalogue
 
+Edinburgh bagpipe interaction, 2026-09-08: preserved the resting instrument
+drawings. Tap/Enter/Space lifts the blowpipe to the mouth for an original short
+phrase, with bag compression and temporary note-linked finger pads. Each worm
+has a distinct phrase. Attack/release envelopes were refined to soften sound
+transitions. Position and scale restore exactly. Direct responsive views were
+checked, but full-page proofs are incomplete because the capture tool produced
+duplicated/blank sections. See PROJECT_STATUS.md for the verification limits.
+
 Ahmedabad spacing, 2026-09-08: user-requested placement correction only.
 Male and matching waistcoat moved left/up, pair moved slightly right/up.
 Smaller digging translations preserve separation from the primary tail and

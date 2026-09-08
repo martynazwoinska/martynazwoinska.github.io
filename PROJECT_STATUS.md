@@ -4,6 +4,26 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Edinburgh playable bagpipes, 2026-09-08
+
+User requested implementation and deployment. Each existing bagpipe plays a
+different original short synthesized phrase on tap or Enter/Space. Three
+continuous drones accompany the chanter. The mouthpiece lifts to the mouth,
+the bag gently compresses, and temporary finger pads follow the note changes.
+The approved resting drawings, kilts, telescopes and public copy are unchanged.
+Second tap, Escape, movement, hiding the accessory or changing scene stops it.
+Reduced motion keeps the instrument still while sound remains user-triggered.
+
+Paired-score, motion, audio lifecycle and regression tests pass. Browser checks
+passed pointer/keyboard playback, second activation, Escape, toggle cleanup,
+Home and exact custom position/scale restoration after playback. Direct scene
+views and overflow checks cover 360, 768, 1024 and 1440 px, with no page errors.
+Full-page captures were attempted at all four widths (345x2645, 753x2448,
+1009x1998, 1425x1942), but the browser capture tool duplicated sections and
+left blank areas. These are invalid full-page proofs, not a completed visual
+QA gate. Physical phones, Safari and subjective speaker/audio quality remain
+manual checks. No dependency or sampled recording was added.
+
 ### Ahmedabad pair spacing, 2026-09-08
 
 Requested adjustment and deployment after mobile screenshots. Moves the pair

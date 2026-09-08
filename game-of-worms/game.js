@@ -13,6 +13,7 @@ import { mountLiveLoupes } from "./live-loupes.js?v=20260907-loupe-overlap-1";
 import { createTrivandrumWatering } from "./trivandrum-watering.js?v=20260907-shower-1";
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260907-cryo-sound-1";
 import { createBaliGongs, GONG_FAMILY } from "./bali-gongs.js?v=20260906-gongs-1";
+import { createEdinburghPipes } from "./edinburgh-pipes.js?v=20260909-pipes-1";
 import { createBaliCacao } from "./bali-cacao.js?v=20260908-crack-1";
 import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-fans-1";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
@@ -691,6 +692,7 @@ function renderTabs() {
 let unmountLiveLoupes = () => {};
 const n2CryoFlight = createN2CryoFlight(els.habitat);
 const baliGongs = createBaliGongs(els.habitat);
+const edinburghPipes = createEdinburghPipes(els.habitat);
 const baliCacao = createBaliCacao(els.habitat);
 const ahmedabadFans = createAhmedabadFans(els.habitat);
 const canberraCafe = createCanberraCafe(els.habitat);
@@ -699,6 +701,7 @@ const ahmedabadHands = createAhmedabadHands(els.habitat);
 const trivandrumWatering = createTrivandrumWatering(els.habitat);
 const panamaPlay = createPanamaPlay(els.habitat);
 function renderSpecies(item, place) {
+  edinburghPipes.cancel();
   panamaPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.clear();
@@ -1180,6 +1183,7 @@ function saveActiveDoodle() {
 }
 
 function syncDrawingMode() {
+  edinburghPipes.cancel();
   panamaPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.clear();
@@ -1297,6 +1301,7 @@ function syncFittedHeadwearMotion(accessory) {
 }
 
 function toggleAccessory(id, force) {
+  edinburghPipes.cancel();
   panamaPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.clear();
@@ -1363,7 +1368,7 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
+      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
       addAccessoryHitTarget(piece);
     });
   });
@@ -1451,7 +1456,7 @@ function finishAccessoryDrag(event) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") baliCacao.drop(piece);
   }
-  else if (event.type === "pointerup") { turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); }
+  else if (event.type === "pointerup") { edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1460,6 +1465,9 @@ function moveActiveAccessoryPointer(event) {
   if (!activeAccessoryDrag || !activeAccessoryDrag.pointers.has(event.pointerId)) return;
   const { id, wormPart, piece } = activeAccessoryDrag;
   event.preventDefault();
+  if(edinburghPipes.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
+    edinburghPipes.cancel();activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
+  }
   activeAccessoryDrag.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
   if (activeAccessoryDrag.pinch && activeAccessoryDrag.pointers.size === 2) {
     const [first, second] = [...activeAccessoryDrag.pointers.values()];
@@ -1532,6 +1540,7 @@ function wireAccessoryPieces() {
       if (ishigakiPlay.active) return;
       if (n2CryoFlight.active) return;
       if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
+      if(!edinburghPipes.handles(piece))edinburghPipes.cancel();
       panamaPlay.cancel();
       trivandrumWatering.cancel();
       if (ahmedabadHands.active) ahmedabadHands.cancel();
@@ -1576,6 +1585,10 @@ function wireAccessoryPieces() {
       if (ishigakiPlay.active) { if(event.key === "Escape" || event.key === "Home")ishigakiPlay.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
       if (n2CryoFlight.active) { if(event.key === "Escape" || event.key === "Home")n2CryoFlight.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
       if (piece.getAttribute("tabindex") !== "0" || drawingEnabled || !activeWardrobe().has(id)) return;
+      if ((event.key === "Enter" || event.key === " ") && edinburghPipes.handles(piece)) {
+        event.preventDefault();if(!event.repeat)edinburghPipes.start(piece);return;
+      }
+      if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) edinburghPipes.cancel();
       if ((event.key === "Enter" || event.key === " ") && panamaPlay.handles(piece)) {
         event.preventDefault(); if(!event.repeat)panamaPlay.start(piece); return;
       }

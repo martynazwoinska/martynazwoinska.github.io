@@ -1,5 +1,24 @@
 # Edinburgh location research and art brief
 
+## Playable bagpipes, 2026-09-08
+
+Tap an enabled instrument or press Enter/Space to play. The two worms have
+different original short phrases, synthesized locally with a continuous
+chanter and three drones. No performance recording or existing tune is copied.
+The mouthpiece moves to the mouth, the bag compresses gently and small finger
+pads change with the notes. Existing instrument paths and resting transforms
+are restored after playback, including user position and scale settings.
+Second activation, Escape, dragging, toggling, scene changes and hidden pages
+stop the action. Reduced motion leaves the drawing still.
+
+Instrument construction reference used for the one-chanter/three-drone model:
+[North Georgia Piper, About the bagpipes](https://www.northgeorgiapiper.com/about-the-bagpipes/).
+This is a brief synthesized musical effect, not a claim of a recorded piper.
+No new public labels or changes to the kilts, telescopes or background.
+
+Checks and limitations are recorded in PROJECT_STATUS.md. The browser's
+full-page capture output was defective, so it was rejected as a final proof.
+
 ## Local accessory refinement, 2026-09-05
 
 The kilt and follow-up telescope revisions are approved for publication.
