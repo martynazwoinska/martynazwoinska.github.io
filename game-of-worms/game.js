@@ -1358,6 +1358,21 @@ function syncAccessories() {
   selectAvailableAccessoryForSizing();
 }
 
+function resetVisitAccessoryVisibility() {
+  if (activeAccessoryDrag) {
+    finishAccessoryDrag({ type: "pointercancel", pointerId: activeAccessoryDrag.pointers.keys().next().value });
+  }
+  if (activeDoodle) saveActiveDoodle();
+  // Clear every location's switches, including scenes visited earlier this visit.
+  // Keep sizes, positions, drawings and species progress intact in a cached page.
+  wardrobes.clear();
+  drawingModes.clear();
+  drawingEnabled = false;
+  selectedAccessorySizeTarget = null;
+  syncDrawingMode();
+  syncAccessories();
+}
+
 function refreshAccessoryPieceControls() {
   document.querySelectorAll(".accessory-piece[data-worm-part]").forEach(piece => {
     piece.querySelector(":scope > .accessory-hit-target")?.remove();
@@ -1930,7 +1945,13 @@ updateSelectedControls();
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) stopNarration();
 });
-window.addEventListener("pagehide", () => stopNarration());
+window.addEventListener("pagehide", () => {
+  stopNarration();
+  resetVisitAccessoryVisibility();
+});
+window.addEventListener("pageshow", event => {
+  if (event.persisted) resetVisitAccessoryVisibility();
+});
 
 try {
   drawMap();

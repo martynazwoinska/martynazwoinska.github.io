@@ -4,6 +4,23 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Accessories off at the start of each visit
+
+Fresh loads already initialize empty per-location wardrobes, hidden accessory
+groups and unpressed buttons, without restoring switches from browser storage.
+The new lifecycle reset also switches off every location before leaving and
+after a Back/Forward-cache restoration. Freestyle drawing mode switches off too.
+Tab visibility changes and movement between scenes within the same visit keep
+the visitor's selections. Cached-page sizes, positions, drawings and species
+progress are preserved. No artwork or public copy changed.
+`scripts/check-accessory-visit.cjs` checks initial state, every-location reset,
+Back/Forward events, tab-switch preservation and active-gesture cleanup.
+Local browser checks passed for all 31 locations, all four N2 slots, the three
+Araucanía slots, drawing mode, leaving/returning, and reload. Choices survived
+scene changes within the same visit. No console errors or horizontal overflow.
+The browser's history test reloaded the document, so the persisted-cache branch
+is covered by the lifecycle regression test. Physical-device testing is pending.
+
 ### Araucanía recorded bread bites and mate sip
 
 Requested after b14f759: replaced the rejected synthesized eating and drinking
