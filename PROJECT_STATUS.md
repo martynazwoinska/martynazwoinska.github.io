@@ -4,6 +4,63 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Araucanía compost work and Chilean break, deployment requested
+
+Requested by Martyna after ee446f1. The three accessory slots now contain a
+wheelbarrow/fork pair, mate/kettle pair and rolling-pin/bread pair. Original
+SVG drawings live in `araucania-art.js`, with one activity controller in
+`araucania-play.js`. It coordinates tipping, fork work, a male wheelbarrow ride,
+pouring, shared mate, rolling and snacks. A 180 ms return-to-rest
+handover prevents competing activities. Gesture-only foley uses one sound
+source at a time. Home resets the selected family, Escape and scene changes
+cancel, and reduced motion applies state changes without animated travel.
+
+The refinement pass enlarged all six objects, revised the wheel and enamel
+edges, fitted the male inside the tray, shortened reaches by moving the cup
+and dough boards, and separated preparation from the compost. Existing user
+position and size are preserved. Background and scientific copy are unchanged.
+English-only buttons: `Compost work`, `Mate`, `Sopaipillas`. Paired
+names: `Wheelbarrow`, `Compost fork`, `Mate`, `Kettle`, `Rolling pin`, `Sopaipillas`.
+Martyna requested deployment after the final bread-eating refinement.
+
+Placement correction after user review: wheelbarrow moved upward/right and the
+large food board moved below/left of it. Rolling now keeps the board in its food
+area. Sampled 15 tipping frames at each of 360, 768, 1024 and 1440 px, including
+visible falling particles: no food collision, covered labels or overflow.
+Added layout-clearance and stationary-rolling regression checks.
+
+Mate pouring audio correction: replaced the shared soil-like noise texture with
+a separate soft trickle and irregular short liquid resonances. Its 756 ms duration
+uses the same start/end interval as the visible stream. Other activity sounds,
+object drawings and placement are unchanged. Waveform fade/level checks at 44.1
+and 48 kHz and one-source interruption tests pass. Agent listening review was unavailable.
+
+Latest interaction correction: drinking mate uses a separate 320 ms straw-slurp
+effect for both worms. The male now has three ready-to-eat sopaipillas on his board,
+with no raw dough or cutter. Every tap brings one bread to his mouth immediately.
+The larger worm keeps the rolling action. Placement and single-activity control
+are preserved. English-only paired label changed from `Dough cutter` to `Sopaipillas`.
+
+Final eating refinement: a 3-second pickup, two visible bites and a final morsel,
+with pauses, chewing and three small crumbs. Each serving remains consumed after
+the hand returns. The three pieces are eaten in order, and the next tap on the
+empty board refills it for replay. Home also refills it. Cancellation restores
+the unfinished piece and the original smile. Bites, chewing, no covered labels
+and no overflow checked at 360/768/1024/1440 px. Custom size/position survives.
+Waveform, state, source-count, labels and Claremont regressions pass. The full-page
+capture fault persists (360 px request produced a distorted 345 × 2501 image).
+
+Final browser checks at 360, 768, 1024 and 1440 px found no horizontal overflow,
+out-of-scene default objects or covered scene labels. A scene-only pose adjustment
+raises the pair and removes the old forager tilt to reserve the caption strip.
+Checked activity handover, both drinking turns, pouring, food preparation, barrow
+ride, keyboard focus, cancellation, scene switching and preservation of custom
+size/position. Console errors: none. Geometry, interaction, audio-source and
+existing label/Claremont/six-location regression checks pass. Audio output has
+not been assessed by listening, and physical phones/Safari remain untested.
+The browser's full-page capture returns distorted composites, so viewport proofs
+and DOM bounds were used. A valid uncropped full-page proof remains outstanding.
+
 ### Consistent accessory-label capitalization, approved for deployment
 
 All 94 English-only accessory labels now start consistently with a capital

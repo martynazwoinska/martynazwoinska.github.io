@@ -6,6 +6,11 @@ This dossier is the evidence and review contract for the *Caenorhabditis elegans
 
 ## Evidence boundaries
 
+Preview placement correction: the wheelbarrow unloads to the right of both food
+boards. The larger board remains in its separate preparation area while rolling.
+Browser sampling across four viewport widths found no falling-compost collision
+with either board. This is a staging adjustment, not a change to the landscape.
+
 ### Representative collection record
 
 The current Game marker says `Araucanía, Chile` at -38.938, -72.151. Current CaeNDR data identify **JU4400**, formerly Ch41.7, at the marker's more precise coordinates:
@@ -67,6 +72,43 @@ The scene connects exact compost evidence to one coherent anonymised rural garde
 - There is no lake, dominant snow cone, araucaria forest or tourist overlook.
 
 ## Accessory evidence and design contract
+
+### Current requested replacement
+
+Martyna requested a pair working by the compost and sharing a Chilean-style
+break. The earlier equipment descriptions below are retained as history.
+`araucania-art.js` replaces the three runtime families with six original props:
+single-wheel steel barrow and four-tined fork, mate gourd and enamel kettle,
+wooden board with rolling pin and a smaller board of ready-cooked sopaipillas.
+The male eats directly on every tap. The larger worm rolls dough and can then
+take a finished bread. Mate drinking uses a brief straw-slurp. Human food and gardening
+arms are explicitly playful anthropomorphism, not nematode diet or anatomy.
+The final eating pass adds visible missing bites, chewing pauses and small crumbs.
+Servings stay consumed until Home or the next replay after the third piece.
+
+Structural and regional references, consulted for this revision:
+
+- [Chile Travel, Araucanía visit with mate and sopaipillas](https://apasionados.chile.travel/sin-categorizar/un-viaje-ancestral-5-experiencias-con-el-pueblo-mapuche-2/).
+- [Garant steel wheelbarrow](https://www.garant.com/en/products/wheelbarrow-steel-tray-6-cu-ft-01886): one pressed tray, single front wheel, frame braces, paired rear handles.
+- [Golden Art mate set](https://www.goldenart.com.ar/productos/set-de-mate-italia-color-blanco-3-piezas/): kettle handle, spout, lidded body and bombilla construction.
+- [Pauta sopaipilla preparation photographs](https://www.pauta.cl/cultura/2025/07/10/recetas-por-el-dia-de-la-sopaipilla-como-se-preparan.html): rolled dough, cutter and wooden rolling pin.
+
+No source illustration or photograph was copied into the Game. No community
+motif, costume, logo or claim of collection equipment is added. The supplied
+garden painting and all collection facts are unchanged.
+
+Tap or Enter/Space starts the selected prop. Wheelbarrow taps alternate tipping
+and a ride, the fork refills it. Mate taps alternate the drinking worm, and the
+kettle pours into the cup held between them. The larger worm alternates rolling
+and eating, while the male eats on every tap. One animation record and one short foley voice run at
+a time, with a brief return-to-rest transition when another action is chosen.
+Escape, dragging, resizing, hiding the page, drawing mode or a location change
+restore the scene. Home resets the focused family without resetting other
+accessory sizes or positions. Reduced motion skips the animated travel.
+
+Labels are English-only: `Compost work`,
+`Mate`, `Sopaipillas`. Individual names: `Wheelbarrow`, `Compost fork`, `Mate`,
+`Kettle`, `Rolling pin`, `Sopaipillas`.
 
 The accessories translate the exact substrate, a carefully bounded regional monitoring context and the recorded test-cross identification method into movable teaching objects. They are original mechanisms, not claimed local artefacts or official instruments.
 

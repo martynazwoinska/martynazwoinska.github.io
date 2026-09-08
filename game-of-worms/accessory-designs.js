@@ -1,4 +1,5 @@
 import { drawWormbook } from "./claremont-book-art.js?v=20260909-wormbook-4";
+import { drawAraucaniaWork, araucaniaLayouts } from "./araucania-art.js?v=20260909-araucania-bites-5";
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
 import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260905-tenerife-wings-4";
 import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-santeuil-fit-3";
@@ -36,7 +37,7 @@ const rows = [
   ["elegans", "Kauaʻi, Hawaiʻi", "Headphones", "xz1516-forest-bird-headphones", "Microphones", "xz1516-ohia-blossom-microphone", "Tape recorder", "xz1516-reel-to-reel-recorder"],
   ["elegans", "Australian Capital Territory", "Coffee & biscuits", "canberra-flat-white-cafe", "Napkins", "canberra-linen-napkins", "Cockatoos", "oconnor-cockatoo-cafe-raid"],
   ["elegans", "Claremont, California · ECA250", "Bookworm books", "eca250-bookworm-book", "Lemonade", "eca250-california-lemonade", "sunny reading glasses", "eca250-sunny-reading-glasses"],
-  ["elegans", "Araucanía, Chile", "compost sample buckets", "compost-labyrinth", "Llaima ashfall gauges", "ashfall-recorder", "reciprocal-cross plates", "test-cross-mechanism"],
+  ["elegans", "Araucanía, Chile", "Compost work", "ju4400-compost-work", "Mate", "ju4400-mate", "Sopaipillas", "ju4400-sopaipillas"],
   ["nigoni", "Trivandrum, Kerala · JU1325", "field loupe", "trivandrum-field-loupe", "garden watering can", "trivandrum-garden-watering-can", "sample tube", "trivandrum-sample-tube"],
   ["nigoni", "Praslin, Seychelles · YR106", "giant-tortoise shell costumes", "praslin-giant-tortoise-shell-costume", "black-parrot carnival caps", "praslin-black-parrot-carnival-cap", "Seychelles carnival bell bracelets", "praslin-seychelles-carnival-bell-bracelet"],
   ["nigoni", "São Tomé · JU2484", "São Tomé chocolate bars", "sao-tome-chocolate-bars", "birdsong music boxes", "sao-tome-birdsong-music-boxes", "begonia stained-glass parasols", "sao-tome-begonia-glass-parasols"],
@@ -6125,6 +6126,7 @@ function drawElegansFieldAccessory(group, item, companion) {
 
 function drawNamedAccessory(group, item, companion) {
   if (drawRefinedAccessory(group, item, companion)) return true;
+  if (drawAraucaniaWork(group, item, companion)) return true;
   if (drawKauaiRecording(group, item, companion)) return true;
   if (drawSanteuilRefinement(group, item, companion)) return true;
   if (drawBriggsaeFieldAccessory(group, item, companion)) return true;
@@ -6306,7 +6308,7 @@ function renderPiece(target, item, wormPart) {
     ,"qg2814-five-day-two-plate-relay": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
     ,"qg2814-18s-identity-ribbon-reader": { primary: [381, 258, .34, -1], companion: [194, 294, .27, 2] }
   };
-  const customLayout = refinedLayouts[item.family]?.[companion ? 1 : 0] ?? customLayouts[item.family]?.[wormPart];
+  const customLayout = araucaniaLayouts[item.family]?.[wormPart] ?? refinedLayouts[item.family]?.[companion ? 1 : 0] ?? customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;
   const widthBias = 1 + item.geometry.widthStep * .035;
   const heightBias = 1 + item.geometry.heightStep * .03;
@@ -6326,6 +6328,9 @@ function renderPiece(target, item, wormPart) {
   if (item.family === "canberra-flat-white-cafe") piece.dataset.pieceLabel = companion ? "biscuits" : "flat white";
   if (item.family === "qg2726-flower-bait") piece.dataset.pieceLabel = companion ? "spoon and dish" : "blender";
   if (item.family === "santeuil-hogweed-locomotive") piece.dataset.pieceLabel = companion ? "railway trolley" : "hogweed-stem locomotive";
+  if (item.family === "ju4400-compost-work") piece.dataset.pieceLabel = companion ? "Compost fork" : "Wheelbarrow";
+  if (item.family === "ju4400-mate") piece.dataset.pieceLabel = companion ? "Kettle" : "Mate";
+  if (item.family === "ju4400-sopaipillas") piece.dataset.pieceLabel = companion ? "Sopaipillas" : "Rolling pin";
   if (piece.dataset.pieceLabel) piece.dataset.pieceLabel = formatAccessoryLabel(piece.dataset.pieceLabel);
   const isSanteuilCompanionProp = companion && ["santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"].includes(item.family);
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";

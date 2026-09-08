@@ -1,5 +1,19 @@
 # Game of Worms art catalogue
 
+Araucanía local revision: replaces the bucket, ash gauge and crossing-plate
+accessories with compost work, mate and sopaipilla preparation. Separate six
+object constructions and a shared activity controller keep work and snack
+actions sequential. The approved garden background is preserved. Martyna requested
+deployment after the bread-eating refinement. See the Araucanía dossier.
+Follow-up placement: food boards sit behind the barrow's unloading area. The
+rolling board stays in place during preparation. Tipping clearance checked at
+360, 768, 1024 and 1440 px.
+The male's preparation equipment is now a finished-bread board, with direct
+eating on every tap. The larger worm still rolls dough. Mate drinking uses a
+short slurp for either worm.
+Eating now shows successive bite cut-outs, chewing and crumbs. Three individual
+servings are consumed in order, with a fresh board available on the next replay.
+
 Claremont approved follow-up: four large-book spreads replace the three repeated
 cell plates. New original agar-dish, feeding, binary-fission and mushroom
 illustrations vary the layouts. The male cover now opens more slowly and

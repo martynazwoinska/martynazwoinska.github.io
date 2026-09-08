@@ -1306,6 +1306,11 @@ main { max-width: 1180px; margin: 0 auto; padding: 4px 28px 70px; }
 .habitat[data-accessory-visual="briggsae::Ahmedabad, India · AF16"] #companion-worm {
   transform: translate(-52px, 54px) scale(.43);
 }
+.habitat[data-accessory-visual="elegans::Araucanía, Chile"] {
+  --pose-x: 0px;
+  --pose-y: -20px;
+  --pose-angle: 0deg;
+}
 .worm-line { fill: none; stroke: var(--worm-color); stroke-width: 46; stroke-linecap: round; stroke-linejoin: round; }
 .worm-shadow { fill: none; stroke: color-mix(in srgb, var(--worm-deep) 35%, transparent); stroke-width: 54; stroke-linecap: round; transform: translateY(7px); }
 .companion-line { fill: none; stroke: var(--worm-color); stroke-width: 42; stroke-linecap: round; stroke-linejoin: round; }
