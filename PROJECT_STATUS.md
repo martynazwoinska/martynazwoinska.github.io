@@ -11,6 +11,27 @@ pass and 13 completed, including the published Ho Chi Minh City revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+### N2 return-flight sound, 2026-09-08
+
+The return now repeats the existing departure exhaust at 4100 ms for the
+larger worm and 4380 ms for the male. Pitch, volume, duration and synthesis
+parameters are identical to departure. Frost cues, flight paths, drawings,
+accessory sizes and public copy are unchanged. Reduced motion still omits
+flight sounds. Cancellation stops both current and scheduled return cues.
+
+N2 audio, flight and tailoring tests pass, including identical outgoing/return
+parameters, timing against each worm's return frame, cancellation, late resume
+and silent fallback. The local browser completed a full flight and an Escape
+cancellation without warnings, errors or leftover effects. No layout changes
+or new visual proof. Direct listening, physical phones and Safari remain manual.
+Martyna requested deployment. Publication verification is pending.
+
+Changed: `game-of-worms/n2-cryo-audio.js`, import cache keys in
+`game-of-worms/n2-cryo-flight.js`, `game-of-worms/game.js` and
+`game-of-worms/index.html`, `scripts/check-n2-cryo-audio.cjs`, and this file.
+No files created or deleted. Homepage and Cabinet untouched.
+Preview: `http://127.0.0.1:8765/game-of-worms/?review=n2-return-sound`.
+
 ### Ho Chi Minh City fruit-delivery publication, 2026-09-08
 
 Martyna approved the final JU4356 preview and requested deployment. The scene

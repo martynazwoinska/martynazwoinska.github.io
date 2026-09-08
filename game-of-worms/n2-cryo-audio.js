@@ -6,10 +6,13 @@ export function cryoSoundScore(reduced = false) {
     {kind:'chime', at:470, duration:.6, level:.028, hz:2093, endHz:1976},
     {kind:'chime', at:810, duration:.5, level:.022, hz:2637, endHz:2489}
   ];
-  return reduced ? frost : [...frost,
+  if (reduced) return frost;
+  const flight = [
     {kind:'jet', at:1250, duration:1.95, level:.15, hz:280, endHz:1900},
     {kind:'jet', at:1530, duration:1.75, level:.065, hz:350, endHz:2300}
   ];
+  // Repeat the same exhaust for the 4100 ms return, with the male 280 ms later.
+  return [...frost, ...flight, ...flight.map(hit=>({...hit, at:hit.at+2850}))];
 }
 
 export function createN2CryoAudio() {

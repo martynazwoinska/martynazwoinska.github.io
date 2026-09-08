@@ -1,5 +1,5 @@
 // A reversible, tap-triggered fantasy vignette. Original drawings stay intact.
-import { createN2CryoAudio } from './n2-cryo-audio.js?v=20260907-cryo-sound-1';
+import { createN2CryoAudio } from './n2-cryo-audio.js?v=20260908-cryo-return-1';
 const NS = 'http://www.w3.org/2000/svg';
 const clamp = x => Math.max(0, Math.min(1, x));
 const ease = x => { x = clamp(x); return x * x * (3 - 2 * x); };
