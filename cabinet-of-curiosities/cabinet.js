@@ -574,7 +574,7 @@
     const section = document.createElement('section');
     section.className = 'collection-group';
     const heading = document.createElement('h3');
-    heading.textContent = `${title} (${items.length})`;
+    heading.textContent = title;
     const list = document.createElement('div');
     list.className = 'collection-list-items';
     items.forEach(item => {
