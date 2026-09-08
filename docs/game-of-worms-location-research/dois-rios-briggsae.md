@@ -2,6 +2,67 @@
 
 Last updated: 2026-08-10
 
+## Approved production revision, 2026-09-08
+
+The accepted new concept supersedes the earlier active accessory descriptions
+below. The background, locality, record and source assets are unchanged.
+Martyna requested deployment of the existing contextual preview on 2026-09-08.
+
+- Sticky jackfruit: a lengthwise half for the larger worm, a crosswise wedge
+  for the male. Four-tined forks pull yellow flesh free. The male briefly leans
+  back before his later release. A short elastic snap accompanies release.
+- Brazilian music: a wooden four-string cavaquinho with frets, bridge,
+  sound hole and tuners, paired with a pandeiro showing its membrane, wood shell,
+  tension hardware and paired metal jingles. Tapping either starts one short
+  call-and-response. Hands strum, fret, grip and tap the appropriate surfaces.
+- Floral neckerchiefs: independent chita-inspired cotton shapes with contained
+  floral motifs and folded ends. The larger worm has a loose side knot, while
+  the male has a compact knot and shorter tails. They track normal body motion
+  and have no independent animation.
+
+Music and fruit cannot run together. A new action stops the prior action and
+its voices. Drag, sizing, Home, Escape, scene change, visibility loss, resize
+and reduced-motion changes cancel the activity. Transform origins are pinned
+during action and restored afterward, preserving each object's user size and
+position. Initial accessories remain off on a new visit.
+
+### References and limits
+
+- [CaeNDR EG5612](https://caendr.org/isotype/EG5612/) supports the forest,
+  rotten-jackfruit collection and laboratory founding information above.
+- [UF/IFAS jackfruit guide](https://ask.ifas.ufl.edu/publication/MG370)
+  describes yellow/orange fruit flesh and sticky latex. The fresh serving props
+  are playful accessories. They do not depict the original decayed sample or
+  imply that nematodes naturally eat jackfruit flesh.
+- [IPHAN Choro register](https://bcr.iphan.gov.br/bens-culturais/choro/)
+  describes the Rio origins and the cavaquinho/pandeiro ensemble context.
+  The instruments are Brazilian regional play, not collection equipment or a
+  documented performance at the exact collection site.
+- [Rozini cavaquinho](https://rozinibrazil.com/nossosprodutos/cavaco-profissional-escuro/)
+  provides a construction reference for wooden body, fretted neck and fittings.
+- [Contemporânea pandeiro](https://contemporaneamusical.com.br/pandeiro-como-a-contemporanea-musical-revoluciona-a-tradicao-da-percussao-brasileira/)
+  describes the membrane and metal jingles.
+- [Brazilian museum chita workshop](https://visite.museus.gov.br/19a-primavera-dos-museus/oficina-de-flores-de-tecido-de-chita/)
+  provides context for bright floral fabric. This is not a claim about a local
+  uniform. The floral artwork is original, not copied from a textile print.
+
+All SVG shapes are original code drawings. The brief audio phrase is original
+plucked-string and membrane/jingle synthesis, not a sampled performance or a
+claim of an authentic field recording. No external graphic or audio asset was
+adapted. Audio envelope tests pass, but perceived musical quality requires
+Martyna's listening review.
+
+### Approved public wording (English-only Game)
+
+Buttons: "Sticky jackfruit", "Brazilian music", "Floral neckerchiefs".
+Individual music objects: "Four-string instrument", "Hand drum".
+
+Tiny surprise: "A rotten jackfruit in Ilha Grande forest produced worms at
+many stages of life. One young worm founded the laboratory line."
+
+Only the now-obsolete sentence about bags and culture plates has been removed.
+These words were shown for verification before any deployment.
+
 ## Exact record
 
 The CaeNDR reference-isotype page and its embedded strain records specify:

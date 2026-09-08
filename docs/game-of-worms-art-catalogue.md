@@ -1,5 +1,16 @@
 # Game of Worms art catalogue
 
+Dois Rios approved revision, 2026-09-08: the active EG5612 families are now
+Sticky jackfruit, Brazilian music and Floral neckerchiefs. The larger worm
+has a lengthwise jackfruit half and a four-string cavaquinho. The male has
+a smaller wedge and a pandeiro. Two chita-inspired cotton neckerchiefs have
+separate shapes, knots and floral placement. The forest background is unchanged.
+The first review led to an instrument-angle change, irregular fruit flesh,
+a more dimensional drum shell with exposed jingles, stronger arms and a
+separated male drum touch target on phones. Martyna requested deployment of
+this exact preview on 2026-09-08. See the Dois Rios dossier for references,
+copy and the distinction between collection evidence and regional play.
+
 Araucanía local revision: replaces the bucket, ash gauge and crossing-plate
 accessories with compost work, mate and sopaipilla preparation. Separate six
 object constructions and a shared activity controller keep work and snack

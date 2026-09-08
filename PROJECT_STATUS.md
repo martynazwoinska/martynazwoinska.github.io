@@ -4,6 +4,43 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+For the next Game scene, start with the
+[scene review checklist](docs/game-of-worms-scene-review-queue.md).
+It tracks all 31 active scenes: 20 left to check in the current interaction
+pass, 10 completed, and Dois Rios approved for publication.
+Do not repeat whole-atlas visual reviews. Check the next queued scene and update
+its entry. "To check" is not a judgement that a scene needs a redesign.
+
+### Dois Rios jackfruit and music preview, 2026-09-08
+
+Martyna explicitly requested deployment of the existing Brazil preview on
+2026-09-08, approving the displayed artwork and English-only wording. Publication
+verification is pending. Replaces the three active EG5612 accessory families with
+sticky jackfruit, Brazilian music and floral neckerchiefs. The male and larger
+worm use separately constructed props. Music and fruit actions share one
+controller and cannot run together. The approved forest image is unchanged.
+
+The website-maintainer review found and corrected a small-screen drum/scarf
+touch-target overlap. Checks at 360, 768, 1024 and 1440 px show no horizontal
+overflow. Keyboard movement, pointer drag, tap, Home, Escape, action replacement
+and retained user size passed in the browser. Catalogue and paired-geometry
+startup audits passed. New drawing/frame/audio tests and existing accessory
+label, visit-reset, legacy refinement and Panama audio tests passed.
+
+Full-page screenshot captures remain defective (half-scale content and repeated
+sections). Recorded capture sizes: 345 x 2376, 753 x 2375, 1009 x 1753 and
+1425 x 1928. These are not valid full-page visual proofs. Normal viewport
+screenshots were inspected. Physical devices, Safari and subjective audio
+quality still need manual review. Reduced-motion frames are unit-tested, not
+verified through an operating-system preference in this browser session.
+
+Files added: `game-of-worms/dois-rios-art.js`, `dois-rios-play.js`,
+`dois-rios-audio.js` (all under `game-of-worms/`), and
+`scripts/check-dois-rios.cjs`. Files changed: `game-of-worms/accessory-designs.js`,
+`game-of-worms/game.js`, `game-of-worms/index.html`,
+`scripts/check-six-location-accessories.cjs`, this status file, the art catalogue
+and Dois Rios research dossier. No files deleted. Homepage and Cabinet untouched.
+
 ### Panama recorded scissors sound, 2026-09-08
 
 Replaces the rejected synthesized hiss with a single 400 ms real scissors

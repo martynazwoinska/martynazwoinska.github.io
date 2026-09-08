@@ -15,7 +15,7 @@ const walk = n => [n,...n.children.flatMap(walk)];
   const {drawRefinedAccessory,refinedLayouts} = await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
   assert.equal(Object.keys(refinedLayouts).length,18);
   const dispatch = fs.readFileSync(path.join(root,'accessory-designs.js'),'utf8');
-  assert.match(dispatch,/function drawNamedAccessory\(group, item, companion\)\s*\{\s*if \(drawRefinedAccessory\(group, item, companion\)\) return true/);
+  assert.match(dispatch,/function drawNamedAccessory\(group, item, companion\)\s*\{\s*if \(drawDoisRios\(group, item, companion\)\) return true;\s*if \(drawRefinedAccessory\(group, item, companion\)\) return true/);
   for(const family of Object.keys(refinedLayouts)){
     const signatures=[];
     for(const small of [false,true]){
