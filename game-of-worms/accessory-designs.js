@@ -6267,7 +6267,7 @@ function renderPiece(target, item, wormPart) {
     "sample-pannier": { primary: [170, 176, .66, -4], companion: [51, 164, .39, 4] },
     "wings": { primary: [247, 150, .46, 68], companion: [88, 147, .35, 70] },
     "lattice-fan": { primary: [374, 167, .52, 12], companion: [8, 124, .43, -30] },
-    "af16-embroidered-waistcoat": { primary: [0, 0, 1, 0], companion: [-28, 82, .43, 0] },
+    "af16-embroidered-waistcoat": { primary: [0, 0, 1, 0], companion: [-52, 54, .43, 0] },
   "kite-rig": { primary: [220, 210, .65, 0], companion: [73, 160, .47, -10] },
     "soil-kit": { primary: [344, 285, .52, -2], companion: [10, 248, .43, -9] },
   "santeuil-railway-driver-uniform": { primary: [0, 0, 1, 0], companion: [-28, 82, .43, 0] },

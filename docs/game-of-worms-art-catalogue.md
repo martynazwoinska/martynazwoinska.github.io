@@ -1,5 +1,11 @@
 # Game of Worms art catalogue
 
+Ahmedabad spacing, 2026-09-08: user-requested placement correction only.
+Male and matching waistcoat moved left/up, pair moved slightly right/up.
+Smaller digging translations preserve separation from the primary tail and
+bottom labels. Parked kite reels remain closer to the pair. Drawing paths,
+colours, sound and user scaling unchanged. Four full-page proofs reviewed.
+
 Six-species celebration, 2026-09-08, local preview: original tapered worm
 silhouettes in the six existing species colours, contained highlight/shadow
 strokes, small attached faces, curled paper strips and gold lozenges. Six

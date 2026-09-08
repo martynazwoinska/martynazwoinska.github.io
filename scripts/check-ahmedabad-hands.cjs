@@ -2,7 +2,11 @@ const assert=require('node:assert/strict');
 const {pathToFileURL}=require('node:url');
 const path=require('node:path');
 (async()=>{
-  const {ahmedabadFrame:frame,ahmedabadReach:reach}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/ahmedabad-hands.js')));
+  const {ahmedabadFrame:frame,ahmedabadReach:reach,ahmedabadDiggingOffsets:offsets}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/ahmedabad-hands.js')));
+  assert.deepEqual(offsets(),{body:35,reel:80});
+  assert.deepEqual(offsets(true),{body:95,reel:120});
+  assert(offsets(true).body*.43<45,'Male digging drop stays above the primary tail and labels');
+  assert(offsets().reel*.65<55,'Parked primary reel stays near the body');
   assert.deepEqual(reach(1,true),{x:-13,y:8,guide:.12,spread:0},'Male reach unchanged');
   assert.equal(reach(0).x+reach(0).y,0,'Exact reel return');
   assert(reach(1).guide>reach(0).guide*2,'Guiding hand travels along the tether');

@@ -4,6 +4,22 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Ahmedabad pair spacing, 2026-09-08
+
+Requested adjustment and deployment after mobile screenshots. Moves the pair
+slightly right/up and the male separately left/up, with his waistcoat using
+the identical attachment. Limits digging drops to 35 primary / 95 companion
+body units (formerly 65 / 220). Parked reels drop 80 / 120 instead of 140 / 250.
+This keeps the default digging pair separated and the reels inside the scene.
+No artwork paths, copy, audio, saved user offsets or other locations changed.
+
+Full-page proofs at 360/768/1024/1440: 345x2400, 753x2323, 1009x1777,
+1425x1876 pixels. Also reviewed at 390. Both digging actions and return to
+kites, Home and keyboard activation checked. No console errors or overflow.
+Ahmedabad hands, drawings and six-location regression tests pass.
+Physical phones and Safari remain untested. Edinburgh bagpipe request is
+pending, with no changes to Edinburgh included in this deployment.
+
 ### Six-species celebration preview, 2026-09-08
 
 Approved for deployment on 2026-09-08. Replaces the old confetti with tapered,

@@ -37,6 +37,10 @@ export function ahmedabadReach(pull,male=false) {
     :{x:34*pull,y:-120*lift,guide:.16+.32*lift,spread:14+15*pull};
 }
 
+export function ahmedabadDiggingOffsets(male=false) {
+  return male ? {body:95,reel:120} : {body:35,reel:80};
+}
+
 function glove(g) {
   const h=add(g,'g',{});
   // Rounded palm, three curled fingers and a separate opposing thumb.
@@ -142,7 +146,8 @@ export function createAhmedabadHands(habitat) {
   function paint(entry,state,ms) {
     const {male,part,kite,soil,arms,tool,reel,body}=entry;
     const digging=entry.kind==='soil'&&visible(soil);
-    const shift=digging?(male?220:65):0;
+    const offsets=ahmedabadDiggingOffsets(male);
+    const shift=digging?offsets.body:0;
     entry.shift=action?.entry===entry?mix(action.fromShift,shift,state.pickup):shift;
     entry.bodyWrap.setAttribute('transform',`translate(0 ${entry.shift}) rotate(${state.pull*(male?-4:-2)+state.down*3} 210 170)`);
     // Inner cloth follows the body, preserving the outer user drag and scale.
@@ -151,7 +156,7 @@ export function createAhmedabadHands(habitat) {
     if(!k&&!s){arms.g.style.display='none';return;}
     if(!digging&&!k)entry.kind='soil';
     arms.g.style.display='';
-    const rest=digging?(male?250:140):0;
+    const rest=digging?offsets.reel:0;
     const reelY=action?.entry===entry?mix(action.fromReel,rest,state.pickup):rest;
     entry.reelY=reelY;
     const reach=ahmedabadReach(state.pull,male);
