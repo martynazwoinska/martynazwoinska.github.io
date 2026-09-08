@@ -28,7 +28,12 @@ cue timing, separate takes, cancellation, failure/retry and late-load silence.
 Existing Nambucca art/frame, labels, visit-reset and Panama sound tests pass.
 Local browser checks passed for painting completion, both presses, cancellation
 and clean console. Width checks at 360, 768, 1024 and 1440 px show no horizontal
-overflow. Publication verification follows before reporting deployment.
+overflow. Runtime commit `fa8533f` was pushed to `main` from
+`codex/kauai-recording-scene`. Pages run `34268162760` succeeded. The five
+published text files match local content after line-ending normalization, and
+all five WAV files match their local SHA-256 hashes. All ten paths return HTTP
+200. Live-browser painting and both flower-press actions finish without console
+warnings, errors or horizontal overflow.
 Direct audio audition is unavailable in this session. The final subjective
 listening check remains manual. No visual change requires new screenshot proof.
 
