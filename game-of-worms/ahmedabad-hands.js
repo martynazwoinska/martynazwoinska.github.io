@@ -1,4 +1,4 @@
-import { createAhmedabadAudio } from './ahmedabad-audio.js?v=20260907-hands-1';
+import { createAhmedabadAudio, ahmedabadDiggingCues } from './ahmedabad-audio.js?v=20260908-recorded-dig-1';
 const NS='http://www.w3.org/2000/svg';
 const clamp=x=>Math.max(0,Math.min(1,x));
 const ease=x=>{x=clamp(x);return x*x*(3-2*x);};
@@ -38,7 +38,19 @@ export function ahmedabadReach(pull,male=false) {
 }
 
 export function ahmedabadDiggingOffsets(male=false) {
-  return male ? {body:95,reel:120} : {body:35,reel:80};
+  return male ? {reel:120} : {reel:80};
+}
+
+export function ahmedabadDiggingPlacement(scene,body,male=false) {
+  // Separate working lanes on the painted foreground soil, above both labels.
+  const left=scene.left+scene.width*(male?.13:.40);
+  const floor=Math.min(scene.height*.88,scene.height-40);
+  return {
+    x:left-body.left,
+    y:scene.top+floor-body.bottom,
+    soilX:Math.max(scene.left+scene.width*.30,Math.min(scene.left+scene.width*.82,left+body.width*(male?1.02:.82))),
+    soilY:scene.top+floor-scene.height*.025
+  };
 }
 
 function glove(g) {
@@ -111,10 +123,12 @@ export function createAhmedabadHands(habitat) {
     if(!handles(kite)||!visible(kite)&&!visible(soil))return null;
     const entry={male,part,kite,soil,kind:visible(kite)?'kite':'soil',saved:new Map(),styles:[],arms:makeArms(root,male),targets:null};
     entry.body=habitat.querySelector(male?'#companion-worm .companion-body':'#primary-worm > .worm-body');
+    entry.bodyAnimation=entry.body.style.animationPlayState;
     entry.styles.push([entry.body,entry.body.getAttribute('style')||'']);
     entry.bodyWrap=document.createElementNS(NS,'g');
     entry.bodyWrap.dataset.af16Body=part;
     entry.body.before(entry.bodyWrap);entry.bodyWrap.append(entry.body);
+    entry.shadow=remember(entry,habitat.querySelector(male?'#companion-worm > .worm-ground-shadow':'#primary-worm > .worm-ground-shadow'));
     entry.cloth=remember(entry,habitat.querySelector(`.accessory-piece[data-accessory-family="af16-embroidered-waistcoat"][data-worm-part="${part}"] [data-af16-cloth]`));
     entry.reel=remember(entry,kite.querySelector('[data-af16-reel]'));
     entry.tool=remember(entry,soil.querySelector('[data-af16-tool]'));
@@ -138,18 +152,33 @@ export function createAhmedabadHands(habitat) {
     stopMotion();sync();
     const entry=ensure(piece.dataset.wormPart);if(!entry)return false;
     entry.kind=piece.dataset.accessoryFamily==='kite-rig'?'kite':'soil';
-    action={entry,start:performance.now(),events:new Set(),from:entry.targets,fromShift:entry.shift||0,fromReel:entry.reelY||0};
+    action={entry,start:performance.now(),events:new Set(),from:entry.targets,fromShift:entry.shift||0,fromShiftX:entry.shiftX||0,fromReel:entry.reelY||0};
     habitat.dataset.ahmedabadAction=entry.kind;
-    if(!reduced.matches)sound.unlock();
+    if(!reduced.matches)sound.unlock(entry.kind);
     return true;
   }
   function paint(entry,state,ms) {
     const {male,part,kite,soil,arms,tool,reel,body}=entry;
     const digging=entry.kind==='soil'&&visible(soil);
     const offsets=ahmedabadDiggingOffsets(male);
-    const shift=digging?offsets.body:0;
+    body.style.animationPlayState=digging?'paused':entry.bodyAnimation;
+    let shift=0,shiftX=0;
+    if(digging) {
+      // Measure the unshifted body so viewport changes never accumulate offsets.
+      entry.bodyWrap.removeAttribute('transform');
+      const placement=ahmedabadDiggingPlacement(habitat.getBoundingClientRect(),body.getBoundingClientRect(),male);
+      const inverse=entry.bodyWrap.parentNode.getScreenCTM().inverse();
+      const zero=new DOMPoint(0,0).matrixTransform(inverse);
+      const delta=new DOMPoint(placement.x,placement.y).matrixTransform(inverse);
+      shiftX=delta.x-zero.x;shift=delta.y-zero.y;
+      entry.ground=new DOMPoint(placement.soilX,placement.soilY).matrixTransform(root.getScreenCTM().inverse());
+      const mark=marks.get(part);
+      if(mark)mark.setAttribute('transform',`translate(${entry.ground.x} ${entry.ground.y}) scale(${male?.64:1})`);
+    }
     entry.shift=action?.entry===entry?mix(action.fromShift,shift,state.pickup):shift;
-    entry.bodyWrap.setAttribute('transform',`translate(0 ${entry.shift}) rotate(${state.pull*(male?-4:-2)+state.down*3} 210 170)`);
+    entry.shiftX=action?.entry===entry?mix(action.fromShiftX,shiftX,state.pickup):shiftX;
+    entry.bodyWrap.setAttribute('transform',`translate(${entry.shiftX} ${entry.shift}) rotate(${state.pull*(male?-4:-2)+state.down*3} 210 170)`);
+    entry.shadow?.setAttribute('transform',entry.bodyWrap.getAttribute('transform'));
     // Inner cloth follows the body, preserving the outer user drag and scale.
     entry.cloth?.setAttribute('transform',entry.bodyWrap.getAttribute('transform'));
     const k=visible(kite), s=visible(soil);
@@ -174,14 +203,16 @@ export function createAhmedabadHands(habitat) {
     if(digging) {
       // The side-on handle sits between two grips. Its blade faces the soil.
       const local=soil.querySelector('.location-accessory-art');
-      const desired=point(body,male?273:281+state.angle*.3,male?192:191);
       const original=entry.saved.get(tool);
       tool.setAttribute('transform',original);
       const resting=point(tool,0,male?-49:-52);
-      const hold={x:mix(resting.x,desired.x,state.pickup),y:mix(resting.y,desired.y,state.pickup)+(male?8:26)*state.down};
+      const tilt=mix(male?29:9,-18,state.pickup)+state.angle;
+      tool.setAttribute('transform',`rotate(${tilt}) translate(0 ${male?49:52})`);
+      const grip=point(tool,0,male?-49:-52),tip=point(tool,0,male?44:70);
+      const desired={x:entry.ground.x-(tip.x-grip.x),y:entry.ground.y-(tip.y-grip.y)-(male?8:26)*(1-state.down)};
+      const hold={x:mix(resting.x,desired.x,state.pickup),y:mix(resting.y,desired.y,state.pickup)};
       const inv=local.getScreenCTM().inverse().multiply(root.getScreenCTM());
       const hp=new DOMPoint(hold.x,hold.y).matrixTransform(inv);
-      const tilt=mix(male?29:9,-18,state.pickup)+state.angle;
       tool.setAttribute('transform',`translate(${hp.x} ${hp.y}) rotate(${tilt}) translate(0 ${male?49:52})`);
       targets=[point(tool,0,male?-61:-84),point(tool,0,male?-36:-30)];
       if(action?.entry===entry&&state.scoop>.05) {
@@ -190,12 +221,14 @@ export function createAhmedabadHands(habitat) {
         entry.clod.setAttribute('opacity',1-fall);
         entry.clod.setAttribute('transform',`translate(${fall*24} ${fall*42}) rotate(${fall*25})`);
         if(!marks.has(part)&&!reduced.matches) {
-          const tip=point(tool,0,male?42:68);marks.set(part,soilMark(root,male,tip));
+          marks.set(part,soilMark(root,male,entry.ground));
         }
       } else entry.clod?.setAttribute('opacity','0');
-      if(action?.entry===entry&&state.scoop>.06) {
-        const key=`soil${state.cycle}`;
-        if(!action.events.has(key)){action.events.add(key);if(!reduced.matches)sound.play('soil',male);}
+      if(action?.entry===entry) {
+        for(const cue of ahmedabadDiggingCues(male))if(ms>=cue.at&&!action.events.has(cue.key)) {
+          action.events.add(cue.key);
+          if(!reduced.matches&&ms-cue.at<90)sound.play('soil',male,cue.variant,ms-cue.at);
+        }
       }
     } else {
       tool.setAttribute('transform',entry.saved.get(tool));entry.clod?.setAttribute('opacity','0');
@@ -237,7 +270,7 @@ export function createAhmedabadHands(habitat) {
       if(!running&&!reduced.matches&&document.activeElement!==entry.kite)state.drift=Math.sin(now/(entry.male?1450:1800)+(entry.male?2:0));
       paint(entry,state,ms);
       if(running&&state.done) {
-        if(entry.kind==='soil'&&!marks.has(entry.part))marks.set(entry.part,soilMark(root,entry.male,point(entry.tool,0,entry.male?42:68)));
+        if(entry.kind==='soil'&&!marks.has(entry.part))marks.set(entry.part,soilMark(root,entry.male,entry.ground));
         stopMotion();
       }
     }

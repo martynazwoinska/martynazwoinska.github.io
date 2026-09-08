@@ -1,5 +1,37 @@
 # Game sound recordings
 
+## Ahmedabad digging
+
+Source: [Dig With a Shovel, Joseph SARDIN, BigSoundBank 1305](https://bigsoundbank.com/dig-with-a-shovel-s1305.html).
+The creator describes digging a hole with a shovel. The page's CC0 licence,
+including permission to edit and redistribute, was checked on 2026-09-08.
+Original WAV linked in the page metadata:
+`https://bigsoundbank.com/UPLOAD/bwf-en/1305.wav`.
+SHA-256: `034fc52802ec109897c75da84e246fae88d2671192fee610aafe86d8bf0a48bd`.
+
+Three separate excerpts provide one spade stroke and two shorter trowel strokes.
+All originate from a real full-size shovel recording, with no pitch shift,
+synthetic layers, loops or added reverberation. The smaller-tool excerpts use
+shorter takes and quieter playback.
+
+| Production file | Source start | Duration | Peak | SHA-256 |
+| --- | ---: | ---: | ---: | --- |
+| `ahmedabad-dig-spade.wav` | 3.330 s | 0.650 s | 0.36 | `55c946c597247c1c510107cbbd46a78e1539dc43984d7d058f9608c668acf4e6` |
+| `ahmedabad-dig-trowel-1.wav` | 0.190 s | 0.350 s | 0.29 | `74115940afb485318275102791482dca3b34a99df0fa78abf28b7eb081b3c777` |
+| `ahmedabad-dig-trowel-2.wav` | 1.190 s | 0.390 s | 0.29 | `35f06523eaa30208a156e2f58eef6b732f965652b8a4c359cacecfce753e49f7` |
+
+Original mono 48000 Hz PCM24 converted to mono PCM16 after DC removal,
+6 ms entrance/35 ms exit fades and peak normalization. Total 133572 bytes.
+Playback gain: spade 0.8, trowel 0.7. Cue starts account for the recorded
+transients, aligning maximum sound contact with maximum blade pressure at
+1675 ms, 1342.5 ms and 2892.5 ms. Frames delayed by less than 90 ms skip the
+corresponding audio lead-in. Expired or unloaded cues remain silent.
+
+Gesture-only loading, caching and cancellation remain in place. Reduced motion
+is silent. Kite wind/reel sounds are unchanged. Untouched downloads and the
+processing script are retained under ignored `tmp/ahmedabad-audio/`.
+Direct listening on real speakers/headphones remains a manual review item.
+
 ## Ho Chi Minh City fruit delivery
 
 Source pages and CC0 licences checked on 2026-09-08. These are short recorded

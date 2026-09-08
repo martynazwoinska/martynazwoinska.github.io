@@ -4,6 +4,26 @@ Last updated: 2026-07-26
 
 This dossier is the evidence and review contract for the Ahmedabad landscape and the three *Caenorhabditis briggsae* AF16 accessory pairs.
 
+## Foreground digging, approved 2026-09-09
+
+Sound follow-up: real shovel recordings replace the synthesized soil burst.
+One 650 ms stroke accompanies the spade, with separate 350/390 ms takes for
+the male's two scoops. Peak contact follows the blade's maximum pressure.
+Kite sounds and drawing/motion geometry are unchanged. Source, CC0 licence,
+processing and hashes are in `game-of-worms/assets/audio/SOURCES.md`.
+Audio regression tests pass. Direct listening remains a manual review item.
+
+Digging uses scene-relative working positions, with the male on the left and
+the larger worm farther right. Each body settles near the foreground soil
+before the first scoop. The final phone refinement reserves lower clearance
+for the location caption. Shovel contact is anchored to the soil at the tool's
+current scale. Clothing and shadows follow the body, and the kite action
+returns to the original pose. The approved drawings are unchanged.
+Normal phone/tablet/desktop views, keyboard controls, reset and scene cleanup
+passed. Full-page captures remain distorted by the tool. See PROJECT_STATUS.md
+for dimensions and remaining manual checks. Martyna requested deployment of
+the reviewed positions and recorded sound on 2026-09-09.
+
 ## Interactive hands preview, 2026-09-07
 
 Final paper/cloth revision approved on 2026-09-07: crisp straight-edged paper sails with

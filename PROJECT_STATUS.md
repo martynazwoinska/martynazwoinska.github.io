@@ -11,6 +11,68 @@ pass and 13 completed, including the published Ho Chi Minh City revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+### Ahmedabad recorded digging sound, approved 2026-09-09
+
+Martyna requested deployment of the reviewed foreground digging positions and
+recorded sounds on 2026-09-09. Production files remain identical to the preview.
+Release branch: `codex/kauai-recording-scene`, published through `main`.
+
+The synthetic soil burst is replaced with three short CC0 excerpts of Joseph
+SARDIN's BigSoundBank 1305 shovel recording. The spade uses a 650 ms stroke.
+The male's two scoops use different 350/390 ms takes, with quieter playback.
+Each main transient aligns with maximum blade pressure. No loops, generated
+soil noise, pitch shifting or reverb. Kite sounds, visuals, public copy and
+the previous local foreground-placement fix are unchanged.
+
+New audio tests cover PCM format, fades, peaks, distinct takes, contact timing,
+gesture-only loading, cached decoding, cancellation, retries, silent failures
+and skipped late cues. The existing hands regression and syntax/diff checks
+pass. Both browser digging actions completed, with replay and Escape cancellation
+checked. No browser warnings/errors. The audio module and all three WAV paths
+returned HTTP 200 with the expected content types on the local server.
+Direct listening remains manual because this session cannot perceive audio.
+No new layout proof is required for this audio-only follow-up. The previous
+full-page screenshot limitation remains and was disclosed before approval.
+
+Created: three `game-of-worms/assets/audio/ahmedabad-dig-*.wav` production files
+(133572 bytes total) and `scripts/check-ahmedabad-audio.cjs`.
+Changed for this follow-up: `game-of-worms/ahmedabad-audio.js`, cue timing/import
+in `ahmedabad-hands.js`, cache keys in `game.js`/`index.html`,
+`scripts/check-ahmedabad-hands.cjs`, `game-of-worms/assets/audio/SOURCES.md`,
+the Ahmedabad dossier and this file. Nothing deleted. Homepage/Cabinet untouched.
+Source downloads and the reproducible processing script stay in ignored
+`tmp/ahmedabad-audio/`. Preview:
+`http://127.0.0.1:8765/game-of-worms/?review=ahmedabad-grounded-dig`.
+
+### Ahmedabad foreground digging, approved 2026-09-09
+
+Digging now places the pair in separate foreground lanes, using the current
+scene and body bounds instead of fixed body-space drops. Both move into place
+before the first scoop. The shovel grip is calculated from its displayed blade
+tip so enlarged tools still meet the same soil patch. Ground marks remain on
+the soil. Clothing and shadows follow the body. Kite use restores the original
+pose. No drawing paths, sound, public copy or background assets changed.
+
+The first visual review found a phone overlap with the location caption. A
+refinement adds at least 40 screen pixels of lower clearance for the bodies.
+Normal browser views were checked at 360, 768, 1024 and 1440 px. No horizontal
+overflow. Both digging actions, all accessory groups together, 120% shovels,
+keyboard movement, Home, Escape and scene-change cleanup were checked. No
+browser warnings or errors. Geometry, action timing, reduced-motion and audio
+regression tests pass. Physical phones, Safari and direct listening remain
+manual. Game remains fixed light, independent of the homepage theme.
+
+Full-page attempts returned 345 x 2400, 753 x 2323, 1009 x 1777 and 1425 x 1876
+pixel files for the four widths. The capture tool still creates compressed,
+duplicated or blank page regions. These are not valid full-page proofs.
+Martyna approved deployment of this contextual preview on 2026-09-09.
+
+Changed: `game-of-worms/ahmedabad-hands.js`, import cache keys in
+`game-of-worms/game.js` and `game-of-worms/index.html`,
+`scripts/check-ahmedabad-hands.cjs`, the Ahmedabad dossier, art catalogue and
+this file. No files created or deleted. Homepage and Cabinet untouched.
+Preview: `http://127.0.0.1:8765/game-of-worms/?review=ahmedabad-grounded-dig`.
+
 ### N2 return-flight sound, 2026-09-08
 
 The return now repeats the existing departure exhaust at 4100 ms for the
@@ -24,7 +86,9 @@ parameters, timing against each worm's return frame, cancellation, late resume
 and silent fallback. The local browser completed a full flight and an Escape
 cancellation without warnings, errors or leftover effects. No layout changes
 or new visual proof. Direct listening, physical phones and Safari remain manual.
-Martyna requested deployment. Publication verification is pending.
+Committed and deployed at `bf4bf20`. Pages run `34278661781` succeeded.
+Public `index.html`, `game.js`, `n2-cryo-flight.js` and `n2-cryo-audio.js`
+returned HTTP 200 and matched the committed files.
 
 Changed: `game-of-worms/n2-cryo-audio.js`, import cache keys in
 `game-of-worms/n2-cryo-flight.js`, `game-of-worms/game.js` and

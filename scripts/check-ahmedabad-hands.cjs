@@ -2,10 +2,24 @@ const assert=require('node:assert/strict');
 const {pathToFileURL}=require('node:url');
 const path=require('node:path');
 (async()=>{
-  const {ahmedabadFrame:frame,ahmedabadReach:reach,ahmedabadDiggingOffsets:offsets}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/ahmedabad-hands.js')));
-  assert.deepEqual(offsets(),{body:35,reel:80});
-  assert.deepEqual(offsets(true),{body:95,reel:120});
-  assert(offsets(true).body*.43<45,'Male digging drop stays above the primary tail and labels');
+  const {ahmedabadFrame:frame,ahmedabadReach:reach,ahmedabadDiggingOffsets:offsets,ahmedabadDiggingPlacement:placement}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/ahmedabad-hands.js')));
+  assert.deepEqual(offsets(),{reel:80});
+  assert.deepEqual(offsets(true),{reel:120});
+  for(const width of [288,345,520,724,920])for(const top of [-300,0,750])for(const male of [false,true]) {
+    const scene={left:37,top,width,height:width*430/600};
+    const floor=Math.min(scene.height*.88,scene.height-40);
+    for(const bottom of [.40,.65,.96]) {
+      const body={left:scene.left+width*.22,bottom:top+scene.height*bottom,width:width*(male?.20:.45)};
+      const p=placement(scene,body,male);
+      assert(Object.values(p).every(Number.isFinite));
+      assert(Math.abs(body.bottom+p.y-(top+floor))<1e-9,'Body reaches the foreground regardless of starting height');
+      assert(scene.height-floor>=40,'Keep a phone-sized clearance above the location label');
+      assert(Math.abs(body.left+p.x-(scene.left+width*(male?.13:.40)))<1e-9,'Distinct working lanes');
+      assert(p.soilX>=scene.left+width*.30&&p.soilX<=scene.left+width*.82);
+      assert.equal(p.soilY,top+floor-scene.height*.025,'Blade contact remains on soil above the labels');
+      assert.equal(placement(scene,{...body,left:body.left+p.x,bottom:body.bottom+p.y},male).y,0,'Grounding does not accumulate on replay');
+    }
+  }
   assert(offsets().reel*.65<55,'Parked primary reel stays near the body');
   assert.deepEqual(reach(1,true),{x:-13,y:8,guide:.12,spread:0},'Male reach unchanged');
   assert.equal(reach(0).x+reach(0).y,0,'Exact reel return');
@@ -53,9 +67,10 @@ const path=require('node:path');
   const sound=createAhmedabadAudio();assert.equal(opened,0,'No automatic audio context');
   sound.play('wind');assert.equal(started,0);
   sound.unlock();assert.equal(opened,1);
-  for(const kind of ['wind','click','soil'])sound.play(kind,true);
-  assert.equal(started,3);assert.equal(disconnected,9);
-  document.hidden=true;sound.play('soil');assert.equal(started,3);
-  sound.cancel();assert(stopped>=3);
-  console.log('Ahmedabad: kite return, one/two scoops, reduced-motion still state, gesture-only sound and audio cleanup passed.');
+  for(const kind of ['wind','click'])sound.play(kind,true);
+  assert.equal(started,2);assert.equal(disconnected,6);
+  sound.play('soil');assert.equal(started,2,'No synthetic substitute for unloaded digging audio');
+  document.hidden=true;sound.play('wind');assert.equal(started,2);
+  sound.cancel();assert(stopped>=2);
+  console.log('Ahmedabad: responsive soil-anchored working lanes, kite return, one/two scoops, reduced-motion still state, gesture-only sound and audio cleanup passed.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

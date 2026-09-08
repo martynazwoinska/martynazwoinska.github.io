@@ -1,5 +1,13 @@
 # Game of Worms art catalogue
 
+Ahmedabad foreground digging, approved 2026-09-09: the pair moves to
+separate patches of foreground soil before digging. Tool-tip contact follows
+the displayed shovel scale. Clothes and shadows follow their worms. The phone
+refinement adds lower caption clearance. Artwork, background and public copy
+are unchanged. The sound follow-up uses three recorded shovel takes. See
+PROJECT_STATUS.md for checks and the disclosed full-page capture limitation.
+Martyna requested deployment of the reviewed positions and sound on 2026-09-09.
+
 Ho Chi Minh City approved revision, 2026-09-08: Scooter, Starfruit and Vietnamese
 coffee replace the previous JU4356 trays, DNA cards and calipers. One shared
 scooter carries the pair in distinct riding poses. The female cuts starfruit
