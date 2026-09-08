@@ -38,5 +38,48 @@ Regional sources:
 
 ## Production assets
 
+### Final Wormbook approval, 2026-09-08
+
+The approved renderer uses curved/sloping text paths for the exact title
+`Wormbook`. Inset specimen panels give the illustrations a consistent position
+and perspective on each page. The small clothbound cover has a recessed worm
+engraving, layered edges and a banded spine. The approved public drink label
+is now `Lemonade`, intentionally English-only. No new explanatory copy was added.
+The approval includes the prior reading, sipping and pouring interactions.
+Earlier descriptions below are retained as the design history.
+
+### Reading and lemonade interaction preview, 2026-09-08
+
+Follow-up: Martyna requested prettier books and illustrations, shorter/subtler
+sound, the exact title `Wormbook`, and sipping for both worms. The new separate
+book renderer uses original layered covers/pages and schematic bacterial plates.
+Rod drawings separate their cell boundary, cytoplasm, nucleoid and a few ribosome
+marks. These are unlabelled broad illustrations, not a named organism. A tapered
+worm engraving replaces the thick line symbol. The title change is intentionally
+English-only, as is the Game. No other public wording changes.
+
+Tapping a drink now brings its straw to its own worm's mouth. A temporary small
+puckered mouth and tiny moving straw highlight accompany a 280 ms slurp. The
+male has a faster 1450 ms cycle, the larger worm 1700 ms. Both restore the exact
+user placement and size, while the liquid drops after drinking. Drag-to-pour is
+retained, with Shift+Enter for keyboard users. Paper rustling is shortened to
+170 ms and gain reduced from .09 to .024. New art and sound await preview review.
+The earlier original-book preservation statements below describe the first
+iteration, before this explicitly requested redraw.
+
+New page surfaces use original schematic rods, spherical clusters and spiral
+cells. These are broad shapes, not labelled species or claims about the exact
+organisms in this collection. Structural reference:
+[OpenStax, prokaryotic cells](https://openstax.org/books/microbiology/pages/3-3-unique-characteristics-of-prokaryotic-cells).
+No reference artwork was copied.
+
+The large book turns a leaf across its gutter. The small hardback opens its
+front cover on the angled spine, then turns pages. The inside cover stays plain.
+The pitcher aligns its spout above the tumbler, tilts and returns to its user's
+chosen position. Bounded clipped liquid polygons prevent animated fluid from
+changing accessory layout bounds. Original resting art and public copy are
+unchanged. New audio is synthesized locally, with no external recording or
+audio file. This interaction remains a local preview pending approval.
+
 - Preserved source: `game-of-worms/assets/source/claremont-eca250-painted-background-source.png`
 - Runtime derivative: `game-of-worms/assets/claremont-eca250-painted-background.jpg`

@@ -1,5 +1,29 @@
 # Game of Worms art catalogue
 
+Claremont final approval, 2026-09-08: titles follow the page/cover baselines.
+Worm engravings and bacterial plates sit in consistent centred inset panels.
+The male hardback has a recessed oval illustration, layered edges and banded
+spine. Martyna approved the exact production preview and the English-only
+accessory name `Lemonade` for deployment. Reading and drink interactions from
+the preceding preview are included unchanged. Full-page capture remains limited
+by the screenshot tool's stitching fault, separately from normal viewport review.
+
+Claremont Wormbook refinement, 2026-09-08: requested redraw replaces the book
+art with finer outlines, layered paper, contained original bacterial plates and
+a tapered worm engraving. Both books carry the exact requested title Wormbook.
+Paper sound is 170 ms and quieter. Both drinks now sip through their straws,
+with separate timing, temporary puckered mouths, falling liquid and a 280 ms
+slurp. Drag-to-pour remains, with Shift+Enter for keyboard users. This supersedes
+the original-art preservation statement for books in the earlier preview below.
+The background, reading glasses and resting drink drawings stay unchanged.
+
+Claremont interaction preview, 2026-09-08: books open/turn on their bindings to
+separate schematic bacterial spreads, with paper foley. The larger lemonade
+pitcher can pour into the male's tumbler, with liquid-level changes and pouring
+foley. Original book/drink drawings, glasses and background remain unchanged.
+Home restores the original state. Local preview awaits visual approval and
+valid full-page responsive proof before publication.
+
 Edinburgh bagpipe interaction, 2026-09-08: preserved the resting instrument
 drawings. Tap/Enter/Space lifts the blowpipe to the mouth for an original short
 phrase, with bag compression and temporary note-linked finger pads. Each worm

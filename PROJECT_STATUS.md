@@ -4,6 +4,66 @@ Last updated: 2026-08-30
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+### Claremont Wormbook and Lemonade, 2026-09-08, approved for deployment
+
+Martyna approved the exact revised preview and deployment. The title lettering
+now follows a curved baseline on the large page and a sloping baseline on the
+male cover. Each illustration has a centred inset panel in its page plane.
+The male hardback has layered cover edges, recessed oval artwork and a defined
+banded spine. The public accessory name is the requested `Lemonade`. This and
+`Wormbook` are intentionally English-only, as is the Game. The previously
+previewed reading, sipping and pouring interactions are included in this release.
+No homepage or Cabinet changes are part of this commit.
+
+The notes below record the preceding iterations and their verification limits.
+
+Follow-up requested by Martyna: both books now use `claremont-book-art.js`,
+with slimmer bound covers, layered page blocks, calm margins and original
+natural-history-style bacterial illustrations. The approved English-only title
+is `Wormbook`. The original page/cover artwork is superseded by this requested
+redraw. Background, glasses, drink drawings and accessory labels are unchanged.
+The second drawing pass gives the title-page worm a tapered silhouette and
+puts the more detailed rod-shaped cell illustration on the opening spread.
+Page motion lasts 620 ms, with a 170 ms rustle at lower gain. Tap either drink
+or press Enter/Space for its own straw-to-mouth sip, puckered mouth and a quiet
+280 ms slurp. The male takes a quicker sip. Fluid levels fall after drinking.
+Dragging the jug near the glass still pours, with Shift+Enter as the keyboard
+equivalent. Home restores drinks and books. All changes remain unpublished.
+
+Follow-up verification: both straw-to-mouth sips were inspected in the browser,
+including the male at 360 px. Custom scale 1.1 and position were identical
+before and after the larger worm's sip. Drag-to-pour and Shift+Enter both
+started pouring. Escape removed the active animation and temporary mouth.
+No horizontal overflow at 360, 768, 1024 or 1440 px, and no console errors.
+Fresh full-page exports were 345x2549, 753x2424, 1009x1950 and 1425x1928,
+but the known stitching fault prevents treating them as full-page approval
+proofs. Regular viewport renders were inspected instead. Syntax, Claremont,
+Edinburgh, Ahmedabad and six-location checks pass. Audio timing and lifecycle
+were tested, but subjective sound quality still needs a listening review.
+
+Earlier preview record below is retained for history. Its references to
+unchanged resting book drawings apply only to the first iteration.
+
+Implemented in `claremont-play.js`, with narrow interaction hooks in `game.js`.
+Tap a book or use Enter/Space to open/turn pages. The small hardback opens on
+its own sloping binding. New uncluttered spreads contain original schematic
+bacterial drawings. The original artwork returns with Home. Drag the pitcher
+near the male's tumbler, or activate either drink, to pour. Liquid stays level
+while the pitcher tilts, the glass fills over two servings, and Home refills
+the jug. Both actions have short gesture-triggered synthesized foley.
+
+The background, glasses, original resting drawings and public text are unchanged.
+Bounds and scale pivots are held stable while the art changes. Pointer drop,
+keyboard activation, Home, Escape and custom-size/position restoration were
+checked in the local browser. Geometry, sound-lifecycle, syntax and existing
+Edinburgh/six-location regression checks pass. No console errors or horizontal
+overflow at 360, 768, 1024 and 1440 px. Full-page capture attempts exported
+345x2549, 753x2424, 1009x1950 and 1425x1928. The capture tool still produces
+duplicated sections and blank space, so these are not valid full-page proofs.
+Physical phones, Safari, reduced-motion browser emulation and subjective audio
+quality remain manual checks. The reduced-motion branch changes state without
+running the motion timeline. This work is not committed or deployed yet.
+
 ### Edinburgh playable bagpipes, 2026-09-08
 
 User requested implementation and deployment. Each existing bagpipe plays a

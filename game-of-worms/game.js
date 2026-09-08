@@ -3,7 +3,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260908-ahmedabad-spacing-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260909-wormbook-3";
 import { createPanamaPlay } from "./panama-play.js?v=20260908-flower-close-1";
 import { launchWormConfetti } from "./worm-celebration.js?v=20260908-celebration-1";
 import { createAhmedabadHands } from "./ahmedabad-hands.js?v=20260908-ahmedabad-spacing-1";
@@ -14,6 +14,7 @@ import { createTrivandrumWatering } from "./trivandrum-watering.js?v=20260907-sh
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260907-cryo-sound-1";
 import { createBaliGongs, GONG_FAMILY } from "./bali-gongs.js?v=20260906-gongs-1";
 import { createEdinburghPipes } from "./edinburgh-pipes.js?v=20260909-pipes-1";
+import { createClaremontPlay } from "./claremont-play.js?v=20260909-wormbook-3";
 import { createBaliCacao } from "./bali-cacao.js?v=20260908-crack-1";
 import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-fans-1";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
@@ -693,6 +694,7 @@ let unmountLiveLoupes = () => {};
 const n2CryoFlight = createN2CryoFlight(els.habitat);
 const baliGongs = createBaliGongs(els.habitat);
 const edinburghPipes = createEdinburghPipes(els.habitat);
+const claremontPlay = createClaremontPlay(els.habitat,updateAccessoryLabelVisibility);
 const baliCacao = createBaliCacao(els.habitat);
 const ahmedabadFans = createAhmedabadFans(els.habitat);
 const canberraCafe = createCanberraCafe(els.habitat);
@@ -701,6 +703,7 @@ const ahmedabadHands = createAhmedabadHands(els.habitat);
 const trivandrumWatering = createTrivandrumWatering(els.habitat);
 const panamaPlay = createPanamaPlay(els.habitat);
 function renderSpecies(item, place) {
+  claremontPlay.clear();
   edinburghPipes.cancel();
   panamaPlay.cancel();
   trivandrumWatering.cancel();
@@ -992,6 +995,7 @@ function updateAccessoryLabelVisibility() {
 }
 
 function constrainVisibleAccessories() {
+  if (claremontPlay.active) return;
   if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || panamaPlay.active) return;
   if (els.habitat.classList.contains("is-changing")) return;
   accessoryIds.forEach(id => {
@@ -1101,6 +1105,7 @@ function announceSelectedAccessorySize() {
 }
 
 els.accessorySizeSlider.addEventListener("input", event => {
+  claremontPlay.cancel();
   panamaPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.cancel();
@@ -1183,6 +1188,7 @@ function saveActiveDoodle() {
 }
 
 function syncDrawingMode() {
+  claremontPlay.cancel();
   edinburghPipes.cancel();
   panamaPlay.cancel();
   trivandrumWatering.cancel();
@@ -1301,6 +1307,7 @@ function syncFittedHeadwearMotion(accessory) {
 }
 
 function toggleAccessory(id, force) {
+  claremontPlay.cancel();
   edinburghPipes.cancel();
   panamaPlay.cancel();
   trivandrumWatering.cancel();
@@ -1368,7 +1375,10 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
+      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${claremontPlay.handles(piece) || edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
+      if (piece.dataset.accessoryFamily === "eca250-california-lemonade") {
+        piece.setAttribute("aria-keyshortcuts", `${piece.getAttribute("aria-keyshortcuts")} Shift+Enter`);
+      }
       addAccessoryHitTarget(piece);
     });
   });
@@ -1454,9 +1464,9 @@ function finishAccessoryDrag(event) {
   moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
-    if (event.type === "pointerup") baliCacao.drop(piece);
+    if (event.type === "pointerup") { baliCacao.drop(piece); claremontPlay.drop(piece); }
   }
-  else if (event.type === "pointerup") { edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); }
+  else if (event.type === "pointerup") { claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1465,6 +1475,9 @@ function moveActiveAccessoryPointer(event) {
   if (!activeAccessoryDrag || !activeAccessoryDrag.pointers.has(event.pointerId)) return;
   const { id, wormPart, piece } = activeAccessoryDrag;
   event.preventDefault();
+  if(claremontPlay.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
+    claremontPlay.cancel();activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
+  }
   if(edinburghPipes.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
     edinburghPipes.cancel();activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
   }
@@ -1540,6 +1553,7 @@ function wireAccessoryPieces() {
       if (ishigakiPlay.active) return;
       if (n2CryoFlight.active) return;
       if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
+      if(!claremontPlay.handles(piece))claremontPlay.cancel();
       if(!edinburghPipes.handles(piece))edinburghPipes.cancel();
       panamaPlay.cancel();
       trivandrumWatering.cancel();
@@ -1585,6 +1599,11 @@ function wireAccessoryPieces() {
       if (ishigakiPlay.active) { if(event.key === "Escape" || event.key === "Home")ishigakiPlay.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
       if (n2CryoFlight.active) { if(event.key === "Escape" || event.key === "Home")n2CryoFlight.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
       if (piece.getAttribute("tabindex") !== "0" || drawingEnabled || !activeWardrobe().has(id)) return;
+      if ((event.key === "Enter" || event.key === " ") && claremontPlay.handles(piece)) {
+        event.preventDefault();if(!event.repeat)claremontPlay.start(piece,event.shiftKey);return;
+      }
+      if(event.key === "Home")claremontPlay.reset(piece);
+      else if (["Escape", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key))claremontPlay.cancel();
       if ((event.key === "Enter" || event.key === " ") && edinburghPipes.handles(piece)) {
         event.preventDefault();if(!event.repeat)edinburghPipes.start(piece);return;
       }
