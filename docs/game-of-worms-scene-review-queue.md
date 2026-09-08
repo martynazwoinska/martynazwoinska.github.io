@@ -9,9 +9,9 @@ earlier illustration revisions. It is not a new claim that all older scenes
 have poor drawings or require animations.
 
 - 31 active scenes, counted from the current accessory catalogue.
-- 20 remain on this pass's checklist: Nambucca Heads in design discussion and 19 waiting.
+- 20 remain on this pass's checklist: Nambucca Heads approved for publication and 19 waiting.
 - 11 have already received the recent interaction pass. Leave them closed.
-- No completed revision is awaiting publication. Dois Rios is live at `8cbf580`.
+- Nambucca Heads is approved and awaiting publication. Dois Rios is live at `8cbf580`.
 
 "To check" means review once and decide **keep**, **small fix**, or **rework**.
 Keeping an approved scene unchanged is a valid completed review. Absence of a
@@ -29,7 +29,7 @@ just to decide the next target.
 
 | Order | Species | Location | Status | Starting point for the single review |
 | --- | --- | --- | --- | --- |
-| 1 | briggsae | Nambucca Heads, New South Wales · QG2814 | Design discussion | Reviewed 2026-09-08. Keep the background. Proposed rework: working flower presses, V-Wall-inspired rock painting and quiet painting aprons. Replace the culture plates and DNA cards. Concepts and new labels are not yet approved. See the location dossier. |
+| 1 | briggsae | Nambucca Heads, New South Wales · QG2814 | Approved | Final contextual preview and English-only wording approved for deployment 2026-09-08. Working flower presses, V-Wall-inspired rock painting and fitted painting aprons. Background unchanged. Publication verification pending. See the location dossier. |
 | 2 | nigoni | Ho Chi Minh City · JU4356 | To check | Carambola trays, ITS2 cards and tree calipers. Check whether the concepts are engaging enough before further drawing polish. |
 | 3 | tropicalis | Saint-Benoît, Réunion · JU1373 | To check | Torch-ginger trays, type-isolate badges and rain gauges. Assess the quieter scientific props. |
 | 4 | briggsae | Kauaʻi, Hawaiʻi · QG130 | To check | Kukui carts, root carousels and ribbon hoops. Check what already moves before proposing any extra activity. This is not the elegans recording scene. |
@@ -74,6 +74,11 @@ browser or physical device.
 | briggsae | Dois Rios, Ilha Grande, Brazil · EG5612 | Done | Jackfruit, Brazilian music and neckerchiefs approved and deployed at `8cbf580`. Full-page capture and manual listening limitations remain in PROJECT_STATUS.md. |
 
 ## How to keep the list useful
+
+Small shared-map issue noted during Nambucca QA: at the normal narrow browser
+width, a pointer click targeted at Nambucca selected nearby Queensland. Keyboard
+selection reached the correct record. Recheck these two hit areas separately
+from the scene artwork. No map change was made in this preview.
 
 1. Open this checklist first. Inspect only the next selected scene and its
    relevant files. Do not tour the whole atlas again.

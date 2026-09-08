@@ -1,14 +1,16 @@
 # Nambucca Heads *Caenorhabditis briggsae* QG2814 location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-09-08
 
-## Interaction follow-up proposal, 2026-09-08
+## Approved interaction follow-up, 2026-09-08
 
-Status: design discussion only. Martyna asked to begin Nambucca after publishing
-Brazil. No new objects, labels or public prose are approved yet.
+Status: Martyna approved the final contextual preview and requested deployment
+on 2026-09-08, acknowledging the full-page capture and manual listening limits.
+Approved English-only labels: Flower presses, Rock painting, Painting aprons.
+Publication verification is tracked in PROJECT_STATUS.md.
 
-The current garden painting remains suitable and must stay unchanged. Presses,
-plates and DNA cards are all static. Proposed replacement direction:
+The approved garden painting stays unchanged. The new local implementation
+replaces the old static presses, plates and DNA cards:
 
 1. Keep flower pressing, with a properly constructed working press. The larger
    worm closes the press while the male removes a flattened flower from his
@@ -29,6 +31,41 @@ collection record remains the CaeNDR flower sample documented below.
 Only one activity should run at a time. Preserve individual dragging, scaling,
 Home reset, keyboard activation and reduced motion. Keep aprons and hands clear
 of the faces. Review final construction and full-size placement before approval.
+
+### Construction references and implemented details
+
+- [RHS, Pressing flowers and leaves](https://www.rhs.org.uk/education-learning/school-gardening/resources/gardening-club/pressing-flowers-and-leaves):
+  parallel wooden boards, paper/cardboard sandwiches, four corner bolts and
+  wingnuts or straps. The larger prop has four fastenings and layered paper.
+  The male uses a distinct strapped press and sliding flower sheet.
+- [Jackson's artist apron](https://www.jacksonsart.com/en-us/jackson-s-artists-apron-black):
+  canvas, adjustable neck/waist ties and practical pockets informed construction.
+  Both patterns are original, fitted independently to each worm.
+- V-Wall is the regional reference for rock painting. Both pictures are original.
+  No public artwork is copied. Painting reveals five continuous strokes under
+  the bristle tip. The brush lifts between strokes and changes paint colour.
+
+The pressing action compresses and reopens the boards. Real drying takes weeks,
+as the RHS instructions explain. The game does not claim instant preservation
+or that these presses were used to collect QG2814.
+
+Original vector art and short synthesized brush, paper and wood foley live in
+the three nambucca modules. No external image or audio was adapted. Sound starts
+only on activation and stops on interruption. Only the selected worm acts.
+Home clears its painting. Escape, drag/resize, hiding an accessory and changing
+the scene cancel safely. Reduced motion shows a brief static result.
+
+The refinement pass corrected the male apron origin, enlarged both presses,
+added stone facets, split disconnected brush paths and spread the props apart.
+Touch targets are remeasured after the entrance animation has finished.
+The earlier accessory contract below describes historical artwork, not the
+current local replacement.
+
+Approved Tiny surprise, English-only:
+
+> One sample of rotting flowers from a Nambucca Heads rainforest garden produced two laboratory strains.
+
+This keeps the existing first sentence and removes the obsolete accessory list.
 
 ## Exact record
 

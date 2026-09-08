@@ -1,5 +1,17 @@
 # Game of Worms art catalogue
 
+Nambucca approved revision, 2026-09-08: working Flower presses, Rock painting and
+Painting aprons replace the three older QG2814 families. The larger plywood
+press has four threaded posts, wingnuts and paper layers. The male uses a
+strap press with a sliding specimen sheet. A flower and a curved worm are
+painted onto separately constructed stones, with bristles following five
+continuous strokes and lifting between them. The aprons have independent
+patterns, curved hems, pockets, rivets and ties. The original garden is unchanged.
+The refinement pass corrected the apron scaling origin, enlarged the presses,
+added stone facets and separated mobile touch areas. Martyna approved the exact
+contextual preview for deployment. See the Nambucca dossier and PROJECT_STATUS.md
+for publication verification and testing limits.
+
 Dois Rios approved revision, 2026-09-08: the active EG5612 families are now
 Sticky jackfruit, Brazilian music and Floral neckerchiefs. The larger worm
 has a lengthwise jackfruit half and a four-string cavaquinho. The male has

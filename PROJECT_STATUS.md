@@ -45,13 +45,41 @@ Files added: `game-of-worms/dois-rios-art.js`, `dois-rios-play.js`,
 `scripts/check-six-location-accessories.cjs`, this status file, the art catalogue
 and Dois Rios research dossier. No files deleted. Homepage and Cabinet untouched.
 
-### Nambucca Heads next review, 2026-09-08
+### Nambucca Heads approved interaction revision, 2026-09-08
 
-Active design discussion, not an approved replacement or new runtime change.
-Keep the approved garden painting. The current presses, culture plates and
-DNA cards were inspected individually. The proposed direction is flower
-pressing, V-Wall-inspired rock painting and quiet painting aprons. See the
-Nambucca dossier and queue entry. Only this scene was reviewed after Brazil.
+Martyna explicitly approved the final contextual preview, English-only labels
+and Tiny surprise on 2026-09-08 and requested deployment. The approved runtime
+files are unchanged. Implementation is on `codex/kauai-recording-scene`, based
+on `290250a`. Publication verification is pending. Brazil remains live at `8cbf580`.
+
+Six independently drawn props, original short foley and a shared controller
+replace the old QG2814 objects. The approved garden image is untouched. Only one
+activity runs at a time. The brush reveals paint at its tip, the larger press
+compresses its paper layers, and the male pulls out a flower sheet. Fitted aprons
+remain quiet. The first review corrected the male apron scaling origin, added
+stone facets, enlarged presses and separated the phone touch areas. Targets are
+remeasured after the entrance animation settles.
+
+New art/frame/audio tests pass, alongside accessory labels, visit reset, legacy
+refinement and Dois Rios regressions. Browser checks confirm initial accessories
+off, completed painting, retained size/position, single-action replacement,
+Escape and Home reset, pointer activation for both worms, hiding an active
+accessory and resize cleanup. No horizontal overflow at 360, 768, 1024 or 1440 px.
+Normal viewport renders inspected. The Game intentionally has one fixed light
+palette. Reduced-motion frames are unit-tested. Physical devices, Safari and
+subjective sound quality remain manual checks.
+
+The full-page screenshot tool remains defective: phone capture 345 x 2376 and
+small-desktop capture 1009 x 1753 and wide capture 1425 x 1928 contain half-scale/repeated content. The 768 px
+capture failed twice. These are not valid complete-page proofs. Martyna's final
+approval acknowledged this capture limitation and the manual sound check.
+
+Created: `game-of-worms/nambucca-art.js`, `nambucca-play.js`,
+`nambucca-audio.js`, and `scripts/check-nambucca.cjs`.
+Changed: Game accessory dispatch, game controller and page module version,
+this status file, art catalogue, Nambucca dossier and scene review checklist.
+No files deleted. Homepage and Cabinet untouched. The checklist retains
+Nambucca as approved and awaiting publication, with 19 other scenes still waiting.
 
 ### Panama recorded scissors sound, 2026-09-08
 
