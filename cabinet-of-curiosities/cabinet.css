@@ -1025,7 +1025,6 @@ button { color: inherit; }
   margin: 0 auto;
   padding: 12px 18px 36px;
 }
-.portrait-cabinet-toggle { display: block; margin: 0 auto 24px; }
 .portrait-collection h1 {
   margin: 0 0 24px;
   font-family: var(--display);
@@ -1116,6 +1115,17 @@ button { color: inherit; }
   text-align: left;
 }
 .is-scene-interactive .object-preview:not([hidden]) { display: block; }
+/* Landscape phones use the full height; controls overlay the scene.
+   One shared, proportional transform keeps the picture and hotspots aligned. */
+@media (pointer: coarse) and (orientation: landscape) and (max-height: 600px) {
+  .cabinet-page.is-scene-interactive {
+    --mobile-top: 0px;
+    --mobile-bottom: 0px;
+    --scene-height: 100dvh;
+    --scene-width: calc(100dvh * 1905.7456 / 1055.5197);
+  }
+  .is-scene-interactive .cabinet-header { background:transparent; border-bottom:0; }
+}
 @media (orientation: portrait) {
   .is-scene-interactive .explore-hint { visibility: hidden; }
 }

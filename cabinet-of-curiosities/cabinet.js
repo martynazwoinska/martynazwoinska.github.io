@@ -24,7 +24,6 @@
   const panelClose = document.getElementById('collection-close');
   const collectionList = document.getElementById('collection-list');
   const portraitList = document.getElementById('portrait-collection-list');
-  const portraitCabinetToggle = document.getElementById('portrait-cabinet-toggle');
   let portraitExploring = false;
   const dialog = document.getElementById('detail-dialog');
   const detailClose = document.getElementById('detail-close');
@@ -204,7 +203,8 @@
     hotspotLayer.querySelectorAll('.hotspot').forEach(button => {
       button.inert = browsing && !button.classList.contains('is-playful');
     });
-    panelToggle.setAttribute('aria-controls', portrait ? 'portrait-collection' : 'collection-panel');
+    panelToggle.textContent = browsing ? 'Cabinet view' : 'Browse collection';
+    panelToggle.setAttribute('aria-controls', browsing ? 'cabinet-stage' : (portrait ? 'portrait-collection' : 'collection-panel'));
     if (portrait) panelToggle.removeAttribute('aria-expanded');
     else panelToggle.setAttribute('aria-expanded', String(panel.open));
     const shouldEnable = sceneNavigationQuery.matches || (portrait && portraitExploring);
@@ -831,20 +831,15 @@
   panelToggle.addEventListener('click', () => {
     if (portraitQuery.matches) {
       const wasExploring = portraitExploring;
-      portraitExploring = false;
+      portraitExploring = !wasExploring;
+      window.scrollTo(0, 0);
       configureSceneNavigation();
-      if (wasExploring) portraitCabinetToggle.focus();
-      else document.getElementById('portrait-collection-heading').scrollIntoView({ block: 'start' });
+      if (wasExploring) document.getElementById('portrait-collection-heading').scrollIntoView({ block: 'start' });
+      else cabinetStage.focus({ preventScroll: true });
       return;
     }
     if (!panel.open) openPanel();
     else closePanel();
-  });
-  portraitCabinetToggle.addEventListener('click', () => {
-    portraitExploring = true;
-    window.scrollTo(0, 0);
-    configureSceneNavigation();
-    cabinetStage.focus({ preventScroll: true });
   });
   panelClose.addEventListener('click', closePanel);
   panel.addEventListener('close', () => {

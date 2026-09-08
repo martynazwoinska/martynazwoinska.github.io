@@ -22,6 +22,7 @@
     <div class="map-heading"><h2 id="chocolate-map-title">Uppsala, in chocolate</h2><button type="button" class="map-close" autofocus>Close</button></div>
     <p class="map-disclaimer">Bean-to-bar and fine craft chocolate in Uppsala and online.</p>
     <div class="map-groups" role="group" aria-label="Shop categories"><button type="button" data-group="uppsala" aria-pressed="true">In Uppsala</button><button type="button" data-group="online" aria-pressed="false">Online shops</button><button type="button" data-group="makers" aria-pressed="false">Swedish makers</button></div>
+    <div class="map-groups map-regions" role="group" aria-label="Online shop regions" hidden><button type="button" data-region="sweden" aria-pressed="true">Sweden</button><button type="button" data-region="nordics" aria-pressed="false">Other Nordics</button><button type="button" data-region="europe" aria-pressed="false">Rest of Europe</button></div>
     <div class="map-picker"><label for="map-select">Choose a shop</label><select id="map-select" class="map-select"></select></div>
     <p class="map-makers-scope" hidden>This section focuses on Swedish bean-to-bar and tree-to-bar chocolate. These makers start with cocoa beans rather than remelting ready-made chocolate. For makers with mixed ranges, look for their bean-to-bar bars.</p>
     <div class="map-layout"><div class="map-canvas"><div class="map-frame"></div><p class="map-attribution">Map and coordinates © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> <a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noopener noreferrer">ODbL</a></p><p class="map-disclaimer">Select a numbered pin or choose a shop. Brands and availability can vary by branch.</p></div>
@@ -31,17 +32,18 @@
   const select = $('.map-select');
   const physical = places.filter(p=>p.group==='uppsala');
   const shopMap=window.createCabinetShopMap($('.map-frame'),physical,id=>{select.value=id;showPlace();});
-  let current = places[0]; let group = 'uppsala';
+  let current = places[0]; let group = 'uppsala'; let region = 'sweden';
   const remembered = {};
+  const selectionKey = () => group === 'online' ? 'online:'+region : group;
   function link(label, url) {
     const a = document.createElement('a'); a.textContent = label; a.href = url;
     a.target = '_blank'; a.rel = 'noopener noreferrer'; $('.map-links').append(a);
   }
   function showPlace() {
     current = places.find(p => p.id === select.value);
-    remembered[group] = current.id;
+    remembered[selectionKey()] = current.id;
     $('.map-place-name').textContent = group === 'online' ? (current.onlineName || current.name) : current.name;
-    $('.map-address').textContent = group === 'uppsala' ? current.address : (current.makerType || 'Online shop');
+    $('.map-address').textContent = group === 'uppsala' ? current.address : (group === 'online' ? (current.country || 'Sweden') : current.makerType);
     $('.map-selection').textContent = current.brands?.length ? 'Brands sold: '+current.brands.join(', ')+'.' : (current.selection || '');
     $('.map-selection').hidden = !$('.map-selection').textContent;
     $('.map-caution').hidden = !current.publicNote; $('.map-caution').textContent = current.publicNote || '';
@@ -61,8 +63,11 @@
     dialog.querySelectorAll('[data-group]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.group === group)));
     $('.map-canvas').hidden = group !== 'uppsala'; $('.map-layout').classList.toggle('is-online', group !== 'uppsala');
     $('.map-makers-scope').hidden = group !== 'makers';
-    select.replaceChildren(...places.filter(p => p.group === group || (group === 'online' && p.onlineName && p.shop)).map(p => new Option(group === 'uppsala' ? (physical.indexOf(p)+1)+' '+p.name : (group === 'online' ? (p.onlineName || p.name) : p.name),p.id)));
-    if (remembered[group]) select.value = remembered[group];
+    $('.map-regions').hidden = group !== 'online';
+    dialog.querySelectorAll('[data-region]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.region === region)));
+    const choices = places.filter(p => group === 'online' ? (p.group === 'online' || (p.onlineName && p.shop)) && (p.region || 'sweden') === region : p.group === group);
+    select.replaceChildren(...choices.map(p => new Option(group === 'uppsala' ? (physical.indexOf(p)+1)+' '+p.name : (group === 'online' ? (p.onlineName || p.name) : p.name),p.id)));
+    if (remembered[selectionKey()]) select.value = remembered[selectionKey()];
     showPlace();
     if (dialog.open && group === 'uppsala') shopMap.show(); else shopMap.hide();
   }
@@ -114,5 +119,6 @@
   window.addEventListener('pagehide',resetDrawer);
   document.getElementById('scene-reset')?.addEventListener('click',()=>{if(opening)resetDrawer();});
   dialog.querySelectorAll('[data-group]').forEach(b=>b.addEventListener('click',()=>setGroup(b.dataset.group)));
+  dialog.querySelectorAll('[data-region]').forEach(b=>b.addEventListener('click',()=>{region=b.dataset.region;setGroup('online');}));
   select.addEventListener('change',showPlace);
 })();
