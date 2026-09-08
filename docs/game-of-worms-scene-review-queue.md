@@ -11,7 +11,8 @@ have poor drawings or require animations.
 - 31 active scenes, counted from the current accessory catalogue.
 - 19 scenes remain to check on this pass's checklist.
 - 12 have already received the recent interaction pass. Leave them closed.
-- No approved revision is awaiting publication. Nambucca is live at `80310a1`.
+- Ho Chi Minh City's exact preview and copy are approved for deployment.
+  It stays in the 19 open entries until publication is verified.
 
 "To check" means review once and decide **keep**, **small fix**, or **rework**.
 Keeping an approved scene unchanged is a valid completed review. Absence of a
@@ -28,7 +29,7 @@ Do not reopen completed scenes just to decide the next target.
 
 | Order | Species | Location | Status | Starting point for the single review |
 | --- | --- | --- | --- | --- |
-| 1 | nigoni | Ho Chi Minh City · JU4356 | To check | Carambola trays, ITS2 cards and tree calipers. Check whether the concepts are engaging enough before further drawing polish. |
+| 1 | nigoni | Ho Chi Minh City · JU4356 | Approved | Shared scooter, starfruit preparation/tasting and phin/iced coffee approved for deployment. Publication verification pending. See the dossier for QA and the recurring full-page capture limitation. |
 | 2 | tropicalis | Saint-Benoît, Réunion · JU1373 | To check | Torch-ginger trays, type-isolate badges and rain gauges. Assess the quieter scientific props. |
 | 3 | briggsae | Kauaʻi, Hawaiʻi · QG130 | To check | Kukui carts, root carousels and ribbon hoops. Check what already moves before proposing any extra activity. This is not the elegans recording scene. |
 | 4 | tropicalis | Oʻahu, Hawaiʻi · ECA789 | To check | Petal trumpets, raindrop harps and cacao-key xylophones. Check whether the instruments are usable and whether their actions compete. |

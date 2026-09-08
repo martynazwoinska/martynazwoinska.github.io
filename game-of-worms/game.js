@@ -3,7 +3,8 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260908-nambucca-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260908-hcmc-1";
+import { createHcmcPlay } from "./hcmc-play.js?v=20260908-hcmc-1";
 import { createNambuccaPlay } from "./nambucca-play.js?v=20260908-nambucca-recorded";
 import { createDoisRiosPlay } from "./dois-rios-play.js?v=20260908-dois-rios-1";
 import { createPanamaPlay } from "./panama-play.js?v=20260908-snip-2";
@@ -137,7 +138,7 @@ const species = [
       { name: "São Tomé · JU2484", sceneLabel: "Forest fruit · São Tomé · São Tomé and Príncipe", coordinates: [6.6, 0.2], source: "Félix Lab", style: "rainforest", strain: "JU2484", history: "This female-founded C. nigoni line came from an unidentified rotten fruit lying on the forest floor on São Tomé." },
       { name: "Mahahual, Mexico · JU2617", sceneLabel: "Rotting fruit · Mahahual · Mexico", coordinates: [-87.71, 18.72], source: "Worldwide Worms/Félix JU2617 record", style: "farm", strain: "JU2617", history: "A heap of rotting fruit—mostly oranges—in a rural garden in Mahahual yielded this C. nigoni line." },
       { name: "Mauritius · JU2909", sceneLabel: "Rotten fruit · Mauritius", coordinates: [57.4061, -20.2914], source: "Worldwide Worms/Félix JU2909 record", style: "rainforest", strain: "JU2909", history: "An oval fruit with a large woody nut yielded both C. nigoni and C. briggsae in the same sample. The C. nigoni line began with one female larva and one male." },
-      { name: "Ho Chi Minh City · JU4356", sceneLabel: "Rotten carambola · Ho Chi Minh City · Vietnam", coordinates: [106.6939439, 10.7742239], source: "Félix Lab Worldwide Worms: JU4356", style: "rainforest", strain: "JU4356", history: "This worm came from one rotten carambola collected from the ground in a Ho Chi Minh City garden in 2022. A DNA marker and successful mating tests supported its identification as C. nigoni. The carambola trays, DNA cards and tree calipers connect the worm to the fruit, the identification process and the city’s managed urban canopy." },
+      { name: "Ho Chi Minh City · JU4356", sceneLabel: "Rotten carambola · Ho Chi Minh City · Vietnam", coordinates: [106.6939439, 10.7742239], source: "Félix Lab Worldwide Worms: JU4356", style: "rainforest", strain: "JU4356", history: "This worm came from one rotten carambola collected from the ground in a Ho Chi Minh City garden in 2022. A DNA marker and successful mating tests supported its identification as C. nigoni." },
       { name: "Lombok, Indonesia · HPT26", sceneLabel: "Rotten fig · Lombok · Indonesia", coordinates: [116.239667, -8.527466], source: "Devi et al. 2025", style: "rainforest", strain: "HPT26", history: "This C. nigoni line came from rotting Ficus fruit in Lombok in May 2024, making it the newest collection represented in the game." }
     ]
   },
@@ -707,6 +708,10 @@ const ahmedabadHands = createAhmedabadHands(els.habitat);
 const trivandrumWatering = createTrivandrumWatering(els.habitat);
 const panamaPlay = createPanamaPlay(els.habitat);
 const doisRiosPlay = createDoisRiosPlay(els.habitat);
+const hcmcPlay = createHcmcPlay(els.habitat, () => {
+  refreshAccessoryPieceControls();
+  queueAccessoryConstraints();
+});
 const nambuccaPlay = createNambuccaPlay(els.habitat, () => {
   refreshAccessoryPieceControls();
   queueAccessoryConstraints();
@@ -718,6 +723,7 @@ function renderSpecies(item, place) {
   panamaPlay.cancel();
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
+  hcmcPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.clear();
   ishigakiPlay.clear();
@@ -1008,7 +1014,7 @@ function updateAccessoryLabelVisibility() {
 
 function constrainVisibleAccessories() {
   if (claremontPlay.active || araucaniaPlay.active) return;
-  if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || panamaPlay.active || doisRiosPlay.active || nambuccaPlay.active) return;
+  if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || panamaPlay.active || doisRiosPlay.active || nambuccaPlay.active || hcmcPlay.active) return;
   if (els.habitat.classList.contains("is-changing")) return;
   accessoryIds.forEach(id => {
     if (!activeWardrobe().has(id)) return;
@@ -1122,6 +1128,7 @@ els.accessorySizeSlider.addEventListener("input", event => {
   panamaPlay.cancel();
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
+  hcmcPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.cancel();
   ishigakiPlay.clear();
@@ -1209,6 +1216,7 @@ function syncDrawingMode() {
   panamaPlay.cancel();
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
+  hcmcPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.clear();
   ishigakiPlay.clear();
@@ -1331,6 +1339,7 @@ function toggleAccessory(id, force) {
   panamaPlay.cancel();
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
+  hcmcPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.clear();
   ishigakiPlay.clear();
@@ -1411,7 +1420,7 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${araucaniaPlay.handles(piece) || claremontPlay.handles(piece) || edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || doisRiosPlay.handles(piece) || nambuccaPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
+      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${araucaniaPlay.handles(piece) || claremontPlay.handles(piece) || edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || doisRiosPlay.handles(piece) || nambuccaPlay.handles(piece) || hcmcPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
       if (piece.dataset.accessoryFamily === "eca250-california-lemonade") {
         piece.setAttribute("aria-keyshortcuts", `${piece.getAttribute("aria-keyshortcuts")} Shift+Enter`);
       }
@@ -1502,7 +1511,7 @@ function finishAccessoryDrag(event) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") { baliCacao.drop(piece); claremontPlay.drop(piece); }
   }
-  else if (event.type === "pointerup") { araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); }
+  else if (event.type === "pointerup") { araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); hcmcPlay.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1598,6 +1607,7 @@ function wireAccessoryPieces() {
       panamaPlay.cancel();
       doisRiosPlay.cancel();
       nambuccaPlay.cancel();
+      hcmcPlay.cancel();
       trivandrumWatering.cancel();
       if (ahmedabadHands.active) ahmedabadHands.cancel();
       baliCacao.cancel();
@@ -1659,6 +1669,10 @@ function wireAccessoryPieces() {
         event.preventDefault(); if(!event.repeat)doisRiosPlay.start(piece); return;
       }
       if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) doisRiosPlay.cancel();
+      if ((event.key === "Enter" || event.key === " ") && hcmcPlay.handles(piece)) {
+        event.preventDefault(); if (!event.repeat) hcmcPlay.start(piece); return;
+      }
+      if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) hcmcPlay.cancel();
       if ((event.key === "Enter" || event.key === " ") && nambuccaPlay.handles(piece)) {
         event.preventDefault(); if(!event.repeat)nambuccaPlay.start(piece); return;
       }

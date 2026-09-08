@@ -1,8 +1,94 @@
 # Ho Chi Minh City *Caenorhabditis nigoni* JU4356 location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-09-08
 
-> **Current production accessory contract:** `carambola sample trays`, `ITS2 DNA cards`, and `tree survey calipers`. These recognizable objects supersede the earlier abstract mechanism sketches below and retain the exact fruit and identification evidence without reconstructing the private garden.
+> **Approved revision:** Scooter, Starfruit and Vietnamese coffee replace the carambola trays, ITS2 cards and calipers. The approved painted background is unchanged. The earlier briefs below are historical.
+
+## Fruit-delivery revision, 2026-09-08
+
+Martyna approved the exact drawings, interactions, sounds and English-only copy
+for deployment on 2026-09-08, with the full-page capture and listening limitations
+explicitly noted in the approval request. No subsequent visual processing.
+
+- One shared step-through scooter has spoked wheels, fork, suspension, an
+  engine casing, rear exhaust, stitched tandem seat, brake lever and mirror.
+  On tap, the actual illustrated pair adopt separately shaped seated poses.
+  The female steers and the male holds a wooden fruit parcel. They travel
+  right, return from the left and resume their original positions.
+- The female cuts a ribbed carambola on a thick wooden board. Three slices
+  appear at successive knife contacts. The male collects slices from a
+  separate plate with a fork, brings one to his mouth and puckers briefly.
+- The female holds a glass beneath a metal phin as coffee drips into it.
+  The male stirs a separate iced glass, blending the coffee and milk.
+- Tap or Enter/Space starts an action. One action runs at a time. Escape,
+  Home, changing location, hiding the page or resizing cancels safely.
+  The existing position and size controls are preserved. Reduced motion
+  uses brief static states and no sound. Each action returns to its initial
+  state, ready to repeat.
+
+### Construction and cultural references
+
+These references informed original geometry. No source photographs or
+commercial branding were incorporated into the SVGs.
+
+- [HondaGO construction article and side-view motorcycle photographs](https://hondago-bikerental.jp/bike-lab/45041.html).
+  Used for wheel, frame, step-through, seat and steering construction.
+- [Vietnamese phin preparation and component photograph](https://www.viet-jo.com/howto/vietnamese/42).
+  Used for chamber, perforated support, lid and glass proportions.
+- [Fukuoka University plant morphology page](https://staff.fukuoka-edu.ac.jp/fukuhara/keitai/katabamizoku.html).
+  Includes carambola photographs used for the five lengthwise fruit ribs.
+- [Vietnam Tourism: Ho Chi Minh City](https://vietnam.travel/places-to-go/southern-vietnam/ho-chi-minh-city).
+  Regional context for motorbikes and city food culture.
+- [Vietnam Tourism recipes](https://vietnam.travel/sites/default/files/2020-10/Recipes%20from%20Vietnam%20Tourism%20Board.pdf).
+  Context for phin coffee, condensed milk and ice.
+
+Scooter travel, human food preparation and coffee are playful regional props.
+The exact collection evidence remains the carambola record below. No new
+claim is made about the worm's natural diet or observed behaviour.
+
+### Exact proposed public copy
+
+The Game is intentionally English-only. No Swedish or Polish strings exist
+for these controls.
+
+- Shared buttons: `Scooter`, `Starfruit`, `Vietnamese coffee`.
+- Individual accessible controls: `Scooter`, `Starfruit for the female`,
+  `Starfruit for the male`, `Vietnamese coffee for the female`,
+  `Vietnamese coffee for the male`.
+- Heading remains `Tiny surprise`.
+- Body: `This worm came from one rotten carambola collected from the ground in a Ho Chi Minh City garden in 2022. A DNA marker and successful mating tests supported its identification as C. nigoni.`
+
+Only the obsolete final sentence listing the former accessories was removed.
+
+### Verification and files
+
+- New: `game-of-worms/hcmc-art.js`, `hcmc-play.js`, `hcmc-audio.js`, the three
+  `assets/audio/hcmc-*.wav` files and `scripts/check-hcmc.cjs`.
+- Changed: accessory catalogue/dispatch, `game.js`, `index.html`, audio
+  sources, this dossier, art catalogue, scene queue and `PROJECT_STATUS.md`.
+- No files deleted. No homepage or Cabinet changes.
+- Background SHA-256 remains
+  `AE19FD7653630A9F99E89189347F11B9976792BA84D4E997BCD0510AC6F3174F`.
+- Automated tests pass for all five drawings, unique paint IDs, distinct
+  paired constructions, action frames, reduced motion, PCM format/levels,
+  gesture-only sound loading, cancellation, retries and late-load silence.
+  Nambucca, Dois Rios, accessory-label and fresh-visit checks also pass.
+- Browser checks cover all five actions, a complete ride, mutual exclusion,
+  Escape/Home and an edited scooter at x=4 px, scale=1.1 retained after flight.
+  Original body styles return exactly after the ride. No fresh console errors.
+  Pointer taps activated cutting and stirring correctly. A fresh visit had
+  zero visible accessories and zero active effects before toggling them on.
+- Width checks: 360, 768, 1024 and 1440 px, with no document overflow.
+  Scene detail renders were inspected. The Game keeps its fixed light palette.
+- Full-page JPEGs were attempted at every width. Their actual dimensions
+  were 345x2473, 753x2399, 1009x1801 and 1425x1928 px respectively (scrollbar
+  excluded). The capture tool scales content into the left half and repeats
+  lower sections. These are invalid full-page proofs, not visual passes.
+- Physical phones, Safari, pointer dragging and direct audio listening remain
+  unverified by the agent in this pass. Final visual/copy approval was received.
+  Publication verification is pending.
+
+Local preview: `http://127.0.0.1:8765/game-of-worms/?review=hcmc-fruit-delivery`.
 
 ## Purpose
 

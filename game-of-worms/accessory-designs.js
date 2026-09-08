@@ -2,6 +2,7 @@ import { drawWormbook } from "./claremont-book-art.js?v=20260909-wormbook-4";
 import { drawAraucaniaWork, araucaniaLayouts } from "./araucania-art.js?v=20260909-araucania-bites-5";
 import { drawDoisRios, doisRiosLayouts } from "./dois-rios-art.js?v=20260908-dois-rios-1";
 import { drawNambucca, nambuccaLayouts } from "./nambucca-art.js?v=20260908-nambucca-1";
+import { drawHcmc, hcmcLayouts } from "./hcmc-art.js?v=20260908-hcmc-1";
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
 import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260905-tenerife-wings-4";
 import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-santeuil-fit-3";
@@ -45,7 +46,7 @@ const rows = [
   ["nigoni", "São Tomé · JU2484", "São Tomé chocolate bars", "sao-tome-chocolate-bars", "birdsong music boxes", "sao-tome-birdsong-music-boxes", "begonia stained-glass parasols", "sao-tome-begonia-glass-parasols"],
   ["nigoni", "Mahahual, Mexico · JU2617", "reef-ruffle swim costumes", "mahahual-reef-ruffle-swim-costumes", "Caribbean sun spectacles", "mahahual-caribbean-sun-spectacles", "sea-grape beach parasols", "mahahual-sea-grape-beach-parasols"],
   ["nigoni", "Mauritius · JU2909", "wriggle-powered ravanne drums", "mauritius-ravanne-crawler-drum", "Vacoas fruit-gathering tail baskets", "mauritius-vacoas-tail-scoop", "dodo-beak fruit grabbers", "mauritius-dodo-beak-fruit-grabber"],
-  ["nigoni", "Ho Chi Minh City · JU4356", "carambola sample trays", "ju4356-carambola-ground-contact-stage", "ITS2 DNA cards", "ju4356-its2-ribbon-reader", "tree survey calipers", "hcmc-urban-canopy-census-engine"],
+  ["nigoni", "Ho Chi Minh City · JU4356", "Scooter", "ju4356-shared-scooter", "Starfruit", "ju4356-starfruit-preparation", "Vietnamese coffee", "ju4356-phin-coffee"],
   ["nigoni", "Lombok, Indonesia · HPT26", "Lingsar spring collars", "lingsar-spring-collar", "Ficus fruit transformations", "lingsar-ficus-fruit-transformation", "spring-water currents", "lingsar-springwater-current"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "Balinese endek wrap", "ju1873-balinese-endek-wrap", "Balinese gamelan gong", "ju1873-balinese-gamelan-gong"],
   ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Flower bait", "qg2726-flower-bait", "Leaf cutting", "qg2726-leaf-cutting"],
@@ -77,7 +78,7 @@ const santeuilRendererFamilies = new Set(["santeuil-railway-driver-uniform", "sa
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
 const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-avocado-snack-bowl"]);
 const kauaiRendererFamilies = new Set(["xz1516-forest-bird-headphones", "xz1516-ohia-blossom-microphone", "xz1516-reel-to-reel-recorder"]);
-const sharedAccessoryFamilies = new Set(["xz1516-reel-to-reel-recorder"]);
+const sharedAccessoryFamilies = new Set(["xz1516-reel-to-reel-recorder", "ju4356-shared-scooter"]);
 const actRendererFamilies = new Set(["canberra-flat-white-cafe", "canberra-linen-napkins", "oconnor-cockatoo-cafe-raid"]);
 const claremontRendererIds = new Set([
   "elegans::Claremont, California · ECA250::headwear",
@@ -6130,6 +6131,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawDoisRios(group, item, companion)) return true;
   if (drawRefinedAccessory(group, item, companion)) return true;
   if (drawNambucca(group, item, companion)) return true;
+  if (drawHcmc(group, item, companion)) return true;
   if (drawAraucaniaWork(group, item, companion)) return true;
   if (drawKauaiRecording(group, item, companion)) return true;
   if (drawSanteuilRefinement(group, item, companion)) return true;
@@ -6312,7 +6314,7 @@ function renderPiece(target, item, wormPart) {
     ,"qg2814-five-day-two-plate-relay": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
     ,"qg2814-18s-identity-ribbon-reader": { primary: [381, 258, .34, -1], companion: [194, 294, .27, 2] }
   };
-  const customLayout = nambuccaLayouts[item.family]?.[wormPart] ?? doisRiosLayouts[item.family]?.[wormPart] ?? araucaniaLayouts[item.family]?.[wormPart] ?? refinedLayouts[item.family]?.[companion ? 1 : 0] ?? customLayouts[item.family]?.[wormPart];
+  const customLayout = hcmcLayouts[item.family]?.[wormPart] ?? nambuccaLayouts[item.family]?.[wormPart] ?? doisRiosLayouts[item.family]?.[wormPart] ?? araucaniaLayouts[item.family]?.[wormPart] ?? refinedLayouts[item.family]?.[companion ? 1 : 0] ?? customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;
   const widthBias = 1 + item.geometry.widthStep * .035;
   const heightBias = 1 + item.geometry.heightStep * .03;

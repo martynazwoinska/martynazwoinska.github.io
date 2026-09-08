@@ -11,6 +11,31 @@ pass and 12 completed, including the published Nambucca revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+### Ho Chi Minh City approved fruit-delivery revision, 2026-09-08
+
+Martyna approved implementation of the proposed JU4356 scene. Local-only files
+now provide one shared scooter ride, female starfruit cutting/male collecting
+and tasting, and phin brewing/iced-coffee stirring. Only one activity runs at
+a time. Three CC0 recorded cues cover scooter travel, fruit cutting and stirring.
+The original background is unchanged. Catalogue labels are Scooter, Starfruit
+and Vietnamese coffee. The obsolete accessory-list sentence was removed from
+Tiny surprise. Exact English-only copy is in the location dossier.
+
+Five SVGs received a refinement pass for construction, tandem seating, fruit
+ribs, hand targets, tray contents and initial placement. New drawing/frame/audio
+tests and targeted regressions pass. Browser action, keyboard cancellation,
+mutual exclusion and retained x=4 px/scale=1.1 scooter checks pass. No fresh
+console errors. Width checks at 360/768/1024/1440 px show no horizontal overflow.
+Full-page capture remains defective at all four widths: half-width content and
+repeated sections. The dossier records actual JPEG sizes and this limitation.
+Physical-device/Safari, pointer-drag and direct-listening checks remain manual.
+
+Martyna approved the exact visual/copy preview for deployment, explicitly aware
+of the capture and listening limitations. Publication verification is pending.
+Branch: `codex/kauai-recording-scene`.
+Preview: `http://127.0.0.1:8765/game-of-worms/?review=hcmc-fruit-delivery`.
+Keep this scene in the open review queue. No other scene was revised.
+
 ### Nambucca recorded-sound follow-up, 2026-09-08
 
 Martyna requested more accurate sounds and deployment. The Nambucca audio

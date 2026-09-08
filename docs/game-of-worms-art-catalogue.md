@@ -1,5 +1,16 @@
 # Game of Worms art catalogue
 
+Ho Chi Minh City approved revision, 2026-09-08: Scooter, Starfruit and Vietnamese
+coffee replace the previous JU4356 trays, DNA cards and calipers. One shared
+scooter carries the pair in distinct riding poses. The female cuts starfruit
+while the male collects and tastes slices. A phin brew and an iced stirring
+glass are separately constructed coffee props. The refinement pass improved
+the tandem seating, passenger parcel, fruit ribs/cut face, source tray and
+initial spacing. The original background is byte-identical. Martyna approved
+the exact preview and English-only copy for deployment, with the full-page
+capture and listening limitations noted. Publication verification is pending.
+See the Ho Chi Minh City dossier for references, tests and capture limitations.
+
 Nambucca approved revision, 2026-09-08: working Flower presses, Rock painting and
 Painting aprons replace the three older QG2814 families. The larger plywood
 press has four threaded posts, wingnuts and paper layers. The male uses a

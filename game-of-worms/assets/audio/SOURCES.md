@@ -1,5 +1,37 @@
 # Game sound recordings
 
+## Ho Chi Minh City fruit delivery
+
+Source pages and CC0 licences checked on 2026-09-08. These are short recorded
+foley cues. There is no synthetic fallback or autoplay.
+
+- [Scooter Passage, Joseph SARDIN, BigSoundBank 0533](https://bigsoundbank.com/scooter-passage-s0533.html).
+  Public MP3: `https://bigsoundbank.com/UPLOAD/mp3/0533.mp3`.
+  Source SHA-256: `172db6e5c67ae1628ef3824ce5fe82f403b16be1d04d1ff9c9ae0d8a183b2071`.
+- [Chopping fruit_Short.wav, KaleidacousticsAudio, Freesound 627197](https://freesound.org/people/KaleidacousticsAudio/sounds/627197/).
+  Apple cutting on a plastic board supplies the knife-and-fruit contact.
+  This is foley for the illustrated starfruit and wooden board.
+  Public HQ preview: `https://cdn.freesound.org/previews/627/627197_13875907-hq.mp3`.
+  Source SHA-256: `21f9823bb9cb6e61574a4c33d788f054db26377601907c656f7fb7b74b9bb2e7`.
+- [Stirring glass, ChrisGrundlingh, Freesound 765653](https://freesound.org/people/ChrisGrundlingh/sounds/765653/).
+  A real spoon stirring and touching a glass accompanies the iced coffee.
+  Public HQ preview: `https://cdn.freesound.org/previews/765/765653_15688696-hq.mp3`.
+  Source SHA-256: `73627cc58dbcbc2501434d871c501ef6dc7666968ee9b60a313cd96615ec2a4c`.
+
+Each preview is decoded to mono 44100 Hz, trimmed, DC-centred and peak-normalized,
+with short linear entrance/exit fades. No pitch shift or generated tones.
+
+| Production file | Source start | Length | Peak | Fades in/out | SHA-256 |
+| --- | ---: | ---: | ---: | --- | --- |
+| `hcmc-engine.wav` | 1.55 s | 2.30 s | 0.30 | 75/180 ms | `1bfaedb6835f468a5e099fb4468a5b136ffb18802c8c80cc92bee6c4e743a3d9` |
+| `hcmc-cut.wav` | 3.55 s | 0.48 s | 0.34 | 8/60 ms | `4017849bf4738b54416ff4e10625ac37df678541523daf1cdd96706efbaed149` |
+| `hcmc-stir.wav` | 0.55 s | 2.10 s | 0.26 | 25/140 ms | `039205a92d7b6a11154657128ee5824978ebb763204963ee767c7eff19a6ef78` |
+
+Three production WAVs total 430548 bytes. Runtime gain reduces these levels
+further. Cues stop when an action is interrupted or the page is hidden.
+Late downloads never start a delayed sound. Reduced motion remains silent.
+Listening on actual speakers/headphones remains a manual review item.
+
 ## Nambucca flower presses and rock painting
 
 Source and CC0 licences checked on 2026-09-08:
