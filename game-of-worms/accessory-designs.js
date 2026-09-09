@@ -4,6 +4,7 @@ import { drawDoisRios, doisRiosLayouts } from "./dois-rios-art.js?v=20260908-doi
 import { drawNambucca, nambuccaLayouts } from "./nambucca-art.js?v=20260908-nambucca-1";
 import { drawHcmc, hcmcLayouts } from "./hcmc-art.js?v=20260908-hcmc-1";
 import { drawReunion, reunionLayouts } from "./reunion-art.js?v=20260909-reunion-2";
+import { drawKauaiBath, bathLayouts } from "./kauai-bath-art.js?v=20260909-bath-2";
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
 import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260905-tenerife-wings-4";
 import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-santeuil-fit-3";
@@ -29,7 +30,7 @@ const rows = [
   ["inopinata", "Ishigaki, Japan", "fig UV visors", "fig-fascinator", "field specimen baskets", "sample-pannier", "fig-wasp wings", "wings"],
   ["briggsae", "Ahmedabad, India · AF16", "waistcoats", "af16-embroidered-waistcoat", "kite rigs", "kite-rig", "soil kits", "soil-kit"],
   ["briggsae", "Salt Lake City, Utah · EG4181", "apricot blossom hats", "eg4181-apricot-blossom-hat", "beehive saddle packs", "eg4181-beehive-saddle-pack", "single-tail mountain skis", "eg4181-single-tail-mountain-ski"],
-  ["briggsae", "Kauaʻi, Hawaiʻi · QG130", "kukui-shell glow carts", "qg130-kukui-glow-cart", "root-loop carousel rides", "qg130-root-carousel", "three-worm ribbon hoops", "qg130-three-ribbon-hoops"],
+  ["briggsae", "Kauaʻi, Hawaiʻi · QG130", "Shampoo ginger", "qg130-shampoo-ginger", "Jug and basin", "qg130-jug-basin", "Towels", "qg130-bath-towels"],
   ["briggsae", "Réunion Island · JU1375", "vanilla vine wraps", "ju1375-vanilla-vine-wrap", "sugarcane juice", "ju1375-sugarcane-juice", "Bourbon green gecko companions", "ju1375-bourbon-green-gecko-companion"],
   ["briggsae", "Orsay, France · JU2518", "pressed-flower crowns", "ju2518-rotten-apple-decay-rotoscope", "apple field satchels", "ju2518-virus-association-spectroscope", "notebook & pencil harnesses", "ju2518-six-september-garden-ledger"],
   ["briggsae", "Dois Rios, Ilha Grande, Brazil · EG5612", "Sticky jackfruit", "eg5612-sticky-jackfruit", "Brazilian music", "eg5612-brazilian-music", "Floral neckerchiefs", "eg5612-chita-neckerchiefs"],
@@ -6134,6 +6135,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawNambucca(group, item, companion)) return true;
   if (drawHcmc(group, item, companion)) return true;
   if (drawReunion(group, item, companion)) return true;
+  if (drawKauaiBath(group, item, companion)) return true;
   if (drawAraucaniaWork(group, item, companion)) return true;
   if (drawKauaiRecording(group, item, companion)) return true;
   if (drawSanteuilRefinement(group, item, companion)) return true;
@@ -6316,7 +6318,7 @@ function renderPiece(target, item, wormPart) {
     ,"qg2814-five-day-two-plate-relay": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
     ,"qg2814-18s-identity-ribbon-reader": { primary: [381, 258, .34, -1], companion: [194, 294, .27, 2] }
   };
-  const customLayout = reunionLayouts[item.family]?.[wormPart] ?? hcmcLayouts[item.family]?.[wormPart] ?? nambuccaLayouts[item.family]?.[wormPart] ?? doisRiosLayouts[item.family]?.[wormPart] ?? araucaniaLayouts[item.family]?.[wormPart] ?? refinedLayouts[item.family]?.[companion ? 1 : 0] ?? customLayouts[item.family]?.[wormPart];
+  const customLayout = bathLayouts[item.family]?.[wormPart] ?? reunionLayouts[item.family]?.[wormPart] ?? hcmcLayouts[item.family]?.[wormPart] ?? nambuccaLayouts[item.family]?.[wormPart] ?? doisRiosLayouts[item.family]?.[wormPart] ?? araucaniaLayouts[item.family]?.[wormPart] ?? refinedLayouts[item.family]?.[companion ? 1 : 0] ?? customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;
   const widthBias = 1 + item.geometry.widthStep * .035;
   const heightBias = 1 + item.geometry.heightStep * .03;
@@ -6341,12 +6343,15 @@ function renderPiece(target, item, wormPart) {
   if (item.family === "ju4400-mate") piece.dataset.pieceLabel = companion ? "Kettle" : "Mate";
   if (item.family === "ju4400-sopaipillas") piece.dataset.pieceLabel = companion ? "Sopaipillas" : "Rolling pin";
   if (item.family === "eg5612-brazilian-music") piece.dataset.pieceLabel = companion ? "Hand drum" : "Four-string instrument";
+  if (item.family === "qg130-shampoo-ginger") piece.dataset.pieceLabel = companion ? "Bowl" : "Shampoo ginger";
+  if (item.family === "qg130-jug-basin") piece.dataset.pieceLabel = companion ? "Basin" : "Jug";
+  if (item.family === "qg130-bath-towels") piece.dataset.pieceLabel = "Towel";
   if (piece.dataset.pieceLabel) piece.dataset.pieceLabel = formatAccessoryLabel(piece.dataset.pieceLabel);
   const isSanteuilCompanionProp = companion && ["santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"].includes(item.family);
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
-  const isBodyFittedCloth = ["ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
+  const isBodyFittedCloth = ["qg130-bath-towels", "ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
     : isBodyFittedCloth || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });

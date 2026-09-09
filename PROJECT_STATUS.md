@@ -6,10 +6,44 @@ This file records approved decisions and the verified implementation state. Alwa
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 17 left to check in the current interaction
-pass and 14 completed, including the approved Saint-Benoît revision.
+It tracks all 31 active scenes: 16 left to check in the current interaction
+pass and 15 completed, including the approved Kauaʻi QG130 revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+### Kauaʻi QG130 forest bath, approved for deployment, 2026-09-09
+
+Martyna approved the forest-bath direction and English-only labels: Shampoo
+ginger, Jug and basin, Towels. The new paired activity replaces the random
+carts, carousel and hoops. Original ginger/bowl, jug/basin/dipper and fitted
+towel drawings are in `kauai-bath-art.js`, with isolated action/audio modules.
+The approved forest background, collection copy and other locations are intact.
+
+The first in-page review prompted a narrower layered ginger cone, towel edge
+refinement, moving the basin clear of the tail, and bringing used vessels in
+front of the towels. The male rinses exposed lower body, not the towel.
+There is one foreground action and one recorded sound at a time. Accessories
+remain off on a fresh visit. Changed accessory size was verified unchanged
+after a full ginger action. Enter, Escape, Home, pointer tap and action
+interruption were checked. A legacy SVGMatrix/DOMMatrix mismatch found in the
+first browser run was corrected before final review.
+
+Passing checks: `check-kauai-bath.cjs`, `check-accessory-labels.cjs`,
+`check-accessory-visit.cjs`, `check-six-location-accessories.cjs`,
+`check-reunion.cjs`, `check-nambucca.cjs`, JS syntax and whitespace.
+Normal contextual renders at 360, 768, 1024 and 1440 px have no horizontal
+overflow. The Game keeps its single fixed light palette.
+Full-page captures were requested at all four widths but remain distorted,
+with scaled/repeated content and blank space. Their actual image dimensions
+were 345×2376, 753×2375, 1009×1753 and 1425×1928 respectively. They do not meet
+the full-page proof gate. Reduced-motion frames are unit-tested, not an
+emulated browser preference. Physical devices and Safari are untested. The
+recorded water/cloth sounds need Martyna's listening check.
+
+Preview: `http://127.0.0.1:8765/game-of-worms/?review=kauai-forest-bath`.
+Martyna requested deployment after the final contextual preview on 2026-09-09.
+The approved production drawings and audio are unchanged. Publication is pending.
+See the [QG130 dossier](docs/game-of-worms-location-research/kauai-briggsae.md).
 
 ### Saint-Benoît JU1373 approved for deployment, 2026-09-09
 

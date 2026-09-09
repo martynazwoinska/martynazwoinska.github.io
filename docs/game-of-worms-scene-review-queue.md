@@ -9,8 +9,9 @@ earlier illustration revisions. It is not a new claim that all older scenes
 have poor drawings or require animations.
 
 - 31 active scenes, counted from the current accessory catalogue.
-- 17 scenes remain to check on this pass's checklist.
-- 14 have already received the recent interaction pass. Leave them closed.
+- 16 scenes remain to check on this pass's checklist.
+- 15 have already received the recent interaction pass. Leave them closed.
+- Kauaʻi QG130's final preview was approved for deployment on 2026-09-09.
 - Saint-Benoît JU1373's final preview was approved for deployment on 2026-09-09.
 - Ho Chi Minh City's approved revision is published and verified at `7e37b9a`.
 
@@ -21,16 +22,13 @@ in this checklist.
 
 ## Remaining queue
 
-Kauaʻi QG130 is the next initial priority, based on the previous six-location
-refinement record and the current accessory concepts. QG130 received a targeted
-browser inspection on 2026-09-09. Other remaining entries have not been freshly
-inspected for this pass. After QG130, the order is provisional.
+Oʻahu ECA789 is next in the queue. Remaining entries have not been freshly
+inspected for this pass, so the order is provisional.
 Order numbers retain the original queue positions.
 Do not reopen completed scenes just to decide the next target.
 
 | Order | Species | Location | Status | Starting point for the single review |
 | --- | --- | --- | --- | --- |
-| 2 | briggsae | Kauaʻi, Hawaiʻi · QG130 | Next, rework candidate | Inspected 2026-09-09. Keep the forest setting. Carousel seats are empty and both hoop stands sit apart from the worms. The carts, rides and hoops feel like separate display props. Propose a clearer paired activity before implementation. This is not the elegans recording scene. |
 | 3 | tropicalis | Oʻahu, Hawaiʻi · ECA789 | To check | Petal trumpets, raindrop harps and cacao-key xylophones. Check whether the instruments are usable and whether their actions compete. |
 | 4 | nigoni | Lombok, Indonesia · HPT26 | To check | Lingsar collars, fig transformations and water currents. Preserve the approved collar design. |
 | 5 | tropicalis | Queensland, Australia · QG2904 | To check | Pod drums, funnel megaphones and canopy kaleidoscopes. Verify the existing behaviour before proposing replacements. |
@@ -63,6 +61,7 @@ browser or physical device.
 
 | Species | Location | Status | Work already covered |
 | --- | --- | --- | --- |
+| briggsae | Kauaʻi, Hawaiʻi · QG130 | Approved for deployment | Forest bath with ginger squeezed into the male's bowl, jug/dipper rinsing, fitted towels and recorded water/cloth sounds. Original forest painting retained. Final preview approved 2026-09-09. Full-page capture and manual listening limitations remain documented. |
 | tropicalis | Saint-Benoît, Réunion · JU1373 | Approved for deployment | Lychees with recorded peeling/eating, fitted coats and rain, held bouquet and shared flower arranging. Final contextual preview approved 2026-09-09. Full-page capture and manual listening limitations remain in PROJECT_STATUS.md. |
 | inopinata | Ishigaki, Japan | Done | Wing flutter/flight with sound, figs, visors and baskets. |
 | briggsae | Ahmedabad, India · AF16 | Done | Kites, hands, digging, costumes, sound and mobile pair spacing. |

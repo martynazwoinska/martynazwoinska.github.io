@@ -110,3 +110,54 @@ The accessory construction and placement have been revised. The current paired
 forms supersede the earlier drawing description above. Background and collection
 evidence are unchanged. See the [refinement record](../game-of-worms-six-location-refinement.md)
 and the current [art catalogue](../game-of-worms-art-catalogue.md).
+
+## Forest bath, approved production preview, 2026-09-09
+
+Martyna chose a shared forest-bath activity. This supersedes the carts, carousel
+and hoops above. The painted environment and collection copy remain unchanged.
+Mānoa Chocolate belongs with the Oʻahu tropicalis scene and is not used here.
+
+The English-only Game labels were explicitly approved: **Shampoo ginger**,
+**Jug and basin**, **Towels**. Individual labels: **Shampoo ginger**, **Bowl**,
+**Jug**, **Basin**, **Towel**. Martyna requested deployment after the final
+contextual preview on 2026-09-09.
+
+### Construction and paired roles
+
+- The larger worm holds a red shampoo-ginger cone with layered cupped bracts,
+  a narrow stalk and contained highlights. The male holds a shallow violet
+  glazed bowl. A tap brings them together for two squeezes and falling drops.
+- The larger worm lifts a handled enamel jug and rinses the male's crown.
+  The male uses a small dipper from his oval basin to rinse the large worm's
+  lower exposed body. Rolled rims, handle openings, enamel edges and separate
+  water surfaces define the vessels.
+- The towels follow the two body curves with different silhouettes, tucked
+  corners, woven borders, folds and sparse contained terry texture. Tapping
+  lifts a cloth to the face. The male briefly covers his eyes while drying.
+
+The first contextual review led to a more upright ginger cone, refined towel
+edges, moving the basin clear of the large tail, and bringing used vessels in
+front of the towels. The ginger handover was shifted into the space between
+the worms. The male's rinse targets exposed body below the towel.
+
+### References and limits
+
+- [National Tropical Botanical Garden, Zingiber zerumbet](https://ntbg.org/database/plants/detail/zingiber-zerumbet): ʻawapuhi and the liquid used as shampoo.
+- [NTBG, Culture and education](https://ntbg.org/education/culture/): Hawaiian plant-use context, including gardens on Kauaʻi.
+- [NC State Extension, Zingiber zerumbet](https://plants.ces.ncsu.edu/plants/zingiber-zerumbet/): cone, overlapping bracts, stalk and material reference.
+- [Olde Farm Store, enamelware](https://www.oldefarmstore.com.au/products/enamel): jug and basin construction reference. Original SVGs, no copied photographs or artwork.
+
+Shampoo ginger is a wider Hawaiian plant-use reference. The collection record
+does not identify that plant, document bathing, or identify the sampled fruit.
+This is a playful washing activity, not a reconstruction of collection methods.
+
+### Technical checks and approval status
+
+`scripts/check-kauai-bath.cjs` checks the six original paired drawings, unique
+paint/clip references, finite timelines, reduced-motion frames, recorded PCM
+audio, lazy loading, stop/failure/retry and integration with shared controls.
+Existing label, new-visit, six-location, Réunion and Nambucca checks also pass.
+Normal narrow and wide contextual checks and action testing are recorded in
+PROJECT_STATUS.md. Full-page screenshot capture remains defective. Physical
+devices and Safari are untested, and sound quality needs the user's audition.
+Deployment approval follows the separate request after the final preview.

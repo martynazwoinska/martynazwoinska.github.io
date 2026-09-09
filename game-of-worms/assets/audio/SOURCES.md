@@ -1,5 +1,26 @@
 # Game sound recordings
 
+## Kauaʻi QG130 forest bath, approved for deployment 2026-09-09
+
+Real recordings by Joseph SARDIN, released under CC0 on BigSoundBank.
+
+- [Glass of water, filling #1, recording 1242](https://bigsoundbank.com/glass-of-water-filling-1-s1242.html). A plastic bottle filling a small glass. Source WAV: `https://bigsoundbank.com/UPLOAD/bwf-en/1242.wav`.
+- [Cleaning glass, recording 0689](https://bigsoundbank.com/cleaning-glass-s0689.html). Cloth friction used as quiet wiping foley. Source WAV: `https://bigsoundbank.com/UPLOAD/bwf-en/0689.wav`.
+
+| Production file | Source excerpt | Duration | SHA-256 |
+| --- | --- | --- | --- |
+| `kauai-bath-pour.wav` | 1242, 0.600 s | 1.400 s | `695e17ddc2b047c60d1e6044648aac0d5d8e3534d406a980d15de94d1fd699c0` |
+| `kauai-bath-drip.wav` | 1242, 3.000 s | 0.500 s | `9ec4826779b34f1d496a3aece962dde83342f74dc73f0a5c87b01b191f1503cb` |
+| `kauai-bath-cloth.wav` | 0689, 4.200 s | 0.620 s | `4de33d618958a437193aba239eef781c544b56a0eab7215a3364c61c2cf12ed3` |
+
+Original PCM recordings were excerpted, DC-centred and converted to mono 44100 Hz
+PCM16 WAV. Linear 14 ms attack and 50 ms release fades. Peak amplitudes are
+0.38, 0.26 and 0.30 respectively. No synthesis, looping or pitch shifting.
+These are water and cloth foley, not a field recording of shampoo ginger use.
+Only one foreground voice plays, following a tap or keyboard gesture. Hiding
+the page, stopping an action or changing the scene stops it. Listening approval
+is still required. Source files and preparation script stay in ignored `tmp/`.
+
 ## Saint-Benoît rain, coats and lychees
 
 Approved for deployment 2026-09-09. All four new recordings are CC0, verified on the
