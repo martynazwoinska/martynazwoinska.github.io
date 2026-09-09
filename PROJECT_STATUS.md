@@ -11,7 +11,31 @@ pass and 15 completed, including the approved Kauaʻi QG130 revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
-### Kauaʻi QG130 forest bath, approved for deployment, 2026-09-09
+### Trivandrum loupe blink, 2026-09-09
+
+Martyna requested blinking when either live loupe crosses a worm's face and
+explicitly requested deployment. The existing eyes close briefly along their
+tilted eye line. Both original bodies and the live magnified view react.
+Elliptical glass hit testing uses the current scene, body and accessory
+transforms. Eyes reopen after 310 ms, with at least 2800 ms between blinks.
+Reduced motion disables this decorative reaction. Hiding the loupes, leaving
+the viewport or changing scenes restores the original eye attributes.
+No public copy, artwork files, accessory positions or sizes changed.
+
+Passing checks: new `check-loupe-blink.cjs`, existing `check-live-loupes.cjs`,
+`check-trivandrum-refinement.cjs`, `check-trivandrum-watering.cjs`, syntax and
+whitespace. Browser checks covered each face, overlapping loupes, a male loupe
+resized to 1.1, keyboard movement, accessory toggle, watering and scene cleanup.
+Normal views at 360, 768, 1024 and 1440 px have no horizontal overflow or console
+errors. Requested full-page captures remain defective, with repeated/scaled
+content. Actual captures were 345×2545, 753×2423, 1009×1897 and 1425×1928.
+They are not valid full-page proofs. Physical devices and Safari are untested.
+Reduced motion and offscreen cleanup are unit-tested.
+
+Created `game-of-worms/loupe-blink.js` and `scripts/check-loupe-blink.cjs`.
+Changed the live-loupe integration and Game cache keys. No files deleted.
+
+### Kauaʻi QG130 forest bath, published, 2026-09-09
 
 Martyna approved the forest-bath direction and English-only labels: Shampoo
 ginger, Jug and basin, Towels. The new paired activity replaces the random
@@ -42,7 +66,10 @@ recorded water/cloth sounds need Martyna's listening check.
 
 Preview: `http://127.0.0.1:8765/game-of-worms/?review=kauai-forest-bath`.
 Martyna requested deployment after the final contextual preview on 2026-09-09.
-The approved production drawings and audio are unchanged. Publication is pending.
+The approved production drawings and audio are unchanged. Published in
+`e632c55`, following the unrelated Cabinet commit `0037c33`. Pages run
+`34347245958` succeeded. Public art, runtime, audio module and catalogue
+files match the approved release.
 See the [QG130 dossier](docs/game-of-worms-location-research/kauai-briggsae.md).
 
 ### Saint-Benoît JU1373 approved for deployment, 2026-09-09

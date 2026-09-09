@@ -1,5 +1,6 @@
 // Two local 2x optical windows. SVG references remain live, with no screenshots,
 // network calls or recursive copies of the magnified windows.
+import { mountLoupeBlinks } from './loupe-blink.js?v=20260909-blink-1';
 const ns='http://www.w3.org/2000/svg';
 const add=(g,tag,attrs={})=>{
   const n=document.createElementNS(ns,tag);
@@ -68,12 +69,15 @@ export function mountLiveLoupes(habitat) {
     }
     return {frame,svg,layers};
   });
+  const blinks=mountLoupeBlinks(habitat,lenses);
   let raf=0, disposed=false;
-  const tick=()=>{
+  const tick=now=>{
     if(disposed) return;
-    if(!document.hidden) {
-      const bounds=habitat.getBoundingClientRect();
-      if(bounds.bottom>0&&bounds.top<innerHeight) for(const {frame,svg,layers} of lenses) {
+    const bounds=habitat.getBoundingClientRect();
+    const visible=!document.hidden&&bounds.bottom>0&&bounds.top<innerHeight;
+    blinks.update(now,visible);
+    if(visible) {
+      for(const {frame,svg,layers} of lenses) {
         if(frame.closest('[hidden]')) continue;
         const screen=svg.getScreenCTM();
         if(!screen||Math.abs(screen.a*screen.d-screen.b*screen.c)<1e-8) continue;
@@ -96,6 +100,7 @@ export function mountLiveLoupes(habitat) {
   raf=requestAnimationFrame(tick);
   return ()=>{
     disposed=true; cancelAnimationFrame(raf);
+    blinks.dispose();
     assigned.forEach(source=>source.removeAttribute('id'));
     lenses.forEach(({svg})=>svg.replaceChildren());
     definitions.remove();

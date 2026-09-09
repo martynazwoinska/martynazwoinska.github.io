@@ -11,7 +11,7 @@ have poor drawings or require animations.
 - 31 active scenes, counted from the current accessory catalogue.
 - 16 scenes remain to check on this pass's checklist.
 - 15 have already received the recent interaction pass. Leave them closed.
-- Kauaʻi QG130's final preview was approved for deployment on 2026-09-09.
+- Kauaʻi QG130 is published at `e632c55`, verified on 2026-09-09.
 - Saint-Benoît JU1373's final preview was approved for deployment on 2026-09-09.
 - Ho Chi Minh City's approved revision is published and verified at `7e37b9a`.
 
@@ -61,7 +61,7 @@ browser or physical device.
 
 | Species | Location | Status | Work already covered |
 | --- | --- | --- | --- |
-| briggsae | Kauaʻi, Hawaiʻi · QG130 | Approved for deployment | Forest bath with ginger squeezed into the male's bowl, jug/dipper rinsing, fitted towels and recorded water/cloth sounds. Original forest painting retained. Final preview approved 2026-09-09. Full-page capture and manual listening limitations remain documented. |
+| briggsae | Kauaʻi, Hawaiʻi · QG130 | Done | Forest bath with ginger squeezed into the male's bowl, jug/dipper rinsing, fitted towels and recorded water/cloth sounds. Original forest painting retained. Published at `e632c55`, with successful Pages run `34347245958` and matching public files. Full-page capture and manual listening limitations remain documented. |
 | tropicalis | Saint-Benoît, Réunion · JU1373 | Approved for deployment | Lychees with recorded peeling/eating, fitted coats and rain, held bouquet and shared flower arranging. Final contextual preview approved 2026-09-09. Full-page capture and manual listening limitations remain in PROJECT_STATUS.md. |
 | inopinata | Ishigaki, Japan | Done | Wing flutter/flight with sound, figs, visors and baskets. |
 | briggsae | Ahmedabad, India · AF16 | Done | Kites, hands, digging, costumes, sound and mobile pair spacing. |
@@ -70,7 +70,7 @@ browser or physical device.
 | elegans | Australian Capital Territory | Done | Coffee and biscuits, faster cockatoo theft, napkins and sound. |
 | elegans | Claremont, California · ECA250 | Done | Wormbook drawing and page motion, varied spreads, glasses and lemonade. |
 | elegans | Araucanía, Chile | Done | Compost work, separate food placement, mate and bread eating with revised sounds. |
-| nigoni | Trivandrum, Kerala · JU1325 | Done | Working overlapping loupes and the large can watering the male. |
+| nigoni | Trivandrum, Kerala · JU1325 | Done | Working overlapping loupes and the large can watering the male. On 2026-09-09, added blinking under either loupe, preserving magnification and size. |
 | wallacei | Sanda, Bali · JU1873 | Done | Gongs, female pod strike/opening, male cacao nibs and cracking sound. |
 | tropicalis | Barro Colorado Island, Panama | Done | Flower opening/closing, flower bait, scissors/leaf activity and recorded snip. |
 | briggsae | Dois Rios, Ilha Grande, Brazil · EG5612 | Done | Jackfruit, Brazilian music and neckerchiefs approved and deployed at `8cbf580`. Full-page capture and manual listening limitations remain in PROJECT_STATUS.md. |
