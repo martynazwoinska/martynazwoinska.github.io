@@ -31,6 +31,32 @@ interruption, Escape, Home, scene change, page hiding or reduced-motion change.
 Reduced-motion mode skips the sound. Failed audio loading falls back silently.
 The approved drawings, text, positions and action timelines are unchanged.
 
+## Kauaʻi fuller pours and wet squeeze, approved for deployment 2026-09-09
+
+Two real recordings by Joseph SARDIN, published as CC0 on BigSoundBank:
+
+- [Cold Water in a Mug #2, recording 3314](https://bigsoundbank.com/cold-water-in-a-mug-2-s3314.html). Water poured into a mug. Original WAV: `https://bigsoundbank.com/UPLOAD/bwf-en/3314.wav`.
+- [Sponge and foam, recording 0778](https://bigsoundbank.com/sponge-and-foam-s0778.html). A foamy sponge compressed in a hand. Original WAV: `https://bigsoundbank.com/UPLOAD/bwf-en/0778.wav`.
+
+| Production file | Source excerpt start | Duration | SHA-256 |
+| --- | --- | --- | --- |
+| `kauai-bath-pour-v2.wav` | 3314, 0.350 s | 1.900 s | `50a76447a1efaf0191cfe16e74ec25b2e85eda3e85bf623fa8b174bd92231bbf` |
+| `kauai-bath-scoop.wav` | 3314, 2.250 s | 1.550 s | `e8612a61fbdee9d3d1b96313655ddb22d785a25dee9a3f7d74416af41967abaa` |
+| `kauai-bath-squeeze.wav` | 0778, 0.400 s | 0.640 s | `7402a8cba56ead7ecbcbfc7d64e0521ccb7ddec5c7dfbec6a7ac09ad44cab94c` |
+
+PCM excerpts are DC-centred, resampled to mono 44100 Hz PCM16, and faded with
+12 ms attack and 70 ms release. Peaks are 0.48, 0.42 and 0.40 respectively.
+No synthesis, pitch shifting or looping. The pour starts with the visible
+stream, and each of two cone compressions plays one short squeeze.
+
+These are water and sponge foley used for the fictional forest bath. They are
+not recordings of water striking a worm or of shampoo ginger being squeezed.
+The original water/drip files below are preserved but replaced in the runtime
+by these excerpts. The existing cloth clip is unchanged. One foreground voice,
+gesture-only lazy loading and cancellation remain in place. Source recordings
+and the preparation script stay in ignored `tmp/kauai-bath/`. Martyna approved
+deployment of this update.
+
 ## Kauaʻi QG130 forest bath, approved for deployment 2026-09-09
 
 Real recordings by Joseph SARDIN, released under CC0 on BigSoundBank.

@@ -161,3 +161,22 @@ Normal narrow and wide contextual checks and action testing are recorded in
 PROJECT_STATUS.md. Full-page screenshot capture remains defective. Physical
 devices and Safari are untested, and sound quality needs the user's audition.
 Deployment approval follows the separate request after the final preview.
+
+### Pouring follow-up, approved for deployment, 2026-09-09
+
+The approved vessels and forest remain unchanged. Both vessels lift higher,
+pause, tip and return. The larger worm supports the jug with a second hand.
+A wider curved stream breaks into impact droplets and short runoff, with a
+brief drip tail. Placement follows the pouring lip at the current user scale
+so enlarged vessels still pour downward onto the recipient. One foreground
+action remains active at a time, with saved transforms restored on completion.
+
+The jug and dipper use different-length excerpts of a real water pour. Two
+cone compressions each play a short recorded foamy-sponge squeeze. These are
+foley, not field recordings of the plant or worms. The original wiping sound
+is preserved. Provenance is in `game-of-worms/assets/audio/SOURCES.md`.
+
+Geometry, timing, audio and regression checks pass. Normal responsive scene
+views are checked, but the full-page capture tool still produces distorted
+images. Martyna explicitly approved deployment of this follow-up after the
+Canberra sound release. Physical devices and Safari remain untested.

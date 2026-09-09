@@ -42,6 +42,39 @@ with repeated/scaled content. Actual sizes: 345×2573, 753×2424, 1009×1950 and
 subjective listening on the user's speakers remain unverified. This is an
 audio-only release, with no visual asset or public copy changes.
 
+### Kauaʻi fuller pouring and squeeze sounds, approved for deployment, 2026-09-09
+
+The jug and male dipper rise higher before tipping. A tapered water ribbon,
+bright centre, impact spray, runoff and trailing drops make both pours clearer.
+The jug is supported by two hands. The pour target is calculated from the lip
+and current accessory scale, keeping water downward at sizes from 60 to 200%.
+The male still rinses the larger worm's exposed lower body. Default positions,
+approved object drawings, labels, background and other scenes are unchanged.
+
+Three new CC0-derived WAVs provide a 1.9 s jug pour, 1.55 s dipper pour and
+0.64 s wet-sponge squeeze. Two cone compressions each trigger one squeeze.
+See `game-of-worms/assets/audio/SOURCES.md` for sources and hashes. These are
+foley recordings. Martyna explicitly approved deployment of this separate
+pouring update after the Canberra sound release.
+
+Changed: `kauai-bath-play.js`, `kauai-bath-audio.js`, Game import/cache keys,
+`scripts/check-kauai-bath.cjs`, this status, the QG130 dossier, art catalogue and
+audio provenance. Added three production WAVs. No files deleted. Existing
+approved audio sources are preserved. Release branch:
+`codex/kauai-recording-scene`.
+
+Passing checks: bath art/audio/timelines, two distinct squeeze peaks, downward
+pour geometry at 60/100/200% with rotation, loupe blink, live loupes, accessory
+labels, syntax and whitespace. Browser checks cover both pours, squeezing,
+maximum-size jug, exact transform/style restoration, pointer and keyboard
+activation, one-action interruption and Escape cleanup. No console warnings
+or errors. Normal 360/768/1024/1440 px views have no horizontal overflow.
+Full-page captures remain distorted and are not valid proofs. Actual capture
+dimensions: 345×2376, 753×2375, 1009×1753 and 1425×1928. Reduced motion is
+unit-tested. Physical devices and Safari are untested.
+
+Preview: `http://127.0.0.1:8765/game-of-worms/?review=kauai-pouring`.
+
 ### Trivandrum loupe blink, 2026-09-09
 
 Martyna requested blinking when either live loupe crosses a worm's face and

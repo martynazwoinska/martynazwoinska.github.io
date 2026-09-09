@@ -1,18 +1,39 @@
 import {GINGER,RINSE,TOWEL,bathFamilies,add,p,e,part,C,faceCloth} from './kauai-bath-art.js?v=20260909-bath-2';
-import {createBathSound} from './kauai-bath-audio.js?v=20260909-bath-2';
+import {createBathSound} from './kauai-bath-audio.js?v=20260909-bath-pour-1';
 const clamp=x=>Math.max(0,Math.min(1,x));
 const ease=x=>{x=clamp(x);return x*x*(3-2*x);};
 const mix=(a,b,q)=>a+(b-a)*q;
-export function bathFrame(kind,ms,reduced=false){
+export function bathFrame(kind,ms,reduced=false,male=false){
   if(reduced)return{done:ms>=700,lift:0,work:0,squeeze:0,flow:0,wipe:0,tangle:0,show:0};
-  const end=kind==='ginger'?5100:kind==='rinse'?3700:3900;
-  const work=ease((ms-1000)/240)*(1-ease((ms-(kind==='ginger'?2600:kind==='rinse'?2400:2800))/350));
+  if(kind==='rinse'){
+    const stop=male?2820:3170,end=stop+1300;
+    return{done:ms>=end,lift:ease(ms/850)*(1-ease((ms-(stop+250))/850)),
+      work:ease((ms-880)/390)*(1-ease((ms-(stop-180))/380)),squeeze:0,
+      flow:ease((ms-1240)/140)*(1-ease((ms-(stop-180))/180)),
+      wipe:0,tangle:0,show:ease(ms/220)*(1-ease((ms-(end-400))/350))};
+  }
+  const end=kind==='ginger'?5100:3900;
+  const work=ease((ms-1000)/240)*(1-ease((ms-(kind==='ginger'?2600:2800))/350));
   return{done:ms>=end,lift:ease(ms/850)*(1-ease((ms-(end-1100))/800)),work,
-    squeeze:kind==='ginger'?Math.pow(Math.sin(clamp((ms-1050)/1600)*Math.PI*2),2)*work:0,
-    flow:kind==='rinse'?ease((ms-1100)/100)*(1-ease((ms-2330)/170)):0,
+    squeeze:kind==='ginger'?Math.sin(clamp((ms-1100)/640)*Math.PI)**2+Math.sin(clamp((ms-2060)/640)*Math.PI)**2:0,
+    flow:0,
     wipe:kind==='towel'?Math.sin((ms-1150)/170)*work:0,
     tangle:kind==='towel'?ease((ms-1700)/350)*(1-ease((ms-2600)/350)):0,
     show:ease(ms/220)*(1-ease((ms-(end-400))/350))};
+}
+export function bathPourAim(base,hit,male){
+  // Place the lip, not the vessel centre, above the recipient at any user size.
+  const angle=(male?-103:-96)*Math.PI/180,lx=male?-18:-42,ly=male?-2:-38;
+  const x=lx*Math.cos(angle)-ly*Math.sin(angle),y=lx*Math.sin(angle)+ly*Math.cos(angle);
+  return{x:hit.x+(male?16:20)-(base.a*x+base.c*y),y:hit.y-(male?40:44)-(base.b*x+base.d*y)};
+}
+export function bathPourGeometry(from,to,width){
+  // A down-curving stream, slightly widening as it breaks onto the skin.
+  const cy=from.y+(to.y-from.y)*.18,w=width/2;
+  return{
+    ribbon:`M${from.x-w*.5} ${from.y}Q${to.x-w} ${cy} ${to.x-w*1.4} ${to.y}L${to.x+w*1.4} ${to.y}Q${to.x+w} ${cy} ${from.x+w*.5} ${from.y}Z`,
+    core:`M${from.x} ${from.y}Q${to.x} ${cy} ${to.x} ${to.y}`
+  };
 }
 function arm(g,male){
   const group=part(g,'arm'),skin=p(group,'','var(--worm-color)',C.ink,.65),shine=p(group,'','none','#fff4d955',male?.8:1.3);
@@ -89,8 +110,9 @@ export function createKauaiBath(habitat,refresh=()=>{}){
     }
     const arts=selected.map(n=>n.querySelector('.location-accessory-art'));
     const arms=[arm(effects,false),arm(effects,true),arm(effects,false)];
-    const stream=p(effects,'','none',C.water,2),streamLight=p(effects,'','none','#f2fff4',.75);
-    const drops=Array.from({length:9},()=>e(effects,0,0,1.4,2.2,'#cbeef0','#76b2c2',.35));
+    const stream=p(effects,'',C.water,'#72abbc',.65),streamLight=p(effects,'','none','#f2fff4',1.1);
+    const drops=Array.from({length:15},()=>e(effects,0,0,1.4,2.2,'#cbeef0','#76b2c2',.35));
+    const runoff=Array.from({length:3},()=>p(effects,'','none','#d3f4f4',1.5));
     const ripple=e(effects,0,0,0,0,'none','#e5f9f5',1);stream.setAttribute('opacity',0);streamLight.setAttribute('opacity',0);
     let cone=null,jug=null,bowl=null,dipper=null,cloth=null,clothAt=null,flap=null;
     if(kind==='ginger'){prepare(arts[0]);prepare(arts[1]);cone=arts[0].querySelector('[data-bath-cone]');bowl=arts[1].querySelector('[data-bath-bowl-liquid]');}
@@ -101,14 +123,14 @@ export function createKauaiBath(habitat,refresh=()=>{}){
     }
     const myBody=body(male),otherBody=body(!male),cues=new Set();
     // Decode before starting the first gesture's timeline, with a bounded silent fallback.
-    const token=epoch,ready=reduced.matches?Promise.resolve():sound.unlock(kind==='towel'?'cloth':kind==='ginger'?'drip':'pour');
+    const token=epoch,ready=reduced.matches?Promise.resolve():sound.unlock(kind==='towel'?'cloth':kind==='ginger'?'squeeze':male?'scoop':'pour');
     ready.then(()=>{if(run!==action||token!==epoch)return;const began=performance.now();
       function cue(key,at,type,level,ms){if(cues.has(key)||ms<at)return;cues.add(key);if(!reduced.matches&&ms-at<100)sound.play(type,level,ms-at);}
       function tick(now){
         if(run!==action)return;if(document.hidden||!selected.every(visible)){cancel();return;}
-        const ms=now-began,s=bathFrame(kind,ms,reduced.matches);
+        const ms=now-began,s=bathFrame(kind,ms,reduced.matches,male);
         if(s.done){cancel();return;}
-        arms.forEach(a=>a.group.setAttribute('opacity',0));drops.forEach(d=>d.setAttribute('opacity',0));ripple.setAttribute('opacity',0);
+        arms.forEach(a=>a.group.setAttribute('opacity',0));drops.forEach(d=>d.setAttribute('opacity',0));runoff.forEach(d=>d.setAttribute('opacity',0));ripple.setAttribute('opacity',0);
         if(kind==='ginger'){
           const centre=point(body(false),165,94);
           pose(arts[0],{x:centre.x,y:centre.y-43},s.lift,26*s.lift);
@@ -121,19 +143,33 @@ export function createKauaiBath(habitat,refresh=()=>{}){
           const from=point(arts[0],0,28),to=point(arts[1],0,-2);
           for(let i=0;i<3;i++){const q=((ms-1100)/470+i*.31)%1;if(ms<1100||ms>2950)continue;const d=drops[i];d.setAttribute('cx',mix(from.x,to.x,q));d.setAttribute('cy',mix(from.y,to.y,q*q));d.setAttribute('rx',1.2);d.setAttribute('ry',2.8);d.setAttribute('opacity',s.work*.85);}
           ripple.setAttribute('cx',to.x);ripple.setAttribute('cy',to.y);ripple.setAttribute('rx',3+(ms%450)/45);ripple.setAttribute('ry',1+(ms%450)/180);ripple.setAttribute('opacity',s.work*.5);
-          cue('squeeze-1',1200,'drip',.55,ms);cue('squeeze-2',2020,'drip',.48,ms);
+          cue('squeeze-1',1100,'squeeze',.72,ms);cue('squeeze-2',2060,'squeeze',.66,ms);
         }else if(kind==='rinse'){
           // The larger worm rinses the male's crown. He returns the favour at
           // the nearer lower body curve, with a small dipper from his basin.
           const hit=point(otherBody,male?185:326,male?218:33);
-          const vessel=male?dipper:jug,aim={x:hit.x+(male?22:47),y:hit.y-(male?34:43)};
-          pose(vessel,aim,s.lift,(male?-62:-68)*s.work);
+          const vessel=male?dipper:jug,aim=bathPourAim(bases.get(vessel),hit,male);
+          pose(vessel,aim,s.lift,(male?-103:-96)*s.work);
           const hand=male?arms[1]:arms[0];reach(hand,point(myBody,282,123),point(vessel,male?35:42,male?-3:-7),s.show,male?-1:1);
+          if(!male)reach(arms[2],point(myBody,265,133),point(vessel,12,43),s.show,-1);
           const from=point(vessel,male?-18:-42,male?-2:-38);
-          const d=`M${from.x} ${from.y}Q${mix(from.x,hit.x,.64)} ${from.y+9} ${hit.x} ${hit.y}`;
-          stream.setAttribute('d',d);streamLight.setAttribute('d',d);stream.setAttribute('opacity',s.flow*.8);streamLight.setAttribute('opacity',s.flow*.8);
-          for(let i=0;i<drops.length;i++){const q=((ms-1100)/430+i*.17)%1,d=drops[i];d.setAttribute('cx',hit.x+Math.sin(i*2.7)*q*(male?17:10));d.setAttribute('cy',hit.y+q*(male?22:17)-Math.sin(q*Math.PI)*5);d.setAttribute('rx',male?1.1:.75);d.setAttribute('ry',male?1.8:1.3);d.setAttribute('opacity',s.flow*(1-q)*.9);}
-          cue('rinse',1100,'pour',male?.47:.62,ms);
+          const water=bathPourGeometry(from,hit,(male?3.8:5.2)*(.84+.16*Math.sin(ms/71)**2));
+          stream.setAttribute('d',water.ribbon);streamLight.setAttribute('d',water.core);
+          stream.setAttribute('opacity',s.flow*.76);streamLight.setAttribute('opacity',s.flow*.85);
+          const last=male?2820:3170,tail=ease((ms-1340)/140)*(1-ease((ms-last)/390));
+          for(let i=0;i<drops.length;i++){
+            const q=((ms-1340)/620+i*.137)%1,d=drops[i];if(q<0)continue;
+            const vx=Math.sin(i*2.4)*(male?24:18),vy=9+(i%4)*2;
+            d.setAttribute('cx',hit.x+vx*q);d.setAttribute('cy',hit.y-vy*4*q*(1-q)+q*q*29);
+            d.setAttribute('rx',.9+(i%3)*.26);d.setAttribute('ry',1.4+q*1.6);
+            d.setAttribute('opacity',tail*(1-q)*.88);
+          }
+          runoff.forEach((n,i)=>{
+            const shift=(i-1)*3,y=hit.y+3,x=hit.x+shift,len=male?29:20;
+            n.setAttribute('d',`M${x} ${y}Q${x+5+shift} ${y+len*.35} ${x+shift*.7} ${y+len}`);
+            n.setAttribute('opacity',tail*(.24+i*.1));
+          });
+          cue('rinse',1280,male?'scoop':'pour',male?.72:.82,ms);
         }else{
           set(flap,'opacity',1-s.lift);
           const face=point(myBody,330,65),scale=male?.52:.88;

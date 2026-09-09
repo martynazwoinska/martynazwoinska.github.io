@@ -1,5 +1,7 @@
 // Short real water/cloth recordings, with provenance in assets/audio/SOURCES.md.
-export const bathClips=Object.freeze(Object.fromEntries(['pour','drip','cloth'].map(k=>[k,new URL(`./assets/audio/kauai-bath-${k}.wav`,import.meta.url).href])));
+export const bathClips=Object.freeze(Object.fromEntries(Object.entries({
+  pour:'pour-v2',scoop:'scoop',squeeze:'squeeze',cloth:'cloth'
+}).map(([key,file])=>[key,new URL(`./assets/audio/kauai-bath-${file}.wav`,import.meta.url).href])));
 export function createBathSound(){
   let ctx=null,voice=null;const buffers=new Map(),loading=new Map();
   async function unlock(kind){
