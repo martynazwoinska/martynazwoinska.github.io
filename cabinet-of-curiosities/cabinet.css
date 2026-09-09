@@ -996,6 +996,7 @@ html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) .cabine
   scroll-margin-top: 76px;
 }
 .collection-map-entry { margin-bottom: 28px; }
+.collection-map-entry .collection-thumbnail { object-fit: contain; }
 .collection-map-entry h2,
 .collection-map-entry h3 {
   margin: 0 0 9px;
