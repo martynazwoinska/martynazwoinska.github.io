@@ -3,9 +3,10 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260909-bath-2";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260909-chocolate-1";
 import { createKauaiBath } from "./kauai-bath-play.js?v=20260909-bath-pour-1";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
+import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-chocolate-1";
 import { createHcmcPlay } from "./hcmc-play.js?v=20260908-hcmc-1";
 import { createNambuccaPlay } from "./nambucca-play.js?v=20260908-nambucca-recorded";
 import { createDoisRiosPlay } from "./dois-rios-play.js?v=20260908-dois-rios-1";
@@ -191,7 +192,7 @@ const species = [
     locations: [
       { name: "Barro Colorado Island, Panama", sceneLabel: "Forest bait · Barro Colorado Island · Panama", coordinates: [-79.8399, 9.1598], source: "CaeNDR QG2726 isotype record", style: "rainforest", strain: "QG2726", history: "This C. tropicalis line came from an experimental forest bait made by blending Gustavia superba flowers with water into a paste. The bait was placed in the forest to attract nematodes." },
       { name: "Guadeloupe · NIC203", sceneLabel: "Torch-ginger flower · Guadeloupe · France", coordinates: [-61.6262, 16.0459], source: "CaeNDR NIC203 isotype record", style: "rainforest", strain: "NIC203", history: "This line came from a rotting torch-ginger flower at the Third Carbet Falls locality. Later crosses helped reveal three maternal-effect toxin–antidote systems in its genome." },
-      { name: "Oʻahu, Hawaiʻi · ECA789", sceneLabel: "Rotting flower · Oʻahu · United States", coordinates: [-157.799786, 21.336056], source: "CaeNDR ECA789 isotype record", style: "rainforest", strain: "ECA789", history: "This C. tropicalis line came from a rotting flower along Mānoa Falls Trail, where the recorded humidity was 93.7%." },
+      { name: "Oʻahu, Hawaiʻi · ECA789", sceneLabel: "Rotting flower · Oʻahu · United States", coordinates: [-157.799786, 21.336056], source: "CaeNDR ECA789 isotype record", style: "rainforest", strain: "ECA789", history: "This worm came from a rotting flower along Mānoa Falls Trail. Near the collection site, Mānoa Chocolate makes chocolate using locally grown cacao. The factory once used a child’s bicycle to power a machine that separated cacao nibs from their shells." },
       { name: "New Taipei City, Taiwan · NIC1648", sceneLabel: "Fallen figs · New Taipei City · Taiwan", coordinates: [121.82753, 25.06574], source: "CaeNDR NIC1648 isotype record", style: "rainforest", strain: "NIC1648", history: "Tiny figs scattered on concrete steps towards Menghuan Falls yielded this C. tropicalis line. The culture note records many males, although no count or explanation was provided." },
       { name: "Pohnpei, Micronesia · QG4739", sceneLabel: "Kotop fruit · Pohnpei · Micronesia", coordinates: [158.1818, 6.9066], source: "CaeNDR", style: "rainforest", strain: "QG4739", history: "Rotting kotop fruit in Pohnpei cloudforest yielded seven closely related reference strains. The collection site lay about 540 metres above sea level." },
       { name: "Queensland, Australia · QG2904", sceneLabel: "Blackbean pod · Queensland · Australia", coordinates: [145.447317, -16.10365], source: "CaeNDR", style: "rainforest", strain: "QG2904", history: "An intact blackbean pod from the Daintree Rainforest Observatory produced a plate containing thousands of worms. Most were Caenorhabditis hermaphrodites. No males were seen in that first observation." },
@@ -718,6 +719,7 @@ const reunionPlay = createReunionPlay(els.habitat, () => {
   refreshAccessoryPieceControls();
   queueAccessoryConstraints();
 });
+const oahuBike = createOahuChocolate(els.habitat, () => { refreshAccessoryPieceControls(); queueAccessoryConstraints(); });
 const hcmcPlay = createHcmcPlay(els.habitat, () => {
   refreshAccessoryPieceControls();
   queueAccessoryConstraints();
@@ -734,6 +736,7 @@ function renderSpecies(item, place) {
   panamaPlay.cancel();
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
+  oahuBike.cancel();
   hcmcPlay.cancel();
   reunionPlay.clear();
   trivandrumWatering.cancel();
@@ -1028,7 +1031,7 @@ function updateAccessoryLabelVisibility() {
 
 function constrainVisibleAccessories() {
   if (claremontPlay.active || araucaniaPlay.active) return;
-  if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || panamaPlay.active || doisRiosPlay.active || nambuccaPlay.active || hcmcPlay.active || reunionPlay.active || kauaiBath.active) return;
+  if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || panamaPlay.active || doisRiosPlay.active || nambuccaPlay.active || oahuBike.active || hcmcPlay.active || reunionPlay.active || kauaiBath.active) return;
   if (els.habitat.classList.contains("is-changing")) return;
   accessoryIds.forEach(id => {
     if (!activeWardrobe().has(id)) return;
@@ -1143,6 +1146,7 @@ els.accessorySizeSlider.addEventListener("input", event => {
   panamaPlay.cancel();
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
+  oahuBike.cancel();
   hcmcPlay.cancel();
   reunionPlay.cancel();
   trivandrumWatering.cancel();
@@ -1233,6 +1237,7 @@ function syncDrawingMode() {
   panamaPlay.cancel();
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
+  oahuBike.cancel();
   hcmcPlay.cancel();
   reunionPlay.clear();
   trivandrumWatering.cancel();
@@ -1358,6 +1363,7 @@ function toggleAccessory(id, force) {
   panamaPlay.cancel();
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
+  oahuBike.cancel();
   hcmcPlay.cancel();
   reunionPlay.cancel();
   trivandrumWatering.cancel();
@@ -1442,7 +1448,7 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${kauaiBath.handles(piece) || araucaniaPlay.handles(piece) || claremontPlay.handles(piece) || edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || doisRiosPlay.handles(piece) || nambuccaPlay.handles(piece) || hcmcPlay.handles(piece) || reunionPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
+      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${kauaiBath.handles(piece) || araucaniaPlay.handles(piece) || claremontPlay.handles(piece) || edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || doisRiosPlay.handles(piece) || nambuccaPlay.handles(piece) || oahuBike.handles(piece) || hcmcPlay.handles(piece) || reunionPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
       if (piece.dataset.accessoryFamily === "eca250-california-lemonade") {
         piece.setAttribute("aria-keyshortcuts", `${piece.getAttribute("aria-keyshortcuts")} Shift+Enter`);
       }
@@ -1533,7 +1539,7 @@ function finishAccessoryDrag(event) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") { baliCacao.drop(piece); claremontPlay.drop(piece); }
   }
-  else if (event.type === "pointerup") { araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); hcmcPlay.start(piece); reunionPlay.start(piece); kauaiBath.start(piece); }
+  else if (event.type === "pointerup") { araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); hcmcPlay.start(piece); oahuBike.start(piece); reunionPlay.start(piece); kauaiBath.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1542,6 +1548,9 @@ function moveActiveAccessoryPointer(event) {
   if (!activeAccessoryDrag || !activeAccessoryDrag.pointers.has(event.pointerId)) return;
   const { id, wormPart, piece } = activeAccessoryDrag;
   event.preventDefault();
+  if(oahuBike.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
+    oahuBike.cancel();activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
+  }
   if(araucaniaPlay.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
     araucaniaPlay.cancel();activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
   }
@@ -1630,6 +1639,7 @@ function wireAccessoryPieces() {
       panamaPlay.cancel();
       doisRiosPlay.cancel();
       nambuccaPlay.cancel();
+      if (!oahuBike.handles(piece)) oahuBike.cancel();
       hcmcPlay.cancel();
       reunionPlay.cancel();
       trivandrumWatering.cancel();
@@ -1703,6 +1713,11 @@ function wireAccessoryPieces() {
       else if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) kauaiBath.cancel();
       if (event.key === "Escape" || event.key === "Home") reunionPlay.clear();
       else if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) reunionPlay.cancel();
+      if ((event.key === "Enter" || event.key === " ") && oahuBike.handles(piece)) {
+        event.preventDefault(); if (!event.repeat) oahuBike.start(piece); return;
+      }
+      if (event.key === "Home") oahuBike.reset();
+      else if (["Escape", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) oahuBike.cancel();
       if ((event.key === "Enter" || event.key === " ") && hcmcPlay.handles(piece)) {
         event.preventDefault(); if (!event.repeat) hcmcPlay.start(piece); return;
       }

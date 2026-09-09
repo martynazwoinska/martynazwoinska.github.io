@@ -6,10 +6,40 @@ This file records approved decisions and the verified implementation state. Alwa
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 16 left to check in the current interaction
-pass and 15 completed, including the approved Kauaʻi QG130 revision.
+It tracks all 31 active scenes: 15 left to check in the current interaction
+pass and 16 completed, including the approved Oʻahu ECA789 revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+### Oʻahu chocolate workshop, deployment approved, 2026-09-09
+
+Implemented the user-approved bicycle-powered cacao-processing concept on
+`codex/oahu-chocolate-bike`, based on main `6af30f5`. The user subsequently
+requested chocolate-related replacements for the two remaining slots. The
+preview now has Chocolate moulds, Chocolate tasting and Chocolate bike.
+The larger worm pours into a bar mould and tastes a wrapped bar. The male
+scrapes a small-bar mould and tastes chocolate-covered macadamias. The latter
+are supported by Mānoa's product list, unlike the discarded bonbon proposal.
+New actions share cancellation with the bike. Moulds move closer during work,
+two hands support tool and tray, and other props temporarily disappear.
+The male hand-pedals a shared bike while the larger
+worm feeds a cracker/winnower. The machinery accelerates, separates nibs and
+shells, coasts and returns the worms to their original positions. Real CC0
+bicycle and bean recordings use bounded excerpts and conservative levels.
+
+Drawing, motion, cancellation, size preservation and normal responsive views
+were checked. Seven related check scripts pass. Full-page captures remain
+malformed and do not count as valid complete-page proof. Physical phones,
+Safari and subjective listening are unverified. Martyna approved committing and
+deploying the preview and revised Tiny surprise on 2026-09-09. The Game remains
+English-only. The exact approved three-sentence copy now introduces the local
+cacao/chocolate connection and explains the bicycle-powered winnower.
+The release contains only this Oʻahu work and its documentation. The Cabinet
+and the separate dirty main checkout remain untouched. Publication must be
+verified after pushing.
+
+Files, test details and capture dimensions:
+[Oʻahu review notes](docs/game-of-worms-reviews/oahu-bike-20260909.md).
 
 ### Canberra recorded café sounds, deployment requested, 2026-09-09
 

@@ -326,3 +326,31 @@ local processing material are retained in the ignored task folder
 Bread clips play at the three existing visible bites. The sip plays while
 the straw reaches the mouth, for either worm. Sound remains gesture-triggered,
 with a single source and cancellation on activity changes, Escape and page hiding.
+
+## Oʻahu chocolate-bike preview, 2026-09-09
+
+The following CC0 recordings are preserved as downloaded MP3 previews. They are
+gesture-triggered foley, not recordings of Mānoa Chocolate's historic machine.
+
+| Local file | Recording and source | Creator | Licence | SHA-256 |
+| --- | --- | --- | --- | --- |
+| `oahu-bike-chain.mp3` | [bicycle-pedal.wav, 185633](https://freesound.org/people/gerfaut83/sounds/185633/) | gerfaut83 | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) | `1890c9b51ba9606e175797c14cce6d2cd7e7770d2723474118ac4d7ef8f8d415` |
+| `oahu-bean-rattle.mp3` | [Pouring Coffee Beans.wav, 539319](https://freesound.org/people/RobinMetzler/sounds/539319/) | RobinMetzler | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) | `9f8d7679745b1ad897793107b4c6f75846eab4f7bf867d2e913dbedcb455f38b` |
+
+Downloaded from Freesound's source-linked HQ previews:
+`https://cdn.freesound.org/previews/185/185633_3444085-hq.mp3` and
+`https://cdn.freesound.org/previews/539/539319_8929618-hq.mp3`.
+Licence pages checked on 2026-09-09. Combined download size: 566104 bytes.
+
+Playback uses 0.8–6.75 seconds of the bicycle recording, and two short excerpts
+from the bean recording, at 1.2–2.35 and 4.2–5.4 seconds. Bicycle peak gain is
+capped at 0.13, bean peaks at 0.10 and 0.085. A 60 ms attack avoids clicks and
+the bicycle fades over its final 1.15 seconds. Gentle low-pass filtering reduces
+sharp mechanical edges. Pitch is unchanged. The bean cues do not overlap each
+other. Escape, dragging, resizing, scene changes and page hiding stop the sources.
+Failed loading is silent and retryable. Manual listening approval is pending.
+
+The chocolate-workshop follow-up reuses the CC0 `nambucca-paper-slide.wav`
+recorded paper movement above for the bar sleeve at 430 ms, at 55% of the
+existing playback gain. No new audio file is added. Pouring, scraping and
+chewing remain quiet. The existing bicycle and bean recordings are unchanged.

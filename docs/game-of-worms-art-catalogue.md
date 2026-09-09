@@ -1,5 +1,24 @@
 # Game of Worms art catalogue
 
+Oʻahu ECA789, approved 2026-09-09: one shared chocolate bike replaces the
+cacao-key xylophones. Side-view frame, spokes, crank and chain connect to a
+cracker/winnower with a hopper, inspection panel and separate nib/shell vessels.
+The male turns both pedals with fitted hands. The larger worm lifts and tips a
+metal feed scoop. The refinement pass opened the wheel centres, routed the belt
+behind the frame, moved the scoop above the body layer and raised the assembly
+clear of the location label. Recorded bicycle and bean sounds accompany one
+bounded batch. The background is unchanged. The follow-up replaces the trumpet
+and harp slots with two bar-mould workstations and chocolate tasting. The
+primary pours from a steel bowl and tastes a half-wrapped segmented bar.
+The male uses a broad scraper and tastes chocolate-covered macadamias from a
+ceramic dish, including a cut nut with a pale centre. No bonbons or producer
+branding. Moving the workstations closer, adding supporting hands, opening a
+real missing-corner silhouette and controlling occlusion formed the refinement
+pass. Approved English-only names: `Chocolate moulds`, `Chocolate tasting`
+and `Chocolate bike`. Martyna requested commit and deployment of the contextual
+preview and revised Tiny surprise. Full-page capture, physical-device and
+listening limitations remain in [review notes](game-of-worms-reviews/oahu-bike-20260909.md).
+
 Saint-Benoît JU1373, approved 2026-09-09: original lychee skin/aril/seed
 constructions, a fitted long coat and short poncho, and a hand-tied bouquet with
 a separate male-held torch-ginger stem. The requested follow-up replaced the

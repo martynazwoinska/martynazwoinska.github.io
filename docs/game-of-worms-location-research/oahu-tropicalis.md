@@ -1,8 +1,75 @@
 # Oʻahu *Caenorhabditis tropicalis* ECA789 location research and art brief
 
-Last updated: 2026-08-28
+Last updated: 2026-09-09
 
-> **Current production accessory contract:** `petal rain trumpets`, `raindrop harps`, and `cacao-key xylophones`. The first two turn the wet Mānoa setting into a playful rain orchestra. The xylophones are a wider Oʻahu craft-chocolate reference, without producer branding or any suggestion that cacao was the collection substrate.
+> **Approved replacement accessory contract:** `Chocolate moulds`, `Chocolate tasting`, and `Chocolate bike`. These replace the former rain instruments with a regional chocolate workshop. The rotting-flower collection substrate and approved background are unchanged.
+
+## Chocolate workshop preview, 2026-09-09
+
+The subsequent user request replaces both remaining musical accessories with
+Chocolate moulds and Chocolate tasting. The primary bowl pours into a segmented
+bar mould. The male uses a steel scraper over a separate smaller-bar mould.
+Tasting pairs a half-wrapped bar with a dish of chocolate-covered macadamias.
+The proposed bonbon was discarded after the user challenged its provenance.
+
+Construction and product references checked on 2026-09-09:
+
+- [Mānoa's official product list](https://manoachocolate.com/pages/all-products) lists bars and chocolate-covered macadamias. No bonbons were found there.
+- [Mānoa's process](https://manoachocolate.com/pages/our-process) separates cracking/winnowing, grinding/refining and moulding.
+- [Callebaut moulding tutorials](https://www.callebaut.com/en/callebaut-chocolate-academy/tutorials/moulding) guide mould filling and scraper use.
+- [Chocolate World moulds](https://www.chocolateworld.be/moulds) guide rigid mould construction. Original drawings use no copied mould design or branding.
+
+The motion is a playful abbreviated action, not a complete tempering lesson.
+Each work/tasting action is exclusive with the bike. Moulds move near the body
+while in use, then return. Other enabled props are temporarily hidden.
+Home restores uneaten chocolate and unfilled moulds. Size, drag offsets and
+original body/face attributes survive cancellation. Reduced motion is static.
+The half-wrapped bar uses one quiet recorded paper rustle. Pouring, scraping
+and chewing stay quiet rather than receiving unverified substitute effects.
+No new binary audio or background assets were made for this follow-up.
+
+Martyna approved committing and deploying the English-only labels, contextual
+artwork and revised Tiny surprise on 2026-09-09. The implemented copy is:
+
+> This worm came from a rotting flower along Mānoa Falls Trail. Near the collection site, Mānoa Chocolate makes chocolate using locally grown cacao. The factory once used a child’s bicycle to power a machine that separated cacao nibs from their shells.
+
+Proximity refers to the Kailua/Oʻahu area, not the same sampling property.
+Mānoa also uses imported cacao, so the text must not claim exclusively local sourcing.
+
+### Initial bicycle pass
+
+The user approved building the bicycle-powered chocolate-processing idea and
+requested high-quality animation and realistic effects. The local preview replaces
+only the xylophone slot. Proposed English-only button and accessible object name:
+`Chocolate bike`. This label and the contextual artwork await final approval.
+
+Historical sources:
+
+- [HONOLULU, 29 June 2012](https://www.honolulumagazine.com/manoa-chocolate-shop-and-factory-making-bean-to-bar-chocolate-in-kailua/): firsthand factory report describing Dylan Butterbaugh's children's-bicycle-powered winnower.
+- [Firsthand visit and original bicycle photograph, 2018](https://gringoadrift.wordpress.com/2018/06/27/pedaling-chocolate-at-manoa/): identifies the original bicycle and links Mānoa's factory video. The frame, crank and belt attachment were inspected as references, not copied artwork.
+- [DIY bean-cracker discussion, 2013](https://forums.thechocolatelife.com/clay/group_discuss/691/diy-bean-cracker): documents the roller-cracker design and suction separation used by Dylan.
+- [Mānoa's process](https://manoachocolate.com/pages/our-process): cracking and winnowing separate shells from nibs. Grinding and refining are later stages.
+
+Mānoa Chocolate is in Kailua, Oʻahu. This is an island-level craft reference.
+The ECA789 collection remains the recorded rotting flower along Mānoa Falls Trail.
+There is no claim that the isolate came from cacao or from the chocolate factory.
+
+The original SVG is a playful adaptation, not a model of the historic equipment.
+It has a visible frame, crank, chain, belt, roller, hopper and separate nib/shell
+collectors. A small mechanical blower is part of the adaptation. The male turns
+the pedals with two hands. The larger worm holds and tips a feed scoop.
+The approved background is unchanged. The trumpet and harp slots are superseded
+by the workshop follow-up above.
+
+Animation is one bounded batch with a gradual start, coast and return. Tap or
+Enter/Space starts it, a second activation or Escape cancels it, and Home clears
+the output. Size and drag edits are preserved. Other props are temporarily hidden
+while the worms work, then restored. Reduced motion gives a quiet static result.
+
+Audio uses CC0 bicycle-pedal/freewheel and coffee-bean recordings, the latter as
+cacao-bean foley. The exact sources, file hashes and bounded playback excerpts are
+listed in `game-of-worms/assets/audio/SOURCES.md`. These are not recordings of the
+historic Mānoa machine. No producer logo or package artwork is used.
 
 ## Purpose
 

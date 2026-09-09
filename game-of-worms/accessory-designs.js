@@ -5,6 +5,8 @@ import { drawNambucca, nambuccaLayouts } from "./nambucca-art.js?v=20260908-namb
 import { drawHcmc, hcmcLayouts } from "./hcmc-art.js?v=20260908-hcmc-1";
 import { drawReunion, reunionLayouts } from "./reunion-art.js?v=20260909-reunion-2";
 import { drawKauaiBath, bathLayouts } from "./kauai-bath-art.js?v=20260909-bath-2";
+import { drawOahuBike, bikeLayouts } from "./oahu-bike-art.js?v=20260909-bike-1";
+import { drawOahuChocolate, chocolateLayouts } from "./oahu-chocolate-art.js?v=20260909-chocolate-1";
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
 import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260905-tenerife-wings-4";
 import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-santeuil-fit-3";
@@ -53,7 +55,7 @@ const rows = [
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "Balinese endek wrap", "ju1873-balinese-endek-wrap", "Balinese gamelan gong", "ju1873-balinese-gamelan-gong"],
   ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Flower bait", "qg2726-flower-bait", "Leaf cutting", "qg2726-leaf-cutting"],
   ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras carnival crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
-  ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "petal rain trumpets", "eca789-petal-rain-trumpet", "raindrop harps", "eca789-raindrop-harp", "cacao-key xylophones", "eca789-cacao-key-xylophone"],
+  ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "Chocolate moulds", "eca789-chocolate-moulds", "Chocolate tasting", "eca789-chocolate-tasting", "Chocolate bike", "eca789-chocolate-bike"],
   ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Taiwan blue-magpie kites", "nic1648-taiwan-blue-magpie-kites", "single-tail rain boots", "nic1648-single-tail-rain-boots", "bubble-tea jetpacks", "nic1648-bubble-tea-jetpacks"],
   ["tropicalis", "Pohnpei, Micronesia · QG4739", "Kotop-fruit parasols", "qg4739-kotop-fruit-parasol", "Peppercorn rollerboards", "qg4739-peppercorn-rollerboard", "Cloudforest rain-leaf sleds", "qg4739-rain-leaf-sled"],
   ["tropicalis", "Queensland, Australia · QG2904", "Sealed-pod drums", "qg2904-sealed-pod-drum", "Funnel megaphones", "qg2904-funnel-megaphone", "Canopy kaleidoscopes", "qg2904-canopy-kaleidoscope"],
@@ -80,7 +82,7 @@ const santeuilRendererFamilies = new Set(["santeuil-railway-driver-uniform", "sa
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
 const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-avocado-snack-bowl"]);
 const kauaiRendererFamilies = new Set(["xz1516-forest-bird-headphones", "xz1516-ohia-blossom-microphone", "xz1516-reel-to-reel-recorder"]);
-const sharedAccessoryFamilies = new Set(["xz1516-reel-to-reel-recorder", "ju4356-shared-scooter"]);
+const sharedAccessoryFamilies = new Set(["xz1516-reel-to-reel-recorder", "ju4356-shared-scooter", "eca789-chocolate-bike"]);
 const actRendererFamilies = new Set(["canberra-flat-white-cafe", "canberra-linen-napkins", "oconnor-cockatoo-cafe-raid"]);
 const claremontRendererIds = new Set([
   "elegans::Claremont, California · ECA250::headwear",
@@ -6130,6 +6132,8 @@ function drawElegansFieldAccessory(group, item, companion) {
 }
 
 function drawNamedAccessory(group, item, companion) {
+  if (drawOahuBike(group, item, companion)) return true;
+  if (drawOahuChocolate(group, item, companion)) return true;
   if (drawDoisRios(group, item, companion)) return true;
   if (drawRefinedAccessory(group, item, companion)) return true;
   if (drawNambucca(group, item, companion)) return true;
@@ -6318,7 +6322,7 @@ function renderPiece(target, item, wormPart) {
     ,"qg2814-five-day-two-plate-relay": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
     ,"qg2814-18s-identity-ribbon-reader": { primary: [381, 258, .34, -1], companion: [194, 294, .27, 2] }
   };
-  const customLayout = bathLayouts[item.family]?.[wormPart] ?? reunionLayouts[item.family]?.[wormPart] ?? hcmcLayouts[item.family]?.[wormPart] ?? nambuccaLayouts[item.family]?.[wormPart] ?? doisRiosLayouts[item.family]?.[wormPart] ?? araucaniaLayouts[item.family]?.[wormPart] ?? refinedLayouts[item.family]?.[companion ? 1 : 0] ?? customLayouts[item.family]?.[wormPart];
+  const customLayout = chocolateLayouts[item.family]?.[wormPart] ?? bikeLayouts[item.family]?.[wormPart] ?? bathLayouts[item.family]?.[wormPart] ?? reunionLayouts[item.family]?.[wormPart] ?? hcmcLayouts[item.family]?.[wormPart] ?? nambuccaLayouts[item.family]?.[wormPart] ?? doisRiosLayouts[item.family]?.[wormPart] ?? araucaniaLayouts[item.family]?.[wormPart] ?? refinedLayouts[item.family]?.[companion ? 1 : 0] ?? customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;
   const widthBias = 1 + item.geometry.widthStep * .035;
   const heightBias = 1 + item.geometry.heightStep * .03;
@@ -6333,6 +6337,8 @@ function renderPiece(target, item, wormPart) {
   });
   const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "lingsar-springwater-current";
   if (sharedAccessoryFamilies.has(item.family)) piece.dataset.sharedAccessory = "true";
+  if (item.family === "eca789-chocolate-moulds") piece.dataset.pieceLabel = companion ? "Scraper and mould" : "Pouring bowl and mould";
+  if (item.family === "eca789-chocolate-tasting") piece.dataset.pieceLabel = companion ? "Chocolate macadamias" : "Chocolate bar";
   if (item.family === "santeuil-cylinder-organ-instrument") piece.dataset.pieceLabel = companion ? "concertina" : "cylinder organ";
   if (item.family === "ju1873-cacao-specimen-lantern" && companion) piece.dataset.pieceLabel = "cacao nibs";
   if (item.family === "canberra-flat-white-cafe") piece.dataset.pieceLabel = companion ? "biscuits" : "flat white";
