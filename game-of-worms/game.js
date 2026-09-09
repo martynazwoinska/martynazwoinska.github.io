@@ -3,7 +3,8 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260908-hcmc-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260909-reunion-2";
+import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createHcmcPlay } from "./hcmc-play.js?v=20260908-hcmc-1";
 import { createNambuccaPlay } from "./nambucca-play.js?v=20260908-nambucca-recorded";
 import { createDoisRiosPlay } from "./dois-rios-play.js?v=20260908-dois-rios-1";
@@ -193,7 +194,7 @@ const species = [
       { name: "New Taipei City, Taiwan · NIC1648", sceneLabel: "Fallen figs · New Taipei City · Taiwan", coordinates: [121.82753, 25.06574], source: "CaeNDR NIC1648 isotype record", style: "rainforest", strain: "NIC1648", history: "Tiny figs scattered on concrete steps towards Menghuan Falls yielded this C. tropicalis line. The culture note records many males, although no count or explanation was provided." },
       { name: "Pohnpei, Micronesia · QG4739", sceneLabel: "Kotop fruit · Pohnpei · Micronesia", coordinates: [158.1818, 6.9066], source: "CaeNDR", style: "rainforest", strain: "QG4739", history: "Rotting kotop fruit in Pohnpei cloudforest yielded seven closely related reference strains. The collection site lay about 540 metres above sea level." },
       { name: "Queensland, Australia · QG2904", sceneLabel: "Blackbean pod · Queensland · Australia", coordinates: [145.447317, -16.10365], source: "CaeNDR", style: "rainforest", strain: "QG2904", history: "An intact blackbean pod from the Daintree Rainforest Observatory produced a plate containing thousands of worms. Most were Caenorhabditis hermaphrodites. No males were seen in that first observation." },
-      { name: "Saint-Benoît, Réunion · JU1373", sceneLabel: "Torch-ginger flowers · Saint-Benoît · Réunion, France", coordinates: [55.6885, -21.0473], source: "CaeNDR JU1373 isotype record", style: "farm", strain: "JU1373", history: "A worm collected from rotting torch-ginger flowers in Saint-Benoît became the type isolate used to describe C. tropicalis. The torch-ginger trays reflect the collection material, the type-isolate badge marks its scientific importance, and the rain gauge refers to Réunion’s humid eastern side." }
+      { name: "Saint-Benoît, Réunion · JU1373", sceneLabel: "Torch-ginger flowers · Saint-Benoît · Réunion, France", coordinates: [55.6885, -21.0473], source: "CaeNDR JU1373 isotype record", style: "farm", strain: "JU1373", history: "A worm collected from rotting torch-ginger flowers in Saint-Benoît became the type isolate used to describe C. tropicalis." }
     ]
   }
 ];
@@ -708,6 +709,10 @@ const ahmedabadHands = createAhmedabadHands(els.habitat);
 const trivandrumWatering = createTrivandrumWatering(els.habitat);
 const panamaPlay = createPanamaPlay(els.habitat);
 const doisRiosPlay = createDoisRiosPlay(els.habitat);
+const reunionPlay = createReunionPlay(els.habitat, () => {
+  refreshAccessoryPieceControls();
+  queueAccessoryConstraints();
+});
 const hcmcPlay = createHcmcPlay(els.habitat, () => {
   refreshAccessoryPieceControls();
   queueAccessoryConstraints();
@@ -724,6 +729,7 @@ function renderSpecies(item, place) {
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
   hcmcPlay.cancel();
+  reunionPlay.clear();
   trivandrumWatering.cancel();
   ahmedabadHands.clear();
   ishigakiPlay.clear();
@@ -788,6 +794,7 @@ function renderSpecies(item, place) {
     els.locationScene.replaceChildren();
   }
   syncAccessories();
+  reunionPlay.syncHold();
   renderDoodles();
   unmountLiveLoupes = mountLiveLoupes(els.habitat);
 
@@ -1014,7 +1021,7 @@ function updateAccessoryLabelVisibility() {
 
 function constrainVisibleAccessories() {
   if (claremontPlay.active || araucaniaPlay.active) return;
-  if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || panamaPlay.active || doisRiosPlay.active || nambuccaPlay.active || hcmcPlay.active) return;
+  if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || panamaPlay.active || doisRiosPlay.active || nambuccaPlay.active || hcmcPlay.active || reunionPlay.active) return;
   if (els.habitat.classList.contains("is-changing")) return;
   accessoryIds.forEach(id => {
     if (!activeWardrobe().has(id)) return;
@@ -1129,6 +1136,7 @@ els.accessorySizeSlider.addEventListener("input", event => {
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
   hcmcPlay.cancel();
+  reunionPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.cancel();
   ishigakiPlay.clear();
@@ -1217,6 +1225,7 @@ function syncDrawingMode() {
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
   hcmcPlay.cancel();
+  reunionPlay.clear();
   trivandrumWatering.cancel();
   ahmedabadHands.clear();
   ishigakiPlay.clear();
@@ -1340,6 +1349,7 @@ function toggleAccessory(id, force) {
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
   hcmcPlay.cancel();
+  reunionPlay.cancel();
   trivandrumWatering.cancel();
   ahmedabadHands.clear();
   ishigakiPlay.clear();
@@ -1363,6 +1373,7 @@ function toggleAccessory(id, force) {
   updateAccessoryLabelVisibility();
   if (shouldShow) queueAccessoryConstraints(true);
   selectAvailableAccessoryForSizing(shouldShow ? id : null);
+  reunionPlay.syncCoats(accessory, shouldShow);
 }
 
 function syncAccessories() {
@@ -1420,7 +1431,7 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${araucaniaPlay.handles(piece) || claremontPlay.handles(piece) || edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || doisRiosPlay.handles(piece) || nambuccaPlay.handles(piece) || hcmcPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
+      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${araucaniaPlay.handles(piece) || claremontPlay.handles(piece) || edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || doisRiosPlay.handles(piece) || nambuccaPlay.handles(piece) || hcmcPlay.handles(piece) || reunionPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
       if (piece.dataset.accessoryFamily === "eca250-california-lemonade") {
         piece.setAttribute("aria-keyshortcuts", `${piece.getAttribute("aria-keyshortcuts")} Shift+Enter`);
       }
@@ -1511,7 +1522,7 @@ function finishAccessoryDrag(event) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") { baliCacao.drop(piece); claremontPlay.drop(piece); }
   }
-  else if (event.type === "pointerup") { araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); hcmcPlay.start(piece); }
+  else if (event.type === "pointerup") { araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); hcmcPlay.start(piece); reunionPlay.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1608,6 +1619,7 @@ function wireAccessoryPieces() {
       doisRiosPlay.cancel();
       nambuccaPlay.cancel();
       hcmcPlay.cancel();
+      reunionPlay.cancel();
       trivandrumWatering.cancel();
       if (ahmedabadHands.active) ahmedabadHands.cancel();
       baliCacao.cancel();
@@ -1669,6 +1681,11 @@ function wireAccessoryPieces() {
         event.preventDefault(); if(!event.repeat)doisRiosPlay.start(piece); return;
       }
       if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) doisRiosPlay.cancel();
+      if ((event.key === "Enter" || event.key === " ") && reunionPlay.handles(piece)) {
+        event.preventDefault(); if (!event.repeat) reunionPlay.start(piece); return;
+      }
+      if (event.key === "Escape" || event.key === "Home") reunionPlay.clear();
+      else if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) reunionPlay.cancel();
       if ((event.key === "Enter" || event.key === " ") && hcmcPlay.handles(piece)) {
         event.preventDefault(); if (!event.repeat) hcmcPlay.start(piece); return;
       }

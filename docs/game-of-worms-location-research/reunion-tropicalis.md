@@ -1,8 +1,52 @@
 # Saint-Benoît, Réunion *Caenorhabditis tropicalis* JU1373 location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-09-09
 
-> **Current production accessory contract:** `Réunion torch-ginger trays`, `type-isolate badges`, and `windward rain gauges`. These recognizable objects supersede the earlier abstract mechanism sketches below; the rain gauge is regional context and does not claim collection-day rainfall.
+## Approved refinement, 2026-09-09
+
+Approved concepts are **Lychees**, **Raincoats with rain**, and **Flower arranging**.
+The approved production preview uses `reunion-art.js`, `reunion-play.js` and `reunion-audio.js`.
+The previously approved landscape is byte-for-byte unchanged. The former accessory
+contract below is historical. Martyna approved the final preview for deployment.
+
+- The larger worm has a long curved gold raincoat, the male a flared violet poncho.
+  Separately shaped hoods join the neck, and the body panels follow the full
+  local body curve. Seams, snaps, pocket construction and folds
+  communicate coated fabric. Rain starts only through a user action and stops on
+  disabling the coats, Escape, navigation, page hiding or resizing. Reduced-motion
+  users get still droplets and no repeated movement or automatic sound.
+- The lychees use textured skin, white arils and brown seeds, with a deeper dish
+  and a small saucer. Hands split the peel before bringing the fruit to the mouth.
+  The male rolls his fruit before peeling. A 660 ms recorded soft-fruit bite
+  accompanies eating, with the male's own timing offset. This is playful anthropomorphism.
+- The male passes one torch-ginger stem to the larger worm's hand-tied bouquet.
+  One hand supports the tied stalks while the other spaces the new stem. The
+  bouquet turns gently during arranging. Exposed stalks, leaves and a ribbon
+  replace the ceramic vase. The paper wrapper moves as the male's stem is lifted.
+  Rain ducks under the single foreground activity. Accessory drag/size is retained.
+
+References inspected for construction and regional grounding:
+
+- [Saint-Benoît municipal market](https://www.saint-benoit.re/actualites/articles/58-le-terroir-au-marche-couvert): Bras-Canot lychees are described as an emblematic local fruit.
+- [Municipal environmental assessment](https://www.saint-benoit.re/uploads/pages/cadre-de-vie/urbanisme/Revision-plu/5_EE%20PLU%202019.pdf): humid windward setting. Rain in the scene is regional context, not a claim about collection-day weather.
+- [NParks, From Flower to Fruit](https://www.nparks.gov.sg/publications-resources/articles/from-flower-to-fruit) and [culinary herbs and spices](https://www.nparks.gov.sg/publications-resources/articles/three-culinary-herbs-and-spices-in-traditional-dishes): torch ginger's stout stalk and layered, cupped bracts.
+- [Rains Cape W3 construction photographs](https://www.nordstrom.com/s/rains-gender-inclusive-cape-w3-waterproof-hooded-poncho/7636349): hood, coated fabric, yoke and fastenings. Original worm-fitted drawings, no brand artwork copied.
+
+Recorded sound sources, excerpt processing and hashes are in `assets/audio/SOURCES.md`.
+Fruit peeling uses a credited tangerine recording as foley. Eating uses a short
+CC0 banana-eating excerpt, not an actual lychee recording. Flower wrapping uses
+the existing licensed paper recording. These are not field recordings from Réunion.
+
+Approved English-only copy:
+
+Labels: `Lychees`, `Raincoats with rain`, `Flower arranging`.
+
+Tiny surprise: “A worm collected from rotting torch-ginger flowers in Saint-Benoît
+became the type isolate used to describe C. tropicalis.” The taxon remains italicised.
+
+## Earlier production brief
+
+> **Historical accessory contract:** `Réunion torch-ginger trays`, `type-isolate badges`, and `windward rain gauges`. These recognizable objects superseded the earlier abstract mechanism sketches below. The rain gauge was regional context and did not claim collection-day rainfall.
 
 ## Purpose
 

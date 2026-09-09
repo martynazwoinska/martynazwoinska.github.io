@@ -1,5 +1,16 @@
 # Game of Worms art catalogue
 
+Saint-Benoît JU1373, approved 2026-09-09: original lychee skin/aril/seed
+constructions, a fitted long coat and short poncho, and a hand-tied bouquet with
+a separate male-held torch-ginger stem. The requested follow-up replaced the
+vase with exposed stems and ribbon, a supporting arm and a bouquet-turning
+movement. Coats were refitted along the body curve and hoods joined at the neck.
+The preceding pass increased flower readability, varied the fruit texture and
+added a peeled fruit to the larger dish. Background unchanged. Recorded rain
+and material sounds include a brief soft-fruit eating cue at each worm's bite.
+One foreground activity runs at a time. Martyna approved the exact contextual
+artwork and English-only copy for deployment. See the location dossier and PROJECT_STATUS.md.
+
 Ahmedabad foreground digging, approved 2026-09-09: the pair moves to
 separate patches of foreground soil before digging. Tool-tip contact follows
 the displayed shovel scale. Clothes and shadows follow their worms. The phone

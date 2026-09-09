@@ -3,6 +3,7 @@ import { drawAraucaniaWork, araucaniaLayouts } from "./araucania-art.js?v=202609
 import { drawDoisRios, doisRiosLayouts } from "./dois-rios-art.js?v=20260908-dois-rios-1";
 import { drawNambucca, nambuccaLayouts } from "./nambucca-art.js?v=20260908-nambucca-1";
 import { drawHcmc, hcmcLayouts } from "./hcmc-art.js?v=20260908-hcmc-1";
+import { drawReunion, reunionLayouts } from "./reunion-art.js?v=20260909-reunion-2";
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
 import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260905-tenerife-wings-4";
 import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260905-santeuil-fit-3";
@@ -55,7 +56,7 @@ const rows = [
   ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Taiwan blue-magpie kites", "nic1648-taiwan-blue-magpie-kites", "single-tail rain boots", "nic1648-single-tail-rain-boots", "bubble-tea jetpacks", "nic1648-bubble-tea-jetpacks"],
   ["tropicalis", "Pohnpei, Micronesia · QG4739", "Kotop-fruit parasols", "qg4739-kotop-fruit-parasol", "Peppercorn rollerboards", "qg4739-peppercorn-rollerboard", "Cloudforest rain-leaf sleds", "qg4739-rain-leaf-sled"],
   ["tropicalis", "Queensland, Australia · QG2904", "Sealed-pod drums", "qg2904-sealed-pod-drum", "Funnel megaphones", "qg2904-funnel-megaphone", "Canopy kaleidoscopes", "qg2904-canopy-kaleidoscope"],
-  ["tropicalis", "Saint-Benoît, Réunion · JU1373", "Réunion torch-ginger trays", "ju1373-torch-ginger-bract-collar", "type-isolate badges", "ju1373-type-isolate-signet-engine", "windward rain gauges", "saint-benoit-windward-slope-mobile"]
+  ["tropicalis", "Saint-Benoît, Réunion · JU1373", "Lychees", "ju1373-lychees", "Raincoats with rain", "ju1373-raincoats", "Flower arranging", "ju1373-flower-arranging"]
 ];
 
 const explicitUniqueRendererFamilies = new Set([
@@ -6132,6 +6133,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawRefinedAccessory(group, item, companion)) return true;
   if (drawNambucca(group, item, companion)) return true;
   if (drawHcmc(group, item, companion)) return true;
+  if (drawReunion(group, item, companion)) return true;
   if (drawAraucaniaWork(group, item, companion)) return true;
   if (drawKauaiRecording(group, item, companion)) return true;
   if (drawSanteuilRefinement(group, item, companion)) return true;
@@ -6314,7 +6316,7 @@ function renderPiece(target, item, wormPart) {
     ,"qg2814-five-day-two-plate-relay": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
     ,"qg2814-18s-identity-ribbon-reader": { primary: [381, 258, .34, -1], companion: [194, 294, .27, 2] }
   };
-  const customLayout = hcmcLayouts[item.family]?.[wormPart] ?? nambuccaLayouts[item.family]?.[wormPart] ?? doisRiosLayouts[item.family]?.[wormPart] ?? araucaniaLayouts[item.family]?.[wormPart] ?? refinedLayouts[item.family]?.[companion ? 1 : 0] ?? customLayouts[item.family]?.[wormPart];
+  const customLayout = reunionLayouts[item.family]?.[wormPart] ?? hcmcLayouts[item.family]?.[wormPart] ?? nambuccaLayouts[item.family]?.[wormPart] ?? doisRiosLayouts[item.family]?.[wormPart] ?? araucaniaLayouts[item.family]?.[wormPart] ?? refinedLayouts[item.family]?.[companion ? 1 : 0] ?? customLayouts[item.family]?.[wormPart];
   if (customLayout) [x, y, scale, angleOverride] = customLayout;
   const widthBias = 1 + item.geometry.widthStep * .035;
   const heightBias = 1 + item.geometry.heightStep * .03;
@@ -6344,7 +6346,7 @@ function renderPiece(target, item, wormPart) {
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
-  const isBodyFittedCloth = ["qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
+  const isBodyFittedCloth = ["ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
     : isBodyFittedCloth || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });

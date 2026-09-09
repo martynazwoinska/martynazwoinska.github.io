@@ -6,10 +6,62 @@ This file records approved decisions and the verified implementation state. Alwa
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 18 left to check in the current interaction
-pass and 13 completed, including the published Ho Chi Minh City revision.
+It tracks all 31 active scenes: 17 left to check in the current interaction
+pass and 14 completed, including the approved Saint-Benoît revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+### Saint-Benoît JU1373 approved for deployment, 2026-09-09
+
+Martyna approved the concepts: lychees, raincoats with rain, flower arranging.
+New original SVG art and an isolated runtime replace the former trays, badge
+and rain gauge. The larger worm wears a curved gold coat and the male a shorter
+violet poncho. They peel/eat lychees and share a flower-arranging handover.
+Follow-up requested 2026-09-09: body panels now follow the lower body curve,
+and separately shaped hoods connect at the neck. The ceramic vase was replaced
+with a hand-tied bouquet supported by a curved arm. The male passes a stem,
+then the larger worm turns and adjusts the bouquet. Holding hands follow the
+objects' current size and position, including after revisiting the location.
+Lychee eating now has a separate 660 ms CC0 soft-fruit recording at the visible
+bite, with the male's 150 ms timing offset. Peeling cues are quieter.
+Labels, Tiny surprise and the background are unchanged in this follow-up.
+The original landscape is unchanged. Rain is a quiet optional background layer
+with real recorded rain, coat rustle, fruit-peeling/eating foley and wrapping-paper
+movement. Rain ducks under the one active foreground action. All accessories
+remain off on a fresh visit. Existing sizing, movement and keyboard controls remain.
+
+Preview: `http://127.0.0.1:8765/game-of-worms/?review=reunion-rain`.
+New English-only labels: `Lychees`, `Raincoats with rain`, `Flower arranging`.
+Tiny surprise keeps only its first sentence about the type isolate. No Swedish
+or Polish Game version exists. Martyna approved the final contextual preview
+and requested deployment on 2026-09-09. Publish these exact production files.
+Publication is verified separately after the push.
+
+`check-reunion.cjs` covers six distinct SVGs, paint IDs, timeline bounds,
+reduced-motion frames, audio formats, ducking, cancellation and loading failure.
+Existing accessory-label, fresh-visit, six-location, Ahmedabad and HCMC checks
+pass. Normal browser views checked at 360, 768, 1024 and 1440 px had no horizontal
+overflow or console errors. Browser checks confirmed peeling, flower handover,
+one foreground effects layer, Escape cleanup and unchanged male size/position
+after interrupting an action. A reload started with all accessories off.
+The follow-up rechecked both food and flower actions, exactly two holding arms,
+Escape cleanup, independent male sizing/movement, scene-exit cleanup and
+return-state restoration. The same four normal widths and full-page capture
+attempts were repeated for the final drawings. The capture defects remain.
+The full-page capture tool still produces duplicated/compressed sections or fails,
+so valid complete-page proof is unavailable. Requested widths and returned JPEG
+dimensions: 360 -> 345 x 2401, 768 -> 753 x 2375, 1024 -> 1009 x 1753,
+1440 -> 1425 x 1928. These are recorded as capture failures, not full-page approval.
+Physical-device, Safari, browser-emulated reduced motion and direct listening checks
+remain manual. Reduced-motion frame behaviour is covered by the automated test.
+
+Files created: `game-of-worms/reunion-art.js`, `reunion-play.js`, `reunion-audio.js`,
+`game-of-worms/assets/audio/reunion-{rain,coat,peel,eat}.wav`, and
+`scripts/check-reunion.cjs`. Files changed: Game `accessory-designs.js`, `game.js`,
+`index.html`, audio `SOURCES.md`, this status, art catalogue, scene review queue,
+and `docs/game-of-worms-location-research/reunion-tropicalis.md`. No files deleted.
+The website-maintainer quality gate drove the second drawing pass and the
+responsive/contextual checks. Final approval was received on 2026-09-09.
 
 ### Ahmedabad recorded digging sound, approved 2026-09-09
 

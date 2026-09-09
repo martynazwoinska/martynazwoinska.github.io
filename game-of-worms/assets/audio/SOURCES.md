@@ -1,5 +1,56 @@
 # Game sound recordings
 
+## Saint-Benoît rain, coats and lychees
+
+Approved for deployment 2026-09-09. All four new recordings are CC0, verified on the
+creators' source pages. No synthesised rain, chimes or cartoon bite sounds.
+
+- [Rain and Thunder #1, Joseph SARDIN, BigSoundBank 0124](https://bigsoundbank.com/rain-and-storm-s0124.html).
+  Original WAV: `https://bigsoundbank.com/UPLOAD/bwf-en/0124.wav`.
+  SHA-256 `d37affc216bd76b5f1964fbafacb19644ac057b00a099d96dff061ec2b5a2643`.
+  Extract 1.000–12.000 s, excluding the thunder identified at the end of the
+  43-second source. Mono downmix at 44100 Hz. Equal-power 0.5 s end/start overlap
+  produces a seamless 10.5 s PCM16 loop. Peak 0.5, playback gain 0.32, ducked to
+  0.12 during a foreground action. Gain rises gradually on starting the rain.
+- [Synthetic Coat Rubbed, Joseph SARDIN, BigSoundBank 1104](https://bigsoundbank.com/synthetic-coat-rubbed-s1104.html).
+  Original WAV: `https://bigsoundbank.com/UPLOAD/bwf-en/1104.wav`.
+  SHA-256 `83083dc075bac4a17955604f096dd07db40a048cd3ea1ab0aebdd84e93d17ef6`.
+  Extract 1.700–2.500 s. Actual synthetic-coat handling, used quietly as the
+  raincoats are enabled. Resampled to mono 44100 Hz PCM16, peak 0.28.
+- [Peeling a tangerine, MeanRaccoon, Freesound 818126](https://freesound.org/people/MeanRaccoon/sounds/818126/).
+  Original public HQ preview: `https://cdn.freesound.org/previews/818/818126_10956972-hq.mp3`.
+  SHA-256 `4095205a6a70c207c0cbd97da4dc2fdaef1ca8a8adeecf21eef46b5d9831f44f`.
+  Extract 2.000–2.650 s after decoding with the existing local FFmpeg. This is
+  fruit-skin peeling foley, not a lychee-specific recording. Mono 44100 Hz PCM16,
+  peak 0.32, two quiet cues aligned to visible peel separation.
+
+- [Banana Munching, qubodup, Freesound 181723](https://freesound.org/people/qubodup/sounds/181723/).
+  CC0. Public HQ preview: `https://cdn.freesound.org/previews/181/181723_71257-hq.mp3`.
+  Source SHA-256 `045c7bd1a07d4de280b1bcdbf47ec8b613b20e513b68e46fe856a01609301a91`.
+  Extract 6.180–6.840 s of a real soft-fruit eating recording, used as lychee
+  eating foley. This is not an actual lychee recording. Decoded to mono 44100 Hz
+  PCM16, DC removed, 12 ms/65 ms endpoint fades, peak 0.28. Playback gain 0.56
+  for the larger worm and 0.48 for the male. One short cue begins with the visible
+  bite at 2790/2940 ms. No pitch shifting, looping, reverb or generated tones.
+  Waveform and playback timing were checked. Direct listening remains manual.
+
+Coat and peel excerpts have DC removed and short 8 ms/45 ms endpoint fades.
+Flower arranging reuses `nambucca-paper-slide.wav`, documented below, only while
+the male's wrapping paper lifts and settles. This is paper, not plant-stem audio.
+
+Production SHA-256:
+
+| File | SHA-256 |
+| --- | --- |
+| reunion-rain.wav | ca544b4a92dc5e9606d4689a59d024bb9880c2117d0c3eba9ed796a96e1165d6 |
+| reunion-coat.wav | 9f66d048ec6d265f14934874cf05c914f61707e8b777aa66026b4677e5fd6c61 |
+| reunion-peel.wav | 5a7989dd855fe30ee20d0071b85adeba6d3f2eb66f3bf1dd1f70b8eac044caee |
+| reunion-eat.wav | 96d31f93476797294a721515530531703b1fbb8842223bd9522a9a484655e64d |
+
+Audio loads only after a gesture. Late loads do not restart cancelled rain.
+One foreground voice and one rain loop may coexist. Scene changes, hidden pages
+and reduced-motion changes stop both. No inference of rain on the collection date.
+
 ## Ahmedabad digging
 
 Source: [Dig With a Shovel, Joseph SARDIN, BigSoundBank 1305](https://bigsoundbank.com/dig-with-a-shovel-s1305.html).
