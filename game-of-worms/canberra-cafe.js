@@ -1,4 +1,5 @@
 import { COOKIE_WHOLE, COOKIE_BITTEN } from './canberra-cafe-art.js?v=20260907-cafe-polish-1';
+import { createCafeSound, cafeCue } from './canberra-cafe-audio.js?v=20260909-cafe-audio-1';
 const NS='http://www.w3.org/2000/svg';
 export const CAFE_FAMILIES=['canberra-flat-white-cafe','canberra-linen-napkins','oconnor-cockatoo-cafe-raid'];
 const clamp=n=>Math.max(0,Math.min(1,n));
@@ -10,7 +11,7 @@ export function cafeFrame(ms,kind,reduced=false) {
   return {t,done:ms>=duration,contact:t>=arrival&&t<=departure,
     reach:t<arrival?ease(t/arrival):t>departure?1-ease((t-departure)/(1-departure)):1};
 }
-export function createCanberraCafe(habitat) {
+export function createCanberraCafe(habitat,sound=createCafeSound()) {
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   let run=null,raf=0;
   const make=(tag,attrs={})=>{const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));return n;};
@@ -22,7 +23,7 @@ export function createCanberraCafe(habitat) {
   const cookies=()=>Array.from(habitat.querySelectorAll('[data-cafe-cookie]')).filter(n=>visible(n)&&!n.dataset.consumed);
   const handles=piece=>CAFE_FAMILIES.includes(piece?.dataset.accessoryFamily);
   function cancel() {
-    cancelAnimationFrame(raf);raf=0;
+    cancelAnimationFrame(raf);raf=0;sound.stop();
     if(!run)return;
     for(const lift of run.lifts) {
       lift.layer.remove();
@@ -99,12 +100,15 @@ export function createCanberraCafe(habitat) {
     // Grip the biscuit's upper edge, leaving its face visible below the bill.
     const foodOrigin=biscuit?xy(biscuit,0,-27):null;
     if(kind==='raid')object.layer.classList.add('is-raiding');
-    const began=performance.now();
+    const cue=cafeCue(kind);let began=0,cued=false;
     function tick(now) {
       if(run!==current)return;
       if(!visible(piece)||(biscuit&&!biscuit.isConnected)){cancel();return;}
-      const state=cafeFrame(now-began,kind,reduced.matches);
+      const ms=now-began,state=cafeFrame(ms,kind,reduced.matches);
       if(state.done){cancel();return;}
+      if(cue&&!cued&&ms>=cue.at){
+        cued=true;if(!reduced.matches&&ms-cue.at<100)sound.play(cue.clip,ms-cue.at);
+      }
       const target=kind==='raid'?foodOrigin:mouthPoint(part);
       let dx=(target.x-origin.x)*state.reach,dy=(target.y-origin.y)*state.reach,bank=0;
       if(kind==='raid') {
@@ -151,7 +155,11 @@ export function createCanberraCafe(habitat) {
       }
       raf=requestAnimationFrame(tick);
     }
-    raf=requestAnimationFrame(tick);return true;
+    // Start together after decoding, with a silent fallback on unavailable audio.
+    const begin=()=>{if(run!==current)return;if(document.hidden){cancel();return;}began=performance.now();raf=requestAnimationFrame(tick);};
+    if(cue&&!reduced.matches){const ready=sound.unlock(cue.clip);if(ready?.then)ready.then(begin);else begin();}
+    else begin();
+    return true;
   }
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});
   window.addEventListener('pagehide',cancel);reduced.addEventListener('change',cancel);

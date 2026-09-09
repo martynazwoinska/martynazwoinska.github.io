@@ -48,7 +48,8 @@ const step=ms=>{clock+=ms;const cbs=[...queue.values()];queue.clear();cbs.forEac
   assert(cafeFrame(2700,'raid').done,'Raid shortened from 4800 to 2700 ms');
   const napkin=makePiece('canberra-linen-napkins','companion',drawCafeProps);
   const bird=makePiece('oconnor-cockatoo-cafe-raid','companion',drawFlyingCockatoos);
-  const ctl=createCanberraCafe(habitat);
+  const audio=[],unlocks=[];let stopped=0;
+  const ctl=createCanberraCafe(habitat,{unlock:k=>{unlocks.push(k);return true;},play:(k,late)=>audio.push({k,late}),stop:()=>stopped++});
   assert.equal(food.querySelectorAll('[data-cafe-cookie]').length,3);
   assert(ctl.start(food));step(1050);assert(root.querySelector('[data-cafe-mouth="companion"]'));step(1300);
   const last=food.querySelectorAll('[data-cafe-cookie]')[2];assert(last.dataset.bitten);assert.equal(last.querySelector('[data-cookie-face]').getAttribute('d'),COOKIE_BITTEN);
@@ -59,7 +60,13 @@ const step=ms=>{clock+=ms;const cbs=[...queue.values()];queue.clear();cbs.forEac
   ctl.start(food);step(1000);step(1300);ctl.start(napkin);step(750);step(1100);assert(!root.querySelector('[data-cafe-mouth]'));
   for(const reason of ['visibilitychange','pagehide','reduce']) {ctl.start(bird);document.hidden=true;events[reason]();assert.equal(queue.size,0);assert.equal(root.querySelectorAll('[data-cafe-overlay]').length,0);}
   document.hidden=false;reduce.matches=true;ctl.start(bird);step(280);step(450);assert.equal(root.querySelectorAll('[data-cafe-overlay]').length,0);
+  assert.equal(audio.length,0,'No late catch-up or reduced-motion sounds');
+  reduce.matches=false;ctl.reset(food);ctl.start(coffee);step(840);assert.equal(audio.at(-1).k,'sip');step(300);assert.equal(audio.length,1);step(1200);
+  ctl.start(bird);step(85);assert.equal(audio.at(-1).k,'screech');step(100);assert.equal(audio.length,2);ctl.cancel();assert(stopped>0);
+  assert.deepEqual(unlocks.slice(-2),['sip','screech']);
+  let release;const pending=createCanberraCafe(habitat,{unlock:()=>new Promise(r=>release=r),play:()=>assert.fail('Cancelled decode played sound'),stop(){}});
+  pending.start(coffee);pending.cancel();release(true);await Promise.resolve();assert.equal(queue.size,0,'Cancelled decode cannot restart an action');
   ctl.reset(food);ctl.start(food);step(1000);ctl.clear();assert(!root.querySelector('[data-cafe-mouth]'));
   assert.equal(ctl.start({dataset:{accessoryFamily:'other'}}),false);
-  console.log('Café: three real biscuits, bite state, stolen inventory, drag and keyboard wipe, stains, reset, cancellation, reduced motion and bounded timelines pass.');
+  console.log('Café: biscuit inventory, unchanged actions, wiping, reset, cancellation, reduced motion, one timed sound per gesture and cancelled decode pass.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

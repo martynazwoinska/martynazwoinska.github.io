@@ -11,6 +11,37 @@ pass and 15 completed, including the approved Kauaʻi QG130 revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+### Canberra recorded café sounds, deployment requested, 2026-09-09
+
+Added a short real coffee slurp at cup contact and a recorded sulphur-crested
+cockatoo screech during either bird's raid. The two CC0 source MP3s are preserved
+byte-for-byte, with bounded playback excerpts, capped peaks and short fades.
+The bird source is species-identified aviary audio, not a recording of stealing
+food. No pitch changes, synthetic calls, loops or background autoplay.
+
+Only one café sound can play at a time. The first action waits for decoding,
+with a bounded silent fallback if the file is unavailable. Cancellation during
+loading cannot restart a stopped gesture. Escape, Home, interruptions, scene
+change and page hiding stop the voice. Reduced motion skips the sound.
+The approved drawings, positions, sizes, labels and action durations are intact.
+
+Created `game-of-worms/canberra-cafe-audio.js`, `scripts/check-canberra-audio.cjs`,
+`game-of-worms/assets/audio/canberra-coffee-slurp.mp3` and
+`game-of-worms/assets/audio/canberra-cockatoo.mp3`. Changed the café controller,
+its existing test, Game cache keys, audio provenance and this status. No files
+deleted. Release branch: `codex/canberra-real-audio`, based on current main.
+The unapproved Kauaʻi pour follow-up and dirty Cabinet checkout are untouched.
+
+Passing checks: Canberra audio, café controller, bird art, accessory visits,
+labels, JavaScript syntax and whitespace. Browser checks cover coffee contact,
+both raids, Home refill, interruption and Escape cleanup. Both MP3s return 200,
+with no browser console warnings or errors. Responsive widths 360, 768, 1024
+and 1440 px have no horizontal overflow. Full-page captures remain defective
+with repeated/scaled content. Actual sizes: 345×2573, 753×2424, 1009×1950 and
+1425×1928. They are not valid full-page proofs. Physical devices, Safari and
+subjective listening on the user's speakers remain unverified. This is an
+audio-only release, with no visual asset or public copy changes.
+
 ### Trivandrum loupe blink, 2026-09-09
 
 Martyna requested blinking when either live loupe crosses a worm's face and

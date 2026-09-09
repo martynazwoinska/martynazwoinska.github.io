@@ -1,5 +1,36 @@
 # Game sound recordings
 
+## Canberra coffee and sulphur-crested cockatoo, 2026-09-09
+
+Both recordings are CC0, verified on their Freesound creator pages. The public
+HQ previews are preserved byte-for-byte as the production MP3s.
+
+- [coffee slurp 4 by benkenart, Freesound 568036](https://freesound.org/people/benkenart/sounds/568036/), published 2021-04-14. A real person slurping coffee from a cup.
+  Public source: `https://cdn.freesound.org/previews/568/568036_12771108-hq.mp3`.
+  File: `canberra-coffee-slurp.mp3`, 18261 bytes.
+  SHA-256: `5c3ec26e873b4e86162576643ff9d47a1bef9ceaab8badbb8e03fdf4a193cfc0`.
+  Playback excerpt: 0.150 to 0.670 s, starting 836 ms into the sip when the cup
+  reaches the mouth. The male has biscuits, so his eating gesture has no slurp.
+- [Parrots - Sulfur-crested Cockatoo by TheKingOfGeeks360, Freesound 844340](https://freesound.org/people/TheKingOfGeeks360/sounds/844340/), published 2026-02-06. The creator identifies an actual sulphur-crested cockatoo's screeching squawk, recorded with an LG Stylus 2022. The recording is tagged aviary.
+  Public source: `https://cdn.freesound.org/previews/844/844340_15895934-hq.mp3`.
+  File: `canberra-cockatoo.mp3`, 35520 bytes.
+  SHA-256: `1ffb49ee61f8fc7c3ddc354a1607b6f2a4337280a0bc561411ea4c624d453a01`.
+  Playback excerpt: 0.020 to 1.340 s, starting 80 ms into either bird's raid.
+
+The species is correct for the Canberra drawing. This is not a documented
+food-stealing call or a recording made in Canberra. Cockatoo contact calls
+occur in flight, while different calls have other contexts. See
+[Gillies and Brown, Australian Journal of Zoology, DOI 10.1071/ZO23043](https://www.publish.csiro.au/ZO/pdf/ZO23043).
+The human slurp is playful drinking foley for the worm, not a nematode recording.
+
+The browser decodes each clip only after a user gesture. Original speed and
+pitch are preserved, without looping, synthesis, EQ or overlapping calls.
+Excerpt peak amplitudes are capped at 0.32 for the slurp and 0.38 for the bird,
+with 12 ms attack and 55 ms release fades. One foreground voice is stopped by
+interruption, Escape, Home, scene change, page hiding or reduced-motion change.
+Reduced-motion mode skips the sound. Failed audio loading falls back silently.
+The approved drawings, text, positions and action timelines are unchanged.
+
 ## Kauaʻi QG130 forest bath, approved for deployment 2026-09-09
 
 Real recordings by Joseph SARDIN, released under CC0 on BigSoundBank.
