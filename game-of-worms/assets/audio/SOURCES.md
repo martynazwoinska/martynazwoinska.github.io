@@ -350,7 +350,48 @@ sharp mechanical edges. Pitch is unchanged. The bean cues do not overlap each
 other. Escape, dragging, resizing, scene changes and page hiding stop the sources.
 Failed loading is silent and retryable. Manual listening approval is pending.
 
-The chocolate-workshop follow-up reuses the CC0 `nambucca-paper-slide.wav`
+The initial chocolate-workshop follow-up reused the CC0 `nambucca-paper-slide.wav`
 recorded paper movement above for the bar sleeve at 430 ms, at 55% of the
 existing playback gain. No new audio file is added. Pouring, scraping and
-chewing remain quiet. The existing bicycle and bean recordings are unchanged.
+chewing remained quiet. The existing bicycle and bean recordings are unchanged.
+
+## Oʻahu chocolate eating, 2026-09-09
+
+- File: `oahu-chocolate-eating.mp3`, 349152 bytes.
+- Recording: [Eating Chocolate, 458009](https://freesound.org/people/Fabrizio84/sounds/458009/) by Fabrizio84, published 1 February 2019.
+- Licence: [CC0](https://creativecommons.org/publicdomain/zero/1.0/), checked 9 September 2026.
+- Untouched source-linked HQ preview: `https://cdn.freesound.org/previews/458/458009_2841496-hq.mp3`.
+- SHA-256: `028bc10adb609ae26da929c04f4ede1c4c696f3b1247dfb6e027d2ff0e0a83cc`.
+
+This is a recording of actual chocolate eating. Runtime excerpts are
+0.80-1.42 s for the larger worm and 6.60-7.24 s for the male. Both begin
+1810 ms into the gesture, when the piece has reached the mouth, and end during
+the visible chew. The male excerpt is foley for the chocolate-covered
+macadamia, not a recording claimed to contain that exact food.
+No pitch shifting or synthetic layer is used.
+
+Per-excerpt peak targets are 0.10 and 0.11 with a maximum gain of 0.8,
+an 8 ms attack and release of up to 60 ms. The existing paper excerpt plays
+at 430 ms for 0.44 s with a peak target of 0.055. Only one voice plays.
+Loading is lazy, failures are silent and retryable, and late cues are discarded.
+Escape, activity changes, dragging, resizing and page hiding cancel playback.
+Timing and level tests passed. Subjective listening remains unverified.
+
+## Oʻahu gift wrapping, 2026-09-09
+
+- File: `oahu-gift-foil.mp3`, 182112 bytes, preserved unchanged.
+- Recording: [tinfoil 05.wav, 337524](https://freesound.org/people/Anthousai/sounds/337524/) by Anthousai, published 21 February 2016.
+- Licence: [CC0](https://creativecommons.org/publicdomain/zero/1.0/), checked 9 September 2026.
+- Source-linked HQ preview: `https://cdn.freesound.org/previews/337/337524_5923045-hq.mp3`.
+- SHA-256: `7679bb0a7ba4a6bc745509236373b95b8a3ba45dbf975dd9097f675c6900a73e`.
+
+Real aluminium-foil handling is played at 0.60-1.08 s for the shared box's
+liner. An alternate 2.40-2.88 s excerpt was prepared for the superseded paired
+version and is not used by the shared action. The lid/ribbon gestures use
+the existing CC0 `nambucca-paper-slide.wav`, from 0-0.44 s.
+Peak targets are 0.065 for foil and 0.06 for paper, with short attack/release
+fades. No pitch change, synthetic layer or idle loop. Sources load on the
+first gift gesture. Wrapping/opening cues are bounded and mutually exclusive
+with eating/cycling. Escape, movement, resizing, scene changes and page hiding
+stop them. File/hash, timing, level, lazy-loading and cleanup tests passed.
+Subjective listening remains unverified.

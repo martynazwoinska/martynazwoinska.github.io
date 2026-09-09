@@ -3,10 +3,10 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260909-chocolate-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260909-gift-3";
 import { createKauaiBath } from "./kauai-bath-play.js?v=20260909-bath-pour-1";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
-import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-chocolate-1";
+import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
 import { createHcmcPlay } from "./hcmc-play.js?v=20260908-hcmc-1";
 import { createNambuccaPlay } from "./nambucca-play.js?v=20260908-nambucca-recorded";
 import { createDoisRiosPlay } from "./dois-rios-play.js?v=20260908-dois-rios-1";
@@ -775,7 +775,8 @@ function renderSpecies(item, place) {
     second: item.cast[1]
   }));
   els.localHeadwearIcon.textContent = "⌒";
-  els.localHeadwearLabel.textContent = accessoryDesign.headwear.label;
+  els.localHeadwearLabel.textContent = accessoryDesign.headwear?.label || "";
+  els.localHeadwearLabel.closest("button").hidden = !accessoryDesign.headwear;
   els.localWrapIcon.textContent = "≈";
   els.localWrapLabel.textContent = accessoryDesign.wrap.label;
   els.localCharmIcon.textContent = "✦";
@@ -1378,7 +1379,7 @@ function toggleAccessory(id, force) {
   const shouldShow = typeof force === "boolean" ? force : !activeAccessories.has(id);
   const accessory = document.getElementById(id);
   const button = document.querySelector(`[data-accessory="${id}"]`);
-  if (!accessory || !button) return;
+  if (!accessory || !button || button.hidden || !accessory.dataset.accessoryFamily) return;
   accessoryWormParts.forEach(wormPart => applyAccessoryPosition(id, wormPart));
   accessory.toggleAttribute("hidden", !shouldShow);
   if (shouldShow) syncFittedHeadwearMotion(accessory);
@@ -1398,7 +1399,8 @@ function syncAccessories() {
   accessoryIds.forEach(id => {
     const accessory = document.getElementById(id);
     const button = document.querySelector(`[data-accessory="${id}"]`);
-    const shouldShow = activeAccessories.has(id);
+    const shouldShow = !!accessory?.dataset.accessoryFamily && !button?.hidden && activeAccessories.has(id);
+    if (!shouldShow) activeAccessories.delete(id);
     accessoryWormParts.forEach(wormPart => applyAccessoryPosition(id, wormPart));
     accessory?.toggleAttribute("hidden", !shouldShow);
     if (shouldShow) syncFittedHeadwearMotion(accessory);
@@ -1464,6 +1466,22 @@ function addAccessoryHitTarget(piece) {
   if (!matrix || !Number.isFinite(bounds.width) || !Number.isFinite(bounds.height)) return;
   const scaleX = Math.hypot(matrix.a, matrix.b) || 1;
   const scaleY = Math.hypot(matrix.c, matrix.d) || 1;
+  if (piece.dataset.accessoryFamily === "eca789-chocolate-bike") {
+    // Only pad the crank to a finger-sized target. A whole-rig rectangle
+    // intercepts touches intended for neighbouring props in the empty gaps.
+    const art = piece.querySelector(".location-accessory-art");
+    const artMatrix = art?.getScreenCTM();
+    if (!artMatrix) return;
+    const crank = new DOMPoint(111, 93).matrixTransform(matrix.inverse().multiply(artMatrix));
+    const hitTarget = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    const width = 44 / scaleX, height = 44 / scaleY;
+    for (const [key, value] of Object.entries({
+      class: "accessory-hit-target", x: crank.x - width / 2, y: crank.y - height / 2,
+      width, height, rx: Math.min(width, height) * .22, "aria-hidden": "true"
+    })) hitTarget.setAttribute(key, String(value));
+    piece.prepend(hitTarget);
+    return;
+  }
   const isN2CompanionCoat = piece.dataset.accessoryFamily === "n2-lab-coat" && piece.dataset.wormPart === "companion";
   const isN2Accessory = ["ngm-agar-plate", "n2-lab-coat", "cryo-vial-jetpack", "n2-lab-goggles"].includes(piece.dataset.accessoryFamily);
   const minimumTarget = piece.dataset.accessoryFamily === "ngm-agar-plate" ? 46 : isN2Accessory ? 52 : 44;

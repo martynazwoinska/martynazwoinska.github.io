@@ -11,7 +11,7 @@ have poor drawings or require animations.
 - 31 active scenes, counted from the current accessory catalogue.
 - 15 scenes remain to check on this pass's checklist.
 - 16 have already received the recent interaction pass. Leave them closed.
-- Oʻahu ECA789's chocolate workshop was approved for commit and deployment on 2026-09-09.
+- Oʻahu ECA789's workshop is live at `47b465c`. The final shared gift, mould removal and eating audio follow-up is approved for deployment.
 - Kauaʻi QG130 is published at `e632c55`, verified on 2026-09-09.
 - Saint-Benoît JU1373's final preview was approved for deployment on 2026-09-09.
 - Ho Chi Minh City's approved revision is published and verified at `7e37b9a`.
@@ -61,7 +61,7 @@ browser or physical device.
 
 | Species | Location | Status | Work already covered |
 | --- | --- | --- | --- |
-| tropicalis | Oʻahu, Hawaiʻi · ECA789 | Approved for deployment | Shared chocolate bike, two distinct bar-mould workstations and chocolate-bar/macadamia tasting. Coordinated actions, recorded bike/bean sounds and preserved sizes. Contextual preview, English-only labels and Tiny surprise approved 2026-09-09. Capture and manual listening limitations remain in the review notes. |
+| tropicalis | Oʻahu, Hawaiʻi · ECA789 | Done, follow-up approved for deployment | Workshop deployed at `47b465c`. One large shared gift, mould removal, smaller bike hit area and recorded eating cues approved for deployment. Chocolate bike and tasting artwork and sizes preserved. Capture and listening limitations remain in the review notes. |
 | briggsae | Kauaʻi, Hawaiʻi · QG130 | Done | Forest bath with ginger squeezed into the male's bowl, jug/dipper rinsing, fitted towels and recorded water/cloth sounds. Original forest painting retained. Published at `e632c55`, with successful Pages run `34347245958` and matching public files. Full-page capture and manual listening limitations remain documented. |
 | tropicalis | Saint-Benoît, Réunion · JU1373 | Approved for deployment | Lychees with recorded peeling/eating, fitted coats and rain, held bouquet and shared flower arranging. Final contextual preview approved 2026-09-09. Full-page capture and manual listening limitations remain in PROJECT_STATUS.md. |
 | inopinata | Ishigaki, Japan | Done | Wing flutter/flight with sound, figs, visors and baskets. |

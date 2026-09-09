@@ -1,18 +1,13 @@
 // Original drawings. Construction references are recorded in the Oʻahu dossier.
 import {add,path,C} from './oahu-bike-art.js?v=20260909-bike-1';
-export const MOULDS='eca789-chocolate-moulds',TASTING='eca789-chocolate-tasting';
+export const TASTING='eca789-chocolate-tasting';
 export const chocolateLayouts={
-  [MOULDS]:{primary:[435,240,.86,0],companion:[12,225,.82,-4]},
   [TASTING]:{primary:[435,70,.88,9],companion:[32,75,.80,-7]}
 };
 const group=(g,k,a={})=>add(g,'g',{'data-choc-part':k,...a});
 const line=(g,d,s,w=1)=>path(g,d,'none',s,w);
 const ellipse=(g,x,y,rx,ry,f,s=C.ink,w=1)=>add(g,'ellipse',{cx:x,cy:y,rx,ry,fill:f,stroke:s,'stroke-width':w});
 const cocoa='#633b2e',edge='#3e2b27',shine='#b67b53',ivory='#fff3da';
-function gradient(g,id,colors){
-  const def=add(g,'defs'),v=add(def,'linearGradient',{id,x1:0,y1:0,x2:1,y2:.3,gradientUnits:'objectBoundingBox'});
-  colors.forEach(([offset,color])=>add(v,'stop',{offset,'stop-color':color}));return 'url(#'+id+')';
-}
 function tile(g,x,y,w,h){
   const t=add(g,'g',{transform:`translate(${x} ${y})`});
   path(t,`M0 0H${w}V${h}H0Z`,edge,edge,.6);
@@ -65,49 +60,9 @@ function tasting(g,small){
   const bite=group(g,'bite',{transform:'translate(18 -2)','data-choc-bite-origin':'18,-2'});macadamia(bite,0,0,.8);
   group(g,'cut',{opacity:0});
 }
-function mould(g,small){
-  const metal=gradient(g,small?'oc-metal-s':'oc-metal-p',[[0,'#7697a5'],[.28,'#f4f8f1'],[.57,'#adc5cc'],[1,'#607d8e']]);
-  ellipse(g,0,46,small?59:72,7,'#263c3530','none');
-  const tray=group(g,'tray',{transform:small?'translate(0 16)':'translate(0 19)'});
-  // A clear thick-rimmed mould with a receding top plane and front wall.
-  path(tray,'M-66 4L-36-24L61-10L42 25L-62 17Z','#cbe0dc',C.ink,1.4);
-  path(tray,'M-66 4L-62 17L42 25L42 32L-62 24L-67 13Z','#84a9ae',C.ink,1.1);
-  path(tray,'M42 25L61-10L63-1L44 32Z','#628991',C.ink,1);
-  path(tray,'M-59 2L-34-18L52-7L36 18Z','#e4efdf','#faffee',1.2);
-  const plane=add(tray,'g',{transform:'matrix(1 .125 -.68 .68 -33 -16)'});
-  if(small){
-    for(let r=0;r<2;r++)for(let c=0;c<3;c++){
-      const x=3+c*26,y=2+r*23;
-      path(plane,`M${x} ${y}h23v20h-23Z`,'#b1c9c5','#638b91',1);
-      const fill=group(plane,'fill',{opacity:.55});tile(fill,x+2,y+2,19,16);
-    }
-  }else{
-    path(plane,'M1 1H79V48H1Z','#afc8c7','#5b7e83',1);
-    for(let r=0;r<2;r++)for(let c=0;c<3;c++){const fill=group(plane,'fill',{opacity:.17});tile(fill,3+c*25,3+r*22,23,20);}
-  }
-  line(tray,'M-64 4L-37-22L58-10M-59 20L37 28','#fcfff5',1.4);
-  const tool=group(g,'tool',{'data-choc-tool-home':small?'translate(2 -21) rotate(-14)':'translate(-23 -45) rotate(-9)',transform:small?'translate(2 -21) rotate(-14)':'translate(-23 -45) rotate(-9)'});
-  if(small){
-    // Scraper: broad thin steel blade, rounded wooden handle, two flush rivets.
-    path(tool,'M-32-1H32L28 25H-30Z',metal,C.ink,1.5);
-    path(tool,'M-32-9Q-34-14-27-15H29Q35-14 33-8L31-1H-32Z','#b8804d',C.ink,1.2);
-    line(tool,'M-26-11H26','#e4bc79',1.3);
-    for(const x of[-24,23])ellipse(tool,x,-8,1.6,1.6,'#dbe5df',C.ink,.65);
-    line(tool,'M-27 23H26','#eef5ee',1.1);
-  }else{
-    // Pouring bowl, open elliptical rim, visible wall thickness and chocolate surface.
-    path(tool,'M-32-2Q-28 24 3 28Q28 25 34 4L40-4L28-9Z',metal,C.ink,1.5);
-    ellipse(tool,0,-5,33,13,metal,C.ink,1.3);
-    ellipse(tool,0,-5,28,9,cocoa,edge,.9);
-    path(tool,'M-20-6Q-2-15 18-5Q3-9-12-4Z','#b87b51','none');
-    path(tool,'M27-11L40-4L31 4','none','#f3f7e9',2);
-    line(tool,'M-26 5Q-24 17-12 21','#f2f7ed',2.6);
-  }
-  const stream=group(g,'stream',{opacity:0});path(stream,'M0 0L0 0',cocoa,edge,.8);
-}
 export function drawOahuChocolate(g,item,small){
-  if(![MOULDS,TASTING].includes(item.family))return false;
+  if(item.family!==TASTING)return false;
   const a=group(g,'art',{'data-chocolate-art':small?'male':'hermaphrodite'});
-  if(item.family===MOULDS)mould(a,small);else tasting(a,small);
+  tasting(a,small);
   return true;
 }

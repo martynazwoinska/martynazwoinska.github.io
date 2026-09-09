@@ -11,7 +11,33 @@ pass and 16 completed, including the approved Oʻahu ECA789 revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
-### Oʻahu chocolate workshop, deployment approved, 2026-09-09
+### Oʻahu gift wrapping, deployment approved, 2026-09-09
+
+The approved concept adds independent Gift wrapping beside Chocolate tasting
+and Chocolate bike. Following the user's preview feedback, both worms now
+wrap one shared macadamia gift box. Together they bring it much further into
+the foreground and wait for a second activation to open it. Recorded
+foil and paper sounds accompany the folds. Other actions do not run alongside
+wrapping. Existing bike, tasting, background and Tiny surprise are preserved.
+The user approved the final contextual preview and requested deployment.
+Publish the shared gift together with the preceding mould-removal and eating
+audio follow-up. Six focused tests and syntax checks pass. Full-page capture
+and subjective listening limitations remain documented in the Oʻahu review.
+
+### Earlier Oʻahu mould removal and eating audio, local follow-up, 2026-09-09
+
+Workshop release `47b465c` is live. The user's follow-up removes both moulds
+without a replacement. The local scene now has Chocolate tasting and Chocolate
+bike. Remaining artwork, starting layouts, background and copy are unchanged.
+The bike's oversized invisible hit rectangle intercepted the male mould. A
+44 px crank pad leaves empty gaps clear. Temporarily hidden props also stop
+intercepting pointers. Recorded chocolate-eating excerpts accompany both bites.
+Five targeted scripts, syntax, catalogue and browser checks pass. Normal 360,
+768, 1024 and 1440 px views have no horizontal overflow. Full-page captures
+remain malformed. Listening, physical devices and Safari remain manual.
+This earlier follow-up is included in the approved shared-gift deployment.
+
+### Earlier Oʻahu workshop, deployed at 47b465c, 2026-09-09
 
 Implemented the user-approved bicycle-powered cacao-processing concept on
 `codex/oahu-chocolate-bike`, based on main `6af30f5`. The user subsequently

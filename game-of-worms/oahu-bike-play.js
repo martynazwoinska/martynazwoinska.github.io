@@ -58,7 +58,7 @@ export function createOahuBike(habitat,refresh=()=>{}){
         const to=base.multiply(small?new DOMMatrix().translate(0,25).scale(.4):new DOMMatrix().translate(-70,-175).scale(.78));
         players.push({small,holder,from,to,paths,tail:clone.querySelector('.male-tail'),arms:[arm(effects,small),arm(effects,small)]});
       }
-      for(const n of habitat.querySelectorAll('.worm-ground-shadow,.accessory-piece'))if(n!==piece)style(n).style.opacity='0';
+      for(const n of habitat.querySelectorAll('.worm-ground-shadow,.accessory-piece'))if(n!==piece){style(n).style.opacity='0';n.style.pointerEvents='none';}
     }
     const nodes={};for(const key of ['wheel','crank','pedals','flywheel','fan','scoop','beans','grains','nibs','shells','roller'])nodes[key]=save(art.querySelector(`[data-bike-${key}]`));
     if(!reduced.matches){

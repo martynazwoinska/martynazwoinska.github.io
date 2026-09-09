@@ -1,5 +1,22 @@
 # Game of Worms art catalogue
 
+Oʻahu ECA789 gift approved for deployment, 2026-09-09: independent Gift wrapping fills the
+third slot. After the first preview, the user requested one much larger gift
+presented by both worms together. A shared rigid box has an inset foil liner,
+chocolate macadamias, lifted berry lid and ribbon bow. Four hands follow the
+wrapping and support the enlarged foreground gift. A second tap unwraps it.
+Refinement stabilised the grip as the box changes size, kept both faces clear
+and smoothed the return. The superseded individual bar gift is removed.
+The user approved the final contextual drawing for deployment. The current catalogue has
+94 designs across 31 scenes.
+
+Earlier Oʻahu ECA789 local follow-up 2026-09-09: removed both mould workstations
+and their button. Remaining Chocolate tasting and Chocolate bike drawings
+and layouts are unchanged. Both tasting SVG trees match release `47b465c`
+exactly. A smaller bike hit area fixes interception in empty space. Recorded
+eating cues accompany both bites. Included in the shared-gift deployment. The catalogue
+then contained 93 designs across 31 scenes. Earlier workshop notes follow.
+
 Oʻahu ECA789, approved 2026-09-09: one shared chocolate bike replaces the
 cacao-key xylophones. Side-view frame, spokes, crank and chain connect to a
 cracker/winnower with a hopper, inspection panel and separate nib/shell vessels.

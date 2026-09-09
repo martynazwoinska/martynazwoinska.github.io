@@ -2,9 +2,40 @@
 
 Last updated: 2026-09-09
 
-> **Approved replacement accessory contract:** `Chocolate moulds`, `Chocolate tasting`, and `Chocolate bike`. These replace the former rain instruments with a regional chocolate workshop. The rotting-flower collection substrate and approved background are unchanged.
+> **Approved accessory contract:** `Gift wrapping`, `Chocolate tasting` and `Chocolate bike`. The user removed the moulds after deployment of `47b465c`, then approved the final shared gift-wrapping preview for deployment. The collection substrate, remaining approved drawings and background are unchanged.
 
-## Chocolate workshop preview, 2026-09-09
+## Gifts for the visitor, 2026-09-09
+
+The user revised the first preview to one large shared gift. Both worms now
+close and ribbon one box of chocolate macadamias, then present it together
+much closer to the visitor. It waits for a tap before opening, with short
+recorded foil/paper sounds. The individual bar gift drawing is removed.
+No gift action starts the bicycle or the tasting action.
+
+Construction references checked before drawing:
+
+- [Mānoa Chocolate products](https://manoachocolate.com/pages/all-products) and [macadamia gift box](https://manoachocolate.com/products/macadamias-gift-box) support the contents. The game's original small box is not a replica of the manufacturer's three-tube package. Its foil wrapping is not a claim about Mānoa's actual wrapper materials.
+- [Confectionery House foil wrapping](https://confectioneryhouse.com/blogs/recipes/how-to-wrap-chocolate-in-foil-using-candy-foil-wrappers) and [Custom Favors wrapping guide](https://www.customfavors.com/pages/help-center/how-to-wrap-a-chocolate-bar.html) guide fold order, envelope ends and the outer paper sleeve.
+
+New English-only labels: `Gift wrapping` and `Chocolate gift`,
+with `Unwrap chocolate gift` while offered.
+The Tiny surprise remains unchanged. The user approved the final contextual
+art and English-only labels and requested deployment. Audio provenance is
+recorded in audio/SOURCES.md.
+
+## Mould removal and eating audio, 2026-09-09
+
+Both mould drawings, fill/scrape actions and the unused button are removed.
+The bike's oversized invisible rectangle intercepted the male mould. Only
+the crank now gets an extra 44 px pad. Painted machinery remains clickable.
+Hidden props stop intercepting pointers until completion or cancellation.
+Both worms receive a short excerpt of Fabrizio84's CC0 recording
+[Eating Chocolate](https://freesound.org/people/Fabrizio84/sounds/458009/),
+starting at the bite. The male cue is chocolate-eating foley, not a claimed
+macadamia recording. Sources and timing are in audio/SOURCES.md.
+Existing English-only labels and Tiny surprise are unchanged.
+
+## Earlier chocolate workshop release, 2026-09-09
 
 The subsequent user request replaces both remaining musical accessories with
 Chocolate moulds and Chocolate tasting. The primary bowl pours into a segmented
