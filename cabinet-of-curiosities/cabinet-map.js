@@ -49,11 +49,13 @@
     $('.map-selection').hidden = !$('.map-selection').textContent;
     $('.map-caution').hidden = !current.publicNote; $('.map-caution').textContent = current.publicNote || '';
     $('.map-links').replaceChildren(); link('Website', current.url);
-    if (current.shop) link('Shop online', current.shop);
-    if (current.catalogue && current.catalogue !== current.shop) link('Product details', current.catalogue);
-    if (current.process) link('How it is made', current.process);
-    if (current.terms) link('Delivery information', current.terms);
-    if (current.addressSource) link('Address source', current.addressSource);
+    if (group !== 'makers') {
+      if (current.shop) link('Shop online', current.shop);
+      if (current.catalogue && current.catalogue !== current.shop) link('Product details', current.catalogue);
+      if (current.process) link('How it is made', current.process);
+      if (current.terms) link('Delivery information', current.terms);
+      if (current.addressSource) link('Address source', current.addressSource);
+    }
     if (group === 'uppsala' && current.node) {
       link('Open location', `https://www.openstreetmap.org/node/${current.node}`);
       shopMap.select(current.id);
