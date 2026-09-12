@@ -1,4 +1,5 @@
 import { drawWormbook } from "./claremont-book-art.js?v=20260909-wormbook-4";
+import { drawLombokSwim, swimLayouts } from "./lombok-swim-art.js?v=20260912-swim-1";
 import { drawAraucaniaWork, araucaniaLayouts } from "./araucania-art.js?v=20260909-araucania-bites-5";
 import { drawDoisRios, doisRiosLayouts } from "./dois-rios-art.js?v=20260908-dois-rios-1";
 import { drawNambucca, nambuccaLayouts } from "./nambucca-art.js?v=20260908-nambucca-1";
@@ -52,7 +53,7 @@ const rows = [
   ["nigoni", "Mahahual, Mexico · JU2617", "reef-ruffle swim costumes", "mahahual-reef-ruffle-swim-costumes", "Caribbean sun spectacles", "mahahual-caribbean-sun-spectacles", "sea-grape beach parasols", "mahahual-sea-grape-beach-parasols"],
   ["nigoni", "Mauritius · JU2909", "wriggle-powered ravanne drums", "mauritius-ravanne-crawler-drum", "Vacoas fruit-gathering tail baskets", "mauritius-vacoas-tail-scoop", "dodo-beak fruit grabbers", "mauritius-dodo-beak-fruit-grabber"],
   ["nigoni", "Ho Chi Minh City · JU4356", "Scooter", "ju4356-shared-scooter", "Starfruit", "ju4356-starfruit-preparation", "Vietnamese coffee", "ju4356-phin-coffee"],
-  ["nigoni", "Lombok, Indonesia · HPT26", "Lingsar spring collars", "lingsar-spring-collar", "Ficus fruit transformations", "lingsar-ficus-fruit-transformation", "spring-water currents", "lingsar-springwater-current"],
+  ["nigoni", "Lombok, Indonesia · HPT26", "Swimming goggles", "hpt26-swimming-goggles", "Ficus fruit transformations", "lingsar-ficus-fruit-transformation", "Splashing pool", "hpt26-splashing-pool"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "Balinese endek wrap", "ju1873-balinese-endek-wrap", "Balinese gamelan gong", "ju1873-balinese-gamelan-gong"],
   ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Flower bait", "qg2726-flower-bait", "Leaf cutting", "qg2726-leaf-cutting"],
   ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras carnival crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
@@ -83,7 +84,7 @@ const santeuilRendererFamilies = new Set(["santeuil-railway-driver-uniform", "sa
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
 const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-avocado-snack-bowl"]);
 const kauaiRendererFamilies = new Set(["xz1516-forest-bird-headphones", "xz1516-ohia-blossom-microphone", "xz1516-reel-to-reel-recorder"]);
-const sharedAccessoryFamilies = new Set(["xz1516-reel-to-reel-recorder", "ju4356-shared-scooter", "eca789-chocolate-bike", "eca789-chocolate-gifts"]);
+const sharedAccessoryFamilies = new Set(["xz1516-reel-to-reel-recorder", "ju4356-shared-scooter", "eca789-chocolate-bike", "eca789-chocolate-gifts", "hpt26-splashing-pool"]);
 const actRendererFamilies = new Set(["canberra-flat-white-cafe", "canberra-linen-napkins", "oconnor-cockatoo-cafe-raid"]);
 const claremontRendererIds = new Set([
   "elegans::Claremont, California · ECA250::headwear",
@@ -4164,58 +4165,9 @@ function drawTaipeiBRC20390Accessory(group, item, companion) {
 
 function drawLombokHPT26Accessory(group, item, companion) {
   if (!lombokHPT26RendererIds.has(item.id)) return false;
+  if (drawLombokSwim(group, item, companion)) return true;
   group.dataset.renderer = item.family;
   group.classList.add("lombok-hpt26-accessory", companion ? "hpt26-companion" : "hpt26-primary");
-  const drop = (parent, x, y, size) => {
-    const bead = add(parent, "g", { transform: `translate(${x} ${y}) scale(${size})` });
-    path(bead, "M0-7C-2-3-5 0-5 3A5 5 0 0 0 5 3C5 0 2-3 0-7Z", "lingsar-drop");
-    line(bead, "M-2 1Q-4 4-1 5", "lingsar-glint");
-  };
-
-  if (item.family === "lingsar-spring-collar") {
-    // Draw the near-side band as a curved cuff across the neck.
-    if (companion) {
-      path(group, "M-11-4Q-1-8 11-3L10 3Q0 7-11 2Z", "lingsar-collar-band");
-      line(group, "M-10-3Q0 0 10-2M-9 2Q0 5 9 2", "lingsar-gold-edge");
-      path(group, "M-3-1Q0-4 3-1L2 3H-2Z", "lingsar-enamel");
-      line(group, "M0 4V7", "lingsar-chain");
-      drop(group, 0, 10, .53);
-      add(group, "circle", { class: "lingsar-rivet", cx: -7, cy: 0, r: .8 });
-      add(group, "circle", { class: "lingsar-rivet", cx: 7, cy: 0, r: .8 });
-    } else {
-      path(group, "M-26-7Q-2-13 26-6L24 6Q1 15-25 5Z", "lingsar-collar-band");
-      path(group, "M-22-4Q1 1 22-3L21 4Q0 11-22 3Z", "lingsar-enamel");
-      line(group, "M-25-6Q0 1 25-5M-24 5Q0 14 23 6", "lingsar-gold-edge");
-      path(group, "M-5-2Q0-7 5-2L4 6Q0 9-4 5Z", "lingsar-clasp");
-      line(group, "M-15 7V11M0 9V15M15 7V11", "lingsar-chain");
-      drop(group, -15, 14, .65);
-      drop(group, 0, 20, .92);
-      drop(group, 15, 14, .65);
-      [-20,-10,10,20].forEach(x => add(group, "circle", { class: "lingsar-rivet", cx: x, cy: 2, r: 1 }));
-    }
-    return true;
-  }
-
-  if (item.family === "lingsar-springwater-current") {
-    if (companion) {
-      path(group, "M-44 3Q-53-5-38-11Q-19-17 5-9Q27 0 32-17Q35-28 23-30Q35-39 43-25Q54-4 35 9Q9 22-22 15Q-44 13-44 3Z", "lingsar-water");
-      path(group, "M-36 1Q-18-7 9 0Q26 5 33-9M-30 9Q-9 16 17 10", "lingsar-water-highlight");
-      path(group, "M-19 2Q0-2 13 5Q0 11-16 7", "lingsar-water-ripple");
-      line(group, "M38-26Q47-13 35-2", "lingsar-foam");
-      drop(group, 27, -39, .54);
-      drop(group, -40, -17, .36);
-    } else {
-      path(group, "M-95 1C-110-16-61-28-18-19C21-11 50-12 64-34C71-47 62-53 55-52C70-69 94-55 91-33C89-15 71-7 62-1C83 0 98 5 97 14C87 33 16 36-37 27C-72 21-88 16-95 1Z", "lingsar-water");
-      path(group, "M-85-3C-52-17-21-10 5-5C33 2 66-7 77-29", "lingsar-water-highlight");
-      path(group, "M-78 9Q-36 32 27 24Q65 22 82 13", "lingsar-water-highlight");
-      path(group, "M-48 2C-25-7 21-4 32 7C35 17-5 21-29 11C-40 5-12 1 3 6", "lingsar-water-ripple");
-      path(group, "M69-52Q91-43 77-23M-80 1L-62 5M54 18L66 14", "lingsar-foam");
-      drop(group, 53, -63, .85);
-      drop(group, 88, -66, .52);
-      drop(group, -87, -20, .55);
-    }
-    return true;
-  }
 
   if (item.family === "lingsar-ficus-fruit-transformation") {
     const seed = (parent, x, y, angle, size = 1) => {
@@ -6300,9 +6252,8 @@ function renderPiece(target, item, wormPart) {
     ,"ju4356-carambola-ground-contact-stage": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
     ,"ju4356-its2-ribbon-reader": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"hcmc-urban-canopy-census-engine": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
-    ,"lingsar-spring-collar": { primary: [330, 100, 1, 25], companion: [110, 125, 1, 27] }
+    ,...swimLayouts
     ,"lingsar-ficus-fruit-transformation": { primary: [186, 201, .66, 13], companion: [49, 172, .32, 21] }
-    ,"lingsar-springwater-current": { primary: [105, 289, .84, 0], companion: [12, 213, .63, -6] }
     ,"eg4181-apricot-blossom-hat": { primary: [333, 37, .43, 22], companion: [114, 91, .36, 24] }
     ,"eg4181-beehive-saddle-pack": { primary: [245, 166, .46, 21], companion: [92, 154, .36, 30] }
     ,"eg4181-single-tail-mountain-ski": { primary: [151, 239, .49, -10], companion: [55, 211, .40, -7] }
@@ -6338,7 +6289,7 @@ function renderPiece(target, item, wormPart) {
     "data-worm-part": wormPart,
     "data-accessory-family": item.family
   });
-  const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "lingsar-springwater-current";
+  const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "hpt26-splashing-pool";
   if (sharedAccessoryFamilies.has(item.family)) piece.dataset.sharedAccessory = "true";
   if (item.family === "eca789-chocolate-tasting") piece.dataset.pieceLabel = companion ? "Chocolate macadamias" : "Chocolate bar";
   if (item.family === "eca789-chocolate-gifts") piece.dataset.pieceLabel = "Chocolate gift";
@@ -6364,7 +6315,7 @@ function renderPiece(target, item, wormPart) {
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
     : isBodyFittedCloth || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });
-  if ((isBodyFittedCloth || ["n2-lab-coat", "n2-lab-goggles", "cryo-vial-jetpack"].includes(item.family)) && artParent.addEventListener) {
+  if ((isLombokWorn || isBodyFittedCloth || ["n2-lab-coat", "n2-lab-goggles", "cryo-vial-jetpack"].includes(item.family)) && artParent.addEventListener) {
     // A toggle can start clothing later than the body. Reuse its animation clock.
     artParent.addEventListener("animationstart", event => {
       if (event.target !== artParent) return;
@@ -6428,6 +6379,16 @@ export function auditAccessoryPairGeometry() {
 export function renderLocationAccessories(targets, speciesId, placeName) {
   const design = getAccessoryDesign(speciesId, placeName);
   if (!design) return null;
+  // The shared pool rests behind the female when idle. Restore the normal
+  // accessory order when leaving Lombok so other locations keep their layering.
+  const charmParent = targets.charm?.parentNode;
+  if (design.charm?.family === "hpt26-splashing-pool") {
+    const worm = charmParent?.querySelector?.(".worm-body");
+    if (worm) { charmParent.insertBefore(targets.charm, worm); targets.charm.dataset.poolLayer = "back"; }
+  } else if (targets.charm?.dataset.poolLayer) {
+    charmParent.insertBefore(targets.charm, targets.extra || null);
+    delete targets.charm.dataset.poolLayer;
+  }
   const assignments = [
     [targets.headwear, design.headwear],
     [targets.wrap, design.wrap],

@@ -7192,27 +7192,10 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .eca250-nose-pad { fill: none; stroke: var(--eca250-gold); stroke-width: 2.5; }
 .eca250-glasses-bridge-detail { fill: none; stroke: var(--eca250-gold); stroke-width: 2.5; }
 
-/* Lombok HPT26: spring jewellery, flowing water and opening fig costumes. */
-.lombok-hpt26-accessory {
-  --lingsar-ink: #28494b;
-  --lingsar-gold: #d7b366;
-  --lingsar-gold-dark: #957040;
-}
+/* Lombok HPT26: fig costumes. Pool and goggles use contained SVG materials. */
 .lombok-hpt26-accessory path,
 .lombok-hpt26-accessory circle,
 .lombok-hpt26-accessory ellipse { stroke-linecap: round; stroke-linejoin: round; }
-.lingsar-collar-band { fill: #315e60; stroke: var(--lingsar-ink); stroke-width: 1.6; }
-.lingsar-enamel { fill: #67b8b0; stroke: #a5ded2; stroke-width: .85; }
-.lingsar-gold-edge { fill: none; stroke: var(--lingsar-gold); stroke-width: 1.8; }
-.lingsar-clasp { fill: var(--lingsar-gold); stroke: var(--lingsar-gold-dark); stroke-width: 1.1; }
-.lingsar-rivet { fill: #f6e4a8; stroke: none; }
-.lingsar-chain { fill: none; stroke: var(--lingsar-gold-dark); stroke-width: 1.1; }
-.lingsar-drop { fill: #7ccec8; fill-opacity: .78; stroke: #366e71; stroke-width: 1.3; }
-.lingsar-glint { fill: none; stroke: #f3fffc; stroke-width: 1.5; }
-.lingsar-water { fill: #57bdbb; fill-opacity: .48; stroke: #458d94; stroke-width: 1.7; }
-.lingsar-water-highlight { fill: none; stroke: #d3f4ed; stroke-width: 2.8; stroke-opacity: .84; }
-.lingsar-water-ripple { fill: none; stroke: #308c9a; stroke-width: 1.8; stroke-opacity: .8; }
-.lingsar-foam { fill: none; stroke: #f0fffa; stroke-width: 2.5; stroke-dasharray: 13 5 3 6; }
 .lingsar-fig-skin { fill: #78536c; stroke: #473e4e; stroke-width: 2.5; }
 .lingsar-fig-skin.far { fill: #5e4659; }
 .lingsar-fig-pith { fill: #eadca7; stroke: #b49b67; stroke-width: 1.5; }
@@ -7232,10 +7215,7 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 @media (prefers-reduced-motion: no-preference) {
   .lingsar-worn-motion.primary { transform-origin: 210px 170px; animation: worm-bob 3.2s ease-in-out infinite; }
   .lingsar-worn-motion.companion { transform-origin: 62.3px 155.1px; animation: lingsar-companion-bob 3.2s .45s ease-in-out infinite; }
-  .lingsar-foam { animation: lingsar-flow 2.8s linear infinite; }
-  .hpt26-companion .lingsar-foam { animation-direction: reverse; animation-duration: 3.4s; }
-  .lingsar-fig-opening.left { animation: lingsar-fig-left .8s ease-out both; }
-  .lingsar-fig-opening.right { animation: lingsar-fig-right .8s ease-out both; }
+  /* Fig and water motion is now finite and starts with the visitor's gesture. */
 }
 
 .science-notes {

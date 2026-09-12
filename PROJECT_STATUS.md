@@ -6,10 +6,37 @@ This file records approved decisions and the verified implementation state. Alwa
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 15 left to check in the current interaction
-pass and 16 completed, including the approved Oʻahu ECA789 revision.
+It tracks all 31 active scenes: 14 left to check in the current interaction
+pass and 17 completed, including the approved Oʻahu ECA789 and Lombok revisions.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+### Lombok fig hide-and-seek and splashing pool, deployment approved, 2026-09-12
+
+On `codex/lombok-hide-and-seek`, updated to main `0c5681b`, the approved
+concept is implemented for C. nigoni HPT26. Figs close around the curled worms
+and reopen on a second activation. The male leaves his tail outside, peeks out
+and then emerges. The female opens briskly with a small reaction from the male.
+A shared pool now replaces the rigid water slide. The female bends her neck
+to dip, flicks water towards the male, and he ducks and splashes back.
+Separately fitted, transparent swimming goggles replace the collars and stay
+static. Exactly two activities remain, with recorded fruit-skin and pond-splash
+foley. Starting either action cancels the other. The approved fig interaction,
+painted background and Tiny surprise are unchanged. The English-only labels
+are `Swimming goggles`, `Ficus fruit transformations` and `Splashing pool`.
+
+Focused timeline, interpolation, audio, initial-visit and label tests pass,
+as do syntax and whitespace checks. Browser checks covered tapping, keyboard
+activation, cancellation, drag, Home, size preservation and scene changes.
+Normal views were inspected at 360, 768, 1024 and 1440 px with no horizontal
+overflow. Complete-page captures are still malformed and are not valid proof.
+Physical devices, Safari, subjective listening and browser-level reduced-motion
+emulation remain unverified. The legacy six-location drawing test has a stale
+dispatch-order expectation that also fails against unchanged HEAD.
+See the Lombok research note for exact capture dimensions and remaining checks.
+The user approved this exact preview and requested deployment on 2026-09-12.
+No artwork, labels or interaction geometry changed after that approval.
+Publication must be confirmed by the Pages result and exact live-file checks.
 
 ### Oʻahu gift wrapping, deployment approved, 2026-09-09
 

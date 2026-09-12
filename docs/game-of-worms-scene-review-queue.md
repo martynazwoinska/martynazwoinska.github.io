@@ -1,6 +1,6 @@
 # Game of Worms scene review checklist
 
-Updated: 2026-09-09. Use this file when Martyna asks which scene is next.
+Updated: 2026-09-12. Use this file when Martyna asks which scene is next.
 
 ## Scope and counts
 
@@ -9,8 +9,8 @@ earlier illustration revisions. It is not a new claim that all older scenes
 have poor drawings or require animations.
 
 - 31 active scenes, counted from the current accessory catalogue.
-- 15 scenes remain to check on this pass's checklist.
-- 16 have already received the recent interaction pass. Leave them closed.
+- 14 scenes remain to check on this pass's checklist.
+- 17 have already received the recent interaction pass. Leave them closed.
 - Oʻahu ECA789's workshop is live at `47b465c`. The final shared gift, mould removal and eating audio follow-up is approved for deployment.
 - Kauaʻi QG130 is published at `e632c55`, verified on 2026-09-09.
 - Saint-Benoît JU1373's final preview was approved for deployment on 2026-09-09.
@@ -23,14 +23,13 @@ in this checklist.
 
 ## Remaining queue
 
-Lombok HPT26 is next in the queue. Remaining entries have not been freshly
+Queensland QG2904 is next in the queue. Remaining entries have not been freshly
 inspected for this pass, so the order is provisional.
 Order numbers retain the original queue positions.
 Do not reopen completed scenes just to decide the next target.
 
 | Order | Species | Location | Status | Starting point for the single review |
 | --- | --- | --- | --- | --- |
-| 4 | nigoni | Lombok, Indonesia · HPT26 | To check | Lingsar collars, fig transformations and water currents. Preserve the approved collar design. |
 | 5 | tropicalis | Queensland, Australia · QG2904 | To check | Pod drums, funnel megaphones and canopy kaleidoscopes. Verify the existing behaviour before proposing replacements. |
 | 6 | tropicalis | Pohnpei, Micronesia · QG4739 | To check | Enlarged parasols, peppercorn rollerboards and leaf sleds. The user accepted the earlier appearance. |
 | 7 | nigoni | São Tomé · JU2484 | To check | Chocolate bars, birdsong boxes and stained-glass parasols. Keep successful drawings and assess interaction opportunities. |
@@ -61,6 +60,7 @@ browser or physical device.
 
 | Species | Location | Status | Work already covered |
 | --- | --- | --- | --- |
+| nigoni | Lombok, Indonesia · HPT26 | Done, deployment approved | Final preview approved 2026-09-12. Fig hide-and-seek, shared pool with bending/ducking/splashing, fitted static swimming goggles and recorded foley. Two separate activities. Background and Tiny surprise unchanged. Capture and listening limitations remain documented. |
 | tropicalis | Oʻahu, Hawaiʻi · ECA789 | Done, follow-up approved for deployment | Workshop deployed at `47b465c`. One large shared gift, mould removal, smaller bike hit area and recorded eating cues approved for deployment. Chocolate bike and tasting artwork and sizes preserved. Capture and listening limitations remain in the review notes. |
 | briggsae | Kauaʻi, Hawaiʻi · QG130 | Done | Forest bath with ginger squeezed into the male's bowl, jug/dipper rinsing, fitted towels and recorded water/cloth sounds. Original forest painting retained. Published at `e632c55`, with successful Pages run `34347245958` and matching public files. Full-page capture and manual listening limitations remain documented. |
 | tropicalis | Saint-Benoît, Réunion · JU1373 | Approved for deployment | Lychees with recorded peeling/eating, fitted coats and rain, held bouquet and shared flower arranging. Final contextual preview approved 2026-09-09. Full-page capture and manual listening limitations remain in PROJECT_STATUS.md. |

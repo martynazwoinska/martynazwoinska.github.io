@@ -1,13 +1,13 @@
 # Lingsar, Lombok *Caenorhabditis nigoni* HPT26 location research and art brief
 
-Last updated: 2026-09-05
+Last updated: 2026-09-12
 
-> **Current production accessory contract:** `Lingsar spring collars`, `Ficus fruit transformations`, and `spring-water currents`. The figs refer to the recorded substrate. The water designs are playful references to springs in the wider Lingsar area.
+> **Approved accessory contract, deployment requested 2026-09-12:** `Swimming goggles`, `Ficus fruit transformations`, and `Splashing pool`. The figs refer to the recorded substrate. The pool is a playful reference to springs in the wider Lingsar area. The goggles are static. There are exactly two user-triggered activities, with no bubble-blowing action.
 
 ## Purpose
 
 This dossier defines the evidence boundary and illustration contract for the
-Lombok, Indonesia · HPT26 environment and its three paired accessories.
+Lombok, Indonesia · HPT26 environment, two paired accessories and one shared pool.
 
 ## Exact collection record
 
@@ -139,29 +139,37 @@ Forbidden:
 
 ## Accessory contract
 
-### Lingsar spring collars
+### Swimming goggles
 
-Two fitted enamel-and-gold cuffs with translucent droplet pendants. The female
-has a broad three-drop cuff. The male has a smaller single-drop clasp.
-Both follow their worm's neck angle and bobbing motion.
+Transparent lenses, soft silicone rims, a connecting bridge and short split
+straps follow each face's eye line. The female has wide swept eyecups. The male
+has compact round cups and a separate offset buckle, not a scaled clone.
+They follow the idle head motion and stay attached during the fig and pool
+actions. They have no independent animation or sound.
 
 ### Ficus fruit transformations
 
 A split-fruit costume opens around each worm's lower body. Purple outer skin,
 a pale rind and a rose interior with contained seed marks make the cut surface
 readable. The female fruit has two broad halves. The male has a narrow side-cut
-form with a turned-away far half. The opening animation settles after 0.8 seconds.
+form with a turned-away far half. The September 2026 local revision replaces
+the initial opening animation with tap-controlled hide-and-seek.
 
 The exact Ficus species was unrecorded. Fruit colour and opening construction
 are imaginative. The drawing uses general Ficus structure, without assigning
 HPT26 to a particular fig species.
 
-### Spring-water currents
+### Splashing pool
 
-A translucent curling pool sits beneath each tail. The female pool has a broad
-eddy and raised curl. The male pool has a short side splash and a different
-ripple pattern. Moving foam traces the current. Reduced-motion mode keeps the
-water and fruit static.
+A single asymmetric shallow pool has a raised stone rim and translucent water.
+The female bends her body, dips her head and flicks water toward the male.
+He ducks and then splashes back. Deforming body curves, attached faces and
+separate front/back pool layers replace the earlier rigid sliding action.
+The male settles above the far rim to keep his head clear of the female.
+The pool keeps one shared drag/keyboard target. Each worm retains its own size
+when the pool is resized. Reduced-motion mode leaves the pool static and
+switches fig states without movement or sound. Starting either activity stops
+the other and restores the visitor's accessories.
 
 These are movable fantasy accessories. The landscape and collection record
 remain terrestrial.
@@ -172,6 +180,11 @@ remain terrestrial.
   https://lombokbaratkab.go.id/sejarah-singkat-pura-lingsar/
 - Kew, Plants of the World Online, Ficus general structure:
   https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A327905-2/general-information
+- Speedo Hydrosity construction reference: molded bridge, soft frame, clear
+  lenses and split strap. Structural reference only, no artwork copied:
+  https://speedo.com/en-us/collections/goggles-clear/products/hydrosity-2-0-goggles-clear-white-800446017882
+- Speedo Hydropulse construction reference: cushioned seals and double strap:
+  https://speedo.com/en-us/collections/goggles-hydro/products/unisex-hydropulse-goggles-clear-blue-812268d647
 
 The spring source supports regional context. It does not identify HPT26's
 sampling point as a spring or a temple.
@@ -181,25 +194,121 @@ sampling point as a spring or a temple.
 Values use the existing worm SVG coordinate system.
 
 ```js
-"lingsar-spring-collar": {
-  primary: [330, 100, 1, 25],
-  companion: [110, 125, 1, 27]
+"hpt26-swimming-goggles": {
+  primary: [331.5, 53.5, 1, 27.9],
+  companion: [114.545, 105.005, .5, 27.9]
 },
 "lingsar-ficus-fruit-transformation": {
   primary: [186, 201, .66, 13],
   companion: [49, 172, .32, 21]
 },
-"lingsar-springwater-current": {
-  primary: [105, 289, .84, 0],
-  companion: [12, 213, .63, -6]
+"hpt26-splashing-pool": {
+  primary: [192, 263, 1, 0],
+  companion: [192, 263, 1, 0] // Shared family renders the primary only.
 }
 ```
 
 ## Validation
 
-Inspect all six objects together at 360, 768, 1024 and 1440 px. Verify each
+Inspect all five objects together at 360, 768, 1024 and 1440 px. Verify each
 copy's pointer drag, keyboard movement and Home reset independently. Check
 reduced motion, body attachment, scene boundaries and the catalogue audits.
 
 The earlier sample trays, calendars and comparison boxes are retired.
 The approved painted landscape remains unchanged.
+
+## Earlier local interaction review, 12 September 2026
+
+The collar and water-slide notes below describe the superseded first preview.
+The fig checks remain relevant. See the current accessory contract above.
+
+Preview: `http://127.0.0.1:8765/game-of-worms/?review=lombok-hide-and-seek`.
+Branch: `codex/lombok-hide-and-seek`, from main `af1f7dc`. Not committed or deployed.
+
+New files: `lombok-play.js`, `lombok-sound.js`, `assets/audio/lombok-splash.wav`
+under `game-of-worms/`, and `scripts/check-lombok-play.cjs`.
+Changed files: Game integration, shell cache keys, the old idle fig/water CSS,
+one starting-position coordinate in accessory-designs, audio provenance, the
+scene queue, this note and PROJECT_STATUS. No files deleted. No homepage or
+Cabinet changes. No approved collar or background artwork changed.
+
+Refinements after the first working draft: fixed compact SVG coordinate
+separators so the closed skins meet completely, connected the peeking neck and
+face, made the male peek more visible, preserved collar attachment, separated
+the male fig/water touch targets, raised the active fig for reliable reopening,
+and shortened the male slide to avoid colliding with the female.
+
+Passed checks:
+
+- `check-lombok-play.cjs`: finite timeline values, complete fig states, distinct
+  peek, separated water timing, bounded movement, reduced-motion frames,
+  coordinate interpolation, integration hooks and style restoration contract.
+- Audio tests: lazy gesture-only context/loading, deduplicated requests,
+  single voice, cancelled late loads and no late or hidden-page playback.
+- `check-accessory-visit.cjs`, `check-accessory-labels.cjs`, JavaScript syntax
+  checks and `git diff --check`.
+- Browser: both figs close/reopen, male peek, staggered water ride, phone taps,
+  Enter, Escape, Home, drag cancellation, exact 110% and 200% scale restoration,
+  viewport-change cancellation, scene-change cleanup and no console errors.
+
+Responsive inspection used the fixed Game light palette. CSS viewport widths
+were 360, 768, 1024 and 1440 px, with document widths 345, 753, 1009 and 1425 px
+respectively. No horizontal overflow was present. The capture output excludes
+the scrollbar and sometimes clips the viewport. Full-page output additionally
+duplicates/scales parts of the page, so none counts as complete-page proof:
+
+| Requested viewport | Full-page file pixels | Status |
+| --- | --- | --- |
+| 360 x 800 | 345 x 2425 | Malformed |
+| 768 x 1024 | 753 x 2375 | Malformed |
+| 1024 x 850 | 1009 x 1753 | Malformed |
+| 1440 x 900 | 1425 x 1928 | Malformed |
+
+Evidence is in ignored `tmp/lombok-review/`, not part of the release. Real
+devices, Safari, subjective listening and browser-level reduced-motion
+emulation remain manual. Reduced-motion timeline logic was tested in Node.
+The broad `check-six-location-accessories.cjs` fails a stale dispatch-order
+assertion on both unchanged HEAD and the working file. It was not rewritten.
+
+Separate pre-existing issue observed at 360 px: clicking the Lombok map marker
+can select Queensland due to overlapping hit areas. Keyboard activation selects
+Lombok correctly. This map issue is outside the current scene revision.
+
+Final contextual approval is still needed before committing or deploying.
+
+## Current swimming revision review, 12 September 2026
+
+The user approved replacing the collars with static swimming goggles and
+improving the water action. The fig interaction remains unchanged. No
+bubble-blowing activity was added. The Game is intentionally English-only.
+Exact labels shown for review are `Swimming goggles`,
+`Ficus fruit transformations` and `Splashing pool`.
+
+New `lombok-swim-art.js` draws distinct fitted goggles and a shared stone pool.
+The old collar/current renderers and unused material CSS were removed.
+The first drawing pass was refined: shorter straps, varied stone construction,
+separate near/far pool layers, clear male head placement, attached goggles
+through neck bending, and worm scale independent of pool scale.
+
+Focused checks passed for the fig regression, dip/flick/duck timelines,
+body-path deformation, reduced-motion frames, distinct goggles, shared pool
+layers, audio cancellation and integration hooks. Label and initial-visit
+checks, syntax checks and whitespace checks passed. Browser checks confirmed
+fig close/reopen, replacement of one activity by the other, finite pool return,
+Escape/Home, unchanged 110% position/scale and unchanged worm sizes at 200%
+pool scale. At 200%, the oversized pool can be repositioned by the existing
+scene-boundary clamp, so exact position preservation at that scale is not
+claimed. No browser errors were logged.
+
+Normal scene renders were inspected at 360, 768, 1024 and 1440 px, with no
+horizontal overflow. The fresh `swim-full-*-defective.jpg` captures have the
+same dimensions and defects as the earlier table: 345 x 2425, 753 x 2375,
+1009 x 1753 and 1425 x 1928. They are not valid complete-page proof. The Game
+uses its fixed light palette. Physical-device/Safari checks, browser-level
+reduced-motion emulation and subjective sound listening remain unverified.
+
+The user approved the final preview and requested deployment on 2026-09-12.
+The release branch was fast-forwarded to current main `0c5681b`. This brought
+in only existing homepage/Cabinet commits and did not change the approved Game
+files. No visual or public-copy changes were made after approval. Prior capture
+and manual-listening limitations remain as documented above.

@@ -1,5 +1,23 @@
 # Game sound recordings
 
+## Lombok fig hide-and-seek and splashing pool, approved 2026-09-12
+
+- `lombok-splash.wav`: [Splash, small #6, Joseph SARDIN, BigSoundBank 1534](https://bigsoundbank.com/splash-small-6-s1534.html).
+  A small stone splashing into a pond, recorded outdoors. CC0 verified on the
+  creator's page. Downloaded unchanged from `https://bigsoundbank.com/UPLOAD/bwf-en/1534.wav`.
+  181508 bytes. SHA-256 `abc547867935109ae7e91e6d0b43f27b2427e749e4b90932532f1f57b8959c82`.
+  Played at original pitch and speed. The revised shared-pool sequence uses
+  gains 0.14 for the head dip, 0.22 for the female's splash and 0.18 for the
+  male's reply, at 1500, 2760 and 4060 ms. No synthetic splash layer.
+- Fig movement reuses the existing CC0 `reunion-peel.wav` at gain 0.42. Source
+  and preparation are recorded in the Saint-Benoît section below. This is
+  fruit-skin handling foley, not a recording of a fig opening itself.
+
+Audio loads after a tap or keyboard gesture. One action and one foreground
+voice at a time, with cancellation on dragging, resizing, Home, Escape, scene
+change, page hiding and reduced-motion changes. No background loop or synth.
+The user approved the final Lombok preview and requested deployment on 2026-09-12.
+
 ## Canberra coffee and sulphur-crested cockatoo, 2026-09-09
 
 Both recordings are CC0, verified on their Freesound creator pages. The public
