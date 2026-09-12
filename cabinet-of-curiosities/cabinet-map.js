@@ -25,7 +25,6 @@
     <div class="map-groups" role="group" aria-label="Shop categories"><button type="button" data-group="uppsala" aria-pressed="true">In Uppsala</button><button type="button" data-group="online" aria-pressed="false">Online shops</button><button type="button" data-group="makers" aria-pressed="false">Swedish makers</button></div>
     <div class="map-groups map-regions" role="group" aria-label="Online shop regions" hidden><button type="button" data-region="sweden" aria-pressed="true">Sweden</button><button type="button" data-region="nordics" aria-pressed="false">Other Nordics</button><button type="button" data-region="europe" aria-pressed="false">Rest of Europe</button></div>
     <div class="map-picker"><label for="map-select">Choose a shop</label><select id="map-select" class="map-select"></select></div>
-    <p class="map-makers-scope" hidden>This section focuses on Swedish bean-to-bar and tree-to-bar chocolate. These makers start with cocoa beans rather than remelting ready-made chocolate. For makers with mixed ranges, look for their bean-to-bar bars.</p>
     <p class="map-disclaimer map-makers-credit" hidden>With thanks to <a href="https://www.chokladakademien.org/hantverkschoklad2/" target="_blank" rel="noopener noreferrer">Chokladakademien</a> for the maker directory.</p>
     <div class="map-layout"><div class="map-canvas"><div class="map-frame"></div><p class="map-attribution">Map and coordinates © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> <a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noopener noreferrer">ODbL</a></p><p class="map-disclaimer">Select a numbered pin or choose a shop. Brands and availability can vary by branch.</p></div>
     <section class="map-details" aria-label="Selected shop"><h3 class="map-place-name"></h3><p class="map-address"></p><p class="map-selection"></p><p class="map-caution" hidden></p><div class="map-links"></div></section></div>`;
@@ -64,7 +63,6 @@
     group = next;
     dialog.querySelectorAll('[data-group]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.group === group)));
     $('.map-canvas').hidden = group !== 'uppsala'; $('.map-layout').classList.toggle('is-online', group !== 'uppsala');
-    $('.map-makers-scope').hidden = group !== 'makers';
     $('.map-makers-credit').hidden = group !== 'makers';
     $('.map-regions').hidden = group !== 'online';
     dialog.querySelectorAll('[data-region]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.region === region)));
