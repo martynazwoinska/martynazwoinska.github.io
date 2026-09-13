@@ -1,8 +1,132 @@
 # São Tomé *C. nigoni* location research and art brief
 
-Last updated: 2026-08-21
+Last updated: 2026-09-13
 
-> **Current production accessory contract:** `São Tomé chocolate bars`, `birdsong music boxes`, and `begonia stained-glass parasols`. These playful objects use island-wide cocoa and carefully bounded forest-biodiversity references without identifying JU2484's rotten fruit or presenting the accessories as collection equipment.
+## Current revision: shared snail ride and leaf reveal
+
+Implemented on `codex/sao-tome-snail`, based on current main `3deacf6`.
+Martyna approved the final contextual render for deployment on 2026-09-13.
+The English-only labels are `Snail ride`, `Lift the leaf` and `Fallen leaf`.
+The existing begonia stained-glass parasols remain unchanged.
+This section supersedes the older accessory contract and six-object acceptance
+criteria retained below as historical context.
+
+### Regional link and visual references
+
+The Obô giant snail, *Archachatina bicarinata*, is endemic to São Tomé and
+Príncipe and lives in the islands' forests. Fallen leaves and fruit form part
+of its diet. It is distinct from the introduced *A. marginata*.
+
+- [Forest Giants conservation project](https://www.forestgiants.org/about/)
+- [Mossy Earth, Helping Forest Giants](https://www.mossy.earth/projects/helping-forest-giants)
+- [Fundação Príncipe, Obô giant snail](https://fundacaoprincipe.org/en/projects/terrestrial-conservation/obo-giant-snail)
+
+The Fundação Príncipe photographs were inspected for the long, rounded shell
+spire, inflated body whorl, aperture lip, grey textured foot and two long
+eye-bearing tentacles with shorter sensory tentacles. The vectors are original,
+not traced or copied from those photographs. The approved snail drawing is
+preserved in the ride.
+
+### Biology and approved copy
+
+Phoresy is transport by another animal. Transport inside a carrier is termed
+endophoresy. Nematode associations with gastropods are documented, including
+experimental work on *C. elegans*. This does not establish a specific transport
+relationship between JU2484 and the Obô giant snail. The collection record
+names neither an associated organism nor Obô Natural Park. The shared shell
+ride and relative sizes are playful representations of the general phenomenon.
+
+Primary sources checked for the terminology and evidence:
+
+- [Petersen et al., 2015, C. elegans and slugs](https://pmc.ncbi.nlm.nih.gov/articles/PMC4501285/)
+- [Sudhaus, 2018, nematode associations with gastropods](https://doi.org/10.25674/4jp6-0v30)
+- [Petersen, Krahn and Leippe, 2023, invertebrate associations](https://doi.org/10.3389/fevo.2023.1069056)
+
+The approved English-only Tiny surprise is:
+
+> This female-founded C. nigoni line came from an unidentified rotten fruit lying on the forest floor on São Tomé. Some nematodes reach new feeding sites by travelling with snails and slugs, a form of hitchhiking called phoresy.
+
+The existing first sentence is unchanged. Only the approved second sentence
+was added. No Swedish or Polish Game version exists.
+
+### Exact implementation
+
+- `sao-tome-art.js`: one shared snail and one asymmetric fallen leaf. Shell
+  grain stays inside its clipped silhouette, with the aperture layered over
+  the foot. All racing flags have been removed.
+- `sao-tome-play.js`: the male boards first, followed by the female. Different
+  body curves fit the far and near sides of the same shell. Both riders use
+  the snail's travelling coordinate system. After it stops, they climb off
+  into separate foreground positions, then restore their original poses.
+- The female raises the leaf while both worms lean beside it. This separate
+  action hides the idle snail to avoid displaying two snails. The leaf's
+  initial offset leaves the snail's front exposed when both buttons are on.
+- The unchanged parasols are the static third accessory. Four movable
+  objects replace the previous six. Home restores the focused object's
+  placement and size. Temporary layers preserve the visitor's original styles.
+- Original-speed excerpts of the existing CC0 `pohnpei-leaves.ogg` provide
+  quiet leaf handling and boarding/climbing-off rustling. There is no invented
+  snail vocalisation, ambient loop or automatic sound on page load.
+- Reduced motion keeps the worms in place and uses a brief static reveal,
+  without relocation, crawling, leaf rotation or sound.
+- Escape, changing scene, toggling an accessory, resizing, leaving the visible
+  scene and hiding the page cancel the action and restore original styles.
+- The forest painting, map and all unrelated scenes are unchanged.
+
+### Refinement and verification, 2026-09-13
+
+The race prototype was replaced following Martyna's request for transport.
+Critical review first found the male's face partly hidden, then an over-corrected
+floating pose. His separately drawn curve now rises from the rear shell, with
+his tail occluded behind it. On dismount he moves into the foreground. The two
+landing positions are separated. Both final poses were shown in the actual page.
+The leaf stays behind the faces and the female's grip follows its hinge.
+Legacy SVGMatrix conversion uses explicit DOMMatrix components.
+
+Passed: focused motion/geometry tests, complete catalogue and paired-geometry
+audits, label consistency, fresh-visit defaults, Pohnpei regression tests,
+syntax and whitespace checks. Browser checks covered pointer and keyboard
+activation, size and position changes, Home, Escape, resize cancellation,
+complete ride and leaf reveal, and exact saved-style restoration. No console
+errors were reported in the final QA tab.
+
+Full-page screenshots were inspected from header through the bottom source
+section at viewport widths 360, 768, 1024 and 1440. Captured content dimensions
+were respectively **345 × 2521**, **753 × 2399**, **1009 × 1849** and
+**1425 × 1928** pixels. The browser capture excludes the 15 px scrollbar.
+These are complete content captures, not manually cropped or stitched images.
+No horizontal content overflow was observed. Normal viewport captures also
+checked the active phone ride, desktop riding and landing, and raised leaf.
+The Game has one fixed light palette, so no separate dark version was added.
+
+Physical phones, Safari, OS reduced-motion browser emulation and subjective
+audio listening remain unverified. Final contextual approval was received.
+Publication and direct live verification follow the approved commit.
+
+### Changed-file inventory
+
+Created:
+
+- `game-of-worms/sao-tome-art.js`
+- `game-of-worms/sao-tome-play.js`
+- `scripts/check-sao-tome.cjs`
+
+Changed:
+
+- `game-of-worms/accessory-designs.js`
+- `game-of-worms/game.js`
+- `game-of-worms/index.html`
+- `game-of-worms/assets/audio/SOURCES.md`
+- `docs/game-of-worms-location-research/sao-tome-nigoni.md`
+- `docs/game-of-worms-scene-review-queue.md`
+- `docs/game-of-worms-art-catalogue.md`
+- `PROJECT_STATUS.md`
+
+Deleted: none. Existing image and audio bytes are unchanged.
+
+## Historical 2026-08-21 brief
+
+> **Previous accessory contract:** `São Tomé chocolate bars`, `birdsong music boxes`, and `begonia stained-glass parasols`.
 
 This dossier is the evidence and review contract for the *Caenorhabditis nigoni* São Tomé landscape and its three accessory pairs. It responds directly to the earlier generic and reused São Tomé artwork by making the exact forest-floor record the centre of the scene.
 

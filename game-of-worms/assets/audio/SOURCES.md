@@ -1,5 +1,18 @@
 # Game sound recordings
 
+## São Tomé leaf encounter and snail ride, 2026-09-13
+
+Reuses the unchanged CC0 `pohnpei-leaves.ogg` recording credited below.
+Original-speed excerpts accompany the lifted/lowered leaf and short movement
+over forest litter. Leaf excerpts are 0.7 and 0.5 seconds, at peak targets
+0.07 and 0.055. Boarding and climbing-off excerpts are 0.55 and 0.5 seconds,
+at peak targets 0.06 and 0.055. Short fades bound each cue, and only one voice plays.
+This is handling foley, not an animal call or recording from the collection site.
+Loading begins after a gesture. Cancelling the action stops sound, late decode
+results cannot start playback, and reduced-motion presentation remains silent.
+No new audio file or additional required public attribution is introduced.
+Subjective listening and Safari playback remain manual checks.
+
 ## Pohnpei birdwatching and leaf sled, 2026-09-13
 
 - `pohnpei-lorikeet.mp3`: [Pohnpei lorikeet call, Todd Mark, XC75751](https://xeno-canto.org/75751).

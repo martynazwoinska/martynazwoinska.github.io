@@ -1,5 +1,17 @@
 # Game of Worms art catalogue
 
+São Tomé JU2484, 2026-09-13: Snail ride and Lift the leaf replace the chocolate
+bars and music boxes. The original Obô giant snail has a tapered spire,
+inflated whorl, aperture lip and four tentacles. Both worms board the same
+snail, curl independently along its shell, travel together and climb off.
+The smaller male rides on the far side, with his face visible above the shell.
+The separate leaf action reveals the snail. Racing flags have been removed.
+Existing stained-glass parasols remain the quiet third accessory. The forest
+painting is unchanged. Tiny surprise retains the collection record and appends
+the approved general phoresy sentence. References, refinement and verification
+are in the São Tomé location dossier. This supersedes the older accessory row
+below, retained as historical context.
+
 Oʻahu ECA789 gift approved for deployment, 2026-09-09: independent Gift wrapping fills the
 third slot. After the first preview, the user requested one much larger gift
 presented by both worms together. A shared rigid box has an inset foil liner,

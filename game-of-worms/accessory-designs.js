@@ -2,6 +2,7 @@ import { drawWormbook } from "./claremont-book-art.js?v=20260909-wormbook-4";
 import { drawLombokSwim, swimLayouts } from "./lombok-swim-art.js?v=20260912-swim-1";
 import { drawCanopyAccessory, canopyLayouts } from "./queensland-art.js?v=20260913-canopy-1";
 import { drawPohnpeiAccessory, pohnpeiLayouts } from "./pohnpei-art.js?v=20260913-pohnpei-1";
+import { drawSaoTomeAccessory as drawSnailEncounter, saoTomeLayouts } from "./sao-tome-art.js?v=20260913-snail-ride-1";
 import { drawAraucaniaWork, araucaniaLayouts } from "./araucania-art.js?v=20260909-araucania-bites-5";
 import { drawDoisRios, doisRiosLayouts } from "./dois-rios-art.js?v=20260908-dois-rios-1";
 import { drawNambucca, nambuccaLayouts } from "./nambucca-art.js?v=20260908-nambucca-1";
@@ -51,7 +52,7 @@ const rows = [
   ["elegans", "Araucanía, Chile", "Compost work", "ju4400-compost-work", "Mate", "ju4400-mate", "Sopaipillas", "ju4400-sopaipillas"],
   ["nigoni", "Trivandrum, Kerala · JU1325", "field loupe", "trivandrum-field-loupe", "garden watering can", "trivandrum-garden-watering-can", "sample tube", "trivandrum-sample-tube"],
   ["nigoni", "Praslin, Seychelles · YR106", "giant-tortoise shell costumes", "praslin-giant-tortoise-shell-costume", "black-parrot carnival caps", "praslin-black-parrot-carnival-cap", "Seychelles carnival bell bracelets", "praslin-seychelles-carnival-bell-bracelet"],
-  ["nigoni", "São Tomé · JU2484", "São Tomé chocolate bars", "sao-tome-chocolate-bars", "birdsong music boxes", "sao-tome-birdsong-music-boxes", "begonia stained-glass parasols", "sao-tome-begonia-glass-parasols"],
+  ["nigoni", "São Tomé · JU2484", "Snail ride", "ju2484-snail-ride", "Lift the leaf", "ju2484-leaf-encounter", "begonia stained-glass parasols", "sao-tome-begonia-glass-parasols"],
   ["nigoni", "Mahahual, Mexico · JU2617", "reef-ruffle swim costumes", "mahahual-reef-ruffle-swim-costumes", "Caribbean sun spectacles", "mahahual-caribbean-sun-spectacles", "sea-grape beach parasols", "mahahual-sea-grape-beach-parasols"],
   ["nigoni", "Mauritius · JU2909", "wriggle-powered ravanne drums", "mauritius-ravanne-crawler-drum", "Vacoas fruit-gathering tail baskets", "mauritius-vacoas-tail-scoop", "dodo-beak fruit grabbers", "mauritius-dodo-beak-fruit-grabber"],
   ["nigoni", "Ho Chi Minh City · JU4356", "Scooter", "ju4356-shared-scooter", "Starfruit", "ju4356-starfruit-preparation", "Vietnamese coffee", "ju4356-phin-coffee"],
@@ -86,7 +87,7 @@ const santeuilRendererFamilies = new Set(["santeuil-railway-driver-uniform", "sa
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
 const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-avocado-snack-bowl"]);
 const kauaiRendererFamilies = new Set(["xz1516-forest-bird-headphones", "xz1516-ohia-blossom-microphone", "xz1516-reel-to-reel-recorder"]);
-const sharedAccessoryFamilies = new Set(["xz1516-reel-to-reel-recorder", "ju4356-shared-scooter", "eca789-chocolate-bike", "eca789-chocolate-gifts", "hpt26-splashing-pool", "qg2904-canopy-lift", "qg4739-shared-leaf-sled"]);
+const sharedAccessoryFamilies = new Set(["xz1516-reel-to-reel-recorder", "ju4356-shared-scooter", "eca789-chocolate-bike", "eca789-chocolate-gifts", "hpt26-splashing-pool", "qg2904-canopy-lift", "qg4739-shared-leaf-sled", "ju2484-leaf-encounter", "ju2484-snail-ride"]);
 const actRendererFamilies = new Set(["canberra-flat-white-cafe", "canberra-linen-napkins", "oconnor-cockatoo-cafe-raid"]);
 const claremontRendererIds = new Set([
   "elegans::Claremont, California · ECA250::headwear",
@@ -6088,6 +6089,7 @@ function drawElegansFieldAccessory(group, item, companion) {
 }
 
 function drawNamedAccessory(group, item, companion) {
+  if (drawSnailEncounter(group, item, companion)) return true;
   if (drawPohnpeiAccessory(group, item, companion)) return true;
   if (drawCanopyAccessory(group, item, companion)) return true;
   if (drawOahuGift(group, item, companion)) return true;
@@ -6259,6 +6261,7 @@ function renderPiece(target, item, wormPart) {
     ,...swimLayouts
     ,...canopyLayouts
     ,...pohnpeiLayouts
+    ,...saoTomeLayouts
     ,"lingsar-ficus-fruit-transformation": { primary: [186, 201, .66, 13], companion: [49, 172, .32, 21] }
     ,"eg4181-apricot-blossom-hat": { primary: [333, 37, .43, 22], companion: [114, 91, .36, 24] }
     ,"eg4181-beehive-saddle-pack": { primary: [245, 166, .46, 21], companion: [92, 154, .36, 30] }
@@ -6317,6 +6320,7 @@ function renderPiece(target, item, wormPart) {
   if (item.family === "qg2904-safety-harness") piece.dataset.pieceLabel = "Safety harness";
   if (item.family === "qg4739-birdwatching") piece.dataset.pieceLabel = companion ? "Spotting scope" : "Binoculars";
   if (item.family === "qg4739-camouflage-cape") piece.dataset.pieceLabel = "Cape";
+  if (item.family === "ju2484-leaf-encounter") piece.dataset.pieceLabel = "Fallen leaf";
   const isSanteuilCompanionProp = companion && ["santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"].includes(item.family);
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";

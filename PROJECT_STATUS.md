@@ -6,10 +6,31 @@ This file records approved decisions and the verified implementation state. Alwa
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 12 left to check in the current interaction
-pass and 19 completed, including the approved Pohnpei revision.
+It tracks all 31 active scenes: 11 left to check in the current interaction
+pass and 20 completed, including the approved São Tomé revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+### São Tomé shared snail ride, deployment approved, 2026-09-13
+
+On `codex/sao-tome-snail`, based on main `3deacf6`, JU2484 has a shared
+fallen-leaf reveal and a shared ride on the regional Obô giant snail.
+The existing parasols and painting are unchanged. The approved general phoresy
+sentence follows the existing collection text. English-only labels are Snail
+ride, Lift the leaf and Fallen leaf. Final contextual approval was received.
+Publication and direct live verification follow the approved commit.
+
+Separate original vectors and interaction modules preserve visitor placement
+and size. Both activities use quiet recorded leaf rustling, with reduced-motion
+and cancellation handling. The refinement fits both riders to the shell,
+keeps both faces visible and separates their landing positions. Racing flags
+are removed. Source evidence, ecological limits and complete
+QA notes are in the São Tomé dossier. Focused tests, catalogue/pair audits,
+labels, fresh-visit defaults and Pohnpei regressions pass. Browser checks include
+pointer/keyboard activation, Home, Escape, resize, exact restoration and complete
+360/768/1024/1440-width content captures. Captures exclude the 15 px scrollbar.
+Safari, physical devices, OS reduced-motion browser emulation and listening
+remain manual. Unrelated main-checkout changes were not touched.
 
 ### Pohnpei birdwatching, deployment approved, 2026-09-13
 
