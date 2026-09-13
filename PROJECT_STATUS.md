@@ -6,10 +6,27 @@ This file records approved decisions and the verified implementation state. Alwa
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 13 left to check in the current interaction
-pass and 18 completed, including the approved Queensland revision.
+It tracks all 31 active scenes: 12 left to check in the current interaction
+pass and 19 completed, including the approved Pohnpei revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+### Pohnpei birdwatching, deployment approved, 2026-09-13
+
+On `codex/pohnpei-birdwatching`, based on main `9c68b9c`, QG4739 has real
+threefold binocular/scope magnification, a discoverable Pohnpei lorikeet with
+its recorded call, one shared downhill leaf ride with recorded rustling, and
+distinct fitted camouflage capes. The painting and collection text are unchanged.
+Two activities run separately. Visitor placement and size survive completion
+or cancellation. Martyna approved the final contextual preview, English-only
+labels and required sound credit on 2026-09-13. Source licences, visual references, refinement and verification
+are recorded in the Pohnpei dossier and audio source ledger.
+Focused Pohnpei and Queensland tests, labels, fresh-visit defaults, syntax and
+whitespace checks pass. Normal phone/tablet/desktop views and keyboard/pointer
+interactions were checked. Exact-width full-page captures remain defective,
+and Safari, physical devices and subjective listening remain unverified.
+The approved production drawings and interactions are unchanged. Commit and
+live verification follow publication. São Tomé JU2484 is the next queued review.
 
 ### Queensland canopy visit, deployment approved, 2026-09-13
 

@@ -9,8 +9,8 @@ earlier illustration revisions. It is not a new claim that all older scenes
 have poor drawings or require animations.
 
 - 31 active scenes, counted from the current accessory catalogue.
-- 13 scenes remain to check on this pass's checklist.
-- 18 have already received the recent interaction pass. Leave them closed.
+- 12 scenes remain to check on this pass's checklist.
+- 19 have already received the recent interaction pass. Leave them closed.
 - Oʻahu ECA789's workshop is live at `47b465c`. The final shared gift, mould removal and eating audio follow-up is approved for deployment.
 - Kauaʻi QG130 is published at `e632c55`, verified on 2026-09-09.
 - Saint-Benoît JU1373's final preview was approved for deployment on 2026-09-09.
@@ -23,14 +23,13 @@ in this checklist.
 
 ## Remaining queue
 
-Pohnpei QG4739 is next in the queue. Remaining entries have not been freshly
+São Tomé JU2484 is next in the queue. Remaining entries have not been freshly
 inspected for this pass, so the order is provisional.
 Order numbers retain the original queue positions.
 Do not reopen completed scenes just to decide the next target.
 
 | Order | Species | Location | Status | Starting point for the single review |
 | --- | --- | --- | --- | --- |
-| 6 | tropicalis | Pohnpei, Micronesia · QG4739 | To check | Enlarged parasols, peppercorn rollerboards and leaf sleds. The user accepted the earlier appearance. |
 | 7 | nigoni | São Tomé · JU2484 | To check | Chocolate bars, birdsong boxes and stained-glass parasols. Keep successful drawings and assess interaction opportunities. |
 | 8 | nigoni | Mauritius · JU2909 | To check | Ravanne drums, tail baskets and dodo-beak grabbers. The earlier regional concepts were approved. |
 | 9 | tropicalis | Guadeloupe · NIC203 | To check | Hummingbird costumes, madras crowns and gwo ka drums. Check fit and any existing actions before changing them. |
@@ -59,6 +58,7 @@ browser or physical device.
 
 | Species | Location | Status | Work already covered |
 | --- | --- | --- | --- |
+| tropicalis | Pohnpei, Micronesia · QG4739 | Done, deployment approved | Approved 2026-09-13. Real birdwatching optics, one shared leaf sled and fitted camouflage capes. Recorded lorikeet call and leaf rustling. Painting and collection copy unchanged. Capture and listening limitations are documented in the location dossier. |
 | tropicalis | Queensland, Australia · QG2904 | Done, deployment approved | Approved 2026-09-13. Shared canopy lift, independently usable cameras and adjustable harnesses during the ride, developing photobomb print and three recorded sound channels. Approved drawings and visitor adjustments preserved. Capture and listening limitations remain documented. |
 | nigoni | Lombok, Indonesia · HPT26 | Done, deployment approved | Final preview approved 2026-09-12. Fig hide-and-seek, shared pool with bending/ducking/splashing, fitted static swimming goggles and recorded foley. Two separate activities. Background and Tiny surprise unchanged. Capture and listening limitations remain documented. |
 | tropicalis | Oʻahu, Hawaiʻi · ECA789 | Done, follow-up approved for deployment | Workshop deployed at `47b465c`. One large shared gift, mould removal, smaller bike hit area and recorded eating cues approved for deployment. Chocolate bike and tasting artwork and sizes preserved. Capture and listening limitations remain in the review notes. |

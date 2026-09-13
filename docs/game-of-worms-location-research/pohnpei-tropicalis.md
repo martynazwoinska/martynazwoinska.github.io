@@ -1,8 +1,75 @@
 # Pohnpei *Caenorhabditis tropicalis* QG4739 location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-09-13
 
-> **Current production accessory contract:** `Kotop-fruit parasols`, `Peppercorn rollerboards`, and `Cloudforest rain-leaf sleds`. These playful props replace the scientific cabinets, thermometers and vial racks. The three pairs use the recorded kotop substrate, a wider Pohnpei black-pepper reference and the wet upland cloudforest setting.
+> **Approved replacement, 2026-09-13:** `Birdwatching`, `Leaf sled` and `Camouflage capes`. These replace the parasols, peppercorn rollerboards and paired leaf sleds. The earlier brief below remains historical context.
+
+## September 2026 interaction pass
+
+Implemented on `codex/pohnpei-birdwatching`, based on main `9c68b9c`.
+The approved concept is a cloudforest outing with two activities and quiet,
+fitted clothing. Parasols were rejected. The new labels are intentionally
+English-only, like the rest of the Game.
+
+- The larger worm has roof-prism binoculars with separate eyecups, a focus
+  wheel, lens rims and rubber armour. The male has an angled spotting scope
+  on a folding tripod, positioned with its eyepiece next to his face.
+- Both optics magnify the actual scene threefold. Moving either lens over the
+  small lorikeet reveals the bird and plays one recorded Pohnpei lorikeet call.
+  Dragging, keyboard movement and scaling keep the search active.
+- One folded leaf sled carries both coiled worms, with the male at the front.
+  The larger worm holds both rolled leaf handles. They descend, skid, return
+  and unfold. Real leaf rustling accompanies the movement.
+- A longer fitted cape and a separate short male wrap use soft hems, folds
+  and botanical fabric. Birdwatching and the sled run one at a time.
+
+The original painting, collection record and Tiny surprise are unchanged.
+The lorikeet is regional wildlife, not evidence that it was present at the
+exact collection substrate. The sled is a playful invented activity.
+
+### Construction and sound references
+
+- [Cornell eBird Pohnpei lorikeet](https://ebird.org/species/pohlor1), with the
+  [Macaulay Library visual reference](https://cdn.download.ams.birds.cornell.edu/api/v2/asset/614923612/1200):
+  maroon plumage, olive flight feathers, yellow tail tip, hooked bill and
+  gripping feet. The original SVG is not a copy or derivative of the photograph.
+- [US Fish and Wildlife Service species record](https://www.fws.gov/species/pohnpei-lorikeet-trichoglossus-rubiginosus)
+  and [Pohnpei checklist](https://avibase.bsc-eoc.org/checklist.jsp?list=ebird&region=fmpo).
+- [Nikon binocular construction](https://imaging.nikon.com/sport-optics/guide/binoculars/technologies/technologies_01/)
+  and [focusing and eyecup use](https://imaging.nikon.com/sport-optics/guide/binoculars/using/using_01/)
+  informed the optical hardware.
+- [Todd Mark, XC75751](https://xeno-canto.org/75751), CC BY-NC-SA 3.0, and
+  [Brandon Morris leaf recordings](https://opengameart.org/content/random-sounds-samples),
+  CC0. Exact source URLs, file hashes and adaptation terms are in
+  [audio/SOURCES.md](../../game-of-worms/assets/audio/SOURCES.md).
+
+### Refinement and verification
+
+The first working art was refined in context. The scope was moved off the
+male's face. The leaf bow, riding poses, cape occlusion and male orientation
+were corrected. Both optical windows were bounded explicitly to prevent
+magnified content from inflating draggable geometry. Lens sampling uses the
+outer artwork transform, including visitor adjustments. Clone IDs are unique.
+
+Focused Pohnpei, Queensland regression, accessory-label and fresh-visit tests
+pass. Browser checks covered keyboard and pointer movement, actual magnified
+bird discovery, shared boarding and descent, Escape cancellation, restoration
+of visitor size at 120%, natural completion and empty console errors.
+Normal 360, 768, 1024 and 1440 px views were inspected with no horizontal
+overflow. Reduced motion is covered by timeline tests, not a physical-device
+test. Safari, physical devices and subjective audio listening remain manual.
+
+Uncropped full-page captures were attempted. Requested widths 360, 768, 1024
+and 1440 returned 345×2425, 753×2375, 1009×1777 and 1425×1928 pixels. The
+capture backend loses 15 pixels and can distort framing. These are not valid
+exact-width full-page proofs. Normal viewport checks do not replace that gate.
+Martyna approved the final contextual drawings, interactions, recordings,
+English-only labels and sound credit for deployment on 2026-09-13, with these
+verification limitations disclosed. No production artwork was changed after
+approval. Live verification follows publication.
+
+The unchanged background SHA-256 is
+`8ee9b97764f51469cb29d07712c7fbbb3e447036b9e85405b5bb05203e924222`.
 
 ## Purpose
 

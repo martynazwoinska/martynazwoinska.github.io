@@ -1,5 +1,33 @@
 # Game sound recordings
 
+## Pohnpei birdwatching and leaf sled, 2026-09-13
+
+- `pohnpei-lorikeet.mp3`: [Pohnpei lorikeet call, Todd Mark, XC75751](https://xeno-canto.org/75751).
+  Recorded in October 2008 at The Village Eco-Lodge, Pohnpei, Federated States
+  of Micronesia. The recording identifies the species and call, not a call
+  recorded at the QG4739 collection spot.
+  Licensed [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/).
+  Downloaded unchanged from
+  `https://xeno-canto.org/sounds/uploaded/CLKPHLYUHA/trichoglossus2village.mp3`.
+  479372 bytes. SHA-256
+  `ccd3d0e743dbe4cfdd7aed36d085fecc0f11eaaa7546c4d46faa92b86cbf2be4`.
+  The 0.3 to 3.1 second playback excerpt uses level adjustment and short fades,
+  retaining original pitch and speed. This adaptation is also CC BY-NC-SA 3.0.
+  Public attribution links to the recording and licence in the Game's sources.
+- `pohnpei-leaves.ogg`: [Random Sounds Samples, Brandon Morris (Augmentality), posted by HaelDB](https://opengameart.org/content/random-sounds-samples).
+  The creator describes microphone-recorded sounds. The selected file is
+  `moving leaves stereo.ogg`, downloaded unchanged from
+  `https://opengameart.org/sites/default/files/moving%20leaves%20stereo.ogg`.
+  Used under the offered [CC0](https://creativecommons.org/publicdomain/zero/1.0/) option.
+  22317 bytes. SHA-256
+  `678c0da00ef1092f4be7c2d8c7b22c1c91c5fc8ca1f3f9570ce59de995c0138c`.
+  Short original-speed excerpts accompany boarding, sliding and stopping.
+
+Audio loads after a user gesture. One bounded foreground voice is active at a
+time. Cancellation stops playback, including late decode results. There is no
+ambient loop, pitch alteration or synthetic bird call. Subjective listening
+and Safari playback remain manual checks.
+
 ## Lombok fig hide-and-seek and splashing pool, approved 2026-09-12
 
 - `lombok-splash.wav`: [Splash, small #6, Joseph SARDIN, BigSoundBank 1534](https://bigsoundbank.com/splash-small-6-s1534.html).

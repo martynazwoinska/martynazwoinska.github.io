@@ -3,12 +3,13 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260913-canopy-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260913-pohnpei-1";
 import { createKauaiBath } from "./kauai-bath-play.js?v=20260909-bath-pour-1";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
 import { createLombokPlay } from "./lombok-play.js?v=20260912-swim-1";
 import { createCanopyPlay } from "./queensland-play.js?v=20260913-canopy-2";
+import { createPohnpeiPlay } from "./pohnpei-play.js?v=20260913-pohnpei-1";
 import { createHcmcPlay } from "./hcmc-play.js?v=20260908-hcmc-1";
 import { createNambuccaPlay } from "./nambucca-play.js?v=20260908-nambucca-recorded";
 import { createDoisRiosPlay } from "./dois-rios-play.js?v=20260908-dois-rios-1";
@@ -724,6 +725,7 @@ const reunionPlay = createReunionPlay(els.habitat, () => {
 const oahuBike = createOahuChocolate(els.habitat, () => { refreshAccessoryPieceControls(); queueAccessoryConstraints(); });
 const lombokPlay = createLombokPlay(els.habitat, () => { refreshAccessoryPieceControls(); queueAccessoryConstraints(); });
 const canopyPlay = createCanopyPlay(els.habitat, () => { refreshAccessoryPieceControls(); queueAccessoryConstraints(); });
+const pohnpeiPlay = createPohnpeiPlay(els.habitat, () => { refreshAccessoryPieceControls(); queueAccessoryConstraints(); });
 const hcmcPlay = createHcmcPlay(els.habitat, () => {
   refreshAccessoryPieceControls();
   queueAccessoryConstraints();
@@ -733,7 +735,7 @@ const nambuccaPlay = createNambuccaPlay(els.habitat, () => {
   queueAccessoryConstraints();
 });
 function renderSpecies(item, place) {
-  lombokPlay.clear(); canopyPlay.clear();
+  lombokPlay.clear(); canopyPlay.clear(); pohnpeiPlay.clear();
   kauaiBath.clear();
   araucaniaPlay.clear();
   claremontPlay.clear();
@@ -1037,7 +1039,7 @@ function updateAccessoryLabelVisibility() {
 
 function constrainVisibleAccessories() {
   if (claremontPlay.active || araucaniaPlay.active) return;
-  if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || panamaPlay.active || doisRiosPlay.active || nambuccaPlay.active || oahuBike.active || hcmcPlay.active || reunionPlay.active || kauaiBath.active || lombokPlay.active || canopyPlay.active) return;
+  if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || panamaPlay.active || doisRiosPlay.active || nambuccaPlay.active || oahuBike.active || hcmcPlay.active || reunionPlay.active || kauaiBath.active || lombokPlay.active || canopyPlay.active || pohnpeiPlay.active) return;
   if (els.habitat.classList.contains("is-changing")) return;
   accessoryIds.forEach(id => {
     if (!activeWardrobe().has(id)) return;
@@ -1149,6 +1151,7 @@ els.accessorySizeSlider.addEventListener("input", event => {
   lombokPlay.cancel();
   const target=selectedAccessorySizeTarget;
   canopyPlay.adjust(target&&visibleAccessoryPieces(target.id,target.wormPart)[0]);
+  pohnpeiPlay.adjust(target&&visibleAccessoryPieces(target.id,target.wormPart)[0]);
   kauaiBath.cancel();
   araucaniaPlay.cancel();
   claremontPlay.cancel();
@@ -1239,7 +1242,7 @@ function saveActiveDoodle() {
 }
 
 function syncDrawingMode() {
-  lombokPlay.cancel(); canopyPlay.cancel();
+  lombokPlay.cancel(); canopyPlay.cancel(); pohnpeiPlay.cancel();
   kauaiBath.cancel();
   araucaniaPlay.cancel();
   claremontPlay.cancel();
@@ -1366,7 +1369,7 @@ function syncFittedHeadwearMotion(accessory) {
 }
 
 function toggleAccessory(id, force) {
-  lombokPlay.cancel(); canopyPlay.adjust(document.getElementById(id));
+  lombokPlay.cancel(); canopyPlay.adjust(document.getElementById(id)); pohnpeiPlay.cancel();
   kauaiBath.cancel();
   araucaniaPlay.cancel();
   claremontPlay.cancel();
@@ -1460,7 +1463,7 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${canopyPlay.handles(piece) || lombokPlay.handles(piece) || kauaiBath.handles(piece) || araucaniaPlay.handles(piece) || claremontPlay.handles(piece) || edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || doisRiosPlay.handles(piece) || nambuccaPlay.handles(piece) || oahuBike.handles(piece) || hcmcPlay.handles(piece) || reunionPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
+      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${pohnpeiPlay.handles(piece) || canopyPlay.handles(piece) || lombokPlay.handles(piece) || kauaiBath.handles(piece) || araucaniaPlay.handles(piece) || claremontPlay.handles(piece) || edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || doisRiosPlay.handles(piece) || nambuccaPlay.handles(piece) || oahuBike.handles(piece) || hcmcPlay.handles(piece) || reunionPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
       if (piece.dataset.accessoryFamily === "eca250-california-lemonade") {
         piece.setAttribute("aria-keyshortcuts", `${piece.getAttribute("aria-keyshortcuts")} Shift+Enter`);
       }
@@ -1567,7 +1570,7 @@ function finishAccessoryDrag(event) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") { baliCacao.drop(piece); claremontPlay.drop(piece); }
   }
-  else if (event.type === "pointerup") { araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); hcmcPlay.start(piece); oahuBike.start(piece); reunionPlay.start(piece); kauaiBath.start(piece); lombokPlay.start(piece); canopyPlay.start(piece); }
+  else if (event.type === "pointerup") { araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); hcmcPlay.start(piece); oahuBike.start(piece); reunionPlay.start(piece); kauaiBath.start(piece); lombokPlay.start(piece); canopyPlay.start(piece); pohnpeiPlay.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1576,6 +1579,9 @@ function moveActiveAccessoryPointer(event) {
   if (!activeAccessoryDrag || !activeAccessoryDrag.pointers.has(event.pointerId)) return;
   const { id, wormPart, piece } = activeAccessoryDrag;
   event.preventDefault();
+  if(pohnpeiPlay.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
+    pohnpeiPlay.adjust(piece);activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
+  }
   if(canopyPlay.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
     canopyPlay.adjust(piece);activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
   }
@@ -1668,6 +1674,7 @@ function wireAccessoryPieces() {
     piece.addEventListener("pointerdown", event => {
       if (!lombokPlay.handles(piece)) lombokPlay.cancel();
       if (!canopyPlay.handles(piece) && !canopyPlay.rideEditable(piece)) canopyPlay.cancel();
+      if (!pohnpeiPlay.handles(piece)) pohnpeiPlay.cancel();
       kauaiBath.cancel();
       if(!araucaniaPlay.handles(piece))araucaniaPlay.cancel();
       if (ishigakiPlay.active) return;
@@ -1749,6 +1756,9 @@ function wireAccessoryPieces() {
       if ((event.key === "Enter" || event.key === " ") && kauaiBath.handles(piece)) {
         event.preventDefault(); if (!event.repeat) kauaiBath.start(piece); return;
       }
+      if ((event.key === "Enter" || event.key === " ") && pohnpeiPlay.handles(piece)) {
+        event.preventDefault(); if (!event.repeat) pohnpeiPlay.start(piece); return;
+      }
       if ((event.key === "Enter" || event.key === " ") && canopyPlay.handles(piece)) {
         event.preventDefault(); if (!event.repeat) canopyPlay.start(piece); return;
       }
@@ -1756,6 +1766,8 @@ function wireAccessoryPieces() {
         event.preventDefault(); if (!event.repeat) lombokPlay.start(piece); return;
       }
       if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) lombokPlay.cancel();
+      if (event.key === "Escape") pohnpeiPlay.cancel();
+      else if (["Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) pohnpeiPlay.adjust(piece);
       if (event.key === "Escape") canopyPlay.cancel();
       else if (["Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) canopyPlay.adjust(piece);
       if (event.key === "Escape" || event.key === "Home") kauaiBath.reset();
