@@ -11,6 +11,23 @@ pass and 20 completed, including the approved São Tomé revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+### São Tomé glide and leaf hats, deployment approved, 2026-09-13
+
+The shared ride is deployed as `b42c58d`. A new local revision on
+`codex/sao-tome-snail` extends travel to 8.6 seconds, with a steady shell,
+independent tentacles and subtle sole movement. It removes the default
+backwards repositioning before boarding. The snail now starts further left
+and the fallen leaf has a separate position on the right. Distinct fitted
+leaf hats replace the parasols and travel with the worms. Snail artwork,
+background, audio and Tiny surprise are unchanged. The English-only preview
+label is Leaf hats. Martyna accepted the scene and requested wider tentacle
+movement. The local follow-up adds independent sweeps and flexible tips,
+without altering the accepted artwork, layout, labels or ride timing.
+Tests and four-width full-page browser checks pass.
+Martyna approved the complete follow-up for deployment on 2026-09-13.
+Commit and direct live verification follow publication. Details and limitations are in
+the São Tomé location dossier.
+
 ### São Tomé shared snail ride, deployment approved, 2026-09-13
 
 On `codex/sao-tome-snail`, based on main `3deacf6`, JU2484 has a shared

@@ -2,7 +2,7 @@ import { drawWormbook } from "./claremont-book-art.js?v=20260909-wormbook-4";
 import { drawLombokSwim, swimLayouts } from "./lombok-swim-art.js?v=20260912-swim-1";
 import { drawCanopyAccessory, canopyLayouts } from "./queensland-art.js?v=20260913-canopy-1";
 import { drawPohnpeiAccessory, pohnpeiLayouts } from "./pohnpei-art.js?v=20260913-pohnpei-1";
-import { drawSaoTomeAccessory as drawSnailEncounter, saoTomeLayouts } from "./sao-tome-art.js?v=20260913-snail-ride-1";
+import { drawSaoTomeAccessory as drawSnailEncounter, saoTomeLayouts } from "./sao-tome-art.js?v=20260913-leaf-hats-1";
 import { drawAraucaniaWork, araucaniaLayouts } from "./araucania-art.js?v=20260909-araucania-bites-5";
 import { drawDoisRios, doisRiosLayouts } from "./dois-rios-art.js?v=20260908-dois-rios-1";
 import { drawNambucca, nambuccaLayouts } from "./nambucca-art.js?v=20260908-nambucca-1";
@@ -52,7 +52,7 @@ const rows = [
   ["elegans", "Araucanía, Chile", "Compost work", "ju4400-compost-work", "Mate", "ju4400-mate", "Sopaipillas", "ju4400-sopaipillas"],
   ["nigoni", "Trivandrum, Kerala · JU1325", "field loupe", "trivandrum-field-loupe", "garden watering can", "trivandrum-garden-watering-can", "sample tube", "trivandrum-sample-tube"],
   ["nigoni", "Praslin, Seychelles · YR106", "giant-tortoise shell costumes", "praslin-giant-tortoise-shell-costume", "black-parrot carnival caps", "praslin-black-parrot-carnival-cap", "Seychelles carnival bell bracelets", "praslin-seychelles-carnival-bell-bracelet"],
-  ["nigoni", "São Tomé · JU2484", "Snail ride", "ju2484-snail-ride", "Lift the leaf", "ju2484-leaf-encounter", "begonia stained-glass parasols", "sao-tome-begonia-glass-parasols"],
+  ["nigoni", "São Tomé · JU2484", "Snail ride", "ju2484-snail-ride", "Lift the leaf", "ju2484-leaf-encounter", "Leaf hats", "ju2484-leaf-hats"],
   ["nigoni", "Mahahual, Mexico · JU2617", "reef-ruffle swim costumes", "mahahual-reef-ruffle-swim-costumes", "Caribbean sun spectacles", "mahahual-caribbean-sun-spectacles", "sea-grape beach parasols", "mahahual-sea-grape-beach-parasols"],
   ["nigoni", "Mauritius · JU2909", "wriggle-powered ravanne drums", "mauritius-ravanne-crawler-drum", "Vacoas fruit-gathering tail baskets", "mauritius-vacoas-tail-scoop", "dodo-beak fruit grabbers", "mauritius-dodo-beak-fruit-grabber"],
   ["nigoni", "Ho Chi Minh City · JU4356", "Scooter", "ju4356-shared-scooter", "Starfruit", "ju4356-starfruit-preparation", "Vietnamese coffee", "ju4356-phin-coffee"],
@@ -6321,11 +6321,12 @@ function renderPiece(target, item, wormPart) {
   if (item.family === "qg4739-birdwatching") piece.dataset.pieceLabel = companion ? "Spotting scope" : "Binoculars";
   if (item.family === "qg4739-camouflage-cape") piece.dataset.pieceLabel = "Cape";
   if (item.family === "ju2484-leaf-encounter") piece.dataset.pieceLabel = "Fallen leaf";
+  if (item.family === "ju2484-leaf-hats") piece.dataset.pieceLabel = "Leaf hat";
   const isSanteuilCompanionProp = companion && ["santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"].includes(item.family);
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
-  const isBodyFittedCloth = ["qg4739-camouflage-cape", "qg2904-safety-harness", "qg130-bath-towels", "ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
+  const isBodyFittedCloth = ["ju2484-leaf-hats", "qg4739-camouflage-cape", "qg2904-safety-harness", "qg130-bath-towels", "ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
     : isBodyFittedCloth || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });

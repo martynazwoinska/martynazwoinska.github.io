@@ -2,6 +2,113 @@
 
 Last updated: 2026-09-13
 
+## Tentacle-only follow-up
+
+Martyna accepted the left-hand snail and leaf hats, requesting more tentacle
+movement. The near tentacle now sweeps from -18 to 6 degrees and the far one
+from -6 to 20 degrees, at different rates. Flexible tips move by up to 3 and
+2 SVG units, with their eyes and highlights following the stalk ends.
+Bases remain attached to the head. Motion eases in/out and is zero under
+reduced motion. Ride timing, route, other animation, static artwork, audio,
+labels and layout are unchanged from the preceding preview.
+
+Changed in this small pass: `sao-tome-play.js`, its regression test,
+cache keys in `game.js`/`index.html`, this dossier and project status.
+No files added or deleted. Static art/catalogue/background hashes match
+the preceding preview. Syntax, São Tomé, Pohnpei, label, fresh-visit and
+whitespace checks pass. Desktop and phone motion was inspected at multiple
+poses, with keyboard/pointer activation and Escape checked. No console errors.
+Full-page dimensions at 360/768/1024/1440 remain 345 × 2497, 753 × 2347,
+1009 × 1849 and 1425 × 1876 px, with no horizontal overflow.
+Full-page capture can cancel an active ride through viewport resizing, so
+motion was inspected separately in normal viewport captures. Physical
+devices, Safari and OS reduced-motion browser emulation remain untested.
+Martyna approved the complete follow-up for deployment on 2026-09-13,
+including the longer left-hand ride, leaf hats and tentacle movement.
+The exact approved production drawings and runtime are unchanged.
+Commit and direct production verification follow publication.
+
+## Latest local follow-up: left-hand snail and leaf hats
+
+Martyna requested a further-left snail and a replacement for the parasols.
+The snail now starts at x=130 rather than 210 in the 420-unit worm view box.
+The fallen leaf sits separately on the right at x=320, scale .65, so both
+objects remain readable when enabled together. The longer glide below is retained.
+
+New English-only preview wording: shared button **Leaf hats**, individual
+objects **Leaf hat for the female** and **Leaf hat for the male**. The Game
+has no Swedish or Polish version. Martyna approved these labels and final
+drawings for deployment on 2026-09-13. Tiny surprise is unchanged.
+
+The broad folded leaf hat and curled leaf cap are original fantasy designs
+for a forest outing, not a claim about São Tomé clothing or collected plants.
+The [World Coffee Museum's leaf-hat construction account](https://baotangthegioicaphe.com/en-US/non-la-copalm-leaf-hat-hvk505-1)
+was used for material considerations (leaf veins, folded edges and support).
+Its hat type and cultural identity were not transferred to this scene.
+The Obô forest/snail connection remains sourced to
+[Forest Giants](https://www.forestgiants.org/about/).
+No external image was copied or adapted.
+
+Refinement: made the primary brim asymmetric with a defined underside,
+strengthened the male crown's curled overlap and contained branching veins.
+Moved the fallen leaf further right to remove the first draft's near-tangency
+with the snail. Hats pause in sync with their worms and their original
+placement/scale is transformed into the rider's coordinate system for both
+activities, then restored exactly.
+
+Tests pass: São Tomé, Pohnpei, labels, fresh-visit defaults, syntax and diff
+checks. Browser checks include a complete ride with a moved/resized female
+hat, exact restoration, male keyboard movement/Home, pointer activation,
+leaf reveal, Escape and resize cancellation. Two hats remain visible in the
+phone ride and no console errors were reported.
+Final complete-page images: viewport 360 → 345 × 2497 px, 768 → 753 × 2347 px,
+1024 → 1009 × 1849 px, 1440 → 1425 × 1876 px. Image width excludes the 15 px
+scrollbar. No horizontal overflow. Fixed-light Game only.
+Physical-device/Safari testing and browser reduced-motion emulation remain
+manual. Reduced-motion unit checks pass. Existing audio is unchanged.
+
+Changed files for the combined local follow-up:
+`game-of-worms/sao-tome-art.js`, `game-of-worms/sao-tome-play.js`,
+`game-of-worms/accessory-designs.js`, `game-of-worms/game.js`,
+`game-of-worms/index.html`, `scripts/check-sao-tome.cjs`,
+`docs/game-of-worms-art-catalogue.md`, this dossier and `PROJECT_STATUS.md`.
+No files created or deleted. Branch: `codex/sao-tome-snail`, published base
+`b42c58d`. Deployment of the combined follow-up is approved.
+
+## Local follow-up: longer, steadier glide
+
+Based on deployed main `b42c58d`. Included in the approved combined follow-up above.
+The travel phase is now 8.6 seconds (previously 3.6), within a 14.9-second
+boarding, ride and return sequence. Short speed ramps surround a steady glide.
+The shell and riders stay level. Independent tentacle sweeps, slight head
+extension and a subtle sole-rim wave replace the rigid foot shuffle.
+A refinement removed the default snail's backwards repositioning before boarding.
+The final return to the visitor's saved position remains unchanged.
+
+Motion reference: [Lai et al., 2010, The mechanics of the adhesive locomotion
+of terrestrial gastropods](https://doi.org/10.1242/jeb.046706).
+The study describes muscular pedal waves and mucus-mediated traction.
+The side-view rim animation is an illustrative cue, not a measured gait
+for the Obô giant snail.
+
+No changes to the static artwork, other accessories, audio files or public copy.
+The existing rustling cue follows the later dismount. Changed runtime files:
+`sao-tome-play.js`, plus cache keys in `game.js` and `index.html`.
+`scripts/check-sao-tome.cjs` adds timing, speed, route, tentacle and sole bounds.
+No files created or deleted.
+
+Verification: syntax, São Tomé, Pohnpei, accessory labels, fresh-visit defaults
+and diff checks pass. Browser checks passed for a complete longer ride,
+pointer/keyboard activation, Escape and exact restoration after changing the
+visitor's position and scale. No console errors were reported.
+Uncropped full-page captures were inspected at viewport widths 360, 768, 1024
+and 1440 px. Image dimensions were respectively 345 × 2521, 753 × 2399,
+1009 × 1849 and 1425 × 1928 px, excluding the 15 px scrollbar.
+No horizontal overflow. The active phone ride was also inspected.
+The Game has one fixed light palette. Physical devices, Safari and browser
+reduced-motion emulation remain untested. Reduced-motion calculations pass.
+Audio listening was not repeated because the recordings are unchanged.
+
 ## Current revision: shared snail ride and leaf reveal
 
 Implemented on `codex/sao-tome-snail`, based on current main `3deacf6`.

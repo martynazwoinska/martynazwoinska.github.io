@@ -1,5 +1,17 @@
 # Game of Worms art catalogue
 
+São Tomé JU2484 local follow-up, 2026-09-13: the snail starts at x=130
+instead of 210, with the fallen leaf separated at x=320. Leaf hats replace
+the active stained-glass parasols. The female has a broad folded leaf hat
+with a shaded underside, midrib and stitched fold. The male has a separately
+drawn curled leaf cap with an overlapping crown and rolled brim. Both
+follow the heads during idle movement, the ride and leaf reveal, preserving
+visitor adjustments. Leaf-hat edge, curl and vein refinement was reviewed
+in the real scene at four widths. These are fictional forest accessories,
+not representations of a local clothing tradition. Martyna approved the final
+contextual drawings for deployment on 2026-09-13. The previously approved snail drawing and background
+are unchanged.
+
 São Tomé JU2484, 2026-09-13: Snail ride and Lift the leaf replace the chocolate
 bars and music boxes. The original Obô giant snail has a tapered spire,
 inflated whorl, aperture lip and four tentacles. Both worms board the same

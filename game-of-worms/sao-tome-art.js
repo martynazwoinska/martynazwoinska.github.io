@@ -1,9 +1,10 @@
 // Original vectors. Anatomy references and the fictional scale are in the JU2484 dossier.
 const NS = 'http://www.w3.org/2000/svg';
-export const RIDE = 'ju2484-snail-ride', LEAF = 'ju2484-leaf-encounter';
+export const RIDE = 'ju2484-snail-ride', LEAF = 'ju2484-leaf-encounter', HATS = 'ju2484-leaf-hats';
 export const saoTomeLayouts = {
-  [RIDE]: {primary: [210, 285, .9, 0]},
-  [LEAF]: {primary: [170, 285, .9, 0]}
+  [RIDE]: {primary: [130, 285, .9, 0]},
+  [LEAF]: {primary: [320, 290, .65, -8]},
+  [HATS]: {primary: [326, 30, .85, 22], companion: [111, 94, .53, 24]}
 };
 export const add = (p, t, a = {}) => {
   const n = document.createElementNS(NS, t);
@@ -72,11 +73,47 @@ export function drawFallenLeaf(p) {
   return g;
 }
 
+export function drawLeafHat(p, male) {
+  const id='obo-leaf-hat-'+(++serial),defs=add(p,'defs');
+  const gradient=add(defs,'linearGradient',{id,x1:'10%',y1:'0%',x2:'70%',y2:'100%'});
+  for(const [offset,color] of [[0,'#a8c77a'],[.48,'#6b9d64'],[1,'#387568']])
+    add(gradient,'stop',{offset,'stop-color':color});
+  const fill='url(#'+id+')',edge='#30574e';
+  const hat=add(p,'g',{'data-obo-leaf-hat':male?'curled-cap':'folded-hat'});
+  if(male){
+    // A curled, overlapping leaf cup, with a short rolled-up brim.
+    path(hat,'M-29-2Q-33-28-12-33Q11-39 25-22Q30-17 24-12L25-3Q1 8-29-2Z',fill,edge,1.8);
+    path(hat,'M-12-33Q10-38 25-22Q30-17 24-12Q18-21 4-24Z','#becd8b',edge,1);
+    path(hat,'M-12-33Q-21-14-12 1L-29-2Q-33-24-12-33Z','#a1bb73',edge,1);
+    path(hat,'M-10-31Q-6-18 18-8M-6-24L9-27M0-17L16-20M7-12L19-13','none','#d0d29a',1.35);
+    path(hat,'M-20-18l-5 3m7 4l-7 3M-4-21l-8 6M4-15l-6 8','none','#91b582',1);
+    path(hat,'M-24-23Q-28-16-24-7','none','#d6dbaa',1.4);
+    path(hat,'M-33-5Q-9 3 26-7Q30-7 32-2Q12 14-28 5Z','#87ad70',edge,1.6);
+    path(hat,'M-28 5Q3 12 32-2L29 4Q5 15-27 9Z','#416f5b',edge,1);
+    path(hat,'M-13-33Q-14-40-4-43','none','#56835a',2.8);
+    path(hat,'M15-2l6 2m-5-5l6 2','none','#e6d6a7',1.8);
+  }else{
+    // Broad leaf folded into a domed crown. The darker underside gives the brim thickness.
+    path(hat,'M-46-2Q-35-14-24-11Q-25-28-4-33Q14-36 24-15Q41-13 49-5Q42 7 25 11L21 8L16 13Q-18 16-38 6Z',fill,edge,1.8);
+    path(hat,'M-46-2Q-16 7 7 5Q34 6 49-5Q42 10 25 14L21 11L16 16Q-19 17-38 6Z','#416f5b',edge,1.4);
+    path(hat,'M-24-11Q-5 0 24-15Q16-25-4-33Q-21-28-24-11Z','#83b472','none');
+    path(hat,'M-4-33Q0-19 7 5','none','#e0dca2',2.1);
+    path(hat,'M-2-26Q-13-23-19-17M1-19Q-9-16-17-12M3-12Q-5-9-12-6M1-24L12-26M4-16L20-18M6-7L25-10','none','#b7ce8d',1.15);
+    path(hat,'M-39 0Q-15 4 7 5Q31 5 43-2','none','#cad297',1.8);
+    path(hat,'M-29-3l-4 3m10-2l-4 4M13 1l8 6M27-2l9 4','none','#92b881',1.2);
+    path(hat,'M-4-33Q-14-42-24-34Q-26-32-25-30','none','#658f54',3);
+    path(hat,'M-23-8Q-12-1 1-1','none','#315f52',2.8);
+    path(hat,'M-20-8l-1 5m7-3l-1 5m7-3l-1 4','none','#e1d2a6',1.5);
+  }
+  return hat;
+}
+
 export function drawSaoTomeAccessory(p, item, male) {
-  if (![RIDE, LEAF].includes(item.family)) return false;
+  if (![RIDE, LEAF, HATS].includes(item.family)) return false;
   p.dataset.renderer = item.family;
   p.setAttribute('style', 'transform-box:view-box;transform-origin:0 0');
   if (item.family === RIDE) drawSnail(p);
-  else drawFallenLeaf(p);
+  else if(item.family === LEAF) drawFallenLeaf(p);
+  else drawLeafHat(p,male);
   return true;
 }

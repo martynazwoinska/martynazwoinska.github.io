@@ -1,9 +1,53 @@
-import {RIDE, LEAF, add, path, drawSnail} from './sao-tome-art.js?v=20260913-snail-ride-1';
+import {RIDE, LEAF, HATS, add, path, drawSnail} from './sao-tome-art.js?v=20260913-leaf-hats-1';
 import {createPohnpeiSound} from './pohnpei-sound.js?v=20260913-pohnpei-1';
 const clamp = x => Math.max(0, Math.min(1, x));
 const ease = x => { x = clamp(x); return x*x*(3-2*x); };
 const mix = (a,b,q) => a+(b-a)*q;
 const blend = (a,b,q) => new DOMMatrix(['a','b','c','d','e','f'].map(k=>mix(a[k],b[k],q)));
+export const RIDE_TIMING=Object.freeze({boardEnd:2800,rideEnd:11400,off:11650,land:13000,return:13500,end:14900});
+// Short acceleration ramps with steady forward travel across most of the route.
+export function glideProgress(x) {
+  const q=clamp(x),ramp=.12;
+  const start=u=>(u-ramp/Math.PI*Math.sin(Math.PI*u/ramp))/(2*(1-ramp));
+  return q<ramp?start(q):q>1-ramp?1-start(1-q):(q-ramp/2)/(1-ramp);
+}
+export function snailRoute(startX,q) {
+  const x=Math.max(120,Math.min(235,startX));
+  return mix(x,285,clamp(q));
+}
+export function snailGait(ms,reduced=false) {
+  const t=ms-RIDE_TIMING.boardEnd,duration=RIDE_TIMING.rideEnd-RIDE_TIMING.boardEnd;
+  const strength=reduced?0:ease(t/650)*(1-ease((t-duration+850)/850));
+  return {strength,headX:(1.5+.8*Math.sin(t/2400))*strength,
+    headTilt:.8*Math.sin(t/2700)*strength,
+    near:(-6+12*Math.sin(t/1100+.4))*strength,
+    far:(7+13*Math.sin(t/1450+1.7))*strength,
+    nearBend:3*Math.sin(t/900+.6)*strength,
+    farBend:2*Math.sin(t/1200+2.1)*strength};
+}
+export function pedalRimPath(ms,strength) {
+  // A small side-view hint of contractions along the sole, not whole-foot rocking.
+  const points=[],t=ms-RIDE_TIMING.boardEnd;
+  for(const [x0,y0,x1,y1,x2,y2] of[[-88,12,-31,27,29,18],[29,18,73,19,94,10]]){
+    for(let i=points.length?1:0;i<=20;i++){
+      const q=i/20,x=(1-q)**2*x0+2*(1-q)*q*x1+q*q*x2;
+      const y=(1-q)**2*y0+2*(1-q)*q*y1+q*q*y2;
+      const edge=Math.sin(Math.PI*(x+88)/182);
+      points.push([x,y-.85*strength*edge*Math.sin(2*Math.PI*(x/46-t/1800))]);
+    }
+  }
+  return points.map(([x,y],i)=>(i?'L':'M')+x.toFixed(3)+' '+y.toFixed(3)).join(' ');
+}
+function prepareSnailGait(parts) {
+  const nodes=[...parts.head.children],far=add(parts.head,'g',{'data-obo-feeler':'far'}),
+    near=add(parts.head,'g',{'data-obo-feeler':'near'});
+  parts.head.insertBefore(far,nodes[0]);far.append(nodes[0],nodes[1]);
+  parts.head.insertBefore(near,nodes[3]);near.append(...nodes.slice(3,7));
+  const rim=parts.foot.querySelectorAll('path')[1];
+  return {near,far,rim,originalRim:rim.getAttribute('d'),
+    nearStalks:[nodes[3],nodes[4]],nearEye:nodes[5],shine:nodes[6],
+    farStalk:nodes[0],farEye:nodes[1]};
+}
 const BASE = [78,228,122,280,173,255,181,203,188,151,225,105,278,113,330,121,355,82,326,54];
 const LOW = [65,89,108,112,154,68,203,82,249,96,260,54,294,68,321,82,342,74,326,54];
 const COILS = [
@@ -34,8 +78,8 @@ export function snailFrame(ms,kind,reduced=false) {
     travel:0,disembark:0,returning:0,done:ms>=2700};
   if(kind==='leaf') return {pose:ease(ms/1000)*(1-ease((ms-5300)/1200)),
     lift:ease((ms-400)/1400)*(1-ease((ms-4400)/1100)),travel:0,disembark:0,returning:0,done:ms>=6700};
-  return {pose:ease(ms/900),lift:0,travel:ease((ms-2800)/3600),
-    disembark:ease((ms-6650)/1300),returning:ease((ms-8500)/1300),done:ms>=9900};
+  return {pose:ease(ms/900),lift:0,travel:glideProgress((ms-RIDE_TIMING.boardEnd)/(RIDE_TIMING.rideEnd-RIDE_TIMING.boardEnd)),
+    disembark:ease((ms-RIDE_TIMING.off)/1300),returning:ease((ms-RIDE_TIMING.return)/1300),done:ms>=RIDE_TIMING.end};
 }
 
 export function createSaoTomePlay(habitat,refresh=()=>{}) {
@@ -77,13 +121,20 @@ export function createSaoTomePlay(habitat,refresh=()=>{}) {
       copy.setAttribute('style','animation:none;transform:none');p.appendChild(copy);return copy;
     };
     run=r;serial++;habitat.dataset.saoTomeAction=kind;
-    for(const n of habitat.querySelectorAll('.worm-body,.companion-body'))r.save(n).style.animationPlayState='paused';
+    for(const n of habitat.querySelectorAll('.worm-body,.companion-body,[data-accessory-family="'+HATS+'"] .fitted-headwear-motion'))r.save(n).style.animationPlayState='paused';
     r.people=[];
     for(const male of[false,true]){
       const original=habitat.querySelector(male?'.companion-body':'.worm-body'),from=r.matrix(original);
       const holder=add(r.effects,'g',{'data-obo-worm':male?'male':'female'}),copy=r.clone(original,holder);
       r.save(original).style.visibility='hidden';
       const paths=[...copy.querySelectorAll(male?'.companion-line,.companion-shadow,.companion-highlight':'.worm-line,.worm-shadow,.worm-highlight')].map(n=>({n,d:n.getAttribute('d')}));
+      const worn=habitat.querySelector('[data-accessory-family="'+HATS+'"][data-worm-part="'+(male?'companion':'primary')+'"]');
+      if(visible(worn)){
+        // Preserve the visitor's placement relative to this worm's head while riding.
+        const art=worn.querySelector('.location-accessory-art');
+        const attached=add(holder,'g',{'data-obo-worn-hat':'',transform:from.inverse().multiply(r.matrix(art)).toString()});
+        r.clone(art,attached);r.save(worn).style.visibility='hidden';
+      }
       r.people.push({male,holder,copy,from,paths,tail:copy.querySelector('.male-tail')});
     }
     for(const n of habitat.querySelectorAll('.worm-ground-shadow'))r.save(n).style.visibility='hidden';
@@ -101,6 +152,7 @@ export function createSaoTomePlay(habitat,refresh=()=>{}) {
       for(const n of habitat.querySelectorAll('.accessory-piece'))if(visible(n))r.save(n).style.visibility='hidden';
       r.snailFrom=r.matrix(target.querySelector('.location-accessory-art'));
       r.snail=add(r.effects,'g',{'data-obo-transport':''});r.snailParts=drawSnail(r.snail);
+      r.gait=prepareSnailGait(r.snailParts);
       // Far-side male, shell, then near-side female. The shell provides occlusion.
       r.effects.insertBefore(r.people[1].holder,r.snail);
       r.effects.appendChild(r.people[0].holder);
@@ -129,11 +181,11 @@ export function createSaoTomePlay(habitat,refresh=()=>{}) {
     if(!visible(r.target)||document.hidden||b.bottom<=0||b.top>=innerHeight){cancel();return;}
     const ms=now-r.start,f=snailFrame(ms,r.kind,reduced.matches);
     habitat.dataset.saoTomePhase=r.kind==='leaf'?(ms<1800?'lifting':ms<4400?'meeting':'lowering')
-      :(ms<2800?'boarding':ms<6400?'riding':ms<6650?'stopping':ms<8000?'climbing-off':ms<8500?'landed':'returning');
+      :(ms<RIDE_TIMING.boardEnd?'boarding':ms<RIDE_TIMING.rideEnd?'riding':ms<RIDE_TIMING.off?'stopping':ms<RIDE_TIMING.land?'climbing-off':ms<RIDE_TIMING.return?'landed':'returning');
     r.arms.replaceChildren();
     let snailPose;
     if(r.kind==='ride'){
-      const stage=new DOMMatrix().translate(140+145*f.travel,285).scale(1.2);
+      const stage=new DOMMatrix().translate(snailRoute(r.snailFrom.e,f.travel),285).scale(1.2);
       snailPose=reduced.matches?r.snailFrom:blend(blend(r.snailFrom,stage,f.pose),r.snailFrom,f.returning);
       r.snail.setAttribute('transform',snailPose.toString());
       if(f.disembark>.4&&!r.maleInFront){
@@ -170,10 +222,19 @@ export function createSaoTomePlay(habitat,refresh=()=>{}) {
       r.snailHead.setAttribute('transform',`translate(${reduced.matches?0:f.lift*6} ${reduced.matches?0:-f.lift*2})`);
       gesture(r,ms>=550,'lift',.7);gesture(r,ms>=4550,'lower',.5,.055);
     }else{
-      const moving=!reduced.matches&&ms>=2800&&ms<=6400;
-      r.snailParts.head.setAttribute('transform',`rotate(${moving?Math.sin(ms/570)*2.5:0} 47 0)`);
-      r.snailParts.foot.setAttribute('transform',`translate(${moving?Math.sin(ms/330)*.5:0} 0)`);
-      gesture(r,ms>=1100,'boarding',.55,.06);gesture(r,ms>=6950,'climbing-off',.5,.055);
+      const gait=snailGait(ms,reduced.matches);
+      r.snailParts.head.setAttribute('transform',`translate(${gait.headX} 0) rotate(${gait.headTilt} 47 0)`);
+      r.gait.near.setAttribute('transform',`rotate(${gait.near} 60 -10)`);
+      r.gait.far.setAttribute('transform',`rotate(${gait.far} 64 -9)`);
+      // Flexible tips retain their eye caps, with the stalk bases fixed to the head.
+      for(const stalk of r.gait.nearStalks)
+        stalk.setAttribute('d',`M60-10Q${66-gait.nearBend*.4}-29 ${67+gait.nearBend}-44`);
+      r.gait.nearEye.setAttribute('cx',67+gait.nearBend);
+      r.gait.shine.setAttribute('cx',66.5+gait.nearBend);
+      r.gait.farStalk.setAttribute('d',`M64-9Q71 ${-25-gait.farBend*.5} ${86+gait.farBend}-32`);
+      r.gait.farEye.setAttribute('cx',87+gait.farBend);
+      r.gait.rim.setAttribute('d',gait.strength?pedalRimPath(ms,gait.strength):r.gait.originalRim);
+      gesture(r,ms>=1100,'boarding',.55,.06);gesture(r,ms>=RIDE_TIMING.off+300,'climbing-off',.5,.055);
     }
     if(f.done){cancel();return;}
     raf=requestAnimationFrame(tick);
