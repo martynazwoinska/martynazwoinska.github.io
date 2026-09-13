@@ -375,7 +375,7 @@ The following simplified, recognizable object sets supersede the earlier abstrac
 - **Kauaʻi QG131:** pandanus sample baskets; four-date culture calendars; mating-test plates.
 - **New Taipei NIC1648:** Taiwan blue-magpie kites; single-tail rain boots; bubble-tea jetpacks.
 - **Pohnpei QG4739:** Kotop-fruit parasols; Peppercorn rollerboards; Cloudforest rain-leaf sleds.
-- **Queensland QG2904:** Sealed-pod drums; Funnel megaphones; Canopy kaleidoscopes.
+- **Queensland QG2904, deployment approved 2026-09-13:** Canopy lift, Forest photography and Safety harnesses. One shared railed basket, a long-lens camera and a distinct instant camera with a photobomb print, independently fitted webbing harnesses. Cameras and harness controls remain usable during the lift. The earlier drums, megaphones and kaleidoscopes are superseded.
 - **Saint-Benoît JU1373:** Réunion torch-ginger trays; type-isolate badges; windward rain gauges.
 
 ## Catalogue

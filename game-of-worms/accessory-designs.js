@@ -1,5 +1,6 @@
 import { drawWormbook } from "./claremont-book-art.js?v=20260909-wormbook-4";
 import { drawLombokSwim, swimLayouts } from "./lombok-swim-art.js?v=20260912-swim-1";
+import { drawCanopyAccessory, canopyLayouts } from "./queensland-art.js?v=20260913-canopy-1";
 import { drawAraucaniaWork, araucaniaLayouts } from "./araucania-art.js?v=20260909-araucania-bites-5";
 import { drawDoisRios, doisRiosLayouts } from "./dois-rios-art.js?v=20260908-dois-rios-1";
 import { drawNambucca, nambuccaLayouts } from "./nambucca-art.js?v=20260908-nambucca-1";
@@ -60,7 +61,7 @@ const rows = [
   ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "Gift wrapping", "eca789-chocolate-gifts", "Chocolate tasting", "eca789-chocolate-tasting", "Chocolate bike", "eca789-chocolate-bike"],
   ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Taiwan blue-magpie kites", "nic1648-taiwan-blue-magpie-kites", "single-tail rain boots", "nic1648-single-tail-rain-boots", "bubble-tea jetpacks", "nic1648-bubble-tea-jetpacks"],
   ["tropicalis", "Pohnpei, Micronesia · QG4739", "Kotop-fruit parasols", "qg4739-kotop-fruit-parasol", "Peppercorn rollerboards", "qg4739-peppercorn-rollerboard", "Cloudforest rain-leaf sleds", "qg4739-rain-leaf-sled"],
-  ["tropicalis", "Queensland, Australia · QG2904", "Sealed-pod drums", "qg2904-sealed-pod-drum", "Funnel megaphones", "qg2904-funnel-megaphone", "Canopy kaleidoscopes", "qg2904-canopy-kaleidoscope"],
+  ["tropicalis", "Queensland, Australia · QG2904", "Canopy lift", "qg2904-canopy-lift", "Forest photography", "qg2904-forest-photography", "Safety harnesses", "qg2904-safety-harness"],
   ["tropicalis", "Saint-Benoît, Réunion · JU1373", "Lychees", "ju1373-lychees", "Raincoats with rain", "ju1373-raincoats", "Flower arranging", "ju1373-flower-arranging"]
 ];
 
@@ -84,7 +85,7 @@ const santeuilRendererFamilies = new Set(["santeuil-railway-driver-uniform", "sa
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
 const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-avocado-snack-bowl"]);
 const kauaiRendererFamilies = new Set(["xz1516-forest-bird-headphones", "xz1516-ohia-blossom-microphone", "xz1516-reel-to-reel-recorder"]);
-const sharedAccessoryFamilies = new Set(["xz1516-reel-to-reel-recorder", "ju4356-shared-scooter", "eca789-chocolate-bike", "eca789-chocolate-gifts", "hpt26-splashing-pool"]);
+const sharedAccessoryFamilies = new Set(["xz1516-reel-to-reel-recorder", "ju4356-shared-scooter", "eca789-chocolate-bike", "eca789-chocolate-gifts", "hpt26-splashing-pool", "qg2904-canopy-lift"]);
 const actRendererFamilies = new Set(["canberra-flat-white-cafe", "canberra-linen-napkins", "oconnor-cockatoo-cafe-raid"]);
 const claremontRendererIds = new Set([
   "elegans::Claremont, California · ECA250::headwear",
@@ -6086,6 +6087,7 @@ function drawElegansFieldAccessory(group, item, companion) {
 }
 
 function drawNamedAccessory(group, item, companion) {
+  if (drawCanopyAccessory(group, item, companion)) return true;
   if (drawOahuGift(group, item, companion)) return true;
   if (drawOahuBike(group, item, companion)) return true;
   if (drawOahuChocolate(group, item, companion)) return true;
@@ -6253,6 +6255,7 @@ function renderPiece(target, item, wormPart) {
     ,"ju4356-its2-ribbon-reader": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"hcmc-urban-canopy-census-engine": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
     ,...swimLayouts
+    ,...canopyLayouts
     ,"lingsar-ficus-fruit-transformation": { primary: [186, 201, .66, 13], companion: [49, 172, .32, 21] }
     ,"eg4181-apricot-blossom-hat": { primary: [333, 37, .43, 22], companion: [114, 91, .36, 24] }
     ,"eg4181-beehive-saddle-pack": { primary: [245, 166, .46, 21], companion: [92, 154, .36, 30] }
@@ -6307,11 +6310,13 @@ function renderPiece(target, item, wormPart) {
   if (item.family === "qg130-jug-basin") piece.dataset.pieceLabel = companion ? "Basin" : "Jug";
   if (item.family === "qg130-bath-towels") piece.dataset.pieceLabel = "Towel";
   if (piece.dataset.pieceLabel) piece.dataset.pieceLabel = formatAccessoryLabel(piece.dataset.pieceLabel);
+  if (item.family === "qg2904-forest-photography") piece.dataset.pieceLabel = companion ? "Instant camera" : "Camera";
+  if (item.family === "qg2904-safety-harness") piece.dataset.pieceLabel = "Safety harness";
   const isSanteuilCompanionProp = companion && ["santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"].includes(item.family);
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
-  const isBodyFittedCloth = ["qg130-bath-towels", "ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
+  const isBodyFittedCloth = ["qg2904-safety-harness", "qg130-bath-towels", "ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
     : isBodyFittedCloth || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });

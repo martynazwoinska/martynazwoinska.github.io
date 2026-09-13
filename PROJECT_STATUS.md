@@ -6,10 +6,29 @@ This file records approved decisions and the verified implementation state. Alwa
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 14 left to check in the current interaction
-pass and 17 completed, including the approved Oʻahu ECA789 and Lombok revisions.
+It tracks all 31 active scenes: 13 left to check in the current interaction
+pass and 18 completed, including the approved Queensland revision.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+### Queensland canopy visit, deployment approved, 2026-09-13
+
+On `codex/queensland-canopy`, based on current main `92a5acd`, QG2904 has a
+shared canopy lift, distinct long-lens/instant cameras and fitted static safety
+harnesses. The male's developing print shows the larger worm photobombing.
+Both cameras can now operate during the lift. Real harness/camera controls travel
+with the worms and retain visitor adjustments after landing. Three CC0 recordings
+provide independent, bounded motor and camera foley. The forest painting and collection copy
+are unchanged. Detailed construction references and QA are in the Queensland
+location dossier. Labels are intentionally English-only, as is the Game.
+Focused Queensland and Lombok regression tests, labels, fresh-visit defaults,
+syntax and whitespace checks pass. Normal views at 360, 768, 1024 and 1440 px
+were inspected, including phone lift/print actions, keyboard and pointer input,
+size restoration and scene-change cleanup. Martyna approved deployment of the
+current drawings, interactions, sounds and English-only labels on 2026-09-13.
+The approved production files are unchanged. Pohnpei QG4739 is the next review.
+Live verification follows publication. Full-page captures have a scrollbar-width/framing
+mismatch, and physical devices, Safari and subjective listening are unverified.
 
 ### Lombok fig hide-and-seek and splashing pool, deployment approved, 2026-09-12
 

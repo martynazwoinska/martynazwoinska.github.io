@@ -395,6 +395,36 @@ Loading is lazy, failures are silent and retryable, and late cues are discarded.
 Escape, activity changes, dragging, resizing and page hiding cancel playback.
 Timing and level tests passed. Subjective listening remains unverified.
 
+## Queensland canopy visit, 2026-09-13
+
+Three real recordings, downloaded unchanged from Freesound's source-linked HQ
+MP3 previews. All are [CC0](https://creativecommons.org/publicdomain/zero/1.0/),
+with creator and licence pages checked on 2026-09-13.
+
+| File | Recording | Creator | SHA-256 |
+| --- | --- | --- | --- |
+| `queensland-lift.mp3` | [SFX Electric Actuator Jack 1.mp3, 683808](https://freesound.org/people/mpuffenbarger/sounds/683808/) | mpuffenbarger | `590e0edf1c248ea8c157a2c8cc7ae7dd66163346591fdf90c38122ea9be3520b` |
+| `queensland-shutter.mp3` | [Camera shutter analogue film SLR 1/4 02, 338219](https://freesound.org/people/cabled_mess/sounds/338219/) | cabled_mess | `cee1410ac9259ba6c080d469b1fc8c57d7e373e94245295874d28e90a047a642` |
+| `queensland-instant.mp3` | [Polaroid Impulse Shutter, 151795](https://freesound.org/people/JamesMontour/sounds/151795/) | JamesMontour | `a06614d5c432555b93706291c4015268167fe902f685cfefc61fc23ef23988e0` |
+
+Download paths are `https://cdn.freesound.org/previews/683/683808_4257513-hq.mp3`,
+`https://cdn.freesound.org/previews/338/338219_5450487-hq.mp3` and
+`https://cdn.freesound.org/previews/151/151795_2497980-hq.mp3`.
+Respective file sizes are 138048, 13680 and 74736 bytes.
+
+The electric jack is foley for a motorised lift, not a recording of the actual
+Daintree crane. Its excerpts are 0.4-3.0 s on ascent and 0.4-2.8 s on descent,
+starting at animation times 1200 and 5400 ms. Peak targets are 0.095 and 0.08.
+The complete 0.629 s shutter and 3.882 s instant mechanism start at 950 ms,
+with peak targets 0.085 and 0.10. The instant recording contains its own
+film-ejection sound. No pitch alteration, synthetic layer or idle loop.
+Gain is capped at 0.7 with short attack/release fades. Each recording has one
+bounded channel, so camera actions can play over the motor during a ride.
+Repeating a camera action stops only its own channel. Escape and scene/lifecycle
+cancellation stop all three. Lazy loading, deduplication, independent channels,
+cancellation and clip bounds are tested.
+Subjective listening remains unverified.
+
 ## Oʻahu gift wrapping, 2026-09-09
 
 - File: `oahu-gift-foil.mp3`, 182112 bytes, preserved unchanged.

@@ -1,8 +1,109 @@
 # Queensland *Caenorhabditis tropicalis* QG2904 location research and art brief
 
-Last updated: 2026-09-01
+Last updated: 2026-09-13
 
-> **Current production accessory contract:** `Sealed-pod drums`, `Funnel megaphones`, and `Canopy kaleidoscopes`. The set uses the recorded closed pod, the funnel-plating step and the Daintree Rainforest Observatory canopy setting.
+> **Current revision, deployment approved 2026-09-13:** `Canopy lift`, `Forest photography` and `Safety harnesses`. Two activities and one quiet wearable. This supersedes the earlier drums, megaphones and kaleidoscopes. The original forest painting and Tiny surprise remain unchanged. Historical briefs below are not the current accessory contract.
+
+## Canopy visit implementation, 2026-09-13
+
+The user approved a shared canopy lift, two different cameras and fitted static
+harnesses, with realistic sounds. The basket boards both worms, ascends, pauses
+for a look and returns. Near-side rails occlude the bodies deliberately.
+The parked basket sits clear of the tails. Its cable stays vertical in screen
+space despite the scene's rotated worm coordinate system.
+
+The larger worm raises a long-lens camera to its eye. The male uses a squat
+instant camera. His print ejects, develops and enlarges to show the larger
+worm photobombing. Either or both cameras can operate during the ride. The two harness drawings
+follow their respective body curves with stitched webbing, cross-straps and
+metal fittings. They are fantasy adaptations for a worm, not PPE guidance.
+
+Construction references checked on 2026-09-13:
+
+- [JCU Daintree facilities](https://www.jcu.edu.au/dro/facilities): canopy crane,
+  workbox and lanyard attachment points. The lift is regional observatory context.
+- [JCU education](https://www.jcu.edu.au/dro/education): people visit the canopy
+  in a gondola. This does not establish crane-assisted worm collection.
+- [Fujifilm instant-camera construction](https://www.instax.com/mini99/en/):
+  compact body, lens, viewfinder, flash and film ejection. Drawings are original
+  and unbranded, not replicas or endorsements.
+- [Petzl AVAO construction](https://www.petzl.com/US/en/Professional/Harnesses/AVAO-International-Version):
+  webbing, pads, adjustment buckles and attachment rings.
+
+Three CC0 recordings supply the lifting motor, SLR shutter and instant-camera
+mechanism. Sources, file hashes and excerpt boundaries are in
+`game-of-worms/assets/audio/SOURCES.md`. They are illustrative foley, not audio
+recorded at this observatory. No animal call or biological claim is added.
+
+Camera and harness nodes remain interactive inside body-relative carriers.
+Drag, keyboard movement, size changes, Home and accessory toggles work during
+the ride. A camera adjustment stops only that camera's current shot. Starting
+photography leaves the lift running, including its motor sound. Both camera
+actions can finish after the basket returns. Visitor-owned sizes and positions
+survive the trip. The approved drawings, forest painting and labels are unchanged.
+Camera hit areas stay at least 44 px while moving. Harness targets keep a 24 px
+minimum to avoid covering the male camera on narrow screens.
+
+Escape, viewport resize, scene changes and leaving the visible page stop all
+motion and sound, remove temporary carriers and restore original styles/poses.
+Reduced motion skips the lift and shows a still instant print.
+Sounds are gesture-triggered and lazy-loaded, with one bounded voice per recording.
+Loading failures remain silent without blocking the visual action.
+
+### Verification state
+
+Focused timeline, paired-art, origin, lifecycle, audio-loading and cancellation
+tests pass in `scripts/check-queensland-canopy.cjs`. Existing label and fresh-visit
+tests pass. Browser refinement found and corrected a transform-origin offset on
+the male harness, a detached ring, basket/tail overlap and a too-small print.
+Normal responsive views were inspected at 360, 768, 1024 and 1440 px.
+The shared basket ride and the enlarged instant print were inspected on a phone
+width and on desktop. Keyboard activation, pointer activation, switching from
+photography to the lift, Escape cancellation, Home, resizing and scene changes
+were checked. The instant camera kept its 110% visitor size after cancellation.
+Scene changes removed the effects/cable and left both original bodies visible.
+No browser errors or horizontal document overflow were observed.
+
+The combined-interaction follow-up was checked at the same four widths. Both
+cameras operated during ascent, including a direct tap on the male camera.
+Harness dragging, arrow-key positioning, the size slider, Home and off/on toggles
+left the ride running. A 110% male harness size and a 4-unit primary offset
+persisted after automatic landing. A late shot continued after the lift ended.
+The 360 px check found a harness hit area blocking the male camera, now corrected.
+Matrix tests cover rotated parents, male/female scale and exact neutral return.
+Audio tests verify three bounded channels and independent stopping.
+
+Uncropped full-page captures ran from the top through the notes/footer at all
+four widths. The capture backend returned 345 x 2473, 753 x 2399,
+1009 x 1849 and 1425 x 1928 pixels respectively. Each excludes the 15 px
+vertical scrollbar. Captures also differ from normal viewport framing at the
+right edge, most visibly on the phone. They are not exact-width responsive
+proofs and do not replace the normal viewport checks. This limitation was
+disclosed with the final approval request. The follow-up captures returned the
+same dimensions. Full-page capture also interrupts a running ride through its
+viewport-resize event, so normal viewport captures document the combined action.
+
+The Game has a single fixed light palette. No separate dark theme was added.
+Reduced-motion timelines are unit-tested, but browser emulation and physical
+devices/Safari remain unverified. Subjective listening needs the user's check.
+Martyna approved deployment on 2026-09-13 of the exact current drawings, interactions,
+recorded sounds and these intentionally English-only labels:
+`Canopy lift`, `Forest photography`, `Safety harnesses`, `Camera`,
+`Instant camera` and `Safety harness`. No collection copy changed.
+The approved production drawings and audio are unchanged. Publication and
+exact live-file verification follow this approval.
+
+### Scoped file inventory
+
+Created: `game-of-worms/queensland-art.js`, `queensland-play.js`,
+`queensland-sound.js`, the three `assets/audio/queensland-*.mp3` recordings,
+and `scripts/check-queensland-canopy.cjs`.
+
+Changed: `game-of-worms/accessory-designs.js`, `game.js`, `index.html`,
+`assets/audio/SOURCES.md`, this research dossier, the art catalogue, scene
+review queue and `PROJECT_STATUS.md`. No files deleted. No background asset,
+homepage, Cabinet file or collection text changed. Unrelated changes in the
+main checkout were left untouched. Work is on `codex/queensland-canopy`.
 
 ## Purpose
 
