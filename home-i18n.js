@@ -3,7 +3,7 @@
 
   var localizedElementMap = {
     "skip": ".skip-link",
-    "menu": "#navMenuToggle",
+    "menu": "#navMenuToggle .nav-menu-label",
     "nav_about": "#primaryNav a[href=\"#about\"]",
     "nav_research": "#primaryNav a[href=\"#research\"]",
     "nav_publications": "#primaryNav a[href=\"#publications\"]",
@@ -153,7 +153,7 @@
           "project_3_alt": "Riktningar för experimentellt urval på kroppsmassa hos hanar och honor av fröbaggar i släktet Callosobruchus: små hanar, stora hanar, stora honor och sexuellt antagonistiskt urval",
           "contact_alt": "Uppsala domkyrka i solnedgång, speglad i Fyrisån",
           "skip": "Hoppa till huvudinnehållet",
-          "menu": "☰ Meny",
+          "menu": "Meny",
           "nav_about": "Om mig",
           "nav_research": "Forskning",
           "nav_publications": "Publikationer",
@@ -234,7 +234,7 @@
           "project_3_alt": "Kierunki doboru eksperymentalnego pod względem masy ciała samców i samic strąkowców z rodzaju Callosobruchus: małe samce, duże samce, duże samice oraz dobór o przeciwnych skutkach dla samców i samic",
           "contact_alt": "Katedra w Uppsali o zachodzie słońca, odbijająca się w rzece",
           "skip": "Przejdź do głównej treści",
-          "menu": "☰ Menu",
+          "menu": "Menu",
           "nav_about": "O mnie",
           "nav_research": "Badania",
           "nav_publications": "Publikacje",
