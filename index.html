@@ -192,7 +192,7 @@
       html:not([data-theme]) .nav-monogram__asset--dark { display: block; }
     }
     .nav-monogram:hover { color: var(--accent); text-decoration: none; }
-    @media (max-width: 419.98px) { .nav-monogram { display: none; } }
+    @media (max-width: 359.98px) { .nav-monogram { display: none; } }
     .nav-links {
       display: flex; align-items: center; justify-content: flex-end;
       flex: 0 0 auto; gap: 20px; min-width: 0; margin-left: auto;
@@ -461,6 +461,9 @@
     html[data-nav-layout="compact"] .nav-inner {
       height: auto; min-height: 78px; flex-wrap: wrap;
       gap: 8px 10px; padding-top: 10px; padding-bottom: 10px;
+    }
+    @media (min-width: 360px) and (max-width: 419.98px) {
+      html[data-nav-layout="compact"] .nav-inner { column-gap: 6px; }
     }
     html[data-nav-layout="compact"] .nav-actions { margin-left: auto; }
     html[data-nav-layout="compact"] .nav-menu-btn { display: inline-flex; margin-left: 0; }
