@@ -1809,6 +1809,9 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 }
 .accessory-piece:focus .af16-kite-flight,
 .accessory-piece:focus .af16-kite-paper-motion { animation-play-state: paused; }
+/* Leave the foreground soil visible while either worm is working there. */
+.habitat[data-ahmedabad-grounded] .scene-name,
+.habitat[data-ahmedabad-grounded] .worm-name-tag { opacity: 0; }
 .ahmedabad-af16-accessory {
   --af16-ink: #263b55;
   --af16-indigo: #4654a3;

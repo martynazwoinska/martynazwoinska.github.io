@@ -33,19 +33,26 @@ const fs=require('node:fs');
   const toggle=game.slice(game.indexOf('function toggleAccessory'),game.indexOf('function syncAccessories'));
   assert.match(toggle,/if \(!els.habitat.querySelector\("\.ahmedabad-af16-accessory"\)\) ahmedabadHands.clear/,'Enabling a tool leaves Ahmedabad poses intact');
   assert.deepEqual(offsets(),{reel:80});
+  const hands=fs.readFileSync(path.join(__dirname,'../game-of-worms/ahmedabad-hands.js'),'utf8');
+  assert.match(hands,/toggleAttribute\('data-ahmedabad-grounded'.*entry.pose.soil>\.01/,'Labels clear the work area through the full digging-to-kite handoff');
+  assert.match(hands,/removeAttribute\('data-ahmedabad-grounded'\)/,'Scene changes restore normal label visibility');
   assert.deepEqual(offsets(true),{reel:120});
   for(const width of [288,345,520,724,920])for(const top of [-300,0,750])for(const male of [false,true]) {
     const scene={left:37,top,width,height:width*430/600};
     const floor=Math.min(scene.height*.88,scene.height-40);
-    for(const bottom of [.40,.65,.96]) {
-      const body={left:scene.left+width*.22,bottom:top+scene.height*bottom,width:width*(male?.20:.45)};
+    for(const bottom of [.40,.65,.96])for(const scale of [.65,1,1.6]) {
+      const body={left:scene.left+width*.22,bottom:top+scene.height*bottom,width:width*(male?.20:.45)*scale};
       const p=placement(scene,body,male);
       assert(Object.values(p).every(Number.isFinite));
       assert(Math.abs(body.bottom+p.y-(top+floor))<1e-9,'Body reaches the foreground regardless of starting height');
       assert(scene.height-floor>=40,'Keep a phone-sized clearance above the location label');
       assert(Math.abs(body.left+p.x-(scene.left+width*(male?.13:.40)))<1e-9,'Distinct working lanes');
-      assert(p.soilX>=scene.left+width*.30&&p.soilX<=scene.left+width*.82);
-      assert.equal(p.soilY,top+floor-scene.height*.025,'Blade contact remains on soil above the labels');
+      assert.equal(p.soilX,scene.left+width*(male?.40:.67),'Separate blade targets stay inside the brown soil, away from the stone steps');
+      assert.equal(p.soilY,top+scene.height*.90,'Blade contact stays below the paving on phones and desktops');
+      assert(p.soilY>top+scene.height*.82,'Label clearance must never pull the blade onto the paving');
+      const moved=placement(scene,{...body,left:body.left+width*.2,bottom:body.bottom-scene.height*.3},male);
+      assert.equal(moved.soilX,p.soilX,'Dragging and resizing cannot move the digging site off the soil');
+      assert.equal(moved.soilY,p.soilY);
       assert.equal(placement(scene,{...body,left:body.left+p.x,bottom:body.bottom+p.y},male).y,0,'Grounding does not accumulate on replay');
     }
   }

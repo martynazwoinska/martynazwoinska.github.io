@@ -51,14 +51,16 @@ export function ahmedabadHandoff(from,to,pickup) {
 }
 
 export function ahmedabadDiggingPlacement(scene,body,male=false) {
-  // Separate working lanes on the painted foreground soil, above both labels.
+  // Keep bodies clear of the labels, but aim the blades at the painted soil.
+  // The brown foreground starts below the paving at roughly 82% scene height.
+  // Contact points must not rise with the phone label clearance or prop scale.
   const left=scene.left+scene.width*(male?.13:.40);
   const floor=Math.min(scene.height*.88,scene.height-40);
   return {
     x:left-body.left,
     y:scene.top+floor-body.bottom,
-    soilX:Math.max(scene.left+scene.width*.30,Math.min(scene.left+scene.width*.82,left+body.width*(male?1.02:.82))),
-    soilY:scene.top+floor-scene.height*.025
+    soilX:scene.left+scene.width*(male?.40:.67),
+    soilY:scene.top+scene.height*.90
   };
 }
 
@@ -128,6 +130,7 @@ export function createAhmedabadHands(habitat) {
   }
   function clear() {
     stopMotion();cancelAnimationFrame(frame);frame=0;
+    habitat.removeAttribute('data-ahmedabad-grounded');
     for(const entry of modes.values())restore(entry);
     modes.clear();for(const mark of marks.values())mark.remove();marks.clear();root=null;
   }
@@ -318,6 +321,7 @@ export function createAhmedabadHands(habitat) {
         stopMotion();
       }
     }
+    habitat.toggleAttribute('data-ahmedabad-grounded',[...modes.values()].some(entry=>entry.pose.soil>.01));
     if(modes.size)frame=requestAnimationFrame(tick);
   }
   function cancel() { clear();sync(); }
