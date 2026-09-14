@@ -1,5 +1,13 @@
 # Game of Worms art catalogue
 
+Panama worker variation, deployment approved, 2026-09-14: successive leaf pieces
+have individual ant carriers with different body/head proportions, sizes,
+leg reach, walking rhythms and antenna motion. All retain the existing
+worker anatomy and common brown palette. Gentle curved routes differ in
+approach and exit, with the body following the tangent and the cut fragment
+remaining attached to the mandibles. No accessory family, label, sound,
+landscape or collection claim changed. Details: the Barro Colorado dossier.
+
 São Tomé JU2484 local follow-up, 2026-09-13: the snail starts at x=130
 instead of 210, with the fallen leaf separated at x=320. Leaf hats replace
 the active stained-glass parasols. The female has a broad folded leaf hat

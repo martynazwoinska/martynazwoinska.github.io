@@ -8,7 +8,7 @@ const clamp=x=>Math.max(0,Math.min(1,x));
 const ease=x=>{x=clamp(x);return x*x*(3-2*x);};
 const whole='M-64 0C-34-40 0-46 32-25Q58-15 78 0Q58 16 32 25C0 46-35 34-64 0Z';
 const remainder='M-64 0C-34-40 0-46 32-25V25C0 46-35 34-64 0Z';
-let clipSerial=0;
+let clipSerial=0,antSerial=0;
 const cutEdges=[78,32,4,-24];
 // Intersect the existing leaf's two curved edges, preserving its original drawing.
 export function leafCutSection(count=0){
@@ -73,24 +73,60 @@ export function drawLeafCutting(g,male){
   p(scissors,'M-3 2L3-2','none','#f8f4dc',1.5);
 }
 
-export function drawLeafAnt(g){
-  const ant=add(g,'g',{'data-leaf-ant':''});
+// Small individual differences within one worker-ant palette, not colour-coded types.
+export function leafAntVisitor(index=0){
+  const fraction=n=>n-Math.floor(n),pick=(step,offset=0)=>fraction(index*step+offset);
+  return {index,scale:.62+.19*pick(.618034,.2),
+    headWidth:.88+.25*pick(.414214,.8),headHeight:.94+.13*pick(.732051,.2),
+    gasterWidth:.86+.28*pick(.236068,.3),gasterHeight:.92+.17*pick(.645751,.7),
+    legReach:.88+.23*pick(.316625,.4),stride:.023+.007*pick(.44949,.6),
+    phase:index*1.73,entryY:-13+26*pick(.618034,.1),exitY:-10+33*pick(.414214,.65),
+    entryX:86+25*pick(.732051,.4),exitX:139+23*pick(.236068,.8),
+    arrivalDelay:-90+160*pick(.645751,.2),carryDuration:1860+280*pick(.316625,.8)};
+}
+
+export function leafAntPose(ms,visitor,dropped={x:30,y:277}){
+  const grip={x:27+12*visitor.headWidth,y:-16+5*visitor.headHeight};
+  // Meet the fallen piece with the mandibles, irrespective of head or body size.
+  const pickup={x:dropped.x+grip.x*visitor.scale,y:dropped.y-grip.y*visitor.scale};
+  const approach=ease((ms-1900-visitor.arrivalDelay)/(1150-visitor.arrivalDelay));
+  const carry=ease((ms-3280)/visitor.carryDuration);
+  const start={x:pickup.x+visitor.entryX,y:pickup.y+visitor.entryY};
+  const end={x:pickup.x-visitor.exitX,y:pickup.y+visitor.exitY};
+  const outbound=ms>=3280,q=outbound?carry:approach;
+  const [a,b,c,d]=outbound
+    ?[pickup,{x:pickup.x-38,y:pickup.y},{x:end.x+43,y:end.y},end]
+    :[start,{x:start.x-32,y:start.y},{x:pickup.x+30,y:pickup.y},pickup];
+  const value=k=>(1-q)**3*a[k]+3*(1-q)**2*q*b[k]+3*(1-q)*q*q*c[k]+q**3*d[k];
+  const tangent=k=>3*(1-q)**2*(b[k]-a[k])+6*(1-q)*q*(c[k]-b[k])+3*q*q*(d[k]-c[k]);
+  const walking=Math.sin(q*Math.PI);
+  return {x:value('x'),y:value('y')+Math.sin(ms*visitor.stride+visitor.phase)*.35*walking,
+    angle:Math.atan2(-tangent('y'),-tangent('x'))*180/Math.PI,
+    walking,grip,approach,carry};
+}
+
+export function drawLeafAnt(g,visitor=leafAntVisitor()){
+  const ant=add(g,'g',{'data-leaf-ant':'','data-ant-visitor':visitor.index});
   const legs=[];
   // Three far legs, then the body, then three near legs. Every leg has two joints.
   const drawLegs=far=>{for(let i=0;i<3;i++)legs.push({node:p(ant,'','none',far?'#6e4435':'#a46a46',far?1.35:1.7),i,far});};
   drawLegs(true);
-  e(ant,-17,-9,9,6,'#704435','#432e28',1.2);
-  p(ant,'M-24-11Q-20-16-15-13','none','#b68057',1.1);
+  const gaster=add(ant,'g',{'data-ant-gaster':'',
+    transform:`translate(-9 -9) scale(${visitor.gasterWidth} ${visitor.gasterHeight}) translate(9 9)`});
+  e(gaster,-17,-9,9,6,'#704435','#432e28',1.2);
+  p(gaster,'M-24-11Q-20-16-15-13','none','#b68057',1.1);
   e(ant,-6,-10,2.6,2.8,'#a66a46','#59372c',1);
   e(ant,-1,-11,2.6,2.8,'#a66a46','#59372c',1);
   p(ant,'M1-9Q0-16 4-18L7-22L8-17L13-19L14-24L16-18Q22-14 18-9Z','#ae7048','#59372c',1.2);
-  p(ant,'M18-13C15-20 19-27 26-26Q36-25 36-17Q37-9 29-7Q20-7 18-13Z','#b9784b','#59372c',1.3);
-  p(ant,'M21-22Q25-26 31-22','none','#dfaa70',1.1);
-  e(ant,30,-20,1.6,2.2,'#302b26','none');
-  p(ant,'M34-15L42-12L36-9L32-11M34-10L40-7L34-6','none','#674131',1.5);
-  p(ant,'M28-24L33-33L42-34M23-24L23-34L32-40','none','#a36d47',1.4);
+  const head=add(ant,'g',{'data-ant-head':'',
+    transform:`translate(27 -16) scale(${visitor.headWidth} ${visitor.headHeight}) translate(-27 16)`});
+  p(head,'M18-13C15-20 19-27 26-26Q36-25 36-17Q37-9 29-7Q20-7 18-13Z','#b9784b','#59372c',1.3);
+  p(head,'M21-22Q25-26 31-22','none','#dfaa70',1.1);
+  e(head,30,-20,1.6,2.2,'#302b26','none');
+  p(head,'M34-15L42-12L36-9L32-11M34-10L40-7L34-6','none','#674131',1.5);
+  const feelers=p(head,'M28-24L33-33L42-34M23-24L23-34L32-40','none','#a36d47',1.4);
   drawLegs(false);
-  return {ant,legs};
+  return {ant,legs,feelers};
 }
 
 export function leafCutFrame(ms,reduced=false){
@@ -142,7 +178,8 @@ export function createLeafCutRun({habitat,root,effects,remember,pin,reduced,snip
   for(const key of ['data-leaf-tip','data-leaf-outline'])fragment.querySelector(`[${key}]`)?.removeAttribute(key);
   cutout.appendChild(fragment);p(cutout,cutEdgePath(section),'none',green,1.5);
   if(cutCount)p(cutout,cutEdgePath(leafCutSection(cutCount-1)),'none',green,1.5);
-  const {ant,legs}=drawLeafAnt(effects);ant.setAttribute('opacity',0);
+  const visitor=leafAntVisitor(antSerial++);
+  const {ant,legs,feelers}=drawLeafAnt(effects,visitor);ant.setAttribute('opacity',0);
   const bodies=[habitat.querySelector('#primary-worm .worm-body'),habitat.querySelector('#companion-worm .companion-body')];
   const arms=[0,0,1].map((body,i)=>({body,i,line:p(effects,'','#85bdb4','#427b7b',.85),light:p(effects,'','none','#b5ded5',body?1:1.6),hand:add(effects,'g')}));
   for(const arm of arms){p(arm.hand,'M-5-3Q-6-7-2-6L5-4Q8-2 6 2L3 6Q-1 7-4 3L-6 1Q-9-3-6-4Z','#fff0d8','#618d85',1);p(arm.hand,'M1-3L-1 1M4-1L2 3','none','#b3a88a',.65);}
@@ -161,21 +198,26 @@ export function createLeafCutRun({habitat,root,effects,remember,pin,reduced,snip
       showLeafCuts(leaf,cutCount+(s.cut?1:0));
       leaf.setAttribute('transform',leafParent.multiply(originalLeaf).toString());
       const opacity=reduced?0:1-s.returning;
-      const antScale=.7;
-      const antX=dropped.x+95*(1-s.approach)-145*s.carry;
-      const antY=dropped.y+16+22*s.carry;
-      ant.setAttribute('transform',`translate(${antX} ${antY+(s.approach>0?Math.sin(ms*.026)*.45:0)}) scale(${-antScale} ${antScale})`);
-      ant.setAttribute('opacity',ms>=1900?opacity*ease((ms-1900)/180):0);
-      for(const {node,i,far} of legs){const wave=Math.sin(ms*.026+i*Math.PI*.67+(far?Math.PI:0))*(s.approach<1||s.carry>0?5:0),x=4+i*5;node.setAttribute('d',`M${x} -10L${x-11+i*8+wave} -3L${x-16+i*12-wave} ${far?-1:4}`);}
+      const pose=leafAntPose(ms,visitor,dropped),antScale=visitor.scale;
+      const antMatrix=new DOMMatrix().translate(pose.x,pose.y).rotate(pose.angle).scale(-antScale,antScale);
+      ant.setAttribute('transform',antMatrix.toString());
+      ant.setAttribute('opacity',opacity*ease((ms-1900-visitor.arrivalDelay)/180));
+      for(const {node,i,far} of legs){
+        const wave=Math.sin(ms*visitor.stride+visitor.phase+i*Math.PI+(far?Math.PI:0))*5*pose.walking,x=4+i*5;
+        node.setAttribute('d',`M${x} -10L${x+(-11+i*8)*visitor.legReach+wave} -3L${x+(-16+i*12)*visitor.legReach-wave} ${far?-1:4}`);
+      }
+      const feel=Math.sin(ms*.006+visitor.phase)*2.4;
+      feelers.setAttribute('d',`M28-24L${33+feel*.3}-33L${42+feel} ${-34+feel*.4}M23-24L23 ${-34-feel*.35}L${32-feel} ${-40-feel*.4}`);
       if(s.cut){
         cutout.setAttribute('opacity',reduced?0:opacity);
-        const catchPoint={x:antX-39*antScale,y:antY-11*antScale};
+        const catchPoint=new DOMPoint(pose.grip.x,pose.grip.y).matrixTransform(antMatrix);
         const pickup=ease((ms-3050)/230);
         const dropX=contact.x+(dropped.x-contact.x)*s.fall,dropY=contact.y+(dropped.y-contact.y)*s.fall;
         const x=dropX+(catchPoint.x-dropX)*pickup,y=dropY+(catchPoint.y-dropY)*pickup;
         const leafAngle=Math.atan2(originalLeaf.b,originalLeaf.a)*180/Math.PI;
         const scale=Math.hypot(originalLeaf.a,originalLeaf.b);
-        cutout.setAttribute('transform',`translate(${x} ${y}) rotate(${leafAngle+(38+Math.sin(ms*.009)*7)*s.fall-102*pickup}) scale(${scale}) translate(${-section.x} 0)`);
+        const leafRock=Math.sin(ms*visitor.stride*.5+visitor.phase)*4*pose.walking*pickup;
+        cutout.setAttribute('transform',`translate(${x} ${y}) rotate(${leafAngle+38*s.fall+(-102+pose.angle)*pickup+leafRock}) scale(${scale}) translate(${-section.x} 0)`);
       }
       arms.forEach(arm=>{
         const from=point(bodies[arm.body],arm.i===1?280:301,arm.i===1?112:97);

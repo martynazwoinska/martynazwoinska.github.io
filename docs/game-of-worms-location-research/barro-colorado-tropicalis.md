@@ -2,6 +2,39 @@
 
 Last updated: 2026-08-23
 
+## Individual ant visitors, deployment approved, 2026-09-14
+
+Every successive cut receives a worker with a different size, head/gaster
+proportion, leg reach, stride rhythm and antenna phase. The common warm
+brown palette and six-legged anatomy remain consistent. Visitor selection
+continues across replacement leaves and Home resets instead of restarting
+the same three ants.
+
+Slightly different curved approaches and exits stay on the forest floor.
+Each ant turns along its path, pauses with its mandibles exactly at the
+fallen piece, then carries it away. The first browser review led to a
+carrying refinement: the fragment stays still on the ground and rocks
+gently with its particular carrier's gait after pickup.
+
+No public text, sounds, other accessories or background changed.
+Tests cover 60 distinct shapes and routes, six legs per worker, bounded
+ground-level motion, exact pickup, successive cuts, queued taps, reset,
+cancellation, accessory scaling and reduced motion.
+
+Normal browser views checked at 360, 768, 1024 and 1440 px, including
+pointer/keyboard activation, three queued cuts and Home during collection.
+No horizontal overflow or browser console errors.
+Full-page attempts remain affected by the known half-scale/duplicated-section
+capture defect. Dimensions: 345 × 2483, 753 × 2399, 1009 × 1801 and
+1425 × 1928 pixels. These are not valid full-page proofs.
+Martyna approved this exact preview for deployment on 2026-09-14.
+The drawing, routes and timing are unchanged during publication preparation.
+
+Nine existing files changed: the leaf-cutting module, its controller and
+renderer imports, the accessory catalogue import, Game entry point and HTML
+cache reference, the leaf-cutting test, this dossier and the art catalogue.
+No files added or deleted. Publication is verified separately after pushing.
+
 ## Current fan replacement, 2026-09-08
 
 The active third family is now `qg2726-leaf-cutting`, replacing the historical

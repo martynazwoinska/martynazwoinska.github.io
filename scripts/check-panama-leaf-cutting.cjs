@@ -46,6 +46,32 @@ function validatePaths(root){
   for(let ms=0;ms<=5700;ms+=10){const s=mod.leafCutFrame(ms);assert(Object.values(s).every(v=>typeof v==='boolean'||Number.isFinite(v)));if(ms<1380)assert(!s.cut);if(ms<3280)assert.equal(s.carry,0);}
   assert(mod.leafCutFrame(5700).done);assert.equal(mod.leafCutFrame(900,true).done,true);assert.equal(mod.leafCutFrame(400,true).carry,0);
   assert.equal(mod.leafSnipAt,1285,'Recorded blade friction begins before full closure');
+  const visitors=Array.from({length:60},(_,i)=>mod.leafAntVisitor(i));
+  assert.equal(new Set(visitors.map(v=>JSON.stringify(v))).size,60);
+  const routes=new Set(),shapes=new Set();
+  for(const visitor of visitors){
+    assert(visitor.scale>=.62&&visitor.scale<=.81);
+    assert(visitor.headWidth>=.88&&visitor.headWidth<=1.13);
+    const art=new Element('g'),ant=mod.drawLeafAnt(art,visitor);
+    assert.equal(ant.legs.length,6);assert.equal(ant.legs.filter(l=>l.far).length,3);
+    shapes.add(art.querySelector('[data-ant-head]').getAttribute('transform')+' '+art.querySelector('[data-ant-gaster]').getAttribute('transform'));
+    routes.add(JSON.stringify(mod.leafAntPose(4200,visitor)));
+    let lastX=Infinity;
+    for(let ms=1700;ms<5600;ms+=20){
+      const pose=mod.leafAntPose(ms,visitor);
+      assert(Number.isFinite(pose.x)&&Number.isFinite(pose.y)&&Number.isFinite(pose.angle));
+      assert(pose.x<=lastX+1e-8,'Visitors always walk forwards');lastX=pose.x;
+      assert(Math.abs(pose.angle)<20,'Gentle turns follow the floor');
+      assert(pose.y>260&&pose.y<315,'Every route stays near the soil');
+    }
+    for(const ms of [3050,3160,3280]){
+      const pose=mod.leafAntPose(ms,visitor);
+      const matrix=new Matrix().translate(pose.x,pose.y).rotate(pose.angle).scale(-visitor.scale,visitor.scale);
+      const grip=new DOMPoint(pose.grip.x,pose.grip.y).matrixTransform(matrix);
+      assert(Math.abs(grip.x-30)<1e-8&&Math.abs(grip.y-277)<1e-8,'Every size meets the same leaf with its mandibles');
+    }
+  }
+  assert.equal(shapes.size,60);assert.equal(routes.size,60);
   for(const extraScale of [.65,1,1.6]){
     const root=new Element('g'),pieces=[];
     for(const [male,transform]of [[false,`translate(231 31) rotate(150) scale(${.55*extraScale})`],[true,'translate(156 58) rotate(-18) scale(.56)']]){
@@ -56,7 +82,7 @@ function validatePaths(root){
     const bodies=[new Element('g'),new Element('g')];bodies[1].setAttribute('transform','translate(-28 82) scale(.43)');
     const habitat={querySelectorAll:q=>root.querySelectorAll(q),querySelector:q=>q==='#worm-species'?root:q.includes('#primary-worm')?bodies[0]:q.includes('#companion-worm')?bodies[1]:root.querySelector(q)};
     const leaf=root.querySelector('[data-panama-leaf]');
-    let previousAnt=null;
+    let previousAnt=null,previousVisitor=null;
     for(let attempt=0;attempt<5;attempt++){
       const effects=root.appendChild(new Element('g')),saved=new Map();let sounds=0;
       const remember=(n,keys=['transform'])=>{if(!saved.has(n))saved.set(n,Object.fromEntries(keys.map(k=>[k,n.getAttribute(k)])));};
@@ -68,6 +94,8 @@ function validatePaths(root){
       assert.equal(sounds,1);
       const ant=effects.querySelector('[data-leaf-ant]');
       assert(ant&&ant!==previousAnt,'A fresh ant collects each successive section');previousAnt=ant;
+      assert.notEqual(ant.getAttribute('data-ant-visitor'),previousVisitor,'New leaves do not restart the same visitor');
+      previousVisitor=ant.getAttribute('data-ant-visitor');
       assert.equal(effects.querySelectorAll('[data-leaf-ant]').length,1);
       assert.equal(ant.querySelectorAll('[data-scissor-half]').length,0);
       assert(run.frame(5700));restore();run.finish();
@@ -104,5 +132,5 @@ function validatePaths(root){
   }
   const antRoot=new Element('g');const ant=mod.drawLeafAnt(antRoot);assert.equal(ant.legs.length,6);assert.equal(ant.legs.filter(l=>l.far).length,3);
   const catalogue=fs.readFileSync(path.join(__dirname,'../game-of-worms/accessory-designs.js'),'utf8');assert.match(catalogue,/"Leaf cutting", "qg2726-leaf-cutting"/);assert(!catalogue.split('const catalogueByKey')[0].includes('forest-census map fans'));
-  console.log('Leaf cutting: successive sections, fresh ants, queued taps, replenishment, cancellation, preserved scales, one snip per cut, valid paths and reduced motion pass.');
+  console.log('Leaf cutting: 60 distinct worker shapes/routes, six legs, ground-level paths, exact mandible pickup, successive sections, queued taps, cancellation, preserved scales, sound and reduced motion pass.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
