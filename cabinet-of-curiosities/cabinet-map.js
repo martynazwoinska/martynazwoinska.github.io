@@ -19,7 +19,7 @@
   dialog.id = 'chocolate-map-dialog'; dialog.className = 'chocolate-map-dialog';
   dialog.setAttribute('aria-labelledby', 'chocolate-map-title');
   dialog.innerHTML = `
-    <div class="map-heading"><h2 id="chocolate-map-title">Uppsala, in chocolate</h2><button type="button" class="map-close" autofocus>Close</button></div>
+    <div class="map-heading"><h2 id="chocolate-map-title">Chocolate maps</h2><button type="button" class="map-close" autofocus>Close</button></div>
     <p class="map-disclaimer map-introduction">A personal guide to chocolate in Uppsala and online, with a focus on bean-to-bar and tree-to-bar producers. Bean-to-bar makers turn cocoa beans into chocolate. Tree-to-bar producers also grow the cacao. Others work with couverture, chocolate already made by another producer, which they temper, mould or combine with other ingredients.</p>
     <p class="map-disclaimer map-introduction">While I focus on bean-to-bar and tree-to-bar brands, I occasionally include others that use high-quality couverture but not those using standard industrial couverture. Some brands use different approaches across their range: Malmö Chokladfabrik, for example, makes some products bean-to-bar (their craft range) and others with chocolate made by other producers.</p>
     <div class="map-groups" role="group" aria-label="Shop categories"><button type="button" data-group="uppsala" aria-pressed="true">In Uppsala</button><button type="button" data-group="online" aria-pressed="false">Online shops</button><button type="button" data-group="makers" aria-pressed="false">Swedish makers</button></div>
@@ -27,12 +27,20 @@
     <div class="map-picker"><label for="map-select">Choose a shop</label><select id="map-select" class="map-select"></select></div>
     <p class="map-disclaimer map-makers-credit" hidden>With thanks to <a href="https://www.chokladakademien.org/hantverkschoklad2/" target="_blank" rel="noopener noreferrer">Chokladakademien</a> for the maker directory.</p>
     <div class="map-layout"><div class="map-canvas"><div class="map-frame"></div><p class="map-attribution">Map and coordinates © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> <a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noopener noreferrer">ODbL</a></p><p class="map-disclaimer">Select a numbered pin or choose a shop. Brands and availability can vary by branch.</p></div>
-    <section class="map-details" aria-label="Selected shop"><h3 class="map-place-name"></h3><p class="map-address"></p><p class="map-selection"></p><p class="map-caution" hidden></p><div class="map-links"></div></section></div>`;
+    <div class="map-maker-canvas" hidden><div class="map-frame map-maker-frame"></div><p class="map-attribution">Map and coordinates © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> <a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noopener noreferrer">ODbL</a></p><p class="map-disclaimer">Pins show towns or areas, not exact factory addresses.</p></div>
+    <section class="map-details" aria-label="Selected shop"><h3 class="map-place-name"></h3><p class="map-address"></p><p class="map-maker-town" hidden></p><p class="map-selection"></p><p class="map-caution" hidden></p><div class="map-links"></div></section></div>`;
   document.querySelector('main').append(dialog);
   const $ = s => dialog.querySelector(s);
   const select = $('.map-select');
   const physical = places.filter(p=>p.group==='uppsala');
   const shopMap=window.createCabinetShopMap($('.map-frame'),physical,id=>{select.value=id;showPlace();});
+  const makerLocations = window.CABINET_MAKER_LOCATIONS || {};
+  const makers = places.filter(p=>p.group==='makers').sort((a,b)=>a.name.localeCompare(b.name,'sv'));
+  const mappedMakers = makers.filter(p=>makerLocations[p.id]).map((p,i)=>({...p,...makerLocations[p.id],number:i+1}));
+  const makerMap = window.createCabinetShopMap($('.map-maker-frame'),mappedMakers,id=>{select.value=id;showPlace();}, {
+    minZoom:3, maxZoom:10, padding:{x:72,y:120}, revealSelection:true, clusters:true,
+    fitLabel:'All makers', label:'Map of Swedish chocolate makers. Pins show towns or areas. Use arrow keys to pan, plus and minus to zoom.'
+  });
   let current = places[0]; let group = 'uppsala'; let region = 'sweden';
   const remembered = {};
   const selectionKey = () => group === 'online' ? 'online:'+region : group;
@@ -45,6 +53,9 @@
     remembered[selectionKey()] = current.id;
     $('.map-place-name').textContent = group === 'online' ? (current.onlineName || current.name) : current.name;
     $('.map-address').textContent = group === 'uppsala' ? current.address : (group === 'online' ? (current.country || 'Sweden') : current.makerType);
+    const makerTown = group === 'makers' ? makerLocations[current.id]?.town : '';
+    $('.map-maker-town').textContent = makerTown || '';
+    $('.map-maker-town').hidden = !makerTown;
     $('.map-selection').textContent = current.brands?.length ? 'Brands sold: '+current.brands.join(', ')+'.' : (current.selection || '');
     $('.map-selection').hidden = !$('.map-selection').textContent;
     $('.map-caution').hidden = !current.publicNote; $('.map-caution').textContent = current.publicNote || '';
@@ -60,21 +71,26 @@
       link('Open location', `https://www.openstreetmap.org/node/${current.node}`);
       shopMap.select(current.id);
     }
+    if (group === 'makers') makerMap.select(current.id);
   }
   function setGroup(next) {
     group = next;
     dialog.querySelectorAll('[data-group]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.group === group)));
-    $('.map-canvas').hidden = group !== 'uppsala'; $('.map-layout').classList.toggle('is-online', group !== 'uppsala');
+    $('.map-canvas').hidden = group !== 'uppsala'; $('.map-layout').classList.toggle('is-online', group === 'online');
+    $('.map-maker-canvas').hidden = group !== 'makers';
+    $('.map-picker label').textContent = group === 'makers' ? 'Choose a maker' : 'Choose a shop';
+    $('.map-details').setAttribute('aria-label',group === 'makers' ? 'Selected maker' : 'Selected shop');
     $('.map-makers-credit').hidden = group !== 'makers';
     $('.map-regions').hidden = group !== 'online';
     dialog.querySelectorAll('[data-region]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.region === region)));
     const choices = places.filter(p => group === 'online' ? (p.group === 'online' || (p.onlineName && p.shop)) && (p.region || 'sweden') === region : p.group === group);
     const choiceName = p => group === 'online' ? (p.onlineName || p.name) : p.name;
     if (group === 'makers' || group === 'online') choices.sort((a, b) => choiceName(a).localeCompare(choiceName(b), 'sv'));
-    select.replaceChildren(...choices.map(p => new Option(group === 'uppsala' ? (physical.indexOf(p)+1)+' '+p.name : (group === 'online' ? (p.onlineName || p.name) : p.name),p.id)));
+    select.replaceChildren(...choices.map(p => new Option(group === 'uppsala' ? (physical.indexOf(p)+1)+' '+p.name : (group === 'online' ? (p.onlineName || p.name) : ((mappedMakers.find(m=>m.id===p.id)?.number || '')+' '+p.name).trim()),p.id)));
     if (remembered[selectionKey()]) select.value = remembered[selectionKey()];
     showPlace();
     if (dialog.open && group === 'uppsala') shopMap.show(); else shopMap.hide();
+    if (dialog.open && group === 'makers') makerMap.show(); else makerMap.hide();
   }
   let opening=false, timer=0, stopSound=()=>{};
   let mapTrigger = drawer;
@@ -87,6 +103,7 @@
     opening=false;drawer.removeAttribute('aria-busy');setGroup(group);dialog.showModal();
     drawer.setAttribute('aria-expanded','true');$('.map-close').focus();
     if(group==='uppsala')shopMap.show();
+    if(group==='makers')makerMap.show();
   }
   function creak() {
     // Quiet, original friction sound. Created only inside the initiating click.
@@ -124,12 +141,12 @@
       if (dialog.open) return;
       resetDrawer();
       mapTrigger = button;
-      group = 'uppsala';
+      group = button.dataset.openChocolateMap === 'makers' ? 'makers' : 'uppsala';
       reveal();
     });
   });
   $('.map-close').addEventListener('click',()=>dialog.close());
-  dialog.addEventListener('close',()=>{shopMap.hide();resetDrawer();mapTrigger.focus({preventScroll:true});});
+  dialog.addEventListener('close',()=>{shopMap.hide();makerMap.hide();resetDrawer();mapTrigger.focus({preventScroll:true});});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opening){e.preventDefault();resetDrawer();drawer.focus({preventScroll:true});}});
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&opening)resetDrawer();});
   window.addEventListener('pagehide',resetDrawer);

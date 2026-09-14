@@ -48,5 +48,5 @@ window.CABINET_MAP_PLACES = [
   {id:'ljungbergs', group:'makers', name:'Ljungbergs choklad', makerType:'Bean-to-bar range', url:'https://www.facebook.com/p/Ljungbergs-choklad-100054687433253/', selection:'A maker in Bollebygd with a partly bean-to-bar range.'},
   {id:'lustigbacken', group:'makers', name:'Lustigbacken 3', makerType:'Bean-to-bar', url:'https://www.lb3.se/', selection:'Chocolate made from cocoa beans in Gammelstad, with a small café and shop.'},
   {id:'sthlm-bean-to-bar', group:'makers', name:'Sthlm Bean to Bar', makerType:'Bean-to-bar', url:'http://www.sthlmbeantobar.com/', selection:'Its website offers a 72% dark chocolate made with cocoa from Tumaco, Colombia.'},
-  {id:'tobago-estate', group:'makers', name:'Tobago Cocoa Estate', makerType:'Estate chocolate', url:'https://www.tobagococoa.com/', selection:'Cocoa grown on Tobago, with chocolate made in partnership with the French François Pralus and the Danish Friis-Holm.'}
+  {id:'tobago-estate', group:'makers', name:'Tobago Cocoa Estate', makerType:'Estate chocolate', url:'https://www.tobagococoa.com/', selection:'The marker shows the Small Island Chocolates & Coffee shop in Stockholm. Tobago Cocoa Estate grows cocoa on Tobago, with chocolate produced by François Pralus in France and Friis-Holm in Denmark.'}
 ];
