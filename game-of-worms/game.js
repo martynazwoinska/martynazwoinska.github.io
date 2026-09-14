@@ -16,7 +16,7 @@ import { createNambuccaPlay } from "./nambucca-play.js?v=20260908-nambucca-recor
 import { createDoisRiosPlay } from "./dois-rios-play.js?v=20260908-dois-rios-1";
 import { createPanamaPlay } from "./panama-play.js?v=20260908-snip-2";
 import { launchWormConfetti } from "./worm-celebration.js?v=20260908-celebration-1";
-import { createAhmedabadHands } from "./ahmedabad-hands.js?v=20260908-recorded-dig-1";
+import { createAhmedabadHands } from "./ahmedabad-hands.js?v=20260914-continuous-handoff-1";
 import { createIshigakiInteractions } from "./ishigaki-interactions.js?v=20260907-ishigaki-sound-1";
 import { createCanberraCafe, CAFE_FAMILIES } from "./canberra-cafe.js?v=20260909-cafe-audio-1";
 import { mountLiveLoupes } from "./live-loupes.js?v=20260909-blink-1";
@@ -1385,7 +1385,8 @@ function toggleAccessory(id, force) {
   hcmcPlay.cancel();
   reunionPlay.cancel();
   trivandrumWatering.cancel();
-  ahmedabadHands.clear();
+  // Ahmedabad reconciles its visible tools in sync(), retaining the current pose.
+  if (!els.habitat.querySelector(".ahmedabad-af16-accessory")) ahmedabadHands.clear();
   ishigakiPlay.clear();
   baliCacao.cancel();
   canberraCafe.cancel();
@@ -1569,7 +1570,7 @@ function finishAccessoryDrag(event) {
   });
   piece.classList.remove("is-dragging");
   document.documentElement.classList.remove("accessory-drag-active");
-  moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
+  if (moved || !ahmedabadHands.handles(piece)) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") { baliCacao.drop(piece); claremontPlay.drop(piece); }
@@ -1623,6 +1624,9 @@ function moveActiveAccessoryPointer(event) {
     return;
   }
   if (activeAccessoryDrag.primaryPointerId !== event.pointerId) return;
+  // A small finger wobble is still a tap. Do not reset a digging worm before
+  // pointerup can hand its current pose to the kite animation.
+  if (!activeAccessoryDrag.moved && ahmedabadHands.handles(piece) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)<=6) return;
   if (!activeAccessoryDrag.moved && ahmedabadHands.handles(piece) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>1) {
     ahmedabadHands.reset(piece);
     activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
@@ -1697,7 +1701,7 @@ function wireAccessoryPieces() {
       hcmcPlay.cancel();
       reunionPlay.cancel();
       trivandrumWatering.cancel();
-      if (ahmedabadHands.active) ahmedabadHands.cancel();
+      if (ahmedabadHands.active && !ahmedabadHands.handles(piece)) ahmedabadHands.cancel();
       baliCacao.cancel();
       canberraCafe.cancel();
       ahmedabadFans.cancel();

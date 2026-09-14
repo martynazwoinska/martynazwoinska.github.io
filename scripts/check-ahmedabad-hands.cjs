@@ -1,8 +1,37 @@
 const assert=require('node:assert/strict');
 const {pathToFileURL}=require('node:url');
 const path=require('node:path');
+const fs=require('node:fs');
 (async()=>{
-  const {ahmedabadFrame:frame,ahmedabadReach:reach,ahmedabadDiggingOffsets:offsets,ahmedabadDiggingPlacement:placement}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/ahmedabad-hands.js')));
+  const {ahmedabadFrame:frame,ahmedabadReach:reach,ahmedabadDiggingOffsets:offsets,ahmedabadDiggingPlacement:placement,ahmedabadHandoff:handoff}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/ahmedabad-hands.js')));
+  for(const male of [false,true]) {
+    const digging=Object.freeze({shiftX:male?-75:66,shift:male?280:97,rotation:2.8,reelY:offsets(male).reel,pull:0,angle:24,down:.9,drift:0,soil:1});
+    const flying=Object.freeze({shiftX:0,shift:0,rotation:-.3,reelY:0,pull:.2,angle:0,down:0,drift:0,soil:0});
+    assert.deepEqual(handoff(digging,flying,frame(0,'kite',male).pickup),digging,'No reset on the first kite frame');
+    for(let ms=0;ms<=650;ms+=10) {
+      const pose=handoff(digging,flying,frame(ms,'kite',male).pickup);
+      for(const key of Object.keys(pose)) {
+        assert(Number.isFinite(pose[key]));
+        assert(pose[key]>=Math.min(digging[key],flying[key])-1e-9&&pose[key]<=Math.max(digging[key],flying[key])+1e-9,'No overshoot');
+      }
+      // Repeated taps and reverse handoffs begin at the rendered intermediate pose.
+      assert.deepEqual(handoff(pose,digging,0),pose);
+      assert.deepEqual(handoff(pose,flying,0),pose);
+    }
+    const mid=handoff(digging,flying,.5);
+    assert(mid.shift>0&&mid.shift<digging.shift,'A visible intermediate body position');
+    for(const key of Object.keys(flying))assert(Math.abs(handoff(digging,flying,1)[key]-flying[key])<1e-9);
+    assert.deepEqual(handoff(digging,flying,frame(0,'kite',male,true).pickup),flying,'Reduced motion uses the destination without travel');
+  }
+  const game=fs.readFileSync(path.join(__dirname,'../game-of-worms/game.js'),'utf8');
+  const pointerdown=game.slice(game.indexOf('piece.addEventListener("pointerdown"'),game.indexOf('piece.addEventListener("keydown"'));
+  assert.match(pointerdown,/if \(ahmedabadHands.active && !ahmedabadHands.handles\(piece\)\) ahmedabadHands.cancel\(\)/,'Pointer taps preserve the existing controller');
+  const finish=game.slice(game.indexOf('function finishAccessoryDrag'),game.indexOf('function moveActiveAccessoryPointer'));
+  assert.match(finish,/if \(moved \|\| !ahmedabadHands.handles\(piece\)\) moveAccessory/,'Taps do not re-clamp an animated prop');
+  const drag=game.slice(game.indexOf('function moveActiveAccessoryPointer'),game.indexOf('function turnTelescopeFocus'));
+  assert.match(drag,/ahmedabadHands.handles\(piece\).*<=6\) return/,'Small finger movement is not a drag/reset');
+  const toggle=game.slice(game.indexOf('function toggleAccessory'),game.indexOf('function syncAccessories'));
+  assert.match(toggle,/if \(!els.habitat.querySelector\("\.ahmedabad-af16-accessory"\)\) ahmedabadHands.clear/,'Enabling a tool leaves Ahmedabad poses intact');
   assert.deepEqual(offsets(),{reel:80});
   assert.deepEqual(offsets(true),{reel:120});
   for(const width of [288,345,520,724,920])for(const top of [-300,0,750])for(const male of [false,true]) {
@@ -72,5 +101,5 @@ const path=require('node:path');
   sound.play('soil');assert.equal(started,2,'No synthetic substitute for unloaded digging audio');
   document.hidden=true;sound.play('wind');assert.equal(started,2);
   sound.cancel();assert(stopped>=2);
-  console.log('Ahmedabad: responsive soil-anchored working lanes, kite return, one/two scoops, reduced-motion still state, gesture-only sound and audio cleanup passed.');
+  console.log('Ahmedabad: continuous dig/kite handoffs, repeated taps, responsive soil lanes, kite return, one/two scoops, reduced motion, gesture-only sound and audio cleanup passed.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

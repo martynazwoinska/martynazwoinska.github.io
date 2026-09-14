@@ -41,6 +41,15 @@ export function ahmedabadDiggingOffsets(male=false) {
   return male ? {reel:120} : {reel:80};
 }
 
+// Every new gesture starts from the last rendered pose, including interrupted ones.
+export function ahmedabadHandoff(from,to,pickup) {
+  const t=clamp(pickup);
+  if(t===1)return {...to};
+  return Object.fromEntries(Object.entries(to).map(([key,value])=>[
+    key,mix(from?.[key]??value,value,t)
+  ]));
+}
+
 export function ahmedabadDiggingPlacement(scene,body,male=false) {
   // Separate working lanes on the painted foreground soil, above both labels.
   const left=scene.left+scene.width*(male?.13:.40);
@@ -102,6 +111,18 @@ export function createAhmedabadHands(habitat) {
     if(node&&!entry.saved.has(node))entry.saved.set(node,node.getAttribute('transform'));
     return node;
   }
+  function snapshot(entry) {
+    const matrix=entry.tool.transform.baseVal.consolidate()?.matrix;
+    return {from:entry.targets,fromPose:entry.pose,
+      fromTool:matrix&&Object.fromEntries(['a','b','c','d','e','f'].map(key=>[key,matrix[key]])),
+      start:performance.now()};
+  }
+  function blendTool(entry,transition,pickup) {
+    if(!transition?.fromTool||pickup>=1)return;
+    const to=entry.tool.transform.baseVal.consolidate().matrix;
+    const values=['a','b','c','d','e','f'].map(key=>mix(transition.fromTool[key],to[key],pickup));
+    entry.tool.setAttribute('transform',`matrix(${values.join(' ')})`);
+  }
   function stopMotion() {
     sound.cancel();action=null;delete habitat.dataset.ahmedabadAction;
   }
@@ -122,6 +143,7 @@ export function createAhmedabadHands(habitat) {
     const soil=habitat.querySelector(`.accessory-piece[data-accessory-family="soil-kit"][data-worm-part="${part}"]`);
     if(!handles(kite)||!visible(kite)&&!visible(soil))return null;
     const entry={male,part,kite,soil,kind:visible(kite)?'kite':'soil',saved:new Map(),styles:[],arms:makeArms(root,male),targets:null};
+    entry.pose={shift:0,shiftX:0,rotation:0,reelY:0,pull:0,angle:0,down:0,drift:0,soil:0};
     entry.body=habitat.querySelector(male?'#companion-worm .companion-body':'#primary-worm > .worm-body');
     entry.bodyAnimation=entry.body.style.animationPlayState;
     entry.styles.push([entry.body,entry.body.getAttribute('style')||'']);
@@ -144,15 +166,30 @@ export function createAhmedabadHands(habitat) {
     root=habitat.querySelector('#worm-species');
     if(!root||document.hidden)return;
     if(!habitat.querySelector('.ahmedabad-af16-accessory'))return;
+    for(const [part,entry] of modes) {
+      const k=visible(entry.kite),s=visible(entry.soil);
+      if(!k&&!s) {
+        if(action?.entry===entry)stopMotion();
+        restore(entry);modes.delete(part);
+        marks.get(part)?.remove();marks.delete(part);
+      } else if(entry.kind==='kite'&&!k||entry.kind==='soil'&&!s) {
+        entry.settle=snapshot(entry);
+        if(action?.entry===entry)stopMotion();
+        entry.kind=k?'kite':'soil';
+      }
+    }
     for(const part of ['primary','companion'])ensure(part);
     if(!frame&&modes.size)frame=requestAnimationFrame(tick);
   }
   function start(piece) {
     if(!handles(piece)||!visible(piece))return false;
+    // The other worm settles where it is instead of jumping to its idle pose.
+    if(action&&action.entry.part!==piece.dataset.wormPart)action.entry.settle=snapshot(action.entry);
     stopMotion();sync();
     const entry=ensure(piece.dataset.wormPart);if(!entry)return false;
     entry.kind=piece.dataset.accessoryFamily==='kite-rig'?'kite':'soil';
-    action={entry,start:performance.now(),events:new Set(),from:entry.targets,fromShift:entry.shift||0,fromShiftX:entry.shiftX||0,fromReel:entry.reelY||0};
+    entry.settle=null;
+    action={entry,events:new Set(),...snapshot(entry)};
     habitat.dataset.ahmedabadAction=entry.kind;
     if(!reduced.matches)sound.unlock(entry.kind);
     return true;
@@ -161,7 +198,8 @@ export function createAhmedabadHands(habitat) {
     const {male,part,kite,soil,arms,tool,reel,body}=entry;
     const digging=entry.kind==='soil'&&visible(soil);
     const offsets=ahmedabadDiggingOffsets(male);
-    body.style.animationPlayState=digging?'paused':entry.bodyAnimation;
+    const transition=action?.entry===entry?action:entry.settle;
+    body.style.animationPlayState=digging||transition&&state.pickup<1?'paused':entry.bodyAnimation;
     let shift=0,shiftX=0;
     if(digging) {
       // Measure the unshifted body so viewport changes never accumulate offsets.
@@ -175,19 +213,21 @@ export function createAhmedabadHands(habitat) {
       const mark=marks.get(part);
       if(mark)mark.setAttribute('transform',`translate(${entry.ground.x} ${entry.ground.y}) scale(${male?.64:1})`);
     }
-    entry.shift=action?.entry===entry?mix(action.fromShift,shift,state.pickup):shift;
-    entry.shiftX=action?.entry===entry?mix(action.fromShiftX,shiftX,state.pickup):shiftX;
-    entry.bodyWrap.setAttribute('transform',`translate(${entry.shiftX} ${entry.shift}) rotate(${state.pull*(male?-4:-2)+state.down*3} 210 170)`);
+    const pose=ahmedabadHandoff(transition?.fromPose,{
+      shift,shiftX,rotation:state.pull*(male?-4:-2)+state.down*3,
+      reelY:digging?offsets.reel:0,pull:state.pull,angle:state.angle,
+      down:state.down,drift:state.drift||0,soil:digging?1:0
+    },state.pickup);
+    entry.pose=pose;
+    state={...state,pull:pose.pull,angle:pose.angle,down:pose.down,drift:pose.drift};
+    entry.bodyWrap.setAttribute('transform',`translate(${pose.shiftX} ${pose.shift}) rotate(${pose.rotation} 210 170)`);
     entry.shadow?.setAttribute('transform',entry.bodyWrap.getAttribute('transform'));
     // Inner cloth follows the body, preserving the outer user drag and scale.
     entry.cloth?.setAttribute('transform',entry.bodyWrap.getAttribute('transform'));
     const k=visible(kite), s=visible(soil);
     if(!k&&!s){arms.g.style.display='none';return;}
-    if(!digging&&!k)entry.kind='soil';
     arms.g.style.display='';
-    const rest=digging?offsets.reel:0;
-    const reelY=action?.entry===entry?mix(action.fromReel,rest,state.pickup):rest;
-    entry.reelY=reelY;
+    const reelY=pose.reelY;
     const reach=ahmedabadReach(state.pull,male);
     reel.setAttribute('transform',`translate(${reach.x} ${reelY+reach.y}) rotate(${state.pull*(male?15:-9)})`);
     // Moving a kite preserves the reel's original user-controlled scale and position.
@@ -214,6 +254,7 @@ export function createAhmedabadHands(habitat) {
       const inv=local.getScreenCTM().inverse().multiply(root.getScreenCTM());
       const hp=new DOMPoint(hold.x,hold.y).matrixTransform(inv);
       tool.setAttribute('transform',`translate(${hp.x} ${hp.y}) rotate(${tilt}) translate(0 ${male?49:52})`);
+      blendTool(entry,transition,state.pickup);
       targets=[point(tool,0,male?-61:-84),point(tool,0,male?-36:-30)];
       if(action?.entry===entry&&state.scoop>.05) {
         if(!entry.clod)entry.clod=path(tool,male?'M-10 10Q-8 0 0 5Q9 0 11 13L5 22L-7 19Z':'M-17 35Q-19 23-8 24Q0 16 10 25Q21 24 17 38L5 47L-13 44Z','#99704d','#654a37',1.3);
@@ -232,6 +273,7 @@ export function createAhmedabadHands(habitat) {
       }
     } else {
       tool.setAttribute('transform',entry.saved.get(tool));entry.clod?.setAttribute('opacity','0');
+      blendTool(entry,transition,state.pickup);
       const t=reach.guide,u=1-t;
       const guide={x:u*u*u*sx+3*u*u*t*cx+3*u*t*t*ccx+t*t*t*ex,y:u*u*u*sy+3*u*u*t*cy-3*u*t*t*136+t*t*t*ey};
       targets=male?[point(reel,-halfGrip(male),0),point(reel,halfGrip(male),0)]
@@ -244,11 +286,11 @@ export function createAhmedabadHands(habitat) {
         if(!action.events.has(key)){action.events.add(key);if(!reduced.matches)sound.play('click',male);}
       }
     }
-    if(action?.entry===entry&&action.from)targets=targets.map((p,i)=>({x:mix(action.from[i].x,p.x,state.pickup),y:mix(action.from[i].y,p.y,state.pickup)}));
+    if(transition?.from)targets=targets.map((p,i)=>({x:mix(transition.from[i].x,p.x,state.pickup),y:mix(transition.from[i].y,p.y,state.pickup)}));
     entry.targets=targets;
-    const shoulders=(male?[[205,151],[239,132]]:digging?[[195,181],[221,151]]:[[188,190],[215,152]]).map(([x,y])=>point(body,x,y));
+    const shoulders=(male?[[205,151],[239,132]]:[[mix(188,195,pose.soil),mix(190,181,pose.soil)],[mix(215,221,pose.soil),mix(152,151,pose.soil)]]).map(([x,y])=>point(body,x,y));
     targets.forEach((to,i)=>{
-      const spread=male?0:digging?18+8*state.down:reach.spread;
+      const spread=male?0:mix(reach.spread,18+8*state.down,pose.soil);
       const from=shoulders[i], elbow={x:mix(from.x,to.x,.52)+(i?10+spread:-12-spread)*(male?.6:1),y:mix(from.y,to.y,.58)+(male?2:4)};
       const normal=(a,b)=>{const l=Math.hypot(b.x-a.x,b.y-a.y)||1;return {x:-(b.y-a.y)/l,y:(b.x-a.x)/l};};
       const n=normal(from,elbow),m=normal(elbow,to),width=male?3.1:5.1;
@@ -257,7 +299,7 @@ export function createAhmedabadHands(habitat) {
       const d=`M${offset(from,n,width)}Q${offset(elbow,n,width*.8)} ${offset(elbow,m,width*.72)}L${offset(to,m,width*.44)}Q${to.x} ${to.y} ${offset(to,m,-width*.44)}L${offset(elbow,m,-width*.72)}Q${offset(elbow,n,-width*.8)} ${offset(from,n,-width)}Q${from.x} ${from.y} ${offset(from,n,width)}Z`;
       arms.limbs[i].arm.setAttribute('d',d);
       arms.limbs[i].highlight.setAttribute('d',`M${offset(from,n,width*.45)}Q${offset(elbow,n,width*.45)} ${offset(elbow,m,width*.35)}L${offset(to,m,width*.2)}`);
-      const rotation=digging?-18+state.angle:male?(i?-15:10):i?-20:12;
+      const rotation=mix(male?(i?-15:10):i?-20:12,-18+state.angle,pose.soil);
       arms.hands[i].setAttribute('transform',`translate(${to.x} ${to.y}) rotate(${rotation}) scale(${male?.64:.85})`);
     });
   }
@@ -267,8 +309,10 @@ export function createAhmedabadHands(habitat) {
       if(!visible(entry.kite)&&!visible(entry.soil))continue;
       const running=action?.entry===entry, ms=running?now-action.start:0;
       const state=running?ahmedabadFrame(ms,entry.kind,entry.male,reduced.matches):{pickup:1,pull:0,angle:0,down:0,scoop:0,cycle:0};
+      if(!running&&entry.settle)state.pickup=reduced.matches?1:ease((now-entry.settle.start)/650);
       if(!running&&!reduced.matches&&document.activeElement!==entry.kite)state.drift=Math.sin(now/(entry.male?1450:1800)+(entry.male?2:0));
       paint(entry,state,ms);
+      if(entry.settle&&state.pickup===1)entry.settle=null;
       if(running&&state.done) {
         if(entry.kind==='soil'&&!marks.has(entry.part))marks.set(entry.part,soilMark(root,entry.male,entry.ground));
         stopMotion();
@@ -280,6 +324,6 @@ export function createAhmedabadHands(habitat) {
   document.addEventListener('visibilitychange',()=>{if(document.hidden)clear();else sync();});
   window.addEventListener('pagehide',clear);
   reduced.addEventListener('change',cancel);
-  return {start,handles,clear,cancel,reset,sync,get active(){return !!action;}};
+  return {start,handles,clear,cancel,reset,sync,get active(){return !!action||[...modes.values()].some(entry=>entry.settle);}};
 }
 function halfGrip(male){return male?36:44;}
