@@ -436,6 +436,16 @@ Loading is lazy, failures are silent and retryable, and late cues are discarded.
 Escape, activity changes, dragging, resizing and page hiding cancel playback.
 Timing and level tests passed. Subjective listening remains unverified.
 
+### Bali cacao nib eating reuse, 2026-09-14
+
+The male in Sanda also uses the unchanged CC0 chocolate-eating recording
+above. The runtime plays 6.60–7.24 s at the first visible bite, 850 ms into
+the gesture, with a peak target of 0.095 and the same bounded gain and fades.
+This is eating foley for the cartoon nib, not a recording claimed to contain
+roasted cacao nibs or nematodes. No new audio file, pitch shift or synthetic
+layer was introduced. Loading starts only on activation. Cancellation,
+hiding and resizing stop playback. Subjective listening remains unverified.
+
 ## Queensland canopy visit, 2026-09-13
 
 Three real recordings, downloaded unchanged from Freesound's source-linked HQ

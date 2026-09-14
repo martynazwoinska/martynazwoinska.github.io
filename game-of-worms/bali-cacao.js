@@ -1,4 +1,4 @@
-import { createBaliNibs } from './bali-nibs.js?v=20260906-nibs-1';
+import { createBaliNibs } from './bali-nibs.js?v=20260914-nib-eating-1';
 import { createCacaoCrack } from './bali-cacao-sound.js?v=20260908-crack-1';
 const NS = 'http://www.w3.org/2000/svg';
 export const CACAO_FAMILY = 'ju1873-cacao-specimen-lantern';

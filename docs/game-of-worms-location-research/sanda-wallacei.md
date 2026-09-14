@@ -1,5 +1,40 @@
 # Sanda, Bali *Caenorhabditis wallacei* JU1873 location research and art brief
 
+## Male nib eating, 2026-09-14
+
+The male lifts a nib with a short, tapered reaching arm. It follows the actual
+moving face and settles to mouth size, even after the packet is moved or
+resized. The mouth opens before contact at 850 ms. A clipped first bite leaves
+part of the nib visible, followed by a second bite, a short chew and a smooth
+return to the original smile. One nib is consumed per activation.
+
+The first motion review led to the hand-held refinement so the food is
+visibly lifted instead of simply floating. The original packet, nib paths,
+female machete and hanging-pod strike, gongs, clothing and background remain
+unchanged. No public wording changed. The Game remains English-only and
+fixed-light.
+
+Sound reuses the existing CC0 recording of actual chocolate eating, with
+the 6.60–7.24 s excerpt starting at mouth contact. The peak target is 0.095.
+It is food foley, not a recording of nematodes or specifically roasted nibs.
+No synthetic crack or pitch shift is added. Loading is gesture-only and
+failure is silent. Cancellation stops playback and restores the face.
+Subjective listening has not been verified.
+
+Checks: nib lifecycle/frame tests, recorded-audio hash and playback tests,
+Bali drawing, cacao strike, crack and gong regressions. Browser checks cover
+pointer and Enter activation, Home, Escape, keyboard movement, packet resizing,
+food consumption and face restoration. Normal viewport renders were inspected
+at 360, 768, 1024 and 1440 px without overflow or console errors.
+Full-page attempts returned 345 × 2434, 753 × 2375, 1009 × 1747 and
+1425 × 1928 pixels. The known half-scale/duplicate-section capture defect
+persists, so these are not valid complete-page proofs. Reduced motion,
+page hiding and resize cancellation are also covered by automated tests.
+
+Changed: the nib animation, three cache references, its test, this dossier
+and the recording-use note in audio SOURCES. No files or audio assets added
+or deleted. Deployment is verified separately after pushing.
+
 ## Hanging pod cutting preview, 2026-09-06
 
 Male nib-feeding follow-up: replaces his wooden club and pod half with an
