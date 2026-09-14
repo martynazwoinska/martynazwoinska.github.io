@@ -3,7 +3,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260913-leaf-hats-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260914-repeat-cuts-1";
 import { createKauaiBath } from "./kauai-bath-play.js?v=20260909-bath-pour-1";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
@@ -14,7 +14,7 @@ import { createSaoTomePlay } from "./sao-tome-play.js?v=20260913-feelers-1";
 import { createHcmcPlay } from "./hcmc-play.js?v=20260908-hcmc-1";
 import { createNambuccaPlay } from "./nambucca-play.js?v=20260908-nambucca-recorded";
 import { createDoisRiosPlay } from "./dois-rios-play.js?v=20260908-dois-rios-1";
-import { createPanamaPlay } from "./panama-play.js?v=20260908-snip-2";
+import { createPanamaPlay } from "./panama-play.js?v=20260914-repeat-cuts-1";
 import { launchWormConfetti } from "./worm-celebration.js?v=20260908-celebration-1";
 import { createAhmedabadHands } from "./ahmedabad-hands.js?v=20260914-soil-contact-1";
 import { createIshigakiInteractions } from "./ishigaki-interactions.js?v=20260907-ishigaki-sound-1";
@@ -1570,7 +1570,7 @@ function finishAccessoryDrag(event) {
   });
   piece.classList.remove("is-dragging");
   document.documentElement.classList.remove("accessory-drag-active");
-  if (moved || !ahmedabadHands.handles(piece)) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
+  if (moved || !ahmedabadHands.handles(piece) && !panamaPlay.handlesLeaf(piece)) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") { baliCacao.drop(piece); claremontPlay.drop(piece); }
@@ -1584,6 +1584,9 @@ function moveActiveAccessoryPointer(event) {
   if (!activeAccessoryDrag || !activeAccessoryDrag.pointers.has(event.pointerId)) return;
   const { id, wormPart, piece } = activeAccessoryDrag;
   event.preventDefault();
+  if(panamaPlay.active && panamaPlay.handlesLeaf(piece) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>6) {
+    panamaPlay.cancel();activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
+  }
   if(pohnpeiPlay.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
     pohnpeiPlay.adjust(piece);activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
   }
@@ -1613,6 +1616,7 @@ function moveActiveAccessoryPointer(event) {
     const [first, second] = [...activeAccessoryDrag.pointers.values()];
     const distance = Math.hypot(second.x - first.x, second.y - first.y);
     if (Math.abs(distance - activeAccessoryDrag.pinch.startDistance) > 1) {
+      if (!activeAccessoryDrag.moved && panamaPlay.handlesLeaf(piece)) panamaPlay.cancel();
       if (!activeAccessoryDrag.moved && ahmedabadHands.handles(piece)) ahmedabadHands.reset(piece);
       activeAccessoryDrag.moved = true;
     }
@@ -1626,7 +1630,7 @@ function moveActiveAccessoryPointer(event) {
   if (activeAccessoryDrag.primaryPointerId !== event.pointerId) return;
   // A small finger wobble is still a tap. Do not reset a digging worm before
   // pointerup can hand its current pose to the kite animation.
-  if (!activeAccessoryDrag.moved && ahmedabadHands.handles(piece) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)<=6) return;
+  if (!activeAccessoryDrag.moved && (ahmedabadHands.handles(piece) || panamaPlay.handlesLeaf(piece)) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)<=6) return;
   if (!activeAccessoryDrag.moved && ahmedabadHands.handles(piece) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>1) {
     ahmedabadHands.reset(piece);
     activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
@@ -1694,7 +1698,7 @@ function wireAccessoryPieces() {
       if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
       if(!claremontPlay.handles(piece))claremontPlay.cancel();
       if(!edinburghPipes.handles(piece))edinburghPipes.cancel();
-      panamaPlay.cancel();
+      if (!panamaPlay.handlesLeaf(piece)) panamaPlay.cancel();
       doisRiosPlay.cancel();
       nambuccaPlay.cancel();
       if (!oahuBike.handles(piece)) oahuBike.cancel();

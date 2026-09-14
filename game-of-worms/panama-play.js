@@ -1,4 +1,4 @@
-import { createLeafCutRun, resetLeafCut, LEAF_FAMILY } from './panama-leaf-cutting.js?v=20260908-snip-2';
+import { createLeafCutRun, resetLeafCut, LEAF_FAMILY } from './panama-leaf-cutting.js?v=20260914-repeat-cuts-1';
 import { createLeafCutSound } from './panama-leaf-audio.js?v=20260908-snip-2';
 const NS='http://www.w3.org/2000/svg';
 const kinds={'qg2726-gustavia-flower-headpiece':'flower','qg2726-flower-bait':'bait',[LEAF_FAMILY]:'leaf'};
@@ -75,6 +75,10 @@ export function createPanamaPlay(habitat){
   }
   function start(piece){
     if(!handles(piece)||!piece.isConnected||piece.closest('[hidden]'))return false;
+    if(active?.kind==='leaf'&&piece.dataset.accessoryFamily===LEAF_FAMILY){
+      active.pending=Math.min(2,(active.pending||0)+1);
+      return true;
+    }
     cancel();
     const root=habitat.querySelector('#worm-species'),male=piece.dataset.wormPart==='companion',kind=kinds[piece.dataset.accessoryFamily];
     const body=habitat.querySelector(male?'#companion-worm .companion-body':'#primary-worm .worm-body');
@@ -92,7 +96,17 @@ export function createPanamaPlay(habitat){
       const leafRun=createLeafCutRun({habitat,root,effects,remember,pin,reduced:reduced.matches,snip:()=>playSound('snip')});run.leafRun=leafRun;
       if(!leafRun){cancel();return false;}
       const began=performance.now();
-      const tick=now=>{if(active!==run)return;if(!piece.isConnected||piece.closest('[hidden]')||document.hidden){cancel();return;}if(leafRun.frame(now-began)){cancel(true);return;}raf=requestAnimationFrame(tick);};
+      const tick=now=>{
+        if(active!==run)return;
+        if(!piece.isConnected||piece.closest('[hidden]')||document.hidden){cancel();return;}
+        if(leafRun.frame(now-began)){
+          const pending=run.pending||0;
+          cancel(true);
+          if(pending&&start(piece))active.pending=pending-1;
+          return;
+        }
+        raf=requestAnimationFrame(tick);
+      };
       raf=requestAnimationFrame(tick);return true;
     }
     const flower=remember(piece.querySelector('[data-panama-flower]'));
@@ -152,5 +166,5 @@ export function createPanamaPlay(habitat){
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});window.addEventListener('pagehide',()=>cancel());reduced.addEventListener('change',()=>cancel());
   window.addEventListener('resize',()=>cancel());
   function reset(piece){cancel();if(piece?.dataset.accessoryFamily===LEAF_FAMILY)resetLeafCut(habitat);piece?.querySelector('[data-panama-serving]')?.setAttribute('opacity',0);piece?.querySelector('[data-panama-spoonful]')?.setAttribute('opacity',1);}
-  return {handles,start,cancel,reset,get active(){return !!active;}};
+  return {handles,handlesLeaf:piece=>piece?.dataset.accessoryFamily===LEAF_FAMILY,start,cancel,reset,get active(){return !!active;}};
 }

@@ -8,6 +8,26 @@ const clamp=x=>Math.max(0,Math.min(1,x));
 const ease=x=>{x=clamp(x);return x*x*(3-2*x);};
 const whole='M-64 0C-34-40 0-46 32-25Q58-15 78 0Q58 16 32 25C0 46-35 34-64 0Z';
 const remainder='M-64 0C-34-40 0-46 32-25V25C0 46-35 34-64 0Z';
+let clipSerial=0;
+const cutEdges=[78,32,4,-24];
+// Intersect the existing leaf's two curved edges, preserving its original drawing.
+export function leafCutSection(count=0){
+  const index=count%3,x=cutEdges[index+1];
+  const edgeY=(xs,ys)=>{
+    const value=(v,t)=>v[0]*(1-t)**3+3*v[1]*(1-t)**2*t+3*v[2]*(1-t)*t*t+v[3]*t**3;
+    let lo=0,hi=1;
+    for(let i=0;i<40;i++){const mid=(lo+hi)/2;if(value(xs,mid)<x)lo=mid;else hi=mid;}
+    return value(ys,(lo+hi)/2);
+  };
+  return {x,right:cutEdges[index],top:edgeY([-64,-34,0,32],[0,-40,-46,-25]),bottom:edgeY([-64,-35,0,32],[0,34,46,25])};
+}
+function cutEdgePath(section){return `M${section.x} ${section.top}V${section.bottom}`;}
+function showLeafCuts(leaf,count){
+  const section=count?leafCutSection(count-1):null;
+  leaf.setAttribute('data-leaf-cuts',count);
+  leaf.querySelector('[data-leaf-clip]').setAttribute('width',section?section.x+90:180);
+  leaf.querySelector('[data-leaf-cut-edge]').setAttribute('d',section?cutEdgePath(section):'');
+}
 
 function tip(g,border=true){
   p(g,'M32-25Q58-15 78 0Q58 16 32 25Z','#679e63',border?green:'none',1.5);
@@ -16,7 +36,11 @@ function tip(g,border=true){
 
 export function drawLeafCutting(g,male){
   if(male){
-    const leaf=add(g,'g',{'data-panama-leaf':''});
+    const holder=add(g,'g',{'data-panama-leaf':'','data-leaf-cuts':0});
+    const clipId=`panama-leaf-${++clipSerial}`;
+    const clip=add(add(holder,'defs'),'clipPath',{id:clipId,clipPathUnits:'userSpaceOnUse'});
+    add(clip,'rect',{x:-90,y:-50,width:180,height:100,'data-leaf-clip':''});
+    const leaf=add(holder,'g',{'data-leaf-surface':'','clip-path':`url(#${clipId})`});
     p(leaf,'M-64 0Q-77 4-83 14','none','#8f9d63',4);
     p(leaf,remainder,'#679e63','none');
     p(leaf,'M-62 0C-30 6 1 3 32 0V25C0 46-35 34-62 0Z','#46835b','none');
@@ -27,6 +51,7 @@ export function drawLeafCutting(g,male){
       p(leaf,`M${x-10} 1Q${x+2} ${y*.55} ${x} ${y}M${x-10} 2Q${x+3} ${-y*.55} ${x+6} ${-y*.82}`,'none','#b8d096',1.3);
     }
     p(leaf,'M-45-12Q-10-38 18-29','none','#a9c989',1.8);
+    p(holder,'','none',green,1.8,{'data-leaf-cut-edge':''});
     return;
   }
   const scissors=add(g,'g',{'data-panama-scissors':''});
@@ -80,8 +105,8 @@ export function leafCutFrame(ms,reduced=false){
 export const leafSnipAt=1285;
 
 export function resetLeafCut(habitat){
-  habitat.querySelector('[data-leaf-tip]')?.setAttribute('opacity',1);
-  habitat.querySelector('[data-leaf-outline]')?.setAttribute('d',whole);
+  const leaf=habitat.querySelector('[data-panama-leaf]');
+  if(leaf)showLeafCuts(leaf,0);
 }
 
 export function createLeafCutRun({habitat,root,effects,remember,pin,reduced,snip}){
@@ -91,9 +116,11 @@ export function createLeafCutRun({habitat,root,effects,remember,pin,reduced,snip
   if(!scissors||!leaf)return null;
   for(const piece of pieces){pin(piece);pin(piece.querySelector('.location-accessory-art'));}
   const halves=[...scissors.querySelectorAll('[data-scissor-half]')];
-  const end=leaf.querySelector('[data-leaf-tip]'),outline=leaf.querySelector('[data-leaf-outline]');
-  resetLeafCut(habitat);
-  remember(scissors);remember(leaf);halves.forEach(n=>remember(n,['transform','opacity']));remember(end,['opacity']);remember(outline,['d']);
+  let cutCount=Number(leaf.getAttribute('data-leaf-cuts'))||0;
+  if(cutCount>=3){resetLeafCut(habitat);cutCount=0;}
+  const section=leafCutSection(cutCount);
+  remember(scissors);remember(leaf,['transform','data-leaf-cuts']);halves.forEach(n=>remember(n,['transform','opacity']));
+  remember(leaf.querySelector('[data-leaf-clip]'),['width']);remember(leaf.querySelector('[data-leaf-cut-edge]'),['d']);
   const inRoot=n=>{const m=root.getScreenCTM().inverse().multiply(n.getScreenCTM());return new DOMMatrix([m.a,m.b,m.c,m.d,m.e,m.f]);};
   const point=(node,x,y)=>new DOMPoint(x,y).matrixTransform(inRoot(node));
   const originalScissors=inRoot(scissors),originalLeaf=inRoot(leaf);
@@ -101,12 +128,20 @@ export function createLeafCutRun({habitat,root,effects,remember,pin,reduced,snip
   const leafParent=inRoot(leaf.parentNode).inverse();
   const ownScale=Math.hypot(originalScissors.a,originalScissors.b);
   const angle=Math.atan2(originalLeaf.b,originalLeaf.a)+Math.PI/2;
-  const contact=new DOMPoint(32,0).matrixTransform(originalLeaf);
+  const contact=new DOMPoint(section.x,0).matrixTransform(originalLeaf);
   const target=new DOMMatrix().translate(contact.x-Math.cos(angle)*53*ownScale,contact.y-Math.sin(angle)*53*ownScale).rotate(angle*180/Math.PI).scale(ownScale);
   const originalAngle=Math.atan2(originalScissors.b,originalScissors.a);
   const deltaAngle=Math.atan2(Math.sin(angle-originalAngle),Math.cos(angle-originalAngle));
   const front=halves[1].cloneNode(true);front.removeAttribute('data-scissor-half');effects.appendChild(front);halves[1].setAttribute('opacity',0);
-  const cutout=add(effects,'g',{'data-leaf-cutout':'',opacity:0});tip(cutout);
+  const cutout=add(effects,'g',{'data-leaf-cutout':'',opacity:0});
+  const fragmentId=`panama-fragment-${++clipSerial}`;
+  const fragmentClip=add(add(cutout,'defs'),'clipPath',{id:fragmentId,clipPathUnits:'userSpaceOnUse'});
+  add(fragmentClip,'rect',{x:section.x,y:-50,width:section.right-section.x,height:100});
+  const fragment=leaf.querySelector('[data-leaf-surface]').cloneNode(true);
+  fragment.removeAttribute('data-leaf-surface');fragment.setAttribute('clip-path',`url(#${fragmentId})`);
+  for(const key of ['data-leaf-tip','data-leaf-outline'])fragment.querySelector(`[${key}]`)?.removeAttribute(key);
+  cutout.appendChild(fragment);p(cutout,cutEdgePath(section),'none',green,1.5);
+  if(cutCount)p(cutout,cutEdgePath(leafCutSection(cutCount-1)),'none',green,1.5);
   const {ant,legs}=drawLeafAnt(effects);ant.setAttribute('opacity',0);
   const bodies=[habitat.querySelector('#primary-worm .worm-body'),habitat.querySelector('#companion-worm .companion-body')];
   const arms=[0,0,1].map((body,i)=>({body,i,line:p(effects,'','#85bdb4','#427b7b',.85),light:p(effects,'','none','#b5ded5',body?1:1.6),hand:add(effects,'g')}));
@@ -123,7 +158,7 @@ export function createLeafCutRun({habitat,root,effects,remember,pin,reduced,snip
       scissors.setAttribute('transform',scissorParent.multiply(moving).toString());
       halves.forEach((n,i)=>n.setAttribute('transform',`rotate(${(i?15:-15)*(1-s.close)})`));
       front.setAttribute('transform',inRoot(halves[1]).toString());
-      end.setAttribute('opacity',s.cut?0:1);outline.setAttribute('d',s.cut?remainder:whole);
+      showLeafCuts(leaf,cutCount+(s.cut?1:0));
       leaf.setAttribute('transform',leafParent.multiply(originalLeaf).toString());
       const opacity=reduced?0:1-s.returning;
       const antScale=.7;
@@ -140,7 +175,7 @@ export function createLeafCutRun({habitat,root,effects,remember,pin,reduced,snip
         const x=dropX+(catchPoint.x-dropX)*pickup,y=dropY+(catchPoint.y-dropY)*pickup;
         const leafAngle=Math.atan2(originalLeaf.b,originalLeaf.a)*180/Math.PI;
         const scale=Math.hypot(originalLeaf.a,originalLeaf.b);
-        cutout.setAttribute('transform',`translate(${x} ${y}) rotate(${leafAngle+(38+Math.sin(ms*.009)*7)*s.fall-102*pickup}) scale(${scale}) translate(-32 0)`);
+        cutout.setAttribute('transform',`translate(${x} ${y}) rotate(${leafAngle+(38+Math.sin(ms*.009)*7)*s.fall-102*pickup}) scale(${scale}) translate(${-section.x} 0)`);
       }
       arms.forEach(arm=>{
         const from=point(bodies[arm.body],arm.i===1?280:301,arm.i===1?112:97);
@@ -154,6 +189,6 @@ export function createLeafCutRun({habitat,root,effects,remember,pin,reduced,snip
       });
       return false;
     },
-    finish(){end.setAttribute('opacity',0);outline.setAttribute('d',remainder);}
+    finish(){showLeafCuts(leaf,cutCount+1);}
   };
 }

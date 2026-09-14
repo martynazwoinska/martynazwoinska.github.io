@@ -424,3 +424,31 @@ capture defect. They are not valid full-page proofs. Normal viewport views
 are the available contextual review evidence. Martyna approved this exact
 contextual preview for deployment on 2026-09-06 after disclosure of the
 full-page capture limitation. Publication verification follows the release.
+
+## Repeatable leaf cutting, 2026-09-14
+
+The current Panama scene uses Gustavia headpieces, flower bait and leaf cutting.
+The existing leaf and scissors drawings, ant anatomy, painting, recorded snip
+and public text are preserved in this follow-up.
+
+Each activation cuts the next section from the same leaf, with three sections
+before a fresh leaf is supplied on the next activation. Sections are clipped
+from the original artwork, including its veins and shading. The scissors move
+to each new cut edge. Every section gets a newly created ant, which approaches,
+lifts the section and carries it away.
+
+Repeated taps during a collection queue up to two subsequent cuts. They do not
+restart the ant or restore the leaf. Home restores a whole leaf. Escape, moving
+or resizing a prop, switching activities or leaving the scene cancels pending
+cuts and removes transient objects. The original placement and size remain.
+Reduced motion retains the cut result without travel or sound.
+
+Checks cover successive sections, queued taps, replenishment, cancellation,
+fresh ants, three custom scales, blade-contact sound timing, drawing geometry
+and regressions for the other Panama activities and Ahmedabad transitions.
+Normal browser views passed at 360, 768, 1024 and 1440 px, including pointer and
+keyboard input, reset, resize and switching to the blender. No horizontal
+overflow or console errors were observed. Full-page capture remains defective:
+the 360 px attempt returned 345 x 2483 pixels with half-scale repeated sections.
+It is not a valid full-page proof. Physical devices and OS reduced-motion
+browser emulation remain manual. The user requested implementation and deployment.

@@ -27,7 +27,7 @@ const fs=require('node:fs');
   const pointerdown=game.slice(game.indexOf('piece.addEventListener("pointerdown"'),game.indexOf('piece.addEventListener("keydown"'));
   assert.match(pointerdown,/if \(ahmedabadHands.active && !ahmedabadHands.handles\(piece\)\) ahmedabadHands.cancel\(\)/,'Pointer taps preserve the existing controller');
   const finish=game.slice(game.indexOf('function finishAccessoryDrag'),game.indexOf('function moveActiveAccessoryPointer'));
-  assert.match(finish,/if \(moved \|\| !ahmedabadHands.handles\(piece\)\) moveAccessory/,'Taps do not re-clamp an animated prop');
+  assert.match(finish,/if \(moved \|\| !ahmedabadHands.handles\(piece\) && !panamaPlay.handlesLeaf\(piece\)\) moveAccessory/,'Taps do not re-clamp an animated prop');
   const drag=game.slice(game.indexOf('function moveActiveAccessoryPointer'),game.indexOf('function turnTelescopeFocus'));
   assert.match(drag,/ahmedabadHands.handles\(piece\).*<=6\) return/,'Small finger movement is not a drag/reset');
   const toggle=game.slice(game.indexOf('function toggleAccessory'),game.indexOf('function syncAccessories'));
