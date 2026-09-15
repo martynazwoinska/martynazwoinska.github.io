@@ -1,5 +1,21 @@
 # Game sound recordings
 
+## Mauritius frame-drum activity, 2026-09-15
+
+- `mauritius-frame-drum.mp3`: cabled_mess, [Frame drum_oneshot_RAW_10.wav](https://freesound.org/people/cabled_mess/sounds/345630/), published 11 May 2016.
+  The creator describes a simple frame drum recorded with a Rode NT5 microphone
+  and Zoom H5 recorder. The sound page offers [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- The unchanged public HQ MP3 preview was downloaded from
+  `https://cdn.freesound.org/previews/345/345630_5450487-hq.mp3`.
+  SHA-256: `780c50a82558f8bd7f0f25ccabbf5c97566f8156918e9fce667e4fb2372bcc1d`.
+- Runtime playback skips quiet pre-hit samples, takes up to 0.42 seconds at
+  original speed/pitch, adjusts gain and fades the last 55 ms. Five hits form
+  distinct short phrases for the two instruments. Cancellation stops all voices;
+  late loading never schedules a delayed strike. Reduced motion is silent.
+- This is frame-drum foley for a playful activity, not a field recording of a
+  Mauritian ravanne, a traditional Sega performance or the collection location.
+  Subjective listening remains a user review item.
+
 ## São Tomé leaf encounter and snail ride, 2026-09-13
 
 Reuses the unchanged CC0 `pohnpei-leaves.ogg` recording credited below.

@@ -151,4 +151,48 @@ The existing display key `Mauritius · JU2909` remains unchanged to preserve sav
 
 ## Implementation status
 
+### Interaction follow-up, 2026-09-15 — deployment authorized
+
+Decision: retain the painting and all six approved accessory drawings; add the
+approved gathering and separate percussion activities. This preview is based
+on current `main` at `3ec559f`, in branch `codex/mauritius-fruit-drums`.
+
+- Clicking or pressing Enter/Space on either dodo-beak grabber picks up one
+  anonymous loose fruit, transfers it to that worm's basket opening and returns
+  the grabber. The male makes two small lifting attempts before carrying his
+  slightly larger fruit. The fitted clamp/harness stays in its user-selected
+  position while a temporary linkage reaches with the moving beak.
+- If baskets are off, the grabber enables them without resetting their stored
+  positions or sizes. The baskets otherwise remain quiet and freely adjustable.
+- Each ravanne plays its own short five-hit phrase using a CC0 frame-drum
+  recording. This is playful sampled percussion, not a recording of a ravanne
+  or a claim of a traditional Sega pattern. See `assets/audio/SOURCES.md`.
+- One activity at a time. Original artwork is restored on completion, Escape,
+  movement, resizing, hiding an accessory, changing the scene, entering drawing
+  mode, changing reduced-motion preference, leaving the page or hiding the tab.
+  Body bobbing pauses at its existing phase during the activity. Reduced motion
+  shows the fruit at the basket without travel; percussion is silent and still.
+- No public copy changes. The existing English-only exception remains.
+
+Validation: the new timing test, existing accessory-label and visit-state tests,
+JavaScript syntax checks and `git diff --check` pass. In the local browser both
+grabbers completed collections; all six copies passed Arrow/+ and individual
+Home reset; both grabbers passed direct pointer dragging. An adjusted male
+grabber retained x=4, y=0, scale=1.1 through mid-action Escape. Starting a drum
+cancelled collection and left exactly one effect group. Console checks found no
+warnings/errors. The source painting and accessory renderer are unchanged.
+
+Responsive DOM checks: viewport/page height 360/2507, 768/2427, 1024/1799,
+1440/1928 px; all six controls remained available and there was no horizontal
+overflow. These are page dimensions, not verified screenshot dimensions.
+The browser's full-page screenshot output duplicated the map and scaled content
+incorrectly; a second single-pass attempt also failed. Those captures were
+rejected, and normal viewport screenshots are not a replacement for full-page
+proof. Required complete-page visual validation, subjective listening, physical
+touch/pinch and alternate-browser testing remain pending. Martyna explicitly
+authorized deployment without further review on 2026-09-15. That instruction
+waives the pre-deployment review gate for this change; it does not turn the
+unperformed checks into verified results. Publication evidence is reported
+separately after the GitHub Pages build and live checks.
+
 Redesigned and locally verified on 2026-08-30. The preserved source painting is `game-of-worms/assets/source/mauritius-ju2909-painted-background-source.png`; the optimized runtime derivative is `game-of-worms/assets/mauritius-ju2909-painted-background.webp`. The production SVG set contains six separately constructed objects. Full-page phone, tablet, desktop and wide proofs were captured at 360, 768, 1024 and 1440 px viewport widths, with rendered page heights of 2473, 2433, 1805 and 1934 px and no horizontal overflow. All six objects passed Arrow, scale and isolated Home-reset checks. Catalogue, paired-geometry and environment audits passed during page initialization, and the browser console remained free of warnings and errors.
