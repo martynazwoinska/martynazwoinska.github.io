@@ -1,5 +1,5 @@
 import { drumHandOffset } from "./mauritius-drums.js?v=20260915-hand-drums-1";
-import { basketSlot, drawFruit, putBasketFruit } from "./mauritius-baskets.js?v=20260916-harvest-2";
+import { basketSlot, drawFruit, putBasketFruit } from "./mauritius-baskets.js?v=20260916-ground-fruit-1";
 // JU2909 only. Animate temporary copies; never write visitor position or scale.
 const NS = 'http://www.w3.org/2000/svg';
 export const GRABBER = 'mauritius-dodo-beak-fruit-grabber';
@@ -30,21 +30,29 @@ export function drumScore(male) {
   return male ? [220,700,940,1420,1900] : [220,700,1180,1420,1900];
 }
 
-export function fruitBatchFrame(ms,male,reduced=false) {
-  if(reduced)return {stage:'deposit',progress:1,effort:0,index:2,completed:3,done:ms>=700};
-  const first=male?4700:3800;
-  const index=ms<first?0:Math.min(2,1+Math.floor((ms-first)/2200));
-  const local=index===0?ms:(ms-first-(index-1)*2200)*3800/2200;
-  const frame=fruitFrame(local,index===0&&male);
-  return {...frame,index,completed:index,done:ms>=first+4400};
-}
-
 export function createMauritiusPlay(habitat, ensureBasket) {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   let active = null, raf = 0, context = null, buffer = null, loading = null, onset = 0, level = 1;
   const handles = piece => [GRABBER,DRUM].includes(piece?.dataset.accessoryFamily);
   const visible = piece => piece?.isConnected && !piece.closest('[hidden]');
   const find = (family,part) => habitat.querySelector(`.accessory-piece[data-accessory-family="${family}"][data-worm-part="${part}"]`);
+
+  function resetGround() {
+    cancel();
+    habitat.querySelector('[data-mauritius-ground]')?.remove();
+    if (!find(GRABBER,'primary')) return;
+    const root=habitat.querySelector('#worm-species');
+    const ground=add(root,'g',{'data-mauritius-ground':'','aria-hidden':'true','pointer-events':'none'});
+    for (const part of ['primary','companion']) {
+      const male=part==='companion';
+      for (let slot=0;slot<5;slot++) {
+        const x=(male?-55:400)+[0,30,-28,48,8][slot],y=285+[0,17,21,-14,-22][slot];
+        const radius=basketSlot(male,slot).r*(male ? .4 : .5);
+        const fruit=add(ground,'g',{'data-ground-part':part,'data-ground-slot':slot,'data-ground-x':x,'data-ground-y':y,'data-ground-radius':radius,transform:`translate(${x} ${y})`});
+        drawFruit(fruit,slot,radius);
+      }
+    }
+  }
 
   function prepareSound() {
     if (reduced.matches) return;
@@ -100,6 +108,8 @@ export function createMauritiusPlay(habitat, ensureBasket) {
     if (fruit && !visible(find(BASKET,piece.dataset.wormPart))) ensureBasket(piece);
     const basket = find(BASKET,piece.dataset.wormPart);
     if (fruit && !visible(basket)) return false;
+    const groundFruit=fruit&&habitat.querySelector(`[data-ground-part="${piece.dataset.wormPart}"]`);
+    if (fruit && !groundFruit) return true;
     // Measure at the resting size even when collection just enabled baskets.
     for (const item of [piece,basket]) {
       for (const animation of item?.closest('.accessory')?.getAnimations() || []) {
@@ -125,15 +135,12 @@ export function createMauritiusPlay(habitat, ensureBasket) {
       const origin = point(base,...mouth);
       const basketArt = basket.querySelector('.location-accessory-art');
       const basketMatrix=matrix(basketArt.querySelector('[data-basket-vessel]'));
-      const collected=Number(piece.dataset.mauritiusCollected||0);
-      const harvest=Array.from({length:3},(_,index)=>{
-        const slot=(collected+index)%5,landing=basketSlot(run.male,slot);
-        const target=point(basketMatrix,landing.x,landing.y);
-        const radius=run.male&&index===0?13:11;
-        const ground={x:(run.male?155:400)+[0,30,-28][index],y:310+[0,17,21][index]};
-        return {slot,target,ground,radius,carryEnd:{x:target.x,y:target.y-22},settled:false,
-          finalScale:Math.hypot(basketMatrix.a,basketMatrix.b)*landing.r/radius};
-      });
+      const slot=Number(groundFruit.dataset.groundSlot),landing=basketSlot(run.male,slot);
+      const target=point(basketMatrix,landing.x,landing.y);
+      const heavy=run.male&&slot===0, radius=Number(groundFruit.dataset.groundRadius);
+      const ground={x:Number(groundFruit.dataset.groundX),y:Number(groundFruit.dataset.groundY)};
+      const carryEnd={x:target.x,y:target.y-22};
+      const finalScale=Math.hypot(basketMatrix.a,basketMatrix.b)*landing.r/radius;
       const coupling = point(base,run.male?-84:-118,-1);
       const linkage = add(effects,'g');
       const arm = add(linkage,'path',{fill:'none',stroke:'#494238','stroke-width':5,'stroke-linecap':'round','stroke-linejoin':'round'});
@@ -148,20 +155,19 @@ export function createMauritiusPlay(habitat, ensureBasket) {
       for (const node of art.children) if (!node.matches(fixed)) hide(node);
       copy.querySelectorAll('.ju2909-woody-nut,.ju2909-nut-groove').forEach(node=>node.remove());
       const lower = copy.querySelector('.ju2909-dodo-lower-beak');
-      harvest.forEach((item,index)=>{
-        item.oval=add(effects,'g',{'data-mauritius-fruit':index,transform:`translate(${item.ground.x} ${item.ground.y}) scale(${item.finalScale})`});
-        drawFruit(item.oval,collected+index,item.radius);
-      });
-      const deposit=index=>{
-        const item=harvest[index];if(item.settled)return;
-        item.settled=true;item.oval.setAttribute('visibility','hidden');
-        putBasketFruit(basketArt,run.male,item.slot,collected+index);
+      hide(groundFruit);
+      const oval=add(effects,'g',{'data-mauritius-fruit':slot,transform:`translate(${ground.x} ${ground.y})`});
+      drawFruit(oval,slot,radius);
+      let settled=false;
+      const deposit=()=>{
+        if(settled)return;
+        settled=true;oval.setAttribute('visibility','hidden');
+        putBasketFruit(basketArt,run.male,slot,slot);
+        groundFruit.remove();
         piece.dataset.mauritiusCollected=String(Number(piece.dataset.mauritiusCollected||0)+1);
       };
       render = ms => {
-        const s = fruitBatchFrame(ms,run.male,reduced.matches);
-        for(let index=0;index<s.completed;index++)deposit(index);
-        const item=harvest[s.index],{ground,target,carryEnd,oval}=item;
+        const s = fruitFrame(ms,heavy,reduced.matches);
         let grip,where;
         if (s.stage==='reach') {grip=mix(origin,ground,s.progress);where=ground;}
         if (s.stage==='grip') {grip={x:ground.x+s.effort*Math.sin(ms/38)*1.1,y:ground.y-s.effort*7};where=grip;}
@@ -179,8 +185,9 @@ export function createMauritiusPlay(habitat, ensureBasket) {
         linkage.setAttribute('opacity',reduced.matches?0:Math.min(1,Math.hypot(dx,dy)/8));
         lower.setAttribute('transform',`rotate(${s.stage==='reach'||s.stage==='return'?12:0} 0 0)`);
         const entering=s.stage==='deposit'?s.progress:s.stage==='return'?1:0;
-        oval.setAttribute('transform',`translate(${where.x} ${where.y}) scale(${item.finalScale})`);
-        if(entering===1)deposit(s.index);
+        const fruitScale=1+(finalScale-1)*entering;
+        oval.setAttribute('transform',`translate(${where.x} ${where.y}) scale(${fruitScale})`);
+        if(entering===1)deposit();
         return s.done;
       };
     } else {
@@ -209,5 +216,5 @@ export function createMauritiusPlay(habitat, ensureBasket) {
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});
   window.addEventListener('pagehide',cancel);window.addEventListener('resize',cancel);
   reduced.addEventListener('change',cancel);
-  return {handles,start,cancel,get active(){return !!active;}};
+  return {handles,start,cancel,resetGround,get active(){return !!active;}};
 }

@@ -1,4 +1,4 @@
-import { drawMauritiusBasket } from "./mauritius-baskets.js?v=20260916-harvest-2";
+import { drawMauritiusBasket } from "./mauritius-baskets.js?v=20260916-ground-fruit-1";
 import { drawDodoGrabber } from "./mauritius-dodo.js?v=20260916-dodo-2";
 import { drawMauritiusDrum } from "./mauritius-drums.js?v=20260915-hand-drums-1";
 import { drawWormbook } from "./claremont-book-art.js?v=20260909-wormbook-4";

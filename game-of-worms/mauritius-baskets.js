@@ -49,5 +49,4 @@ export function drawMauritiusBasket(group,male) {
   path(g,`M-${rim} -18Q0 ${male?21:25} ${rim} -18`,'none','#765335',10);
   path(g,`M-${rim} -18Q0 ${male?21:25} ${rim} -18`,'none','#e1bd85',5);
   path(g,male?'M-42 62Q0 81 43 62':'M-68 64Q0 84 68 64','none','#785535',4);
-  putBasketFruit(group,male,5,1);
 }

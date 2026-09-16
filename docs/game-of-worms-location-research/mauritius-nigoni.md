@@ -151,6 +151,54 @@ The existing display key `Mauritius · JU2909` remains unchanged to preserve sav
 
 ## Implementation status
 
+### Deployment approval: ground fruit and individual clicks, 2026-09-16
+
+Martyna approved deployment of the exact `20260916-ground-fruit-4` preview.
+Both baskets begin empty, ten fruits begin outside, and every pickup requires
+a separate activation. The local-only status in the development notes below
+is superseded by this approval. No artwork or public wording changed after
+approval. Publication is verified separately against the Pages run and live files.
+
+### Empty baskets and visible ground fruit, 2026-09-16 — local follow-up
+
+The scene now starts with both baskets empty and five visible fruits on the
+ground for each worm. Each dodo activation moves one of those fruits into its
+basket. A cancelled pickup restores the same fruit to the ground. The scene
+contains a finite ten-fruit harvest; revisiting Mauritius resets it. The fruit
+drawings and basket construction are unchanged, apart from removing the
+pre-filled fruit. The female's ground fruit sits above the scene label.
+This supersedes the starting fruit and replenishing slots described below.
+This follow-up is local and has not been deployed.
+
+Validated empty baskets with ten outside fruits, one-for-one transfer for both
+worms, repeated collection and cancellation restoring the unfinished fruit.
+Collected all ten fruits with ten activations: five in each basket, zero on the
+ground. An extra activation did not create fruit. Leaving Mauritius removed
+the ground layer; returning restored ten outside fruits and empty baskets.
+Responsive viewport inspection covered 360, 768, 1024 and 1440 px; the ground
+piles were refined to clear the baskets and mobile label. No horizontal overflow
+or console warnings/errors was found. Full-page capture remains unavailable as
+documented below. Timing, label, accessory-visit, syntax and diff checks pass.
+
+### One click per fruit, 2026-09-16 — local follow-up
+
+At Martyna's request, each grabber activation now collects exactly one fruit,
+deposits it and returns to rest. The next fruit requires another click, Enter
+or Space. Successive activations vary the ground position and fruit colour,
+and retain the bounded basket contents. The male pauses for two lifting
+attempts when collecting his oversized fruit. Reduced motion also deposits
+only one fruit per activation. This supersedes the automatic three-fruit
+sequence below; the approved drawings, positions, sizes and labels are unchanged.
+This follow-up is local and has not been deployed.
+
+Validation: browser checks confirmed one retained delivery per activation for
+each worm, no automatic follow-up after resting, Enter/Space activation, and
+Escape cancellation without losing earlier fruit or leaving temporary effects.
+The existing timing, label and accessory-visit checks, JavaScript syntax check
+and diff whitespace check pass. No browser console warnings/errors were found.
+Normal viewport inspection confirmed the painting and approved accessories.
+No new full-page capture or audio listening claim is made for this behaviour-only change.
+
 ### Final approval, 2026-09-16
 
 Martyna explicitly requested deployment of the final `20260916-harvest-2`
