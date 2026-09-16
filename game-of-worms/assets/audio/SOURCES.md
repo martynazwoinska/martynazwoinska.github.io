@@ -510,3 +510,24 @@ first gift gesture. Wrapping/opening cues are bounded and mutually exclusive
 with eating/cycling. Escape, movement, resizing, scene changes and page hiding
 stop them. File/hash, timing, level, lazy-loading and cleanup tests passed.
 Subjective listening remains unverified.
+# Guadeloupe drum taps, 2026-09-16
+
+The following recordings by **MrRentAPercussionist** are licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), verified on 16 September 2026.
+The source-linked HQ MP3 previews are preserved unchanged.
+
+| File | Recording | SHA-256 |
+| --- | --- | --- |
+| `guadeloupe-low.mp3` | [LP Congas Tumbadora Open.wav](https://freesound.org/people/MrRentAPercussionist/sounds/455507/) | `2b6b0a5913e72097a15dfee4d7fe6a75dd62a7e8f2abb1caeac7d4c2fe932492` |
+| `guadeloupe-open.mp3` | [LP Congas Quinto Open Tone.wav](https://freesound.org/people/MrRentAPercussionist/sounds/455508/) | `dba97b8c122fcf9d23db982164c2a89bfb16fa1720f013ec725b6a94ac39560f` |
+| `guadeloupe-muted.mp3` | [LP Congas Quinto Muted Slap.wav](https://freesound.org/people/MrRentAPercussionist/sounds/455509/) | `9b2da865f3c47b80f66e4dd5631bf96e46090bd925efa177a289793b26d99acb` |
+
+These are conga recordings used as hand-drum foley, not recordings of ka drums
+or a traditional gwoka performance. Playback trims leading silence, adjusts
+gain, and fades the end of each excerpt (at most 0.65 seconds), without changing
+pitch. Each click starts a twelve-beat phrase, with different rhythms for the
+two drums. Beats are scheduled on the audio clock with varied accents. Tapping
+the same drum during its phrase does not restart it; the other drum swaps
+roles and cancels the previous phrase. No idle or automatic repeating loop.
+Samples load after a gesture. Movement, scene changes, Escape, resizing and
+page hiding cancel playback. Subjective listening remains unverified.

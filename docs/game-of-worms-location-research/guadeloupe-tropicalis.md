@@ -1,3 +1,136 @@
+# Current interaction pass: 2026-09-16
+
+**Final gwoka-11 preview approved for deployment on 2026-09-16.**
+The local-only entries below record earlier checkpoints; the user has now
+authorized publication of the final artwork, interaction and English-only copy.
+
+## Revised local preview: gwoka-9
+
+Martyna rejected gwoka-2: one strike per click, rigid jerking and unsatisfactory
+hummingbird costumes. This revision addresses all three points.
+
+- One click plays a twelve-beat phrase over a 4.1-second action. The two drums
+  have different rhythms with low, open and muted recorded tones and varied
+  accents. Beats are scheduled on the audio clock.
+- The larger hermaphrodite dances when the smaller male's drum is clicked.
+  Clicking the other drum swaps roles. Clicking an already-playing drum does
+  not restart the movement or pile up sound.
+- A smooth travelling wave bends the actual middle of the worm's path. Face
+  and tail-tip coordinates stay anchored. The fitted costume bends with the
+  body; wing feathers move together around their shoulder attachments.
+- Completely redrawn costumes: fitted emerald vests, layered pointed wings,
+  purple throat feathers, tail fans and long costume beaks. The two patterns
+  have different silhouettes and feather arrangements.
+- Reference: [BirdsCaribbean, Purple-throated Carib](https://www.birdscaribbean.org/2020/05/from-the-nest-day-28/).
+  Anatomy and plumage guided the original drawings; no source artwork copied.
+  These are imaginative costumes, not a species identification or bird sex
+  assignment for the worms.
+- Original background and drum shells retained. Existing visitor
+  positions and sizes retained. Reduced motion uses a still response.
+- Sound remains licensed conga foley, not an authentic ka-drum recording or a
+  reconstruction of a traditional gwoka performance. Sources and hashes:
+  `game-of-worms/assets/audio/SOURCES.md`.
+- No new public wording beyond the earlier English-only **Madras crowns** and
+  audio credit. The Game intentionally has no Swedish or Polish interface.
+
+## Refinement and verification
+
+- First in-page draft exposed an oversized empty bounding box that displaced
+  the vest. Corrected the transform origin and used individual drawn-path
+  bounds for clamping. Touch padding is limited to the vest, avoiding the empty
+  area between wings and beak. This change is scoped to the Guadeloupe costume.
+- Replaced the flat throat patch highlight with overlapping feather marks,
+  lengthened the visible beaks and preserved crown layering during dance.
+- `node scripts/check-guadeloupe-play.cjs` passed: twelve-beat audio timing,
+  hand contact, anchored face/tail, continuous visible body wave, reduced motion,
+  both costume path sets, cancellation, loading reuse and failed-download retry.
+- `node scripts/check-mauritius-play.cjs` passed as a focused regression.
+- JavaScript syntax checks and `git diff --check` passed.
+- Browser: actual pointer click, Enter/Space, both roles, repeated clicks,
+  Escape and automatic cleanup checked. The moving body has deformed path data
+  and no rigid transform on the dancer group. No console errors or warnings.
+- Accessory styles matched after a completed phrase. A costume moved 4 px and
+  scaled to 1.1 retained those settings during playback. Test changes restored.
+- Scene screenshots inspected at viewport widths 360, 768, 1024 and 1440 px.
+  No horizontal overflow. Background and all six accessories remain visible.
+  The Game retains its fixed light palette.
+- **Full-page proof limitation:** the capture tool returned duplicated/scaled
+  page sections and blank space. This is not a valid full-page proof. Normal
+  viewport captures worked and were used for scene inspection. No claim of
+  exact-width full-page validation.
+- Subjective listening and physical touchscreen/pinch testing remain manual.
+
+## Crown follow-up
+
+- Replaced the flat triangular crowns with a pleated madras fan for the larger
+  worm and an independently drawn low wrap with a side knot for the smaller one.
+  Checked fabric fills stay inside each fold; folded edges and shadowed pleats
+  communicate cloth. Both wraps fit above the eyes and follow the idle head bob.
+- Construction reference: [Dody cotton fan coiffe](https://dody.shop/coiffes-femmes/coiffe-madras-eventail-hibiscus_724.html).
+  The photograph guided fabric construction only; no image copied into the game.
+  These original dress-up designs do not reproduce a specific ceremonial coiffe
+  or imply the coded meaning of traditional point arrangements.
+- Refinement pass deepened the fan folds and clarified the small tied ends.
+  During testing the dance clone lost its pattern fill; fixed by retaining
+  separately named pattern definitions in the visible clone.
+- Preview gwoka-9: inspected the scene at 360, 768, 1024 and 1440 px, with no
+  horizontal overflow. Checked both dancer roles, keyboard crown movement and
+  sizing, and retention of a 4 px / 1.1 scale adjustment through playback.
+  Test adjustments restored. No browser warnings or errors.
+- Full-page capture was retried at 360 px and still produced duplicated sections
+  and blank space. It is not a valid full-page proof; viewport proofs only.
+- Created `game-of-worms/guadeloupe-crowns.js`; changed the accessory renderer,
+  bounds handling, clone pattern handling, stylesheet and module cache versions.
+  No public copy changes, files deleted, commit or deployment in this follow-up.
+
+## Costume detail follow-up: gwoka-11
+
+- Martyna approved the gwoka-9 hats and requested richer costumes. Crown file
+  SHA-256 remains `92F129203B7FB6FC54013E3B9AD706B796187F5F36962D69EF041A55056A91DB`.
+- Added overlapping emerald body feathers, layered wing coverts, individually
+  shaped purple collar feathers and longer internal tail feathers. Each worm
+  retains its own arrangement and existing costume fit. New body details bend
+  with the vest; shoulder details follow the existing wing hinges.
+- Refinement made collar feathers broader and clearer at the default size and
+  added restrained shaft/barb details to the long wing feathers.
+- Existing BirdsCaribbean reference informed feather structure; no source
+  artwork copied, and no new biological or public-facing copy claims.
+- Final scene inspected at 360, 768, 1024 and 1440 px. No horizontal overflow;
+  both dance roles retain the new featherwork and approved crowns. Syntax and
+  the focused Guadeloupe tests pass; no console errors or warnings. The prior
+  full-page screenshot tool limitation remains; these are viewport checks.
+- Changed `guadeloupe-costumes.js`, module cache keys in `index.html`, `game.js`,
+  `accessory-designs.js` and `guadeloupe-play.js`, plus the four review/status
+  documents. No files created or deleted for this follow-up. No commit or deploy.
+
+## Files and publication
+
+Worktree: `output/guadeloupe-nic203`; branch: `codex/guadeloupe-drum-dance`.
+Based on main `6b51cc537540e2ea476d9794d7afe220dd3b0b74`.
+Preview: http://127.0.0.1:8767/game-of-worms/?preview=20260916-gwoka-11
+Deployment authorized; publication is being verified. Unrelated checkout work remains intact.
+
+Created across this Guadeloupe revision:
+
+- `game-of-worms/guadeloupe-play.js`
+- `game-of-worms/guadeloupe-dance.js`
+- `game-of-worms/guadeloupe-costumes.js`
+- `game-of-worms/guadeloupe-crowns.js`
+- `game-of-worms/assets/audio/guadeloupe-{low,open,muted}.mp3`
+- `scripts/check-guadeloupe-play.cjs`
+
+Changed: `game.js`, `accessory-designs.js`, `index.html`, `style.css` and
+`assets/audio/SOURCES.md` under `game-of-worms/`; `PROJECT_STATUS.md`, the
+scene queue, art catalogue and this dossier. Deleted files: none.
+
+The historical notes below describe older inventories and retired objects.
+They are not the current production contract.
+
+---
+
+
+## Historical research, 2026-08-10
+
 # Guadeloupe *Caenorhabditis tropicalis* NIC203 location research and art brief
 
 Last updated: 2026-08-10

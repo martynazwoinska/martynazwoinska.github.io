@@ -1,15 +1,31 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-09-13
+Last updated: 2026-09-16
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 11 left to check in the current interaction
-pass and 20 completed, including the approved São Tomé revision.
+It tracks all 31 active scenes: 9 left to check in the current interaction
+pass and 22 completed, including Mauritius JU2909 and Guadeloupe NIC203.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+### Guadeloupe NIC203 drum and dance, deployment approved, 2026-09-16
+
+Martyna rejected the first single-strike, rigid-body animation and detached
+costumes. The revision plays a twelve-beat phrase per click over 4.1 seconds;
+the other worm bends through its middle while its face and tail tip stay
+anchored. Tapping the same drum during a phrase leaves it running; tapping the
+other switches roles. Redesigned costumes have fitted feather vests, distinct
+tapered wings, throat feathers, tails and beaks. Follow-up adds overlapping body feathers, wing coverts and fuller collar/tail detail; approved hats remain byte-identical. Crowns now use distinct pleated madras and knotted cloth wraps above the eyes; background retained.
+Preview: `http://127.0.0.1:8767/game-of-worms/?preview=20260916-gwoka-11`.
+Four-width scene screenshots, interaction checks and targeted tests pass.
+Full-page captures still contain duplicated/scaled sections; subjective
+listening and physical touch testing are unverified. Branch
+`codex/guadeloupe-drum-dance`: final preview approved for deployment on 2026-09-16.
+Next review: New Taipei City NIC1648; retain the fitted boot geometry.
+Details: [Guadeloupe dossier](docs/game-of-worms-location-research/guadeloupe-tropicalis.md).
 
 ### São Tomé glide and leaf hats, deployment approved, 2026-09-13
 

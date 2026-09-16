@@ -1,6 +1,6 @@
 # Game of Worms scene review checklist
 
-Updated: 2026-09-15. Use this file when Martyna asks which scene is next.
+Updated: 2026-09-16. Use this file when Martyna asks which scene is next.
 
 ## Scope and counts
 
@@ -9,8 +9,8 @@ earlier illustration revisions. It is not a new claim that all older scenes
 have poor drawings or require animations.
 
 - 31 active scenes, counted from the current accessory catalogue.
-- 10 scenes remain to check on this pass's checklist.
-- 21 have received the recent interaction pass, including Mauritius JU2909. Leave them closed unless Martyna explicitly reopens one.
+- 9 scenes remain to check on this pass's checklist.
+- 22 have received the recent interaction pass, including Mauritius JU2909. Leave them closed unless Martyna explicitly reopens one.
 - Mauritius final accessory and three-fruit revision was approved for deployment on 2026-09-16. This closes the requested follow-up; full-page capture and listening limitations remain documented.
 - Mauritius follow-up approved for deployment, 2026-09-16: empty baskets and ten fruits outside, collected one per click. Final preview: `20260916-ground-fruit-4`.
 - Oʻahu ECA789's workshop is live at `47b465c`. The final shared gift, mould removal and eating audio follow-up is approved for deployment.
@@ -32,7 +32,6 @@ Do not reopen completed scenes just to decide the next target.
 
 | Order | Species | Location | Status | Starting point for the single review |
 | --- | --- | --- | --- | --- |
-| 9 | tropicalis | Guadeloupe · NIC203 | To check | Hummingbird costumes, madras crowns and gwo ka drums. Check fit and any existing actions before changing them. |
 | 10 | tropicalis | New Taipei City, Taiwan · NIC1648 | To check | Magpie kites, fitted tail boots and bubble-tea packs. Preserve the tailored boot geometry unless a specific issue is found. |
 | 11 | briggsae | Réunion Island · JU1375 | To check | Vanilla wraps, sugarcane juice and gecko companions. Keep the approved regional concepts. |
 | 12 | nigoni | Praslin, Seychelles · YR106 | To check | Tortoise-shell costumes, caps and bell bracelets. Preserve the already-adjusted shell alignment. |
@@ -58,6 +57,7 @@ browser or physical device.
 
 | Species | Location | Status | Work already covered |
 | --- | --- | --- | --- |
+| tropicalis | Guadeloupe · NIC203 | Done, deployment approved | Approved 2026-09-16, preview `20260916-gwoka-11`: twelve-beat drum phrases, smooth mid-body dancing, fitted layered hummingbird costumes and folded madras crowns. User positions/sizes and background preserved. See the Guadeloupe dossier for validation and capture/listening limitations. |
 | nigoni | Mauritius · JU2909 | Done, final revision approved for deployment | Approved 2026-09-16: hand-played ravanne drums, clearer dodo grabbers and open woven baskets that begin empty. Ten outside fruits are collected one per click and remain in the baskets. Short labels: Ravanne drums, Fruit baskets, Dodo grabbers. Painting and user adjustment controls preserved. See the Mauritius dossier for QA and limitations. |
 | nigoni | São Tomé · JU2484 | Done, deployment approved | Final contextual render approved 2026-09-13. Both worms board one snail, ride on its shell and climb off. Separate leaf reveal and recorded rustling. Flags removed, parasols and painting preserved. Approved general phoresy sentence added to Tiny surprise. See the JU2484 dossier for evidence and QA. |
 | tropicalis | Pohnpei, Micronesia · QG4739 | Done, deployment approved | Approved 2026-09-13. Real birdwatching optics, one shared leaf sled and fitted camouflage capes. Recorded lorikeet call and leaf rustling. Painting and collection copy unchanged. Capture and listening limitations are documented in the location dossier. |

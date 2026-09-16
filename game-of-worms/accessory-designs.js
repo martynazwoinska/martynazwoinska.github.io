@@ -1,3 +1,6 @@
+import { drawGuadeloupeCrown } from "./guadeloupe-crowns.js?v=20260916-gwoka-11";
+import { drawGuadeloupeCostume } from "./guadeloupe-costumes.js?v=20260916-gwoka-11";
+import { drawGuadeloupeHands } from "./guadeloupe-play.js?v=20260916-gwoka-11";
 import { drawMauritiusBasket } from "./mauritius-baskets.js?v=20260916-ground-fruit-1";
 import { drawDodoGrabber } from "./mauritius-dodo.js?v=20260916-dodo-2";
 import { drawMauritiusDrum } from "./mauritius-drums.js?v=20260915-hand-drums-1";
@@ -62,7 +65,7 @@ const rows = [
   ["nigoni", "Lombok, Indonesia · HPT26", "Swimming goggles", "hpt26-swimming-goggles", "Ficus fruit transformations", "lingsar-ficus-fruit-transformation", "Splashing pool", "hpt26-splashing-pool"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "Balinese endek wrap", "ju1873-balinese-endek-wrap", "Balinese gamelan gong", "ju1873-balinese-gamelan-gong"],
   ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Flower bait", "qg2726-flower-bait", "Leaf cutting", "qg2726-leaf-cutting"],
-  ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras carnival crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
+  ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
   ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "Gift wrapping", "eca789-chocolate-gifts", "Chocolate tasting", "eca789-chocolate-tasting", "Chocolate bike", "eca789-chocolate-bike"],
   ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Taiwan blue-magpie kites", "nic1648-taiwan-blue-magpie-kites", "single-tail rain boots", "nic1648-single-tail-rain-boots", "bubble-tea jetpacks", "nic1648-bubble-tea-jetpacks"],
   ["tropicalis", "Pohnpei, Micronesia · QG4739", "Birdwatching", "qg4739-birdwatching", "Leaf sled", "qg4739-shared-leaf-sled", "Camouflage capes", "qg4739-camouflage-cape"],
@@ -4513,34 +4516,11 @@ function drawGuadeloupeNIC203Accessory(group, item, companion) {
     node.textContent = value;
   };
   if (item.family === "guadeloupe-hummingbird-costume") {
-    if (companion) {
-      path(group,"M-8-42Q-52-75-76-24Q-50-10-18 7Q-41 14-57 45Q-23 43 2 20Z","gua-hummingbird-wing");
-      path(group,"M8-35Q47-63 69-17Q43-7 16 8Q36 18 49 43Q20 39-2 19Z","gua-hummingbird-wing-alt");
-      path(group,"M-15-19Q0-32 15-19L18 24Q0 42-18 24Z","gua-hummingbird-mantle");
-      path(group,"M-11 10Q0-3 11 10Q0 31-11 10Z","gua-hummingbird-throat");
-      path(group,"M-9 25L-23 64L0 48L21 67L10 25Z","gua-hummingbird-tail");
-    } else {
-      path(group,"M-14-51Q-72-91-108-25Q-68-15-27 12Q-65 24-82 66Q-31 57 5 25Z","gua-hummingbird-wing");
-      path(group,"M14-47Q74-86 108-18Q67-12 27 13Q66 25 82 67Q31 58-5 25Z","gua-hummingbird-wing-alt");
-      [-73,-50,-28,28,51,74].forEach((x,i)=>path(group,`M${x} ${i<3?-30:-24}Q${x+(x<0?-19:19)} ${i%2?5:15} ${x+(x<0?-7:7)} ${i%2?41:52}`,"gua-hummingbird-feather"));
-      path(group,"M-24-28Q0-48 24-28L27 31Q0 53-27 31Z","gua-hummingbird-mantle");
-      path(group,"M-17 4Q0-14 17 4Q0 34-17 4Z","gua-hummingbird-throat");
-      path(group,"M-15 31L-37 87L0 65L35 89L15 31Z","gua-hummingbird-tail");
-    }
+    drawGuadeloupeCostume(group, companion);
     return true;
   }
   if (item.family === "guadeloupe-madras-carnival-crown") {
-    if (companion) {
-      path(group,"M-47 28Q-38-18-17-42L0-69L16-39Q39-18 48 28Q0 45-47 28Z","gua-madras-crown");
-      line(group,"M-40-3H40M-31-27H29M-20 28V-39M4 34V-61M28 29V-26","gua-madras-check");
-      path(group,"M-50 25Q0 47 50 25L44 43Q0 61-44 43Z","gua-madras-band");
-      add(group,"circle",{class:"gua-crown-jewel",cx:0,cy:35,r:9});
-    } else {
-      path(group,"M-75 31Q-65-18-35-48L-10-81L9-42L36-72L48-36Q69-9 77 31Q0 55-75 31Z","gua-madras-crown");
-      line(group,"M-68 1H69M-57-26H56M-38 34V-45M-7 45V-76M24 42V-55M52 35V-24","gua-madras-check");
-      path(group,"M-79 27Q0 60 79 27L70 52Q0 78-70 52Z","gua-madras-band");
-      [-36,0,36].forEach((x,i)=>add(group,"circle",{class:i===1?"gua-crown-jewel":"gua-crown-jewel-alt",cx:x,cy:47,r:i===1?11:8}));
-    }
+    drawGuadeloupeCrown(group, companion);
     return true;
   }
   if (item.family === "guadeloupe-gwoka-drum") {
@@ -4554,7 +4534,7 @@ function drawGuadeloupeNIC203Accessory(group, item, companion) {
       line(group,"M-37-43Q0-24 35-42M-34 16Q0 35 33 16","gua-drum-rope-cross");
       path(group,"M-35 3Q0 21 34 3","gua-drum-band");
       add(group,"circle",{class:"gua-drum-medallion",cx:0,cy:11,r:8});
-      line(group,"M44-61L62-16M49-59L67-19","gua-drum-stick");
+      drawGuadeloupeHands(group, true);
     } else {
       path(group,"M-52-49Q0-69 52-49L44 64Q0 88-44 64Z","gua-drum-body");
       path(group,"M-35-57L-29 69Q-16 77-7 77L-10-66Z","gua-drum-stave-alt");
@@ -4566,7 +4546,7 @@ function drawGuadeloupeNIC203Accessory(group, item, companion) {
       path(group,"M-48-4Q0 20 47-4","gua-drum-band");
       add(group,"circle",{class:"gua-drum-medallion",cx:0,cy:9,r:11});
       path(group,"M-66-43Q-87 7-62 54M66-43Q87 7 62 54","gua-drum-harness");
-      line(group,"M61-70L87-13M69-67L94-8","gua-drum-stick");
+      drawGuadeloupeHands(group, false);
     }
     return true;
   }
@@ -6242,7 +6222,7 @@ function renderPiece(target, item, wormPart) {
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
-  const isBodyFittedCloth = ["ju2484-leaf-hats", "qg4739-camouflage-cape", "qg2904-safety-harness", "qg130-bath-towels", "ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
+  const isBodyFittedCloth = ["guadeloupe-madras-carnival-crown", "guadeloupe-hummingbird-costume", "ju2484-leaf-hats", "qg4739-camouflage-cape", "qg2904-safety-harness", "qg130-bath-towels", "ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
     : isBodyFittedCloth || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });
