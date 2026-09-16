@@ -395,7 +395,7 @@ The following simplified, recognizable object sets supersede the earlier abstrac
 - **Praslin YR106:** giant-tortoise shell costumes; black-parrot carnival caps; Seychelles carnival bell bracelets.
 - **São Tomé JU2484:** São Tomé chocolate bars; birdsong music boxes; begonia stained-glass parasols.
 - **Mahahual JU2617:** reef-ruffle swim costumes; Caribbean sun spectacles; sea-grape beach parasols.
-- **Mauritius JU2909:** wriggle-powered ravanne drums; Vacoas fruit-gathering tail baskets; dodo-beak fruit grabbers.
+- **Mauritius JU2909:** final follow-up approved for deployment, 2026-09-16: **Ravanne drums**, **Fruit baskets**, **Dodo grabbers**. Drums use hand strikes and shallow wooden hoops. Grabbers have domed grey heads without crests, hooked bills, separate lower jaws, brass pivots and articulated support arms. Baskets now have open rims, tapered woven walls and distinct handles (one tall arch / two side handles); three-fruit batches leave a visible pile behind the front rim. All pairs are separately constructed; the painting is unchanged. This approved revision supersedes the older construction descriptions in row 21 below. See the Mauritius dossier for validation and preview limitations.
 - **Ho Chi Minh City JU4356:** carambola sample trays; ITS2 DNA cards; tree survey calipers.
 - **Lombok HPT26 (approved 2026-09-12):** Swimming goggles, Ficus fruit transformations and one shared Splashing pool. Two user-triggered activities and one static accessory.
 - **Barro Colorado QG2726:** Gustavia flower headpieces; Golden Fleece capes; forest-census map fans.

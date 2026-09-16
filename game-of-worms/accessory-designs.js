@@ -1,3 +1,6 @@
+import { drawMauritiusBasket } from "./mauritius-baskets.js?v=20260916-harvest-2";
+import { drawDodoGrabber } from "./mauritius-dodo.js?v=20260916-dodo-2";
+import { drawMauritiusDrum } from "./mauritius-drums.js?v=20260915-hand-drums-1";
 import { drawWormbook } from "./claremont-book-art.js?v=20260909-wormbook-4";
 import { drawLombokSwim, swimLayouts } from "./lombok-swim-art.js?v=20260912-swim-1";
 import { drawCanopyAccessory, canopyLayouts } from "./queensland-art.js?v=20260913-canopy-1";
@@ -54,7 +57,7 @@ const rows = [
   ["nigoni", "Praslin, Seychelles · YR106", "giant-tortoise shell costumes", "praslin-giant-tortoise-shell-costume", "black-parrot carnival caps", "praslin-black-parrot-carnival-cap", "Seychelles carnival bell bracelets", "praslin-seychelles-carnival-bell-bracelet"],
   ["nigoni", "São Tomé · JU2484", "Snail ride", "ju2484-snail-ride", "Lift the leaf", "ju2484-leaf-encounter", "Leaf hats", "ju2484-leaf-hats"],
   ["nigoni", "Mahahual, Mexico · JU2617", "reef-ruffle swim costumes", "mahahual-reef-ruffle-swim-costumes", "Caribbean sun spectacles", "mahahual-caribbean-sun-spectacles", "sea-grape beach parasols", "mahahual-sea-grape-beach-parasols"],
-  ["nigoni", "Mauritius · JU2909", "wriggle-powered ravanne drums", "mauritius-ravanne-crawler-drum", "Vacoas fruit-gathering tail baskets", "mauritius-vacoas-tail-scoop", "dodo-beak fruit grabbers", "mauritius-dodo-beak-fruit-grabber"],
+  ["nigoni", "Mauritius · JU2909", "ravanne drums", "mauritius-ravanne-crawler-drum", "fruit baskets", "mauritius-vacoas-tail-scoop", "dodo grabbers", "mauritius-dodo-beak-fruit-grabber"],
   ["nigoni", "Ho Chi Minh City · JU4356", "Scooter", "ju4356-shared-scooter", "Starfruit", "ju4356-starfruit-preparation", "Vietnamese coffee", "ju4356-phin-coffee"],
   ["nigoni", "Lombok, Indonesia · HPT26", "Swimming goggles", "hpt26-swimming-goggles", "Ficus fruit transformations", "lingsar-ficus-fruit-transformation", "Splashing pool", "hpt26-splashing-pool"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "Balinese endek wrap", "ju1873-balinese-endek-wrap", "Balinese gamelan gong", "ju1873-balinese-gamelan-gong"],
@@ -3398,106 +3401,19 @@ function drawMauritiusJU2909Accessory(group, item, companion) {
   if (!mauritiusJU2909RendererIds.has(item.id)) return false;
   group.dataset.renderer = item.family;
   group.classList.add("mauritius-ju2909-accessory", companion ? "ju2909-companion" : "ju2909-primary");
-  const rivet = (parent, cx, cy, radius = 4) => add(parent, "circle", { class: "ju2909-rivet", cx, cy, r: radius });
-  const weave = (parent, lines) => lines.forEach(d => path(parent, d, "ju2909-weave-line"));
 
   if (item.family === "mauritius-ravanne-crawler-drum") {
-    if (companion) {
-      const drum = add(group, "g", { transform: "rotate(-12 -2 -2)" });
-      add(drum, "ellipse", { class: "ju2909-ravanne-rim-back", cx: -2, cy: -3, rx: 68, ry: 56 });
-      add(drum, "ellipse", { class: "ju2909-ravanne-skin companion-skin", cx: -2, cy: -3, rx: 55, ry: 44 });
-      path(drum, "M-60-27Q-75-5-61 24M59-28Q72-4 58 24", "ju2909-ravanne-sidewall");
-      [-49, -22, 12, 43].forEach((cx, index) => rivet(drum, cx, index % 2 ? 43 : -46, 3.5));
-      path(drum, "M-51-21Q-16 8 29-24M-42 25Q-5-5 44 20", "ju2909-ravanne-skin-mark");
-      path(drum, "M-48-39L-39-27M-18-52L-14-38M18-49L13-36M47-33L38-23M-51 34L-41 25M-12 47L-9 35M23 43L19 31M50 27L40 19", "ju2909-ravanne-lacing");
-      path(group, "M-47-58Q-18-79 13-57", "ju2909-ravanne-harness");
-      path(group, "M42-52L72-91M36-47L66-86", "ju2909-beater-shaft");
-      add(group, "ellipse", { class: "ju2909-beater-head", cx: 72, cy: -94, rx: 12, ry: 8, transform: "rotate(-14 72 -94)" });
-      path(group, "M-52 38Q-23 62 12 50", "ju2909-ravanne-harness accent");
-    } else {
-      const drum = add(group, "g", { transform: "rotate(8 0 0)" });
-      add(drum, "ellipse", { class: "ju2909-ravanne-rim-back", cx: 0, cy: 0, rx: 92, ry: 74 });
-      path(drum, "M-84-37Q-105-2-83 42M84-38Q105-3 82 42", "ju2909-ravanne-sidewall");
-      add(drum, "ellipse", { class: "ju2909-ravanne-skin", cx: 0, cy: 0, rx: 76, ry: 59 });
-      [-68, -34, 0, 34, 68].forEach((cx, index) => rivet(drum, cx, index % 2 ? 59 : -61, 4.3));
-      [-38, 0, 38].forEach((cx, index) => rivet(drum, cx, index === 1 ? 68 : -67, 3.6));
-      path(drum, "M-63-31Q-24 8 19-36M-61 31Q-13-13 53 27M-18-51Q16-20 62-43", "ju2909-ravanne-skin-mark");
-      path(drum, "M-69-49L-58-35M-37-64L-31-47M0-68V-51M38-62L31-46M69-45L57-33M-71 48L-58 35M-38 63L-31 46M0 68V51M39 62L31 45M70 45L57 32", "ju2909-ravanne-lacing");
-      path(group, "M-71-74Q-20-105 43-76M-73 61Q-21 94 46 69", "ju2909-ravanne-harness");
-      path(group, "M-51-83L-77-121M-39-87L-65-126M52-74L83-109M63-67L93-101", "ju2909-beater-shaft");
-      add(group, "ellipse", { class: "ju2909-beater-head", cx: -72, cy: -126, rx: 14, ry: 9, transform: "rotate(22 -72 -126)" });
-      add(group, "ellipse", { class: "ju2909-beater-head accent", cx: 90, cy: -106, rx: 14, ry: 9, transform: "rotate(-22 90 -106)" });
-      path(group, "M-20 78L-11 99L3 82L15 103L28 77", "ju2909-ravanne-spring");
-    }
+    drawMauritiusDrum(group, companion);
     return true;
   }
 
   if (item.family === "mauritius-vacoas-tail-scoop") {
-    if (companion) {
-      path(group, "M-72-42Q-28-62 17-39Q49-19 58 22Q32 54-8 66Q-50 55-72 20Z", "ju2909-vacoas-basket companion-basket");
-      path(group, "M-74-42Q-28-72 20-44Q50-25 61 18", "ju2909-vacoas-rim");
-      path(group, "M-63-20Q-21-42 45-12M-61 7Q-13-12 51 14M-48 35Q-5 24 35 35", "ju2909-weave-band");
-      weave(group, ["M-45-51Q-39 0-6 59", "M-17-56Q-7-4 18 52", "M11-47Q20-6 42 27"]);
-      path(group, "M-76-15Q-103-2-96 29Q-79 44-59 34", "ju2909-tail-clasp");
-      path(group, "M-4 60Q18 82 43 63", "ju2909-basket-foot");
-      add(group, "ellipse", { class: "ju2909-basket-mouth", cx: 55, cy: 12, rx: 16, ry: 30, transform: "rotate(-20 55 12)" });
-      path(group, "M48-2Q80-18 95 8Q83 30 57 35", "ju2909-fruit-lip");
-      add(group, "ellipse", { class: "ju2909-gathered-fruit", cx: 82, cy: 9, rx: 16, ry: 12, transform: "rotate(12 82 9)" });
-    } else {
-      path(group, "M-104-50Q-48-79 18-52Q78-28 98 20Q71 73 10 87Q-55 82-99 39Z", "ju2909-vacoas-basket");
-      path(group, "M-107-49Q-49-91 24-57Q82-31 102 18", "ju2909-vacoas-rim");
-      path(group, "M-91-23Q-36-53 76-10M-92 8Q-31-19 86 21M-76 42Q-22 22 69 51", "ju2909-weave-band");
-      weave(group, ["M-75-65Q-66 4-12 82", "M-39-76Q-25-2 20 82", "M0-70Q17-4 54 66", "M39-54Q54-5 79 41"]);
-      path(group, "M-107-14Q-143 0-134 40Q-112 59-87 45", "ju2909-tail-clasp");
-      path(group, "M-30 83Q-2 110 32 87", "ju2909-basket-foot");
-      add(group, "ellipse", { class: "ju2909-basket-mouth", cx: 94, cy: 12, rx: 22, ry: 42, transform: "rotate(-18 94 12)" });
-      path(group, "M87-12Q126-35 148-3Q137 35 98 47", "ju2909-fruit-lip");
-      add(group, "ellipse", { class: "ju2909-gathered-fruit", cx: 127, cy: 3, rx: 22, ry: 16, transform: "rotate(16 127 3)" });
-      path(group, "M119-8Q128-29 143-21", "ju2909-fruit-stem");
-    }
+    drawMauritiusBasket(group, companion);
     return true;
   }
 
   if (item.family === "mauritius-dodo-beak-fruit-grabber") {
-    if (companion) {
-      path(group, "M-111-34Q-134-9-111 25M-101-27Q-117-7-102 17", "ju2909-body-clamp");
-      path(group, "M-111 20Q-99 8-84-1", "ju2909-grabber-bridge");
-      add(group, "circle", { class: "ju2909-grabber-coupling", cx: -84, cy: -1, r: 7 });
-      path(group, "M-86-12Q-58-39-27-27Q-8-18-2-1Q-20 11-45 10Q-70 10-86-12Z", "ju2909-dodo-head companion-head");
-      path(group, "M-67-32Q-74-57-60-66Q-50-49-48-34M-50-36Q-45-61-30-63Q-25-45-31-31", "ju2909-dodo-crest-feathers");
-      add(group, "circle", { class: "ju2909-dodo-eye", cx: -33, cy: -17, r: 7 });
-      rivet(group, -33, -17, 2.2);
-      path(group, "M-4-10Q38-36 85-11Q105 1 87 16Q50 25 7 11Q-4 6-4-10Z", "ju2909-dodo-upper-beak");
-      path(group, "M5 12Q50 30 91 11Q79 40 38 42Q13 36 5 12Z", "ju2909-dodo-lower-beak");
-      path(group, "M72-13Q103-10 96 10Q94 29 78 34L67 15Z", "ju2909-beak-tip");
-      path(group, "M12 4Q47-3 82 8", "ju2909-beak-seam");
-      add(group, "ellipse", { class: "ju2909-dodo-nostril", cx: 49, cy: -8, rx: 4, ry: 2.5, transform: "rotate(8 49 -8)" });
-      add(group, "ellipse", { class: "ju2909-woody-nut", cx: 62, cy: 20, rx: 18, ry: 14, transform: "rotate(-9 62 20)" });
-      add(group, "circle", { class: "ju2909-beak-hinge", cx: -3, cy: 1, r: 10 });
-      path(group, "M-75 10Q-108 36-98 72M-89 5Q-119 30-113 61", "ju2909-grabber-harness");
-      path(group, "M-99 67L-85 83L-73 66", "ju2909-grabber-trigger");
-    } else {
-      path(group, "M-160-43Q-190-7-160 38M-145-35Q-168-6-145 29", "ju2909-body-clamp");
-      path(group, "M-158 31Q-140 13-118-2", "ju2909-grabber-bridge");
-      add(group, "circle", { class: "ju2909-grabber-coupling", cx: -118, cy: -2, r: 9 });
-      path(group, "M-120-18Q-82-61-31-42Q-4-31 3-4Q-18 18-56 15Q-95 12-120-18Z", "ju2909-dodo-head");
-      path(group, "M-95-41Q-81-68-61-54Q-54-76-35-57", "ju2909-dodo-crest");
-      path(group, "M-93-49Q-104-83-84-94Q-67-76-70-53M-70-54Q-65-90-41-91Q-35-66-49-45", "ju2909-dodo-crest-feathers");
-      add(group, "circle", { class: "ju2909-dodo-eye", cx: -42, cy: -28, r: 9 });
-      rivet(group, -42, -28, 3);
-      path(group, "M0-17Q55-58 115-27Q147-12 130 13Q82 28 14 17Q1 11 0-17Z", "ju2909-dodo-upper-beak");
-      path(group, "M12 19Q72 45 131 9Q118 52 64 58Q29 53 12 19Z", "ju2909-dodo-lower-beak");
-      path(group, "M107-28Q153-25 145 5Q142 34 119 44L102 16Z", "ju2909-beak-tip");
-      path(group, "M17 5Q68-6 119 4", "ju2909-beak-seam");
-      add(group, "ellipse", { class: "ju2909-dodo-nostril", cx: 72, cy: -17, rx: 5.5, ry: 3.2, transform: "rotate(7 72 -17)" });
-      add(group, "ellipse", { class: "ju2909-woody-nut", cx: 91, cy: 30, rx: 27, ry: 20, transform: "rotate(-12 91 30)" });
-      path(group, "M77 18Q91-5 109 15", "ju2909-nut-groove");
-      add(group, "circle", { class: "ju2909-beak-hinge", cx: 0, cy: 0, r: 13 });
-      rivet(group, 0, 0, 4);
-      path(group, "M-103 10Q-148 44-132 91M-116 2Q-160 36-151 76", "ju2909-grabber-harness");
-      path(group, "M-137 83Q-123 105-101 86L-112 69Z", "ju2909-grabber-trigger");
-      path(group, "M-9 11Q11 53 48 57", "ju2909-control-cable");
-    }
+    drawDodoGrabber(group, companion);
     return true;
   }
 

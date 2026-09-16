@@ -2,8 +2,21 @@ const assert = require('node:assert/strict');
 const {pathToFileURL} = require('node:url');
 const path = require('node:path');
 (async()=> {
-  const {fruitFrame,drumScore} = await import(pathToFileURL(path.join(__dirname,'../game-of-worms/mauritius-play.js')));
+  const {fruitFrame,fruitBatchFrame,drumScore} = await import(pathToFileURL(path.join(__dirname,'../game-of-worms/mauritius-play.js')));
+  const {drumHandOffset} = await import(pathToFileURL(path.join(__dirname,'../game-of-worms/mauritius-drums.js')));
   for (const male of [false,true]) {
+    const batches=[];
+    for(let ms=0;ms<=9200;ms+=10){
+      const batch=fruitBatchFrame(ms,male);
+      if(batches.at(-1)!==batch.index)batches.push(batch.index);
+      assert(batch.progress>=0&&batch.progress<=1);
+      assert(batch.completed<=3);
+    }
+    assert.deepEqual(batches,[0,1,2],'Exactly three ordered fruit pickups');
+    assert(fruitBatchFrame(9200,male).done,'Three fruits finish within 9.2 seconds');
+    assert(!fruitBatchFrame(8000,male).done,'Do not cut off the third delivery');
+    assert.equal(fruitBatchFrame(0,male,true).completed,3,'Reduced motion delivers all three without travel');
+    assert(fruitBatchFrame(700,male,true).done);
     const stages=[];
     for (let ms=0;ms<=5000;ms+=10) {
       const state=fruitFrame(ms,male);
@@ -17,6 +30,13 @@ const path = require('node:path');
     assert.deepEqual(stages,['reach','grip','carry','deposit','return']);
     const score=drumScore(male);
     assert.equal(score.length,5);
+    for(const at of score) {
+      const contact=drumHandOffset(at,male);
+      assert(contact.y>drumHandOffset(at-80,male).y,'The hand approaches the skin before each sound');
+      assert(contact.y>drumHandOffset(at+80,male).y,'The hand rebounds after each sound');
+      assert.deepEqual(drumHandOffset(at,male,true),{x:0,y:0});
+    }
+    assert.deepEqual(drumHandOffset(2350,male),{x:male?0:-0,y:0});
     assert(score.every((at,i)=>at>=200&&at<2000&&(!i||at>score[i-1])));
     assert(fruitFrame(5000,male).done,'Both sequences finish within five seconds');
   }
@@ -31,5 +51,5 @@ const path = require('node:path');
   }
   assert.equal(peaks,2,'Two distinct unsuccessful lifting attempts precede the carry');
   assert.notDeepEqual(drumScore(false),drumScore(true),'The two drums have distinct phrases');
-  console.log('Mauritius: ordered pickup/deposit/return, two male lifting attempts, bounded duration, quiet reduced-motion result and distinct short drum phrases pass.');
+  console.log('Mauritius: three ordered pickups within 9.2 seconds, two male lifting attempts, quiet reduced-motion batch and distinct short drum phrases pass.');
 })().catch(error=>{console.error(error);process.exitCode=1;});

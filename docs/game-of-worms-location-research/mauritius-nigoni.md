@@ -151,6 +151,102 @@ The existing display key `Mauritius · JU2909` remains unchanged to preserve sav
 
 ## Implementation status
 
+### Final approval, 2026-09-16
+
+Martyna explicitly requested deployment of the final `20260916-harvest-2`
+preview. Approval covers the revised ravanne drums, dodo grabbers, open woven
+baskets, three-fruit gathering and exact English-only labels **Ravanne drums**,
+**Fruit baskets**, **Dodo grabbers**. The local/unapproved entries below document
+the earlier stages and are superseded by this approval. The stated full-page
+capture and listening limitations remain; no artwork changed after approval.
+Publication evidence is reported after the Pages build and live checks.
+
+### Open baskets and three-fruit harvesting, 2026-09-16 — local preview
+
+At Martyna's request, replaced the ambiguous tail-scoop drawings with upright
+open woven baskets: a broad arched-handle basket for the female and a deeper
+two-handled basket for the male. The dark opening, braided rim, tapered sides,
+alternating weave and front-wall occlusion communicate construction. A second
+pass refined the weave crossings and kept fruit size constant during travel.
+The original wrapper positions/scales, painting, drums and short labels remain.
+
+Each grabber now gathers three anonymous fruits from separate ground positions.
+The male struggles with the first larger fruit. Batches take 8.2 seconds for the
+female and 9.1 for the male. Fruit remains visibly inside its own basket after
+delivery. Repeat taps gather again; the pile reuses five collection positions
+plus one starting fruit, preventing unlimited growth. Moving/resizing a basket
+carries its contents with it. Escape keeps completed deliveries and removes
+unfinished ground fruit and temporary arms. Reduced motion deposits all three
+without travel. Baskets remain a quiet accessory.
+
+Validated both complete batches, repeated collection (six delivered, six bounded
+display slots including the starting fruit), both basket pointer drags, keyboard
+movement/scale/reset, and preservation of an adjusted basket (x=-4, scale=1.1)
+through two batches. Mid-batch Escape preserved one new delivery and left no
+temporary effects. Timing, label, visit-state and syntax checks pass; no console
+warnings/errors. Normal viewport checks at 360, 768, 1024 and 1440 px show the
+painting and basket contents without horizontal overflow. The previously
+documented full-page capture defect and listening limitations remain. No commit
+or deployment. New renderer: `game-of-worms/mauritius-baskets.js`.
+
+### Preview recovery and dodo refinement, 2026-09-16 — local, unapproved
+
+- Reproduced the missing painting: the local server at port 8766 was no longer
+  listening, and the image error handler had installed the geometric fallback.
+  Restarted a hidden loopback-only preview server and refreshed the page.
+  The painting returned HTTP 200, 351164 bytes, and its Git blob hash remained
+  `336963f46841e35bc7fdb42ab02730c6ee5b736c`, identical to committed source.
+  No painting pixels or background renderer were changed.
+- Replaced the crested, round-billed grabber drawings with original carved
+  dodo profiles: low domed heads, long tapering bills, deep hooked ends, clear
+  lower jaws, restrained eyes and brass pivots. Both copies have separate
+  silhouettes. Existing accessory transforms and user controls remain.
+- Construction reference: [Natural History Museum dodo reconstruction comparison](https://www.nhm.ac.uk/discover/the-dodo-bird-the-real-facts-about-this-icon-of-extinction.html).
+  No reference pixels are reused. These remain fantasy tools.
+- Refinement after in-page critique enlarged the small inlaid eyes and replaced
+  the curved berry linkage with two metal arm segments and a visible elbow.
+- Both pickup sequences completed and restored their original drawing. All six
+  accessories passed keyboard movement, scale and Home reset. Both grabbers
+  passed pointer dragging; the male retained x=-4, y=0, scale=1.1 after Escape
+  during pickup. Both drums completed with no hidden hands or effect remnants.
+- Inspected normal viewport renders at 360, 768, 1024 and 1440 px with the
+  painting loaded and no horizontal overflow. No console warnings/errors.
+  Timing, reduced-motion model, label and visit-state checks pass. A fresh
+  full-page capture remained corrupt (345 x 2459 pixels with repeated content)
+  and was rejected. Full-page visual proof and subjective listening remain
+  unverified. No publication attempted for this revision.
+
+### Drum appearance and labels follow-up, 2026-09-15
+
+Martyna requested better-looking drums, shorter labels, and more interesting
+alternatives to the other Mauritius accessories. The attempted commit/push was
+rejected by automatic approval review, which required fresh approval for this
+revision. No commit or publication occurred; the next request asked to correct
+the preview and grabber quality instead.
+
+- Both drums now have a shallow wooden hoop, folded hide edge and softly varied
+  skin. Different gripping and striking hands replace the mechanical beaters.
+  A refinement pass added grain along the exposed wood, clear of the skin.
+- The five-hit phrases, recorded sound, wrapper positions, user scale/position
+  state, fruit activity and painting are preserved. Hand motion approaches the
+  skin before each hit, then rebounds.
+- Exact English-only labels: **Ravanne drums**, **Fruit baskets**, **Dodo grabbers**.
+  The Game's existing English-only exception applies.
+- Reference for construction: [Abaim handmade ravann](https://www.abaim.mu/en/shop/traditional-instruments/ravann-m).
+  Original SVG drawing; no reference-photo pixels are included.
+- Possible replacements, not implemented or approved: a model-boat workshop
+  ([Historic Marine](https://historic-marine.com/our-workshop-and-showroom/))
+  and a quieter pink-pigeon companion
+  ([Mauritian Wildlife Foundation](https://www.mauritian-wildlife.org/whatwedo)).
+
+Validation: timing/contact/rebound and reduced-motion tests, accessory-label
+and visit-state tests, syntax and diff checks pass. Normal-size browser views
+were inspected at 360, 768, 1024 and 1440 px. Both drum actions finish and restore
+the original hands; no console errors or warnings were reported. No horizontal
+overflow was found. Complete-page captures and subjective listening remain
+unverified because of the previously documented capture defect and listening
+limitation. These checks do not imply a renewed audit of the atlas.
+
 ### Interaction follow-up, 2026-09-15 — deployment authorized
 
 Decision: retain the painting and all six approved accessory drawings; add the

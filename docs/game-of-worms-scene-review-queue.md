@@ -10,8 +10,8 @@ have poor drawings or require animations.
 
 - 31 active scenes, counted from the current accessory catalogue.
 - 10 scenes remain to check on this pass's checklist.
-- 21 have received the recent interaction pass, including Mauritius JU2909. Leave them closed.
-- Mauritius deployment was explicitly authorized on 2026-09-15 without further review; full-page capture and listening limitations remain documented.
+- 21 have received the recent interaction pass, including Mauritius JU2909. Leave them closed unless Martyna explicitly reopens one.
+- Mauritius final accessory and three-fruit revision was approved for deployment on 2026-09-16. This closes the requested follow-up; full-page capture and listening limitations remain documented.
 - Oʻahu ECA789's workshop is live at `47b465c`. The final shared gift, mould removal and eating audio follow-up is approved for deployment.
 - Kauaʻi QG130 is published at `e632c55`, verified on 2026-09-09.
 - Saint-Benoît JU1373's final preview was approved for deployment on 2026-09-09.
@@ -57,7 +57,7 @@ browser or physical device.
 
 | Species | Location | Status | Work already covered |
 | --- | --- | --- | --- |
-| nigoni | Mauritius · JU2909 | Done, deployment authorized | On 2026-09-15 Martyna explicitly requested deployment without further review. Dodo-beak fruit gathering into tail baskets, two male lifting attempts with a larger fruit, and separate short recorded frame-drum phrases. Painting, six accessory designs and user adjustments preserved. Full-page capture and subjective listening limitations remain in the Mauritius dossier. |
+| nigoni | Mauritius · JU2909 | Done, final revision approved for deployment | Approved 2026-09-16: hand-played ravanne drums, clearer dodo grabbers, open woven fruit baskets and three-fruit batches with retained fruit. Short labels: Ravanne drums, Fruit baskets, Dodo grabbers. Painting and user adjustment controls preserved. See the Mauritius dossier for QA and limitations. |
 | nigoni | São Tomé · JU2484 | Done, deployment approved | Final contextual render approved 2026-09-13. Both worms board one snail, ride on its shell and climb off. Separate leaf reveal and recorded rustling. Flags removed, parasols and painting preserved. Approved general phoresy sentence added to Tiny surprise. See the JU2484 dossier for evidence and QA. |
 | tropicalis | Pohnpei, Micronesia · QG4739 | Done, deployment approved | Approved 2026-09-13. Real birdwatching optics, one shared leaf sled and fitted camouflage capes. Recorded lorikeet call and leaf rustling. Painting and collection copy unchanged. Capture and listening limitations are documented in the location dossier. |
 | tropicalis | Queensland, Australia · QG2904 | Done, deployment approved | Approved 2026-09-13. Shared canopy lift, independently usable cameras and adjustable harnesses during the ride, developing photobomb print and three recorded sound channels. Approved drawings and visitor adjustments preserved. Capture and listening limitations remain documented. |

@@ -1,3 +1,5 @@
+import { drumHandOffset } from "./mauritius-drums.js?v=20260915-hand-drums-1";
+import { basketSlot, drawFruit, putBasketFruit } from "./mauritius-baskets.js?v=20260916-harvest-2";
 // JU2909 only. Animate temporary copies; never write visitor position or scale.
 const NS = 'http://www.w3.org/2000/svg';
 export const GRABBER = 'mauritius-dodo-beak-fruit-grabber';
@@ -26,6 +28,15 @@ export function fruitFrame(ms, male, reduced = false) {
 
 export function drumScore(male) {
   return male ? [220,700,940,1420,1900] : [220,700,1180,1420,1900];
+}
+
+export function fruitBatchFrame(ms,male,reduced=false) {
+  if(reduced)return {stage:'deposit',progress:1,effort:0,index:2,completed:3,done:ms>=700};
+  const first=male?4700:3800;
+  const index=ms<first?0:Math.min(2,1+Math.floor((ms-first)/2200));
+  const local=index===0?ms:(ms-first-(index-1)*2200)*3800/2200;
+  const frame=fruitFrame(local,index===0&&male);
+  return {...frame,index,completed:index,done:ms>=first+4400};
 }
 
 export function createMauritiusPlay(habitat, ensureBasket) {
@@ -111,15 +122,23 @@ export function createMauritiusPlay(habitat, ensureBasket) {
     let render;
     if (fruit) {
       const base = matrix(art), mouth = run.male ? [62,20] : [91,30];
-      const fruitScale = Math.hypot(base.a,base.b)/(run.male?.34:.42);
       const origin = point(base,...mouth);
       const basketArt = basket.querySelector('.location-accessory-art');
-      const target = point(matrix(basketArt),run.male?55:94,12);
-      // The ground pickup is inside the habitat regardless of user tool placement.
-      const ground = {x:run.male?155:405,y:310};
-      const carryEnd = {x:target.x+5,y:target.y-17};
+      const basketMatrix=matrix(basketArt.querySelector('[data-basket-vessel]'));
+      const collected=Number(piece.dataset.mauritiusCollected||0);
+      const harvest=Array.from({length:3},(_,index)=>{
+        const slot=(collected+index)%5,landing=basketSlot(run.male,slot);
+        const target=point(basketMatrix,landing.x,landing.y);
+        const radius=run.male&&index===0?13:11;
+        const ground={x:(run.male?155:400)+[0,30,-28][index],y:310+[0,17,21][index]};
+        return {slot,target,ground,radius,carryEnd:{x:target.x,y:target.y-22},settled:false,
+          finalScale:Math.hypot(basketMatrix.a,basketMatrix.b)*landing.r/radius};
+      });
       const coupling = point(base,run.male?-84:-118,-1);
-      const linkage = add(effects,'path',{fill:'none',stroke:'#a34f67','stroke-width':3,'stroke-linecap':'round'});
+      const linkage = add(effects,'g');
+      const arm = add(linkage,'path',{fill:'none',stroke:'#494238','stroke-width':5,'stroke-linecap':'round','stroke-linejoin':'round'});
+      const armFace = add(linkage,'path',{fill:'none',stroke:'#c9bba0','stroke-width':2.5,'stroke-linecap':'round','stroke-linejoin':'round'});
+      const elbowJoint = add(linkage,'circle',{r:3.2,fill:'#bc9958',stroke:'#494238','stroke-width':1});
       const moving = add(effects,'g');
       const copy = art.cloneNode(true); copy.setAttribute('transform',matrixText(base));
       copy.style.transformBox='view-box';copy.style.transformOrigin='0 0';moving.appendChild(copy);
@@ -129,18 +148,20 @@ export function createMauritiusPlay(habitat, ensureBasket) {
       for (const node of art.children) if (!node.matches(fixed)) hide(node);
       copy.querySelectorAll('.ju2909-woody-nut,.ju2909-nut-groove').forEach(node=>node.remove());
       const lower = copy.querySelector('.ju2909-dodo-lower-beak');
-      const oval = add(effects,'g',{'data-mauritius-fruit':run.male?'male':'female'});
-      // Reuse the existing anonymous fruit silhouette and palette; only the
-      // male's loose fruit is oversized. No source accessory geometry changes.
-      const skin = basketArt.querySelector('.ju2909-gathered-fruit').cloneNode(true);
-      skin.removeAttribute('class');skin.removeAttribute('transform'); skin.setAttribute('cx',0);skin.setAttribute('cy',0);
-      skin.setAttribute('rx',run.male?13:11);skin.setAttribute('ry',run.male?10:8);
-      skin.setAttribute('fill','#a34f67');skin.setAttribute('stroke','#253847');skin.setAttribute('stroke-width',1.2);
-      oval.appendChild(skin);
-      add(oval,'path',{d:'M-6-3Q-3-6 1-5',fill:'none',stroke:'#d99595','stroke-width':1.3,'stroke-linecap':'round'});
-      let deposited = false;
+      harvest.forEach((item,index)=>{
+        item.oval=add(effects,'g',{'data-mauritius-fruit':index,transform:`translate(${item.ground.x} ${item.ground.y}) scale(${item.finalScale})`});
+        drawFruit(item.oval,collected+index,item.radius);
+      });
+      const deposit=index=>{
+        const item=harvest[index];if(item.settled)return;
+        item.settled=true;item.oval.setAttribute('visibility','hidden');
+        putBasketFruit(basketArt,run.male,item.slot,collected+index);
+        piece.dataset.mauritiusCollected=String(Number(piece.dataset.mauritiusCollected||0)+1);
+      };
       render = ms => {
-        const s = fruitFrame(ms,run.male,reduced.matches);
+        const s = fruitBatchFrame(ms,run.male,reduced.matches);
+        for(let index=0;index<s.completed;index++)deposit(index);
+        const item=harvest[s.index],{ground,target,carryEnd,oval}=item;
         let grip,where;
         if (s.stage==='reach') {grip=mix(origin,ground,s.progress);where=ground;}
         if (s.stage==='grip') {grip={x:ground.x+s.effort*Math.sin(ms/38)*1.1,y:ground.y-s.effort*7};where=grip;}
@@ -151,31 +172,28 @@ export function createMauritiusPlay(habitat, ensureBasket) {
         const dx=grip.x-origin.x,dy=grip.y-origin.y;
         moving.setAttribute('transform',`translate(${dx} ${dy})`);
         const end={x:coupling.x+dx,y:coupling.y+dy};
-        linkage.setAttribute('d',`M${coupling.x} ${coupling.y}Q${coupling.x-12} ${end.y+14} ${end.x} ${end.y}`);
+        const elbow={x:(coupling.x+end.x)/2-12,y:(coupling.y+end.y)/2+14};
+        const armPath=`M${coupling.x} ${coupling.y}L${elbow.x} ${elbow.y}L${end.x} ${end.y}`;
+        arm.setAttribute('d',armPath);armFace.setAttribute('d',armPath);
+        elbowJoint.setAttribute('cx',elbow.x);elbowJoint.setAttribute('cy',elbow.y);
         linkage.setAttribute('opacity',reduced.matches?0:Math.min(1,Math.hypot(dx,dy)/8));
         lower.setAttribute('transform',`rotate(${s.stage==='reach'||s.stage==='return'?12:0} 0 0)`);
-        oval.setAttribute('transform',`translate(${where.x} ${where.y}) scale(${fruitScale})`);
-        // The loose fruit sinks into the existing dark opening, behind its lip.
         const entering=s.stage==='deposit'?s.progress:s.stage==='return'?1:0;
-        oval.setAttribute('opacity',1-entering*.85);
-        if (!deposited && entering===1) {deposited=true;piece.dataset.mauritiusCollected=String(Number(piece.dataset.mauritiusCollected||0)+1);}
+        oval.setAttribute('transform',`translate(${where.x} ${where.y}) scale(${item.finalScale})`);
+        if(entering===1)deposit(s.index);
         return s.done;
       };
     } else {
       prepareSound();
       const base = matrix(art);
-      // Copy only the original beaters; the instrument and harness stay fixed.
-      const shafts = art.querySelector('.ju2909-beater-shaft');
-      const heads = [...art.querySelectorAll('.ju2909-beater-head')];
-      const beaters = add(effects,'g',{transform:matrixText(base)});
-      [shafts,...heads].forEach(node=>{hide(node);const copy=node.cloneNode(true);copy.removeAttribute('visibility');beaters.appendChild(copy);});
+      const hand = art.querySelector("[data-mauritius-drum-hand]");
+      const handLayer = add(effects,"g",{transform:matrixText(base)});
+      hide(hand);const handCopy=hand.cloneNode(true);handCopy.removeAttribute("visibility");handLayer.appendChild(handCopy);
       const score = drumScore(run.male); let played = -1;
       render = ms => {
         score.forEach((at,index)=>{if(index>played && ms>=at){played=index;if(ms-at<100)strike(run,index);}});
-        const at=score.reduce((best,t)=>Math.abs(ms-t)<Math.abs(ms-best)?t:best,score[0]);
-        const pulse=reduced.matches?0:Math.max(0,1-Math.abs(ms-at)/150);
-        // Existing mallet heads meet the upper drum skin, then rebound.
-        beaters.setAttribute('transform',matrixText(base.translate(run.male?-35*pulse:0,run.male?70*pulse:75*pulse)));
+        const handMove=drumHandOffset(ms,run.male,reduced.matches);
+        handLayer.setAttribute("transform",matrixText(base.translate(handMove.x,handMove.y)));
         return ms>2350;
       };
     }
