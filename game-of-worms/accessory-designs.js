@@ -1,3 +1,4 @@
+import { drawTaipei } from "./taipei-art.js?v=20260916-pottery-9";
 import { drawGuadeloupeCrown } from "./guadeloupe-crowns.js?v=20260916-gwoka-11";
 import { drawGuadeloupeCostume } from "./guadeloupe-costumes.js?v=20260916-gwoka-11";
 import { drawGuadeloupeHands } from "./guadeloupe-play.js?v=20260916-gwoka-11";
@@ -67,7 +68,7 @@ const rows = [
   ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Flower bait", "qg2726-flower-bait", "Leaf cutting", "qg2726-leaf-cutting"],
   ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
   ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "Gift wrapping", "eca789-chocolate-gifts", "Chocolate tasting", "eca789-chocolate-tasting", "Chocolate bike", "eca789-chocolate-bike"],
-  ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Taiwan blue-magpie kites", "nic1648-taiwan-blue-magpie-kites", "single-tail rain boots", "nic1648-single-tail-rain-boots", "bubble-tea jetpacks", "nic1648-bubble-tea-jetpacks"],
+  ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Pottery wheels", "nic1648-pottery-wheels", "Aprons", "nic1648-pottery-aprons", "Bubble tea", "nic1648-bubble-tea-jetpacks"],
   ["tropicalis", "Pohnpei, Micronesia · QG4739", "Birdwatching", "qg4739-birdwatching", "Leaf sled", "qg4739-shared-leaf-sled", "Camouflage capes", "qg4739-camouflage-cape"],
   ["tropicalis", "Queensland, Australia · QG2904", "Canopy lift", "qg2904-canopy-lift", "Forest photography", "qg2904-forest-photography", "Safety harnesses", "qg2904-safety-harness"],
   ["tropicalis", "Saint-Benoît, Réunion · JU1373", "Lychees", "ju1373-lychees", "Raincoats with rain", "ju1373-raincoats", "Flower arranging", "ju1373-flower-arranging"]
@@ -5472,6 +5473,7 @@ function drawTropicalisFieldAccessory(group, item, companion) {
     label("MATING TEST",0,companion?76:82,"nfr-small nfr-light-text");
     return true;
   }
+  if (drawTaipei(group, item.family, companion)) return true;
   if (item.family === "nic1648-taiwan-blue-magpie-kites") {
     group.classList.add("nic1648-magpie-kite");
     shadow(companion ? 96 : 124, companion ? 136 : 154);
@@ -5548,26 +5550,18 @@ function drawTropicalisFieldAccessory(group, item, companion) {
     shadow(companion ? 76 : 100, companion ? 112 : 121);
     const pack = add(group, "g", { class: "nic1648-boba-pack" });
     if (companion) {
-      path(pack, "M-62-72Q-88-40-79 11Q-73 48-53 71M59-67Q86-39 78 13Q72 49 52 70", "nic1648-boba-harness");
       path(pack, "M-55-69H58L48 68Q45 88 1 93Q-43 88-47 68Z", "nic1648-boba-cup companion");
       path(pack, "M-45-13H49L43 67Q18 80-38 68Z", "nic1648-boba-tea companion");
       path(pack, "M-63-79Q1-96 66-77L61-58Q2-70-58-59Z", "nic1648-boba-lid companion");
       path(pack, "M17-73L50-135L66-126L35-68Z", "nic1648-boba-straw companion");
       [[-28,48],[-4,59],[21,45],[36,66],[-20,72],[11,75]].forEach(([cx,cy],index)=>add(pack,"circle",{class:index%3?"nic1648-boba-pearl":"nic1648-boba-pearl accent",cx,cy,r:index%2?8:9}));
-      path(pack, "M-66 3L-94 19L-76 47L-54 34ZM57-2L84 14L75 43L51 31Z", "nic1648-boba-fin companion");
-      path(pack, "M-69 66H-39L-32 101H-78ZM38 67H66L76 100H31Z", "nic1648-boba-thruster companion");
-      path(pack, "M-72 101L-57 127L-42 101ZM40 100L55 127L70 100Z", "nic1648-boba-flame companion");
       path(pack, "M-35-46Q-8-61 18-50", "nic1648-boba-highlight");
     } else {
-      path(pack, "M-76-82Q-112-43-101 21Q-94 65-66 87M72-78Q108-41 99 24Q92 65 65 87", "nic1648-boba-harness");
       path(pack, "M-76-75Q0-96 79-73L67 82Q61 108 0 113Q-62 108-68 82Z", "nic1648-boba-cup");
       path(pack, "M-65-15H68L60 81Q24 99-57 82Z", "nic1648-boba-tea");
       path(pack, "M-84-86Q0-110 87-83L81-58Q0-76-78-61Z", "nic1648-boba-lid");
       path(pack, "M12-77L48-161L69-151L34-69Z", "nic1648-boba-straw");
       [[-45,49],[-17,61],[12,48],[39,59],[-34,82],[-3,88],[27,82],[48,77]].forEach(([cx,cy],index)=>add(pack,"circle",{class:index%3?"nic1648-boba-pearl":"nic1648-boba-pearl accent",cx,cy,r:index%2?10:11}));
-      path(pack, "M-85-3L-124 18L-101 56L-72 38ZM78-7L117 14L105 52L70 36Z", "nic1648-boba-fin");
-      path(pack, "M-89 78H-50L-41 124H-102ZM48 79H87L101 123H37Z", "nic1648-boba-thruster");
-      path(pack, "M-96 124L-76 161L-55 124ZM43 123L65 161L88 123Z", "nic1648-boba-flame");
       path(pack, "M-49-50Q-12-74 28-57", "nic1648-boba-highlight");
       path(pack, "M-74-30Q0-48 73-27", "nic1648-boba-liquid-line");
     }
@@ -6142,9 +6136,11 @@ function renderPiece(target, item, wormPart) {
     ,"qg131-paired-pandanus-key-sorter": { primary: [374, 126, .34, -2], companion: [-8, 116, .27, 2] }
     ,"qg131-four-date-culture-relay": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"qg131-mating-id-motion-theatre": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
+    ,"nic1648-pottery-wheels": { primary: [354, 210, 1.10, 0], companion: [45, 169, .76, 0] }
+    ,"nic1648-pottery-aprons": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
     ,"nic1648-taiwan-blue-magpie-kites": { primary: [380, 112, .33, -4], companion: [-10, 80, .3, -6] }
     ,"nic1648-single-tail-rain-boots": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
-    ,"nic1648-bubble-tea-jetpacks": { primary: [231, 178, .29, 8], companion: [92, 142, .25, 8] }
+    ,"nic1648-bubble-tea-jetpacks": { primary: [264, 256, .36, -2], companion: [-8, 223, .27, -3] }
     ,"mahahual-reef-ruffle-swim-costumes": { primary: [220, 155, .5, 20], companion: [67, 149, .37, 34] }
     ,"mahahual-caribbean-sun-spectacles": { primary: [332, 56, .34, -3], companion: [112, 105, .23, 3] }
     ,"mahahual-sea-grape-beach-parasols": { primary: [357, 268, .32, -5], companion: [27, 264, .34, 5] }
@@ -6222,7 +6218,7 @@ function renderPiece(target, item, wormPart) {
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
-  const isBodyFittedCloth = ["guadeloupe-madras-carnival-crown", "guadeloupe-hummingbird-costume", "ju2484-leaf-hats", "qg4739-camouflage-cape", "qg2904-safety-harness", "qg130-bath-towels", "ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
+  const isBodyFittedCloth = ["nic1648-pottery-aprons", "guadeloupe-madras-carnival-crown", "guadeloupe-hummingbird-costume", "ju2484-leaf-hats", "qg4739-camouflage-cape", "qg2904-safety-harness", "qg130-bath-towels", "ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
     : isBodyFittedCloth || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });

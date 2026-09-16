@@ -531,3 +531,17 @@ the same drum during its phrase does not restart it; the other drum swaps
 roles and cancels the previous phrase. No idle or automatic repeating loop.
 Samples load after a gesture. Movement, scene changes, Escape, resizing and
 page hiding cancel playback. Subjective listening remains unverified.
+
+# New Taipei pottery and tea foley reuse, 2026-09-16
+
+No new audio files. The local pottery preview reuses these already-credited CC0 excerpts byte-for-byte:
+
+- `araucania-straw-sip.wav`: [bassboybg, straw sip](https://freesound.org/people/bassboybg/sounds/367058/), for tea sipping.
+- `kauai-bath-squeeze.wav`: [Joseph SARDIN, sponge and foam](https://bigsoundbank.com/sponge-and-foam-s0778.html), quiet shaping-contact foley, not a pottery recording.
+
+Sources load on the first relevant gesture. Playback gain is 0.6 for sip
+and 0.25 for squeeze, without pitch changes. One bounded action at a time;
+no idle loops. Cancellation stops active sources; late downloads never trigger
+belated sound. Reduced motion omits these cues. Subjective listening is unverified.
+
+The painting activity and its brush cue were removed in preview pottery-6.

@@ -1,8 +1,77 @@
 # New Taipei City *Caenorhabditis tropicalis* NIC1648 location research and art brief
 
-Last updated: 2026-08-23
+Last updated: 2026-09-16
 
-> **Current production accessory contract:** `Taiwan blue-magpie kites`, `single-tail rain boots`, and `bubble-tea jetpacks`. The boots respond playfully to the recorded concrete forest stairs; the kites and jetpacks are explicitly Taiwan-wide fantasy references rather than collection equipment or claims about the NIC1648 site.
+## Current interaction revision: publication requested on 2026-09-16
+
+Latest follow-up: keep the cups visible through the hands and improve apron
+construction and fit. Aprons now follow the actual body curve; smaller hands
+sit behind both tea cups and clay vessels, with tea grips at opposite side edges. Final neck refinement uses a continuous
+soft ribbon curving around the throat, with a shaded far arc, fine stitching,
+doubled attachment and small brass slider. The three English-only labels are **Pottery wheels**,
+**Aprons**, and **Bubble tea**. The Game has no Swedish or Polish interface.
+
+- Pottery wheels: both default wheels are about 40% larger, with separate
+  proportions, metal heads, splash pans, motor bases and sponges. One click
+  raises a clay lump into a vessel; three shapes cycle on repeated clicks.
+  The male's taller pot wobbles briefly before recovering.
+- Aprons: two separately drawn canvas bib aprons mapped along the actual body curve,
+  with neck straps, waist ties, stitched hems, pockets, tools and clay marks.
+  The primary apron has a small towel; the male has divided pockets. These are
+  quiet clothing, with no extra activity. Their idle motion follows the worms,
+  and pauses/resumes with pottery and drinking.
+- Bubble tea: redrawn transparent cups with rolled lids, visible submerged
+  straws, separate pearl arrangements and glass highlights. Cups rest beside
+  the wheels on coasters. One click lifts a cup with two hands and aligns its
+  straw with the mouth. The animated pearl follows the straw's bend; liquid
+  remains lower after the sip. Four sips cycle before the next click refills.
+  Coasters stay on the ground while the cups move.
+- Painting props, brush motion, patterns and painting audio are removed.
+- One activity runs at a time, with recorded sipping and quiet squeeze foley.
+  No idle sound. The squeeze is illustrative foley, not a pottery recording.
+- Forest-stair background, biological text and other scenes remain unchanged.
+  Visitor movement and sizing controls remain independent for all six pieces.
+
+### References and construction
+
+- [New Taipei tourism: Yingge Ceramics Museum](https://newtaipei.travel/en/Attractions/Detail/111459): regional pottery workshops and ceramic culture.
+- [Nidec-Shimpo accessories](https://www.shimpoceramics.com/accessories/): wheelhead and separate raised splash-pan construction; reference only, no source imagery copied into the Game.
+- [PotApron construction](https://potapron.co.uk/construction/): canvas apron straps, tool pockets and working coverage, adapted to legless worm bodies; no source artwork copied.
+- Audio provenance and exact reused files: `game-of-worms/assets/audio/SOURCES.md`.
+
+### Implementation and verification
+
+Branch: `codex/new-taipei-pottery`, based on deployed `52eb68a`.
+Preview: http://127.0.0.1:8768/game-of-worms/?preview=20260916-pottery-9
+
+Created `taipei-art.js`, `taipei-play.js` and `scripts/check-taipei-play.cjs`.
+Changed the accessory catalogue, scene integration and HTML cache version,
+this dossier, review queue, art catalogue, project status and audio notes.
+No production assets or files deleted. Martyna requested the final neck-strap
+refinement and publication on 2026-09-16. Preview identifiers remain as the
+production asset cache keys; deployment is verified separately after pushing.
+
+Focused tests cover continuous clay growth, different paired vessels and aprons, canvas width within the body outline, smooth neck-to-bib joins, continuous straw paths, sip timing, reduced motion, and clipping details to the clay outline.
+Existing Mauritius and Guadeloupe tests pass. Keyboard actions, pottery and drinking completion, Escape cleanup and preserved custom position/scale were checked in
+the browser. Scene viewport checks at 360, 768, 1024 and 1440 pixels show no
+horizontal overflow. The Game retains its fixed light palette.
+
+Refinement corrected lifted-cup scaling, varied pot silhouettes, contained clay
+marks, larger wheel placement, separate fitted aprons, cup edges, visible tea levels
+and stationary coasters. The latest follow-up reshapes pockets/seams with the
+body curve, replaces floating neck loops with close straps, and places smaller
+hands behind the vessel surfaces. Full-page capture has a known duplicated/
+scaled-section failure in this browser tool (1440 px viewport produced an
+invalid 1425 x 1928 image with a duplicate map and large blank regions); viewport checks are not a substitute
+for the required complete-page proof. Subjective listening, physical touch and
+full-page responsive proof remain unverified. No atlas-wide audit was repeated.
+
+## Historical research and superseded accessory brief
+
+The sections below preserve the earlier research trail. References to the
+then-current Yehliu profile, kites, boots and jetpacks are historical. The active
+scene now uses the already-approved forest-stair background; only the three
+accessories and their actions are revised above.
 
 ## Purpose
 

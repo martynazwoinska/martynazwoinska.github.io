@@ -6,10 +6,24 @@ This file records approved decisions and the verified implementation state. Alwa
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 9 left to check in the current interaction
-pass and 22 completed, including Mauritius JU2909 and Guadeloupe NIC203.
+It tracks all 31 active scenes: 8 left to check in the current interaction
+pass and 23 completed, including Mauritius JU2909, Guadeloupe NIC203 and New Taipei NIC1648.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+### New Taipei NIC1648 pottery and tea, publication requested, 2026-09-16
+
+Martyna requested larger pottery, fitted aprons in place of painting, and better
+bubble tea. Wheels are about 40% larger; quiet canvas aprons fit the bodies;
+two-handed sipping lowers the tea level. Follow-up keeps hands behind the cups
+and maps the apron shapes along the actual body curves. Painting is removed. Preview
+`20260916-pottery-9` on port 8768;
+branch `codex/new-taipei-pottery`, based on deployed `52eb68a`. Martyna requested the final neck-strap refinement
+and publication on 2026-09-16. The strap now bends around the throat as a soft
+ribbon with stitching and a small slider. Review count: 23 completed, 8 pending.
+Next: C. briggsae, Réunion JU1375.
+Validation and remaining capture/listening limitations are in the
+[New Taipei dossier](docs/game-of-worms-location-research/new-taipei-tropicalis.md).
 
 ### Guadeloupe NIC203 drum and dance, deployment approved, 2026-09-16
 
@@ -24,7 +38,7 @@ Four-width scene screenshots, interaction checks and targeted tests pass.
 Full-page captures still contain duplicated/scaled sections; subjective
 listening and physical touch testing are unverified. Branch
 `codex/guadeloupe-drum-dance`: final preview approved for deployment on 2026-09-16.
-Next review: New Taipei City NIC1648; retain the fitted boot geometry.
+Next review: New Taipei City NIC1648; the later pottery request above supersedes boot retention.
 Details: [Guadeloupe dossier](docs/game-of-worms-location-research/guadeloupe-tropicalis.md).
 
 ### São Tomé glide and leaf hats, deployment approved, 2026-09-13
