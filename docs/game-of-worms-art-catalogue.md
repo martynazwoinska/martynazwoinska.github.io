@@ -475,3 +475,14 @@ All other families occur once. Within every twice-used family, the material, out
 - Environment notes and source links remain intact.
 - N2 retains its approved laboratory set.
 - Each revised location passes its own research dossier and combined-art review; catalogue presence alone does not establish illustration quality.
+
+## Réunion JU1375 refinement approved, 2026-09-17
+
+The existing vanilla wraps, juice glasses and gecko companions have a local
+refinement in `reunion-ju1375-art.js` and `reunion-ju1375-play.js`. Distinct vanilla arrangements,
+a primary hand-cranked cane press and male receiving glass, geckos walking the
+rounded scene border, and short recorded-foley interactions
+were approved for deployment as preview `20260917-reunion-7`. The geckos now
+walk independently alongside worm activities. Background, labels and visitor transform storage
+remain unchanged. See `game-of-worms-location-research/reunion-briggsae.md` for
+construction references, behaviour, validation and capture limitations.

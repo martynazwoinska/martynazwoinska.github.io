@@ -1,3 +1,4 @@
+import { drawReunionJU1375 } from "./reunion-ju1375-art.js?v=20260917-reunion-7";
 import { drawTaipei } from "./taipei-art.js?v=20260916-pottery-9";
 import { drawGuadeloupeCrown } from "./guadeloupe-crowns.js?v=20260916-gwoka-11";
 import { drawGuadeloupeCostume } from "./guadeloupe-costumes.js?v=20260916-gwoka-11";
@@ -5979,6 +5980,7 @@ function drawElegansFieldAccessory(group, item, companion) {
 }
 
 function drawNamedAccessory(group, item, companion) {
+  if (drawReunionJU1375(group, item.family, companion)) return true;
   if (drawSnailEncounter(group, item, companion)) return true;
   if (drawPohnpeiAccessory(group, item, companion)) return true;
   if (drawCanopyAccessory(group, item, companion)) return true;
@@ -6165,8 +6167,8 @@ function renderPiece(target, item, wormPart) {
     ,"qg130-root-carousel": { primary: [236, 228, .43, -2], companion: [126, 245, .35, 3] }
     ,"qg130-three-ribbon-hoops": { primary: [386, 277, .38, -3], companion: [178, 300, .3, 4] }
     ,"ju1375-vanilla-vine-wrap": { primary: [271, 183, .52, 18], companion: [93, 172, .42, 19] }
-    ,"ju1375-sugarcane-juice": { primary: [388, 251, .38, -5], companion: [19, 257, .3, 7] }
-    ,"ju1375-bourbon-green-gecko-companion": { primary: [393, 115, .36, -7], companion: [16, 113, .29, 8] }
+    ,"ju1375-sugarcane-juice": { primary: [338, 210, .50, 0], companion: [19, 257, .3, 7] }
+    ,"ju1375-bourbon-green-gecko-companion": { primary: [216, 206, .36, -45], companion: [61, 173, .29, -52] }
     ,"ju2518-rotten-apple-decay-rotoscope": { primary: [327, 54, .40, 14], companion: [114, 104, .25, 25] }
     ,"ju2518-virus-association-spectroscope": { primary: [232, 186, .34, 1], companion: [115, 213, .27, -2] }
     ,"ju2518-six-september-garden-ledger": { primary: [225, 268, .34, -10], companion: [70, 227, .27, -7] }
@@ -6218,7 +6220,7 @@ function renderPiece(target, item, wormPart) {
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
-  const isBodyFittedCloth = ["nic1648-pottery-aprons", "guadeloupe-madras-carnival-crown", "guadeloupe-hummingbird-costume", "ju2484-leaf-hats", "qg4739-camouflage-cape", "qg2904-safety-harness", "qg130-bath-towels", "ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
+  const isBodyFittedCloth = ["ju1375-vanilla-vine-wrap", "ju1375-bourbon-green-gecko-companion", "nic1648-pottery-aprons", "guadeloupe-madras-carnival-crown", "guadeloupe-hummingbird-costume", "ju2484-leaf-hats", "qg4739-camouflage-cape", "qg2904-safety-harness", "qg130-bath-towels", "ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
     : isBodyFittedCloth || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });

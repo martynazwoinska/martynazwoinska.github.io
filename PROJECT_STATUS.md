@@ -6,8 +6,8 @@ This file records approved decisions and the verified implementation state. Alwa
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 8 left to check in the current interaction
-pass and 23 completed, including Mauritius JU2909, Guadeloupe NIC203 and New Taipei NIC1648.
+It tracks all 31 active scenes: 7 left to check in the current interaction
+pass and 24 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei NIC1648 and Réunion JU1375.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
@@ -1670,3 +1670,14 @@ The Etsy pattern is the only external link planned for these objects.
 3. Keep the maximum-two accessory-family rule and N2’s four approved concepts. If a family is used twice, the two location designs must differ in material, outline, proportions and internal construction.
 4. Re-run direct pointer and keyboard movement checks independently for both worm copies after any future location or accessory revision.
 5. Keep `game-of-worms/` unchanged during Cabinet-only work.
+
+## Réunion JU1375, deployment approved, 2026-09-17
+
+Existing vanilla wraps, sugarcane juice and gecko companions refined on
+`codex/reunion-accessories` from `58adb7d`. Preview `20260917-reunion-7` includes
+border-climbing geckos, a shared cane press and receiving glass, distinct vanilla arrangements and
+credited recorded foley. Both geckos walk independently during other activities.
+Martyna approved this exact preview for deployment on 2026-09-17. No background
+or public copy change. Review count: 24 completed, 7 pending. Next: Praslin YR106.
+Details and validation limitations:
+`docs/game-of-worms-location-research/reunion-briggsae.md`.

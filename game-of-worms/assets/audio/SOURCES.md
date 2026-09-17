@@ -545,3 +545,17 @@ no idle loops. Cancellation stops active sources; late downloads never trigger
 belated sound. Reduced motion omits these cues. Subjective listening is unverified.
 
 The painting activity and its brush cue were removed in preview pottery-6.
+
+## Réunion JU1375 accessory foley reuse, 2026-09-17
+
+No new recordings or modified audio bytes. Reuses the credited CC0 files:
+`araucania-straw-sip.wav` (bassboybg), `pohnpei-leaves.ogg` (Brandon Morris),
+`oahu-bike-chain.mp3` (gerfaut83) and `kauai-bath-pour-v2.wav` (Joseph SARDIN).
+Sip, leaf handling, mechanical cranking and liquid pouring accompany the visible
+actions. The chain recording is mechanical foley, not a cane-press recording;
+leaf rustling is not a gecko call. Original speed and pitch, faded excerpts:
+sip 0.58 s / gain 0.5; leaves 0.45 s / 0.075; cranking 0.85 s / 0.13;
+pouring 1.5 s / 0.23. Sources load after a gesture. Cancellation stops playback;
+late decoding cannot trigger audio. Reduced motion is silent.
+Subjective listening remains unverified. The earlier stirring-glass cue is no
+longer used by this scene.
