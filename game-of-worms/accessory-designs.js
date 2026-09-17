@@ -1,3 +1,4 @@
+import { drawMahahualBeach } from "./mahahual-art.js?v=20260917-mahahual-22";
 import { drawReunionJU1375 } from "./reunion-ju1375-art.js?v=20260917-reunion-7";
 import { drawTaipei } from "./taipei-art.js?v=20260916-pottery-9";
 import { drawGuadeloupeCrown } from "./guadeloupe-crowns.js?v=20260916-gwoka-11";
@@ -5129,31 +5130,7 @@ function drawNigoniFieldAccessory(group, item, companion) {
     }
     return true;
   }
-  if (item.family === "mahahual-reef-ruffle-swim-costumes") {
-    group.classList.add("mahahual-beach-accessory", "mahahual-swim-costume");
-    if (companion) {
-      path(group, "M-65-24Q-34-35-2-27L3 18L-11 41Q-39 46-62 29Z", "mh-swim-trunks-leg");
-      path(group, "M-2-27Q27-30 57-15L63 32Q42 46 17 39L3 18Z", "mh-swim-trunks-leg");
-      path(group, "M46-20L57-15L63 32Q57 37 50 39L42 27Z", "mh-swim-trunks-panel");
-      path(group, "M-68-39Q-11-52 58-31L57-14Q-10-35-65-23Z", "mh-swim-trunks-waistband");
-      path(group, "M-53 22Q-33 33-13 29M18 29Q35 36 55 27M3-18L3 18", "mh-swim-trunks-seam");
-      path(group, "M-10-31Q0-18 10-31M0-30V-11M-8-10L0-3L8-10", "mh-swim-trunks-drawstring");
-      add(group, "circle", { class: "mh-swim-trunks-eyelet", cx: -10, cy: -31, r: 4 });
-      add(group, "circle", { class: "mh-swim-trunks-eyelet", cx: 10, cy: -31, r: 4 });
-    } else {
-      path(group, "M14-69Q43-113 78-75", "mh-swim-strap");
-      path(group, "M3-70Q18-97 43-80Q36-52 1-49Z", "mh-swim-top");
-      path(group, "M43-80Q67-104 83-76L70-44Q53-51 43-80Z", "mh-swim-top");
-      path(group, "M12-58Q23-75 37-67M51-68Q63-85 76-70", "mh-swim-seam");
-      path(group, "M-79 2Q-41-25 3-10Q38 1 53 35L38 61Q4 78-35 68Q-69 61-79 2Z", "mh-swim-wrap");
-      path(group, "M-71 19Q-39-4-7 15Q23-3 45 22", "mh-swim-panel");
-      path(group, "M-36 67Q-27 82-16 68Q-4 84 9 68Q22 80 37 60", "mh-swim-ruffle");
-      add(group, "circle", { class: "mh-swim-brooch", cx: 43, cy: -79, r: 9 });
-      path(group, "M38-72L31-56M48-72L58-53", "mh-swim-brooch-tie");
-      path(group, "M-73 7Q-90 17-79 35Q-68 24-57 33", "mh-swim-bow");
-    }
-    return true;
-  }
+  if (item.family === "mahahual-reef-ruffle-swim-costumes") return drawMahahualBeach(group, item, companion);
   if (item.family === "multifemale-provenance-merger") {
     shadow(100, 105);
     const width = companion ? 142 : 182;
@@ -5323,36 +5300,7 @@ function drawNigoniFieldAccessory(group, item, companion) {
     }
     return true;
   }
-  if (item.family === "mahahual-sea-grape-beach-parasols") {
-    group.classList.add("mahahual-beach-accessory", "mahahual-beach-parasol");
-    shadow(companion ? 37 : 104, companion ? 254 : 270);
-    if (companion) {
-      path(group, "M0-116Q-24-106-34-82L-49 34Q-25 54 0 42Q25 54 49 34L34-82Q24-106 0-116Z", "mh-folded-canopy");
-      path(group, "M0-110L0 44M-29-82L-12 36M29-82L12 36", "mh-parasol-rib");
-      path(group, "M-41-5Q-20 8 0-2Q20 8 41-5", "mh-parasol-band");
-      path(group, "M0-122V226", "mh-parasol-shaft");
-      add(group, "rect", { class: "mh-parasol-finial", x: -9, y: 74, width: 18, height: 24, rx: 5 });
-      add(group, "circle", { class: "mh-parasol-drop coral", cx: 0, cy: 86, r: 4 });
-      path(group, "M-8 226L0 255L8 226Z", "mh-parasol-finial");
-      path(group, "M-12-119L0-136L12-119Z", "mh-parasol-finial");
-      path(group, "M39-4Q62-17 64 5Q49 3 40 16M39-4Q59 20 43 31", "mh-parasol-bow");
-      [-30,-10,10,30].forEach((x, index) => add(group, "circle", { class: index % 2 ? "mh-parasol-drop coral" : "mh-parasol-drop", cx: x, cy: index % 2 ? 42 : 45, r: 5 }));
-    } else {
-      path(group, "M0-112Q-42-142-88-108Q-130-80-140-24Q-100-4-52-18Q0 3 52-18Q100-4 140-24Q130-80 88-108Q42-142 0-112Z", "mh-parasol-canopy");
-      path(group, "M0-110V-9M0-106Q-48-76-124-33M0-106Q48-76 124-33M0-103Q-65-108-102-78M0-103Q65-108 102-78", "mh-parasol-rib");
-      path(group, "M-120-72Q-82-112-21-77Q-58-31-111-27Z", "mh-parasol-panel shell");
-      path(group, "M120-72Q82-112 21-77Q58-31 111-27Z", "mh-parasol-panel indigo");
-      path(group, "M-25-76Q0-108 25-76Q0-37-25-76Z", "mh-parasol-panel gold");
-      path(group, "M0-9V235", "mh-parasol-shaft");
-      add(group, "rect", { class: "mh-parasol-finial", x: -11, y: 72, width: 22, height: 26, rx: 6 });
-      add(group, "circle", { class: "mh-parasol-drop coral", cx: 0, cy: 85, r: 5 });
-      path(group, "M-10 235L0 269L10 235Z", "mh-parasol-finial");
-      path(group, "M-131-24Q-98-2-62-17Q-30 2 0-9Q30 2 62-17Q98-2 131-24", "mh-parasol-edge");
-      path(group, "M-12-111L0-132L12-111Z", "mh-parasol-finial");
-      [-108,-68,-25,25,68,108].forEach((x, index) => add(group, "circle", { class: index % 2 ? "mh-parasol-drop coral" : "mh-parasol-drop", cx: x, cy: index === 2 || index === 3 ? -4 : -13, r: 6 }));
-    }
-    return true;
-  }
+  if (item.family === "mahahual-sea-grape-beach-parasols") return drawMahahualBeach(group, item, companion);
   if (item.family === "ju4356-its2-ribbon-reader") {
     shadow(99, 104);
     const width = companion ? 140 : 180;
@@ -6068,7 +6016,7 @@ const layouts = {
 function renderPiece(target, item, wormPart) {
   if (wormPart === "companion" && sharedAccessoryFamilies.has(item.family)) return null;
   const companion = wormPart === "companion";
-  let [x, y, scale] = layouts[item.slot][item.artKind][wormPart];
+  let [x, y, scale] = layouts[item.slot][item.artKind][companion ? "companion" : "primary"];
   let angleOverride = null;
   const customLayouts = {
     "ngm-agar-plate": { primary: [366, 260, .82, -6], companion: [35, 288, .65, 2] },
@@ -6143,9 +6091,9 @@ function renderPiece(target, item, wormPart) {
     ,"nic1648-taiwan-blue-magpie-kites": { primary: [380, 112, .33, -4], companion: [-10, 80, .3, -6] }
     ,"nic1648-single-tail-rain-boots": { primary: [0, 0, 1, 0], companion: [0, 0, 1, 0] }
     ,"nic1648-bubble-tea-jetpacks": { primary: [264, 256, .36, -2], companion: [-8, 223, .27, -3] }
-    ,"mahahual-reef-ruffle-swim-costumes": { primary: [220, 155, .5, 20], companion: [67, 149, .37, 34] }
+    ,"mahahual-reef-ruffle-swim-costumes": { primary: [184, 195, .43, 20], companion: [58, 161, .25, 25], "primary-top": [259, 114, .58, 75], sunscreen: [280, 262, 1, 5] }
     ,"mahahual-caribbean-sun-spectacles": { primary: [332, 56, .34, -3], companion: [112, 105, .23, 3] }
-    ,"mahahual-sea-grape-beach-parasols": { primary: [357, 268, .32, -5], companion: [27, 264, .34, 5] }
+    ,"mahahual-sea-grape-beach-parasols": { primary: [252, 10, .80, -16], companion: [72, 72, .62, 9] }
     ,"mauritius-ravanne-crawler-drum": { primary: [265, 172, .48, 17], companion: [90, 177, .38, 20] }
     ,"mauritius-vacoas-tail-scoop": { primary: [151, 248, .5, -14], companion: [37, 230, .4, -7] }
     ,"mauritius-dodo-beak-fruit-grabber": { primary: [421, 116, .42, -8], companion: [132, 138, .34, 5] }
@@ -6192,6 +6140,7 @@ function renderPiece(target, item, wormPart) {
     "data-worm-part": wormPart,
     "data-accessory-family": item.family
   });
+  if (item.family === "mahahual-reef-ruffle-swim-costumes") piece.dataset.pieceLabel = wormPart === "sunscreen" ? "Sunscreen" : companion ? "Swim shorts" : wormPart === "primary-top" ? "Bikini top" : "Bikini wrap";
   const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "hpt26-splashing-pool";
   if (sharedAccessoryFamilies.has(item.family)) piece.dataset.sharedAccessory = "true";
   if (item.family === "eca789-chocolate-tasting") piece.dataset.pieceLabel = companion ? "Chocolate macadamias" : "Chocolate bar";
@@ -6220,10 +6169,19 @@ function renderPiece(target, item, wormPart) {
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
-  const isBodyFittedCloth = ["ju1375-vanilla-vine-wrap", "ju1375-bourbon-green-gecko-companion", "nic1648-pottery-aprons", "guadeloupe-madras-carnival-crown", "guadeloupe-hummingbird-costume", "ju2484-leaf-hats", "qg4739-camouflage-cape", "qg2904-safety-harness", "qg130-bath-towels", "ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
+  const isBodyFittedCloth = wormPart !== "sunscreen" && ["mahahual-reef-ruffle-swim-costumes", "ju1375-vanilla-vine-wrap", "ju1375-bourbon-green-gecko-companion", "nic1648-pottery-aprons", "guadeloupe-madras-carnival-crown", "guadeloupe-hummingbird-costume", "ju2484-leaf-hats", "qg4739-camouflage-cape", "qg2904-safety-harness", "qg130-bath-towels", "ju1373-raincoats", "qg2726-gustavia-flower-headpiece", "ju1873-balinese-endek-wrap", "af16-embroidered-waistcoat", "eg5612-chita-neckerchiefs", "qg2814-painting-apron"].includes(item.family);
   const artParent = isLombokWorn ? add(piece, "g", { class: `lingsar-worn-motion ${wormPart}` })
-    : isBodyFittedCloth || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${wormPart}` }) : piece;
+    : isBodyFittedCloth || isFittedHeadwear || isFittedKilt || isObservingScope || isSanteuilCompanionProp ? add(piece, "g", { class: `${isObservingScope ? "fitted-scope-motion" : isFittedKilt || isSanteuilCompanionProp ? "fitted-kilt-motion" : "fitted-headwear-motion"} ${companion ? "companion" : "primary"}` }) : piece;
+  if (item.family === "mahahual-sea-grape-beach-parasols") {
+    const radians = angle * Math.PI / 180;
+    piece.style.transformBox = "view-box";
+    piece.style.transformOrigin = `${x - Math.sin(radians) * 240 * scale}px ${y + Math.cos(radians) * 240 * scale}px`;
+  }
   const artwork = add(artParent, "g", { class: "location-accessory-art", transform: `translate(${x} ${y}) rotate(${angle}) scale(${artworkScaleX.toFixed(3)} ${artworkScaleY.toFixed(3)})` });
+  if (item.family === "mahahual-sea-grape-beach-parasols") {
+    artwork.style.transformBox = "view-box";
+    artwork.style.transformOrigin = "0px 0px";
+  }
   if ((isLombokWorn || isBodyFittedCloth || ["n2-lab-coat", "n2-lab-goggles", "cryo-vial-jetpack"].includes(item.family)) && artParent.addEventListener) {
     // A toggle can start clothing later than the body. Reuse its animation clock.
     artParent.addEventListener("animationstart", event => {
@@ -6236,7 +6194,7 @@ function renderPiece(target, item, wormPart) {
       }
     });
   }
-  const drewNamedAccessory = drawNamedAccessory(artwork, item, companion);
+  const drewNamedAccessory = drawNamedAccessory(artwork, item.family === "mahahual-reef-ruffle-swim-costumes" ? { ...item, segment: wormPart === "sunscreen" ? "sunscreen" : wormPart === "primary-top" ? "top" : "bottom" } : item, companion);
   if (!drewNamedAccessory) throw new Error(`No named accessory renderer for ${item.label}`);
   return piece;
 }
@@ -6290,6 +6248,11 @@ export function renderLocationAccessories(targets, speciesId, placeName) {
   if (!design) return null;
   // The shared pool rests behind the female when idle. Restore the normal
   // accessory order when leaving Lombok so other locations keep their layering.
+  // Beach umbrellas cover both worms when dragged over them; restore the slot on departure.
+  if (targets.charm?.dataset.beachLayer) {
+    targets.headwear.parentNode.insertBefore(targets.charm, targets.extra || null);
+    delete targets.charm.dataset.beachLayer;
+  }
   const charmParent = targets.charm?.parentNode;
   if (design.charm?.family === "hpt26-splashing-pool") {
     const worm = charmParent?.querySelector?.(".worm-body");
@@ -6297,6 +6260,10 @@ export function renderLocationAccessories(targets, speciesId, placeName) {
   } else if (targets.charm?.dataset.poolLayer) {
     charmParent.insertBefore(targets.charm, targets.extra || null);
     delete targets.charm.dataset.poolLayer;
+  }
+  if (design.charm?.family === "mahahual-sea-grape-beach-parasols") {
+    const scene = charmParent?.parentNode;
+    if (scene) { scene.appendChild(targets.charm); targets.charm.dataset.beachLayer = "front"; }
   }
   const assignments = [
     [targets.headwear, design.headwear],
@@ -6315,6 +6282,7 @@ export function renderLocationAccessories(targets, speciesId, placeName) {
     target.dataset.accessoryFamily = item.family;
     renderPiece(target, item, "primary");
     renderPiece(target, item, "companion");
+    if (item.family === "mahahual-reef-ruffle-swim-costumes") { renderPiece(target, item, "primary-top"); renderPiece(target, item, "sunscreen"); }
   });
   return design;
 }

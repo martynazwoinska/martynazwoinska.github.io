@@ -574,3 +574,21 @@ longer used by this scene.
 - Audio loads after a user gesture. Cancellation invalidates pending actions
   and stops active sources; reduced motion is silent. Subjective listening
   remains unverified.
+
+
+## Mahahual JU2617 hand-lotion foley, local preview 2026-09-17
+
+- File: `mahahual-lotion.mp3` (280928 bytes).
+- Work: Hand lotion application, sound 455270, by BigHoly.
+- Source: https://freesound.org/people/BigHoly/sounds/455270/
+- Public HQ preview: https://cdn.freesound.org/previews/455/455270_6914866-hq.mp3
+- License: CC0, verified on the source page on 2026-09-17.
+- Downloaded MP3 retained unmodified; SHA256:
+  `770d0eb30e79051f5a2e53c904e0565b88864a0845efcb9f7fcc63a7b14e4770`.
+- Actual hand-lotion rubbing, used as sunscreen foley. Two different 2.1 s
+  excerpts begin at 1.2 and 6.1 s, at unchanged pitch/speed. Peak-normalized
+  target 0.15 (gain capped at 0.7), 60 ms attack and 130 ms release.
+- Gesture-only load; cancellation stops voices and prevents late playback.
+  Reduced motion is silent. Subjective listening remains manual.
+- Supersedes the generic sponge/glass cues in preview 3. Those shared source
+  files remain unchanged for their other scenes.

@@ -7277,3 +7277,9 @@ footer p { margin: 0; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
 }
+
+/* Mahahual: only the umbrellas may be raised slightly beyond the top edge. */
+.worm-playground:has(.habitat[data-accessory-visual="nigoni::Mahahual, Mexico · JU2617"]) { overflow: visible; }
+.habitat[data-accessory-visual="nigoni::Mahahual, Mexico · JU2617"] { overflow: visible; border-radius: var(--radius) var(--radius) 0 0; }
+.habitat[data-accessory-visual="nigoni::Mahahual, Mexico · JU2617"]::after { border-radius: inherit; }
+.habitat[data-accessory-visual="nigoni::Mahahual, Mexico · JU2617"] .regional-backdrop { border-radius: inherit; overflow: hidden; }

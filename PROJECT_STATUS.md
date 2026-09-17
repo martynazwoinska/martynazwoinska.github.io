@@ -1692,3 +1692,31 @@ emerge. Unaltered art, background and saved accessory transforms are retained.
 Recorded bell foley is credited. Martyna approved this exact revision for
 deployment on 2026-09-17. Counts: 25 completed, 6 open. Next: Mahahual JU2617.
 Details and validation limitations: the Praslin location dossier.
+
+
+## Mahahual JU2617, local sunscreen preview, 2026-09-17
+
+Preview `20260917-mahahual-22`, port 8774, branch `codex/mahahual-beach-play`.
+Both worms take turns applying sunscreen; tap either swimsuit to begin.
+The user explicitly dropped bubble blowing from this scene. Refitted swimwear
+now has separately movable/resizable female top and wrap; detailed fabric
+parasols and recorded lotion foley replace the earlier draft. Sun spectacles
+and background remain unchanged. Piece labels: Bikini top, Bikini wrap,
+Swim shorts and Sunscreen (the Game is intentionally English-only).
+Preview 8 aligns the bikini top across the neck tilt, fixes malformed pole
+coordinates, adds two distinct open beach umbrellas, and keeps a tappable
+sunscreen tube visible beside the worms between activities. Preview 13 raises
+and enlarges both umbrellas into overlapping overhead shade; the broader,
+shallower female canopy clears her face. Preview 14 follows the user
+correction: umbrellas now render in front, including during sunscreen
+application. Preview 17 replaces sliding with canopy dragging around fixed
+planted pole tips. Independent keyboard tilt, angle reset and anchored sizing
+work for both umbrellas, with scene-edge limits. Preview 19 also permits
+vertical dragging to raise/lower the whole umbrella: Left/Right tilt and
+Up/Down move vertically. Horizontal tilt keeps the base fixed.
+Preview 21 adds slight above-frame headroom and soft ground shadows that
+follow each umbrella’s tilt, position and size, clipped to the habitat.
+Preview 22 removes the smaller canopy’s extra hinge angle so it aligns with
+its pole. Approved for deployment on 2026-09-17.
+Review count: 26 completed, 5 open. Next: Salt Lake City EG4181.
+Details and validation: docs/game-of-worms-location-research/mahahual-nigoni.md.
