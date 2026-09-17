@@ -9,8 +9,8 @@ earlier illustration revisions. It is not a new claim that all older scenes
 have poor drawings or require animations.
 
 - 31 active scenes, counted from the current accessory catalogue.
-- 7 scenes remain to check on this pass's checklist.
-- 24 have received the recent interaction pass, including Mauritius JU2909. Leave them closed unless Martyna explicitly reopens one.
+- 6 scenes remain to check on this pass's checklist.
+- 25 have received the recent interaction pass, including Mauritius JU2909. Leave them closed unless Martyna explicitly reopens one.
 - Mauritius final accessory and three-fruit revision was approved for deployment on 2026-09-16. This closes the requested follow-up; full-page capture and listening limitations remain documented.
 - Mauritius follow-up approved for deployment, 2026-09-16: empty baskets and ten fruits outside, collected one per click. Final preview: `20260916-ground-fruit-4`.
 - Oʻahu ECA789's workshop is live at `47b465c`. The final shared gift, mould removal and eating audio follow-up is approved for deployment.
@@ -32,7 +32,6 @@ Do not reopen completed scenes just to decide the next target.
 
 | Order | Species | Location | Status | Starting point for the single review |
 | --- | --- | --- | --- | --- |
-| 12 | nigoni | Praslin, Seychelles · YR106 | To check | Tortoise-shell costumes, caps and bell bracelets. Preserve the already-adjusted shell alignment. |
 | 13 | nigoni | Mahahual, Mexico · JU2617 | To check | Swim costumes, sun spectacles and sea-grape parasols. A quiet scene can remain quiet if it works. |
 | 14 | briggsae | Salt Lake City, Utah · EG4181 | To check | Apricot hats, beehive packs and tail skis. Drawings and hat fit were already refined. |
 | 15 | briggsae | Orsay, France · JU2518 | To check | Flower crowns, apple satchels and notebook harnesses. Drawings and crown fit were already refined. |
@@ -55,6 +54,7 @@ browser or physical device.
 
 | Species | Location | Status | Work already covered |
 | --- | --- | --- | --- |
+| nigoni | Praslin, Seychelles · YR106 | Done, deployment approved | Approved 2026-09-17, preview `20260917-praslin-7`: both worms tuck fully into their shells, leaving tiny tail tips. Bell calls invite peeking and emergence. Original art, background and visitor transforms retained. |
 | briggsae | Réunion Island · JU1375 | Done, deployment approved | Approved 2026-09-17, preview `20260917-reunion-7`: distinct vanilla arrangements, shared cane pressing and drinking, and two slower independent gecko walks that continue during worm activities and clear the labels. Background and saved transforms preserved. Validation limitations remain in the dossier. |
 | tropicalis | New Taipei City, Taiwan · NIC1648 | Done, publication requested | 2026-09-16: larger pottery wheels, tailored canvas aprons with soft neck straps and bubble tea sipping. Hands leave vessel fronts visible; painting removed. Final revision `20260916-pottery-9`; user requested refinement and publication. Validation limitations remain in the dossier. |
 | tropicalis | Guadeloupe · NIC203 | Done, deployment approved | Approved 2026-09-16, preview `20260916-gwoka-11`: twelve-beat drum phrases, smooth mid-body dancing, fitted layered hummingbird costumes and folded madras crowns. User positions/sizes and background preserved. See the Guadeloupe dossier for validation and capture/listening limitations. |

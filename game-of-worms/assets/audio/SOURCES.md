@@ -559,3 +559,18 @@ pouring 1.5 s / 0.23. Sources load after a gesture. Cancellation stops playback;
 late decoding cannot trigger audio. Reduced motion is silent.
 Subjective listening remains unverified. The earlier stirring-glass cue is no
 longer used by this scene.
+
+## Praslin YR106 small-bell recording, 2026-09-17
+
+- File: `praslin-small-bell.mp3`
+- Work: Small bell #2, sound 293, by GlaneurDeSons.
+- Source: https://bigsoundbank.com/small-bell-2-s0293.html
+- Original MP3: https://bigsoundbank.com/UPLOAD/mp3/0293.mp3
+- License: CC0, as stated on the source page (checked 2026-09-17).
+- Downloaded MP3 bytes retained unmodified. Runtime detects the first audible
+  onset and plays bounded 1.05 s calls / 0.65 s answers, with a soft volume
+  envelope and unchanged speed/pitch. This is recorded handbell foley for the
+  fantasy bracelets, not a recording of Seychellois music or local wildlife.
+- Audio loads after a user gesture. Cancellation invalidates pending actions
+  and stops active sources; reduced motion is silent. Subjective listening
+  remains unverified.

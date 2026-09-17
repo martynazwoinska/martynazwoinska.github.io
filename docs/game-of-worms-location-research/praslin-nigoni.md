@@ -128,3 +128,111 @@ The revised preceding locations are the minimum quality floor, not templates to 
 - Visual checks cover the Game's fixed light palette and responsive widths from 360 px to wide desktop.
 - No horizontal overflow, console error, broken source link or change to another location is accepted.
 - Environment/accessory audits, syntax checks, `git diff --check` and the full diff pass before integration.
+
+## Shell hide-and-seek — local preview, 2026-09-17
+
+Martyna approved a focused interaction pass: the female hides in her shell;
+the male's first bell jingle invites a peek and his second brings her out with
+a small answering jingle. The caps remain quiet and follow the heads.
+
+- Isolated branch `codex/praslin-hide-and-seek`, based on current main `c37e3ed`.
+- New `praslin-play.js` animates copies of the existing production paths. The
+  head and front body retract along the original centreline behind the exact
+  shell artwork. The tail stays outside; the cap follows the head. No shell,
+  cap, bracelet, background, placement or public label is redrawn or replaced.
+- Clicking the female shell hides her; clicking it again brings her out even
+  if bracelets are disabled. Male bells advance hidden -> peek -> out. Female
+  bells give their own short jingle without advancing the hide-and-seek state.
+- The original accessory parents keep saved position and size transforms.
+  Escape, moving/resizing, changing wardrobe/scene, drawing mode, resize and
+  page hiding restore the originals. Reduced motion uses immediate poses and
+  no audio. An in-progress action ignores additional taps rather than stacking.
+- Recorded CC0 small-bell foley, credited in audio/SOURCES.md, gives short calls
+  and a quieter answer. There is no continuous soundtrack.
+- First contextual check confirmed full head/cap concealment and exact return;
+  the refinement raises the peek enough to make the face clearer above the rim.
+
+Preview: http://127.0.0.1:8773/game-of-worms/?preview=20260917-praslin-3
+Local only, not committed or deployed; this scene remains open for review.
+
+### Local validation
+
+- Focused checks passed: hide -> peek -> out transitions, shell-toggle escape,
+  anchored tail, smooth retraction, bounded bell movement and reduced motion.
+  Réunion interaction tests and JavaScript syntax checks also passed.
+- Browser verified full concealment, two-eye peeking, complete emergence and
+  original-body restoration. Keyboard and pointer activation both worked.
+- Escape removed the effects and restored visibility. A shell moved 4 px and
+  scaled to 1.1 retained its exact x/y/scale style through hiding and cancellation.
+- Fixed-light Game checked at 360, 768, 1024 and 1440 px: no horizontal overflow.
+  Full-page attempts measured 345x2555, 753x2399, 1009x1825 and 1425x1928. The
+  capture tool still scales/duplicates sections and adds blank space; these are
+  not valid complete-page proofs. Direct viewport inspection is supplementary.
+- Browser warnings/errors were empty. Subjective audio listening and physical
+  touch-device checks remain manual. No commit or deployment.
+
+### Bilateral hiding refinement, 2026-09-17
+
+Preview `20260917-praslin-5` supersedes the female-only interaction above.
+- Both shells toggle their own worm between hiding and emerging; two hides can
+  run together and persist independently.
+- Each bracelet calls the other worm: hidden -> peek -> out. Both directions
+  use the existing recorded bell and quieter answering jingle.
+- The complete front-body path bends into a curved tucked pose. The head leads
+  slightly, the neck follows, and the cap tips with the head. The path is no
+  longer shortened. The tail remains anchored outside the shell.
+- Retreat takes about 2.5 seconds; emergence takes about 2.9 seconds. A critical
+  visual pass raised both peeks to expose the faces above the shell rims.
+- Original artwork, visitor transforms, labels and background remain unchanged.
+  Escape and wardrobe/scene changes clear both poses and restore the originals.
+
+Local-only review URL: http://127.0.0.1:8773/game-of-worms/?preview=20260917-praslin-5
+
+#### Revision 5 verification and file manifest
+
+- Passed focused geometry/state tests and syntax checks. Browser checks covered
+  two simultaneous hides, both bell directions, both peeks, paired emergence,
+  pointer and keyboard activation, Escape cleanup, and exact retention of a
+  male shell's 4 px offset and 1.1 scale. No new browser warnings or errors.
+- Direct viewport checks at 360, 768, 1024 and 1440 px found no horizontal
+  overflow. Full-page captures again measured 345x2555, 753x2399, 1009x1825 and
+  1425x1928; the capture tool still duplicates/scales content and adds blank
+  regions, so complete-page screenshot proof remains unavailable. Game uses
+  its fixed light palette. Physical touch-device and listening checks remain
+  manual; reduced-motion behavior passed the focused test.
+- Created in this local Praslin branch: game-of-worms/praslin-play.js,
+  game-of-worms/assets/audio/praslin-small-bell.mp3,
+  scripts/check-praslin-play.cjs.
+- Changed: game-of-worms/game.js, game-of-worms/index.html,
+  game-of-worms/assets/audio/SOURCES.md, PROJECT_STATUS.md,
+  docs/game-of-worms-scene-review-queue.md and this dossier.
+- Deleted: none. No commit or deployment. Approved accessory SVGs and the
+  background are unchanged; unrelated checkouts remain untouched.
+
+### Full-body tuck, 2026-09-17
+
+Martyna requested that the entire worm hide, leaving only a tiny leg-like tip.
+Preview `20260917-praslin-7` pulls the rear in after the head and settles the
+whole centreline beneath each shell. Only a short rounded tail tip protrudes.
+The rear remains tucked during a peek. Bracelets move inside with the body;
+their saved placement is restored on emergence or cancellation. No original
+accessory SVG or background changed. Both worms still hide independently.
+
+Changed in this follow-up: praslin-play.js, its focused test, game.js and
+index.html cache references, the status, queue and this dossier. No new or
+deleted files in this follow-up. Not committed or deployed.
+
+Verification: both complete tucks and both peeks were inspected in the actual
+page; paired emergence restored all original bodies and accessories, with no
+remaining effect layers or hidden originals. Focused tuck/peek/return and
+reduced-motion tests, syntax checks and diff checks passed. Browser console
+was empty. Rechecked 360/768/1024/1440 px with no horizontal overflow. Full-page
+capture dimensions and the previously documented capture defect are unchanged;
+valid complete-page screenshot proof and physical-device checks remain manual.
+
+### Deployment approval, 2026-09-17
+
+Martyna approved the exact `20260917-praslin-7` preview for deployment. This
+closes Praslin for the current interaction pass (25 completed, 6 remaining).
+The previously recorded local-only status is superseded by this approval.
+No runtime, artwork, background or public wording changed after approval.

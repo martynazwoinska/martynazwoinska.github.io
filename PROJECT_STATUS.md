@@ -1681,3 +1681,14 @@ Martyna approved this exact preview for deployment on 2026-09-17. No background
 or public copy change. Review count: 24 completed, 7 pending. Next: Praslin YR106.
 Details and validation limitations:
 `docs/game-of-worms-location-research/reunion-briggsae.md`.
+
+## Praslin YR106, deployment approved, 2026-09-17
+
+Martyna approved shell hiding and requested it for both worms with more natural
+movement. Preview `20260917-praslin-7` on port 8773, branch
+`codex/praslin-hide-and-seek`, tucks each complete worm into its shell, leaving a tiny tail tip outside.
+Both worms can hide at once; either bracelet invites the other to peek, then
+emerge. Unaltered art, background and saved accessory transforms are retained.
+Recorded bell foley is credited. Martyna approved this exact revision for
+deployment on 2026-09-17. Counts: 25 completed, 6 open. Next: Mahahual JU2617.
+Details and validation limitations: the Praslin location dossier.
