@@ -1,15 +1,40 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-09-16
+Last updated: 2026-09-18
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 7 left to check in the current interaction
-pass and 24 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei NIC1648 and Réunion JU1375.
+It tracks all 31 active scenes: 4 left to check in the current interaction
+pass and 27 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei NIC1648 and Réunion JU1375.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+### Salt Lake City EG4181 bubble picnic, deployment approved, 2026-09-18
+
+Approved concept implemented on `codex/salt-lake-bubbles`, based on `96eeffd`.
+Preview `20260918-picnic-3` runs on port 8775. Giant hoop/tray, small bottle/wand
+and quiet picnic blanket replace hats, packs and skis. The larger worm bends
+through its middle while pulling a large bubble; the male blows five small
+bubbles, including a brief nose bubble. Both kits work together. Bubbles can
+be popped with pointer or keyboard; giant pops alternate splitting and bursting.
+Follow-up refines the tray and bottle construction, phased dipping/lifting,
+head turns and the blanket's folds, curved checks and draped hem.
+Latest approved addition groups the independently movable kits under Bubbles,
+adds a shared Apricot picnic basket with a six-second sharing and nibbling action,
+and retains Picnic blanket as the quiet third accessory.
+Original apricot painting and scientific copy remain unchanged. Martyna approved
+publication of preview 3 on 2026-09-18. The review queue now has 27 completed
+and four open scenes; next is Orsay JU2518. Publication verification follows
+the approved commit and Pages build.
+
+Movement/SVG checks, keyboard play, concurrent actions, exact body restoration,
+accessory transform preservation, cancellation and leaving-scene cleanup pass.
+No horizontal overflow at CSS widths 360, 768, 1024 and 1440. Full-page capture
+is defective (scaled content and duplicated sections), so responsive visual
+approval remains incomplete. Reduced motion is code-reviewed, not browser-tested;
+subjective audio listening remains manual. See the Salt Lake dossier for details.
 
 ### New Taipei NIC1648 pottery and tea, publication requested, 2026-09-16
 

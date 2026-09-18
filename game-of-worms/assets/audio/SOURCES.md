@@ -592,3 +592,48 @@ longer used by this scene.
   Reduced motion is silent. Subjective listening remains manual.
 - Supersedes the generic sponge/glass cues in preview 3. Those shared source
   files remain unchanged for their other scenes.
+
+
+## Salt Lake City EG4181 bubbles, local preview 2026-09-18
+
+- `salt-lake-pop.mp3`: **BubblePopping**, sound 762781, by Sess8it.
+  Source: https://freesound.org/people/Sess8it/sounds/762781/
+  Public HQ preview: https://cdn.freesound.org/previews/762/762781_6736069-hq.mp3
+  CC0 verified on the source page. Designed single bubble-pop effect.
+  Original downloaded MP3 retained (10856 bytes), SHA256:
+  `7412b3008b1500d3c73f117602c36698133b703e397c994edb5c2fd469fab2b2`.
+- `salt-lake-blow.mp3`: **Blow air short 2**, sound 720065, by yehdawgo.
+  Source: https://freesound.org/people/yehdawgo/sounds/720065/
+  Public HQ preview: https://cdn.freesound.org/previews/720/720065_15619185-hq.mp3
+  CC0 verified on the source page. Recorded human blowing.
+  Original downloaded MP3 retained (82944 bytes), SHA256:
+  `9494bd559c7db516c3f8340928238e16698d6c7138a05617e8601753fc898102`.
+- Runtime detects audible onset and plays up to 0.35 s of pop / 1.1 s of blowing,
+  at unchanged speed/pitch. Peak targets 0.11 / 0.06, gain capped at 0.8,
+  15 ms attack and 45 ms release. Fetch/decode follows a gesture; no delayed
+  playback is scheduled on completion. Cancellation stops sources. Reduced
+  motion is silent. Subjective listening remains manual.
+
+- Preview 9: the blowing cue now accompanies both kits, once at bubble formation;
+  the original MP3, gain, duration and pitch are unchanged.
+
+
+### Salt Lake apricot picnic reuse, 2026-09-18
+
+The picnic reuses `reunion-eat.wav` (qubodup's CC0 **Banana Munching** excerpt,
+credited in the Saint-Benoit section above), unchanged. It is soft-fruit foley,
+not an apricot-specific recording. Two up-to-0.58 s cues begin at the visible
+bites, 3350 and 3700 ms into the picnic. Runtime peak target 0.09, gain capped
+at 0.8, 15 ms attack / 45 ms release, original pitch and speed. Gesture-only
+loading, cancellation stops voices, and reduced motion remains silent.
+Subjective listening remains manual.
+
+### Apricot bite follow-up, preview 3
+
+The previous 0.58 s chewing excerpts overlapped at the 350 ms spacing and
+Martyna found the sound strange. Runtime now uses only 0.145-0.335 s of the
+existing 0.66 s clip: a 0.19 s bite transient, peak target 0.04 (about 7 dB
+quieter than 0.09), unchanged pitch/speed and 15/45 ms fades. The second cue
+starts 350 ms later, leaving 160 ms between clips. No prolonged chewing tail
+or overlap. Source bytes unchanged; no new asset. Waveform bounds checked;
+subjective listening remains manual.

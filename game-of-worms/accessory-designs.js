@@ -1,3 +1,4 @@
+import { drawSaltLakeBubbles } from "./salt-lake-art.js?v=20260918-picnic-2";
 import { drawMahahualBeach } from "./mahahual-art.js?v=20260917-mahahual-22";
 import { drawReunionJU1375 } from "./reunion-ju1375-art.js?v=20260917-reunion-7";
 import { drawTaipei } from "./taipei-art.js?v=20260916-pottery-9";
@@ -45,7 +46,7 @@ const SVG_NS = "http://www.w3.org/2000/svg";
 const rows = [
   ["inopinata", "Ishigaki, Japan", "fig UV visors", "fig-fascinator", "field specimen baskets", "sample-pannier", "fig-wasp wings", "wings"],
   ["briggsae", "Ahmedabad, India · AF16", "waistcoats", "af16-embroidered-waistcoat", "kite rigs", "kite-rig", "soil kits", "soil-kit"],
-  ["briggsae", "Salt Lake City, Utah · EG4181", "apricot blossom hats", "eg4181-apricot-blossom-hat", "beehive saddle packs", "eg4181-beehive-saddle-pack", "single-tail mountain skis", "eg4181-single-tail-mountain-ski"],
+  ["briggsae", "Salt Lake City, Utah · EG4181", "Bubbles", "eg4181-giant-bubble-loop", "Apricot picnic", "eg4181-apricot-picnic", "picnic blanket", "eg4181-picnic-blanket"],
   ["briggsae", "Kauaʻi, Hawaiʻi · QG130", "Shampoo ginger", "qg130-shampoo-ginger", "Jug and basin", "qg130-jug-basin", "Towels", "qg130-bath-towels"],
   ["briggsae", "Réunion Island · JU1375", "vanilla vine wraps", "ju1375-vanilla-vine-wrap", "sugarcane juice", "ju1375-sugarcane-juice", "Bourbon green gecko companions", "ju1375-bourbon-green-gecko-companion"],
   ["briggsae", "Orsay, France · JU2518", "pressed-flower crowns", "ju2518-rotten-apple-decay-rotoscope", "apple field satchels", "ju2518-virus-association-spectroscope", "notebook & pencil harnesses", "ju2518-six-september-garden-ledger"],
@@ -96,7 +97,7 @@ const santeuilRendererFamilies = new Set(["santeuil-railway-driver-uniform", "sa
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
 const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-avocado-snack-bowl"]);
 const kauaiRendererFamilies = new Set(["xz1516-forest-bird-headphones", "xz1516-ohia-blossom-microphone", "xz1516-reel-to-reel-recorder"]);
-const sharedAccessoryFamilies = new Set(["xz1516-reel-to-reel-recorder", "ju4356-shared-scooter", "eca789-chocolate-bike", "eca789-chocolate-gifts", "hpt26-splashing-pool", "qg2904-canopy-lift", "qg4739-shared-leaf-sled", "ju2484-leaf-encounter", "ju2484-snail-ride"]);
+const sharedAccessoryFamilies = new Set(["eg4181-apricot-picnic", "eg4181-little-bubble-kit", "eg4181-picnic-blanket", "xz1516-reel-to-reel-recorder", "ju4356-shared-scooter", "eca789-chocolate-bike", "eca789-chocolate-gifts", "hpt26-splashing-pool", "qg2904-canopy-lift", "qg4739-shared-leaf-sled", "ju2484-leaf-encounter", "ju2484-snail-ride"]);
 const actRendererFamilies = new Set(["canberra-flat-white-cafe", "canberra-linen-napkins", "oconnor-cockatoo-cafe-raid"]);
 const claremontRendererIds = new Set([
   "elegans::Claremont, California · ECA250::headwear",
@@ -5928,6 +5929,7 @@ function drawElegansFieldAccessory(group, item, companion) {
 }
 
 function drawNamedAccessory(group, item, companion) {
+  if (drawSaltLakeBubbles(group, item, companion)) return true;
   if (drawReunionJU1375(group, item.family, companion)) return true;
   if (drawSnailEncounter(group, item, companion)) return true;
   if (drawPohnpeiAccessory(group, item, companion)) return true;
@@ -6019,6 +6021,9 @@ function renderPiece(target, item, wormPart) {
   let [x, y, scale] = layouts[item.slot][item.artKind][companion ? "companion" : "primary"];
   let angleOverride = null;
   const customLayouts = {
+    "eg4181-giant-bubble-loop": { primary: [355, 150, .85, 0], companion: [70, 173, .78, 0] },
+    "eg4181-apricot-picnic": { primary: [244, 265, .88, -4] },
+    "eg4181-picnic-blanket": { primary: [197, 283, 1, 0] },
     "ngm-agar-plate": { primary: [366, 260, .82, -6], companion: [35, 288, .65, 2] },
     "n2-lab-coat": { primary: [220, 155, 1, 0], companion: [66.6, 148.65, .43, 0] },
     "cryo-vial-jetpack": { primary: [176, 144, .74, 38], companion: [42, 147, .43, 30] },
@@ -6144,6 +6149,7 @@ function renderPiece(target, item, wormPart) {
   const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "hpt26-splashing-pool";
   if (sharedAccessoryFamilies.has(item.family)) piece.dataset.sharedAccessory = "true";
   if (item.family === "eca789-chocolate-tasting") piece.dataset.pieceLabel = companion ? "Chocolate macadamias" : "Chocolate bar";
+  if (item.family === "eg4181-giant-bubble-loop") piece.dataset.pieceLabel = companion ? "Little bubble kit" : "Giant bubble loop";
   if (item.family === "eca789-chocolate-gifts") piece.dataset.pieceLabel = "Chocolate gift";
   if (item.family === "santeuil-cylinder-organ-instrument") piece.dataset.pieceLabel = companion ? "concertina" : "cylinder organ";
   if (item.family === "ju1873-cacao-specimen-lantern" && companion) piece.dataset.pieceLabel = "cacao nibs";
@@ -6249,6 +6255,10 @@ export function renderLocationAccessories(targets, speciesId, placeName) {
   // The shared pool rests behind the female when idle. Restore the normal
   // accessory order when leaving Lombok so other locations keep their layering.
   // Beach umbrellas cover both worms when dragged over them; restore the slot on departure.
+  if (targets.charm?.dataset.picnicLayer) {
+    targets.headwear.parentNode.insertBefore(targets.charm, targets.extra || null);
+    delete targets.charm.dataset.picnicLayer;
+  }
   if (targets.charm?.dataset.beachLayer) {
     targets.headwear.parentNode.insertBefore(targets.charm, targets.extra || null);
     delete targets.charm.dataset.beachLayer;
@@ -6264,6 +6274,10 @@ export function renderLocationAccessories(targets, speciesId, placeName) {
   if (design.charm?.family === "mahahual-sea-grape-beach-parasols") {
     const scene = charmParent?.parentNode;
     if (scene) { scene.appendChild(targets.charm); targets.charm.dataset.beachLayer = "front"; }
+  }
+  if (design.charm?.family === "eg4181-picnic-blanket") {
+    const scene = targets.headwear.parentNode.parentNode;
+    scene.prepend(targets.charm); targets.charm.dataset.picnicLayer = "back";
   }
   const assignments = [
     [targets.headwear, design.headwear],
