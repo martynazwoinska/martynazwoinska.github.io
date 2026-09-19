@@ -16,13 +16,15 @@ its entry. "To check" is not a judgement that a scene needs a redesign.
 Martyna requested more convincing posing and explicitly authorized deployment.
 The hermaphrodite now rests its chin on a hand supported at the elbow; the male
 folds its arms. Two-segment arms retain their lengths, with rounded elbow joints
-and deliberate hand contact. A small body weight shift precedes the hands;
-the model holds still while its partner draws, then relaxes to see the picture.
+and deliberate hand contact. Follow-up requested and authorized for deployment:
+stronger mid-body bending and a slight upper-body lift precede the pose, then a
+slow breathing/weight adjustment continues while drawing. Tails stay planted;
+hands and temporary worn-prop copies follow the body, then restore exactly.
 Notebook portraits reflect those poses. Crowns, bags, background, sound assets
 and saved visitor accessory positions/sizes remain intact. No public copy changed.
 
-Production preview: `20260919-orsay-pose-3`; branch `codex/orsay-clear-poses`.
-Orsay timing, arm-length invariants, planted-tail geometry, paired art and SVG
+Production preview: `20260919-orsay-body-1`; branch `codex/orsay-clear-poses`.
+Orsay body continuity/amplitude, arm-length invariants, planted-tail geometry, paired art and SVG
 checks pass. Both roles inspected in the page; keyboard activation and Escape
 restore original nodes/transforms. Syntax and diff checks pass, no console errors.
 Responsive checks at 360, 768, 1024 and 1440 CSS px have no horizontal overflow.

@@ -21,6 +21,15 @@ export function sketchPose(x,y,bend=0,look=0,peek={x:0,y:0}){
  return {x:x+bend*middle*23-look*front*13+peek.x*lean,y:y+look*front*17+peek.y*lean};
 }
 export function boundedPeek(x,y){const scale=Math.min(1,62/Math.max(1,Math.hypot(x,y)));return {x:x*scale,y:y*scale};}
+// The lower body bears the pose; a slow adjustment travels into the upper
+// curve. Small breathing motion continues while the hands retain their gesture.
+export function modelBody(ms,male){
+ const stance=ease((ms-150)/1450)*(1-ease((ms-6600)/900));
+ const breathing=ease((ms-1650)/900)*(1-ease((ms-6100)/850))*Math.sin((ms-1650)*Math.PI*2/4100);
+ return {bend:(male?1.5:-1.15)*stance+(male?.5:-.38)*breathing,
+  look:(male?-.25:.32)*stance+.07*breathing,
+  lean:{x:(male?10:-12)*stance+(male?5:-6)*breathing,y:-10*stance-4*breathing}};
+}
 // Two fixed-length segments keep the elbow attached and prevent rubbery arms.
 export function poseElbow(shoulder,hand,upper,lower,side=1){
  const dx=hand.x-shoulder.x,dy=hand.y-shoulder.y,d=Math.max(.001,Math.hypot(dx,dy));
@@ -130,6 +139,7 @@ export function createOrsaySketching(habitat,refresh=()=>{}){
    copy.removeAttribute('transform');copy.style.transform='none';copy.style.animation='none';layer.appendChild(copy);
    save(a,art,'visibility');art.setAttribute('visibility','hidden');copies.set(piece,{copy,layer,base});
   }
+  a.modelProps=[BAG,BOOK].map(family=>copies.get(find(family,modelPart))).filter(Boolean);
   a.drawArm=arm(a,artistPart==='companion');a.holdArm=arm(a,artistPart==='companion');
   a.modelArms=[arm(a,modelPart==='companion'),arm(a,modelPart==='companion')];
   for(const limb of a.modelArms){limb.back.setAttribute('stroke-width',modelPart==='companion'?4:7);limb.front.setAttribute('stroke-width',modelPart==='companion'?2.5:4.8);}
@@ -152,10 +162,12 @@ export function createOrsaySketching(habitat,refresh=()=>{}){
   pose(a.artist,-.36*env,(.65-.32*show)*env);
   const bookTarget=point(a.artist,268,170),targetLocal=new DOMPoint(bookTarget.x,bookTarget.y).matrixTransform(a.model.base.inverse()),peek=boundedPeek(targetLocal.x-329,targetLocal.y-65);
   const posing=still?0:f.posing,male=a.model.part==='companion';
-  // A small weight shift precedes the hands. Hold the finished pose without
-  // waving or winking: folded arms for the male; a supported chin for the model.
-  const stance=still?0:ease((ms-150)/1200)*(1-ease((ms-6650)/800));
-  pose(a.model,(male?.6:-.55)*stance,(male?-.25:.32)*stance+.25*show,{x:peek.x*show,y:peek.y*show});
+  const bodyPose=modelBody(still?0:ms,male);
+  pose(a.model,bodyPose.bend,bodyPose.look+.25*show,{x:bodyPose.lean.x+peek.x*show,y:bodyPose.lean.y+peek.y*show});
+  for(const prop of a.modelProps){
+   const resting=new DOMPoint(230,160).matrixTransform(a.model.base),moved=point(a.model,230,160);
+   prop.layer.setAttribute('transform',transform(new DOMMatrix().translate(moved.x-resting.x,moved.y-resting.y).multiply(prop.base)));
+  }
   const limbs=modelArms(male,posing),limbOpacity=still?0:ease((ms-180)/450)*(1-ease((ms-7100)/600));
   limbs.forEach((joints,i)=>modelArm(a.modelArms[i],a.model,joints,limbOpacity));
   if(a.flap)a.flap.setAttribute('transform',`translate(0 -61) scale(1 ${1-(a.wasOpen?1:f.open)*1.48}) translate(0 61)`);

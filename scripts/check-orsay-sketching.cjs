@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict');
 const {pathToFileURL}=require('node:url'),path=require('node:path');
 (async()=>{
- const {sketchFrame,sketchPose,boundedPeek,modelArms,DURATION}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/orsay-play.js')));
+ const {sketchFrame,sketchPose,boundedPeek,modelArms,modelBody,DURATION}=await import(pathToFileURL(path.join(__dirname,'../game-of-worms/orsay-play.js')));
  assert.deepEqual(sketchPose(78,228,1,1,{x:62,y:20}),{x:78,y:228},'Drawing leaves the artist tail planted');
  assert(sketchPose(220,180,1,0).x>240,'The middle bends rather than moving as a rigid shape');
  assert.deepEqual(sketchPose(329,65,1,0),{x:329,y:65},'Holding a curved pose does not displace the face');
@@ -15,6 +15,17 @@ const {pathToFileURL}=require('node:url'),path=require('node:path');
  for(const male of [false,true])for(let i=0;i<=100;i++){
   const limbs=modelArms(male,i/100);
   limbs.forEach((a,j)=>{const length=(p,q)=>Math.hypot(p.x-q.x,p.y-q.y);assert(Math.abs(length(a.shoulder,a.elbow)-(j?48:47))<.001,'Upper arm keeps its length');assert(Math.abs(length(a.elbow,a.hand)-(j?56:53))<.001,'Forearm keeps its length');});
+ }
+ for(const male of [false,true]){
+  const idle=modelBody(0,male);assert([idle.bend,idle.look,idle.lean.x,idle.lean.y].every(value=>value===0));
+  assert(modelBody(DURATION,male).bend===0);
+  let previous=null;const middle=[];
+  for(let ms=0;ms<=DURATION;ms+=16){const p=modelBody(ms,male),q=sketchPose(220,180,p.bend,p.look,p.lean);
+   assert.deepEqual(sketchPose(78,228,p.bend,p.look,p.lean),{x:78,y:228},'Posing body motion keeps tail planted');
+   if(previous)assert(Math.hypot(q.x-previous.x,q.y-previous.y)<1.8,'Body motion remains smooth');previous=q;
+   if(ms>2200&&ms<6100)middle.push(q.x);
+  }
+  assert(Math.max(...middle)-Math.min(...middle)>12,'A visible body adjustment continues during the pose');
  }
  assert(last.done);assert.equal(last.envelope,0);assert.equal(last.open,0);
  const nodes=[];global.document={createElementNS:(_,tag)=>{const n={tag,attrs:{},children:[],setAttribute(k,v){this.attrs[k]=String(v);},appendChild(c){this.children.push(c);return c;}};nodes.push(n);return n;}};

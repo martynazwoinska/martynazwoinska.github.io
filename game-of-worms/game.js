@@ -1,5 +1,5 @@
 import { createFinalScenes } from "./final-scenes-play.js?v=20260919-vocals-4";
-import { createOrsaySketching } from "./orsay-play.js?v=20260919-orsay-pose-3";
+import { createOrsaySketching } from "./orsay-play.js?v=20260919-orsay-body-1";
 import { createSaltLakeBubbles } from "./salt-lake-play.js?v=20260918-picnic-3";
 import { createUmbrellaPivot, umbrellaHeadroom } from "./mahahual-pivot.js?v=20260917-mahahual-22";
 import { createMahahualPlay } from "./mahahual-play.js?v=20260917-mahahual-22";
