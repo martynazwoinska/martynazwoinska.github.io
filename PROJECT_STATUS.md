@@ -11,7 +11,7 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
-### Final three scene interactions, deployment authorized, 2026-09-19
+### Final three scene interactions, live verified, 2026-09-19
 
 Martyna authorized independent review, implementation and deployment while away.
 Only Santeuil, Tenerife and **C. elegans** Kauaʻi were reviewed. All three keep
@@ -35,7 +35,9 @@ keyboard/pointer actions, cancellation, saved-transform restoration and four-wid
 overflow checks pass. Full-page captures remain defective; exact dimensions and
 remaining manual checks are in
 [the final review](docs/game-of-worms-reviews/final-scenes-20260919.md).
-Publication verification follows the release commit.
+Published as `758bc2a`; Pages run `35435066808` succeeded. All 14 changed
+production assets match the committed bytes. Live Santeuil, Tenerife and Kauaʻi
+actions were checked without new browser errors.
 
 ### Orsay JU2518 shared sketching, deployment approved, 2026-09-19
 

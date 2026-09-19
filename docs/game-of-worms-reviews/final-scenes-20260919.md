@@ -112,5 +112,10 @@ Deleted tracked files: none. All production changes are under `game-of-worms/`;
 supporting scripts/docs are scoped to the same task. Unrelated checkouts remain
 untouched. Branch: `codex/final-scene-interactions`.
 
-Deployment is authorized. Commit, Pages and public-file verification are recorded
-in the completion report after publication.
+Published as `758bc2a0dd799ad76a4935d65acf13193fe18a87`. GitHub Pages run
+`35435066808` succeeded. All 14 changed production assets (HTML, seven JavaScript
+modules and six recordings) match committed bytes on the public site. Live
+Santeuil instrument/train, Tenerife guitar/snack and Kauaʻi recording/playback
+actions were checked. There are no new release browser errors; temporary layers
+clear after completion and scene changes. The unrelated Cabinet checkout retains
+its original pending changes.
