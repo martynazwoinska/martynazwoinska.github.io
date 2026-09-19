@@ -1,4 +1,4 @@
-import { drawOrsayArt } from "./orsay-art.js?v=20260919-sketch-3";
+import { drawOrsayArt } from "./orsay-art.js?v=20260919-orsay-pose-3";
 import { drawSaltLakeBubbles } from "./salt-lake-art.js?v=20260918-picnic-2";
 import { drawMahahualBeach } from "./mahahual-art.js?v=20260917-mahahual-22";
 import { drawReunionJU1375 } from "./reunion-ju1375-art.js?v=20260917-reunion-7";

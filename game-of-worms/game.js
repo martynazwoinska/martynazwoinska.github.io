@@ -1,5 +1,5 @@
 import { createFinalScenes } from "./final-scenes-play.js?v=20260919-vocals-4";
-import { createOrsaySketching } from "./orsay-play.js?v=20260919-sketch-3";
+import { createOrsaySketching } from "./orsay-play.js?v=20260919-orsay-pose-3";
 import { createSaltLakeBubbles } from "./salt-lake-play.js?v=20260918-picnic-3";
 import { createUmbrellaPivot, umbrellaHeadroom } from "./mahahual-pivot.js?v=20260917-mahahual-22";
 import { createMahahualPlay } from "./mahahual-play.js?v=20260917-mahahual-22";
@@ -13,7 +13,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260919-final-3";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260919-orsay-pose-3";
 import { createKauaiBath } from "./kauai-bath-play.js?v=20260909-bath-pour-1";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";

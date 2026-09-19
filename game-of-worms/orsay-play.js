@@ -1,4 +1,4 @@
-import {BOOK,BAG,CROWN,add,pencil} from './orsay-art.js?v=20260919-sketch-3';
+import {BOOK,BAG,CROWN,add,pencil} from './orsay-art.js?v=20260919-orsay-pose-3';
 import {pathPoints} from './guadeloupe-dance.js?v=20260916-gwoka-11';
 const clamp=x=>Math.max(0,Math.min(1,x));
 const ease=x=>{x=clamp(x);return x*x*x*(10+x*(-15+6*x));};
@@ -10,6 +10,7 @@ export function sketchFrame(ms){
  const enter=ease(ms/1100),leave=ease((ms-8200)/1200);
  return {enter,leave,envelope:enter*(1-leave),open:ease((ms-150)/550)*(1-ease((ms-8150)/900)),
   progress:clamp((ms-2100)/4600),
+  posing:ease((ms-550)/1250)*(1-ease((ms-6600)/650)),
   peek:ease((ms-6700)/700)*(1-ease((ms-7700)/500)),done:ms>=DURATION};
 }
 // The tail stays planted. A curious lean grows along the upper body rather
@@ -20,6 +21,18 @@ export function sketchPose(x,y,bend=0,look=0,peek={x:0,y:0}){
  return {x:x+bend*middle*23-look*front*13+peek.x*lean,y:y+look*front*17+peek.y*lean};
 }
 export function boundedPeek(x,y){const scale=Math.min(1,62/Math.max(1,Math.hypot(x,y)));return {x:x*scale,y:y*scale};}
+// Two fixed-length segments keep the elbow attached and prevent rubbery arms.
+export function poseElbow(shoulder,hand,upper,lower,side=1){
+ const dx=hand.x-shoulder.x,dy=hand.y-shoulder.y,d=Math.max(.001,Math.hypot(dx,dy));
+ const along=(upper*upper-lower*lower+d*d)/(2*d),height=Math.sqrt(Math.max(0,upper*upper-along*along));
+ return {x:shoulder.x+dx/d*along-dy/d*height*side,y:shoulder.y+dy/d*along+dx/d*height*side};
+}
+export function modelArms(male,amount){
+ const shoulder={x:310,y:105},hand=mix({x:334,y:181},male?{x:274,y:123}:{x:335,y:87},amount);
+ const elbow=poseElbow(shoulder,hand,47,53,male?-1:1);
+ const supportShoulder={x:270,y:118},support=mix({x:281,y:190},male?{x:312,y:133}:elbow,amount);
+ return [{shoulder,elbow,hand},{shoulder:supportShoulder,elbow:poseElbow(supportShoulder,support,48,56,1),hand:support}];
+}
 function foley(){
  let context;const buffers=new Map(),pending=new Set(),voices=new Set();
  function prepare(){try{context??=new(window.AudioContext||window.webkitAudioContext)();context.resume().catch(()=>{});
@@ -85,6 +98,14 @@ export function createOrsaySketching(habitat,refresh=()=>{}){
   for(const n of [arm.back,arm.front]){n.setAttribute('d',d);n.setAttribute('opacity',Math.min(1,grip*4));}
   arm.hand.setAttribute('cx',end.x);arm.hand.setAttribute('cy',end.y);arm.hand.setAttribute('opacity',Math.min(1,grip*4));
  }
+ function modelArm(limb,actor,joints,opacity){
+  const from=point(actor,joints.shoulder.x,joints.shoulder.y),elbow=point(actor,joints.elbow.x,joints.elbow.y),hand=point(actor,joints.hand.x,joints.hand.y);
+  const before=mix(elbow,from,.17),after=mix(elbow,hand,.17);
+  const d=`M${from.x} ${from.y}L${before.x} ${before.y}Q${elbow.x} ${elbow.y} ${after.x} ${after.y}L${hand.x} ${hand.y}`;
+  for(const n of [limb.back,limb.front]){n.setAttribute('d',d);n.setAttribute('opacity',opacity);}
+  limb.hand.setAttribute('cx',hand.x);limb.hand.setAttribute('cy',hand.y);limb.hand.setAttribute('opacity',opacity);
+  limb.hand.setAttribute('transform',`rotate(${Math.atan2(hand.y-elbow.y,hand.x-elbow.x)*180/Math.PI} ${hand.x} ${hand.y})`);
+ }
  function start(piece){
   if(!handles(piece)||!visible(piece))return false;
   if(action?.piece===piece)return true;cancel();
@@ -110,6 +131,8 @@ export function createOrsaySketching(habitat,refresh=()=>{}){
    save(a,art,'visibility');art.setAttribute('visibility','hidden');copies.set(piece,{copy,layer,base});
   }
   a.drawArm=arm(a,artistPart==='companion');a.holdArm=arm(a,artistPart==='companion');
+  a.modelArms=[arm(a,modelPart==='companion'),arm(a,modelPart==='companion')];
+  for(const limb of a.modelArms){limb.back.setAttribute('stroke-width',modelPart==='companion'?4:7);limb.front.setAttribute('stroke-width',modelPart==='companion'?2.5:4.8);}
   if(a.book){
    a.bookCopy=copies.get(a.book);a.page=a.bookCopy.copy.querySelector('[data-orsay-page]');
    const idle=a.bookCopy.copy.querySelector('[data-orsay-pencil]');a.pencilBase=relative(idle);idle.setAttribute('visibility','hidden');a.pencil=pencil(a.layer);
@@ -128,10 +151,13 @@ export function createOrsaySketching(habitat,refresh=()=>{}){
   const env=still?0:f.envelope,show=still?0:f.peek;
   pose(a.artist,-.36*env,(.65-.32*show)*env);
   const bookTarget=point(a.artist,268,170),targetLocal=new DOMPoint(bookTarget.x,bookTarget.y).matrixTransform(a.model.base.inverse()),peek=boundedPeek(targetLocal.x-329,targetLocal.y-65);
-  pose(a.model,(a.model.part==='companion'?.85:-.7)*env,(-.4+.65*show)*env,{x:peek.x*show,y:peek.y*show});
-  // One brief wink while holding the pose; no repeated jitter or head bob.
-  const wink=still?0:ease((ms-3100)/180)*(1-ease((ms-3550)/220)),eye=a.model.face.querySelector('.worm-eye');
-  if(eye){const y=Number(eye.getAttribute('cy'));eye.setAttribute('transform',`translate(0 ${y}) scale(1 ${1-.87*wink}) translate(0 ${-y})`);}
+  const posing=still?0:f.posing,male=a.model.part==='companion';
+  // A small weight shift precedes the hands. Hold the finished pose without
+  // waving or winking: folded arms for the male; a supported chin for the model.
+  const stance=still?0:ease((ms-150)/1200)*(1-ease((ms-6650)/800));
+  pose(a.model,(male?.6:-.55)*stance,(male?-.25:.32)*stance+.25*show,{x:peek.x*show,y:peek.y*show});
+  const limbs=modelArms(male,posing),limbOpacity=still?0:ease((ms-180)/450)*(1-ease((ms-7100)/600));
+  limbs.forEach((joints,i)=>modelArm(a.modelArms[i],a.model,joints,limbOpacity));
   if(a.flap)a.flap.setAttribute('transform',`translate(0 -61) scale(1 ${1-(a.wasOpen?1:f.open)*1.48}) translate(0 61)`);
   if(a.book){
    const resting=new DOMPoint(0,0).matrixTransform(a.bookCopy.base),held=point(a.artist,268,170),lift=still?0:ease((ms-350)/1300)*(1-f.leave);

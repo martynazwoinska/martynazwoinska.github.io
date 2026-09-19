@@ -11,6 +11,25 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+### Orsay JU2518 natural portrait poses, deployment authorized, 2026-09-19
+
+Martyna requested more convincing posing and explicitly authorized deployment.
+The hermaphrodite now rests its chin on a hand supported at the elbow; the male
+folds its arms. Two-segment arms retain their lengths, with rounded elbow joints
+and deliberate hand contact. A small body weight shift precedes the hands;
+the model holds still while its partner draws, then relaxes to see the picture.
+Notebook portraits reflect those poses. Crowns, bags, background, sound assets
+and saved visitor accessory positions/sizes remain intact. No public copy changed.
+
+Production preview: `20260919-orsay-pose-3`; branch `codex/orsay-clear-poses`.
+Orsay timing, arm-length invariants, planted-tail geometry, paired art and SVG
+checks pass. Both roles inspected in the page; keyboard activation and Escape
+restore original nodes/transforms. Syntax and diff checks pass, no console errors.
+Responsive checks at 360, 768, 1024 and 1440 CSS px have no horizontal overflow.
+Full-page capture remains unreliable (scaled images with duplicated/blank regions);
+normal scene views were used for visual inspection. Reduced-motion's static path
+is preserved by code inspection; OS preference was not changed. Fixed light palette.
+
 ### Kauaʻi XZ1516 vocal duet follow-up, deployment approved, 2026-09-19
 
 Martyna approved replacing the bird-like whistle with playful sung phrases.
