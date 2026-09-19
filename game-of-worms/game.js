@@ -1,4 +1,4 @@
-import { createFinalScenes } from "./final-scenes-play.js?v=20260919-vocals-4";
+import { createFinalScenes } from "./final-scenes-play.js?v=20260919-railway-3";
 import { createOrsaySketching } from "./orsay-play.js?v=20260919-orsay-hold-1";
 import { createSaltLakeBubbles } from "./salt-lake-play.js?v=20260918-picnic-3";
 import { createUmbrellaPivot, umbrellaHeadroom } from "./mahahual-pivot.js?v=20260917-mahahual-22";
@@ -13,7 +13,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260919-orsay-pose-3";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260919-railway-3";
 import { createKauaiBath } from "./kauai-bath-play.js?v=20260909-bath-pour-1";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
@@ -237,7 +237,7 @@ if (!environmentCompositionAudit.valid) {
 }
 const visited = new Set();
 const accessoryIds = ["local-headwear", "local-wrap", "local-charm", "local-extra"];
-const accessoryWormParts = ["primary", "companion", "primary-top", "sunscreen"];
+const accessoryWormParts = ["primary", "companion", "primary-top", "sunscreen", "primary-cap"];
 const accessoryScaleMin = .6;
 const accessoryScaleMax = 2;
 const accessoryBottomMargin = 2;
@@ -1058,6 +1058,7 @@ function moveAccessory(id, wormPart, desiredPosition, referencePiece = visibleAc
     selectedAccessorySizeTarget?.id === id
     && selectedAccessorySizeTarget.wormPart === wormPart
   ) updateAccessorySizeControls();
+  if (referencePiece.dataset.accessoryFamily === "santeuil-hogweed-locomotive") finalScenes.syncRailway();
   return position;
 }
 
@@ -1526,6 +1527,7 @@ function refreshAccessoryPieceControls() {
   });
   ahmedabadHands.sync();
   umbrellaPivot.refreshShadows();
+  finalScenes.syncRailway();
 }
 
 function addAccessoryHitTarget(piece) {

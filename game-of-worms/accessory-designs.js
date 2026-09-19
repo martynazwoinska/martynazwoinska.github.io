@@ -25,7 +25,7 @@ import { drawOahuChocolate, chocolateLayouts } from "./oahu-chocolate-art.js?v=2
 import { drawOahuGift, giftLayouts } from "./oahu-gift-art.js?v=20260909-gift-3";
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
 import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260919-final-3";
-import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260919-final-3";
+import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260919-uniform-1";
 import { drawKauaiRecording } from "./kauai-recording.js?v=20260919-final-3";
 import { drawN2Coat } from "./n2-tailoring.js?v=20260906-n2-fabric-2";
 import { drawN2Cryopack } from "./n2-cryopacks.js?v=20260906-n2-sidepack-2";
@@ -6037,9 +6037,9 @@ function renderPiece(target, item, wormPart) {
     "af16-embroidered-waistcoat": { primary: [0, 0, 1, 0], companion: [-52, 54, .43, 0] },
   "kite-rig": { primary: [220, 210, .65, 0], companion: [73, 160, .47, -10] },
     "soil-kit": { primary: [344, 285, .52, -2], companion: [10, 248, .43, -9] },
-  "santeuil-railway-driver-uniform": { primary: [0, 0, 1, 0], companion: [-28, 82, .43, 0] },
+  "santeuil-railway-driver-uniform": { primary: [0, 0, 1, 0], companion: [-28, 82, .43, 0], "primary-cap": [0, 0, 1, 0] },
   "santeuil-cylinder-organ-instrument": { primary: [360, 244, .66, -4], companion: [62, 161, .38, -28] },
-  "santeuil-hogweed-locomotive": { primary: [220, 275, .73, -2], companion: [28, 198, .62, 0] },
+  "santeuil-hogweed-locomotive": { primary: [220, 275, .73, -2], companion: [28, 289, .62, 0] },
     "midmar-compost-tumbler": { primary: [270.4, 55, .35, 0], companion: [106.5, 90.5, .22, 0] },
     "galaxy-plate-scanner": { primary: [184, 204, .54, -1], companion: [68, 202, .43, 2] },
     "agassiz-ice-flow-model": { primary: [322, 260, .52, -2], companion: [52, 290, .42, 2] },
@@ -6153,6 +6153,7 @@ function renderPiece(target, item, wormPart) {
   if (item.family === "eca789-chocolate-tasting") piece.dataset.pieceLabel = companion ? "Chocolate macadamias" : "Chocolate bar";
   if (item.family === "eg4181-giant-bubble-loop") piece.dataset.pieceLabel = companion ? "Little bubble kit" : "Giant bubble loop";
   if (item.family === "eca789-chocolate-gifts") piece.dataset.pieceLabel = "Chocolate gift";
+  if (item.family === "santeuil-railway-driver-uniform" && !companion) piece.dataset.pieceLabel = wormPart === "primary-cap" ? "Cap" : "Jacket";
   if (item.family === "santeuil-cylinder-organ-instrument") piece.dataset.pieceLabel = companion ? "concertina" : "cylinder organ";
   if (item.family === "ju1873-cacao-specimen-lantern" && companion) piece.dataset.pieceLabel = "cacao nibs";
   if (item.family === "canberra-flat-white-cafe") piece.dataset.pieceLabel = companion ? "biscuits" : "flat white";
@@ -6173,7 +6174,7 @@ function renderPiece(target, item, wormPart) {
   if (item.family === "qg4739-camouflage-cape") piece.dataset.pieceLabel = "Cape";
   if (item.family === "ju2484-leaf-encounter") piece.dataset.pieceLabel = "Fallen leaf";
   if (item.family === "ju2484-leaf-hats") piece.dataset.pieceLabel = "Leaf hat";
-  const isSanteuilCompanionProp = companion && ["santeuil-cylinder-organ-instrument", "santeuil-hogweed-locomotive"].includes(item.family);
+  const isSanteuilCompanionProp = companion && item.family === "santeuil-cylinder-organ-instrument";
   const isFittedHeadwear = item.family === "eg4181-apricot-blossom-hat" || item.family === "ju2518-rotten-apple-decay-rotoscope" || item.family === "xz1516-forest-bird-headphones" || item.family === "n2-lab-goggles" || item.family === "n2-lab-coat" || item.family === "cryo-vial-jetpack";
   const isFittedKilt = item.family === "edinburgh-tartan-kilt" || item.family === "tenerife-atlantic-canary-costume" || item.family === "tenerife-timple-guitar" || item.family === "santeuil-railway-driver-uniform";
   const isObservingScope = item.family === "midmar-compost-tumbler";
@@ -6202,7 +6203,7 @@ function renderPiece(target, item, wormPart) {
       }
     });
   }
-  const drewNamedAccessory = drawNamedAccessory(artwork, item.family === "mahahual-reef-ruffle-swim-costumes" ? { ...item, segment: wormPart === "sunscreen" ? "sunscreen" : wormPart === "primary-top" ? "top" : "bottom" } : item, companion);
+  const drewNamedAccessory = drawNamedAccessory(artwork, item.family === "mahahual-reef-ruffle-swim-costumes" ? { ...item, segment: wormPart === "sunscreen" ? "sunscreen" : wormPart === "primary-top" ? "top" : "bottom" } : item.family === "santeuil-railway-driver-uniform" ? { ...item, segment: companion ? "all" : wormPart === "primary-cap" ? "cap" : "jacket" } : item, companion);
   if (!drewNamedAccessory) throw new Error(`No named accessory renderer for ${item.label}`);
   return piece;
 }
@@ -6298,6 +6299,7 @@ export function renderLocationAccessories(targets, speciesId, placeName) {
     target.dataset.accessoryFamily = item.family;
     renderPiece(target, item, "primary");
     renderPiece(target, item, "companion");
+    if (item.family === "santeuil-railway-driver-uniform") renderPiece(target, item, "primary-cap");
     if (item.family === "mahahual-reef-ruffle-swim-costumes") { renderPiece(target, item, "primary-top"); renderPiece(target, item, "sunscreen"); }
   });
   return design;

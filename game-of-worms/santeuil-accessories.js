@@ -14,36 +14,39 @@ function ellipse(parent, cx, cy, rx, ry, fill, stroke = "#34434b", width = 2) {
   return el(parent, "ellipse", {cx, cy, rx, ry, fill, stroke, "stroke-width": width});
 }
 
-function uniform(g, small) {
+function uniform(g, small, segment = "all") {
   // Both uniforms use the native worm coordinates and its motion phase.
   // Different seam, lapel and button constructions fit each animal separately.
   const uniformRoot = g;
-  g = el(uniformRoot, "g", {
-    class: "santeuil-jacket-fit",
-    // Keep the collar near the neck while the lower hem follows the leftward bend.
-    transform: small ? "matrix(1 0 -0.18 1 25 2)" : "matrix(1 0 -0.25 1 34 3)"
-  });
-  const coat = small ? "M204 136Q221 101 258 92Q278 91 298 91L304 119Q276 141 251 137Q230 139 221 156Z"
-    : "M190 160Q207 117 244 94Q263 86 295 91L302 120Q277 141 252 139Q229 144 211 179Z";
-  path(g, coat, small ? "#426174" : "#344c65", "#253c50", 2.7);
-  path(g, small ? "M205 136Q220 117 236 114Q220 137 221 156Z" : "M191 160Q206 132 226 126Q212 151 211 178Z", "#263e55", "none", 0);
-  line(g, small ? "M210 133Q227 108 249 101M211 143L223 151" : "M196 157Q215 119 243 102M199 166L210 172", "#c7aa63", 2.5);
-  // Ivory facing folds beneath the dark lapel, not over the face.
-  path(g, small ? "M272 94L288 94L295 114L277 126L263 111Z" : "M265 91L286 94L295 119L274 132L254 110Z", "#efdfa9", "#243b4c", 1.6);
-  path(g, small ? "M268 94L266 110L279 119L270 106Z" : "M259 94L256 111L273 126L269 111Z", "#506d80", "#243b4c", 1.5);
-  path(g, small ? "M284 94L296 91L303 108L287 119L293 108Z" : "M281 94L295 91L302 112L283 126L291 111Z", "#49677d", "#243b4c", 1.5);
-  path(g, small ? "M285 95Q297 100 305 95L301 105L293 104L284 111L280 106Z" : "M281 96Q294 104 307 97L302 108L294 107L285 116L279 109Z", "#a75060", "#703d50", 1.4);
-  line(g, small ? "M285 97L294 102" : "M283 99L294 105", "#d28083", 1.3);
-  line(g, small ? "M260 119Q244 127 233 143" : "M270 130Q244 134 222 164", "#20394e", 1.3);
-  const buttons = small ? [[256,123],[244,133],[235,145]] : [[256,124],[266,132],[244,135],[254,144],[232,149],[242,158]];
-  buttons.forEach(([x,y])=>{
-    ellipse(g,x,y,2.8,2.4,"#d5b76b","#233a4d",.8);
-    line(g,`M${x-1} ${y-.8}l1.5-.3`,"#fff0bb",.8);
-  });
-  path(g, small ? "M229 124L243 117L249 124L238 133L230 132Z" : "M212 144Q218 133 230 129L239 139L225 153L215 153Z", "#3d5c73", "#c5aa67", 1.6);
-  line(g, small ? "M231 125L243 120" : "M216 143L230 134", "#253d53", 1.2);
+  if (segment !== "cap") {
+    g = el(uniformRoot, "g", {
+      class: "santeuil-jacket-fit",
+      // Keep the collar near the neck while the lower hem follows the leftward bend.
+      transform: small ? "matrix(1.08 0 -0.22 1.16 8 -16)" : "matrix(1.04 0 -0.25 1.12 24 -7)"
+    });
+    const coat = small ? "M204 136Q221 101 258 92Q278 91 298 91L304 119Q276 141 251 137Q230 139 221 156Z"
+      : "M190 160Q207 117 244 94Q263 86 295 91L302 120Q277 141 252 139Q229 144 211 179Z";
+    path(g, coat, small ? "#426174" : "#344c65", "#253c50", 2.7);
+    path(g, small ? "M205 136Q220 117 236 114Q220 137 221 156Z" : "M191 160Q206 132 226 126Q212 151 211 178Z", "#263e55", "none", 0);
+    line(g, small ? "M210 133Q227 108 249 101M211 143L223 151" : "M196 157Q215 119 243 102M199 166L210 172", "#c7aa63", 2.5);
+    // Ivory facing folds beneath the dark lapel, not over the face.
+    path(g, small ? "M272 94L288 94L295 114L277 126L263 111Z" : "M265 91L286 94L295 119L274 132L254 110Z", "#efdfa9", "#243b4c", 1.6);
+    path(g, small ? "M268 94L266 110L279 119L270 106Z" : "M259 94L256 111L273 126L269 111Z", "#506d80", "#243b4c", 1.5);
+    path(g, small ? "M284 94L296 91L303 108L287 119L293 108Z" : "M281 94L295 91L302 112L283 126L291 111Z", "#49677d", "#243b4c", 1.5);
+    path(g, small ? "M285 95Q297 100 305 95L301 105L293 104L284 111L280 106Z" : "M281 96Q294 104 307 97L302 108L294 107L285 116L279 109Z", "#a75060", "#703d50", 1.4);
+    line(g, small ? "M285 97L294 102" : "M283 99L294 105", "#d28083", 1.3);
+    line(g, small ? "M260 119Q244 127 233 143" : "M270 130Q244 134 222 164", "#20394e", 1.3);
+    const buttons = small ? [[256,123],[244,133],[235,145]] : [[256,124],[266,132],[244,135],[254,144],[232,149],[242,158]];
+    buttons.forEach(([x,y])=>{
+      ellipse(g,x,y,2.8,2.4,"#d5b76b","#233a4d",.8);
+      line(g,`M${x-1} ${y-.8}l1.5-.3`,"#fff0bb",.8);
+    });
+    path(g, small ? "M229 124L243 117L249 124L238 133L230 132Z" : "M212 144Q218 133 230 129L239 139L225 153L215 153Z", "#3d5c73", "#c5aa67", 1.6);
+    line(g, small ? "M231 125L243 120" : "M216 143L230 134", "#253d53", 1.2);
+  }
+  if (segment === "jacket") return;
   // Cap brim follows the eye-line tilt. Its lower edge remains above both eyes.
-  const cap = el(uniformRoot,"g",{class:"santeuil-cap-fit",transform:small?"translate(330 34) rotate(27)":"translate(331 33) rotate(27)"});
+  const cap = el(uniformRoot,"g",{class:"santeuil-cap-fit",transform:small?"translate(330 33) rotate(25) scale(1.06)":"translate(330 32) rotate(25)"});
   path(cap,small?"M-24-7Q-23-24 0-26Q21-24 26-8L21 0L-22 0Z":"M-28-7Q-27-27-3-30Q23-29 30-8L24 1L-25 0Z",small?"#426174":"#344c65","#253c50",2.2);
   path(cap,small?"M-25-7Q0-12 26-7L24 1Q0-3-23 2Z":"M-29-7Q-2-13 30-7L27 2Q0-4-26 2Z","#263d52","#253c50",1.5);
   path(cap,small?"M-23 1Q1-4 24 1Q16 9 2 8Q-12 7-23 1Z":"M-26 2Q0-3 27 2Q18 11 2 10Q-16 9-26 2Z","#23394c","#1c3141",1.5);
@@ -254,6 +257,6 @@ export function drawSanteuilRefinement(group, item, companion) {
   }[item.family];
   if (!render) return false;
   group.classList.add("santeuil-refined");
-  render(group, companion);
+  render(group, companion, item.segment);
   return true;
 }

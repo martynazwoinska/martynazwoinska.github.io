@@ -32,14 +32,14 @@ export function performance(habitat,kind){
   const ids=new Map();for(const n of copy.querySelectorAll('[id]')){ids.set(n.id,n.id+'-performance');n.id+='-performance';}
   for(const n of [copy,...copy.querySelectorAll('*')])for(const attr of [...n.attributes])for(const [id,newId]of ids)if(attr.value.includes(`url(#${id})`))n.setAttribute(attr.name,attr.value.replaceAll(`url(#${id})`,`url(#${newId})`));
   for(const n of copy.querySelectorAll('*'))n.style.animation='none';
-  g.appendChild(copy);hide(art);props.push({piece,base,g,copy,family:piece.dataset.accessoryFamily,part:piece.dataset.wormPart});
+  g.appendChild(copy);hide(art);props.push({piece,base,g,copy,family:piece.dataset.accessoryFamily,part:piece.dataset.wormPart,headFit:copy.querySelector(".santeuil-cap-fit")?.getAttribute("transform")});
  }
  const prop=(family,part='primary')=>props.find(p=>p.family===family&&p.part===part);
  function pose(part,bend=0,look=0){const a=actors[part];a.bend=bend;a.look=look;
   for(const p of a.paths)p.n.setAttribute('d',p.points.map(q=>{if(q.close)return 'Z';const v=bodyPoint(q.x,q.y,bend,look);return `${q.move?'M':'L'}${v.x.toFixed(3)} ${v.y.toFixed(3)}`;}).join(' ')+(p.closed?' Z':''));
   const q=bodyPoint(329,65,bend,look);a.face.setAttribute('transform',`translate(${q.x-329} ${q.y-65})`);
-  for(const p of props.filter(p=>p.part===part)){
-   const head=p.copy.querySelector('.santeuil-cap-fit');if(head){head.setAttribute('transform',`translate(${q.x-329} ${q.y-65}) `+(part==='primary'?'translate(331 33) rotate(27)':'translate(330 34) rotate(27)'));}
+  for(const p of props.filter(p=>p.part===part||(part==='primary'&&p.part==='primary-cap'))){
+   const head=p.copy.querySelector('.santeuil-cap-fit');if(head){head.setAttribute('transform',`translate(${q.x-329} ${q.y-65}) `+p.headFit);}
    if(p.family==='xz1516-forest-bird-headphones')p.g.setAttribute('transform',matrix(a.base.translate(q.x-329,q.y-65).multiply(a.base.inverse()).multiply(p.base)));
   }
  }

@@ -20,11 +20,24 @@ const paint=n=>walk(n).filter(n=>n.tag!=='g').map(n=>[n.tag,Object.fromEntries(O
   for(const family of families)for(const male of [false,true]){const a=new Element('g'),b=new Element('g');before[fn](a,{family},male);after[fn](b,{family},male);assert.deepEqual(paint(a),paint(b),`${family}/${male}: approved artwork`);}
  }
  const {bodyPoint}=await import(pathToFileURL(path.join(game,'scene-performance.js')));
- const {performanceEnvelope,railTravel,strumTimes}=await import(pathToFileURL(path.join(game,'final-scenes-play.js')));
+ const {performanceEnvelope,railTravel,strumTimes,SANTEUIL_MARCH_SECONDS}=await import(pathToFileURL(path.join(game,'final-scenes-play.js')));
+ const march=fs.readFileSync(path.join(game,'assets/audio/santeuil-organ-long.wav'));
+ assert.equal(march.toString('ascii',0,4),'RIFF');
+ assert.equal(march.readUInt16LE(22),1,'Mono march');
+ assert.equal(march.readUInt32LE(40)/2/march.readUInt32LE(24),SANTEUIL_MARCH_SECONDS,'Recording lasts for the full performance cue');
+ assert.equal(performanceEnvelope(SANTEUIL_MARCH_SECONDS*1000+1800,SANTEUIL_MARCH_SECONDS*1000+1800),0,'Extended performance settles');
  for(const bend of [-1,-.5,0,.5,1])for(const look of [-.4,0,.4])assert.deepEqual(bodyPoint(78,228,bend,look),{x:78,y:228},'Tail remains planted');
  assert(Math.abs(bodyPoint(210,180,1,0).x-210)>4,'Middle bends visibly');
  for(const duration of [4000,5700,5800,6500,7000,9000,9600]){assert.equal(performanceEnvelope(0,duration),0);assert.equal(performanceEnvelope(duration,duration),0);}
- let last=railTravel(0);for(let t=0;t<=7000;t+=10){const x=railTravel(t);assert(x>=0&&x<=42);assert(Math.abs(x-last)<.5,'No sudden train jumps');last=x;}assert.equal(last,0,'Returns to saved position');
+ const {railwayProgress,RAILWAY_DURATION}=await import(pathToFileURL(path.join(game,'santeuil-railway.js')));
+ assert.equal(railTravel(2200),0,'Boarding finishes before departure');
+ assert.equal(railTravel(6800),64,'A visible journey reaches the far station');
+ assert.equal(railTravel(8800),64,'Stop before the return journey');
+ assert.equal(railTravel(13400),0,'Train returns before the rider dismounts');
+ assert.equal(railwayProgress(1900).aboard,1);
+ assert.equal(railwayProgress(13900).aboard,1,'Rider stays aboard until the trolley stops');
+ assert.deepEqual(railwayProgress(RAILWAY_DURATION),{travel:0,aboard:0});
+ let last=railTravel(0);for(let t=0;t<=16200;t+=10){const x=railTravel(t);assert(x>=0&&x<=64);assert(Math.abs(x-last)<.5,'No sudden train jumps');last=x;}assert.equal(last,0,'Returns to saved position');
  assert.notDeepEqual(strumTimes(),strumTimes(true));
  for(const times of [strumTimes(),strumTimes(true)])for(let i=1;i<times.length;i++)assert(times[i]-times[i-1]>=200,'Gestures have time to settle');
  const {vocalPhrases,vocalLevel,vocalSequence,vocalBeats,vocalMotion}=await import(pathToFileURL(path.join(game,'kauai-vocals.js')));

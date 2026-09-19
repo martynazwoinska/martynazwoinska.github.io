@@ -1,5 +1,29 @@
 # Santeuil location research and art brief
 
+## Railway and uniform follow-up, approved for deployment, 2026-09-19
+
+Martyna requested independent larger-worm costume parts, closer uniform fit,
+a longer march and a connected scene story. Current preview:
+`http://127.0.0.1:8777/game-of-worms/?preview=20260919-railway-3`.
+
+The forest miniature railway now has a shared foreground track with sleepers,
+wooden bearers and paired rails. Both vehicle drawings are preserved; the trolley
+starts at track level. Either vehicle begins a short out-and-back inspection:
+the male boards, works the pump and travels with his uniform and concertina;
+the larger worm cranks the organ as departure music. The train pauses before
+reversing and both return before the male dismounts. This is a fantasy railway,
+not a reconstruction of the historical route. Original landscape is unchanged.
+
+The 14.4-second march continues the existing CC0 source. Uniform cap/jacket
+controls, visual construction and visitor transforms are preserved. The shared
+track follows drag/size changes. Hiding the train pair removes its track.
+
+Martyna approved deployment of this preview on 2026-09-19.
+Focused timing/boarding/return checks and existing
+final-scene and uniform checks pass. Browser departure, travel, return, control
+restoration and console checks performed. Full-page screenshot capture remains
+unreliable; complete-page visual proof is still manual.
+
 ## Interaction review, 2026-09-19
 
 Decision: **keep approved art; add focused interactions**.

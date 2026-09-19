@@ -24,9 +24,9 @@ const walk = n => [n,...n.children.flatMap(walk)];
       const artwork = root => walk(root).filter(n=>n.tag!=='g').map(n=>[n.tag,n.attrs]);
       assert.deepEqual(artwork(after),artwork(before),'Uniform artwork stays intact while fit groups change');
       assert.equal(after.children[0].attrs.class,'santeuil-jacket-fit');
-      assert.equal(after.children[0].attrs.transform,small?'matrix(1 0 -0.18 1 25 2)':'matrix(1 0 -0.25 1 34 3)');
+      assert.equal(after.children[0].attrs.transform,small?'matrix(1.08 0 -0.22 1.16 8 -16)':'matrix(1.04 0 -0.25 1.12 24 -7)');
       assert.equal(after.children[1].attrs.class,'santeuil-cap-fit');
-      assert.equal(after.children[1].attrs.transform,small?'translate(330 34) rotate(27)':'translate(331 33) rotate(27)');
+      assert.equal(after.children[1].attrs.transform,small?'translate(330 33) rotate(25) scale(1.06)':'translate(330 32) rotate(25)');
     } else {
       const artwork = root => walk(root).filter(n=>n.tag!=='g').map(n=>[n.tag,n.attrs]);
       assert.deepEqual(artwork(after),artwork(before),family+' approved geometry and paint remain unchanged beneath identity mechanism groups');
@@ -45,6 +45,17 @@ const walk = n => [n,...n.children.flatMap(walk)];
     }
     assert.notEqual(pair[0],pair[1],family+' must have separately drawn paired geometry');
   }
+  // Splitting must neither duplicate nor drop any piece of the approved art.
+  const whole=new Element('g'),jacket=new Element('g'),cap=new Element('g');
+  const family='santeuil-railway-driver-uniform';
+  drawSanteuilRefinement(whole,{family},false);
+  drawSanteuilRefinement(jacket,{family,segment:'jacket'},false);
+  drawSanteuilRefinement(cap,{family,segment:'cap'},false);
+  assert.equal(JSON.stringify([...jacket.children,...cap.children]),JSON.stringify(whole.children));
+  assert.equal(jacket.children.length,1);
+  assert.equal(cap.children.length,1);
+  assert.equal(jacket.children[0].attrs.class,'santeuil-jacket-fit');
+  assert.equal(cap.children[0].attrs.class,'santeuil-cap-fit');
   assert.equal(drawSanteuilRefinement(new Element('g'),{family:'unrelated'},false),false);
   const dispatch=fs.readFileSync(path.join(root,'accessory-designs.js'),'utf8');
   assert(dispatch.indexOf('if (drawSanteuilRefinement')<dispatch.indexOf('if (drawElegansFieldAccessory'));

@@ -11,6 +11,52 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+### Santeuil railway and uniform follow-up, approved for deployment, 2026-09-19
+
+Requested by Martyna: move the larger worm's costume parts independently and
+improve both uniforms' fit. Cap and jacket now have separate drag, keyboard,
+resize and reset targets. Both jackets have a longer fitted cut; cap seating
+and tilt are adjusted separately. Existing drawn details, colours, scene props
+and background are preserved. Performance copies retain the new cap fits.
+Follow-up: the organ march now uses a continuous 14.4-second excerpt (previously
+7.2 seconds) from the same recording. The 16.2-second action includes settling;
+crank travel increases so its pace stays consistent. Concertina is unchanged.
+Recording duration and performance settling checks pass.
+
+Railway story follow-up: one shared timber-and-rail line sits in the foreground.
+Either vehicle starts a 16.2-second inspection trip: the male boards and pumps
+the trolley, the locomotive travels ahead, pauses and returns, then the male
+steps off. The larger worm plays the departure march when the organ is enabled;
+otherwise it gives a departure gesture. Wheel rotation and linkage follow actual
+travel; steam stops at rest. Concertina stays quiet while its owner rides.
+The trolley's default height now matches the locomotive track. Visitor moves
+and sizes remain independent and return unchanged after the performance.
+The track follows moved props and is removed when the train pair is hidden.
+Railway preview checks: no horizontal overflow at 360, approximately 768, 1024
+and 1440 CSS pixels. Scene screenshots inspected; the browser capture service
+still clips or scales some wider captures, so these are not full-page proofs.
+Boarding/departure/pause/return timing, hide/show track cleanup, and browser
+console checks pass. Original body and accessory controls restore after travel.
+
+
+Branch: `codex/santeuil-uniform-fit`; integrating onto main `c5582c6`
+so the deployed Queensland canopy-camera fix is retained.
+Preview: `http://127.0.0.1:8777/game-of-worms/?preview=20260919-railway-3`.
+Martyna explicitly approved deployment of the railway scene on 2026-09-19.
+Edinburgh's unfinished preview remains in its own worktree. New piece names are exactly **Cap** and **Jacket**; the Game catalogue
+is intentionally English-only, so there are no corresponding Swedish/Polish
+catalogue strings to update. These names are included in the approved preview.
+
+Validation: Santeuil geometry/piece-partition checks, final-scene regressions,
+JavaScript syntax and diff checks pass. Browser drag, independent keyboard move,
+resize/reset, cap tracking during music and console checks pass. No horizontal
+overflow at 360, 768, 1024 and 1440 CSS pixels; respective full-page DOM heights
+were 2534, 2400, 1878 and 1928 pixels. Contextual screenshots inspected at these
+sizes. Full-page screenshot capture remains defective (duplicated content and
+large blank regions), so full-page visual proof remains manual. Fixed Game light
+palette retained. Reduced-motion code remains unchanged; no device-level motion
+preference test performed.
+
 ### Queensland QG2904 canopy photography fix, deployment requested, 2026-09-19
 
 Martyna requested taking photos while lifted into the canopy and deployment.

@@ -45,7 +45,7 @@ browser or physical device.
 
 | Species | Location | Status | Work already covered |
 | --- | --- | --- | --- |
-| elegans | Santeuil, France | Live at `758bc2a`, verified 2026-09-19 | Keep approved art/fit. Add working organ crank, concertina bellows, short recorded phrases and separate locomotive/trolley shunting with planted tails and control-following hands. |
+| elegans | Santeuil, France | Railway and uniform follow-up approved for deployment, 2026-09-19 | Independent larger-worm cap/jacket; refined fit on both worms. Longer 14.4-second organ march; shared railway with male boarding/pumping, travelling engine and return. Approved preview `20260919-railway-3`, port 8777. Preserve approved construction. Add working organ crank, concertina bellows, short recorded phrases and separate locomotive/trolley shunting with planted tails and control-following hands. |
 | elegans | Tenerife, Spain | Live at `758bc2a`, verified 2026-09-19 | Keep costumes, five-string instruments and avocado bowls. Add distinct strumming, small wing gestures and quiet bites; preserve all placements. |
 | elegans | Kauaʻi, Hawaiʻi | Vocal follow-up approved for deployment, preview `20260919-vocals-4` | Keep fitted headphones, two microphones and shared recorder. 2026-09-19 follow-up replaces whistles with sung call-and-response and matching tape playback. Responsive mouths/reels/meters/lamp. This is XZ1516, not QG130. |
 | briggsae | Orsay, France · JU2518 | Steady-pose follow-up approved for deployment, 2026-09-19 | Preview `20260919-orsay-hold-1`: enter a distinct body curve, hold still while drawing, then release. Approved hand gestures retained; model crown, bag and notebook remain fixed. |
