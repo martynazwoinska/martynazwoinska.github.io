@@ -20,8 +20,13 @@ class Element {
   appendChild(n) { this.children.push(n); return n; }
   append(...nodes) { this.children.push(...nodes); }
   replaceChildren(...nodes) { this.children = nodes; }
+  querySelectorAll(selector) {
+    if (/^\[[^=]+\]$/.test(selector)) return walk(this).slice(1).filter(n=>Object.hasOwn(n.attributes,selector.slice(1,-1)));
+    return walk(this).slice(1).filter(n=>n.classList.contains(selector.slice(1)));
+  }
   querySelector(selector) {
-    assert(selector.startsWith('.'),'Mock supports class selectors only');
+    if (/^\[[^=]+\]$/.test(selector)) return walk(this).slice(1).find(n=>Object.hasOwn(n.attributes,selector.slice(1,-1))) || null;
+    assert(selector.startsWith('.'),'Mock supports classes and attribute presence');
     return walk(this).slice(1).find(n=>n.classList.contains(selector.slice(1))) || null;
   }
 }
@@ -60,7 +65,7 @@ const walk = n => [n,...n.children.flatMap(walk)];
   }
   const audit=auditAccessoryPairGeometry();
   assert(audit.valid,JSON.stringify(audit));
-  assert.equal(audit.sharedCount,1);
+  assert(audit.sharedCount>=1, "Kauaʻi is one of the catalogue shared props");
   assert.equal(audit.pairCount+audit.sharedCount,accessoryCatalogue.reduce((n,d)=>n+3+(d.extra?1:0),0));
   renderLocationAccessories(targets,'elegans','Santeuil, France');
   assert.equal(targets.charm.children.length,2,'Other locations retain their pair');

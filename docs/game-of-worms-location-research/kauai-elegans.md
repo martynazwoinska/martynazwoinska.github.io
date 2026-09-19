@@ -1,5 +1,15 @@
 # Kauaʻi *C. elegans* location research and art brief
 
+## Interaction review, 2026-09-19
+
+Decision: **keep approved art; add focused interactions**.
+Each microphone starts a short whistled phrase. If the recorder is visible, a completed take is kept for the current visit. Clicking the recorder replays the latest take from each performer, in recorded order; an unused recorder offers a two-part demo. Turning reels, meters and lamp indicate recording/playback. Headphones remain fitted. No visitor microphone is accessed.
+
+Implementation/deployment authorized by Martyna while away. See the
+[final review](../game-of-worms-reviews/final-scenes-20260919.md) for verification,
+references, sound provenance and remaining manual checks.
+
+
 Last updated: 2026-09-05
 
 ## Follow-up, 2026-09-06, approved for deployment

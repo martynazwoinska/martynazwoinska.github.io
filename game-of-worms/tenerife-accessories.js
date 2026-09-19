@@ -13,6 +13,8 @@ function line(parent, d, stroke, width = 2, extra = {}) { return path(parent, d,
 
 
 function canary(group, small) {
+  const root=group;
+  group=el(root,"g",{"data-canary-wing":"far"});
   // Raised wings attach underneath the fitted mantle. The far wing is
   // foreshortened, while the near wing opens laterally away from the face.
   const far = small ? [
@@ -27,6 +29,7 @@ function canary(group, small) {
   far.forEach((d,i)=>path(group,d,i===1?"#b3ad58":"#95924e","#6c7043",1.5));
   line(group,small?"M264 92Q255 70 258 53M270 91L273 51"
     :"M262 94Q244 68 246 44M269 94Q255 65 263 35","#e5d68b",1.5);
+  group=el(root,"g",{"data-canary-wing":"near"});
   const near = small ? [
     "M260 102Q229 87 202 72Q192 64 199 74Q209 85 229 96L253 114Z",
     "M259 100Q226 75 191 54Q180 45 186 56Q194 72 224 89L251 112Z",
@@ -46,6 +49,7 @@ function canary(group, small) {
     :"M262 97Q247 78 229 66L216 80Q237 100 254 112Z","#edcf67","#998849",1.6);
   line(group,small?"M236 77L230 82M246 86L240 91"
     :"M231 75L225 81M242 84L235 89M251 93L244 98","#fff0b0",2);
+  group=root;
   // Work in each nematode's own coordinates. The open mantle follows its back,
   // without adding a separate bird chest, neck or tail to the silhouette.
   const mantle = small
@@ -138,7 +142,7 @@ function avocado(group, small) {
   // The scooped seed hollow is a bowl with a dark rear wall and a light front lip.
   el(group,"ellipse",{cx:small?8:17,cy:small?10:14,rx:small?32:52,ry:small?20:29,fill:"#8c9863",stroke:"#b6b96e","stroke-width":2});
   el(group,"ellipse",{cx:small?8:17,cy:small?14:20,rx:small?27:46,ry:small?13:20,fill:"#c6c77c"});
-  const food = el(group,"g",{});
+  const food = el(group,"g",{"data-avocado-food":""});
   (small ? [[-3,10,18],[22,17,-22]] : [[-8,12,-18],[30,10,25],[12,29,10]]).forEach(([x,y,angle])=>{
     const bac=el(food,"g",{transform:"translate("+x+" "+y+") rotate("+angle+")"});
     el(bac,"rect",{x:-10,y:-4,width:20,height:8,rx:4,fill:"#bd6871",stroke:"#744c55","stroke-width":1.3});

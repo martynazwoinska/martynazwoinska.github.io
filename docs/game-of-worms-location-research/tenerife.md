@@ -1,5 +1,15 @@
 # Tenerife location research and art brief
 
+## Interaction review, 2026-09-19
+
+Decision: **keep approved art; add focused interactions**.
+Distinct strumming phrases and hands follow the existing five-string instruments. The listening worm bends gently and the original wings hinge by a few degrees. Either avocado bowl supplies a small, quiet bite. Artwork, costume fit and positions are unchanged.
+
+Implementation/deployment authorized by Martyna while away. See the
+[final review](../game-of-worms-reviews/final-scenes-20260919.md) for verification,
+references, sound provenance and remaining manual checks.
+
+
 Last updated: 2026-09-05
 
 ## Approved revision

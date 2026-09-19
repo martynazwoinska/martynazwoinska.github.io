@@ -658,3 +658,23 @@ Both use original speed/pitch, 25 ms attack and 65 ms release. Files load only
 after a user gesture; a missed decoding deadline stays silent. Escape, other
 actions, moving/resizing props, scene changes and hiding the page stop voices.
 Reduced motion stays silent. Subjective listening has not been verified.
+
+
+## Santeuil, Tenerife and Kauaʻi XZ1516 interactions, 2026-09-19
+
+All six sources below offer CC0 on their creator pages, verified 2026-09-19.
+No new attribution-dependent licence or external runtime dependency is added.
+
+- `santeuil-organ.wav`: [Felix Mendelssohn - Wedding March - OP. 61 - played on Barrel organ, ondrosik](https://freesound.org/people/ondrosik/sounds/734926/), performed by Ivan Gontko, recorded with Zoom H1N. Source HQ MP3: `https://cdn.freesound.org/previews/734/734926_2140699-hq.mp3`. Source SHA-256 `176ec7e9c05f0d2a34339bce6cceba615d4a1f16d3a32a84b04d54b84570bc2a`. The 1.0–8.2 s excerpt is averaged to mono PCM16 at 44100 Hz with 40 ms edge fades, without pitch/speed changes. Production: 635082 bytes, SHA-256 `e79329217da5b6db258d59c5d1f2b46dd5eceaf30f976841f7e71e56246d6168`. Played once, 700 ms into cranking, peak target .14. This is not the Santeuil heritage organ.
+- `santeuil-reeds.mp3`: [accordion melody 25, PhonosUPF](https://freesound.org/people/PhonosUPF/sounds/485885/). Real studio accordion, used as reed-instrument foley for the concertina. Unchanged HQ preview: `https://cdn.freesound.org/previews/485/485885_10350281-hq.mp3`. 176599 bytes; SHA-256 `154972824987b5c3a81e97200ade12f6e90f342e8c464569d5fb38c6eddb4d66`. Up to 7.9 s at original pitch/speed, peak target .13; not a claim of a traditional Santeuil tune.
+- `santeuil-whistle.mp3`: [Hiss of steam train #7, BigSoundBank 3019](https://bigsoundbank.com/hiss-of-steam-train-7-s3019.html). A steam-train whistle recorded at Martel, France. Unchanged source: `https://bigsoundbank.com/UPLOAD/mp3/3019.mp3`. 44685 bytes; SHA-256 `7cecfd676ac3770932f6308af1ff30caae50bd32e49f04fcaea56ae762f93ab4`. 1.7 s at original speed, peak target .09, once per shunting action.
+- `tenerife-strum.mp3`: [ukulele strum flat.ogg, FOSSarts](https://freesound.org/people/FOSSarts/sounds/669931/), a recorded nylon-string tenor ukulele. Unchanged HQ preview: `https://cdn.freesound.org/previews/669/669931_14631530-hq.mp3`. 18336 bytes; SHA-256 `72a6c84d88cc0740b445d38291503325de8dfbd2a935832945c3f944ef91789a`.
+- `tenerife-strum-up.mp3`: [ukuele sharp.ogg, FOSSarts](https://freesound.org/people/FOSSarts/sounds/669930/). Unchanged HQ preview: `https://cdn.freesound.org/previews/669/669930_14631530-hq.mp3`. 15360 bytes; SHA-256 `45990300f9a111390820298f1ed2a40bed8bf6ec52270edeca195a86945858b7`. The two attacks alternate in separate original eight-strum patterns, up to .64/.53 s per hit, peak targets .085/.12. These are plucked nylon-string foley, not recordings of a timple or a traditional Canarian performance. Original pitch and speed retained.
+- `kauai-whistle.mp3`: [Short whistle.wav, Sami_Kullström](https://freesound.org/people/Sami_Kullstr%C3%B6m/sounds/388053/), recorded with Samsung Galaxy J5. Unchanged HQ preview: `https://cdn.freesound.org/previews/388/388053_7282645-hq.mp3`. 10539 bytes; SHA-256 `b6147c59943e4dec39d6797ee26610263df0098f69c465f1e6965be0c0c603f6`. Up to .48 s at original pitch/speed, in distinct three/four-note rhythms, peak targets .07/.052. Human whistling foley for imaginary worms, not a species call. Playback reuses the same timing, without recording visitors.
+
+Tenerife's bite reuses the unchanged `reunion-eat.wav` credited above: a single
+.08 s excerpt from .45 s, peak target .016. It is deliberately brief and quiet.
+Audio is loaded after interaction, with a four-second bound; late decode does
+not trigger delayed playback. Each voice has attack/release fades, interruption
+fades over 40 ms, and all activity stops on cancellation, page hiding or leaving
+the scene. Reduced motion is silent. Subjective listening remains user review.

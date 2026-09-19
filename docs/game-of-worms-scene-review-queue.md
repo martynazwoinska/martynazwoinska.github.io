@@ -9,8 +9,8 @@ earlier illustration revisions. It is not a new claim that all older scenes
 have poor drawings or require animations.
 
 - 31 active scenes, counted from the current accessory catalogue.
-- 3 scenes remain to check on this pass's checklist.
-- 28 have received the recent interaction pass, including Mauritius JU2909. Leave them closed unless Martyna explicitly reopens one.
+- 0 scenes remain to check on this pass's checklist.
+- 31 have received the recent interaction pass, including Mauritius JU2909. Leave them closed unless Martyna explicitly reopens one.
 - Mauritius final accessory and three-fruit revision was approved for deployment on 2026-09-16. This closes the requested follow-up; full-page capture and listening limitations remain documented.
 - Mauritius follow-up approved for deployment, 2026-09-16: empty baskets and ten fruits outside, collected one per click. Final preview: `20260916-ground-fruit-4`.
 - Oʻahu ECA789's workshop is live at `47b465c`. The final shared gift, mould removal and eating audio follow-up is approved for deployment.
@@ -25,17 +25,10 @@ in this checklist.
 
 ## Remaining queue
 
-São Tomé JU2484's shared snail ride is approved for deployment. Remaining entries have not been freshly
-inspected for this pass, so the order is provisional.
-Martyna authorized independent review, implementation and deployment of the three remaining scenes on 2026-09-19.
-Order numbers retain the original queue positions.
-Do not reopen completed scenes just to decide the next target.
-
-| Order | Species | Location | Status | Starting point for the single review |
-| --- | --- | --- | --- | --- |
-| 16 | elegans | Santeuil, France | To check | Fitted uniforms, organ/concertina and locomotive/trolley. Keep the approved costume fit and distinct paired props. |
-| 17 | elegans | Tenerife, Spain | To check | Canary costumes, timple guitars and avocado bowls. Keep the approved body fit and raised wings. |
-| 18 | elegans | Kauaʻi, Hawaiʻi | To check | Headphones, microphones and shared tape recorder. Keep the approved earcups, colours and short labels. This is not QG130. |
+All 31 active scenes have now received this pass. There is no next scene on
+this checklist. The final three were reviewed under Martyna's 2026-09-19
+instruction to improve and deploy independently; completed scenes were not
+reopened. See [final review](game-of-worms-reviews/final-scenes-20260919.md).
 
 ## Completed for this pass
 
@@ -52,7 +45,10 @@ browser or physical device.
 
 | Species | Location | Status | Work already covered |
 | --- | --- | --- | --- |
-| briggsae | Orsay, France · JU2518 | Done, deployment approved, 2026-09-19 | Preview `20260919-sketch-3`: each worm sketches the other; expressive poses, peeking, art-supply bags and recorded pencil/paper sounds. Crowns and visitor transforms preserved. |
+| elegans | Santeuil, France | Done; deployment authorized, 2026-09-19 | Keep approved art/fit. Add working organ crank, concertina bellows, short recorded phrases and separate locomotive/trolley shunting with planted tails and control-following hands. |
+| elegans | Tenerife, Spain | Done; deployment authorized, 2026-09-19 | Keep costumes, five-string instruments and avocado bowls. Add distinct strumming, small wing gestures and quiet bites; preserve all placements. |
+| elegans | Kauaʻi, Hawaiʻi | Done; deployment authorized, 2026-09-19 | Keep fitted headphones, two microphones and shared recorder. Add short whistled takes and replay, responsive reels/meters/lamp. This is XZ1516, not QG130. |
+| briggsae | Orsay, France · JU2518 | Live at `66be258`, verified 2026-09-19 | Preview `20260919-sketch-3`: each worm sketches the other; expressive poses, peeking, art-supply bags and recorded pencil/paper sounds. Crowns and visitor transforms preserved. |
 | briggsae | Salt Lake City, Utah - EG4181 | Approved for deployment, 2026-09-18 | Bubbles (independent paired kits), shared apricot picnic and folded blanket. Approved preview `20260918-picnic-3`, including the shorter quiet bites. Next: Orsay JU2518. |
 | nigoni | Mahahual, Mexico · JU2617 | Done, deployment approved | Approved 2026-09-17, preview `20260917-mahahual-22`: shared sunscreen application, fitted separate bikini parts, recorded lotion foley, foreground umbrellas with independent tilt/height/size and moving ground shadows. Smaller canopy aligned with its shaft. Spectacles/background retained; bubbles deferred. |
 | nigoni | Praslin, Seychelles · YR106 | Done, deployment approved | Approved 2026-09-17, preview `20260917-praslin-7`: both worms tuck fully into their shells, leaving tiny tail tips. Bell calls invite peeking and emergence. Original art, background and visitor transforms retained. |

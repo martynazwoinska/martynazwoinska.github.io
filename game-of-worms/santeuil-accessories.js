@@ -54,6 +54,7 @@ function uniform(g, small) {
 
 function wheel(g, x, y, r) {
   ellipse(g,x+3,y-2,r,r,"#283e49","#263944",2);
+  g = el(g,"g",{"data-rail-wheel":`${x} ${y} ${r}`});
   ellipse(g,x,y,r,r,"#405d68","#243a48",2);
   ellipse(g,x,y,r-3,r-3,"#253e4d","#d0b576",1.3);
   for (let i=0;i<8;i++) {
@@ -115,9 +116,11 @@ function locomotive(g, small) {
     path(g,"M-6-33L-6-45Q3-56 12-45L12-33Z","#bca363");
     path(g,"M-87 10L-39 10L-39 15L-87 15Z","#c0a775","#34434b",1);
     wheel(g,-63,36,19); wheel(g,-9,36,19); wheel(g,45,36,19);
+    const body=g;g=el(body,"g",{"data-rail-rod":""});
     line(g,"M-63 41L45 41L66 21","#283d49",6);
     line(g,"M-63 41L45 41L66 21","#d1ba83",3);
     [-63,-9,45].forEach(x=>ellipse(g,x,41,3.3,3.3,"#e9d099","#314754",1));
+    g=body;
     path(g,"M80 18L95 18L95 27L80 27Z","#a16760");
     line(g,"M-77-7L-44-7","#c6ab70",1.5);
   }
@@ -171,16 +174,19 @@ function organ(g, small) {
   line(g,small?"M-48-20V42M31-20V42M-46 18H27M39-25V31":"M-50-30V56M39-30V56M-47 20H35M50-34V42","#dfb47a",1.4);
   path(g,small?"M-49 47L-49 53L-39 53L-38 47M23 47L23 53L33 53L33 47":"M-51 61L-51 69L-40 69L-39 61M30 61L30 69L41 69L41 61","#6e4c38","#513f35",1.8);
   ellipse(g,small?45:57,small?5:8,3.5,5,"#d0ad6a","#624d37",1.2);
+  g = el(g,"g",{"data-organ-crank":""});
   line(g,small?"M45 5L61-2L61 14L69 11":"M57 8L78-3L78 17L89 11","#4b4436",4);
   line(g,small?"M45 5L61-2L61 14L69 11":"M57 8L78-3L78 17L89 11","#d5bb7b",2);
   ellipse(g,small?70:91,small?10:10,small?5:6,3.7,"#744e37","#443d32",1.5);
 }
 
 function concertina(g) {
+  const root=g;
   // A side-on, partly opened hexagonal concertina. The far end is narrower
   // in perspective. Two leather loops cradle it against the worm's lower curve.
   path(g,"M-43-14Q-63-54-24-57Q-6-54-9-30L-16-23Q-13-47-28-48Q-48-46-36-19Z","#805444","#4e3b35",2);
   path(g,"M29-21Q49-51 66-34L69-20L62-17Q62-33 53-31Q46-31 39-17Z","#805444","#4e3b35",2);
+  g=el(root,"g",{"data-concertina-bellows":""});
   path(g,"M-45-29L29-34L47-16L43 29L-29 39L-48 16Z","#4a3848","#443442",2.5);
   for(let i=0;i<7;i++) {
     const x=-42+i*11;
@@ -188,11 +194,13 @@ function concertina(g) {
     path(g,`M${x+7}-30l4 1 16 17-3 42-4 1 3-43Z`,"#733f56","none",0);
     line(g,`M${x+1}-27l6-1 13 16-2 41`,"#d59a9c",1.2);
   }
+  g=el(root,"g",{"data-concertina-far":""});
   // Far-side wooden end with a small visible return and strap fixing.
   path(g,"M-59-27L-45-34L-27-17L-28 21L-43 39L-58 23Z","#bf8c5b","#523e35",2.2);
   path(g,"M-59-27L-64-22L-62 25L-48 41L-43 39L-58 23Z","#805338","#523e35",1.6);
   line(g,"M-54-22L-45-25L-33-13L-34 18L-44 31L-52 21Z","#e9c78d",1.5);
   [-8,2,12].forEach(y=>ellipse(g,-48,y,2,2.8,"#eadbb9","#563f36",.8));
+  g=el(root,"g",{"data-concertina-near":""});
   // Near end: hexagonal rim, inset fretboard and two staggered button rows.
   path(g,"M33-35L58-29L77-10L72 22L50 40L28 28L23-7Z","#7a503b","#4b3a32",2.3);
   path(g,"M38-32L63-26L81-7L76 25L54 42L32 30L27-4Z","#c19461","#4b3a32",2.1);
@@ -225,10 +233,11 @@ function trolley(g) {
   ellipse(pump,31,-49,6,6,"#c5a96c","#304955",1.8);
   line(pump,"M31-49L10-12L17 16","#334951",4);
   line(pump,"M31-49L10-12L17 16","#c8bb91",1.7);
-  path(pump,"M-2-65L68-42L66-35L-4-57Z","#b88854","#594434",2.2);
-  line(pump,"M3-61L61-42","#e0bd82",1.7);
-  path(pump,"M-10-67L4-64L2-55L-12-59Z","#684a3c","#433a32",1.5);
-  path(pump,"M63-44L79-40L77-31L61-35Z","#684a3c","#433a32",1.5);
+  const handle=el(pump,"g",{"data-trolley-handle":""});
+  path(handle,"M-2-65L68-42L66-35L-4-57Z","#b88854","#594434",2.2);
+  line(handle,"M3-61L61-42","#e0bd82",1.7);
+  path(handle,"M-10-67L4-64L2-55L-12-59Z","#684a3c","#433a32",1.5);
+  path(handle,"M63-44L79-40L77-31L61-35Z","#684a3c","#433a32",1.5);
   wheel(g,-58,25,16); wheel(g,27,25,16);
   line(g,"M-58 29L27 29M-58 29L-43 16","#2d4350",4.5);
   line(g,"M-58 29L27 29M-58 29L-43 16","#bcbba2",2);

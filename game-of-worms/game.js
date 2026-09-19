@@ -1,3 +1,4 @@
+import { createFinalScenes } from "./final-scenes-play.js?v=20260919-final-3";
 import { createOrsaySketching } from "./orsay-play.js?v=20260919-sketch-3";
 import { createSaltLakeBubbles } from "./salt-lake-play.js?v=20260918-picnic-3";
 import { createUmbrellaPivot, umbrellaHeadroom } from "./mahahual-pivot.js?v=20260917-mahahual-22";
@@ -12,7 +13,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260919-sketch-3";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260919-final-3";
 import { createKauaiBath } from "./kauai-bath-play.js?v=20260909-bath-pour-1";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
@@ -729,6 +730,7 @@ const mauritiusPlay = createMauritiusPlay(els.habitat, piece => {
 });
 const guadeloupePlay = createGuadeloupePlay(els.habitat);
 const umbrellaPivot = createUmbrellaPivot(els.habitat, accessoryArtworkBounds);
+const finalScenes = createFinalScenes(els.habitat, refreshAccessoryPieceControls);
 const orsayPlay = createOrsaySketching(els.habitat, refreshAccessoryPieceControls);
 const saltLakePlay = createSaltLakeBubbles(els.habitat, refreshAccessoryPieceControls);
 const mahahualPlay = createMahahualPlay(els.habitat, refreshAccessoryPieceControls);
@@ -763,7 +765,7 @@ function renderSpecies(item, place) {
   araucaniaPlay.clear();
   claremontPlay.clear();
   edinburghPipes.cancel();
-  orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); guadeloupePlay.cancel(); mauritiusPlay.cancel(); panamaPlay.cancel();
+  finalScenes.clear(); orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); guadeloupePlay.cancel(); mauritiusPlay.cancel(); panamaPlay.cancel();
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
   oahuBike.cancel();
@@ -1087,7 +1089,7 @@ function updateAccessoryLabelVisibility() {
 
 function constrainVisibleAccessories() {
   if (claremontPlay.active || araucaniaPlay.active) return;
-  if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || orsayPlay.active || saltLakePlay.active || mahahualPlay.active || praslinPlay.active || ju1375Play.active || taipeiPlay.active || guadeloupePlay.active || mauritiusPlay.active || panamaPlay.active || doisRiosPlay.active || nambuccaPlay.active || oahuBike.active || hcmcPlay.active || reunionPlay.active || kauaiBath.active || lombokPlay.active || canopyPlay.active || pohnpeiPlay.active || saoTomePlay.active) return;
+  if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || finalScenes.active || orsayPlay.active || saltLakePlay.active || mahahualPlay.active || praslinPlay.active || ju1375Play.active || taipeiPlay.active || guadeloupePlay.active || mauritiusPlay.active || panamaPlay.active || doisRiosPlay.active || nambuccaPlay.active || oahuBike.active || hcmcPlay.active || reunionPlay.active || kauaiBath.active || lombokPlay.active || canopyPlay.active || pohnpeiPlay.active || saoTomePlay.active) return;
   if (els.habitat.classList.contains("is-changing")) return;
   accessoryIds.forEach(id => {
     if (!activeWardrobe().has(id)) return;
@@ -1206,7 +1208,7 @@ els.accessorySizeSlider.addEventListener("input", event => {
   kauaiBath.cancel();
   araucaniaPlay.cancel();
   claremontPlay.cancel();
-  orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); guadeloupePlay.cancel(); mauritiusPlay.cancel(); panamaPlay.cancel();
+  finalScenes.cancel(); orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); guadeloupePlay.cancel(); mauritiusPlay.cancel(); panamaPlay.cancel();
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
   oahuBike.cancel();
@@ -1298,7 +1300,7 @@ function syncDrawingMode() {
   araucaniaPlay.cancel();
   claremontPlay.cancel();
   edinburghPipes.cancel();
-  orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); guadeloupePlay.cancel(); mauritiusPlay.cancel(); panamaPlay.cancel();
+  finalScenes.cancel(); orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); guadeloupePlay.cancel(); mauritiusPlay.cancel(); panamaPlay.cancel();
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
   oahuBike.cancel();
@@ -1425,7 +1427,7 @@ function toggleAccessory(id, force) {
   araucaniaPlay.cancel();
   claremontPlay.cancel();
   edinburghPipes.cancel();
-  orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); guadeloupePlay.cancel(); mauritiusPlay.cancel(); panamaPlay.cancel();
+  finalScenes.cancel(); orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); guadeloupePlay.cancel(); mauritiusPlay.cancel(); panamaPlay.cancel();
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
   oahuBike.cancel();
@@ -1515,7 +1517,7 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${(orsayPlay.handles(piece) || saltLakePlay.handles(piece)) || mahahualPlay.handles(piece) || praslinPlay.handles(piece) || ju1375Play.handles(piece) || taipeiPlay.handles(piece) || guadeloupePlay.handles(piece) || mauritiusPlay.handles(piece) || saoTomePlay.handles(piece) || pohnpeiPlay.handles(piece) || canopyPlay.handles(piece) || lombokPlay.handles(piece) || kauaiBath.handles(piece) || araucaniaPlay.handles(piece) || claremontPlay.handles(piece) || edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || doisRiosPlay.handles(piece) || nambuccaPlay.handles(piece) || oahuBike.handles(piece) || hcmcPlay.handles(piece) || reunionPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
+      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${(finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) || mahahualPlay.handles(piece) || praslinPlay.handles(piece) || ju1375Play.handles(piece) || taipeiPlay.handles(piece) || guadeloupePlay.handles(piece) || mauritiusPlay.handles(piece) || saoTomePlay.handles(piece) || pohnpeiPlay.handles(piece) || canopyPlay.handles(piece) || lombokPlay.handles(piece) || kauaiBath.handles(piece) || araucaniaPlay.handles(piece) || claremontPlay.handles(piece) || edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || doisRiosPlay.handles(piece) || nambuccaPlay.handles(piece) || oahuBike.handles(piece) || hcmcPlay.handles(piece) || reunionPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
       if (piece.dataset.accessoryFamily === "eca250-california-lemonade") {
         piece.setAttribute("aria-keyshortcuts", `${piece.getAttribute("aria-keyshortcuts")} Shift+Enter`);
       }
@@ -1622,7 +1624,7 @@ function captureAccessoryPointer(pointerId) {
 
 function finishAccessoryDrag(event) {
   if (!activeAccessoryDrag || !activeAccessoryDrag.pointers.has(event.pointerId)) return;
-  if (event.type === "pointercancel") { orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); }
+  if (event.type === "pointercancel") { finalScenes.cancel(); orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); }
   if (event.type === "pointercancel") guadeloupePlay.cancel();
   const { id, wormPart, piece, moved, pointers } = activeAccessoryDrag;
   pointers.forEach((value, pointerId) => {
@@ -1630,12 +1632,12 @@ function finishAccessoryDrag(event) {
   });
   piece.classList.remove("is-dragging");
   document.documentElement.classList.remove("accessory-drag-active");
-  if (moved || !ahmedabadHands.handles(piece) && !panamaPlay.handlesLeaf(piece) && !mauritiusPlay.handles(piece) && !guadeloupePlay.handles(piece) && !taipeiPlay.handles(piece) && !ju1375Play.handles(piece) && !(orsayPlay.handles(piece) || saltLakePlay.handles(piece)) && !mahahualPlay.handles(piece) && !praslinPlay.handles(piece)) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
+  if (moved || !ahmedabadHands.handles(piece) && !panamaPlay.handlesLeaf(piece) && !mauritiusPlay.handles(piece) && !guadeloupePlay.handles(piece) && !taipeiPlay.handles(piece) && !ju1375Play.handles(piece) && !(finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) && !mahahualPlay.handles(piece) && !praslinPlay.handles(piece)) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") { baliCacao.drop(piece); claremontPlay.drop(piece); }
   }
-  else if (event.type === "pointerup") { orsayPlay.start(piece); saltLakePlay.start(piece); mahahualPlay.start(piece); praslinPlay.start(piece); ju1375Play.start(piece); taipeiPlay.start(piece); guadeloupePlay.start(piece); mauritiusPlay.start(piece); araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); hcmcPlay.start(piece); oahuBike.start(piece); reunionPlay.start(piece); kauaiBath.start(piece); lombokPlay.start(piece); canopyPlay.start(piece); pohnpeiPlay.start(piece); saoTomePlay.start(piece); }
+  else if (event.type === "pointerup") { finalScenes.start(piece); orsayPlay.start(piece); saltLakePlay.start(piece); mahahualPlay.start(piece); praslinPlay.start(piece); ju1375Play.start(piece); taipeiPlay.start(piece); guadeloupePlay.start(piece); mauritiusPlay.start(piece); araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); hcmcPlay.start(piece); oahuBike.start(piece); reunionPlay.start(piece); kauaiBath.start(piece); lombokPlay.start(piece); canopyPlay.start(piece); pohnpeiPlay.start(piece); saoTomePlay.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1656,8 +1658,8 @@ function moveActiveAccessoryPointer(event) {
     }
     return;
   }
-  if (((orsayPlay.handles(piece) || saltLakePlay.handles(piece)) || mahahualPlay.handles(piece) || praslinPlay.handles(piece) || ju1375Play.handles(piece) || taipeiPlay.handles(piece)) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>6) {
-    orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel();
+  if (((finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) || mahahualPlay.handles(piece) || praslinPlay.handles(piece) || ju1375Play.handles(piece) || taipeiPlay.handles(piece)) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>6) {
+    finalScenes.cancel(); orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel();
   }
   if (guadeloupePlay.handles(piece) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>6) {
     guadeloupePlay.cancel();
@@ -1694,7 +1696,7 @@ function moveActiveAccessoryPointer(event) {
     const [first, second] = [...activeAccessoryDrag.pointers.values()];
     const distance = Math.hypot(second.x - first.x, second.y - first.y);
     if (Math.abs(distance - activeAccessoryDrag.pinch.startDistance) > 1) {
-      if (!activeAccessoryDrag.moved) { orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); }
+      if (!activeAccessoryDrag.moved) { finalScenes.cancel(); orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); }
       if (!activeAccessoryDrag.moved) guadeloupePlay.cancel();
       if (!activeAccessoryDrag.moved && panamaPlay.handlesLeaf(piece)) panamaPlay.cancel();
       if (!activeAccessoryDrag.moved && ahmedabadHands.handles(piece)) ahmedabadHands.reset(piece);
@@ -1710,7 +1712,7 @@ function moveActiveAccessoryPointer(event) {
   if (activeAccessoryDrag.primaryPointerId !== event.pointerId) return;
   // A small finger wobble is still a tap. Do not reset a digging worm before
   // pointerup can hand its current pose to the kite animation.
-  if (!activeAccessoryDrag.moved && ((orsayPlay.handles(piece) || saltLakePlay.handles(piece)) || mahahualPlay.handles(piece) || praslinPlay.handles(piece) || ju1375Play.handles(piece) || taipeiPlay.handles(piece) || guadeloupePlay.handles(piece) || ahmedabadHands.handles(piece) || panamaPlay.handlesLeaf(piece)) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)<=6) return;
+  if (!activeAccessoryDrag.moved && ((finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) || mahahualPlay.handles(piece) || praslinPlay.handles(piece) || ju1375Play.handles(piece) || taipeiPlay.handles(piece) || guadeloupePlay.handles(piece) || ahmedabadHands.handles(piece) || panamaPlay.handlesLeaf(piece)) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)<=6) return;
   if (!activeAccessoryDrag.moved && ahmedabadHands.handles(piece) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>1) {
     ahmedabadHands.reset(piece);
     activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
@@ -1767,6 +1769,7 @@ function wireAccessoryPieces() {
     piece.addEventListener("focus", () => selectAccessoryForSizing(id, wormPart));
 
     piece.addEventListener("pointerdown", event => {
+      if (!finalScenes.handles(piece)) finalScenes.cancel();
       if (!orsayPlay.handles(piece)) orsayPlay.cancel();
       if (!saltLakePlay.handles(piece)) saltLakePlay.cancel();
       if (!mahahualPlay.handles(piece)) mahahualPlay.cancel();
@@ -1834,8 +1837,8 @@ function wireAccessoryPieces() {
     });
 
     piece.addEventListener("keydown", event => {
-      if ((event.key === "Enter" || event.key === " ") && ((orsayPlay.handles(piece) || saltLakePlay.handles(piece)) || mahahualPlay.handles(piece)) && !drawingEnabled && activeWardrobe().has(id)) {
-        event.preventDefault(); if (!event.repeat) { orsayPlay.start(piece); saltLakePlay.start(piece); mahahualPlay.start(piece); } return;
+      if ((event.key === "Enter" || event.key === " ") && ((finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) || mahahualPlay.handles(piece)) && !drawingEnabled && activeWardrobe().has(id)) {
+        event.preventDefault(); if (!event.repeat) { finalScenes.start(piece); orsayPlay.start(piece); saltLakePlay.start(piece); mahahualPlay.start(piece); } return;
       }
       if ((event.key === "Enter" || event.key === " ") && praslinPlay.handles(piece) && !drawingEnabled && activeWardrobe().has(id)) {
         event.preventDefault(); if (!event.repeat) praslinPlay.start(piece); return;
@@ -1849,7 +1852,7 @@ function wireAccessoryPieces() {
       if ((event.key === "Enter" || event.key === " ") && guadeloupePlay.handles(piece) && !drawingEnabled && activeWardrobe().has(id)) {
         event.preventDefault(); if (!event.repeat) guadeloupePlay.start(piece); return;
       }
-      if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) { orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); }
+      if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) { finalScenes.cancel(); orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); }
       if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) guadeloupePlay.cancel();
       if ((event.key === "Enter" || event.key === " ") && mauritiusPlay.handles(piece) && !drawingEnabled && activeWardrobe().has(id)) {
         event.preventDefault(); if (!event.repeat) mauritiusPlay.start(piece); return;

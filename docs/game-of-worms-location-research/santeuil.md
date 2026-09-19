@@ -1,5 +1,15 @@
 # Santeuil location research and art brief
 
+## Interaction review, 2026-09-19
+
+Decision: **keep approved art; add focused interactions**.
+Working crank and concertina bellows accompany separate short musical phrases. The train/trolley action uses rolling wheels, moving linkage, pumping hands and a quiet recorded whistle. Uniform artwork and fit remain unchanged.
+
+Implementation/deployment authorized by Martyna while away. See the
+[final review](../game-of-worms-reviews/final-scenes-20260919.md) for verification,
+references, sound provenance and remaining manual checks.
+
+
 Last updated: 2026-08-10
 
 This dossier is the evidence and review contract for the Santeuil landscape and its three accessory pairs. It follows the Bristol N2 batch in the location-by-location Game of Worms illustration workflow.

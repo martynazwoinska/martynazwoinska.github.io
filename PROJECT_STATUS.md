@@ -6,10 +6,36 @@ This file records approved decisions and the verified implementation state. Alwa
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 3 left to check in the current interaction
-pass and 28 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei NIC1648 and Réunion JU1375.
+It tracks all 31 active scenes: 0 left to check in the current interaction
+pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei NIC1648 and Réunion JU1375.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+### Final three scene interactions, deployment authorized, 2026-09-19
+
+Martyna authorized independent review, implementation and deployment while away.
+Only Santeuil, Tenerife and **C. elegans** Kauaʻi were reviewed. All three keep
+approved artwork, costume/headphone fits, labels and painted backgrounds.
+
+- Santeuil: crank-operated organ and expanding concertina, with short recorded
+  musical phrases. A separate shunting action moves wheels, connecting rod and
+  trolley pump; hands follow the controls. Uniforms remain quiet.
+- Tenerife: distinct strumming rhythms, fretting hands, gentle body bends and
+  small wing gestures. Either worm can take a quiet snack from its avocado bowl.
+- Kauaʻi: microphone taps make distinct whistled phrases; the shared recorder
+  replays the latest completed takes. Reels, meters and the record/play lamp
+  respond to the action. Headphones stay fitted. No microphone permission,
+  recording of visitors, background loop or autoplay.
+
+Preview `20260919-final-3` runs on port 8776. Branch:
+`codex/final-scene-interactions`, based on live Orsay `66be258`.
+All 31 scenes are closed for this interaction review pass. This does not claim
+physical-device or subjective listening approval. Focused geometry/motion tests,
+keyboard/pointer actions, cancellation, saved-transform restoration and four-width
+overflow checks pass. Full-page captures remain defective; exact dimensions and
+remaining manual checks are in
+[the final review](docs/game-of-worms-reviews/final-scenes-20260919.md).
+Publication verification follows the release commit.
 
 ### Orsay JU2518 shared sketching, deployment approved, 2026-09-19
 
@@ -25,7 +51,8 @@ defective. Physical devices, reduced-motion browser emulation and subjective
 listening remain manual. See the Orsay dossier. Martyna approved preview 3
 for deployment on 2026-09-19 and authorized independent review, implementation
 and deployment of Santeuil, Tenerife and C. elegans Kauaʻi. Counts: 28 complete
-and three open; publication verification follows the approved commit.
+and three open at that stage. Orsay is live at `66be258`, with successful Pages
+run `35434141050`, matching published assets and a working live drawing action.
 
 ### Salt Lake City EG4181 bubble picnic, deployment approved, 2026-09-18
 

@@ -28,7 +28,8 @@ const walk = n => [n,...n.children.flatMap(walk)];
       assert.equal(after.children[1].attrs.class,'santeuil-cap-fit');
       assert.equal(after.children[1].attrs.transform,small?'translate(330 34) rotate(27)':'translate(331 33) rotate(27)');
     } else {
-      assert.equal(JSON.stringify(after),JSON.stringify(before),family+' approved geometry and paint must remain unchanged');
+      const artwork = root => walk(root).filter(n=>n.tag!=='g').map(n=>[n.tag,n.attrs]);
+      assert.deepEqual(artwork(after),artwork(before),family+' approved geometry and paint remain unchanged beneath identity mechanism groups');
     }
   }
   for(const family of ['santeuil-railway-driver-uniform','santeuil-cylinder-organ-instrument','santeuil-hogweed-locomotive']) {

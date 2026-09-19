@@ -72,7 +72,7 @@ function reel(g, x, y, tapeRadius, delay) {
   oval(g,x+2,y+3,43,43,"#1d343e55","none",0);
   oval(g,x,y,42,42,"#aebeca","#354853",2);
   oval(g,x,y,tapeRadius,tapeRadius,"#654b40","#493e37",1);
-  const spinner = add(g,"g",{class:"kauai-tape-reel",style:`transform-origin:${x}px ${y}px;animation-delay:${delay}s`});
+  const spinner = add(g,"g",{class:"kauai-tape-reel",style:`transform-origin:0 0;animation:none`,"data-reel-centre":`${x} ${y}`});
   // Three open spokes reveal the wound tape beneath the reel flange.
   for (const angle of [0,120,240]) {
     path(spinner,`M${x-7} ${y-6}L${x-31} ${y-20}Q${x-36} ${y-24} ${x-31} ${y-29}L${x-25} ${y-34}Q${x-21} ${y-36} ${x-17} ${y-29}L${x+4} ${y-9}Z`,"#e7eef3","#7d919f",1,{transform:`rotate(${angle} ${x} ${y})`});
@@ -109,7 +109,7 @@ function recorder(g) {
   for (const x of [-76,-28]) {
     box(g,x,33,39,24,3,"#e7eef3","#263e49",2);
     path(g,`M${x+5} 48Q${x+19} 32 ${x+34} 48`,"none","#667e8f",1);
-    line(g,`M${x+19} 53L${x+11} 40`,"#814b55",1.6);
+    line(g,`M${x+19} 53L${x+11} 40`,"#814b55",1.6).setAttribute("data-tape-meter",`${x+19} 53`);
   }
   for (const [i,x] of [-74,-50,-26,-2,22].entries()) {
     box(g,x,66,18,10,2,i===4?"#b94e77":"#c4d3df","#223d4a",1.2);
@@ -117,7 +117,7 @@ function recorder(g) {
   oval(g,72,52,15,15,"#263d4b","#c4d3df",2);
   oval(g,72,52,10,10,"#526c79","#879c9c",1);
   line(g,"M72 40V46","#e7eef3",2);
-  oval(g,35,41,3,3,"#dd8c72","#874859",1);
+  oval(g,35,41,3,3,"#dd8c72","#874859",1).setAttribute("data-record-lamp","");
   for (let y=66;y<79;y+=4) line(g,`M52 ${y}H91`,"#1c3642",1.5);
   for (const [x,y] of [[-93,-58],[94,-58],[-93,77],[94,77]]) {
     oval(g,x,y,2,2,"#c4d3df","#304851",.8);

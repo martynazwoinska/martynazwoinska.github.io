@@ -1,5 +1,13 @@
 # Game of Worms art catalogue
 
+Final interaction review, 2026-09-19: Santeuil, Tenerife and C. elegans Kauaʻi
+retain all approved drawings, body fits, palettes, labels and backgrounds.
+Identity groups expose moving mechanisms without redrawing their geometry.
+Their focused new actions are documented in the
+[final review](game-of-worms-reviews/final-scenes-20260919.md).
+All 31 scenes are closed for this pass; deployment authorized by Martyna.
+
+
 Panama worker variation, deployment approved, 2026-09-14: successive leaf pieces
 have individual ant carriers with different body/head proportions, sizes,
 leg reach, walking rhythms and antenna motion. All retain the existing
