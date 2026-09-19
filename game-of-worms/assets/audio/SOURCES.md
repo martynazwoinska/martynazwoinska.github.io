@@ -637,3 +637,24 @@ quieter than 0.09), unchanged pitch/speed and 15/45 ms fades. The second cue
 starts 350 ms later, leaving 160 ms between clips. No prolonged chewing tail
 or overlap. Source bytes unchanged; no new asset. Waveform bounds checked;
 subjective listening remains manual.
+# Orsay pencil drawing and paper, 2026-09-19
+
+- `orsay-pencil.mp3`: **pencil writing.wav**, Freesound 326043,
+  by Freeman213SG. [Creator/source page](https://freesound.org/people/Freeman213SG/sounds/326043/).
+  CC0 verified on 2026-09-19. Actual common-pencil writing recorded with a
+  Blue Yeti, rather than a synthesized substitute.
+  Source-linked HQ preview retained byte-for-byte:
+  `https://cdn.freesound.org/previews/326/326043_3972580-hq.mp3`.
+  343744 bytes; SHA256
+  `f8dea7bc97f5b22f70a98d49e6886cc14b574b34fd166a7b0b9e7d4bf5a32138`.
+  Four 0.62-second excerpts start at 1.3, 3.1, 5.2 and 7.3 seconds.
+  Six bounded cues accompany drawing, beginning 2.2 seconds into the action,
+  730 ms apart, alternating excerpts. Peak target 0.065, gain capped at 0.8.
+- `nambucca-paper-slide.wav`: existing unchanged CC0 page-turn recording by
+  DavidGreck, credited below. Plays for 0.44 seconds during book lifting and
+  settling at 0.45 and 8.45 seconds; peak target 0.045.
+
+Both use original speed/pitch, 25 ms attack and 65 ms release. Files load only
+after a user gesture; a missed decoding deadline stays silent. Escape, other
+actions, moving/resizing props, scene changes and hiding the page stop voices.
+Reduced motion stays silent. Subjective listening has not been verified.

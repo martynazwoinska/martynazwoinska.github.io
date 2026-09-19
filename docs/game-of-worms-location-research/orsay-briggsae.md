@@ -1,6 +1,83 @@
 # Orsay *Caenorhabditis briggsae* JU2518 location research and art brief
 
-Last updated: 2026-08-10
+Last updated: 2026-09-19
+
+## Current sketching preview, 2026-09-19
+
+This section supersedes the retired specimen-box / record-card / ledger
+accessory contract below. Those descriptions are historical, not current art.
+
+Current approved direction: the worms draw one another, with no apple-balancing
+activity. Either notebook starts a 9.4-second shared action with its owner
+sketching and the other worm holding an expressive curved pose. The model
+winks once. At the end, the artist brings the finished portrait closer and
+the model bends its upper body to inspect it; both tails remain planted.
+
+Apple-shaped satchels now contain pencils and an eraser in separate pockets.
+Tapping a bag simply opens or closes it, without sound or a competing body
+animation. The artist uses a pencil from its own bag when it is enabled;
+otherwise it uses the notebook's pencil. A bag's chosen open/closed state and
+all visitor accessory positions/sizes survive the drawing action.
+
+Two distinct drawings replace the notebook and satchel artwork:
+
+- Primary: cloth-bound open sketchbook, facing botanical study, sewn gutter,
+  layered paper edges and ribbon; rounded red apple bag with gusset, stitched
+  flap, strap tabs, rivets and brass clasp.
+- Male: compact top-spiral pad, wrapped-back cover, stacked sheets and curled
+  corner; flatter russet apple pouch with a separate front pocket.
+- Existing flower-crown artwork, approved fit, initial positions and scales,
+  garden painting, scientific record and all public labels remain unchanged.
+
+Construction reference: [Canson sketchbook construction and binding](https://en.canson.com/expert-advice/drawing-create-sketchbook)
+and [spiral-bound XL Drawing Book](https://en.canson.com/xl-drawing-book).
+Original SVG drawings; no reference artwork was copied. Leather construction
+extends the existing approved apple-shaped bag design.
+
+Refinement after the first actual-page inspection: lift the book towards the
+chest to avoid excessively stretched arms; keep idle accessories above the
+temporary body poses; strengthen fine graphite marks for small-screen
+legibility; add cover edging, binding stitches and functional strap attachments.
+The first draft was not presented as approved production art. Follow-up removes
+all fruit geometry and tail balancing, gives the bags useful art supplies,
+and replaces idle swaying with a held pose, a wink and a bounded curious lean.
+
+Sound uses recorded pencil writing and existing paper rustling. See the
+[audio source ledger](../../game-of-worms/assets/audio/SOURCES.md).
+No music, synthesized scratching, autoplay or permanent sound loop.
+
+Implementation: `codex/orsay-sketching`, based on main `68f1e59`.
+Preview: `http://127.0.0.1:8776/game-of-worms/?preview=20260919-sketch-3`.
+Preview 3 approved for deployment by Martyna on 2026-09-19. Publication verification follows the commit.
+
+Validation:
+
+- Focused tests cover continuous timing, bounded peeking, planted
+  tails, middle-body bending, complete settling, paired geometry and SVG paths.
+- JavaScript syntax, labels, fresh-visit behaviour, Salt Lake regression and
+  whitespace checks pass. Runtime catalogue/pair audits report no warnings.
+- Browser: both artist roles, pointer and Enter activation, progressive
+  portraits, exact body restoration, preserved visitor position/size,
+  Escape, keyboard arrows/size/Home and male notebook pointer dragging checked.
+- Satchel activation opens drawing supplies without starting a body action; leaving the scene
+  during an action removes temporary objects and restores both bodies. No
+  browser errors or warnings in the final preview.
+- CSS widths 360, 768, 1024 and 1440: no horizontal overflow. Habitat renders
+  inspected at normal display size. Game remains intentionally fixed-light.
+- Full-page capture at CSS 360 x 800 (document height 2435) is defective:
+  duplicated/scaled sections and large blank regions. It is not a valid
+  full-page proof. This limitation remains open.
+- Reduced motion is code-reviewed: stationary result for 1.2 seconds,
+  no body movement and no sound. OS/browser emulation, physical multi-touch,
+  Safari and subjective listening remain manual checks.
+
+Files added: `game-of-worms/orsay-art.js`, `game-of-worms/orsay-play.js`,
+`game-of-worms/assets/audio/orsay-pencil.mp3`,
+`scripts/check-orsay-sketching.cjs`.
+Files changed: `game-of-worms/accessory-designs.js`, `game-of-worms/game.js`,
+`game-of-worms/index.html`, `game-of-worms/assets/audio/SOURCES.md`,
+`PROJECT_STATUS.md`, the art catalogue, scene-review queue and this dossier.
+No deleted files. Other checkouts remain untouched.
 
 ## Exact record
 

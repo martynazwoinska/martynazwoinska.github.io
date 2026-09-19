@@ -1,15 +1,31 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-09-18
+Last updated: 2026-09-19
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
-It tracks all 31 active scenes: 4 left to check in the current interaction
-pass and 27 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei NIC1648 and Réunion JU1375.
+It tracks all 31 active scenes: 3 left to check in the current interaction
+pass and 28 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei NIC1648 and Réunion JU1375.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+### Orsay JU2518 shared sketching, deployment approved, 2026-09-19
+
+Approved concept implemented on `codex/orsay-sketching` from main `68f1e59`.
+Preview `20260919-sketch-3`, port 8776: either worm draws the other, lifting
+its sketchbook and revealing a graphite portrait. Apple-shaped satchels
+now hold pencils and an eraser; fruit balancing is removed. The model holds
+a curved pose, winks, then leans towards the finished drawing. Distinct book and bag construction,
+recorded pencil/paper sounds, cancellation and exact placement restoration.
+Existing crowns, background, scientific text and public labels are preserved.
+Focused tests and four-width overflow checks pass; full-page capture is still
+defective. Physical devices, reduced-motion browser emulation and subjective
+listening remain manual. See the Orsay dossier. Martyna approved preview 3
+for deployment on 2026-09-19 and authorized independent review, implementation
+and deployment of Santeuil, Tenerife and C. elegans Kauaʻi. Counts: 28 complete
+and three open; publication verification follows the approved commit.
 
 ### Salt Lake City EG4181 bubble picnic, deployment approved, 2026-09-18
 

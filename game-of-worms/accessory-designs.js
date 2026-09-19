@@ -1,3 +1,4 @@
+import { drawOrsayArt } from "./orsay-art.js?v=20260919-sketch-3";
 import { drawSaltLakeBubbles } from "./salt-lake-art.js?v=20260918-picnic-2";
 import { drawMahahualBeach } from "./mahahual-art.js?v=20260917-mahahual-22";
 import { drawReunionJU1375 } from "./reunion-ju1375-art.js?v=20260917-reunion-7";
@@ -5946,6 +5947,7 @@ function drawNamedAccessory(group, item, companion) {
   if (drawAraucaniaWork(group, item, companion)) return true;
   if (drawKauaiRecording(group, item, companion)) return true;
   if (drawSanteuilRefinement(group, item, companion)) return true;
+  if (drawOrsayArt(group, item, companion)) return true;
   if (drawBriggsaeFieldAccessory(group, item, companion)) return true;
   if (drawElegansFieldAccessory(group, item, companion)) return true;
   if (drawNigoniFieldAccessory(group, item, companion)) return true;
