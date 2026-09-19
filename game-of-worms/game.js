@@ -18,7 +18,7 @@ import { createKauaiBath } from "./kauai-bath-play.js?v=20260909-bath-pour-1";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
 import { createLombokPlay } from "./lombok-play.js?v=20260912-swim-1";
-import { createCanopyPlay } from "./queensland-play.js?v=20260913-canopy-2";
+import { createCanopyPlay } from "./queensland-play.js?v=20260919-canopy-camera-1";
 import { createPohnpeiPlay } from "./pohnpei-play.js?v=20260913-pohnpei-1";
 import { createSaoTomePlay } from "./sao-tome-play.js?v=20260913-feelers-1";
 import { createHcmcPlay } from "./hcmc-play.js?v=20260908-hcmc-1";
@@ -1632,7 +1632,7 @@ function finishAccessoryDrag(event) {
   });
   piece.classList.remove("is-dragging");
   document.documentElement.classList.remove("accessory-drag-active");
-  if (moved || !ahmedabadHands.handles(piece) && !panamaPlay.handlesLeaf(piece) && !mauritiusPlay.handles(piece) && !guadeloupePlay.handles(piece) && !taipeiPlay.handles(piece) && !ju1375Play.handles(piece) && !(finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) && !mahahualPlay.handles(piece) && !praslinPlay.handles(piece)) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
+  if (moved || !canopyPlay.handles(piece) && !ahmedabadHands.handles(piece) && !panamaPlay.handlesLeaf(piece) && !mauritiusPlay.handles(piece) && !guadeloupePlay.handles(piece) && !taipeiPlay.handles(piece) && !ju1375Play.handles(piece) && !(finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) && !mahahualPlay.handles(piece) && !praslinPlay.handles(piece)) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") { baliCacao.drop(piece); claremontPlay.drop(piece); }
@@ -1673,7 +1673,8 @@ function moveActiveAccessoryPointer(event) {
   if(saoTomePlay.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
     saoTomePlay.adjust(piece);activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
   }
-  if(canopyPlay.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
+  if (!activeAccessoryDrag.moved && !activeAccessoryDrag.pinch && canopyPlay.handles(piece) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)<=6) return;
+  if(canopyPlay.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>6) {
     canopyPlay.adjust(piece);activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
   }
   if(lombokPlay.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {

@@ -11,6 +11,23 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+### Queensland QG2904 canopy photography fix, deployment requested, 2026-09-19
+
+Martyna requested taking photos while lifted into the canopy and deployment.
+The lift now waits at canopy height until tapped again; a second tap descends
+smoothly from its current height. Its real pointer target travels with the
+basket. Both cameras remain independent during boarding, ascent, waiting and
+descent. Small pointer wobble stays a tap, and tapping no longer clamps a camera
+away from its chosen fit while it is carried by the lift. No public wording,
+artwork, sound assets or other scenes changed.
+
+Branch `codex/canopy-camera-lift`, based on main `cc1aea0`. Santeuil and Edinburgh
+previews remain separate and are not part of this deployment. Timeline and
+matrix/audio regression checks pass. Local browser verified simultaneous camera
+shots at canopy height and pointer-triggered descent; no console errors.
+Existing responsive layout and fixed light palette are unchanged. Full-page
+screenshot capture remains unreliable; no new full-page proof is claimed.
+
 ### Orsay JU2518 steady portrait pose follow-up, deployment approved, 2026-09-19
 
 Martyna approved preview `20260919-orsay-hold-1` for deployment after requesting

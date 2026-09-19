@@ -15,8 +15,15 @@ const moduleAt=name=>import(pathToFileURL(path.resolve('game-of-worms',name)));
   assert.equal(liftFrame(1100).height,0);
   assert.equal(liftFrame(4300).height,1);
   assert.equal(liftFrame(4300).board,1);
-  assert.equal(liftFrame(7800).height,0);
-  assert(liftFrame(9050).done);
+  assert.equal(liftFrame(7800).height,1);
+  assert.equal(liftFrame(60000).height,1);assert(!liftFrame(60000).done);
+  for(const returnAt of[600,2500,6000,60000]){
+    const from=liftFrame(returnAt),start=liftFrame(returnAt,false,returnAt);
+    assert.deepEqual(start,from,'Descent starts from the current height without jumping');
+    assert.equal(liftFrame(returnAt+2400,false,returnAt).height,0);
+    assert.equal(liftFrame(returnAt+3600,false,returnAt).board,0);
+    assert(liftFrame(returnAt+3650,false,returnAt).done);
+  }
   assert(cameraFrame(3100).done);assert(!cameraFrame(3700,true).done);
   assert.equal(cameraFrame(4200,true).print,1);assert(cameraFrame(6900,true).done);
   class Element{constructor(tag){this.tag=tag;this.attrs={};this.children=[];this.dataset={};}

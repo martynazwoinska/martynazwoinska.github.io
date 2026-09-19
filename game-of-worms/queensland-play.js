@@ -4,10 +4,16 @@ const clamp=x=>Math.max(0,Math.min(1,x));
 const ease=x=>{x=clamp(x);return x*x*(3-2*x);};
 const mix=(a,b,t)=>a+(b-a)*t;
 const pulse=(t,a,b,c,d)=>ease((t-a)/(b-a))*(1-ease((t-c)/(d-c)));
-export function liftFrame(ms,reduced=false){
+export function liftFrame(ms,reduced=false,returnAt=null){
   if(reduced)return{board:0,height:0,look:0,done:ms>=500};
-  return{board:pulse(ms,0,1200,7800,9000),height:pulse(ms,1200,3800,5400,7800),
-    look:pulse(ms,3850,4300,4850,5300),done:ms>=9050};
+  if(returnAt!==null){
+    const from=liftFrame(returnAt),elapsed=ms-returnAt;
+    return{board:from.board*(1-ease((elapsed-2400)/1200)),height:from.height*(1-ease(elapsed/2400)),
+      look:from.look*(1-ease(elapsed/400)),done:elapsed>=3650};
+  }
+  // Wait at canopy height until another lift tap: each camera stays independent.
+  return{board:ease(ms/1200),height:ease((ms-1200)/2600),
+    look:pulse(ms,3850,4300,4850,5300),done:false};
 }
 export function cameraFrame(ms,male=false,reduced=false){
   if(reduced)return{raise:0,press:0,lean:0,print:male?1:0,reveal:1,done:ms>=1200};
@@ -82,7 +88,7 @@ export function createCanopyPlay(habitat,refresh=()=>{}){
   }
   function stopRide(){
     const ride=run?.ride;if(!ride)return;
-    sound.stop('motor');restore(ride.styles);ride.back.remove();ride.rim.remove();run.ride=null;queueCable();
+    sound.stop('motor');restore(ride.styles);ride.parent.insertBefore(ride.target,ride.carrier);ride.carrier.remove();ride.back.remove();ride.rim.remove();run.ride=null;queueCable();
   }
   function finishIfIdle(){
     if(!run||run.ride||run.photos.size)return;
@@ -123,7 +129,9 @@ export function createCanopyPlay(habitat,refresh=()=>{}){
     rim.appendChild(clone.querySelector('[data-canopy-front]'));
     const styles=new Map([[art,art.getAttribute('style')]]);art.style.visibility='hidden';
     for(const n of habitat.querySelectorAll('.worm-ground-shadow')){styles.set(n,n.getAttribute('style'));n.style.opacity='0';}
-    r.ride={target,from,back,cable,basket,rim,styles,start:performance.now(),cues:new Set()};queueCable();
+    const parent=target.parentElement,carrier=add(parent,'g',{'data-canopy-carrier':'lift'});
+    parent.insertBefore(carrier,target);carrier.appendChild(target);
+    r.ride={target,parent,carrier,from,back,cable,basket,rim,styles,start:performance.now(),returnAt:null,cues:new Set()};queueCable();
   }
   function beginPhoto(r,target,male){
     const original=target.querySelector('.location-accessory-art');
@@ -138,7 +146,7 @@ export function createCanopyPlay(habitat,refresh=()=>{}){
   }
   function tick(now){
     raf=0;const r=run;if(!r)return;if(document.hidden){cancel();return;}
-    let ride=r.ride,s=ride?liftFrame(now-ride.start,reduced.matches):liftFrame(0,true);
+    let ride=r.ride,s=ride?liftFrame(now-ride.start,reduced.matches,ride.returnAt):liftFrame(0,true);
     if(ride&&(!visible(ride.target)||s.done)){stopRide();ride=null;s=liftFrame(0,true);}
     const frames=new Map();
     for(const[male,p]of r.photos){const f=cameraFrame(now-p.start,male,reduced.matches);if(!visible(p.target)||f.done)stopPhoto(male);else frames.set(male,f);}
@@ -168,10 +176,12 @@ export function createCanopyPlay(habitat,refresh=()=>{}){
     if(ride){
       const ms=now-ride.start;
       habitat.dataset.canopyAction='lift';
-      habitat.dataset.canopyPhase=ms<1200?'boarding':ms<3800?'ascending':ms<5400?'view':ms<7800?'descending':'leaving';
+      habitat.dataset.canopyPhase=ride.returnAt!==null?(ms-ride.returnAt<2400?'descending':'leaving'):ms<1200?'boarding':ms<3800?'ascending':'view';
       ride.basket.setAttribute('transform',travelling.toString());ride.rim.setAttribute('transform',travelling.toString());
+      ride.carrier.setAttribute('transform',carrierMatrix(r.matrix(ride.parent),ride.from,travelling).toString());
       ride.cable.setAttribute('d',cablePath(r.root,ride.basket));
-      cue(ride,'up',ms,1200,'motor',.4,2.6,.095);cue(ride,'down',ms,5400,'motor',.4,2.4,.08);
+      if(ride.returnAt===null)cue(ride,'up',ms,1200,'motor',.4,2.6,.095);
+      else cue(ride,'down',ms,ride.returnAt,'motor',.4,2.4,.08);
     }else{habitat.dataset.canopyAction='photography';delete habitat.dataset.canopyPhase;}
     habitat.dataset.canopyPhotos=String(r.photos.size);
     for(const[male,p]of r.photos){
@@ -196,7 +206,7 @@ export function createCanopyPlay(habitat,refresh=()=>{}){
   function start(target){
     if(!handles(target)||!visible(target))return false;
     const r=setup(),male=target.dataset.wormPart==='companion',kind=target.dataset.accessoryFamily===LIFT?'motor':male?'instant':'shutter';
-    if(kind==='motor'){if(r.ride)stopRide();else beginLift(r,target);}
+    if(kind==='motor'){if(r.ride){if(r.ride.returnAt===null)r.ride.returnAt=performance.now()-r.ride.start;}else beginLift(r,target);}
     else if(r.photos.has(male))stopPhoto(male);else beginPhoto(r,target,male);
     // Separate bounded recording channels let the shutters play over the motor.
     if(!reduced.matches)sound.unlock(kind);
