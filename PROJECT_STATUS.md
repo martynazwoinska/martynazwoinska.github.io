@@ -11,26 +11,23 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
-### Orsay JU2518 natural portrait poses, deployment authorized, 2026-09-19
+### Orsay JU2518 steady portrait pose follow-up, deployment approved, 2026-09-19
 
-Martyna requested more convincing posing and explicitly authorized deployment.
-The hermaphrodite now rests its chin on a hand supported at the elbow; the male
-folds its arms. Two-segment arms retain their lengths, with rounded elbow joints
-and deliberate hand contact. Follow-up requested and authorized for deployment:
-stronger mid-body bending and a slight upper-body lift precede the pose, then a
-slow breathing/weight adjustment continues while drawing. Tails stay planted;
-hands and temporary worn-prop copies follow the body, then restore exactly.
-Notebook portraits reflect those poses. Crowns, bags, background, sound assets
-and saved visitor accessory positions/sizes remain intact. No public copy changed.
+Martyna approved preview `20260919-orsay-hold-1` for deployment after requesting
+a steady pose with stationary accessories. The model now transitions once
+into a distinct body curve and holds it throughout drawing. Head and tail stay
+anchored. The approved supported-chin and folded-arm gestures are preserved.
+Model bag, notebook and crown remain fixed; only the artist uses its drawing
+supplies. No public copy, background or accessory designs changed.
 
-Production preview: `20260919-orsay-body-1`; branch `codex/orsay-clear-poses`.
-Orsay body continuity/amplitude, arm-length invariants, planted-tail geometry, paired art and SVG
-checks pass. Both roles inspected in the page; keyboard activation and Escape
-restore original nodes/transforms. Syntax and diff checks pass, no console errors.
-Responsive checks at 360, 768, 1024 and 1440 CSS px have no horizontal overflow.
-Full-page capture remains unreliable (scaled images with duplicated/blank regions);
-normal scene views were used for visual inspection. Reduced-motion's static path
-is preserved by code inspection; OS preference was not changed. Fixed light palette.
+Preview: `http://127.0.0.1:8776/game-of-worms/?preview=20260919-orsay-hold-1`.
+Branch: `codex/orsay-clear-poses`. Approved production files are unchanged from the preview.
+Timing/geometry tests now require a constant pose during the portrait, a visible
+change from rest, and an anchored head/tail. Syntax and diff checks pass. Both
+roles inspected at normal scene size; sampled model prop transforms stayed
+constant and no console errors were reported. Prior four-width layout checks
+remain applicable; no layout CSS changed. Full-page screenshot capture remains
+unreliable. Reduced-motion's static path is retained by code inspection.
 
 ### Kauaʻi XZ1516 vocal duet follow-up, deployment approved, 2026-09-19
 

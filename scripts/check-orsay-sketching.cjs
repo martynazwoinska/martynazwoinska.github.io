@@ -25,7 +25,9 @@ const {pathToFileURL}=require('node:url'),path=require('node:path');
    if(previous)assert(Math.hypot(q.x-previous.x,q.y-previous.y)<1.8,'Body motion remains smooth');previous=q;
    if(ms>2200&&ms<6100)middle.push(q.x);
   }
-  assert(Math.max(...middle)-Math.min(...middle)>12,'A visible body adjustment continues during the pose');
+  assert.equal(Math.max(...middle)-Math.min(...middle),0,'The finished portrait pose stays still throughout drawing');
+  const held=modelBody(3000,male);assert(Math.abs(sketchPose(220,180,held.bend,held.look,held.lean).x-220)>25,'The held body silhouette is clearly different from rest');
+  assert.deepEqual(sketchPose(329,65,held.bend,held.look,held.lean),{x:329,y:65},'Head stays aligned with the stationary crown');
  }
  assert(last.done);assert.equal(last.envelope,0);assert.equal(last.open,0);
  const nodes=[];global.document={createElementNS:(_,tag)=>{const n={tag,attrs:{},children:[],setAttribute(k,v){this.attrs[k]=String(v);},appendChild(c){this.children.push(c);return c;}};nodes.push(n);return n;}};
