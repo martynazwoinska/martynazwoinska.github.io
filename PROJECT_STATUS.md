@@ -11,6 +11,18 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+### Kauaʻi XZ1516 vocal duet follow-up, deployment approved, 2026-09-19
+
+Martyna approved replacing the bird-like whistle with playful sung phrases.
+Either microphone starts a call-and-response with two distinct human scat
+excerpts. Mouths and tape meters follow syllables; the recorder plays the exact
+completed performance back in the same order. Existing art, fit and visitor
+transforms are preserved. Preview `20260919-vocals-4`, port 8776, branch
+`codex/kauai-vocal-duet`. Martyna approved preview 4 for deployment.
+Mouths animate during singing and tape playback; body bends, nods and hand
+gestures follow the recorded accents. Checks and source attribution are in
+[the Kauaʻi dossier](docs/game-of-worms-location-research/kauai-elegans.md).
+
 ### Final three scene interactions, live verified, 2026-09-19
 
 Martyna authorized independent review, implementation and deployment while away.

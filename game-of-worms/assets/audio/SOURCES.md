@@ -678,3 +678,32 @@ Audio is loaded after interaction, with a four-second bound; late decode does
 not trigger delayed playback. Each voice has attack/release fades, interruption
 fades over 40 ms, and all activity stops on cancellation, page hiding or leaving
 the scene. Reduced motion is silent. Subjective listening remains user review.
+
+
+<a id="kauai-vocal-duet"></a>
+## Kauaʻi vocal duet, 2026-09-19
+
+Replaces the bird-like whistle with two short human scat performances.
+Source: **[Do-do-do](https://freesound.org/people/SoundsExciting/sounds/240318/)**
+by **SoundsExciting**, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
+The creator describes a cheerful sung vocal run. Licence verified on the source
+page on 2026-09-19. Source HQ MP3:
+`https://cdn.freesound.org/previews/240/240318_3279490-hq.mp3`.
+Source SHA-256: `d5764b757c53d0ad91798b6c2268ff812343af5599dc55ed55e17bf5230281cd`.
+
+Adaptations: separate excerpts, stereo averaged to mono, DC offset removed,
+22 ms edge fades, peak normalized to 0.55, resampled to 22050 Hz PCM16 WAV.
+Playback speed/pitch is raised slightly to give two playful character voices:
+
+- `kauai-vocal-primary.wav`: source 0–4.68 s, speed 1.04; 4.500 s.
+  SHA-256 `aafe5a65f977ddc2215af0babf57a90d01690fd47cc5715b965b5566b318b816`.
+- `kauai-vocal-companion.wav`: source 5.02–9.70 s, speed 1.22; 3.836 s.
+  SHA-256 `f8bf05543d5fb88bd07ae5eb5343dc2d91d04797767f70fde3b87d4f95999d53`.
+
+The animation follows each excerpt's measured 40 ms amplitude envelope; the
+recorder replays those exact files in the same order, with a 350 ms turn-taking
+pause. Playback peak targets are .11 and .095. These are playful human vocals,
+not nematode calls or a claim of Hawaiian music. No visitor microphone access.
+The old whistle remains archived in the repository but is no longer requested
+by this scene. The compact source credit uses proper names and a licence
+identifier, unchanged across language settings.

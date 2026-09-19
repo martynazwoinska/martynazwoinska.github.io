@@ -225,3 +225,78 @@ The revised Bristol N2, Santeuil, Edinburgh and Tenerife batches are the minimum
 - Visual checks cover the Game's fixed light palette and responsive widths from 360 px to wide desktop.
 - No horizontal overflow, console error, broken source link or change to another location is accepted.
 - Environment/accessory audits, syntax checks, `git diff --check` and the full diff pass before integration.
+
+
+## Vocal duet follow-up, 2026-09-19 — local preview
+
+Martyna rejected the bird-like whistle and approved the worms singing short
+phrases into their microphones, then listening to the recording.
+Preview: `http://127.0.0.1:8776/game-of-worms/?preview=20260919-vocals-4`.
+
+- Either microphone starts its owner's phrase; the other worm answers if its
+  microphone is visible. Distinct real sung scat excerpts, 4.5 and 3.836 seconds,
+  replace the whistle. The 350 ms gap makes turn-taking clear.
+- Mouth openings and recorder meters follow measured voice amplitude. Only the
+  current performer opens its mouth; both listen during tape playback.
+- A completed performance updates the recorder's take order. Playback uses the
+  same audio files and order. Interrupted takes are discarded. Leaving the scene
+  clears takes. Visitor microphone access is never requested.
+- Approved artwork, fits, background and visitor transforms stay unchanged.
+- Added `kauai-vocals.js` and two WAV assets. Updated the existing interaction
+  module, entry cache keys, audio credit/source notes and focused tests. No files
+  deleted. The old whistle stays archived, unused by this scene.
+- New source: SoundsExciting's Do-do-do, CC BY 3.0; excerpt/pitch processing and
+  hashes are in `game-of-worms/assets/audio/SOURCES.md`. Compact public credit:
+  `Kauaʻi: SoundsExciting · Do-do-do · CC BY 3.0.` All words are proper names,
+  original work title or licence identifier, identical across language settings.
+- Syntax, unchanged accessory geometry, decoded PCM duration/envelope alignment,
+  non-overlapping call/answer, preserved playback order and bounded mouth levels
+  pass. Browser recording, answer, playback, cleanup and exact transform restore
+  pass without console errors. Subjective listening and physical touch remain
+  user checks. No layout/art changes; the previously documented full-page capture
+  limitation remains. This follow-up is implemented locally, not yet published.
+
+Mouth refinement (preview 2): the existing smile path now becomes the singing
+mouth itself, replacing the undersized ellipse overlay. The full-size dark mouth
+rounds and opens with the recorded amplitude, with a 24/38 ms attack/release to
+preserve syllable closures. The inactive worm and tape-listening poses keep their
+normal smiles. Audio, accessories and saved transforms are unchanged.
+Browser proof for preview 2: both singing paths change at normal scene size; the listener keeps its original smile, playback keeps both mouths resting, and Escape restores the exact original smile markup. No console errors. Mouth refinement modifies kauai-vocals.js, final-scenes-play.js, cache keys in game.js/index.html and preview documentation; no additional files created or deleted.
+
+Rhythm refinement (preview 3): both worms now bend through their middles and nod
+on accents extracted from the recorded vocal amplitude. The singer adds a small
+free-hand gesture while holding the microphone with the other hand. The listener
+follows at lower amplitude with a 70 ms delay; playback uses the same accent
+sequence. Tails remain planted; headphones follow the head. A separate clock no
+longer drives the Kauaʻi sway. Audio files and accessory artwork stay unchanged.
+The rhythm helper is bounded, settles at phrase boundaries and uses smooth
+anticipation/recovery rather than jumps. Reduced motion still suppresses the
+performance, and cancellation restores the originals.
+Preview 3 checks: voice-accent alignment, continuous bounded movement, planted tails and existing geometry tests pass. Browser singing and listening poses inspected at normal scene size; playback, Escape and exact body/accessory restoration pass without console errors. Updated vocal timing/motion and interaction modules, preview cache keys, focused test and documentation; no additional files created or deleted for this refinement. Not committed or deployed.
+
+Mouth visibility follow-up (preview 4): user still wanted clearer mouth movement.
+Open mouths are wider and deeper at displayed size, with a small contained inner
+mouth detail. Crucially, the worms now mouth along to their own recorded parts
+when the tape plays too; earlier previews intentionally left their mouths still
+during playback. The inactive worm keeps its normal smile. This supersedes the
+resting-mouth playback description above. Rhythm/body gestures remain intact.
+No audio or accessory-art changes. Preview only, not published.
+Preview 4 browser verification: primary mouth visibly opens during tape playback; 44 sampled male frames show 44 changing open-mouth paths during its microphone phrase. Both were inspected at normal display size. Animation and entry files plus preview documentation changed; no additional files created or deleted for this follow-up.
+
+
+### Deployment approval, 2026-09-19
+
+Martyna approved the exact preview `20260919-vocals-4` for publication. The release
+includes both vocal excerpts, visible mouth articulation during microphone and
+tape actions, synchronized body/head/hand movement and the compact source credit.
+No additional art or sound processing follows this approval. Branch:
+`codex/kauai-vocal-duet`; based on current main `1b0d44a`.
+
+Release files created: `game-of-worms/kauai-vocals.js` and two
+`game-of-worms/assets/audio/kauai-vocal-*.wav` files. Files changed: the existing
+`final-scenes-play.js`, `game.js`, `index.html`, audio `SOURCES.md`, focused final
+scene test, this dossier, project status and scene queue. No tracked deletions.
+Earlier preview-specific descriptions above are retained as revision history;
+preview 4 behavior is the approved result. Physical touch/listening and the
+previous full-page capture limitation remain documented; focused browser and
+regression checks passed. Publication is verified separately after the push.
