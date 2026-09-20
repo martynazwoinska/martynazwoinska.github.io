@@ -1,3 +1,5 @@
+import {SNACK_DURATION,snackServings,prepareSnack,playSnackSounds} from './tenerife-snack.js?v=20260920-snack-sound-1';
+import {DUET_DURATION,duetScore,prepareDuet,createDuetSound} from './tenerife-duet.js?v=20260920-snack-2';
 import {RAILWAY_DURATION,railwayProgress,prepareRailway,moveRailway,drawRailwayTrack} from './santeuil-railway.js?v=20260919-railway-3';
 import {vocalPhrases,vocalLevel,vocalSequence,vocalMouth,vocalMotion} from './kauai-vocals.js?v=20260919-vocals-4';
 import {add,at,clamp,ease,matrix,relative,visible,performance as makePerformance,recordedSound} from './scene-performance.js?v=20260919-uniform-1';
@@ -5,12 +7,13 @@ export const SANTEUIL_MARCH_SECONDS=14.4;
 export const ORGAN='santeuil-cylinder-organ-instrument',TRAIN='santeuil-hogweed-locomotive';
 export const TIMPLE='tenerife-timple-guitar',BOWL='tenerife-avocado-snack-bowl',CANARY='tenerife-atlantic-canary-costume';
 export const MIC='xz1516-ohia-blossom-microphone',TAPE='xz1516-reel-to-reel-recorder';
-export function strumTimes(male=false){return male?[900,1320,1530,2160,2580,3000,3210,3840]:[900,1500,1800,2400,3000,3300,3900,4500];}
+export function strumTimes(male=false){return duetScore().filter(e=>e.part===(male?'companion':'primary')).map(e=>e.at);}
 export function performanceEnvelope(ms,duration){return ease(ms/800)*(1-ease((ms-duration+900)/900));}
 export function railTravel(ms){return railwayProgress(ms).travel;}
 export function createFinalScenes(habitat,refresh=()=>{}){
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const audio=recordedSound({organ:'santeuil-organ-long.wav',reeds:'santeuil-reeds.mp3',whistle:'santeuil-whistle.mp3',strum:'tenerife-strum.mp3',up:'tenerife-strum-up.mp3',eat:'reunion-eat.wav',primary:vocalPhrases.primary.file,companion:vocalPhrases.companion.file});
+ const duetAudio=createDuetSound(),servings=snackServings();
  let action=null,raf=0,takes=[],idleTrack;
  function syncRailway(){
   idleTrack?.remove();idleTrack=null;
@@ -21,14 +24,15 @@ export function createFinalScenes(habitat,refresh=()=>{}){
  }
 
  const handles=p=>[ORGAN,TRAIN,TIMPLE,BOWL,MIC,TAPE].includes(p?.dataset.accessoryFamily);
- function cancel(){cancelAnimationFrame(raf);raf=0;audio.stop();if(!action)return;const old=action;action=null;old.stage?.restore();delete habitat.dataset.sceneAction;refresh();}
+ function cancel(){cancelAnimationFrame(raf);raf=0;audio.stop();duetAudio.stop();if(!action)return;const old=action;action=null;old.stage?.restore();delete habitat.dataset.sceneAction;refresh();}
  function start(piece){if(!handles(piece)||!visible(piece))return false;if(action?.piece===piece)return true;cancel();
-  const family=piece.dataset.accessoryFamily,part=piece.dataset.wormPart;
-  const a={piece,family,part,cues:new Set(),duration:family===MIC?4000:family===TAPE?6500:family===BOWL?5700:family===TIMPLE?5800:family===TRAIN?RAILWAY_DURATION:part==='primary'?SANTEUIL_MARCH_SECONDS*1000+1800:9600};action=a;syncRailway();habitat.dataset.sceneAction='loading';
+  const family=piece.dataset.accessoryFamily,part=piece.dataset.wormPart,percussion=family===BOWL&&part==='companion';
+  const a={piece,family,part,percussion,cues:new Set(),duration:percussion?DUET_DURATION:family===MIC?4000:family===TAPE?6500:family===BOWL?SNACK_DURATION:family===TIMPLE?DUET_DURATION:family===TRAIN?RAILWAY_DURATION:part==='primary'?SANTEUIL_MARCH_SECONDS*1000+1800:9600};action=a;syncRailway();habitat.dataset.sceneAction='loading';
   const keys=[MIC,TAPE].includes(family)?['primary','companion']:family===BOWL?['eat']:family===TIMPLE?['strum','up']:family===TRAIN?['whistle','organ']:[part==='primary'?'organ':'reeds'];
-  const begin=()=>{if(action!==a||!visible(piece)||document.hidden)return;const s=a.stage=makePerformance(habitat,family);a.started=performance.now();a.hands={};for(const p of ['primary','companion'])a.hands[p]=[s.hand(p),s.hand(p)];
+  const begin=()=>{if(action!==a||!visible(piece)||document.hidden)return;const portion=family===BOWL&&!percussion?servings.next(piece):-1;const s=a.stage=makePerformance(habitat,family);a.started=performance.now();a.hands={};for(const p of ['primary','companion'])a.hands[p]=[s.hand(p),s.hand(p)];
+   if(family===TIMPLE||percussion){a.duet=prepareDuet(s,TIMPLE,CANARY,part,percussion?BOWL:null);a.duet.hands=a.hands;if(!reduced.matches)duetAudio.start(a.duet.score);}
    if(family===TRAIN){a.ride=prepareRailway(s,TRAIN);a.ride.hands=a.hands.companion;}
-   if(family===BOWL){const p=s.prop(BOWL,part),food=p?.copy.querySelector('[data-avocado-food] > g');if(food){a.food=food;a.foodBase=relative(s.root,food);a.morsel=food.cloneNode(true);a.morsel.removeAttribute('transform');a.foodLayer=add(s.layer,'g',{transform:matrix(a.foodBase)});a.foodLayer.appendChild(a.morsel);food.setAttribute('visibility','hidden');}}
+   if(portion>=0){a.snack=prepareSnack(s,piece,portion,BOWL,CANARY,a.hands[part],servings.consume);if(reduced.matches)a.snack.paint(SNACK_DURATION);}
    if([MIC,TAPE].includes(family)){
     const other=part==='primary'?'companion':'primary';
     a.takes=family===MIC?[part,...(s.prop(MIC,other)?[other]:[])]:takes.length?[...takes]:['primary','companion'];
@@ -41,9 +45,9 @@ export function createFinalScenes(habitat,refresh=()=>{}){
      n.setAttribute('data-vocal-mouth',part);
     }
    }
-   habitat.dataset.sceneAction=family===MIC?'recording':family===TAPE?'playback':family===BOWL?'snack':family===TRAIN?'railway':'music';raf=requestAnimationFrame(tick);
+   habitat.dataset.sceneAction=percussion?'percussion':family===MIC?'recording':family===TAPE?'playback':family===BOWL?'snack':family===TRAIN?'railway':'music';raf=requestAnimationFrame(tick);
   };
-  if(reduced.matches)begin();else Promise.race([audio.prepare(keys),new Promise(resolve=>setTimeout(resolve,4000))]).then(begin);return true;
+  if(reduced.matches)begin();else Promise.race([(family===TIMPLE||percussion)?duetAudio.prepare(percussion):audio.prepare(keys),new Promise(resolve=>setTimeout(resolve,4000))]).then(begin);return true;
  }
  function recording(a,env){const s=a.stage,tape=s.prop(TAPE),playback=a.family===TAPE;
   let level=0;
@@ -94,20 +98,7 @@ export function createFinalScenes(habitat,refresh=()=>{}){
    const press=ease(a.ms/500)*(1-ease((a.ms-1000)/600));if(press>0)s.reach(a.hands.companion[1],at(tape.base,playback?-50:22,71),press,[228,160]);
   }
  }
- function guitar(a,env){const s=a.stage,p=s.prop(TIMPLE,a.part);if(!p)return;const times=strumTimes(a.part==='companion');
-  s.pose(a.part,.45*Math.sin(a.ms/380)*env,0);const other=a.part==='primary'?'companion':'primary';s.pose(other,.8*Math.sin(a.ms/420+.6)*env,0);
-  const last=times.findLast(t=>t<=a.ms)??-1000,phase=clamp((a.ms-last)/185),sweep=phase<.45?-20+43*ease(phase/.45):23-43*ease((phase-.45)/.55);
-  s.reach(a.hands[a.part][0],at(p.base,sweep,a.part==='primary'?15:10),env);s.reach(a.hands[a.part][1],at(p.base,3,-70+9*Math.floor(a.ms/1200)%18),env,[228,160]);
-  for(const [i,t]of times.entries())if(a.ms>=t&&!a.cues.has(i)){a.cues.add(i);audio.play(i%3===2?'up':'strum',0,i%3===2?.53:.64,i%3===0?.12:.085);}
-  // Small wing gestures hinge at the original feather roots, never at the head.
-  for(const part of [a.part,other]){const costume=s.prop(CANARY,part);for(const wing of costume?.copy.querySelectorAll('[data-canary-wing]')||[]){const angle=Math.sin(a.ms/420+(part===other?.6:0))*env*(part===other?5:2)*(wing.dataset.canaryWing==='near'?1:-.6);wing.setAttribute('transform',`rotate(${angle} 262 104)`);}}
- }
- function snack(a,env){const s=a.stage;if(!a.foodLayer)return;const lift=ease((a.ms-800)/1300),back=ease((a.ms-3500)/1200),hold=lift*(1-back);
-  s.pose(a.part,.3*env,.3*hold);const from=at(a.foodBase,0,0),mouth=s.point(a.part,331,80),x=from.x+(mouth.x-from.x)*hold,y=from.y+(mouth.y-from.y)*hold-14*Math.sin(Math.PI*hold);
-  const bite=ease((a.ms-2650)/650);a.foodLayer.setAttribute('transform',matrix(new DOMMatrix().translate(x-from.x,y-from.y).multiply(a.foodBase)));a.morsel.setAttribute('opacity',1-bite);
-  s.reach(a.hands[a.part][0],{x,y},env);const smile=s.actors[a.part].face.querySelector('.worm-smile');if(smile&&a.ms>2550&&a.ms<3450)smile.setAttribute('transform',`translate(331 80) scale(1 ${1+.1*Math.sin(a.ms/120)}) translate(-331 -80)`);
-  cue(a,'eat',2700,.45,.08,.016);
- }
+ function snack(a){a.snack?.paint(a.ms);playSnackSounds(a.ms,a.cues,audio.play);}
  function cue(a,key,time,offset,duration,level=.12){if(time<=a.ms&&!a.cues.has(key)){a.cues.add(key);audio.play(key,offset,duration,level);}}
  function music(a,env){const s=a.stage,p=s.prop(ORGAN,a.part);if(!p)return;
   const t=a.ms/1000,active=ease((a.ms-650)/450)*(1-ease((a.ms-a.duration+1350)/450));
@@ -135,10 +126,10 @@ export function createFinalScenes(habitat,refresh=()=>{}){
   cue(a,'whistle',1400,0,1.7,.065);
  }
  function tick(now){raf=0;const a=action;if(!a)return;if(!visible(a.piece)||document.hidden){cancel();return;}
-  a.ms=now-a.started;const still=reduced.matches,env=still?0:performanceEnvelope(a.ms,a.duration);
-  if(!still){if(a.family===ORGAN)music(a,env);else if(a.family===TRAIN)railway(a,env);else if(a.family===TIMPLE)guitar(a,env);else if(a.family===BOWL)snack(a,env);else recording(a,env);}
+  a.ms=(a.family===TIMPLE||a.percussion)&&!reduced.matches?duetAudio.elapsed():now-a.started;const still=reduced.matches,env=still?0:performanceEnvelope(a.ms,a.duration);
+  if(!still){if(a.family===ORGAN)music(a,env);else if(a.family===TRAIN)railway(a,env);else if(a.family===TIMPLE||a.percussion)a.duet.paint(a.ms);else if(a.family===BOWL)snack(a,env);else recording(a,env);}
   if(a.ms>=(still?300:a.duration)){if(!still&&a.family===MIC&&a.stage.prop(TAPE))takes=[...takes.filter(p=>!a.takes.includes(p)),...a.takes].slice(-2);cancel();return;}raf=requestAnimationFrame(tick);
  }
  document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});window.addEventListener('resize',cancel);window.addEventListener('pagehide',cancel);reduced.addEventListener('change',cancel);
- return {handles,start,cancel,syncRailway,clear(){cancel();takes=[];},get active(){return !!action;}};
+ return {handles,start,cancel,syncRailway,reset:servings.reset,clear(){cancel();takes=[];servings.clear();},get active(){return !!action;}};
 }

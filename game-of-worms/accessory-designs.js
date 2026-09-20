@@ -24,7 +24,7 @@ import { drawOahuBike, bikeLayouts } from "./oahu-bike-art.js?v=20260909-bike-1"
 import { drawOahuChocolate, chocolateLayouts } from "./oahu-chocolate-art.js?v=20260909-chocolate-2";
 import { drawOahuGift, giftLayouts } from "./oahu-gift-art.js?v=20260909-gift-3";
 import { drawRefinedAccessory, refinedLayouts } from "./accessory-refinements.js?v=20260905-six-locations-1";
-import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260919-final-3";
+import { drawTenerifeRefinement } from "./tenerife-accessories.js?v=20260920-shaker-2";
 import { drawSanteuilRefinement } from "./santeuil-accessories.js?v=20260919-uniform-1";
 import { drawKauaiRecording } from "./kauai-recording.js?v=20260919-final-3";
 import { drawN2Coat } from "./n2-tailoring.js?v=20260906-n2-fabric-2";
@@ -56,7 +56,7 @@ const rows = [
   ["elegans", "Bristol N2, England", "agar plates with bacteria", "ngm-agar-plate", "fitted lab coats", "n2-lab-coat", "cryo-vial jetpacks", "cryo-vial-jetpack", "lab goggles", "n2-lab-goggles"],
   ["elegans", "Santeuil, France", "railway-driver uniforms", "santeuil-railway-driver-uniform", "organ & concertina", "santeuil-cylinder-organ-instrument", "locomotive & trolley", "santeuil-hogweed-locomotive"],
   ["elegans", "Edinburgh, Scotland", "Blackford observatory telescopes", "midmar-compost-tumbler", "Edinburgh tartan kilts", "edinburgh-tartan-kilt", "Great Highland bagpipes", "great-highland-bagpipes"],
-  ["elegans", "Tenerife, Spain", "Atlantic canary costumes", "tenerife-atlantic-canary-costume", "timple guitars", "tenerife-timple-guitar", "avocado snack bowls", "tenerife-avocado-snack-bowl"],
+  ["elegans", "Tenerife, Spain", "Atlantic canary costumes", "tenerife-atlantic-canary-costume", "timple guitars", "tenerife-timple-guitar", "Avocado & shaker", "tenerife-avocado-snack-bowl"],
   ["elegans", "Kauaʻi, Hawaiʻi", "Headphones", "xz1516-forest-bird-headphones", "Microphones", "xz1516-ohia-blossom-microphone", "Tape recorder", "xz1516-reel-to-reel-recorder"],
   ["elegans", "Australian Capital Territory", "Coffee & biscuits", "canberra-flat-white-cafe", "Napkins", "canberra-linen-napkins", "Cockatoos", "oconnor-cockatoo-cafe-raid"],
   ["elegans", "Claremont, California · ECA250", "Bookworm books", "eca250-bookworm-book", "Lemonade", "eca250-california-lemonade", "sunny reading glasses", "eca250-sunny-reading-glasses"],
@@ -6045,7 +6045,7 @@ function renderPiece(target, item, wormPart) {
     "agassiz-ice-flow-model": { primary: [322, 260, .52, -2], companion: [52, 290, .42, 2] },
     "tenerife-atlantic-canary-costume": { primary: [0, 0, 1, 0], companion: [-28, 82, .43, 0] },
     "tenerife-timple-guitar": { primary: [224, 194, .50, 64], companion: [52, 172, .29, 67] },
-    "tenerife-avocado-snack-bowl": { primary: [346, 224, .52, -16], companion: [32, 211, .33, 15] },
+    "tenerife-avocado-snack-bowl": { primary: [346, 224, .52, -16], companion: [20, 228, .46, -18] },
     "xz1516-forest-bird-headphones": { primary: [329, 59, 1, 15], companion: [114.5, 108.5, .56, 12] },
     "xz1516-ohia-blossom-microphone": { primary: [371, 81, .8, 0], companion: [153, 83, .45, -20] },
     "xz1516-reel-to-reel-recorder": { primary: [112, 151, .45, 0] },
@@ -6167,6 +6167,7 @@ function renderPiece(target, item, wormPart) {
   if (item.family === "qg130-shampoo-ginger") piece.dataset.pieceLabel = companion ? "Bowl" : "Shampoo ginger";
   if (item.family === "qg130-jug-basin") piece.dataset.pieceLabel = companion ? "Basin" : "Jug";
   if (item.family === "qg130-bath-towels") piece.dataset.pieceLabel = "Towel";
+  if (item.family === "tenerife-avocado-snack-bowl") piece.dataset.pieceLabel = companion ? "Gourd shaker" : "Avocado bowl";
   if (piece.dataset.pieceLabel) piece.dataset.pieceLabel = formatAccessoryLabel(piece.dataset.pieceLabel);
   if (item.family === "qg2904-forest-photography") piece.dataset.pieceLabel = companion ? "Instant camera" : "Camera";
   if (item.family === "qg2904-safety-harness") piece.dataset.pieceLabel = "Safety harness";

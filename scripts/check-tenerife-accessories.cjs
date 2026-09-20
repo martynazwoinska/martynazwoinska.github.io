@@ -30,6 +30,11 @@ const walk = node => [node, ...node.children.flatMap(walk)];
       if (family === "tenerife-timple-guitar") {
         assert.equal(nodes.filter(n => n.tag === "ellipse" && ["-20", "26"].includes(n.attrs.cx)).length, 5);
       }
+      if(family==='tenerife-avocado-snack-bowl'){
+        assert.equal(nodes.filter(n=>Object.hasOwn(n.attrs,'data-gourd-shell')).length,small?1:0);
+        assert.equal(nodes.filter(n=>Object.hasOwn(n.attrs,'data-shaker-handle')).length,small?1:0);
+        assert.equal(nodes.filter(n=>Object.hasOwn(n.attrs,'data-avocado-food')).length,small?0:1);
+      }
     }
     assert.notEqual(pair[0], pair[1], family + " pair must use different geometry");
   }

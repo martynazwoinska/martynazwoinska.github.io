@@ -1,4 +1,4 @@
-import { createFinalScenes } from "./final-scenes-play.js?v=20260919-railway-3";
+import { createFinalScenes } from "./final-scenes-play.js?v=20260920-snack-sound-1";
 import { createOrsaySketching } from "./orsay-play.js?v=20260919-orsay-hold-1";
 import { createSaltLakeBubbles } from "./salt-lake-play.js?v=20260918-picnic-3";
 import { createUmbrellaPivot, umbrellaHeadroom } from "./mahahual-pivot.js?v=20260917-mahahual-22";
@@ -13,7 +13,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260920-books-7";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260920-snack-sound-1";
 import { createKauaiBath } from "./kauai-bath-play.js?v=20260909-bath-pour-1";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
@@ -1856,6 +1856,7 @@ function wireAccessoryPieces() {
         event.preventDefault(); if (!event.repeat) guadeloupePlay.start(piece); return;
       }
       if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) { finalScenes.cancel(); orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); }
+      if (event.key === "Home") finalScenes.reset(piece);
       if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) guadeloupePlay.cancel();
       if ((event.key === "Enter" || event.key === " ") && mauritiusPlay.handles(piece) && !drawingEnabled && activeWardrobe().has(id)) {
         event.preventDefault(); if (!event.repeat) mauritiusPlay.start(piece); return;

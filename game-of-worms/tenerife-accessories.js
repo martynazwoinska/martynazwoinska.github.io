@@ -126,7 +126,30 @@ function timple(group, small) {
   line(group,small?"M-31-24Q-68 3-38 61":"M-42-29Q-89 9-52 77","#b2818b",1.4);
 }
 
+function shaker(group) {
+  // A dried hollow gourd on a fitted wooden handle, without borrowed decoration.
+  const silhouette='M-10-60C-35-63-47-43-42-17C-39 4-22 16-5 16C14 17 34 4 39-16C46-42 32-63 9-62Q0-67-10-60Z';
+  const defs=el(group,'defs',{}),id='tenerife-gourd-shell';
+  const gradient=el(defs,'linearGradient',{id,x1:'0%',y1:'0%',x2:'100%',y2:'45%'});
+  for(const [offset,color] of [['0%','#b97935'],['30%','#e5b76d'],['62%','#ce984e'],['100%','#936033']])el(gradient,'stop',{offset,'stop-color':color});
+  el(el(defs,'clipPath',{id:'tenerife-gourd-clip'}),'path',{d:silhouette});
+  path(group,'M-8 9L-9 78Q-10 91 1 93Q12 90 11 80L8 9Z','#9d6035','#573f2b',2.8,{'data-shaker-handle':''});
+  line(group,'M-3 21L-2 79Q-2 85 2 85','#d49a5d',2.8);
+  line(group,'M6 27L7 78','#744827',1.5);
+  path(group,silhouette,'url(#'+id+')','#60442b',2.8,{'data-gourd-shell':''});
+  const grain=el(group,'g',{'clip-path':'url(#tenerife-gourd-clip)'});
+  line(grain,'M-22-57C-42-29-26-1-19 8M18-58Q35-27 20 8','#ab7639',1.5,{opacity:.65});
+  line(grain,'M-24-44Q-34-25-24-11','#f4d491',4,{opacity:.75});
+  for(const [x,y] of [[-27,-10],[-16,-46],[15,-42],[25,-17],[4,7],[-9,-3],[13,-14]])el(grain,'ellipse',{cx:x,cy:y,rx:1.7,ry:1,fill:'#966130',opacity:.48});
+  // A small plugged crown and cord binding make the construction readable.
+  path(group,'M-8-61Q0-68 8-62L6-57Q0-54-7-58Z','#83552f','#65452c',1.5);
+  path(group,'M-9 11Q0 15 9 11L10 25Q1 29-9 24Z','#765d3b','#51412c',1.5);
+  for(const y of [14,18,22])line(group,`M-8 ${y}Q0 ${y+4} 9 ${y+1}`,'#d4b67a',1.5);
+  path(group,'M8 23Q22 34 12 45Q5 42 9 35','none','#765d3b',2);
+}
+
 function avocado(group, small) {
+  if(small){shaker(group);return;}
   const rind = small ? "M-58-3C-64-33-36-48-11-40C9-35 11-16 34-11C70-5 77 30 46 46C4 65-51 40-58-3Z"
     : "M-98 7C-110-34-55-65-14-45C8-35 11-17 46-17C100-19 124 15 91 46C52 85-80 70-98 7Z";
   const flesh = small ? "M-51-5C-54-27-33-39-12-32C8-26 11-9 34-3C63 2 65 26 42 36C6 52-44 31-51-5Z"

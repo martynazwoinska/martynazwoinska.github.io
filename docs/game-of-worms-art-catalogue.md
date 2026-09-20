@@ -1,5 +1,13 @@
 # Game of Worms art catalogue
 
+Tenerife approved revision, 2026-09-20: the male's avocado is replaced by an original
+handled gourd shaker. The large avocado, both timples and costumes retain their
+approved artwork. The gourd has a wood handle, cord binding, plugged crown and
+contained natural shell markings. During percussion the male lays his timple
+down, grips the shaker and returns it afterward. Leftward placement of the parked
+timple avoids the larger worm's tail. Approved through preview snack-2; deployment requested with eating sounds.
+
+
 Final interaction review, 2026-09-19: Santeuil, Tenerife and C. elegans Kauaʻi
 retain all approved drawings, body fits, palettes, labels and backgrounds.
 Identity groups expose moving mechanisms without redrawing their geometry.

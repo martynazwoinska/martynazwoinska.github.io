@@ -673,8 +673,10 @@ No new attribution-dependent licence or external runtime dependency is added.
 - `tenerife-strum-up.mp3`: [ukuele sharp.ogg, FOSSarts](https://freesound.org/people/FOSSarts/sounds/669930/). Unchanged HQ preview: `https://cdn.freesound.org/previews/669/669930_14631530-hq.mp3`. 15360 bytes; SHA-256 `45990300f9a111390820298f1ed2a40bed8bf6ec52270edeca195a86945858b7`. The two attacks alternate in separate original eight-strum patterns, up to .64/.53 s per hit, peak targets .085/.12. These are plucked nylon-string foley, not recordings of a timple or a traditional Canarian performance. Original pitch and speed retained.
 - `kauai-whistle.mp3`: [Short whistle.wav, Sami_Kullström](https://freesound.org/people/Sami_Kullstr%C3%B6m/sounds/388053/), recorded with Samsung Galaxy J5. Unchanged HQ preview: `https://cdn.freesound.org/previews/388/388053_7282645-hq.mp3`. 10539 bytes; SHA-256 `b6147c59943e4dec39d6797ee26610263df0098f69c465f1e6965be0c0c603f6`. Up to .48 s at original pitch/speed, in distinct three/four-note rhythms, peak targets .07/.052. Human whistling foley for imaginary worms, not a species call. Playback reuses the same timing, without recording visitors.
 
-Tenerife's bite reuses the unchanged `reunion-eat.wav` credited above: a single
-.08 s excerpt from .45 s, peak target .016. It is deliberately brief and quiet.
+Tenerife's eating reuses the unchanged `reunion-eat.wav` credited above. Each
+portion has a .23 s bite excerpt from .04 s (peak target .065) at 1900 ms,
+then a quieter .26 s chew from .32 s (peak target .044) at 2340 ms. Both
+coincide with the visible mouth movement, at original pitch and speed.
 Audio is loaded after interaction, with a four-second bound; late decode does
 not trigger delayed playback. Each voice has attack/release fades, interruption
 fades over 40 ms, and all activity stops on cancellation, page hiding or leaving
@@ -729,3 +731,32 @@ Reuses existing unchanged CC0 recordings documented above:
 and speed, no synthesis or looping. Files load after a visitor gesture. Paper
 follows the page movement; drink cues follow visible sipping/pouring.
 Cancellation stops playback. Existing source files and licence records retained.
+
+## Tenerife duet preview, 2026-09-20
+
+Reuses the byte-identical `tenerife-strum.mp3` and `tenerife-strum-up.mp3`
+credited above. An original 112 BPM rhythmic arrangement has a call, answer,
+short exchanges and shared ending. No claim of traditional Canarian music or
+authentic timple sound. Both recordings retain original pitch and playback speed.
+Leading silence is skipped at the first 12%-of-peak crossing minus 3 ms.
+Per-hit excerpts are up to .44 s for down strokes, .30 s for up strokes and
+.80 s for the ending. Peak targets are .105 solo / .063 together, multiplied
+by accent strength. Six-ms attack, 90-ms release, .2 left/right panning and
+4200/6500 Hz lowpass filtering distinguish the players without pitch shifting.
+All hits are scheduled against one AudioContext clock, which also drives the
+hands and body movement. Cancellation fades and stops future scheduled voices;
+loading failure leaves a silent animated fallback, and reduced motion is silent.
+No new audio assets added. Subjective listening remains user review.
+
+## Tenerife gourd shaker, 2026-09-20
+
+- `tenerife-shaker.mp3`: [Big Maraca OS 1, Sadiquecat](https://freesound.org/people/Sadiquecat/sounds/792505/).
+  Creator page explicitly lists CC0 (verified 2026-09-20). Real maraca recorded
+  with Tascam FR-AV2 and Rode NT5. Unchanged HQ preview:
+  `https://cdn.freesound.org/previews/792/792505_5287430-hq.mp3`.
+  17952 bytes; SHA-256 `f31e2ba33419d526d2f748de27f01bd1fe392f3fc3b9423670a65459d37f2454`.
+  Runtime excerpts up to .20 s, original pitch/speed, leading-silence trim as
+  above, .072 peak target times .50/.85 accent. Starts on the shaker's direction
+  changes at 112 BPM, after the instrument changeover. Existing guitar samples
+  provide accompaniment only while timples are visible. All future hits cancel
+  on interruption; reduced motion remains silent. No visitor recording.

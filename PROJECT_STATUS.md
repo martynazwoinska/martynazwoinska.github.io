@@ -11,6 +11,42 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+### Tenerife duet, shaker and eating, approved 2026-09-20
+
+Martyna approved the successive Tenerife previews and requested deployment,
+including audible avocado eating sounds. Either timple leads a call-and-answer
+duet with shorter exchanges and a shared ending. Hands and body motion follow
+the recorded strings; the fitted canary costumes follow each body bend.
+The male's second avocado is replaced by a handled gourd shaker. He puts his
+timple down, lifts the shaker and plays a seed-rattle rhythm with the larger
+worm's guitar, then returns both instruments. With guitars hidden it plays solo.
+
+Each avocado click eats one of three bacteria: reach, grasp, lift, bite, chew and
+return. Completed bites persist through other activities; the next click on an
+empty bowl refills it. Home resets portions and position. A .23 s recorded
+soft-food bite at 1900 ms is followed by a quieter .26 s chew at 2340 ms,
+with no pitch shift or synthetic tone. All sound stops on cancellation;
+reduced motion consumes the selected portion without animation or sound.
+The background, primary avocado, guitars, costumes and visitor transforms are
+preserved. Original body paths and accessory placements restore exactly.
+
+Approved English-only labels: `Avocado & shaker`, `Avocado bowl`, `Gourd shaker`.
+The Game is intentionally English-only; there are no Swedish/Polish counterparts.
+Gourd construction follows [the Met reference](https://www.metmuseum.org/art/collection/search/502806):
+hollow shell, wood handle, cord binding and plugged crown; no copied artwork.
+The shaker is a playful prop, not a claim of a traditional Canarian instrument.
+Recording sources, CC0 licences and hashes are in assets/audio/SOURCES.md.
+
+Validation: snack state and sound timing, duet scheduling/cancellation, accessory
+geometry and final-scene regressions pass. Browser checks cover all three
+portions, persistent depletion, cancellation before/after eating, Home reset,
+restoration and guitar/shaker interactions, with no console errors. DOM layout
+checks pass at 360/768/1024/1440 px. Full-page screenshot service duplicates and
+rescales sections (268x1950, 582x1846, 778x1445, 1098x1482 pixels respectively),
+so exact full-page proofs remain manual. Normal-size scene renders were reviewed.
+Sound quality remains a listening judgement; timing and playback are tested.
+Branch: `codex/tenerife-duet`. Deployment is authorized; verify Pages after push.
+
 ### Claremont reader-facing books, approved 2026-09-20
 
 Martyna approved preview books-7 and requested deployment. Both books start
