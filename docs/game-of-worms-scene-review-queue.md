@@ -70,7 +70,7 @@ browser or physical device.
 | elegans | Australian Capital Territory | Done | Coffee and biscuits, faster cockatoo theft, napkins and sound. |
 | elegans | Claremont, California · ECA250 | Done | Wormbook drawing and page motion, varied spreads, glasses and lemonade. |
 | elegans | Araucanía, Chile | Done | Compost work, separate food placement, mate and bread eating with revised sounds. |
-| nigoni | Trivandrum, Kerala · JU1325 | Done | Working overlapping loupes and the large can watering the male. On 2026-09-09, added blinking under either loupe, preserving magnification and size. |
+| nigoni | Trivandrum, Kerala · JU1325 | Shower follow-up implementation and deployment requested, 2026-09-20 | Female grips, turns and lifts the can; male ducks, rubs his head and shakes off droplets. Recorded water foley; original art and saved positions retained. Working overlapping loupes and the large can watering the male. On 2026-09-09, added blinking under either loupe, preserving magnification and size. |
 | wallacei | Sanda, Bali · JU1873 | Done | Gongs, female pod strike/opening, male cacao nibs and cracking sound. |
 | tropicalis | Barro Colorado Island, Panama | Done | Flower opening/closing, flower bait, scissors/leaf activity and recorded snip. |
 | briggsae | Dois Rios, Ilha Grande, Brazil · EG5612 | Done | Jackfruit, Brazilian music and neckerchiefs approved and deployed at `8cbf580`. Full-page capture and manual listening limitations remain in PROJECT_STATUS.md. |

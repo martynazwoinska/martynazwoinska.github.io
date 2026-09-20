@@ -708,3 +708,14 @@ not nematode calls or a claim of Hawaiian music. No visitor microphone access.
 The old whistle remains archived in the repository but is no longer requested
 by this scene. The compact source credit uses proper names and a licence
 identifier, unchanged across language settings.
+
+## Trivandrum shared shower, 2026-09-20
+
+Reuses the byte-identical CC0 recordings documented above: `kauai-bath-pour-v2.wav`
+(Joseph SARDIN 3314) for the 1.9-second stream, `kauai-bath-squeeze.wav`
+(Joseph SARDIN 0778) for a quiet wet head rub, and `lombok-splash.wav`
+(Joseph SARDIN 1534) for a short shake-off splash. These are illustrative water
+and sponge foley, not recordings of worms. Original pitch/speed; no synthesis
+or looping. Peak targets .11, .035 and .055 respectively. The small can uses
+a 1.55-second pour. Playback starts only after a gesture, follows the visible
+action and stops on cancellation. Reduced motion keeps a brief static response.

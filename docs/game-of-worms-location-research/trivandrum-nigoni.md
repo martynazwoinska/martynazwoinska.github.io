@@ -1,5 +1,30 @@
 # Trivandrum *C. nigoni* location research and art brief
 
+## Shared shower follow-up, 2026-09-20
+
+Martyna approved the proposed female lift/pour and male duck/rub/shake sequence
+and explicitly requested implementation and deployment. The shared shower now
+lasts 7.8 seconds. The female turns the can toward the male, grips it with both
+hands and leans into the lift. Water follows the male's ducking head; he rubs
+his head once the stream stops, then shakes off droplets and settles. The small
+can retains a separate shorter pour with supporting hands and body movement.
+
+Existing body paths are temporarily bent with planted tails, then restored
+byte-for-byte. Face groups follow the moving head. Original bodies remain in
+the document so the live loupes continue sampling them. Both can placements,
+sizes, the loupes, sample tubes and background are preserved. Recorded CC0
+water/sponge foley replaces synthetic noise; existing audio files are reused.
+No public copy or accessory drawing changes.
+
+Validation: timeline/order/continuity, planted tails, exact settling and static
+reduced-motion tests; accessory-art and live-loupe/blink checks. Browser checks
+cover both cans, enabled loupes, Escape, keyboard positioning and exact original
+path/position restoration. No console errors or horizontal overflow at actual
+360, 768, 1024 and 1439 CSS pixels. Reduced motion verified by tests and code;
+device preference and audio listening remain manual. Full-page capture produces
+scaled or duplicated sections, so complete-page visual proof remains manual.
+
+
 Last updated: 2026-07-14
 
 This dossier is the evidence and review contract for the *Caenorhabditis nigoni* Trivandrum landscape and its three accessory pairs. It follows the evidence-led, location-by-location Game of Worms illustration workflow established for the revised *C. elegans* records.
