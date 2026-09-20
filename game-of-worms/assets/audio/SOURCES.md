@@ -719,3 +719,13 @@ and sponge foley, not recordings of worms. Original pitch/speed; no synthesis
 or looping. Peak targets .11, .035 and .055 respectively. The small can uses
 a 1.55-second pour. Playback starts only after a gesture, follows the visible
 action and stops on cancellation. Reduced motion keeps a brief static response.
+
+## Claremont reading and drinks, 2026-09-20
+
+Reuses existing unchanged CC0 recordings documented above:
+`nambucca-paper-slide.wav` (DavidGreck, page turning), 0.44 s at peak target
+.045; `araucania-straw-sip.wav` (bassboybg), 0.28 s at .055; and
+`kauai-bath-pour-v2.wav` (Joseph SARDIN 3314), 1.15 s at .085. Original pitch
+and speed, no synthesis or looping. Files load after a visitor gesture. Paper
+follows the page movement; drink cues follow visible sipping/pouring.
+Cancellation stops playback. Existing source files and licence records retained.

@@ -34,7 +34,7 @@ import { createTrivandrumWatering } from "./trivandrum-watering.js?v=20260920-sh
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260908-cryo-return-1";
 import { createBaliGongs, GONG_FAMILY } from "./bali-gongs.js?v=20260906-gongs-1";
 import { createEdinburghPipes } from "./edinburgh-pipes.js?v=20260909-pipes-1";
-import { createClaremontPlay } from "./claremont-play.js?v=20260909-wormbook-4";
+import { createClaremontPlay } from "./claremont-play.js?v=20260920-reading-1";
 import { createAraucaniaPlay } from "./araucania-play.js?v=20260908-araucania-recordings-1";
 import { createBaliCacao } from "./bali-cacao.js?v=20260914-nib-eating-1";
 import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-fans-1";
@@ -1634,7 +1634,7 @@ function finishAccessoryDrag(event) {
   });
   piece.classList.remove("is-dragging");
   document.documentElement.classList.remove("accessory-drag-active");
-  if (moved || !canopyPlay.handles(piece) && !ahmedabadHands.handles(piece) && !panamaPlay.handlesLeaf(piece) && !mauritiusPlay.handles(piece) && !guadeloupePlay.handles(piece) && !taipeiPlay.handles(piece) && !ju1375Play.handles(piece) && !(finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) && !mahahualPlay.handles(piece) && !praslinPlay.handles(piece)) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
+  if (moved || !claremontPlay.handles(piece) && !canopyPlay.handles(piece) && !ahmedabadHands.handles(piece) && !panamaPlay.handlesLeaf(piece) && !mauritiusPlay.handles(piece) && !guadeloupePlay.handles(piece) && !taipeiPlay.handles(piece) && !ju1375Play.handles(piece) && !(finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) && !mahahualPlay.handles(piece) && !praslinPlay.handles(piece)) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") { baliCacao.drop(piece); claremontPlay.drop(piece); }
@@ -1688,7 +1688,7 @@ function moveActiveAccessoryPointer(event) {
   if(araucaniaPlay.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
     araucaniaPlay.cancel();activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
   }
-  if(claremontPlay.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
+  if(claremontPlay.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>6) {
     claremontPlay.cancel();activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
   }
   if(edinburghPipes.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
@@ -1715,7 +1715,7 @@ function moveActiveAccessoryPointer(event) {
   if (activeAccessoryDrag.primaryPointerId !== event.pointerId) return;
   // A small finger wobble is still a tap. Do not reset a digging worm before
   // pointerup can hand its current pose to the kite animation.
-  if (!activeAccessoryDrag.moved && ((finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) || mahahualPlay.handles(piece) || praslinPlay.handles(piece) || ju1375Play.handles(piece) || taipeiPlay.handles(piece) || guadeloupePlay.handles(piece) || ahmedabadHands.handles(piece) || panamaPlay.handlesLeaf(piece)) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)<=6) return;
+  if (!activeAccessoryDrag.moved && (claremontPlay.handles(piece) || (finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) || mahahualPlay.handles(piece) || praslinPlay.handles(piece) || ju1375Play.handles(piece) || taipeiPlay.handles(piece) || guadeloupePlay.handles(piece) || ahmedabadHands.handles(piece) || panamaPlay.handlesLeaf(piece)) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)<=6) return;
   if (!activeAccessoryDrag.moved && ahmedabadHands.handles(piece) && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>1) {
     ahmedabadHands.reset(piece);
     activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);

@@ -1,5 +1,34 @@
 # Claremont *Caenorhabditis elegans* ECA250 location research and art brief
 
+## Claremont reading follow-up, 2026-09-20
+
+Martyna requested the next proposed scene after the deployed Trivandrum update.
+The larger worm bends toward its book and follows the spread; the male peeks,
+gradually closes his eyes and holds a dozing pose. The next book tap turns a
+page and wakes him from that same pose. Each click advances one spread; there
+is no automatic page loop. A brief hand gesture follows the turning leaf.
+
+Both glasses follow the heads through temporary wrappers while retaining the
+visitor's placement and size. Book illustrations, background, glasses design
+and lemonade artwork are unchanged. Escape, moving/resizing props, hiding a
+wardrobe group, changing location or opening a drink action restore the exact
+original body paths, eye attributes and glasses styles. Idle dozing holds still
+without a continuing animation loop. Reduced motion changes pages immediately.
+
+Recorded CC0 paper, straw-sip and pouring foley replaces synthesized sounds,
+using existing production audio files. No public labels or copy changed.
+Tap tolerance is 6 pixels; a page tap does not clamp a user-positioned book.
+
+Validation: book geometry/hinges, liquid bounds and drink regressions; new
+reading/sleep/wake timing and planted-tail checks. Browser verified both books,
+repeat-tap waking, drink interruption and exact Escape restoration. No console
+errors or overflow at actual widths 360, 768, 1024 and 1439 CSS pixels.
+Full-page captures remain scaled/duplicated by the capture service; complete
+page visual proof, device-level reduced-motion preference and listening checks
+remain manual. Implementation/deployment authorized; public verification follows
+publication. Branch: `codex/claremont-reading`.
+
+
 ## Status
 
 Active replacement for Auckland ECA36. The public marker uses the current CaeNDR reference strain ECA250 while the collection story is explicitly described as a lineage-level record.

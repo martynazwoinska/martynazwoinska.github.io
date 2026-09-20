@@ -68,7 +68,7 @@ browser or physical device.
 | elegans | Bristol N2, England | Done | Fitted aprons and cryopacks, freeze/flight/thaw and sound, agar-plate label. |
 | elegans | Edinburgh, Scotland | Done | Kilt fit, usable telescopes and playable bagpipes. |
 | elegans | Australian Capital Territory | Done | Coffee and biscuits, faster cockatoo theft, napkins and sound. |
-| elegans | Claremont, California · ECA250 | Done | Wormbook drawing and page motion, varied spreads, glasses and lemonade. |
+| elegans | Claremont, California · ECA250 | Reading follow-up, implementation/deployment authorized, 2026-09-20 | Larger worm reads; male peeks, dozes and wakes on the next page tap. Glasses track the heads, with recorded paper/drink foley and preserved placements. Wormbook drawing and page motion, varied spreads, glasses and lemonade. |
 | elegans | Araucanía, Chile | Done | Compost work, separate food placement, mate and bread eating with revised sounds. |
 | nigoni | Trivandrum, Kerala · JU1325 | Shower follow-up implementation and deployment requested, 2026-09-20 | Female grips, turns and lifts the can; male ducks, rubs his head and shakes off droplets. Recorded water foley; original art and saved positions retained. Working overlapping loupes and the large can watering the male. On 2026-09-09, added blinking under either loupe, preserving magnification and size. |
 | wallacei | Sanda, Bali · JU1873 | Done | Gongs, female pod strike/opening, male cacao nibs and cracking sound. |

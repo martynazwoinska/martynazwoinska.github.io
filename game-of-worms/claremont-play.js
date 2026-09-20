@@ -1,3 +1,5 @@
+import {createReaders,readingFrame,PAGE_DELAY} from './claremont-reading.js?v=20260920-reading-1';
+import {recordedSound} from './scene-performance.js?v=20260919-uniform-1';
 import { bookPage, insideCover, SPREADS, SMALL_REFLECTION } from './claremont-book-art.js?v=20260909-wormbook-4';
 const NS='http://www.w3.org/2000/svg';
 export const BOOK='eca250-bookworm-book', LEMONADE='eca250-california-lemonade';
@@ -22,7 +24,7 @@ export function sipFrame(ms,small=false){
   const t=ms/(small?1450:1700),arrive=.36,leave=.67;
   return {reach:t<arrive?ease(t/arrive):1-ease((t-leave)/(1-leave)),contact:t>=arrive&&t<=leave,consumed:ease((t-arrive)/(leave-arrive)),done:t>=1};
 }
-export function soundProfile(kind){return kind==='paper'?{duration:.17,volume:.024}:kind==='slurp'?{duration:.28,volume:.038}:{duration:.65,volume:.036};}
+export function soundProfile(kind){return kind==='paper'?{duration:.44,volume:.045}:kind==='slurp'?{duration:.28,volume:.055}:{duration:1.15,volume:.085};}
 export function waterPolygon(level,slope,small=false){
   const box=small?[-54,-55,52,77]:[-77,-89,65,108],cx=small?0:-5;
   const corners=[[box[0],box[1]],[box[2],box[1]],[box[2],box[3]],[box[0],box[3]]],out=[];
@@ -35,31 +37,10 @@ export function waterPolygon(level,slope,small=false){
   return out;
 }
 
-// Original, quiet foley. Sources are created only after a user gesture.
+// Existing CC0 recordings, requested only after the visitor interacts.
 export function createReadingSound(){
-  let ctx,voices=[];
-  function stop(){for(const v of voices){try{v.source.stop();}catch{}v.nodes.forEach(n=>n.disconnect());}voices=[];}
-  function prepare(){try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;if(!ctx||ctx.state==='closed')ctx=new A();return ctx.resume();}catch{}}
-  function play(kind){
-    if(!ctx||ctx.state!=='running'||document.hidden)return false;
-    stop();const {duration,volume}=soundProfile(kind),at=ctx.currentTime;
-    const source=ctx.createBufferSource(),buffer=ctx.createBuffer(1,Math.ceil(ctx.sampleRate*duration),ctx.sampleRate),data=buffer.getChannelData(0);
-    for(let i=0;i<data.length;i++){
-      const t=i/ctx.sampleRate,tau=t%.13;
-      data[i]=kind==='paper'?(Math.random()*2-1)*Math.sin(Math.PI*t/duration)**2:kind==='slurp'?
-        (Math.random()*2-1)*(.25+.6*Math.sin(Math.PI*t/duration)**2)+.2*Math.sin(2*Math.PI*(600*t+900*t*t)):
-        (Math.random()*2-1)*.36+.5*Math.sin(2*Math.PI*(900*tau-1800*tau*tau))*Math.exp(-45*tau);
-    }
-    source.buffer=buffer;const filter=ctx.createBiquadFilter(),gain=ctx.createGain();
-    filter.type=kind==='paper'||kind==='slurp'?'bandpass':'lowpass';filter.frequency.value=kind==='paper'?2600:kind==='slurp'?1250:1300;filter.Q.value=kind==='slurp'?1.8:.6;
-    gain.gain.setValueAtTime(0,at);gain.gain.linearRampToValueAtTime(volume,at+.025);
-    gain.gain.setValueAtTime(volume,at+duration*.6);gain.gain.linearRampToValueAtTime(0,at+duration);
-    source.connect(filter);filter.connect(gain);gain.connect(ctx.destination);
-    const entry={source,nodes:[source,filter,gain]};voices.push(entry);
-    source.onended=()=>{entry.nodes.forEach(n=>n.disconnect());voices=voices.filter(v=>v!==entry);};
-    source.start(at);source.stop(at+duration);return true;
-  }
-  return {prepare,play,stop};
+ const audio=recordedSound({paper:'nambucca-paper-slide.wav',slurp:'araucania-straw-sip.wav',pour:'kauai-bath-pour-v2.wav'});
+ return {prepare:()=>audio.prepare(['paper','slurp','pour']),stop:()=>audio.stop(),play(kind){if(document.hidden)return false;const p=soundProfile(kind);return audio.play(kind,0,p.duration,p.volume);}};
 }
 
 
@@ -107,7 +88,7 @@ export function createClaremontPlay(habitat,onChange=()=>{}){
     const anchor=s.art.querySelector('[data-book-binding]');anchor.before(layer);s.layer=layer;
   }
   function turnBook(piece){
-    cancel();const s=bookState(piece),previous=s.index,next=nextBookPage(previous,s.small),opening=s.small&&previous===0;
+    const prior=run?.readers?.frame;cancel();const s=bookState(piece),previous=s.index,next=nextBookPage(previous,s.small),opening=s.small&&previous===0;
     if(reduced.matches){s.index=next;paintBook(s,next);onChange();immediateSound('paper');return true;}
     paintBook(s,next);
     if(opening){s.layer.children[0].setAttribute('visibility','hidden');s.layer.children[1].setAttribute('visibility','hidden');}
@@ -116,14 +97,18 @@ export function createClaremontPlay(habitat,onChange=()=>{}){
     if(opening){for(const n of s.contents){const c=n.cloneNode(true);c.removeAttribute('visibility');front.append(c);}back.append(smallBack(s));const endpaper=surface(s,next,'left');endpaper.setAttribute('transform',SMALL_REFLECTION);back.append(endpaper);}
     else {front.append(surface(s,previous,'right'));back.append(surface(s,next,'left'));back.setAttribute('transform',s.small?SMALL_REFLECTION:'translate(-18 0) scale(-1 1)');}
     turning.append(front,back);if(stillLeft)s.art.append(stillLeft);s.art.append(turning);
-    const started=performance.now(),r={piece,restore(){turning.remove();stillLeft?.remove();paintBook(s,s.index);delete piece.dataset.readingActive;}};
+    const readers=createReaders(habitat,prior);
+    const started=performance.now(),r={piece,readers,restore(){readers.restore();turning.remove();stillLeft?.remove();paintBook(s,s.index);delete piece.dataset.readingActive;}};
     run=r;piece.dataset.readingActive='page';
-    Promise.resolve(sound.prepare()).then(()=>{if(run===r)sound.play('paper');}).catch(()=>{});
-    function tick(now){if(run!==r)return;if(!visible(piece)){cancel();return;}const t=clamp((now-started)/pageDuration(s.small,opening)),pose=leafPose(t,s.small);
+    Promise.resolve(sound.prepare()).catch(()=>{});let sounded=false,turned=false;
+    function tick(now){if(run!==r)return;if(!visible(piece)){cancel();return;}const ms=now-started,t=clamp((ms-PAGE_DELAY)/pageDuration(s.small,opening)),pose=leafPose(t,s.small);
       if(opening)pose.skew*=.25;
       folded(turning,pose,s.small);front.setAttribute('display',pose.back?'none':'inline');back.setAttribute('display',pose.back?'inline':'none');
       turning.setAttribute('opacity',String(1-.12*Math.sin(Math.PI*t)));
-      if(t===1){s.index=next;cancel();return;}raf=requestAnimationFrame(tick);
+      if(ms>=PAGE_DELAY&&!sounded){sounded=sound.play('paper')||t===1;}
+      if(t===1&&!turned){s.index=next;paintBook(s,next);turning.setAttribute('visibility','hidden');stillLeft?.setAttribute('visibility','hidden');turned=true;}
+      const f=readingFrame(ms,prior);readers.paint(f,turning,s.art,s.small);piece.dataset.readingActive=f.companion.sleep>.98?'dozing':t<1?'page':'reading';
+      if(f.done){raf=0;return;}raf=requestAnimationFrame(tick);
     }raf=requestAnimationFrame(tick);return true;
   }
   function fluid(piece,level){
@@ -201,7 +186,7 @@ export function createClaremontPlay(habitat,onChange=()=>{}){
       if(f.done){sips[part]++;cancel();return;}raf=requestAnimationFrame(tick);
     }raf=requestAnimationFrame(tick);return true;
   }
-  function start(piece,pourRequested=false){if(!handles(piece)||!visible(piece)||document.hidden)return false;if(run?.piece===piece){cancel();return true;}return piece.dataset.accessoryFamily===BOOK?turnBook(piece):pourRequested?pour():sip(piece);}
+  function start(piece,pourRequested=false){if(!handles(piece)||!visible(piece)||document.hidden)return false;if(piece.dataset.accessoryFamily===BOOK)return turnBook(piece);if(run?.piece===piece){cancel();return true;}return pourRequested?pour():sip(piece);}
   function drop(piece){
     if(piece?.dataset.accessoryFamily!==LEMONADE||piece.dataset.wormPart!=='primary')return false;
     const cup=pair('companion');if(!visible(cup))return false;
