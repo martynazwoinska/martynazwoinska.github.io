@@ -1,3 +1,4 @@
+import {revealTreasure} from './treasure-pieces.js?v=20260920-gems-1';
 import {GINGER,RINSE,TOWEL,bathFamilies,add,p,e,part,C,faceCloth} from './kauai-bath-art.js?v=20260909-bath-2';
 import {createBathSound} from './kauai-bath-audio.js?v=20260909-bath-pour-1';
 const clamp=x=>Math.max(0,Math.min(1,x));
@@ -129,6 +130,7 @@ export function createKauaiBath(habitat,refresh=()=>{}){
       function tick(now){
         if(run!==action)return;if(document.hidden||!selected.every(visible)){cancel();return;}
         const ms=now-began,s=bathFrame(kind,ms,reduced.matches,male);
+        if(kind==='towel'&&(s.lift>.85||(reduced.matches&&s.done)))revealTreasure(habitat,'towel',root,clothAt.x,clothAt.y+24);
         if(s.done){cancel();return;}
         arms.forEach(a=>a.group.setAttribute('opacity',0));drops.forEach(d=>d.setAttribute('opacity',0));runoff.forEach(d=>d.setAttribute('opacity',0));ripple.setAttribute('opacity',0);
         if(kind==='ginger'){

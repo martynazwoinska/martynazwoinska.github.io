@@ -1,3 +1,4 @@
+import {revealTreasure} from './treasure-pieces.js?v=20260920-gems-1';
 import {COMPOST,MATE,FOOD,element} from './araucania-art.js?v=20260909-araucania-bites-5';
 const clamp=n=>Math.max(0,Math.min(1,n));
 export const ease=n=>{n=clamp(n);return n*n*(3-2*n);};
@@ -115,7 +116,7 @@ export function createAraucaniaPlay(habitat,onChange=()=>{}){
       if(kind==='tip'){
         const crumbs=element('g');effects.append(crumbs);for(let i=0;i<12;i++)crumbs.append(element('ellipse',{rx:1.8+i%3,ry:1.4,fill:i%3?'#695039':'#a3a273'}));
         frame=(t,s)=>{const e=envelope(t)*s,tilt=ease((t-.2)/.25)*(1-ease((t-.63)/.3))*s;cart.setAttribute('transform',`translate(${12*e} ${-3*e}) rotate(${38*tilt} 76 47)`);wheel.setAttribute('transform',`rotate(${32*e} 76 47)`);load.setAttribute('opacity',1-ease((t-.37)/.15));a1(e);a2(e);
-          const p=local(cart,74,-41,effects);[...crumbs.children].forEach((n,i)=>{const q=clamp((t-.38-i*.008)/.23);n.setAttribute('cx',p.x+q*(9+i*.6));n.setAttribute('cy',p.y+q*q*28);n.setAttribute('opacity',t>.38&&t<.7?s*(1-q):0);});};finish=()=>{empty=true;};soundKind='soil';soundAt=.4;
+          const p=local(cart,74,-41,effects);[...crumbs.children].forEach((n,i)=>{const q=clamp((t-.38-i*.008)/.23);n.setAttribute('cx',p.x+q*(9+i*.6));n.setAttribute('cy',p.y+q*q*28);n.setAttribute('opacity',t>.38&&t<.7?s*(1-q):0);});};finish=()=>{empty=true;revealTreasure(habitat,'compost',art,90,42);};soundKind='soil';soundAt=.4;
       }else{
         const male=habitat.querySelector('.companion-body'),slot=cart.querySelector('[data-passenger-slot]');
         const passenger=male.cloneNode(true);passenger.removeAttribute('class');passenger.setAttribute('data-garden-passenger','');for(const n of passenger.querySelectorAll('[id]'))n.removeAttribute('id');

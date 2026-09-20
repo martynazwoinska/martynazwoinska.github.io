@@ -11,6 +11,29 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Hidden gems and puzzle, deployment approved 2026-09-20
+
+Martyna approved the complete treasure hunt and polished geometric pieces for deployment.
+Branch: `codex/gem-hunt`, based on current main `4c3e79a`.
+The old species-met badge is replaced by Hidden gems and an eight-piece collection.
+Discoveries are tied to existing accessories in India, Bali, Mauritius, Scotland,
+Salt Lake City, Araucanía, Queensland and the Kauaʻi forest bath.
+Finding all eight unlocks Easy, Medium and Mystery assembly modes.
+The final heart stays unannounced during the hunt. Progress saves in the browser.
+The eight original pieces have regular straight edges, distinct jewel colours,
+polished facets and fixed geometry. Existing scene art and visitor transforms remain intact.
+The Game remains English-only. New copy was reviewed in the local preview;
+no partial Swedish or Polish version is introduced.
+
+Nine focused checks passed, plus syntax and whitespace checks. All discoveries,
+reduced-motion discovery paths, all puzzle levels, persistence and keyboard controls
+were exercised during preview development. Final polish preserved geometry exactly.
+Responsive DOM checks passed at 360, 768, 1024 and 1440 px with no overflow.
+The last full-page screenshot capture was unreliable; the normal-size production
+render was inspected and approved. Details, copy and file inventory are in
+[the treasure hunt implementation notes](docs/game-of-worms-treasure-hunt.md).
+Public deployment still requires workflow and live-byte verification.
+
 ## Bali gong duet, deployment approved 2026-09-20
 
 Martyna approved improving the gongs while keeping the cacao activity and

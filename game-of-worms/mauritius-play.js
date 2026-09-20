@@ -1,3 +1,4 @@
+import {revealTreasure} from './treasure-pieces.js?v=20260920-gems-1';
 import { drumHandOffset } from "./mauritius-drums.js?v=20260915-hand-drums-1";
 import { basketSlot, drawFruit, putBasketFruit } from "./mauritius-baskets.js?v=20260916-ground-fruit-1";
 // JU2909 only. Animate temporary copies; never write visitor position or scale.
@@ -163,6 +164,7 @@ export function createMauritiusPlay(habitat, ensureBasket) {
         if(settled)return;
         settled=true;oval.setAttribute('visibility','hidden');
         putBasketFruit(basketArt,run.male,slot,slot);
+        revealTreasure(habitat,'mauritius',root,ground.x,ground.y);
         groundFruit.remove();
         piece.dataset.mauritiusCollected=String(Number(piece.dataset.mauritiusCollected||0)+1);
       };

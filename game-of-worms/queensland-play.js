@@ -1,3 +1,4 @@
+import {revealTreasure} from './treasure-pieces.js?v=20260920-gems-1';
 import {LIFT,CAMERA,HARNESS,add,path,drawPhoto} from './queensland-art.js?v=20260913-canopy-1';
 import {createCanopySound} from './queensland-sound.js?v=20260913-canopy-2';
 const clamp=x=>Math.max(0,Math.min(1,x));
@@ -147,6 +148,7 @@ export function createCanopyPlay(habitat,refresh=()=>{}){
   function tick(now){
     raf=0;const r=run;if(!r)return;if(document.hidden){cancel();return;}
     let ride=r.ride,s=ride?liftFrame(now-ride.start,reduced.matches,ride.returnAt):liftFrame(0,true);
+    if(ride&&visible(ride.target)&&(s.height>.98||(reduced.matches&&s.done)))revealTreasure(habitat,'canopy',habitat.querySelector('#location-scene'),423,90);
     if(ride&&(!visible(ride.target)||s.done)){stopRide();ride=null;s=liftFrame(0,true);}
     const frames=new Map();
     for(const[male,p]of r.photos){const f=cameraFrame(now-p.start,male,reduced.matches);if(!visible(p.target)||f.done)stopPhoto(male);else frames.set(male,f);}

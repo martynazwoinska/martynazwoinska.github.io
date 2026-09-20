@@ -1,31 +1,30 @@
 import { createFinalScenes } from "./final-scenes-play.js?v=20260920-snack-sound-1";
 import { createOrsaySketching } from "./orsay-play.js?v=20260919-orsay-hold-1";
-import { createSaltLakeBubbles } from "./salt-lake-play.js?v=20260918-picnic-3";
+import { createSaltLakeBubbles } from "./salt-lake-play.js?v=20260920-gems-1";
 import { createUmbrellaPivot, umbrellaHeadroom } from "./mahahual-pivot.js?v=20260917-mahahual-22";
 import { createMahahualPlay } from "./mahahual-play.js?v=20260917-mahahual-22";
 import { createPraslinPlay } from "./praslin-play.js?v=20260917-praslin-7";
 import { createReunionJU1375Play } from "./reunion-ju1375-play.js?v=20260917-reunion-7";
 import { createTaipeiPlay } from "./taipei-play.js?v=20260916-pottery-9";
 import { createGuadeloupePlay } from "./guadeloupe-play.js?v=20260916-gwoka-11";
-import { createMauritiusPlay } from "./mauritius-play.js?v=20260916-ground-fruit-4";
+import { createMauritiusPlay } from "./mauritius-play.js?v=20260920-gems-1";
 import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.net/npm/d3-geo@3/+esm";
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260920-mixing-5";
-import { createKauaiBath } from "./kauai-bath-play.js?v=20260909-bath-pour-1";
+import { createKauaiBath } from "./kauai-bath-play.js?v=20260920-gems-1";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
 import { createLombokPlay } from "./lombok-play.js?v=20260912-swim-1";
-import { createCanopyPlay } from "./queensland-play.js?v=20260919-canopy-camera-1";
+import { createCanopyPlay } from "./queensland-play.js?v=20260920-gems-1";
 import { createPohnpeiPlay } from "./pohnpei-play.js?v=20260913-pohnpei-1";
 import { createSaoTomePlay } from "./sao-tome-play.js?v=20260913-feelers-1";
 import { createHcmcPlay } from "./hcmc-play.js?v=20260908-hcmc-1";
 import { createNambuccaPlay } from "./nambucca-play.js?v=20260908-nambucca-recorded";
 import { createDoisRiosPlay } from "./dois-rios-play.js?v=20260908-dois-rios-1";
 import { createPanamaPlay } from "./panama-play.js?v=20260920-mixing-5";
-import { launchWormConfetti } from "./worm-celebration.js?v=20260908-celebration-1";
 import { createAhmedabadHands } from "./ahmedabad-hands.js?v=20260914-soil-contact-1";
 import { createIshigakiInteractions } from "./ishigaki-interactions.js?v=20260907-ishigaki-sound-1";
 import { createCanberraCafe, CAFE_FAMILIES } from "./canberra-cafe.js?v=20260909-cafe-audio-1";
@@ -35,11 +34,13 @@ import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260908-cryo-return-1
 import { createBaliGongs, GONG_FAMILY } from "./bali-gong-duet.js?v=20260920-gong-duet-2";
 import { createEdinburghPipes } from "./edinburgh-pipes.js?v=20260909-pipes-1";
 import { createClaremontPlay } from "./claremont-play.js?v=20260920-books-7";
-import { createAraucaniaPlay } from "./araucania-play.js?v=20260908-araucania-recordings-1";
-import { createBaliCacao } from "./bali-cacao.js?v=20260914-nib-eating-1";
+import { createAraucaniaPlay } from "./araucania-play.js?v=20260920-gems-1";
+import { createBaliCacao } from "./bali-cacao.js?v=20260920-gems-1";
 import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-fans-1";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
+
+import {createTreasureHunt} from './treasure-hunt.js?v=20260920-gems-1';
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -314,9 +315,6 @@ const els = {
   familyInfoClose: document.getElementById("family-info-close"),
   familyTree: document.getElementById("caenorhabditis-tree"),
   atlasCompletionReward: document.getElementById("atlas-completion-reward"),
-  exploredStatus: document.getElementById("explored-status"),
-  exploredCount: document.getElementById("explored-count"),
-  exploredAnnouncement: document.getElementById("explored-announcement"),
   freestyle: document.getElementById("freestyle-draw"),
   drawTools: document.getElementById("draw-tools"),
   clearDrawing: document.getElementById("clear-drawing"),
@@ -473,7 +471,6 @@ function openFamilyInfo() {
 }
 
 els.familyInfoToggle.addEventListener("click", openFamilyInfo);
-els.exploredStatus.addEventListener("click", openFamilyInfo);
 els.familyInfoClose.addEventListener("click", () => els.familyInfoDialog.close());
 els.familyInfoDialog.addEventListener("keydown", event => {
   if (event.key !== "Escape") return;
@@ -713,6 +710,7 @@ function renderTabs() {
 
 let unmountLiveLoupes = () => {};
 const n2CryoFlight = createN2CryoFlight(els.habitat);
+const treasureHunt = createTreasureHunt(els.habitat);
 const baliGongs = createBaliGongs(els.habitat);
 const edinburghPipes = createEdinburghPipes(els.habitat);
 const claremontPlay = createClaremontPlay(els.habitat,updateAccessoryLabelVisibility);
@@ -840,6 +838,7 @@ function renderSpecies(item, place) {
   reunionPlay.syncHold();
   kauaiBath.syncHold();
   renderDoodles();
+  treasureHunt.mount(item.id,placeName||" ");
   unmountLiveLoupes = mountLiveLoupes(els.habitat);
 
   els.selectionPlace.textContent = placeSource ? `${placeName} · ${placeSource}` : (placeName || item.region);
@@ -867,20 +866,7 @@ function updateSelectedControls() {
 
 
 function updateExploredStatus() {
-  const count = visited.size;
-  const isComplete = count === species.length;
-  const becameComplete = isComplete && !els.exploredStatus.classList.contains("is-complete");
-  const status = isComplete
-    ? "All six species met. Open the wider worm family."
-    : `${count} of ${species.length} species met`;
-
-  els.exploredCount.textContent = String(count);
-  els.exploredStatus.disabled = !isComplete;
-  els.exploredStatus.classList.toggle("is-complete", isComplete);
-  els.exploredStatus.setAttribute("aria-label", status);
-  els.exploredAnnouncement.textContent = status;
-  els.atlasCompletionReward.hidden = !isComplete;
-  if (becameComplete) launchWormConfetti();
+  els.atlasCompletionReward.hidden = visited.size !== species.length;
 }
 
 function selectSpecies(id, place) {
@@ -1751,6 +1737,7 @@ function moveActiveAccessoryPointer(event) {
 function turnTelescopeFocus(piece) {
   const wheel = piece.querySelector(".edinburgh-focus-wheel");
   if (!wheel) return;
+  treasureHunt.telescope(piece);
   const start = Number(wheel.dataset.angle || 0);
   const end = start + 60;
   wheel.dataset.angle = String(end);

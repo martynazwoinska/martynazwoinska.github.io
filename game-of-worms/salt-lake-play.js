@@ -1,3 +1,4 @@
+import {drawGem,revealTreasure} from './treasure-pieces.js?v=20260920-gems-1';
 import {GIANT,SMALL,PICNIC,add,drawLoop,drawApricotSlice} from './salt-lake-art.js?v=20260918-picnic-2';
 import {pathPoints} from './guadeloupe-dance.js?v=20260916-gwoka-11';
 const clamp=x=>Math.max(0,Math.min(1,x)),ease=x=>{x=clamp(x);return x*x*(3-2*x);};
@@ -76,6 +77,7 @@ export function createSaltLakeBubbles(habitat,refresh=()=>{}){
   add(g,'path',{d:'M-.68-.37Q-.55-.68-.28-.71',fill:'none',stroke:'#fffdf0','stroke-width':.055,'stroke-linecap':'round'});
   add(g,'ellipse',{cx:-.72,cy:-.2,rx:.035,ry:.07,fill:'#fffdf0',opacity:.85});
   const b={g,hit,x:pos.x,y:pos.y,r,born:performance.now(),vx:options.vx??(serial%2?5:-4),vy:options.vy??-5,life:options.life??16000,...options};bubbles.push(b);
+  if(habitat.dataset.treasureId==='bubbles'&&habitat.dataset.treasureState==='hidden'&&!bubbles.some(other=>other!==b&&other.treasure)){b.treasure=true;drawGem(g,4,.006);g.setAttribute('aria-label','Pop bubble carrying a gem');}
   const pop=event=>{event.preventDefault();event.stopPropagation();audio.prepare();burst(b,true);};
   g.addEventListener('pointerdown',e=>e.stopPropagation());g.addEventListener('click',pop);g.addEventListener('keydown',e=>{if(['Enter',' '].includes(e.key))pop(e);if(e.key==='Escape'){e.stopPropagation();cancel();}});
   drawBubble(b,performance.now());wake();return b;
@@ -88,6 +90,7 @@ export function createSaltLakeBubbles(habitat,refresh=()=>{}){
  }
  function burst(b,clicked=false){
   if(!bubbles.includes(b))return;const focused=document.activeElement===b.g;const big=b.r>35;
+  if(clicked&&b.treasure)revealTreasure(habitat,'bubbles',root,b.x,b.y);
   bubbles=bubbles.filter(x=>x!==b);b.g.remove();for(const child of bubbles)if(child.attached===b){child.attached=null;child.born=performance.now();}
   if(clicked&&!reduced.matches)audio.play('pop');
   if(!reduced.matches){const g=add(layer,'g',{'pointer-events':'none'});for(let i=0;i<9;i++){const a=i*Math.PI*2/9;add(g,'path',{d:`M${Math.cos(a)*b.r*.8} ${Math.sin(a)*b.r*.8}l${Math.cos(a)*7} ${Math.sin(a)*7}`,stroke:i%2?'#e5c7df':'#e8f6ed','stroke-width':1.5,'stroke-linecap':'round'});}sparks.push({g,x:b.x,y:b.y,born:performance.now()});}
@@ -179,7 +182,7 @@ export function createSaltLakeBubbles(habitat,refresh=()=>{}){
   if(r.small){const smile=a.body.querySelector('.worm-smile');const saved=a.saved.find(v=>v.n===smile);if(smile&&saved)smile.setAttribute('d',ms>2350&&ms<4700?'M333 74a3 3.8 0 1 0 6 0a3 3.8 0 1 0-6 0':saved.d);}
   if(ms>2430&&!r.played){r.played=true;audio.play('blow');}
   if(!r.small&&ms>2450&&ms<4400){if(!r.bubble)r.bubble=createBubble(x,y,8,{growing:true,life:19000});
-   if(bubbles.includes(r.bubble)){const radius=8+f.pull*49,p=fit(x+radius*.7*f.pull,y-9*f.pull,radius);r.bubble.r=radius;r.bubble.x=p.x;r.bubble.y=p.y;r.bubble.stretch=1+Math.sin(Math.PI*f.pull)*.4;r.bubble.squash=1-Math.sin(Math.PI*f.pull)*.12;r.bubble.g.setAttribute('aria-label',radius>35?'Pop giant bubble':'Pop bubble');}}
+   if(bubbles.includes(r.bubble)){const radius=8+f.pull*49,p=fit(x+radius*.7*f.pull,y-9*f.pull,radius);r.bubble.r=radius;r.bubble.x=p.x;r.bubble.y=p.y;r.bubble.stretch=1+Math.sin(Math.PI*f.pull)*.4;r.bubble.squash=1-Math.sin(Math.PI*f.pull)*.12;r.bubble.g.setAttribute('aria-label',r.bubble.treasure?'Pop bubble carrying a gem':radius>35?'Pop giant bubble':'Pop bubble');}}
   if(r.bubble&&ms>=4400)r.bubble.growing=false;
   if(r.small&&ms>2450+r.made*520&&r.made<5){const n=r.made++,flight=maleBubbleFlight(n),b=createBubble(x+10,y-2,flight.r,{...flight,life:15000});
    if(n===0){b.noseUntil=now+700;b.noseActor=a;}}

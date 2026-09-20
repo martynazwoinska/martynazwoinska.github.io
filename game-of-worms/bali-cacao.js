@@ -1,3 +1,4 @@
+import {revealTreasure} from './treasure-pieces.js?v=20260920-gems-1';
 import { createBaliNibs } from './bali-nibs.js?v=20260914-nib-eating-1';
 import { createCacaoCrack } from './bali-cacao-sound.js?v=20260908-crack-1';
 const NS = 'http://www.w3.org/2000/svg';
@@ -90,6 +91,7 @@ export function createBaliCacao(habitat) {
     if (!opened) return;
     opened.setAttribute('opacity', amount > 0 || jolt !== 0 ? '1' : '0');
     opened.dataset.cacaoOpened = String(amount);
+    if(amount>.88)revealTreasure(habitat,'bali',background(),541,166);
     parts.forEach(({hinge, face, shell}, i) => {
       const turn = (i ? -22 : 17) * amount + settling * (i ? -.65 : 1) + jolt;
       hinge.setAttribute('transform', `translate(536 110) rotate(${turn})`);

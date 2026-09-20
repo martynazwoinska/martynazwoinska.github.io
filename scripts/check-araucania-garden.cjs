@@ -37,6 +37,7 @@ const walk=n=>[n,...n.children.flatMap(walk)];
   assert.ok(!all.some(n=>'data-cutter' in n.attrs),'The male gets ready-to-eat bread, not a cutter');
   assert.deepEqual(all.filter(n=>'data-serving' in n.attrs).map(n=>n.attrs['data-serving']).sort(),['0','1','2']);
   const playSource=fs.readFileSync(path.join(root,'araucania-play.js'),'utf8').replace(/\.\/araucania-art\.js\?v=[^']+/,artURL)
+    .replace(/\.\/treasure-pieces\.js\?v=[^']+/,pathToFileURL(path.join(root,'treasure-pieces.js')).href)
     .replaceAll('import.meta.url',JSON.stringify(pathToFileURL(path.join(root,'araucania-play.js')).href));
   const rolling=playSource.split("else if(kind==='roll'){")[1].split("else if(kind==='eat'){")[0];
   assert.ok(!rolling.includes('moveTo('),'Rolling must not carry the food board into the compost area');
