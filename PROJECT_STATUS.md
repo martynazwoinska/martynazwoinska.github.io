@@ -11,6 +11,41 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+### Claremont reader-facing books, approved 2026-09-20
+
+Martyna approved preview books-7 and requested deployment. Both books start
+open, with lettering and pictures facing their readers. Larger high-contrast
+illustrations, bolder retained `Wormbook` lettering and less flattened pages
+improve readability. The violet volume and stitched berry book have distinct
+construction; lemonade sits beside the pages. Visitor placements/scales remain.
+
+Two different wordless comics have four spreads each. The large book follows
+an enormous bacterial snack, a toppling food pile, an overloaded leaf boat and
+a shared mushroom picnic. The small book follows a sleepy worm, a runaway leaf
+blanket, rain and mushroom shelter, then sleep on a book and a food dream.
+Refinement corrected sail/mast attachment, pillow contact and the bedtime pose.
+No new public wording or translations; existing labels and recorded foley stay.
+
+Each worm reads, turns pages and holds its pose independently; both may read
+at once. The male gradually dozes and wakes only on his own next page turn.
+His shallower lean and hands reaching the far corners keep his face clear and
+arms behind the book. Moving/sizing/resetting a prop or sipping stops only its
+reader; Escape, scene departure, resize and shared wardrobe toggles clear both.
+Shared pouring interrupts both readers because it uses both drinks.
+
+Validation: focused book/play checks, syntax and diff checks; browser verified
+independent starts, simultaneous reading, unchanged male pose during a primary
+page turn, individual prop movement/reset/sipping, pointer/keyboard activation
+and exact cleanup/restoration. Startup catalogue/paired-geometry audits pass;
+no console errors or overflow at actual widths 360, 768, 1024 and 1440.
+Full-page capture service scales and repeats sections: outputs were 268x1987,
+582x1865, 778x1482 and 1098x1482 respectively, so complete-page visual proofs
+remain unavailable. Device reduced-motion preference and listening remain manual.
+The older Sao Tome Node harness has an incomplete querySelectorAll mock for
+Taipei; real-browser startup audits pass. No unrelated test change was made.
+Deployment authorized; public verification follows publication.
+Branch: `codex/claremont-reading`.
+
 ### Claremont reading follow-up, 2026-09-20
 
 Martyna requested the next proposed scene after the deployed Trivandrum update.

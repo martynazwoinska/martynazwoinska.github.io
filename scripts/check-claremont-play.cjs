@@ -9,7 +9,7 @@ const {pathToFileURL}=require('node:url');
   const source=fs.readFileSync(path.join(root,'game-of-worms/claremont-play.js'),'utf8').replace(/\.\/claremont-book-art\.js\?v=[^']+/,artUrl);
   const {leafPose,pourFrame,sipFrame,soundProfile,lemonadeLevels,waterPolygon,createReadingSound,nextBookPage,pageDuration}=await import(pathToFileURL(path.join(root,'game-of-worms/claremont-play.js')));
   assert.deepEqual([0,1,2,3].map(n=>nextBookPage(n)),[1,2,3,0]);
-  assert.deepEqual([0,1,2,3].map(n=>nextBookPage(n,true)),[1,2,3,1]);
+  assert.deepEqual([0,1,2,3].map(n=>nextBookPage(n,true)),[1,2,3,0]);
   assert.ok(pageDuration(true,true)>pageDuration(true,false));
   for(const y of [-82,0,91]){const x=-73+.062*y;assert.ok(Math.abs((-x+.124*y-146)-x)<1e-10);}
   for(const small of [false,true]){
@@ -44,7 +44,12 @@ const {pathToFileURL}=require('node:url');
   assert.ok(soundProfile('paper').duration<.5&&soundProfile('paper').volume<.05);
   assert.ok(soundProfile('slurp').duration<.3);
   for(let ms=0;ms<=3200;ms+=10)for(const key of ['approach','tilt','fill','returning'])assert.ok(pourFrame(ms)[key]>=0&&pourFrame(ms)[key]<=1);
-  const {readingFrame,readingPoint,READING_DURATION,PAGE_DELAY}=await import(pathToFileURL(path.join(root,'game-of-worms/claremont-reading.js')));
+  const {readingFrame,readingPoint,companionReadingPose,READING_DURATION,PAGE_DELAY}=await import(pathToFileURL(path.join(root,'game-of-worms/claremont-reading.js')));
+  for(let ms=0;ms<=READING_DURATION;ms+=10){
+    const f=readingFrame(ms),pose=companionReadingPose(30,92,f.companion.lean,f.companion.sleep);
+    assert(pose.y<=32,'Male stays behind the book even when dozing');
+    assert(pose.angle<=14,'Male does not fold onto the page');
+  }
   const asleep=readingFrame(READING_DURATION);
   assert.equal(asleep.companion.sleep,1,'The male stays asleep between page turns');
   assert.equal(asleep.hand,0,'Hands rest after turning');
@@ -73,15 +78,22 @@ const {pathToFileURL}=require('node:url');
     get firstChild(){return this.children[0];}
   }
   document.createElementNS=(_,tag)=>new Element(tag);
-  const {drawWormbook,bookPage,SPREADS,SMALL_REFLECTION}=await import(artUrl),walk=n=>[n,...n.children.flatMap(walk)];
+  const {drawWormbook,bookPage,SPREADS,SMALL_SPREADS,SMALL_REFLECTION}=await import(artUrl),walk=n=>[n,...n.children.flatMap(walk)];
   assert.equal(new Set(SPREADS.flat()).size,8);
   assert.equal(SMALL_REFLECTION,'matrix(-1 0 .124 1 -146 0)');
+  assert.equal(bookPage(false,0,'right').attrs['data-page-subject'],'title','Title opens on the reader left, viewer right');
+  assert.equal(bookPage(false,3,'left').attrs['data-page-subject'],'sharing');
+  assert.equal(bookPage(true,3,'left').attrs['data-page-subject'],'dream');
+  assert.equal(SMALL_SPREADS.length,SPREADS.length);
+  assert.equal(SMALL_SPREADS.flat().filter(s=>SPREADS.flat().includes(s)).length,1,'Only the title is shared between the two stories');
   const signatures=[];
   for(const small of [true,false]){
     const g=new Element('g');drawWormbook(g,small);signatures.push(JSON.stringify(g));
     assert.ok(walk(g).some(n=>n.textContent==='Wormbook'));
     assert.ok(walk(g).some(n=>n.tag==='textPath'&&n.textContent==='Wormbook'));
     assert.ok(walk(g).some(n=>Object.hasOwn(n.attrs,'data-book-plate')));
+    assert.ok(walk(g).some(n=>Object.hasOwn(n.attrs,'data-book-plane')));
+    assert.equal(walk(g).filter(n=>Object.hasOwn(n.attrs,'data-reader-facing')).length,2,'Both pages face the reader from the start');
     for(let index=0;index<4;index++)for(const side of ['left','right'])g.append(bookPage(small,index,side));
     const nodes=walk(g),ids=nodes.filter(n=>n.attrs.id).map(n=>n.attrs.id);
     assert.equal(new Set(ids).size,ids.length);

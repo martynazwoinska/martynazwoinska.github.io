@@ -13,7 +13,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260919-railway-3";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260920-books-7";
 import { createKauaiBath } from "./kauai-bath-play.js?v=20260909-bath-pour-1";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
@@ -34,7 +34,7 @@ import { createTrivandrumWatering } from "./trivandrum-watering.js?v=20260920-sh
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260908-cryo-return-1";
 import { createBaliGongs, GONG_FAMILY } from "./bali-gongs.js?v=20260906-gongs-1";
 import { createEdinburghPipes } from "./edinburgh-pipes.js?v=20260909-pipes-1";
-import { createClaremontPlay } from "./claremont-play.js?v=20260920-reading-1";
+import { createClaremontPlay } from "./claremont-play.js?v=20260920-books-7";
 import { createAraucaniaPlay } from "./araucania-play.js?v=20260908-araucania-recordings-1";
 import { createBaliCacao } from "./bali-cacao.js?v=20260914-nib-eating-1";
 import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-fans-1";
@@ -1208,7 +1208,7 @@ els.accessorySizeSlider.addEventListener("input", event => {
   saoTomePlay.cancel();
   kauaiBath.cancel();
   araucaniaPlay.cancel();
-  claremontPlay.cancel();
+  claremontPlay.cancel(target&&visibleAccessoryPieces(target.id,target.wormPart)[0]);
   finalScenes.cancel(); orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); guadeloupePlay.cancel(); mauritiusPlay.cancel(); panamaPlay.cancel();
   doisRiosPlay.cancel();
   nambuccaPlay.cancel();
@@ -1689,7 +1689,7 @@ function moveActiveAccessoryPointer(event) {
     araucaniaPlay.cancel();activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
   }
   if(claremontPlay.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>6) {
-    claremontPlay.cancel();activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
+    claremontPlay.cancel(piece);activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
   }
   if(edinburghPipes.active && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)>2) {
     edinburghPipes.cancel();activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
@@ -1790,7 +1790,7 @@ function wireAccessoryPieces() {
       if (ishigakiPlay.active) return;
       if (n2CryoFlight.active) return;
       if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
-      if(!claremontPlay.handles(piece))claremontPlay.cancel();
+      if(!claremontPlay.handles(piece))claremontPlay.cancel(piece);
       if(!edinburghPipes.handles(piece))edinburghPipes.cancel();
       if (!panamaPlay.handlesLeaf(piece)) panamaPlay.cancel();
       doisRiosPlay.cancel();
@@ -1873,7 +1873,7 @@ function wireAccessoryPieces() {
         event.preventDefault();if(!event.repeat)claremontPlay.start(piece,event.shiftKey);return;
       }
       if(event.key === "Home")claremontPlay.reset(piece);
-      else if (["Escape", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key))claremontPlay.cancel();
+      else if (["Escape", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key))claremontPlay.cancel(event.key === "Escape" ? undefined : piece);
       if ((event.key === "Enter" || event.key === " ") && edinburghPipes.handles(piece)) {
         event.preventDefault();if(!event.repeat)edinburghPipes.start(piece);return;
       }

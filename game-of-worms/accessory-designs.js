@@ -9,7 +9,7 @@ import { drawGuadeloupeHands } from "./guadeloupe-play.js?v=20260916-gwoka-11";
 import { drawMauritiusBasket } from "./mauritius-baskets.js?v=20260916-ground-fruit-1";
 import { drawDodoGrabber } from "./mauritius-dodo.js?v=20260916-dodo-2";
 import { drawMauritiusDrum } from "./mauritius-drums.js?v=20260915-hand-drums-1";
-import { drawWormbook } from "./claremont-book-art.js?v=20260909-wormbook-4";
+import { drawWormbook } from "./claremont-book-art.js?v=20260920-books-7";
 import { drawLombokSwim, swimLayouts } from "./lombok-swim-art.js?v=20260912-swim-1";
 import { drawCanopyAccessory, canopyLayouts } from "./queensland-art.js?v=20260913-canopy-1";
 import { drawPohnpeiAccessory, pohnpeiLayouts } from "./pohnpei-art.js?v=20260913-pohnpei-1";
@@ -6115,8 +6115,8 @@ function renderPiece(target, item, wormPart) {
     ,"eg4181-apricot-blossom-hat": { primary: [333, 37, .43, 22], companion: [114, 91, .36, 24] }
     ,"eg4181-beehive-saddle-pack": { primary: [245, 166, .46, 21], companion: [92, 154, .36, 30] }
     ,"eg4181-single-tail-mountain-ski": { primary: [151, 239, .49, -10], companion: [55, 211, .40, -7] }
-    ,"eca250-bookworm-book": { primary: [274, 257, .57, -4], companion: [68, 283, .50, 6] }
-    ,"eca250-california-lemonade": { primary: [386, 222, .39, -5], companion: [26, 231, .31, 7] }
+    ,"eca250-bookworm-book": { primary: [285, 222, .54, -5], companion: [139, 189, .43, 9] }
+    ,"eca250-california-lemonade": { primary: [428, 217, .39, -5], companion: [44, 262, .31, 7] }
     ,"eca250-sunny-reading-glasses": { primary: [362, 45, .24, -5], companion: [117, 107, .17, 7] }
     ,"qg130-kukui-glow-cart": { primary: [388, 137, .47, -5], companion: [7, 128, .37, 5] }
     ,"qg130-root-carousel": { primary: [236, 228, .43, -2], companion: [126, 245, .35, 3] }

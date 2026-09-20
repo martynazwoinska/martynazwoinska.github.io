@@ -144,6 +144,17 @@ short slurp for either worm.
 Eating now shows successive bite cut-outs, chewing and crumbs. Three individual
 servings are consumed in order, with a fresh board available on the next replay.
 
+Claremont books-7 approved for deployment, 2026-09-20: both books start open
+and face their readers. The violet volume and stitched berry book use clearer
+page perspective, bold retained title lettering and larger wordless pictures.
+Large book: giant snack, toppling food pile, overloaded leaf boat and shared
+mushroom picnic. Small book: sleepy worm, runaway blanket, rain shelter and
+book-within-a-book bedtime ending. Eight panels per volume, including the title.
+Each worm reads independently, with its own page turns, sounds and held pose.
+The male keeps clear of the pages, with arms behind the book and fingertips at
+the far corners. Visitor transforms remain; no new labels or audio files.
+This revision supersedes the earlier specimen-content follow-up below.
+
 Claremont approved follow-up: four large-book spreads replace the three repeated
 cell plates. New original agar-dish, feeding, binary-fission and mushroom
 illustrations vary the layouts. The male cover now opens more slowly and
