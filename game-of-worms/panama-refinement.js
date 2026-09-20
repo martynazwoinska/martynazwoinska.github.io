@@ -1,5 +1,5 @@
 // Original QG2726 artwork. The painting and collection metadata are unchanged.
-import { drawFlowerBait } from './panama-bait.js?v=20260907-bait-1';
+import { drawFlowerBait } from './panama-bait.js?v=20260920-mixing-5';
 import { drawLeafCutting } from './panama-leaf-cutting.js?v=20260914-ant-visitors-1';
 const ink='#34484b', gold='#99733c', cream='#fff0bd';
 const berry='#994e70', blush='#e7afbd', ivory='#faf0dc', teal='#487a71';

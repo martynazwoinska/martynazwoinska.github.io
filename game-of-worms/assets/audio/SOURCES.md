@@ -760,3 +760,21 @@ No new audio assets added. Subjective listening remains user review.
   changes at 112 BPM, after the instrument changeover. Existing guitar samples
   provide accompaniment only while timples are visible. All future hits cancel
   on interruption; reduced motion remains silent. No visitor recording.
+
+## Panama shared flower-bait preparation, 2026-09-20
+
+- New file: `panama-blender.mp3`, unchanged HQ preview of [Blender.wav by VSokorelos](https://freesound.org/people/VSokorelos/sounds/346170/).
+  The creator describes a blender starting, mixing and stopping. CC0 verified
+  on the source page, 2026-09-20. Download:
+  https://cdn.freesound.org/previews/346/346170_6146418-hq.mp3
+  193213 bytes; SHA-256 `acfebd867dc18b453c202e02653d03edf383187d287c1476de15d3e18bbaa0ed`.
+  Runtime excerpt .25-3.25 s, peak target .10, starting at 2750 ms.
+- Reuses `hcmc-stir.wav` (ChrisGrundlingh, recorded spoon/glass contact, CC0,
+  source above): .24-.52 s at 9570 ms (.048 peak), 1.10-1.32 s at 10900 ms
+  (.04 peak). This is utensil foley, not a claim of recording the illustrated dish.
+- Reuses `kauai-bath-pour-v2.wav` (Joseph SARDIN, water poured into a mug,
+  source above): .30-1.10 s at 7400 ms, peak target .065, as pouring foley.
+
+All use original pitch/speed and short attack/release fades. Load after a gesture,
+play once at the relevant action, skip stale cues, cancel all voices on interruption.
+Reduced motion is silent. Playback timing is tested; subjective listening remains manual.

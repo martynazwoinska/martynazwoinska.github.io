@@ -2,6 +2,43 @@
 
 Last updated: 2026-08-23
 
+## Shared flower-bait preparation, deployment approved 2026-09-20
+
+Martyna requested a connected blender/spoon activity. Preview:
+http://127.0.0.1:8782/game-of-worms/?preview=20260920-mixing-5
+Branch: codex/panama-blender, based on main d58c00f. Martyna approved mixing-5 and requested deployment on 2026-09-20.
+
+Click either the blender or the spoon/dishes to start one 13-second sequence.
+The larger worm opens the lid, adds petals, reseats and holds the lid, then
+operates the motor. Only after the motor stops does it lift and tip the jar
+into the male's bowl. The male moves the spoon aside, brings the bowl forward,
+then scoops mixture into the separate small dish. The serving persists after
+completion; Home resets it. Body bends and headpiece tracking follow each job.
+A refinement separated the bowls during pouring, kept fingers on handles and
+kept the glass clipping boundary fixed as its liquid level falls.
+
+Existing drawings, palette, resting layout, backgrounds and visitor placements
+are preserved. Added SVG groups provide movable mechanisms; a regression test
+compares all painted geometry to the approved original. Leaf cutting, ant
+visitors and both flower-headpiece actions retain their existing controller.
+No public labels or scientific copy changed. Reduced motion shows the finished
+serving without movement or sound. Escape, movement, scene changes, page hiding
+and resizing stop the activity and restore original body/prop transforms.
+
+Sound: real CC0 blender recording by VSokorelos, plus the existing recorded
+spoon/glass and pouring foley. Original pitch/speed; short faded runtime
+excerpts. No synthetic motor buzz. Source and hash are in assets/audio/SOURCES.md.
+
+Validation: mixing ordering, finite/smooth motion, planted tails, exact stream
+endpoints at three prop sizes, unchanged artwork, preserved originals, sound
+cues and reduced motion pass. Existing flower/leaf/ant/scissor-audio tests pass.
+Browser confirms activation from either prop, completed serving, exact position
+restoration, keyboard move/resize/Home/Escape and leaf cutting after mixing.
+Responsive DOM checks show no overflow at viewport widths 360, 768, 1024, 1440.
+Full-page captures cover the complete page: 345x2483, 753x2399, 1009x1801,
+1425x1928 pixels (the 15px scrollbar is excluded). Game uses its fixed light
+palette. Subjective sound quality and physical-device use remain manual checks.
+
 ## Individual ant visitors, deployment approved, 2026-09-14
 
 Every successive cut receives a worker with a different size, head/gaster

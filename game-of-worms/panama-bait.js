@@ -8,9 +8,10 @@ const e=(g,x,y,rx,ry,fill,stroke=ink,w=2,a={})=>add(g,'ellipse',{cx:x,cy:y,rx,ry
 function dish(g,x,y,rx,ry,filled=false){
   p(g,`M${x-rx} ${y}Q${x-rx+3} ${y+23} ${x} ${y+25}Q${x+rx-3} ${y+23} ${x+rx} ${y}`, '#e0e3da');
   e(g,x,y,rx,ry,pale);
-  e(g,x,y,rx-6,ry-4,filled?'#dc9eac':'#e7e9de','#8b9d9b',1.2);
+  e(g,x,y,rx-6,ry-4,filled?'#dc9eac':'#e7e9de','#8b9d9b',1.2,filled?{'data-panama-mixture-surface':''}:{});
   p(g,`M${x-rx+8} ${y+13}Q${x} ${y+31} ${x+rx-8} ${y+13}`,'none','#fff9ea',2);
   if(filled){
+    g=add(g,'g',{'data-panama-mixture-details':''});
     p(g,`M${x-25} ${y-1}Q${x-8} ${y-13} ${x+17} ${y-3}Q${x+26} ${y+5} ${x+9} ${y+7}`,'none','#f7c8cc',2);
     e(g,x-14,y+3,3,2,berry,'none');e(g,x+19,y-3,2,2,'#a58759','none');
   }
@@ -19,8 +20,9 @@ function dish(g,x,y,rx,ry,filled=false){
 export function drawFlowerBait(g,male){
   if(male){
     // Wide mixing bowl behind a separate shallow receiving dish.
-    dish(g,-40,-6,47,16,true);dish(g,54,35,44,16);
-    const serving=add(g,'g',{'data-panama-serving':'',opacity:0});
+    dish(add(g,'g',{'data-panama-mixing-bowl':''}),-40,-6,47,16,true);
+    const receiving=add(g,'g',{'data-panama-dish':''});dish(receiving,54,35,44,16);
+    const serving=add(receiving,'g',{'data-panama-serving':'',opacity:0});
     e(serving,54,35,24,8,'#dc9eac',berry,1);
     p(serving,'M39 34Q53 27 67 35','none','#f7d2d6',2);
     const spoon=add(g,'g',{'data-panama-spoon':'',transform:'translate(-40 -8) rotate(-27)'});
@@ -34,13 +36,14 @@ export function drawFlowerBait(g,male){
     return;
   }
   e(g,0,81,66,10,'#20313d','none',0,{opacity:.18});
+  const motor=g;g=add(g,'g',{'data-panama-jug':''});
   // Rear handle has a genuine opening and a light inner edge.
   p(g,'M42-137C100-151 103-63 47-59L47-73C81-79 85-128 44-124Z',metal,ink,3);
   p(g,'M55-129C83-126 82-89 59-82','none','#f5f5e7',3);
   const jug='M-56-155Q-3-168 49-154L35-29Q-3-17-40-31Z';
   const clip=add(add(g,'defs'),'clipPath',{id:'panama-blender-glass'});p(clip,jug,'white','none');
   p(g,jug,'#c9e5df',ink,3,{'fill-opacity':.24});
-  const contents=add(g,'g',{'clip-path':'url(#panama-blender-glass)'});
+  const contents=add(g,'g',{'clip-path':'url(#panama-blender-glass)','data-panama-contents':''});
   p(contents,'M-56-96Q-22-104 2-96T49-96L36-25H-44Z','#d6a9b0','none',0,{'fill-opacity':.88});
   e(contents,-4,-96,48,9,'#efd1d1',berry,1);
   const petals=add(contents,'g',{'data-panama-petals':''});
@@ -56,10 +59,12 @@ export function drawFlowerBait(g,male){
   for(let y=-127;y<-65;y+=17)p(g,`M15 ${y}H25`,'none','#527d7d',1.6);
   p(g,'M-43-34Q-4-20 37-33L36-17Q-3-7-42-20Z',metal,ink,2);
   p(g,'M-41-21Q-3-11 36-19L34-10H-39Z','#475d62',ink,1.5);
+  g=add(g,'g',{'data-panama-lid':''});
   p(g,'M-60-162Q-10-176 48-163L53-153Q-3-142-58-153Z',berry,ink,2.5);
   p(g,'M-49-162Q-2-170 38-160','none','#e7acc0',2.2);
   p(g,'M-17-169V-179Q-4-185 11-180L13-169Z',metal,ink,2);
   e(g,-3,-180,14,4,'#ecf5e9',ink,1.2);
+  g=motor;
   // Stable enamel motor housing and rubber feet.
   p(g,'M-38-10Q-45-6-49 13L-63 60Q-69 77-51 80H50Q65 76 59 61L45 10Q41-9 31-10Z',berry,ink,3);
   p(g,'M31-8Q42-4 45 12L59 65Q61 73 51 77H31Q41 62 34 38Z','#71394f','none');

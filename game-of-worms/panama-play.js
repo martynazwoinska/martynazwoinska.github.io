@@ -1,3 +1,4 @@
+import {createPanamaMixing,MIX_FAMILY} from './panama-mixing.js?v=20260920-mixing-5';
 import { createLeafCutRun, resetLeafCut, LEAF_FAMILY } from './panama-leaf-cutting.js?v=20260914-ant-visitors-1';
 import { createLeafCutSound } from './panama-leaf-audio.js?v=20260908-snip-2';
 const NS='http://www.w3.org/2000/svg';
@@ -38,10 +39,11 @@ function glove(g){
 export function createPanamaPlay(habitat){
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   let active=null,raf=0,audio=null,sound=null;
-  const leafSound=createLeafCutSound(()=>audio);
+  const leafSound=createLeafCutSound(()=>audio),mixing=createPanamaMixing(habitat);
   const handles=piece=>!!kinds[piece?.dataset.accessoryFamily];
   function stopSound(){leafSound.stop();if(sound){try{sound.stop();}catch{}sound=null;}}
   function cancel(complete=false){
+    mixing.cancel();
     cancelAnimationFrame(raf);raf=0;stopSound();
     if(!active)return;
     const run=active;
@@ -80,6 +82,7 @@ export function createPanamaPlay(habitat){
       return true;
     }
     cancel();
+    if(piece.dataset.accessoryFamily===MIX_FAMILY)return mixing.start(piece);
     const root=habitat.querySelector('#worm-species'),male=piece.dataset.wormPart==='companion',kind=kinds[piece.dataset.accessoryFamily];
     const body=habitat.querySelector(male?'#companion-worm .companion-body':'#primary-worm .worm-body');
     const art=piece.querySelector('.location-accessory-art');if(!root||!body||!art)return false;
@@ -166,5 +169,5 @@ export function createPanamaPlay(habitat){
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});window.addEventListener('pagehide',()=>cancel());reduced.addEventListener('change',()=>cancel());
   window.addEventListener('resize',()=>cancel());
   function reset(piece){cancel();if(piece?.dataset.accessoryFamily===LEAF_FAMILY)resetLeafCut(habitat);piece?.querySelector('[data-panama-serving]')?.setAttribute('opacity',0);piece?.querySelector('[data-panama-spoonful]')?.setAttribute('opacity',1);}
-  return {handles,handlesLeaf:piece=>piece?.dataset.accessoryFamily===LEAF_FAMILY,start,cancel,reset,get active(){return !!active;}};
+  return {handles,handlesLeaf:piece=>piece?.dataset.accessoryFamily===LEAF_FAMILY,start,cancel,reset,get active(){return !!active||mixing.active;}};
 }
