@@ -1,4 +1,4 @@
-import {revealTreasure} from './treasure-pieces.js?v=20260920-gems-1';
+import {canopySearchReady} from './treasure-discoveries.js?v=20260920-discovery-2';
 import {LIFT,CAMERA,HARNESS,add,path,drawPhoto} from './queensland-art.js?v=20260913-canopy-1';
 import {createCanopySound} from './queensland-sound.js?v=20260913-canopy-2';
 const clamp=x=>Math.max(0,Math.min(1,x));
@@ -148,7 +148,7 @@ export function createCanopyPlay(habitat,refresh=()=>{}){
   function tick(now){
     raf=0;const r=run;if(!r)return;if(document.hidden){cancel();return;}
     let ride=r.ride,s=ride?liftFrame(now-ride.start,reduced.matches,ride.returnAt):liftFrame(0,true);
-    if(ride&&visible(ride.target)&&(s.height>.98||(reduced.matches&&s.done)))revealTreasure(habitat,'canopy',habitat.querySelector('#location-scene'),423,90);
+    if(ride&&visible(ride.target)&&reduced.matches&&s.done)habitat.dataset.treasureCanopyReached='true';
     if(ride&&(!visible(ride.target)||s.done)){stopRide();ride=null;s=liftFrame(0,true);}
     const frames=new Map();
     for(const[male,p]of r.photos){const f=cameraFrame(now-p.start,male,reduced.matches);if(!visible(p.target)||f.done)stopPhoto(male);else frames.set(male,f);}
@@ -200,6 +200,10 @@ export function createCanopyPlay(habitat,refresh=()=>{}){
         p.paper.setAttribute('opacity',reduced.matches||ms>=1150?fade:0);
         p.paper.setAttribute('transform','translate('+(-65*show)+' '+(-22-68*f.print-22*show)+') rotate('+(-9*show)+') scale('+(.66+2.2*show)+')');
         p.paper.querySelector('[data-photo-image]').setAttribute('opacity',f.reveal);
+      }
+      if(ms>=950&&!p.cues.has('gem-search')){
+        p.cues.add('gem-search');
+        if(habitat.dataset.treasureId==='canopy'&&canopySearchReady(s.height,ride?.returnAt!=null,reduced.matches,habitat.dataset.treasureCanopyReached==='true'))habitat.dispatchEvent(new CustomEvent('treasure-canopy-photo'));
       }
       cue(p,'capture',ms,950,male?'instant':'shutter',0,male?3.882:.629,male?.10:.085);
     }

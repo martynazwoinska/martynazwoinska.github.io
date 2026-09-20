@@ -14,11 +14,11 @@ import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260920-mixing-5";
-import { createKauaiBath } from "./kauai-bath-play.js?v=20260920-gems-1";
+import { createKauaiBath } from "./kauai-bath-play.js?v=20260920-discovery-2";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
 import { createLombokPlay } from "./lombok-play.js?v=20260912-swim-1";
-import { createCanopyPlay } from "./queensland-play.js?v=20260920-gems-1";
+import { createCanopyPlay } from "./queensland-play.js?v=20260920-discovery-2";
 import { createPohnpeiPlay } from "./pohnpei-play.js?v=20260913-pohnpei-1";
 import { createSaoTomePlay } from "./sao-tome-play.js?v=20260913-feelers-1";
 import { createHcmcPlay } from "./hcmc-play.js?v=20260908-hcmc-1";
@@ -40,7 +40,7 @@ import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
-import {createTreasureHunt} from './treasure-hunt.js?v=20260920-gems-1';
+import {createTreasureHunt} from './treasure-hunt.js?v=20260920-discovery-2';
 
 const t = createGameTranslator(document.documentElement.lang);
 

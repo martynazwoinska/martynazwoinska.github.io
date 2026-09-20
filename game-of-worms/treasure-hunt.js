@@ -1,28 +1,48 @@
-import {svg,drawGem,revealTreasure,pieces} from './treasure-pieces.js?v=20260920-gems-1';
-import {treasures,SAVE_KEY,parseSave,emptySave} from './treasure-model.js?v=20260920-gems-1';
-import {mountPuzzle} from './treasure-puzzle.js?v=20260920-gems-1';
+import {svg,drawGem,revealTreasure,pieces} from './treasure-pieces.js?v=20260920-discovery-2';
+import {treasures,SAVE_KEY,parseSave,emptySave} from './treasure-model.js?v=20260920-discovery-2';
+import {mountPuzzle} from './treasure-puzzle.js?v=20260920-discovery-2';
+import {drawCanopyCache} from './treasure-discoveries.js?v=20260920-discovery-2';
 
 export function createTreasureHunt(habitat){
  let state=emptySave(),storageOK=true;try{state=parseSave(localStorage.getItem(SAVE_KEY));}catch{storageOK=false;}
  const toggle=document.getElementById('treasure-toggle'),count=document.getElementById('treasure-count'),live=document.getElementById('treasure-announcement');
  const dialog=document.createElement('dialog');dialog.className='treasure-dialog';dialog.id='treasure-dialog';dialog.setAttribute('aria-labelledby','treasure-title');document.body.append(dialog);
  const layer=document.createElement('div');layer.className='treasure-layer';habitat.append(layer);
- const notice=document.createElement('div');notice.className='treasure-notice';notice.hidden=true;habitat.append(notice);
+ const noticeSlot=habitat.parentElement.querySelector('.dress-bar > div');noticeSlot.classList.add('gem-notice-slot');
+ const notice=document.createElement('div');notice.className='treasure-notice';notice.hidden=true;noticeSlot.append(notice);
+ let canopyCache=null;
  let current=null,anchor=null,clue=null,button=null,returnFocus=null,puzzleUI=null,timer=0,raf=0,last=0;
  const announce=text=>{live.textContent=text;};
  function save(){
   try{const other=parseSave(localStorage.getItem(SAVE_KEY));state.found=[...new Set([...state.found,...other.found])];state.revealed={...other.revealed,...state.revealed};state.wins=[...new Set([...state.wins,...other.wins])];localStorage.setItem(SAVE_KEY,JSON.stringify(state));storageOK=true;}catch{storageOK=false;}
-  const note=dialog.querySelector('.treasure-save-note');if(note)note.textContent=storageOK?'Progress saves in this browser.':'This browser cannot save progress. Keep this page open to continue your hunt.';
+  const note=dialog.querySelector('.treasure-save-note');if(note){note.hidden=storageOK;note.textContent=storageOK?'':'This browser cannot save progress. Keep this page open to continue your hunt.';}
  }
  function update(){count.textContent=`${state.found.length}/8`;toggle.setAttribute('aria-label',`Hidden gems: ${state.found.length} of 8 found. Open treasure chest.`);if(current)habitat.dataset.treasureState=state.found.includes(current.id)?'collected':state.revealed[current.id]?'revealed':'hidden';}
- function say(text){announce(text);notice.textContent=text;notice.hidden=false;clearTimeout(timer);timer=setTimeout(()=>notice.hidden=true,4500);}
+ function hideNotice(){notice.hidden=true;noticeSlot.classList.remove('has-gem-notice');}
+ function say(text,duration=6500){announce(text);notice.textContent=text;notice.hidden=false;noticeSlot.classList.add('has-gem-notice');clearTimeout(timer);timer=setTimeout(hideNotice,duration);}
  function position(node,x,y){const m=node?.getScreenCTM?.(),b=habitat.getBoundingClientRect();if(!m||!b.width||!b.height)return null;const p=new DOMPoint(x,y).matrixTransform(m);return{x:Math.max(5,Math.min(95,(p.x-b.left)/b.width*100)),y:Math.max(9,Math.min(84,(p.y-b.top)/b.height*100))};}
  function collect(id){
   if(state.found.includes(id)||!state.revealed[id])return;
   state.found.push(id);save();update();button?.remove();button=null;clue?.remove();clue=null;cancelAnimationFrame(raf);
-  say(state.found.length===8?'All eight gems found! Open your chest to choose a puzzle.':`Gem found! ${state.found.length} of 8 collected.`);
+  say(state.found.length===8?'Hooray! You found all 8 gems! Now open your treasure chest and solve the puzzle.':`Gem found! ${state.found.length} of 8 collected.`,state.found.length===8?12000:6500);
   toggle.focus({preventScroll:true});
  }
+ function mountCanopyCache(opened=false){
+  const cache=document.createElement('button');canopyCache=cache;cache.type='button';cache.className='canopy-gem-cache';cache.setAttribute('aria-label','Look behind the canopy leaves');
+  const {art,cover,gem}=drawCanopyCache(cache);layer.append(cache);
+  const open=()=>{if(current?.id!=='canopy'||!cache.isConnected)return;cover.style.transformOrigin='95px 50px';cover.style.transform='rotate(-68deg)';gem.setAttribute('opacity',0);cache.disabled=true;cache.setAttribute('aria-hidden','true');if(!opened)revealTreasure(habitat,'canopy',art,53,68);anchor={node:art,x:53,y:68};placeButton();if(!opened)button?.focus({preventScroll:true});};
+  if(opened){open();return;}
+  cache.addEventListener('pointerdown',e=>e.stopPropagation());
+  cache.addEventListener('click',e=>{
+   e.stopPropagation();if(cache.disabled)return;cache.disabled=true;
+   if(matchMedia('(prefers-reduced-motion: reduce)').matches)open();
+   else{cover.style.transformOrigin='95px 50px';cover.animate([{transform:'rotate(0deg)'},{transform:'rotate(-68deg)'}],{duration:550,fill:'forwards',easing:'ease-in-out'}).finished.then(open).catch(()=>{});}
+  });
+ }
+ habitat.addEventListener('treasure-canopy-photo',()=>{
+  if(current?.id!=='canopy'||habitat.dataset.treasureState!=='hidden'||canopyCache)return;
+  mountCanopyCache();say('A glint behind the leaves. Take a closer look.');
+ });
  function showGem(){
   button?.remove();button=null;if(!current||state.found.includes(current.id)||!state.revealed[current.id])return;
   const id=current.id,index=treasures.indexOf(current);button=document.createElement('button');button.type='button';button.className='scene-gem';button.setAttribute('aria-label','Collect hidden gem');button.dataset.treasureGem=id;
@@ -30,18 +50,23 @@ export function createTreasureHunt(habitat){
  }
  function placeButton(){if(!button||!current)return;let p=state.revealed[current.id];if(anchor?.node?.isConnected&&!anchor.node.closest('[hidden]')){p=position(anchor.node,anchor.x,anchor.y)||p;state.revealed[current.id]=p;}if(p){button.style.left=`${p.x}%`;button.style.top=`${p.y}%`;}}
  habitat.addEventListener('treasure-reveal',e=>{
-  const{id,node,x,y}=e.detail;if(current?.id!==id||state.found.includes(id)||state.revealed[id])return;
+  const{id,node,x,y,fall,direction=1}=e.detail;if(current?.id!==id||state.found.includes(id)||state.revealed[id])return;
   const start=position(node,x,y)||{x:70,y:65};
-  state.revealed[id]=id==='bubbles'?{x:start.x,y:76}:start;
+  state.revealed[id]=fall?{x:Math.max(9,Math.min(91,start.x+direction*12)),y:78}:id==='bubbles'?{x:start.x,y:76}:start;
   // Dropped finds stay on the ground. Only the gem still inside its tube follows it.
   anchor=id==='india'?{node,x,y}:null;save();update();showGem();
   if(id==='bubbles'&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const dy=(start.y-76)*habitat.getBoundingClientRect().height/100;button?.animate([{translate:`0 ${dy}px`},{translate:'0 0'}],{duration:650,easing:'cubic-bezier(.35,0,.8,.65)'});}
+  if(fall&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+   const b=habitat.getBoundingClientRect(),end=state.revealed[id],dx=(start.x-end.x)*b.width/100,dy=(start.y-end.y)*b.height/100;
+   button?.animate([{translate:`${dx}px ${dy}px`,rotate:'-28deg',scale:'.55',offset:0},{translate:`${dx*.65}px ${dy*.75}px`,rotate:'8deg',scale:'.7',offset:.35},{translate:'0 0',rotate:'32deg',scale:'1',offset:.76},{translate:'0 -9px',rotate:'12deg',offset:.87},{translate:'0 0',rotate:'0deg',offset:1}],{duration:1050,easing:'ease-in',fill:'none'});
+  }
   say('Something sparkled! Tap the gem to collect it.');
  });
  function mount(species,place){
-  save();clue?.remove();clue=null;anchor=null;button?.remove();button=null;notice.hidden=true;clearTimeout(timer);cancelAnimationFrame(raf);
+  save();clue?.remove();clue=null;anchor=null;button?.remove();button=null;canopyCache?.remove();canopyCache=null;delete habitat.dataset.treasureCanopyReached;hideNotice();clearTimeout(timer);cancelAnimationFrame(raf);
   current=treasures.find(t=>t.species===species&&place.includes(t.place))||null;habitat.dataset.treasureId=current?.id||'';update();
   if(!current||state.found.includes(current.id))return;showGem();
+  if(current.id==='canopy'&&state.revealed.canopy)mountCanopyCache(true);
   if(current.id==='india'&&habitat.dataset.treasureState==='hidden'){
    const contents=habitat.querySelector('[clip-path="url(#tri-tube-contents-female)"]');
    if(contents){clue=svg(contents,'g',{'data-treasure-clue':'india',transform:'translate(92 4)','pointer-events':'none'});drawGem(clue,0,.1);}
@@ -56,13 +81,11 @@ export function createTreasureHunt(habitat){
  function shell(title){puzzleUI?.save();puzzleUI=null;dialog.replaceChildren();const close=document.createElement('button');close.type='button';close.className='treasure-close';close.textContent='×';close.setAttribute('aria-label','Close');close.addEventListener('click',()=>dialog.close());const h=document.createElement('h2');h.id='treasure-title';h.textContent=title;dialog.append(close,h);return dialog;}
  function open(){if(!dialog.open){returnFocus=document.activeElement;dialog.showModal();}dialog.querySelector('.treasure-close').focus();}
  function chest(){
-  shell('Your treasure chest');const intro=document.createElement('p');intro.textContent=state.found.length===8?'You found every gem! Ready to solve the puzzle?':'Find eight gems hidden in the worm scenes. Play with the accessories to uncover them.';dialog.append(intro);
+  shell('Your treasure chest');const intro=document.createElement('p');intro.textContent=state.found.length===8?'Hooray! You found all 8 gems! Choose a difficulty and solve the puzzle.':'Find eight gems hidden in the worm scenes. Play with the accessories to uncover them.';dialog.append(intro);
   const tray=document.createElement('div');tray.className='gem-tray';tray.setAttribute('aria-label',`${state.found.length} of 8 gems collected`);dialog.append(tray);
   for(let i=0;i<8;i++){const slot=document.createElement('div');slot.className='gem-tray-slot';if(i<state.found.length){const t=treasures.find(t=>t.id===state.found[i]),art=svg(slot,'svg',{viewBox:'-110 -100 220 200','aria-hidden':'true'});const g=drawGem(art,treasures.indexOf(t));g.setAttribute('transform',`rotate(${[90,270,180,90,270,180,90,270][treasures.indexOf(t)]}) scale(${88/Math.max(...pieces[treasures.indexOf(t)].local.flat().map(Math.abs))})`);const name=document.createElement('span');name.textContent=t.name;slot.append(name);}else{slot.classList.add('empty');slot.textContent='?';slot.setAttribute('aria-label','Undiscovered gem');}tray.append(slot);}
   if(state.found.length<8){const hint=document.createElement('div');hint.className='gem-hint';hint.innerHTML='<div class="gem-hint-actions"><button type="button" data-hint>Give me a hint</button><button type="button" data-another hidden>Another place</button></div><p aria-live="polite"></p>';dialog.append(hint);const pending=treasures.filter(t=>!state.found.includes(t.id));let n=0,detail=false;const text=hint.querySelector('p'),b=hint.querySelector('[data-hint]'),another=hint.querySelector('[data-another]');b.addEventListener('click',()=>{const t=pending[n];text.textContent=detail?t.hint:`Try ${t.name}.`;b.textContent=detail?'Show place again':'A little more help';detail=!detail;another.hidden=pending.length<2;});another.addEventListener('click',()=>{n=(n+1)%pending.length;detail=true;text.textContent=`Try ${pending[n].name}.`;b.textContent='A little more help';});}
   else {
-   const collection=document.createElement('details');collection.className='gem-collection';collection.open=!state.puzzle;
-   const summary=document.createElement('summary');summary.textContent='Your eight discoveries';collection.append(summary);tray.replaceWith(collection);collection.append(tray);
    puzzleUI=mountPuzzle(dialog,state,save,announce);
   }
   const note=document.createElement('p');note.className='treasure-save-note';dialog.append(note);save();open();

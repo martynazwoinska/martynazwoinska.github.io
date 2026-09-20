@@ -1,4 +1,5 @@
-import {revealTreasure} from './treasure-pieces.js?v=20260920-gems-1';
+import {drawGem,revealTreasure} from './treasure-pieces.js?v=20260920-discovery-2';
+import {towelGemFrame} from './treasure-discoveries.js?v=20260920-discovery-2';
 import {GINGER,RINSE,TOWEL,bathFamilies,add,p,e,part,C,faceCloth} from './kauai-bath-art.js?v=20260909-bath-2';
 import {createBathSound} from './kauai-bath-audio.js?v=20260909-bath-pour-1';
 const clamp=x=>Math.max(0,Math.min(1,x));
@@ -115,12 +116,16 @@ export function createKauaiBath(habitat,refresh=()=>{}){
     const drops=Array.from({length:15},()=>e(effects,0,0,1.4,2.2,'#cbeef0','#76b2c2',.35));
     const runoff=Array.from({length:3},()=>p(effects,'','none','#d3f4f4',1.5));
     const ripple=e(effects,0,0,0,0,'none','#e5f9f5',1);stream.setAttribute('opacity',0);streamLight.setAttribute('opacity',0);
-    let cone=null,jug=null,bowl=null,dipper=null,cloth=null,clothAt=null,flap=null;
+    let cone=null,jug=null,bowl=null,dipper=null,cloth=null,clothAt=null,flap=null,tuckedGem=null;
     if(kind==='ginger'){prepare(arts[0]);prepare(arts[1]);cone=arts[0].querySelector('[data-bath-cone]');bowl=arts[1].querySelector('[data-bath-bowl-liquid]');}
     if(kind==='rinse'){jug=prepare(arts[0].querySelector('[data-bath-jug]'));dipper=prepare(arts[1].querySelector('[data-bath-dipper]'));}
     if(kind==='towel'){
       flap=arts[male?1:0].querySelector('[data-bath-towel-flap]');clothAt=point(flap,male?249:263,120);
-      cloth=part(effects,'face-cloth');faceCloth(cloth,male);
+      cloth=part(effects,'face-cloth');
+      if(habitat.dataset.treasureId==='towel'&&habitat.dataset.treasureState==='hidden'){
+        tuckedGem=part(cloth,'tucked-gem');drawGem(tuckedGem,7,.16);tuckedGem.setAttribute('opacity',0);
+      }
+      faceCloth(cloth,male);
     }
     const myBody=body(male),otherBody=body(!male),cues=new Set();
     // Decode before starting the first gesture's timeline, with a bounded silent fallback.
@@ -130,7 +135,7 @@ export function createKauaiBath(habitat,refresh=()=>{}){
       function tick(now){
         if(run!==action)return;if(document.hidden||!selected.every(visible)){cancel();return;}
         const ms=now-began,s=bathFrame(kind,ms,reduced.matches,male);
-        if(kind==='towel'&&(s.lift>.85||(reduced.matches&&s.done)))revealTreasure(habitat,'towel',root,clothAt.x,clothAt.y+24);
+        if(kind==='towel'&&reduced.matches&&towelGemFrame(ms,true).release)revealTreasure(habitat,'towel',root,clothAt.x,clothAt.y+24,{fall:true,direction:male?-1:1});
         if(s.done){cancel();return;}
         arms.forEach(a=>a.group.setAttribute('opacity',0));drops.forEach(d=>d.setAttribute('opacity',0));runoff.forEach(d=>d.setAttribute('opacity',0));ripple.setAttribute('opacity',0);
         if(kind==='ginger'){
@@ -177,6 +182,12 @@ export function createKauaiBath(habitat,refresh=()=>{}){
           const face=point(myBody,330,65),scale=male?.52:.88;
           const x=mix(clothAt.x,face.x+(male?s.wipe*3:s.wipe*4),s.lift),y=mix(clothAt.y,face.y+(male?-10*s.tangle:s.wipe*2),s.lift);
           cloth.setAttribute('transform',`translate(${x} ${y}) rotate(${male?20*s.tangle:-14+s.wipe*7}) scale(${scale})`);cloth.setAttribute('opacity',s.show);
+          if(tuckedGem){
+            const gem=towelGemFrame(ms),slide=gem.peek*17;
+            tuckedGem.setAttribute('transform',`translate(${-12+slide*.35} ${8+slide}) rotate(${gem.peek*26})`);
+            tuckedGem.setAttribute('opacity',gem.release?0:gem.peek);
+            if(gem.release){const origin=point(cloth,-6,25);revealTreasure(habitat,'towel',root,origin.x,origin.y,{fall:true,direction:male?-1:1});}
+          }
           reach(male?arms[1]:arms[0],point(myBody,285,121),point(cloth,12,10),s.show,male?-1:1);
           cue('cloth-1',1100,'cloth',.6,ms);cue('cloth-2',1900,'cloth',.45,ms);
         }

@@ -2,7 +2,54 @@
 
 Status: implementation and deployment approved by Martyna on 2026-09-20, on `codex/gem-hunt`, based on current main `4c3e79a`. Publication verification is recorded in the deployment report. The Game remains English-only, as documented in the agent workflow; these strings intentionally have no partial Swedish or Polish translation.
 
-## Player experience
+## Approved polish release, 2026-09-20
+
+The current polish is based on main `5b206e1`. Martyna reviewed the preview and
+requested deployment. Only **Easy** and **Mystery** remain. Easy is unchanged;
+Mystery uses the former Medium rules: outline, rotation and individual snapping.
+Existing Easy/Medium poses are preserved. Retired freeform Mystery saves migrate
+to the new Mystery puzzle without losing gems or completed-mode history.
+
+Queensland requires a canopy-height photograph followed by opening a glinting
+leaf. In the Kauaʻi forest bath, a crystal peeks from either worm's face cloth,
+slips out and drops. Both discoveries support reduced motion and persistence.
+Discovery notices use the heading space below the scene. Collected gems stay
+visible above the puzzle without a disclosure menu. The successful-save note
+and redundant level introduction are removed; the storage-failure warning remains.
+
+Approved English-only copy:
+
+- Hooray! You found all 8 gems! Now open your treasure chest and solve the puzzle.
+- Hooray! You found all 8 gems! Choose a difficulty and solve the puzzle.
+- A glint behind the leaves. Take a closer look.
+- Look behind the canopy leaves
+- Easy / Mystery
+
+The wooden/brass chest icon, ivory tray, emerald board and botanical corners were
+approved in context. Completion adds one clipped light sweep and twelve finite
+stars. Reduced-motion and restored solutions use a static finish. Restart clears
+the effect. Mouse dragging, the Turn piece control and keyboard movement work.
+
+All eleven focused checks pass: puzzle, finish, discoveries, Queensland canopy,
+Kauaʻi bath, Mauritius, Salt Lake bubbles, Bali cacao, Araucanía garden, live loupes
+and Edinburgh pipes. Browser checks covered discoveries, reduced motion, saves,
+both levels, mouse completion, keyboard controls, restart and Escape/focus return.
+No console errors or horizontal overflow. Uncropped full-page two-level proofs
+at 360/768/1024/1440 CSS px measure 360x2675, 768x2352, 1024x1997 and
+1440x1933 pixels. Dialog content scrolls vertically; viewport proofs also show the
+complete board and finish. The Game retains its fixed light palette.
+
+Created for this polish: `game-of-worms/assets/treasure-chest.svg`,
+`game-of-worms/treasure-board-art.js`, `game-of-worms/treasure-discoveries.js`,
+`scripts/check-treasure-discoveries.cjs`, `scripts/check-treasure-finish.cjs`.
+Changed: Game index, game, Kauaʻi bath, Queensland, treasure hunt/model/pieces/puzzle,
+treasure CSS, puzzle check, PROJECT_STATUS.md and this document. Deleted: none.
+Gem geometry, colours and unrelated checkouts are preserved. QA fixtures stay untracked.
+
+The sections below record the original release and earlier design iterations.
+The two-level polish above supersedes their three-level references.
+
+## Original player experience
 
 The former species-met badge is replaced by a small chest and **Hidden gems · 0/8**. The family dialog remains available through **Meet the whole family**. No heart silhouette or assembled preview appears during the hunt. Pieces are eight original geometric jewels with straight 45 and 90 degree edges and distinct colours. The tray shows them in discovery order, rotated apart.
 

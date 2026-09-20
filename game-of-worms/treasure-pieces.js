@@ -50,7 +50,7 @@ let gemFinishId=0;
 export function drawGem(parent,id,size=1){
  const piece=pieces[id],g=svg(parent,'g',{'data-gem-art':id,transform:`scale(${size})`,'pointer-events':'none'}),p=piece.local,c=jewelColours[id];
  const colour=(light,saturation=c.s)=>`hsl(${c.h} ${saturation}% ${light}%)`;
- const gradientId=`gem-face-${++gemFinishId}`,defs=svg(g,'defs'),gradient=svg(defs,'linearGradient',{id:gradientId,x1:0,y1:0,x2:1,y2:1});
+ const gradientId=`gem-face-${id}-${++gemFinishId}`,defs=svg(g,'defs'),gradient=svg(defs,'linearGradient',{id:gradientId,x1:0,y1:0,x2:1,y2:1});
  for(const [offset,light,saturation]of [[0,c.l+24,c.s-15],[.38,c.l+10,c.s],[.72,c.l,c.s],[1,c.l-13,c.s]])svg(gradient,'stop',{offset,'stop-color':colour(light,saturation)});
  svg(g,'polygon',{points:pointsText(p),fill:colour(c.l-15),stroke:colour(23),'stroke-width':1.3,'stroke-linejoin':'round'});
  const rim=insetPolygon(p,2),table=insetPolygon(p,10);
@@ -70,7 +70,7 @@ export function drawGem(parent,id,size=1){
  svg(g,'circle',{cx:corner[0],cy:corner[1],r:1.2,fill:'#fff','fill-opacity':.9});
  return g;
 }
-export function revealTreasure(habitat,id,node,x=0,y=0){
+export function revealTreasure(habitat,id,node,x=0,y=0,options={}){
   if(habitat.dataset.treasureId!==id||habitat.dataset.treasureState!=='hidden')return;
-  habitat.dispatchEvent(new CustomEvent('treasure-reveal',{detail:{id,node,x,y}}));
+  habitat.dispatchEvent(new CustomEvent('treasure-reveal',{detail:{id,node,x,y,...options}}));
 }
