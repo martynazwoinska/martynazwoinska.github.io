@@ -11,6 +11,37 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Bali gong duet, deployment approved 2026-09-20
+
+Martyna approved improving the gongs while keeping the cacao activity and
+existing accessories. Branch: `codex/bali-gong-duet`, based on main `c8292de`.
+Preview: http://127.0.0.1:8783/game-of-worms/?preview=20260920-gong-duet-2
+Martyna approved the refined preview and requested deployment on 2026-09-20.
+
+Either gong starts an 11.6-second exchange: four slow low strikes by the female,
+eleven alternating kettle-gong replies by the male, and a shared last beat.
+Hands grip the original mallets, wind up, meet each raised boss on the sound
+cue and rebound. Both bodies bend on their own beats with planted tails;
+wraps follow the torso. Instruments come slightly closer while playing and
+return to exact visitor positions/sizes. Drawings, background and cacao
+opening/eating are unchanged. No public copy changed. Production imports
+`bali-gong-duet.js`; the old gong module is retired.
+
+Refinement corrected crossed female arms and shortened reaching distance.
+Three CC0 recordings replace synthetic oscillators. Measured waveform offsets
+remove leading silence; original pitches remain. Audio source notes distinguish
+the West Sumatran kettle-gong samples from Balinese instruments. The phrase is
+original playful music, not traditional gamelan tuning or a traditional score.
+
+Checks: 15 cues, exact mallet/boss and hand/grip contact at three scales,
+planted tails, unchanged originals, late cues, delayed loading, cancellation
+and reduced motion pass. Existing cacao, nib eating, sound and art tests pass.
+Browser confirms both activation targets, exact restoration, keyboard movement,
+resizing, Escape/Home and switching to cacao. Console clean. Full-page captures
+at viewport widths 360/768/1024/1440: 345x2434, 753x2375, 1009x1747 and
+1425x1928 pixels (15px scrollbar excluded); no horizontal overflow. Fixed light
+Game palette. Subjective listening and physical-phone use remain manual.
+
 ## Shared flower-bait preparation, deployment approved 2026-09-20
 
 Martyna requested a connected blender/spoon activity. Preview:

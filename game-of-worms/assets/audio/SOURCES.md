@@ -778,3 +778,23 @@ No new audio assets added. Subjective listening remains user review.
 All use original pitch/speed and short attack/release fades. Load after a gesture,
 play once at the relevant action, skip stale cues, cancel all voices on interruption.
 Reduced motion is silent. Playback timing is tested; subjective listening remains manual.
+
+## Bali gong duet, 2026-09-20
+
+- `bali-gong-low.mp3`: [Gong2_96Khz24bit.wav by psuess](https://freesound.org/people/psuess/sounds/194433/), CC0 verified 2026-09-20. Recorded gong hit, Zoom H4N stereo microphones; instrument origin unspecified.
+  Unchanged HQ preview: https://cdn.freesound.org/previews/194/194433_829962-hq.mp3
+  292080 bytes; SHA-256 `3c434f80b069a68cf33899fcaabecbcda1c2af2c7d3c5f1041c5f69e80ab1cb1`.
+  Runtime offset 0.198 seconds, excluding measured leading silence.
+- `bali-kettle-one.mp3`: [talempong_pacik_01.wav by ixnixnixn](https://freesound.org/people/ixnixnixn/sounds/215000/), CC0 verified 2026-09-20. West Sumatran talempong kettle gong, used as a related timbre; not a recording of a Balinese instrument.
+  Unchanged HQ preview: https://cdn.freesound.org/previews/215/215000_3786349-hq.mp3
+  42686 bytes; SHA-256 `b617387d6d21f2275b561392d93675d20ad1444fa97d135b0e1d85b21f7e78be`.
+  Runtime offset 0.048 seconds, excluding measured leading silence.
+- `bali-kettle-two.mp3`: [talempong_pacik_04.wav by ixnixnixn](https://freesound.org/people/ixnixnixn/sounds/214997/), CC0 verified 2026-09-20. Second West Sumatran talempong kettle gong, with the same regional distinction.
+  Unchanged HQ preview: https://cdn.freesound.org/previews/214/214997_3786349-hq.mp3
+  43418 bytes; SHA-256 `e1a748db74e558ba5ad5a7e54bf17f027c1641713c904a37f48fc322838fbfbc`.
+  Runtime offset 0.426 seconds, excluding measured leading silence.
+
+Original pitch/speed. Low hits: 3.5-second decay, .14 peak target. Small gongs:
+1.4 seconds, .075-.095 peak. Short fades avoid clicks. Gesture-only playback;
+all voices cancel on interruption. Reduced motion silent. Original playful
+rhythm, not a traditional score. Decoding and timing verified; listening manual.

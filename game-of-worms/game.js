@@ -32,7 +32,7 @@ import { createCanberraCafe, CAFE_FAMILIES } from "./canberra-cafe.js?v=20260909
 import { mountLiveLoupes } from "./live-loupes.js?v=20260909-blink-1";
 import { createTrivandrumWatering } from "./trivandrum-watering.js?v=20260920-shower-1";
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260908-cryo-return-1";
-import { createBaliGongs, GONG_FAMILY } from "./bali-gongs.js?v=20260906-gongs-1";
+import { createBaliGongs, GONG_FAMILY } from "./bali-gong-duet.js?v=20260920-gong-duet-2";
 import { createEdinburghPipes } from "./edinburgh-pipes.js?v=20260909-pipes-1";
 import { createClaremontPlay } from "./claremont-play.js?v=20260920-books-7";
 import { createAraucaniaPlay } from "./araucania-play.js?v=20260908-araucania-recordings-1";
@@ -1944,7 +1944,7 @@ function wireAccessoryPieces() {
       }
       if (event.key === "Escape" || event.key === "Home") ishigakiPlay.reset(piece);
       if ((event.key === "Enter" || event.key === " ") && baliCacao.handles(piece)) {
-        event.preventDefault(); if (!event.repeat) baliCacao.start(piece); return;
+        event.preventDefault(); if (!event.repeat) { baliGongs.cancel(); baliCacao.start(piece); } return;
       }
       if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) baliCacao.cancel();
       if ((event.key === "Enter" || event.key === " ") && canberraCafe.handles(piece)) {
@@ -1956,7 +1956,7 @@ function wireAccessoryPieces() {
       }
       if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) ahmedabadFans.cancel();
       if ((event.key === "Enter" || event.key === " ") && piece.dataset.accessoryFamily === GONG_FAMILY) {
-        event.preventDefault(); if(!event.repeat)baliGongs.start(piece); return;
+        event.preventDefault(); if(!event.repeat){ baliCacao.cancel(); baliGongs.start(piece); } return;
       }
       if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) baliGongs.cancel();
       if ((event.key === "Enter" || event.key === " ") && piece.dataset.accessoryFamily === "cryo-vial-jetpack") {
