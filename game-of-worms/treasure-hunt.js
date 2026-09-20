@@ -1,6 +1,6 @@
 import {svg,drawGem,revealTreasure,pieces} from './treasure-pieces.js?v=20260920-discovery-2';
 import {treasures,SAVE_KEY,parseSave,emptySave} from './treasure-model.js?v=20260920-discovery-2';
-import {mountPuzzle} from './treasure-puzzle.js?v=20260920-discovery-2';
+import {mountPuzzle} from './treasure-puzzle.js?v=20260920-depth-1';
 import {drawCanopyCache} from './treasure-discoveries.js?v=20260920-discovery-2';
 
 export function createTreasureHunt(habitat){
@@ -78,23 +78,23 @@ export function createTreasureHunt(habitat){
    for(const lens of habitat.querySelectorAll('[data-live-loupe] svg')){if(lens.closest('[hidden]'))continue;const lm=lens.getScreenCTM();if(!lm)continue;const q=p.matrixTransform(lm.inverse()),box=lens.viewBox.baseVal,r=Math.min(box.width,box.height)*.4;if(Math.hypot(q.x-box.x-box.width/2,q.y-box.y-box.height/2)<r){revealTreasure(habitat,'india',clue,0,0);break;}}
   }raf=requestAnimationFrame(tick);
  }
- function shell(title){puzzleUI?.save();puzzleUI=null;dialog.replaceChildren();const close=document.createElement('button');close.type='button';close.className='treasure-close';close.textContent='×';close.setAttribute('aria-label','Close');close.addEventListener('click',()=>dialog.close());const h=document.createElement('h2');h.id='treasure-title';h.textContent=title;dialog.append(close,h);return dialog;}
+ function shell(title){puzzleUI?.save();puzzleUI=null;dialog.replaceChildren();const close=document.createElement('button');close.type='button';close.className='treasure-close';close.textContent='×';close.setAttribute('aria-label','Close');close.addEventListener('click',()=>dialog.close());const h=document.createElement('h2');h.id='treasure-title';h.textContent=title;const header=document.createElement('header');header.className='treasure-header';header.append(h,close);const content=document.createElement('div');content.className='treasure-content';dialog.append(header,content);return content;}
  function open(){if(!dialog.open){returnFocus=document.activeElement;dialog.showModal();}dialog.querySelector('.treasure-close').focus();}
  function chest(){
-  shell('Your treasure chest');const intro=document.createElement('p');intro.textContent=state.found.length===8?'Hooray! You found all 8 gems! Choose a difficulty and solve the puzzle.':'Find eight gems hidden in the worm scenes. Play with the accessories to uncover them.';dialog.append(intro);
-  const tray=document.createElement('div');tray.className='gem-tray';tray.setAttribute('aria-label',`${state.found.length} of 8 gems collected`);dialog.append(tray);
-  for(let i=0;i<8;i++){const slot=document.createElement('div');slot.className='gem-tray-slot';if(i<state.found.length){const t=treasures.find(t=>t.id===state.found[i]),art=svg(slot,'svg',{viewBox:'-110 -100 220 200','aria-hidden':'true'});const g=drawGem(art,treasures.indexOf(t));g.setAttribute('transform',`rotate(${[90,270,180,90,270,180,90,270][treasures.indexOf(t)]}) scale(${88/Math.max(...pieces[treasures.indexOf(t)].local.flat().map(Math.abs))})`);const name=document.createElement('span');name.textContent=t.name;slot.append(name);}else{slot.classList.add('empty');slot.textContent='?';slot.setAttribute('aria-label','Undiscovered gem');}tray.append(slot);}
-  if(state.found.length<8){const hint=document.createElement('div');hint.className='gem-hint';hint.innerHTML='<div class="gem-hint-actions"><button type="button" data-hint>Give me a hint</button><button type="button" data-another hidden>Another place</button></div><p aria-live="polite"></p>';dialog.append(hint);const pending=treasures.filter(t=>!state.found.includes(t.id));let n=0,detail=false;const text=hint.querySelector('p'),b=hint.querySelector('[data-hint]'),another=hint.querySelector('[data-another]');b.addEventListener('click',()=>{const t=pending[n];text.textContent=detail?t.hint:`Try ${t.name}.`;b.textContent=detail?'Show place again':'A little more help';detail=!detail;another.hidden=pending.length<2;});another.addEventListener('click',()=>{n=(n+1)%pending.length;detail=true;text.textContent=`Try ${pending[n].name}.`;b.textContent='A little more help';});}
+  const content=shell('Your treasure chest');const intro=document.createElement('p');intro.textContent=state.found.length===8?'Hooray! You found all 8 gems! Choose a difficulty and solve the puzzle.':'Find eight gems hidden in the worm scenes. Play with the accessories to uncover them.';content.append(intro);
+  const tray=document.createElement('div');tray.className='gem-tray';tray.setAttribute('aria-label',`${state.found.length} of 8 gems collected`);content.append(tray);
+  for(let i=0;i<8;i++){const slot=document.createElement('div');slot.className='gem-tray-slot';if(i<state.found.length){const t=treasures.find(t=>t.id===state.found[i]),art=svg(slot,'svg',{viewBox:'-110 -100 220 200','aria-hidden':'true'});const g=drawGem(art,treasures.indexOf(t));g.setAttribute('transform',`rotate(${[90,270,180,90,270,180,90,270][treasures.indexOf(t)]}) scale(${88/Math.max(...pieces[treasures.indexOf(t)].local.flat().map(Math.abs))})`);slot.setAttribute('role','img');slot.setAttribute('aria-label',`Gem ${treasures.indexOf(t)+1}`);}else{slot.classList.add('empty');slot.textContent='?';slot.setAttribute('aria-label','Undiscovered gem');}tray.append(slot);}
+  if(state.found.length<8){const hint=document.createElement('div');hint.className='gem-hint';hint.innerHTML='<div class="gem-hint-actions"><button type="button" data-hint>Give me a hint</button><button type="button" data-another hidden>Another place</button></div><p aria-live="polite"></p>';content.append(hint);const pending=treasures.filter(t=>!state.found.includes(t.id));let n=0,detail=false;const text=hint.querySelector('p'),b=hint.querySelector('[data-hint]'),another=hint.querySelector('[data-another]');b.addEventListener('click',()=>{const t=pending[n];text.textContent=detail?t.hint:`Try ${t.name}.`;b.textContent=detail?'Show place again':'A little more help';detail=!detail;another.hidden=pending.length<2;});another.addEventListener('click',()=>{n=(n+1)%pending.length;detail=true;text.textContent=`Try ${pending[n].name}.`;b.textContent='A little more help';});}
   else {
-   puzzleUI=mountPuzzle(dialog,state,save,announce);
+   puzzleUI=mountPuzzle(content,state,save,announce);
   }
-  const note=document.createElement('p');note.className='treasure-save-note';dialog.append(note);save();open();
+  const note=document.createElement('p');note.className='treasure-save-note';content.append(note);save();open();
  }
  function telescope(piece){
   if(current?.id!=='scotland'||state.found.includes('scotland'))return;
-  shell('Through the telescope');const p=document.createElement('p');p.textContent='A small sparkle in the distance. Bring it into focus.';dialog.append(p);
-  const view=document.createElement('div');view.className='telescope-view';const spark=document.createElement('div');spark.className='telescope-spark';drawGem(svg(spark,'svg',{viewBox:'-120 -120 240 240','aria-hidden':'true'}),3);view.append(spark);dialog.append(view);
-  const focus=document.createElement('button');focus.type='button';focus.textContent='Turn the focus wheel';dialog.append(focus);let turns=0;
+  const content=shell('Through the telescope');const p=document.createElement('p');p.textContent='A small sparkle in the distance. Bring it into focus.';content.append(p);
+  const view=document.createElement('div');view.className='telescope-view';const spark=document.createElement('div');spark.className='telescope-spark';drawGem(svg(spark,'svg',{viewBox:'-120 -120 240 240','aria-hidden':'true'}),3);view.append(spark);content.append(view);
+  const focus=document.createElement('button');focus.type='button';focus.textContent='Turn the focus wheel';content.append(focus);let turns=0;
   focus.addEventListener('click',()=>{if(turns<2){turns++;spark.style.filter=`blur(${turns===1?4:0}px)`;if(turns===2){revealTreasure(habitat,'scotland',piece,0,0);focus.textContent='Collect gem';p.textContent='There it is! A gem!';}}else{collect('scotland');dialog.close();}});open();
  }
  dialog.addEventListener('close',()=>{puzzleUI?.save();if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});else toggle.focus({preventScroll:true});});

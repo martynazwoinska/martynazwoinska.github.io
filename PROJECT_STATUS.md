@@ -36,7 +36,12 @@ saves migrate without losing gems. Full-page proofs at 360/768/1024/1440 px
 measure 360x2675, 768x2352, 1024x1997 and 1440x1933 pixels.
 Details, copy and file inventory are in
 [the treasure hunt implementation notes](docs/game-of-worms-treasure-hunt.md).
-Public deployment still requires workflow and live-byte verification.
+This release was deployed as `ade4a73`; Pages success and live files were verified.
+
+Further board refinement approved for deployment: simple gold corner lines,
+a recessed heart centre, a separate title/close header and a tray showing only
+the gem pieces. Puzzle rules, gem geometry and saved progress are unchanged.
+See the latest revision notes below for validation and screenshot limitations.
 
 ## Bali gong duet, deployment approved 2026-09-20
 

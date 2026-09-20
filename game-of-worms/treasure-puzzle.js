@@ -1,6 +1,6 @@
-import {svg,pieces,drawGem,pointsText,outline,rotate} from './treasure-pieces.js?v=20260920-discovery-2';
+import {svg,pieces,drawGem,pointsText,rotate} from './treasure-pieces.js?v=20260920-discovery-2';
 import {newPuzzle,moveGroup,rotateGroup,snap,target} from './treasure-model.js?v=20260920-discovery-2';
-import {drawPuzzleSetting,celebrateHeart} from './treasure-board-art.js?v=20260920-finish-1';
+import {drawPuzzleSetting,drawPuzzleRecess,celebrateHeart} from './treasure-board-art.js?v=20260920-depth-1';
 
 export function mountPuzzle(host,state,save,announce){
  const panel=document.createElement('section');panel.className='gem-assembly';host.append(panel);
@@ -26,11 +26,7 @@ export function mountPuzzle(host,state,save,announce){
   help.textContent+=' Drag, or select a piece then tap its destination. Keyboard: arrows move, R turns, Enter checks the fit.';
   board=svg(boardWrap,'svg',{viewBox:'0 0 600 650',class:'gem-board','aria-label':'Gem assembly board'});
   drawPuzzleSetting(board);
-  {
-   const guide=svg(board,'g',{transform:'translate(0 80)','aria-hidden':'true','pointer-events':'none'});
-   svg(guide,'polygon',{points:pointsText(outline),fill:'#427369',stroke:'#d0bd84','stroke-width':2});
-   if(puzzle.mode==='easy')for(const p of pieces)svg(guide,'polygon',{points:pointsText(p.points),fill:'none',stroke:'#c8d8b9','stroke-width':1.25,'stroke-dasharray':'3 5'});
-  }
+  drawPuzzleRecess(board,puzzle.mode==='easy');
   nodes=pieces.map((p,i)=>{const n=svg(board,'g',{class:'gem-piece',role:'button',tabindex:0,'data-puzzle-piece':i,'aria-keyshortcuts':'ArrowUp ArrowDown ArrowLeft ArrowRight r Enter Space'});drawGem(n,i);svg(n,'polygon',{class:'gem-selection',points:pointsText(p.local),fill:'transparent',stroke:'#8b3d5c','stroke-width':4,'stroke-linejoin':'round'});
    n.addEventListener('pointerdown',e=>{if(e.button!==0)return;e.stopPropagation();e.preventDefault();choose(i);n.focus({preventScroll:true});if(puzzle.poses[i].locked||puzzle.solved)return;drag={id:i,origin:point(e),last:point(e),moved:false,pointer:e.pointerId};board.setPointerCapture(e.pointerId);});
    n.addEventListener('keydown',e=>{if(!['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','r','R','Enter',' '].includes(e.key))return;e.preventDefault();choose(i);if(puzzle.solved)return;if(e.key==='r'||e.key==='R'){rotateGroup(puzzle,i);constrain(i);paint();save();}else if(e.key==='Enter'||e.key===' ')settle();else{const step=e.shiftKey?3:12;moveGroup(puzzle,i,e.key==='ArrowLeft'?-step:e.key==='ArrowRight'?step:0,e.key==='ArrowUp'?-step:e.key==='ArrowDown'?step:0);constrain(i);paint();save();}});return n;});

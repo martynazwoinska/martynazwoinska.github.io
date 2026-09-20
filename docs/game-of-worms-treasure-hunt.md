@@ -2,6 +2,30 @@
 
 Status: implementation and deployment approved by Martyna on 2026-09-20, on `codex/gem-hunt`, based on current main `4c3e79a`. Publication verification is recorded in the deployment report. The Game remains English-only, as documented in the agent workflow; these strings intentionally have no partial Swedish or Polish translation.
 
+## Board and dialog refinement, deployment approved 2026-09-20
+
+Based on deployed `ade4a73`. Replaced the corner flourishes with simple gold
+lines and added a shallow shaded heart recess and tray edge. The close button
+now sits beside the title in a separate header above scrolling content. The
+collection tray shows only gems, with numbered accessible names. Game copy
+remains intentionally English-only. Geometry, colours, rules and saves are unchanged.
+
+Changed: `game-of-worms/treasure-board-art.js`, `treasure-puzzle.js`,
+`treasure-hunt.js`, `treasure.css`, `game.js`, `index.html`, this document and
+`PROJECT_STATUS.md`. No files created or deleted. Import versions refresh the
+approved production files. Unrelated Cabinet work is preserved.
+
+Puzzle and completion checks pass, plus JavaScript syntax and whitespace checks.
+Browser checks passed for completion, both level controls, close, Escape/focus
+restoration and no console errors. At actual widths 360/768/1024/1440 px,
+there is no horizontal overflow and the 44px close button stays above the
+scrolling play area. The Game retains its fixed light palette.
+
+Full-page capture remains unreliable: the tool produced distorted stitched
+images at 277x2056, 591x1808, 787x1535 and 1108x1485 pixels instead of the
+requested widths. These are not valid full-page proofs. Normal-size browser
+renders were inspected and approved by Martyna before this deployment request.
+
 ## Approved polish release, 2026-09-20
 
 The current polish is based on main `5b206e1`. Martyna reviewed the preview and
