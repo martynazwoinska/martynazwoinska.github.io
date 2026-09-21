@@ -1,4 +1,4 @@
-import {svg,pieces,pointsText,outline,rotate} from './treasure-pieces.js?v=20260920-discovery-2';
+import {svg,pieces,pointsText,outline,rotate,insetPolygon} from './treasure-pieces.js?v=20260920-discovery-2';
 
 let serial=0;
 export function drawPuzzleSetting(board){
@@ -24,21 +24,41 @@ export function drawPuzzleSetting(board){
  return background;
 }
 
+// The outer collar stays outside the exact mating outline, leaving the fit unchanged.
+function bevelRing(parent,outer,inner,colours){
+ outer.forEach((a,i)=>{const j=(i+1)%outer.length,b=outer[j],dx=b[0]-a[0],dy=b[1]-a[1];
+  const light=(dx-dy)/Math.hypot(dx,dy);
+  const fill=light>.35?colours[0]:light<-.35?colours[2]:colours[1];
+  svg(parent,'polygon',{points:pointsText([a,b,inner[j],inner[i]]),fill,stroke:fill,'stroke-width':.45});
+ });
+}
 export function drawPuzzleRecess(board,easy){
  const id=`jewel-recess-${++serial}`,defs=svg(board,'defs');
  const floor=svg(defs,'linearGradient',{id,x1:0,y1:0,x2:'.25',y2:1});
- svg(floor,'stop',{offset:0,'stop-color':'#193e37'});
- svg(floor,'stop',{offset:'.4','stop-color':'#2c594d'});
- svg(floor,'stop',{offset:1,'stop-color':'#366656'});
- const clip=svg(defs,'clipPath',{id:`${id}-clip`});
- svg(clip,'polygon',{points:pointsText(outline)});
+ svg(floor,'stop',{offset:0,'stop-color':'#112e2a'});
+ svg(floor,'stop',{offset:'.36','stop-color':'#1e453b'});
+ svg(floor,'stop',{offset:1,'stop-color':'#376554'});
  const guide=svg(board,'g',{transform:'translate(0 80)','aria-hidden':'true','pointer-events':'none'});
- // A fine lower rim catches the light; the inner top wall casts a shallow shadow.
- svg(guide,'polygon',{points:pointsText(outline),transform:'translate(0 2)',fill:'none',stroke:'#adc49a','stroke-opacity':.65,'stroke-width':5,'stroke-linejoin':'round'});
- svg(guide,'polygon',{points:pointsText(outline),fill:`url(#${id})`,stroke:'#122f29','stroke-width':2.5,'stroke-linejoin':'round'});
+ const outer=insetPolygon(outline,-15),crown=insetPolygon(outline,-10),lip=insetPolygon(outline,-3);
+ // A solid raised collar with a visible lower side and a small contact shadow.
+ svg(guide,'polygon',{points:pointsText(outer),transform:'translate(2 13)',fill:'#0a211d',opacity:.3,stroke:'#0a211d','stroke-width':6,'stroke-linejoin':'round'});
+ svg(guide,'polygon',{points:pointsText(outer),transform:'translate(0 8)',fill:'#514831',stroke:'#343a2b','stroke-width':1});
+ outer.forEach((a,i)=>{const b=outer[(i+1)%outer.length];if(b[0]<a[0])svg(guide,'polygon',{points:pointsText([a,b,[b[0],b[1]+8],[a[0],a[1]+8]]),fill:'#746441'});});
+ bevelRing(guide,outer,crown,['#e0cb91','#b79a60','#786541']);
+ bevelRing(guide,crown,lip,['#bdab76','#ae9865','#948155']);
+ // Dark inner walls descend to the same outline used by the snapping logic.
+ bevelRing(guide,lip,outline,['#3c4431','#596246','#a4ae7c']);
+ svg(guide,'polygon',{points:pointsText(outline),fill:`url(#${id})`,stroke:'#0b2720','stroke-width':1.2});
+ const clip=svg(defs,'clipPath',{id:`${id}-clip`});svg(clip,'polygon',{points:pointsText(outline)});
  const wall=svg(guide,'g',{'clip-path':`url(#${id}-clip)`});
- svg(wall,'polygon',{points:pointsText(outline),transform:'translate(0 5)',fill:'none',stroke:'#0e2c26','stroke-opacity':.45,'stroke-width':9,'stroke-linejoin':'round'});
- if(easy)for(const p of pieces)svg(guide,'polygon',{points:pointsText(p.points),fill:'none',stroke:'#b9cbaa','stroke-opacity':.8,'stroke-width':1.25,'stroke-dasharray':'3 5'});
+ svg(wall,'polygon',{points:pointsText(outline),transform:'translate(0 7)',fill:'none',stroke:'#071e19','stroke-opacity':.6,'stroke-width':12,'stroke-linejoin':'round'});
+ if(easy)for(const p of pieces){
+  const socket=svg(guide,'g',{'data-piece-socket':p.id});
+  const bed=insetPolygon(p.points,4);
+  svg(socket,'polygon',{points:pointsText(p.points),fill:'#65816a'});
+  bevelRing(socket,p.points,bed,['#253f32','#4e6853','#9aa680']);
+  svg(socket,'polygon',{points:pointsText(bed),fill:`url(#${id})`});
+ }
  return guide;
 }
 

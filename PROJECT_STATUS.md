@@ -1,6 +1,6 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-09-20
+Last updated: 2026-09-21
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
@@ -38,10 +38,14 @@ Details, copy and file inventory are in
 [the treasure hunt implementation notes](docs/game-of-worms-treasure-hunt.md).
 This release was deployed as `ade4a73`; Pages success and live files were verified.
 
-Further board refinement approved for deployment: simple gold corner lines,
+Board refinement deployed and verified as `0caa43a`: simple gold corner lines,
 a recessed heart centre, a separate title/close header and a tray showing only
 the gem pieces. Puzzle rules, gem geometry and saved progress are unchanged.
-See the latest revision notes below for validation and screenshot limitations.
+Further physical-depth refinement requested for deployment on 2026-09-21:
+raised gold collar, bevelled walls, eight Easy sockets with dividing edges,
+an undivided Mystery recess, and separate loose/fitted contact shadows.
+Gem art, fit geometry, saves and rules remain unchanged. Focused checks pass.
+See the treasure hunt notes for validation and screenshot limitations.
 
 ## Bali gong duet, deployment approved 2026-09-20
 

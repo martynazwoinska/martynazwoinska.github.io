@@ -2,6 +2,29 @@
 
 Status: implementation and deployment approved by Martyna on 2026-09-20, on `codex/gem-hunt`, based on current main `4c3e79a`. Publication verification is recorded in the deployment report. The Game remains English-only, as documented in the agent workflow; these strings intentionally have no partial Swedish or Polish translation.
 
+## Physical socket board, deployment requested 2026-09-21
+
+Based on `0caa43a`. The heart tray now has an extruded gold collar, bevelled
+inner walls and a darker recessed bed. Easy replaces dotted guides with eight
+shallow sockets and raised dividing edges. Mystery keeps an undivided recess.
+Separate contact shadows make loose pieces appear raised and fitted pieces sit
+flush. Shadow direction remains consistent when pieces rotate. Gem artwork,
+colours, fit coordinates, rules, saved progress and public wording are unchanged.
+
+Changed: board art, puzzle rendering, treasure CSS and their import versions in
+the Game entry, treasure hunt and HTML. No production files created or deleted.
+Puzzle geometry/state and completion checks pass, as do syntax and whitespace.
+Browser verified eight Easy sockets, no Mystery solution guides, completion,
+clear close-button placement and no console errors or horizontal overflow at
+360/768/1024/1440 CSS px. Normal-size empty and completed boards were inspected;
+a refinement pass softened the loose-piece shadow and fixed its light direction.
+No animation was added; reduced-motion completion retains its existing static finish.
+
+Full-page captures have correct dimensions (360x2675, 768x2352, 1024x1997,
+1440x1933), but the browser tool still produces scaled/duplicated stitched
+content. They are diagnostic only, not valid full-page visual proofs. Normal
+viewport rendering and responsive DOM checks were used for this deployment.
+
 ## Board and dialog refinement, deployment approved 2026-09-20
 
 Based on deployed `ade4a73`. Replaced the corner flourishes with simple gold
