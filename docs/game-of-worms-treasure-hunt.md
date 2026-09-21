@@ -261,3 +261,24 @@ The updated geometry/state check passes, including exact coverage, regular edge 
 Changed only the drawing in treasure-pieces.js: broader split crown facets, richer shaded faces, a thin polished rim and restrained corner glints. Geometry, colour identities, collection progress and puzzle logic are unchanged. A second visual pass softened the strongest white reflections. No production files were created or deleted for this refinement.
 
 Geometry/state tests, JavaScript syntax and diff whitespace checks passed. Browser console reported no errors. DOM layout checks passed without horizontal overflow at 360, 768, 1024 and 1440 CSS pixels. Normal-size viewport render was inspected. The full-page screenshot tool produced scaled and visibly faulty stitched captures this time: 277 x 2056, 590 x 1805, 787 x 1534 and 1108 x 1485 pixels for the respective widths. These polished-page files are diagnostic captures, not valid full-page proofs; full-page visual validation remains manual. Fixed light Game palette only. Preview only, not committed or deployed.
+
+## Heart celebration, 2026-09-21
+
+Approved for implementation and deployment after the proposed three-second finish.
+The assembled heart lifts, pulses twice and settles; a light sweep and rising
+jewel sparks accompany a quiet original glass chime, two low notes and a warm chord.
+All pieces move in one group without changing gem art, fit geometry, rules or saves.
+Reduced motion keeps a static shine. Restoring a solved puzzle does not replay
+animation or sound. Sound stops on closing, replacing or hiding the puzzle and
+audio failures do not affect completion. No public copy changed.
+
+Validation: puzzle, restart and finish checks; audio cue timing/cancellation and
+unsupported-audio checks; JS syntax and whitespace. Browser completion, saved
+completion on reopening, Escape/focus return and console checks pass. Layouts
+checked at 360, 768, 1024 and 1440 CSS px without horizontal overflow. Full-page
+captures: 345x2750, 753x2356, 1009x2004 and 1425x1948 pixels (browser captures
+exclude the 15px scrollbar). The Game intentionally retains its fixed light palette.
+
+Created: game-of-worms/treasure-finish-sound.js. Changed: treasure-board-art.js,
+treasure-puzzle.js, treasure-hunt.js, game.js and index.html under game-of-worms;
+scripts/check-treasure-finish.cjs; this note and PROJECT_STATUS.md. Deleted: none.

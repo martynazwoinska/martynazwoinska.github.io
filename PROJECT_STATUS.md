@@ -13,6 +13,11 @@ its entry. "To check" is not a judgement that a scene needs a redesign.
 
 ## Hidden gems and puzzle, deployment approved 2026-09-20
 
+2026-09-21: approved heart finish now lifts and pulses twice with a quiet original
+three-second musical phrase and jewel sparks. Restored puzzles remain quiet;
+reduced motion stays static. Geometry, art, saved progress and copy are unchanged.
+Focused checks and four responsive browser layouts pass. See treasure hunt notes.
+
 2026-09-21: removed the treasure chest's Give me a hint panel at Martyna's
 request. Gem collection, puzzle controls and inline restart are preserved.
 

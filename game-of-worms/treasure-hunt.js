@@ -1,6 +1,6 @@
 import {svg,drawGem,revealTreasure,pieces} from './treasure-pieces.js?v=20260920-discovery-2';
 import {treasures,SAVE_KEY,parseSave,emptySave,mergeHunts,restartHunt} from './treasure-model.js?v=20260921-restart-2';
-import {mountPuzzle} from './treasure-puzzle.js?v=20260921-restart-2';
+import {mountPuzzle} from './treasure-puzzle.js?v=20260921-heartbeat-1';
 import {drawCanopyCache} from './treasure-discoveries.js?v=20260920-discovery-2';
 
 export function createTreasureHunt(habitat){

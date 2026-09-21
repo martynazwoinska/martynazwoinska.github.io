@@ -68,12 +68,15 @@ export function assemblyPolygons(puzzle){
 }
 
 export function celebrateHeart(board,puzzle,animate=true){
- if(board.querySelector('[data-heart-finish]'))return;
+ if(board.querySelector('[data-heart-finish]'))return false;
  const polygons=assemblyPolygons(puzzle),points=polygons.flat(),xs=points.map(p=>p[0]),ys=points.map(p=>p[1]);
  const left=Math.min(...xs),right=Math.max(...xs),top=Math.min(...ys),bottom=Math.max(...ys),cx=(left+right)/2,cy=(top+bottom)/2;
  const id=`heart-finish-${++serial}`,defs=svg(board,'defs'),clip=svg(defs,'clipPath',{id});
  for(const poly of polygons)svg(clip,'polygon',{points:pointsText(poly)});
- const finish=svg(board,'g',{'data-heart-finish':'','aria-hidden':'true','pointer-events':'none'});
+ const assembly=board.querySelector('[data-heart-assembly]')||board;
+ const finish=svg(assembly,'g',{'data-heart-finish':'','aria-hidden':'true','pointer-events':'none'});
+ const glow=svg(finish,'g',{opacity:.055});
+ for(const poly of polygons)svg(glow,'polygon',{points:pointsText(poly),fill:'#fff3c5'});
  const sheen=svg(finish,'g',{'clip-path':`url(#${id})`});
  const light=svg(sheen,'path',{d:`M${left-130} ${top-30}h38l-115 ${bottom-top+60}h-38Z`,fill:'#fffce5',opacity:0});
  const stars=[];
@@ -81,10 +84,24 @@ export function celebrateHeart(board,puzzle,animate=true){
   const angle=i*Math.PI/6-.3,x=Math.max(32,Math.min(568,cx+Math.cos(angle)*(right-left+34)/2)),y=Math.max(32,Math.min(618,cy+Math.sin(angle)*(bottom-top+34)/2));
   const star=svg(finish,'g',{transform:`translate(${x} ${y})`});
   const size=i%3===0?8:5;
-  const twinkle=svg(star,'path',{d:`M0 ${-size}Q1 -1 ${size} 0Q1 1 0 ${size}Q-1 1 ${-size} 0Q-1 -1 0 ${-size}Z`,fill:i%2?'#e8cc84':'#fff8d8',opacity:.75});
+  const twinkle=svg(star,'path',{d:`M0 ${-size}Q1 -1 ${size} 0Q1 1 0 ${size}Q-1 1 ${-size} 0Q-1 -1 0 ${-size}Z`,fill:i%2?'#e8cc84':'#fff8d8',opacity:i%3===0?.4:0});
   stars.push(twinkle);
  }
- if(!animate||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- light.animate([{transform:'translateX(0)',opacity:0},{opacity:.48,offset:.15},{opacity:.48,offset:.8},{transform:`translateX(${right-left+280}px)`,opacity:0}],{duration:1900,delay:180,easing:'ease-in-out'});
- stars.forEach((star,i)=>star.animate([{opacity:0,transform:'scale(.2)'},{opacity:1,transform:'scale(1.25)',offset:.45},{opacity:.75,transform:'scale(1)'}],{duration:1050,delay:220+i*95,fill:'backwards',easing:'ease-out'}));
+ if(!animate||matchMedia('(prefers-reduced-motion: reduce)').matches)return animate;
+ // Transform the whole assembly, keeping every seam and the light in register.
+ assembly.style.transformOrigin=`${cx}px ${cy}px`;
+ assembly.animate([
+  {transform:'translateY(0) scale(1)',offset:0},
+  {transform:'translateY(-10px) scale(1)',offset:.23},
+  {transform:'translateY(-12px) scale(1.035)',offset:.32},
+  {transform:'translateY(-10px) scale(1)',offset:.41},
+  {transform:'translateY(-12px) scale(1.025)',offset:.52},
+  {transform:'translateY(-10px) scale(1)',offset:.61},
+  {transform:'translateY(-10px) scale(1)',offset:.76},
+  {transform:'translateY(0) scale(1)',offset:1}
+ ].map(frame=>({...frame,easing:'ease-in-out'})),{duration:3000});
+ glow.animate([{opacity:.055},{opacity:.25,offset:.32},{opacity:.07,offset:.41},{opacity:.2,offset:.52},{opacity:.055}].map(frame=>({...frame,easing:'ease-in-out'})),{duration:3000});
+ light.animate([{transform:'translateX(0)',opacity:0},{opacity:.38,offset:.15},{opacity:.38,offset:.8},{transform:`translateX(${right-left+280}px)`,opacity:0}],{duration:1800,delay:120,easing:'ease-in-out'});
+ stars.forEach((star,i)=>star.animate([{opacity:0,transform:'translateY(8px) scale(.2)'},{opacity:.9,transform:'translateY(-5px) scale(1.15)',offset:.35},{opacity:0,transform:'translateY(-27px) scale(.3)'}],{duration:1050,delay:1550+i*32,fill:'backwards',easing:'ease-out'}));
+ return true;
 }
