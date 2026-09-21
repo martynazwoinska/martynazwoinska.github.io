@@ -13,20 +13,24 @@ const {pathToFileURL}=require('node:url');
     const open=figFrame(2600,true,male);assert.equal(open.curl,0);assert.equal(open.close,0);assert(open.done);
     assert.equal(figFrame(0,false,male,true).done,true);assert.equal(figFrame(0,true,male,true).curl,0);
     for(let t=0;t<6100;t+=16){
-      const s=splashFrame(t,male);for(const v of Object.values(s))if(typeof v==='number')assert(v>=0&&v<=1);
+      const s=splashFrame(t,male);for(const v of Object.values(s))if(typeof v==='number')assert(Number.isFinite(v));
       const points=swimmingPath(body,s,male).match(/-?\d*\.?\d+/g).map(Number);
       assert.equal(points.length,20);assert(points.every(Number.isFinite));
-      const reduced=splashFrame(t,male,true);assert.equal(reduced.dip,0);assert.equal(reduced.flick,0);assert.equal(reduced.duck,0);
+      const reduced=splashFrame(t,male,true);assert.equal(reduced.flick,0);assert.equal(reduced.duck,0);
       assert.deepEqual(swimmingPath(body,reduced,male).match(/-?\d*\.?\d+/g),body.match(/-?\d*\.?\d+/g));
     }
-    assert.equal(splashFrame(6000,male).settle,0);
+    assert.equal(splashFrame(6000,male).settle,1);
   }
   assert(figFrame(600,true,true).peek>.9);assert.equal(figFrame(600,true,false).peek,0);
-  assert(splashFrame(1600,false).dip>.9);assert.equal(splashFrame(1600,true).dip,0);
-  assert(splashFrame(3100,true).duck>.9);assert.equal(splashFrame(3100,false).duck,0);
-  assert(splashFrame(4020,true).flick>.9);assert.equal(splashFrame(4020,false).flick,0);
-  const dip=swimmingPath(body,splashFrame(1600,false)).match(/-?\d*\.?\d+/g).map(Number);
-  assert(dip[19]>240);assert.equal(dip[1],228); // Head bends while the tail stays planted.
+  // Swimming persists until cancelled. Splashes require a click and alternate roles.
+  assert.equal(splashFrame(9000,false).flick,0);
+  assert(splashFrame(3000,false,false,350,false).flick>.9);
+  assert.equal(splashFrame(3000,true,false,350,false).flick,0);
+  assert(splashFrame(3400,true,false,750,false).duck>.9);
+  assert(splashFrame(3000,true,false,350,true).flick>.9);
+  const first=swimmingPath(body,splashFrame(4000,false)),later=swimmingPath(body,splashFrame(4300,false));
+  assert.notEqual(first,later);
+  assert.equal(splashFrame(0,false).settle,0);
   const game=fs.readFileSync('game-of-worms/game.js','utf8');
   for(const text of['lombokPlay.start(piece)','lombokPlay.clear()','lombokPlay.cancel()','lombokPlay.active','lombokPlay.handles(piece)'])assert(game.includes(text));
   const play=fs.readFileSync('game-of-worms/lombok-play.js','utf8');

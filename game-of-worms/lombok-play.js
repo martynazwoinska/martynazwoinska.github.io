@@ -24,30 +24,24 @@ export function figFrame(ms,opening=false,male=false,reduced=false){
 }
 
 const pulse=(t,a,b,c,d)=>ease((t-a)/(b-a))*(1-ease((t-c)/(d-c)));
-export function splashFrame(ms,male=false,reduced=false){
-  if(reduced)return{settle:0,dip:0,flick:0,duck:0,blink:0,done:ms>=400};
-  return{
-    settle:pulse(ms,0,700,4950,5800),
-    dip:male?0:pulse(ms,650,1430,1750,2400),
-    flick:male?pulse(ms,3670,4020,4140,4530):pulse(ms,2440,2740,2850,3230),
-    duck:male?pulse(ms,2890,3130,3420,3740):pulse(ms,4300,4510,4730,5010),
-    blink:male?pulse(ms,3120,3180,3300,3390):pulse(ms,4500,4570,4670,4780),
-    done:ms>=5900
-  };
+export function splashFrame(ms,male=false,reduced=false,splashMs=Infinity,splasherMale=false){
+  const settle=reduced?0:ease((ms-(male?240:0))/1500);
+  const attack=pulse(splashMs,0,300,420,850);
+  const reaction=pulse(splashMs,480,650,850,1200);
+  return {settle,phase:ms/520+(male?1.8:0),
+    flick:reduced?0:male===splasherMale?attack:0,
+    duck:reduced?0:male!==splasherMale?reaction:0,
+    blink:reduced?0:male!==splasherMale?reaction:0};
 }
 export function swimmingPath(d,s,male=false){
-  const n=d.match(/-?\d*\.?\d+/g).map(Number),v=[...n];
-  // Deform the centreline, preserving the existing highlight and shadow offsets.
-  v[0]-=(male?25:30)*s.flick;v[1]-=(male?110:70)*s.flick;
-  v[2]-=10*s.flick;v[3]-=45*s.flick;
-  v[10]+=11*s.dip;v[11]+=28*s.dip;
-  v[13]+=33*s.dip+15*s.duck;
-  v[14]-=10*s.dip;v[15]+=34*s.dip+28*s.duck;
-  v[16]-=20*s.dip+14*s.duck;v[17]+=139*s.dip+60*s.duck;
-  v[18]-=24*s.dip+26*s.duck;v[19]+=200*s.dip+(male?85:50)*s.duck;
-  return interpolatePath(d,v,1);
+  const original=d.match(/-?\d*\.?\d+/g).map(Number);
+  const base=[78,228,122,280,173,255,181,203,188,151,225,105,278,113,330,121,355,82,326,54];
+  const flat=[78,186,110,212,130,168,166,188,196,213,220,167,250,184,280,201,305,166,326,178];
+  const target=flat.map((n,i)=>n+original[i]-base[i]+(i%2?Math.sin(s.phase-(i-1)*.36)*11:0));
+  target[1]-=32*s.flick;target[3]-=18*s.flick;
+  target[17]+=10*s.duck;target[19]+=15*s.duck;
+  return interpolatePath(d,target,s.settle);
 }
-
 // Closed contours use the same cubic segments as the approved open fruit.
 // The fleshy cut faces turn out of sight as the opaque outer skins meet.
 const CLOSED={
@@ -177,70 +171,66 @@ export function createLombokPlay(habitat,refresh=()=>{}){
     tick(start);
   }
   function beginWater(r){
+    r.kind='water';
     const art=r.target.querySelector('.location-accessory-art'),poolMatrix=r.matrix(art);
     const under=add(r.effects,'g',{transform:poolMatrix.toString()});
     const pool=r.clone(art,under),front=pool.querySelector('[data-lombok-pool-front]');
     r.style(art).style.visibility='hidden';
-    const ripples=Array.from({length:3},(_,i)=>add(under,'ellipse',{cx:110-i*4,cy:-15+i*3,rx:1,ry:1,fill:'none',stroke:'#e5faf1','stroke-width':1.2,opacity:0}));
-    const farSwimmer=player(r,true),workers=[player(r,false),farSwimmer];
+    const workers=[player(r,false),player(r,true)];
     const over=add(r.effects,'g',{transform:poolMatrix.toString()});over.appendChild(front);
+    const surface=add(r.effects,'g',{'data-lombok-water-contact':''});
+    const wakes=workers.map(()=>Array.from({length:3},()=>add(surface,'ellipse',{fill:'none',stroke:'#e5faf1','stroke-width':1.1,opacity:0})));
     const spray=add(r.effects,'g',{'data-lombok-spray':''});
-    const shots=[2760,4060].map((at,i)=>({at,duration:i?700:580,points:null,
-      ribbon:path(spray,'','none','#c3eef0',i?2.5:3.5),
-      drops:Array.from({length:20},()=>add(spray,'ellipse',{rx:1.4,ry:2.8,fill:'#bceaf0',stroke:'#448598','stroke-width':.7,opacity:0}))}));
-    // The original figs rest while the two swimmers act. Goggles follow faces.
-    for(const male of[false,true]){const fig=piece(FIG,male);if(visible(fig))r.style(fig).style.opacity='0';}
-    habitat.dataset.lombokAction='splashing';const start=performance.now();
+    const drops=Array.from({length:14},()=>add(spray,'ellipse',{rx:1.5,ry:2.3,fill:'#c8f3f4',stroke:'#448598','stroke-width':.6,opacity:0}));
+    const started=performance.now();r.splashAt=-Infinity;r.splasherMale=false;r.nextMale=false;
+    r.splash=()=>{const now=performance.now();if(now-started<1750||now-r.splashAt<1300)return;r.splashAt=now;r.splasherMale=r.nextMale;r.nextMale=!r.nextMale;r.shot=null;};
+    habitat.dataset.lombokAction='swimming';
     function tick(now){
       if(run!==r)return;if(!visible(r.target)||document.hidden){cancel();return;}
-      const ms=now-start;if(splashFrame(ms,false,reduced.matches).done){cancel();return;}
-      workers.forEach(w=>{
-        const s=splashFrame(ms,w.male,reduced.matches);
-        const centre=new DOMPoint(0,0).matrixTransform(poolMatrix);
-        // Follow the movable pool, but retain each worm's own size and angle.
-        const to=new DOMMatrix([w.from.a,w.from.b,w.from.c,w.from.d,
-          w.from.e+centre.x-192,w.from.f+centre.y-263+(w.male?40:0)]);
-        const v=['a','b','c','d','e','f'].map(k=>mix(w.from[k],to[k],s.settle));
-        w.moving=new DOMMatrix(v);w.holder.setAttribute('transform',w.moving.toString());
-        w.paths.forEach(({n,d})=>n.setAttribute('d',swimmingPath(d,s,w.male)));
-        const headX=-24*s.dip-26*s.duck,headY=200*s.dip+(w.male?85:50)*s.duck;
-        w.face.setAttribute('transform',`translate(${headX} ${headY}) rotate(${-82*s.dip-20*s.duck} 326 54)`);
-        w.face.querySelectorAll('.worm-eye').forEach(n=>{const y=Number(n.getAttribute('cy'));n.setAttribute('transform',`translate(0 ${y}) scale(1 ${1-.9*s.blink}) translate(0 ${-y})`);});
-        w.face.querySelectorAll('.worm-eye-shine').forEach(n=>n.setAttribute('opacity',1-s.blink));
-        if(w.tail)w.tail.setAttribute('transform',`translate(${-25*s.flick} ${-110*s.flick}) rotate(${-25*s.flick} 78 228)`);
-        w.tailPoint=new DOMPoint(78-(w.male?25:30)*s.flick,228-(w.male?110:70)*s.flick).matrixTransform(w.moving);
-        w.headPoint=new DOMPoint(326+headX,54+headY).matrixTransform(w.moving);
-      });
-      ripples.forEach((n,i)=>{
-        const age=clamp((ms-1370-i*160)/1150);
-        n.setAttribute('rx',4+age*32);n.setAttribute('ry',2+age*9);
-        n.setAttribute('opacity',reduced.matches?0:Math.sin(age*Math.PI)*.8);
-      });
-      shots.forEach((shot,i)=>{
-        const age=(ms-shot.at)/shot.duration;
-        if(age>=0&&!shot.points)shot.points=[workers[i].tailPoint,workers[1-i].headPoint];
-        const active=!reduced.matches&&age>=0&&age<=1;
-        shot.ribbon.setAttribute('opacity',active?Math.max(0,1-age*4):0);
-        if(!shot.points)return;
-        const[a,b]=shot.points,h=i?110:48;
-        shot.ribbon.setAttribute('d',`M${a.x} ${a.y}Q${mix(a.x,b.x,.45)} ${Math.min(a.y,b.y)-h} ${mix(a.x,b.x,Math.min(1,age*2))} ${mix(a.y,b.y,Math.min(1,age*2))-Math.sin(clamp(age*2)*Math.PI)*h}`);
-        shot.drops.forEach((n,j)=>{
-          const q=clamp(age-j*.009),spread=Math.sin(j*2.4)*q*15;
-          const x=mix(a.x,b.x,q)+spread,y=mix(a.y,b.y,q)-4*h*q*(1-q)+Math.cos(j*1.7)*q*12;
-          n.setAttribute('cx',x);n.setAttribute('cy',y);n.setAttribute('transform',`rotate(${(i?50:-35)+j*3} ${x} ${y})`);
-          n.setAttribute('opacity',active&&q>0?Math.min(1,(1-age)*6):0);
+      const ms=now-started,splashMs=now-r.splashAt;
+      if(reduced.matches&&ms>=400){cancel();return;}
+      workers.forEach((w,index)=>{
+        const f=splashFrame(ms,w.male,reduced.matches,splashMs,r.splasherMale);
+        const centre=new DOMPoint(w.male?-65:14,w.male?-19:8).matrixTransform(poolMatrix);
+        const wave=ease((ms-1700)/800),driftX=Math.sin(ms/1700+(w.male?2:0))*8*wave,driftY=Math.sin(ms/1100)*2*wave;
+        // Keep each worm's size independent of the visitor's pool size.
+        const linear=new DOMMatrix([w.from.a,w.from.b,w.from.c,w.from.d,0,0]);
+        const anchor=new DOMPoint(202,190).matrixTransform(linear);
+        const to=new DOMMatrix([w.from.a,w.from.b,w.from.c,w.from.d,centre.x-anchor.x+driftX,centre.y-anchor.y+driftY]);
+        const values=['a','b','c','d','e','f'].map(k=>mix(w.from[k],to[k],f.settle));
+        w.moving=new DOMMatrix(values);w.holder.setAttribute('transform',w.moving.toString());
+        w.paths.forEach(({n,d})=>n.setAttribute('d',swimmingPath(d,f,w.male)));
+        const coords=swimmingPath('M78 228C122 280 173 255 181 203C188 151 225 105 278 113C330 121 355 82 326 54',f,w.male).match(/-?\d*\.?\d+/g).map(Number);
+        const headX=coords[18]-326,headY=coords[19]-54;
+        w.face.setAttribute('transform',`translate(${headX} ${headY}) rotate(${-28*f.settle+3*Math.sin(f.phase)*f.settle} 326 54)`);
+        w.face.querySelectorAll('.worm-eye').forEach(n=>{const y=+n.getAttribute('cy');n.setAttribute('transform',`translate(0 ${y}) scale(1 ${1-.8*f.blink}) translate(0 ${-y})`);});
+        if(w.tail)w.tail.setAttribute('transform',`translate(${coords[0]-78} ${coords[1]-228}) rotate(${-12*f.settle} 78 228)`);
+        w.tailPoint=new DOMPoint(coords[0],coords[1]).matrixTransform(w.moving);
+        w.headPoint=new DOMPoint(coords[18],coords[19]).matrixTransform(w.moving);
+        wakes[index].forEach((n,i)=>{
+          const age=((ms+i*500)%1600)/1600,p=w.tailPoint;
+          n.setAttribute('cx',p.x-8*age);n.setAttribute('cy',p.y+3);
+          n.setAttribute('rx',5+age*20);n.setAttribute('ry',2+age*5);
+          n.setAttribute('opacity',reduced.matches?0:Math.sin(age*Math.PI)*.42*f.settle);
         });
       });
-      cue(r,'dip',1500,'water',ms,.14);
-      cue(r,'female-splash',2760,'water',ms,.22);
-      cue(r,'male-splash',4060,'water',ms,.18);
+      if(splashMs>=300&&splashMs<1000&&!r.shot){r.shot=[workers[r.splasherMale?1:0].tailPoint,workers[r.splasherMale?0:1].headPoint];if(!reduced.matches&&splashMs<400)sound.play('water',.2);}
+      drops.forEach((n,i)=>{
+        const age=(splashMs-300-i*12)/620,active=age>=0&&age<1&&!reduced.matches&&r.shot;
+        n.setAttribute('opacity',active?Math.sin(age*Math.PI):0);if(!active)return;
+        const [a,b]=r.shot,h=38+i%4*3;
+        n.setAttribute('cx',mix(a.x,b.x,age)+Math.sin(i*2.1)*age*7);
+        n.setAttribute('cy',mix(a.y,b.y,age)-4*h*age*(1-age));
+      });
+      cue(r,'entry',1200,'water',ms,.1);
       raf=requestAnimationFrame(tick);
     }
-    tick(start);
+    tick(started);
   }
   function start(target){
     if(!handles(target)||!visible(target))return false;
     if(run?.target===target){
+      if(run.kind==='water'){run.splash?.();return true;}
       if(run.waiting){run.opening=true;sound.unlock('fig');animateFig(run);}else cancel();
       return true;
     }
@@ -253,5 +243,8 @@ export function createLombokPlay(habitat,refresh=()=>{}){
   }
   for(const event of['pagehide','resize'])window.addEventListener(event,cancel);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});reduced.addEventListener('change',cancel);
+  if(typeof IntersectionObserver==='function')new IntersectionObserver(entries=>{
+    if(run?.kind==='water'&&entries.some(e=>!e.isIntersecting))cancel();
+  },{threshold:0}).observe(habitat);
   return{handles,start,cancel,clear:cancel,reset:cancel,get active(){return!!run;}};
 }

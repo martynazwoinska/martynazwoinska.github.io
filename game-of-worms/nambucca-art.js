@@ -122,6 +122,7 @@ function brush(g,male) {
   p(b,'M-2-11V-6M2-11V-7','none','#e0c7a6',.8);
 }
 function rockPainting(g,male) {
+  const workspace=g;g=part(workspace,'stone');
   const id=`nb-rock-${male?'male':'large'}`;
   const outline=male?'M-53-5Q-54-29-25-35L18-32Q44-29 53-9Q60 13 36 28L-12 35Q-44 31-53-5Z':'M-62-9Q-57-39-29-41L20-36Q49-37 66-10L62 20Q45 42 1 40L-41 27Q-67 20-62-9Z';
   const foot=add(g,'g',{transform:'translate(1 11)'});
@@ -143,6 +144,7 @@ function rockPainting(g,male) {
     s.setAttribute('stroke-dasharray','1 1');s.setAttribute('stroke-dashoffset','1');
     s.setAttribute('opacity','0');
   }
+  g=workspace;
   if(male) {
     const pot=add(g,'g',{transform:'translate(-55 36)'});
     p(pot,'M-12-10H12L10 9Q0 15-10 9Z','#f5e4c6',C.ink,1.5);

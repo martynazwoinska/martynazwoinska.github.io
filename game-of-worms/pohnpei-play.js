@@ -6,12 +6,16 @@ const mix=(a,b,q)=>a+(b-a)*q;
 const blend=(a,b,q)=>new DOMMatrix(['a','b','c','d','e','f'].map(k=>mix(a[k],b[k],q)));
 const COIL=[125,190,99,209,115,239,154,230,195,222,184,167,228,173,259,180,288,174,285,145];
 export function sledFrame(ms,reduced=false){
-  if(reduced)return{board:ms<1700?1:0,travel:0,turn:0,skid:0,done:ms>=1900};
-  const board=ease(ms/1350)*(1-ease((ms-5800)/1300));
-  const descent=ease((ms-1600)/2650),returning=ease((ms-5100)/1100);
-  return{board,travel:descent*(1-returning),
-    turn:Math.sin(clamp((ms-1600)/2650)*Math.PI*2)*4,
-    skid:ease((ms-3650)/200)*(1-ease((ms-4400)/500)),done:ms>=7200};
+  if(reduced)return{board:ms<1700?1:0,travel:0,turn:0,skid:0,push:0,bump:0,lean:0,walk:0,done:ms>=1900};
+  const board=ease(ms/1350)*(1-ease((ms-5650)/1350));
+  const descent=ease((ms-1800)/2800),home=ease((ms-7450)/2400);
+  const push=Math.sin(clamp((ms-1350)/700)*Math.PI);
+  const bump=Math.sin(clamp((ms-2950)/470)*Math.PI);
+  const skid=ease((ms-4250)/350)*(1-ease((ms-5000)/500));
+  const turn=Math.sin(clamp((ms-1900)/2600)*Math.PI*2)*4;
+  return{board,travel:descent*(1-home),turn,skid,push,bump,
+    lean:-push*7+turn*1.4+skid*9,
+    walk:Math.sin(clamp((ms-7300)/2700)*Math.PI),done:ms>=10000};
 }
 export function curlPath(d,q){
   let i=0;
@@ -172,9 +176,9 @@ export function createPohnpeiPlay(habitat,refresh=()=>{}){
   }
   function sledTick(r,now){
     const ms=now-r.start,f=sledFrame(ms,reduced.matches);
-    habitat.dataset.pohnpeiPhase=ms<1400?'boarding':ms<4300?'sliding':ms<5100?'skid':'returning';
-    // The descent remains inside the scene, then quietly resets before dismounting.
-    const pose=new DOMMatrix().translate(-90*f.travel,30*f.travel).multiply(r.from).rotate(f.turn);
+    habitat.dataset.pohnpeiPhase=ms<1350?'boarding':ms<2050?'push-off':ms<4250?'sliding':ms<5500?'braking':ms<7200?'climbing-out':'pulling-home';
+    // Stop first, climb out, then pull the empty leaf back along the ground.
+    const pose=new DOMMatrix().translate(-90*f.travel,30*f.travel-4*f.bump).multiply(r.from).rotate(f.turn);
     r.train.setAttribute('transform',pose.toString());
     const reversed=pose.scale(-1,1);
     r.rim.setAttribute('transform',reversed.toString());
@@ -182,23 +186,26 @@ export function createPohnpeiPlay(habitat,refresh=()=>{}){
     r.grips.replaceChildren();
     for(const w of r.people){
       const at=reversed.translate(w.male?22:-138,w.male?-107:-165).scale(w.male?.38:.76);
-      const to=w.male?at.translate(225,180).rotate(f.turn*.9).translate(-225,-180):at;
-      w.holder.setAttribute('transform',blend(w.from,to,f.board).toString());
+      const lean=f.lean*(w.male?1.15:.7);
+      const to=at.translate(225,180).rotate(lean).scale(1,1-.035*f.bump).translate(-225,-180);
+      const ground=new DOMMatrix().translate(-90*f.travel,30*f.travel).multiply(w.from);
+      const returning=ground.translate(78,228).rotate(Math.sin(ms/240+(w.male?1:0))*2*f.walk).translate(-78,-228);
+      w.holder.setAttribute('transform',blend(returning,to,f.board).toString());
       w.paths.forEach(({n,d})=>n.setAttribute('d',curlPath(d,f.board)));
       w.face.setAttribute('transform','translate('+(-41*f.board)+' '+(91*f.board)+')');
-      if(w.tail)w.tail.setAttribute('opacity',1-f.board);
+      if(w.tail){w.tail.setAttribute('opacity',Math.min(1,1-f.board+f.push*.85+f.skid*.6));w.tail.setAttribute('transform',`translate(${47*f.board} ${-38*f.board+14*f.push}) rotate(${18*f.push-12*f.skid} 78 228)`);}
       if(w.cape){w.cape.normal.setAttribute('opacity',1-f.board);w.cape.riding.setAttribute('opacity',f.board);}
-      if(!w.male&&f.board>.2){
-        const bodyPose=blend(w.from,to,f.board);
+      if(!w.male&&(f.board>.2||f.walk>.01)){
+        const bodyPose=blend(returning,to,f.board);
         for(const[a,b]of[[[240,176],[-79,-30]],[[219,181],[72,-34]]]){
           const shoulder=new DOMPoint(...a).matrixTransform(bodyPose),grip=new DOMPoint(...b).matrixTransform(reversed);
           const arm=path(r.grips,'M'+shoulder.x+' '+shoulder.y+'Q'+(grip.x+12)+' '+(shoulder.y+12)+' '+grip.x+' '+grip.y,'none','var(--worm-color)',4);
-          arm.setAttribute('opacity',f.board);
-          add(r.grips,'ellipse',{cx:grip.x,cy:grip.y,rx:3,ry:2,fill:'var(--worm-highlight)',opacity:f.board});
+          arm.setAttribute('opacity',Math.max(f.board,f.walk));
+          add(r.grips,'ellipse',{cx:grip.x,cy:grip.y,rx:3,ry:2,fill:'var(--worm-highlight)',opacity:Math.max(f.board,f.walk)});
         }
       }
     }
-    for(const[name,at,duration]of[['settle',700,.55],['slide',1750,1.05],['skid',3730,.7]]){
+    for(const[name,at,duration]of[['settle',700,.55],['push',1550,.45],['slide',2050,1.05],['bump',3010,.3],['skid',4450,.7],['pull',7800,.7]]){
       if(ms>=at&&!r.cues.has(name)){r.cues.add(name);if(!reduced.matches)sound.play('leaf',0,duration,name==='skid'?.09:.065);}
     }
     if(f.done)cancel();

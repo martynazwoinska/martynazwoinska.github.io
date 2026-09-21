@@ -11,6 +11,34 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Three selected scene animations, 2026-09-21
+
+Implementation and deployment requested for Lombok HPT26, Nambucca Heads QG2814
+and Pohnpei QG4739 after the focused weak-animation review. Based on main 812c6d5.
+
+- Lombok: persistent swimming with travelling body waves and water contact ripples.
+  Repeat pool clicks alternate tail splashes and reactions; sound follows contact.
+  Figs remain visible, and the existing hide-and-seek is preserved.
+- Nambucca: both craft workers bend toward their tools, with aprons and shoulders
+  following the body. Completed stones lift and tilt for inspection before returning.
+- Pohnpei: push-off, a small bump and braking reactions, then dismounting followed
+  by pulling the empty sled home. Existing leaf recordings follow the new phases.
+
+Approved backgrounds, accessory drawings, user placement/size and public copy remain
+unchanged. The stone drawing only gains a group to move it independently of the brush.
+No files added or deleted. Seven Game files, three checks and two documentation files
+changed on branch codex/three-scenes-motion.
+
+Validation: check-lombok-play, check-nambucca, check-nambucca-audio and check-pohnpei
+pass, including reduced motion, timeline geometry, recorded audio and cancellation.
+Browser checks covered swimming, repeat pointer splashes, Escape, both painters,
+finished-stone pose, sled boarding/riding/return and birdwatching, with no new console
+errors after fixes. Full-page proofs at viewports 360/768/1024/1440 px measured
+345x2453, 753x2385, 1009x1783 and 1425x1938 pixels; additional mobile Lombok and
+Pohnpei proofs were 345x2503. Captures exclude the 15px browser scrollbar. No horizontal
+overflow. Game uses its fixed light palette. Sound scheduling and files were checked;
+subjective listening was not available. Publication still requires Pages/live verification.
+
 ## Hidden gems and puzzle, deployment approved 2026-09-20
 
 2026-09-21: approved heart finish now lifts and pulses twice with a quiet original
