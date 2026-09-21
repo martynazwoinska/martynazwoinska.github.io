@@ -7307,11 +7307,11 @@ footer p { margin: 0; }
   .species-tab small { font-size: .56rem; padding-inline: 3px; letter-spacing: 0; white-space: nowrap; }
 }
 @media (max-width:680px) {
-  .topbar { grid-template-columns: minmax(0,1fr) auto; gap: 2px 10px; padding: 10px 14px 6px; }
-  .topbar .brand { grid-column: 1; grid-row: 1; text-align: left; align-self: end; }
-  .topbar .brand h1 { font-size: clamp(1.6rem,5.2vw,2rem); }
-  .topbar .back-link { grid-column: 1; grid-row: 2; min-height: 26px; display: inline-flex; align-items: center; font-size: .72rem; }
-  .topbar .treasure-toggle { grid-column: 2; grid-row: 1 / 3; }
+  .topbar { grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: 4px 10px; padding: 10px 14px 6px; }
+  .topbar .brand { grid-column: 2; grid-row: 1; text-align: center; }
+  .topbar .brand h1 { font-size: clamp(1.6rem,4.8vw,2rem); white-space: nowrap; }
+  .topbar .back-link { grid-column: 1; grid-row: 1; min-height: 44px; display: inline-flex; align-items: center; font-size: .72rem; }
+  .topbar .treasure-toggle { grid-column: 3; grid-row: 1; }
   .species-heading-copy { gap: 8px; }
   .species-heading-copy h2 { font-size: 1.1rem; max-width: 14ch; }
   .species-heading-copy .family-info-toggle { font-size: .7rem; padding: 7px 8px; gap: 5px; }
@@ -7320,4 +7320,10 @@ footer p { margin: 0; }
   .sister-label { top: 2px; font-size: .56rem; }
   .species-tab { min-height: 46px; padding: 4px 6px; font-size: .9rem; }
   .species-tab small { margin-top: 1px; font-size: .55rem; line-height: 1.3; }
+}
+@media (max-width:540px) {
+  .topbar { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .topbar .brand { grid-column: 1 / -1; grid-row: 1; }
+  .topbar .back-link { grid-column: 1; grid-row: 2; }
+  .topbar .treasure-toggle { grid-column: 2; grid-row: 2; }
 }

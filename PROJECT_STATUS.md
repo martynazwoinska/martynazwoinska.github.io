@@ -11,6 +11,23 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Centred atlas title approved for release, 2026-09-21
+
+Centred Worm Atlas between the back link and treasure control on compact screens.
+At 540 px and below the title stays centred above a single row of controls.
+Only game-of-worms/style.css, its index.html cache key and this status file changed.
+No artwork or copy changed. No files created or deleted. Deployment explicitly requested.
+Preview: http://127.0.0.1:8792/game-of-worms/?preview=compact-2
+
+Verified CSS viewport widths 360, 768, 1024 and 1440: title centre within 0.01 px
+of the header centre, no horizontal overflow. Treasure and family controls open
+with Enter, close with Escape and restore focus. No browser warnings or errors.
+Full-page captures were attempted at all four widths (268x1900, 582x1637,
+778x1489 and 1098x1440 output pixels), but the browser's 1.3 scaling produced
+stitched-image duplication below the header; these are not valid full-page
+visual proofs. Header appearance was inspected in the normal preview. The Game
+uses its fixed light palette. Full-page visual confirmation remains manual.
+
 ## Combined release approved, 2026-09-21
 
 Martyna explicitly requested deployment of all three recent changes: the final
