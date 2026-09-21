@@ -10,9 +10,17 @@ export const treasures=[
  {id:'towel',species:'briggsae',place:'QG130',name:'Kauaʻi · forest bath',hint:'Use a towel and watch its folds as the worm wipes.'}
 ];
 export const SAVE_KEY='worm-atlas-treasures-v1';
-export const emptySave=()=>({version:1,found:[],revealed:{},puzzle:null,wins:[]});
+export const emptySave=()=>({version:1,restartedAt:0,found:[],revealed:{},puzzle:null,wins:[]});
+// A newer hunt replaces an old one, so another open tab cannot restore its gems.
+export function mergeHunts(local,other){
+ if(other.restartedAt>local.restartedAt)return other;
+ if(other.restartedAt<local.restartedAt)return local;
+ return {...local,found:[...new Set([...local.found,...other.found])],revealed:{...other.revealed,...local.revealed},wins:[...new Set([...local.wins,...other.wins])]};
+}
+export function restartHunt(local,other=local){return {...emptySave(),restartedAt:Math.max(Date.now(),local.restartedAt+1,other.restartedAt+1)};}
 export function parseSave(raw){
  const clean=emptySave();try{const s=JSON.parse(raw);if(s?.version!==1)return clean;
+ clean.restartedAt=Number.isSafeInteger(s.restartedAt)&&s.restartedAt>=0?s.restartedAt:0;
  clean.found=[...new Set((Array.isArray(s.found)?s.found:[]).filter(id=>treasures.some(t=>t.id===id)))];
  for(const t of treasures){const p=s.revealed?.[t.id];if(p&&Number.isFinite(p.x)&&Number.isFinite(p.y))clean.revealed[t.id]={x:Math.max(4,Math.min(96,p.x)),y:Math.max(8,Math.min(85,p.y))};}
  clean.wins=[...new Set((Array.isArray(s.wins)?s.wins:[]).filter(x=>['easy','medium','mystery'].includes(x)).map(x=>x==='mystery'?'medium':x))];

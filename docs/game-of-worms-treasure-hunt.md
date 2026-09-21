@@ -2,6 +2,39 @@
 
 Status: implementation and deployment approved by Martyna on 2026-09-20, on `codex/gem-hunt`, based on current main `4c3e79a`. Publication verification is recorded in the deployment report. The Game remains English-only, as documented in the agent workflow; these strings intentionally have no partial Swedish or Polish translation.
 
+## Restart gem hunt, deployment approved 2026-09-21
+
+Based on main `3205d7a`. A separate Restart gem hunt control in the chest expands
+an inline confirmation below the puzzle, initially focusing Keep my collection. Confirming clears found
+gems, revealed locations, puzzle poses and completion history. It remounts the
+current discovery without altering scene/accessory preferences. Escape cancels
+the inline confirmation without rebuilding the board or changing piece positions.
+An empty hunt disables the restart control. Martyna requested the same-window
+revision after reviewing the first preview. The separate confirmation title was removed.
+
+A saved restart timestamp prevents an older hunt in another updated tab from
+restoring cleared gems. Existing saves migrate with no loss of progress.
+Tested using disposable progress on local port 8790: full and partial chest,
+Escape cancellation, focus restoration, cross-tab reset with an open puzzle,
+reload persistence, and recollecting Scotland's gem. Console clean. Model restart,
+puzzle and completion checks pass. No animations or dependencies added.
+
+Desktop confirmation and chest were inspected at 1265 CSS px with no overflow
+and 44px controls. The browser viewport override did not resize the test tab;
+requested 360/768/1024/1440 proofs therefore remain unverified. Captures are
+diagnostic only. The Game keeps its fixed light palette.
+
+Martyna approved the inline preview and requested deployment with shorter
+instructions on 2026-09-21. English-only copy:
+- Restart gem hunt
+- Hide all eight gems again and clear your puzzle progress?
+- Keep my collection
+- Gem hunt restarted. Find all eight gems again.
+- Drag or tap gems into place. Keys: arrows move, R rotates, Enter places.
+
+Changed: Game hunt/model/puzzle, CSS, Game entry/HTML and project notes. Created:
+`scripts/check-treasure-restart.cjs`. Deleted: none. QA fixture remains untracked.
+
 ## Hidden gems button redesign, deployment requested 2026-09-21
 
 Based on deployed `09de74e`. New original open-chest artwork shows the barrel

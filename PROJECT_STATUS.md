@@ -13,6 +13,14 @@ its entry. "To check" is not a judgement that a scene needs a redesign.
 
 ## Hidden gems and puzzle, deployment approved 2026-09-20
 
+Restart-gem-hunt preview added on 2026-09-21, based on main `3205d7a`.
+Confirmation clears only the gem collection and puzzle progress, with saved
+restart tracking across tabs. Functional checks pass; responsive viewport
+override was unavailable. The revised confirmation expands below the puzzle
+in the same window, as requested after review. Martyna approved deployment on
+2026-09-21 and requested shorter puzzle instructions.
+Details are in the treasure hunt notes.
+
 Martyna approved the complete treasure hunt and polished geometric pieces for deployment.
 Branch: `codex/gem-hunt`; current polish is based on main `5b206e1`.
 The old species-met badge is replaced by Hidden gems and an eight-piece collection.

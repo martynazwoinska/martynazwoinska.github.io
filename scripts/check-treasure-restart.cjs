@@ -1,0 +1,21 @@
+const assert=require('node:assert/strict');
+const {pathToFileURL}=require('node:url');
+const path=require('node:path');
+(async()=>{
+ const {emptySave,parseSave,mergeHunts,restartHunt,newPuzzle,treasures}=await import(pathToFileURL(path.resolve(__dirname,'../game-of-worms/treasure-model.js')).href);
+ const complete={...emptySave(),found:treasures.map(t=>t.id),revealed:{india:{x:40,y:50}},puzzle:newPuzzle('medium'),wins:['easy','medium']};
+ const restarted=restartHunt(complete);
+ assert.equal(restarted.found.length,0);assert.deepEqual(restarted.revealed,{});assert.equal(restarted.puzzle,null);assert.deepEqual(restarted.wins,[]);
+ assert.ok(restarted.restartedAt>complete.restartedAt);
+ assert.deepEqual(parseSave(JSON.stringify(restarted)),restarted,'restart survives reload');
+ assert.deepEqual(mergeHunts(complete,restarted),restarted,'another open tab adopts the restarted hunt');
+ assert.deepEqual(mergeHunts(restarted,complete),restarted,'an old tab cannot restore previous finds or wins');
+ const first={...restarted,found:['india'],revealed:{india:{x:30,y:50}}};
+ const second={...restarted,found:['bali'],revealed:{bali:{x:60,y:60}}};
+ assert.deepEqual(mergeHunts(first,second).found,['india','bali'],'new discoveries still merge across tabs');
+ const again=restartHunt(first,second);assert.ok(again.restartedAt>restarted.restartedAt);
+ assert.deepEqual(mergeHunts(first,again).found,[],'repeated restart supersedes the previous hunt');
+ const legacy={...complete};delete legacy.restartedAt;
+ assert.equal(parseSave(JSON.stringify(legacy)).found.length,8,'existing saves retain all gems');
+ console.log('PASS: complete reset, reload, legacy saves, repeated resets and stale-tab protection.');
+})().catch(error=>{console.error(error);process.exitCode=1;});

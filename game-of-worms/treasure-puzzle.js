@@ -22,8 +22,7 @@ export function mountPuzzle(host,state,save,announce){
   if(!state.puzzle)return;const puzzle=state.puzzle;selected=-1;drag=null;result.textContent='';panel.classList.remove('is-complete');boardWrap.hidden=false;tools.hidden=false;boardWrap.replaceChildren();
   help.hidden=false;
   panel.querySelectorAll('[data-level]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.level===puzzle.mode)));
-  help.textContent='Fit the gems into the outline.';
-  help.textContent+=' Drag, or select a piece then tap its destination. Keyboard: arrows move, R turns, Enter checks the fit.';
+  help.textContent='Drag or tap gems into place. Keys: arrows move, R rotates, Enter places.';
   board=svg(boardWrap,'svg',{viewBox:'0 0 600 650',class:'gem-board','aria-label':'Gem assembly board'});
   drawPuzzleSetting(board);
   drawPuzzleRecess(board,puzzle.mode==='easy');
