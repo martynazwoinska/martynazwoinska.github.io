@@ -186,7 +186,7 @@ export function createKauaiBath(habitat,refresh=()=>{}){
             const gem=towelGemFrame(ms),slide=gem.peek*17;
             tuckedGem.setAttribute('transform',`translate(${-12+slide*.35} ${8+slide}) rotate(${gem.peek*26})`);
             tuckedGem.setAttribute('opacity',gem.release?0:gem.peek);
-            if(gem.release){const origin=point(cloth,-6,25);revealTreasure(habitat,'towel',root,origin.x,origin.y,{fall:true,direction:male?-1:1});}
+            if(gem.release){const origin=point(cloth,-6,25);revealTreasure(habitat,'towel',root,origin.x,origin.y,{fall:true,direction:male?-1:1,sourceGem:tuckedGem.querySelector('[data-gem-art]')});}
           }
           reach(male?arms[1]:arms[0],point(myBody,285,121),point(cloth,12,10),s.show,male?-1:1);
           cue('cloth-1',1100,'cloth',.6,ms);cue('cloth-2',1900,'cloth',.45,ms);

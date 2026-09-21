@@ -11,6 +11,47 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Gem reveal motion review and release, 2026-09-21
+
+User requested the centred header deployment, then review, improvement and
+release of gem reveals across the eight hiding scenes. Header commit 2603ee9
+is live: Pages run 35657344323 succeeded and both changed public files matched
+committed bytes. This supersedes the earlier header preview status below.
+
+Reviewed all eight discovery routes in the browser. The cacao gem now drops
+from the opened pod; the compost gem leaves the tipping wheelbarrow with the
+soil rather than appearing beside its wheel afterward. The Mauritius gem is
+uncovered when the fruit clears the ground, before the basket deposit. Bubble
+and towel releases use accelerating falls, two small diminishing rebounds and
+a fixed ground shadow. No crystal stretching or inflating during a fall.
+The towel, bubble and canopy handovers retain source scale and orientation;
+size/orientation metadata survives save/reload. The small bubble's gem is more
+visible while staying inside the bubble. India retains the loupe discovery,
+follows the sample tube smoothly, and hides when its tube is switched off.
+The telescope focus interaction and canopy leaf opening are retained.
+
+Created game-of-worms/treasure-motion.js and scripts/check-treasure-motion.cjs.
+Changed the Game treasure hunt/model/CSS, five scene modules, game.js and
+index.html cache keys, and treasure-puzzle.js's model import. No deleted files,
+new assets, public copy changes or edits to other checkouts. Existing approved
+backgrounds, accessories, saved placements and puzzle rules are retained.
+
+Validation: all eight real discovery paths collected to 8/8 in an isolated
+local test origin. Inspected falls at normal and slow playback, refined small
+bubble readability, and checked India hide/show and scene/reload restoration.
+Reduced-motion compost and male towel finds remain collectible without falling motion.
+No console warnings/errors. Full-page fixed-light proofs at CSS viewports
+1440/1024/768/360 produced uncropped 1425x1864, 1009x1716, 753x2158 and 345x2225
+images respectively; no horizontal overflow. This fresh browser tab resolved
+the scaling/capture glitch from the earlier header-only preview. A 48px gem
+hit target remains available on the phone layout and keyboard collection works.
+
+Passed motion invariants across 108 size/release combinations, metadata save
+validation, treasure discoveries/puzzle/restart/finish checks, the six affected
+scene checks (Araucania, Bali cacao, Kauai bath, Mauritius, Salt Lake, Queensland),
+JavaScript syntax checks and git diff --check. Local-only playback controls and
+preview server files remain under untracked output and are excluded from release.
+
 ## Centred atlas title approved for release, 2026-09-21
 
 Centred Worm Atlas between the back link and treasure control on compact screens.

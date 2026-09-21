@@ -77,7 +77,7 @@ export function createSaltLakeBubbles(habitat,refresh=()=>{}){
   add(g,'path',{d:'M-.68-.37Q-.55-.68-.28-.71',fill:'none',stroke:'#fffdf0','stroke-width':.055,'stroke-linecap':'round'});
   add(g,'ellipse',{cx:-.72,cy:-.2,rx:.035,ry:.07,fill:'#fffdf0',opacity:.85});
   const b={g,hit,x:pos.x,y:pos.y,r,born:performance.now(),vx:options.vx??(serial%2?5:-4),vy:options.vy??-5,life:options.life??16000,...options};bubbles.push(b);
-  if(habitat.dataset.treasureId==='bubbles'&&habitat.dataset.treasureState==='hidden'&&!bubbles.some(other=>other!==b&&other.treasure)){b.treasure=true;drawGem(g,4,.006);g.setAttribute('aria-label','Pop bubble carrying a gem');}
+  if(habitat.dataset.treasureId==='bubbles'&&habitat.dataset.treasureState==='hidden'&&!bubbles.some(other=>other!==b&&other.treasure)){b.treasure=true;drawGem(g,4,r<25?.012:.006);g.setAttribute('aria-label','Pop bubble carrying a gem');}
   const pop=event=>{event.preventDefault();event.stopPropagation();audio.prepare();burst(b,true);};
   g.addEventListener('pointerdown',e=>e.stopPropagation());g.addEventListener('click',pop);g.addEventListener('keydown',e=>{if(['Enter',' '].includes(e.key))pop(e);if(e.key==='Escape'){e.stopPropagation();cancel();}});
   drawBubble(b,performance.now());wake();return b;
@@ -90,7 +90,7 @@ export function createSaltLakeBubbles(habitat,refresh=()=>{}){
  }
  function burst(b,clicked=false){
   if(!bubbles.includes(b))return;const focused=document.activeElement===b.g;const big=b.r>35;
-  if(clicked&&b.treasure)revealTreasure(habitat,'bubbles',root,b.x,b.y);
+  if(clicked&&b.treasure)revealTreasure(habitat,'bubbles',root,b.x,b.y,{sourceGem:b.g.querySelector('[data-gem-art]')});
   bubbles=bubbles.filter(x=>x!==b);b.g.remove();for(const child of bubbles)if(child.attached===b){child.attached=null;child.born=performance.now();}
   if(clicked&&!reduced.matches)audio.play('pop');
   if(!reduced.matches){const g=add(layer,'g',{'pointer-events':'none'});for(let i=0;i<9;i++){const a=i*Math.PI*2/9;add(g,'path',{d:`M${Math.cos(a)*b.r*.8} ${Math.sin(a)*b.r*.8}l${Math.cos(a)*7} ${Math.sin(a)*7}`,stroke:i%2?'#e5c7df':'#e8f6ed','stroke-width':1.5,'stroke-linecap':'round'});}sparks.push({g,x:b.x,y:b.y,born:performance.now()});}

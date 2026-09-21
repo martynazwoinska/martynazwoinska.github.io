@@ -91,7 +91,7 @@ export function createBaliCacao(habitat) {
     if (!opened) return;
     opened.setAttribute('opacity', amount > 0 || jolt !== 0 ? '1' : '0');
     opened.dataset.cacaoOpened = String(amount);
-    if(amount>.88)revealTreasure(habitat,'bali',background(),541,166);
+    if(amount>.88)revealTreasure(habitat,'bali',background(),541,182,{fall:true});
     parts.forEach(({hinge, face, shell}, i) => {
       const turn = (i ? -22 : 17) * amount + settling * (i ? -.65 : 1) + jolt;
       hinge.setAttribute('transform', `translate(536 110) rotate(${turn})`);

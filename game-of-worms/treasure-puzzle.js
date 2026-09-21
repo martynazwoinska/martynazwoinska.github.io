@@ -1,5 +1,5 @@
 import {svg,pieces,drawGem,pointsText,rotate} from './treasure-pieces.js?v=20260920-discovery-2';
-import {newPuzzle,moveGroup,rotateGroup,snap,target} from './treasure-model.js?v=20260921-spacing';
+import {newPuzzle,moveGroup,rotateGroup,snap,target} from './treasure-model.js?v=20260921-motion-1';
 import {drawPuzzleSetting,drawPuzzleRecess,celebrateHeart} from './treasure-board-art.js?v=20260921-heartbeat-1';
 
 import {createHeartFinishSound} from './treasure-finish-sound.js?v=20260921-heartbeat-1';

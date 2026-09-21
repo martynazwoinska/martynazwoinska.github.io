@@ -57,3 +57,10 @@
 .treasure-restart-confirmation p{margin:0;font-size:14px;line-height:1.5}
 .treasure-restart-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .treasure-restart-actions button{min-height:44px}
+
+/* Gems retain their scene scale; the transparent touch target stays generous. */
+.scene-gem{display:grid;place-items:center;filter:drop-shadow(0 1px 1px #163b4540)}
+.scene-gem svg{width:var(--scene-gem-size,32px);height:var(--scene-gem-size,32px)}
+.scene-gem-shadow{position:absolute;height:4px;border-radius:50%;background:#172e2d;opacity:.22;transform:translate(-50%,-50%);pointer-events:none;filter:blur(1.5px)}
+.scene-gem[data-treasure-gem="towel"]::after{content:none}
+.scene-gem[hidden]{display:none}

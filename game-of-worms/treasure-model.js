@@ -22,7 +22,7 @@ export function parseSave(raw){
  const clean=emptySave();try{const s=JSON.parse(raw);if(s?.version!==1)return clean;
  clean.restartedAt=Number.isSafeInteger(s.restartedAt)&&s.restartedAt>=0?s.restartedAt:0;
  clean.found=[...new Set((Array.isArray(s.found)?s.found:[]).filter(id=>treasures.some(t=>t.id===id)))];
- for(const t of treasures){const p=s.revealed?.[t.id];if(p&&Number.isFinite(p.x)&&Number.isFinite(p.y))clean.revealed[t.id]={x:Math.max(4,Math.min(96,p.x)),y:Math.max(8,Math.min(85,p.y))};}
+ for(const t of treasures){const p=s.revealed?.[t.id];if(p&&Number.isFinite(p.x)&&Number.isFinite(p.y))clean.revealed[t.id]={x:Math.max(4,Math.min(96,p.x)),y:Math.max(8,Math.min(85,p.y)),...(Number.isFinite(p.size)&&p.size>0?{size:Math.min(.3,p.size)}:{}),...(Number.isFinite(p.angle)?{angle:normalAngle(p.angle)}:{})};}
  clean.wins=[...new Set((Array.isArray(s.wins)?s.wins:[]).filter(x=>['easy','medium','mystery'].includes(x)).map(x=>x==='mystery'?'medium':x))];
  // Keep the former Medium save key: Mystery now names these same outline rules.
  // Retired free-form boards restart at the new Mystery level without losing gems.

@@ -173,7 +173,7 @@ export function createMauritiusPlay(habitat, ensureBasket) {
         let grip,where;
         if (s.stage==='reach') {grip=mix(origin,ground,s.progress);where=ground;}
         if (s.stage==='grip') {grip={x:ground.x+s.effort*Math.sin(ms/38)*1.1,y:ground.y-s.effort*7};where=grip;}
-        if (s.stage==='carry') {grip=mix(ground,carryEnd,s.progress);grip.y-=Math.sin(Math.PI*s.progress)*48;where=grip;}
+        if (s.stage==='carry') {grip=mix(ground,carryEnd,s.progress);grip.y-=Math.sin(Math.PI*s.progress)*48;where=grip;if(Math.hypot(where.x-ground.x,where.y-ground.y)>radius*1.5)revealTreasure(habitat,'mauritius',root,ground.x,ground.y);}
         if (s.stage==='deposit') {grip=carryEnd;where=mix(carryEnd,target,s.progress);}
         if (s.stage==='return') {grip=mix(carryEnd,origin,s.progress);where=target;}
         if (reduced.matches) {grip=origin;where=target;}

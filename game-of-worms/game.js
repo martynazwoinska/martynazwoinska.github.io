@@ -1,20 +1,20 @@
 import { createFinalScenes } from "./final-scenes-play.js?v=20260920-snack-sound-1";
 import { createOrsaySketching } from "./orsay-play.js?v=20260919-orsay-hold-1";
-import { createSaltLakeBubbles } from "./salt-lake-play.js?v=20260920-gems-1";
+import { createSaltLakeBubbles } from "./salt-lake-play.js?v=20260921-motion-1";
 import { createUmbrellaPivot, umbrellaHeadroom } from "./mahahual-pivot.js?v=20260917-mahahual-22";
 import { createMahahualPlay } from "./mahahual-play.js?v=20260917-mahahual-22";
 import { createPraslinPlay } from "./praslin-play.js?v=20260917-praslin-7";
 import { createReunionJU1375Play } from "./reunion-ju1375-play.js?v=20260917-reunion-7";
 import { createTaipeiPlay } from "./taipei-play.js?v=20260916-pottery-9";
 import { createGuadeloupePlay } from "./guadeloupe-play.js?v=20260916-gwoka-11";
-import { createMauritiusPlay } from "./mauritius-play.js?v=20260920-gems-1";
+import { createMauritiusPlay } from "./mauritius-play.js?v=20260921-motion-1";
 import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.net/npm/d3-geo@3/+esm";
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
 import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260921-forest-4";
-import { createKauaiBath } from "./kauai-bath-play.js?v=20260920-discovery-2";
+import { createKauaiBath } from "./kauai-bath-play.js?v=20260921-motion-1";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
 import { createLombokPlay } from "./lombok-play.js?v=20260921-forest-4";
@@ -34,13 +34,13 @@ import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260908-cryo-return-1
 import { createBaliGongs, GONG_FAMILY } from "./bali-gong-duet.js?v=20260920-gong-duet-2";
 import { createEdinburghPipes } from "./edinburgh-pipes.js?v=20260909-pipes-1";
 import { createClaremontPlay } from "./claremont-play.js?v=20260920-books-7";
-import { createAraucaniaPlay } from "./araucania-play.js?v=20260920-gems-1";
-import { createBaliCacao } from "./bali-cacao.js?v=20260920-gems-1";
+import { createAraucaniaPlay } from "./araucania-play.js?v=20260921-motion-1";
+import { createBaliCacao } from "./bali-cacao.js?v=20260921-motion-1";
 import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-fans-1";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
-import {createTreasureHunt} from './treasure-hunt.js?v=20260921-spacing';
+import {createTreasureHunt} from './treasure-hunt.js?v=20260921-motion-1';
 
 const t = createGameTranslator(document.documentElement.lang);
 

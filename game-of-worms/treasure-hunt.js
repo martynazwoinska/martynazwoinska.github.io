@@ -1,6 +1,7 @@
 import {svg,drawGem,revealTreasure,pieces} from './treasure-pieces.js?v=20260920-discovery-2';
-import {treasures,SAVE_KEY,parseSave,emptySave,mergeHunts,restartHunt} from './treasure-model.js?v=20260921-spacing';
-import {mountPuzzle} from './treasure-puzzle.js?v=20260921-spacing';
+import {treasures,SAVE_KEY,parseSave,emptySave,mergeHunts,restartHunt} from './treasure-model.js?v=20260921-motion-1';
+import {mountPuzzle} from './treasure-puzzle.js?v=20260921-motion-1';
+import {gemLanding,gemDropFrames} from './treasure-motion.js?v=20260921-motion-1';
 import {drawCanopyCache} from './treasure-discoveries.js?v=20260920-discovery-2';
 
 export function createTreasureHunt(habitat){
@@ -11,6 +12,7 @@ export function createTreasureHunt(habitat){
  const noticeSlot=habitat.parentElement.querySelector('.dress-bar > div');noticeSlot.classList.add('gem-notice-slot');
  const notice=document.createElement('div');notice.className='treasure-notice';notice.hidden=true;noticeSlot.append(notice);
  let canopyCache=null,sceneSpecies='',scenePlace='',confirmingRestart=false;
+ let shadow=null;
  let current=null,anchor=null,clue=null,button=null,returnFocus=null,puzzleUI=null,timer=0,raf=0,last=0;
  const announce=text=>{live.textContent=text;};
  function save(){
@@ -20,17 +22,17 @@ export function createTreasureHunt(habitat){
  function update(){count.textContent=`${state.found.length}/8`;toggle.setAttribute('aria-label',`Hidden gems: ${state.found.length} of 8 found. Open treasure chest.`);if(current)habitat.dataset.treasureState=state.found.includes(current.id)?'collected':state.revealed[current.id]?'revealed':'hidden';}
  function hideNotice(){notice.hidden=true;noticeSlot.classList.remove('has-gem-notice');}
  function say(text,duration=6500){announce(text);notice.textContent=text;notice.hidden=false;noticeSlot.classList.add('has-gem-notice');clearTimeout(timer);timer=setTimeout(hideNotice,duration);}
- function position(node,x,y){const m=node?.getScreenCTM?.(),b=habitat.getBoundingClientRect();if(!m||!b.width||!b.height)return null;const p=new DOMPoint(x,y).matrixTransform(m);return{x:Math.max(5,Math.min(95,(p.x-b.left)/b.width*100)),y:Math.max(9,Math.min(84,(p.y-b.top)/b.height*100))};}
+ function position(node,x,y,raw=false){const m=node?.getScreenCTM?.(),b=habitat.getBoundingClientRect();if(!m||!b.width||!b.height)return null;const p=new DOMPoint(x,y).matrixTransform(m);const spot={x:(p.x-b.left)/b.width*100,y:(p.y-b.top)/b.height*100};return raw?spot:{x:Math.max(5,Math.min(95,spot.x)),y:Math.max(9,Math.min(84,spot.y))};}
  function collect(id){
   if(state.found.includes(id)||!state.revealed[id])return;
-  state.found.push(id);save();update();button?.remove();button=null;clue?.remove();clue=null;cancelAnimationFrame(raf);
+  state.found.push(id);save();update();shadow?.remove();shadow=null;button?.remove();button=null;clue?.remove();clue=null;cancelAnimationFrame(raf);
   say(state.found.length===8?'Hooray! You found all 8 gems! Now open your treasure chest and solve the puzzle.':`Gem found! ${state.found.length} of 8 collected.`,state.found.length===8?12000:6500);
   toggle.focus({preventScroll:true});
  }
  function mountCanopyCache(opened=false){
   const cache=document.createElement('button');canopyCache=cache;cache.type='button';cache.className='canopy-gem-cache';cache.setAttribute('aria-label','Look behind the canopy leaves');
   const {art,cover,gem}=drawCanopyCache(cache);layer.append(cache);
-  const open=()=>{if(current?.id!=='canopy'||!cache.isConnected)return;cover.style.transformOrigin='95px 50px';cover.style.transform='rotate(-68deg)';gem.setAttribute('opacity',0);cache.disabled=true;cache.setAttribute('aria-hidden','true');if(!opened)revealTreasure(habitat,'canopy',art,53,68);anchor={node:art,x:53,y:68};placeButton();if(!opened)button?.focus({preventScroll:true});};
+  const open=()=>{if(current?.id!=='canopy'||!cache.isConnected)return;cover.style.transformOrigin='95px 50px';cover.style.transform='rotate(-68deg)';gem.setAttribute('opacity',0);cache.disabled=true;cache.setAttribute('aria-hidden','true');if(!opened)revealTreasure(habitat,'canopy',art,53,68,{sourceGem:gem.querySelector('[data-gem-art]')});anchor={node:art,x:53,y:68};placeButton();if(!opened)button?.focus({preventScroll:true});};
   if(opened){open();return;}
   cache.addEventListener('pointerdown',e=>e.stopPropagation());
   cache.addEventListener('click',e=>{
@@ -44,36 +46,57 @@ export function createTreasureHunt(habitat){
   mountCanopyCache();say('A glint behind the leaves. Take a closer look.');
  });
  function showGem(){
-  button?.remove();button=null;if(!current||state.found.includes(current.id)||!state.revealed[current.id])return;
+  shadow?.remove();shadow=null;button?.remove();button=null;if(!current||state.found.includes(current.id)||!state.revealed[current.id])return;
   const id=current.id,index=treasures.indexOf(current);button=document.createElement('button');button.type='button';button.className='scene-gem';button.setAttribute('aria-label','Collect hidden gem');button.dataset.treasureGem=id;
-  const art=svg(button,'svg',{viewBox:'-100 -100 200 200','aria-hidden':'true'});drawGem(art,index,85/Math.max(...pieces[index].local.flat().map(Math.abs)));button.addEventListener('pointerdown',e=>e.stopPropagation());button.addEventListener('click',e=>{e.stopPropagation();collect(id);});layer.append(button);placeButton();
+  const art=svg(button,'svg',{viewBox:'-100 -100 200 200','aria-hidden':'true'});drawGem(art,index,85/Math.max(...pieces[index].local.flat().map(Math.abs)));button.addEventListener('pointerdown',e=>e.stopPropagation());button.addEventListener('click',e=>{e.stopPropagation();collect(id);});layer.append(button);
+  if(['bali','compost','towel','bubbles','mauritius'].includes(id)){shadow=document.createElement('span');shadow.className='scene-gem-shadow';layer.prepend(shadow);}
+  placeButton();
  }
- function placeButton(){if(!button||!current)return;let p=state.revealed[current.id];if(anchor?.node?.isConnected&&!anchor.node.closest('[hidden]')){p=position(anchor.node,anchor.x,anchor.y)||p;state.revealed[current.id]=p;}if(p){button.style.left=`${p.x}%`;button.style.top=`${p.y}%`;}}
+ function placeButton(){
+  if(!button||!current)return;
+  button.hidden=!!anchor?.node?.closest('[hidden]');
+  let p=state.revealed[current.id];
+  if(anchor?.node?.isConnected&&!anchor.node.closest('[hidden]')){
+   p={...p,...(position(anchor.node,anchor.x,anchor.y)||p)};state.revealed[current.id]=p;
+  }
+  const size=(p?.size||{india:.055,canopy:.055}[current.id]||.063)*habitat.clientHeight;
+  button.style.setProperty('--scene-gem-size',size+'px');
+  button.querySelector('svg').style.rotate=(p?.angle||0)+'deg';
+  if(p){
+   if(shadow){shadow.style.left=p.x+'%';shadow.style.top=p.y+'%';shadow.style.width=size*.65+'px';shadow.style.marginTop=size*.35+'px';}
+   button.style.left=p.x+'%';button.style.top=p.y+'%';
+  }
+ }
  habitat.addEventListener('treasure-reveal',e=>{
-  const{id,node,x,y,fall,direction=1}=e.detail;if(current?.id!==id||state.found.includes(id)||state.revealed[id])return;
-  const start=position(node,x,y)||{x:70,y:65};
-  state.revealed[id]=fall?{x:Math.max(9,Math.min(91,start.x+direction*12)),y:78}:id==='bubbles'?{x:start.x,y:76}:start;
-  // Dropped finds stay on the ground. Only the gem still inside its tube follows it.
+  const{id,node,x,y,fall=false,direction=1,sourceGem}=e.detail;if(current?.id!==id||state.found.includes(id)||state.revealed[id])return;
+  const start=position(node,x,y,true)||{x:70,y:65},b=habitat.getBoundingClientRect();
+  const dropping=fall||id==='bubbles',end=dropping?gemLanding(start,id,direction):position(node,x,y)||start;
+  let angle=0,size;
+  if(sourceGem?.getScreenCTM){const m=sourceGem.getScreenCTM();if(m){const extent=Math.max(...pieces[treasures.indexOf(current)].local.flat().map(Math.abs));size=2*extent*Math.hypot(m.a,m.b)/.85/b.height;angle=Math.atan2(m.b,m.a)*180/Math.PI;}}
+  state.revealed[id]={...end,...(size?{size}:{}),...(!dropping&&angle?{angle}:{})};
   anchor=id==='india'?{node,x,y}:null;save();update();showGem();
-  if(id==='bubbles'&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const dy=(start.y-76)*habitat.getBoundingClientRect().height/100;button?.animate([{translate:`0 ${dy}px`},{translate:'0 0'}],{duration:650,easing:'cubic-bezier(.35,0,.8,.65)'});}
-  if(fall&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
-   const b=habitat.getBoundingClientRect(),end=state.revealed[id],dx=(start.x-end.x)*b.width/100,dy=(start.y-end.y)*b.height/100;
-   button?.animate([{translate:`${dx}px ${dy}px`,rotate:'-28deg',scale:'.55',offset:0},{translate:`${dx*.65}px ${dy*.75}px`,rotate:'8deg',scale:'.7',offset:.35},{translate:'0 0',rotate:'32deg',scale:'1',offset:.76},{translate:'0 -9px',rotate:'12deg',offset:.87},{translate:'0 0',rotate:'0deg',offset:1}],{duration:1050,easing:'ease-in',fill:'none'});
+  if(sourceGem)sourceGem.style.visibility='hidden';
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+   if(dropping&&start.y<=end.y){
+    const motion=gemDropFrames(start,end,b.width,b.height,angle);
+    button?.animate(motion.frames,{duration:motion.duration,easing:'linear'});
+    shadow?.animate([{opacity:.03,scale:'.35'},{opacity:.22,scale:'1',offset:motion.contact},{opacity:.22,scale:'1'}],{duration:motion.duration,easing:'linear'});
+   }else button?.animate([{opacity:0},{opacity:1}],{duration:220,easing:'ease-out'});
   }
   say('Something sparkled! Tap the gem to collect it.');
  });
  function mount(species,place){
   sceneSpecies=species;scenePlace=place;
-  save();clue?.remove();clue=null;anchor=null;button?.remove();button=null;canopyCache?.remove();canopyCache=null;delete habitat.dataset.treasureCanopyReached;hideNotice();clearTimeout(timer);cancelAnimationFrame(raf);
+  save();clue?.remove();clue=null;anchor=null;shadow?.remove();shadow=null;button?.remove();button=null;canopyCache?.remove();canopyCache=null;delete habitat.dataset.treasureCanopyReached;hideNotice();clearTimeout(timer);cancelAnimationFrame(raf);
   current=treasures.find(t=>t.species===species&&place.includes(t.place))||null;habitat.dataset.treasureId=current?.id||'';update();
   if(!current||state.found.includes(current.id))return;showGem();
   if(current.id==='canopy'&&state.revealed.canopy)mountCanopyCache(true);
-  if(current.id==='india'&&habitat.dataset.treasureState==='hidden'){
+  if(current.id==='india'){
    const contents=habitat.querySelector('[clip-path="url(#tri-tube-contents-female)"]');
-   if(contents){clue=svg(contents,'g',{'data-treasure-clue':'india',transform:'translate(92 4)','pointer-events':'none'});drawGem(clue,0,.1);}
+   if(contents){clue=svg(contents,'g',{'data-treasure-clue':'india',transform:'translate(92 4)','pointer-events':'none'});drawGem(clue,0,.1);if(state.revealed.india){anchor={node:clue,x:0,y:0};placeButton();}}
   }
   function tick(now){
-   raf=requestAnimationFrame(tick);if(document.hidden||now-last<100)return;last=now;placeButton();
+   raf=requestAnimationFrame(tick);if(document.hidden||now-last<32)return;last=now;placeButton();
    if(current?.id!=='india'||habitat.dataset.treasureState!=='hidden'||!clue?.isConnected||clue.closest('[hidden]'))return;
    const m=clue.getScreenCTM();if(!m)return;const p=new DOMPoint(0,0).matrixTransform(m);
    for(const lens of habitat.querySelectorAll('[data-live-loupe] svg')){if(lens.closest('[hidden]'))continue;const lm=lens.getScreenCTM();if(!lm)continue;const q=p.matrixTransform(lm.inverse()),box=lens.viewBox.baseVal,r=Math.min(box.width,box.height)*.4;if(Math.hypot(q.x-box.x-box.width/2,q.y-box.y-box.height/2)<r){revealTreasure(habitat,'india',clue,0,0);break;}}
