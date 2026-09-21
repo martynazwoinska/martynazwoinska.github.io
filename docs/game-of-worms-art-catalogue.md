@@ -1,5 +1,35 @@
 # Game of Worms art catalogue
 
+Deployment approved 2026-09-21 for final forest-4 with compact-1 navigation.
+This supersedes preview status notes below; use the final artwork unchanged.
+
+Follow-up forest-4, 2026-09-21: fixed the fig finish flash by keeping the
+original accessory group in place. Reparenting had restarted its CSS pop-in.
+Leaf fans now have curved blades, folded tips, clipped curved veins and shaded
+surfaces. Butterflies now have turquoise-blue wings; twig perches were removed.
+Each butterfly can roam on its own continuous path while figs or fans are active.
+A second click returns it smoothly. Escape, scene changes, dragging, resizing,
+page hiding and reduced motion stop flight and restore visitor placement.
+No public labels changed. Added lombok-flight.js and focused route checks.
+Browser verified both flights together, flight with fig/fan actions, return clicks,
+clean fig completion and both fan grips. No console errors. Full-page proofs at
+360/768/1024/1440 CSS px: 345x2451, 753x2333, 1009x1759, 1425x1886 pixels;
+no horizontal overflow. Initial zoomed captures were invalid and replaced.
+Focused timeline, audio, flight-continuity/bounds and syntax checks passed.
+No files deleted, no commit or deployment; current contextual proof awaits review.
+
+
+Lombok local revision, 2026-09-21: three paired accessories, Leaf fans, Figs and
+Butterflies. Original vector art in lombok-forest-art.js gives the figs plum skin,
+cream pith, clipped red florets and seeds; closed fruit has a narrow neck and fine
+skin marks. Distinct broad and narrow leaf fans have ribs and bound handles.
+Butterflies have separate fore/hind wings, antennae, legs and twig perches.
+The first visual pass was refined to contain the curled worm inside the fruit,
+bring the male fan within reach, and give resting butterflies a visible perch.
+No new raster assets. Final contextual preview forest-1 awaits user review;
+not committed or deployed. Background and existing visitor fig transforms retained.
+
+
 Tenerife approved revision, 2026-09-20: the male's avocado is replaced by an original
 handled gourd shaker. The large avocado, both timples and costumes retain their
 approved artwork. The gourd has a wood handle, cord binding, plugged crown and

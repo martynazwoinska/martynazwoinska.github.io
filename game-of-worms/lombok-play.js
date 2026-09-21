@@ -1,7 +1,7 @@
-import {createLombokSound} from './lombok-sound.js?v=20260912-lombok-1';
+import {createLombokFlights} from './lombok-flight.js?v=20260921-forest-4';
+import {createLombokSound} from './lombok-sound.js?v=20260921-forest-4';
+export const FAN='hpt26-leaf-fans',BUTTERFLY='hpt26-butterflies';
 export const FIG='lingsar-ficus-fruit-transformation';
-export const WATER='hpt26-splashing-pool';
-const GOGGLES='hpt26-swimming-goggles';
 const clamp=x=>Math.max(0,Math.min(1,x));
 const ease=x=>{x=clamp(x);return x*x*(3-2*x);};
 const mix=(a,b,q)=>a+(b-a)*q;
@@ -10,64 +10,57 @@ const path=(p,d,fill,stroke='none',width=1)=>add(p,'path',{d,fill,stroke,'stroke
 export function interpolatePath(template,to,q){let i=0;return template.replace(/-?\d*\.?\d+/g,n=>` ${mix(Number(n),to[i++],q)} `);}
 const COIL=[125,190,100,170,135,110,176,115,235,122,230,197,190,215,150,236,149,179,185,163];
 
-export function figFrame(ms,opening=false,male=false,reduced=false){
-  if(reduced)return{curl:opening?0:1,close:opening?0:1,peek:0,tail:opening?0:1,recoil:0,done:true};
-  if(!opening)return{curl:ease(ms/1250),close:ease((ms-690)/900),peek:0,
-    tail:male?ease((ms-970)/350):0,recoil:0,done:ms>=1700};
-  if(male){
-    const peek=ease(ms/330)*(1-ease((ms-1000)/450));
-    return{curl:1-ease((ms-1100)/1200),close:1-.18*peek-ease((ms-1080)/680),peek,
-      tail:1-ease((ms-1100)/600),recoil:0,done:ms>=2380};
-  }
-  return{curl:1-ease((ms-120)/800),close:1-ease(ms/430),peek:0,tail:0,
-    recoil:Math.sin(clamp((ms-160)/770)*Math.PI),done:ms>=1100};
-}
-
 const pulse=(t,a,b,c,d)=>ease((t-a)/(b-a))*(1-ease((t-c)/(d-c)));
-export function splashFrame(ms,male=false,reduced=false,splashMs=Infinity,splasherMale=false){
-  const settle=reduced?0:ease((ms-(male?240:0))/1500);
-  const attack=pulse(splashMs,0,300,420,850);
-  const reaction=pulse(splashMs,480,650,850,1200);
-  return {settle,phase:ms/520+(male?1.8:0),
-    flick:reduced?0:male===splasherMale?attack:0,
-    duck:reduced?0:male!==splasherMale?reaction:0,
-    blink:reduced?0:male!==splasherMale?reaction:0};
+export function figFrame(ms,opening=false,male=false,reduced=false){
+  if(reduced)return{curl:opening?0:1,close:opening?0:1,peek:0,approach:0,tap:0,recoil:0,done:true};
+  if(!opening)return{curl:ease(ms/1400),close:ease((ms-750)/1100),peek:0,
+    approach:ease((ms-2050)/1200),tap:pulse(ms,3380,3570,3640,3830)+pulse(ms,3950,4140,4210,4400),
+    recoil:0,done:ms>=4750};
+  const peek=ease(ms/500)*(1-ease((ms-1100)/650));
+  return{curl:1-ease((ms-1250)/1500),close:1-.28*peek-ease((ms-1200)/800),peek,
+    approach:1-ease((ms-1500)/1250),tap:0,recoil:pulse(ms,360,700,900,1400),done:ms>=2800};
 }
-export function swimmingPath(d,s,male=false){
-  const original=d.match(/-?\d*\.?\d+/g).map(Number);
-  const base=[78,228,122,280,173,255,181,203,188,151,225,105,278,113,330,121,355,82,326,54];
-  const flat=[78,186,110,212,130,168,166,188,196,213,220,167,250,184,280,201,305,166,326,178];
-  const target=flat.map((n,i)=>n+original[i]-base[i]+(i%2?Math.sin(s.phase-(i-1)*.36)*11:0));
-  target[1]-=32*s.flick;target[3]-=18*s.flick;
-  target[17]+=10*s.duck;target[19]+=15*s.duck;
-  return interpolatePath(d,target,s.settle);
+export function seekerPath(d,dx,dy,arch=false,q=1){
+  if(arch){
+    const headX=326+dx,headY=54+dy;
+    const base=[78,228,122,280,173,255,181,203,188,151,225,105,278,113,330,121,355,82,326,54];
+    const target=[78,228,122,280,200,240,204,188,208,140,headX+188,headY-105,headX+170,headY-125,headX+125,Math.max(8,headY-170),headX+45,headY-70,headX,headY];
+    const original=d.match(/-?\d*\.?\d+/g).map(Number);
+    return interpolatePath(d,target.map((v,i)=>v+original[i]-base[i]),q);
+  }
+  dx*=q;dy*=q;
+  let i=0,weight=0;const values=d.match(/-?\d*\.?\d+/g).map(Number);
+  return d.replace(/-?\d*\.?\d+/g,n=>{
+    if(i%2===0)weight=clamp((228-values[i+1])/174);
+    return ' '+(Number(n)+(i++%2?dy:dx)*weight)+' ';
+  });
 }
 // Closed contours use the same cubic segments as the approved open fruit.
 // The fleshy cut faces turn out of sight as the opaque outer skins meet.
 const CLOSED={
   primary:[
-    [0,-81,-42,-84,-85,-48,-82,2,-80,50,-42,69,0,75,0,46,0,21,0,-12,0,-39,0,-61,0,-81],
-    [0,-81,42,-80,85,-36,80,7,76,48,42,68,0,75,0,44,0,14,0,-12,0,-36,0,-51,0,-81]
+    [0,-92,-21,-91,-17,-60,-46,-46,-105,-16,-83,66,0,75,0,46,0,21,0,-12,0,-39,0,-66,0,-92],
+    [0,-92,22,-89,19,-59,47,-42,99,-8,81,66,0,75,0,44,0,14,0,-12,0,-36,0,-66,0,-92]
   ],
   companion:[
-    [0,-62,-38,-63,-78,-25,-72,14,-68,46,-32,62,0,64,0,43,0,18,0,-9,0,-27,0,-44,0,-62],
-    [0,-62,48,-62,78,-22,72,16,68,49,32,61,0,64,0,40,0,19,0,-6]
+    [0,-74,-17,-76,-15,-48,-35,-37,-81,-11,-69,57,0,64,0,43,0,18,0,-9,0,-27,0,-55,0,-74],
+    [0,-74,20,-72,22,-46,43,-27,85,10,58,58,0,64,0,40,0,-49,0,-74]
   ]
 };
 
 export function createLombokPlay(habitat,refresh=()=>{}){
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)'),sound=createLombokSound();
+  const flights=createLombokFlights(habitat,reduced,refresh);
   let run=null,raf=0,epoch=0;
-  const handles=n=>[FIG,WATER].includes(n?.dataset.accessoryFamily);
+  const handles=n=>[FIG,FAN,BUTTERFLY].includes(n?.dataset.accessoryFamily);
   const visible=n=>n?.isConnected&&!n.closest('[hidden]');
-  const piece=(family,male)=>habitat.querySelector(`.accessory-piece[data-accessory-family="${family}"][data-worm-part="${male?'companion':'primary'}"]`);
   const body=male=>habitat.querySelector(male?'.companion-body':'.worm-body');
-  function cancel(){
+  function cancel(){flights.clear();cancelAction();}
+  function cancelAction(){
     epoch++;cancelAnimationFrame(raf);raf=0;sound.stop();if(!run)return;
-    const r=run;run=null;
+    const r=run;run=null;r.forestRestore?.();
     for(const[n,v]of r.styles)v===null?n.removeAttribute('style'):n.setAttribute('style',v);
-    if(r.stack){const{node,next}=r.stack;if(node.isConnected)node.parentNode.insertBefore(node,next?.parentNode===node.parentNode?next:null);}
-    r.effects.remove();delete habitat.dataset.lombokAction;refresh();
+    r.effects.remove();delete habitat.dataset.lombokAction;delete habitat.dataset.lombokPhase;refresh();
   }
   function setup(target){
     const root=habitat.querySelector('#worm-species');
@@ -91,65 +84,75 @@ export function createLombokPlay(habitat,refresh=()=>{}){
     const paths=[...clone.querySelectorAll(male?'.companion-line,.companion-shadow,.companion-highlight':'.worm-line,.worm-shadow,.worm-highlight')].map(n=>({n,d:n.getAttribute('d')}));
     const face=add(clone,'g',{'data-lombok-face':''});
     [...clone.children].filter(n=>n!==face&&!paths.some(p=>p.n===n)&&!n.matches('.male-tail')).forEach(n=>face.appendChild(n));
-    const goggles=piece(GOGGLES,male);
-    if(visible(goggles)){
-      const art=goggles.querySelector('.location-accessory-art'),at=from.inverse().multiply(r.matrix(art));
-      const g=add(face,'g',{transform:at.toString()});r.clone(art,g);r.style(goggles).style.visibility='hidden';
-    }
     return{male,holder,from,clone,paths,face,tail:clone.querySelector('.male-tail')};
   }
   function poseFig(r,s){
-    const {worker:w,artMatrix,skin,details,stem,closedRibs,tail}=r;
+    const {worker:w,artMatrix,skin,details,stem,closedRibs}=r;
     const q=clamp(s.curl),close=clamp(s.close);
-    const to=artMatrix.translate(-148,-144).scale(.8);
+    const to=artMatrix.translate(-122,-114).scale(.66);
     const v=['a','b','c','d','e','f'].map(k=>mix(w.from[k],to[k],q));
     w.holder.setAttribute('transform',`matrix(${v.join(' ')})`);
     w.paths.forEach(({n,d})=>{
       const highlight=n.matches('.worm-highlight,.companion-highlight'),shadow=n.matches('.worm-shadow,.companion-shadow');
       const target=COIL.map((x,i)=>x+(highlight?(i%2?-5:-3):shadow&&i%2?10:0));
-      target[17]-=62*s.peek;target[19]-=100*s.peek;
+      target[17]-=90*s.peek;target[19]-=140*s.peek;
       n.setAttribute('d',interpolatePath(d,target,q));
     });
     // Neck and face stay together when the head folds down into the fruit.
-    w.face.setAttribute('transform',`translate(${-141*q} ${109*q-100*s.peek})`);
+    w.face.setAttribute('transform',`translate(${-141*q} ${109*q-140*s.peek})`);
     if(w.tail)w.tail.setAttribute('d',interpolatePath('M79 228L49 210L64 242Z',[125,190,103,175,113,199],q));
     skin.forEach(({n,d},i)=>n.setAttribute('d',interpolatePath(d,CLOSED[w.male?'companion':'primary'][i],close)));
     details.forEach(n=>n.setAttribute('opacity',1-ease(close/.76)));
-    stem?.setAttribute('transform',`translate(${(w.male?27:33)*close} 0)`);
+    stem?.setAttribute('transform',`translate(${(w.male?27:33)*close} ${-12*close})`);
     closedRibs.setAttribute('opacity',ease((close-.32)/.58));
-    if(tail)tail.setAttribute('opacity',s.tail);
     if(r.other){
-      const m=new DOMMatrix().translate(-7*s.recoil,0).translate(110,150).rotate(-6*s.recoil).translate(-110,-150).multiply(r.other.from);
-      r.other.holder.setAttribute('transform',m.toString());
+      const o=r.other,amount=s.approach*(1-.2*s.recoil);
+      const dx=r.seekDelta.x*amount,dy=r.seekDelta.y*amount-12*s.recoil+4*s.tap;
+      o.paths.forEach(({n,d})=>n.setAttribute('d',seekerPath(d,r.seekDelta.x,amount?dy/amount:0,!o.male,amount)));
+      o.face.setAttribute('transform',`translate(${dx} ${dy}) rotate(${r.seekTurn*amount-8*s.recoil} 326 54)`);
+      const centreline=o.paths.find(p=>p.n.matches('.worm-line,.companion-line')).n;
+      const shoulderPoint=centreline.getPointAtLength(centreline.getTotalLength()*.8);
+      const shoulder=new DOMPoint(shoulderPoint.x,shoulderPoint.y).matrixTransform(o.from);
+      const rest={x:shoulder.x+8*r.side,y:shoulder.y+14};
+      const reach=clamp(s.approach*1.2),contact=r.touch;
+      const gap=8*(1-s.tap),hand={x:mix(rest.x,contact.x+gap*r.side,reach),y:mix(rest.y,contact.y,reach)};
+      r.arm.setAttribute('d',`M${shoulder.x} ${shoulder.y}Q${mix(shoulder.x,hand.x,.5)} ${Math.max(shoulder.y,hand.y)+9} ${hand.x} ${hand.y}`);
+      r.hand.setAttribute('cx',hand.x);r.hand.setAttribute('cy',hand.y);
+      r.gesture.setAttribute('opacity',reduced.matches?0:ease(s.approach/.45)*(1-.7*s.recoil));
     }
   }
+
   function beginFig(r,male){
     const art=r.target.querySelector('.location-accessory-art');r.artMatrix=r.matrix(art);
-    const node=r.target.parentNode;r.stack={node,next:node.nextSibling};node.parentNode.appendChild(node);
+    // The effects layer is already on top. Reparenting the original accessory
+    // would restart accessory-pop and the fitted fruit's idle animation.
     r.worker=player(r,male);
-    if(!male)r.other=player(r,true);
+    r.other=player(r,!male);
     const fruit=add(r.effects,'g',{transform:r.artMatrix.toString(),'data-lombok-fig':''});
     r.fruit=r.clone(art,fruit);r.style(art).style.visibility='hidden';
     // Do not let the original opening CSS override the action's frame geometry.
     r.fruit.querySelectorAll('.lingsar-fig-opening').forEach(n=>n.style.animation='none');
     r.skin=[...r.fruit.querySelectorAll('.lingsar-fig-skin')].map(n=>({n,d:n.getAttribute('d')}));
-    r.details=[...r.fruit.querySelectorAll('.lingsar-fig-pith,.lingsar-fig-flesh,.lingsar-fig-seed,.lingsar-fig-bloom')];
+    r.details=[...r.fruit.querySelectorAll('.lingsar-fig-pith,.lingsar-fig-flesh,.lingsar-fig-seed,.lingsar-fig-bloom,.lingsar-fig-cut-detail')];
     r.stem=r.fruit.querySelector('.left .lingsar-fig-stem');
     r.closedRibs=add(r.fruit,'g',{opacity:0});
     const short=male?.8:1;
     const ribs=add(r.closedRibs,'g',{transform:`scale(${short})`});
-    path(ribs,'M-10-76C-43-75-70-39-66-4Q-57-34-28-41Q-16-53-10-76Z','#aa849d');
-    path(ribs,'M53-43Q86 15 30 62Q62 23 53-43Z','#543b58');
-    path(ribs,'M-20-71C-55-49-63 23-30 60','none','#b493ac',2.5);
-    path(ribs,'M-40-55Q-65-5-42 29','none','#c7b2bc',1.2);
-    path(ribs,'M25-64Q68-9 39 52','none','#432f45',2);
-    path(ribs,'M0-78Q-3-9 0 70','none','#49374b',1.3);
-    [[-43,-25],[-52,-4],[-42,33],[23,-36],[51,0],[30,43],[-17,53]].forEach(([x,y])=>add(ribs,'ellipse',{cx:x,cy:y,rx:.9,ry:1.4,fill:'#ccb794',opacity:.55}));
-    if(male){
-      r.tail=add(fruit,'g',{opacity:0});
-      path(r.tail,'M-26 48C-39 70-67 81-87 72Q-100 69-103 58Q-82 65-75 59C-57 66-41 53-36 39Z','var(--worm-color)','var(--worm-deep)',1.3);
-      path(r.tail,'M-40 52Q-67 73-91 65','none','#ffffff55',3);
-    }
+    path(ribs,'M-12-82C-15-56-49-39-57-9Q-71 28-35 52','none','#c0a6b8',2.2).setAttribute('opacity','.42');
+    path(ribs,'M12-77Q13-49 32-34Q61-8 50 27','none','#b092a6',1.3).setAttribute('opacity','.34');
+    path(ribs,'M-5-82Q-7-49-21-32M5-82Q9-51 24-29','none','#a9a379',1.1);
+    [[-43,-25],[-52,-4],[-42,33],[23,-36],[51,0],[30,43],[-17,53],[-26,-8],[39,20],[-34,45]].forEach(([x,y])=>add(ribs,'ellipse',{cx:x,cy:y,rx:1,ry:.7,fill:'#ccb6b7',opacity:.5}));
+    add(ribs,'ellipse',{cx:0,cy:67,rx:6,ry:2,fill:'#432f3a',opacity:.55});
+    // The seeker follows the actual fruit, including the visitor's placement and size.
+    const head=new DOMPoint(326,54).matrixTransform(r.other.from),centre=new DOMPoint(0,0).matrixTransform(r.artMatrix);
+    r.side=head.x<centre.x?-1:1;
+    r.touch=new DOMPoint(r.side*(male?58:68),-12).matrixTransform(r.artMatrix);
+    const headTarget=new DOMPoint(r.side*(male?91:103),-32).matrixTransform(r.artMatrix).matrixTransform(r.other.from.inverse());
+    r.seekDelta={x:Math.max(-235,Math.min(130,headTarget.x-326)),y:Math.max(-70,Math.min(180,headTarget.y-54))};
+    r.seekTurn=r.side<0?30:-36;
+    r.gesture=add(r.effects,'g',{'data-lombok-tapping':'',opacity:0});
+    r.arm=path(r.gesture,'','none','var(--worm-color)',male?5:2.8);
+    r.hand=add(r.gesture,'ellipse',{rx:male?3.6:2.3,ry:male?3:1.8,fill:'var(--worm-highlight)',stroke:'var(--worm-deep)','stroke-width':.7});
     animateFig(r);
   }
   function cue(r,key,at,kind,ms,level){
@@ -161,90 +164,66 @@ export function createLombokPlay(habitat,refresh=()=>{}){
     function tick(now){
       if(run!==r)return;if(!visible(r.target)||document.hidden){cancel();return;}
       const ms=now-start,s=figFrame(ms,r.opening,r.worker.male,reduced.matches);poseFig(r,s);
-      cue(r,r.opening?'open':'shut',r.opening?80:690,'fig',ms,.42);
+      habitat.dataset.lombokPhase=r.opening?(ms<400?'opening':ms<1200?'peeking':'emerging'):(ms<1900?'hiding':ms<3350?'approaching':ms<4400?'tapping':'waiting');
+      cue(r,r.opening?'open':'shut',r.opening?110:750,'fig',ms,.32);
+      if(!r.opening){cue(r,'tap-one',3570,'tap',ms,.1);cue(r,'tap-two',4140,'tap',ms,.08);}
       if(s.done){
-        if(r.opening){cancel();return;}
+        if(r.opening){cancelAction();return;}
         r.waiting=true;habitat.dataset.lombokAction='hidden';raf=0;return;
       }
       raf=requestAnimationFrame(tick);
     }
     tick(start);
   }
-  function beginWater(r){
-    r.kind='water';
-    const art=r.target.querySelector('.location-accessory-art'),poolMatrix=r.matrix(art);
-    const under=add(r.effects,'g',{transform:poolMatrix.toString()});
-    const pool=r.clone(art,under),front=pool.querySelector('[data-lombok-pool-front]');
-    r.style(art).style.visibility='hidden';
-    const workers=[player(r,false),player(r,true)];
-    const over=add(r.effects,'g',{transform:poolMatrix.toString()});over.appendChild(front);
-    const surface=add(r.effects,'g',{'data-lombok-water-contact':''});
-    const wakes=workers.map(()=>Array.from({length:3},()=>add(surface,'ellipse',{fill:'none',stroke:'#e5faf1','stroke-width':1.1,opacity:0})));
-    const spray=add(r.effects,'g',{'data-lombok-spray':''});
-    const drops=Array.from({length:14},()=>add(spray,'ellipse',{rx:1.5,ry:2.3,fill:'#c8f3f4',stroke:'#448598','stroke-width':.6,opacity:0}));
-    const started=performance.now();r.splashAt=-Infinity;r.splasherMale=false;r.nextMale=false;
-    r.splash=()=>{const now=performance.now();if(now-started<1750||now-r.splashAt<1300)return;r.splashAt=now;r.splasherMale=r.nextMale;r.nextMale=!r.nextMale;r.shot=null;};
-    habitat.dataset.lombokAction='swimming';
+  function beginFan(r){
+    const male=r.target.dataset.wormPart==='companion';
+    const art=r.target.querySelector('.location-accessory-art'),motion=art.querySelector('[data-lombok-fan]');
+    const original=motion.getAttribute('transform');
+    r.forestRestore=()=>{original===null?motion.removeAttribute('transform'):motion.setAttribute('transform',original);};
+    let arm,hand,shoulder,grip;
+    {
+      const worm=body(male),line=worm.querySelector('.worm-line,.companion-line'),p=line.getPointAtLength(line.getTotalLength()*.80);
+      shoulder=new DOMPoint(p.x,p.y).matrixTransform(r.matrix(worm));grip=new DOMPoint(0,44).matrixTransform(r.matrix(art));
+      arm=path(r.effects,'','none','var(--worm-color)',male?2.8:5);hand=add(r.effects,'ellipse',{rx:male?2.5:4,ry:male?2:3,fill:'var(--worm-highlight)'});
+    }
+    const start=performance.now(),duration=3300;habitat.dataset.lombokAction='fanning';
     function tick(now){
       if(run!==r)return;if(!visible(r.target)||document.hidden){cancel();return;}
-      const ms=now-started,splashMs=now-r.splashAt;
-      if(reduced.matches&&ms>=400){cancel();return;}
-      workers.forEach((w,index)=>{
-        const f=splashFrame(ms,w.male,reduced.matches,splashMs,r.splasherMale);
-        const centre=new DOMPoint(w.male?-65:14,w.male?-19:8).matrixTransform(poolMatrix);
-        const wave=ease((ms-1700)/800),driftX=Math.sin(ms/1700+(w.male?2:0))*8*wave,driftY=Math.sin(ms/1100)*2*wave;
-        // Keep each worm's size independent of the visitor's pool size.
-        const linear=new DOMMatrix([w.from.a,w.from.b,w.from.c,w.from.d,0,0]);
-        const anchor=new DOMPoint(202,190).matrixTransform(linear);
-        const to=new DOMMatrix([w.from.a,w.from.b,w.from.c,w.from.d,centre.x-anchor.x+driftX,centre.y-anchor.y+driftY]);
-        const values=['a','b','c','d','e','f'].map(k=>mix(w.from[k],to[k],f.settle));
-        w.moving=new DOMMatrix(values);w.holder.setAttribute('transform',w.moving.toString());
-        w.paths.forEach(({n,d})=>n.setAttribute('d',swimmingPath(d,f,w.male)));
-        const coords=swimmingPath('M78 228C122 280 173 255 181 203C188 151 225 105 278 113C330 121 355 82 326 54',f,w.male).match(/-?\d*\.?\d+/g).map(Number);
-        const headX=coords[18]-326,headY=coords[19]-54;
-        w.face.setAttribute('transform',`translate(${headX} ${headY}) rotate(${-28*f.settle+3*Math.sin(f.phase)*f.settle} 326 54)`);
-        w.face.querySelectorAll('.worm-eye').forEach(n=>{const y=+n.getAttribute('cy');n.setAttribute('transform',`translate(0 ${y}) scale(1 ${1-.8*f.blink}) translate(0 ${-y})`);});
-        if(w.tail)w.tail.setAttribute('transform',`translate(${coords[0]-78} ${coords[1]-228}) rotate(${-12*f.settle} 78 228)`);
-        w.tailPoint=new DOMPoint(coords[0],coords[1]).matrixTransform(w.moving);
-        w.headPoint=new DOMPoint(coords[18],coords[19]).matrixTransform(w.moving);
-        wakes[index].forEach((n,i)=>{
-          const age=((ms+i*500)%1600)/1600,p=w.tailPoint;
-          n.setAttribute('cx',p.x-8*age);n.setAttribute('cy',p.y+3);
-          n.setAttribute('rx',5+age*20);n.setAttribute('ry',2+age*5);
-          n.setAttribute('opacity',reduced.matches?0:Math.sin(age*Math.PI)*.42*f.settle);
-        });
-      });
-      if(splashMs>=300&&splashMs<1000&&!r.shot){r.shot=[workers[r.splasherMale?1:0].tailPoint,workers[r.splasherMale?0:1].headPoint];if(!reduced.matches&&splashMs<400)sound.play('water',.2);}
-      drops.forEach((n,i)=>{
-        const age=(splashMs-300-i*12)/620,active=age>=0&&age<1&&!reduced.matches&&r.shot;
-        n.setAttribute('opacity',active?Math.sin(age*Math.PI):0);if(!active)return;
-        const [a,b]=r.shot,h=38+i%4*3;
-        n.setAttribute('cx',mix(a.x,b.x,age)+Math.sin(i*2.1)*age*7);
-        n.setAttribute('cy',mix(a.y,b.y,age)-4*h*age*(1-age));
-      });
-      cue(r,'entry',1200,'water',ms,.1);
+      const t=now-start,q=clamp(t/duration),envelope=ease(q/.16)*ease((1-q)/.18);
+      habitat.dataset.lombokPhase=q<.18?'settling':q>.82?'returning':'active';
+      if(reduced.matches||q>=1){cancelAction();return;}
+      {
+        const angle=Math.sin(t/155)*19*envelope;
+        motion.setAttribute('transform','rotate('+angle+' 0 44)');
+        arm.setAttribute('d','M'+shoulder.x+' '+shoulder.y+'Q'+(grip.x-15)+' '+(grip.y+13)+' '+grip.x+' '+grip.y);hand.setAttribute('cx',grip.x);hand.setAttribute('cy',grip.y);
+        r.effects.setAttribute('opacity',envelope);cue(r,'rustle',250,'leaf',t,.16);
+      }
       raf=requestAnimationFrame(tick);
     }
-    tick(started);
+    tick(start);
   }
   function start(target){
     if(!handles(target)||!visible(target))return false;
+    if(target.dataset.accessoryFamily===BUTTERFLY){flights.start(target);return true;}
     if(run?.target===target){
-      if(run.kind==='water'){run.splash?.();return true;}
-      if(run.waiting){run.opening=true;sound.unlock('fig');animateFig(run);}else cancel();
+      if(run.waiting){run.opening=true;sound.unlock('fig');animateFig(run);}
       return true;
     }
-    cancel();const kind=target.dataset.accessoryFamily===FIG?'fig':'water';
+    cancelAction();
     const r=setup(target),token=epoch;
-    const ready=reduced.matches?Promise.resolve():sound.unlock(kind);
+    if(target.dataset.accessoryFamily!==FIG){
+      const ready=target.dataset.accessoryFamily===FAN&&!reduced.matches?sound.unlock('leaf'):Promise.resolve();
+      ready.then(()=>{if(run===r&&token===epoch)beginFan(r);});return true;
+    }
+    const ready=reduced.matches?Promise.resolve():Promise.all([sound.unlock('fig'),sound.unlock('tap')]);
     // Loading is gesture-only and bounded. A late decode cannot revive a cancelled action.
-    ready.then(()=>{if(run!==r||token!==epoch)return;if(kind==='fig')beginFig(r,target.dataset.wormPart==='companion');else beginWater(r);});
+    ready.then(()=>{if(run!==r||token!==epoch)return;beginFig(r,target.dataset.wormPart==='companion');});
     return true;
   }
   for(const event of['pagehide','resize'])window.addEventListener(event,cancel);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});reduced.addEventListener('change',cancel);
   if(typeof IntersectionObserver==='function')new IntersectionObserver(entries=>{
-    if(run?.kind==='water'&&entries.some(e=>!e.isIntersecting))cancel();
+    if((flights.active||(run&&!run.waiting))&&entries.some(e=>!e.isIntersecting))cancel();
   },{threshold:0}).observe(habitat);
-  return{handles,start,cancel,clear:cancel,reset:cancel,get active(){return!!run;}};
+  return{handles,start,cancel,clear:cancel,reset:cancel,get active(){return!!run||flights.active;}};
 }

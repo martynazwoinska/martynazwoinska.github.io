@@ -11,6 +11,123 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Combined release approved, 2026-09-21
+
+Martyna explicitly requested deployment of all three recent changes: the final
+Lombok forest scene (forest-4), site-wide decorative dot removal, and compact
+Game navigation (compact-1). This approval supersedes the local-preview status
+in the historical entries below. English, Swedish and Polish separator edits
+keep all words unchanged; Game and Cabinet remain intentionally English-only.
+Treasure module cache keys are refreshed so returning browsers receive the
+updated displayed labels. Main was fetched and confirmed at 7ece380 before release.
+No changes from other physical checkouts are included. Two new Game modules:
+lombok-forest-art.js and lombok-flight.js. No deleted files or new raster/audio
+assets. The published commit and deployment are verified after push.
+
+## Compact Game navigation, local preview, 2026-09-21
+
+User requested less space above the game, with a screenshot of the stacked header.
+The narrow header now groups title/back link on the left and gems on the right.
+The family control is a quieter 44px button beside the smaller section heading.
+All six species choices remain visible in shorter sister-pair cards; tablets
+use one row of three pairs. No public copy or art changed in this layout pass.
+
+Changed game-of-worms/style.css, treasure.css and stylesheet cache keys in
+index.html, plus this status entry. No files created or deleted for this pass.
+Existing Lombok and divider changes preserved. Branch codex/lombok-fig-hide-seek;
+preview compact-1; not committed or deployed.
+
+Full-page uncropped proofs at viewport widths 360/768/1024/1440:
+345x2468, 753x2129, 1009x1937, 1425x1875 pixels (scrollbar excluded).
+Scene starts at 383/248/249/249 CSS px from the top, compared with about 665px
+on the previous phone layout. No horizontal overflow. Fixed light palette.
+Family and gem dialogs open by keyboard, close with Escape and restore focus.
+Species selection, visible focus, console and diff checks passed. Existing
+reduced-motion rules retained; no new animation. User visual review pending.
+
+## Lombok figs, fans and butterflies, local preview, 2026-09-21
+
+Follow-up forest-4, 2026-09-21: fixed the fig finish flash by keeping the
+original accessory group in place. Reparenting had restarted its CSS pop-in.
+Leaf fans now have curved blades, folded tips, clipped curved veins and shaded
+surfaces. Butterflies now have turquoise-blue wings; twig perches were removed.
+Each butterfly can roam on its own continuous path while figs or fans are active.
+A second click returns it smoothly. Escape, scene changes, dragging, resizing,
+page hiding and reduced motion stop flight and restore visitor placement.
+No public labels changed. Added lombok-flight.js and focused route checks.
+Browser verified both flights together, flight with fig/fan actions, return clicks,
+clean fig completion and both fan grips. No console errors. Full-page proofs at
+360/768/1024/1440 CSS px: 345x2451, 753x2333, 1009x1759, 1425x1886 pixels;
+no horizontal overflow. Initial zoomed captures were invalid and replaced.
+Focused timeline, audio, flight-continuity/bounds and syntax checks passed.
+No files deleted, no commit or deployment; current contextual proof awaits review.
+
+
+Supersedes the fig-only preview below. User explicitly chose Leaf fans and
+Butterflies. Three paired accessories now support fig hide-and-seek, held fan
+waving with a quiet leaf rustle, and a short silent flight from a twig perch.
+Fig art now has shaded plum skin, cream pith and seeded red interiors. Refinement
+fixed body containment inside the closed fig, male fan reach and butterfly perches.
+Background and visitor fig transforms are preserved. English-only Game labels:
+Leaf fans, Figs, Butterflies. Preview forest-1; not committed or deployed.
+
+Created game-of-worms/lombok-forest-art.js. Changed accessory-designs.js,
+lombok-play.js, lombok-sound.js, game.js and index.html under game-of-worms,
+scripts/check-lombok-play.cjs, audio/SOURCES.md and the scene queue, art catalogue
+and Lombok dossier. No files deleted. Earlier divider cleanup remains intact.
+
+Validation: both hide/peek cycles, both fan actions and butterfly flights,
+Escape restoration and keyboard placement checked. Browser catalogue and geometry
+audits passed at load; no console errors or warnings. Full-page uncropped proofs
+at viewport widths 360/768/1024/1440: 345x2451, 753x2333, 1009x1759, 1425x1886.
+Scrollbar excluded from capture widths. No horizontal overflow. Game uses its
+fixed light palette. Focused hide-and-seek and audio checks, syntax checks and git diff --check passed.
+User visual assessment and listening review remain pending.
+
+## Text divider cleanup, local preview, 2026-09-21
+
+User requested removing dots between words across the website. Replaced decorative
+middle dots with en spaces in homepage EN/SV/PL expertise labels, student rows,
+Cabinet title and image credits, and Game scene/map/treasure labels. Cabinet's
+English-only touch instruction now reads: "Drag, pinch to zoom, tap an object."
+Game and Cabinet remain intentionally English-only. Game location identifiers
+retain their original values; formatting changes happen when labels are rendered.
+Normal punctuation and decorative particle effects are unchanged. No new/deleted
+files or assets. Not committed or deployed; included in the Lombok preview branch.
+
+Files for this cleanup: index.html, home-i18n.js, cabinet-of-curiosities/index.html,
+cabinet-i18n.js and cabinet-product-images.js in that directory, plus Game game.js,
+index.html, accessory-designs.js and treasure-model.js. Original Cabinet checkout
+and its uncommitted edits remain untouched.
+
+Validation: JS syntax and diff checks passed. Language controls, Game selection,
+Cabinet details and Escape checked. No errors in homepage/Cabinet console. Complete
+page captures at viewport widths 360/768/1024/1440: homepage in both themes
+345x8870 / 753x6477 / 1009x5143 / 1425x4693; Cabinet in both themes
+345x4629 / 753x3033 / 1024x900 / 1440x900; Game fixed light theme
+345x2347 / 753x2230 / 1009x1759 / 1425x1784. Scrollbars excluded where present.
+No horizontal overflow. Initial background-tab Game captures were invalid and
+replaced with the verified foreground-tab captures listed above.
+
+## Lombok fig hide-and-seek, local preview, 2026-09-21
+
+User requested trying a coherent fig-only activity after rejecting the pool concept.
+Based on main 7ece380, branch codex/lombok-fig-hide-seek. Not committed or deployed.
+Swimming goggles and pool are omitted from this location's controls. Original
+forest background, fig drawings, placement and size controls remain. Either worm
+curls into its fig; the other bends toward it, taps twice and waits. Another click
+makes the hidden worm peek, then emerge while its partner draws back.
+
+Public label for review: "Figs". Game accessory labels are intentionally English-only.
+Recorded fruit handling and quiet contact cues replace splash playback. Focused
+checks pass for both roles, taps, peek, return, reduced motion, lazy audio and
+cancellation. Browser checks verified both roles without new console errors after
+fixing SVGPoint/DOMMatrix conversion, and restoration after opening and resize.
+Full-page proofs at 360, 768, 1024 and 1440 viewport widths measured 345x2347,
+753x2333, 1009x1759 and 1425x1886 pixels respectively (scrollbar excluded).
+No horizontal overflow. Fixed Game light palette retained. Subjective listening
+and user approval of the new activity remain outstanding.
+
 ## Three selected scene animations, 2026-09-21
 
 Implementation and deployment requested for Lombok HPT26, Nambucca Heads QG2814

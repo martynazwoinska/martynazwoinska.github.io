@@ -1,13 +1,13 @@
 import {pieces,rotate,normalAngle,GEOMETRY_VERSION,symmetryAngles} from './treasure-pieces.js?v=20260920-discovery-2';
 export const treasures=[
- {id:'india',species:'nigoni',place:'Trivandrum',name:'Trivandrum · India',hint:'Look closely at the material inside a sample tube. Move a loupe over it.'},
- {id:'bali',species:'wallacei',place:'Sanda',name:'Sanda · Bali',hint:'Use the machete to open the hanging cacao pod.'},
+ {id:'india',species:'nigoni',place:'Trivandrum',name:'Trivandrum India',hint:'Look closely at the material inside a sample tube. Move a loupe over it.'},
+ {id:'bali',species:'wallacei',place:'Sanda',name:'Sanda Bali',hint:'Use the machete to open the hanging cacao pod.'},
  {id:'mauritius',species:'nigoni',place:'Mauritius',name:'Mauritius',hint:'Ask a dodo grabber to lift a fruit from the ground.'},
- {id:'scotland',species:'elegans',place:'Edinburgh',name:'Edinburgh · Scotland',hint:'Look through a telescope, then bring the distant sparkle into focus.'},
- {id:'bubbles',species:'briggsae',place:'Salt Lake',name:'Salt Lake City · United States',hint:'Blow bubbles. One carries something heavier than air. Pop it!'},
- {id:'compost',species:'elegans',place:'Araucanía',name:'Araucanía · Chile',hint:'Tip the wheelbarrow and look through what falls out.'},
- {id:'canopy',species:'tropicalis',place:'Queensland',name:'Queensland · Australia',hint:'Ride into the canopy and take a photo. Then look behind the glinting leaves.'},
- {id:'towel',species:'briggsae',place:'QG130',name:'Kauaʻi · forest bath',hint:'Use a towel and watch its folds as the worm wipes.'}
+ {id:'scotland',species:'elegans',place:'Edinburgh',name:'Edinburgh Scotland',hint:'Look through a telescope, then bring the distant sparkle into focus.'},
+ {id:'bubbles',species:'briggsae',place:'Salt Lake',name:'Salt Lake City United States',hint:'Blow bubbles. One carries something heavier than air. Pop it!'},
+ {id:'compost',species:'elegans',place:'Araucanía',name:'Araucanía Chile',hint:'Tip the wheelbarrow and look through what falls out.'},
+ {id:'canopy',species:'tropicalis',place:'Queensland',name:'Queensland Australia',hint:'Ride into the canopy and take a photo. Then look behind the glinting leaves.'},
+ {id:'towel',species:'briggsae',place:'QG130',name:'Kauaʻi forest bath',hint:'Use a towel and watch its folds as the worm wipes.'}
 ];
 export const SAVE_KEY='worm-atlas-treasures-v1';
 export const emptySave=()=>({version:1,restartedAt:0,found:[],revealed:{},puzzle:null,wins:[]});

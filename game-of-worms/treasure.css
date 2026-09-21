@@ -48,7 +48,7 @@
 .gem-contact-shadow{opacity:.25}
 .gem-piece.is-placed .gem-contact-shadow{opacity:.16}
 
-@media(max-width:680px){.topbar{grid-template-columns:minmax(0,1fr) auto;row-gap:10px}.topbar .brand{grid-column:1/-1;grid-row:1}.topbar .back-link{grid-column:1;grid-row:2}.treasure-toggle{grid-column:2;grid-row:2;min-height:56px;padding:3px 12px 3px 6px;gap:7px}.treasure-toggle img{width:48px;height:46px}.treasure-button-label{font-size:12px;gap:3px}.treasure-toggle strong{font-size:11px;padding:2px 7px}}
+@media(max-width:680px){.treasure-toggle{min-height:56px;padding:3px 12px 3px 6px;gap:7px}.treasure-toggle img{width:48px;height:46px}.treasure-button-label{font-size:12px;gap:3px}.treasure-toggle strong{font-size:11px;padding:2px 7px}}
 @media(prefers-reduced-motion:reduce){.treasure-toggle{transition:none}}
 
 .treasure-restart{display:block;margin:18px auto 0;background:transparent!important;color:#664655;border-color:#c9bca5!important;font-size:13px}

@@ -1,3 +1,4 @@
+import { drawLombokForest, refineLombokFig, forestLayouts } from "./lombok-forest-art.js?v=20260921-forest-4";
 import { drawOrsayArt } from "./orsay-art.js?v=20260919-orsay-pose-3";
 import { drawSaltLakeBubbles } from "./salt-lake-art.js?v=20260918-picnic-2";
 import { drawMahahualBeach } from "./mahahual-art.js?v=20260917-mahahual-22";
@@ -67,7 +68,7 @@ const rows = [
   ["nigoni", "Mahahual, Mexico · JU2617", "reef-ruffle swim costumes", "mahahual-reef-ruffle-swim-costumes", "Caribbean sun spectacles", "mahahual-caribbean-sun-spectacles", "sea-grape beach parasols", "mahahual-sea-grape-beach-parasols"],
   ["nigoni", "Mauritius · JU2909", "ravanne drums", "mauritius-ravanne-crawler-drum", "fruit baskets", "mauritius-vacoas-tail-scoop", "dodo grabbers", "mauritius-dodo-beak-fruit-grabber"],
   ["nigoni", "Ho Chi Minh City · JU4356", "Scooter", "ju4356-shared-scooter", "Starfruit", "ju4356-starfruit-preparation", "Vietnamese coffee", "ju4356-phin-coffee"],
-  ["nigoni", "Lombok, Indonesia · HPT26", "Swimming goggles", "hpt26-swimming-goggles", "Ficus fruit transformations", "lingsar-ficus-fruit-transformation", "Splashing pool", "hpt26-splashing-pool"],
+  ["nigoni", "Lombok, Indonesia · HPT26", "Leaf fans", "hpt26-leaf-fans", "Figs", "lingsar-ficus-fruit-transformation", "Butterflies", "hpt26-butterflies"],
   ["wallacei", "Sanda, Bali · JU1873", "cacao pod machete", "ju1873-cacao-specimen-lantern", "Balinese endek wrap", "ju1873-balinese-endek-wrap", "Balinese gamelan gong", "ju1873-balinese-gamelan-gong"],
   ["tropicalis", "Barro Colorado Island, Panama", "Gustavia flower headpiece", "qg2726-gustavia-flower-headpiece", "Flower bait", "qg2726-flower-bait", "Leaf cutting", "qg2726-leaf-cutting"],
   ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
@@ -3146,7 +3147,7 @@ function drawReunionJU1373Accessory(group, item, companion) {
       add(group, "path", { class: "acc-line thick", d: "M-43-4H43M0-31V24M43-4L79-48" });
       add(group, "path", { class: "acc-line", d: "M-78-48H-43M79-48V-25" });
       add(group, "path", { class: "acc-soft", d: "M-72-50H-32V-29H-72Z" });
-      addText("JU1373 · TYPE ISOLATE", 0, -1);
+      addText("JU1373 TYPE ISOLATE", 0, -1);
     }
     return true;
   }
@@ -3155,7 +3156,7 @@ function drawReunionJU1373Accessory(group, item, companion) {
     add(group, "path", { class: "acc-accent", d: "M53-10Q75-35 95-17Q76 3 53-10Z" });
     add(group, "path", { class: "acc-soft", d: "M-43 32Q-74 48-91 24Q-69 10-43 32Z" });
     add(group, "path", { class: "acc-line", d: "M0-67L-20-91M0-67L22-91" });
-    addText("SAINT-BENOÎT · REGIONAL", 0, 95);
+    addText("SAINT-BENOÎT REGIONAL", 0, 95);
   } else {
     add(group, "path", { class: "acc-main", d: "M-67 52Q-37 4-8 12Q22 20 67-31" });
     add(group, "path", { class: "acc-accent", d: "M-52 4Q-24-35 8-18Q26-3 57-41" });
@@ -3570,7 +3571,7 @@ function drawDoisRiosEG5612Accessory(group, item, companion) {
       text("L4", 79, -6, "eg5612-stage-label");
       line(group, "M58-20H41M41-20L49-29M41-20L49-11", "eg5612-gate-link");
       path(group, "M-80 72H80L71 94H-89Z", "eg5612-index-plate");
-      text("MANY STAGES · ONE FOUNDER", -4, 87, "eg5612-small-label");
+      text("MANY STAGES ONE FOUNDER", -4, 87, "eg5612-small-label");
     }
     return true;
   }
@@ -4092,6 +4093,7 @@ function drawTaipeiBRC20390Accessory(group, item, companion) {
 
 function drawLombokHPT26Accessory(group, item, companion) {
   if (!lombokHPT26RendererIds.has(item.id)) return false;
+  if (drawLombokForest(group, item, companion)) return true;
   if (drawLombokSwim(group, item, companion)) return true;
   group.dataset.renderer = item.family;
   group.classList.add("lombok-hpt26-accessory", companion ? "hpt26-companion" : "hpt26-primary");
@@ -4125,6 +4127,7 @@ function drawLombokHPT26Accessory(group, item, companion) {
       line(right, "M85-15Q94 13 70 35", "lingsar-fig-bloom");
     }
     path(group, "M-8 71Q0 67 8 71L5 79H-5Z", "lingsar-fig-stem");
+    refineLombokFig(group, companion);
     return true;
   }
   return false;
@@ -6108,6 +6111,7 @@ function renderPiece(target, item, wormPart) {
     ,"ju4356-its2-ribbon-reader": { primary: [220, 187, .32, -1], companion: [108, 213, .26, 2] }
     ,"hcmc-urban-canopy-census-engine": { primary: [370, 266, .33, -1], companion: [0, 292, .27, 2] }
     ,...swimLayouts
+    ,...forestLayouts
     ,...canopyLayouts
     ,...pohnpeiLayouts
     ,...saoTomeLayouts
@@ -6148,7 +6152,7 @@ function renderPiece(target, item, wormPart) {
     "data-accessory-family": item.family
   });
   if (item.family === "mahahual-reef-ruffle-swim-costumes") piece.dataset.pieceLabel = wormPart === "sunscreen" ? "Sunscreen" : companion ? "Swim shorts" : wormPart === "primary-top" ? "Bikini top" : "Bikini wrap";
-  const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family !== "hpt26-splashing-pool";
+  const isLombokWorn = lombokHPT26RendererIds.has(item.id) && item.family === "lingsar-ficus-fruit-transformation";
   if (sharedAccessoryFamilies.has(item.family)) piece.dataset.sharedAccessory = "true";
   if (item.family === "eca789-chocolate-tasting") piece.dataset.pieceLabel = companion ? "Chocolate macadamias" : "Chocolate bar";
   if (item.family === "eg4181-giant-bubble-loop") piece.dataset.pieceLabel = companion ? "Little bubble kit" : "Giant bubble loop";

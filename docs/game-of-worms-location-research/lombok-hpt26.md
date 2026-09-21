@@ -1,5 +1,46 @@
 # Lingsar, Lombok *Caenorhabditis nigoni* HPT26 location research and art brief
 
+Deployment approved 2026-09-21 for final forest-4 with compact-1 navigation.
+This supersedes preview status notes below; use the final artwork unchanged.
+
+## Current local preview, 2026-09-21
+
+Follow-up forest-4, 2026-09-21: fixed the fig finish flash by keeping the
+original accessory group in place. Reparenting had restarted its CSS pop-in.
+Leaf fans now have curved blades, folded tips, clipped curved veins and shaded
+surfaces. Butterflies now have turquoise-blue wings; twig perches were removed.
+Each butterfly can roam on its own continuous path while figs or fans are active.
+A second click returns it smoothly. Escape, scene changes, dragging, resizing,
+page hiding and reduced motion stop flight and restore visitor placement.
+No public labels changed. Added lombok-flight.js and focused route checks.
+Browser verified both flights together, flight with fig/fan actions, return clicks,
+clean fig completion and both fan grips. No console errors. Full-page proofs at
+360/768/1024/1440 CSS px: 345x2451, 753x2333, 1009x1759, 1425x1886 pixels;
+no horizontal overflow. Initial zoomed captures were invalid and replaced.
+Focused timeline, audio, flight-continuity/bounds and syntax checks passed.
+No files deleted, no commit or deployment; current contextual proof awaits review.
+
+
+The user rejected the pool connection and approved fig hide-and-seek, then chose
+Leaf fans and Butterflies as the other two paired accessories. This supersedes
+the historical swimming contract below. The background remains unchanged.
+
+Either worm hides in a fig, its partner approaches and taps, and a second click
+causes a peek and emergence. Fans wave from a held handle with a quiet recorded
+leaf rustle. Butterflies fly freely on separate broad routes; a second click returns them silently.
+Actions are click-triggered, cancel cleanly, and respect reduced motion.
+
+Fig construction references: [Kew, Fig](https://www.kew.org/plants/fig) and the
+[public-domain cut fig photograph](https://commons.wikimedia.org/wiki/File:Feige-Schnitt.png).
+These inform thin rind, pale pith and dense seeded interiors only. The collection
+record does not identify the Ficus species, and the stylized butterflies are
+playful forest visitors, not a claim about insects collected at HPT26. Artwork
+is original vector drawing, with no source image copied into the game.
+
+Not committed or deployed. Labels are intentionally English-only in the Game:
+Leaf fans, Figs, Butterflies.
+
+
 Last updated: 2026-09-12
 
 > **Approved accessory contract, deployment requested 2026-09-12:** `Swimming goggles`, `Ficus fruit transformations`, and `Splashing pool`. The figs refer to the recorded substrate. The pool is a playful reference to springs in the wider Lingsar area. The goggles are static. There are exactly two user-triggered activities, with no bubble-blowing action.

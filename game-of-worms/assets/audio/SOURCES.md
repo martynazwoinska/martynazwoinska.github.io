@@ -1,5 +1,13 @@
 # Game sound recordings
 
+## Lombok leaf fans, local preview, 2026-09-21
+
+Reuses the unchanged CC0 pohnpei-leaves.ogg recording credited below. A single
+quiet excerpt, capped at 0.9 seconds and gain 0.16, accompanies each fan action.
+It is handling foley, not a field recording from Lombok. No butterfly sound.
+No new audio asset or licensing change.
+
+
 ## Mauritius frame-drum activity, 2026-09-15
 
 - `mauritius-frame-drum.mp3`: cabled_mess, [Frame drum_oneshot_RAW_10.wav](https://freesound.org/people/cabled_mess/sounds/345630/), published 11 May 2016.

@@ -13,11 +13,11 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260921-motion-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260921-forest-4";
 import { createKauaiBath } from "./kauai-bath-play.js?v=20260920-discovery-2";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
-import { createLombokPlay } from "./lombok-play.js?v=20260921-motion-1";
+import { createLombokPlay } from "./lombok-play.js?v=20260921-forest-4";
 import { createCanopyPlay } from "./queensland-play.js?v=20260920-discovery-2";
 import { createPohnpeiPlay } from "./pohnpei-play.js?v=20260921-motion-1";
 import { createSaoTomePlay } from "./sao-tome-play.js?v=20260913-feelers-1";
@@ -40,7 +40,7 @@ import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
-import {createTreasureHunt} from './treasure-hunt.js?v=20260921-heartbeat-1';
+import {createTreasureHunt} from './treasure-hunt.js?v=20260921-spacing';
 
 const t = createGameTranslator(document.documentElement.lang);
 
@@ -810,10 +810,11 @@ function renderSpecies(item, place) {
   els.localWrapIcon.textContent = "≈";
   els.localWrapLabel.textContent = accessoryDesign.wrap.label;
   els.localCharmIcon.textContent = "✦";
-  els.localCharmLabel.textContent = accessoryDesign.charm.label;
+  els.localCharmLabel.textContent = accessoryDesign.charm?.label || "";
+  els.localCharmLabel.closest("button").hidden = !accessoryDesign.charm;
   els.localExtraButton.hidden = !accessoryDesign.extra;
   if (accessoryDesign.extra) els.localExtraLabel.textContent = accessoryDesign.extra.label;
-  els.sceneName.textContent = place?.sceneLabel || environment?.title || placeName;
+  els.sceneName.textContent = displayPlaceLabel(place?.sceneLabel || environment?.title || placeName);
 
   els.habitat.dataset.habitat = item.habitatKey;
   els.habitat.dataset.localStyle = styleKey;
@@ -841,7 +842,7 @@ function renderSpecies(item, place) {
   treasureHunt.mount(item.id,placeName||" ");
   unmountLiveLoupes = mountLiveLoupes(els.habitat);
 
-  els.selectionPlace.textContent = placeSource ? `${placeName} · ${placeSource}` : (placeName || item.region);
+  els.selectionPlace.textContent = displayPlaceLabel(placeSource ? `${placeName} · ${placeSource}` : (placeName || item.region));
   els.selectionSpecies.replaceChildren();
   const italic = document.createElement("i");
   italic.textContent = item.short;
@@ -2046,7 +2047,7 @@ function createMarker(record) {
   button.setAttribute("aria-label", t("markerAria", {
     name: item.name,
     reproduction: reproductionMode,
-    place: record.name,
+    place: displayPlaceLabel(record.name),
     source: sourceSuffix
   }));
   button.setAttribute("aria-pressed", "false");
@@ -2078,10 +2079,15 @@ function createMarker(record) {
   record.leader = { group: leader, line: leaderLine };
 }
 
+// Keep stored location keys stable; only the displayed label uses spacing.
+function displayPlaceLabel(value) {
+  return (value || "").replace(/\s*·\s*/g, "\u2002");
+}
+
 function showMarkerTooltip(record, item, button) {
-  els.mapTooltipPlace.textContent = record.name;
+  els.mapTooltipPlace.textContent = displayPlaceLabel(record.name);
   els.mapTooltipSpecies.textContent = item.short;
-  els.mapTooltipDetail.textContent = `${record.strain ? `${record.strain} · ` : ""}${item.reproductionLabel}${record.source ? ` · ${record.source}` : ""}`;
+  els.mapTooltipDetail.textContent = [record.strain, item.reproductionLabel, record.source].filter(Boolean).join("\u2002");
   const markerX = Number.parseFloat(button.style.left);
   const markerY = Number.parseFloat(button.style.top);
   const tooltipX = Math.max(118, Math.min(els.mapWrap.clientWidth - 118, markerX));

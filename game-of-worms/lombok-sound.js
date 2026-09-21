@@ -1,6 +1,6 @@
-// Real fruit-skin handling and pond-splash recordings. See assets/audio/SOURCES.md.
-export const lombokClips={fig:new URL('./assets/audio/reunion-peel.wav',import.meta.url).href,
-  water:new URL('./assets/audio/lombok-splash.wav',import.meta.url).href};
+// Recorded fruit-skin handling and soft contact sounds. See assets/audio/SOURCES.md.
+export const lombokClips={leaf:new URL('./assets/audio/pohnpei-leaves.ogg',import.meta.url).href,fig:new URL('./assets/audio/reunion-peel.wav',import.meta.url).href,
+  tap:new URL('./assets/audio/nambucca-press-close.wav',import.meta.url).href};
 export function createLombokSound(){
   let ctx=null,voice=null;const buffers=new Map(),loading=new Map();
   async function unlock(kind){
@@ -19,7 +19,7 @@ export function createLombokSound(){
     if(!b||ctx?.state!=='running'||document.hidden||offset>=b.duration)return false;
     const source=ctx.createBufferSource(),gain=ctx.createGain();source.buffer=b;
     gain.gain.value=Math.max(0,Math.min(.55,level));source.connect(gain);gain.connect(ctx.destination);voice=source;
-    source.onended=()=>{source.disconnect();gain.disconnect();if(voice===source)voice=null;};source.start(0,offset);return true;
+    source.onended=()=>{source.disconnect();gain.disconnect();if(voice===source)voice=null;};source.start(0,offset,kind==='leaf'?Math.min(.9,b.duration-offset):b.duration-offset);return true;
   }
   return{unlock,play,stop};
 }
