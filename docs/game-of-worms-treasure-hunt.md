@@ -2,6 +2,28 @@
 
 Status: implementation and deployment approved by Martyna on 2026-09-20, on `codex/gem-hunt`, based on current main `4c3e79a`. Publication verification is recorded in the deployment report. The Game remains English-only, as documented in the agent workflow; these strings intentionally have no partial Swedish or Polish translation.
 
+## Hidden gems button redesign, deployment requested 2026-09-21
+
+Based on deployed `09de74e`. New original open-chest artwork shows the barrel
+lid, hinges, wooden front panels, brass bindings and three visible jewels.
+The emerald button has a fine gold inset frame and a separate count badge.
+Below 680px, the title has its own row, with navigation and the button beneath.
+Existing wording, accessible name, collection count and game logic are unchanged.
+The previous chest SVG is preserved. A refinement pass clarified the hinges
+and front rim and softened the small decorative glint.
+
+Created: `game-of-worms/assets/treasure-chest-open.svg`. Changed: Game HTML,
+treasure CSS, PROJECT_STATUS.md and these notes. Deleted: none.
+Verified SVG parsing, asset loading, Enter activation, Escape/focus return,
+no console errors and no header overlaps/overflow at 360/768/1024/1440px.
+The button measures 56px high on mobile and 64px on desktop. Hover and focus
+remain clear, and reduced motion disables the colour transition. The Game
+keeps its fixed light palette. No new public copy or dependency was introduced.
+
+Full-page attempts measure 360x2711, 768x2368, 1024x2013 and 1440x1948px,
+but still contain scaled/duplicated stitching from the browser tool. They are
+diagnostic only. Actual-size phone and desktop renders were inspected directly.
+
 ## Physical socket board, deployment requested 2026-09-21
 
 Based on `0caa43a`. The heart tray now has an extruded gold collar, bevelled

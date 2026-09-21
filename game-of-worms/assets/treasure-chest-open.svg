@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 88" fill="none">
+  <defs>
+    <linearGradient id="lid" x1="26" y1="9" x2="44" y2="44" gradientUnits="userSpaceOnUse"><stop stop-color="#d29b5e"/><stop offset=".55" stop-color="#a46739"/><stop offset="1" stop-color="#71402b"/></linearGradient>
+    <linearGradient id="wood" x1="30" y1="44" x2="52" y2="77" gradientUnits="userSpaceOnUse"><stop stop-color="#b37843"/><stop offset="1" stop-color="#79492f"/></linearGradient>
+    <linearGradient id="gold" x1="20" y1="15" x2="61" y2="76" gradientUnits="userSpaceOnUse"><stop stop-color="#fff0b9"/><stop offset=".45" stop-color="#d5ac5b"/><stop offset="1" stop-color="#aa7737"/></linearGradient>
+  </defs>
+  <ellipse cx="48" cy="80" rx="35" ry="4" fill="#061f1a" opacity=".27"/>
+  <!-- Raised barrel lid; its lining and rear hinge remain behind the jewels. -->
+  <path d="M12 38V29C12 15 24 7 45 7s35 8 35 22v9l-7 8H19Z" fill="url(#lid)" stroke="#563826" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M18 34v-5c0-10 10-16 27-16s29 6 29 16v5Z" fill="#69422c" stroke="url(#gold)" stroke-width="2.5"/>
+  <path d="M25 26c6-8 31-11 42 0M25 31h40" stroke="#a57345" stroke-width="1.2" opacity=".65"/>
+  <path d="M23 12c-5 5-7 13-7 24h6c0-12 2-20 7-26ZM62 10c6 5 10 14 10 26h6c0-12-4-21-10-24Z" fill="url(#gold)" stroke="#90652e" stroke-width=".7"/>
+  <path d="M15 36h61l10 10-7 7H15L8 46Z" fill="#342b23" stroke="#d0a363" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M24 35h6v6h-6Zm39 0h6v6h-6Z" fill="#be995a" stroke="#6c4e2d" stroke-width=".7"/>
+  <!-- Distinct cut stones tucked into the open compartment. -->
+  <path d="m26 45-6-9 7-8 10 3 3 14Z" fill="#277aaa" stroke="#153f5d" stroke-width="1"/>
+  <path d="m20 36 7-8 3 10-4 7Zm7-8 10 3-7 7Z" fill="#8ed3e9"/>
+  <path d="m42 45-5-11 10-10 11 9-3 13Z" fill="#a84073" stroke="#61334e" stroke-width="1"/>
+  <path d="m37 34 10-10-1 13Zm10-10 11 9-12 4Z" fill="#eda0bc"/>
+  <path d="m61 47-6-9 7-10 12 6 1 12Z" fill="#279979" stroke="#175747" stroke-width="1"/>
+  <path d="m55 38 7-10 4 11-5 8Zm7-10 12 6-8 5Z" fill="#9ae0b7"/>
+  <!-- Front panels, thickness at the rim, bound corners and a brass clasp. -->
+  <path d="m10 46 72 0-3 27-6 5H19l-7-5Z" fill="url(#wood)" stroke="#503b29" stroke-width="2" stroke-linejoin="round"/>
+  <path d="m73 49 8-3-2 27-6 5Z" fill="#67402b"/>
+  <path d="M18 55h53M18 66h53" stroke="#653e2a" stroke-width="1.4"/>
+  <path d="M28 59h10m-8 10h24m3-11h10" stroke="#dbab70" stroke-opacity=".5" stroke-width="1" stroke-linecap="round"/>
+  <path d="M15 47h7l2 28h-7ZM67 47h7l-2 28h-7Z" fill="url(#gold)" stroke="#967039" stroke-width=".8"/>
+  <path d="M11 46h71v5H11ZM18 74h55v4H18Z" fill="url(#gold)" stroke="#997137" stroke-width=".8" stroke-linejoin="round"/>
+  <path d="M14 47h23m18 0h22" stroke="#fff1c0" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M39 46h14v16l-7 5-7-5Z" fill="url(#gold)" stroke="#855d2c" stroke-width="1"/>
+  <path d="m42 51 4-3 4 3-4 4Z" fill="#286b56" stroke="#fff0bc" stroke-width=".8"/>
+  <path d="M46 56a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-.8 3 .1 3h1.5l.1-3Z" fill="#65492c"/>
+  <path d="M19 77v4h8v-3m38 0v3h8v-4" fill="#78552e"/>
+  <g fill="#fff0bd"><circle cx="19" cy="55" r="1.1"/><circle cx="21" cy="70" r="1.1"/><circle cx="70" cy="55" r="1.1"/><circle cx="69" cy="70" r="1.1"/></g>
+  <path d="m84 15 1.2 3.8L89 20l-3.8 1.2L84 25l-1.2-3.8L79 20l3.8-1.2Z" fill="#f5dea1"/>
+</svg>

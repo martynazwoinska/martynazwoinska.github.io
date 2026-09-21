@@ -41,11 +41,16 @@ This release was deployed as `ade4a73`; Pages success and live files were verifi
 Board refinement deployed and verified as `0caa43a`: simple gold corner lines,
 a recessed heart centre, a separate title/close header and a tray showing only
 the gem pieces. Puzzle rules, gem geometry and saved progress are unchanged.
-Further physical-depth refinement requested for deployment on 2026-09-21:
+Physical-depth refinement deployed and verified as `09de74e` on 2026-09-21:
 raised gold collar, bevelled walls, eight Easy sockets with dividing edges,
 an undivided Mystery recess, and separate loose/fitted contact shadows.
 Gem art, fit geometry, saves and rules remain unchanged. Focused checks pass.
 See the treasure hunt notes for validation and screenshot limitations.
+
+Hidden gems button redesign requested for deployment on 2026-09-21: original
+open wooden chest with visible jewels, emerald/gold button, clear count badge
+and a two-row phone header. Wording and treasure logic remain unchanged.
+Keyboard, asset and responsive checks pass; full-page capture limitations remain.
 
 ## Bali gong duet, deployment approved 2026-09-20
 
