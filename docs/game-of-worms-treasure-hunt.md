@@ -2,6 +2,16 @@
 
 Status: implementation and deployment approved by Martyna on 2026-09-20, on `codex/gem-hunt`, based on current main `4c3e79a`. Publication verification is recorded in the deployment report. The Game remains English-only, as documented in the agent workflow; these strings intentionally have no partial Swedish or Polish translation.
 
+## Hint panel removed, deployment requested 2026-09-21
+
+Removed the Give me a hint / Another place panel and its location-clue controls
+from the collection chest, as requested. The gem tray, introductory text,
+short puzzle instructions and inline restart remain. Saved progress is untouched.
+Changed hunt rendering, hint-only CSS and entry cache versions; no files added
+or deleted. JavaScript syntax and whitespace checks pass. The empty chest was
+inspected in-browser at desktop size, with no empty panel or console errors.
+Mobile/full-page visual proof remains subject to the recorded viewport limitation.
+
 ## Restart gem hunt, deployment approved 2026-09-21
 
 Based on main `3205d7a`. A separate Restart gem hunt control in the chest expands

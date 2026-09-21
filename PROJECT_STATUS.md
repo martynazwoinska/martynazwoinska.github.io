@@ -13,6 +13,9 @@ its entry. "To check" is not a judgement that a scene needs a redesign.
 
 ## Hidden gems and puzzle, deployment approved 2026-09-20
 
+2026-09-21: removed the treasure chest's Give me a hint panel at Martyna's
+request. Gem collection, puzzle controls and inline restart are preserved.
+
 Restart-gem-hunt preview added on 2026-09-21, based on main `3205d7a`.
 Confirmation clears only the gem collection and puzzle progress, with saved
 restart tracking across tabs. Functional checks pass; responsive viewport
