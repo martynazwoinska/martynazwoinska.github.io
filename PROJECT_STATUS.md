@@ -11,6 +11,18 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Species heading line fit, 2026-09-21
+
+Removed the mobile heading's artificial 14-character width limit so "Meet our
+six worms" stays on one line whenever space permits. Changed Game style.css
+and its index.html cache key; no public wording, artwork, or other pages changed.
+No files created or deleted. Full-page browser proofs at viewport widths 360,
+768, 1024 and 1440 px measured 345x2498, 753x2129, 1009x1937 and 1425x1875 px
+(the browser excludes its 15 px scrollbar). All headings fit one line, with no
+horizontal overflow. Family dialog keyboard opening, Escape and restored focus
+passed; console had no warnings/errors. Game retains its fixed light palette.
+No unresolved issue; git diff --check passed.
+
 ## Gem reveal motion review and release, 2026-09-21
 
 User requested the centred header deployment, then review, improvement and

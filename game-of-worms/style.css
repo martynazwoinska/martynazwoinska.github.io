@@ -7313,7 +7313,7 @@ footer p { margin: 0; }
   .topbar .back-link { grid-column: 1; grid-row: 1; min-height: 44px; display: inline-flex; align-items: center; font-size: .72rem; }
   .topbar .treasure-toggle { grid-column: 3; grid-row: 1; }
   .species-heading-copy { gap: 8px; }
-  .species-heading-copy h2 { font-size: 1.1rem; max-width: 14ch; }
+  .species-heading-copy h2 { font-size: 1.1rem; max-width: none; }
   .species-heading-copy .family-info-toggle { font-size: .7rem; padding: 7px 8px; gap: 5px; }
   .species-tabs { grid-template-columns: 1fr; gap: 7px; margin-bottom: 12px; }
   .sister-pair { padding: 17px 5px 5px; border-radius: 14px; }
