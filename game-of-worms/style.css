@@ -7306,12 +7306,19 @@ footer p { margin: 0; }
 .species-tab { min-height: 76px; border-radius: 12px; padding: 10px 6px; font-size: 1.05rem; box-shadow: 0 2px 5px rgba(26,71,79,.06); }
 .species-tab small { margin-top: 3px; font-size: .68rem; padding: 2px 5px; letter-spacing: .02em; }
 .species-tab.is-selected { box-shadow: inset 0 -2px 0 rgba(255,209,102,.72),0 3px 0 rgba(22,125,122,.1); }
+/* Share the unused centre of the navigation row without shrinking the title. */
+@media (min-width:741px) {
+  .topbar { grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); }
+  .topbar .brand { grid-column: 2; grid-row: 1; padding-top: 22px; }
+  .topbar .back-link { align-self: start; margin-top: 21px; }
+  .topbar .treasure-toggle { grid-column: 3; align-self: start; }
+}
 @media (min-width:741px) and (max-width:900px) {
   .species-tab { font-size: .88rem; padding-inline: 4px; }
   .species-tab small { font-size: .62rem; padding-inline: 3px; letter-spacing: 0; white-space: nowrap; }
 }
 @media (max-width:740px) {
-  .topbar { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 4px 10px; padding: 10px 14px 0; }
+  .topbar { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 0 10px; padding: 8px 14px 0; }
   .topbar .brand { grid-column: 1 / -1; grid-row: 2; text-align: center; }
   .topbar .brand h1 { font-size: clamp(2.25rem,6.8vw,2.75rem); white-space: nowrap; }
   .topbar .back-link { grid-column: 1; grid-row: 1; min-height: 44px; display: inline-flex; align-items: center; font-size: .72rem; }

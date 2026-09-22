@@ -11,6 +11,26 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Shorter Worm Atlas header, 2026-09-22
+
+The desktop title now shares the unused centre of the top navigation row,
+reducing the header by 42 px at 1440 CSS px and about 36 px at tablet widths.
+The title remains centred and keeps its font size. Species boxes retain their
+dimensions. Mobile keeps two rows, with 6 px less vertical spacing. The family
+link and species choices move up with the shorter header. No public copy,
+illustrations, scene animations or theme behaviour changed.
+
+Checked 360/768/1024/1440 CSS px: no horizontal overflow or header overlaps.
+Family and treasure dialogs open with Enter, close with Escape and return focus
+to their triggers. No browser console errors. Full-page captures measured
+345x2479, 753x2109, 1009x1896 and 1425x1864 px, respectively. The browser capture
+tool still produces half-scale duplicate strips, so these are not clean visual
+proofs; header geometry and control operation were checked directly in-browser.
+The Game intentionally keeps its fixed light palette. git diff --check passes.
+
+Changed game-of-worms/style.css, game-of-worms/index.html and PROJECT_STATUS.md.
+No production files created or deleted.
+
 ## Trivandrum glass click-through correction, 2026-09-22
 
 The previous handle-focused checks missed a centre-of-glass failure. Reproduced
