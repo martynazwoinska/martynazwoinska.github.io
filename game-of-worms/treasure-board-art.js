@@ -1,26 +1,16 @@
 import {svg,pieces,pointsText,outline,rotate,insetPolygon} from './treasure-pieces.js?v=20260920-discovery-2';
 
 let serial=0;
-export function drawPuzzleSetting(board){
+export function drawPuzzleSetting(board,{x=0,y=0,width=600,height=650}={}){
  const id=`jewel-board-${++serial}`,defs=svg(board,'defs');
  const felt=svg(defs,'radialGradient',{id,cx:'.46',cy:'.38',r:'.76'});
  svg(felt,'stop',{offset:0,'stop-color':'#407969'});
  svg(felt,'stop',{offset:1,'stop-color':'#193f38'});
- const lip=svg(defs,'linearGradient',{id:`${id}-lip`,x1:0,y1:0,x2:'.7',y2:1});
- svg(lip,'stop',{offset:0,'stop-color':'#102f2a'});
- svg(lip,'stop',{offset:'.48','stop-color':'#285748'});
- svg(lip,'stop',{offset:1,'stop-color':'#92ad83'});
  const background=svg(board,'g',{'aria-hidden':'true','pointer-events':'none'});
- svg(background,'rect',{x:1,y:1,width:598,height:648,rx:29,fill:'#b99a60'});
- svg(background,'rect',{x:5,y:5,width:590,height:640,rx:25,fill:'#fff6dc',stroke:'#e4cf9a','stroke-width':2});
- svg(background,'rect',{x:12,y:12,width:576,height:626,rx:20,fill:`url(#${id}-lip)`,stroke:'#486754','stroke-width':2});
- svg(background,'rect',{x:20,y:22,width:560,height:608,rx:15,fill:`url(#${id})`});
- svg(background,'path',{d:'M20 47V37Q20 22 35 22H560',fill:'none',stroke:'#102f2a','stroke-opacity':'.65','stroke-width':3});
- svg(background,'path',{d:'M40 630H565Q580 630 580 615V50',fill:'none',stroke:'#b1c199','stroke-opacity':'.3','stroke-width':1.5});
- for(const [x,y,a] of [[31,33,0],[569,33,90],[569,617,180],[31,617,270]]){
-  const corner=svg(background,'g',{transform:`translate(${x} ${y}) rotate(${a})`,fill:'none',stroke:'#c9b983','stroke-width':1.3,'stroke-linecap':'round',opacity:.6});
-  svg(corner,'path',{d:'M0 23V8Q0 0 8 0H23'});
- }
+ // One narrow brass edge and an inset seam surround the felt.
+ svg(background,'rect',{x:x+2,y:y+2,width:width-4,height:height-4,rx:19,fill:'#b99a60',stroke:'#8b754b','stroke-width':1});
+ svg(background,'rect',{x:x+5,y:y+5,width:width-10,height:height-10,rx:16,fill:`url(#${id})`,stroke:'#ead7a1','stroke-width':1.5});
+ svg(background,'rect',{x:x+11,y:y+11,width:width-22,height:height-22,rx:11,fill:'none',stroke:'#172f29','stroke-opacity':.45,'stroke-width':1});
  return background;
 }
 

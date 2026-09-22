@@ -11,6 +11,34 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Restored species groups and closer heart view, 2026-09-22
+
+Restored the rounded, softly tinted shared boxes around each sister-species
+pair while retaining the larger individual buttons and current header.
+The puzzle now has compact filled/outlined difficulty buttons and a
+“Start again” button, as approved in the request. The visible “Your treasure
+chest” heading is removed; its existing accessible dialog name remains.
+The Game is English-only, so this approved English wording has no Swedish
+or Polish counterpart.
+
+After completion the board fits closely around the unchanged heart geometry,
+with a thin gold edge and substantially less unused felt. Before completion,
+the full playing area stays available. Restart restores that full area.
+The shared gem tray, existing finish, press/release heartbeat and save rules
+are retained. A final spacing refinement keeps the playing-board controls
+inside the panel at the tested desktop height.
+
+Changed Game style.css, treasure.css, treasure-board-art.js,
+treasure-puzzle.js, treasure-hunt.js, game.js, index.html and this record.
+No production files created or deleted; no gem, worm or accessory assets changed.
+Full-page browser proofs at 360/768/1024/1440 px viewports measured
+345x2485, 753x2145, 1009x1937 and 1425x1906 px, excluding the 15 px scrollbar.
+Checks cover restored species grouping, both puzzle levels, completed and
+unfinished board layout, keyboard/heartbeat, restart, reduced motion, Escape
+and focus restoration. Puzzle geometry/save, audio/finish and interaction
+checks passed. No horizontal overflow or browser warnings/errors. The Game
+keeps its fixed light palette.
+
 ## Playable finished heart and puzzle panel, 2026-09-22
 
 The completed gem heart now compresses on press and returns with two small

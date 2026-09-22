@@ -83,3 +83,21 @@
 .gem-heart-touch:focus-visible polygon{stroke:#fff6c8;stroke-width:3;stroke-linejoin:round}
 .treasure-notice{position:absolute;top:12px;left:50%;transform:translateX(-50%);max-width:calc(100% - 24px);width:max-content;text-align:center;border:1px solid #a8c1b2;border-radius:9px;background:#f6faef;box-shadow:0 2px 5px #193e3320;padding:7px 12px}
 @media(max-width:520px){.gem-tray-slot svg{height:34px}.gem-tray{padding-bottom:8px}.treasure-notice{top:8px;font-size:12px}.gem-levels{margin-bottom:8px}}
+
+/* Keep the jewel close, with recognisable controls and no repeated title. */
+.treasure-dialog.is-chest{width:min(620px,calc(100% - 24px));padding-top:12px}
+.treasure-dialog.is-chest .treasure-header{justify-content:flex-end;border:0;padding-bottom:0}
+.treasure-dialog.is-chest .treasure-header h2{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.gem-levels{gap:8px}
+.gem-levels button,.gem-levels button[aria-pressed=true]{min-width:96px;border:1px solid #b9b394;border-radius:9px;padding:8px 16px;background:#fffaf0}
+.gem-levels button[aria-pressed=true]{background:#255f51;border-color:#255f51;color:#fff8e7;box-shadow:inset 0 1px 0 #ffffff24}
+.gem-levels button:hover{background:#e4ece1;color:#174e3d}
+.gem-levels button[aria-pressed=true]:hover{background:#2d6c5c;color:#fff8e7}
+.gem-board,.gem-board.is-solved{background:transparent;border-radius:14px;box-shadow:0 4px 10px #173d3520}
+.gem-board{width:min(100%,460px,max(240px,calc((90dvh - 390px)*.923)))}
+.gem-board.is-solved{width:min(100%,440px,max(240px,calc((90dvh - 330px)*1.095)))}
+.gem-tools{margin-top:12px}
+.gem-tools button,.treasure-restart{border:1px solid #b9b394!important;border-radius:9px;background:#fffaf0!important;padding:8px 16px;text-decoration:none}
+.gem-tools button:hover,.treasure-restart:hover{background:#e4ece1!important}
+.treasure-restart{margin-top:12px}
+.gem-board.is-solved [data-heart-assembly]{transform-box:view-box;transform-origin:50% 50%!important}

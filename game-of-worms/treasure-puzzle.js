@@ -1,6 +1,6 @@
 import {svg,pieces,drawGem,pointsText,rotate} from './treasure-pieces.js?v=20260920-discovery-2';
 import {newPuzzle,moveGroup,rotateGroup,snap,target} from './treasure-model.js?v=20260921-motion-1';
-import {drawPuzzleSetting,drawPuzzleRecess,celebrateHeart} from './treasure-board-art.js?v=20260921-heartbeat-1';
+import {drawPuzzleSetting,drawPuzzleRecess,celebrateHeart} from './treasure-board-art.js?v=20260922-puzzle-fit-2';
 
 import {makeHeartPlayable} from './treasure-heart-play.js?v=20260922-heart-play-1';
 import {createHeartFinishSound} from './treasure-finish-sound.js?v=20260922-heart-play-1';
@@ -11,12 +11,12 @@ export function mountPuzzle(host,state,save,announce){
  <button type="button" data-level="easy"><strong>Easy</strong></button>
  <button type="button" data-level="medium"><strong>Mystery</strong></button></div>
  <p class="gem-puzzle-help" hidden></p>
- <div class="gem-board-wrap" hidden></div><div class="gem-tools" hidden><button type="button" data-rotate>Turn piece ↻</button><button type="button" data-restart>Start this puzzle again</button></div>
+ <div class="gem-board-wrap" hidden></div><div class="gem-tools" hidden><button type="button" data-rotate>Turn piece ↻</button><button type="button" data-restart>Start again</button></div>
  <p class="gem-result" role="status"></p>`;
  const boardWrap=panel.querySelector('.gem-board-wrap'),help=panel.querySelector('.gem-puzzle-help'),tools=panel.querySelector('.gem-tools'),result=panel.querySelector('.gem-result');
  const sound=createHeartFinishSound(()=>panel.isConnected&&panel.closest('dialog')?.open!==false);
- let heartPlay=null,board,assembly,selected=-1,drag=null,nodes=[];
- const complete=(animate=true)=>{if(!state.puzzle?.solved)return;result.textContent='A heart! Eight discoveries, one treasure.';boardWrap.before(result);board.classList.add('is-solved');panel.classList.add('is-complete');if(celebrateHeart(board,state.puzzle,animate)&&animate)sound.play();heartPlay??=makeHeartPlayable(board,state.puzzle,sound);if(!state.wins.includes(state.puzzle.mode)){state.wins.push(state.puzzle.mode);announce('Puzzle complete. You made a heart!');}save();};
+ let heartPlay=null,board,setting,assembly,selected=-1,drag=null,nodes=[];
+ const complete=(animate=true)=>{if(!state.puzzle?.solved)return;result.textContent='A heart! Eight discoveries, one treasure.';boardWrap.before(result);if(!board.classList.contains('is-solved')){board.setAttribute('viewBox','70 120 460 420');setting.remove();setting=drawPuzzleSetting(board,{x:70,y:120,width:460,height:420});board.prepend(setting);}board.classList.add('is-solved');panel.classList.add('is-complete');if(celebrateHeart(board,state.puzzle,animate)&&animate)sound.play();heartPlay??=makeHeartPlayable(board,state.puzzle,sound);if(!state.wins.includes(state.puzzle.mode)){state.wins.push(state.puzzle.mode);announce('Puzzle complete. You made a heart!');}save();};
  function paint(){const puzzle=state.puzzle;if(!puzzle||!board)return;nodes.forEach((n,i)=>{const p=puzzle.poses[i];n.setAttribute('transform',`translate(${p.x} ${p.y}) rotate(${p.a})`);n.classList.toggle('is-selected',selected>=0&&p.group===puzzle.poses[selected].group);n.classList.toggle('is-placed',p.locked);const shade=rotate(p.locked?0:3,p.locked?1:7,-p.a);n.querySelector('.gem-contact-shadow').setAttribute('transform',`translate(${shade.x} ${shade.y})`);n.setAttribute('aria-label',`Gem ${i+1}${p.locked?', placed':selected===i?', selected':''}`);n.setAttribute('aria-pressed',String(selected===i));});panel.querySelector('[data-rotate]').disabled=selected<0||puzzle.mode==='easy'||puzzle.poses[selected].locked;}
  function constrain(id){const puzzle=state.puzzle,g=puzzle.poses[id].group,pts=[];puzzle.poses.forEach((p,i)=>{if(p.group===g)for(const[x,y]of pieces[i].local){const d=rotate(x,y,p.a);pts.push([p.x+d.x,p.y+d.y]);}});const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]),left=Math.min(...xs),right=Math.max(...xs),top=Math.min(...ys),bottom=Math.max(...ys);moveGroup(puzzle,id,left<8?8-left:right>592?592-right:0,top<8?8-top:bottom>642?642-bottom:0);}
  function settle(){if(selected<0)return;const joined=snap(state.puzzle,selected);if(joined)announce('Piece placed.');constrain(selected);paint();save();complete();}
@@ -29,7 +29,7 @@ export function mountPuzzle(host,state,save,announce){
   panel.querySelectorAll('[data-level]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.level===puzzle.mode)));
   help.textContent='Drag or tap gems into place. Keys: arrows move, R rotates, Enter places.';
   board=svg(boardWrap,'svg',{viewBox:'0 0 600 650',class:'gem-board','aria-label':'Gem assembly board'});
-  drawPuzzleSetting(board);
+  setting=drawPuzzleSetting(board);
   drawPuzzleRecess(board,puzzle.mode==='easy');
   assembly=svg(board,'g',{'data-heart-assembly':''});
   nodes=pieces.map((p,i)=>{const n=svg(assembly,'g',{class:'gem-piece',role:'button',tabindex:0,'data-puzzle-piece':i,'aria-keyshortcuts':'ArrowUp ArrowDown ArrowLeft ArrowRight r Enter Space'});svg(n,'polygon',{class:'gem-contact-shadow',points:pointsText(p.local),fill:'#061d18',stroke:'#061d18','stroke-width':5,'stroke-linejoin':'round','pointer-events':'none'});drawGem(n,i);svg(n,'polygon',{class:'gem-selection',points:pointsText(p.local),fill:'transparent',stroke:'#8b3d5c','stroke-width':4,'stroke-linejoin':'round'});

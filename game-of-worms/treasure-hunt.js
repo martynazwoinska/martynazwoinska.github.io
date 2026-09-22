@@ -1,6 +1,6 @@
 import {svg,drawGem,revealTreasure,pieces} from './treasure-pieces.js?v=20260920-discovery-2';
 import {treasures,SAVE_KEY,parseSave,emptySave,mergeHunts,restartHunt} from './treasure-model.js?v=20260921-motion-1';
-import {mountPuzzle} from './treasure-puzzle.js?v=20260922-heart-play-1';
+import {mountPuzzle} from './treasure-puzzle.js?v=20260922-puzzle-fit-2';
 import {gemLanding,gemDropFrames} from './treasure-motion.js?v=20260921-motion-1';
 import {drawCanopyCache} from './treasure-discoveries.js?v=20260920-discovery-2';
 
@@ -101,7 +101,7 @@ export function createTreasureHunt(habitat){
    for(const lens of habitat.querySelectorAll('[data-live-loupe] svg')){if(lens.closest('[hidden]'))continue;const lm=lens.getScreenCTM();if(!lm)continue;const q=p.matrixTransform(lm.inverse()),box=lens.viewBox.baseVal,r=Math.min(box.width,box.height)*.4;if(Math.hypot(q.x-box.x-box.width/2,q.y-box.y-box.height/2)<r){revealTreasure(habitat,'india',clue,0,0);break;}}
   }raf=requestAnimationFrame(tick);
  }
- function shell(title){confirmingRestart=false;puzzleUI?.save();puzzleUI=null;dialog.replaceChildren();const close=document.createElement('button');close.type='button';close.className='treasure-close';close.textContent='×';close.setAttribute('aria-label','Close');close.addEventListener('click',()=>dialog.close());const h=document.createElement('h2');h.id='treasure-title';h.textContent=title;const header=document.createElement('header');header.className='treasure-header';header.append(h,close);const content=document.createElement('div');content.className='treasure-content';dialog.append(header,content);return content;}
+ function shell(title){dialog.classList.toggle('is-chest',title==='Your treasure chest');confirmingRestart=false;puzzleUI?.save();puzzleUI=null;dialog.replaceChildren();const close=document.createElement('button');close.type='button';close.className='treasure-close';close.textContent='×';close.setAttribute('aria-label','Close');close.addEventListener('click',()=>dialog.close());const h=document.createElement('h2');h.id='treasure-title';h.textContent=title;const header=document.createElement('header');header.className='treasure-header';header.append(h,close);const content=document.createElement('div');content.className='treasure-content';dialog.append(header,content);return content;}
  function open(){if(!dialog.open){returnFocus=document.activeElement;dialog.showModal();}dialog.querySelector('.treasure-close').focus();}
  function chest(){
   confirmingRestart=false;
