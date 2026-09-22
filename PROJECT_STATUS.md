@@ -11,6 +11,23 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Trivandrum loupe interaction fix, 2026-09-22
+
+Clicking either loupe during the sample activity no longer cancels it. Pointer
+movement, keyboard movement and loupe resizing continue while the dish is held.
+Tiny pointer movements remain taps. Cleanup restores only animation-owned CSS
+properties, preserving the visitor's updated position and size. Escape and Home
+still stop the activity; switching scenes/accessories retains normal cleanup.
+No art or public wording changed. Four Game files changed: game.js, index.html,
+trivandrum-watering.js and trivandrum-samples.js; no files created or deleted.
+
+Verified male loupe clicks during examination at desktop and 360 px, handle drag,
+keyboard movement/resize, persistence after natural completion, size slider and
+Escape. Sample, watering and live-loupe checks pass; browser console is clear.
+Full-page proofs at 360/768/1024/1440 CSS px are 345x2357, 753x2222, 1009x1836 and
+1425x1908 px (scrollbar excluded), with no horizontal overflow. Fixed light palette
+unchanged. Physical touch-device testing remains manual.
+
 ## Trivandrum sample handoff, 2026-09-22
 
 Implementation and deployment requested by Martyna; Ahmedabad's kites and other

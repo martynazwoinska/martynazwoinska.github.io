@@ -16,17 +16,18 @@ export function createTrivandrumSamples(habitat,{actor,hand,reach}){
  const piece=(family,part)=>habitat.querySelector(`.accessory-piece[data-accessory-family="${family}"][data-worm-part="${part}"]`);
  function cancel(){cancelAnimationFrame(raf);raf=0;sound.stop();const r=run;run=null;if(!r)return;
   for(const [n,k,v]of r.saved)v===null?n.removeAttribute(k):n.setAttribute(k,v);
+  for(const [n,key,value,priority]of r.styles)value?n.style.setProperty(key,value,priority):n.style.removeProperty(key);
   for(const a of r.actors)a.restore();for(const a of r.paused)if(a.playState==='paused')a.play();r.layer.remove();delete habitat.dataset.sampleActivity;
  }
  function save(r,n,key){if(n&&!r.saved.some(x=>x[0]===n&&x[1]===key))r.saved.push([n,key,n.getAttribute(key)]);}
  function prop(r,p){if(!visible(p))return null;const art=p.querySelector('.location-accessory-art');
-  for(const n of [p,art]){save(r,n,'style');const b=n.getBBox();n.style.transformBox='view-box';n.style.transformOrigin=`${b.x+b.width/2}px ${b.y+b.height/2}px`;}
+  for(const n of [p,art]){for(const key of ['transform-box','transform-origin'])r.styles.push([n,key,n.style.getPropertyValue(key),n.style.getPropertyPriority(key)]);const b=n.getBBox();n.style.transformBox='view-box';n.style.transformOrigin=`${b.x+b.width/2}px ${b.y+b.height/2}px`;}
   const paused=p.getAnimations({subtree:true}).filter(a=>a.playState==='running');paused.forEach(a=>a.pause());r.paused.push(...paused);save(r,art,'transform');
   return {p,art,base:relative(r.root,art),parent:relative(r.root,art.parentNode)};
  }
  const position=(p,dx,dy,angle=0)=>{if(!p)return;const next=new DOMMatrix().translate(dx,dy).multiply(p.base).rotate(angle);p.art.setAttribute('transform',matrix(p.parent.inverse().multiply(next)));return next;};
  function start(target){if(!handles(target)||!visible(target)||document.hidden)return false;cancel();
-  const root=habitat.querySelector('#worm-species'),r={target,root,saved:[],paused:[],actors:[],cues:new Set(),delivered:false,start:performance.now()};run=r;
+  const root=habitat.querySelector('#worm-species'),r={target,root,saved:[],styles:[],paused:[],actors:[],cues:new Set(),delivered:false,start:performance.now()};run=r;
   r.layer=add(root,'g',{'data-sample-action':'','pointer-events':'none','aria-hidden':'true'});
   r.actors=[actor(habitat.querySelector('#primary-worm > .worm-body'),root,false),actor(habitat.querySelector('#companion-worm > .companion-body'),root,true)];
   r.tube=prop(r,piece(SAMPLE_FAMILY,'primary'));r.dish=prop(r,piece(SAMPLE_FAMILY,'companion'));

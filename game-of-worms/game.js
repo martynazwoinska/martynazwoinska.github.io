@@ -29,7 +29,7 @@ import { createAhmedabadHands } from "./ahmedabad-hands.js?v=20260914-soil-conta
 import { createIshigakiInteractions } from "./ishigaki-interactions.js?v=20260907-ishigaki-sound-1";
 import { createCanberraCafe, CAFE_FAMILIES } from "./canberra-cafe.js?v=20260909-cafe-audio-1";
 import { mountLiveLoupes } from "./live-loupes.js?v=20260909-blink-1";
-import { createTrivandrumWatering } from "./trivandrum-watering.js?v=20260922-samples-1";
+import { createTrivandrumWatering } from "./trivandrum-watering.js?v=20260922-loupe-fix-1";
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260908-cryo-return-1";
 import { createBaliGongs, GONG_FAMILY } from "./bali-gong-duet.js?v=20260920-gong-duet-2";
 import { createEdinburghPipes } from "./edinburgh-pipes.js?v=20260909-pipes-1";
@@ -1202,7 +1202,7 @@ els.accessorySizeSlider.addEventListener("input", event => {
   oahuBike.cancel();
   hcmcPlay.cancel();
   reunionPlay.cancel();
-  trivandrumWatering.cancel();
+  if (!trivandrumWatering.allowsLoupe(target&&visibleAccessoryPieces(target.id,target.wormPart)[0])) trivandrumWatering.cancel();
   ahmedabadHands.cancel();
   ishigakiPlay.clear();
   baliCacao.cancel();
@@ -1621,7 +1621,7 @@ function finishAccessoryDrag(event) {
   });
   piece.classList.remove("is-dragging");
   document.documentElement.classList.remove("accessory-drag-active");
-  if (moved || !claremontPlay.handles(piece) && !canopyPlay.handles(piece) && !ahmedabadHands.handles(piece) && !panamaPlay.handlesLeaf(piece) && !mauritiusPlay.handles(piece) && !guadeloupePlay.handles(piece) && !taipeiPlay.handles(piece) && !ju1375Play.handles(piece) && !(finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) && !mahahualPlay.handles(piece) && !praslinPlay.handles(piece)) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
+  if (moved || !trivandrumWatering.allowsLoupe(piece) && !claremontPlay.handles(piece) && !canopyPlay.handles(piece) && !ahmedabadHands.handles(piece) && !panamaPlay.handlesLeaf(piece) && !mauritiusPlay.handles(piece) && !guadeloupePlay.handles(piece) && !taipeiPlay.handles(piece) && !ju1375Play.handles(piece) && !(finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) && !mahahualPlay.handles(piece) && !praslinPlay.handles(piece)) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") { baliCacao.drop(piece); claremontPlay.drop(piece); }
@@ -1635,6 +1635,8 @@ function moveActiveAccessoryPointer(event) {
   if (!activeAccessoryDrag || !activeAccessoryDrag.pointers.has(event.pointerId)) return;
   const { id, wormPart, piece } = activeAccessoryDrag;
   event.preventDefault();
+  // Preserve the ongoing sample handoff for a tap or small finger wobble.
+  if (trivandrumWatering.allowsLoupe(piece) && !activeAccessoryDrag.moved && !activeAccessoryDrag.pinch && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)<=6) return;
   if (activeAccessoryDrag.umbrellaPivot && !activeAccessoryDrag.pinch) {
     if (activeAccessoryDrag.primaryPointerId === event.pointerId) {
       const lift = event.clientY-activeAccessoryDrag.startClientPoint.y;
@@ -1786,7 +1788,7 @@ function wireAccessoryPieces() {
       if (!oahuBike.handles(piece)) oahuBike.cancel();
       hcmcPlay.cancel();
       reunionPlay.cancel();
-      trivandrumWatering.cancel();
+      if (!trivandrumWatering.allowsLoupe(piece)) trivandrumWatering.cancel();
       if (ahmedabadHands.active && !ahmedabadHands.handles(piece)) ahmedabadHands.cancel();
       baliCacao.cancel();
       canberraCafe.cancel();
@@ -1922,7 +1924,7 @@ function wireAccessoryPieces() {
       if ((event.key === "Enter" || event.key === " ") && trivandrumWatering.handles(piece)) {
         event.preventDefault(); if(!event.repeat)trivandrumWatering.start(piece); return;
       }
-      if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) trivandrumWatering.cancel();
+      if (["Escape", "Home"].includes(event.key) || !trivandrumWatering.allowsLoupe(piece) && ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) trivandrumWatering.cancel();
       if ((event.key === "Enter" || event.key === " ") && ahmedabadHands.handles(piece)) {
         event.preventDefault(); if (!event.repeat) { ahmedabadFans.cancel(); ahmedabadHands.start(piece); } return;
       }

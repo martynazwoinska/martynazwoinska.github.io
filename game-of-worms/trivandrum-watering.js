@@ -1,4 +1,4 @@
-import {createTrivandrumSamples} from './trivandrum-samples.js?v=20260922-samples-1';
+import {createTrivandrumSamples} from './trivandrum-samples.js?v=20260922-loupe-fix-1';
 import {add,at,relative,matrix,ease,clamp,recordedSound} from './scene-performance.js?v=20260919-uniform-1';
 import {pathPoints} from './guadeloupe-dance.js?v=20260916-gwoka-11';
 export const WATERING_FAMILY='trivandrum-garden-watering-can';
@@ -112,5 +112,5 @@ export function createTrivandrumWatering(habitat) {
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')cancel();});
   window.addEventListener('resize',cancel);window.addEventListener('pagehide',cancel);reduced.addEventListener('change',cancel);
-  return {handles,start,cancel,get active(){return !!active||samples.active;}};
+  return {handles,start,cancel,allowsLoupe:piece=>samples.active&&piece?.dataset.accessoryFamily==='trivandrum-field-loupe',get active(){return !!active||samples.active;}};
 }
