@@ -64,3 +64,22 @@
 .scene-gem-shadow{position:absolute;height:4px;border-radius:50%;background:#172e2d;opacity:.22;transform:translate(-50%,-50%);pointer-events:none;filter:blur(1.5px)}
 .scene-gem[data-treasure-gem="towel"]::after{content:none}
 .scene-gem[hidden]{display:none}
+
+/* A shared tray and quiet controls leave the fitted board as the centrepiece. */
+.treasure-dialog{width:min(680px,calc(100% - 24px));border-radius:20px;box-shadow:0 18px 48px #153c3b38}
+.treasure-dialog[open]{gap:10px}
+.gem-tray{grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;margin:0 0 10px;padding:4px 0 10px;border-bottom:1px solid #d9c799}
+.gem-tray-slot{border:0;background:transparent;box-shadow:none;min-height:40px;padding:2px}
+.gem-tray-slot svg{width:100%;max-width:52px;height:46px}
+.gem-levels{display:flex;justify-content:center;gap:20px;padding:0!important;border:0;border-radius:0;background:transparent;margin-bottom:12px}
+.gem-levels button,.gem-levels button[aria-pressed=true]{min-width:90px;background:transparent;color:#35554a;border:0;border-bottom:2px solid transparent;border-radius:0;padding:8px 12px;box-shadow:none}
+.gem-levels button[aria-pressed=true]{border-bottom-color:#28634f;color:#174e3d}
+.gem-assembly.is-complete .gem-result{padding:0;margin:6px 0 12px;border:0;background:transparent;font-size:14px;font-weight:500}
+.gem-board{width:min(100%,460px,max(240px,calc((90dvh - 410px)*.923)))}
+.gem-tools{margin-top:8px}
+.gem-tools button,.treasure-restart{background:transparent;border:0!important;text-decoration:underline;text-underline-offset:4px}
+.treasure-restart{margin-top:4px}
+.gem-heart-touch{cursor:pointer;touch-action:none;outline:none}
+.gem-heart-touch:focus-visible polygon{stroke:#fff6c8;stroke-width:3;stroke-linejoin:round}
+.treasure-notice{position:absolute;top:12px;left:50%;transform:translateX(-50%);max-width:calc(100% - 24px);width:max-content;text-align:center;border:1px solid #a8c1b2;border-radius:9px;background:#f6faef;box-shadow:0 2px 5px #193e3320;padding:7px 12px}
+@media(max-width:520px){.gem-tray-slot svg{height:34px}.gem-tray{padding-bottom:8px}.treasure-notice{top:8px;font-size:12px}.gem-levels{margin-bottom:8px}}

@@ -11,6 +11,38 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Playable finished heart and puzzle panel, 2026-09-22
+
+The completed gem heart now compresses on press and returns with two small
+pulses, a brief sheen and a quiet double heartbeat. The existing completion
+animation remains. Pointer, touch and Enter/Space work; cancellation, blur,
+hidden tabs, dialog closure and board replacement clear the interaction.
+Reduced motion keeps light feedback without displacement. Completion transfers
+keyboard focus from the last piece to the finished heart. Saved collections
+and both puzzle levels remain intact. At the user's request the heart reuses
+“A heart! Eight discoveries, one treasure.” as its accessible name. The Game
+is English-only; no new public wording or translations were introduced.
+
+The puzzle panel uses one shared gem tray, unboxed completion text, quiet
+level controls and a viewport-fitted board. The approved gem and board art
+is unchanged. Gem notifications now appear at the top inside each scene,
+remain click-through and retain their original wording and lifetime.
+
+Created game-of-worms/treasure-heart-play.js and
+scripts/check-treasure-heart-play.cjs. Changed treasure-puzzle.js,
+treasure-finish-sound.js, treasure-hunt.js, treasure.css, Game index.html and
+game.js cache keys, scripts/check-treasure-finish.cjs and this record.
+No files deleted. No other scene artwork, accessories or homepage files changed.
+
+Validation: puzzle geometry/save, restart, finish audio and new heart interaction
+checks passed. Browser checks covered Easy and Mystery completion, mouse and
+keyboard activation, restart, close/reopen, Escape/focus restoration, reduced
+motion, final-gem collection and notification positioning. Full-page proofs at
+360/768/1024/1440 px viewports measured 345x2461, 753x2136, 1009x1928,
+1425x1897 px (15 px scrollbar excluded). No horizontal overflow or console
+warnings/errors. The Game keeps its fixed light palette. The new sound was
+verified through its scheduled audio behavior, not a separate listening test.
+
 ## Atlas header balance release, 2026-09-22
 
 Implemented the requested removal of "Meet our six worms"; the existing

@@ -29,7 +29,7 @@ const path=require('node:path');
  }
  const {createHeartFinishSound}=await load('treasure-finish-sound.js');
  const realTimeout=global.setTimeout,realInterval=global.setInterval;let expiry,watch;
- global.setTimeout=(fn,ms)=>{assert.equal(ms,3200);expiry=fn;return 1;};global.clearTimeout=()=>{};
+ global.setTimeout=(fn,ms)=>{assert.ok([1000,3200].includes(ms));expiry=fn;return 1;};global.clearTimeout=()=>{};
  global.setInterval=fn=>{watch=fn;return 2;};global.clearInterval=()=>{};
  let voices=[],contexts=[];
  class Param{setValueAtTime(){}linearRampToValueAtTime(){}exponentialRampToValueAtTime(){}}
@@ -41,6 +41,7 @@ const path=require('node:path');
  sound.play();sound.stop();await Promise.resolve();assert.equal(voices.length,10,'closing before resume prevents late audio');
  sound.play();await Promise.resolve();active=false;watch();assert.ok(contexts.at(-1).closed,'closing or replacing the board cancels sound');
  const count=contexts.length;global.document.hidden=true;sound.play();assert.equal(contexts.length,count,'hidden page stays quiet');
+ global.document.hidden=false;active=true;voices=[];sound.play('heartbeat');await Promise.resolve();assert.equal(voices.length,2);assert.ok(voices.every(v=>v.stopAt<11),'heartbeat ends in less than a second');sound.stop();
  delete global.AudioContext;global.document.hidden=false;active=true;assert.doesNotThrow(()=>sound.play(),'audio unavailable never breaks completion');
  global.setTimeout=realTimeout;global.setInterval=realInterval;
  console.log('PASS: shine tracks rotated/free-position hearts, finite celebration, no duplicate effects, reduced-motion finish and no replay on restore, timed sound, cancellation and unsupported audio.');

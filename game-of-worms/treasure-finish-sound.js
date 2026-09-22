@@ -5,14 +5,14 @@ export function createHeartFinishSound(isActive=()=>true){
   clearTimeout(timer);clearInterval(watch);
   if(context){const old=context;context=null;old.close().catch(()=>{});}
  }
- function play(){
+ function play(kind='finish'){
   stop();
   if(document.hidden||!isActive())return;
   const Audio=globalThis.AudioContext||globalThis.webkitAudioContext;
   if(!Audio)return;
   try{
    const requested=performance.now(),ctx=context=new Audio();
-   timer=setTimeout(stop,3200);
+   timer=setTimeout(stop,kind==='heartbeat'?1000:3200);
    watch=setInterval(()=>{if(document.hidden||!isActive())stop();},100);
    // Resume directly inside the final placement gesture. Never replay late.
    ctx.resume().then(()=>{
@@ -28,6 +28,7 @@ export function createHeartFinishSound(isActive=()=>true){
      voice.onended=()=>{voice.disconnect();gain.disconnect();};
      voice.start(start);voice.stop(start+length+.02);
     }
+    if(kind==='heartbeat'){note(104.65,.12,.23,.10,.025,73.4);note(98,.37,.27,.075,.025,65.4);return;}
     // A glass-like strike, two cushioned low notes, then a warm major-sixth chord.
     note(1046.5,0,.75,.055);note(2093,0,.32,.012);note(3139.5,0,.2,.004);
     note(104.65,.96,.28,.11,.025,78.4);note(98,1.56,.3,.085,.025,73.4);
