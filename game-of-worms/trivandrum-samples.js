@@ -1,18 +1,27 @@
 import {add,at,relative,matrix,ease,clamp,visible,recordedSound} from './scene-performance.js?v=20260919-uniform-1';
 export const SAMPLE_FAMILY='trivandrum-sample-tube';
-export const SAMPLE_DURATION=11900;
+export const SAMPLE_DURATION=7900;
+export const SAMPLE_RETURN_DURATION=900;
 const pulse=(t,a,b,c,d)=>ease((t-a)/b)*(1-ease((t-c)/d));
 export function sampleFrame(ms,reduced=false){
- if(reduced)return {reach:0,open:0,lift:0,tip:0,transfer:1,inspect:0,done:ms>=300};
- return {reach:pulse(ms,0,750,10500,1000),open:pulse(ms,750,700,6300,800),
+ if(reduced)return {reach:1,open:0,lift:0,tip:0,transfer:1,inspect:1,holding:true};
+ return {reach:ease(ms/750),open:pulse(ms,750,700,6300,800),
  lift:pulse(ms,1700,1400,4700,1500),tip:pulse(ms,2900,650,4350,700),
- transfer:ease((ms-3450)/850),inspect:pulse(ms,5600,1300,9700,1300),done:ms>=SAMPLE_DURATION};
+ transfer:ease((ms-3450)/850),inspect:ease((ms-5600)/1300),holding:ms>=SAMPLE_DURATION};
 }
+export function sampleReturnFrame(ms,from,reduced=false){
+ const amount=reduced?0:1-ease(ms/SAMPLE_RETURN_DURATION),f={...from,holding:false,done:reduced||ms>=SAMPLE_RETURN_DURATION};
+ for(const key of ['reach','open','lift','tip','inspect'])f[key]=from[key]*amount;
+ return f;
+}
+export const isSamplePlate=p=>p?.dataset.accessoryFamily===SAMPLE_FAMILY&&p.dataset.wormPart==='companion';
+const isLoupe=p=>p?.dataset.accessoryFamily==='trivandrum-field-loupe';
 export function createTrivandrumSamples(habitat,{actor,hand,reach}){
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const sound=recordedSound({cap:'nambucca-press-close.wav',leaf:'nambucca-paper-slide.wav'});
  let run=null,raf=0;
- const handles=p=>p?.dataset.accessoryFamily===SAMPLE_FAMILY;
+ const handles=p=>isSamplePlate(p)||(!!run&&isLoupe(p)&&p.dataset.wormPart==='companion');
+ const preserves=p=>!!run&&(p?.dataset.accessoryFamily===SAMPLE_FAMILY||isLoupe(p));
  const piece=(family,part)=>habitat.querySelector(`.accessory-piece[data-accessory-family="${family}"][data-worm-part="${part}"]`);
  function cancel(){cancelAnimationFrame(raf);raf=0;sound.stop();const r=run;run=null;if(!r)return;
   for(const [n,k,v]of r.saved)v===null?n.removeAttribute(k):n.setAttribute(k,v);
@@ -26,12 +35,19 @@ export function createTrivandrumSamples(habitat,{actor,hand,reach}){
   return {p,art,base:relative(r.root,art),parent:relative(r.root,art.parentNode)};
  }
  const position=(p,dx,dy,angle=0)=>{if(!p)return;const next=new DOMMatrix().translate(dx,dy).multiply(p.base).rotate(angle);p.art.setAttribute('transform',matrix(p.parent.inverse().multiply(next)));return next;};
- function start(target){if(!handles(target)||!visible(target)||document.hidden)return false;cancel();
+ function start(target){if(!handles(target)||!visible(target)||document.hidden)return false;
+  if(run){
+   if(run.returning)return true;
+   if(isLoupe(target)){
+    if(run.lastFrame?.holding){run.loupeFrom=run.loupeAmount;run.loupeTo=run.loupeTo?0:1;run.loupeStarted=performance.now();}
+   }else run.returning={start:performance.now(),from:run.lastFrame||sampleFrame(0,reduced.matches)};
+   return true;
+  }
   const root=habitat.querySelector('#worm-species'),r={target,root,saved:[],styles:[],paused:[],actors:[],cues:new Set(),delivered:false,start:performance.now()};run=r;
   r.layer=add(root,'g',{'data-sample-action':'','pointer-events':'none','aria-hidden':'true'});
   r.actors=[actor(habitat.querySelector('#primary-worm > .worm-body'),root,false),actor(habitat.querySelector('#companion-worm > .companion-body'),root,true)];
   r.tube=prop(r,piece(SAMPLE_FAMILY,'primary'));r.dish=prop(r,piece(SAMPLE_FAMILY,'companion'));
-  r.loupe=prop(r,piece('trivandrum-field-loupe','companion'));
+  r.loupe=prop(r,piece('trivandrum-field-loupe','companion'));r.loupeFrom=1;r.loupeTo=1;r.loupeAmount=1;r.loupeStarted=r.start;
   if(!r.tube||!r.dish){cancel();return false;}
   r.vessel=r.tube.art.querySelector('[data-sample-vessel]');r.cap=r.tube.art.querySelector('[data-sample-cap]');r.leaf=r.tube.art.querySelector('[data-sample-leaf]');
   r.received=r.dish.art.querySelector('[data-dish-leaf]');r.worm=r.dish.art.querySelector('[data-specimen-worm]');
@@ -43,10 +59,10 @@ export function createTrivandrumSamples(habitat,{actor,hand,reach}){
   sound.prepare(['cap','leaf']);habitat.dataset.sampleActivity='opening';raf=requestAnimationFrame(tick);return true;
  }
  function cue(r,key,ms,atMs,duration,level){if(ms>=atMs&&!r.cues.has(key)){r.cues.add(key);sound.play(key==='close'?'cap':key,0,duration,level);}}
- function tick(now){const r=run;if(!r)return;if(!visible(r.target)||document.hidden){cancel();return;}
-  const ms=now-r.start,f=sampleFrame(ms,reduced.matches),[female,male]=r.actors;
+ function tick(now){const r=run;if(!r)return;if(!visible(r.target)){cancel();return;}if(document.hidden){raf=0;return;}
+  const ms=now-r.start,f=r.returning?sampleReturnFrame(now-r.returning.start,r.returning.from,reduced.matches):sampleFrame(ms,reduced.matches),[female,male]=r.actors;r.lastFrame=f;
   if(f.done){cancel();return;}
-  habitat.dataset.sampleActivity=f.inspect>.95?'examining':f.inspect>.05?'lifting':f.transfer>0&&f.transfer<1?'transferring':f.open>.05?'opening':'settling';
+  habitat.dataset.sampleActivity=r.returning?'returning':f.holding?'holding':f.inspect>.95?'examining':f.inspect>.05?'lifting':f.transfer>0&&f.transfer<1?'transferring':f.open>.05?'opening':'settling';
   female.pose({effort:f.lift*.7,duck:0,shake:0});male.pose({effort:0,duck:f.inspect*.6,shake:0});
   const hold=male.point(390,125),inspectAt=male.point(375,112),dx=(hold.x-r.dishBase.x)*f.reach+(inspectAt.x-hold.x)*f.inspect,dy=(hold.y-r.dishBase.y)*f.reach+(inspectAt.y-hold.y)*f.inspect;
   const dishMatrix=position(r.dish,dx,dy),dishAt=at(dishMatrix,0,7);
@@ -58,12 +74,13 @@ export function createTrivandrumSamples(habitat,{actor,hand,reach}){
   const vessel=tubeMatrix.multiply(localVessel);
   r.cap.setAttribute('transform',`translate(${-37*f.open} ${-20*Math.sin(Math.PI*f.open)}) rotate(${-12*f.open} -135 0)`);
   const capAt=at(vessel,-145-37*f.open,-20*Math.sin(Math.PI*f.open));
-  const carry=pulse(ms,0,750,7000,900);
+  const carry=pulse(ms,0,750,7000,900)*(r.returning?f.reach:1);
   reach(r.hands[0],female,at(vessel,60,26),carry,[229,159]);
   reach(r.hands[1],female,capAt,carry*f.open,[252,128]);
   reach(r.hands[2],male,at(dishMatrix,65,18),f.reach,[243,145]);
-  if(r.loupe){position(r.loupe,(dishAt.x-r.lensBase.x)*f.inspect,(dishAt.y-r.lensBase.y)*f.inspect);
-   reach(r.hands[3],male,at(relative(r.root,r.loupe.art),-12,63),f.inspect,[263,115]);}
+  r.loupeAmount=r.loupeFrom+(r.loupeTo-r.loupeFrom)*(reduced.matches?1:ease((now-r.loupeStarted)/400));
+  if(r.loupe){const inspect=f.inspect*r.loupeAmount;position(r.loupe,(dishAt.x-r.lensBase.x)*inspect,(dishAt.y-r.lensBase.y)*inspect);
+   reach(r.hands[3],male,at(relative(r.root,r.loupe.art),-12,63),inspect,[263,115]);}
   const q=f.transfer;
   if(q>0&&q<1){r.leaf.setAttribute('opacity',0);const source=at(vessel,-72,7),exit=at(vessel,-160,4);let x,y;
    if(q<.55){const t=ease(q/.55);x=source.x+(exit.x-source.x)*t;y=source.y+(exit.y-source.y)*t;}
@@ -75,7 +92,7 @@ export function createTrivandrumSamples(habitat,{actor,hand,reach}){
   if(!reduced.matches){cue(r,'cap',ms,1350,.16,.025);cue(r,'leaf',ms,3540,.65,.022);cue(r,'close',ms,6880,.16,.025);}
   raf=requestAnimationFrame(tick);
  }
- for(const event of ['resize','pagehide'])window.addEventListener(event,cancel);
- document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});reduced.addEventListener('change',cancel);
- return {handles,start,cancel,get active(){return !!run;}};
+ window.addEventListener('pagehide',cancel);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;sound.stop();}else if(run&&!raf)raf=requestAnimationFrame(tick);});
+ return {handles,preserves,start,cancel,get active(){return !!run;}};
 }

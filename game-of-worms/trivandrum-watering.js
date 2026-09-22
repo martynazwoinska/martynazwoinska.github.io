@@ -1,4 +1,4 @@
-import {createTrivandrumSamples} from './trivandrum-samples.js?v=20260922-loupe-fix-1';
+import {createTrivandrumSamples} from './trivandrum-samples.js?v=20260922-sample-hold-1';
 import {add,at,relative,matrix,ease,clamp,recordedSound} from './scene-performance.js?v=20260919-uniform-1';
 import {pathPoints} from './guadeloupe-dance.js?v=20260916-gwoka-11';
 export const WATERING_FAMILY='trivandrum-garden-watering-can';
@@ -55,7 +55,7 @@ export function createTrivandrumWatering(habitat) {
     a.paused?.forEach(p=>{if(p.playState==='paused')p.play();});a.layer?.remove();delete a.piece.dataset.watering;
   }
   function start(piece){
-    if(samples.handles(piece)){cancel();return samples.start(piece);}
+    if(samples.handles(piece)){if(active)cancel();return samples.start(piece);}
     if(!handles(piece)||!piece.isConnected||piece.closest('[hidden]')||document.hidden)return false;
     cancel();const a={piece,male:piece.dataset.wormPart==='companion',cues:new Set()};active=a;piece.dataset.watering='loading';
     // Audio failure must never prevent the physical action.
@@ -109,8 +109,8 @@ export function createTrivandrumWatering(habitat) {
       if(!a.male){cue(a,'rub',3930,.64,.035,ms);cue(a,'splash',5550,.7,.055,ms);}}
     raf=requestAnimationFrame(tick);
   }
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&active)cancel();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')cancel();});
-  window.addEventListener('resize',cancel);window.addEventListener('pagehide',cancel);reduced.addEventListener('change',cancel);
-  return {handles,start,cancel,allowsLoupe:piece=>samples.active&&piece?.dataset.accessoryFamily==='trivandrum-field-loupe',get active(){return !!active||samples.active;}};
+  window.addEventListener('resize',()=>{if(active)cancel();});window.addEventListener('pagehide',cancel);reduced.addEventListener('change',()=>{if(active)cancel();});
+  return {handles,start,cancel,preservesSample:samples.preserves,get active(){return !!active||samples.active;}};
 }

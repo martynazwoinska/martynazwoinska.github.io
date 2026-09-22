@@ -11,6 +11,33 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Trivandrum plate-triggered persistent examination, 2026-09-22
+
+Only the male's Petri plate starts the female's sample-transfer sequence.
+Tapping the tube does not start or cancel it. The examination pose now stays
+raised indefinitely; another plate tap returns the setup over 900 ms. Once held,
+the male loupe can independently lower and rise on successive taps without
+moving the plate or replaying the transfer. Tube/loupe inspection and adjustment
+remain available. Resizing and temporarily hiding the page no longer reset the
+held sample pose. Escape, Home, changing activities and scene cleanup still work.
+No artwork, labels, sounds or gem mounting points changed.
+
+Verified tube taps stay idle, plate taps start/return, holding beyond the old
+timeout, glass-centre loupe taps leave the plate transform unchanged, keyboard
+activation, repeated runs and resize persistence. In a separate local-origin
+save, moving the female loupe over the gem inside the female tube revealed the
+gem while the sample sequence stayed idle. Sample timing/trigger/return,
+watering, live-loupe and loupe-blink checks pass, including reduced-motion logic.
+No console errors or overflow at 360/768/1024/1440 CSS px. Full-page captures
+were attempted at each width (268x1808, 582x1682, 778x1381, 1098x1434 image px);
+the capture tool still scales and duplicates strips, so clean full-page visual
+proof and physical touch-device testing remain unavailable. The fixed light
+palette and layout are unchanged. git diff --check passes.
+
+Changed game.js, index.html, trivandrum-samples.js, trivandrum-watering.js,
+scripts/check-trivandrum-samples.cjs and PROJECT_STATUS.md. No production files
+created or deleted. Unrelated Cabinet checkout changes were preserved.
+
 ## Shorter Worm Atlas header, 2026-09-22
 
 The desktop title now shares the unused centre of the top navigation row,
