@@ -11,6 +11,7 @@ class Matrix {
 class Element {
   constructor(tag) { this.tag=tag; this.children=[]; this.attributes={}; this.style={}; this.screen=new Matrix(); }
   setAttribute(k,v) { this.attributes[k]=String(v); }
+  getAttribute(k) { return this.attributes[k]??null; }
   removeAttribute(k) { delete this[k]; delete this.attributes[k]; }
   appendChild(n) { if(n.parentNode) n.parentNode.children=n.parentNode.children.filter(c=>c!==n); this.children.push(n); n.parentNode=this; return n; }
   insertBefore(n,next) { this.appendChild(n); this.children.pop(); this.children.splice(next?this.children.indexOf(next):this.children.length,0,n); }
@@ -42,6 +43,8 @@ global.cancelAnimationFrame=()=>{cancelled=true};
   wrap.id='local-wrap';charm.id='local-charm';sources['#location-scene'].id='location-scene';
   const frames=[new Element('foreignObject'),new Element('foreignObject')];
   const pieces=[];
+  frames[0].attributes={x:'-34',y:'-116',width:'140',height:'144'};
+  frames[1].attributes={x:'-10',y:'-73',width:'88',height:'94'};
   for(const frame of frames) {
     const piece=head.appendChild(new Element('g'));piece.isPiece=true;pieces.push(piece);
     piece.appendChild(new Element('g')).appendChild(frame);
@@ -49,6 +52,9 @@ global.cancelAnimationFrame=()=>{cancelled=true};
   }
   const habitat={querySelectorAll:()=>frames,querySelector:s=>sources[s]||null,getBoundingClientRect:()=>({top:0,bottom:500})};
   const stop=mountLiveLoupes(habitat);callback();
+  const hits=frames.map(frame=>frame.parentNode.children.at(-1));
+  assert.deepEqual(hits.map(hit=>['cx','cy','rx','ry'].map(k=>+hit.getAttribute(k))),[[36,-44,70,72],[34,-26,44,47]],'Glass hit surfaces follow each optical window, not a shared rectangle');
+  for(const hit of hits){assert.equal(hit.tag,'ellipse');assert.equal(hit.getAttribute('fill'),'transparent');assert.equal(hit.getAttribute('pointer-events'),'all','Glass catches taps before the magnified samples');}
   assert.equal(parent.children.at(-1),head,'Lenses above sampled props');
   const lens=frames[0].children[0], layer=lens.children[0];
   assert.equal(layer.attributes.transform,'matrix(2 0 0 2 -70 -72)','Twofold magnification about lens centre');
@@ -72,5 +78,6 @@ global.cancelAnimationFrame=()=>{cancelled=true};
   assert(!sources['.worm-body'].id,'Temporary source identifiers removed');
   assert(!head.children.includes(proxies),'Physical copies removed on cleanup');
   assert.equal(lens.children.length,0,'Optical layers cleared on unmount');
+  assert(hits.every(hit=>!hit.parentNode),'Glass hit surfaces removed on unmount');
   console.log('Live loupes: 2x centred optics, drag/resize mapping, hidden props, no recursion and cleanup pass.');
 })().catch(e=>{console.error(e);process.exitCode=1});

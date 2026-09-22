@@ -67,7 +67,15 @@ export function mountLiveLoupes(habitat) {
       add(layer,'use',{href:`#${other.copy.id}`,'pointer-events':'none'});
       layers.push({source:other.source,layer,physical:true});
     }
-    return {frame,svg,layers};
+    // The optical window contains live <use> copies of draggable props. Put a
+    // transparent glass-shaped surface above it so a tap cannot hit a sample
+    // inside the magnified view and restart its activity.
+    const x=+frame.getAttribute('x'),y=+frame.getAttribute('y');
+    const rx=+frame.getAttribute('width')/2,ry=+frame.getAttribute('height')/2;
+    const hit=add(frame.parentNode,'ellipse',{'data-loupe-glass-hit':'',
+      cx:x+rx,cy:y+ry,rx,ry,fill:'transparent',stroke:'none',
+      'pointer-events':'all','aria-hidden':'true'});
+    return {frame,svg,layers,hit};
   });
   const blinks=mountLoupeBlinks(habitat,lenses);
   let raf=0, disposed=false;
@@ -102,7 +110,7 @@ export function mountLiveLoupes(habitat) {
     disposed=true; cancelAnimationFrame(raf);
     blinks.dispose();
     assigned.forEach(source=>source.removeAttribute('id'));
-    lenses.forEach(({svg})=>svg.replaceChildren());
+    lenses.forEach(({svg,hit})=>{svg.replaceChildren();hit.remove();});
     definitions.remove();
     headwear.removeEventListener('pointerdown',raise,true);
     headwear.removeEventListener('focusin',raise,true);

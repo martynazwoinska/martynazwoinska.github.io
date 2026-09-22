@@ -11,6 +11,29 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Trivandrum glass click-through correction, 2026-09-22
+
+The previous handle-focused checks missed a centre-of-glass failure. Reproduced
+on the live bbe5508 scene with all three accessories: clicking the male optical
+window focused Samples for the male and changed examining to settling, restarting
+the handoff. Added a transparent elliptical pointer surface above each optical
+window. The surface follows the glass dimensions, moves with the loupe and is
+removed on unmount. Artwork, magnification, labels and the gem's female-tube
+mounting point are unchanged.
+
+Verified the same glass-centre click now focuses Field loupe for the male and
+keeps examining. Tested repeated centre clicks at 360 px, both glasses and glass
+dragging at 1440 px, with all accessories enabled. Live-loupe regression coverage
+now checks separate hit geometry, pointer capture surface and cleanup. Existing
+sample and loupe-blink checks pass. No browser errors or horizontal overflow at
+360/768/1024/1440 CSS px. Full-page captures were attempted at each size, producing
+345x2357, 753x2222, 1009x1836 and 1425x1907 px images; the browser capture tool
+introduced half-scale duplicate strips, so these are not clean visual proofs.
+No visible design changed. Physical touch-device testing remains manual.
+
+Changed live-loupes.js, game.js, index.html, scripts/check-live-loupes.cjs and
+PROJECT_STATUS.md. No production files created or deleted.
+
 ## Trivandrum loupe interaction fix, 2026-09-22
 
 Clicking either loupe during the sample activity no longer cancels it. Pointer
