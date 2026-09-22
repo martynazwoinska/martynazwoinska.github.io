@@ -1,5 +1,46 @@
 # Trivandrum *C. nigoni* location research and art brief
 
+## Trivandrum sample handoff, 2026-09-22
+
+Implementation and deployment requested by Martyna; Ahmedabad's kites and other
+activities are explicitly retained. English-only control text: Samples, replacing
+Sample tube, with generated Samples for the female / Samples for the male names.
+This wording was proposed before Martyna instructed us to continue. No Swedish
+or Polish version exists in the Game. Other wording is unchanged.
+
+The female keeps the labelled sample tube. The male now has a shallow transparent
+examination dish with separate far rim, inset floor, wall and near rim. Clicking
+either starts an 11.9-second sequence: open cap, raise and tip the tube, slide a
+leaf through the opening into the held dish, replace the cap, then raise the dish
+and male loupe for inspection. A tiny animated specimen appears on the received
+leaf, which remains in the dish afterward. The real body paths bend with planted
+tails and supporting hands follow the props. The original loupe renderer samples
+the live dish; visitors can still drag their optics manually afterward.
+
+A visual refinement raised the handoff/examination clear of the small watering
+can and shortened the female's post-transfer reach. Both watering actions remain
+unchanged. The female tube contents clip and treasure mounting point remain
+unchanged, as does treasure-hunt.js. The background, can/loupe art, saved accessory
+placements and original body paths are preserved. Existing recorded paper/closure
+sounds are reused quietly; no new audio files or external dependencies.
+
+Validation: sample sequencing/continuity/reduced-motion checks, Trivandrum art,
+watering, live-loupe, loupe-blink and existing treasure-discovery checks pass.
+Browser checks: both sample triggers, visible handoff and magnified examination,
+Escape restores exact body paths and accessory transforms, keyboard movement,
+shower activation and no console errors. Full-page proofs at 360/768/1024/1440
+CSS px measure 345x2357, 753x2222, 1009x1836 and 1425x1908 px (scrollbar excluded),
+with no horizontal overflow. Fixed light palette preserved. Reduced motion is
+tested in the timeline, not browser-emulated. Fresh gem collection was not reset
+in the user's browser; its unchanged mounting point and lens mechanism were
+checked in source. Physical-device and subjective listening checks remain manual.
+
+Created: game-of-worms/trivandrum-samples.js; scripts/check-trivandrum-samples.cjs.
+Changed: game-of-worms/trivandrum-refinement.js, trivandrum-watering.js,
+accessory-designs.js, game.js, index.html; scripts/check-trivandrum-refinement.cjs;
+PROJECT_STATUS.md; this location dossier; docs/game-of-worms-scene-review-queue.md.
+No files deleted. Local preview: ?preview=trivandrum-samples-1, port 8792.
+
 ## Shared shower follow-up, 2026-09-20
 
 Martyna approved the proposed female lift/pour and male duck/rub/shake sequence

@@ -21,11 +21,12 @@ const walk=n=>[n,...n.children.flatMap(walk)];
         assert(!Object.values(n.attributes).some(v=>/NaN|undefined|Infinity/.test(v)));
         if(n.tag==='path') assert(!/[^MmZzLlHhVvCcSsQqTtAaEe0-9.,+\s-]/.test(n.attributes.d));
       }
-      if(family==='trivandrum-sample-tube') {
+      if(family==='trivandrum-sample-tube'&&!male) {
         assert(nodes.some(n=>n.attributes.id===`tri-tube-contents-${male?'male':'female'}`));
         assert(nodes.some(n=>n.attributes['clip-path']===`url(#tri-tube-contents-${male?'male':'female'})`));
         assert.equal(nodes.find(n=>n.tag==='text').textContent,'14 DAYS');
       }
+      if(family==='trivandrum-sample-tube'&&male){assert(nodes.some(n=>'data-sample-dish' in n.attributes));assert(nodes.some(n=>'data-specimen-worm' in n.attributes));assert(!nodes.some(n=>n.tag==='text'));}
       if(family==='trivandrum-field-loupe') {
         assert(nodes.some(n=>n.attributes['fill-opacity']==='.3'||n.attributes['fill-opacity']==='0.3'));
         assert(nodes.filter(n=>n.tag==='ellipse'&&n.attributes.fill==='none').length>=2);

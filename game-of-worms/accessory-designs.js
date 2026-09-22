@@ -31,7 +31,7 @@ import { drawKauaiRecording } from "./kauai-recording.js?v=20260919-final-3";
 import { drawN2Coat } from "./n2-tailoring.js?v=20260906-n2-fabric-2";
 import { drawN2Cryopack } from "./n2-cryopacks.js?v=20260906-n2-sidepack-2";
 import { drawAhmedabadRefinement } from "./ahmedabad-refinement.js?v=20260907-paper-cloth-2";
-import { drawTrivandrumRefinement } from "./trivandrum-refinement.js?v=20260907-shower-1";
+import { drawTrivandrumRefinement } from "./trivandrum-refinement.js?v=20260922-samples-1";
 import { drawPanamaRefinement } from "./panama-refinement.js?v=20260920-mixing-5";
 import { drawBaliRefinement } from "./bali-refinement.js?v=20260906-nibs-1";
 import { drawFlyingCockatoos } from "./canberra-cockatoos.js?v=20260906-cafe-2";
@@ -62,7 +62,7 @@ const rows = [
   ["elegans", "Australian Capital Territory", "Coffee & biscuits", "canberra-flat-white-cafe", "Napkins", "canberra-linen-napkins", "Cockatoos", "oconnor-cockatoo-cafe-raid"],
   ["elegans", "Claremont, California · ECA250", "Bookworm books", "eca250-bookworm-book", "Lemonade", "eca250-california-lemonade", "sunny reading glasses", "eca250-sunny-reading-glasses"],
   ["elegans", "Araucanía, Chile", "Compost work", "ju4400-compost-work", "Mate", "ju4400-mate", "Sopaipillas", "ju4400-sopaipillas"],
-  ["nigoni", "Trivandrum, Kerala · JU1325", "field loupe", "trivandrum-field-loupe", "garden watering can", "trivandrum-garden-watering-can", "sample tube", "trivandrum-sample-tube"],
+  ["nigoni", "Trivandrum, Kerala · JU1325", "field loupe", "trivandrum-field-loupe", "garden watering can", "trivandrum-garden-watering-can", "Samples", "trivandrum-sample-tube"],
   ["nigoni", "Praslin, Seychelles · YR106", "giant-tortoise shell costumes", "praslin-giant-tortoise-shell-costume", "black-parrot carnival caps", "praslin-black-parrot-carnival-cap", "Seychelles carnival bell bracelets", "praslin-seychelles-carnival-bell-bracelet"],
   ["nigoni", "São Tomé · JU2484", "Snail ride", "ju2484-snail-ride", "Lift the leaf", "ju2484-leaf-encounter", "Leaf hats", "ju2484-leaf-hats"],
   ["nigoni", "Mahahual, Mexico · JU2617", "reef-ruffle swim costumes", "mahahual-reef-ruffle-swim-costumes", "Caribbean sun spectacles", "mahahual-caribbean-sun-spectacles", "sea-grape beach parasols", "mahahual-sea-grape-beach-parasols"],

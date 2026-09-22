@@ -1,3 +1,4 @@
+import {createTrivandrumSamples} from './trivandrum-samples.js?v=20260922-samples-1';
 import {add,at,relative,matrix,ease,clamp,recordedSound} from './scene-performance.js?v=20260919-uniform-1';
 import {pathPoints} from './guadeloupe-dance.js?v=20260916-gwoka-11';
 export const WATERING_FAMILY='trivandrum-garden-watering-can';
@@ -45,14 +46,16 @@ function reach(h,body,target,amount,anchor=[245,137]){
 export function createTrivandrumWatering(habitat) {
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   const sound=recordedSound({pour:'kauai-bath-pour-v2.wav',splash:'lombok-splash.wav',rub:'kauai-bath-squeeze.wav'});
+  const samples=createTrivandrumSamples(habitat,{actor,hand,reach});
   let active=null,raf=0;
-  const handles=piece=>piece?.dataset.accessoryFamily===WATERING_FAMILY;
-  function cancel(){cancelAnimationFrame(raf);raf=0;sound.stop();const a=active;active=null;if(!a)return;
+  const handles=piece=>piece?.dataset.accessoryFamily===WATERING_FAMILY||samples.handles(piece);
+  function cancel(){samples.cancel();cancelAnimationFrame(raf);raf=0;sound.stop();const a=active;active=null;if(!a)return;
     if(a.motion)restore(a.motion,'transform',a.original);
     a.anchors?.forEach(([n,v])=>restore(n,'style',v));a.actors?.forEach(b=>b.restore());
     a.paused?.forEach(p=>{if(p.playState==='paused')p.play();});a.layer?.remove();delete a.piece.dataset.watering;
   }
   function start(piece){
+    if(samples.handles(piece)){cancel();return samples.start(piece);}
     if(!handles(piece)||!piece.isConnected||piece.closest('[hidden]')||document.hidden)return false;
     cancel();const a={piece,male:piece.dataset.wormPart==='companion',cues:new Set()};active=a;piece.dataset.watering='loading';
     // Audio failure must never prevent the physical action.
@@ -109,5 +112,5 @@ export function createTrivandrumWatering(habitat) {
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')cancel();});
   window.addEventListener('resize',cancel);window.addEventListener('pagehide',cancel);reduced.addEventListener('change',cancel);
-  return {handles,start,cancel,get active(){return !!active;}};
+  return {handles,start,cancel,get active(){return !!active||samples.active;}};
 }

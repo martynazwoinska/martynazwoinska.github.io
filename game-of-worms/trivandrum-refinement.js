@@ -105,7 +105,7 @@ function can(g,male) {
 }
 
 function tube(g,male) {
-  const body = add(g,'g',{transform:male?'rotate(14)':'rotate(17)'});
+  const body = add(g,'g',{'data-sample-vessel':'',transform:male?'rotate(14)':'rotate(17)'});
   const x=male?-92:-128, end=male?99:146, h=male?27:34;
   const outline=`M${x} ${-h}H${end-24}Q${end+9} ${-h} ${end+9} 0Q${end+9} ${h} ${end-24} ${h}H${x}Z`;
   p(body,outline,'#bfdee0',teal,3,{'fill-opacity':.24});
@@ -116,7 +116,7 @@ function tube(g,male) {
   const contents=add(body,'g',{'clip-path':`url(#${id})`});
   const leaves=male? [[-44,4,30],[22,9,-12]]:[[-72,7,15],[-6,13,-18],[74,7,28]];
   for(const [xx,yy,a] of leaves) {
-    const leaf=add(contents,'g',{transform:`translate(${xx} ${yy}) rotate(${a})`});
+    const leaf=add(contents,'g',{'data-sample-leaf':'',transform:`translate(${xx} ${yy}) rotate(${a})`});
     p(leaf,'M-25 6Q-14-22 10-13Q27-4 30 12Q11 3-4 12Q-17 19-25 6Z','#8c8255','#555d4b',1.8);
     p(leaf,'M-25 6Q-11 4-4 12Q-17 19-25 6Z','#d0b583','#555d4b',1.3);
     l(leaf,'M-20 7Q1-4 22 9','#555d4b',1.5);
@@ -127,9 +127,10 @@ function tube(g,male) {
   l(body,`M${x+16} ${-h+7}H${end-28}Q${end-7} ${-h+7} ${end-4} -9`,light,4);
   l(body,`M${x+12} ${h-6}H${end-23}Q${end-3} ${h-6} ${end+1} 8`,'#82a9ad',2);
   for(let i=0;i<4;i++) l(body,`M${x+36+i*23} ${-h+14}v${i%2?5:9}`,'#6b9199',1.5);
-  p(body,`M${x-18} ${-h-4}Q${x-25} 0 ${x-18} ${h+4}H${x+6}V${-h-4}Z`,berry);
-  p(body,`M${x-18} ${h-6}H${x+6}V${h+4}H${x-18}Z`,edge,'none');
-  for(let i=0;i<4;i++) l(body,`M${x-15+i*5} ${-h+3}v${h*2-9}`,'#cf94a7',2);
+  const cap=add(body,'g',{'data-sample-cap':''});
+  p(cap,`M${x-18} ${-h-4}Q${x-25} 0 ${x-18} ${h+4}H${x+6}V${-h-4}Z`,berry);
+  p(cap,`M${x-18} ${h-6}H${x+6}V${h+4}H${x-18}Z`,edge,'none');
+  for(let i=0;i<4;i++) l(cap,`M${x-15+i*5} ${-h+3}v${h*2-9}`,'#cf94a7',2);
   l(body,`M${x+8} ${-h+2}V${h-2}`,silver,3);
   l(body,`M${x+3} ${-h}Q${x+18} ${-h-32} ${x+48} ${-h-26}`,light,2);
   p(body,`M${x+32} ${-h-42}H${x+109}V${-h-15}H${x+32}L${x+23} ${-h-28}Z`,light,'#a89c7c',1.5);
@@ -138,9 +139,32 @@ function tube(g,male) {
   text.textContent='14 DAYS';
 }
 
+// Shallow transparent examination dish: a far rim, visible wall thickness,
+// an inset floor and a near rim. Contents sit below the near wall.
+function sampleDish(g) {
+  const dish=add(g,'g',{'data-sample-dish':''});
+  e(dish,0,20,103,26,'#244d4522','none');
+  p(dish,'M-99-2V16C-99 49 99 49 99 16V-2Z','#accdca','#417a7e',2.5,{'fill-opacity':.36});
+  e(dish,0,-2,99,31,'#d9ece5','#417a7e',2.5,{'fill-opacity':.42});
+  e(dish,0,9,90,24,'#efe6bf','#81a29a',1.5,{'fill-opacity':.67});
+  const contents=add(dish,'g',{'data-dish-contents':''});
+  // A single received leaf is populated by the activity, leaving an empty dish initially.
+  const leaf=add(contents,'g',{'data-dish-leaf':'',opacity:0});
+  p(leaf,'M-43 10Q-23-25 8-10Q24-22 45 8Q9 28-15 20Z','#8c8255','#555d4b',2);
+  p(leaf,'M-43 10Q-10 21 45 8Q9 28-15 20Z','#d0b583','#555d4b',1.2);
+  l(leaf,'M-37 11Q0-2 38 9','#ded0a0',1.5);
+  for(const [x,y]of [[-18,7],[3,9],[21,6]])l(leaf,'M'+x+' '+y+'l-4 -7','#555d4b',1);
+  const worm=add(contents,'path',{'data-specimen-worm':'',d:'M-18 2Q-8-6 2 2T22 2',fill:'none',stroke:'#5b354b','stroke-width':2.8,'stroke-linecap':'round',opacity:0});
+  l(dish,'M-96 3C-89 35 88 35 96 3',light,3);
+  l(dish,'M-95 17C-86 44 87 44 95 17','#71958d',2);
+  l(dish,'M-90-9Q-63-28-20-27',light,3);
+  l(dish,'M42-24Q73-20 88-8',light,2);
+  l(dish,'M-93 3V14M93 3V14','#f5f2e5',2.5);
+}
+
 export function drawTrivandrumRefinement(g,item,male) {
   if(!item.id.startsWith('nigoni::Trivandrum, Kerala · JU1325::')) return false;
-  const draw={'trivandrum-field-loupe':loupe,'trivandrum-garden-watering-can':can,'trivandrum-sample-tube':tube}[item.family];
+  const draw={'trivandrum-field-loupe':loupe,'trivandrum-garden-watering-can':can,'trivandrum-sample-tube':male?sampleDish:tube}[item.family];
   if(!draw) return false;
   g.dataset.renderer=item.family;
   g.dataset.refinement='trivandrum-20260906';

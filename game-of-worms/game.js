@@ -13,7 +13,7 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260922-birdwatch-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260922-samples-1";
 import { createKauaiBath } from "./kauai-bath-play.js?v=20260921-motion-1";
 import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
@@ -29,7 +29,7 @@ import { createAhmedabadHands } from "./ahmedabad-hands.js?v=20260914-soil-conta
 import { createIshigakiInteractions } from "./ishigaki-interactions.js?v=20260907-ishigaki-sound-1";
 import { createCanberraCafe, CAFE_FAMILIES } from "./canberra-cafe.js?v=20260909-cafe-audio-1";
 import { mountLiveLoupes } from "./live-loupes.js?v=20260909-blink-1";
-import { createTrivandrumWatering } from "./trivandrum-watering.js?v=20260920-shower-1";
+import { createTrivandrumWatering } from "./trivandrum-watering.js?v=20260922-samples-1";
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260908-cryo-return-1";
 import { createBaliGongs, GONG_FAMILY } from "./bali-gong-duet.js?v=20260920-gong-duet-2";
 import { createEdinburghPipes } from "./edinburgh-pipes.js?v=20260909-pipes-1";
