@@ -1,9 +1,9 @@
 // Original drawings. Construction and species references: the QG4739 dossier.
 const NS='http://www.w3.org/2000/svg';
-export const OPTICS='qg4739-birdwatching', SLED='qg4739-shared-leaf-sled', CAPE='qg4739-camouflage-cape';
+export const OPTICS='qg4739-birdwatching', BIRD='qg4739-lorikeet-perch', CAPE='qg4739-camouflage-cape';
 export const pohnpeiLayouts={
   [OPTICS]:{primary:[355,112,.68,-12],companion:[150,113,.52,-10]},
-  [SLED]:{primary:[251,287,.88,-7]},
+  [BIRD]:{primary:[-10,42,.63,0]},
   [CAPE]:{primary:[0,0,1,0],companion:[-28,82,.43,0]}
 };
 export const add=(p,t,a={})=>{const n=document.createElementNS(NS,t);for(const[k,v]of Object.entries(a))n.setAttribute(k,v);p.appendChild(n);return n;};
@@ -17,7 +17,7 @@ function glass(p,x,y,r){
   const id='pohnpei-lens-'+(++serial),defs=add(p,'defs'),clip=add(defs,'clipPath',{id});
   add(clip,'circle',{cx:x,cy:y,r:r-1});
   const frame=add(p,'g',{'clip-path':'url(#'+id+')','data-pohnpei-lens':'','data-lens-x':x,'data-lens-y':y,'data-lens-r':r,'pointer-events':'none'});
-  const f=add(frame,'foreignObject',{x:x-r,y:y-r,width:2*r,height:2*r,'pointer-events':'none'});
+  const f=add(frame,'foreignObject',{'aria-hidden':'true',x:x-r,y:y-r,width:2*r,height:2*r,'pointer-events':'none'});
   add(f,'svg',{xmlns:NS,width:2*r,height:2*r,viewBox:'0 0 '+2*r+' '+2*r,
     style:'display:block;width:'+2*r+'px;height:'+2*r+'px;overflow:hidden'});
   path(p,'M'+(x-r*.64)+' '+(y-r*.26)+'Q'+(x-r*.42)+' '+(y-r*.70)+' '+(x+r*.18)+' '+(y-r*.65),'none','#e5f7e8',2.5).setAttribute('opacity','.52');
@@ -60,30 +60,17 @@ function scope(p){
   glass(p,38,-1,27);
   path(p,'M15 21l8 4','none','#b8c7b7',2);
 }
-export function drawLeafSled(p,layer='all'){
-  if(layer!=='front'){
-    ellipse(p,0,30,128,13,'#243e3b30','none');
-    path(p,'M-133-18C-104-43-64-32-12-24C44-16 93-29 137-51C132-3 101 24 52 34C-23 48-98 26-133-18Z','#52755b','#2d4c44',2);
-    path(p,'M-123-18C-54-1 41 12 129-42C107-1 53 20-12 17Q-86 14-123-18Z','#b3c888','#435f4b',1.3);
-    path(p,'M-121-18C-45 9 55 9 130-41','none','#e0dba2',3);
-    for(let i=0;i<8;i++){
-      const x=-97+i*27,y=4+12*Math.sin(i*.42);
-      path(p,'M'+x+' '+y+'Q'+(x+2)+' '+(y-12)+' '+(x-10)+' '+(y-24),'none','#76975e',1.2);
-      path(p,'M'+x+' '+y+'Q'+(x+17)+' '+(y+8)+' '+(x+24)+' '+(y+8),'none','#74915d',1);
-    }
-    path(p,'M-101-23Q-106-53-81-45L-62-22M60-25Q55-53 81-49L96-37','none','#334f42',6);
-    path(p,'M-101-23Q-106-53-81-45L-62-22M60-25Q55-53 81-49L96-37','none','#c2c98e',3);
+export function drawBirdPerch(p){
+  // A forked branch with two footholds. The bird starts on the left fork.
+  path(p,'M-180 84Q-39 52 26 42Q76 39 133 11','none','#3b4434',7);
+  path(p,'M-180 82Q-32 50 27 40Q86 33 132 9','none','#9c9970',2);
+  path(p,'M-54 55Q-51 21-72 3M63 34Q81 8 73-11','none','#526044',3);
+  for(const [x,y,s]of[[-70,5,-1],[75,-7,1],[106,23,1]]){
+    const leaf=add(p,'g',{transform:'translate('+x+' '+y+') scale('+s+' 1)'});
+    path(leaf,'M0 0Q-15-22-35-16Q-25 8 0 0Z','#57734e','#364f3d',1);
+    path(leaf,'M0 0Q-18-9-31-14','none','#a4b482',1);
   }
-  if(layer!=='back'){
-    path(p,'M-133-18C-69 17 43 36 137-51C125-3 97 26 50 35C-23 51-103 27-133-18Z','#64875c','#304f43',2);
-    path(p,'M-126-14C-43 29 67 25 132-42','none','#cad38d',3);
-    path(p,'M-110 2Q-58 31 25 33','none','#3c6148',1.4);
-    for(const[x,y]of[[-86,13],[-59,22],[-31,29],[0,32],[33,30],[64,20],[90,5]]){
-      path(p,'M'+x+' '+y+'l-4 8','none','#a5b97b',1);
-    }
-    path(p,'M-131-17Q-147-22-150-15','none','#8caa72',4);
-    path(p,'M134-47Q145-63 147-68','none','#526e4a',3);
-  }
+  const bird=add(p,'g',{'data-pohnpei-performer':''});drawLorikeet(bird);
 }
 function cape(p,male){
   const id='pohnpei-cape-'+(++serial),defs=add(p,'defs');
@@ -118,24 +105,30 @@ export function drawLorikeet(p){
   path(p,'M-18 68L-23 83Q-15 81-10 68Z','#d8c876','#716b44',.7);
   path(p,'M-8 31C-37 4-30-24-16-39C-9-60 19-61 27-41Q39-26 23-13Q27 9 11 34Z','#783d4a','#352e37',1.5);
   path(p,'M-16-39Q-1-59 19-48Q25-45 27-36Q13-27 4-29Q-5-29-9-22Z','#542f3b','none');
-  path(p,'M-16-21Q-35-11-17 27L-5 50Q10 18 5-7Q-3-24-16-21Z','#776f47','#453e37',1.2);
-  path(p,'M-20-13Q-12-22-4-12Q4 2-7 35Q-20 22-24 4Z','#854a50','none');
-  for(const[x,y]of[[-15,-8],[-11,0],[-7,9]])path(p,'M'+x+' '+y+'Q'+(x+4)+' '+(y+10)+' '+(x+1)+' '+(y+27),'none','#b8b278',1);
+  const folded=add(p,'g',{'data-bird-folded-wing':''});
+  path(folded,'M-16-21Q-35-11-17 27L-5 50Q10 18 5-7Q-3-24-16-21Z','#776f47','#453e37',1.2);
+  path(folded,'M-20-13Q-12-22-4-12Q4 2-7 35Q-20 22-24 4Z','#854a50','none');
+  for(const[x,y]of[[-15,-8],[-11,0],[-7,9]])path(folded,'M'+x+' '+y+'Q'+(x+4)+' '+(y+10)+' '+(x+1)+' '+(y+27),'none','#b8b278',1);
   for(const[x,y]of[[8,-13],[11,-2],[9,10],[6,22]])path(p,'M'+x+' '+y+'q7 3 11-1','none','#a36160',1);
   path(p,'M21-40Q39-45 37-28L30-17Q32-31 23-28Z','#e3b35e','#453c36',1);
-  path(p,'M31-31L34-26L29-21Z','#33323a','none');
+  path(p,'M31-31L34-26L29-21Z','#33323a','none').setAttribute('data-bird-bill','');
   ellipse(p,14,-40,3.8,4,'#c8b36e','#49383c',.8);
   ellipse(p,14.5,-40,2,2.7,'#202e31','none');
   ellipse(p,13.6,-41.3,.8,.8,'#f9ecd4','none');
-  path(p,'M1 29L8 40M11 30L17 39','none','#b2ae9a',3);
-  path(p,'M8 40q-7-3-8 3m8-3q3 7 7 1m2-2q-5-2-6 3m6-3q5 5 8 1','none','#4b514b',2.2);
+  const feet=add(p,'g',{'data-bird-feet':''});
+  path(feet,'M1 29L8 40M11 30L17 39','none','#b2ae9a',3);
+  path(feet,'M8 40q-7-3-8 3m8-3q3 7 7 1m2-2q-5-2-6 3m6-3q5 5 8 1','none','#4b514b',2.2);
+  const wing=add(p,'g',{'data-bird-flight-wing':'',opacity:0});
+  path(wing,'M-17-16Q-50-47-95-56L-89-35L-76-28L-76-15L-61-10L-58 1L-43 4Q-20 17-4 21Z','#7c784c','#403d34',1.5);
+  path(wing,'M-17-16Q-50-36-84-46Q-55-5-14 12Z','#854a50','none');
+  for(let i=0;i<5;i++)path(wing,'M'+(-32-i*10)+' '+(-15-i*6)+'l'+(-7+i)+' '+(20-i),'none','#b4af77',1.2);
 }
 export function drawPohnpeiAccessory(p,item,male){
-  if(![OPTICS,SLED,CAPE].includes(item.family))return false;
+  if(![OPTICS,BIRD,CAPE].includes(item.family))return false;
   p.dataset.renderer=item.family;
   p.setAttribute('style','transform-box:view-box;transform-origin:0 0');
   if(item.family===OPTICS)(male?scope:binoculars)(p);
-  if(item.family===SLED)drawLeafSled(add(p,'g',{transform:'scale(-1 1)'}));
+  if(item.family===BIRD)drawBirdPerch(p);
   if(item.family===CAPE)cape(p,male);
   return true;
 }

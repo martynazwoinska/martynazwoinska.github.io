@@ -1,6 +1,6 @@
 import {SNACK_DURATION,snackServings,prepareSnack,playSnackSounds} from './tenerife-snack.js?v=20260920-snack-sound-1';
 import {DUET_DURATION,duetScore,prepareDuet,createDuetSound} from './tenerife-duet.js?v=20260920-snack-2';
-import {RAILWAY_DURATION,railwayProgress,prepareRailway,moveRailway,drawRailwayTrack} from './santeuil-railway.js?v=20260919-railway-3';
+import {RAILWAY_DURATION,railwayProgress,prepareRailway,moveRailway,drawRailwayTrack,createRailwaySound} from './santeuil-railway.js?v=20260922-railway-1';
 import {vocalPhrases,vocalLevel,vocalSequence,vocalMouth,vocalMotion} from './kauai-vocals.js?v=20260919-vocals-4';
 import {add,at,clamp,ease,matrix,relative,visible,performance as makePerformance,recordedSound} from './scene-performance.js?v=20260919-uniform-1';
 export const SANTEUIL_MARCH_SECONDS=14.4;
@@ -13,7 +13,7 @@ export function railTravel(ms){return railwayProgress(ms).travel;}
 export function createFinalScenes(habitat,refresh=()=>{}){
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const audio=recordedSound({organ:'santeuil-organ-long.wav',reeds:'santeuil-reeds.mp3',whistle:'santeuil-whistle.mp3',strum:'tenerife-strum.mp3',up:'tenerife-strum-up.mp3',eat:'reunion-eat.wav',primary:vocalPhrases.primary.file,companion:vocalPhrases.companion.file});
- const duetAudio=createDuetSound(),servings=snackServings();
+ const duetAudio=createDuetSound(),railAudio=createRailwaySound(),servings=snackServings();
  let action=null,raf=0,takes=[],idleTrack;
  function syncRailway(){
   idleTrack?.remove();idleTrack=null;
@@ -24,14 +24,14 @@ export function createFinalScenes(habitat,refresh=()=>{}){
  }
 
  const handles=p=>[ORGAN,TRAIN,TIMPLE,BOWL,MIC,TAPE].includes(p?.dataset.accessoryFamily);
- function cancel(){cancelAnimationFrame(raf);raf=0;audio.stop();duetAudio.stop();if(!action)return;const old=action;action=null;old.stage?.restore();delete habitat.dataset.sceneAction;refresh();}
+ function cancel(){cancelAnimationFrame(raf);raf=0;audio.stop();duetAudio.stop();railAudio.stop();if(!action)return;const old=action;action=null;old.stage?.restore();delete habitat.dataset.sceneAction;delete habitat.dataset.railwayPhase;refresh();}
  function start(piece){if(!handles(piece)||!visible(piece))return false;if(action?.piece===piece)return true;cancel();
   const family=piece.dataset.accessoryFamily,part=piece.dataset.wormPart,percussion=family===BOWL&&part==='companion';
   const a={piece,family,part,percussion,cues:new Set(),duration:percussion?DUET_DURATION:family===MIC?4000:family===TAPE?6500:family===BOWL?SNACK_DURATION:family===TIMPLE?DUET_DURATION:family===TRAIN?RAILWAY_DURATION:part==='primary'?SANTEUIL_MARCH_SECONDS*1000+1800:9600};action=a;syncRailway();habitat.dataset.sceneAction='loading';
-  const keys=[MIC,TAPE].includes(family)?['primary','companion']:family===BOWL?['eat']:family===TIMPLE?['strum','up']:family===TRAIN?['whistle','organ']:[part==='primary'?'organ':'reeds'];
+  const keys=[MIC,TAPE].includes(family)?['primary','companion']:family===BOWL?['eat']:family===TIMPLE?['strum','up']:family===TRAIN?['whistle']:[part==='primary'?'organ':'reeds'];
   const begin=()=>{if(action!==a||!visible(piece)||document.hidden)return;const portion=family===BOWL&&!percussion?servings.next(piece):-1;const s=a.stage=makePerformance(habitat,family);a.started=performance.now();a.hands={};for(const p of ['primary','companion'])a.hands[p]=[s.hand(p),s.hand(p)];
    if(family===TIMPLE||percussion){a.duet=prepareDuet(s,TIMPLE,CANARY,part,percussion?BOWL:null);a.duet.hands=a.hands;if(!reduced.matches)duetAudio.start(a.duet.score);}
-   if(family===TRAIN){a.ride=prepareRailway(s,TRAIN);a.ride.hands=a.hands.companion;}
+   if(family===TRAIN){if(!reduced.matches)railAudio.prepare();a.ride=prepareRailway(s,TRAIN);a.ride.hands=a.hands.companion;}
    if(portion>=0){a.snack=prepareSnack(s,piece,portion,BOWL,CANARY,a.hands[part],servings.consume);if(reduced.matches)a.snack.paint(SNACK_DURATION);}
    if([MIC,TAPE].includes(family)){
     const other=part==='primary'?'companion':'primary';
@@ -114,16 +114,22 @@ export function createFinalScenes(habitat,refresh=()=>{}){
   }
  }
  function railway(a,env){
-  const s=a.stage;
-  // The larger worm supplies the departure march; the male takes the trolley.
-  if(s.prop(ORGAN,'primary'))music({...a,part:'primary'},env);
-  else {
-   s.pose('primary',.25*Math.sin(a.ms/700)*env,-.15*env);
-   const wave=ease((a.ms-650)/500)*(1-ease((a.ms-2200)/500));
-   s.reach(a.hands.primary[0],s.point('primary',292,78),wave*env);
+  const s=a.stage,ms=a.ms;
+  moveRailway(s,a.ride,ms,env);
+  habitat.dataset.railwayPhase=a.ride.phase;
+  const push=ease((ms-900)/700)*(1-ease((ms-3200)/900));
+  s.pose('primary',-1.3*push,.8*push);
+  if(a.ride.engineMatrix){
+   s.reach(a.hands.primary[0],at(a.ride.engineMatrix,-82,-8),push*env,[207,184]);
+   s.reach(a.hands.primary[1],at(a.ride.engineMatrix,-90,20),push*env,[182,209]);
   }
-  moveRailway(s,a.ride,a.ms,env);
-  cue(a,'whistle',1400,0,1.7,.065);
+  // The larger worm waves after release, then acknowledges the return.
+  const wave=ease((ms-4600)/600)*(1-ease((ms-7000)/700));
+  const greet=ease((ms-13500)/650)*(1-ease((ms-15500)/900));
+  if(wave+greet>.001)s.reach(a.hands.primary[0],s.point('primary',305+5*Math.sin(ms/230),74),Math.max(wave,greet)*env);
+  const clack=Math.floor(a.ride.travel/11);
+  if(clack!==a.ride.clack&&Math.abs(a.ride.speed)>1){a.ride.clack=clack;railAudio.clack(a.ride.speed);}
+  cue(a,'whistle',1700,0,1.7,.065);
  }
  function tick(now){raf=0;const a=action;if(!a)return;if(!visible(a.piece)||document.hidden){cancel();return;}
   a.ms=(a.family===TIMPLE||a.percussion)&&!reduced.matches?duetAudio.elapsed():now-a.started;const still=reduced.matches,env=still?0:performanceEnvelope(a.ms,a.duration);

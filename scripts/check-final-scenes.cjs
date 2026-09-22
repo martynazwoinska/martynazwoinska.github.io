@@ -30,14 +30,16 @@ const paint=n=>walk(n).filter(n=>n.tag!=='g').map(n=>[n.tag,Object.fromEntries(O
  assert(Math.abs(bodyPoint(210,180,1,0).x-210)>4,'Middle bends visibly');
  for(const duration of [4000,5700,5800,6500,7000,9000,9600]){assert.equal(performanceEnvelope(0,duration),0);assert.equal(performanceEnvelope(duration,duration),0);}
  const {railwayProgress,RAILWAY_DURATION}=await import(pathToFileURL(path.join(game,'santeuil-railway.js')));
- assert.equal(railTravel(2200),0,'Boarding finishes before departure');
- assert.equal(railTravel(6800),64,'A visible journey reaches the far station');
- assert.equal(railTravel(8800),64,'Stop before the return journey');
- assert.equal(railTravel(13400),0,'Train returns before the rider dismounts');
- assert.equal(railwayProgress(1900).aboard,1);
- assert.equal(railwayProgress(13900).aboard,1,'Rider stays aboard until the trolley stops');
+ assert.equal(railTravel(2400),0,'Boarding finishes before departure');
+ assert.equal(railTravel(7600),140,'A visible journey reaches the far station');
+ assert.equal(railTravel(9000),140,'Stop before the return journey');
+ assert.equal(railTravel(14600),0,'Train returns before the rider dismounts');
+ assert.equal(railwayProgress(1950).aboard,1);
+ assert.equal(railwayProgress(15100).aboard,1,'Rider stays aboard until the trolley stops');
  assert.deepEqual(railwayProgress(RAILWAY_DURATION),{travel:0,aboard:0});
- let last=railTravel(0);for(let t=0;t<=16200;t+=10){const x=railTravel(t);assert(x>=0&&x<=64);assert(Math.abs(x-last)<.5,'No sudden train jumps');last=x;}assert.equal(last,0,'Returns to saved position');
+ let last=railTravel(0);for(let t=0;t<=RAILWAY_DURATION;t+=10){const x=railTravel(t);assert(x>=0&&x<=140);assert(Math.abs(x-last)<.6,'No sudden train jumps');last=x;}assert.equal(last,0,'Returns to saved position');
+ // Starts and stops have near-zero velocity, including both ends of the layover.
+ for(const t of [2400,7600,9000,14600])assert(Math.abs(railTravel(t+1)-railTravel(t-1))<.00001,'No hard acceleration or braking step');
  assert.notDeepEqual(strumTimes(),strumTimes(true));
  for(const times of [strumTimes(),strumTimes(true)])for(let i=1;i<times.length;i++)assert(times[i]-times[i-1]>=200,'Gestures have time to settle');
  const {vocalPhrases,vocalLevel,vocalSequence,vocalBeats,vocalMotion}=await import(pathToFileURL(path.join(game,'kauai-vocals.js')));

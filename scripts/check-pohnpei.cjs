@@ -3,31 +3,26 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const {pathToFileURL}=require('node:url');
 const moduleAt=name=>import(pathToFileURL(path.resolve('game-of-worms',name)));
 (async()=>{
-  const {sledFrame,curlPath}=await moduleAt('pohnpei-play.js');
-  const body='M78 228C122 280 173 255 181 203C188 151 225 105 278 113C330 121 355 82 326 54';
-  for(let t=0;t<10200;t+=16){
-    const f=sledFrame(t);
-    for(const k of['board','travel','skid'])assert(f[k]>=0&&f[k]<=1);
-    assert(Math.abs(f.turn)<=4);
-    const d=curlPath(body,f.board).match(/-?\d*\.?\d+/g).map(Number);
-    assert.equal(d.length,20);assert(d.every(Number.isFinite));
-    assert.equal(sledFrame(t,true).travel,0);assert.equal(sledFrame(t,true).turn,0);
+  const {birdFrame,watchPoint,WATCH_DURATION}=await moduleAt('pohnpei-play.js');
+  for(let ms=0;ms<=WATCH_DURATION;ms+=16){
+    const f=birdFrame(ms),next=birdFrame(ms+16);
+    for(const key of ['x','y','air','wing','tilt'])assert(Number.isFinite(f[key]));
+    assert(f.x>=0&&f.x<=97);assert(f.y<=.001&&f.y>-110);
+    assert(Math.hypot(next.x-f.x,next.y-f.y)<6,'No position jump between animation frames');
+    const still=birdFrame(ms,true);assert.equal(still.x,0);assert.equal(still.y,0);assert.equal(still.wing,0);
   }
-  assert.equal(sledFrame(0).board,0);assert.equal(sledFrame(0).travel,0);
-  assert.equal(sledFrame(1500).board,1);assert.equal(sledFrame(1500).travel,0);
-  assert.equal(sledFrame(4600).travel,1);
-  assert.equal(sledFrame(7300).board,0);assert.equal(sledFrame(7300).travel,1);assert(!sledFrame(7300).done);
-  assert.equal(sledFrame(10000).travel,0);assert(sledFrame(10000).done);
-  assert(sledFrame(1700).push>.9);assert(sledFrame(3200).bump>.9);
-  assert(sledFrame(4800).skid>.9);
-  for(let ms=7500;ms<9900;ms+=30)assert.equal(sledFrame(ms).board,0,'Riders climb out before the empty sled returns');
-  assert(sledFrame(2000,true).done);
-  assert.deepEqual(curlPath(body,0).match(/-?\d*\.?\d+/g),body.match(/-?\d*\.?\d+/g));
+  for(const ms of [0,WATCH_DURATION]){assert.equal(birdFrame(ms).x,0);assert(Math.abs(birdFrame(ms).y)<1e-9);}
+  assert.equal(birdFrame(6000).x,97);assert.equal(birdFrame(6000).wing,0);
+  for(const male of [false,true]){
+    assert.deepEqual(watchPoint(78,228,1,male),{x:78,y:228},'Tail stays planted');
+    assert.deepEqual(watchPoint(330,64,0,male),{x:330,y:64},'Resting geometry is unchanged');
+    assert(watchPoint(330,64,1,male).y<64,'Head leans into watching position');
+  }
   class Element{constructor(tag){this.tag=tag;this.attrs={};this.children=[];this.dataset={};}
     setAttribute(k,v){this.attrs[k]=String(v);}appendChild(n){this.children.push(n);return n;}}
   global.document={createElementNS:(_,tag)=>new Element(tag)};
-  const {OPTICS,SLED,CAPE,pohnpeiLayouts,drawPohnpeiAccessory,drawLorikeet}=await moduleAt('pohnpei-art.js');
-  assert.equal(Object.keys(pohnpeiLayouts).length,3);assert(!pohnpeiLayouts[SLED].companion);
+  const {OPTICS,BIRD,CAPE,pohnpeiLayouts,drawPohnpeiAccessory,drawLorikeet}=await moduleAt('pohnpei-art.js');
+  assert.equal(Object.keys(pohnpeiLayouts).length,3);assert(!pohnpeiLayouts[BIRD].companion);
   const flatten=n=>[n,...n.children.flatMap(flatten)];
   for(const family of[OPTICS,CAPE]){
     const a=new Element('g'),b=new Element('g');
@@ -45,14 +40,14 @@ const moduleAt=name=>import(pathToFileURL(path.resolve('game-of-worms',name)));
   assert(flatten(bird).some(n=>n.attrs.fill==='#783d4a'));assert(flatten(bird).some(n=>n.attrs.fill==='#d8c876'));
   const play=fs.readFileSync('game-of-worms/pohnpei-play.js','utf8'),game=fs.readFileSync('game-of-worms/game.js','utf8');
   for(const hook of['pohnpeiPlay.start(piece)','pohnpeiPlay.handles(piece)','pohnpeiPlay.adjust(piece)','pohnpeiPlay.cancel()','pohnpeiPlay.clear()','pohnpeiPlay.active'])assert(game.includes(hook));
-  for(const hook of['IntersectionObserver','visibilitychange','pagehide','resize',"reduced.addEventListener('change'","n.setAttribute('style',v)","event.key==='Escape'",'run!==r'])assert(play.includes(hook));
+  for(const hook of['IntersectionObserver','visibilitychange','pagehide','resize',"reduced.addEventListener('change'","event.key==='Escape'",'run===r'])assert(play.includes(hook));
   assert(play.includes('outer.translate(x-radius,y-radius)'));assert(!play.includes('svg.getScreenCTM()'));
   assert(play.includes('headwear.parentNode.appendChild(headwear)'));
-  assert(play.includes('++r.cloneCount'));assert(!play.includes('dataset.userScale'));
-  assert(play.includes('const lean=f.lean*(w.male?1.15:.7)'));
+  assert(!play.includes('dataset.userScale'));
+
   const catalogue=fs.readFileSync('game-of-worms/accessory-designs.js','utf8');
   const row=catalogue.split(/\r?\n/).find(n=>n.includes('["tropicalis", "Pohnpei,'));
-  for(const f of[OPTICS,SLED,CAPE])assert(row.includes(f));
+  for(const f of[OPTICS,BIRD,CAPE])assert(row.includes(f));
   assert(!row.includes('parasol'));assert(!row.includes('rollerboard'));
   const hashes={
     'pohnpei-leaves.ogg':'678c0da00ef1092f4be7c2d8c7b22c1c91c5fc8ca1f3f9570ce59de995c0138c',
@@ -78,7 +73,7 @@ const moduleAt=name=>import(pathToFileURL(path.resolve('game-of-worms',name)));
   document.hidden=true;assert.equal(sound.play('bird'),false);document.hidden=false;
   assert.equal(sound.play('leaf',7,1),false);
   global.fetch=async()=>({ok:false});assert.equal(await createPohnpeiSound().unlock('bird'),false);
-  console.log('PASS: Pohnpei distinct paired art, shared sled, bounded coiling/descent/return and reduced motion');
+  console.log('PASS: Pohnpei distinct paired art, perched bird, continuous takeoff/landing, planted tails and reduced motion');
   console.log('PASS: optics bounds strategy, editable search, lifecycle/keyboard hooks, independent visitor transforms and preserved painting');
   console.log('PASS: verified audio hashes, lazy/deduplicated loading, bounded non-overlapping recordings and silent failures');
 })().catch(e=>{console.error(e);process.exitCode=1;});

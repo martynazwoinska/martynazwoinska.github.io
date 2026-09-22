@@ -13,7 +13,7 @@ import { drawMauritiusDrum } from "./mauritius-drums.js?v=20260915-hand-drums-1"
 import { drawWormbook } from "./claremont-book-art.js?v=20260920-books-7";
 import { drawLombokSwim, swimLayouts } from "./lombok-swim-art.js?v=20260912-swim-1";
 import { drawCanopyAccessory, canopyLayouts } from "./queensland-art.js?v=20260913-canopy-1";
-import { drawPohnpeiAccessory, pohnpeiLayouts } from "./pohnpei-art.js?v=20260913-pohnpei-1";
+import { drawPohnpeiAccessory, pohnpeiLayouts } from "./pohnpei-art.js?v=20260922-birdwatch-1";
 import { drawSaoTomeAccessory as drawSnailEncounter, saoTomeLayouts } from "./sao-tome-art.js?v=20260913-leaf-hats-1";
 import { drawAraucaniaWork, araucaniaLayouts } from "./araucania-art.js?v=20260909-araucania-bites-5";
 import { drawDoisRios, doisRiosLayouts } from "./dois-rios-art.js?v=20260908-dois-rios-1";
@@ -74,7 +74,7 @@ const rows = [
   ["tropicalis", "Guadeloupe · NIC203", "hummingbird costumes", "guadeloupe-hummingbird-costume", "madras crowns", "guadeloupe-madras-carnival-crown", "gwo ka drums", "guadeloupe-gwoka-drum"],
   ["tropicalis", "Oʻahu, Hawaiʻi · ECA789", "Gift wrapping", "eca789-chocolate-gifts", "Chocolate tasting", "eca789-chocolate-tasting", "Chocolate bike", "eca789-chocolate-bike"],
   ["tropicalis", "New Taipei City, Taiwan · NIC1648", "Pottery wheels", "nic1648-pottery-wheels", "Aprons", "nic1648-pottery-aprons", "Bubble tea", "nic1648-bubble-tea-jetpacks"],
-  ["tropicalis", "Pohnpei, Micronesia · QG4739", "Birdwatching", "qg4739-birdwatching", "Leaf sled", "qg4739-shared-leaf-sled", "Camouflage capes", "qg4739-camouflage-cape"],
+  ["tropicalis", "Pohnpei, Micronesia · QG4739", "Birdwatching", "qg4739-birdwatching", "Bird calls", "qg4739-lorikeet-perch", "Camouflage capes", "qg4739-camouflage-cape"],
   ["tropicalis", "Queensland, Australia · QG2904", "Canopy lift", "qg2904-canopy-lift", "Forest photography", "qg2904-forest-photography", "Safety harnesses", "qg2904-safety-harness"],
   ["tropicalis", "Saint-Benoît, Réunion · JU1373", "Lychees", "ju1373-lychees", "Raincoats with rain", "ju1373-raincoats", "Flower arranging", "ju1373-flower-arranging"]
 ];
@@ -99,7 +99,7 @@ const santeuilRendererFamilies = new Set(["santeuil-railway-driver-uniform", "sa
 const edinburghRendererFamilies = new Set(["midmar-compost-tumbler", "edinburgh-tartan-kilt", "great-highland-bagpipes"]);
 const tenerifeRendererFamilies = new Set(["tenerife-atlantic-canary-costume", "tenerife-timple-guitar", "tenerife-avocado-snack-bowl"]);
 const kauaiRendererFamilies = new Set(["xz1516-forest-bird-headphones", "xz1516-ohia-blossom-microphone", "xz1516-reel-to-reel-recorder"]);
-const sharedAccessoryFamilies = new Set(["eg4181-apricot-picnic", "eg4181-little-bubble-kit", "eg4181-picnic-blanket", "xz1516-reel-to-reel-recorder", "ju4356-shared-scooter", "eca789-chocolate-bike", "eca789-chocolate-gifts", "hpt26-splashing-pool", "qg2904-canopy-lift", "qg4739-shared-leaf-sled", "ju2484-leaf-encounter", "ju2484-snail-ride"]);
+const sharedAccessoryFamilies = new Set(["eg4181-apricot-picnic", "eg4181-little-bubble-kit", "eg4181-picnic-blanket", "xz1516-reel-to-reel-recorder", "ju4356-shared-scooter", "eca789-chocolate-bike", "eca789-chocolate-gifts", "hpt26-splashing-pool", "qg2904-canopy-lift", "qg4739-lorikeet-perch", "ju2484-leaf-encounter", "ju2484-snail-ride"]);
 const actRendererFamilies = new Set(["canberra-flat-white-cafe", "canberra-linen-napkins", "oconnor-cockatoo-cafe-raid"]);
 const claremontRendererIds = new Set([
   "elegans::Claremont, California · ECA250::headwear",

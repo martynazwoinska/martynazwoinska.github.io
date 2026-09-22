@@ -1,5 +1,48 @@
 # Pohnpei *Caenorhabditis tropicalis* QG4739 location research and art brief
 
+## Pohnpei birdwatching preview, 2026-09-22
+
+Implemented locally on codex/atlas-header-balance, based on current main de7424f.
+Deployment approved on 2026-09-22. The user approved the English-only button labels
+Birdwatching, Bird calls and Camouflage capes. There are no Swedish or Polish
+Game strings for these labels. The final contextual artwork is approved.
+
+Replaced the shared leaf sled with one forked branch and perched lorikeet.
+The larger worm lifts its binoculars and the male leans toward his scope,
+with curved body poses and hands supporting their different optics. One
+11.2-second action includes a recorded call, hop, short curved flight, second
+call and return. Wing opening/folding, feet and lower bill have separate motion.
+The capes, optics drawings and default fits are retained. A refinement pass
+moved the branch above the male, extended its base toward the painted trunk,
+and made the automatic lens view focus on the bird's head. Manual lens movement
+retains the original scene magnification. Optical samples are hidden from
+assistive technology so they do not duplicate interactive controls.
+
+The background painting, collection text, regional wildlife attribution and
+licensed audio bytes are unchanged. No new wildlife recording or claim about
+the collection substrate was introduced. References were refreshed against
+eBird pohlor1 and the US Fish and Wildlife Service Pohnpei lorikeet entry.
+
+Validation: focused Pohnpei motion/audio tests, accessory labels, fresh-visit
+checks and syntax checks pass. Browser startup runs catalogue and paired-art
+geometry audits successfully. Enter, Escape, live lens movement and exact
+restoration of paths/accessory transforms were checked. Reduced-motion flight
+and body limits are tested programmatically; physical devices and subjective
+audio listening remain manual. No final-preview console warnings/errors.
+Uncropped full-page proofs at 360/768/1024/1440 CSS px measured 345x2285,
+753x2174, 1009x1725 and 1425x1908 px respectively (scrollbar excluded), with
+no horizontal overflow. The Game retains its fixed light palette.
+An older Sao Tome test's partial DOM mock failed on existing Lombok
+querySelectorAll usage during its whole-catalogue check. That unrelated mock
+was not changed; the real-browser catalogue checks completed successfully.
+
+Changed files: game-of-worms/pohnpei-art.js, pohnpei-play.js,
+accessory-designs.js, game.js, index.html; scripts/check-pohnpei.cjs;
+PROJECT_STATUS.md; docs/game-of-worms-location-research/pohnpei-tropicalis.md;
+docs/game-of-worms-art-catalogue.md; docs/game-of-worms-scene-review-queue.md.
+No production files created or deleted. Untracked helper scripts stay in output.
+
+
 Last updated: 2026-09-13
 
 > **Approved replacement, 2026-09-13:** `Birdwatching`, `Leaf sled` and `Camouflage capes`. These replace the parasols, peppercorn rollerboards and paired leaf sleds. The earlier brief below remains historical context.

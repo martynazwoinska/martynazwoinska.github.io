@@ -1,5 +1,16 @@
 # Game of Worms art catalogue
 
+## Pohnpei revision, 2026-09-22, deployment approved
+
+Current Pohnpei choices: Birdwatching, Bird calls, Camouflage capes.
+The leaf sled is retired. One branch-mounted lorikeet calls, hops and flies
+while the larger worm uses binoculars and the male uses his spotting scope.
+The existing cape fit, optics artwork and background are retained. The bird
+uses the existing maroon/olive/yellow artwork with separate wing, feet and bill
+joints. See the Pohnpei dossier for references, refinement and browser checks.
+The historical Pohnpei entries below are superseded by this preview.
+
+
 Deployment approved 2026-09-21 for final forest-4 with compact-1 navigation.
 This supersedes preview status notes below; use the final artwork unchanged.
 

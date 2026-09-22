@@ -11,6 +11,79 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Santeuil railway motion preview, 2026-09-22
+
+Deployment approved on 2026-09-22 for the reviewed preview on codex/atlas-header-balance:
+http://127.0.0.1:8792/game-of-worms/?preview=santeuil-ride-1
+
+The 18.2-second journey now has a larger-worm push-off and farewell,
+a compact boarding pose for the male, body bends following the pump handle,
+and a longer run with gradual acceleration, a stop, reversal and braking.
+Vehicle angles align with the shared track while riding. Wheels and the
+connecting rod follow distance travelled. Steam advances continuously;
+quiet filtered-noise rail impacts follow the wheel travel, alongside the
+existing recorded whistle. The organ march remains separately playable.
+The distance is capped by available right-side scene space. Original uniforms,
+vehicle drawings, saved accessory transforms and background are preserved.
+No public wording changed. The separate Pohnpei preview remains intact.
+
+Validation: final-scene timing, smooth stop/start, artwork and Santeuil fit
+checks pass; syntax and git diff checks pass. Browser Enter activation on both
+vehicles, Escape cancellation, complete-ride transform restoration and console
+checks pass. No warnings/errors in the final preview. Full-page screenshots
+at 360/768/1024/1440 CSS px measure 345x2361, 753x2200, 1009x1817 and
+1425x1908 px (scrollbar excluded); no horizontal overflow. Fixed Game light
+palette retained. Reduced-motion skip/cleanup reviewed in code, not emulated
+in the browser. Subjective listening and physical touch-device checks remain
+manual. The new sounds are synthesized impacts, not field recordings.
+
+Changed for this follow-up: game-of-worms/santeuil-railway.js,
+final-scenes-play.js, game.js, index.html; scripts/check-final-scenes.cjs;
+PROJECT_STATUS.md; docs/game-of-worms-location-research/santeuil.md;
+docs/game-of-worms-scene-review-queue.md. No production files created/deleted.
+
+## Pohnpei birdwatching preview, 2026-09-22
+
+Implemented locally on codex/atlas-header-balance, based on current main de7424f.
+Deployment approved on 2026-09-22. The user approved the English-only button labels
+Birdwatching, Bird calls and Camouflage capes. There are no Swedish or Polish
+Game strings for these labels. The final contextual artwork is approved.
+
+Replaced the shared leaf sled with one forked branch and perched lorikeet.
+The larger worm lifts its binoculars and the male leans toward his scope,
+with curved body poses and hands supporting their different optics. One
+11.2-second action includes a recorded call, hop, short curved flight, second
+call and return. Wing opening/folding, feet and lower bill have separate motion.
+The capes, optics drawings and default fits are retained. A refinement pass
+moved the branch above the male, extended its base toward the painted trunk,
+and made the automatic lens view focus on the bird's head. Manual lens movement
+retains the original scene magnification. Optical samples are hidden from
+assistive technology so they do not duplicate interactive controls.
+
+The background painting, collection text, regional wildlife attribution and
+licensed audio bytes are unchanged. No new wildlife recording or claim about
+the collection substrate was introduced. References were refreshed against
+eBird pohlor1 and the US Fish and Wildlife Service Pohnpei lorikeet entry.
+
+Validation: focused Pohnpei motion/audio tests, accessory labels, fresh-visit
+checks and syntax checks pass. Browser startup runs catalogue and paired-art
+geometry audits successfully. Enter, Escape, live lens movement and exact
+restoration of paths/accessory transforms were checked. Reduced-motion flight
+and body limits are tested programmatically; physical devices and subjective
+audio listening remain manual. No final-preview console warnings/errors.
+Uncropped full-page proofs at 360/768/1024/1440 CSS px measured 345x2285,
+753x2174, 1009x1725 and 1425x1908 px respectively (scrollbar excluded), with
+no horizontal overflow. The Game retains its fixed light palette.
+An older Sao Tome test's partial DOM mock failed on existing Lombok
+querySelectorAll usage during its whole-catalogue check. That unrelated mock
+was not changed; the real-browser catalogue checks completed successfully.
+
+Changed files: game-of-worms/pohnpei-art.js, pohnpei-play.js,
+accessory-designs.js, game.js, index.html; scripts/check-pohnpei.cjs;
+PROJECT_STATUS.md; docs/game-of-worms-location-research/pohnpei-tropicalis.md;
+docs/game-of-worms-art-catalogue.md; docs/game-of-worms-scene-review-queue.md.
+No production files created or deleted. Untracked helper scripts stay in output.
+
 ## Larger puzzle area, 2026-09-22
 
 Both playing and completed boards can now reach 560 px wide. The completed
