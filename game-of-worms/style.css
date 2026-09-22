@@ -3930,19 +3930,19 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .wow-fact {
   margin-top: 0;
   position: relative;
-  border-radius: 20px;
-  padding: 16px;
-  background: rgba(255,209,102,.28);
+  border-top: 1px solid var(--line);
+  padding: 16px 0 0;
+  background: transparent;
 }
 .wow-fact > span { position: absolute; top: 12px; right: 12px; font-size: 1.15rem; line-height: 1; opacity: .84; }
 .wow-fact p { margin: 0; }
 .wow-fact strong, .wow-fact p span { display: block; }
-.wow-fact strong { padding-right: 18px; }
+.wow-fact strong { padding-right: 18px; color: var(--teal-dark); }
 .wow-fact p span { margin-top: 3px; color: var(--ink-soft); }
 @media (max-width: 420px) {
   .species-actions { display: grid; grid-template-columns: 1fr; }
   .story-control { width: 100%; min-width: 0; min-height: 48px; padding-inline: 12px; justify-content: center; }
-  .wow-fact { padding: 13px; }
+  .wow-fact { padding: 13px 0 0; }
   .wow-fact > span { top: 10px; right: 10px; font-size: 1rem; }
   .wow-fact strong { padding-right: 16px; }
 }
@@ -7285,45 +7285,42 @@ footer p { margin: 0; }
 .habitat[data-accessory-visual="nigoni::Mahahual, Mexico · JU2617"] .regional-backdrop { border-radius: inherit; overflow: hidden; }
 
 /* Compact atlas navigation: keep the scene close to the species choices. */
-.topbar { padding-top: 10px; padding-bottom: 6px; gap: 12px; }
-.brand h1 { font-size: clamp(1.7rem, 3vw, 2.4rem); }
-.discovery > .section-heading.compact { margin: 4px 0 10px; }
-.species-heading-copy { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.species-heading-copy h2 { margin: 0; font-size: clamp(1.15rem, 2.4vw, 1.65rem); line-height: 1.15; }
-.species-heading-copy .family-info-toggle { flex: none; min-height: 44px; margin: 0; padding: 8px 11px; border-color: var(--line); border-radius: 12px; background: rgba(255,255,255,.5); color: var(--teal-dark); box-shadow: none; font-size: .76rem; font-weight: 750; }
-.species-heading-copy .family-info-toggle:hover { background: var(--paper-strong); border-color: var(--teal); }
+.topbar { grid-template-columns: minmax(0,1fr) minmax(0,1fr); padding-top: 10px; padding-bottom: 0; gap: 0 12px; }
+.topbar .back-link { grid-column: 1; grid-row: 1; }
+.topbar .treasure-toggle { grid-column: 2; grid-row: 1; }
+.topbar .brand { grid-column: 1 / -1; grid-row: 2; text-align: center; }
+.brand h1 { font-size: clamp(2.25rem, 4vw, 3.05rem); }
+.discovery > .section-heading.compact { margin: 0; }
+.species-heading-copy { width: 100%; display: flex; align-items: center; justify-content: flex-start; gap: 12px; }
+
+.species-heading-copy .family-info-toggle { flex: none; min-height: 44px; margin: 0; padding: 4px 0; border: 0; border-radius: 3px; background: transparent; color: var(--teal-dark); box-shadow: none; font-size: .95rem; font-weight: 650; }
+.species-heading-copy .family-info-toggle:hover { background: transparent; box-shadow: none; transform: none; text-decoration: underline; text-underline-offset: 4px; }
 .species-heading-copy .family-info-toggle-arrow { color: var(--teal-dark); }
-.species-tabs { grid-template-columns: repeat(3,minmax(0,1fr)); grid-auto-rows: auto; min-height: 0; gap: 10px; margin: 0 0 14px; }
-.sister-pair { border-radius: 17px; padding: 21px 6px 6px; }
+.species-tabs { grid-template-columns: repeat(3,minmax(0,1fr)); grid-auto-rows: auto; min-height: 0; gap: 18px; margin: 0 0 14px; }
+.sister-pair { border: 0; border-radius: 0; padding: 25px 0 0; background: none; box-shadow: none; }
+.sister-pair:hover { border-color: transparent; box-shadow: none; }
 .sister-pair:last-child { grid-column: auto; width: auto; justify-self: stretch; }
-.sister-label { top: 5px; font-size: .6rem; letter-spacing: .09em; }
+.sister-label { top: 6px; font-size: .7rem; letter-spacing: .09em; }
 .sister-label::before, .sister-label::after { width: 15px; }
 .sister-buttons { gap: 5px; }
-.species-tab { min-height: 62px; border-radius: 12px; padding: 7px 5px; }
-.species-tab small { margin-top: 3px; font-size: .59rem; padding: 2px 5px; letter-spacing: .02em; }
+.species-tab { min-height: 76px; border-radius: 12px; padding: 10px 6px; font-size: 1.05rem; box-shadow: 0 2px 5px rgba(26,71,79,.06); }
+.species-tab small { margin-top: 3px; font-size: .68rem; padding: 2px 5px; letter-spacing: .02em; }
 .species-tab.is-selected { box-shadow: inset 0 -2px 0 rgba(255,209,102,.72),0 3px 0 rgba(22,125,122,.1); }
-@media (min-width:681px) and (max-width:900px) {
-  .species-tab { font-size: .8rem; }
-  .species-tab small { font-size: .56rem; padding-inline: 3px; letter-spacing: 0; white-space: nowrap; }
+@media (min-width:741px) and (max-width:900px) {
+  .species-tab { font-size: .88rem; padding-inline: 4px; }
+  .species-tab small { font-size: .62rem; padding-inline: 3px; letter-spacing: 0; white-space: nowrap; }
 }
-@media (max-width:680px) {
-  .topbar { grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: 4px 10px; padding: 10px 14px 6px; }
-  .topbar .brand { grid-column: 2; grid-row: 1; text-align: center; }
-  .topbar .brand h1 { font-size: clamp(1.6rem,4.8vw,2rem); white-space: nowrap; }
+@media (max-width:740px) {
+  .topbar { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 4px 10px; padding: 10px 14px 0; }
+  .topbar .brand { grid-column: 1 / -1; grid-row: 2; text-align: center; }
+  .topbar .brand h1 { font-size: clamp(2.25rem,6.8vw,2.75rem); white-space: nowrap; }
   .topbar .back-link { grid-column: 1; grid-row: 1; min-height: 44px; display: inline-flex; align-items: center; font-size: .72rem; }
-  .topbar .treasure-toggle { grid-column: 3; grid-row: 1; }
+  .topbar .treasure-toggle { grid-column: 2; grid-row: 1; }
   .species-heading-copy { gap: 8px; }
-  .species-heading-copy h2 { font-size: 1.1rem; max-width: none; }
-  .species-heading-copy .family-info-toggle { font-size: .7rem; padding: 7px 8px; gap: 5px; }
+  .species-heading-copy .family-info-toggle { font-size: .95rem; padding: 4px 0; gap: 6px; }
   .species-tabs { grid-template-columns: 1fr; gap: 7px; margin-bottom: 12px; }
-  .sister-pair { padding: 17px 5px 5px; border-radius: 14px; }
-  .sister-label { top: 2px; font-size: .56rem; }
-  .species-tab { min-height: 46px; padding: 4px 6px; font-size: .9rem; }
-  .species-tab small { margin-top: 1px; font-size: .55rem; line-height: 1.3; }
-}
-@media (max-width:540px) {
-  .topbar { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
-  .topbar .brand { grid-column: 1 / -1; grid-row: 1; }
-  .topbar .back-link { grid-column: 1; grid-row: 2; }
-  .topbar .treasure-toggle { grid-column: 2; grid-row: 2; }
+  .sister-pair { padding: 23px 0 0; }
+  .sister-label { top: 4px; font-size: .68rem; }
+  .species-tab { min-height: 62px; padding: 7px 6px; font-size: 1rem; }
+  .species-tab small { margin-top: 1px; font-size: .65rem; line-height: 1.3; }
 }

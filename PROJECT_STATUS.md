@@ -1,6 +1,6 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-09-21
+Last updated: 2026-09-22
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
@@ -10,6 +10,25 @@ It tracks all 31 active scenes: 0 left to check in the current interaction
 pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei NIC1648 and Réunion JU1375.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+## Atlas header balance release, 2026-09-22
+
+Implemented the requested removal of "Meet our six worms"; the existing
+"Meet the whole family" control now occupies its left-hand position. The
+centred Worm Atlas title is larger. The family control is now unboxed, with lighter text and a preserved 44 px touch target. Sister-species outer frames and their hover shadows are removed; individual species buttons remain distinct. Sister-species groups, species names and
+reproduction labels have more room and larger type than the compact release.
+The back link and Hidden gems occupy the top row, with the title centred in its own row below at every width. Below 741 px the three pairs stack. Tablet names
+remain on one line. The English-only Game has no Swedish or Polish equivalent
+of the removed heading; no new wording or translations were introduced.
+
+Changed game-of-worms/index.html, game-of-worms/style.css and this record.
+Header spacing is tightened, the unboxed family link is slightly larger, and the yellow Tiny surprise inset is replaced by an aligned heading and thin divider. All public wording remains unchanged in this refinement. No assets or files created/deleted. No scene or treasure interaction changes.
+Full-page browser proofs at 360/768/1024/1440 px viewports measure
+345x2461, 753x2140, 1009x1928 and 1425x1897 px (15 px scrollbar excluded).
+No horizontal overflow or console warnings/errors. Family and treasure dialogs
+open by keyboard, close with Escape and restore focus. Existing fixed light
+palette and reduced-motion rules are preserved. git diff --check passed.
+Approved for deployment from codex/atlas-header-balance after review of header-balance-4. Public Pages verification follows the release commit.
 
 ## Species heading line fit, 2026-09-21
 
