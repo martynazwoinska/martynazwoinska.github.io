@@ -11,6 +11,25 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Larger puzzle area, 2026-09-22
+
+Both playing and completed boards can now reach 560 px wide. The completed
+board's previous cap was 440 px. Removed the height-based shrink rule; shorter
+windows can scroll the puzzle content while the close control stays outside
+that scrolling area. The dialog is wider with slimmer side padding, and the
+shared gem tray now sits beside the close button in the header. All eight
+gems remain visible. No public wording, artwork or game rules changed.
+
+Changed Game treasure.css, treasure-hunt.js, index.html and game.js cache
+references, plus this record. No production files created or deleted.
+Browser checks cover 360/768/1024/1440 px viewports and a shorter 592x673
+window, board completion/heartbeat, restart, inline reset cancellation and
+Escape/focus restoration. Full-page proofs measure 345x2485, 753x2145,
+1009x1937 and 1425x1906 px (15 px scrollbar excluded). No horizontal
+overflow or console warnings/errors. The short-window board measured 486 px
+wide and its controls remained reachable through the content scroll area.
+The Game retains its fixed light palette and existing reduced-motion behavior.
+
 ## Restored species groups and closer heart view, 2026-09-22
 
 Restored the rounded, softly tinted shared boxes around each sister-species
