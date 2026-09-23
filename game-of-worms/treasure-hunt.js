@@ -1,6 +1,6 @@
 import {svg,drawGem,revealTreasure,pieces} from './treasure-pieces.js?v=20260920-discovery-2';
 import {treasures,SAVE_KEY,parseSave,emptySave,mergeHunts,restartHunt} from './treasure-model.js?v=20260921-motion-1';
-import {mountPuzzle} from './treasure-puzzle.js?v=20260923-puzzle-finish-1';
+import {mountPuzzle} from './treasure-puzzle.js?v=20260923-puzzle-caption-1';
 import {gemLanding,gemDropFrames} from './treasure-motion.js?v=20260921-motion-1';
 import {drawCanopyCache} from './treasure-discoveries.js?v=20260920-discovery-2';
 

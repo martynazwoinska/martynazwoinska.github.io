@@ -11,6 +11,12 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Puzzle completion caption removal, 2026-09-23
+
+Removed the visible completion sentence at Martyna's request. The completed
+heart keeps its accessible button name, press interaction and steady board layout.
+The Game is English-only; no Swedish or Polish version exists for this sentence.
+
 ## Puzzle completion continuity, 2026-09-23
 
 Completion now keeps the playing board's crop, frame and caption slot stable.
