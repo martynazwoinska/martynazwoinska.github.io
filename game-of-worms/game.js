@@ -13,9 +13,9 @@ import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
 import { createGameTranslator } from "./game-i18n.js?v=20260802-6";
 import { auditEnvironmentCompositions, getEnvironmentProfile, renderEnvironmentScene } from "./environment-scenes.js?v=20260830-43";
-import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260922-samples-1";
+import { auditAccessoryCatalogue, auditAccessoryPairGeometry, renderLocationAccessories } from "./accessory-designs.js?v=20260923-four-scenes-1";
 import { createKauaiBath } from "./kauai-bath-play.js?v=20260921-motion-1";
-import { createReunionPlay } from "./reunion-play.js?v=20260909-reunion-2";
+import { createReunionPlay } from "./reunion-play.js?v=20260923-four-scenes-1";
 import { createOahuChocolate } from "./oahu-chocolate-play.js?v=20260909-gift-3";
 import { createLombokPlay } from "./lombok-play.js?v=20260921-forest-4";
 import { createCanopyPlay } from "./queensland-play.js?v=20260920-discovery-2";
@@ -23,18 +23,19 @@ import { createPohnpeiPlay } from "./pohnpei-play.js?v=20260922-birdwatch-1";
 import { createSaoTomePlay } from "./sao-tome-play.js?v=20260913-feelers-1";
 import { createHcmcPlay } from "./hcmc-play.js?v=20260908-hcmc-1";
 import { createNambuccaPlay } from "./nambucca-play.js?v=20260921-motion-1";
-import { createDoisRiosPlay } from "./dois-rios-play.js?v=20260908-dois-rios-1";
+import { createDoisRiosPlay } from "./dois-rios-play.js?v=20260923-four-scenes-1";
 import { createPanamaPlay } from "./panama-play.js?v=20260920-mixing-5";
 import { createAhmedabadHands } from "./ahmedabad-hands.js?v=20260914-soil-contact-1";
 import { createIshigakiInteractions } from "./ishigaki-interactions.js?v=20260907-ishigaki-sound-1";
 import { createCanberraCafe, CAFE_FAMILIES } from "./canberra-cafe.js?v=20260909-cafe-audio-1";
 import { mountLiveLoupes } from "./live-loupes.js?v=20260922-glass-hit-1";
 import { createTrivandrumWatering } from "./trivandrum-watering.js?v=20260922-sample-hold-1";
+import { createN2Feeding } from "./n2-feeding.js?v=20260923-four-scenes-1";
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260908-cryo-return-1";
 import { createBaliGongs, GONG_FAMILY } from "./bali-gong-duet.js?v=20260920-gong-duet-2";
 import { createEdinburghPipes } from "./edinburgh-pipes.js?v=20260909-pipes-1";
 import { createClaremontPlay } from "./claremont-play.js?v=20260920-books-7";
-import { createAraucaniaPlay } from "./araucania-play.js?v=20260921-motion-1";
+import { createAraucaniaPlay } from "./araucania-play.js?v=20260923-four-scenes-1";
 import { createBaliCacao } from "./bali-cacao.js?v=20260921-motion-1";
 import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-fans-1";
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
@@ -709,6 +710,7 @@ function renderTabs() {
 }
 
 let unmountLiveLoupes = () => {};
+const n2Feeding = createN2Feeding(els.habitat,updateAccessoryLabelVisibility);
 const n2CryoFlight = createN2CryoFlight(els.habitat);
 const treasureHunt = createTreasureHunt(els.habitat);
 const baliGongs = createBaliGongs(els.habitat);
@@ -760,6 +762,7 @@ const nambuccaPlay = createNambuccaPlay(els.habitat, () => {
 function renderSpecies(item, place) {
   lombokPlay.clear(); canopyPlay.clear(); pohnpeiPlay.clear(); saoTomePlay.clear();
   kauaiBath.clear();
+  n2Feeding.clear();
   araucaniaPlay.clear();
   claremontPlay.clear();
   edinburghPipes.cancel();
@@ -1077,7 +1080,7 @@ function updateAccessoryLabelVisibility() {
 
 function constrainVisibleAccessories() {
   if (claremontPlay.active || araucaniaPlay.active) return;
-  if (n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || finalScenes.active || orsayPlay.active || saltLakePlay.active || mahahualPlay.active || praslinPlay.active || ju1375Play.active || taipeiPlay.active || guadeloupePlay.active || mauritiusPlay.active || panamaPlay.active || doisRiosPlay.active || nambuccaPlay.active || oahuBike.active || hcmcPlay.active || reunionPlay.active || kauaiBath.active || lombokPlay.active || canopyPlay.active || pohnpeiPlay.active || saoTomePlay.active) return;
+  if (n2Feeding.active || n2CryoFlight.active || ishigakiPlay.active || ahmedabadHands.active || trivandrumWatering.active || finalScenes.active || orsayPlay.active || saltLakePlay.active || mahahualPlay.active || praslinPlay.active || ju1375Play.active || taipeiPlay.active || guadeloupePlay.active || mauritiusPlay.active || panamaPlay.active || doisRiosPlay.active || nambuccaPlay.active || oahuBike.active || hcmcPlay.active || reunionPlay.active || kauaiBath.active || lombokPlay.active || canopyPlay.active || pohnpeiPlay.active || saoTomePlay.active) return;
   if (els.habitat.classList.contains("is-changing")) return;
   accessoryIds.forEach(id => {
     if (!activeWardrobe().has(id)) return;
@@ -1194,6 +1197,7 @@ els.accessorySizeSlider.addEventListener("input", event => {
   pohnpeiPlay.adjust(target&&visibleAccessoryPieces(target.id,target.wormPart)[0]);
   saoTomePlay.cancel();
   kauaiBath.cancel();
+  n2Feeding.cancel();
   araucaniaPlay.cancel();
   claremontPlay.cancel(target&&visibleAccessoryPieces(target.id,target.wormPart)[0]);
   finalScenes.cancel(); orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); guadeloupePlay.cancel(); mauritiusPlay.cancel(); panamaPlay.cancel();
@@ -1285,6 +1289,7 @@ function saveActiveDoodle() {
 function syncDrawingMode() {
   lombokPlay.cancel(); canopyPlay.cancel(); pohnpeiPlay.cancel(); saoTomePlay.cancel();
   kauaiBath.cancel();
+  n2Feeding.cancel();
   araucaniaPlay.cancel();
   claremontPlay.cancel();
   edinburghPipes.cancel();
@@ -1412,6 +1417,7 @@ function syncFittedHeadwearMotion(accessory) {
 function toggleAccessory(id, force) {
   lombokPlay.cancel(); canopyPlay.adjust(document.getElementById(id)); pohnpeiPlay.cancel(); saoTomePlay.cancel();
   kauaiBath.cancel();
+  n2Feeding.cancel();
   araucaniaPlay.cancel();
   claremontPlay.cancel();
   edinburghPipes.cancel();
@@ -1505,7 +1511,7 @@ function refreshAccessoryPieceControls() {
       piece.setAttribute("role", "button");
       piece.setAttribute("aria-roledescription", "movable accessory");
       piece.setAttribute("aria-label", accessoryName(id, wormPart));
-      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${(finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) || mahahualPlay.handles(piece) || praslinPlay.handles(piece) || ju1375Play.handles(piece) || taipeiPlay.handles(piece) || guadeloupePlay.handles(piece) || mauritiusPlay.handles(piece) || saoTomePlay.handles(piece) || pohnpeiPlay.handles(piece) || canopyPlay.handles(piece) || lombokPlay.handles(piece) || kauaiBath.handles(piece) || araucaniaPlay.handles(piece) || claremontPlay.handles(piece) || edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || doisRiosPlay.handles(piece) || nambuccaPlay.handles(piece) || oahuBike.handles(piece) || hcmcPlay.handles(piece) || reunionPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
+      piece.setAttribute("aria-keyshortcuts", `ArrowUp ArrowDown ArrowLeft ArrowRight + - Home${(finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) || mahahualPlay.handles(piece) || praslinPlay.handles(piece) || ju1375Play.handles(piece) || taipeiPlay.handles(piece) || guadeloupePlay.handles(piece) || mauritiusPlay.handles(piece) || saoTomePlay.handles(piece) || pohnpeiPlay.handles(piece) || canopyPlay.handles(piece) || lombokPlay.handles(piece) || kauaiBath.handles(piece) || n2Feeding.handles(piece) || araucaniaPlay.handles(piece) || claremontPlay.handles(piece) || edinburghPipes.handles(piece) || piece.querySelector(".edinburgh-focus-wheel") || piece.dataset.accessoryFamily === "cryo-vial-jetpack" || baliCacao.handles(piece) || panamaPlay.handles(piece) || doisRiosPlay.handles(piece) || nambuccaPlay.handles(piece) || oahuBike.handles(piece) || hcmcPlay.handles(piece) || reunionPlay.handles(piece) || trivandrumWatering.handles(piece) || ahmedabadHands.handles(piece) || CAFE_FAMILIES.includes(piece.dataset.accessoryFamily) ? " Enter Space" : ""}`);
       if (piece.dataset.accessoryFamily === "eca250-california-lemonade") {
         piece.setAttribute("aria-keyshortcuts", `${piece.getAttribute("aria-keyshortcuts")} Shift+Enter`);
       }
@@ -1626,7 +1632,7 @@ function finishAccessoryDrag(event) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") { baliCacao.drop(piece); claremontPlay.drop(piece); }
   }
-  else if (event.type === "pointerup") { finalScenes.start(piece); orsayPlay.start(piece); saltLakePlay.start(piece); mahahualPlay.start(piece); praslinPlay.start(piece); ju1375Play.start(piece); taipeiPlay.start(piece); guadeloupePlay.start(piece); mauritiusPlay.start(piece); araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); hcmcPlay.start(piece); oahuBike.start(piece); reunionPlay.start(piece); kauaiBath.start(piece); lombokPlay.start(piece); canopyPlay.start(piece); pohnpeiPlay.start(piece); saoTomePlay.start(piece); }
+  else if (event.type === "pointerup") { finalScenes.start(piece); orsayPlay.start(piece); saltLakePlay.start(piece); mahahualPlay.start(piece); praslinPlay.start(piece); ju1375Play.start(piece); taipeiPlay.start(piece); guadeloupePlay.start(piece); mauritiusPlay.start(piece); araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2Feeding.start(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); hcmcPlay.start(piece); oahuBike.start(piece); reunionPlay.start(piece); kauaiBath.start(piece); lombokPlay.start(piece); canopyPlay.start(piece); pohnpeiPlay.start(piece); saoTomePlay.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1779,6 +1785,7 @@ function wireAccessoryPieces() {
       if(!araucaniaPlay.handles(piece))araucaniaPlay.cancel();
       if (ishigakiPlay.active) return;
       if (n2CryoFlight.active) return;
+      n2Feeding.cancel();
       if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
       if(!claremontPlay.handles(piece))claremontPlay.cancel(piece);
       if(!edinburghPipes.handles(piece))edinburghPipes.cancel();
@@ -1853,6 +1860,10 @@ function wireAccessoryPieces() {
       }
       if (["Escape", "Home", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "+", "=", "-", "_"].includes(event.key)) mauritiusPlay.cancel();
       if (ishigakiPlay.active) { if(event.key === "Escape" || event.key === "Home")ishigakiPlay.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
+      if (!n2CryoFlight.active && (event.key === "Enter" || event.key === " ") && n2Feeding.handles(piece)) {
+        event.preventDefault();if(!event.repeat)n2Feeding.start(piece);return;
+      }
+      if(event.key!=="Tab")n2Feeding.cancel();
       if (n2CryoFlight.active) { if(event.key === "Escape" || event.key === "Home")n2CryoFlight.cancel(); if(event.key !== "Tab")event.preventDefault(); return; }
       if (piece.getAttribute("tabindex") !== "0" || drawingEnabled || !activeWardrobe().has(id)) return;
       if ((event.key === "Enter" || event.key === " ") && araucaniaPlay.handles(piece)) {

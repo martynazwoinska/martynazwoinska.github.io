@@ -2,7 +2,7 @@
 const NS='http://www.w3.org/2000/svg';
 export const COMPOST='ju4400-compost-work', MATE='ju4400-mate', FOOD='ju4400-sopaipillas';
 export const araucaniaLayouts={
-  [COMPOST]:{primary:[305,170,.7,0],companion:[27,166,.48,8]},
+  [COMPOST]:{primary:[329,250,.7,0],companion:[27,230,.48,8]},
   [MATE]:{primary:[382,88,.66,0],companion:[29,63,.6,0]},
   [FOOD]:{primary:[215,266,.6,0],companion:[48,269,.58,0]}
 };

@@ -1,5 +1,6 @@
 import {LYCHEE,COAT,FLOWERS,add,p,e,part,C} from './reunion-art.js?v=20260909-reunion-2';
 import {createReunionSound} from './reunion-audio.js?v=20260909-reunion-2';
+import {workingBody} from './scene-body-motion.js?v=20260923-four-scenes-1';
 const clamp=x=>Math.max(0,Math.min(1,x)),ease=x=>{x=clamp(x);return x*x*(3-2*x);},mix=(a,b,q)=>a+(b-a)*q;
 export const lycheeBiteTime=male=>2790+(male?150:0);
 export function lycheeFrame(ms,male=false,reduced=false){
@@ -20,6 +21,7 @@ function makeArm(g,male){
   return{group,skin,light,hand,male};
 }
 function reach(a,from,to,opacity=1){
+  to={x:mix(from.x,to.x,ease(opacity)),y:mix(from.y,to.y,ease(opacity))};
   const dx=to.x-from.x,dy=to.y-from.y,len=Math.max(1,Math.hypot(dx,dy)),nx=-dy/len,ny=dx/len,w=a.male?2.3:4,tip=a.male?1.2:2;
   const x=mix(from.x,to.x,.52)+(a.bend||0)*Math.min(len*.24,18),y=mix(from.y,to.y,.5)+Math.min(len*.16,a.male?9:19);
   a.skin.setAttribute('d',`M${from.x+nx*w} ${from.y+ny*w}Q${x+nx*w} ${y+ny*w} ${to.x+nx*tip} ${to.y+ny*tip}L${to.x-nx*tip} ${to.y-ny*tip}Q${x-nx*w} ${y-ny*w} ${from.x-nx*w} ${from.y-ny*w}Z`);
@@ -29,6 +31,11 @@ function reach(a,from,to,opacity=1){
 export function createReunionPlay(habitat,refreshTargets=()=>{}){
   const sound=createReunionSound(),reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   let run=null,raf=0,rainRaf=0,rainLayer=null,rainEpoch=0,rainOn=false,holdRaf=0,holdLayer=null;
+  let bouquetFinished=false;
+  function showBouquet(){
+    habitat.querySelector('[data-re-received]')?.setAttribute('opacity',bouquetFinished?1:0);
+    habitat.querySelector('[data-re-offered]')?.setAttribute('opacity',bouquetFinished?0:1);
+  }
   const handles=piece=>[LYCHEE,COAT,FLOWERS].includes(piece?.dataset.accessoryFamily);
   const coats=()=>[...habitat.querySelectorAll(`[data-accessory-family="${COAT}"]`)];
   function stopHold(){cancelAnimationFrame(holdRaf);holdRaf=0;holdLayer?.remove();holdLayer=null;}
@@ -45,9 +52,9 @@ export function createReunionPlay(habitat,refreshTargets=()=>{}){
       for(const h of hands){
         const body=habitat.querySelector(h.male?'.companion-body':'.worm-body');
         const target=h.piece.querySelector(h.male?'[data-re-offered]':'[data-re-bouquet]');
-        const point=(n,x,y)=>new DOMPoint(x,y).matrixTransform(inverse.multiply(n.getScreenCTM()));
+        const point=(n,x,y)=>run?.rigs?.find(r=>r.body===n)?.point(x,y)||new DOMPoint(x,y).matrixTransform(inverse.multiply(n.getScreenCTM()));
         const busy=habitat.dataset.reunionAction;
-        reach(h.arm,point(body,h.male?289:278,h.male?122:130),point(target,0,h.male?55:12),(busy==='lychee'&&run?.male===h.male)||(h.male&&busy==='flowers')?0:1);
+        reach(h.arm,point(body,h.male?289:278,h.male?122:130),point(target,0,h.male?55:12),(busy==='lychee'&&run?.male===h.male)||(h.male&&(busy==='flowers'||bouquetFinished))?0:1);
       }
       holdRaf=requestAnimationFrame(hold);
     }
@@ -57,7 +64,7 @@ export function createReunionPlay(habitat,refreshTargets=()=>{}){
     cancelAnimationFrame(raf);raf=0;sound.stopVoice();sound.duck(false);if(!run)return;
     const old=run;run=null;
     for(const[n,attrs]of old.saved)for(const[k,v]of Object.entries(attrs))v===null?n.removeAttribute(k):n.setAttribute(k,v);
-    old.effects.remove();delete habitat.dataset.reunionAction;refreshTargets();
+    old.rigs?.forEach(r=>r.restore());old.effects.remove();showBouquet();delete habitat.dataset.reunionAction;refreshTargets();
   }
   function stopRain(){
     rainEpoch++;rainOn=false;cancelAnimationFrame(rainRaf);rainRaf=0;sound.stopRain();rainLayer?.remove();rainLayer=null;
@@ -87,7 +94,7 @@ export function createReunionPlay(habitat,refreshTargets=()=>{}){
     }
     shower(began);
   }
-  function clear(){cancel();stopRain();}
+  function clear(){cancel();stopRain();bouquetFinished=false;showBouquet();}
   function syncCoats(accessory,show){
     if(accessory.querySelector(`[data-accessory-family="${COAT}"]`))show?startRain():stopRain();
     if(accessory.querySelector(`[data-accessory-family="${FLOWERS}"]`))syncHold();
@@ -96,15 +103,17 @@ export function createReunionPlay(habitat,refreshTargets=()=>{}){
     if(!handles(piece)||!piece.isConnected||piece.closest('[hidden]'))return false;
     cancel();
     if(piece.dataset.accessoryFamily===COAT){rainOn?stopRain():startRain();return true;}
+    if(piece.dataset.accessoryFamily===FLOWERS&&bouquetFinished){bouquetFinished=false;showBouquet();syncHold();return true;}
     const root=habitat.querySelector('#worm-species'),art=piece.querySelector('.location-accessory-art');if(!root||!art)return false;
     const kind=piece.dataset.accessoryFamily===LYCHEE?'lychee':'flowers',male=piece.dataset.wormPart==='companion';
     const effects=add(root,'g',{'data-reunion-effects':'','aria-hidden':'true','pointer-events':'none'});
     const action={saved:new Map(),effects,male};run=action;habitat.dataset.reunionAction=kind;sound.duck(true);
+    const rigs=(kind==='flowers'?['primary','companion']:[male?'companion':'primary']).map(part=>workingBody(habitat,part,[COAT]));action.rigs=rigs;
     const save=(n,keys)=>{if(n){const old=action.saved.get(n)||{};for(const k of keys)if(!(k in old))old[k]=n.getAttribute(k);action.saved.set(n,old);}return n;};
     const set=(n,k,v)=>{if(n){save(n,[k]);n.setAttribute(k,v);}};
     const original=(n,k)=>action.saved.get(n)?.[k]??n.getAttribute(k);
-    const point=(n,x,y)=>new DOMPoint(x,y).matrixTransform(root.getScreenCTM().inverse().multiply(n.getScreenCTM()));
-    const inside=(parent,n,x,y)=>new DOMPoint(x,y).matrixTransform(parent.getScreenCTM().inverse().multiply(n.getScreenCTM()));
+    const point=(n,x,y)=>rigs.find(r=>r.body===n)?.point(x,y)||new DOMPoint(x,y).matrixTransform(root.getScreenCTM().inverse().multiply(n.getScreenCTM()));
+    const inside=(parent,n,x,y)=>{const q=point(n,x,y);return new DOMPoint(q.x,q.y).matrixTransform(parent.getScreenCTM().inverse().multiply(root.getScreenCTM()));};
     for(const n of habitat.querySelectorAll('.worm-body,.companion-body,.fitted-headwear-motion')){save(n,['style']);n.style.animationPlayState='paused';}
     // Pin transform origins while descendant bounds move. User sizes/positions stay intact.
     const pieces=kind==='flowers'?[...habitat.querySelectorAll(`.accessory-piece[data-accessory-family="${FLOWERS}"]`)]:[piece];
@@ -135,8 +144,11 @@ export function createReunionPlay(habitat,refreshTargets=()=>{}){
     function tick(now){
       if(run!==action)return;if(document.hidden||!piece.isConnected||piece.closest('[hidden]')){cancel();return;}
       const ms=elapsed=now-began,s=kind==='lychee'?lycheeFrame(ms,male,reduced.matches):flowerFrame(ms,reduced.matches);
-      if(s.done){cancel();return;}
+      if(s.done){if(kind==='flowers')bouquetFinished=true;cancel();return;}
+      const lean=reduced.matches?0:ease(ms/600)*(1-ease((ms-(kind==='flowers'?4800:4200))/650));
+      rigs.forEach((r,i)=>r.set(kind==='flowers'?(i?16:-8)*lean:-6*lean,kind==='flowers'?8*lean:10*lean,(i?7:-6)*lean));
       if(kind==='lychee'){
+        const mouth=inside(art,body,333,73);
         const x=mix(male?2:0,mouth.x,s.eat),y=mix(-3-20*s.lift,mouth.y+15,s.eat),angle=((male?13:-8)+(male&&!reduced.matches?Math.sin(ms/210)*9*(1-s.peel):0))*(1-s.eat);
         set(held,'transform',`translate(${x} ${y}) rotate(${angle})`);
         set(left,'transform',`translate(${-14*s.peel} ${11*s.peel}) rotate(${-52*s.peel} -12 20)`);
@@ -170,7 +182,7 @@ export function createReunionPlay(habitat,refreshTargets=()=>{}){
     }
     raf=requestAnimationFrame(tick);return true;
   }
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){clear();stopHold();}else syncHold();});
-  window.addEventListener('pagehide',()=>{clear();stopHold();});window.addEventListener('resize',clear);reduced.addEventListener('change',clear);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancel();stopRain();stopHold();}else syncHold();});
+  window.addEventListener('pagehide',()=>{clear();stopHold();});window.addEventListener('resize',cancel);reduced.addEventListener('change',()=>{cancel();stopRain();});
   return{handles,start,cancel,clear,reset:clear,syncCoats,syncHold,get active(){return !!run;},get raining(){return rainOn;}};
 }

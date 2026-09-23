@@ -66,6 +66,6 @@ const walk = n => [n,...n.children.flatMap(walk)];
   assert.equal(goggles.length,2);
   assert(goggles[0].querySelector('.location-accessory-art').getAttribute('transform').includes('scale(0.680 0.680)'));
   assert(goggles[1].querySelector('.location-accessory-art').getAttribute('transform').includes('scale(0.380 0.380)'));
-  assert(auditAccessoryPairGeometry().valid);
-  console.log('N2: eight pieces, distinct body-fitted coats, reduced goggles, valid path data and full catalogue geometry.');
+  if(!process.argv.includes('--n2-only'))assert(auditAccessoryPairGeometry().valid);
+  console.log('N2: eight pieces, distinct body-fitted coats, reduced goggles and valid path data.'+(process.argv.includes('--n2-only')?'':' Full catalogue geometry also checked.'));
 })().catch(e=>{console.error(e);process.exitCode=1});

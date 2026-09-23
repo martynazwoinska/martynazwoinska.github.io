@@ -38,6 +38,7 @@ const walk=n=>[n,...n.children.flatMap(walk)];
   assert.deepEqual(all.filter(n=>'data-serving' in n.attrs).map(n=>n.attrs['data-serving']).sort(),['0','1','2']);
   const playSource=fs.readFileSync(path.join(root,'araucania-play.js'),'utf8').replace(/\.\/araucania-art\.js\?v=[^']+/,artURL)
     .replace(/\.\/treasure-pieces\.js\?v=[^']+/,pathToFileURL(path.join(root,'treasure-pieces.js')).href)
+    .replace(/from '(\.\/[^']+)'/g,(_,name)=>"from '"+new URL(name,pathToFileURL(path.join(root,'araucania-play.js'))).href+"'")
     .replaceAll('import.meta.url',JSON.stringify(pathToFileURL(path.join(root,'araucania-play.js')).href));
   const rolling=playSource.split("else if(kind==='roll'){")[1].split("else if(kind==='eat'){")[0];
   assert.ok(!rolling.includes('moveTo('),'Rolling must not carry the food board into the compost area');
@@ -79,7 +80,7 @@ const walk=n=>[n,...n.children.flatMap(walk)];
   assert.equal(actionFor(FOOD,true,false),'eat');assert.equal(actionFor(FOOD,true,true),'eat');assert.equal(actionFor(FOOD,false,false),'roll');
   assert.ok(!playSource.includes("kind==='cut'"),'No intermediate cutting activity');
   assert.equal(envelope(0),0);assert.equal(envelope(1),0);assert.equal(envelope(.5),1);
-  assert.ok(Object.values(durations).every(n=>n>=1000&&n<=4500));
+  assert.ok(Object.values(durations).every(n=>n>=1000&&n<=7000));
   let active=0,peak=0,created=0,fetches=0;const filters=[],gains=[],sources=[];
   class Audio{
     constructor(){created++;this.state='running';this.sampleRate=400;this.destination={};}

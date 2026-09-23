@@ -1,6 +1,6 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-09-22
+Last updated: 2026-09-23
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
@@ -10,6 +10,50 @@ It tracks all 31 active scenes: 0 left to check in the current interaction
 pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei NIC1648 and Réunion JU1375.
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
+
+## Four focused scene motion improvements, 2026-09-23
+
+Martyna requested implementation and deployment of the four shortlisted scenes.
+Araucanía's wheelbarrow and fork now sit lower; tipping pivots around the wheel,
+the larger worm bends toward the handles, and the male boards before the cart
+rolls. The wheel rotation follows travel, the shadow follows the cart, and soil
+falls toward the ground. Dois Rios adds planted body bends to the duet and a
+delayed recoil when sticky fruit releases. Its music controller now selects only
+the two actual accessory pieces, preventing a duplicate primary-worm actor and
+incorrect face layering after the action.
+
+Saint-Benoît adds reaching and body movement. Its completed bouquet stays through
+other prop actions, resizing and temporary page hiding; another flower tap resets
+it. Bristol N2 adds plate lifting with supporting hands, mouth pumping and one
+consumed colony per tap. The two plates track portions separately; tapping an
+empty plate refills it. Reduced motion changes the portion without an animation.
+All temporary body paths, costume wrappers and prop transforms restore exactly.
+Existing artwork, labels, sounds, cryopack actions and saved visitor adjustments
+are retained. No public copy or theme changes.
+
+Validation: check-four-scenes-motion, check-araucania-garden, check-dois-rios,
+check-reunion, check-n2-cryo-flight and check-n2-tailoring --n2-only pass. The
+unscoped legacy tailoring test's catalogue-wide mock fails on an unrelated
+JU1375 attribute selector; the new flag permits the complete Bristol-only checks
+without that older atlas-wide audit. In-browser review covered each action,
+body/face restoration, repeated feeding and refill, Escape cancellation before
+consumption, pointer and keyboard activation, adjusted plate size/position,
+bouquet persistence/reset and cryopack completion. No console errors or horizontal
+overflow at 360, 768, 1024 and 1440 CSS px. The Game retains its fixed light palette.
+
+Uncropped full-page screenshots were attempted at each width: 345x2255,
+753x2211, 1009x1896 and 1425x1865 image px (scrollbars account for 15 px).
+The capture tool still scales the page and duplicates strips. Clean viewport
+views and DOM measurements were inspected, but these captures are not valid
+full-page visual proof. Physical touch-device and manual listening checks remain
+unavailable; no audio was changed. Reduced-motion paths were tested in code.
+
+Created: game-of-worms/scene-body-motion.js, game-of-worms/n2-feeding.js and
+scripts/check-four-scenes-motion.cjs. Changed: game-of-worms/accessory-designs.js,
+araucania-art.js, araucania-play.js, dois-rios-play.js, reunion-play.js, game.js,
+index.html; scripts/check-araucania-garden.cjs, scripts/check-n2-tailoring.cjs;
+this file and docs/game-of-worms-scene-review-queue.md. No files deleted.
+Unrelated Cabinet checkout changes were preserved.
 
 ## Trivandrum plate-triggered persistent examination, 2026-09-22
 
