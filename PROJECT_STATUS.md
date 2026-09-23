@@ -11,6 +11,17 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Bristol N2 feeding clarity, 2026-09-23
+
+The agar-plate action now reaches with the hands before lifting, holds the dish
+below the mouth, transfers one visible portion, and chews three times before
+lowering the plate. The male holds his dish farther forward for mouth clearance.
+Quiet excerpts of the existing `reunion-eat.wav` recording accompany the three
+chewing beats. Each plate keeps its own portion count and visitor placement.
+Sound stops on cancellation, scene changes, hidden pages and resizing.
+No artwork or public copy changed. See
+[verification and file summary](docs/bristol-feeding-verification.md).
+
 ## Four focused scene motion improvements, 2026-09-23
 
 Martyna requested implementation and deployment of the four shortlisted scenes.
