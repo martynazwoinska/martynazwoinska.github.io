@@ -944,9 +944,9 @@ html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) .cabine
 /* Mobile browsing uses the existing collection data and immutable scene assets. */
 .portrait-collection { display: none; }
 /* Open catalogue beside the complete, unchanged scene on spacious screens. */
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   html.is-wide-browsing .cabinet-page:not(.is-scene-interactive) {
-    --collection-width: clamp(320px, 24vw, 400px);
+    --collection-width: clamp(280px, 24vw, 400px);
     --scene-width: min(calc(100vw - var(--collection-width) - 60px), calc((100svh - 100px) * 1905.7456 / 1055.5197));
     grid-template-columns: minmax(0, 1fr) var(--collection-width);
     grid-template-rows: minmax(0, 1fr);
@@ -982,6 +982,12 @@ html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) .cabine
   .is-wide-browsing .portrait-collection .collection-list-items { grid-template-columns: minmax(0, 1fr); }
   .is-wide-browsing .collection-item.has-thumbnail { gap: 12px; }
   .is-wide-browsing .collection-item strong { min-width: 0; overflow-wrap: anywhere; }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .is-wide-browsing .portrait-collection { padding-left: 12px; padding-right: 8px; }
+  .is-wide-browsing .portrait-collection h1 { font-size: 1.6rem; }
+  .is-wide-browsing .portrait-collection .collection-item { padding: 8px; font-size: .9rem; }
+  .is-wide-browsing .collection-item.has-thumbnail { gap: 10px; }
 }
 .is-portrait-browsing,
 .is-portrait-browsing body { overflow-x: hidden; overflow-y: auto; }

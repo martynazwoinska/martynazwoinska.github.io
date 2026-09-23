@@ -47,7 +47,8 @@
 
   const sceneNavigationQuery = window.matchMedia('(pointer: coarse) and (orientation: landscape) and (max-height: 600px)');
   const portraitQuery = window.matchMedia('(orientation: portrait) and (max-width: 980px)');
-  const wideCollectionQuery = window.matchMedia('(min-width: 1280px)');
+  // Include smaller laptops without taking over short touch-only landscape views.
+  const wideCollectionQuery = window.matchMedia('(min-width: 1024px) and (hover: hover), (min-width: 1024px) and (min-height: 601px)');
   const activeScenePointers = new Map();
   const sceneView = { scale: 1, panX: 0, panY: 0 };
   const MAX_SCENE_SCALE = 2.5;
