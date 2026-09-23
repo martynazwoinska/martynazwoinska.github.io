@@ -25,6 +25,7 @@
   const collectionList = document.getElementById('collection-list');
   const portraitList = document.getElementById('portrait-collection-list');
   let portraitExploring = false;
+  let wideCollectionCollapsed = false;
   const dialog = document.getElementById('detail-dialog');
   const detailClose = document.getElementById('detail-close');
   const detailKind = document.getElementById('detail-kind');
@@ -46,6 +47,7 @@
 
   const sceneNavigationQuery = window.matchMedia('(pointer: coarse) and (orientation: landscape) and (max-height: 600px)');
   const portraitQuery = window.matchMedia('(orientation: portrait) and (max-width: 980px)');
+  const wideCollectionQuery = window.matchMedia('(min-width: 1440px)');
   const activeScenePointers = new Map();
   const sceneView = { scale: 1, panX: 0, panY: 0 };
   const MAX_SCENE_SCALE = 2.5;
@@ -196,6 +198,12 @@
     const portrait = portraitQuery.matches;
     if (!portrait) portraitExploring = false;
     const browsing = portrait && !portraitExploring;
+    const wideBrowsing = wideCollectionQuery.matches && !wideCollectionCollapsed;
+    document.documentElement.classList.toggle('is-wide-browsing', wideBrowsing);
+    if (!browsing && !wideBrowsing && document.getElementById('portrait-collection').contains(document.activeElement)) {
+      panelToggle.focus({ preventScroll: true });
+    }
+    if ((portrait || wideCollectionQuery.matches) && panel.open) panel.close();
     cabinetPage.classList.toggle('is-portrait-browsing', browsing);
     document.documentElement.classList.toggle('is-portrait-browsing', browsing);
     // Keep only the three playful objects interactive in the portrait overview.
@@ -203,10 +211,10 @@
     hotspotLayer.querySelectorAll('.hotspot').forEach(button => {
       button.inert = browsing && !button.classList.contains('is-playful');
     });
-    panelToggle.textContent = browsing ? 'Cabinet view' : 'Browse collection';
-    panelToggle.setAttribute('aria-controls', browsing ? 'cabinet-stage' : (portrait ? 'portrait-collection' : 'collection-panel'));
+    panelToggle.textContent = browsing || wideBrowsing ? 'Cabinet view' : 'Browse collection';
+    panelToggle.setAttribute('aria-controls', browsing ? 'cabinet-stage' : (portrait || wideCollectionQuery.matches ? 'portrait-collection' : 'collection-panel'));
     if (portrait) panelToggle.removeAttribute('aria-expanded');
-    else panelToggle.setAttribute('aria-expanded', String(panel.open));
+    else panelToggle.setAttribute('aria-expanded', String(wideBrowsing || panel.open));
     const shouldEnable = sceneNavigationQuery.matches || (portrait && portraitExploring);
     if (shouldEnable === sceneNavigationEnabled) {
       if (shouldEnable) applySceneView(false);
@@ -829,6 +837,12 @@
   reducedMotionQuery.addEventListener('change', clearTapMotion);
 
   panelToggle.addEventListener('click', () => {
+    if (wideCollectionQuery.matches) {
+      wideCollectionCollapsed = !wideCollectionCollapsed;
+      hidePreview();
+      configureSceneNavigation();
+      return;
+    }
     if (portraitQuery.matches) {
       const wasExploring = portraitExploring;
       portraitExploring = !wasExploring;
@@ -843,8 +857,10 @@
   });
   panelClose.addEventListener('click', closePanel);
   panel.addEventListener('close', () => {
-    panelToggle.setAttribute('aria-expanded', 'false');
-    if (lastPanelTrigger instanceof HTMLElement) lastPanelTrigger.focus();
+    if (!portraitQuery.matches && !wideCollectionQuery.matches) {
+      panelToggle.setAttribute('aria-expanded', 'false');
+      if (lastPanelTrigger instanceof HTMLElement) lastPanelTrigger.focus();
+    }
   });
   panel.addEventListener('click', event => {
     if (event.target === panel) closePanel();
