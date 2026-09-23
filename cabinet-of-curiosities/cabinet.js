@@ -47,7 +47,7 @@
 
   const sceneNavigationQuery = window.matchMedia('(pointer: coarse) and (orientation: landscape) and (max-height: 600px)');
   const portraitQuery = window.matchMedia('(orientation: portrait) and (max-width: 980px)');
-  const wideCollectionQuery = window.matchMedia('(min-width: 1440px)');
+  const wideCollectionQuery = window.matchMedia('(min-width: 1280px)');
   const activeScenePointers = new Map();
   const sceneView = { scale: 1, panX: 0, panY: 0 };
   const MAX_SCENE_SCALE = 2.5;

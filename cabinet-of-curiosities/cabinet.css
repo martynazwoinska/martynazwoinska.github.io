@@ -944,9 +944,9 @@ html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) .cabine
 /* Mobile browsing uses the existing collection data and immutable scene assets. */
 .portrait-collection { display: none; }
 /* Open catalogue beside the complete, unchanged scene on spacious screens. */
-@media (min-width: 1440px) {
+@media (min-width: 1280px) {
   html.is-wide-browsing .cabinet-page:not(.is-scene-interactive) {
-    --collection-width: clamp(340px, 24vw, 400px);
+    --collection-width: clamp(320px, 24vw, 400px);
     --scene-width: min(calc(100vw - var(--collection-width) - 60px), calc((100svh - 100px) * 1905.7456 / 1055.5197));
     grid-template-columns: minmax(0, 1fr) var(--collection-width);
     grid-template-rows: minmax(0, 1fr);
