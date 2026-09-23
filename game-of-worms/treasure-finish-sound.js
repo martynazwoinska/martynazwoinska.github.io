@@ -1,4 +1,4 @@
-// An original, quiet three-second musical finish. No external sound assets.
+// An original, quiet five-second musical finish. No external sound assets.
 export function createHeartFinishSound(isActive=()=>true){
  let context=null,timer=0,watch=0;
  function stop(){
@@ -12,7 +12,7 @@ export function createHeartFinishSound(isActive=()=>true){
   if(!Audio)return;
   try{
    const requested=performance.now(),ctx=context=new Audio();
-   timer=setTimeout(stop,kind==='heartbeat'?1000:3200);
+   timer=setTimeout(stop,kind==='heartbeat'?1000:5400);
    watch=setInterval(()=>{if(document.hidden||!isActive())stop();},100);
    // Resume directly inside the final placement gesture. Never replay late.
    ctx.resume().then(()=>{
@@ -32,8 +32,10 @@ export function createHeartFinishSound(isActive=()=>true){
     // A glass-like strike, two cushioned low notes, then a warm major-sixth chord.
     note(1046.5,0,.75,.055);note(2093,0,.32,.012);note(3139.5,0,.2,.004);
     note(104.65,.96,.28,.11,.025,78.4);note(98,1.56,.3,.085,.025,73.4);
-    [261.63,329.63,392,440].forEach((hz,i)=>note(hz,1.85+i*.045,1,.025,.11));
-    note(1568,2.02,.7,.013,.016);
+    [261.63,329.63,392,440].forEach((hz,i)=>note(hz,1.85+i*.045,2,.025,.11));
+    note(1568,2.02,1.1,.013,.016);
+    // A softer answering phrase lets the celebration settle into a gentle decay.
+    [659.25,783.99,1046.5].forEach((hz,i)=>note(hz,3.05+i*.27,1.55,.012-i*.002,.035));
 
    }).catch(()=>{if(context===ctx)stop();});
   }catch{stop();}

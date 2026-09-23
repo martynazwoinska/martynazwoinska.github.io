@@ -41,7 +41,7 @@ import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
-import {createTreasureHunt} from './treasure-hunt.js?v=20260922-puzzle-large-1';
+import {createTreasureHunt} from './treasure-hunt.js?v=20260923-puzzle-finish-1';
 
 const t = createGameTranslator(document.documentElement.lang);
 

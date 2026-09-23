@@ -41,7 +41,7 @@
 .gem-tools{justify-content:center}
 .gem-tools button{border-color:#bbaa7d;border-radius:12px;background:#fffaf0}
 .gem-result:empty{display:none}
-.gem-assembly.is-complete .gem-puzzle-help,.gem-assembly.is-complete [data-rotate]{display:none}
+.gem-assembly.is-complete .gem-puzzle-help{visibility:hidden}
 .gem-assembly.is-complete .gem-result{max-width:none;text-align:center;padding:12px 14px;border:1px solid #cfb978;border-radius:14px;background:#edf2df;color:#255748}
 @media(max-width:520px){.gem-tray{gap:6px}.gem-tray-slot{min-height:90px}.gem-tray-slot svg{width:54px;height:54px}.gem-board{width:100%;border-radius:16px}.gem-levels{padding:4px!important;gap:4px}}
 
@@ -100,9 +100,17 @@
 .gem-tools button,.treasure-restart{border:1px solid #b9b394!important;border-radius:9px;background:#fffaf0!important;padding:8px 16px;text-decoration:none}
 .gem-tools button:hover,.treasure-restart:hover{background:#e4ece1!important}
 .treasure-restart{margin-top:12px}
-.gem-board.is-solved [data-heart-assembly]{transform-box:view-box;transform-origin:50% 50%!important}
+.gem-board.is-solved [data-heart-assembly]{transform-box:view-box}
 
 @media(max-width:520px){.treasure-dialog.is-chest{padding-inline:10px}.treasure-dialog.is-chest .treasure-content{scrollbar-gutter:auto;padding-right:0}}
 
 .treasure-dialog.is-chest .treasure-header{align-items:center;gap:12px;padding-bottom:10px;border-bottom:1px solid #d9c799}
 .treasure-dialog.is-chest .treasure-header>.gem-tray{flex:1;min-width:0;margin:0;padding:0;border:0}
+
+/* Completion keeps the same board, caption slot and controls in place. */
+.gem-caption{display:grid;align-items:center;text-align:center}
+.gem-caption>p,.gem-assembly.is-complete .gem-caption>.gem-result{grid-area:1/1;max-width:none;margin:10px 0;padding:0;border:0;background:transparent;font-size:13px;line-height:1.4}
+.gem-restart-row{display:flex;align-items:center;justify-content:center;gap:8px;max-width:100%}
+.gem-restart-row .treasure-restart{margin:0}
+.gem-tools button{font-size:13px;white-space:nowrap}
+@media(max-width:520px){.gem-tools{gap:8px}.gem-tools button{padding:8px 11px}}

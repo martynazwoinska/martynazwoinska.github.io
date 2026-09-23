@@ -11,6 +11,14 @@ pass and 31 completed, including Mauritius JU2909, Guadeloupe NIC203, New Taipei
 Do not repeat whole-atlas visual reviews. Check the next queued scene and update
 its entry. "To check" is not a judgement that a scene needs a redesign.
 
+## Puzzle completion continuity, 2026-09-23
+
+Completion now keeps the playing board's crop, frame and caption slot stable.
+The finish sound decays over about 5.2 seconds. Start again and Restart gem hunt
+share one row. The existing heartbeat interaction and restart confirmation remain.
+No public copy or gem artwork changed. See
+[checks and file summary](docs/puzzle-completion-continuity.md).
+
 ## Bristol N2 feeding clarity, 2026-09-23
 
 The agar-plate action now reaches with the hands before lifting, holds the dish

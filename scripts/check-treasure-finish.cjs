@@ -29,16 +29,17 @@ const path=require('node:path');
  }
  const {createHeartFinishSound}=await load('treasure-finish-sound.js');
  const realTimeout=global.setTimeout,realInterval=global.setInterval;let expiry,watch;
- global.setTimeout=(fn,ms)=>{assert.ok([1000,3200].includes(ms));expiry=fn;return 1;};global.clearTimeout=()=>{};
+ global.setTimeout=(fn,ms)=>{assert.ok([1000,5400].includes(ms));expiry=fn;return 1;};global.clearTimeout=()=>{};
  global.setInterval=fn=>{watch=fn;return 2;};global.clearInterval=()=>{};
  let voices=[],contexts=[];
  class Param{setValueAtTime(){}linearRampToValueAtTime(){}exponentialRampToValueAtTime(){}}
  class Audio{constructor(){this.currentTime=10;this.state='running';contexts.push(this);}resume(){return Promise.resolve();}close(){this.closed=true;return Promise.resolve();}createGain(){return{gain:new Param(),connect(){},disconnect(){}};}createOscillator(){const v={frequency:new Param(),connect(){},disconnect(){},start(t){this.startAt=t;},stop(t){this.stopAt=t;}};voices.push(v);return v;}}
  global.AudioContext=Audio;global.document.hidden=false;let active=true;const sound=createHeartFinishSound(()=>active);
- sound.play();await Promise.resolve();assert.equal(voices.length,10);assert.ok(voices.every(v=>v.stopAt>v.startAt&&v.stopAt<=13.1),'all voices have a scheduled finite release');
+ sound.play();await Promise.resolve();assert.equal(voices.length,13);assert.ok(voices.every(v=>v.stopAt>v.startAt&&v.stopAt<=15.3),'all voices have a scheduled finite release');
  assert.ok(voices.some(v=>Math.abs(v.startAt-10.96)<.001)&&voices.some(v=>Math.abs(v.startAt-11.56)<.001),'low notes coincide with heart pulses');
+ assert.ok(voices.some(v=>v.stopAt>15),'the answering phrase lasts beyond five seconds');
  expiry();assert.ok(contexts.at(-1).closed,'context closes after the phrase');
- sound.play();sound.stop();await Promise.resolve();assert.equal(voices.length,10,'closing before resume prevents late audio');
+ sound.play();sound.stop();await Promise.resolve();assert.equal(voices.length,13,'closing before resume prevents late audio');
  sound.play();await Promise.resolve();active=false;watch();assert.ok(contexts.at(-1).closed,'closing or replacing the board cancels sound');
  const count=contexts.length;global.document.hidden=true;sound.play();assert.equal(contexts.length,count,'hidden page stays quiet');
  global.document.hidden=false;active=true;voices=[];sound.play('heartbeat');await Promise.resolve();assert.equal(voices.length,2);assert.ok(voices.every(v=>v.stopAt<11),'heartbeat ends in less than a second');sound.stop();

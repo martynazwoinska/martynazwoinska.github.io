@@ -1,6 +1,6 @@
 import {svg,drawGem,revealTreasure,pieces} from './treasure-pieces.js?v=20260920-discovery-2';
 import {treasures,SAVE_KEY,parseSave,emptySave,mergeHunts,restartHunt} from './treasure-model.js?v=20260921-motion-1';
-import {mountPuzzle} from './treasure-puzzle.js?v=20260922-puzzle-fit-2';
+import {mountPuzzle} from './treasure-puzzle.js?v=20260923-puzzle-finish-1';
 import {gemLanding,gemDropFrames} from './treasure-motion.js?v=20260921-motion-1';
 import {drawCanopyCache} from './treasure-discoveries.js?v=20260920-discovery-2';
 
@@ -111,7 +111,7 @@ export function createTreasureHunt(habitat){
   if(state.found.length===8){
    puzzleUI=mountPuzzle(content,state,save,announce);
   }
-  const restart=document.createElement('button');restart.type='button';restart.className='treasure-restart';restart.textContent='Restart gem hunt';restart.setAttribute('aria-expanded','false');restart.disabled=!state.found.length&&!Object.keys(state.revealed).length;restart.addEventListener('click',()=>{if(confirmingRestart)cancelRestart();else confirmRestart();});content.append(restart);
+  const restart=document.createElement('button');restart.type='button';restart.className='treasure-restart';restart.textContent='Restart gem hunt';restart.setAttribute('aria-expanded','false');restart.disabled=!state.found.length&&!Object.keys(state.revealed).length;restart.addEventListener('click',()=>{if(confirmingRestart)cancelRestart();else confirmRestart();});(puzzleUI?.actions||content).append(restart);
   const note=document.createElement('p');note.className='treasure-save-note';content.append(note);save();open();
  }
  function refreshHunt(){mount(sceneSpecies,scenePlace);if(dialog.open)chest();}
@@ -121,7 +121,7 @@ export function createTreasureHunt(habitat){
  }
  function confirmRestart(){
   const trigger=dialog.querySelector('.treasure-restart');confirmingRestart=true;
-  const content=document.createElement('div');content.className='treasure-restart-confirmation';content.id='treasure-restart-confirmation';content.setAttribute('role','group');content.setAttribute('aria-labelledby','treasure-restart-question');trigger.after(content);trigger.setAttribute('aria-expanded','true');trigger.setAttribute('aria-controls',content.id);
+  const content=document.createElement('div');content.className='treasure-restart-confirmation';content.id='treasure-restart-confirmation';content.setAttribute('role','group');content.setAttribute('aria-labelledby','treasure-restart-question');(trigger.closest('.gem-tools')||trigger).after(content);trigger.setAttribute('aria-expanded','true');trigger.setAttribute('aria-controls',content.id);
   const explanation=document.createElement('p');explanation.id='treasure-restart-question';explanation.textContent='Hide all eight gems again and clear your puzzle progress?';content.append(explanation);
   const actions=document.createElement('div');actions.className='treasure-restart-actions';
   const keep=document.createElement('button');keep.type='button';keep.textContent='Keep my collection';keep.addEventListener('click',cancelRestart);
