@@ -1,5 +1,23 @@
 # Uppsala chocolate map: v113 approved release
 
+## Labys, Chokladshopen and Bars of Chocolate addition, 18 October 2026
+
+Labys Choklad was already present as a Swedish bean-to-bar maker in Hedemora, so no duplicate maker was created. Added Labys Choklad to Arrenius & Company's Uppsala selection. Arrenius & Company's [supplier-logo page](https://www.arreniuscompany.com/produktloggor) includes its `laby-praliner.png` logo, and the official [Labys shop and contact page](https://labys.se/butiken-kontakt) confirms its Hedemora shop and chocolate factory.
+
+Added [Chokladshopen](https://chokladshopen.se/) to Online shops, with separate links to its [chocolate-bar shop](https://chokladshopen.se/collections/chokladkakor) and [brand directory](https://chokladshopen.se/pages/varumarken). The public selection is intentionally limited to names that fit the Cabinet's existing bean-to-bar and fine-chocolate scope: Amedei, Cluizel, Malmö Chokladfabrik, Marou, Tobago Estate, Valrhona, Venchi, WermlandsChoklad and Willie's Cacao. WermlandsChoklad normalizes Chokladshopen's legacy Rawchokladfabriken category to the maker's current name; current product titles in that category use WermlandsChoklad. Baking-equipment brands, standard industrial couverture and generic confectionery remain excluded consistently with the existing map policy.
+
+Added [Bars of Chocolate](https://barsofchocolate.se/) to Online shops as a subscription service rather than a fixed-brand retailer. Its website describes a rotating box of three small-scale bean-to-bar chocolates from around the world, with a Swedish-made bar included in each box. Because the contents rotate and no stable brand catalogue is offered, the Cabinet does not display an invented brand list.
+
+Exact English-only public strings added or changed:
+
+- Arrenius & Company: “Brands sold: Chocolate Tree, Labys Choklad, Storm & Bille, WermlandsChoklad.”
+- Chokladshopen: “Brands sold: Amedei, Cluizel, Malmö Chokladfabrik, Marou, Tobago Estate, Valrhona, Venchi, WermlandsChoklad, Willie’s Cacao.”
+- Bars of Chocolate: “A rotating bean-to-bar subscription box with one Swedish-made bar and craft chocolate from elsewhere in the world.”
+
+The Cabinet map is intentionally English-only and has no Swedish or Polish translation layer. Proper names and URLs therefore do not introduce unreviewed translated copy. Martyna approved all three public strings before deployment on 18 October 2026. This change updates map data, its cache key and this research record only; no artwork, coordinates, interaction code or Game files change.
+
+Validation passed in Chrome at 360, 768, 1024 and 1440 pixels in both light and dark themes. The exact Arrenius, Chokladshopen and Bars of Chocolate strings, all three Chokladshopen links and the Bars of Chocolate website link were checked in the rendered dialog. All eight cases passed focus restoration after Escape, reduced-motion behavior, JavaScript/page-error checks and horizontal-overflow checks. Uncropped full-page captures measured 360 × 4629, 768 × 3033, 1024 × 800 and 1440 × 1000 pixels in each theme; the changed dialog was also captured and visually reviewed at every size and theme. Physical devices and Safari remain untested.
+
 ## Release approval, 8 September 2026
 
 Martyna explicitly requested publication of the current v113 drawer/map and shop selections, including Small Island Chocolates, before international-shop work. The normal Cabinet URL now enables the exact approved feature without requiring a prototype parameter. The entries below and existing English-only wording are unchanged. Earlier preview status notes below are historical; deployment verification is recorded separately. The international shops and geographic grouping are not part of this release.
