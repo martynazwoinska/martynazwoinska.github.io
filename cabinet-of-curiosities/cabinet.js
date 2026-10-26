@@ -226,7 +226,8 @@
     cabinetPage.classList.toggle('is-scene-interactive', shouldEnable);
     sceneControls.hidden = !shouldEnable;
     cabinetStage.tabIndex = shouldEnable ? 0 : -1;
-    exploreHint.textContent = shouldEnable ? copy.scene.touchHint : copy.scene.defaultHint;
+    exploreHint.hidden = !shouldEnable;
+    if (shouldEnable) exploreHint.textContent = copy.scene.touchHint;
     activeScenePointers.clear();
     dragStart = null;
     pinchStart = null;

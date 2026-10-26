@@ -22,7 +22,6 @@
       zoomOut: 'Zoom out',
       zoomIn: 'Zoom in',
       resetView: 'Reset view',
-      defaultHint: 'Select an object, or browse the collection by name.',
       touchHint: 'Drag, pinch to zoom, tap an object.',
       viewScale: percent => `View ${percent}%.`
     }),
