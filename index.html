@@ -984,28 +984,50 @@
     /* contact */
     #contact > h2 { margin-bottom: 20px; }
     .contact-box {
-      --contact-photo-size: clamp(184px, 22vw, 232px);
-      position: relative; min-height: 204px;
+      --contact-place-size: clamp(150px, 19vw, 218px);
+      --contact-place-overlap: clamp(38px, 5vw, 56px);
+      --contact-place-stagger: clamp(8px, 1vw, 12px);
+      --contact-place-width: calc(var(--contact-place-size) + var(--contact-place-size) - var(--contact-place-overlap));
+      position: relative;
+      min-height: calc(var(--contact-place-size) + var(--contact-place-stagger) + 28px);
       display: grid;
-      grid-template-columns: minmax(0, 540px) var(--contact-photo-size);
+      grid-template-columns: minmax(0, 540px) var(--contact-place-width);
       grid-template-rows: auto auto;
       column-gap: clamp(24px, 3vw, 36px); align-items: start;
-      width: min(100%, 820px); padding: 8px 0 10px;
+      width: min(100%, 940px); padding: 8px 0 10px;
     }
-    .contact-illustration-frame {
+    .contact-place-pair {
       position: relative; grid-column: 2; grid-row: 1 / span 2;
-      width: var(--contact-photo-size); height: var(--contact-photo-size);
+      width: var(--contact-place-width);
+      height: calc(var(--contact-place-size) + var(--contact-place-stagger) + 28px);
+      margin: 0;
+    }
+    .contact-place-frame {
+      position: absolute; top: 0;
+      width: var(--contact-place-size); height: var(--contact-place-size);
       overflow: hidden; border-radius: 50%;
-      background: url("uppsala-contact.png") left center / auto 100% no-repeat;
-      border: 1px solid color-mix(in srgb, var(--accent-gold) 60%, var(--border));
+      background: var(--bg-soft);
+      border: 2px solid color-mix(in srgb, var(--accent-gold) 72%, var(--border));
       box-shadow: 0 8px 22px color-mix(in srgb, var(--text) 8%, transparent);
     }
-    .contact-illustration {
+    .contact-place-frame--uppsala { left: 0; z-index: 1; }
+    .contact-place-frame--karolinska {
+      top: var(--contact-place-stagger); right: 0; z-index: 2;
+    }
+    .contact-place-image {
       display: block; width: 100%; height: 100%;
-      object-fit: cover; object-position: left center;
-      transform: translateY(7px);
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 10px, #000 100%);
-      mask-image: linear-gradient(to bottom, transparent 0, #000 10px, #000 100%);
+      object-fit: cover;
+    }
+    .contact-place-image--uppsala { object-position: left center; }
+    .contact-place-image--karolinska { object-position: 56% center; }
+    .contact-place-credit {
+      position: absolute; right: 0; bottom: 0; left: 0;
+      color: var(--text-faint); font-size: .66rem; line-height: 1.25; text-align: center;
+      white-space: nowrap;
+    }
+    .contact-place-credit a {
+      color: inherit; text-decoration-color: color-mix(in srgb, currentColor 55%, transparent);
+      text-underline-offset: 2px;
     }
     .contact-box p {
       grid-column: 1; grid-row: 1;
@@ -1053,12 +1075,12 @@
     }
     @media (min-width: 621px) {
       #contact > h2 {
-        width: min(100%, 820px);
+        width: min(100%, 940px);
         margin-inline: auto;
       }
       .contact-box {
-        grid-template-columns: minmax(0, 1fr) var(--contact-photo-size);
-        width: min(100%, 820px);
+        grid-template-columns: minmax(0, 1fr) var(--contact-place-width);
+        width: min(100%, 940px);
         margin-inline: auto;
       }
       #contact .links {
@@ -1084,12 +1106,16 @@
         display: flex; flex: 0 0 100%; gap: 10px;
       }
     }
-    @media (max-width: 620px) {
+    @media (max-width: 700px) {
       #contact > h2 { margin-bottom: 24px; }
-      .contact-box { display: block; min-height: 0; width: 100%; padding: 218px 0 0; }
-      .contact-illustration-frame {
+      .contact-box {
+        --contact-place-size: 154px;
+        --contact-place-overlap: 38px;
+        --contact-place-stagger: 8px;
+        display: block; min-height: 0; width: 100%; padding: 200px 0 0;
+      }
+      .contact-place-pair {
         position: absolute; top: 0; left: 50%; right: auto;
-        width: 194px; height: 194px;
         transform: translateX(-50%);
       }
       #contact .links { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
@@ -1615,17 +1641,35 @@
   <section id="contact" class="wrap">
     <h2>Contact</h2>
     <div class="contact-box">
-      <div class="contact-illustration-frame">
-        <img
-          class="contact-illustration"
-          src="uppsala-contact.png"
-          width="410"
-          height="273"
-          loading="lazy"
-          decoding="async"
-          alt="Uppsala Cathedral at sunset, reflected in the river"
-        />
-      </div>
+      <figure class="contact-place-pair">
+        <div class="contact-place-frame contact-place-frame--uppsala">
+          <img
+            class="contact-place-image contact-place-image--uppsala"
+            src="uppsala-contact.png"
+            width="410"
+            height="273"
+            loading="lazy"
+            decoding="async"
+            alt="Uppsala Cathedral at sunset, reflected in the river"
+          />
+        </div>
+        <div class="contact-place-frame contact-place-frame--karolinska">
+          <img
+            class="contact-place-image contact-place-image--karolinska"
+            src="assets/contact/aula-medica-pelle-sten-contact.webp"
+            width="900"
+            height="600"
+            loading="lazy"
+            decoding="async"
+            alt="The faceted glass exterior of Aula Medica at Karolinska Institutet"
+          />
+        </div>
+        <figcaption class="contact-place-credit">
+          <a href="https://commons.wikimedia.org/wiki/File:Aula_Medica,_Karolinska_Institutet_(8960275188).jpg" target="_blank" rel="noopener">Aula Medica: Pelle Sten</a>,
+          <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="license noopener">CC BY 2.0</a>,
+          <span class="contact-aula-crop">cropped</span>
+        </figcaption>
+      </figure>
       <p class="contact-address">
         Karolinska Institutet<br />
         University Library<br />
@@ -1685,7 +1729,7 @@
     </div>
   </footer>
 
-  <script src="home-i18n.js?v=20261107-expertise-lines"></script>
+  <script src="home-i18n.js?v=20261107-contact-pair"></script>
   <script src="home.js?v=20261107-ki-contact"></script>
 </body>
 </html>
