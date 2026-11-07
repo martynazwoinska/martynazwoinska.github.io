@@ -763,6 +763,7 @@
     /* .wrap sets padding:0 24px, so target section.wrap to add vertical rhythm */
     section.wrap { padding-top: 52px; padding-bottom: 52px; }
     #about { padding-top: 44px; }
+    #about > p:last-child { margin-bottom: 0; }
     #about::before, #about::after, #about > h2::before { display: none; }
     #research { padding-bottom: 34px; }
     /* Research projects, publications and people form one continuous chapter. */
@@ -792,7 +793,10 @@
     .research-subsection > h2::before {
       display: none;
     }
-    @media (max-width: 620px) { #about { padding-top: 22px; } }
+    @media (max-width: 620px) {
+      section.wrap:where(:not(#contact)) { padding-top: 42px; padding-bottom: 42px; }
+      #about { padding-top: 22px; }
+    }
     section h2 { color: var(--text); font-size: 2.45rem; font-weight: 700; margin: 0 0 24px; }
     @media (max-width: 620px) { section h2 { font-size: 2.2rem; } }
     .about p { color: var(--text-soft); }
@@ -922,7 +926,7 @@
       .folio-entry .cdesc { margin-top: 4px; }
     }
     .students-subsection {
-      position: relative; margin-top: 50px; padding-top: 43px;
+      position: relative; margin-top: 35px; padding-top: 35px;
     }
     .students-subsection::before {
       content: ""; position: absolute; top: 0; left: 0;
@@ -949,7 +953,7 @@
       -webkit-text-stroke: var(--display-stroke) currentColor; paint-order: stroke fill;
     }
     @media (max-width: 620px) {
-      .students-subsection { margin-top: 42px; padding-top: 37px; }
+      .students-subsection { margin-top: 30px; padding-top: 30px; }
       .students-subsection h3 { font-size: 1.7rem; }
     }
 
