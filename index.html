@@ -101,7 +101,6 @@
       --section-divider-emerald: var(--ornament-emerald);
       --section-divider-gold: color-mix(in srgb, var(--accent-gold) 90%, var(--text) 10%);
       --display-stroke: .24px;
-      --hero-statement-stroke: .52px;
       --hero-name-stroke: .36px;
       --hero-mobile-name-stroke: .5px;
       --worm-face: #4a3027;
@@ -116,7 +115,6 @@
       :root:not([data-theme="light"]) {
         --hero-avatar-shadow: rgba(5, 15, 28, .3);
         --display-stroke: .14px;
-        --hero-statement-stroke: .34px;
         --hero-name-stroke: .22px;
         --hero-mobile-name-stroke: .32px;
       }
@@ -124,14 +122,12 @@
     :root[data-theme="dark"] {
       --hero-avatar-shadow: rgba(5, 15, 28, .3);
       --display-stroke: .14px;
-      --hero-statement-stroke: .34px;
       --hero-name-stroke: .22px;
       --hero-mobile-name-stroke: .32px;
     }
     :root[data-theme="light"] {
       --hero-avatar-shadow: rgba(27, 43, 50, .16);
       --display-stroke: .24px;
-      --hero-statement-stroke: .52px;
       --hero-name-stroke: .36px;
       --hero-mobile-name-stroke: .5px;
     }
@@ -546,25 +542,13 @@
     .hero-copy {
       min-width: 0; grid-column: 2; grid-row: 1; text-align: left;
     }
-    .hero-statement {
-      max-width: 700px; margin: 0;
-      color: var(--text); font-family: var(--display); font-size: clamp(3.15rem, 4.25vw, 3.55rem);
-      font-weight: 700; line-height: .98; letter-spacing: -.018em;
-      -webkit-text-stroke: var(--hero-statement-stroke) currentColor;
-      paint-order: stroke fill;
-    }
-    .hero-statement-line { display: block; white-space: nowrap; }
     .hero-expertise {
-      margin: 9px 0 0; color: var(--accent);
-      font-size: 1.08rem; font-weight: 600; line-height: 1.45;
+      margin: 12px 0 0; max-width: 50ch; color: var(--accent);
+      font-size: 1.08rem; font-weight: 500; line-height: 1.45;
     }
-    .hero-expertise-line { display: block; white-space: nowrap; }
-    .hero-skill { display: inline; }
-    .hero-skill-group { display: inline; }
-    .hero-skill-separator { white-space: pre; }
     .hero-name {
-      margin: 12px 0 0; color: var(--text); font-family: var(--display);
-      font-size: clamp(1.52rem, 1.75vw, 1.68rem); font-weight: 700;
+      margin: 0; color: var(--text); font-family: var(--display);
+      font-size: clamp(2.7rem, 3.8vw, 3.35rem); font-weight: 700;
       line-height: 1.06; letter-spacing: .004em;
       -webkit-text-stroke: var(--hero-name-stroke) currentColor; paint-order: stroke fill;
     }
@@ -572,8 +556,8 @@
     .hero-role {
       margin: 9px 0 0; font-size: 1rem; font-weight: 600; line-height: 1.25;
     }
-    .hero-role-title { display: block; color: var(--text-soft); }
-    .hero-role-organization { display: block; margin-top: 1px; color: var(--text-soft); font-weight: 500; }
+    .hero-role-title { display: inline; white-space: nowrap; color: var(--text-soft); }
+    .hero-role-organization { display: inline; white-space: nowrap; color: var(--text-soft); font-weight: 500; }
     .hero-art {
       display: block; max-width: none;
       pointer-events: none; user-select: none;
@@ -639,8 +623,7 @@
         transform: translateX(-16px);
       }
       .avatar { width: 172px; height: 172px; }
-      .hero-statement { font-size: clamp(2.55rem, 5vw, 3.15rem); }
-      .hero-name { font-size: clamp(1.38rem, 2.35vw, 1.52rem); }
+      .hero-name { font-size: clamp(2.4rem, 4.4vw, 3rem); }
       .hero-expertise { font-size: clamp(1rem, 1.68vw, 1.08rem); }
       .hero-lower { right: 48px; bottom: 12px; width: 200px; }
     }
@@ -652,8 +635,7 @@
         transform: translateX(-8px);
       }
       .avatar { width: 146px; height: 146px; }
-      .hero-statement { font-size: clamp(2.55rem, 5vw, 3.15rem); }
-      .hero-name { margin-top: 11px; font-size: clamp(1.3rem, 2.625vw, 1.38rem); }
+      .hero-name { margin-top: 0; font-size: clamp(2.2rem, 4.8vw, 2.65rem); }
       .hero-expertise { margin-top: 10px; font-size: clamp(.94rem, 1.9vw, 1rem); }
       .hero-lower { right: 24px; bottom: 10px; width: 174px; }
     }
@@ -670,7 +652,6 @@
         width: clamp(184px, 54vw, 204px);
         margin: 0;
       }
-      .hero-statement { display: none; }
       .hero-name {
         order: 1; margin: 0; color: var(--text);
         font-size: clamp(3.4rem, 8vw, 3.5rem);
@@ -682,24 +663,11 @@
       }
       .hero-name-line { display: block; }
       .hero-expertise {
-        order: 3; width: 100%; max-width: none; margin: 17px auto 0;
-        display: grid; justify-items: center; row-gap: 3px;
+        order: 3; width: 100%; max-width: 31ch; margin: 17px auto 0;
+        display: block;
         color: var(--accent);
-        font-size: 1.12rem; font-weight: 700;
+        font-size: 1.06rem; font-weight: 500;
         line-height: 1.38; letter-spacing: -.016em;
-      }
-      .hero-expertise-line {
-        margin: 0 !important;
-        white-space: nowrap;
-      }
-      .hero-expertise-line--identity { grid-row: 1; }
-      .hero-expertise-line--fields { display: contents; }
-      .hero-skill-group { grid-row: 2; white-space: nowrap; }
-      .hero-skill--ai { grid-row: 3; white-space: nowrap; }
-      .hero-expertise-line--fields > .hero-skill-separator {
-        position: absolute; width: 1px; height: 1px; margin: -1px;
-        overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
-        white-space: nowrap;
       }
     }
     @media (max-width: 620px) {
@@ -714,24 +682,13 @@
       }
       .hero-expertise {
         margin-top: 19px;
-        font-size: clamp(.96rem, 4.4vw, 1.12rem); font-weight: 700;
+        font-size: 1rem; font-weight: 500;
       }
     }
     @media (max-width: 350px) {
       .hero { padding-right: 10px; padding-bottom: 140px; padding-left: 10px; }
       .hero-lower { right: 18px; bottom: 0; width: 184px; margin: 0; }
-      .hero-expertise { font-size: .95rem; row-gap: 3px; }
-      .hero-expertise-line--identity { display: contents; }
-      .hero-expertise-line--identity .hero-skill { white-space: nowrap; }
-      .hero-skill--identity { grid-row: 1; }
-      .hero-skill--experimental { grid-row: 2; }
-      .hero-expertise-line--identity .hero-skill-separator {
-        position: absolute; width: 1px; height: 1px; margin: -1px;
-        overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
-        white-space: nowrap;
-      }
-      .hero-skill-group { grid-row: 3; }
-      .hero-skill--ai { grid-row: 4; }
+      .hero-expertise { font-size: .95rem; }
       .hero-name { font-size: clamp(2.7rem, 14.2vw, 3.4rem); }
     }
     @media (max-width: 759.98px) {
@@ -1206,10 +1163,9 @@
   <div class="wrap hero">
     <div class="hero-grid">
       <div class="hero-copy">
-        <p class="hero-statement"><span class="hero-statement-line">From lab to code,</span><span class="hero-statement-line">from ideas to execution</span></p>
         <h1 class="hero-name"><span class="hero-name-line">Martyna</span> <span class="hero-name-line">Katarzyna</span> <span class="hero-name-line">Zwoińska</span></h1>
-        <p class="hero-role"><span class="hero-role-title">Data Steward</span><span class="hero-role-organization">Karolinska Institutet</span></p>
-        <p class="hero-expertise"><span class="hero-expertise-line hero-expertise-line--identity"><span class="hero-skill hero-skill--identity">Evolutionary biology</span><span class="hero-skill-separator"> </span><span class="hero-skill hero-skill--experimental">Experimental research</span></span><span class="hero-expertise-line hero-expertise-line--fields"><span class="hero-skill-group"><span class="hero-skill hero-skill--genomics">Genomics</span><span class="hero-skill-separator"> </span><span class="hero-skill hero-skill--data">Data analysis</span></span><span class="hero-skill-separator"> </span><span class="hero-skill hero-skill--ai">Applied AI</span></span></p>
+        <p class="hero-role"><span class="hero-role-title">Data Steward</span>, <span class="hero-role-organization">Karolinska Institutet</span></p>
+        <p class="hero-expertise">Evolutionary biology, genomics, data analysis and applied AI</p>
       </div>
       <div class="avatar" role="img" aria-label="Martyna K. Zwoińska">
         <span class="avatar-mono" aria-hidden="true">MZ</span>
@@ -1732,7 +1688,7 @@
     </div>
   </footer>
 
-  <script src="home-i18n.js?v=20261107-natural-about-copy"></script>
+  <script src="home-i18n.js?v=20261107-intro-clean"></script>
   <script src="home.js?v=20261107-ki-contact"></script>
 </body>
 </html>
