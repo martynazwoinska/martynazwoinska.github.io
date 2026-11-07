@@ -552,7 +552,7 @@
       line-height: 1.06; letter-spacing: .004em;
       -webkit-text-stroke: var(--hero-name-stroke) currentColor; paint-order: stroke fill;
     }
-    .hero-name-line { display: inline; }
+    .hero-name-line { display: block; white-space: nowrap; }
     .hero-role {
       margin: 9px 0 0; font-size: 1rem; font-weight: 600; line-height: 1.25;
     }
@@ -654,14 +654,13 @@
       }
       .hero-name {
         order: 1; margin: 0; color: var(--text);
-        font-size: clamp(3.4rem, 8vw, 3.5rem);
-        line-height: .9; letter-spacing: -.014em;
+        font-size: clamp(2rem, 9vw, 3.4rem);
+        line-height: 1.04; letter-spacing: -.014em;
         -webkit-text-stroke: var(--hero-mobile-name-stroke) currentColor;
       }
       .hero-role {
         order: 2; margin-top: 13px; font-size: 1rem; line-height: 1.28;
       }
-      .hero-name-line { display: block; }
       .hero-expertise {
         order: 3; width: 100%; max-width: 31ch; margin: 17px auto 0;
         display: block;
@@ -677,9 +676,6 @@
         width: clamp(184px, 54vw, 198px);
         margin: 0;
       }
-      .hero-name {
-        font-size: clamp(2.9rem, 14.2vw, 3.4rem);
-      }
       .hero-expertise {
         margin-top: 19px;
         font-size: 1rem; font-weight: 500;
@@ -689,7 +685,7 @@
       .hero { padding-right: 10px; padding-bottom: 140px; padding-left: 10px; }
       .hero-lower { right: 18px; bottom: 0; width: 184px; margin: 0; }
       .hero-expertise { font-size: .95rem; }
-      .hero-name { font-size: clamp(2.7rem, 14.2vw, 3.4rem); }
+      .hero-name { font-size: clamp(1.8rem, 9vw, 2rem); }
     }
     @media (max-width: 759.98px) {
       .hero-lower { right: clamp(26px, calc(60% - 220px), 160px); }
@@ -1163,7 +1159,7 @@
   <div class="wrap hero">
     <div class="hero-grid">
       <div class="hero-copy">
-        <h1 class="hero-name"><span class="hero-name-line">Martyna</span> <span class="hero-name-line">Katarzyna</span> <span class="hero-name-line">Zwoińska</span></h1>
+        <h1 class="hero-name"><span class="hero-name-line">Martyna Katarzyna</span> <span class="hero-name-line">Zwoińska</span></h1>
         <p class="hero-role"><span class="hero-role-title">Data Steward</span>, <span class="hero-role-organization">Karolinska Institutet</span></p>
         <p class="hero-expertise">Evolutionary biology, genomics, data analysis and applied AI</p>
       </div>
