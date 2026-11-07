@@ -1060,7 +1060,7 @@
     #contact .links {
       grid-column: 1; grid-row: 2;
       display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.28fr);
-      gap: 10px; width: 100%; margin-top: 4px; justify-content: stretch;
+      gap: 8px 10px; width: 100%; margin-top: 4px; justify-content: stretch;
     }
     #contact .pill {
       width: 100%; min-width: 0; min-height: 44px; justify-content: flex-start;
@@ -1093,7 +1093,7 @@
       gap: 8px; width: 100%;
     }
     #contact .contact-institution-links .pill { width: 100%; }
-    .contact-row-break { display: none; }
+    .contact-social-row { display: contents; }
     .contact-copy-fallback {
       margin: 12px 0 0 !important; font-size: .86rem; overflow-wrap: anywhere;
     }
@@ -1124,12 +1124,11 @@
         max-width: 100%;
       }
       #contact .contact-institution-links .pill { width: 100%; }
-      .contact-row-break {
-        display: block;
-        flex: 0 0 100%;
-        height: 0;
+    }
+    @media (min-width: 760px) {
+      .contact-social-row {
+        display: flex; flex: 0 0 100%; gap: 10px;
       }
-      .contact-row-break ~ .pill:not(.contact-profile) { margin-bottom: 5px; }
     }
     @media (max-width: 620px) {
       #contact > h2 { margin-bottom: 24px; }
@@ -1691,31 +1690,34 @@
             <span class="contact-uu-profile-label">Uppsala University profile</span>
           </a>
         </div>
-        <button class="pill contact-copy" type="button" data-email-kind="general" data-copy-label-key="contact_email">
-          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
-          <span class="contact-copy-label">Email</span>
-        </button>
-        <a class="pill" href="https://www.linkedin.com/in/martyna-zwoinska" target="_blank" rel="noopener">
-          <svg class="contact-icon contact-icon--linkedin" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3" /><circle class="contact-brand-dot" cx="7.25" cy="8" r="1.3" /><path class="contact-brand-letter" d="M7.25 11.25V18M11.25 18v-6.75M11.25 14.25c0-4.1 6.5-4.3 6.5 0V18" /></svg>
-          <span>LinkedIn</span>
-        </a>
-        <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">
-          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m2.5 8.5 9.5-5 9.5 5-9.5 5-9.5-5Z" /><path d="M6.5 11.5v4.3c3.2 2.4 7.8 2.4 11 0v-4.3M21.5 8.5v6" /></svg>
-          <span>Google Scholar</span>
-        </a>
-        <span class="contact-row-break" aria-hidden="true"></span>
-        <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">
-          <svg class="contact-icon contact-icon--orcid" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.25" /><circle class="contact-brand-dot" cx="7.5" cy="7.7" r="1.25" /><path class="contact-brand-letter" d="M7.5 11v6M11.6 7.3V17h2.25c3.35 0 5.25-1.72 5.25-4.85S17.2 7.3 13.85 7.3H11.6Z" /></svg>
-          <span>ORCID</span>
-        </a>
-        <a class="pill" href="https://www.researchgate.net/profile/Martyna-Zwoinska" target="_blank" rel="noopener">
-          <svg class="contact-icon contact-icon--researchgate" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 18V6h4.05c2.45 0 3.7 1.25 3.7 3.25S9.5 12.5 7.05 12.5H3M7.2 12.5 11.25 18M21.25 8.35a5.25 5.25 0 1 0 0 7.3V12h-3.5" /></svg>
-          <span>ResearchGate</span>
-        </a>
-        <a class="pill" href="https://bsky.app/profile/martynazwoinska.bsky.social" target="_blank" rel="noopener">
-          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 13C10.3 9 6.7 5 3.5 4.5c-.6 3.8 1.2 7.2 5 8.5-2.8.6-4.3 2.2-3.8 4.5.5 2.1 3 2.8 4.8 1.6 1.2-.8 2-2.1 2.5-3.4.5 1.3 1.3 2.6 2.5 3.4 1.8 1.2 4.3.5 4.8-1.6.5-2.3-1-3.9-3.8-4.5 3.8-1.3 5.6-4.7 5-8.5C18.7 5 13.7 9 12 13Z" /></svg>
-          <span>Bluesky</span>
-        </a>
+        <div class="contact-social-row">
+          <button class="pill contact-copy" type="button" data-email-kind="general" data-copy-label-key="contact_email">
+            <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
+            <span class="contact-copy-label">Email</span>
+          </button>
+          <a class="pill" href="https://www.linkedin.com/in/martyna-zwoinska" target="_blank" rel="noopener">
+            <svg class="contact-icon contact-icon--linkedin" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3" /><circle class="contact-brand-dot" cx="7.25" cy="8" r="1.3" /><path class="contact-brand-letter" d="M7.25 11.25V18M11.25 18v-6.75M11.25 14.25c0-4.1 6.5-4.3 6.5 0V18" /></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a class="pill" href="https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en" target="_blank" rel="noopener">
+            <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m2.5 8.5 9.5-5 9.5 5-9.5 5-9.5-5Z" /><path d="M6.5 11.5v4.3c3.2 2.4 7.8 2.4 11 0v-4.3M21.5 8.5v6" /></svg>
+            <span>Google Scholar</span>
+          </a>
+        </div>
+        <div class="contact-social-row">
+          <a class="pill" href="https://orcid.org/0000-0003-3356-7284" target="_blank" rel="noopener">
+            <svg class="contact-icon contact-icon--orcid" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.25" /><circle class="contact-brand-dot" cx="7.5" cy="7.7" r="1.25" /><path class="contact-brand-letter" d="M7.5 11v6M11.6 7.3V17h2.25c3.35 0 5.25-1.72 5.25-4.85S17.2 7.3 13.85 7.3H11.6Z" /></svg>
+            <span>ORCID</span>
+          </a>
+          <a class="pill" href="https://www.researchgate.net/profile/Martyna-Zwoinska" target="_blank" rel="noopener">
+            <svg class="contact-icon contact-icon--researchgate" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 18V6h4.05c2.45 0 3.7 1.25 3.7 3.25S9.5 12.5 7.05 12.5H3M7.2 12.5 11.25 18M21.25 8.35a5.25 5.25 0 1 0 0 7.3V12h-3.5" /></svg>
+            <span>ResearchGate</span>
+          </a>
+          <a class="pill" href="https://bsky.app/profile/martynazwoinska.bsky.social" target="_blank" rel="noopener">
+            <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 13C10.3 9 6.7 5 3.5 4.5c-.6 3.8 1.2 7.2 5 8.5-2.8.6-4.3 2.2-3.8 4.5.5 2.1 3 2.8 4.8 1.6 1.2-.8 2-2.1 2.5-3.4.5 1.3 1.3 2.6 2.5 3.4 1.8 1.2 4.3.5 4.8-1.6.5-2.3-1-3.9-3.8-4.5 3.8-1.3 5.6-4.7 5-8.5C18.7 5 13.7 9 12 13Z" /></svg>
+            <span>Bluesky</span>
+          </a>
+        </div>
       </div>
       <span class="sr-only" id="contactCopyStatus" aria-live="polite"></span>
       <p class="contact-copy-fallback" id="contactCopyFallback" hidden></p>
