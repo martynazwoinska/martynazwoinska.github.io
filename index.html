@@ -996,7 +996,7 @@
     .contact-box {
       --contact-place-size: clamp(150px, 19vw, 218px);
       --contact-place-overlap: clamp(38px, 5vw, 56px);
-      --contact-place-stagger: clamp(8px, 1vw, 12px);
+      --contact-place-stagger: 0px;
       --contact-place-width: calc(var(--contact-place-size) + var(--contact-place-size) - var(--contact-place-overlap));
       position: relative;
       min-height: calc(var(--contact-place-size) + var(--contact-place-stagger) + 28px);
@@ -1020,9 +1020,9 @@
       border: 2px solid color-mix(in srgb, var(--accent-gold) 72%, var(--border));
       box-shadow: 0 8px 22px color-mix(in srgb, var(--text) 8%, transparent);
     }
-    .contact-place-frame--uppsala { top: var(--contact-place-stagger); left: 0; z-index: 2; }
+    .contact-place-frame--uppsala { left: 0; z-index: 2; }
     .contact-place-frame--karolinska {
-      right: 0; z-index: 1;
+      top: var(--contact-place-stagger); right: 0; z-index: 1;
     }
     .contact-place-frame:focus-visible { border-radius: 50%; }
     .contact-place-image {
@@ -1030,13 +1030,16 @@
       object-fit: cover;
     }
     .contact-place-image--uppsala { object-position: left center; }
-    .contact-place-image--karolinska { object-position: 72% center; }
+    .contact-place-image--karolinska {
+      object-position: 72% center;
+      transform: scale(1.2); transform-origin: 62% top;
+    }
     .contact-place-credit {
-      position: absolute; right: 0; bottom: 48px; z-index: 3;
+      position: absolute; right: 0; bottom: 36px; z-index: 3;
       width: 250px; max-width: 100%;
       color: var(--text-soft); font-size: .75rem; line-height: 1.5;
     }
-    .contact-place-credit--uppsala { left: 0; right: auto; width: max-content; }
+    .contact-place-credit--uppsala { left: 0; right: auto; bottom: calc(var(--contact-place-stagger) + 48px); width: max-content; }
     .contact-place-name { display: block; color: var(--text); font-weight: 600; }
     .contact-photo-attribution { display: block; margin-top: 3px; }
     .contact-credit-content {
@@ -1119,8 +1122,11 @@
       }
       #contact .contact-institution-links .pill { width: 100%; }
     }
+    @media (min-width: 1120px) {
+      .contact-box { --contact-place-stagger: clamp(25px, 2.1vw, 30px); }
+    }
     @media (min-width: 760px) {
-      .contact-place-pair { align-self: center; }
+      .contact-place-pair { align-self: center; transform: translateY(-18px); }
       .contact-social-row {
         display: flex; flex: 0 0 100%; gap: 10px;
       }
@@ -1130,7 +1136,6 @@
       .contact-box {
         --contact-place-size: min(154px, 45vw);
         --contact-place-overlap: 38px;
-        --contact-place-stagger: 8px;
         display: block; min-height: 0; width: min(100%, 440px); margin-inline: auto;
         padding: calc(var(--contact-place-size) + var(--contact-place-stagger) + 38px) 0 0;
       }
