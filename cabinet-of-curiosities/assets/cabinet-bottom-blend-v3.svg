@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="370" viewBox="0 0 1536 370" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="panels" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="110">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <linearGradient id="below-drawer" gradientUnits="userSpaceOnUse" x1="0" y1="106" x2="0" y2="110">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+  </defs>
+  <!-- Overlap mask edges and finish the fade before the original image ends.
+       The lower rectangle prevents subpixel gaps against the light theme. -->
+  <path d="M0 0H405V111H0ZM1156 0H1536V111H1156Z" fill="url(#panels)"/>
+  <path d="M404 0H1157V111H404Z" fill="url(#below-drawer)"/>
+  <path d="M0 110H1536V370H0Z" fill="white"/>
+</svg>

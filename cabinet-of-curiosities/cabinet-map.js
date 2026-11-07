@@ -2,7 +2,7 @@
   'use strict';
   // Approved drawer map is available on the normal Cabinet URL.
   const places = window.CABINET_MAP_PLACES;
-  const scene = document.getElementById('scene-space');
+  const scene = document.getElementById('scene-upper') || document.getElementById('scene-space');
   if (!places?.length || !scene) return;
   const drawer = document.createElement('button');
   drawer.type = 'button'; drawer.className = 'map-drawer'; drawer.id = 'map-drawer';

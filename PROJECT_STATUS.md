@@ -4,6 +4,20 @@ Last updated: 2026-11-07
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+## Cabinet writing-desk base, 2026-11-07
+
+Implemented the approved open leg space beneath the map drawer, with cupboards
+on both sides. The approved lower image is unchanged; a separate joining mask
+now scales with it and prevents light-theme seams. The upper scene, tabletop,
+photographed object layers and original interactive coordinates are preserved.
+The whole furniture assembly still pans and zooms together.
+
+Desktop/mobile, both themes, drawer keyboard controls, focus return, object
+details and landscape zoom/reset passed. Tabletop lighting was inspected only:
+the leaning Paradai bar would benefit from a more convincing cast shadow.
+Implementation is local and has not been deployed. See
+[asset details and validation](docs/cabinet-open-desk.md).
+
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
 It tracks all 31 active scenes: 0 left to check in the current interaction
