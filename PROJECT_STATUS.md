@@ -16,6 +16,16 @@ Full-page previews at 360, 768, 1024 and 1440 px passed in light and dark themes
 with keyboard details, focus return and horizontal-overflow checks. No public
 copy or Game files changed.
 
+## Polish research copy and Contact spacing, 2026-11-07
+
+Martyna approved two Polish-only wording refinements: removing the redundant
+"szeroki" from the research introduction and using the reviewed paragraph about
+sexually antagonistic selection. English and Swedish copy remain unchanged,
+as explicitly requested. The Contact composition now draws the photographs
+50 to 60 px closer to the text at medium and wide desktop sizes, keeping the
+complete group centred. Phone and narrow-tablet geometry, equal photo heights,
+the closer Aula Medica crop and source photographs remain unchanged.
+
 ## Approved S-Foodies sticker thumbnail, 2026-11-07
 
 Martyna approved the gently sharpened original-photo sticker preview for
