@@ -537,7 +537,7 @@
       width: min(920px, calc(100% - 64px)); min-height: 286px; margin: 0 auto;
       display: grid; grid-template-columns: 190px minmax(0, 1fr);
       gap: 40px; align-items: center;
-      transform: translateX(-30px);
+      transform: translateX(40px);
     }
     .hero-copy {
       min-width: 0; grid-column: 2; grid-row: 1; text-align: left;
@@ -553,6 +553,7 @@
       -webkit-text-stroke: var(--hero-name-stroke) currentColor; paint-order: stroke fill;
     }
     .hero-name-line { display: block; white-space: nowrap; }
+    .hero-expertise-line { display: block; }
     .hero-role {
       margin: 9px 0 0; font-size: 1rem; font-weight: 600; line-height: 1.25;
     }
@@ -580,7 +581,7 @@
     }
     .hero-lower {
       position: absolute; z-index: 1;
-      right: 116px; bottom: 18px;
+      right: 166px; bottom: 18px;
       width: 240px; height: auto;
     }
     .avatar {
@@ -612,35 +613,35 @@
       stroke-width: 1;
     }
     @media (max-width: 1100px) {
-      .hero-grid { transform: translateX(-24px); }
-      .hero-lower { right: 72px; bottom: 14px; width: 220px; }
+      .hero-grid { transform: translateX(20px); }
+      .hero-lower { right: 104px; bottom: 14px; width: 220px; }
     }
     @media (max-width: 1024px) {
       .hero { min-height: 326px; padding-top: 28px; padding-bottom: 24px; }
       .hero-grid {
         width: min(830px, calc(100% - 48px)); min-height: 260px;
         grid-template-columns: 172px minmax(0, 1fr); gap: 36px;
-        transform: translateX(-16px);
+        transform: translateX(16px);
       }
       .avatar { width: 172px; height: 172px; }
       .hero-name { font-size: clamp(2.4rem, 4.4vw, 3rem); }
       .hero-expertise { font-size: clamp(1rem, 1.68vw, 1.08rem); }
-      .hero-lower { right: 48px; bottom: 12px; width: 200px; }
+      .hero-lower { right: 72px; bottom: 12px; width: 200px; }
     }
     @media (max-width: 840px) {
       .hero { min-height: 310px; padding-top: 26px; padding-bottom: 22px; }
       .hero-grid {
         width: calc(100% - 28px); min-height: 246px;
         grid-template-columns: 146px minmax(0, 1fr); gap: 26px;
-        transform: translateX(-8px);
+        transform: translateX(4px);
       }
       .avatar { width: 146px; height: 146px; }
       .hero-name { margin-top: 0; font-size: clamp(2.2rem, 4.8vw, 2.65rem); }
       .hero-expertise { margin-top: 10px; font-size: clamp(.94rem, 1.9vw, 1rem); }
-      .hero-lower { right: 24px; bottom: 10px; width: 174px; }
+      .hero-lower { right: 36px; bottom: 10px; width: 174px; }
     }
     @media (max-width: 759.98px) {
-      .hero { min-height: 0; padding: 30px 16px 148px; }
+      .hero { min-height: 0; padding: 30px 16px 172px; }
       .hero-grid { display: block; width: 100%; min-height: 0; transform: none; }
       .hero-copy {
         width: 100%; max-width: 650px; margin: 0 auto;
@@ -670,7 +671,7 @@
       }
     }
     @media (max-width: 620px) {
-      .hero { padding: 27px 12px 148px; }
+      .hero { padding: 27px 12px 172px; }
       .hero-lower {
         right: 24px; bottom: 0;
         width: clamp(184px, 54vw, 198px);
@@ -682,7 +683,7 @@
       }
     }
     @media (max-width: 350px) {
-      .hero { padding-right: 10px; padding-bottom: 140px; padding-left: 10px; }
+      .hero { padding-right: 10px; padding-bottom: 164px; padding-left: 10px; }
       .hero-lower { right: 18px; bottom: 0; width: 184px; margin: 0; }
       .hero-expertise { font-size: .95rem; }
       .hero-name { font-size: clamp(1.8rem, 9vw, 2rem); }
@@ -1161,7 +1162,7 @@
       <div class="hero-copy">
         <h1 class="hero-name"><span class="hero-name-line">Martyna</span> <span class="hero-name-line">Katarzyna</span> <span class="hero-name-line">Zwoińska</span></h1>
         <p class="hero-role"><span class="hero-role-title">Data Steward</span>, <span class="hero-role-organization">Karolinska Institutet</span></p>
-        <p class="hero-expertise">Evolutionary biology, genomics, data analysis and applied AI</p>
+        <p class="hero-expertise"><span class="hero-expertise-line">Evolutionary biology, genomics,</span> <span class="hero-expertise-line">data analysis and applied AI</span></p>
       </div>
       <div class="avatar" role="img" aria-label="Martyna K. Zwoińska">
         <span class="avatar-mono" aria-hidden="true">MZ</span>
@@ -1684,7 +1685,7 @@
     </div>
   </footer>
 
-  <script src="home-i18n.js?v=20261107-intro-clean"></script>
+  <script src="home-i18n.js?v=20261107-expertise-lines"></script>
   <script src="home.js?v=20261107-ki-contact"></script>
 </body>
 </html>
