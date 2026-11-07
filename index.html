@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Martyna Zwoińska | Evolutionary Biologist</title>
-  <meta name="description" content="I am an evolutionary biologist interested in all things adaptation and maladaptation. I combine experimental research, genomics and data analysis." />
+  <title>Martyna Zwoińska | Data Steward</title>
+  <meta name="description" content="Data Steward at Karolinska Institutet with a background in evolutionary biology, experimental research, genomics and data analysis." />
   <!-- Social preview -->
-  <meta property="og:title" content="Martyna Zwoińska, Evolutionary Biologist" />
-  <meta property="og:description" content="I am an evolutionary biologist interested in all things adaptation and maladaptation. I combine experimental research, genomics and data analysis." />
+  <meta property="og:title" content="Martyna Zwoińska, Data Steward" />
+  <meta property="og:description" content="Data Steward at Karolinska Institutet with a background in evolutionary biology, experimental research, genomics and data analysis." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://martynazwoinska.github.io/" />
   <meta property="og:site_name" content="Martyna Zwoińska" />
@@ -17,8 +17,8 @@
   <meta property="og:image:height" content="400" />
   <meta property="og:image:alt" content="Portrait of Martyna Zwoińska" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Martyna Zwoińska, Evolutionary Biologist" />
-  <meta name="twitter:description" content="I am an evolutionary biologist interested in all things adaptation and maladaptation. I combine experimental research, genomics and data analysis." />
+  <meta name="twitter:title" content="Martyna Zwoińska, Data Steward" />
+  <meta name="twitter:description" content="Data Steward at Karolinska Institutet with a background in evolutionary biology, experimental research, genomics and data analysis." />
   <meta name="twitter:image" content="https://martynazwoinska.github.io/photo.jpg" />
   <meta name="twitter:image:alt" content="Portrait of Martyna Zwoińska" />
   <link rel="canonical" href="https://martynazwoinska.github.io/" />
@@ -34,8 +34,8 @@
     "@type": "ProfilePage",
     "@id": "https://martynazwoinska.github.io/#profile",
     "url": "https://martynazwoinska.github.io/",
-    "name": "Martyna Zwoińska | Evolutionary Biologist",
-    "description": "I am an evolutionary biologist interested in all things adaptation and maladaptation. I combine experimental research, genomics and data analysis.",
+    "name": "Martyna Zwoińska | Data Steward",
+    "description": "Data Steward at Karolinska Institutet with a background in evolutionary biology, experimental research, genomics and data analysis.",
     "mainEntity": {
       "@type": "Person",
       "@id": "https://martynazwoinska.github.io/#person",
@@ -48,14 +48,19 @@
         "Martyna K. Zwoińska",
         "Martyna Zwoinska"
       ],
-      "jobTitle": "Evolutionary Biologist",
-      "description": "I am an evolutionary biologist interested in all things adaptation and maladaptation. I combine experimental research, genomics and data analysis.",
+      "jobTitle": "Data Steward",
+      "description": "Data Steward at Karolinska Institutet with a background in evolutionary biology, experimental research, genomics and data analysis.",
       "url": "https://martynazwoinska.github.io/",
       "image": "https://martynazwoinska.github.io/photo.jpg",
-      "affiliation": {
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Karolinska Institutet",
+        "url": "https://ki.se/"
+      },
+      "alumniOf": {
         "@type": "Organization",
         "name": "Uppsala University",
-        "department": "Department of Ecology and Genetics"
+        "url": "https://www.uu.se/"
       },
       "sameAs": [
         "https://scholar.google.com/citations?user=zSDpBNoAAAAJ&hl=en",
@@ -63,6 +68,7 @@
         "https://www.researchgate.net/profile/Martyna-Zwoinska",
         "https://www.linkedin.com/in/martyna-zwoinska",
         "https://bsky.app/profile/martynazwoinska.bsky.social",
+        "https://ki.se/en/people/martyna-zwoinska",
         "https://www.uu.se/en/contact-and-organisation/staff?query=N12-104"
       ]
     }
@@ -563,6 +569,11 @@
       -webkit-text-stroke: var(--hero-name-stroke) currentColor; paint-order: stroke fill;
     }
     .hero-name-line { display: inline; }
+    .hero-role {
+      margin: 9px 0 0; font-size: 1rem; font-weight: 600; line-height: 1.25;
+    }
+    .hero-role-title { display: block; color: var(--text-soft); }
+    .hero-role-organization { display: block; margin-top: 1px; color: var(--text-soft); font-weight: 500; }
     .hero-art {
       display: block; max-width: none;
       pointer-events: none; user-select: none;
@@ -666,9 +677,12 @@
         line-height: .9; letter-spacing: -.014em;
         -webkit-text-stroke: var(--hero-mobile-name-stroke) currentColor;
       }
+      .hero-role {
+        order: 2; margin-top: 13px; font-size: 1rem; line-height: 1.28;
+      }
       .hero-name-line { display: block; }
       .hero-expertise {
-        order: 2; width: 100%; max-width: none; margin: 20px auto 0;
+        order: 3; width: 100%; max-width: none; margin: 17px auto 0;
         display: grid; justify-items: center; row-gap: 3px;
         color: var(--accent);
         font-size: 1.12rem; font-weight: 700;
@@ -1188,6 +1202,7 @@
       <div class="hero-copy">
         <p class="hero-statement"><span class="hero-statement-line">From lab to code,</span><span class="hero-statement-line">from ideas to execution</span></p>
         <h1 class="hero-name"><span class="hero-name-line">Martyna</span> <span class="hero-name-line">Katarzyna</span> <span class="hero-name-line">Zwoińska</span></h1>
+        <p class="hero-role"><span class="hero-role-title">Data Steward</span><span class="hero-role-organization">Karolinska Institutet</span></p>
         <p class="hero-expertise"><span class="hero-expertise-line hero-expertise-line--identity"><span class="hero-skill hero-skill--identity">Evolutionary biology</span><span class="hero-skill-separator"> </span><span class="hero-skill hero-skill--experimental">Experimental research</span></span><span class="hero-expertise-line hero-expertise-line--fields"><span class="hero-skill-group"><span class="hero-skill hero-skill--genomics">Genomics</span><span class="hero-skill-separator"> </span><span class="hero-skill hero-skill--data">Data analysis</span></span><span class="hero-skill-separator"> </span><span class="hero-skill hero-skill--ai">Applied AI</span></span></p>
       </div>
       <div class="avatar" role="img" aria-label="Martyna K. Zwoińska">
@@ -1225,20 +1240,18 @@
   <section id="about" class="wrap about">
     <h2>About</h2>
     <p>
-      I am an evolutionary biologist, interested in all things adaptation and maladaptation.
-      To that end, I like working with a range of lab-evolvable systems, whether <em>Drosophila</em> fruit flies,
-      <em>Callosobruchus</em> seed beetles, or one of my personal favourites, <em>Caenorhabditis</em>
-      nematodes. I enjoy combining different approaches: my own work is predominantly empirical and
-      evolutionary-genomic, but I always appreciate a bit of good theory too.
+      I am a Data Steward at Karolinska Institutet with a background in evolutionary biology,
+      experimental research, genomics and data analysis. My research experience gives me a practical
+      understanding of how scientific data are produced, analysed and communicated.
     </p>
   </section>
 
   <!-- ============ RESEARCH ============ -->
   <section id="research" class="wrap about">
-    <h2>Research interests</h2>
+    <h2>Research background</h2>
     <p>
-      Over the years, I have worked on a wide range of topics, reflecting my broad interests.
-      Below are some of my active research directions.
+      Over the years, I have worked on a wide range of topics in evolutionary biology.
+      The areas below reflect the breadth of my research background.
     </p>
     <ul class="interest-list" aria-label="Research interest areas">
       <li>Life-history evolution</li>
@@ -1250,9 +1263,9 @@
     </ul>
   </section>
 
-  <!-- ============ CURRENT PROJECT ============ -->
+  <!-- ============ SELECTED RESEARCH PROJECTS ============ -->
   <section id="project" class="wrap">
-    <h2 class="sr-only">Current work</h2>
+    <h2 class="sr-only">Selected research projects</h2>
     <div class="project">
       <div class="project-text">
         <h3>Adaptive response modes under environmental variability</h3>
@@ -1273,10 +1286,11 @@
         <h3>Learning and cognition</h3>
         <p>
           While it may not seem obvious, nematode worms from the genus <em>Caenorhabditis</em> can
-          learn and form memories, and they do so with only 300 to 400 neurons. What began during
-          my PhD under the supervision of Alexei A. Maklakov continues to this day, because who could
-          resist the charm of learning roundworms? Most recently, I have focused on learned pathogen
-          avoidance, a behaviour that can be passed down across several generations.
+          learn and form memories, and they do so with only 300 to 400 neurons. This interest began
+          during my PhD under the supervision of Alexei A. Maklakov and became a recurring thread in
+          my research, because who could resist the charm of roundworms that learn? In one of my later
+          projects, I focused on learned pathogen avoidance, a behaviour that can be passed down across
+          several generations.
         </p>
       </div>
       <figure>
@@ -1306,12 +1320,11 @@
       <div class="project-text">
         <h3>Sexually antagonistic selection</h3>
         <p>
-          Working with the group of Elina Immonen, I investigate the conditions under which sexually
-          antagonistic selection can preserve genetic variation, or in other words generate balancing
-          selection. Sexually antagonistic selection is just one of many scenarios that can generate
-          balancing selection, and as much as we do not fully understand the role of balancing
-          selection in maintaining the genetic polymorphism we observe, we also do not understand
-          particularly well the relative importance of its different mechanisms.
+          Working with Elina Immonen’s group, I investigated the conditions under which sexually
+          antagonistic selection could preserve genetic variation and thereby generate balancing
+          selection. This work addressed a broader gap in our understanding. We still know relatively
+          little about the role of balancing selection in maintaining observed genetic polymorphism,
+          or about the relative importance of the different mechanisms that can generate it.
         </p>
       </div>
       <figure>
@@ -1655,11 +1668,21 @@
         />
       </div>
       <p class="contact-address">
-        Department of Ecology and Genetics, Animal Ecology<br />
-        Evolutionary Biology Centre (EBC), Uppsala University<br />
-        Norbyvägen 18D, 752 36 Uppsala, Sweden
+        Karolinska Institutet<br />
+        University Library<br />
+        Berzelius väg 7B<br />
+        171 77 Stockholm, Sweden
       </p>
       <div class="links">
+        <a class="pill contact-profile contact-profile--ki" href="https://ki.se/en/people/martyna-zwoinska" target="_blank" rel="noopener">
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 9 9-5 9 5M5 10h14M7 10v7M11 10v7M15 10v7M19 10v7M4 18h16M3 21h18" /></svg>
+          <span class="contact-ki-profile-label">Karolinska Institutet profile</span>
+        </a>
+        <a class="pill contact-profile contact-profile--uu" href="https://www.uu.se/en/contact-and-organisation/staff?query=N12-104" target="_blank" rel="noopener">
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 9 9-5 9 5M5 10h14M7 10v7M11 10v7M15 10v7M19 10v7M4 18h16M3 21h18" /></svg>
+          <span class="contact-uu-profile-label">Uppsala University profile</span>
+        </a>
+        <span class="contact-row-break" aria-hidden="true"></span>
         <button class="pill contact-copy" type="button" data-email-kind="general" data-copy-label-key="contact_email">
           <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
           <span class="contact-copy-label">Email</span>
@@ -1685,10 +1708,6 @@
           <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 13C10.3 9 6.7 5 3.5 4.5c-.6 3.8 1.2 7.2 5 8.5-2.8.6-4.3 2.2-3.8 4.5.5 2.1 3 2.8 4.8 1.6 1.2-.8 2-2.1 2.5-3.4.5 1.3 1.3 2.6 2.5 3.4 1.8 1.2 4.3.5 4.8-1.6.5-2.3-1-3.9-3.8-4.5 3.8-1.3 5.6-4.7 5-8.5C18.7 5 13.7 9 12 13Z" /></svg>
           <span>Bluesky</span>
         </a>
-        <a class="pill contact-profile" href="https://www.uu.se/en/contact-and-organisation/staff?query=N12-104" target="_blank" rel="noopener">
-          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 9 9-5 9 5M5 10h14M7 10v7M11 10v7M15 10v7M19 10v7M4 18h16M3 21h18" /></svg>
-          <span class="contact-profile-label">Uppsala University profile</span>
-        </a>
       </div>
       <span class="sr-only" id="contactCopyStatus" aria-live="polite"></span>
       <p class="contact-copy-fallback" id="contactCopyFallback" hidden></p>
@@ -1703,7 +1722,7 @@
     </div>
   </footer>
 
-  <script src="home-i18n.js?v=20260921-spacing"></script>
-  <script src="home.js?v=20260822-monogram-optical"></script>
+  <script src="home-i18n.js?v=20261107-data-steward"></script>
+  <script src="home.js?v=20261107-ki-contact"></script>
 </body>
 </html>

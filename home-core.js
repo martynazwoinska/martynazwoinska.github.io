@@ -1631,7 +1631,7 @@
     var contactCopyStatus = document.getElementById('contactCopyStatus');
     var contactCopyFallback = document.getElementById('contactCopyFallback');
     var contactEmailParts = {
-      general: ['zwoinska', 'gmail', 'com']
+      general: ['martyna.zwoinska', 'ki', 'se']
     };
 
     function contactEmailAddress(kind) {
