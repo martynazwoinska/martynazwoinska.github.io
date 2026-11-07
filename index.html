@@ -891,6 +891,12 @@
       background: var(--accent); opacity: .7;
     }
 
+    @media (max-width: 620px) {
+      .pub { flex-direction: column; gap: 6px; }
+      .pub .year { flex: 0 0 auto; padding-top: 0; }
+      .pub.leave { align-items: stretch; }
+    }
+
     /* people folio */
     .folio-list {
       margin: 0; padding: 0; list-style: none;
