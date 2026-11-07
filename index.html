@@ -1075,12 +1075,12 @@
     }
     @media (min-width: 621px) {
       #contact > h2 {
-        width: min(100%, 940px);
+        width: min(100%, 870px);
         margin-inline: auto;
       }
       .contact-box {
         grid-template-columns: minmax(0, 1fr) var(--contact-place-width);
-        width: min(100%, 940px);
+        width: min(100%, 870px);
         margin-inline: auto;
       }
       #contact .links {
@@ -1100,6 +1100,9 @@
         max-width: 100%;
       }
       #contact .contact-institution-links .pill { width: 100%; }
+    }
+    @media (min-width: 701px) {
+      .contact-place-pair { top: clamp(16px, calc(3.125vw - 8px), 24px); }
     }
     @media (min-width: 760px) {
       .contact-social-row {
