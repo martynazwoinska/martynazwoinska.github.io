@@ -4,6 +4,15 @@ Last updated: 2026-11-07
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+## Approved S-Foodies sticker thumbnail, 2026-11-07
+
+Martyna approved the gently sharpened original-photo sticker preview for
+publication. The exact 256 x 256 PNG is used only in Browse the collection at
+64 x 64 CSS pixels. The photographed design and thumbnail silhouette are
+preserved; no lettering is redrawn. The Cabinet object layers remain unchanged.
+Full-page checks at 360, 768, 1024 and 1440 px passed in both themes, including
+keyboard details, focus return, asset loading and horizontal overflow.
+
 ## Object contour depth, 2026-11-07
 
 Martyna approved the revised Paradai tabletop shadow and requested additional

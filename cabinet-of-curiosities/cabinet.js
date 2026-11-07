@@ -443,6 +443,18 @@
 
   let thumbnailSequence = 0;
   function collectionThumbnail(item, ownPhoto = false) {
+    if (!ownPhoto && item.id === 'sfoodies-sticker') {
+      const image = document.createElement('img');
+      image.className = 'collection-thumbnail';
+      image.src = 'assets/sfoodies-sticker-clarity-v2.png';
+      image.alt = '';
+      image.setAttribute('aria-hidden', 'true');
+      image.width = 64;
+      image.height = 64;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      return image;
+    }
     const product = !ownPhoto && item.kind === 'chocolate' && window.CABINET_PRODUCT_IMAGES?.[item.id];
     if (product) {
       const frame = document.createElement('span');
@@ -475,8 +487,8 @@
       frame.append(img);
       return frame;
     }
-    // Display windows preserve the source assets. The sticker has an explicitly
-    // requested, reversible list-only sharpening filter; details remain unfiltered.
+    // Display windows preserve the source assets. The sticker uses a separate
+    // photo-edited thumbnail above; the photographed board remains unchanged.
     const svgNS = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgNS, 'svg');
     svg.classList.add('collection-thumbnail');
@@ -550,31 +562,6 @@
       image.setAttribute('href', 'assets/cabinet-photo-objects-v75.svg');
       image.setAttribute('width', String(SCENE_WIDTH));
       image.setAttribute('height', String(SCENE_HEIGHT));
-      if (!ownPhoto && item.id === 'sfoodies-sticker') {
-        const filter = document.createElementNS(svgNS, 'filter');
-        filter.id = `sticker-clarity-${thumbnailSequence}`;
-        filter.setAttribute('filterUnits', 'userSpaceOnUse');
-        filter.setAttribute('x', String(x - padding));
-        filter.setAttribute('y', String(y - padding));
-        filter.setAttribute('width', String(w + padding * 2));
-        filter.setAttribute('height', String(h + padding * 2));
-        filter.setAttribute('color-interpolation-filters', 'sRGB');
-        const sharpen = document.createElementNS(svgNS, 'feConvolveMatrix');
-        sharpen.setAttribute('order', '3');
-        sharpen.setAttribute('kernelMatrix', '0 -.20 0 -.20 1.80 -.20 0 -.20 0');
-        sharpen.setAttribute('preserveAlpha', 'true');
-        const contrast = document.createElementNS(svgNS, 'feComponentTransfer');
-        ['R', 'G', 'B'].forEach(channel => {
-          const component = document.createElementNS(svgNS, `feFunc${channel}`);
-          component.setAttribute('type', 'linear');
-          component.setAttribute('slope', '1.07');
-          component.setAttribute('intercept', '-.035');
-          contrast.append(component);
-        });
-        filter.append(sharpen, contrast);
-        defs.append(filter);
-        image.setAttribute('filter', `url(#${filter.id})`);
-      }
     }
     svg.append(image);
     return svg;
