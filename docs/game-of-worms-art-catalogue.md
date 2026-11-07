@@ -1,5 +1,22 @@
 # Game of Worms art catalogue
 
+## Bristol feeding platform, 2026-11-07, deployment approved
+
+The N2 feeding animation adds an original right-facing diving platform
+with a rear ladder, staggered supports, cross-bracing and a thin cantilevered
+deck. The default placement clears the companion. It appears only after tapping
+the primary plate, and remains a move-only scene prop afterward. Boarding keeps
+the source silhouette until the worm has landed. The comic human-style dive then
+uses a planted-tail crouch, push-off, one pike and straight head-first entry.
+The diver paints in front of both accessory groups and only submerges at the
+food surface. Preparation and flight take 2233 and 1820 milliseconds.
+The final approach adapts to moved plate/tower positions and the actual
+food-surface tilt. Its clipping plane only activates after the entire body
+clears the plate; the diver remains opaque and disappears through that plane.
+The approved dishes and painted background are unchanged. See the
+[Bristol dossier](game-of-worms-location-research/bristol-n2.md) for references
+and checks. Martyna approved the complete preview 49 for deployment.
+
 ## Pohnpei revision, 2026-09-22, deployment approved
 
 Current Pohnpei choices: Birdwatching, Bird calls, Camouflage capes.

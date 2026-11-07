@@ -261,3 +261,122 @@ Route follow-up: checked the lower-left head-first entry on desktop and phone,
 with zero temporary layers after landing and no console errors or overflow.
 The four fresh full-page capture attempts measured 345x2598, 753x2455,
 1009x1898 and 1425x1934. The same capture limitation applies.
+
+## Feeding-platform revision approved for deployment, 2026-11-07
+
+Martyna approved the complete preview 49 for deployment on 2026-11-07.
+The primary feeding sequence uses a right-facing diving platform, with a
+rear ladder, separate near/far supports, cross-bracing and a cantilevered
+board. Construction references: [Duraflex stand photographs and descriptions](https://duraflexinternational.com/duraflex-stands/).
+The SVG is original drawing code; no external artwork is reproduced.
+
+`n2-diving-tower.js` owns both the platform drawing and its contact geometry.
+The tower is initially absent, including when the plates are first equipped.
+A primary-plate activation reveals it; companion feeding does not. It remains
+available for dragging afterward. Hiding the plates or changing scenes resets
+the reveal state, so the mutation observer cannot bring it back on its own.
+Tower touch/focus cannot start or restart feeding. Dragging has a six-pixel
+threshold; arrows and Home also move/reset it. Movement is bounded by the
+whole habitat instead of a fixed narrow box. The default drawing clears the
+companion, but visitors may deliberately drag it elsewhere in the scene.
+
+The main worm first makes a short boarding hop with its source silhouette
+preserved, pauses on the board, and only then changes into the diving pose.
+The lowest body surface stays on the deck while the body rises. The original
+body and its animated copy exchange visibility before any movement begins.
+The human-style action uses a planted-tail crouch and accelerating push-off,
+finishes extension while rising, makes one hip-centred pike, and opens into a
+straight vertical entry. The reference is [Aquatics GB's diving positions](https://www.britishswimming.org/browse-sport/diving/learn-more-about-diving/),
+adapted as a fictional worm action, not presented as nematode behaviour.
+There is no travelling body wave in the human-style airborne phase.
+Every body segment retains position and velocity across release. The centre
+of mass follows an upward launch and downward-accelerating arc; horizontal
+travel settles before entry. Extreme tower positions use a downward-entry
+safeguard. Return visits the standing pose without reversing the crouch.
+The two 19-second plate laps and
+existing quiet eating recording are retained. The Game stays fixed-light.
+
+Automated checks cover source proportions, absence of self-intersections,
+source/board/flight continuity, deck contact, the enlarged movement bounds,
+clip-aware entry, crawl history, audio cancellation and reduced motion.
+Browser checks verified a tower tap causes no action; a drag causes no launch;
+a tap during playback keeps the same running animation; shifted-board
+approach, reset and keyboard travel above and below the former limits work.
+
+The accessible tower description is English-only, like the Game itself:
+"Drag or use arrow keys to move. Home resets. Tap the agar plate to start the
+dive. Position: 0 across, 0 up." Position numbers update during movement.
+No approved scene image, source photograph or audio file was edited.
+
+The initial platform proofs measured 360x2465, 768x2224, 1024x1881 and
+1440x1866 pixels. The follow-up human-dive proofs in Chrome measured 360x2464,
+768x2224, 1024x1881 and 1440x1865 pixels, with no horizontal overflow.
+Chrome was used after the in-app browser returned clipped captures.
+Additional live viewport
+captures checked the boarding transition on a narrow phone and desktop.
+The full sequence completed with zero temporary worm/carrier layers and the
+original body opacity restored. Browser error/warning logs were empty.
+Reduced-motion behaviour was checked by the motion tests, not emulated in
+the browser. The complete preview 49 is now approved for deployment.
+
+Entry follow-up, preview 44: removed the insertion of the primary diver behind
+the companion and primary accessory groups. Its temporary layer now remains
+last in the scene, in front of the complete dish. The existing food-surface
+clip still controls actual submergence. The dish drawing is unchanged.
+Preparation is 2233 ms and flight is 1820 ms, both 30 percent shorter. Their
+ratio is unchanged, preserving the approved trajectory and release continuity.
+A shared time mapping keeps landing, splash, ripple and crawler appearance
+synchronized. Subsequent plate crawling still takes nineteen seconds, and
+the eating rhythm and return duration remain unchanged.
+
+Audio follow-up, preview 45: the user requested more continuous slurping.
+The existing recording now plays as 420 ms excerpts every 320 ms throughout
+the nineteen-second crawl, replacing the two isolated groups of three bites.
+Small offset and level variations soften repetition; peak levels are lower
+than before to keep sustained playback gentle. The last excerpt ends 20 ms
+before departure. Gesture preparation, cancellation, reduced-motion silence
+and offline fallback are retained. The recording, animation and layout are
+unchanged. This was reviewed locally before the preview 49 deployment approval.
+
+Moved-position entry follow-up, preview 48: the plate's current transform now
+defines the approach tangent, downward normal and submergence plane. An
+adaptive arc keeps the whole body above the food during the final approach,
+including with a high plate and low tower. Sideways travel settles before
+entry. The original push-off velocity is preserved; every segment crosses
+the surface continuously, and post-entry motion cannot reverse even for a
+very large drop. The clip is enabled only after the whole thick body clears
+the surface. The descending primary stays opaque, disappearing through the
+food rather than fading in mid-air. The nineteen-second crawl, continuous
+slurping, source art, platform drawing and public wording are unchanged.
+
+The geometry regression checks 1,200 tower/target/tilt combinations, both
+plate-size limits, real DOMPoint-style coordinate accessors, stroke clearance,
+no final head overshoot, contact position and velocity, and no re-emergence.
+In-browser sequences checked a raised plate with a lowered/rightward tower
+at desktop size and a small left-hand plate with a raised/rightward tower at
+360 px, including keyboard movement, pointer activation and completion.
+The Game remains fixed-light. This was included in preview 49 deployment approval.
+
+Sequential handoff follow-up, preview 49: the small plate worm remains hidden
+through the entire incoming dive. It appears over 180 ms only after the
+diver's submergence finishes. This removes the overlap introduced by the old
+landing crossfade. Crawl and audio timing, geometry and return are unchanged.
+Regression checks prohibit any incoming-diver/crawler overlap and verify
+that the complete thick body is below the food at reveal time in all 1,200
+tested position/tilt combinations.
+
+Release checks, 2026-11-07: dive, four-scenes motion, feeding audio,
+cryo flight and Bristol-only tailoring checks pass. The actual browser
+handoff was sampled for both worms (202 samples total), with no diver/crawler
+overlap. Browser warnings and errors were empty. Uncropped full-page proofs
+at 360x2464, 768x2224, 1024x1881 and 1440x1865 pixels show no horizontal
+overflow. Keyboard movement and Escape cancellation were checked during
+the preview; reduced motion was checked in code. Physical-device testing
+and subjective listening on the visitor's speakers remain manual.
+
+Created: game-of-worms/n2-dive-motion.js, game-of-worms/n2-diving-tower.js,
+scripts/check-n2-dive.cjs. Changed: game-of-worms/n2-feeding.js, game.js,
+index.html, style.css; scripts/check-four-scenes-motion.cjs,
+scripts/check-n2-feeding-audio.cjs; PROJECT_STATUS.md, the art catalogue and
+this dossier. No files deleted. The release preserves the exact approved
+production illustration and animation files.

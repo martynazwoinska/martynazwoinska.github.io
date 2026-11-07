@@ -76,6 +76,25 @@ Desktop/mobile, both themes, drawer keyboard controls, focus return, object
 details and landscape zoom/reset passed. The new image is about 160 KB. See
 [asset details and validation](docs/cabinet-open-desk.md).
 
+## N2 diving and plate crawling, 2026-11-07
+
+N2 feeding revision approved for deployment, 2026-11-07: a movable,
+right-facing diving platform and a staged boarding/dive sequence. The tower
+appears on the first primary-plate tap, remains movable afterward and resets
+when plates are hidden or the scene changes. The worm crouches, pushes off,
+pikes and opens into entry with continuous body velocity at release. The diver
+now paints in front of the plate until food-surface entry. Preparation and
+flight are 30 percent shorter; the nineteen-second crawl is unchanged.
+The feeding sound now uses quiet overlapping excerpts throughout both laps,
+ending before departure and stopping on cancellation.
+Entry adapts to moved tower/plate positions and the plate's tilt. The body
+clears the food before descending, stays opaque above it and cannot reverse
+out of the surface. A 1,200-position regression grid covers the approach.
+The plate worm is revealed only after the incoming diver is fully submerged,
+with a short 180 ms reveal before crawling starts.
+Martyna approved the complete preview 49 for deployment. See the
+[Bristol dossier](docs/game-of-worms-location-research/bristol-n2.md).
+
 For the next Game scene, start with the
 [scene review checklist](docs/game-of-worms-scene-review-queue.md).
 It tracks all 31 active scenes: 0 left to check in the current interaction

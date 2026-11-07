@@ -1526,6 +1526,34 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .ngm-plate .plate-label-tape { fill: rgba(246,249,231,.9); stroke: rgba(72,105,106,.64); stroke-width: 1; }
 .ngm-plate .plate-label-text { paint-order: stroke; stroke: rgba(255,255,255,.72); stroke-width: 1.5px; }
 .ngm-plate .plate-label-text.companion { font-size: 8px; }
+.ngm-plate .n2-crawler-body { fill: #f0c78e; stroke: #624239; stroke-width: .78; stroke-linejoin: round; }
+.ngm-plate .n2-crawler-highlight { fill: none; stroke: rgba(255,255,255,.82); stroke-width: .42; stroke-linecap: round; }
+.ngm-plate .n2-landing-ripple { fill: none; stroke: rgba(250,248,216,.84); stroke-width: .72; }
+.ngm-plate .n2-splash-cover { fill: rgba(247,242,199,.96); stroke: rgba(124,116,56,.82); stroke-width: .72; }
+.ngm-plate .n2-splash-ring { fill: none; stroke: rgba(255,254,230,.98); stroke-width: 1.15; }
+.ngm-plate .n2-splash-ring-faint { stroke: rgba(185,168,87,.92); stroke-width: .82; }
+.ngm-plate .n2-splash-drop { fill: #fff6b8; stroke: rgba(102,95,48,.78); stroke-width: .52; }
+.n2-jump-body, .n2-jump-shadow, .n2-jump-highlight { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.n2-jump-body { stroke: var(--worm-color); }
+.n2-jump-shadow { stroke: color-mix(in srgb, var(--worm-deep) 35%, transparent); }
+.n2-jump-highlight { stroke: rgba(255,255,255,.26); pointer-events: none; }
+.n2-jump-male-tail { stroke-linejoin: round; }
+.n2-diving-tower { filter: drop-shadow(0 3px 2px rgba(29,65,57,.18)); cursor: grab; touch-action: none; user-select: none; outline: none; }
+.n2-diving-tower:active { cursor: grabbing; }
+.n2-diving-tower:focus-visible .n2-tower-hit { stroke: #e5c77a; stroke-width: 3; stroke-dasharray: 5 3; rx: 8; }
+.n2-tower-shadow { fill: rgba(35,65,58,.13); }
+.n2-tower-support { fill: #86a89c; stroke: #35585d; stroke-width: 1.7; stroke-linejoin: round; }
+.n2-tower-support.far { fill: #5f8178; }
+.n2-tower-brace { fill: none; stroke: #517d78; stroke-width: 3; stroke-linecap: round; }
+.n2-tower-ladder, .n2-tower-rail { fill: none; stroke: #bed0bf; stroke-width: 3.3; stroke-linecap: round; stroke-linejoin: round; }
+.n2-tower-rail.far { stroke: #769889; stroke-width: 2.5; }
+.n2-tower-step { fill: none; stroke: #e4d4a5; stroke-width: 4; stroke-linecap: round; }
+.n2-tower-board { fill: #f1eddc; stroke: #486c68; stroke-width: 1.5; stroke-linejoin: round; }
+.n2-tower-board-side { fill: #8eafa3; stroke: #35585d; stroke-width: 1.7; stroke-linejoin: round; }
+.n2-tower-board-line { fill: none; stroke: #c7af73; stroke-width: 1; stroke-linecap: round; }
+.n2-tower-bolt { fill: #d7b96d; stroke: #486c68; stroke-width: .8; }
+.n2-tower-feet { fill: none; stroke-linecap: round; }
+.n2-tower-feet { stroke: #35585d; stroke-width: 3.2; }
 .ngm-plate-small .plate-base, .ngm-plate-small .plate-rim { stroke-width: 2; }
 .ngm-plate-small .plate-agar { stroke-width: 1.25; }
 .ngm-plate-small .plate-glare { stroke-width: 1.5; }
