@@ -488,7 +488,7 @@
       return frame;
     }
     // Display windows preserve the source assets. The sticker uses a separate
-    // photo-edited thumbnail above; the photographed board remains unchanged.
+    // photo-edited image above, shared with its precisely aligned board placement.
     const svgNS = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgNS, 'svg');
     svg.classList.add('collection-thumbnail');

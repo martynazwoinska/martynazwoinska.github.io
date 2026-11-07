@@ -4,6 +4,18 @@ Last updated: 2026-11-07
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+## Approved S-Foodies sticker on the board, 2026-11-07
+
+Martyna approved using the same improved sticker in the Cabinet itself and
+requested publication. The exact approved PNG is registered at x=575, y=713.5,
+width=64, height=64 in the existing 1672 by 941 board coordinate system. The
+original sticker window is excluded to avoid doubled translucent edges. Its
+existing contact shadow, hotspot, size and position are preserved. Original
+object-layer files and the reference photograph remain byte-identical.
+Full-page previews at 360, 768, 1024 and 1440 px passed in light and dark themes,
+with keyboard details, focus return and horizontal-overflow checks. No public
+copy or Game files changed.
+
 ## Approved S-Foodies sticker thumbnail, 2026-11-07
 
 Martyna approved the gently sharpened original-photo sticker preview for

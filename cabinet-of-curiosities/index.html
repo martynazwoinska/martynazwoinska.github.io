@@ -8,6 +8,7 @@
   <meta name="description" content="Explore Martyna Zwoińska's Cabinet of Curiosities: an interactive collection of craft chocolate wrappers, tasting notes, crochet and cacao flavours.">
   <title>The Cabinet of Curiosities Martyna Zwoińska</title>
   <link rel="canonical" href="https://martynazwoinska.github.io/cabinet-of-curiosities/">
+  <link rel="preload" as="image" href="assets/cabinet-photo-objects-v75.svg" fetchpriority="high">
   <script>
     // Select the initial phone layout before the slower feature scripts arrive.
     document.documentElement.classList.toggle('is-portrait-browsing',
@@ -139,7 +140,16 @@
               <path d="M362 885L548 846L658 874L472 913Z" fill="url(#paradai-shadow-fade)" filter="url(#paradai-soft-shadow)"/>
               <path d="M361.5 884.5L548.5 845.5L549.5 848L362.5 887Z" fill="#16100c" opacity=".62" filter="url(#paradai-contact-shadow)"/>
             </svg>
-            <img class="photo-object-layer" src="assets/cabinet-photo-objects-v75.svg" width="1672" height="941" fetchpriority="high" alt="" aria-hidden="true">
+            <svg class="photo-object-layer" viewBox="0 0 1672 941" width="1672" height="941" aria-hidden="true" focusable="false">
+              <defs>
+                <clipPath id="board-objects-without-sticker">
+                  <path clip-rule="evenodd" d="M0 0H1672V941H0Z M575 713.5V777.5H639V713.5Z"/>
+                </clipPath>
+              </defs>
+              <!-- Preserve the original object layer; replace only the sticker at its exact registered bounds. -->
+              <image href="assets/cabinet-photo-objects-v75.svg" width="1672" height="941" clip-path="url(#board-objects-without-sticker)"/>
+              <image class="board-sticker" href="assets/sfoodies-sticker-clarity-v2.png" x="575" y="713.5" width="64" height="64"/>
+            </svg>
             <img class="crochet-eye crochet-eye-green" data-eye="green-crocheted-eye" src="assets/cabinet-photo-objects-v75.svg#green" width="160" height="150" alt="" aria-hidden="true">
             <img class="crochet-eye crochet-eye-yellow" data-eye="yellow-crocheted-eye" src="assets/cabinet-photo-objects-v76.svg#yellow" width="160" height="140" alt="" aria-hidden="true">
             <button class="chof-link" id="chof-link" type="button" aria-haspopup="dialog" aria-controls="detail-dialog" aria-label="Chof. Open details.">
