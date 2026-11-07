@@ -1759,5 +1759,19 @@
       });
     }
 
+    var contactPhotoCredit = document.getElementById('contactPhotoCredit');
+    if (contactPhotoCredit) {
+      contactPhotoCredit.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && contactPhotoCredit.open) {
+          event.preventDefault();
+          contactPhotoCredit.open = false;
+          contactPhotoCredit.querySelector('summary').focus();
+        }
+      });
+      document.addEventListener('click', function (event) {
+        if (!contactPhotoCredit.contains(event.target)) contactPhotoCredit.open = false;
+      });
+    }
+
     applyLanguage(currentLanguage);
 })(window, document);
