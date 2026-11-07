@@ -4,6 +4,24 @@ Last updated: 2026-11-07
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+## Object contour depth, 2026-11-07
+
+Martyna approved the revised Paradai tabletop shadow and requested additional
+depth around the board objects. The approved version strengthens separate wrapper
+contact shadows, adds deeper moving shadows behind both crocheted eyes, and
+keeps lighter contact shadows for the sticker and blue paper note. Approved
+photographs and alpha files remain unchanged. Responsive and animation checks
+passed. Approved for publication on 2026-11-07; see
+[scope and validation](docs/cabinet-paradai-shadow.md).
+
+## Paradai shadow correction, 2026-11-07
+
+The published contact-shadow adjustment did not resolve the broad tabletop
+patch. The approved correction repairs that background area and gives the standing
+Paradai bar its own attached, fading cast shadow. The photographed alpha layers
+are unchanged. Martyna approved this refinement for publication. See
+[scope and validation](docs/cabinet-paradai-shadow.md).
+
 ## Cabinet framing, plant and shadows, 2026-11-07
 
 Approved for publication: the original wide chocolate-board framing determines

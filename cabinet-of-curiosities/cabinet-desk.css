@@ -38,7 +38,8 @@ html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) .scene-
   top: 0;
   transform: translateX(-50%);
 }
-.cabinet-page .study-plant-natural {
+.cabinet-page .study-plant-natural,
+.cabinet-page .study-tabletop-repair {
   display: block;
   position: absolute;
   width: 113.98%;
@@ -47,4 +48,32 @@ html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) .scene-
   top: -1.39%;
   max-width: none;
   pointer-events: none;
+}
+
+/* These are shadow-only silhouettes; the photographed eyes remain untouched.
+   Share their existing motion, while the parent filter casts towards the right. */
+.note-contact-shadow {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.crochet-shadow-shape {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+.board-plane:has(.crochet-eye-green.is-orbiting, .crochet-eye-green.is-tap-animating) .crochet-shadow-green {
+  animation: crochet-orbit 3.2s ease-in-out infinite reverse;
+}
+.board-plane:has(.crochet-eye-yellow.is-orbiting, .crochet-eye-yellow.is-tap-animating) .crochet-shadow-yellow {
+  animation: crochet-orbit 2.8s ease-in-out infinite;
+}
+.board-plane:has(.crochet-eye-green.is-tap-animating) .crochet-shadow-green,
+.board-plane:has(.crochet-eye-yellow.is-tap-animating) .crochet-shadow-yellow {
+  animation-iteration-count: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .board-plane .crochet-shadow-shape { animation: none !important; }
 }

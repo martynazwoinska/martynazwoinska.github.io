@@ -18,7 +18,7 @@
   <script src="../shared/site-preferences.js?v=20260718-1"></script>
   <link rel="stylesheet" href="../shared/site-tokens.css?v=20260802-1">
   <link rel="stylesheet" href="cabinet.css?v=20260923-wide-collection-3">
-  <link rel="stylesheet" href="cabinet-desk.css?v=20261107-4">
+  <link rel="stylesheet" href="cabinet-desk.css?v=20261107-6">
   <link rel="stylesheet" href="cabinet-map.css?v=20260913-4">
 </head>
 <body>
@@ -45,6 +45,20 @@
           <img class="study-room" src="assets/loading-v120/cabinet-study-unified-v2.webp" width="1774" height="887" fetchpriority="high" alt="">
           <img class="study-frame-foliage" src="assets/loading-v120/cabinet-frame-foliage-v2.webp" width="1774" height="887" alt="">
           <img class="study-plant-natural" src="assets/cabinet-plant-natural-v7.webp" width="1774" height="887" alt="" aria-hidden="true">
+          <img class="study-tabletop-repair" src="assets/cabinet-tabletop-paradai-clean-v1.webp" width="1774" height="887" alt="" aria-hidden="true">
+          <svg class="note-contact-shadow" viewBox="0 0 1672 941" aria-hidden="true" focusable="false">
+            <defs>
+              <filter id="paper-contact-shadow" x="-2%" y="-2%" width="104%" height="104%" color-interpolation-filters="sRGB">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/>
+                <feOffset dx="1.2" dy="1.8" result="paper-silhouette"/>
+                <feFlood flood-color="#21180f" flood-opacity=".3"/>
+                <feComposite in2="paper-silhouette" operator="in"/>
+              </filter>
+            </defs>
+            <g filter="url(#paper-contact-shadow)">
+              <image href="assets/loading-v120/cabinet-note.svg" width="1672" height="941" clip-path="url(#study-note-window)"/>
+            </g>
+          </svg>
           <picture class="surround-picture">
             <img src="assets/loading-v120/cabinet-note.svg" width="1672" height="941" alt="">
           </picture>
@@ -73,31 +87,57 @@
             <svg class="object-contact-shadows" viewBox="0 0 1672 941" aria-hidden="true" focusable="false">
               <defs>
                 <filter id="wrapper-contact-shadow" x="-1%" y="-1%" width="102%" height="102%" color-interpolation-filters="sRGB">
-                  <feGaussianBlur in="SourceAlpha" stdDeviation="2.5"/>
-                  <feOffset dx="3" dy="3.8" result="soft-silhouette"/>
-                  <feFlood flood-color="#21180f" flood-opacity=".12"/>
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="2.7"/>
+                  <feOffset dx="3.2" dy="4" result="soft-silhouette"/>
+                  <feFlood flood-color="#21180f" flood-opacity=".24"/>
                   <feComposite in2="soft-silhouette" operator="in" result="soft-shadow"/>
-                  <feGaussianBlur in="SourceAlpha" stdDeviation="1.2"/>
-                  <feOffset dx="1.4" dy="2.2" result="contact-silhouette"/>
-                  <feFlood flood-color="#21180f" flood-opacity=".32"/>
+                  <feGaussianBlur in="SourceAlpha" stdDeviation=".9"/>
+                  <feOffset dx="1" dy="1.5" result="contact-silhouette"/>
+                  <feFlood flood-color="#21180f" flood-opacity=".42"/>
                   <feComposite in2="contact-silhouette" operator="in" result="contact-shadow"/>
                   <feMerge><feMergeNode in="soft-shadow"/><feMergeNode in="contact-shadow"/></feMerge>
                 </filter>
-                <filter id="paradai-soft-shadow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="4.6"/></filter>
-                <filter id="paradai-contact-shadow" x="-10%" y="-50%" width="120%" height="200%"><feGaussianBlur stdDeviation="1"/></filter>
-                <linearGradient id="paradai-shadow-fade" gradientUnits="userSpaceOnUse" x1="362" y1="885" x2="368.5" y2="916">
-                  <stop stop-color="#19110c" stop-opacity=".43"/>
-                  <stop offset=".5" stop-color="#19110c" stop-opacity=".23"/>
-                  <stop offset="1" stop-color="#19110c" stop-opacity="0"/>
+                <filter id="crochet-contact-shadow" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="3.2"/>
+                  <feOffset dx="4" dy="5.2" result="yarn-soft"/>
+                  <feFlood flood-color="#21180f" flood-opacity=".25"/>
+                  <feComposite in2="yarn-soft" operator="in" result="yarn-cast"/>
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="1.1"/>
+                  <feOffset dx="1.3" dy="2" result="yarn-contact"/>
+                  <feFlood flood-color="#21180f" flood-opacity=".38"/>
+                  <feComposite in2="yarn-contact" operator="in" result="yarn-close"/>
+                  <feMerge><feMergeNode in="yarn-cast"/><feMergeNode in="yarn-close"/></feMerge>
+                </filter>
+                <clipPath id="wall-wrapper-shadows">
+                  <!-- The standing bar casts onto the table, not an offset halo. -->
+                  <path clip-rule="evenodd" d="M0 0H1672V941H0Z M350 745V905H570V745Z M574 714V780H642V714Z"/>
+                </clipPath>
+                <clipPath id="sticker-shadow-region"><rect x="574" y="714" width="68" height="66"/></clipPath>
+                <filter id="paradai-soft-shadow" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="5.2"/></filter>
+                <filter id="paradai-contact-shadow" x="-10%" y="-50%" width="120%" height="200%"><feGaussianBlur stdDeviation=".7"/></filter>
+                <linearGradient id="paradai-shadow-fade" gradientUnits="userSpaceOnUse" x1="362" y1="885" x2="372.3" y2="934">
+                  <stop stop-color="#16100c" stop-opacity=".52"/>
+                  <stop offset=".4" stop-color="#16100c" stop-opacity=".38"/>
+                  <stop offset=".75" stop-color="#16100c" stop-opacity=".14"/>
+                  <stop offset="1" stop-color="#16100c" stop-opacity="0"/>
                 </linearGradient>
               </defs>
               <!-- Read the approved image only to cast a separate shadow. Its
                    visible pixels, alpha, outline and rendering remain untouched. -->
-              <image href="assets/cabinet-photo-objects-v75.svg" width="1672" height="941" filter="url(#wrapper-contact-shadow)"/>
+              <image href="assets/cabinet-photo-objects-v75.svg" width="1672" height="941" filter="url(#wrapper-contact-shadow)" clip-path="url(#wall-wrapper-shadows)"/>
+              <image href="assets/cabinet-photo-objects-v75.svg" width="1672" height="941" filter="url(#paper-contact-shadow)" clip-path="url(#sticker-shadow-region)"/>
+              <!-- Animate the shadow silhouettes with the unchanged eye images.
+                   Filtering their parent keeps the light direction stationary. -->
+              <g filter="url(#crochet-contact-shadow)">
+                <image class="crochet-shadow-shape crochet-shadow-green" href="assets/cabinet-photo-objects-v75.svg#green" x="970" y="300" width="160" height="150"/>
+              </g>
+              <g filter="url(#crochet-contact-shadow)">
+                <image class="crochet-shadow-shape crochet-shadow-yellow" href="assets/cabinet-photo-objects-v76.svg#yellow" x="650" y="600" width="160" height="140"/>
+              </g>
               <!-- The immutable Paradai cutout is translated down 35 units:
                    its actual base runs from (362,885) to (548,846). -->
-              <path d="M362 885L548 846L622 861Q626 863 621 865L438 902Z" fill="url(#paradai-shadow-fade)" filter="url(#paradai-soft-shadow)"/>
-              <path d="M361.5 884.5L548.5 845.5L550 849L363 888Z" fill="#19110c" opacity=".55" filter="url(#paradai-contact-shadow)"/>
+              <path d="M362 885L548 846L658 874L472 913Z" fill="url(#paradai-shadow-fade)" filter="url(#paradai-soft-shadow)"/>
+              <path d="M361.5 884.5L548.5 845.5L549.5 848L362.5 887Z" fill="#16100c" opacity=".62" filter="url(#paradai-contact-shadow)"/>
             </svg>
             <img class="photo-object-layer" src="assets/cabinet-photo-objects-v75.svg" width="1672" height="941" fetchpriority="high" alt="" aria-hidden="true">
             <img class="crochet-eye crochet-eye-green" data-eye="green-crocheted-eye" src="assets/cabinet-photo-objects-v75.svg#green" width="160" height="150" alt="" aria-hidden="true">
