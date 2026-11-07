@@ -1759,55 +1759,68 @@
       });
     }
 
-    var contactPhotoCredit = document.getElementById('contactPhotoCredit');
-    var contactPhotoTrigger = document.querySelector('.contact-place-frame--karolinska');
     var contactPhotoPair = document.querySelector('.contact-place-pair');
-    if (contactPhotoCredit && contactPhotoTrigger && contactPhotoPair) {
-      var contactCreditPinned = false;
-      var contactCreditDismissed = false;
-      function showContactCredit(show) {
-        contactPhotoCredit.hidden = !show;
-        contactPhotoTrigger.setAttribute('aria-expanded', String(show));
+    if (contactPhotoPair) {
+      var contactPhotos = Array.from(contactPhotoPair.querySelectorAll('button[aria-controls]')).map(function (trigger) {
+        return { trigger: trigger, label: document.getElementById(trigger.getAttribute('aria-controls')) };
+      }).filter(function (photo) { return photo.label; });
+      var activeContactPhoto = null;
+      var pinnedContactPhoto = null;
+      var dismissedContactPhoto = null;
+      function showContactPhoto(photo) {
+        if (activeContactPhoto !== photo) pinnedContactPhoto = null;
+        contactPhotos.forEach(function (entry) {
+          entry.label.hidden = entry !== photo;
+          entry.trigger.setAttribute('aria-expanded', String(entry === photo));
+        });
+        activeContactPhoto = photo;
       }
-      contactPhotoTrigger.addEventListener('pointerenter', function (event) {
-        if (event.pointerType === 'mouse' && !contactCreditDismissed) showContactCredit(true);
+      contactPhotos.forEach(function (photo) {
+        photo.trigger.addEventListener('pointerenter', function (event) {
+          // Keep a focused attribution link visible while the pointer crosses the other photo.
+          var focusedCredit = activeContactPhoto && activeContactPhoto.label.contains(document.activeElement);
+          if (event.pointerType === 'mouse' && !dismissedContactPhoto && !focusedCredit) showContactPhoto(photo);
+        });
+        photo.trigger.addEventListener('click', function () {
+          dismissedContactPhoto = null;
+          if (pinnedContactPhoto === photo) {
+            pinnedContactPhoto = null;
+            showContactPhoto(null);
+          } else {
+            showContactPhoto(photo);
+            pinnedContactPhoto = photo;
+          }
+        });
       });
       contactPhotoPair.addEventListener('pointerleave', function () {
-        contactCreditDismissed = false;
-        if (!contactCreditPinned && !contactPhotoPair.contains(document.activeElement)) {
-          showContactCredit(false);
-        }
-      });
-      contactPhotoTrigger.addEventListener('click', function () {
-        contactCreditDismissed = false;
-        contactCreditPinned = !contactCreditPinned;
-        showContactCredit(contactCreditPinned);
+        dismissedContactPhoto = null;
+        if (!pinnedContactPhoto && !contactPhotoPair.contains(document.activeElement)) showContactPhoto(null);
       });
       contactPhotoPair.addEventListener('focusin', function (event) {
-        if (!contactPhotoPair.contains(event.relatedTarget)) contactCreditDismissed = false;
-        if (!contactCreditDismissed && (event.target !== contactPhotoTrigger || contactPhotoTrigger.matches(':focus-visible'))) {
-          showContactCredit(true);
-        }
+        if (!contactPhotoPair.contains(event.relatedTarget)) dismissedContactPhoto = null;
+        var photo = contactPhotos.find(function (entry) { return entry.trigger === event.target; });
+        if (photo && dismissedContactPhoto !== photo && photo.trigger.matches(':focus-visible')) showContactPhoto(photo);
       });
       contactPhotoPair.addEventListener('focusout', function (event) {
         if (!contactPhotoPair.contains(event.relatedTarget)) {
-          contactCreditPinned = false;
-          if (!contactPhotoPair.matches(':hover')) showContactCredit(false);
+          pinnedContactPhoto = null;
+          if (!contactPhotoPair.matches(':hover')) showContactPhoto(null);
         }
       });
       document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape' && !contactPhotoCredit.hidden) {
+        if (event.key === 'Escape' && activeContactPhoto) {
           event.preventDefault();
-          contactCreditDismissed = true;
-          contactCreditPinned = false;
-          if (contactPhotoCredit.contains(document.activeElement)) contactPhotoTrigger.focus();
-          showContactCredit(false);
+          var photo = activeContactPhoto;
+          dismissedContactPhoto = photo;
+          pinnedContactPhoto = null;
+          if (photo.label.contains(document.activeElement)) photo.trigger.focus();
+          showContactPhoto(null);
         }
       });
       document.addEventListener('click', function (event) {
         if (!contactPhotoPair.contains(event.target)) {
-          contactCreditPinned = false;
-          showContactCredit(false);
+          pinnedContactPhoto = null;
+          showContactPhoto(null);
         }
       });
     }

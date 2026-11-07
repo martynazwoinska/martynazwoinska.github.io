@@ -1015,16 +1015,16 @@
     .contact-place-frame {
       position: absolute; top: 0;
       width: var(--contact-place-size); height: var(--contact-place-size);
-      overflow: hidden; border-radius: 50%;
+      overflow: hidden; border-radius: 50%; padding: 0; cursor: pointer;
       background: var(--bg-soft);
       border: 2px solid color-mix(in srgb, var(--accent-gold) 72%, var(--border));
       box-shadow: 0 8px 22px color-mix(in srgb, var(--text) 8%, transparent);
     }
     .contact-place-frame--uppsala { top: var(--contact-place-stagger); left: 0; z-index: 2; }
     .contact-place-frame--karolinska {
-      right: 0; z-index: 1; padding: 0; cursor: pointer;
+      right: 0; z-index: 1;
     }
-    .contact-place-frame--karolinska:focus-visible { border-radius: 50%; }
+    .contact-place-frame:focus-visible { border-radius: 50%; }
     .contact-place-image {
       display: block; width: 100%; height: 100%;
       object-fit: cover;
@@ -1036,6 +1036,9 @@
       width: 250px; max-width: 100%;
       color: var(--text-soft); font-size: .75rem; line-height: 1.5;
     }
+    .contact-place-credit--uppsala { left: 0; right: auto; width: max-content; }
+    .contact-place-name { display: block; color: var(--text); font-weight: 600; }
+    .contact-photo-attribution { display: block; margin-top: 3px; }
     .contact-credit-content {
       padding: 12px 14px; border: 1px solid var(--accent-gold); border-radius: 10px;
       background: var(--surface); box-shadow: var(--shadow); text-align: left;
@@ -1660,7 +1663,7 @@
     <h2>Contact</h2>
     <div class="contact-box">
       <figure class="contact-place-pair">
-        <div class="contact-place-frame contact-place-frame--uppsala">
+        <button class="contact-place-frame contact-place-frame--uppsala" type="button" aria-labelledby="contactUppsalaName" aria-controls="contactUppsalaLabel" aria-expanded="false">
           <img
             class="contact-place-image contact-place-image--uppsala"
             src="uppsala-contact.png"
@@ -1670,8 +1673,8 @@
             decoding="async"
             alt="Uppsala Cathedral at sunset, reflected in the river"
           />
-        </div>
-        <button class="contact-place-frame contact-place-frame--karolinska" type="button" aria-label="Aula Medica: Holger Ellgaard, CC BY-SA 4.0" aria-controls="contactPhotoCredit" aria-expanded="false">
+        </button>
+        <button class="contact-place-frame contact-place-frame--karolinska" type="button" aria-labelledby="contactAulaName" aria-controls="contactPhotoCredit" aria-expanded="false">
           <img
             class="contact-place-image contact-place-image--karolinska"
             src="assets/contact/aula-medica-holger-ellgaard-contact.jpg"
@@ -1682,11 +1685,20 @@
             alt="The faceted glass exterior of Aula Medica at Karolinska Institutet"
           />
         </button>
-        <figcaption class="contact-place-credit" id="contactPhotoCredit" hidden>
-          <div class="contact-credit-content">
-            <a href="https://commons.wikimedia.org/wiki/File:Aula_Medica,_maj_2019x.jpg" target="_blank" rel="noopener">Aula Medica: Holger Ellgaard</a>,
-            <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">CC BY-SA 4.0</a>,
-            <span class="contact-aula-crop">cropped</span>
+        <figcaption>
+          <div class="contact-place-credit contact-place-credit--uppsala" id="contactUppsalaLabel" hidden>
+            <div class="contact-credit-content">
+              <span class="contact-place-name" id="contactUppsalaName">Uppsala Cathedral</span>
+            </div>
+          </div>
+          <div class="contact-place-credit" id="contactPhotoCredit" hidden>
+            <div class="contact-credit-content">
+              <span class="contact-place-name" id="contactAulaName">Aula Medica, Karolinska Institutet</span>
+              <span class="contact-photo-attribution">
+                <a href="https://github.com/martynazwoinska/martynazwoinska.github.io/blob/main/assets/contact/aula-medica-holger-ellgaard-SOURCE.md" target="_blank" rel="noopener">Holger Ellgaard</a>,
+                <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">CC BY-SA 4.0</a>
+              </span>
+            </div>
           </div>
         </figcaption>
       </figure>
@@ -1749,7 +1761,7 @@
     </div>
   </footer>
 
-  <script src="home-i18n.js?v=20261107-contact-pair"></script>
-  <script src="home.js?v=20261107-photo-hover"></script>
+  <script src="home-i18n.js?v=20261107-photo-labels"></script>
+  <script src="home.js?v=20261107-photo-labels"></script>
 </body>
 </html>

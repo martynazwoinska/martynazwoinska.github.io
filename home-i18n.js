@@ -55,7 +55,8 @@
     "cabinet_action": "#beyond-research .beyond-card--cabinet .beyond-action",
     "contact_title": "#contact > h2",
     "contact_address": "#contact .contact-address",
-    "contact_aula_crop": "#contact .contact-aula-crop",
+    "contact_uppsala_name": "#contactUppsalaName",
+    "contact_aula_name": "#contactAulaName",
     "contact_email": "#contact .contact-copy .contact-copy-label",
     "contact_ki_profile": "#contact .contact-ki-profile-label",
     "contact_uu_profile": "#contact .contact-uu-profile-label",
@@ -148,7 +149,8 @@
     "project_3_alt": "Directions of experimental selection on male and female body mass in Callosobruchus seed beetles: small males, large males, large females, and sexually antagonistic selection",
     "contact_alt": "Uppsala Cathedral at sunset, reflected in the river",
     "contact_ki_alt": "The faceted glass exterior of Aula Medica at Karolinska Institutet",
-    "contact_aula_crop": "cropped"
+    "contact_uppsala_name": "Uppsala Cathedral",
+    "contact_aula_name": "Aula Medica, Karolinska Institutet"
   };
   var translatedCopy = {
     "sv": {
@@ -166,7 +168,8 @@
           "project_3_alt": "Riktningar för experimentellt urval på kroppsmassa hos hanar och honor av fröbaggar i släktet Callosobruchus: små hanar, stora hanar, stora honor och sexuellt antagonistiskt urval",
           "contact_alt": "Uppsala domkyrka i solnedgång, speglad i Fyrisån",
           "contact_ki_alt": "Aula Medicas fasetterade glasfasad vid Karolinska Institutet",
-          "contact_aula_crop": "beskuren",
+          "contact_uppsala_name": "Uppsala domkyrka",
+          "contact_aula_name": "Aula Medica, Karolinska Institutet",
           "skip": "Hoppa till huvudinnehållet",
           "menu": "Meny",
           "nav_about": "Om mig",
@@ -250,7 +253,8 @@
           "project_3_alt": "Kierunki doboru eksperymentalnego pod względem masy ciała samców i samic strąkowców z rodzaju Callosobruchus: małe samce, duże samce, duże samice oraz dobór o przeciwnych skutkach dla samców i samic",
           "contact_alt": "Katedra w Uppsali o zachodzie słońca, odbijająca się w rzece",
           "contact_ki_alt": "Fasetowana szklana elewacja Aula Medica w Instytucie Karolinska",
-          "contact_aula_crop": "kadrowanie",
+          "contact_uppsala_name": "Katedra w Uppsali",
+          "contact_aula_name": "Aula Medica, Instytut Karolinska",
           "skip": "Przejdź do głównej treści",
           "menu": "Menu",
           "nav_about": "O mnie",
