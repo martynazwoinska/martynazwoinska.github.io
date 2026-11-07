@@ -1022,8 +1022,9 @@
     }
     .contact-place-frame--uppsala { top: var(--contact-place-stagger); left: 0; z-index: 2; }
     .contact-place-frame--karolinska {
-      right: 0; z-index: 1;
+      right: 0; z-index: 1; padding: 0; cursor: pointer;
     }
+    .contact-place-frame--karolinska:focus-visible { border-radius: 50%; }
     .contact-place-image {
       display: block; width: 100%; height: 100%;
       object-fit: cover;
@@ -1031,25 +1032,12 @@
     .contact-place-image--uppsala { object-position: left center; }
     .contact-place-image--karolinska { object-position: 72% center; }
     .contact-place-credit {
-      position: absolute; right: 0; bottom: 0; z-index: 3;
+      position: absolute; right: 0; bottom: 48px; z-index: 3;
+      width: 250px; max-width: 100%;
       color: var(--text-soft); font-size: .75rem; line-height: 1.5;
     }
-    .contact-place-credit summary {
-      display: grid; place-items: center; width: 44px; height: 44px;
-      margin-left: auto; cursor: pointer; list-style: none; border-radius: 50%;
-      color: var(--text-soft);
-    }
-    .contact-place-credit summary::-webkit-details-marker { display: none; }
-    .contact-place-credit summary svg { width: 22px; height: 22px; }
-    .contact-place-credit summary:hover,
-    .contact-place-credit details[open] summary { color: var(--accent); }
-    .contact-place-credit summary:focus-visible {
-      outline: 2px solid var(--focus); outline-offset: 2px;
-    }
     .contact-credit-content {
-      position: absolute; right: 0; bottom: 48px;
-      width: 250px; max-width: calc(100vw - 64px); padding: 12px 14px;
-      border: 1px solid var(--accent-gold); border-radius: 10px;
+      padding: 12px 14px; border: 1px solid var(--accent-gold); border-radius: 10px;
       background: var(--surface); box-shadow: var(--shadow); text-align: left;
     }
     .contact-place-credit a {
@@ -1100,7 +1088,7 @@
     .contact-copy-fallback {
       margin: 12px 0 0 !important; font-size: .86rem; overflow-wrap: anywhere;
     }
-    @media (min-width: 621px) {
+    @media (min-width: 760px) {
       #contact > h2 {
         width: min(100%, 870px);
         margin-inline: auto;
@@ -1128,21 +1116,20 @@
       }
       #contact .contact-institution-links .pill { width: 100%; }
     }
-    @media (min-width: 701px) {
-      .contact-place-pair { top: clamp(16px, calc(3.125vw - 8px), 24px); }
-    }
     @media (min-width: 760px) {
+      .contact-place-pair { align-self: center; }
       .contact-social-row {
         display: flex; flex: 0 0 100%; gap: 10px;
       }
     }
-    @media (max-width: 700px) {
-      #contact > h2 { margin-bottom: 24px; }
+    @media (width < 760px) {
+      #contact > h2 { width: min(100%, 440px); margin: 0 auto 24px; }
       .contact-box {
-        --contact-place-size: 154px;
+        --contact-place-size: min(154px, 45vw);
         --contact-place-overlap: 38px;
         --contact-place-stagger: 8px;
-        display: block; min-height: 0; width: 100%; padding: 200px 0 0;
+        display: block; min-height: 0; width: min(100%, 440px); margin-inline: auto;
+        padding: calc(var(--contact-place-size) + var(--contact-place-stagger) + 38px) 0 0;
       }
       .contact-place-pair {
         position: absolute; top: 0; left: 50%; right: auto;
@@ -1153,6 +1140,7 @@
     }
     @media (max-width: 350px) {
       #contact .links { grid-template-columns: 1fr; }
+      #contact .contact-institution-links .pill { white-space: normal; }
     }
 
     footer {
@@ -1683,7 +1671,7 @@
             alt="Uppsala Cathedral at sunset, reflected in the river"
           />
         </div>
-        <div class="contact-place-frame contact-place-frame--karolinska">
+        <button class="contact-place-frame contact-place-frame--karolinska" type="button" aria-label="Aula Medica: Holger Ellgaard, CC BY-SA 4.0" aria-controls="contactPhotoCredit" aria-expanded="false">
           <img
             class="contact-place-image contact-place-image--karolinska"
             src="assets/contact/aula-medica-holger-ellgaard-contact.jpg"
@@ -1693,18 +1681,13 @@
             decoding="async"
             alt="The faceted glass exterior of Aula Medica at Karolinska Institutet"
           />
-        </div>
-        <figcaption class="contact-place-credit">
-          <details id="contactPhotoCredit">
-            <summary aria-label="Aula Medica: Holger Ellgaard, CC BY-SA 4.0">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.5" r=".8" fill="currentColor" stroke="none"/></svg>
-            </summary>
-            <div class="contact-credit-content">
-              <a href="https://commons.wikimedia.org/wiki/File:Aula_Medica,_maj_2019x.jpg" target="_blank" rel="noopener">Aula Medica: Holger Ellgaard</a>,
-              <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">CC BY-SA 4.0</a>,
-              <span class="contact-aula-crop">cropped</span>
-            </div>
-          </details>
+        </button>
+        <figcaption class="contact-place-credit" id="contactPhotoCredit" hidden>
+          <div class="contact-credit-content">
+            <a href="https://commons.wikimedia.org/wiki/File:Aula_Medica,_maj_2019x.jpg" target="_blank" rel="noopener">Aula Medica: Holger Ellgaard</a>,
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">CC BY-SA 4.0</a>,
+            <span class="contact-aula-crop">cropped</span>
+          </div>
         </figcaption>
       </figure>
       <p class="contact-address">
@@ -1767,6 +1750,6 @@
   </footer>
 
   <script src="home-i18n.js?v=20261107-contact-pair"></script>
-  <script src="home.js?v=20261107-contact-credit"></script>
+  <script src="home.js?v=20261107-photo-hover"></script>
 </body>
 </html>

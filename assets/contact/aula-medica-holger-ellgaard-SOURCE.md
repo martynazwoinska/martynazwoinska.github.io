@@ -8,6 +8,6 @@
 - Original SHA-1: 8d6a6f2fc1a7f4f737a427799120001ad2fa22d7.
 - Original and derivative licence: https://creativecommons.org/licenses/by-sa/4.0/
 
-The full original frame was resized and JPEG-compressed for the website. No colour changes, retouching or generative editing were applied. A circular CSS crop displays the roofline and projecting corner. The source, photographer, licence and localized crop notice remain available through the information control beside the photographs.
+The full original frame was resized and JPEG-compressed for the website. No colour changes, retouching or generative editing were applied. A circular CSS crop displays the roofline and projecting corner. The source, photographer, licence and localized crop notice remain available by hovering, focusing or tapping the Aula Medica photograph.
 
 The previous Pelle Sten source and derivative remain preserved and unchanged.

@@ -1760,16 +1760,55 @@
     }
 
     var contactPhotoCredit = document.getElementById('contactPhotoCredit');
-    if (contactPhotoCredit) {
-      contactPhotoCredit.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape' && contactPhotoCredit.open) {
+    var contactPhotoTrigger = document.querySelector('.contact-place-frame--karolinska');
+    var contactPhotoPair = document.querySelector('.contact-place-pair');
+    if (contactPhotoCredit && contactPhotoTrigger && contactPhotoPair) {
+      var contactCreditPinned = false;
+      var contactCreditDismissed = false;
+      function showContactCredit(show) {
+        contactPhotoCredit.hidden = !show;
+        contactPhotoTrigger.setAttribute('aria-expanded', String(show));
+      }
+      contactPhotoTrigger.addEventListener('pointerenter', function (event) {
+        if (event.pointerType === 'mouse' && !contactCreditDismissed) showContactCredit(true);
+      });
+      contactPhotoPair.addEventListener('pointerleave', function () {
+        contactCreditDismissed = false;
+        if (!contactCreditPinned && !contactPhotoPair.contains(document.activeElement)) {
+          showContactCredit(false);
+        }
+      });
+      contactPhotoTrigger.addEventListener('click', function () {
+        contactCreditDismissed = false;
+        contactCreditPinned = !contactCreditPinned;
+        showContactCredit(contactCreditPinned);
+      });
+      contactPhotoPair.addEventListener('focusin', function (event) {
+        if (!contactPhotoPair.contains(event.relatedTarget)) contactCreditDismissed = false;
+        if (!contactCreditDismissed && (event.target !== contactPhotoTrigger || contactPhotoTrigger.matches(':focus-visible'))) {
+          showContactCredit(true);
+        }
+      });
+      contactPhotoPair.addEventListener('focusout', function (event) {
+        if (!contactPhotoPair.contains(event.relatedTarget)) {
+          contactCreditPinned = false;
+          if (!contactPhotoPair.matches(':hover')) showContactCredit(false);
+        }
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !contactPhotoCredit.hidden) {
           event.preventDefault();
-          contactPhotoCredit.open = false;
-          contactPhotoCredit.querySelector('summary').focus();
+          contactCreditDismissed = true;
+          contactCreditPinned = false;
+          if (contactPhotoCredit.contains(document.activeElement)) contactPhotoTrigger.focus();
+          showContactCredit(false);
         }
       });
       document.addEventListener('click', function (event) {
-        if (!contactPhotoCredit.contains(event.target)) contactPhotoCredit.open = false;
+        if (!contactPhotoPair.contains(event.target)) {
+          contactCreditPinned = false;
+          showContactCredit(false);
+        }
       });
     }
 
