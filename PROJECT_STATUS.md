@@ -6,16 +6,15 @@ This file records approved decisions and the verified implementation state. Alwa
 
 ## Cabinet writing-desk base, 2026-11-07
 
-Implemented the approved open leg space beneath the map drawer, with cupboards
-on both sides. The approved lower image is unchanged; a separate joining mask
-now scales with it and prevents light-theme seams. The upper scene, tabletop,
-photographed object layers and original interactive coordinates are preserved.
-The whole furniture assembly still pans and zooms together.
+Completed the open desk with taller cupboard pedestals, more legroom and a worn
+berry-and-green woven rug. A separate background derivative extends only below
+the existing tabletop; original object layers remain byte-identical. Paradai has
+separate contact and soft cast shadows, with its wrapper untouched. The joining
+mask follows the image dimensions without light-theme seams. The original drawer,
+map controls and hotspot coordinates remain registered to the upper scene.
 
 Desktop/mobile, both themes, drawer keyboard controls, focus return, object
-details and landscape zoom/reset passed. Tabletop lighting was inspected only:
-the leaning Paradai bar would benefit from a more convincing cast shadow.
-Implementation is local and has not been deployed. See
+details and landscape zoom/reset passed. The new image is about 160 KB. See
 [asset details and validation](docs/cabinet-open-desk.md).
 
 For the next Game scene, start with the

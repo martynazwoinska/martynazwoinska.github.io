@@ -1,6 +1,55 @@
 # Cabinet open writing-desk base
 
-Implemented 2026-11-07 on `codex/cabinet-bottom-preview`. Not deployed.
+Implemented 2026-11-07 on `codex/cabinet-bottom-preview` for GitHub Pages on main.
+
+## Current version: taller desk, rug and Paradai shadow
+
+The user requested taller, less squat lower furniture and a rug, plus an improved
+shadow under Paradai without altering the wrapper. The final lower scene uses
+`cabinet-of-curiosities/assets/cabinet-desk-rug-v4.webp` (1536 x 638, 159926 bytes).
+It was generated with the built-in image-editing tool from the previous clean
+background, then registered to the preserved upper scene. Only the generated
+lower section is displayed. The original file is preserved in generated_images
+as `exec-1df59203-3c44-4a53-a38e-32c4ab36ed25.png` in the task directory.
+Output preparation: resize the 1374 x 1145 result to 1536 x 1280, extract rows
+642 through 1279, encode WebP quality 94, effort 6. This places the lower section
+12 reference pixels down to match the original drawer underside.
+
+Final asset SHA-256:
+`9885145D36686EBB1A3E3C78314EEE95FBCEFD894E9A96CC02C5D5E79A346637`.
+
+The outer scene now has aspect ratio 1905.7456 / 1775.6919953, with its original
+upper assembly occupying 768/1292 of its height. The base begins at 654/1292.
+The side cupboards and the open kneehole are taller; the low-pile rug lies on the
+floor rather than on any furniture face. Its worn botanical border is secondary
+to the collection. The upper photograph, tabletop, lamp, plant, all wrappers,
+Chof and both crocheted eyes retain their prior image files and registration.
+
+Paradai uses two separate SVG shadow paths beneath the unchanged object layer.
+A narrow contact shadow anchors its lower edge; a broader blurred cast shadow
+extends to the right, away from the window. Its gradient follows the normal to
+the bar's base, so it softens with distance rather than disappearing along the
+bar's length. No wrapper or object alpha was changed. The v75/v76 hashes below
+were verified again before publication.
+
+Created two production files: `assets/cabinet-desk-rug-v4.webp` and
+`assets/cabinet-desk-rug-blend-v4.svg` under `cabinet-of-curiosities/`. Updated
+`cabinet-desk.css`, `index.html`, this document and `PROJECT_STATUS.md`.
+The prior open-desk assets are retained as source history. No tracked files
+deleted; no Game or homepage edits.
+
+Final full-page browser proofs, in both themes: 360 x 4765, 768 x 3323,
+1024 x 768, 1440 x 1000. Additional desktop proof: 1920 x 1200; landscape touch:
+844 x 390. Checked geometry, loading, no overflow or JavaScript errors, drawer
+keyboard opening, Escape/focus restoration, object dialog and touch zoom/reset.
+Visually inspected the joining edges, rug perspective, taller furniture and the
+Paradai shadow at actual page scale and in an additional tabletop detail view.
+The lower-furniture comparison across themes had no visible seam: only 30 of
+997500 colour samples differed, each by one level. Mobile checks are emulated.
+Final output compression was inspected before publication. Diff whitespace check
+passed. Screenshots and image-generation intermediates stay outside the repo.
+
+## Initial open-desk iteration (historical)
 
 ## Files and scope
 
