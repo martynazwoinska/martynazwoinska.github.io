@@ -4,6 +4,16 @@ Last updated: 2026-11-07
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+## Cabinet framing, plant and shadows, 2026-11-07
+
+Approved for publication: the original wide chocolate-board framing determines
+the camera size again. The extended desk and fluffy rug fill spare space below
+without shrinking the collection or lengthening the portrait-phone overview.
+The approved plant with one extra branch is integrated as a separate background
+patch. The photographed object layers remain unchanged. Paradai's shadows now
+follow its exact lower edge; the lower frame and wrapper contact shadows have
+also been refined. See [preview details](docs/cabinet-open-desk.md).
+
 ## Cabinet writing-desk base, 2026-11-07
 
 Completed the open desk with taller cupboard pedestals, more legroom and a worn

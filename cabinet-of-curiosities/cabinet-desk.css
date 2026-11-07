@@ -1,18 +1,18 @@
-/* Taller cupboard pedestals and a woven rug below the open leg space. The upper scene keeps its
-   original image bytes, registration, object layers and interactive drawer. */
+/* Size the camera from the original wide scene. Extra furniture may fill spare
+   space below it, but never reduces the chocolate board to fit the floor. */
 .scene-upper {
   position: absolute;
   inset: 0 0 auto;
   width: 100%;
-  height: 59.4427244582%;
+  height: 100%;
 }
 .cabinet-bottom-extension {
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 50.6191950464%;
+  top: 85.15625%;
   width: 100%;
-  height: 49.3808049536%;
+  height: 83.072916667%;
   max-width: none;
   pointer-events: none;
   /* Feather only the cupboard panels. The original drawer stays visible. */
@@ -20,25 +20,31 @@
   mask-size: 100% 100%;
   mask-repeat: no-repeat;
 }
-html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) {
-  --scene-width: min(99.1626vw, calc((100svh - 84px) * 1905.7456 / 1775.6919953));
-  --scene-height: calc(var(--scene-width) * 1775.6919953 / 1905.7456);
+/* Localized rug edit; the approved furniture and floor remain the base image. */
+.cabinet-rug-fluff {
+  position: absolute;
+  z-index: 2;
+  left: 23.4375%;
+  top: 140.885416667%;
+  width: 54.6875%;
+  height: 27.34375%;
+  max-width: none;
+  pointer-events: none;
 }
-@media (min-width: 1024px) {
-  html.is-wide-browsing .cabinet-page:not(.is-scene-interactive) {
-    --scene-width: min(calc(100vw - var(--collection-width) - 60px), calc((100svh - 100px) * 1905.7456 / 1775.6919953));
-  }
+.cabinet-stage {
+  overflow: hidden;
 }
-.is-portrait-browsing .cabinet-stage {
-  aspect-ratio: 1905.7456 / 1775.6919953;
+html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) .scene-space {
+  top: 0;
+  transform: translateX(-50%);
 }
-.cabinet-page.is-scene-interactive {
-  --scene-width: min(calc(100vw - env(safe-area-inset-left) - env(safe-area-inset-right)), calc((100dvh - var(--mobile-top) - var(--mobile-bottom)) * 1905.7456 / 1775.6919953));
-  --scene-height: calc(var(--scene-width) * 1775.6919953 / 1905.7456);
-}
-@media (pointer: coarse) and (orientation: landscape) and (max-height: 600px) {
-  .cabinet-page.is-scene-interactive {
-    --scene-width: calc(100dvh * 1905.7456 / 1775.6919953);
-    --scene-height: 100dvh;
-  }
+.cabinet-page .study-plant-natural {
+  display: block;
+  position: absolute;
+  width: 113.98%;
+  height: 112.17%;
+  left: -7.92%;
+  top: -1.39%;
+  max-width: none;
+  pointer-events: none;
 }

@@ -2,6 +2,71 @@
 
 Implemented 2026-11-07 on `codex/cabinet-bottom-preview` for GitHub Pages on main.
 
+## Original wide framing, natural foliage and corrected shadows
+
+Approved for publication on 2026-11-07. Martyna clarified that the lower
+furniture is secondary: preserve the original wide composition, and display the
+generated extension only where spare space remains. Do not scale down the board
+to fit the complete desk and rug. The camera therefore retains its original
+1905.7456 / 1055.5197 aspect ratio; the original upper assembly fills the camera,
+and the lower assets extend beyond it inside the clipped stage. Phone browsing
+retains the original landscape-shaped overview. Panning and zooming still move
+the board and its hotspots together.
+
+The fluffy rug patch is `assets/cabinet-rug-fluffy-v5.webp` (840 x 210), placed
+at reference x=360, y=1082 in a 1536-wide composition. The unchanged lower base
+starts at y=654. Coordinates are now expressed relative to the original
+768-high upper assembly rather than scaling the board to a 1292-high scene.
+
+`assets/cabinet-plant-natural-v7.webp` is a transparent 1774 x 887 background
+patch, generated with the built-in image editing tool. Only the plant region
+is revealed. It has a few coherent branches, individually varied leaves and
+open gaps; the original pot body, saucer, tabletop, furniture and photographed
+objects are preserved. The compositing refinement removes old stem fragments
+where the new stems enter the pot. Botanical structure was checked against the
+[RHS coffee plant profile](https://www.rhs.org.uk/plants/4159/coffea-arabica/details):
+opposite glossy leaves are retained without mirrored repetition.
+
+The v7 follow-up adds one upward branch in the middle gap. Existing foreground
+leaves overlap it naturally. It is a lossless derivative of v6: all visible
+pixels outside the small branch region are identical. V6 is preserved locally
+as source history; only the final V7 file is published.
+
+Plant patch SHA-256:
+`21C27805B07499B2DA4DB9745CAEC49DE24EDE12A53E15AF087A541EE7AD8A6E`.
+The v75/v76 protected object hashes below still match. Martyna approved the plant
+with the additional branch; that exact production file remains unchanged.
+
+The subsequent shadow correction replaces the earlier Paradai paths. They had
+started above its actual base, partly concealed by the object. The approved
+cutout's lower edge runs from (362,850) to (548,811), then its internal 35-unit
+translation places the base at (362,885) to (548,846). The contact shadow now
+follows that edge. Its soft cast shadow extends rightward from the base, away
+from the left window; the fade is perpendicular to the base, maintaining even
+contact across its length. A tighter dark contact and a separate diffuse shadow
+give wrappers depth without changing their image files. The lower wooden frame
+uses a close contact line and a short soft fade onto the tabletop. Lamp and pot
+contact shadows were inspected and retained because they already fit the light.
+
+Shadow implementation uses existing SVG layers only; no generated image, crop,
+lighting filter or alpha-mask change was applied to any photographed object.
+Before/after full-page proofs at 1920 x 1080 and supplementary Paradai details
+confirm the visible correction. Both themes and the responsive matrix below
+were checked again. The exact reviewed assets are approved for publication.
+
+Changed: Cabinet `index.html`, `cabinet-desk.css`, this document and
+`PROJECT_STATUS.md`. New production files: the plant and fluffy rug
+patches. Deleted: none. No Game or homepage changes. No public copy changes.
+
+Full-page proofs in both themes: 360 x 4629, 768 x 3033, 1024 x 768,
+1440 x 1000 and 1920 x 1080. Touch landscape proof: 844 x 390. Browser checks
+cover original camera proportions, shared image registration, unchanged board
+scale, extra-space clipping, no overflow or asset/JavaScript errors, drawer
+keyboard activation and focus restoration, object dialog and touch zoom/reset.
+Phone checks are emulated. Generation prompts and screenshots are saved beside
+the worktree, outside the repository. Martyna approved this final visual version
+and requested publication on 2026-11-07.
+
 ## Current version: taller desk, rug and Paradai shadow
 
 The user requested taller, less squat lower furniture and a rug, plus an improved
