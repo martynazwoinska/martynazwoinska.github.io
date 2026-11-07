@@ -784,13 +784,13 @@
               mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 940 34'%3E%3Cpath d='M56 20 C40 20 28 14 28 7 C28 2 37 1 43 4 C49 8 48 14 42 17 C36 19 32 15 34 10 M42 17 C37 24 29 28 21 25 M884 20 C900 20 912 14 912 7 C912 2 903 1 897 4 C891 8 892 14 898 17 C904 19 908 15 906 10 M898 17 C903 24 911 28 919 25' fill='none' stroke='black' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13 21 C20 17 28 20 31 26 C27 34 18 34 13 21Z M927 21 C920 17 912 20 909 26 C913 34 922 34 927 21Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
     }
     @media (max-width: 620px) {
-      section:not(#project)::after {
+      section:not(.research-subsection)::after {
         filter: drop-shadow(0 0 .65px var(--section-divider-gold));
       }
-      section:not(#project)::before {
+      section:not(.research-subsection)::before {
         filter: drop-shadow(0 0 .65px var(--section-divider-emerald));
       }
-      section:not(#project) > h2::before {
+      section:not(.research-subsection) > h2::before {
         filter: drop-shadow(0 0 .58px var(--ornament-berry));
       }
     }
@@ -811,15 +811,16 @@
     #about { padding-top: 44px; }
     #about::before, #about::after, #about > h2::before { display: none; }
     #research { padding-bottom: 34px; }
-    /* Current work belongs to Research, so it uses a quiet internal rule. */
+    /* Research projects, publications and people form one continuous chapter. */
+    .research-subsection { padding-top: 46px; }
     #project { padding-top: 34px; padding-bottom: 34px; }
-    #project::after {
+    .research-subsection::after {
       display: block; top: -2.5px; left: 50%;
       transform: translateX(-50%) rotate(45deg);
       width: 6px; height: 6px; background: var(--accent-gold);
       -webkit-mask: none; mask: none;
     }
-    #project::before {
+    .research-subsection::before {
       display: block; top: 0; left: 24px; transform: none;
       width: calc(100% - 48px); height: 1px;
       background: linear-gradient(
@@ -834,7 +835,7 @@
       opacity: .72;
       -webkit-mask: none; mask: none;
     }
-    #project > h2::before {
+    .research-subsection > h2::before {
       display: none;
     }
     @media (max-width: 620px) { #about { padding-top: 22px; } }
@@ -1160,8 +1161,6 @@
       <nav class="nav-links" id="primaryNav" aria-label="Primary navigation">
         <a href="#about">About</a>
         <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#collaborators">Collaborators</a>
         <a href="#beyond-research" class="nav-beyond" aria-label="Beyond Research">Beyond Research</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -1264,7 +1263,7 @@
   </section>
 
   <!-- ============ SELECTED RESEARCH PROJECTS ============ -->
-  <section id="project" class="wrap">
+  <section id="project" class="wrap research-subsection">
     <h2 class="sr-only">Selected research projects</h2>
     <div class="project">
       <div class="project-text">
@@ -1352,7 +1351,7 @@
   </section>
 
   <!-- ============ PUBLICATIONS ============ -->
-  <section id="publications" class="wrap">
+  <section id="publications" class="wrap research-subsection">
     <h2>Publications &amp; preprints</h2>
 
     <div class="pub-list">
@@ -1529,7 +1528,7 @@
   </section>
 
   <!-- ============ COLLABORATORS ============ -->
-  <section id="collaborators" class="wrap">
+  <section id="collaborators" class="wrap research-subsection">
     <h2>Collaborators</h2>
     <ul class="folio-list collaborator-list">
       <li class="folio-entry">
@@ -1722,7 +1721,7 @@
     </div>
   </footer>
 
-  <script src="home-i18n.js?v=20261107-data-steward"></script>
+  <script src="home-i18n.js?v=20261107-research-chapter"></script>
   <script src="home.js?v=20261107-ki-contact"></script>
 </body>
 </html>
