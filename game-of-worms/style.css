@@ -1526,8 +1526,8 @@ html.accessory-drag-active body { overscroll-behavior: none; }
 .ngm-plate .plate-label-tape { fill: rgba(246,249,231,.9); stroke: rgba(72,105,106,.64); stroke-width: 1; }
 .ngm-plate .plate-label-text { paint-order: stroke; stroke: rgba(255,255,255,.72); stroke-width: 1.5px; }
 .ngm-plate .plate-label-text.companion { font-size: 8px; }
-.ngm-plate .n2-crawler-body { fill: #f0c78e; stroke: #624239; stroke-width: .78; stroke-linejoin: round; }
-.ngm-plate .n2-crawler-highlight { fill: none; stroke: rgba(255,255,255,.82); stroke-width: .42; stroke-linecap: round; }
+.ngm-plate .n2-crawler-body, .n2-surface-body .n2-crawler-body { fill: #f0c78e; stroke: #624239; stroke-width: .78; stroke-linejoin: round; }
+.ngm-plate .n2-crawler-highlight, .n2-surface-body .n2-crawler-highlight { fill: none; stroke: rgba(255,255,255,.82); stroke-width: .42; stroke-linecap: round; }
 .ngm-plate .n2-landing-ripple { fill: none; stroke: rgba(250,248,216,.84); stroke-width: .72; }
 .ngm-plate .n2-splash-cover { fill: rgba(247,242,199,.96); stroke: rgba(124,116,56,.82); stroke-width: .72; }
 .ngm-plate .n2-splash-ring { fill: none; stroke: rgba(255,254,230,.98); stroke-width: 1.15; }

@@ -9,10 +9,10 @@ const {pathToFileURL}=require('node:url');
  const {FEEDING_AUDIO,FEEDING_BEATS,feedingTime,feedingFrame,playFeedingSound}=await import(pathToFileURL(path.resolve(__dirname,'../game-of-worms/n2-feeding.js')));
  assert(FEEDING_AUDIO.offsets.every(offset=>offset>=0&&offset+FEEDING_AUDIO.duration<=duration),'Every slurp excerpt fits the existing recording');
  const end=feedingTime(23350),length=FEEDING_AUDIO.duration*1000;
- assert.equal(FEEDING_BEATS[0],feedingTime(4350),'Sound begins with the crawl, after landing');
- assert(end-FEEDING_BEATS.at(-1)-length>=0&&end-FEEDING_BEATS.at(-1)-length<50,'Slurping ends just before departure');
+ assert.equal(FEEDING_BEATS[0],feedingTime(4350),'Sound begins after landing, once crawling is underway');
+ assert(FEEDING_BEATS.at(-1)<end&&FEEDING_BEATS.at(-1)+length>=end,'The final excerpt covers the crawl ending and is trimmed at departure');
  for(let i=0;i<FEEDING_BEATS.length;i++){
-  const beat=FEEDING_BEATS[i];assert.equal(feedingFrame(beat).crawler,1);assert.equal(feedingFrame(beat+length).crawler,1);
+  const beat=FEEDING_BEATS[i];assert.equal(feedingFrame(beat).crawler,1);assert.equal(feedingFrame(Math.min(beat+length,end-1)).crawler,1);
   if(i)assert(beat-FEEDING_BEATS[i-1]<=length-80,'Adjacent excerpts overlap through the full fade-out instead of leaving silent gaps');
  }
  const starts=[],stops=[],gains=[];let requests=0;
@@ -21,7 +21,7 @@ const {pathToFileURL}=require('node:url');
  const {recordedSound}=await import(pathToFileURL(path.resolve(__dirname,'../game-of-worms/scene-performance.js')));
  const sound=recordedSound({eat:'reunion-eat.wav'});assert.equal(sound.play('eat'),false,'No playback before gesture preparation');await sound.prepare(['eat']);await sound.prepare(['eat']);assert.equal(requests,1);
  for(const small of[false,true])for(let i=0;i<FEEDING_BEATS.length;i++)assert(playFeedingSound(sound,i,small));
- assert.equal(starts.length,FEEDING_BEATS.length*2);assert(starts.every(v=>v[2]===FEEDING_AUDIO.duration));assert(Math.max(...gains)*.4<=.055,'Peak level remains gentle despite the longer playback');
+ assert.equal(starts.length,FEEDING_BEATS.length*2);assert(starts.every(v=>v[2]<=FEEDING_AUDIO.duration&&v[2]>=.5));assert.equal(starts.at(-1)[2],.5,'The last excerpt ends at departure');assert(Math.max(...gains)*.4<=.018,'The loudest excerpt is at least nine decibels quieter than the old .055 peak');
  sound.stop();assert.equal(stops.length,starts.length);sound.stop();assert.equal(stops.length,starts.length,'Cancellation is idempotent');
  assert(playFeedingSound(sound,FEEDING_BEATS.length-1,false,.3));assert.equal(starts.at(-1)[2],.3,'A delayed final frame trims the sound to the remaining crawl time');sound.stop();
  global.fetch=async()=>{throw Error('offline')};const offline=recordedSound({eat:'missing.wav'});await offline.prepare(['eat']);assert.equal(offline.play('eat'),false);

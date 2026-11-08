@@ -1,8 +1,26 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-11-07
+Last updated: 2026-11-08
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
+
+## N2 complete motion review and quieter feeding, release 52, 2026-11-08
+
+Martyna requested refinement of every N2 movement stage and publication.
+Both worms now remain visible through the size changes, landing, crawling
+and return. The primary keeps its Olympic-style launch, then slows smoothly
+into the exact crawling pose. Its return starts from that same body, with
+no mismatched miniature or stationary departure pause. The companion's
+preparation settles smoothly before its hop. The two slow sinusoidal laps
+and the quieter overlapping feeding excerpts are retained.
+
+This supersedes the partly hidden primary emergence in previews 50 and 51.
+Checks cover 1,200 moved/tilted primary configurations, 72 companion cases,
+velocity and silhouette continuity, audio, reduced motion and cleanup.
+Desktop and phone cycles and uncropped full-page proofs at 360, 768, 1024
+and 1440 px passed. Source artwork and audio assets are unchanged. The Game
+stays fixed-light. See the Bristol dossier for detailed validation and the
+unrelated full-catalogue test-harness limitation.
 
 ## Approved S-Foodies sticker on the board, 2026-11-07
 

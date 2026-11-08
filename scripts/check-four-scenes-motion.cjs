@@ -14,22 +14,29 @@ const mod=name=>import(pathToFileURL(path.resolve(__dirname,'../game-of-worms',n
   assert(Math.abs(head.y-65-pose[1])<.001,'The face follows the front of the body');
  }
  for(let ms=0;ms<=FEEDING_DURATION;ms+=10){
+  const f=feedingFrame(ms,true);
+  assert(Math.abs(f.worm+f.jumpOpacity+f.crawler-1)<1e-9,'The companion has no visibility gap, including the entire landing interval');
+  if(ms>=240&&ms<feedingTime(3850))assert.equal(f.jumpOpacity,1,'The companion never fades away during its incoming hop');
+  assert(!(f.jumpOpacity>0&&f.crawler>0),'The companion and plate crawler never overlap, including departure');
+ }
+ for(const delta of[-1,0,1]){const f=feedingFrame(feedingTime(3850)+delta,true);assert.equal(f.jumpOpacity,delta<0?1:0);assert.equal(f.crawler,delta<0?0:1,'The companion switches directly to its matching complete crawler');}
+ for(let ms=0;ms<=FEEDING_DURATION;ms+=10){
   const f=feedingFrame(ms);assert(Object.values(f).every(v=>typeof v==='boolean'||Number.isFinite(v)));
   if(f.crawler>.9)assert(f.plate>.99,'The plate is fully presented before the two laps begin');
   if(ms<feedingTime(10350))assert.equal(f.consumed,false,'Interrupted feeding does not consume a portion');
   if(ms)assert(Math.abs(f.plate-feedingFrame(ms-10).plate)<.05,'Plate emphasis has no abrupt jumps');
   if(ms<feedingTime(23350))assert(!(f.jumpOpacity>0&&f.crawler>0),'The plate worm cannot appear while the incoming diver is visible');
-  if(ms<=feedingTime(3120)||ms>=feedingTime(4030))assert(Math.abs(f.worm+f.jumpOpacity+f.crawler-1)<.00001,'The other opacity hand-offs remain complementary');
+  assert(Math.abs(f.worm+f.jumpOpacity+f.crawler-1)<.00001,'Every stage remains fully visible, including landing and departure');
  }
  assert.equal(feedingFrame(0).plate,0);assert.equal(feedingFrame(FEEDING_DURATION).plate,0);assert(feedingFrame(FEEDING_DURATION).done);
- assert.equal(feedingFrame(0).crawl,0);assert.equal(feedingFrame(feedingTime(4350)).crawl,0);assert.equal(feedingFrame(feedingTime(23350)).crawl,1);assert.equal(feedingFrame(feedingTime(10350)).consumed,true);
- assert.equal(feedingFrame(feedingTime(1250)).jumpOut,0);assert.equal(feedingFrame(feedingTime(2550)).jumpOut,.5,'The outbound flight keeps a deliberate linear clock');assert.equal(feedingFrame(feedingTime(3850)).jumpOut,1);assert.equal(feedingFrame(feedingTime(24000)).jumpBack,1);assert.equal(feedingFrame(feedingTime(26300)).jumpBack,0);
+ assert.equal(feedingFrame(0).crawl,0);assert.equal(feedingFrame(feedingTime(3850)).crawl,0);assert(feedingFrame(feedingTime(4350)).crawl>0,'The head moves out of the entry point instead of materializing stationary');assert.equal(feedingFrame(feedingTime(23350)).crawl,1);assert.equal(feedingFrame(feedingTime(10350)).consumed,true);
+ assert.equal(feedingFrame(feedingTime(1250)).jumpOut,0);assert.equal(feedingFrame(feedingTime(2550)).jumpOut,.5,'The outbound flight keeps a deliberate linear clock');assert.equal(feedingFrame(feedingTime(3850)).jumpOut,1);assert.equal(feedingFrame(feedingTime(23350)).jumpBack,1);assert.equal(feedingFrame(feedingTime(26300)).jumpBack,0);
  assert.equal(feedingFrame(feedingTime(1250)).plate,1,'The enlarged plate is stable before take-off');assert.equal(feedingFrame(feedingTime(1250)).anticipation,1);assert(feedingFrame(feedingTime(1240)).anticipation<1,'Push-off continues directly into flight without a frozen hold');assert(feedingFrame(feedingTime(3675)).splash>.99);assert(Math.abs(feedingFrame(feedingTime(4250)).splash)<.00001);
  assert(FEEDING_BEATS.every((beat,index)=>!index||beat>FEEDING_BEATS[index-1]),'Eating cues remain ordered');assert(FEEDING_BEATS.every(beat=>feedingFrame(beat).crawler===1),'Every eating cue occurs while the plate worm is visible');
  assert.equal(feedingTime(3850)-feedingTime(1250),1820,'The outbound flight is thirty percent shorter');
  assert.equal(feedingTime(1250)-260,2233,'Boarding and push-off accelerate by the same proportion');
- assert.equal(feedingTime(23350)-feedingTime(4350),19000,'The two plate laps keep their nineteen-second pace');
- assert.equal(FEEDING_BEATS[1]-FEEDING_BEATS[0],320,'The continuous eating rhythm is independent of dive speed');
+ assert.equal(feedingTime(23350)-feedingTime(3850),19500,'The two slow plate laps keep their established duration');
+ assert.equal(FEEDING_BEATS[1]-FEEDING_BEATS[0],500,'Longer excerpts reduce the rapid repeated gulping');
  let previous=-1;for(let u=0;u<=1;u+=.001){const travel=feedingTravel(u);assert(travel>=previous&&travel>=0&&travel<=1,'Crawl progress stays monotonic and bounded');previous=travel;}assert.equal(feedingTravel(0),0);assert.equal(feedingTravel(1),1);
  const origin={x:0,y:100},target={x:100,y:200},flight=ballisticHeadPath(origin,target,false,200);assert.deepEqual(flight[0],origin);assert.deepEqual(flight.at(-1),target);assert(flight[1].y<origin.y,'The head launches upward');assert(Math.min(...flight.map(p=>p.y))<90,'The jump has one clear apex above take-off');assert(flight.at(-1).y>flight.at(-2).y,'The head enters the agar downward');
  const bendTransitions=(u,small=false,returning=false)=>{const transitions=[];let last=null;for(let i=1;i<1000;i++){const s=i/1000,value=flightBend(s,u,small,returning);if(Math.abs(value)<1e-6)continue;const sign=Math.sign(value);if(last&&sign!==last.sign)transitions.push((last.s+s)/2);last={s,sign};}return transitions;};
@@ -75,5 +82,5 @@ const mod=name=>import(pathToFileURL(path.resolve(__dirname,'../game-of-worms',n
  for(let n=1;n<=4;n++){assert(feed.start(plates[1]));assert.equal(plates[1].dots.filter(d=>d.opacity==='0').length,n);assert(plates[0].dots.every(d=>d.opacity==='1'));}
  feed.start(plates[1]);assert(plates[1].dots.every(d=>d.opacity==='1'));assert.equal(feed.active,false);
  feed.start(plates[0]);feed.clear();assert(plates.every(p=>p.dots.every(d=>d.opacity==='1')));
- console.log('Four scenes: continuous handoffs, nineteen-second sinusoidal crawling over two plate laps, safe boarding and sticky-release follow-through pass.');
+ console.log('Four scenes: continuous landing and return, no duplicate worm, two slow sinusoidal plate laps, safe boarding and sticky-release follow-through pass.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

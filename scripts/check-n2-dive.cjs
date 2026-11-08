@@ -43,19 +43,50 @@ const assert=require('node:assert/strict');
  const pre=dive.prepare(1-epsilon,offset),post=dive.flight(epsilon,target,offset);
  for(let i=0;i<prepared.points.length;i++){const p=prepared.points[i],va={x:(p.x-pre.points[i].x)/(epsilon*DIVE_PREPARE_MS/1000),y:(p.y-pre.points[i].y)/(epsilon*DIVE_PREPARE_MS/1000)},vb={x:(post.points[i].x-p.x)/(epsilon*DIVE_FLIGHT_MS/1000),y:(post.points[i].y-p.y)/(epsilon*DIVE_FLIGHT_MS/1000)};assert(distance(va,vb)<1,'Every body segment carries its velocity smoothly across take-off');}
  for(let i=0;i<=720;i++)assert(Math.min(...dive.flight(i/1000,target,offset).points.map(p=>p.y))>14,'The default flight leaves room for body thickness below the top of the scene');
- const {feedingFrame,feedingTime,feedingEntryTarget,DIVE_DELAY}=await import('../game-of-worms/n2-feeding.js');
+ const {feedingFrame,feedingTime,feedingEntryTarget,companionLandingPose,feedingWormPose,feedingOutline,createPrimaryLanding,primaryReturnPose,DIVE_DELAY}=await import('../game-of-worms/n2-feeding.js');
+ const maleSource=source.map(p=>({x:30+p.x*.42,y:110+p.y*.42}));let companionCases=0;
+ const nativeSource=maleSource.map(p=>Object.create({get x(){return p.x;},get y(){return p.y;}}));
+ assert.deepEqual(companionLandingPose(nativeSource,feedingWormPose(0,true).samples,0).points,maleSource,'Returning home retains native DOMPoint coordinates rather than spreading away their prototype accessors');
+ for(const direction of[-1,1])for(const x of[-100,150,450])for(const y of[80,250,400])for(const angle of[-.2,.2])for(const scale of[.5,1.8]){
+  const local=feedingWormPose(0,true,{x:17,y:6},1,direction).samples,c=Math.cos(angle),s=Math.sin(angle),mapped=local.map(p=>({x:x+scale*(c*p.x-s*p.y),y:y+scale*(s*p.x+c*p.y)}));
+  assert.deepEqual(companionLandingPose(maleSource,mapped,0).points,maleSource,'The companion begins and returns in its original full-size pose');
+  assert.deepEqual(companionLandingPose(maleSource,mapped,1).points,[...mapped].reverse(),'Every body point meets the complete crawler exactly');
+  const final=companionLandingPose(maleSource,mapped,1).points.slice().reverse().map((p,i)=>({x:(c*(p.x-x)+s*(p.y-y))/scale,y:(-s*(p.x-x)+c*(p.y-y))/scale,position:i/32}));
+  assert.equal(feedingOutline(final,true).body,feedingOutline(local,true).body,'The silhouette and taper agree at the renderer handoff');
+  assert.equal(feedingOutline(final,true).highlight,feedingOutline(local,true).highlight,'The body highlight also survives the handoff unchanged');
+  let previous=companionLandingPose(maleSource,mapped,0),lastScale=1;
+  for(let step=1;step<=120;step++){
+   const pose=companionLandingPose(maleSource,mapped,step/120),lengths=segments(pose.points),limit=(distance(maleSource.at(-1),mapped[0])+200)*.07;
+   assert(pose.points.every(p=>Number.isFinite(p.x)&&Number.isFinite(p.y)),'Moved and tilted companion landings stay finite');
+   assert(lengths.every(n=>n>.01),'The companion body never collapses into an empty point');
+   assert(pose.scale<=lastScale+1e-9&&pose.scale>0,'The body shrinks continuously instead of vanishing');lastScale=pose.scale;
+   assert(Math.max(...pose.points.map((p,i)=>distance(p,previous.points[i])))<limit,'No segment jumps during the landing or its reverse return');previous=pose;
+  }
+  for(const endpoint of[0,1]){const a=companionLandingPose(maleSource,mapped,endpoint).points,b=companionLandingPose(maleSource,mapped,endpoint===0?.0001:.9999).points;assert(Math.max(...a.map((p,i)=>distance(p,b[i])))<.0001,'The companion settles into each endpoint without a velocity snap');}
+  companionCases++;
+ }
+ console.log(`Companion continuity: full body visibility and exact silhouette handoff across ${companionCases} moved, tilted and resized plate combinations pass.`);
  const browserPoint=Object.create({get x(){return 125;},get y(){return -30;}}),entryTarget=feedingEntryTarget(browserPoint,{a:1.6*Math.cos(-.1),b:1.6*Math.sin(-.1)});
  assert.equal(entryTarget.x,125);assert.equal(entryTarget.y,-30);assert(Math.abs(Math.hypot(entryTarget.normal.x,entryTarget.normal.y)-1)<1e-12,'Native DOMPoint accessors survive conversion and plate scale does not stretch the entry normal');
  assert.equal(feedingFrame(240).anticipation,0,'The original body finishes its crossfade before boarding begins');
- for(let ms=3120;ms<=3850;ms+=10)assert.equal(feedingFrame(feedingTime(ms)).crawler,0,'The crawler stays hidden until submergence has finished');
- assert.equal(feedingFrame(feedingTime(3850)).jumpOpacity,0,'The diver is hidden before the crawler reveal begins');
- assert.equal(feedingFrame(feedingTime(4030)).crawler,1,'The crawler finishes its short reveal before crawling and eating start');
+ for(let ms=3120;ms<3850;ms+=10)assert.equal(feedingFrame(feedingTime(ms)).crawler,0,'Crawling begins only when the landing pose is complete');
+ assert.equal(feedingFrame(feedingTime(3850)).jumpOpacity,0,'The landing phase ends at the exact crawl boundary');
+ assert.equal(feedingFrame(feedingTime(4030)).crawler,1,'The whole crawling pose is visible before eating starts');
  // Exercise the full scene range, not only the default right/down target.
  // Plate scale changes its entry point; sample that change at both limits.
  let positionCases=0;
  const normalFor=a=>({x:-Math.sin(a),y:Math.cos(a)});
  for(const x of[-150,0,150,300])for(const y of[-250,-120,0,60])for(const tx of[-150,0,150,350,550])for(const ty of[-150,0,150,300,450])for(const angle of[-.2,0,.15]){
   positionCases++;const normal=normalFor(angle),target={x:tx,y:ty,normal},offset={x,y},signed=p=>(p.x-tx)*normal.x+(p.y-ty)*normal.y,tangent=p=>(p.x-tx)*normal.y-(p.y-ty)*normal.x;
+  const local=feedingWormPose(0,false,{x:17,y:6},1,positionCases%2?1:-1).samples,head=local[0],mapped=local.map(p=>({x:tx+1.3*((p.x-head.x)*normal.y+(p.y-head.y)*normal.x),y:ty+1.3*(-(p.x-head.x)*normal.x+(p.y-head.y)*normal.y)})),landing=createPrimaryLanding(dive,target,mapped,offset);
+  assert.deepEqual(landing.pose(1).points,[...mapped].reverse(),'The primary landing meets every crawler point without disappearance or a new pose');
+  assert.deepEqual(primaryReturnPose(dive,mapped,0,offset).points,[...mapped].reverse(),'Return begins with the exact same complete crawler');
+  assert(Math.max(...primaryReturnPose(dive,mapped,1,offset).points.map((p,i)=>distance(p,source[i])))<1e-8,'Return restores the full original body');
+  const transition=landing.pose(landing.start),preLanding=landing.pose(landing.start-epsilon),postLanding=landing.pose(landing.start+epsilon);
+  for(let i=0;i<33;i++){const p=transition.points[i],va={x:(p.x-preLanding.points[i].x)/epsilon,y:(p.y-preLanding.points[i].y)/epsilon},vb={x:(postLanding.points[i].x-p.x)/epsilon,y:(postLanding.points[i].y-p.y)/epsilon};assert(distance(va,vb)<2,'Every segment keeps its incoming velocity as the body begins to shrink');}
+  let lastDepth=-Infinity,lastSide=Math.abs(tangent(transition.points.at(-1)));
+  for(let q=0;q<=1.00001;q+=.025){const p=landing.pose(landing.start+(1-landing.start)*Math.min(q,1)),depth=signed(p.points.at(-1)),side=Math.abs(tangent(p.points.at(-1)));assert(depth>=lastDepth-1e-7&&depth<1e-7,'Settling reaches the food without overshooting or rebounding');assert(side<=lastSide+1e-7,'The approach cannot overshoot sideways and turn back');lastDepth=depth;lastSide=side;assert(p.points.every(p=>Number.isFinite(p.x)&&Number.isFinite(p.y)),'Every resized landing remains finite');}
+  const join=primaryReturnPose(dive,mapped,.65,offset),left=primaryReturnPose(dive,mapped,.65-epsilon,offset),right=primaryReturnPose(dive,mapped,.65+epsilon,offset);assert(Math.max(...join.points.map((p,i)=>Math.max(distance(p,left.points[i]),distance(p,right.points[i]))))<.001,'The return joins the board-to-home movement without a position jump');
   let side=null;
   for(let u=.3;u<1;u+=.01){
    const pose=dive.flight(u,target,offset),next=dive.flight(u+.00001,target,offset);

@@ -380,3 +380,109 @@ index.html, style.css; scripts/check-four-scenes-motion.cjs,
 scripts/check-n2-feeding-audio.cjs; PROJECT_STATUS.md, the art catalogue and
 this dossier. No files deleted. The release preserves the exact approved
 production illustration and animation files.
+
+## Head-first surface emergence and quieter feeding, local preview 50, 2026-11-08
+
+The full crawler no longer fades in as a completed silhouette. Only body
+segments whose recorded head track has crossed the entry point are rendered.
+The head advances first; the submerged end remains at the splash point until
+the tail follows. Original taper and body proportions are retained. The
+outbound dive target is explicitly fixed to that entry point, independent of
+the advancing head. A gentle entry ripple lasts through emergence. The two
+laps begin immediately after submergence and take 19.5 seconds; departure,
+return and the no-overlap rule remain unchanged.
+
+The same source recording plays in 600 ms excerpts every 500 ms, with the
+last excerpt trimmed to departure. Primary/male peak targets are .018/.013,
+replacing .055/.040. An independent mix calculation with the real WAV and
+existing playback envelopes measured peak reductions of 9.70/9.76 dB and
+RMS reductions of 11.03/11.10 dB. The shared audio player and source recording
+are unchanged. Subjective loudness still needs the user's listening review.
+
+Motion, 1,200-position dive, audio and syntax checks pass. New checks cover
+the fixed emergence point, nonnegative body history, original taper positions,
+continuous head movement and exact full-body continuity for both worms and
+both directions. Browser sampling covered 706 primary and 700 companion
+frames with no diver/crawler overlap. Pointer and Enter activation, Escape
+cleanup, browser warnings/errors and horizontal overflow passed.
+
+Uncropped full-page proofs were visually inspected at 360x2464, 768x2224,
+1024x1881 and 1440x1865 pixels. Additional actual-size detail frames show
+successive emergence stages. The Game stays fixed-light; reduced motion was
+checked in code. Physical phone testing remains manual. No public copy changed.
+This revision is uncommitted and undeployed pending visual/listening review.
+
+## Continuous companion landing, local preview 51, 2026-11-08
+
+The rare male no longer fades or erases its body before appearing on the agar.
+It shrinks along a short hop, turning continuously into the complete crawling
+pose. Segment angles and lengths interpolate without collapsing the body.
+The filled silhouette shares the crawler's exact taper and existing colours.
+One foreground body stays visible through landing, both laps and the return,
+so there is no renderer switch behind the plate glare or opaque splash. The
+companion splash now starts at its own contact time; the primary dive and
+head-first emergence, quieter audio, source artwork and public copy are unchanged.
+
+Regression checks cover the complete visibility timeline, exact endpoint
+coordinates and silhouette, 72 moved/tilted/resized plate configurations in
+both directions, and DOMPoint coordinate accessors on returning home. The
+existing 1,200-position primary dive, four-scenes, audio and syntax checks pass.
+Independent review identified and resolved an inherited drop shadow and
+inconsistent splash layering. Browser checks sampled 1,614 desktop frames,
+397 phone companion frames and 452 phone primary frames without a blank
+companion interval or duplicate worm. Completion and Escape remove all temporary
+layers and restore the source art; keyboard activation and cancellation retain focus.
+The final browser check had no warnings or errors.
+
+Uncropped full-page proofs were inspected at 360x2464, 768x2224, 1024x1881 and
+1440x1865 pixels with no horizontal overflow. The Game remains fixed-light.
+Physical-device testing and subjective listening remain manual. Changed this
+follow-up: n2-feeding.js, game.js, index.html and style.css under game-of-worms;
+scripts/check-n2-dive.cjs, scripts/check-four-scenes-motion.cjs, PROJECT_STATUS.md
+and this dossier. No repository files were created or deleted. Preview 51 remains
+uncommitted and undeployed pending Martyna's review.
+
+## Complete N2 motion review, release 52, 2026-11-08
+
+Martyna requested a review and refinement of every movement stage, followed
+by commit and deployment. Release 52 supersedes the primary's partially hidden
+emergence in previews 50 and 51. Both worms now use one foreground body from
+departure through arrival, both plate laps and return.
+
+The primary retains its Olympic-style launch and pike. Its final approach
+matches the incoming head and joint velocities, then decelerates into the
+exact 33-point crawler. A bounded cubic and adjusted clock prevent normal or
+sideways overshoot across moved and tilted plates. The body shrinks before
+settling into the final crawl curve so the tail does not swing below the rim
+while still long. Shape, width, taper and highlight remain connected.
+The return begins from that exact crawler rather than a miniature board stance,
+grows back onto the board, then follows the established route home. The former
+650 ms frozen departure interval is absorbed into the return arc. Companion
+preparation now eases into its hop. The 19.5-second, two-lap sinusoidal crawl
+and quieter audio are unchanged from preview 50.
+
+Primary geometry checks pass for 1,200 moved/tilted combinations, including
+whole-body velocity continuity, exact landing and return endpoints, monotone
+approach on both plate axes and the board/home join. The 72 companion cases,
+four-scenes motion, feeding audio, cryo flight, Bristol-only tailoring and
+JavaScript syntax checks pass. Independent geometry review found no body
+self-intersections. The optional full-catalogue tailoring audit reaches an
+existing mock-selector limitation in the unrelated Reunion juice artwork;
+the N2-only mode passes and those files are unchanged.
+
+Browser review covered complete desktop primary, phone primary and phone
+companion cycles, followed by a focused visual refinement of the final landing.
+1,577 desktop primary, 1,612 phone primary and 1,716 phone companion samples
+showed no blank body interval or empty visible silhouette. The old separate
+crawler stays hidden; the same foreground actor renders the complete sequence.
+Completion and Escape restore the original art and remove temporary layers.
+Keyboard movement, Enter activation, focus and pointer activation were checked.
+The final browser console had no warnings or errors.
+
+Uncropped full-page proofs were inspected at 360x2464, 768x2224, 1024x1881 and
+1440x1865 pixels, with no horizontal overflow. The fixed-light palette and
+reduced-motion controller are preserved. Physical-device testing and subjective
+listening remain manual. No public copy, source graphics or audio files changed.
+The release changes n2-feeding.js, game.js, index.html and style.css under
+game-of-worms; three existing motion/audio checks; PROJECT_STATUS.md and this
+dossier. No repository files were created or deleted.
