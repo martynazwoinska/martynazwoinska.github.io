@@ -1,6 +1,7 @@
 import {add,at,relative,ease,clamp,matrix,recordedSound} from './scene-performance.js?v=20260919-uniform-1';
-import {createDiveGeometry,DIVE_PREPARE_MS,DIVE_FLIGHT_MS} from './n2-dive-motion.js?v=20261107-dive-46';
+import {createDiveGeometry,DIVE_PREPARE_MS,DIVE_FLIGHT_MS,DIVE_ENTRY_PHASE} from './n2-dive-motion.js?v=20261107-dive-46';
 import {createDivingTower} from './n2-diving-tower.js?v=20261107-tower-44';
+import {createDiveOutfit} from './n2-dive-outfit.js?v=20261108-n2-outfit-55';
 
 export const DIVE_DELAY=DIVE_PREPARE_MS+260-1250;
 // Compress only the dive in the choreography clock. Surface movement and
@@ -8,7 +9,7 @@ export const DIVE_DELAY=DIVE_PREPARE_MS+260-1250;
 const FLIGHT_REFERENCE_MS=2600,FLIGHT_SAVED_MS=FLIGHT_REFERENCE_MS-DIVE_FLIGHT_MS;
 export function feedingTime(story){return DIVE_DELAY+(story<=1250?story:story<3850?1250+(story-1250)*DIVE_FLIGHT_MS/FLIGHT_REFERENCE_MS:story-FLIGHT_SAVED_MS);}
 function feedingStory(ms){const t=ms-DIVE_DELAY;return t<=1250?t:t<1250+DIVE_FLIGHT_MS?1250+(t-1250)*FLIGHT_REFERENCE_MS/DIVE_FLIGHT_MS:t+FLIGHT_SAVED_MS;}
-export const FEEDING_DURATION=feedingTime(28000);
+export const FEEDING_DURATION=feedingTime(29000);
 // Softly overlapping excerpts keep feeding audible throughout both laps.
 // Leave the take-off quiet, and keep this rhythm independent of dive speed.
 export const FEEDING_AUDIO={duration:.6,interval:500,offsets:[.02,.03,.025],levels:[.94,1,.97,.95]};
@@ -23,6 +24,17 @@ export function feedingTravel(progress,ramp=.08){
  return (u-.5*ramp)/total;
 }
 
+// Move out of the entry point immediately. A short, gently slowing emergence
+// feeds into the normal crawl speed, rather than hiding the head in a slow start.
+export function feedingEntryTravel(progress){
+ const u=clamp(progress),entry=.9/19.5,stop=1.2/19.5,body=1/13,speed=(1-body)/(1-entry-stop/2),initial=2*body/entry-speed;
+ if(u===0||u===1)return u;
+ if(u<entry){const q=u/entry;return speed*u+(initial-speed)*entry*(q-q**3+.5*q**4);}
+ const t=u-entry,steady=1-entry-stop;
+ if(t<=steady)return body+speed*t;
+ const q=(t-steady)/stop;return body+speed*(steady+stop*(q/2+Math.sin(Math.PI*q)/(2*Math.PI)));
+}
+
 // Crawl-like curvature retained during the fictional jump: about 1.5 spatial
 // cycles, travelling from the head (s=1) towards the tail (s=0), with weaker
 // posterior bending and fixed endpoints for clean face and tail hand-offs.
@@ -32,16 +44,16 @@ export function flightBend(s,progress,small=false,returning=false){
 }
 
 export function feedingFrame(ms,small=false){
- const story=feedingStory(ms),takeoff=ease((ms-80)/160),landing=ease((story-3120)/730),departure=ease((story-23350)/650),home=ease((story-26300)/450);
- const impactProgress=clamp((story-3120)/900),plate=ease((ms-80)/620)*(1-ease((story-26700)/800));
+ const story=feedingStory(ms),takeoff=ease((ms-80)/160),landing=ease((story-3120)/730),departure=ease((story-23350)/650),home=ease((story-27200)/450);
+ const impactProgress=clamp((story-3120)/900),plate=ease((ms-80)/620)*(1-ease((story-27600)/800));
  return {
   plate,landing,departure,home,
-  // Both arrivals meet the complete crawler without a hidden interval.
+  // The primary emerges head first after its tail has entered the food.
   crawler:Number(story>=3850&&story<23350),
-  crawl:feedingTravel((story-3850)/19500),
+  crawl:(small?feedingTravel:feedingEntryTravel)((story-3850)/19500),
   wave:1,
   jumpOut:clamp((story-1250)/FLIGHT_REFERENCE_MS),
-  jumpBack:1-clamp((story-23350)/2950),
+  jumpBack:1-clamp((story-23350)/3850),
   jumpOpacity:Math.max(takeoff*Number(story<3850),Number(story>=23350)*(1-home)),
   worm:1-takeoff*(1-home),
   anticipation:clamp((ms-260)/DIVE_PREPARE_MS),
@@ -115,9 +127,17 @@ export function feedingOutline(samples,small=false,widthScale=1){
  };
 }
 
+export function feedingSurfaceSamples(samples,progress,entry){
+ if(progress>=BODY_HISTORY)return samples;
+ const visible=samples.filter(p=>p.time>=0);
+ if(progress>0&&visible.at(-1)?.time>0)visible.push({...entry,time:0,position:progress/BODY_HISTORY});
+ return visible;
+}
+
 function wormShape(track,t,small){
- const whole=wormMidline(track,t,small),samples=whole;
- return {...feedingOutline(samples,small),samples:whole,head:whole[0],tail:whole.at(-1)};
+ const whole=wormMidline(track,t,small),samples=small?whole:feedingSurfaceSamples(whole,t,track(0));
+ const length=whole.slice(1).reduce((sum,p,i)=>sum+Math.hypot(p.x-whole[i].x,p.y-whole[i].y),0);
+ return {...feedingOutline(samples,small),length,samples:whole,head:whole[0],tail:whole.at(-1)};
 }
 
 function rippleFrame(ms,start,duration=420){
@@ -185,43 +205,43 @@ export function takeoffRelease(progress,position){
 // Keep one visible body throughout the size change. Interpolating the
 // segment angles and lengths avoids a collapsed silhouette while it turns and
 // shrinks into the exact head-to-tail pose already used by the plate crawler.
-export function companionLandingPose(source,plate,progress,options={}){
+export function companionLandingPose(source,plate,progress){
  const u=clamp(progress),destination=[...plate].reverse(),n=source.length;
  const segments=points=>points.slice(1).map((p,i)=>({length:Math.hypot(p.x-points[i].x,p.y-points[i].y),angle:Math.atan2(p.y-points[i].y,p.x-points[i].x)}));
  const a=segments(source),b=segments(destination),wrap=x=>Math.atan2(Math.sin(x),Math.cos(x));
  for(let i=n-3;i>=0;i--){a[i].angle=a[i+1].angle+wrap(a[i].angle-a[i+1].angle);b[i].angle=b[i+1].angle+wrap(b[i].angle-b[i+1].angle);}
  const turn=a.at(-1).angle+wrap(b.at(-1).angle-a.at(-1).angle)-b.at(-1).angle;
- const length=a.reduce((s,p)=>s+p.length,0),targetLength=b.reduce((s,p)=>s+p.length,0),scale=1+(targetLength/length-1)*ease(options.settling?u/.68:(u-.08)/.92),blend=ease(options.settling?(u-.22)/.58:(u-.12)/.88);
- const flight=options.head?null:measuredPath(ballisticHeadPath(source.at(-1),destination.at(-1),true)),head=options.head||flight.atDistance(flight.total*ease(u)),points=Array(n);points[n-1]=head;
- for(let i=n-2;i>=0;i--){const bend=options.angularVelocity?(options.angularVelocity[i]||0)*u*Math.max(0,1-u/.8)**3:flightBend(i/(n-1),u,true)*3*Math.sin(Math.PI*u),angle=a[i].angle+(b[i].angle+turn-a[i].angle)*blend+bend,span=a[i].length*scale*(1-blend)+b[i].length*blend;points[i]={x:points[i+1].x-Math.cos(angle)*span,y:points[i+1].y-Math.sin(angle)*span};}
+ const length=a.reduce((s,p)=>s+p.length,0),targetLength=b.reduce((s,p)=>s+p.length,0),scale=1+(targetLength/length-1)*ease((u-.08)/.92),blend=ease((u-.12)/.88);
+ const flight=measuredPath(ballisticHeadPath(source.at(-1),destination.at(-1),true)),head=flight.atDistance(flight.total*ease(u)),points=Array(n);points[n-1]=head;
+ for(let i=n-2;i>=0;i--){const bend=flightBend(i/(n-1),u,true)*3*Math.sin(Math.PI*u),angle=a[i].angle+(b[i].angle+turn-a[i].angle)*blend+bend,span=a[i].length*scale*(1-blend)+b[i].length*blend;points[i]={x:points[i+1].x-Math.cos(angle)*span,y:points[i+1].y-Math.sin(angle)*span};}
  // Preserve exact coordinates at either handoff, including rounded SVG paths.
- return {points:u===0?source.map(p=>({x:p.x,y:p.y})):u===1?destination:points,scale,appearance:ease((u-.3)/(options.settling?.5:.4))};
+ return {points:u===0?source.map(p=>({x:p.x,y:p.y})):u===1?destination:points,scale,appearance:ease((u-.3)/.4)};
 }
 
-// Begin settling above the food. Bound the first cubic control point on both
-// plate axes, then adjust its clock to retain the incoming velocity. The last
-// two points coincide, so arrival cannot overshoot, rebound or stop abruptly.
-export function createPrimaryLanding(diver,target,plate,offset={x:0,y:0}){
- const n=target.normal||{x:0,y:1},end=plate[0],epsilon=.00001,project=p=>p.x*n.x+p.y*n.y,tangent=p=>p.x*n.y-p.y*n.x;
- let start=.3,source,velocity,rate=1;
- for(let i=64;i>=20;i--){const t=i/100,pose=diver.flight(t,target,offset),a=diver.flight(t-epsilon,target,offset).points.at(-1),b=diver.flight(t+epsilon,target,offset).points.at(-1),v={x:(b.x-a.x)/(2*epsilon),y:(b.y-a.y)/(2*epsilon)},head=pose.points.at(-1);
-  const delta={x:end.x-head.x,y:end.y-head.y},dn=project(delta),dt=tangent(delta),vn=project(v),vt=tangent(v);
-  if(vn>=0&&dn>0&&vt*dt>=-1e-8&&(Math.abs(dt)>1e-7||Math.abs(vt)<1e-7)){start=t;source=pose;velocity=v;rate=Math.max(1,vn*(1-t)/(3*dn),Math.abs(dt)>1e-7?Math.abs(vt)*(1-t)/(3*Math.abs(dt)):1);if(rate>1)rate*=1.01;break;}
- }
- if(!source)throw new Error('Unable to construct a continuous plate approach');
- const before=diver.flight(start-epsilon,target,offset).points,after=diver.flight(start+epsilon,target,offset).points,angle=(a,b)=>Math.atan2(b.y-a.y,b.x-a.x),angularVelocity=before.slice(1).map((p,i)=>{const delta=angle(after[i],after[i+1])-angle(before[i],p);return Math.atan2(Math.sin(delta),Math.cos(delta))/(2*epsilon)*(1-start);}),origin=source.points.at(-1),control={x:origin.x+velocity.x*(1-start)/(3*rate),y:origin.y+velocity.y*(1-start)/(3*rate)};
- return {start,control,rate,pose(t){
+// Keep the opened, head-first dive intact. Only the food plane hides it.
+// Bound the underwater travel so even a high tower does not finish sinking
+// early and leave an empty pause before the small head emerges.
+export function createPrimaryImmersion(diver,target,offset={x:0,y:0},clearance=8){
+ const start=DIVE_ENTRY_PHASE,n=target.normal||{x:0,y:1},contact=diver.flight(start,target,offset),epsilon=.00001,before=diver.flight(start-epsilon,target,offset).points.at(-1),head=contact.points.at(-1),distance=-Math.min(...contact.points.map(p=>(p.x-target.x)*n.x+(p.y-target.y)*n.y))+clearance;
+ const speed=Math.max(0,((head.x-before.x)*n.x+(head.y-before.y)*n.y)/epsilon*(1-start)),rate=Math.max(1,speed/(3*distance)),control=speed/(3*rate);
+ return {pose(t){
   if(t<=start)return {...diver.flight(t,target,offset),appearance:0};
-  const q=clamp((t-start)/(1-start)),w=1-(1-q)**rate,r=1-w,head={x:r**3*origin.x+3*r*r*w*control.x+(3*r*w*w+w**3)*end.x,y:r**3*origin.y+3*r*r*w*control.y+(3*r*w*w+w**3)*end.y},pose=companionLandingPose(source.points,plate,q,{head,angularVelocity,settling:true});
-  return {...pose,scale:source.scale*pose.scale};
+  const q=clamp((t-start)/(1-start)),w=1-(1-q)**rate,r=1-w,depth=3*r*r*w*control+(3*r*w*w+w**3)*distance;
+  return {points:contact.points.map(p=>({x:p.x+n.x*depth,y:p.y+n.y*depth})),scale:contact.scale,appearance:0};
  }};
 }
 
-export function primaryReturnPose(diver,plate,progress,offset={x:0,y:0}){
- const u=clamp(progress);
- if(u>=.65)return {...diver.return(u,plate[0],offset),appearance:0};
- const board=diver.prepare(.61,offset),pose=companionLandingPose(board.points,plate,1-u/.65);
- return {...pose,scale:board.scale*pose.scale};
+// Uncoil while still tiny, then grow on one direct route home. Local body
+// coordinates avoid accumulated joint-angle turns and the old tower detour.
+export function returnToSourcePose(source,plate,progress,normal={x:0,y:1}){
+ const u=clamp(progress),from=[...plate].reverse(),start=from.at(-1),end=source.at(-1),frame=points=>{const h=points.at(-1),t=points[0],length=Math.hypot(h.x-t.x,h.y-t.y),angle=Math.atan2(h.y-t.y,h.x-t.x),c=Math.cos(angle),s=Math.sin(angle);return{length,angle,points:points.map(p=>({x:((p.x-h.x)*c+(p.y-h.y)*s)/length,y:(-(p.x-h.x)*s+(p.y-h.y)*c)/length}))};},a=frame(from),b=frame(source);
+ const reshape=ease(u/.32),growth=ease((u-.32)/.68),angle=a.angle+Math.atan2(Math.sin(b.angle-a.angle),Math.cos(b.angle-a.angle))*reshape,c=Math.cos(angle),s=Math.sin(angle);
+ const unit=(p,q)=>{const d=Math.hypot(q.x-p.x,q.y-p.y)||1;return{x:(q.x-p.x)/d,y:(q.y-p.y)/d};},incoming=unit(from.at(-2),start),outgoing=unit(source.at(-2),end),distance=Math.hypot(end.x-start.x,end.y-start.y),reach=Math.min(55,distance*.22),lift=Math.min(65,Math.max(20,distance*.24)),p1={x:start.x+incoming.x*reach-normal.x*lift,y:start.y+incoming.y*reach-normal.y*lift},p2={x:end.x-outgoing.x*reach,y:end.y-outgoing.y*reach},q=ease(u),r=1-q,head={x:r**3*start.x+3*r*r*q*p1.x+3*r*q*q*p2.x+q**3*end.x,y:r**3*start.y+3*r*r*q*p1.y+3*r*q*q*p2.y+q**3*end.y};
+ const length=ps=>ps.slice(1).reduce((v,p,i)=>v+Math.hypot(p.x-ps[i].x,p.y-ps[i].y),0),initialLength=length(from),sourceLength=length(source),targetLength=initialLength*Math.exp(Math.log(sourceLength/initialLength)*growth);
+ // First straighten, then recover the home curve. Directly mixing opposite
+ // neck bends creates a tiny cusp, even when the centreline never crosses.
+ const local=a.points.map((p,i)=>{const straight={x:i/(source.length-1)-1,y:0},from=u<.16?p:straight,to=u<.16?straight:b.points[i],blend=ease(u<.16?u/.16:(u-.16)/.16);return{x:from.x+(to.x-from.x)*blend,y:from.y+(to.y-from.y)*blend};}),size=targetLength/length(local),points=local.map(p=>({x:head.x+(p.x*c-p.y*s)*size,y:head.y+(p.x*s+p.y*c)*size}));
+ return {points:u===0?from:u===1?source.map(p=>({x:p.x,y:p.y})):points,scale:targetLength/sourceLength,appearance:1-ease((u-.35)/.45)};
 }
 
 
@@ -231,12 +251,13 @@ function jumpingWorm(root,body,small,towerPosition={x:0,y:0}){
  const sourcePoints=Array.from({length:sampleCount},(_,i)=>{const p=spine.getPointAtLength(spineLength*i/(sampleCount-1));return at(base,p.x,p.y);}),tail=sourcePoints[0],start=sourcePoints.at(-1);
  const sourceDistance=[0];for(let i=1;i<sourcePoints.length;i++)sourceDistance[i]=sourceDistance[i-1]+Math.hypot(sourcePoints[i].x-sourcePoints[i-1].x,sourcePoints[i].y-sourcePoints[i-1].y);
  const sourceLength=sourceDistance.at(-1),sourceAngle=Math.atan2(start.y-tail.y,start.x-tail.x),sourceHeadAngle=Math.atan2(start.y-sourcePoints.at(-2).y,start.x-sourcePoints.at(-2).x),rootScale=Math.sqrt(Math.abs(base.a*base.d-base.b*base.c))||1;
- const diver=createDiveGeometry(sourcePoints,small);
+ const diver=createDiveGeometry(sourcePoints,small),defs=add(root,'defs'),clipId=`n2-entry-plane-${++clipNumber}`,clip=add(defs,'clipPath',{id:clipId,clipPathUnits:'userSpaceOnUse'}),clipRect=add(clip,'rect',{x:-3000,y:-3000,width:6000,height:3000});
  const layer=add(root,'g',{'data-n2-jump-worm':'','pointer-events':'none','aria-hidden':'true',opacity:0}),shadow=add(layer,'path',{class:'n2-jump-shadow',pathLength:1}),line=add(layer,'path',{class:'n2-jump-body',pathLength:1}),highlight=add(layer,'path',{class:'n2-jump-highlight',pathLength:1}),maleTail=small?add(layer,'path',{class:'male-tail n2-jump-male-tail'}):null,face=add(layer,'g',{'data-n2-jump-face':''});
  const landingArt=add(layer,'g',{class:'n2-surface-body','data-n2-surface-body':'',opacity:0}),landingBody=add(landingArt,'path',{class:'n2-crawler-body'}),landingHighlight=add(landingArt,'path',{class:'n2-crawler-highlight'});
  let landingPlan=null,landingKey='';
  // Keep the diver after both worm/accessory groups, in front of the plate.
  body.querySelectorAll('.worm-cheek,.worm-eye,.worm-eye-shine,.worm-smile').forEach(n=>face.append(n.cloneNode(true)));
+ const outfit=createDiveOutfit(root,body,layer,sourcePoints,small?'companion':'primary');
  function launchVector(target){const {dx,dy,side,height,lateral}=ballisticProfile(start,target,small),vx=dx+side*lateral*4,vy=dy-height*4,length=Math.hypot(vx,vy)||1;return{x:vx/length,y:vy/length};}
  function preparedPose(anticipation,launch){
   const cycles=small?1.4:1.5,points=sourcePoints.map((p,i)=>{const s=i/(sourcePoints.length-1),before=sourcePoints[Math.max(0,i-1)],after=sourcePoints[Math.min(sourcePoints.length-1,i+1)],length=Math.hypot(after.x-before.x,after.y-before.y)||1,localNormal={x:-(after.y-before.y)/length,y:(after.x-before.x)/length},compression=.085*anticipation*s,envelope=Math.sin(Math.PI*s)**1.08*(.68+.32*s),bend=sourceLength*(small?.016:.014)*anticipation*envelope*Math.sin(Math.PI*2*(cycles*s+.12*anticipation));return{x:tail.x+(p.x-tail.x)*(1-compression)+localNormal.x*bend,y:tail.y+(p.y-tail.y)*(1-compression)+localNormal.y*bend+7*rootScale*anticipation*s*s};});
@@ -248,17 +269,17 @@ function jumpingWorm(root,body,small,towerPosition={x:0,y:0}){
   if(opacity<=0){layer.setAttribute('opacity','0');return;}
   const u=clamp(progress),launch=launchVector(target),prepared=preparedPose(outbound&&u>0?1:ease(anticipation),launch);
   let head,points,bodyScale=1,appearance=0;
-  if(small){
-   const pose=companionLandingPose(outbound?prepared:sourcePoints,platePose.mapped,u);points=pose.points;bodyScale=pose.scale;appearance=pose.appearance;
+  if(!outbound){
+   const pose=returnToSourcePose(sourcePoints,platePose.mapped,1-u,target.normal);points=pose.points;bodyScale=pose.scale;appearance=pose.appearance;
+  }else if(small){
+   const pose=companionLandingPose(prepared,platePose.mapped,u);points=pose.points;bodyScale=pose.scale;appearance=pose.appearance;
   }else if(outbound&&u===1){
    points=platePose.mapped.slice().reverse();appearance=1;
   }else if(outbound){
    let pose;
    if(u===0)pose=diver.prepare(anticipation,towerPosition);
-   else {const key=platePose.mapped.map(p=>`${p.x}:${p.y}`).join(',');if(key!==landingKey){landingPlan=createPrimaryLanding(diver,target,platePose.mapped,towerPosition);landingKey=key;}pose=landingPlan.pose(u);}
+   else {const key=`${target.x}:${target.y}:${target.normal.x}:${target.normal.y}`;if(key!==landingKey){landingPlan=createPrimaryImmersion(diver,target,towerPosition,23*rootScale*diver.scale);landingKey=key;}pose=landingPlan.pose(u);}
    points=pose.points;bodyScale=pose.scale;appearance=pose.appearance||0;
-  } else {
-   const pose=primaryReturnPose(diver,platePose.mapped,1-u,towerPosition);points=pose.points;bodyScale=pose.scale;appearance=pose.appearance;
   }
   const inverse=platePose.map.inverse(),local=points.slice().reverse().map((p,i)=>{const q=at(inverse,p.x,p.y);return{x:q.x,y:q.y,position:i/(points.length-1)};}),localLength=local.slice(1).reduce((s,p,i)=>s+Math.hypot(p.x-local[i].x,p.y-local[i].y),0),outline=u===1?platePose.shape:feedingOutline(local,small,localLength/platePose.shape.length);
   landingArt.setAttribute('transform',matrix(platePose.map));landingArt.setAttribute('opacity',String(appearance));landingBody.setAttribute('d',outline.body);landingHighlight.setAttribute('d',outline.highlight);
@@ -268,32 +289,35 @@ function jumpingWorm(root,body,small,towerPosition={x:0,y:0}){
   for(const p of[shadow,line,highlight])p.setAttribute('opacity',String(1-appearance));
   line.style.strokeWidth=`${(small?42:46)*rootScale*bodyScale}`;shadow.style.strokeWidth=`${(small?50:54)*rootScale*bodyScale}`;highlight.style.strokeWidth=`${(small?7:8)*rootScale*bodyScale}`;
   if(maleTail&&points.length>1){const end=points[0],next=points[1],length=Math.hypot(next.x-end.x,next.y-end.y)||1,tx=(next.x-end.x)/length,ty=(next.y-end.y)/length,nx=-ty,ny=tx,tailScale=rootScale*bodyScale;maleTail.setAttribute('d',`M${end.x.toFixed(2)} ${end.y.toFixed(2)}L${(end.x-tx*29*tailScale+nx*13*tailScale).toFixed(2)} ${(end.y-ty*29*tailScale+ny*13*tailScale).toFixed(2)}L${(end.x-tx*17*tailScale-nx*15*tailScale).toFixed(2)} ${(end.y-ty*17*tailScale-ny*15*tailScale).toFixed(2)}Z`);maleTail.style.strokeWidth=`${3*tailScale}`;maleTail.setAttribute('opacity',String(1-appearance));}
-  // The same foreground silhouette carries arrival, crawl and departure.
-  // No clip or layer swap can erase the worm as it changes size.
+  // Install the surface mask before contact, while the whole diver is above
+  // it. The head, body and tail then pass through the same real entry plane.
+  if(!small&&outbound&&u>=DIVE_ENTRY_PHASE*.82&&u<1){const n=target.normal;clipRect.setAttribute('transform',`matrix(${n.y} ${-n.x} ${n.x} ${n.y} ${target.x} ${target.y})`);layer.setAttribute('clip-path',`url(#${clipId})`);}else layer.removeAttribute('clip-path');
   head=points.at(-1);const neck=points.at(-2),headAngle=Math.atan2(head.y-neck.y,head.x-neck.x),faceTransform=new DOMMatrix().translate(head.x,head.y).rotate((headAngle-sourceHeadAngle)*180/Math.PI).scale(bodyScale).translate(-start.x,-start.y).multiply(base);
   face.setAttribute('transform',matrix(faceTransform));face.setAttribute('opacity',String(1-appearance));layer.setAttribute('opacity',String(!small&&outbound&&u>0?1:opacity));
+  const outfitScale=outbound&&u===1?points.slice(1).reduce((sum,p,i)=>sum+Math.hypot(p.x-points[i].x,p.y-points[i].y),0)/sourceLength:bodyScale;
+  outfit.set(points,outfitScale,outbound&&u===1?clamp(platePose.shape.samples[0].time/BODY_HISTORY):1);
  }
- return {sourceAngle,set,remove(){layer.remove();for(const animation of paused)if(animation.playState==='paused')animation.play();}};
+ return {sourceAngle,set,remove(){outfit.remove();layer.remove();defs.remove();for(const animation of paused)if(animation.playState==='paused')animation.play();}};
 }
 
-// The primary worm makes a head-first dive from the movable springboard;
-// the companion takes a shorter upright hop. Both then complete two slow,
-// head-led circuits of the OP50 lawn before returning home.
+// The primary dives from the movable springboard, makes two slow circuits
+// of the OP50 lawn and returns home. The companion plate is only a movable prop.
 export function createN2Feeding(habitat,onChange=()=>{}){
  const reduced=matchMedia('(prefers-reduced-motion: reduce)'),eaten=new Map(),sound=recordedSound({eat:'reunion-eat.wav'});let run=null,raf=0;
  let tower=null,towerRevealed=false;const towerPosition={x:0,y:0};
- const handles=p=>p?.dataset.accessoryFamily==='ngm-agar-plate';
+ const handles=p=>p?.dataset.accessoryFamily==='ngm-agar-plate'&&p.dataset.wormPart==='primary';
  function paint(piece){const n=eaten.get(piece)||0;piece.querySelectorAll('.op50-colony').forEach((c,i)=>c.setAttribute('opacity',i<n?'0':'1'));}
- function cancel(){cancelAnimationFrame(raf);raf=0;sound.stop();if(!run)return;const old=run;run=null;old.restore();paint(old.piece);onChange();}
- function clear(){cancel();towerRevealed=false;tower?.remove();tower=null;eaten.clear();habitat.querySelectorAll('[data-accessory-family="ngm-agar-plate"]').forEach(paint);}
+ function hideTower(){const focused=tower&&tower.element===document.activeElement;towerRevealed=false;tower?.remove();tower=null;if(focused)habitat.querySelector('[data-accessory-family="ngm-agar-plate"][data-worm-part="primary"]')?.focus({preventScroll:true});}
+ function cancel(){cancelAnimationFrame(raf);raf=0;sound.stop();tower?.element?.removeAttribute('opacity');if(!run)return;const old=run;run=null;old.restore();paint(old.piece);onChange();}
+ function clear(){cancel();hideTower();eaten.clear();habitat.querySelectorAll('[data-accessory-family="ngm-agar-plate"]').forEach(paint);}
  function syncTower(){const plate=habitat.querySelector('[data-accessory-family="ngm-agar-plate"][data-worm-part="primary"]'),root=habitat.querySelector('#worm-species'),available=plate&&!plate.closest('[hidden]')&&root;if(!available)towerRevealed=false;if(towerRevealed&&available){if(!tower?.element?.isConnected){tower?.remove();tower=createDivingTower(root,habitat,towerPosition,cancel);}}else if(tower){tower.remove();tower=null;}}
  if(typeof MutationObserver!=='undefined'){const observer=new MutationObserver(syncTower);observer.observe(habitat,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden']});syncTower();}
  function start(piece){
   if(!handles(piece)||piece.closest('[hidden]'))return false;
-  if(piece.dataset.wormPart==='primary'){towerRevealed=true;syncTower();}
   cancel();const colonies=[...piece.querySelectorAll('.op50-colony')];let portion=eaten.get(piece)||0;
-  if(portion>=colonies.length){eaten.set(piece,0);paint(piece);return true;}
-  if(reduced.matches){eaten.set(piece,portion+1);paint(piece);return true;}
+  if(portion>=colonies.length){hideTower();eaten.set(piece,0);paint(piece);return true;}
+  if(reduced.matches){hideTower();eaten.set(piece,portion+1);paint(piece);return true;}
+  towerRevealed=true;syncTower();
   const part=piece.dataset.wormPart,small=part==='companion',compact=innerWidth<520,root=habitat.querySelector('#worm-species');
   const body=habitat.querySelector(part==='companion'?'.companion-body':'.worm-body'),art=piece.querySelector('.location-accessory-art'),parent=art.parentNode,artToParent=relative(parent,art),centre=at(artToParent,0,0);
   const carrier=add(parent,'g',{'data-feeding-carrier':''});art.before(carrier);carrier.append(art);
@@ -314,9 +338,9 @@ export function createN2Feeding(habitat,onChange=()=>{}){
    // and return. Its body cannot jump behind the plate glare or splash.
    overlay.crawler.setAttribute('opacity','0');
    const track=q=>feedingTrack(q,direction,small,target,f.wave),shape=wormShape(track,f.crawl,small);overlay.body.setAttribute('d',shape.body);overlay.highlight.setAttribute('d',shape.highlight);
-   const landing=rippleFrame(story,3850),takeoff=rippleFrame(story,23350),ripple=landing.opacity>takeoff.opacity?landing:takeoff,entry=route(0);
+   const contact=small?3830:1250+FLIGHT_REFERENCE_MS*DIVE_ENTRY_PHASE,landing=rippleFrame(story,contact,1400),takeoff=rippleFrame(story,23350),ripple=landing.opacity>takeoff.opacity?landing:takeoff,entry=route(0);
    overlay.ripple.setAttribute('cx',entry.x);overlay.ripple.setAttribute('cy',entry.y);overlay.ripple.setAttribute('rx',String(3+ripple.progress*(small?7:10)));overlay.ripple.setAttribute('ry',String(1+ripple.progress*(small?2.2:3.2)));overlay.ripple.setAttribute('opacity',String(ripple.opacity));
-   const splashProgress=clamp((story-3830)/650);overlay.splash.setAttribute('transform',`translate(${entry.x} ${entry.y})`);overlay.splash.setAttribute('opacity',String(Math.sin(Math.PI*splashProgress)));
+   const splashProgress=clamp((story-contact)/(small?650:1400));overlay.splash.setAttribute('transform',`translate(${entry.x} ${entry.y})`);overlay.splash.setAttribute('opacity',String(Math.sin(Math.PI*splashProgress)));
    overlay.splashCover.setAttribute('rx',String((small?4.5:8)+splashProgress*(small?7:14)));overlay.splashCover.setAttribute('ry',String((small?1.8:3)+splashProgress*(small?2:4)));
    overlay.ringA.setAttribute('rx',String((small?4:6)+splashProgress*(small?12:18)));overlay.ringA.setAttribute('ry',String((small?1.4:2)+splashProgress*(small?3:5)));
    const second=clamp((splashProgress-.15)/.85);overlay.ringB.setAttribute('rx',String((small?3:5)+second*(small?9:14)));overlay.ringB.setAttribute('ry',String((small?1:1.5)+second*(small?2.5:4)));
@@ -327,7 +351,9 @@ export function createN2Feeding(habitat,onChange=()=>{}){
    const fade=ease((story-9700)/650);colonies[portion].setAttribute('opacity',String(1-fade));
    FEEDING_BEATS.forEach((t,i)=>{if(ms>=t&&!action.cues.has(i)){action.cues.add(i);if(ms-t<120)playFeedingSound(sound,i,small,(feedingTime(23350)-ms)/1000);}});
    if(f.consumed&&!run.committed){run.committed=true;eaten.set(piece,portion+1);}
-   if(f.done){cancel();return;}raf=requestAnimationFrame(tick);
+   // Clear the scene only after the worm and plate have returned home.
+   tower?.element?.setAttribute('opacity',String(1-ease((story-28400)/600)));
+   if(f.done){cancel();hideTower();return;}raf=requestAnimationFrame(tick);
   }
   raf=requestAnimationFrame(tick);return true;
  }

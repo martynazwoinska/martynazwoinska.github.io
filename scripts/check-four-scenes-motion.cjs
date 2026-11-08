@@ -4,7 +4,7 @@ const path=require('node:path');
 const mod=name=>import(pathToFileURL(path.resolve(__dirname,'../game-of-worms',name)));
 (async()=>{
  const {workingPoint}=await mod('scene-body-motion.js');
- const {feedingFrame,feedingTime,feedingTravel,flightBend,ballisticHeadPath,takeoffRelease,feedingRoute,feedingTrack,feedingWave,feedingWormPose,FEEDING_BEATS,FEEDING_DURATION,DIVE_DELAY,createN2Feeding}=await mod('n2-feeding.js');
+ const {feedingFrame,feedingTime,feedingTravel,feedingEntryTravel,feedingSurfaceSamples,feedingOutline,flightBend,ballisticHeadPath,takeoffRelease,feedingRoute,feedingTrack,feedingWave,feedingWormPose,FEEDING_BEATS,FEEDING_DURATION,DIVE_DELAY,createN2Feeding}=await mod('n2-feeding.js');
  const {cartRideFrame}=await mod('araucania-play.js');
  const {fruitFrame}=await mod('dois-rios-play.js');
  for(const pose of[[8,16,-7],[15,42,-13],[-12,35,9],[7,5,11]]){
@@ -26,11 +26,11 @@ const mod=name=>import(pathToFileURL(path.resolve(__dirname,'../game-of-worms',n
   if(ms<feedingTime(10350))assert.equal(f.consumed,false,'Interrupted feeding does not consume a portion');
   if(ms)assert(Math.abs(f.plate-feedingFrame(ms-10).plate)<.05,'Plate emphasis has no abrupt jumps');
   if(ms<feedingTime(23350))assert(!(f.jumpOpacity>0&&f.crawler>0),'The plate worm cannot appear while the incoming diver is visible');
-  assert(Math.abs(f.worm+f.jumpOpacity+f.crawler-1)<.00001,'Every stage remains fully visible, including landing and departure');
+  assert(Math.abs(f.worm+f.jumpOpacity+f.crawler-1)<.00001,'The timeline has no duplicate actor; the food plane alone controls immersion');
  }
  assert.equal(feedingFrame(0).plate,0);assert.equal(feedingFrame(FEEDING_DURATION).plate,0);assert(feedingFrame(FEEDING_DURATION).done);
  assert.equal(feedingFrame(0).crawl,0);assert.equal(feedingFrame(feedingTime(3850)).crawl,0);assert(feedingFrame(feedingTime(4350)).crawl>0,'The head moves out of the entry point instead of materializing stationary');assert.equal(feedingFrame(feedingTime(23350)).crawl,1);assert.equal(feedingFrame(feedingTime(10350)).consumed,true);
- assert.equal(feedingFrame(feedingTime(1250)).jumpOut,0);assert.equal(feedingFrame(feedingTime(2550)).jumpOut,.5,'The outbound flight keeps a deliberate linear clock');assert.equal(feedingFrame(feedingTime(3850)).jumpOut,1);assert.equal(feedingFrame(feedingTime(23350)).jumpBack,1);assert.equal(feedingFrame(feedingTime(26300)).jumpBack,0);
+ assert.equal(feedingFrame(feedingTime(1250)).jumpOut,0);assert.equal(feedingFrame(feedingTime(2550)).jumpOut,.5,'The outbound flight keeps a deliberate linear clock');assert.equal(feedingFrame(feedingTime(3850)).jumpOut,1);assert.equal(feedingFrame(feedingTime(23350)).jumpBack,1);assert.equal(feedingFrame(feedingTime(27200)).jumpBack,0);
  assert.equal(feedingFrame(feedingTime(1250)).plate,1,'The enlarged plate is stable before take-off');assert.equal(feedingFrame(feedingTime(1250)).anticipation,1);assert(feedingFrame(feedingTime(1240)).anticipation<1,'Push-off continues directly into flight without a frozen hold');assert(feedingFrame(feedingTime(3675)).splash>.99);assert(Math.abs(feedingFrame(feedingTime(4250)).splash)<.00001);
  assert(FEEDING_BEATS.every((beat,index)=>!index||beat>FEEDING_BEATS[index-1]),'Eating cues remain ordered');assert(FEEDING_BEATS.every(beat=>feedingFrame(beat).crawler===1),'Every eating cue occurs while the plate worm is visible');
  assert.equal(feedingTime(3850)-feedingTime(1250),1820,'The outbound flight is thirty percent shorter');
@@ -38,6 +38,15 @@ const mod=name=>import(pathToFileURL(path.resolve(__dirname,'../game-of-worms',n
  assert.equal(feedingTime(23350)-feedingTime(3850),19500,'The two slow plate laps keep their established duration');
  assert.equal(FEEDING_BEATS[1]-FEEDING_BEATS[0],500,'Longer excerpts reduce the rapid repeated gulping');
  let previous=-1;for(let u=0;u<=1;u+=.001){const travel=feedingTravel(u);assert(travel>=previous&&travel>=0&&travel<=1,'Crawl progress stays monotonic and bounded');previous=travel;}assert.equal(feedingTravel(0),0);assert.equal(feedingTravel(1),1);
+ for(const progress of[0,.001,.01,.05,.1,.5,1])assert(feedingEntryTravel(progress)>=0&&feedingEntryTravel(progress)<=1,'Entry travel is bounded');
+ for(const direction of[-1,1])for(const target of[{x:-36,y:-2},{x:17,y:6},{x:35,y:-3}]){
+  const entry=feedingTrack(0,direction,false,target),early=feedingEntryTravel(100/19500),first=feedingWormPose(early,false,target,1,direction),visible=feedingSurfaceSamples(first.samples,early,entry);
+  assert(Math.hypot(first.head.x-entry.x,first.head.y-entry.y)>2,'The small head visibly leaves the entry point within 100 ms');
+  assert(visible.length<33&&visible.length>1,'The head emerges first rather than revealing a complete miniature');
+  assert(Math.hypot(visible.at(-1).x-entry.x,visible.at(-1).y-entry.y)<1e-8,'The emerging body remains attached to the real entry point');
+  assert(!/NaN|Infinity/.test(feedingOutline(visible).body),'Partial body outlines remain finite');
+  const full=feedingWormPose(1/13,false,target,1,direction);assert.deepEqual(feedingSurfaceSamples(full.samples,1/13,entry),full.samples,'Emergence joins the full crawler without replacing its shape');
+ }
  const origin={x:0,y:100},target={x:100,y:200},flight=ballisticHeadPath(origin,target,false,200);assert.deepEqual(flight[0],origin);assert.deepEqual(flight.at(-1),target);assert(flight[1].y<origin.y,'The head launches upward');assert(Math.min(...flight.map(p=>p.y))<90,'The jump has one clear apex above take-off');assert(flight.at(-1).y>flight.at(-2).y,'The head enters the agar downward');
  const bendTransitions=(u,small=false,returning=false)=>{const transitions=[];let last=null;for(let i=1;i<1000;i++){const s=i/1000,value=flightBend(s,u,small,returning);if(Math.abs(value)<1e-6)continue;const sign=Math.sign(value);if(last&&sign!==last.sign)transitions.push((last.s+s)/2);last={s,sign};}return transitions;};
  for(const small of[false,true])for(const returning of[false,true]){
@@ -73,14 +82,15 @@ const mod=name=>import(pathToFileURL(path.resolve(__dirname,'../game-of-worms',n
   assert.equal(fruitFrame(release-10,male).recoil,0);
   assert(fruitFrame(release+200,male).recoil>.6,'Body reaction follows the sticky release');
  }
- // Exercise the actual reduced-motion controller: separate portions for each
- // plate, no animation callbacks, an explicit refill, and scene cleanup.
+ // The companion plate stays decorative, including under reduced motion.
+ // The primary keeps portion consumption, refill and scene cleanup.
  global.matchMedia=()=>({matches:true,addEventListener(){}});global.window={addEventListener(){}};global.document={addEventListener(){}};
  global.cancelAnimationFrame=()=>{};global.requestAnimationFrame=()=>{throw Error('Reduced motion must not animate');};
- const plate=count=>{const dots=Array.from({length:count},()=>({opacity:'1',setAttribute(k,v){this[k]=v;}}));return {dataset:{accessoryFamily:'ngm-agar-plate'},closest:()=>null,querySelectorAll:()=>dots,dots};};
- const plates=[plate(5),plate(4)],feed=createN2Feeding({querySelectorAll:()=>plates});
- for(let n=1;n<=4;n++){assert(feed.start(plates[1]));assert.equal(plates[1].dots.filter(d=>d.opacity==='0').length,n);assert(plates[0].dots.every(d=>d.opacity==='1'));}
- feed.start(plates[1]);assert(plates[1].dots.every(d=>d.opacity==='1'));assert.equal(feed.active,false);
+ const plate=(count,part)=>{const dots=Array.from({length:count},()=>({opacity:'1',setAttribute(k,v){this[k]=v;}}));return {dataset:{accessoryFamily:'ngm-agar-plate',wormPart:part},closest:()=>null,querySelectorAll:()=>dots,dots};};
+ const plates=[plate(5,'primary'),plate(4,'companion')],feed=createN2Feeding({querySelector:()=>null,querySelectorAll:()=>plates});
+ assert(feed.handles(plates[0]));assert.equal(feed.handles(plates[1]),false);assert.equal(feed.start(plates[1]),false);assert(plates[1].dots.every(d=>d.opacity==='1'));
+ for(let n=1;n<=5;n++){assert(feed.start(plates[0]));assert.equal(plates[0].dots.filter(d=>d.opacity==='0').length,n);assert(plates[1].dots.every(d=>d.opacity==='1'));}
+ feed.start(plates[0]);assert(plates[0].dots.every(d=>d.opacity==='1'));assert.equal(feed.active,false);
  feed.start(plates[0]);feed.clear();assert(plates.every(p=>p.dots.every(d=>d.opacity==='1')));
  console.log('Four scenes: continuous landing and return, no duplicate worm, two slow sinusoidal plate laps, safe boarding and sticky-release follow-through pass.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

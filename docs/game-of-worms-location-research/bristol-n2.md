@@ -486,3 +486,205 @@ listening remain manual. No public copy, source graphics or audio files changed.
 The release changes n2-feeding.js, game.js, index.html and style.css under
 game-of-worms; three existing motion/audio checks; PROJECT_STATUS.md and this
 dossier. No repository files were created or deleted.
+
+## Food-surface immersion and direct return, local preview 53, 2026-11-08
+
+Martyna rejected the airborne rotation and shrinking in release 52. Continuous
+coordinates alone had not produced a convincing entry: rotating a downward
+diver into a horizontal crawler read as another somersault.
+
+The primary now keeps the original launch, pike and extension through head
+contact. A surface clip is enabled while the entire thick body still clears
+the food, then hides only the portion physically below the plane. Underwater
+translation preserves entry velocity, body size and straight posture and ends
+with the tail at the plane, avoiding an early disappearance and empty pause.
+The small head then advances immediately from the same point, followed by
+successive body segments. Emergence occupies 900 ms and feeds smoothly into
+the existing sinusoidal two-lap route. Splash timing follows real contact.
+
+Both returns now take 3.85 seconds directly to the original worm position.
+The small body first uncoils through a straight local shape, then recovers its
+home curve while retaining its initial total length. Only then does it enlarge.
+This removes both the intermediate tower pose and raw accumulated joint-angle
+turns. A refinement pass removed a tiny first-colony neck cusp found in the
+initial direct-return draft. The final production shape preserves endpoints,
+has no outline crossing and does not shorten before growing.
+
+Independent checks covered 1,200 immersion configurations and 32,562 return
+poses across all nine actual colonies, both travel directions, three tilts and
+three scales. No final centreline or visible-outline intersections were found.
+Focused regressions cover body length, the former neck cusp, native DOMPoint
+coordinates, surface progression, prompt emergence and exact endpoints.
+The dive, four-scenes motion, feeding audio, cryo, N2-only tailoring, syntax
+and whitespace checks pass. The broader unrelated catalogue harness limitation
+recorded under release 52 was not changed or re-investigated.
+
+Browser playback covered primary immersion and return on a narrow phone and
+the companion on phone and desktop. The final moved-plate phone run sampled
+1,292 frames; the final desktop companion run sampled 1,240. Neither produced
+invalid geometry or browser warnings/errors; completion removed temporary
+actors. Keyboard movement, activation and cancellation were checked.
+Full-page captures cover top through footer at the tested responsive sizes,
+with exact image dimensions recorded in the local review report. The Game
+retains its fixed light palette and reduced-motion controller. Physical-device
+testing remains manual. No source graphics, audio assets or public text changed.
+
+Changed: game-of-worms/n2-feeding.js, game.js, index.html;
+scripts/check-n2-dive.cjs, scripts/check-four-scenes-motion.cjs;
+PROJECT_STATUS.md and this dossier. No repository files created or deleted.
+Preview 53 is uncommitted and undeployed for Martyna's assessment.
+
+## Restore the companion's original meal, local preview 54, 2026-11-08
+
+Martyna approved restoring the small worm's earlier plate-lifting animation.
+The companion branch now uses the original a2a4524 choreography: reach, raise
+the plate, transfer a morsel, take three bites and lower the plate. Its 4.5-second
+frame values match the original across 1,001 sampled timestamps. The primary's
+preview 53 dive, head-first emergence, two laps and direct return are unchanged.
+The companion no longer creates a jumping or crawling actor.
+
+Both feeding branches share cancellation, consumption, refill and reduced-motion
+handling. Consumption is committed only once the morsel reaches the mouth at
+2,050 ms. The companion uses three quiet 290 ms excerpts at gain 0.013. The
+primary retains its overlapping 600 ms excerpts every 500 ms at gain 0.018,
+through the existing feeding interval. No audio file was replaced.
+
+The new companion renderer is isolated in n2-companion-feeding.js. A refinement
+pass hid both hand tips before the first animation frame while audio prepares.
+Historical geometry review, frame checks, mock playback checks, N2 dive and
+N2-only tailoring checks pass. The unchanged broader catalogue limitation is
+documented above. Syntax and whitespace checks pass.
+
+Browser review confirmed the complete restored meal at phone and desktop
+widths, no companion jump/crawler, exact body restoration, cancellation at
+500, 1,850 and 2,250 ms, repeated portions and refill, keyboard operation,
+a moved plate and switching from primary to companion. Primary playback still
+reached its plate crawler. The eating recording returned HTTP 200. No browser
+warnings or errors were reported. First-use audio preparation can delay the
+start; subsequent cached playback completes normally. Subjective listening and
+physical-device checks remain manual.
+
+Uncropped full-page images cover 360x2464, 768x2224, 1024x1881 and 1440x1865
+pixels from page top through the final source section. Browser viewport widths
+were 375, 783, 1039 and 1455 px including the 15 px scrollbar. No horizontal
+overflow occurred. The Game retains its single fixed light palette.
+
+Created: game-of-worms/n2-companion-feeding.js. Updated for this restoration:
+game-of-worms/n2-feeding.js, game.js, index.html;
+scripts/check-four-scenes-motion.cjs, scripts/check-n2-feeding-audio.cjs;
+PROJECT_STATUS.md and this dossier. Earlier preview 53 edits, including
+scripts/check-n2-dive.cjs, are preserved. No repository files were deleted;
+source artwork, audio assets and public text remain unchanged. Local preview
+54 is uncommitted and undeployed on codex/n2-lawn-crawl.
+
+## Keep the primary's outfit throughout feeding, local preview 55, 2026-11-08
+
+Martyna requested that the large worm retain already-selected clothing during
+the jump. Temporary copies of the visible coat, goggles and cryovial jetpack
+now travel with the same foreground actor. The source artwork remains intact.
+Coat seams, pockets, tie and buttons follow their material positions along the
+body; goggles and the pack remain rigid and turn with the head or torso. The
+copies capture existing placement and size adjustments after pausing the
+idle clothing motion, then restore the exact original elements afterwards.
+
+The food-plane mask applies to the whole dressed diver. During the 900 ms
+head-first emergence, a material-coordinate cut reveals the coat progressively;
+rigid details use the corresponding entry mask. Crawler outfit scale follows
+the body's length, and the same copies continue through the direct return.
+The original small-worm meal, primary trajectory, lap timing, source graphics
+and quieter feeding audio are unchanged.
+
+The refinement pass removed a second transform origin from rigid copies by
+placing their captured matrix on a neutral wrapper. Independent review checked
+source binding, uniform motion/scale invariance, material clipping, layering
+and cleanup. Regression checks now cover the original-to-copy handoff, moved
+and resized poses, hidden coat material and complete garment restoration.
+The N2 dive, four-scenes motion, feeding audio, N2-only tailoring, syntax and
+whitespace checks pass.
+
+Full browser playback covered the fitted outfit through boarding, pike,
+head-first immersion, emergence, crawling and return at narrow and wide sizes.
+Moving and enlarging goggles before feeding preserved their exact source
+artwork and settings after completion. Escape restored original opacity and
+removed temporary outfit copies. No browser warnings or errors were reported.
+Full-page proofs are 360x2464, 768x2224, 1024x1881 and 1440x1865 pixels, with
+browser widths of 375, 783, 1039 and 1455 px including the scrollbar. No
+horizontal overflow occurred. Physical-device testing remains manual; the
+unchanged reduced-motion branch bypasses the outfit animation.
+
+Created: game-of-worms/n2-dive-outfit.js. Changed for preview 55:
+game-of-worms/n2-feeding.js, game.js, index.html; scripts/check-n2-dive.cjs;
+PROJECT_STATUS.md and this dossier. Earlier preview 53/54 files remain pending.
+No files were deleted, no public copy changed and no source assets were
+modified. The Game remains fixed-light. This is a local, uncommitted preview
+on codex/n2-lawn-crawl; release 52 remains deployed.
+
+## Remove companion plate feeding, local preview 56, 2026-11-08
+
+Martyna no longer wants any small-worm plate-feeding action. The feeding
+controller now accepts only the primary plate. The companion plate retains
+pointer selection, movement, resizing and Home reset, but no eating action,
+food consumption or bite sound. Its keyboard shortcut description no longer
+advertises Enter or Space for feeding. The primary's clothing, trajectory,
+plate crawling, return and quiet eating sound remain unchanged from preview 55.
+
+Created: no files. Deleted: the uncommitted game-of-worms/n2-companion-feeding.js
+introduced in preview 54. Changed: game-of-worms/n2-feeding.js, game.js,
+index.html; scripts/check-four-scenes-motion.cjs, check-n2-feeding-audio.cjs;
+PROJECT_STATUS.md and this dossier. Prior primary/outfit changes are preserved.
+No source graphics, audio assets, public wording or page layout changed.
+
+Validation: syntax, motion, primary audio and whitespace checks pass. The
+reduced-motion controller test verifies that companion activation is rejected
+without consuming food while primary portions, refill and cleanup still work.
+Read-only routing review confirmed that pointer and keyboard paths share this
+guard. Browser checks covered pointer, Enter and Space on the companion plate,
+293 observations without feeding actors or consumed colonies, arrow movement,
+resizing and Home reset. The primary still starts with all three worn items.
+No console warnings or errors occurred. Full-page images are 360x2464,
+768x2224, 1024x1881 and 1440x1865 pixels, with no horizontal overflow; browser
+widths include an additional 15 px scrollbar. The Game remains fixed-light.
+Physical-device testing remains manual. Local preview only on
+codex/n2-lawn-crawl, with no commit or deployment this turn.
+
+## Clear the tower after feeding, local preview 57, 2026-11-08
+
+The tower now fades over story time 28,400-29,000 ms, after both the primary
+worm and plate have settled at home. Completion removes the tower and clears
+its reveal flag. The next animated meal recreates it at the saved position.
+Cancellation keeps it available for movement and restores full opacity.
+Refill and reduced-motion early returns hide any previously revealed tower.
+Focus returns to the primary plate only when the removed tower had focus.
+
+Created: none. Deleted: none. Changed for this request: game-of-worms/
+n2-feeding.js, game.js, index.html; PROJECT_STATUS.md and this dossier.
+Earlier preview changes remain intact. No art, sound or public copy changed.
+
+Validation: JavaScript syntax, four-scene motion, primary audio and whitespace
+checks pass. Browser playback completed two meals with all worn accessories,
+verified the final fade only after the original worm reached full opacity,
+and confirmed removal of the tower and temporary actors. Repeat activation
+revealed the tower; keyboard movement cancelled safely and retained its
+position. Keyboard focus returned from the disappearing tower to the plate.
+No browser warnings or errors occurred. Full-page proof dimensions are
+360x2464, 768x2224, 1024x1881 and 1440x1865 pixels, with no horizontal
+overflow. The Game retains its fixed light palette. Physical-device testing
+remains manual. No unresolved issue was found in these checks.
+
+Local preview 57 on codex/n2-lawn-crawl only. No commit or deployment.
+
+## Release 57 publication approval, 2026-11-08
+
+Martyna explicitly requested commit and deployment of the current preview.
+The final release combines previews 53, 55, 56 and 57. The temporary
+companion meal from preview 54 is superseded by the non-feeding prop in 56.
+Production runtime files match the reviewed preview. Existing source graphics,
+sound recordings and public wording are unchanged.
+
+Created: game-of-worms/n2-dive-outfit.js. Changed: game-of-worms/n2-feeding.js,
+game.js, index.html; scripts/check-n2-dive.cjs, check-four-scenes-motion.cjs,
+check-n2-feeding-audio.cjs; PROJECT_STATUS.md and this dossier. No tracked
+files deleted. The release is integrated with current main before publishing.
+Independent final review found no release blockers. Dive, outfit, motion,
+audio and syntax checks pass; responsive proofs and lifecycle checks are
+recorded above. Physical-device testing remains manual.

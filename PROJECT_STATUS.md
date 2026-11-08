@@ -22,6 +22,92 @@ Martyna explicitly approved Enlarge figure / Close and the corresponding
 Swedish and Polish labels. Full-page proofs at 360, 768, 1024 and 1440 px,
 both themes, all three languages, and keyboard/landscape checks passed.
 
+## N2 feeding release 57 approved for publication, 2026-11-08
+
+Martyna requested committing and deploying the current preview. This release
+combines the head-first immersion and direct return, retained primary outfit,
+removal of companion feeding, and tower cleanup after a completed meal.
+The exact previewed runtime files are retained. Source art, sound assets and
+public copy are unchanged. Motion, outfit, audio, syntax and responsive browser
+checks pass. Entries below record the preview history; release 57 supersedes
+their local-only status and the temporary companion meal from preview 54.
+
+## N2 tower clears after feeding, local preview 57, 2026-11-08
+
+The diving tower fades out over the final 600 ms, after the primary worm and
+plate have returned home, then is removed. The next animated meal reveals it
+again at its saved position. Moving it cancels the current meal and restores
+its opacity; keyboard focus returns to the plate if the tower was focused
+when removed. Refill and reduced-motion activation also clear a visible tower.
+
+Two completed browser cycles, repeat activation, keyboard movement/focus,
+motion/audio checks and full-page responsive proofs pass. Preview 57 remains
+local, uncommitted and undeployed. No artwork or public copy changed.
+
+## N2 feeding limited to the primary, local preview 56, 2026-11-08
+
+Martyna requested removal of all small-worm plate feeding. The companion plate
+now remains a movable, resizable prop with no eating animation, consumption or
+bite sound. Pointer and keyboard activation are restricted to the primary
+plate, including under reduced motion. The primary's outfit, dive, two laps,
+return and quieter eating audio are unchanged from preview 55.
+
+Removed the unused, uncommitted companion-feeding module and its obsolete
+checks. Motion/audio checks, browser pointer/keyboard checks and complete
+responsive proofs pass. Preview 56 remains local, uncommitted and undeployed;
+release 52 remains live. See the Bristol dossier for files and validation.
+
+## N2 outfit retained through the dive, local preview 55, 2026-11-08
+
+The primary now retains its selected coat, goggles and cryovial jetpack during
+boarding, jumping, immersion, plate crawling and return. The approved coat
+art bends with the body; rigid goggles follow the head and the pack follows
+the torso. Clothing enters the food with the worm and emerges progressively.
+Original accessory artwork, visitor placement and size settings are preserved.
+The companion's restored meal and both feeding sounds remain unchanged.
+
+Independent geometry review, outfit handoff checks, dive/motion/audio and
+N2-only tailoring checks pass. Browser playback covered full narrow and wide
+cycles, moved/resized goggles, cancellation and exact restoration. Complete
+page proofs are 360x2464, 768x2224, 1024x1881 and 1440x1865 pixels with no
+horizontal overflow or browser errors. Preview 55 remains local, uncommitted
+and undeployed for assessment. The Game keeps its fixed light palette.
+
+## N2 companion feeding restored, local preview 54, 2026-11-08
+
+Martyna requested the small worm's earlier feeding action again. It now lifts
+its plate, takes three bites and lowers the plate over 4.5 seconds, using the
+original movement from a2a4524. The companion no longer jumps or becomes a
+plate crawler. The primary retains preview 53's dive, emergence, two laps and
+direct return. Its quieter overlapping eating audio is unchanged; the restored
+companion bites also retain their quieter volume.
+
+Motion and audio checks pass, including the original companion timing, sound
+cues, consumption and cleanup. Browser review covered complete phone-width
+and desktop sequences, interruption before/during/after food transfer, refill,
+switching from primary to companion, keyboard activation and moved plates.
+Full-page proofs are 360x2464, 768x2224, 1024x1881 and 1440x1865 pixels, with
+no horizontal overflow or browser warnings/errors. Source assets and public
+copy are unchanged. Preview 54 remains local and uncommitted; release 52 is
+still deployed. Physical-device testing and subjective listening remain manual.
+
+## N2 surface entry and direct return, local preview 53, 2026-11-08
+
+Martyna found release 52's airborne change into the crawling shape unnatural
+and requested actual head-first entry through the food. The primary now keeps
+its extended dive posture and size, with the food surface progressively hiding
+head, body and tail. The small head then advances from that same entry point;
+the rest of its body follows over 900 ms. Both returns uncoil while still small,
+then enlarge on a direct 3.85-second route home without the intermediate tower
+pose or a large airborne turn. The two slow laps and quieter sound are retained.
+
+The final geometry review covers 1,200 immersion configurations and 32,562
+return poses, including the visible outline at every colony. Motion, audio,
+cryo, N2 tailoring and syntax checks pass. Phone and desktop playback and
+complete responsive page proofs were reviewed. Source artwork, sound assets,
+public copy and the Game's fixed-light palette are unchanged. This is a local,
+uncommitted preview for Martyna's assessment; release 52 remains deployed.
+
 ## N2 complete motion review and quieter feeding, release 52, 2026-11-08
 
 Martyna requested refinement of every N2 movement stage and publication.
