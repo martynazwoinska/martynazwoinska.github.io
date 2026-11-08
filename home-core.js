@@ -1552,6 +1552,7 @@
       window.SitePreferences.setLanguage(language);
       syncPrimaryNavLayout();
       syncThemeButton();
+      syncResearchFigureLabels();
     }
 
     // Footer year
@@ -1822,6 +1823,77 @@
           pinnedContactPhoto = null;
           showContactPhoto(null);
         }
+      });
+    }
+
+    // Keep full-resolution links usable without JavaScript or with modifier clicks.
+    var researchFigureDialog = document.getElementById('researchFigureDialog');
+    var researchFigureClose = document.getElementById('researchFigureClose');
+    var researchFigureLinks = Array.from(document.querySelectorAll('#project figure > a'));
+    var activeResearchFigure = null;
+    function syncResearchFigureLabels() {
+      researchFigureLinks.forEach(function (link) {
+        var heading = link.closest('.project').querySelector('h3');
+        link.setAttribute('aria-label', languageCopy(currentLanguage).figure_enlarge + ': ' + heading.textContent);
+      });
+      if (activeResearchFigure) updateResearchFigure();
+    }
+    function updateResearchFigure() {
+      var figure = activeResearchFigure.closest('figure');
+      var sourceImage = figure.querySelector('img');
+      var image = document.createElement('img');
+      image.src = activeResearchFigure.href;
+      image.alt = sourceImage.alt;
+      image.width = sourceImage.getAttribute('width') || sourceImage.naturalWidth;
+      image.height = sourceImage.getAttribute('height') || sourceImage.naturalHeight;
+      document.getElementById('researchFigureTitle').textContent = activeResearchFigure.closest('.project').querySelector('h3').textContent;
+      document.getElementById('researchFigureImage').replaceChildren(image);
+      document.getElementById('researchFigureCaption').innerHTML = figure.querySelector('figcaption').innerHTML;
+    }
+    if (researchFigureDialog && typeof researchFigureDialog.showModal === 'function') {
+      researchFigureLinks.forEach(function (link) {
+        link.setAttribute('aria-haspopup', 'dialog');
+        link.setAttribute('aria-controls', 'researchFigureDialog');
+        link.addEventListener('click', function (event) {
+          if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          activeResearchFigure = link;
+          updateResearchFigure();
+          document.documentElement.classList.add('research-figure-open');
+          researchFigureDialog.showModal();
+          researchFigureClose.focus({ preventScroll: true });
+        });
+      });
+      researchFigureClose.addEventListener('click', function () { researchFigureDialog.close(); });
+      researchFigureDialog.addEventListener('keydown', function (event) {
+        if (event.key !== 'Tab') return;
+        var controls = Array.from(researchFigureDialog.querySelectorAll('button, a[href]')).filter(function (control) {
+          return !control.disabled && control.getClientRects().length;
+        });
+        var first = controls[0];
+        var last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+      var backdropPointerDown = false;
+      researchFigureDialog.addEventListener('pointerdown', function (event) {
+        backdropPointerDown = event.target === researchFigureDialog;
+      });
+      researchFigureDialog.addEventListener('click', function (event) {
+        if (event.target === researchFigureDialog && backdropPointerDown) researchFigureDialog.close();
+        backdropPointerDown = false;
+      });
+      researchFigureDialog.addEventListener('close', function () {
+        document.documentElement.classList.remove('research-figure-open');
+        var trigger = activeResearchFigure;
+        activeResearchFigure = null;
+        document.getElementById('researchFigureImage').replaceChildren();
+        if (trigger && trigger.isConnected) trigger.focus({ preventScroll: true });
       });
     }
 

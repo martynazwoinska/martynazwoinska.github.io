@@ -850,6 +850,7 @@
     .pub .title { font-weight: 600; color: var(--text); display: block; margin-bottom: 3px; }
     .pub .title:hover { color: var(--accent); }
     .pub .meta { color: var(--text-soft); font-size: .92rem; }
+    .pub .journal-details { display: block; margin-top: 3px; }
     .pub .venue { font-style: italic; }
     .pub .status {
       display: inline-flex; margin-left: 6px; padding: 1px 7px; border-radius: 999px;
@@ -965,7 +966,7 @@
     }
 
     /* project highlight */
-    .project { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: start; }
+    .project { display: grid; grid-template-columns: minmax(0, 1fr) clamp(310px, 28vw, 340px); gap: 34px; align-items: start; }
     .project + .project { margin-top: 40px; }
     .project-text { max-width: none; }
     .project h3 {
@@ -974,7 +975,12 @@
     }
     .project p { color: var(--text-soft); margin: 0; }
     .project figure { margin: 4px 0 0; }
+    .project figure > a { display: block; color: var(--accent); text-decoration: none; cursor: zoom-in; }
     .project figure picture { display: block; }
+    .figure-enlarge { display: flex; align-items: center; justify-content: flex-end; gap: 6px; min-height: 40px; font-size: .84rem; }
+    .figure-enlarge svg { width: 17px; height: 17px; flex: 0 0 auto; }
+    .project figure > a:hover .figure-enlarge-label { text-decoration: underline; text-underline-offset: 3px; }
+    .project figure > a:focus-visible { outline: 3px solid var(--accent-berry); outline-offset: 4px; border-radius: 12px; }
     .project figure img {
       width: 100%; height: auto; display: block;
       background: #fff; border: 1px solid var(--border); border-radius: 12px;
@@ -989,8 +995,50 @@
     @media (max-width: 840px) {
       .project { grid-template-columns: 1fr; gap: 16px; }
       .project figure { margin: 0; }
-      .project figure img { max-width: 460px; }
+      .project figure > a { max-width: 480px; }
+      .project figure img { max-width: 480px; }
     }
+
+    /* Full-resolution research figure viewer. */
+    .research-figure-dialog {
+      width: min(960px, calc(100vw - 32px)); max-width: none;
+      max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px);
+      padding: 0; overflow: auto; overscroll-behavior: contain;
+      background: var(--bg); color: var(--text);
+      border: 1px solid var(--accent-gold); border-radius: 14px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.24);
+    }
+    .research-figure-dialog::backdrop { background: rgba(7, 25, 29, .72); }
+    .research-figure-dialog__inner { padding: 18px 22px 22px; }
+    .research-figure-dialog__header {
+      display: flex; align-items: flex-start; gap: 18px; padding: 6px 0 8px; margin-bottom: 6px;
+      position: sticky; top: 0; z-index: 1; background: var(--bg);
+    }
+    .research-figure-dialog__title { flex: 1; margin: 4px 0 0; font-family: var(--display); font-size: 1.55rem; line-height: 1.15; }
+    .research-figure-dialog__close {
+      flex: 0 0 44px; width: 44px; height: 44px; padding: 10px;
+      display: grid; place-items: center; cursor: pointer;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: var(--surface); color: var(--text);
+    }
+    .research-figure-dialog__close:hover { border-color: var(--accent); color: var(--accent); }
+    .research-figure-dialog__close:focus-visible { outline: 3px solid var(--accent-berry); outline-offset: 3px; }
+    .research-figure-dialog__close svg { width: 22px; height: 22px; }
+    .research-figure-dialog figure { margin: 0; }
+    .research-figure-dialog__image { display: grid; place-items: center; background: #fff; border-radius: 5px; }
+    .research-figure-dialog__image img { display: block; width: auto; height: auto; max-width: 100%; max-height: 65vh; max-height: 65dvh; object-fit: contain; }
+    .research-figure-dialog figcaption { margin-top: 12px; color: var(--text-soft); font-size: .9rem; line-height: 1.5; }
+    html.research-figure-open { overflow: hidden; scrollbar-gutter: stable; }
+    @media (max-width: 620px) {
+      .research-figure-dialog { width: calc(100vw - 20px); max-height: calc(100vh - 20px); max-height: calc(100dvh - 20px); }
+      .research-figure-dialog__inner { padding: 12px; }
+      .research-figure-dialog__header { gap: 10px; margin-bottom: 12px; }
+      .research-figure-dialog__title { font-size: 1.3rem; }
+    }
+    @media (orientation: landscape) and (max-height: 600px) {
+      .research-figure-dialog__image img { width: 100%; max-height: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { .project figure img { transition: none; } }
 
     /* contact */
     #contact > h2 { margin-bottom: 20px; }
@@ -1286,7 +1334,7 @@
         </p>
       </div>
       <figure>
-        <a href="response-modes.png?v=20260710-4" target="_blank" rel="noopener"><img src="response-modes.png?v=20260710-4" loading="lazy" decoding="async" alt="Adaptive response modes across cue reliability and between-generation environmental variability: reversible plasticity, developmental plasticity, bet-hedging, and continuous genetic adaptation" onerror="this.closest('figure').remove()" /></a>
+        <a href="response-modes.png?v=20260710-4" target="_blank" rel="noopener"><img src="response-modes.png?v=20260710-4" width="1230" height="953" loading="lazy" decoding="async" alt="Adaptive response modes across cue reliability and between-generation environmental variability: reversible plasticity, developmental plasticity, bet-hedging, and continuous genetic adaptation" onerror="this.closest('figure').remove()" /><span class="figure-enlarge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M4 15v5h5M20 15v5h-5M4 4l6 6m10-6-6 6M4 20l6-6m10 6-6-6"/></svg><span class="figure-enlarge-label">Enlarge figure</span></span></a>
         <figcaption>Adaptive response modes across cue reliability and environmental variability. Modified from Botero et al. (2015), <em>PNAS</em>.</figcaption>
       </figure>
     </div>
@@ -1308,7 +1356,7 @@
             <source
               type="image/webp"
               srcset="nematode-learning-palette-480.webp 480w, nematode-learning-palette-960.webp 960w, nematode-learning-palette-1296.webp 1296w"
-              sizes="(max-width: 508px) calc(100vw - 48px), (max-width: 840px) 460px, 300px"
+              sizes="(max-width: 528px) calc(100vw - 48px), (max-width: 840px) 480px, (max-width: 1107px) 310px, (max-width: 1214px) 28vw, 340px"
             />
             <img
               class="figure-padded"
@@ -1321,7 +1369,7 @@
               onerror="this.closest('figure').remove()"
             />
           </picture>
-        </a>
+        <span class="figure-enlarge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M4 15v5h5M20 15v5h-5M4 4l6 6m10-6-6 6M4 20l6-6m10 6-6-6"/></svg><span class="figure-enlarge-label">Enlarge figure</span></span></a>
         <figcaption>The many forms of learning documented in <em>Caenorhabditis</em> nematodes.</figcaption>
       </figure>
     </div>
@@ -1342,7 +1390,7 @@
             <source
               type="image/webp"
               srcset="seed-beetles-palette-480.webp 480w, seed-beetles-palette-960.webp 960w, seed-beetles-palette-1254.webp 1254w"
-              sizes="(max-width: 508px) calc(100vw - 48px), (max-width: 840px) 460px, 300px"
+              sizes="(max-width: 528px) calc(100vw - 48px), (max-width: 840px) 480px, (max-width: 1107px) 310px, (max-width: 1214px) 28vw, 340px"
             />
             <img
               src="seed-beetles-palette.png"
@@ -1354,7 +1402,7 @@
               onerror="this.closest('figure').remove()"
             />
           </picture>
-        </a>
+        <span class="figure-enlarge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M4 15v5h5M20 15v5h-5M4 4l6 6m10-6-6 6M4 20l6-6m10 6-6-6"/></svg><span class="figure-enlarge-label">Enlarge figure</span></span></a>
         <figcaption>Directions of experimental selection on male and female body mass in <em>Callosobruchus</em> seed beetles.</figcaption>
       </figure>
     </div>
@@ -1369,7 +1417,7 @@
       <div class="year">2026</div>
       <div class="body">
         <a class="title" href="https://www.biorxiv.org/content/10.64898/2026.04.10.717426v1" target="_blank" rel="noopener">Transgenerational inheritance is variable across <em>Caenorhabditis</em> worms</a>
-        <div class="meta"><strong>Zwoińska M. K.</strong>, Widjaja A. N., Lind M. I., Akgül A. D., Altan A. S., Aydın D., Çukurbağlı D., Venkataramani A. G., Renhuldt N. T., Chen H.-y. <span class="venue">bioRxiv</span><span class="status">Preprint</span></div>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Widjaja A. N., Lind M. I., Akgül A. D., Altan A. S., Aydın D., Çukurbağlı D., Venkataramani A. G., Renhuldt N. T., Chen H.-y. <span class="journal-details"><span class="venue">bioRxiv</span><span class="status">Preprint</span></span></div>
       </div>
     </div>
 
@@ -1377,7 +1425,7 @@
       <div class="year">2026</div>
       <div class="body">
         <a class="title" href="https://www.biorxiv.org/content/10.64898/2026.02.04.703537v1" target="_blank" rel="noopener">From constraint to opportunity: Relaxing sexual antagonism reveals adaptive potential maintained by balancing selection</a>
-        <div class="meta"><strong>Zwoińska M. K.</strong>, Wiberg R. A. W., Trabert M., Kaufmann P., Immonen E. <span class="venue">bioRxiv</span><span class="status">Preprint</span></div>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Wiberg R. A. W., Trabert M., Kaufmann P., Immonen E. <span class="journal-details"><span class="venue">bioRxiv</span><span class="status">Preprint</span></span></div>
       </div>
     </div>
 
@@ -1385,7 +1433,7 @@
       <div class="year">2026</div>
       <div class="body">
         <a class="title" href="https://onlinelibrary.wiley.com/doi/10.1111/brv.70103" target="_blank" rel="noopener">A century of theories of balancing selection</a>
-        <div class="meta">Ruzicka F., <strong>Zwoińska M. K.</strong>, Goedert D., Kokko H., et al. <span class="venue">Biological Reviews</span> 101(2):804–825</div>
+        <div class="meta">Ruzicka F., <strong>Zwoińska M. K.</strong>, Goedert D., Kokko H., et al. <span class="journal-details"><span class="venue">Biological Reviews</span> 101(2):804–825</span></div>
       </div>
     </div>
 
@@ -1393,7 +1441,7 @@
       <div class="year">2025</div>
       <div class="body">
         <a class="title" href="https://royalsocietypublishing.org/doi/10.1098/rstb.2024.0125" target="_blank" rel="noopener">Nematode mind: exploring the role of the RNA interference pathway in learning, memory and beyond</a>
-        <div class="meta"><strong>Zwoińska M. K.</strong>, Paida V., Chen H.-y., Darkes L., Lind M. I. <span class="venue">Philosophical Transactions of the Royal Society B</span> 380(1929):20240125</div>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Paida V., Chen H.-y., Darkes L., Lind M. I. <span class="journal-details"><span class="venue">Philosophical Transactions of the Royal Society B</span> 380(1929):20240125</span></div>
       </div>
     </div>
 
@@ -1401,7 +1449,7 @@
       <div class="year">2025</div>
       <div class="body">
         <a class="title" href="https://academic.oup.com/mbe/article/42/8/msaf178/8217438" target="_blank" rel="noopener">Sex-biased gene expression under sexually antagonistic and sex-limited selection</a>
-        <div class="meta">Wiberg R. A. W., <strong>Zwoińska M. K.</strong>, Kaufmann P., Howie J. M., Immonen E. <span class="venue">Molecular Biology and Evolution</span> 42(8):msaf178</div>
+        <div class="meta">Wiberg R. A. W., <strong>Zwoińska M. K.</strong>, Kaufmann P., Howie J. M., Immonen E. <span class="journal-details"><span class="venue">Molecular Biology and Evolution</span> 42(8):msaf178</span></div>
       </div>
     </div>
 
@@ -1409,7 +1457,7 @@
       <div class="year">2025</div>
       <div class="body">
         <a class="title" href="https://doi.org/10.1093/evolut/qpaf061" target="_blank" rel="noopener">Predicting the prevalence of genetic trade-offs among adaptive substitutions</a>
-        <div class="meta">Connallon T., Czuppon P., Olito C., Goedert D., Kokko H., …, <strong>Zwoińska M. K.</strong>, et al. <span class="venue">Evolution</span> 79(7):1243–1255</div>
+        <div class="meta">Connallon T., Czuppon P., Olito C., Goedert D., Kokko H., …, <strong>Zwoińska M. K.</strong>, et al. <span class="journal-details"><span class="venue">Evolution</span> 79(7):1243–1255</span></div>
       </div>
     </div>
 
@@ -1426,7 +1474,7 @@
       <div class="year">2024</div>
       <div class="body">
         <a class="title" href="https://doi.org/10.1093/evlett/qrad007" target="_blank" rel="noopener">Heat stress reveals a fertility debt owing to postcopulatory sexual selection</a>
-        <div class="meta">Baur J., <strong>Zwoińska M. K.</strong>, Koppik M., Snook R. R., Berger D. <span class="venue">Evolution Letters</span> 8(1):101–113</div>
+        <div class="meta">Baur J., <strong>Zwoińska M. K.</strong>, Koppik M., Snook R. R., Berger D. <span class="journal-details"><span class="venue">Evolution Letters</span> 8(1):101–113</span></div>
       </div>
     </div>
 
@@ -1434,7 +1482,7 @@
       <div class="year">2022</div>
       <div class="body">
         <a class="title" href="https://doi.org/10.1111/1365-2656.13664" target="_blank" rel="noopener">The genetic basis and adult reproductive consequences of developmental thermal plasticity</a>
-        <div class="meta">Rodrigues L. R., <strong>Zwoińska M. K.</strong>, Wiberg R. A. W., Snook R. R. <span class="venue">Journal of Animal Ecology</span> 91(6):1119–1134</div>
+        <div class="meta">Rodrigues L. R., <strong>Zwoińska M. K.</strong>, Wiberg R. A. W., Snook R. R. <span class="journal-details"><span class="venue">Journal of Animal Ecology</span> 91(6):1119–1134</span></div>
       </div>
     </div>
 
@@ -1449,7 +1497,7 @@
       <div class="year">2020</div>
       <div class="body">
         <a class="title" href="https://academic.oup.com/evlett/article/4/4/371/6697523" target="_blank" rel="noopener">Environmental variation mediates the evolution of anticipatory parental effects</a>
-        <div class="meta">Lind M. I., <strong>Zwoińska M. K.</strong>, Andersson J., Carlsson H., Krieg T., Larva T., Maklakov A. A. <span class="venue">Evolution Letters</span> 4(4):371–381</div>
+        <div class="meta">Lind M. I., <strong>Zwoińska M. K.</strong>, Andersson J., Carlsson H., Krieg T., Larva T., Maklakov A. A. <span class="journal-details"><span class="venue">Evolution Letters</span> 4(4):371–381</span></div>
       </div>
     </div>
 
@@ -1457,7 +1505,7 @@
       <div class="year">2020</div>
       <div class="body">
         <a class="title" href="https://doi.org/10.1111/jeb.13563" target="_blank" rel="noopener">Artificial selection for increased dispersal results in lower fitness</a>
-        <div class="meta"><strong>Zwoińska M. K.</strong>, Larva T., Sekajova Z., Carlsson H., Meurling S., Maklakov A. A. <span class="venue">Journal of Evolutionary Biology</span> 33(2):217–224</div>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Larva T., Sekajova Z., Carlsson H., Meurling S., Maklakov A. A. <span class="journal-details"><span class="venue">Journal of Evolutionary Biology</span> 33(2):217–224</span></div>
       </div>
     </div>
 
@@ -1465,7 +1513,7 @@
       <div class="year">2020</div>
       <div class="body">
         <a class="title" href="https://doi.org/10.3389/fgene.2020.00573" target="_blank" rel="noopener">Phenotypic responses to and genetic architecture of sterility following exposure to sub-lethal temperature during development</a>
-        <div class="meta"><strong>Zwoińska M. K.</strong>, Rodrigues L. R., Slate J., Snook R. R. <span class="venue">Frontiers in Genetics</span> 11:573</div>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Rodrigues L. R., Slate J., Snook R. R. <span class="journal-details"><span class="venue">Frontiers in Genetics</span> 11:573</span></div>
       </div>
     </div>
 
@@ -1473,7 +1521,7 @@
       <div class="year">2017</div>
       <div class="body">
         <a class="title" href="https://onlinelibrary.wiley.com/doi/full/10.1111/evo.13156" target="_blank" rel="noopener">Experimental evolution of slowed cognitive aging in <em>Drosophila melanogaster</em></a>
-        <div class="meta"><strong>Zwoińska M. K.</strong>, Maklakov A. A., Kawecki T. J., Hollis B. <span class="venue">Evolution</span> 71(3):662–670</div>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Maklakov A. A., Kawecki T. J., Hollis B. <span class="journal-details"><span class="venue">Evolution</span> 71(3):662–670</span></div>
       </div>
     </div>
 
@@ -1481,7 +1529,7 @@
       <div class="year">2017</div>
       <div class="body">
         <a class="title" href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/1365-2435.12840" target="_blank" rel="noopener">Slow development as an evolutionary cost of long life</a>
-        <div class="meta">Lind M. I., …, <strong>Zwoińska M. K.</strong>, …, Maklakov A. A. <span class="venue">Functional Ecology</span> 31(6):1252–1261</div>
+        <div class="meta">Lind M. I., …, <strong>Zwoińska M. K.</strong>, …, Maklakov A. A. <span class="journal-details"><span class="venue">Functional Ecology</span> 31(6):1252–1261</span></div>
       </div>
     </div>
 
@@ -1496,7 +1544,7 @@
       <div class="year">2016</div>
       <div class="body">
         <a class="title" href="https://academic.oup.com/evolut/article/70/2/342/6852186" target="_blank" rel="noopener">Selection on learning performance results in the correlated evolution of sexual dimorphism in life history</a>
-        <div class="meta"><strong>Zwoińska M. K.</strong>, Lind M. I., Cortazar-Chinarro M., Ramsden M., Maklakov A. A. <span class="venue">Evolution</span> 70(2):342–357</div>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Lind M. I., Cortazar-Chinarro M., Ramsden M., Maklakov A. A. <span class="journal-details"><span class="venue">Evolution</span> 70(2):342–357</span></div>
       </div>
     </div>
 
@@ -1504,7 +1552,7 @@
       <div class="year">2016</div>
       <div class="body">
         <a class="title" href="https://academic.oup.com/biomedgerontology/article/71/7/882/2605136" target="_blank" rel="noopener">Sex-specific trade-offs with growth and fitness following life-span extension by rapamycin in an outcrossing nematode, <em>Caenorhabditis remanei</em></a>
-        <div class="meta">Lind M. I., <strong>Zwoińska M. K.</strong>, Meurling S., Carlsson H., Maklakov A. A. <span class="venue">Journals of Gerontology: Series A</span> 71(7):882</div>
+        <div class="meta">Lind M. I., <strong>Zwoińska M. K.</strong>, Meurling S., Carlsson H., Maklakov A. A. <span class="journal-details"><span class="venue">Journals of Gerontology: Series A</span> 71(7):882</span></div>
       </div>
     </div>
 
@@ -1512,7 +1560,7 @@
       <div class="year">2014</div>
       <div class="body">
         <a class="title" href="https://doi.org/10.1016/j.cub.2014.01.044" target="_blank" rel="noopener">Sexual conflict: male control of female longevity</a>
-        <div class="meta"><strong>Zwoińska M. K.</strong>, Lind M. I., Maklakov A. A. <span class="venue">Current Biology</span> 24(5):R196–R198</div>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Lind M. I., Maklakov A. A. <span class="journal-details"><span class="venue">Current Biology</span> 24(5):R196–R198</span></div>
       </div>
     </div>
 
@@ -1520,7 +1568,7 @@
       <div class="year">2013</div>
       <div class="body">
         <a class="title" href="https://doi.org/10.1016/j.exger.2013.09.008" target="_blank" rel="noopener">Sex differences in cognitive ageing: testing predictions derived from life-history theory in a dioecious nematode</a>
-        <div class="meta"><strong>Zwoińska M. K.</strong>, Kolm N., Maklakov A. A. <span class="venue">Experimental Gerontology</span> 48(12):1469–1472</div>
+        <div class="meta"><strong>Zwoińska M. K.</strong>, Kolm N., Maklakov A. A. <span class="journal-details"><span class="venue">Experimental Gerontology</span> 48(12):1469–1472</span></div>
       </div>
     </div>
 
@@ -1758,13 +1806,29 @@
 
   </main>
 
+  <dialog id="researchFigureDialog" class="research-figure-dialog" aria-labelledby="researchFigureTitle" aria-describedby="researchFigureCaption">
+    <div class="research-figure-dialog__inner">
+      <div class="research-figure-dialog__header">
+        <h2 class="research-figure-dialog__title" id="researchFigureTitle"></h2>
+        <button type="button" id="researchFigureClose" class="research-figure-dialog__close" autofocus>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          <span class="sr-only figure-close-label">Close</span>
+        </button>
+      </div>
+      <figure>
+        <div class="research-figure-dialog__image" id="researchFigureImage"></div>
+        <figcaption id="researchFigureCaption"></figcaption>
+      </figure>
+    </div>
+  </dialog>
+
   <footer>
     <div class="wrap">
       © <span id="year"></span> <span id="footerAffiliation">Martyna Katarzyna Zwoińska</span>
     </div>
   </footer>
 
-  <script src="home-i18n.js?v=20261107-polish-research"></script>
-  <script src="home.js?v=20261107-photo-labels"></script>
+  <script src="home-i18n.js?v=20261108-research-reader"></script>
+  <script src="home.js?v=20261108-research-reader"></script>
 </body>
 </html>

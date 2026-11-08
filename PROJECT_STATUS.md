@@ -4,6 +4,24 @@ Last updated: 2026-11-08
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+## Research figure viewer and publication hierarchy, 2026-11-08
+
+Martyna approved slightly larger research figures, an enlargement overlay,
+and a separate journal-details line for each publication. Desktop figures
+now range from 310 to 340 px, with a 480 px cap in the stacked tablet layout.
+The native dialog displays the unchanged full-resolution source, translated
+title, alt text and caption. It supports keyboard focus containment, Escape,
+backdrop dismissal and return to the triggering figure. Short landscape
+views use a larger scrollable image with a sticky close control.
+
+All 17 publication entries retain their exact text. Journal names, volume
+and page details, and preprint badges stay together on the new line. Both
+parental-leave rows and the existing phone year layout are preserved.
+The introduction, flower and Contact markup and styling remain unchanged.
+Martyna explicitly approved Enlarge figure / Close and the corresponding
+Swedish and Polish labels. Full-page proofs at 360, 768, 1024 and 1440 px,
+both themes, all three languages, and keyboard/landscape checks passed.
+
 ## N2 complete motion review and quieter feeding, release 52, 2026-11-08
 
 Martyna requested refinement of every N2 movement stage and publication.
