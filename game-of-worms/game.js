@@ -30,7 +30,7 @@ import { createIshigakiInteractions } from "./ishigaki-interactions.js?v=2026090
 import { createCanberraCafe, CAFE_FAMILIES } from "./canberra-cafe.js?v=20260909-cafe-audio-1";
 import { mountLiveLoupes } from "./live-loupes.js?v=20260922-glass-hit-1";
 import { createTrivandrumWatering } from "./trivandrum-watering.js?v=20260922-sample-hold-1";
-import { createN2Feeding } from "./n2-feeding.js?v=20261108-n2-mobile-58";
+import { createN2Feeding, feedingSceneChanged } from "./n2-feeding.js?v=20261108-touch-59";
 import { createN2CryoFlight } from "./n2-cryo-flight.js?v=20260908-cryo-return-1";
 import { createBaliGongs, GONG_FAMILY } from "./bali-gong-duet.js?v=20260920-gong-duet-2";
 import { createEdinburghPipes } from "./edinburgh-pipes.js?v=20260909-pipes-1";
@@ -970,7 +970,7 @@ function accessoryArtworkBounds(piece) {
       return { left, top, right, bottom, width: right - left, height: bottom - top };
     }
   }
-  return piece.querySelector(":scope > .location-accessory-art")?.getBoundingClientRect()
+  return piece.querySelector(piece.dataset.accessoryFamily === "ngm-agar-plate" ? ".location-accessory-art" : ":scope > .location-accessory-art")?.getBoundingClientRect()
     || piece.getBoundingClientRect();
 }
 
@@ -1627,12 +1627,16 @@ function finishAccessoryDrag(event) {
   });
   piece.classList.remove("is-dragging");
   document.documentElement.classList.remove("accessory-drag-active");
-  if (moved || !trivandrumWatering.preservesSample(piece) && !claremontPlay.handles(piece) && !canopyPlay.handles(piece) && !ahmedabadHands.handles(piece) && !panamaPlay.handlesLeaf(piece) && !mauritiusPlay.handles(piece) && !guadeloupePlay.handles(piece) && !taipeiPlay.handles(piece) && !ju1375Play.handles(piece) && !(finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) && !mahahualPlay.handles(piece) && !praslinPlay.handles(piece)) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
+  const feedingReleased = n2Feeding.release(piece, (x, y) => {
+    const current = accessoryPosition(id, wormPart), delta = screenDeltaToAccessorySpace(piece, x, y);
+    moveAccessory(id, wormPart, { ...current, x: current.x + delta.x, y: current.y + delta.y }, piece);
+  }, event.type !== "pointerup");
+  if (!feedingReleased && (moved || !trivandrumWatering.preservesSample(piece) && !claremontPlay.handles(piece) && !canopyPlay.handles(piece) && !ahmedabadHands.handles(piece) && !panamaPlay.handlesLeaf(piece) && !mauritiusPlay.handles(piece) && !guadeloupePlay.handles(piece) && !taipeiPlay.handles(piece) && !ju1375Play.handles(piece) && !(finalScenes.handles(piece) || orsayPlay.handles(piece) || saltLakePlay.handles(piece)) && !mahahualPlay.handles(piece) && !praslinPlay.handles(piece))) moveAccessory(id, wormPart, accessoryPosition(id, wormPart), piece);
   if (moved) {
     announceAccessory(t("accessoryMoved", { accessory: accessoryName(id, wormPart) }));
     if (event.type === "pointerup") { baliCacao.drop(piece); claremontPlay.drop(piece); }
   }
-  else if (event.type === "pointerup") { finalScenes.start(piece); orsayPlay.start(piece); saltLakePlay.start(piece); mahahualPlay.start(piece); praslinPlay.start(piece); ju1375Play.start(piece); taipeiPlay.start(piece); guadeloupePlay.start(piece); mauritiusPlay.start(piece); araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2Feeding.start(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); hcmcPlay.start(piece); oahuBike.start(piece); reunionPlay.start(piece); kauaiBath.start(piece); lombokPlay.start(piece); canopyPlay.start(piece); pohnpeiPlay.start(piece); saoTomePlay.start(piece); }
+  else if (event.type === "pointerup" && !feedingReleased) { finalScenes.start(piece); orsayPlay.start(piece); saltLakePlay.start(piece); mahahualPlay.start(piece); praslinPlay.start(piece); ju1375Play.start(piece); taipeiPlay.start(piece); guadeloupePlay.start(piece); mauritiusPlay.start(piece); araucaniaPlay.start(piece); claremontPlay.start(piece); edinburghPipes.start(piece); turnTelescopeFocus(piece); n2Feeding.start(piece); n2CryoFlight.start(piece); baliGongs.start(piece); baliCacao.start(piece); ahmedabadFans.start(piece); canberraCafe.start(piece); ishigakiPlay.start(piece); ahmedabadHands.start(piece); trivandrumWatering.start(piece); panamaPlay.start(piece); doisRiosPlay.start(piece); nambuccaPlay.start(piece); hcmcPlay.start(piece); oahuBike.start(piece); reunionPlay.start(piece); kauaiBath.start(piece); lombokPlay.start(piece); canopyPlay.start(piece); pohnpeiPlay.start(piece); saoTomePlay.start(piece); }
   activeAccessoryDrag = null;
   queueAccessoryConstraints();
 }
@@ -1641,6 +1645,13 @@ function moveActiveAccessoryPointer(event) {
   if (!activeAccessoryDrag || !activeAccessoryDrag.pointers.has(event.pointerId)) return;
   const { id, wormPart, piece } = activeAccessoryDrag;
   event.preventDefault();
+  // A finger may wobble without intending to move a plate. Pause an active
+  // meal on press, and hand its displayed plate to dragging only after 6 px.
+  if (piece.dataset.accessoryFamily === "ngm-agar-plate" && !activeAccessoryDrag.moved && !activeAccessoryDrag.pinch) {
+    if (Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)<=6) return;
+    n2Feeding.drag(piece);
+    activeAccessoryDrag.startBounds=accessoryPieceBounds(id,wormPart);
+  }
   // Preserve the ongoing sample handoff for a tap or small finger wobble.
   if (trivandrumWatering.preservesSample(piece) && !activeAccessoryDrag.moved && !activeAccessoryDrag.pinch && Math.hypot(event.clientX-activeAccessoryDrag.startClientPoint.x,event.clientY-activeAccessoryDrag.startClientPoint.y)<=6) return;
   if (activeAccessoryDrag.umbrellaPivot && !activeAccessoryDrag.pinch) {
@@ -1693,6 +1704,10 @@ function moveActiveAccessoryPointer(event) {
   if (activeAccessoryDrag.pinch && activeAccessoryDrag.pointers.size === 2) {
     const [first, second] = [...activeAccessoryDrag.pointers.values()];
     const distance = Math.hypot(second.x - first.x, second.y - first.y);
+    if (piece.dataset.accessoryFamily === "ngm-agar-plate" && !activeAccessoryDrag.moved) {
+      if (Math.abs(distance-activeAccessoryDrag.pinch.startDistance)<=6) return;
+      n2Feeding.drag(piece);
+    }
     if (Math.abs(distance - activeAccessoryDrag.pinch.startDistance) > 1) {
       if (!activeAccessoryDrag.moved) { finalScenes.cancel(); orsayPlay.cancel(); saltLakePlay.cancel(); mahahualPlay.cancel(); praslinPlay.cancel(); ju1375Play.cancel(); taipeiPlay.cancel(); }
       if (!activeAccessoryDrag.moved) guadeloupePlay.cancel();
@@ -1785,8 +1800,8 @@ function wireAccessoryPieces() {
       if(!araucaniaPlay.handles(piece))araucaniaPlay.cancel();
       if (ishigakiPlay.active) return;
       if (n2CryoFlight.active) return;
-      n2Feeding.cancel();
       if (drawingEnabled || event.button !== 0 || !activeWardrobe().has(id)) return;
+      if (!n2Feeding.grab(piece)) n2Feeding.cancel();
       if(!claremontPlay.handles(piece))claremontPlay.cancel(piece);
       if(!edinburghPipes.handles(piece))edinburghPipes.cancel();
       if (!panamaPlay.handlesLeaf(piece)) panamaPlay.cancel();
@@ -1832,6 +1847,7 @@ function wireAccessoryPieces() {
         umbrellaPivot: umbrellaPivot.begin(piece,event.clientX,event.clientY),
         startBounds: accessoryPieceBounds(id, wormPart),
         startPosition: accessoryPosition(id, wormPart),
+        scene: els.habitat.getBoundingClientRect(),
         moved: false
       };
     });
@@ -2035,6 +2051,17 @@ window.addEventListener("pointercancel", finishAccessoryDrag, true);
 window.addEventListener("touchmove", event => {
   if (activeAccessoryDrag) event.preventDefault();
 }, { capture: true, passive: false });
+
+function cancelN2PlateGesture() {
+  if (activeAccessoryDrag?.piece.dataset.accessoryFamily !== "ngm-agar-plate") return;
+  finishAccessoryDrag({ type: "pointercancel", pointerId: activeAccessoryDrag.primaryPointerId });
+}
+window.addEventListener("resize", () => {
+  if (activeAccessoryDrag && feedingSceneChanged(activeAccessoryDrag.scene, els.habitat.getBoundingClientRect())) cancelN2PlateGesture();
+});
+els.habitat.addEventListener("lostpointercapture", cancelN2PlateGesture);
+document.addEventListener("visibilitychange", () => { if (document.hidden) cancelN2PlateGesture(); });
+window.addEventListener("pagehide", cancelN2PlateGesture);
 
 function createMarker(record) {
   const item = byId.get(record.speciesId);

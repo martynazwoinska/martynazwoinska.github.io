@@ -734,3 +734,57 @@ viewports, rather than a physical phone:
   testing remain manual.
 
 Prepared on codex/n2-lawn-crawl for the requested publication to main.
+
+## Plate and tower touch fixes, release 59, 2026-11-08
+
+Martyna authorized fixing the three confirmed touch issues and publication.
+Both N2 plates use a 6 px tap/drag tolerance. Pressing the active primary plate
+pauses the meal without changing its displayed geometry. A slight wobble
+resumes the same meal; crossing the threshold stops the meal while retaining
+the enlarged plate for dragging. The original user size is restored over
+260 ms around the drop point, including a new grab during that transition.
+Saved coordinates are updated before the settling transform. Original pivots,
+hit targets and pointer activity are restored on completion or cancellation.
+
+The tower drawing is unchanged. A separate transparent interaction surface
+above the worm body fixes blocked grabs, while visible accessories keep
+priority. Invisible feeding-source actors disable pointer events throughout
+their subtrees. Tower movement and plate gestures cancel safely when actual
+scene dimensions change, with height-only browser changes still supported.
+
+Created: scripts/check-n2-touch.cjs. Changed: game-of-worms/game.js,
+index.html, n2-feeding.js, n2-diving-tower.js and style.css; PROJECT_STATUS.md
+and this dossier. Deleted: none. No original art, sound assets or public copy
+changed. Runtime cache version: 20261108-touch-59. The Game stays fixed-light.
+
+Validation:
+
+- The new test replays the real shared pointer handlers for idle and active
+  wobble taps, genuine drags, pinch resizing, cancellation and unchanged
+  unrelated-prop routing. Mobile geometry, dive, four-scene motion, audio,
+  syntax and whitespace checks also pass.
+- At 360 px, a 3 px wobble starts feeding. A slight wobble during a meal
+  preserves the same animation clip identities and resumes without restart.
+- The tower centre can be dragged 45 px across and 60 px up without page
+  scrolling. Seven of nine sampled grip points reach the tower; the other
+  two correctly reach the visible companion plate. The hidden primary
+  jetpack no longer intercepts a sampled tower point during feeding.
+- At 430 px, primary plates at user scales 0.6 and 2 retain their enlarged
+  size while dragged 50 px left and 30 px up. The final centre differs from
+  the requested drop point by under 0.04 px. Both restore the original user
+  scale and remove temporary elements without scrolling the page.
+- Regrabbing during the shrink preserves the cumulative drop position within
+  0.02 px. Rotation from portrait to landscape during a held gesture removes
+  all temporary carriers, frozen styles and dragging classes.
+- A complete 390 px feeding cycle passed 2,302 observations, with exact
+  source-style restoration, zero plate overhang and removal of both tower
+  drawing and interaction surface. Height changes during the jump and return
+  did not cancel feeding. No browser warnings or errors occurred.
+- Uncropped full-page proofs are 360x2464, 390x2486, 430x2276, 768x2224,
+  844x2266, 1024x1881 and 1440x1865 pixels, without horizontal overflow.
+  Proof images and measurement traces are outside the repository.
+
+Browser checks use desktop Chrome pointer input at phone viewport sizes.
+Native two-finger gestures, physical-phone touch feel and phone performance
+remain manual checks; the pinch test above is a pointer-handler replay.
+Prepared on codex/n2-lawn-crawl for the requested publication to main.

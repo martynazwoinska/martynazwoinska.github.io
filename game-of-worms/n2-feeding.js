@@ -1,6 +1,6 @@
 import {add,at,relative,ease,clamp,matrix,recordedSound} from './scene-performance.js?v=20260919-uniform-1';
 import {createDiveGeometry,DIVE_PREPARE_MS,DIVE_FLIGHT_MS,DIVE_ENTRY_PHASE} from './n2-dive-motion.js?v=20261107-dive-46';
-import {createDivingTower} from './n2-diving-tower.js?v=20261107-tower-44';
+import {createDivingTower} from './n2-diving-tower.js?v=20261108-touch-59';
 import {createDiveOutfit} from './n2-dive-outfit.js?v=20261108-n2-outfit-55';
 
 export const DIVE_DELAY=DIVE_PREPARE_MS+260-1250;
@@ -313,12 +313,40 @@ function jumpingWorm(root,body,small,towerPosition={x:0,y:0}){
 // The primary dives from the movable springboard, makes two slow circuits
 // of the OP50 lawn and returns home. The companion plate is only a movable prop.
 export function createN2Feeding(habitat,onChange=()=>{}){
- const reduced=matchMedia('(prefers-reduced-motion: reduce)'),eaten=new Map(),sound=recordedSound({eat:'reunion-eat.wav'});let run=null,raf=0;
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)'),eaten=new Map(),sound=recordedSound({eat:'reunion-eat.wav'});let run=null,held=null,raf=0;
  let tower=null,towerRevealed=false;const towerPosition={x:0,y:0};
  const handles=p=>p?.dataset.accessoryFamily==='ngm-agar-plate'&&p.dataset.wormPart==='primary';
  function paint(piece){const n=eaten.get(piece)||0;piece.querySelectorAll('.op50-colony').forEach((c,i)=>c.setAttribute('opacity',i<n?'0':'1'));}
  function hideTower(){const focused=tower&&tower.element===document.activeElement;towerRevealed=false;tower?.remove();tower=null;if(focused)habitat.querySelector('[data-accessory-family="ngm-agar-plate"][data-worm-part="primary"]')?.focus({preventScroll:true});}
- function cancel(){cancelAnimationFrame(raf);raf=0;sound.stop();tower?.element?.removeAttribute('opacity');if(!run)return;const old=run;run=null;old.restore();paint(old.piece);onChange();}
+ function cancel(){cancelAnimationFrame(raf);raf=0;sound.stop();tower?.element?.removeAttribute('opacity');if(held){const old=held;held=null;old.restore();onChange();}if(!run)return;const old=run;run=null;old.restore();paint(old.piece);onChange();}
+ function grab(piece){
+  if(held?.piece===piece){cancelAnimationFrame(raf);return true;}
+  if(run?.piece!==piece)return false;
+  cancelAnimationFrame(raf);sound.stop();run.pausedAt??=performance.now();return true;
+ }
+ function drag(piece){
+  if(run?.piece===piece&&run.pausedAt!=null){const old=run;run=null;old.detach();held={piece,art:old.art,scene:old.scene,restore:()=>old.restorePlate(true)};paint(piece);onChange();}
+ }
+ function release(piece,reposition,cancelled=false){
+  if(run?.piece===piece&&run.pausedAt!=null){
+   if(cancelled){cancel();return true;}
+   if(run.started!==null)run.started+=performance.now()-run.pausedAt;
+   run.pausedAt=null;raf=requestAnimationFrame(run.tick);return true;
+  }
+  if(held?.piece!==piece)return false;
+  // Save the displayed pose, restore the resting art, and keep its centre at
+  // the drop point. A short matrix tween removes the meal's magnification.
+  const old=held,art=old.art,before=DOMMatrix.fromMatrix(art.getScreenCTM()),box=art.getBoundingClientRect();held=null;old.restore();
+  const rest=art.getBoundingClientRect();reposition((box.left+box.right-rest.left-rest.right)/2,(box.top+box.bottom-rest.top-rest.bottom)/2);
+  const hit=piece.querySelector(':scope > .accessory-hit-target'),hitNext=hit?.nextSibling;
+  const pivots=[piece,art].map(n=>({n,style:n.getAttribute('style'),box:n.getBBox()}));
+  pivots.forEach(({n,box})=>{n.style.transformBox='view-box';n.style.transformOrigin=`${box.x+box.width/2}px ${box.y+box.height/2}px`;});
+  const parent=art.parentNode,from=DOMMatrix.fromMatrix(parent.getScreenCTM()).inverse().multiply(before).multiply(relative(parent,art).inverse()),carrier=add(parent,'g',{'data-n2-held-plate':''});art.before(carrier);carrier.append(art);
+  const restore=()=>{carrier.replaceWith(art);const currentHit=piece.querySelector(':scope > .accessory-hit-target');if(currentHit!==hit){currentHit?.remove();if(hit)piece.insertBefore(hit,hitNext?.parentNode===piece?hitNext:null);}const values=['--accessory-user-x','--accessory-user-y','--accessory-user-scale'].map(k=>[k,piece.style.getPropertyValue(k)]);pivots.forEach(({n,style})=>style===null?n.removeAttribute('style'):n.setAttribute('style',style));values.forEach(([k,v])=>piece.style.setProperty(k,v));};
+  const settling=held={piece,art,scene:old.scene,restore},started=performance.now();carrier.setAttribute('transform',matrix(from));
+  function settle(now){if(held!==settling)return;const t=reduced.matches?1:ease((now-started)/260),m=new DOMMatrix();for(const k of['a','b','c','d','e','f'])m[k]=(k==='a'||k==='d'?1:0)*t+from[k]*(1-t);carrier.setAttribute('transform',matrix(m));if(t===1){held=null;restore();onChange();}else raf=requestAnimationFrame(settle);}
+  raf=requestAnimationFrame(settle);return true;
+ }
  function clear(){cancel();hideTower();eaten.clear();habitat.querySelectorAll('[data-accessory-family="ngm-agar-plate"]').forEach(paint);}
  function syncTower(){const plate=habitat.querySelector('[data-accessory-family="ngm-agar-plate"][data-worm-part="primary"]'),root=habitat.querySelector('#worm-species'),available=plate&&!plate.closest('[hidden]')&&root;if(!available)towerRevealed=false;if(towerRevealed&&available){if(!tower?.element?.isConnected){tower?.remove();tower=createDivingTower(root,habitat,towerPosition,cancel);}}else if(tower){tower.remove();tower=null;}}
  if(typeof MutationObserver!=='undefined'){const observer=new MutationObserver(syncTower);observer.observe(habitat,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden']});syncTower();}
@@ -341,21 +369,25 @@ export function createN2Feeding(habitat,onChange=()=>{}){
   syncTower();const target={x:+colonies[portion].getAttribute('cx'),y:+colonies[portion].getAttribute('cy')},overlay=crawlerOverlay(art,small),jumper=jumpingWorm(root,body,small,{...towerPosition}),initialMap=relative(root,art);
   const angleFor=direction=>{const pose=feedingWormPose(0,small,target,0,direction),head=at(initialMap,pose.head.x,pose.head.y),tail=at(initialMap,pose.tail.x,pose.tail.y);return Math.atan2(head.y-tail.y,head.x-tail.x);},turnDistance=angle=>Math.abs(Math.atan2(Math.sin(angle-jumper.sourceAngle),Math.cos(angle-jumper.sourceAngle)));
   const direction=turnDistance(angleFor(-1))<turnDistance(angleFor(1))?-1:1,route=t=>feedingRoute(t,direction,small,target);
-  const groundShadow=body.parentElement.querySelector(':scope > .worm-ground-shadow'),shadow=art.querySelector('.plate-shadow'),shadowOpacity=shadow.getAttribute('opacity'),actors=[body,groundShadow,habitat.querySelector('#doodle-canvas'),...habitat.querySelectorAll(`.accessory-piece[data-worm-part="${part}"][data-accessory-family="n2-lab-coat"],.accessory-piece[data-worm-part="${part}"][data-accessory-family="n2-lab-goggles"],.accessory-piece[data-worm-part="${part}"][data-accessory-family="cryo-vial-jetpack"]`)].filter(Boolean).map(n=>({n,opacity:n.getAttribute('opacity')}));
-  const restore=()=>{jumper.remove();overlay.remove();carrier.replaceWith(art);
+  const groundShadow=body.parentElement.querySelector(':scope > .worm-ground-shadow'),shadow=art.querySelector('.plate-shadow'),shadowOpacity=shadow.getAttribute('opacity'),actors=[body,groundShadow,habitat.querySelector('#doodle-canvas'),...habitat.querySelectorAll(`.accessory-piece[data-worm-part="${part}"][data-accessory-family="n2-lab-coat"],.accessory-piece[data-worm-part="${part}"][data-accessory-family="n2-lab-goggles"],.accessory-piece[data-worm-part="${part}"][data-accessory-family="cryo-vial-jetpack"]`)].filter(Boolean).map(n=>({n,opacity:n.getAttribute('opacity'),inactive:n.getAttribute('data-n2-feeding-inactive')}));
+  const restoreActor=({n,opacity,inactive})=>{opacity===null?n.removeAttribute('opacity'):n.setAttribute('opacity',opacity);inactive===null?n.removeAttribute('data-n2-feeding-inactive'):n.setAttribute('data-n2-feeding-inactive',inactive);};
+  const detach=()=>{jumper.remove();overlay.remove();actors.forEach(restoreActor);shadowOpacity===null?shadow.removeAttribute('opacity'):shadow.setAttribute('opacity',shadowOpacity);tower?.element?.removeAttribute('opacity');};
+  const restorePlate=(keepPosition=false)=>{const values=keepPosition?['--accessory-user-x','--accessory-user-y','--accessory-user-scale'].map(k=>[k,piece.style.getPropertyValue(k)]):[];carrier.replaceWith(art);
    // ResizeObserver may have rebuilt this from the enlarged carrier. Restore
    // the original target before releasing the saved fill-box pivot.
    const currentHit=piece.querySelector(':scope > .accessory-hit-target');if(currentHit!==hitTarget){currentHit?.remove();if(hitTarget)piece.insertBefore(hitTarget,hitNext?.parentNode===piece?hitNext:null);}
-   pivots.forEach(({n,style})=>style===null?n.removeAttribute('style'):n.setAttribute('style',style));actors.forEach(({n,opacity})=>opacity===null?n.removeAttribute('opacity'):n.setAttribute('opacity',opacity));shadowOpacity===null?shadow.removeAttribute('opacity'):shadow.setAttribute('opacity',shadowOpacity);
+   pivots.forEach(({n,style})=>style===null?n.removeAttribute('style'):n.setAttribute('style',style));values.forEach(([k,v])=>piece.style.setProperty(k,v));
   };
-  run={piece,restore,scene,committed:false,started:null,cues:new Set()};const action=run;onChange();
-  sound.prepare(['eat']).finally(()=>{if(run===action)action.started=performance.now();});
+  const restore=()=>{detach();restorePlate();};
+  run={piece,art,restore,restorePlate,detach,scene,tick,committed:false,started:null,pausedAt:null,cues:new Set()};const action=run;onChange();
+  sound.prepare(['eat']).finally(()=>{if(run===action)action.started=action.pausedAt??performance.now();});
   function tick(now){
    if(!run)return;if(!piece.isConnected||piece.closest('[hidden]')||document.hidden){cancel();return;}
+   if(run.pausedAt!==null)return;
    if(run.started===null){raf=requestAnimationFrame(tick);return;}
    const ms=now-run.started,story=feedingStory(ms),f=feedingFrame(ms,small),scale=1+f.plate*(placement.scale-1),lift=f.plate*(placed.y-centre.y),shift=f.plate*(placed.x-centre.x);
    carrier.setAttribute('transform',`translate(${centre.x+shift} ${centre.y+lift}) scale(${scale}) translate(${-centre.x} ${-centre.y})`);
-   shadow.setAttribute('opacity',String(.25+.75*(1-f.plate)));actors.forEach(({n})=>n.setAttribute('opacity',String(f.worm)));
+   shadow.setAttribute('opacity',String(.25+.75*(1-f.plate)));actors.forEach(actor=>{actor.n.setAttribute('opacity',String(f.worm));if(f.worm<.01)actor.n.setAttribute('data-n2-feeding-inactive','');else if(actor.inactive===null)actor.n.removeAttribute('data-n2-feeding-inactive');else actor.n.setAttribute('data-n2-feeding-inactive',actor.inactive);});
    // Keep each worm in the same foreground layer from hop through crawl
    // and return. Its body cannot jump behind the plate glare or splash.
    overlay.crawler.setAttribute('opacity','0');
@@ -381,6 +413,6 @@ export function createN2Feeding(habitat,onChange=()=>{}){
  }
  document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});reduced.addEventListener('change',cancel);
  // Mobile browser bars can resize the viewport without changing the scene.
- window.addEventListener('resize',()=>{if(run&&feedingSceneChanged(run.scene,habitat.getBoundingClientRect()))cancel();});window.addEventListener('pagehide',cancel);
- return {handles,start,cancel,clear,get active(){return !!run;}};
+ window.addEventListener('resize',()=>{const active=run||held;if(active&&feedingSceneChanged(active.scene,habitat.getBoundingClientRect()))cancel();});window.addEventListener('pagehide',cancel);
+ return {handles,start,cancel,clear,grab,drag,release,get active(){return !!(run||held);}};
 }

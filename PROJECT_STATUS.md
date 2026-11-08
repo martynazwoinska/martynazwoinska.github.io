@@ -4,6 +4,26 @@ Last updated: 2026-11-08
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+## N2 plate and tower touch fixes, release 59, 2026-11-08
+
+Martyna authorized fixing all three touch findings, retesting, committing and
+deploying. Plates now tolerate 6 px of finger wobble. Pressing a feeding plate
+pauses its current meal; a tap resumes that meal, while a drag retains the
+displayed plate size. Release gently restores the chosen size around the drop
+point. Regrabbing during that shrink is supported. Rotation, lost capture and
+page departure clear a plate gesture safely.
+
+The unchanged tower drawing stays behind the worm. Its invisible grab surface
+sits above the non-interactive body and below visible accessories; faded source
+actors no longer intercept touches. The tower keeps its keyboard controls.
+Pointer, geometry, motion, dive and audio checks pass, including smallest and
+largest plates, repeat grabbing and rotation during a drag. A complete 390 px
+meal retained its outfit and survived height changes, with no clipping or
+temporary elements left behind. Full-page proofs cover 360, 390, 430, 768,
+844, 1024 and 1440 px. These are desktop-browser pointer checks at phone sizes;
+physical-phone and native two-finger testing remain manual. No artwork, sound
+assets, public wording or homepage/Cabinet files changed.
+
 ## N2 mobile feeding fixes, release 58, 2026-11-08
 
 Martyna requested fixing both mobile findings, retesting, committing and
