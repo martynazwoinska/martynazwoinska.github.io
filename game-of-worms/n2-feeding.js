@@ -17,6 +17,16 @@ export const FEEDING_BEATS=Array.from({length:38},(_,i)=>feedingTime(4350+i*FEED
 export function playFeedingSound(sound,index,small=false,remaining=FEEDING_AUDIO.duration){const untilDeparture=(feedingTime(23350)-FEEDING_BEATS[index])/1000;return sound.play('eat',FEEDING_AUDIO.offsets[index%FEEDING_AUDIO.offsets.length],Math.min(FEEDING_AUDIO.duration,remaining,untilDeparture),(small?.013:.018)*FEEDING_AUDIO.levels[index%FEEDING_AUDIO.levels.length]);}
 export function feedingEntryTarget(point,artMap){const width=Math.hypot(artMap.a,artMap.b)||1;return{x:point.x,y:point.y,normal:{x:-artMap.b/width,y:artMap.a/width}};}
 
+export function feedingSceneChanged(before,after){return Math.abs(before.width-after.width)>.5||Math.abs(before.height-after.height)>.5;}
+
+// Solve the fully enlarged pose once. Interpolating from the saved resting
+// pose keeps the entire plate inside the scene throughout expansion/return.
+export function feedingPlatePlacement(bounds,origin,scene,wanted){
+ const scale=Math.min(wanted.scale,(scene.right-scene.left)/bounds.width,(scene.bottom-scene.top)/bounds.height);
+ const fit=(value,min,max)=>Math.max(min,Math.min(max,value));
+ return {scale,x:fit(wanted.x,scene.left-origin.x-(bounds.left-origin.x)*scale,scene.right-origin.x-(bounds.right-origin.x)*scale),y:fit(wanted.y,scene.top-origin.y-(bounds.top-origin.y)*scale,scene.bottom-origin.y-(bounds.bottom-origin.y)*scale)};
+}
+
 export function feedingTravel(progress,ramp=.08){
  const u=clamp(progress),total=1-ramp;
  if(u<ramp)return (.5*u-ramp/(2*Math.PI)*Math.sin(Math.PI*u/ramp))/total;
@@ -319,19 +329,31 @@ export function createN2Feeding(habitat,onChange=()=>{}){
   if(reduced.matches){hideTower();eaten.set(piece,portion+1);paint(piece);return true;}
   towerRevealed=true;syncTower();
   const part=piece.dataset.wormPart,small=part==='companion',compact=innerWidth<520,root=habitat.querySelector('#worm-species');
-  const body=habitat.querySelector(part==='companion'?'.companion-body':'.worm-body'),art=piece.querySelector('.location-accessory-art'),parent=art.parentNode,artToParent=relative(parent,art),centre=at(artToParent,0,0);
+  const body=habitat.querySelector(part==='companion'?'.companion-body':'.worm-body'),art=piece.querySelector('.location-accessory-art'),parent=art.parentNode;
+  // A resized accessory must keep its original pivot while its child grows.
+  // Capture both before adding the carrier, crawler and splash to their bounds.
+  const hitTarget=piece.querySelector(':scope > .accessory-hit-target'),hitNext=hitTarget?.nextSibling;
+  const pivots=[piece,art].map(n=>({n,style:n.getAttribute('style'),box:n.getBBox()}));
+  pivots.forEach(({n,box})=>{n.style.transformBox='view-box';n.style.transformOrigin=`${box.x+box.width/2}px ${box.y+box.height/2}px`;});
+  const artToParent=relative(parent,art),centre=at(artToParent,0,0),parentMap=parent.getScreenCTM(),screenCentre=at(parentMap,centre.x,centre.y),scene=habitat.getBoundingClientRect(),wanted=at(parentMap,centre.x+(compact?18:68),centre.y-8);
+  const placement=feedingPlatePlacement(art.getBoundingClientRect(),screenCentre,{left:scene.left+10,right:scene.right-10,top:scene.top+10,bottom:scene.bottom-10},{scale:compact?2.05:1.62,x:wanted.x-screenCentre.x,y:wanted.y-screenCentre.y}),placed=at(parentMap.inverse(),screenCentre.x+placement.x,screenCentre.y+placement.y);
   const carrier=add(parent,'g',{'data-feeding-carrier':''});art.before(carrier);carrier.append(art);
   syncTower();const target={x:+colonies[portion].getAttribute('cx'),y:+colonies[portion].getAttribute('cy')},overlay=crawlerOverlay(art,small),jumper=jumpingWorm(root,body,small,{...towerPosition}),initialMap=relative(root,art);
   const angleFor=direction=>{const pose=feedingWormPose(0,small,target,0,direction),head=at(initialMap,pose.head.x,pose.head.y),tail=at(initialMap,pose.tail.x,pose.tail.y);return Math.atan2(head.y-tail.y,head.x-tail.x);},turnDistance=angle=>Math.abs(Math.atan2(Math.sin(angle-jumper.sourceAngle),Math.cos(angle-jumper.sourceAngle)));
   const direction=turnDistance(angleFor(-1))<turnDistance(angleFor(1))?-1:1,route=t=>feedingRoute(t,direction,small,target);
   const groundShadow=body.parentElement.querySelector(':scope > .worm-ground-shadow'),shadow=art.querySelector('.plate-shadow'),shadowOpacity=shadow.getAttribute('opacity'),actors=[body,groundShadow,habitat.querySelector('#doodle-canvas'),...habitat.querySelectorAll(`.accessory-piece[data-worm-part="${part}"][data-accessory-family="n2-lab-coat"],.accessory-piece[data-worm-part="${part}"][data-accessory-family="n2-lab-goggles"],.accessory-piece[data-worm-part="${part}"][data-accessory-family="cryo-vial-jetpack"]`)].filter(Boolean).map(n=>({n,opacity:n.getAttribute('opacity')}));
-  const restore=()=>{jumper.remove();overlay.remove();carrier.replaceWith(art);actors.forEach(({n,opacity})=>opacity===null?n.removeAttribute('opacity'):n.setAttribute('opacity',opacity));shadowOpacity===null?shadow.removeAttribute('opacity'):shadow.setAttribute('opacity',shadowOpacity);};
-  run={piece,restore,committed:false,started:null,cues:new Set()};const action=run;onChange();
+  const restore=()=>{jumper.remove();overlay.remove();carrier.replaceWith(art);
+   // ResizeObserver may have rebuilt this from the enlarged carrier. Restore
+   // the original target before releasing the saved fill-box pivot.
+   const currentHit=piece.querySelector(':scope > .accessory-hit-target');if(currentHit!==hitTarget){currentHit?.remove();if(hitTarget)piece.insertBefore(hitTarget,hitNext?.parentNode===piece?hitNext:null);}
+   pivots.forEach(({n,style})=>style===null?n.removeAttribute('style'):n.setAttribute('style',style));actors.forEach(({n,opacity})=>opacity===null?n.removeAttribute('opacity'):n.setAttribute('opacity',opacity));shadowOpacity===null?shadow.removeAttribute('opacity'):shadow.setAttribute('opacity',shadowOpacity);
+  };
+  run={piece,restore,scene,committed:false,started:null,cues:new Set()};const action=run;onChange();
   sound.prepare(['eat']).finally(()=>{if(run===action)action.started=performance.now();});
   function tick(now){
    if(!run)return;if(!piece.isConnected||piece.closest('[hidden]')||document.hidden){cancel();return;}
    if(run.started===null){raf=requestAnimationFrame(tick);return;}
-   const ms=now-run.started,story=feedingStory(ms),f=feedingFrame(ms,small),scale=1+f.plate*(compact?(small?1.55:1.05):(small?.72:.62)),lift=f.plate*(small?-9:-8),shift=f.plate*(small?(compact?20:30):(compact?18:68));
+   const ms=now-run.started,story=feedingStory(ms),f=feedingFrame(ms,small),scale=1+f.plate*(placement.scale-1),lift=f.plate*(placed.y-centre.y),shift=f.plate*(placed.x-centre.x);
    carrier.setAttribute('transform',`translate(${centre.x+shift} ${centre.y+lift}) scale(${scale}) translate(${-centre.x} ${-centre.y})`);
    shadow.setAttribute('opacity',String(.25+.75*(1-f.plate)));actors.forEach(({n})=>n.setAttribute('opacity',String(f.worm)));
    // Keep each worm in the same foreground layer from hop through crawl
@@ -357,6 +379,8 @@ export function createN2Feeding(habitat,onChange=()=>{}){
   }
   raf=requestAnimationFrame(tick);return true;
  }
- document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});reduced.addEventListener('change',cancel);window.addEventListener('resize',cancel);window.addEventListener('pagehide',cancel);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});reduced.addEventListener('change',cancel);
+ // Mobile browser bars can resize the viewport without changing the scene.
+ window.addEventListener('resize',()=>{if(run&&feedingSceneChanged(run.scene,habitat.getBoundingClientRect()))cancel();});window.addEventListener('pagehide',cancel);
  return {handles,start,cancel,clear,get active(){return !!run;}};
 }

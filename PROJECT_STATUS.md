@@ -4,6 +4,23 @@ Last updated: 2026-11-08
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+## N2 mobile feeding fixes, release 58, 2026-11-08
+
+Martyna requested fixing both mobile findings, retesting, committing and
+deploying. Height-only viewport changes now preserve a meal when the actual
+scene dimensions stay unchanged. A true scene resize still cancels safely.
+Enlarged feeding plates ease inward as needed to fit the scene, then return
+to their exact saved position and size. Original transform pivots and touch
+targets survive resize-driven control refreshes during feeding.
+
+The maximum-size plate at the edge of a 360 px layout, repeat meals at 390 px,
+and landscape playback passed browser checks. Height changes during the jump,
+crawl and return did not interrupt feeding. Outfit retention and tower cleanup
+remain intact. Geometry, dive, motion and audio checks pass; complete page
+proofs cover 360, 390, 430, 768, 844, 1024 and 1440 px without overflow or
+browser errors. The Game retains its fixed light palette. Source art, sound
+and public wording are unchanged. Physical-phone testing remains manual.
+
 ## Research figure viewer and publication hierarchy, 2026-11-08
 
 Martyna approved slightly larger research figures, an enlargement overlay,

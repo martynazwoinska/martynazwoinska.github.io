@@ -688,3 +688,49 @@ files deleted. The release is integrated with current main before publishing.
 Independent final review found no release blockers. Dive, outfit, motion,
 audio and syntax checks pass; responsive proofs and lifecycle checks are
 recorded above. Physical-device testing remains manual.
+
+## Mobile feeding fixes, release 58, 2026-11-08
+
+Martyna authorized fixing both mobile findings, retesting, committing and
+deploying. Browser-height changes previously cancelled the meal even when
+the habitat kept identical dimensions. Cancellation now depends on actual
+scene size changes; orientation changes still restore the original scene.
+
+The enlarged plate previously crossed the scene edge after visitor movement
+or resizing. Its final feeding placement is now fitted once to a 10 px scene
+inset, with expansion capped only when necessary. Existing easing interpolates
+to that pose and back to the saved placement. The original piece/art pivots
+and hit-target node are retained: a resize-driven control refresh must not
+replace the resting fill-box bounds with the enlarged feeding bounds.
+
+Created: scripts/check-n2-mobile.cjs. Changed: game-of-worms/n2-feeding.js,
+game.js, index.html; PROJECT_STATUS.md and this dossier. Deleted: none.
+No source images, sound assets or public copy changed. Cache version:
+20261108-n2-mobile-58. The Game remains fixed-light.
+
+Validation: 405 moved, rotated and resized plate cases stay inside the scene
+at 101 transition steps each. Scene-resize guards, dive geometry, four-scene
+motion, feeding audio, syntax and whitespace checks pass. Independent final
+review found no blockers. Browser checks used desktop Chrome at phone-sized
+viewports, rather than a physical phone:
+
+- At 360 px, a maximum-size plate in the lower-right corner completed the
+  meal through three height changes during the jump, crawl and return.
+  All 1,812 observations stayed within the scene. Original styles and the
+  original hit target were restored exactly; resting geometry differed by
+  less than 0.00002 px. This repeat supersedes the first large-plate test,
+  which exposed the hit-target restoration issue subsequently fixed.
+- At 390 px, moving the tower cancelled safely, and a new meal completed
+  through height changes during the jump and return. Original placement,
+  clothing and visibility returned, and the tower cleared after the meal.
+- A true orientation change cancelled safely; a fresh landscape meal at
+  844 px completed without clipping or invalid geometry. The initial 430 px
+  edge-plate reproduction also passed after the placement fix.
+- Full-page proof files were verified at 360x2464, 390x2486, 430x2276,
+  768x2224, 844x2266, 1024x1881 and 1440x1865 pixels. Browser viewport
+  widths included a 15 px scrollbar. No horizontal overflow or browser
+  warnings/errors were found. Full proofs and phase captures remain outside
+  the repository. Physical touch, mobile browser chrome and phone frame-rate
+  testing remain manual.
+
+Prepared on codex/n2-lawn-crawl for the requested publication to main.
