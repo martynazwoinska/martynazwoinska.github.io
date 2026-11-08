@@ -583,6 +583,7 @@
       position: absolute; z-index: 1;
       right: 166px; bottom: 42px;
       width: 240px; height: auto;
+      transform: translate(12px, 8px);
     }
     .avatar {
       position: relative; grid-column: 1; grid-row: 1;
@@ -689,7 +690,7 @@
       .hero-name { font-size: clamp(1.8rem, 9vw, 2rem); }
     }
     @media (max-width: 759.98px) {
-      .hero-lower { right: clamp(26px, calc(60% - 220px), 160px); }
+      .hero-lower { right: clamp(26px, calc(60% - 220px), 160px); transform: translate(12px, 3px); }
     }
     @media (min-width: 500px) and (max-width: 759.98px) {
       .hero-lower { right: clamp(80px, calc(33.333vw - 86.667px), 128px); }

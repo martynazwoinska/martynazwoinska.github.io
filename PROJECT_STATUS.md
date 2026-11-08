@@ -22,6 +22,14 @@ and 1440 px passed. Source artwork and audio assets are unchanged. The Game
 stays fixed-light. See the Bristol dossier for detailed validation and the
 unrelated full-catalogue test-harness limitation.
 
+## Hero flower clearance, 2026-11-08
+
+Martyna requested a small rightward and downward adjustment to separate the
+flower bud from the final AI text. The unchanged artwork moves 12 px right,
+with an 8 px downward shift on desktop and 3 px below 760 px. The smaller
+phone shift keeps the complete ornament inside the existing hero clipping
+boundary. Artwork sizes, source pixels and all text geometry are preserved.
+
 ## Approved S-Foodies sticker on the board, 2026-11-07
 
 Martyna approved using the same improved sticker in the Cabinet itself and
