@@ -1,6 +1,6 @@
 import {add,at,relative,ease,clamp,matrix,recordedSound} from './scene-performance.js?v=20261109-n2-soft-audio-60';
 import {createDiveGeometry,DIVE_PREPARE_MS,DIVE_FLIGHT_MS,DIVE_ENTRY_PHASE} from './n2-dive-motion.js?v=20261107-dive-46';
-import {createDivingTower} from './n2-diving-tower.js?v=20261108-touch-59';
+import {createDivingTower,defaultTowerPosition} from './n2-diving-tower.js?v=20261109-n2-tower-61';
 import {createDiveOutfit} from './n2-dive-outfit.js?v=20261108-n2-outfit-55';
 
 export const DIVE_DELAY=DIVE_PREPARE_MS+260-1250;
@@ -328,7 +328,7 @@ function jumpingWorm(root,body,small,towerPosition={x:0,y:0}){
 // of the OP50 lawn and returns home. The companion plate is only a movable prop.
 export function createN2Feeding(habitat,onChange=()=>{}){
  const reduced=matchMedia('(prefers-reduced-motion: reduce)'),eaten=new Map(),sound=recordedSound({eat:'reunion-eat.wav'},FEEDING_AUDIO);let run=null,held=null,raf=0;
- let tower=null,towerRevealed=false;const towerPosition={x:0,y:0};
+ let tower=null,towerRevealed=false,towerUserPlaced=false;const towerPosition={x:0,y:0};
  const handles=p=>p?.dataset.accessoryFamily==='ngm-agar-plate'&&p.dataset.wormPart==='primary';
  function paint(piece){const n=eaten.get(piece)||0;piece.querySelectorAll('.op50-colony').forEach((c,i)=>c.setAttribute('opacity',i<n?'0':'1'));}
  function hideTower(){const focused=tower&&tower.element===document.activeElement;towerRevealed=false;tower?.remove();tower=null;if(focused)habitat.querySelector('[data-accessory-family="ngm-agar-plate"][data-worm-part="primary"]')?.focus({preventScroll:true});}
@@ -366,7 +366,7 @@ export function createN2Feeding(habitat,onChange=()=>{}){
   raf=requestAnimationFrame(settle);return true;
  }
  function clear(){cancel();hideTower();eaten.clear();habitat.querySelectorAll('[data-accessory-family="ngm-agar-plate"]').forEach(paint);}
- function syncTower(){const plate=habitat.querySelector('[data-accessory-family="ngm-agar-plate"][data-worm-part="primary"]'),root=habitat.querySelector('#worm-species'),available=plate&&!plate.closest('[hidden]')&&root;if(!available)towerRevealed=false;if(towerRevealed&&available){if(!tower?.element?.isConnected){tower?.remove();tower=createDivingTower(root,habitat,towerPosition,cancel);}}else if(tower){tower.remove();tower=null;}}
+ function syncTower(resetDefault=false){const plate=habitat.querySelector('[data-accessory-family="ngm-agar-plate"][data-worm-part="primary"]'),root=habitat.querySelector('#worm-species'),available=plate&&!plate.closest('[hidden]')&&root;if(!available)towerRevealed=false;if(resetDefault===true&&!towerUserPlaced){tower?.remove();tower=null;}if(towerRevealed&&available){if(!tower?.element?.isConnected){tower?.remove();if(!towerUserPlaced)Object.assign(towerPosition,defaultTowerPosition());tower=createDivingTower(root,habitat,towerPosition,reset=>{towerUserPlaced=!reset;cancel();});}}else if(tower){tower.remove();tower=null;}}
  if(typeof MutationObserver!=='undefined'){const observer=new MutationObserver(syncTower);observer.observe(habitat,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden']});syncTower();}
  function start(piece){
   if(!handles(piece)||piece.closest('[hidden]'))return false;
@@ -374,7 +374,7 @@ export function createN2Feeding(habitat,onChange=()=>{}){
   cancel();const colonies=[...piece.querySelectorAll('.op50-colony')];let portion=eaten.get(piece)||0;
   if(portion>=colonies.length){hideTower();eaten.set(piece,0);paint(piece);return true;}
   if(reduced.matches){hideTower();eaten.set(piece,portion+1);paint(piece);return true;}
-  towerRevealed=true;syncTower();
+  towerRevealed=true;syncTower(true);
   const part=piece.dataset.wormPart,small=part==='companion',compact=innerWidth<520,root=habitat.querySelector('#worm-species');
   const body=habitat.querySelector(part==='companion'?'.companion-body':'.worm-body'),art=piece.querySelector('.location-accessory-art'),parent=art.parentNode;
   // A resized accessory must keep its original pivot while its child grows.

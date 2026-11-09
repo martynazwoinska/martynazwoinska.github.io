@@ -4,6 +4,21 @@ Last updated: 2026-11-09
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+## N2 initial tower placement, release 61, 2026-11-09
+
+The tower starts closer to the primary plate, with a separate narrow-screen
+offset that leaves room beside the enlarged dish. Its drawing and size are
+unchanged. Home restores the current responsive default; manual placement
+survives subsequent meals and hide/reveal. Untouched placement refreshes when
+a new meal begins after a viewport change. Bounds include the whole grab area.
+
+Placement, dive, mobile, touch, return and syntax checks pass, including 30
+boarding/flight cases and manual placement at zero. Browser review covers
+360, 768, 1024 and 1440 px, plus 519/520 px, Home and retained placement.
+Full-page proofs and phone-size motion captures are saved outside the repo.
+No console errors or horizontal overflow. The Game remains fixed-light;
+physical-phone feel remains manual. No public copy or other site changes.
+
 ## N2 quieter feeding and tap-to-return, release 60, 2026-11-09
 
 Martyna requested gentler eating sounds, no more than two plate laps and a

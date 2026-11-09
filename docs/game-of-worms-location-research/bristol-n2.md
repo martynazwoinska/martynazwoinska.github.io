@@ -2,6 +2,36 @@
 
 Last updated: 2026-07-23
 
+## Initial diving-tower placement, release 61, 2026-11-09
+
+The default root-space offset is now (64, -16), or (40, -16) below 520 px.
+This keeps the ladder clear of the companion plate and brings the board
+towards the primary dish. Phone layouts retain more space for the enlarged
+dish. Artwork, dimensions, outfit, plate geometry and sounds are unchanged.
+Home restores the current responsive default. Explicit manual placement,
+including (0, 0), survives subsequent meals and tower removal. An untouched
+tower refreshes at the start of a meal after a width change. The full hit
+rectangle participates in scene constraints.
+
+Created: scripts/check-n2-tower-placement.cjs. Changed: game-of-worms/game.js,
+index.html, n2-feeding.js, n2-diving-tower.js, PROJECT_STATUS.md and this dossier.
+Deleted: none. No homepage, Cabinet, original assets or public wording changes.
+
+Validation: 30 boarding/flight cases across two browser-measured layouts,
+three plate sizes and five entry points retain body/outfit clearance. Minimum
+top clearance is 26.83 px at 360 px and 131.89 px at 1440 px. Placement,
+mobile, touch, return, dive and syntax checks pass. Independent review also
+verified an explicit zero-position fixture. Browser checks confirm Home,
+manual placement across hide/reveal, 519/520 px defaults and no errors or
+horizontal overflow. Motion was inspected at phone size using viewport
+captures; full-page capture can interrupt the meal by resizing the viewport.
+
+Uncropped full-page proofs at 360, 768, 1024 and 1440 CSS px are respectively
+345x2479, 753x2212, 1009x1896 and 1425x1866 pixels, excluding the browser's
+15 px scrollbar. Proofs are in the external n2-tower-placement visualization
+folder. The Game uses its fixed light palette. Physical-phone feel remains
+a manual check. Prepared on codex/n2-gentle-feeding for publication to main.
+
 ## N2 tailoring release, 2026-09-06
 
 Martyna approved the final side-view packs, aprons and goggles and requested
