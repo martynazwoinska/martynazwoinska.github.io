@@ -4,7 +4,23 @@ Last updated: 2026-11-09
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
-## N2 recorded slurps, release 63, 2026-11-09
+## N2 approved wet-food texture, release 64, 2026-11-09
+
+Martyna selected preview B, wet-food texture, and authorized quiet synchronized
+playback and deployment. Its two CC0 APallot excerpts are copied byte-for-byte.
+Six complete cues total 3.15 seconds in four groups, with 3.27, 5.12 and
+4.33 seconds of quiet between groups. Playback peaks at 0.016, about 17.5 dB
+below the comparison preview. Mouth peaks follow the clips at 375 and 185 ms.
+The two laps, exit behavior, tower and visitor adjustments are unchanged.
+
+Audio, motion, return, touch, syntax and independent review pass. Desktop and
+phone browser checks confirm mouth pulses, resting gaps and tap-to-return,
+with no console errors. Full-page proofs cover 360, 768, 1024 and 1440 CSS px
+without overflow. The Game retains its fixed light palette. No CSS, artwork,
+shared sound engine, homepage, Cabinet or public wording changed. Source,
+processing and file hashes are recorded in assets/audio/SOURCES.md.
+
+## N2 recorded slurps, release 63, 2026-11-09 (superseded)
 
 Martyna rejected the nibbling sound and clarified that she wants slurping.
 N2 now reuses the unchanged CC0 araucania-straw-sip.wav recording. Six complete

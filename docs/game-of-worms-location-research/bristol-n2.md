@@ -2,7 +2,32 @@
 
 Last updated: 2026-07-23
 
-## Recorded slurping correction, release 63, 2026-11-09
+## Approved wet-food texture, release 64, 2026-11-09
+
+Martyna rejected the straw-drinking texture and selected preview B, wet-food
+texture, for quiet synchronized playback. The two approved APallot CC0
+excerpts are copied byte-for-byte, preserving their full 670 and 380 ms
+durations and original pitch/speed. Six cues total 3.15 seconds in four
+groups, separated by 3.27, 5.12 and 4.33 seconds. The 0.016 peak ceiling is
+about 17.5 dB below the comparison preview; mouth peaks follow the measured
+source energy at 375 and 185 ms. Late-frame trimming and cancellation remain.
+
+Created: game-of-worms/assets/audio/n2-wet-food-a.wav and n2-wet-food-b.wav.
+Changed: game-of-worms/n2-feeding.js, game.js, index.html, audio/SOURCES.md;
+scripts/check-n2-feeding-audio.cjs; PROJECT_STATUS.md and this dossier.
+Deleted: none. Shared audio, CSS, drawings, placement, two laps, visitor
+adjustments, homepage, Cabinet and public wording remain unchanged.
+
+Audio, motion, return, touch, syntax, whitespace and independent review pass.
+Browser checks confirm desktop mouth opening and rest, phone mouth movement
+and tap-to-return, with no errors or overflow. Uncropped full-page proofs at
+360, 768, 1024 and 1440 CSS px measure 345x2479, 753x2211, 1009x1896 and
+1425x1865 pixels (the browser excludes its 15 px scrollbar). The Game retains
+its fixed light palette. Proofs are in the external n2-wet-food-release64
+folder. The user approved the listening comparison; agent verification covers
+asset identity, levels and synchronization. Prepared on codex/n2-gentle-feeding.
+
+## Recorded slurping correction, release 63, 2026-11-09 (superseded)
 
 The user rejected the hamster nibbles and requested slurping. The runtime now
 uses the existing, byte-identical 580 ms araucania-straw-sip.wav, a CC0 human

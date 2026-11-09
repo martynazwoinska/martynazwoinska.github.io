@@ -11,15 +11,15 @@ export function feedingTime(story){return DIVE_DELAY+(story<=1250?story:story<38
 function feedingStory(ms){const t=ms-DIVE_DELAY;return t<=1250?t:t<1250+DIVE_FLIGHT_MS?1250+(t-1250)*FLIGHT_REFERENCE_MS/DIVE_FLIGHT_MS:t+FLIGHT_SAVED_MS;}
 export const FEEDING_DURATION=feedingTime(29000);
 export const FEEDING_LAPS=2;
-// Complete recorded straw slurps retain their natural draw and release.
-// The mouth follows the source's energy peak; quiet gaps separate the groups.
-export const FEEDING_AUDIO={level:.020,attack:.012,release:.045};
-export const FEEDING_CLIPS={sip:{file:'araucania-straw-sip.wav',duration:.580,peak:.275}};
+// The approved wet-food excerpts retain their complete natural texture.
+// The mouth follows each source's energy peak; quiet gaps separate the groups.
+export const FEEDING_AUDIO={level:.016,attack:.012,release:.045};
+export const FEEDING_CLIPS={a:{file:'n2-wet-food-a.wav',duration:.670,peak:.375},b:{file:'n2-wet-food-b.wav',duration:.380,peak:.185}};
 export const FEEDING_CUES=[
- {story:5300,key:'sip',level:1,cluster:1},{story:6150,key:'sip',level:.85,cluster:1},
- {story:9800,key:'sip',level:.96,cluster:2},
- {story:15300,key:'sip',level:1,cluster:3},{story:16190,key:'sip',level:.86,cluster:3},
- {story:20900,key:'sip',level:.92,cluster:4}
+ {story:5300,key:'a',level:1,cluster:1},{story:6150,key:'b',level:.86,cluster:1},
+ {story:9800,key:'b',level:.96,cluster:2},
+ {story:15300,key:'a',level:1,cluster:3},{story:16190,key:'b',level:.86,cluster:3},
+ {story:20900,key:'a',level:.92,cluster:4}
 ];
 export const FEEDING_BEATS=FEEDING_CUES.map(cue=>feedingTime(cue.story));
 export function playFeedingSound(sound,index,lateMs=0){

@@ -1,24 +1,32 @@
 # Game sound recordings
 
-## N2 recorded slurping, 2026-11-09
+## N2 approved wet-food texture, 2026-11-09
 
-Reuses the unchanged `araucania-straw-sip.wav` credited under Mate sip below:
-[Slurping with a straw by bassboybg](https://freesound.org/people/bassboybg/sounds/367058/).
-The creator's CC0 licence was reverified on 2026-11-09. This is human drinking
-foley for the fictional feeding action, not a recording of nematode sound.
+- Source: APallot, [Squelch.wav](https://freesound.org/people/APallot/sounds/389517/),
+  under [CC0](https://creativecommons.org/publicdomain/zero/1.0/), verified on
+  the creator's page on 2026-11-09. The creator suggests the sound for eating
+  food with a high water content. This is wet-food foley for a fictional
+  feeding action, not a recording of nematodes; its recording method is unspecified.
+- Original public HQ preview:
+  `https://cdn.freesound.org/previews/389/389517_6088041-hq.mp3`.
+  SHA-256: `0ec362d3bb0d1c5d9f072c94ad681ae889fe847fb77c7d854020796a9f11baf2`.
+- `n2-wet-food-a.wav`: source excerpt 3.55 to 4.22 seconds, duration 670 ms.
+  SHA-256: `a6eb66fced9a2cc194452c33b233666426c9fed3042a1de25b8f394c4f139c3d`.
+- `n2-wet-food-b.wav`: source excerpt 4.94 to 5.32 seconds, duration 380 ms.
+  SHA-256: `e411042298b223c7e09c680dd66851c6722ed0dd9ecd625989b4a4dacb91d603`.
 
-The 580 ms mono PCM16 file is byte-identical to the existing production asset.
-SHA-256: `e847132454c7927dfb7df20d5881b0407bbd26d5f67ddf6df08002aabf4539da`.
-No new processing, pitch change or filtering is applied. Six complete sips
-in four groups total 3.48 seconds; the three long gaps are 3.07, 4.92 and
-4.13 seconds. Runtime peak targets range from 0.017 to 0.020, with 12 ms
-attack and 45 ms release. Mouth opening peaks at the source's strongest
-10 ms RMS window, 275 ms into each sip. Exit stops playback and mouth motion.
+Both files are mono 44.1 kHz PCM16, with DC removal, 10 ms onset and 40 ms
+release fades, and peak normalization to 0.12. Original pitch and speed are
+preserved, without filtering or synthetic layers. Martyna approved these
+exact excerpts in listening preview B; the production files are byte-identical.
 
-The rejected hamster-nibble derivatives from release 62 are removed; their
-provenance remains in that commit's history. Timing, asset identity and
-cancellation checks pass. Direct agent listening was unavailable; the source
-was shared with the user as an inline audio preview.
+Runtime playback peaks at 0.016, about 17.5 dB below the comparison preview,
+with 12 ms attack and 45 ms release. Six complete excerpts total 3.15 seconds
+in four groups, separated by 3.27, 5.12 and 4.33 seconds of quiet. Mouth
+opening follows the strongest 10 ms RMS windows, 375 and 185 ms into the
+respective recordings. Exit stops playback and mouth movement together.
+Asset identity, timing, levels and cancellation checks pass. The shared
+straw-sip recording remains unchanged for other scenes.
 
 ## Lombok leaf fans, local preview, 2026-09-21
 
