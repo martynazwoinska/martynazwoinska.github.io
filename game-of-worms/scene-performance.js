@@ -51,15 +51,17 @@ export function performance(habitat,kind){
  }
  return {root,layer,actors,props,prop,pose,point,hand,reach,restore(){for(const[n,v]of saved){if(v===null)n.removeAttribute('visibility');else n.setAttribute('visibility',v);}layer.remove();for(const a of paused)if(a.playState==='paused')a.play();}};
 }
-export function recordedSound(files){
+export function recordedSound(files,options={}){
  let context;const buffers=new Map(),pending=new Map(),voices=new Map();
  async function prepare(keys){try{context??=new(window.AudioContext||window.webkitAudioContext)();await context.resume();await Promise.all(keys.map(key=>{
   if(buffers.has(key))return;if(!pending.has(key))pending.set(key,fetch(new URL(`./assets/audio/${files[key]}`,import.meta.url),{signal:AbortSignal.timeout(4000)}).then(r=>{if(!r.ok)throw Error(r.status);return r.arrayBuffer();}).then(b=>context.decodeAudioData(b)).then(b=>buffers.set(key,b)).catch(()=>{}).finally(()=>pending.delete(key)));return pending.get(key);
  }));}catch{}}
  function play(key,offset=0,duration=1,level=.12){const b=buffers.get(key);if(!b||context?.state!=='running')return false;duration=Math.min(duration,b.duration-offset);if(duration<=.02)return false;
   let peak=.001;for(let c=0;c<b.numberOfChannels;c++){const d=b.getChannelData(c);for(let i=Math.floor(offset*b.sampleRate);i<(offset+duration)*b.sampleRate;i++)peak=Math.max(peak,Math.abs(d[i]||0));}
-  const n=context.createBufferSource(),g=context.createGain(),now=context.currentTime;n.buffer=b;n.connect(g);g.connect(context.destination);const gain=Math.min(.9,level/peak),fade=Math.min(.08,duration/3);
-  g.gain.setValueAtTime(0,now);g.gain.linearRampToValueAtTime(gain,now+.012);g.gain.setValueAtTime(gain,now+duration-fade);g.gain.linearRampToValueAtTime(0,now+duration);voices.set(n,g);n.onended=()=>{voices.delete(n);n.disconnect();g.disconnect();};n.start(now,offset,duration);return true;
+  const n=context.createBufferSource(),g=context.createGain(),now=context.currentTime,filters=[];n.buffer=b;let output=n;
+  for(const type of['highpass','lowpass'])if(options[type]){const filter=context.createBiquadFilter();filter.type=type;filter.frequency.value=options[type];filter.Q.value=.5;output.connect(filter);output=filter;filters.push(filter);}
+  output.connect(g);g.connect(context.destination);const gain=Math.min(.9,level/peak),fade=Math.min(options.release??.08,duration/3),attack=options.attack==null?.012:Math.min(options.attack,duration/3);
+  g.gain.setValueAtTime(0,now);g.gain.linearRampToValueAtTime(gain,now+attack);g.gain.setValueAtTime(gain,now+duration-fade);g.gain.linearRampToValueAtTime(0,now+duration);voices.set(n,g);n.onended=()=>{voices.delete(n);n.disconnect();filters.forEach(filter=>filter.disconnect());g.disconnect();};n.start(now,offset,duration);return true;
  }
  return {prepare,play,stop(){for(const [n,g] of voices){try{const now=context.currentTime;if(g.gain.cancelAndHoldAtTime)g.gain.cancelAndHoldAtTime(now);else g.gain.cancelScheduledValues(now);g.gain.setTargetAtTime(0,now,.008);n.stop(now+.04);}catch{}}voices.clear();}};
 }

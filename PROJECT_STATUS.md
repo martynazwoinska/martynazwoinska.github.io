@@ -1,8 +1,28 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-11-08
+Last updated: 2026-11-09
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
+
+## N2 quieter feeding and tap-to-return, release 60, 2026-11-09
+
+Martyna requested gentler eating sounds, no more than two plate laps and a
+way to make the miniature worm jump out by tapping its occupied plate.
+The existing two-lap route is retained and verified by counting rotations.
+Pointer taps and Enter/Space now start a return from the exact current pose;
+an early request waits only for the tail to emerge. Repeated taps do not
+restart the meal. Position, scale, outfit and consumption state are preserved.
+
+N2 uses shorter, separated bites at half the previous peak, with soft fades
+and filtering of sharp clicks and low thumps. Other scenes retain the exact
+previous audio defaults. The original sound file and all artwork are unchanged.
+
+Return, audio, touch, motion, dive and mobile checks pass. Browser checks cover
+pointer and keyboard exits, repeated early requests, moved plate preservation,
+the uninterrupted meal and tower cleanup. Full-page proofs cover 360, 768,
+1024 and 1440 CSS px in the Game's fixed light palette, with no overflow or
+console errors. Physical-phone gesture feel and listening on user hardware
+remain manual. No homepage, Cabinet or public wording changes.
 
 ## N2 plate and tower touch fixes, release 59, 2026-11-08
 

@@ -735,6 +735,51 @@ viewports, rather than a physical phone:
 
 Prepared on codex/n2-lawn-crawl for the requested publication to main.
 
+## Quieter feeding and tap-to-return, release 60, 2026-11-09
+
+The occupied primary plate now accepts a tap or Enter/Space to send the worm
+home. Departure uses its current crawling pose, with gradual growth into the
+normal body. A request during entry waits until the tail has emerged. Further
+taps retain that one exit request. Dragging still moves the plate separately.
+An early exit does not consume an uneaten portion, and the saved plate position,
+size and worn accessories survive the return. The tower clears afterward.
+
+The uninterrupted route already had two laps; this remains the explicit limit.
+The new regression counts complete rotations in both directions rather than
+merely checking coincident endpoints. Eating uses 360 ms bites separated by
+590 ms of quiet, at half the previous peak. A 70 ms attack, 120 ms release and
+N2-only 180 Hz high-pass / 1100 Hz low-pass filters soften the existing recording.
+Other scenes keep their previous routing and envelopes unchanged.
+
+Created: `scripts/check-n2-return.cjs`.
+Changed: `game-of-worms/n2-feeding.js`, `scene-performance.js`, `game.js`,
+`index.html`; `scripts/check-n2-feeding-audio.cjs`, `check-n2-touch.cjs`,
+`check-four-scenes-motion.cjs`; `PROJECT_STATUS.md` and this dossier.
+Deleted: none. No public copy, source audio, illustrations, homepage or Cabinet
+files changed. Cache versions use `20261109-n2-return-60` and
+`20261109-n2-soft-audio-60`.
+
+Validation:
+
+- Return, audio, touch, four-scene motion, dive, mobile, syntax and whitespace
+  checks pass. The audio test verifies filters, fades, quiet intervals, stop
+  cleanup, offline fallback and unchanged defaults for other scenes.
+- Independent QA sampled 727,218 return poses using the production source
+  curve, both directions, varying plate phases, scales and tilts. No non-finite
+  coordinates, collapsed body or size discontinuity occurred.
+- Browser checks passed pointer and Enter exits during crawling, repeated
+  requests during preparation, retained outfits and exact restoration of a
+  plate moved to x=-91.2, y=-52.4. An uninterrupted meal consumed one portion,
+  restored the source worm and removed the tower and temporary actors.
+- Uncropped full-page captures at 360, 768, 1024 and 1440 CSS px are respectively
+  345x2479, 753x2212, 1009x1896 and 1425x1866 image pixels. The browser excludes
+  its 15 px scrollbar. All show the complete page through the final source
+  disclosure; no horizontal overflow or console warnings/errors occurred.
+  Proofs are outside the repository in the `n2-soft-exit` visualization folder.
+- The Game keeps one fixed light palette. Reduced-motion, resize and pinch
+  handling pass the existing code tests; native multi-touch, physical-phone
+  feel and subjective listening on the user's speakers remain manual.
+
 ## Plate and tower touch fixes, release 59, 2026-11-08
 
 Martyna authorized fixing the three confirmed touch issues and publication.

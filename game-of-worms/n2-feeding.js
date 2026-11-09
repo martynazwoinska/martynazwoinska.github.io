@@ -1,4 +1,4 @@
-import {add,at,relative,ease,clamp,matrix,recordedSound} from './scene-performance.js?v=20260919-uniform-1';
+import {add,at,relative,ease,clamp,matrix,recordedSound} from './scene-performance.js?v=20261109-n2-soft-audio-60';
 import {createDiveGeometry,DIVE_PREPARE_MS,DIVE_FLIGHT_MS,DIVE_ENTRY_PHASE} from './n2-dive-motion.js?v=20261107-dive-46';
 import {createDivingTower} from './n2-diving-tower.js?v=20261108-touch-59';
 import {createDiveOutfit} from './n2-dive-outfit.js?v=20261108-n2-outfit-55';
@@ -10,11 +10,12 @@ const FLIGHT_REFERENCE_MS=2600,FLIGHT_SAVED_MS=FLIGHT_REFERENCE_MS-DIVE_FLIGHT_M
 export function feedingTime(story){return DIVE_DELAY+(story<=1250?story:story<3850?1250+(story-1250)*DIVE_FLIGHT_MS/FLIGHT_REFERENCE_MS:story-FLIGHT_SAVED_MS);}
 function feedingStory(ms){const t=ms-DIVE_DELAY;return t<=1250?t:t<1250+DIVE_FLIGHT_MS?1250+(t-1250)*FLIGHT_REFERENCE_MS/DIVE_FLIGHT_MS:t+FLIGHT_SAVED_MS;}
 export const FEEDING_DURATION=feedingTime(29000);
-// Softly overlapping excerpts keep feeding audible throughout both laps.
-// Leave the take-off quiet, and keep this rhythm independent of dive speed.
-export const FEEDING_AUDIO={duration:.6,interval:500,offsets:[.02,.03,.025],levels:[.94,1,.97,.95]};
-export const FEEDING_BEATS=Array.from({length:38},(_,i)=>feedingTime(4350+i*FEEDING_AUDIO.interval));
-export function playFeedingSound(sound,index,small=false,remaining=FEEDING_AUDIO.duration){const untilDeparture=(feedingTime(23350)-FEEDING_BEATS[index])/1000;return sound.play('eat',FEEDING_AUDIO.offsets[index%FEEDING_AUDIO.offsets.length],Math.min(FEEDING_AUDIO.duration,remaining,untilDeparture),(small?.013:.018)*FEEDING_AUDIO.levels[index%FEEDING_AUDIO.levels.length]);}
+export const FEEDING_LAPS=2;
+// Small, separated bites leave quiet space between them. The N2-only filters
+// soften the recording's sharp mouth clicks and low wet thumps.
+export const FEEDING_AUDIO={duration:.36,interval:950,offsets:[.12,.2,.28],levels:[.9,.85,1,.86],level:.009,lowpass:1100,highpass:180,attack:.07,release:.12};
+export const FEEDING_BEATS=Array.from({length:20},(_,i)=>feedingTime(4350+i*FEEDING_AUDIO.interval));
+export function playFeedingSound(sound,index,small=false,remaining=FEEDING_AUDIO.duration){const untilDeparture=(feedingTime(23350)-FEEDING_BEATS[index])/1000;return sound.play('eat',FEEDING_AUDIO.offsets[index%FEEDING_AUDIO.offsets.length],Math.min(FEEDING_AUDIO.duration,remaining,untilDeparture),FEEDING_AUDIO.level*(small?.72:1)*FEEDING_AUDIO.levels[index%FEEDING_AUDIO.levels.length]);}
 export function feedingEntryTarget(point,artMap){const width=Math.hypot(artMap.a,artMap.b)||1;return{x:point.x,y:point.y,normal:{x:-artMap.b/width,y:artMap.a/width}};}
 
 export function feedingSceneChanged(before,after){return Math.abs(before.width-after.width)>.5||Math.abs(before.height-after.height)>.5;}
@@ -74,11 +75,24 @@ export function feedingFrame(ms,small=false){
  };
 }
 
+// An early tap waits only until the tail has emerged. Departure then starts
+// from that exact crawling pose, without completing another circuit first.
+export function feedingExit(ms){
+ if(ms>=feedingTime(23350))return null;
+ const at=Math.max(ms,feedingTime(4750)),frame=feedingFrame(at);
+ return {at,crawl:frame.crawl,consumed:frame.consumed};
+}
+export function feedingPlayback(ms,exit=null){
+ const leaving=exit&&ms>=exit.at,mealStory=feedingStory(leaving?exit.at:ms),story=leaving?23350+ms-exit.at:mealStory,frame=feedingFrame(feedingTime(story));
+ if(leaving){frame.crawl=exit.crawl;frame.consumed=exit.consumed;}
+ return {story,mealStory,frame};
+}
+
 // Two calm laps around an ellipse that follows the plate's perspective.
 // The start angle meets the colony being eaten, but the route never loops,
 // reverses or leaves the agar.
 export function feedingRoute(t,_variant=0,small=false,target={x:1,y:0}){
- const rx=small?26:38,ry=small?7.6:10.5,direction=_variant===-1?-1:1,phase=Math.atan2(target.y/ry,target.x/rx),table=ellipseArcTable(rx,ry),angle=table.angle(table.fraction(phase)+direction*t*2);
+ const rx=small?26:38,ry=small?7.6:10.5,direction=_variant===-1?-1:1,phase=Math.atan2(target.y/ry,target.x/rx),table=ellipseArcTable(rx,ry),angle=table.angle(table.fraction(phase)+direction*t*FEEDING_LAPS);
  const x=rx*Math.cos(angle),y=ry*Math.sin(angle),vx=-direction*rx*Math.sin(angle),vy=direction*ry*Math.cos(angle),length=Math.hypot(vx,vy)||1;
  return {x,y,dx:vx/length,dy:vy/length,angle:Math.atan2(vy,vx)*180/Math.PI};
 }
@@ -313,7 +327,7 @@ function jumpingWorm(root,body,small,towerPosition={x:0,y:0}){
 // The primary dives from the movable springboard, makes two slow circuits
 // of the OP50 lawn and returns home. The companion plate is only a movable prop.
 export function createN2Feeding(habitat,onChange=()=>{}){
- const reduced=matchMedia('(prefers-reduced-motion: reduce)'),eaten=new Map(),sound=recordedSound({eat:'reunion-eat.wav'});let run=null,held=null,raf=0;
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)'),eaten=new Map(),sound=recordedSound({eat:'reunion-eat.wav'},FEEDING_AUDIO);let run=null,held=null,raf=0;
  let tower=null,towerRevealed=false;const towerPosition={x:0,y:0};
  const handles=p=>p?.dataset.accessoryFamily==='ngm-agar-plate'&&p.dataset.wormPart==='primary';
  function paint(piece){const n=eaten.get(piece)||0;piece.querySelectorAll('.op50-colony').forEach((c,i)=>c.setAttribute('opacity',i<n?'0':'1'));}
@@ -327,11 +341,15 @@ export function createN2Feeding(habitat,onChange=()=>{}){
  function drag(piece){
   if(run?.piece===piece&&run.pausedAt!=null){const old=run;run=null;old.detach();held={piece,art:old.art,scene:old.scene,restore:()=>old.restorePlate(true)};paint(piece);onChange();}
  }
+ function requestExit(piece){
+  if(run?.piece!==piece)return false;
+  run.exit??=feedingExit(run.lastMs||0);sound.stop();return true;
+ }
  function release(piece,reposition,cancelled=false){
   if(run?.piece===piece&&run.pausedAt!=null){
    if(cancelled){cancel();return true;}
    if(run.started!==null)run.started+=performance.now()-run.pausedAt;
-   run.pausedAt=null;raf=requestAnimationFrame(run.tick);return true;
+   run.pausedAt=null;requestExit(piece);raf=requestAnimationFrame(run.tick);return true;
   }
   if(held?.piece!==piece)return false;
   // Save the displayed pose, restore the resting art, and keep its centre at
@@ -352,6 +370,7 @@ export function createN2Feeding(habitat,onChange=()=>{}){
  if(typeof MutationObserver!=='undefined'){const observer=new MutationObserver(syncTower);observer.observe(habitat,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden']});syncTower();}
  function start(piece){
   if(!handles(piece)||piece.closest('[hidden]'))return false;
+  if(requestExit(piece))return true;
   cancel();const colonies=[...piece.querySelectorAll('.op50-colony')];let portion=eaten.get(piece)||0;
   if(portion>=colonies.length){hideTower();eaten.set(piece,0);paint(piece);return true;}
   if(reduced.matches){hideTower();eaten.set(piece,portion+1);paint(piece);return true;}
@@ -379,13 +398,13 @@ export function createN2Feeding(habitat,onChange=()=>{}){
    pivots.forEach(({n,style})=>style===null?n.removeAttribute('style'):n.setAttribute('style',style));values.forEach(([k,v])=>piece.style.setProperty(k,v));
   };
   const restore=()=>{detach();restorePlate();};
-  run={piece,art,restore,restorePlate,detach,scene,tick,committed:false,started:null,pausedAt:null,cues:new Set()};const action=run;onChange();
+  run={piece,art,restore,restorePlate,detach,scene,tick,committed:false,started:null,pausedAt:null,lastMs:0,exit:null,cues:new Set()};const action=run;onChange();
   sound.prepare(['eat']).finally(()=>{if(run===action)action.started=action.pausedAt??performance.now();});
   function tick(now){
-   if(!run)return;if(!piece.isConnected||piece.closest('[hidden]')||document.hidden){cancel();return;}
+   if(run!==action)return;if(!piece.isConnected||piece.closest('[hidden]')||document.hidden){cancel();return;}
    if(run.pausedAt!==null)return;
    if(run.started===null){raf=requestAnimationFrame(tick);return;}
-   const ms=now-run.started,story=feedingStory(ms),f=feedingFrame(ms,small),scale=1+f.plate*(placement.scale-1),lift=f.plate*(placed.y-centre.y),shift=f.plate*(placed.x-centre.x);
+   const ms=now-run.started,{story,mealStory,frame:f}=feedingPlayback(ms,action.exit),scale=1+f.plate*(placement.scale-1),lift=f.plate*(placed.y-centre.y),shift=f.plate*(placed.x-centre.x);action.lastMs=ms;
    carrier.setAttribute('transform',`translate(${centre.x+shift} ${centre.y+lift}) scale(${scale}) translate(${-centre.x} ${-centre.y})`);
    shadow.setAttribute('opacity',String(.25+.75*(1-f.plate)));actors.forEach(actor=>{actor.n.setAttribute('opacity',String(f.worm));if(f.worm<.01)actor.n.setAttribute('data-n2-feeding-inactive','');else if(actor.inactive===null)actor.n.removeAttribute('data-n2-feeding-inactive');else actor.n.setAttribute('data-n2-feeding-inactive',actor.inactive);});
    // Keep each worm in the same foreground layer from hop through crawl
@@ -393,7 +412,8 @@ export function createN2Feeding(habitat,onChange=()=>{}){
    overlay.crawler.setAttribute('opacity','0');
    const track=q=>feedingTrack(q,direction,small,target,f.wave),shape=wormShape(track,f.crawl,small);overlay.body.setAttribute('d',shape.body);overlay.highlight.setAttribute('d',shape.highlight);
    const contact=small?3830:1250+FLIGHT_REFERENCE_MS*DIVE_ENTRY_PHASE,landing=rippleFrame(story,contact,1400),takeoff=rippleFrame(story,23350),ripple=landing.opacity>takeoff.opacity?landing:takeoff,entry=route(0);
-   overlay.ripple.setAttribute('cx',entry.x);overlay.ripple.setAttribute('cy',entry.y);overlay.ripple.setAttribute('rx',String(3+ripple.progress*(small?7:10)));overlay.ripple.setAttribute('ry',String(1+ripple.progress*(small?2.2:3.2)));overlay.ripple.setAttribute('opacity',String(ripple.opacity));
+   const ripplePoint=story>=23350?shape.head:entry;
+   overlay.ripple.setAttribute('cx',ripplePoint.x);overlay.ripple.setAttribute('cy',ripplePoint.y);overlay.ripple.setAttribute('rx',String(3+ripple.progress*(small?7:10)));overlay.ripple.setAttribute('ry',String(1+ripple.progress*(small?2.2:3.2)));overlay.ripple.setAttribute('opacity',String(ripple.opacity));
    const splashProgress=clamp((story-contact)/(small?650:1400));overlay.splash.setAttribute('transform',`translate(${entry.x} ${entry.y})`);overlay.splash.setAttribute('opacity',String(Math.sin(Math.PI*splashProgress)));
    overlay.splashCover.setAttribute('rx',String((small?4.5:8)+splashProgress*(small?7:14)));overlay.splashCover.setAttribute('ry',String((small?1.8:3)+splashProgress*(small?2:4)));
    overlay.ringA.setAttribute('rx',String((small?4:6)+splashProgress*(small?12:18)));overlay.ringA.setAttribute('ry',String((small?1.4:2)+splashProgress*(small?3:5)));
@@ -402,8 +422,8 @@ export function createN2Feeding(habitat,onChange=()=>{}){
    const outbound=story<23350,jumpProgress=outbound?f.jumpOut:f.jumpBack;
    const artMap=relative(root,art),mapped=shape.samples.map(p=>at(artMap,p.x,p.y)),jumpTarget=feedingEntryTarget(outbound?at(artMap,entry.x,entry.y):mapped[0],artMap),jumpTail=mapped.at(-1),targetLength=mapped.slice(1).reduce((sum,p,i)=>sum+Math.hypot(p.x-mapped[i].x,p.y-mapped[i].y),0),targetAngle=Math.atan2(jumpTarget.y-jumpTail.y,jumpTarget.x-jumpTail.x);
    jumper.set(jumpProgress,jumpTarget,f.jumpOpacity+f.crawler,targetLength,targetAngle,f.anticipation,f.impact,outbound?f.landing:f.departure,outbound,{mapped,map:artMap,shape});
-   const fade=ease((story-9700)/650);colonies[portion].setAttribute('opacity',String(1-fade));
-   FEEDING_BEATS.forEach((t,i)=>{if(ms>=t&&!action.cues.has(i)){action.cues.add(i);if(ms-t<120)playFeedingSound(sound,i,small,(feedingTime(23350)-ms)/1000);}});
+   const fade=ease((mealStory-9700)/650)*(action.exit&&!f.consumed?1-f.home:1);colonies[portion].setAttribute('opacity',String(1-fade));
+   if(!action.exit)FEEDING_BEATS.forEach((t,i)=>{if(ms>=t&&!action.cues.has(i)){action.cues.add(i);if(ms-t<120)playFeedingSound(sound,i,small,(feedingTime(23350)-ms)/1000);}});
    if(f.consumed&&!run.committed){run.committed=true;eaten.set(piece,portion+1);}
    // Clear the scene only after the worm and plate have returned home.
    tower?.element?.setAttribute('opacity',String(1-ease((story-28400)/600)));

@@ -27,7 +27,7 @@ function replay({distance,family='ngm-agar-plate',active=false,cancel=false,pinc
 }
 for(const distance of[0,1,3,6]){
  const idle=replay({distance});assert.equal(idle.position.x,0);assert(idle.calls.includes('feed'),'Small finger wobble remains a feeding tap');assert(!idle.calls.includes('held-drag'));
- const paused=replay({distance,active:true});assert.equal(paused.position.x,0);assert(!paused.calls.includes('feed'),'A paused meal resumes without starting over');
+ const paused=replay({distance,active:true});assert.equal(paused.position.x,0);assert(!paused.calls.includes('feed'),'An active meal handles its tap without starting over');
 }
 for(const distance of[6.1,20,60])for(const active of[false,true]){
  const drag=replay({distance,active});assert(Math.abs(drag.position.x-distance)<1e-9);assert(drag.calls.includes('held-drag'));assert(!drag.calls.includes('feed'),'A genuine drag must not start feeding');
