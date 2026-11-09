@@ -1,5 +1,37 @@
 # Game sound recordings
 
+## N2 quiet recorded nibbling, 2026-11-09
+
+Source: [hamster eating by Yuval, Freesound 204762](https://freesound.org/people/Yuval/sounds/204762/), published 2013-10-31.
+The creator describes a hamster eating at night, recorded with MKH60 and TC SK48.
+[CC0](https://creativecommons.org/publicdomain/zero/1.0/) verified on the creator
+page on 2026-11-09. This is fictional feeding foley, not recorded nematode sound.
+
+Untouched source preview:
+`https://cdn.freesound.org/previews/204/204762_770707-hq.mp3`
+
+Source size: 1710528 bytes. SHA-256:
+`6c39e0e7810b6d80ee8b8490de16614598fa1989a05ad4313854dfd7f52cc421`.
+
+| Production file | Source start | Duration | SHA-256 |
+| --- | ---: | ---: | --- |
+| `n2-nibble-a.wav` | 31.250 s | 0.240 s | `32531d1e479c3530de169ee9f65f93c62c36843ed85ed405c451ce3c8b5a3e7e` |
+| `n2-nibble-b.wav` | 34.580 s | 0.230 s | `fba247b9145e73225a7c9a2f0d05ebd923d1dd7db088effaa9108f0634894dc3` |
+| `n2-nibble-c.wav` | 39.390 s | 0.260 s | `ade2fc4031c4d44e5b5f3ac03a5526add9eff1358ef5d9262664fcea7dc715d3` |
+
+Processing: mono 44100 Hz PCM16; high-pass 220 Hz and low-pass 3200 Hz;
+DC removal; smooth tanh transient softening at 3.5 times each excerpt's RMS;
+20 ms attack and 70 ms release; peak normalization to 0.25. Original pitch
+and speed retained, with no synthetic sound layers. The three files total
+64518 bytes. The downloaded original and processing tools remain outside
+the repository. Existing sound assets are unchanged.
+
+Ten short cues in four irregular groups replace N2's banana-chewing reuse.
+Runtime peak targets range from 0.00756 to 0.009. Mouth-pulse peaks correspond
+to the source energy peaks at 65, 85 and 55 ms. Cue groups leave several
+seconds of quiet. Exit and cancellation stop playback. Numerical asset and
+synchronization checks pass; direct listening was unavailable in this session.
+
 ## Lombok leaf fans, local preview, 2026-09-21
 
 Reuses the unchanged CC0 pohnpei-leaves.ogg recording credited below. A single

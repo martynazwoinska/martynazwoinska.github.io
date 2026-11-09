@@ -4,6 +4,23 @@ Last updated: 2026-11-09
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
+## N2 recorded nibbles and feeding sync, release 62, 2026-11-09
+
+Martyna authorized replacing the repeated eating sound and publishing it.
+Three separate CC0 hamster-feeding excerpts replace N2's banana-chewing source.
+Ten brief nibbles form four irregular groups, with 3.42 to 4.84 seconds of
+quiet between groups. Small mouth/throat pulses follow the recordings' energy
+peaks. Delayed frames trim playback to the current mouth phase; early exit
+stops both. Two laps, tower placement and visitor adjustments are preserved.
+
+Seven regression suites and independent code/asset review pass. Browser checks
+confirm mouth pulses and quiet intervals at desktop and phone sizes, pointer
+exit and complete cleanup, with no console errors or horizontal overflow.
+Full-page proofs cover 360, 768, 1024 and 1440 CSS px in the fixed light palette.
+Direct audio audition is unavailable: perceived tone and device loudness remain
+a listening check. No existing assets, shared sound engine or public wording
+changed. Source, processing and hashes are in assets/audio/SOURCES.md.
+
 ## N2 initial tower placement, release 61, 2026-11-09
 
 The tower starts closer to the primary plate, with a separate narrow-screen

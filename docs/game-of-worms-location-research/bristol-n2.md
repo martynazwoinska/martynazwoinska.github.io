@@ -2,6 +2,36 @@
 
 Last updated: 2026-07-23
 
+## Recorded nibbling and feeding synchronization, release 62, 2026-11-09
+
+Three separate recorded nibbles replace N2's repetitive banana-chewing excerpt.
+Ten cues total 2.42 seconds of audio during four short groups. The groups have
+3.42, 4.84 and 4.54 seconds of silence between them. Mouth and throat marks
+follow the miniature's actual head and share the recordings' measured energy
+peaks. The second group accompanies the existing colony-consumption moment.
+Crawling geometry, two laps, smooth return and tower behavior are unchanged.
+Late frames trim the sample to the current phase; stale audio is skipped.
+Early exit, dragging, scene hiding and reduced-motion changes stop playback.
+
+Created: game-of-worms/assets/audio/n2-nibble-a.wav, n2-nibble-b.wav,
+n2-nibble-c.wav. Changed: game-of-worms/n2-feeding.js, style.css, game.js,
+index.html, assets/audio/SOURCES.md; scripts/check-n2-feeding-audio.cjs,
+scripts/check-four-scenes-motion.cjs; PROJECT_STATUS.md and this dossier.
+Deleted: none. Existing audio assets, source illustrations, other scenes,
+homepage, Cabinet and public wording remain unchanged.
+
+Audio, return, tower-placement, touch, dive, mobile and four-scene motion tests
+pass, as do syntax and whitespace checks. Independent review confirms exact
+asset hashes, unclipped signals, quiet cuts, consistent levels and synchronized
+timing. Desktop DOM sampling captured the open and resting mouth states;
+phone pointer exit restored the source worm with no temporary elements left.
+No browser errors or horizontal overflow. Full-page proofs at 360, 768, 1024
+and 1440 CSS px measure 345x2479, 753x2212, 1009x1896 and 1425x1866 pixels
+(the browser excludes its 15 px scrollbar). Proofs and source processing are
+outside the repository in the n2-nibbles visualization folder. The Game stays
+fixed-light. Direct audio audition is unavailable, so subjective timbre and
+loudness remain a listening check. Prepared on codex/n2-gentle-feeding.
+
 ## Initial diving-tower placement, release 61, 2026-11-09
 
 The default root-space offset is now (64, -16), or (40, -16) below 520 px.
