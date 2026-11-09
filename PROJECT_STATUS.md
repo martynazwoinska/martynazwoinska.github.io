@@ -4,7 +4,23 @@ Last updated: 2026-11-09
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
 
-## N2 recorded nibbles and feeding sync, release 62, 2026-11-09
+## N2 recorded slurps, release 63, 2026-11-09
+
+Martyna rejected the nibbling sound and clarified that she wants slurping.
+N2 now reuses the unchanged CC0 araucania-straw-sip.wav recording. Six complete
+580 ms sips replace the ten short nibbles. Four groups leave 3.07, 4.92 and
+4.13 seconds of quiet; mouth peaks follow the recording at 275 ms. Playback
+has a 0.020 peak ceiling and soft fades. Exit, late-frame handling, the two
+laps, tower placement and all visitor adjustments are preserved.
+
+Audio, motion, return, touch, syntax and independent review pass. Browser
+checks confirm the mouth opening and returning to rest, with no console
+errors or overflow. Full-page proofs cover 360, 768, 1024 and 1440 CSS px.
+The source recording was shared for listening; direct agent audition remains
+unavailable. No CSS, artwork, public wording or other scene was changed.
+The three rejected nibble WAVs were removed after their references were cleared.
+
+## N2 recorded nibbles and feeding sync, release 62, 2026-11-09 (superseded)
 
 Martyna authorized replacing the repeated eating sound and publishing it.
 Three separate CC0 hamster-feeding excerpts replace N2's banana-chewing source.

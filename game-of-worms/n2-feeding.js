@@ -11,16 +11,15 @@ export function feedingTime(story){return DIVE_DELAY+(story<=1250?story:story<38
 function feedingStory(ms){const t=ms-DIVE_DELAY;return t<=1250?t:t<1250+DIVE_FLIGHT_MS?1250+(t-1250)*FLIGHT_REFERENCE_MS/DIVE_FLIGHT_MS:t+FLIGHT_SAVED_MS;}
 export const FEEDING_DURATION=feedingTime(29000);
 export const FEEDING_LAPS=2;
-// Distinct recorded nibbles are grouped into short grazing pauses. Their
-// natural attacks drive the mouth pulse, with several quiet seconds between
-// clusters. The source already carries gentle filtering and endpoint fades.
-export const FEEDING_AUDIO={level:.009,attack:.005,release:.01};
-export const FEEDING_CLIPS={a:{file:'n2-nibble-a.wav',duration:.24,peak:.065},b:{file:'n2-nibble-b.wav',duration:.23,peak:.085},c:{file:'n2-nibble-c.wav',duration:.26,peak:.055}};
+// Complete recorded straw slurps retain their natural draw and release.
+// The mouth follows the source's energy peak; quiet gaps separate the groups.
+export const FEEDING_AUDIO={level:.020,attack:.012,release:.045};
+export const FEEDING_CLIPS={sip:{file:'araucania-straw-sip.wav',duration:.580,peak:.275}};
 export const FEEDING_CUES=[
- {story:5300,key:'a',level:1,cluster:1},{story:5650,key:'b',level:.85,cluster:1},{story:6080,key:'c',level:.92,cluster:1},
- {story:9760,key:'b',level:.96,cluster:2},{story:10120,key:'a',level:.88,cluster:2},
- {story:15200,key:'c',level:1,cluster:3},{story:15540,key:'a',level:.86,cluster:3},{story:15960,key:'b',level:.94,cluster:3},
- {story:20730,key:'b',level:.95,cluster:4},{story:21180,key:'c',level:.84,cluster:4}
+ {story:5300,key:'sip',level:1,cluster:1},{story:6150,key:'sip',level:.85,cluster:1},
+ {story:9800,key:'sip',level:.96,cluster:2},
+ {story:15300,key:'sip',level:1,cluster:3},{story:16190,key:'sip',level:.86,cluster:3},
+ {story:20900,key:'sip',level:.92,cluster:4}
 ];
 export const FEEDING_BEATS=FEEDING_CUES.map(cue=>feedingTime(cue.story));
 export function playFeedingSound(sound,index,lateMs=0){

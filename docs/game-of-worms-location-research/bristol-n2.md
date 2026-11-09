@@ -2,7 +2,29 @@
 
 Last updated: 2026-07-23
 
-## Recorded nibbling and feeding synchronization, release 62, 2026-11-09
+## Recorded slurping correction, release 63, 2026-11-09
+
+The user rejected the hamster nibbles and requested slurping. The runtime now
+uses the existing, byte-identical 580 ms araucania-straw-sip.wav, a CC0 human
+straw-slurp recording by bassboybg. Six complete sips in four groups total
+3.48 seconds of sound, with 3.07, 4.92 and 4.13 seconds between groups.
+Mouth opening follows the 275 ms recording energy peak. The 0.020 peak limit,
+12 ms attack and 45 ms release retain the wet draw without a continuous loop.
+Exit and cancellation stop sound and mouth movement together.
+
+Created: none. Changed: n2-feeding.js, game.js, index.html, audio/SOURCES.md,
+scripts/check-n2-feeding-audio.cjs, PROJECT_STATUS.md and this dossier.
+Deleted: the three rejected n2-nibble WAVs, now unused. Original shared audio,
+CSS, drawings, placement, two laps and visitor adjustments are unchanged.
+
+Audio, motion, return, touch, syntax and independent review pass. Browser
+mouth traces show the longer opening and resting gaps. Uncropped full-page
+proofs at 360, 768, 1024 and 1440 CSS px remain balanced without overflow or
+console errors. The fixed-light Game needs no dark variant. Proofs are in the
+external n2-slurps folder. Direct listening is unavailable to the agent; the
+unchanged source was shared as inline audio. Prepared on codex/n2-gentle-feeding.
+
+## Recorded nibbling and feeding synchronization, release 62, 2026-11-09 (superseded)
 
 Three separate recorded nibbles replace N2's repetitive banana-chewing excerpt.
 Ten cues total 2.42 seconds of audio during four short groups. The groups have
