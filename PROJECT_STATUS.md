@@ -1,8 +1,26 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-11-09
+Last updated: 2026-11-10
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
+
+## Gem discovery fixes, release 65, 2026-11-10
+
+Trivandrum's crystal is four times its former width and height and remains
+clipped inside the female sample tube. Both loupes magnify the same artwork.
+The collection target follows the visible crystal rather than drawing a second
+one on the glass. Ground gems leave room for both scene labels and the whole
+collection target, including when a label wraps or the viewport changes.
+
+Restarting the hunt in Mauritius restores five fruit per worm and empties both
+baskets without resetting accessory selections, positions or sizes. Browser
+checks covered a fully exhausted harvest, collecting again without leaving the
+scene, and loupe inspection with the plate held. Full-page proofs cover 360,
+768, 1024 and 1440 CSS px in the Game's fixed palette. The bubble gem cleared
+the location label at each width. No console warnings, errors or horizontal
+overflow in those checks. Sixteen focused checks passed, including optical
+targeting, 420 landing cases and restart during a harvest. No artwork, public
+wording, homepage or Cabinet files changed.
 
 ## N2 approved wet-food texture, release 64, 2026-11-09
 

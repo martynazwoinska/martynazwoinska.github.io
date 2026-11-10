@@ -3,6 +3,7 @@ import {treasures,SAVE_KEY,parseSave,emptySave,mergeHunts,restartHunt} from './t
 import {mountPuzzle} from './treasure-puzzle.js?v=20260923-puzzle-caption-1';
 import {gemLanding,gemDropFrames} from './treasure-motion.js?v=20260921-motion-1';
 import {drawCanopyCache} from './treasure-discoveries.js?v=20260920-discovery-2';
+import {INDIA_GEM,loupeGemPoint,gemClearRadius,clearGemLanding} from './treasure-geometry.js?v=20261110-gem-discovery-65';
 
 export function createTreasureHunt(habitat){
  let state=emptySave(),storageOK=true;try{state=parseSave(localStorage.getItem(SAVE_KEY));}catch{storageOK=false;}
@@ -22,6 +23,25 @@ export function createTreasureHunt(habitat){
  function hideNotice(){notice.hidden=true;}
  function say(text,duration=6500){announce(text);notice.textContent=text;notice.hidden=false;if(!matchMedia('(prefers-reduced-motion: reduce)').matches)notice.animate([{opacity:0},{opacity:1}],{duration:180});clearTimeout(timer);timer=setTimeout(hideNotice,duration);}
  function position(node,x,y,raw=false){const m=node?.getScreenCTM?.(),b=habitat.getBoundingClientRect();if(!m||!b.width||!b.height)return null;const p=new DOMPoint(x,y).matrixTransform(m);const spot={x:(p.x-b.left)/b.width*100,y:(p.y-b.top)/b.height*100};return raw?spot:{x:Math.max(5,Math.min(95,spot.x)),y:Math.max(9,Math.min(84,spot.y))};}
+ const groundGem=id=>['bali','compost','towel','bubbles','mauritius'].includes(id);
+ function safeLanding(p,id,minimumY=0){
+  const b=habitat.getBoundingClientRect(),index=treasures.findIndex(t=>t.id===id);
+  if(!b.width||!b.height||index<0)return p;
+  const labels=[...habitat.querySelectorAll('.scene-name,.worm-name-tag')].map(n=>{const r=n.getBoundingClientRect();return {left:r.left-b.left,right:r.right-b.left,top:r.top-b.top,bottom:r.bottom-b.top};});
+  return clearGemLanding(p,{width:b.width,height:b.height,radius:gemClearRadius(pieces[index].local,(p.size||.063)*b.height),labels},minimumY);
+ }
+ function indiaView(){
+  if(!clue?.isConnected||clue.closest('[hidden]'))return null;
+  const m=clue.getScreenCTM();if(!m)return null;
+  const source=new DOMPoint(0,0).matrixTransform(m),b=habitat.getBoundingClientRect();
+  for(const lens of habitat.querySelectorAll('[data-live-loupe] svg')){
+   if(lens.closest('[hidden]'))continue;
+   const lm=lens.getScreenCTM();if(!lm||Math.abs(lm.a*lm.d-lm.b*lm.c)<1e-8)continue;
+   const point=loupeGemPoint(source.matrixTransform(lm.inverse()),lens.viewBox.baseVal);
+   if(point){const hit=new DOMPoint(point.x,point.y).matrixTransform(lm);return {x:(hit.x-b.left)/b.width*100,y:(hit.y-b.top)/b.height*100,magnified:true};}
+  }
+  return {x:(source.x-b.left)/b.width*100,y:(source.y-b.top)/b.height*100,magnified:false};
+ }
  function collect(id){
   if(state.found.includes(id)||!state.revealed[id])return;
   state.found.push(id);save();update();shadow?.remove();shadow=null;button?.remove();button=null;clue?.remove();clue=null;cancelAnimationFrame(raf);
@@ -47,20 +67,26 @@ export function createTreasureHunt(habitat){
  function showGem(){
   shadow?.remove();shadow=null;button?.remove();button=null;if(!current||state.found.includes(current.id)||!state.revealed[current.id])return;
   const id=current.id,index=treasures.indexOf(current);button=document.createElement('button');button.type='button';button.className='scene-gem';button.setAttribute('aria-label','Collect hidden gem');button.dataset.treasureGem=id;
-  const art=svg(button,'svg',{viewBox:'-100 -100 200 200','aria-hidden':'true'});drawGem(art,index,85/Math.max(...pieces[index].local.flat().map(Math.abs)));button.addEventListener('pointerdown',e=>e.stopPropagation());button.addEventListener('click',e=>{e.stopPropagation();collect(id);});layer.append(button);
-  if(['bali','compost','towel','bubbles','mauritius'].includes(id)){shadow=document.createElement('span');shadow.className='scene-gem-shadow';layer.prepend(shadow);}
+  // India keeps one physical crystal in the clipped tube. Its live optical
+  // image is already drawn by the loupe; this button supplies only the target.
+  if(id!=='india'){const art=svg(button,'svg',{viewBox:'-100 -100 200 200','aria-hidden':'true'});drawGem(art,index,85/Math.max(...pieces[index].local.flat().map(Math.abs)));}
+  button.addEventListener('pointerdown',e=>e.stopPropagation());button.addEventListener('click',e=>{e.stopPropagation();collect(id);});layer.append(button);
+  if(groundGem(id)){shadow=document.createElement('span');shadow.className='scene-gem-shadow';layer.prepend(shadow);}
   placeButton();
  }
  function placeButton(){
   if(!button||!current)return;
   button.hidden=!!anchor?.node?.closest('[hidden]');
   let p=state.revealed[current.id];
-  if(anchor?.node?.isConnected&&!anchor.node.closest('[hidden]')){
+  if(current.id==='india'){
+   const view=indiaView();button.hidden=!view;if(view)p={...p,x:view.x,y:view.y};
+  }else if(anchor?.node?.isConnected&&!anchor.node.closest('[hidden]')){
    p={...p,...(position(anchor.node,anchor.x,anchor.y)||p)};state.revealed[current.id]=p;
   }
+  if(groundGem(current.id)){p=safeLanding(p,current.id);state.revealed[current.id]=p;}
   const size=(p?.size||{india:.055,canopy:.055}[current.id]||.063)*habitat.clientHeight;
   button.style.setProperty('--scene-gem-size',size+'px');
-  button.querySelector('svg').style.rotate=(p?.angle||0)+'deg';
+  const art=button.querySelector('svg');if(art)art.style.rotate=(p?.angle||0)+'deg';
   if(p){
    if(shadow){shadow.style.left=p.x+'%';shadow.style.top=p.y+'%';shadow.style.width=size*.65+'px';shadow.style.marginTop=size*.35+'px';}
    button.style.left=p.x+'%';button.style.top=p.y+'%';
@@ -69,10 +95,12 @@ export function createTreasureHunt(habitat){
  habitat.addEventListener('treasure-reveal',e=>{
   const{id,node,x,y,fall=false,direction=1,sourceGem}=e.detail;if(current?.id!==id||state.found.includes(id)||state.revealed[id])return;
   const start=position(node,x,y,true)||{x:70,y:65},b=habitat.getBoundingClientRect();
-  const dropping=fall||id==='bubbles',end=dropping?gemLanding(start,id,direction):position(node,x,y)||start;
+  const dropping=fall||id==='bubbles';let end=dropping?gemLanding(start,id,direction):position(node,x,y)||start;
   let angle=0,size;
   if(sourceGem?.getScreenCTM){const m=sourceGem.getScreenCTM();if(m){const extent=Math.max(...pieces[treasures.indexOf(current)].local.flat().map(Math.abs));size=2*extent*Math.hypot(m.a,m.b)/.85/b.height;angle=Math.atan2(m.b,m.a)*180/Math.PI;}}
-  state.revealed[id]={...end,...(size?{size}:{}),...(!dropping&&angle?{angle}:{})};
+  end={...end,...(size?{size}:{}),...(!dropping&&angle?{angle}:{})};
+  if(groundGem(id))end=safeLanding(end,id,dropping?start.y:0);
+  state.revealed[id]=end;
   anchor=id==='india'?{node,x,y}:null;save();update();showGem();
   if(sourceGem)sourceGem.style.visibility='hidden';
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
@@ -88,17 +116,16 @@ export function createTreasureHunt(habitat){
   sceneSpecies=species;scenePlace=place;
   save();clue?.remove();clue=null;anchor=null;shadow?.remove();shadow=null;button?.remove();button=null;canopyCache?.remove();canopyCache=null;delete habitat.dataset.treasureCanopyReached;hideNotice();clearTimeout(timer);cancelAnimationFrame(raf);
   current=treasures.find(t=>t.species===species&&place.includes(t.place))||null;habitat.dataset.treasureId=current?.id||'';update();
-  if(!current||state.found.includes(current.id))return;showGem();
-  if(current.id==='canopy'&&state.revealed.canopy)mountCanopyCache(true);
+  if(!current||state.found.includes(current.id))return;
   if(current.id==='india'){
    const contents=habitat.querySelector('[clip-path="url(#tri-tube-contents-female)"]');
-   if(contents){clue=svg(contents,'g',{'data-treasure-clue':'india',transform:'translate(92 4)','pointer-events':'none'});drawGem(clue,0,.1);if(state.revealed.india){anchor={node:clue,x:0,y:0};placeButton();}}
+   if(contents){clue=svg(contents,'g',{'data-treasure-clue':'india',transform:`translate(${INDIA_GEM.x} ${INDIA_GEM.y})`,'pointer-events':'none'});drawGem(clue,0,INDIA_GEM.scale);anchor={node:clue,x:0,y:0};}
   }
+  showGem();if(current.id==='canopy'&&state.revealed.canopy)mountCanopyCache(true);
   function tick(now){
    raf=requestAnimationFrame(tick);if(document.hidden||now-last<32)return;last=now;placeButton();
    if(current?.id!=='india'||habitat.dataset.treasureState!=='hidden'||!clue?.isConnected||clue.closest('[hidden]'))return;
-   const m=clue.getScreenCTM();if(!m)return;const p=new DOMPoint(0,0).matrixTransform(m);
-   for(const lens of habitat.querySelectorAll('[data-live-loupe] svg')){if(lens.closest('[hidden]'))continue;const lm=lens.getScreenCTM();if(!lm)continue;const q=p.matrixTransform(lm.inverse()),box=lens.viewBox.baseVal,r=Math.min(box.width,box.height)*.4;if(Math.hypot(q.x-box.x-box.width/2,q.y-box.y-box.height/2)<r){revealTreasure(habitat,'india',clue,0,0);break;}}
+   if(indiaView()?.magnified)revealTreasure(habitat,'india',clue,0,0);
   }raf=requestAnimationFrame(tick);
  }
  function shell(title){dialog.classList.toggle('is-chest',title==='Your treasure chest');confirmingRestart=false;puzzleUI?.save();puzzleUI=null;dialog.replaceChildren();const close=document.createElement('button');close.type='button';close.className='treasure-close';close.textContent='×';close.setAttribute('aria-label','Close');close.addEventListener('click',()=>dialog.close());const h=document.createElement('h2');h.id='treasure-title';h.textContent=title;const header=document.createElement('header');header.className='treasure-header';header.append(h,close);const content=document.createElement('div');content.className='treasure-content';dialog.append(header,content);return content;}
@@ -114,7 +141,7 @@ export function createTreasureHunt(habitat){
   const restart=document.createElement('button');restart.type='button';restart.className='treasure-restart';restart.textContent='Restart gem hunt';restart.setAttribute('aria-expanded','false');restart.disabled=!state.found.length&&!Object.keys(state.revealed).length;restart.addEventListener('click',()=>{if(confirmingRestart)cancelRestart();else confirmRestart();});(puzzleUI?.actions||content).append(restart);
   const note=document.createElement('p');note.className='treasure-save-note';content.append(note);save();open();
  }
- function refreshHunt(){mount(sceneSpecies,scenePlace);if(dialog.open)chest();}
+ function refreshHunt(){mount(sceneSpecies,scenePlace);habitat.dispatchEvent(new CustomEvent('treasure-restart'));if(dialog.open)chest();}
  function cancelRestart(){
   confirmingRestart=false;dialog.querySelector('.treasure-restart-confirmation')?.remove();
   const trigger=dialog.querySelector('.treasure-restart');trigger?.setAttribute('aria-expanded','false');trigger?.removeAttribute('aria-controls');trigger?.focus({preventScroll:true});

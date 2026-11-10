@@ -7,7 +7,7 @@ import { createPraslinPlay } from "./praslin-play.js?v=20260917-praslin-7";
 import { createReunionJU1375Play } from "./reunion-ju1375-play.js?v=20260917-reunion-7";
 import { createTaipeiPlay } from "./taipei-play.js?v=20260916-pottery-9";
 import { createGuadeloupePlay } from "./guadeloupe-play.js?v=20260916-gwoka-11";
-import { createMauritiusPlay } from "./mauritius-play.js?v=20260921-motion-1";
+import { createMauritiusPlay } from "./mauritius-play.js?v=20261110-gem-discovery-65";
 import { geoGraticule10, geoNaturalEarth1, geoPath } from "https://cdn.jsdelivr.net/npm/d3-geo@3/+esm";
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
 import world from "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m";
@@ -41,7 +41,7 @@ import { createAhmedabadFans, FAN_FAMILY } from "./ahmedabad-fans.js?v=20260906-
 import { speciesGalleries } from "./species-gallery.js?v=20260822-11";
 import { focusCaenorhabditisTreeLabels, renderCaenorhabditisTree } from "./phylogeny.js?v=20260824-3";
 
-import {createTreasureHunt} from './treasure-hunt.js?v=20260923-puzzle-caption-1';
+import {createTreasureHunt} from './treasure-hunt.js?v=20261110-gem-discovery-65';
 
 const t = createGameTranslator(document.documentElement.lang);
 

@@ -216,6 +216,12 @@ export function createMauritiusPlay(habitat, ensureBasket) {
     render(0);raf=requestAnimationFrame(tick);return true;
   }
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});
+  habitat.addEventListener('treasure-restart',()=>{
+    if(!find(GRABBER,'primary'))return;
+    resetGround();
+    habitat.querySelectorAll('[data-basket-fruits]').forEach(n=>n.replaceChildren());
+    for(const part of ['primary','companion'])delete find(GRABBER,part)?.dataset.mauritiusCollected;
+  });
   window.addEventListener('pagehide',cancel);window.addEventListener('resize',cancel);
   reduced.addEventListener('change',cancel);
   return {handles,start,cancel,resetGround,get active(){return !!active;}};
