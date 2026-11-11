@@ -27,7 +27,20 @@ const fs=require('node:fs');
   const pointerdown=game.slice(game.indexOf('piece.addEventListener("pointerdown"'),game.indexOf('piece.addEventListener("keydown"'));
   assert.match(pointerdown,/if \(ahmedabadHands.active && !ahmedabadHands.handles\(piece\)\) ahmedabadHands.cancel\(\)/,'Pointer taps preserve the existing controller');
   const finish=game.slice(game.indexOf('function finishAccessoryDrag'),game.indexOf('function moveActiveAccessoryPointer'));
-  assert.match(finish,/if \(moved \|\| !ahmedabadHands.handles\(piece\) && !panamaPlay.handlesLeaf\(piece\)\) moveAccessory/,'Taps do not re-clamp an animated prop');
+  const releaseGuard = finish.match(/^  if \((.+)\) moveAccessory\(id, wormPart, accessoryPosition/m);
+  assert(releaseGuard, 'Pointer release checks whether to re-clamp');
+  const vm = require('node:vm');
+  for (const active of ['ahmedabadHands', 'panamaPlay', 'ordinary']) {
+    const context = {piece: {}, feedingReleased: false};
+    for (const [, controller, method] of releaseGuard[1].matchAll(/(\w+)\.(\w+)\(piece\)/g)) {
+      (context[controller] ??= {})[method] = () => controller === active;
+    }
+    for (const moved of [false, true]) {
+      context.moved = moved;
+      assert.equal(vm.runInNewContext(releaseGuard[1], context), moved || active === 'ordinary',
+        'Only deliberate drags re-clamp a prop involved in the handoff');
+    }
+  }
   const drag=game.slice(game.indexOf('function moveActiveAccessoryPointer'),game.indexOf('function turnTelescopeFocus'));
   assert.match(drag,/ahmedabadHands.handles\(piece\).*<=6\) return/,'Small finger movement is not a drag/reset');
   const toggle=game.slice(game.indexOf('function toggleAccessory'),game.indexOf('function syncAccessories'));

@@ -3,30 +3,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const {pathToFileURL} = require('node:url');
-class Element {
-  constructor(tag) {
-    this.nodeName = tag;
-    this.attributes = {};
-    this.children = [];
-    this.dataset = {};
-    this.style = {setProperty(k,v){this[k]=v;}};
-    this.classList = {
-      add: (...names) => { this.attributes.class = [...new Set([...(this.attributes.class || '').split(' ').filter(Boolean),...names])].join(' '); },
-      contains: name => (this.attributes.class || '').split(' ').includes(name)
-    };
-  }
-  setAttribute(k,v) { this.attributes[k] = String(v); }
-  getAttribute(k) { return this.attributes[k] ?? null; }
-  appendChild(n) { this.children.push(n); return n; }
-  append(...nodes) { this.children.push(...nodes); }
-  replaceChildren(...nodes) { this.children = nodes; }
-  querySelector(selector) {
-    assert(selector.startsWith('.'),'Mock supports class selectors only');
-    return walk(this).slice(1).find(n=>n.classList.contains(selector.slice(1))) || null;
-  }
-}
-global.document = {createElementNS:(_,tag)=>new Element(tag)};
-const walk = n => [n,...n.children.flatMap(walk)];
+const {Element, walk} = require('./svg-test-element.cjs');
+global.document = {createElementNS: (_, tag) => new Element(tag)};
 (async()=>{
   const root=path.join(__dirname,'..','game-of-worms');
   const {renderLocationAccessories,auditAccessoryPairGeometry} =

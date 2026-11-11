@@ -98,11 +98,11 @@ function timple(group, small) {
   el(el(defs, "clipPath", { id: clip }), "path", { d: outline });
   const grain = el(body, "g", { "clip-path": "url(#" + clip + ")" });
   (small ? [-29,-17,22,35] : [-45,-30,-18,26,43,56]).forEach(x =>
-    line(grain, "M" + x + "-50Q" + (x-5) + "20 " + x + "130", "#9c723f", 1, { opacity: .35 }));
+    line(grain, `M${x} -50 Q${x-5} 20 ${x} 130`, "#9c723f", 1, { opacity: .35 }));
   const neckTop = small ? -107 : -139;
   const headTop = small ? -146 : -184;
   path(group, "M-9-36L-7 " + neckTop + "H9L12-36Z", "#5a3c32", "#3e3c35", 2);
-  path(group, "M-7 " + neckTop + "L-12 " + (headTop+5) + "Q2 " + (headTop-6) + "17 " + (headTop+6) + "L9 " + neckTop + "Z", "#825b3b", "#3e3c35", 2);
+  path(group, `M-7 ${neckTop} L-12 ${headTop+5} Q2 ${headTop-6} 17 ${headTop+6} L9 ${neckTop} Z`, "#825b3b", "#3e3c35", 2);
   line(group, "M-6 " + neckTop + "H9", "#eedcb4", 3);
   (small ? [-46,-57,-69,-83,-98] : [-51,-63,-77,-93,-112,-131]).forEach(y=>line(group,"M-8 "+y+"H10","#bfbba3",1.5));
   const holeY = small ? 9 : 12;

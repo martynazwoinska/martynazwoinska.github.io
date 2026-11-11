@@ -17,7 +17,27 @@ const paint=n=>walk(n).filter(n=>n.tag!=='g').map(n=>[n.tag,Object.fromEntries(O
   ['kauai-recording.js','drawKauaiRecording',['xz1516-forest-bird-headphones','xz1516-ohia-blossom-microphone','xz1516-reel-to-reel-recorder']]]){
   const before=await import(data(execFileSync('git',['show',`66be258:game-of-worms/${file}`],{cwd:root,encoding:'utf8'})));
   const after=await import(data(fs.readFileSync(path.join(game,file),'utf8')));
-  for(const family of families)for(const male of [false,true]){if(family==='tenerife-avocado-snack-bowl'&&male)continue;const a=new Element('g'),b=new Element('g');before[fn](a,{family},male);after[fn](b,{family},male);assert.deepEqual(paint(a),paint(b),`${family}/${male}: approved artwork`);}
+  for (const family of families) for (const male of [false, true]) {
+    if (family === 'tenerife-avocado-snack-bowl' && male) continue;
+    const a = new Element('g'), b = new Element('g');
+    before[fn](a, {family}, male);
+    after[fn](b, {family}, male);
+    // The historical snapshot joined coordinates in the grain and headstock.
+    // Check the corrected curves explicitly and compare all other paint unchanged.
+    if (family === 'tenerife-timple-guitar') {
+      const nodes = walk(a);
+      const grain = nodes.filter(n => n.tag === 'path' && n.attrs.stroke === '#9c723f');
+      const positions = male ? [-29,-17,22,35] : [-45,-30,-18,26,43,56];
+      assert.equal(grain.length, positions.length);
+      positions.forEach((x, i) => { grain[i].attrs.d = `M${x} -50 Q${x-5} 20 ${x} 130`; });
+      const headstocks = nodes.filter(n => n.tag === 'path' && n.attrs.fill === '#825b3b');
+      assert.equal(headstocks.length, 1);
+      headstocks[0].attrs.d = male
+        ? 'M-7 -107 L-12 -141 Q2 -152 17 -140 L9 -107 Z'
+        : 'M-7 -139 L-12 -179 Q2 -190 17 -178 L9 -139 Z';
+    }
+    assert.deepEqual(paint(b), paint(a), `${family}/${male}: approved artwork`);
+  }
  }
  const {bodyPoint}=await import(pathToFileURL(path.join(game,'scene-performance.js')));
  const {performanceEnvelope,railTravel,strumTimes,SANTEUIL_MARCH_SECONDS}=await import(pathToFileURL(path.join(game,'final-scenes-play.js')));

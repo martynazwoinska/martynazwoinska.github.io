@@ -2,14 +2,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {pathToFileURL}=require('node:url');
 const moduleAt=n=>import(pathToFileURL(path.resolve('game-of-worms',n)));
-class Element {
-  constructor(tag){this.tag=this.nodeName=tag;this.attributes={};this.children=[];this.dataset={};this.style={setProperty(k,v){this[k]=v;}};this.classList={add:(...a)=>{this.attributes.class=[this.attributes.class||'',...a].join(' ').trim();}};}
-  setAttribute(k,v){this.attributes[k]=String(v);}getAttribute(k){return this.attributes[k]??null;}
-  appendChild(n){this.children.push(n);return n;}
-  append(...nodes){nodes.forEach(n=>this.appendChild(n));}
-  querySelector(selector){return walk(this).slice(1).find(n=>selector.startsWith('.')?(n.attributes.class||'').split(/\s+/).includes(selector.slice(1)):selector.startsWith('[')?selector.slice(1,-1) in n.attributes:n.tag===selector)||null;}
-}
-const walk=n=>[n,...n.children.flatMap(walk)];
+const {Element, walk} = require('./svg-test-element.cjs');
 (async()=>{
   const {snailFrame,lowWormPath,crawlingPath,rideWormPath,riderBoard,RIDE_TIMING,glideProgress,snailRoute,snailGait,pedalRimPath}=await moduleAt('sao-tome-play.js');
   const body='M78 228C122 280 173 255 181 203C188 151 225 105 278 113C330 121 355 82 326 54';
