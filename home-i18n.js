@@ -61,7 +61,6 @@
     "contact_aula_name": "#contactAulaName",
     "contact_email": "#contact .contact-copy .contact-copy-label",
     "contact_ki_profile": "#contact .contact-ki-profile-label",
-    "contact_uu_profile": "#contact .contact-uu-profile-label",
     "footer_affiliation": "#footerAffiliation"
   };
   var localizedAttributeMap = {
@@ -241,7 +240,6 @@
           "contact_email_copied": "E-postadressen har kopierats",
           "contact_email_copy_failed": "Kopieringen misslyckades. Markera och kopiera:",
           "contact_ki_profile": "Profil vid Karolinska Institutet",
-          "contact_uu_profile": "Profil vid Uppsala universitet",
           "footer_affiliation": "Martyna Katarzyna Zwoińska"
     },
     "pl": {
@@ -328,7 +326,6 @@
           "contact_email_copied": "Adres e-mail skopiowany",
           "contact_email_copy_failed": "Nie udało się skopiować. Zaznacz i skopiuj:",
           "contact_ki_profile": "Profil w Instytucie Karolinska",
-          "contact_uu_profile": "Profil na stronie Uniwersytetu w Uppsali",
           "footer_affiliation": "Martyna Katarzyna Zwoińska"
     }
   };
