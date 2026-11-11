@@ -19,11 +19,14 @@ export const FEEDING_CLIPS={
 };
 export const FEEDING_CUES=[
  {story:5408,key:'a',level:.899,cluster:1},{story:6088,key:'b',level:1,cluster:1},
- {story:9836,key:'b',level:.96,cluster:2},
- {story:12360,key:'a',level:.83,cluster:3},
- {story:15408,key:'a',level:.899,cluster:4},{story:16128,key:'b',level:.94,cluster:4},
- {story:18620,key:'b',level:.94,cluster:5},
- {story:21008,key:'a',level:.83,cluster:6}
+ {story:7800,key:'a',level:.84,cluster:2},{story:8460,key:'b',level:.91,cluster:2},
+ {story:9836,key:'b',level:.96,cluster:3},
+ {story:11400,key:'b',level:.9,cluster:4},{story:12360,key:'a',level:.83,cluster:4},
+ {story:13900,key:'b',level:.92,cluster:5},
+ {story:15408,key:'a',level:.899,cluster:6},{story:16128,key:'b',level:.94,cluster:6},
+ {story:17620,key:'a',level:.85,cluster:7},{story:18620,key:'b',level:.94,cluster:7},
+ {story:20170,key:'b',level:.92,cluster:8},{story:21008,key:'a',level:.83,cluster:8},
+ {story:22410,key:'a',level:.81,cluster:9}
 ];
 export const FEEDING_BEATS=FEEDING_CUES.map(cue=>feedingTime(cue.story));
 export function playFeedingSound(sound,index,lateMs=0){

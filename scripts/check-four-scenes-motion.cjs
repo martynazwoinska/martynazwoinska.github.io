@@ -36,7 +36,7 @@ const mod=name=>import(pathToFileURL(path.resolve(__dirname,'../game-of-worms',n
  assert.equal(feedingTime(3850)-feedingTime(1250),1820,'The outbound flight is thirty percent shorter');
  assert.equal(feedingTime(1250)-260,2233,'Boarding and push-off accelerate by the same proportion');
  assert.equal(feedingTime(23350)-feedingTime(3850),19500,'The two slow plate laps keep their established duration');
- assert(FEEDING_BEATS.slice(1).some((beat,i)=>beat-FEEDING_BEATS[i]>=3000),'Quiet space separates short feeding clusters');
+ assert(FEEDING_BEATS.at(-1)<feedingTime(23350),'Feeding ends before the return jump');
  let previous=-1;for(let u=0;u<=1;u+=.001){const travel=feedingTravel(u);assert(travel>=previous&&travel>=0&&travel<=1,'Crawl progress stays monotonic and bounded');previous=travel;}assert.equal(feedingTravel(0),0);assert.equal(feedingTravel(1),1);
  for(const progress of[0,.001,.01,.05,.1,.5,1])assert(feedingEntryTravel(progress)>=0&&feedingEntryTravel(progress)<=1,'Entry travel is bounded');
  for(const direction of[-1,1])for(const target of[{x:-36,y:-2},{x:17,y:6},{x:35,y:-3}]){

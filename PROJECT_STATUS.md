@@ -7,7 +7,7 @@ This file records approved decisions and the verified implementation state. Alwa
 ## Bristol N2 feeding sound, 2026-11-11
 
 The two-lap plate activity now uses the two shorter slurps from approved preview A.
-The eight cues total 2.724 seconds. Mouth and throat movement follows the energy peak of each clip.
+The fifteen cues total 5.050 seconds, with at most 1.429 seconds of silence between consecutive intakes. Mouth and throat movement follows the energy peak of each clip.
 
 ## Gem discovery fixes, release 65, 2026-11-10
 

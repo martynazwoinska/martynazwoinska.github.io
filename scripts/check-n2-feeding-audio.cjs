@@ -30,7 +30,7 @@ function decode(wav){
   assert(Math.abs(peakSample/buffer.sampleRate-clip.peak)<.001,'The mouth peaks with the recorded intake');
  }
  assert.deepEqual(hashes,['32cd78192dd22d168381a49b2e37d59279f528b82ac329055fecfc2c6d7c111d','43224e4c1e3c09f64a3815fe641a88d4b4e6becc36c671be9b19d932c0abf156'],'Both approved audio files remain byte-identical');
- assert.equal(FEEDING_CUES.length,8);
+ assert.equal(FEEDING_CUES.length,15);
  const end=feedingTime(23350),intervals=[];let audioDuration=0;
  for(let i=0;i<FEEDING_CUES.length;i++){
   const cue=FEEDING_CUES[i],clip=FEEDING_CLIPS[cue.key],beat=FEEDING_BEATS[i],duration=clip.duration*1000;audioDuration+=duration;
@@ -43,15 +43,15 @@ function decode(wav){
    const interval=beat-FEEDING_BEATS[i-1];
    const gap=interval-FEEDING_CLIPS[previous.key].duration*1000;
    intervals.push(interval);
-   assert(gap>=60,'Adjacent eating cues never overlap');
+   assert(gap>=200 && gap<=1500,'Every intake has a short rest before the next');
    if(cue.cluster!==previous.cluster){
-    assert(gap>=2000 && gap<=3500,'Feeding groups have two to three and a half seconds of silence between them');
+    assert(gap>=1000,'Separate feeding groups have at least a second of silence');
    }
   }
  }
- assert(new Set(intervals).size>=5,'The recordings do not repeat on a regular metronomic interval');assert.equal(audioDuration,2724,'Eight short intakes leave most of the two laps quiet');
- assert.deepEqual([1,2,3,4,5,6].map(cluster=>FEEDING_CUES.filter(c=>c.cluster===cluster).length),[2,1,1,2,1,1]);
- assert(FEEDING_CUES.filter(c=>c.cluster===2).every(c=>c.story>=9700&&c.story<=10350),'The second cluster coincides with visible colony consumption');
+ assert(new Set(intervals).size>=5,'The recordings do not repeat on a regular metronomic interval');assert.equal(audioDuration,5050,'Fifteen short intakes leave time for quiet between mouth movements');
+ assert.deepEqual([1,2,3,4,5,6,7,8,9].map(cluster=>FEEDING_CUES.filter(c=>c.cluster===cluster).length),[2,2,1,2,1,2,2,2,1]);
+ assert(FEEDING_CUES.some(c=>c.story>=9700&&c.story+FEEDING_CLIPS[c.key].duration*1000<=10350),'An intake coincides with visible colony consumption');
  // Head and throat markers follow the actual miniature, without bending or
  // relocating its body and without adding a detached face.
  for(const direction of[-1,1])for(const progress of[.08,.2,.5,.8,1])for(const scale of[.5,1,2]){
@@ -71,7 +71,7 @@ function decode(wav){
  const {recordedSound}=await import(pathToFileURL(path.resolve(__dirname,'../game-of-worms/scene-performance.js'))),files=Object.fromEntries(Object.entries(FEEDING_CLIPS).map(([key,clip])=>[key,clip.file])),sound=recordedSound(files,FEEDING_AUDIO);
  assert.equal(playFeedingSound(sound,0),false,'No sound before gesture preparation');await sound.prepare(Object.keys(files));await sound.prepare(Object.keys(files));assert.equal(requests,2,'Each approved recording decodes once');
  for(let i=0;i<FEEDING_BEATS.length;i++){assert(playFeedingSound(sound,i));assert.equal(starts.at(-1)[2],FEEDING_CLIPS[FEEDING_CUES[i].key].duration);}
- assert.equal(starts.length,8);
+ assert.equal(starts.length,15);
  for(let i=0;i<envelopes.length;i++){
   const calls=envelopes[i],clip=FEEDING_CLIPS[FEEDING_CUES[i].key];
   const peak=peaks[FEEDING_CUES[i].key==='a'?0:1];
@@ -87,5 +87,5 @@ function decode(wav){
  // Default playback for other scenes remains unchanged.
  const plain=recordedSound(files);await plain.prepare(['a']);plain.play('a',0,.12,.08);const normal=envelopes.at(-1);assert.equal(normal[1][2],.012);assert(Math.abs(normal[2][2]-.08)<1e-10);assert.equal(normal[3][2],.12);plain.stop();sources.at(-1).onended();
  global.fetch=async()=>{throw Error('offline')};const offline=recordedSound(files,FEEDING_AUDIO);await offline.prepare(Object.keys(files));assert.equal(playFeedingSound(offline,0),false);
- console.log('Feeding audio: two short slurps from approved preview A, eight quiet cues, six irregular groups, recording-aligned mouth pulses, delayed-frame sync, cache, cancellation and offline fallback pass.');
+ console.log('Feeding audio: two short slurps from approved preview A, fifteen quiet cues, nine irregular groups, recording-aligned mouth pulses, delayed-frame sync, cache, cancellation and offline fallback pass.');
 })().catch(e=>{console.error(e);process.exitCode=1});
