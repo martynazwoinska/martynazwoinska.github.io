@@ -1,7 +1,7 @@
 # martynazwoinska.github.io
 
-The source repository for [Martyna Katarzyna Zwoińska’s personal academic
-website](https://martynazwoinska.github.io/), published with GitHub Pages.
+The source repository for [Martyna Katarzyna Zwoińska’s personal website](https://martynazwoinska.github.io/),
+published with GitHub Pages.
 
 The site uses plain HTML, CSS, and JavaScript. There is no build system, package
 manager, or installation step.
