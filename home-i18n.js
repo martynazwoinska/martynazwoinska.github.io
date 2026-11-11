@@ -269,7 +269,7 @@
           "nav_contact": "Kontakt",
           "hero_role_title": "Data Steward",
           "hero_role_organization": "Instytut Karolinska",
-          "hero_expertise": "<span class=\"hero-expertise-line\">Biologia ewolucyjna, genomika,</span> <span class=\"hero-expertise-line\">analiza danych i zastosowania AI</span>",
+          "hero_expertise": "<span class=\"hero-expertise-line\">Biologia ewolucyjna, genomika,</span> <span class=\"hero-expertise-line\">analiza danych i AI</span>",
           "about_title": "O mnie",
           "about_intro": "Pracuję jako Data Steward w Instytucie Karolinska i mam doświadczenie w biologii ewolucyjnej, badaniach eksperymentalnych, genomice i analizie danych. Dzięki doświadczeniu badawczemu dobrze rozumiem, jak powstają dane naukowe oraz jak są analizowane i udostępniane.",
           "research_title": "Doświadczenie badawcze",
