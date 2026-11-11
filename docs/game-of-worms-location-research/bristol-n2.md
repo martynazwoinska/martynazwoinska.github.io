@@ -1,6 +1,12 @@
 # Bristol N2 location research and art brief
 
-Last updated: 2026-07-23
+Last updated: 2026-11-11
+
+## Short feeding slurps, 2026-11-11
+
+The current plate activity uses the two short intakes from listening preview A.
+The mouth and throat reach their widest point 267 ms and 149 ms into the two recordings.
+See the [recording credits](../../game-of-worms/assets/audio/SOURCES.md) for the source and exact excerpts.
 
 ## Approved wet-food texture, release 64, 2026-11-09
 

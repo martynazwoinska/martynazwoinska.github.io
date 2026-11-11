@@ -1,8 +1,13 @@
 # PROJECT_STATUS.md
 
-Last updated: 2026-11-10
+Last updated: 2026-11-11
 
 This file records approved decisions and the verified implementation state. Always inspect the current repository before acting.
+
+## Bristol N2 feeding sound, 2026-11-11
+
+The two-lap plate activity now uses the two shorter slurps from approved preview A.
+The six cues total 2.043 seconds. Mouth and throat movement follows the energy peak of each clip.
 
 ## Gem discovery fixes, release 65, 2026-11-10
 

@@ -1,5 +1,22 @@
 # Game sound recordings
 
+## Bristol N2 short slurps, 2026-11-11
+
+The two intakes are from qubodup's [Eating Oatmeal](https://freesound.org/people/qubodup/sounds/169907/),
+released under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+They are taken from approximately 11.077 to 11.475 s and 12.018 to 12.301 s
+of the creator's HQ preview. They represent the plate feeding action in the game.
+
+Both mono PCM16 files contain the original 24 kHz samples from Martyna's approved
+shorter audition (A). The first clip contains 9,552 frames starting at frame 11,256
+of the audition. The second contains 6,792 frames starting at frame 27,577.
+The game plays these clips at their original speed with quiet gain. The first pair
+uses the audition's timing and relative volume. The two-lap route uses six slurps.
+
+- `n2-short-slurp-first.wav` SHA-256 `32cd78192dd22d168381a49b2e37d59279f528b82ac329055fecfc2c6d7c111d`.
+- `n2-short-slurp-second.wav` SHA-256 `43224e4c1e3c09f64a3815fe641a88d4b4e6becc36c671be9b19d932c0abf156`.
+- Audition WAV SHA-256 `f4e9009eff7fcfda2d13a9d0f823f59d2a84d2de1c8a79375367484acd816a36`.
+
 ## N2 approved wet-food texture, 2026-11-09
 
 - Source: APallot, [Squelch.wav](https://freesound.org/people/APallot/sounds/389517/),
