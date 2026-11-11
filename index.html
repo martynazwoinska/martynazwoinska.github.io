@@ -34,6 +34,7 @@
     "@type": "ProfilePage",
     "@id": "https://martynazwoinska.github.io/#profile",
     "url": "https://martynazwoinska.github.io/",
+    "primaryImageOfPage": "https://martynazwoinska.github.io/photo.jpg",
     "name": "Martyna Zwoińska | Data Steward",
     "description": "Data Steward at Karolinska Institutet with a background in evolutionary biology, experimental research, genomics and data analysis.",
     "mainEntity": {
@@ -559,24 +560,14 @@
     .hero-role-title { display: inline; white-space: nowrap; color: var(--text-soft); }
     .hero-role-organization { display: inline; white-space: nowrap; color: var(--text-soft); font-weight: 500; }
     .hero-art {
-      display: block; max-width: none;
-      pointer-events: none; user-select: none;
+      aspect-ratio: 822 / 741;
+      background: url("assets/botanical-frame/compact-crescent-harmonized-light-ivory.webp?v=1") center / 100% 100% no-repeat;
+      --dark-flower: url("assets/botanical-frame/compact-crescent-harmonized-dark-petrol.webp?v=1");
+      pointer-events: none;
     }
-    .hero-art > img { display: block; width: 100%; height: auto; }
-    .hero-art--theme-light {
-      opacity: 1;
-      filter: none;
-    }
-    .hero-art--theme-dark {
-      opacity: 1;
-      filter: none;
-    }
-    .hero-art--theme-dark { display: none; }
-    html[data-theme="dark"] .hero-art--theme-light { display: none; }
-    html[data-theme="dark"] .hero-art--theme-dark { display: block; }
+    html[data-theme="dark"] .hero-art { background-image: var(--dark-flower); }
     @media (prefers-color-scheme: dark) {
-      html:not([data-theme]) .hero-art--theme-light { display: none; }
-      html:not([data-theme]) .hero-art--theme-dark { display: block; }
+      html:not([data-theme]) .hero-art { background-image: var(--dark-flower); }
     }
     .hero-lower {
       position: absolute; z-index: 1;
@@ -1272,24 +1263,7 @@
         </svg>
       </div>
     </div>
-    <picture class="hero-art hero-lower hero-art--theme-light">
-      <img
-        src="assets/botanical-frame/compact-crescent-harmonized-light-ivory.webp?v=1"
-        alt=""
-        aria-hidden="true"
-        draggable="false"
-        decoding="async"
-      />
-    </picture>
-    <picture class="hero-art hero-lower hero-art--theme-dark">
-      <img
-        src="assets/botanical-frame/compact-crescent-harmonized-dark-petrol.webp?v=1"
-        alt=""
-        aria-hidden="true"
-        draggable="false"
-        decoding="async"
-      />
-    </picture>
+    <div class="hero-art hero-lower" aria-hidden="true"></div>
   </div>
 
   <!-- ============ ABOUT ============ -->
