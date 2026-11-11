@@ -11,7 +11,7 @@ Both mono PCM16 files contain the original 24 kHz samples from Martyna's approve
 shorter audition (A). The first clip contains 9,552 frames starting at frame 11,256
 of the audition. The second contains 6,792 frames starting at frame 27,577.
 The game plays these clips at their original speed with quiet gain. The first pair
-uses the audition's timing and relative volume. The two-lap route uses six slurps.
+uses the audition's timing and relative volume. The two-lap route uses eight slurps.
 
 - `n2-short-slurp-first.wav` SHA-256 `32cd78192dd22d168381a49b2e37d59279f528b82ac329055fecfc2c6d7c111d`.
 - `n2-short-slurp-second.wav` SHA-256 `43224e4c1e3c09f64a3815fe641a88d4b4e6becc36c671be9b19d932c0abf156`.

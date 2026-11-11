@@ -20,8 +20,10 @@ export const FEEDING_CLIPS={
 export const FEEDING_CUES=[
  {story:5408,key:'a',level:.899,cluster:1},{story:6088,key:'b',level:1,cluster:1},
  {story:9836,key:'b',level:.96,cluster:2},
- {story:15408,key:'a',level:.899,cluster:3},{story:16128,key:'b',level:.94,cluster:3},
- {story:21008,key:'a',level:.83,cluster:4}
+ {story:12360,key:'a',level:.83,cluster:3},
+ {story:15408,key:'a',level:.899,cluster:4},{story:16128,key:'b',level:.94,cluster:4},
+ {story:18620,key:'b',level:.94,cluster:5},
+ {story:21008,key:'a',level:.83,cluster:6}
 ];
 export const FEEDING_BEATS=FEEDING_CUES.map(cue=>feedingTime(cue.story));
 export function playFeedingSound(sound,index,lateMs=0){
