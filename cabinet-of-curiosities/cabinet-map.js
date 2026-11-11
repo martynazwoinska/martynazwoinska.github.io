@@ -131,6 +131,7 @@
   drawer.addEventListener('click', () => {
     if(opening||dialog.open)return;
     mapTrigger = drawer;
+    group = 'uppsala';
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){reveal();return;}
     opening=true;drawer.setAttribute('aria-busy','true');scene.classList.add('map-drawer-opening');
     stopSound=creak();timer=setTimeout(reveal,940);
