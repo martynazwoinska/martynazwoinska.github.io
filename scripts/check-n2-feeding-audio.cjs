@@ -86,10 +86,17 @@ function decode(wav){
  assert.equal(playFeedingSound(sound,0,700),false,'A stale cue is never replayed');assert.equal(playFeedingSound(sound,999),false);
  // Takeoff and contact play brief, quiet excerpts only when their clock cue occurs.
  const diveSounds={
-  takeoff:recordedSound({takeoff:DIVE_SOUNDS.takeoff.file},{attack:.006,release:.045}),
+  takeoff:recordedSound({takeoff:DIVE_SOUNDS.takeoff.file},{attack:0,release:0}),
   landing:recordedSound({landing:DIVE_SOUNDS.landing.file},{attack:0,release:0})
  };
- assert.deepEqual(DIVE_SOUNDS.takeoff,{file:'nambucca-press-close.wav',story:1250,offset:.008,duration:.16,level:.018},'The approved takeoff excerpt and level are unchanged');
+ assert.deepEqual(DIVE_SOUNDS.takeoff,{file:'n2-soft-takeoff.wav',story:1250,offset:.25,duration:.32,level:.014},'The approved takeoff plays quietly at the existing push-off cue');
+ const takeoffWav=fs.readFileSync(path.resolve(__dirname,'../game-of-worms/assets/audio/n2-soft-takeoff.wav'));
+ assert.equal(crypto.createHash('sha256').update(takeoffWav).digest('hex'),'d416a02a7f637afc11444795a887cde2040478c5b9e3fcd09d6a8ff80ad8ac83','The complete approved takeoff preview remains byte-identical');
+ const takeoffBuffer=decode(takeoffWav),takeoffSamples=takeoffBuffer.getChannelData(0);
+ assert.equal(takeoffBuffer.duration,1.02);
+ assert(takeoffSamples.slice(0,Math.round(.25*takeoffBuffer.sampleRate)).every(n=>n===0));
+ assert(takeoffSamples.slice(Math.round(.57*takeoffBuffer.sampleRate)).every(n=>n===0));
+ assert(Math.abs(Math.max(...takeoffSamples.map(Math.abs))-.045)<1/32768);
  assert.deepEqual([DIVE_SOUNDS.landing.file,DIVE_SOUNDS.landing.offset,DIVE_SOUNDS.landing.duration,DIVE_SOUNDS.landing.level],['n2-soft-landing.wav',.25,.31,.012]);
  const landingWav=fs.readFileSync(path.resolve(__dirname,'../game-of-worms/assets/audio/n2-soft-landing.wav'));
  assert.equal(crypto.createHash('sha256').update(landingWav).digest('hex'),'135b74de8b7ae8904ef8475ee688c3d1f4f147eb271dd8f4574c9377b2d6a46f','The complete approved preview remains byte-identical, including its baked envelope');
@@ -109,7 +116,7 @@ function decode(wav){
  for(const [key,cue]of Object.entries(DIVE_SOUNDS)){
   const wav=fs.readFileSync(path.resolve(__dirname,'../game-of-worms/assets/audio',cue.file)),buffer=decode(wav);
   assert(cue.offset+cue.duration<=buffer.duration);
-  assert(cue.duration<=.31&&cue.level<=.018,'Jump effects are short and subdued');
+  assert(cue.duration<=.32&&cue.level<=.014,'Jump effects are short and subdued');
   const dive=diveSounds[key];
   assert(playDiveSound(dive,key));assert.deepEqual(starts.at(-1).slice(1),[cue.offset,cue.duration]);
   const envelope=envelopes.at(-1);
@@ -119,8 +126,10 @@ function decode(wav){
    const peak=Math.max(...landingSamples.map(Math.abs));
    assert(Math.abs(envelope[1][1]*peak-.012)<1e-10,'The approved waveform plays at the quiet landing level');
   }else{
-   assert.equal(envelope[1][2],.006);
-   assert.equal(envelope[2][2],cue.duration-.045,'Takeoff keeps its established envelope');
+   assert.equal(envelope[1][2],0,'The runtime adds no attack to the approved takeoff');
+   assert.equal(envelope[2][2],cue.duration,'The runtime adds no release to the approved takeoff');
+   const peak=Math.max(...takeoffSamples.map(Math.abs));
+   assert(Math.abs(envelope[1][1]*peak-.014)<1e-10,'Takeoff preserves the approved waveform at the quiet playback level');
   }
   assert(playDiveSound(dive,key,50));assert(Math.abs(starts.at(-1)[1]-cue.offset-.05)<1e-10);assert(Math.abs(starts.at(-1)[2]-cue.duration+.05)<1e-10);
  }

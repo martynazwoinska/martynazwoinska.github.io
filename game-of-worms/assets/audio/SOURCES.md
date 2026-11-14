@@ -1,5 +1,22 @@
 # Game sound recordings
 
+## Bristol N2 takeoff, approved 2026-11-14
+
+Source: qubodup, [Whoosh](https://freesound.org/people/qubodup/sounds/60013/),
+released under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+The creator recorded a bamboo stick moving through air with a Zoom H2.
+The [HQ preview](https://cdn.freesound.org/previews/60/60013_71257-hq.mp3)
+supplied the excerpt starting at 0.006 s, played at 1.1 times its original speed.
+
+The approved 0.32 s sound has a 140 Hz high-pass and 3000 Hz low-pass filter,
+a 9 ms attack and a 100 ms release. Its peak is 0.045. The production mono
+PCM16 WAV is copied byte-for-byte from the approved preview, including 0.25 s
+of leading silence and 0.45 s of trailing silence. Playback selects offset
+0.25 s and duration 0.32 s at the existing push-off cue, with a quiet peak of
+0.014. No additional playback envelope changes the approved fades.
+
+- `n2-soft-takeoff.wav` SHA-256 `d416a02a7f637afc11444795a887cde2040478c5b9e3fcd09d6a8ff80ad8ac83`.
+
 ## Bristol N2 soft landing, approved 2026-11-14
 
 Source: Breviceps, [Mud Splat](https://freesound.org/people/Breviceps/sounds/445109/),

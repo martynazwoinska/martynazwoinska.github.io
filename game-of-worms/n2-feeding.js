@@ -18,7 +18,7 @@ export const FEEDING_CLIPS={
  b:{file:'n2-short-slurp-second.wav',duration:.283,peak:.149}
 };
 export const DIVE_SOUNDS={
- takeoff:{file:'nambucca-press-close.wav',story:1250,offset:.008,duration:.16,level:.018},
+ takeoff:{file:'n2-soft-takeoff.wav',story:1250,offset:.25,duration:.32,level:.014},
  landing:{file:'n2-soft-landing.wav',story:1250+FLIGHT_REFERENCE_MS*DIVE_ENTRY_PHASE,offset:.25,duration:.31,level:.012}
 };
 export function playDiveSound(sound,key,lateMs=0){
@@ -399,8 +399,8 @@ function jumpingWorm(root,body,small,towerPosition={x:0,y:0}){
 // of the OP50 lawn and returns home. The companion plate is only a movable prop.
 export function createN2Feeding(habitat,onChange=()=>{}){
  const reduced=matchMedia('(prefers-reduced-motion: reduce)'),eaten=new Map(),sound=recordedSound(Object.fromEntries(Object.entries(FEEDING_CLIPS).map(([key,clip])=>[key,clip.file])),FEEDING_AUDIO);let run=null,held=null,raf=0;
- const diveSound=recordedSound({takeoff:DIVE_SOUNDS.takeoff.file},{attack:.006,release:.045});
- // The approved landing recording already contains its own soft attack and release.
+ // Both approved recordings already contain their own soft attack and release.
+ const diveSound=recordedSound({takeoff:DIVE_SOUNDS.takeoff.file},{attack:0,release:0});
  const landingSound=recordedSound({landing:DIVE_SOUNDS.landing.file},{attack:0,release:0});
  let tower=null,towerRevealed=false,towerUserPlaced=false;const towerPosition={x:0,y:0};
  const handles=p=>p?.dataset.accessoryFamily==='ngm-agar-plate'&&p.dataset.wormPart==='primary';
