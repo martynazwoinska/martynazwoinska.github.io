@@ -1703,10 +1703,40 @@
     var homeWheel = document.getElementById('homeWheel');
     var homeWheelImage = homeWheel.querySelector('img');
     var homeWheelStatus = document.getElementById('homeWheelStatus');
+    var homeWheelWrap = homeWheel.closest('.flavour-wheel-wrap');
+    var homeWheelCredit = document.getElementById('homeWheelCredit');
     var homeWheelRotation = 0;
     var homeWheelTimer;
 
+    homeWheelWrap.addEventListener('pointerenter', function (event) {
+      if (event.pointerType === 'mouse') homeWheelWrap.removeAttribute('data-credit-dismissed');
+    });
+    homeWheelWrap.addEventListener('focusin', function () {
+      homeWheelWrap.removeAttribute('data-credit-dismissed');
+    });
+    homeWheelWrap.addEventListener('focusout', function (event) {
+      if (!homeWheelWrap.contains(event.relatedTarget)) homeWheelWrap.removeAttribute('data-credit-touch');
+    });
+    homeWheel.addEventListener('pointerdown', function (event) {
+      if (event.pointerType !== 'mouse') {
+        homeWheelWrap.setAttribute('data-credit-touch', '');
+        homeWheelWrap.removeAttribute('data-credit-dismissed');
+        homeWheel.focus({preventScroll: true});
+      }
+    });
+    document.addEventListener('pointerdown', function (event) {
+      if (!homeWheelWrap.contains(event.target)) homeWheelWrap.removeAttribute('data-credit-touch');
+    });
+    homeWheelWrap.addEventListener('keydown', function (event) {
+      if (event.key !== 'Escape') return;
+      if (document.activeElement === homeWheelCredit) homeWheel.focus({preventScroll: true});
+      homeWheelWrap.removeAttribute('data-credit-touch');
+      homeWheelWrap.setAttribute('data-credit-dismissed', '');
+      event.preventDefault();
+    });
+
     homeWheel.addEventListener('click', function () {
+      homeWheelWrap.removeAttribute('data-credit-dismissed');
       var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var increment = reducedMotion
         ? 30 + Math.round(Math.random() * 300)

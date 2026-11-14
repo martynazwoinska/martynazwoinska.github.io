@@ -250,7 +250,7 @@
     .beyond-action span { display: inline-block; transition: transform .18s ease; }
     .beyond-card:hover .beyond-action span, .beyond-card:focus-within .beyond-action span { transform: translateX(4px); }
     .beyond-card--cabinet {
-      --beyond-visual-size: 232px;
+      --beyond-visual-size: 218px;
     }
     .beyond-card .beyond-action {
       position: relative; z-index: 2; pointer-events: none;
@@ -261,12 +261,13 @@
     .flavour-wheel-wrap {
       width: min(var(--beyond-visual-size), 100%); position: relative; z-index: 2; display: grid;
       grid-column: 2; grid-row: 1 / 3; place-self: center end;
-      justify-items: center; align-content: center; gap: 6px;
+      justify-items: center; align-content: center;
     }
     .flavour-wheel-control {
       width: 100%; min-height: 0; aspect-ratio: 1; padding: 7px;
       display: grid; justify-items: center; align-content: center;
-      position: relative; border: 0; border-radius: 50%; cursor: pointer;
+      position: relative; border: 1px solid color-mix(in srgb, var(--accent-gold) 62%, var(--border));
+      border-radius: 50%; cursor: pointer;
       background: transparent; color: var(--accent); font: inherit;
       transition: background .18s ease, transform .18s ease;
     }
@@ -286,12 +287,27 @@
       filter: drop-shadow(0 1px 0 var(--surface));
     }
     .flavour-wheel-source {
-      min-height: 24px; display: inline-flex; align-items: center; justify-content: center;
-      padding: 4px 9px 3px; border: 1px solid color-mix(in srgb, var(--accent-gold) 62%, var(--border));
-      border-radius: 999px; color: var(--text-faint); font-size: .64rem; font-weight: 700;
+      position: absolute; top: calc(100% + 4px); left: 50%; z-index: 3;
+      min-height: 32px; display: inline-flex; align-items: center; justify-content: center;
+      padding: 6px 10px; border: 1px solid color-mix(in srgb, var(--accent-gold) 62%, var(--border));
+      border-radius: 999px; background: var(--surface); color: var(--text-soft); font-size: .68rem; font-weight: 700;
       letter-spacing: .045em; line-height: 1; text-align: center; text-decoration: none; white-space: nowrap;
+      opacity: 0; visibility: hidden; pointer-events: none; transform: translate(var(--credit-offset, -50%), -3px);
+      transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s;
+    }
+    .flavour-wheel-source::before { content: ""; position: absolute; inset: -6px 0 0; border-radius: inherit; }
+    .flavour-wheel-wrap:not([data-credit-dismissed]) .flavour-wheel-control:focus-visible ~ .flavour-wheel-source,
+    .flavour-wheel-wrap:not([data-credit-dismissed]) .flavour-wheel-source:focus-visible,
+    .flavour-wheel-wrap[data-credit-touch]:not([data-credit-dismissed]) .flavour-wheel-source {
+      opacity: 1; visibility: visible; pointer-events: auto; transform: translate(var(--credit-offset, -50%), 0); transition-delay: 0s;
+    }
+    @media (hover: hover) {
+      .flavour-wheel-wrap:hover:not([data-credit-dismissed]) .flavour-wheel-source {
+        opacity: 1; visibility: visible; pointer-events: auto; transform: translate(var(--credit-offset, -50%), 0); transition-delay: 0s;
+      }
     }
     .flavour-wheel-source:hover { color: var(--accent-berry); border-color: var(--accent-gold); text-decoration: none; }
+    .flavour-wheel-source:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
     .n2-preview-wrap {
       width: min(var(--beyond-visual-size), 100%); position: relative; z-index: 2;
       display: grid; grid-column: 2; grid-row: 1 / 3; place-self: center end;
@@ -407,7 +423,7 @@
         grid-column: 1; grid-row: 2; place-self: center;
       }
       .beyond-card .beyond-action { grid-column: 1; grid-row: 3; }
-      .flavour-wheel-source { min-height: 22px; padding: 3px 8px 2px; font-size: .61rem; }
+      .flavour-wheel-source { --credit-offset: 0%; left: auto; right: 0; }
     }
     .theme-btn {
       position: relative; isolation: isolate; background: transparent; border: 0;
@@ -1823,6 +1839,6 @@
   </footer>
 
   <script src="home-i18n.js?v=20261111-intro-pl"></script>
-  <script src="home.js?v=20261108-research-reader"></script>
+  <script src="home.js?v=20261114-wheel-credit"></script>
 </body>
 </html>
