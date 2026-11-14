@@ -1,5 +1,21 @@
 # Game sound recordings
 
+## Bristol N2 soft landing, approved 2026-11-14
+
+Source: Breviceps, [Mud Splat](https://freesound.org/people/Breviceps/sounds/445109/),
+released under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+The [creator's HQ preview](https://cdn.freesound.org/previews/445/445109_9159316-hq.mp3)
+supplied the 0.31 s excerpt starting at 0.0042222 s.
+
+The approved mono PCM16 recording keeps the original pitch, with a 65 Hz high-pass
+and 2400 Hz low-pass filter, a 12 ms attack and a 65 ms release. Its peak is 0.032.
+The production WAV is copied byte-for-byte from the approved preview, including
+0.25 s of leading silence and 0.45 s of trailing silence. Playback selects
+offset 0.25 s and duration 0.31 s at the existing agar-contact cue, with a quiet
+peak of 0.012. No additional playback envelope changes its baked fades.
+
+- `n2-soft-landing.wav` SHA-256 `135b74de8b7ae8904ef8475ee688c3d1f4f147eb271dd8f4574c9377b2d6a46f`.
+
 ## Bristol N2 short slurps, 2026-11-11
 
 The two intakes are from qubodup's [Eating Oatmeal](https://freesound.org/people/qubodup/sounds/169907/),

@@ -85,27 +85,54 @@ function decode(wav){
  assert(playFeedingSound(sound,0,80));assert.equal(starts.at(-1)[1],.08);assert(Math.abs(starts.at(-1)[2]-(FEEDING_CLIPS.a.duration-.08))<1e-12,'Late frames play only the remaining excerpt, aligned with the existing mouth phase');sound.stop();sources.at(-1).onended();
  assert.equal(playFeedingSound(sound,0,700),false,'A stale cue is never replayed');assert.equal(playFeedingSound(sound,999),false);
  // Takeoff and contact play brief, quiet excerpts only when their clock cue occurs.
- const diveFiles=Object.fromEntries(Object.entries(DIVE_SOUNDS).map(([key,cue])=>[key,cue.file]));
- const dive=recordedSound(diveFiles,{attack:.006,release:.045});
- assert.equal(playDiveSound(dive,'takeoff'),false,'No jump audio before preparation');
- await dive.prepare(Object.keys(diveFiles));
+ const diveSounds={
+  takeoff:recordedSound({takeoff:DIVE_SOUNDS.takeoff.file},{attack:.006,release:.045}),
+  landing:recordedSound({landing:DIVE_SOUNDS.landing.file},{attack:0,release:0})
+ };
+ assert.deepEqual(DIVE_SOUNDS.takeoff,{file:'nambucca-press-close.wav',story:1250,offset:.008,duration:.16,level:.018},'The approved takeoff excerpt and level are unchanged');
+ assert.deepEqual([DIVE_SOUNDS.landing.file,DIVE_SOUNDS.landing.offset,DIVE_SOUNDS.landing.duration,DIVE_SOUNDS.landing.level],['n2-soft-landing.wav',.25,.31,.012]);
+ const landingWav=fs.readFileSync(path.resolve(__dirname,'../game-of-worms/assets/audio/n2-soft-landing.wav'));
+ assert.equal(crypto.createHash('sha256').update(landingWav).digest('hex'),'135b74de8b7ae8904ef8475ee688c3d1f4f147eb271dd8f4574c9377b2d6a46f','The complete approved preview remains byte-identical, including its baked envelope');
+ const landingBuffer=decode(landingWav),landingSamples=landingBuffer.getChannelData(0);
+ assert.equal(landingBuffer.duration,1.01);
+ assert(landingSamples.slice(0,Math.round(.25*landingBuffer.sampleRate)).every(n=>n===0),'The omitted leading interval is silent');
+ assert(landingSamples.slice(Math.round(.56*landingBuffer.sampleRate)).every(n=>n===0),'The omitted trailing interval is silent');
+ assert(Math.abs(Math.max(...landingSamples.map(Math.abs))-.032)<1/32768);
+ const requestsBeforeDive=requests;
+ for(const key of Object.keys(diveSounds)){
+  assert.equal(playDiveSound(diveSounds[key],key),false,'No jump audio before gesture preparation');
+  await diveSounds[key].prepare([key]);await diveSounds[key].prepare([key]);
+ }
+ assert.equal(requests-requestsBeforeDive,2,'Each narrow controller fetches and decodes its recording only once');
  assert.equal(feedingTime(DIVE_SOUNDS.takeoff.story),2493,'Board sound follows the visible push-off');
  assert(Math.abs(feedingTime(DIVE_SOUNDS.landing.story)-3803.4)<1e-8,'Contact sound follows the first agar contact');
  for(const [key,cue]of Object.entries(DIVE_SOUNDS)){
   const wav=fs.readFileSync(path.resolve(__dirname,'../game-of-worms/assets/audio',cue.file)),buffer=decode(wav);
   assert(cue.offset+cue.duration<=buffer.duration);
-  assert(cue.duration<=.22&&cue.level<=.018,'Jump effects are short and subdued');
+  assert(cue.duration<=.31&&cue.level<=.018,'Jump effects are short and subdued');
+  const dive=diveSounds[key];
   assert(playDiveSound(dive,key));assert.deepEqual(starts.at(-1).slice(1),[cue.offset,cue.duration]);
+  const envelope=envelopes.at(-1);
+  if(key==='landing'){
+   assert.equal(envelope[1][2],0,'The runtime adds no attack to the approved landing');
+   assert.equal(envelope[2][2],cue.duration,'The runtime adds no release to the approved landing');
+   const peak=Math.max(...landingSamples.map(Math.abs));
+   assert(Math.abs(envelope[1][1]*peak-.012)<1e-10,'The approved waveform plays at the quiet landing level');
+  }else{
+   assert.equal(envelope[1][2],.006);
+   assert.equal(envelope[2][2],cue.duration-.045,'Takeoff keeps its established envelope');
+  }
   assert(playDiveSound(dive,key,50));assert(Math.abs(starts.at(-1)[1]-cue.offset-.05)<1e-10);assert(Math.abs(starts.at(-1)[2]-cue.duration+.05)<1e-10);
  }
  const beforeSkip=starts.length;
- assert.equal(playDiveSound(dive,'takeoff',120),false);assert.equal(playDiveSound(dive,'landing',500),false);assert.equal(playDiveSound(dive,'missing'),false);
+ assert.equal(playDiveSound(diveSounds.takeoff,'takeoff',120),false);assert.equal(playDiveSound(diveSounds.landing,'landing',500),false);assert.equal(playDiveSound(diveSounds.landing,'missing'),false);
  assert.equal(starts.length,beforeSkip,'A missed or repeated stale jump cue cannot sound later');
- const beforeStop=stops.length;dive.stop();assert.equal(stops.length-beforeStop,4,'Cancellation silences both jump events and their test offsets');dive.stop();assert.equal(stops.length-beforeStop,4);
+ const stopDive=()=>Object.values(diveSounds).forEach(dive=>dive.stop());
+ const beforeStop=stops.length;stopDive();assert.equal(stops.length-beforeStop,4,'Cancellation silences both jump events and their test offsets');stopDive();assert.equal(stops.length-beforeStop,4);
  sources.slice(-4).forEach(n=>n.onended());
  const controller=fs.readFileSync(path.resolve(__dirname,'../game-of-worms/n2-feeding.js'),'utf8');
  assert(controller.includes('diveCues:new Set()')&&controller.includes('!action.diveCues.has(key)')&&controller.includes('action.diveCues.add(key)'),'Paused actions retain consumed jump cues');
- assert(controller.match(/sound\.stop\(\);diveSound\.stop\(\);/g).length>=3,'Cancel, pointer pause and early return all silence jump audio');
+ assert(controller.match(/sound\.stop\(\);diveSound\.stop\(\);landingSound\.stop\(\);/g).length>=3,'Cancel, pointer pause and early return silence feeding, takeoff and landing');
  // Default playback for other scenes remains unchanged.
  const plain=recordedSound(files);await plain.prepare(['a']);plain.play('a',0,.12,.08);const normal=envelopes.at(-1);assert.equal(normal[1][2],.012);assert(Math.abs(normal[2][2]-.08)<1e-10);assert.equal(normal[3][2],.12);plain.stop();sources.at(-1).onended();
  global.fetch=async()=>{throw Error('offline')};const offline=recordedSound(files,FEEDING_AUDIO);await offline.prepare(Object.keys(files));assert.equal(playFeedingSound(offline,0),false);

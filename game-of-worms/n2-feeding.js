@@ -19,7 +19,7 @@ export const FEEDING_CLIPS={
 };
 export const DIVE_SOUNDS={
  takeoff:{file:'nambucca-press-close.wav',story:1250,offset:.008,duration:.16,level:.018},
- landing:{file:'kauai-bath-squeeze.wav',story:1250+FLIGHT_REFERENCE_MS*DIVE_ENTRY_PHASE,offset:.12,duration:.22,level:.012}
+ landing:{file:'n2-soft-landing.wav',story:1250+FLIGHT_REFERENCE_MS*DIVE_ENTRY_PHASE,offset:.25,duration:.31,level:.012}
 };
 export function playDiveSound(sound,key,lateMs=0){
  const cue=DIVE_SOUNDS[key];
@@ -399,23 +399,25 @@ function jumpingWorm(root,body,small,towerPosition={x:0,y:0}){
 // of the OP50 lawn and returns home. The companion plate is only a movable prop.
 export function createN2Feeding(habitat,onChange=()=>{}){
  const reduced=matchMedia('(prefers-reduced-motion: reduce)'),eaten=new Map(),sound=recordedSound(Object.fromEntries(Object.entries(FEEDING_CLIPS).map(([key,clip])=>[key,clip.file])),FEEDING_AUDIO);let run=null,held=null,raf=0;
- const diveSound=recordedSound(Object.fromEntries(Object.entries(DIVE_SOUNDS).map(([key,cue])=>[key,cue.file])),{attack:.006,release:.045});
+ const diveSound=recordedSound({takeoff:DIVE_SOUNDS.takeoff.file},{attack:.006,release:.045});
+ // The approved landing recording already contains its own soft attack and release.
+ const landingSound=recordedSound({landing:DIVE_SOUNDS.landing.file},{attack:0,release:0});
  let tower=null,towerRevealed=false,towerUserPlaced=false;const towerPosition={x:0,y:0};
  const handles=p=>p?.dataset.accessoryFamily==='ngm-agar-plate'&&p.dataset.wormPart==='primary';
  function paint(piece){const n=eaten.get(piece)||0;piece.querySelectorAll('.op50-colony').forEach((c,i)=>c.setAttribute('opacity',i<n?'0':'1'));}
  function hideTower(){const focused=tower&&tower.element===document.activeElement;towerRevealed=false;tower?.remove();tower=null;if(focused)habitat.querySelector('[data-accessory-family="ngm-agar-plate"][data-worm-part="primary"]')?.focus({preventScroll:true});}
- function cancel(){cancelAnimationFrame(raf);raf=0;sound.stop();diveSound.stop();tower?.element?.removeAttribute('opacity');if(held){const old=held;held=null;old.restore();onChange();}if(!run)return;const old=run;run=null;old.restore();paint(old.piece);onChange();}
+ function cancel(){cancelAnimationFrame(raf);raf=0;sound.stop();diveSound.stop();landingSound.stop();tower?.element?.removeAttribute('opacity');if(held){const old=held;held=null;old.restore();onChange();}if(!run)return;const old=run;run=null;old.restore();paint(old.piece);onChange();}
  function grab(piece){
   if(held?.piece===piece){cancelAnimationFrame(raf);return true;}
   if(run?.piece!==piece)return false;
-  cancelAnimationFrame(raf);sound.stop();diveSound.stop();run.pausedAt??=performance.now();return true;
+  cancelAnimationFrame(raf);sound.stop();diveSound.stop();landingSound.stop();run.pausedAt??=performance.now();return true;
  }
  function drag(piece){
   if(run?.piece===piece&&run.pausedAt!=null){const old=run;run=null;old.detach();held={piece,art:old.art,scene:old.scene,restore:()=>old.restorePlate(true)};paint(piece);onChange();}
  }
  function requestExit(piece){
   if(run?.piece!==piece)return false;
-  run.exit??=feedingExit(run.lastMs||0);sound.stop();diveSound.stop();return true;
+  run.exit??=feedingExit(run.lastMs||0);sound.stop();diveSound.stop();landingSound.stop();return true;
  }
  function release(piece,reposition,cancelled=false){
   if(run?.piece===piece&&run.pausedAt!=null){
@@ -471,7 +473,7 @@ export function createN2Feeding(habitat,onChange=()=>{}){
   };
   const restore=()=>{detach();restorePlate();};
   run={piece,art,restore,restorePlate,detach,scene,tick,committed:false,started:null,pausedAt:null,lastMs:0,exit:null,cues:new Set(),diveCues:new Set()};const action=run;onChange();
-  Promise.all([sound.prepare(Object.keys(FEEDING_CLIPS)),diveSound.prepare(Object.keys(DIVE_SOUNDS))]).finally(()=>{if(run===action)action.started=action.pausedAt??performance.now();});
+  Promise.all([sound.prepare(Object.keys(FEEDING_CLIPS)),diveSound.prepare(['takeoff']),landingSound.prepare(['landing'])]).finally(()=>{if(run===action)action.started=action.pausedAt??performance.now();});
   function tick(now){
    if(run!==action)return;if(!piece.isConnected||piece.closest('[hidden]')||document.hidden){cancel();return;}
    if(run.pausedAt!==null)return;
@@ -499,7 +501,7 @@ export function createN2Feeding(habitat,onChange=()=>{}){
    for(const [key,cue] of Object.entries(DIVE_SOUNDS)){
     const at=feedingTime(cue.story);
     if(ms>=at&&!action.diveCues.has(key)){
-     action.diveCues.add(key);playDiveSound(diveSound,key,ms-at);
+     action.diveCues.add(key);playDiveSound(key==='landing'?landingSound:diveSound,key,ms-at);
     }
    }
    if(!action.exit)FEEDING_BEATS.forEach((t,i)=>{if(ms>=t&&!action.cues.has(i)){action.cues.add(i);if(ms-t<120)playFeedingSound(sound,i,ms-t);}});
