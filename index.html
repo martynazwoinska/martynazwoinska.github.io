@@ -289,9 +289,9 @@
     .flavour-wheel-source {
       position: absolute; top: calc(100% + 4px); left: 50%; z-index: 3;
       min-height: 32px; display: inline-flex; align-items: center; justify-content: center;
-      padding: 6px 10px; border: 1px solid color-mix(in srgb, var(--accent-gold) 62%, var(--border));
-      border-radius: 999px; background: var(--surface); color: var(--text-soft); font-size: .68rem; font-weight: 700;
-      letter-spacing: .045em; line-height: 1; text-align: center; text-decoration: none; white-space: nowrap;
+      padding: 6px 10px; border: 0;
+      border-radius: 0; background: transparent; color: var(--text-soft); font-size: .68rem; font-weight: 400;
+      letter-spacing: normal; line-height: 1; text-align: center; text-decoration: underline; text-underline-offset: .18em; white-space: nowrap;
       opacity: 0; visibility: hidden; pointer-events: none; transform: translate(var(--credit-offset, -50%), -3px);
       transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s;
     }
@@ -306,7 +306,7 @@
         opacity: 1; visibility: visible; pointer-events: auto; transform: translate(var(--credit-offset, -50%), 0); transition-delay: 0s;
       }
     }
-    .flavour-wheel-source:hover { color: var(--accent-berry); border-color: var(--accent-gold); text-decoration: none; }
+    .flavour-wheel-source:hover { color: var(--accent-berry); text-decoration: underline; }
     .flavour-wheel-source:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
     .n2-preview-wrap {
       width: min(var(--beyond-visual-size), 100%); position: relative; z-index: 2;
