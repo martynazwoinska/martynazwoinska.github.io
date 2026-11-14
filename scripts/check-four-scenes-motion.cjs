@@ -66,9 +66,11 @@ const mod=name=>import(pathToFileURL(path.resolve(__dirname,'../game-of-worms',n
  assert.equal(feedingWave(0),0);assert(feedingWave(1/80)>1.9,'The head lays down a visible sinusoidal track');assert(Math.abs(feedingWave(1/80)-feedingWave(1/80+1/20))<.00001,'The head track repeats at a stable crawling frequency');
  for(const small of[false,true])for(const direction of[-1,1]){
   const start=feedingWormPose(0,small,{x:17,y:6},0,direction),end=feedingWormPose(1,small,{x:17,y:6},0,direction);
-  assert(Math.hypot(start.head.x-end.head.x,start.head.y-end.head.y)<.001);assert(Math.hypot(start.tail.x-end.tail.x,start.tail.y-end.tail.y)<.001);assert(Math.abs(start.length-end.length)<.001,'Landing and take-off use the same body length and posture');
+  if(small){
+   assert(Math.hypot(start.head.x-end.head.x,start.head.y-end.head.y)<.001);assert(Math.hypot(start.tail.x-end.tail.x,start.tail.y-end.tail.y)<.001);assert(Math.abs(start.length-end.length)<.001,'Companion geometry keeps its closed ellipse');
+  }else assert(Math.hypot(start.head.x,start.head.y)<1e-10,'The primary emerges from the agar centre');
   const span=1/13,step=span/32,clipRx=small?35:51,clipRy=small?12.4:16.4;
-  for(let t=0;t<1;t+=.004){const a=feedingWormPose(t,small,{x:17,y:6},1,direction),b=feedingWormPose(t+step,small,{x:17,y:6},1,direction);for(let i=1;i<b.samples.length;i++)assert(Math.hypot(b.samples[i].x-a.samples[i-1].x,b.samples[i].y-a.samples[i-1].y)<.00001,'Each posterior segment follows the preceding segment\'s earlier track');for(const p of a.samples)assert((p.x/clipRx)**2+(p.y/clipRy)**2<1,'The natural crawl remains inside the agar');
+  for(let t=0;t<1;t+=.004){const a=feedingWormPose(t,small,{x:17,y:6},1,direction),b=feedingWormPose(t+step,small,{x:17,y:6},1,direction);for(let i=1;i<b.samples.length;i++)assert(Math.hypot(b.samples[i].x-a.samples[i-1].x,b.samples[i].y-a.samples[i-1].y)<.00001,'Each posterior segment follows the preceding segment\'s earlier track');for(const p of a.samples.filter(p=>small||p.time>=0))assert((p.x/clipRx)**2+(p.y/clipRy)**2<1,'The natural crawl remains inside the agar');
    const next=feedingWormPose(t+.001,small,{x:17,y:6},1,direction);assert(Math.max(...a.samples.map((p,i)=>Math.hypot(p.x-next.samples[i].x,p.y-next.samples[i].y)))<1.4,'Plate crawling has no abrupt body jumps');}
   const base=feedingRoute(1/80,direction,small,{x:17,y:6}),track=feedingTrack(1/80,direction,small,{x:17,y:6},1);assert(Math.hypot(base.x-track.x,base.y-track.y)>1.3,'The head track visibly departs from a rigid ellipse');
  }

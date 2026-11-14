@@ -80,6 +80,40 @@ const assert=require('node:assert/strict');
    if(u<=.8){const shape=feedingOutline(pose.points.slice().reverse().map((p,i)=>({...p,position:i/32})),small,length/plate.length),numbers=shape.body.match(/-?\d+(?:\.\d+)?/g).map(Number),polygon=[];for(let i=0;i<numbers.length;i+=2)polygon.push({x:numbers[i],y:numbers[i+1]});for(let i=0;i<polygon.length;i++)for(let j=i+2;j<polygon.length;j++){if(i===0&&j===polygon.length-1)continue;const a=polygon[i],b=polygon[(i+1)%polygon.length],c=polygon[j],d=polygon[(j+1)%polygon.length];assert(!(orientation(a,b,c)*orientation(a,b,d)<0&&orientation(c,d,a)*orientation(c,d,b)<0),'The visible return silhouette cannot fold across itself');}}
   }
  }
+ const {feedingRoute,feedingWave,feedingTrack,feedingSurfaceSamples,FEEDING_APPROACH}=await import('../game-of-worms/n2-feeding.js');
+ for(const target of [{x:-36,y:-2},{x:-21,y:8},{x:-4,y:-8},{x:17,y:6},{x:35,y:-3}])for(const direction of[-1,1]){
+  const entry=feedingTrack(0,direction,false,target);
+  assert(Math.hypot(entry.x,entry.y)<1e-12,'Every meal starts in the agar centre, independent of the selected colony');
+  const h=.00001,join=feedingTrack(FEEDING_APPROACH,direction,false,target),before=feedingTrack(FEEDING_APPROACH-h,direction,false,target),after=feedingTrack(FEEDING_APPROACH+h,direction,false,target);
+  assert(distance(before,after)<.02,'The centre approach joins the lap without a positional jump');
+  assert(distance({x:(join.x-before.x)/h,y:(join.y-before.y)/h},{x:(after.x-join.x)/h,y:(after.y-join.y)/h})<3,'The join preserves the heading and speed of the crawl');
+  for(let t=0;t<=1;t+=.001){const p=feedingTrack(t,direction,false,target);assert((p.x/51)**2+(p.y/16.4)**2<.7,'Approach and both laps stay clear of the rim');}
+  for(let step=1;step<=500;step++){
+   const progress=step/500,pose=feedingWormPose(progress,false,target,1,direction);
+   const visible=feedingSurfaceSamples(pose.samples,progress,{x:0,y:0});
+   const numbers=feedingOutline(visible).body.match(/-?\d+(?:\.\d+)?/g).map(Number);
+   const polygon=Array.from({length:numbers.length/2},(_,i)=>({x:numbers[i*2],y:numbers[i*2+1]}));
+   for(let i=0;i<polygon.length;i++)for(let j=i+2;j<polygon.length;j++){
+    if(i===0&&j===polygon.length-1)continue;
+    const a=polygon[i],b=polygon[(i+1)%polygon.length],c=polygon[j],d=polygon[(j+1)%polygon.length];
+    assert(!(orientation(a,b,c)*orientation(a,b,d)<0&&orientation(c,d,a)*orientation(c,d,b)<0),`The visible feeding silhouette cannot fold across itself: colony ${target.x},${target.y}, direction ${direction}, progress ${progress}`);
+   }
+   if(progress>=.18){
+    const straight=feedingTrack(progress,direction,false,target,0);
+    assert(Math.abs(distance(straight,pose.head)-Math.abs(feedingWave(progress)))<1e-8,'The settled meal retains the full approved eating wave');
+   }
+  }
+  for(const progress of[0,.05,.1,.5,1]){
+   const base=feedingRoute(progress,direction,true,target),p=feedingTrack(progress,direction,true,target),wave=feedingWave(progress,true);
+   assert(distance(p,{x:base.x-base.dy*wave,y:base.y+base.dx*wave})<1e-10,'Companion geometry is unchanged');
+  }
+  for(const angle of[-.8,0,.7])for(const scale of[.6,1,2]){
+   const map={a:scale*Math.cos(angle),b:scale*Math.sin(angle)},point={x:165+scale*(entry.x*Math.cos(angle)-entry.y*Math.sin(angle)),y:-42+scale*(entry.x*Math.sin(angle)+entry.y*Math.cos(angle))};
+   const target=feedingEntryTarget(point,map);
+   assert.deepEqual({x:target.x,y:target.y},{x:165,y:-42},'Translation, resizing and rotation preserve the exact dish-centre target');
+   assert(distance(dive.flight(.72,target,{x:64,y:-16}).points.at(-1),point)<1e-7,'The head reaches that transformed centre');
+  }
+ }
  const browserPoint=Object.create({get x(){return 125;},get y(){return -30;}}),entryTarget=feedingEntryTarget(browserPoint,{a:1.6*Math.cos(-.1),b:1.6*Math.sin(-.1)});
  assert.equal(entryTarget.x,125);assert.equal(entryTarget.y,-30);assert(Math.abs(Math.hypot(entryTarget.normal.x,entryTarget.normal.y)-1)<1e-12,'Native DOMPoint accessors survive conversion and plate scale does not stretch the entry normal');
  assert.equal(feedingFrame(240).anticipation,0,'The original body finishes its crossfade before boarding begins');

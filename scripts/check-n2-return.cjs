@@ -1,12 +1,12 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 (async()=>{
- const {feedingExit,feedingPlayback,feedingFrame,feedingTime,feedingRoute,feedingWormPose,returnToSourcePose,FEEDING_DURATION,FEEDING_LAPS}=await import('../game-of-worms/n2-feeding.js');
+ const {feedingExit,feedingPlayback,feedingFrame,feedingTime,feedingRoute,feedingCentreRoute,FEEDING_APPROACH,feedingWormPose,returnToSourcePose,FEEDING_DURATION,FEEDING_LAPS}=await import('../game-of-worms/n2-feeding.js');
  // Count complete rotations, rather than only comparing matching endpoints.
  assert.equal(FEEDING_LAPS,2);
  for(const direction of[-1,1]){
   let total=0,last;
   for(let step=0;step<=2000;step++){
-   const progress=feedingFrame(feedingTime(3850+19500*step/2000)).crawl,p=feedingRoute(progress,direction),angle=Math.atan2(p.y/10.5,p.x/38);
+   const progress=FEEDING_APPROACH+(1-FEEDING_APPROACH)*step/2000,p=feedingCentreRoute(progress,direction),angle=Math.atan2(p.y/10.5,p.x/38);
    if(last!==undefined)total+=Math.atan2(Math.sin(angle-last),Math.cos(angle-last));last=angle;
   }
   assert(Math.abs(total/(2*Math.PI)-direction*2)<1e-8,'The uninterrupted meal completes exactly two laps');
@@ -43,7 +43,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
  // use the same closure functions as the browser.
  let now=0,nextFrame=0,stops=0,restores=0;const frames=new Map();
  const dots=Array.from({length:5},()=>({setAttribute(k,v){this[k]=v}})),piece={dataset:{accessoryFamily:'ngm-agar-plate',wormPart:'primary'},closest:()=>null,querySelectorAll:()=>dots};
- const context={console,Math,Map,Set,Number,performance:{now:()=>now},matchMedia:()=>({matches:false,addEventListener(){}}),window:{addEventListener(){}},document:{addEventListener(){}},recordedSound:()=>({stop(){stops++}}),cancelAnimationFrame:id=>frames.delete(id),requestAnimationFrame:fn=>{frames.set(++nextFrame,fn);return nextFrame;},ease:t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)},clamp:t=>Math.max(0,Math.min(1,t)),DIVE_PREPARE_MS:2233,DIVE_FLIGHT_MS:1820};
+ const context={console,Math,Map,Set,Number,performance:{now:()=>now},matchMedia:()=>({matches:false,addEventListener(){}}),window:{addEventListener(){}},document:{addEventListener(){}},recordedSound:()=>({stop(){stops++}}),cancelAnimationFrame:id=>frames.delete(id),requestAnimationFrame:fn=>{frames.set(++nextFrame,fn);return nextFrame;},ease:t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)},clamp:t=>Math.max(0,Math.min(1,t)),DIVE_PREPARE_MS:2233,DIVE_FLIGHT_MS:1820,DIVE_ENTRY_PHASE:.72};
  let code=fs.readFileSync(path.join(__dirname,'../game-of-worms/n2-feeding.js'),'utf8').replace(/^import .*\r?\n/gm,'').replace(/\bexport /g,'');
  code=code.replace('return {handles,start,cancel,clear,grab,drag,release,','return {setRun(value){run=value;},getRun(){return run;},handles,start,cancel,clear,grab,drag,release,');
  vm.createContext(context);vm.runInContext(code,context);const feed=context.createN2Feeding({querySelector:()=>null,querySelectorAll:()=>[piece]});

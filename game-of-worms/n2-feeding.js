@@ -17,6 +17,16 @@ export const FEEDING_CLIPS={
  a:{file:'n2-short-slurp-first.wav',duration:.398,peak:.267},
  b:{file:'n2-short-slurp-second.wav',duration:.283,peak:.149}
 };
+export const DIVE_SOUNDS={
+ takeoff:{file:'nambucca-press-close.wav',story:1250,offset:.008,duration:.16,level:.018},
+ landing:{file:'kauai-bath-squeeze.wav',story:1250+FLIGHT_REFERENCE_MS*DIVE_ENTRY_PHASE,offset:.12,duration:.22,level:.012}
+};
+export function playDiveSound(sound,key,lateMs=0){
+ const cue=DIVE_SOUNDS[key];
+ if(!cue||lateMs<0||lateMs>=120)return false;
+ const elapsed=lateMs/1000,duration=cue.duration-elapsed;
+ return duration>.02&&sound.play(key,cue.offset+elapsed,duration,cue.level);
+}
 export const FEEDING_CUES=[
  {story:5408,key:'a',level:.899,cluster:1},{story:6088,key:'b',level:1,cluster:1},
  {story:7800,key:'a',level:.84,cluster:2},{story:8460,key:'b',level:.91,cluster:2},
@@ -140,8 +150,37 @@ export function feedingWave(t,small=false,amount=1){
  return (small?1.35:1.95)*amount*Math.sin(Math.PI*40*t);
 }
 
+export const FEEDING_APPROACH=.1;
+const FEEDING_WAVE_SETTLE=.18;
+
+// Emerge at the dish centre, then join the same broad side turn each time.
+// Colony selection controls the food eaten, not the approach curvature.
+// Once this short approach ends, the head still completes two full circuits.
+export function feedingCentreRoute(t,direction=1){
+ const target={x:-38,y:0},entry=feedingRoute(0,direction,false,target);
+ const speed=ellipseArcTable(38,10.5).perimeter*FEEDING_LAPS/(1-FEEDING_APPROACH);
+ const first={x:entry.x*.45,y:entry.y*.45};
+ const reach=speed*FEEDING_APPROACH/3;
+ const second={x:entry.x-entry.dx*reach,y:entry.y-entry.dy*reach};
+ if(t>=FEEDING_APPROACH)return feedingRoute((t-FEEDING_APPROACH)/(1-FEEDING_APPROACH),direction,false,target);
+ if(t<0){
+  const length=Math.hypot(first.x,first.y)||1;
+  return {x:3*first.x*t/FEEDING_APPROACH,y:3*first.y*t/FEEDING_APPROACH,dx:first.x/length,dy:first.y/length,angle:Math.atan2(first.y,first.x)*180/Math.PI};
+ }
+ const q=t/FEEDING_APPROACH,r=1-q;
+ const x=3*r*r*q*first.x+3*r*q*q*second.x+q**3*entry.x;
+ const y=3*r*r*q*first.y+3*r*q*q*second.y+q**3*entry.y;
+ const vx=3*r*r*first.x+6*r*q*(second.x-first.x)+3*q*q*(entry.x-second.x);
+ const vy=3*r*r*first.y+6*r*q*(second.y-first.y)+3*q*q*(entry.y-second.y);
+ const length=Math.hypot(vx,vy)||1;
+ return {x,y,dx:vx/length,dy:vy/length,angle:Math.atan2(vy,vx)*180/Math.PI};
+}
+
 export function feedingTrack(t,direction=1,small=false,target={x:1,y:0},waveAmount=1){
- const base=feedingRoute(t,direction,small,target),wave=feedingWave(t,small,waveAmount);
+ const base=small?feedingRoute(t,direction,true,target):feedingCentreRoute(t,direction);
+ // Bring in the full eating wave only as the tail clears the approach turn.
+ const settle=small?1:ease(t/FEEDING_WAVE_SETTLE);
+ const wave=feedingWave(t,small,waveAmount*settle);
  return {...base,x:base.x-base.dy*wave,y:base.y+base.dx*wave};
 }
 
@@ -360,22 +399,23 @@ function jumpingWorm(root,body,small,towerPosition={x:0,y:0}){
 // of the OP50 lawn and returns home. The companion plate is only a movable prop.
 export function createN2Feeding(habitat,onChange=()=>{}){
  const reduced=matchMedia('(prefers-reduced-motion: reduce)'),eaten=new Map(),sound=recordedSound(Object.fromEntries(Object.entries(FEEDING_CLIPS).map(([key,clip])=>[key,clip.file])),FEEDING_AUDIO);let run=null,held=null,raf=0;
+ const diveSound=recordedSound(Object.fromEntries(Object.entries(DIVE_SOUNDS).map(([key,cue])=>[key,cue.file])),{attack:.006,release:.045});
  let tower=null,towerRevealed=false,towerUserPlaced=false;const towerPosition={x:0,y:0};
  const handles=p=>p?.dataset.accessoryFamily==='ngm-agar-plate'&&p.dataset.wormPart==='primary';
  function paint(piece){const n=eaten.get(piece)||0;piece.querySelectorAll('.op50-colony').forEach((c,i)=>c.setAttribute('opacity',i<n?'0':'1'));}
  function hideTower(){const focused=tower&&tower.element===document.activeElement;towerRevealed=false;tower?.remove();tower=null;if(focused)habitat.querySelector('[data-accessory-family="ngm-agar-plate"][data-worm-part="primary"]')?.focus({preventScroll:true});}
- function cancel(){cancelAnimationFrame(raf);raf=0;sound.stop();tower?.element?.removeAttribute('opacity');if(held){const old=held;held=null;old.restore();onChange();}if(!run)return;const old=run;run=null;old.restore();paint(old.piece);onChange();}
+ function cancel(){cancelAnimationFrame(raf);raf=0;sound.stop();diveSound.stop();tower?.element?.removeAttribute('opacity');if(held){const old=held;held=null;old.restore();onChange();}if(!run)return;const old=run;run=null;old.restore();paint(old.piece);onChange();}
  function grab(piece){
   if(held?.piece===piece){cancelAnimationFrame(raf);return true;}
   if(run?.piece!==piece)return false;
-  cancelAnimationFrame(raf);sound.stop();run.pausedAt??=performance.now();return true;
+  cancelAnimationFrame(raf);sound.stop();diveSound.stop();run.pausedAt??=performance.now();return true;
  }
  function drag(piece){
   if(run?.piece===piece&&run.pausedAt!=null){const old=run;run=null;old.detach();held={piece,art:old.art,scene:old.scene,restore:()=>old.restorePlate(true)};paint(piece);onChange();}
  }
  function requestExit(piece){
   if(run?.piece!==piece)return false;
-  run.exit??=feedingExit(run.lastMs||0);sound.stop();return true;
+  run.exit??=feedingExit(run.lastMs||0);sound.stop();diveSound.stop();return true;
  }
  function release(piece,reposition,cancelled=false){
   if(run?.piece===piece&&run.pausedAt!=null){
@@ -419,7 +459,7 @@ export function createN2Feeding(habitat,onChange=()=>{}){
   const carrier=add(parent,'g',{'data-feeding-carrier':''});art.before(carrier);carrier.append(art);
   syncTower();const target={x:+colonies[portion].getAttribute('cx'),y:+colonies[portion].getAttribute('cy')},overlay=crawlerOverlay(art,small),jumper=jumpingWorm(root,body,small,{...towerPosition}),initialMap=relative(root,art);
   const angleFor=direction=>{const pose=feedingWormPose(0,small,target,0,direction),head=at(initialMap,pose.head.x,pose.head.y),tail=at(initialMap,pose.tail.x,pose.tail.y);return Math.atan2(head.y-tail.y,head.x-tail.x);},turnDistance=angle=>Math.abs(Math.atan2(Math.sin(angle-jumper.sourceAngle),Math.cos(angle-jumper.sourceAngle)));
-  const direction=turnDistance(angleFor(-1))<turnDistance(angleFor(1))?-1:1,route=t=>feedingRoute(t,direction,small,target);
+  const direction=turnDistance(angleFor(-1))<turnDistance(angleFor(1))?-1:1;
   const groundShadow=body.parentElement.querySelector(':scope > .worm-ground-shadow'),shadow=art.querySelector('.plate-shadow'),shadowOpacity=shadow.getAttribute('opacity'),actors=[body,groundShadow,habitat.querySelector('#doodle-canvas'),...habitat.querySelectorAll(`.accessory-piece[data-worm-part="${part}"][data-accessory-family="n2-lab-coat"],.accessory-piece[data-worm-part="${part}"][data-accessory-family="n2-lab-goggles"],.accessory-piece[data-worm-part="${part}"][data-accessory-family="cryo-vial-jetpack"]`)].filter(Boolean).map(n=>({n,opacity:n.getAttribute('opacity'),inactive:n.getAttribute('data-n2-feeding-inactive')}));
   const restoreActor=({n,opacity,inactive})=>{opacity===null?n.removeAttribute('opacity'):n.setAttribute('opacity',opacity);inactive===null?n.removeAttribute('data-n2-feeding-inactive'):n.setAttribute('data-n2-feeding-inactive',inactive);};
   const detach=()=>{jumper.remove();overlay.remove();actors.forEach(restoreActor);shadowOpacity===null?shadow.removeAttribute('opacity'):shadow.setAttribute('opacity',shadowOpacity);tower?.element?.removeAttribute('opacity');};
@@ -430,8 +470,8 @@ export function createN2Feeding(habitat,onChange=()=>{}){
    pivots.forEach(({n,style})=>style===null?n.removeAttribute('style'):n.setAttribute('style',style));values.forEach(([k,v])=>piece.style.setProperty(k,v));
   };
   const restore=()=>{detach();restorePlate();};
-  run={piece,art,restore,restorePlate,detach,scene,tick,committed:false,started:null,pausedAt:null,lastMs:0,exit:null,cues:new Set()};const action=run;onChange();
-  sound.prepare(Object.keys(FEEDING_CLIPS)).finally(()=>{if(run===action)action.started=action.pausedAt??performance.now();});
+  run={piece,art,restore,restorePlate,detach,scene,tick,committed:false,started:null,pausedAt:null,lastMs:0,exit:null,cues:new Set(),diveCues:new Set()};const action=run;onChange();
+  Promise.all([sound.prepare(Object.keys(FEEDING_CLIPS)),diveSound.prepare(Object.keys(DIVE_SOUNDS))]).finally(()=>{if(run===action)action.started=action.pausedAt??performance.now();});
   function tick(now){
    if(run!==action)return;if(!piece.isConnected||piece.closest('[hidden]')||document.hidden){cancel();return;}
    if(run.pausedAt!==null)return;
@@ -443,7 +483,7 @@ export function createN2Feeding(habitat,onChange=()=>{}){
    // and return. Its body cannot jump behind the plate glare or splash.
    overlay.crawler.setAttribute('opacity','0');
    const track=q=>feedingTrack(q,direction,small,target,f.wave),shape=wormShape(track,f.crawl,small);overlay.body.setAttribute('d',shape.body);overlay.highlight.setAttribute('d',shape.highlight);
-   const contact=small?3830:1250+FLIGHT_REFERENCE_MS*DIVE_ENTRY_PHASE,landing=rippleFrame(story,contact,1400),takeoff=rippleFrame(story,23350),ripple=landing.opacity>takeoff.opacity?landing:takeoff,entry=route(0);
+   const contact=small?3830:1250+FLIGHT_REFERENCE_MS*DIVE_ENTRY_PHASE,landing=rippleFrame(story,contact,1400),takeoff=rippleFrame(story,23350),ripple=landing.opacity>takeoff.opacity?landing:takeoff,entry={x:0,y:0};
    const ripplePoint=story>=23350?shape.head:entry;
    overlay.ripple.setAttribute('cx',ripplePoint.x);overlay.ripple.setAttribute('cy',ripplePoint.y);overlay.ripple.setAttribute('rx',String(3+ripple.progress*(small?7:10)));overlay.ripple.setAttribute('ry',String(1+ripple.progress*(small?2.2:3.2)));overlay.ripple.setAttribute('opacity',String(ripple.opacity));
    const splashProgress=clamp((story-contact)/(small?650:1400));overlay.splash.setAttribute('transform',`translate(${entry.x} ${entry.y})`);overlay.splash.setAttribute('opacity',String(Math.sin(Math.PI*splashProgress)));
@@ -456,6 +496,12 @@ export function createN2Feeding(habitat,onChange=()=>{}){
    const bite=!action.exit&&f.crawler?feedingBiteFrame(ms).amount:0;
    jumper.set(jumpProgress,jumpTarget,f.jumpOpacity+f.crawler,targetLength,targetAngle,f.anticipation,f.impact,outbound?f.landing:f.departure,outbound,{mapped,map:artMap,shape,bite});
    const fade=ease((mealStory-9700)/650)*(action.exit&&!f.consumed?1-f.home:1);colonies[portion].setAttribute('opacity',String(1-fade));
+   for(const [key,cue] of Object.entries(DIVE_SOUNDS)){
+    const at=feedingTime(cue.story);
+    if(ms>=at&&!action.diveCues.has(key)){
+     action.diveCues.add(key);playDiveSound(diveSound,key,ms-at);
+    }
+   }
    if(!action.exit)FEEDING_BEATS.forEach((t,i)=>{if(ms>=t&&!action.cues.has(i)){action.cues.add(i);if(ms-t<120)playFeedingSound(sound,i,ms-t);}});
    if(f.consumed&&!run.committed){run.committed=true;eaten.set(piece,portion+1);}
    // Clear the scene only after the worm and plate have returned home.

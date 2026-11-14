@@ -4,12 +4,12 @@ function decode(wav){
  assert.equal(wav.toString('ascii',0,4),'RIFF');assert.equal(wav.toString('ascii',8,12),'WAVE');
  let rate,channels,bits,data;
  for(let p=12;p+8<=wav.length;){const id=wav.toString('ascii',p,p+4),size=wav.readUInt32LE(p+4);if(id==='fmt '){assert.equal(wav.readUInt16LE(p+8),1);channels=wav.readUInt16LE(p+10);rate=wav.readUInt32LE(p+12);bits=wav.readUInt16LE(p+22);}if(id==='data')data=wav.subarray(p+8,p+8+size);p+=8+size+(size%2);}
- assert.equal(channels,1);assert.equal(bits,16);assert.equal(rate,24000);
+ assert.equal(channels,1);assert.equal(bits,16);assert([24000,44100].includes(rate));
  const samples=Float32Array.from({length:data.length/2},(_,i)=>data.readInt16LE(i*2)/32768);
  return{duration:samples.length/rate,numberOfChannels:1,sampleRate:rate,getChannelData:()=>samples};
 }
 (async()=>{
- const {FEEDING_AUDIO,FEEDING_CLIPS,FEEDING_CUES,FEEDING_BEATS,feedingTime,feedingFrame,feedingBiteFrame,feedingMouthPose,feedingWormPose,playFeedingSound}=await import(pathToFileURL(path.resolve(__dirname,'../game-of-worms/n2-feeding.js')));
+ const {DIVE_SOUNDS,playDiveSound,FEEDING_AUDIO,FEEDING_CLIPS,FEEDING_CUES,FEEDING_BEATS,feedingTime,feedingFrame,feedingBiteFrame,feedingMouthPose,feedingWormPose,playFeedingSound}=await import(pathToFileURL(path.resolve(__dirname,'../game-of-worms/n2-feeding.js')));
  const hashes=[],peaks=[];
  for(const [key,clip]of Object.entries(FEEDING_CLIPS)){
   const wav=fs.readFileSync(path.resolve(__dirname,'../game-of-worms/assets/audio',clip.file)),buffer=decode(wav),samples=buffer.getChannelData(0);
@@ -84,6 +84,28 @@ function decode(wav){
  sound.stop();assert.equal(stops.length,starts.length);sound.stop();assert.equal(stops.length,starts.length,'Repeated exit requests cannot revive or duplicate sound');sources.forEach(n=>n.onended());assert(sources.every(n=>n.disconnected));
  assert(playFeedingSound(sound,0,80));assert.equal(starts.at(-1)[1],.08);assert(Math.abs(starts.at(-1)[2]-(FEEDING_CLIPS.a.duration-.08))<1e-12,'Late frames play only the remaining excerpt, aligned with the existing mouth phase');sound.stop();sources.at(-1).onended();
  assert.equal(playFeedingSound(sound,0,700),false,'A stale cue is never replayed');assert.equal(playFeedingSound(sound,999),false);
+ // Takeoff and contact play brief, quiet excerpts only when their clock cue occurs.
+ const diveFiles=Object.fromEntries(Object.entries(DIVE_SOUNDS).map(([key,cue])=>[key,cue.file]));
+ const dive=recordedSound(diveFiles,{attack:.006,release:.045});
+ assert.equal(playDiveSound(dive,'takeoff'),false,'No jump audio before preparation');
+ await dive.prepare(Object.keys(diveFiles));
+ assert.equal(feedingTime(DIVE_SOUNDS.takeoff.story),2493,'Board sound follows the visible push-off');
+ assert(Math.abs(feedingTime(DIVE_SOUNDS.landing.story)-3803.4)<1e-8,'Contact sound follows the first agar contact');
+ for(const [key,cue]of Object.entries(DIVE_SOUNDS)){
+  const wav=fs.readFileSync(path.resolve(__dirname,'../game-of-worms/assets/audio',cue.file)),buffer=decode(wav);
+  assert(cue.offset+cue.duration<=buffer.duration);
+  assert(cue.duration<=.22&&cue.level<=.018,'Jump effects are short and subdued');
+  assert(playDiveSound(dive,key));assert.deepEqual(starts.at(-1).slice(1),[cue.offset,cue.duration]);
+  assert(playDiveSound(dive,key,50));assert(Math.abs(starts.at(-1)[1]-cue.offset-.05)<1e-10);assert(Math.abs(starts.at(-1)[2]-cue.duration+.05)<1e-10);
+ }
+ const beforeSkip=starts.length;
+ assert.equal(playDiveSound(dive,'takeoff',120),false);assert.equal(playDiveSound(dive,'landing',500),false);assert.equal(playDiveSound(dive,'missing'),false);
+ assert.equal(starts.length,beforeSkip,'A missed or repeated stale jump cue cannot sound later');
+ const beforeStop=stops.length;dive.stop();assert.equal(stops.length-beforeStop,4,'Cancellation silences both jump events and their test offsets');dive.stop();assert.equal(stops.length-beforeStop,4);
+ sources.slice(-4).forEach(n=>n.onended());
+ const controller=fs.readFileSync(path.resolve(__dirname,'../game-of-worms/n2-feeding.js'),'utf8');
+ assert(controller.includes('diveCues:new Set()')&&controller.includes('!action.diveCues.has(key)')&&controller.includes('action.diveCues.add(key)'),'Paused actions retain consumed jump cues');
+ assert(controller.match(/sound\.stop\(\);diveSound\.stop\(\);/g).length>=3,'Cancel, pointer pause and early return all silence jump audio');
  // Default playback for other scenes remains unchanged.
  const plain=recordedSound(files);await plain.prepare(['a']);plain.play('a',0,.12,.08);const normal=envelopes.at(-1);assert.equal(normal[1][2],.012);assert(Math.abs(normal[2][2]-.08)<1e-10);assert.equal(normal[3][2],.12);plain.stop();sources.at(-1).onended();
  global.fetch=async()=>{throw Error('offline')};const offline=recordedSound(files,FEEDING_AUDIO);await offline.prepare(Object.keys(files));assert.equal(playFeedingSound(offline,0),false);
