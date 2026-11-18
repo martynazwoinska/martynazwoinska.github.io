@@ -1721,7 +1721,6 @@
       if (event.pointerType !== 'mouse') {
         homeWheelWrap.setAttribute('data-credit-touch', '');
         homeWheelWrap.removeAttribute('data-credit-dismissed');
-        homeWheel.focus({preventScroll: true});
       }
     });
     document.addEventListener('pointerdown', function (event) {
