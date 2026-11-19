@@ -864,9 +864,9 @@ html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) .cabine
 
 :root[data-theme='light'] {
   color-scheme: light;
-  --bg: #f2f5f2;
-  --surface: #fbfcfb;
-  --surface-strong: #e3eae5;
+  --bg: #faf8f2;
+  --surface: #fffdfa;
+  --surface-strong: #eeece4;
   --text: #17231d;
   --soft: #5d655f;
   --emerald: #267654;
@@ -881,11 +881,11 @@ html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) .cabine
 :root[data-theme='light'] .fantasy-surround::before { background: radial-gradient(ellipse at center, rgba(248, 251, 249, .1) 28%, rgba(225, 235, 229, .5) 80%); }
 :root[data-theme='light'] .home-link,
 :root[data-theme='light'] .collection-toggle,
-:root[data-theme='light'] .title-plaque { background: rgba(248, 251, 249, .88); }
-:root[data-theme='light'] .collection-panel { background: rgba(246, 249, 247, .97); }
-:root[data-theme='light'] .object-preview { background: rgba(248, 251, 249, .97); }
-:root[data-theme='light'] .explore-hint { background: rgba(248, 251, 249, .86); }
-:root[data-theme='light'] .scene-controls { background: rgba(248, 251, 249, .9); }
+:root[data-theme='light'] .title-plaque { background: rgba(255, 253, 250, .9); }
+:root[data-theme='light'] .collection-panel { background: rgba(255, 253, 250, .97); }
+:root[data-theme='light'] .object-preview { background: rgba(255, 253, 250, .97); }
+:root[data-theme='light'] .explore-hint { background: rgba(255, 253, 250, .88); }
+:root[data-theme='light'] .scene-controls { background: rgba(255, 253, 250, .9); }
 
 @media (max-width: 760px) {
   :root[data-theme='light'] .fantasy-surround {
@@ -904,9 +904,9 @@ html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) .cabine
 @media (prefers-color-scheme: light) {
   :root:not([data-theme]) {
     color-scheme: light;
-    --bg: #f2f5f2;
-    --surface: #fbfcfb;
-    --surface-strong: #e3eae5;
+    --bg: #faf8f2;
+    --surface: #fffdfa;
+    --surface-strong: #eeece4;
     --text: #17231d;
     --soft: #5d655f;
     --emerald: #267654;
@@ -920,11 +920,11 @@ html:not(.is-portrait-browsing) .cabinet-page:not(.is-scene-interactive) .cabine
   :root:not([data-theme]) .fantasy-surround::before { background: radial-gradient(ellipse at center, rgba(248, 251, 249, .1) 28%, rgba(225, 235, 229, .5) 80%); }
   :root:not([data-theme]) .home-link,
   :root:not([data-theme]) .collection-toggle,
-  :root:not([data-theme]) .title-plaque { background: rgba(248, 251, 249, .88); }
-  :root:not([data-theme]) .collection-panel { background: rgba(246, 249, 247, .97); }
-  :root:not([data-theme]) .object-preview { background: rgba(248, 251, 249, .97); }
-  :root:not([data-theme]) .explore-hint { background: rgba(248, 251, 249, .86); }
-  :root:not([data-theme]) .scene-controls { background: rgba(248, 251, 249, .9); }
+  :root:not([data-theme]) .title-plaque { background: rgba(255, 253, 250, .9); }
+  :root:not([data-theme]) .collection-panel { background: rgba(255, 253, 250, .97); }
+  :root:not([data-theme]) .object-preview { background: rgba(255, 253, 250, .97); }
+  :root:not([data-theme]) .explore-hint { background: rgba(255, 253, 250, .88); }
+  :root:not([data-theme]) .scene-controls { background: rgba(255, 253, 250, .9); }
 }
 
 @media (prefers-color-scheme: light) and (max-width: 760px) {
